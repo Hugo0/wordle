@@ -4,9 +4,9 @@
     "name_native": "eesti",
     "meta": {
         "locale": "et",
-        "title": "MORDLE - Mängi WORDGE, igapäevane sõna mäng. ",
-        "description": "Mängi Wordle, igapäevane sõna mäng. ",
-        "keywords": "müüvad, inglise, puzzle, sõna, mängimine, mäng, võrgus, arvan "
+        "title": "Daily Word mäng ",
+        "description": "Arva Varjatud sõna 6 püüab (või vähem). Iga päev on saadaval uus puzzle! ",
+        "keywords": "Inglise, puzzle, sõna, mängimine, mäng, võrgus, arvan, iga päev "
     },
     "text": {
         "subheader": "eesti",
@@ -16,9 +16,9 @@
         "notification-copied": "Kopeeritud lõikepuhvrisse ",
         "notification-partial-word": "Palun sisestage täielik sõna "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Kuidas mängida ",

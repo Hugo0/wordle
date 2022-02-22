@@ -4,9 +4,9 @@
     "name_native": "euskara",
     "meta": {
         "locale": "eu",
-        "title": "Wordle - Play Wordle, eguneroko hitz jokoa. ",
-        "description": "Play Wordle, eguneroko hitz jokoa. ",
-        "keywords": "Wordle, ingelesa, puzzlea, hitza, jolasa, jokoa, linean, asmatu "
+        "title": "Eguneko hitz jokoa ",
+        "description": "Asmatu ezkutuko hitza 6 saiakera (edo gutxiago). Puzzle berri bat egunero eskuragarri dago! ",
+        "keywords": "Ingelesa, puzzlea, hitza, jolasa, jokoa, linean, asmatu, egunero "
     },
     "text": {
         "subheader": "euskara",
@@ -16,9 +16,9 @@
         "notification-copied": "Arbelean kopiatuta ",
         "notification-partial-word": "Mesedez, idatzi hitz osoa "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Nola jokatu ",

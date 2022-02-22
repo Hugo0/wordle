@@ -4,9 +4,9 @@
     "name_native": "brezhoneg",
     "meta": {
         "locale": "br",
-        "title": "Wordle - Play Wordle, the daily word game. ",
-        "description": "Play Wordle, the daily word game. ",
-        "keywords": "wordle, english, puzzle, word, play, game, online, guess "
+        "title": "The daily word game",
+        "description": "Guess the hidden word in 6 tries (or less). A new puzzle is available each day!",
+        "keywords": "english, puzzle, word, play, game, online, guess, daily"
     },
     "text": {
         "subheader": "brezhoneg",
@@ -16,9 +16,9 @@
         "notification-copied": "Copied to clipboard ",
         "notification-partial-word": "Please enter a full word "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "How to Play",

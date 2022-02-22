@@ -1,9 +1,5 @@
 # Wordle Global
 Open Source Wordle in a bunch of languages
-- [ ] manually make keyboards for top languages
-- [ ] add klingon (and other meme languages)
-- [ ] go over and improve word lists
-- [ ] move to plausible
 
 ## PULL REQUESTS WELCOME!
 
@@ -103,8 +99,8 @@ Nice to haves:
 - NYT (presumably holds the copyright or some IP rights or something with their $$$ purchase)
 - Elizabeth S (inventor of the Wordle grid)
 - Nadia H (my lovely beta-tester)
+- Daniel Rodriguez (for some inspiration with Tailwind)
 
 ## Data sources
 - https://www.nytimes.com/games/wordle/index.html - english word list
-- https://www.softmaker.com/en/dictionaries - Hunspell dictionaries 
-- https://ftp.gnu.org/gnu/aspell/dict/0index.html - Aspell Dictionaries
+- https://github.com/wooorm/dictionaries - most other word lists ([Titus Wormer](https://wooorm.com/) is an incredible dude)

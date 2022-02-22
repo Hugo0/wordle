@@ -4,9 +4,9 @@
     "name_native": "lietuvių kalba",
     "meta": {
         "locale": "lt",
-        "title": "Wordle - Play Wordle, Dienos žodinis žaidimas. ",
-        "description": "Žaisti Wordle, Dienos žodinis žaidimas. ",
-        "keywords": "Wordle, anglų, dėlionės, žodis, žaidimas, žaidimas, internete, atspėti "
+        "title": "\"Daily Word\" žaidimas ",
+        "description": "Atspėti paslėptą žodį 6 bandymuose (ar mažiau). Kiekvieną dieną galima įsigyti naują galvosūkį! ",
+        "keywords": "Anglų, dėlionės, žodis, žaidimas, žaidimas, internete, atspėti, kasdien "
     },
     "text": {
         "subheader": "lietuvių kalba",
@@ -16,9 +16,9 @@
         "notification-copied": "Nukopijuotas į iškarpinę ",
         "notification-partial-word": "Įveskite visą žodį "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Kaip žaisti ",

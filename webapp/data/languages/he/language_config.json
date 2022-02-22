@@ -4,9 +4,9 @@
     "name_native": "עברית",
     "meta": {
         "locale": "he",
-        "title": "Wordle - משחק Wordle, משחק המילה היומי. ",
-        "description": "לשחק Wordle, משחק מילים יומי. ",
-        "keywords": "Wordle, אנגלית, פאזל, מילה, לשחק, משחק, מקוון, לנחש "
+        "title": "משחק המילה היומי ",
+        "description": "נחשו את המילה הנסתרת ב 6 מנסה (או פחות). פאזל חדש זמין בכל יום! ",
+        "keywords": "אנגלית, פאזל, מילה, לשחק, משחק, מקוון, לנחש, יומי "
     },
     "text": {
         "subheader": "עברית",
@@ -16,9 +16,9 @@
         "notification-copied": "הועתק ללוח ",
         "notification-partial-word": "הזן מילה מלאה "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "true",
     "help": {
         "title": "איך לשחק ",

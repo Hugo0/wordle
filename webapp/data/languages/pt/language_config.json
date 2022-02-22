@@ -4,9 +4,9 @@
     "name_native": "Português",
     "meta": {
         "locale": "pt",
-        "title": "Wordle - Jogue Wordle, o jogo de palavras diárias. ",
-        "description": "Jogue Wordle, o jogo Daily Word. ",
-        "keywords": "wordle, inglês, quebra-cabeça, palavra, jogar, jogo, online, adivinhar "
+        "title": "O jogo diário da palavra ",
+        "description": "Acho que a palavra oculta em 6 tentativas (ou menos). Um novo quebra-cabeça está disponível todos os dias! ",
+        "keywords": "Inglês, Quebra-cabeça, Palavra, Jogue, Jogo, Online, Adivinha, Diário "
     },
     "text": {
         "subheader": "Português",
@@ -16,9 +16,9 @@
         "notification-copied": "Copiado para a área de transferência ",
         "notification-partial-word": "Por favor, insira uma palavra completa "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Como jogar ",
@@ -31,6 +31,6 @@
         "text_2_1": "está na palavra e no local correto! ",
         "text_2_2": "está na palavra, mas não no local correto. ",
         "text_2_3": "não está presente na palavra que você está tentando adivinhar. ",
-        "text_3": "Uma nova palavra estará disponível todos os dias! "
+        "text_3": "Uma nova palavra estará disponível a cada dia! "
     }
 }

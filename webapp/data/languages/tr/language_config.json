@@ -4,9 +4,9 @@
     "name_native": "Türkçe",
     "meta": {
         "locale": "tr",
-        "title": "Wortdle - Wortdle oyna, günlük kelime oyunu. ",
-        "description": "Wortdle, günlük kelime oyunu oyna. ",
-        "keywords": "Wortdle, ingilizce, bulmaca, kelime, oyun, oyun, çevrimiçi, tahmin "
+        "title": "Günlük kelime oyunu ",
+        "description": "6'daki gizli kelimeyi sanırım (veya daha az). Her gün yeni bir bulmaca mevcuttur! ",
+        "keywords": "İngilizce, bulmaca, kelime, oyun, oyun, çevrimiçi, her gün tahmin "
     },
     "text": {
         "subheader": "Türkçe",
@@ -16,9 +16,9 @@
         "notification-copied": "Panoya kopyalandı ",
         "notification-partial-word": "Lütfen tam bir kelime girin "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Nasıl oynanır ",

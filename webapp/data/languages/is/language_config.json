@@ -4,9 +4,9 @@
     "name_native": "Íslenska",
     "meta": {
         "locale": "is",
-        "title": "Wordle - Play Wordle, daglegt orðaleikur. ",
-        "description": "Spila Wordle, daglegt orðaleikur. ",
-        "keywords": "orðalag, enska, þraut, orð, leika, leikur, á netinu, giska á "
+        "title": "Daglegt orðaleikur ",
+        "description": "Giska á falinn orð í 6 tries (eða minna). Nýtt þraut er í boði á hverjum degi! ",
+        "keywords": "Enska, þraut, orð, leika, leikur, á netinu, giska á, daglega "
     },
     "text": {
         "subheader": "Íslenska",
@@ -16,9 +16,9 @@
         "notification-copied": "Afritað á klemmuspjald ",
         "notification-partial-word": "Vinsamlegast sláðu inn fullt orð "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Hvernig á að spila ",

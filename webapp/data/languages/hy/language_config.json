@@ -4,9 +4,9 @@
     "name_native": "Հայերեն",
     "meta": {
         "locale": "hy",
-        "title": "Wordle - Play Word- ի ամենօրյա խաղ. ",
-        "description": "Խաղացեք բառակապակցություն, ամենօրյա բառի խաղ: ",
-        "keywords": "Բառագնացություն, անգլերեն, հանելուկ, բառ, խաղ, խաղ, առցանց, գուշակություն "
+        "title": "Ամենօրյա բառի խաղ ",
+        "description": "Գուշակեք, որ թաքնված բառը 6-ում (կամ պակաս): Ամեն օր հասանելի է նոր հանելուկ: ",
+        "keywords": "Անգլերեն, Puzzle, Word, Play, Game, Առցանց, Գուշակություն, ամեն օր "
     },
     "text": {
         "subheader": "Հայերեն",
@@ -16,9 +16,9 @@
         "notification-copied": "Պատճենահանվել է clipboard- ին ",
         "notification-partial-word": "Խնդրում ենք մուտքագրել ամբողջական բառ "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Ինչպես խաղալ ",

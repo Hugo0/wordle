@@ -4,9 +4,9 @@
     "name_native": "Gaeilge",
     "meta": {
         "locale": "ga",
-        "title": "Wordle - imirt Wordle, an cluiche laethúil focal. ",
-        "description": "Seinn Wordle, an cluiche laethúil focal. ",
-        "keywords": "Wordle, Béarla, bhfreagra, focal, spraoi, cluiche, ar líne, buille faoi thuairim "
+        "title": "An cluiche laethúil focal ",
+        "description": "Buille faoi thuairim an focal i bhfolach i 6 iarracht (nó níos lú). Tá bhfreagra nua ar fáil gach lá! ",
+        "keywords": "Béarla, bhfreagra, focal, súgradh, cluiche, ar líne, buille faoi thuairim, gach lá "
     },
     "text": {
         "subheader": "Gaeilge",
@@ -16,9 +16,9 @@
         "notification-copied": "Cóipeáilte go dtí an ghearrthaisce ",
         "notification-partial-word": "Cuir isteach focal iomlán le do thoil "
     },
-    "keyboard": "",
     "language_code_3": "",
     "language_code_iso_639_3": "",
+    "keyboard": "",
     "right_to_left": "false",
     "help": {
         "title": "Conas a imirt ",
