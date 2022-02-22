@@ -1,0 +1,36 @@
+{
+    "language_code": "ko",
+    "name": "Korean",
+    "name_native": "한국어",
+    "meta": {
+        "locale": "ko",
+        "title": "horaled - 매일 단어 게임, 매일 든 든 게임. ",
+        "description": "매일 단어 게임, 곡물을 재생하십시오. ",
+        "keywords": "워리, 영어, 퍼즐, 단어, 재생, 게임, 온라인, 추측 "
+    },
+    "text": {
+        "subheader": "한국어",
+        "next_word": "다음 단어 ",
+        "no_attempts": "아직 어떤 단어를 시도하지 않았습니다! ",
+        "share": "공유하다 ",
+        "notification-copied": "클립 보드에 복사 ",
+        "notification-partial-word": "전체 단어를 입력하십시오 "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "게임 방법 ",
+        "title_2": "예 ",
+        "close": "이 메시지를 닫습니다 ",
+        "text_1_1_1": "추측하다 ",
+        "text_1_1_2": "6 시도 이내에 ",
+        "text_1_2": "각 추측은 유효한 5 글자 단어 여야합니다. Enter 버튼을 눌러 추측을 제출하십시오. ",
+        "text_1_3": "추측 한 후, 타일은 색상이 정확하거나 거의 정확한지를 나타내는 색상을 변경합니다. ",
+        "text_2_1": "단어에 있고 올바른 위치에 있습니다! ",
+        "text_2_2": "단어에 있지만 올바른 위치에 없습니다. ",
+        "text_2_3": "당신이 추측하려는 단어에는 존재하지 않습니다. ",
+        "text_3": "매일 새로운 단어를 사용할 수 있습니다! "
+    }
+}

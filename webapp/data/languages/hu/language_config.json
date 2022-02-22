@@ -1,0 +1,36 @@
+{
+    "language_code": "hu",
+    "name": "Hungarian",
+    "name_native": "magyar",
+    "meta": {
+        "locale": "hu",
+        "title": "Worle - Play Wormard, a Daily Word játék. ",
+        "description": "Play Wormard, a Daily Word játék. ",
+        "keywords": "bokja, angol, puzzle, szó, játék, játék, online, találgatás "
+    },
+    "text": {
+        "subheader": "magyar",
+        "next_word": "Következő szó ",
+        "no_attempts": "Még nem próbáltad meg a szót! ",
+        "share": "Részvény ",
+        "notification-copied": "A vágólapra másolt ",
+        "notification-partial-word": "Kérjük, adjon meg egy teljes szót "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Hogyan kell játszani ",
+        "title_2": "Példák ",
+        "close": "Zárja be ezt az üzenetet ",
+        "text_1_1_1": "Kitalál ",
+        "text_1_1_2": "hat vagy annál kevesebb próbálkozás. ",
+        "text_1_2": "Minden találgatásnak érvényes öt betűs szónak kell lennie. Nyomja meg az ENTER gombot a találgatás elküldéséhez. ",
+        "text_1_3": "Miután kitalálta, a csempe megváltoztatja a színt, hogy jelezze, hogy a szó helyes betűjei helyesek vagy szinte helyesek. ",
+        "text_2_1": "van a szóban és a helyes helyen! ",
+        "text_2_2": "a szóban van, de nem a megfelelő helyen. ",
+        "text_2_3": "nincs jelen a szóban, amit megpróbálsz kitalálni. ",
+        "text_3": "Minden nap új szó lesz elérhető! "
+    }
+}

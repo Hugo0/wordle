@@ -1,0 +1,36 @@
+{
+    "language_code": "pt",
+    "name": "Portuguese",
+    "name_native": "Português",
+    "meta": {
+        "locale": "pt",
+        "title": "Wordle - Jogue Wordle, o jogo de palavras diárias. ",
+        "description": "Jogue Wordle, o jogo Daily Word. ",
+        "keywords": "wordle, inglês, quebra-cabeça, palavra, jogar, jogo, online, adivinhar "
+    },
+    "text": {
+        "subheader": "Português",
+        "next_word": "Próxima palavra ",
+        "no_attempts": "Você ainda não experimentou nenhuma palavra! ",
+        "share": "Participação ",
+        "notification-copied": "Copiado para a área de transferência ",
+        "notification-partial-word": "Por favor, insira uma palavra completa "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Como jogar ",
+        "title_2": "Exemplos ",
+        "close": "Feche esta mensagem ",
+        "text_1_1_1": "Adivinhe o ",
+        "text_1_1_2": "em seis tentativas ou menos. ",
+        "text_1_2": "Cada palpite deve ser uma palavra válida de cinco letras. Pressione o botão ENTER para enviar seu palpite. ",
+        "text_1_3": "Depois de adivinhar, as telhas vão mudar de cor para indicar quais letras da sua palavra estão corretas ou quase corretas. ",
+        "text_2_1": "está na palavra e no local correto! ",
+        "text_2_2": "está na palavra, mas não no local correto. ",
+        "text_2_3": "não está presente na palavra que você está tentando adivinhar. ",
+        "text_3": "Uma nova palavra estará disponível todos os dias! "
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "language_code": "pl",
+    "name": "Polish",
+    "name_native": "język polski",
+    "meta": {
+        "locale": "pl",
+        "title": "Wordle - Graj wordle, codzienna gra słowna. ",
+        "description": "Graj w Wordle, codzienna gra słów. ",
+        "keywords": "Wordle, angielski, puzzle, słowo, gra, gra, online, zgadnij "
+    },
+    "text": {
+        "subheader": "język polski",
+        "next_word": "Następne słowo ",
+        "no_attempts": "Nie próbowałeś jeszcze żadnych słów! ",
+        "share": "Dzielić ",
+        "notification-copied": "Skopiowane do schowka ",
+        "notification-partial-word": "Wprowadź pełne słowo "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Jak grać ",
+        "title_2": "Przykłady. ",
+        "close": "Zamknij tę wiadomość ",
+        "text_1_1_1": "Zgadnij ",
+        "text_1_1_2": "w sześciu próbach lub mniej. ",
+        "text_1_2": "Każde zgadnięcie musi być ważnym pięciu literami. Naciśnij przycisk ENTER, aby wysłać domysł. ",
+        "text_1_3": "Po zgadliwości, płytki zmieni kolor, aby wskazać, które litery twojego słowa są poprawne lub prawie poprawne. ",
+        "text_2_1": "jest w słowie i we właściwej lokalizacji! ",
+        "text_2_2": "jest w słowie, ale nie we właściwej lokalizacji. ",
+        "text_2_3": "nie jest obecny w słowie, który próbujesz odgadnąć. ",
+        "text_3": "Nowe słowo będzie dostępne każdego dnia! "
+    }
+}

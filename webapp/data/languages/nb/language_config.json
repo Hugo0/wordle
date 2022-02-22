@@ -1,0 +1,36 @@
+{
+    "language_code": "nb",
+    "name": "Norwegian Bokmål",
+    "name_native": "Norsk Bokmål",
+    "meta": {
+        "locale": "nb",
+        "title": "Wordle - Spill Wordle, det daglige ordspillet. ",
+        "description": "Spill Wordle, det daglige ordspillet. ",
+        "keywords": "Wordle, engelsk, puslespill, ord, spill, spill, online, gjetning "
+    },
+    "text": {
+        "subheader": "Norsk Bokmål",
+        "next_word": "Neste ord ",
+        "no_attempts": "Du har ikke prøvd noen ord ennå! ",
+        "share": "Dele ",
+        "notification-copied": "Kopiert til utklippstavlen ",
+        "notification-partial-word": "Vennligst skriv inn et fullt ord "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Hvordan spille ",
+        "title_2": "Eksempler ",
+        "close": "Lukk denne meldingen ",
+        "text_1_1_1": "Gjett den ",
+        "text_1_1_2": "i seks forsøk eller mindre. ",
+        "text_1_2": "Hver gjetning må være et gyldig fem brevord. Trykk på ENTER-knappen for å sende inn gjetningen din. ",
+        "text_1_3": "Etter at du har gjettet, vil flisene endre farge for å indikere hvilke bokstaver i ditt ord som er korrekte eller nesten riktige. ",
+        "text_2_1": "er i ordet og på riktig sted! ",
+        "text_2_2": "er i ordet, men ikke på riktig sted. ",
+        "text_2_3": "er ikke tilstede i ordet du prøver å gjette. ",
+        "text_3": "Et nytt ord vil være tilgjengelig hver dag! "
+    }
+}

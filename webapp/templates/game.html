@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es" class="min-h-full">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+
+    <title>Wordle {{ language.config.name_native }}/{{ language.config.name }}</title>
+    <meta name="description" content="{{ language.config.meta.description }}">
+    <meta property="description" content="{{ language.config.meta.description }}">
+    <meta name="keywords" content="wordle, {{ language.config.meta.keywords }}">
+    <meta property="og:title" content="Wordle {{ language.config.name_native }}/{{ language.config.name }}">
+    <meta property="og:url" content="https://wordle.global/{{ language.config.language_code }}">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="{{ language.config.meta.description }}">
+    <meta property="twitter:domain" content="https://wordle.global">
+    <meta property="twitter:title" content="Wordle {{ language.config.name_native }}/{{ language.config.name }}">
+    <meta property="twitter:description" content="{{ language.config.meta.description }}">
+    <meta property="twitter:image" content="https://wordle.global/static/images/logo.png">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vue -->
+    <!-- <script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script> -->
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <!-- Should not load them by CDN, but frontend build process was a bother -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-273H1MLL3T');
+    </script>
+
+    <!-- load backend variables -->
+    <script>
+        const word_list = JSON.parse('{{language.word_list | tojson | safe}}');
+        const word_list_supplement = JSON.parse('{{language.word_list_supplement | tojson | safe}}');
+        console.log('\nFor the language: ' + '"{{language.config.name_native}}/{{language.config.name}}"' + ' there are:\n' + word_list.length + ' words in the word list\n' + word_list_supplement.length + ' words in the supplemental word list.');
+        const characters = JSON.parse('{{language.characters | tojson | safe}}');
+        const config = JSON.parse('{{language.config | tojson | safe}}');
+        console.log("Character Set: " + characters);
+        const todays_idx = "{{ language.todays_idx }}";
+        const todays_word = "{{ language.daily_word }}";
+        console.log("Today's word is: " + todays_word.toUpperCase() + "\nDon't cheat!");
+    </script>
+</head>
+
+<body class="min-h-full h-screen">
+    <div id="app" class="min-h-full h-full">
+        <div class="min-h-full h-full">
+            <div class="wrapper container mx-auto flex flex-col h-full w-full max-w-lg">
+                <!-- The Header -->
+                <header
+                    class="relative flex flex-row justify-between items-center h-[50px] my-auto p-1 px-3 lg:px-1 border-b border-neutral-300">
+                    <button class="z-40 text-neutral-500" aria-label="instructions"
+                        v-on:click="showHelpModal = !showHelpModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-neutral-500" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            <polyline points="11 12 12 12 12 16 13 16"></polyline>
+                        </svg>
+                    </button>
+                    <div class="absolute text-center right-0 left-0">
+                        <h1 class="uppercase font-bold text-2xl sm:text-4xl tracking-wider"><a href="/">Wordle <span
+                                    class="text-xl sm:text-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded px-1 py-0">
+                                    {{ language.config.language_code }}</span></a></h1>
+                        </h1>
+                    </div>
+                    <div class="flex flex-row gap-3 z-30">
+                        <button class="m-0 sm:my-1" v-on:click="show_stats_modal = !show_stats_modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neutral-500" width="24"
+                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <rect x="3" y="12" width="6" height="8" rx="1"></rect>
+                                <rect x="9" y="8" width="6" height="12" rx="1"></rect>
+                                <rect x="15" y="4" width="6" height="16" rx="1"></rect>
+                                <line x1="4" y1="20" x2="18" y2="20"></line>
+                            </svg>
+                        </button>
+                        <button class="m-0 sm:my-1" v-on:click="show_options_modal = !show_options_modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="text-neutral-500" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
+                                </path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </header>
+                <!-- The game board -->
+                <main class="flex flex-auto justify-center items-center">
+                    <div
+                        class="grid grid-rows-6 relative w-full h-full max-w-[350px] max-h-[420px] gap-1 p-3 box-border">
+                        {% for i in range(6) %}
+                        <div class="grid grid-cols-5 gap-1 w-full">
+                            {% for j in range(5) %}
+                            <div class="w-full h-full justify-center items-center inline-flex "
+                                v-html="[[ tiles_visual[{{i}}][{{j}}] ]]"
+                                v-bind:class="[[ tile_classes_visual[{{i}}][{{j}}] ]]">
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </main>
+                <!-- The keyboard -->
+                <div class="flex flex-col container mx-auto gap-2 w-full max-w-lg pb-2 md:pb-5 px-2">
+                    {% for row in language.keyboard %}
+                    <div class="flex gap-1">
+                        {% for c in row %}
+                        <button class="flex-1 rounded uppercase text-sm font-bold p-1 sm:p-2 h-14 key"
+                            data-char="{{ c }}" aria-label="{{ c }}" v-on:click="keyClick('{{ c }}')"
+                            v-bind:class="[[ key_classes['{{ c }}'] ]]">{{ c }}</button>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTIFICATIONS & MODALS-->
+        <div class="container mx-auto flex w-full max-w-lg justify-center items-center overflow z-1" v-cloak>
+            <div v-show="showHelpModal || show_stats_modal || show_options_modal"
+                class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black" v-cloak></div>
+
+            <!-- help modal -->
+            <!-- <div v-if="showHelpModal" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"></div> -->
+            <div id="HelpModal" v-show="showHelpModal"
+                class="fixed top-10 left-0 w-full h-full z-50 items-center flex mx-auto " v-cloak>
+                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-md sm:max-w-lg"
+                    v-cloak>
+                    <div class="flex flex-col gap-2 relative">
+
+                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span v-on:click="showHelpModal = !showHelpModal"
+                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        </button>
+                        <h1 class="flex mx-auto uppercase font-bold text-2xl tracking-wider">Wordle <span
+                                class="ml-1 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">{{
+                                language.config.name_native }}</span>
+                        </h1>
+
+                        <h1 class="font-bold text-lg">{{ language.config.help.title }}</h1>
+                        <!-- how to play -->
+                        <p class="text-sm">{{ language.config.help.text_1_1_1 }} <a
+                                class="font-bold uppercase">Wordle</a> {{ language.config.help.text_1_1_2 }}</p>
+                        <p class="text-sm">{{ language.config.help.text_1_2 }}</p>
+                        <p class="text-sm">{{ language.config.help.text_1_3 }}</p>
+
+                        <div class=border-t-2 border-gray-300></div>
+                        <div class="justify-center items-center flex flex-col gap-2">
+                            <h2 class="text-md font-semibold text-gray-900">{{ language.config.help.title_2 }}</h2>
+
+                            <div class="grid grid-cols-5 gap-1 w-full max-w-xs">
+                                {% for c in language.word_list[0] %}
+                                {% if loop.index == 1 %}
+                                <div
+                                    class="w-full h-full inline-flex justify-center items-center correct text-2xl tiny:text-4xl uppercase font-bold select-none text-white">
+                                    {{c}}</div>
+                                {% else %}
+                                <div
+                                    class="w-full h-full inline-flex aspect-square justify-center items-center text-2xl tiny:text-4xl uppercase font-bold select-none border-2 border-neutral-500">
+                                    {{c}}</div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <p class="text-sm mb-2"><span
+                                    class="font-bold uppercase">{{language.word_list[0][0]}}</span> {{
+                                language.config.help.text_2_1 }}</p>
+                            <!-- w-full h-full inline-flex justify-center items-center incorrect text-2xl tiny:text-4xl uppercase font-bold select-none text-white -->
+
+                            <div class="grid grid-cols-5 gap-1 w-full max-w-xs">
+                                {% for c in language.word_list[1] %}
+                                {% if loop.index == 3 %}
+                                <div
+                                    class="w-full h-full inline-flex justify-center items-center semicorrect text-2xl tiny:text-4xl uppercase font-bold select-none text-white">
+                                    {{c}}</div>
+                                {% else %}
+                                <div
+                                    class="w-full h-full inline-flex aspect-square justify-center items-center text-2xl tiny:text-4xl uppercase font-bold select-none border-2 border-neutral-500">
+                                    {{c}}</div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <p class="text-sm mb-2"><span
+                                    class="font-bold uppercase">{{language.word_list[1][2]}}</span> {{
+                                language.config.help.text_2_2 }}</p>
+
+                            <div class="grid grid-cols-5 gap-1 w-full max-w-xs">
+                                {% for c in language.word_list[2] %}
+                                {% if loop.index == 5 %}
+                                <div
+                                    class="w-full h-full inline-flex justify-center items-center incorrect text-2xl tiny:text-4xl uppercase font-bold select-none text-white">
+                                    {{c}}</div>
+                                {% else %}
+                                <div
+                                    class="w-full h-full inline-flex aspect-square justify-center items-center text-2xl tiny:text-4xl uppercase font-bold select-none border-2 border-neutral-500">
+                                    {{c}}</div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <p class="text-sm mb-2"><span
+                                    class="font-bold uppercase">{{language.word_list[2][4]}}</span> {{
+                                language.config.help.text_2_3 }}</p>
+                        </div>
+
+                        <div class=border-t-2 border-gray-300></div>
+
+                        <button class="uppercase font-bold text-sm tracking-wider"
+                            v-on:click="showHelpModal = !showHelpModal">{{ language.config.help.close }}
+                            <span class="text-lg text-neutral-400">×</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- options modal -->
+            <div v-show="show_options_modal" class="fixed top-10 left-0 w-full h-full z-30 items-center mx-auto flex
+            " v-cloak>
+                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-xs sm:max-w-md"
+                    v-cloak>
+                    <div class="flex flex-col gap-2 relative">
+                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span v-on:click="show_options_modal = !show_options_modal"
+                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        </button>
+                        <h1 class="uppercase font-bold text-xl tracking-wider mb-5">SETTINGS</h1>
+                        <div class=" space-y-4">
+                            <!-- toggle button for right_to_left -->
+                            <div class="flex flex-row">
+                                <p class="flex-grow">Right to left</p>
+                                <!-- toggle at the end -->
+                                <div class="flex flex-row items-center">
+                                    <label for="right_to_left" class="flex items-center ml-2 animate-bounce">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-neutral-500 mr-4" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M12 15v3.586a1 1 0 0 1 -1.707 .707l-6.586 -6.586a1 1 0 0 1 0 -1.414l6.586 -6.586a1 1 0 0 1 1.707 .707v3.586h3v6h-3z">
+                                            </path>
+                                            <path d="M21 15v-6"></path>
+                                            <path d="M18 15v-6"></path>
+                                        </svg>
+                                    </label>
+                                    <input type="checkbox" id="right_to_left" v-model="right_to_left" />
+                                </div>
+                                <div class="flex-row gap-2">
+                                    <button class="font-bold text-sm tracking-wider"
+                                        v-on:click="right_to_left = !right_to_left">[[ config.right_to_left_on
+                                        ]]</button>
+                                </div>
+                            </div>
+
+                            <div class=border-t-2 border-gray-300></div>
+                            <div class="flex">
+                                <p class="flex-grow">Source Code</p>
+                                <a href="https://www.github.com" class="underline text-neutral-500">github.com</a>
+                            </div>
+
+                            <div class=border-t-2 border-gray-300></div>
+                            <div class="flex">
+                                <p class="flex-grow">Feedback</p>
+                                <a href="https://www.github.com" class="underline text-neutral-500">github.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- stats modal -->
+        <div v-show="show_stats_modal" class="fixed top-10 left-0 w-full h-full z-50 items-center flex" v-cloak>
+            <div class="relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 rounded-xl" v-cloak>
+                <div
+                    class="border-0 rounded-lg drop-shadow-xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
+
+                    <div class="flex-initial relative mx-5 mt-5 z-50">
+                        <h3 class="flex-auto uppercase text-center text-xl font-bold">Wordle ({{
+                            language.config.language_code }})
+                            #[[ todays_idx ]] [[attempts]]/6
+                        </h3>
+                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span v-on:click="show_stats_modal = !show_stats_modal"
+                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        </button>
+                    </div>
+
+                    <div class="relative flex-auto mx-6 my-3 mb-8">
+                        <p class="text-md text-center whitespace-pre-line" id="emoji_board" v-html="emoji_board">
+                        </p>
+                        <p v-if="attempts=='0'" class="text-center text-sm text-gray-600">
+                            {{ language.config.text.no_attempts }}
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 py-3 px-6 sm:gap-10 border-t border-solid ">
+                        <div class="flex flex-col w-full sm:w-1/2 items-center sm:border-r">
+                            <p class="mt-2 uppercase font-semibold text-md whitespace-pre-line">{{
+                                language.config.text.next_word }}</p>
+                            <p class="m-2 text-3xl" v-html="this.time_until_next_day">
+                        </div>
+                        <!-- green share button -->
+                        <div class="flex flex-col w-full sm:w-1/2 items-center">
+                            <div class="flex flex-col items-center h-full w-full mx-auto p-1">
+                                <button
+                                    class="flex-auto w-full m-2 p-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-lg"
+                                    v-on:click="" id="copy_button">{{
+                                    language.config.text.share }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-center border-t border-solid px-10 py-5">
+                        <div class="flex flex-col text-center flex-grow">
+                            <p class="text-3xl text-center">[[stats.n_games]]</p>
+                            <p class="text-sm">Games</p>
+                        </div>
+                        <div class="flex flex-col text-center flex-grow">
+                            <p class="text-3xl" v-html="stats.win_percentage.toLocaleString('en') + '%'"></p>
+                            <p class="text-sm">Win %</p>
+                        </div>
+                        <div class="flex flex-col text-center flex-grow">
+                            <p class="text-3xl">[[stats.current_streak]]</p>
+                            <p class="text-sm">Current Streak</p>
+                        </div>
+                        <div class="flex flex-col text-center flex-grow">
+                            <p class="text-3xl">[[stats.longest_streak]]</p>
+                            <p class="text-sm">Best Streak</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- alert that floats slowly down from top and closes after 3 seconds -->
+        <div v-if="notification.show"
+            class="fixed top-0 inset-x-0 mx-auto z-50 max-w-xs justify-items-center text-center" v-cloak>
+            <div class="top-50 bg-black p-4 m-4 rounded-lg shadow-lg animate-pulse" v-cloak
+                v-bind:style="{'top': notification.top + 'px'}">
+                <p class="font-bold text-white">[[ notification.message ]]</p>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+
+</html>

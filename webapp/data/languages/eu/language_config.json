@@ -1,0 +1,36 @@
+{
+    "language_code": "eu",
+    "name": "Basque",
+    "name_native": "euskara",
+    "meta": {
+        "locale": "eu",
+        "title": "Wordle - Play Wordle, eguneroko hitz jokoa. ",
+        "description": "Play Wordle, eguneroko hitz jokoa. ",
+        "keywords": "Wordle, ingelesa, puzzlea, hitza, jolasa, jokoa, linean, asmatu "
+    },
+    "text": {
+        "subheader": "euskara",
+        "next_word": "Hurrengo hitza ",
+        "no_attempts": "Oraindik ez duzu hitzik probatu! ",
+        "share": "Zati ",
+        "notification-copied": "Arbelean kopiatuta ",
+        "notification-partial-word": "Mesedez, idatzi hitz osoa "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Nola jokatu ",
+        "title_2": "Adibide ",
+        "close": "Itxi mezu hau ",
+        "text_1_1_1": "Asmatu ",
+        "text_1_1_2": "sei saiakera edo gutxiagotan. ",
+        "text_1_2": "Asmakizun bakoitzak bost letra hitz baliozkoa izan behar du. Sakatu Sartu botoia zure asmakizuna bidaltzeko. ",
+        "text_1_3": "Asmatu ondoren, fitxak kolorea aldatuko da zure hitzen gutunak zuzenak edo ia zuzenak diren adierazteko. ",
+        "text_2_1": "hitza da eta kokapen egokian! ",
+        "text_2_2": "hitza da, baina ez kokapen egokian. ",
+        "text_2_3": "ez dago asmatzen saiatzen ari zaren hitzean. ",
+        "text_3": "Hitz berri bat erabilgarri egongo da egunero! "
+    }
+}

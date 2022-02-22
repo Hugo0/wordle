@@ -1,0 +1,36 @@
+{
+    "language_code": "ca",
+    "name": "Catalan",
+    "name_native": "català",
+    "meta": {
+        "locale": "ca",
+        "title": "Wordle - Play Wordle, el joc de paraules diàries. ",
+        "description": "Juga Wordle, el joc de paraules diàries. ",
+        "keywords": "Wordle, anglès, trencaclosques, paraula, joc, joc, en línia, suposo "
+    },
+    "text": {
+        "subheader": "català",
+        "next_word": "Paraula següent ",
+        "no_attempts": "Encara no has provat cap paraula! ",
+        "share": "Compartir ",
+        "notification-copied": "Copiat al porta-retalls ",
+        "notification-partial-word": "Introduïu una paraula completa "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Com jugar ",
+        "title_2": "Exemples ",
+        "close": "Tanqueu aquest missatge ",
+        "text_1_1_1": "Endevinar el ",
+        "text_1_1_2": "en sis intents o menys. ",
+        "text_1_2": "Cada conjectura ha de ser una paraula vàlida de cinc lletres. Premeu el botó Enter per enviar la vostra conjectura. ",
+        "text_1_3": "Després de suposar, les rajoles canviaran de color per indicar quines lletres de la vostra paraula són correctes o gairebé correctes. ",
+        "text_2_1": "està a la paraula i en la ubicació correcta! ",
+        "text_2_2": "està a la paraula, però no a la ubicació correcta. ",
+        "text_2_3": "no està present a la paraula que esteu intentant endevinar. ",
+        "text_3": "Cada dia estarà disponible una nova paraula. "
+    }
+}

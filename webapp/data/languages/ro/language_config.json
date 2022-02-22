@@ -1,0 +1,36 @@
+{
+    "language_code": "ro",
+    "name": "Romanian",
+    "name_native": "Română",
+    "meta": {
+        "locale": "ro",
+        "title": "Wordle - Joaca Wordle, jocul Daily Word. ",
+        "description": "Joaca Wordle, jocul Daily Word. ",
+        "keywords": "wordle, engleză, puzzle, cuvânt, joacă, joc, online, ghici "
+    },
+    "text": {
+        "subheader": "Română",
+        "next_word": "Cuvântul următor. ",
+        "no_attempts": "Nu ați încercat încă niciun cuvânt! ",
+        "share": "Acțiune ",
+        "notification-copied": "Copiat în clipboard. ",
+        "notification-partial-word": "Introduceți un cuvânt complet "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Cum se joacă ",
+        "title_2": "Exemple ",
+        "close": "Închideți acest mesaj ",
+        "text_1_1_1": "Ghiciți-vă. ",
+        "text_1_1_2": "în șase încearcă sau mai puțin. ",
+        "text_1_2": "Fiecare ghicit trebuie să fie un cuvânt valabil de cinci litere. Apăsați butonul ENTER pentru a trimite ghicitul dvs. ",
+        "text_1_3": "După ce ghiciți, plăcile vor schimba culoarea pentru a indica ce litere ale cuvântului dvs. sunt corecte sau aproape corecte. ",
+        "text_2_1": "este în cuvânt și în locația corectă! ",
+        "text_2_2": "este în cuvânt, dar nu în locația corectă. ",
+        "text_2_3": "nu este prezent în cuvântul pe care încercați să îl ghiciți. ",
+        "text_3": "Un nou cuvânt va fi disponibil în fiecare zi! "
+    }
+}

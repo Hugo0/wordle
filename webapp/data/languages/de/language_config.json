@@ -1,0 +1,36 @@
+{
+    "language_code": "de",
+    "name": "German",
+    "name_native": "Deutsch",
+    "meta": {
+        "locale": "de",
+        "title": "Worde - Spielen Sie Wordle, das tägliche Wortspiel. ",
+        "description": "Spielen Sie Worde, das tägliche Wortspiel. ",
+        "keywords": "worden, englisch, puzzle, wort, spielen, spiel, online, raten "
+    },
+    "text": {
+        "subheader": "Deutsch",
+        "next_word": "Nächstes Wort ",
+        "no_attempts": "Sie haben noch keine Worte ausprobiert! ",
+        "share": "Teilen ",
+        "notification-copied": "In die Zwischenablage kopiert ",
+        "notification-partial-word": "Bitte geben Sie ein vollständiges Wort ein "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Spielanleitung ",
+        "title_2": "Beispiele ",
+        "close": "Diese Nachricht schließen ",
+        "text_1_1_1": "Vermutung das ",
+        "text_1_1_2": "in sechs Versuchen oder weniger. ",
+        "text_1_2": "Jede Vermutung muss ein gültiges Wort mit fünf Buchstaben sein. Drücken Sie die ENTER-Taste, um Ihre Vermutung einzureichen. ",
+        "text_1_3": "Nachdem Sie es erraten, ändern die Fliesen Farbe, um anzuzeigen, welche Buchstaben Ihres Wortes korrekt oder fast korrekt sind. ",
+        "text_2_1": "ist im Wort und am richtigen Ort! ",
+        "text_2_2": "ist im Wort, aber nicht an der richtigen Stelle. ",
+        "text_2_3": "ist nicht in dem Wort vorhanden, das Sie versuchen, zu erraten. ",
+        "text_3": "Ein neues Wort wird täglich verfügbar sein! "
+    }
+}

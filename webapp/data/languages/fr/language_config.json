@@ -1,0 +1,36 @@
+{
+    "language_code": "fr",
+    "name": "French",
+    "name_native": "français",
+    "meta": {
+        "locale": "fr",
+        "title": "Sobe - Play Sobdle, le jeu de mots quotidien. ",
+        "description": "Play Sobdle, le jeu de mots quotidien. ",
+        "keywords": "wordle, anglais, puzzle, mot, jouer, jeu, en ligne, devinez "
+    },
+    "text": {
+        "subheader": "français",
+        "next_word": "Mot suivant ",
+        "no_attempts": "Vous n'avez pas encore essayé de mots! ",
+        "share": "Partager ",
+        "notification-copied": "Copié dans le presse-papier ",
+        "notification-partial-word": "S'il vous plaît entrer un mot complet "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Comment jouer ",
+        "title_2": "Exemples ",
+        "close": "Fermez ce message ",
+        "text_1_1_1": "Deviner la ",
+        "text_1_1_2": "dans six essais ou moins. ",
+        "text_1_2": "Chaque devinette doit être un mot de cinq lettres valide. Appuyez sur le bouton ENTER pour soumettre votre devin. ",
+        "text_1_3": "Une fois que vous devinez, les tuiles changeront de couleur pour indiquer quelles lettres de votre mot sont correctes ou presque correctes. ",
+        "text_2_1": "est dans le mot et dans le bon endroit! ",
+        "text_2_2": "est dans le mot, mais pas dans le bon endroit. ",
+        "text_2_3": "n'est pas présent dans le mot que vous essayez de deviner. ",
+        "text_3": "Un nouveau mot sera disponible chaque jour! "
+    }
+}

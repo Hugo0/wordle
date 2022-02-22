@@ -1,0 +1,36 @@
+{
+    "language_code": "is",
+    "name": "Icelandic",
+    "name_native": "Íslenska",
+    "meta": {
+        "locale": "is",
+        "title": "Wordle - Play Wordle, daglegt orðaleikur. ",
+        "description": "Spila Wordle, daglegt orðaleikur. ",
+        "keywords": "orðalag, enska, þraut, orð, leika, leikur, á netinu, giska á "
+    },
+    "text": {
+        "subheader": "Íslenska",
+        "next_word": "Næsta orð ",
+        "no_attempts": "Þú hefur ekki reynt nein orð ennþá! ",
+        "share": "1. ",
+        "notification-copied": "Afritað á klemmuspjald ",
+        "notification-partial-word": "Vinsamlegast sláðu inn fullt orð "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Hvernig á að spila ",
+        "title_2": "Dæmi um ",
+        "close": "Lokaðu þessum skilaboðum ",
+        "text_1_1_1": "Giska á það ",
+        "text_1_1_2": "í sex tilraunir eða minna. ",
+        "text_1_2": "Hver giska verður að vera gilt fimm bréf orð. Ýttu á Enter hnappinn til að leggja fram giska þína. ",
+        "text_1_3": "Eftir að þú hefur giska á mun flísarnir breyta lit til að gefa til kynna hvaða bréf sem orðið eru réttar eða næstum réttar. ",
+        "text_2_1": "er í orði og á réttum stað! ",
+        "text_2_2": "er í orði, en ekki á réttum stað. ",
+        "text_2_3": "er ekki til staðar í orði sem þú ert að reyna að giska á. ",
+        "text_3": "Nýtt orð verður í boði á hverjum degi! "
+    }
+}

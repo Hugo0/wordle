@@ -1,0 +1,36 @@
+{
+    "language_code": "nn",
+    "name": "Norwegian Nynorsk",
+    "name_native": "Norsk Nynorsk",
+    "meta": {
+        "locale": "nn",
+        "title": "Wordle - Play Wordle, the daily word game. ",
+        "description": "Play Wordle, the daily word game. ",
+        "keywords": "wordle, english, puzzle, word, play, game, online, guess "
+    },
+    "text": {
+        "subheader": "Norsk Nynorsk",
+        "next_word": "Next word ",
+        "no_attempts": "You haven't tried any words yet! ",
+        "share": "Share ",
+        "notification-copied": "Copied to clipboard ",
+        "notification-partial-word": "Please enter a full word "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "How to Play",
+        "title_2": "Examples",
+        "close": "Close this message",
+        "text_1_1_1": "Guess the",
+        "text_1_1_2": "in six tries or less.",
+        "text_1_2": "Each guess must be a valid five letter word. Press the enter button to submit your guess.",
+        "text_1_3": "After you guess, the tiles will change color to indicate which letters of your word are correct or almost correct.",
+        "text_2_1": "is in the word and in the correct location!",
+        "text_2_2": "is in the word, but not in the correct location.",
+        "text_2_3": "is not present in the word you are trying to guess.",
+        "text_3": "A new word will be available each day!"
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "language_code": "gl",
+    "name": "Galician",
+    "name_native": "Galego",
+    "meta": {
+        "locale": "gl",
+        "title": "Wordle - Xogar Wordle, The Daily Word Game. ",
+        "description": "Xoga Wordle, The Daily Word Game. ",
+        "keywords": "Wordle, Inglés, Puzzle, Word, Play, Game, Online, Guess "
+    },
+    "text": {
+        "subheader": "Galego",
+        "next_word": "Seguinte palabra. ",
+        "no_attempts": "Aínda non probaches ningunha palabra! ",
+        "share": "Compartir ",
+        "notification-copied": "Copiado ao portapapeis ",
+        "notification-partial-word": "Introduza unha palabra completa "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Como xogar ",
+        "title_2": "Exemplos ",
+        "close": "Pecha esta mensaxe ",
+        "text_1_1_1": "Adiviña o ",
+        "text_1_1_2": "en seis intentos ou menos. ",
+        "text_1_2": "Cada suposición debe ser unha palabra de cinco letras válida. Prema o botón Intro para enviar a súa suposición. ",
+        "text_1_3": "Despois de adiviñar, as pezas cambiarán a cor para indicar que letras da súa palabra son correctas ou case correctas. ",
+        "text_2_1": "está na palabra e na localización correcta! ",
+        "text_2_2": "está na palabra, pero non na localización correcta. ",
+        "text_2_3": "non está presente na palabra que estás a adiviñar. ",
+        "text_3": "Unha nova palabra estará dispoñible cada día! "
+    }
+}

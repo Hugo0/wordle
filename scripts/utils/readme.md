@@ -1,0 +1,1 @@
+thx <3 https://github.com/lushan88a/google_trans_new

@@ -1,0 +1,36 @@
+{
+    "language_code": "et",
+    "name": "Estonian",
+    "name_native": "eesti",
+    "meta": {
+        "locale": "et",
+        "title": "MORDLE - Mängi WORDGE, igapäevane sõna mäng. ",
+        "description": "Mängi Wordle, igapäevane sõna mäng. ",
+        "keywords": "müüvad, inglise, puzzle, sõna, mängimine, mäng, võrgus, arvan "
+    },
+    "text": {
+        "subheader": "eesti",
+        "next_word": "Järgmine sõna ",
+        "no_attempts": "Sa pole veel ühtegi sõna proovinud! ",
+        "share": "Jagama ",
+        "notification-copied": "Kopeeritud lõikepuhvrisse ",
+        "notification-partial-word": "Palun sisestage täielik sõna "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Kuidas mängida ",
+        "title_2": "Näited ",
+        "close": "Sulge see sõnum ",
+        "text_1_1_1": "Arva ",
+        "text_1_1_2": "kuus püüab või vähem. ",
+        "text_1_2": "Iga vist peab olema kehtiv viis kirja sõna. Vajutage ENTER nuppu, et esitada oma vist. ",
+        "text_1_3": "Pärast arvata, plaadid muudavad värvi, et näidata, millised teie sõna tähed on õiged või peaaegu õiged. ",
+        "text_2_1": "on sõna ja õiges kohas! ",
+        "text_2_2": "on sõna, kuid mitte õiges kohas. ",
+        "text_2_3": "ei ole sõna sõna, mida sa üritad ära arvata. ",
+        "text_3": "Uus sõna on iga päev kättesaadav! "
+    }
+}

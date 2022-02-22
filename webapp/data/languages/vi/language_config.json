@@ -1,0 +1,36 @@
+{
+    "language_code": "vi",
+    "name": "Vietnamese",
+    "name_native": "Tiếng Việt",
+    "meta": {
+        "locale": "vi",
+        "title": "Wordle - Chơi Warddle, trò chơi Word hàng ngày. ",
+        "description": "Chơi Wardled, trò chơi Word hàng ngày. ",
+        "keywords": "Wordle, tiếng Anh, câu đố, từ, chơi, trò chơi, trực tuyến, đoán "
+    },
+    "text": {
+        "subheader": "Tiếng Việt",
+        "next_word": "Từ tiếp theo ",
+        "no_attempts": "Bạn chưa thử bất kỳ từ nào! ",
+        "share": "Đăng lại ",
+        "notification-copied": "Sao chép vào clipboard ",
+        "notification-partial-word": "Vui lòng nhập một từ đầy đủ "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Cách chơi ",
+        "title_2": "Ví dụ ",
+        "close": "Đóng tin nhắn này ",
+        "text_1_1_1": "Đoán xem ",
+        "text_1_1_2": "trong sáu lần thử hoặc ít hơn. ",
+        "text_1_2": "Mỗi đoán phải là một từ năm chữ cái hợp lệ. Nhấn nút ENTER để gửi dự đoán của bạn. ",
+        "text_1_3": "Sau khi bạn đoán, các ô sẽ thay đổi màu sắc để cho biết chữ cái nào của từ của bạn là chính xác hoặc gần như đúng. ",
+        "text_2_1": "là trong từ và ở vị trí chính xác! ",
+        "text_2_2": "là trong từ, nhưng không phải ở vị trí chính xác. ",
+        "text_2_3": "không có mặt trong từ bạn đang cố đoán. ",
+        "text_3": "Một từ mới sẽ có sẵn mỗi ngày! "
+    }
+}

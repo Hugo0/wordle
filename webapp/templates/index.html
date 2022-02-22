@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+
+
+
+    <title>Wordle Global - {{ languages | length }} languages available</title>
+    <meta name="description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
+    <meta property="description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
+    <meta name="keywords" content="wordle, english, puzzle, word, play, game, online, guess, daily">
+    <meta property="og:title" content="Wordle Global - {{ languages | length }} languages available">
+    <meta property="og:url" content="https://wordle.global/">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
+    <meta property="twitter:domain" content="https://wordle.global">
+    <meta property="twitter:title" content="Wordle Global - {{ languages | length }} languages available">
+    <meta property="twitter:description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
+    <meta property="twitter:image" content="https://wordle.global/static/images/logo.png">
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <!-- <script src="https://unpkg.com/vue@3.2.31/dist/vue.cjs.prod.js"></script> -->
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-273H1MLL3T');
+    </script>
+    <script>
+        function isoCountryCodeToFlagEmoji(country) { // unfortunately this magic trick doesn't work :(
+            return String.fromCodePoint(...[...country.toUpperCase()].map(c => c.charCodeAt() + 0x1F1A5));
+        }
+        var language_codes = JSON.parse('{{language_codes | tojson | safe}}');
+        var languages = JSON.parse('{{languages | tojson | safe}}');
+        var todays_idx = "{{todays_idx}}";
+        var other_wordles = JSON.parse('{{other_wordles | tojson | safe}}');
+    </script>
+</head>
+
+<body id="body" class="h-full">
+    <div id="app" class="pb-12">
+
+        <!-- The Header -->
+        <header
+            class="relative flex flex-row justify-between items-center p-1 px-3 lg:px-1 h-[50px] my-auto border-b border-neutral-300 max-w-screen-sm mx-auto">
+            <button class="z-30 text-neutral-500" v-on:click="showAboutModal = !showAboutModal" aria-label="about">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    <polyline points="11 12 12 12 12 16 13 16"></polyline>
+                </svg>
+            </button>
+            <div class="absolute right-0 left-0 text-center">
+                <h1 class="uppercase font-bold text-xl tiny:text-3xl sm:text-4xl tracking-wider"><a href="/">WORDLE
+                        🌍</a></h1>
+                </h1>
+            </div>
+            <div class="flex flex-row gap-3 z-30">
+                <button class="m-0 sm:my-1" v-on:click="showStatsModal = !showStatsModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neutral-500" width="24" height="24"
+                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <rect x="3" y="12" width="6" height="8" rx="1"></rect>
+                        <rect x="9" y="8" width="6" height="12" rx="1"></rect>
+                        <rect x="15" y="4" width="6" height="16" rx="1"></rect>
+                        <line x1="4" y1="20" x2="18" y2="20"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- language search box -->
+        <div class="flex justify-center mt-12">
+            <div
+                class="flex flex-col break-words bg-white border border-2 rounded shadow-md mx-4 w-full max-w-xs md:max-w-sm  lg:max-w-md">
+                <input v-model="search_text"
+                    class="shadow appearance-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:shadow-xl"
+                    type="text" placeholder="Search language...">
+            </div>
+        </div>
+
+        <!-- tailwind grid of language cards that fill max space -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 mt-16 w-2/3 mx-auto">
+            <!-- card for each language -->
+            <button v-for="language in languages_vis" class="col-span-1 hover:bg-neutral-200 rounded-lg shadow-lg"
+                v-on:click='selectLanguageWithCode(language.language_code)'>
+                <div class="shadow-lg h-full border-2 border-neutral-300 rounded-lg hover:shadow-2xl hover:font-bold">
+                    <div class="px-5 py-4">
+                        <h5 class=""> [[ language.language_name_native ]] </h5>
+                        <p class="text-sm italic">[[ language.language_name ]]</p>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+
+        <!-- separator -->
+        <div class="w-full mt-16 mx-auto text-center">
+            <hr class="border-b-1 border-gray-400 w-1/2 mx-auto">
+            <h1 class="text-2xl text-neutral-500 mt-4">
+                External Links
+            </h1>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 mt-16 w-2/3 mx-auto">
+            <!-- vue for each item in other_wordles make a button that leads to item.url when clicked -->
+            <button v-for="other_wordle in other_wordles_vis"
+                class="col-span-1 hover:bg-neutral-200 rounded-lg shadow-lg" v-on:click="openLink(other_wordle.url)">
+                <div class="shadow-lg h-full border-2 border-neutral-300 rounded-lg hover:shadow-2xl hover:font-bold">
+                    <div class="px-5 py-4">
+                        <h5 class="">[[ other_wordle.name ]]</h5>
+                        <p class="text-sm italic">[[ other_wordle.language ]]</p>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+
+        <!-- NOTIFICATIONS & MODALS-->
+        <div class="container mx-auto flex w-full max-w-lg justify-center items-center overflow-auto z-1" v-cloak>
+            <div v-show="showAboutModal || showStatsModal"
+                class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black" v-cloak></div>
+
+            <!-- About modal -->
+            <div v-show="showAboutModal" class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
+                v-cloak>
+                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-xs sm:max-w-lg"
+                    v-cloak>
+                    <div class="flex flex-col gap-2 relative ">
+                        <h1 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">About</h1>
+                        <p class="text-center text-sm">Hi! You probably know about Wordle already. It's a <span
+                                class="italic">really</span> fun game.</p>
+                        <p class="text-center text-sm">My skills are mostly in backend/data science, with lacking
+                            frontend experience. I wanted to change that, so why not recreate one of my favorite
+                            current
+                            games? The aim was to make something useful whilst also getting comfortable with TailwindCSS & Vue.js</p>
+                        <p class="text-center text-sm">The whole thing is open-source, and you can (and actually,
+                            please
+                            do) suggest improvements or fixes over at <a href="https://www.Github.com"
+                                class="text-neutral-500 underline">Github.com</a></p>
+                        <p class="text-center text-sm">There's fun languages, like Klingon or
+                            Tolkien that you can measure yourself on, as well as right to left languages like Arabic or
+                            Hebrew.</p>
+                        <p class="text-center text-sm">A lot of other great Wordle spin-offs exist, and I've linked the
+                            ones I know of below for easy access.</p>
+                        <p class="text-center text-sm">Have fun, and I hope you enjoy!</p>
+                        <button
+                            class="uppercase font-bold text-sm tracking-wider mt-2 border-t-2 border-gray-300 mt-2 pt-2"
+                            v-on:click="showAboutModal = !showAboutModal">close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div v-show="showStatsModal" class="fixed top-10 left-0 w-full h-full z-50 items-center" v-cloak>
+                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-md sm:max-w-lg"
+                    v-cloak>
+                    <div class="flex flex-col gap-2 relative">
+                        <h1 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">Stats</h1>
+                        <div class="flex flex-row">
+                            <div class="flex-grow">Total Games:</div>
+                            <div class="font-bold">[[total_stats.total_games]]</div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex-grow">Games Won:</div>
+                            <div class="font-bold">[[total_stats.n_victories]]</div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex-grow">Games Lost:</div>
+                            <div class="font-bold">[[total_stats.n_losses]]</div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex-grow">Overall Win Percentage:</div>
+                            <div class="font-bold" v-html="total_stats.total_win_percentage.toLocaleString('en') + '%'"></div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex-grow">Best Overall Streak:</div>
+                            <div class="font-bold">[[total_stats.longest_overall_streak]]</div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex-grow">Current Overall Streak:</div>
+                            <div class="font-bold"><span class="mr-1"
+                                    v-if="total_stats.current_overall_streak > 0">🔥</span>[[total_stats.current_overall_streak]]
+                            </div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex-grow">Best single language Streak:</div>
+                            <div class="font-bold">[[total_stats.longest_language_streak]]</div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex flex-col flex-grow">
+                                <div class="">Best current Streak:</div>
+                                <div v-if="total_stats.current_longest_language_streak_language !=''"
+                                    class="text-transparent text-sm bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 font-bold">
+                                    [[languages[total_stats.current_longest_language_streak_language].language_name_native]]</div>
+                            </div>
+                            <div class="font-bold"><span v-if="total_stats.current_longest_language_streak > 0">🔥
+                                </span>[[total_stats.current_longest_language_streak]]</div>
+                        </div>
+                        <div class="flex flex-row mt-4">
+                            <div class="flex-grow uppercase tracking-wider font-bold">Languages Conquered:</div>
+                        </div>
+                        <div v-if="total_stats.languages_won.length == 0" class="text-sm">you haven't beaten any languages yet...</div>
+
+                        <div class="grid grid-cols-2 w-full place-items-center">
+                            <div v-for="(language) in total_stats.languages_won"
+                                class="text-center py-2 px-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 font-bold">
+                                [[languages[language].language_name_native]]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Popup for if a language is unavailable -->
+        <div id="popup" v-if="showPopup" class="fixed top-0 left-0 w-full h-full z-50" v-cloak>
+            <div class="flex items-center justify-center w-full h-full">
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <div class="flex flex-col items-center">
+                        <h1 class="text-2xl font-bold text-center">👷🚧</h1>
+                        <br>
+                        <p class="text-center">[[clickedLanguage]] &nbsp; is coming soon!</p>
+                        <button class="mt-4" v-on:click="showPopup = false">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- shadow -->
+        <div v-if="showPopup" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"></div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+
+
+</html>

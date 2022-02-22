@@ -1,0 +1,30 @@
+{
+    "name": "",
+    "name_native": "",
+    "language_code": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "keyboard": "",
+    "right_to_left": "false",
+    "meta": {
+        "title": "Wordle - Play Wordle, the daily word game.",
+        "description": "Play Wordle, the daily word game.",
+        "keywords": "wordle, puzzle, word, play, game, online, guess",
+        "locale": "en"
+    },
+    "text": {
+        "subheader": "",
+        "next_word": "Next word",
+        "no_attempts": "You haven't tried any words yet!",
+        "share": "Share",
+        "notification-copied": "Copied to clipboard",
+        "notification-word-not-valid": "Word is not valid",
+        "notification-partial-word": "Please enter a full word"
+    },
+    "help": {
+        "title": "Help",
+        "close": "Close",
+        "text": "Wordle is a word guessing game. You have six tries to guess correctly :)",
+        "text_2": "Guess the daily WORDLE in 6 tries. Each guess must be a valid 5 letter word. After you submit your word, the color of the tiles will change to show you which letters are correct, somewhat correct or completely wrong."
+    }
+}

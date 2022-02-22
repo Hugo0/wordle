@@ -1,0 +1,36 @@
+{
+    "language_code": "sv",
+    "name": "Swedish",
+    "name_native": "Svenska",
+    "meta": {
+        "locale": "sv",
+        "title": "Wordle - lekbord, det dagliga ordet spelet. ",
+        "description": "Spela Wordle, det dagliga ordet spelet. ",
+        "keywords": "wassha, engelska, pussel, ord, lek, spel, online, gissa "
+    },
+    "text": {
+        "subheader": "Svenska",
+        "next_word": "Nästa ord ",
+        "no_attempts": "Du har inte försökt några ord än! ",
+        "share": "Dela med sig ",
+        "notification-copied": "Kopieras till urklipp ",
+        "notification-partial-word": "Vänligen ange ett helt ord "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Hur man spelar ",
+        "title_2": "Exemplar ",
+        "close": "Stäng det här meddelandet ",
+        "text_1_1_1": "Gissa ",
+        "text_1_1_2": "i sex försök eller mindre. ",
+        "text_1_2": "Varje gissning måste vara ett giltigt fem bokstavsord. Tryck på ENTER-knappen för att skicka in din gissning. ",
+        "text_1_3": "När du har gissat, kommer plattorna att ändra färg för att ange vilka bokstäver av ditt ord som är korrekta eller nästan korrekta. ",
+        "text_2_1": "är i ordet och på rätt plats! ",
+        "text_2_2": "är i ordet, men inte på rätt plats. ",
+        "text_2_3": "är inte närvarande i det ord du försöker gissa. ",
+        "text_3": "Ett nytt ord kommer att finnas tillgängligt varje dag! "
+    }
+}

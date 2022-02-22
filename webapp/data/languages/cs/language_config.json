@@ -1,0 +1,36 @@
+{
+    "language_code": "cs",
+    "name": "Czech",
+    "name_native": "čeština",
+    "meta": {
+        "locale": "cs",
+        "title": "Wordle - Play Wordle, denní slovo. ",
+        "description": "Hrát Wordle, denní slovo. ",
+        "keywords": "wordle, angličtina, puzzle, slovo, hra, hra, online, hádat "
+    },
+    "text": {
+        "subheader": "čeština",
+        "next_word": "Další slovo ",
+        "no_attempts": "Ještě jste nezkoušeli žádná slova! ",
+        "share": "Podíl ",
+        "notification-copied": "Zkopírován do schránky ",
+        "notification-partial-word": "Zadejte prosím úplné slovo "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Jak hrát ",
+        "title_2": "Příklady ",
+        "close": "Zavřete tuto zprávu ",
+        "text_1_1_1": "Odhadnout ",
+        "text_1_1_2": "v šesti pokusech nebo méně. ",
+        "text_1_2": "Každý odhad musí být platným pěti písmenem. Stisknutím tlačítka ENTER odeslejte odhad. ",
+        "text_1_3": "Poté, co odhadnete, dlaždice změní barvu, která označuje, která písmena vašeho slova jsou správná nebo téměř správná. ",
+        "text_2_1": "je ve slově a ve správném místě! ",
+        "text_2_2": "je ve slově, ale ne ve správném místě. ",
+        "text_2_3": "není přítomen ve slově, který se snaží myslet. ",
+        "text_3": "Každý den bude k dispozici nové slovo! "
+    }
+}

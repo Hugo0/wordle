@@ -1,0 +1,36 @@
+{
+    "language_code": "es",
+    "name": "Spanish",
+    "name_native": "Español",
+    "meta": {
+        "locale": "es",
+        "title": "WORDLE - Play Wordle, el juego de palabras diarias. ",
+        "description": "Juega Worldle, el juego diario de palabras. ",
+        "keywords": "wordle, inglés, rompecabezas, palabra, juego, juego, en línea, supongo "
+    },
+    "text": {
+        "subheader": "Español",
+        "next_word": "Palabra siguiente ",
+        "no_attempts": "¡No has probado ninguna palabra todavía! ",
+        "share": "Cuota ",
+        "notification-copied": "Copiado al portapapeles ",
+        "notification-partial-word": "Por favor ingrese una palabra completa "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Cómo jugar ",
+        "title_2": "Ejemplos ",
+        "close": "Cierra este mensaje ",
+        "text_1_1_1": "Adivina la ",
+        "text_1_1_2": "en seis intentos o menos. ",
+        "text_1_2": "Cada conjetura debe ser una palabra válida de cinco letras. Presione el botón ENTER para enviar su conjetura. ",
+        "text_1_3": "Después de adivinar, los azulejos cambiarán de color para indicar qué letras de su palabra son correctas o casi correctas. ",
+        "text_2_1": "está en la palabra y en la ubicación correcta! ",
+        "text_2_2": "está en la palabra, pero no en la ubicación correcta. ",
+        "text_2_3": "no está presente en la palabra que está tratando de adivinar. ",
+        "text_3": "¡Una nueva palabra estará disponible cada día! "
+    }
+}

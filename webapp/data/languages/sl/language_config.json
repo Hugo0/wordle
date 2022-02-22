@@ -1,0 +1,36 @@
+{
+    "language_code": "sl",
+    "name": "Slovenian",
+    "name_native": "Slovenski jezik",
+    "meta": {
+        "locale": "sl",
+        "title": "Wordle - Play Wordle, dnevna beseda. ",
+        "description": "Play Wordle, dnevna beseda. ",
+        "keywords": "Wordle, angleščina, uganka, beseda, igra, igra, na spletu, ugani "
+    },
+    "text": {
+        "subheader": "Slovenski jezik",
+        "next_word": "Naslednja beseda ",
+        "no_attempts": "Še niste poskusili nobenih besed! ",
+        "share": "Deliti ",
+        "notification-copied": "Kopirano v odložišče ",
+        "notification-partial-word": "Vnesite polno besedo "
+    },
+    "keyboard": "",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Kako igrati ",
+        "title_2": "Primeri ",
+        "close": "Zapri to sporočilo ",
+        "text_1_1_1": "Ugani ",
+        "text_1_1_2": "v šestih poskusih ali manj. ",
+        "text_1_2": "Vsaka uganka mora biti veljavna beseda pet črk. Pritisnite gumb ENTER, da pošljete ugibanje. ",
+        "text_1_3": "Ko boste uganili, bodo ploščice spremenile barvo, ki označujejo, katere črke vaše besede so pravilne ali skoraj pravilne. ",
+        "text_2_1": "je v besedi in na pravi lokaciji! ",
+        "text_2_2": "je v besedi, vendar ne na pravi lokaciji. ",
+        "text_2_3": "ni prisotna v besedi, ki jo poskušate uganiti. ",
+        "text_3": "Vsak dan bo na voljo nova beseda! "
+    }
+}
