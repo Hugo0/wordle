@@ -10,13 +10,15 @@ app = Flask(__name__)
 ###############################################################################
 # DATA
 ###############################################################################
+print("Loading data...")
 
 data_dir = "data/"
-# if 'data/' not in glob.glob('*'):
-if not glob.glob(data_dir):
-    data_dir = "../data/"
-if not glob.glob(data_dir):
-    data_dir = "webapp/data/"
+# if not glob.glob(data_dir):
+#     data_dir = "../data/"
+# if not glob.glob(data_dir):
+#     data_dir = "webapp/data/"
+# print(f"data_dir: {data_dir}")
+
 
 # load languages.json file
 with open(f"{data_dir}languages.json", "r") as f:
@@ -86,7 +88,7 @@ language_configs = {l_code: load_language_config(l_code) for l_code in language_
 languages = {k: v for k, v in languages.items() if k in language_codes}
 
 # status
-with open("scripts/out/status_list.txt", "r") as f:
+with open("../scripts/out/status_list.txt", "r") as f:
     status_list = [line.strip() for line in f]
     status_list_str = ""
     for status in status_list:
