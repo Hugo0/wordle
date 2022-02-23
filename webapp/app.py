@@ -28,12 +28,17 @@ with open(f"{data_dir}other_wordles.json", "r") as f:
 
 
 def load_words(lang):
+    """loads the words and does some basic QA"""
     _5words = []
     with open(f"{data_dir}/languages/{lang}/{lang}_5words.txt", "r") as f:
         for line in f:
             _5words.append(line.strip())
     # QA
     _5words = [word.lower() for word in _5words if len(word) == 5 and word.isalpha()]
+    # remove words without correct characters
+    with open(f"{data_dir}/languages/{lang}/{lang}_characters.txt", "r") as f:
+        characters = [line.strip() for line in f]
+    _5words = [word for word in _5words if all([char in characters for char in word])]
     return _5words
 
 
@@ -42,6 +47,9 @@ def load_supplemental_words(lang):
     try:
         with open(f"{data_dir}languages/{lang}/{lang}_5words_supplement.txt", "r") as f:
             supplemental_words = [line.strip() for line in f]
+        with open(f"{data_dir}languages/{lang}/{lang}_characters.txt", "r") as f:
+            characters = [line.strip() for line in f]
+        supplemental_words = [word for word in supplemental_words if all([char in characters for char in word])]
     except FileNotFoundError:
         supplemental_words = []
     return supplemental_words
@@ -77,6 +85,13 @@ language_configs = {l_code: load_language_config(l_code) for l_code in language_
 # drop not supported languages
 languages = {k: v for k, v in languages.items() if k in language_codes}
 
+# status
+with open("scripts/out/status_list.txt", "r") as f:
+    status_list = [line.strip() for line in f]
+    status_list_str = ""
+    for status in status_list:
+        status_list_str += f"<option value='{status}'>{status}{'&nbsp;'*(20-len(status))}</option>"
+    status_list_str += "<a href='https://github.com/Hugo0/wordle' target='_blank'>more at Github</a>"
 
 # print stats about how many languages we have
 print("\n***********************************************")
@@ -154,6 +169,10 @@ def index():
         todays_idx=todays_idx,
         other_wordles=other_wordles,
     )
+
+@app.route("/stats")
+def stats():
+    return status_list_str 
 
 
 # arbitrary app route
