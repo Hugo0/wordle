@@ -34,6 +34,8 @@ def load_characters(lang):
         characters = [line.strip() for line in f]
     return characters
 
+language_codes = [f.split("/")[-1] for f in glob.glob(f"{data_dir}/languages/*")]
+language_characters = {lang: load_characters(lang) for lang in language_codes}
 
 def load_words(lang):
     """loads the words and does some basic QA"""
@@ -44,7 +46,7 @@ def load_words(lang):
     # QA
     _5words = [word.lower() for word in _5words if len(word) == 5 and word.isalpha()]
     # remove words without correct characters
-    _5words = [word for word in _5words if all([char in load_characters(lang) for char in word])]
+    _5words = [word for word in _5words if all([char in language_characters[lang] for char in word])]
     return _5words
 
 
@@ -53,7 +55,7 @@ def load_supplemental_words(lang):
     try:
         with open(f"{data_dir}languages/{lang}/{lang}_5words_supplement.txt", "r") as f:
             supplemental_words = [line.strip() for line in f]
-        supplemental_words = [word for word in supplemental_words if all([char in load_characters(lang) for char in word])]
+        supplemental_words = [word for word in supplemental_words if all([char in language_characters[lang] for char in word])]
     except FileNotFoundError:
         supplemental_words = []
     return supplemental_words
@@ -79,7 +81,6 @@ def get_todays_idx():
 
 todays_idx = get_todays_idx()
 
-language_codes = [f.split("/")[-1] for f in glob.glob(f"{data_dir}/languages/*")]
 language_codes_5words = {l_code: load_words(l_code) for l_code in language_codes}
 language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
@@ -126,7 +127,7 @@ class Language:
         self.todays_idx = todays_idx
         self.config = language_configs[language_code]
 
-        self.characters = load_characters(language_code)
+        self.characters = language_characters[language_code]
 
         # if we have a manually defined keyboard, use that. Else create one using the charset
         if self.config["keyboard"] != "":
