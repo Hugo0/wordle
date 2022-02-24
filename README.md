@@ -22,6 +22,8 @@ Voilà!
 - [ ] curate wordlists for existing languages
 - [ ] add keyboard layouts for existing languages
 - [ ] add more languages
+- [ ] add "accept any word" option (useful for Klingon or other obscure languages)
+- [ ] fully translate game interface (missing score streaks and options)
 
 Potential improvements:
 - [ ] nice animations for revealing letters & such
