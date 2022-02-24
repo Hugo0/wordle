@@ -266,6 +266,13 @@
                             </div>
 
                             <div class=border-t-2 border-gray-300></div>
+                            <div class="flex flex-row">
+                                <p class="flex-grow">Allow any word (<span class="italic">easy mode</span>)</p>
+                                <!-- toggle at the end -->
+                                <input type="checkbox" v-model="allow_any_word" />
+                            </div>
+
+                            <div class=border-t-2 border-gray-300></div>
                             <div class="flex">
                                 <p class="flex-grow">Source Code</p>
                                 <a href="https://www.github.com/Hugo0/wordle" class="underline text-neutral-500">GitHub</a>
