@@ -330,6 +330,7 @@ const app = Vue.createApp({
             this.game_over = true;
             this.game_won = true;
             this.emoji_board = this.getEmojiBoard();
+            this.showNotification(this.todays_word.toUpperCase(), 12);
             setTimeout(() => {
                 this.show_stats_modal = true;
             }, 400);
@@ -344,6 +345,8 @@ const app = Vue.createApp({
 
         },
         gameLost() {
+            this.showNotification(this.todays_word.toUpperCase(), 12);
+
             this.game_over = true;
             this.game_won = false;
             this.attempts = "X";
@@ -358,7 +361,7 @@ const app = Vue.createApp({
             this.stats = this.calculateStats(this.config.language_code);
 
         },
-        showNotification(message) {
+        showNotification(message, duration = 3) {
             // if there's already a notification, wait for it to finish then show new one
             if (this.notification.show) {
                 this.notification.show = false;
@@ -373,7 +376,7 @@ const app = Vue.createApp({
             this.notification.message = message;
             this.notification.timeout = setTimeout(() => {
                 this.notification.show = false;
-            }, 3000);
+            }, duration * 1000);
             
             // make notification appear at top of screen and move down continuously
             // this actually stopped working for some reason but whtv, was bad anyways
