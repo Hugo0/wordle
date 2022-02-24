@@ -128,6 +128,12 @@ class Language:
         self.config = language_configs[language_code]
 
         self.characters = language_characters[language_code]
+        # remove chars that aren't used to reduce bloat a bit
+        characters_used = []
+        for word in self.word_list:
+            characters_used += list(word)
+        characters_used = list(set(characters_used))
+        self.characters = [char for char in self.characters if char in characters_used]
 
         # if we have a manually defined keyboard, use that. Else create one using the charset
         if self.config["keyboard"] != "":
