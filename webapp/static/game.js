@@ -20,6 +20,7 @@ const app = Vue.createApp({
             characters: characters,
             config: config,
             right_to_left: config.right_to_left == "true",
+            allow_any_word: false,
 
 
             showHelpModal: false,
@@ -196,8 +197,9 @@ const app = Vue.createApp({
         },
 
         checkWord(word) {
-            // if word not in word_list, return false
-            if (word_list.indexOf(word) == -1 && word_list_supplement.indexOf(word) == -1) {
+            if (this.allow_any_word) {
+                return true;
+            } else if (word_list.indexOf(word) == -1 && word_list_supplement.indexOf(word) == -1) {
                 console.log(word + " is not in either word list and thus not valid");
                 return false;
             } else {
