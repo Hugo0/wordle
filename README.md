@@ -9,7 +9,7 @@ PULL REQUESTS WELCOME!
 It would be mega awesome if you could help in any way (especially with language addition/curation).
 
 **How to add a new language:**
-1. Make a folder in webapp/data/languages/ with the language code (e.g. en, de, fr, es. You can also go longer if needed)
+1. Make a folder in webapp/data/languages/ with the language code (e.g. en, de, fr, qya, etc.)
 2. Add a list of 5-letter words and call it {lang_code}_5words.txt
     1. (Optional) Add a language_config.json file
     2. (Optional) Add a list of supplemental words
@@ -26,13 +26,14 @@ Voilà!
 Potential improvements:
 - [ ] nice animations for revealing letters & such
 - [ ] make a 4, 6, 7 letter version
+- [ ] deal with accents & character modifiers better (e.g. french is horrible right now)
 
 Nice to haves:
-- [ ] improve code quality (e.g. make variable names consistent)
+- [ ] improve code quality (e.g. make variable names consistent, code more reusable & less hacky)
 - [ ] properly integrate TailwindCSS and Vue.js (i.e. not from CDN)
 
 ## Status of Languages
-```
+```  
   - Interlingue (ie):              🟨 (2147 words)
   - Korean (ko):                   🟨 (8922 words)
   - Nepali (ne):                   🟨 (2197 words)
@@ -59,6 +60,7 @@ Nice to haves:
   - Estonian (et):                 🟨 (9459 words)
   - Latgalian (ltg):               🟥 (388 words)
   - Serbian (sr):                  🟨 (17968 words)
+  - Quenya (qya):                  🟨 (1327 words)
   - Polish (pl):                   🟨 (10184 words)
   - Hebrew (he):                   🟨 (64540 words)
   - Vietnamese (vi):               🟧 (739 words)
@@ -68,7 +70,7 @@ Nice to haves:
   - Romanian (ro):                 🟨 (8618 words)
   - Fur (fur):                     🟨 (3569 words)
   - Western Frisian (fy):          🟨 (6095 words)
-  - Arabic (ar):                   🟨 (13883 words)
+  - Arabic (ar):                   🟨 (10166 words)
   - Turkmen (tk):                  🟨 (5814 words)
   - Mongolian (mn):                🟨 (4830 words)
   - Gaelic (gd):                   🟨 (4660 words)
