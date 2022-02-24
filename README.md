@@ -33,6 +33,7 @@ Potential improvements:
 Nice to haves:
 - [ ] improve code quality (e.g. make variable names consistent, code more reusable & less hacky)
 - [ ] properly integrate TailwindCSS and Vue.js (i.e. not from CDN)
+- [ ] tests...
 
 ## Status of Languages
 ```  
