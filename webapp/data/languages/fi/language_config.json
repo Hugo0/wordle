@@ -1,0 +1,35 @@
+{
+    "language_code": "fi",
+    "name": "Finnish",
+    "name_native": "Suomi",
+    "meta": {
+        "locale": "fi",
+        "title": "Päivittäinen sanapeli",
+        "description": "Arvaa sana maksimissaan 6 yrityksellä. Uusi sana on saatavilla joka päivä!",
+        "keywords": "finnish, sanapeli, päivittäinen"
+    },
+    "text": {
+        "subheader": "Suomeksi",
+        "next_word": "Seuraava saan ",
+        "no_attempts": "Et ole vielä yrittänyt sanaa! ",
+        "share": "Jaa ",
+        "notification-copied": "Kopioitu ",
+        "notification-partial-word": "Täytä täysi sana "
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Miten pelata",
+        "title_2": "Esimerkkejä",
+        "close": "Sulje tämä viesti",
+        "text_1_1_1": "Arvaa",
+        "text_1_1_2": "maksimissaan kuudella yrityksellä.",
+        "text_1_2": "Jokaisen arvauksen on oltava kelvollinen viisikirjaiminen sana. Paina Enter-painiketta lähettääksesi arvauksesi.",
+        "text_1_3": "Kun arvaat, laatat vaihtavat väriä osoittaen, mitkä sanasi kirjaimet ovat oikein tai melkein oikein.",
+        "text_2_1": "on sanassa ja oikeassa paikassa!c tai melkein oikein.",
+        "text_2_2": "on sanassa mutta väärässä paikassa.",
+        "text_2_3": "ei ole sanassa.",
+        "text_3": "Uusi sana joka päivä!"
+    }
+}
