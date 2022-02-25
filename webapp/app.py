@@ -79,8 +79,6 @@ def get_todays_idx():
     return idx
 
 
-todays_idx = get_todays_idx()
-
 language_codes_5words = {l_code: load_words(l_code) for l_code in language_codes}
 language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
@@ -123,6 +121,7 @@ class Language:
         self.language_code = language_code
         self.word_list = word_list
         self.word_list_supplement = language_codes_5words_supplements[language_code]
+        todays_idx = get_todays_idx()
         self.daily_word = word_list[todays_idx % len(word_list)]
         self.todays_idx = todays_idx
         self.config = language_configs[language_code]
@@ -172,7 +171,7 @@ def index():
         "index.html",
         languages=languages,
         language_codes=language_codes,
-        todays_idx=todays_idx,
+        todays_idx=get_todays_idx(),
         other_wordles=other_wordles,
     )
 

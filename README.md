@@ -107,6 +107,7 @@ Nice to haves:
 - Elizabeth S (inventor of the Wordle grid)
 - Nadia H (my lovely beta-tester)
 - Daniel Rodriguez (for some inspiration with Tailwind)
+- [Wordles of the World](https://gitlab.com/rwmpelstilzchen/wordles) for a community-sourced list of wordle-derivatives (it's impressive how many actually exist)
 
 ## Data sources
 - https://www.nytimes.com/games/wordle/index.html - english word list
