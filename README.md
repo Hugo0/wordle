@@ -71,7 +71,7 @@ Nice to haves:
   - Basque (eu):                   🟨 (7520 words)
   - Ukrainian (uk):                🟨 (9589 words)
   - Romanian (ro):                 🟨 (8618 words)
-  - Finnish (fi):                  🟩 (7604 words)
+  - Finnish (fi):                  🟩 (3271 words)
   - Fur (fur):                     🟨 (3569 words)
   - Western Frisian (fy):          🟨 (6095 words)
   - Arabic (ar):                   🟨 (10166 words)
