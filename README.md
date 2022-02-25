@@ -71,6 +71,7 @@ Nice to haves:
   - Basque (eu):                   🟨 (7520 words)
   - Ukrainian (uk):                🟨 (9589 words)
   - Romanian (ro):                 🟨 (8618 words)
+  - Finnish (fi):                  🟩 (3271 words)
   - Fur (fur):                     🟨 (3569 words)
   - Western Frisian (fy):          🟨 (6095 words)
   - Arabic (ar):                   🟨 (10166 words)
@@ -111,4 +112,5 @@ Nice to haves:
 
 ## Data sources
 - https://www.nytimes.com/games/wordle/index.html - english word list
+- https://kaino.kotus.fi/sanat/nykysuomi/ - Finnish word list
 - https://github.com/wooorm/dictionaries - most other word lists ([Titus Wormer](https://wooorm.com/) is an incredible dude)
