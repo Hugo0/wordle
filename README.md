@@ -12,7 +12,8 @@ It would be mega awesome if you could help in any way (especially with language 
 1. Make a folder in webapp/data/languages/ with the language code (e.g. en, de, fr, qya, etc.)
 2. Add a list of 5-letter words and call it {lang_code}_5words.txt
     1. (Optional) Add a language_config.json file
-    2. (Optional) Add a list of supplemental words
+    2. (Optional) Add a keyboard configuration 
+    3. (Optional) Add a list of supplemental words (useful to have this for weird/rare words, and only have 'common' words in the main 5words.txt file)
 3. Add your new language to the list at webapp/data/languages.json
 
 Voilà!
