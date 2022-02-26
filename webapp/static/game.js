@@ -177,8 +177,6 @@ const app = Vue.createApp({
             var h = d.getUTCHours();
             var m = d.getUTCMinutes();
             var s = d.getUTCSeconds();
-
-            console.log(h, m, s);
             
             var time_until_next_day = ""
             if (h < 23) {
