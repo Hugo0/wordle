@@ -16,42 +16,7 @@
         "notification-copied": "Copied to clipboard ",
         "notification-partial-word": "Please enter a full word "
     },
-    "keyboard": [
-        [
-            "q",
-            "w",
-            "e",
-            "r",
-            "t",
-            "y",
-            "u",
-            "i",
-            "o",
-            "p"
-        ],
-        [
-            "a",
-            "s",
-            "d",
-            "f",
-            "g",
-            "h",
-            "j",
-            "k",
-            "l"
-        ],
-        [
-            "⇨",
-            "z",
-            "x",
-            "c",
-            "v",
-            "b",
-            "n",
-            "m",
-            "⌫"
-        ]
-    ],
+    "keyboard": "english",
     "language_code_3": "",
     "language_code_iso_639_3": "",
     "right_to_left": "false",
