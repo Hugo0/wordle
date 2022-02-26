@@ -1,13 +1,14 @@
-from flask import Flask, render_template, make_response # These are all we need for our purposes
-from flask_flatpages import FlatPages
+from flask import (
+    Flask,
+    render_template,
+    make_response,
+)  # These are all we need for our purposes
 import json
 
 import datetime
 import glob
 
 app = Flask(__name__)
-flatpages = FlatPages(app)
-
 
 ###############################################################################
 # DATA
@@ -85,6 +86,15 @@ def load_language_config(lang):
         return language_config
 
 
+def load_keyboard(lang):
+    try:
+        with open(f"{data_dir}languages/{lang}/{lang}_keyboard.json", "r") as f:
+            keyboard = json.load(f)
+        return keyboard
+    except:
+        return []
+
+
 def get_todays_idx():
     n_days = (datetime.datetime.utcnow() - datetime.datetime(1970, 1, 1)).days
     idx = n_days - 18992 + 195
@@ -99,6 +109,7 @@ language_configs = {l_code: load_language_config(l_code) for l_code in language_
 
 # drop not supported languages
 languages = {k: v for k, v in languages.items() if k in language_codes}
+keyboards = {k: load_keyboard(k) for k in language_codes}
 
 # status
 with open("../scripts/out/status_list.txt", "r") as f:
@@ -160,12 +171,9 @@ class Language:
         characters_used = list(set(characters_used))
         self.characters = [char for char in self.characters if char in characters_used]
 
-        # if we have a manually defined keyboard, use that. Else create one using the charset
-        if self.config["keyboard"] != "":
-            self.keyboard = self.config["keyboard"]
-        else:
+        self.keyboard = keyboards[language_code]
+        if self.keyboard == []:  # if no keyboard defined, then use available chars
             # keyboard of ten characters per row
-            self.keyboard = []
             for i, c in enumerate(self.characters):
                 if i % 10 == 0:
                     self.keyboard.append([])
@@ -210,7 +218,11 @@ def stats():
 # sitemap
 @app.route("/sitemap.xml")
 def site_map():
-    response = make_response(render_template("sitemap.xml", languages=languages, base_url="https://wordle.global"))
+    response = make_response(
+        render_template(
+            "sitemap.xml", languages=languages, base_url="https://wordle.global"
+        )
+    )
     response.headers["Content-Type"] = "application/xml"
     return response
 

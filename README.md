@@ -17,6 +17,19 @@ It would be mega awesome if you could help in any way (especially with language 
 
 Voilà!
 
+## How to run locally
+
+1. Install Python 3
+
+2. Install requirements
+```pip3 install -r requirements.txt```
+
+3. Run web server locally
+```gunicorn --chdir webapp app:app```
+
+4. Navigate to
+[http://127.0.0.1:8000/]
+
 ## TODOs
 - [ ] take into account browser bar height on mobile
 - [ ] curate wordlists for existing languages
