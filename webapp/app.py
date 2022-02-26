@@ -81,6 +81,16 @@ def load_language_config(lang):
             language_config = json.load(f)
         return language_config
 
+def load_keyboard(keyboard_name):
+    try:
+        with open(f"{data_dir}keyboards.json", "r") as f:
+            keyboards = json.load(f)
+        return keyboards[keyboard_name]
+    except:
+        print(f"No such keyboard as {keyboard_name} available in keyboards.json, using default")
+        return keyboards["english"]
+        
+
 
 def get_todays_idx():
     n_days = (datetime.datetime.utcnow() - datetime.datetime(1970, 1, 1)).days
@@ -159,7 +169,10 @@ class Language:
 
         # if we have a manually defined keyboard, use that. Else create one using the charset
         if self.config["keyboard"] != "":
-            self.keyboard = self.config["keyboard"]
+            if type(self.config["keyboard"]) is str:
+                self.keyboard = load_keyboard(self.config["keyboard"])
+            else:
+                self.keyboard = self.config["keyboard"]
         else:
             # keyboard of ten characters per row
             self.keyboard = []
