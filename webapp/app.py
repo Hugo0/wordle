@@ -1,13 +1,10 @@
 from flask import Flask, render_template, make_response # These are all we need for our purposes
-from flask_flatpages import FlatPages
 import json
 
 import datetime
 import glob
 
 app = Flask(__name__)
-flatpages = FlatPages(app)
-
 
 ###############################################################################
 # DATA
