@@ -14,11 +14,12 @@ It would be mega awesome if you could help in any way (especially with language 
     1. (Optional) Add a language_config.json file
     2. (Optional) Add a keyboard configuration 
     3. (Optional) Add a list of supplemental words (useful to have this for weird/rare words, and only have 'common' words in the main 5words.txt file)
-3. Add your new language to the list at webapp/data/languages.json
 
 Voilà!
 
 ## How to run locally
+
+If you want to test out your changes, you can run the server locally.
 
 1. Install Python 3
 
@@ -28,8 +29,7 @@ Voilà!
 3. Run web server locally
 ```gunicorn --chdir webapp app:app```
 
-4. Navigate to
-[http://127.0.0.1:8000/]
+4. Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## TODOs
 - [ ] take into account browser bar height on mobile
