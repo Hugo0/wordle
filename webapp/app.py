@@ -7,6 +7,10 @@ import json
 
 import datetime
 import glob
+import random
+
+# set random seed 42 for reproducibility (important to maintain stable word lists)
+random.seed(42)
 
 app = Flask(__name__)
 
@@ -52,6 +56,20 @@ def load_words(lang):
         for word in _5words
         if all([char in language_characters[lang] for char in word])
     ]
+
+    # we don't want words in order, so if .txt is not pre-shuffled, shuffle
+    last_letter = ""
+    n_in_order = 0
+    for word in _5words:
+        letter = word[0]
+        # check if sorted
+        if letter <= last_letter:
+            n_in_order += 1
+        last_letter = letter
+    # if 80% of words are in order, then we consider the list sorted and we shuffle it deterministically
+    if n_in_order / len(_5words) > 0.8:
+        random.shuffle(_5words)
+        print(f"{lang} words are sorted, shuffling")
     return _5words
 
 
@@ -105,6 +123,7 @@ language_configs = {l_code: load_language_config(l_code) for l_code in language_
 
 keyboards = {k: load_keyboard(k) for k in language_codes}
 
+
 def load_languages():
     """returns a dict of language codes mapped to their english name and native name"""
 
@@ -118,6 +137,7 @@ def load_languages():
             "language_code": lang,
         }
     return languages
+
 
 languages = load_languages()
 
