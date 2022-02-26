@@ -10,7 +10,7 @@
     <title>Wordle Global - {{ languages | length }} languages available</title>
     <meta name="description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
     <meta property="description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
-    <meta name="keywords" content="wordle, english, puzzle, word, play, game, online, guess, daily">
+    <meta name="keywords" content="wordle, english, puzzle, word, play, game, online, guess, free, daily">
     <meta property="og:title" content="Wordle Global - {{ languages | length }} languages available">
     <meta property="og:url" content="https://wordle.global/">
     <meta property="og:type" content="website">
@@ -90,7 +90,7 @@
         <!-- language search box -->
         <div class="flex justify-center mt-12">
             <div
-                class="flex flex-col break-words bg-white border border-2 rounded shadow-md mx-4 w-full max-w-xs md:max-w-sm  lg:max-w-md">
+                class="flex flex-col break-words bg-white border border-2 rounded shadow-md mx-4 mb-2 sm:mb-6 w-full max-w-xs md:max-w-sm  lg:max-w-md">
                 <input v-model="search_text"
                     class="shadow appearance-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:shadow-xl"
                     type="text" placeholder="Search language...">
@@ -98,7 +98,7 @@
         </div>
 
         <!-- tailwind grid of language cards that fill max space -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 mt-16 w-2/3 mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 mt-7 sm:gap-10 sm:mt-10 md:gap-14 mt-14 w-2/3 mx-auto">
             <!-- card for each language -->
             <button v-for="language in languages_vis" class="col-span-1 hover:bg-neutral-200 rounded-lg shadow-lg"
                 v-on:click='selectLanguageWithCode(language.language_code)'>
