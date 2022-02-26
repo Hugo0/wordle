@@ -170,19 +170,33 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        // time until next UTC day
         get_time_until_next_day() {
-            const now = new Date();
-            const next_day = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-            // return string of time until next day
-            var time = Math.floor((next_day - now) / 1000);
-            var hours_mins_seconds = "";
-            hours_mins_seconds += Math.floor(time / 3600) + "h ";
-            time %= 3600;
-            hours_mins_seconds += Math.floor(time / 60) + "m ";
-            time %= 60;
-            hours_mins_seconds += time + "s";
-            return hours_mins_seconds;
+            // returns time until next UTC day formatted as "h m s"
+
+            var d = new Date();
+            var h = d.getUTCHours();
+            var m = d.getUTCMinutes();
+            var s = d.getUTCSeconds();
+
+            console.log(h, m, s);
+            
+            var time_until_next_day = ""
+            if (h < 23) {
+                time_until_next_day += (23 - h) + "h ";
+            } else {
+                time_until_next_day += "0h ";
+            }
+            if (m < 59) {
+                time_until_next_day += (59 - m) + "m ";
+            } else {
+                time_until_next_day += "0m ";
+            }
+            if (s < 59) {
+                time_until_next_day += (59 - s) + "s";
+            } else {
+                time_until_next_day += "0s";
+            }
+            return time_until_next_day;
         },
         handleEvent(event) {
         },
