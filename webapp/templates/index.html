@@ -5,8 +5,7 @@
     <meta content="charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
-
-
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
     <title>Wordle Global - {{ languages | length }} languages available</title>
     <meta name="description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
@@ -40,6 +39,7 @@
 
     <!-- Bing search console -->
     <meta name="msvalidate.01" content="609E2DD36EFFA9A3C673F46020FDF0D3" />
+    
     <script>
         function isoCountryCodeToFlagEmoji(country) { // unfortunately this magic trick doesn't work :(
             return String.fromCodePoint(...[...country.toUpperCase()].map(c => c.charCodeAt() + 0x1F1A5));
