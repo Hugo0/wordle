@@ -23,10 +23,6 @@ data_dir = "data/"
 # print(f"data_dir: {data_dir}")
 
 
-# load languages.json file
-with open(f"{data_dir}languages.json", "r") as f:
-    languages = json.load(f)
-
 # load other_wordles.json file
 with open(f"{data_dir}other_wordles.json", "r") as f:
     other_wordles = json.load(f)
@@ -107,9 +103,23 @@ language_codes_5words_supplements = {
 }
 language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
 
-# drop not supported languages
-languages = {k: v for k, v in languages.items() if k in language_codes}
 keyboards = {k: load_keyboard(k) for k in language_codes}
+
+def load_languages():
+    """returns a dict of language codes mapped to their english name and native name"""
+
+    languages = {}
+    # for each language folder, get the language config.name and config.name_natove
+    for lang in language_codes:
+        language_config = language_configs[lang]
+        languages[lang] = {
+            "language_name": language_config["name"],
+            "language_name_native": language_config["name_native"],
+            "language_code": lang,
+        }
+    return languages
+
+languages = load_languages()
 
 # status
 with open("../scripts/out/status_list.txt", "r") as f:
