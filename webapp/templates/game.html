@@ -149,12 +149,12 @@
                             <span v-on:click="showHelpModal = !showHelpModal"
                                 class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
-                        <h1 class="flex mx-auto uppercase font-bold text-2xl tracking-wider">Wordle <span
+                        <h2 class="flex mx-auto uppercase font-bold text-2xl tracking-wider">Wordle <span
                                 class="ml-1 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">{{
                                 language.config.name_native }}</span>
-                        </h1>
+                        </h2>
 
-                        <h1 class="font-bold text-lg">{{ language.config.help.title }}</h1>
+                        <h3 class="font-bold text-lg">{{ language.config.help.title }}</h3>
                         <!-- how to play -->
                         <p class="text-sm">{{ language.config.help.text_1_1_1 }} <a
                                 class="font-bold uppercase">Wordle</a> {{ language.config.help.text_1_1_2 }}</p>
@@ -237,7 +237,7 @@
                             <span v-on:click="show_options_modal = !show_options_modal"
                                 class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
-                        <h1 class="uppercase font-bold text-xl tracking-wider mb-5">SETTINGS</h1>
+                        <h3 class="uppercase font-bold text-xl tracking-wider mb-5">SETTINGS</h3>
                         <div class=" space-y-4">
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
