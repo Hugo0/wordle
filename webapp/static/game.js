@@ -402,7 +402,6 @@ const app = Vue.createApp({
             }, 2);
         },
 
-
         getEmojiBoard() {
             // turns tiles board into emojis
             // correct: 🟩
@@ -420,11 +419,20 @@ const app = Vue.createApp({
                     } else if (tile_class.indexOf("incorrect") >= 0) {
                         emoji_board += "⬜";
                     } else {
-                        this.attempts = String(i);
                         return emoji_board;
                     }
                 }
-                emoji_board += "\n";
+
+                // add newline if not last row
+                if (i < this.tile_classes.length - 1) {
+                    emoji_board += "\n";
+                }
+                
+                this.attempts = String(i+1);
+                // if game lost, show X
+                if (this.game_over && !this.game_won) {
+                    this.attempts = "X";
+                }
             }
             return emoji_board;
         },
