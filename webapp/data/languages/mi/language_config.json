@@ -1,0 +1,37 @@
+{
+    "name": "Maori",
+    "name_native": "Māori",
+    "language_code": "mi",
+    "language_code_3": "mi",
+    "language_code_iso_639_3": "mi",
+    "keyboard": "",
+    "right_to_left": "false",
+    "meta": {
+        "title": "The daily word game",
+        "description": "Guess the hidden word in 6 tries (or less). A new puzzle is available each day!",
+        "keywords": "puzzle, word, play, game, online, guess, daily",
+        "locale": ""
+    },
+    "text": {
+        "subheader": "",
+        "next_word": "Next word",
+        "no_attempts": "You haven't tried any words yet!",
+        "share": "Share",
+        "notification-copied": "Copied to clipboard",
+        "notification-word-not-valid": "Word is not valid",
+        "notification-partial-word": "Please enter a full word"
+    },
+    "help": {
+        "title": "How to Play",
+        "title_2": "Examples",
+        "close": "Close this message",
+        "text_1_1_1": "Guess the",
+        "text_1_1_2": "in six tries or less.",
+        "text_1_2": "Each guess must be a valid five letter word. Press the enter button to submit your guess.",
+        "text_1_3": "After you guess, the tiles will change color to indicate which letters of your word are correct or almost correct.",
+        "text_2_1": "is in the word and in the correct location!",
+        "text_2_2": "is in the word, but not in the correct location.",
+        "text_2_3": "is not present in the word you are trying to guess.",
+        "text_3": "A new word will be available each day!"
+    }
+}
