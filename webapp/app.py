@@ -33,6 +33,18 @@ with open(f"{data_dir}other_wordles.json", "r") as f:
 
 
 def load_characters(lang):
+    if not glob.glob(f"{data_dir}languages/{lang}/{lang}_characters.txt"):
+        characters = set()
+        with open(f"{data_dir}languages/{lang}/{lang}_5words.txt", "r") as f:
+            for line in f:
+                characters.update(line.strip())
+        with open(f"{data_dir}languages/{lang}/{lang}_characters.txt", "w") as f:
+            # sort characters
+            characters = sorted(characters)
+            # write char per newline
+            for char in characters:
+                f.write(char + "\n")
+
     with open(f"{data_dir}languages/{lang}/{lang}_characters.txt", "r") as f:
         characters = [line.strip() for line in f]
     return characters
