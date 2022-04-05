@@ -148,9 +148,9 @@ const app = Vue.createApp({
             // if config.name_native is not set, use to config.language_code
             var text_to_share;
             if (!this.config.name_native) {
-                text_to_share = "Wordle (" + this.config.language_code + ") " + this.todays_idx + " " + this.attempts + "/6" + "\n" + "www.wordle.global/" + this.config.language_code + "\n" + "\n" + this.emoji_board;
+                text_to_share = "Wordle (" + this.config.language_code + ") #" + this.todays_idx + " " + this.attempts + "/6" + "\n" + "www.wordle.global/" + this.config.language_code + "\n" + "\n" + this.emoji_board;
             } else {
-                text_to_share = "Wordle " + this.config.name_native + " " + this.todays_idx + " " + this.attempts + "/6" + "\n" + "www.wordle.global/" + this.config.language_code + "\n" + "\n" + this.emoji_board;
+                text_to_share = "Wordle " + this.config.name_native + " #" + this.todays_idx + " " + this.attempts + "/6" + "\n" + "www.wordle.global/" + this.config.language_code + "\n" + "\n" + this.emoji_board;
             }
             document.querySelector('#copy_button').addEventListener('click', async event => {
                 if (navigator.share) {
