@@ -145,7 +145,13 @@ const app = Vue.createApp({
     },
     updated() {
         if (this.show_stats_modal) {
-            const text_to_share = "Wordle " + this.config.native_name + " " + this.todays_idx + " " + this.attempts + "/6" + "\n" + "www.wordle.global/" + this.config.language_code + "\n" + "\n" + this.emoji_board;
+            // if config.native_name is not set, use to config.language_code
+            var text_to_share;
+            if (!this.config.native_name) {
+                text_to_share = "Wordle (" + this.config.language_code + ") " + this.todays_idx + " " + this.attempts + "/6" + "\n" + "www.wordle.global/" + this.config.language_code + "\n" + "\n" + this.emoji_board;
+            } else {
+                text_to_share = "Wordle " + this.config.native_name + " " + this.todays_idx + " " + this.attempts + "/6" + "\n" + "www.wordle.global/" + this.config.language_code + "\n" + "\n" + this.emoji_board;
+            }
             document.querySelector('#copy_button').addEventListener('click', async event => {
                 if (navigator.share) {
                     try {
