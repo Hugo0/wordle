@@ -83,18 +83,27 @@ const app = Vue.createApp({
     },
     computed: {
         // computed properties
-        // key_classes
-        key_classes() {
-            keys = {}
-            for (let i = 0; i < characters.length; i++) {
-                keys[characters[i]] = "";
+        key_classes: {
+            get() {
+                let keys = {};
+                for (let i = 0; i < characters.length; i++) {
+                    keys[characters[i]] = "";
+                }
+                keys["⟹"] = "";
+                keys["ENTER"] = "";
+                keys["DEL"] = "";
+                keys["⌫"] = "";
+                return keys;
+            },
+            set(new_key_classes) {
+                // this.key_classes = new_key_classes; // this doesn't work, recursive                
+                // set key classes without recursion
+                for (let i = 0; i < characters.length; i++) {
+                    this.key_classes[characters[i]] = new_key_classes[characters[i]];
+                }
             }
-            keys["⟹"] = "";
-            keys["ENTER"] = "";
-            keys["DEL"] = "";
-            keys["⌫"] = "";
-            return keys;
-        },
+        },        
+        
         acceptable_characters() {
             return characters.join("");
         },
@@ -450,6 +459,7 @@ const app = Vue.createApp({
             var data = {
                 tiles: this.tiles,
                 tile_classes: this.tile_classes,
+                key_classes: this.key_classes,
                 active_row: this.active_row,
                 active_cell: this.active_cell,
                 todays_word: this.todays_word,
@@ -469,6 +479,7 @@ const app = Vue.createApp({
             if (data && data.todays_word === this.todays_word) {
                 this.tiles = data.tiles;
                 this.tile_classes = data.tile_classes;
+                this.key_classes = data.key_classes;
                 this.active_row = data.active_row;
                 this.active_cell = data.active_cell;
                 this.todays_word = data.todays_word;
