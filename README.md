@@ -36,7 +36,6 @@ If you want to test out your changes, you can run the server locally.
 - [ ] curate wordlists for existing languages
 - [ ] add keyboard layouts for existing languages
 - [ ] add more languages
-- [x] add "accept any word" option (useful for Klingon or other obscure languages)
 - [ ] fully translate game interface (missing score streaks and options)
 
 Potential improvements:
