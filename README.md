@@ -15,11 +15,12 @@ contact: wordle@hugo0.com
 📖 **For developers**: See [CLAUDE.md](CLAUDE.md) for architecture details, key algorithms, and coding guidelines.
 
 **How to add a new language:**
+
 1. Make a folder in webapp/data/languages/ with the language code (e.g. en, de, fr, qya, etc.)
-2. Add a list of 5-letter words and call it {lang_code}_5words.txt
-    1. (Optional) Add a language_config.json file
-    2. (Optional) Add a keyboard configuration 
-    3. (Optional) Add a list of supplemental words (useful to have this for weird/rare words, and only have 'common' words in the main 5words.txt file)
+2. Add a list of 5-letter words and call it {lang_code}\_5words.txt
+   1. (Optional) Add a language_config.json file
+   2. (Optional) Add a keyboard configuration
+   3. (Optional) Add a list of supplemental words (useful to have this for weird/rare words, and only have 'common' words in the main 5words.txt file)
 
 Voilà!
 
@@ -98,8 +99,24 @@ To test on your phone or other devices, you can use [ngrok](https://ngrok.com/) 
 
 4. ngrok will display a public URL (e.g., `https://abc123.ngrok.io`) — open this on your mobile device
 
+## Using Docker
+
+1. Make sure you have Docker installed.
+2. Build the image:
+
+   ```bash
+   docker build . -t wordle
+   ```
+
+3. Run the container:
+
+   ```bash
+   docker run -d -p 8000:8000 wordle
+   ```
+
 ## Status of Languages
-```  
+
+```
   - Hebrew (he):                   🟨 (64540 words)
   - Serbian (sr):                  🟨 (17968 words)
   - Central Kurdish (ckb):         🟩 (14819 words)
@@ -169,6 +186,7 @@ To test on your phone or other devices, you can use [ngrok](https://ngrok.com/) 
 ![](scripts/out/n_words.png)
 
 ## Credits:
+
 - Josh Wardle (original Wordle creator)
 - NYT (presumably holds the copyright or some IP rights or something with their $$$ purchase)
 - Elizabeth S (inventor of the Wordle grid)
@@ -178,6 +196,7 @@ To test on your phone or other devices, you can use [ngrok](https://ngrok.com/) 
 - All users, github issue raisers, and PR creators! Thanks so much!
 
 ## Data sources
+
 - https://www.nytimes.com/games/wordle/index.html - english word list
 - https://kaino.kotus.fi/sanat/nykysuomi/ - Finnish word list
 - https://github.com/wooorm/dictionaries - most other word lists ([Titus Wormer](https://wooorm.com/) is an incredible dude)
