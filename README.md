@@ -8,6 +8,8 @@ PULL REQUESTS WELCOME!
 
 It would be mega awesome if you could help in any way (especially with language addition/curation).
 
+contact: wordle@hugo0.com
+
 **How to add a new language:**
 1. Make a folder in webapp/data/languages/ with the language code (e.g. en, de, fr, qya, etc.)
 2. Add a list of 5-letter words and call it {lang_code}_5words.txt
