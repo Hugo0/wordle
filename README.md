@@ -33,6 +33,14 @@ If you want to test out your changes, you can run the server locally.
 
 4. Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
+## Using docker for deployment
+
+1. Make sure you have docker installed.
+2. Run 
+```docker build . -t wordle```
+3. Run 
+```docker run -d -p 8000:8000 wordle```
+
 ## TODOs
 - [ ] take into account browser bar height on mobile
 - [ ] curate wordlists for existing languages
