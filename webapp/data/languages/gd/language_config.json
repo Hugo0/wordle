@@ -4,32 +4,32 @@
     "name_native": "Gàidhlig",
     "meta": {
         "locale": "gd",
-        "title": "An geama làitheil làitheil ",
-        "description": "Tomhas am facal falaichte ann an 6 feuchainn (no nas lugha). Tha tòimhseachan ùr ri fhaighinn gach latha! ",
-        "keywords": "Beurla, tòimhseachan, facal, cluich, geama, air-loidhne, tomhas, a 'tomhas, gach latha "
+        "title": "An geama fhaclan làitheil",
+        "description": "Tomhais am facal falaichte ann an 6 oidhirpean (no nas lugha). Bidh tòimhseachan ùr ri fhaighinn gach latha!",
+        "keywords": "Gàidhlig, tòimhseachan, facal, cluich, geama, air loidhne, tomhais, a' tomhas, gach latha, facle"
     },
     "text": {
         "subheader": "Gàidhlig",
-        "next_word": "An ath fhacal ",
-        "no_attempts": "Chan eil thu air faclan sam bith fheuchainn fhathast! ",
+        "next_word": "An ath fhacal",
+        "no_attempts": "Chan eil thu air facal sam bith fheuchainn fhathast!",
         "share": "Co-roinn ",
-        "notification-copied": "Air a chopaigeadh gu clipboard ",
+        "notification-copied": "Chaidh a chur air an stòr-bhòrd",
         "notification-partial-word": "Cuir a-steach facal slàn "
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
     "right_to_left": "false",
     "help": {
-        "title": "Mar a chluicheas tu ",
-        "title_2": "Eisimpleirean ",
-        "close": "Dùin an teachdaireachd seo ",
-        "text_1_1_1": "Tomhais an ",
-        "text_1_1_2": "ann an sia a 'feuchainn no nas lugha. ",
-        "text_1_2": "Feumaidh gach tomhas a bhith na fhacal falamh còig litir. Brùth air a 'phutan ENTER gus do bheachd a chuir a-steach. ",
-        "text_1_3": "Às deidh dhut creidsinn, atharraichidh na leacan dath gus innse dè na litrichean den fhacal agad a tha ceart no cha mhòr ceart. ",
-        "text_2_1": "anns an fhacal agus san àite cheart! ",
-        "text_2_2": "anns an fhacal, ach chan ann san àite cheart. ",
-        "text_2_3": "chan eil e an làthair anns an fhacal a tha thu a 'feuchainn ri tomhas. ",
-        "text_3": "Bidh facal ùr ri fhaighinn gach latha! "
+        "title": "Mar a chluicheas tu seo",
+        "title_2": "Buill-eisimpleir",
+        "close": "Dùin an teachdaireachd seo",
+        "text_1_1_1": "Tomhais an",
+        "text_1_1_2": "ann an sia oidhirpean no nas lugha.",
+        "text_1_2": "Feumaidh gach oidhirp a bhith na fhacal slàn a tha còig litir a dh’fhaid. Brùth air a' phutan ENTER feuch a bheil thu ceart.",
+        "text_1_3": "Às deidh dhut tomhas a dhèanamh, thig atharrachadh air dathan nan leacagan is innsidh seo dhut dè na litrichean dhen fhacal a tha ceart no cha mhòr ceart.",
+        "text_2_1": ": anns an fhacal agus san àite cheart!",
+        "text_2_2": ": anns an fhacal ach chan san àite cheart.",
+        "text_2_3": ": chan eil seo san fhacal a tha ri thomhas.",
+        "text_3": "Bidh facal ùr ri thomhas gach latha!"
     }
 }
