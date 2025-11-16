@@ -116,6 +116,12 @@ def load_language_config(lang):
 
 
 def load_keyboard(lang):
+    """
+    Return normalized keyboard layouts for a language.
+
+    Reads the language-specific keyboard JSON, handles legacy formats,
+    and always returns a dict with default layout metadata.
+    """
     keyboard_path = f"{data_dir}languages/{lang}/{lang}_keyboard.json"
     try:
         with open(keyboard_path, "r") as f:
@@ -237,6 +243,14 @@ class Language:
     """Holds the attributes of a language"""
 
     def __init__(self, language_code, word_list, keyboard_layout=None):
+        """
+        Populate language metadata and select the desired keyboard layout.
+
+        Parameters:
+            language_code: Two-letter language identifier (e.g. 'en').
+            word_list: Base five-letter word list for the language.
+            keyboard_layout: Optional layout name chosen via query/cookie.
+        """
         self.language_code = language_code
         self.word_list = word_list
         self.word_list_supplement = language_codes_5words_supplements[language_code]
@@ -263,6 +277,12 @@ class Language:
         self.keyboard = layout_meta["rows"]
 
     def _build_keyboard_layouts(self, keyboard_config):
+        """
+        Build canonical layout metadata from the raw keyboard config.
+
+        Ensures every layout has a label/rows and falls back to an
+        auto-generated alphabetical layout when no layouts are provided.
+        """
         layouts = {}
         for layout_name, layout_meta in keyboard_config.get("layouts", {}).items():
             label = layout_meta.get("label") or layout_name.replace("_", " ").title()
@@ -277,6 +297,12 @@ class Language:
         return layouts
 
     def _select_keyboard_layout(self, requested_layout, default_layout):
+        """
+        Choose the active keyboard layout in priority order.
+
+        Prefers the user-requested layout, then the config default,
+        and finally falls back to the first available layout.
+        """
         if requested_layout and requested_layout in self.keyboard_layouts:
             return requested_layout
         if default_layout and default_layout in self.keyboard_layouts:

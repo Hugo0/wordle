@@ -269,8 +269,8 @@
                             <div class=border-t-2 border-gray-300></div>
                             <form method="get" class="flex flex-row"
                                 aria-label="Keyboard layout selector">
-                                <p class="flex-grow">Keyboard layout</p>
-                                <select id="keyboard-layout-select" name="layout"
+                                <p id="keyboard-layout-label" class="flex-grow">Keyboard layout</p>
+                                <select id="keyboard-layout-select" name="layout" aria-labelledby="keyboard-layout-label"
                                     class="border border-neutral-300 rounded px-2 py-1 bg-white"
                                     onchange="this.form.submit()">
                                     {% for layout_name, layout_meta in language.keyboard_layouts.items() %}
