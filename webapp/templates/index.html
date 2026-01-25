@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="min-h-full">
+<script>
+    // Apply dark mode immediately to prevent flash
+    if (localStorage.getItem('darkMode') === 'true' ||
+        (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    }
+</script>
 
 <head>
-    <meta content="charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -20,44 +27,47 @@
     <meta property="twitter:description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
     <meta property="twitter:image" content="https://wordle.global/static/images/logo.png">
 
-    <!-- Vue -->
-    <script src="https://unpkg.com/vue@3.0.2"></script>
-    <!-- <script src="https://unpkg.com/vue@3.2.31/dist/vue.cjs.prod.js"></script> -->
-    <!-- tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- stylesheet -->
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T"></script>
+    <!-- Vite-built assets (Tailwind + Vue bundled) -->
+    {% for css in vite_assets.css %}
+    <link rel="stylesheet" href="{{ css }}">
+    {% endfor %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics (deferred) -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-273H1MLL3T');
+        window.addEventListener('load', function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T';
+            script.async = true;
+            document.head.appendChild(script);
+            gtag('js', new Date());
+            gtag('config', 'G-273H1MLL3T');
+        });
     </script>
 
     <!-- Bing search console -->
     <meta name="msvalidate.01" content="609E2DD36EFFA9A3C673F46020FDF0D3" />
-    
+
+    <!-- Backend data (on window for ES module access) -->
     <script>
-        function isoCountryCodeToFlagEmoji(country) { // unfortunately this magic trick doesn't work :(
-            return String.fromCodePoint(...[...country.toUpperCase()].map(c => c.charCodeAt() + 0x1F1A5));
-        }
-        var language_codes = JSON.parse('{{language_codes | tojson | safe}}');
-        var languages = JSON.parse('{{languages | tojson | safe}}');
-        var todays_idx = "{{todays_idx}}";
-        var other_wordles = JSON.parse('{{other_wordles | tojson | safe}}');
+        window.languages = JSON.parse('{{languages | tojson | safe}}');
+        window.todays_idx = "{{todays_idx}}";
+        window.other_wordles = JSON.parse('{{other_wordles | tojson | safe}}');
     </script>
 </head>
 
-<body id="body" class="h-full">
-    <div id="app" class="pb-12">
+<body class="min-h-[100dvh] bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <!-- Loading skeleton -->
+    <div id="loading-skeleton" class="flex flex-col items-center justify-center h-[100dvh]" style="font-family: system-ui, sans-serif;">
+        <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px;">WORDLE 🌍</div>
+    </div>
+
+    <div id="app" class="pb-12" style="display: none;">
 
         <!-- The Header -->
-        <header
-            class="relative flex flex-row justify-between items-center p-1 px-3 lg:px-1 h-[50px] my-auto border-b border-neutral-300 max-w-screen-sm mx-auto">
-            <button class="z-30 text-neutral-500" v-on:click="showAboutModal = !showAboutModal" aria-label="about">
+        <header class="relative flex flex-row justify-between items-center p-1 px-3 lg:px-1 h-[50px] my-auto border-b border-neutral-300 dark:border-neutral-600 max-w-screen-sm mx-auto">
+            <button class="z-30 text-neutral-500 dark:text-neutral-400" v-on:click="showAboutModal = !showAboutModal" aria-label="about">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -70,11 +80,10 @@
             <div class="absolute right-0 left-0 text-center">
                 <h1 class="uppercase font-bold text-xl tiny:text-3xl sm:text-4xl tracking-wider"><a href="/">WORDLE
                         🌍</a></h1>
-                </h1>
             </div>
             <div class="flex flex-row gap-3 z-30">
-                <button class="m-0 sm:my-1" v-on:click="showStatsModal = !showStatsModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neutral-500" width="24" height="24"
+                <button class="m-0 sm:my-1 text-neutral-500 dark:text-neutral-400" v-on:click="showStatsModal = !showStatsModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24" height="24"
                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -89,10 +98,9 @@
 
         <!-- language search box -->
         <div class="flex justify-center mt-12">
-            <div
-                class="flex flex-col break-words bg-white border border-2 rounded shadow-md mx-4 mb-2 sm:mb-6 w-full max-w-xs md:max-w-sm  lg:max-w-md">
+            <div class="flex flex-col break-words bg-white dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-600 rounded shadow-md mx-4 mb-2 sm:mb-6 w-full max-w-xs md:max-w-sm lg:max-w-md">
                 <input v-model="search_text"
-                    class="shadow appearance-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:shadow-xl"
+                    class="shadow appearance-none w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-neutral-800 leading-tight focus:outline-none focus:shadow-outline hover:shadow-xl"
                     type="text" placeholder="Search language...">
             </div>
         </div>
@@ -100,12 +108,12 @@
         <!-- tailwind grid of language cards that fill max space -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 mt-7 sm:gap-10 sm:mt-10 md:gap-14 mt-14 w-2/3 mx-auto">
             <!-- card for each language -->
-            <button v-for="language in languages_vis" class="col-span-1 hover:bg-neutral-200 rounded-lg shadow-lg"
+            <button v-for="language in languages_vis" class="col-span-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg shadow-lg"
                 v-on:click='selectLanguageWithCode(language.language_code)'>
-                <div class="shadow-lg h-full border-2 border-neutral-300 rounded-lg hover:shadow-2xl hover:font-bold">
+                <div class="shadow-lg h-full border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 rounded-lg hover:shadow-2xl hover:font-bold">
                     <div class="px-5 py-4">
                         <h5 class=""> [[ language.language_name_native ]] </h5>
-                        <p class="text-sm italic">[[ language.language_name ]]</p>
+                        <p class="text-sm italic text-neutral-600 dark:text-neutral-400">[[ language.language_name ]]</p>
                     </div>
                 </div>
             </button>
@@ -114,8 +122,8 @@
 
         <!-- separator -->
         <div class="w-full mt-16 mx-auto text-center">
-            <hr class="border-b-1 border-gray-400 w-1/2 mx-auto">
-            <h2 class="text-2xl text-neutral-500 mt-4">
+            <hr class="border-b-1 border-gray-400 dark:border-gray-600 w-1/2 mx-auto">
+            <h2 class="text-2xl text-neutral-500 dark:text-neutral-400 mt-4">
                 External Links
             </h2>
         </div>
@@ -123,11 +131,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 mt-16 w-2/3 mx-auto">
             <!-- vue for each item in other_wordles make a button that leads to item.url when clicked -->
             <button v-for="other_wordle in other_wordles_vis"
-                class="col-span-1 hover:bg-neutral-200 rounded-lg shadow-lg" v-on:click="openLink(other_wordle.url)">
-                <div class="shadow-lg h-full border-2 border-neutral-300 rounded-lg hover:shadow-2xl hover:font-bold">
+                class="col-span-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg shadow-lg" v-on:click="openLink(other_wordle.url)">
+                <div class="shadow-lg h-full border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 rounded-lg hover:shadow-2xl hover:font-bold">
                     <div class="px-5 py-4">
                         <h5 class="">[[ other_wordle.name ]]</h5>
-                        <p class="text-sm italic">[[ other_wordle.language ]]</p>
+                        <p class="text-sm italic text-neutral-600 dark:text-neutral-400">[[ other_wordle.language ]]</p>
                     </div>
                 </div>
             </button>
@@ -142,7 +150,7 @@
             <!-- About modal -->
             <div v-show="showAboutModal" class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
                 v-cloak>
-                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-xs sm:max-w-lg"
+                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative ">
                         <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">About</h3>
@@ -155,21 +163,21 @@
                         <p class="text-center text-sm">The whole thing is open-source, and you can (and actually,
                             please
                             do) suggest improvements or fixes over at <a href="https://github.com/Hugo0/wordle/issues"
-                                class="text-neutral-500 underline">GitHub</a></p>
+                                class="text-neutral-500 dark:text-neutral-400 underline">GitHub</a></p>
                         <p class="text-center text-sm">There's fun languages, like Klingon or
                             Tolkien's Elvish that you can measure yourself on, as well as right to left languages like Arabic or
-                            Hebrew. Stats <a href="/stats" target="_blank" class="text-neutral-500 underline">here</a>.</p>
-                        <p class="text-center text-sm">A lot of other great Wordle spin-offs exist, and I've linked a bunch below for easy access. (credit: <a href="https://rwmpelstilzchen.gitlab.io/wordles/" class="text-neutral-500 underline">Wordles of the World</a>)</p>
+                            Hebrew. Stats <a href="/stats" target="_blank" class="text-neutral-500 dark:text-neutral-400 underline">here</a>.</p>
+                        <p class="text-center text-sm">A lot of other great Wordle spin-offs exist, and I've linked a bunch below for easy access. (credit: <a href="https://rwmpelstilzchen.gitlab.io/wordles/" class="text-neutral-500 dark:text-neutral-400 underline">Wordles of the World</a>)</p>
                         <p class="text-center text-sm">Have fun, and I hope you enjoy!</p>
                         <button
-                            class="uppercase font-bold text-sm tracking-wider mt-2 border-t-2 border-gray-300 mt-2 pt-2"
+                            class="uppercase font-bold text-sm tracking-wider mt-2 border-t-2 border-gray-300 dark:border-gray-600 mt-2 pt-2"
                             v-on:click="showAboutModal = !showAboutModal">close</button>
                     </div>
                 </div>
             </div>
 
             <div v-show="showStatsModal" class="fixed top-10 left-0 w-full h-full z-50 items-center" v-cloak>
-                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-md sm:max-w-lg"
+                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
                         <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">Stats</h3>
@@ -187,7 +195,7 @@
                         </div>
                         <div class="flex flex-row">
                             <div class="flex-grow">Overall Win Percentage:</div>
-                            <div class="font-bold" v-html="total_stats.total_win_percentage.toLocaleString('en') + '%'"></div>
+                            <div class="font-bold" v-html="total_stats.total_win_percentage?.toLocaleString('en') + '%'"></div>
                         </div>
                         <div class="flex flex-row">
                             <div class="flex-grow">Best Overall Streak:</div>
@@ -208,7 +216,7 @@
                                 <div class="">Best current Streak:</div>
                                 <div v-if="total_stats.current_longest_language_streak_language !=''"
                                     class="text-transparent text-sm bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 font-bold">
-                                    [[languages[total_stats.current_longest_language_streak_language].language_name_native]]</div>
+                                    [[languages[total_stats.current_longest_language_streak_language]?.language_name_native]]</div>
                             </div>
                             <div class="font-bold"><span v-if="total_stats.current_longest_language_streak > 0">🔥
                                 </span>[[total_stats.current_longest_language_streak]]</div>
@@ -216,16 +224,16 @@
                         <div class="flex flex-row mt-4">
                             <div class="flex-grow uppercase tracking-wider font-bold">Languages Conquered:</div>
                         </div>
-                        <div v-if="total_stats.languages_won.length == 0" class="text-sm">you haven't beaten any languages yet...</div>
+                        <div v-if="total_stats.languages_won?.length == 0" class="text-sm">you haven't beaten any languages yet...</div>
 
                         <div class="grid grid-cols-2 w-full place-items-center">
                             <div v-for="(language) in total_stats.languages_won"
                                 class="text-center py-2 px-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 font-bold">
-                                [[languages[language].language_name_native]]</div>
+                                [[languages[language]?.language_name_native]]</div>
                         </div>
 
                         <button
-                            class="uppercase font-bold text-sm tracking-wider mt-4 border-t-2 border-gray-300 mt-2 pt-2"
+                            class="uppercase font-bold text-sm tracking-wider mt-4 border-t-2 border-gray-300 dark:border-gray-600 mt-2 pt-2"
                             v-on:click="showStatsModal = !showStatsModal">close</button>
                     </div>
                 </div>
@@ -236,7 +244,7 @@
         <!-- Popup for if a language is unavailable -->
         <div id="popup" v-if="showPopup" class="fixed top-0 left-0 w-full h-full z-50" v-cloak>
             <div class="flex items-center justify-center w-full h-full">
-                <div class="bg-white rounded-lg shadow-lg p-4">
+                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-4">
                     <div class="flex flex-col items-center">
                         <h3 class="text-2xl font-bold text-center">👷🚧</h3>
                         <br>
@@ -252,8 +260,7 @@
 
     </div>
 
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script type="module" src="{{ vite_assets.js }}"></script>
 </body>
-
 
 </html>

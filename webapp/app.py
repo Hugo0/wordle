@@ -7,7 +7,7 @@ from flask import (
     request,
 )
 import json
-
+import os
 import datetime
 import glob
 import random
@@ -16,6 +16,54 @@ import random
 random.seed(42)
 
 app = Flask(__name__)
+
+
+###############################################################################
+# VITE MANIFEST - For loading built frontend assets
+###############################################################################
+def load_vite_manifest():
+    """Load the Vite build manifest to get hashed asset filenames.
+
+    Run `pnpm build` to generate the manifest and built assets.
+    """
+    manifest_path = os.path.join(app.static_folder, "dist", ".vite", "manifest.json")
+    if not os.path.exists(manifest_path):
+        raise FileNotFoundError(
+            f"Vite manifest not found at {manifest_path}. "
+            "Run 'pnpm build' first to build frontend assets."
+        )
+    with open(manifest_path, "r") as f:
+        return json.load(f)
+
+
+def get_vite_assets():
+    """Get the JS and CSS asset URLs from Vite manifest"""
+    manifest = load_vite_manifest()
+    entry = manifest["src/main.ts"]
+
+    # Collect CSS from entry and all its imports (recursive)
+    css_files = set()
+
+    def collect_css(chunk_key):
+        chunk = manifest.get(chunk_key, {})
+        for css in chunk.get("css", []):
+            css_files.add(css)
+        for imp in chunk.get("imports", []):
+            collect_css(imp)
+
+    collect_css("src/main.ts")
+
+    return {
+        "js": f"/static/dist/{entry['file']}",
+        "css": [f"/static/dist/{css}" for css in css_files],
+    }
+
+
+@app.context_processor
+def inject_vite_assets():
+    """Make Vite assets available in all templates"""
+    return {"vite_assets": get_vite_assets()}
+
 
 ###############################################################################
 # DATA
@@ -67,9 +115,7 @@ def load_words(lang):
     _5words = [word.lower() for word in _5words if len(word) == 5 and word.isalpha()]
     # remove words without correct characters
     _5words = [
-        word
-        for word in _5words
-        if all([char in language_characters[lang] for char in word])
+        word for word in _5words if all([char in language_characters[lang] for char in word])
     ]
 
     # we don't want words in order, so if .txt is not pre-shuffled, shuffle
@@ -161,9 +207,7 @@ with open("../scripts/out/status_list.txt", "r") as f:
     status_list = [line.strip() for line in f]
     status_list_str = ""
     for status in status_list:
-        status_list_str += (
-            f"<option value='{status}'>{status}{'&nbsp;'*(20-len(status))}</option>"
-        )
+        status_list_str += f"<option value='{status}'>{status}{'&nbsp;'*(20-len(status))}</option>"
     status_list_str += (
         "<a href='https://github.com/Hugo0/wordle' target='_blank'>more at Github</a>"
     )
@@ -247,7 +291,6 @@ class Language:
 # before request, redirect to https (unless localhost)
 @app.before_request
 def before_request():
-    print("BEFORE REQUEST")
     if (
         request.url.startswith("http://")
         and not "localhost" in request.url
@@ -278,9 +321,7 @@ def stats():
 @app.route("/sitemap.xml")
 def site_map():
     response = make_response(
-        render_template(
-            "sitemap.xml", languages=languages, base_url="https://wordle.global"
-        )
+        render_template("sitemap.xml", languages=languages, base_url="https://wordle.global")
     )
     response.headers["Content-Type"] = "application/xml"
     return response

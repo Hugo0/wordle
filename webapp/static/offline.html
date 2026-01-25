@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle - Offline</title>
+    <script>
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: #fff;
+            color: #000;
+            text-align: center;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        html.dark body {
+            background: #171717;
+            color: #fff;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 24px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            width: 180px;
+            margin-bottom: 32px;
+        }
+        .tile {
+            aspect-ratio: 1;
+            border: 2px solid #d3d6da;
+            border-radius: 2px;
+        }
+        .dark .tile { border-color: #3a3a3c; }
+        .tile:nth-child(1) { background: #6aaa63; border-color: #6aaa63; }
+        .tile:nth-child(3) { background: #c9b458; border-color: #c9b458; }
+        .dark .tile:nth-child(1) { background: #538d4e; border-color: #538d4e; }
+        .dark .tile:nth-child(3) { background: #b59f3b; border-color: #b59f3b; }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        .dark h2 { color: #e5e5e5; }
+        p {
+            color: #666;
+            max-width: 300px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        .dark p { color: #a3a3a3; }
+        button {
+            background: #6aaa63;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 8px;
+        }
+        .dark button { background: #538d4e; }
+        button:active {
+            transform: scale(0.98);
+        }
+        button.secondary {
+            background: #818384;
+        }
+        .dark button.secondary { background: #565758; }
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            max-width: 320px;
+        }
+        .languages a {
+            background: #e5e7eb;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .dark .languages a {
+            background: #3a3a3c;
+            color: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">WORDLE</div>
+    <div class="grid">
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+    </div>
+
+    <div id="offline-message">
+        <h2>You're offline</h2>
+        <p>Connect to the internet to play today's Wordle.</p>
+        <button onclick="location.reload()">Try Again</button>
+    </div>
+
+    <div id="cached-languages" style="display: none;">
+        <h2>Play Offline</h2>
+        <p>You have these languages cached for offline play:</p>
+        <div class="languages" id="language-list"></div>
+        <button class="secondary" onclick="location.reload()" style="margin-top: 20px;">Check Connection</button>
+    </div>
+
+    <script>
+        // Check for cached game data
+        const STORAGE_KEY = 'wordle_offline_data';
+
+        function getCachedLanguages() {
+            try {
+                const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+                return Object.keys(data).filter(lang => data[lang]?.wordList?.length > 0);
+            } catch (e) {
+                return [];
+            }
+        }
+
+        const cachedLangs = getCachedLanguages();
+
+        if (cachedLangs.length > 0) {
+            // Show cached languages option
+            document.getElementById('offline-message').style.display = 'none';
+            document.getElementById('cached-languages').style.display = 'block';
+
+            const list = document.getElementById('language-list');
+            cachedLangs.forEach(lang => {
+                const data = JSON.parse(localStorage.getItem(STORAGE_KEY))[lang];
+                const name = data.config?.name_native || lang.toUpperCase();
+                const a = document.createElement('a');
+                a.href = '/' + lang;  // Standard URL format - SW will serve offline-game.html
+                a.textContent = name;
+                list.appendChild(a);
+            });
+        }
+    </script>
+</body>
+</html>
