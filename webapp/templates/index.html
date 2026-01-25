@@ -156,9 +156,8 @@
                 <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative ">
-                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
-                            <span v-on:click="showAboutModal = !showAboutModal"
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        <button type="button" v-on:click="showAboutModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
                         <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">{{ ui.about or "About" }}</h3>
                         <p class="text-center text-sm">Hi! You probably know about Wordle already. It's a <span
@@ -184,9 +183,8 @@
                 <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
-                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
-                            <span v-on:click="showStatsModal = !showStatsModal"
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        <button type="button" v-on:click="showStatsModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
                         <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">{{ ui.global_stats or "Global Stats" }}</h3>
 
@@ -299,9 +297,8 @@
                 <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
                     v-cloak>
                     <div class="flex flex-col gap-4 relative">
-                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
-                            <span v-on:click="showSettingsModal = !showSettingsModal"
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        <button type="button" v-on:click="showSettingsModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
                         <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">{{ ui.settings or "Settings" }}</h3>
 
@@ -311,7 +308,7 @@
                                 <span class="font-medium">{{ ui.dark_mode or "Dark Mode" }}</span>
                                 <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.dark_mode_desc or "Toggle dark theme" }}</span>
                             </div>
-                            {{ toggle_switch('darkMode', 'toggleDarkMode()') }}
+                            {{ toggle_switch('darkMode', 'toggleDarkMode()', ui.dark_mode or 'Dark Mode') }}
                         </div>
 
                         <!-- Separator -->
@@ -323,7 +320,7 @@
                                 <span class="font-medium">{{ ui.haptic_feedback or "Haptic Feedback" }}</span>
                                 <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.haptic_feedback_desc or "Vibration on touch" }}</span>
                             </div>
-                            {{ toggle_switch('hapticsEnabled', 'toggleHaptics()') }}
+                            {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', ui.haptic_feedback or 'Haptic Feedback') }}
                         </div>
 
                         <!-- Separator -->
@@ -335,7 +332,7 @@
                                 <span class="font-medium">{{ ui.sound_effects or "Sound Effects" }}</span>
                                 <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.sound_effects_desc or "Win/lose sounds" }}</span>
                             </div>
-                            {{ toggle_switch('soundEnabled', 'toggleSound()') }}
+                            {{ toggle_switch('soundEnabled', 'toggleSound()', ui.sound_effects or 'Sound Effects') }}
                         </div>
 
                         <!-- Separator -->

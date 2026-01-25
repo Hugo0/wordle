@@ -4,7 +4,7 @@
     "description": "Daily word puzzle game in 65+ languages",
     "type": "module",
     "scripts": {
-        "dev": "pnpm build && (pnpm watch & . venv/bin/activate && gunicorn --chdir webapp --bind 127.0.0.1:8000 --reload --reload-extra-file webapp/static/dist/.vite/manifest.json $(for f in webapp/templates/*.html; do echo --reload-extra-file $f; done) app:app; kill %1 2>/dev/null)",
+        "dev": "pnpm build && (pnpm watch & . venv/bin/activate && gunicorn --chdir webapp --bind 127.0.0.1:8000 --reload --reload-extra-file webapp/static/dist/.vite/manifest.json $(for f in webapp/templates/*.html webapp/templates/partials/*.html; do echo --reload-extra-file $f; done) app:app; kill %1 2>/dev/null)",
         "build": "vite build",
         "watch": "vite build --watch",
         "test": "vitest run",

@@ -143,9 +143,8 @@
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
 
-                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
-                            <span v-on:click="showHelpModal = !showHelpModal"
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        <button type="button" v-on:click="showHelpModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
                         <h2 class="flex mx-auto uppercase font-bold text-2xl tracking-wider">Wordle <span
                                 class="ml-1 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">{{
@@ -221,6 +220,7 @@
                         <div class="flex flex-col gap-2 py-2">
                             <a href="https://github.com/Hugo0/wordle/issues"
                                target="_blank"
+                               rel="noopener noreferrer"
                                class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -230,6 +230,7 @@
                             </a>
                             <a href="https://github.com/Hugo0/wordle"
                                target="_blank"
+                               rel="noopener noreferrer"
                                class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -255,9 +256,8 @@
                 <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
-                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
-                            <span v-on:click="show_options_modal = !show_options_modal"
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        <button type="button" v-on:click="show_options_modal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
                         <h3 class="uppercase font-bold text-xl tracking-wider mb-5">{{ language.config.ui.settings or "Settings" }}</h3>
                         <div class=" space-y-4">
@@ -266,7 +266,7 @@
                                 <div class="flex-grow">
                                     <p>{{ language.config.ui.dark_mode or "Dark Mode" }}</p>
                                 </div>
-                                {{ toggle_switch('darkMode', 'toggleDarkMode()') }}
+                                {{ toggle_switch('darkMode', 'toggleDarkMode()', language.config.ui.dark_mode or 'Dark Mode') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
@@ -275,7 +275,7 @@
                                 <div class="flex-grow">
                                     <p>{{ language.config.ui.haptic_feedback or "Haptic Feedback" }}</p>
                                 </div>
-                                {{ toggle_switch('hapticsEnabled', 'toggleHaptics()') }}
+                                {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', language.config.ui.haptic_feedback or 'Haptic Feedback') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
@@ -284,7 +284,7 @@
                                 <div class="flex-grow">
                                     <p>{{ language.config.ui.sound_effects or "Sound Effects" }}</p>
                                 </div>
-                                {{ toggle_switch('soundEnabled', 'toggleSound()') }}
+                                {{ toggle_switch('soundEnabled', 'toggleSound()', language.config.ui.sound_effects or 'Sound Effects') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
@@ -371,9 +371,8 @@
                             language.config.name_native }}
                             #[[ todays_idx ]] [[attempts]]/6
                         </h3>
-                        <button class="absolute top-0 right-0 p-1 ml-auto z-50">
-                            <span v-on:click="show_stats_modal = !show_stats_modal"
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        <button type="button" v-on:click="show_stats_modal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
                     </div>
 
