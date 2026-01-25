@@ -150,15 +150,27 @@ def load_supplemental_words(lang):
 
 
 def load_language_config(lang):
+    """Load language config, merging with default to ensure all keys exist."""
+    # Load default config first
+    with open(f"{data_dir}default_language_config.json", "r") as f:
+        default_config = json.load(f)
+
     try:
         with open(f"{data_dir}languages/{lang}/language_config.json", "r") as f:
             language_config = json.load(f)
-        return language_config
+
+        # Merge: language-specific values override defaults
+        # Deep merge for nested dicts (ui, text, help, meta)
+        merged = default_config.copy()
+        for key, value in language_config.items():
+            if isinstance(value, dict) and key in merged and isinstance(merged[key], dict):
+                # Merge nested dict
+                merged[key] = {**merged[key], **value}
+            else:
+                merged[key] = value
+        return merged
     except:
-        # english is fallback (not ideal but better than empty...)
-        with open(f"{data_dir}default_language_config.json", "r") as f:
-            language_config = json.load(f)
-        return language_config
+        return default_config
 
 
 def load_keyboard(lang):
@@ -192,9 +204,7 @@ def load_keyboard(lang):
     if isinstance(layouts_block, dict):
         source_layouts = layouts_block
     else:
-        source_layouts = {
-            key: value for key, value in keyboard_data.items() if key != "default"
-        }
+        source_layouts = {key: value for key, value in keyboard_data.items() if key != "default"}
 
     normalized_layouts = {}
     for layout_name, layout_value in source_layouts.items():
@@ -213,8 +223,21 @@ def load_keyboard(lang):
     return {"default": default_layout, "layouts": normalized_layouts}
 
 
-def get_todays_idx():
-    n_days = (datetime.datetime.utcnow() - datetime.datetime(1970, 1, 1)).days
+def get_todays_idx(timezone_offset_hours: int = 0):
+    """Calculate the daily word index based on timezone.
+
+    Args:
+        timezone_offset_hours: Hours offset from UTC (e.g., +2 for Finland, -5 for EST)
+
+    Returns:
+        The word index for "today" in the specified timezone
+    """
+    # Get current UTC time and apply timezone offset
+    utc_now = datetime.datetime.utcnow()
+    local_now = utc_now + datetime.timedelta(hours=timezone_offset_hours)
+
+    # Calculate days since epoch in the local timezone
+    n_days = (local_now - datetime.datetime(1970, 1, 1)).days
     idx = n_days - 18992 + 195
     return idx
 
@@ -224,6 +247,10 @@ language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
 }
 language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
+
+# Load default language config for UI translations on homepage
+with open(f"{data_dir}default_language_config.json", "r") as f:
+    default_language_config = json.load(f)
 
 keyboards = {k: load_keyboard(k) for k in language_codes}
 
@@ -283,7 +310,7 @@ language_popularity = [
     "sl",  # Slovenian - 380 sessions
     "nl",  # Dutch - 320 sessions
     "cs",  # Czech - 310 sessions
-    "hyw", # Western Armenian - 310 sessions
+    "hyw",  # Western Armenian - 310 sessions
     "fa",  # Persian - 260 sessions
     "eu",  # Basque - 250 sessions
     "gd",  # Scottish Gaelic - 220 sessions
@@ -292,10 +319,10 @@ language_popularity = [
     "ka",  # Georgian - 160 sessions
     "nn",  # Norwegian Nynorsk - 140 sessions
     "is",  # Icelandic - 120 sessions
-    "ckb", # Central Kurdish - 90 sessions
+    "ckb",  # Central Kurdish - 90 sessions
     "el",  # Greek - 90 sessions
     "lt",  # Lithuanian - 80 sessions
-    "pau", # Palauan - 70 sessions
+    "pau",  # Palauan - 70 sessions
     "mn",  # Mongolian - 60 sessions
     "ia",  # Interlingua - 55 sessions
     "mi",  # Maori - 55 sessions
@@ -304,15 +331,15 @@ language_popularity = [
     "ne",  # Nepali - 33 sessions
     "eo",  # Esperanto - 27 sessions
     "fy",  # Western Frisian - 22 sessions
-    "nds", # Low German - 22 sessions
-    "tlh", # Klingon - 22 sessions
+    "nds",  # Low German - 22 sessions
+    "tlh",  # Klingon - 22 sessions
     "ie",  # Interlingue - 18 sessions
     "tk",  # Turkmen - 17 sessions
     "fo",  # Faroese - 16 sessions
     "oc",  # Occitan - 16 sessions
-    "fur", # Friulian - 14 sessions
-    "ltg", # Latgalian - 11 sessions
-    "qya", # Quenya (Elvish) - 10 sessions
+    "fur",  # Friulian - 14 sessions
+    "ltg",  # Latgalian - 11 sessions
+    "qya",  # Quenya (Elvish) - 10 sessions
     "rw",  # Kinyarwanda - 5 sessions
 ]
 
@@ -369,10 +396,14 @@ class Language:
         self.language_code = language_code
         self.word_list = word_list
         self.word_list_supplement = language_codes_5words_supplements[language_code]
-        todays_idx = get_todays_idx()
+        self.config = language_configs[language_code]
+
+        # Get timezone offset from config (defaults to 0/UTC if not specified)
+        self.timezone_offset = self.config.get("timezone_offset", 0)
+
+        todays_idx = get_todays_idx(self.timezone_offset)
         self.daily_word = word_list[todays_idx % len(word_list)]
         self.todays_idx = todays_idx
-        self.config = language_configs[language_code]
 
         self.characters = language_characters[language_code]
         # remove chars that aren't used to reduce bloat a bit
@@ -390,6 +421,9 @@ class Language:
         layout_meta = self.keyboard_layouts[self.keyboard_layout_name]
         self.keyboard_layout_label = layout_meta["label"]
         self.keyboard = layout_meta["rows"]
+
+        # Build diacritic hints for keyboard keys (e.g., 'a' -> ['ä', 'à', 'â'])
+        self.key_diacritic_hints = self._build_key_diacritic_hints()
 
     def _build_keyboard_layouts(self, keyboard_config):
         """
@@ -448,6 +482,41 @@ class Language:
             keyboard[-2].insert(-1, popped_c)
         return keyboard
 
+    def _build_key_diacritic_hints(self):
+        """
+        Build a mapping of keyboard keys to their diacritic equivalents.
+
+        If the language has a diacritic_map (e.g., {'a': ['ä', 'à']}),
+        this returns a dict like {'a': {'text': 'äà', 'above': False}}
+        for display as hints on keys.
+
+        When there are 4+ variants, the hint is shown above the main letter
+        to accommodate the longer text.
+        """
+        diacritic_map = self.config.get("diacritic_map", {})
+        if not diacritic_map:
+            return {}
+
+        # Get all keys on the current keyboard
+        keyboard_keys = set()
+        for row in self.keyboard:
+            for key in row:
+                keyboard_keys.add(key.lower())
+
+        hints = {}
+        for base_char, variants in diacritic_map.items():
+            if base_char.lower() in keyboard_keys:
+                # Show all variants (up to 5), position above if 4+
+                num_variants = len(variants)
+                hint_str = "".join(variants[:5])
+                if num_variants > 5:
+                    hint_str += "…"
+                hints[base_char.lower()] = {
+                    "text": hint_str,
+                    "above": num_variants >= 4,
+                }
+        return hints
+
 
 ###############################################################################
 # ROUTES
@@ -476,6 +545,7 @@ def index():
         language_popularity=language_popularity,
         todays_idx=get_todays_idx(),
         other_wordles=other_wordles,
+        ui=default_language_config.get("ui", {}),
     )
 
 
