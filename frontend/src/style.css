@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@source "../../webapp/templates/**/*.html";
+
+/* Enable class-based dark mode (Tailwind v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =============================================================================
+   Wordle Game Styles
+   ============================================================================= */
+
+/* Tile states */
+.correct {
+    @apply bg-green-500;
+}
+
+.semicorrect {
+    @apply bg-yellow-500;
+}
+
+.incorrect {
+    @apply bg-neutral-500;
+}
+
+/* Keyboard key states */
+.key {
+    @apply bg-neutral-200 text-black;
+    touch-action: manipulation;
+}
+
+.key-correct {
+    @apply bg-green-500 text-white;
+}
+
+.key-semicorrect {
+    @apply bg-yellow-500 text-white;
+}
+
+.key-incorrect {
+    @apply bg-neutral-500 text-white;
+}
+
+/* Safe area insets for notched devices */
+.safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* PWA Install Banner */
+.pwa-install-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.pwa-install-banner button {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.pwa-install-banner button:active {
+    transform: scale(0.95);
+}
+
+.pwa-install-banner button.dismiss {
+    background: transparent;
+    color: white;
+    padding: 8px;
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Prevent text selection on game elements */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Flip animation for tiles */
+@keyframes flip {
+    0% {
+        transform: rotateX(0);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0);
+    }
+}
+
+.flip {
+    animation: flip 0.5s ease-in-out;
+}
+
+/* Shake animation for invalid words */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Pop animation for typed letters */
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pop {
+    animation: pop 0.1s ease-in-out;
+}
