@@ -115,6 +115,11 @@ export interface PWAStatus {
     isStandalone: boolean;
     isIOS: boolean;
     hasComponent: boolean;
+    // From @khmyznikov/pwa-install component
+    componentReady: boolean;
+    isInstallAvailable: boolean;
+    isAppleMobile: boolean;
+    isAppleDesktop: boolean;
 }
 
 // =============================================================================
@@ -131,23 +136,33 @@ declare global {
         todays_idx?: string;
         todays_word?: string;
 
-        // Debug tools
+        // Debug tools (see frontend/src/debug.ts)
         debug?: {
             pwa: {
+                status: () => PWAStatus;
                 install: () => void;
+                forceDialog: () => void;
+                hideDialog: () => void;
                 showBanner: () => void;
                 hideBanner: () => void;
-                showIosModal: () => void;
-                status: () => PWAStatus;
                 reset: () => void;
+                component: () => HTMLElementTagNameMap['pwa-install'] | null;
             };
             help: () => void;
         };
     }
 
-    // PWA install component (optional third-party)
+    // PWA install component (@khmyznikov/pwa-install)
     interface HTMLElementTagNameMap {
-        'pwa-install': HTMLElement & { showDialog?: (force: boolean) => void };
+        'pwa-install': HTMLElement & {
+            showDialog: (forced?: boolean) => void;
+            hideDialog: () => void;
+            install: () => void;
+            isInstallAvailable: boolean;
+            isAppleMobilePlatform: boolean;
+            isAppleDesktopPlatform: boolean;
+            isUnderStandaloneMode: boolean;
+        };
     }
 }
 

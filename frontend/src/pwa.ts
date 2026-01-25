@@ -1,7 +1,11 @@
 /**
  * PWA Module - Progressive Web App support
- * Handles service worker registration, install prompts, and iOS fallbacks
+ * Uses @khmyznikov/pwa-install for cross-platform install dialogs
+ * Handles service worker registration and install prompts
  */
+
+// Import the pwa-install web component (registers <pwa-install> element)
+import '@khmyznikov/pwa-install';
 
 import type { BeforeInstallPromptEvent, PWAStatus } from './types';
 
@@ -16,12 +20,10 @@ export const isStandalone = (): boolean =>
     window.matchMedia('(display-mode: standalone)').matches ||
     (navigator as Navigator & { standalone?: boolean }).standalone === true;
 
-const getComponent = (): (HTMLElement & { showDialog?: (force: boolean) => void }) | null =>
-    document.querySelector('pwa-install');
+// Get the pwa-install component
+const getComponent = () => document.querySelector('pwa-install');
 
 const getBanner = (): HTMLElement | null => document.getElementById('pwa-install-banner');
-
-const getIosModal = (): HTMLElement | null => document.getElementById('ios-install-modal');
 
 export const hideBanner = (): void => {
     const banner = getBanner();
@@ -36,27 +38,25 @@ export const showBanner = (): void => {
     }
 };
 
-export const showIosModal = (): void => {
-    const modal = getIosModal();
-    if (modal) modal.style.display = 'flex';
-};
-
-export const closeIosModal = (): void => {
-    const modal = getIosModal();
-    if (modal) modal.style.display = 'none';
-};
-
+/**
+ * Trigger PWA install dialog
+ * Uses @khmyznikov/pwa-install component which handles:
+ * - Native Chrome/Edge install prompt
+ * - iOS "Add to Home Screen" instructions with screenshots
+ * - Android fallback instructions
+ * - macOS dock instructions
+ */
 export const install = (): void => {
     const component = getComponent();
 
-    // Try pwa-install component first (has nice iOS instructions)
-    if (component?.showDialog) {
+    // Use pwa-install component (handles all platforms with proper UI)
+    if (component) {
         component.showDialog(true);
         hideBanner();
         return;
     }
 
-    // Native prompt on Android/Chrome
+    // Fallback: Native prompt on Android/Chrome (shouldn't reach here normally)
     if (deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choice) => {
@@ -64,13 +64,6 @@ export const install = (): void => {
             deferredPrompt = null;
             hideBanner();
         });
-        return;
-    }
-
-    // iOS fallback
-    if (isIOS()) {
-        showIosModal();
-        hideBanner();
     }
 };
 
@@ -85,13 +78,21 @@ export const resetDismissed = (): void => {
     localStorage.removeItem('pwa_install_dismissed');
 };
 
-export const status = (): PWAStatus => ({
-    hasPrompt: !!deferredPrompt,
-    dismissed,
-    isStandalone: isStandalone(),
-    isIOS: isIOS(),
-    hasComponent: !!getComponent(),
-});
+export const status = (): PWAStatus => {
+    const component = getComponent();
+    return {
+        hasPrompt: !!deferredPrompt,
+        dismissed,
+        isStandalone: isStandalone(),
+        isIOS: isIOS(),
+        hasComponent: !!component,
+        // Additional info from pwa-install component
+        componentReady: !!component,
+        isInstallAvailable: component?.isInstallAvailable ?? false,
+        isAppleMobile: component?.isAppleMobilePlatform ?? false,
+        isAppleDesktop: component?.isAppleDesktopPlatform ?? false,
+    };
+};
 
 // Register service worker
 export const registerServiceWorker = (): void => {
@@ -109,7 +110,7 @@ export const registerServiceWorker = (): void => {
 export const init = (): void => {
     registerServiceWorker();
 
-    // Capture install prompt
+    // Capture install prompt (pwa-install component also does this, but we keep a reference)
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e as BeforeInstallPromptEvent;
@@ -129,8 +130,6 @@ const pwa = {
     dismiss,
     showBanner,
     hideBanner,
-    showIosModal,
-    closeIosModal,
     isIOS,
     isStandalone,
     status,

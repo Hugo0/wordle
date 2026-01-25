@@ -13,7 +13,6 @@ declare global {
     interface Window {
         triggerPwaInstall: () => void;
         dismissPwaInstall: () => void;
-        closeIosModal: () => void;
         showPwaInstallBanner: () => void;
     }
 }
@@ -24,7 +23,6 @@ pwa.init();
 // Expose global functions for HTML onclick handlers
 window.triggerPwaInstall = pwa.install;
 window.dismissPwaInstall = pwa.dismiss;
-window.closeIosModal = pwa.closeIosModal;
 window.showPwaInstallBanner = pwa.showBanner;
 
 // Detect which page we're on and create appropriate Vue app

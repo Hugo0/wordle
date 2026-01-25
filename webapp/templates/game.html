@@ -468,27 +468,14 @@
         <button class="dismiss" onclick="dismissPwaInstall()">&times;</button>
     </div>
 
-    <!-- iOS Install Instructions Modal -->
-    <div id="ios-install-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
-        <div class="bg-white dark:bg-neutral-800 text-black dark:text-white" style="border-radius: 16px; padding: 24px; margin: 20px; max-width: 320px; text-align: center;">
-            <div style="font-size: 48px; margin-bottom: 12px;">📲</div>
-            <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">Add to Home Screen</h3>
-            <p class="text-gray-600 dark:text-gray-400" style="margin-bottom: 20px; font-size: 14px;">Install Wordle for quick access and offline play</p>
-
-            <div class="bg-gray-100 dark:bg-neutral-700" style="text-align: left; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
-                <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                    <span style="background: #007AFF; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">1</span>
-                    <span>Tap the <strong>Share</strong> button <span style="font-size: 18px;">⎙</span></span>
-                </div>
-                <div style="display: flex; align-items: center;">
-                    <span style="background: #007AFF; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">2</span>
-                    <span>Tap <strong>"Add to Home Screen"</strong> <span style="font-size: 18px;">➕</span></span>
-                </div>
-            </div>
-
-            <button onclick="closeIosModal()" style="background: #007AFF; color: white; border: none; border-radius: 12px; padding: 14px 32px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;">Got it</button>
-        </div>
-    </div>
+    <!-- PWA Install Component (@khmyznikov/pwa-install) -->
+    <!-- Provides cross-platform install dialogs with proper iOS/Android instructions -->
+    <pwa-install
+        manifest-url="/static/manifest.json"
+        name="Wordle Global"
+        description="Play Wordle in {{ language.config.name_native }}"
+        install-description="Install for quick daily access"
+    ></pwa-install>
 
     <!-- Vite-built JS (includes Vue, game logic, PWA) -->
     <script type="module" src="{{ vite_assets.js }}"></script>
