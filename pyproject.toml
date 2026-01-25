@@ -1,0 +1,13 @@
+[tool.black]
+line-length = 100
+target-version = ['py314']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+    | \.venv
+    | venv
+    | node_modules
+    | webapp/static/dist
+)/
+'''

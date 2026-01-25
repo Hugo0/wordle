@@ -1,5 +1,12 @@
 /raw
 
+# Working session docs (internal notes)
+docs/
+
+# Node.js / Frontend build
+node_modules/
+.pnpm-store/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

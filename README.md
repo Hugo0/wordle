@@ -1,5 +1,7 @@
 # Wordle Global
 
+[![Tests](https://github.com/Hugo0/wordle/actions/workflows/test.yml/badge.svg)](https://github.com/Hugo0/wordle/actions/workflows/test.yml)
+
 [wordle.global](https://wordle.global/)
 
 Open Source Wordle in a bunch of languages
@@ -9,6 +11,8 @@ PULL REQUESTS WELCOME!
 It would be mega awesome if you could help in any way (especially with language addition/curation).
 
 contact: wordle@hugo0.com
+
+📖 **For developers**: See [CLAUDE.md](CLAUDE.md) for architecture details, key algorithms, and coding guidelines.
 
 **How to add a new language:**
 1. Make a folder in webapp/data/languages/ with the language code (e.g. en, de, fr, qya, etc.)
@@ -23,32 +27,76 @@ Voilà!
 
 If you want to test out your changes, you can run the server locally.
 
-1. Install Python 3
+### Prerequisites
 
-2. Install requirements
-```pip3 install -r requirements.txt```
+- Python 3.12+ (3.14 recommended)
+- pip
+- Node.js 22+ and pnpm (for frontend builds)
 
-3. Run web server locally
-```gunicorn --chdir webapp app:app```
+### Installation
 
-4. Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+```bash
+# Clone the repository
+git clone https://github.com/Hugo0/wordle.git
+cd wordle
 
-## TODOs
-- [ ] take into account browser bar height on mobile
-- [ ] curate wordlists for existing languages
-- [ ] add keyboard layouts for existing languages
-- [ ] add more languages
-- [ ] fully translate game interface (missing score streaks and options)
+# Install Python dependencies
+pip3 install -r requirements.txt
 
-Potential improvements:
-- [ ] nice animations for revealing letters & such
-- [ ] make a 4, 6, 7 letter version
-- [ ] deal with accents & character modifiers better (e.g. french is horrible right now)
+# Install frontend dependencies and build
+pnpm install
+pnpm build
+```
 
-Nice to haves:
-- [ ] improve code quality (e.g. make variable names consistent, code more reusable & less hacky)
-- [ ] properly integrate TailwindCSS and Vue.js (i.e. not from CDN)
-- [ ] tests...
+### Running the server
+
+```bash
+gunicorn --chdir webapp app:app
+```
+
+### Development
+
+Run these in two terminals:
+
+```bash
+# Terminal 1: Flask server (auto-reloads Python changes)
+gunicorn --chdir webapp --reload app:app
+
+# Terminal 2: Frontend watcher (auto-rebuilds JS/CSS changes)
+pnpm watch
+```
+
+Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+### Running Tests
+
+```bash
+# Python tests (data validation - word lists, configs, daily word algorithm)
+source venv/bin/activate  # if using venv
+python -m pytest tests/
+
+# TypeScript tests (game logic - color algorithm, stats calculation)
+pnpm test
+
+# TypeScript tests in watch mode
+pnpm test:watch
+```
+
+### Testing on mobile with ngrok
+
+To test on your phone or other devices, you can use [ngrok](https://ngrok.com/) to expose your local server:
+
+1. [Install ngrok](https://ngrok.com/download)
+
+2. Start your local server (see above)
+
+3. In a new terminal, run:
+
+   ```bash
+   ngrok http 8000
+   ```
+
+4. ngrok will display a public URL (e.g., `https://abc123.ngrok.io`) — open this on your mobile device
 
 ## Status of Languages
 ```  
@@ -127,6 +175,7 @@ Nice to haves:
 - Nadia H (my lovely beta-tester)
 - Daniel Rodriguez (for some inspiration with Tailwind)
 - [Wordles of the World](https://gitlab.com/rwmpelstilzchen/wordles) for a community-sourced list of wordle-derivatives (it's impressive how many actually exist)
+- All users, github issue raisers, and PR creators! Thanks so much!
 
 ## Data sources
 - https://www.nytimes.com/games/wordle/index.html - english word list
