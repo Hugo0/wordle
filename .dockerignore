@@ -5,7 +5,7 @@
 Dockerfile*
 radiance*
 tests
-data
+# data is needed at runtime for word lists
 docs
 tags
 
