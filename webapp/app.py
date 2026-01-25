@@ -245,6 +245,77 @@ def load_languages():
 
 languages = load_languages()
 
+# Language popularity order based on Google Analytics session data (last 30 days)
+# Updated: 2026-01-25
+# This determines default sort order for unplayed languages on homepage
+language_popularity = [
+    "fi",  # Finnish - 48K sessions (39% return rate!)
+    "en",  # English - 28K sessions
+    "ar",  # Arabic - 13K sessions
+    "tr",  # Turkish - 7K sessions
+    "hr",  # Croatian - 5K sessions
+    "bg",  # Bulgarian - 5K sessions
+    "de",  # German - 4K sessions
+    "he",  # Hebrew - 3K sessions
+    "sv",  # Swedish - 3K sessions
+    "ru",  # Russian - 3K sessions
+    "hu",  # Hungarian - 2K sessions
+    "es",  # Spanish - 2K sessions
+    "et",  # Estonian - 2K sessions
+    "da",  # Danish - 2K sessions
+    "sr",  # Serbian - 2K sessions
+    "ro",  # Romanian - 1K sessions
+    "ca",  # Catalan - 1K sessions
+    "sk",  # Slovak - 900 sessions
+    "it",  # Italian - 750 sessions
+    "az",  # Azerbaijani - 750 sessions
+    "fr",  # French - 730 sessions
+    "lv",  # Latvian - 700 sessions
+    "la",  # Latin - 700 sessions
+    "gl",  # Galician - 600 sessions
+    "mk",  # Macedonian - 600 sessions
+    "uk",  # Ukrainian - 560 sessions
+    "pt",  # Portuguese - 540 sessions
+    "vi",  # Vietnamese - 530 sessions
+    "pl",  # Polish - 420 sessions
+    "hy",  # Armenian - 410 sessions
+    "nb",  # Norwegian Bokmål - 400 sessions
+    "sl",  # Slovenian - 380 sessions
+    "nl",  # Dutch - 320 sessions
+    "cs",  # Czech - 310 sessions
+    "hyw", # Western Armenian - 310 sessions
+    "fa",  # Persian - 260 sessions
+    "eu",  # Basque - 250 sessions
+    "gd",  # Scottish Gaelic - 220 sessions
+    "ga",  # Irish - 200 sessions
+    "ko",  # Korean - 160 sessions
+    "ka",  # Georgian - 160 sessions
+    "nn",  # Norwegian Nynorsk - 140 sessions
+    "is",  # Icelandic - 120 sessions
+    "ckb", # Central Kurdish - 90 sessions
+    "el",  # Greek - 90 sessions
+    "lt",  # Lithuanian - 80 sessions
+    "pau", # Palauan - 70 sessions
+    "mn",  # Mongolian - 60 sessions
+    "ia",  # Interlingua - 55 sessions
+    "mi",  # Maori - 55 sessions
+    "lb",  # Luxembourgish - 50 sessions
+    "br",  # Breton - 40 sessions
+    "ne",  # Nepali - 33 sessions
+    "eo",  # Esperanto - 27 sessions
+    "fy",  # Western Frisian - 22 sessions
+    "nds", # Low German - 22 sessions
+    "tlh", # Klingon - 22 sessions
+    "ie",  # Interlingue - 18 sessions
+    "tk",  # Turkmen - 17 sessions
+    "fo",  # Faroese - 16 sessions
+    "oc",  # Occitan - 16 sessions
+    "fur", # Friulian - 14 sessions
+    "ltg", # Latgalian - 11 sessions
+    "qya", # Quenya (Elvish) - 10 sessions
+    "rw",  # Kinyarwanda - 5 sessions
+]
+
 # status
 with open("../scripts/out/status_list.txt", "r") as f:
     status_list = [line.strip() for line in f]
@@ -402,6 +473,7 @@ def index():
         "index.html",
         languages=languages,
         language_codes=language_codes,
+        language_popularity=language_popularity,
         todays_idx=get_todays_idx(),
         other_wordles=other_wordles,
     )

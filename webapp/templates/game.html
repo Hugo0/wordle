@@ -41,8 +41,11 @@
     <meta property="og:type" content="website">
     <meta property="og:description" content="{{ language.config.meta.description }}">
     <meta property="og:image" content="https://wordle.global/static/images/og-image.png">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="https://wordle.global">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="wordle.global">
+    <meta property="twitter:url" content="https://wordle.global/{{ language.config.language_code }}">
     <meta property="twitter:title" content="Wordle {{ language.config.name_native }}/{{ language.config.name }}">
     <meta property="twitter:description" content="{{ language.config.meta.description }}">
     <meta property="twitter:image" content="https://wordle.global/static/images/og-image.png">
@@ -300,6 +303,30 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- Haptic feedback toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p>Haptic Feedback</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" v-model="hapticsEnabled" @change="toggleHaptics" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                                </label>
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- Sound toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p>Sound Effects</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" v-model="soundEnabled" @change="toggleSound" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                                </label>
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
                                 <p class="flex-grow">Right to left</p>
@@ -353,16 +380,26 @@
 
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <div class="flex">
-                                <p class="flex-grow">Feedback & Bugs</p>
-                                <a href="https://github.com/Hugo0/wordle/issues" class="underline text-neutral-500">GitHub issues</a>
-                            </div>
-
-
-                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <div class="flex">
-                                <p class="flex-grow">Source Code</p>
-                                <a href="https://www.github.com/Hugo0/wordle" class="underline text-neutral-500">GitHub</a>
+                            <div class="flex flex-col gap-3 py-1">
+                                <a href="https://github.com/Hugo0/wordle/issues"
+                                   target="_blank"
+                                   class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+                                    </svg>
+                                    Report an Issue
+                                </a>
+                                <a href="https://github.com/Hugo0/wordle"
+                                   target="_blank"
+                                   class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
+                                        <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
+                                    </svg>
+                                    View Source Code
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -372,7 +409,7 @@
 
         <!-- stats modal -->
         <div v-show="show_stats_modal" class="fixed top-10 left-0 w-full h-full z-50 items-center flex" v-cloak>
-            <div class="relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 dark:border-neutral-600 rounded-xl" v-cloak>
+            <div class="relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 dark:border-neutral-600 rounded-xl max-h-[85vh] overflow-y-auto" v-cloak>
                 <div
                     class="border-0 rounded-lg drop-shadow-xl relative flex flex-col w-full bg-white dark:bg-neutral-800 outline-none focus:outline-none">
 
@@ -395,15 +432,15 @@
                         </p>
                     </div>
 
-                    <!-- Guess Distribution Graph -->
-                    <div class="px-6 py-3 border-t border-solid border-gray-200 dark:border-gray-600">
-                        <h4 class="text-sm font-semibold uppercase tracking-wide mb-2 text-center">Guess Distribution</h4>
-                        <div class="space-y-1">
-                            <div v-for="n in 6" :key="n" class="flex items-center gap-2">
-                                <span class="w-3 text-sm font-medium">[[ n ]]</span>
-                                <div class="flex-1 h-5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                    <!-- Guess Distribution Graph (compact for mobile) -->
+                    <div class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600">
+                        <h4 class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400">Guess Distribution</h4>
+                        <div class="space-y-0.5">
+                            <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
+                                <span class="w-3 text-xs font-medium">[[ n ]]</span>
+                                <div class="flex-1 h-4 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
                                     <div
-                                        class="h-full flex items-center justify-end px-1.5 text-xs font-bold text-white transition-all duration-300"
+                                        class="h-full flex items-center justify-end px-1 text-[10px] font-bold text-white transition-all duration-300"
                                         :class="isCurrentGuess(n) ? 'bg-green-500' : 'bg-gray-400 dark:bg-gray-500'"
                                         :style="{ width: getDistributionBarWidth(n) + '%' }">
                                         <span v-if="stats.guessDistribution">[[ stats.guessDistribution[n] ]]</span>
@@ -413,40 +450,102 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4 py-3 px-6 sm:gap-10 border-t border-solid border-gray-200 dark:border-gray-600">
-                        <div class="flex flex-col w-full sm:w-1/2 items-center sm:border-r">
-                            <p class="mt-2 uppercase font-semibold text-md whitespace-pre-line">{{
+                    <div class="flex flex-row gap-4 py-2 px-6 border-t border-solid border-gray-200 dark:border-gray-600">
+                        <div class="flex flex-col w-1/2 items-center border-r border-gray-200 dark:border-gray-600">
+                            <p class="uppercase font-semibold text-xs whitespace-pre-line text-neutral-500 dark:text-neutral-400">{{
                                 language.config.text.next_word }}</p>
-                            <p class="m-2 text-3xl" v-html="this.time_until_next_day">
+                            <p class="text-2xl font-bold" v-html="this.time_until_next_day">
                         </div>
-                        <!-- green share button -->
-                        <div class="flex flex-col w-full sm:w-1/2 items-center">
-                            <div class="flex flex-col items-center h-full w-full mx-auto p-1">
-                                <button
-                                    class="flex-auto w-full m-2 p-2 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold rounded-lg shadow-lg transition-colors"
-                                    v-on:click="shareResults">{{
-                                    language.config.text.share }}
-                                </button>
-                            </div>
+                        <!-- share button with success state -->
+                        <div class="flex flex-col w-1/2 items-center justify-center">
+                            <button
+                                class="w-full py-2 px-4 text-white font-semibold rounded-lg shadow-lg transition-all duration-200"
+                                :class="shareButtonState === 'success' ? 'bg-emerald-600 scale-105' : 'bg-green-500 hover:bg-green-600 active:bg-green-700'"
+                                v-on:click="shareResults">
+                                <span v-if="shareButtonState === 'success'">✓ {{ language.config.text.copied || 'Copied!' }}</span>
+                                <span v-else>{{ language.config.text.share }}</span>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center border-t border-solid border-gray-200 dark:border-gray-600 px-10 py-5">
-                        <div class="flex flex-col text-center flex-grow">
-                            <p class="text-3xl text-center">[[stats.n_games]]</p>
-                            <p class="text-sm">Games</p>
+                    <!-- Stats Tabs -->
+                    <div class="border-t border-solid border-gray-200 dark:border-gray-600">
+                        <!-- Tab buttons -->
+                        <div class="flex">
+                            <button v-on:click="statsTab = 'language'"
+                                class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                                :class="statsTab === 'language'
+                                    ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                    : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                                {{ language.config.name }}
+                            </button>
+                            <button v-on:click="statsTab = 'global'"
+                                class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                                :class="statsTab === 'global'
+                                    ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                    : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                                All Languages
+                            </button>
                         </div>
-                        <div class="flex flex-col text-center flex-grow">
-                            <p class="text-3xl" v-html="stats.win_percentage.toLocaleString('en') + '%'"></p>
-                            <p class="text-sm">Win %</p>
+
+                        <!-- Language Stats (current language) -->
+                        <div v-show="statsTab === 'language'" class="px-4 py-3">
+                            <div class="grid grid-cols-4 gap-1">
+                                <div class="text-center">
+                                    <p class="text-xl font-bold">[[stats.n_games]]</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xl font-bold">[[Math.round(stats.win_percentage)]]%</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win %</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xl font-bold"><span v-if="stats.current_streak > 0">🔥</span>[[stats.current_streak]]</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Streak</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xl font-bold">[[stats.longest_streak]]</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Best</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col text-center flex-grow">
-                            <p class="text-3xl">[[stats.current_streak]]</p>
-                            <p class="text-sm">Current Streak</p>
-                        </div>
-                        <div class="flex flex-col text-center flex-grow">
-                            <p class="text-3xl">[[stats.longest_streak]]</p>
-                            <p class="text-sm">Best Streak</p>
+
+                        <!-- Global Stats (all languages) -->
+                        <div v-show="statsTab === 'global'" class="px-4 py-3">
+                            <!-- Summary grid -->
+                            <div class="grid grid-cols-4 gap-1 mb-2">
+                                <div class="text-center">
+                                    <p class="text-xl font-bold">[[total_stats.total_games]]</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xl font-bold">[[Math.round(total_stats.total_win_percentage)]]%</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win %</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xl font-bold"><span v-if="total_stats.current_overall_streak > 0">🔥</span>[[total_stats.current_overall_streak]]</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Streak</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-xl font-bold">[[total_stats.languages_won?.length || 0]]</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages</p>
+                                </div>
+                            </div>
+
+                            <!-- Per-language breakdown -->
+                            <div v-if="Object.keys(total_stats.game_stats || {}).length > 0" class="max-h-24 overflow-y-auto border-t border-neutral-200 dark:border-neutral-600 pt-1">
+                                <div v-for="(langStats, code) in total_stats.game_stats" :key="code"
+                                    class="flex items-center justify-between py-1 text-xs">
+                                    <span class="font-medium">[[getLanguageName(code)]]</span>
+                                    <span class="text-neutral-500 dark:text-neutral-400">
+                                        [[langStats.n_games]] · [[Math.round(langStats.win_percentage)]]%
+                                        <span v-if="langStats.current_streak > 0" class="text-orange-500 ml-1">🔥[[langStats.current_streak]]</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <p v-else class="text-xs text-neutral-500 dark:text-neutral-400 text-center pt-1 border-t border-neutral-200 dark:border-neutral-600">
+                                Play more languages to see your global stats!
+                            </p>
                         </div>
                     </div>
 
