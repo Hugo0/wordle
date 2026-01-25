@@ -6,11 +6,11 @@ This file provides context for AI assistants (Claude, Cursor, etc.) working on t
 
 Wordle Global is an open-source Wordle clone supporting 65+ languages. Users play a daily word guessing game where they have 6 attempts to guess a 5-letter word.
 
-**Live site**: https://wordle.global
+**Live site**: [wordle.global](https://wordle.global)
 
 ## Architecture
 
-```
+```text
 wordle/
 ├── webapp/                    # Flask backend
 │   ├── app.py                 # Main Flask app, routes, data loading
@@ -92,7 +92,7 @@ pytest tests/      # Run Python tests
 1. **Word lists are shuffled**: Don't assume alphabetical order
 2. **Seed 42 is critical**: Changing it would change all daily words
 3. **Homepage not migrated**: `index.html` still uses CDN, game pages use Vite
-4. **145 pytest failures are expected**: Pre-existing data quality issues in some word lists
+4. **~145 pytest xfails expected**: Pre-existing data quality issues (keyboards, word lists) are marked as `xfail`
 5. **RTL languages**: Some languages (Hebrew, Arabic) are right-to-left
 
 ## Data Quality Issues (Known)

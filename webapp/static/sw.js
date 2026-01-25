@@ -94,15 +94,17 @@ self.addEventListener('fetch', (event) => {
 // Listen for manual cache clear message from page
 self.addEventListener('message', (event) => {
     if (event.data === 'CLEAR_CACHE') {
-        caches.keys().then((names) => {
-            Promise.all(names.map((name) => caches.delete(name)))
-                .then(() => {
-                    // Notify all clients that cache was cleared
-                    self.clients.matchAll().then((clients) => {
-                        clients.forEach((client) => client.postMessage('CACHE_CLEARED'));
+        event.waitUntil(
+            caches.keys().then((names) => {
+                return Promise.all(names.map((name) => caches.delete(name)))
+                    .then(() => {
+                        // Notify all clients that cache was cleared
+                        return self.clients.matchAll().then((clients) => {
+                            clients.forEach((client) => client.postMessage('CACHE_CLEARED'));
+                        });
                     });
-                });
-        });
+            })
+        );
     }
 
     if (event.data === 'SKIP_WAITING') {
