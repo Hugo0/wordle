@@ -4,6 +4,8 @@
  */
 import { createApp } from 'vue';
 import pwa from './pwa';
+import { haptic, setHapticsEnabled } from './haptics';
+import { sound, setSoundEnabled } from './sounds';
 import type {
     LanguageConfig,
     GameStats,
@@ -12,6 +14,25 @@ import type {
     Notification,
     KeyState,
 } from './types';
+
+// Total stats across all languages
+interface TotalStats {
+    total_games: number;
+    game_stats: Record<string, GameStats>;
+    languages_won: string[];
+    total_win_percentage: number;
+    longest_overall_streak: number;
+    current_overall_streak: number;
+    n_victories: number;
+    n_losses: number;
+}
+
+// Language info for display
+interface LanguageInfo {
+    language_code: string;
+    language_name: string;
+    language_name_native: string;
+}
 
 // These come from the HTML template (injected by Jinja)
 const word_list = window.word_list ?? [];
@@ -57,6 +78,8 @@ interface GameData {
     show_options_modal: boolean;
     show_not_valid_notif: boolean;
     darkMode: boolean;
+    hapticsEnabled: boolean;
+    soundEnabled: boolean;
     notification: Notification;
     tiles: string[][];
     tile_classes: string[][];
@@ -68,6 +91,10 @@ interface GameData {
     attempts: string;
     stats: GameStats;
     game_results: GameResults;
+    statsTab: 'language' | 'global';
+    total_stats: TotalStats;
+    languages: Record<string, LanguageInfo>;
+    shareButtonState: 'idle' | 'success';
 }
 
 export const createGameApp = () => {
@@ -97,6 +124,9 @@ export const createGameApp = () => {
                 show_options_modal: false,
                 show_not_valid_notif: false,
                 darkMode: document.documentElement.classList.contains('dark'),
+                hapticsEnabled: true,
+                soundEnabled: true,
+                shareButtonState: 'idle' as const,
 
                 notification: {
                     show: false,
@@ -236,6 +266,18 @@ export const createGameApp = () => {
                     guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
                 },
                 game_results: {},
+                statsTab: 'language',
+                total_stats: {
+                    total_games: 0,
+                    game_stats: {},
+                    languages_won: [],
+                    total_win_percentage: 0,
+                    longest_overall_streak: 0,
+                    current_overall_streak: 0,
+                    n_victories: 0,
+                    n_losses: 0,
+                },
+                languages: {},
             };
         },
 
@@ -256,7 +298,11 @@ export const createGameApp = () => {
         created() {
             window.addEventListener('keydown', (e) => this.keyDown(e));
             this.loadGameResults();
+            this.loadLanguages();
+            this.loadHapticsPreference();
+            this.loadSoundPreference();
             this.stats = this.calculateStats(this.config?.language_code);
+            this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
         },
 
@@ -382,6 +428,7 @@ export const createGameApp = () => {
             },
 
             keyClick(key: string): void {
+                haptic(); // Tactile feedback for virtual keyboard
                 this.keyDown({ key } as KeyboardEvent);
             },
 
@@ -397,7 +444,7 @@ export const createGameApp = () => {
 
                 if (this.game_over) return;
 
-                if (key === 'Enter' || key === '⇨') {
+                if (['Enter', '⇨', '⟹', 'ENTER'].includes(key)) {
                     if (!this.full_word_inputted) {
                         this.showNotification('Please enter a full word');
                         return;
@@ -406,6 +453,7 @@ export const createGameApp = () => {
                     const row = this.tiles[this.active_row];
                     const word = row ? row.join('').toLowerCase() : '';
                     if (this.checkWord(word)) {
+                        haptic.confirm(); // Valid word submitted
                         this.updateColors();
                         this.active_row++;
                         this.active_cell = 0;
@@ -417,6 +465,7 @@ export const createGameApp = () => {
                             this.gameLost();
                         }
                     } else {
+                        haptic.error(); // Invalid word
                         this.showNotification('Word is not valid');
                     }
                 } else if (['Backspace', 'Delete', '⌫'].includes(key) && this.active_cell > 0) {
@@ -460,6 +509,8 @@ export const createGameApp = () => {
                 this.game_won = true;
                 this.emoji_board = this.getEmojiBoard();
                 this.showNotification(this.todays_word.toUpperCase(), 12);
+                haptic.success(); // Celebration!
+                sound.win();
 
                 setTimeout(() => {
                     this.show_stats_modal = true;
@@ -467,6 +518,7 @@ export const createGameApp = () => {
 
                 this.saveResult(true);
                 this.stats = this.calculateStats(this.config?.language_code);
+                this.total_stats = this.calculateTotalStats();
 
                 // Show PWA install prompt after game completion
                 setTimeout(() => pwa.showBanner(), 2000);
@@ -474,6 +526,8 @@ export const createGameApp = () => {
 
             gameLost(): void {
                 this.showNotification(this.todays_word.toUpperCase(), 12);
+                haptic(); // Subtle acknowledgment
+                sound.lose();
                 this.game_over = true;
                 this.game_won = false;
                 this.attempts = 'X';
@@ -484,6 +538,7 @@ export const createGameApp = () => {
 
                 this.saveResult(false);
                 this.stats = this.calculateStats(this.config?.language_code);
+                this.total_stats = this.calculateTotalStats();
             },
 
             saveResult(won: boolean): void {
@@ -662,16 +717,106 @@ export const createGameApp = () => {
                 };
             },
 
+            loadLanguages(): void {
+                // Load languages from localStorage (saved by homepage) or use empty object
+                try {
+                    const stored = localStorage.getItem('languages_cache');
+                    if (stored) {
+                        this.languages = JSON.parse(stored);
+                    }
+                } catch {
+                    // Ignore errors
+                }
+
+                // Also save current language to cache
+                if (this.config) {
+                    this.languages[this.config.language_code] = {
+                        language_code: this.config.language_code,
+                        language_name: this.config.name,
+                        language_name_native: this.config.name_native,
+                    };
+                    try {
+                        localStorage.setItem('languages_cache', JSON.stringify(this.languages));
+                    } catch {
+                        // Ignore storage errors
+                    }
+                }
+            },
+
+            calculateTotalStats(): TotalStats {
+                let n_victories = 0;
+                let n_losses = 0;
+                let current_overall_streak = 0;
+                let longest_overall_streak = 0;
+                const languages_won: string[] = [];
+                const game_stats: Record<string, GameStats> = {};
+
+                // Collect and sort all results by date
+                const all_results: (GameResult & { language?: string })[] = [];
+                for (const [language_code, results] of Object.entries(this.game_results) as [string, GameResult[]][]) {
+                    for (const result of results) {
+                        all_results.push({ ...result, language: language_code });
+                    }
+                }
+                all_results.sort((a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime());
+
+                // Calculate overall streaks
+                for (const result of all_results) {
+                    if (result.won) {
+                        n_victories++;
+                        current_overall_streak++;
+                        longest_overall_streak = Math.max(longest_overall_streak, current_overall_streak);
+                    } else {
+                        n_losses++;
+                        current_overall_streak = 0;
+                    }
+                }
+
+                // Calculate per-language stats
+                for (const language_code of Object.keys(this.game_results)) {
+                    const stats = this.calculateStats(language_code);
+                    game_stats[language_code] = stats;
+
+                    if (stats.n_wins > 0) {
+                        languages_won.push(language_code);
+                    }
+                }
+
+                const total_games = n_victories + n_losses;
+                return {
+                    total_games,
+                    game_stats,
+                    languages_won,
+                    total_win_percentage: total_games > 0 ? (n_victories / total_games) * 100 : 0,
+                    longest_overall_streak,
+                    current_overall_streak,
+                    n_victories,
+                    n_losses,
+                };
+            },
+
+            getLanguageName(code: string): string {
+                return this.languages[code]?.language_name_native || this.languages[code]?.language_name || code;
+            },
+
             async shareResults(): Promise<void> {
                 const text = this.getShareText();
                 const langCode = this.config?.language_code ?? '';
                 const url = `https://wordle.global/${langCode}`;
+
+                const onSuccess = () => {
+                    this.shareButtonState = 'success';
+                    setTimeout(() => {
+                        this.shareButtonState = 'idle';
+                    }, 2000);
+                };
 
                 // Try Web Share API first
                 if (navigator.share) {
                     try {
                         await navigator.share({ text, url });
                         this.showNotification(this.config?.text?.shared || 'Shared!');
+                        onSuccess();
                         return;
                     } catch (error) {
                         if (error instanceof Error && error.name === 'AbortError') return;
@@ -679,6 +824,7 @@ export const createGameApp = () => {
                         try {
                             await navigator.share({ text: `${text}\n${url}` });
                             this.showNotification(this.config?.text?.shared || 'Shared!');
+                            onSuccess();
                             return;
                         } catch (e) {
                             if (e instanceof Error && e.name === 'AbortError') return;
@@ -691,6 +837,7 @@ export const createGameApp = () => {
                     try {
                         await navigator.clipboard.writeText(text);
                         this.showNotification(this.config?.text?.copied || 'Copied to clipboard!');
+                        onSuccess();
                         return;
                     } catch (error) {
                         if (error instanceof Error) {
@@ -702,6 +849,7 @@ export const createGameApp = () => {
                 // Legacy execCommand fallback
                 if (this.copyViaExecCommand(text)) {
                     this.showNotification(this.config?.text?.copied || 'Copied to clipboard!');
+                    onSuccess();
                     return;
                 }
 
@@ -771,6 +919,61 @@ export const createGameApp = () => {
                     }
                     try {
                         localStorage.setItem('darkMode', this.darkMode ? 'true' : 'false');
+                    } catch {
+                        // localStorage unavailable
+                    }
+                });
+            },
+
+            loadHapticsPreference(): void {
+                try {
+                    const stored = localStorage.getItem('hapticsEnabled');
+                    if (stored !== null) {
+                        this.hapticsEnabled = stored === 'true';
+                    } else {
+                        // Default to enabled
+                        this.hapticsEnabled = true;
+                    }
+                    setHapticsEnabled(this.hapticsEnabled);
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            toggleHaptics(): void {
+                this.$nextTick(() => {
+                    setHapticsEnabled(this.hapticsEnabled);
+                    if (this.hapticsEnabled) {
+                        haptic(); // Give feedback that haptics are now on
+                    }
+                    try {
+                        localStorage.setItem('hapticsEnabled', this.hapticsEnabled ? 'true' : 'false');
+                    } catch {
+                        // localStorage unavailable
+                    }
+                });
+            },
+
+            loadSoundPreference(): void {
+                try {
+                    const stored = localStorage.getItem('soundEnabled');
+                    if (stored !== null) {
+                        this.soundEnabled = stored === 'true';
+                    } else {
+                        // Default to enabled
+                        this.soundEnabled = true;
+                    }
+                    setSoundEnabled(this.soundEnabled);
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            toggleSound(): void {
+                this.$nextTick(() => {
+                    setSoundEnabled(this.soundEnabled);
+                    try {
+                        localStorage.setItem('soundEnabled', this.soundEnabled ? 'true' : 'false');
                     } catch {
                         // localStorage unavailable
                     }

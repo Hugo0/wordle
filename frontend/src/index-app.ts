@@ -3,6 +3,8 @@
  * Language selection and stats display
  */
 import { createApp, type App } from 'vue';
+import { setHapticsEnabled } from './haptics';
+import { setSoundEnabled } from './sounds';
 
 // Types for homepage data
 interface Language {
@@ -54,6 +56,7 @@ declare global {
         languages?: Record<string, Language>;
         other_wordles?: OtherWordle[];
         todays_idx?: string;
+        language_popularity?: string[];
     }
 }
 
@@ -62,6 +65,7 @@ export default function createIndexApp(): App {
     const languages = window.languages ?? {};
     const other_wordles = window.other_wordles ?? [];
     const todays_idx = window.todays_idx ?? '0';
+    const language_popularity = window.language_popularity ?? [];
 
     return createApp({
         delimiters: ['[[', ']]'],
@@ -70,8 +74,11 @@ export default function createIndexApp(): App {
                 showPopup: false,
                 showAboutModal: false,
                 showStatsModal: false,
+                showSettingsModal: false,
                 clickedLanguage: '',
                 darkMode: document.documentElement.classList.contains('dark'),
+                hapticsEnabled: true,
+                soundEnabled: true,
 
                 // Flask data
                 other_wordles,
@@ -80,11 +87,12 @@ export default function createIndexApp(): App {
 
                 // Copy of data for visualization (filtered)
                 other_wordles_vis: other_wordles,
-                languages_vis: Object.values(languages),
+                languages_vis: [] as Language[],
 
                 search_text: '',
                 total_stats: {} as TotalStats,
                 game_results: {} as Record<string, GameResult[]>,
+                expandedLanguage: '' as string, // For stats modal expansion
             };
         },
 
@@ -106,7 +114,16 @@ export default function createIndexApp(): App {
                 localStorage.setItem('game_results', JSON.stringify(this.game_results));
             }
 
+            // Cache languages for game page to access
+            this.cacheLanguages();
+
+            // Load preferences
+            this.loadHapticsPreference();
+            this.loadSoundPreference();
+
             this.total_stats = this.calculateTotalStats();
+            // Initialize languages with recently played first
+            this.languages_vis = this.getSortedLanguages();
         },
 
         mounted() {
@@ -122,6 +139,7 @@ export default function createIndexApp(): App {
                 if (event.key === 'Escape') {
                     this.showStatsModal = false;
                     this.showAboutModal = false;
+                    this.showSettingsModal = false;
                 }
             },
 
@@ -131,6 +149,23 @@ export default function createIndexApp(): App {
 
             openLink(url: string): void {
                 window.open(url);
+            },
+
+            cacheLanguages(): void {
+                // Cache language info to localStorage for game page to access
+                try {
+                    const languageCache: Record<string, { language_code: string; language_name: string; language_name_native: string }> = {};
+                    for (const [code, lang] of Object.entries(this.languages) as [string, Language][]) {
+                        languageCache[code] = {
+                            language_code: lang.language_code,
+                            language_name: lang.language_name,
+                            language_name_native: lang.language_name_native,
+                        };
+                    }
+                    localStorage.setItem('languages_cache', JSON.stringify(languageCache));
+                } catch {
+                    // Ignore storage errors
+                }
             },
 
             toggleDarkMode(): void {
@@ -145,16 +180,123 @@ export default function createIndexApp(): App {
                 });
             },
 
+            loadHapticsPreference(): void {
+                try {
+                    const stored = localStorage.getItem('hapticsEnabled');
+                    if (stored !== null) {
+                        this.hapticsEnabled = stored === 'true';
+                    }
+                    setHapticsEnabled(this.hapticsEnabled);
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            toggleHaptics(): void {
+                this.$nextTick(() => {
+                    setHapticsEnabled(this.hapticsEnabled);
+                    try {
+                        localStorage.setItem('hapticsEnabled', this.hapticsEnabled ? 'true' : 'false');
+                    } catch {
+                        // localStorage unavailable
+                    }
+                });
+            },
+
+            loadSoundPreference(): void {
+                try {
+                    const stored = localStorage.getItem('soundEnabled');
+                    if (stored !== null) {
+                        this.soundEnabled = stored === 'true';
+                    }
+                    setSoundEnabled(this.soundEnabled);
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            toggleSound(): void {
+                this.$nextTick(() => {
+                    setSoundEnabled(this.soundEnabled);
+                    try {
+                        localStorage.setItem('soundEnabled', this.soundEnabled ? 'true' : 'false');
+                    } catch {
+                        // localStorage unavailable
+                    }
+                });
+            },
+
+            getSortedLanguages(): Language[] {
+                const allLanguages = Object.values(this.languages) as Language[];
+                const playedLanguages: Language[] = [];
+                const unplayedLanguages: Language[] = [];
+
+                for (const lang of allLanguages) {
+                    if (this.game_results[lang.language_code]?.length > 0) {
+                        playedLanguages.push(lang);
+                    } else {
+                        unplayedLanguages.push(lang);
+                    }
+                }
+
+                // Sort played languages by most recent game date
+                playedLanguages.sort((a, b) => {
+                    const resultsA = this.game_results[a.language_code] || [];
+                    const resultsB = this.game_results[b.language_code] || [];
+                    const lastDateA = resultsA.length > 0 ? new Date(resultsA[resultsA.length - 1].date).getTime() : 0;
+                    const lastDateB = resultsB.length > 0 ? new Date(resultsB[resultsB.length - 1].date).getTime() : 0;
+                    return lastDateB - lastDateA;
+                });
+
+                // Sort unplayed languages by popularity (from GA data)
+                unplayedLanguages.sort((a, b) => {
+                    const indexA = language_popularity.indexOf(a.language_code);
+                    const indexB = language_popularity.indexOf(b.language_code);
+                    // Languages not in the popularity list go to the end
+                    const rankA = indexA === -1 ? 999 : indexA;
+                    const rankB = indexB === -1 ? 999 : indexB;
+                    return rankA - rankB;
+                });
+
+                return [...playedLanguages, ...unplayedLanguages];
+            },
+
+            hasPlayed(language_code: string): boolean {
+                return (this.game_results[language_code]?.length ?? 0) > 0;
+            },
+
+            getGamesPlayed(language_code: string): number {
+                return this.game_results[language_code]?.length ?? 0;
+            },
+
+            getCurrentStreak(language_code: string): number {
+                const stats = this.total_stats.game_stats?.[language_code];
+                return stats?.current_streak ?? 0;
+            },
+
+            getWinRate(language_code: string): number {
+                const stats = this.total_stats.game_stats?.[language_code];
+                return stats?.win_percentage ?? 0;
+            },
+
+            toggleLanguageExpansion(language_code: string): void {
+                if (this.expandedLanguage === language_code) {
+                    this.expandedLanguage = '';
+                } else {
+                    this.expandedLanguage = language_code;
+                }
+            },
+
             filterWordles(search_text: string): void {
                 if (search_text === '') {
                     this.other_wordles_vis = this.other_wordles;
-                    this.languages_vis = Object.values(this.languages);
+                    this.languages_vis = this.getSortedLanguages();
                 } else {
                     const visible_languages: Language[] = [];
                     const visible_wordles: OtherWordle[] = [];
 
-                    // Filter languages
-                    for (const language of Object.values(this.languages) as Language[]) {
+                    // Filter languages (maintain sorted order)
+                    for (const language of this.getSortedLanguages()) {
                         if (
                             language.language_name.toLowerCase().includes(search_text) ||
                             language.language_name_native.toLowerCase().includes(search_text)

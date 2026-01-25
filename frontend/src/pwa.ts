@@ -10,7 +10,22 @@ import '@khmyznikov/pwa-install';
 import type { BeforeInstallPromptEvent, PWAStatus } from './types';
 
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
-let dismissed = localStorage.getItem('pwa_install_dismissed') === 'true';
+
+const DISMISS_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 1 week
+
+const isDismissed = (): boolean => {
+    try {
+        const dismissedAt = localStorage.getItem('pwa_install_dismissed_at');
+        if (!dismissedAt) return false;
+        const elapsed = Date.now() - parseInt(dismissedAt, 10);
+        return elapsed < DISMISS_DURATION_MS;
+    } catch {
+        // localStorage may throw in private browsing mode
+        return false;
+    }
+};
+
+let dismissed = isDismissed();
 
 export const isIOS = (): boolean =>
     /iPad|iPhone|iPod/.test(navigator.userAgent) ||
@@ -69,13 +84,21 @@ export const install = (): void => {
 
 export const dismiss = (): void => {
     dismissed = true;
-    localStorage.setItem('pwa_install_dismissed', 'true');
+    try {
+        localStorage.setItem('pwa_install_dismissed_at', Date.now().toString());
+    } catch {
+        // localStorage may throw in private browsing mode
+    }
     hideBanner();
 };
 
 export const resetDismissed = (): void => {
     dismissed = false;
-    localStorage.removeItem('pwa_install_dismissed');
+    try {
+        localStorage.removeItem('pwa_install_dismissed_at');
+    } catch {
+        // localStorage may throw in private browsing mode
+    }
 };
 
 export const status = (): PWAStatus => {

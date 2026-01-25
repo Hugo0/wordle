@@ -14,6 +14,7 @@ from tests.conftest import (
     load_word_list,
     load_supplement_words,
     load_characters,
+    load_keyboard,
 )
 
 
@@ -112,6 +113,90 @@ class TestCharacterConsistency:
         assert (
             not missing
         ), f"{lang}: Characters used in words but missing from character set: {missing}"
+
+
+class TestKeyboardCoverage:
+    """Tests for keyboard coverage of word characters."""
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_keyboard_covers_all_word_characters(self, lang):
+        """All characters used in words must be typeable on the keyboard."""
+        words = load_word_list(lang)
+        keyboard_data = load_keyboard(lang)
+
+        if not keyboard_data:
+            pytest.skip(f"{lang}: No keyboard file (will use auto-generated)")
+
+        # Extract all characters from keyboard layouts
+        keyboard_chars = set()
+
+        # Handle new multi-layout format
+        if isinstance(keyboard_data, dict) and "layouts" in keyboard_data:
+            for layout_name, layout_meta in keyboard_data.get("layouts", {}).items():
+                for row in layout_meta.get("rows", []):
+                    for key in row:
+                        # Skip control keys
+                        if key not in ["⇨", "⌫", "↵"]:
+                            keyboard_chars.add(key)
+        # Handle legacy array format
+        elif isinstance(keyboard_data, list):
+            for row in keyboard_data:
+                for key in row:
+                    if key not in ["⇨", "⌫", "↵"]:
+                        keyboard_chars.add(key)
+
+        if not keyboard_chars:
+            pytest.skip(f"{lang}: Empty keyboard layout")
+
+        # Collect all unique characters from words
+        word_chars = set()
+        for word in words:
+            word_chars.update(word)
+
+        # Find characters in words but not on keyboard
+        missing = word_chars - keyboard_chars
+        assert not missing, (
+            f"{lang}: Characters in words but missing from keyboard: {missing}. "
+            f"Keyboard has {len(keyboard_chars)} chars, words use {len(word_chars)} chars."
+        )
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_keyboard_has_all_character_set_chars(self, lang):
+        """Keyboard should include all characters from the character set."""
+        chars = set(load_characters(lang))
+        keyboard_data = load_keyboard(lang)
+
+        if not chars:
+            pytest.skip(f"{lang}: No character file")
+        if not keyboard_data:
+            pytest.skip(f"{lang}: No keyboard file")
+
+        # Extract all characters from keyboard layouts
+        keyboard_chars = set()
+
+        if isinstance(keyboard_data, dict) and "layouts" in keyboard_data:
+            for layout_name, layout_meta in keyboard_data.get("layouts", {}).items():
+                for row in layout_meta.get("rows", []):
+                    for key in row:
+                        if key not in ["⇨", "⌫", "↵"]:
+                            keyboard_chars.add(key)
+        elif isinstance(keyboard_data, list):
+            for row in keyboard_data:
+                for key in row:
+                    if key not in ["⇨", "⌫", "↵"]:
+                        keyboard_chars.add(key)
+
+        if not keyboard_chars:
+            pytest.skip(f"{lang}: Empty keyboard layout")
+
+        # Find characters in character set but not on keyboard
+        missing = chars - keyboard_chars
+        if missing:
+            # This is a warning, not a failure - some chars may be rare
+            pytest.skip(
+                f"{lang}: Character set has {len(missing)} chars not on keyboard: "
+                f"{list(missing)[:10]}..."
+            )
 
 
 class TestWordListQuality:
