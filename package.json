@@ -21,6 +21,9 @@
     "author": "Hugo",
     "license": "MIT",
     "packageManager": "pnpm@10.17.1",
+    "dependencies": {
+        "@khmyznikov/pwa-install": "^0.6.2"
+    },
     "devDependencies": {
         "@tailwindcss/vite": "^4.1.18",
         "@types/node": "^25.0.10",
