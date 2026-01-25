@@ -237,7 +237,10 @@ export default function createIndexApp(): App {
 
                 // Collect and sort all results by date
                 const all_results: (GameResult & { language?: string })[] = [];
-                for (const [language_code, results] of Object.entries(this.game_results)) {
+                for (const [language_code, results] of Object.entries(this.game_results) as [
+                    string,
+                    GameResult[],
+                ][]) {
                     for (const result of results) {
                         all_results.push({ ...result, language: language_code });
                     }

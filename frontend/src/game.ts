@@ -786,7 +786,8 @@ export const createGameApp = () => {
                 // Return the width percentage for distribution bar
                 const distribution = this.stats.guessDistribution;
                 const count = distribution[n as 1 | 2 | 3 | 4 | 5 | 6] ?? 0;
-                const maxCount = Math.max(...Object.values(distribution), 1);
+                const values = Object.values(distribution) as number[];
+                const maxCount = Math.max(...values, 1);
                 // Minimum 8% width when count > 0 so the number is visible
                 return count > 0 ? Math.max((count / maxCount) * 100, 8) : 0;
             },
