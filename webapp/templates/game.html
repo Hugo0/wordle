@@ -462,7 +462,7 @@
                                 class="w-full py-2 px-4 text-white font-semibold rounded-lg shadow-lg transition-all duration-200"
                                 :class="shareButtonState === 'success' ? 'bg-emerald-600 scale-105' : 'bg-green-500 hover:bg-green-600 active:bg-green-700'"
                                 v-on:click="shareResults">
-                                <span v-if="shareButtonState === 'success'">✓ {{ language.config.text.copied || 'Copied!' }}</span>
+                                <span v-if="shareButtonState === 'success'">✓ {{ language.config.text.copied or 'Copied!' }}</span>
                                 <span v-else>{{ language.config.text.share }}</span>
                             </button>
                         </div>
