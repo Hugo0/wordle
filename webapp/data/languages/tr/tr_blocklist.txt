@@ -1,0 +1,30 @@
+# Turkish word blocklist - words to exclude from word list
+# These are automatically excluded when regenerating the word list
+# Format: one word per line, comments start with #
+
+# === Personal Names ===
+ahmed
+mecdi
+hamdi
+hüsnü
+adnan
+rabia
+erman
+izzet
+kazım
+verda
+yunus
+haşim
+remzi
+yenal
+nihad
+alpay
+
+# === Place Names ===
+gebze
+derik
+gabon
+kozan
+
+# === Religious/Sensitive Terms ===
+allah

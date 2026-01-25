@@ -5,6 +5,7 @@
 import { createApp, type App } from 'vue';
 import { setHapticsEnabled } from './haptics';
 import { setSoundEnabled } from './sounds';
+import pwa from './pwa';
 
 // Types for homepage data
 interface Language {
@@ -224,6 +225,14 @@ export default function createIndexApp(): App {
                         // localStorage unavailable
                     }
                 });
+            },
+
+            canInstallPwa(): boolean {
+                return !pwa.isStandalone();
+            },
+
+            installPwa(): void {
+                pwa.install();
             },
 
             getSortedLanguages(): Language[] {

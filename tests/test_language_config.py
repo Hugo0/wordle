@@ -11,6 +11,7 @@ from tests.conftest import (
     load_keyboard,
     load_word_list,
     load_characters,
+    get_diacritic_base_chars,
 )
 
 
@@ -153,10 +154,19 @@ class TestKeyboardConfig:
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_characters(self, lang):
-        """Keyboard should include all characters used in words."""
+        """Keyboard should include all characters used in words.
+
+        Note: If a language has diacritic_map configured, users can type base
+        characters (e.g., 'a') to match diacritical variants (e.g., 'ä').
+        So the keyboard only needs the base characters.
+        """
         keyboard = load_keyboard(lang)
         if keyboard is None:
             pytest.skip(f"{lang}: No keyboard file (auto-generated)")
+
+        # Skip empty keyboards - app auto-generates them from character set
+        if not keyboard or all(len(row) == 0 for row in keyboard):
+            pytest.skip(f"{lang}: Empty keyboard (app will auto-generate)")
 
         words = load_word_list(lang)
         word_chars = set()
@@ -167,10 +177,24 @@ class TestKeyboardConfig:
         keyboard_chars = set()
         for row in keyboard:
             for key in row:
-                if key not in ("⇨", "⌫", "ENTER", "DEL"):
+                if key not in ("⇨", "⟹", "⌫", "ENTER", "DEL"):
                     keyboard_chars.add(key)
 
-        missing = word_chars - keyboard_chars
+        # Get diacritic mapping - chars that can be typed via base char
+        diacritic_map = get_diacritic_base_chars(lang)
+
+        # Find characters in words but not on keyboard
+        # Account for diacritic normalization: if 'ä' maps to 'a' and 'a' is on keyboard, it's fine
+        missing = set()
+        for char in word_chars:
+            if char in keyboard_chars:
+                continue
+            # Check if this char can be typed via diacritic normalization
+            base_char = diacritic_map.get(char)
+            if base_char and base_char in keyboard_chars:
+                continue
+            missing.add(char)
+
         assert not missing, f"{lang}: Characters in words but not on keyboard: {missing}"
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -180,11 +204,15 @@ class TestKeyboardConfig:
         if keyboard is None:
             pytest.skip(f"{lang}: No keyboard file")
 
+        # Skip empty keyboards - app auto-generates them with enter/backspace
+        if not keyboard or all(len(row) == 0 for row in keyboard):
+            pytest.skip(f"{lang}: Empty keyboard (app will auto-generate)")
+
         all_keys = [key for row in keyboard for key in row]
-        has_enter = "⇨" in all_keys or "ENTER" in all_keys
+        has_enter = "⇨" in all_keys or "⟹" in all_keys or "ENTER" in all_keys
         has_backspace = "⌫" in all_keys or "DEL" in all_keys
 
-        assert has_enter, f"{lang}: Keyboard missing enter key (⇨ or ENTER)"
+        assert has_enter, f"{lang}: Keyboard missing enter key (⇨, ⟹, or ENTER)"
         assert has_backspace, f"{lang}: Keyboard missing backspace key (⌫ or DEL)"
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)

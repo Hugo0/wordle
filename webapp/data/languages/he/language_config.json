@@ -2,6 +2,13 @@
     "language_code": "he",
     "name": "Hebrew",
     "name_native": "עברית",
+    "final_form_map": {
+        "כ": "ך",
+        "מ": "ם",
+        "נ": "ן",
+        "פ": "ף",
+        "צ": "ץ"
+    },
     "meta": {
         "locale": "he",
         "title": "משחק המילה היומי ",
@@ -31,5 +38,34 @@
         "text_2_2": "הוא במילה, אבל לא במיקום הנכון. ",
         "text_2_3": "אינו נוכח במילה שאתה מנסה לנחש. ",
         "text_3": "מילה חדשה תהיה זמינה בכל יום! "
+    },
+    "ui": {
+        "settings": "הגדרות",
+        "dark_mode": "מצב כהה",
+        "dark_mode_desc": "החלף ערכת נושא כהה",
+        "haptic_feedback": "משוב הפטי",
+        "haptic_feedback_desc": "רטט בנגיעה",
+        "sound_effects": "אפקטים קוליים",
+        "sound_effects_desc": "צלילי ניצחון/הפסד",
+        "right_to_left": "מימין לשמאל",
+        "keyboard_layout": "פריסת מקלדת",
+        "easy_mode": "אפשר כל מילה",
+        "easy_mode_label": "מצב קל",
+        "install_app": "התקן אפליקציה",
+        "install_app_desc": "שחק אופליין וקבל אייקון",
+        "report_issue": "דווח על בעיה",
+        "view_source": "הצג קוד מקור",
+        "guess_distribution": "התפלגות ניחושים",
+        "games": "משחקים",
+        "win_percent": "% ניצחונות",
+        "streak": "רצף",
+        "best": "הטוב ביותר",
+        "all_languages": "כל השפות",
+        "languages": "שפות",
+        "play_more_languages": "שחק בשפות נוספות כדי לראות סטטיסטיקה כללית!",
+        "add_to_home": "הוסף למסך הבית",
+        "play_daily_like_app": "שחק Wordle יומי כאפליקציה",
+        "install": "התקן",
+        "close": "סגור"
     }
 }

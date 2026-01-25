@@ -2,6 +2,10 @@
     "language_code": "nn",
     "name": "Norwegian Nynorsk",
     "name_native": "Norsk Nynorsk",
+    "diacritic_map": {
+        "e": ["é", "è"],
+        "o": ["ó", "ò", "ô"]
+    },
     "meta": {
         "locale": "nn",
         "title": "The daily word game",

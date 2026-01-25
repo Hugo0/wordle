@@ -27,6 +27,31 @@
     touch-action: manipulation;
 }
 
+/* Key with diacritic hint - stack main char with hint above or below */
+.key.has-hint {
+    @apply flex flex-col items-center justify-center gap-0;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+/* When hint is above the main letter (for keys with many variants) */
+.key.has-hint.hint-above {
+    @apply flex-col;
+}
+
+.key-main {
+    @apply block leading-tight;
+}
+
+.key-hint {
+    @apply block text-[0.6rem] leading-none font-normal lowercase opacity-60;
+    letter-spacing: -0.3px;
+}
+
+.dark .key-hint {
+    @apply opacity-70;
+}
+
 .key-correct {
     @apply bg-green-500 text-white;
 }

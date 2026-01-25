@@ -1,0 +1,49 @@
+# Hungarian word blocklist - words to exclude from word list
+# These are automatically excluded when regenerating the word list
+# Format: one word per line, comments start with #
+
+# === Personal Names ===
+vince
+paula
+pisti
+szabi
+detti
+hunor
+annus
+mikes
+antos
+pálfi
+bánfi
+ivits
+demkó
+boncz
+gaudi
+
+# === Foreign Words (not Hungarian) ===
+baron
+sturm
+flint
+prinz
+stein
+cisco
+basic
+field
+dietz
+benes
+echte
+dacsó
+stolp
+reiss
+bábel
+
+# === Place Names ===
+kairó
+kijev
+ammán
+pomáz
+regéc
+monor
+gerde
+gecse
+amadé
+koltó

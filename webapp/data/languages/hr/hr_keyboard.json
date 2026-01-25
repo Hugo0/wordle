@@ -1,1 +1,21 @@
-[]
+{
+    "default": "croatian_qwertz",
+    "layouts": {
+        "croatian_qwertz": {
+            "label": "Croatian QWERTZ",
+            "rows": [
+                ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "š", "đ"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "č", "ć", "ž"],
+                ["⇨", "y", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "alphabetical": {
+            "label": "Alphabetical",
+            "rows": [
+                ["a", "b", "c", "č", "ć", "d", "đ", "e", "f", "g", "h"],
+                ["i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "š"],
+                ["⇨", "t", "u", "v", "z", "ž", "⌫"]
+            ]
+        }
+    }
+}
