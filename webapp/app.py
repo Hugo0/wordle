@@ -162,12 +162,55 @@ def load_language_config(lang):
 
 
 def load_keyboard(lang):
+    """
+    Return normalized keyboard layouts for a language.
+
+    Reads the language-specific keyboard JSON, handles legacy formats,
+    and always returns a dict with default layout metadata.
+    """
+    keyboard_path = f"{data_dir}languages/{lang}/{lang}_keyboard.json"
     try:
-        with open(f"{data_dir}languages/{lang}/{lang}_keyboard.json", "r") as f:
-            keyboard = json.load(f)
-        return keyboard
-    except:
-        return []
+        with open(keyboard_path, "r") as f:
+            keyboard_data = json.load(f)
+    except FileNotFoundError:
+        return {"default": None, "layouts": {}}
+    except Exception:
+        return {"default": None, "layouts": {}}
+
+    if isinstance(keyboard_data, list):
+        if not keyboard_data:
+            return {"default": None, "layouts": {}}
+        return {
+            "default": "default",
+            "layouts": {"default": {"label": "Default", "rows": keyboard_data}},
+        }
+
+    if not isinstance(keyboard_data, dict):
+        return {"default": None, "layouts": {}}
+
+    layouts_block = keyboard_data.get("layouts")
+    if isinstance(layouts_block, dict):
+        source_layouts = layouts_block
+    else:
+        source_layouts = {
+            key: value for key, value in keyboard_data.items() if key != "default"
+        }
+
+    normalized_layouts = {}
+    for layout_name, layout_value in source_layouts.items():
+        if isinstance(layout_value, dict):
+            rows = layout_value.get("rows", [])
+            label = layout_value.get("label") or layout_name.replace("_", " ").title()
+        else:
+            rows = layout_value
+            label = layout_name.replace("_", " ").title()
+        normalized_layouts[layout_name] = {"label": label, "rows": rows}
+
+    default_layout = keyboard_data.get("default")
+    if default_layout not in normalized_layouts:
+        default_layout = next(iter(normalized_layouts), None)
+
+    return {"default": default_layout, "layouts": normalized_layouts}
 
 
 def get_todays_idx():
@@ -243,7 +286,15 @@ print(f"***********************************************\n")
 class Language:
     """Holds the attributes of a language"""
 
-    def __init__(self, language_code, word_list):
+    def __init__(self, language_code, word_list, keyboard_layout=None):
+        """
+        Populate language metadata and select the desired keyboard layout.
+
+        Parameters:
+            language_code: Two-letter language identifier (e.g. 'en').
+            word_list: Base five-letter word list for the language.
+            keyboard_layout: Optional layout name chosen via query/cookie.
+        """
         self.language_code = language_code
         self.word_list = word_list
         self.word_list_supplement = language_codes_5words_supplements[language_code]
@@ -260,27 +311,71 @@ class Language:
         characters_used = list(set(characters_used))
         self.characters = [char for char in self.characters if char in characters_used]
 
-        self.keyboard = keyboards[language_code]
-        if self.keyboard == []:  # if no keyboard defined, then use available chars
-            # keyboard of ten characters per row
-            for i, c in enumerate(self.characters):
-                if i % 10 == 0:
-                    self.keyboard.append([])
-                self.keyboard[-1].append(c)
-            self.keyboard[-1].insert(0, "⇨")
-            self.keyboard[-1].append("⌫")
+        keyboard_config = keyboards.get(language_code, {"default": None, "layouts": {}})
+        self.keyboard_layouts = self._build_keyboard_layouts(keyboard_config)
+        self.keyboard_layout_name = self._select_keyboard_layout(
+            keyboard_layout, keyboard_config.get("default")
+        )
+        layout_meta = self.keyboard_layouts[self.keyboard_layout_name]
+        self.keyboard_layout_label = layout_meta["label"]
+        self.keyboard = layout_meta["rows"]
 
-            # Deal with bottom row being too crammed:
-            if len(self.keyboard[-1]) == 11:
-                popped_c = self.keyboard[-1].pop(1)
-                self.keyboard[-2].insert(-1, popped_c)
-            if len(self.keyboard[-1]) == 12:
-                popped_c = self.keyboard[-2].pop(0)
-                self.keyboard[-3].insert(-1, popped_c)
-                popped_c = self.keyboard[-1].pop(2)
-                self.keyboard[-2].insert(-1, popped_c)
-                popped_c = self.keyboard[-1].pop(2)
-                self.keyboard[-2].insert(-1, popped_c)
+    def _build_keyboard_layouts(self, keyboard_config):
+        """
+        Build canonical layout metadata from the raw keyboard config.
+
+        Ensures every layout has a label/rows and falls back to an
+        auto-generated alphabetical layout when no layouts are provided.
+        """
+        layouts = {}
+        for layout_name, layout_meta in keyboard_config.get("layouts", {}).items():
+            label = layout_meta.get("label") or layout_name.replace("_", " ").title()
+            rows = layout_meta.get("rows", [])
+            layouts[layout_name] = {"label": label, "rows": rows}
+
+        if not layouts:
+            layouts["alphabetical"] = {
+                "label": "Alphabetical",
+                "rows": self._generate_alphabetical_keyboard(),
+            }
+        return layouts
+
+    def _select_keyboard_layout(self, requested_layout, default_layout):
+        """
+        Choose the active keyboard layout in priority order.
+
+        Prefers the user-requested layout, then the config default,
+        and finally falls back to the first available layout.
+        """
+        if requested_layout and requested_layout in self.keyboard_layouts:
+            return requested_layout
+        if default_layout and default_layout in self.keyboard_layouts:
+            return default_layout
+        return next(iter(self.keyboard_layouts))
+
+    def _generate_alphabetical_keyboard(self):
+        keyboard = []
+        for i, c in enumerate(self.characters):
+            if i % 10 == 0:
+                keyboard.append([])
+            keyboard[-1].append(c)
+        if not keyboard:
+            return keyboard
+        keyboard[-1].insert(0, "⇨")
+        keyboard[-1].append("⌫")
+
+        # Deal with bottom row being too crammed:
+        if len(keyboard) >= 2 and len(keyboard[-1]) == 11:
+            popped_c = keyboard[-1].pop(1)
+            keyboard[-2].insert(-1, popped_c)
+        if len(keyboard) >= 3 and len(keyboard[-1]) == 12:
+            popped_c = keyboard[-2].pop(0)
+            keyboard[-3].insert(-1, popped_c)
+            popped_c = keyboard[-1].pop(2)
+            keyboard[-2].insert(-1, popped_c)
+            popped_c = keyboard[-1].pop(2)
+            keyboard[-2].insert(-1, popped_c)
+        return keyboard
 
 
 ###############################################################################
@@ -333,8 +428,19 @@ def language(lang_code):
     if lang_code not in language_codes:
         return "Language not found"
     word_list = language_codes_5words[lang_code]
-    language = Language(lang_code, word_list)
-    return render_template("game.html", language=language)
+    cookie_key = f"keyboard_layout_{lang_code}"
+    requested_layout = request.args.get("layout") or request.cookies.get(cookie_key)
+    language = Language(lang_code, word_list, requested_layout)
+    response = make_response(render_template("game.html", language=language))
+    selected_layout = language.keyboard_layout_name
+    if request.cookies.get(cookie_key) != selected_layout:
+        response.set_cookie(
+            cookie_key,
+            selected_layout,
+            max_age=60 * 60 * 24 * 365,
+            samesite="Lax",
+        )
+    return response
 
 
 if __name__ == "__main__":

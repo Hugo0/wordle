@@ -318,6 +318,24 @@
                                 </div>
                             </div>
 
+                            {% if language.keyboard_layouts|length > 1 %}
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <form method="get" class="flex flex-row items-center"
+                                aria-label="Keyboard layout selector">
+                                <p id="keyboard-layout-label" class="flex-grow">Keyboard layout</p>
+                                <select id="keyboard-layout-select" name="layout" aria-labelledby="keyboard-layout-label"
+                                    class="border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 bg-white dark:bg-neutral-700 dark:text-white"
+                                    onchange="this.form.submit()">
+                                    {% for layout_name, layout_meta in language.keyboard_layouts.items() %}
+                                    <option value="{{ layout_name }}"
+                                        {% if layout_name == language.keyboard_layout_name %}selected{% endif %}>
+                                        {{ layout_meta.label }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                            {% endif %}
+
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <div class="flex flex-row">
                                 <p class="flex-grow">Allow any word (<span class="italic">easy mode</span>)</p>
