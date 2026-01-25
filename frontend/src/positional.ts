@@ -23,9 +23,7 @@ export interface PositionalConfig {
  * Build a reverse map from final forms to regular forms.
  * Used for normalization when comparing guesses to answers.
  */
-export function buildFinalFormReverseMap(
-    config: PositionalConfig
-): Map<string, string> {
+export function buildFinalFormReverseMap(config: PositionalConfig): Map<string, string> {
     const map = new Map<string, string>();
     if (!config.final_form_map) return map;
 
@@ -43,11 +41,7 @@ export function buildFinalFormReverseMap(
  * @param isAtEnd - Whether this character is at the end of the word
  * @param config - The positional configuration for the language
  */
-export function toFinalForm(
-    char: string,
-    isAtEnd: boolean,
-    config: PositionalConfig
-): string {
+export function toFinalForm(char: string, isAtEnd: boolean, config: PositionalConfig): string {
     if (!isAtEnd || !config.final_form_map) return char;
     return config.final_form_map[char] || char;
 }
@@ -59,10 +53,7 @@ export function toFinalForm(
  * @param char - The character to potentially convert back
  * @param reverseMap - Map from final forms to regular forms
  */
-export function toRegularForm(
-    char: string,
-    reverseMap: Map<string, string>
-): string {
+export function toRegularForm(char: string, reverseMap: Map<string, string>): string {
     return reverseMap.get(char) || char;
 }
 
@@ -73,10 +64,7 @@ export function toRegularForm(
  * @param word - The word to normalize
  * @param config - The positional configuration
  */
-export function normalizePositional(
-    word: string,
-    config: PositionalConfig
-): string {
+export function normalizePositional(word: string, config: PositionalConfig): string {
     if (!config.final_form_map || word.length === 0) return word;
 
     const chars = [...word];
@@ -85,11 +73,11 @@ export function normalizePositional(
 
     // Convert all characters except the last to regular form
     for (let i = 0; i < lastIdx; i++) {
-        chars[i] = toRegularForm(chars[i], reverseMap);
+        chars[i] = toRegularForm(chars[i]!, reverseMap);
     }
 
     // Convert the last character to final form if applicable
-    chars[lastIdx] = toFinalForm(chars[lastIdx], true, config);
+    chars[lastIdx] = toFinalForm(chars[lastIdx]!, true, config);
 
     return chars.join('');
 }
@@ -101,10 +89,7 @@ export function normalizePositional(
  * @param char - The character to normalize
  * @param reverseMap - Map from final forms to regular forms
  */
-export function normalizePositionalChar(
-    char: string,
-    reverseMap: Map<string, string>
-): string {
+export function normalizePositionalChar(char: string, reverseMap: Map<string, string>): string {
     // Final forms normalize to their regular form
     return reverseMap.get(char) || char;
 }

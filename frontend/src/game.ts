@@ -875,19 +875,28 @@ export const createGameApp = () => {
 
                 // Collect and sort all results by date
                 const all_results: (GameResult & { language?: string })[] = [];
-                for (const [language_code, results] of Object.entries(this.game_results) as [string, GameResult[]][]) {
+                for (const [language_code, results] of Object.entries(this.game_results) as [
+                    string,
+                    GameResult[],
+                ][]) {
                     for (const result of results) {
                         all_results.push({ ...result, language: language_code });
                     }
                 }
-                all_results.sort((a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime());
+                all_results.sort(
+                    (a, b) =>
+                        new Date(a.date as string).getTime() - new Date(b.date as string).getTime()
+                );
 
                 // Calculate overall streaks
                 for (const result of all_results) {
                     if (result.won) {
                         n_victories++;
                         current_overall_streak++;
-                        longest_overall_streak = Math.max(longest_overall_streak, current_overall_streak);
+                        longest_overall_streak = Math.max(
+                            longest_overall_streak,
+                            current_overall_streak
+                        );
                     } else {
                         n_losses++;
                         current_overall_streak = 0;
@@ -918,7 +927,11 @@ export const createGameApp = () => {
             },
 
             getLanguageName(code: string): string {
-                return this.languages[code]?.language_name_native || this.languages[code]?.language_name || code;
+                return (
+                    this.languages[code]?.language_name_native ||
+                    this.languages[code]?.language_name ||
+                    code
+                );
             },
 
             async shareResults(): Promise<void> {
@@ -1069,7 +1082,10 @@ export const createGameApp = () => {
                         haptic(); // Give feedback that haptics are now on
                     }
                     try {
-                        localStorage.setItem('hapticsEnabled', this.hapticsEnabled ? 'true' : 'false');
+                        localStorage.setItem(
+                            'hapticsEnabled',
+                            this.hapticsEnabled ? 'true' : 'false'
+                        );
                     } catch {
                         // localStorage unavailable
                     }

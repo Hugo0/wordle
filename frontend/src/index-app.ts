@@ -155,8 +155,18 @@ export default function createIndexApp(): App {
             cacheLanguages(): void {
                 // Cache language info to localStorage for game page to access
                 try {
-                    const languageCache: Record<string, { language_code: string; language_name: string; language_name_native: string }> = {};
-                    for (const [code, lang] of Object.entries(this.languages) as [string, Language][]) {
+                    const languageCache: Record<
+                        string,
+                        {
+                            language_code: string;
+                            language_name: string;
+                            language_name_native: string;
+                        }
+                    > = {};
+                    for (const [code, lang] of Object.entries(this.languages) as [
+                        string,
+                        Language,
+                    ][]) {
                         languageCache[code] = {
                             language_code: lang.language_code,
                             language_name: lang.language_name,
@@ -197,7 +207,10 @@ export default function createIndexApp(): App {
                 this.$nextTick(() => {
                     setHapticsEnabled(this.hapticsEnabled);
                     try {
-                        localStorage.setItem('hapticsEnabled', this.hapticsEnabled ? 'true' : 'false');
+                        localStorage.setItem(
+                            'hapticsEnabled',
+                            this.hapticsEnabled ? 'true' : 'false'
+                        );
                     } catch {
                         // localStorage unavailable
                     }
@@ -252,8 +265,14 @@ export default function createIndexApp(): App {
                 playedLanguages.sort((a, b) => {
                     const resultsA = this.game_results[a.language_code] || [];
                     const resultsB = this.game_results[b.language_code] || [];
-                    const lastDateA = resultsA.length > 0 ? new Date(resultsA[resultsA.length - 1].date).getTime() : 0;
-                    const lastDateB = resultsB.length > 0 ? new Date(resultsB[resultsB.length - 1].date).getTime() : 0;
+                    const lastDateA =
+                        resultsA.length > 0
+                            ? new Date(resultsA[resultsA.length - 1].date).getTime()
+                            : 0;
+                    const lastDateB =
+                        resultsB.length > 0
+                            ? new Date(resultsB[resultsB.length - 1].date).getTime()
+                            : 0;
                     return lastDateB - lastDateA;
                 });
 
