@@ -1,0 +1,39 @@
+{
+    "name": "wordle-global",
+    "version": "1.0.0",
+    "description": "Daily word puzzle game in 65+ languages",
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "watch": "vite build --watch",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage",
+        "format": "prettier --write \"frontend/src/**/*.{ts,js,vue}\" \"*.{js,ts,json}\"",
+        "format:check": "prettier --check \"frontend/src/**/*.{ts,js,vue}\" \"*.{js,ts,json}\""
+    },
+    "keywords": [
+        "wordle",
+        "game",
+        "puzzle",
+        "multilingual"
+    ],
+    "author": "Hugo",
+    "license": "MIT",
+    "packageManager": "pnpm@10.17.1",
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.1.18",
+        "@types/node": "^25.0.10",
+        "@vitejs/plugin-vue": "^6.0.3",
+        "autoprefixer": "^10.4.23",
+        "jsdom": "^27.4.0",
+        "postcss": "^8.5.6",
+        "prettier": "^3.8.1",
+        "tailwindcss": "^4.1.18",
+        "typescript": "^5.9.3",
+        "vite": "^7.3.1",
+        "vitest": "^4.0.18",
+        "vue": "^3.5.27",
+        "vue-tsc": "^3.2.3"
+    }
+}

@@ -1,23 +1,138 @@
-.key {
-    background-color: #d3d6da;
+/* Mobile viewport fixes */
+html, body {
+    touch-action: pan-y;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
 }
 
+/* Prevent double-tap zoom on interactive elements */
+button, .key, input, a {
+    touch-action: manipulation;
+}
+
+/* Safe area insets for notched phones */
+.safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Keyboard key styles */
+.key {
+    background-color: #d3d6da;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.dark .key {
+    background-color: #818384;
+    color: white;
+}
+
+.key:active {
+    transform: scale(0.95);
+}
+
+/* Game tile states */
 .correct {
     background-color: #6aaa63 !important;
+    border-color: #6aaa63 !important;
     color: white;
 }
 
 .semicorrect {
     background-color: #ccb757 !important;
+    border-color: #ccb757 !important;
     color: white;
 }
 
 .incorrect {
     background-color: #939598 !important;
+    border-color: #939598 !important;
     color: white;
 }
 
-/* hides vue elements initially */
+/* Dark mode tile colors (same as light - they're already good) */
+.dark .correct {
+    background-color: #538d4e !important;
+    border-color: #538d4e !important;
+}
+
+.dark .semicorrect {
+    background-color: #b59f3b !important;
+    border-color: #b59f3b !important;
+}
+
+.dark .incorrect {
+    background-color: #3a3a3c !important;
+    border-color: #3a3a3c !important;
+}
+
+/* Tile pop animation */
+.pop {
+    animation: pop 0.1s ease-in-out;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Hides Vue elements until mounted */
 [v-cloak] {
     display: none;
+}
+
+/* PWA install banner */
+.pwa-install-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #6aaa63 0%, #538d4e 100%);
+    color: white;
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.pwa-install-banner button {
+    background: white;
+    color: #538d4e;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.pwa-install-banner .dismiss {
+    background: transparent;
+    color: white;
+    padding: 8px;
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Standalone PWA mode adjustments */
+@media (display-mode: standalone) {
+    .pwa-install-banner {
+        display: none !important;
+    }
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+    .key {
+        min-height: 52px;
+        font-size: 14px;
+    }
 }

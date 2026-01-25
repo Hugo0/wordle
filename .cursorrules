@@ -1,0 +1,10 @@
+# Wordle Global - Cursor Rules
+
+See [CLAUDE.md](./CLAUDE.md) for full project documentation.
+
+## Quick Reference
+
+- **Format before commit**: `pnpm format` (TS) + `black webapp/ tests/` (Python)
+- **Run tests**: `pnpm test` + `pytest tests/`
+- **Build**: `pnpm build` (required before deploy)
+- **Don't change**: random seed (42), word list order, `webapp/static/dist/`

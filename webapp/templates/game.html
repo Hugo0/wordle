@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="{{ language.language_code }}" class="min-h-full">
+<script>
+    // Apply dark mode immediately to prevent flash
+    if (localStorage.getItem('darkMode') === 'true' ||
+        (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    }
+</script>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Wordle">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 
     <title>Wordle {{ language.config.name_native }}/{{ language.config.name }}</title>
     <meta name="description" content="{{ language.config.meta.description }}">
@@ -14,51 +32,74 @@
     <meta property="og:url" content="https://wordle.global/{{ language.config.language_code }}">
     <meta property="og:type" content="website">
     <meta property="og:description" content="{{ language.config.meta.description }}">
+    <meta property="og:image" content="https://wordle.global/static/images/og-image.png">
+    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="https://wordle.global">
     <meta property="twitter:title" content="Wordle {{ language.config.name_native }}/{{ language.config.name }}">
     <meta property="twitter:description" content="{{ language.config.meta.description }}">
-    <meta property="twitter:image" content="https://wordle.global/static/images/logo.png">
+    <meta property="twitter:image" content="https://wordle.global/static/images/og-image.png">
     
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Vue -->
-    <!-- <script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script> -->
-    <script src="https://unpkg.com/vue@3.0.2"></script>
-    <!-- Should not load them by CDN, but frontend build process was a bother -->
+    <!-- Vite-built assets (Tailwind + Vue bundled) -->
+    {% for css in vite_assets.css %}
+    <link rel="stylesheet" href="{{ css }}">
+    {% endfor %}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics (deferred to not block game) -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-273H1MLL3T');
+        // Defer GA loading until after page is interactive
+        window.addEventListener('load', function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T';
+            script.async = true;
+            document.head.appendChild(script);
+            gtag('js', new Date());
+            gtag('config', 'G-273H1MLL3T');
+        });
     </script>
 
-    <!-- load backend variables -->
+    <!-- load backend variables (on window for ES module access) -->
     <script>
-        const word_list = JSON.parse('{{language.word_list | tojson | safe}}');
-        const word_list_supplement = JSON.parse('{{language.word_list_supplement | tojson | safe}}');
-        console.log('\nFor the language: ' + '"{{language.config.name_native}}/{{language.config.name}}"' + ' there are:\n' + word_list.length + ' words in the word list\n' + word_list_supplement.length + ' words in the supplemental word list.');
-        const characters = JSON.parse('{{language.characters | tojson | safe}}');
-        const config = JSON.parse('{{language.config | tojson | safe}}');
-        console.log("Character Set: " + characters);
-        const todays_idx = "{{ language.todays_idx }}";
-        const todays_word = "{{ language.daily_word }}";
-        console.log("Today's word is: " + todays_word.toUpperCase() + "\nDon't cheat!");
+        window.word_list = JSON.parse('{{language.word_list | tojson | safe}}');
+        window.word_list_supplement = JSON.parse('{{language.word_list_supplement | tojson | safe}}');
+        console.log('\nFor the language: ' + '"{{language.config.name_native}}/{{language.config.name}}"' + ' there are:\n' + window.word_list.length + ' words in the word list\n' + window.word_list_supplement.length + ' words in the supplemental word list.');
+        window.characters = JSON.parse('{{language.characters | tojson | safe}}');
+        window.config = JSON.parse('{{language.config | tojson | safe}}');
+        console.log("Character Set: " + window.characters);
+        window.todays_idx = "{{ language.todays_idx }}";
+        window.todays_word = "{{ language.daily_word }}";
+        console.log("Today's word is: " + window.todays_word.toUpperCase() + "\nDon't cheat!");
     </script>
 </head>
 
-<body class="min-h-full h-screen">
-    <div id="app" class="min-h-full h-full">
-        <div class="min-h-full h-full">
-            <div class="wrapper container mx-auto flex flex-col h-full w-full max-w-lg">
+<body class="min-h-[100dvh] h-[100dvh] overflow-hidden overscroll-none bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <!-- Loading skeleton - shown immediately while JS loads -->
+    <div id="loading-skeleton" class="flex flex-col items-center justify-center h-[100dvh]" style="font-family: system-ui, sans-serif;">
+        <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px; margin-bottom: 20px;">WORDLE</div>
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; width: 200px;">
+            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out infinite;"></div>
+            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.1s infinite;"></div>
+            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.2s infinite;"></div>
+            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.3s infinite;"></div>
+            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.4s infinite;"></div>
+        </div>
+        <style>
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.4; }
+            }
+            .skeleton-tile { border: 2px solid #d3d6da; }
+            .dark .skeleton-tile { border-color: #3a3a3c; }
+        </style>
+    </div>
+
+    <div id="app" class="min-h-[100dvh] h-[100dvh]" style="display: none;">
+        <div class="min-h-[100dvh] h-[100dvh]">
+            <div class="wrapper container mx-auto flex flex-col h-full w-full max-w-lg safe-area-inset">
                 <!-- The Header -->
                 <header
-                    class="relative flex flex-row justify-between items-center h-[50px] my-auto p-1 px-3 lg:px-1 border-b border-neutral-300">
+                    class="relative flex flex-row justify-between items-center h-[50px] my-auto p-1 px-3 lg:px-1 border-b border-neutral-300 dark:border-neutral-600">
                     <button class="z-40 text-neutral-500" aria-label="instructions"
                         v-on:click="showHelpModal = !showHelpModal">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-neutral-500" width="24" height="24"
@@ -141,7 +182,7 @@
             <!-- <div v-if="showHelpModal" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"></div> -->
             <div id="HelpModal" v-show="showHelpModal"
                 class="fixed top-10 left-0 w-full h-full z-50 items-center flex mx-auto " v-cloak>
-                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-md sm:max-w-lg"
+                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
 
@@ -161,9 +202,9 @@
                         <p class="text-sm">{{ language.config.help.text_1_2 }}</p>
                         <p class="text-sm">{{ language.config.help.text_1_3 }}</p>
 
-                        <div class=border-t-2 border-gray-300></div>
+                        <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                         <div class="justify-center items-center flex flex-col gap-2">
-                            <h2 class="text-md font-semibold text-gray-900">{{ language.config.help.title_2 }}</h2>
+                            <h2 class="text-md font-semibold text-gray-900 dark:text-gray-100">{{ language.config.help.title_2 }}</h2>
 
                             <div class="grid grid-cols-5 gap-1 w-full max-w-xs">
                                 {% for c in language.word_list[0] %}
@@ -218,7 +259,7 @@
                                 language.config.help.text_2_3 }}</p>
                         </div>
 
-                        <div class=border-t-2 border-gray-300></div>
+                        <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
 
                         <button class="uppercase font-bold text-sm tracking-wider"
                             v-on:click="showHelpModal = !showHelpModal">{{ language.config.help.close }}
@@ -230,7 +271,7 @@
             <!-- options modal -->
             <div v-show="show_options_modal" class="fixed top-10 left-0 w-full h-full z-30 items-center mx-auto flex
             " v-cloak>
-                <div class="bg-white rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 mx-auto w-full max-w-xs sm:max-w-md"
+                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
                         <button class="absolute top-0 right-0 p-1 ml-auto z-50">
@@ -239,6 +280,18 @@
                         </button>
                         <h3 class="uppercase font-bold text-xl tracking-wider mb-5">SETTINGS</h3>
                         <div class=" space-y-4">
+                            <!-- Dark mode toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p>Dark Mode</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" v-model="darkMode" @change="toggleDarkMode" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                                </label>
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
                                 <p class="flex-grow">Right to left</p>
@@ -260,28 +313,30 @@
                                 </div>
                                 <div class="flex-row gap-2">
                                     <button class="font-bold text-sm tracking-wider"
-                                        v-on:click="right_to_left = !right_to_left">[[ config.right_to_left_on
+                                        v-on:click="right_to_left = !right_to_left">[[ config?.right_to_left_on
                                         ]]</button>
                                 </div>
                             </div>
 
-                            <div class=border-t-2 border-gray-300></div>
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <div class="flex flex-row">
                                 <p class="flex-grow">Allow any word (<span class="italic">easy mode</span>)</p>
                                 <!-- toggle at the end -->
                                 <input type="checkbox" v-model="allow_any_word" />
                             </div>
 
-                            <div class=border-t-2 border-gray-300></div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <div class="flex">
+                                <p class="flex-grow">Feedback & Bugs</p>
+                                <a href="https://github.com/Hugo0/wordle/issues" class="underline text-neutral-500">GitHub issues</a>
+                            </div>
+
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <div class="flex">
                                 <p class="flex-grow">Source Code</p>
                                 <a href="https://www.github.com/Hugo0/wordle" class="underline text-neutral-500">GitHub</a>
-                            </div>
-
-                            <div class=border-t-2 border-gray-300></div>
-                            <div class="flex">
-                                <p class="flex-grow">Feedback</p>
-                                <a href="https://github.com/Hugo0/wordle/issues" class="underline text-neutral-500">GitHub issues</a>
                             </div>
                         </div>
                     </div>
@@ -291,9 +346,9 @@
 
         <!-- stats modal -->
         <div v-show="show_stats_modal" class="fixed top-10 left-0 w-full h-full z-50 items-center flex" v-cloak>
-            <div class="relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 rounded-xl" v-cloak>
+            <div class="relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 dark:border-neutral-600 rounded-xl" v-cloak>
                 <div
-                    class="border-0 rounded-lg drop-shadow-xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    class="border-0 rounded-lg drop-shadow-xl relative flex flex-col w-full bg-white dark:bg-neutral-800 outline-none focus:outline-none">
 
                     <div class="flex-initial relative mx-5 mt-5 z-50">
                         <h3 class="flex-auto text-center text-xl font-bold">Wordle {{
@@ -306,15 +361,33 @@
                         </button>
                     </div>
 
-                    <div class="relative flex-auto mx-6 my-3 mb-8">
+                    <div class="relative flex-auto mx-6 my-3">
                         <p class="text-md text-center whitespace-pre-line" id="emoji_board" v-html="emoji_board">
                         </p>
-                        <p v-if="attempts=='0'" class="text-center text-sm text-gray-600">
+                        <p v-if="attempts=='0'" class="text-center text-sm text-gray-600 dark:text-gray-400">
                             {{ language.config.text.no_attempts }}
                         </p>
                     </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 py-3 px-6 sm:gap-10 border-t border-solid ">
+
+                    <!-- Guess Distribution Graph -->
+                    <div class="px-6 py-3 border-t border-solid border-gray-200 dark:border-gray-600">
+                        <h4 class="text-sm font-semibold uppercase tracking-wide mb-2 text-center">Guess Distribution</h4>
+                        <div class="space-y-1">
+                            <div v-for="n in 6" :key="n" class="flex items-center gap-2">
+                                <span class="w-3 text-sm font-medium">[[ n ]]</span>
+                                <div class="flex-1 h-5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                                    <div
+                                        class="h-full flex items-center justify-end px-1.5 text-xs font-bold text-white transition-all duration-300"
+                                        :class="isCurrentGuess(n) ? 'bg-green-500' : 'bg-gray-400 dark:bg-gray-500'"
+                                        :style="{ width: getDistributionBarWidth(n) + '%' }">
+                                        <span v-if="stats.guessDistribution">[[ stats.guessDistribution[n] ]]</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 py-3 px-6 sm:gap-10 border-t border-solid border-gray-200 dark:border-gray-600">
                         <div class="flex flex-col w-full sm:w-1/2 items-center sm:border-r">
                             <p class="mt-2 uppercase font-semibold text-md whitespace-pre-line">{{
                                 language.config.text.next_word }}</p>
@@ -324,15 +397,15 @@
                         <div class="flex flex-col w-full sm:w-1/2 items-center">
                             <div class="flex flex-col items-center h-full w-full mx-auto p-1">
                                 <button
-                                    class="flex-auto w-full m-2 p-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-lg"
-                                    v-on:click="" id="copy_button">{{
+                                    class="flex-auto w-full m-2 p-2 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold rounded-lg shadow-lg transition-colors"
+                                    v-on:click="shareResults">{{
                                     language.config.text.share }}
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center border-t border-solid px-10 py-5">
+                    <div class="flex flex-row justify-center border-t border-solid border-gray-200 dark:border-gray-600 px-10 py-5">
                         <div class="flex flex-col text-center flex-grow">
                             <p class="text-3xl text-center">[[stats.n_games]]</p>
                             <p class="text-sm">Games</p>
@@ -365,11 +438,42 @@
             </div>
         </div>
     </div>
+    <!-- /app -->
 
+    <!-- Simple banner to trigger the install dialog -->
+    <div id="pwa-install-banner" class="pwa-install-banner" style="display: none;">
+        <div style="flex: 1;">
+            <strong>Add to Home Screen</strong>
+            <div style="font-size: 13px; opacity: 0.9;">Play Wordle daily like an app</div>
+        </div>
+        <button onclick="triggerPwaInstall()">Install</button>
+        <button class="dismiss" onclick="dismissPwaInstall()">&times;</button>
     </div>
 
-    <!-- JS -->
-    <script src="{{ url_for('static', filename='game.js') }}"></script>
+    <!-- iOS Install Instructions Modal -->
+    <div id="ios-install-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div class="bg-white dark:bg-neutral-800 text-black dark:text-white" style="border-radius: 16px; padding: 24px; margin: 20px; max-width: 320px; text-align: center;">
+            <div style="font-size: 48px; margin-bottom: 12px;">📲</div>
+            <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">Add to Home Screen</h3>
+            <p class="text-gray-600 dark:text-gray-400" style="margin-bottom: 20px; font-size: 14px;">Install Wordle for quick access and offline play</p>
+
+            <div class="bg-gray-100 dark:bg-neutral-700" style="text-align: left; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                    <span style="background: #007AFF; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">1</span>
+                    <span>Tap the <strong>Share</strong> button <span style="font-size: 18px;">⎙</span></span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span style="background: #007AFF; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 12px;">2</span>
+                    <span>Tap <strong>"Add to Home Screen"</strong> <span style="font-size: 18px;">➕</span></span>
+                </div>
+            </div>
+
+            <button onclick="closeIosModal()" style="background: #007AFF; color: white; border: none; border-radius: 12px; padding: 14px 32px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%;">Got it</button>
+        </div>
+    </div>
+
+    <!-- Vite-built JS (includes Vue, game logic, PWA) -->
+    <script type="module" src="{{ vite_assets.js }}"></script>
 </body>
 
 </html>
