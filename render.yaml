@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: wordle-global
+    runtime: python
+    buildCommand: |
+      corepack enable
+      pnpm install
+      pnpm build
+      pip install -r requirements.txt
+    startCommand: gunicorn --chdir webapp app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: NODE_VERSION
+        value: "22"
