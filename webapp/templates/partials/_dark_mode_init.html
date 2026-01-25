@@ -1,0 +1,14 @@
+{# Dark mode initialization script - prevents flash of wrong theme on page load #}
+{# Must be placed BEFORE <head> to run immediately #}
+<script>
+    try {
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    } catch (e) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    }
+</script>

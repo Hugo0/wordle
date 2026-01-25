@@ -1,0 +1,23 @@
+{# Toggle switch macro - accessible button-based toggle #}
+{#
+   Usage:
+   {% from 'partials/_toggle_switch.html' import toggle_switch %}
+   {{ toggle_switch(model='darkMode', on_change='toggleDarkMode()') }}
+
+   Parameters:
+   - model: Vue v-model variable name (e.g., 'darkMode')
+   - on_change: Vue method to call on toggle (e.g., 'toggleDarkMode()')
+#}
+{% macro toggle_switch(model, on_change) %}
+<button
+    v-on:click="{{ model }} = !{{ model }}; {{ on_change }}"
+    class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
+    :class="{{ model }} ? 'bg-green-500' : 'bg-neutral-300 dark:bg-neutral-600'"
+    role="switch"
+    :aria-checked="{{ model }}">
+    <span
+        class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
+        :class="{{ model }} ? 'translate-x-6' : 'translate-x-1'">
+    </span>
+</button>
+{% endmacro %}

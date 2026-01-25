@@ -1,74 +1,30 @@
 <!DOCTYPE html>
 <html lang="{{ language.language_code }}" class="min-h-full">
-<script>
-    // Apply dark mode immediately to prevent flash
-    // Wrapped in try-catch for Safari Private Browsing where localStorage throws
-    try {
-        if (localStorage.getItem('darkMode') === 'true' ||
-            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        }
-    } catch (e) {
-        // Fall back to system preference
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        }
-    }
-</script>
+{% from 'partials/_toggle_switch.html' import toggle_switch %}
+{% include 'partials/_dark_mode_init.html' %}
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    {% include 'partials/_base_head.html' %}
 
-    <!-- Preconnect for faster loading -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Wordle">
-    <meta name="theme-color" content="#ffffff">
-
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
-    <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
-    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-
-    <title>Wordle {{ language.config.name_native }}/{{ language.config.name }}</title>
-    <meta name="description" content="{{ language.config.meta.description }}">
-    <meta property="description" content="{{ language.config.meta.description }}">
-    <meta name="keywords" content="wordle, {{ language.config.name}}, {{ language.config.name_native }}">
-    <meta property="og:title" content="Wordle {{ language.config.name_native }}/{{ language.config.name }}">
+    {# Page-specific SEO meta tags #}
+    {% set title = "Wordle " ~ language.config.name_native ~ "/" ~ language.config.name %}
+    {% set description = language.config.meta.description %}
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta property="description" content="{{ description }}">
+    <meta name="keywords" content="wordle, {{ language.config.name }}, {{ language.config.name_native }}">
+    <meta property="og:title" content="{{ title }}">
     <meta property="og:url" content="https://wordle.global/{{ language.config.language_code }}">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="{{ language.config.meta.description }}">
-    <meta property="og:image" content="https://wordle.global/static/images/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="{{ description }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="wordle.global">
     <meta property="twitter:url" content="https://wordle.global/{{ language.config.language_code }}">
-    <meta property="twitter:title" content="Wordle {{ language.config.name_native }}/{{ language.config.name }}">
-    <meta property="twitter:description" content="{{ language.config.meta.description }}">
-    <meta property="twitter:image" content="https://wordle.global/static/images/og-image.png">
-    
-    <!-- Vite-built assets (Tailwind + Vue bundled) -->
-    {% for css in vite_assets.css %}
-    <link rel="stylesheet" href="{{ css }}">
-    {% endfor %}
+    <meta property="twitter:title" content="{{ title }}">
+    <meta property="twitter:description" content="{{ description }}">
 
-    <!-- Global site tag (gtag.js) - Google Analytics (deferred to not block game) -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        // Defer GA loading until after page is interactive
-        window.addEventListener('load', function() {
-            var script = document.createElement('script');
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T';
-            script.async = true;
-            document.head.appendChild(script);
-            gtag('js', new Date());
-            gtag('config', 'G-273H1MLL3T');
-        });
-    </script>
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
     <!-- load backend variables (on window for ES module access) -->
     <script>
@@ -80,30 +36,13 @@
         console.log("Character Set: " + window.characters);
         window.todays_idx = "{{ language.todays_idx }}";
         window.todays_word = "{{ language.daily_word }}";
+        window.timezone_offset = {{ language.timezone_offset }};
         console.log("Today's word is: " + window.todays_word.toUpperCase() + "\nDon't cheat!");
     </script>
 </head>
 
 <body class="min-h-[100dvh] h-[100dvh] overflow-hidden overscroll-none bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
-    <!-- Loading skeleton - shown immediately while JS loads -->
-    <div id="loading-skeleton" class="flex flex-col items-center justify-center h-[100dvh]" style="font-family: system-ui, sans-serif;">
-        <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px; margin-bottom: 20px;">WORDLE</div>
-        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; width: 200px;">
-            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out infinite;"></div>
-            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.1s infinite;"></div>
-            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.2s infinite;"></div>
-            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.3s infinite;"></div>
-            <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.4s infinite;"></div>
-        </div>
-        <style>
-            @keyframes pulse {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.4; }
-            }
-            .skeleton-tile { border: 2px solid #d3d6da; }
-            .dark .skeleton-tile { border-color: #3a3a3c; }
-        </style>
-    </div>
+    {% include 'partials/_loading_skeleton.html' %}
 
     <div id="app" class="min-h-[100dvh] h-[100dvh]" style="display: none;">
         <div class="min-h-[100dvh] h-[100dvh]">
@@ -174,9 +113,16 @@
                     {% for row in language.keyboard %}
                     <div class="flex gap-1">
                         {% for c in row %}
-                        <button class="flex-1 rounded uppercase text-sm font-bold p-1 sm:p-2 h-14 key"
-                            data-char="{{ c }}" aria-label="{{ c }}" v-on:click="keyClick('{{ c }}')"
-                            v-bind:class="[[ key_classes['{{ c }}'] ]]">{{ c }}</button>
+                        {% set hint = language.key_diacritic_hints.get(c.lower(), {}) %}
+                        {% set hint_text = hint.text if hint else '' %}
+                        {% set hint_above = hint.above if hint else false %}
+                        <button class="flex-1 rounded uppercase text-sm font-bold p-1 sm:p-2 h-14 key{% if hint_text %} has-hint{% endif %}{% if hint_above %} hint-above{% endif %}"
+                            data-char="{{ c }}" aria-label="{{ c }}{% if hint_text %} (also matches {{ hint_text }}){% endif %}" v-on:click="keyClick('{{ c }}')"
+                            v-bind:class="[[ key_classes['{{ c }}'] ]]">
+                            {% if hint_above and hint_text %}<span class="key-hint">{{ hint_text }}</span>{% endif %}
+                            <span class="key-main">{{ c }}</span>
+                            {% if not hint_above and hint_text %}<span class="key-hint">{{ hint_text }}</span>{% endif %}
+                        </button>
                         {% endfor %}
                     </div>
                     {% endfor %}
@@ -186,8 +132,8 @@
 
         <!-- NOTIFICATIONS & MODALS-->
         <div class="container mx-auto flex w-full max-w-lg justify-center items-center overflow z-1" v-cloak>
-            <div v-show="showHelpModal || show_stats_modal || show_options_modal"
-                class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black" v-cloak></div>
+            {% set modals = "showHelpModal || show_stats_modal || show_options_modal" %}
+            {% include 'partials/_modal_backdrop.html' %}
 
             <!-- help modal -->
             <!-- <div v-if="showHelpModal" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"></div> -->
@@ -272,6 +218,30 @@
 
                         <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
 
+                        <div class="flex flex-col gap-2 py-2">
+                            <a href="https://github.com/Hugo0/wordle/issues"
+                               target="_blank"
+                               class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+                                </svg>
+                                {{ language.config.ui.report_issue or "Report an Issue" }}
+                            </a>
+                            <a href="https://github.com/Hugo0/wordle"
+                               target="_blank"
+                               class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
+                                    <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
+                                </svg>
+                                {{ language.config.ui.view_source or "View Source Code" }}
+                            </a>
+                        </div>
+
+                        <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+
                         <button class="uppercase font-bold text-sm tracking-wider"
                             v-on:click="showHelpModal = !showHelpModal">{{ language.config.help.close }}
                             <span class="text-lg text-neutral-400">×</span></button>
@@ -289,47 +259,38 @@
                             <span v-on:click="show_options_modal = !show_options_modal"
                                 class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
                         </button>
-                        <h3 class="uppercase font-bold text-xl tracking-wider mb-5">SETTINGS</h3>
+                        <h3 class="uppercase font-bold text-xl tracking-wider mb-5">{{ language.config.ui.settings or "Settings" }}</h3>
                         <div class=" space-y-4">
                             <!-- Dark mode toggle -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
-                                    <p>Dark Mode</p>
+                                    <p>{{ language.config.ui.dark_mode or "Dark Mode" }}</p>
                                 </div>
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" v-model="darkMode" @change="toggleDarkMode" class="sr-only peer">
-                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
-                                </label>
+                                {{ toggle_switch('darkMode', 'toggleDarkMode()') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- Haptic feedback toggle -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
-                                    <p>Haptic Feedback</p>
+                                    <p>{{ language.config.ui.haptic_feedback or "Haptic Feedback" }}</p>
                                 </div>
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" v-model="hapticsEnabled" @change="toggleHaptics" class="sr-only peer">
-                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
-                                </label>
+                                {{ toggle_switch('hapticsEnabled', 'toggleHaptics()') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- Sound toggle -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
-                                    <p>Sound Effects</p>
+                                    <p>{{ language.config.ui.sound_effects or "Sound Effects" }}</p>
                                 </div>
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" v-model="soundEnabled" @change="toggleSound" class="sr-only peer">
-                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
-                                </label>
+                                {{ toggle_switch('soundEnabled', 'toggleSound()') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
-                                <p class="flex-grow">Right to left</p>
+                                <p class="flex-grow">{{ language.config.ui.right_to_left or "Right to left" }}</p>
                                 <!-- toggle at the end -->
                                 <div class="flex flex-row items-center">
                                     <label for="right_to_left" class="flex items-center ml-2 animate-bounce">
@@ -357,7 +318,7 @@
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <form method="get" class="flex flex-row items-center"
                                 aria-label="Keyboard layout selector">
-                                <p id="keyboard-layout-label" class="flex-grow">Keyboard layout</p>
+                                <p id="keyboard-layout-label" class="flex-grow">{{ language.config.ui.keyboard_layout or "Keyboard layout" }}</p>
                                 <select id="keyboard-layout-select" name="layout" aria-labelledby="keyboard-layout-label"
                                     class="border border-neutral-300 dark:border-neutral-600 rounded px-2 py-1 bg-white dark:bg-neutral-700 dark:text-white"
                                     onchange="this.form.submit()">
@@ -373,33 +334,25 @@
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <div class="flex flex-row">
-                                <p class="flex-grow">Allow any word (<span class="italic">easy mode</span>)</p>
+                                <p class="flex-grow">{{ language.config.ui.easy_mode or "Allow any word" }} (<span class="italic">{{ language.config.ui.easy_mode_label or "easy mode" }}</span>)</p>
                                 <!-- toggle at the end -->
                                 <input type="checkbox" v-model="allow_any_word" />
                             </div>
 
 
-                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <div class="flex flex-col gap-3 py-1">
-                                <a href="https://github.com/Hugo0/wordle/issues"
-                                   target="_blank"
-                                   class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
+                            <!-- Install App button (only shown when not already installed) -->
+                            <div v-if="canInstallPwa()" class="border-t-2 border-gray-300 dark:border-gray-600 mt-2 pt-4">
+                                <button @click="installPwa()"
+                                    class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+                                        <path d="M12 18h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7.5"></path>
+                                        <path d="M16 19h6"></path>
+                                        <path d="M19 16v6"></path>
                                     </svg>
-                                    Report an Issue
-                                </a>
-                                <a href="https://github.com/Hugo0/wordle"
-                                   target="_blank"
-                                   class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
-                                        <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
-                                    </svg>
-                                    View Source Code
-                                </a>
+                                    {{ language.config.ui.install_app or "Install App" }}
+                                </button>
+                                <p class="text-xs text-center text-neutral-500 dark:text-neutral-400 mt-1">{{ language.config.ui.install_app_desc or "Play offline & get app icon" }}</p>
                             </div>
                         </div>
                     </div>
@@ -434,7 +387,7 @@
 
                     <!-- Guess Distribution Graph (compact for mobile) -->
                     <div class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600">
-                        <h4 class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400">Guess Distribution</h4>
+                        <h4 class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400">{{ language.config.ui.guess_distribution or "Guess Distribution" }}</h4>
                         <div class="space-y-0.5">
                             <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
                                 <span class="w-3 text-xs font-medium">[[ n ]]</span>
@@ -484,7 +437,7 @@
                                 :class="statsTab === 'global'
                                     ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
                                     : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
-                                All Languages
+                                {{ language.config.ui.all_languages or "All Languages" }}
                             </button>
                         </div>
 
@@ -493,19 +446,19 @@
                             <div class="grid grid-cols-4 gap-1">
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[stats.n_games]]</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.games or "Games" }}</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[Math.round(stats.win_percentage)]]%</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win %</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.win_percent or "Win %" }}</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="text-xl font-bold"><span v-if="stats.current_streak > 0">🔥</span>[[stats.current_streak]]</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Streak</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.streak or "Streak" }}</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[stats.longest_streak]]</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Best</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.best or "Best" }}</p>
                                 </div>
                             </div>
                         </div>
@@ -516,19 +469,19 @@
                             <div class="grid grid-cols-4 gap-1 mb-2">
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[total_stats.total_games]]</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.games or "Games" }}</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[Math.round(total_stats.total_win_percentage)]]%</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win %</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.win_percent or "Win %" }}</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="text-xl font-bold"><span v-if="total_stats.current_overall_streak > 0">🔥</span>[[total_stats.current_overall_streak]]</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Streak</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.streak or "Streak" }}</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[total_stats.languages_won?.length || 0]]</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">{{ language.config.ui.languages or "Languages" }}</p>
                                 </div>
                             </div>
 
@@ -544,7 +497,7 @@
                                 </div>
                             </div>
                             <p v-else class="text-xs text-neutral-500 dark:text-neutral-400 text-center pt-1 border-t border-neutral-200 dark:border-neutral-600">
-                                Play more languages to see your global stats!
+                                {{ language.config.ui.play_more_languages or "Play more languages to see your global stats!" }}
                             </p>
                         </div>
                     </div>
@@ -568,21 +521,15 @@
     <!-- Simple banner to trigger the install dialog -->
     <div id="pwa-install-banner" class="pwa-install-banner" style="display: none;">
         <div style="flex: 1;">
-            <strong>Add to Home Screen</strong>
-            <div style="font-size: 13px; opacity: 0.9;">Play Wordle daily like an app</div>
+            <strong>{{ language.config.ui.add_to_home or "Add to Home Screen" }}</strong>
+            <div style="font-size: 13px; opacity: 0.9;">{{ language.config.ui.play_daily_like_app or "Play Wordle daily like an app" }}</div>
         </div>
-        <button onclick="triggerPwaInstall()">Install</button>
+        <button onclick="triggerPwaInstall()">{{ language.config.ui.install or "Install" }}</button>
         <button class="dismiss" onclick="dismissPwaInstall()">&times;</button>
     </div>
 
-    <!-- PWA Install Component (@khmyznikov/pwa-install) -->
-    <!-- Provides cross-platform install dialogs with proper iOS/Android instructions -->
-    <pwa-install
-        manifest-url="/static/manifest.json"
-        name="Wordle Global"
-        description="Play Wordle in {{ language.config.name_native }}"
-        install-description="Install for quick daily access"
-    ></pwa-install>
+    {% set description = "Play Wordle in " ~ language.config.name_native %}
+    {% include 'partials/_pwa_install.html' %}
 
     <!-- Vite-built JS (includes Vue, game logic, PWA) -->
     <script type="module" src="{{ vite_assets.js }}"></script>
