@@ -7,7 +7,7 @@ import { describe, it, expect } from 'vitest';
  * Color calculation algorithm - extracted from game.ts updateColors()
  * Returns an array of color states: 'correct', 'semicorrect', or 'incorrect'
  */
-export function calculateColors(
+function calculateColors(
     guess: string,
     target: string
 ): ('correct' | 'semicorrect' | 'incorrect')[] {
@@ -52,13 +52,13 @@ export function calculateColors(
 /**
  * Stats calculation - extracted from game.ts calculateStats()
  */
-export interface GameResult {
+interface GameResult {
     won: boolean;
     attempts: string | number;
     date?: Date;
 }
 
-export interface GameStats {
+interface GameStats {
     n_wins: number;
     n_losses: number;
     n_games: number;
@@ -70,7 +70,7 @@ export interface GameStats {
     guessDistribution: { 1: number; 2: number; 3: number; 4: number; 5: number; 6: number };
 }
 
-export function calculateStats(results: GameResult[]): GameStats {
+function calculateStats(results: GameResult[]): GameStats {
     const emptyDistribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
 
     if (!results?.length) {

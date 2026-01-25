@@ -149,9 +149,15 @@
             document.getElementById('cached-languages').style.display = 'block';
 
             const list = document.getElementById('language-list');
+            let storedData;
+            try {
+                storedData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            } catch (e) {
+                storedData = {};
+            }
             cachedLangs.forEach(lang => {
-                const data = JSON.parse(localStorage.getItem(STORAGE_KEY))[lang];
-                const name = data.config?.name_native || lang.toUpperCase();
+                const data = storedData[lang];
+                const name = data?.config?.name_native || lang.toUpperCase();
                 const a = document.createElement('a');
                 a.href = '/' + lang;  // Standard URL format - SW will serve offline-game.html
                 a.textContent = name;
