@@ -2,6 +2,13 @@
     "language_code": "es",
     "name": "Spanish",
     "name_native": "Español",
+    "diacritic_map": {
+        "a": ["á"],
+        "e": ["é"],
+        "i": ["í"],
+        "o": ["ó"],
+        "u": ["ú", "ü"]
+    },
     "meta": {
         "locale": "es",
         "title": "El juego diario de palabras ",
@@ -31,5 +38,34 @@
         "text_2_2": "está en la palabra, pero no en la ubicación correcta. ",
         "text_2_3": "no está presente en la palabra que está tratando de adivinar. ",
         "text_3": "¡Una nueva palabra estará disponible cada día! "
+    },
+    "ui": {
+        "settings": "Ajustes",
+        "dark_mode": "Modo oscuro",
+        "dark_mode_desc": "Cambiar tema oscuro",
+        "haptic_feedback": "Respuesta háptica",
+        "haptic_feedback_desc": "Vibración al tocar",
+        "sound_effects": "Efectos de sonido",
+        "sound_effects_desc": "Sonidos de victoria/derrota",
+        "right_to_left": "Derecha a izquierda",
+        "keyboard_layout": "Diseño del teclado",
+        "easy_mode": "Permitir cualquier palabra",
+        "easy_mode_label": "modo fácil",
+        "install_app": "Instalar aplicación",
+        "install_app_desc": "Juega sin conexión y obtén el icono",
+        "report_issue": "Reportar un problema",
+        "view_source": "Ver código fuente",
+        "guess_distribution": "Distribución de intentos",
+        "games": "Juegos",
+        "win_percent": "% Victorias",
+        "streak": "Racha",
+        "best": "Mejor",
+        "all_languages": "Todos los idiomas",
+        "languages": "Idiomas",
+        "play_more_languages": "¡Juega más idiomas para ver tus estadísticas globales!",
+        "add_to_home": "Añadir a la pantalla de inicio",
+        "play_daily_like_app": "Juega Wordle diariamente como una app",
+        "install": "Instalar",
+        "close": "cerrar"
     }
 }

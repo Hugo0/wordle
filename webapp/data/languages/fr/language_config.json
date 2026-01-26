@@ -2,6 +2,17 @@
     "language_code": "fr",
     "name": "French",
     "name_native": "français",
+    "diacritic_map": {
+        "a": ["à", "â"],
+        "c": ["ç"],
+        "e": ["è", "é", "ê", "ë"],
+        "i": ["î", "ï"],
+        "o": ["ô"],
+        "u": ["ù", "û", "ü"],
+        "y": ["ÿ"],
+        "oe": ["œ"],
+        "ae": ["æ"]
+    },
     "meta": {
         "locale": "fr",
         "title": "Le jeu de mots quotidien ",
@@ -31,5 +42,34 @@
         "text_2_2": "est dans le mot, mais pas dans le bon endroit. ",
         "text_2_3": "n'est pas présent dans le mot que vous essayez de deviner. ",
         "text_3": "Un nouveau mot sera disponible chaque jour! "
+    },
+    "ui": {
+        "settings": "Paramètres",
+        "dark_mode": "Mode sombre",
+        "dark_mode_desc": "Basculer le thème sombre",
+        "haptic_feedback": "Retour haptique",
+        "haptic_feedback_desc": "Vibration au toucher",
+        "sound_effects": "Effets sonores",
+        "sound_effects_desc": "Sons de victoire/défaite",
+        "right_to_left": "Droite à gauche",
+        "keyboard_layout": "Disposition du clavier",
+        "easy_mode": "Autoriser tous les mots",
+        "easy_mode_label": "mode facile",
+        "install_app": "Installer l'application",
+        "install_app_desc": "Jouer hors ligne et obtenir l'icône",
+        "report_issue": "Signaler un problème",
+        "view_source": "Voir le code source",
+        "guess_distribution": "Distribution des essais",
+        "games": "Parties",
+        "win_percent": "% Victoires",
+        "streak": "Série",
+        "best": "Meilleur",
+        "all_languages": "Toutes les langues",
+        "languages": "Langues",
+        "play_more_languages": "Jouez plus de langues pour vos statistiques globales!",
+        "add_to_home": "Ajouter à l'écran d'accueil",
+        "play_daily_like_app": "Jouer à Wordle quotidiennement comme une app",
+        "install": "Installer",
+        "close": "fermer"
     }
 }

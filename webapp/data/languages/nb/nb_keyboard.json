@@ -1,1 +1,21 @@
-[]
+{
+    "default": "norwegian_qwerty",
+    "layouts": {
+        "norwegian_qwerty": {
+            "label": "Norwegian QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "å"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ø", "æ"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "alphabetical": {
+            "label": "Alphabetical",
+            "rows": [
+                ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"],
+                ["l", "m", "n", "o", "p", "r", "s", "t", "u", "v", "w"],
+                ["⇨", "x", "y", "z", "æ", "ø", "å", "⌫"]
+            ]
+        }
+    }
+}

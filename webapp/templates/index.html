@@ -1,62 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" class="min-h-full">
-<script>
-    // Apply dark mode immediately to prevent flash
-    try {
-        if (localStorage.getItem('darkMode') === 'true' ||
-            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        }
-    } catch (e) {
-        // localStorage may throw in private browsing mode, fall back to system preference
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        }
-    }
-</script>
+{% from 'partials/_toggle_switch.html' import toggle_switch %}
+{% include 'partials/_dark_mode_init.html' %}
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    {% include 'partials/_base_head.html' %}
 
-    <title>Wordle Global - {{ languages | length }} languages available</title>
-    <meta name="description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
-    <meta property="description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
+    {# Page-specific SEO meta tags #}
+    {% set title = "Wordle Global - " ~ (languages | length) ~ " languages available" %}
+    {% set description = "Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages" %}
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta property="description" content="{{ description }}">
     <meta name="keywords" content="wordle, english, puzzle, word, play, game, online, guess, free, daily">
-    <meta property="og:title" content="Wordle Global - {{ languages | length }} languages available">
+    <meta property="og:title" content="{{ title }}">
     <meta property="og:url" content="https://wordle.global/">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
-    <meta property="og:image" content="https://wordle.global/static/images/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="{{ description }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="wordle.global">
     <meta property="twitter:url" content="https://wordle.global/">
-    <meta property="twitter:title" content="Wordle Global - {{ languages | length }} languages available">
-    <meta property="twitter:description" content="Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages">
-    <meta property="twitter:image" content="https://wordle.global/static/images/og-image.png">
+    <meta property="twitter:title" content="{{ title }}">
+    <meta property="twitter:description" content="{{ description }}">
 
-    <!-- Vite-built assets (Tailwind + Vue bundled) -->
-    {% for css in vite_assets.css %}
-    <link rel="stylesheet" href="{{ css }}">
-    {% endfor %}
-
-    <!-- Global site tag (gtag.js) - Google Analytics (deferred) -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        window.addEventListener('load', function() {
-            var script = document.createElement('script');
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T';
-            script.async = true;
-            document.head.appendChild(script);
-            gtag('js', new Date());
-            gtag('config', 'G-273H1MLL3T');
-        });
-    </script>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
     <!-- Bing search console -->
     <meta name="msvalidate.01" content="609E2DD36EFFA9A3C673F46020FDF0D3" />
@@ -71,10 +38,7 @@
 </head>
 
 <body class="min-h-[100dvh] bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
-    <!-- Loading skeleton -->
-    <div id="loading-skeleton" class="flex flex-col items-center justify-center h-[100dvh]" style="font-family: system-ui, sans-serif;">
-        <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px;">WORDLE 🌍</div>
-    </div>
+    {% include 'partials/_loading_skeleton.html' %}
 
     <div id="app" class="pb-12" style="display: none;">
 
@@ -123,7 +87,7 @@
             <div class="flex flex-col break-words bg-white dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-600 rounded shadow-md mx-4 mb-2 sm:mb-6 w-full max-w-xs md:max-w-sm lg:max-w-md">
                 <input v-model="search_text"
                     class="shadow appearance-none w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-neutral-800 leading-tight focus:outline-none focus:shadow-outline hover:shadow-xl"
-                    type="text" placeholder="Search language...">
+                    type="text" placeholder="{{ ui.search_language or 'Search language...' }}">
             </div>
         </div>
 
@@ -163,7 +127,7 @@
         <div class="w-full mt-16 mx-auto text-center">
             <hr class="border-b-1 border-gray-400 dark:border-gray-600 w-1/2 mx-auto">
             <h2 class="text-2xl text-neutral-500 dark:text-neutral-400 mt-4">
-                External Links
+                {{ ui.external_links or "External Links" }}
             </h2>
         </div>
 
@@ -183,8 +147,8 @@
 
         <!-- NOTIFICATIONS & MODALS-->
         <div class="container mx-auto flex w-full max-w-lg justify-center items-center overflow-auto z-1" v-cloak>
-            <div v-show="showAboutModal || showStatsModal || showSettingsModal"
-                class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black" v-cloak></div>
+            {% set modals = "showAboutModal || showStatsModal || showSettingsModal" %}
+            {% include 'partials/_modal_backdrop.html' %}
 
             <!-- About modal -->
             <div v-show="showAboutModal" class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
@@ -192,7 +156,10 @@
                 <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative ">
-                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">About</h3>
+                        <button type="button" v-on:click="showAboutModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        </button>
+                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">{{ ui.about or "About" }}</h3>
                         <p class="text-center text-sm">Hi! You probably know about Wordle already. It's a <span
                                 class="italic">really</span> fun game.</p>
                         <p class="text-center text-sm">My skills are mostly in backend/ML, with lacking
@@ -208,9 +175,6 @@
                             Hebrew. Stats <a href="/stats" target="_blank" class="text-neutral-500 dark:text-neutral-400 underline">here</a>.</p>
                         <p class="text-center text-sm">A lot of other great Wordle spin-offs exist, and I've linked a bunch below for easy access. (credit: <a href="https://rwmpelstilzchen.gitlab.io/wordles/" class="text-neutral-500 dark:text-neutral-400 underline">Wordles of the World</a>)</p>
                         <p class="text-center text-sm">Have fun, and I hope you enjoy!</p>
-                        <button
-                            class="uppercase font-bold text-sm tracking-wider mt-2 border-t-2 border-gray-300 dark:border-gray-600 mt-2 pt-2"
-                            v-on:click="showAboutModal = !showAboutModal">close</button>
                     </div>
                 </div>
             </div>
@@ -219,49 +183,52 @@
                 <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
-                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">Global Stats</h3>
+                        <button type="button" v-on:click="showStatsModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        </button>
+                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">{{ ui.global_stats or "Global Stats" }}</h3>
 
                         <!-- Summary stats grid -->
                         <div class="grid grid-cols-2 gap-3 mb-2">
                             <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
                                 <div class="text-2xl font-bold">[[total_stats.total_games || 0]]</div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Games Played</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.games_played or "Games Played" }}</div>
                             </div>
                             <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
                                 <div class="text-2xl font-bold">[[Math.round(total_stats.total_win_percentage || 0)]]%</div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Win Rate</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.win_rate or "Win Rate" }}</div>
                             </div>
                             <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
                                 <div class="text-2xl font-bold">
                                     <span v-if="total_stats.current_overall_streak > 0">🔥</span>[[total_stats.current_overall_streak || 0]]
                                 </div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Current Streak</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.current_streak or "Current Streak" }}</div>
                             </div>
                             <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
                                 <div class="text-2xl font-bold">[[total_stats.languages_won?.length || 0]]</div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Languages Won</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.languages_won or "Languages Won" }}</div>
                             </div>
                         </div>
 
                         <!-- Best streaks -->
                         <div class="flex flex-row text-sm">
-                            <div class="flex-grow text-neutral-600 dark:text-neutral-400">Best Overall Streak:</div>
+                            <div class="flex-grow text-neutral-600 dark:text-neutral-400">{{ ui.best_overall_streak or "Best Overall Streak" }}:</div>
                             <div class="font-bold">[[total_stats.longest_overall_streak || 0]]</div>
                         </div>
                         <div class="flex flex-row text-sm" v-if="total_stats.current_longest_language_streak_language">
                             <div class="flex-grow text-neutral-600 dark:text-neutral-400">
-                                Best Active Streak ([[languages[total_stats.current_longest_language_streak_language]?.language_name]]):
+                                {{ ui.best_active_streak or "Best Active Streak" }} ([[languages[total_stats.current_longest_language_streak_language]?.language_name]]):
                             </div>
                             <div class="font-bold">🔥 [[total_stats.current_longest_language_streak]]</div>
                         </div>
 
                         <!-- Per-language breakdown -->
                         <div class="flex flex-row mt-4 mb-2">
-                            <div class="flex-grow uppercase tracking-wider font-bold text-sm">Your Languages</div>
+                            <div class="flex-grow uppercase tracking-wider font-bold text-sm">{{ ui.your_languages or "Your Languages" }}</div>
                         </div>
 
                         <div v-if="Object.keys(total_stats.game_stats || {}).length === 0" class="text-sm text-neutral-500 dark:text-neutral-400">
-                            You haven't played any games yet. Pick a language to start!
+                            {{ ui.no_games_yet or "You haven't played any games yet. Pick a language to start!" }}
                         </div>
 
                         <!-- Language list with expandable details -->
@@ -291,38 +258,35 @@
                                     <div class="grid grid-cols-3 gap-2 text-center text-sm">
                                         <div>
                                             <div class="font-bold text-green-600 dark:text-green-400">[[stats.n_wins]]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Wins</div>
+                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.wins or "Wins" }}</div>
                                         </div>
                                         <div>
                                             <div class="font-bold text-red-600 dark:text-red-400">[[stats.n_losses]]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Losses</div>
+                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.losses or "Losses" }}</div>
                                         </div>
                                         <div>
                                             <div class="font-bold">[[Math.round(stats.win_percentage)]]%</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Win Rate</div>
+                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.win_rate or "Win Rate" }}</div>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2 text-center text-sm mt-2">
                                         <div>
                                             <div class="font-bold">[[stats.avg_attempts?.toFixed(1) || '-']]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Avg Attempts</div>
+                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.avg_attempts or "Avg Attempts" }}</div>
                                         </div>
                                         <div>
                                             <div class="font-bold">[[stats.longest_streak]]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Best Streak</div>
+                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.best_streak or "Best Streak" }}</div>
                                         </div>
                                     </div>
                                     <button v-on:click.stop="selectLanguageWithCode(lang_code)"
                                         class="w-full mt-3 py-2 bg-green-500 hover:bg-green-600 text-white text-sm font-medium rounded transition-colors">
-                                        Play [[languages[lang_code]?.language_name]]
+                                        {{ ui.play or "Play" }} [[languages[lang_code]?.language_name]]
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <button
-                            class="uppercase font-bold text-sm tracking-wider mt-4 border-t-2 border-gray-300 dark:border-gray-600 mt-2 pt-2"
-                            v-on:click="showStatsModal = !showStatsModal">close</button>
                     </div>
                 </div>
             </div>
@@ -333,25 +297,18 @@
                 <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
                     v-cloak>
                     <div class="flex flex-col gap-4 relative">
-                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">Settings</h3>
+                        <button type="button" v-on:click="showSettingsModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
+                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
+                        </button>
+                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">{{ ui.settings or "Settings" }}</h3>
 
                         <!-- Dark Mode Toggle -->
                         <div class="flex flex-row items-center justify-between">
                             <div class="flex flex-col">
-                                <span class="font-medium">Dark Mode</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400">Toggle dark theme</span>
+                                <span class="font-medium">{{ ui.dark_mode or "Dark Mode" }}</span>
+                                <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.dark_mode_desc or "Toggle dark theme" }}</span>
                             </div>
-                            <button
-                                v-on:click="darkMode = !darkMode; toggleDarkMode()"
-                                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
-                                :class="darkMode ? 'bg-green-500' : 'bg-neutral-300 dark:bg-neutral-600'"
-                                role="switch"
-                                :aria-checked="darkMode">
-                                <span
-                                    class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
-                                    :class="darkMode ? 'translate-x-6' : 'translate-x-1'">
-                                </span>
-                            </button>
+                            {{ toggle_switch('darkMode', 'toggleDarkMode()', ui.dark_mode or 'Dark Mode') }}
                         </div>
 
                         <!-- Separator -->
@@ -360,20 +317,10 @@
                         <!-- Haptic Feedback Toggle -->
                         <div class="flex flex-row items-center justify-between">
                             <div class="flex flex-col">
-                                <span class="font-medium">Haptic Feedback</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400">Vibration on touch</span>
+                                <span class="font-medium">{{ ui.haptic_feedback or "Haptic Feedback" }}</span>
+                                <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.haptic_feedback_desc or "Vibration on touch" }}</span>
                             </div>
-                            <button
-                                v-on:click="hapticsEnabled = !hapticsEnabled; toggleHaptics()"
-                                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
-                                :class="hapticsEnabled ? 'bg-green-500' : 'bg-neutral-300 dark:bg-neutral-600'"
-                                role="switch"
-                                :aria-checked="hapticsEnabled">
-                                <span
-                                    class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
-                                    :class="hapticsEnabled ? 'translate-x-6' : 'translate-x-1'">
-                                </span>
-                            </button>
+                            {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', ui.haptic_feedback or 'Haptic Feedback') }}
                         </div>
 
                         <!-- Separator -->
@@ -382,62 +329,30 @@
                         <!-- Sound Effects Toggle -->
                         <div class="flex flex-row items-center justify-between">
                             <div class="flex flex-col">
-                                <span class="font-medium">Sound Effects</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400">Win/lose sounds</span>
+                                <span class="font-medium">{{ ui.sound_effects or "Sound Effects" }}</span>
+                                <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.sound_effects_desc or "Win/lose sounds" }}</span>
                             </div>
-                            <button
-                                v-on:click="soundEnabled = !soundEnabled; toggleSound()"
-                                class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
-                                :class="soundEnabled ? 'bg-green-500' : 'bg-neutral-300 dark:bg-neutral-600'"
-                                role="switch"
-                                :aria-checked="soundEnabled">
-                                <span
-                                    class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
-                                    :class="soundEnabled ? 'translate-x-6' : 'translate-x-1'">
-                                </span>
-                            </button>
+                            {{ toggle_switch('soundEnabled', 'toggleSound()', ui.sound_effects or 'Sound Effects') }}
                         </div>
 
                         <!-- Separator -->
                         <hr class="border-neutral-300 dark:border-neutral-600">
 
-                        <!-- Links Section -->
-                        <div class="flex flex-col gap-2">
-                            <a href="https://github.com/Hugo0/wordle/issues"
-                               target="_blank"
-                               class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
+                        <!-- Install App button (only shown when not already installed) -->
+                        <div v-if="canInstallPwa()" class="pt-2">
+                            <button @click="installPwa()"
+                                class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+                                    <path d="M12 18h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7.5"></path>
+                                    <path d="M16 19h6"></path>
+                                    <path d="M19 16v6"></path>
                                 </svg>
-                                Report an Issue
-                            </a>
-                            <a href="https://github.com/Hugo0/wordle"
-                               target="_blank"
-                               class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
-                                    <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
-                                </svg>
-                                View Source Code
-                            </a>
-                            <a href="/stats"
-                               target="_blank"
-                               class="flex items-center gap-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <rect x="3" y="12" width="6" height="8" rx="1"></rect>
-                                    <rect x="9" y="8" width="6" height="12" rx="1"></rect>
-                                    <rect x="15" y="4" width="6" height="16" rx="1"></rect>
-                                </svg>
-                                Global Statistics
-                            </a>
+                                {{ ui.install_app or "Install App" }}
+                            </button>
+                            <p class="text-xs text-center text-neutral-500 dark:text-neutral-400 mt-1">{{ ui.install_app_desc or "Play offline & get app icon" }}</p>
                         </div>
 
-                        <button
-                            class="uppercase font-bold text-sm tracking-wider mt-2 border-t-2 border-gray-300 dark:border-gray-600 pt-3"
-                            v-on:click="showSettingsModal = !showSettingsModal">close</button>
                     </div>
                 </div>
             </div>
@@ -451,7 +366,7 @@
                     <div class="flex flex-col items-center">
                         <h3 class="text-2xl font-bold text-center">👷🚧</h3>
                         <br>
-                        <p class="text-center">[[clickedLanguage]] &nbsp; is coming soon!</p>
+                        <p class="text-center">[[clickedLanguage]] &nbsp; {{ ui.coming_soon or "is coming soon!" }}</p>
                         <button class="mt-4" v-on:click="showPopup = false">Close</button>
                     </div>
                 </div>
@@ -462,6 +377,8 @@
         <div v-if="showPopup" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"></div>
 
     </div>
+
+    {% include 'partials/_pwa_install.html' %}
 
     <script type="module" src="{{ vite_assets.js }}"></script>
 </body>

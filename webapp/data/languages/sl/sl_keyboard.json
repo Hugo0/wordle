@@ -1,1 +1,21 @@
-[]
+{
+    "default": "slovenian_qwertz",
+    "layouts": {
+        "slovenian_qwertz": {
+            "label": "Slovenian QWERTZ",
+            "rows": [
+                ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "š"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "č", "ž"],
+                ["⇨", "y", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "alphabetical": {
+            "label": "Alphabetical",
+            "rows": [
+                ["a", "b", "c", "č", "d", "e", "f", "g", "h", "i", "j"],
+                ["k", "l", "m", "n", "o", "p", "r", "s", "š", "t", "u"],
+                ["⇨", "v", "z", "ž", "⌫"]
+            ]
+        }
+    }
+}

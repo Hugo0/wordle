@@ -68,13 +68,42 @@ def load_language_config(lang_code: str) -> dict | None:
         return json.load(f)
 
 
+def get_diacritic_base_chars(lang_code: str) -> dict[str, str]:
+    """Get mapping from diacritic char to base char for a language.
+
+    Returns dict like {'ä': 'a', 'ö': 'o'} if language has diacritic_map.
+    """
+    config = load_language_config(lang_code)
+    if not config or "diacritic_map" not in config:
+        return {}
+
+    result = {}
+    for base, variants in config["diacritic_map"].items():
+        for variant in variants:
+            result[variant] = base
+    return result
+
+
 def load_keyboard(lang_code: str) -> list | None:
-    """Load the keyboard layout for a language."""
+    """Load the keyboard layout for a language.
+
+    Returns the rows of the default layout. Handles both formats:
+    - Old format: list of rows [["a", "b"], ["c", "d"]]
+    - New format: {"default": "layout_name", "layouts": {"layout_name": {"rows": [...]}}}
+    """
     keyboard_file = LANGUAGES_DIR / lang_code / f"{lang_code}_keyboard.json"
     if not keyboard_file.exists():
         return None
     with open(keyboard_file, "r", encoding="utf-8") as f:
-        return json.load(f)
+        data = json.load(f)
+
+    # New multi-layout format
+    if isinstance(data, dict) and "layouts" in data:
+        default_layout = data.get("default", next(iter(data["layouts"])))
+        return data["layouts"][default_layout]["rows"]
+
+    # Old format: simple list of rows
+    return data
 
 
 # Make language codes available for parametrize

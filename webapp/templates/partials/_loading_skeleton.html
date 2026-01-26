@@ -1,0 +1,20 @@
+{# Loading skeleton - shown while JS loads #}
+{# Displays animated Wordle-style tiles #}
+<div id="loading-skeleton" class="flex flex-col items-center justify-center h-[100dvh]" style="font-family: system-ui, sans-serif;">
+    <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px; margin-bottom: 20px;">WORDLE</div>
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; width: 200px;">
+        <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out infinite;"></div>
+        <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.1s infinite;"></div>
+        <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.2s infinite;"></div>
+        <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.3s infinite;"></div>
+        <div class="skeleton-tile" style="aspect-ratio: 1; border-radius: 2px; animation: pulse 1.5s ease-in-out 0.4s infinite;"></div>
+    </div>
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .skeleton-tile { border: 2px solid #d3d6da; }
+        .dark .skeleton-tile { border-color: #3a3a3c; }
+    </style>
+</div>

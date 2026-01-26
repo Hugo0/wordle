@@ -1,0 +1,30 @@
+{# Toggle switch macro - uses checkbox with switch attribute for iOS haptics #}
+{#
+   Usage:
+   {% from 'partials/_toggle_switch.html' import toggle_switch %}
+   {{ toggle_switch(model='darkMode', on_change='toggleDarkMode()') }}
+
+   Parameters:
+   - model: Vue v-model variable name (e.g., 'darkMode')
+   - on_change: Vue method to call on toggle (e.g., 'toggleDarkMode()')
+   - label: Accessible label for screen readers (default: 'Toggle')
+
+   Note: Uses <input type="checkbox" switch> for native iOS haptic feedback (Safari 17.4+).
+   The visual styling mimics a toggle switch while the underlying checkbox provides haptics.
+#}
+{% macro toggle_switch(model, on_change, label='Toggle') %}
+<label class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors cursor-pointer"
+    :class="{{ model }} ? 'bg-green-500' : 'bg-neutral-300 dark:bg-neutral-600'">
+    <input
+        type="checkbox"
+        switch
+        class="sr-only peer"
+        :checked="{{ model }}"
+        v-on:change="{{ model }} = $event.target.checked; {{ on_change }}"
+        aria-label="{{ label }}">
+    <span
+        class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform pointer-events-none"
+        :class="{{ model }} ? 'translate-x-6' : 'translate-x-1'">
+    </span>
+</label>
+{% endmacro %}

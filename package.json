@@ -4,11 +4,15 @@
     "description": "Daily word puzzle game in 65+ languages",
     "type": "module",
     "scripts": {
+        "dev": "pnpm build && (pnpm watch & . venv/bin/activate && gunicorn --chdir webapp --bind 127.0.0.1:8000 --reload --reload-extra-file webapp/static/dist/.vite/manifest.json $(for f in webapp/templates/*.html webapp/templates/partials/*.html; do echo --reload-extra-file $f; done) app:app; kill %1 2>/dev/null)",
         "build": "vite build",
         "watch": "vite build --watch",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:coverage": "vitest run --coverage",
+        "test:e2e": "playwright test",
+        "test:e2e:headed": "playwright test --headed",
+        "test:e2e:ui": "playwright test --ui",
         "format": "prettier --write \"frontend/src/**/*.{ts,js,vue}\" \"*.{js,ts,json}\"",
         "format:check": "prettier --check \"frontend/src/**/*.{ts,js,vue}\" \"*.{js,ts,json}\""
     },
@@ -25,6 +29,7 @@
         "@khmyznikov/pwa-install": "^0.6.2"
     },
     "devDependencies": {
+        "@playwright/test": "^1.58.0",
         "@tailwindcss/vite": "^4.1.18",
         "@types/node": "^25.0.10",
         "@vitejs/plugin-vue": "^6.0.3",

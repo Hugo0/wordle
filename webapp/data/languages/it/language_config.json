@@ -2,6 +2,13 @@
     "language_code": "it",
     "name": "Italian",
     "name_native": "Italiano",
+    "diacritic_map": {
+        "a": ["à"],
+        "e": ["è", "é"],
+        "i": ["ì"],
+        "o": ["ò"],
+        "u": ["ù"]
+    },
     "meta": {
         "locale": "it",
         "title": "Il gioco di parole quotidiane ",
@@ -31,5 +38,34 @@
         "text_2_2": "è nella parola, ma non nella posizione corretta. ",
         "text_2_3": "non è presente nella parola che stai cercando di indovinare. ",
         "text_3": "Una nuova parola sarà disponibile ogni giorno! "
+    },
+    "ui": {
+        "settings": "Impostazioni",
+        "dark_mode": "Modalità scura",
+        "dark_mode_desc": "Attiva tema scuro",
+        "haptic_feedback": "Feedback aptico",
+        "haptic_feedback_desc": "Vibrazione al tocco",
+        "sound_effects": "Effetti sonori",
+        "sound_effects_desc": "Suoni vittoria/sconfitta",
+        "right_to_left": "Da destra a sinistra",
+        "keyboard_layout": "Layout tastiera",
+        "easy_mode": "Permetti qualsiasi parola",
+        "easy_mode_label": "modalità facile",
+        "install_app": "Installa app",
+        "install_app_desc": "Gioca offline e ottieni l'icona",
+        "report_issue": "Segnala un problema",
+        "view_source": "Visualizza codice sorgente",
+        "guess_distribution": "Distribuzione tentativi",
+        "games": "Partite",
+        "win_percent": "Vittorie %",
+        "streak": "Serie",
+        "best": "Migliore",
+        "all_languages": "Tutte le lingue",
+        "languages": "Lingue",
+        "play_more_languages": "Gioca più lingue per le statistiche globali!",
+        "add_to_home": "Aggiungi alla schermata home",
+        "play_daily_like_app": "Gioca Wordle ogni giorno come un'app",
+        "install": "Installa",
+        "close": "chiudi"
     }
 }

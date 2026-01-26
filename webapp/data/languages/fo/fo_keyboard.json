@@ -1,1 +1,21 @@
-[]
+{
+    "default": "faroese_qwerty",
+    "layouts": {
+        "faroese_qwerty": {
+            "label": "Faroese QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "ý", "u", "ú", "i", "í", "o", "ó", "p"],
+                ["a", "á", "s", "d", "ð", "f", "g", "h", "j", "k", "l", "æ", "ø"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "alphabetical": {
+            "label": "Alphabetical",
+            "rows": [
+                ["a", "á", "b", "d", "ð", "e", "f", "g", "h", "i", "í", "j"],
+                ["k", "l", "m", "n", "o", "ó", "p", "r", "s", "t", "u", "ú"],
+                ["⇨", "v", "y", "ý", "æ", "ø", "⌫"]
+            ]
+        }
+    }
+}

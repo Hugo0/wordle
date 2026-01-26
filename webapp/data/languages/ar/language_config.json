@@ -2,6 +2,10 @@
     "language_code": "ar",
     "name": "Arabic",
     "name_native": "العربية",
+    "diacritic_map": {
+        "ا": ["أ", "إ", "آ"],
+        "ي": ["ى"]
+    },
     "meta": {
         "locale": "ar",
         "title": "لعبة الكلمات اليومية ",
@@ -31,5 +35,34 @@
         "text_2_2": "في الكلمة، و لكن ليست في الموقع الصحيح. ",
         "text_2_3": "غير موجود في الكلمة التي تحاول تخمينها. ",
         "text_3": " ستكون كلمة جديدة متاحة كل يوم "
+    },
+    "ui": {
+        "settings": "الإعدادات",
+        "dark_mode": "الوضع الداكن",
+        "dark_mode_desc": "تبديل السمة الداكنة",
+        "haptic_feedback": "الاستجابة اللمسية",
+        "haptic_feedback_desc": "اهتزاز عند اللمس",
+        "sound_effects": "المؤثرات الصوتية",
+        "sound_effects_desc": "أصوات الفوز/الخسارة",
+        "right_to_left": "من اليمين إلى اليسار",
+        "keyboard_layout": "تخطيط لوحة المفاتيح",
+        "easy_mode": "السماح بأي كلمة",
+        "easy_mode_label": "الوضع السهل",
+        "install_app": "تثبيت التطبيق",
+        "install_app_desc": "العب بدون اتصال واحصل على أيقونة التطبيق",
+        "report_issue": "الإبلاغ عن مشكلة",
+        "view_source": "عرض الكود المصدري",
+        "guess_distribution": "توزيع التخمينات",
+        "games": "الألعاب",
+        "win_percent": "نسبة الفوز",
+        "streak": "سلسلة",
+        "best": "الأفضل",
+        "all_languages": "جميع اللغات",
+        "languages": "اللغات",
+        "play_more_languages": "العب بلغات أكثر لرؤية إحصائياتك الإجمالية!",
+        "add_to_home": "أضف إلى الشاشة الرئيسية",
+        "play_daily_like_app": "العب Wordle يومياً كتطبيق",
+        "install": "تثبيت",
+        "close": "إغلاق"
     }
 }

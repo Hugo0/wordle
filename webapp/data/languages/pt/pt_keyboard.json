@@ -1,1 +1,21 @@
-[]
+{
+    "default": "portuguese_qwerty",
+    "layouts": {
+        "portuguese_qwerty": {
+            "label": "Portuguese QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ç"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "portuguese_extended": {
+            "label": "With Accents",
+            "rows": [
+                ["q", "w", "e", "é", "ê", "r", "t", "y", "u", "ú", "i", "í", "o", "ó", "ô", "õ", "p"],
+                ["a", "á", "à", "â", "ã", "s", "d", "f", "g", "h", "j", "k", "l", "ç"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

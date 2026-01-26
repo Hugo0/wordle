@@ -1,1 +1,21 @@
-[]
+{
+    "default": "icelandic_qwerty",
+    "layouts": {
+        "icelandic_qwerty": {
+            "label": "Icelandic QWERTY",
+            "rows": [
+                ["q", "w", "e", "é", "r", "t", "y", "ý", "u", "ú", "i", "í", "o", "ó", "p"],
+                ["a", "á", "s", "d", "ð", "f", "g", "h", "j", "k", "l", "æ"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "þ", "ö", "⌫"]
+            ]
+        },
+        "alphabetical": {
+            "label": "Alphabetical",
+            "rows": [
+                ["a", "á", "b", "d", "ð", "e", "é", "f", "g", "h", "i", "í"],
+                ["j", "k", "l", "m", "n", "o", "ó", "p", "r", "s", "t", "u", "ú"],
+                ["⇨", "v", "x", "y", "ý", "þ", "æ", "ö", "⌫"]
+            ]
+        }
+    }
+}

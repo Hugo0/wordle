@@ -34,6 +34,36 @@ button, .key, input, a {
     transform: scale(0.95);
 }
 
+/* Key with diacritic hint - stack main char above hint */
+.key.has-hint {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: 4px !important;
+    padding-bottom: 2px !important;
+    gap: 0;
+}
+
+.key-main {
+    display: block;
+    line-height: 1.1;
+}
+
+.key-hint {
+    display: block;
+    font-size: 0.5rem;
+    line-height: 1;
+    opacity: 0.5;
+    font-weight: normal;
+    text-transform: lowercase;
+    letter-spacing: -0.5px;
+}
+
+.dark .key-hint {
+    opacity: 0.6;
+}
+
 /* Game tile states */
 .correct {
     background-color: #6aaa63 !important;
