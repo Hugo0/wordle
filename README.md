@@ -1,6 +1,13 @@
 # Wordle Global
 
 [![Tests](https://github.com/Hugo0/wordle/actions/workflows/test.yml/badge.svg)](https://github.com/Hugo0/wordle/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/Hugo0/wordle/graph/badge.svg)](https://codecov.io/gh/Hugo0/wordle)
+[![Languages](https://img.shields.io/badge/languages-65+-blue)](https://wordle.global)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Hugo0/wordle/pulls)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python)](https://www.python.org/)
+[![PWA Ready](https://img.shields.io/badge/PWA-ready-blueviolet?logo=pwa)](https://wordle.global)
 
 [wordle.global](https://wordle.global/)
 
