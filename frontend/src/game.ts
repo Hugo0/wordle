@@ -325,6 +325,9 @@ export const createGameApp = () => {
             analytics.trackPageView(langCode);
             analytics.trackPWASession(langCode);
 
+            // Reset frustration state for new session
+            analytics.resetFrustrationState();
+
             // Track game start with returning player context
             const isReturning = this.stats.n_games > 0;
             analytics.trackGameStart({
@@ -332,6 +335,9 @@ export const createGameApp = () => {
                 is_returning: isReturning,
                 current_streak: this.stats.current_streak,
             });
+
+            // Store game start time for duration tracking
+            (window as Window & { _gameStartTime?: number })._gameStartTime = Date.now();
 
             // Set up abandon tracking
             analytics.initAbandonTracking(() => ({
@@ -590,6 +596,9 @@ export const createGameApp = () => {
                     if (canonicalWord) {
                         haptic.confirm(); // Valid word submitted
 
+                        // Reset consecutive invalid counter on valid word
+                        analytics.onValidWord();
+
                         // Track valid guess
                         analytics.trackGuessSubmit(
                             this.config?.language_code || 'unknown',
@@ -622,8 +631,8 @@ export const createGameApp = () => {
                         haptic.error(); // Invalid word
                         this.showNotification('Word is not valid');
 
-                        // Track invalid word attempt with frustration detection
-                        analytics.trackInvalidWordWithFrustration({
+                        // Track invalid word and update session frustration state
+                        analytics.trackInvalidWordAndUpdateState({
                             language: this.config?.language_code || 'unknown',
                             attempt_number: this.active_row + 1,
                         });
@@ -685,13 +694,21 @@ export const createGameApp = () => {
                 this.stats = this.calculateStats(this.config?.language_code);
                 this.total_stats = this.calculateTotalStats();
 
-                // Track game completion
+                // Track game completion with session-aggregated frustration state
                 const langCode = this.config?.language_code || 'unknown';
+                const frustrationState = analytics.resetFrustrationState();
+                const gameStartTime = (window as Window & { _gameStartTime?: number })._gameStartTime;
+                const timeToComplete = gameStartTime ? Math.floor((Date.now() - gameStartTime) / 1000) : undefined;
+
                 analytics.trackGameComplete({
                     language: langCode,
                     won: true,
                     attempts: this.active_row,
                     streak_after: this.stats.current_streak,
+                    total_invalid_attempts: frustrationState.totalInvalidAttempts,
+                    max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
+                    had_frustration: frustrationState.hadFrustration,
+                    time_to_complete_seconds: timeToComplete,
                 });
                 analytics.trackStreakMilestone(langCode, this.stats.current_streak);
 
@@ -715,12 +732,21 @@ export const createGameApp = () => {
                 this.stats = this.calculateStats(this.config?.language_code);
                 this.total_stats = this.calculateTotalStats();
 
-                // Track game completion (loss)
+                // Track game completion (loss) with session-aggregated frustration state
+                const lossLangCode = this.config?.language_code || 'unknown';
+                const lossFrustrationState = analytics.resetFrustrationState();
+                const lossGameStartTime = (window as Window & { _gameStartTime?: number })._gameStartTime;
+                const lossTimeToComplete = lossGameStartTime ? Math.floor((Date.now() - lossGameStartTime) / 1000) : undefined;
+
                 analytics.trackGameComplete({
-                    language: this.config?.language_code || 'unknown',
+                    language: lossLangCode,
                     won: false,
                     attempts: 'X',
                     streak_after: 0,
+                    total_invalid_attempts: lossFrustrationState.totalInvalidAttempts,
+                    max_consecutive_invalid: lossFrustrationState.maxConsecutiveInvalid,
+                    had_frustration: lossFrustrationState.hadFrustration,
+                    time_to_complete_seconds: lossTimeToComplete,
                 });
             },
 
