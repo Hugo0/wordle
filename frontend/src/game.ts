@@ -463,9 +463,11 @@ export const createGameApp = () => {
                 for (let i = 0; i < row.length; i++) {
                     const guessChar = row[i];
                     const targetChar = targetWord[i];
-                    if (guessChar && fullCharsMatch(guessChar, targetChar)) {
+                    if (guessChar && targetChar && fullCharsMatch(guessChar, targetChar)) {
                         // Use splice for Vue 3 reactivity
                         classes.splice(i, 1, `correct ${baseClass}`);
+                        // Update tile to show target's character (e.g., user typed "ä" but target has "a")
+                        row.splice(i, 1, targetChar);
                         this.updateKeyColor(guessChar, 'key-correct', keyClasses);
                         const normalizedChar = fullNormalize(guessChar);
                         const count = charCounts[normalizedChar];
