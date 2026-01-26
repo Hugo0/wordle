@@ -54,8 +54,12 @@ interface GameCompleteParams {
     language: string;
     won: boolean;
     attempts: number | string;
-    time_seconds?: number;
     streak_after: number;
+    // Session-aggregated struggle context
+    total_invalid_attempts?: number;
+    max_consecutive_invalid?: number;
+    had_frustration?: boolean;
+    time_to_complete_seconds?: number;
 }
 
 interface GameAbandonParams {
@@ -154,8 +158,12 @@ export const trackGameComplete = (params: GameCompleteParams): void => {
         language: params.language,
         won: params.won,
         attempts: params.attempts,
-        time_seconds: params.time_seconds,
         streak_after: params.streak_after,
+        // Session-aggregated struggle context
+        total_invalid_attempts: params.total_invalid_attempts ?? 0,
+        max_consecutive_invalid: params.max_consecutive_invalid ?? 0,
+        had_frustration: params.had_frustration ?? false,
+        time_to_complete_seconds: params.time_to_complete_seconds,
         is_pwa: isStandalone(),
     });
 };
@@ -355,104 +363,56 @@ export const trackError = (params: ErrorParams): void => {
 };
 
 // ============================================================================
-// FRUSTRATION SIGNALS
-// Answers: Are users getting frustrated? Which languages cause issues?
+// FRUSTRATION SIGNALS (DEPRECATED - now tracked in game_complete)
+// Frustration context is now passed to trackGameComplete via:
+// - total_invalid_attempts: total invalid words this session
+// - max_consecutive_invalid: worst streak of consecutive invalids
+// - had_frustration: true if max_consecutive_invalid >= 3
 // ============================================================================
 
 /**
- * Track rapid invalid word attempts (frustration signal)
- * If user submits 3+ invalid words in a row, they're likely frustrated
+ * Reset frustration state - call when game completes or new game starts
+ * Returns the accumulated state for inclusion in game_complete event
  */
-let consecutiveInvalidCount = 0;
-let lastInvalidTime = 0;
+export interface FrustrationState {
+    totalInvalidAttempts: number;
+    maxConsecutiveInvalid: number;
+    hadFrustration: boolean;
+}
 
-export const trackFrustrationSignal = (language: string, type: string): void => {
-    track('frustration_signal', {
-        language,
-        frustration_type: type,
-    });
+let sessionInvalidCount = 0;
+let currentConsecutiveInvalid = 0;
+let maxConsecutiveInvalid = 0;
+
+export const resetFrustrationState = (): FrustrationState => {
+    const state: FrustrationState = {
+        totalInvalidAttempts: sessionInvalidCount,
+        maxConsecutiveInvalid: maxConsecutiveInvalid,
+        hadFrustration: maxConsecutiveInvalid >= 3,
+    };
+    // Reset for next game
+    sessionInvalidCount = 0;
+    currentConsecutiveInvalid = 0;
+    maxConsecutiveInvalid = 0;
+    return state;
 };
 
-export const trackInvalidWordWithFrustration = (params: InvalidWordParams): void => {
-    const now = Date.now();
-
-    // Reset counter if more than 30 seconds since last invalid
-    if (now - lastInvalidTime > 30000) {
-        consecutiveInvalidCount = 0;
-    }
-
-    consecutiveInvalidCount++;
-    lastInvalidTime = now;
-
-    // Track the invalid word
+/**
+ * Track invalid word and update frustration state
+ * Call this instead of trackInvalidWord directly
+ */
+export const trackInvalidWordAndUpdateState = (params: InvalidWordParams): void => {
+    sessionInvalidCount++;
+    currentConsecutiveInvalid++;
+    maxConsecutiveInvalid = Math.max(maxConsecutiveInvalid, currentConsecutiveInvalid);
     trackInvalidWord(params);
-
-    // Track frustration if 3+ consecutive invalid attempts
-    if (consecutiveInvalidCount >= 3) {
-        trackFrustrationSignal(params.language, 'repeated_invalid_words');
-    }
 };
 
 /**
- * Track rapid backspace (user deleting frantically)
+ * Call when a valid word is submitted to reset consecutive counter
  */
-let rapidBackspaceCount = 0;
-let lastBackspaceTime = 0;
-
-export const trackRapidBackspace = (language: string): void => {
-    const now = Date.now();
-
-    // Count rapid backspaces (within 200ms of each other)
-    if (now - lastBackspaceTime < 200) {
-        rapidBackspaceCount++;
-    } else {
-        rapidBackspaceCount = 1;
-    }
-    lastBackspaceTime = now;
-
-    // Track if 5+ rapid backspaces (frustrated deletion)
-    if (rapidBackspaceCount >= 5) {
-        trackFrustrationSignal(language, 'rapid_backspace');
-        rapidBackspaceCount = 0; // Reset to avoid duplicate events
-    }
-};
-
-/**
- * Track GitHub issues link click
- * Answers: Are users frustrated enough to report issues?
- */
-export const trackIssuesClick = (language: string): void => {
-    track('issues_click', {
-        language,
-    });
-};
-
-/**
- * Track "word not valid" notification shown multiple times
- * Answers: Are word lists frustrating users?
- */
-export const trackRepeatedNotValidNotification = (language: string, count: number): void => {
-    if (count >= 2) {
-        track('repeated_not_valid', {
-            language,
-            count,
-        });
-    }
-};
-
-/**
- * Track long session without completion (user stuck)
- * Answers: Are users getting stuck? On which languages?
- */
-export const trackStuckSession = (language: string, attemptNumber: number, minutes: number): void => {
-    // Track if user has been on same attempt for 5+ minutes
-    if (minutes >= 5) {
-        track('stuck_session', {
-            language,
-            attempt_number: attemptNumber,
-            minutes_stuck: minutes,
-        });
-    }
+export const onValidWord = (): void => {
+    currentConsecutiveInvalid = 0;
 };
 
 // ============================================================================
@@ -585,13 +545,10 @@ const analytics = {
     trackInvalidWord,
     trackKeyboardMissingChar,
     trackError,
-    // Frustration
-    trackFrustrationSignal,
-    trackInvalidWordWithFrustration,
-    trackRapidBackspace,
-    trackIssuesClick,
-    trackRepeatedNotValidNotification,
-    trackStuckSession,
+    // Frustration (session-aggregated)
+    trackInvalidWordAndUpdateState,
+    onValidWord,
+    resetFrustrationState,
     // Features
     trackSettingsChange,
     trackHelpOpen,
