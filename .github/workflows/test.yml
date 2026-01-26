@@ -60,15 +60,7 @@ jobs:
           pip install pytest-cov
 
       - name: Run pytest with coverage
-        run: python -m pytest tests/ -v --tb=short --cov=webapp --cov-report=xml --cov-report=term
-
-      - name: Upload Python coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./coverage.xml
-          flags: python
-          name: python-coverage
-          fail_ci_if_error: false
+        run: python -m pytest tests/ -v --tb=short --cov=webapp --cov-report=term
 
   typescript-tests:
     name: TypeScript Tests (vitest)
@@ -91,14 +83,6 @@ jobs:
 
       - name: Run vitest with coverage
         run: pnpm test:coverage
-
-      - name: Upload TypeScript coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./coverage/coverage-final.json
-          flags: typescript
-          name: typescript-coverage
-          fail_ci_if_error: false
 
   build:
     name: Build Check
