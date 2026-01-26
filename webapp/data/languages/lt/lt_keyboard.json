@@ -1,1 +1,21 @@
-[]
+{
+    "default": "lithuanian_qwerty",
+    "layouts": {
+        "lithuanian_qwerty": {
+            "label": "Lithuanian QWERTY",
+            "rows": [
+                ["q", "w", "e", "ė", "ę", "r", "t", "y", "u", "ū", "ų", "i", "į", "o", "p"],
+                ["a", "ą", "s", "š", "d", "f", "g", "h", "j", "k", "l"],
+                ["⇨", "z", "ž", "x", "c", "č", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "alphabetical": {
+            "label": "Alphabetical",
+            "rows": [
+                ["a", "ą", "b", "c", "č", "d", "e", "ę", "ė", "f", "g", "h"],
+                ["i", "į", "y", "j", "k", "l", "m", "n", "o", "p", "r", "s", "š"],
+                ["⇨", "t", "u", "ų", "ū", "v", "z", "ž", "⌫"]
+            ]
+        }
+    }
+}

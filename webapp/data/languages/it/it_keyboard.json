@@ -1,1 +1,21 @@
-[]
+{
+    "default": "italian_qwerty",
+    "layouts": {
+        "italian_qwerty": {
+            "label": "Italian QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "italian_extended": {
+            "label": "With Accents",
+            "rows": [
+                ["q", "w", "e", "è", "é", "r", "t", "y", "u", "ù", "i", "ì", "o", "ò", "p"],
+                ["a", "à", "s", "d", "f", "g", "h", "j", "k", "l"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

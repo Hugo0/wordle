@@ -1,1 +1,21 @@
-[]
+{
+    "default": "spanish_qwerty",
+    "layouts": {
+        "spanish_qwerty": {
+            "label": "Spanish QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ñ"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "spanish_extended": {
+            "label": "With Accents",
+            "rows": [
+                ["q", "w", "e", "é", "r", "t", "y", "u", "ú", "ü", "i", "í", "o", "ó", "p"],
+                ["a", "á", "s", "d", "f", "g", "h", "j", "k", "l", "ñ"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

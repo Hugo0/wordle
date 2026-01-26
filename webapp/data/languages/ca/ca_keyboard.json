@@ -1,1 +1,21 @@
-[]
+{
+    "default": "catalan_qwerty",
+    "layouts": {
+        "catalan_qwerty": {
+            "label": "Catalan QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ç"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "·", "⌫"]
+            ]
+        },
+        "catalan_extended": {
+            "label": "With Accents",
+            "rows": [
+                ["q", "w", "e", "é", "è", "r", "t", "y", "u", "ú", "ü", "i", "í", "ï", "o", "ó", "ò", "p"],
+                ["a", "à", "s", "d", "f", "g", "h", "j", "k", "l", "ŀ", "ç"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

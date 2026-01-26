@@ -6,6 +6,9 @@ import { createApp } from 'vue';
 import pwa from './pwa';
 import { haptic, setHapticsEnabled } from './haptics';
 import { sound, setSoundEnabled } from './sounds';
+import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
+import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
+import type { PositionalConfig } from './positional';
 import type {
     LanguageConfig,
     GameStats,
@@ -41,6 +44,7 @@ const characters = window.characters ?? [];
 const config = window.config;
 const todays_idx = window.todays_idx ?? '0';
 const todays_word = window.todays_word ?? '';
+const timezone_offset = window.timezone_offset ?? 0; // Hours offset from UTC
 
 // Type for saved game state in localStorage
 interface SavedGameState {
@@ -56,6 +60,15 @@ interface SavedGameState {
     attempts: string;
     full_word_inputted: boolean;
 }
+
+// Diacritic normalization maps (built once on init)
+const normalizeMap = buildNormalizeMap(config || {});
+const normalizedWordMap = buildNormalizedWordMap(word_list, normalizeMap);
+const normalizedSupplementMap = buildNormalizedWordMap(word_list_supplement, normalizeMap);
+
+// Positional character normalization (for Hebrew sofit, Greek final sigma, etc.)
+const positionalConfig: PositionalConfig = config || {};
+const finalFormReverseMap = buildFinalFormReverseMap(positionalConfig);
 
 // Vue component data type
 interface GameData {
@@ -326,10 +339,25 @@ export const createGameApp = () => {
 
         methods: {
             getTimeUntilNextDay(): string {
-                const d = new Date();
-                const h = 23 - d.getUTCHours();
-                const m = 59 - d.getUTCMinutes();
-                const s = 59 - d.getUTCSeconds();
+                // Calculate time until midnight in the language's timezone
+                const now = new Date();
+
+                // Get current UTC time and apply the language's timezone offset
+                const utcHours = now.getUTCHours();
+                const utcMinutes = now.getUTCMinutes();
+                const utcSeconds = now.getUTCSeconds();
+
+                // Calculate hours in the language's local timezone
+                let localHours = utcHours + timezone_offset;
+                // Handle day wraparound
+                if (localHours >= 24) localHours -= 24;
+                if (localHours < 0) localHours += 24;
+
+                // Time until midnight in the language's timezone
+                const h = 23 - localHours;
+                const m = 59 - utcMinutes;
+                const s = 59 - utcSeconds;
+
                 return `${h}h ${m}m ${s}s`;
             },
 
@@ -356,8 +384,14 @@ export const createGameApp = () => {
                 const row = this.tiles[this.active_row];
                 const rowClasses = this.tile_classes[this.active_row];
                 if (row && rowClasses) {
+                    // Check if we're typing at the last position (index 4, which is position 5)
+                    const isLastPosition = this.active_cell === 4;
+
+                    // Auto-convert to final form if at last position (Hebrew sofit, Greek final sigma)
+                    const displayChar = toFinalForm(char, isLastPosition, positionalConfig);
+
                     // Use splice for Vue 3 reactivity on nested arrays
-                    row.splice(this.active_cell, 1, char);
+                    row.splice(this.active_cell, 1, displayChar);
                     rowClasses.splice(
                         this.active_cell,
                         1,
@@ -370,20 +404,53 @@ export const createGameApp = () => {
                 }
             },
 
-            checkWord(word: string): boolean {
-                if (this.allow_any_word) return true;
-                return word_list.includes(word) || word_list_supplement.includes(word);
+            /**
+             * Check if a word is valid and return its canonical form (with diacritics).
+             * Returns the canonical word if valid, null if not in word list.
+             */
+            checkWord(word: string): string | null {
+                if (this.allow_any_word) return word;
+
+                // Try exact match first
+                if (word_list.includes(word)) return word;
+                if (word_list_supplement.includes(word)) return word;
+
+                // Try normalized match (e.g., "borde" matches "börde")
+                const normalized = normalizeWord(word, normalizeMap);
+                const canonical = normalizedWordMap.get(normalized);
+                if (canonical) return canonical;
+
+                // Check supplement with normalization
+                const supplementCanonical = normalizedSupplementMap.get(normalized);
+                if (supplementCanonical) return supplementCanonical;
+
+                return null;
             },
 
             updateColors(): void {
                 const targetWord = this.todays_word;
                 const baseClass =
                     'text-2xl tiny:text-4xl uppercase font-bold select-none text-white';
-                const charCounts: Record<string, number> = {};
 
-                // Count characters in target word
+                // Helper to fully normalize a character (diacritics + positional variants)
+                const fullNormalize = (char: string): string => {
+                    // First normalize positional variants (כ/ך -> כ, σ/ς -> σ)
+                    const positionalNorm = toRegularForm(char, finalFormReverseMap);
+                    // Then normalize diacritics (ä -> a)
+                    return normalizeMap.get(positionalNorm) || positionalNorm;
+                };
+
+                // Helper to check if two chars match (considering both normalizations)
+                const fullCharsMatch = (c1: string, c2: string): boolean => {
+                    return fullNormalize(c1) === fullNormalize(c2);
+                };
+
+                // Count characters in target word using FULLY NORMALIZED forms
+                // This ensures "ä" and "a" are counted together, and "כ" and "ך" are counted together
+                const charCounts: Record<string, number> = {};
                 for (const char of targetWord) {
-                    charCounts[char] = (charCounts[char] || 0) + 1;
+                    const normalizedChar = fullNormalize(char);
+                    charCounts[normalizedChar] = (charCounts[normalizedChar] || 0) + 1;
                 }
 
                 const row = this.tiles[this.active_row];
@@ -392,38 +459,79 @@ export const createGameApp = () => {
 
                 const keyClasses = this.key_classes as Record<string, KeyState>;
 
-                // First pass: mark correct positions
+                // First pass: mark correct positions (using normalized comparison)
                 for (let i = 0; i < row.length; i++) {
-                    const char = row[i];
-                    if (char && char === targetWord[i]) {
+                    const guessChar = row[i];
+                    const targetChar = targetWord[i];
+                    if (guessChar && fullCharsMatch(guessChar, targetChar)) {
                         // Use splice for Vue 3 reactivity
                         classes.splice(i, 1, `correct ${baseClass}`);
-                        keyClasses[char] = 'key-correct';
-                        const count = charCounts[char];
-                        if (count !== undefined) charCounts[char] = count - 1;
+                        this.updateKeyColor(guessChar, 'key-correct', keyClasses);
+                        const normalizedChar = fullNormalize(guessChar);
+                        const count = charCounts[normalizedChar];
+                        if (count !== undefined) charCounts[normalizedChar] = count - 1;
                     }
                 }
 
                 // Second pass: mark semi-correct and incorrect
                 for (let i = 0; i < row.length; i++) {
-                    const char = row[i];
-                    if (!char || classes[i]?.includes('correct')) continue;
+                    const guessChar = row[i];
+                    if (!guessChar || classes[i]?.includes('correct')) continue;
 
-                    const count = charCounts[char];
-                    if (targetWord.includes(char) && count !== undefined && count > 0) {
+                    const normalizedGuess = fullNormalize(guessChar);
+                    const count = charCounts[normalizedGuess];
+
+                    // Check if this normalized character exists in target (also normalized)
+                    const targetHasChar = [...targetWord].some((tc) =>
+                        fullCharsMatch(guessChar, tc)
+                    );
+
+                    if (targetHasChar && count !== undefined && count > 0) {
                         // Use splice for Vue 3 reactivity
                         classes.splice(i, 1, `semicorrect ${baseClass}`);
-                        if (keyClasses[char] !== 'key-correct') {
-                            keyClasses[char] = 'key-semicorrect';
-                        }
-                        charCounts[char] = count - 1;
+                        this.updateKeyColor(guessChar, 'key-semicorrect', keyClasses);
+                        charCounts[normalizedGuess] = count - 1;
                     } else {
                         // Use splice for Vue 3 reactivity
                         classes.splice(i, 1, `incorrect ${baseClass}`);
-                        if (!['key-correct', 'key-semicorrect'].includes(keyClasses[char] ?? '')) {
-                            keyClasses[char] = 'key-incorrect';
-                        }
+                        this.updateKeyColor(guessChar, 'key-incorrect', keyClasses);
                     }
+                }
+            },
+
+            /**
+             * Update keyboard key color, respecting color priority (correct > semicorrect > incorrect).
+             * Also updates equivalent diacritical characters when normalization is active.
+             */
+            updateKeyColor(
+                char: string,
+                newState: KeyState,
+                keyClasses: Record<string, KeyState>
+            ): void {
+                const updateSingleKey = (key: string, state: KeyState) => {
+                    const current = keyClasses[key];
+                    // Priority: key-correct > key-semicorrect > key-incorrect
+                    if (current === 'key-correct') return;
+                    if (current === 'key-semicorrect' && state === 'key-incorrect') return;
+                    keyClasses[key] = state;
+                };
+
+                // Update the typed character
+                updateSingleKey(char, newState);
+
+                // Also update equivalent diacritical characters
+                const normalizedChar = normalizeMap.get(char) || char;
+
+                // Find all chars that normalize to the same base and update them too
+                for (const [diacritic, base] of normalizeMap.entries()) {
+                    if (base === normalizedChar) {
+                        updateSingleKey(diacritic, newState);
+                    }
+                }
+
+                // Also update the base char if we typed a diacritic
+                if (normalizeMap.has(char)) {
+                    updateSingleKey(normalizedChar, newState);
                 }
             },
 
@@ -451,15 +559,29 @@ export const createGameApp = () => {
                     }
 
                     const row = this.tiles[this.active_row];
-                    const word = row ? row.join('').toLowerCase() : '';
-                    if (this.checkWord(word)) {
+                    const typedWord = row ? row.join('').toLowerCase() : '';
+                    const canonicalWord = this.checkWord(typedWord);
+
+                    if (canonicalWord) {
                         haptic.confirm(); // Valid word submitted
+
+                        // Update tiles to show canonical form (with diacritics)
+                        // This displays the correct accented letters after submission
+                        if (row && canonicalWord !== typedWord) {
+                            for (let i = 0; i < canonicalWord.length; i++) {
+                                row.splice(i, 1, canonicalWord[i]);
+                            }
+                        }
+
                         this.updateColors();
                         this.active_row++;
                         this.active_cell = 0;
                         this.full_word_inputted = false;
 
-                        if (word === this.todays_word) {
+                        // Compare normalized forms for win detection
+                        const normalizedGuess = normalizeWord(canonicalWord, normalizeMap);
+                        const normalizedTarget = normalizeWord(this.todays_word, normalizeMap);
+                        if (normalizedGuess === normalizedTarget) {
                             this.gameWon();
                         } else if (this.active_row === 6) {
                             this.gameLost();
@@ -753,19 +875,28 @@ export const createGameApp = () => {
 
                 // Collect and sort all results by date
                 const all_results: (GameResult & { language?: string })[] = [];
-                for (const [language_code, results] of Object.entries(this.game_results) as [string, GameResult[]][]) {
+                for (const [language_code, results] of Object.entries(this.game_results) as [
+                    string,
+                    GameResult[],
+                ][]) {
                     for (const result of results) {
                         all_results.push({ ...result, language: language_code });
                     }
                 }
-                all_results.sort((a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime());
+                all_results.sort(
+                    (a, b) =>
+                        new Date(a.date as string).getTime() - new Date(b.date as string).getTime()
+                );
 
                 // Calculate overall streaks
                 for (const result of all_results) {
                     if (result.won) {
                         n_victories++;
                         current_overall_streak++;
-                        longest_overall_streak = Math.max(longest_overall_streak, current_overall_streak);
+                        longest_overall_streak = Math.max(
+                            longest_overall_streak,
+                            current_overall_streak
+                        );
                     } else {
                         n_losses++;
                         current_overall_streak = 0;
@@ -796,7 +927,11 @@ export const createGameApp = () => {
             },
 
             getLanguageName(code: string): string {
-                return this.languages[code]?.language_name_native || this.languages[code]?.language_name || code;
+                return (
+                    this.languages[code]?.language_name_native ||
+                    this.languages[code]?.language_name ||
+                    code
+                );
             },
 
             async shareResults(): Promise<void> {
@@ -947,7 +1082,10 @@ export const createGameApp = () => {
                         haptic(); // Give feedback that haptics are now on
                     }
                     try {
-                        localStorage.setItem('hapticsEnabled', this.hapticsEnabled ? 'true' : 'false');
+                        localStorage.setItem(
+                            'hapticsEnabled',
+                            this.hapticsEnabled ? 'true' : 'false'
+                        );
                     } catch {
                         // localStorage unavailable
                     }
@@ -978,6 +1116,14 @@ export const createGameApp = () => {
                         // localStorage unavailable
                     }
                 });
+            },
+
+            canInstallPwa(): boolean {
+                return !pwa.isStandalone();
+            },
+
+            installPwa(): void {
+                pwa.install();
             },
 
             isCurrentGuess(n: number): boolean {

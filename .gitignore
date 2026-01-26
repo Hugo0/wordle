@@ -136,3 +136,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Playwright
+playwright-report/
+test-results/

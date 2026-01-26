@@ -2,6 +2,13 @@
     "language_code": "gl",
     "name": "Galician",
     "name_native": "Galego",
+    "diacritic_map": {
+        "a": ["á"],
+        "e": ["é"],
+        "i": ["í"],
+        "o": ["ó"],
+        "u": ["ú", "ü"]
+    },
     "meta": {
         "locale": "gl",
         "title": "The Daily Word Game ",
@@ -31,5 +38,34 @@
         "text_2_2": "está na palabra, pero non na localización correcta. ",
         "text_2_3": "non está presente na palabra que estás a adiviñar. ",
         "text_3": "Unha nova palabra estará dispoñible cada día! "
+    },
+    "ui": {
+        "settings": "Axustes",
+        "dark_mode": "Modo escuro",
+        "dark_mode_desc": "Cambiar tema escuro",
+        "haptic_feedback": "Resposta háptica",
+        "haptic_feedback_desc": "Vibración ao tocar",
+        "sound_effects": "Efectos de son",
+        "sound_effects_desc": "Sons de vitoria/derrota",
+        "right_to_left": "Dereita a esquerda",
+        "keyboard_layout": "Deseño do teclado",
+        "easy_mode": "Permitir calquera palabra",
+        "easy_mode_label": "modo fácil",
+        "install_app": "Instalar aplicación",
+        "install_app_desc": "Xoga sen conexión e obtén a icona",
+        "report_issue": "Informar dun problema",
+        "view_source": "Ver código fonte",
+        "guess_distribution": "Distribución de intentos",
+        "games": "Xogos",
+        "win_percent": "% Vitorias",
+        "streak": "Racha",
+        "best": "Mellor",
+        "all_languages": "Todos os idiomas",
+        "languages": "Idiomas",
+        "play_more_languages": "Xoga máis idiomas para ver as túas estatísticas globais!",
+        "add_to_home": "Engadir á pantalla de inicio",
+        "play_daily_like_app": "Xoga Wordle diariamente como unha app",
+        "install": "Instalar",
+        "close": "pechar"
     }
 }

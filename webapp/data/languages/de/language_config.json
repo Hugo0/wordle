@@ -2,6 +2,20 @@
     "language_code": "de",
     "name": "German",
     "name_native": "Deutsch",
+    "diacritic_map": {
+        "a": [
+            "ä"
+        ],
+        "o": [
+            "ö"
+        ],
+        "u": [
+            "ü"
+        ],
+        "ss": [
+            "ß"
+        ]
+    },
     "meta": {
         "locale": "de",
         "title": "Das tägliche Wortspiel",
@@ -31,5 +45,34 @@
         "text_2_2": "ist im Wort, aber nicht an der richtigen Stelle. ",
         "text_2_3": "ist nicht in dem gesuchten Wort vorhanden. ",
         "text_3": "Ein neues Wort wird täglich verfügbar sein! "
+    },
+    "ui": {
+        "settings": "Einstellungen",
+        "dark_mode": "Dunkelmodus",
+        "dark_mode_desc": "Dunkles Design umschalten",
+        "haptic_feedback": "Haptisches Feedback",
+        "haptic_feedback_desc": "Vibration bei Berührung",
+        "sound_effects": "Soundeffekte",
+        "sound_effects_desc": "Gewinn-/Verlust-Töne",
+        "right_to_left": "Rechts nach links",
+        "keyboard_layout": "Tastaturlayout",
+        "easy_mode": "Beliebiges Wort erlauben",
+        "easy_mode_label": "einfacher Modus",
+        "install_app": "App installieren",
+        "install_app_desc": "Offline spielen & App-Symbol erhalten",
+        "report_issue": "Problem melden",
+        "view_source": "Quellcode anzeigen",
+        "guess_distribution": "Versuchsverteilung",
+        "games": "Spiele",
+        "win_percent": "Gewinn %",
+        "streak": "Serie",
+        "best": "Beste",
+        "all_languages": "Alle Sprachen",
+        "languages": "Sprachen",
+        "play_more_languages": "Spiele mehr Sprachen um deine Gesamtstatistik zu sehen!",
+        "add_to_home": "Zum Startbildschirm hinzufügen",
+        "play_daily_like_app": "Wordle täglich wie eine App spielen",
+        "install": "Installieren",
+        "close": "schließen"
     }
 }

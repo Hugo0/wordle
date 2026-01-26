@@ -2,6 +2,9 @@
     "language_code": "el",
     "name": "Greek",
     "name_native": "Ελληνικά",
+    "final_form_map": {
+        "σ": "ς"
+    },
     "meta": {
         "locale": "el",
         "title": "Το Daily Word Game ",

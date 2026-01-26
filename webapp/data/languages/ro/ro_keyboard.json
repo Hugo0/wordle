@@ -1,1 +1,21 @@
-[]
+{
+    "default": "romanian_qwerty",
+    "layouts": {
+        "romanian_qwerty": {
+            "label": "Romanian QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "ă", "â"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ș", "ț", "î"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        },
+        "alphabetical": {
+            "label": "Alphabetical",
+            "rows": [
+                ["a", "ă", "â", "b", "c", "d", "e", "f", "g", "h", "i", "î"],
+                ["j", "k", "l", "m", "n", "o", "p", "r", "s", "ș", "t", "ț"],
+                ["⇨", "u", "v", "w", "x", "y", "z", "⌫"]
+            ]
+        }
+    }
+}

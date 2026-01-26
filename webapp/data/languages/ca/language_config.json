@@ -2,6 +2,14 @@
     "language_code": "ca",
     "name": "Catalan",
     "name_native": "català",
+    "diacritic_map": {
+        "a": ["à"],
+        "c": ["ç"],
+        "e": ["è", "é"],
+        "i": ["í", "ï"],
+        "o": ["ò", "ó"],
+        "u": ["ú", "ü"]
+    },
     "meta": {
         "locale": "ca",
         "title": "El joc de paraules diàries ",
@@ -31,5 +39,34 @@
         "text_2_2": "està a la paraula, però no a la ubicació correcta. ",
         "text_2_3": "no està present a la paraula que esteu intentant endevinar. ",
         "text_3": "Cada dia estarà disponible una nova paraula. "
+    },
+    "ui": {
+        "settings": "Configuració",
+        "dark_mode": "Mode fosc",
+        "dark_mode_desc": "Canvia el tema fosc",
+        "haptic_feedback": "Resposta hàptica",
+        "haptic_feedback_desc": "Vibració en tocar",
+        "sound_effects": "Efectes de so",
+        "sound_effects_desc": "Sons de victòria/derrota",
+        "right_to_left": "Dreta a esquerra",
+        "keyboard_layout": "Disposició del teclat",
+        "easy_mode": "Permetre qualsevol paraula",
+        "easy_mode_label": "mode fàcil",
+        "install_app": "Instal·lar aplicació",
+        "install_app_desc": "Juga sense connexió i obtén la icona",
+        "report_issue": "Informar d'un problema",
+        "view_source": "Veure codi font",
+        "guess_distribution": "Distribució d'intents",
+        "games": "Jocs",
+        "win_percent": "% Victòries",
+        "streak": "Ratxa",
+        "best": "Millor",
+        "all_languages": "Tots els idiomes",
+        "languages": "Idiomes",
+        "play_more_languages": "Juga més idiomes per veure estadístiques globals!",
+        "add_to_home": "Afegir a la pantalla d'inici",
+        "play_daily_like_app": "Juga Wordle diàriament com una app",
+        "install": "Instal·lar",
+        "close": "tancar"
     }
 }

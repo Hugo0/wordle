@@ -1,1 +1,21 @@
-[]
+{
+    "default": "french_azerty",
+    "layouts": {
+        "french_azerty": {
+            "label": "French AZERTY",
+            "rows": [
+                ["a", "z", "e", "r", "t", "y", "u", "i", "o", "p"],
+                ["q", "s", "d", "f", "g", "h", "j", "k", "l", "m"],
+                ["⇨", "w", "x", "c", "v", "b", "n", "œ", "æ", "⌫"]
+            ]
+        },
+        "french_extended": {
+            "label": "AZERTY with Accents",
+            "rows": [
+                ["a", "à", "z", "e", "é", "è", "ê", "r", "t", "y", "u", "ù", "i", "î", "o", "ô", "p"],
+                ["q", "s", "d", "f", "g", "h", "j", "k", "l", "m", "œ", "æ"],
+                ["⇨", "w", "x", "c", "ç", "v", "b", "n", "⌫"]
+            ]
+        }
+    }
+}

@@ -2,6 +2,10 @@
     "language_code": "nb",
     "name": "Norwegian Bokmål",
     "name_native": "Norsk Bokmål",
+    "diacritic_map": {
+        "e": ["é", "è"],
+        "o": ["ó", "ò", "ô"]
+    },
     "meta": {
         "locale": "nb",
         "title": "Det daglige ordspillet ",

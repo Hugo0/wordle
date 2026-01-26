@@ -49,6 +49,17 @@ export interface LanguageConfig {
     meta: LanguageMeta;
     text: LanguageText;
     help: LanguageHelp;
+    /** Optional diacritic normalization map. Maps base characters to their diacritic variants.
+     *  Example: { "a": ["ä", "á"], "o": ["ö"] }
+     *  If absent, no diacritic normalization is performed (diacritics are distinct letters).
+     */
+    diacritic_map?: Record<string, string[]>;
+    /** Optional final form map for positional character variants.
+     *  Maps regular form to final form (used at word end).
+     *  Example for Hebrew: { "כ": "ך", "מ": "ם", "נ": "ן", "פ": "ף", "צ": "ץ" }
+     *  Example for Greek: { "σ": "ς" }
+     */
+    final_form_map?: Record<string, string>;
 }
 
 // =============================================================================
@@ -135,6 +146,7 @@ declare global {
         config?: LanguageConfig;
         todays_idx?: string;
         todays_word?: string;
+        timezone_offset?: number;
 
         // Debug tools (see frontend/src/debug.ts)
         debug?: {

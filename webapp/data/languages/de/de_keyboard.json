@@ -1,1 +1,21 @@
-[]
+{
+    "default": "german_qwertz",
+    "layouts": {
+        "german_qwertz": {
+            "label": "German QWERTZ",
+            "rows": [
+                ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "ü"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ö", "ä"],
+                ["⇨", "y", "x", "c", "v", "b", "n", "m", "ß", "⌫"]
+            ]
+        },
+        "simple_qwertz": {
+            "label": "Simple QWERTZ",
+            "rows": [
+                ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+                ["⇨", "y", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

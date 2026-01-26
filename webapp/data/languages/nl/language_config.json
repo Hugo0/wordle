@@ -2,6 +2,13 @@
     "language_code": "nl",
     "name": "Dutch",
     "name_native": "Nederlands",
+    "diacritic_map": {
+        "a": ["á", "à", "â", "ä"],
+        "e": ["é", "è", "ê", "ë"],
+        "i": ["í", "ì", "î", "ï"],
+        "o": ["ó", "ò", "ô", "ö"],
+        "u": ["ú", "ù", "û", "ü"]
+    },
     "meta": {
         "locale": "nl",
         "title": "Het dagelijkse woordspel ",

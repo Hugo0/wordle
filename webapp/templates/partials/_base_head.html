@@ -1,0 +1,43 @@
+{# Common <head> content shared between pages #}
+{# This includes: PWA meta tags, favicons, manifest, Vite assets, Google Analytics #}
+{# SEO meta tags (title, description, og:*) should be defined in each page #}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+{# PWA meta tags #}
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Wordle">
+<meta name="theme-color" content="#ffffff">
+
+{# Favicons and manifest #}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+{# OG image (same for all pages) #}
+<meta property="og:image" content="https://wordle.global/static/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="twitter:image" content="https://wordle.global/static/images/og-image.png">
+
+{# Vite-built assets (Tailwind + Vue bundled) #}
+{% for css in vite_assets.css %}
+<link rel="stylesheet" href="{{ css }}">
+{% endfor %}
+
+{# Google Analytics (deferred to not block page) #}
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T';
+        script.async = true;
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-273H1MLL3T');
+    });
+</script>
