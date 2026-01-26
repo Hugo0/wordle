@@ -7,6 +7,7 @@
 // Import the pwa-install web component (registers <pwa-install> element)
 import '@khmyznikov/pwa-install';
 
+import { trackPWAInstall, trackPWAPromptShown, trackPWADismiss } from './analytics';
 import type { BeforeInstallPromptEvent, PWAStatus } from './types';
 
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
@@ -50,6 +51,7 @@ export const showBanner = (): void => {
     const banner = getBanner();
     if (banner && (deferredPrompt || isIOS())) {
         banner.style.display = 'flex';
+        trackPWAPromptShown('banner');
     }
 };
 
@@ -90,6 +92,7 @@ export const dismiss = (): void => {
         // localStorage may throw in private browsing mode
     }
     hideBanner();
+    trackPWADismiss();
 };
 
 export const resetDismissed = (): void => {
@@ -141,6 +144,7 @@ export const init = (): void => {
 
     window.addEventListener('appinstalled', () => {
         console.log('PWA installed');
+        trackPWAInstall({ source: 'banner' });
         deferredPrompt = null;
         hideBanner();
     });

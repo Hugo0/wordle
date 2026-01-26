@@ -8,6 +8,7 @@ import { haptic, setHapticsEnabled } from './haptics';
 import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
 import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
+import analytics from './analytics';
 import type { PositionalConfig } from './positional';
 import type {
     LanguageConfig,
@@ -317,6 +318,28 @@ export const createGameApp = () => {
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
+
+            // Initialize analytics
+            const langCode = this.config?.language_code || 'unknown';
+            analytics.initErrorTracking(langCode);
+            analytics.trackPageView(langCode);
+            analytics.trackPWASession(langCode);
+
+            // Track game start with returning player context
+            const isReturning = this.stats.n_games > 0;
+            analytics.trackGameStart({
+                language: langCode,
+                is_returning: isReturning,
+                current_streak: this.stats.current_streak,
+            });
+
+            // Set up abandon tracking
+            analytics.initAbandonTracking(() => ({
+                language: langCode,
+                activeRow: this.active_row,
+                gameOver: this.game_over,
+                lastGuessValid: true, // We don't track invalid state, assume valid
+            }));
         },
 
         mounted() {
@@ -567,6 +590,13 @@ export const createGameApp = () => {
                     if (canonicalWord) {
                         haptic.confirm(); // Valid word submitted
 
+                        // Track valid guess
+                        analytics.trackGuessSubmit(
+                            this.config?.language_code || 'unknown',
+                            this.active_row + 1,
+                            true
+                        );
+
                         // Update tiles to show canonical form (with diacritics)
                         // This displays the correct accented letters after submission
                         if (row && canonicalWord !== typedWord) {
@@ -591,6 +621,17 @@ export const createGameApp = () => {
                     } else {
                         haptic.error(); // Invalid word
                         this.showNotification('Word is not valid');
+
+                        // Track invalid word attempt with frustration detection
+                        analytics.trackInvalidWordWithFrustration({
+                            language: this.config?.language_code || 'unknown',
+                            attempt_number: this.active_row + 1,
+                        });
+                        analytics.trackGuessSubmit(
+                            this.config?.language_code || 'unknown',
+                            this.active_row + 1,
+                            false
+                        );
                     }
                 } else if (['Backspace', 'Delete', '⌫'].includes(key) && this.active_cell > 0) {
                     this.active_cell--;
@@ -644,6 +685,16 @@ export const createGameApp = () => {
                 this.stats = this.calculateStats(this.config?.language_code);
                 this.total_stats = this.calculateTotalStats();
 
+                // Track game completion
+                const langCode = this.config?.language_code || 'unknown';
+                analytics.trackGameComplete({
+                    language: langCode,
+                    won: true,
+                    attempts: this.active_row,
+                    streak_after: this.stats.current_streak,
+                });
+                analytics.trackStreakMilestone(langCode, this.stats.current_streak);
+
                 // Show PWA install prompt after game completion
                 setTimeout(() => pwa.showBanner(), 2000);
             },
@@ -663,6 +714,14 @@ export const createGameApp = () => {
                 this.saveResult(false);
                 this.stats = this.calculateStats(this.config?.language_code);
                 this.total_stats = this.calculateTotalStats();
+
+                // Track game completion (loss)
+                analytics.trackGameComplete({
+                    language: this.config?.language_code || 'unknown',
+                    won: false,
+                    attempts: 'X',
+                    streak_after: 0,
+                });
             },
 
             saveResult(won: boolean): void {
@@ -941,8 +1000,15 @@ export const createGameApp = () => {
                 const langCode = this.config?.language_code ?? '';
                 const url = `https://wordle.global/${langCode}`;
 
-                const onSuccess = () => {
+                const shareParams = {
+                    language: langCode,
+                    won: this.game_won,
+                    attempts: this.attempts,
+                };
+
+                const onSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
                     this.shareButtonState = 'success';
+                    analytics.trackShareSuccess({ ...shareParams, method });
                     setTimeout(() => {
                         this.shareButtonState = 'idle';
                     }, 2000);
@@ -950,10 +1016,11 @@ export const createGameApp = () => {
 
                 // Try Web Share API first
                 if (navigator.share) {
+                    analytics.trackShareClick({ ...shareParams, method: 'native' });
                     try {
                         await navigator.share({ text, url });
                         this.showNotification(this.config?.text?.shared || 'Shared!');
-                        onSuccess();
+                        onSuccess('native');
                         return;
                     } catch (error) {
                         if (error instanceof Error && error.name === 'AbortError') return;
@@ -961,36 +1028,41 @@ export const createGameApp = () => {
                         try {
                             await navigator.share({ text: `${text}\n${url}` });
                             this.showNotification(this.config?.text?.shared || 'Shared!');
-                            onSuccess();
+                            onSuccess('native');
                             return;
                         } catch (e) {
                             if (e instanceof Error && e.name === 'AbortError') return;
+                            analytics.trackShareFail(langCode, 'native', 'share_api_failed');
                         }
                     }
                 }
 
                 // Try Clipboard API
                 if (navigator.clipboard?.writeText && window.isSecureContext) {
+                    analytics.trackShareClick({ ...shareParams, method: 'clipboard' });
                     try {
                         await navigator.clipboard.writeText(text);
                         this.showNotification(this.config?.text?.copied || 'Copied to clipboard!');
-                        onSuccess();
+                        onSuccess('clipboard');
                         return;
                     } catch (error) {
                         if (error instanceof Error) {
                             console.log('Clipboard API failed:', error.message);
+                            analytics.trackShareFail(langCode, 'clipboard', error.message);
                         }
                     }
                 }
 
                 // Legacy execCommand fallback
+                analytics.trackShareClick({ ...shareParams, method: 'fallback' });
                 if (this.copyViaExecCommand(text)) {
                     this.showNotification(this.config?.text?.copied || 'Copied to clipboard!');
-                    onSuccess();
+                    onSuccess('fallback');
                     return;
                 }
 
                 // Final fallback: show modal
+                analytics.trackShareFail(langCode, 'fallback', 'all_methods_failed');
                 this.showCopyFallbackModal(text);
             },
 
@@ -1059,6 +1131,7 @@ export const createGameApp = () => {
                     } catch {
                         // localStorage unavailable
                     }
+                    analytics.trackSettingsChange({ setting: 'dark_mode', value: this.darkMode });
                 });
             },
 
@@ -1091,6 +1164,7 @@ export const createGameApp = () => {
                     } catch {
                         // localStorage unavailable
                     }
+                    analytics.trackSettingsChange({ setting: 'haptics', value: this.hapticsEnabled });
                 });
             },
 
@@ -1117,6 +1191,7 @@ export const createGameApp = () => {
                     } catch {
                         // localStorage unavailable
                     }
+                    analytics.trackSettingsChange({ setting: 'sound', value: this.soundEnabled });
                 });
             },
 
