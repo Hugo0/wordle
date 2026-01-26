@@ -36,7 +36,7 @@
         console.log("Character Set: " + window.characters);
         window.todays_idx = "{{ language.todays_idx }}";
         window.todays_word = "{{ language.daily_word }}";
-        window.timezone_offset = {{ language.timezone_offset }};
+        window.timezone_offset = {{ language.timezone_offset | default(0) | tojson }};
         console.log("Today's word is: " + window.todays_word.toUpperCase() + "\nDon't cheat!");
     </script>
 </head>

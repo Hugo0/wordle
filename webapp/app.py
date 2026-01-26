@@ -11,9 +11,16 @@ import os
 import datetime
 import glob
 import random
+import hashlib
 
 # set random seed 42 for reproducibility (important to maintain stable word lists)
+# NOTE: This is only used for the LEGACY algorithm (days before MIGRATION_DAY_IDX)
 random.seed(42)
+
+# Migration cutoff: days before this use legacy shuffle, days after use consistent hashing
+# This preserves all past daily words while enabling flexible blocklisting going forward
+# Day 1681 = January 25, 2026
+MIGRATION_DAY_IDX = 1681
 
 app = Flask(__name__)
 
@@ -149,6 +156,76 @@ def load_supplemental_words(lang):
     return supplemental_words
 
 
+def load_blocklist(lang):
+    """Load blocklist words that should be excluded from daily word rotation.
+
+    Blocklisted words are still valid guesses, but won't be selected as
+    the daily word. This allows filtering without changing shuffle order.
+
+    Blocklist format: one word per line, # for comments, blank lines ignored.
+    """
+    blocklist_path = f"{data_dir}languages/{lang}/{lang}_blocklist.txt"
+    try:
+        with open(blocklist_path, "r") as f:
+            blocklist = set()
+            for line in f:
+                line = line.strip()
+                # Skip empty lines and comments
+                if line and not line.startswith("#"):
+                    blocklist.add(line.lower())
+            return blocklist
+    except FileNotFoundError:
+        return set()
+
+
+def load_daily_words(lang):
+    """Load curated daily word list if it exists.
+
+    Some languages have a separate curated list of high-quality words
+    for daily puzzles (e.g., common nouns, recognizable words).
+
+    If this file exists, it's used for daily word selection instead
+    of filtering the main word list with blocklist.
+
+    The main word list (_5words.txt) is still used for guess validation.
+    """
+    daily_path = f"{data_dir}languages/{lang}/{lang}_daily_words.txt"
+    try:
+        with open(daily_path, "r") as f:
+            daily_words = []
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    daily_words.append(line.lower())
+            return daily_words if daily_words else None
+    except FileNotFoundError:
+        return None
+
+
+def load_curated_schedule(lang):
+    """Load ordered curated schedule if it exists.
+
+    The curated schedule is an ordered list of words for specific days:
+    - Line 1 = Day MIGRATION_DAY_IDX + 1 (January 26, 2026)
+    - Line 2 = Day MIGRATION_DAY_IDX + 2 (January 27, 2026)
+    - etc.
+
+    This takes priority over daily_words and blocklist-filtered main list.
+    When the schedule is exhausted, falls back to the next tier.
+    """
+    schedule_path = f"{data_dir}languages/{lang}/{lang}_curated_schedule.txt"
+    try:
+        with open(schedule_path, "r") as f:
+            schedule = []
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    schedule.append(line.lower())
+            return schedule if schedule else None
+    except FileNotFoundError:
+        return None
+
+
 def load_language_config(lang):
     """Load language config, merging with default to ensure all keys exist."""
     # Load default config first
@@ -169,7 +246,7 @@ def load_language_config(lang):
             else:
                 merged[key] = value
         return merged
-    except:
+    except FileNotFoundError:
         return default_config
 
 
@@ -242,9 +319,92 @@ def get_todays_idx(timezone_offset_hours: int = 0):
     return idx
 
 
+###############################################################################
+# WORD SELECTION ALGORITHMS
+###############################################################################
+
+
+def _word_hash(word: str, lang_code: str) -> int:
+    """Get a stable hash for a word. This doesn't change if the word list changes."""
+    h = hashlib.sha256(f"{lang_code}:{word}".encode()).digest()
+    return int.from_bytes(h[:8], "big")
+
+
+def _day_hash(day_idx: int, lang_code: str) -> int:
+    """Get a deterministic hash for a specific day."""
+    h = hashlib.sha256(f"{lang_code}:day:{day_idx}".encode()).digest()
+    return int.from_bytes(h[:8], "big")
+
+
+def get_daily_word_consistent_hash(
+    words: list, blocklist: set, day_idx: int, lang_code: str
+) -> str:
+    """Select daily word using consistent hashing.
+
+    This algorithm is STABLE when words are added/removed:
+    - Each word has a fixed hash (based on word + language)
+    - Each day has a fixed hash
+    - We pick the word whose hash is closest to (>=) the day's hash
+    - Blocklisted words are simply excluded from consideration
+
+    Benefits:
+    - Adding new words doesn't change existing days' selections
+    - Removing/blocklisting a word only affects days that would have shown that word
+    - Enables aggressive filtering without breaking unrelated days
+    """
+    day_h = _day_hash(day_idx, lang_code)
+
+    # Build sorted list of (hash, word) for non-blocked words
+    candidates = []
+    for word in words:
+        if word not in blocklist:
+            candidates.append((_word_hash(word, lang_code), word))
+
+    if not candidates:
+        # Fallback: all words blocked, return first word
+        return words[0] if words else ""
+
+    candidates.sort(key=lambda x: x[0])
+
+    # Find first word with hash >= day_hash (consistent hashing ring)
+    for word_h, word in candidates:
+        if word_h >= day_h:
+            return word
+
+    # Wraparound: day_hash is larger than all word hashes, pick first
+    return candidates[0][1]
+
+
+def get_daily_word_legacy(words: list, blocklist: set, day_idx: int) -> str:
+    """Legacy word selection using shuffle + modulo.
+
+    This preserves backwards compatibility for days before MIGRATION_DAY_IDX.
+    The word list must already be shuffled with seed 42 at load time.
+    """
+    list_len = len(words)
+
+    if not blocklist:
+        return words[day_idx % list_len]
+
+    # Skip blocked words by walking forward
+    for offset in range(list_len):
+        idx = (day_idx + offset) % list_len
+        word = words[idx]
+        if word not in blocklist:
+            return word
+
+    # Fallback
+    return words[day_idx % list_len]
+
+
 language_codes_5words = {l_code: load_words(l_code) for l_code in language_codes}
 language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
+}
+language_blocklists = {l_code: load_blocklist(l_code) for l_code in language_codes}
+language_daily_words = {l_code: load_daily_words(l_code) for l_code in language_codes}
+language_curated_schedules = {
+    l_code: load_curated_schedule(l_code) for l_code in language_codes
 }
 language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
 
@@ -397,12 +557,17 @@ class Language:
         self.word_list = word_list
         self.word_list_supplement = language_codes_5words_supplements[language_code]
         self.config = language_configs[language_code]
+        self.blocklist = language_blocklists[language_code]
+        # Curated daily word list (if available, used instead of filtered main list)
+        self.daily_words = language_daily_words.get(language_code)
+        # Ordered curated schedule (highest priority for daily word selection)
+        self.curated_schedule = language_curated_schedules.get(language_code)
 
         # Get timezone offset from config (defaults to 0/UTC if not specified)
         self.timezone_offset = self.config.get("timezone_offset", 0)
 
         todays_idx = get_todays_idx(self.timezone_offset)
-        self.daily_word = word_list[todays_idx % len(word_list)]
+        self.daily_word = self._get_daily_word(todays_idx)
         self.todays_idx = todays_idx
 
         self.characters = language_characters[language_code]
@@ -424,6 +589,44 @@ class Language:
 
         # Build diacritic hints for keyboard keys (e.g., 'a' -> ['ä', 'à', 'â'])
         self.key_diacritic_hints = self._build_key_diacritic_hints()
+
+    def _get_daily_word(self, day_idx):
+        """Get the daily word using the appropriate algorithm and word list.
+
+        Word list priority (for days > MIGRATION_DAY_IDX):
+        1. Ordered curated_schedule (if exists and not exhausted) - hand-picked words
+        2. Curated daily_words list (if exists) - high quality pool
+        3. Main word_list filtered by blocklist - fallback
+
+        For backwards compatibility:
+        - Days <= MIGRATION_DAY_IDX: Use legacy shuffle algorithm on main word_list
+        - Days > MIGRATION_DAY_IDX: Use new algorithm with priority above
+        """
+        if day_idx <= MIGRATION_DAY_IDX:
+            # Legacy algorithm for past days (preserves history)
+            # IMPORTANT: No blocklist for past days - we must return exactly
+            # what was shown historically, even if it's a "bad" word
+            return get_daily_word_legacy(
+                self.word_list, set(), day_idx  # Empty blocklist!
+            )
+        else:
+            # New algorithm for future days
+            schedule_idx = day_idx - MIGRATION_DAY_IDX - 1  # 0-indexed from day 1682
+
+            # Priority 1: Ordered curated schedule (positional selection)
+            if self.curated_schedule and schedule_idx < len(self.curated_schedule):
+                return self.curated_schedule[schedule_idx]
+
+            # Priority 2: Curated daily_words with consistent hashing
+            if self.daily_words:
+                return get_daily_word_consistent_hash(
+                    self.daily_words, set(), day_idx, self.language_code
+                )
+
+            # Priority 3: Filtered main list with consistent hashing
+            return get_daily_word_consistent_hash(
+                self.word_list, self.blocklist, day_idx, self.language_code
+            )
 
     def _build_keyboard_layouts(self, keyboard_config):
         """

@@ -4,16 +4,18 @@ Word list curation helper script.
 
 This script helps with:
 1. Extracting next N words for review
-2. Applying curation (removing bad words)
-3. Safely merging new words without losing curation
-4. Managing blocklists for automatic exclusion
+2. Checking blocklist coverage
+3. Viewing curation status
+
+IMPORTANT: Blocklists are applied at RUNTIME in webapp/app.py, not by modifying
+word list files. This preserves shuffle order for backwards compatibility.
+Blocklisted words are still valid guesses, just skipped as daily words.
 
 Usage:
-    python scripts/curate_words.py extract ar 365  # Extract next 365 Arabic words
-    python scripts/curate_words.py remove ar word1 word2  # Remove words from list
-    python scripts/curate_words.py backup ar  # Backup before regenerating
-    python scripts/curate_words.py apply-blocklist ar  # Apply blocklist to word list
-    python scripts/curate_words.py validate ar  # Validate word list passes tests
+    python scripts/curate_words.py extract ar 365    # Extract next 365 Arabic words
+    python scripts/curate_words.py status ar         # Show curation status
+    python scripts/curate_words.py check-blocklist ar  # Check blocklist coverage
+    python scripts/curate_words.py backup ar         # Backup word list
 """
 
 import argparse
@@ -157,32 +159,31 @@ def load_blocklist(lang: str) -> set[str]:
     return blocklist
 
 
-def apply_blocklist(lang: str) -> None:
-    """Apply blocklist to word list, removing blocked words."""
+def check_blocklist(lang: str) -> None:
+    """Check how many words in word list would be filtered by blocklist.
+
+    NOTE: Blocklists are applied at RUNTIME in webapp/app.py, not by modifying
+    word list files. This preserves shuffle order for backwards compatibility.
+    Blocklisted words are still valid guesses, just skipped as daily words.
+    """
     blocklist = load_blocklist(lang)
     if not blocklist:
         print(f"No blocklist found for {lang}")
         return
 
     words = load_word_list(lang)
-    original_count = len(words)
 
-    # Remove blocked words
-    removed = []
-    filtered_words = []
-    for word in words:
-        if word in blocklist:
-            removed.append(word)
-        else:
-            filtered_words.append(word)
+    # Count blocked words
+    blocked_in_list = [w for w in words if w in blocklist]
 
-    if removed:
-        save_word_list(lang, filtered_words)
-        print(f"Applied blocklist to {lang}")
-        print(f"Removed {len(removed)} words: {removed[:10]}{'...' if len(removed) > 10 else ''}")
-        print(f"Word count: {original_count} -> {len(filtered_words)}")
-    else:
-        print(f"No blocked words found in {lang} word list")
+    print(f"Language: {lang}")
+    print(f"Total words: {len(words)}")
+    print(f"Blocklist entries: {len(blocklist)}")
+    print(f"Words in list that match blocklist: {len(blocked_in_list)}")
+    print(f"Effective daily word pool: {len(words) - len(blocked_in_list)}")
+    print()
+    print("NOTE: Blocklist is applied at RUNTIME in app.py.")
+    print("Word list files should NOT be modified to preserve shuffle order.")
 
 
 def main():
@@ -207,12 +208,9 @@ def main():
     status_parser = subparsers.add_parser("status", help="Show curation status")
     status_parser.add_argument("lang", help="Language code")
 
-    # Apply blocklist command
-    blocklist_parser = subparsers.add_parser("apply-blocklist", help="Apply blocklist to word list")
+    # Check blocklist command
+    blocklist_parser = subparsers.add_parser("check-blocklist", help="Check blocklist coverage (runtime filtering)")
     blocklist_parser.add_argument("lang", help="Language code")
-
-    # Apply all blocklists command
-    all_blocklists_parser = subparsers.add_parser("apply-all-blocklists", help="Apply blocklists for all languages")
 
     args = parser.parse_args()
 
@@ -224,16 +222,8 @@ def main():
         backup_word_list(args.lang)
     elif args.command == "status":
         show_status(args.lang)
-    elif args.command == "apply-blocklist":
-        apply_blocklist(args.lang)
-    elif args.command == "apply-all-blocklists":
-        # Find all languages with blocklists
-        for lang_dir in DATA_DIR.iterdir():
-            if lang_dir.is_dir():
-                blocklist_path = lang_dir / f"{lang_dir.name}_blocklist.txt"
-                if blocklist_path.exists():
-                    print(f"\n=== {lang_dir.name} ===")
-                    apply_blocklist(lang_dir.name)
+    elif args.command == "check-blocklist":
+        check_blocklist(args.lang)
     else:
         parser.print_help()
 
