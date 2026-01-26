@@ -33,6 +33,7 @@
         "@tailwindcss/vite": "^4.1.18",
         "@types/node": "^25.0.10",
         "@vitejs/plugin-vue": "^6.0.3",
+        "@vitest/coverage-v8": "^4.0.18",
         "autoprefixer": "^10.4.23",
         "jsdom": "^27.4.0",
         "postcss": "^8.5.6",
