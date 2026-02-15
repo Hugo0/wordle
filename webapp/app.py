@@ -403,9 +403,7 @@ language_codes_5words_supplements = {
 }
 language_blocklists = {l_code: load_blocklist(l_code) for l_code in language_codes}
 language_daily_words = {l_code: load_daily_words(l_code) for l_code in language_codes}
-language_curated_schedules = {
-    l_code: load_curated_schedule(l_code) for l_code in language_codes
-}
+language_curated_schedules = {l_code: load_curated_schedule(l_code) for l_code in language_codes}
 language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
 
 # Load default language config for UI translations on homepage
@@ -606,9 +604,7 @@ class Language:
             # Legacy algorithm for past days (preserves history)
             # IMPORTANT: No blocklist for past days - we must return exactly
             # what was shown historically, even if it's a "bad" word
-            return get_daily_word_legacy(
-                self.word_list, set(), day_idx  # Empty blocklist!
-            )
+            return get_daily_word_legacy(self.word_list, set(), day_idx)  # Empty blocklist!
         else:
             # New algorithm for future days
             schedule_idx = day_idx - MIGRATION_DAY_IDX - 1  # 0-indexed from day 1682
