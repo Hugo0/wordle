@@ -28,16 +28,17 @@
 <link rel="stylesheet" href="{{ css }}">
 {% endfor %}
 
-{# Google Analytics (deferred to not block page) #}
+{# Google Analytics - gtag stub + config run immediately so early events queue properly.
+   The gtag.js script itself is deferred to not block page rendering. #}
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-273H1MLL3T');
     window.addEventListener('load', function() {
         var script = document.createElement('script');
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-273H1MLL3T';
         script.async = true;
         document.head.appendChild(script);
-        gtag('js', new Date());
-        gtag('config', 'G-273H1MLL3T');
     });
 </script>
