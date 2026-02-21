@@ -92,7 +92,7 @@ class TestCharacterConsistency:
     """Tests for character set consistency."""
 
     # Pre-existing character set mismatches
-    CHARACTER_XFAIL = {"az", "pt", "pau"}
+    CHARACTER_XFAIL = {"pt", "pau"}
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_words_use_valid_characters(self, lang):
@@ -142,7 +142,7 @@ class TestKeyboardCoverage:
     """Tests for keyboard coverage of word characters."""
 
     # Languages with known keyboard coverage gaps (complex scripts, incomplete keyboards)
-    KEYBOARD_COVERAGE_XFAIL = {"vi", "ko", "el", "pt", "pau", "la", "az", "oc", "qya"}
+    KEYBOARD_COVERAGE_XFAIL = {"vi", "ko", "el", "pt", "pau", "la", "oc", "qya"}
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_word_characters(self, lang):
