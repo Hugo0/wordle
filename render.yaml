@@ -3,12 +3,10 @@ services:
     name: wordle-global
     runtime: python
     buildCommand: |
-      curl -LsSf https://astral.sh/uv/install.sh | sh
-      export PATH="$HOME/.local/bin:$PATH"
-      uv sync --no-dev
       corepack enable
       pnpm install
       pnpm build
+      uv sync --no-dev
     startCommand: uv run gunicorn --chdir webapp app:app
     envVars:
       - key: PYTHON_VERSION
