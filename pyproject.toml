@@ -1,3 +1,22 @@
+[project]
+name = "wordle-global"
+version = "1.0.0"
+description = "Daily word puzzle game in 65+ languages"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.1.0",
+    "flask-cors>=6.0.0",
+    "gunicorn>=24.0.0",
+    "Flask-FlatPages>=0.9.0",
+    "nltk>=3.9.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+]
+
 [tool.black]
 line-length = 100
 target-version = ['py314']
