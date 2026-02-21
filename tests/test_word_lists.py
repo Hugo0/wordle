@@ -13,6 +13,7 @@ from tests.conftest import (
     ALL_LANGUAGES,
     load_word_list,
     load_supplement_words,
+    load_daily_words,
     load_characters,
     load_keyboard,
     get_diacritic_base_chars,
@@ -229,6 +230,70 @@ class TestKeyboardCoverage:
                 f"{lang}: Character set has {len(missing)} chars not on keyboard: "
                 f"{list(missing)[:10]}..."
             )
+
+
+class TestDailyWords:
+    """Tests for curated daily word lists."""
+
+    # Pre-existing data issues
+    SUPPLEMENT_OVERLAP_XFAIL = {"pl", "ckb"}  # Pre-existing supplement/main overlap
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_daily_words_subset_of_main(self, lang):
+        """Daily words must be a subset of the main word list."""
+        daily = load_daily_words(lang)
+        if not daily:
+            pytest.skip(f"{lang}: No daily words file")
+        main = set(load_word_list(lang))
+        invalid = [w for w in daily if w not in main]
+        assert not invalid, (
+            f"{lang}: {len(invalid)} daily words not in main list. "
+            f"Examples: {invalid[:5]}"
+        )
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_daily_words_no_duplicates(self, lang):
+        """No duplicate words in daily words file."""
+        daily = load_daily_words(lang)
+        if not daily:
+            pytest.skip(f"{lang}: No daily words file")
+        seen = set()
+        duplicates = []
+        for w in daily:
+            if w in seen:
+                duplicates.append(w)
+            seen.add(w)
+        assert not duplicates, (
+            f"{lang}: {len(duplicates)} duplicate daily words. "
+            f"Examples: {duplicates[:10]}"
+        )
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_daily_words_are_5_letters(self, lang):
+        """All daily words must be exactly 5 letters."""
+        daily = load_daily_words(lang)
+        if not daily:
+            pytest.skip(f"{lang}: No daily words file")
+        invalid = [(w, len(w)) for w in daily if len(w) != 5]
+        assert not invalid, (
+            f"{lang}: {len(invalid)} daily words with wrong length. "
+            f"Examples: {invalid[:5]}"
+        )
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_supplement_disjoint_from_main(self, lang):
+        """Supplement words must not overlap with main word list."""
+        if lang in self.SUPPLEMENT_OVERLAP_XFAIL:
+            pytest.xfail(f"{lang}: Known supplement/main overlap")
+        supplement = load_supplement_words(lang)
+        if not supplement:
+            pytest.skip(f"{lang}: No supplement word list")
+        main = set(load_word_list(lang))
+        overlap = [w for w in supplement if w in main]
+        assert not overlap, (
+            f"{lang}: {len(overlap)} supplement words also in main list. "
+            f"Examples: {overlap[:5]}"
+        )
 
 
 class TestWordListQuality:

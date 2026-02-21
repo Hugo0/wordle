@@ -7,9 +7,10 @@
 2. [Current State: Data Quality by Language](#current-state)
 3. [Analytics: Where Dictionaries Are Failing Users](#analytics)
 4. [How Other Wordle Apps Do It](#industry-best-practices)
-5. [Priority Languages](#priority-languages)
-6. [Architecture: The Two-List System](#architecture)
-7. [Action Plan](#action-plan)
+5. [Keyboard & UX Research: Competitor Analysis](#keyboard-research)
+6. [Priority Languages](#priority-languages)
+7. [Architecture: The Two-List System](#architecture)
+8. [Action Plan](#action-plan)
 
 ---
 
@@ -201,7 +202,63 @@ Our `diacritic_map` system in `language_config.json` already supports all three 
 
 ---
 
-## 5. Priority Languages <a name="priority-languages"></a>
+## 5. Keyboard & UX Research: Competitor Analysis <a name="keyboard-research"></a>
+
+*Based on hands-on analysis of 10 regional Wordle implementations (2026-02-21). Full report: `wordle-keyboard-research/report.md`*
+
+### Keyboard Layout Strategies
+
+Competitors use five distinct approaches to handling non-ASCII characters:
+
+| Strategy | Who Does It | Key Takeaway |
+|----------|-------------|--------------|
+| **Append to QWERTY rows** | Sanuli (fi: Ö,Ä), Ordel (sv: Å,Ö,Ä), Wordle TR (tr: Ğ,Ü,Ş,Ö,Ç) | Most natural — mirrors physical keyboard. Our approach for most languages. |
+| **Dedicated extra row** | Szózat (hu: digraphs CS,SZ,GY…), Handle (ko: tense consonants) | Needed when >3 extra characters or fundamentally different character types. |
+| **Ignore diacritics entirely** | Termo (pt: no accent keys at all) | Radical simplification. Players type base letters, accents stripped for matching. |
+| **Different base layout** | Sutom (fr: AZERTY), AlWird (ar: Arabic), Handle (ko: 2벌식) | Required when the region uses a non-QWERTY physical keyboard standard. |
+| **Digraphs as single keys** | Szózat (hu: CS,DZ,DZS,GY,LY,NY,SZ,TY,ZS), Riječek (hr: LJ,NJ,DŽ) | Treats multi-character phonemes as atomic units in both keyboard and grid. |
+
+### Actionable Findings
+
+**1. French needs AZERTY.** Sutom uses AZERTY — the standard French keyboard. Our French keyboard currently uses QWERTY, which is wrong for French users. Sutom also strips accents entirely (no é, è, ê, ë keys), matching words without diacritics.
+
+**2. Hungarian digraphs are the gold standard.** Szózat has a dedicated 4th row for digraphs (CS, DZ, DZS, GY, LY, NY, SZ, TY, ZS) where each digraph is a single key and occupies one tile in the grid. DZS as a trigraph-turned-single-tile is remarkable. We should consider this for Hungarian.
+
+**3. Croatian digraphs (LJ, NJ, DŽ) follow the same pattern.** Riječek treats them as single tiles. Both Hungarian and Croatian treat their language's multi-character phonemes as atomic units — this is clearly the right approach for these languages.
+
+**4. Scandinavian keyboards are straightforward.** Sanuli (fi) and Ordel (sv) simply append Å, Ö, Ä to the ends of QWERTY rows, matching physical Nordic keyboards. Our current keyboards for fi/sv likely already do this.
+
+**5. Arabic needs 5 keyboard rows.** AlWird uses 5 rows to fit the full Arabic alphabet (~36 characters including hamza variants). It also gives **8 guesses** instead of 6 due to the larger alphabet. We currently give 6 — worth considering an increase.
+
+**6. Portuguese can strip accents entirely.** Termo has zero accent keys and matches words without diacritics. This is simpler than our `diacritic_map` approach and matches how Brazilian Portuguese Wordle players expect the game to work.
+
+**7. Community dictionary contribution is brilliant.** Sanuli shows "Suggest addition?" (Google Forms link) when a word is rejected. This crowdsources dictionary improvement from native speakers — exactly the feedback loop we need for our most problematic dictionaries.
+
+**8. Turkish I/İ distinction matters.** Wordle TR has both dotless ı and dotted İ as separate keys — Turkish is the only language where this distinction is phonemic. Our Turkish keyboard should handle this correctly.
+
+### Competitor Features We Should Adopt
+
+| Feature | Source | Priority | Effort |
+|---------|--------|----------|--------|
+| "Suggest a word" link on invalid word rejection | Sanuli (fi) | **High** | Low — Google Form + link in error message |
+| AZERTY keyboard for French | Sutom (fr) | **High** | Low — keyboard JSON change |
+| 8 guesses for Arabic | AlWird (ar) | **Medium** | Medium — needs per-language config |
+| Digraph keyboard row for Hungarian | Szózat (hu) | **Medium** | High — needs grid tile + keyboard architecture changes |
+| Digraph support for Croatian | Riječek (hr) | **Medium** | High — same architecture as Hungarian |
+| Colorblind mode / alternate color schemes | Riječek (hr) | **Low** | Medium |
+
+### Defunct Competitors = Opportunity
+
+Three competitor sites are now defunct (as of 2026-02-21):
+- **Meduyeket** (Hebrew) — domain hijacked by gambling spam
+- **Wordle TR** (Turkish) — GitHub Pages removed
+- **Korean Wordle** — domain parked/for sale
+
+These represent capturable user bases if we improve our Hebrew, Turkish, and Korean implementations.
+
+---
+
+## 6. Priority Languages <a name="priority-languages"></a>
 
 Ranking by **impact = sessions × dictionary-fixability**:
 
@@ -238,7 +295,7 @@ Everything else — accept PRs, but don't prioritize active work.
 
 ---
 
-## 6. Architecture: The Two-List System <a name="architecture"></a>
+## 7. Architecture: The Two-List System <a name="architecture"></a>
 
 ### Current Architecture
 ```
@@ -288,7 +345,7 @@ For auto-generated keyboards (32 languages), the current system uses the charact
 
 ---
 
-## 7. Action Plan <a name="action-plan"></a>
+## 8. Action Plan <a name="action-plan"></a>
 
 ### Phase 1: Emergency Fixes (1-2 days)
 - [ ] **Italian**: Investigate why invalid rate is 120% — likely a bug or severely broken dictionary
@@ -315,23 +372,31 @@ For each Tier 1 language, create a supplement word list:
 - [ ] **Turkish**: Split 9.2K → ~3K daily + 6K supplement
 
 ### Phase 4: Keyboard & Localization Polish
-- [ ] Add AZERTY keyboard layout for French
-- [ ] Add QWERTZ keyboard layout for German
+- [ ] **French**: Switch to AZERTY layout (matches Sutom and all French physical keyboards)
+- [ ] **French**: Strip accents from matching (like Termo does for Portuguese) — or add accent keys
+- [ ] **German**: Add QWERTZ keyboard layout (Z/Y swapped, matches physical keyboards)
+- [ ] **Hungarian**: Investigate digraph support (Szózat's dedicated digraph row is the gold standard)
+- [ ] **Croatian**: Investigate digraph support for LJ, NJ, DŽ (Riječek treats them as single tiles)
+- [ ] **Arabic**: Consider 8 guesses instead of 6 (AlWird gives 8 due to larger alphabet)
+- [ ] **Turkish**: Verify I/İ (dotless/dotted) distinction is handled correctly on keyboard
 - [ ] Fix Vietnamese keyboard coverage gaps
 - [ ] Fix Korean keyboard coverage gaps
 - [ ] Complete UI translations for top 20 languages
 
-### Phase 5: Tooling (support ongoing curation)
+### Phase 5: Tooling & Community Features
 - [ ] Build a script (`scripts/split_wordlist.py`) that takes a word frequency source and splits a word list into daily + supplement
 - [ ] Build a script to validate word list quality (no uppercase, no whitespace, correct character set, no duplicates)
-- [ ] Add a "suggest a word" feature so native speakers can report missing words
+- [ ] **Add "Suggest a word" link on invalid word rejection** (à la Sanuli — Google Form + link in error toast). This crowdsources dictionary improvement from native speakers and is the single best long-term strategy for dictionary quality.
 - [ ] Consider "easy mode" toggle that accepts any 5-letter string (already have the UI key)
 
 ### Open Research Questions
-- [ ] Should Arabic get 8 attempts like AlWird? (morphological complexity)
+- [ ] Should Arabic get 8 attempts like AlWird? (morphological complexity, 36+ character alphabet)
+- [ ] Should Hungarian/Croatian get digraph support? (Szózat/Riječek treat digraphs as single tiles — this is a significant architecture change affecting grid rendering, keyboard input, and color algorithm)
 - [ ] Should we add more diacritic maps? (currently only Arabic has one)
+- [ ] Should Portuguese strip accents entirely? (Termo does this — simpler than diacritic_map)
 - [ ] Can we use LLMs to help curate word lists? (filter obscure words)
 - [ ] What's our strategy for Chinese/Japanese/Thai? (non-alphabetic scripts)
+- [ ] Should we capture users from defunct competitor sites? (Meduyeket Hebrew users, Korean Wordle users, Wordle TR users)
 
 ---
 
