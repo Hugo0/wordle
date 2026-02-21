@@ -156,8 +156,8 @@ export default function createIndexApp(): App {
                         return this.languages[lower] as Language;
                     }
                     // Try prefix match (e.g. "de-AT" → "de", "pt-BR" → "pt")
-                    const prefix = lower.split('-')[0];
-                    if (this.languages[prefix]) {
+                    const prefix = lower.split('-')[0] ?? '';
+                    if (prefix && this.languages[prefix]) {
                         return this.languages[prefix] as Language;
                     }
                     // Special case: Norwegian "no" → "nb" (Bokmål)
