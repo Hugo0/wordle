@@ -247,8 +247,7 @@ class TestDailyWords:
         main = set(load_word_list(lang))
         invalid = [w for w in daily if w not in main]
         assert not invalid, (
-            f"{lang}: {len(invalid)} daily words not in main list. "
-            f"Examples: {invalid[:5]}"
+            f"{lang}: {len(invalid)} daily words not in main list. " f"Examples: {invalid[:5]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -264,8 +263,7 @@ class TestDailyWords:
                 duplicates.append(w)
             seen.add(w)
         assert not duplicates, (
-            f"{lang}: {len(duplicates)} duplicate daily words. "
-            f"Examples: {duplicates[:10]}"
+            f"{lang}: {len(duplicates)} duplicate daily words. " f"Examples: {duplicates[:10]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -276,8 +274,7 @@ class TestDailyWords:
             pytest.skip(f"{lang}: No daily words file")
         invalid = [(w, len(w)) for w in daily if len(w) != 5]
         assert not invalid, (
-            f"{lang}: {len(invalid)} daily words with wrong length. "
-            f"Examples: {invalid[:5]}"
+            f"{lang}: {len(invalid)} daily words with wrong length. " f"Examples: {invalid[:5]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)

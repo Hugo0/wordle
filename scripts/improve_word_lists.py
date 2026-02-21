@@ -28,15 +28,46 @@ DEFAULT_DAILY_COUNT = 2000
 
 # Map our language codes → FrequencyWords language codes
 FREQ_LANG_MAP = {
-    "ar": "ar", "br": "br", "ca": "ca", "cs": "cs", "da": "da", "de": "de",
-    "el": "el", "eo": "eo", "es": "es", "et": "et", "eu": "eu", "fa": "fa",
-    "fr": "fr", "gl": "gl", "he": "he", "hr": "hr", "hu": "hu", "hy": "hy",
-    "is": "is", "it": "it", "ka": "ka", "ko": "ko", "la": "la", "lt": "lt",
-    "lv": "lv", "mk": "mk", "nl": "nl", "pt": "pt", "ro": "ro", "ru": "ru",
-    "sk": "sk", "sl": "sl", "sr": "sr", "sv": "sv", "tr": "tr", "uk": "uk",
+    "ar": "ar",
+    "br": "br",
+    "ca": "ca",
+    "cs": "cs",
+    "da": "da",
+    "de": "de",
+    "el": "el",
+    "eo": "eo",
+    "es": "es",
+    "et": "et",
+    "eu": "eu",
+    "fa": "fa",
+    "fr": "fr",
+    "gl": "gl",
+    "he": "he",
+    "hr": "hr",
+    "hu": "hu",
+    "hy": "hy",
+    "is": "is",
+    "it": "it",
+    "ka": "ka",
+    "ko": "ko",
+    "la": "la",
+    "lt": "lt",
+    "lv": "lv",
+    "mk": "mk",
+    "nl": "nl",
+    "pt": "pt",
+    "ro": "ro",
+    "ru": "ru",
+    "sk": "sk",
+    "sl": "sl",
+    "sr": "sr",
+    "sv": "sv",
+    "tr": "tr",
+    "uk": "uk",
     "vi": "vi",
     # Close matches
-    "nb": "no", "nn": "no",
+    "nb": "no",
+    "nn": "no",
     "hyw": "hy",
 }
 
@@ -45,17 +76,46 @@ EXCLUDE = {"en", "fi", "pl", "bg", "ko"}  # ko: FrequencyWords uses syllable blo
 
 # Language names for SOURCES.md
 LANG_NAMES = {
-    "ar": "Arabic", "br": "Breton", "ca": "Catalan", "cs": "Czech",
-    "da": "Danish", "de": "German", "el": "Greek", "eo": "Esperanto",
-    "es": "Spanish", "et": "Estonian", "eu": "Basque", "fa": "Persian",
-    "fr": "French", "gl": "Galician", "he": "Hebrew", "hr": "Croatian",
-    "hu": "Hungarian", "hy": "Armenian", "hyw": "Western Armenian",
-    "is": "Icelandic", "it": "Italian", "ka": "Georgian", "ko": "Korean",
-    "la": "Latin", "lt": "Lithuanian", "lv": "Latvian", "mk": "Macedonian",
-    "nb": "Norwegian Bokmål", "nl": "Dutch", "nn": "Norwegian Nynorsk",
-    "pt": "Portuguese", "ro": "Romanian", "ru": "Russian", "sk": "Slovak",
-    "sl": "Slovenian", "sr": "Serbian", "sv": "Swedish", "tr": "Turkish",
-    "uk": "Ukrainian", "vi": "Vietnamese",
+    "ar": "Arabic",
+    "br": "Breton",
+    "ca": "Catalan",
+    "cs": "Czech",
+    "da": "Danish",
+    "de": "German",
+    "el": "Greek",
+    "eo": "Esperanto",
+    "es": "Spanish",
+    "et": "Estonian",
+    "eu": "Basque",
+    "fa": "Persian",
+    "fr": "French",
+    "gl": "Galician",
+    "he": "Hebrew",
+    "hr": "Croatian",
+    "hu": "Hungarian",
+    "hy": "Armenian",
+    "hyw": "Western Armenian",
+    "is": "Icelandic",
+    "it": "Italian",
+    "ka": "Georgian",
+    "ko": "Korean",
+    "la": "Latin",
+    "lt": "Lithuanian",
+    "lv": "Latvian",
+    "mk": "Macedonian",
+    "nb": "Norwegian Bokmål",
+    "nl": "Dutch",
+    "nn": "Norwegian Nynorsk",
+    "pt": "Portuguese",
+    "ro": "Romanian",
+    "ru": "Russian",
+    "sk": "Slovak",
+    "sl": "Slovenian",
+    "sr": "Serbian",
+    "sv": "Swedish",
+    "tr": "Turkish",
+    "uk": "Ukrainian",
+    "vi": "Vietnamese",
 }
 
 
@@ -64,7 +124,7 @@ def load_characters(lang: str) -> set[str]:
     path = DATA_DIR / lang / f"{lang}_characters.txt"
     if not path.exists():
         return set()
-    return {line.strip() for line in path.read_text().splitlines() if line.strip()}
+    return {line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()}
 
 
 def load_word_list(lang: str) -> list[str]:
@@ -72,7 +132,7 @@ def load_word_list(lang: str) -> list[str]:
     path = DATA_DIR / lang / f"{lang}_5words.txt"
     if not path.exists():
         return []
-    return [line.strip() for line in path.read_text().splitlines() if line.strip()]
+    return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def load_existing_supplement(lang: str) -> list[str]:
@@ -80,7 +140,7 @@ def load_existing_supplement(lang: str) -> list[str]:
     path = DATA_DIR / lang / f"{lang}_5words_supplement.txt"
     if not path.exists():
         return []
-    return [line.strip() for line in path.read_text().splitlines() if line.strip()]
+    return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def load_frequency_data(freq_code: str) -> dict[str, int]:
@@ -191,8 +251,10 @@ def process_language(
     if len(daily_words) < target:
         remaining = target - len(daily_words)
         daily_words.extend(unscored[:remaining])
-        print(f"  WARNING: Only {len(scored)} words had frequency data, "
-              f"padded with {remaining} unscored words")
+        print(
+            f"  WARNING: Only {len(scored)} words had frequency data, "
+            f"padded with {remaining} unscored words"
+        )
 
     # Sort alphabetically for reviewability
     daily_words.sort()
@@ -201,21 +263,24 @@ def process_language(
     invalid_daily = [w for w in daily_words if w not in existing_word_set]
     assert not invalid_daily, f"BUG: daily words not in _5words.txt: {invalid_daily[:5]}"
 
-    print(f"  Daily words generated: {len(daily_words)} "
-          f"(from {len(scored)} frequency-matched, {len(unscored)} unmatched)")
+    print(
+        f"  Daily words generated: {len(daily_words)} "
+        f"(from {len(scored)} frequency-matched, {len(unscored)} unmatched)"
+    )
 
     # Show top/bottom for review
     if scored:
         top5 = [w for w, _ in scored[:5]]
-        bottom5 = [w for w, _ in scored[max(0, min(target, len(scored))-5):min(target, len(scored))]]
+        bottom5 = [
+            w for w, _ in scored[max(0, min(target, len(scored)) - 5) : min(target, len(scored))]
+        ]
         print(f"  Top 5 daily words: {top5}")
         print(f"  Bottom 5 daily words: {bottom5}")
 
     # === Generate supplement ===
     # All valid FrequencyWords words NOT in existing word list
     new_supplement = {
-        w for w in valid_freq
-        if w not in existing_word_set and is_valid_word(w, char_set)
+        w for w in valid_freq if w not in existing_word_set and is_valid_word(w, char_set)
     }
 
     # Merge with existing supplement
@@ -245,18 +310,23 @@ def process_language(
     sources_path = DATA_DIR / lang / "SOURCES.md"
 
     if not overwrite:
+        existing = []
         if daily_path.exists():
-            print(f"  WARNING: {daily_path.name} already exists, use --overwrite to replace")
+            existing.append(daily_path.name)
+        if supplement_path.exists():
+            existing.append(supplement_path.name)
+        if existing:
+            print(f"  WARNING: {', '.join(existing)} already exist, use --overwrite to replace")
             result["status"] = "skipped"
-            result["reason"] = "daily_words already exists"
+            result["reason"] = f"{', '.join(existing)} already exist"
             return result
 
     # Write daily_words
-    daily_path.write_text("\n".join(daily_words) + "\n")
+    daily_path.write_text("\n".join(daily_words) + "\n", encoding="utf-8")
     print(f"  Wrote {len(daily_words)} words to {daily_path.name}")
 
     # Write supplement
-    supplement_path.write_text("\n".join(supplement_sorted) + "\n")
+    supplement_path.write_text("\n".join(supplement_sorted) + "\n", encoding="utf-8")
     print(f"  Wrote {len(supplement_sorted)} words to {supplement_path.name}")
 
     # Write SOURCES.md (only if it doesn't exist — don't overwrite custom ones like pl)
@@ -289,7 +359,7 @@ The frequency-derived data in this directory is provided under **CC-BY-SA 4.0**,
 - **wooorm/dictionaries** for the base word list
 - **Hermit Dave** ([FrequencyWords](https://github.com/hermitdave/FrequencyWords)) for frequency data derived from OpenSubtitles
 """
-        sources_path.write_text(sources_md)
+        sources_path.write_text(sources_md, encoding="utf-8")
         print(f"  Wrote {sources_path.name}")
 
     return result
@@ -310,8 +380,10 @@ def download_frequency_words():
 
     subprocess.run(
         [
-            "git", "clone",
-            "--depth", "1",
+            "git",
+            "clone",
+            "--depth",
+            "1",
             "--filter=blob:none",
             "--sparse",
             "https://github.com/hermitdave/FrequencyWords.git",
@@ -347,15 +419,49 @@ def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
     # Priority order: highest impact first
     priority = [
         # Tier 1: Emergency
-        "it", "el", "fr",
+        "it",
+        "el",
+        "fr",
         # Tier 2: High impact
-        "ar", "es", "da", "ro", "ru", "sv", "de",
+        "ar",
+        "es",
+        "da",
+        "ro",
+        "ru",
+        "sv",
+        "de",
         # Tier 3: Medium
-        "hr", "hu", "he", "tr", "ca", "nl", "pt", "mk", "sr", "et", "uk",
-        "sk", "nb", "nn",
+        "hr",
+        "hu",
+        "he",
+        "tr",
+        "ca",
+        "nl",
+        "pt",
+        "mk",
+        "sr",
+        "et",
+        "uk",
+        "sk",
+        "nb",
+        "nn",
         # Tier 4: Lower traffic
-        "cs", "sl", "eu", "fa", "ka", "ko", "lt", "lv", "is", "eo", "la",
-        "vi", "hy", "hyw", "gl", "br",
+        "cs",
+        "sl",
+        "eu",
+        "fa",
+        "ka",
+        "ko",
+        "lt",
+        "lv",
+        "is",
+        "eo",
+        "la",
+        "vi",
+        "hy",
+        "hyw",
+        "gl",
+        "br",
     ]
 
     results = []
@@ -367,7 +473,9 @@ def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
     print(f"\n{'='*80}")
     print(f"{'SUMMARY':^80}")
     print(f"{'='*80}")
-    print(f"{'Lang':<6} {'Status':<12} {'Daily':<8} {'Supplement':<12} {'Freq Match':<12} {'Notes'}")
+    print(
+        f"{'Lang':<6} {'Status':<12} {'Daily':<8} {'Supplement':<12} {'Freq Match':<12} {'Notes'}"
+    )
     print("-" * 80)
 
     ok_count = 0
@@ -381,8 +489,10 @@ def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
 
         if status in ("ok", "dry_run"):
             ok_count += 1
-            print(f"{lang:<6} {'OK' if status == 'ok' else 'DRY':<12} "
-                  f"{daily:<8} {supp:<12} {matched:<12}")
+            print(
+                f"{lang:<6} {'OK' if status == 'ok' else 'DRY':<12} "
+                f"{daily:<8} {supp:<12} {matched:<12}"
+            )
         else:
             print(f"{lang:<6} {status:<12} {'-':<8} {'-':<12} {'-':<12} {reason}")
 
@@ -401,15 +511,23 @@ def main():
     # Process single language
     proc = subparsers.add_parser("process", help="Process a single language")
     proc.add_argument("lang", help="Language code (e.g., it, fr, es)")
-    proc.add_argument("--daily-count", type=int, default=DEFAULT_DAILY_COUNT,
-                       help=f"Target daily word count (default: {DEFAULT_DAILY_COUNT})")
+    proc.add_argument(
+        "--daily-count",
+        type=int,
+        default=DEFAULT_DAILY_COUNT,
+        help=f"Target daily word count (default: {DEFAULT_DAILY_COUNT})",
+    )
     proc.add_argument("--dry-run", action="store_true", help="Report only, no file writes")
     proc.add_argument("--overwrite", action="store_true", help="Overwrite existing files")
 
     # Batch process
     batch = subparsers.add_parser("batch", help="Process all eligible languages")
-    batch.add_argument("--daily-count", type=int, default=DEFAULT_DAILY_COUNT,
-                        help=f"Target daily word count (default: {DEFAULT_DAILY_COUNT})")
+    batch.add_argument(
+        "--daily-count",
+        type=int,
+        default=DEFAULT_DAILY_COUNT,
+        help=f"Target daily word count (default: {DEFAULT_DAILY_COUNT})",
+    )
     batch.add_argument("--dry-run", action="store_true", help="Report only, no file writes")
     batch.add_argument("--overwrite", action="store_true", help="Overwrite existing files")
 
