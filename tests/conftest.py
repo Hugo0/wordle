@@ -51,12 +51,17 @@ def load_supplement_words(lang_code: str) -> list[str]:
 
 
 def load_daily_words(lang_code: str) -> list[str]:
-    """Load the curated daily word list for a language."""
+    """Load the curated daily word list for a language.
+
+    Matches production behavior in app.py: skips comment lines and lowercases.
+    """
     word_file = LANGUAGES_DIR / lang_code / f"{lang_code}_daily_words.txt"
     if not word_file.exists():
         return []
     with open(word_file, "r", encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip()]
+        return [
+            line.strip().lower() for line in f if line.strip() and not line.strip().startswith("#")
+        ]
 
 
 def load_characters(lang_code: str) -> list[str]:
