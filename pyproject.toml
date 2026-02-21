@@ -2,7 +2,7 @@
 name = "wordle-global"
 version = "1.0.0"
 description = "Daily word puzzle game in 65+ languages"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "flask>=3.1.0",
     "flask-cors>=6.0.0",
