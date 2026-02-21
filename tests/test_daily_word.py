@@ -146,7 +146,7 @@ class TestWordCycling:
     """Tests for word list cycling behavior."""
 
     # Languages with duplicate words causing early repeats
-    REPEAT_XFAIL = {"pau"}
+    REPEAT_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_no_repeat_in_word_list_length_days(self, lang):

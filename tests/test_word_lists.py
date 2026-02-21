@@ -27,9 +27,9 @@ class TestWordListBasics:
     """Basic word list validation tests."""
 
     # Pre-existing data quality issues (not code bugs)
-    LOWERCASE_XFAIL = {"pt", "pau"}
-    DUPLICATE_XFAIL = {"pau"}
-    SUPPLEMENT_LENGTH_XFAIL = {"ckb"}
+    LOWERCASE_XFAIL: set[str] = set()
+    DUPLICATE_XFAIL: set[str] = set()
+    SUPPLEMENT_LENGTH_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_word_list_exists(self, lang):
@@ -92,7 +92,7 @@ class TestCharacterConsistency:
     """Tests for character set consistency."""
 
     # Pre-existing character set mismatches
-    CHARACTER_XFAIL = {"pt", "pau"}
+    CHARACTER_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_words_use_valid_characters(self, lang):
@@ -142,7 +142,7 @@ class TestKeyboardCoverage:
     """Tests for keyboard coverage of word characters."""
 
     # Languages with known keyboard coverage gaps (complex scripts, incomplete keyboards)
-    KEYBOARD_COVERAGE_XFAIL = {"vi", "ko", "el", "pt", "pau", "la", "oc", "qya"}
+    KEYBOARD_COVERAGE_XFAIL: set[str] = {"ko"}
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_word_characters(self, lang):
@@ -239,7 +239,7 @@ class TestDailyWords:
     """Tests for curated daily word lists."""
 
     # Pre-existing data issues
-    SUPPLEMENT_OVERLAP_XFAIL: set[str] = {"pl", "ckb"}  # Pre-existing supplement/main overlap
+    SUPPLEMENT_OVERLAP_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_daily_words_subset_of_main(self, lang):
@@ -299,7 +299,7 @@ class TestDailyWords:
 class TestWordListQuality:
     """Tests for word list quality (warnings, not failures)."""
 
-    WHITESPACE_XFAIL = {"pt"}
+    WHITESPACE_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_minimum_word_count(self, lang):
