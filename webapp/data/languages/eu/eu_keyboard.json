@@ -1,1 +1,13 @@
-[]
+{
+    "default": "basque_qwerty",
+    "layouts": {
+        "basque_qwerty": {
+            "label": "Basque QWERTY",
+            "rows": [
+                ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+                ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ñ"],
+                ["⇨", "z", "x", "c", "ç", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}
