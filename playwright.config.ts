@@ -31,7 +31,7 @@ export default defineConfig({
     ],
     // Local dev server - start before tests if not already running
     webServer: {
-        command: '. venv/bin/activate && gunicorn --chdir webapp --bind 127.0.0.1:8000 app:app',
+        command: 'uv run gunicorn --chdir webapp --bind 127.0.0.1:8000 app:app',
         url: 'http://127.0.0.1:8000',
         reuseExistingServer: !process.env.CI,
         timeout: 30000,
