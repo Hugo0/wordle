@@ -1,7 +1,0 @@
-# Kept for Render deploy compatibility (dashboard still references this file).
-# Canonical dependencies are in pyproject.toml — managed with uv.
-flask>=3.1.0
-flask-cors>=6.0.0
-gunicorn>=24.0.0
-Flask-FlatPages>=0.9.0
-nltk>=3.9.0
