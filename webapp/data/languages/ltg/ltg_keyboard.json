@@ -1,1 +1,13 @@
-[]
+{
+    "default": "latgalian_qwerty",
+    "layouts": {
+        "latgalian_qwerty": {
+            "label": "QWERTY",
+            "rows": [
+                ["q", "w", "e", "ē", "r", "t", "y", "u", "ū", "i", "ī", "o", "ō", "p"],
+                ["a", "ā", "s", "š", "d", "f", "g", "h", "j", "k", "ķ", "l", "ļ"],
+                ["⇨", "z", "ž", "c", "č", "v", "b", "n", "ņ", "m", "⌫"]
+            ]
+        }
+    }
+}

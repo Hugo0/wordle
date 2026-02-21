@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """
-FrequencyWords-based word list improvement pipeline.
+Word list improvement pipeline.
 
-Uses Hermit Dave's FrequencyWords (OpenSubtitles frequency data) to:
-1. Generate {lang}_daily_words.txt — top N most common words from the existing list
-2. Generate {lang}_5words_supplement.txt — additional valid 5-letter guesses
+Uses multiple data sources to generate curated word lists:
+1. FrequencyWords (OpenSubtitles frequency data) — spoken language bias
+2. wordfreq library (Wikipedia, Reddit, Twitter, Google Books, etc.) — broader coverage
+
+Generates:
+1. {lang}_daily_words.txt — top N most common words from the existing list
+2. {lang}_5words_supplement.txt — additional valid 5-letter guesses
 
 The existing _5words.txt is NEVER modified.
 
@@ -74,6 +78,51 @@ FREQ_LANG_MAP = {
 
 # Already high quality — skip
 EXCLUDE = {"en", "fi", "pl", "bg", "ko"}  # ko: FrequencyWords uses syllable blocks, 0 matches
+
+# Map our language codes → wordfreq library codes
+# wordfreq uses BCP-47 codes, mostly same as ours
+WORDFREQ_LANG_MAP = {
+    "ar": "ar",
+    "br": "br",
+    "ca": "ca",
+    "cs": "cs",
+    "da": "da",
+    "de": "de",
+    "el": "el",
+    "eo": "eo",
+    "es": "es",
+    "et": "et",
+    "eu": "eu",
+    "fa": "fa",
+    "fr": "fr",
+    "gl": "gl",
+    "he": "he",
+    "hr": "hr",
+    "hu": "hu",
+    "hy": "hy",
+    "is": "is",
+    "it": "it",
+    "ka": "ka",
+    "lt": "lt",
+    "lv": "lv",
+    "mk": "mk",
+    "nb": "nb",
+    "nl": "nl",
+    "nn": "nn",
+    "pt": "pt",
+    "ro": "ro",
+    "ru": "ru",
+    "sk": "sk",
+    "sl": "sl",
+    "sr": "sr",
+    "sv": "sv",
+    "tr": "tr",
+    "uk": "uk",
+    "vi": "vi",
+    # Close matches
+    "hyw": "hy",
+    # Not in wordfreq: br, eo, eu, gl, ka, is, la, ko
+}
 
 # Language names for SOURCES.md
 LANG_NAMES = {
@@ -228,6 +277,51 @@ def is_valid_word(word: str, char_set: set[str]) -> bool:
     )
 
 
+def get_wordfreq_words(lang: str, char_set: set[str]) -> dict[str, float]:
+    """Get valid 5-letter words from wordfreq library with Zipf frequencies.
+
+    wordfreq aggregates Wikipedia, Reddit, Twitter, OpenSubtitles, Google Books, etc.
+    Returns {word: zipf_frequency} for valid 5-letter words.
+    """
+    try:
+        from wordfreq import top_n_list, zipf_frequency
+    except ImportError:
+        return {}
+
+    wf_lang = WORDFREQ_LANG_MAP.get(lang)
+    if not wf_lang:
+        return {}
+
+    words = {}
+    try:
+        for w in top_n_list(wf_lang, 200000):
+            w = w.lower()
+            if is_valid_word(w, char_set):
+                words[w] = zipf_frequency(w, wf_lang)
+    except LookupError:
+        print(f"  wordfreq: no data for {wf_lang}")
+        return {}
+
+    return words
+
+
+def is_likely_foreign(word: str, lang: str, threshold: float = 0.5) -> bool:
+    """Check if word is more common in English than the target language.
+
+    Filters Wikipedia noise: proper nouns, tech terms, and English words
+    that appear in non-English Wikipedia articles.
+    """
+    try:
+        from wordfreq import zipf_frequency
+    except ImportError:
+        return False
+
+    wf_lang = WORDFREQ_LANG_MAP.get(lang, lang)
+    z_target = zipf_frequency(word, wf_lang)
+    z_en = zipf_frequency(word, "en")
+    return z_en > z_target + threshold
+
+
 def process_language(
     lang: str,
     daily_count: int = DEFAULT_DAILY_COUNT,
@@ -367,6 +461,33 @@ def process_language(
     if roman_in_supp:
         all_supplement -= roman_in_supp
         print(f"  Filtered {len(roman_in_supp)} Roman numerals from supplement")
+
+    print(f"  New supplement words from FrequencyWords: {len(new_supplement)}")
+
+    # === Add words from wordfreq ===
+    wf_words = get_wordfreq_words(lang, char_set)
+    if wf_words:
+        print(f"  Valid 5-letter words in wordfreq: {len(wf_words)}")
+        wf_new = set()
+        wf_foreign = 0
+        for w in wf_words:
+            if w in existing_word_set:
+                continue
+            if w in all_supplement:
+                continue
+            if w in blocklist:
+                continue
+            if w in common_names:
+                continue
+            if is_roman_numeral(w):
+                continue
+            if is_likely_foreign(w, lang):
+                wf_foreign += 1
+                continue
+            wf_new.add(w)
+        all_supplement |= wf_new
+        print(f"  Words added from wordfreq: {len(wf_new)} ({wf_foreign} filtered as foreign)")
+
     # Greek: normalize final sigma (σ at word end → ς)
     if lang == "el":
         all_supplement = {w[:-1] + "\u03c2" if w.endswith("\u03c3") else w for w in all_supplement}
@@ -374,7 +495,6 @@ def process_language(
         all_supplement -= existing_word_set
     supplement_sorted = sorted(all_supplement)
 
-    print(f"  New supplement words from FrequencyWords: {len(new_supplement)}")
     print(f"  Total supplement (merged): {len(supplement_sorted)}")
 
     if supplement_sorted:

@@ -1,1 +1,13 @@
-[]
+{
+    "default": "irish_qwerty",
+    "layouts": {
+        "irish_qwerty": {
+            "label": "QWERTY",
+            "rows": [
+                ["e", "é", "r", "t", "u", "ú", "i", "í", "o", "ó", "p"],
+                ["a", "á", "s", "d", "f", "g", "h", "l"],
+                ["⇨", "c", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

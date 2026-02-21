@@ -1,1 +1,13 @@
-[]
+{
+    "default": "turkmen_qwerty",
+    "layouts": {
+        "turkmen_qwerty": {
+            "label": "QWERTY",
+            "rows": [
+                ["q", "w", "e", "ä", "r", "t", "y", "ý", "u", "ü", "i", "o", "ö", "p"],
+                ["a", "s", "ş", "d", "f", "g", "h", "j", "ž", "k", "l"],
+                ["⇨", "z", "c", "ç", "v", "b", "n", "ň", "m", "⌫"]
+            ]
+        }
+    }
+}
