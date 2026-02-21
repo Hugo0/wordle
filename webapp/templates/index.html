@@ -82,27 +82,8 @@
             </div>
         </header>
 
-        <!-- Auto-detected language CTA -->
-        <div v-if="detectedLanguage" class="flex flex-col items-center mt-8 mb-2 px-4">
-            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-3">
-                {{ ui.daily_word_game or "The daily word game" }}
-            </p>
-            <button v-on:click="selectLanguageWithCode(detectedLanguage.language_code)"
-                class="w-full max-w-xs px-8 py-4 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all">
-                [[ detectedLanguage.language_name_native ]] &rarr;
-            </button>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2">
-                [[ detectedLanguage.language_name ]]
-            </p>
-        </div>
-
-        <!-- "Or choose another language" label when CTA is shown -->
-        <p v-if="detectedLanguage" class="text-xs text-neutral-500 dark:text-neutral-400 text-center mt-6 mb-1">
-            {{ ui.or_choose_language or "Or choose another language" }}
-        </p>
-
         <!-- language search box -->
-        <div class="flex justify-center" :class="detectedLanguage ? 'mt-2' : 'mt-12'">
+        <div class="flex justify-center mt-12">
             <div class="flex flex-col break-words bg-white dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-600 rounded shadow-md mx-4 mb-2 sm:mb-6 w-full max-w-xs md:max-w-sm lg:max-w-md">
                 <input v-model="search_text"
                     class="shadow appearance-none w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-neutral-800 leading-tight focus:outline-none focus:shadow-outline hover:shadow-xl"

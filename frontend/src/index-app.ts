@@ -312,7 +312,18 @@ export default function createIndexApp(): App {
                     return rankA - rankB;
                 });
 
-                return [...playedLanguages, ...unplayedLanguages];
+                const sorted = [...playedLanguages, ...unplayedLanguages];
+
+                // If we detected the browser language, move it to the front
+                if (this.detectedLanguage) {
+                    const detectedCode = this.detectedLanguage.language_code;
+                    const idx = sorted.findIndex((l) => l.language_code === detectedCode);
+                    if (idx > 0) {
+                        sorted.unshift(sorted.splice(idx, 1)[0]);
+                    }
+                }
+
+                return sorted;
             },
 
             hasPlayed(language_code: string): boolean {
