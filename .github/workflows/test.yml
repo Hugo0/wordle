@@ -14,11 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.14'
-          cache: 'pip'
+        run: uv python install 3.14
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
@@ -31,11 +31,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install black>=24.0
+          uv sync
           pnpm install
 
       - name: Check Python formatting (black)
-        run: black --check webapp/ tests/
+        run: uv run black --check webapp/ tests/
 
       - name: Check TypeScript formatting (prettier)
         run: pnpm format:check
@@ -47,20 +47,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.14'
-          cache: 'pip'
+        run: uv python install 3.14
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest-cov
+        run: uv sync
 
       - name: Run pytest with coverage
-        run: python -m pytest tests/ -v --tb=short --cov=webapp --cov-report=term
+        run: uv run pytest tests/ -v --tb=short
 
   typescript-tests:
     name: TypeScript Tests (vitest)

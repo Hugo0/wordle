@@ -72,19 +72,15 @@ wordle/
 
 ### Running Locally
 ```bash
-# Backend
-gunicorn --chdir webapp --reload app:app
-
-# Frontend (separate terminal)
-pnpm watch
+pnpm dev           # Starts both Flask server + Vite watcher
 ```
 
 ### Before Committing
 ```bash
-pnpm format        # Format TypeScript
-black webapp/ tests/  # Format Python
-pnpm test          # Run TS tests
-pytest tests/      # Run Python tests
+pnpm format            # Format TypeScript
+uv run black webapp/ tests/  # Format Python
+pnpm test              # Run TS tests
+uv run pytest tests/   # Run Python tests
 ```
 
 ## Important Notes
