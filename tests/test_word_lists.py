@@ -8,8 +8,6 @@ These tests ensure word lists meet the requirements:
 - Words are lowercase (normalized)
 """
 
-import re
-
 import pytest
 from tests.conftest import (
     ALL_LANGUAGES,
@@ -21,15 +19,11 @@ from tests.conftest import (
     load_keyboard,
     get_diacritic_base_chars,
 )
+from scripts.improve_word_lists import is_roman_numeral
 
 
 class TestWordListBasics:
     """Basic word list validation tests."""
-
-    # Pre-existing data quality issues (not code bugs)
-    LOWERCASE_XFAIL: set[str] = set()
-    DUPLICATE_XFAIL: set[str] = set()
-    SUPPLEMENT_LENGTH_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_word_list_exists(self, lang):
@@ -49,8 +43,6 @@ class TestWordListBasics:
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_supplement_words_are_5_letters(self, lang):
         """Supplemental words must also be exactly 5 characters."""
-        if lang in self.SUPPLEMENT_LENGTH_XFAIL:
-            pytest.xfail(f"{lang}: Known supplement word length issue")
         words = load_supplement_words(lang)
         if not words:
             pytest.skip(f"{lang}: No supplement word list")
@@ -63,8 +55,6 @@ class TestWordListBasics:
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_no_duplicate_words(self, lang):
         """Word list should not have duplicates."""
-        if lang in self.DUPLICATE_XFAIL:
-            pytest.xfail(f"{lang}: Known duplicate words in word list")
         words = load_word_list(lang)
         seen = set()
         duplicates = []
@@ -79,8 +69,6 @@ class TestWordListBasics:
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_words_are_lowercase(self, lang):
         """All words should be lowercase."""
-        if lang in self.LOWERCASE_XFAIL:
-            pytest.xfail(f"{lang}: Known uppercase words in word list")
         words = load_word_list(lang)
         uppercase = [w for w in words if w != w.lower()]
         assert not uppercase, (
@@ -91,14 +79,9 @@ class TestWordListBasics:
 class TestCharacterConsistency:
     """Tests for character set consistency."""
 
-    # Pre-existing character set mismatches
-    CHARACTER_XFAIL: set[str] = set()
-
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_words_use_valid_characters(self, lang):
         """All characters in words must be in the language's character set."""
-        if lang in self.CHARACTER_XFAIL:
-            pytest.xfail(f"{lang}: Known character set mismatch")
         words = load_word_list(lang)
         chars = set(load_characters(lang))
 
@@ -119,8 +102,6 @@ class TestCharacterConsistency:
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_all_word_chars_in_character_set(self, lang):
         """Character set should cover all characters used in words."""
-        if lang in self.CHARACTER_XFAIL:
-            pytest.xfail(f"{lang}: Known character set mismatch")
         words = load_word_list(lang)
         chars = set(load_characters(lang))
 
@@ -141,19 +122,19 @@ class TestCharacterConsistency:
 class TestKeyboardCoverage:
     """Tests for keyboard coverage of word characters."""
 
-    # Languages with known keyboard coverage gaps (complex scripts, incomplete keyboards)
+    # Languages with known keyboard coverage gaps (complex scripts)
     KEYBOARD_COVERAGE_XFAIL: set[str] = {"ko"}
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_word_characters(self, lang):
-        if lang in self.KEYBOARD_COVERAGE_XFAIL:
-            pytest.xfail(f"{lang}: Known keyboard coverage gap (needs expert review)")
         """All characters used in words must be typeable on the keyboard.
 
         Note: If a language has diacritic_map configured, users can type base
         characters (e.g., 'a') to match diacritical variants (e.g., 'ä').
         So the keyboard only needs the base characters.
         """
+        if lang in self.KEYBOARD_COVERAGE_XFAIL:
+            pytest.xfail(f"{lang}: Known keyboard coverage gap (needs expert review)")
         words = load_word_list(lang)
         keyboard = load_keyboard(lang)
 
@@ -238,9 +219,6 @@ class TestKeyboardCoverage:
 class TestDailyWords:
     """Tests for curated daily word lists."""
 
-    # Pre-existing data issues
-    SUPPLEMENT_OVERLAP_XFAIL: set[str] = set()
-
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_daily_words_subset_of_main(self, lang):
         """Daily words must be a subset of the main word list."""
@@ -283,8 +261,6 @@ class TestDailyWords:
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_supplement_disjoint_from_main(self, lang):
         """Supplement words must not overlap with main word list."""
-        if lang in self.SUPPLEMENT_OVERLAP_XFAIL:
-            pytest.xfail(f"{lang}: Known supplement/main overlap")
         supplement = load_supplement_words(lang)
         if not supplement:
             pytest.skip(f"{lang}: No supplement word list")
@@ -299,8 +275,6 @@ class TestDailyWords:
 class TestWordListQuality:
     """Tests for word list quality (warnings, not failures)."""
 
-    WHITESPACE_XFAIL: set[str] = set()
-
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_minimum_word_count(self, lang):
         """Warn if word list has fewer than 100 words."""
@@ -314,8 +288,6 @@ class TestWordListQuality:
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_no_whitespace_in_words(self, lang):
         """Words should not contain whitespace."""
-        if lang in self.WHITESPACE_XFAIL:
-            pytest.xfail(f"{lang}: Known whitespace in word list")
         words = load_word_list(lang)
         with_whitespace = [w for w in words if any(c.isspace() for c in w)]
         assert not with_whitespace, f"{lang}: Found words with whitespace: {with_whitespace[:5]}"
@@ -337,27 +309,6 @@ class TestWordListQuality:
 class TestDailyWordQuality:
     """Tests for daily word list quality — blocklist, Roman numerals."""
 
-    _ROMAN_RE = re.compile(r"^[ivxlcdm]+$")
-
-    @classmethod
-    def _is_roman_numeral(cls, word: str) -> bool:
-        if not cls._ROMAN_RE.match(word):
-            return False
-        roman_values = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100, "d": 500, "m": 1000}
-        valid_sub = {("i", "v"), ("i", "x"), ("x", "l"), ("x", "c"), ("c", "d"), ("c", "m")}
-        total = 0
-        i = 0
-        while i < len(word):
-            if i + 1 < len(word) and roman_values[word[i]] < roman_values[word[i + 1]]:
-                if (word[i], word[i + 1]) not in valid_sub:
-                    return False
-                total += roman_values[word[i + 1]] - roman_values[word[i]]
-                i += 2
-            else:
-                total += roman_values[word[i]]
-                i += 1
-        return total > 0
-
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_daily_words_not_in_blocklist(self, lang):
         """Daily words should not overlap with blocklist."""
@@ -378,5 +329,5 @@ class TestDailyWordQuality:
         daily = load_daily_words(lang)
         if not daily:
             pytest.skip(f"{lang}: No daily words")
-        romans = [w for w in daily if self._is_roman_numeral(w)]
+        romans = [w for w in daily if is_roman_numeral(w)]
         assert not romans, f"{lang}: Found Roman numerals in daily words: {romans[:10]}"
