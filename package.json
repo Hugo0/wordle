@@ -4,7 +4,7 @@
     "description": "Daily word puzzle game in 65+ languages",
     "type": "module",
     "scripts": {
-        "dev": "pnpm build && concurrently -k -n server,vite -c blue,magenta \"uv run gunicorn -c gunicorn.conf.py --chdir webapp app:app\" \"pnpm watch\"",
+        "dev": "pnpm build && concurrently -k -n server,vite -c blue,magenta \"uv run gunicorn -c gunicorn.dev.py --chdir webapp app:app\" \"pnpm watch\"",
         "build": "vite build",
         "watch": "vite build --watch --emptyOutDir false",
         "test": "vitest run",
