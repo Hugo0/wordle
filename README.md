@@ -13,7 +13,7 @@ Contact: wordle@hugo0.com
 
 **For developers**: See [CLAUDE.md](CLAUDE.md) for architecture details, key algorithms, and coding guidelines.
 
-### Adding a new language
+## Adding a new language
 
 1. Create a folder in `webapp/data/languages/` with the language code (e.g. `en`, `de`, `fr`, `qya`)
 2. Add a list of 5-letter words: `{lang_code}_5words.txt` (one word per line, lowercase)

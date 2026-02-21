@@ -239,7 +239,7 @@ class TestDailyWords:
     """Tests for curated daily word lists."""
 
     # Pre-existing data issues
-    SUPPLEMENT_OVERLAP_XFAIL = {"pl", "ckb"}  # Pre-existing supplement/main overlap
+    SUPPLEMENT_OVERLAP_XFAIL: set[str] = {"pl", "ckb"}  # Pre-existing supplement/main overlap
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_daily_words_subset_of_main(self, lang):
