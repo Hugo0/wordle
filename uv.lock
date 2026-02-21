@@ -668,13 +668,13 @@ dependencies = [
     { name = "flask-flatpages" },
     { name = "gunicorn" },
     { name = "nltk" },
-    { name = "wordfreq" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "black" },
     { name = "pytest" },
+    { name = "wordfreq" },
 ]
 
 [package.metadata]
@@ -684,11 +684,11 @@ requires-dist = [
     { name = "flask-flatpages", specifier = ">=0.9.0" },
     { name = "gunicorn", specifier = ">=24.0.0" },
     { name = "nltk", specifier = ">=3.9.0" },
-    { name = "wordfreq", specifier = ">=3.1.1" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "black", specifier = ">=24.0.0" },
     { name = "pytest", specifier = ">=8.0.0" },
+    { name = "wordfreq", specifier = ">=3.1.1" },
 ]

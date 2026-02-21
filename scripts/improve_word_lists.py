@@ -339,7 +339,7 @@ def process_language(
 
     if lang in EXCLUDE:
         result["status"] = "skipped"
-        result["reason"] = "excluded (already high quality)"
+        result["reason"] = f"excluded ({lang})"
         return result
 
     print(f"\n{'='*60}")
@@ -742,8 +742,12 @@ def main():
         download_frequency_words()
     elif args.command == "process":
         result = process_language(args.lang, args.daily_count, args.dry_run, args.overwrite)
-        if result["status"] == "error":
-            print(f"\nERROR: {result.get('reason', 'unknown')}", file=sys.stderr)
+        if result["status"] in ("error", "skipped"):
+            print(
+                f"\n{'ERROR' if result['status'] == 'error' else 'SKIPPED'}: "
+                f"{result.get('reason', 'unknown')}",
+                file=sys.stderr,
+            )
             sys.exit(1)
     elif args.command == "batch":
         batch_process(args.daily_count, args.dry_run, args.overwrite)
