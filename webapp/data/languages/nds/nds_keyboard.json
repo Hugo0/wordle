@@ -1,1 +1,13 @@
-[]
+{
+    "default": "low_german_qwertz",
+    "layouts": {
+        "low_german_qwertz": {
+            "label": "QWERTZ",
+            "rows": [
+                ["q", "w", "e", "r", "t", "z", "u", "ü", "i", "o", "ö", "p"],
+                ["a", "ä", "å", "s", "d", "f", "g", "h", "j", "k", "l"],
+                ["⇨", "y", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

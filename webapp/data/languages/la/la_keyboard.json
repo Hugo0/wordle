@@ -1,1 +1,13 @@
-[]
+{
+    "default": "qwerty",
+    "layouts": {
+        "qwerty": {
+            "label": "QWERTY",
+            "rows": [
+                ["q", "e", "r", "t", "y", "u", "i", "o", "p"],
+                ["a", "s", "d", "f", "g", "h", "k", "l"],
+                ["⇨", "z", "x", "c", "v", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}

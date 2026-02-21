@@ -1,1 +1,13 @@
-[]
+{
+    "default": "gaelic_qwerty",
+    "layouts": {
+        "gaelic_qwerty": {
+            "label": "QWERTY",
+            "rows": [
+                ["e", "è", "r", "t", "u", "ù", "i", "ì", "o", "ò", "p"],
+                ["a", "à", "s", "d", "f", "g", "h", "l"],
+                ["⇨", "c", "b", "n", "m", "⌫"]
+            ]
+        }
+    }
+}
