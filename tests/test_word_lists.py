@@ -8,12 +8,15 @@ These tests ensure word lists meet the requirements:
 - Words are lowercase (normalized)
 """
 
+import re
+
 import pytest
 from tests.conftest import (
     ALL_LANGUAGES,
     load_word_list,
     load_supplement_words,
     load_daily_words,
+    load_blocklist,
     load_characters,
     load_keyboard,
     get_diacritic_base_chars,
@@ -329,3 +332,51 @@ class TestWordListQuality:
                 f"{lang}: {len(non_alpha)} words have non-alphabetic chars. "
                 f"Examples: {non_alpha[:5]} (may be valid for this language)"
             )
+
+
+class TestDailyWordQuality:
+    """Tests for daily word list quality — blocklist, Roman numerals."""
+
+    _ROMAN_RE = re.compile(r"^[ivxlcdm]+$")
+
+    @classmethod
+    def _is_roman_numeral(cls, word: str) -> bool:
+        if not cls._ROMAN_RE.match(word):
+            return False
+        roman_values = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100, "d": 500, "m": 1000}
+        valid_sub = {("i", "v"), ("i", "x"), ("x", "l"), ("x", "c"), ("c", "d"), ("c", "m")}
+        total = 0
+        i = 0
+        while i < len(word):
+            if i + 1 < len(word) and roman_values[word[i]] < roman_values[word[i + 1]]:
+                if (word[i], word[i + 1]) not in valid_sub:
+                    return False
+                total += roman_values[word[i + 1]] - roman_values[word[i]]
+                i += 2
+            else:
+                total += roman_values[word[i]]
+                i += 1
+        return total > 0
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_daily_words_not_in_blocklist(self, lang):
+        """Daily words should not overlap with blocklist."""
+        daily = load_daily_words(lang)
+        if not daily:
+            pytest.skip(f"{lang}: No daily words")
+        blocklist = load_blocklist(lang)
+        if not blocklist:
+            pytest.skip(f"{lang}: No blocklist")
+        overlap = set(daily) & blocklist
+        assert not overlap, (
+            f"{lang}: {len(overlap)} daily words in blocklist. " f"Examples: {sorted(overlap)[:10]}"
+        )
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_no_roman_numerals_in_daily_words(self, lang):
+        """Daily words should not contain Roman numerals."""
+        daily = load_daily_words(lang)
+        if not daily:
+            pytest.skip(f"{lang}: No daily words")
+        romans = [w for w in daily if self._is_roman_numeral(w)]
+        assert not romans, f"{lang}: Found Roman numerals in daily words: {romans[:10]}"

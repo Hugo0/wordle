@@ -16,6 +16,7 @@ Usage:
 """
 
 import argparse
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -143,6 +144,59 @@ def load_existing_supplement(lang: str) -> list[str]:
     return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
+def load_blocklist(lang: str) -> set[str]:
+    """Load blocklist words that should be excluded from daily word rotation."""
+    path = DATA_DIR / lang / f"{lang}_blocklist.txt"
+    if not path.exists():
+        return set()
+    blocklist = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            blocklist.add(line.lower())
+    return blocklist
+
+
+def load_common_names() -> set[str]:
+    """Load common international names to filter from daily words."""
+    path = SCRIPT_DIR / "common_names.txt"
+    if not path.exists():
+        return set()
+    names = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            names.add(line.lower())
+    return names
+
+
+_ROMAN_RE = re.compile(r"^[ivxlcdm]+$")
+
+
+def is_roman_numeral(word: str) -> bool:
+    """Check if a word is a valid Roman numeral (e.g., xviii=18, cccii=302).
+
+    Correctly rejects real words like 'civil', 'vivim' that happen to use
+    Roman numeral characters but don't form valid numerals.
+    """
+    if not _ROMAN_RE.match(word):
+        return False
+    roman_values = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100, "d": 500, "m": 1000}
+    valid_subtractive = {("i", "v"), ("i", "x"), ("x", "l"), ("x", "c"), ("c", "d"), ("c", "m")}
+    total = 0
+    i = 0
+    while i < len(word):
+        if i + 1 < len(word) and roman_values[word[i]] < roman_values[word[i + 1]]:
+            if (word[i], word[i + 1]) not in valid_subtractive:
+                return False
+            total += roman_values[word[i + 1]] - roman_values[word[i]]
+            i += 2
+        else:
+            total += roman_values[word[i]]
+            i += 1
+    return total > 0
+
+
 def load_frequency_data(freq_code: str) -> dict[str, int]:
     """Load FrequencyWords file. Returns {word: frequency_count}."""
     # Try _50k.txt first, then _full.txt
@@ -229,6 +283,14 @@ def process_language(
     valid_freq = {w: f for w, f in freq_data.items() if is_valid_word(w, char_set)}
     print(f"  Valid 5-letter words in FrequencyWords: {len(valid_freq)}")
 
+    # Load filters
+    blocklist = load_blocklist(lang)
+    common_names = load_common_names()
+    if blocklist:
+        print(f"  Blocklist: {len(blocklist)} words")
+    if common_names:
+        print(f"  Common names filter: {len(common_names)} names")
+
     # === Generate daily_words.txt ===
     # Score existing words by frequency rank
     scored = []
@@ -243,8 +305,21 @@ def process_language(
     # Sort by frequency descending (higher = more common)
     scored.sort(key=lambda x: -x[1])
 
+    # Filter daily candidates BEFORE slicing top N
+    # (blocklist, Roman numerals, common names)
+    scored_pre = len(scored)
+    unscored_pre = len(unscored)
+    scored = [(w, f) for w, f in scored if w not in blocklist and not is_roman_numeral(w)]
+    unscored = [w for w in unscored if w not in blocklist and not is_roman_numeral(w)]
+    if common_names:
+        scored = [(w, f) for w, f in scored if w not in common_names]
+        unscored = [w for w in unscored if w not in common_names]
+    filtered_count = (scored_pre - len(scored)) + (unscored_pre - len(unscored))
+    if filtered_count:
+        print(f"  Filtered from daily candidates: {filtered_count} words")
+
     # Take top N
-    target = min(daily_count, len(existing_words))
+    target = min(daily_count, len(scored) + len(unscored))
     daily_words = [w for w, _ in scored[:target]]
 
     # If not enough scored words, pad with unscored
@@ -287,6 +362,16 @@ def process_language(
     all_supplement = set(existing_supplement) | new_supplement
     # Remove any that are in the main list (safety)
     all_supplement -= existing_word_set
+    # Filter Roman numerals from supplement too
+    roman_in_supp = {w for w in all_supplement if is_roman_numeral(w)}
+    if roman_in_supp:
+        all_supplement -= roman_in_supp
+        print(f"  Filtered {len(roman_in_supp)} Roman numerals from supplement")
+    # Greek: normalize final sigma (σ at word end → ς)
+    if lang == "el":
+        all_supplement = {w[:-1] + "\u03c2" if w.endswith("\u03c3") else w for w in all_supplement}
+        # Re-filter after normalization (sigma fix may create duplicates with main list)
+        all_supplement -= existing_word_set
     supplement_sorted = sorted(all_supplement)
 
     print(f"  New supplement words from FrequencyWords: {len(new_supplement)}")
