@@ -149,23 +149,30 @@ export default function createIndexApp(): App {
 
             detectBrowserLanguage(): Language | null {
                 try {
-                    const browserLang = navigator.language || '';
-                    const lower = browserLang.toLowerCase();
-                    // Try exact match first (e.g. "nb" → "nb")
-                    if (this.languages[lower]) {
-                        return this.languages[lower] as Language;
-                    }
-                    // Try prefix match (e.g. "de-AT" → "de", "pt-BR" → "pt")
-                    const prefix = lower.split('-')[0] ?? '';
-                    if (prefix && this.languages[prefix]) {
-                        return this.languages[prefix] as Language;
-                    }
-                    // Special case: Norwegian "no" → "nb" (Bokmål)
-                    if (prefix === 'no' && this.languages['nb']) {
-                        return this.languages['nb'] as Language;
+                    // Try all preferred languages (navigator.languages),
+                    // falling back to navigator.language for older browsers
+                    const candidates = navigator.languages?.length
+                        ? navigator.languages
+                        : [navigator.language || ''];
+
+                    for (const browserLang of candidates) {
+                        const lower = browserLang.toLowerCase();
+                        // Try exact match first (e.g. "nb" → "nb")
+                        if (this.languages[lower]) {
+                            return this.languages[lower] as Language;
+                        }
+                        // Try prefix match (e.g. "de-AT" → "de", "pt-BR" → "pt")
+                        const prefix = lower.split('-')[0] ?? '';
+                        if (prefix && this.languages[prefix]) {
+                            return this.languages[prefix] as Language;
+                        }
+                        // Special case: Norwegian "no" → "nb" (Bokmål)
+                        if (prefix === 'no' && this.languages['nb']) {
+                            return this.languages['nb'] as Language;
+                        }
                     }
                 } catch {
-                    // navigator.language unavailable
+                    // navigator.languages unavailable
                 }
                 return null;
             },
