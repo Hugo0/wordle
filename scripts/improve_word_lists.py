@@ -80,7 +80,9 @@ FREQ_LANG_MAP = {
 EXCLUDE = {"en", "fi", "pl", "bg", "ko"}  # ko: FrequencyWords uses syllable blocks, 0 matches
 
 # Map our language codes → wordfreq library codes
-# wordfreq uses BCP-47 codes, mostly same as ours
+# Separate from FREQ_LANG_MAP because the two sources use different codes:
+# - FrequencyWords: nb/nn both map to "no"; has ko, la
+# - wordfreq: nb/nn are native codes; lacks ko, la
 WORDFREQ_LANG_MAP = {
     "ar": "ar",
     "br": "br",
@@ -206,6 +208,17 @@ def load_blocklist(lang: str) -> set[str]:
     return blocklist
 
 
+def load_final_form_map(lang: str) -> dict[str, str]:
+    """Load final_form_map from language config (e.g., Greek σ→ς at word end)."""
+    import json
+
+    config_path = DATA_DIR / lang / "language_config.json"
+    if not config_path.exists():
+        return {}
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    return config.get("final_form_map", {})
+
+
 def load_common_names() -> set[str]:
     """Load common international names to filter from daily words."""
     path = SCRIPT_DIR / "common_names.txt"
@@ -316,7 +329,10 @@ def is_likely_foreign(word: str, lang: str, threshold: float = 0.5) -> bool:
     except ImportError:
         return False
 
-    wf_lang = WORDFREQ_LANG_MAP.get(lang, lang)
+    wf_lang = WORDFREQ_LANG_MAP.get(lang)
+    if not wf_lang:
+        return False
+
     z_target = zipf_frequency(word, wf_lang)
     z_en = zipf_frequency(word, "en")
     return z_en > z_target + threshold
@@ -488,10 +504,16 @@ def process_language(
         all_supplement |= wf_new
         print(f"  Words added from wordfreq: {len(wf_new)} ({wf_foreign} filtered as foreign)")
 
-    # Greek: normalize final sigma (σ at word end → ς)
-    if lang == "el":
-        all_supplement = {w[:-1] + "\u03c2" if w.endswith("\u03c3") else w for w in all_supplement}
-        # Re-filter after normalization (sigma fix may create duplicates with main list)
+    # Apply final_form_map from language config (e.g., Greek σ→ς at word end)
+    final_form_map = load_final_form_map(lang)
+    if final_form_map:
+        normalized = set()
+        for w in all_supplement:
+            if w[-1:] in final_form_map:
+                w = w[:-1] + final_form_map[w[-1]]
+            normalized.add(w)
+        all_supplement = normalized
+        # Re-filter after normalization (may create duplicates with main list)
         all_supplement -= existing_word_set
     supplement_sorted = sorted(all_supplement)
 
@@ -537,23 +559,34 @@ def process_language(
     # Write SOURCES.md (only if it doesn't exist — don't overwrite custom ones like pl)
     if not sources_path.exists():
         lang_name = LANG_NAMES.get(lang, lang)
+        has_wordfreq = lang in WORDFREQ_LANG_MAP
+        wf_section = ""
+        wf_ack = ""
+        if has_wordfreq:
+            wf_section = """
+### 3. wordfreq
+- **URL**: https://github.com/rspeer/wordfreq
+- **License**: MIT
+- **Usage**: Additional valid words from Wikipedia, Reddit, Twitter, Google Books
+"""
+            wf_ack = "\n- **wordfreq** for multi-source word frequency data"
         sources_md = f"""# {lang_name} Language Data - Sources
 
 ## Sources
 
 ### 1. Existing Word List
-- **Source**: wooorm/dictionaries (Hunspell)
-- **URL**: https://github.com/wooorm/dictionaries
+- **Source**: Community-contributed dictionary
+- **URL**: https://github.com/Hugo0/wordle
 
 ### 2. FrequencyWords
 - **URL**: https://github.com/hermitdave/FrequencyWords
 - **License**: MIT (code), CC-BY-SA 4.0 (content)
 - **Usage**: Frequency data for daily word ranking and supplement generation
-
+{wf_section}
 ## Modifications
 
 - `{lang}_daily_words.txt`: Top {len(daily_words)} most common words from existing word list, ranked by OpenSubtitles frequency
-- `{lang}_5words_supplement.txt`: {len(supplement_sorted)} additional valid 5-letter words from FrequencyWords corpus
+- `{lang}_5words_supplement.txt`: {len(supplement_sorted)} additional valid 5-letter words from frequency corpora
 
 ## License
 
@@ -561,8 +594,7 @@ The frequency-derived data in this directory is provided under **CC-BY-SA 4.0**,
 
 ## Acknowledgments
 
-- **wooorm/dictionaries** for the base word list
-- **Hermit Dave** ([FrequencyWords](https://github.com/hermitdave/FrequencyWords)) for frequency data derived from OpenSubtitles
+- **Hermit Dave** ([FrequencyWords](https://github.com/hermitdave/FrequencyWords)) for frequency data derived from OpenSubtitles{wf_ack}
 """
         sources_path.write_text(sources_md, encoding="utf-8")
         print(f"  Wrote {sources_path.name}")
