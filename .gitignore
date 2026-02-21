@@ -141,3 +141,6 @@ dmypy.json
 # Playwright
 playwright-report/
 test-results/
+
+# FrequencyWords data (downloaded by scripts/improve_word_lists.py)
+scripts/.freq_data/

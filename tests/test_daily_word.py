@@ -145,14 +145,9 @@ class TestDailyWordSelection:
 class TestWordCycling:
     """Tests for word list cycling behavior."""
 
-    # Languages with duplicate words causing early repeats
-    REPEAT_XFAIL = {"pau"}
-
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_no_repeat_in_word_list_length_days(self, lang):
         """Words shouldn't repeat within the word list length."""
-        if lang in self.REPEAT_XFAIL:
-            pytest.xfail(f"{lang}: Known duplicate words cause early repeats")
         words = load_word_list(lang)
         if not words:
             pytest.skip(f"{lang}: No word list")

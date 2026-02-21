@@ -1,1 +1,13 @@
-[]
+{
+    "default": "breton_azerty",
+    "layouts": {
+        "breton_azerty": {
+            "label": "AZERTY",
+            "rows": [
+                ["a", "z", "e", "ê", "r", "t", "y", "u", "ù", "i", "o", "p"],
+                ["q", "s", "d", "f", "g", "h", "j", "k", "l", "m"],
+                ["⇨", "w", "x", "c", "v", "b", "n", "ñ", "⌫"]
+            ]
+        }
+    }
+}

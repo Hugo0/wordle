@@ -4,31 +4,22 @@
 [![Languages](https://img.shields.io/badge/languages-65+-blue)](https://wordle.global)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Hugo0/wordle/pulls)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)](https://www.python.org/)
-[![PWA Ready](https://img.shields.io/badge/PWA-ready-blueviolet?logo=pwa)](https://wordle.global)
 
-[wordle.global](https://wordle.global/)
+[wordle.global](https://wordle.global/) — Open Source Wordle in 65+ languages
 
-Open Source Wordle in a bunch of languages
+**Pull requests welcome!** Especially for language addition and curation.
 
-PULL REQUESTS WELCOME!
+Contact: wordle@hugo0.com
 
-It would be mega awesome if you could help in any way (especially with language addition/curation).
+**For developers**: See [CLAUDE.md](CLAUDE.md) for architecture details, key algorithms, and coding guidelines.
 
-contact: wordle@hugo0.com
+## Adding a new language
 
-📖 **For developers**: See [CLAUDE.md](CLAUDE.md) for architecture details, key algorithms, and coding guidelines.
-
-**How to add a new language:**
-
-1. Make a folder in webapp/data/languages/ with the language code (e.g. en, de, fr, qya, etc.)
-2. Add a list of 5-letter words and call it {lang_code}\_5words.txt
-   1. (Optional) Add a language_config.json file
-   2. (Optional) Add a keyboard configuration
-   3. (Optional) Add a list of supplemental words (useful to have this for weird/rare words, and only have 'common' words in the main 5words.txt file)
-
-Voilà!
+1. Create a folder in `webapp/data/languages/` with the language code (e.g. `en`, `de`, `fr`, `qya`)
+2. Add a list of 5-letter words: `{lang_code}_5words.txt` (one word per line, lowercase)
+3. (Optional) Add `language_config.json` — UI translations and metadata
+4. (Optional) Add `{lang_code}_keyboard.json` — custom keyboard layout
+5. (Optional) Add `{lang_code}_5words_supplement.txt` — additional valid guesses (rare words players might try)
 
 ## How to run locally
 
@@ -167,18 +158,26 @@ To test on your phone or other devices, you can use [ngrok](https://ngrok.com/) 
 
 ![](scripts/out/n_words.png)
 
-## Credits:
+## TODO
+
+- [ ] Word definitions — show the definition of the daily word after the game (e.g. via Wiktionary API)
+- [ ] Language-specific keyboard layouts (French AZERTY, German QWERTZ, Turkish I/İ handling)
+- [ ] Native speaker review of daily word lists (filter out profanity, abbreviations, Roman numerals)
+- [ ] Support for languages not covered by FrequencyWords (Faroese, Irish, Maori, etc.)
+
+## Credits
 
 - Josh Wardle (original Wordle creator)
-- NYT (presumably holds the copyright or some IP rights or something with their $$$ purchase)
+- NYT (presumably holds the copyright or some IP rights)
 - Elizabeth S (inventor of the Wordle grid)
-- Nadia H (my lovely beta-tester)
-- Daniel Rodriguez (for some inspiration with Tailwind)
-- [Wordles of the World](https://gitlab.com/rwmpelstilzchen/wordles) for a community-sourced list of wordle-derivatives (it's impressive how many actually exist)
-- All users, github issue raisers, and PR creators! Thanks so much!
+- Nadia H (lovely beta-tester)
+- Daniel Rodriguez (Tailwind inspiration)
+- [Wordles of the World](https://gitlab.com/rwmpelstilzchen/wordles) for a community-sourced list of Wordle derivatives
+- All users, issue reporters, and PR contributors!
 
-## Data sources
+## Data Sources
 
-- https://www.nytimes.com/games/wordle/index.html - english word list
-- https://kaino.kotus.fi/sanat/nykysuomi/ - Finnish word list
-- https://github.com/wooorm/dictionaries - most other word lists ([Titus Wormer](https://wooorm.com/) is an incredible dude)
+- [NYT Wordle](https://www.nytimes.com/games/wordle/index.html) — English word list
+- [Kotus](https://kaino.kotus.fi/sanat/nykysuomi/) — Finnish word list
+- [wooorm/dictionaries](https://github.com/wooorm/dictionaries) — most other word lists (Hunspell-based, by [Titus Wormer](https://wooorm.com/))
+- [FrequencyWords](https://github.com/hermitdave/FrequencyWords) — OpenSubtitles frequency data for daily word ranking and supplement generation

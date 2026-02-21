@@ -15,6 +15,7 @@ dependencies = [
 dev = [
     "pytest>=8.0.0",
     "black>=24.0.0",
+    "wordfreq>=3.1.1",
 ]
 
 [tool.black]

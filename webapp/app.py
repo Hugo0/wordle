@@ -78,11 +78,6 @@ def inject_vite_assets():
 print("Loading data...")
 
 data_dir = "data/"
-# if not glob.glob(data_dir):
-#     data_dir = "../data/"
-# if not glob.glob(data_dir):
-#     data_dir = "webapp/data/"
-# print(f"data_dir: {data_dir}")
 
 
 # load other_wordles.json file
