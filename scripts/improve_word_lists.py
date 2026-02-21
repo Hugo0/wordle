@@ -491,8 +491,6 @@ def process_language(
                 continue
             if w in all_supplement:
                 continue
-            if w in blocklist:
-                continue
             if w in common_names:
                 continue
             if is_roman_numeral(w):
