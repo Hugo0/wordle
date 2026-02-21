@@ -326,7 +326,7 @@ export default function createIndexApp(): App {
                     const detectedCode = this.detectedLanguage.language_code;
                     const idx = sorted.findIndex((l) => l.language_code === detectedCode);
                     if (idx > 0) {
-                        sorted.unshift(sorted.splice(idx, 1)[0]);
+                        sorted.unshift(...sorted.splice(idx, 1));
                     }
                 }
 

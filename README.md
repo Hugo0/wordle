@@ -36,57 +36,33 @@ If you want to test out your changes, you can run the server locally.
 
 ### Prerequisites
 
-- Python 3.12+ (3.14 recommended)
-- pip
-- Node.js 22+ and pnpm (for frontend builds)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) (Python package manager)
+- Node.js 22+ and [pnpm](https://pnpm.io/installation)
 
 ### Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/Hugo0/wordle.git
 cd wordle
-
-# Install Python dependencies
-pip3 install -r requirements.txt
-
-# Install frontend dependencies and build
 pnpm install
-pnpm build
 ```
 
-### Running the server
-
-```bash
-gunicorn --chdir webapp app:app
-```
+That's it — `uv` handles Python dependencies automatically.
 
 ### Development
 
-Run these in two terminals:
-
 ```bash
-# Terminal 1: Flask server (auto-reloads Python changes)
-gunicorn --chdir webapp --reload app:app
-
-# Terminal 2: Frontend watcher (auto-rebuilds JS/CSS changes)
-pnpm watch
+pnpm dev
 ```
 
-Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+This starts both the Flask server and the Vite frontend watcher. Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ### Running Tests
 
 ```bash
-# Python tests (data validation - word lists, configs, daily word algorithm)
-source venv/bin/activate  # if using venv
-python -m pytest tests/
-
-# TypeScript tests (game logic - color algorithm, stats calculation)
-pnpm test
-
-# TypeScript tests in watch mode
-pnpm test:watch
+uv run pytest tests/     # Python tests (data validation)
+pnpm test                # TypeScript tests (game logic)
+pnpm test:watch          # TypeScript tests in watch mode
 ```
 
 ### Testing on mobile with ngrok
