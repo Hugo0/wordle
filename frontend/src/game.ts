@@ -697,8 +697,11 @@ export const createGameApp = () => {
                 // Track game completion with session-aggregated frustration state
                 const langCode = this.config?.language_code || 'unknown';
                 const frustrationState = analytics.resetFrustrationState();
-                const gameStartTime = (window as Window & { _gameStartTime?: number })._gameStartTime;
-                const timeToComplete = gameStartTime ? Math.floor((Date.now() - gameStartTime) / 1000) : undefined;
+                const gameStartTime = (window as Window & { _gameStartTime?: number })
+                    ._gameStartTime;
+                const timeToComplete = gameStartTime
+                    ? Math.floor((Date.now() - gameStartTime) / 1000)
+                    : undefined;
 
                 analytics.trackGameComplete({
                     language: langCode,
@@ -735,8 +738,11 @@ export const createGameApp = () => {
                 // Track game completion (loss) with session-aggregated frustration state
                 const lossLangCode = this.config?.language_code || 'unknown';
                 const lossFrustrationState = analytics.resetFrustrationState();
-                const lossGameStartTime = (window as Window & { _gameStartTime?: number })._gameStartTime;
-                const lossTimeToComplete = lossGameStartTime ? Math.floor((Date.now() - lossGameStartTime) / 1000) : undefined;
+                const lossGameStartTime = (window as Window & { _gameStartTime?: number })
+                    ._gameStartTime;
+                const lossTimeToComplete = lossGameStartTime
+                    ? Math.floor((Date.now() - lossGameStartTime) / 1000)
+                    : undefined;
 
                 analytics.trackGameComplete({
                     language: lossLangCode,
@@ -1190,7 +1196,10 @@ export const createGameApp = () => {
                     } catch {
                         // localStorage unavailable
                     }
-                    analytics.trackSettingsChange({ setting: 'haptics', value: this.hapticsEnabled });
+                    analytics.trackSettingsChange({
+                        setting: 'haptics',
+                        value: this.hapticsEnabled,
+                    });
                 });
             },
 

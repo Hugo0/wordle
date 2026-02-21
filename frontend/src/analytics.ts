@@ -508,7 +508,12 @@ export const initErrorTracking = (language: string): void => {
  * Track game abandonment on page unload
  */
 export const initAbandonTracking = (
-    getState: () => { language: string; activeRow: number; gameOver: boolean; lastGuessValid: boolean }
+    getState: () => {
+        language: string;
+        activeRow: number;
+        gameOver: boolean;
+        lastGuessValid: boolean;
+    }
 ): void => {
     window.addEventListener('beforeunload', () => {
         const state = getState();

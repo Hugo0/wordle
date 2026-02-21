@@ -94,6 +94,7 @@ export default function createIndexApp(): App {
                 total_stats: {} as TotalStats,
                 game_results: {} as Record<string, GameResult[]>,
                 expandedLanguage: '' as string, // For stats modal expansion
+                detectedLanguage: null as Language | null,
             };
         },
 
@@ -125,6 +126,8 @@ export default function createIndexApp(): App {
             this.total_stats = this.calculateTotalStats();
             // Initialize languages with recently played first
             this.languages_vis = this.getSortedLanguages();
+            // Detect browser language for hero CTA
+            this.detectedLanguage = this.detectBrowserLanguage();
         },
 
         mounted() {
@@ -142,6 +145,29 @@ export default function createIndexApp(): App {
                     this.showAboutModal = false;
                     this.showSettingsModal = false;
                 }
+            },
+
+            detectBrowserLanguage(): Language | null {
+                try {
+                    const browserLang = navigator.language || '';
+                    const lower = browserLang.toLowerCase();
+                    // Try exact match first (e.g. "nb" → "nb")
+                    if (this.languages[lower]) {
+                        return this.languages[lower] as Language;
+                    }
+                    // Try prefix match (e.g. "de-AT" → "de", "pt-BR" → "pt")
+                    const prefix = lower.split('-')[0];
+                    if (this.languages[prefix]) {
+                        return this.languages[prefix] as Language;
+                    }
+                    // Special case: Norwegian "no" → "nb" (Bokmål)
+                    if (prefix === 'no' && this.languages['nb']) {
+                        return this.languages['nb'] as Language;
+                    }
+                } catch {
+                    // navigator.language unavailable
+                }
+                return null;
             },
 
             selectLanguageWithCode(language_code: string): void {
