@@ -24,7 +24,7 @@ wordle/
 │   │   └── default_language_config.json    # Fallback config
 │   ├── templates/             # Jinja2 templates
 │   │   ├── game.html          # Main game page (uses Vite assets)
-│   │   └── index.html         # Homepage (still uses CDN - not migrated)
+│   │   └── index.html         # Homepage
 │   └── static/
 │       └── dist/              # Vite build output (gitignored)
 ├── frontend/                  # TypeScript/Vue frontend source
@@ -87,9 +87,9 @@ uv run pytest tests/   # Run Python tests
 
 1. **Word lists are shuffled**: Don't assume alphabetical order
 2. **Seed 42 is critical**: Changing it would change all daily words
-3. **Homepage not migrated**: `index.html` still uses CDN, game pages use Vite
-4. **~145 pytest xfails expected**: Pre-existing data quality issues (keyboards, word lists) are marked as `xfail`
-5. **RTL languages**: Some languages (Hebrew, Arabic) are right-to-left
+3. **~145 pytest xfails expected**: Pre-existing data quality issues (keyboards, word lists) are marked as `xfail`
+4. **RTL languages**: Some languages (Hebrew, Arabic) are right-to-left
+5. **Deployment**: Hosted on Render, auto-deploys from main. Uses `uv` for Python deps.
 
 ## Data Quality Issues (Known)
 - Arabic: Some words not exactly 5 chars
@@ -108,7 +108,7 @@ These are tracked by pytest but not blocking - they're data issues, not code iss
 ### Python
 
 - Black formatter, 100 char line length
-- Run `black webapp/ tests/` before committing
+- Run `uv run black webapp/ tests/` before committing
 
 ## Don't
 
