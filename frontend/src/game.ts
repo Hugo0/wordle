@@ -115,7 +115,7 @@ interface GameData {
     attempts: string;
     stats: GameStats;
     game_results: GameResults;
-    statsTab: 'language' | 'global';
+    statsTab: 'today' | 'stats' | 'global';
     total_stats: TotalStats;
     languages: Record<string, LanguageInfo>;
     shareButtonState: 'idle' | 'success';
@@ -292,7 +292,7 @@ export const createGameApp = () => {
                     guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
                 },
                 game_results: {},
-                statsTab: 'language',
+                statsTab: 'today',
                 total_stats: {
                     total_games: 0,
                     game_stats: {},
@@ -1306,22 +1306,21 @@ export const createGameApp = () => {
             },
 
             loadDefinition(): void {
-                if (!this.definitionsEnabled) return;
-
-                const container = document.getElementById('definition-card');
-                if (!container) return;
-
                 const langCode = this.config?.language_code || 'en';
-                const uiStrings = {
-                    definition: this.config?.ui?.definition,
-                    look_up_on_wiktionary: this.config?.ui?.look_up_on_wiktionary,
-                };
 
-                showDefinitionLoading(container);
-
-                fetchDefinition(this.todays_word, langCode).then((def) => {
-                    renderDefinitionCard(def, container, uiStrings);
-                });
+                // Load definition (if enabled)
+                if (this.definitionsEnabled) {
+                    const container = document.getElementById('definition-card');
+                    if (container) {
+                        showDefinitionLoading(container);
+                        fetchDefinition(this.todays_word, langCode).then((def) => {
+                            renderDefinitionCard(def, container, {
+                                definition: this.config?.ui?.definition,
+                                look_up_on_wiktionary: this.config?.ui?.look_up_on_wiktionary,
+                            });
+                        });
+                    }
+                }
 
                 // Load word art image (independent of definition)
                 if (this.wordArtEnabled) {
