@@ -16,6 +16,7 @@ import hashlib
 import re
 import urllib.parse
 import urllib.request as urlreq
+import logging
 from pathlib import Path
 
 # Load .env file if it exists (for local development)
@@ -776,6 +777,11 @@ class Language:
 _WIKT_LANG_MAP = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
 
 
+def _strip_html(text):
+    """Strip HTML tags from a string."""
+    return re.sub(r"<[^>]+>", "", text).strip()
+
+
 def _parse_wikt_definition(extract):
     """Extract a definition line from a Wiktionary plaintext extract.
 
@@ -996,7 +1002,7 @@ def fetch_definition_cached(word, lang_code):
                     for entry in data.get(try_lang, []):
                         for defn in entry.get("definitions", []):
                             raw_def = defn.get("definition", "")
-                            clean_def = re.sub(r"<[^>]+>", "", raw_def).strip()
+                            clean_def = _strip_html(raw_def)
                             if clean_def:
                                 result = {
                                     "definition": clean_def[:300],
@@ -1041,7 +1047,7 @@ def _fetch_english_definition(word, lang_code):
                 for entry in data.get(try_lang, []):
                     for defn in entry.get("definitions", []):
                         raw_def = defn.get("definition", "")
-                        clean_def = re.sub(r"<[^>]+>", "", raw_def).strip()
+                        clean_def = _strip_html(raw_def)
                         if clean_def:
                             return clean_def[:200]
     except Exception:
@@ -1054,6 +1060,8 @@ def _fetch_english_definition(word, lang_code):
 ###############################################################################
 
 # In-memory IP dedup (resets on restart, never persisted)
+# Bounded to 50k entries to prevent memory exhaustion under attack.
+_STATS_MAX_IPS = 50_000
 _stats_seen_ips = {}
 _stats_seen_day = None  # Track current day to clear stale entries
 
@@ -1080,7 +1088,10 @@ def _update_word_stats(lang_code, day_idx, won, attempts):
 
     lock_path = stats_path + ".lock"
     with open(lock_path, "w") as lock_f:
-        fcntl.flock(lock_f, fcntl.LOCK_EX)
+        try:
+            fcntl.flock(lock_f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return  # Another process holds the lock; skip this update
 
         # Read
         stats = None
@@ -1435,11 +1446,13 @@ def submit_word_stats(lang_code):
         dedup_key = f"{lang_code}:{day_idx}:{ip}"
         if dedup_key in _stats_seen_ips:
             return "", 200  # Silently accept duplicate
-        _stats_seen_ips[dedup_key] = True
+        if len(_stats_seen_ips) < _STATS_MAX_IPS:
+            _stats_seen_ips[dedup_key] = True
 
         _update_word_stats(lang_code, day_idx, won, attempts)
         return "", 200
     except Exception:
+        logging.exception("Stats submission failed for %s", lang_code)
         return "", 500
 
 
