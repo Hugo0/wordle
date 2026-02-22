@@ -13,12 +13,14 @@ import os
 import datetime
 import glob
 import random
+from zoneinfo import ZoneInfo
 import hashlib
 import re
 import urllib.parse
 import urllib.request as urlreq
 import logging
 from pathlib import Path
+from webapp.wiktionary import fetch_definition_cached as _fetch_definition_cached_impl
 
 # Load .env file if it exists (for local development)
 _env_path = Path(__file__).resolve().parent.parent / ".env"
@@ -331,21 +333,24 @@ def load_keyboard(lang):
     return {"default": default_layout, "layouts": normalized_layouts}
 
 
-def get_todays_idx(timezone_offset_hours: int = 0):
+def get_todays_idx(timezone: str = "UTC"):
     """Calculate the daily word index based on timezone.
 
     Args:
-        timezone_offset_hours: Hours offset from UTC (e.g., +2 for Finland, -5 for EST)
+        timezone: IANA timezone identifier (e.g., "Europe/Helsinki", "Asia/Seoul").
+            Uses zoneinfo for DST-aware offset resolution.
 
     Returns:
         The word index for "today" in the specified timezone
     """
-    # Get current UTC time and apply timezone offset
-    utc_now = datetime.datetime.utcnow()
-    local_now = utc_now + datetime.timedelta(hours=timezone_offset_hours)
+    try:
+        tz = ZoneInfo(timezone)
+    except Exception:
+        tz = ZoneInfo("UTC")
+    local_now = datetime.datetime.now(tz)
 
     # Calculate days since epoch in the local timezone
-    n_days = (local_now - datetime.datetime(1970, 1, 1)).days
+    n_days = (local_now.date() - datetime.date(1970, 1, 1)).days
     idx = n_days - 18992 + 195
     return idx
 
@@ -647,10 +652,18 @@ class Language:
         # Ordered curated schedule (highest priority for daily word selection)
         self.curated_schedule = language_curated_schedules.get(language_code)
 
-        # Get timezone offset from config (defaults to 0/UTC if not specified)
-        self.timezone_offset = self.config.get("timezone_offset", 0)
+        # Get IANA timezone from config (defaults to UTC if not specified)
+        self.timezone = self.config.get("timezone", "UTC")
 
-        todays_idx = get_todays_idx(self.timezone_offset)
+        # Compute current numeric offset for frontend countdown timer
+        try:
+            tz = ZoneInfo(self.timezone)
+            offset = datetime.datetime.now(tz).utcoffset()
+            self.timezone_offset = offset.total_seconds() / 3600 if offset else 0
+        except Exception:
+            self.timezone_offset = 0
+
+        todays_idx = get_todays_idx(self.timezone)
         self.daily_word = self._get_daily_word(todays_idx)
         self.todays_idx = todays_idx
 
@@ -780,323 +793,9 @@ class Language:
 ###############################################################################
 
 
-_WIKT_LANG_MAP = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
-
-
-def _strip_html(text):
-    """Strip HTML tags from a string."""
-    return re.sub(r"<[^>]+>", "", text).strip()
-
-
-def _parse_wikt_definition(extract):
-    """Extract a definition line from a Wiktionary plaintext extract.
-
-    Strategy: find lines that follow a definition-section header or marker,
-    skipping etymology, pronunciation, inflection, and metadata. Works across
-    many language-edition Wiktionary formats.
-    """
-    lines = extract.split("\n")
-    in_definition_section = False
-
-    # == headers that mark definition sections (e.g. "==== Noun ====")
-    # Covers: English, French, Spanish, Portuguese, Italian, German, Swedish,
-    # Danish, Dutch, Finnish, Estonian, Lithuanian, Hungarian, Breton, Occitan,
-    # Azerbaijani/Turkish, Armenian, Kurdish, Vietnamese
-    defn_headers = re.compile(
-        r"^={2,4}\s*("
-        # English
-        r"Noun|Verb|Adjective|Adverb|Pronoun|Preposition|Conjunction|Interjection|"
-        # French
-        r"Nom commun|Verbe|Adjectif|Adverbe|Forme de verbe|"
-        # Spanish
-        r"Sustantivo\b|Verbo|Adjetivo|Adverbio|"
-        # Portuguese / Italian
-        r"Substantivo|Sostantivo|Aggettivo|"
-        # German / Swedish / Danish / Norwegian
-        r"Substantiv\w*\b|Adjektiv\w*\b|"
-        # Finnish
-        r"Substantiivi|Adjektiivi|Verbi|Adverbi|Pronomini|"
-        # Estonian
-        r"Nimisõna|Tegusõna|Omadussõna|"
-        # Lithuanian
-        r"Daiktavardis|Veiksmažodis|Būdvardis|"
-        # Hungarian
-        r"Főnév|Ige|Melléknév|"
-        # Breton
-        r"Anv-kadarn|"
-        # Occitan
-        r"Vèrb|"
-        # Azerbaijani / Turkish
-        r"İsim|Ad\b|"
-        # Armenian
-        r"Գոյական|Բայ|Ածական|"
-        # Kurdish (Sorani)
-        r"Rengdêr|Navdêr|"
-        # Vietnamese
-        r"Danh từ|Động từ|Tính từ|"
-        # Dutch
-        r"Bijvoeglijk naamwoord|Zelfstandig naamwoord|Werkwoord" r")",
-        re.IGNORECASE,
-    )
-
-    # Plain-text markers that start definition blocks (German, Polish, etc.)
-    defn_text_markers = re.compile(r"^(Bedeutungen|znaczenia)\s*:?\s*$", re.IGNORECASE)
-
-    # Lines to always skip within a definition section
-    skip_line = re.compile(
-        r"^("
-        r"=|IPA|Rhymes:|Homophones:|wymowa:|Pronúncia|Prononciation|Pronunciación|"
-        r"Aussprache|Worttrennung|Silbentrennung|Hörbeispiele|Reime|"
-        r"Étymologie|Etimología|Etimologia|Etymology|Herkunft|"
-        r"Synonym|Sinónim|Sinônim|Antonym|Antónim|"
-        r"Übersetzung|Translation|Tradução|Oberbegriffe|"
-        r"Beispiele|Examples|Uso:|odmiana:|przykłady:|składnia:|kolokacje:|"
-        r"synonimy:|antonimy:|hiperonimy:|hiponimy:|holonimy:|meronimy:|"
-        r"wyrazy pokrewne:|związki frazeologiczne:|etymologia:|"
-        r"Cognate |From |Du |Del |Do |Uit |Vom |Van |Derived |Compare |"
-        r"rzeczownik|przymiotnik|przysłówek|czasownik"
-        r")",
-        re.IGNORECASE,
-    )
-
-    # Markers that end a definition section (plain-text, German/Polish style)
-    end_markers = re.compile(
-        r"^(Herkunft|Synonyme|Antonyme|Oberbegriffe|Beispiele|"
-        r"Übersetzungen|odmiana|przykłady|składnia|kolokacje|"
-        r"synonimy|antonimy|wyrazy pokrewne|związki frazeologiczne)\s*:?\s*$",
-        re.IGNORECASE,
-    )
-
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-
-        # Check for == definition section header
-        if defn_headers.match(line):
-            in_definition_section = True
-            continue
-
-        # Check for plain-text definition marker
-        if defn_text_markers.match(line):
-            in_definition_section = True
-            continue
-
-        # End markers (plain text like "Herkunft:" in German)
-        if end_markers.match(line):
-            if in_definition_section:
-                in_definition_section = False
-            continue
-
-        # Non-definition == header resets section
-        if re.match(r"^={2,4}\s*\S", line):
-            if in_definition_section and not defn_headers.match(line):
-                in_definition_section = False
-            continue
-
-        if not in_definition_section:
-            continue
-
-        if skip_line.match(line):
-            continue
-
-        # Skip inflection lines like "casa ¦ plural: casas"
-        if re.match(r"^\S+\s*¦", line):
-            continue
-
-        # Skip hyphenation lines like "De·pot, Plural: De·pots"
-        if "·" in line or re.match(r".*Plural\s*:", line):
-            continue
-
-        # Skip phonetic/gender headword lines
-        if re.match(r"^\\", line):
-            continue
-        if re.match(r"^[a-záàâãéèêíóòôõúüçñ.·ˈˌ]+\s*\\", line, re.IGNORECASE):
-            continue
-        # Skip "word (approfondimento) m sing" style (Italian)
-        if re.match(r"^\w+\s*\(?\s*approfondimento", line, re.IGNORECASE):
-            continue
-        # Skip "de wereld v / m" style (Dutch headword with gender)
-        if re.match(r"^(de|het|een|die|das|der)\s+\w+\s+[vmfn]\b", line, re.IGNORECASE):
-            continue
-        if re.match(
-            r"^[a-záàâãéèêíóòôõúüçñ.·ˈˌ]+,?\s*(masculino|feminino|comum|neutro|féminin|masculin|m\s|f\s|m sing|f sing)",
-            line,
-            re.IGNORECASE,
-        ):
-            continue
-
-        # Skip headword lines like "crane (plural cranes)" or "grind (third-person..."
-        if re.match(r"^\w+\s*\((plural|third-person|present|past|pl\.)\b", line, re.IGNORECASE):
-            continue
-
-        # Skip Finnish-style headword lines: "sekka  (9-A)" or "koira  (10)"
-        if re.match(r"^\w+\s+\(\d+", line):
-            continue
-
-        # German [1] definitions: "[1] Ort oder Gebäude..."
-        m = re.match(r"^\[(\d+)\]\s+(.+)", line)
-        if m and len(m.group(2)) > 5:
-            return m.group(2).strip()[:300]
-
-        # Polish (1.2) definitions
-        m = re.match(r"^\([\d.]+\)\s+(.+)", line)
-        if m:
-            defn = m.group(1).strip()
-            if re.match(r"(zdrobn|zgrub|forma)\b", defn, re.IGNORECASE):
-                continue
-            if len(defn) > 5:
-                return defn[:300]
-            continue
-
-        # Spanish/numbered: "1 Vivienda" — but skip single-word topic labels
-        m = re.match(r"^\d+\.?\s+(.*)", line)
-        if m and len(m.group(1)) > 3:
-            text = m.group(1).strip()
-            # If it's a topic label like "Vivienda", check next non-empty line
-            # Accept it anyway — it's better than nothing
-            return text[:300]
-
-        # Skip example sentences (Dutch ▸, French/Spanish quotes, etc.)
-        if line.startswith("▸") or line.startswith("►"):
-            continue
-
-        # Plain definition text (at least 3 chars)
-        if len(line) > 3:
-            return line[:300]
-
-    return None
-
-
-def _fetch_native_wiktionary(word, lang_code):
-    """Try native-language Wiktionary via MediaWiki API. Returns dict or None."""
-    wikt_lang = _WIKT_LANG_MAP.get(lang_code, lang_code)
-
-    # Try original case first, then title-case (German nouns are capitalized)
-    candidates = [word]
-    if word[0].islower():
-        candidates.append(word[0].upper() + word[1:])
-
-    for try_word in candidates:
-        api_url = (
-            f"https://{wikt_lang}.wiktionary.org/w/api.php?"
-            f"action=query&titles={urllib.parse.quote(try_word)}"
-            f"&prop=extracts&explaintext=1&format=json"
-        )
-        try:
-            req = urlreq.Request(api_url, headers={"User-Agent": "WordleGlobal/1.0"})
-            with urlreq.urlopen(req, timeout=5) as resp:
-                data = json.loads(resp.read())
-                pages = data.get("query", {}).get("pages", {})
-                for pid, page in pages.items():
-                    if pid == "-1":
-                        continue
-                    extract = page.get("extract", "").strip()
-                    if not extract:
-                        continue
-                    defn = _parse_wikt_definition(extract)
-                    if defn:
-                        return {
-                            "definition": defn,
-                            "source": "native",
-                            "url": f"https://{wikt_lang}.wiktionary.org/wiki/{urllib.parse.quote(try_word)}",
-                        }
-        except Exception:
-            pass
-    return None
-
-
 def fetch_definition_cached(word, lang_code):
-    """Fetch definition from Wiktionary with disk caching.
-
-    Tries native-language Wiktionary first, falls back to English Wiktionary.
-    Returns dict with keys: definition, part_of_speech, source, url.
-    Returns None if no definition found.
-    """
-    cache_dir = os.path.join(WORD_DEFS_DIR, lang_code)
-    cache_path = os.path.join(cache_dir, f"{word.lower()}.json")
-
-    # Check cache first
-    if os.path.exists(cache_path):
-        try:
-            with open(cache_path, "r") as f:
-                loaded = json.load(f)
-                return loaded if loaded else None
-        except Exception:
-            pass
-
-    # Try native Wiktionary first (definitions in the word's own language)
-    result = _fetch_native_wiktionary(word, lang_code)
-
-    # Fall back to English Wiktionary REST API
-    if not result:
-        try:
-            url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
-            req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
-            with urlreq.urlopen(req, timeout=5) as resp:
-                data = json.loads(resp.read())
-                # Try target language first, then English
-                for try_lang in [lang_code, "en"]:
-                    for entry in data.get(try_lang, []):
-                        for defn in entry.get("definitions", []):
-                            raw_def = defn.get("definition", "")
-                            clean_def = _strip_html(raw_def)
-                            # Skip useless "form of" / "synonym of" definitions
-                            if clean_def and not re.match(
-                                r"^(synonym|plural|feminine|masculine|diminutive|augmentative|"
-                                r"alternative|archaic|obsolete|dated|rare)\s+(form\s+)?of\s+",
-                                clean_def,
-                                re.IGNORECASE,
-                            ):
-                                result = {
-                                    "definition": clean_def[:300],
-                                    "part_of_speech": entry.get("partOfSpeech"),
-                                    "source": "english",
-                                    "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(word.lower())}",
-                                }
-                                break
-                        if result:
-                            break
-                    if result:
-                        break
-        except Exception:
-            pass
-
-    # Cache result (even None as empty object to avoid re-fetching)
-    try:
-        os.makedirs(cache_dir, exist_ok=True)
-        with open(cache_path, "w") as f:
-            json.dump(result or {}, f)
-    except IOError:
-        pass
-
-    return result
-
-
-def _fetch_english_definition(word, lang_code):
-    """Fetch an English-language definition for a word (any language).
-
-    Used for DALL-E prompts where English comprehension is best.
-    Hits the English Wiktionary REST API and returns the definition string,
-    or None if not found.
-    """
-    try:
-        url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
-        req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
-        with urlreq.urlopen(req, timeout=5) as resp:
-            data = json.loads(resp.read())
-            # Try target language section first (e.g. "pt" for Portuguese words),
-            # then fall back to English section
-            for try_lang in [lang_code, "en"]:
-                for entry in data.get(try_lang, []):
-                    for defn in entry.get("definitions", []):
-                        raw_def = defn.get("definition", "")
-                        clean_def = _strip_html(raw_def)
-                        if clean_def:
-                            return clean_def[:200]
-    except Exception:
-        pass
-    return None
+    """Fetch definition from Wiktionary with disk caching. Delegates to webapp.wiktionary."""
+    return _fetch_definition_cached_impl(word, lang_code, cache_dir=WORD_DEFS_DIR)
 
 
 ###############################################################################
@@ -1563,8 +1262,8 @@ def word_image(lang_code, word):
 
     # Verify word is/was a daily word (prevents generating images for arbitrary words)
     # Accept ?day_idx= param for historical words, otherwise check today
-    tz_offset = language_configs[lang_code].get("timezone_offset", 0)
-    todays_idx = get_todays_idx(tz_offset)
+    tz = language_configs[lang_code].get("timezone", "UTC")
+    todays_idx = get_todays_idx(tz)
     day_idx = request.args.get("day_idx", type=int)
     if day_idx is not None:
         if day_idx < 1 or day_idx > todays_idx:
@@ -1629,10 +1328,10 @@ def word_page(lang_code, day_idx):
         abort(404)
 
     config = language_configs[lang_code]
-    tz_offset = config.get("timezone_offset", 0)
+    tz = config.get("timezone", "UTC")
 
     # Allow today's word (game reveals it after completion) and past words
-    todays_idx = get_todays_idx(tz_offset)
+    todays_idx = get_todays_idx(tz)
     if day_idx > todays_idx or day_idx < 1:
         abort(404)
 
@@ -1695,8 +1394,8 @@ def submit_word_stats(lang_code):
             return "", 400
 
         # Only accept stats for today's word (respect language timezone)
-        tz_offset = language_configs[lang_code].get("timezone_offset", 0)
-        todays_idx = get_todays_idx(tz_offset)
+        tz = language_configs[lang_code].get("timezone", "UTC")
+        todays_idx = get_todays_idx(tz)
         if day_idx != todays_idx:
             return "", 403
 
