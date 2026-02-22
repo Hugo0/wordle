@@ -154,6 +154,9 @@ def main():
     parser.add_argument(
         "--days", type=int, default=1, help="Days ahead to generate (default: 1 = today + tomorrow)"
     )
+    parser.add_argument(
+        "--past", type=int, default=0, help="Days in the past to also generate (e.g. --past 1 = yesterday)"
+    )
     parser.add_argument("--dry-run", action="store_true", help="Show what would be generated")
     args = parser.parse_args()
 
@@ -172,7 +175,8 @@ def main():
         langs = TOP_LANGUAGES
 
     todays_idx = get_todays_idx()
-    day_range = range(todays_idx, todays_idx + args.days + 1)
+    start_idx = max(1, todays_idx - args.past)
+    day_range = range(start_idx, todays_idx + args.days + 1)
 
     total = len(langs) * len(day_range)
     generated = 0
