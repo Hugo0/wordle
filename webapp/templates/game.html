@@ -288,6 +288,16 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- Show Definitions toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p>{{ language.config.ui.show_definitions or "Show Definitions" }}</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">{{ language.config.ui.show_definitions_desc or "Show word meaning after game" }}</p>
+                                </div>
+                                {{ toggle_switch('definitionsEnabled', 'toggleDefinitions()', language.config.ui.show_definitions or 'Show Definitions') }}
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
                                 <p class="flex-grow">{{ language.config.ui.right_to_left or "Right to left" }}</p>
@@ -383,6 +393,9 @@
                             {{ language.config.text.no_attempts }}
                         </p>
                     </div>
+
+                    <!-- Definition Card (shown after game completion) -->
+                    <div id="definition-card" class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600" style="display: none;"></div>
 
                     <!-- Guess Distribution Graph (compact for mobile) -->
                     <div class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600">

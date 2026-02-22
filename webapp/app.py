@@ -779,5 +779,63 @@ def language(lang_code):
     return response
 
 
+@app.route("/<lang_code>/api/word-image/<word>")
+def word_image(lang_code, word):
+    """Serve an AI-generated illustration for the daily word.
+
+    Only works when OPENAI_API_KEY is set. Images are cached to disk.
+    Only generates images for the current daily word (prevents abuse).
+    """
+    openai_key = os.environ.get("OPENAI_API_KEY")
+    if not openai_key:
+        return "Image generation not configured", 404
+
+    if lang_code not in language_codes:
+        return "Language not found", 404
+
+    # Only allow image generation for today's word
+    word_list = language_codes_5words[lang_code]
+    lang = Language(lang_code, word_list)
+    if word.lower() != lang.daily_word.lower():
+        return "Not today's word", 403
+
+    # Check cache first
+    cache_dir = os.path.join(app.static_folder, "word-images", lang_code)
+    cache_path = os.path.join(cache_dir, f"{word.lower()}.webp")
+
+    if os.path.exists(cache_path):
+        return app.send_static_file(f"word-images/{lang_code}/{word.lower()}.webp")
+
+    # Generate image via DALL-E
+    try:
+        import openai
+
+        client = openai.OpenAI(api_key=openai_key)
+        lang_name = language_configs[lang_code].get("name", lang_code)
+
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=f'A simple, elegant watercolor illustration of the concept "{word}" ({lang_name} word). No text, no letters, minimalist style, white background.',
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+
+        image_url = response.data[0].url
+        if not image_url:
+            return "Image generation failed", 500
+
+        # Download and cache the image
+        import urllib.request
+
+        os.makedirs(cache_dir, exist_ok=True)
+        urllib.request.urlretrieve(image_url, cache_path)
+
+        return app.send_static_file(f"word-images/{lang_code}/{word.lower()}.webp")
+    except Exception as e:
+        print(f"Image generation failed for {lang_code}/{word}: {e}")
+        return "Image generation failed", 500
+
+
 if __name__ == "__main__":
     app.run()

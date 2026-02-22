@@ -1,0 +1,277 @@
+/**
+ * Word Definitions - Wiktionary API client
+ * Fetches word definitions after game completion
+ */
+import type { WordDefinition } from './types';
+
+// Map our language codes to Wiktionary language codes where they differ
+const WIKTIONARY_LANG_MAP: Record<string, string> = {
+    nb: 'no', // Norwegian Bokmål → Norwegian
+    nn: 'no', // Norwegian Nynorsk → Norwegian
+    hyw: 'hy', // Western Armenian → Armenian
+    ckb: 'ku', // Central Kurdish → Kurdish
+};
+
+// Map our language codes to Wiktionary "language name" used in the REST API response
+// The English Wiktionary REST API returns definitions keyed by language name, not code
+const WIKTIONARY_LANGUAGE_NAMES: Record<string, string> = {
+    en: 'English',
+    fi: 'Finnish',
+    ar: 'Arabic',
+    tr: 'Turkish',
+    hr: 'Croatian',
+    bg: 'Bulgarian',
+    de: 'German',
+    he: 'Hebrew',
+    sv: 'Swedish',
+    ru: 'Russian',
+    hu: 'Hungarian',
+    es: 'Spanish',
+    et: 'Estonian',
+    da: 'Danish',
+    sr: 'Serbian',
+    ro: 'Romanian',
+    ca: 'Catalan',
+    sk: 'Slovak',
+    it: 'Italian',
+    az: 'Azerbaijani',
+    fr: 'French',
+    lv: 'Latvian',
+    la: 'Latin',
+    gl: 'Galician',
+    mk: 'Macedonian',
+    uk: 'Ukrainian',
+    pt: 'Portuguese',
+    vi: 'Vietnamese',
+    pl: 'Polish',
+    hy: 'Armenian',
+    nb: 'Norwegian Bokmål',
+    nn: 'Norwegian Nynorsk',
+    sl: 'Slovenian',
+    nl: 'Dutch',
+    cs: 'Czech',
+    hyw: 'Armenian',
+    fa: 'Persian',
+    eu: 'Basque',
+    gd: 'Scottish Gaelic',
+    ga: 'Irish',
+    ko: 'Korean',
+    ka: 'Georgian',
+    is: 'Icelandic',
+    ckb: 'Kurdish',
+    el: 'Greek',
+    lt: 'Lithuanian',
+    mn: 'Mongolian',
+    ia: 'Interlingua',
+    mi: 'Maori',
+    lb: 'Luxembourgish',
+    br: 'Breton',
+    ne: 'Nepali',
+    eo: 'Esperanto',
+    fy: 'West Frisian',
+    nds: 'Low German',
+    fo: 'Faroese',
+    oc: 'Occitan',
+    tk: 'Turkmen',
+};
+
+function getWiktionaryLang(lang: string): string {
+    return WIKTIONARY_LANG_MAP[lang] || lang;
+}
+
+function getWiktionaryUrl(word: string, lang: string): string {
+    const wikiLang = getWiktionaryLang(lang);
+    return `https://${wikiLang}.wiktionary.org/wiki/${encodeURIComponent(word)}`;
+}
+
+function getEnWiktionaryUrl(word: string): string {
+    return `https://en.wiktionary.org/wiki/${encodeURIComponent(word)}`;
+}
+
+/**
+ * Strip HTML tags from a string
+ */
+function stripHtml(html: string): string {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+}
+
+/**
+ * Try to fetch definition from English Wiktionary REST API.
+ * Returns definitions for the target language (not English definitions).
+ */
+async function fetchFromEnWiktionary(word: string, lang: string): Promise<WordDefinition | null> {
+    const url = `https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(word)}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) return null;
+
+        const data = await response.json();
+
+        // The API returns definitions grouped by language name
+        // Try to find our target language
+        const langName = WIKTIONARY_LANGUAGE_NAMES[lang];
+        if (!langName || !data[langName]) return null;
+
+        const langDefs = data[langName];
+        if (!Array.isArray(langDefs) || langDefs.length === 0) return null;
+
+        // Get first part of speech entry
+        const firstEntry = langDefs[0];
+        const partOfSpeech = firstEntry.partOfSpeech || undefined;
+
+        // Get first definition
+        const definitions = firstEntry.definitions;
+        if (!Array.isArray(definitions) || definitions.length === 0) return null;
+
+        const defText = stripHtml(definitions[0].definition || '');
+        if (!defText) return null;
+
+        return {
+            word,
+            partOfSpeech,
+            definition: defText,
+            source: 'english',
+            url: getEnWiktionaryUrl(word),
+        };
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Try to fetch definition from native-language Wiktionary.
+ * Uses MediaWiki API to get the page extract.
+ */
+async function fetchFromNativeWiktionary(
+    word: string,
+    lang: string
+): Promise<WordDefinition | null> {
+    const wikiLang = getWiktionaryLang(lang);
+    const url = `https://${wikiLang}.wiktionary.org/w/api.php?action=query&titles=${encodeURIComponent(word)}&prop=extracts&explaintext=1&exintro=1&format=json&origin=*`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) return null;
+
+        const data = await response.json();
+        const pages = data?.query?.pages;
+        if (!pages) return null;
+
+        // Get the first (and usually only) page
+        const pageId = Object.keys(pages)[0];
+        if (!pageId || pageId === '-1') return null;
+
+        const extract = pages[pageId]?.extract;
+        if (!extract || typeof extract !== 'string') return null;
+
+        // Take first meaningful line as definition (skip empty lines)
+        const lines = extract.split('\n').filter((l: string) => l.trim().length > 0);
+        const definition = lines[0]?.trim();
+        if (!definition || definition.length < 3) return null;
+
+        // Truncate very long definitions
+        const truncated =
+            definition.length > 200 ? definition.substring(0, 200) + '...' : definition;
+
+        return {
+            word,
+            definition: truncated,
+            source: 'native',
+            url: getWiktionaryUrl(word, lang),
+        };
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Fetch a word definition with fallback strategy:
+ * 1. Try native Wiktionary (definition in player's language)
+ * 2. Try English Wiktionary REST API (structured, reliable)
+ * 3. Return a "look up" link as last resort
+ */
+export async function fetchDefinition(word: string, lang: string): Promise<WordDefinition> {
+    // Don't try native for English — go straight to English Wiktionary
+    if (lang !== 'en') {
+        const nativeDef = await fetchFromNativeWiktionary(word, lang);
+        if (nativeDef) return nativeDef;
+    }
+
+    const enDef = await fetchFromEnWiktionary(word, lang);
+    if (enDef) return enDef;
+
+    // Fallback: return a link
+    return {
+        word,
+        definition: '',
+        source: 'link',
+        url: getEnWiktionaryUrl(word),
+    };
+}
+
+/**
+ * Render the definition card into the stats modal.
+ * Called after game completion when definitions are enabled.
+ */
+export function renderDefinitionCard(
+    def: WordDefinition,
+    container: HTMLElement,
+    uiStrings: { definition?: string; look_up_on_wiktionary?: string }
+): void {
+    const definitionLabel = uiStrings.definition || 'Definition';
+    const lookUpLabel = uiStrings.look_up_on_wiktionary || 'Look up on Wiktionary';
+
+    if (def.source === 'link') {
+        // No definition found — show link only
+        container.innerHTML = `
+            <a href="${def.url}" target="_blank" rel="noopener noreferrer"
+                class="flex items-center justify-center gap-1 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
+                <span>${lookUpLabel}: <strong class="uppercase">${def.word}</strong></span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                </svg>
+            </a>`;
+    } else {
+        const posHtml = def.partOfSpeech
+            ? `<span class="text-xs text-neutral-400 dark:text-neutral-500 italic">${def.partOfSpeech}</span>`
+            : '';
+
+        container.innerHTML = `
+            <div class="flex items-start gap-2">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">${definitionLabel}</span>
+                        ${posHtml}
+                    </div>
+                    <p class="text-sm text-neutral-800 dark:text-neutral-200"><strong class="uppercase">${def.word}</strong> &mdash; ${def.definition}</p>
+                </div>
+                <a href="${def.url}" target="_blank" rel="noopener noreferrer"
+                    class="flex-shrink-0 text-neutral-400 hover:text-blue-500 dark:text-neutral-500 dark:hover:text-blue-400" title="${lookUpLabel}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                    </svg>
+                </a>
+            </div>`;
+    }
+
+    container.style.display = 'block';
+}
+
+/**
+ * Show loading state in the definition card
+ */
+export function showDefinitionLoading(container: HTMLElement): void {
+    container.innerHTML = `
+        <div class="animate-pulse flex gap-2">
+            <div class="flex-1 space-y-1.5">
+                <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-20"></div>
+                <div class="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-full"></div>
+            </div>
+        </div>`;
+    container.style.display = 'block';
+}
