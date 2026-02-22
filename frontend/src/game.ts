@@ -13,7 +13,6 @@ import {
     fetchDefinition,
     renderDefinitionCard,
     showDefinitionLoading,
-    fetchWordImage,
     renderWordImage,
     showImageLoading,
 } from './definitions';
@@ -873,6 +872,8 @@ export const createGameApp = () => {
                     const data = JSON.parse(stored) as SavedGameState | null;
                     if (data?.todays_word === this.todays_word) {
                         Object.assign(this, data);
+                        // Reset transient UI state that shouldn't persist
+                        this.statsTab = 'today';
                     }
                 } catch {
                     // localStorage unavailable or corrupted data
@@ -1329,13 +1330,7 @@ export const createGameApp = () => {
                     const imageContainer = document.getElementById('word-image-card');
                     if (imageContainer) {
                         showImageLoading(imageContainer);
-                        fetchWordImage(this.todays_word, langCode).then((imageUrl) => {
-                            if (imageUrl) {
-                                renderWordImage(imageUrl, this.todays_word, imageContainer);
-                            } else {
-                                imageContainer.style.display = 'none';
-                            }
-                        });
+                        renderWordImage(this.todays_word, langCode, imageContainer);
                     }
                 }
             },
