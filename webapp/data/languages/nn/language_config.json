@@ -1,10 +1,18 @@
 {
     "language_code": "nn",
     "name": "Norwegian Nynorsk",
+    "timezone": "Europe/Oslo",
     "name_native": "Norsk Nynorsk",
     "diacritic_map": {
-        "e": ["é", "è"],
-        "o": ["ó", "ò", "ô"]
+        "e": [
+            "é",
+            "è"
+        ],
+        "o": [
+            "ó",
+            "ò",
+            "ô"
+        ]
     },
     "meta": {
         "locale": "nn",

@@ -1,13 +1,25 @@
 {
     "language_code": "gl",
     "name": "Galician",
+    "timezone": "Europe/Madrid",
     "name_native": "Galego",
     "diacritic_map": {
-        "a": ["á"],
-        "e": ["é"],
-        "i": ["í"],
-        "o": ["ó"],
-        "u": ["ú", "ü"]
+        "a": [
+            "á"
+        ],
+        "e": [
+            "é"
+        ],
+        "i": [
+            "í"
+        ],
+        "o": [
+            "ó"
+        ],
+        "u": [
+            "ú",
+            "ü"
+        ]
     },
     "meta": {
         "locale": "gl",
