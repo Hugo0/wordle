@@ -12,6 +12,9 @@ import datetime
 import glob
 import random
 import hashlib
+import re
+import urllib.parse
+import urllib.request as urlreq
 
 # set random seed 42 for reproducibility (important to maintain stable word lists)
 # NOTE: This is only used for the LEGACY algorithm (days before MIGRATION_DAY_IDX)
@@ -392,6 +395,12 @@ def get_daily_word_legacy(words: list, blocklist: set, day_idx: int) -> str:
     return words[day_idx % list_len]
 
 
+def idx_to_date(day_idx):
+    """Reverse of get_todays_idx(): convert a day index back to a calendar date."""
+    n_days = day_idx + 18992 - 195
+    return datetime.datetime(1970, 1, 1) + datetime.timedelta(days=n_days)
+
+
 language_codes_5words = {l_code: load_words(l_code) for l_code in language_codes}
 language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
@@ -406,6 +415,28 @@ with open(f"{data_dir}default_language_config.json", "r") as f:
     default_language_config = json.load(f)
 
 keyboards = {k: load_keyboard(k) for k in language_codes}
+
+
+def get_word_for_day(lang_code, day_idx):
+    """Get the daily word for a specific language and day index.
+
+    Standalone version of Language._get_daily_word() that doesn't require
+    full Language initialization (avoids keyboard/character overhead).
+    """
+    word_list = language_codes_5words[lang_code]
+    blocklist = language_blocklists[lang_code]
+    daily_words = language_daily_words.get(lang_code)
+    curated_schedule = language_curated_schedules.get(lang_code)
+
+    if day_idx <= MIGRATION_DAY_IDX:
+        return get_daily_word_legacy(word_list, set(), day_idx)
+    else:
+        schedule_idx = day_idx - MIGRATION_DAY_IDX - 1
+        if curated_schedule and schedule_idx < len(curated_schedule):
+            return curated_schedule[schedule_idx]
+        if daily_words:
+            return get_daily_word_consistent_hash(daily_words, set(), day_idx, lang_code)
+        return get_daily_word_consistent_hash(word_list, blocklist, day_idx, lang_code)
 
 
 def load_languages():
@@ -713,6 +744,95 @@ class Language:
 
 
 ###############################################################################
+# SERVER-SIDE DEFINITION CACHING
+###############################################################################
+
+
+def fetch_definition_cached(word, lang_code):
+    """Fetch definition from Wiktionary with disk caching.
+
+    Returns dict with keys: definition, part_of_speech, source, url.
+    Returns None if no definition found.
+    """
+    cache_dir = os.path.join(app.static_folder, "word-defs", lang_code)
+    cache_path = os.path.join(cache_dir, f"{word.lower()}.json")
+
+    # Check cache first
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+
+    # Try English Wiktionary REST API
+    result = None
+    try:
+        url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
+        req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
+        with urlreq.urlopen(req, timeout=5) as resp:
+            data = json.loads(resp.read())
+            # Try target language first, then English
+            for try_lang in [lang_code, "en"]:
+                entries = data.get(try_lang, [])
+                if entries and entries[0].get("definitions"):
+                    raw_def = entries[0]["definitions"][0].get("definition", "")
+                    clean_def = re.sub(r"<[^>]+>", "", raw_def).strip()
+                    if clean_def:
+                        result = {
+                            "definition": clean_def[:300],
+                            "part_of_speech": entries[0].get("partOfSpeech"),
+                            "source": "english",
+                            "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(word.lower())}",
+                        }
+                        break
+    except Exception:
+        pass
+
+    # Cache result (even None as empty object to avoid re-fetching)
+    try:
+        os.makedirs(cache_dir, exist_ok=True)
+        with open(cache_path, "w") as f:
+            json.dump(result or {}, f)
+    except IOError:
+        pass
+
+    return result
+
+
+###############################################################################
+# ANONYMOUS STATS COLLECTION
+###############################################################################
+
+# In-memory IP dedup (resets on restart, never persisted)
+_stats_seen_ips = {}
+
+
+def _load_word_stats(lang_code, day_idx):
+    """Load stats for a specific word/day."""
+    stats_path = os.path.join(app.static_folder, "word-stats", lang_code, f"{day_idx}.json")
+    if os.path.exists(stats_path):
+        try:
+            with open(stats_path, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return None
+
+
+def _save_word_stats(lang_code, day_idx, stats):
+    """Save stats for a specific word/day."""
+    stats_dir = os.path.join(app.static_folder, "word-stats", lang_code)
+    stats_path = os.path.join(stats_dir, f"{day_idx}.json")
+    try:
+        os.makedirs(stats_dir, exist_ok=True)
+        with open(stats_path, "w") as f:
+            json.dump(stats, f)
+    except IOError:
+        pass
+
+
+###############################################################################
 # ROUTES
 ###############################################################################
 
@@ -751,8 +871,24 @@ def stats():
 # sitemap
 @app.route("/sitemap.xml")
 def site_map():
+    # Generate word page entries for the last 90 days across all languages
+    todays_idx = get_todays_idx()
+    word_pages = []
+    for day_offset in range(90):
+        d_idx = todays_idx - day_offset
+        if d_idx < 1:
+            break
+        d_date = idx_to_date(d_idx).strftime("%Y-%m-%d")
+        for lang in language_codes:
+            word_pages.append({"lang": lang, "day_idx": d_idx, "date": d_date})
+
     response = make_response(
-        render_template("sitemap.xml", languages=languages, base_url="https://wordle.global")
+        render_template(
+            "sitemap.xml",
+            languages=languages,
+            base_url="https://wordle.global",
+            word_pages=word_pages,
+        )
     )
     response.headers["Content-Type"] = "application/xml"
     return response
@@ -809,20 +945,14 @@ def word_image(lang_code, word):
     # Fetch definition to include in prompt (best-effort)
     definition_hint = ""
     try:
-        import urllib.request as urlreq
-
         def_url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
         req = urlreq.Request(def_url, headers={"User-Agent": "WordleGlobal/1.0"})
         with urlreq.urlopen(req, timeout=5) as resp:
             def_data = json.loads(resp.read())
-            # Try target language first, then English
             for try_lang in [lang_code, "en"]:
                 entries = def_data.get(try_lang, [])
                 if entries and entries[0].get("definitions"):
                     raw_def = entries[0]["definitions"][0].get("definition", "")
-                    # Strip HTML tags
-                    import re
-
                     clean_def = re.sub(r"<[^>]+>", "", raw_def)
                     if clean_def:
                         definition_hint = f' meaning "{clean_def}"'
@@ -858,7 +988,6 @@ def word_image(lang_code, word):
             return "Image generation failed", 500
 
         # Download and convert to WebP
-        import urllib.request as urlreq
         import tempfile
 
         os.makedirs(cache_dir, exist_ok=True)
@@ -874,9 +1003,9 @@ def word_image(lang_code, word):
                 img.save(cache_path, "WebP", quality=80)
         except ImportError:
             # Pillow not installed — save raw PNG with .webp extension
-            import shutil
+            import shutil as _shutil
 
-            shutil.move(tmp_path, cache_path)
+            _shutil.move(tmp_path, cache_path)
             tmp_path = None
         finally:
             if tmp_path and os.path.exists(tmp_path):
@@ -886,6 +1015,102 @@ def word_image(lang_code, word):
     except Exception as e:
         print(f"Image generation failed for {lang_code}/{word}: {e}")
         return "Image generation failed", 500
+
+
+@app.route("/<lang_code>/word/<int:day_idx>")
+def word_page(lang_code, day_idx):
+    """Serve a shareable page for a specific daily word."""
+    if lang_code not in language_codes:
+        return "Language not found", 404
+
+    # Don't reveal future words
+    todays_idx = get_todays_idx()
+    if day_idx > todays_idx or day_idx < 1:
+        return "Word not available yet", 404
+
+    word = get_word_for_day(lang_code, day_idx)
+    word_date = idx_to_date(day_idx)
+    config = language_configs[lang_code]
+    lang_name = config.get("name", lang_code)
+    lang_name_native = config.get("name_native", lang_name)
+
+    # Fetch definition (cached)
+    definition = fetch_definition_cached(word, lang_code)
+
+    # Check if AI image exists
+    image_path = os.path.join(app.static_folder, "word-images", lang_code, f"{word.lower()}.webp")
+    has_image = os.path.exists(image_path)
+    image_url = f"/static/word-images/{lang_code}/{word.lower()}.webp" if has_image else None
+
+    # Load stats if available
+    word_stats = _load_word_stats(lang_code, day_idx)
+
+    return render_template(
+        "word.html",
+        lang_code=lang_code,
+        lang_name=lang_name,
+        lang_name_native=lang_name_native,
+        day_idx=day_idx,
+        word=word,
+        word_date=word_date,
+        definition=definition,
+        image_url=image_url,
+        word_stats=word_stats,
+        todays_idx=todays_idx,
+        config=config,
+    )
+
+
+@app.route("/<lang_code>/api/word-stats", methods=["POST"])
+def submit_word_stats(lang_code):
+    """Accept anonymous game results for per-word statistics."""
+    if lang_code not in language_codes:
+        return "", 404
+
+    try:
+        data = request.get_json(silent=True)
+        if not data:
+            return "", 400
+
+        day_idx = data.get("day_idx")
+        attempts = data.get("attempts")
+        won = data.get("won")
+
+        if not isinstance(day_idx, int) or not isinstance(won, bool):
+            return "", 400
+
+        # Only accept stats for today's word
+        todays_idx = get_todays_idx()
+        if day_idx != todays_idx:
+            return "", 403
+
+        # IP-based dedup (in-memory, resets on restart)
+        ip = request.remote_addr or "unknown"
+        dedup_key = f"{lang_code}:{day_idx}:{ip}"
+        if dedup_key in _stats_seen_ips:
+            return "", 200  # Silently accept duplicate
+        _stats_seen_ips[dedup_key] = True
+
+        # Load existing stats or create new
+        stats = _load_word_stats(lang_code, day_idx) or {
+            "total": 0,
+            "wins": 0,
+            "losses": 0,
+            "distribution": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0},
+        }
+
+        stats["total"] += 1
+        if won:
+            stats["wins"] += 1
+            if isinstance(attempts, int) and 1 <= attempts <= 6:
+                stats["distribution"][str(attempts)] += 1
+        else:
+            stats["losses"] += 1
+
+        _save_word_stats(lang_code, day_idx, stats)
+        return "", 200
+    except Exception:
+        return "", 500
 
 
 if __name__ == "__main__":

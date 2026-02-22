@@ -5,7 +5,13 @@
   </url>
   {% for language in languages %}
   <url>
-    <loc>{{ base_url }}/{{ language }}</loc>s
+    <loc>{{ base_url }}/{{ language }}</loc>
+  </url>
+  {% endfor %}
+  {% for entry in word_pages %}
+  <url>
+    <loc>{{ base_url }}/{{ entry.lang }}/word/{{ entry.day_idx }}</loc>
+    <lastmod>{{ entry.date }}</lastmod>
   </url>
   {% endfor %}
 </urlset>
