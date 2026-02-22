@@ -396,78 +396,88 @@
                         </button>
                     </div>
 
-                    <div class="relative flex-auto mx-6 my-3">
-                        <p class="text-md text-center whitespace-pre-line" id="emoji_board" v-html="emoji_board">
-                        </p>
-                        <p v-if="attempts=='0'" class="text-center text-sm text-gray-600 dark:text-gray-400">
-                            {{ language.config.text.no_attempts }}
-                        </p>
+                    <!-- Tab buttons -->
+                    <div class="flex mx-5 mt-2 border-b border-gray-200 dark:border-gray-600">
+                        <button v-on:click="statsTab = 'today'"
+                            class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                            :class="statsTab === 'today'
+                                ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                            {{ language.config.ui.today or "Today" }}
+                        </button>
+                        <button v-on:click="statsTab = 'stats'"
+                            class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                            :class="statsTab === 'stats'
+                                ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                            {{ language.config.ui.statistics or "Stats" }}
+                        </button>
+                        <button v-on:click="statsTab = 'global'"
+                            class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                            :class="statsTab === 'global'
+                                ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                            {{ language.config.ui.all_languages or "All Languages" }}
+                        </button>
                     </div>
 
-                    <!-- Word Art Image (shown after game completion, if enabled) -->
-                    <div id="word-image-card" class="px-6 pt-3 pb-1 border-t border-solid border-gray-200 dark:border-gray-600" style="display: none;"></div>
+                    <!-- TODAY tab: emoji board + definition + image + share -->
+                    <div v-show="statsTab === 'today'">
+                        <div class="relative flex-auto mx-6 my-3">
+                            <p class="text-md text-center whitespace-pre-line" id="emoji_board" v-html="emoji_board">
+                            </p>
+                            <p v-if="attempts=='0'" class="text-center text-sm text-gray-600 dark:text-gray-400">
+                                {{ language.config.text.no_attempts }}
+                            </p>
+                        </div>
 
-                    <!-- Definition Card (shown after game completion) -->
-                    <div id="definition-card" class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600" style="display: none;"></div>
+                        <!-- Word Art Image (shown after game completion, if enabled) -->
+                        <div id="word-image-card" class="px-6 pt-2 pb-1" style="display: none;"></div>
 
-                    <!-- Guess Distribution Graph (compact for mobile) -->
-                    <div class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600">
-                        <h4 class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400">{{ language.config.ui.guess_distribution or "Guess Distribution" }}</h4>
-                        <div class="space-y-0.5">
-                            <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
-                                <span class="w-3 text-xs font-medium">[[ n ]]</span>
-                                <div class="flex-1 h-4 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
-                                    <div
-                                        class="h-full flex items-center justify-end px-1 text-[10px] font-bold text-white transition-all duration-300"
-                                        :class="isCurrentGuess(n) ? 'bg-green-500' : 'bg-gray-400 dark:bg-gray-500'"
-                                        :style="{ width: getDistributionBarWidth(n) + '%' }">
-                                        <span v-if="stats.guessDistribution">[[ stats.guessDistribution[n] ]]</span>
-                                    </div>
-                                </div>
+                        <!-- Definition Card (shown after game completion) -->
+                        <div id="definition-card" class="px-6 py-2" style="display: none;"></div>
+
+                        <div class="flex flex-row gap-4 py-2 px-6 border-t border-solid border-gray-200 dark:border-gray-600">
+                            <div class="flex flex-col w-1/2 items-center border-r border-gray-200 dark:border-gray-600">
+                                <p class="uppercase font-semibold text-xs whitespace-pre-line text-neutral-500 dark:text-neutral-400">{{
+                                    language.config.text.next_word }}</p>
+                                <p class="text-2xl font-bold" v-html="this.time_until_next_day">
+                            </div>
+                            <!-- share button with success state -->
+                            <div class="flex flex-col w-1/2 items-center justify-center">
+                                <button
+                                    class="w-full py-2 px-4 text-white font-semibold rounded-lg shadow-lg transition-all duration-200"
+                                    :class="shareButtonState === 'success' ? 'bg-emerald-600 scale-105' : 'bg-green-500 hover:bg-green-600 active:bg-green-700'"
+                                    v-on:click="shareResults">
+                                    <span v-if="shareButtonState === 'success'">✓ {{ language.config.text.copied or 'Copied!' }}</span>
+                                    <span v-else>{{ language.config.text.share }}</span>
+                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex flex-row gap-4 py-2 px-6 border-t border-solid border-gray-200 dark:border-gray-600">
-                        <div class="flex flex-col w-1/2 items-center border-r border-gray-200 dark:border-gray-600">
-                            <p class="uppercase font-semibold text-xs whitespace-pre-line text-neutral-500 dark:text-neutral-400">{{
-                                language.config.text.next_word }}</p>
-                            <p class="text-2xl font-bold" v-html="this.time_until_next_day">
-                        </div>
-                        <!-- share button with success state -->
-                        <div class="flex flex-col w-1/2 items-center justify-center">
-                            <button
-                                class="w-full py-2 px-4 text-white font-semibold rounded-lg shadow-lg transition-all duration-200"
-                                :class="shareButtonState === 'success' ? 'bg-emerald-600 scale-105' : 'bg-green-500 hover:bg-green-600 active:bg-green-700'"
-                                v-on:click="shareResults">
-                                <span v-if="shareButtonState === 'success'">✓ {{ language.config.text.copied or 'Copied!' }}</span>
-                                <span v-else>{{ language.config.text.share }}</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Stats Tabs -->
-                    <div class="border-t border-solid border-gray-200 dark:border-gray-600">
-                        <!-- Tab buttons -->
-                        <div class="flex">
-                            <button v-on:click="statsTab = 'language'"
-                                class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
-                                :class="statsTab === 'language'
-                                    ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
-                                    : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
-                                {{ language.config.name }}
-                            </button>
-                            <button v-on:click="statsTab = 'global'"
-                                class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
-                                :class="statsTab === 'global'
-                                    ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
-                                    : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
-                                {{ language.config.ui.all_languages or "All Languages" }}
-                            </button>
+                    <!-- STATS tab: distribution + language stats -->
+                    <div v-show="statsTab === 'stats'">
+                        <!-- Guess Distribution Graph -->
+                        <div class="px-6 py-3">
+                            <h4 class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400">{{ language.config.ui.guess_distribution or "Guess Distribution" }}</h4>
+                            <div class="space-y-0.5">
+                                <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
+                                    <span class="w-3 text-xs font-medium">[[ n ]]</span>
+                                    <div class="flex-1 h-4 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                                        <div
+                                            class="h-full flex items-center justify-end px-1 text-[10px] font-bold text-white transition-all duration-300"
+                                            :class="isCurrentGuess(n) ? 'bg-green-500' : 'bg-gray-400 dark:bg-gray-500'"
+                                            :style="{ width: getDistributionBarWidth(n) + '%' }">
+                                            <span v-if="stats.guessDistribution">[[ stats.guessDistribution[n] ]]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Language Stats (current language) -->
-                        <div v-show="statsTab === 'language'" class="px-4 py-3">
+                        <!-- Language stats grid -->
+                        <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-600">
                             <div class="grid grid-cols-4 gap-1">
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[stats.n_games]]</p>
@@ -487,9 +497,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Global Stats (all languages) -->
-                        <div v-show="statsTab === 'global'" class="px-4 py-3">
+                    <!-- GLOBAL tab: all languages stats -->
+                    <div v-show="statsTab === 'global'">
+                        <div class="px-4 py-3">
                             <!-- Summary grid -->
                             <div class="grid grid-cols-4 gap-1 mb-2">
                                 <div class="text-center">
@@ -511,7 +523,7 @@
                             </div>
 
                             <!-- Per-language breakdown -->
-                            <div v-if="Object.keys(total_stats.game_stats || {}).length > 0" class="max-h-24 overflow-y-auto border-t border-neutral-200 dark:border-neutral-600 pt-1">
+                            <div v-if="Object.keys(total_stats.game_stats || {}).length > 0" class="max-h-32 overflow-y-auto border-t border-neutral-200 dark:border-neutral-600 pt-1">
                                 <div v-for="(langStats, code) in total_stats.game_stats" :key="code"
                                     class="flex items-center justify-between py-1 text-xs">
                                     <span class="font-medium">[[getLanguageName(code)]]</span>

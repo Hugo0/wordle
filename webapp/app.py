@@ -806,6 +806,30 @@ def word_image(lang_code, word):
     if os.path.exists(cache_path):
         return app.send_static_file(f"word-images/{lang_code}/{word.lower()}.webp")
 
+    # Fetch definition to include in prompt (best-effort)
+    definition_hint = ""
+    try:
+        import urllib.request as urlreq
+
+        def_url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
+        req = urlreq.Request(def_url, headers={"User-Agent": "WordleGlobal/1.0"})
+        with urlreq.urlopen(req, timeout=5) as resp:
+            def_data = json.loads(resp.read())
+            # Try target language first, then English
+            for try_lang in [lang_code, "en"]:
+                entries = def_data.get(try_lang, [])
+                if entries and entries[0].get("definitions"):
+                    raw_def = entries[0]["definitions"][0].get("definition", "")
+                    # Strip HTML tags
+                    import re
+
+                    clean_def = re.sub(r"<[^>]+>", "", raw_def)
+                    if clean_def:
+                        definition_hint = f' meaning "{clean_def}"'
+                        break
+    except Exception:
+        pass  # Definition is optional for image generation
+
     # Generate image via DALL-E
     try:
         import openai
@@ -813,9 +837,17 @@ def word_image(lang_code, word):
         client = openai.OpenAI(api_key=openai_key)
         lang_name = language_configs[lang_code].get("name", lang_code)
 
+        prompt = (
+            f"A single centered watercolor illustration representing the concept "
+            f'"{word}"{definition_hint}. '
+            f"Soft pastel colors, gentle brush strokes, white background, "
+            f"no text, no letters, no words, no numbers. "
+            f"Simple and elegant, suitable as a small card illustration."
+        )
+
         response = client.images.generate(
             model="dall-e-3",
-            prompt=f'A simple, elegant watercolor illustration of the concept "{word}" ({lang_name} word). No text, no letters, minimalist style, white background.',
+            prompt=prompt,
             size="1024x1024",
             quality="standard",
             n=1,
@@ -825,11 +857,30 @@ def word_image(lang_code, word):
         if not image_url:
             return "Image generation failed", 500
 
-        # Download and cache the image
-        import urllib.request
+        # Download and convert to WebP
+        import urllib.request as urlreq
+        import tempfile
 
         os.makedirs(cache_dir, exist_ok=True)
-        urllib.request.urlretrieve(image_url, cache_path)
+
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+            tmp_path = tmp.name
+            urlreq.urlretrieve(image_url, tmp_path)
+
+        try:
+            from PIL import Image
+
+            with Image.open(tmp_path) as img:
+                img.save(cache_path, "WebP", quality=80)
+        except ImportError:
+            # Pillow not installed — save raw PNG with .webp extension
+            import shutil
+
+            shutil.move(tmp_path, cache_path)
+            tmp_path = None
+        finally:
+            if tmp_path and os.path.exists(tmp_path):
+                os.unlink(tmp_path)
 
         return app.send_static_file(f"word-images/{lang_code}/{word.lower()}.webp")
     except Exception as e:
