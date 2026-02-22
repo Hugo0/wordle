@@ -5,6 +5,7 @@ from flask import (
     redirect,
     request,
     send_from_directory,
+    jsonify,
 )
 import json
 import os
@@ -772,9 +773,199 @@ class Language:
 ###############################################################################
 
 
+_WIKT_LANG_MAP = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
+
+
+def _parse_wikt_definition(extract):
+    """Extract a definition line from a Wiktionary plaintext extract.
+
+    Strategy: find lines that follow a definition-section header or marker,
+    skipping etymology, pronunciation, inflection, and metadata. Works across
+    many language-edition Wiktionary formats.
+    """
+    lines = extract.split("\n")
+    in_definition_section = False
+
+    # == headers that mark definition sections (e.g. "==== Noun ====")
+    defn_headers = re.compile(
+        r"^={2,4}\s*("
+        r"Noun|Verb|Adjective|Adverb|Pronoun|Preposition|Conjunction|Interjection|"
+        r"Nom commun|Verbe|Adjectif|Adverbe|"
+        r"Sustantivo\b|Verbo|Adjetivo|Adverbio|"
+        r"Substantivo|Sostantivo|"
+        r"Substantiv\b|Adjektiv|"
+        r"Bijvoeglijk naamwoord|Zelfstandig naamwoord|Werkwoord"
+        r")",
+        re.IGNORECASE,
+    )
+
+    # Plain-text markers that start definition blocks (German, Polish, etc.)
+    defn_text_markers = re.compile(r"^(Bedeutungen|znaczenia)\s*:?\s*$", re.IGNORECASE)
+
+    # Lines to always skip within a definition section
+    skip_line = re.compile(
+        r"^("
+        r"=|IPA|Rhymes:|Homophones:|wymowa:|Pronúncia|Prononciation|Pronunciación|"
+        r"Aussprache|Worttrennung|Silbentrennung|Hörbeispiele|Reime|"
+        r"Étymologie|Etimología|Etimologia|Etymology|Herkunft|"
+        r"Synonym|Sinónim|Sinônim|Antonym|Antónim|"
+        r"Übersetzung|Translation|Tradução|Oberbegriffe|"
+        r"Beispiele|Examples|Uso:|odmiana:|przykłady:|składnia:|kolokacje:|"
+        r"synonimy:|antonimy:|hiperonimy:|hiponimy:|holonimy:|meronimy:|"
+        r"wyrazy pokrewne:|związki frazeologiczne:|etymologia:|"
+        r"Cognate |From |Du |Del |Do |Uit |Vom |Van |Derived |Compare |"
+        r"rzeczownik|przymiotnik|przysłówek|czasownik"
+        r")",
+        re.IGNORECASE,
+    )
+
+    # Markers that end a definition section (plain-text, German/Polish style)
+    end_markers = re.compile(
+        r"^(Herkunft|Synonyme|Antonyme|Oberbegriffe|Beispiele|"
+        r"Übersetzungen|odmiana|przykłady|składnia|kolokacje|"
+        r"synonimy|antonimy|wyrazy pokrewne|związki frazeologiczne)\s*:?\s*$",
+        re.IGNORECASE,
+    )
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        # Check for == definition section header
+        if defn_headers.match(line):
+            in_definition_section = True
+            continue
+
+        # Check for plain-text definition marker
+        if defn_text_markers.match(line):
+            in_definition_section = True
+            continue
+
+        # End markers (plain text like "Herkunft:" in German)
+        if end_markers.match(line):
+            if in_definition_section:
+                in_definition_section = False
+            continue
+
+        # Non-definition == header resets section
+        if re.match(r"^={2,4}\s*\S", line):
+            if in_definition_section and not defn_headers.match(line):
+                in_definition_section = False
+            continue
+
+        if not in_definition_section:
+            continue
+
+        if skip_line.match(line):
+            continue
+
+        # Skip inflection lines like "casa ¦ plural: casas"
+        if re.match(r"^\S+\s*¦", line):
+            continue
+
+        # Skip hyphenation lines like "De·pot, Plural: De·pots"
+        if "·" in line or re.match(r".*Plural\s*:", line):
+            continue
+
+        # Skip phonetic/gender headword lines
+        if re.match(r"^\\", line):
+            continue
+        if re.match(r"^[a-záàâãéèêíóòôõúüçñ.·ˈˌ]+\s*\\", line, re.IGNORECASE):
+            continue
+        # Skip "word (approfondimento) m sing" style (Italian)
+        if re.match(r"^\w+\s*\(?\s*approfondimento", line, re.IGNORECASE):
+            continue
+        # Skip "de wereld v / m" style (Dutch headword with gender)
+        if re.match(r"^(de|het|een|die|das|der)\s+\w+\s+[vmfn]\b", line, re.IGNORECASE):
+            continue
+        if re.match(
+            r"^[a-záàâãéèêíóòôõúüçñ.·ˈˌ]+,?\s*(masculino|feminino|comum|neutro|féminin|masculin|m\s|f\s|m sing|f sing)",
+            line,
+            re.IGNORECASE,
+        ):
+            continue
+
+        # Skip headword lines like "crane (plural cranes)" or "grind (third-person..."
+        if re.match(r"^\w+\s*\((plural|third-person|present|past|pl\.)\b", line, re.IGNORECASE):
+            continue
+
+        # German [1] definitions: "[1] Ort oder Gebäude..."
+        m = re.match(r"^\[(\d+)\]\s+(.+)", line)
+        if m and len(m.group(2)) > 5:
+            return m.group(2).strip()[:300]
+
+        # Polish (1.2) definitions
+        m = re.match(r"^\([\d.]+\)\s+(.+)", line)
+        if m:
+            defn = m.group(1).strip()
+            if re.match(r"(zdrobn|zgrub|forma)\b", defn, re.IGNORECASE):
+                continue
+            if len(defn) > 5:
+                return defn[:300]
+            continue
+
+        # Spanish/numbered: "1 Vivienda" — but skip single-word topic labels
+        m = re.match(r"^\d+\.?\s+(.*)", line)
+        if m and len(m.group(1)) > 3:
+            text = m.group(1).strip()
+            # If it's a topic label like "Vivienda", check next non-empty line
+            # Accept it anyway — it's better than nothing
+            return text[:300]
+
+        # Skip example sentences (Dutch ▸, French/Spanish quotes, etc.)
+        if line.startswith("▸") or line.startswith("►"):
+            continue
+
+        # Plain definition text (at least 3 chars)
+        if len(line) > 3:
+            return line[:300]
+
+    return None
+
+
+def _fetch_native_wiktionary(word, lang_code):
+    """Try native-language Wiktionary via MediaWiki API. Returns dict or None."""
+    wikt_lang = _WIKT_LANG_MAP.get(lang_code, lang_code)
+
+    # Try original case first, then title-case (German nouns are capitalized)
+    candidates = [word]
+    if word[0].islower():
+        candidates.append(word[0].upper() + word[1:])
+
+    for try_word in candidates:
+        api_url = (
+            f"https://{wikt_lang}.wiktionary.org/w/api.php?"
+            f"action=query&titles={urllib.parse.quote(try_word)}"
+            f"&prop=extracts&explaintext=1&format=json"
+        )
+        try:
+            req = urlreq.Request(api_url, headers={"User-Agent": "WordleGlobal/1.0"})
+            with urlreq.urlopen(req, timeout=5) as resp:
+                data = json.loads(resp.read())
+                pages = data.get("query", {}).get("pages", {})
+                for pid, page in pages.items():
+                    if pid == "-1":
+                        continue
+                    extract = page.get("extract", "").strip()
+                    if not extract:
+                        continue
+                    defn = _parse_wikt_definition(extract)
+                    if defn:
+                        return {
+                            "definition": defn,
+                            "source": "native",
+                            "url": f"https://{wikt_lang}.wiktionary.org/wiki/{urllib.parse.quote(try_word)}",
+                        }
+        except Exception:
+            pass
+    return None
+
+
 def fetch_definition_cached(word, lang_code):
     """Fetch definition from Wiktionary with disk caching.
 
+    Tries native-language Wiktionary first, falls back to English Wiktionary.
     Returns dict with keys: definition, part_of_speech, source, url.
     Returns None if no definition found.
     """
@@ -789,29 +980,36 @@ def fetch_definition_cached(word, lang_code):
         except Exception:
             pass
 
-    # Try English Wiktionary REST API
-    result = None
-    try:
-        url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
-        req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
-        with urlreq.urlopen(req, timeout=5) as resp:
-            data = json.loads(resp.read())
-            # Try target language first, then English
-            for try_lang in [lang_code, "en"]:
-                entries = data.get(try_lang, [])
-                if entries and entries[0].get("definitions"):
-                    raw_def = entries[0]["definitions"][0].get("definition", "")
-                    clean_def = re.sub(r"<[^>]+>", "", raw_def).strip()
-                    if clean_def:
-                        result = {
-                            "definition": clean_def[:300],
-                            "part_of_speech": entries[0].get("partOfSpeech"),
-                            "source": "english",
-                            "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(word.lower())}",
-                        }
+    # Try native Wiktionary first (definitions in the word's own language)
+    result = _fetch_native_wiktionary(word, lang_code)
+
+    # Fall back to English Wiktionary REST API
+    if not result:
+        try:
+            url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
+            req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
+            with urlreq.urlopen(req, timeout=5) as resp:
+                data = json.loads(resp.read())
+                # Try target language first, then English
+                for try_lang in [lang_code, "en"]:
+                    for entry in data.get(try_lang, []):
+                        for defn in entry.get("definitions", []):
+                            raw_def = defn.get("definition", "")
+                            clean_def = re.sub(r"<[^>]+>", "", raw_def).strip()
+                            if clean_def:
+                                result = {
+                                    "definition": clean_def[:300],
+                                    "part_of_speech": entry.get("partOfSpeech"),
+                                    "source": "english",
+                                    "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(word.lower())}",
+                                }
+                                break
+                        if result:
+                            break
+                    if result:
                         break
-    except Exception:
-        pass
+        except Exception:
+            pass
 
     # Cache result (even None as empty object to avoid re-fetching)
     try:
@@ -822,6 +1020,32 @@ def fetch_definition_cached(word, lang_code):
         pass
 
     return result
+
+
+def _fetch_english_definition(word, lang_code):
+    """Fetch an English-language definition for a word (any language).
+
+    Used for DALL-E prompts where English comprehension is best.
+    Hits the English Wiktionary REST API and returns the definition string,
+    or None if not found.
+    """
+    try:
+        url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
+        req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
+        with urlreq.urlopen(req, timeout=5) as resp:
+            data = json.loads(resp.read())
+            # Try target language section first (e.g. "pt" for Portuguese words),
+            # then fall back to English section
+            for try_lang in [lang_code, "en"]:
+                for entry in data.get(try_lang, []):
+                    for defn in entry.get("definitions", []):
+                        raw_def = defn.get("definition", "")
+                        clean_def = re.sub(r"<[^>]+>", "", raw_def).strip()
+                        if clean_def:
+                            return clean_def[:200]
+    except Exception:
+        pass
+    return None
 
 
 ###############################################################################
@@ -978,11 +1202,8 @@ def language(lang_code):
 def build_image_prompt(word, definition_hint=""):
     """Build the DALL-E prompt for a word image."""
     return (
-        f"A flat vector illustration representing the concept of "
+        f"A painterly illustration representing the concept of "
         f"{word}{definition_hint}. "
-        f"Simple geometric shapes, bold flat colors (green, white, gray palette), "
-        f"minimal detail, clean white background, centered composition. "
-        f"Modern app icon style. "
         f"No text, no letters, no words, no UI elements."
     )
 
@@ -1034,6 +1255,29 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
         return "ok"
     except (openai.OpenAIError, urlreq.URLError, IOError, OSError) as e:
         return f"error: {e}"
+
+
+@app.route("/<lang_code>/api/definition/<word>")
+def word_definition_api(lang_code, word):
+    """Return a word definition as JSON.
+
+    Single source of truth for definitions — used by both the game frontend
+    and the word subpage (server-side rendered). Results are cached to disk.
+    """
+    if lang_code not in languages:
+        return jsonify({"error": "unknown language"}), 404
+
+    lang = languages[lang_code]
+    # Only serve definitions for valid words (daily or supplement)
+    word_lower = word.lower()
+    all_words = set(lang.word_list) | set(lang.word_list_supplement)
+    if word_lower not in all_words:
+        return jsonify({"error": "unknown word"}), 404
+
+    result = fetch_definition_cached(word_lower, lang_code)
+    if result:
+        return jsonify(result)
+    return jsonify({"error": "no definition found"}), 404
 
 
 @app.route("/<lang_code>/api/word-image/<word>")
@@ -1103,11 +1347,11 @@ def word_image(lang_code, word):
         return "Image being generated", 202
 
     try:
-        # Use cached definition for prompt context
+        # Use English definition for DALL-E prompt (DALL-E understands English best)
         definition_hint = ""
-        cached_def = fetch_definition_cached(word, lang_code)
-        if cached_def and cached_def.get("definition"):
-            definition_hint = f", which means {cached_def['definition']}"
+        en_def = _fetch_english_definition(word, lang_code)
+        if en_def:
+            definition_hint = f", which means {en_def}"
 
         # Generate image via DALL-E
         result = generate_word_image(word, definition_hint, openai_key, cache_dir, cache_path)
