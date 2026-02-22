@@ -43,6 +43,14 @@ function stripHtml(html: string): string {
     return div.textContent || div.innerText || '';
 }
 
+function escapeHtml(str: string): string {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
 /**
  * Try to fetch definition from English Wiktionary REST API.
  * Returns definitions for the target language (not English definitions).
@@ -167,33 +175,40 @@ export function renderDefinitionCard(
     const definitionLabel = uiStrings.definition || 'Definition';
     const lookUpLabel = uiStrings.look_up_on_wiktionary || 'Look up on Wiktionary';
 
+    const safeWord = escapeHtml(def.word);
+    const safeUrl = escapeHtml(def.url);
+    const safeLookUp = escapeHtml(lookUpLabel);
+    const safeDefLabel = escapeHtml(definitionLabel);
+
     if (def.source === 'link') {
         // No definition found — show link only
         container.innerHTML = `
-            <a href="${def.url}" target="_blank" rel="noopener noreferrer"
+            <a href="${safeUrl}" target="_blank" rel="noopener noreferrer"
                 class="flex items-center justify-center gap-1 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
-                <span>${lookUpLabel}: <strong class="uppercase">${def.word}</strong></span>
+                <span>${safeLookUp}: <strong class="uppercase">${safeWord}</strong></span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
                     <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
                 </svg>
             </a>`;
     } else {
-        const posHtml = def.partOfSpeech
-            ? `<span class="text-xs text-neutral-400 dark:text-neutral-500 italic">${def.partOfSpeech}</span>`
+        const safePos = def.partOfSpeech ? escapeHtml(def.partOfSpeech) : '';
+        const posHtml = safePos
+            ? `<span class="text-xs text-neutral-400 dark:text-neutral-500 italic">${safePos}</span>`
             : '';
+        const safeDef = escapeHtml(def.definition);
 
         container.innerHTML = `
             <div class="flex items-start gap-2">
                 <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2 mb-0.5">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">${definitionLabel}</span>
+                        <span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">${safeDefLabel}</span>
                         ${posHtml}
                     </div>
-                    <p class="text-sm text-neutral-800 dark:text-neutral-200"><strong class="uppercase">${def.word}</strong> &mdash; ${def.definition}</p>
+                    <p class="text-sm text-neutral-800 dark:text-neutral-200"><strong class="uppercase">${safeWord}</strong> &mdash; ${safeDef}</p>
                 </div>
-                <a href="${def.url}" target="_blank" rel="noopener noreferrer"
-                    class="flex-shrink-0 text-neutral-400 hover:text-blue-500 dark:text-neutral-500 dark:hover:text-blue-400" title="${lookUpLabel}">
+                <a href="${safeUrl}" target="_blank" rel="noopener noreferrer"
+                    class="flex-shrink-0 text-neutral-400 hover:text-blue-500 dark:text-neutral-500 dark:hover:text-blue-400" title="${safeLookUp}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
                         <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>

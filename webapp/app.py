@@ -25,7 +25,10 @@ if _env_path.exists():
             _line = _line.strip()
             if _line and not _line.startswith("#") and "=" in _line:
                 _key, _, _val = _line.partition("=")
-                os.environ.setdefault(_key.strip(), _val.strip())
+                _val = _val.strip()
+                if len(_val) >= 2 and _val[0] == _val[-1] and _val[0] in ('"', "'"):
+                    _val = _val[1:-1]
+                os.environ.setdefault(_key.strip(), _val)
 
 # Persistent data directory — /data in production (Render disk), local fallback for dev
 DATA_DIR = os.environ.get("DATA_DIR", os.path.join(os.path.dirname(__file__), "static"))
@@ -544,9 +547,9 @@ language_popularity = [
     "rw",  # Kinyarwanda - 5 sessions
 ]
 
-# Languages that get AI-generated word art images (top 10 by traffic)
+# Languages that get AI-generated word art images (top 30 by traffic)
 # Generating images costs ~$0.04/image via DALL-E 3, so we limit to popular languages
-IMAGE_LANGUAGES = language_popularity[:10]
+IMAGE_LANGUAGES = language_popularity[:30]
 
 # status
 with open("../scripts/out/status_list.txt", "r") as f:
@@ -827,6 +830,7 @@ def fetch_definition_cached(word, lang_code):
 
 # In-memory IP dedup (resets on restart, never persisted)
 _stats_seen_ips = {}
+_stats_seen_day = None  # Track current day to clear stale entries
 
 
 def _load_word_stats(lang_code, day_idx):
@@ -841,16 +845,46 @@ def _load_word_stats(lang_code, day_idx):
     return None
 
 
-def _save_word_stats(lang_code, day_idx, stats):
-    """Save stats for a specific word/day."""
+def _update_word_stats(lang_code, day_idx, won, attempts):
+    """Atomically read-modify-write stats for a specific word/day."""
+    import fcntl
+
     stats_dir = os.path.join(WORD_STATS_DIR, lang_code)
     stats_path = os.path.join(stats_dir, f"{day_idx}.json")
-    try:
-        os.makedirs(stats_dir, exist_ok=True)
+    os.makedirs(stats_dir, exist_ok=True)
+
+    lock_path = stats_path + ".lock"
+    with open(lock_path, "w") as lock_f:
+        fcntl.flock(lock_f, fcntl.LOCK_EX)
+
+        # Read
+        stats = None
+        if os.path.exists(stats_path):
+            try:
+                with open(stats_path, "r") as f:
+                    stats = json.load(f)
+            except Exception:
+                pass
+        if not stats:
+            stats = {
+                "total": 0,
+                "wins": 0,
+                "losses": 0,
+                "distribution": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0},
+            }
+
+        # Update
+        stats["total"] += 1
+        if won:
+            stats["wins"] += 1
+            if isinstance(attempts, int) and 1 <= attempts <= 6:
+                stats["distribution"][str(attempts)] += 1
+        else:
+            stats["losses"] += 1
+
+        # Write
         with open(stats_path, "w") as f:
             json.dump(stats, f)
-    except IOError:
-        pass
 
 
 ###############################################################################
@@ -978,7 +1012,9 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
 
         with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
             tmp_path = tmp.name
-            urlreq.urlretrieve(image_url, tmp_path)
+            req = urlreq.Request(image_url)
+            with urlreq.urlopen(req, timeout=30) as resp:
+                tmp.write(resp.read())
 
         try:
             from PIL import Image
@@ -995,7 +1031,7 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
                 os.unlink(tmp_path)
 
         return "ok"
-    except Exception as e:
+    except (openai.OpenAIError, urlreq.URLError, IOError, OSError) as e:
         return f"error: {e}"
 
 
@@ -1137,29 +1173,18 @@ def submit_word_stats(lang_code):
             return "", 403
 
         # IP-based dedup (in-memory, resets on restart)
+        global _stats_seen_day
+        if _stats_seen_day != todays_idx:
+            _stats_seen_ips.clear()
+            _stats_seen_day = todays_idx
+
         ip = request.remote_addr or "unknown"
         dedup_key = f"{lang_code}:{day_idx}:{ip}"
         if dedup_key in _stats_seen_ips:
             return "", 200  # Silently accept duplicate
         _stats_seen_ips[dedup_key] = True
 
-        # Load existing stats or create new
-        stats = _load_word_stats(lang_code, day_idx) or {
-            "total": 0,
-            "wins": 0,
-            "losses": 0,
-            "distribution": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0},
-        }
-
-        stats["total"] += 1
-        if won:
-            stats["wins"] += 1
-            if isinstance(attempts, int) and 1 <= attempts <= 6:
-                stats["distribution"][str(attempts)] += 1
-        else:
-            stats["losses"] += 1
-
-        _save_word_stats(lang_code, day_idx, stats)
+        _update_word_stats(lang_code, day_idx, won, attempts)
         return "", 200
     except Exception:
         return "", 500
