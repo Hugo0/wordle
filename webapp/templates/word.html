@@ -171,6 +171,14 @@
             <span class="text-xs text-neutral-400">Latest</span>
             {% endif %}
         </nav>
+
+        {# Report bad word #}
+        <p class="text-center mt-6 mb-2">
+            <a href="https://github.com/Hugo0/wordle/issues/new?title=Bad+word:+{{ word }}+({{ lang_code }}+%23{{ day_idx }})&body=Language:+{{ lang_code }}%0AWord:+{{ word }}%0ADay:+%23{{ day_idx }}%0A%0APlease+describe+the+issue:" target="_blank" rel="noopener noreferrer"
+                class="text-xs text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300">
+                Report bad word
+            </a>
+        </p>
     </div>
 
     <script>
