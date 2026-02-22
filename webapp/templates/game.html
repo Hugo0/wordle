@@ -298,6 +298,16 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- Word Art toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p>{{ language.config.ui.word_art or "Word Art" }}</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">{{ language.config.ui.word_art_desc or "AI illustration of the daily word" }}</p>
+                                </div>
+                                {{ toggle_switch('wordArtEnabled', 'toggleWordArt()', language.config.ui.word_art or 'Word Art') }}
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
                                 <p class="flex-grow">{{ language.config.ui.right_to_left or "Right to left" }}</p>
@@ -393,6 +403,9 @@
                             {{ language.config.text.no_attempts }}
                         </p>
                     </div>
+
+                    <!-- Word Art Image (shown after game completion, if enabled) -->
+                    <div id="word-image-card" class="px-6 pt-3 pb-1 border-t border-solid border-gray-200 dark:border-gray-600" style="display: none;"></div>
 
                     <!-- Definition Card (shown after game completion) -->
                     <div id="definition-card" class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600" style="display: none;"></div>

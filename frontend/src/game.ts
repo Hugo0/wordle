@@ -9,7 +9,14 @@ import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
 import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
 import analytics from './analytics';
-import { fetchDefinition, renderDefinitionCard, showDefinitionLoading } from './definitions';
+import {
+    fetchDefinition,
+    renderDefinitionCard,
+    showDefinitionLoading,
+    fetchWordImage,
+    renderWordImage,
+    showImageLoading,
+} from './definitions';
 import type { PositionalConfig } from './positional';
 import type {
     LanguageConfig,
@@ -96,6 +103,7 @@ interface GameData {
     hapticsEnabled: boolean;
     soundEnabled: boolean;
     definitionsEnabled: boolean;
+    wordArtEnabled: boolean;
     notification: Notification;
     tiles: string[][];
     tile_classes: string[][];
@@ -143,6 +151,7 @@ export const createGameApp = () => {
                 hapticsEnabled: true,
                 soundEnabled: true,
                 definitionsEnabled: true,
+                wordArtEnabled: true,
                 shareButtonState: 'idle' as const,
 
                 notification: {
@@ -319,6 +328,7 @@ export const createGameApp = () => {
             this.loadHapticsPreference();
             this.loadSoundPreference();
             this.loadDefinitionsPreference();
+            this.loadWordArtPreference();
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -1267,6 +1277,34 @@ export const createGameApp = () => {
                 });
             },
 
+            loadWordArtPreference(): void {
+                try {
+                    const stored = localStorage.getItem('wordArtEnabled');
+                    if (stored !== null) {
+                        this.wordArtEnabled = stored !== 'false';
+                    }
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            toggleWordArt(): void {
+                this.$nextTick(() => {
+                    try {
+                        localStorage.setItem(
+                            'wordArtEnabled',
+                            this.wordArtEnabled ? 'true' : 'false'
+                        );
+                    } catch {
+                        // localStorage unavailable
+                    }
+                    analytics.trackSettingsChange({
+                        setting: 'word_art',
+                        value: this.wordArtEnabled,
+                    });
+                });
+            },
+
             loadDefinition(): void {
                 if (!this.definitionsEnabled) return;
 
@@ -1284,6 +1322,21 @@ export const createGameApp = () => {
                 fetchDefinition(this.todays_word, langCode).then((def) => {
                     renderDefinitionCard(def, container, uiStrings);
                 });
+
+                // Load word art image (independent of definition)
+                if (this.wordArtEnabled) {
+                    const imageContainer = document.getElementById('word-image-card');
+                    if (imageContainer) {
+                        showImageLoading(imageContainer);
+                        fetchWordImage(this.todays_word, langCode).then((imageUrl) => {
+                            if (imageUrl) {
+                                renderWordImage(imageUrl, this.todays_word, imageContainer);
+                            } else {
+                                imageContainer.style.display = 'none';
+                            }
+                        });
+                    }
+                }
             },
 
             canInstallPwa(): boolean {

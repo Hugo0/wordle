@@ -263,6 +263,31 @@ export function renderDefinitionCard(
 }
 
 /**
+ * Try to fetch the AI-generated word image.
+ * Returns the image URL if available, null otherwise.
+ */
+export async function fetchWordImage(word: string, lang: string): Promise<string | null> {
+    const url = `/${lang}/api/word-image/${encodeURIComponent(word)}`;
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        if (response.ok) return url;
+        return null;
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Render the word image into the image container.
+ */
+export function renderWordImage(imageUrl: string, word: string, container: HTMLElement): void {
+    container.innerHTML = `
+        <img src="${imageUrl}" alt="${word}"
+            class="w-full max-h-48 object-contain rounded-lg" loading="lazy">`;
+    container.style.display = 'block';
+}
+
+/**
  * Show loading state in the definition card
  */
 export function showDefinitionLoading(container: HTMLElement): void {
@@ -272,6 +297,17 @@ export function showDefinitionLoading(container: HTMLElement): void {
                 <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-20"></div>
                 <div class="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-full"></div>
             </div>
+        </div>`;
+    container.style.display = 'block';
+}
+
+/**
+ * Show loading state for word image
+ */
+export function showImageLoading(container: HTMLElement): void {
+    container.innerHTML = `
+        <div class="animate-pulse">
+            <div class="h-48 bg-neutral-200 dark:bg-neutral-700 rounded-lg w-full"></div>
         </div>`;
     container.style.display = 'block';
 }
