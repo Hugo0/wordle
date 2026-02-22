@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>{{ base_url }}/sitemap-main.xml</loc>
+    <lastmod>{{ lastmod }}</lastmod>
+  </sitemap>
+  {% for i in range(1, n_word_sitemaps + 1) %}
+  <sitemap>
+    <loc>{{ base_url }}/sitemap-words-{{ i }}.xml</loc>
+    <lastmod>{{ lastmod }}</lastmod>
+  </sitemap>
+  {% endfor %}
+</sitemapindex>

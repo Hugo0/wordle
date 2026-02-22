@@ -1153,24 +1153,89 @@ def stats():
 
 
 # sitemap
+SITEMAP_MAX_URLS = 50000
+SITEMAP_BASE_URL = "https://wordle.global"
+
+
 @app.route("/sitemap.xml")
-def site_map():
-    # Generate word page entries for the last 90 days across all languages
+def sitemap_index():
+    """Sitemap index pointing to child sitemaps."""
     todays_idx = get_todays_idx()
+    n_langs = len(language_codes)
+    total_word_pages = todays_idx * n_langs
+    n_word_sitemaps = (total_word_pages + SITEMAP_MAX_URLS - 1) // SITEMAP_MAX_URLS
+    today_str = idx_to_date(todays_idx).strftime("%Y-%m-%d")
+
+    response = make_response(
+        render_template(
+            "sitemap_index.xml",
+            base_url=SITEMAP_BASE_URL,
+            n_word_sitemaps=n_word_sitemaps,
+            lastmod=today_str,
+        )
+    )
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
+
+@app.route("/sitemap-main.xml")
+def sitemap_main():
+    """Sitemap for homepage and language pages."""
+    response = make_response(
+        render_template(
+            "sitemap_main.xml",
+            languages=languages,
+            base_url=SITEMAP_BASE_URL,
+        )
+    )
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
+
+@app.route("/sitemap-words-<int:page>.xml")
+def sitemap_words(page):
+    """Sitemap for word subpages, paginated at 50K URLs per file."""
+    todays_idx = get_todays_idx()
+    n_langs = len(language_codes)
+    sorted_langs = sorted(language_codes)
+
+    # Total word pages: todays_idx * n_langs (day 1..todays_idx × all langs)
+    # Ordered: newest days first (higher priority), then by language
+    # Page 1 = first 50K entries, page 2 = next 50K, etc.
+    offset = (page - 1) * SITEMAP_MAX_URLS
+    total = todays_idx * n_langs
+    if offset >= total:
+        return "Not found", 404
+
     word_pages = []
-    for day_offset in range(0, 91):  # Include today
+    remaining = min(SITEMAP_MAX_URLS, total - offset)
+    idx = offset
+    while remaining > 0:
+        # Convert flat index to (day_idx, lang) — newest days first
+        day_offset = idx // n_langs
+        lang_idx = idx % n_langs
         d_idx = todays_idx - day_offset
         if d_idx < 1:
             break
         d_date = idx_to_date(d_idx).strftime("%Y-%m-%d")
-        for lang in language_codes:
-            word_pages.append({"lang": lang, "day_idx": d_idx, "date": d_date})
+        # Priority: recent words get higher priority (1.0 for today, 0.3 for oldest)
+        age_ratio = day_offset / max(todays_idx, 1)
+        priority = round(max(0.3, 1.0 - age_ratio * 0.7), 1)
+        word_pages.append(
+            {
+                "lang": sorted_langs[lang_idx],
+                "day_idx": d_idx,
+                "date": d_date,
+                "priority": priority,
+            }
+        )
+        idx += 1
+        remaining -= 1
 
     response = make_response(
         render_template(
-            "sitemap.xml",
-            languages=languages,
-            base_url="https://wordle.global",
+            "sitemap_words.xml",
+            base_url=SITEMAP_BASE_URL,
             word_pages=word_pages,
         )
     )
