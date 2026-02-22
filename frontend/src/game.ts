@@ -743,7 +743,7 @@ export const createGameApp = () => {
                 }, 400);
 
                 this.loadDefinition();
-                this.submitWordStats(false, 0);
+                this.submitWordStats(false, this.active_row);
 
                 this.saveResult(false);
                 this.stats = this.calculateStats(this.config?.language_code);
