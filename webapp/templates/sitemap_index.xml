@@ -4,9 +4,9 @@
     <loc>{{ base_url }}/sitemap-main.xml</loc>
     <lastmod>{{ lastmod }}</lastmod>
   </sitemap>
-  {% for i in range(1, n_word_sitemaps + 1) %}
+  {% for lang in languages %}
   <sitemap>
-    <loc>{{ base_url }}/sitemap-words-{{ i }}.xml</loc>
+    <loc>{{ base_url }}/sitemap-words-{{ lang }}.xml</loc>
     <lastmod>{{ lastmod }}</lastmod>
   </sitemap>
   {% endfor %}
