@@ -10,91 +10,48 @@ beforeEach(() => {
 });
 
 describe('fetchDefinition', () => {
-    it('returns English Wiktionary definition for English words', async () => {
+    it('fetches definition from backend API', async () => {
         mockFetch.mockResolvedValueOnce({
             ok: true,
             json: () =>
                 Promise.resolve({
-                    en: [
-                        {
-                            partOfSpeech: 'Noun',
-                            definitions: [{ definition: 'A large container.' }],
-                        },
-                    ],
+                    definition: 'A large bird.',
+                    part_of_speech: 'Noun',
+                    source: 'english',
+                    url: 'https://en.wiktionary.org/wiki/crane',
                 }),
         });
 
         const result = await fetchDefinition('crane', 'en');
         expect(result.source).toBe('english');
-        expect(result.definition).toBe('A large container.');
+        expect(result.definition).toBe('A large bird.');
         expect(result.partOfSpeech).toBe('Noun');
         expect(result.word).toBe('crane');
-        expect(result.url).toContain('en.wiktionary.org');
+
+        // Should call our backend API
+        const url = mockFetch.mock.calls[0]?.[0] as string;
+        expect(url).toBe('/en/api/definition/crane');
     });
 
-    it('tries native Wiktionary first for non-English languages', async () => {
-        // First call: native Wiktionary succeeds
+    it('returns native source when backend provides it', async () => {
         mockFetch.mockResolvedValueOnce({
             ok: true,
             json: () =>
                 Promise.resolve({
-                    query: {
-                        pages: {
-                            '123': {
-                                extract: 'Ein großer Vogel.',
-                            },
-                        },
-                    },
+                    definition: 'Ein großer Vogel.',
+                    source: 'native',
+                    url: 'https://de.wiktionary.org/wiki/Kran',
                 }),
         });
 
         const result = await fetchDefinition('krane', 'de');
         expect(result.source).toBe('native');
         expect(result.definition).toBe('Ein großer Vogel.');
-        expect(result.url).toContain('de.wiktionary.org');
-        // Should only have called native, not English
         expect(mockFetch).toHaveBeenCalledTimes(1);
     });
 
-    it('falls back to English Wiktionary when native fails', async () => {
-        // Native Wiktionary returns no page
-        mockFetch.mockResolvedValueOnce({
-            ok: true,
-            json: () =>
-                Promise.resolve({
-                    query: {
-                        pages: {
-                            '-1': { missing: '' },
-                        },
-                    },
-                }),
-        });
-
-        // English Wiktionary succeeds
-        mockFetch.mockResolvedValueOnce({
-            ok: true,
-            json: () =>
-                Promise.resolve({
-                    de: [
-                        {
-                            partOfSpeech: 'Noun',
-                            definitions: [{ definition: 'A crane.' }],
-                        },
-                    ],
-                }),
-        });
-
-        const result = await fetchDefinition('krane', 'de');
-        expect(result.source).toBe('english');
-        expect(result.definition).toBe('A crane.');
-        expect(mockFetch).toHaveBeenCalledTimes(2);
-    });
-
-    it('returns link fallback when both sources fail', async () => {
-        // Native fails
-        mockFetch.mockResolvedValueOnce({ ok: false });
-        // English fails
-        mockFetch.mockResolvedValueOnce({ ok: false });
+    it('returns link fallback when API returns 404', async () => {
+        mockFetch.mockResolvedValueOnce({ ok: false, status: 404 });
 
         const result = await fetchDefinition('xyz', 'de');
         expect(result.source).toBe('link');
@@ -104,54 +61,41 @@ describe('fetchDefinition', () => {
 
     it('handles network errors gracefully', async () => {
         mockFetch.mockRejectedValueOnce(new Error('Network error'));
-        mockFetch.mockRejectedValueOnce(new Error('Network error'));
 
         const result = await fetchDefinition('test', 'de');
         expect(result.source).toBe('link');
     });
 
-    it('maps Norwegian Bokmål to Norwegian Wiktionary', async () => {
+    it('calls correct API URL for different languages', async () => {
         mockFetch.mockResolvedValueOnce({
             ok: true,
             json: () =>
                 Promise.resolve({
-                    query: {
-                        pages: {
-                            '456': {
-                                extract: 'En fugl.',
-                            },
-                        },
-                    },
+                    definition: 'En fugl.',
+                    source: 'native',
+                    url: 'https://no.wiktionary.org/wiki/fugle',
                 }),
         });
 
-        const result = await fetchDefinition('fugle', 'nb');
-        expect(result.source).toBe('native');
-        // Should use 'no' wiktionary, not 'nb'
+        await fetchDefinition('fugle', 'nb');
         const url = mockFetch.mock.calls[0]?.[0] as string;
-        expect(url).toContain('no.wiktionary.org');
+        // Frontend calls our API with the original lang code — backend handles mapping
+        expect(url).toBe('/nb/api/definition/fugle');
     });
 
-    it('strips HTML from English Wiktionary definitions', async () => {
+    it('maps part_of_speech from backend response', async () => {
         mockFetch.mockResolvedValueOnce({
             ok: true,
             json: () =>
                 Promise.resolve({
-                    en: [
-                        {
-                            partOfSpeech: 'Noun',
-                            definitions: [
-                                {
-                                    definition:
-                                        'A <a href="/wiki/large">large</a> <b>container</b>.',
-                                },
-                            ],
-                        },
-                    ],
+                    definition: 'To operate a crane.',
+                    part_of_speech: 'Verb',
+                    source: 'english',
+                    url: 'https://en.wiktionary.org/wiki/crane',
                 }),
         });
 
         const result = await fetchDefinition('crane', 'en');
-        expect(result.definition).toBe('A large container.');
+        expect(result.partOfSpeech).toBe('Verb');
     });
 });
