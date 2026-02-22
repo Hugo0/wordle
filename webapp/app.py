@@ -98,6 +98,15 @@ def inject_vite_assets():
     return {"vite_assets": get_vite_assets()}
 
 
+@app.context_processor
+def inject_hreflang():
+    """Make hreflang data available in all templates for international SEO."""
+    return {
+        "hreflang_langs": sorted(language_codes),
+        "hreflang_url_pattern": "https://wordle.global/{lang}",
+    }
+
+
 ###############################################################################
 # DATA
 ###############################################################################
@@ -1132,6 +1141,18 @@ def before_request():
         url = request.url.replace("http://", "https://", 1)
         code = 301
         return redirect(url, code=code)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return (
+        render_template(
+            "404.html",
+            languages=languages,
+            language_codes=language_codes,
+        ),
+        404,
+    )
 
 
 @app.route("/")

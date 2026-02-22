@@ -7,7 +7,7 @@
     {% include 'partials/_base_head.html' %}
 
     {# Page-specific SEO meta tags #}
-    {% set title = "Wordle " ~ language.config.name_native ~ "/" ~ language.config.name %}
+    {% set title = "Play Wordle in " ~ language.config.name ~ " — Free Daily Word Game (" ~ language.config.name_native ~ ")" %}
     {% set description = language.config.meta.description %}
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
@@ -24,6 +24,7 @@
     <meta property="twitter:description" content="{{ description }}">
 
     <link rel="canonical" href="https://wordle.global/{{ language.config.language_code }}">
+    {% include 'partials/_hreflang.html' %}
 
     <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
