@@ -1,13 +1,25 @@
 {
     "language_code": "es",
     "name": "Spanish",
+    "timezone_offset": 1,
     "name_native": "Español",
     "diacritic_map": {
-        "a": ["á"],
-        "e": ["é"],
-        "i": ["í"],
-        "o": ["ó"],
-        "u": ["ú", "ü"]
+        "a": [
+            "á"
+        ],
+        "e": [
+            "é"
+        ],
+        "i": [
+            "í"
+        ],
+        "o": [
+            "ó"
+        ],
+        "u": [
+            "ú",
+            "ü"
+        ]
     },
     "meta": {
         "locale": "es",

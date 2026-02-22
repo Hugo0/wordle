@@ -1,13 +1,25 @@
 {
     "language_code": "it",
     "name": "Italian",
+    "timezone_offset": 1,
     "name_native": "Italiano",
     "diacritic_map": {
-        "a": ["à"],
-        "e": ["è", "é"],
-        "i": ["ì"],
-        "o": ["ò"],
-        "u": ["ù"]
+        "a": [
+            "à"
+        ],
+        "e": [
+            "è",
+            "é"
+        ],
+        "i": [
+            "ì"
+        ],
+        "o": [
+            "ò"
+        ],
+        "u": [
+            "ù"
+        ]
     },
     "meta": {
         "locale": "it",

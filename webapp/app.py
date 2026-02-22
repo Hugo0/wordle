@@ -799,15 +799,43 @@ def _parse_wikt_definition(extract):
     in_definition_section = False
 
     # == headers that mark definition sections (e.g. "==== Noun ====")
+    # Covers: English, French, Spanish, Portuguese, Italian, German, Swedish,
+    # Danish, Dutch, Finnish, Estonian, Lithuanian, Hungarian, Breton, Occitan,
+    # Azerbaijani/Turkish, Armenian, Kurdish, Vietnamese
     defn_headers = re.compile(
         r"^={2,4}\s*("
+        # English
         r"Noun|Verb|Adjective|Adverb|Pronoun|Preposition|Conjunction|Interjection|"
-        r"Nom commun|Verbe|Adjectif|Adverbe|"
+        # French
+        r"Nom commun|Verbe|Adjectif|Adverbe|Forme de verbe|"
+        # Spanish
         r"Sustantivo\b|Verbo|Adjetivo|Adverbio|"
-        r"Substantivo|Sostantivo|"
-        r"Substantiv\b|Adjektiv|"
-        r"Bijvoeglijk naamwoord|Zelfstandig naamwoord|Werkwoord"
-        r")",
+        # Portuguese / Italian
+        r"Substantivo|Sostantivo|Aggettivo|"
+        # German / Swedish / Danish / Norwegian
+        r"Substantiv\w*\b|Adjektiv\w*\b|"
+        # Finnish
+        r"Substantiivi|Adjektiivi|Verbi|Adverbi|Pronomini|"
+        # Estonian
+        r"Nimisõna|Tegusõna|Omadussõna|"
+        # Lithuanian
+        r"Daiktavardis|Veiksmažodis|Būdvardis|"
+        # Hungarian
+        r"Főnév|Ige|Melléknév|"
+        # Breton
+        r"Anv-kadarn|"
+        # Occitan
+        r"Vèrb|"
+        # Azerbaijani / Turkish
+        r"İsim|Ad\b|"
+        # Armenian
+        r"Գոյական|Բայ|Ածական|"
+        # Kurdish (Sorani)
+        r"Rengdêr|Navdêr|"
+        # Vietnamese
+        r"Danh từ|Động từ|Tính từ|"
+        # Dutch
+        r"Bijvoeglijk naamwoord|Zelfstandig naamwoord|Werkwoord" r")",
         re.IGNORECASE,
     )
 
@@ -900,6 +928,10 @@ def _parse_wikt_definition(extract):
 
         # Skip headword lines like "crane (plural cranes)" or "grind (third-person..."
         if re.match(r"^\w+\s*\((plural|third-person|present|past|pl\.)\b", line, re.IGNORECASE):
+            continue
+
+        # Skip Finnish-style headword lines: "sekka  (9-A)" or "koira  (10)"
+        if re.match(r"^\w+\s+\(\d+", line):
             continue
 
         # German [1] definitions: "[1] Ort oder Gebäude..."
@@ -1009,7 +1041,13 @@ def fetch_definition_cached(word, lang_code):
                         for defn in entry.get("definitions", []):
                             raw_def = defn.get("definition", "")
                             clean_def = _strip_html(raw_def)
-                            if clean_def:
+                            # Skip useless "form of" / "synonym of" definitions
+                            if clean_def and not re.match(
+                                r"^(synonym|plural|feminine|masculine|diminutive|augmentative|"
+                                r"alternative|archaic|obsolete|dated|rare)\s+(form\s+)?of\s+",
+                                clean_def,
+                                re.IGNORECASE,
+                            ):
                                 result = {
                                     "definition": clean_def[:300],
                                     "part_of_speech": entry.get("partOfSpeech"),
@@ -1525,7 +1563,8 @@ def word_image(lang_code, word):
 
     # Verify word is/was a daily word (prevents generating images for arbitrary words)
     # Accept ?day_idx= param for historical words, otherwise check today
-    todays_idx = get_todays_idx()
+    tz_offset = language_configs[lang_code].get("timezone_offset", 0)
+    todays_idx = get_todays_idx(tz_offset)
     day_idx = request.args.get("day_idx", type=int)
     if day_idx is not None:
         if day_idx < 1 or day_idx > todays_idx:
@@ -1589,14 +1628,16 @@ def word_page(lang_code, day_idx):
     if lang_code not in language_codes:
         abort(404)
 
+    config = language_configs[lang_code]
+    tz_offset = config.get("timezone_offset", 0)
+
     # Allow today's word (game reveals it after completion) and past words
-    todays_idx = get_todays_idx()
+    todays_idx = get_todays_idx(tz_offset)
     if day_idx > todays_idx or day_idx < 1:
         abort(404)
 
     word = get_word_for_day(lang_code, day_idx)
     word_date = idx_to_date(day_idx)
-    config = language_configs[lang_code]
     lang_name = config.get("name", lang_code)
     lang_name_native = config.get("name_native", lang_name)
 
@@ -1653,8 +1694,9 @@ def submit_word_stats(lang_code):
         if not isinstance(day_idx, int) or not isinstance(won, bool):
             return "", 400
 
-        # Only accept stats for today's word
-        todays_idx = get_todays_idx()
+        # Only accept stats for today's word (respect language timezone)
+        tz_offset = language_configs[lang_code].get("timezone_offset", 0)
+        todays_idx = get_todays_idx(tz_offset)
         if day_idx != todays_idx:
             return "", 403
 
