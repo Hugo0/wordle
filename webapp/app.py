@@ -1381,14 +1381,22 @@ def word_page(lang_code, day_idx):
     lang_name = config.get("name", lang_code)
     lang_name_native = config.get("name_native", lang_name)
 
-    # Fetch definition (cached)
-    definition = fetch_definition_cached(word, lang_code)
+    # Read cached definition if available (fast disk read, no HTTP)
+    definition = None
+    cache_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r") as f:
+                loaded = json.load(f)
+                definition = loaded if loaded else None
+        except Exception:
+            pass
 
     # Map language code to Wiktionary subdomain
     wikt_lang_map = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
     wikt_lang = wikt_lang_map.get(lang_code, lang_code)
 
-    # Load stats if available
+    # Load stats if available (fast — just a local file read)
     word_stats = _load_word_stats(lang_code, day_idx)
 
     return render_template(

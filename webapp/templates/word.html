@@ -9,7 +9,11 @@
     {% set title = "Wordle " ~ lang_name_native ~ " #" ~ day_idx ~ " — " ~ word.upper() %}
     {% set def_text = definition.definition if definition and definition.definition else "" %}
     {% set pos_text = definition.part_of_speech ~ ": " if definition and definition.part_of_speech else "" %}
+    {% if def_text %}
     {% set description = "The Wordle word for " ~ lang_name ~ " #" ~ day_idx ~ " (" ~ word_date.strftime('%B %d, %Y') ~ ") was " ~ word.upper() ~ ". " ~ pos_text ~ def_text %}
+    {% else %}
+    {% set description = "The Wordle word for " ~ lang_name ~ " #" ~ day_idx ~ " (" ~ word_date.strftime('%B %d, %Y') ~ ") was " ~ word.upper() ~ ". Can you guess it in 6 tries?" %}
+    {% endif %}
     <title>{{ title }}</title>
     <meta name="description" content="{{ description[:200] }}">
     <meta property="og:title" content="{{ title }}">
@@ -41,7 +45,7 @@
             <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ word_date.strftime('%B %d, %Y') }}</p>
         </header>
 
-        {# AI Word Art Image — loads on-demand via endpoint, hides on error #}
+        {# AI Word Art Image — loads async, hides on error #}
         <div id="word-art" class="mb-4" style="display: none;">
             <img src="/{{ lang_code }}/api/word-image/{{ word }}?day_idx={{ day_idx }}" alt="{{ word }}"
                 class="w-full max-h-64 object-contain rounded-xl shadow-md mx-auto"
@@ -58,31 +62,9 @@
             {% endfor %}
         </div>
 
-        {# Definition #}
-        {% if definition and definition.definition %}
-        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-            <div class="flex items-center gap-2 mb-1">
-                <span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-                    {{ config.ui.definition or "Definition" if config and config.ui else "Definition" }}
-                </span>
-                {% if definition.part_of_speech %}
-                <span class="text-xs text-neutral-400 dark:text-neutral-500 italic">{{ definition.part_of_speech }}</span>
-                {% endif %}
-            </div>
-            <p class="text-sm text-neutral-800 dark:text-neutral-200">
-                <strong class="uppercase">{{ word }}</strong> &mdash; {{ definition.definition }}
-            </p>
-            <a href="https://{{ wikt_lang }}.wiktionary.org/wiki/{{ word }}" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1 mt-2 text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
-                Wiktionary
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                </svg>
-            </a>
-        </div>
-        {% else %}
-        <div class="text-center mb-4">
+        {# Definition — loaded async from API #}
+        <div id="definition-card" class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4" style="display: none;"></div>
+        <div id="definition-fallback" class="text-center mb-4">
             <a href="https://{{ wikt_lang }}.wiktionary.org/wiki/{{ word }}" target="_blank" rel="noopener noreferrer"
                 class="inline-flex items-center gap-1 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
                 Look up on Wiktionary
@@ -92,7 +74,6 @@
                 </svg>
             </a>
         </div>
-        {% endif %}
 
         {# Word Stats (if available) #}
         {% if word_stats and word_stats.total > 0 %}
@@ -190,6 +171,32 @@
                 });
             }
         }
+
+        // Fetch definition async — doesn't block page render
+        fetch('/{{ lang_code }}/api/definition/{{ word }}')
+            .then(r => r.ok ? r.json() : null)
+            .then(data => {
+                if (!data || !data.definition) return;
+                const card = document.getElementById('definition-card');
+                const fallback = document.getElementById('definition-fallback');
+                const pos = data.part_of_speech
+                    ? '<span class="text-xs text-neutral-400 dark:text-neutral-500 italic">' + data.part_of_speech + '</span>'
+                    : '';
+                card.innerHTML =
+                    '<div class="flex items-center gap-2 mb-1">' +
+                        '<span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">Definition</span>' +
+                        pos +
+                    '</div>' +
+                    '<p class="text-sm text-neutral-800 dark:text-neutral-200">' +
+                        '<strong class="uppercase">{{ word }}</strong> &mdash; ' + data.definition +
+                    '</p>' +
+                    '<a href="https://{{ wikt_lang }}.wiktionary.org/wiki/{{ word }}" target="_blank" rel="noopener noreferrer"' +
+                        ' class="inline-flex items-center gap-1 mt-2 text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">' +
+                        'Wiktionary ↗</a>';
+                card.style.display = 'block';
+                fallback.style.display = 'none';
+            })
+            .catch(() => {});
     </script>
 </body>
 </html>
