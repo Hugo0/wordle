@@ -885,7 +885,7 @@ def site_map():
     # Generate word page entries for the last 90 days across all languages
     todays_idx = get_todays_idx()
     word_pages = []
-    for day_offset in range(90):
+    for day_offset in range(1, 91):  # Start at 1 to exclude today
         d_idx = todays_idx - day_offset
         if d_idx < 1:
             break
@@ -1045,9 +1045,9 @@ def word_page(lang_code, day_idx):
     if lang_code not in language_codes:
         return "Language not found", 404
 
-    # Don't reveal future words
+    # Only reveal past words — today's word is still in play
     todays_idx = get_todays_idx()
-    if day_idx > todays_idx or day_idx < 1:
+    if day_idx >= todays_idx or day_idx < 1:
         return "Word not available yet", 404
 
     word = get_word_for_day(lang_code, day_idx)

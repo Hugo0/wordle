@@ -24,8 +24,11 @@ import urllib.parse
 import urllib.request
 
 # Add project root to path so we can import from webapp
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-os.chdir(os.path.join(os.path.dirname(__file__), ".."))
+# The app uses relative paths from webapp/, so chdir there
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+_project_root = os.path.join(_script_dir, "..")
+sys.path.insert(0, _project_root)
+os.chdir(os.path.join(_project_root, "webapp"))
 
 from webapp.app import (
     get_todays_idx,
@@ -38,8 +41,8 @@ from webapp.app import (
 # Top languages by traffic (pre-generate these by default)
 TOP_LANGUAGES = language_popularity[:20]
 
-CACHE_DIR = os.path.join("webapp", "static", "word-images")
-DEFS_CACHE_DIR = os.path.join("webapp", "static", "word-defs")
+CACHE_DIR = os.path.join(_project_root, "webapp", "static", "word-images")
+DEFS_CACHE_DIR = os.path.join(_project_root, "webapp", "static", "word-defs")
 
 
 def fetch_definition(word, lang_code):
