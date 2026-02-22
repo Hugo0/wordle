@@ -270,16 +270,13 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Haptic feedback toggle -->
+                            <!-- Feedback: Haptics & Sound -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
                                     <p>{{ language.config.ui.haptic_feedback or "Haptic Feedback" }}</p>
                                 </div>
                                 {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', language.config.ui.haptic_feedback or 'Haptic Feedback') }}
                             </div>
-
-                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Sound toggle -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
                                     <p>{{ language.config.ui.sound_effects or "Sound Effects" }}</p>
@@ -288,7 +285,7 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Show Definitions toggle -->
+                            <!-- Word Info: Definitions & Word Art -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
                                     <p>{{ language.config.ui.show_definitions or "Show Definitions" }}</p>
@@ -296,9 +293,6 @@
                                 </div>
                                 {{ toggle_switch('definitionsEnabled', 'toggleDefinitions()', language.config.ui.show_definitions or 'Show Definitions') }}
                             </div>
-
-                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Word Art toggle -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
                                     <p>{{ language.config.ui.word_art or "Word Art" }}</p>
