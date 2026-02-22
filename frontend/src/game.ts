@@ -1244,7 +1244,7 @@ export const createGameApp = () => {
                         setting: 'word_info',
                         value: this.wordInfoEnabled,
                     });
-                    if (this.wordInfoEnabled && (this.gameWon || this.gameLost)) {
+                    if (this.wordInfoEnabled && this.game_over) {
                         this.loadDefinition();
                     }
                 });

@@ -976,7 +976,8 @@ def fetch_definition_cached(word, lang_code):
     if os.path.exists(cache_path):
         try:
             with open(cache_path, "r") as f:
-                return json.load(f)
+                loaded = json.load(f)
+                return loaded if loaded else None
         except Exception:
             pass
 
@@ -1227,7 +1228,7 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
         )
 
         image_url = response.data[0].url
-        if not image_url:
+        if not image_url or not image_url.startswith("https://"):
             return "no_url"
 
         os.makedirs(cache_dir, exist_ok=True)
@@ -1238,18 +1239,13 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
             with urlreq.urlopen(req, timeout=30) as resp:
                 tmp.write(resp.read())
 
-        try:
-            from PIL import Image
+        from PIL import Image
 
+        try:
             with Image.open(tmp_path) as img:
                 img.save(cache_path, "WebP", quality=80)
-        except ImportError:
-            import shutil as _shutil
-
-            _shutil.move(tmp_path, cache_path)
-            tmp_path = None
         finally:
-            if tmp_path and os.path.exists(tmp_path):
+            if os.path.exists(tmp_path):
                 os.unlink(tmp_path)
 
         return "ok"
