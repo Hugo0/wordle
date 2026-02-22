@@ -940,11 +940,18 @@ def word_image(lang_code, word):
     if lang_code not in language_codes:
         return "Language not found", 404
 
-    # Only allow image generation for today's word
-    word_list = language_codes_5words[lang_code]
-    lang = Language(lang_code, word_list)
-    if word.lower() != lang.daily_word.lower():
-        return "Not today's word", 403
+    # Verify word is/was a daily word (prevents generating images for arbitrary words)
+    # Accept ?day_idx= param for historical words, otherwise check today
+    todays_idx = get_todays_idx()
+    day_idx = request.args.get("day_idx", type=int)
+    if day_idx is not None:
+        if day_idx < 1 or day_idx > todays_idx:
+            return "Invalid day index", 403
+        expected_word = get_word_for_day(lang_code, day_idx)
+    else:
+        expected_word = get_word_for_day(lang_code, todays_idx)
+    if word.lower() != expected_word.lower():
+        return "Not a valid daily word", 403
 
     # Check cache first
     cache_dir = os.path.join(app.static_folder, "word-images", lang_code)
@@ -1052,11 +1059,6 @@ def word_page(lang_code, day_idx):
     # Fetch definition (cached)
     definition = fetch_definition_cached(word, lang_code)
 
-    # Check if AI image exists
-    image_path = os.path.join(app.static_folder, "word-images", lang_code, f"{word.lower()}.webp")
-    has_image = os.path.exists(image_path)
-    image_url = f"/static/word-images/{lang_code}/{word.lower()}.webp" if has_image else None
-
     # Load stats if available
     word_stats = _load_word_stats(lang_code, day_idx)
 
@@ -1069,7 +1071,6 @@ def word_page(lang_code, day_idx):
         word=word,
         word_date=word_date,
         definition=definition,
-        image_url=image_url,
         word_stats=word_stats,
         todays_idx=todays_idx,
         config=config,
