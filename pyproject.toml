@@ -8,7 +8,6 @@ dependencies = [
     "flask-cors>=6.0.0",
     "gunicorn>=24.0.0",
     "Flask-FlatPages>=0.9.0",
-    "nltk>=3.9.0",
     "openai>=2.21.0",
     "pillow>=12.1.1",
 ]

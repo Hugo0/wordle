@@ -3,8 +3,8 @@ from flask import (
     render_template,
     make_response,
     redirect,
-    url_for,
     request,
+    send_from_directory,
 )
 import json
 import os
@@ -26,6 +26,12 @@ if _env_path.exists():
             if _line and not _line.startswith("#") and "=" in _line:
                 _key, _, _val = _line.partition("=")
                 os.environ.setdefault(_key.strip(), _val.strip())
+
+# Persistent data directory — /data in production (Render disk), local fallback for dev
+DATA_DIR = os.environ.get("DATA_DIR", os.path.join(os.path.dirname(__file__), "static"))
+WORD_IMAGES_DIR = os.path.join(DATA_DIR, "word-images")
+WORD_DEFS_DIR = os.path.join(DATA_DIR, "word-defs")
+WORD_STATS_DIR = os.path.join(DATA_DIR, "word-stats")
 
 # set random seed 42 for reproducibility (important to maintain stable word lists)
 # NOTE: This is only used for the LEGACY algorithm (days before MIGRATION_DAY_IDX)
@@ -538,6 +544,10 @@ language_popularity = [
     "rw",  # Kinyarwanda - 5 sessions
 ]
 
+# Languages that get AI-generated word art images (top 10 by traffic)
+# Generating images costs ~$0.04/image via DALL-E 3, so we limit to popular languages
+IMAGE_LANGUAGES = language_popularity[:10]
+
 # status
 with open("../scripts/out/status_list.txt", "r") as f:
     status_list = [line.strip() for line in f]
@@ -765,7 +775,7 @@ def fetch_definition_cached(word, lang_code):
     Returns dict with keys: definition, part_of_speech, source, url.
     Returns None if no definition found.
     """
-    cache_dir = os.path.join(app.static_folder, "word-defs", lang_code)
+    cache_dir = os.path.join(WORD_DEFS_DIR, lang_code)
     cache_path = os.path.join(cache_dir, f"{word.lower()}.json")
 
     # Check cache first
@@ -821,7 +831,7 @@ _stats_seen_ips = {}
 
 def _load_word_stats(lang_code, day_idx):
     """Load stats for a specific word/day."""
-    stats_path = os.path.join(app.static_folder, "word-stats", lang_code, f"{day_idx}.json")
+    stats_path = os.path.join(WORD_STATS_DIR, lang_code, f"{day_idx}.json")
     if os.path.exists(stats_path):
         try:
             with open(stats_path, "r") as f:
@@ -833,7 +843,7 @@ def _load_word_stats(lang_code, day_idx):
 
 def _save_word_stats(lang_code, day_idx, stats):
     """Save stats for a specific word/day."""
-    stats_dir = os.path.join(app.static_folder, "word-stats", lang_code)
+    stats_dir = os.path.join(WORD_STATS_DIR, lang_code)
     stats_path = os.path.join(stats_dir, f"{day_idx}.json")
     try:
         os.makedirs(stats_dir, exist_ok=True)
@@ -885,7 +895,7 @@ def site_map():
     # Generate word page entries for the last 90 days across all languages
     todays_idx = get_todays_idx()
     word_pages = []
-    for day_offset in range(1, 91):  # Start at 1 to exclude today
+    for day_offset in range(0, 91):  # Include today
         d_idx = todays_idx - day_offset
         if d_idx < 1:
             break
@@ -926,6 +936,69 @@ def language(lang_code):
     return response
 
 
+###############################################################################
+# AI WORD ART IMAGE GENERATION
+###############################################################################
+
+
+def build_image_prompt(word, definition_hint=""):
+    """Build the DALL-E prompt for a word image."""
+    return (
+        f"A stylized 3D render of a single object that represents "
+        f"{word}{definition_hint}. "
+        f"Smooth rounded shapes, cheerful pastel colors, "
+        f"clean white background, centered composition. "
+        f"No text, no letters, no UI elements."
+    )
+
+
+def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
+    """Generate a word art image via DALL-E and save as WebP. Returns 'ok' or error string."""
+    import tempfile
+
+    import openai
+
+    try:
+        client = openai.OpenAI(api_key=api_key)
+        prompt = build_image_prompt(word, definition_hint)
+
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=prompt,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+
+        image_url = response.data[0].url
+        if not image_url:
+            return "no_url"
+
+        os.makedirs(cache_dir, exist_ok=True)
+
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+            tmp_path = tmp.name
+            urlreq.urlretrieve(image_url, tmp_path)
+
+        try:
+            from PIL import Image
+
+            with Image.open(tmp_path) as img:
+                img.save(cache_path, "WebP", quality=80)
+        except ImportError:
+            import shutil as _shutil
+
+            _shutil.move(tmp_path, cache_path)
+            tmp_path = None
+        finally:
+            if tmp_path and os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+
+        return "ok"
+    except Exception as e:
+        return f"error: {e}"
+
+
 @app.route("/<lang_code>/api/word-image/<word>")
 def word_image(lang_code, word):
     """Serve an AI-generated illustration for the daily word.
@@ -939,6 +1012,15 @@ def word_image(lang_code, word):
 
     if lang_code not in language_codes:
         return "Language not found", 404
+
+    # Only generate images for top languages (cost control)
+    if lang_code not in IMAGE_LANGUAGES:
+        # Still serve cached images if they exist
+        cache_dir = os.path.join(WORD_IMAGES_DIR, lang_code)
+        cache_path = os.path.join(cache_dir, f"{word.lower()}.webp")
+        if os.path.exists(cache_path):
+            return send_from_directory(cache_dir, f"{word.lower()}.webp")
+        return "Image not available for this language", 404
 
     # Verify word is/was a daily word (prevents generating images for arbitrary words)
     # Accept ?day_idx= param for historical words, otherwise check today
@@ -954,89 +1036,43 @@ def word_image(lang_code, word):
         return "Not a valid daily word", 403
 
     # Check cache first
-    cache_dir = os.path.join(app.static_folder, "word-images", lang_code)
+    cache_dir = os.path.join(WORD_IMAGES_DIR, lang_code)
     cache_path = os.path.join(cache_dir, f"{word.lower()}.webp")
 
     if os.path.exists(cache_path):
-        return app.send_static_file(f"word-images/{lang_code}/{word.lower()}.webp")
+        return send_from_directory(cache_dir, f"{word.lower()}.webp")
 
     # HEAD requests just check cache — don't trigger generation
     if request.method == "HEAD":
         return "", 404
 
-    # Fetch definition to include in prompt (best-effort)
-    definition_hint = ""
+    # Skip if another request is already generating this image
+    pending_path = cache_path + ".pending"
+    if os.path.exists(pending_path):
+        return "Image being generated", 202
+
+    # Mark as pending to prevent duplicate DALL-E calls
+    os.makedirs(cache_dir, exist_ok=True)
     try:
-        def_url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
-        req = urlreq.Request(def_url, headers={"User-Agent": "WordleGlobal/1.0"})
-        with urlreq.urlopen(req, timeout=5) as resp:
-            def_data = json.loads(resp.read())
-            for try_lang in [lang_code, "en"]:
-                entries = def_data.get(try_lang, [])
-                if entries and entries[0].get("definitions"):
-                    raw_def = entries[0]["definitions"][0].get("definition", "")
-                    clean_def = re.sub(r"<[^>]+>", "", raw_def)
-                    if clean_def:
-                        definition_hint = f' meaning "{clean_def}"'
-                        break
-    except Exception:
-        pass  # Definition is optional for image generation
+        open(pending_path, "x").close()
+    except FileExistsError:
+        return "Image being generated", 202
 
-    # Generate image via DALL-E
     try:
-        import openai
+        # Use cached definition for prompt context
+        definition_hint = ""
+        cached_def = fetch_definition_cached(word, lang_code)
+        if cached_def and cached_def.get("definition"):
+            definition_hint = f", which means {cached_def['definition']}"
 
-        client = openai.OpenAI(api_key=openai_key)
-        lang_name = language_configs[lang_code].get("name", lang_code)
-
-        prompt = (
-            f"A single centered watercolor illustration representing the concept "
-            f'"{word}"{definition_hint}. '
-            f"Soft pastel colors, gentle brush strokes, white background, "
-            f"no text, no letters, no words, no numbers. "
-            f"Simple and elegant, suitable as a small card illustration."
-        )
-
-        response = client.images.generate(
-            model="dall-e-3",
-            prompt=prompt,
-            size="1024x1024",
-            quality="standard",
-            n=1,
-        )
-
-        image_url = response.data[0].url
-        if not image_url:
-            return "Image generation failed", 500
-
-        # Download and convert to WebP
-        import tempfile
-
-        os.makedirs(cache_dir, exist_ok=True)
-
-        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
-            tmp_path = tmp.name
-            urlreq.urlretrieve(image_url, tmp_path)
-
-        try:
-            from PIL import Image
-
-            with Image.open(tmp_path) as img:
-                img.save(cache_path, "WebP", quality=80)
-        except ImportError:
-            # Pillow not installed — save raw PNG with .webp extension
-            import shutil as _shutil
-
-            _shutil.move(tmp_path, cache_path)
-            tmp_path = None
-        finally:
-            if tmp_path and os.path.exists(tmp_path):
-                os.unlink(tmp_path)
-
-        return app.send_static_file(f"word-images/{lang_code}/{word.lower()}.webp")
-    except Exception as e:
-        print(f"Image generation failed for {lang_code}/{word}: {e}")
+        # Generate image via DALL-E
+        result = generate_word_image(word, definition_hint, openai_key, cache_dir, cache_path)
+        if result == "ok":
+            return send_from_directory(cache_dir, f"{word.lower()}.webp")
         return "Image generation failed", 500
+    finally:
+        if os.path.exists(pending_path):
+            os.unlink(pending_path)
 
 
 @app.route("/<lang_code>/word/<int:day_idx>")
@@ -1045,9 +1081,9 @@ def word_page(lang_code, day_idx):
     if lang_code not in language_codes:
         return "Language not found", 404
 
-    # Only reveal past words — today's word is still in play
+    # Allow today's word (game reveals it after completion) and past words
     todays_idx = get_todays_idx()
-    if day_idx >= todays_idx or day_idx < 1:
+    if day_idx > todays_idx or day_idx < 1:
         return "Word not available yet", 404
 
     word = get_word_for_day(lang_code, day_idx)
