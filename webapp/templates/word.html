@@ -175,7 +175,7 @@
 
     <script>
         function shareWord() {
-            const text = 'Wordle {{ lang_name_native }} #{{ day_idx }} — {{ word.upper() }}\nhttps://wordle.global/{{ lang_code }}/word/{{ day_idx }}';
+            const text = 'Wordle ' + {{ lang_name_native|tojson }} + ' #{{ day_idx }} — {{ word.upper() }}\nhttps://wordle.global/{{ lang_code }}/word/{{ day_idx }}';
             const btn = document.getElementById('share-btn');
             if (navigator.share) {
                 navigator.share({ text: text }).catch(() => {});

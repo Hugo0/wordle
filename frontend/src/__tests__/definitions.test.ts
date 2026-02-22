@@ -128,7 +128,7 @@ describe('fetchDefinition', () => {
         const result = await fetchDefinition('fugle', 'nb');
         expect(result.source).toBe('native');
         // Should use 'no' wiktionary, not 'nb'
-        const url = mockFetch.mock.calls[0][0] as string;
+        const url = mockFetch.mock.calls[0]?.[0] as string;
         expect(url).toContain('no.wiktionary.org');
     });
 

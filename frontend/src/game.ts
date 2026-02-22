@@ -1276,6 +1276,10 @@ export const createGameApp = () => {
                         setting: 'definitions',
                         value: this.definitionsEnabled,
                     });
+                    // Reload definition if re-enabled after game completion
+                    if (this.definitionsEnabled && (this.gameWon || this.gameLost)) {
+                        this.loadDefinition();
+                    }
                 });
             },
 
@@ -1315,12 +1319,16 @@ export const createGameApp = () => {
                     const container = document.getElementById('definition-card');
                     if (container) {
                         showDefinitionLoading(container);
-                        fetchDefinition(this.todays_word, langCode).then((def) => {
-                            renderDefinitionCard(def, container, {
-                                definition: this.config?.ui?.definition,
-                                look_up_on_wiktionary: this.config?.ui?.look_up_on_wiktionary,
+                        fetchDefinition(this.todays_word, langCode)
+                            .then((def) => {
+                                renderDefinitionCard(def, container, {
+                                    definition: this.config?.ui?.definition,
+                                    look_up_on_wiktionary: this.config?.ui?.look_up_on_wiktionary,
+                                });
+                            })
+                            .catch(() => {
+                                container.style.display = 'none';
                             });
-                        });
                     }
                 }
 
