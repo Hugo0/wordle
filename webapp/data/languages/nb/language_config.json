@@ -1,10 +1,18 @@
 {
     "language_code": "nb",
     "name": "Norwegian Bokmål",
+    "timezone_offset": 1,
     "name_native": "Norsk Bokmål",
     "diacritic_map": {
-        "e": ["é", "è"],
-        "o": ["ó", "ò", "ô"]
+        "e": [
+            "é",
+            "è"
+        ],
+        "o": [
+            "ó",
+            "ò",
+            "ô"
+        ]
     },
     "meta": {
         "locale": "nb",

@@ -1,10 +1,17 @@
 {
     "language_code": "ar",
     "name": "Arabic",
+    "timezone_offset": 3,
     "name_native": "العربية",
     "diacritic_map": {
-        "ا": ["أ", "إ", "آ"],
-        "ي": ["ى"]
+        "ا": [
+            "أ",
+            "إ",
+            "آ"
+        ],
+        "ي": [
+            "ى"
+        ]
     },
     "meta": {
         "locale": "ar",
