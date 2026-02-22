@@ -16,11 +16,9 @@
     <meta property="og:url" content="https://wordle.global/{{ lang_code }}/word/{{ day_idx }}">
     <meta property="og:type" content="article">
     <meta property="og:description" content="{{ description[:200] }}">
-    {% if image_url %}
-    {# Override default OG image with word-specific AI art #}
-    <meta property="og:image" content="https://wordle.global{{ image_url }}">
-    <meta property="twitter:image" content="https://wordle.global{{ image_url }}">
-    {% endif %}
+    {# Word-specific AI art as social preview (generates on first crawl if not cached) #}
+    <meta property="og:image" content="https://wordle.global/{{ lang_code }}/api/word-image/{{ word }}?day_idx={{ day_idx }}">
+    <meta property="twitter:image" content="https://wordle.global/{{ lang_code }}/api/word-image/{{ word }}?day_idx={{ day_idx }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="wordle.global">
     <meta property="twitter:url" content="https://wordle.global/{{ lang_code }}/word/{{ day_idx }}">
@@ -43,13 +41,13 @@
             <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ word_date.strftime('%B %d, %Y') }}</p>
         </header>
 
-        {# AI Word Art Image #}
-        {% if image_url %}
-        <div class="mb-4">
-            <img src="{{ image_url }}" alt="{{ word }}"
-                class="w-full max-h-64 object-contain rounded-xl shadow-md mx-auto" loading="lazy">
+        {# AI Word Art Image — loads on-demand via endpoint, hides on error #}
+        <div id="word-art" class="mb-4" style="display: none;">
+            <img src="/{{ lang_code }}/api/word-image/{{ word }}?day_idx={{ day_idx }}" alt="{{ word }}"
+                class="w-full max-h-64 object-contain rounded-xl shadow-md mx-auto"
+                onload="this.parentElement.style.display='block'"
+                onerror="this.parentElement.style.display='none'">
         </div>
-        {% endif %}
 
         {# Word Tiles #}
         <div class="flex justify-center gap-1.5 mb-4">
