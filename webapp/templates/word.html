@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}" class="min-h-full">
+{% include 'partials/_dark_mode_init.html' %}
+
+<head>
+    {% include 'partials/_base_head.html' %}
+
+    {# Page-specific SEO meta tags #}
+    {% set title = "Wordle " ~ lang_name_native ~ " #" ~ day_idx ~ " — " ~ word.upper() %}
+    {% set def_text = definition.definition if definition and definition.definition else "" %}
+    {% set pos_text = definition.part_of_speech ~ ": " if definition and definition.part_of_speech else "" %}
+    {% set description = "The Wordle word for " ~ lang_name ~ " #" ~ day_idx ~ " (" ~ word_date.strftime('%B %d, %Y') ~ ") was " ~ word.upper() ~ ". " ~ pos_text ~ def_text %}
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description[:200] }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:url" content="https://wordle.global/{{ lang_code }}/word/{{ day_idx }}">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="{{ description[:200] }}">
+    {% if image_url %}
+    {# Override default OG image with word-specific AI art #}
+    <meta property="og:image" content="https://wordle.global{{ image_url }}">
+    <meta property="twitter:image" content="https://wordle.global{{ image_url }}">
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="wordle.global">
+    <meta property="twitter:url" content="https://wordle.global/{{ lang_code }}/word/{{ day_idx }}">
+    <meta property="twitter:title" content="{{ title }}">
+    <meta property="twitter:description" content="{{ description[:200] }}">
+
+    <link rel="canonical" href="https://wordle.global/{{ lang_code }}/word/{{ day_idx }}">
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <div class="max-w-lg mx-auto px-4 py-6">
+
+        {# Header #}
+        <header class="text-center mb-6">
+            <a href="/{{ lang_code }}" class="text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
+                &larr; Play Wordle {{ lang_name_native }}
+            </a>
+            <h1 class="text-2xl font-bold mt-2">Wordle {{ lang_name_native }} #{{ day_idx }}</h1>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ word_date.strftime('%B %d, %Y') }}</p>
+        </header>
+
+        {# AI Word Art Image #}
+        {% if image_url %}
+        <div class="mb-4">
+            <img src="{{ image_url }}" alt="{{ word }}"
+                class="w-full max-h-64 object-contain rounded-xl shadow-md mx-auto" loading="lazy">
+        </div>
+        {% endif %}
+
+        {# Word Tiles #}
+        <div class="flex justify-center gap-1.5 mb-4">
+            {% for letter in word %}
+            <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center text-xl sm:text-2xl font-bold text-white bg-green-500 rounded-md shadow-sm uppercase">
+                {{ letter }}
+            </div>
+            {% endfor %}
+        </div>
+
+        {# Definition #}
+        {% if definition and definition.definition %}
+        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                    {{ config.ui.definition or "Definition" if config and config.ui else "Definition" }}
+                </span>
+                {% if definition.part_of_speech %}
+                <span class="text-xs text-neutral-400 dark:text-neutral-500 italic">{{ definition.part_of_speech }}</span>
+                {% endif %}
+            </div>
+            <p class="text-sm text-neutral-800 dark:text-neutral-200">
+                <strong class="uppercase">{{ word }}</strong> &mdash; {{ definition.definition }}
+            </p>
+            {% if definition.url %}
+            <a href="{{ definition.url }}" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 mt-2 text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
+                Wiktionary
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {# Word Stats (if available) #}
+        {% if word_stats and word_stats.total > 0 %}
+        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+            <h3 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center">
+                Community Stats
+            </h3>
+            <div class="grid grid-cols-3 gap-2 text-center mb-3">
+                <div>
+                    <p class="text-lg font-bold">{{ word_stats.total }}</p>
+                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Players</p>
+                </div>
+                <div>
+                    <p class="text-lg font-bold">{{ (word_stats.wins / word_stats.total * 100) | round(0) | int }}%</p>
+                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win Rate</p>
+                </div>
+                <div>
+                    {% set total_attempts = 0 %}
+                    {% set total_wins = 0 %}
+                    {% for k, v in word_stats.distribution.items() %}
+                        {% set total_attempts = total_attempts + (k|int * v) %}
+                        {% set total_wins = total_wins + v %}
+                    {% endfor %}
+                    <p class="text-lg font-bold">{{ (total_attempts / total_wins) | round(1) if total_wins > 0 else "—" }}</p>
+                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Avg Attempts</p>
+                </div>
+            </div>
+            {# Mini guess distribution #}
+            <div class="space-y-0.5">
+                {% set max_count = word_stats.distribution.values() | max %}
+                {% for n in range(1, 7) %}
+                <div class="flex items-center gap-1.5">
+                    <span class="w-3 text-xs font-medium text-neutral-500">{{ n }}</span>
+                    <div class="flex-1 h-3 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                        <div class="h-full bg-green-500 rounded-sm transition-all"
+                            style="width: {{ (word_stats.distribution.get(n|string, 0) / max_count * 100) if max_count > 0 else 0 }}%">
+                        </div>
+                    </div>
+                    <span class="w-5 text-[10px] text-neutral-400 text-right">{{ word_stats.distribution.get(n|string, 0) }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {# Share Button #}
+        <div class="mb-4">
+            <button id="share-btn" onclick="shareWord()"
+                class="w-full py-2.5 px-4 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 active:bg-green-700 transition-colors">
+                Share
+            </button>
+        </div>
+
+        {# Navigation #}
+        <nav class="flex justify-between items-center text-sm">
+            {% if day_idx > 1 %}
+            <a href="/{{ lang_code }}/word/{{ day_idx - 1 }}"
+                class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
+                &larr; #{{ day_idx - 1 }}
+            </a>
+            {% else %}
+            <span></span>
+            {% endif %}
+
+            <a href="/{{ lang_code }}"
+                class="py-1.5 px-4 text-sm font-medium text-green-600 dark:text-green-400 border border-green-500 rounded-lg hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors">
+                Play Today's Wordle
+            </a>
+
+            {% if day_idx < todays_idx %}
+            <a href="/{{ lang_code }}/word/{{ day_idx + 1 }}"
+                class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
+                #{{ day_idx + 1 }} &rarr;
+            </a>
+            {% else %}
+            <span class="text-xs text-neutral-400">Today</span>
+            {% endif %}
+        </nav>
+    </div>
+
+    <script>
+        function shareWord() {
+            const text = 'Wordle {{ lang_name_native }} #{{ day_idx }} — {{ word.upper() }}\nhttps://wordle.global/{{ lang_code }}/word/{{ day_idx }}';
+            const btn = document.getElementById('share-btn');
+            if (navigator.share) {
+                navigator.share({ text: text }).catch(() => {});
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    btn.textContent = 'Copied!';
+                    btn.classList.replace('bg-green-500', 'bg-emerald-600');
+                    setTimeout(() => {
+                        btn.textContent = 'Share';
+                        btn.classList.replace('bg-emerald-600', 'bg-green-500');
+                    }, 2000);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

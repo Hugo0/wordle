@@ -706,6 +706,7 @@ export const createGameApp = () => {
                 }, 400);
 
                 this.loadDefinition();
+                this.submitWordStats(true, this.active_row);
 
                 this.saveResult(true);
                 this.stats = this.calculateStats(this.config?.language_code);
@@ -749,6 +750,7 @@ export const createGameApp = () => {
                 }, 400);
 
                 this.loadDefinition();
+                this.submitWordStats(false, 0);
 
                 this.saveResult(false);
                 this.stats = this.calculateStats(this.config?.language_code);
@@ -1335,6 +1337,26 @@ export const createGameApp = () => {
                             }
                         });
                     }
+                }
+            },
+
+            submitWordStats(won: boolean, attempts: number | string): void {
+                const langCode = this.config?.language_code;
+                const dayIdx = parseInt(String(this.todays_idx), 10);
+                if (!langCode || isNaN(dayIdx)) return;
+
+                try {
+                    fetch(`/${langCode}/api/word-stats`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            day_idx: dayIdx,
+                            attempts: typeof attempts === 'number' ? attempts : 0,
+                            won,
+                        }),
+                    }).catch(() => {}); // Fire and forget
+                } catch {
+                    // Ignore errors
                 }
             },
 
