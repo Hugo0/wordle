@@ -206,28 +206,25 @@ export function renderDefinitionCard(
 }
 
 /**
- * Try to fetch the AI-generated word image.
- * Returns the image URL if available, null otherwise.
- */
-export async function fetchWordImage(word: string, lang: string): Promise<string | null> {
-    const url = `/${lang}/api/word-image/${encodeURIComponent(word)}`;
-    try {
-        const response = await fetch(url, { method: 'HEAD' });
-        if (response.ok) return url;
-        return null;
-    } catch {
-        return null;
-    }
-}
-
-/**
  * Render the word image into the image container.
+ * The image loads directly via GET — if it 404s or fails, the container is hidden.
+ * If the image isn't cached, the server generates it (may take 15-20s).
  */
-export function renderWordImage(imageUrl: string, word: string, container: HTMLElement): void {
-    container.innerHTML = `
-        <img src="${imageUrl}" alt="${word}"
-            class="w-full max-h-48 object-contain rounded-lg" loading="lazy">`;
-    container.style.display = 'block';
+export function renderWordImage(word: string, lang: string, container: HTMLElement): void {
+    const url = `/${lang}/api/word-image/${encodeURIComponent(word)}`;
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = word;
+    img.className = 'w-full max-h-48 object-contain rounded-lg';
+    img.loading = 'lazy';
+    img.onload = () => {
+        container.innerHTML = '';
+        container.appendChild(img);
+        container.style.display = 'block';
+    };
+    img.onerror = () => {
+        container.style.display = 'none';
+    };
 }
 
 /**

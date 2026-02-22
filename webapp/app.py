@@ -15,6 +15,17 @@ import hashlib
 import re
 import urllib.parse
 import urllib.request as urlreq
+from pathlib import Path
+
+# Load .env file if it exists (for local development)
+_env_path = Path(__file__).resolve().parent.parent / ".env"
+if _env_path.exists():
+    with open(_env_path) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith("#") and "=" in _line:
+                _key, _, _val = _line.partition("=")
+                os.environ.setdefault(_key.strip(), _val.strip())
 
 # set random seed 42 for reproducibility (important to maintain stable word lists)
 # NOTE: This is only used for the LEGACY algorithm (days before MIGRATION_DAY_IDX)
@@ -941,6 +952,10 @@ def word_image(lang_code, word):
 
     if os.path.exists(cache_path):
         return app.send_static_file(f"word-images/{lang_code}/{word.lower()}.webp")
+
+    # HEAD requests just check cache — don't trigger generation
+    if request.method == "HEAD":
+        return "", 404
 
     # Fetch definition to include in prompt (best-effort)
     definition_hint = ""
