@@ -7,6 +7,27 @@ import os
 import json
 from pathlib import Path
 
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--run-network",
+        action="store_true",
+        default=False,
+        help="run tests that make real HTTP requests (e.g., Wiktionary integration)",
+    )
+
+
+def pytest_configure(config):
+    config.addinivalue_line("markers", "network: tests that make real HTTP requests")
+
+
+def pytest_collection_modifyitems(config, items):
+    if not config.getoption("--run-network"):
+        skip_network = pytest.mark.skip(reason="needs --run-network option to run")
+        for item in items:
+            if "network" in item.keywords:
+                item.add_marker(skip_network)
+
 # Project paths
 PROJECT_ROOT = Path(__file__).parent.parent
 DATA_DIR = PROJECT_ROOT / "webapp" / "data"

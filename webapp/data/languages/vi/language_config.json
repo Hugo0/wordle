@@ -1,7 +1,7 @@
 {
     "language_code": "vi",
     "name": "Vietnamese",
-    "timezone_offset": 7,
+    "timezone": "Asia/Ho_Chi_Minh",
     "name_native": "Tiếng Việt",
     "diacritic_map": {
         "a": [
@@ -85,7 +85,8 @@
             "ý",
             "ỳ",
             "ỵ",
-            "ỷ"
+            "ỷ",
+            "ỹ"
         ]
     },
     "meta": {
