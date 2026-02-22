@@ -9,6 +9,7 @@ import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
 import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
 import analytics from './analytics';
+import { fetchDefinition, renderDefinitionCard, showDefinitionLoading } from './definitions';
 import type { PositionalConfig } from './positional';
 import type {
     LanguageConfig,
@@ -94,6 +95,7 @@ interface GameData {
     darkMode: boolean;
     hapticsEnabled: boolean;
     soundEnabled: boolean;
+    definitionsEnabled: boolean;
     notification: Notification;
     tiles: string[][];
     tile_classes: string[][];
@@ -140,6 +142,7 @@ export const createGameApp = () => {
                 darkMode: document.documentElement.classList.contains('dark'),
                 hapticsEnabled: true,
                 soundEnabled: true,
+                definitionsEnabled: true,
                 shareButtonState: 'idle' as const,
 
                 notification: {
@@ -315,6 +318,7 @@ export const createGameApp = () => {
             this.loadLanguages();
             this.loadHapticsPreference();
             this.loadSoundPreference();
+            this.loadDefinitionsPreference();
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -357,6 +361,7 @@ export const createGameApp = () => {
 
             if (this.game_over) {
                 this.show_stats_modal = true;
+                this.loadDefinition();
             }
         },
 
@@ -690,6 +695,8 @@ export const createGameApp = () => {
                     this.show_stats_modal = true;
                 }, 400);
 
+                this.loadDefinition();
+
                 this.saveResult(true);
                 this.stats = this.calculateStats(this.config?.language_code);
                 this.total_stats = this.calculateTotalStats();
@@ -730,6 +737,8 @@ export const createGameApp = () => {
                 setTimeout(() => {
                     this.show_stats_modal = true;
                 }, 400);
+
+                this.loadDefinition();
 
                 this.saveResult(false);
                 this.stats = this.calculateStats(this.config?.language_code);
@@ -1227,6 +1236,53 @@ export const createGameApp = () => {
                         // localStorage unavailable
                     }
                     analytics.trackSettingsChange({ setting: 'sound', value: this.soundEnabled });
+                });
+            },
+
+            loadDefinitionsPreference(): void {
+                try {
+                    const stored = localStorage.getItem('definitionsEnabled');
+                    if (stored !== null) {
+                        this.definitionsEnabled = stored !== 'false';
+                    }
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            toggleDefinitions(): void {
+                this.$nextTick(() => {
+                    try {
+                        localStorage.setItem(
+                            'definitionsEnabled',
+                            this.definitionsEnabled ? 'true' : 'false'
+                        );
+                    } catch {
+                        // localStorage unavailable
+                    }
+                    analytics.trackSettingsChange({
+                        setting: 'definitions',
+                        value: this.definitionsEnabled,
+                    });
+                });
+            },
+
+            loadDefinition(): void {
+                if (!this.definitionsEnabled) return;
+
+                const container = document.getElementById('definition-card');
+                if (!container) return;
+
+                const langCode = this.config?.language_code || 'en';
+                const uiStrings = {
+                    definition: this.config?.ui?.definition,
+                    look_up_on_wiktionary: this.config?.ui?.look_up_on_wiktionary,
+                };
+
+                showDefinitionLoading(container);
+
+                fetchDefinition(this.todays_word, langCode).then((def) => {
+                    renderDefinitionCard(def, container, uiStrings);
                 });
             },
 
