@@ -425,7 +425,6 @@
                     <div v-show="statsTab === 'today'">
                         <!-- Today's word heading -->
                         <div v-if="game_over" class="px-6 pt-3 pb-1 text-center">
-                            <p class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1">{{ language.config.ui.todays_word or "Today's Word" }}</p>
                             <a :href="'/' + config.language_code + '/word/' + todays_idx"
                                 class="inline-block group">
                                 <p class="text-lg font-bold tracking-widest uppercase text-neutral-800 dark:text-neutral-100 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">

@@ -1319,12 +1319,19 @@ export const createGameApp = () => {
                     const container = document.getElementById('definition-card');
                     if (container) {
                         showDefinitionLoading(container);
+                        const wordPageUrl = `/${langCode}/word/${this.todays_idx}`;
                         fetchDefinition(this.todays_word, langCode)
                             .then((def) => {
-                                renderDefinitionCard(def, container, {
-                                    definition: this.config?.ui?.definition,
-                                    look_up_on_wiktionary: this.config?.ui?.look_up_on_wiktionary,
-                                });
+                                renderDefinitionCard(
+                                    def,
+                                    container,
+                                    {
+                                        definition: this.config?.ui?.definition,
+                                        look_up_on_wiktionary:
+                                            this.config?.ui?.look_up_on_wiktionary,
+                                    },
+                                    wordPageUrl
+                                );
                             })
                             .catch(() => {
                                 container.style.display = 'none';
