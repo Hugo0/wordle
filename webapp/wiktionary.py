@@ -298,12 +298,13 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
         lang_cache_dir = os.path.join(cache_dir, lang_code)
         cache_path = os.path.join(lang_cache_dir, f"{word.lower()}.json")
 
-        # Check cache first
+        # Check cache first (skip empty {} entries — those are failed lookups to retry)
         if os.path.exists(cache_path):
             try:
                 with open(cache_path, "r") as f:
                     loaded = json.load(f)
-                    return loaded if loaded else None
+                    if loaded:
+                        return loaded
             except Exception:
                 pass
     else:
