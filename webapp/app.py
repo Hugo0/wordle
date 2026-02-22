@@ -1152,6 +1152,45 @@ def stats():
     return status_list_str
 
 
+# robots.txt and llms.txt
+@app.route("/robots.txt")
+def robots_txt():
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://wordle.global/sitemap.xml
+"""
+    response = make_response(content)
+    response.headers["Content-Type"] = "text/plain"
+    return response
+
+
+@app.route("/llms.txt")
+def llms_txt():
+    content = f"""# Wordle Global
+
+> Free, open-source Wordle in {len(language_codes)}+ languages. A new 5-letter word to guess every day.
+
+Play at https://wordle.global
+
+## Languages
+
+{chr(10).join(f"- [{languages[lc]['language_name']}](https://wordle.global/{lc})" for lc in sorted(language_codes))}
+
+## About
+
+- Each day has a new 5-letter word to guess in 6 tries
+- Green = correct letter in correct position
+- Yellow = correct letter in wrong position
+- Gray = letter not in the word
+- Free, no account required, works offline (PWA)
+- Open source: https://github.com/Hugo0/wordle
+"""
+    response = make_response(content)
+    response.headers["Content-Type"] = "text/plain; charset=utf-8"
+    return response
+
+
 # sitemap
 SITEMAP_MAX_URLS = 50000
 SITEMAP_BASE_URL = "https://wordle.global"

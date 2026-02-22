@@ -24,9 +24,26 @@
     <meta property="twitter:description" content="{{ description }}">
 
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="canonical" href="https://wordle.global/">
 
     <!-- Bing search console -->
     <meta name="msvalidate.01" content="609E2DD36EFFA9A3C673F46020FDF0D3" />
+
+    {# Structured data for search engines #}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Wordle Global",
+        "url": "https://wordle.global",
+        "description": "{{ description }}",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "inLanguage": {{ languages.keys() | list | tojson }},
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
 
     <!-- Backend data (on window for ES module access) -->
     <script>
