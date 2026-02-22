@@ -12,67 +12,13 @@ const WIKTIONARY_LANG_MAP: Record<string, string> = {
     ckb: 'ku', // Central Kurdish → Kurdish
 };
 
-// Map our language codes to Wiktionary "language name" used in the REST API response
-// The English Wiktionary REST API returns definitions keyed by language name, not code
-const WIKTIONARY_LANGUAGE_NAMES: Record<string, string> = {
-    en: 'English',
-    fi: 'Finnish',
-    ar: 'Arabic',
-    tr: 'Turkish',
-    hr: 'Croatian',
-    bg: 'Bulgarian',
-    de: 'German',
-    he: 'Hebrew',
-    sv: 'Swedish',
-    ru: 'Russian',
-    hu: 'Hungarian',
-    es: 'Spanish',
-    et: 'Estonian',
-    da: 'Danish',
-    sr: 'Serbian',
-    ro: 'Romanian',
-    ca: 'Catalan',
-    sk: 'Slovak',
-    it: 'Italian',
-    az: 'Azerbaijani',
-    fr: 'French',
-    lv: 'Latvian',
-    la: 'Latin',
-    gl: 'Galician',
-    mk: 'Macedonian',
-    uk: 'Ukrainian',
-    pt: 'Portuguese',
-    vi: 'Vietnamese',
-    pl: 'Polish',
-    hy: 'Armenian',
-    nb: 'Norwegian Bokmål',
-    nn: 'Norwegian Nynorsk',
-    sl: 'Slovenian',
-    nl: 'Dutch',
-    cs: 'Czech',
-    hyw: 'Armenian',
-    fa: 'Persian',
-    eu: 'Basque',
-    gd: 'Scottish Gaelic',
-    ga: 'Irish',
-    ko: 'Korean',
-    ka: 'Georgian',
-    is: 'Icelandic',
-    ckb: 'Kurdish',
-    el: 'Greek',
-    lt: 'Lithuanian',
-    mn: 'Mongolian',
-    ia: 'Interlingua',
-    mi: 'Maori',
-    lb: 'Luxembourgish',
-    br: 'Breton',
-    ne: 'Nepali',
-    eo: 'Esperanto',
-    fy: 'West Frisian',
-    nds: 'Low German',
-    fo: 'Faroese',
-    oc: 'Occitan',
-    tk: 'Turkmen',
+// Map our language codes to the keys used in English Wiktionary REST API responses
+// The API returns definitions keyed by Wiktionary language code (usually same as ours)
+const EN_WIKTIONARY_LANG_MAP: Record<string, string> = {
+    nb: 'nb', // Norwegian Bokmål (stays as-is in Wiktionary)
+    nn: 'nn', // Norwegian Nynorsk
+    hyw: 'hy', // Western Armenian → Armenian
+    ckb: 'ku', // Central Kurdish → Kurdish
 };
 
 function getWiktionaryLang(lang: string): string {
@@ -110,12 +56,9 @@ async function fetchFromEnWiktionary(word: string, lang: string): Promise<WordDe
 
         const data = await response.json();
 
-        // The API returns definitions grouped by language name
-        // Try to find our target language
-        const langName = WIKTIONARY_LANGUAGE_NAMES[lang];
-        if (!langName || !data[langName]) return null;
-
-        const langDefs = data[langName];
+        // The API returns definitions keyed by language code
+        const wikiLang = EN_WIKTIONARY_LANG_MAP[lang] || lang;
+        const langDefs = data[wikiLang];
         if (!Array.isArray(langDefs) || langDefs.length === 0) return null;
 
         // Get first part of speech entry

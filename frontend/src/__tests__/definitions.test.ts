@@ -15,7 +15,7 @@ describe('fetchDefinition', () => {
             ok: true,
             json: () =>
                 Promise.resolve({
-                    English: [
+                    en: [
                         {
                             partOfSpeech: 'Noun',
                             definitions: [{ definition: 'A large container.' }],
@@ -75,7 +75,7 @@ describe('fetchDefinition', () => {
             ok: true,
             json: () =>
                 Promise.resolve({
-                    German: [
+                    de: [
                         {
                             partOfSpeech: 'Noun',
                             definitions: [{ definition: 'A crane.' }],
@@ -137,7 +137,7 @@ describe('fetchDefinition', () => {
             ok: true,
             json: () =>
                 Promise.resolve({
-                    English: [
+                    en: [
                         {
                             partOfSpeech: 'Noun',
                             definitions: [
