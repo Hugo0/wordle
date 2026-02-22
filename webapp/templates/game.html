@@ -270,35 +270,22 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Feedback: Haptics & Sound -->
+                            <!-- Sound & Haptics (combined) -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
-                                    <p>{{ language.config.ui.haptic_feedback or "Haptic Feedback" }}</p>
+                                    <p>{{ language.config.ui.sound_and_haptics or "Sound & Haptics" }}</p>
                                 </div>
-                                {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', language.config.ui.haptic_feedback or 'Haptic Feedback') }}
-                            </div>
-                            <div class="flex flex-row items-center">
-                                <div class="flex-grow">
-                                    <p>{{ language.config.ui.sound_effects or "Sound Effects" }}</p>
-                                </div>
-                                {{ toggle_switch('soundEnabled', 'toggleSound()', language.config.ui.sound_effects or 'Sound Effects') }}
+                                {{ toggle_switch('feedbackEnabled', 'toggleFeedback()', language.config.ui.sound_and_haptics or 'Sound & Haptics') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Word Info: Definitions & Word Art -->
+                            <!-- Word Info: definitions + AI art (combined) -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
-                                    <p>{{ language.config.ui.show_definitions or "Show Definitions" }}</p>
-                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">{{ language.config.ui.show_definitions_desc or "Show word meaning after game" }}</p>
+                                    <p>{{ language.config.ui.word_info or "Word Info" }}</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">{{ language.config.ui.word_info_desc or "Definition & AI art after game" }}</p>
                                 </div>
-                                {{ toggle_switch('definitionsEnabled', 'toggleDefinitions()', language.config.ui.show_definitions or 'Show Definitions') }}
-                            </div>
-                            <div class="flex flex-row items-center">
-                                <div class="flex-grow">
-                                    <p>{{ language.config.ui.word_art or "Word Art" }}</p>
-                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">{{ language.config.ui.word_art_desc or "AI illustration of the daily word" }}</p>
-                                </div>
-                                {{ toggle_switch('wordArtEnabled', 'toggleWordArt()', language.config.ui.word_art or 'Word Art') }}
+                                {{ toggle_switch('wordInfoEnabled', 'toggleWordInfo()', language.config.ui.word_info or 'Word Info') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
