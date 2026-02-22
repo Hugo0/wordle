@@ -37,6 +37,7 @@ DATA_DIR = os.environ.get("DATA_DIR", os.path.join(os.path.dirname(__file__), "s
 WORD_IMAGES_DIR = os.path.join(DATA_DIR, "word-images")
 WORD_DEFS_DIR = os.path.join(DATA_DIR, "word-defs")
 WORD_STATS_DIR = os.path.join(DATA_DIR, "word-stats")
+WORD_HISTORY_DIR = os.path.join(DATA_DIR, "word-history")
 
 # set random seed 42 for reproducibility (important to maintain stable word lists)
 # NOTE: This is only used for the LEGACY algorithm (days before MIGRATION_DAY_IDX)
@@ -439,12 +440,8 @@ with open(f"{data_dir}default_language_config.json", "r") as f:
 keyboards = {k: load_keyboard(k) for k in language_codes}
 
 
-def get_word_for_day(lang_code, day_idx):
-    """Get the daily word for a specific language and day index.
-
-    Standalone version of Language._get_daily_word() that doesn't require
-    full Language initialization (avoids keyboard/character overhead).
-    """
+def _compute_word_for_day(lang_code, day_idx):
+    """Compute the daily word from word lists (no caching)."""
     word_list = language_codes_5words[lang_code]
     blocklist = language_blocklists[lang_code]
     daily_words = language_daily_words.get(lang_code)
@@ -459,6 +456,30 @@ def get_word_for_day(lang_code, day_idx):
         if daily_words:
             return get_daily_word_consistent_hash(daily_words, set(), day_idx, lang_code)
         return get_daily_word_consistent_hash(word_list, blocklist, day_idx, lang_code)
+
+
+def get_word_for_day(lang_code, day_idx):
+    """Get the daily word for a specific language and day index.
+
+    Once a word is computed for a past day, it's cached to disk so future
+    word list changes can never alter historical daily words.
+    """
+    # Check cache first
+    cache_path = os.path.join(WORD_HISTORY_DIR, lang_code, f"{day_idx}.txt")
+    if os.path.exists(cache_path):
+        with open(cache_path, "r") as f:
+            return f.read().strip()
+
+    word = _compute_word_for_day(lang_code, day_idx)
+
+    # Cache past/current days (not future)
+    todays_idx = get_todays_idx()
+    if day_idx <= todays_idx:
+        os.makedirs(os.path.join(WORD_HISTORY_DIR, lang_code), exist_ok=True)
+        with open(cache_path, "w") as f:
+            f.write(word)
+
+    return word
 
 
 def load_languages():
@@ -641,40 +662,12 @@ class Language:
         self.key_diacritic_hints = self._build_key_diacritic_hints()
 
     def _get_daily_word(self, day_idx):
-        """Get the daily word using the appropriate algorithm and word list.
+        """Get the daily word, delegating to the shared get_word_for_day().
 
-        Word list priority (for days > MIGRATION_DAY_IDX):
-        1. Ordered curated_schedule (if exists and not exhausted) - hand-picked words
-        2. Curated daily_words list (if exists) - high quality pool
-        3. Main word_list filtered by blocklist - fallback
-
-        For backwards compatibility:
-        - Days <= MIGRATION_DAY_IDX: Use legacy shuffle algorithm on main word_list
-        - Days > MIGRATION_DAY_IDX: Use new algorithm with priority above
+        This ensures the game and word subpages always agree, and that
+        past words are frozen to disk so word list changes can't alter history.
         """
-        if day_idx <= MIGRATION_DAY_IDX:
-            # Legacy algorithm for past days (preserves history)
-            # IMPORTANT: No blocklist for past days - we must return exactly
-            # what was shown historically, even if it's a "bad" word
-            return get_daily_word_legacy(self.word_list, set(), day_idx)  # Empty blocklist!
-        else:
-            # New algorithm for future days
-            schedule_idx = day_idx - MIGRATION_DAY_IDX - 1  # 0-indexed from day 1682
-
-            # Priority 1: Ordered curated schedule (positional selection)
-            if self.curated_schedule and schedule_idx < len(self.curated_schedule):
-                return self.curated_schedule[schedule_idx]
-
-            # Priority 2: Curated daily_words with consistent hashing
-            if self.daily_words:
-                return get_daily_word_consistent_hash(
-                    self.daily_words, set(), day_idx, self.language_code
-                )
-
-            # Priority 3: Filtered main list with consistent hashing
-            return get_daily_word_consistent_hash(
-                self.word_list, self.blocklist, day_idx, self.language_code
-            )
+        return get_word_for_day(self.language_code, day_idx)
 
     def _build_keyboard_layouts(self, keyboard_config):
         """

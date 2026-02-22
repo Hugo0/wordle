@@ -153,3 +153,6 @@ webapp/static/word-defs/
 
 # Anonymous per-word game stats
 webapp/static/word-stats/
+
+# Frozen daily word history (ensures past words never change)
+webapp/static/word-history/

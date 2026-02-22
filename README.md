@@ -68,6 +68,7 @@ Each language folder in `webapp/data/languages/` contains a `SOURCES.md` with de
 
 - [ ] Word definitions — show the definition of the daily word after the game (e.g. via Wiktionary API)
 - [ ] Native speaker review of daily word lists for remaining languages
+- [ ] Consolidate per-language data files — there are currently 3 overlapping mechanisms controlling daily word selection: `_daily_words.txt` (curated subset), `_blocklist.txt` (exclusion list), and `_curated_schedule.txt` (day-by-day override), plus the fallback to `_5words.txt`. These could be unified into a single curated daily list per language.
 
 ## Credits
 
