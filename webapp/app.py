@@ -1201,18 +1201,21 @@ def _build_stats_data():
         lang_dir = os.path.join(WORD_STATS_DIR, lc)
         if os.path.isdir(lang_dir):
             for fname in os.listdir(lang_dir):
-                if fname.endswith(".json"):
-                    try:
-                        with open(os.path.join(lang_dir, fname), "r") as f:
-                            s = json.load(f)
-                            lang_total_plays += s.get("total", 0)
-                            lang_total_wins += s.get("wins", 0)
-                        # Track earliest day with stats
-                        day = int(fname.replace(".json", ""))
-                        if earliest_stats_idx is None or day < earliest_stats_idx:
-                            earliest_stats_idx = day
-                    except Exception:
-                        pass
+                if not fname.endswith(".json"):
+                    continue
+                try:
+                    day = int(fname[:-5])  # strip ".json"
+                except ValueError:
+                    continue  # skip non-numeric filenames
+                try:
+                    with open(os.path.join(lang_dir, fname), "r") as f:
+                        s = json.load(f)
+                        lang_total_plays += s.get("total", 0)
+                        lang_total_wins += s.get("wins", 0)
+                    if earliest_stats_idx is None or day < earliest_stats_idx:
+                        earliest_stats_idx = day
+                except (json.JSONDecodeError, OSError) as e:
+                    logging.warning("Failed to load stats %s/%s: %s", lc, fname, e)
 
         lang_stats.append(
             {
