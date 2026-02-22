@@ -7,7 +7,7 @@ services:
       pnpm install
       pnpm build
       uv sync --no-dev
-    startCommand: uv run gunicorn --chdir webapp --workers 4 --preload --timeout 120 app:app
+    startCommand: uv run gunicorn --chdir webapp --workers 8 --preload --timeout 120 app:app
     envVars:
       - key: PYTHON_VERSION
         value: "3.12"
