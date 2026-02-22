@@ -314,25 +314,12 @@
                         <!-- Separator -->
                         <hr class="border-neutral-300 dark:border-neutral-600">
 
-                        <!-- Haptic Feedback Toggle -->
+                        <!-- Sound & Haptics Toggle -->
                         <div class="flex flex-row items-center justify-between">
                             <div class="flex flex-col">
-                                <span class="font-medium">{{ ui.haptic_feedback or "Haptic Feedback" }}</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.haptic_feedback_desc or "Vibration on touch" }}</span>
+                                <span class="font-medium">{{ ui.sound_and_haptics or "Sound & Haptics" }}</span>
                             </div>
-                            {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', ui.haptic_feedback or 'Haptic Feedback') }}
-                        </div>
-
-                        <!-- Separator -->
-                        <hr class="border-neutral-300 dark:border-neutral-600">
-
-                        <!-- Sound Effects Toggle -->
-                        <div class="flex flex-row items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="font-medium">{{ ui.sound_effects or "Sound Effects" }}</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.sound_effects_desc or "Win/lose sounds" }}</span>
-                            </div>
-                            {{ toggle_switch('soundEnabled', 'toggleSound()', ui.sound_effects or 'Sound Effects') }}
+                            {{ toggle_switch('feedbackEnabled', 'toggleFeedback()', ui.sound_and_haptics or 'Sound & Haptics') }}
                         </div>
 
                         <!-- Separator -->

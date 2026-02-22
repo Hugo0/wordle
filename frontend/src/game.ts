@@ -99,10 +99,8 @@ interface GameData {
     show_options_modal: boolean;
     show_not_valid_notif: boolean;
     darkMode: boolean;
-    hapticsEnabled: boolean;
-    soundEnabled: boolean;
-    definitionsEnabled: boolean;
-    wordArtEnabled: boolean;
+    feedbackEnabled: boolean;
+    wordInfoEnabled: boolean;
     notification: Notification;
     tiles: string[][];
     tile_classes: string[][];
@@ -147,10 +145,8 @@ export const createGameApp = () => {
                 show_options_modal: false,
                 show_not_valid_notif: false,
                 darkMode: document.documentElement.classList.contains('dark'),
-                hapticsEnabled: true,
-                soundEnabled: true,
-                definitionsEnabled: true,
-                wordArtEnabled: true,
+                feedbackEnabled: true,
+                wordInfoEnabled: true,
                 shareButtonState: 'idle' as const,
 
                 notification: {
@@ -324,10 +320,8 @@ export const createGameApp = () => {
             window.addEventListener('keydown', (e) => this.keyDown(e));
             this.loadGameResults();
             this.loadLanguages();
-            this.loadHapticsPreference();
-            this.loadSoundPreference();
-            this.loadDefinitionsPreference();
-            this.loadWordArtPreference();
+            this.loadFeedbackPreference();
+            this.loadWordInfoPreference();
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -1188,126 +1182,71 @@ export const createGameApp = () => {
                 });
             },
 
-            loadHapticsPreference(): void {
+            loadFeedbackPreference(): void {
                 try {
-                    const stored = localStorage.getItem('hapticsEnabled');
+                    const stored = localStorage.getItem('feedbackEnabled');
                     if (stored !== null) {
-                        this.hapticsEnabled = stored === 'true';
+                        this.feedbackEnabled = stored === 'true';
                     } else {
-                        // Default to enabled
-                        this.hapticsEnabled = true;
+                        this.feedbackEnabled = true;
                     }
-                    setHapticsEnabled(this.hapticsEnabled);
+                    setHapticsEnabled(this.feedbackEnabled);
+                    setSoundEnabled(this.feedbackEnabled);
                 } catch {
                     // localStorage unavailable
                 }
             },
 
-            toggleHaptics(): void {
+            toggleFeedback(): void {
                 this.$nextTick(() => {
-                    setHapticsEnabled(this.hapticsEnabled);
-                    if (this.hapticsEnabled) {
-                        haptic(); // Give feedback that haptics are now on
+                    setHapticsEnabled(this.feedbackEnabled);
+                    setSoundEnabled(this.feedbackEnabled);
+                    if (this.feedbackEnabled) {
+                        haptic();
                     }
                     try {
                         localStorage.setItem(
-                            'hapticsEnabled',
-                            this.hapticsEnabled ? 'true' : 'false'
+                            'feedbackEnabled',
+                            this.feedbackEnabled ? 'true' : 'false'
                         );
                     } catch {
                         // localStorage unavailable
                     }
                     analytics.trackSettingsChange({
-                        setting: 'haptics',
-                        value: this.hapticsEnabled,
+                        setting: 'feedback',
+                        value: this.feedbackEnabled,
                     });
                 });
             },
 
-            loadSoundPreference(): void {
+            loadWordInfoPreference(): void {
                 try {
-                    const stored = localStorage.getItem('soundEnabled');
+                    const stored = localStorage.getItem('wordInfoEnabled');
                     if (stored !== null) {
-                        this.soundEnabled = stored === 'true';
-                    } else {
-                        // Default to enabled
-                        this.soundEnabled = true;
-                    }
-                    setSoundEnabled(this.soundEnabled);
-                } catch {
-                    // localStorage unavailable
-                }
-            },
-
-            toggleSound(): void {
-                this.$nextTick(() => {
-                    setSoundEnabled(this.soundEnabled);
-                    try {
-                        localStorage.setItem('soundEnabled', this.soundEnabled ? 'true' : 'false');
-                    } catch {
-                        // localStorage unavailable
-                    }
-                    analytics.trackSettingsChange({ setting: 'sound', value: this.soundEnabled });
-                });
-            },
-
-            loadDefinitionsPreference(): void {
-                try {
-                    const stored = localStorage.getItem('definitionsEnabled');
-                    if (stored !== null) {
-                        this.definitionsEnabled = stored !== 'false';
+                        this.wordInfoEnabled = stored !== 'false';
                     }
                 } catch {
                     // localStorage unavailable
                 }
             },
 
-            toggleDefinitions(): void {
+            toggleWordInfo(): void {
                 this.$nextTick(() => {
                     try {
                         localStorage.setItem(
-                            'definitionsEnabled',
-                            this.definitionsEnabled ? 'true' : 'false'
+                            'wordInfoEnabled',
+                            this.wordInfoEnabled ? 'true' : 'false'
                         );
                     } catch {
                         // localStorage unavailable
                     }
                     analytics.trackSettingsChange({
-                        setting: 'definitions',
-                        value: this.definitionsEnabled,
+                        setting: 'word_info',
+                        value: this.wordInfoEnabled,
                     });
-                    // Reload definition if re-enabled after game completion
-                    if (this.definitionsEnabled && (this.gameWon || this.gameLost)) {
+                    if (this.wordInfoEnabled && (this.gameWon || this.gameLost)) {
                         this.loadDefinition();
                     }
-                });
-            },
-
-            loadWordArtPreference(): void {
-                try {
-                    const stored = localStorage.getItem('wordArtEnabled');
-                    if (stored !== null) {
-                        this.wordArtEnabled = stored !== 'false';
-                    }
-                } catch {
-                    // localStorage unavailable
-                }
-            },
-
-            toggleWordArt(): void {
-                this.$nextTick(() => {
-                    try {
-                        localStorage.setItem(
-                            'wordArtEnabled',
-                            this.wordArtEnabled ? 'true' : 'false'
-                        );
-                    } catch {
-                        // localStorage unavailable
-                    }
-                    analytics.trackSettingsChange({
-                        setting: 'word_art',
-                        value: this.wordArtEnabled,
-                    });
                 });
             },
 
@@ -1315,7 +1254,7 @@ export const createGameApp = () => {
                 const langCode = this.config?.language_code || 'en';
 
                 // Load definition (if enabled)
-                if (this.definitionsEnabled) {
+                if (this.wordInfoEnabled) {
                     const container = document.getElementById('definition-card');
                     if (container) {
                         showDefinitionLoading(container);
@@ -1340,7 +1279,7 @@ export const createGameApp = () => {
                 }
 
                 // Load word art image (independent of definition)
-                if (this.wordArtEnabled) {
+                if (this.wordInfoEnabled) {
                     const imageContainer = document.getElementById('word-image-card');
                     if (imageContainer) {
                         showImageLoading(imageContainer);
