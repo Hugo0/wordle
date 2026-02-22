@@ -12,8 +12,15 @@ This detects:
 - Regressions in POS header recognition
 """
 
+import sys
+from pathlib import Path
+
 import pytest
-from webapp.wiktionary import (
+
+# Allow imports from webapp/ directory (matches gunicorn --chdir webapp)
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "webapp"))
+
+from wiktionary import (
     parse_wikt_definition,
     fetch_native_wiktionary,
     fetch_english_definition,
