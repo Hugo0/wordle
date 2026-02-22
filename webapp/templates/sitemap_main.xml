@@ -4,6 +4,10 @@
     <loc>{{ base_url }}</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>{{ base_url }}/stats</loc>
+    <priority>0.5</priority>
+  </url>
   {% for language in languages %}
   <url>
     <loc>{{ base_url }}/{{ language }}</loc>

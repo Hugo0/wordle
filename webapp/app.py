@@ -477,17 +477,29 @@ def get_word_for_day(lang_code, day_idx):
     # Check cache first
     cache_path = os.path.join(WORD_HISTORY_DIR, lang_code, f"{day_idx}.txt")
     if os.path.exists(cache_path):
-        with open(cache_path, "r") as f:
-            return f.read().strip()
+        try:
+            with open(cache_path, "r") as f:
+                cached = f.read().strip()
+                if cached:
+                    return cached
+        except OSError:
+            pass  # Fall through to recompute
 
     word = _compute_word_for_day(lang_code, day_idx)
 
     # Cache past/current days (not future)
     todays_idx = get_todays_idx()
     if day_idx <= todays_idx:
-        os.makedirs(os.path.join(WORD_HISTORY_DIR, lang_code), exist_ok=True)
-        with open(cache_path, "w") as f:
-            f.write(word)
+        lang_dir = os.path.join(WORD_HISTORY_DIR, lang_code)
+        os.makedirs(lang_dir, exist_ok=True)
+        # Write atomically via temp file to prevent corrupt reads
+        tmp_path = cache_path + ".tmp"
+        try:
+            with open(tmp_path, "w") as f:
+                f.write(word)
+            os.replace(tmp_path, cache_path)
+        except OSError:
+            pass
 
     return word
 
@@ -584,15 +596,6 @@ language_popularity = [
 # Generating images costs ~$0.04/image via DALL-E 3, so we limit to popular languages
 IMAGE_LANGUAGES = language_popularity[:30]
 
-# status
-with open("../scripts/out/status_list.txt", "r") as f:
-    status_list = [line.strip() for line in f]
-    status_list_str = ""
-    for status in status_list:
-        status_list_str += f"<option value='{status}'>{status}{'&nbsp;'*(20-len(status))}</option>"
-    status_list_str += (
-        "<a href='https://github.com/Hugo0/wordle' target='_blank'>more at Github</a>"
-    )
 
 # print stats about how many languages we have
 print("\n***********************************************")
@@ -1169,9 +1172,83 @@ def index():
     )
 
 
+_stats_cache = {"data": None, "ts": 0}
+_STATS_CACHE_TTL = 300  # 5 minutes
+
+
+def _build_stats_data():
+    """Aggregate site-wide stats (cached in memory for 5 min)."""
+    import time
+
+    now = time.time()
+    if _stats_cache["data"] and now - _stats_cache["ts"] < _STATS_CACHE_TTL:
+        return _stats_cache["data"]
+
+    todays_idx = get_todays_idx()
+    lang_stats = []
+    total_words_all = 0
+
+    for lc in language_codes:
+        n_words = len(language_codes_5words.get(lc, []))
+        n_supplement = len(language_codes_5words_supplements.get(lc, []))
+        total_words_all += n_words + n_supplement
+
+        # Aggregate community stats from cached files (if any)
+        lang_total_plays = 0
+        lang_total_wins = 0
+        lang_dir = os.path.join(WORD_STATS_DIR, lc)
+        if os.path.isdir(lang_dir):
+            for fname in os.listdir(lang_dir):
+                if fname.endswith(".json"):
+                    try:
+                        with open(os.path.join(lang_dir, fname), "r") as f:
+                            s = json.load(f)
+                            lang_total_plays += s.get("total", 0)
+                            lang_total_wins += s.get("wins", 0)
+                    except Exception:
+                        pass
+
+        lang_stats.append(
+            {
+                "code": lc,
+                "name": languages[lc]["language_name"],
+                "name_native": languages[lc].get("language_name_native", ""),
+                "n_words": n_words,
+                "n_supplement": n_supplement,
+                "total_plays": lang_total_plays,
+                "total_wins": lang_total_wins,
+                "win_rate": (
+                    round(lang_total_wins / lang_total_plays * 100)
+                    if lang_total_plays > 0
+                    else None
+                ),
+            }
+        )
+    lang_stats.sort(key=lambda x: x["n_words"], reverse=True)
+
+    global_plays = sum(ls["total_plays"] for ls in lang_stats)
+    global_wins = sum(ls["total_wins"] for ls in lang_stats)
+
+    data = {
+        "lang_stats": lang_stats,
+        "total_languages": len(language_codes),
+        "total_words": total_words_all,
+        "total_puzzles": todays_idx * len(language_codes),
+        "todays_idx": todays_idx,
+        "global_plays": global_plays,
+        "global_wins": global_wins,
+        "global_win_rate": (round(global_wins / global_plays * 100) if global_plays > 0 else None),
+    }
+    _stats_cache["data"] = data
+    _stats_cache["ts"] = now
+    return data
+
+
 @app.route("/stats")
 def stats():
-    return status_list_str
+    """Site-wide statistics page — language stats and community play data."""
+    data = _build_stats_data()
+    return render_template("stats.html", **data)
 
 
 # robots.txt and llms.txt
@@ -1380,7 +1457,8 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
 
         return "ok"
     except (openai.OpenAIError, urlreq.URLError, IOError, OSError) as e:
-        return f"error: {e}"
+        logging.error(f"Image generation failed for {word}: {e}")
+        return "error"
 
 
 @app.route("/<lang_code>/api/definition/<word>")
@@ -1538,6 +1616,7 @@ def word_page(lang_code, day_idx):
         todays_idx=todays_idx,
         config=config,
         wikt_lang=wikt_lang,
+        hreflang_url_pattern=f"https://wordle.global/{{lang}}/word/{day_idx}",
     )
 
 

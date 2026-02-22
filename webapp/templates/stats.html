@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="min-h-full">
+{% include 'partials/_dark_mode_init.html' %}
+
+<head>
+    {% include 'partials/_base_head.html' %}
+
+    <title>Wordle Global Stats — {{ total_languages }} Languages, {{ "{:,}".format(total_words) }} Words</title>
+    <meta name="description" content="Wordle Global statistics: {{ total_languages }} languages, {{ "{:,}".format(total_words) }} words, and {{ "{:,}".format(total_puzzles) }} daily puzzles served. See word counts, community win rates, and more.">
+    <meta property="og:title" content="Wordle Global Stats">
+    <meta property="og:description" content="{{ total_languages }} languages, {{ "{:,}".format(total_words) }} words. Free daily word game in dozens of languages.">
+    <meta property="og:url" content="https://wordle.global/stats">
+    <link rel="canonical" href="https://wordle.global/stats">
+    {% include 'partials/_hreflang.html' %}
+</head>
+
+<body class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <div class="max-w-2xl mx-auto px-4 py-6">
+
+        {# Header #}
+        <header class="text-center mb-8">
+            <a href="/" class="text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
+                &larr; Home
+            </a>
+            <h1 class="text-2xl font-bold mt-2">Wordle Global Stats</h1>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                The free daily word game in {{ total_languages }} languages
+            </p>
+        </header>
+
+        {# Global Stats Cards #}
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+            <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 text-center">
+                <p class="text-2xl font-bold text-green-500">{{ total_languages }}</p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400">Languages</p>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 text-center">
+                <p class="text-2xl font-bold">{{ "{:,}".format(total_words) }}</p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400">Total Words</p>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 text-center">
+                <p class="text-2xl font-bold">{{ "{:,}".format(todays_idx) }}</p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400">Days Running</p>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3 text-center">
+                <p class="text-2xl font-bold">{{ "{:,}".format(total_puzzles) }}</p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400">Puzzles Served</p>
+            </div>
+        </div>
+
+        {# Community Stats (only show if we have data) #}
+        {% if global_plays > 0 %}
+        <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 mb-8">
+            <h2 class="text-xs font-semibold uppercase tracking-wide text-green-700 dark:text-green-400 mb-3 text-center">
+                Community Stats
+            </h2>
+            <div class="grid grid-cols-3 gap-3 text-center">
+                <div>
+                    <p class="text-xl font-bold">{{ "{:,}".format(global_plays) }}</p>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-400">Games Played</p>
+                </div>
+                <div>
+                    <p class="text-xl font-bold">{{ "{:,}".format(global_wins) }}</p>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-400">Games Won</p>
+                </div>
+                <div>
+                    <p class="text-xl font-bold text-green-600 dark:text-green-400">{{ global_win_rate }}%</p>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-400">Win Rate</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {# Language Table #}
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3">
+            Languages ({{ total_languages }})
+        </h2>
+        <div class="overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-neutral-50 dark:bg-neutral-800 text-left text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                        <th class="py-2 px-3">Language</th>
+                        <th class="py-2 px-3 text-right">Words</th>
+                        <th class="py-2 px-3 text-right hidden sm:table-cell">Supplement</th>
+                        {% if global_plays > 0 %}
+                        <th class="py-2 px-3 text-right">Plays</th>
+                        <th class="py-2 px-3 text-right hidden sm:table-cell">Win %</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800">
+                    {% for lang in lang_stats %}
+                    <tr class="hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors">
+                        <td class="py-2 px-3">
+                            <a href="/{{ lang.code }}" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                                {{ lang.name }}
+                            </a>
+                            {% if lang.name_native and lang.name_native != lang.name %}
+                            <span class="text-xs text-neutral-400 dark:text-neutral-500 ml-1">{{ lang.name_native }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="py-2 px-3 text-right tabular-nums">{{ "{:,}".format(lang.n_words) }}</td>
+                        <td class="py-2 px-3 text-right tabular-nums text-neutral-400 hidden sm:table-cell">
+                            {{ "{:,}".format(lang.n_supplement) if lang.n_supplement > 0 else "—" }}
+                        </td>
+                        {% if global_plays > 0 %}
+                        <td class="py-2 px-3 text-right tabular-nums">
+                            {{ "{:,}".format(lang.total_plays) if lang.total_plays > 0 else "—" }}
+                        </td>
+                        <td class="py-2 px-3 text-right tabular-nums hidden sm:table-cell">
+                            {% if lang.win_rate is not none %}
+                            <span class="{{ 'text-green-600 dark:text-green-400' if lang.win_rate >= 80 else 'text-yellow-600 dark:text-yellow-400' if lang.win_rate >= 50 else 'text-red-500' }}">
+                                {{ lang.win_rate }}%
+                            </span>
+                            {% else %}
+                            —
+                            {% endif %}
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {# Word count bar chart #}
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mt-8 mb-3">
+            Word Count by Language
+        </h2>
+        <div class="space-y-1">
+            {% set max_words = lang_stats[0].n_words if lang_stats else 1 %}
+            {% for lang in lang_stats[:20] %}
+            <div class="flex items-center gap-2">
+                <a href="/{{ lang.code }}" class="w-8 text-xs text-neutral-500 dark:text-neutral-400 text-right shrink-0 hover:text-blue-500">
+                    {{ lang.code }}
+                </a>
+                <div class="flex-1 h-4 bg-neutral-100 dark:bg-neutral-800 rounded-sm overflow-hidden">
+                    <div class="h-full bg-green-500 rounded-sm" style="width: {{ (lang.n_words / max_words * 100) | round(1) }}%"></div>
+                </div>
+                <span class="w-14 text-xs text-neutral-400 text-right tabular-nums">{{ "{:,}".format(lang.n_words) }}</span>
+            </div>
+            {% endfor %}
+            {% if lang_stats | length > 20 %}
+            <p class="text-xs text-neutral-400 text-center mt-2">+ {{ lang_stats | length - 20 }} more languages</p>
+            {% endif %}
+        </div>
+
+        {# Footer CTA #}
+        <div class="mt-8 text-center">
+            <a href="/"
+                class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors">
+                Play Wordle
+            </a>
+            <p class="mt-3 text-xs text-neutral-400">
+                <a href="https://github.com/Hugo0/wordle" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                    Open source on GitHub
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
