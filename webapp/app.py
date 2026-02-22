@@ -6,6 +6,7 @@ from flask import (
     request,
     send_from_directory,
     jsonify,
+    abort,
 )
 import json
 import os
@@ -1307,7 +1308,7 @@ def sitemap_words(page):
 @app.route("/<lang_code>")
 def language(lang_code):
     if lang_code not in language_codes:
-        return "Language not found"
+        abort(404)
     word_list = language_codes_5words[lang_code]
     cookie_key = f"keyboard_layout_{lang_code}"
     requested_layout = request.args.get("layout") or request.cookies.get(cookie_key)
@@ -1415,10 +1416,10 @@ def word_image(lang_code, word):
     """
     openai_key = os.environ.get("OPENAI_API_KEY")
     if not openai_key:
-        return "Image generation not configured", 404
+        abort(404)
 
     if lang_code not in language_codes:
-        return "Language not found", 404
+        abort(404)
 
     # Only generate images for top languages (cost control)
     if lang_code not in IMAGE_LANGUAGES:
@@ -1493,12 +1494,12 @@ def word_image(lang_code, word):
 def word_page(lang_code, day_idx):
     """Serve a shareable page for a specific daily word."""
     if lang_code not in language_codes:
-        return "Language not found", 404
+        abort(404)
 
     # Allow today's word (game reveals it after completion) and past words
     todays_idx = get_todays_idx()
     if day_idx > todays_idx or day_idx < 1:
-        return "Word not available yet", 404
+        abort(404)
 
     word = get_word_for_day(lang_code, day_idx)
     word_date = idx_to_date(day_idx)
