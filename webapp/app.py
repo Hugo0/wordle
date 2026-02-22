@@ -1067,6 +1067,7 @@ def word_image(lang_code, word):
             return "Invalid day index", 403
         expected_word = get_word_for_day(lang_code, day_idx)
     else:
+        day_idx = todays_idx
         expected_word = get_word_for_day(lang_code, todays_idx)
     if word.lower() != expected_word.lower():
         return "Not a valid daily word", 403
@@ -1077,6 +1078,12 @@ def word_image(lang_code, word):
 
     if os.path.exists(cache_path):
         return send_from_directory(cache_dir, f"{word.lower()}.webp")
+
+    # Only generate images for words from Feb 21, 2026 onwards (day 1708)
+    # Older words get served from cache only — no on-demand generation
+    IMAGE_MIN_DAY_IDX = 1708
+    if day_idx < IMAGE_MIN_DAY_IDX:
+        return "Image not available for historical words", 404
 
     # HEAD requests just check cache — don't trigger generation
     if request.method == "HEAD":
