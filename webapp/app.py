@@ -1188,6 +1188,8 @@ def _build_stats_data():
     lang_stats = []
     total_words_all = 0
 
+    earliest_stats_idx = None
+
     for lc in language_codes:
         n_words = len(language_codes_5words.get(lc, []))
         n_supplement = len(language_codes_5words_supplements.get(lc, []))
@@ -1205,6 +1207,10 @@ def _build_stats_data():
                             s = json.load(f)
                             lang_total_plays += s.get("total", 0)
                             lang_total_wins += s.get("wins", 0)
+                        # Track earliest day with stats
+                        day = int(fname.replace(".json", ""))
+                        if earliest_stats_idx is None or day < earliest_stats_idx:
+                            earliest_stats_idx = day
                     except Exception:
                         pass
 
@@ -1229,6 +1235,11 @@ def _build_stats_data():
     global_plays = sum(ls["total_plays"] for ls in lang_stats)
     global_wins = sum(ls["total_wins"] for ls in lang_stats)
 
+    # Convert earliest stats day_idx to a date string
+    stats_since_date = None
+    if earliest_stats_idx is not None:
+        stats_since_date = idx_to_date(earliest_stats_idx).strftime("%B %d, %Y")
+
     data = {
         "lang_stats": lang_stats,
         "total_languages": len(language_codes),
@@ -1238,6 +1249,7 @@ def _build_stats_data():
         "global_plays": global_plays,
         "global_wins": global_wins,
         "global_win_rate": (round(global_wins / global_plays * 100) if global_plays > 0 else None),
+        "stats_since_date": stats_since_date,
     }
     _stats_cache["data"] = data
     _stats_cache["ts"] = now

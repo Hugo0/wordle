@@ -56,9 +56,12 @@
         {# Community Stats (only show if we have data) #}
         {% if global_plays > 0 %}
         <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
+            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1 text-center">
                 Community Stats
             </h2>
+            {% if stats_since_date %}
+            <p class="text-[10px] text-neutral-400 dark:text-neutral-500 text-center mb-3">Since {{ stats_since_date }}</p>
+            {% endif %}
             <div class="grid grid-cols-3 gap-2 text-center">
                 <div>
                     <p class="text-lg font-bold">{{ "{:,}".format(global_plays) }}</p>
