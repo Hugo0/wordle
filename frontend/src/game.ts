@@ -1101,7 +1101,6 @@ export const createGameApp = () => {
                         return;
                     } catch (error) {
                         if (error instanceof Error) {
-                            console.log('Clipboard API failed:', error.message);
                             analytics.trackShareFail(langCode, 'clipboard', error.message);
                         }
                     }

@@ -13,3 +13,9 @@ services:
         value: "3.12"
       - key: NODE_VERSION
         value: "22"
+      - key: DATA_DIR
+        value: /data
+    disk:
+      name: wordle-data
+      mountPath: /data
+      sizeGB: 5
