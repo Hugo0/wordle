@@ -378,22 +378,25 @@
                     </div>
 
                     <!-- Tab buttons -->
-                    <div class="flex mx-5 mt-2 border-b border-gray-200 dark:border-gray-600">
-                        <button v-on:click="statsTab = 'today'"
+                    <div class="flex mx-5 mt-2 border-b border-gray-200 dark:border-gray-600" role="tablist">
+                        <button v-on:click="statsTab = 'today'" role="tab"
+                            :aria-selected="statsTab === 'today'"
                             class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
                             :class="statsTab === 'today'
                                 ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
                                 : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
                             {{ language.config.ui.today or "Today" }}
                         </button>
-                        <button v-on:click="statsTab = 'stats'"
+                        <button v-on:click="statsTab = 'stats'" role="tab"
+                            :aria-selected="statsTab === 'stats'"
                             class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
                             :class="statsTab === 'stats'
                                 ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
                                 : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
                             {{ language.config.ui.statistics or "Stats" }}
                         </button>
-                        <button v-on:click="statsTab = 'global'"
+                        <button v-on:click="statsTab = 'global'" role="tab"
+                            :aria-selected="statsTab === 'global'"
                             class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
                             :class="statsTab === 'global'
                                 ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
@@ -435,7 +438,7 @@
                         <div class="flex flex-col items-center py-2 px-6 border-t border-gray-200 dark:border-gray-600">
                             <p class="uppercase font-semibold text-xs text-neutral-500 dark:text-neutral-400">{{
                                 language.config.text.next_word }}</p>
-                            <p class="text-2xl font-bold" v-html="this.time_until_next_day">
+                            <p class="text-2xl font-bold" v-html="time_until_next_day"></p>
                         </div>
                     </div>
 
