@@ -213,10 +213,8 @@ export function renderDefinitionCard(
 export function renderWordImage(word: string, lang: string, container: HTMLElement): void {
     const url = `/${lang}/api/word-image/${encodeURIComponent(word)}`;
     const img = document.createElement('img');
-    img.src = url;
-    img.alt = word;
     img.className = 'w-full max-h-48 object-contain rounded-lg';
-    img.loading = 'lazy';
+    img.alt = word;
     img.onload = () => {
         container.innerHTML = '';
         container.appendChild(img);
@@ -225,6 +223,9 @@ export function renderWordImage(word: string, lang: string, container: HTMLEleme
     img.onerror = () => {
         container.style.display = 'none';
     };
+    // Set src last to ensure handlers are attached before load starts
+    // Do NOT use loading="lazy" — the img is detached from DOM during load
+    img.src = url;
 }
 
 /**
