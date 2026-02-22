@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" class="min-h-full">
+{% include 'partials/_dark_mode_init.html' %}
+
+<head>
+    {% include 'partials/_base_head.html' %}
+    <title>Page Not Found — Wordle Global</title>
+    <meta name="robots" content="noindex">
+</head>
+
+<body class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <div class="max-w-lg mx-auto px-4 py-16 text-center">
+        <h1 class="text-6xl font-bold text-neutral-300 dark:text-neutral-600 mb-4">404</h1>
+        <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-6">This page doesn't exist.</p>
+        <a href="/" class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors">
+            Play Wordle
+        </a>
+
+        <nav class="mt-12">
+            <h2 class="text-sm font-semibold text-neutral-500 dark:text-neutral-400 mb-3">Or pick a language:</h2>
+            <div class="flex flex-wrap justify-center gap-2">
+                {% for lc in language_codes | sort %}
+                <a href="/{{ lc }}" class="text-sm px-2 py-1 text-blue-600 dark:text-blue-400 hover:underline">{{ languages[lc].language_name }}</a>
+                {% endfor %}
+            </div>
+        </nav>
+    </div>
+</body>
+</html>
