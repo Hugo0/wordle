@@ -1138,6 +1138,10 @@ def word_page(lang_code, day_idx):
     # Fetch definition (cached)
     definition = fetch_definition_cached(word, lang_code)
 
+    # Map language code to Wiktionary subdomain
+    wikt_lang_map = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
+    wikt_lang = wikt_lang_map.get(lang_code, lang_code)
+
     # Load stats if available
     word_stats = _load_word_stats(lang_code, day_idx)
 
@@ -1153,6 +1157,7 @@ def word_page(lang_code, day_idx):
         word_stats=word_stats,
         todays_idx=todays_idx,
         config=config,
+        wikt_lang=wikt_lang,
     )
 
 
