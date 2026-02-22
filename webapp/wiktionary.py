@@ -71,7 +71,7 @@ def parse_wikt_definition(extract, word=None):
         # Occitan
         r"Vèrb|"
         # Azerbaijani / Turkish
-        r"İsim|Ad\b|"
+        r"İsim|Ad\b|Eylem|Sıfat|Belirteç|"
         # Armenian
         r"Գոյական|Բայ|Ածական|"
         # Kurdish (Sorani)
@@ -155,6 +155,9 @@ def parse_wikt_definition(extract, word=None):
         # Common in Swedish, Hungarian, Estonian, Lithuanian, Vietnamese Wiktionaries
         if word and line.lower() == word.lower():
             continue
+        # Skip headword lines like "beslemek (üçüncü tekil ...)" — word + parenthetical
+        if word and re.match(re.escape(word) + r"\s*\(", line, re.IGNORECASE):
+            continue
 
         # Skip inflection lines like "casa ¦ plural: casas"
         if re.match(r"^\S+\s*¦", line):
@@ -226,6 +229,15 @@ def parse_wikt_definition(extract, word=None):
     return None
 
 
+# Language-specific lemma suffixes to try when a word isn't found in Wiktionary.
+# For agglutinative languages, daily words are often conjugated forms (e.g. Turkish
+# "besle" is the imperative of "beslemek"), but Wiktionary only has the infinitive.
+LEMMA_SUFFIXES = {
+    "tr": ["mek", "mak"],  # Turkish infinitive (vowel harmony)
+    "az": ["mək", "maq"],  # Azerbaijani infinitive
+}
+
+
 def fetch_native_wiktionary(word, lang_code):
     """Try native-language Wiktionary via MediaWiki API. Returns dict or None."""
     wikt_lang = WIKT_LANG_MAP.get(lang_code, lang_code)
@@ -234,6 +246,9 @@ def fetch_native_wiktionary(word, lang_code):
     candidates = [word]
     if word[0].islower():
         candidates.append(word[0].upper() + word[1:])
+    # Try lemma forms for agglutinative languages (e.g. "besle" → "beslemek")
+    for suffix in LEMMA_SUFFIXES.get(lang_code, []):
+        candidates.append(word + suffix)
 
     for try_word in candidates:
         api_url = (
@@ -315,38 +330,43 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
     result = fetch_native_wiktionary(word, lang_code)
 
     # Fall back to English Wiktionary REST API
+    # Try the word itself, then lemma forms for agglutinative languages
     if not result:
-        try:
-            url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
-            req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
-            with urlreq.urlopen(req, timeout=5) as resp:
-                data = json.loads(resp.read())
-                # Try target language first, then English
-                for try_lang in [lang_code, "en"]:
-                    for entry in data.get(try_lang, []):
-                        for defn in entry.get("definitions", []):
-                            raw_def = defn.get("definition", "")
-                            clean_def = strip_html(raw_def)
-                            # Skip useless "form of" / "synonym of" definitions
-                            if clean_def and not re.match(
-                                r"^(synonym|plural|feminine|masculine|diminutive|augmentative|"
-                                r"alternative|archaic|obsolete|dated|rare)\s+(form\s+)?of\s+",
-                                clean_def,
-                                re.IGNORECASE,
-                            ):
-                                result = {
-                                    "definition": clean_def[:300],
-                                    "part_of_speech": entry.get("partOfSpeech"),
-                                    "source": "english",
-                                    "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(word.lower())}",
-                                }
+        en_candidates = [word.lower()]
+        for suffix in LEMMA_SUFFIXES.get(lang_code, []):
+            en_candidates.append(word.lower() + suffix)
+        for try_word in en_candidates:
+            if result:
+                break
+            try:
+                url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(try_word)}"
+                req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
+                with urlreq.urlopen(req, timeout=5) as resp:
+                    data = json.loads(resp.read())
+                    for try_lang in [lang_code, "en"]:
+                        for entry in data.get(try_lang, []):
+                            for defn in entry.get("definitions", []):
+                                raw_def = defn.get("definition", "")
+                                clean_def = strip_html(raw_def)
+                                if clean_def and not re.match(
+                                    r"^(synonym|plural|feminine|masculine|diminutive|augmentative|"
+                                    r"alternative|archaic|obsolete|dated|rare)\s+(form\s+)?of\s+",
+                                    clean_def,
+                                    re.IGNORECASE,
+                                ):
+                                    result = {
+                                        "definition": clean_def[:300],
+                                        "part_of_speech": entry.get("partOfSpeech"),
+                                        "source": "english",
+                                        "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(try_word)}",
+                                    }
+                                    break
+                            if result:
                                 break
                         if result:
                             break
-                    if result:
-                        break
-        except Exception:
-            pass
+            except Exception:
+                pass
 
     # Cache result (even None as empty object to avoid re-fetching)
     if lang_cache_dir:
