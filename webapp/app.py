@@ -978,11 +978,12 @@ def language(lang_code):
 def build_image_prompt(word, definition_hint=""):
     """Build the DALL-E prompt for a word image."""
     return (
-        f"A stylized 3D render of a single object that represents "
+        f"A flat vector illustration representing the concept of "
         f"{word}{definition_hint}. "
-        f"Smooth rounded shapes, cheerful pastel colors, "
-        f"clean white background, centered composition. "
-        f"No text, no letters, no UI elements."
+        f"Simple geometric shapes, bold flat colors (green, white, gray palette), "
+        f"minimal detail, clean white background, centered composition. "
+        f"Modern app icon style. "
+        f"No text, no letters, no words, no UI elements."
     )
 
 
