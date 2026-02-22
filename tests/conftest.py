@@ -28,6 +28,7 @@ def pytest_collection_modifyitems(config, items):
             if "network" in item.keywords:
                 item.add_marker(skip_network)
 
+
 # Project paths
 PROJECT_ROOT = Path(__file__).parent.parent
 DATA_DIR = PROJECT_ROOT / "webapp" / "data"
