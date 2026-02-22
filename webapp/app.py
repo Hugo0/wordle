@@ -20,7 +20,7 @@ import urllib.parse
 import urllib.request as urlreq
 import logging
 from pathlib import Path
-from webapp.wiktionary import fetch_definition_cached as _fetch_definition_cached_impl
+from wiktionary import fetch_definition_cached as _fetch_definition_cached_impl
 
 # Load .env file if it exists (for local development)
 _env_path = Path(__file__).resolve().parent.parent / ".env"
