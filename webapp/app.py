@@ -3,8 +3,10 @@ from flask import (
     render_template,
     make_response,
     redirect,
-    url_for,
     request,
+    send_from_directory,
+    jsonify,
+    abort,
 )
 import json
 import os
@@ -12,6 +14,31 @@ import datetime
 import glob
 import random
 import hashlib
+import re
+import urllib.parse
+import urllib.request as urlreq
+import logging
+from pathlib import Path
+
+# Load .env file if it exists (for local development)
+_env_path = Path(__file__).resolve().parent.parent / ".env"
+if _env_path.exists():
+    with open(_env_path) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith("#") and "=" in _line:
+                _key, _, _val = _line.partition("=")
+                _val = _val.strip()
+                if len(_val) >= 2 and _val[0] == _val[-1] and _val[0] in ('"', "'"):
+                    _val = _val[1:-1]
+                os.environ.setdefault(_key.strip(), _val)
+
+# Persistent data directory — /data in production (Render disk), local fallback for dev
+DATA_DIR = os.environ.get("DATA_DIR", os.path.join(os.path.dirname(__file__), "static"))
+WORD_IMAGES_DIR = os.path.join(DATA_DIR, "word-images")
+WORD_DEFS_DIR = os.path.join(DATA_DIR, "word-defs")
+WORD_STATS_DIR = os.path.join(DATA_DIR, "word-stats")
+WORD_HISTORY_DIR = os.path.join(DATA_DIR, "word-history")
 
 # set random seed 42 for reproducibility (important to maintain stable word lists)
 # NOTE: This is only used for the LEGACY algorithm (days before MIGRATION_DAY_IDX)
@@ -70,6 +97,15 @@ def get_vite_assets():
 def inject_vite_assets():
     """Make Vite assets available in all templates"""
     return {"vite_assets": get_vite_assets()}
+
+
+@app.context_processor
+def inject_hreflang():
+    """Make hreflang data available in all templates for international SEO."""
+    return {
+        "hreflang_langs": sorted(language_codes),
+        "hreflang_url_pattern": "https://wordle.global/{lang}",
+    }
 
 
 ###############################################################################
@@ -392,6 +428,12 @@ def get_daily_word_legacy(words: list, blocklist: set, day_idx: int) -> str:
     return words[day_idx % list_len]
 
 
+def idx_to_date(day_idx):
+    """Reverse of get_todays_idx(): convert a day index back to a calendar date."""
+    n_days = day_idx + 18992 - 195
+    return datetime.datetime(1970, 1, 1) + datetime.timedelta(days=n_days)
+
+
 language_codes_5words = {l_code: load_words(l_code) for l_code in language_codes}
 language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
@@ -406,6 +448,60 @@ with open(f"{data_dir}default_language_config.json", "r") as f:
     default_language_config = json.load(f)
 
 keyboards = {k: load_keyboard(k) for k in language_codes}
+
+
+def _compute_word_for_day(lang_code, day_idx):
+    """Compute the daily word from word lists (no caching)."""
+    word_list = language_codes_5words[lang_code]
+    blocklist = language_blocklists[lang_code]
+    daily_words = language_daily_words.get(lang_code)
+    curated_schedule = language_curated_schedules.get(lang_code)
+
+    if day_idx <= MIGRATION_DAY_IDX:
+        return get_daily_word_legacy(word_list, set(), day_idx)
+    else:
+        schedule_idx = day_idx - MIGRATION_DAY_IDX - 1
+        if curated_schedule and schedule_idx < len(curated_schedule):
+            return curated_schedule[schedule_idx]
+        if daily_words:
+            return get_daily_word_consistent_hash(daily_words, set(), day_idx, lang_code)
+        return get_daily_word_consistent_hash(word_list, blocklist, day_idx, lang_code)
+
+
+def get_word_for_day(lang_code, day_idx):
+    """Get the daily word for a specific language and day index.
+
+    Once a word is computed for a past day, it's cached to disk so future
+    word list changes can never alter historical daily words.
+    """
+    # Check cache first
+    cache_path = os.path.join(WORD_HISTORY_DIR, lang_code, f"{day_idx}.txt")
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r") as f:
+                cached = f.read().strip()
+                if cached:
+                    return cached
+        except OSError:
+            pass  # Fall through to recompute
+
+    word = _compute_word_for_day(lang_code, day_idx)
+
+    # Cache past/current days (not future)
+    todays_idx = get_todays_idx()
+    if day_idx <= todays_idx:
+        lang_dir = os.path.join(WORD_HISTORY_DIR, lang_code)
+        os.makedirs(lang_dir, exist_ok=True)
+        # Write atomically via temp file to prevent corrupt reads
+        tmp_path = cache_path + ".tmp"
+        try:
+            with open(tmp_path, "w") as f:
+                f.write(word)
+            os.replace(tmp_path, cache_path)
+        except OSError:
+            pass
+
+    return word
 
 
 def load_languages():
@@ -496,15 +592,10 @@ language_popularity = [
     "rw",  # Kinyarwanda - 5 sessions
 ]
 
-# status
-with open("../scripts/out/status_list.txt", "r") as f:
-    status_list = [line.strip() for line in f]
-    status_list_str = ""
-    for status in status_list:
-        status_list_str += f"<option value='{status}'>{status}{'&nbsp;'*(20-len(status))}</option>"
-    status_list_str += (
-        "<a href='https://github.com/Hugo0/wordle' target='_blank'>more at Github</a>"
-    )
+# Languages that get AI-generated word art images (top 30 by traffic)
+# Generating images costs ~$0.04/image via DALL-E 3, so we limit to popular languages
+IMAGE_LANGUAGES = language_popularity[:30]
+
 
 # print stats about how many languages we have
 print("\n***********************************************")
@@ -584,40 +675,12 @@ class Language:
         self.key_diacritic_hints = self._build_key_diacritic_hints()
 
     def _get_daily_word(self, day_idx):
-        """Get the daily word using the appropriate algorithm and word list.
+        """Get the daily word, delegating to the shared get_word_for_day().
 
-        Word list priority (for days > MIGRATION_DAY_IDX):
-        1. Ordered curated_schedule (if exists and not exhausted) - hand-picked words
-        2. Curated daily_words list (if exists) - high quality pool
-        3. Main word_list filtered by blocklist - fallback
-
-        For backwards compatibility:
-        - Days <= MIGRATION_DAY_IDX: Use legacy shuffle algorithm on main word_list
-        - Days > MIGRATION_DAY_IDX: Use new algorithm with priority above
+        This ensures the game and word subpages always agree, and that
+        past words are frozen to disk so word list changes can't alter history.
         """
-        if day_idx <= MIGRATION_DAY_IDX:
-            # Legacy algorithm for past days (preserves history)
-            # IMPORTANT: No blocklist for past days - we must return exactly
-            # what was shown historically, even if it's a "bad" word
-            return get_daily_word_legacy(self.word_list, set(), day_idx)  # Empty blocklist!
-        else:
-            # New algorithm for future days
-            schedule_idx = day_idx - MIGRATION_DAY_IDX - 1  # 0-indexed from day 1682
-
-            # Priority 1: Ordered curated schedule (positional selection)
-            if self.curated_schedule and schedule_idx < len(self.curated_schedule):
-                return self.curated_schedule[schedule_idx]
-
-            # Priority 2: Curated daily_words with consistent hashing
-            if self.daily_words:
-                return get_daily_word_consistent_hash(
-                    self.daily_words, set(), day_idx, self.language_code
-                )
-
-            # Priority 3: Filtered main list with consistent hashing
-            return get_daily_word_consistent_hash(
-                self.word_list, self.blocklist, day_idx, self.language_code
-            )
+        return get_word_for_day(self.language_code, day_idx)
 
     def _build_keyboard_layouts(self, keyboard_config):
         """
@@ -713,6 +776,360 @@ class Language:
 
 
 ###############################################################################
+# SERVER-SIDE DEFINITION CACHING
+###############################################################################
+
+
+_WIKT_LANG_MAP = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
+
+
+def _strip_html(text):
+    """Strip HTML tags from a string."""
+    return re.sub(r"<[^>]+>", "", text).strip()
+
+
+def _parse_wikt_definition(extract):
+    """Extract a definition line from a Wiktionary plaintext extract.
+
+    Strategy: find lines that follow a definition-section header or marker,
+    skipping etymology, pronunciation, inflection, and metadata. Works across
+    many language-edition Wiktionary formats.
+    """
+    lines = extract.split("\n")
+    in_definition_section = False
+
+    # == headers that mark definition sections (e.g. "==== Noun ====")
+    defn_headers = re.compile(
+        r"^={2,4}\s*("
+        r"Noun|Verb|Adjective|Adverb|Pronoun|Preposition|Conjunction|Interjection|"
+        r"Nom commun|Verbe|Adjectif|Adverbe|"
+        r"Sustantivo\b|Verbo|Adjetivo|Adverbio|"
+        r"Substantivo|Sostantivo|"
+        r"Substantiv\b|Adjektiv|"
+        r"Bijvoeglijk naamwoord|Zelfstandig naamwoord|Werkwoord"
+        r")",
+        re.IGNORECASE,
+    )
+
+    # Plain-text markers that start definition blocks (German, Polish, etc.)
+    defn_text_markers = re.compile(r"^(Bedeutungen|znaczenia)\s*:?\s*$", re.IGNORECASE)
+
+    # Lines to always skip within a definition section
+    skip_line = re.compile(
+        r"^("
+        r"=|IPA|Rhymes:|Homophones:|wymowa:|Pronúncia|Prononciation|Pronunciación|"
+        r"Aussprache|Worttrennung|Silbentrennung|Hörbeispiele|Reime|"
+        r"Étymologie|Etimología|Etimologia|Etymology|Herkunft|"
+        r"Synonym|Sinónim|Sinônim|Antonym|Antónim|"
+        r"Übersetzung|Translation|Tradução|Oberbegriffe|"
+        r"Beispiele|Examples|Uso:|odmiana:|przykłady:|składnia:|kolokacje:|"
+        r"synonimy:|antonimy:|hiperonimy:|hiponimy:|holonimy:|meronimy:|"
+        r"wyrazy pokrewne:|związki frazeologiczne:|etymologia:|"
+        r"Cognate |From |Du |Del |Do |Uit |Vom |Van |Derived |Compare |"
+        r"rzeczownik|przymiotnik|przysłówek|czasownik"
+        r")",
+        re.IGNORECASE,
+    )
+
+    # Markers that end a definition section (plain-text, German/Polish style)
+    end_markers = re.compile(
+        r"^(Herkunft|Synonyme|Antonyme|Oberbegriffe|Beispiele|"
+        r"Übersetzungen|odmiana|przykłady|składnia|kolokacje|"
+        r"synonimy|antonimy|wyrazy pokrewne|związki frazeologiczne)\s*:?\s*$",
+        re.IGNORECASE,
+    )
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        # Check for == definition section header
+        if defn_headers.match(line):
+            in_definition_section = True
+            continue
+
+        # Check for plain-text definition marker
+        if defn_text_markers.match(line):
+            in_definition_section = True
+            continue
+
+        # End markers (plain text like "Herkunft:" in German)
+        if end_markers.match(line):
+            if in_definition_section:
+                in_definition_section = False
+            continue
+
+        # Non-definition == header resets section
+        if re.match(r"^={2,4}\s*\S", line):
+            if in_definition_section and not defn_headers.match(line):
+                in_definition_section = False
+            continue
+
+        if not in_definition_section:
+            continue
+
+        if skip_line.match(line):
+            continue
+
+        # Skip inflection lines like "casa ¦ plural: casas"
+        if re.match(r"^\S+\s*¦", line):
+            continue
+
+        # Skip hyphenation lines like "De·pot, Plural: De·pots"
+        if "·" in line or re.match(r".*Plural\s*:", line):
+            continue
+
+        # Skip phonetic/gender headword lines
+        if re.match(r"^\\", line):
+            continue
+        if re.match(r"^[a-záàâãéèêíóòôõúüçñ.·ˈˌ]+\s*\\", line, re.IGNORECASE):
+            continue
+        # Skip "word (approfondimento) m sing" style (Italian)
+        if re.match(r"^\w+\s*\(?\s*approfondimento", line, re.IGNORECASE):
+            continue
+        # Skip "de wereld v / m" style (Dutch headword with gender)
+        if re.match(r"^(de|het|een|die|das|der)\s+\w+\s+[vmfn]\b", line, re.IGNORECASE):
+            continue
+        if re.match(
+            r"^[a-záàâãéèêíóòôõúüçñ.·ˈˌ]+,?\s*(masculino|feminino|comum|neutro|féminin|masculin|m\s|f\s|m sing|f sing)",
+            line,
+            re.IGNORECASE,
+        ):
+            continue
+
+        # Skip headword lines like "crane (plural cranes)" or "grind (third-person..."
+        if re.match(r"^\w+\s*\((plural|third-person|present|past|pl\.)\b", line, re.IGNORECASE):
+            continue
+
+        # German [1] definitions: "[1] Ort oder Gebäude..."
+        m = re.match(r"^\[(\d+)\]\s+(.+)", line)
+        if m and len(m.group(2)) > 5:
+            return m.group(2).strip()[:300]
+
+        # Polish (1.2) definitions
+        m = re.match(r"^\([\d.]+\)\s+(.+)", line)
+        if m:
+            defn = m.group(1).strip()
+            if re.match(r"(zdrobn|zgrub|forma)\b", defn, re.IGNORECASE):
+                continue
+            if len(defn) > 5:
+                return defn[:300]
+            continue
+
+        # Spanish/numbered: "1 Vivienda" — but skip single-word topic labels
+        m = re.match(r"^\d+\.?\s+(.*)", line)
+        if m and len(m.group(1)) > 3:
+            text = m.group(1).strip()
+            # If it's a topic label like "Vivienda", check next non-empty line
+            # Accept it anyway — it's better than nothing
+            return text[:300]
+
+        # Skip example sentences (Dutch ▸, French/Spanish quotes, etc.)
+        if line.startswith("▸") or line.startswith("►"):
+            continue
+
+        # Plain definition text (at least 3 chars)
+        if len(line) > 3:
+            return line[:300]
+
+    return None
+
+
+def _fetch_native_wiktionary(word, lang_code):
+    """Try native-language Wiktionary via MediaWiki API. Returns dict or None."""
+    wikt_lang = _WIKT_LANG_MAP.get(lang_code, lang_code)
+
+    # Try original case first, then title-case (German nouns are capitalized)
+    candidates = [word]
+    if word[0].islower():
+        candidates.append(word[0].upper() + word[1:])
+
+    for try_word in candidates:
+        api_url = (
+            f"https://{wikt_lang}.wiktionary.org/w/api.php?"
+            f"action=query&titles={urllib.parse.quote(try_word)}"
+            f"&prop=extracts&explaintext=1&format=json"
+        )
+        try:
+            req = urlreq.Request(api_url, headers={"User-Agent": "WordleGlobal/1.0"})
+            with urlreq.urlopen(req, timeout=5) as resp:
+                data = json.loads(resp.read())
+                pages = data.get("query", {}).get("pages", {})
+                for pid, page in pages.items():
+                    if pid == "-1":
+                        continue
+                    extract = page.get("extract", "").strip()
+                    if not extract:
+                        continue
+                    defn = _parse_wikt_definition(extract)
+                    if defn:
+                        return {
+                            "definition": defn,
+                            "source": "native",
+                            "url": f"https://{wikt_lang}.wiktionary.org/wiki/{urllib.parse.quote(try_word)}",
+                        }
+        except Exception:
+            pass
+    return None
+
+
+def fetch_definition_cached(word, lang_code):
+    """Fetch definition from Wiktionary with disk caching.
+
+    Tries native-language Wiktionary first, falls back to English Wiktionary.
+    Returns dict with keys: definition, part_of_speech, source, url.
+    Returns None if no definition found.
+    """
+    cache_dir = os.path.join(WORD_DEFS_DIR, lang_code)
+    cache_path = os.path.join(cache_dir, f"{word.lower()}.json")
+
+    # Check cache first
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r") as f:
+                loaded = json.load(f)
+                return loaded if loaded else None
+        except Exception:
+            pass
+
+    # Try native Wiktionary first (definitions in the word's own language)
+    result = _fetch_native_wiktionary(word, lang_code)
+
+    # Fall back to English Wiktionary REST API
+    if not result:
+        try:
+            url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
+            req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
+            with urlreq.urlopen(req, timeout=5) as resp:
+                data = json.loads(resp.read())
+                # Try target language first, then English
+                for try_lang in [lang_code, "en"]:
+                    for entry in data.get(try_lang, []):
+                        for defn in entry.get("definitions", []):
+                            raw_def = defn.get("definition", "")
+                            clean_def = _strip_html(raw_def)
+                            if clean_def:
+                                result = {
+                                    "definition": clean_def[:300],
+                                    "part_of_speech": entry.get("partOfSpeech"),
+                                    "source": "english",
+                                    "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(word.lower())}",
+                                }
+                                break
+                        if result:
+                            break
+                    if result:
+                        break
+        except Exception:
+            pass
+
+    # Cache result (even None as empty object to avoid re-fetching)
+    try:
+        os.makedirs(cache_dir, exist_ok=True)
+        with open(cache_path, "w") as f:
+            json.dump(result or {}, f)
+    except IOError:
+        pass
+
+    return result
+
+
+def _fetch_english_definition(word, lang_code):
+    """Fetch an English-language definition for a word (any language).
+
+    Used for DALL-E prompts where English comprehension is best.
+    Hits the English Wiktionary REST API and returns the definition string,
+    or None if not found.
+    """
+    try:
+        url = f"https://en.wiktionary.org/api/rest_v1/page/definition/{urllib.parse.quote(word.lower())}"
+        req = urlreq.Request(url, headers={"User-Agent": "WordleGlobal/1.0"})
+        with urlreq.urlopen(req, timeout=5) as resp:
+            data = json.loads(resp.read())
+            # Try target language section first (e.g. "pt" for Portuguese words),
+            # then fall back to English section
+            for try_lang in [lang_code, "en"]:
+                for entry in data.get(try_lang, []):
+                    for defn in entry.get("definitions", []):
+                        raw_def = defn.get("definition", "")
+                        clean_def = _strip_html(raw_def)
+                        if clean_def:
+                            return clean_def[:200]
+    except Exception:
+        pass
+    return None
+
+
+###############################################################################
+# ANONYMOUS STATS COLLECTION
+###############################################################################
+
+# In-memory IP dedup (resets on restart, never persisted)
+# Bounded to 50k entries to prevent memory exhaustion under attack.
+_STATS_MAX_IPS = 50_000
+_stats_seen_ips = {}
+_stats_seen_day = None  # Track current day to clear stale entries
+
+
+def _load_word_stats(lang_code, day_idx):
+    """Load stats for a specific word/day."""
+    stats_path = os.path.join(WORD_STATS_DIR, lang_code, f"{day_idx}.json")
+    if os.path.exists(stats_path):
+        try:
+            with open(stats_path, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return None
+
+
+def _update_word_stats(lang_code, day_idx, won, attempts):
+    """Atomically read-modify-write stats for a specific word/day."""
+    import fcntl
+
+    stats_dir = os.path.join(WORD_STATS_DIR, lang_code)
+    stats_path = os.path.join(stats_dir, f"{day_idx}.json")
+    os.makedirs(stats_dir, exist_ok=True)
+
+    lock_path = stats_path + ".lock"
+    with open(lock_path, "w") as lock_f:
+        try:
+            fcntl.flock(lock_f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return  # Another process holds the lock; skip this update
+
+        # Read
+        stats = None
+        if os.path.exists(stats_path):
+            try:
+                with open(stats_path, "r") as f:
+                    stats = json.load(f)
+            except Exception:
+                pass
+        if not stats:
+            stats = {
+                "total": 0,
+                "wins": 0,
+                "losses": 0,
+                "distribution": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0},
+            }
+
+        # Update
+        stats["total"] += 1
+        if won:
+            stats["wins"] += 1
+            if isinstance(attempts, int) and 1 <= attempts <= 6:
+                stats["distribution"][str(attempts)] += 1
+        else:
+            stats["losses"] += 1
+
+        # Write
+        with open(stats_path, "w") as f:
+            json.dump(stats, f)
+
+
+###############################################################################
 # ROUTES
 ###############################################################################
 
@@ -730,6 +1147,18 @@ def before_request():
         return redirect(url, code=code)
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return (
+        render_template(
+            "404.html",
+            languages=languages,
+            language_codes=language_codes,
+        ),
+        404,
+    )
+
+
 @app.route("/")
 def index():
     return render_template(
@@ -743,16 +1172,225 @@ def index():
     )
 
 
+_stats_cache = {"data": None, "ts": 0}
+_STATS_CACHE_TTL = 300  # 5 minutes
+
+
+def _build_stats_data():
+    """Aggregate site-wide stats (cached in memory for 5 min)."""
+    import time
+
+    now = time.time()
+    if _stats_cache["data"] and now - _stats_cache["ts"] < _STATS_CACHE_TTL:
+        return _stats_cache["data"]
+
+    todays_idx = get_todays_idx()
+    lang_stats = []
+    total_words_all = 0
+
+    earliest_stats_idx = None
+
+    for lc in language_codes:
+        n_words = len(language_codes_5words.get(lc, []))
+        n_supplement = len(language_codes_5words_supplements.get(lc, []))
+        total_words_all += n_words + n_supplement
+
+        # Aggregate community stats from cached files (if any)
+        lang_total_plays = 0
+        lang_total_wins = 0
+        lang_dir = os.path.join(WORD_STATS_DIR, lc)
+        if os.path.isdir(lang_dir):
+            for fname in os.listdir(lang_dir):
+                if not fname.endswith(".json"):
+                    continue
+                try:
+                    day = int(fname[:-5])  # strip ".json"
+                except ValueError:
+                    continue  # skip non-numeric filenames
+                try:
+                    with open(os.path.join(lang_dir, fname), "r") as f:
+                        s = json.load(f)
+                        lang_total_plays += s.get("total", 0)
+                        lang_total_wins += s.get("wins", 0)
+                    if earliest_stats_idx is None or day < earliest_stats_idx:
+                        earliest_stats_idx = day
+                except (json.JSONDecodeError, OSError) as e:
+                    logging.warning("Failed to load stats %s/%s: %s", lc, fname, e)
+
+        lang_stats.append(
+            {
+                "code": lc,
+                "name": languages[lc]["language_name"],
+                "name_native": languages[lc].get("language_name_native", ""),
+                "n_words": n_words,
+                "n_supplement": n_supplement,
+                "total_plays": lang_total_plays,
+                "total_wins": lang_total_wins,
+                "win_rate": (
+                    round(lang_total_wins / lang_total_plays * 100)
+                    if lang_total_plays > 0
+                    else None
+                ),
+            }
+        )
+    lang_stats.sort(key=lambda x: x["n_words"], reverse=True)
+
+    global_plays = sum(ls["total_plays"] for ls in lang_stats)
+    global_wins = sum(ls["total_wins"] for ls in lang_stats)
+
+    # Convert earliest stats day_idx to a date string
+    stats_since_date = None
+    if earliest_stats_idx is not None:
+        stats_since_date = idx_to_date(earliest_stats_idx).strftime("%B %d, %Y")
+
+    data = {
+        "lang_stats": lang_stats,
+        "total_languages": len(language_codes),
+        "total_words": total_words_all,
+        "total_puzzles": todays_idx * len(language_codes),
+        "todays_idx": todays_idx,
+        "global_plays": global_plays,
+        "global_wins": global_wins,
+        "global_win_rate": (round(global_wins / global_plays * 100) if global_plays > 0 else None),
+        "stats_since_date": stats_since_date,
+    }
+    _stats_cache["data"] = data
+    _stats_cache["ts"] = now
+    return data
+
+
 @app.route("/stats")
 def stats():
-    return status_list_str
+    """Site-wide statistics page — language stats and community play data."""
+    data = _build_stats_data()
+    return render_template("stats.html", **data)
+
+
+# robots.txt and llms.txt
+@app.route("/robots.txt")
+def robots_txt():
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://wordle.global/sitemap.xml
+"""
+    response = make_response(content)
+    response.headers["Content-Type"] = "text/plain"
+    return response
+
+
+@app.route("/llms.txt")
+def llms_txt():
+    content = f"""# Wordle Global
+
+> Free, open-source Wordle in {len(language_codes)}+ languages. A new 5-letter word to guess every day.
+
+Play at https://wordle.global
+
+## Languages
+
+{chr(10).join(f"- [{languages[lc]['language_name']}](https://wordle.global/{lc})" for lc in sorted(language_codes))}
+
+## About
+
+- Each day has a new 5-letter word to guess in 6 tries
+- Green = correct letter in correct position
+- Yellow = correct letter in wrong position
+- Gray = letter not in the word
+- Free, no account required, works offline (PWA)
+- Open source: https://github.com/Hugo0/wordle
+"""
+    response = make_response(content)
+    response.headers["Content-Type"] = "text/plain; charset=utf-8"
+    return response
 
 
 # sitemap
+SITEMAP_MAX_URLS = 50000
+SITEMAP_BASE_URL = "https://wordle.global"
+
+
 @app.route("/sitemap.xml")
-def site_map():
+def sitemap_index():
+    """Sitemap index pointing to child sitemaps."""
+    todays_idx = get_todays_idx()
+    n_langs = len(language_codes)
+    total_word_pages = todays_idx * n_langs
+    n_word_sitemaps = (total_word_pages + SITEMAP_MAX_URLS - 1) // SITEMAP_MAX_URLS
+    today_str = idx_to_date(todays_idx).strftime("%Y-%m-%d")
+
     response = make_response(
-        render_template("sitemap.xml", languages=languages, base_url="https://wordle.global")
+        render_template(
+            "sitemap_index.xml",
+            base_url=SITEMAP_BASE_URL,
+            n_word_sitemaps=n_word_sitemaps,
+            lastmod=today_str,
+        )
+    )
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
+
+@app.route("/sitemap-main.xml")
+def sitemap_main():
+    """Sitemap for homepage and language pages."""
+    response = make_response(
+        render_template(
+            "sitemap_main.xml",
+            languages=languages,
+            base_url=SITEMAP_BASE_URL,
+        )
+    )
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
+
+@app.route("/sitemap-words-<int:page>.xml")
+def sitemap_words(page):
+    """Sitemap for word subpages, paginated at 50K URLs per file."""
+    todays_idx = get_todays_idx()
+    n_langs = len(language_codes)
+    sorted_langs = sorted(language_codes)
+
+    # Total word pages: todays_idx * n_langs (day 1..todays_idx × all langs)
+    # Ordered: newest days first (higher priority), then by language
+    # Page 1 = first 50K entries, page 2 = next 50K, etc.
+    offset = (page - 1) * SITEMAP_MAX_URLS
+    total = todays_idx * n_langs
+    if offset >= total:
+        return "Not found", 404
+
+    word_pages = []
+    remaining = min(SITEMAP_MAX_URLS, total - offset)
+    idx = offset
+    while remaining > 0:
+        # Convert flat index to (day_idx, lang) — newest days first
+        day_offset = idx // n_langs
+        lang_idx = idx % n_langs
+        d_idx = todays_idx - day_offset
+        if d_idx < 1:
+            break
+        d_date = idx_to_date(d_idx).strftime("%Y-%m-%d")
+        # Priority: recent words get higher priority (1.0 for today, 0.3 for oldest)
+        age_ratio = day_offset / max(todays_idx, 1)
+        priority = round(max(0.3, 1.0 - age_ratio * 0.7), 1)
+        word_pages.append(
+            {
+                "lang": sorted_langs[lang_idx],
+                "day_idx": d_idx,
+                "date": d_date,
+                "priority": priority,
+            }
+        )
+        idx += 1
+        remaining -= 1
+
+    response = make_response(
+        render_template(
+            "sitemap_words.xml",
+            base_url=SITEMAP_BASE_URL,
+            word_pages=word_pages,
+        )
     )
     response.headers["Content-Type"] = "application/xml"
     return response
@@ -762,7 +1400,7 @@ def site_map():
 @app.route("/<lang_code>")
 def language(lang_code):
     if lang_code not in language_codes:
-        return "Language not found"
+        abort(404)
     word_list = language_codes_5words[lang_code]
     cookie_key = f"keyboard_layout_{lang_code}"
     requested_layout = request.args.get("layout") or request.cookies.get(cookie_key)
@@ -777,6 +1415,267 @@ def language(lang_code):
             samesite="Lax",
         )
     return response
+
+
+###############################################################################
+# AI WORD ART IMAGE GENERATION
+###############################################################################
+
+
+def build_image_prompt(word, definition_hint=""):
+    """Build the DALL-E prompt for a word image."""
+    return (
+        f"A painterly illustration representing the concept of "
+        f"{word}{definition_hint}. "
+        f"No text, no letters, no words, no UI elements."
+    )
+
+
+def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
+    """Generate a word art image via DALL-E and save as WebP. Returns 'ok' or error string."""
+    import tempfile
+
+    import openai
+
+    try:
+        client = openai.OpenAI(api_key=api_key)
+        prompt = build_image_prompt(word, definition_hint)
+
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=prompt,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+
+        image_url = response.data[0].url
+        if not image_url or not image_url.startswith("https://"):
+            return "no_url"
+
+        os.makedirs(cache_dir, exist_ok=True)
+
+        from PIL import Image
+
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+            tmp_path = tmp.name
+            req = urlreq.Request(image_url)
+            with urlreq.urlopen(req, timeout=30) as resp:
+                tmp.write(resp.read())
+
+        try:
+            with Image.open(tmp_path) as img:
+                img.save(cache_path, "WebP", quality=80)
+        finally:
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+
+        return "ok"
+    except (openai.OpenAIError, urlreq.URLError, IOError, OSError) as e:
+        logging.error(f"Image generation failed for {word}: {e}")
+        return "error"
+
+
+@app.route("/<lang_code>/api/definition/<word>")
+def word_definition_api(lang_code, word):
+    """Return a word definition as JSON.
+
+    Single source of truth for definitions — used by both the game frontend
+    and the word subpage (server-side rendered). Results are cached to disk.
+    """
+    if lang_code not in languages:
+        return jsonify({"error": "unknown language"}), 404
+
+    # Only serve definitions for valid words (daily or supplement)
+    word_lower = word.lower()
+    all_words = set(language_codes_5words[lang_code]) | set(
+        language_codes_5words_supplements.get(lang_code, [])
+    )
+    if word_lower not in all_words:
+        return jsonify({"error": "unknown word"}), 404
+
+    result = fetch_definition_cached(word_lower, lang_code)
+    if result:
+        return jsonify(result)
+    return jsonify({"error": "no definition found"}), 404
+
+
+@app.route("/<lang_code>/api/word-image/<word>")
+def word_image(lang_code, word):
+    """Serve an AI-generated illustration for the daily word.
+
+    Only works when OPENAI_API_KEY is set. Images are cached to disk.
+    Only generates images for the current daily word (prevents abuse).
+    """
+    openai_key = os.environ.get("OPENAI_API_KEY")
+    if not openai_key:
+        abort(404)
+
+    if lang_code not in language_codes:
+        abort(404)
+
+    # Only generate images for top languages (cost control)
+    if lang_code not in IMAGE_LANGUAGES:
+        # Still serve cached images if they exist
+        cache_dir = os.path.join(WORD_IMAGES_DIR, lang_code)
+        cache_path = os.path.join(cache_dir, f"{word.lower()}.webp")
+        if os.path.exists(cache_path):
+            return send_from_directory(cache_dir, f"{word.lower()}.webp")
+        return "Image not available for this language", 404
+
+    # Verify word is/was a daily word (prevents generating images for arbitrary words)
+    # Accept ?day_idx= param for historical words, otherwise check today
+    todays_idx = get_todays_idx()
+    day_idx = request.args.get("day_idx", type=int)
+    if day_idx is not None:
+        if day_idx < 1 or day_idx > todays_idx:
+            return "Invalid day index", 403
+        expected_word = get_word_for_day(lang_code, day_idx)
+    else:
+        day_idx = todays_idx
+        expected_word = get_word_for_day(lang_code, todays_idx)
+    if word.lower() != expected_word.lower():
+        return "Not a valid daily word", 403
+
+    # Check cache first
+    cache_dir = os.path.join(WORD_IMAGES_DIR, lang_code)
+    cache_path = os.path.join(cache_dir, f"{word.lower()}.webp")
+
+    if os.path.exists(cache_path):
+        return send_from_directory(cache_dir, f"{word.lower()}.webp")
+
+    # Only generate images for words from Feb 21, 2026 onwards (day 1708)
+    # Older words get served from cache only — no on-demand generation
+    IMAGE_MIN_DAY_IDX = 1708
+    if day_idx < IMAGE_MIN_DAY_IDX:
+        return "Image not available for historical words", 404
+
+    # HEAD requests just check cache — don't trigger generation
+    if request.method == "HEAD":
+        return "", 404
+
+    # Skip if another request is already generating this image
+    pending_path = cache_path + ".pending"
+    if os.path.exists(pending_path):
+        return "Image being generated", 202
+
+    # Mark as pending to prevent duplicate DALL-E calls
+    os.makedirs(cache_dir, exist_ok=True)
+    try:
+        open(pending_path, "x").close()
+    except FileExistsError:
+        return "Image being generated", 202
+
+    try:
+        # Use cached definition for DALL-E prompt (reuses disk cache)
+        definition_hint = ""
+        defn = fetch_definition_cached(word, lang_code)
+        if defn and defn.get("definition"):
+            definition_hint = f", which means {defn['definition']}"
+
+        # Generate image via DALL-E
+        result = generate_word_image(word, definition_hint, openai_key, cache_dir, cache_path)
+        if result == "ok":
+            return send_from_directory(cache_dir, f"{word.lower()}.webp")
+        return "Image generation failed", 500
+    finally:
+        if os.path.exists(pending_path):
+            os.unlink(pending_path)
+
+
+@app.route("/<lang_code>/word/<int:day_idx>")
+def word_page(lang_code, day_idx):
+    """Serve a shareable page for a specific daily word."""
+    if lang_code not in language_codes:
+        abort(404)
+
+    # Allow today's word (game reveals it after completion) and past words
+    todays_idx = get_todays_idx()
+    if day_idx > todays_idx or day_idx < 1:
+        abort(404)
+
+    word = get_word_for_day(lang_code, day_idx)
+    word_date = idx_to_date(day_idx)
+    config = language_configs[lang_code]
+    lang_name = config.get("name", lang_code)
+    lang_name_native = config.get("name_native", lang_name)
+
+    # Read cached definition if available (fast disk read, no HTTP)
+    definition = None
+    cache_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r") as f:
+                loaded = json.load(f)
+                definition = loaded if loaded else None
+        except Exception:
+            pass
+
+    # Map language code to Wiktionary subdomain
+    wikt_lang_map = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
+    wikt_lang = wikt_lang_map.get(lang_code, lang_code)
+
+    # Load stats if available (fast — just a local file read)
+    word_stats = _load_word_stats(lang_code, day_idx)
+
+    return render_template(
+        "word.html",
+        lang_code=lang_code,
+        lang_name=lang_name,
+        lang_name_native=lang_name_native,
+        day_idx=day_idx,
+        word=word,
+        word_date=word_date,
+        definition=definition,
+        word_stats=word_stats,
+        todays_idx=todays_idx,
+        config=config,
+        wikt_lang=wikt_lang,
+        hreflang_url_pattern=f"https://wordle.global/{{lang}}/word/{day_idx}",
+    )
+
+
+@app.route("/<lang_code>/api/word-stats", methods=["POST"])
+def submit_word_stats(lang_code):
+    """Accept anonymous game results for per-word statistics."""
+    if lang_code not in language_codes:
+        return "", 404
+
+    try:
+        data = request.get_json(silent=True)
+        if not data:
+            return "", 400
+
+        day_idx = data.get("day_idx")
+        attempts = data.get("attempts")
+        won = data.get("won")
+
+        if not isinstance(day_idx, int) or not isinstance(won, bool):
+            return "", 400
+
+        # Only accept stats for today's word
+        todays_idx = get_todays_idx()
+        if day_idx != todays_idx:
+            return "", 403
+
+        # IP-based dedup (in-memory, resets on restart)
+        global _stats_seen_day
+        if _stats_seen_day != todays_idx:
+            _stats_seen_ips.clear()
+            _stats_seen_day = todays_idx
+
+        ip = request.remote_addr or "unknown"
+        dedup_key = f"{lang_code}:{day_idx}:{ip}"
+        if dedup_key in _stats_seen_ips:
+            return "", 200  # Silently accept duplicate
+        if len(_stats_seen_ips) < _STATS_MAX_IPS:
+            _stats_seen_ips[dedup_key] = True
+
+        _update_word_stats(lang_code, day_idx, won, attempts)
+        return "", 200
+    except Exception:
+        logging.exception("Stats submission failed for %s", lang_code)
+        return "", 500
 
 
 if __name__ == "__main__":

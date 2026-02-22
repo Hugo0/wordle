@@ -7,7 +7,7 @@
     {% include 'partials/_base_head.html' %}
 
     {# Page-specific SEO meta tags #}
-    {% set title = "Wordle " ~ language.config.name_native ~ "/" ~ language.config.name %}
+    {% set title = "Play Wordle in " ~ language.config.name ~ " — Free Daily Word Game (" ~ language.config.name_native ~ ")" %}
     {% set description = language.config.meta.description %}
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
@@ -22,6 +22,9 @@
     <meta property="twitter:url" content="https://wordle.global/{{ language.config.language_code }}">
     <meta property="twitter:title" content="{{ title }}">
     <meta property="twitter:description" content="{{ description }}">
+
+    <link rel="canonical" href="https://wordle.global/{{ language.config.language_code }}">
+    {% include 'partials/_hreflang.html' %}
 
     <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
@@ -270,21 +273,22 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Haptic feedback toggle -->
+                            <!-- Sound & Haptics (combined) -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
-                                    <p>{{ language.config.ui.haptic_feedback or "Haptic Feedback" }}</p>
+                                    <p>{{ language.config.ui.sound_and_haptics or "Sound & Haptics" }}</p>
                                 </div>
-                                {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', language.config.ui.haptic_feedback or 'Haptic Feedback') }}
+                                {{ toggle_switch('feedbackEnabled', 'toggleFeedback()', language.config.ui.sound_and_haptics or 'Sound & Haptics') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Sound toggle -->
+                            <!-- Word Info: definitions + AI art (combined) -->
                             <div class="flex flex-row items-center">
                                 <div class="flex-grow">
-                                    <p>{{ language.config.ui.sound_effects or "Sound Effects" }}</p>
+                                    <p>{{ language.config.ui.word_info or "Word Info" }}</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">{{ language.config.ui.word_info_desc or "Definition & AI art after game" }}</p>
                                 </div>
-                                {{ toggle_switch('soundEnabled', 'toggleSound()', language.config.ui.sound_effects or 'Sound Effects') }}
+                                {{ toggle_switch('wordInfoEnabled', 'toggleWordInfo()', language.config.ui.word_info or 'Word Info') }}
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
@@ -376,40 +380,54 @@
                         </button>
                     </div>
 
-                    <div class="relative flex-auto mx-6 my-3">
-                        <p class="text-md text-center whitespace-pre-line" id="emoji_board" v-html="emoji_board">
-                        </p>
-                        <p v-if="attempts=='0'" class="text-center text-sm text-gray-600 dark:text-gray-400">
-                            {{ language.config.text.no_attempts }}
-                        </p>
+                    <!-- Tab buttons -->
+                    <div class="flex mx-5 mt-2 border-b border-gray-200 dark:border-gray-600" role="tablist">
+                        <button v-on:click="statsTab = 'today'" role="tab"
+                            :aria-selected="statsTab === 'today'"
+                            class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                            :class="statsTab === 'today'
+                                ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                            {{ language.config.ui.today or "Today" }}
+                        </button>
+                        <button v-on:click="statsTab = 'stats'" role="tab"
+                            :aria-selected="statsTab === 'stats'"
+                            class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                            :class="statsTab === 'stats'
+                                ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                            {{ language.config.ui.statistics or "Stats" }}
+                        </button>
+                        <button v-on:click="statsTab = 'global'" role="tab"
+                            :aria-selected="statsTab === 'global'"
+                            class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
+                            :class="statsTab === 'global'
+                                ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
+                                : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
+                            {{ language.config.ui.all_languages or "All Languages" }}
+                        </button>
                     </div>
 
-                    <!-- Guess Distribution Graph (compact for mobile) -->
-                    <div class="px-6 py-2 border-t border-solid border-gray-200 dark:border-gray-600">
-                        <h4 class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400">{{ language.config.ui.guess_distribution or "Guess Distribution" }}</h4>
-                        <div class="space-y-0.5">
-                            <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
-                                <span class="w-3 text-xs font-medium">[[ n ]]</span>
-                                <div class="flex-1 h-4 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
-                                    <div
-                                        class="h-full flex items-center justify-end px-1 text-[10px] font-bold text-white transition-all duration-300"
-                                        :class="isCurrentGuess(n) ? 'bg-green-500' : 'bg-gray-400 dark:bg-gray-500'"
-                                        :style="{ width: getDistributionBarWidth(n) + '%' }">
-                                        <span v-if="stats.guessDistribution">[[ stats.guessDistribution[n] ]]</span>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- TODAY tab: word, definition, image, share, timer -->
+                    <div v-show="statsTab === 'today'">
+                        <!-- Today's word heading -->
+                        <div v-if="game_over" class="px-6 pt-3 pb-1 text-center">
+                            <a :href="'/' + config.language_code + '/word/' + todays_idx"
+                                class="inline-block group">
+                                <p class="text-lg font-bold tracking-widest uppercase text-neutral-800 dark:text-neutral-100 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                                    [[ todays_word ]]
+                                </p>
+                            </a>
                         </div>
-                    </div>
 
-                    <div class="flex flex-row gap-4 py-2 px-6 border-t border-solid border-gray-200 dark:border-gray-600">
-                        <div class="flex flex-col w-1/2 items-center border-r border-gray-200 dark:border-gray-600">
-                            <p class="uppercase font-semibold text-xs whitespace-pre-line text-neutral-500 dark:text-neutral-400">{{
-                                language.config.text.next_word }}</p>
-                            <p class="text-2xl font-bold" v-html="this.time_until_next_day">
-                        </div>
-                        <!-- share button with success state -->
-                        <div class="flex flex-col w-1/2 items-center justify-center">
+                        <!-- Definition Card (shown after game completion) -->
+                        <div id="definition-card" class="px-6 pb-2" style="display: none;"></div>
+
+                        <!-- Word Art Image (shown after game completion, if enabled) -->
+                        <div id="word-image-card" class="px-6 pt-1 pb-2" style="display: none;"></div>
+
+                        <!-- Share button -->
+                        <div class="px-6 py-3 border-t border-gray-200 dark:border-gray-600">
                             <button
                                 class="w-full py-2 px-4 text-white font-semibold rounded-lg shadow-lg transition-all duration-200"
                                 :class="shareButtonState === 'success' ? 'bg-emerald-600 scale-105' : 'bg-green-500 hover:bg-green-600 active:bg-green-700'"
@@ -418,30 +436,37 @@
                                 <span v-else>{{ language.config.text.share }}</span>
                             </button>
                         </div>
+
+                        <!-- Next word countdown -->
+                        <div class="flex flex-col items-center py-2 px-6 border-t border-gray-200 dark:border-gray-600">
+                            <p class="uppercase font-semibold text-xs text-neutral-500 dark:text-neutral-400">{{
+                                language.config.text.next_word }}</p>
+                            <p class="text-2xl font-bold" v-html="time_until_next_day"></p>
+                        </div>
                     </div>
 
-                    <!-- Stats Tabs -->
-                    <div class="border-t border-solid border-gray-200 dark:border-gray-600">
-                        <!-- Tab buttons -->
-                        <div class="flex">
-                            <button v-on:click="statsTab = 'language'"
-                                class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
-                                :class="statsTab === 'language'
-                                    ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
-                                    : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
-                                {{ language.config.name }}
-                            </button>
-                            <button v-on:click="statsTab = 'global'"
-                                class="flex-1 py-2 text-xs font-medium transition-colors border-b-2"
-                                :class="statsTab === 'global'
-                                    ? 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
-                                    : 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300'">
-                                {{ language.config.ui.all_languages or "All Languages" }}
-                            </button>
+                    <!-- STATS tab: distribution, language stats, emoji board + share -->
+                    <div v-show="statsTab === 'stats'">
+                        <!-- Guess Distribution Graph -->
+                        <div class="px-6 py-3">
+                            <h4 class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400">{{ language.config.ui.guess_distribution or "Guess Distribution" }}</h4>
+                            <div class="space-y-0.5">
+                                <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
+                                    <span class="w-3 text-xs font-medium">[[ n ]]</span>
+                                    <div class="flex-1 h-4 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                                        <div
+                                            class="h-full flex items-center justify-end px-1 text-[10px] font-bold text-white transition-all duration-300"
+                                            :class="isCurrentGuess(n) ? 'bg-green-500' : 'bg-gray-400 dark:bg-gray-500'"
+                                            :style="{ width: getDistributionBarWidth(n) + '%' }">
+                                            <span v-if="stats.guessDistribution">[[ stats.guessDistribution[n] ]]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Language Stats (current language) -->
-                        <div v-show="statsTab === 'language'" class="px-4 py-3">
+                        <!-- Language stats grid -->
+                        <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-600">
                             <div class="grid grid-cols-4 gap-1">
                                 <div class="text-center">
                                     <p class="text-xl font-bold">[[stats.n_games]]</p>
@@ -462,8 +487,30 @@
                             </div>
                         </div>
 
-                        <!-- Global Stats (all languages) -->
-                        <div v-show="statsTab === 'global'" class="px-4 py-3">
+                        <!-- Emoji board -->
+                        <div class="relative flex-auto mx-6 my-3 pt-3 border-t border-gray-200 dark:border-gray-600">
+                            <p class="text-md text-center whitespace-pre-line" id="emoji_board" v-html="emoji_board">
+                            </p>
+                            <p v-if="attempts=='0'" class="text-center text-sm text-gray-600 dark:text-gray-400">
+                                {{ language.config.text.no_attempts }}
+                            </p>
+                        </div>
+
+                        <!-- Share button -->
+                        <div class="px-6 pb-3">
+                            <button
+                                class="w-full py-2 px-4 text-white font-semibold rounded-lg shadow-lg transition-all duration-200"
+                                :class="shareButtonState === 'success' ? 'bg-emerald-600 scale-105' : 'bg-green-500 hover:bg-green-600 active:bg-green-700'"
+                                v-on:click="shareResults">
+                                <span v-if="shareButtonState === 'success'">✓ {{ language.config.text.copied or 'Copied!' }}</span>
+                                <span v-else>{{ language.config.text.share }}</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- GLOBAL tab: all languages stats -->
+                    <div v-show="statsTab === 'global'">
+                        <div class="px-4 py-3">
                             <!-- Summary grid -->
                             <div class="grid grid-cols-4 gap-1 mb-2">
                                 <div class="text-center">
@@ -485,7 +532,7 @@
                             </div>
 
                             <!-- Per-language breakdown -->
-                            <div v-if="Object.keys(total_stats.game_stats || {}).length > 0" class="max-h-24 overflow-y-auto border-t border-neutral-200 dark:border-neutral-600 pt-1">
+                            <div v-if="Object.keys(total_stats.game_stats || {}).length > 0" class="max-h-32 overflow-y-auto border-t border-neutral-200 dark:border-neutral-600 pt-1">
                                 <div v-for="(langStats, code) in total_stats.game_stats" :key="code"
                                     class="flex items-center justify-between py-1 text-xs">
                                     <span class="font-medium">[[getLanguageName(code)]]</span>

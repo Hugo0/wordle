@@ -49,6 +49,7 @@ export interface LanguageConfig {
     meta: LanguageMeta;
     text: LanguageText;
     help: LanguageHelp;
+    ui?: Record<string, string>;
     /** Optional diacritic normalization map. Maps base characters to their diacritic variants.
      *  Example: { "a": ["ä", "á"], "o": ["ö"] }
      *  If absent, no diacritic normalization is performed (diacritics are distinct letters).
@@ -110,6 +111,18 @@ export type GameResults = Record<string, GameResult[]>;
 
 export type TileState = string; // CSS classes
 export type KeyState = '' | 'key-correct' | 'key-semicorrect' | 'key-incorrect';
+
+// =============================================================================
+// Definition Types
+// =============================================================================
+
+export interface WordDefinition {
+    word: string;
+    partOfSpeech?: string;
+    definition: string;
+    source: 'native' | 'english' | 'link';
+    url: string;
+}
 
 // =============================================================================
 // PWA Types

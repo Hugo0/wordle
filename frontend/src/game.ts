@@ -9,6 +9,13 @@ import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
 import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
 import analytics from './analytics';
+import {
+    fetchDefinition,
+    renderDefinitionCard,
+    showDefinitionLoading,
+    renderWordImage,
+    showImageLoading,
+} from './definitions';
 import type { PositionalConfig } from './positional';
 import type {
     LanguageConfig,
@@ -92,8 +99,8 @@ interface GameData {
     show_options_modal: boolean;
     show_not_valid_notif: boolean;
     darkMode: boolean;
-    hapticsEnabled: boolean;
-    soundEnabled: boolean;
+    feedbackEnabled: boolean;
+    wordInfoEnabled: boolean;
     notification: Notification;
     tiles: string[][];
     tile_classes: string[][];
@@ -105,7 +112,7 @@ interface GameData {
     attempts: string;
     stats: GameStats;
     game_results: GameResults;
-    statsTab: 'language' | 'global';
+    statsTab: 'today' | 'stats' | 'global';
     total_stats: TotalStats;
     languages: Record<string, LanguageInfo>;
     shareButtonState: 'idle' | 'success';
@@ -138,8 +145,8 @@ export const createGameApp = () => {
                 show_options_modal: false,
                 show_not_valid_notif: false,
                 darkMode: document.documentElement.classList.contains('dark'),
-                hapticsEnabled: true,
-                soundEnabled: true,
+                feedbackEnabled: true,
+                wordInfoEnabled: true,
                 shareButtonState: 'idle' as const,
 
                 notification: {
@@ -280,7 +287,7 @@ export const createGameApp = () => {
                     guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
                 },
                 game_results: {},
-                statsTab: 'language',
+                statsTab: 'today',
                 total_stats: {
                     total_games: 0,
                     game_stats: {},
@@ -313,8 +320,8 @@ export const createGameApp = () => {
             window.addEventListener('keydown', (e) => this.keyDown(e));
             this.loadGameResults();
             this.loadLanguages();
-            this.loadHapticsPreference();
-            this.loadSoundPreference();
+            this.loadFeedbackPreference();
+            this.loadWordInfoPreference();
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -357,6 +364,7 @@ export const createGameApp = () => {
 
             if (this.game_over) {
                 this.show_stats_modal = true;
+                this.loadDefinition();
             }
         },
 
@@ -690,6 +698,9 @@ export const createGameApp = () => {
                     this.show_stats_modal = true;
                 }, 400);
 
+                this.loadDefinition();
+                this.submitWordStats(true, this.active_row);
+
                 this.saveResult(true);
                 this.stats = this.calculateStats(this.config?.language_code);
                 this.total_stats = this.calculateTotalStats();
@@ -730,6 +741,9 @@ export const createGameApp = () => {
                 setTimeout(() => {
                     this.show_stats_modal = true;
                 }, 400);
+
+                this.loadDefinition();
+                this.submitWordStats(false, this.active_row);
 
                 this.saveResult(false);
                 this.stats = this.calculateStats(this.config?.language_code);
@@ -852,6 +866,8 @@ export const createGameApp = () => {
                     const data = JSON.parse(stored) as SavedGameState | null;
                     if (data?.todays_word === this.todays_word) {
                         Object.assign(this, data);
+                        // Reset transient UI state that shouldn't persist
+                        this.statsTab = 'today';
                     }
                 } catch {
                     // localStorage unavailable or corrupted data
@@ -1079,7 +1095,6 @@ export const createGameApp = () => {
                         return;
                     } catch (error) {
                         if (error instanceof Error) {
-                            console.log('Clipboard API failed:', error.message);
                             analytics.trackShareFail(langCode, 'clipboard', error.message);
                         }
                     }
@@ -1167,67 +1182,130 @@ export const createGameApp = () => {
                 });
             },
 
-            loadHapticsPreference(): void {
+            loadFeedbackPreference(): void {
                 try {
-                    const stored = localStorage.getItem('hapticsEnabled');
+                    const stored = localStorage.getItem('feedbackEnabled');
                     if (stored !== null) {
-                        this.hapticsEnabled = stored === 'true';
+                        this.feedbackEnabled = stored === 'true';
                     } else {
-                        // Default to enabled
-                        this.hapticsEnabled = true;
+                        this.feedbackEnabled = true;
                     }
-                    setHapticsEnabled(this.hapticsEnabled);
+                    setHapticsEnabled(this.feedbackEnabled);
+                    setSoundEnabled(this.feedbackEnabled);
                 } catch {
                     // localStorage unavailable
                 }
             },
 
-            toggleHaptics(): void {
+            toggleFeedback(): void {
                 this.$nextTick(() => {
-                    setHapticsEnabled(this.hapticsEnabled);
-                    if (this.hapticsEnabled) {
-                        haptic(); // Give feedback that haptics are now on
+                    setHapticsEnabled(this.feedbackEnabled);
+                    setSoundEnabled(this.feedbackEnabled);
+                    if (this.feedbackEnabled) {
+                        haptic();
                     }
                     try {
                         localStorage.setItem(
-                            'hapticsEnabled',
-                            this.hapticsEnabled ? 'true' : 'false'
+                            'feedbackEnabled',
+                            this.feedbackEnabled ? 'true' : 'false'
                         );
                     } catch {
                         // localStorage unavailable
                     }
                     analytics.trackSettingsChange({
-                        setting: 'haptics',
-                        value: this.hapticsEnabled,
+                        setting: 'feedback',
+                        value: this.feedbackEnabled,
                     });
                 });
             },
 
-            loadSoundPreference(): void {
+            loadWordInfoPreference(): void {
                 try {
-                    const stored = localStorage.getItem('soundEnabled');
+                    const stored = localStorage.getItem('wordInfoEnabled');
                     if (stored !== null) {
-                        this.soundEnabled = stored === 'true';
-                    } else {
-                        // Default to enabled
-                        this.soundEnabled = true;
+                        this.wordInfoEnabled = stored !== 'false';
                     }
-                    setSoundEnabled(this.soundEnabled);
                 } catch {
                     // localStorage unavailable
                 }
             },
 
-            toggleSound(): void {
+            toggleWordInfo(): void {
                 this.$nextTick(() => {
-                    setSoundEnabled(this.soundEnabled);
                     try {
-                        localStorage.setItem('soundEnabled', this.soundEnabled ? 'true' : 'false');
+                        localStorage.setItem(
+                            'wordInfoEnabled',
+                            this.wordInfoEnabled ? 'true' : 'false'
+                        );
                     } catch {
                         // localStorage unavailable
                     }
-                    analytics.trackSettingsChange({ setting: 'sound', value: this.soundEnabled });
+                    analytics.trackSettingsChange({
+                        setting: 'word_info',
+                        value: this.wordInfoEnabled,
+                    });
+                    if (this.wordInfoEnabled && this.game_over) {
+                        this.loadDefinition();
+                    }
                 });
+            },
+
+            loadDefinition(): void {
+                const langCode = this.config?.language_code || 'en';
+
+                // Load definition (if enabled)
+                if (this.wordInfoEnabled) {
+                    const container = document.getElementById('definition-card');
+                    if (container) {
+                        showDefinitionLoading(container);
+                        const wordPageUrl = `/${langCode}/word/${this.todays_idx}`;
+                        fetchDefinition(this.todays_word, langCode)
+                            .then((def) => {
+                                renderDefinitionCard(
+                                    def,
+                                    container,
+                                    {
+                                        definition: this.config?.ui?.definition,
+                                        look_up_on_wiktionary:
+                                            this.config?.ui?.look_up_on_wiktionary,
+                                    },
+                                    wordPageUrl
+                                );
+                            })
+                            .catch(() => {
+                                container.style.display = 'none';
+                            });
+                    }
+                }
+
+                // Load word art image (independent of definition)
+                if (this.wordInfoEnabled) {
+                    const imageContainer = document.getElementById('word-image-card');
+                    if (imageContainer) {
+                        showImageLoading(imageContainer);
+                        renderWordImage(this.todays_word, langCode, imageContainer);
+                    }
+                }
+            },
+
+            submitWordStats(won: boolean, attempts: number | string): void {
+                const langCode = this.config?.language_code;
+                const dayIdx = parseInt(String(this.todays_idx), 10);
+                if (!langCode || isNaN(dayIdx)) return;
+
+                try {
+                    fetch(`/${langCode}/api/word-stats`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            day_idx: dayIdx,
+                            attempts: typeof attempts === 'number' ? attempts : 0,
+                            won,
+                        }),
+                    }).catch(() => {}); // Fire and forget
+                } catch {
+                    // Ignore errors
+                }
             },
 
             canInstallPwa(): boolean {

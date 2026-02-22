@@ -144,3 +144,15 @@ test-results/
 
 # FrequencyWords data (downloaded by scripts/improve_word_lists.py)
 scripts/.freq_data/
+
+# AI-generated word images (cached by word-image endpoint)
+webapp/static/word-images/
+
+# Cached word definitions (fetched from Wiktionary)
+webapp/static/word-defs/
+
+# Anonymous per-word game stats
+webapp/static/word-stats/
+
+# Frozen daily word history (ensures past words never change)
+webapp/static/word-history/

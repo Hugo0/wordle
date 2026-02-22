@@ -78,8 +78,7 @@ export default function createIndexApp(): App {
                 showSettingsModal: false,
                 clickedLanguage: '',
                 darkMode: document.documentElement.classList.contains('dark'),
-                hapticsEnabled: true,
-                soundEnabled: true,
+                feedbackEnabled: true,
 
                 // Flask data
                 other_wordles,
@@ -120,8 +119,7 @@ export default function createIndexApp(): App {
             this.cacheLanguages();
 
             // Load preferences
-            this.loadHapticsPreference();
-            this.loadSoundPreference();
+            this.loadFeedbackPreference();
 
             this.total_stats = this.calculateTotalStats();
             // Initialize languages with recently played first
@@ -224,49 +222,28 @@ export default function createIndexApp(): App {
                 });
             },
 
-            loadHapticsPreference(): void {
+            loadFeedbackPreference(): void {
                 try {
-                    const stored = localStorage.getItem('hapticsEnabled');
+                    const stored = localStorage.getItem('feedbackEnabled');
                     if (stored !== null) {
-                        this.hapticsEnabled = stored === 'true';
+                        this.feedbackEnabled = stored === 'true';
                     }
-                    setHapticsEnabled(this.hapticsEnabled);
+                    setHapticsEnabled(this.feedbackEnabled);
+                    setSoundEnabled(this.feedbackEnabled);
                 } catch {
                     // localStorage unavailable
                 }
             },
 
-            toggleHaptics(): void {
+            toggleFeedback(): void {
                 this.$nextTick(() => {
-                    setHapticsEnabled(this.hapticsEnabled);
+                    setHapticsEnabled(this.feedbackEnabled);
+                    setSoundEnabled(this.feedbackEnabled);
                     try {
                         localStorage.setItem(
-                            'hapticsEnabled',
-                            this.hapticsEnabled ? 'true' : 'false'
+                            'feedbackEnabled',
+                            this.feedbackEnabled ? 'true' : 'false'
                         );
-                    } catch {
-                        // localStorage unavailable
-                    }
-                });
-            },
-
-            loadSoundPreference(): void {
-                try {
-                    const stored = localStorage.getItem('soundEnabled');
-                    if (stored !== null) {
-                        this.soundEnabled = stored === 'true';
-                    }
-                    setSoundEnabled(this.soundEnabled);
-                } catch {
-                    // localStorage unavailable
-                }
-            },
-
-            toggleSound(): void {
-                this.$nextTick(() => {
-                    setSoundEnabled(this.soundEnabled);
-                    try {
-                        localStorage.setItem('soundEnabled', this.soundEnabled ? 'true' : 'false');
                     } catch {
                         // localStorage unavailable
                     }

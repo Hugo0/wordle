@@ -82,7 +82,7 @@ interface InvalidWordParams {
 }
 
 interface SettingsChangeParams {
-    setting: 'dark_mode' | 'haptics' | 'sound';
+    setting: 'dark_mode' | 'haptics' | 'sound' | 'feedback' | 'word_info' | 'definitions';
     value: boolean;
 }
 

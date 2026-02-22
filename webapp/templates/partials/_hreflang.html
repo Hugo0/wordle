@@ -1,0 +1,6 @@
+{# hreflang tags — tells search engines which language version to show to which users.
+   Uses hreflang_langs (injected globally) and hreflang_url_pattern (set per-page or default). #}
+{% for lc in hreflang_langs %}
+<link rel="alternate" hreflang="{{ lc }}" href="{{ hreflang_url_pattern.replace('{lang}', lc) }}">
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="https://wordle.global/">

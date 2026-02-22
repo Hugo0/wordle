@@ -7,8 +7,8 @@
     {% include 'partials/_base_head.html' %}
 
     {# Page-specific SEO meta tags #}
-    {% set title = "Wordle Global - " ~ (languages | length) ~ " languages available" %}
-    {% set description = "Wordle, the daily word puzzle. Free, Open-Source & available in (most) languages" %}
+    {% set title = "Wordle Global — Play the Free Daily Word Game in " ~ (languages | length) ~ "+ Languages" %}
+    {% set description = "Play Wordle today in " ~ (languages | length) ~ "+ languages — free, daily 5-letter word puzzle. Guess the word in 6 tries. No account needed. Available in English, Spanish, German, Arabic, Hebrew, Finnish and more." %}
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
     <meta property="description" content="{{ description }}">
@@ -24,9 +24,27 @@
     <meta property="twitter:description" content="{{ description }}">
 
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="canonical" href="https://wordle.global/">
+    {% include 'partials/_hreflang.html' %}
 
     <!-- Bing search console -->
     <meta name="msvalidate.01" content="609E2DD36EFFA9A3C673F46020FDF0D3" />
+
+    {# Structured data for search engines #}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Wordle Global",
+        "url": "https://wordle.global",
+        "description": "{{ description }}",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "inLanguage": {{ languages.keys() | list | tojson }},
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
 
     <!-- Backend data (on window for ES module access) -->
     <script>
@@ -314,25 +332,12 @@
                         <!-- Separator -->
                         <hr class="border-neutral-300 dark:border-neutral-600">
 
-                        <!-- Haptic Feedback Toggle -->
+                        <!-- Sound & Haptics Toggle -->
                         <div class="flex flex-row items-center justify-between">
                             <div class="flex flex-col">
-                                <span class="font-medium">{{ ui.haptic_feedback or "Haptic Feedback" }}</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.haptic_feedback_desc or "Vibration on touch" }}</span>
+                                <span class="font-medium">{{ ui.sound_and_haptics or "Sound & Haptics" }}</span>
                             </div>
-                            {{ toggle_switch('hapticsEnabled', 'toggleHaptics()', ui.haptic_feedback or 'Haptic Feedback') }}
-                        </div>
-
-                        <!-- Separator -->
-                        <hr class="border-neutral-300 dark:border-neutral-600">
-
-                        <!-- Sound Effects Toggle -->
-                        <div class="flex flex-row items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="font-medium">{{ ui.sound_effects or "Sound Effects" }}</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ ui.sound_effects_desc or "Win/lose sounds" }}</span>
-                            </div>
-                            {{ toggle_switch('soundEnabled', 'toggleSound()', ui.sound_effects or 'Sound Effects') }}
+                            {{ toggle_switch('feedbackEnabled', 'toggleFeedback()', ui.sound_and_haptics or 'Sound & Haptics') }}
                         </div>
 
                         <!-- Separator -->
@@ -377,6 +382,16 @@
         <div v-if="showPopup" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"></div>
 
     </div>
+
+    {# Server-rendered language links — crawlable by search engines even without JS #}
+    <nav id="language-links" class="max-w-2xl mx-auto px-4 py-8 text-center">
+        <h2 class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-4">Play Wordle in Your Language</h2>
+        <div class="flex flex-wrap justify-center gap-2">
+            {% for lc in language_codes | sort %}
+            <a href="/{{ lc }}" class="text-sm px-2 py-1 text-blue-600 dark:text-blue-400 hover:underline">{{ languages[lc].language_name }}</a>
+            {% endfor %}
+        </div>
+    </nav>
 
     {% include 'partials/_pwa_install.html' %}
 
