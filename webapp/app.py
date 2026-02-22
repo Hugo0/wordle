@@ -1244,13 +1244,13 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
 
         os.makedirs(cache_dir, exist_ok=True)
 
+        from PIL import Image
+
         with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
             tmp_path = tmp.name
             req = urlreq.Request(image_url)
             with urlreq.urlopen(req, timeout=30) as resp:
                 tmp.write(resp.read())
-
-        from PIL import Image
 
         try:
             with Image.open(tmp_path) as img:
@@ -1274,10 +1274,11 @@ def word_definition_api(lang_code, word):
     if lang_code not in languages:
         return jsonify({"error": "unknown language"}), 404
 
-    lang = languages[lang_code]
     # Only serve definitions for valid words (daily or supplement)
     word_lower = word.lower()
-    all_words = set(lang.word_list) | set(lang.word_list_supplement)
+    all_words = set(language_codes_5words[lang_code]) | set(
+        language_codes_5words_supplements.get(lang_code, [])
+    )
     if word_lower not in all_words:
         return jsonify({"error": "unknown word"}), 404
 
