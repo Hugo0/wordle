@@ -1552,11 +1552,11 @@ def word_image(lang_code, word):
         return "Image being generated", 202
 
     try:
-        # Use English definition for DALL-E prompt (DALL-E understands English best)
+        # Use cached definition for DALL-E prompt (reuses disk cache)
         definition_hint = ""
-        en_def = _fetch_english_definition(word, lang_code)
-        if en_def:
-            definition_hint = f", which means {en_def}"
+        defn = fetch_definition_cached(word, lang_code)
+        if defn and defn.get("definition"):
+            definition_hint = f", which means {defn['definition']}"
 
         # Generate image via DALL-E
         result = generate_word_image(word, definition_hint, openai_key, cache_dir, cache_path)

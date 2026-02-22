@@ -81,17 +81,17 @@
             <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
                 Words by Language
             </h2>
-            <div class="space-y-1">
+            <div class="space-y-1.5">
                 {% set max_words = lang_stats[0].n_words if lang_stats else 1 %}
                 {% for lang in lang_stats %}
                 <div class="flex items-center gap-2">
-                    <a href="/{{ lang.code }}" class="w-8 text-xs text-neutral-500 dark:text-neutral-400 text-right shrink-0 hover:text-blue-500">
+                    <a href="/{{ lang.code }}" class="w-10 text-xs text-neutral-500 dark:text-neutral-400 text-right shrink-0 hover:text-blue-500 font-mono">
                         {{ lang.code }}
                     </a>
-                    <div class="flex-1 h-3 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                    <div class="flex-1 h-3.5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
                         <div class="h-full bg-green-500 rounded-sm" style="width: {{ (lang.n_words / max_words * 100) | round(1) }}%"></div>
                     </div>
-                    <span class="w-12 text-[10px] text-neutral-400 text-right tabular-nums">{{ "{:,}".format(lang.n_words) }}</span>
+                    <span class="w-14 text-[10px] text-neutral-400 text-right tabular-nums">{{ "{:,}".format(lang.n_words) }}</span>
                 </div>
                 {% endfor %}
             </div>
