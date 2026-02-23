@@ -117,6 +117,7 @@ interface GameData {
     languages: Record<string, LanguageInfo>;
     shareButtonState: 'idle' | 'success';
     communityPercentile: number | null;
+    communityTotal: number;
     communityStatsLink: string | null;
 }
 
@@ -302,6 +303,7 @@ export const createGameApp = () => {
                 },
                 languages: {},
                 communityPercentile: null,
+                communityTotal: 0,
                 communityStatsLink: null,
             };
         },
@@ -1287,7 +1289,8 @@ export const createGameApp = () => {
                     const imageContainer = document.getElementById('word-image-card');
                     if (imageContainer) {
                         showImageLoading(imageContainer);
-                        renderWordImage(this.todays_word, langCode, imageContainer);
+                        const wordPageUrl = `/${langCode}/word/${this.todays_idx}`;
+                        renderWordImage(this.todays_word, langCode, imageContainer, wordPageUrl);
                     }
                 }
             },
@@ -1318,6 +1321,7 @@ export const createGameApp = () => {
                             this.communityPercentile = Math.round(
                                 (worsePlayers / stats.total) * 100
                             );
+                            this.communityTotal = stats.total;
                             this.communityStatsLink = `/${langCode}/word/${dayIdx}`;
                         })
                         .catch(() => {});

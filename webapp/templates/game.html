@@ -436,26 +436,29 @@
                             </a>
                         </div>
 
-                        <!-- Percentile badge (appears async after stats submission) -->
-                        <div v-if="communityPercentile !== null" class="px-6 pb-1 text-center">
-                            <a :href="communityStatsLink"
-                                class="inline-flex items-center gap-1 text-sm text-green-600 dark:text-green-400 hover:underline">
-                                {{ language.config.ui.better_than or "Better than" }} [[ communityPercentile ]]% {{ language.config.ui.of_players or "of players" }}
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                                </svg>
-                            </a>
-                        </div>
-
                         <!-- Definition Card (shown after game completion) -->
                         <div id="definition-card" class="px-6 pb-2" style="display: none;"></div>
 
                         <!-- Word Art Image (shown after game completion, if enabled) -->
                         <div id="word-image-card" class="px-6 pt-1 pb-2" style="display: none;"></div>
 
-                        <!-- Share button -->
+                        <!-- Percentile + Share -->
                         <div class="px-6 py-3 border-t border-gray-200 dark:border-gray-600">
+                            <div v-if="communityPercentile !== null" class="pb-2 text-center">
+                                <a :href="communityStatsLink"
+                                    class="inline-flex items-center gap-1 text-sm text-green-600 dark:text-green-400 hover:underline">
+                                    <template v-if="communityTotal <= 1">
+                                        First to play today!
+                                    </template>
+                                    <template v-else>
+                                        {{ language.config.ui.better_than or "Better than" }} [[ communityPercentile ]]% {{ language.config.ui.of_players or "of players" }}
+                                    </template>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                                    </svg>
+                                </a>
+                            </div>
                             <button
                                 class="w-full py-2 px-4 text-white font-semibold rounded-lg shadow-lg transition-all duration-200"
                                 :class="shareButtonState === 'success' ? 'bg-emerald-600 scale-105' : 'bg-green-500 hover:bg-green-600 active:bg-green-700'"

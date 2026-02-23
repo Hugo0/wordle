@@ -104,14 +104,26 @@ export function renderDefinitionCard(
  * The image loads directly via GET — if it 404s or fails, the container is hidden.
  * If the image isn't cached, the server generates it (may take 15-20s).
  */
-export function renderWordImage(word: string, lang: string, container: HTMLElement): void {
+export function renderWordImage(
+    word: string,
+    lang: string,
+    container: HTMLElement,
+    linkUrl?: string
+): void {
     const url = `/${lang}/api/word-image/${encodeURIComponent(word)}`;
     const img = document.createElement('img');
     img.className = 'w-full max-h-48 object-contain rounded-lg';
     img.alt = word;
     img.onload = () => {
         container.innerHTML = '';
-        container.appendChild(img);
+        if (linkUrl) {
+            const a = document.createElement('a');
+            a.href = linkUrl;
+            a.appendChild(img);
+            container.appendChild(a);
+        } else {
+            container.appendChild(img);
+        }
         container.style.display = 'block';
     };
     img.onerror = () => {
