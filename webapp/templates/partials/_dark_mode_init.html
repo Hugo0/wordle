@@ -7,8 +7,6 @@
             document.documentElement.classList.add('dark');
         }
     } catch (e) {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        }
+        // localStorage unavailable (incognito) — stay light to match Vue default
     }
 </script>
