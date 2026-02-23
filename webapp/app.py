@@ -1008,6 +1008,7 @@ def stats():
 def robots_txt():
     content = """User-agent: *
 Allow: /
+Disallow: /*/api/
 
 Sitemap: https://wordle.global/sitemap.xml
 """
