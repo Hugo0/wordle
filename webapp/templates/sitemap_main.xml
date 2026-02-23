@@ -17,5 +17,11 @@
     <loc>{{ base_url }}/{{ language }}/words</loc>
     <priority>0.7</priority>
   </url>
+  {% for p in range(2, hub_total_pages + 1) %}
+  <url>
+    <loc>{{ base_url }}/{{ language }}/words?page={{ p }}</loc>
+    <priority>0.4</priority>
+  </url>
+  {% endfor %}
   {% endfor %}
 </urlset>

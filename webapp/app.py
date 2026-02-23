@@ -1085,11 +1085,16 @@ def sitemap_index():
 
 @app.route("/sitemap-main.xml")
 def sitemap_main():
-    """Sitemap for homepage and language pages."""
+    """Sitemap for homepage, language pages, and words hub pages."""
+    import math
+
+    todays_idx = get_todays_idx()
+    hub_total_pages = math.ceil(todays_idx / 30) if todays_idx > 0 else 1
     response = make_response(
         render_template(
             "sitemap_main.xml",
             languages=languages,
+            hub_total_pages=hub_total_pages,
             base_url=SITEMAP_BASE_URL,
         )
     )

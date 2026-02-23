@@ -43,7 +43,7 @@
         },
         "mainEntity": {
             "@type": "ItemList",
-            "numberOfItems": {{ todays_idx }},
+            "numberOfItems": {{ words | length }},
             "itemListElement": [
                 {% for w in words %}
                 {
