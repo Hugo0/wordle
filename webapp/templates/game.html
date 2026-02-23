@@ -8,7 +8,24 @@
 
     {# Page-specific SEO meta tags #}
     {% set title = "Play Wordle in " ~ language.config.name ~ " — Free Daily Word Game (" ~ language.config.name_native ~ ")" %}
-    {% set description = language.config.meta.description %}
+    {% set seo_tail = "Free unlimited word puzzle in 65+ languages." %}
+    {% if language.config.name|lower == language.config.name_native|lower %}
+        {% set seo_prefix = "Play Wordle in " ~ language.config.name ~ " — " %}
+    {% else %}
+        {% set seo_prefix = "Play Wordle in " ~ language.config.name ~ " (" ~ language.config.name_native ~ ") — " %}
+    {% endif %}
+    {% set native_desc = language.config.meta.description %}
+    {% set full_desc = seo_prefix ~ native_desc ~ " " ~ seo_tail %}
+    {% if full_desc|length > 160 %}
+        {# Use first sentence only to keep under 160 chars #}
+        {% set first_sentence = native_desc.split('. ')[0] %}
+        {% if not first_sentence.endswith(('.', '!', '?', ':', '։')) %}
+            {% set first_sentence = first_sentence ~ "." %}
+        {% endif %}
+        {% set description = seo_prefix ~ first_sentence ~ " " ~ seo_tail %}
+    {% else %}
+        {% set description = full_desc %}
+    {% endif %}
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
     <meta property="description" content="{{ description }}">
@@ -68,7 +85,6 @@
                         <h1 class="uppercase font-bold text-2xl sm:text-4xl tracking-wider"><a href="/">Wordle <span
                                     class="text-xl sm:text-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded px-1 py-0">
                                     {{ language.config.language_code }}</span></a></h1>
-                        </h1>
                     </div>
                     <div class="flex flex-row gap-3 z-30">
                         <button class="m-0 sm:my-1" v-on:click="show_stats_modal = !show_stats_modal">
@@ -574,7 +590,7 @@
         <button class="dismiss" onclick="dismissPwaInstall()">&times;</button>
     </div>
 
-    {% set description = "Play Wordle in " ~ language.config.name_native %}
+    {% set pwa_description = "Play Wordle in " ~ language.config.name_native %}
     {% include 'partials/_pwa_install.html' %}
 
     <!-- Vite-built JS (includes Vue, game logic, PWA) -->

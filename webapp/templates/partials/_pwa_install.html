@@ -6,6 +6,6 @@
 <pwa-install
     manifest-url="{{ url_for('static', filename='manifest.json') }}"
     name="Wordle Global"
-    description="{{ description|default('Play Wordle in 65+ languages') }}"
+    description="{{ pwa_description|default('Play Wordle in 65+ languages') }}"
     install-description="Install for quick daily access"
 ></pwa-install>
