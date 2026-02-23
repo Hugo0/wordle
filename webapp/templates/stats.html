@@ -77,18 +77,25 @@
                                 <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages Won</p>
                             </div>
                         </div>
+                        {# Secondary row: avg attempts + best streak #}
+                        <div class="grid grid-cols-2 gap-3 text-center mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-700">
+                            <div>
+                                <p class="text-lg font-bold" id="my-avg-attempts">-</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Avg Attempts</p>
+                            </div>
+                            <div>
+                                <p class="text-lg font-bold" id="my-best-streak">0</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Best Streak</p>
+                            </div>
+                        </div>
                     </div>
 
-                    {# Best streaks #}
+                    {# Guess distribution #}
                     <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-neutral-600 dark:text-neutral-400">Best Overall Streak</span>
-                            <span class="font-bold" id="my-best-streak">0</span>
-                        </div>
-                        <div id="my-best-active-row" class="flex justify-between text-sm mt-1" style="display: none;">
-                            <span class="text-neutral-600 dark:text-neutral-400">Best Active Streak (<span id="my-best-active-lang"></span>)</span>
-                            <span class="font-bold" id="my-best-active-streak">0</span>
-                        </div>
+                        <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center">
+                            Guess Distribution
+                        </h2>
+                        <div id="my-distribution" class="space-y-0.5"></div>
                     </div>
 
                     {# Per-language list #}
@@ -292,10 +299,10 @@
         try { langCache = JSON.parse(localStorage.getItem('languages_cache') || '{}'); } catch(e) {}
 
         // Per-language stats
-        var totalGames = 0, totalWins = 0, totalLosses = 0;
+        var totalGames = 0, totalWins = 0, totalLosses = 0, totalAttempts = 0;
         var longestOverallStreak = 0, currentOverallStreak = 0;
-        var bestActiveLang = '', bestActiveStreak = 0;
         var languagesWon = 0;
+        var dist = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0};
         var perLang = [];
 
         // All results sorted by date for overall streak
@@ -304,18 +311,24 @@
             var lc = langCodes[i];
             var results = gameResults[lc];
             for (var j = 0; j < results.length; j++) {
-                allResults.push({won: results[j].won, date: results[j].date});
+                allResults.push({won: results[j].won, attempts: results[j].attempts, date: results[j].date});
             }
         }
         allResults.sort(function(a, b) { return new Date(a.date) - new Date(b.date); });
 
         for (var i = 0; i < allResults.length; i++) {
-            if (allResults[i].won) {
+            var r = allResults[i];
+            if (r.won) {
                 currentOverallStreak++;
                 if (currentOverallStreak > longestOverallStreak) longestOverallStreak = currentOverallStreak;
+                var att = parseInt(r.attempts, 10);
+                if (att >= 1 && att <= 6) { dist[att]++; totalAttempts += att; }
+                totalWins++;
             } else {
+                totalLosses++;
                 currentOverallStreak = 0;
             }
+            totalGames++;
         }
 
         for (var i = 0; i < langCodes.length; i++) {
@@ -333,14 +346,7 @@
                     losses++; streak = 0;
                 }
             }
-            totalGames += wins + losses;
-            totalWins += wins;
-            totalLosses += losses;
             if (wins > 0) languagesWon++;
-            if (streak > bestActiveStreak) {
-                bestActiveStreak = streak;
-                bestActiveLang = lc;
-            }
 
             var langName = lc;
             var langNameNative = '';
@@ -358,7 +364,6 @@
             });
         }
 
-        // Sort by games played descending
         perLang.sort(function(a, b) { return b.games - a.games; });
 
         // Populate summary
@@ -366,16 +371,22 @@
         document.getElementById('my-win-rate').textContent = totalGames > 0 ? Math.round(totalWins / totalGames * 100) + '%' : '0%';
         document.getElementById('my-current-streak').textContent = (currentOverallStreak > 0 ? '\uD83D\uDD25' : '') + currentOverallStreak;
         document.getElementById('my-languages-won').textContent = languagesWon;
+        document.getElementById('my-avg-attempts').textContent = totalWins > 0 ? (totalAttempts / totalWins).toFixed(1) : '-';
         document.getElementById('my-best-streak').textContent = longestOverallStreak;
 
-        if (bestActiveStreak > 0 && bestActiveLang) {
-            var activeRow = document.getElementById('my-best-active-row');
-            activeRow.style.display = '';
-            var activeLangName = bestActiveLang;
-            if (langCache[bestActiveLang]) activeLangName = langCache[bestActiveLang].language_name || bestActiveLang;
-            document.getElementById('my-best-active-lang').textContent = activeLangName;
-            document.getElementById('my-best-active-streak').textContent = '\uD83D\uDD25' + bestActiveStreak;
+        // Build guess distribution bars
+        var maxDist = Math.max(dist[1], dist[2], dist[3], dist[4], dist[5], dist[6], 1);
+        var distHtml = '';
+        for (var n = 1; n <= 6; n++) {
+            var count = dist[n];
+            var pct = Math.max(count > 0 ? (count / maxDist) * 100 : 0, count > 0 ? 8 : 0);
+            distHtml += '<div class="flex items-center gap-1.5">';
+            distHtml += '<span class="w-3 text-xs font-medium text-neutral-500">' + n + '</span>';
+            distHtml += '<div class="flex-1 h-5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">';
+            distHtml += '<div class="h-full flex items-center justify-end px-1.5 text-[10px] font-bold text-white rounded-sm bg-green-500" style="width:' + pct + '%">' + count + '</div>';
+            distHtml += '</div></div>';
         }
+        document.getElementById('my-distribution').innerHTML = distHtml;
 
         // Build per-language list
         var list = document.getElementById('my-language-list');
@@ -391,7 +402,8 @@
             html += '</div>';
             html += '<div class="flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">';
             html += '<span>' + l.games + ' games</span>';
-            html += '<span>' + l.winPct + '% win</span>';
+            html += '<span>' + l.winPct + '%</span>';
+            html += '<span>' + l.avgAttempts + ' avg</span>';
             if (l.streak > 0) html += '<span class="text-orange-500 font-bold">\uD83D\uDD25' + l.streak + '</span>';
             html += '</div></div>';
         }
