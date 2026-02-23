@@ -116,6 +116,8 @@ interface GameData {
     total_stats: TotalStats;
     languages: Record<string, LanguageInfo>;
     shareButtonState: 'idle' | 'success';
+    communityPercentile: number | null;
+    communityStatsLink: string | null;
 }
 
 export const createGameApp = () => {
@@ -299,6 +301,8 @@ export const createGameApp = () => {
                     n_losses: 0,
                 },
                 languages: {},
+                communityPercentile: null,
+                communityStatsLink: null,
             };
         },
 
@@ -1302,7 +1306,21 @@ export const createGameApp = () => {
                             attempts: typeof attempts === 'number' ? attempts : 0,
                             won,
                         }),
-                    }).catch(() => {}); // Fire and forget
+                    })
+                        .then((resp) => (resp.ok ? resp.json() : null))
+                        .then((stats) => {
+                            if (!stats || !stats.total || !won) return;
+                            const playerAttempts = typeof attempts === 'number' ? attempts : 7;
+                            let worsePlayers = stats.losses || 0;
+                            for (let i = playerAttempts + 1; i <= 6; i++) {
+                                worsePlayers += stats.distribution?.[String(i)] || 0;
+                            }
+                            this.communityPercentile = Math.round(
+                                (worsePlayers / stats.total) * 100
+                            );
+                            this.communityStatsLink = `/${langCode}/word/${dayIdx}`;
+                        })
+                        .catch(() => {});
                 } catch {
                     // Ignore errors
                 }

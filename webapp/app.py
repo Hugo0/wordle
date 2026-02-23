@@ -1129,6 +1129,70 @@ def sitemap_words(lang_code):
     return response
 
 
+@app.route("/<lang_code>/words")
+def language_words_hub(lang_code):
+    """Gallery of all historical daily words for a language."""
+    if lang_code not in language_codes:
+        abort(404)
+
+    config = language_configs[lang_code]
+    lang_name = config.get("name", lang_code)
+    lang_name_native = config.get("name_native", lang_name)
+    tz = config.get("timezone", "UTC")
+    todays_idx = get_todays_idx(tz)
+
+    # Pagination: 30 words per page, page 1 = most recent
+    page = request.args.get("page", 1, type=int)
+    per_page = 30
+    total_pages = max(1, (todays_idx + per_page - 1) // per_page)
+    page = max(1, min(page, total_pages))
+
+    start_idx = todays_idx - (page - 1) * per_page
+    end_idx = max(1, start_idx - per_page + 1)
+
+    words = []
+    for day_idx in range(start_idx, end_idx - 1, -1):
+        word = get_word_for_day(lang_code, day_idx)
+        word_date = idx_to_date(day_idx)
+
+        # Load cached definition (fast disk read)
+        definition = None
+        def_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
+        if os.path.exists(def_path):
+            try:
+                with open(def_path, "r") as f:
+                    loaded = json.load(f)
+                    if loaded and loaded.get("definition"):
+                        definition = loaded
+            except Exception:
+                pass
+
+        word_stats = _load_word_stats(lang_code, day_idx)
+
+        words.append(
+            {
+                "day_idx": day_idx,
+                "word": word,
+                "date": word_date,
+                "definition": definition,
+                "stats": word_stats,
+            }
+        )
+
+    return render_template(
+        "words_hub.html",
+        lang_code=lang_code,
+        lang_name=lang_name,
+        lang_name_native=lang_name_native,
+        words=words,
+        page=page,
+        total_pages=total_pages,
+        todays_idx=todays_idx,
+        config=config,
+        hreflang_url_pattern="https://wordle.global/{lang}/words",
+    )
+
+
 # arbitrary app route
 @app.route("/<lang_code>")
 def language(lang_code):
@@ -1409,6 +1473,10 @@ def submit_word_stats(lang_code):
             _stats_seen_ips[dedup_key] = True
 
         _update_word_stats(lang_code, day_idx, won, attempts)
+        # Return updated stats so client can compute percentile
+        updated_stats = _load_word_stats(lang_code, day_idx)
+        if updated_stats:
+            return jsonify(updated_stats), 200
         return "", 200
     except Exception:
         logging.exception("Stats submission failed for %s", lang_code)

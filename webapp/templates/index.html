@@ -77,7 +77,7 @@
                         🌍</a></h1>
             </div>
             <div class="flex flex-row gap-3 z-30">
-                <button class="m-0 sm:my-1 text-neutral-500 dark:text-neutral-400" v-on:click="showStatsModal = !showStatsModal" aria-label="statistics">
+                <a href="/stats" class="m-0 sm:my-1 text-neutral-500 dark:text-neutral-400" aria-label="statistics">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24" height="24"
                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -87,7 +87,7 @@
                         <rect x="15" y="4" width="6" height="16" rx="1"></rect>
                         <line x1="4" y1="20" x2="18" y2="20"></line>
                     </svg>
-                </button>
+                </a>
                 <button class="m-0 sm:my-1 text-neutral-500 dark:text-neutral-400" v-on:click="showSettingsModal = !showSettingsModal" aria-label="settings">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24" height="24"
                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -165,7 +165,7 @@
 
         <!-- NOTIFICATIONS & MODALS-->
         <div class="container mx-auto flex w-full max-w-lg justify-center items-center overflow-auto z-1" v-cloak>
-            {% set modals = "showAboutModal || showStatsModal || showSettingsModal" %}
+            {% set modals = "showAboutModal || showSettingsModal" %}
             {% include 'partials/_modal_backdrop.html' %}
 
             <!-- About modal -->
@@ -193,118 +193,6 @@
                             Hebrew. Stats <a href="/stats" target="_blank" class="text-neutral-500 dark:text-neutral-400 underline">here</a>.</p>
                         <p class="text-center text-sm">A lot of other great Wordle spin-offs exist, and I've linked a bunch below for easy access. (credit: <a href="https://rwmpelstilzchen.gitlab.io/wordles/" class="text-neutral-500 dark:text-neutral-400 underline">Wordles of the World</a>)</p>
                         <p class="text-center text-sm">Have fun, and I hope you enjoy!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div v-show="showStatsModal" class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto" v-cloak>
-                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
-                    v-cloak>
-                    <div class="flex flex-col gap-2 relative">
-                        <button type="button" v-on:click="showStatsModal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
-                            <span class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none">×</span>
-                        </button>
-                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">{{ ui.global_stats or "Global Stats" }}</h3>
-
-                        <!-- Summary stats grid -->
-                        <div class="grid grid-cols-2 gap-3 mb-2">
-                            <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold">[[total_stats.total_games || 0]]</div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.games_played or "Games Played" }}</div>
-                            </div>
-                            <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold">[[Math.round(total_stats.total_win_percentage || 0)]]%</div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.win_rate or "Win Rate" }}</div>
-                            </div>
-                            <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold">
-                                    <span v-if="total_stats.current_overall_streak > 0">🔥</span>[[total_stats.current_overall_streak || 0]]
-                                </div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.current_streak or "Current Streak" }}</div>
-                            </div>
-                            <div class="bg-neutral-100 dark:bg-neutral-700 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold">[[total_stats.languages_won?.length || 0]]</div>
-                                <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.languages_won or "Languages Won" }}</div>
-                            </div>
-                        </div>
-
-                        <!-- Best streaks -->
-                        <div class="flex flex-row text-sm">
-                            <div class="flex-grow text-neutral-600 dark:text-neutral-400">{{ ui.best_overall_streak or "Best Overall Streak" }}:</div>
-                            <div class="font-bold">[[total_stats.longest_overall_streak || 0]]</div>
-                        </div>
-                        <div class="flex flex-row text-sm" v-if="total_stats.current_longest_language_streak_language">
-                            <div class="flex-grow text-neutral-600 dark:text-neutral-400">
-                                {{ ui.best_active_streak or "Best Active Streak" }} ([[languages[total_stats.current_longest_language_streak_language]?.language_name]]):
-                            </div>
-                            <div class="font-bold">🔥 [[total_stats.current_longest_language_streak]]</div>
-                        </div>
-
-                        <!-- Per-language breakdown -->
-                        <div class="flex flex-row mt-4 mb-2">
-                            <div class="flex-grow uppercase tracking-wider font-bold text-sm">{{ ui.your_languages or "Your Languages" }}</div>
-                        </div>
-
-                        <div v-if="Object.keys(total_stats.game_stats || {}).length === 0" class="text-sm text-neutral-500 dark:text-neutral-400">
-                            {{ ui.no_games_yet or "You haven't played any games yet. Pick a language to start!" }}
-                        </div>
-
-                        <!-- Language list with expandable details -->
-                        <div class="flex flex-col gap-2 max-h-64 overflow-y-auto">
-                            <div v-for="(stats, lang_code) in total_stats.game_stats" :key="lang_code"
-                                class="border border-neutral-200 dark:border-neutral-600 rounded-lg overflow-hidden">
-                                <!-- Language header (clickable) -->
-                                <button v-on:click="toggleLanguageExpansion(lang_code)"
-                                    class="w-full flex items-center justify-between p-3 hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors cursor-pointer">
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-medium">[[languages[lang_code]?.language_name_native]]</span>
-                                        <span class="text-xs text-neutral-500 dark:text-neutral-400">[[languages[lang_code]?.language_name]]</span>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <span v-if="stats.current_streak > 0" class="text-orange-500 text-sm font-bold">🔥[[stats.current_streak]]</span>
-                                        <span class="text-sm text-neutral-500 dark:text-neutral-400">[[stats.n_games]] games</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-neutral-400 transition-transform"
-                                            :class="expandedLanguage === lang_code ? 'rotate-180' : ''"
-                                            viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </button>
-                                <!-- Expanded details -->
-                                <div v-show="expandedLanguage === lang_code"
-                                    class="px-3 pb-3 pt-1 border-t border-neutral-200 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-700/50">
-                                    <div class="grid grid-cols-3 gap-2 text-center text-sm">
-                                        <div>
-                                            <div class="font-bold text-green-600 dark:text-green-400">[[stats.n_wins]]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.wins or "Wins" }}</div>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-red-600 dark:text-red-400">[[stats.n_losses]]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.losses or "Losses" }}</div>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold">[[Math.round(stats.win_percentage)]]%</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.win_rate or "Win Rate" }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-2 text-center text-sm mt-2">
-                                        <div>
-                                            <div class="font-bold">[[stats.avg_attempts?.toFixed(1) || '-']]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.avg_attempts or "Avg Attempts" }}</div>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold">[[stats.longest_streak]]</div>
-                                            <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ ui.best_streak or "Best Streak" }}</div>
-                                        </div>
-                                    </div>
-                                    <button v-on:click.stop="selectLanguageWithCode(lang_code)"
-                                        class="w-full mt-3 py-2 bg-green-500 hover:bg-green-600 text-white text-sm font-medium rounded transition-colors">
-                                        {{ ui.play or "Play" }} [[languages[lang_code]?.language_name]]
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
