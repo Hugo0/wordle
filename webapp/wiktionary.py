@@ -8,8 +8,12 @@ with fallback to English Wiktionary REST API.
 import json
 import os
 import re
+import time
 import urllib.parse
 import urllib.request as urlreq
+
+# Negative cache entries expire after 7 days (seconds)
+NEGATIVE_CACHE_TTL = 7 * 24 * 3600
 
 # Language codes where the Wiktionary subdomain differs from the game's lang code
 WIKT_LANG_MAP = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
@@ -313,14 +317,18 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
         lang_cache_dir = os.path.join(cache_dir, lang_code)
         cache_path = os.path.join(lang_cache_dir, f"{word.lower()}.json")
 
-        # Check cache — includes negative results ({"not_found": true})
+        # Check cache — includes negative results ({"not_found": true, "ts": ...})
         if os.path.exists(cache_path):
             try:
                 with open(cache_path, "r") as f:
                     loaded = json.load(f)
                     if loaded.get("not_found"):
-                        return None
-                    if loaded:
+                        # Negative entries expire so parser improvements get retried
+                        cached_ts = loaded.get("ts", 0)
+                        if time.time() - cached_ts < NEGATIVE_CACHE_TTL:
+                            return None
+                        # Expired — fall through to re-fetch
+                    elif loaded:
                         return loaded
             except Exception:
                 pass
@@ -375,7 +383,7 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
         try:
             os.makedirs(lang_cache_dir, exist_ok=True)
             with open(cache_path, "w") as f:
-                json.dump(result or {"not_found": True}, f)
+                json.dump(result or {"not_found": True, "ts": int(time.time())}, f)
         except IOError:
             pass
 
