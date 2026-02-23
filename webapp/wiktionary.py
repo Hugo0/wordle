@@ -313,11 +313,13 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
         lang_cache_dir = os.path.join(cache_dir, lang_code)
         cache_path = os.path.join(lang_cache_dir, f"{word.lower()}.json")
 
-        # Check cache first (skip empty {} entries — those are failed lookups to retry)
+        # Check cache — includes negative results ({"not_found": true})
         if os.path.exists(cache_path):
             try:
                 with open(cache_path, "r") as f:
                     loaded = json.load(f)
+                    if loaded.get("not_found"):
+                        return None
                     if loaded:
                         return loaded
             except Exception:
@@ -368,12 +370,12 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
             except Exception:
                 pass
 
-    # Cache result (even None as empty object to avoid re-fetching)
+    # Cache result (including negative results to avoid re-fetching from Wiktionary)
     if lang_cache_dir:
         try:
             os.makedirs(lang_cache_dir, exist_ok=True)
             with open(cache_path, "w") as f:
-                json.dump(result or {}, f)
+                json.dump(result or {"not_found": True}, f)
         except IOError:
             pass
 
