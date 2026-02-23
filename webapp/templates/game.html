@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ language.language_code }}" class="min-h-full">
+<html lang="{{ language.language_code }}" class="min-h-full" translate="no">
 {% from 'partials/_toggle_switch.html' import toggle_switch %}
 {% include 'partials/_dark_mode_init.html' %}
 
 <head>
     {% include 'partials/_base_head.html' %}
+    {# Suppress Chrome translate bar — the game is already localized #}
+    <meta name="google" content="notranslate">
 
     {# Page-specific SEO meta tags #}
     {% set title = "Play Wordle in " ~ language.config.name ~ " — Free Daily Word Game (" ~ language.config.name_native ~ ")" %}
@@ -61,11 +63,11 @@
     </script>
 </head>
 
-<body class="min-h-[100dvh] h-[100dvh] overflow-hidden overscroll-none bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+<body class="min-h-[100svh] h-[100svh] overflow-hidden overscroll-none bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
     {% include 'partials/_loading_skeleton.html' %}
 
-    <div id="app" class="min-h-[100dvh] h-[100dvh]" style="display: none;">
-        <div class="min-h-[100dvh] h-[100dvh]">
+    <div id="app" class="min-h-[100svh] h-[100svh]" style="display: none;">
+        <div class="min-h-[100svh] h-[100svh]">
             <div class="wrapper container mx-auto flex flex-col h-full w-full max-w-lg safe-area-inset">
                 <!-- The Header -->
                 <header
@@ -449,6 +451,9 @@
                                     class="inline-flex items-center gap-1 text-sm text-green-600 dark:text-green-400 hover:underline">
                                     <template v-if="communityTotal <= 1">
                                         First to play today!
+                                    </template>
+                                    <template v-else-if="communityPercentile === 0">
+                                        Top score today!
                                     </template>
                                     <template v-else>
                                         {{ language.config.ui.better_than or "Better than" }} [[ communityPercentile ]]% {{ language.config.ui.of_players or "of players" }}
