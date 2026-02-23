@@ -110,7 +110,6 @@ export default function createIndexApp(): App {
         methods: {
             keyDown(event: KeyboardEvent): void {
                 if (event.key === 'Escape') {
-                    this.showStatsModal = false;
                     this.showAboutModal = false;
                     this.showSettingsModal = false;
                 }
@@ -290,13 +289,21 @@ export default function createIndexApp(): App {
             },
 
             getCurrentStreak(language_code: string): number {
-                const stats = this.total_stats.game_stats?.[language_code];
-                return stats?.current_streak ?? 0;
+                const results = this.game_results[language_code];
+                if (!results) return 0;
+                let streak = 0;
+                for (let i = results.length - 1; i >= 0; i--) {
+                    if (results[i].won) streak++;
+                    else break;
+                }
+                return streak;
             },
 
             getWinRate(language_code: string): number {
-                const stats = this.total_stats.game_stats?.[language_code];
-                return stats?.win_percentage ?? 0;
+                const results = this.game_results[language_code];
+                if (!results || results.length === 0) return 0;
+                const wins = results.filter((r) => r.won).length;
+                return (wins / results.length) * 100;
             },
 
             filterWordles(search_text: string): void {
