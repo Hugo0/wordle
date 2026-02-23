@@ -927,10 +927,19 @@ def _build_stats_data():
 
     earliest_stats_idx = None
 
+    total_daily_words_all = 0
+
     for lc in language_codes:
         n_words = len(language_codes_5words.get(lc, []))
         n_supplement = len(language_codes_5words_supplements.get(lc, []))
         total_words_all += n_words + n_supplement
+
+        # Daily words and blocklist counts
+        daily = language_daily_words.get(lc)
+        n_daily = len(daily) if daily else 0
+        n_blocklist = len(language_blocklists.get(lc, set()))
+        has_schedule = bool(language_curated_schedules.get(lc))
+        total_daily_words_all += n_daily if n_daily else n_words
 
         # Aggregate community stats from cached files (if any)
         lang_total_plays = 0
@@ -961,6 +970,9 @@ def _build_stats_data():
                 "name_native": languages[lc].get("language_name_native", ""),
                 "n_words": n_words,
                 "n_supplement": n_supplement,
+                "n_daily": n_daily,
+                "n_blocklist": n_blocklist,
+                "has_schedule": has_schedule,
                 "total_plays": lang_total_plays,
                 "total_wins": lang_total_wins,
                 "win_rate": (
@@ -980,10 +992,15 @@ def _build_stats_data():
     if earliest_stats_idx is not None:
         stats_since_date = idx_to_date(earliest_stats_idx).strftime("%B %d, %Y")
 
+    # Count languages with curated daily words
+    n_curated = sum(1 for ls in lang_stats if ls["n_daily"] > 0)
+
     data = {
         "lang_stats": lang_stats,
         "total_languages": len(language_codes),
         "total_words": total_words_all,
+        "total_daily_words": total_daily_words_all,
+        "n_curated": n_curated,
         "total_puzzles": todays_idx * len(language_codes),
         "todays_idx": todays_idx,
         "global_plays": global_plays,
