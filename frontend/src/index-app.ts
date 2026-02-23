@@ -302,7 +302,7 @@ export default function createIndexApp(): App {
             getWinRate(language_code: string): number {
                 const results = this.game_results[language_code];
                 if (!results || results.length === 0) return 0;
-                const wins = results.filter((r) => r.won).length;
+                const wins = results.filter((r: GameResult) => r.won).length;
                 return (wins / results.length) * 100;
             },
 
