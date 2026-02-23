@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}" {% if config.get('right_to_left') == 'true' %}dir="rtl"{% endif %} class="min-h-full">
+{% include 'partials/_dark_mode_init.html' %}
+
+<head>
+    {% include 'partials/_base_head.html' %}
+
+    {% set title = "All Wordle Words in " ~ lang_name ~ " — Daily Word Archive (" ~ lang_name_native ~ ")" %}
+    {% set description = "Browse all " ~ todays_idx ~ " past Wordle words in " ~ lang_name ~ " (" ~ lang_name_native ~ "). See definitions, AI art, and community stats for every daily word." %}
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description[:200] }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:url" content="https://wordle.global/{{ lang_code }}/words">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="{{ description[:200] }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="wordle.global">
+    <meta property="twitter:url" content="https://wordle.global/{{ lang_code }}/words">
+    <meta property="twitter:title" content="{{ title }}">
+    <meta property="twitter:description" content="{{ description[:200] }}">
+
+    <link rel="canonical" href="https://wordle.global/{{ lang_code }}/words{% if page > 1 %}?page={{ page }}{% endif %}">
+    {% if page > 1 %}
+    <link rel="prev" href="https://wordle.global/{{ lang_code }}/words{% if page > 2 %}?page={{ page - 1 }}{% endif %}">
+    {% endif %}
+    {% if page < total_pages %}
+    <link rel="next" href="https://wordle.global/{{ lang_code }}/words?page={{ page + 1 }}">
+    {% endif %}
+    {% include 'partials/_hreflang.html' %}
+
+    {# Structured data: CollectionPage with ItemList #}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "{{ title }}",
+        "description": "{{ description[:200] }}",
+        "url": "https://wordle.global/{{ lang_code }}/words",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Wordle Global",
+            "url": "https://wordle.global"
+        },
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": {{ words | length }},
+            "itemListElement": [
+                {% for w in words %}
+                {
+                    "@type": "ListItem",
+                    "position": {{ loop.index + (page - 1) * 30 }},
+                    "url": "https://wordle.global/{{ lang_code }}/word/{{ w.day_idx }}",
+                    "name": "{{ w.word | upper }} — Wordle {{ lang_name_native }} #{{ w.day_idx }}"
+                }{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ]
+        }
+    }
+    </script>
+</head>
+
+<body class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <div class="max-w-4xl mx-auto px-4 py-6">
+
+        {# Header #}
+        <header class="text-center mb-6">
+            <a href="/{{ lang_code }}" class="text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
+                &larr; Play Wordle {{ lang_name_native }}
+            </a>
+            <h1 class="text-2xl font-bold mt-2">Wordle {{ lang_name_native }} — All Words</h1>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                {{ "{:,}".format(todays_idx) }} daily words and counting
+            </p>
+        </header>
+
+        {# Word Grid #}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {% for w in words %}
+            <a href="/{{ lang_code }}/word/{{ w.day_idx }}"
+               class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group">
+
+                {# Word tiles (mini) #}
+                <div class="flex justify-center gap-1 mb-2">
+                    {% for letter in w.word %}
+                    <div class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-green-500 rounded uppercase">
+                        {{ letter }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {# Day and date #}
+                <p class="text-xs text-neutral-400 text-center">#{{ w.day_idx }} &middot; {{ w.date.strftime('%b %d, %Y') }}</p>
+
+                {# Definition snippet #}
+                {% if w.definition and w.definition.definition %}
+                <p class="text-xs text-neutral-600 dark:text-neutral-300 mt-1 line-clamp-2 text-center">
+                    {{ w.definition.definition[:80] }}{% if w.definition.definition|length > 80 %}…{% endif %}
+                </p>
+                {% endif %}
+
+                {# Stats summary #}
+                {% if w.stats and w.stats.total > 0 %}
+                <div class="flex justify-center gap-3 mt-2 text-[10px] text-neutral-400">
+                    <span>{{ w.stats.total }} plays</span>
+                    <span>{{ (w.stats.wins / w.stats.total * 100) | round(0) | int }}% win</span>
+                </div>
+                {% endif %}
+
+                {# AI art thumbnail (hidden until loaded) #}
+                <div class="mt-2 overflow-hidden rounded" style="display: none;" id="img-{{ w.day_idx }}">
+                    <img src="/{{ lang_code }}/api/word-image/{{ w.word }}?day_idx={{ w.day_idx }}"
+                         alt="{{ w.word }}"
+                         class="w-full h-24 object-cover"
+                         onload="this.parentElement.style.display='block'"
+                         onerror="this.parentElement.style.display='none'">
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        {# Pagination #}
+        {% if total_pages > 1 %}
+        <nav class="flex justify-center items-center gap-4 mb-6">
+            {% if page > 1 %}
+            <a href="/{{ lang_code }}/words{% if page > 2 %}?page={{ page - 1 }}{% endif %}"
+               class="py-2 px-4 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 border border-blue-500 dark:border-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+                &larr; Newer
+            </a>
+            {% endif %}
+            <span class="text-sm text-neutral-500 dark:text-neutral-400">Page {{ page }} of {{ total_pages }}</span>
+            {% if page < total_pages %}
+            <a href="/{{ lang_code }}/words?page={{ page + 1 }}"
+               class="py-2 px-4 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 border border-blue-500 dark:border-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+                Older &rarr;
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
+
+        {# CTA #}
+        <div class="text-center mb-4">
+            <a href="/{{ lang_code }}"
+                class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors">
+                Play Today's Wordle
+            </a>
+        </div>
+
+        <p class="text-center text-xs text-neutral-400">
+            <a href="/stats" class="hover:underline">Global Stats</a>
+            &middot;
+            <a href="https://github.com/Hugo0/wordle" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                Open source on GitHub
+            </a>
+        </p>
+    </div>
+</body>
+</html>

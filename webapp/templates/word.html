@@ -172,6 +172,33 @@
             {% endif %}
         </nav>
 
+        <p class="text-center mt-4">
+            <a href="/{{ lang_code }}/words"
+                class="text-xs text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300">
+                View all {{ lang_name_native }} words
+            </a>
+        </p>
+
+        {# Discussion (Giscus — GitHub Discussions) #}
+        <div class="mt-6 mb-2">
+            <script src="https://giscus.app/client.js"
+                data-repo="Hugo0/wordle"
+                data-repo-id="R_kgDOG5D4ng"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOG5D4ns4C3DFk"
+                data-mapping="pathname"
+                data-strict="1"
+                data-reactions-enabled="1"
+                data-emit-metadata="1"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="{{ lang_code[:2] }}"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </div>
+
         {# Report bad word #}
         <p class="text-center mt-6 mb-2">
             <a href="https://github.com/Hugo0/wordle/issues/new?title=Bad+word:+{{ word }}+({{ lang_code }}+%23{{ day_idx }})&body=Language:+{{ lang_code }}%0AWord:+{{ word }}%0ADay:+%23{{ day_idx }}%0A%0APlease+describe+the+issue:" target="_blank" rel="noopener noreferrer"
@@ -226,6 +253,21 @@
             })
             .catch(() => {});
         {% endif %}
+
+        // Sync Giscus theme with site's dark mode (localStorage overrides OS preference)
+        function syncGiscusTheme() {
+            var iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            var isDark = document.documentElement.classList.contains('dark');
+            iframe.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
+                'https://giscus.app'
+            );
+        }
+        window.addEventListener('message', function(event) {
+            if (event.origin !== 'https://giscus.app') return;
+            syncGiscusTheme();
+        });
     </script>
 </body>
 </html>

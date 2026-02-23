@@ -24,6 +24,41 @@ def strip_html(text):
     return re.sub(r"<[^>]+>", "", text).strip()
 
 
+def _fallback_extract_definition(extract, word=None):
+    """Last-resort heuristic: grab first substantive line after any == header.
+
+    Catches Wiktionaries (e.g. Hebrew) where definitions appear directly
+    after the word heading without a POS subsection.
+    """
+    lines = extract.split("\n")
+    after_header = False
+    skip_sections = re.compile(
+        r"^={2,4}\s*(Etymology|Pronunciation|Etym|Pronunc|הגייה|מקור|"
+        r"References|See also|External|Anagrams|Derived|Related|Translations|"
+        r"Übersetzung|Etimología|Etimologia|Étymologie|Herkunft)",
+        re.IGNORECASE,
+    )
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        if re.match(r"^={2,4}\s*", line):
+            after_header = not skip_sections.match(line)
+            continue
+        if not after_header:
+            continue
+        # Skip IPA, pronunciation, metadata lines
+        if re.match(r"^(IPA|Rhymes|Homophones|\[|//|\\)", line):
+            continue
+        # Skip if it's just the word itself
+        if word and line.lower() == word.lower():
+            continue
+        # Skip very short or very long lines
+        if len(line) > 5 and len(line) < 300:
+            return line[:300]
+    return None
+
+
 def parse_wikt_definition(extract, word=None):
     """Extract a definition line from a Wiktionary plaintext extract.
 
@@ -47,21 +82,18 @@ def parse_wikt_definition(extract, word=None):
                 break
 
     # == headers that mark definition sections (e.g. "==== Noun ====")
-    # Covers: English, French, Spanish, Portuguese, Italian, German, Swedish,
-    # Danish, Dutch, Finnish, Estonian, Lithuanian, Hungarian, Breton, Occitan,
-    # Azerbaijani/Turkish, Armenian, Kurdish, Vietnamese
     defn_headers = re.compile(
         r"^={2,4}\s*("
         # English
         r"Noun|Verb|Adjective|Adverb|Pronoun|Preposition|Conjunction|Interjection|"
         # French
-        r"Nom commun|Verbe|Adjectif|Adverbe|Forme de verbe|"
-        # Spanish
-        r"Sustantivo\b|Verbo|Adjetivo|Adverbio|"
+        r"Nom commun|Verbe|Adjectif|Adverbe|Forme de verbe|Forme de nom commun|"
+        # Spanish (including form headers)
+        r"Sustantivo\b|Verbo|Adjetivo|Adverbio|" r"Forma adjetiva|Forma sustantiva|Forma verbal|"
         # Portuguese / Italian
         r"Substantivo|Sostantivo|Aggettivo|"
-        # German / Swedish / Danish / Norwegian
-        r"Substantiv\w*\b|Adjektiv\w*\b|"
+        # German / Swedish / Danish / Norwegian / Romanian
+        r"Substantiv\w*\b|Adjektiv\w*\b|Verb\b|"
         # Finnish
         r"Substantiivi|Adjektiivi|Verbi|Adverbi|Pronomini|"
         # Estonian
@@ -84,18 +116,42 @@ def parse_wikt_definition(extract, word=None):
         r"Danh từ|Động từ|Tính từ|"
         # Arabic
         r"المعاني|"
-        # Bulgarian (POS + grammar info: "Съществително нарицателно име, ...")
+        # Bulgarian
         r"Съществително|Прилагателно|Глагол|"
-        # Russian (definitions under "Значение" = Meaning)
+        # Russian
         r"Значение|"
         # Dutch
-        r"Bijvoeglijk naamwoord|Zelfstandig naamwoord|Werkwoord" r")",
+        r"Bijvoeglijk naamwoord|Zelfstandig naamwoord|Werkwoord|"
+        # Croatian / Bosnian
+        r"Imenica|Glagol|Pridjev|Prilog|"
+        # Serbian (Cyrillic)
+        r"Именица|Глагол\b|Придев|Прилог|"
+        # Slovenian
+        r"Samostalnik|Pridevnik|"
+        # Greek
+        r"Ουσιαστικό|Ρήμα|Επίθετο|"
+        # Hebrew
+        r"שם עצם|פועל|שם תואר|"
+        # Romanian
+        r"Adjectiv|"
+        # Czech / Slovak
+        r"Podstatné jméno|Sloveso|Přídavné jméno|" r"Podstatné meno|Prídavné meno|"
+        # Georgian
+        r"არსებითი სახელი|ზმნა|"
+        # Catalan
+        r"Nom\b|Adjectiu|"
+        # Indonesian / Malay
+        r"Nomina|Verba|Adjektiva|"
+        # Ukrainian
+        r"Іменник|Дієслово|Прикметник" r")",
         re.IGNORECASE,
     )
 
     # Plain-text markers that start definition blocks (German, Polish, etc.)
     # Polish Wiktionary uses "== word (język polski) ==" headers with inline definitions
-    defn_text_markers = re.compile(r"^(Bedeutungen|znaczenia)\s*:?\s*$", re.IGNORECASE)
+    defn_text_markers = re.compile(
+        r"^(Bedeutungen|znaczenia|Значення|Значэнне)\s*:?\s*$", re.IGNORECASE
+    )
 
     # Lines to always skip within a definition section
     skip_line = re.compile(
@@ -109,7 +165,9 @@ def parse_wikt_definition(extract, word=None):
         r"synonimy:|antonimy:|hiperonimy:|hiponimy:|holonimy:|meronimy:|"
         r"wyrazy pokrewne:|związki frazeologiczne:|etymologia:|"
         r"Cognate |From |Du |Del |Do |Uit |Vom |Van |Derived |Compare |"
-        r"rzeczownik|przymiotnik|przysłówek|czasownik"
+        r"rzeczownik|przymiotnik|przysłówek|czasownik|"
+        r"Deklinacija|Konjugacija|Склонение|Склоненье|"
+        r"תעתיק|הגייה"
         r")",
         re.IGNORECASE,
     )
@@ -162,6 +220,9 @@ def parse_wikt_definition(extract, word=None):
         # Skip headword lines like "beslemek (üçüncü tekil ...)" — word + parenthetical
         if word and re.match(re.escape(word) + r"\s*\(", line, re.IGNORECASE):
             continue
+        # Skip headword lines with gender markers: "kuća ž", "dom m", "casa f"
+        if word and re.match(re.escape(word) + r"\s+[mfnžcMFNŽC]\b", line, re.IGNORECASE):
+            continue
 
         # Skip inflection lines like "casa ¦ plural: casas"
         if re.match(r"^\S+\s*¦", line):
@@ -180,7 +241,7 @@ def parse_wikt_definition(extract, word=None):
         if re.match(r"^\w+\s*\(?\s*approfondimento", line, re.IGNORECASE):
             continue
         # Skip "de wereld v / m" style (Dutch headword with gender)
-        if re.match(r"^(de|het|een|die|das|der)\s+\w+\s+[vmfn]\b", line, re.IGNORECASE):
+        if re.match(r"^(de|het|een|die|das|der)\s+\w+\s+[vmfno]\b", line, re.IGNORECASE):
             continue
         if re.match(
             r"^[a-záàâãéèêíóòôõúüçñ.·ˈˌ]+,?\s*(masculino|feminino|comum|neutro|féminin|masculin|m\s|f\s|m sing|f sing)",
@@ -230,7 +291,8 @@ def parse_wikt_definition(extract, word=None):
         if len(line) > 3:
             return line[:300]
 
-    return None
+    # Structured parser found nothing — try fallback heuristic
+    return _fallback_extract_definition(extract, word=word)
 
 
 # Language-specific lemma suffixes to try when a word isn't found in Wiktionary.
@@ -241,18 +303,88 @@ LEMMA_SUFFIXES = {
     "az": ["mək", "maq"],  # Azerbaijani infinitive
 }
 
+# Suffix stripping rules for inflected forms: (suffix_to_strip, replacement)
+# Longer suffixes listed first so they match before shorter ones.
+LEMMA_STRIP_RULES = {
+    # Romance: plural/gender suffixes
+    "es": [("es", ""), ("as", "a"), ("os", "o"), ("s", "")],
+    "pt": [("ões", "ão"), ("es", ""), ("as", "a"), ("os", "o"), ("s", "")],
+    "fr": [("eaux", "eau"), ("aux", "al"), ("es", "e"), ("s", "")],
+    "it": [
+        ("chi", "co"),
+        ("ghi", "go"),
+        ("ni", "ne"),
+        ("li", "le"),
+        ("hi", "o"),
+        ("i", "o"),
+        ("e", "a"),
+    ],
+    "ca": [("ns", "n"), ("es", ""), ("s", "")],
+    "ro": [("uri", ""), ("i", ""), ("e", "")],
+    # Germanic
+    "de": [("ern", ""), ("en", ""), ("er", ""), ("e", "")],
+    "nl": [("en", ""), ("er", ""), ("s", "")],
+    "sv": [
+        ("arna", ""),
+        ("orna", ""),
+        ("erna", ""),
+        ("ar", ""),
+        ("er", ""),
+        ("or", ""),
+        ("en", ""),
+        ("et", ""),
+        ("na", ""),
+    ],
+    "nb": [("ene", ""), ("er", ""), ("et", "")],
+    "nn": [("ane", ""), ("ar", ""), ("et", "")],
+    # Slavic
+    "hr": [("ovima", ""), ("evima", ""), ("ovi", ""), ("evi", ""), ("a", ""), ("i", ""), ("e", "")],
+    "sr": [("ови", ""), ("еви", ""), ("а", ""), ("и", ""), ("е", "")],
+    "bg": [("етата", "е"), ("ите", ""), ("ата", ""), ("ът", ""), ("та", ""), ("а", ""), ("и", "")],
+    "ru": [("ов", ""), ("ей", ""), ("а", ""), ("ы", ""), ("и", "")],
+    "uk": [("ів", ""), ("ей", ""), ("а", ""), ("и", ""), ("і", "")],
+    "cs": [("ů", ""), ("ech", ""), ("y", ""), ("e", ""), ("i", "")],
+    "sk": [("ov", ""), ("ách", ""), ("y", ""), ("e", ""), ("i", "")],
+    "sl": [("ov", ""), ("ev", ""), ("i", ""), ("e", ""), ("a", "")],
+    # Finno-Ugric (common case endings)
+    "fi": [
+        ("ssa", ""),
+        ("ssä", ""),
+        ("sta", ""),
+        ("stä", ""),
+        ("lla", ""),
+        ("llä", ""),
+        ("lta", ""),
+        ("ltä", ""),
+        ("n", ""),
+        ("t", ""),
+    ],
+    "et": [("de", ""), ("te", ""), ("d", "")],
+    "hu": [("ban", ""), ("ben", ""), ("nak", ""), ("nek", ""), ("k", ""), ("t", "")],
+}
+
+
+def _build_candidates(word, lang_code):
+    """Generate lookup candidates: original, title-case, lemma additions, lemma stripping."""
+    candidates = [word]
+    if word[0].islower():
+        candidates.append(word[0].upper() + word[1:])
+    # Suffix additions (agglutinative: e.g. Turkish "besle" → "beslemek")
+    for suffix in LEMMA_SUFFIXES.get(lang_code, []):
+        candidates.append(word + suffix)
+    # Suffix stripping (inflected forms: e.g. Spanish "galas" → "gala")
+    for strip_suffix, replacement in LEMMA_STRIP_RULES.get(lang_code, []):
+        if word.lower().endswith(strip_suffix) and len(word) > len(strip_suffix):
+            base = word[: len(word) - len(strip_suffix)] + replacement
+            if len(base) >= 2 and base not in candidates:
+                candidates.append(base)
+    return candidates
+
 
 def fetch_native_wiktionary(word, lang_code):
     """Try native-language Wiktionary via MediaWiki API. Returns dict or None."""
     wikt_lang = WIKT_LANG_MAP.get(lang_code, lang_code)
-
-    # Try original case first, then title-case (German nouns are capitalized)
-    candidates = [word]
-    if word[0].islower():
-        candidates.append(word[0].upper() + word[1:])
-    # Try lemma forms for agglutinative languages (e.g. "besle" → "beslemek")
-    for suffix in LEMMA_SUFFIXES.get(lang_code, []):
-        candidates.append(word + suffix)
+    candidates = _build_candidates(word, lang_code)
 
     for try_word in candidates:
         api_url = (
@@ -306,10 +438,139 @@ def fetch_english_definition(word, lang_code):
     return None
 
 
+_FORM_OF_RE = re.compile(
+    r"^(?:(?:feminine|masculine|neuter|singular|plural|diminutive|augmentative|"
+    r"alternative|comparative|superlative|past|present|gerund|"
+    r"(?:first|second|third)[- ]person|imperative|infinitive|"
+    r"nominative|genitive|dative|accusative|ablative|instrumental)\s+)*"
+    r"(?:form|plural|tense|participle|conjugation)?\s*"
+    r"(?:of|de|di|du|von|van)\s+(\w+)",
+    re.IGNORECASE,
+)
+
+
+def _follow_form_of(definition, lang_code):
+    """If definition is 'X form of Y', look up Y and return its definition."""
+    m = _FORM_OF_RE.match(definition)
+    if m:
+        base_word = m.group(1)
+        defn = fetch_english_definition(base_word, lang_code)
+        if defn:
+            return defn
+    return None
+
+
+# Language names for LLM fallback prompts (allowlist — only languages we're confident about)
+LLM_LANG_NAMES = {
+    "en": "English",
+    "fi": "Finnish",
+    "de": "German",
+    "fr": "French",
+    "es": "Spanish",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "nl": "Dutch",
+    "sv": "Swedish",
+    "nb": "Norwegian Bokmål",
+    "nn": "Norwegian Nynorsk",
+    "da": "Danish",
+    "pl": "Polish",
+    "ru": "Russian",
+    "uk": "Ukrainian",
+    "bg": "Bulgarian",
+    "hr": "Croatian",
+    "sr": "Serbian",
+    "sl": "Slovenian",
+    "cs": "Czech",
+    "sk": "Slovak",
+    "ro": "Romanian",
+    "hu": "Hungarian",
+    "tr": "Turkish",
+    "az": "Azerbaijani",
+    "et": "Estonian",
+    "lt": "Lithuanian",
+    "lv": "Latvian",
+    "el": "Greek",
+    "ka": "Georgian",
+    "hy": "Armenian",
+    "he": "Hebrew",
+    "ar": "Arabic",
+    "fa": "Persian",
+    "vi": "Vietnamese",
+    "id": "Indonesian",
+    "ms": "Malay",
+    "ca": "Catalan",
+    "gl": "Galician",
+    "eu": "Basque",
+    "br": "Breton",
+    "oc": "Occitan",
+    "la": "Latin",
+    "ko": "Korean",
+    "sq": "Albanian",
+    "mk": "Macedonian",
+    "is": "Icelandic",
+    "ga": "Irish",
+    "cy": "Welsh",
+    "mt": "Maltese",
+    "hyw": "Western Armenian",
+    "ckb": "Central Kurdish",
+}
+
+
+def fetch_llm_definition(word, lang_code):
+    """Generate a definition using OpenAI gpt-4o-mini as last resort.
+
+    Returns dict with keys: definition, source, url — or None.
+    Only called when both native and English Wiktionary fail.
+    """
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        return None
+    lang_name = LLM_LANG_NAMES.get(lang_code)
+    if not lang_name:
+        return None
+
+    prompt = (
+        f"Define the {lang_name} word '{word}' in one short sentence in English. "
+        f"If it has a clear part of speech, prefix with it (e.g. 'noun: ...'). "
+        f"If you're not confident about this word, respond with just 'UNKNOWN'."
+    )
+
+    try:
+        req = urlreq.Request(
+            "https://api.openai.com/v1/chat/completions",
+            data=json.dumps(
+                {
+                    "model": "gpt-4o-mini",
+                    "messages": [{"role": "user", "content": prompt}],
+                    "max_tokens": 80,
+                    "temperature": 0,
+                }
+            ).encode(),
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+        )
+        with urlreq.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+            text = data["choices"][0]["message"]["content"].strip()
+            if "UNKNOWN" in text.upper() or len(text) < 3:
+                return None
+            return {
+                "definition": text[:300],
+                "source": "ai",
+                "url": None,
+            }
+    except Exception:
+        return None
+
+
 def fetch_definition_cached(word, lang_code, cache_dir=None):
     """Fetch definition from Wiktionary with disk caching.
 
-    Tries native-language Wiktionary first, falls back to English Wiktionary.
+    Tries native-language Wiktionary first, falls back to English Wiktionary,
+    then to LLM generation as a last resort.
     Returns dict with keys: definition, part_of_speech, source, url.
     Returns None if no definition found.
     """
@@ -340,11 +601,9 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
     result = fetch_native_wiktionary(word, lang_code)
 
     # Fall back to English Wiktionary REST API
-    # Try the word itself, then lemma forms for agglutinative languages
+    # Use _build_candidates for broader lookup (includes lemma stripping)
     if not result:
-        en_candidates = [word.lower()]
-        for suffix in LEMMA_SUFFIXES.get(lang_code, []):
-            en_candidates.append(word.lower() + suffix)
+        en_candidates = _build_candidates(word.lower(), lang_code)
         for try_word in en_candidates:
             if result:
                 break
@@ -358,25 +617,47 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
                             for defn in entry.get("definitions", []):
                                 raw_def = defn.get("definition", "")
                                 clean_def = strip_html(raw_def)
-                                if clean_def and not re.match(
+                                if not clean_def:
+                                    continue
+                                # Try to follow "form of" definitions
+                                if re.match(
                                     r"^(synonym|plural|feminine|masculine|diminutive|augmentative|"
-                                    r"alternative|archaic|obsolete|dated|rare)\s+(form\s+)?of\s+",
+                                    r"alternative|archaic|obsolete|dated|rare|singular|"
+                                    r"(?:first|second|third)[- ]person|past|present|"
+                                    r"comparative|superlative|nominative|genitive|"
+                                    r"dative|accusative|instrumental|imperative|"
+                                    r"infinitive|(?:\w+ )?(?:form|tense|participle))\s+"
+                                    r"(?:form\s+)?of\s+",
                                     clean_def,
                                     re.IGNORECASE,
                                 ):
-                                    result = {
-                                        "definition": clean_def[:300],
-                                        "part_of_speech": entry.get("partOfSpeech"),
-                                        "source": "english",
-                                        "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(try_word)}",
-                                    }
-                                    break
+                                    followed = _follow_form_of(clean_def, lang_code)
+                                    if followed:
+                                        result = {
+                                            "definition": followed[:300],
+                                            "part_of_speech": entry.get("partOfSpeech"),
+                                            "source": "english",
+                                            "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(try_word)}",
+                                        }
+                                        break
+                                    continue  # Skip "form of" if can't follow
+                                result = {
+                                    "definition": clean_def[:300],
+                                    "part_of_speech": entry.get("partOfSpeech"),
+                                    "source": "english",
+                                    "url": f"https://en.wiktionary.org/wiki/{urllib.parse.quote(try_word)}",
+                                }
+                                break
                             if result:
                                 break
                         if result:
                             break
             except Exception:
                 pass
+
+    # LLM fallback as last resort
+    if not result:
+        result = fetch_llm_definition(word, lang_code)
 
     # Cache result (including negative results to avoid re-fetching from Wiktionary)
     if lang_cache_dir:

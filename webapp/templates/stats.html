@@ -10,14 +10,18 @@
     <meta property="og:title" content="Wordle Global Stats">
     <meta property="og:description" content="{{ total_languages }} languages, {{ "{:,}".format(total_words) }} words. Free daily word game in dozens of languages.">
     <meta property="og:url" content="https://wordle.global/stats">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="Wordle Global Stats">
+    <meta property="twitter:description" content="{{ total_languages }} languages, {{ "{:,}".format(total_words) }} words. Free daily word game in dozens of languages.">
     <link rel="canonical" href="https://wordle.global/stats">
     {% include 'partials/_hreflang.html' %}
 </head>
 
 <body class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
-    <div class="max-w-lg mx-auto px-4 py-6">
+    <div class="max-w-4xl mx-auto px-4 py-6">
 
-        {# Header — matches word.html pattern #}
+        {# Header #}
         <header class="text-center mb-6">
             <a href="/" class="text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
                 &larr; Home
@@ -28,109 +32,221 @@
             </p>
         </header>
 
-        {# Global Stats — grid in a card #}
-        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
-                Overview
-            </h2>
-            <div class="grid grid-cols-2 gap-3 text-center">
-                <div>
-                    <p class="text-xl font-bold text-green-500">{{ total_languages }}</p>
-                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages</p>
-                </div>
-                <div>
-                    <p class="text-xl font-bold">{{ "{:,}".format(total_words) }}</p>
-                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Total Words</p>
-                </div>
-                <div>
-                    <p class="text-xl font-bold">{{ "{:,}".format(todays_idx) }}</p>
-                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Days Running</p>
-                </div>
-                <div>
-                    <p class="text-xl font-bold">{{ "{:,}".format(total_puzzles) }}</p>
-                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Puzzles Served</p>
-                </div>
-            </div>
+        {# Tab bar #}
+        <div class="flex border-b border-neutral-200 dark:border-neutral-700 mb-4 max-w-lg mx-auto" role="tablist">
+            <button id="tab-my-stats" role="tab" aria-selected="false" aria-controls="panel-my-stats"
+                onclick="switchTab('my-stats')"
+                class="flex-1 py-2 text-sm font-medium transition-colors border-b-2 text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300">
+                My Stats
+            </button>
+            <button id="tab-languages" role="tab" aria-selected="true" aria-controls="panel-languages"
+                onclick="switchTab('languages')"
+                class="flex-1 py-2 text-sm font-medium transition-colors border-b-2 text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200">
+                Languages
+            </button>
         </div>
 
-        {# Community Stats (only show if we have data) #}
-        {% if global_plays > 0 %}
-        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1 text-center">
-                Community Stats
-            </h2>
-            {% if stats_since_date %}
-            <p class="text-[10px] text-neutral-400 dark:text-neutral-500 text-center mb-3">Since {{ stats_since_date }}</p>
-            {% endif %}
-            <div class="grid grid-cols-3 gap-2 text-center">
-                <div>
-                    <p class="text-lg font-bold">{{ "{:,}".format(global_plays) }}</p>
-                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Played</p>
-                </div>
-                <div>
-                    <p class="text-lg font-bold">{{ "{:,}".format(global_wins) }}</p>
-                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Won</p>
-                </div>
-                <div>
-                    <p class="text-lg font-bold text-green-500">{{ global_win_rate }}%</p>
-                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win Rate</p>
-                </div>
-            </div>
-        </div>
-        {% endif %}
+        {# ===== MY STATS TAB (populated by JS) ===== #}
+        <div id="panel-my-stats" role="tabpanel" aria-labelledby="tab-my-stats" style="display: none;">
+            <div class="max-w-lg mx-auto">
 
-        {# Word count bar chart #}
-        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
-                Words by Language
-            </h2>
-            <div class="space-y-1.5">
-                {% set max_words = lang_stats[0].n_words if lang_stats else 1 %}
-                {% for lang in lang_stats %}
-                <div class="flex items-center gap-2">
-                    <a href="/{{ lang.code }}" class="w-10 text-xs text-neutral-500 dark:text-neutral-400 text-right shrink-0 hover:text-blue-500 font-mono">
-                        {{ lang.code }}
+                {# Empty state #}
+                <div id="my-stats-empty" class="text-center py-8" style="display: none;">
+                    <p class="text-neutral-500 dark:text-neutral-400 mb-4">You haven't played any games yet.</p>
+                    <a href="/"
+                        class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors">
+                        Pick a Language
                     </a>
-                    <div class="flex-1 h-3.5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
-                        <div class="h-full bg-green-500 rounded-sm" style="width: {{ (lang.n_words / max_words * 100) | round(1) }}%"></div>
-                    </div>
-                    <span class="w-14 text-[10px] text-neutral-400 text-right tabular-nums">{{ "{:,}".format(lang.n_words) }}</span>
                 </div>
-                {% endfor %}
+
+                {# Stats content (hidden until JS populates) #}
+                <div id="my-stats-content" style="display: none;">
+                    {# Summary grid #}
+                    <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                            <div>
+                                <p class="text-xl font-bold" id="my-total-games">0</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Played</p>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold" id="my-win-rate">0%</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win Rate</p>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold" id="my-current-streak">0</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Current Streak</p>
+                            </div>
+                            <div>
+                                <p class="text-xl font-bold" id="my-languages-won">0</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages Won</p>
+                            </div>
+                        </div>
+                        {# Secondary row: avg attempts + best streak #}
+                        <div class="grid grid-cols-2 gap-3 text-center mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-700">
+                            <div>
+                                <p class="text-lg font-bold" id="my-avg-attempts">-</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Avg Attempts</p>
+                            </div>
+                            <div>
+                                <p class="text-lg font-bold" id="my-best-streak">0</p>
+                                <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Best Streak</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Guess distribution #}
+                    <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+                        <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center">
+                            Guess Distribution
+                        </h2>
+                        <div id="my-distribution" class="space-y-0.5"></div>
+                    </div>
+
+                    {# Per-language list #}
+                    <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+                        <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3">
+                            Your Languages
+                        </h2>
+                        <div id="my-language-list" class="space-y-2 max-h-80 overflow-y-auto"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        {# Language list #}
-        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
-                All Languages ({{ total_languages }})
-            </h2>
-            <div class="divide-y divide-neutral-200 dark:divide-neutral-700">
-                {% for lang in lang_stats %}
-                <div class="flex items-center justify-between py-1.5">
-                    <div>
-                        <a href="/{{ lang.code }}" class="text-sm text-blue-600 dark:text-blue-400 hover:underline font-medium">
-                            {{ lang.name }}
-                        </a>
-                        {% if lang.name_native and lang.name_native != lang.name %}
-                        <span class="text-xs text-neutral-400 dark:text-neutral-500 ml-1">{{ lang.name_native }}</span>
-                        {% endif %}
-                    </div>
-                    <div class="flex items-center gap-3 text-xs tabular-nums text-neutral-500 dark:text-neutral-400">
-                        <span>{{ "{:,}".format(lang.n_words) }} words</span>
-                        {% if lang.n_supplement > 0 %}
-                        <span class="text-neutral-400 dark:text-neutral-500">+{{ "{:,}".format(lang.n_supplement) }}</span>
-                        {% endif %}
-                        {% if global_plays > 0 and lang.total_plays > 0 %}
-                        <span class="text-green-500">{{ lang.win_rate }}%</span>
-                        {% endif %}
+        {# ===== LANGUAGES TAB (server-rendered) ===== #}
+        <div id="panel-languages" role="tabpanel" aria-labelledby="tab-languages">
+
+            {# Global Stats overview #}
+            <div class="max-w-lg mx-auto">
+                <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+                    <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
+                        Overview
+                    </h2>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div>
+                            <p class="text-xl font-bold text-green-500">{{ total_languages }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold">{{ "{:,}".format(total_words) }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Total Words</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold">{{ "{:,}".format(total_daily_words) }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Daily Word Pool</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold">{{ n_curated }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Curated Languages</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold">{{ "{:,}".format(todays_idx) }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Days Running</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold">{{ "{:,}".format(total_puzzles) }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Puzzles Served</p>
+                        </div>
                     </div>
                 </div>
-                {% endfor %}
+
+                {# Community Stats (only show if we have data) #}
+                {% if global_plays > 0 %}
+                <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+                    <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1 text-center">
+                        Community Stats
+                    </h2>
+                    {% if stats_since_date %}
+                    <p class="text-[10px] text-neutral-400 dark:text-neutral-500 text-center mb-3">Since {{ stats_since_date }}</p>
+                    {% endif %}
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <div>
+                            <p class="text-lg font-bold">{{ "{:,}".format(global_plays) }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Played</p>
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold">{{ "{:,}".format(global_wins) }}</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Won</p>
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold text-green-500">{{ global_win_rate }}%</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win Rate</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            {# Language table — full width #}
+            <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
+                <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
+                    All Languages ({{ total_languages }})
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs">
+                        <thead>
+                            <tr class="text-left text-neutral-400 dark:text-neutral-500 border-b border-neutral-200 dark:border-neutral-700">
+                                <th class="py-2 pr-2 font-medium">Language</th>
+                                <th class="py-2 px-2 font-medium text-right">Daily Words</th>
+                                <th class="py-2 px-2 font-medium text-right">Total Words</th>
+                                {% if global_plays > 0 %}
+                                <th class="py-2 px-2 font-medium text-right">Plays</th>
+                                <th class="py-2 pl-2 font-medium text-right">Win %</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-neutral-100 dark:divide-neutral-700/50">
+                            {% for lang in lang_stats %}
+                            <tr class="hover:bg-neutral-100 dark:hover:bg-neutral-700/50">
+                                <td class="py-1.5 pr-2">
+                                    <a href="/{{ lang.code }}/words" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                                        {{ lang.name }}
+                                    </a>
+                                    {% if lang.name_native and lang.name_native != lang.name %}
+                                    <span class="text-neutral-400 dark:text-neutral-500 ml-1">{{ lang.name_native }}</span>
+                                    {% endif %}
+                                    {% if lang.has_schedule %}
+                                    <span class="ml-1 text-[9px] bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-1 rounded">curated</span>
+                                    {% endif %}
+                                </td>
+                                <td class="py-1.5 px-2 text-right tabular-nums {% if lang.n_daily >= 2000 %}text-green-600 dark:text-green-400{% elif lang.n_daily >= 1000 %}text-yellow-600 dark:text-yellow-400{% elif lang.n_daily > 0 %}text-orange-500{% else %}text-neutral-300 dark:text-neutral-600{% endif %}">
+                                    {% if lang.n_daily > 0 %}
+                                    {{ "{:,}".format(lang.n_daily) }}
+                                    {% else %}
+                                    &mdash;
+                                    {% endif %}
+                                </td>
+                                <td class="py-1.5 px-2 text-right tabular-nums text-neutral-500 dark:text-neutral-400">
+                                    {{ "{:,}".format(lang.n_words + lang.n_supplement) }}
+                                </td>
+                                {% if global_plays > 0 %}
+                                <td class="py-1.5 px-2 text-right tabular-nums text-neutral-400 dark:text-neutral-500">
+                                    {% if lang.total_plays > 0 %}
+                                    {{ "{:,}".format(lang.total_plays) }}
+                                    {% else %}
+                                    &mdash;
+                                    {% endif %}
+                                </td>
+                                <td class="py-1.5 pl-2 text-right tabular-nums {% if lang.win_rate and lang.win_rate >= 70 %}text-green-500{% elif lang.win_rate and lang.win_rate >= 50 %}text-yellow-500{% elif lang.win_rate %}text-red-500{% else %}text-neutral-300 dark:text-neutral-600{% endif %}">
+                                    {% if lang.win_rate is not none %}
+                                    {{ lang.win_rate }}%
+                                    {% else %}
+                                    &mdash;
+                                    {% endif %}
+                                </td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3 text-[10px] text-neutral-400 dark:text-neutral-500 space-y-0.5">
+                    <p><strong>Daily Words</strong> = curated daily word pool. <strong>Total Words</strong> = all valid 5-letter words (including guesses). Color: <span class="text-green-600 dark:text-green-400">green</span> = 2,000+, <span class="text-yellow-600 dark:text-yellow-400">yellow</span> = 1,000+, <span class="text-orange-500">orange</span> = &lt;1,000, <span class="text-neutral-400">&mdash;</span> = not yet curated.</p>
+                </div>
             </div>
         </div>
 
-        {# CTA — matches word.html and 404 pattern #}
+        {# CTA #}
         <div class="text-center mb-4">
             <a href="/"
                 class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors">
@@ -144,5 +260,161 @@
             </a>
         </p>
     </div>
+
+    <script>
+    // Tab switching
+    function switchTab(tab) {
+        var tabs = ['my-stats', 'languages'];
+        for (var i = 0; i < tabs.length; i++) {
+            var t = tabs[i];
+            var btn = document.getElementById('tab-' + t);
+            var panel = document.getElementById('panel-' + t);
+            if (t === tab) {
+                panel.style.display = '';
+                btn.setAttribute('aria-selected', 'true');
+                btn.className = btn.className.replace(/text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300/, 'text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200');
+            } else {
+                panel.style.display = 'none';
+                btn.setAttribute('aria-selected', 'false');
+                btn.className = btn.className.replace(/text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200/, 'text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300');
+            }
+        }
+        if (tab === 'my-stats') loadMyStats();
+    }
+
+    // Personal stats calculation (mirrors game.ts logic)
+    var _myStatsLoaded = false;
+    function loadMyStats() {
+        if (_myStatsLoaded) return;
+        _myStatsLoaded = true;
+
+        var raw = null;
+        try { raw = localStorage.getItem('game_results'); } catch(e) {}
+        var gameResults = raw ? JSON.parse(raw) : {};
+        var langCodes = Object.keys(gameResults);
+
+        if (langCodes.length === 0) {
+            document.getElementById('my-stats-empty').style.display = '';
+            return;
+        }
+
+        // Language name cache (populated by homepage Vue app)
+        var langCache = {};
+        try { langCache = JSON.parse(localStorage.getItem('languages_cache') || '{}'); } catch(e) {}
+
+        // Per-language stats
+        var totalGames = 0, totalWins = 0, totalLosses = 0, totalAttempts = 0;
+        var longestOverallStreak = 0, currentOverallStreak = 0;
+        var languagesWon = 0;
+        var dist = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0};
+        var perLang = [];
+
+        // All results sorted by date for overall streak
+        var allResults = [];
+        for (var i = 0; i < langCodes.length; i++) {
+            var lc = langCodes[i];
+            var results = gameResults[lc];
+            for (var j = 0; j < results.length; j++) {
+                allResults.push({won: results[j].won, attempts: results[j].attempts, date: results[j].date});
+            }
+        }
+        allResults.sort(function(a, b) { return new Date(a.date) - new Date(b.date); });
+
+        for (var i = 0; i < allResults.length; i++) {
+            var r = allResults[i];
+            if (r.won) {
+                currentOverallStreak++;
+                if (currentOverallStreak > longestOverallStreak) longestOverallStreak = currentOverallStreak;
+                var att = parseInt(r.attempts, 10);
+                if (att >= 1 && att <= 6) { dist[att]++; totalAttempts += att; }
+                totalWins++;
+            } else {
+                totalLosses++;
+                currentOverallStreak = 0;
+            }
+            totalGames++;
+        }
+
+        for (var i = 0; i < langCodes.length; i++) {
+            var lc = langCodes[i];
+            var results = gameResults[lc];
+            var wins = 0, losses = 0, attempts = 0, streak = 0, best = 0;
+            for (var j = 0; j < results.length; j++) {
+                var r = results[j];
+                if (r.won) {
+                    wins++; streak++;
+                    if (streak > best) best = streak;
+                    var att = parseInt(r.attempts, 10);
+                    if (!isNaN(att)) attempts += att;
+                } else {
+                    losses++; streak = 0;
+                }
+            }
+            if (wins > 0) languagesWon++;
+
+            var langName = lc;
+            var langNameNative = '';
+            if (langCache[lc]) {
+                langName = langCache[lc].language_name || lc;
+                langNameNative = langCache[lc].language_name_native || '';
+            }
+
+            perLang.push({
+                code: lc, name: langName, nameNative: langNameNative,
+                games: wins + losses, wins: wins, losses: losses,
+                winPct: (wins + losses) > 0 ? Math.round(wins / (wins + losses) * 100) : 0,
+                avgAttempts: wins > 0 ? (attempts / wins).toFixed(1) : '-',
+                streak: streak, best: best
+            });
+        }
+
+        perLang.sort(function(a, b) { return b.games - a.games; });
+
+        // Populate summary
+        document.getElementById('my-total-games').textContent = totalGames.toLocaleString();
+        document.getElementById('my-win-rate').textContent = totalGames > 0 ? Math.round(totalWins / totalGames * 100) + '%' : '0%';
+        document.getElementById('my-current-streak').textContent = (currentOverallStreak > 0 ? '\uD83D\uDD25' : '') + currentOverallStreak;
+        document.getElementById('my-languages-won').textContent = languagesWon;
+        document.getElementById('my-avg-attempts').textContent = totalWins > 0 ? (totalAttempts / totalWins).toFixed(1) : '-';
+        document.getElementById('my-best-streak').textContent = longestOverallStreak;
+
+        // Build guess distribution bars
+        var maxDist = Math.max(dist[1], dist[2], dist[3], dist[4], dist[5], dist[6], 1);
+        var distHtml = '';
+        for (var n = 1; n <= 6; n++) {
+            var count = dist[n];
+            var pct = Math.max(count > 0 ? (count / maxDist) * 100 : 0, count > 0 ? 8 : 0);
+            distHtml += '<div class="flex items-center gap-1.5">';
+            distHtml += '<span class="w-3 text-xs font-medium text-neutral-500">' + n + '</span>';
+            distHtml += '<div class="flex-1 h-5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">';
+            distHtml += '<div class="h-full flex items-center justify-end px-1.5 text-[10px] font-bold text-white rounded-sm bg-green-500" style="width:' + pct + '%">' + count + '</div>';
+            distHtml += '</div></div>';
+        }
+        document.getElementById('my-distribution').innerHTML = distHtml;
+
+        // Build per-language list
+        var list = document.getElementById('my-language-list');
+        var html = '';
+        for (var i = 0; i < perLang.length; i++) {
+            var l = perLang[i];
+            html += '<div class="flex items-center justify-between py-2 px-3 bg-white dark:bg-neutral-700/50 rounded-lg">';
+            html += '<div>';
+            html += '<a href="/' + l.code + '" class="font-medium text-sm text-blue-600 dark:text-blue-400 hover:underline">' + l.name + '</a>';
+            if (l.nameNative && l.nameNative !== l.name) {
+                html += '<span class="text-xs text-neutral-400 ml-1">' + l.nameNative + '</span>';
+            }
+            html += '</div>';
+            html += '<div class="flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">';
+            html += '<span>' + l.games + ' games</span>';
+            html += '<span>' + l.winPct + '%</span>';
+            html += '<span>' + l.avgAttempts + ' avg</span>';
+            if (l.streak > 0) html += '<span class="text-orange-500 font-bold">\uD83D\uDD25' + l.streak + '</span>';
+            html += '</div></div>';
+        }
+        list.innerHTML = html;
+
+        document.getElementById('my-stats-content').style.display = '';
+    }
+    </script>
 </body>
 </html>

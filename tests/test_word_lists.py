@@ -331,3 +331,50 @@ class TestDailyWordQuality:
             pytest.skip(f"{lang}: No daily words")
         romans = [w for w in daily if is_roman_numeral(w)]
         assert not romans, f"{lang}: Found Roman numerals in daily words: {romans[:10]}"
+
+    def test_arabic_no_rare_characters_in_daily_words(self):
+        """Arabic daily words should not contain very rare characters (< 3% frequency).
+
+        Characters like آ, إ, ؤ, ى, ظ appear in < 3% of words, making them
+        nearly impossible to guess through elimination.
+        """
+        daily = load_daily_words("ar")
+        if not daily:
+            pytest.skip("No Arabic daily words")
+        from collections import defaultdict
+
+        char_counts = defaultdict(int)
+        for w in daily:
+            for c in set(w):
+                char_counts[c] += 1
+        char_freq = {c: count / len(daily) for c, count in char_counts.items()}
+        threshold = 0.03
+        rare_chars = {c for c, f in char_freq.items() if f < threshold}
+        bad_words = [w for w in daily if any(c in rare_chars for c in w)]
+        assert not bad_words, (
+            f"Arabic: {len(bad_words)} daily words contain characters below "
+            f"{threshold*100:.0f}% frequency. Rare chars: {rare_chars}. "
+            f"Examples: {bad_words[:5]}"
+        )
+
+    def test_hebrew_no_large_suffix_groups_in_daily_words(self):
+        """Hebrew daily words should not have large suffix variant groups.
+
+        Groups of 3+ words sharing a stem with different possessive/construct
+        suffixes waste the daily word pool with near-identical words.
+        """
+        daily = load_daily_words("he")
+        if not daily:
+            pytest.skip("No Hebrew daily words")
+        from collections import defaultdict
+
+        suffixes = {"ו", "י", "ם", "ן", "ה", "ך", "ת"}
+        groups = defaultdict(list)
+        for word in daily:
+            if len(word) == 5 and word[-1] in suffixes:
+                groups[word[:-1]].append(word)
+        large_groups = {stem: variants for stem, variants in groups.items() if len(variants) >= 3}
+        assert not large_groups, (
+            f"Hebrew: {len(large_groups)} suffix groups with 3+ variants. "
+            f"Examples: {dict(list(large_groups.items())[:3])}"
+        )

@@ -444,6 +444,29 @@ def process_language(
     # Sort alphabetically for reviewability
     daily_words.sort()
 
+    # === Character difficulty filter ===
+    # For languages with large character sets (e.g., Arabic), remove words
+    # containing very rare characters that make them nearly impossible to guess.
+    CHAR_DIFFICULTY_THRESHOLD = {"ar": 0.03}
+    if lang in CHAR_DIFFICULTY_THRESHOLD:
+        threshold = CHAR_DIFFICULTY_THRESHOLD[lang]
+        from collections import defaultdict
+
+        char_counts = defaultdict(int)
+        for w in daily_words:
+            for c in set(w):
+                char_counts[c] += 1
+        char_freq = {c: count / len(daily_words) for c, count in char_counts.items()}
+        rare_chars = {c for c, f in char_freq.items() if f < threshold}
+        if rare_chars:
+            pre_filter = len(daily_words)
+            daily_words = [w for w in daily_words if not any(c in rare_chars for c in w)]
+            removed = pre_filter - len(daily_words)
+            print(
+                f"  Character difficulty filter ({threshold*100:.0f}%): "
+                f"removed {removed} words with rare chars {rare_chars}"
+            )
+
     # Safety: every daily word must be in existing word list
     invalid_daily = [w for w in daily_words if w not in existing_word_set]
     assert not invalid_daily, f"BUG: daily words not in _5words.txt: {invalid_daily[:5]}"

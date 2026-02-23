@@ -927,10 +927,19 @@ def _build_stats_data():
 
     earliest_stats_idx = None
 
+    total_daily_words_all = 0
+
     for lc in language_codes:
         n_words = len(language_codes_5words.get(lc, []))
         n_supplement = len(language_codes_5words_supplements.get(lc, []))
         total_words_all += n_words + n_supplement
+
+        # Daily words and blocklist counts
+        daily = language_daily_words.get(lc)
+        n_daily = len(daily) if daily else 0
+        n_blocklist = len(language_blocklists.get(lc, set()))
+        has_schedule = bool(language_curated_schedules.get(lc))
+        total_daily_words_all += n_daily if n_daily else n_words
 
         # Aggregate community stats from cached files (if any)
         lang_total_plays = 0
@@ -961,6 +970,9 @@ def _build_stats_data():
                 "name_native": languages[lc].get("language_name_native", ""),
                 "n_words": n_words,
                 "n_supplement": n_supplement,
+                "n_daily": n_daily,
+                "n_blocklist": n_blocklist,
+                "has_schedule": has_schedule,
                 "total_plays": lang_total_plays,
                 "total_wins": lang_total_wins,
                 "win_rate": (
@@ -980,10 +992,15 @@ def _build_stats_data():
     if earliest_stats_idx is not None:
         stats_since_date = idx_to_date(earliest_stats_idx).strftime("%B %d, %Y")
 
+    # Count languages with curated daily words
+    n_curated = sum(1 for ls in lang_stats if ls["n_daily"] > 0)
+
     data = {
         "lang_stats": lang_stats,
         "total_languages": len(language_codes),
         "total_words": total_words_all,
+        "total_daily_words": total_daily_words_all,
+        "n_curated": n_curated,
         "total_puzzles": todays_idx * len(language_codes),
         "todays_idx": todays_idx,
         "global_plays": global_plays,
@@ -1068,11 +1085,16 @@ def sitemap_index():
 
 @app.route("/sitemap-main.xml")
 def sitemap_main():
-    """Sitemap for homepage and language pages."""
+    """Sitemap for homepage, language pages, and words hub pages."""
+    import math
+
+    todays_idx = get_todays_idx()
+    hub_total_pages = math.ceil(todays_idx / 30) if todays_idx > 0 else 1
     response = make_response(
         render_template(
             "sitemap_main.xml",
             languages=languages,
+            hub_total_pages=hub_total_pages,
             base_url=SITEMAP_BASE_URL,
         )
     )
@@ -1110,6 +1132,70 @@ def sitemap_words(lang_code):
     )
     response.headers["Content-Type"] = "application/xml"
     return response
+
+
+@app.route("/<lang_code>/words")
+def language_words_hub(lang_code):
+    """Gallery of all historical daily words for a language."""
+    if lang_code not in language_codes:
+        abort(404)
+
+    config = language_configs[lang_code]
+    lang_name = config.get("name", lang_code)
+    lang_name_native = config.get("name_native", lang_name)
+    tz = config.get("timezone", "UTC")
+    todays_idx = get_todays_idx(tz)
+
+    # Pagination: 30 words per page, page 1 = most recent
+    page = request.args.get("page", 1, type=int)
+    per_page = 30
+    total_pages = max(1, (todays_idx + per_page - 1) // per_page)
+    page = max(1, min(page, total_pages))
+
+    start_idx = todays_idx - (page - 1) * per_page
+    end_idx = max(1, start_idx - per_page + 1)
+
+    words = []
+    for day_idx in range(start_idx, end_idx - 1, -1):
+        word = get_word_for_day(lang_code, day_idx)
+        word_date = idx_to_date(day_idx)
+
+        # Load cached definition (fast disk read)
+        definition = None
+        def_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
+        if os.path.exists(def_path):
+            try:
+                with open(def_path, "r") as f:
+                    loaded = json.load(f)
+                    if loaded and loaded.get("definition"):
+                        definition = loaded
+            except Exception:
+                pass
+
+        word_stats = _load_word_stats(lang_code, day_idx)
+
+        words.append(
+            {
+                "day_idx": day_idx,
+                "word": word,
+                "date": word_date,
+                "definition": definition,
+                "stats": word_stats,
+            }
+        )
+
+    return render_template(
+        "words_hub.html",
+        lang_code=lang_code,
+        lang_name=lang_name,
+        lang_name_native=lang_name_native,
+        words=words,
+        page=page,
+        total_pages=total_pages,
+        todays_idx=todays_idx,
+        config=config,
+        hreflang_url_pattern="https://wordle.global/{lang}/words",
+    )
 
 
 # arbitrary app route
@@ -1392,6 +1478,10 @@ def submit_word_stats(lang_code):
             _stats_seen_ips[dedup_key] = True
 
         _update_word_stats(lang_code, day_idx, won, attempts)
+        # Return updated stats so client can compute percentile
+        updated_stats = _load_word_stats(lang_code, day_idx)
+        if updated_stats:
+            return jsonify(updated_stats), 200
         return "", 200
     except Exception:
         logging.exception("Stats submission failed for %s", lang_code)
