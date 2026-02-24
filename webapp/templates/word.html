@@ -192,7 +192,7 @@
                 data-emit-metadata="1"
                 data-input-position="bottom"
                 data-theme="light"
-                data-lang="{{ lang_code[:2] }}"
+                data-lang="{{ lang_code[:2] if lang_code[:2] in ['ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 'eo', 'es', 'eu', 'fa', 'fr', 'he', 'hu', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr', 'uk', 'uz', 'vi'] else 'en' }}"
                 data-loading="lazy"
                 crossorigin="anonymous"
                 async>
