@@ -452,7 +452,7 @@
                                     <template v-if="communityTotal <= 1">
                                         First to play today!
                                     </template>
-                                    <template v-else-if="communityPercentile === 0">
+                                    <template v-else-if="communityIsTopScore">
                                         Top score today!
                                     </template>
                                     <template v-else>

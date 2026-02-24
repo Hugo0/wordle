@@ -9,6 +9,7 @@ import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
 import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
 import analytics from './analytics';
+import { calculateCommunityPercentile } from './stats';
 import {
     fetchDefinition,
     renderDefinitionCard,
@@ -117,6 +118,7 @@ interface GameData {
     languages: Record<string, LanguageInfo>;
     shareButtonState: 'idle' | 'success';
     communityPercentile: number | null;
+    communityIsTopScore: boolean;
     communityTotal: number;
     communityStatsLink: string | null;
 }
@@ -303,6 +305,7 @@ export const createGameApp = () => {
                 },
                 languages: {},
                 communityPercentile: null,
+                communityIsTopScore: false,
                 communityTotal: 0,
                 communityStatsLink: null,
             };
@@ -371,6 +374,12 @@ export const createGameApp = () => {
             if (this.game_over) {
                 this.show_stats_modal = true;
                 this.loadDefinition();
+                // Re-fetch community stats so percentile updates with latest data
+                const attempts =
+                    typeof this.attempts === 'number'
+                        ? this.attempts
+                        : parseInt(String(this.attempts), 10) || 0;
+                this.submitWordStats(this.game_won, attempts);
             }
         },
 
@@ -1168,7 +1177,7 @@ export const createGameApp = () => {
             getShareText(): string {
                 const name = this.config?.name_native || this.config?.language_code || '';
                 const langCode = this.config?.language_code ?? '';
-                return `Wordle ${name} #${this.todays_idx} ${this.attempts}/6\nwordle.global/${langCode}\n\n${this.emoji_board}`;
+                return `Wordle ${name} #${this.todays_idx} — ${this.attempts}/6\n\n${this.emoji_board}\n\nhttps://wordle.global/${langCode}`;
             },
 
             toggleDarkMode(): void {
@@ -1295,6 +1304,19 @@ export const createGameApp = () => {
                 }
             },
 
+            getClientId(): string {
+                try {
+                    let id = localStorage.getItem('client_id');
+                    if (!id) {
+                        id = crypto.randomUUID();
+                        localStorage.setItem('client_id', id);
+                    }
+                    return id;
+                } catch {
+                    return 'unknown';
+                }
+            },
+
             submitWordStats(won: boolean, attempts: number | string): void {
                 const langCode = this.config?.language_code;
                 const dayIdx = parseInt(String(this.todays_idx), 10);
@@ -1308,19 +1330,18 @@ export const createGameApp = () => {
                             day_idx: dayIdx,
                             attempts: typeof attempts === 'number' ? attempts : 0,
                             won,
+                            client_id: this.getClientId(),
                         }),
                     })
                         .then((resp) => (resp.ok ? resp.json() : null))
                         .then((stats) => {
                             if (!stats || !stats.total || !won) return;
                             const playerAttempts = typeof attempts === 'number' ? attempts : 7;
-                            let worsePlayers = stats.losses || 0;
-                            for (let i = playerAttempts + 1; i <= 6; i++) {
-                                worsePlayers += stats.distribution?.[String(i)] || 0;
+                            const result = calculateCommunityPercentile(playerAttempts, stats);
+                            if (result !== null) {
+                                this.communityPercentile = result.percentile;
+                                this.communityIsTopScore = result.isTopScore;
                             }
-                            this.communityPercentile = Math.round(
-                                (worsePlayers / stats.total) * 100
-                            );
                             this.communityTotal = stats.total;
                             this.communityStatsLink = `/${langCode}/word/${dayIdx}`;
                         })
