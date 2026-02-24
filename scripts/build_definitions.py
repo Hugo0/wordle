@@ -247,11 +247,11 @@ def download_file(url, dest_path):
             return True
     except urllib.error.HTTPError as e:
         if e.code == 404:
-            print(f"  Not found (404) — skipping")
+            print("  Not found (404) — skipping")
             return False
         raise
-    except Exception as e:
-        print(f"  Error: {e}")
+    except (urllib.error.URLError, OSError) as e:
+        print(f"  Error downloading: {e}")
         return False
 
 
@@ -357,6 +357,36 @@ def _clean_gloss(gloss):
     return gloss
 
 
+import re as _re
+
+# Bare grammatical form labels with no base-word reference (uninformative as game hints)
+_BARE_FORM_RE = _re.compile(
+    r"^(indefinite |definite |strong |mixed |weak )?"
+    r"(nominative|accusative|dative|genitive|singular|plural|masculine|feminine|neuter|"
+    r"first[-/]|second[-/]|third[-/]|imperative)"
+    r"",
+    _re.IGNORECASE,
+)
+
+# Form-of references that provide no real meaning
+_FORM_OF_RE = _re.compile(
+    r"^(alternative (form|spelling)|misspelling|obsolete (form|spelling)|"
+    r"archaic (form|spelling)|clipping|abbreviation|initialism) of\b",
+    _re.IGNORECASE,
+)
+
+
+def _is_unhelpful_gloss(gloss):
+    """Return True if a gloss is a bare grammatical form or unhelpful form-of reference."""
+    if _BARE_FORM_RE.match(gloss):
+        # Allow if it also contains "of " (i.e. references the base word)
+        if " of " not in gloss.lower():
+            return True
+    if _FORM_OF_RE.match(gloss):
+        return True
+    return False
+
+
 def extract_best_gloss(senses, word=None):
     """Extract the first non-empty gloss from senses, preferring informative ones."""
     for sense in senses:
@@ -370,6 +400,9 @@ def extract_best_gloss(senses, word=None):
                 continue
             # Skip self-referential definitions (word == definition)
             if word and gloss.lower().strip().rstrip(".") == word.lower():
+                continue
+            # Skip bare grammatical forms and unhelpful form-of references
+            if _is_unhelpful_gloss(gloss):
                 continue
             return gloss
     return None
@@ -538,10 +571,16 @@ def cmd_stats(lang_codes):
         n_words = len(words)
         total_words += n_words
 
-        def_path = os.path.join(DEFINITIONS_DIR, f"{lc}.json")
-        if os.path.isfile(def_path):
-            with open(def_path, encoding="utf-8") as f:
-                defs = json.load(f)
+        defs = {}
+        native_path = os.path.join(DEFINITIONS_DIR, f"{lc}.json")
+        en_path = os.path.join(DEFINITIONS_DIR, f"{lc}_en.json")
+        if os.path.isfile(native_path):
+            with open(native_path, encoding="utf-8") as f:
+                defs.update(json.load(f))
+        if os.path.isfile(en_path):
+            with open(en_path, encoding="utf-8") as f:
+                defs.update(json.load(f))
+        if defs:
             n_defs = len(defs)
             total_defs += n_defs
             coverage = n_defs * 100 / n_words if n_words else 0

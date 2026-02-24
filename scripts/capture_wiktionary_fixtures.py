@@ -94,8 +94,11 @@ def fetch_extract(word, wikt_lang):
                     extract = page.get("extract", "").strip()
                     if extract:
                         return extract, try_word
-        except Exception as e:
-            pass
+        except Exception as exc:
+            print(
+                f"  {wikt_lang}:{try_word} fetch failed: {exc}",
+                file=sys.stderr,
+            )
 
     return None, word
 

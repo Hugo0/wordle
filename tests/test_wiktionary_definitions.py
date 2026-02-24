@@ -8,7 +8,6 @@ These tests hit the network and are slow. Run explicitly with:
     uv run pytest tests/test_wiktionary_definitions.py -v --run-network --timeout=300
 """
 
-import re
 import sys
 from pathlib import Path
 
@@ -18,7 +17,10 @@ import pytest
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "webapp"))
 
+sys.path.insert(0, str(PROJECT_ROOT / "tests"))
+
 from wiktionary import fetch_native_wiktionary
+from wiktionary_test_utils import is_quality_definition
 
 LANGUAGES_DIR = PROJECT_ROOT / "webapp" / "data" / "languages"
 
@@ -31,79 +33,6 @@ def load_word_list(lang_code):
     with open(word_file, "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
-# Known metadata/garbage patterns that should never appear as definitions
-BAD_START_PATTERNS = re.compile(
-    r"^("
-    r"IPA|Rhymes?|Homophones?|Pronunciation|Pronúncia|Prononciation|Pronunciación|"
-    r"Nebenformen|Aussprache|Worttrennung|Silbentrennung|Hörbeispiele|Reime|"
-    r"Grammatische Merkmale|"
-    r"Étymologie|Etimología|Etimologia|Etymology|Herkunft|"
-    r"Synonym[es]?|Sinónim|Antonym[es]?|"
-    r"Übersetzung|Translation|Tradução|Oberbegriffe|"
-    r"Beispiele|Examples|Uso:|odmiana:|przykłady:|składnia:|"
-    r"Deklinacija|Konjugacija|Склонение|"
-    r"תעתיק|הגייה|"
-    r"wymowa:|"
-    r"rzeczownik|przymiotnik|przysłówek|czasownik|"
-    r"See also|External links|References|Anagrams|"
-    r"Derived terms|Related terms|Translations|"
-    r"Konjugierte Form|Deklinierte Form|"
-    r"From |Du |Del |Do |Uit |Vom |Van |Cognate "
-    r")",
-    re.IGNORECASE,
-)
-
-# Section header pattern
-SECTION_HEADER = re.compile(r"^={2,4}\s*.*={2,4}\s*$")
-
-# Phonetic transcription patterns
-PHONETIC_PATTERN = re.compile(r"^[/\\\[]")
-
-
-def is_quality_definition(word, lang_code, definition):
-    """Check whether a definition string is a real definition vs garbage.
-
-    Returns (is_good, reason) tuple.
-    """
-    if definition is None:
-        return False, "None"
-
-    if not isinstance(definition, str):
-        return False, f"not a string: {type(definition)}"
-
-    definition = definition.strip()
-
-    if not definition:
-        return False, "empty string"
-
-    if len(definition) <= 5:
-        return False, f"too short ({len(definition)} chars): {definition!r}"
-
-    if len(definition) > 500:
-        return False, f"too long ({len(definition)} chars)"
-
-    # Just the word itself
-    if definition.lower() == word.lower():
-        return False, "just the word itself"
-
-    # Section headers
-    if SECTION_HEADER.match(definition):
-        return False, f"section header: {definition!r}"
-
-    # Known bad start patterns
-    if BAD_START_PATTERNS.match(definition):
-        return False, f"metadata pattern: {definition[:80]!r}"
-
-    # Phonetic transcription
-    if PHONETIC_PATTERN.match(definition):
-        return False, f"phonetic transcription: {definition[:80]!r}"
-
-    # Hyphenation line (contains mid-dots)
-    if "·" in definition and len(definition) < 30:
-        return False, f"hyphenation line: {definition!r}"
-
-    return True, "ok"
-
 
 def pick_test_words(lang_code, count=5):
     """Pick `count` words spread across the word list for a language."""
@@ -115,10 +44,9 @@ def pick_test_words(lang_code, count=5):
     if n <= count:
         return words
 
-    # Pick words at evenly spaced indices
-    # For a list of 1000: indices 0, 200, 400, 600, 800
-    # For a list of 10000: indices 0, 100, 300, 700, 1500
-    # Use specific indices that work well across different list sizes
+    # Pick words at spread-out indices (not evenly spaced):
+    # For n=1000:  indices 0, 100, 200, 500, 999
+    # For n=10000: indices 0, 1000, 2000, 5000, 1000
     target_indices = [0, n // 10, n // 5, n // 2, min(n - 1, 1000)]
     # Deduplicate and cap
     seen = set()
@@ -173,7 +101,7 @@ def test_wiktionary_definition(lang_code, word):
     assert "definition" in result, f"Missing 'definition' key in result: {result}"
 
     defn = result["definition"]
-    is_good, reason = is_quality_definition(word, lang_code, defn)
+    is_good, reason = is_quality_definition(word, defn)
 
     if not is_good:
         pytest.fail(
@@ -223,7 +151,7 @@ def test_wiktionary_coverage_summary(capsys):
 
             results["found"] += 1
             defn = result.get("definition", "")
-            is_good, reason = is_quality_definition(word, lang_code, defn)
+            is_good, reason = is_quality_definition(word, defn)
 
             if is_good:
                 results["good"] += 1
@@ -242,7 +170,9 @@ def test_wiktionary_coverage_summary(capsys):
         print("WIKTIONARY DEFINITION COVERAGE SUMMARY")
         print("=" * 80)
         print(f"Total words tested: {results['total']}")
-        print(f"Definitions found:  {results['found']} ({results['found']*100//max(results['total'],1)}%)")
+        print(
+            f"Definitions found:  {results['found']} ({results['found']*100//max(results['total'],1)}%)"
+        )
         print(f"  Good quality:     {results['good']}")
         print(f"  Garbage:          {results['garbage']}")
         print(f"Not found:          {results['not_found']}")

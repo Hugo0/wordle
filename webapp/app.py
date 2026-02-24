@@ -1473,6 +1473,8 @@ def submit_word_stats(lang_code):
             _stats_seen_day = todays_idx
 
         client_id = data.get("client_id") or request.remote_addr or "unknown"
+        if isinstance(client_id, str) and len(client_id) > 64:
+            client_id = client_id[:64]
         dedup_key = f"{lang_code}:{day_idx}:{client_id}"
         if dedup_key in _stats_seen_ips:
             # Duplicate submission — return current stats without updating
