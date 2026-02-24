@@ -376,6 +376,13 @@ _FORM_OF_RE = _re.compile(
 )
 
 
+# Cross-reference entries that provide no definition
+_CROSS_REF_RE = _re.compile(r"^See \w+\.?$", _re.IGNORECASE)
+
+# Sense tags indicating offensive/inappropriate content
+_OFFENSIVE_TAGS = {"derogatory", "offensive", "slur", "vulgar", "pejorative"}
+
+
 def _is_unhelpful_gloss(gloss):
     """Return True if a gloss is a bare grammatical form or unhelpful form-of reference."""
     if _BARE_FORM_RE.match(gloss):
@@ -384,12 +391,27 @@ def _is_unhelpful_gloss(gloss):
             return True
     if _FORM_OF_RE.match(gloss):
         return True
+    if _CROSS_REF_RE.match(gloss):
+        return True
     return False
 
 
+def _is_offensive_sense(sense):
+    """Return True if a sense is tagged as offensive/derogatory/vulgar."""
+    tags = set(sense.get("tags", []))
+    return bool(tags & _OFFENSIVE_TAGS)
+
+
 def extract_best_gloss(senses, word=None):
-    """Extract the first non-empty gloss from senses, preferring informative ones."""
+    """Extract the first non-empty gloss from senses, preferring informative ones.
+
+    Skips senses tagged as offensive/derogatory/vulgar. If ALL senses are
+    offensive, returns None (word gets no definition rather than a slur).
+    """
     for sense in senses:
+        # Skip offensive senses — prefer clean definitions
+        if _is_offensive_sense(sense):
+            continue
         glosses = sense.get("glosses", [])
         if glosses:
             gloss = glosses[-1]  # Last gloss is usually most specific
