@@ -145,6 +145,9 @@ test-results/
 # FrequencyWords data (downloaded by scripts/improve_word_lists.py)
 scripts/.freq_data/
 
+# kaikki.org bulk data (downloaded by scripts/build_definitions.py)
+scripts/.kaikki_data/
+
 # AI-generated word images (cached by word-image endpoint)
 webapp/static/word-images/
 
