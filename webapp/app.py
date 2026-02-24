@@ -1363,11 +1363,13 @@ def word_image(lang_code, word):
         return "Image being generated", 202
 
     # Mark as pending to prevent duplicate DALL-E calls
-    os.makedirs(cache_dir, exist_ok=True)
     try:
+        os.makedirs(cache_dir, exist_ok=True)
         open(pending_path, "x").close()
     except FileExistsError:
         return "Image being generated", 202
+    except OSError:
+        return "Image unavailable", 404
 
     try:
         # Use cached definition for DALL-E prompt (reuses disk cache)
@@ -1380,7 +1382,7 @@ def word_image(lang_code, word):
         result = generate_word_image(word, definition_hint, openai_key, cache_dir, cache_path)
         if result == "ok":
             return send_from_directory(cache_dir, f"{word.lower()}.webp")
-        return "Image generation failed", 500
+        return "Image generation failed", 404
     finally:
         if os.path.exists(pending_path):
             os.unlink(pending_path)
@@ -1464,20 +1466,29 @@ def submit_word_stats(lang_code):
         if day_idx != todays_idx:
             return "", 403
 
-        # IP-based dedup (in-memory, resets on restart)
+        # Client-based dedup (in-memory, resets on restart)
         global _stats_seen_day
         if _stats_seen_day != todays_idx:
             _stats_seen_ips.clear()
             _stats_seen_day = todays_idx
 
-        ip = request.remote_addr or "unknown"
-        dedup_key = f"{lang_code}:{day_idx}:{ip}"
+        client_id = data.get("client_id") or request.remote_addr or "unknown"
+        if isinstance(client_id, str) and len(client_id) > 64:
+            client_id = client_id[:64]
+        dedup_key = f"{lang_code}:{day_idx}:{client_id}"
         if dedup_key in _stats_seen_ips:
-            return "", 200  # Silently accept duplicate
+            # Duplicate submission — return current stats without updating
+            existing_stats = _load_word_stats(lang_code, day_idx)
+            if existing_stats:
+                return jsonify(existing_stats), 200
+            return "", 200
         if len(_stats_seen_ips) < _STATS_MAX_IPS:
             _stats_seen_ips[dedup_key] = True
 
-        _update_word_stats(lang_code, day_idx, won, attempts)
+        try:
+            _update_word_stats(lang_code, day_idx, won, attempts)
+        except OSError:
+            logging.warning("Disk full — stats write skipped for %s", lang_code)
         # Return updated stats so client can compute percentile
         updated_stats = _load_word_stats(lang_code, day_idx)
         if updated_stats:
