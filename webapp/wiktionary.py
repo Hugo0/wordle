@@ -764,8 +764,9 @@ def fetch_llm_definition(word, lang_code):
 
     prompt = (
         f"Define the {lang_name} word '{word}' in one short sentence in English. "
-        f"If it has a clear part of speech, prefix with it (e.g. 'noun: ...'). "
-        f"If you're not confident about this word, respond with just 'UNKNOWN'."
+        f"Prefix with part of speech if clear (e.g. 'noun: ...'). "
+        f"If you are not at all familiar with this word, respond with just 'UNKNOWN'. "
+        f"If you have a reasonable guess, provide it."
     )
 
     try:
@@ -773,7 +774,7 @@ def fetch_llm_definition(word, lang_code):
             "https://api.openai.com/v1/chat/completions",
             data=json.dumps(
                 {
-                    "model": "gpt-4o-mini",
+                    "model": "gpt-4o",
                     "messages": [{"role": "user", "content": prompt}],
                     "max_tokens": 80,
                     "temperature": 0,
