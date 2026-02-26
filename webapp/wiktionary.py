@@ -788,6 +788,7 @@ def fetch_llm_definition(word, lang_code):
             data = json.loads(resp.read())
             text = data["choices"][0]["message"]["content"].strip()
             if "UNKNOWN" in text.upper() or len(text) < 3:
+                print(f"[LLM UNKNOWN] {lang_code}/{word}: response='{text}'", flush=True)
                 return None
             return {
                 "definition": text[:300],
@@ -796,6 +797,7 @@ def fetch_llm_definition(word, lang_code):
             }
     except Exception as e:
         logging.warning(f"LLM definition failed for {lang_code}/{word}: {e}")
+        print(f"[LLM ERROR] {lang_code}/{word}: {type(e).__name__}: {e}", flush=True)
         return None
 
 
