@@ -797,9 +797,11 @@ class Language:
 ###############################################################################
 
 
-def fetch_definition_cached(word, lang_code):
+def fetch_definition_cached(word, lang_code, skip_negative_cache=False):
     """Fetch definition from Wiktionary with disk caching. Delegates to webapp.wiktionary."""
-    return _fetch_definition_cached_impl(word, lang_code, cache_dir=WORD_DEFS_DIR)
+    return _fetch_definition_cached_impl(
+        word, lang_code, cache_dir=WORD_DEFS_DIR, skip_negative_cache=skip_negative_cache
+    )
 
 
 ###############################################################################
@@ -1304,7 +1306,8 @@ def word_definition_api(lang_code, word):
     if word_lower not in all_words:
         return jsonify({"error": "unknown word"}), 404
 
-    result = fetch_definition_cached(word_lower, lang_code)
+    skip_cache = request.args.get("refresh") == "1"
+    result = fetch_definition_cached(word_lower, lang_code, skip_negative_cache=skip_cache)
     if result:
         return jsonify(result)
     return jsonify({"error": "no definition found"}), 404

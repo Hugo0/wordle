@@ -16,7 +16,7 @@ import urllib.parse
 import urllib.request as urlreq
 
 # Negative cache entries expire after 7 days (seconds)
-NEGATIVE_CACHE_TTL = 7 * 24 * 3600
+NEGATIVE_CACHE_TTL = 24 * 3600  # 1 day
 
 # ---------------------------------------------------------------------------
 # Tier 1: Pre-built kaikki.org definitions
@@ -864,7 +864,7 @@ def _fetch_wiktionary_definition(word, lang_code):
     return result
 
 
-def fetch_definition_cached(word, lang_code, cache_dir=None):
+def fetch_definition_cached(word, lang_code, cache_dir=None, skip_negative_cache=False):
     """Fetch a word definition using the 3-tier system.
 
     Tier 1: kaikki.org native definitions (fast, offline, native-language)
@@ -873,6 +873,9 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
     Tier 4: LLM fallback (expensive, last resort)
 
     Tier 1 always checked first (bypasses cache). Tiers 2-4 use disk cache.
+
+    Args:
+        skip_negative_cache: If True, ignore cached "not_found" entries and retry.
 
     Returns dict with keys: definition, part_of_speech, source, url.
     Returns None if no definition found.
@@ -892,9 +895,12 @@ def fetch_definition_cached(word, lang_code, cache_dir=None):
                 with open(cache_path, "r") as f:
                     loaded = json.load(f)
                     if loaded.get("not_found"):
-                        cached_ts = loaded.get("ts", 0)
-                        if time.time() - cached_ts < NEGATIVE_CACHE_TTL:
-                            return None
+                        if skip_negative_cache:
+                            pass  # Fall through to re-fetch
+                        else:
+                            cached_ts = loaded.get("ts", 0)
+                            if time.time() - cached_ts < NEGATIVE_CACHE_TTL:
+                                return None
                         # Expired — fall through to re-fetch
                     elif loaded:
                         return loaded
