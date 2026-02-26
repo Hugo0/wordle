@@ -741,6 +741,11 @@ LLM_LANG_NAMES = {
     "mt": "Maltese",
     "hyw": "Western Armenian",
     "ckb": "Central Kurdish",
+    "pau": "Palauan",
+    "ie": "Interlingue",
+    "rw": "Kinyarwanda",
+    "tlh": "Klingon",
+    "qya": "Quenya",
 }
 
 
