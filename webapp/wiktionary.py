@@ -794,7 +794,8 @@ def fetch_llm_definition(word, lang_code):
                 "source": "ai",
                 "url": None,
             }
-    except Exception:
+    except Exception as e:
+        logging.warning(f"LLM definition failed for {lang_code}/{word}: {e}")
         return None
 
 
