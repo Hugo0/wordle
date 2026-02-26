@@ -20,7 +20,11 @@ import urllib.parse
 import urllib.request as urlreq
 import logging
 from pathlib import Path
-from wiktionary import fetch_definition_cached as _fetch_definition_cached_impl
+from wiktionary import (
+    fetch_definition_cached as _fetch_definition_cached_impl,
+    lookup_kaikki_native,
+    lookup_kaikki_english,
+)
 
 # Load .env file if it exists (for local development)
 _env_path = Path(__file__).resolve().parent.parent / ".env"
@@ -1160,7 +1164,7 @@ def language_words_hub(lang_code):
         word = get_word_for_day(lang_code, day_idx)
         word_date = idx_to_date(day_idx)
 
-        # Load cached definition (fast disk read)
+        # Load definition: disk cache first, then kaikki pre-built
         definition = None
         def_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
         if os.path.exists(def_path):
@@ -1171,6 +1175,10 @@ def language_words_hub(lang_code):
                         definition = loaded
             except Exception:
                 pass
+        if not definition:
+            definition = lookup_kaikki_native(word, lang_code)
+        if not definition:
+            definition = lookup_kaikki_english(word, lang_code)
 
         word_stats = _load_word_stats(lang_code, day_idx)
 
@@ -1407,7 +1415,7 @@ def word_page(lang_code, day_idx):
     lang_name = config.get("name", lang_code)
     lang_name_native = config.get("name_native", lang_name)
 
-    # Read cached definition if available (fast disk read, no HTTP)
+    # Read definition: disk cache first, then kaikki pre-built
     definition = None
     cache_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
     if os.path.exists(cache_path):
@@ -1417,6 +1425,10 @@ def word_page(lang_code, day_idx):
                 definition = loaded if loaded else None
         except Exception:
             pass
+    if not definition:
+        definition = lookup_kaikki_native(word, lang_code)
+    if not definition:
+        definition = lookup_kaikki_english(word, lang_code)
 
     # Map language code to Wiktionary subdomain
     wikt_lang_map = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}
