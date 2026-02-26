@@ -4,32 +4,32 @@
     "name_native": "Esperanto",
     "meta": {
         "locale": "eo",
-        "title": "La ĉiutaga vorto ludo ",
-        "description": "Divenu la kaŝitan vorton en 6 provoj (aŭ malpli). Nova enigmo estas havebla ĉiun tagon! ",
-        "keywords": "Angla, enigmo, vorto, ludo, ludo, interrete, divenu, ĉiutage "
+        "title": "La ĉiutaga vortludo",
+        "description": "Divenu la kaŝitan vorton en 6 provoj (aŭ malpli). Nova enigmo haveblas ĉiutage!",
+        "keywords": "Esperanto, puzlo, enigmo, vorto, ludo, interretludo, divenu, ĉiutaga ludo"
     },
     "text": {
         "subheader": "Esperanto",
-        "next_word": "Sekva vorto ",
-        "no_attempts": "Vi ankoraŭ ne provis vortojn! ",
-        "share": "Kunhavigi ",
-        "notification-copied": "Kopiita al tondujo ",
-        "notification-partial-word": "Bonvolu enmeti plenan vorton "
+        "next_word": "Sekva vorto",
+        "no_attempts": "Vi ankoraŭ ne provis vortojn!",
+        "share": "Diskonigi",
+        "notification-copied": "Kopiita al tondujo",
+        "notification-partial-word": "Bonvolu enmeti plenan vorton"
     },
-    "language_code_3": "",
-    "language_code_iso_639_3": "",
+    "language_code_3": "epo",
+    "language_code_iso_639_3": "epo",
     "right_to_left": "false",
     "help": {
-        "title": "Kiel ludi ",
-        "title_2": "Ekzemploj ",
-        "close": "Fermu ĉi tiun mesaĝon ",
-        "text_1_1_1": "Divenu la ",
-        "text_1_1_2": "en ses provoj aŭ malpli. ",
-        "text_1_2": "Ĉiu konjekto devas esti valida kvin-litera vorto. Premu la butonon Entajpu por sendi vian konjekton. ",
-        "text_1_3": "Post kiam vi supozas, la kaheloj ŝanĝos koloron por indiki, kiuj leteroj de via vorto estas ĝustaj aŭ preskaŭ ĝustaj. ",
-        "text_2_1": "estas en la vorto kaj en la ĝusta loko! ",
-        "text_2_2": "estas en la vorto, sed ne en la ĝusta loko. ",
-        "text_2_3": "ne ĉeestas en la vorto, kiun vi provas diveni. ",
-        "text_3": "Nova vorto estos havebla ĉiun tagon! "
+        "title": "Kiel ludi",
+        "title_2": "Ekzemploj",
+        "close": "Fermi ĉi tiun mesaĝon",
+        "text_1_1_1": "Divenu la",
+        "text_1_1_2": "en ses provoj aŭ malpli.",
+        "text_1_2": "Ĉiu konjekto devas esti valida kvin-litera vorto. Premu la butonon Entajpi por sendi vian konjekton.",
+        "text_1_3": "Post kiam vi supozas, la kaheloj ŝanĝos koloron por indiki, kiuj leteroj de via vorto estas ĝustaj aŭ preskaŭ ĝustaj.",
+        "text_2_1": "uzatas en la vorto kaj en la ĝusta loko!",
+        "text_2_2": "uzatas en la vorto, sed ne en la ĝusta loko.",
+        "text_2_3": "ne uzatas en la vorto, kiun vi provas diveni.",
+        "text_3": "Nova vorto haveblos ĉiutage!"
     }
 }
