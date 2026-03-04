@@ -1,14 +1,13 @@
 """
 Definition fetching for Wordle Global.
 
-Simple 2-tier system: disk cache → LLM (GPT-5.2).
+3-tier system: disk cache → LLM (GPT-5.2) → kaikki (offline Wiktionary).
 Definitions are pre-generated daily via scripts/pregenerate_definitions.py.
 """
 
 import json
 import logging
 import os
-import re
 import time
 import urllib.parse
 import urllib.request as urlreq
@@ -41,36 +40,41 @@ def _load_kaikki_file(cache_key, file_path):
     return _kaikki_cache[cache_key]
 
 
-def lookup_kaikki_native(word, lang_code):
-    """Look up a word in native-language kaikki definitions."""
-    defs = _load_kaikki_file(
-        f"{lang_code}_native", os.path.join(_DEFINITIONS_DIR, f"{lang_code}.json")
-    )
+def _lookup_kaikki(word, lang_code, variant):
+    """Look up a word in kaikki definitions.
+
+    Args:
+        variant: "native" for native-language defs, "en" for English glosses.
+    """
+    if variant == "native":
+        cache_key = f"{lang_code}_native"
+        file_name = f"{lang_code}.json"
+        source = "kaikki"
+    else:
+        cache_key = f"{lang_code}_en"
+        file_name = f"{lang_code}_en.json"
+        source = "kaikki-en"
+
+    defs = _load_kaikki_file(cache_key, os.path.join(_DEFINITIONS_DIR, file_name))
     definition = defs.get(word.lower())
     if definition:
         return {
             "definition": definition,
             "part_of_speech": None,
-            "source": "kaikki",
-            "url": None,
+            "source": source,
+            "url": _wiktionary_url(word, lang_code),
         }
     return None
+
+
+def lookup_kaikki_native(word, lang_code):
+    """Look up a word in native-language kaikki definitions."""
+    return _lookup_kaikki(word, lang_code, "native")
 
 
 def lookup_kaikki_english(word, lang_code):
     """Look up a word in English-gloss kaikki definitions."""
-    defs = _load_kaikki_file(
-        f"{lang_code}_en", os.path.join(_DEFINITIONS_DIR, f"{lang_code}_en.json")
-    )
-    definition = defs.get(word.lower())
-    if definition:
-        return {
-            "definition": definition,
-            "part_of_speech": None,
-            "source": "kaikki-en",
-            "url": None,
-        }
-    return None
+    return _lookup_kaikki(word, lang_code, "en")
 
 
 # ---------------------------------------------------------------------------
@@ -85,11 +89,6 @@ def _wiktionary_url(word, lang_code):
     """Construct a Wiktionary URL for a word."""
     wikt_lang = WIKT_LANG_MAP.get(lang_code, lang_code)
     return f"https://{wikt_lang}.wiktionary.org/wiki/{urllib.parse.quote(word)}"
-
-
-def strip_html(text):
-    """Strip HTML tags from a string."""
-    return re.sub(r"<[^>]+>", "", text).strip()
 
 
 # ---------------------------------------------------------------------------
@@ -235,14 +234,14 @@ def _call_llm_definition(word, lang_code):
                 )
                 return None
 
+            def_en = definition_en[:300]
+            def_native = ((definition_native or definition_en))[:300]
             wikt_url = _wiktionary_url(word, lang_code)
             return {
-                # New fields
-                "definition_native": (definition_native or definition_en)[:300],
-                "definition_en": definition_en[:300],
+                "definition_native": def_native,
+                "definition_en": def_en,
+                "definition": def_en,  # backward compat
                 "confidence": confidence,
-                # Backward-compatible fields
-                "definition": definition_en[:300],
                 "part_of_speech": result.get("part_of_speech"),
                 "source": "llm",
                 "url": wikt_url,
