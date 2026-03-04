@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ language.language_code }}" class="min-h-full" translate="no">
 {% from 'partials/_toggle_switch.html' import toggle_switch %}
+{% from 'partials/_breadcrumb_schema.html' import breadcrumb_schema %}
 {% include 'partials/_dark_mode_init.html' %}
 
 <head>
@@ -9,33 +10,46 @@
     <meta name="google" content="notranslate">
 
     {# Page-specific SEO meta tags #}
-    {% set title = "Play Wordle in " ~ language.config.name ~ " — Free Daily Word Game (" ~ language.config.name_native ~ ")" %}
-    {% set seo_tail = "Free unlimited word puzzle in 65+ languages." %}
-    {% if language.config.name|lower == language.config.name_native|lower %}
-        {% set seo_prefix = "Play Wordle in " ~ language.config.name ~ " — " %}
+    {% set wordle_native = language.config.meta.wordle_native | default('') %}
+    {% set meta_title = language.config.meta.title | trim %}
+    {% set wordle_base = "Wordle " ~ language.config.name_native %}
+    {% set wordle_short = wordle_base ~ " (" ~ wordle_native ~ ")" if wordle_native else wordle_base %}
+    {% set is_untranslated_title = (meta_title == "The daily word game") and (language.config.language_code != 'en') %}
+
+    {% if is_untranslated_title %}
+        {% set title = wordle_base ~ " — Play in " ~ language.config.name %}
     {% else %}
-        {% set seo_prefix = "Play Wordle in " ~ language.config.name ~ " (" ~ language.config.name_native ~ ") — " %}
+        {% set title = wordle_short ~ " — " ~ meta_title %}
     {% endif %}
-    {% set native_desc = language.config.meta.description %}
-    {% set full_desc = seo_prefix ~ native_desc ~ " " ~ seo_tail %}
-    {% if full_desc|length > 160 %}
-        {# Use first sentence only to keep under 160 chars #}
-        {% set first_sentence = native_desc.split('. ')[0] %}
-        {% if not first_sentence.endswith(('.', '!', '?', ':', '։')) %}
-            {% set first_sentence = first_sentence ~ "." %}
-        {% endif %}
-        {% set description = seo_prefix ~ first_sentence ~ " " ~ seo_tail %}
+    {# Truncate if over 60 chars: drop the subtitle #}
+    {% if title|length > 60 %}
+        {% set title = wordle_short %}
+    {% endif %}
+
+    {% set native_desc = language.config.meta.description | trim %}
+    {% set is_untranslated_desc = (native_desc == "Guess the hidden word in 6 tries (or less). A new puzzle is available each day!") and (language.config.language_code != 'en') %}
+    {% if is_untranslated_desc %}
+        {% set description = "Play Wordle in " ~ language.config.name ~ " (" ~ language.config.name_native ~ ") — " ~ native_desc %}
     {% else %}
-        {% set description = full_desc %}
+        {% set description = native_desc ~ " | Wordle " ~ language.config.name %}
     {% endif %}
+    {% if description|length > 160 %}
+        {% set description = native_desc[:155] ~ "..." %}
+    {% endif %}
+
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
     <meta property="description" content="{{ description }}">
-    <meta name="keywords" content="wordle, {{ language.config.name }}, {{ language.config.name_native }}">
+    {% if wordle_native %}
+    <meta name="keywords" content="wordle, {{ wordle_native }}, {{ language.config.name_native }}, {{ language.config.name }}">
+    {% else %}
+    <meta name="keywords" content="wordle, {{ language.config.name_native }}, {{ language.config.name }}">
+    {% endif %}
     <meta property="og:title" content="{{ title }}">
     <meta property="og:url" content="https://wordle.global/{{ language.config.language_code }}">
     <meta property="og:type" content="website">
     <meta property="og:description" content="{{ description }}">
+    <meta property="og:locale" content="{{ language.config.meta.locale }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="wordle.global">
     <meta property="twitter:url" content="https://wordle.global/{{ language.config.language_code }}">
@@ -47,6 +61,31 @@
 
     <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+    {# Structured data: WebApplication + BreadcrumbList #}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": {{ wordle_base | tojson }},
+        "url": "https://wordle.global/{{ language.config.language_code }}",
+        "description": {{ description | tojson }},
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "inLanguage": "{{ language.config.meta.locale }}",
+        "browserRequirements": "Requires JavaScript",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Wordle Global",
+            "url": "https://wordle.global"
+        }
+    }
+    </script>
+    {{ breadcrumb_schema([
+        {"name": "Wordle Global", "url": "https://wordle.global/"},
+        {"name": wordle_base, "url": "https://wordle.global/" ~ language.config.language_code},
+    ]) }}
 
     <!-- load backend variables (on window for ES module access) -->
     <script>

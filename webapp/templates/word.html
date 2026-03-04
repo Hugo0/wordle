@@ -32,6 +32,13 @@
     <link rel="canonical" href="https://wordle.global/{{ lang_code }}/word/{{ day_idx }}">
     {% include 'partials/_hreflang.html' %}
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+    {% from 'partials/_breadcrumb_schema.html' import breadcrumb_schema %}
+    {{ breadcrumb_schema([
+        {"name": "Wordle Global", "url": "https://wordle.global/"},
+        {"name": "Wordle " ~ lang_name_native, "url": "https://wordle.global/" ~ lang_code},
+        {"name": "Word #" ~ day_idx, "url": "https://wordle.global/" ~ lang_code ~ "/word/" ~ day_idx},
+    ]) }}
 </head>
 
 <body class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">

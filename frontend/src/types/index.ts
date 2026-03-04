@@ -120,7 +120,10 @@ export interface WordDefinition {
     word: string;
     partOfSpeech?: string;
     definition: string;
-    source: 'native' | 'english' | 'link';
+    definitionNative?: string;
+    definitionEn?: string;
+    confidence?: number;
+    source: 'native' | 'english' | 'link' | 'llm' | 'kaikki' | 'kaikki-en' | 'ai';
     url: string;
 }
 
