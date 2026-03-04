@@ -28,7 +28,7 @@ os.chdir(os.path.join(_project_root, "webapp"))
 from webapp.app import (
     IMAGE_LANGUAGES,
     WORD_IMAGES_DIR,
-    fetch_definition_cached,
+    fetch_definition,
     generate_word_image,
     get_todays_idx,
     get_word_for_day,
@@ -100,11 +100,13 @@ def main():
                 print(f"  [cached] {lang} #{day_idx}: {word}")
                 continue
 
-            # Fetch and cache definition
-            defn = fetch_definition_cached(word, lang)
+            # Fetch and cache definition — prefer English for image generation
+            defn = fetch_definition(word, lang)
             definition_hint = ""
-            if defn and defn.get("definition"):
-                definition_hint = f", which means {defn['definition']}"
+            if defn:
+                en_def = defn.get("definition_en") or defn.get("definition", "")
+                if en_def:
+                    definition_hint = f", which means {en_def}"
 
             # Generate image
             start = time.time()

@@ -17,6 +17,7 @@
     <meta property="og:url" content="https://wordle.global/">
     <meta property="og:type" content="website">
     <meta property="og:description" content="{{ description }}">
+    <meta property="og:locale" content="en">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="wordle.global">
     <meta property="twitter:url" content="https://wordle.global/">
@@ -34,15 +35,52 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Wordle Global",
+        "url": "https://wordle.global",
+        "description": {{ description | tojson }},
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://wordle.global/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Wordle Global",
         "url": "https://wordle.global",
-        "description": "{{ description }}",
+        "description": {{ description | tojson }},
         "applicationCategory": "GameApplication",
         "operatingSystem": "Any",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "inLanguage": {{ languages.keys() | list | tojson }},
-        "browserRequirements": "Requires JavaScript"
+        "browserRequirements": "Requires JavaScript",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Wordle Global",
+            "url": "https://wordle.global"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Wordle Languages",
+        "numberOfItems": {{ languages | length }},
+        "itemListElement": [
+            {% for lc in language_codes | sort %}
+            {
+                "@type": "ListItem",
+                "position": {{ loop.index }},
+                "url": "https://wordle.global/{{ lc }}",
+                "name": "Wordle {{ languages[lc].language_name_native }}"
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]
     }
     </script>
 

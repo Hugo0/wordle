@@ -3,18 +3,42 @@
     "name": "Portuguese",
     "name_native": "Português",
     "diacritic_map": {
-        "a": ["à", "á", "â", "ã"],
-        "c": ["ç"],
-        "e": ["è", "é", "ê", "ẽ"],
-        "i": ["í", "î"],
-        "o": ["ó", "ô", "õ", "ö"],
-        "u": ["ú", "ü", "ũ"]
+        "a": [
+            "à",
+            "á",
+            "â",
+            "ã"
+        ],
+        "c": [
+            "ç"
+        ],
+        "e": [
+            "è",
+            "é",
+            "ê",
+            "ẽ"
+        ],
+        "i": [
+            "í",
+            "î"
+        ],
+        "o": [
+            "ó",
+            "ô",
+            "õ",
+            "ö"
+        ],
+        "u": [
+            "ú",
+            "ü",
+            "ũ"
+        ]
     },
     "meta": {
         "locale": "pt",
         "title": "O jogo diário da palavra ",
         "description": "Acho que a palavra oculta em 6 tentativas (ou menos). Um novo quebra-cabeça está disponível todos os dias! ",
-        "keywords": "Inglês, Quebra-cabeça, Palavra, Jogue, Jogo, Online, Adivinha, Diário "
+        "keywords": "Português, Quebra-cabeça, Palavra, Jogue, Jogo, Online, Adivinha, Diário"
     },
     "text": {
         "subheader": "Português",

@@ -20,10 +20,8 @@ import urllib.parse
 import urllib.request as urlreq
 import logging
 from pathlib import Path
-from wiktionary import (
-    fetch_definition_cached as _fetch_definition_cached_impl,
-    lookup_kaikki_native,
-    lookup_kaikki_english,
+from definitions import (
+    fetch_definition as _fetch_definition_impl,
 )
 
 # Load .env file if it exists (for local development)
@@ -797,9 +795,9 @@ class Language:
 ###############################################################################
 
 
-def fetch_definition_cached(word, lang_code, skip_negative_cache=False):
-    """Fetch definition from Wiktionary with disk caching. Delegates to webapp.wiktionary."""
-    return _fetch_definition_cached_impl(
+def fetch_definition(word, lang_code, skip_negative_cache=False):
+    """Fetch a word definition. Delegates to webapp.wiktionary."""
+    return _fetch_definition_impl(
         word, lang_code, cache_dir=WORD_DEFS_DIR, skip_negative_cache=skip_negative_cache
     )
 
@@ -1161,36 +1159,24 @@ def language_words_hub(lang_code):
     start_idx = todays_idx - (page - 1) * per_page
     end_idx = max(1, start_idx - per_page + 1)
 
+    day_indices = list(range(start_idx, end_idx - 1, -1))
+    day_words = [(idx, get_word_for_day(lang_code, idx)) for idx in day_indices]
+
+    # Fetch definitions in parallel (most hit disk cache; uncached ones do network I/O)
+    from concurrent.futures import ThreadPoolExecutor
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        def_futures = {idx: pool.submit(fetch_definition, w, lang_code) for idx, w in day_words}
+
     words = []
-    for day_idx in range(start_idx, end_idx - 1, -1):
-        word = get_word_for_day(lang_code, day_idx)
-        word_date = idx_to_date(day_idx)
-
-        # Load definition: disk cache first, then kaikki pre-built
-        definition = None
-        def_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
-        if os.path.exists(def_path):
-            try:
-                with open(def_path, "r") as f:
-                    loaded = json.load(f)
-                    if loaded and loaded.get("definition"):
-                        definition = loaded
-            except Exception:
-                pass
-        if not definition:
-            definition = lookup_kaikki_native(word, lang_code)
-        if not definition:
-            definition = lookup_kaikki_english(word, lang_code)
-
-        word_stats = _load_word_stats(lang_code, day_idx)
-
+    for day_idx, word in day_words:
         words.append(
             {
                 "day_idx": day_idx,
                 "word": word,
-                "date": word_date,
-                "definition": definition,
-                "stats": word_stats,
+                "date": idx_to_date(day_idx),
+                "definition": def_futures[day_idx].result(),
+                "stats": _load_word_stats(lang_code, day_idx),
             }
         )
 
@@ -1307,7 +1293,7 @@ def word_definition_api(lang_code, word):
         return jsonify({"error": "unknown word"}), 404
 
     skip_cache = request.args.get("refresh") == "1"
-    result = fetch_definition_cached(word_lower, lang_code, skip_negative_cache=skip_cache)
+    result = fetch_definition(word_lower, lang_code, skip_negative_cache=skip_cache)
     if result:
         return jsonify(result)
     return jsonify({"error": "no definition found"}), 404
@@ -1383,11 +1369,13 @@ def word_image(lang_code, word):
         return "Image unavailable", 404
 
     try:
-        # Use cached definition for DALL-E prompt (reuses disk cache)
+        # Use cached definition for DALL-E prompt — prefer English for image generation
         definition_hint = ""
-        defn = fetch_definition_cached(word, lang_code)
-        if defn and defn.get("definition"):
-            definition_hint = f", which means {defn['definition']}"
+        defn = fetch_definition(word, lang_code)
+        if defn:
+            en_def = defn.get("definition_en") or defn.get("definition", "")
+            if en_def:
+                definition_hint = f", which means {en_def}"
 
         # Generate image via DALL-E
         result = generate_word_image(word, definition_hint, openai_key, cache_dir, cache_path)
@@ -1418,20 +1406,7 @@ def word_page(lang_code, day_idx):
     lang_name = config.get("name", lang_code)
     lang_name_native = config.get("name_native", lang_name)
 
-    # Read definition: disk cache first, then kaikki pre-built
-    definition = None
-    cache_path = os.path.join(WORD_DEFS_DIR, lang_code, f"{word.lower()}.json")
-    if os.path.exists(cache_path):
-        try:
-            with open(cache_path, "r") as f:
-                loaded = json.load(f)
-                definition = loaded if loaded else None
-        except Exception:
-            pass
-    if not definition:
-        definition = lookup_kaikki_native(word, lang_code)
-    if not definition:
-        definition = lookup_kaikki_english(word, lang_code)
+    definition = fetch_definition(word, lang_code)
 
     # Map language code to Wiktionary subdomain
     wikt_lang_map = {"nb": "no", "nn": "no", "hyw": "hy", "ckb": "ku"}

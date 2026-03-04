@@ -7,6 +7,9 @@ import os
 import json
 from pathlib import Path
 
+# Exclude deprecated tests from collection
+collect_ignore_glob = ["deprecated/*"]
+
 
 def pytest_addoption(parser):
     parser.addoption(

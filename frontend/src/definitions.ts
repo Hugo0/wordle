@@ -14,8 +14,7 @@ function escapeHtml(str: string): string {
 
 /**
  * Fetch a word definition from our backend API.
- * The backend tries native Wiktionary first, then English Wiktionary,
- * and caches results to disk.
+ * The backend uses pre-generated LLM definitions with disk caching.
  */
 export async function fetchDefinition(word: string, lang: string): Promise<WordDefinition> {
     try {
@@ -26,8 +25,11 @@ export async function fetchDefinition(word: string, lang: string): Promise<WordD
                 word,
                 partOfSpeech: data.part_of_speech || undefined,
                 definition: data.definition || '',
-                source: data.source || 'english',
-                url: data.url || '',
+                definitionNative: data.definition_native || undefined,
+                definitionEn: data.definition_en || undefined,
+                confidence: data.confidence,
+                source: data.source || 'llm',
+                url: data.url || data.wiktionary_url || '',
             };
         }
     } catch {

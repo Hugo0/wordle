@@ -5,7 +5,7 @@
 <head>
     {% include 'partials/_base_head.html' %}
 
-    {% set title = "All Wordle Words in " ~ lang_name ~ " — Daily Word Archive (" ~ lang_name_native ~ ")" %}
+    {% set title = "Wordle " ~ lang_name_native ~ " — All Words | " ~ lang_name ~ " Word Archive" %}
     {% set description = "Browse all " ~ todays_idx ~ " past Wordle words in " ~ lang_name ~ " (" ~ lang_name_native ~ "). See definitions, AI art, and community stats for every daily word." %}
     <title>{{ title }}</title>
     <meta name="description" content="{{ description[:200] }}">
@@ -57,6 +57,12 @@
         }
     }
     </script>
+    {% from 'partials/_breadcrumb_schema.html' import breadcrumb_schema %}
+    {{ breadcrumb_schema([
+        {"name": "Wordle Global", "url": "https://wordle.global/"},
+        {"name": "Wordle " ~ lang_name_native, "url": "https://wordle.global/" ~ lang_code},
+        {"name": "Word Archive", "url": "https://wordle.global/" ~ lang_code ~ "/words"},
+    ]) }}
 </head>
 
 <body class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
