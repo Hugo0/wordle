@@ -265,7 +265,7 @@ def _call_llm_definition(word, lang_code):
 
 
 def fetch_definition(word, lang_code, cache_dir=None, skip_negative_cache=False):
-    """Fetch a word definition. 2-tier: disk cache → LLM.
+    """Fetch a word definition. 3-tier: disk cache → LLM → kaikki.
 
     Args:
         word: The word to define.
@@ -304,6 +304,10 @@ def fetch_definition(word, lang_code, cache_dir=None, skip_negative_cache=False)
 
     # --- Tier 2: LLM ---
     result = _call_llm_definition(word, lang_code)
+
+    # --- Tier 3: Kaikki fallback (offline Wiktionary data) ---
+    if not result:
+        result = lookup_kaikki_native(word, lang_code) or lookup_kaikki_english(word, lang_code)
 
     # Cache result (including negative results)
     if lang_cache_dir:
