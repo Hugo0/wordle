@@ -322,6 +322,69 @@ class TestFetchDefinitionCache:
         assert result is not None
         assert result["definition"] == "A building"
 
+    def test_kaikki_fallback_when_llm_returns_none(self):
+        """Kaikki is used as fallback when LLM returns None."""
+        kaikki_result = {
+            "definition": "A native definition",
+            "part_of_speech": None,
+            "source": "kaikki",
+            "url": None,
+        }
+        with patch("definitions._call_llm_definition", return_value=None):
+            with patch("definitions.lookup_kaikki_native", return_value=kaikki_result):
+                result = fetch_definition("word", "nl", cache_dir=None)
+
+        assert result is not None
+        assert result["source"] == "kaikki"
+        assert result["definition"] == "A native definition"
+
+    def test_kaikki_english_fallback_when_native_missing(self):
+        """Kaikki English is used when both LLM and kaikki native return None."""
+        kaikki_en_result = {
+            "definition": "An English gloss",
+            "part_of_speech": None,
+            "source": "kaikki-en",
+            "url": None,
+        }
+        with patch("definitions._call_llm_definition", return_value=None):
+            with patch("definitions.lookup_kaikki_native", return_value=None):
+                with patch("definitions.lookup_kaikki_english", return_value=kaikki_en_result):
+                    result = fetch_definition("word", "ro", cache_dir=None)
+
+        assert result is not None
+        assert result["source"] == "kaikki-en"
+
+    def test_kaikki_fallback_is_cached(self, tmp_path):
+        """Kaikki fallback results get written to disk cache."""
+        cache_dir = str(tmp_path)
+        kaikki_result = {
+            "definition": "A native definition",
+            "part_of_speech": None,
+            "source": "kaikki",
+            "url": None,
+        }
+        with patch("definitions._call_llm_definition", return_value=None):
+            with patch("definitions.lookup_kaikki_native", return_value=kaikki_result):
+                fetch_definition("word", "nl", cache_dir=cache_dir)
+
+        cache_file = tmp_path / "nl" / "word.json"
+        assert cache_file.exists()
+        cached = json.loads(cache_file.read_text())
+        assert cached["source"] == "kaikki"
+
+    def test_negative_cache_only_when_all_tiers_fail(self, tmp_path):
+        """Negative cache is written only when LLM AND kaikki both fail."""
+        cache_dir = str(tmp_path)
+        with patch("definitions._call_llm_definition", return_value=None):
+            with patch("definitions.lookup_kaikki_native", return_value=None):
+                with patch("definitions.lookup_kaikki_english", return_value=None):
+                    fetch_definition("xyzzy", "zz", cache_dir=cache_dir)
+
+        cache_file = tmp_path / "zz" / "xyzzy.json"
+        assert cache_file.exists()
+        cached = json.loads(cache_file.read_text())
+        assert cached["not_found"] is True
+
 
 # ---------------------------------------------------------------------------
 # LLM_LANG_NAMES coverage
