@@ -83,7 +83,7 @@ export function renderDefinitionCard(
         const posHtml = safePos
             ? `<span class="text-xs text-neutral-400 dark:text-neutral-500 italic">${safePos}</span>`
             : '';
-        const safeDef = escapeHtml(def.definition);
+        const safeDef = escapeHtml(def.definitionNative || def.definition);
 
         container.innerHTML = `
             <div class="flex items-start gap-2">
