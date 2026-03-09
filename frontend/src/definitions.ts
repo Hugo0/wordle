@@ -103,8 +103,8 @@ export function renderDefinitionCard(
 
 /**
  * Render the word image into the image container.
- * The image loads directly via GET — if it 404s or fails, the container is hidden.
- * If the image isn't cached, the server generates it (may take 15-20s).
+ * Uses fetch() with retry logic for transient failures (202 = generating, network errors).
+ * Gives up immediately on definitive failures (404, 403).
  */
 export function renderWordImage(
     word: string,
@@ -113,27 +113,57 @@ export function renderWordImage(
     linkUrl?: string
 ): void {
     const url = `/${lang}/api/word-image/${encodeURIComponent(word)}`;
-    const img = document.createElement('img');
-    img.className = 'w-full max-h-48 object-contain rounded-lg';
-    img.alt = word;
-    img.onload = () => {
-        container.innerHTML = '';
-        if (linkUrl) {
-            const a = document.createElement('a');
-            a.href = linkUrl;
-            a.appendChild(img);
-            container.appendChild(a);
-        } else {
-            container.appendChild(img);
-        }
-        container.style.display = 'block';
-    };
-    img.onerror = () => {
-        container.style.display = 'none';
-    };
-    // Set src last to ensure handlers are attached before load starts
-    // Do NOT use loading="lazy" — the img is detached from DOM during load
-    img.src = url;
+    const maxRetries = 3;
+    const baseDelay = 4000; // 4s, 8s, 16s
+
+    function displayImage(blob: Blob): void {
+        const objectUrl = URL.createObjectURL(blob);
+        const img = document.createElement('img');
+        img.className = 'w-full max-h-48 object-contain rounded-lg';
+        img.alt = word;
+        img.onload = () => {
+            container.innerHTML = '';
+            if (linkUrl) {
+                const a = document.createElement('a');
+                a.href = linkUrl;
+                a.appendChild(img);
+                container.appendChild(a);
+            } else {
+                container.appendChild(img);
+            }
+            container.style.display = 'block';
+        };
+        img.onerror = () => {
+            URL.revokeObjectURL(objectUrl);
+            container.style.display = 'none';
+        };
+        img.src = objectUrl;
+    }
+
+    function tryLoad(attempt: number): void {
+        fetch(url)
+            .then((response) => {
+                if (response.ok) {
+                    return response.blob().then(displayImage);
+                }
+                // 202 = image being generated server-side, retry with backoff
+                if (response.status === 202 && attempt < maxRetries) {
+                    setTimeout(() => tryLoad(attempt + 1), baseDelay * Math.pow(2, attempt));
+                    return;
+                }
+                container.style.display = 'none';
+            })
+            .catch(() => {
+                // Network error — retry with backoff
+                if (attempt < maxRetries) {
+                    setTimeout(() => tryLoad(attempt + 1), baseDelay * Math.pow(2, attempt));
+                    return;
+                }
+                container.style.display = 'none';
+            });
+    }
+
+    tryLoad(0);
 }
 
 /**
