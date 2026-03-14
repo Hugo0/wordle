@@ -235,7 +235,7 @@ def _call_llm_definition(word, lang_code):
                 return None
 
             def_en = definition_en[:300]
-            def_native = ((definition_native or definition_en))[:300]
+            def_native = (definition_native or definition_en)[:300]
             wikt_url = _wiktionary_url(word, lang_code)
             return {
                 "definition_native": def_native,
@@ -283,7 +283,7 @@ def fetch_definition(word, lang_code, cache_dir=None, skip_negative_cache=False)
 
         if os.path.exists(cache_path):
             try:
-                with open(cache_path, "r") as f:
+                with open(cache_path) as f:
                     loaded = json.load(f)
                     if loaded.get("not_found"):
                         if skip_negative_cache:
@@ -314,7 +314,7 @@ def fetch_definition(word, lang_code, cache_dir=None, skip_negative_cache=False)
             os.makedirs(lang_cache_dir, exist_ok=True)
             with open(cache_path, "w") as f:
                 json.dump(result or {"not_found": True, "ts": int(time.time())}, f)
-        except IOError:
+        except OSError:
             pass
 
     return result

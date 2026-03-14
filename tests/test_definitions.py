@@ -5,14 +5,10 @@ All tests are offline — LLM API calls are mocked.
 """
 
 import json
-import os
 import sys
-import tempfile
 import time
 from pathlib import Path
 from unittest.mock import MagicMock, patch
-
-import pytest
 
 # Allow imports from webapp/ directory
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "webapp"))
@@ -25,8 +21,6 @@ from definitions import (
     _call_llm_definition,
     _wiktionary_url,
     fetch_definition,
-    lookup_kaikki_english,
-    lookup_kaikki_native,
 )
 
 # ---------------------------------------------------------------------------
@@ -330,9 +324,11 @@ class TestFetchDefinitionCache:
             "source": "kaikki",
             "url": None,
         }
-        with patch("definitions._call_llm_definition", return_value=None):
-            with patch("definitions.lookup_kaikki_native", return_value=kaikki_result):
-                result = fetch_definition("word", "nl", cache_dir=None)
+        with (
+            patch("definitions._call_llm_definition", return_value=None),
+            patch("definitions.lookup_kaikki_native", return_value=kaikki_result),
+        ):
+            result = fetch_definition("word", "nl", cache_dir=None)
 
         assert result is not None
         assert result["source"] == "kaikki"
@@ -346,10 +342,12 @@ class TestFetchDefinitionCache:
             "source": "kaikki-en",
             "url": None,
         }
-        with patch("definitions._call_llm_definition", return_value=None):
-            with patch("definitions.lookup_kaikki_native", return_value=None):
-                with patch("definitions.lookup_kaikki_english", return_value=kaikki_en_result):
-                    result = fetch_definition("word", "ro", cache_dir=None)
+        with (
+            patch("definitions._call_llm_definition", return_value=None),
+            patch("definitions.lookup_kaikki_native", return_value=None),
+            patch("definitions.lookup_kaikki_english", return_value=kaikki_en_result),
+        ):
+            result = fetch_definition("word", "ro", cache_dir=None)
 
         assert result is not None
         assert result["source"] == "kaikki-en"
@@ -363,9 +361,11 @@ class TestFetchDefinitionCache:
             "source": "kaikki",
             "url": None,
         }
-        with patch("definitions._call_llm_definition", return_value=None):
-            with patch("definitions.lookup_kaikki_native", return_value=kaikki_result):
-                fetch_definition("word", "nl", cache_dir=cache_dir)
+        with (
+            patch("definitions._call_llm_definition", return_value=None),
+            patch("definitions.lookup_kaikki_native", return_value=kaikki_result),
+        ):
+            fetch_definition("word", "nl", cache_dir=cache_dir)
 
         cache_file = tmp_path / "nl" / "word.json"
         assert cache_file.exists()
@@ -375,10 +375,12 @@ class TestFetchDefinitionCache:
     def test_negative_cache_only_when_all_tiers_fail(self, tmp_path):
         """Negative cache is written only when LLM AND kaikki both fail."""
         cache_dir = str(tmp_path)
-        with patch("definitions._call_llm_definition", return_value=None):
-            with patch("definitions.lookup_kaikki_native", return_value=None):
-                with patch("definitions.lookup_kaikki_english", return_value=None):
-                    fetch_definition("xyzzy", "zz", cache_dir=cache_dir)
+        with (
+            patch("definitions._call_llm_definition", return_value=None),
+            patch("definitions.lookup_kaikki_native", return_value=None),
+            patch("definitions.lookup_kaikki_english", return_value=None),
+        ):
+            fetch_definition("xyzzy", "zz", cache_dir=cache_dir)
 
         cache_file = tmp_path / "zz" / "xyzzy.json"
         assert cache_file.exists()

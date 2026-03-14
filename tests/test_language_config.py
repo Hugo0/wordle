@@ -5,13 +5,13 @@ These tests ensure language_config.json files are valid and complete.
 """
 
 import pytest
+
 from tests.conftest import (
     ALL_LANGUAGES,
-    load_language_config,
-    load_keyboard,
-    load_word_list,
-    load_characters,
     get_diacritic_base_chars,
+    load_keyboard,
+    load_language_config,
+    load_word_list,
 )
 
 

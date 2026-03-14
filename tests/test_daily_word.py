@@ -9,11 +9,13 @@ Migration Note (2026-01-25):
 - Days > 1681: Consistent hashing algorithm (blocklist-friendly)
 """
 
-import pytest
 import datetime
-import random
 import hashlib
+import random
 from pathlib import Path
+
+import pytest
+
 from tests.conftest import ALL_LANGUAGES, load_word_list
 
 # Migration cutoff - must match webapp/app.py
@@ -164,9 +166,9 @@ class TestWordCycling:
 
         unique_words = set(selected_words)
         # All selected words should be unique within the period
-        assert len(unique_words) == len(
-            selected_words
-        ), f"{lang}: Found duplicate words within {num_days} days"
+        assert len(unique_words) == len(selected_words), (
+            f"{lang}: Found duplicate words within {num_days} days"
+        )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_cycles_through_all_words(self, lang):

@@ -1,5 +1,9 @@
 #!/usr/bin/python3.3
-import re, argparse, os, gzip, json
+import argparse
+import gzip
+import json
+import os
+import re
 
 
 def file_to_list(in_file):
@@ -393,15 +397,15 @@ def main():
 
         # Open AFF file
         try:
-            aff_file = open(aff_path, "r", encoding="ISO8859-1")
+            aff_file = open(aff_path, encoding="ISO8859-1")
             aff_rules = AFF(aff_file)
             aff_file.close()
-        except IOError:
+        except OSError:
             print(aff_path + " not found")
 
         # Open DIC file
         try:
-            dict_file = open(dict_path, "r", encoding="ISO8859-1")
+            dict_file = open(dict_path, encoding="ISO8859-1")
             dictionary = DICT(
                 dict_file,
                 aff_rules,
@@ -414,7 +418,6 @@ def main():
 
             # Open output file
             if args.output:
-
                 if args.gzip:
                     out_file = gzip.open(args.output, "wb")
                 else:
@@ -433,7 +436,7 @@ def main():
             out_file.close()
 
             dict_file.close()
-        except IOError:
+        except OSError:
             print(dict_path + " not found")
 
 

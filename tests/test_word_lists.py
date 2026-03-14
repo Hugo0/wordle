@@ -9,17 +9,18 @@ These tests ensure word lists meet the requirements:
 """
 
 import pytest
+
+from scripts.improve_word_lists import is_roman_numeral
 from tests.conftest import (
     ALL_LANGUAGES,
-    load_word_list,
-    load_supplement_words,
-    load_daily_words,
+    get_diacritic_base_chars,
     load_blocklist,
     load_characters,
+    load_daily_words,
     load_keyboard,
-    get_diacritic_base_chars,
+    load_supplement_words,
+    load_word_list,
 )
-from scripts.improve_word_lists import is_roman_numeral
 
 
 class TestWordListBasics:
@@ -37,7 +38,7 @@ class TestWordListBasics:
         words = load_word_list(lang)
         invalid = [(w, len(w)) for w in words if len(w) != 5]
         assert not invalid, (
-            f"{lang}: Found {len(invalid)} words with wrong length. " f"Examples: {invalid[:5]}"
+            f"{lang}: Found {len(invalid)} words with wrong length. Examples: {invalid[:5]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -63,7 +64,7 @@ class TestWordListBasics:
                 duplicates.append(w)
             seen.add(w)
         assert not duplicates, (
-            f"{lang}: Found {len(duplicates)} duplicate words. " f"Examples: {duplicates[:10]}"
+            f"{lang}: Found {len(duplicates)} duplicate words. Examples: {duplicates[:10]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -72,7 +73,7 @@ class TestWordListBasics:
         words = load_word_list(lang)
         uppercase = [w for w in words if w != w.lower()]
         assert not uppercase, (
-            f"{lang}: Found {len(uppercase)} words with uppercase. " f"Examples: {uppercase[:5]}"
+            f"{lang}: Found {len(uppercase)} words with uppercase. Examples: {uppercase[:5]}"
         )
 
 
@@ -114,9 +115,9 @@ class TestCharacterConsistency:
             word_chars.update(word)
 
         missing = word_chars - chars
-        assert (
-            not missing
-        ), f"{lang}: Characters used in words but missing from character set: {missing}"
+        assert not missing, (
+            f"{lang}: Characters used in words but missing from character set: {missing}"
+        )
 
 
 class TestKeyboardCoverage:
@@ -228,7 +229,7 @@ class TestDailyWords:
         main = set(load_word_list(lang))
         invalid = [w for w in daily if w not in main]
         assert not invalid, (
-            f"{lang}: {len(invalid)} daily words not in main list. " f"Examples: {invalid[:5]}"
+            f"{lang}: {len(invalid)} daily words not in main list. Examples: {invalid[:5]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -244,7 +245,7 @@ class TestDailyWords:
                 duplicates.append(w)
             seen.add(w)
         assert not duplicates, (
-            f"{lang}: {len(duplicates)} duplicate daily words. " f"Examples: {duplicates[:10]}"
+            f"{lang}: {len(duplicates)} duplicate daily words. Examples: {duplicates[:10]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -255,7 +256,7 @@ class TestDailyWords:
             pytest.skip(f"{lang}: No daily words file")
         invalid = [(w, len(w)) for w in daily if len(w) != 5]
         assert not invalid, (
-            f"{lang}: {len(invalid)} daily words with wrong length. " f"Examples: {invalid[:5]}"
+            f"{lang}: {len(invalid)} daily words with wrong length. Examples: {invalid[:5]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -267,8 +268,7 @@ class TestDailyWords:
         main = set(load_word_list(lang))
         overlap = [w for w in supplement if w in main]
         assert not overlap, (
-            f"{lang}: {len(overlap)} supplement words also in main list. "
-            f"Examples: {overlap[:5]}"
+            f"{lang}: {len(overlap)} supplement words also in main list. Examples: {overlap[:5]}"
         )
 
 
@@ -320,7 +320,7 @@ class TestDailyWordQuality:
             pytest.skip(f"{lang}: No blocklist")
         overlap = set(daily) & blocklist
         assert not overlap, (
-            f"{lang}: {len(overlap)} daily words in blocklist. " f"Examples: {sorted(overlap)[:10]}"
+            f"{lang}: {len(overlap)} daily words in blocklist. Examples: {sorted(overlap)[:10]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
@@ -353,7 +353,7 @@ class TestDailyWordQuality:
         bad_words = [w for w in daily if any(c in rare_chars for c in w)]
         assert not bad_words, (
             f"Arabic: {len(bad_words)} daily words contain characters below "
-            f"{threshold*100:.0f}% frequency. Rare chars: {rare_chars}. "
+            f"{threshold * 100:.0f}% frequency. Rare chars: {rare_chars}. "
             f"Examples: {bad_words[:5]}"
         )
 
