@@ -11,6 +11,7 @@ Usage:
 
 import json
 import os
+import re
 import sys
 
 import arabic_reshaper
@@ -148,40 +149,58 @@ def generate_image(lang_code, result, challenge_text, is_rtl):
     score_visual_cy = score_y + ascent // 2 + 10
     draw_mini_grid(draw, 2 * WIDTH // 3, score_visual_cy, n_rows, solved)
 
-    # 3. Challenge text — pick font based on language script
+    # 3. Challenge text — split into statement (white) + CTA (green bold)
+    #    Split on the last sentence boundary (". " or "? " or "! ")
+    sentence_split = re.split(r"(?<=[.?!])\s+(?=\S)", challenge_text)
+    if len(sentence_split) >= 2:
+        statement = " ".join(sentence_split[:-1])
+        cta = sentence_split[-1]
+    else:
+        statement = ""
+        cta = challenge_text
+
     use_cjk = lang_code in CJK_LANGS
     font_reg = FONT_CJK if use_cjk else FONT_DEJAVU
     font_bold = FONT_CJK_BOLD if use_cjk else FONT_DEJAVU_BOLD
 
-    # Auto-size: start at 44px, shrink if text overflows
-    display_text = prepare_bidi_text(challenge_text, is_rtl)
     max_w = WIDTH - 200
-    for size in (44, 38, 32, 26):
-        font_main = get_font(font_reg, size)
-        font_cta = get_font(font_bold, size + 4)
-        lines = wrap_text(display_text, font_main, draw, max_w)
-        if len(lines) <= 2:
+    text_y = 460  # top of challenge text block
+
+    # Auto-size: enforce exactly 2 lines — line 1 = white statement, line 2 = green CTA.
+    # Shrink fonts until each part fits on exactly 1 line.
+    stmt_size, cta_size = 44, 48
+    for stmt_s, cta_s in ((44, 48), (38, 42), (32, 36), (26, 30)):
+        font_main = get_font(font_reg, stmt_s)
+        font_cta = get_font(font_bold, cta_s)
+        stmt_ok = True
+        cta_ok = True
+        if statement:
+            stmt_display = prepare_bidi_text(statement, is_rtl)
+            stmt_lines = wrap_text(stmt_display, font_main, draw, max_w)
+            if len(stmt_lines) != 1:
+                stmt_ok = False
+        else:
+            stmt_lines = []
+        cta_display = prepare_bidi_text(cta, is_rtl)
+        cta_lines = wrap_text(cta_display, font_cta, draw, max_w)
+        if len(cta_lines) != 1:
+            cta_ok = False
+        stmt_size, cta_size = stmt_s, cta_s
+        if stmt_ok and cta_ok:
             break
 
-    if not lines:
-        return img.convert("P", palette=Image.ADAPTIVE, colors=64)
+    # Draw statement on line 1 (white, regular) centered at text_y
+    if stmt_lines:
+        line = stmt_lines[0]
+        bbox = draw.textbbox((0, 0), line, font=font_main)
+        draw.text(((WIDTH - (bbox[2] - bbox[0])) // 2, text_y), line, fill=WHITE, font=font_main)
 
-    if len(lines) >= 2:
-        line1 = lines[0]
-        line2 = " ".join(lines[1:])
-        bbox1 = draw.textbbox((0, 0), line1, font=font_main)
-        draw.text(((WIDTH - (bbox1[2] - bbox1[0])) // 2, 430), line1, fill=WHITE, font=font_main)
-        bbox2 = draw.textbbox((0, 0), line2, font=font_cta)
-        draw.text(
-            ((WIDTH - (bbox2[2] - bbox2[0])) // 2, 430 + size + 12),
-            line2,
-            fill=GREEN,
-            font=font_cta,
-        )
-    else:
-        line = lines[0]
+    # Draw CTA on line 2 (green, bold) below the statement
+    if cta_lines:
+        cta_y = text_y + stmt_size + 12
+        line = cta_lines[0]
         bbox = draw.textbbox((0, 0), line, font=font_cta)
-        draw.text(((WIDTH - (bbox[2] - bbox[0])) // 2, 460), line, fill=GREEN, font=font_cta)
+        draw.text(((WIDTH - (bbox[2] - bbox[0])) // 2, cta_y), line, fill=GREEN, font=font_cta)
 
     # Convert to palette mode for smaller file size (~6 distinct colors)
     return img.convert("P", palette=Image.ADAPTIVE, colors=64)
@@ -205,7 +224,7 @@ def load_language_configs():
             "is_rtl": str(lang_config.get("right_to_left", "false")).lower() == "true",
             "share_challenge_win": merged_text.get(
                 "share_challenge_win",
-                "I got today's Wordle in {n} tries. Can you beat me?",
+                "I got today's Wordle in {n}. Can you beat me?",
             ),
             "share_challenge_lose": merged_text.get(
                 "share_challenge_lose",
