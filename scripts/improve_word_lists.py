@@ -845,7 +845,7 @@ def process_language(
             return result
 
     # Safety: freeze past daily words before modifying daily_words.txt
-    # This ensures historical words are preserved in curated_schedule.txt (git-committed)
+    # This ensures historical words are preserved in word_history.txt (git-committed)
     # even if the disk cache gets wiped on Render redeployments
     if overwrite and daily_path.exists():
         try:
