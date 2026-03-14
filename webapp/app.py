@@ -792,6 +792,11 @@ class Language:
             for key in row:
                 keyboard_keys.add(key.lower())
 
+        # Hide diacritic hints when the map is used for encoding normalization
+        # (e.g., Korean Jamo) rather than player-visible accent variants.
+        if self.config.get("hide_diacritic_hints"):
+            return {}
+
         hints = {}
         for base_char, variants in diacritic_map.items():
             if base_char.lower() in keyboard_keys:
