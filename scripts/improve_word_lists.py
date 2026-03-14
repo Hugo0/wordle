@@ -293,13 +293,18 @@ EXTRA_SOURCES = {
 
 
 def _load_word_file(path: Path) -> set[str]:
-    """Load a simple word-per-line file as a set of 5-letter lowercase words."""
+    """Load a simple word-per-line file as a set of lowercase words.
+
+    No length filter is applied — callers building native dictionaries need all
+    words for cross-reference, and grapheme-mode languages (Hindi, Bengali,
+    Marathi) would be mis-filtered by ``len(w) == 5`` anyway.
+    """
     if not path.exists():
         return set()
     words = set()
     for line in path.read_text(encoding="utf-8").splitlines():
         w = line.strip().lower()
-        if len(w) == 5 and w.isalpha():
+        if w and w.isalpha():
             words.add(w)
     return words
 
