@@ -23,6 +23,9 @@ import posthog from 'posthog-js';
 // These high-volume events (fired per-guess) are still tracked in GA4 where there is no cap.
 const POSTHOG_SKIP_EVENTS = new Set(['guess_submit', 'guess_time', 'first_guess_delay']);
 
+// Only these 4 core events are sent to GA4 to keep the property slim.
+const GA4_CORE_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon', 'page_view_enhanced']);
+
 // Default game mode - used as fallback across all game lifecycle events.
 const DEFAULT_GAME_MODE = 'daily';
 
@@ -136,9 +139,9 @@ export function useAnalytics() {
     const track = (eventName: string, params?: Record<string, unknown>): void => {
         if (!import.meta.client) return;
 
-        // Google Analytics 4
+        // Google Analytics 4 (only core events)
         try {
-            if (typeof window.gtag === 'function') {
+            if (GA4_CORE_EVENTS.has(eventName) && typeof window.gtag === 'function') {
                 window.gtag('event', eventName, params);
             }
         } catch {

@@ -57,13 +57,13 @@ useSeoMeta({
     ogType: 'article',
     ogDescription: descriptionStr.slice(0, 200),
     ogImage: word
-        ? `https://wordle.global/${lang}/api/word-image/${word}?day_idx=${dayIdx}`
+        ? `https://wordle.global/api/${lang}/word-image/${word}?day_idx=${dayIdx}`
         : undefined,
     twitterCard: 'summary_large_image',
     twitterTitle: titleStr,
     twitterDescription: descriptionStr.slice(0, 200),
     twitterImage: word
-        ? `https://wordle.global/${lang}/api/word-image/${word}?day_idx=${dayIdx}`
+        ? `https://wordle.global/api/${lang}/word-image/${word}?day_idx=${dayIdx}`
         : undefined,
 });
 
@@ -268,7 +268,7 @@ onMounted(() => {
                 <!-- AI Word Art Image -->
                 <div id="word-art" class="mb-4 hidden">
                     <img
-                        :src="`/${lang}/api/word-image/${word}?day_idx=${dayIdx}`"
+                        :src="`/api/${lang}/word-image/${word}?day_idx=${dayIdx}`"
                         :alt="word"
                         class="w-full max-h-64 object-contain rounded-xl shadow-md mx-auto"
                         @load="($event.target as HTMLImageElement).parentElement!.classList.remove('hidden')"

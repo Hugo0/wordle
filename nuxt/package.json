@@ -26,9 +26,11 @@
         "vue": "^3.5.27"
     },
     "devDependencies": {
+        "@playwright/test": "^1.58.2",
         "@tailwindcss/vite": "^4.1.18",
         "@types/proper-lockfile": "^4.1.4",
         "@vite-pwa/nuxt": "^0.10.8",
+        "playwright": "^1.58.2",
         "prettier": "^3.8.1",
         "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",

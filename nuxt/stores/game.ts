@@ -71,6 +71,12 @@ interface SavedGameState {
 
 export const useGameStore = defineStore('game', () => {
     // =======================================================================
+    // Analytics (auto-imported composable)
+    // =======================================================================
+
+    const analytics = useAnalytics();
+
+    // =======================================================================
     // State
     // =======================================================================
 
@@ -110,7 +116,17 @@ export const useGameStore = defineStore('game', () => {
 
     const shareButtonState = ref<'idle' | 'success'>('idle');
 
+    const allowAnyWord = ref(false);
 
+    const maxDifficultyUsed = ref(0);
+
+    // =======================================================================
+    // Timing state for analytics (module-level equivalent)
+    // =======================================================================
+
+    let gameStartTime = 0;
+    let lastGuessTime = 0;
+    let firstGuessFired = false;
 
     // =======================================================================
     // Internal (non-exposed) state
@@ -188,6 +204,15 @@ export const useGameStore = defineStore('game', () => {
         _normalizedSupplementMap = null;
     }
 
+    /**
+     * Initialize analytics timing state. Call on game start.
+     */
+    function initTimingState(): void {
+        gameStartTime = Date.now();
+        lastGuessTime = Date.now();
+        firstGuessFired = false;
+    }
+
     // ---- Character input ----
 
     /** Add a character to the current active cell. */
@@ -214,6 +239,8 @@ export const useGameStore = defineStore('game', () => {
      * Returns the canonical word if valid, null if not in the word list.
      */
     function checkWord(word: string): string | null {
+        if (allowAnyWord.value) return word;
+
         const lang = useLanguageStore();
 
         // Try exact match first
@@ -360,8 +387,21 @@ export const useGameStore = defineStore('game', () => {
     /** Main input handler for both physical and virtual keyboard events. */
     function keyDown(event: KeyboardEvent | { key: string }): void {
         if (animating.value) return;
+
+        // Physical keyboard → character mapping (bypasses IME for Korean, etc.)
+        let rawKey = event.key;
+        const lang = useLanguageStore();
+        const physicalKeyMap = lang.config?.physical_key_map;
+        if (physicalKeyMap && 'code' in event && event instanceof KeyboardEvent) {
+            const code = event.shiftKey ? `Shift${event.code}` : event.code;
+            const mapped = physicalKeyMap[code];
+            if (mapped) {
+                event.preventDefault();
+                rawKey = mapped;
+            }
+        }
+
         // Normalize to lowercase for letter keys (Caps Lock, mobile keyboards)
-        const rawKey = event.key;
         const key = rawKey.length === 1 ? rawKey.toLowerCase() : rawKey;
 
         if (key === 'Escape') {
@@ -373,7 +413,6 @@ export const useGameStore = defineStore('game', () => {
 
         if (gameOver.value) return;
 
-        const lang = useLanguageStore();
         const settings = useSettingsStore();
 
         if (['Enter', '⇨', '⟹', 'ENTER'].includes(key)) {
@@ -407,7 +446,38 @@ export const useGameStore = defineStore('game', () => {
                     haptic.confirm();
                 }
 
-                // TODO: analytics — trackFirstGuessDelay, trackGuessTime, trackGuessSubmit
+                // Analytics: frustration reset on valid word
+                analytics.onValidWord();
+
+                // Track first guess delay (time from page load to first interaction)
+                if (!firstGuessFired && gameStartTime) {
+                    const delaySeconds = Math.floor((Date.now() - gameStartTime) / 1000);
+                    analytics.trackFirstGuessDelay(
+                        lang.languageCode,
+                        delaySeconds,
+                    );
+                    firstGuessFired = true;
+                }
+
+                // Track time between guesses
+                if (lastGuessTime && activeRow.value > 0) {
+                    const secondsSinceLast = Math.floor(
+                        (Date.now() - lastGuessTime) / 1000,
+                    );
+                    analytics.trackGuessTime(
+                        lang.languageCode,
+                        activeRow.value + 1,
+                        secondsSinceLast,
+                    );
+                }
+                lastGuessTime = Date.now();
+
+                // Track valid guess submission
+                analytics.trackGuessSubmit(
+                    lang.languageCode,
+                    activeRow.value + 1,
+                    true,
+                );
 
                 // Update tiles to show canonical form (with diacritics)
                 if (row && canonicalWord !== typedWord) {
@@ -418,6 +488,11 @@ export const useGameStore = defineStore('game', () => {
                 }
 
                 updateColors();
+
+                // Track highest difficulty a guess was submitted at
+                const currentDifficulty = settings.hardMode ? 2 : (allowAnyWord.value ? 0 : 1);
+                if (currentDifficulty > maxDifficultyUsed.value) maxDifficultyUsed.value = currentDifficulty;
+
                 const revealingRow = activeRow.value;
                 activeRow.value++;
                 activeCell.value = 0;
@@ -447,7 +522,16 @@ export const useGameStore = defineStore('game', () => {
                 shakeRow(activeRow.value);
                 showNotification('Word is not valid');
 
-                // TODO: analytics — trackInvalidWordAndUpdateState, trackGuessSubmit
+                // Track invalid word and update session frustration state
+                analytics.trackInvalidWordAndUpdateState({
+                    language: lang.languageCode,
+                    attempt_number: activeRow.value + 1,
+                });
+                analytics.trackGuessSubmit(
+                    lang.languageCode,
+                    activeRow.value + 1,
+                    false,
+                );
             }
         } else if (['Backspace', 'Delete', '⌫'].includes(key) && activeCell.value > 0) {
             activeCell.value--;
@@ -618,15 +702,44 @@ export const useGameStore = defineStore('game', () => {
             }, 2500);
         }
 
-        // TODO: loadDefinition
+        // Load definition for stats modal display
+        if (import.meta.client) {
+            const { fetchDefinition } = useDefinitions();
+            fetchDefinition(lang.todaysWord, lang.languageCode).then(def => {
+                // Store definition for stats modal to display
+                // For now, just mark that we tried to load it
+            });
+        }
+
         submitWordStats(true, activeRow.value);
 
         statsStore.saveResult(lang.languageCode, true, activeRow.value);
         statsStore.calculateStats(lang.languageCode);
         statsStore.calculateTotalStats();
 
-        // TODO: analytics — trackGameComplete, trackStreakMilestone
-        // TODO: embed.showBanner(), pwa.showBanner()
+        // Analytics: track game completion and streak milestones
+        const frustrationState = analytics.resetFrustrationState();
+        const timeToComplete = gameStartTime
+            ? Math.floor((Date.now() - gameStartTime) / 1000)
+            : undefined;
+
+        analytics.trackGameComplete({
+            language: lang.languageCode,
+            won: true,
+            attempts: activeRow.value,
+            streak_after: statsStore.stats.current_streak,
+            total_invalid_attempts: frustrationState.totalInvalidAttempts,
+            max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
+            had_frustration: frustrationState.hadFrustration,
+            time_to_complete_seconds: timeToComplete,
+        });
+        analytics.trackStreakMilestone(lang.languageCode, statsStore.stats.current_streak);
+
+        // Show embed banner after game completion
+        if (import.meta.client) {
+            const { checkBanner } = useEmbed();
+            setTimeout(() => checkBanner(), 2000);
+        }
     }
 
     /** Handle a losing game. */
@@ -652,15 +765,43 @@ export const useGameStore = defineStore('game', () => {
         gameLost.value = true;
         attempts.value = 'X';
 
-        // TODO: loadDefinition
+        // Load definition for stats modal display
+        if (import.meta.client) {
+            const { fetchDefinition } = useDefinitions();
+            fetchDefinition(lang.todaysWord, lang.languageCode).then(def => {
+                // Store definition for stats modal to display
+                // For now, just mark that we tried to load it
+            });
+        }
+
         submitWordStats(false, activeRow.value);
 
         statsStore.saveResult(lang.languageCode, false, activeRow.value);
         statsStore.calculateStats(lang.languageCode);
         statsStore.calculateTotalStats();
 
-        // TODO: analytics — trackGameComplete
-        // TODO: embed.showBanner()
+        // Analytics: track game completion
+        const lossFrustrationState = analytics.resetFrustrationState();
+        const lossTimeToComplete = gameStartTime
+            ? Math.floor((Date.now() - gameStartTime) / 1000)
+            : undefined;
+
+        analytics.trackGameComplete({
+            language: lang.languageCode,
+            won: false,
+            attempts: 'X',
+            streak_after: 0,
+            total_invalid_attempts: lossFrustrationState.totalInvalidAttempts,
+            max_consecutive_invalid: lossFrustrationState.maxConsecutiveInvalid,
+            had_frustration: lossFrustrationState.hadFrustration,
+            time_to_complete_seconds: lossTimeToComplete,
+        });
+
+        // Show embed banner after game completion
+        if (import.meta.client) {
+            const { checkBanner } = useEmbed();
+            setTimeout(() => checkBanner(), 2000);
+        }
     }
 
     // ---- Notifications ----
@@ -946,9 +1087,21 @@ export const useGameStore = defineStore('game', () => {
         const url = `https://wordle.global/${langCode}?r=${gameWon.value ? attempts.value : 'x'}`;
         const fullText = `${shareText}\n\n${url}`;
 
-        const onSuccess = () => {
+        const shareParams = {
+            language: langCode,
+            won: gameWon.value,
+            attempts: attempts.value,
+        };
+
+        const onSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
             shareButtonState.value = 'success';
-            // TODO: analytics — trackShareSuccess, trackShareContentGenerated
+            analytics.trackShareSuccess({ ...shareParams, method });
+            analytics.trackShareContentGenerated(
+                langCode,
+                gameWon.value,
+                attempts.value,
+                emojiBoard.value,
+            );
             setTimeout(() => {
                 shareButtonState.value = 'idle';
             }, 2000);
@@ -956,41 +1109,43 @@ export const useGameStore = defineStore('game', () => {
 
         // Try Web Share API first
         if (navigator.share) {
-            // TODO: analytics — trackShareClick
+            analytics.trackShareClick({ ...shareParams, method: 'native' });
             try {
                 await navigator.share({ text: fullText });
                 showNotification(lang.config?.text?.shared || 'Shared!');
-                onSuccess();
+                onSuccess('native');
                 return;
             } catch (error) {
                 if (error instanceof Error && error.name === 'AbortError') return;
-                // TODO: analytics — trackShareFail
+                analytics.trackShareFail(langCode, 'native', 'share_api_failed');
             }
         }
 
         // Try Clipboard API
         if (navigator.clipboard?.writeText && window.isSecureContext) {
-            // TODO: analytics — trackShareClick
+            analytics.trackShareClick({ ...shareParams, method: 'clipboard' });
             try {
                 await navigator.clipboard.writeText(fullText);
                 showNotification(lang.config?.text?.copied || 'Copied to clipboard!');
-                onSuccess();
+                onSuccess('clipboard');
                 return;
-            } catch {
-                // TODO: analytics — trackShareFail
+            } catch (error) {
+                if (error instanceof Error) {
+                    analytics.trackShareFail(langCode, 'clipboard', error.message);
+                }
             }
         }
 
         // Legacy execCommand fallback
-        // TODO: analytics — trackShareClick
+        analytics.trackShareClick({ ...shareParams, method: 'fallback' });
         if (copyViaExecCommand(fullText)) {
             showNotification(lang.config?.text?.copied || 'Copied to clipboard!');
-            onSuccess();
+            onSuccess('fallback');
             return;
         }
 
         // Final fallback: show modal
-        // TODO: analytics — trackShareFail
+        analytics.trackShareFail(langCode, 'fallback', 'all_methods_failed');
         showCopyFallbackModal(fullText);
     }
 
@@ -1086,11 +1241,14 @@ export const useGameStore = defineStore('game', () => {
         communityTotal,
         communityStatsLink,
         shareButtonState,
+        allowAnyWord,
+        maxDifficultyUsed,
         // hardMode is owned by settings store
 
         // Actions
         initKeyClasses,
         resetCaches,
+        initTimingState,
         addChar,
         checkWord,
         updateColors,

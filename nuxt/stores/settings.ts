@@ -7,7 +7,7 @@
  * SSR-safe: all localStorage and document access is guarded
  * behind `import.meta.client`.
  */
-import { ref, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { defineStore } from 'pinia';
 
 // ---------------------------------------------------------------------------
@@ -47,6 +47,14 @@ export const useSettingsStore = defineStore('settings', () => {
     const hardMode = ref(false);
     const highContrast = ref(false);
 
+    const difficultyShake = ref(false);
+    const difficultyWarning = ref('');
+    const difficultyLevel = computed(() => {
+        if (hardMode.value) return 2;
+        // allowAnyWord would be 0, but it's managed in game store
+        return 1; // normal
+    });
+
     // ---- Initialisation (client-only) ----
 
     function init(): void {
@@ -60,6 +68,13 @@ export const useSettingsStore = defineStore('settings', () => {
         const storedFeedback = readLocal('feedbackEnabled');
         if (storedFeedback !== null) {
             feedbackEnabled.value = storedFeedback === 'true';
+        }
+
+        if (import.meta.client) {
+            const { setHapticsEnabled } = useHaptics();
+            const { setSoundEnabled } = useSounds();
+            setHapticsEnabled(feedbackEnabled.value);
+            setSoundEnabled(feedbackEnabled.value);
         }
 
         // Word info
@@ -117,6 +132,12 @@ export const useSettingsStore = defineStore('settings', () => {
     function toggleFeedback(): void {
         feedbackEnabled.value = !feedbackEnabled.value;
         writeLocal('feedbackEnabled', feedbackEnabled.value ? 'true' : 'false');
+        if (import.meta.client) {
+            const { setHapticsEnabled } = useHaptics();
+            const { setSoundEnabled } = useSounds();
+            setHapticsEnabled(feedbackEnabled.value);
+            setSoundEnabled(feedbackEnabled.value);
+        }
     }
 
     function setFeedbackEnabled(value: boolean): void {
@@ -161,6 +182,9 @@ export const useSettingsStore = defineStore('settings', () => {
         wordInfoEnabled,
         hardMode,
         highContrast,
+        difficultyShake,
+        difficultyWarning,
+        difficultyLevel,
 
         // Init
         init,

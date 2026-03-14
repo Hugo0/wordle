@@ -74,6 +74,8 @@ useSeoMeta({
     ogLocale: config.meta?.locale || lang,
     ogImage: `https://wordle.global/static/images/share/${lang}_1.png`,
     twitterCard: 'summary_large_image',
+    twitterTitle: seoTitle,
+    twitterDescription: seoDescription,
 });
 
 useHead({
@@ -84,7 +86,40 @@ useHead({
     },
     meta: [{ name: 'google', content: 'notranslate' }],
     link: [{ rel: 'canonical', href: `https://wordle.global/${lang}` }],
+    script: [
+        {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebApplication',
+                name: wordleBase,
+                url: `https://wordle.global/${lang}`,
+                description: seoDescription,
+                applicationCategory: 'GameApplication',
+                operatingSystem: 'Any',
+                offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+                inLanguage: [lang],
+            }),
+        },
+        {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Wordle Global', item: 'https://wordle.global/' },
+                    { '@type': 'ListItem', position: 2, name: wordleBase, item: `https://wordle.global/${lang}` },
+                ],
+            }),
+        },
+    ],
 });
+
+// Fetch all language codes for hreflang
+const { data: allLangs } = await useFetch('/api/languages');
+if (allLangs.value?.language_codes) {
+    useHreflang(allLangs.value.language_codes);
+}
 
 // --- Client-side initialization ---
 onMounted(() => {
@@ -112,6 +147,20 @@ onMounted(() => {
         } else {
             game.maybeShowTutorial();
         }
+
+        // Analytics initialization
+        const analytics = useAnalytics();
+        analytics.trackPageView(langStore.languageCode);
+        analytics.trackGameStart({ language: langStore.languageCode, is_returning: stats.stats.n_games > 0, current_streak: stats.stats.current_streak });
+        analytics.trackPWASession(langStore.languageCode);
+        analytics.initAbandonTracking(() => ({
+            language: langStore.languageCode,
+            activeRow: game.activeRow,
+            gameOver: game.gameOver,
+            lastGuessValid: true,
+        }));
+        analytics.initErrorTracking(langStore.languageCode);
+        analytics.identifyUser(langStore.languageCode);
     } catch (err) {
         console.warn('[wordle] Failed to restore game state:', err);
     }
