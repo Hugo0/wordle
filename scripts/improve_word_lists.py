@@ -256,6 +256,19 @@ def load_common_names() -> set[str]:
     return names
 
 
+def load_profanity_blocklist() -> set[str]:
+    """Load global profanity blocklist — words that should never be daily answers."""
+    path = SCRIPT_DIR / "profanity_blocklist.txt"
+    if not path.exists():
+        return set()
+    words = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            words.add(line.lower())
+    return words
+
+
 # ── Additional data source loaders ────────────────────────────────────────────
 
 KAIKKI_DIR = SCRIPT_DIR / ".freq_data" / "kaikki"
@@ -583,10 +596,13 @@ def process_language(
     # Load filters
     blocklist = load_blocklist(lang)
     common_names = load_common_names()
+    profanity = load_profanity_blocklist()
     if blocklist:
         print(f"  Blocklist: {len(blocklist)} words")
     if common_names:
         print(f"  Common names filter: {len(common_names)} names")
+    if profanity:
+        print(f"  Profanity filter: {len(profanity)} words")
 
     # === Generate daily_words.txt ===
     # Score existing words by frequency rank
@@ -606,8 +622,14 @@ def process_language(
     # (blocklist, Roman numerals, common names)
     scored_pre = len(scored)
     unscored_pre = len(unscored)
-    scored = [(w, f) for w, f in scored if w not in blocklist and not is_roman_numeral(w)]
-    unscored = [w for w in unscored if w not in blocklist and not is_roman_numeral(w)]
+    scored = [
+        (w, f)
+        for w, f in scored
+        if w not in blocklist and w not in profanity and not is_roman_numeral(w)
+    ]
+    unscored = [
+        w for w in unscored if w not in blocklist and w not in profanity and not is_roman_numeral(w)
+    ]
     if common_names:
         scored = [(w, f) for w, f in scored if w not in common_names]
         unscored = [w for w in unscored if w not in common_names]
