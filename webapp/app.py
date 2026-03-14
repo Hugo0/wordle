@@ -467,6 +467,21 @@ with open(f"{data_dir}default_language_config.json") as f:
 
 keyboards = {k: load_keyboard(k) for k in language_codes}
 
+# Layer 2 safety: verify curated schedules cover all past days
+# This catches cases where daily_words.txt was modified without running freeze_past_words
+_todays_idx_at_startup = get_todays_idx()
+_days_since_migration = _todays_idx_at_startup - MIGRATION_DAY_IDX
+for _lc in language_codes:
+    _schedule = language_curated_schedules.get(_lc)
+    _schedule_len = len(_schedule) if _schedule else 0
+    if _schedule_len < _days_since_migration and language_daily_words.get(_lc):
+        # Only warn for languages that have daily_words (i.e., curated word selection)
+        logging.warning(
+            f"WORD SAFETY: {_lc} curated_schedule has {_schedule_len} entries "
+            f"but {_days_since_migration} days have passed since migration. "
+            f"Run: uv run python scripts/freeze_past_words.py {_lc}"
+        )
+
 
 def _compute_word_for_day(lang_code, day_idx):
     """Compute the daily word from word lists (no caching)."""
