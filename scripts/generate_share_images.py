@@ -163,6 +163,9 @@ def generate_image(lang_code, result, challenge_text, is_rtl):
         if len(lines) <= 2:
             break
 
+    if not lines:
+        return
+
     if len(lines) >= 2:
         line1 = lines[0]
         line2 = " ".join(lines[1:])
