@@ -10,7 +10,7 @@ services:
     startCommand: uv run gunicorn --chdir webapp --workers 8 --preload --timeout 120 app:app
     envVars:
       - key: PYTHON_VERSION
-        value: "3.12"
+        value: "3.14"
       - key: NODE_VERSION
         value: "22"
       - key: DATA_DIR
