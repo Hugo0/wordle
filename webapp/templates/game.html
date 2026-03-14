@@ -50,14 +50,16 @@
     <meta name="keywords" content="wordle, {{ language.config.name_native }}, {{ language.config.name }}">
     {% endif %}
     {% if share_result %}
-        {% set share_desc = "Think you can do better? Try today's Wordle in " ~ language.config.name ~ "!" %}
+        {# og:title: short and punchy (score + language). og:desc: native challenge text. #}
         {% if share_result == 'x' %}
-            {% set share_title = "Wordle " ~ language.config.name_native ~ " — I didn't get it. Can you?" %}
+            {% set share_title = "Wordle " ~ language.config.name_native ~ " — X/6" %}
+            {% set share_desc = language.config.text.share_challenge_lose %}
         {% elif share_result == '1' %}
-            {% set share_title = "Wordle " ~ language.config.name_native ~ " — 1/6 🤯 Beat that!" %}
-            {% set share_desc = "First try! " ~ share_desc %}
+            {% set share_title = "Wordle " ~ language.config.name_native ~ " — 1/6 🤯" %}
+            {% set share_desc = language.config.text.share_challenge_win | replace('{n}', '1') %}
         {% else %}
-            {% set share_title = "Wordle " ~ language.config.name_native ~ " — " ~ share_result ~ "/6. Can you beat me?" %}
+            {% set share_title = "Wordle " ~ language.config.name_native ~ " — " ~ share_result ~ "/6" %}
+            {% set share_desc = language.config.text.share_challenge_win | replace('{n}', share_result) %}
         {% endif %}
     {% else %}
         {% set share_title = title %}
@@ -109,11 +111,14 @@
     <script>
         window.word_list = JSON.parse('{{language.word_list | tojson | safe}}');
         window.word_list_supplement = JSON.parse('{{language.word_list_supplement | tojson | safe}}');
+        console.log('\nFor the language: ' + '"{{language.config.name_native}}/{{language.config.name}}"' + ' there are:\n' + window.word_list.length + ' words in the word list\n' + window.word_list_supplement.length + ' words in the supplemental word list.');
         window.characters = JSON.parse('{{language.characters | tojson | safe}}');
         window.config = JSON.parse('{{language.config | tojson | safe}}');
+        console.log("Character Set: " + window.characters);
         window.todays_idx = "{{ language.todays_idx }}";
         window.todays_word = "{{ language.daily_word }}";
         window.timezone_offset = {{ language.timezone_offset | default(0) | tojson }};
+        console.log("Today's word is: " + window.todays_word.toUpperCase() + "\nDon't cheat!");
     </script>
 </head>
 
@@ -293,7 +298,7 @@
                         <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
 
                         <div class="flex flex-col gap-2 py-2">
-                            <a href="https://github.com/Hugo0/wordle/issues/new/choose"
+                            <a href="https://github.com/Hugo0/wordle/issues"
                                target="_blank"
                                rel="noopener noreferrer"
                                class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">
