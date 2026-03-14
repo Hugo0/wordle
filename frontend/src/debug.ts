@@ -3,10 +3,55 @@
  * Useful for testing PWA install flows without needing real devices
  */
 import pwa from './pwa';
+import { haptic, supportsHaptics, getHapticsEnabled, setHapticsEnabled } from './haptics';
 
 const getComponent = () => document.querySelector('pwa-install');
 
 const debug = {
+    haptics: {
+        /** Show haptic feedback status */
+        status: () => {
+            const status = {
+                enabled: getHapticsEnabled(),
+                supportsHaptics,
+                hasVibrateAPI: 'vibrate' in navigator,
+                vibrateFunction: typeof navigator.vibrate,
+                pointerCoarse: window.matchMedia('(pointer: coarse)').matches,
+                feedbackPref: localStorage.getItem('feedbackEnabled'),
+                userAgent: navigator.userAgent,
+            };
+            console.table(status);
+            return status;
+        },
+
+        /** Force enable haptics and test vibration directly */
+        test: () => {
+            console.log('Testing haptics...');
+            setHapticsEnabled(true);
+            haptic();
+            console.log('haptic() called. Did you feel it?');
+        },
+
+        /** Test navigator.vibrate directly (bypasses all guards) */
+        vibrate: (ms = 200) => {
+            if ('vibrate' in navigator) {
+                const result = navigator.vibrate(ms);
+                console.log(`navigator.vibrate(${ms}) returned:`, result);
+                return result;
+            } else {
+                console.log('navigator.vibrate not available');
+                return false;
+            }
+        },
+
+        /** Force enable haptics */
+        enable: () => {
+            setHapticsEnabled(true);
+            localStorage.setItem('feedbackEnabled', 'true');
+            console.log('Haptics force-enabled');
+        },
+    },
+
     pwa: {
         /**
          * Show current PWA status
@@ -98,6 +143,12 @@ const debug = {
 ╔═══════════════════════════════════════════════════════════════╗
 ║                    Wordle Global Debug Console                 ║
 ╠═══════════════════════════════════════════════════════════════╣
+║  Haptic Commands:                                              ║
+║    debug.haptics.status()    - Show haptic state & detection   ║
+║    debug.haptics.test()      - Force enable + trigger haptic   ║
+║    debug.haptics.vibrate(ms) - Raw navigator.vibrate() test    ║
+║    debug.haptics.enable()    - Force enable + save to storage  ║
+║                                                                ║
 ║  PWA Commands:                                                 ║
 ║    debug.pwa.status()      - Show PWA state & platform info    ║
 ║    debug.pwa.install()     - Trigger install dialog            ║
@@ -106,12 +157,6 @@ const debug = {
 ║    debug.pwa.showBanner()  - Show install banner               ║
 ║    debug.pwa.reset()       - Reset dismissed state             ║
 ║    debug.pwa.component()   - Get raw component reference       ║
-║                                                                ║
-║  Testing Tips:                                                 ║
-║    • Chrome DevTools → Application → Manifest to check PWA     ║
-║    • Use "Add to Home Screen" in Chrome menu on mobile         ║
-║    • iOS: Use Safari only (Chrome iOS can't install PWAs)      ║
-║    • Use Chrome DevTools mobile emulation to test iOS UI       ║
 ╚═══════════════════════════════════════════════════════════════╝
         `);
     },
