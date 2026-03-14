@@ -725,15 +725,24 @@ export const trackPageView = (language: string): void => {
 // ============================================================================
 
 /**
- * Set up global error tracking
+ * Set up global error tracking.
+ * Sends to GA4 (truncated) and PostHog (full exception with stack trace).
  */
 export const initErrorTracking = (language: string): void => {
     window.addEventListener('error', (event) => {
         trackError({
             error_type: 'javascript_error',
             language,
-            details: event.message?.substring(0, 100), // Truncate for quota
+            details: event.message?.substring(0, 100), // Truncate for GA4 quota
         });
+        // PostHog gets the full error object with stack trace
+        try {
+            if (event.error) {
+                posthog.captureException(event.error, { language });
+            }
+        } catch {
+            // Silently fail
+        }
     });
 
     window.addEventListener('unhandledrejection', (event) => {
@@ -742,6 +751,13 @@ export const initErrorTracking = (language: string): void => {
             language,
             details: String(event.reason)?.substring(0, 100),
         });
+        try {
+            const err =
+                event.reason instanceof Error ? event.reason : new Error(String(event.reason));
+            posthog.captureException(err, { language });
+        } catch {
+            // Silently fail
+        }
     });
 };
 
