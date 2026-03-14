@@ -11,7 +11,7 @@
 
 ## Languages
 
-العربية · Azərbaycan · български · brezhoneg · català · کوردی · čeština · dansk · Deutsch · Ελληνικά · **English** · Esperanto · Español · eesti · euskara · فارسی · **Suomi** · føroyskt · français · Frysk · Gaeilge · Gàidhlig · Galego · עברית · hrvatski · magyar · Հայերեն · Interlingua · Íslenska · Italiano · ქართული · 한국어 · latine · Lëtzebuergesch · lietuvių · latviešu · Māori · македонски · Монгол · Norsk Bokmål · Plattdüütsch · नेपाली · Nederlands · Norsk Nynorsk · occitan · Palauan · polski · Português · Quenya · Română · русский · Ikinyarwanda · slovenčina · Slovenski · српски · Svenska · Türkmençe · tlhIngan · Türkçe · Українська · Tiếng Việt · [and more...](https://wordle.global)
+‎العربية‎ · Azərbaycan · български · brezhoneg · català · ‎کوردی‎ · čeština · dansk · Deutsch · Ελληνικά · English · Esperanto · Español · eesti · euskara · ‎فارسی‎ · Suomi · føroyskt · français · Friulian · Frysk · Gaeilge · Gàidhlig · Galego · ‎עברית‎ · hrvatski · magyar · Հայերեն · արեւմտահայերէն · Interlingua · Occidental · Íslenska · Italiano · ქართული · 한국어 · latine · latgaliski · latviešu · Lëtzebuergesch · lietuvių · Māori · македонски · Монгол · नेपाली · Nederlands · Norsk Bokmål · Norsk Nynorsk · occitan · Palauan · Plattdüütsch · polski · Português · Quenya · Română · русский · Ikinyarwanda · slovenčina · Slovenski · српски · Svenska · Türkçe · Türkmençe · tlhIngan · Українська · Tiếng Việt
 
 Don't see your language? [Add it!](#add-a-new-language)
 
