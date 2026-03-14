@@ -11,7 +11,7 @@ import type { WordStats } from '~/utils/types';
 
 // In-memory dedup (resets on restart, never persisted)
 const STATS_MAX_IPS = 50_000;
-const _statsSeenIps = new Map<string, boolean>();
+const _statsSeenIps = new Set<string>();
 let _statsSeenDay: number | null = null;
 
 /**
@@ -134,7 +134,7 @@ export function isDuplicateSubmission(
     if (_statsSeenIps.has(dedupKey)) return true;
 
     if (_statsSeenIps.size < STATS_MAX_IPS) {
-        _statsSeenIps.set(dedupKey, true);
+        _statsSeenIps.add(dedupKey);
     }
     return false;
 }

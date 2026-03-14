@@ -50,6 +50,12 @@ export const useLanguageStore = defineStore('language', () => {
     /** Language code shorthand. */
     const languageCode = computed(() => config.value?.language_code ?? '');
 
+    /** Word list as Set for O(1) exact-match lookups. */
+    const wordListSet = computed(() => new Set(wordList.value));
+
+    /** Supplement list as Set for O(1) exact-match lookups. */
+    const wordListSupplementSet = computed(() => new Set(wordListSupplement.value));
+
     // -----------------------------------------------------------------------
     // Actions
     // -----------------------------------------------------------------------
@@ -114,6 +120,8 @@ export const useLanguageStore = defineStore('language', () => {
         rightToLeft,
         graphemeMode,
         languageCode,
+        wordListSet,
+        wordListSupplementSet,
 
         // Actions
         init,

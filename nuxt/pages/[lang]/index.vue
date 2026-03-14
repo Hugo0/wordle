@@ -30,7 +30,7 @@ langStore.init({
     word_list_supplement: gameData.value.word_list_supplement,
     characters: gameData.value.characters,
     config: gameData.value.config,
-    todays_idx: String(gameData.value.todays_idx),
+    todays_idx: gameData.value.todays_idx,
     todays_word: gameData.value.todays_word,
     timezone_offset: gameData.value.timezone_offset,
     keyboard: gameData.value.keyboard,

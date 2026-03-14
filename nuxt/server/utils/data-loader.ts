@@ -187,10 +187,15 @@ export function loadCuratedSchedule(lang: string): string[] | null {
 // Language config loading
 // ---------------------------------------------------------------------------
 
+let _defaultConfig: Record<string, any> | null = null;
+
 export function loadLanguageConfig(lang: string): LanguageConfig {
-    const defaultConfig = readJsonFile<Record<string, any>>(
-        join(DATA_DIR, 'default_language_config.json'),
-    )!;
+    if (!_defaultConfig) {
+        _defaultConfig = readJsonFile<Record<string, any>>(
+            join(DATA_DIR, 'default_language_config.json'),
+        )!;
+    }
+    const defaultConfig = _defaultConfig;
 
     const langConfigPath = join(DATA_DIR, 'languages', lang, 'language_config.json');
     const langConfig = readJsonFile<Record<string, any>>(langConfigPath);

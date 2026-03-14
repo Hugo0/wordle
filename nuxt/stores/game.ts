@@ -110,7 +110,7 @@ export const useGameStore = defineStore('game', () => {
 
     const shareButtonState = ref<'idle' | 'success'>('idle');
 
-    const hardMode = ref(false);
+
 
     // =======================================================================
     // Internal (non-exposed) state
@@ -217,8 +217,8 @@ export const useGameStore = defineStore('game', () => {
         const lang = useLanguageStore();
 
         // Try exact match first
-        if (lang.wordList.includes(word)) return word;
-        if (lang.wordListSupplement.includes(word)) return word;
+        if (lang.wordListSet.has(word)) return word;
+        if (lang.wordListSupplementSet.has(word)) return word;
 
         // Try normalized match (e.g., "borde" matches "börde")
         const normalized = normalizeWord(word, lang.normalizeMap);
@@ -819,6 +819,10 @@ export const useGameStore = defineStore('game', () => {
         return `${h}h ${m}m ${s}s`;
     }
 
+    function updateTimeUntilNextDay(): void {
+        timeUntilNextDay.value = getTimeUntilNextDay();
+    }
+
     // ---- Hard mode ----
 
     /**
@@ -901,18 +905,16 @@ export const useGameStore = defineStore('game', () => {
         }
 
         try {
-            fetch(`/${langCode}/api/word-stats`, {
+            $fetch(`/api/${langCode}/word-stats`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
+                body: {
                     day_idx: dayIdx,
                     attempts: typeof attemptsVal === 'number' ? attemptsVal : 0,
                     won,
                     client_id: clientId,
-                }),
+                },
             })
-                .then((resp) => (resp.ok ? resp.json() : null))
-                .then((stats) => {
+                .then((stats: any) => {
                     if (!stats || !stats.total || !won) return;
                     const playerAttempts =
                         typeof attemptsVal === 'number' ? attemptsVal : 7;
@@ -1082,7 +1084,7 @@ export const useGameStore = defineStore('game', () => {
         communityTotal,
         communityStatsLink,
         shareButtonState,
-        hardMode,
+        // hardMode is owned by settings store
 
         // Actions
         initKeyClasses,
@@ -1105,6 +1107,7 @@ export const useGameStore = defineStore('game', () => {
         saveToLocalStorage,
         loadFromLocalStorage,
         getTimeUntilNextDay,
+        updateTimeUntilNextDay,
         checkHardMode,
         maybeShowTutorial,
         submitWordStats,
