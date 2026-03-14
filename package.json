@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "pre-commit install 2>/dev/null; lsof -ti:8000 | xargs kill 2>/dev/null; pnpm build && concurrently -k -n server,vite -c blue,magenta \"uv run gunicorn -c gunicorn.dev.py --chdir webapp app:app\" \"pnpm watch\"",
-        "build": "vite build",
+        "build": "vite build && uv run python scripts/generate_share_images.py",
         "watch": "vite build --watch --emptyOutDir false",
         "test": "vitest run",
         "test:watch": "vitest",
