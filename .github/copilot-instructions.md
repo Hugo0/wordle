@@ -1,1 +1,1 @@
-../CONTRIBUTING.md
+../CLAUDE.md
