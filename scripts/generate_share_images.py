@@ -10,6 +10,7 @@ Usage:
 """
 
 import json
+import logging
 import os
 import re
 import sys
@@ -17,6 +18,8 @@ import sys
 import arabic_reshaper
 from bidi.algorithm import get_display
 from PIL import Image, ImageDraw, ImageFont
+
+logger = logging.getLogger(__name__)
 
 # Paths
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -36,12 +39,60 @@ YELLOW = (234, 179, 8)  # #eab308
 GRAY = (82, 82, 82)  # #525252
 WHITE = (255, 255, 255)
 
-# Font paths
-FONT_DEJAVU = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-FONT_DEJAVU_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-FONT_CJK = "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
-FONT_CJK_BOLD = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
-SCORE_FONT = "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"
+# Candidate paths for font resolution, tried in order per platform.
+_DEJAVU_PATHS = [
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",  # Ubuntu/Debian
+    "/usr/share/fonts/dejavu-sans-fonts/DejaVuSans.ttf",  # Fedora/RHEL
+    "/usr/share/fonts/TTF/DejaVuSans.ttf",  # Arch
+]
+_DEJAVU_BOLD_PATHS = [
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    "/usr/share/fonts/dejavu-sans-fonts/DejaVuSans-Bold.ttf",
+    "/usr/share/fonts/TTF/DejaVuSans-Bold.ttf",
+]
+_NOTO_BOLD_PATHS = [
+    "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf",
+    "/usr/share/fonts/noto/NotoSans-Bold.ttf",
+    "/usr/share/fonts/TTF/NotoSans-Bold.ttf",
+    "/usr/share/fonts/noto-sans-fonts/NotoSans-Bold.ttf",  # Fedora
+]
+_CJK_REGULAR_PATHS = [
+    "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/OTF/NotoSansCJK-Regular.ttc",
+]
+_CJK_BOLD_PATHS = [
+    "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
+    "/usr/share/fonts/noto-cjk/NotoSansCJK-Bold.ttc",
+    "/usr/share/fonts/OTF/NotoSansCJK-Bold.ttc",
+]
+
+
+def _resolve_font(candidates, label):
+    """Return the first path that exists from *candidates*, or None."""
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    logger.warning("No %s font found at any of %s — will use Pillow default", label, candidates)
+    return None
+
+
+# Resolve once at import time and cache the results.
+FONT_DEJAVU = _resolve_font(_DEJAVU_PATHS, "DejaVu regular")
+FONT_DEJAVU_BOLD = _resolve_font(_DEJAVU_BOLD_PATHS, "DejaVu bold") or _resolve_font(
+    _DEJAVU_PATHS, "DejaVu regular (bold fallback)"
+)
+SCORE_FONT = (
+    _resolve_font(_NOTO_BOLD_PATHS, "Noto Sans bold")
+    or _resolve_font(_DEJAVU_BOLD_PATHS, "DejaVu bold (score fallback)")
+    or _resolve_font(_DEJAVU_PATHS, "DejaVu regular (score fallback)")
+)
+FONT_CJK = _resolve_font(_CJK_REGULAR_PATHS, "CJK regular") or FONT_DEJAVU
+FONT_CJK_BOLD = (
+    _resolve_font(_CJK_BOLD_PATHS, "CJK bold")
+    or _resolve_font(_CJK_REGULAR_PATHS, "CJK regular (bold fallback)")
+    or FONT_DEJAVU_BOLD
+)
 
 # Languages needing CJK font (DejaVu doesn't cover Hangul glyphs)
 CJK_LANGS = {"ko"}
@@ -55,10 +106,17 @@ HEADER_HEIGHT = 90
 
 
 def get_font(path, size):
-    """Get a cached font instance."""
+    """Get a cached font instance, falling back to Pillow default if path is None."""
     key = (path, size)
     if key not in FONTS:
-        FONTS[key] = ImageFont.truetype(path, size)
+        if path is None:
+            FONTS[key] = ImageFont.load_default(size=size)
+        else:
+            try:
+                FONTS[key] = ImageFont.truetype(path, size)
+            except OSError:
+                logger.warning("Failed to load font %s — using Pillow default", path)
+                FONTS[key] = ImageFont.load_default(size=size)
     return FONTS[key]
 
 
@@ -168,7 +226,7 @@ def generate_image(lang_code, result, challenge_text, is_rtl):
 
     # Auto-size: enforce exactly 2 lines — line 1 = white statement, line 2 = green CTA.
     # Shrink fonts until each part fits on exactly 1 line.
-    stmt_size, cta_size = 44, 48
+    stmt_size = 44
     for stmt_s, cta_s in ((44, 48), (38, 42), (32, 36), (26, 30)):
         font_main = get_font(font_reg, stmt_s)
         font_cta = get_font(font_bold, cta_s)
@@ -185,7 +243,7 @@ def generate_image(lang_code, result, challenge_text, is_rtl):
         cta_lines = wrap_text(cta_display, font_cta, draw, max_w)
         if len(cta_lines) != 1:
             cta_ok = False
-        stmt_size, cta_size = stmt_s, cta_s
+        stmt_size = stmt_s
         if stmt_ok and cta_ok:
             break
 
@@ -238,10 +296,7 @@ def main():
     load_header()
     configs = load_language_configs()
 
-    if len(sys.argv) > 1:
-        target_langs = sys.argv[1:]
-    else:
-        target_langs = sorted(configs.keys())
+    target_langs = sys.argv[1:] if len(sys.argv) > 1 else sorted(configs.keys())
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
