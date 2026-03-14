@@ -241,6 +241,7 @@ interface GameData {
     communityIsTopScore: boolean;
     communityTotal: number;
     communityStatsLink: string | null;
+    definitionTracked: boolean;
     hardMode: boolean;
     highContrast: boolean;
     difficultyShake: boolean;
@@ -444,6 +445,7 @@ export const createGameApp = () => {
                 communityIsTopScore: false,
                 communityTotal: 0,
                 communityStatsLink: null,
+                definitionTracked: false,
             };
         },
 
@@ -1768,7 +1770,11 @@ export const createGameApp = () => {
                                     },
                                     wordPageUrl
                                 );
-                                analytics.trackDefinitionView(langCode, def.source);
+                                // Only track on fresh game completion, not page revisits
+                                if (!this.definitionTracked) {
+                                    analytics.trackDefinitionView(langCode, def.source);
+                                    this.definitionTracked = true;
+                                }
                             })
                             .catch(() => {
                                 container.style.display = 'none';
