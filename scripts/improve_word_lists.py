@@ -277,8 +277,11 @@ HUNSPELL_DIR = SCRIPT_DIR / ".freq_data" / "hunspell"
 KBBI_DIR = SCRIPT_DIR / ".freq_data" / "kbbi"
 KATLA_DIR = SCRIPT_DIR / ".freq_data" / "katla"
 
-# Which extra sources are available per language (checked at runtime)
+# Which extra sources are available per language (checked at runtime).
+# Sources are only used if the data files exist on disk (downloaded via download_sources.py).
+# "kaikki" = Wiktionary word extracts, "leipzig" = newspaper frequency data
 EXTRA_SOURCES = {
+    # New languages (2026-03)
     "id": {"leipzig", "hunspell", "kaikki", "kbbi", "katla"},
     "ms": {"leipzig", "kaikki"},
     "tl": {"leipzig", "kaikki"},
@@ -286,9 +289,49 @@ EXTRA_SOURCES = {
     "ur": {"leipzig", "kaikki"},
     "ha": {"leipzig", "kaikki"},
     "yo": {"leipzig", "kaikki"},
-    "uz": {"leipzig"},
+    "uz": {"leipzig", "kaikki"},
     "om": {"leipzig"},
     "hi": {"leipzig", "hunspell", "kaikki"},
+    "bn": {"leipzig", "kaikki"},
+    "mr": {"kaikki"},
+    # Existing languages — decontamination via kaikki + Leipzig
+    "de": {"leipzig", "kaikki"},
+    "es": {"leipzig", "kaikki"},
+    "fr": {"leipzig", "kaikki"},
+    "it": {"leipzig", "kaikki"},
+    "pt": {"leipzig", "kaikki"},
+    "nl": {"leipzig", "kaikki"},
+    "sv": {"leipzig", "kaikki"},
+    "da": {"leipzig", "kaikki"},
+    "hu": {"leipzig", "kaikki"},
+    "pl": {"leipzig", "kaikki"},
+    "cs": {"leipzig", "kaikki"},
+    "ro": {"leipzig", "kaikki"},
+    "hr": {"leipzig", "kaikki"},
+    "sk": {"leipzig", "kaikki"},
+    "sl": {"leipzig", "kaikki"},
+    "bg": {"leipzig", "kaikki"},
+    "uk": {"leipzig", "kaikki"},
+    "el": {"leipzig", "kaikki"},
+    "tr": {"leipzig", "kaikki"},
+    "ca": {"leipzig", "kaikki"},
+    "et": {"leipzig", "kaikki"},
+    "fi": {"leipzig", "kaikki"},
+    "sr": {"leipzig", "kaikki"},
+    "nb": {"leipzig", "kaikki"},
+    "nn": {"kaikki"},
+    "eu": {"kaikki"},
+    "gl": {"kaikki"},
+    "lv": {"kaikki"},
+    "lt": {"kaikki"},
+    "is": {"kaikki"},
+    "mk": {"kaikki"},
+    "ar": {"kaikki"},
+    "he": {"kaikki"},
+    "fa": {"kaikki"},
+    "hy": {"kaikki"},
+    "ka": {"kaikki"},
+    "la": {"kaikki"},
 }
 
 
@@ -660,6 +703,22 @@ def process_language(
                 f"  English contamination filter: removed {en_removed} words from daily candidates"
             )
 
+    # Dictionary verification gate — only allow words confirmed by a dictionary
+    # source (kaikki, Leipzig, Hunspell, KBBI, Katla) as daily word candidates.
+    # This prevents subtitle junk (brand names, proper nouns, tech terms) from
+    # becoming daily answers. Words without dictionary verification are still
+    # valid guesses (they stay in the main word list), just not daily answers.
+    if native_dict:
+        scored_pre3 = len(scored)
+        scored = [(w, f) for w, f in scored if w in native_dict]
+        unscored = [w for w in unscored if w in native_dict]
+        dict_removed = scored_pre3 - len(scored)
+        if dict_removed:
+            print(
+                f"  Dictionary verification: kept {len(scored)} verified, "
+                f"excluded {dict_removed} unverified words"
+            )
+
     # Take top N
     target = min(daily_count, len(scored) + len(unscored))
     daily_words = [w for w, _ in scored[:target]]
@@ -802,7 +861,7 @@ def process_language(
             return result
 
     # Safety: freeze past daily words before modifying daily_words.txt
-    # This ensures historical words are preserved in curated_schedule.txt (git-committed)
+    # This ensures historical words are preserved in word_history.txt (git-committed)
     # even if the disk cache gets wiped on Render redeployments
     if overwrite and daily_path.exists():
         try:

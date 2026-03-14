@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
-Freeze past daily words into curated_schedule.txt files.
+Freeze past daily words into word_history.txt files.
 
-This ensures historical daily words are preserved in git and survive disk wipes.
-The curated schedule is the highest-priority tier in word selection — it always
+This ensures post-migration daily words are preserved in git and survive disk wipes.
+The word history is the highest-priority tier in word selection — it always
 wins over daily_words.txt and the main word list.
 
-Safety guarantee: once a word has been served to players, it can never change,
-even if we regenerate daily_words.txt or modify the main word list.
+IMPORTANT: Only covers post-migration days (MIGRATION_DAY_IDX+1 onward, Jan 26 2026+).
+Legacy days (before migration) use a different algorithm that depends on the historical
+word list that was live at the time. Since some word lists changed since launch
+(e.g., Finnish was re-curated Jan 25 2026), we cannot reliably recompute legacy words.
+Legacy days rely on Render's disk cache for correctness.
 
 Usage:
     python scripts/freeze_past_words.py              # Freeze all languages
@@ -141,7 +144,7 @@ def load_language_data(lang):
                 blocklist.add(line.lower())
 
     # Existing curated schedule
-    schedule_file = lang_dir / f"{lang}_curated_schedule.txt"
+    schedule_file = lang_dir / f"{lang}_word_history.txt"
     existing_schedule = []
     if schedule_file.exists():
         for line in schedule_file.read_text(encoding="utf-8").splitlines():
@@ -218,7 +221,7 @@ def freeze_language(lang, check_only=False):
         return True, f"{lang}: already up to date ({len(schedule)} days)"
 
     # Write schedule
-    schedule_path = LANGUAGES_DIR / lang / f"{lang}_curated_schedule.txt"
+    schedule_path = LANGUAGES_DIR / lang / f"{lang}_word_history.txt"
 
     # Add header comment with hash of current word list for Layer 2 verification
     words_hash = hashlib.sha256("\n".join(data["words"][:100]).encode()).hexdigest()[:12]
@@ -240,7 +243,7 @@ def freeze_language(lang, check_only=False):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Freeze past daily words to curated_schedule.txt")
+    parser = argparse.ArgumentParser(description="Freeze past daily words to word_history.txt")
     parser.add_argument("langs", nargs="*", help="Language codes (default: all)")
     parser.add_argument("--check", action="store_true", help="Check coverage without writing")
     args = parser.parse_args()
