@@ -23,6 +23,7 @@ DATA_DIR = os.path.join(ROOT, "webapp", "data")
 LANG_DIR = os.path.join(DATA_DIR, "languages")
 OUTPUT_DIR = os.path.join(ROOT, "webapp", "static", "images", "share")
 DEFAULT_CONFIG_PATH = os.path.join(DATA_DIR, "default_language_config.json")
+OG_IMAGE_PATH = os.path.join(ROOT, "webapp", "static", "images", "og-image.png")
 
 # Image dimensions (standard OG image)
 WIDTH, HEIGHT = 1200, 630
@@ -33,23 +34,23 @@ GREEN = (34, 197, 94)  # #22c55e
 YELLOW = (234, 179, 8)  # #eab308
 GRAY = (82, 82, 82)  # #525252
 WHITE = (255, 255, 255)
-LIGHT_GRAY = (163, 163, 163)  # #a3a3a3
-
-# Wordle tile pattern for the logo (G=green, Y=yellow, X=gray)
-TILE_PATTERN = ["G", "Y", "X", "G", "Y", "G"]
-TILE_LETTERS = ["W", "O", "R", "D", "L", "E"]
-TILE_COLORS = {"G": GREEN, "Y": YELLOW, "X": GRAY}
 
 # Font paths
-FONT_BASE = "/usr/share/fonts/truetype/noto"
-BOLD_FONT = os.path.join(FONT_BASE, "NotoSans-Bold.ttf")
-# DejaVu Sans covers Latin, Cyrillic, Greek, Arabic, Hebrew, Georgian, Armenian,
-# Devanagari, Korean, and more — perfect for mixed-script challenge text
-CHALLENGE_FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-LATIN_FONT = os.path.join(FONT_BASE, "NotoSans-Regular.ttf")
+FONT_DEJAVU = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+FONT_DEJAVU_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+FONT_CJK = "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
+FONT_CJK_BOLD = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
+SCORE_FONT = "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"
+
+# Languages needing CJK font (DejaVu doesn't cover Hangul glyphs)
+CJK_LANGS = {"ko"}
 
 # Pre-load fonts (avoid repeated truetype() calls in hot loop)
 FONTS = {}
+
+# Header strip cropped from the real og-image.png (pixel-perfect branding)
+HEADER_STRIP = None
+HEADER_HEIGHT = 90
 
 
 def get_font(path, size):
@@ -60,41 +61,24 @@ def get_font(path, size):
     return FONTS[key]
 
 
+def load_header():
+    """Crop and scale the WORDLE tiles + globe from og-image.png."""
+    global HEADER_STRIP
+    og = Image.open(OG_IMAGE_PATH)
+    # Crop the tiles+globe band (y=185..335 in the 1200x630 original)
+    strip = og.crop((0, 185, 1200, 335))
+    HEADER_STRIP = strip.resize(
+        (int(strip.width * HEADER_HEIGHT / strip.height), HEADER_HEIGHT),
+        Image.LANCZOS,
+    )
+
+
 def prepare_bidi_text(text, is_rtl):
     """Reshape and reorder RTL text for correct Pillow rendering."""
     if not is_rtl:
         return text
-    # Arabic script needs reshaping (letter joining) — apply to all RTL
-    # since it's a no-op for Hebrew script
     text = arabic_reshaper.reshape(text)
     return get_display(text)
-
-
-def draw_wordle_tiles(draw, y_center):
-    """Draw the WORDLE letter tiles across the top."""
-    tile_size = 56
-    gap = 8
-    total_width = len(TILE_LETTERS) * tile_size + (len(TILE_LETTERS) - 1) * gap
-    start_x = (WIDTH - total_width) // 2
-    font = get_font(BOLD_FONT, 34)
-
-    for i, (letter, pattern) in enumerate(zip(TILE_LETTERS, TILE_PATTERN)):
-        x = start_x + i * (tile_size + gap)
-        color = TILE_COLORS[pattern]
-        draw.rounded_rectangle(
-            [x, y_center - tile_size // 2, x + tile_size, y_center + tile_size // 2],
-            radius=6,
-            fill=color,
-        )
-        bbox = draw.textbbox((0, 0), letter, font=font)
-        tw = bbox[2] - bbox[0]
-        th = bbox[3] - bbox[1]
-        draw.text(
-            (x + (tile_size - tw) // 2, y_center - th // 2 - 2),
-            letter,
-            fill=WHITE,
-            font=font,
-        )
 
 
 def wrap_text(text, font, draw, max_width):
@@ -102,7 +86,6 @@ def wrap_text(text, font, draw, max_width):
     words = text.split()
     lines = []
     current_line = ""
-
     for word in words:
         test_line = f"{current_line} {word}".strip() if current_line else word
         bbox = draw.textbbox((0, 0), test_line, font=font)
@@ -112,36 +95,28 @@ def wrap_text(text, font, draw, max_width):
             if current_line:
                 lines.append(current_line)
             current_line = word
-
     if current_line:
         lines.append(current_line)
-
     return lines
 
 
-def draw_mini_tiles(draw, result, score_y):
-    """Draw decorative mini tile grids flanking the score."""
-    mini_size = 16
-    mini_gap = 4
-    n_rows = int(result) if result != "x" else 6
-    solved_row = int(result) - 1 if result != "x" else -1
-
-    for side in ("left", "right"):
-        for row in range(n_rows):
-            for col in range(5):
-                if side == "left":
-                    mx = 80 + col * (mini_size + mini_gap)
-                else:
-                    mx = WIDTH - 80 - (4 - col) * (mini_size + mini_gap) - mini_size
-                my = score_y + 20 + row * (mini_size + mini_gap)
-
-                if row == solved_row:
-                    c = GREEN
-                else:
-                    offset = 0 if side == "left" else 1
-                    v = (row + col + offset) % 3
-                    c = GREEN if v == 0 else YELLOW if v == 1 else GRAY
-                draw.rectangle([mx, my, mx + mini_size, my + mini_size], fill=c)
+def draw_mini_grid(draw, cx, cy, n_rows, solved_row, tile_size=24, gap=5):
+    """Draw a mini tile grid centered at (cx, cy)."""
+    cols = 5
+    grid_w = cols * tile_size + (cols - 1) * gap
+    grid_h = n_rows * tile_size + (n_rows - 1) * gap
+    x0 = cx - grid_w // 2
+    y0 = cy - grid_h // 2
+    for row in range(n_rows):
+        for col in range(cols):
+            mx = x0 + col * (tile_size + gap)
+            my = y0 + row * (tile_size + gap)
+            if row == solved_row:
+                c = GREEN
+            else:
+                v = (row + col) % 3
+                c = GREEN if v == 0 else YELLOW if v == 1 else GRAY
+            draw.rectangle([mx, my, mx + tile_size, my + tile_size], fill=c)
 
 
 def generate_image(lang_code, result, challenge_text, is_rtl):
@@ -149,53 +124,64 @@ def generate_image(lang_code, result, challenge_text, is_rtl):
     img = Image.new("RGB", (WIDTH, HEIGHT), BG_COLOR)
     draw = ImageDraw.Draw(img)
 
-    # 1. WORDLE tiles at top
-    draw_wordle_tiles(draw, y_center=70)
+    # 1. Header — pixel-perfect from og-image.png
+    paste_x = (WIDTH - HEADER_STRIP.width) // 2
+    img.paste(HEADER_STRIP, (paste_x, 15))
 
-    # 2. "WORDLE GLOBAL" text under tiles
-    font_title = get_font(BOLD_FONT, 22)
-    bbox = draw.textbbox((0, 0), "WORDLE GLOBAL", font=font_title)
-    tw = bbox[2] - bbox[0]
-    draw.text(((WIDTH - tw) // 2, 108), "WORDLE GLOBAL", fill=LIGHT_GRAY, font=font_title)
+    # 2. Score at 1/3, mini grid at 2/3, vertically aligned
+    score_text = f"{result}/6" if result != "x" else "X/6"
+    score_color = GRAY if result == "x" else (GREEN if int(result) <= 3 else YELLOW)
 
-    # 3. Big score in the center
-    if result == "x":
-        score_text = "X/6"
-        score_color = GRAY
-    else:
-        score_text = f"{result}/6"
-        score_color = GREEN if int(result) <= 3 else YELLOW
+    sf = get_font(SCORE_FONT, 160)
+    bbox = draw.textbbox((0, 0), score_text, font=sf)
+    stw = bbox[2] - bbox[0]
+    ascent, _ = sf.getmetrics()
 
-    font_score = get_font(BOLD_FONT, 140)
-    bbox = draw.textbbox((0, 0), score_text, font=font_score)
-    tw = bbox[2] - bbox[0]
-    th = bbox[3] - bbox[1]
-    score_y = 180
-    draw.text(((WIDTH - tw) // 2, score_y), score_text, fill=score_color, font=font_score)
+    mid_y = 265  # vertical center of score/grid band
+    score_x = WIDTH // 3 - stw // 2
+    score_y = mid_y - ascent // 2 - 5
+    draw.text((score_x, score_y), score_text, fill=score_color, font=sf)
 
-    # 4. Decorative mini tiles flanking the score
-    draw_mini_tiles(draw, result, score_y)
+    # Grid centered at 2/3 mark, vertically aligned to score
+    n_rows = int(result) if result != "x" else 6
+    solved = int(result) - 1 if result != "x" else -1
+    score_visual_cy = score_y + ascent // 2 + 10
+    draw_mini_grid(draw, 2 * WIDTH // 3, score_visual_cy, n_rows, solved)
 
-    # 5. Challenge text (apply bidi reordering for RTL languages)
+    # 3. Challenge text — pick font based on language script
+    use_cjk = lang_code in CJK_LANGS
+    font_reg = FONT_CJK if use_cjk else FONT_DEJAVU
+    font_bold = FONT_CJK_BOLD if use_cjk else FONT_DEJAVU_BOLD
+
+    # Auto-size: start at 44px, shrink if text overflows
     display_text = prepare_bidi_text(challenge_text, is_rtl)
-    font_challenge = get_font(CHALLENGE_FONT, 32)
-    lines = wrap_text(display_text, font_challenge, draw, WIDTH - 160)
-    text_y = 460
-    for line in lines[:2]:  # Max 2 lines
-        bbox = draw.textbbox((0, 0), line, font=font_challenge)
-        tw = bbox[2] - bbox[0]
-        x = (WIDTH - tw) // 2
-        draw.text((x, text_y), line, fill=WHITE, font=font_challenge)
-        text_y += 44
+    max_w = WIDTH - 200
+    for size in (44, 38, 32, 26):
+        font_main = get_font(font_reg, size)
+        font_cta = get_font(font_bold, size + 4)
+        lines = wrap_text(display_text, font_main, draw, max_w)
+        if len(lines) <= 2:
+            break
 
-    # 6. URL at bottom
-    font_url = get_font(LATIN_FONT, 20)
-    url_text = f"wordle.global/{lang_code}"
-    bbox = draw.textbbox((0, 0), url_text, font=font_url)
-    tw = bbox[2] - bbox[0]
-    draw.text(((WIDTH - tw) // 2, HEIGHT - 50), url_text, fill=LIGHT_GRAY, font=font_url)
+    if len(lines) >= 2:
+        line1 = lines[0]
+        line2 = " ".join(lines[1:])
+        bbox1 = draw.textbbox((0, 0), line1, font=font_main)
+        draw.text(((WIDTH - (bbox1[2] - bbox1[0])) // 2, 430), line1, fill=WHITE, font=font_main)
+        bbox2 = draw.textbbox((0, 0), line2, font=font_cta)
+        draw.text(
+            ((WIDTH - (bbox2[2] - bbox2[0])) // 2, 430 + size + 12),
+            line2,
+            fill=GREEN,
+            font=font_cta,
+        )
+    else:
+        line = lines[0]
+        bbox = draw.textbbox((0, 0), line, font=font_cta)
+        draw.text(((WIDTH - (bbox[2] - bbox[0])) // 2, 460), line, fill=GREEN, font=font_cta)
 
-    return img
+    # Convert to palette mode for smaller file size (~6 distinct colors)
+    return img.convert("P", palette=Image.ADAPTIVE, colors=64)
 
 
 def load_language_configs():
@@ -210,7 +196,6 @@ def load_language_configs():
             continue
         with open(config_path) as f:
             lang_config = json.load(f)
-        # Merge defaults for text section
         merged_text = {**defaults.get("text", {}), **lang_config.get("text", {})}
         configs[lang_code] = {
             "name_native": lang_config.get("name_native", lang_config.get("name", lang_code)),
@@ -228,9 +213,9 @@ def load_language_configs():
 
 
 def main():
+    load_header()
     configs = load_language_configs()
 
-    # Filter languages if args provided
     if len(sys.argv) > 1:
         target_langs = sys.argv[1:]
     else:
