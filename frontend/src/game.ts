@@ -28,6 +28,8 @@ import type {
     KeyState,
 } from './types';
 
+const WIN_WORDS = ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'] as const;
+
 // Total stats across all languages
 interface TotalStats {
     total_games: number;
@@ -118,6 +120,9 @@ interface GameData {
     total_stats: TotalStats;
     languages: Record<string, LanguageInfo>;
     shareButtonState: 'idle' | 'success';
+    animating: boolean;
+    shaking_row: number;
+    pendingKeyUpdates: Array<{ char: string; state: KeyState } | undefined>;
     communityPercentile: number | null;
     communityIsTopScore: boolean;
     communityTotal: number;
@@ -154,12 +159,18 @@ export const createGameApp = () => {
                 feedbackEnabled: true,
                 wordInfoEnabled: true,
                 shareButtonState: 'idle' as const,
+                animating: false,
+                shaking_row: -1,
+                pendingKeyUpdates: [] as Array<{ char: string; state: KeyState } | undefined>,
 
                 notification: {
                     show: false,
+                    fading: false,
                     message: '',
                     top: 0,
                     timeout: 0,
+                    fadeTimeout: 0,
+                    slideInterval: 0,
                 },
 
                 tiles: [
@@ -510,7 +521,8 @@ export const createGameApp = () => {
                 const classes = this.tile_classes[this.active_row];
                 if (!row || !classes) return;
 
-                const keyClasses = this.key_classes as Record<string, KeyState>;
+                // Store per-tile keyboard updates for staggered reveal
+                this.pendingKeyUpdates = [];
 
                 // First pass: mark correct positions (using normalized comparison)
                 for (let i = 0; i < row.length; i++) {
@@ -521,7 +533,10 @@ export const createGameApp = () => {
                         classes.splice(i, 1, `correct ${baseClass}`);
                         // Update tile to show target's character (e.g., user typed "ä" but target has "a")
                         row.splice(i, 1, targetChar);
-                        this.updateKeyColor(guessChar, 'key-correct', keyClasses);
+                        this.pendingKeyUpdates[i] = {
+                            char: guessChar,
+                            state: 'key-correct' as KeyState,
+                        };
                         const normalizedChar = fullNormalize(guessChar);
                         const count = charCounts[normalizedChar];
                         if (count !== undefined) charCounts[normalizedChar] = count - 1;
@@ -544,12 +559,18 @@ export const createGameApp = () => {
                     if (targetHasChar && count !== undefined && count > 0) {
                         // Use splice for Vue 3 reactivity
                         classes.splice(i, 1, `semicorrect ${baseClass}`);
-                        this.updateKeyColor(guessChar, 'key-semicorrect', keyClasses);
+                        this.pendingKeyUpdates[i] = {
+                            char: guessChar,
+                            state: 'key-semicorrect' as KeyState,
+                        };
                         charCounts[normalizedGuess] = count - 1;
                     } else {
                         // Use splice for Vue 3 reactivity
                         classes.splice(i, 1, `incorrect ${baseClass}`);
-                        this.updateKeyColor(guessChar, 'key-incorrect', keyClasses);
+                        this.pendingKeyUpdates[i] = {
+                            char: guessChar,
+                            state: 'key-incorrect' as KeyState,
+                        };
                     }
                 }
             },
@@ -566,8 +587,21 @@ export const createGameApp = () => {
                 const updateSingleKey = (key: string, state: KeyState) => {
                     const current = keyClasses[key];
                     // Priority: key-correct > key-semicorrect > key-incorrect
-                    if (current === 'key-correct') return;
-                    if (current === 'key-semicorrect' && state === 'key-incorrect') return;
+                    if (current === 'key-correct') {
+                        // Already green — pulse to acknowledge
+                        if (state === 'key-correct') this._nudgeKey(key, 'key-pulse');
+                        return;
+                    }
+                    if (current === 'key-semicorrect' && state === 'key-incorrect') {
+                        // Already yellow, new info says grey — shake (wasted guess)
+                        this._nudgeKey(key, 'key-shake');
+                        return;
+                    }
+                    if (current === 'key-incorrect' && state === 'key-incorrect') {
+                        // Already grey — shake (wasted guess)
+                        this._nudgeKey(key, 'key-shake');
+                        return;
+                    }
                     keyClasses[key] = state;
                 };
 
@@ -596,6 +630,7 @@ export const createGameApp = () => {
             },
 
             keyDown(event: KeyboardEvent | { key: string }): void {
+                if (this.animating) return;
                 const key = event.key;
 
                 if (key === 'Escape') {
@@ -609,6 +644,7 @@ export const createGameApp = () => {
 
                 if (['Enter', '⇨', '⟹', 'ENTER'].includes(key)) {
                     if (!this.full_word_inputted) {
+                        this.shakeRow(this.active_row);
                         this.showNotification('Please enter a full word');
                         return;
                     }
@@ -639,20 +675,30 @@ export const createGameApp = () => {
                         }
 
                         this.updateColors();
+                        const revealingRow = this.active_row;
                         this.active_row++;
                         this.active_cell = 0;
                         this.full_word_inputted = false;
+                        this.animating = true;
 
-                        // Compare normalized forms for win detection
-                        const normalizedGuess = normalizeWord(canonicalWord, normalizeMap);
-                        const normalizedTarget = normalizeWord(this.todays_word, normalizeMap);
-                        if (normalizedGuess === normalizedTarget) {
-                            this.gameWon();
-                        } else if (this.active_row === 6) {
-                            this.gameLost();
-                        }
+                        this.revealRow(revealingRow).then(() => {
+                            this.animating = false;
+                            this.showTiles();
+
+                            // Compare normalized forms for win detection
+                            const normalizedGuess = normalizeWord(canonicalWord, normalizeMap);
+                            const normalizedTarget = normalizeWord(this.todays_word, normalizeMap);
+                            if (normalizedGuess === normalizedTarget) {
+                                this.gameWon();
+                            } else if (this.active_row === 6) {
+                                this.gameLost();
+                            }
+
+                            this.saveToLocalStorage();
+                        });
                     } else {
                         haptic.error(); // Invalid word
+                        this.shakeRow(this.active_row);
                         this.showNotification('Word is not valid');
 
                         // Track invalid word and update session frustration state
@@ -680,8 +726,10 @@ export const createGameApp = () => {
                     this.addChar(key);
                 }
 
-                this.showTiles();
-                this.saveToLocalStorage();
+                if (!this.animating) {
+                    this.showTiles();
+                    this.saveToLocalStorage();
+                }
             },
 
             showTiles(): void {
@@ -702,17 +750,118 @@ export const createGameApp = () => {
                 }
             },
 
+            revealRow(rowIndex: number): Promise<void> {
+                const FLIP_DURATION = 500;
+                const MIDPOINT = 250;
+                const STAGGER = 200;
+                const tileCount = 5;
+                const keyClasses = this.key_classes as Record<string, KeyState>;
+
+                // Get the row DOM element (nth row div inside .game-board)
+                const board = document.querySelector('.game-board');
+                const rowEl = board?.children[rowIndex] as HTMLElement | undefined;
+
+                return new Promise((resolve) => {
+                    for (let t = 0; t < tileCount; t++) {
+                        const visualIdx = this.right_to_left ? tileCount - 1 - t : t;
+                        const dataIdx = this.right_to_left ? tileCount - 1 - visualIdx : visualIdx;
+
+                        setTimeout(() => {
+                            // Apply flip animation directly to DOM element (bypasses Vue)
+                            const tileEl = rowEl?.children[visualIdx] as HTMLElement | undefined;
+                            if (tileEl) {
+                                tileEl.style.animation = `flipReveal ${FLIP_DURATION}ms ease-in-out`;
+                            }
+
+                            // At midpoint: swap color via Vue reactivity
+                            setTimeout(() => {
+                                const finalClass = this.tile_classes[rowIndex]?.[dataIdx] || '';
+                                this.tile_classes_visual[rowIndex]?.splice(
+                                    visualIdx,
+                                    1,
+                                    finalClass
+                                );
+                                const tileChar = this.tiles[rowIndex]?.[dataIdx] || '';
+                                this.tiles_visual[rowIndex]?.splice(visualIdx, 1, tileChar);
+
+                                // Update keyboard color for this tile
+                                const keyUpdate = this.pendingKeyUpdates[dataIdx];
+                                if (keyUpdate) {
+                                    this.updateKeyColor(
+                                        keyUpdate.char,
+                                        keyUpdate.state,
+                                        keyClasses
+                                    );
+                                }
+                            }, MIDPOINT);
+
+                            // Clean up after animation
+                            setTimeout(() => {
+                                if (tileEl) tileEl.style.animation = '';
+                                if (t === tileCount - 1) resolve();
+                            }, FLIP_DURATION);
+                        }, t * STAGGER);
+                    }
+                });
+            },
+
+            _nudgeKey(char: string, animClass: string): void {
+                const el = document.querySelector(`button[data-char="${CSS.escape(char)}"]`);
+                if (!el) return;
+                el.classList.remove(animClass);
+                // Force reflow to restart animation
+                void (el as HTMLElement).offsetWidth;
+                el.classList.add(animClass);
+                el.addEventListener('animationend', () => el.classList.remove(animClass), {
+                    once: true,
+                });
+            },
+
+            shakeRow(rowIndex: number): void {
+                this.shaking_row = rowIndex;
+                setTimeout(() => {
+                    this.shaking_row = -1;
+                }, 500);
+            },
+
+            bounceRow(rowIndex: number): void {
+                const STAGGER = 150;
+                const DURATION = 1000;
+                const tileCount = 5;
+
+                for (let t = 0; t < tileCount; t++) {
+                    const visualIdx = this.right_to_left ? tileCount - 1 - t : t;
+                    setTimeout(() => {
+                        const currentClass = this.tile_classes_visual[rowIndex]?.[visualIdx] || '';
+                        this.tile_classes_visual[rowIndex]?.splice(
+                            visualIdx,
+                            1,
+                            `${currentClass} tile-bounce`
+                        );
+                        setTimeout(() => {
+                            this.tile_classes_visual[rowIndex]?.splice(visualIdx, 1, currentClass);
+                        }, DURATION);
+                    }, t * STAGGER);
+                }
+            },
+
             gameWon(): void {
                 this.game_over = true;
                 this.game_won = true;
                 this.emoji_board = this.getEmojiBoard();
-                this.showNotification(this.todays_word.toUpperCase(), 12);
+                const winWord = WIN_WORDS[this.active_row - 1] || 'Phew';
+                this.showNotification(winWord, 3);
                 haptic.success(); // Celebration!
                 sound.win();
 
+                // Bounce tiles after a brief pause
+                setTimeout(() => {
+                    this.bounceRow(this.active_row - 1);
+                }, 300);
+
                 setTimeout(() => {
                     this.show_stats_modal = true;
-                }, 400);
+                }, 2500);
 
                 this.loadDefinition();
                 this.submitWordStats(true, this.active_row);
@@ -760,7 +909,7 @@ export const createGameApp = () => {
 
                 setTimeout(() => {
                     this.show_stats_modal = true;
-                }, 400);
+                }, 1800);
 
                 this.loadDefinition();
                 this.submitWordStats(false, this.active_row);
@@ -812,20 +961,28 @@ export const createGameApp = () => {
             showNotification(message: string, duration = 3): void {
                 if (this.notification.show) {
                     clearTimeout(this.notification.timeout);
+                    clearTimeout(this.notification.fadeTimeout);
+                    clearInterval(this.notification.slideInterval);
                 }
 
                 this.notification.show = true;
+                this.notification.fading = false;
                 this.notification.message = message;
                 this.notification.top = 0;
 
                 this.notification.timeout = window.setTimeout(() => {
-                    this.notification.show = false;
+                    this.notification.fading = true;
+                    this.notification.fadeTimeout = window.setTimeout(() => {
+                        this.notification.show = false;
+                        this.notification.fading = false;
+                    }, 300);
                 }, duration * 1000);
 
-                // Animate notification down
-                const interval = window.setInterval(() => {
+                this.notification.slideInterval = window.setInterval(() => {
                     this.notification.top += 1;
-                    if (this.notification.top > 50) clearInterval(interval);
+                    if (this.notification.top > 50) {
+                        clearInterval(this.notification.slideInterval);
+                    }
                 }, 2);
             },
 

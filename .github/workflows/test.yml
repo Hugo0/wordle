@@ -90,6 +90,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install 3.14
+
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
 
@@ -100,7 +106,9 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          uv sync
+          pnpm install
 
       - name: Type check
         run: pnpm exec vue-tsc --noEmit
