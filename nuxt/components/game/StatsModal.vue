@@ -80,9 +80,17 @@
                 <!-- ============================================================ -->
                 <div v-show="statsTab === 'today'">
                     <!-- Today's word heading -->
-                    <div v-if="game.gameOver" class="px-6 pt-3 pb-1 text-center">
+                    <div
+                        v-if="game.gameOver"
+                        class="px-6 pt-3 pb-1 text-center"
+                    >
                         <a
-                            :href="'/' + lang.languageCode + '/word/' + lang.todaysIdx"
+                            :href="
+                                '/' +
+                                lang.languageCode +
+                                '/word/' +
+                                lang.todaysIdx
+                            "
                             class="inline-block group"
                         >
                             <p
@@ -122,13 +130,21 @@
                                 <template v-if="game.communityTotal <= 1">
                                     First to play today!
                                 </template>
-                                <template v-else-if="game.communityIsTopScore">
+                                <template
+                                    v-else-if="game.communityIsTopScore"
+                                >
                                     Top score today!
                                 </template>
                                 <template v-else>
-                                    {{ lang.config?.ui?.better_than || 'Better than' }}
+                                    {{
+                                        lang.config?.ui?.better_than ||
+                                        'Better than'
+                                    }}
                                     {{ game.communityPercentile }}%
-                                    {{ lang.config?.ui?.of_players || 'of players' }}
+                                    {{
+                                        lang.config?.ui?.of_players ||
+                                        'of players'
+                                    }}
                                 </template>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +171,10 @@
                             @click="game.shareResults()"
                         >
                             <span v-if="game.shareButtonState === 'success'">
-                                &#10003; {{ lang.config?.text?.copied || 'Copied!' }}
+                                &#10003;
+                                {{
+                                    lang.config?.text?.copied || 'Copied!'
+                                }}
                             </span>
                             <span v-else>
                                 {{ lang.config?.text?.share }}
@@ -173,7 +192,10 @@
                             {{ lang.config?.text?.next_word }}
                         </p>
                         <!-- eslint-disable-next-line vue/no-v-html -->
-                        <p class="text-2xl font-bold" v-html="game.timeUntilNextDay" />
+                        <p
+                            class="text-2xl font-bold"
+                            v-html="game.timeUntilNextDay"
+                        />
                     </div>
                 </div>
 
@@ -186,7 +208,10 @@
                         <h4
                             class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400"
                         >
-                            {{ lang.config?.ui?.guess_distribution || 'Guess Distribution' }}
+                            {{
+                                lang.config?.ui?.guess_distribution ||
+                                'Guess Distribution'
+                            }}
                         </h4>
                         <div class="space-y-0.5">
                             <div
@@ -194,7 +219,9 @@
                                 :key="n"
                                 class="flex items-center gap-1.5"
                             >
-                                <span class="w-3 text-xs font-medium">{{ n }}</span>
+                                <span class="w-3 text-xs font-medium">{{
+                                    n
+                                }}</span>
                                 <div
                                     class="flex-1 h-4 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden"
                                 >
@@ -206,13 +233,27 @@
                                                 : 'bg-gray-400 dark:bg-gray-500'
                                         "
                                         :style="{
-                                            width: getDistributionBarWidth(n) + '%',
+                                            width:
+                                                getDistributionBarWidth(n) +
+                                                '%',
                                         }"
                                     >
-                                        <span v-if="statsStore.stats.guessDistribution">
+                                        <span
+                                            v-if="
+                                                statsStore.stats
+                                                    .guessDistribution
+                                            "
+                                        >
                                             {{
-                                                statsStore.stats.guessDistribution[
-                                                    n as 1 | 2 | 3 | 4 | 5 | 6
+                                                statsStore.stats
+                                                    .guessDistribution[
+                                                    n as
+                                                        | 1
+                                                        | 2
+                                                        | 3
+                                                        | 4
+                                                        | 5
+                                                        | 6
                                                 ]
                                             }}
                                         </span>
@@ -234,30 +275,44 @@
                                 <p
                                     class="text-[10px] text-neutral-500 dark:text-neutral-400"
                                 >
-                                    {{ lang.config?.ui?.games || 'Games' }}
+                                    {{
+                                        lang.config?.ui?.games || 'Games'
+                                    }}
                                 </p>
                             </div>
                             <div class="text-center">
                                 <p class="text-xl font-bold">
-                                    {{ Math.round(statsStore.stats.win_percentage) }}%
+                                    {{
+                                        Math.round(
+                                            statsStore.stats.win_percentage,
+                                        )
+                                    }}%
                                 </p>
                                 <p
                                     class="text-[10px] text-neutral-500 dark:text-neutral-400"
                                 >
-                                    {{ lang.config?.ui?.win_percent || 'Win %' }}
+                                    {{
+                                        lang.config?.ui?.win_percent ||
+                                        'Win %'
+                                    }}
                                 </p>
                             </div>
                             <div class="text-center">
                                 <p class="text-xl font-bold">
-                                    <span v-if="statsStore.stats.current_streak > 0">
-                                        &#x1F525;
-                                    </span>
-                                    {{ statsStore.stats.current_streak }}
+                                    <span
+                                        v-if="
+                                            statsStore.stats.current_streak >
+                                            0
+                                        "
+                                        >&#x1F525;</span
+                                    >{{ statsStore.stats.current_streak }}
                                 </p>
                                 <p
                                     class="text-[10px] text-neutral-500 dark:text-neutral-400"
                                 >
-                                    {{ lang.config?.ui?.streak || 'Streak' }}
+                                    {{
+                                        lang.config?.ui?.streak || 'Streak'
+                                    }}
                                 </p>
                             </div>
                             <div class="text-center">
@@ -303,7 +358,10 @@
                             @click="game.shareResults()"
                         >
                             <span v-if="game.shareButtonState === 'success'">
-                                &#10003; {{ lang.config?.text?.copied || 'Copied!' }}
+                                &#10003;
+                                {{
+                                    lang.config?.text?.copied || 'Copied!'
+                                }}
                             </span>
                             <span v-else>
                                 {{ lang.config?.text?.share }}
@@ -326,21 +384,27 @@
                                 <p
                                     class="text-[10px] text-neutral-500 dark:text-neutral-400"
                                 >
-                                    {{ lang.config?.ui?.games || 'Games' }}
+                                    {{
+                                        lang.config?.ui?.games || 'Games'
+                                    }}
                                 </p>
                             </div>
                             <div class="text-center">
                                 <p class="text-xl font-bold">
                                     {{
                                         Math.round(
-                                            statsStore.totalStats.total_win_percentage,
+                                            statsStore.totalStats
+                                                .total_win_percentage,
                                         )
                                     }}%
                                 </p>
                                 <p
                                     class="text-[10px] text-neutral-500 dark:text-neutral-400"
                                 >
-                                    {{ lang.config?.ui?.win_percent || 'Win %' }}
+                                    {{
+                                        lang.config?.ui?.win_percent ||
+                                        'Win %'
+                                    }}
                                 </p>
                             </div>
                             <div class="text-center">
@@ -350,10 +414,8 @@
                                             statsStore.totalStats
                                                 .current_overall_streak > 0
                                         "
-                                    >
-                                        &#x1F525;
-                                    </span>
-                                    {{
+                                        >&#x1F525;</span
+                                    >{{
                                         statsStore.totalStats
                                             .current_overall_streak
                                     }}
@@ -361,7 +423,9 @@
                                 <p
                                     class="text-[10px] text-neutral-500 dark:text-neutral-400"
                                 >
-                                    {{ lang.config?.ui?.streak || 'Streak' }}
+                                    {{
+                                        lang.config?.ui?.streak || 'Streak'
+                                    }}
                                 </p>
                             </div>
                             <div class="text-center">
@@ -374,7 +438,10 @@
                                 <p
                                     class="text-[10px] text-neutral-500 dark:text-neutral-400"
                                 >
-                                    {{ lang.config?.ui?.languages || 'Languages' }}
+                                    {{
+                                        lang.config?.ui?.languages ||
+                                        'Languages'
+                                    }}
                                 </p>
                             </div>
                         </div>
@@ -389,8 +456,8 @@
                             class="max-h-32 overflow-y-auto border-t border-neutral-200 dark:border-neutral-600 pt-1"
                         >
                             <div
-                                v-for="(langStats, code) in statsStore.totalStats
-                                    .game_stats"
+                                v-for="(langStats, code) in statsStore
+                                    .totalStats.game_stats"
                                 :key="code"
                                 class="flex items-center justify-between py-1 text-xs"
                             >
@@ -401,12 +468,16 @@
                                     class="text-neutral-500 dark:text-neutral-400"
                                 >
                                     {{ langStats.n_games }} &middot;
-                                    {{ Math.round(langStats.win_percentage) }}%
+                                    {{
+                                        Math.round(langStats.win_percentage)
+                                    }}%
                                     <span
                                         v-if="langStats.current_streak > 0"
                                         class="text-orange-500 ml-1"
                                     >
-                                        &#x1F525;{{ langStats.current_streak }}
+                                        &#x1F525;{{
+                                            langStats.current_streak
+                                        }}
                                     </span>
                                 </span>
                             </div>

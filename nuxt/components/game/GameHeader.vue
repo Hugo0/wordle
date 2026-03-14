@@ -21,20 +21,15 @@
                 <polyline points="11 12 12 12 12 16 13 16" />
             </svg>
         </button>
-
         <div class="absolute text-center right-0 left-0">
             <h1 class="uppercase font-bold text-2xl sm:text-4xl tracking-wider">
-                <NuxtLink to="/">
-                    Wordle
+                <a href="/">Wordle
                     <span
                         class="text-xl sm:text-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded px-1 py-0"
                     >
-                        {{ langCode }}
-                    </span>
-                </NuxtLink>
+                        {{ langCode }}</span></a>
             </h1>
         </div>
-
         <div class="flex flex-row gap-3 z-30">
             <button class="m-0 sm:my-1" @click="$emit('stats')">
                 <svg

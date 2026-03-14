@@ -46,7 +46,9 @@
 
                 <!-- Example tiles -->
                 <div class="justify-center items-center flex flex-col gap-2">
-                    <h2 class="text-md font-semibold text-gray-900 dark:text-gray-100">
+                    <h2
+                        class="text-md font-semibold text-gray-900 dark:text-gray-100"
+                    >
                         {{ help.title_2 }}
                     </h2>
 
@@ -69,7 +71,9 @@
                         </div>
                     </div>
                     <p v-if="exampleWord1.length" class="text-sm mb-2">
-                        <span class="font-bold uppercase">{{ exampleWord1[0] }}</span>
+                        <span class="font-bold uppercase">{{
+                            exampleWord1[0]
+                        }}</span>
                         {{ help.text_2_1 }}
                     </p>
 
@@ -92,7 +96,9 @@
                         </div>
                     </div>
                     <p v-if="exampleWord2.length" class="text-sm mb-2">
-                        <span class="font-bold uppercase">{{ exampleWord2[2] }}</span>
+                        <span class="font-bold uppercase">{{
+                            exampleWord2[2]
+                        }}</span>
                         {{ help.text_2_2 }}
                     </p>
 
@@ -115,7 +121,9 @@
                         </div>
                     </div>
                     <p v-if="exampleWord3.length" class="text-sm mb-2">
-                        <span class="font-bold uppercase">{{ exampleWord3[4] }}</span>
+                        <span class="font-bold uppercase">{{
+                            exampleWord3[4]
+                        }}</span>
                         {{ help.text_2_3 }}
                     </p>
                 </div>

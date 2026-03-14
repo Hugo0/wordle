@@ -41,17 +41,38 @@ langStore.init({
 
 // --- SEO ---
 const config = gameData.value.config;
-const wordleTitle = `Wordle ${config.name_native || config.name}`;
+const wordleNative = config.meta?.wordle_native || '';
+const metaTitle = (config.meta?.title || 'The daily word game').trim();
+const wordleBase = `Wordle ${config.name_native}`;
+const wordleShort = wordleNative
+    ? `${wordleBase} (${wordleNative})`
+    : wordleBase;
+const isUntranslatedTitle =
+    metaTitle === 'The daily word game' && config.language_code !== 'en';
+
+let seoTitle = isUntranslatedTitle
+    ? `${wordleBase} — Play in ${config.name}`
+    : `${wordleShort} — ${metaTitle}`;
+if (seoTitle.length > 60) seoTitle = wordleShort;
+
+const nativeDesc = (config.meta?.description || 'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!').trim();
+const isUntranslatedDesc =
+    nativeDesc === 'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!' &&
+    config.language_code !== 'en';
+let seoDescription = isUntranslatedDesc
+    ? `Play Wordle in ${config.name} (${config.name_native}) — ${nativeDesc}`
+    : `${nativeDesc} | Wordle ${config.name}`;
+if (seoDescription.length > 160) seoDescription = nativeDesc.substring(0, 155) + '...';
 
 useSeoMeta({
-    title: `${wordleTitle} — ${config.meta?.title || 'Daily Word Puzzle'}`,
-    description: config.meta?.description || `Play Wordle in ${config.name}. Guess the daily 5-letter word!`,
-    ogTitle: wordleTitle,
-    ogDescription: config.meta?.description || `Play Wordle in ${config.name}`,
+    title: seoTitle,
+    description: seoDescription,
+    ogTitle: seoTitle,
+    ogDescription: seoDescription,
     ogUrl: `https://wordle.global/${lang}`,
     ogType: 'website',
     ogLocale: config.meta?.locale || lang,
-    ogImage: `https://wordle.global/images/share/${lang}_1.png`,
+    ogImage: `https://wordle.global/static/images/share/${lang}_1.png`,
     twitterCard: 'summary_large_image',
 });
 
@@ -64,10 +85,6 @@ useHead({
     meta: [{ name: 'google', content: 'notranslate' }],
     link: [{ rel: 'canonical', href: `https://wordle.global/${lang}` }],
 });
-
-// hreflang for all languages
-// TODO: fetch all language codes for hreflang
-// useHreflang(allLanguageCodes);
 
 // --- Client-side initialization ---
 onMounted(() => {
@@ -112,42 +129,47 @@ function handleKeyDown(e: KeyboardEvent) {
 </script>
 
 <template>
-    <div v-if="gameData" class="min-h-[100dvh] h-[100dvh] overflow-hidden overscroll-none">
+    <div v-if="gameData" class="min-h-[100dvh] h-[100dvh]">
         <div class="wrapper container mx-auto flex flex-col h-full w-full max-w-lg safe-area-inset">
-            <!-- Header -->
+            <!-- The Header -->
             <GameHeader
                 :lang-code="lang"
-                @help="game.showHelpModal = true"
-                @stats="game.showStatsModal = true"
-                @settings="game.showOptionsModal = true"
+                @help="game.showHelpModal = !game.showHelpModal"
+                @stats="game.showStatsModal = !game.showStatsModal"
+                @settings="game.showOptionsModal = !game.showOptionsModal"
             />
 
-            <!-- Game Board -->
+            <!-- The game board -->
             <GameBoard />
 
-            <!-- Keyboard -->
+            <!-- The keyboard -->
             <GameKeyboard
                 :keyboard="langStore.keyboard"
                 :hints="langStore.keyDiacriticHints"
             />
         </div>
 
-        <!-- Modals -->
-        <SharedModalBackdrop
-            :visible="game.showHelpModal || game.showStatsModal || game.showOptionsModal"
-            @close="game.showHelpModal = false; game.showStatsModal = false; game.showOptionsModal = false"
-        />
+        <!-- NOTIFICATIONS & MODALS -->
+        <div class="container mx-auto flex w-full max-w-lg justify-center items-center overflow z-1">
+            <SharedModalBackdrop
+                :visible="game.showHelpModal || game.showStatsModal || game.showOptionsModal"
+                @close="game.showHelpModal = false; game.showStatsModal = false; game.showOptionsModal = false"
+            />
 
-        <GameHelpModal
-            :visible="game.showHelpModal"
-            @close="game.showHelpModal = false"
-        />
+            <!-- help modal -->
+            <GameHelpModal
+                :visible="game.showHelpModal"
+                @close="game.showHelpModal = false"
+            />
 
-        <GameSettingsModal
-            :visible="game.showOptionsModal"
-            @close="game.showOptionsModal = false"
-        />
+            <!-- options modal -->
+            <GameSettingsModal
+                :visible="game.showOptionsModal"
+                @close="game.showOptionsModal = false"
+            />
+        </div>
 
+        <!-- stats modal -->
         <GameStatsModal
             :visible="game.showStatsModal"
             @close="game.showStatsModal = false"
@@ -156,4 +178,30 @@ function handleKeyDown(e: KeyboardEvent) {
         <!-- Toast notification -->
         <GameNotificationToast :notification="game.notification" />
     </div>
+
+    <!-- SEO content — visible only when JS is disabled (crawlers, screen readers, noscript browsers). -->
+    <noscript>
+        <div style="max-width: 600px; margin: 40px auto; padding: 20px; font-family: system-ui, sans-serif; color: #333;">
+            <h1>Wordle {{ config.name_native }} — {{ config.meta?.title || 'The daily word game' }}</h1>
+            <h2>{{ config.help?.title }}</h2>
+            <p>{{ config.help?.text_1_1_1 }} <strong>Wordle</strong> {{ config.help?.text_1_1_2 }}</p>
+            <p>{{ config.help?.text_1_2 }}</p>
+            <p>{{ config.help?.text_1_3 }}</p>
+            <p>{{ config.help?.text_3 }}</p>
+            <h2>Play Wordle in other languages</h2>
+            <p>Wordle Global is a free, open-source Wordle game available in 65+ languages. No ads, no account required — just play.</p>
+            <ul>
+                <li v-for="[lc, name] in [
+                    ['en', 'English'], ['fi', 'Finnish'], ['de', 'German'], ['es', 'Spanish'],
+                    ['fr', 'French'], ['ar', 'Arabic'], ['he', 'Hebrew'], ['tr', 'Turkish'],
+                    ['ru', 'Russian'], ['it', 'Italian'], ['pt', 'Portuguese'], ['nl', 'Dutch'],
+                    ['sv', 'Swedish'], ['da', 'Danish'], ['pl', 'Polish'], ['hr', 'Croatian'],
+                    ['hu', 'Hungarian'], ['bg', 'Bulgarian'], ['ro', 'Romanian'], ['ko', 'Korean'],
+                ].filter(([c]) => c !== lang)" :key="lc">
+                    <a :href="'https://wordle.global/' + lc">Wordle in {{ name }}</a>
+                </li>
+            </ul>
+            <p><a href="https://wordle.global/">View all 65+ languages</a></p>
+        </div>
+    </noscript>
 </template>
