@@ -1488,8 +1488,11 @@ export const createGameApp = () => {
             },
 
             setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
-                // Don't allow switching TO hard mode mid-game
-                if (level === 'hard' && this.active_row > 0 && !this.game_over) return;
+                // Don't allow switching TO hard mode mid-game — snap back with warning
+                if (level === 'hard' && this.active_row > 0 && !this.game_over) {
+                    this.showNotification('Hard mode can only be enabled before your first guess');
+                    return;
+                }
                 this.allow_any_word = level === 'easy';
                 this.hardMode = level === 'hard';
                 try {
