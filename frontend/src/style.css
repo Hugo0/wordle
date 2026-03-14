@@ -111,6 +111,33 @@
     line-height: 1;
 }
 
+/* Embed Banner (for iframe embeds) */
+.embed-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.embed-banner button.dismiss {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 8px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
 /* Prevent text selection on game elements */
 .no-select {
     user-select: none;

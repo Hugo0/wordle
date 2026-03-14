@@ -649,6 +649,18 @@
         <button class="dismiss" onclick="dismissPwaInstall()">&times;</button>
     </div>
 
+    <!-- Embed banner for iframe embeds -->
+    <div id="embed-banner" class="embed-banner" style="display: none;">
+        <div style="flex: 1;">
+            <strong>Play Wordle in 65+ languages</strong>
+        </div>
+        <a href="https://wordle.global/{{ language.code }}" target="_blank" rel="noopener"
+           style="background: white; color: #2d6a4f; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.1s;">
+            Visit
+        </a>
+        <button class="dismiss" onclick="dismissEmbedBanner()">&times;</button>
+    </div>
+
     {% set pwa_description = "Play Wordle in " ~ language.config.name_native %}
     {% include 'partials/_pwa_install.html' %}
 

@@ -4,6 +4,7 @@
  */
 import { createApp } from 'vue';
 import pwa from './pwa';
+import embed from './embed';
 import { haptic, setHapticsEnabled } from './haptics';
 import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
@@ -741,8 +742,12 @@ export const createGameApp = () => {
                 });
                 analytics.trackStreakMilestone(langCode, this.stats.current_streak);
 
-                // Show PWA install prompt after game completion
-                setTimeout(() => pwa.showBanner(), 2000);
+                // Show embed banner (if in iframe) or PWA install prompt after game completion
+                if (embed.isEmbedded()) {
+                    setTimeout(() => embed.showBanner(), 2000);
+                } else {
+                    setTimeout(() => pwa.showBanner(), 2000);
+                }
             },
 
             gameLost(): void {
@@ -783,6 +788,11 @@ export const createGameApp = () => {
                     had_frustration: lossFrustrationState.hadFrustration,
                     time_to_complete_seconds: lossTimeToComplete,
                 });
+
+                // Show embed banner (if in iframe) after game loss
+                if (embed.isEmbedded()) {
+                    setTimeout(() => embed.showBanner(), 3000);
+                }
             },
 
             saveResult(won: boolean): void {
