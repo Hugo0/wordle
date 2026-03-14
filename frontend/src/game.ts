@@ -353,10 +353,10 @@ export const createGameApp = () => {
             this.loadLanguages();
             this.loadFeedbackPreference();
             this.loadWordInfoPreference();
-            this.loadHardModePreference();
+            this.loadDifficultyPreference();
             this.loadHighContrastPreference();
             // Set max difficulty based on current setting (if game in progress, this is what they started at)
-            this.maxDifficultyUsed = this.hardMode ? 2 : this.allow_any_word ? 0 : 1;
+            this.maxDifficultyUsed = this.currentDifficultyLevel();
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -704,9 +704,10 @@ export const createGameApp = () => {
 
                         this.updateColors();
                         // Track highest difficulty a guess was submitted at
-                        const diffLevels = { easy: 0, normal: 1, hard: 2 };
-                        const currentDiff = this.hardMode ? 2 : this.allow_any_word ? 0 : 1;
-                        this.maxDifficultyUsed = Math.max(this.maxDifficultyUsed, currentDiff);
+                        this.maxDifficultyUsed = Math.max(
+                            this.maxDifficultyUsed,
+                            this.currentDifficultyLevel()
+                        );
                         const revealingRow = this.active_row;
                         this.active_row++;
                         this.active_cell = 0;
@@ -1474,34 +1475,32 @@ export const createGameApp = () => {
                 }
             },
 
-            loadHardModePreference(): void {
+            loadDifficultyPreference(): void {
                 try {
-                    const stored = localStorage.getItem('hardMode');
-                    if (stored !== null) {
-                        this.hardMode = stored === 'true';
+                    const storedHard = localStorage.getItem('hardMode');
+                    if (storedHard !== null) {
+                        this.hardMode = storedHard === 'true';
+                    }
+                    const storedEasy = localStorage.getItem('allowAnyWord');
+                    if (storedEasy !== null) {
+                        this.allow_any_word = storedEasy === 'true';
+                    }
+                    // Can't be both
+                    if (this.hardMode && this.allow_any_word) {
+                        this.allow_any_word = false;
                     }
                 } catch {
                     // localStorage unavailable
                 }
             },
 
-            toggleHardMode(): void {
-                this.$nextTick(() => {
-                    try {
-                        localStorage.setItem('hardMode', this.hardMode ? 'true' : 'false');
-                    } catch {
-                        // localStorage unavailable
-                    }
-                    analytics.trackSettingsChange({
-                        setting: 'hard_mode',
-                        value: this.hardMode,
-                    });
-                });
+            currentDifficultyLevel(): number {
+                return this.hardMode ? 2 : this.allow_any_word ? 0 : 1;
             },
 
             setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
-                // Can't go higher than the max difficulty any guess was submitted at
                 const levels = { easy: 0, normal: 1, hard: 2 };
+                // Can't go higher than the max difficulty any guess was submitted at
                 if (
                     levels[level] > this.maxDifficultyUsed &&
                     this.active_row > 0 &&
@@ -1519,6 +1518,7 @@ export const createGameApp = () => {
                 this.hardMode = level === 'hard';
                 try {
                     localStorage.setItem('hardMode', this.hardMode ? 'true' : 'false');
+                    localStorage.setItem('allowAnyWord', this.allow_any_word ? 'true' : 'false');
                 } catch {
                     // localStorage unavailable
                 }
