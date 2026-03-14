@@ -49,6 +49,8 @@ LEIPZIG_CORPORA = {
     "hi": "hin_news_2022_1M",
     "mr": "mar_wikipedia_2021_100K",
     "pa": "pan_wikipedia_2021_100K",
+    "bn": "ben_wikipedia_2021_100K",
+    "ko": "kor_wikipedia_2021_100K",
     # Existing languages
     "ar": "ara_news_2024_1M",
     "bg": "bul_news_2024_1M",
