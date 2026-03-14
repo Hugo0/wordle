@@ -4,6 +4,7 @@
  */
 import './style.css';
 import pwa from './pwa';
+import embed from './embed';
 import './debug';
 import createGameApp from './game';
 import createIndexApp from './index-app';
@@ -14,6 +15,7 @@ declare global {
         triggerPwaInstall: () => void;
         dismissPwaInstall: () => void;
         showPwaInstallBanner: () => void;
+        dismissEmbedBanner: () => void;
     }
 }
 
@@ -24,6 +26,7 @@ pwa.init();
 window.triggerPwaInstall = pwa.install;
 window.dismissPwaInstall = pwa.dismiss;
 window.showPwaInstallBanner = pwa.showBanner;
+window.dismissEmbedBanner = embed.dismiss;
 
 // Detect which page we're on and create appropriate Vue app
 const appEl = document.getElementById('app');

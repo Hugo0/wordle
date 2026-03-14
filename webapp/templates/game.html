@@ -658,13 +658,24 @@
     <!-- /app -->
 
     <!-- Simple banner to trigger the install dialog -->
-    <div id="pwa-install-banner" class="pwa-install-banner" style="display: none;">
+    <div id="pwa-install-banner" class="bottom-banner pwa-install-banner" style="display: none;">
         <div style="flex: 1;">
             <strong>{{ language.config.ui.add_to_home or "Add to Home Screen" }}</strong>
             <div style="font-size: 13px; opacity: 0.9;">{{ language.config.ui.play_daily_like_app or "Play Wordle daily like an app" }}</div>
         </div>
-        <button onclick="triggerPwaInstall()">{{ language.config.ui.install or "Install" }}</button>
+        <button class="action-btn" onclick="triggerPwaInstall()">{{ language.config.ui.install or "Install" }}</button>
         <button class="dismiss" onclick="dismissPwaInstall()">&times;</button>
+    </div>
+
+    <!-- Embed banner for iframe embeds -->
+    <div id="embed-banner" class="bottom-banner embed-banner" style="display: none;">
+        <div style="flex: 1;">
+            <strong>Play Wordle in 65+ languages</strong>
+        </div>
+        <a class="action-btn" href="https://wordle.global/{{ language.config.language_code }}" target="_blank" rel="noopener">
+            Visit
+        </a>
+        <button class="dismiss" onclick="dismissEmbedBanner()">&times;</button>
     </div>
 
     {% set pwa_description = "Play Wordle in " ~ language.config.name_native %}
