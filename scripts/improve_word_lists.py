@@ -358,9 +358,9 @@ def process_language(
         result["reason"] = f"excluded ({lang})"
         return result
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"Processing: {lang} ({LANG_NAMES.get(lang, lang)})")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     # Load existing data
     existing_words = load_word_list(lang)
@@ -463,7 +463,7 @@ def process_language(
             daily_words = [w for w in daily_words if not any(c in rare_chars for c in w)]
             removed = pre_filter - len(daily_words)
             print(
-                f"  Character difficulty filter ({threshold*100:.0f}%): "
+                f"  Character difficulty filter ({threshold * 100:.0f}%): "
                 f"removed {removed} words with rare chars {rare_chars}"
             )
 
@@ -728,9 +728,9 @@ def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
         results.append(result)
 
     # Summary table
-    print(f"\n{'='*80}")
+    print(f"\n{'=' * 80}")
     print(f"{'SUMMARY':^80}")
-    print(f"{'='*80}")
+    print(f"{'=' * 80}")
     print(
         f"{'Lang':<6} {'Status':<12} {'Daily':<8} {'Supplement':<12} {'Freq Match':<12} {'Notes'}"
     )

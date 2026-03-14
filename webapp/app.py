@@ -1,27 +1,26 @@
-from flask import (
-    Flask,
-    render_template,
-    make_response,
-    redirect,
-    request,
-    send_from_directory,
-    jsonify,
-    abort,
-)
-import json
-import os
 import datetime
 import glob
-import random
-from zoneinfo import ZoneInfo
 import hashlib
-import re
-import urllib.parse
-import urllib.request as urlreq
+import json
 import logging
+import os
+import random
+import urllib.request as urlreq
 from pathlib import Path
+from zoneinfo import ZoneInfo
+
 from definitions import (
     fetch_definition as _fetch_definition_impl,
+)
+from flask import (
+    Flask,
+    abort,
+    jsonify,
+    make_response,
+    redirect,
+    render_template,
+    request,
+    send_from_directory,
 )
 
 # Load .env file if it exists (for local development)
@@ -70,7 +69,7 @@ def load_vite_manifest():
             f"Vite manifest not found at {manifest_path}. "
             "Run 'pnpm build' first to build frontend assets."
         )
-    with open(manifest_path, "r") as f:
+    with open(manifest_path) as f:
         return json.load(f)
 
 
@@ -121,14 +120,14 @@ data_dir = "data/"
 
 
 # load other_wordles.json file
-with open(f"{data_dir}other_wordles.json", "r") as f:
+with open(f"{data_dir}other_wordles.json") as f:
     other_wordles = json.load(f)
 
 
 def load_characters(lang):
     if not glob.glob(f"{data_dir}languages/{lang}/{lang}_characters.txt"):
         characters = set()
-        with open(f"{data_dir}languages/{lang}/{lang}_5words.txt", "r") as f:
+        with open(f"{data_dir}languages/{lang}/{lang}_5words.txt") as f:
             for line in f:
                 characters.update(line.strip())
         with open(f"{data_dir}languages/{lang}/{lang}_characters.txt", "w") as f:
@@ -138,7 +137,7 @@ def load_characters(lang):
             for char in characters:
                 f.write(char + "\n")
 
-    with open(f"{data_dir}languages/{lang}/{lang}_characters.txt", "r") as f:
+    with open(f"{data_dir}languages/{lang}/{lang}_characters.txt") as f:
         characters = [line.strip() for line in f]
     return characters
 
@@ -150,7 +149,7 @@ language_characters = {lang: load_characters(lang) for lang in language_codes}
 def load_words(lang):
     """loads the words and does some basic QA"""
     _5words = []
-    with open(f"{data_dir}/languages/{lang}/{lang}_5words.txt", "r") as f:
+    with open(f"{data_dir}/languages/{lang}/{lang}_5words.txt") as f:
         for line in f:
             _5words.append(line.strip())
     # QA
@@ -179,7 +178,7 @@ def load_words(lang):
 def load_supplemental_words(lang):
     """loads the supplemental words file if it exists"""
     try:
-        with open(f"{data_dir}languages/{lang}/{lang}_5words_supplement.txt", "r") as f:
+        with open(f"{data_dir}languages/{lang}/{lang}_5words_supplement.txt") as f:
             supplemental_words = [line.strip() for line in f]
         supplemental_words = [
             word
@@ -201,7 +200,7 @@ def load_blocklist(lang):
     """
     blocklist_path = f"{data_dir}languages/{lang}/{lang}_blocklist.txt"
     try:
-        with open(blocklist_path, "r") as f:
+        with open(blocklist_path) as f:
             blocklist = set()
             for line in f:
                 line = line.strip()
@@ -226,7 +225,7 @@ def load_daily_words(lang):
     """
     daily_path = f"{data_dir}languages/{lang}/{lang}_daily_words.txt"
     try:
-        with open(daily_path, "r") as f:
+        with open(daily_path) as f:
             daily_words = []
             for line in f:
                 line = line.strip()
@@ -250,7 +249,7 @@ def load_curated_schedule(lang):
     """
     schedule_path = f"{data_dir}languages/{lang}/{lang}_curated_schedule.txt"
     try:
-        with open(schedule_path, "r") as f:
+        with open(schedule_path) as f:
             schedule = []
             for line in f:
                 line = line.strip()
@@ -264,11 +263,11 @@ def load_curated_schedule(lang):
 def load_language_config(lang):
     """Load language config, merging with default to ensure all keys exist."""
     # Load default config first
-    with open(f"{data_dir}default_language_config.json", "r") as f:
+    with open(f"{data_dir}default_language_config.json") as f:
         default_config = json.load(f)
 
     try:
-        with open(f"{data_dir}languages/{lang}/language_config.json", "r") as f:
+        with open(f"{data_dir}languages/{lang}/language_config.json") as f:
             language_config = json.load(f)
 
         # Merge: language-specific values override defaults
@@ -294,7 +293,7 @@ def load_keyboard(lang):
     """
     keyboard_path = f"{data_dir}languages/{lang}/{lang}_keyboard.json"
     try:
-        with open(keyboard_path, "r") as f:
+        with open(keyboard_path) as f:
             keyboard_data = json.load(f)
     except FileNotFoundError:
         return {"default": None, "layouts": {}}
@@ -451,7 +450,7 @@ language_curated_schedules = {l_code: load_curated_schedule(l_code) for l_code i
 language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
 
 # Load default language config for UI translations on homepage
-with open(f"{data_dir}default_language_config.json", "r") as f:
+with open(f"{data_dir}default_language_config.json") as f:
     default_language_config = json.load(f)
 
 keyboards = {k: load_keyboard(k) for k in language_codes}
@@ -485,7 +484,7 @@ def get_word_for_day(lang_code, day_idx):
     cache_path = os.path.join(WORD_HISTORY_DIR, lang_code, f"{day_idx}.txt")
     if os.path.exists(cache_path):
         try:
-            with open(cache_path, "r") as f:
+            with open(cache_path) as f:
                 cached = f.read().strip()
                 if cached:
                     return cached
@@ -606,25 +605,41 @@ IMAGE_LANGUAGES = language_popularity[:30]
 
 # print stats about how many languages we have
 print("\n***********************************************")
-print(f"                    STATS")
+print("                    STATS")
 print(f"- {len(languages)} languages")
 print(
-    f"- {len([k for (k, v) in language_codes_5words_supplements.items() if v !=[]])} languages with supplemental words"
+    f"- {len([k for (k, v) in language_codes_5words_supplements.items() if v != []])} languages with supplemental words"
 )
 print(
-    f"- The language with least words is {min(language_codes_5words, key=lambda k: len(language_codes_5words[k]))}, with {len(language_codes_5words[min(language_codes_5words, key=lambda k: len(language_codes_5words[k]))])} words"
+    f"- The language with least words is {
+        min(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
+    }, with {
+        len(
+            language_codes_5words[
+                min(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
+            ]
+        )
+    } words"
 )
 print(
-    f"- The language with most words is {max(language_codes_5words, key=lambda k: len(language_codes_5words[k]))}, with {len(language_codes_5words[max(language_codes_5words, key=lambda k: len(language_codes_5words[k]))])} words"
+    f"- The language with most words is {
+        max(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
+    }, with {
+        len(
+            language_codes_5words[
+                max(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
+            ]
+        )
+    } words"
 )
 print(
-    f"- Average number of words per language is {sum(len(language_codes_5words[l_code]) for l_code in language_codes)/len(language_codes):.2f}"
+    f"- Average number of words per language is {sum(len(language_codes_5words[l_code]) for l_code in language_codes) / len(language_codes):.2f}"
 )
 print(
-    f"- Average length of supplemental words per language is {sum(len(language_codes_5words_supplements[l_code]) for l_code in language_codes)/len(language_codes):.2f}"
+    f"- Average length of supplemental words per language is {sum(len(language_codes_5words_supplements[l_code]) for l_code in language_codes) / len(language_codes):.2f}"
 )
 print(f"- There are {len(other_wordles)} other wordles")
-print(f"***********************************************\n")
+print("***********************************************\n")
 
 
 ###############################################################################
@@ -818,7 +833,7 @@ def _load_word_stats(lang_code, day_idx):
     stats_path = os.path.join(WORD_STATS_DIR, lang_code, f"{day_idx}.json")
     if os.path.exists(stats_path):
         try:
-            with open(stats_path, "r") as f:
+            with open(stats_path) as f:
                 return json.load(f)
         except Exception:
             pass
@@ -844,7 +859,7 @@ def _update_word_stats(lang_code, day_idx, won, attempts):
         stats = None
         if os.path.exists(stats_path):
             try:
-                with open(stats_path, "r") as f:
+                with open(stats_path) as f:
                     stats = json.load(f)
             except Exception:
                 pass
@@ -880,8 +895,8 @@ def _update_word_stats(lang_code, day_idx, won, attempts):
 def before_request():
     if (
         request.url.startswith("http://")
-        and not "localhost" in request.url
-        and not "127.0.0" in request.url
+        and "localhost" not in request.url
+        and "127.0.0" not in request.url
     ):
         url = request.url.replace("http://", "https://", 1)
         code = 301
@@ -958,7 +973,7 @@ def _build_stats_data():
                 except ValueError:
                     continue  # skip non-numeric filenames
                 try:
-                    with open(os.path.join(lang_dir, fname), "r") as f:
+                    with open(os.path.join(lang_dir, fname)) as f:
                         s = json.load(f)
                         lang_total_plays += s.get("total", 0)
                         lang_total_wins += s.get("wins", 0)
@@ -1203,7 +1218,13 @@ def language(lang_code):
     cookie_key = f"keyboard_layout_{lang_code}"
     requested_layout = request.args.get("layout") or request.cookies.get(cookie_key)
     language = Language(lang_code, word_list, requested_layout)
-    response = make_response(render_template("game.html", language=language))
+    # Social share context: ?r=3 means someone shared a 3/6 result
+    share_result = request.args.get("r")
+    if share_result not in ("1", "2", "3", "4", "5", "6", "x"):
+        share_result = None
+    response = make_response(
+        render_template("game.html", language=language, share_result=share_result)
+    )
     selected_layout = language.keyboard_layout_name
     if request.cookies.get(cookie_key) != selected_layout:
         response.set_cookie(
@@ -1269,7 +1290,7 @@ def generate_word_image(word, definition_hint, api_key, cache_dir, cache_path):
                 os.unlink(tmp_path)
 
         return "ok"
-    except (openai.OpenAIError, urlreq.URLError, IOError, OSError) as e:
+    except (openai.OpenAIError, urlreq.URLError, OSError) as e:
         logging.error(f"Image generation failed for {word}: {e}")
         return "error"
 

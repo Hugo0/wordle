@@ -7,7 +7,6 @@ dependencies = [
     "flask>=3.1.0",
     "flask-cors>=6.0.0",
     "gunicorn>=24.0.0",
-    "Flask-FlatPages>=0.9.0",
     "openai>=2.21.0",
     "pillow>=12.1.1",
 ]
@@ -15,20 +14,36 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest>=8.0.0",
-    "black>=24.0.0",
+    "ruff>=0.11.0",
     "wordfreq>=3.1.1",
 ]
 
-[tool.black]
+[tool.ruff]
 line-length = 100
-target-version = ['py314']
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-    \.git
-    | \.venv
-    | venv
-    | node_modules
-    | webapp/static/dist
-)/
-'''
+target-version = "py311"
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "node_modules",
+    "webapp/static/dist",
+    "webapp/deprecated",
+    "tests/deprecated",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+]
+ignore = [
+    "E501", # line too long (formatter handles this)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["webapp"]

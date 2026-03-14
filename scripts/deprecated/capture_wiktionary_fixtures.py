@@ -10,7 +10,6 @@ Usage:
 """
 
 import json
-import os
 import sys
 import time
 import urllib.parse
@@ -21,7 +20,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "webapp"))
 
-from wiktionary import parse_wikt_definition, WIKT_LANG_MAP
+from wiktionary import WIKT_LANG_MAP, parse_wikt_definition
 
 LANGUAGES_DIR = PROJECT_ROOT / "webapp" / "data" / "languages"
 FIXTURES_DIR = PROJECT_ROOT / "tests" / "fixtures" / "wiktionary"
@@ -32,7 +31,7 @@ def load_word_list(lang_code):
     word_file = LANGUAGES_DIR / lang_code / f"{lang_code}_5words.txt"
     if not word_file.exists():
         return []
-    with open(word_file, "r", encoding="utf-8") as f:
+    with open(word_file, encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
 

@@ -1067,9 +1067,10 @@ export const createGameApp = () => {
             },
 
             async shareResults(): Promise<void> {
-                const text = this.getShareText();
+                const shareText = this.getShareText();
                 const langCode = this.config?.language_code ?? '';
-                const url = `https://wordle.global/${langCode}`;
+                const url = `https://wordle.global/${langCode}?r=${this.game_won ? this.attempts : 'x'}`;
+                const fullText = `${shareText}\n\n${url}`;
 
                 const shareParams = {
                     language: langCode,
@@ -1085,26 +1086,17 @@ export const createGameApp = () => {
                     }, 2000);
                 };
 
-                // Try Web Share API first
+                // Try Web Share API first (always pass as single text to avoid platform-dependent URL duplication)
                 if (navigator.share) {
                     analytics.trackShareClick({ ...shareParams, method: 'native' });
                     try {
-                        await navigator.share({ text, url });
+                        await navigator.share({ text: fullText });
                         this.showNotification(this.config?.text?.shared || 'Shared!');
                         onSuccess('native');
                         return;
                     } catch (error) {
                         if (error instanceof Error && error.name === 'AbortError') return;
-                        // Try text only
-                        try {
-                            await navigator.share({ text: `${text}\n${url}` });
-                            this.showNotification(this.config?.text?.shared || 'Shared!');
-                            onSuccess('native');
-                            return;
-                        } catch (e) {
-                            if (e instanceof Error && e.name === 'AbortError') return;
-                            analytics.trackShareFail(langCode, 'native', 'share_api_failed');
-                        }
+                        analytics.trackShareFail(langCode, 'native', 'share_api_failed');
                     }
                 }
 
@@ -1112,7 +1104,7 @@ export const createGameApp = () => {
                 if (navigator.clipboard?.writeText && window.isSecureContext) {
                     analytics.trackShareClick({ ...shareParams, method: 'clipboard' });
                     try {
-                        await navigator.clipboard.writeText(text);
+                        await navigator.clipboard.writeText(fullText);
                         this.showNotification(this.config?.text?.copied || 'Copied to clipboard!');
                         onSuccess('clipboard');
                         return;
@@ -1125,7 +1117,7 @@ export const createGameApp = () => {
 
                 // Legacy execCommand fallback
                 analytics.trackShareClick({ ...shareParams, method: 'fallback' });
-                if (this.copyViaExecCommand(text)) {
+                if (this.copyViaExecCommand(fullText)) {
                     this.showNotification(this.config?.text?.copied || 'Copied to clipboard!');
                     onSuccess('fallback');
                     return;
@@ -1133,7 +1125,7 @@ export const createGameApp = () => {
 
                 // Final fallback: show modal
                 analytics.trackShareFail(langCode, 'fallback', 'all_methods_failed');
-                this.showCopyFallbackModal(text);
+                this.showCopyFallbackModal(fullText);
             },
 
             copyViaExecCommand(text: string): boolean {
@@ -1184,8 +1176,7 @@ export const createGameApp = () => {
 
             getShareText(): string {
                 const name = this.config?.name_native || this.config?.language_code || '';
-                const langCode = this.config?.language_code ?? '';
-                return `Wordle ${name} #${this.todays_idx} — ${this.attempts}/6\n\n${this.emoji_board}\n\nhttps://wordle.global/${langCode}`;
+                return `Wordle ${name} #${this.todays_idx} — ${this.attempts}/6\n\n${this.emoji_board}`;
             },
 
             toggleDarkMode(): void {

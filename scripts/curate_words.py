@@ -20,8 +20,6 @@ Usage:
 
 import argparse
 import datetime
-import os
-import shutil
 from pathlib import Path
 
 # Paths
@@ -79,7 +77,7 @@ def extract_next_words(lang: str, num_days: int = 365) -> None:
             f.write(f"{start_idx + i}: {word}\n")
 
     print(f"Wrote {num_days} words to {output_file}")
-    print(f"Review the file and identify words to remove.")
+    print("Review the file and identify words to remove.")
 
 
 def remove_words(lang: str, words_to_remove: list[str]) -> None:
@@ -193,7 +191,9 @@ def main():
     # Extract command
     extract_parser = subparsers.add_parser("extract", help="Extract next N words for review")
     extract_parser.add_argument("lang", help="Language code (e.g., ar, tr, bg)")
-    extract_parser.add_argument("days", type=int, nargs="?", default=365, help="Number of days to extract")
+    extract_parser.add_argument(
+        "days", type=int, nargs="?", default=365, help="Number of days to extract"
+    )
 
     # Remove command
     remove_parser = subparsers.add_parser("remove", help="Remove words from list")
@@ -209,7 +209,9 @@ def main():
     status_parser.add_argument("lang", help="Language code")
 
     # Check blocklist command
-    blocklist_parser = subparsers.add_parser("check-blocklist", help="Check blocklist coverage (runtime filtering)")
+    blocklist_parser = subparsers.add_parser(
+        "check-blocklist", help="Check blocklist coverage (runtime filtering)"
+    )
     blocklist_parser.add_argument("lang", help="Language code")
 
     args = parser.parse_args()
