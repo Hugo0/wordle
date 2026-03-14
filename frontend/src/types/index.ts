@@ -66,6 +66,11 @@ export interface LanguageConfig {
      *  spans multiple Unicode codepoints.
      */
     grapheme_mode?: 'true' | 'false';
+    /** Optional physical key → character map for bypassing IME composition.
+     *  Maps KeyboardEvent.code values to characters.
+     *  Example for Korean: { "KeyQ": "ㅂ", "ShiftKeyQ": "ㅃ", ... }
+     */
+    physical_key_map?: Record<string, string>;
 }
 
 // =============================================================================

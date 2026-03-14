@@ -243,6 +243,9 @@ interface GameData {
     communityStatsLink: string | null;
     hardMode: boolean;
     highContrast: boolean;
+    difficultyShake: boolean;
+    difficultyWarning: boolean;
+    maxDifficultyUsed: number;
 }
 
 export const createGameApp = () => {
@@ -280,6 +283,9 @@ export const createGameApp = () => {
                 pendingKeyUpdates: [] as Array<{ char: string; state: KeyState } | undefined>,
                 hardMode: false,
                 highContrast: false,
+                difficultyShake: false,
+                difficultyWarning: false,
+                maxDifficultyUsed: 1, // 0=easy, 1=normal, 2=hard — tracks highest level any guess was made at
 
                 notification: {
                     show: false,
@@ -461,8 +467,10 @@ export const createGameApp = () => {
             this.loadLanguages();
             this.loadFeedbackPreference();
             this.loadWordInfoPreference();
-            this.loadHardModePreference();
+            this.loadDifficultyPreference();
             this.loadHighContrastPreference();
+            // Set max difficulty based on current setting (if game in progress, this is what they started at)
+            this.maxDifficultyUsed = this.currentDifficultyLevel();
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -740,7 +748,18 @@ export const createGameApp = () => {
 
             keyDown(event: KeyboardEvent | { key: string }): void {
                 if (this.animating) return;
-                const key = event.key;
+
+                // Physical keyboard → character mapping (bypasses IME for Korean, etc.)
+                let key = event.key;
+                const physicalKeyMap = this.config?.physical_key_map;
+                if (physicalKeyMap && 'code' in event) {
+                    const code = event.shiftKey ? `Shift${event.code}` : event.code;
+                    const mapped = physicalKeyMap[code];
+                    if (mapped) {
+                        event.preventDefault();
+                        key = mapped;
+                    }
+                }
 
                 if (key === 'Escape') {
                     this.showHelpModal = false;
@@ -820,6 +839,11 @@ export const createGameApp = () => {
                         }
 
                         this.updateColors();
+                        // Track highest difficulty a guess was submitted at
+                        this.maxDifficultyUsed = Math.max(
+                            this.maxDifficultyUsed,
+                            this.currentDifficultyLevel()
+                        );
                         const revealingRow = this.active_row;
                         this.active_row++;
                         this.active_cell = 0;
@@ -850,6 +874,7 @@ export const createGameApp = () => {
                         analytics.trackInvalidWordAndUpdateState({
                             language: this.config?.language_code || 'unknown',
                             attempt_number: this.active_row + 1,
+                            word: typedWord,
                         });
                         analytics.trackGuessSubmit(
                             this.config?.language_code || 'unknown',
@@ -1592,38 +1617,50 @@ export const createGameApp = () => {
                 }
             },
 
-            loadHardModePreference(): void {
+            loadDifficultyPreference(): void {
                 try {
-                    const stored = localStorage.getItem('hardMode');
-                    if (stored !== null) {
-                        this.hardMode = stored === 'true';
+                    const storedHard = localStorage.getItem('hardMode');
+                    if (storedHard !== null) {
+                        this.hardMode = storedHard === 'true';
+                    }
+                    const storedEasy = localStorage.getItem('allowAnyWord');
+                    if (storedEasy !== null) {
+                        this.allow_any_word = storedEasy === 'true';
+                    }
+                    // Can't be both
+                    if (this.hardMode && this.allow_any_word) {
+                        this.allow_any_word = false;
                     }
                 } catch {
                     // localStorage unavailable
                 }
             },
 
-            toggleHardMode(): void {
-                this.$nextTick(() => {
-                    try {
-                        localStorage.setItem('hardMode', this.hardMode ? 'true' : 'false');
-                    } catch {
-                        // localStorage unavailable
-                    }
-                    analytics.trackSettingsChange({
-                        setting: 'hard_mode',
-                        value: this.hardMode,
-                    });
-                });
+            currentDifficultyLevel(): number {
+                return this.hardMode ? 2 : this.allow_any_word ? 0 : 1;
             },
 
             setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
-                // Don't allow switching TO hard mode mid-game
-                if (level === 'hard' && this.active_row > 0 && !this.game_over) return;
+                const levels = { easy: 0, normal: 1, hard: 2 };
+                // Can't go higher than the max difficulty any guess was submitted at
+                if (
+                    levels[level] > this.maxDifficultyUsed &&
+                    this.active_row > 0 &&
+                    !this.game_over
+                ) {
+                    this.difficultyShake = true;
+                    this.difficultyWarning = true;
+                    setTimeout(() => {
+                        this.difficultyShake = false;
+                    }, 500);
+                    return;
+                }
+                this.difficultyWarning = false;
                 this.allow_any_word = level === 'easy';
                 this.hardMode = level === 'hard';
                 try {
                     localStorage.setItem('hardMode', this.hardMode ? 'true' : 'false');
+                    localStorage.setItem('allowAnyWord', this.allow_any_word ? 'true' : 'false');
                 } catch {
                     // localStorage unavailable
                 }
@@ -1638,6 +1675,14 @@ export const createGameApp = () => {
              * Returns an error message if invalid, or null if valid.
              */
             checkHardMode(guess: string): string | null {
+                // Normalize a char for comparison (diacritics + positional variants)
+                const norm = (char: string): string => {
+                    const positionalNorm = toRegularForm(char, finalFormReverseMap);
+                    return (normalizeMap.get(positionalNorm) || positionalNorm).toLowerCase();
+                };
+
+                const guessNorm = [...guess].map(norm);
+
                 // Check all previously submitted rows for hints
                 for (let r = 0; r < this.active_row; r++) {
                     const row = this.tiles[r];
@@ -1649,18 +1694,20 @@ export const createGameApp = () => {
                         const letter = row[c];
                         if (!letter) continue;
 
+                        const letterNorm = norm(letter);
+
                         if (
                             tileClass.includes('correct') &&
                             !tileClass.includes('semicorrect') &&
                             !tileClass.includes('incorrect')
                         ) {
                             // Green: must be in the same position
-                            if (guess[c]?.toLowerCase() !== letter.toLowerCase()) {
+                            if (guessNorm[c] !== letterNorm) {
                                 return `Hard mode: ${letter.toUpperCase()} must be in position ${c + 1}`;
                             }
                         } else if (tileClass.includes('semicorrect')) {
                             // Yellow: must appear somewhere in the guess
-                            if (!guess.toLowerCase().includes(letter.toLowerCase())) {
+                            if (!guessNorm.includes(letterNorm)) {
                                 return `Hard mode: guess must contain ${letter.toUpperCase()}`;
                             }
                         }
