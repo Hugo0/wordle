@@ -6,6 +6,8 @@ import { createApp, type App } from 'vue';
 import { setHapticsEnabled } from './haptics';
 import { setSoundEnabled } from './sounds';
 import pwa from './pwa';
+import analytics from './analytics';
+import { identifyUser } from './posthog';
 
 // Types for homepage data
 interface Language {
@@ -86,6 +88,10 @@ export default function createIndexApp(): App {
                 this.game_results = {};
                 localStorage.setItem('game_results', JSON.stringify(this.game_results));
             }
+
+            // Identify user in PostHog and track homepage view
+            identifyUser(this.game_results);
+            analytics.trackHomepageView();
 
             // Cache languages for game page to access
             this.cacheLanguages();

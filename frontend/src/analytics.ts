@@ -1,5 +1,5 @@
 /**
- * Analytics Module - Google Analytics 4 Event Tracking
+ * Analytics Module - Google Analytics 4 + PostHog Event Tracking
  *
  * Business Questions This Module Answers:
  *
@@ -11,12 +11,14 @@
  * 2. RETENTION: Are people coming back?
  *    - returning_player: Days since last visit, streak length
  *    - streak_milestone: Are streaks driving retention?
+ *    - streak_broken: When and why do streaks break?
  *    - pwa_session: Do installed users return more?
  *
  * 3. VIRALITY: Is sharing working?
  *    - share_click: Do people try to share?
  *    - share_success: Does sharing actually work?
- *    - share_fail: Why does sharing fail?
+ *    - share_fail: Why is sharing broken?
+ *    - share_content_generated: What patterns do people share?
  *
  * 4. FRICTION: What's blocking users?
  *    - invalid_word: Bad word lists causing frustration?
@@ -32,7 +34,31 @@
  *    - settings_change: Dark mode, haptics, sound preferences
  *    - help_open: Are people confused?
  *    - stats_open: Do people check stats?
+ *
+ * 7. MULTI-LANGUAGE: How do users explore languages?
+ *    - second_language_start: When users try a new language
+ *    - multi_language_session: Users playing 2+ languages
+ *    - homepage_view: Top of funnel
+ *
+ * 8. CONTENT: Do features drive retention?
+ *    - definition_view: Users engaging with word definitions
+ *    - word_page_view: Power users exploring word lists
+ *
+ * 9. FUNNEL: Where do users drop off?
+ *    - game_page_ready: Page loaded, waiting for first guess
+ *    - first_guess_delay: Time from page load to first interaction
+ *    - referral_landing: Users arriving from shared links
  */
+
+import posthog from './posthog';
+
+// Events excluded from PostHog to stay within free tier (1M events/month).
+// These high-volume events (fired per-guess) are still tracked in GA4 where there is no cap.
+const POSTHOG_SKIP_EVENTS = new Set(['guess_submit', 'guess_time', 'first_guess_delay']);
+
+// Default game mode — used as fallback across all game lifecycle events.
+// When new modes are added, update this type and the call sites.
+const DEFAULT_GAME_MODE = 'daily';
 
 // Extend Window interface for gtag
 declare global {
@@ -48,6 +74,10 @@ interface GameStartParams {
     is_returning: boolean;
     days_since_last?: number;
     current_streak?: number;
+    game_mode?: string;
+    total_games_played?: number;
+    total_languages_played?: number;
+    user_age_days?: number;
 }
 
 interface GameCompleteParams {
@@ -55,6 +85,7 @@ interface GameCompleteParams {
     won: boolean;
     attempts: number | string;
     streak_after: number;
+    game_mode?: string;
     // Session-aggregated struggle context
     total_invalid_attempts?: number;
     max_consecutive_invalid?: number;
@@ -66,6 +97,7 @@ interface GameAbandonParams {
     language: string;
     attempt_number: number;
     last_guess_valid: boolean;
+    game_mode?: string;
 }
 
 interface ShareParams {
@@ -73,6 +105,7 @@ interface ShareParams {
     method: 'native' | 'clipboard' | 'fallback';
     won: boolean;
     attempts: number | string;
+    game_mode?: string;
 }
 
 interface InvalidWordParams {
@@ -106,9 +139,10 @@ interface ErrorParams {
 }
 
 /**
- * Safe gtag wrapper - handles missing gtag gracefully
+ * Safe dual-send wrapper - sends to both GA4 and PostHog
  */
 const track = (eventName: string, params?: Record<string, unknown>): void => {
+    // Google Analytics 4
     try {
         if (typeof window.gtag === 'function') {
             window.gtag('event', eventName, params);
@@ -116,7 +150,21 @@ const track = (eventName: string, params?: Record<string, unknown>): void => {
     } catch {
         // Silently fail - analytics should never break the app
     }
+
+    // PostHog (skip high-volume events to stay within free tier)
+    try {
+        if (!POSTHOG_SKIP_EVENTS.has(eventName)) {
+            posthog.capture(eventName, params);
+        }
+    } catch {
+        // Silently fail
+    }
 };
+
+/**
+ * Get referrer or 'direct'
+ */
+const getReferrer = (): string => getReferrer();
 
 /**
  * Get platform type for PWA tracking
@@ -139,6 +187,20 @@ const isStandalone = (): boolean => {
     );
 };
 
+/**
+ * Calculate days since a date string (YYYY-MM-DD or ISO)
+ */
+const daysSince = (dateStr: string | undefined): number | undefined => {
+    if (!dateStr) return undefined;
+    try {
+        const then = new Date(dateStr).getTime();
+        const now = Date.now();
+        return Math.floor((now - then) / (1000 * 60 * 60 * 24));
+    } catch {
+        return undefined;
+    }
+};
+
 // ============================================================================
 // GAME LIFECYCLE EVENTS
 // ============================================================================
@@ -153,6 +215,10 @@ export const trackGameStart = (params: GameStartParams): void => {
         is_returning: params.is_returning,
         days_since_last: params.days_since_last,
         current_streak: params.current_streak,
+        game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
+        total_games_played: params.total_games_played,
+        total_languages_played: params.total_languages_played,
+        user_age_days: params.user_age_days,
         is_pwa: isStandalone(),
     });
 };
@@ -167,6 +233,7 @@ export const trackGameComplete = (params: GameCompleteParams): void => {
         won: params.won,
         attempts: params.attempts,
         streak_after: params.streak_after,
+        game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
         // Session-aggregated struggle context
         total_invalid_attempts: params.total_invalid_attempts ?? 0,
         max_consecutive_invalid: params.max_consecutive_invalid ?? 0,
@@ -185,6 +252,7 @@ export const trackGameAbandon = (params: GameAbandonParams): void => {
         language: params.language,
         attempt_number: params.attempt_number,
         last_guess_valid: params.last_guess_valid,
+        game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
     });
 };
 
@@ -204,6 +272,47 @@ export const trackGuessSubmit = (
     });
 };
 
+/**
+ * Track game page loaded and ready for interaction
+ * Answers: How many users see the game but never play?
+ */
+export const trackGamePageReady = (language: string): void => {
+    track('game_page_ready', {
+        language,
+        is_pwa: isStandalone(),
+        platform: getPlatform(),
+        referrer: getReferrer(),
+    });
+};
+
+/**
+ * Track time from page load to first guess
+ * Answers: Are users confused by the UI? How long before engagement?
+ */
+export const trackFirstGuessDelay = (language: string, delaySeconds: number): void => {
+    track('first_guess_delay', {
+        language,
+        delay_seconds: delaySeconds,
+        is_pwa: isStandalone(),
+    });
+};
+
+/**
+ * Track time between consecutive guesses
+ * Answers: Are users thinking hard (engaged) or rapid-firing (frustrated/expert)?
+ */
+export const trackGuessTime = (
+    language: string,
+    attemptNumber: number,
+    secondsSinceLastGuess: number
+): void => {
+    track('guess_time', {
+        language,
+        attempt_number: attemptNumber,
+        seconds_since_last_guess: secondsSinceLastGuess,
+    });
+};
+
 // ============================================================================
 // RETENTION EVENTS
 // ============================================================================
@@ -215,12 +324,14 @@ export const trackGuessSubmit = (
 export const trackReturningPlayer = (
     language: string,
     daysSinceLast: number,
-    currentStreak: number
+    currentStreak: number,
+    totalLanguagesPlayed?: number
 ): void => {
     track('returning_player', {
         language,
         days_since_last: daysSinceLast,
         current_streak: currentStreak,
+        total_languages_played: totalLanguagesPlayed,
         is_pwa: isStandalone(),
     });
 };
@@ -241,6 +352,35 @@ export const trackStreakMilestone = (language: string, streakCount: number): voi
     }
 };
 
+/**
+ * Track when a streak breaks
+ * Answers: When do we lose retained users? How long were they gone?
+ */
+export const trackStreakBroken = (
+    language: string,
+    previousStreak: number,
+    daysSinceLast: number
+): void => {
+    track('streak_broken', {
+        language,
+        previous_streak: previousStreak,
+        days_since_last: daysSinceLast,
+    });
+};
+
+/**
+ * Track user returning after 7+ day absence
+ * Answers: What brings lapsed users back?
+ */
+export const trackReEngagement = (language: string, daysAbsent: number): void => {
+    track('re_engagement', {
+        language,
+        days_absent: daysAbsent,
+        referrer: getReferrer(),
+        is_pwa: isStandalone(),
+    });
+};
+
 // ============================================================================
 // SHARE EVENTS
 // ============================================================================
@@ -255,6 +395,7 @@ export const trackShareClick = (params: ShareParams): void => {
         method: params.method,
         won: params.won,
         attempts: params.attempts,
+        game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
     });
 };
 
@@ -268,6 +409,7 @@ export const trackShareSuccess = (params: ShareParams): void => {
         method: params.method,
         won: params.won,
         attempts: params.attempts,
+        game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
     });
 };
 
@@ -280,6 +422,33 @@ export const trackShareFail = (language: string, method: string, errorType: stri
         language,
         method,
         error_type: errorType,
+    });
+};
+
+/**
+ * Track share content details when share succeeds
+ * Answers: What result patterns are most shared? Which are viral?
+ */
+export const trackShareContentGenerated = (
+    language: string,
+    won: boolean,
+    attempts: number | string,
+    emojiPattern: string
+): void => {
+    // Count greens, yellows, grays in the pattern
+    const greens = (emojiPattern.match(/🟩/g) || []).length;
+    const yellows = (emojiPattern.match(/🟨/g) || []).length;
+    const grays = (emojiPattern.match(/⬜/g) || []).length;
+    const rows = emojiPattern.split('\n').filter((r) => r.trim()).length;
+
+    track('share_content_generated', {
+        language,
+        won,
+        attempts,
+        green_count: greens,
+        yellow_count: yellows,
+        gray_count: grays,
+        row_count: rows,
     });
 };
 
@@ -371,17 +540,9 @@ export const trackError = (params: ErrorParams): void => {
 };
 
 // ============================================================================
-// FRUSTRATION SIGNALS (DEPRECATED - now tracked in game_complete)
-// Frustration context is now passed to trackGameComplete via:
-// - total_invalid_attempts: total invalid words this session
-// - max_consecutive_invalid: worst streak of consecutive invalids
-// - had_frustration: true if max_consecutive_invalid >= 3
+// FRUSTRATION SIGNALS (session-aggregated, included in game_complete)
 // ============================================================================
 
-/**
- * Reset frustration state - call when game completes or new game starts
- * Returns the accumulated state for inclusion in game_complete event
- */
 export interface FrustrationState {
     totalInvalidAttempts: number;
     maxConsecutiveInvalid: number;
@@ -398,17 +559,12 @@ export const resetFrustrationState = (): FrustrationState => {
         maxConsecutiveInvalid: maxConsecutiveInvalid,
         hadFrustration: maxConsecutiveInvalid >= 3,
     };
-    // Reset for next game
     sessionInvalidCount = 0;
     currentConsecutiveInvalid = 0;
     maxConsecutiveInvalid = 0;
     return state;
 };
 
-/**
- * Track invalid word and update frustration state
- * Call this instead of trackInvalidWord directly
- */
 export const trackInvalidWordAndUpdateState = (params: InvalidWordParams): void => {
     sessionInvalidCount++;
     currentConsecutiveInvalid++;
@@ -416,9 +572,6 @@ export const trackInvalidWordAndUpdateState = (params: InvalidWordParams): void 
     trackInvalidWord(params);
 };
 
-/**
- * Call when a valid word is submitted to reset consecutive counter
- */
 export const onValidWord = (): void => {
     currentConsecutiveInvalid = 0;
 };
@@ -471,6 +624,94 @@ export const trackLanguageSelect = (language: string, source: 'search' | 'list' 
 };
 
 // ============================================================================
+// MULTI-LANGUAGE EVENTS
+// ============================================================================
+
+/**
+ * Track when a user starts playing a second language for the first time
+ * Answers: Are users discovering the multi-language value prop?
+ */
+export const trackSecondLanguageStart = (
+    newLanguage: string,
+    previousLanguages: string[]
+): void => {
+    track('second_language_start', {
+        new_language: newLanguage,
+        previous_languages: previousLanguages,
+        total_languages: previousLanguages.length + 1,
+    });
+};
+
+/**
+ * Track when a user plays 2+ languages in one session
+ * Answers: Who are our polyglot power users?
+ */
+export const trackMultiLanguageSession = (
+    currentLanguage: string,
+    sessionLanguages: string[]
+): void => {
+    track('multi_language_session', {
+        current_language: currentLanguage,
+        session_languages: sessionLanguages,
+        session_language_count: sessionLanguages.length,
+    });
+};
+
+// ============================================================================
+// CONTENT EVENTS
+// ============================================================================
+
+/**
+ * Track when a user views the word definition after a game
+ * Answers: Do definition viewers retain better?
+ */
+export const trackDefinitionView = (language: string, source: string): void => {
+    track('definition_view', {
+        language,
+        source,
+    });
+};
+
+/**
+ * Track word page views (the /lang/word/N detail pages)
+ * Answers: Who are these power users exploring word history?
+ */
+export const trackWordPageView = (language: string): void => {
+    track('word_page_view', {
+        language,
+        referrer: getReferrer(),
+    });
+};
+
+// ============================================================================
+// FUNNEL EVENTS
+// ============================================================================
+
+/**
+ * Track homepage view (top of funnel)
+ * Answers: How many people land on homepage? What's the conversion to game?
+ */
+export const trackHomepageView = (): void => {
+    track('homepage_view', {
+        referrer: getReferrer(),
+        is_pwa: isStandalone(),
+        platform: getPlatform(),
+    });
+};
+
+/**
+ * Track when a user arrives from a shared link
+ * Answers: Is the share → play loop working?
+ */
+export const trackReferralLanding = (language: string, referralParam: string): void => {
+    track('referral_landing', {
+        language,
+        referral_result: referralParam,
+        referrer: getReferrer(),
+    });
+};
+
+// ============================================================================
 // SESSION CONTEXT
 // ============================================================================
 
@@ -483,7 +724,7 @@ export const trackPageView = (language: string): void => {
         language,
         is_pwa: isStandalone(),
         platform: getPlatform(),
-        referrer: document.referrer || 'direct',
+        referrer: getReferrer(),
     });
 };
 
@@ -535,6 +776,9 @@ export const initAbandonTracking = (
     });
 };
 
+// Utility export for other modules
+export { daysSince };
+
 // Default export for convenience
 const analytics = {
     // Game lifecycle
@@ -542,13 +786,19 @@ const analytics = {
     trackGameComplete,
     trackGameAbandon,
     trackGuessSubmit,
+    trackGamePageReady,
+    trackFirstGuessDelay,
+    trackGuessTime,
     // Retention
     trackReturningPlayer,
     trackStreakMilestone,
+    trackStreakBroken,
+    trackReEngagement,
     // Sharing
     trackShareClick,
     trackShareSuccess,
     trackShareFail,
+    trackShareContentGenerated,
     // PWA
     trackPWAPromptShown,
     trackPWAInstall,
@@ -567,11 +817,22 @@ const analytics = {
     trackHelpOpen,
     trackStatsOpen,
     trackLanguageSelect,
+    // Multi-language
+    trackSecondLanguageStart,
+    trackMultiLanguageSession,
+    // Content
+    trackDefinitionView,
+    trackWordPageView,
+    // Funnel
+    trackHomepageView,
+    trackReferralLanding,
     // Session
     trackPageView,
     // Init
     initErrorTracking,
     initAbandonTracking,
+    // Utilities
+    daysSince,
 };
 
 export default analytics;
