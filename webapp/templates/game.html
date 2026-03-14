@@ -683,6 +683,36 @@
     {% set pwa_description = "Play Wordle in " ~ language.config.name_native %}
     {% include 'partials/_pwa_install.html' %}
 
+    {# SEO content — visible only when JS is disabled (crawlers, screen readers, noscript browsers).
+       Uses the same localized help text keys as the help modal for DRY. #}
+    <noscript>
+        <div style="max-width: 600px; margin: 40px auto; padding: 20px; font-family: system-ui, sans-serif; color: #333;">
+            <h1>Wordle {{ language.config.name_native }} — {{ language.config.meta.title | default("The daily word game") }}</h1>
+            <h2>{{ language.config.help.title }}</h2>
+            <p>{{ language.config.help.text_1_1_1 }} <strong>Wordle</strong> {{ language.config.help.text_1_1_2 }}</p>
+            <p>{{ language.config.help.text_1_2 }}</p>
+            <p>{{ language.config.help.text_1_3 }}</p>
+            <p>{{ language.config.help.text_3 }}</p>
+            <h2>Play Wordle in other languages</h2>
+            <p>Wordle Global is a free, open-source Wordle game available in 65+ languages. No ads, no account required — just play.</p>
+            <ul>
+                {% set seo_langs = {
+                    'en': 'English', 'fi': 'Finnish', 'de': 'German', 'es': 'Spanish',
+                    'fr': 'French', 'ar': 'Arabic', 'he': 'Hebrew', 'tr': 'Turkish',
+                    'ru': 'Russian', 'it': 'Italian', 'pt': 'Portuguese', 'nl': 'Dutch',
+                    'sv': 'Swedish', 'da': 'Danish', 'pl': 'Polish', 'hr': 'Croatian',
+                    'hu': 'Hungarian', 'bg': 'Bulgarian', 'ro': 'Romanian', 'ko': 'Korean'
+                } %}
+                {% for lc, name in seo_langs.items() %}
+                {% if lc != language.config.language_code %}
+                <li><a href="https://wordle.global/{{ lc }}">Wordle in {{ name }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <p><a href="https://wordle.global/">View all 65+ languages</a></p>
+        </div>
+    </noscript>
+
     <!-- Vite-built JS (includes Vue, game logic, PWA) -->
     <script type="module" src="{{ vite_assets.js }}"></script>
 </body>
