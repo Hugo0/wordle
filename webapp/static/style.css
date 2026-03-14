@@ -17,6 +17,14 @@ button, .key, input, a {
     padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Android PWA: gesture bar overlaps app but env(safe-area-inset-bottom) is 0,
+   so add fallback bottom padding in standalone mode to prevent keyboard clipping */
+@media (display-mode: standalone) {
+    .safe-area-inset {
+        padding-bottom: max(env(safe-area-inset-bottom), 12px);
+    }
+}
+
 /* Keyboard key styles */
 .key {
     background-color: #d3d6da;
