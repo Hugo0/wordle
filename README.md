@@ -21,7 +21,7 @@ You don't need to be a developer to help — native speakers are the best contri
 
 ### Report a problem
 
-Found a bad word, missing character, or bug? [Open an issue](https://github.com/Hugo0/wordle/issues/new) with the language and what went wrong.
+Found a bad word, missing character, or bug? [Open an issue](https://github.com/Hugo0/wordle/issues/new/choose) — pick the right template and we'll take care of it.
 
 ### Improve a word list
 

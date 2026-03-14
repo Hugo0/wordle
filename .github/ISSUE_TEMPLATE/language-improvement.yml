@@ -1,0 +1,37 @@
+name: Language Improvement
+description: Report keyboard issues, translation fixes, or request a new language.
+labels: ["language"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      description: What kind of language improvement is this?
+      options:
+        - Missing keyboard character
+        - Wrong translation
+        - New language request
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      description: Which language does this relate to?
+      placeholder: e.g. "fr (French)" or "Swahili (new request)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Describe the issue or request in detail.
+      placeholder: |
+        For keyboard issues: which character is missing or incorrect?
+        For translations: what is wrong and what should it say?
+        For new languages: any links to word lists or resources?
+    validations:
+      required: true

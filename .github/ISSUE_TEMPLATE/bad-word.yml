@@ -1,0 +1,108 @@
+name: Report a Bad Daily Word
+description: Report a daily word that is offensive, not real, too obscure, or from the wrong language.
+title: "Bad word: [WORD] ([LANG])"
+labels: ["bad-word"]
+body:
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      description: Which language was the bad word in?
+      options:
+        - ar (Arabic)
+        - az (Azerbaijani)
+        - bg (Bulgarian)
+        - br (Breton)
+        - ca (Catalan)
+        - ckb (Central Kurdish)
+        - cs (Czech)
+        - da (Danish)
+        - de (German)
+        - el (Greek)
+        - en (English)
+        - eo (Esperanto)
+        - es (Spanish)
+        - et (Estonian)
+        - eu (Basque)
+        - fa (Persian)
+        - fi (Finnish)
+        - fo (Faroese)
+        - fr (French)
+        - fur (Friulian)
+        - fy (Western Frisian)
+        - ga (Irish)
+        - gd (Scottish Gaelic)
+        - gl (Galician)
+        - he (Hebrew)
+        - hr (Croatian)
+        - hu (Hungarian)
+        - hy (Armenian)
+        - hyw (Western Armenian)
+        - ia (Interlingua)
+        - ie (Interlingue)
+        - is (Icelandic)
+        - it (Italian)
+        - ka (Georgian)
+        - ko (Korean)
+        - la (Latin)
+        - lb (Luxembourgish)
+        - lt (Lithuanian)
+        - ltg (Latgalian)
+        - lv (Latvian)
+        - mi (Maori)
+        - mk (Macedonian)
+        - mn (Mongolian)
+        - nb (Norwegian Bokmal)
+        - nds (Low German)
+        - ne (Nepali)
+        - nl (Dutch)
+        - nn (Norwegian Nynorsk)
+        - oc (Occitan)
+        - pau (Palauan)
+        - pl (Polish)
+        - pt (Portuguese)
+        - qya (Quenya / Elvish)
+        - ro (Romanian)
+        - ru (Russian)
+        - rw (Kinyarwanda)
+        - sk (Slovak)
+        - sl (Slovenian)
+        - sr (Serbian)
+        - sv (Swedish)
+        - tk (Turkmen)
+        - tlh (Klingon)
+        - tr (Turkish)
+        - uk (Ukrainian)
+        - vi (Vietnamese)
+    validations:
+      required: true
+
+  - type: input
+    id: word
+    attributes:
+      label: The word
+      description: What was the bad daily word?
+      placeholder: e.g. "abcde"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Why is it bad?
+      options:
+        - Offensive or inappropriate
+        - Not a real word
+        - Too obscure
+        - From the wrong language
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Any extra details (e.g. what day number, what the word means, etc.)
+    validations:
+      required: false
