@@ -422,7 +422,7 @@ def load_english_words() -> set[str]:
     return words
 
 
-def build_native_dictionary(lang: str) -> set[str]:
+def build_native_dictionary(lang: str, exclude_leipzig: bool = False) -> set[str]:
     """Build a set of words confirmed to be in native-language dictionaries.
 
     Combines all available sources for the language:
@@ -431,6 +431,12 @@ def build_native_dictionary(lang: str) -> set[str]:
     - Katla (Indonesian Wordle curated list)
     - kaikki.org (Wiktionary word extracts)
     - Leipzig Corpora (newspaper/web frequency data, top words)
+
+    Args:
+        exclude_leipzig: If True, skip Leipzig from the native dict. Use this
+            when Leipzig is ALSO the frequency source (circular reference —
+            Leipzig newspaper data contains English code-switching in some
+            languages like Hausa/Yoruba).
     """
     native: set[str] = set()
     sources = EXTRA_SOURCES.get(lang, set())
@@ -460,11 +466,13 @@ def build_native_dictionary(lang: str) -> set[str]:
             print(f"  Native dict: +{len(kk)} from kaikki")
             native |= kk
 
-    if "leipzig" in sources:
+    if "leipzig" in sources and not exclude_leipzig:
         lw = load_leipzig_words(lang)
         if lw:
             print(f"  Native dict: +{len(lw)} from Leipzig")
             native |= lw
+    elif "leipzig" in sources and exclude_leipzig:
+        print(f"  Native dict: skipping Leipzig (used as frequency source)")
 
     if native:
         print(f"  Native dictionary total: {len(native)} unique words")
@@ -596,12 +604,14 @@ def process_language(
     result = {"lang": lang, "status": "ok", "daily_count": 0, "supplement_count": 0}
 
     freq_code = FREQ_LANG_MAP.get(lang)
-    if not freq_code:
+    has_leipzig = bool(load_leipzig_words(lang))
+
+    if not freq_code and not has_leipzig:
         result["status"] = "skipped"
-        result["reason"] = "no FrequencyWords mapping"
+        result["reason"] = "no frequency source (FrequencyWords or Leipzig)"
         return result
 
-    if lang in EXCLUDE:
+    if lang in EXCLUDE and not has_leipzig:
         result["status"] = "skipped"
         result["reason"] = f"excluded ({lang})"
         return result
@@ -630,16 +640,30 @@ def process_language(
     print(f"  Existing supplement: {len(existing_supplement)}")
     print(f"  Character set: {len(char_set)} chars")
 
-    # Load frequency data
-    freq_data = load_frequency_data(freq_code)
-    if not freq_data:
-        result["status"] = "error"
-        result["reason"] = f"FrequencyWords file not found for {freq_code}"
-        return result
+    # Load frequency data — FrequencyWords primary, Leipzig fallback
+    valid_freq = {}
+    if freq_code:
+        freq_data = load_frequency_data(freq_code)
+        if freq_data:
+            valid_freq = {w: f for w, f in freq_data.items() if is_valid_word(w, char_set)}
+            print(f"  Valid 5-letter words in FrequencyWords: {len(valid_freq)}")
 
-    # Filter frequency data to valid 5-letter words for this language
-    valid_freq = {w: f for w, f in freq_data.items() if is_valid_word(w, char_set)}
-    print(f"  Valid 5-letter words in FrequencyWords: {len(valid_freq)}")
+    # If no FrequencyWords, use Leipzig newspaper frequency as primary
+    if not valid_freq and has_leipzig:
+        leipzig_dir = LEIPZIG_DIR / lang
+        for f in leipzig_dir.glob("*-words.txt"):
+            for line in f.read_text(encoding="utf-8", errors="ignore").splitlines():
+                parts = line.strip().split("\t")
+                if len(parts) >= 3:
+                    w = parts[1].strip().lower()
+                    if is_valid_word(w, char_set):
+                        valid_freq[w] = int(parts[2])
+        print(f"  Valid 5-letter words in Leipzig: {len(valid_freq)} (fallback frequency source)")
+
+    if not valid_freq:
+        result["status"] = "error"
+        result["reason"] = "no frequency data from any source"
+        return result
 
     # Load filters
     blocklist = load_blocklist(lang)
@@ -686,8 +710,11 @@ def process_language(
         print(f"  Filtered from daily candidates: {filtered_count} words")
 
     # English contamination filter — remove words that are in English
-    # but not attested in any native-language dictionary
-    native_dict = build_native_dictionary(lang)
+    # but not attested in any native-language dictionary.
+    # When Leipzig IS the frequency source, exclude it from the native dict
+    # to avoid circular validation (Leipzig newspapers contain English code-switching).
+    leipzig_is_freq_source = not freq_code and has_leipzig
+    native_dict = build_native_dictionary(lang, exclude_leipzig=leipzig_is_freq_source)
     if native_dict:
         english_words = load_english_words()
         scored_pre2 = len(scored)
@@ -981,53 +1008,18 @@ def download_frequency_words():
 
 
 def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
-    """Process all eligible languages."""
-    # Priority order: highest impact first
+    """Process all eligible languages (FrequencyWords + Leipzig-sourced)."""
+    import glob as _glob
+    import os
+
+    # Auto-discover all languages that have either FrequencyWords or Leipzig data
+    all_langs = sorted(
+        os.path.basename(d) for d in _glob.glob(str(DATA_DIR / "*")) if os.path.isdir(d)
+    )
+
+    # Filter to languages that can be processed (have frequency source)
     priority = [
-        # Tier 1: Emergency
-        "it",
-        "el",
-        "fr",
-        # Tier 2: High impact
-        "ar",
-        "es",
-        "da",
-        "ro",
-        "ru",
-        "sv",
-        "de",
-        # Tier 3: Medium
-        "hr",
-        "hu",
-        "he",
-        "tr",
-        "ca",
-        "nl",
-        "pt",
-        "mk",
-        "sr",
-        "et",
-        "uk",
-        "sk",
-        "nb",
-        "nn",
-        # Tier 4: Lower traffic
-        "cs",
-        "sl",
-        "eu",
-        "fa",
-        "ka",
-        "ko",
-        "lt",
-        "lv",
-        "is",
-        "eo",
-        "la",
-        "vi",
-        "hy",
-        "hyw",
-        "gl",
-        "br",
+        lang for lang in all_langs if lang in FREQ_LANG_MAP or (LEIPZIG_DIR / lang).exists()
     ]
 
     results = []
