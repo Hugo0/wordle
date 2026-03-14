@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#171717"/>
+
+  <!-- Wordle-style letter tiles -->
+  <g transform="translate(200, 200)">
+    <!-- W - correct (green) -->
+    <rect x="0" y="0" width="120" height="120" rx="8" fill="#22c55e"/>
+    <text x="60" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">W</text>
+
+    <!-- O - semicorrect (yellow) -->
+    <rect x="140" y="0" width="120" height="120" rx="8" fill="#eab308"/>
+    <text x="200" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">O</text>
+
+    <!-- R - incorrect (gray) -->
+    <rect x="280" y="0" width="120" height="120" rx="8" fill="#525252"/>
+    <text x="340" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">R</text>
+
+    <!-- D - correct (green) -->
+    <rect x="420" y="0" width="120" height="120" rx="8" fill="#22c55e"/>
+    <text x="480" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">D</text>
+
+    <!-- L - semicorrect (yellow) -->
+    <rect x="560" y="0" width="120" height="120" rx="8" fill="#eab308"/>
+    <text x="620" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">L</text>
+
+    <!-- E - correct (green) -->
+    <rect x="700" y="0" width="120" height="120" rx="8" fill="#22c55e"/>
+    <text x="760" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">E</text>
+  </g>
+
+  <!-- Globe emoji/icon representation -->
+  <circle cx="1050" cy="260" r="60" fill="#7dd3fc"/>
+  <path d="M1050 200 C1020 200 1000 230 1000 260 C1000 290 1020 320 1050 320 C1080 320 1100 290 1100 260 C1100 230 1080 200 1050 200" fill="#7dd3fc"/>
+  <path d="M1010 240 Q1030 220 1050 240 Q1070 260 1090 250 L1085 280 Q1060 310 1030 280 Q1015 260 1010 240" fill="#22c55e"/>
+
+  <!-- Title text -->
+  <text x="600" y="450" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">WORDLE GLOBAL</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="510" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#a3a3a3" text-anchor="middle">Daily word puzzle in 65+ languages</text>
+</svg>
