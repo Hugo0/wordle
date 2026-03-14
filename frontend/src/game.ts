@@ -131,6 +131,7 @@ interface GameData {
     highContrast: boolean;
     difficultyShake: boolean;
     difficultyWarning: boolean;
+    maxDifficultyUsed: number;
 }
 
 export const createGameApp = () => {
@@ -170,6 +171,7 @@ export const createGameApp = () => {
                 highContrast: false,
                 difficultyShake: false,
                 difficultyWarning: false,
+                maxDifficultyUsed: 1, // 0=easy, 1=normal, 2=hard — tracks highest level any guess was made at
 
                 notification: {
                     show: false,
@@ -353,6 +355,8 @@ export const createGameApp = () => {
             this.loadWordInfoPreference();
             this.loadHardModePreference();
             this.loadHighContrastPreference();
+            // Set max difficulty based on current setting (if game in progress, this is what they started at)
+            this.maxDifficultyUsed = this.hardMode ? 2 : this.allow_any_word ? 0 : 1;
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -699,6 +703,10 @@ export const createGameApp = () => {
                         }
 
                         this.updateColors();
+                        // Track highest difficulty a guess was submitted at
+                        const diffLevels = { easy: 0, normal: 1, hard: 2 };
+                        const currentDiff = this.hardMode ? 2 : this.allow_any_word ? 0 : 1;
+                        this.maxDifficultyUsed = Math.max(this.maxDifficultyUsed, currentDiff);
                         const revealingRow = this.active_row;
                         this.active_row++;
                         this.active_cell = 0;
@@ -1492,15 +1500,10 @@ export const createGameApp = () => {
             },
 
             setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
-                // Can go easier mid-game but not harder
+                // Can't go higher than the max difficulty any guess was submitted at
                 const levels = { easy: 0, normal: 1, hard: 2 };
-                const currentLevel = this.hardMode
-                    ? 'hard'
-                    : this.allow_any_word
-                      ? 'easy'
-                      : 'normal';
                 if (
-                    levels[level] > levels[currentLevel] &&
+                    levels[level] > this.maxDifficultyUsed &&
                     this.active_row > 0 &&
                     !this.game_over
                 ) {
