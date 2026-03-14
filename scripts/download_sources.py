@@ -48,15 +48,33 @@ LEIPZIG_CORPORA = {
     "om": "orm_community_2021",
     "hi": "hin_news_2022_1M",
     "mr": "mar_wikipedia_2021_100K",
-    # Existing languages that could benefit
+    # Existing languages
     "ar": "ara_news_2024_1M",
+    "bg": "bul_news_2024_1M",
+    "ca": "cat_news_2024_1M",
+    "cs": "ces_news_2024_1M",
+    "da": "dan_news_2024_1M",
     "de": "deu_news_2024_1M",
+    "el": "ell_news_2024_1M",
     "es": "spa_news_2024_1M",
+    "et": "est_news_2024_1M",
+    "fi": "fin_news_2024_1M",
     "fr": "fra_news_2024_1M",
+    "hr": "hrv_news_2024_1M",
+    "hu": "hun_news_2024_1M",
     "it": "ita_news_2024_1M",
+    "nl": "nld_news_2024_1M",
+    "nb": "nor_news_2024_1M",
+    "pl": "pol_news_2024_1M",
     "pt": "por_news_2024_1M",
+    "ro": "ron_news_2024_1M",
     "ru": "rus_news_2024_1M",
+    "sk": "slk_news_2024_1M",
+    "sl": "slv_news_2024_1M",
+    "sr": "srp_news_2024_1M",
+    "sv": "swe_news_2024_1M",
     "tr": "tur_news_2024_1M",
+    "uk": "ukr_news_2024_1M",
 }
 
 LEIPZIG_BASE_URL = "https://downloads.wortschatz-leipzig.de/corpora"
@@ -110,15 +128,15 @@ def download_leipzig(langs: list[str]):
             print(f"  {lang}: already downloaded ({words_file})")
             continue
 
-        url = f"{LEIPZIG_BASE_URL}/{corpus_id}-words.tar.gz"
-        tar_path = target_dir / f"{corpus_id}-words.tar.gz"
+        url = f"{LEIPZIG_BASE_URL}/{corpus_id}.tar.gz"
+        tar_path = target_dir / f"{corpus_id}.tar.gz"
 
         if not download_file(url, tar_path, f"Leipzig {lang} ({corpus_id})"):
             # Try alternative corpus names
             alt_names = _leipzig_alternatives(lang)
             success = False
             for alt in alt_names:
-                alt_url = f"{LEIPZIG_BASE_URL}/{alt}-words.tar.gz"
+                alt_url = f"{LEIPZIG_BASE_URL}/{alt}.tar.gz"
                 if download_file(alt_url, tar_path, f"Leipzig {lang} ({alt})"):
                     success = True
                     break

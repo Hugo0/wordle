@@ -277,8 +277,11 @@ HUNSPELL_DIR = SCRIPT_DIR / ".freq_data" / "hunspell"
 KBBI_DIR = SCRIPT_DIR / ".freq_data" / "kbbi"
 KATLA_DIR = SCRIPT_DIR / ".freq_data" / "katla"
 
-# Which extra sources are available per language (checked at runtime)
+# Which extra sources are available per language (checked at runtime).
+# Sources are only used if the data files exist on disk (downloaded via download_sources.py).
+# "kaikki" = Wiktionary word extracts, "leipzig" = newspaper frequency data
 EXTRA_SOURCES = {
+    # New languages (2026-03)
     "id": {"leipzig", "hunspell", "kaikki", "kbbi", "katla"},
     "ms": {"leipzig", "kaikki"},
     "tl": {"leipzig", "kaikki"},
@@ -286,9 +289,49 @@ EXTRA_SOURCES = {
     "ur": {"leipzig", "kaikki"},
     "ha": {"leipzig", "kaikki"},
     "yo": {"leipzig", "kaikki"},
-    "uz": {"leipzig"},
+    "uz": {"leipzig", "kaikki"},
     "om": {"leipzig"},
     "hi": {"leipzig", "hunspell", "kaikki"},
+    "bn": {"leipzig", "kaikki"},
+    "mr": {"kaikki"},
+    # Existing languages — decontamination via kaikki + Leipzig
+    "de": {"leipzig", "kaikki"},
+    "es": {"leipzig", "kaikki"},
+    "fr": {"leipzig", "kaikki"},
+    "it": {"leipzig", "kaikki"},
+    "pt": {"leipzig", "kaikki"},
+    "nl": {"leipzig", "kaikki"},
+    "sv": {"leipzig", "kaikki"},
+    "da": {"leipzig", "kaikki"},
+    "hu": {"leipzig", "kaikki"},
+    "pl": {"leipzig", "kaikki"},
+    "cs": {"leipzig", "kaikki"},
+    "ro": {"leipzig", "kaikki"},
+    "hr": {"leipzig", "kaikki"},
+    "sk": {"leipzig", "kaikki"},
+    "sl": {"leipzig", "kaikki"},
+    "bg": {"leipzig", "kaikki"},
+    "uk": {"leipzig", "kaikki"},
+    "el": {"leipzig", "kaikki"},
+    "tr": {"leipzig", "kaikki"},
+    "ca": {"leipzig", "kaikki"},
+    "et": {"leipzig", "kaikki"},
+    "fi": {"leipzig", "kaikki"},
+    "sr": {"leipzig", "kaikki"},
+    "nb": {"leipzig", "kaikki"},
+    "nn": {"kaikki"},
+    "eu": {"kaikki"},
+    "gl": {"kaikki"},
+    "lv": {"kaikki"},
+    "lt": {"kaikki"},
+    "is": {"kaikki"},
+    "mk": {"kaikki"},
+    "ar": {"kaikki"},
+    "he": {"kaikki"},
+    "fa": {"kaikki"},
+    "hy": {"kaikki"},
+    "ka": {"kaikki"},
+    "la": {"kaikki"},
 }
 
 
