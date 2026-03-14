@@ -125,7 +125,7 @@ class TestKeyboardCoverage:
     """Tests for keyboard coverage of word characters."""
 
     # Languages with known keyboard coverage gaps (complex scripts)
-    KEYBOARD_COVERAGE_XFAIL: set[str] = {"de"}
+    KEYBOARD_COVERAGE_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_word_characters(self, lang):
