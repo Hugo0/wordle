@@ -91,7 +91,10 @@ const debug = {
   %cdebug.pwa.reset()          %cReset dismiss state`,
             ...Array(7)
                 .fill(null)
-                .flatMap(() => ['color: #6aaa63; font-weight: bold', 'color: #999; font-weight: normal'])
+                .flatMap(() => [
+                    'color: #6aaa63; font-weight: bold',
+                    'color: #999; font-weight: normal',
+                ])
         );
     },
 };
