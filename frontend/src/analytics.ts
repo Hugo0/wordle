@@ -116,7 +116,7 @@ interface ShareParams {
 interface InvalidWordParams {
     language: string;
     attempt_number: number;
-    // Note: We intentionally don't track the actual word for privacy
+    word: string;
 }
 
 interface SettingsChangeParams {
@@ -512,7 +512,7 @@ export const trackInvalidWord = (params: InvalidWordParams): void => {
     track('invalid_word', {
         language: params.language,
         attempt_number: params.attempt_number,
-        // We don't track the actual word for privacy
+        word: params.word,
     });
 };
 
