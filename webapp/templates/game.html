@@ -404,6 +404,8 @@
                                 <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
                                    v-if="allow_any_word && !hardMode">Any word accepted, even if not in the dictionary</p>
                                 <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
+                                   v-if="!allow_any_word && !hardMode">Guesses must be valid words from the dictionary</p>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
                                    v-if="hardMode">Revealed hints must be used in subsequent guesses</p>
                                 <p class="text-xs text-amber-500 mt-1"
                                    v-if="active_row > 0 && !game_over && !hardMode">Hard mode can be enabled before your first guess tomorrow</p>
