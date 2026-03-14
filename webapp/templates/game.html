@@ -109,14 +109,11 @@
     <script>
         window.word_list = JSON.parse('{{language.word_list | tojson | safe}}');
         window.word_list_supplement = JSON.parse('{{language.word_list_supplement | tojson | safe}}');
-        console.log('\nFor the language: ' + '"{{language.config.name_native}}/{{language.config.name}}"' + ' there are:\n' + window.word_list.length + ' words in the word list\n' + window.word_list_supplement.length + ' words in the supplemental word list.');
         window.characters = JSON.parse('{{language.characters | tojson | safe}}');
         window.config = JSON.parse('{{language.config | tojson | safe}}');
-        console.log("Character Set: " + window.characters);
         window.todays_idx = "{{ language.todays_idx }}";
         window.todays_word = "{{ language.daily_word }}";
         window.timezone_offset = {{ language.timezone_offset | default(0) | tojson }};
-        console.log("Today's word is: " + window.todays_word.toUpperCase() + "\nDon't cheat!");
     </script>
 </head>
 

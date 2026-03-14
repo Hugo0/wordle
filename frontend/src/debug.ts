@@ -1,6 +1,5 @@
 /**
  * Debug Console - access via window.debug in browser console
- * Useful for testing PWA install flows without needing real devices
  */
 import pwa from './pwa';
 import { haptic, supportsHaptics, getHapticsEnabled, setHapticsEnabled } from './haptics';
@@ -53,119 +52,69 @@ const debug = {
     },
 
     pwa: {
-        /**
-         * Show current PWA status
-         * Includes component state, platform detection, and install availability
-         */
         status: () => {
             const status = pwa.status();
             console.table(status);
             return status;
         },
-
-        /**
-         * Trigger the PWA install dialog
-         * On iOS: Shows "Add to Home Screen" instructions with screenshots
-         * On Android/Chrome: Shows native install prompt
-         * On other browsers: Shows manual instructions
-         */
         install: pwa.install,
-
-        /**
-         * Force show the install dialog (even if already dismissed)
-         * Useful for testing the dialog appearance
-         */
         forceDialog: () => {
             const component = getComponent();
             if (component) {
                 component.showDialog(true);
-                console.log('Dialog forced open');
             } else {
                 console.error('pwa-install component not found');
             }
         },
-
-        /**
-         * Hide the install dialog
-         */
         hideDialog: () => {
             const component = getComponent();
-            if (component) {
-                component.hideDialog();
-                console.log('Dialog hidden');
-            }
+            if (component) component.hideDialog();
         },
-
-        /**
-         * Show the simple install banner (top of screen)
-         */
         showBanner: pwa.showBanner,
-
-        /**
-         * Hide the install banner
-         */
         hideBanner: pwa.hideBanner,
-
-        /**
-         * Reset the "dismissed" state so prompts show again
-         */
         reset: () => {
             pwa.resetDismissed();
-            console.log('PWA dismiss state reset. Refresh to see install prompts again.');
+            console.log('PWA dismiss state reset. Refresh to see prompts.');
         },
-
-        /**
-         * Get raw component reference for advanced debugging
-         */
-        component: () => {
-            const component = getComponent();
-            if (component) {
-                console.log('pwa-install component:', component);
-                console.log('Properties:', {
-                    isInstallAvailable: component.isInstallAvailable,
-                    isAppleMobilePlatform: component.isAppleMobilePlatform,
-                    isAppleDesktopPlatform: component.isAppleDesktopPlatform,
-                    isUnderStandaloneMode: component.isUnderStandaloneMode,
-                });
-                return component;
-            } else {
-                console.error('pwa-install component not found in DOM');
-                return null;
-            }
-        },
+        component: () => getComponent() ?? null,
     },
 
-    /**
-     * Show all available debug commands
-     */
     help: (): void => {
-        console.log(`
-╔═══════════════════════════════════════════════════════════════╗
-║                    Wordle Global Debug Console                 ║
-╠═══════════════════════════════════════════════════════════════╣
-║  Haptic Commands:                                              ║
-║    debug.haptics.status()    - Show haptic state & detection   ║
-║    debug.haptics.test()      - Force enable + trigger haptic   ║
-║    debug.haptics.vibrate(ms) - Raw navigator.vibrate() test    ║
-║    debug.haptics.enable()    - Force enable + save to storage  ║
-║                                                                ║
-║  PWA Commands:                                                 ║
-║    debug.pwa.status()      - Show PWA state & platform info    ║
-║    debug.pwa.install()     - Trigger install dialog            ║
-║    debug.pwa.forceDialog() - Force dialog (ignores dismiss)    ║
-║    debug.pwa.hideDialog()  - Hide the install dialog           ║
-║    debug.pwa.showBanner()  - Show install banner               ║
-║    debug.pwa.reset()       - Reset dismissed state             ║
-║    debug.pwa.component()   - Get raw component reference       ║
-╚═══════════════════════════════════════════════════════════════╝
-        `);
+        console.log(
+            `%c
+  debug.haptics.status()     %cHaptic state & detection
+  %cdebug.haptics.test()       %cForce enable + trigger
+  %cdebug.haptics.vibrate(ms)  %cRaw navigator.vibrate()
+  %cdebug.haptics.enable()     %cForce enable + persist
+  %cdebug.pwa.status()         %cPWA state & platform
+  %cdebug.pwa.install()        %cTrigger install dialog
+  %cdebug.pwa.reset()          %cReset dismiss state`,
+            ...Array(7)
+                .fill(null)
+                .flatMap(() => ['color: #6aaa63; font-weight: bold', 'color: #999; font-weight: normal'])
+        );
     },
 };
 
 // Expose to window for console access
 window.debug = debug;
 
-// Log availability on load (only in dev/debug scenarios)
-console.log('Debug tools available. Type debug.help() for commands.');
+// Styled console banner on load
+console.log(
+    `%c ██╗    ██╗ ██████╗ ██████╗ ██████╗ ██╗     ███████╗
+ ██║    ██║██╔═══██╗██╔══██╗██╔══██╗██║     ██╔════╝
+ ██║ █╗ ██║██║   ██║██████╔╝██║  ██║██║     █████╗
+ ██║███╗██║██║   ██║██╔══██╗██║  ██║██║     ██╔══╝
+ ╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝███████╗███████╗
+  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝
+ %c G L O B A L %c  wordle.global
+ %cType %cdebug.help()%c for dev tools`,
+    'color: #6aaa63; font-weight: bold; font-size: 10px; line-height: 1.1',
+    'background: #6aaa63; color: white; padding: 2px 8px; border-radius: 3px; font-weight: bold',
+    'color: #888',
+    'color: #666',
+    'color: #6aaa63; font-weight: bold',
+    'color: #666'
+);
 
 export default debug;
