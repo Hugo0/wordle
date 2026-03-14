@@ -5,6 +5,7 @@ Pytest configuration and shared fixtures for Wordle Global tests.
 import json
 from pathlib import Path
 
+import grapheme
 import pytest
 
 # Exclude deprecated tests from collection
@@ -116,6 +117,19 @@ def load_language_config(lang_code: str) -> dict | None:
         return None
     with open(config_file, encoding="utf-8") as f:
         return json.load(f)
+
+
+def is_grapheme_mode(lang_code: str) -> bool:
+    """Check if a language uses grapheme-cluster counting (e.g., Hindi)."""
+    config = load_language_config(lang_code)
+    return bool(config and config.get("grapheme_mode") == "true")
+
+
+def word_length(word: str, lang_code: str) -> int:
+    """Get word length — grapheme clusters for grapheme_mode langs, codepoints otherwise."""
+    if is_grapheme_mode(lang_code):
+        return grapheme.length(word)
+    return len(word)
 
 
 def get_diacritic_base_chars(lang_code: str) -> dict[str, str]:

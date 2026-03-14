@@ -18,6 +18,7 @@ from tests.conftest import (
     load_characters,
     load_daily_words,
     load_keyboard,
+    load_language_config,
     load_supplement_words,
     load_word_list,
 )
@@ -34,20 +35,33 @@ class TestWordListBasics:
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_all_words_are_5_letters(self, lang):
-        """All words must be exactly 5 characters."""
+        """All words must be exactly 5 characters (or 5 grapheme clusters for grapheme_mode langs)."""
         words = load_word_list(lang)
-        invalid = [(w, len(w)) for w in words if len(w) != 5]
+        # Hindi and other grapheme_mode languages count aksharas, not codepoints
+        config = load_language_config(lang)
+        if config and config.get("grapheme_mode") == "true":
+            import grapheme
+
+            invalid = [(w, grapheme.length(w)) for w in words if grapheme.length(w) != 5]
+        else:
+            invalid = [(w, len(w)) for w in words if len(w) != 5]
         assert not invalid, (
             f"{lang}: Found {len(invalid)} words with wrong length. Examples: {invalid[:5]}"
         )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_supplement_words_are_5_letters(self, lang):
-        """Supplemental words must also be exactly 5 characters."""
+        """Supplemental words must also be exactly 5 characters (or 5 grapheme clusters)."""
         words = load_supplement_words(lang)
         if not words:
             pytest.skip(f"{lang}: No supplement word list")
-        invalid = [(w, len(w)) for w in words if len(w) != 5]
+        config = load_language_config(lang)
+        if config and config.get("grapheme_mode") == "true":
+            import grapheme
+
+            invalid = [(w, grapheme.length(w)) for w in words if grapheme.length(w) != 5]
+        else:
+            invalid = [(w, len(w)) for w in words if len(w) != 5]
         assert not invalid, (
             f"{lang}: Found {len(invalid)} supplement words with wrong length. "
             f"Examples: {invalid[:5]}"
@@ -250,11 +264,17 @@ class TestDailyWords:
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_daily_words_are_5_letters(self, lang):
-        """All daily words must be exactly 5 letters."""
+        """All daily words must be exactly 5 letters (or 5 grapheme clusters)."""
         daily = load_daily_words(lang)
         if not daily:
             pytest.skip(f"{lang}: No daily words file")
-        invalid = [(w, len(w)) for w in daily if len(w) != 5]
+        config = load_language_config(lang)
+        if config and config.get("grapheme_mode") == "true":
+            import grapheme
+
+            invalid = [(w, grapheme.length(w)) for w in daily if grapheme.length(w) != 5]
+        else:
+            invalid = [(w, len(w)) for w in daily if len(w) != 5]
         assert not invalid, (
             f"{lang}: {len(invalid)} daily words with wrong length. Examples: {invalid[:5]}"
         )

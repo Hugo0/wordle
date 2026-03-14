@@ -1,0 +1,55 @@
+{
+    "language_code": "sq",
+    "name": "Albanian",
+    "name_native": "Shqip",
+    "timezone": "Europe/Tirane",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "meta": {
+        "locale": "sq",
+        "wordle_native": "Wordle",
+        "title": "Loja ditore e fjalëve",
+        "description": "Gjeni fjalën e fshehur në 6 përpjekje (ose më pak). Një enigmë e re çdo ditë!",
+        "keywords": "shqip, enigmë, fjalë, lojë, online, gjej, ditore"
+    },
+    "text": {
+        "subheader": "Shqip",
+        "next_word": "Fjala tjetër",
+        "no_attempts": "Nuk keni provuar asnjë fjalë!",
+        "share": "Ndaj",
+        "shared": "U nda!",
+        "copied": "U kopjua!",
+        "notification-copied": "U kopjua në clipboard",
+        "notification-word-not-valid": "Fjala nuk është e vlefshme",
+        "notification-partial-word": "Shkruani një fjalë të plotë"
+    },
+    "help": {
+        "title": "Si të Luani",
+        "title_2": "Shembuj",
+        "close": "Mbyll",
+        "text_1_1_1": "Gjeni",
+        "text_1_1_2": "në gjashtë përpjekje ose më pak.",
+        "text_1_2": "Çdo supozim duhet të jetë një fjalë e vlefshme me pesë shkronja. Shtypni butonin enter për ta dërguar.",
+        "text_1_3": "Pas supozimit, pllakat ndryshojnë ngjyrë për të treguar cilat shkronja janë të sakta ose pothuajse të sakta.",
+        "text_2_1": "është në fjalë dhe në pozicionin e saktë!",
+        "text_2_2": "është në fjalë, por jo në pozicionin e saktë.",
+        "text_2_3": "nuk është në fjalën që po përpiqeni ta gjeni.",
+        "text_3": "Një fjalë e re çdo ditë!"
+    },
+    "ui": {
+        "settings": "Cilësimet",
+        "dark_mode": "Modaliteti i Errët",
+        "keyboard_layout": "Paraqitja e tastierës",
+        "games": "Lojëra",
+        "win_percent": "% Fitore",
+        "streak": "Radhazi",
+        "best": "Më e mira",
+        "all_languages": "Të gjitha Gjuhët",
+        "languages": "Gjuhët",
+        "play": "Luaj",
+        "search_language": "Kërko gjuhën...",
+        "definition": "Përkufizimi",
+        "look_up_on_wiktionary": "Kërko në Wiktionary"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "language_code": "mr",
+    "name": "Marathi",
+    "name_native": "मराठी",
+    "timezone": "Asia/Kolkata",
+    "right_to_left": "false",
+    "grapheme_mode": "true",
+    "meta": {
+        "locale": "mr",
+        "wordle_native": "वर्डल",
+        "title": "दैनंदिन शब्द खेळ",
+        "description": "लपलेला शब्द 6 प्रयत्नांत (किंवा कमी) ओळखा. दररोज एक नवे कोडे!",
+        "keywords": "मराठी, कोडे, शब्द, खेळ, ऑनलाइन, अंदाज, दैनंदिन"
+    },
+    "text": {
+        "subheader": "मराठी",
+        "next_word": "पुढील शब्द",
+        "no_attempts": "तुम्ही अजून कोणताही शब्द प्रयत्न केला नाही!",
+        "share": "शेअर करा",
+        "notification-copied": "क्लिपबोर्डवर कॉपी केले",
+        "notification-word-not-valid": "शब्द वैध नाही",
+        "notification-partial-word": "कृपया संपूर्ण शब्द टाका"
+    },
+    "help": {
+        "title": "कसे खेळावे",
+        "title_2": "उदाहरणे",
+        "close": "बंद करा",
+        "text_1_1_1": "ओळखा",
+        "text_1_1_2": "सहा प्रयत्नांत किंवा कमी.",
+        "text_1_2": "प्रत्येक अंदाज पाच अक्षरांचा वैध शब्द असावा. एंटर दाबा.",
+        "text_1_3": "अंदाज केल्यानंतर, टाइल्स रंग बदलतील.",
+        "text_2_1": "शब्दात आहे आणि योग्य ठिकाणी आहे!",
+        "text_2_2": "शब्दात आहे, पण योग्य ठिकाणी नाही.",
+        "text_2_3": "शब्दात नाही.",
+        "text_3": "दररोज एक नवीन शब्द उपलब्ध!"
+    },
+    "ui": {
+        "settings": "सेटिंग्ज",
+        "dark_mode": "डार्क मोड",
+        "keyboard_layout": "कीबोर्ड मांडणी",
+        "games": "खेळ",
+        "all_languages": "सर्व भाषा",
+        "languages": "भाषा",
+        "play": "खेळा",
+        "search_language": "भाषा शोधा...",
+        "definition": "व्याख्या",
+        "look_up_on_wiktionary": "विक्शनरीवर पहा"
+    }
+}
