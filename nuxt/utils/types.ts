@@ -57,6 +57,8 @@ export interface LanguageConfig {
     final_form_map?: Record<string, string>;
     /** When "true", word length is counted by grapheme clusters instead of codepoints. */
     grapheme_mode?: 'true' | 'false';
+    /** Optional physical key → character map for bypassing IME composition. */
+    physical_key_map?: Record<string, string>;
 }
 
 // =============================================================================
