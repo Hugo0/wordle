@@ -680,6 +680,14 @@ class Language:
         # Include diacritic base characters whose variants appear in the word list.
         # This allows keyboards using base forms (e.g., Compatibility Jamo) to work
         # with word lists using variant forms (e.g., Hangul Jamo).
+        #
+        # Languages using this mechanism:
+        #   - Korean (ko): Compatibility Jamo ↔ Hangul Jamo (different Unicode blocks)
+        #   - German (de): s ↔ ß (sharp S treated as variant of s)
+        #   - European languages: base letters ↔ accented variants (a ↔ ä, o ↔ ö)
+        #
+        # Future: languages with composition-based scripts (e.g., Devanagari for Hindi,
+        # Thai, Khmer) may need similar keyboard↔wordlist normalization if added.
         diacritic_map = self.config.get("diacritic_map", {})
         chars_set = set(self.characters)
         for base, variants in diacritic_map.items():
