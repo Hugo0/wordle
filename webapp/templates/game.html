@@ -369,31 +369,44 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <!-- Hard mode toggle -->
-                            <div class="flex flex-row items-center">
-                                <div class="flex-grow">
-                                    <p :class="{ 'opacity-50': active_row > 0 && !game_over }">Hard Mode</p>
-                                    <p class="text-xs text-neutral-500 dark:text-neutral-400"
-                                       :class="{ 'opacity-50': active_row > 0 && !game_over }">Revealed hints must be used</p>
+                            <!-- Difficulty selector (3-way: Easy / Normal / Hard) -->
+                            <div>
+                                <p class="text-sm font-semibold mb-2">{{ language.config.ui.difficulty or "Difficulty" }}</p>
+                                <div class="flex rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-600">
+                                    <button type="button"
+                                        v-on:click="setDifficulty('easy')"
+                                        class="flex-1 py-2 px-1 text-xs font-medium transition-colors"
+                                        :class="allow_any_word && !hardMode
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'">
+                                        Easy
+                                    </button>
+                                    <button type="button"
+                                        v-on:click="setDifficulty('normal')"
+                                        class="flex-1 py-2 px-1 text-xs font-medium transition-colors border-x border-neutral-300 dark:border-neutral-600"
+                                        :class="!allow_any_word && !hardMode
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'">
+                                        Normal
+                                    </button>
+                                    <button type="button"
+                                        v-on:click="setDifficulty('hard')"
+                                        class="flex-1 py-2 px-1 text-xs font-medium transition-colors"
+                                        :class="[
+                                            hardMode
+                                                ? 'bg-green-500 text-white'
+                                                : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600',
+                                            active_row > 0 && !game_over && !hardMode ? 'opacity-40 cursor-not-allowed' : ''
+                                        ]">
+                                        Hard
+                                    </button>
                                 </div>
-                                <label class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
-                                    :class="[
-                                        hardMode ? 'bg-green-500' : 'bg-neutral-300 dark:bg-neutral-600',
-                                        active_row > 0 && !game_over ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-                                    ]">
-                                    <input
-                                        type="checkbox"
-                                        switch
-                                        class="sr-only peer"
-                                        :checked="hardMode"
-                                        :disabled="active_row > 0 && !game_over"
-                                        v-on:change="hardMode = $event.target.checked; toggleHardMode()"
-                                        aria-label="Hard Mode">
-                                    <span
-                                        class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform pointer-events-none"
-                                        :class="hardMode ? 'translate-x-6' : 'translate-x-1'">
-                                    </span>
-                                </label>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
+                                   v-if="allow_any_word && !hardMode">Any word accepted, even if not in the dictionary</p>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
+                                   v-if="hardMode">Revealed hints must be used in subsequent guesses</p>
+                                <p class="text-xs text-amber-500 mt-1"
+                                   v-if="active_row > 0 && !game_over && !hardMode">Hard mode can be enabled before your first guess tomorrow</p>
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
@@ -451,12 +464,6 @@
                             </form>
                             {% endif %}
 
-                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <div class="flex flex-row">
-                                <p class="flex-grow">{{ language.config.ui.easy_mode or "Allow any word" }} (<span class="italic">{{ language.config.ui.easy_mode_label or "easy mode" }}</span>)</p>
-                                <!-- toggle at the end -->
-                                <input type="checkbox" v-model="allow_any_word" />
-                            </div>
 
 
                             <!-- Install App button (only shown when not already installed) -->

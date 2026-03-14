@@ -1487,6 +1487,22 @@ export const createGameApp = () => {
                 });
             },
 
+            setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
+                // Don't allow switching TO hard mode mid-game
+                if (level === 'hard' && this.active_row > 0 && !this.game_over) return;
+                this.allow_any_word = level === 'easy';
+                this.hardMode = level === 'hard';
+                try {
+                    localStorage.setItem('hardMode', this.hardMode ? 'true' : 'false');
+                } catch {
+                    // localStorage unavailable
+                }
+                analytics.trackSettingsChange({
+                    setting: 'hard_mode',
+                    value: this.hardMode,
+                });
+            },
+
             /**
              * Validate a guess against hard mode rules.
              * Returns an error message if invalid, or null if valid.
