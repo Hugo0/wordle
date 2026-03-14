@@ -88,27 +88,9 @@ useHead({
 
 // --- Client-side initialization ---
 onMounted(() => {
-    // Initialize settings from localStorage
-    settings.init();
-
-    // Load game results for stats
-    stats.loadGameResults(langStore.languageCode);
-
-    // Restore game state from localStorage
-    game.loadFromLocalStorage();
-    game.showTiles();
-
-    // If game was already over (restored), show stats
-    if (game.gameOver) {
-        game.showStatsModal = true;
-    } else {
-        game.maybeShowTutorial();
-    }
-
-    // Keyboard event listener
+    // Keyboard event listener — MUST be first, before anything that might throw
     window.addEventListener('keydown', handleKeyDown);
 
-    // Countdown timer
     const interval = setInterval(() => {
         game.updateTimeUntilNextDay();
     }, 1000);
@@ -117,6 +99,22 @@ onMounted(() => {
         window.removeEventListener('keydown', handleKeyDown);
         clearInterval(interval);
     });
+
+    // Initialize stores from localStorage (may fail in private browsing)
+    try {
+        settings.init();
+        stats.loadGameResults(langStore.languageCode);
+        game.loadFromLocalStorage();
+        game.showTiles();
+
+        if (game.gameOver) {
+            game.showStatsModal = true;
+        } else {
+            game.maybeShowTutorial();
+        }
+    } catch (err) {
+        console.warn('[wordle] Failed to restore game state:', err);
+    }
 });
 
 function handleKeyDown(e: KeyboardEvent) {
