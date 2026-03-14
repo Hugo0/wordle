@@ -736,10 +736,12 @@ export const initErrorTracking = (language: string): void => {
             details: event.message?.substring(0, 100), // Truncate for GA4 quota
         });
         // PostHog gets the full error object with stack trace
+        // Also force session recording so error sessions are always captured
         try {
             if (event.error) {
                 posthog.captureException(event.error, { language });
             }
+            posthog.startSessionRecording({ sampling: false });
         } catch {
             // Silently fail
         }
@@ -755,6 +757,7 @@ export const initErrorTracking = (language: string): void => {
             const err =
                 event.reason instanceof Error ? event.reason : new Error(String(event.reason));
             posthog.captureException(err, { language });
+            posthog.startSessionRecording({ sampling: false });
         } catch {
             // Silently fail
         }
