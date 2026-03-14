@@ -1,0 +1,47 @@
+{
+    "language_code": "ha",
+    "name": "Hausa",
+    "name_native": "Hausa",
+    "timezone": "Africa/Lagos",
+    "right_to_left": "false",
+    "meta": {
+        "locale": "ha",
+        "title": "Wasan kalma na yau da kullum",
+        "description": "Ka gano kalmar da aka boye cikin kokari 6 (ko kasa). Sabuwar wasa kowace rana!",
+        "keywords": "Hausa, wasa, kalma, buga, online, gano, yau da kullum"
+    },
+    "text": {
+        "subheader": "Hausa",
+        "next_word": "Kalma ta gaba",
+        "no_attempts": "Ba ka gwada wata kalma ba tukuna!",
+        "share": "Raba",
+        "notification-copied": "An kwafa zuwa clipboard",
+        "notification-word-not-valid": "Kalmar ba ta dace ba",
+        "notification-partial-word": "Ka shigar da cikakkiyar kalma"
+    },
+    "help": {
+        "title": "Yadda Ake Wasa",
+        "title_2": "Misalai",
+        "close": "Rufe",
+        "text_1_1_1": "Gano",
+        "text_1_1_2": "cikin kokari shida ko kasa.",
+        "text_1_2": "Kowace kalmar da ka zaba dole ta kasance kalma mai haruffa biyar. Danna maballin enter don aika.",
+        "text_1_3": "Bayan ka zaba, tiles za su canza launi don nuna wadanne haruffa ne daidai ko kusan daidai.",
+        "text_2_1": "yana cikin kalmar kuma yana wurin da ya dace!",
+        "text_2_2": "yana cikin kalmar, amma ba wurin da ya dace ba.",
+        "text_2_3": "ba ya cikin kalmar da kake kokarin gano.",
+        "text_3": "Sabuwar kalma kowace rana!"
+    },
+    "ui": {
+        "settings": "Saituna",
+        "dark_mode": "Yanayin Duhu",
+        "keyboard_layout": "Tsarin maballai",
+        "games": "Wasanni",
+        "all_languages": "Duk Harsunan",
+        "languages": "Harsuna",
+        "play": "Buga",
+        "search_language": "Nemo harshe...",
+        "definition": "Ma'ana",
+        "look_up_on_wiktionary": "Duba a Wiktionary"
+    }
+}
