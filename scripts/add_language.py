@@ -725,6 +725,10 @@ def generate_config(lang: str, lang_def: dict) -> dict:
         "right_to_left": "true" if lang_def.get("rtl") else "false",
     }
 
+    # Add grapheme_mode if defined (for Devanagari / complex scripts)
+    if "grapheme_mode" in lang_def:
+        config["grapheme_mode"] = lang_def["grapheme_mode"]
+
     # Add diacritic map if defined
     if "diacritic_map" in lang_def:
         config["diacritic_map"] = lang_def["diacritic_map"]
@@ -823,6 +827,18 @@ def create_language(lang: str, dry_run: bool = False) -> bool:
         sources.append("## wordfreq")
         sources.append("- URL: https://github.com/rspeer/wordfreq")
         sources.append("- License: MIT\n")
+    # Check EXTRA_SOURCES from improve_word_lists for kaikki/leipzig
+    from improve_word_lists import EXTRA_SOURCES
+
+    extra = EXTRA_SOURCES.get(lang, set())
+    if "kaikki" in extra:
+        sources.append("## kaikki.org (Wiktionary extract)")
+        sources.append(f"- URL: https://kaikki.org/dictionary/{lang_def['name']}/")
+        sources.append("- License: CC-BY-SA 3.0 (Wiktionary content)\n")
+    if "leipzig" in extra:
+        sources.append("## Leipzig Corpora Collection")
+        sources.append("- URL: https://wortschatz.uni-leipzig.de/en/download/")
+        sources.append("- License: CC-BY 4.0\n")
     sources_path.write_text("\n".join(sources) + "\n", encoding="utf-8")
     print(f"  Wrote SOURCES.md")
 
