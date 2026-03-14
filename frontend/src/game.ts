@@ -742,12 +742,12 @@ export const createGameApp = () => {
                 });
                 analytics.trackStreakMilestone(langCode, this.stats.current_streak);
 
-                // Show embed banner (if in iframe) or PWA install prompt after game completion
-                if (embed.isEmbedded()) {
-                    setTimeout(() => embed.showBanner(), 2000);
-                } else {
-                    setTimeout(() => pwa.showBanner(), 2000);
-                }
+                // Show embed banner or PWA install prompt after game completion
+                // Each no-ops if not applicable (embed checks iframe, pwa checks standalone/prompt)
+                setTimeout(() => {
+                    embed.showBanner();
+                    pwa.showBanner();
+                }, 2000);
             },
 
             gameLost(): void {
@@ -789,10 +789,8 @@ export const createGameApp = () => {
                     time_to_complete_seconds: lossTimeToComplete,
                 });
 
-                // Show embed banner (if in iframe) after game loss
-                if (embed.isEmbedded()) {
-                    setTimeout(() => embed.showBanner(), 3000);
-                }
+                // Show embed banner after game loss (no-ops if not in iframe)
+                setTimeout(() => embed.showBanner(), 3000);
             },
 
             saveResult(won: boolean): void {

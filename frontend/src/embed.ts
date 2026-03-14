@@ -7,14 +7,14 @@ import { isStandalone } from './pwa';
 
 const DISMISS_DURATION_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
-export const isEmbedded = (): boolean => {
+export const isEmbedded: boolean = (() => {
     try {
         return window.top !== window.self;
     } catch {
         // Cross-origin iframe throws SecurityError — that means we're embedded
         return true;
     }
-};
+})();
 
 const isDismissed = (): boolean => {
     try {
@@ -28,8 +28,6 @@ const isDismissed = (): boolean => {
     }
 };
 
-let dismissed = isDismissed();
-
 const getBanner = (): HTMLElement | null => document.getElementById('embed-banner');
 
 export const hideBanner = (): void => {
@@ -38,7 +36,7 @@ export const hideBanner = (): void => {
 };
 
 export const showBanner = (): void => {
-    if (dismissed || !isEmbedded() || isStandalone()) return;
+    if (!isEmbedded || isDismissed() || isStandalone()) return;
     const banner = getBanner();
     if (banner) {
         banner.style.display = 'flex';
@@ -46,7 +44,6 @@ export const showBanner = (): void => {
 };
 
 export const dismiss = (): void => {
-    dismissed = true;
     try {
         localStorage.setItem('embed_banner_dismissed_at', Date.now().toString());
     } catch {
