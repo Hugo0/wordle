@@ -175,9 +175,9 @@
                 <!-- The game board -->
                 <main class="flex flex-auto justify-center items-center">
                     <div
-                        class="grid grid-rows-6 relative w-full h-full max-w-[350px] max-h-[420px] gap-1 p-3 box-border">
+                        class="game-board grid grid-rows-6 relative w-full h-full max-w-[350px] max-h-[420px] gap-1 p-3 box-border">
                         {% for i in range(6) %}
-                        <div class="grid grid-cols-5 gap-1 w-full">
+                        <div class="grid grid-cols-5 gap-1 w-full" v-bind:class="{ shake: shaking_row === {{i}} }">
                             {% for j in range(5) %}
                             <div class="w-full h-full justify-center items-center inline-flex "
                                 v-html="[[ tiles_visual[{{i}}][{{j}}] ]]"
@@ -219,7 +219,7 @@
             <!-- <div v-if="showHelpModal" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"></div> -->
             <div id="HelpModal" v-show="showHelpModal"
                 class="fixed top-10 left-0 w-full h-full z-50 items-center flex mx-auto " v-cloak>
-                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
+                <div class="modal-animate bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
 
@@ -333,7 +333,7 @@
             <!-- options modal -->
             <div v-show="show_options_modal" class="fixed top-10 left-0 w-full h-full z-30 items-center mx-auto flex
             " v-cloak>
-                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
+                <div class="modal-animate bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
                     v-cloak>
                     <div class="flex flex-col gap-2 relative">
                         <button type="button" v-on:click="show_options_modal = false" aria-label="Close" class="absolute top-0 right-0 p-1 ml-auto z-50">
@@ -443,7 +443,7 @@
 
         <!-- stats modal -->
         <div v-show="show_stats_modal" class="fixed top-10 left-0 w-full h-full z-50 items-center flex" v-cloak>
-            <div class="relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 dark:border-neutral-600 rounded-xl max-h-[85vh] overflow-y-auto" v-cloak>
+            <div class="modal-animate relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 dark:border-neutral-600 rounded-xl max-h-[85vh] overflow-y-auto" v-cloak>
                 <div
                     class="border-0 rounded-lg drop-shadow-xl relative flex flex-col w-full bg-white dark:bg-neutral-800 outline-none focus:outline-none">
 
@@ -648,10 +648,11 @@
         </div>
 
 
-        <!-- alert that floats slowly down from top and closes after 3 seconds -->
+        <!-- Toast notification -->
         <div v-if="notification.show"
-            class="fixed top-0 inset-x-0 mx-auto z-50 max-w-xs justify-items-center text-center" v-cloak>
-            <div class="top-50 bg-black p-4 m-4 rounded-lg shadow-lg animate-pulse" v-cloak
+            class="fixed top-0 inset-x-0 mx-auto z-50 max-w-xs justify-items-center text-center transition-opacity duration-300"
+            v-bind:class="{ 'opacity-0': notification.fading }" v-cloak>
+            <div class="top-50 bg-black p-4 m-4 rounded-lg shadow-lg" v-cloak
                 v-bind:style="{'top': notification.top + 'px'}">
                 <p class="font-bold text-white">[[ notification.message ]]</p>
             </div>

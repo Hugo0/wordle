@@ -52,16 +52,33 @@
     @apply opacity-70;
 }
 
+/* Keyboard key shake for wasted guess (already known letter) */
+@keyframes key-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-2px); }
+    40%, 80% { transform: translateX(2px); }
+}
+
 .key-correct {
     @apply bg-green-500 text-white;
+    animation: key-pop 200ms ease-out;
 }
 
 .key-semicorrect {
     @apply bg-yellow-500 text-white;
+    animation: key-pop 200ms ease-out;
 }
 
 .key-incorrect {
     @apply bg-neutral-500 text-white;
+}
+
+.key-shake {
+    animation: key-shake 400ms ease-in-out;
+}
+
+.key-pulse {
+    animation: key-pop 300ms ease-out;
 }
 
 /* Safe area insets for notched devices */
@@ -136,27 +153,58 @@
     color: #2d6a4f;
 }
 
+/* Modal fade-in */
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-animate {
+    animation: modalIn 200ms ease-out;
+}
+
 /* Prevent text selection on game elements */
 .no-select {
     user-select: none;
     -webkit-user-select: none;
 }
 
-/* Flip animation for tiles */
-@keyframes flip {
-    0% {
-        transform: rotateX(0);
-    }
-    50% {
-        transform: rotateX(90deg);
-    }
-    100% {
-        transform: rotateX(0);
-    }
+/* 3D perspective for tile flip */
+.game-board {
+    perspective: 1000px;
 }
 
-.flip {
-    animation: flip 0.5s ease-in-out;
+/* Single smooth flip — color swaps at midpoint (90deg, tile invisible) */
+@keyframes flipReveal {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+/* Win celebration bounce with Pixar-style squash & stretch */
+@keyframes tile-bounce {
+    0%   { transform: translateY(0); }
+    8%   { transform: translateY(2px)   scale(1.12, 0.82); }
+    22%  { transform: translateY(-44px) scale(0.82, 1.18); }
+    32%  { transform: translateY(-48px) scale(0.95, 1.05); }
+    50%  { transform: translateY(0)     scale(1, 1); }
+    54%  { transform: translateY(2px)   scale(1.1, 0.86); }
+    66%  { transform: translateY(-18px) scale(0.9, 1.1); }
+    78%  { transform: translateY(0)     scale(1, 1); }
+    82%  { transform: translateY(1px)   scale(1.04, 0.96); }
+    90%  { transform: translateY(-5px)  scale(0.98, 1.02); }
+    100% { transform: translateY(0)     scale(1, 1); }
+}
+
+.tile-bounce {
+    animation: tile-bounce 1000ms ease;
+}
+
+/* Keyboard key pop when color is revealed */
+@keyframes key-pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 /* Shake animation for invalid words */
@@ -173,10 +221,15 @@
 /* Pop animation for typed letters */
 @keyframes pop {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    40% { transform: scale(1.12); }
     100% { transform: scale(1); }
 }
 
 .pop {
-    animation: pop 0.1s ease-in-out;
+    animation: pop 100ms ease-out;
+    border-color: #878a8c !important;
+}
+
+.dark .pop {
+    border-color: #565758 !important;
 }

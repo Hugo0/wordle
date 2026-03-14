@@ -82,9 +82,12 @@ export interface GameData {
 
 export interface Notification {
     show: boolean;
+    fading: boolean;
     message: string;
     top: number;
     timeout: number;
+    fadeTimeout: number;
+    slideInterval: number;
 }
 
 export type GuessDistribution = Record<1 | 2 | 3 | 4 | 5 | 6, number>;
