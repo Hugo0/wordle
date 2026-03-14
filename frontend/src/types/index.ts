@@ -66,6 +66,11 @@ export interface LanguageConfig {
      *  Example for Korean: { "KeyQ": "ㅂ", "ShiftKeyQ": "ㅃ", ... }
      */
     physical_key_map?: Record<string, string>;
+    /** When "true", word length is counted by grapheme clusters instead of codepoints.
+     *  Required for scripts like Devanagari where one visual character (akshar)
+     *  spans multiple Unicode codepoints.
+     */
+    grapheme_mode?: 'true' | 'false';
 }
 
 // =============================================================================

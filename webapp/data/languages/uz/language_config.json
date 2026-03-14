@@ -1,0 +1,48 @@
+{
+    "language_code": "uz",
+    "name": "Uzbek",
+    "name_native": "Oʻzbek",
+    "timezone": "Asia/Tashkent",
+    "right_to_left": "false",
+    "meta": {
+        "locale": "uz",
+        "wordle_native": "Wordle",
+        "title": "Kundalik soʻz oʻyini",
+        "description": "Yashirin soʻzni 6 ta urinishda (yoki kamroq) toping. Har kuni yangi topishmoq!",
+        "keywords": "oʻzbek, topishmoq, soʻz, oʻyin, onlayn, top, kundalik"
+    },
+    "text": {
+        "subheader": "Oʻzbek",
+        "next_word": "Keyingi soʻz",
+        "no_attempts": "Siz hali birorta soʻz sinab koʻrmadingiz!",
+        "share": "Ulashish",
+        "notification-copied": "Buferga nusxalandi",
+        "notification-word-not-valid": "Soʻz yaroqsiz",
+        "notification-partial-word": "Toʻliq soʻz kiriting"
+    },
+    "help": {
+        "title": "Qanday oʻynash kerak",
+        "title_2": "Misollar",
+        "close": "Yopish",
+        "text_1_1_1": "Toping",
+        "text_1_1_2": "olti urinish yoki kamroqda.",
+        "text_1_2": "Har bir taxmin besh harfli yaroqli soʻz boʻlishi kerak. Yuborish uchun enter tugmasini bosing.",
+        "text_1_3": "Taxmindan soʻng, plitkalar rang oʻzgaradi va qaysi harflar toʻgʻri ekanligini koʻrsatadi.",
+        "text_2_1": "soʻzda bor va toʻgʻri joyda!",
+        "text_2_2": "soʻzda bor, lekin toʻgʻri joyda emas.",
+        "text_2_3": "siz topmoqchi boʻlgan soʻzda yoʻq.",
+        "text_3": "Har kuni yangi soʻz!"
+    },
+    "ui": {
+        "settings": "Sozlamalar",
+        "dark_mode": "Qorongʻu rejim",
+        "keyboard_layout": "Klaviatura tartibi",
+        "games": "Oʻyinlar",
+        "all_languages": "Barcha tillar",
+        "languages": "Tillar",
+        "play": "Oʻynash",
+        "search_language": "Til qidirish...",
+        "definition": "Taʼrif",
+        "look_up_on_wiktionary": "Wiktionary'da qidirish"
+    }
+}

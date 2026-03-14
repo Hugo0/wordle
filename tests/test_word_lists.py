@@ -19,6 +19,7 @@ from tests.conftest import (
     load_characters,
     load_daily_words,
     load_keyboard,
+    load_language_config,
     load_supplement_words,
     load_word_list,
 )
@@ -35,9 +36,16 @@ class TestWordListBasics:
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_all_words_are_5_letters(self, lang):
-        """All words must be exactly 5 characters."""
+        """All words must be exactly 5 characters (or 5 grapheme clusters for grapheme_mode langs)."""
         words = load_word_list(lang)
-        invalid = [(w, len(w)) for w in words if len(w) != 5]
+        # Hindi and other grapheme_mode languages count aksharas, not codepoints
+        config = load_language_config(lang)
+        if config and config.get("grapheme_mode") == "true":
+            import grapheme
+
+            invalid = [(w, grapheme.length(w)) for w in words if grapheme.length(w) != 5]
+        else:
+            invalid = [(w, len(w)) for w in words if len(w) != 5]
         assert not invalid, (
             f"{lang}: Found {len(invalid)} words with wrong length. Examples: {invalid[:5]}"
         )
