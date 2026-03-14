@@ -21,6 +21,15 @@
     @apply bg-neutral-500;
 }
 
+/* High contrast / colorblind mode overrides */
+.high-contrast .correct {
+    background-color: #85c0f9;
+}
+
+.high-contrast .semicorrect {
+    background-color: #f5793a;
+}
+
 /* Keyboard key states */
 .key {
     @apply bg-neutral-200 text-black;
@@ -72,6 +81,16 @@
 .key-incorrect {
     @apply bg-neutral-500 text-white;
 }
+
+/* High contrast keyboard key overrides */
+.high-contrast .key-correct {
+    background-color: #85c0f9;
+}
+
+.high-contrast .key-semicorrect {
+    background-color: #f5793a;
+}
+
 
 .key-shake {
     animation: key-shake 400ms ease-in-out;

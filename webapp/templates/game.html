@@ -369,6 +369,44 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- Hard mode toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p :class="{ 'opacity-50': active_row > 0 && !game_over }">Hard Mode</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400"
+                                       :class="{ 'opacity-50': active_row > 0 && !game_over }">Revealed hints must be used</p>
+                                </div>
+                                <label class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
+                                    :class="[
+                                        hardMode ? 'bg-green-500' : 'bg-neutral-300 dark:bg-neutral-600',
+                                        active_row > 0 && !game_over ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+                                    ]">
+                                    <input
+                                        type="checkbox"
+                                        switch
+                                        class="sr-only peer"
+                                        :checked="hardMode"
+                                        :disabled="active_row > 0 && !game_over"
+                                        v-on:change="hardMode = $event.target.checked; toggleHardMode()"
+                                        aria-label="Hard Mode">
+                                    <span
+                                        class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform pointer-events-none"
+                                        :class="hardMode ? 'translate-x-6' : 'translate-x-1'">
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- High Contrast / Colorblind mode toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p>High Contrast</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">Colorblind-friendly colors</p>
+                                </div>
+                                {{ toggle_switch('highContrast', 'toggleHighContrast()', 'High Contrast') }}
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
                                 <p class="flex-grow">{{ language.config.ui.right_to_left or "Right to left" }}</p>
