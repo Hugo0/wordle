@@ -33,7 +33,9 @@
         "no_attempts": "¡No has probado ninguna palabra todavía! ",
         "share": "Compartir",
         "notification-copied": "Copiado al portapapeles ",
-        "notification-partial-word": "Por favor ingrese una palabra completa "
+        "notification-partial-word": "Por favor ingrese una palabra completa ",
+        "share_challenge_win": "Resolví el Wordle de hoy en {n} intentos. ¿Puedes superarme?",
+        "share_challenge_lose": "No pude resolver el Wordle de hoy. ¿Tú puedes?"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",

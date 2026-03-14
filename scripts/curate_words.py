@@ -193,7 +193,9 @@ def main():
     # Extract command
     extract_parser = subparsers.add_parser("extract", help="Extract next N words for review")
     extract_parser.add_argument("lang", help="Language code (e.g., ar, tr, bg)")
-    extract_parser.add_argument("days", type=int, nargs="?", default=365, help="Number of days to extract")
+    extract_parser.add_argument(
+        "days", type=int, nargs="?", default=365, help="Number of days to extract"
+    )
 
     # Remove command
     remove_parser = subparsers.add_parser("remove", help="Remove words from list")
@@ -209,7 +211,9 @@ def main():
     status_parser.add_argument("lang", help="Language code")
 
     # Check blocklist command
-    blocklist_parser = subparsers.add_parser("check-blocklist", help="Check blocklist coverage (runtime filtering)")
+    blocklist_parser = subparsers.add_parser(
+        "check-blocklist", help="Check blocklist coverage (runtime filtering)"
+    )
     blocklist_parser.add_argument("lang", help="Language code")
 
     args = parser.parse_args()

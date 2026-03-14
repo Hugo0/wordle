@@ -21,7 +21,9 @@
         "copied": "Copied!",
         "notification-copied": "Copied to clipboard",
         "notification-word-not-valid": "Word is not valid",
-        "notification-partial-word": "Please enter a full word"
+        "notification-partial-word": "Please enter a full word",
+        "share_challenge_win": "I got today's Wordle in {n} tries. Can you beat me?",
+        "share_challenge_lose": "I didn't get today's Wordle. Can you?"
     },
     "help": {
         "title": "How to Play",

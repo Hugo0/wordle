@@ -50,15 +50,14 @@
     <meta name="keywords" content="wordle, {{ language.config.name_native }}, {{ language.config.name }}">
     {% endif %}
     {% if share_result %}
+        {% set share_desc = "Think you can do better? Try today's Wordle in " ~ language.config.name ~ "!" %}
         {% if share_result == 'x' %}
             {% set share_title = "Wordle " ~ language.config.name_native ~ " — I didn't get it. Can you?" %}
-            {% set share_desc = "Think you can do better? Try today's Wordle in " ~ language.config.name ~ "!" %}
         {% elif share_result == '1' %}
-            {% set share_title = "Wordle " ~ language.config.name_native ~ " — " ~ share_result ~ "/6 🤯 Beat that!" %}
-            {% set share_desc = "First try! Think you can match it? Play today's Wordle in " ~ language.config.name ~ "!" %}
+            {% set share_title = "Wordle " ~ language.config.name_native ~ " — 1/6 🤯 Beat that!" %}
+            {% set share_desc = "First try! " ~ share_desc %}
         {% else %}
             {% set share_title = "Wordle " ~ language.config.name_native ~ " — " ~ share_result ~ "/6. Can you beat me?" %}
-            {% set share_desc = "Think you can do better? Try today's Wordle in " ~ language.config.name ~ "!" %}
         {% endif %}
     {% else %}
         {% set share_title = title %}

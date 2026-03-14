@@ -22,7 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "webapp", "data")
 LANG_DIR = os.path.join(DATA_DIR, "languages")
 OUTPUT_DIR = os.path.join(ROOT, "webapp", "static", "images", "share")
-TRANSLATIONS_PATH = os.path.join(DATA_DIR, "share_translations.json")
+DEFAULT_CONFIG_PATH = os.path.join(DATA_DIR, "default_language_config.json")
 
 # Image dimensions (standard OG image)
 WIDTH, HEIGHT = 1200, 630
@@ -48,23 +48,26 @@ BOLD_FONT = os.path.join(FONT_BASE, "NotoSans-Bold.ttf")
 CHALLENGE_FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 LATIN_FONT = os.path.join(FONT_BASE, "NotoSans-Regular.ttf")
 
-RTL_LANGS = {"ar", "ckb", "fa", "he"}
+# Pre-load fonts (avoid repeated truetype() calls in hot loop)
+FONTS = {}
 
 
-def prepare_bidi_text(text, lang_code):
+def get_font(path, size):
+    """Get a cached font instance."""
+    key = (path, size)
+    if key not in FONTS:
+        FONTS[key] = ImageFont.truetype(path, size)
+    return FONTS[key]
+
+
+def prepare_bidi_text(text, is_rtl):
     """Reshape and reorder RTL text for correct Pillow rendering."""
-    if lang_code not in RTL_LANGS:
+    if not is_rtl:
         return text
-    # Arabic script needs reshaping (letter joining)
-    if lang_code in ("ar", "ckb", "fa"):
-        text = arabic_reshaper.reshape(text)
-    # Apply bidi algorithm to get visual ordering
+    # Arabic script needs reshaping (letter joining) — apply to all RTL
+    # since it's a no-op for Hebrew script
+    text = arabic_reshaper.reshape(text)
     return get_display(text)
-
-
-def get_challenge_font(size):
-    """Get the challenge text font (DejaVu Sans — broad Unicode coverage)."""
-    return ImageFont.truetype(CHALLENGE_FONT, size)
 
 
 def draw_wordle_tiles(draw, y_center):
@@ -73,19 +76,16 @@ def draw_wordle_tiles(draw, y_center):
     gap = 8
     total_width = len(TILE_LETTERS) * tile_size + (len(TILE_LETTERS) - 1) * gap
     start_x = (WIDTH - total_width) // 2
+    font = get_font(BOLD_FONT, 34)
 
     for i, (letter, pattern) in enumerate(zip(TILE_LETTERS, TILE_PATTERN)):
         x = start_x + i * (tile_size + gap)
         color = TILE_COLORS[pattern]
-        # Draw rounded rect (approximate with rect + circles)
-        r = 6
         draw.rounded_rectangle(
             [x, y_center - tile_size // 2, x + tile_size, y_center + tile_size // 2],
-            radius=r,
+            radius=6,
             fill=color,
         )
-        # Letter
-        font = ImageFont.truetype(BOLD_FONT, 34)
         bbox = draw.textbbox((0, 0), letter, font=font)
         tw = bbox[2] - bbox[0]
         th = bbox[3] - bbox[1]
@@ -119,7 +119,32 @@ def wrap_text(text, font, draw, max_width):
     return lines
 
 
-def generate_image(lang_code, result, challenge_text, lang_name_native):
+def draw_mini_tiles(draw, result, score_y):
+    """Draw decorative mini tile grids flanking the score."""
+    mini_size = 16
+    mini_gap = 4
+    n_rows = int(result) if result != "x" else 6
+    solved_row = int(result) - 1 if result != "x" else -1
+
+    for side in ("left", "right"):
+        for row in range(n_rows):
+            for col in range(5):
+                if side == "left":
+                    mx = 80 + col * (mini_size + mini_gap)
+                else:
+                    mx = WIDTH - 80 - (4 - col) * (mini_size + mini_gap) - mini_size
+                my = score_y + 20 + row * (mini_size + mini_gap)
+
+                if row == solved_row:
+                    c = GREEN
+                else:
+                    offset = 0 if side == "left" else 1
+                    v = (row + col + offset) % 3
+                    c = GREEN if v == 0 else YELLOW if v == 1 else GRAY
+                draw.rectangle([mx, my, mx + mini_size, my + mini_size], fill=c)
+
+
+def generate_image(lang_code, result, challenge_text, is_rtl):
     """Generate a single share preview image."""
     img = Image.new("RGB", (WIDTH, HEIGHT), BG_COLOR)
     draw = ImageDraw.Draw(img)
@@ -128,7 +153,7 @@ def generate_image(lang_code, result, challenge_text, lang_name_native):
     draw_wordle_tiles(draw, y_center=70)
 
     # 2. "WORDLE GLOBAL" text under tiles
-    font_title = ImageFont.truetype(BOLD_FONT, 22)
+    font_title = get_font(BOLD_FONT, 22)
     bbox = draw.textbbox((0, 0), "WORDLE GLOBAL", font=font_title)
     tw = bbox[2] - bbox[0]
     draw.text(((WIDTH - tw) // 2, 108), "WORDLE GLOBAL", fill=LIGHT_GRAY, font=font_title)
@@ -139,65 +164,21 @@ def generate_image(lang_code, result, challenge_text, lang_name_native):
         score_color = GRAY
     else:
         score_text = f"{result}/6"
-        if result == "1":
-            score_color = GREEN
-        elif int(result) <= 3:
-            score_color = GREEN
-        elif int(result) <= 5:
-            score_color = YELLOW
-        else:
-            score_color = YELLOW
+        score_color = GREEN if int(result) <= 3 else YELLOW
 
-    font_score = ImageFont.truetype(BOLD_FONT, 140)
+    font_score = get_font(BOLD_FONT, 140)
     bbox = draw.textbbox((0, 0), score_text, font=font_score)
     tw = bbox[2] - bbox[0]
     th = bbox[3] - bbox[1]
     score_y = 180
     draw.text(((WIDTH - tw) // 2, score_y), score_text, fill=score_color, font=font_score)
 
-    # 4. Decorative mini tiles flanking the score (showing a result pattern)
-    mini_size = 16
-    mini_gap = 4
-    mini_y = score_y + th // 2 + 165 - mini_size // 2
-    # Left side mini tiles
-    for row in range(min(int(result) if result != "x" else 6, 6)):
-        for col in range(5):
-            mx = 80 + col * (mini_size + mini_gap)
-            my = score_y + 20 + row * (mini_size + mini_gap)
-            if result != "x" and row == (int(result) - 1):
-                c = GREEN  # Last row all green (solved)
-            elif row < (int(result) - 1 if result != "x" else 6):
-                # Random-ish pattern
-                if (row + col) % 3 == 0:
-                    c = GREEN
-                elif (row + col) % 3 == 1:
-                    c = YELLOW
-                else:
-                    c = GRAY
-            else:
-                c = GRAY
-            draw.rectangle([mx, my, mx + mini_size, my + mini_size], fill=c)
-    # Right side (mirror)
-    for row in range(min(int(result) if result != "x" else 6, 6)):
-        for col in range(5):
-            mx = WIDTH - 80 - (4 - col) * (mini_size + mini_gap) - mini_size
-            my = score_y + 20 + row * (mini_size + mini_gap)
-            if result != "x" and row == (int(result) - 1):
-                c = GREEN
-            elif row < (int(result) - 1 if result != "x" else 6):
-                if (row + col + 1) % 3 == 0:
-                    c = GREEN
-                elif (row + col + 1) % 3 == 1:
-                    c = YELLOW
-                else:
-                    c = GRAY
-            else:
-                c = GRAY
-            draw.rectangle([mx, my, mx + mini_size, my + mini_size], fill=c)
+    # 4. Decorative mini tiles flanking the score
+    draw_mini_tiles(draw, result, score_y)
 
     # 5. Challenge text (apply bidi reordering for RTL languages)
-    display_text = prepare_bidi_text(challenge_text, lang_code)
-    font_challenge = get_challenge_font(32)
+    display_text = prepare_bidi_text(challenge_text, is_rtl)
+    font_challenge = get_font(CHALLENGE_FONT, 32)
     lines = wrap_text(display_text, font_challenge, draw, WIDTH - 160)
     text_y = 460
     for line in lines[:2]:  # Max 2 lines
@@ -208,7 +189,7 @@ def generate_image(lang_code, result, challenge_text, lang_name_native):
         text_y += 44
 
     # 6. URL at bottom
-    font_url = ImageFont.truetype(LATIN_FONT, 20)
+    font_url = get_font(LATIN_FONT, 20)
     url_text = f"wordle.global/{lang_code}"
     bbox = draw.textbbox((0, 0), url_text, font=font_url)
     tw = bbox[2] - bbox[0]
@@ -217,25 +198,43 @@ def generate_image(lang_code, result, challenge_text, lang_name_native):
     return img
 
 
-def main():
-    # Load translations
-    with open(TRANSLATIONS_PATH) as f:
-        translations = json.load(f)
+def load_language_configs():
+    """Load all language configs with default fallback (mirrors app.py pattern)."""
+    with open(DEFAULT_CONFIG_PATH) as f:
+        defaults = json.load(f)
 
-    # Load language configs for name_native
-    lang_names = {}
-    for lang_code in os.listdir(LANG_DIR):
+    configs = {}
+    for lang_code in sorted(os.listdir(LANG_DIR)):
         config_path = os.path.join(LANG_DIR, lang_code, "language_config.json")
-        if os.path.exists(config_path):
-            with open(config_path) as f:
-                config = json.load(f)
-            lang_names[lang_code] = config.get("name_native", config.get("name", lang_code))
+        if not os.path.exists(config_path):
+            continue
+        with open(config_path) as f:
+            lang_config = json.load(f)
+        # Merge defaults for text section
+        merged_text = {**defaults.get("text", {}), **lang_config.get("text", {})}
+        configs[lang_code] = {
+            "name_native": lang_config.get("name_native", lang_config.get("name", lang_code)),
+            "is_rtl": lang_config.get("right_to_left", "false") == "true",
+            "share_challenge_win": merged_text.get(
+                "share_challenge_win",
+                "I got today's Wordle in {n} tries. Can you beat me?",
+            ),
+            "share_challenge_lose": merged_text.get(
+                "share_challenge_lose",
+                "I didn't get today's Wordle. Can you?",
+            ),
+        }
+    return configs
+
+
+def main():
+    configs = load_language_configs()
 
     # Filter languages if args provided
     if len(sys.argv) > 1:
         target_langs = sys.argv[1:]
     else:
-        target_langs = sorted(lang_names.keys())
+        target_langs = sorted(configs.keys())
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -244,18 +243,19 @@ def main():
     count = 0
 
     for lang_code in target_langs:
-        name_native = lang_names.get(lang_code, lang_code)
-        trans = translations.get(lang_code, translations.get("en", {}))
+        cfg = configs.get(lang_code)
+        if not cfg:
+            print(f"  Warning: no config for {lang_code}, skipping")
+            continue
 
         for result in results:
             count += 1
             if result == "x":
-                text = trans.get("lose", "I didn't get today's Wordle. Can you?")
+                text = cfg["share_challenge_lose"]
             else:
-                text = trans.get("win", "I got today's Wordle in {n} tries. Can you beat me?")
-                text = text.replace("{n}", result)
+                text = cfg["share_challenge_win"].replace("{n}", result)
 
-            img = generate_image(lang_code, result, text, name_native)
+            img = generate_image(lang_code, result, text, cfg["is_rtl"])
             out_path = os.path.join(OUTPUT_DIR, f"{lang_code}_{result}.png")
             img.save(out_path, "PNG", optimize=True)
 

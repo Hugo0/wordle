@@ -51,7 +51,9 @@
         "no_attempts": "Vous n'avez pas encore essayé de mots! ",
         "share": "Partager ",
         "notification-copied": "Copié dans le presse-papier ",
-        "notification-partial-word": "S'il vous plaît entrer un mot complet "
+        "notification-partial-word": "S'il vous plaît entrer un mot complet ",
+        "share_challenge_win": "J'ai trouvé le Wordle du jour en {n} essais. Tu peux faire mieux ?",
+        "share_challenge_lose": "Je n'ai pas trouvé le Wordle du jour. Et toi ?"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
