@@ -52,6 +52,11 @@
 
 import posthog from './posthog';
 
+// GA4 only tracks these core events (with registered custom dimensions: language, won, attempts).
+// Everything else is PostHog-only. GA4 silently drops unregistered dimensions, so there's no
+// point sending rich events to it.
+const GA4_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon', 'page_view_enhanced']);
+
 // Events excluded from PostHog to stay within free tier (1M events/month).
 // These high-volume events (fired per-guess) are still tracked in GA4 where there is no cap.
 const POSTHOG_SKIP_EVENTS = new Set(['guess_submit', 'guess_time', 'first_guess_delay']);
@@ -131,19 +136,21 @@ interface ErrorParams {
 }
 
 /**
- * Safe dual-send wrapper - sends to both GA4 and PostHog
+ * Safe dual-send wrapper.
+ * GA4: only core events (game_start, game_complete, game_abandon, page_view_enhanced).
+ * PostHog: everything except high-volume per-guess events.
  */
 const track = (eventName: string, params?: Record<string, unknown>): void => {
-    // Google Analytics 4
+    // Google Analytics 4 (core events only)
     try {
-        if (typeof window.gtag === 'function') {
+        if (GA4_EVENTS.has(eventName) && typeof window.gtag === 'function') {
             window.gtag('event', eventName, params);
         }
     } catch {
-        // Silently fail - analytics should never break the app
+        // Silently fail
     }
 
-    // PostHog (skip high-volume events to stay within free tier)
+    // PostHog (skip high-volume per-guess events to stay within free tier)
     try {
         if (!POSTHOG_SKIP_EVENTS.has(eventName)) {
             posthog.capture(eventName, params);
