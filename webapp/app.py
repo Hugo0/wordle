@@ -672,11 +672,19 @@ class Language:
 
         self.characters = language_characters[language_code]
         # remove chars that aren't used to reduce bloat a bit
-        characters_used = []
+        characters_used = set()
         for word in self.word_list:
-            characters_used += list(word)
-        characters_used = list(set(characters_used))
+            characters_used.update(word)
         self.characters = [char for char in self.characters if char in characters_used]
+
+        # Include diacritic base characters whose variants appear in the word list.
+        # This allows keyboards using base forms (e.g., Compatibility Jamo) to work
+        # with word lists using variant forms (e.g., Hangul Jamo).
+        diacritic_map = self.config.get("diacritic_map", {})
+        chars_set = set(self.characters)
+        for base, variants in diacritic_map.items():
+            if base not in chars_set and any(v in characters_used for v in variants):
+                self.characters.append(base)
 
         keyboard_config = keyboards.get(language_code, {"default": None, "layouts": {}})
         self.keyboard_layouts = self._build_keyboard_layouts(keyboard_config)

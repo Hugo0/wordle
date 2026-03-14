@@ -9,6 +9,7 @@ import pytest
 from tests.conftest import (
     ALL_LANGUAGES,
     get_diacritic_base_chars,
+    load_all_keyboard_chars,
     load_keyboard,
     load_language_config,
     load_word_list,
@@ -153,7 +154,7 @@ class TestKeyboardConfig:
     """Tests for keyboard configuration."""
 
     # Languages with known keyboard coverage gaps (complex scripts, incomplete keyboards)
-    KEYBOARD_COVERAGE_XFAIL = {"ko", "de"}
+    KEYBOARD_COVERAGE_XFAIL = {"de"}
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_characters(self, lang):
@@ -178,12 +179,8 @@ class TestKeyboardConfig:
         for word in words:
             word_chars.update(word)
 
-        # Flatten keyboard to get all keys
-        keyboard_chars = set()
-        for row in keyboard:
-            for key in row:
-                if key not in ("⇨", "⟹", "⌫", "ENTER", "DEL"):
-                    keyboard_chars.add(key)
+        # Check all layouts — a character is typeable if it appears on any layout
+        keyboard_chars = load_all_keyboard_chars(lang)
 
         # Get diacritic mapping - chars that can be typed via base char
         diacritic_map = get_diacritic_base_chars(lang)
