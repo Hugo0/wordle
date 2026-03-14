@@ -16,7 +16,9 @@
         "no_attempts": "아직 어떤 단어를 시도하지 않았습니다! ",
         "share": "공유",
         "notification-copied": "클립 보드에 복사 ",
-        "notification-partial-word": "전체 단어를 입력하십시오 "
+        "notification-partial-word": "전체 단어를 입력하십시오 ",
+        "share_challenge_win": "오늘의 Wordle을 {n}번 만에 맞췄어요. 저보다 잘할 수 있나요?",
+        "share_challenge_lose": "오늘의 Wordle을 못 맞췄어요. 당신은 할 수 있나요?"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",

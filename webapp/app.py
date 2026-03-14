@@ -1203,7 +1203,13 @@ def language(lang_code):
     cookie_key = f"keyboard_layout_{lang_code}"
     requested_layout = request.args.get("layout") or request.cookies.get(cookie_key)
     language = Language(lang_code, word_list, requested_layout)
-    response = make_response(render_template("game.html", language=language))
+    # Social share context: ?r=3 means someone shared a 3/6 result
+    share_result = request.args.get("r")
+    if share_result not in ("1", "2", "3", "4", "5", "6", "x"):
+        share_result = None
+    response = make_response(
+        render_template("game.html", language=language, share_result=share_result)
+    )
     selected_layout = language.keyboard_layout_name
     if request.cookies.get(cookie_key) != selected_layout:
         response.set_cookie(
