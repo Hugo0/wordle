@@ -610,28 +610,10 @@ print(f"- {len(languages)} languages")
 print(
     f"- {len([k for (k, v) in language_codes_5words_supplements.items() if v != []])} languages with supplemental words"
 )
-print(
-    f"- The language with least words is {
-        min(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
-    }, with {
-        len(
-            language_codes_5words[
-                min(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
-            ]
-        )
-    } words"
-)
-print(
-    f"- The language with most words is {
-        max(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
-    }, with {
-        len(
-            language_codes_5words[
-                max(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
-            ]
-        )
-    } words"
-)
+min_lang = min(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
+max_lang = max(language_codes_5words, key=lambda k: len(language_codes_5words[k]))
+print(f"- The language with least words is {min_lang}, with {len(language_codes_5words[min_lang])} words")
+print(f"- The language with most words is {max_lang}, with {len(language_codes_5words[max_lang])} words")
 print(
     f"- Average number of words per language is {sum(len(language_codes_5words[l_code]) for l_code in language_codes) / len(language_codes):.2f}"
 )
