@@ -156,5 +156,30 @@ def load_keyboard(lang_code: str) -> list | None:
     return data
 
 
+def load_all_keyboard_chars(lang_code: str) -> set[str]:
+    """Load all keyboard characters across ALL layouts for a language.
+
+    For coverage tests, a character is typeable if it appears on any layout.
+    """
+    keyboard_file = LANGUAGES_DIR / lang_code / f"{lang_code}_keyboard.json"
+    if not keyboard_file.exists():
+        return set()
+    with open(keyboard_file, encoding="utf-8") as f:
+        data = json.load(f)
+
+    control_keys = {"⇨", "⟹", "⌫", "↵", "ENTER", "DEL"}
+    chars = set()
+
+    if isinstance(data, dict) and "layouts" in data:
+        for layout in data["layouts"].values():
+            for row in layout.get("rows", []):
+                chars.update(k for k in row if k not in control_keys)
+    elif isinstance(data, list):
+        for row in data:
+            chars.update(k for k in row if k not in control_keys)
+
+    return chars
+
+
 # Make language codes available for parametrize
 ALL_LANGUAGES = get_all_language_codes()

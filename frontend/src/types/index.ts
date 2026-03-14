@@ -61,6 +61,11 @@ export interface LanguageConfig {
      *  Example for Greek: { "σ": "ς" }
      */
     final_form_map?: Record<string, string>;
+    /** Optional physical key → character map for bypassing IME composition.
+     *  Maps KeyboardEvent.code values to characters.
+     *  Example for Korean: { "KeyQ": "ㅂ", "ShiftKeyQ": "ㅃ", ... }
+     */
+    physical_key_map?: Record<string, string>;
 }
 
 // =============================================================================

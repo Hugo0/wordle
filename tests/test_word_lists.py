@@ -14,6 +14,7 @@ from scripts.improve_word_lists import is_roman_numeral
 from tests.conftest import (
     ALL_LANGUAGES,
     get_diacritic_base_chars,
+    load_all_keyboard_chars,
     load_blocklist,
     load_characters,
     load_daily_words,
@@ -124,7 +125,7 @@ class TestKeyboardCoverage:
     """Tests for keyboard coverage of word characters."""
 
     # Languages with known keyboard coverage gaps (complex scripts)
-    KEYBOARD_COVERAGE_XFAIL: set[str] = {"ko", "de"}
+    KEYBOARD_COVERAGE_XFAIL: set[str] = set()
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_word_characters(self, lang):
@@ -146,13 +147,8 @@ class TestKeyboardCoverage:
         if not keyboard or all(len(row) == 0 for row in keyboard):
             pytest.skip(f"{lang}: Empty keyboard (app will auto-generate)")
 
-        # Extract all characters from keyboard (load_keyboard returns normalized rows)
-        keyboard_chars = set()
-        for row in keyboard:
-            for key in row:
-                # Skip control keys
-                if key not in ["⇨", "⟹", "⌫", "↵", "ENTER", "DEL"]:
-                    keyboard_chars.add(key)
+        # Check all layouts — a character is typeable if it appears on any layout
+        keyboard_chars = load_all_keyboard_chars(lang)
 
         if not keyboard_chars:
             pytest.skip(f"{lang}: Empty keyboard layout")
