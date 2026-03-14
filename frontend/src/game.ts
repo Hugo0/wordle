@@ -1533,6 +1533,14 @@ export const createGameApp = () => {
              * Returns an error message if invalid, or null if valid.
              */
             checkHardMode(guess: string): string | null {
+                // Normalize a char for comparison (diacritics + positional variants)
+                const norm = (char: string): string => {
+                    const positionalNorm = toRegularForm(char, finalFormReverseMap);
+                    return (normalizeMap.get(positionalNorm) || positionalNorm).toLowerCase();
+                };
+
+                const guessNorm = [...guess].map(norm);
+
                 // Check all previously submitted rows for hints
                 for (let r = 0; r < this.active_row; r++) {
                     const row = this.tiles[r];
@@ -1544,18 +1552,20 @@ export const createGameApp = () => {
                         const letter = row[c];
                         if (!letter) continue;
 
+                        const letterNorm = norm(letter);
+
                         if (
                             tileClass.includes('correct') &&
                             !tileClass.includes('semicorrect') &&
                             !tileClass.includes('incorrect')
                         ) {
                             // Green: must be in the same position
-                            if (guess[c]?.toLowerCase() !== letter.toLowerCase()) {
+                            if (guessNorm[c] !== letterNorm) {
                                 return `Hard mode: ${letter.toUpperCase()} must be in position ${c + 1}`;
                             }
                         } else if (tileClass.includes('semicorrect')) {
                             // Yellow: must appear somewhere in the guess
-                            if (!guess.toLowerCase().includes(letter.toLowerCase())) {
+                            if (!guessNorm.includes(letterNorm)) {
                                 return `Hard mode: guess must contain ${letter.toUpperCase()}`;
                             }
                         }
