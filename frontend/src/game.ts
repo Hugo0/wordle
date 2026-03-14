@@ -96,7 +96,7 @@ let firstGuessFired = false;
 function initAnalyticsSession(
     langCode: string,
     stats: GameStats,
-    gameResults: Record<string, GameResult[]>,
+    gameResults: Record<string, GameResult[]>
 ): void {
     analytics.initErrorTracking(langCode);
     analytics.trackPageView(langCode);
@@ -143,20 +143,23 @@ function initAnalyticsSession(
             langCode,
             daysSinceLast ?? 0,
             stats.current_streak,
-            userProps.languagesPlayed.length,
+            userProps.languagesPlayed.length
         );
     }
 
     // New language detection
     const previousLanguages = userProps.languagesPlayed.filter((l) => l !== langCode);
-    if (previousLanguages.length > 0 && (!gameResults[langCode] || gameResults[langCode].length === 0)) {
+    if (
+        previousLanguages.length > 0 &&
+        (!gameResults[langCode] || gameResults[langCode].length === 0)
+    ) {
         analytics.trackSecondLanguageStart(langCode, previousLanguages);
     }
 
     // Multi-language session (fire only on threshold crossing: 1 → 2)
     try {
         const sessionLangs = JSON.parse(
-            sessionStorage.getItem('session_languages') || '[]',
+            sessionStorage.getItem('session_languages') || '[]'
         ) as string[];
         const wasNew = !sessionLangs.includes(langCode);
         if (wasNew) {
@@ -755,12 +758,10 @@ export const createGameApp = () => {
 
                         // Track first guess delay (time from page load to first interaction)
                         if (!firstGuessFired && gameStartTime) {
-                            const delaySeconds = Math.floor(
-                                (Date.now() - gameStartTime) / 1000,
-                            );
+                            const delaySeconds = Math.floor((Date.now() - gameStartTime) / 1000);
                             analytics.trackFirstGuessDelay(
                                 this.config?.language_code || 'unknown',
-                                delaySeconds,
+                                delaySeconds
                             );
                             firstGuessFired = true;
                         }
@@ -768,12 +769,12 @@ export const createGameApp = () => {
                         // Track time between guesses
                         if (lastGuessTime && this.active_row > 0) {
                             const secondsSinceLast = Math.floor(
-                                (Date.now() - lastGuessTime) / 1000,
+                                (Date.now() - lastGuessTime) / 1000
                             );
                             analytics.trackGuessTime(
                                 this.config?.language_code || 'unknown',
                                 this.active_row + 1,
-                                secondsSinceLast,
+                                secondsSinceLast
                             );
                         }
                         lastGuessTime = Date.now();
@@ -1360,7 +1361,7 @@ export const createGameApp = () => {
                         langCode,
                         this.game_won,
                         this.attempts,
-                        this.emoji_board,
+                        this.emoji_board
                     );
                     setTimeout(() => {
                         this.shareButtonState = 'idle';
