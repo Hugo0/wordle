@@ -360,7 +360,9 @@ export const useGameStore = defineStore('game', () => {
     /** Main input handler for both physical and virtual keyboard events. */
     function keyDown(event: KeyboardEvent | { key: string }): void {
         if (animating.value) return;
-        const key = event.key;
+        // Normalize to lowercase for letter keys (Caps Lock, mobile keyboards)
+        const rawKey = event.key;
+        const key = rawKey.length === 1 ? rawKey.toLowerCase() : rawKey;
 
         if (key === 'Escape') {
             showHelpModal.value = false;
