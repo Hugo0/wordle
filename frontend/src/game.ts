@@ -129,6 +129,8 @@ interface GameData {
     communityStatsLink: string | null;
     hardMode: boolean;
     highContrast: boolean;
+    difficultyShake: boolean;
+    difficultyWarning: boolean;
 }
 
 export const createGameApp = () => {
@@ -166,6 +168,8 @@ export const createGameApp = () => {
                 pendingKeyUpdates: [] as Array<{ char: string; state: KeyState } | undefined>,
                 hardMode: false,
                 highContrast: false,
+                difficultyShake: false,
+                difficultyWarning: false,
 
                 notification: {
                     show: false,
@@ -1488,11 +1492,16 @@ export const createGameApp = () => {
             },
 
             setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
-                // Don't allow switching TO hard mode mid-game — snap back with warning
+                // Don't allow switching TO hard mode mid-game — shake and show warning
                 if (level === 'hard' && this.active_row > 0 && !this.game_over) {
-                    this.showNotification('Hard mode can only be enabled before your first guess');
+                    this.difficultyShake = true;
+                    this.difficultyWarning = true;
+                    setTimeout(() => {
+                        this.difficultyShake = false;
+                    }, 500);
                     return;
                 }
+                this.difficultyWarning = false;
                 this.allow_any_word = level === 'easy';
                 this.hardMode = level === 'hard';
                 try {

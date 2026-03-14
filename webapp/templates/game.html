@@ -372,7 +372,8 @@
                             <!-- Difficulty selector (3-way: Easy / Normal / Hard) -->
                             <div>
                                 <p class="text-sm font-semibold mb-2">{{ language.config.ui.difficulty or "Difficulty" }}</p>
-                                <div class="flex rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-600">
+                                <div class="flex rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-600"
+                                     :class="{ shake: difficultyShake }">
                                     <button type="button"
                                         v-on:click="setDifficulty('easy')"
                                         class="flex-1 py-2 px-1 text-xs font-medium transition-colors"
@@ -404,6 +405,8 @@
                                    v-if="!allow_any_word && !hardMode">Guesses must be valid words from the dictionary</p>
                                 <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
                                    v-if="hardMode">Revealed hints must be used in subsequent guesses</p>
+                                <p class="text-xs text-amber-500 mt-1"
+                                   v-if="difficultyWarning">Hard mode can only be enabled before your first guess</p>
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
