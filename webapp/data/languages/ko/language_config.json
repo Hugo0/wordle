@@ -74,6 +74,17 @@
         "ㅢ": ["ᅴ"],
         "ㅣ": ["ᅵ"]
     },
+    "physical_key_map": {
+        "KeyQ": "ㅂ", "KeyW": "ㅈ", "KeyE": "ㄷ", "KeyR": "ㄱ", "KeyT": "ㅅ",
+        "KeyY": "ㅛ", "KeyU": "ㅕ", "KeyI": "ㅑ", "KeyO": "ㅐ", "KeyP": "ㅔ",
+        "KeyA": "ㅁ", "KeyS": "ㄴ", "KeyD": "ㅇ", "KeyF": "ㄹ", "KeyG": "ㅎ",
+        "KeyH": "ㅗ", "KeyJ": "ㅓ", "KeyK": "ㅏ", "KeyL": "ㅣ",
+        "KeyZ": "ㅋ", "KeyX": "ㅌ", "KeyC": "ㅊ", "KeyV": "ㅍ",
+        "KeyB": "ㅠ", "KeyN": "ㅜ", "KeyM": "ㅡ",
+        "ShiftKeyQ": "ㅃ", "ShiftKeyW": "ㅉ", "ShiftKeyE": "ㄸ",
+        "ShiftKeyR": "ㄲ", "ShiftKeyT": "ㅆ",
+        "ShiftKeyO": "ㅒ", "ShiftKeyP": "ㅖ"
+    },
     "help": {
         "title": "게임 방법 ",
         "title_2": "예 ",

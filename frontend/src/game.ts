@@ -631,7 +631,18 @@ export const createGameApp = () => {
 
             keyDown(event: KeyboardEvent | { key: string }): void {
                 if (this.animating) return;
-                const key = event.key;
+
+                // Physical keyboard → character mapping (bypasses IME for Korean, etc.)
+                let key = event.key;
+                const physicalKeyMap = this.config?.physical_key_map;
+                if (physicalKeyMap && 'code' in event) {
+                    const code = event.shiftKey ? `Shift${event.code}` : event.code;
+                    const mapped = physicalKeyMap[code];
+                    if (mapped) {
+                        event.preventDefault();
+                        key = mapped;
+                    }
+                }
 
                 if (key === 'Escape') {
                     this.showHelpModal = false;
