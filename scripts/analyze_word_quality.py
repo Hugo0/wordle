@@ -22,7 +22,6 @@ Usage:
 import argparse
 import sys
 from collections import defaultdict
-from math import log
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
@@ -133,7 +132,7 @@ def cmd_char_freq(args):
     for char, freq in sorted_chars:
         count = int(freq * len(words))
         bar = "#" * int(freq * 100)
-        print(f"  {char}    {count:>6} {freq*100:>7.1f}%  {bar}")
+        print(f"  {char}    {count:>6} {freq * 100:>7.1f}%  {bar}")
 
     # Threshold analysis
     print(f"\n{'Threshold analysis':}")
@@ -144,7 +143,7 @@ def cmd_char_freq(args):
         filtered = [w for w in words if any(c in rare_chars for c in w)]
         remaining = len(words) - len(filtered)
         print(
-            f"    {threshold*100:>4.0f}%    {len(rare_chars):>6}       {len(filtered):>8}          {remaining:>6}"
+            f"    {threshold * 100:>4.0f}%    {len(rare_chars):>6}       {len(filtered):>8}          {remaining:>6}"
         )
 
 
@@ -181,7 +180,7 @@ def cmd_difficult_words(args):
     # Filter by threshold if specified
     if threshold is not None:
         scored = [(w, f, c) for w, f, c in scored if f < threshold]
-        print(f"Words in {lang} daily list with rarest character below {threshold*100:.0f}%:")
+        print(f"Words in {lang} daily list with rarest character below {threshold * 100:.0f}%:")
     else:
         print(f"All words in {lang} daily list sorted by difficulty (hardest first):")
 
@@ -191,7 +190,7 @@ def cmd_difficult_words(args):
     print(f"{'Word':<12} {'Rarest Char':>12} {'Char Freq %':>12}")
     print("-" * 38)
     for word, freq, char in scored:
-        print(f"  {word:<10} {char:>8}      {freq*100:>7.1f}%")
+        print(f"  {word:<10} {char:>8}      {freq * 100:>7.1f}%")
 
     print(f"\nTotal: {len(scored)} words")
 
@@ -267,10 +266,10 @@ def cmd_hebrew_suffixes(args):
         print(f"  → Keep: {keep}, blocklist: {to_block}")
         print()
 
-    print(f"{'='*50}")
+    print(f"{'=' * 50}")
     print(f"Total groups: {len(groups)}")
     print(f"Total words to blocklist: {total_to_blocklist}")
-    print(f"\nBlocklist additions (copy-paste ready):")
+    print("\nBlocklist additions (copy-paste ready):")
     for w in sorted(blocklist_words):
         print(w)
 
@@ -296,7 +295,7 @@ def cmd_hebrew_quality(args):
         sys.exit(1)
 
     print(f"Hebrew daily word quality analysis ({len(words)} words)")
-    print(f"Cross-referencing with wordfreq (Wikipedia, Reddit, Google Books, etc.)\n")
+    print("Cross-referencing with wordfreq (Wikipedia, Reddit, Google Books, etc.)\n")
 
     # Score each word
     not_in_wordfreq = []
@@ -313,16 +312,16 @@ def cmd_hebrew_quality(args):
             normal.append((word, zf))
 
     # Report
-    print(f"Category breakdown:")
+    print("Category breakdown:")
     print(f"  Normal (zipf >= 2.0):      {len(normal):>5} words")
     print(f"  Low frequency (zipf < 2.0): {len(low_wordfreq):>5} words")
     print(f"  Not in wordfreq at all:     {len(not_in_wordfreq):>5} words")
 
     if not_in_wordfreq:
-        print(f"\n{'='*50}")
+        print(f"\n{'=' * 50}")
         print(f"Words NOT found in wordfreq ({len(not_in_wordfreq)} words)")
-        print(f"These may be proper nouns, obscure, or malformed:")
-        print(f"{'='*50}")
+        print("These may be proper nouns, obscure, or malformed:")
+        print(f"{'=' * 50}")
         # Show first N
         limit = args.limit or 100
         for word, zf in sorted(not_in_wordfreq)[:limit]:
@@ -331,10 +330,10 @@ def cmd_hebrew_quality(args):
             print(f"  ... and {len(not_in_wordfreq) - limit} more")
 
     if low_wordfreq:
-        print(f"\n{'='*50}")
+        print(f"\n{'=' * 50}")
         print(f"Low-frequency words (zipf < 2.0, {len(low_wordfreq)} words)")
-        print(f"These may be uncommon or domain-specific:")
-        print(f"{'='*50}")
+        print("These may be uncommon or domain-specific:")
+        print(f"{'=' * 50}")
         low_wordfreq.sort(key=lambda x: x[1])
         limit = args.limit or 50
         for word, zf in low_wordfreq[:limit]:
@@ -348,7 +347,7 @@ def cmd_hebrew_quality(args):
     if has_freq:
         avg = sum(has_freq) / len(has_freq)
         print(
-            f"\nWordfreq coverage: {len(has_freq)}/{len(words)} words ({100*len(has_freq)/len(words):.1f}%)"
+            f"\nWordfreq coverage: {len(has_freq)}/{len(words)} words ({100 * len(has_freq) / len(words):.1f}%)"
         )
         print(f"Average zipf frequency (of found words): {avg:.2f}")
 

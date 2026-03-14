@@ -20,8 +20,6 @@ Usage:
 
 import argparse
 import datetime
-import os
-import shutil
 from pathlib import Path
 
 # Paths
@@ -79,7 +77,7 @@ def extract_next_words(lang: str, num_days: int = 365) -> None:
             f.write(f"{start_idx + i}: {word}\n")
 
     print(f"Wrote {num_days} words to {output_file}")
-    print(f"Review the file and identify words to remove.")
+    print("Review the file and identify words to remove.")
 
 
 def remove_words(lang: str, words_to_remove: list[str]) -> None:

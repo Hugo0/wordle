@@ -77,10 +77,11 @@ pnpm dev           # Starts both Flask server + Vite watcher
 
 ### Before Committing
 ```bash
-pnpm format            # Format TypeScript
-uv run black webapp/ tests/  # Format Python
-pnpm test              # Run TS tests
-uv run pytest tests/   # Run Python tests
+pnpm format                          # Format TypeScript
+uv run ruff format webapp/ tests/    # Format Python
+uv run ruff check webapp/ tests/     # Lint Python
+pnpm test                            # Run TS tests
+uv run pytest tests/                 # Run Python tests
 ```
 
 ## Important Notes
@@ -107,8 +108,9 @@ These are tracked by pytest but not blocking - they're data issues, not code iss
 
 ### Python
 
-- Black formatter, 100 char line length
-- Run `uv run black webapp/ tests/` before committing
+- Ruff formatter + linter, 100 char line length
+- Run `uv run ruff format webapp/ tests/` and `uv run ruff check webapp/ tests/` before committing
+- Pre-commit hooks run both automatically
 
 ## Don't
 

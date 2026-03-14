@@ -8,11 +8,10 @@ Network tests hit real Wiktionary APIs and are skipped unless --run-network.
     pytest tests/test_wiktionary.py --run-network # all tests
 """
 
-import io
 import json
 import sys
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -20,17 +19,14 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "webapp"))
 
 from wiktionary import (
-    parse_wikt_definition,
-    _fallback_extract_definition,
     _build_candidates,
+    _fallback_extract_definition,
     _follow_form_of,
-    fetch_native_wiktionary,
+    fetch_definition,
     fetch_english_definition,
     fetch_llm_definition,
-    fetch_definition,
-    strip_html,
-    LEMMA_STRIP_RULES,
-    LEMMA_SUFFIXES,
+    fetch_native_wiktionary,
+    parse_wikt_definition,
 )
 
 # ---------------------------------------------------------------------------

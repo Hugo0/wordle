@@ -1,13 +1,17 @@
-# coding:utf-8
 # author LuShan
 # from Hugo: thanks LuShan!
 # version : 1.1.9
 
-import json, requests, random, re
-from urllib.parse import quote
-import urllib3
+import json
 import logging
-from .constant import LANGUAGES, DEFAULT_SERVICE_URLS
+import random
+import re
+from urllib.parse import quote
+
+import requests
+import urllib3
+
+from .constant import DEFAULT_SERVICE_URLS, LANGUAGES
 
 log = logging.getLogger(__name__)
 log.addHandler(logging.NullHandler())
@@ -32,7 +36,7 @@ class google_new_transError(Exception):
             self.msg = self.infer_msg(self.tts, self.rsp)
         else:
             self.msg = None
-        super(google_new_transError, self).__init__(self.msg)
+        super().__init__(self.msg)
 
     def infer_msg(self, tts, rsp=None):
         cause = "Unknown"
@@ -49,7 +53,7 @@ class google_new_transError(Exception):
             status = rsp.status_code
             reason = rsp.reason
 
-            premise = "{:d} ({}) from TTS API".format(status, reason)
+            premise = f"{status:d} ({reason}) from TTS API"
 
             if status == 403:
                 cause = "Bad token or upstream API changes"
@@ -58,7 +62,7 @@ class google_new_transError(Exception):
             elif status >= 500:
                 cause = "Uptream API error. Try again later."
 
-        return "{}. Probable cause: {}".format(premise, cause)
+        return f"{premise}. Probable cause: {cause}"
 
 
 class google_translator:
@@ -97,7 +101,7 @@ class google_translator:
             self.url_suffix = URL_SUFFIX_DEFAULT
         else:
             self.url_suffix = url_suffix
-        url_base = "https://translate.google.{}".format(self.url_suffix)
+        url_base = f"https://translate.google.{self.url_suffix}"
         self.url = url_base + "/_/TranslateWebserverUi/data/batchexecute"
         self.timeout = timeout
 
@@ -108,7 +112,7 @@ class google_translator:
         rpc = [[[random.choice(GOOGLE_TTS_RPC), escaped_parameter, None, "generic"]]]
         espaced_rpc = json.dumps(rpc, separators=(",", ":"))
         # text_urldecode = quote(text.strip())
-        freq_initial = "f.req={}&".format(quote(espaced_rpc))
+        freq_initial = f"f.req={quote(espaced_rpc)}&"
         freq = freq_initial
         return freq
 
@@ -127,7 +131,7 @@ class google_translator:
         if len(text) == 0:
             return ""
         headers = {
-            "Referer": "http://translate.google.{}/".format(self.url_suffix),
+            "Referer": f"http://translate.google.{self.url_suffix}/",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/47.0.2526.106 Safari/537.36",
@@ -192,10 +196,10 @@ class google_translator:
             r.raise_for_status()
         except requests.exceptions.ConnectTimeout as e:
             raise e
-        except requests.exceptions.HTTPError as e:
+        except requests.exceptions.HTTPError:
             # Request successful, bad response
             raise google_new_transError(tts=self, response=r)
-        except requests.exceptions.RequestException as e:
+        except requests.exceptions.RequestException:
             # Request failed
             raise google_new_transError(tts=self)
 
@@ -206,7 +210,7 @@ class google_translator:
         if len(text) == 0:
             return ""
         headers = {
-            "Referer": "http://translate.google.{}/".format(self.url_suffix),
+            "Referer": f"http://translate.google.{self.url_suffix}/",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/47.0.2526.106 Safari/537.36",

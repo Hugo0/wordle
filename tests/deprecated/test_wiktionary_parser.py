@@ -21,7 +21,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "webapp"))
 
 sys.path.insert(0, str(PROJECT_ROOT / "tests"))
 
-from wiktionary import parse_wikt_definition, WIKT_LANG_MAP
+from wiktionary import WIKT_LANG_MAP, parse_wikt_definition
 from wiktionary_test_utils import is_quality_definition
 
 FIXTURES_DIR = PROJECT_ROOT / "tests" / "fixtures" / "wiktionary"
@@ -37,7 +37,7 @@ def load_all_fixtures():
     fixtures = {}
     for f in sorted(FIXTURES_DIR.glob("*.json")):
         lang = f.stem
-        with open(f, "r", encoding="utf-8") as fh:
+        with open(f, encoding="utf-8") as fh:
             fixtures[lang] = json.load(fh)
     return fixtures
 
@@ -47,7 +47,7 @@ def generate_golden_test_cases():
     cases = []
     for f in sorted(FIXTURES_DIR.glob("*.json")):
         lang = f.stem
-        with open(f, "r", encoding="utf-8") as fh:
+        with open(f, encoding="utf-8") as fh:
             data = json.load(fh)
         for word, info in data.items():
             extract = info.get("extract")
@@ -98,7 +98,7 @@ def generate_quality_test_cases():
     cases = []
     for f in sorted(FIXTURES_DIR.glob("*.json")):
         lang = f.stem
-        with open(f, "r", encoding="utf-8") as fh:
+        with open(f, encoding="utf-8") as fh:
             data = json.load(fh)
         for word, info in data.items():
             parsed = info.get("parsed")

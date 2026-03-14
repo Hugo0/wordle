@@ -30,7 +30,7 @@ def load_word_list(lang_code):
     word_file = LANGUAGES_DIR / lang_code / f"{lang_code}_5words.txt"
     if not word_file.exists():
         return []
-    with open(word_file, "r", encoding="utf-8") as f:
+    with open(word_file, encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
 
