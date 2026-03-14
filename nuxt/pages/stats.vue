@@ -36,6 +36,8 @@ useSeoMeta({
             </div>
         </div>
 
-        <p class="text-neutral-500">Full statistics page — Phase 4</p>
+        <NuxtLink to="/" class="text-green-600 hover:underline text-sm mt-4 inline-block">
+            ← Back to languages
+        </NuxtLink>
     </div>
 </template>
