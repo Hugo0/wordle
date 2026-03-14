@@ -1,0 +1,78 @@
+{
+    "language_code": "yo",
+    "name": "Yoruba",
+    "name_native": "Yorùbá",
+    "timezone": "Africa/Lagos",
+    "right_to_left": "false",
+    "diacritic_map": {
+        "a": [
+            "à",
+            "á"
+        ],
+        "e": [
+            "è",
+            "é"
+        ],
+        "ẹ": [
+            "ẹ̀",
+            "ẹ́"
+        ],
+        "i": [
+            "ì",
+            "í"
+        ],
+        "o": [
+            "ò",
+            "ó"
+        ],
+        "ọ": [
+            "ọ̀",
+            "ọ́"
+        ],
+        "u": [
+            "ù",
+            "ú"
+        ]
+    },
+    "meta": {
+        "locale": "yo",
+        "wordle_native": "Wordle",
+        "title": "Eré ọ̀rọ̀ ojoojúmọ́",
+        "description": "Fojú inú wo ọ̀rọ̀ tí a fi pamọ́ ní ìgbìyànjú 6 (tàbí kéréje). Àdánwò tuntun lójoojúmọ́!",
+        "keywords": "Yorùbá, àdánwò, ọ̀rọ̀, eré, online, fojú inú wo, ojoojúmọ́"
+    },
+    "text": {
+        "subheader": "Yorùbá",
+        "next_word": "Ọ̀rọ̀ tó kàn",
+        "no_attempts": "O kò tíì gbìyànjú ọ̀rọ̀ kankan!",
+        "share": "Pín",
+        "notification-copied": "Ti dà sí clipboard",
+        "notification-word-not-valid": "Ọ̀rọ̀ kò tọ́",
+        "notification-partial-word": "Jọ̀wọ́ kọ ọ̀rọ̀ kíkún"
+    },
+    "help": {
+        "title": "Bí a ṣe ń ṣeré",
+        "title_2": "Àpẹẹrẹ",
+        "close": "Pa dé",
+        "text_1_1_1": "Fojú inú wo",
+        "text_1_1_2": "ní ìgbìyànjú mẹ́fà tàbí kéréje.",
+        "text_1_2": "Gbogbo ìgbìyànjú gbọ́dọ̀ jẹ́ ọ̀rọ̀ lẹ́tà márùn-ún tí ó tọ́. Tẹ bọ́tìnnì enter láti fi ránṣẹ́.",
+        "text_1_3": "Lẹ́yìn ìgbìyànjú, àwọn tile yóò yí àwọ̀ padà láti fi hàn lẹ́tà wo ló tọ́.",
+        "text_2_1": "wà nínú ọ̀rọ̀ náà tí ó sì wà ní ipò tí ó tọ́!",
+        "text_2_2": "wà nínú ọ̀rọ̀ náà, ṣùgbọ́n kì í ṣe ní ipò tí ó tọ́.",
+        "text_2_3": "kò sí nínú ọ̀rọ̀ tí o ń gbìyànjú láti fojú inú rí.",
+        "text_3": "Ọ̀rọ̀ tuntun lójoojúmọ́!"
+    },
+    "ui": {
+        "settings": "Ètò",
+        "dark_mode": "Ọ̀nà Dúdú",
+        "keyboard_layout": "Ètò bọ́tìnnì",
+        "games": "Àwọn Eré",
+        "all_languages": "Gbogbo Èdè",
+        "languages": "Àwọn Èdè",
+        "play": "Ṣeré",
+        "search_language": "Wá èdè...",
+        "definition": "Ìtumọ̀",
+        "look_up_on_wiktionary": "Wá ní Wiktionary"
+    }
+}

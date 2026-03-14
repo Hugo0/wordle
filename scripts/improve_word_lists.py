@@ -74,6 +74,12 @@ FREQ_LANG_MAP = {
     "nb": "no",
     "nn": "no",
     "hyw": "hy",
+    # New languages (2026-03)
+    "id": "id",
+    "ms": "ms",
+    "tl": "tl",
+    "sq": "sq",
+    "ur": "ur",
 }
 
 # Already high quality — skip
@@ -124,6 +130,12 @@ WORDFREQ_LANG_MAP = {
     # Close matches
     "hyw": "hy",
     # Not in wordfreq: br, eo, eu, gl, ka, is, la, ko
+    # New languages (2026-03)
+    "id": "id",
+    "ms": "ms",
+    "tl": "fil",  # wordfreq uses Filipino code
+    "ur": "ur",
+    # NOT included: sq, ha, yo, uz, om — wordfreq falls back to English/Russian
 }
 
 # Language names for SOURCES.md
@@ -168,6 +180,18 @@ LANG_NAMES = {
     "tr": "Turkish",
     "uk": "Ukrainian",
     "vi": "Vietnamese",
+    # New languages (2026-03)
+    "id": "Indonesian",
+    "ms": "Malay",
+    "tl": "Tagalog",
+    "sq": "Albanian",
+    "ur": "Urdu",
+    "ha": "Hausa",
+    "yo": "Yoruba",
+    "uz": "Uzbek",
+    "om": "Oromo",
+    "hi": "Hindi",
+    "mr": "Marathi",
 }
 
 
@@ -230,6 +254,238 @@ def load_common_names() -> set[str]:
         if line and not line.startswith("#"):
             names.add(line.lower())
     return names
+
+
+def load_profanity_blocklist() -> set[str]:
+    """Load global profanity blocklist — words that should never be daily answers."""
+    path = SCRIPT_DIR / "profanity_blocklist.txt"
+    if not path.exists():
+        return set()
+    words = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            words.add(line.lower())
+    return words
+
+
+# ── Additional data source loaders ────────────────────────────────────────────
+
+KAIKKI_DIR = SCRIPT_DIR / ".freq_data" / "kaikki"
+LEIPZIG_DIR = SCRIPT_DIR / ".freq_data" / "leipzig"
+HUNSPELL_DIR = SCRIPT_DIR / ".freq_data" / "hunspell"
+KBBI_DIR = SCRIPT_DIR / ".freq_data" / "kbbi"
+KATLA_DIR = SCRIPT_DIR / ".freq_data" / "katla"
+
+# Which extra sources are available per language (checked at runtime).
+# Sources are only used if the data files exist on disk (downloaded via download_sources.py).
+# "kaikki" = Wiktionary word extracts, "leipzig" = newspaper frequency data
+EXTRA_SOURCES = {
+    # New languages (2026-03)
+    "id": {"leipzig", "hunspell", "kaikki", "kbbi", "katla"},
+    "ms": {"leipzig", "kaikki"},
+    "tl": {"leipzig", "kaikki"},
+    "sq": {"leipzig", "hunspell", "kaikki"},
+    "ur": {"leipzig", "kaikki"},
+    "ha": {"leipzig", "kaikki"},
+    "yo": {"leipzig", "kaikki"},
+    "uz": {"leipzig", "kaikki"},
+    "om": {"leipzig"},
+    "hi": {"leipzig", "hunspell", "kaikki"},
+    "bn": {"leipzig", "kaikki"},
+    "mr": {"kaikki"},
+    # Existing languages — decontamination via kaikki + Leipzig
+    "de": {"leipzig", "kaikki"},
+    "es": {"leipzig", "kaikki"},
+    "fr": {"leipzig", "kaikki"},
+    "it": {"leipzig", "kaikki"},
+    "pt": {"leipzig", "kaikki"},
+    "nl": {"leipzig", "kaikki"},
+    "sv": {"leipzig", "kaikki"},
+    "da": {"leipzig", "kaikki"},
+    "hu": {"leipzig", "kaikki"},
+    "pl": {"leipzig", "kaikki"},
+    "cs": {"leipzig", "kaikki"},
+    "ro": {"leipzig", "kaikki"},
+    "hr": {"leipzig", "kaikki"},
+    "sk": {"leipzig", "kaikki"},
+    "sl": {"leipzig", "kaikki"},
+    "bg": {"leipzig", "kaikki"},
+    "uk": {"leipzig", "kaikki"},
+    "el": {"leipzig", "kaikki"},
+    "tr": {"leipzig", "kaikki"},
+    "ca": {"leipzig", "kaikki"},
+    "et": {"leipzig", "kaikki"},
+    "fi": {"leipzig", "kaikki"},
+    "sr": {"leipzig", "kaikki"},
+    "nb": {"leipzig", "kaikki"},
+    "nn": {"kaikki"},
+    "eu": {"kaikki"},
+    "gl": {"kaikki"},
+    "lv": {"kaikki"},
+    "lt": {"kaikki"},
+    "is": {"kaikki"},
+    "mk": {"kaikki"},
+    "ar": {"kaikki"},
+    "he": {"kaikki"},
+    "fa": {"kaikki"},
+    "hy": {"kaikki"},
+    "ka": {"kaikki"},
+    "la": {"kaikki"},
+}
+
+
+def _load_word_file(path: Path) -> set[str]:
+    """Load a simple word-per-line file as a set of lowercase words.
+
+    No length filter is applied — callers building native dictionaries need all
+    words for cross-reference, and grapheme-mode languages (Hindi, Bengali,
+    Marathi) would be mis-filtered by ``len(w) == 5`` anyway.
+    """
+    if not path.exists():
+        return set()
+    words = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        w = line.strip().lower()
+        if w and w.isalpha():
+            words.add(w)
+    return words
+
+
+def load_kaikki_words(lang: str) -> set[str]:
+    """Load 5-letter words extracted from kaikki definition data."""
+    return _load_word_file(KAIKKI_DIR / f"{lang}_words.txt")
+
+
+def load_hunspell_words(lang: str) -> set[str]:
+    """Load 5-letter words from Hunspell dictionary."""
+    path = HUNSPELL_DIR / f"{lang}.dic"
+    if not path.exists():
+        return set()
+    words = set()
+    for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+        # Strip affix flags after '/'
+        w = line.split("/")[0].strip().lower()
+        if len(w) == 5 and w.isalpha():
+            words.add(w)
+    return words
+
+
+def load_leipzig_words(lang: str) -> set[str]:
+    """Load 5-letter words from Leipzig Corpora frequency data."""
+    lang_dir = LEIPZIG_DIR / lang
+    if not lang_dir.exists():
+        return set()
+    words = set()
+    for f in lang_dir.glob("*-words.txt"):
+        for line in f.read_text(encoding="utf-8", errors="ignore").splitlines():
+            parts = line.strip().split("\t")
+            if len(parts) >= 2:
+                w = parts[1].strip().lower()
+                if len(w) == 5 and w.isalpha():
+                    words.add(w)
+    return words
+
+
+def load_kbbi_words() -> set[str]:
+    """Load KBBI Indonesian dictionary words."""
+    return _load_word_file(KBBI_DIR / "words.txt")
+
+
+def load_katla_words() -> tuple[set[str], set[str]]:
+    """Load Katla Indonesian Wordle answers and valid guesses."""
+    answers = _load_word_file(KATLA_DIR / "answers.txt")
+    valid = _load_word_file(KATLA_DIR / "valid.txt")
+    return answers, valid
+
+
+_english_words_cache: set[str] | None = None
+
+
+def load_english_words() -> set[str]:
+    """Load English 5-letter words for contamination detection."""
+    global _english_words_cache
+    if _english_words_cache is not None:
+        return _english_words_cache
+    en_path = DATA_DIR / "en" / "en_5words.txt"
+    words = set()
+    if en_path.exists():
+        words = {
+            line.strip().lower()
+            for line in en_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
+    # Also add kaikki English words
+    kaikki_en = load_kaikki_words("en")
+    words |= kaikki_en
+    _english_words_cache = words
+    return words
+
+
+def build_native_dictionary(lang: str, exclude_leipzig: bool = False) -> set[str]:
+    """Build a set of words confirmed to be in native-language dictionaries.
+
+    Combines all available sources for the language:
+    - Hunspell spell-check dictionary
+    - KBBI (Indonesian official dictionary)
+    - Katla (Indonesian Wordle curated list)
+    - kaikki.org (Wiktionary word extracts)
+    - Leipzig Corpora (newspaper/web frequency data, top words)
+
+    Args:
+        exclude_leipzig: If True, skip Leipzig from the native dict. Use this
+            when Leipzig is ALSO the frequency source (circular reference —
+            Leipzig newspaper data contains English code-switching in some
+            languages like Hausa/Yoruba).
+    """
+    native: set[str] = set()
+    sources = EXTRA_SOURCES.get(lang, set())
+
+    if "hunspell" in sources:
+        hw = load_hunspell_words(lang)
+        if hw:
+            print(f"  Native dict: +{len(hw)} from Hunspell")
+            native |= hw
+
+    if "kbbi" in sources:
+        kw = load_kbbi_words()
+        if kw:
+            print(f"  Native dict: +{len(kw)} from KBBI")
+            native |= kw
+
+    if "katla" in sources:
+        answers, valid = load_katla_words()
+        ka = answers | valid
+        if ka:
+            print(f"  Native dict: +{len(ka)} from Katla")
+            native |= ka
+
+    if "kaikki" in sources:
+        kk = load_kaikki_words(lang)
+        if kk:
+            print(f"  Native dict: +{len(kk)} from kaikki")
+            native |= kk
+
+    if "leipzig" in sources and not exclude_leipzig:
+        lw = load_leipzig_words(lang)
+        if lw:
+            print(f"  Native dict: +{len(lw)} from Leipzig")
+            native |= lw
+    elif "leipzig" in sources and exclude_leipzig:
+        print(f"  Native dict: skipping Leipzig (used as frequency source)")
+
+    if native:
+        print(f"  Native dictionary total: {len(native)} unique words")
+    return native
+
+
+def is_english_contamination(word: str, english_words: set[str], native_dict: set[str]) -> bool:
+    """Check if a word is English contamination (in English but not in any native dictionary)."""
+    if word not in english_words:
+        return False
+    if word in native_dict:
+        return False  # Legitimate loanword attested in native dictionaries
+    return True
 
 
 _ROMAN_RE = re.compile(r"^[ivxlcdm]+$")
@@ -348,12 +604,14 @@ def process_language(
     result = {"lang": lang, "status": "ok", "daily_count": 0, "supplement_count": 0}
 
     freq_code = FREQ_LANG_MAP.get(lang)
-    if not freq_code:
+    has_leipzig = bool(load_leipzig_words(lang))
+
+    if not freq_code and not has_leipzig:
         result["status"] = "skipped"
-        result["reason"] = "no FrequencyWords mapping"
+        result["reason"] = "no frequency source (FrequencyWords or Leipzig)"
         return result
 
-    if lang in EXCLUDE:
+    if lang in EXCLUDE and not has_leipzig:
         result["status"] = "skipped"
         result["reason"] = f"excluded ({lang})"
         return result
@@ -382,24 +640,41 @@ def process_language(
     print(f"  Existing supplement: {len(existing_supplement)}")
     print(f"  Character set: {len(char_set)} chars")
 
-    # Load frequency data
-    freq_data = load_frequency_data(freq_code)
-    if not freq_data:
-        result["status"] = "error"
-        result["reason"] = f"FrequencyWords file not found for {freq_code}"
-        return result
+    # Load frequency data — FrequencyWords primary, Leipzig fallback
+    valid_freq = {}
+    if freq_code:
+        freq_data = load_frequency_data(freq_code)
+        if freq_data:
+            valid_freq = {w: f for w, f in freq_data.items() if is_valid_word(w, char_set)}
+            print(f"  Valid 5-letter words in FrequencyWords: {len(valid_freq)}")
 
-    # Filter frequency data to valid 5-letter words for this language
-    valid_freq = {w: f for w, f in freq_data.items() if is_valid_word(w, char_set)}
-    print(f"  Valid 5-letter words in FrequencyWords: {len(valid_freq)}")
+    # If no FrequencyWords, use Leipzig newspaper frequency as primary
+    if not valid_freq and has_leipzig:
+        leipzig_dir = LEIPZIG_DIR / lang
+        for f in leipzig_dir.glob("*-words.txt"):
+            for line in f.read_text(encoding="utf-8", errors="ignore").splitlines():
+                parts = line.strip().split("\t")
+                if len(parts) >= 3:
+                    w = parts[1].strip().lower()
+                    if is_valid_word(w, char_set):
+                        valid_freq[w] = int(parts[2])
+        print(f"  Valid 5-letter words in Leipzig: {len(valid_freq)} (fallback frequency source)")
+
+    if not valid_freq:
+        result["status"] = "error"
+        result["reason"] = "no frequency data from any source"
+        return result
 
     # Load filters
     blocklist = load_blocklist(lang)
     common_names = load_common_names()
+    profanity = load_profanity_blocklist()
     if blocklist:
         print(f"  Blocklist: {len(blocklist)} words")
     if common_names:
         print(f"  Common names filter: {len(common_names)} names")
+    if profanity:
+        print(f"  Profanity filter: {len(profanity)} words")
 
     # === Generate daily_words.txt ===
     # Score existing words by frequency rank
@@ -419,14 +694,57 @@ def process_language(
     # (blocklist, Roman numerals, common names)
     scored_pre = len(scored)
     unscored_pre = len(unscored)
-    scored = [(w, f) for w, f in scored if w not in blocklist and not is_roman_numeral(w)]
-    unscored = [w for w in unscored if w not in blocklist and not is_roman_numeral(w)]
+    scored = [
+        (w, f)
+        for w, f in scored
+        if w not in blocklist and w not in profanity and not is_roman_numeral(w)
+    ]
+    unscored = [
+        w for w in unscored if w not in blocklist and w not in profanity and not is_roman_numeral(w)
+    ]
     if common_names:
         scored = [(w, f) for w, f in scored if w not in common_names]
         unscored = [w for w in unscored if w not in common_names]
     filtered_count = (scored_pre - len(scored)) + (unscored_pre - len(unscored))
     if filtered_count:
         print(f"  Filtered from daily candidates: {filtered_count} words")
+
+    # English contamination filter — remove words that are in English
+    # but not attested in any native-language dictionary.
+    # When Leipzig IS the frequency source, exclude it from the native dict
+    # to avoid circular validation (Leipzig newspapers contain English code-switching).
+    leipzig_is_freq_source = not freq_code and has_leipzig
+    native_dict = build_native_dictionary(lang, exclude_leipzig=leipzig_is_freq_source)
+    if native_dict:
+        english_words = load_english_words()
+        scored_pre2 = len(scored)
+        scored = [
+            (w, f) for w, f in scored if not is_english_contamination(w, english_words, native_dict)
+        ]
+        unscored = [
+            w for w in unscored if not is_english_contamination(w, english_words, native_dict)
+        ]
+        en_removed = scored_pre2 - len(scored)
+        if en_removed:
+            print(
+                f"  English contamination filter: removed {en_removed} words from daily candidates"
+            )
+
+    # Dictionary verification gate — only allow words confirmed by a dictionary
+    # source (kaikki, Leipzig, Hunspell, KBBI, Katla) as daily word candidates.
+    # This prevents subtitle junk (brand names, proper nouns, tech terms) from
+    # becoming daily answers. Words without dictionary verification are still
+    # valid guesses (they stay in the main word list), just not daily answers.
+    if native_dict:
+        scored_pre3 = len(scored)
+        scored = [(w, f) for w, f in scored if w in native_dict]
+        unscored = [w for w in unscored if w in native_dict]
+        dict_removed = scored_pre3 - len(scored)
+        if dict_removed:
+            print(
+                f"  Dictionary verification: kept {len(scored)} verified, "
+                f"excluded {dict_removed} unverified words"
+            )
 
     # Take top N
     target = min(daily_count, len(scored) + len(unscored))
@@ -569,6 +887,23 @@ def process_language(
             result["reason"] = f"{', '.join(existing)} already exist"
             return result
 
+    # Safety: freeze past daily words before modifying daily_words.txt
+    # This ensures historical words are preserved in word_history.txt (git-committed)
+    # even if the disk cache gets wiped on Render redeployments
+    if overwrite and daily_path.exists():
+        try:
+            from freeze_past_words import freeze_language
+
+            success, msg = freeze_language(lang)
+            print(f"  Freeze: {msg}")
+            if not success:
+                print("  ERROR: Failed to freeze past words. Aborting to prevent history loss.")
+                result["status"] = "error"
+                result["reason"] = "freeze_past_words failed"
+                return result
+        except ImportError:
+            print("  WARNING: freeze_past_words.py not found, skipping freeze safety check")
+
     # Write daily_words
     daily_path.write_text("\n".join(daily_words) + "\n", encoding="utf-8")
     print(f"  Wrote {len(daily_words)} words to {daily_path.name}")
@@ -673,53 +1008,18 @@ def download_frequency_words():
 
 
 def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
-    """Process all eligible languages."""
-    # Priority order: highest impact first
+    """Process all eligible languages (FrequencyWords + Leipzig-sourced)."""
+    import glob as _glob
+    import os
+
+    # Auto-discover all languages that have either FrequencyWords or Leipzig data
+    all_langs = sorted(
+        os.path.basename(d) for d in _glob.glob(str(DATA_DIR / "*")) if os.path.isdir(d)
+    )
+
+    # Filter to languages that can be processed (have frequency source)
     priority = [
-        # Tier 1: Emergency
-        "it",
-        "el",
-        "fr",
-        # Tier 2: High impact
-        "ar",
-        "es",
-        "da",
-        "ro",
-        "ru",
-        "sv",
-        "de",
-        # Tier 3: Medium
-        "hr",
-        "hu",
-        "he",
-        "tr",
-        "ca",
-        "nl",
-        "pt",
-        "mk",
-        "sr",
-        "et",
-        "uk",
-        "sk",
-        "nb",
-        "nn",
-        # Tier 4: Lower traffic
-        "cs",
-        "sl",
-        "eu",
-        "fa",
-        "ka",
-        "ko",
-        "lt",
-        "lv",
-        "is",
-        "eo",
-        "la",
-        "vi",
-        "hy",
-        "hyw",
-        "gl",
-        "br",
+        lang for lang in all_langs if lang in FREQ_LANG_MAP or (LEIPZIG_DIR / lang).exists()
     ]
 
     results = []
@@ -757,6 +1057,48 @@ def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
     print(f"\nProcessed: {ok_count}/{len(results)} languages")
 
 
+def audit_contamination(langs: list[str]):
+    """Audit English contamination in language word lists."""
+    english_words = load_english_words()
+    print(f"English reference: {len(english_words)} words\n")
+
+    for lang in langs:
+        words = load_word_list(lang)
+        if not words:
+            print(f"{lang}: no word list found")
+            continue
+
+        daily_path = DATA_DIR / lang / f"{lang}_daily_words.txt"
+        daily = []
+        if daily_path.exists():
+            daily = [
+                l.strip() for l in daily_path.read_text(encoding="utf-8").splitlines() if l.strip()
+            ]
+
+        native_dict = build_native_dictionary(lang)
+        en_overlap = {w for w in words if w in english_words}
+        contamination = {w for w in en_overlap if w not in native_dict} if native_dict else set()
+        daily_contam = {w for w in daily if w in contamination} if daily else set()
+
+        print(f"{'=' * 50}")
+        print(f"{lang} ({LANG_NAMES.get(lang, lang)})")
+        print(f"  Main list: {len(words)} words")
+        print(f"  Daily words: {len(daily)}")
+        print(f"  Native dictionary: {len(native_dict)} words")
+        print(f"  English overlaps: {len(en_overlap)} ({100 * len(en_overlap) / len(words):.1f}%)")
+        print(
+            f"  Contamination (EN & not native): {len(contamination)} ({100 * len(contamination) / len(words):.1f}%)"
+        )
+        if daily:
+            print(
+                f"  Daily contamination: {len(daily_contam)} ({100 * len(daily_contam) / len(daily):.1f}%)"
+            )
+        if contamination:
+            sample = sorted(contamination)[:15]
+            print(f"  Sample contamination: {sample}")
+        print()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="FrequencyWords-based word list improvement pipeline"
@@ -789,6 +1131,10 @@ def main():
     batch.add_argument("--dry-run", action="store_true", help="Report only, no file writes")
     batch.add_argument("--overwrite", action="store_true", help="Overwrite existing files")
 
+    # Audit contamination
+    audit_cmd = subparsers.add_parser("audit", help="Audit English contamination in a language")
+    audit_cmd.add_argument("langs", nargs="+", help="Language codes to audit")
+
     args = parser.parse_args()
 
     if args.command == "download":
@@ -804,6 +1150,8 @@ def main():
             sys.exit(1)
     elif args.command == "batch":
         batch_process(args.daily_count, args.dry_run, args.overwrite)
+    elif args.command == "audit":
+        audit_contamination(args.langs)
     else:
         parser.print_help()
 

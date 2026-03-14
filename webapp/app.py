@@ -146,14 +146,23 @@ language_codes = [f.split("/")[-1] for f in glob.glob(f"{data_dir}/languages/*")
 language_characters = {lang: load_characters(lang) for lang in language_codes}
 
 
-def load_words(lang):
+def load_words(lang, lang_config=None):
     """loads the words and does some basic QA"""
+    import grapheme as _grapheme
+
     _5words = []
     with open(f"{data_dir}/languages/{lang}/{lang}_5words.txt") as f:
         for line in f:
             _5words.append(line.strip())
-    # QA
-    _5words = [word.lower() for word in _5words if len(word) == 5 and word.isalpha()]
+    # QA — use grapheme cluster counting for languages like Hindi
+    use_graphemes = lang_config and lang_config.get("grapheme_mode") == "true"
+    word_len = _grapheme.length if use_graphemes else len
+    # For grapheme_mode languages (Devanagari etc.), skip isalpha() since
+    # combining marks (virama, anusvara, vowel signs) fail Python's isalpha()
+    if use_graphemes:
+        _5words = [word for word in _5words if word.strip() and word_len(word) == 5]
+    else:
+        _5words = [word.lower() for word in _5words if word_len(word) == 5 and word.isalpha()]
     # remove words without correct characters
     _5words = [
         word for word in _5words if all([char in language_characters[lang] for char in word])
@@ -236,7 +245,7 @@ def load_daily_words(lang):
         return None
 
 
-def load_curated_schedule(lang):
+def load_word_history(lang):
     """Load ordered curated schedule if it exists.
 
     The curated schedule is an ordered list of words for specific days:
@@ -247,7 +256,7 @@ def load_curated_schedule(lang):
     This takes priority over daily_words and blocklist-filtered main list.
     When the schedule is exhausted, falls back to the next tier.
     """
-    schedule_path = f"{data_dir}languages/{lang}/{lang}_curated_schedule.txt"
+    schedule_path = f"{data_dir}languages/{lang}/{lang}_word_history.txt"
     try:
         with open(schedule_path) as f:
             schedule = []
@@ -440,14 +449,17 @@ def idx_to_date(day_idx):
     return datetime.datetime(1970, 1, 1) + datetime.timedelta(days=n_days)
 
 
-language_codes_5words = {l_code: load_words(l_code) for l_code in language_codes}
+# Load configs first (needed for grapheme_mode in load_words)
+language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
+language_codes_5words = {
+    l_code: load_words(l_code, language_configs.get(l_code, {})) for l_code in language_codes
+}
 language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
 }
 language_blocklists = {l_code: load_blocklist(l_code) for l_code in language_codes}
 language_daily_words = {l_code: load_daily_words(l_code) for l_code in language_codes}
-language_curated_schedules = {l_code: load_curated_schedule(l_code) for l_code in language_codes}
-language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
+language_word_historys = {l_code: load_word_history(l_code) for l_code in language_codes}
 
 # Load default language config for UI translations on homepage
 with open(f"{data_dir}default_language_config.json") as f:
@@ -455,20 +467,35 @@ with open(f"{data_dir}default_language_config.json") as f:
 
 keyboards = {k: load_keyboard(k) for k in language_codes}
 
+# Layer 2 safety: verify curated schedules cover all past days
+# This catches cases where daily_words.txt was modified without running freeze_past_words
+_todays_idx_at_startup = get_todays_idx()
+_days_since_migration = _todays_idx_at_startup - MIGRATION_DAY_IDX
+for _lc in language_codes:
+    _schedule = language_word_historys.get(_lc)
+    _schedule_len = len(_schedule) if _schedule else 0
+    if _schedule_len < _days_since_migration and language_daily_words.get(_lc):
+        # Only warn for languages that have daily_words (i.e., curated word selection)
+        logging.warning(
+            f"WORD SAFETY: {_lc} word_history has {_schedule_len} entries "
+            f"but {_days_since_migration} days have passed since migration. "
+            f"Run: uv run python scripts/freeze_past_words.py {_lc}"
+        )
+
 
 def _compute_word_for_day(lang_code, day_idx):
     """Compute the daily word from word lists (no caching)."""
     word_list = language_codes_5words[lang_code]
     blocklist = language_blocklists[lang_code]
     daily_words = language_daily_words.get(lang_code)
-    curated_schedule = language_curated_schedules.get(lang_code)
+    word_history = language_word_historys.get(lang_code)
 
     if day_idx <= MIGRATION_DAY_IDX:
         return get_daily_word_legacy(word_list, set(), day_idx)
     else:
         schedule_idx = day_idx - MIGRATION_DAY_IDX - 1
-        if curated_schedule and schedule_idx < len(curated_schedule):
-            return curated_schedule[schedule_idx]
+        if word_history and schedule_idx < len(word_history):
+            return word_history[schedule_idx]
         if daily_words:
             return get_daily_word_consistent_hash(daily_words, set(), day_idx, lang_code)
         return get_daily_word_consistent_hash(word_list, blocklist, day_idx, lang_code)
@@ -653,7 +680,7 @@ class Language:
         # Curated daily word list (if available, used instead of filtered main list)
         self.daily_words = language_daily_words.get(language_code)
         # Ordered curated schedule (highest priority for daily word selection)
-        self.curated_schedule = language_curated_schedules.get(language_code)
+        self.word_history = language_word_historys.get(language_code)
 
         # Get IANA timezone from config (defaults to UTC if not specified)
         self.timezone = self.config.get("timezone", "UTC")
@@ -964,7 +991,7 @@ def _build_stats_data():
         daily = language_daily_words.get(lc)
         n_daily = len(daily) if daily else 0
         n_blocklist = len(language_blocklists.get(lc, set()))
-        has_schedule = bool(language_curated_schedules.get(lc))
+        has_schedule = bool(language_word_historys.get(lc))
         total_daily_words_all += n_daily if n_daily else n_words
 
         # Aggregate community stats from cached files (if any)

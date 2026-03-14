@@ -1,0 +1,104 @@
+# Global profanity/slur blocklist for daily word selection.
+# Words here are never chosen as daily answers but remain valid guesses.
+# Language-agnostic — covers English profanity that leaks into subtitle data.
+#
+# This is NOT a comprehensive profanity filter. It targets words that:
+# 1. Appear in FrequencyWords/wordfreq subtitle data across many languages
+# 2. Would be offensive or inappropriate as a daily Wordle answer
+# 3. Are recognizable as profanity regardless of the target language
+
+# English profanity/slurs (common in subtitle data)
+bitch
+nigga
+nigge
+pussy
+whore
+slut
+sluts
+cunt
+cunts
+fuck
+fucks
+fucke
+shit
+shits
+titty
+penis
+dicks
+dildo
+asses
+boner
+boobs
+horny
+kinky
+orgys
+porno
+rapey
+recum
+semen
+sperm
+thots
+twats
+wanks
+
+# Internet/brand terms (not real words in any language)
+gmail
+https
+http
+yahoo
+email
+login
+tweet
+click
+skype
+tiktk
+
+# Brand/company names (not real words)
+tesla
+apple
+honda
+volvo
+pepsi
+cisco
+rolex
+bosch
+intel
+canon
+adobe
+xerox
+nokia
+sharp
+lexus
+prada
+kodak
+epson
+gucci
+nikon
+uber
+
+# Political figures / famous names
+obama
+trump
+putin
+biden
+mario
+luigi
+
+# Internet/tech terms
+email
+troll
+skype
+tweet
+pixel
+cyber
+yahoo
+login
+click
+https
+imgur
+
+# Tech product names
+mysql
+macos
+linux
+vulva

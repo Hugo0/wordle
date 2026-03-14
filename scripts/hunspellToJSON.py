@@ -193,11 +193,7 @@ class AFF:
 
                     # Take note of compound flags
                     for comp in compound:
-                        if (
-                            comp != "*"
-                            and comp != "?"
-                            and comp not in self.compound_flags
-                        ):
+                        if comp != "*" and comp != "?" and comp not in self.compound_flags:
                             self.compound_flags += comp
 
                     self.compound_rules.append(CompoundRule(compound))
@@ -248,13 +244,7 @@ class DICT:
             result += new_line + tab + '"keys": ["' + '","'.join(self.keys) + '"],'
 
         if self.compounds:
-            result += (
-                new_line
-                + tab
-                + '"compounds": ["'
-                + '","'.join(self.regex_compounds)
-                + '"],'
-            )
+            result += new_line + tab + '"compounds": ["' + '","'.join(self.regex_compounds) + '"],'
 
         if self.rep_table:
             result += (
@@ -270,9 +260,7 @@ class DICT:
         for word in self.words:
             val = self.words[word]
             comma = "," if i < len(self.words) - 1 else ""
-            result += (
-                new_line + tab + tab + '"' + word + '":[' + ",".join(val) + "]" + comma
-            )
+            result += new_line + tab + tab + '"' + word + '":[' + ",".join(val) + "]" + comma
             i += 1
 
         result += new_line + tab + "}"
@@ -300,10 +288,7 @@ class DICT:
                 # Derivatives possible
                 for flag in flags:
                     # Compound?
-                    if (
-                        flag in self.aff.compound_flags
-                        or flag == self.aff.only_in_compound_flag
-                    ):
+                    if flag in self.aff.compound_flags or flag == self.aff.only_in_compound_flag:
                         for rule in self.aff.compound_rules:
                             rule.add_flag_values(word, flag)
                     else:
@@ -333,19 +318,13 @@ class DICT:
 
                                         # Check if key is to be generated
                                         if self.key:
-                                            self.words[word].append(
-                                                str(self.keys.index(add_sub))
-                                            )
+                                            self.words[word].append(str(self.keys.index(add_sub)))
                                         else:
                                             # Generate addsub next to base word
-                                            self.words[word].append(
-                                                rule.generate_add_sub()
-                                            )
+                                            self.words[word].append(rule.generate_add_sub())
                                     else:
                                         # Default, insert complete derivative word
-                                        self.words[word].append(
-                                            rule.create_derivative(word)
-                                        )
+                                        self.words[word].append(rule.create_derivative(word))
             else:
                 # No derivatives.
                 self.words[word] = []
@@ -449,9 +428,7 @@ def main():
                         os.getcwd() + "/" + dict_path.split(".")[0] + ".json", "wb"
                     )
                 else:
-                    out_file = open(
-                        os.getcwd() + "/" + dict_path.split(".")[0] + ".json", "w"
-                    )
+                    out_file = open(os.getcwd() + "/" + dict_path.split(".")[0] + ".json", "w")
 
             # Output json file
             dictionary.generate_json(out_file, args.gzip)
