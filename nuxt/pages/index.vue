@@ -220,7 +220,7 @@ function onKeyDown(e: KeyboardEvent): void {
 
 function installPwa(): void {
     const nuxtApp = useNuxtApp();
-    const pwa = nuxtApp.$pwa as
+    const pwa = (nuxtApp as any).$pwaInstall as
         | { install: () => void }
         | undefined;
     if (pwa) {

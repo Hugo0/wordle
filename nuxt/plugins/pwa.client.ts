@@ -174,7 +174,7 @@ export default defineNuxtPlugin(() => {
 
     return {
         provide: {
-            pwa: {
+            pwaInstall: {
                 install,
                 dismiss,
                 showBanner,
