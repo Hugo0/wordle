@@ -1492,13 +1492,18 @@ export const createGameApp = () => {
             },
 
             setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
-                // Don't allow changing difficulty mid-game — shake and show warning
+                // Can go easier mid-game but not harder
+                const levels = { easy: 0, normal: 1, hard: 2 };
                 const currentLevel = this.hardMode
                     ? 'hard'
                     : this.allow_any_word
                       ? 'easy'
                       : 'normal';
-                if (level !== currentLevel && this.active_row > 0 && !this.game_over) {
+                if (
+                    levels[level] > levels[currentLevel] &&
+                    this.active_row > 0 &&
+                    !this.game_over
+                ) {
                     this.difficultyShake = true;
                     this.difficultyWarning = true;
                     setTimeout(() => {
