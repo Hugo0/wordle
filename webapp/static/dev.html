@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Wordle Global - Dev Tools</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #121213; color: #d7dadc;
+            padding: 16px; max-width: 500px; margin: 0 auto;
+        }
+        h1 { font-size: 20px; margin-bottom: 16px; color: #6aaa63; }
+        h2 { font-size: 14px; margin: 20px 0 8px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .card {
+            background: #1a1a1b; border: 1px solid #333; border-radius: 8px;
+            padding: 12px; margin-bottom: 8px;
+        }
+        .row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+        .label { color: #999; font-size: 13px; }
+        .value { font-family: monospace; font-size: 13px; }
+        .value.ok { color: #6aaa63; }
+        .value.warn { color: #c9b458; }
+        .value.bad { color: #dc3545; }
+        button {
+            width: 100%; padding: 14px; margin: 4px 0; border: none; border-radius: 8px;
+            font-size: 15px; font-weight: 600; cursor: pointer;
+            transition: transform 0.1s, opacity 0.1s;
+        }
+        button:active { transform: scale(0.97); opacity: 0.8; }
+        .btn-green { background: #6aaa63; color: white; }
+        .btn-yellow { background: #c9b458; color: white; }
+        .btn-gray { background: #3a3a3c; color: #d7dadc; }
+        .btn-blue { background: #4a90d9; color: white; }
+        #log {
+            background: #0d0d0d; border: 1px solid #333; border-radius: 8px;
+            padding: 12px; margin-top: 8px; font-family: monospace; font-size: 12px;
+            max-height: 200px; overflow-y: auto; white-space: pre-wrap;
+        }
+        .log-entry { padding: 2px 0; border-bottom: 1px solid #1a1a1b; }
+        a { color: #6aaa63; }
+    </style>
+</head>
+<body>
+    <h1>Wordle Global Dev Tools</h1>
+    <p style="font-size: 13px; color: #666; margin-bottom: 16px;">
+        <a href="/">&larr; Back to game</a>
+    </p>
+
+    <h2>Haptic Feedback</h2>
+    <div class="card" id="haptic-status"></div>
+
+    <button class="btn-green" onclick="testVibrate(50)">Vibrate 50ms (game default)</button>
+    <button class="btn-yellow" onclick="testVibrate(200)">Vibrate 200ms (strong)</button>
+    <button class="btn-blue" onclick="testPattern()">Pattern [100, 50, 100, 50, 200]</button>
+    <button class="btn-gray" onclick="testIOS()">iOS Checkbox Trick</button>
+    <button class="btn-green" onclick="enableHaptics()">Force Enable Haptics</button>
+
+    <h2>Device Info</h2>
+    <div class="card" id="device-info"></div>
+
+    <h2>PWA Status</h2>
+    <div class="card" id="pwa-status"></div>
+
+    <h2>Log</h2>
+    <div id="log"></div>
+
+    <script>
+        const logEl = document.getElementById('log');
+        function log(msg) {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = `${new Date().toLocaleTimeString()} ${msg}`;
+            logEl.prepend(entry);
+        }
+
+        function val(v, cls) { return `<span class="value ${cls || ''}">${v}</span>`; }
+        function row(label, value, cls) {
+            return `<div class="row"><span class="label">${label}</span>${val(value, cls)}</div>`;
+        }
+
+        // Haptic status
+        function refreshHapticStatus() {
+            const hasVibrate = 'vibrate' in navigator;
+            const pointerCoarse = window.matchMedia('(pointer: coarse)').matches;
+            const feedbackPref = localStorage.getItem('feedbackEnabled');
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+            document.getElementById('haptic-status').innerHTML = [
+                row('navigator.vibrate', hasVibrate ? 'Available' : 'Not available', hasVibrate ? 'ok' : 'bad'),
+                row('pointer: coarse', pointerCoarse ? 'Yes (touch)' : 'No (mouse)', pointerCoarse ? 'ok' : 'warn'),
+                row('feedbackEnabled', feedbackPref ?? 'not set (defaults true)', feedbackPref === 'false' ? 'bad' : 'ok'),
+                row('Standalone (PWA)', isStandalone ? 'Yes' : 'No', isStandalone ? 'ok' : 'warn'),
+            ].join('');
+        }
+
+        // Device info
+        function refreshDeviceInfo() {
+            const ua = navigator.userAgent;
+            const isAndroid = /Android/i.test(ua);
+            const isIOS = /iPhone|iPad|iPod/i.test(ua);
+            const isBrave = navigator.brave?.isBrave ? 'Yes' : 'No';
+            const platform = isAndroid ? 'Android' : isIOS ? 'iOS' : 'Desktop/Other';
+
+            document.getElementById('device-info').innerHTML = [
+                row('Platform', platform),
+                row('Brave Browser', isBrave),
+                row('Touch points', navigator.maxTouchPoints),
+                row('User Agent', ua.substring(0, 60) + '...'),
+            ].join('');
+        }
+
+        // PWA status
+        function refreshPWAStatus() {
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                navigator.standalone === true;
+            const hasSW = 'serviceWorker' in navigator;
+
+            document.getElementById('pwa-status').innerHTML = [
+                row('Standalone mode', isStandalone ? 'Yes' : 'No', isStandalone ? 'ok' : 'warn'),
+                row('Service Worker API', hasSW ? 'Available' : 'Not available', hasSW ? 'ok' : 'bad'),
+            ].join('');
+        }
+
+        // Test functions
+        function testVibrate(ms) {
+            if ('vibrate' in navigator) {
+                const result = navigator.vibrate(ms);
+                log(`navigator.vibrate(${ms}) => ${result}`);
+            } else {
+                log('navigator.vibrate not available');
+            }
+        }
+
+        function testPattern() {
+            if ('vibrate' in navigator) {
+                const pattern = [100, 50, 100, 50, 200];
+                const result = navigator.vibrate(pattern);
+                log(`navigator.vibrate([${pattern}]) => ${result}`);
+            } else {
+                log('navigator.vibrate not available');
+            }
+        }
+
+        function testIOS() {
+            try {
+                const label = document.createElement('label');
+                label.ariaHidden = 'true';
+                label.style.display = 'none';
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.setAttribute('switch', '');
+                label.appendChild(input);
+                document.head.appendChild(label);
+                label.click();
+                document.head.removeChild(label);
+                log('iOS checkbox trick triggered');
+            } catch (e) {
+                log(`iOS trick failed: ${e.message}`);
+            }
+        }
+
+        function enableHaptics() {
+            localStorage.setItem('feedbackEnabled', 'true');
+            log('feedbackEnabled set to "true" in localStorage');
+            refreshHapticStatus();
+        }
+
+        // Init
+        refreshHapticStatus();
+        refreshDeviceInfo();
+        refreshPWAStatus();
+        log('Dev tools loaded');
+    </script>
+</body>
+</html>
