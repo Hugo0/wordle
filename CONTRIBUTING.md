@@ -67,6 +67,7 @@ wordle/
 - `pytest tests/` - Validates word lists, configs, daily word algorithm
 - `pnpm test` - TypeScript unit tests for game logic
 - CI runs both on every PR
+- ~4 pytest xfails expected (pre-existing data quality issues)
 
 ## Code Style
 
@@ -141,22 +142,6 @@ UI text is in `webapp/data/languages/{lang}/language_config.json`. Please ensure
 - All tests must pass
 - One logical change per PR
 
-## Important Notes
-
-1. **Word lists are shuffled**: Don't assume alphabetical order
-2. **Seed 42 is critical**: Changing it would change all daily words
-3. **~145 pytest xfails expected**: Pre-existing data quality issues (keyboards, word lists) are marked as `xfail`
-4. **RTL languages**: Some languages (Hebrew, Arabic) are right-to-left
-5. **Deployment**: Hosted on Render, auto-deploys from main. Uses `uv` for Python deps.
-
-## Don't
-
-- Change random seed (42) - breaks word selection globally
-- Assume word lists are alphabetical - they're shuffled
-- Forget to run `pnpm build` before deploying
-- Add console.logs to production code
-- Modify `webapp/static/dist/` manually (auto-generated)
-
 ## Do
 
 - Add try-catch around localStorage (fails in private browsing)
@@ -164,30 +149,25 @@ UI text is in `webapp/data/languages/{lang}/language_config.json`. Please ensure
 - Consider RTL languages (Hebrew, Arabic, Persian)
 - Keep bundle size small (~75KB gzipped target)
 
-## Data Quality Issues (Known)
+## Don't
 
-- Arabic: Some words not exactly 5 chars
-- Portuguese: Has duplicates and whitespace
-- Several languages: Character set mismatches
-
-These are tracked by pytest but not blocking - they're data issues, not code issues.
+- Change random seed (42) — breaks word selection globally
+- Assume word lists are alphabetical — they're shuffled
+- Add console.logs to production code
+- Modify `webapp/static/dist/` manually (auto-generated)
 
 ## License Agreement
 
 By submitting a pull request, you agree that:
 
 1. Your contributions are licensed under the [MIT License](LICENSE).
-2. You have the right to submit the contribution (it's your original work or you have permission).
+2. You have the right to submit the contribution.
 3. For word lists and language data, you confirm the data is from a source that permits redistribution, or is your own compilation.
 
 ## Language Maintainers
 
-We're looking for native speakers to help maintain specific languages. If you'd like to become a maintainer for your language, open an issue to let us know!
+We're looking for native speakers to help maintain specific languages. If you'd like to become a maintainer for your language, open an issue!
 
 Current maintainers:
 - **Gaelic (gd)**: @akerbeltz
 - **Te Reo Māori (mi)**: @LeTink
-
-## Questions?
-
-Open an issue or reach out if you have questions about contributing.

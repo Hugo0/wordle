@@ -5,42 +5,72 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Hugo0/wordle/pulls)
 
-[wordle.global](https://wordle.global/) — Open Source Wordle in 65+ languages
+[wordle.global](https://wordle.global/) — the daily word guessing game in 65+ languages.
 
-**Pull requests welcome!** Especially for language addition and curation. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, architecture, and guidelines.
+## Report a Problem
 
-Contact: wordle@hugo0.com
+Found a bad word, a missing character, or a bug? [Open an issue](https://github.com/Hugo0/wordle/issues/new) — include the language and what went wrong.
+
+Common reports:
+- **Bad daily word** — offensive, not a real word, too obscure, or from the wrong language
+- **Missing keyboard character** — a letter you need isn't on the virtual keyboard
+- **Wrong translation** — UI text that doesn't sound natural in your language
+- **Bug** — anything broken in the game
+
+## Improve a Language
+
+You don't need to be a developer to help! Native speakers are the best people to improve word lists and translations.
+
+### Fix or improve the word list
+
+Each language has a word list at `webapp/data/languages/{lang}/{lang}_5words.txt` — one word per line. You can [edit it directly on GitHub](https://github.com/Hugo0/wordle/tree/main/webapp/data/languages) (click the pencil icon) to:
+- Remove bad words (offensive, obscure, not real)
+- Add missing common words
+- Fix misspellings
+
+GitHub will walk you through creating a pull request.
+
+### Translate the UI
+
+Each language has translations in `webapp/data/languages/{lang}/language_config.json`. If text is in English when it should be in your language, you can edit the file on GitHub to fix it.
+
+### Add a new language
+
+1. Create a folder: `webapp/data/languages/{lang_code}/`
+2. Add a word list: `{lang_code}_5words.txt` (one 5-letter word per line, lowercase)
+3. (Optional) Add a keyboard layout, UI translations, and supplement words
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full details and dev setup instructions.
 
 ## Language Coverage
 
 65 languages supported. 42 have supplement word lists (additional valid guesses), and 38 have frequency-curated daily word lists.
 
-Top languages by total valid words: Arabic (54K), Hebrew (65K), Breton (22K), Polish (42K), Spanish (18K), English (13K), German (12K), Turkish (12K).
+Top languages by total valid words: Hebrew (65K), Arabic (54K), Polish (42K), Breton (22K), Spanish (18K), English (13K), German (12K), Turkish (12K).
 
-Each language folder in `webapp/data/languages/` contains a `SOURCES.md` with details.
+## For Developers
 
-## TODO
+See [CONTRIBUTING.md](CONTRIBUTING.md) for architecture, setup, code style, and guidelines.
 
-- [x] Word definitions — show the definition of the daily word after the game (via Wiktionary API)
-- [ ] Native speaker review of daily word lists for remaining languages
-- [ ] Consolidate per-language data files — there are currently 3 overlapping mechanisms controlling daily word selection: `_daily_words.txt` (curated subset), `_blocklist.txt` (exclusion list), and `_curated_schedule.txt` (day-by-day override), plus the fallback to `_5words.txt`. These could be unified into a single curated daily list per language.
-- [ ] User accounts — persistent game history, cross-device sync, leaderboards (passkeys / magic links / OAuth TBD)
-- [ ] Comments on daily word pages — community discussion, word quality feedback (Giscus MVP, custom system later with accounts)
+```bash
+git clone https://github.com/Hugo0/wordle.git && cd wordle
+pnpm install && pnpm dev
+```
 
 ## Credits
 
 - Josh Wardle (original Wordle creator)
-- NYT (presumably holds the copyright or some IP rights)
 - Elizabeth S (inventor of the Wordle grid)
-- Nadia H (lovely beta-tester)
-- Daniel Rodriguez (Tailwind inspiration)
-- [Wordles of the World](https://gitlab.com/rwmpelstilzchen/wordles) for a community-sourced list of Wordle derivatives
-- All users, issue reporters, and PR contributors!
+- [Wordles of the World](https://gitlab.com/rwmpelstilzchen/wordles) — community-sourced list of Wordle derivatives
+- All [contributors](https://github.com/Hugo0/wordle/graphs/contributors), issue reporters, and language maintainers!
 
 ## Data Sources
 
-- [NYT Wordle](https://www.nytimes.com/games/wordle/index.html) — English word list
+- [wooorm/dictionaries](https://github.com/wooorm/dictionaries) — most word lists (Hunspell-based, by [Titus Wormer](https://wooorm.com/))
+- [FrequencyWords](https://github.com/hermitdave/FrequencyWords) — OpenSubtitles frequency data
+- [wordfreq](https://github.com/rspeer/wordfreq) — multi-source word frequency data
 - [Kotus](https://kaino.kotus.fi/sanat/nykysuomi/) — Finnish word list
-- [wooorm/dictionaries](https://github.com/wooorm/dictionaries) — most other word lists (Hunspell-based, by [Titus Wormer](https://wooorm.com/))
-- [FrequencyWords](https://github.com/hermitdave/FrequencyWords) — OpenSubtitles frequency data for daily word ranking and supplement generation
-- [wordfreq](https://github.com/rspeer/wordfreq) — Multi-source word frequency data (Wikipedia, Reddit, Twitter, Google Books) for additional supplement words
+
+## License
+
+[MIT](LICENSE)
