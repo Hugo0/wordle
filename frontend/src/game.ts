@@ -10,6 +10,7 @@ import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
 import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
 import analytics from './analytics';
+import { identifyUser, updateUserProperties } from './posthog';
 import { calculateCommunityPercentile } from './stats';
 import {
     fetchDefinition,
@@ -81,6 +82,115 @@ const normalizedSupplementMap = buildNormalizedWordMap(word_list_supplement, nor
 // Positional character normalization (for Hebrew sofit, Greek final sigma, etc.)
 const positionalConfig: PositionalConfig = config || {};
 const finalFormReverseMap = buildFinalFormReverseMap(positionalConfig);
+
+// Module-level timing state for guess tracking (avoids window pollution)
+let gameStartTime = 0;
+let lastGuessTime = 0;
+let firstGuessFired = false;
+
+/**
+ * Initialize analytics session — called once from created().
+ * Handles: PostHog identify, page view, retention signals, multi-language,
+ * referral landing, and enriched game_start.
+ */
+function initAnalyticsSession(
+    langCode: string,
+    stats: GameStats,
+    gameResults: Record<string, GameResult[]>,
+): void {
+    analytics.initErrorTracking(langCode);
+    analytics.trackPageView(langCode);
+    analytics.trackPWASession(langCode);
+    analytics.trackGamePageReady(langCode);
+
+    // Identify user and get computed properties (single-pass over game_results)
+    const userProps = identifyUser(gameResults);
+
+    analytics.resetFrustrationState();
+
+    // First-seen date for user age calculation
+    let firstSeenDate: string | undefined;
+    try {
+        firstSeenDate = localStorage.getItem('first_seen_date') ?? undefined;
+    } catch {
+        // localStorage unavailable
+    }
+    const userAgeDays = analytics.daysSince(firstSeenDate);
+
+    // Returning player signals: streak broken, re-engagement
+    const isReturning = stats.n_games > 0;
+    if (isReturning) {
+        const langResults = gameResults[langCode];
+        const lastResult = langResults?.[langResults.length - 1];
+        const daysSinceLast = lastResult?.date
+            ? analytics.daysSince(lastResult.date as string)
+            : undefined;
+
+        if (
+            daysSinceLast !== undefined &&
+            daysSinceLast > 1 &&
+            stats.current_streak === 0 &&
+            stats.longest_streak > 0
+        ) {
+            analytics.trackStreakBroken(langCode, stats.longest_streak, daysSinceLast);
+        }
+
+        if (daysSinceLast !== undefined && daysSinceLast >= 7) {
+            analytics.trackReEngagement(langCode, daysSinceLast);
+        }
+
+        analytics.trackReturningPlayer(
+            langCode,
+            daysSinceLast ?? 0,
+            stats.current_streak,
+            userProps.languagesPlayed.length,
+        );
+    }
+
+    // New language detection
+    const previousLanguages = userProps.languagesPlayed.filter((l) => l !== langCode);
+    if (previousLanguages.length > 0 && (!gameResults[langCode] || gameResults[langCode].length === 0)) {
+        analytics.trackSecondLanguageStart(langCode, previousLanguages);
+    }
+
+    // Multi-language session (fire only on threshold crossing: 1 → 2)
+    try {
+        const sessionLangs = JSON.parse(
+            sessionStorage.getItem('session_languages') || '[]',
+        ) as string[];
+        const wasNew = !sessionLangs.includes(langCode);
+        if (wasNew) {
+            sessionLangs.push(langCode);
+            sessionStorage.setItem('session_languages', JSON.stringify(sessionLangs));
+            if (sessionLangs.length === 2) {
+                analytics.trackMultiLanguageSession(langCode, sessionLangs);
+            }
+        }
+    } catch {
+        // sessionStorage unavailable
+    }
+
+    // Referral landing (from shared links with ?r= param)
+    const referralParam = new URLSearchParams(window.location.search).get('r');
+    if (referralParam) {
+        analytics.trackReferralLanding(langCode, referralParam);
+    }
+
+    // Enriched game start
+    analytics.trackGameStart({
+        language: langCode,
+        is_returning: isReturning,
+        current_streak: stats.current_streak,
+        total_games_played: userProps.totalGames,
+        total_languages_played: userProps.languagesPlayed.length,
+        user_age_days: userAgeDays,
+    });
+
+    // Initialize timing state
+    gameStartTime = Date.now();
+    lastGuessTime = Date.now();
+    firstGuessFired = false;
+}
 
 // Vue component data type
 interface GameData {
@@ -347,32 +457,16 @@ export const createGameApp = () => {
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
 
-            // Initialize analytics
+            // Initialize analytics session
             const langCode = this.config?.language_code || 'unknown';
-            analytics.initErrorTracking(langCode);
-            analytics.trackPageView(langCode);
-            analytics.trackPWASession(langCode);
+            initAnalyticsSession(langCode, this.stats, this.game_results);
 
-            // Reset frustration state for new session
-            analytics.resetFrustrationState();
-
-            // Track game start with returning player context
-            const isReturning = this.stats.n_games > 0;
-            analytics.trackGameStart({
-                language: langCode,
-                is_returning: isReturning,
-                current_streak: this.stats.current_streak,
-            });
-
-            // Store game start time for duration tracking
-            (window as Window & { _gameStartTime?: number })._gameStartTime = Date.now();
-
-            // Set up abandon tracking
+            // Set up abandon tracking (needs access to live Vue state)
             analytics.initAbandonTracking(() => ({
                 language: langCode,
                 activeRow: this.active_row,
                 gameOver: this.game_over,
-                lastGuessValid: true, // We don't track invalid state, assume valid
+                lastGuessValid: true,
             }));
         },
 
@@ -659,6 +753,31 @@ export const createGameApp = () => {
                         // Reset consecutive invalid counter on valid word
                         analytics.onValidWord();
 
+                        // Track first guess delay (time from page load to first interaction)
+                        if (!firstGuessFired && gameStartTime) {
+                            const delaySeconds = Math.floor(
+                                (Date.now() - gameStartTime) / 1000,
+                            );
+                            analytics.trackFirstGuessDelay(
+                                this.config?.language_code || 'unknown',
+                                delaySeconds,
+                            );
+                            firstGuessFired = true;
+                        }
+
+                        // Track time between guesses
+                        if (lastGuessTime && this.active_row > 0) {
+                            const secondsSinceLast = Math.floor(
+                                (Date.now() - lastGuessTime) / 1000,
+                            );
+                            analytics.trackGuessTime(
+                                this.config?.language_code || 'unknown',
+                                this.active_row + 1,
+                                secondsSinceLast,
+                            );
+                        }
+                        lastGuessTime = Date.now();
+
                         // Track valid guess
                         analytics.trackGuessSubmit(
                             this.config?.language_code || 'unknown',
@@ -873,8 +992,6 @@ export const createGameApp = () => {
                 // Track game completion with session-aggregated frustration state
                 const langCode = this.config?.language_code || 'unknown';
                 const frustrationState = analytics.resetFrustrationState();
-                const gameStartTime = (window as Window & { _gameStartTime?: number })
-                    ._gameStartTime;
                 const timeToComplete = gameStartTime
                     ? Math.floor((Date.now() - gameStartTime) / 1000)
                     : undefined;
@@ -921,10 +1038,8 @@ export const createGameApp = () => {
                 // Track game completion (loss) with session-aggregated frustration state
                 const lossLangCode = this.config?.language_code || 'unknown';
                 const lossFrustrationState = analytics.resetFrustrationState();
-                const lossGameStartTime = (window as Window & { _gameStartTime?: number })
-                    ._gameStartTime;
-                const lossTimeToComplete = lossGameStartTime
-                    ? Math.floor((Date.now() - lossGameStartTime) / 1000)
+                const lossTimeToComplete = gameStartTime
+                    ? Math.floor((Date.now() - gameStartTime) / 1000)
                     : undefined;
 
                 analytics.trackGameComplete({
@@ -956,6 +1071,9 @@ export const createGameApp = () => {
                 } catch {
                     // localStorage unavailable or quota exceeded
                 }
+
+                // Update PostHog person properties with latest game data
+                updateUserProperties(this.game_results);
             },
 
             showNotification(message: string, duration = 3): void {
@@ -1238,6 +1356,12 @@ export const createGameApp = () => {
                 const onSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
                     this.shareButtonState = 'success';
                     analytics.trackShareSuccess({ ...shareParams, method });
+                    analytics.trackShareContentGenerated(
+                        langCode,
+                        this.game_won,
+                        this.attempts,
+                        this.emoji_board,
+                    );
                     setTimeout(() => {
                         this.shareButtonState = 'idle';
                     }, 2000);
@@ -1442,6 +1566,7 @@ export const createGameApp = () => {
                                     },
                                     wordPageUrl
                                 );
+                                analytics.trackDefinitionView(langCode, def.source);
                             })
                             .catch(() => {
                                 container.style.display = 'none';
