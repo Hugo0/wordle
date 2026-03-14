@@ -163,6 +163,9 @@ def generate_image(lang_code, result, challenge_text, is_rtl):
         if len(lines) <= 2:
             break
 
+    if not lines:
+        return img.convert("P", palette=Image.ADAPTIVE, colors=64)
+
     if len(lines) >= 2:
         line1 = lines[0]
         line2 = " ".join(lines[1:])
@@ -199,7 +202,7 @@ def load_language_configs():
         merged_text = {**defaults.get("text", {}), **lang_config.get("text", {})}
         configs[lang_code] = {
             "name_native": lang_config.get("name_native", lang_config.get("name", lang_code)),
-            "is_rtl": lang_config.get("right_to_left", "false") == "true",
+            "is_rtl": str(lang_config.get("right_to_left", "false")).lower() == "true",
             "share_challenge_win": merged_text.get(
                 "share_challenge_win",
                 "I got today's Wordle in {n} tries. Can you beat me?",
