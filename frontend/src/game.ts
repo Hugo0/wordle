@@ -869,6 +869,7 @@ export const createGameApp = () => {
                         analytics.trackInvalidWordAndUpdateState({
                             language: this.config?.language_code || 'unknown',
                             attempt_number: this.active_row + 1,
+                            word: typedWord,
                         });
                         analytics.trackGuessSubmit(
                             this.config?.language_code || 'unknown',
