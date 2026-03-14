@@ -774,6 +774,23 @@ def process_language(
             result["reason"] = f"{', '.join(existing)} already exist"
             return result
 
+    # Safety: freeze past daily words before modifying daily_words.txt
+    # This ensures historical words are preserved in curated_schedule.txt (git-committed)
+    # even if the disk cache gets wiped on Render redeployments
+    if overwrite and daily_path.exists():
+        try:
+            from freeze_past_words import freeze_language
+
+            success, msg = freeze_language(lang)
+            print(f"  Freeze: {msg}")
+            if not success:
+                print("  ERROR: Failed to freeze past words. Aborting to prevent history loss.")
+                result["status"] = "error"
+                result["reason"] = "freeze_past_words failed"
+                return result
+        except ImportError:
+            print("  WARNING: freeze_past_words.py not found, skipping freeze safety check")
+
     # Write daily_words
     daily_path.write_text("\n".join(daily_words) + "\n", encoding="utf-8")
     print(f"  Wrote {len(daily_words)} words to {daily_path.name}")
