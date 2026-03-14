@@ -703,6 +703,22 @@ def process_language(
                 f"  English contamination filter: removed {en_removed} words from daily candidates"
             )
 
+    # Dictionary verification gate — only allow words confirmed by a dictionary
+    # source (kaikki, Leipzig, Hunspell, KBBI, Katla) as daily word candidates.
+    # This prevents subtitle junk (brand names, proper nouns, tech terms) from
+    # becoming daily answers. Words without dictionary verification are still
+    # valid guesses (they stay in the main word list), just not daily answers.
+    if native_dict:
+        scored_pre3 = len(scored)
+        scored = [(w, f) for w, f in scored if w in native_dict]
+        unscored = [w for w in unscored if w in native_dict]
+        dict_removed = scored_pre3 - len(scored)
+        if dict_removed:
+            print(
+                f"  Dictionary verification: kept {len(scored)} verified, "
+                f"excluded {dict_removed} unverified words"
+            )
+
     # Take top N
     target = min(daily_count, len(scored) + len(unscored))
     daily_words = [w for w, _ in scored[:target]]
