@@ -115,7 +115,15 @@ interface InvalidWordParams {
 }
 
 interface SettingsChangeParams {
-    setting: 'dark_mode' | 'haptics' | 'sound' | 'feedback' | 'word_info' | 'definitions';
+    setting:
+        | 'dark_mode'
+        | 'haptics'
+        | 'sound'
+        | 'feedback'
+        | 'word_info'
+        | 'definitions'
+        | 'hard_mode'
+        | 'high_contrast';
     value: boolean;
 }
 

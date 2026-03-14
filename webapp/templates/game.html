@@ -369,6 +369,57 @@
                             </div>
 
                             <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- Difficulty selector (3-way: Easy / Normal / Hard) -->
+                            <div>
+                                <p class="text-sm font-semibold mb-2">{{ language.config.ui.difficulty or "Difficulty" }}</p>
+                                <div class="flex rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-600"
+                                     :class="{ shake: difficultyShake }">
+                                    <button type="button"
+                                        v-on:click="setDifficulty('easy')"
+                                        class="flex-1 py-2 px-1 text-xs font-medium transition-colors"
+                                        :class="allow_any_word && !hardMode
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'">
+                                        Easy
+                                    </button>
+                                    <button type="button"
+                                        v-on:click="setDifficulty('normal')"
+                                        class="flex-1 py-2 px-1 text-xs font-medium transition-colors border-x border-neutral-300 dark:border-neutral-600"
+                                        :class="!allow_any_word && !hardMode
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'">
+                                        Normal
+                                    </button>
+                                    <button type="button"
+                                        v-on:click="setDifficulty('hard')"
+                                        class="flex-1 py-2 px-1 text-xs font-medium transition-colors"
+                                        :class="hardMode
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'">
+                                        Hard
+                                    </button>
+                                </div>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
+                                   v-if="allow_any_word && !hardMode">Any word accepted, even if not in the dictionary</p>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
+                                   v-if="!allow_any_word && !hardMode">Guesses must be valid words from the dictionary</p>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
+                                   v-if="hardMode">Revealed hints must be used in subsequent guesses</p>
+                                <p class="text-xs text-amber-500 mt-1"
+                                   v-if="difficultyWarning">Difficulty can only be increased before your first guess</p>
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
+                            <!-- High Contrast / Colorblind mode toggle -->
+                            <div class="flex flex-row items-center">
+                                <div class="flex-grow">
+                                    <p>High Contrast</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400">Colorblind-friendly colors</p>
+                                </div>
+                                {{ toggle_switch('highContrast', 'toggleHighContrast()', 'High Contrast') }}
+                            </div>
+
+                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
                             <!-- toggle button for right_to_left -->
                             <div class="flex flex-row">
                                 <p class="flex-grow">{{ language.config.ui.right_to_left or "Right to left" }}</p>
@@ -413,12 +464,6 @@
                             </form>
                             {% endif %}
 
-                            <div class="border-t-2 border-gray-300 dark:border-gray-600"></div>
-                            <div class="flex flex-row">
-                                <p class="flex-grow">{{ language.config.ui.easy_mode or "Allow any word" }} (<span class="italic">{{ language.config.ui.easy_mode_label or "easy mode" }}</span>)</p>
-                                <!-- toggle at the end -->
-                                <input type="checkbox" v-model="allow_any_word" />
-                            </div>
 
 
                             <!-- Install App button (only shown when not already installed) -->

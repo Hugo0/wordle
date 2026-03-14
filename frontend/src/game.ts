@@ -240,6 +240,11 @@ interface GameData {
     communityIsTopScore: boolean;
     communityTotal: number;
     communityStatsLink: string | null;
+    hardMode: boolean;
+    highContrast: boolean;
+    difficultyShake: boolean;
+    difficultyWarning: boolean;
+    maxDifficultyUsed: number;
 }
 
 export const createGameApp = () => {
@@ -275,6 +280,11 @@ export const createGameApp = () => {
                 animating: false,
                 shaking_row: -1,
                 pendingKeyUpdates: [] as Array<{ char: string; state: KeyState } | undefined>,
+                hardMode: false,
+                highContrast: false,
+                difficultyShake: false,
+                difficultyWarning: false,
+                maxDifficultyUsed: 1, // 0=easy, 1=normal, 2=hard — tracks highest level any guess was made at
 
                 notification: {
                     show: false,
@@ -456,6 +466,10 @@ export const createGameApp = () => {
             this.loadLanguages();
             this.loadFeedbackPreference();
             this.loadWordInfoPreference();
+            this.loadDifficultyPreference();
+            this.loadHighContrastPreference();
+            // Set max difficulty based on current setting (if game in progress, this is what they started at)
+            this.maxDifficultyUsed = this.currentDifficultyLevel();
             this.stats = this.calculateStats(this.config?.language_code);
             this.total_stats = this.calculateTotalStats();
             this.time_until_next_day = this.getTimeUntilNextDay();
@@ -489,6 +503,9 @@ export const createGameApp = () => {
                         ? this.attempts
                         : parseInt(String(this.attempts), 10) || 0;
                 this.submitWordStats(this.game_won, attempts);
+            } else {
+                // Auto-show tutorial on first visit for this language
+                this.maybeShowTutorial();
             }
         },
 
@@ -751,6 +768,17 @@ export const createGameApp = () => {
                     const canonicalWord = this.checkWord(typedWord);
 
                     if (canonicalWord) {
+                        // Hard mode validation: revealed hints must be used
+                        if (this.hardMode) {
+                            const hardModeError = this.checkHardMode(canonicalWord);
+                            if (hardModeError) {
+                                haptic.error();
+                                this.shakeRow(this.active_row);
+                                this.showNotification(hardModeError);
+                                return;
+                            }
+                        }
+
                         haptic.confirm(); // Valid word submitted
 
                         // Reset consecutive invalid counter on valid word
@@ -795,6 +823,11 @@ export const createGameApp = () => {
                         }
 
                         this.updateColors();
+                        // Track highest difficulty a guess was submitted at
+                        this.maxDifficultyUsed = Math.max(
+                            this.maxDifficultyUsed,
+                            this.currentDifficultyLevel()
+                        );
                         const revealingRow = this.active_row;
                         this.active_row++;
                         this.active_cell = 0;
@@ -1107,6 +1140,8 @@ export const createGameApp = () => {
 
             getEmojiBoard(): string {
                 let board = '';
+                const greenEmoji = this.highContrast ? '🟦' : '🟩';
+                const yellowEmoji = this.highContrast ? '🟧' : '🟨';
                 for (let i = 0; i < this.tile_classes.length; i++) {
                     const row = this.tile_classes[i];
                     if (!row) continue;
@@ -1117,9 +1152,9 @@ export const createGameApp = () => {
                             !tileClass.includes('semicorrect') &&
                             !tileClass.includes('incorrect')
                         ) {
-                            board += '🟩';
+                            board += greenEmoji;
                         } else if (tileClass.includes('semicorrect')) {
-                            board += '🟨';
+                            board += yellowEmoji;
                         } else if (tileClass.includes('incorrect')) {
                             board += '⬜';
                         } else {
@@ -1458,7 +1493,8 @@ export const createGameApp = () => {
 
             getShareText(): string {
                 const name = this.config?.name_native || this.config?.language_code || '';
-                return `Wordle ${name} #${this.todays_idx} — ${this.attempts}/6\n\n${this.emoji_board}`;
+                const hardModeFlag = this.hardMode ? ' *' : '';
+                return `Wordle ${name} #${this.todays_idx} — ${this.attempts}/6${hardModeFlag}\n\n${this.emoji_board}`;
             },
 
             toggleDarkMode(): void {
@@ -1543,6 +1579,154 @@ export const createGameApp = () => {
                     if (this.wordInfoEnabled && this.game_over) {
                         this.loadDefinition();
                     }
+                });
+            },
+
+            maybeShowTutorial(): void {
+                const langCode = this.config?.language_code || 'unknown';
+                try {
+                    const tutorialKey = `tutorial_shown_${langCode}`;
+                    if (localStorage.getItem(tutorialKey)) return;
+
+                    // Check if there's existing game state for this language
+                    const pageName = window.location.pathname.split('/').pop() || 'home';
+                    const hasGameState = localStorage.getItem(pageName);
+                    if (hasGameState) return;
+
+                    this.showHelpModal = true;
+                    localStorage.setItem(tutorialKey, 'true');
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            loadDifficultyPreference(): void {
+                try {
+                    const storedHard = localStorage.getItem('hardMode');
+                    if (storedHard !== null) {
+                        this.hardMode = storedHard === 'true';
+                    }
+                    const storedEasy = localStorage.getItem('allowAnyWord');
+                    if (storedEasy !== null) {
+                        this.allow_any_word = storedEasy === 'true';
+                    }
+                    // Can't be both
+                    if (this.hardMode && this.allow_any_word) {
+                        this.allow_any_word = false;
+                    }
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            currentDifficultyLevel(): number {
+                return this.hardMode ? 2 : this.allow_any_word ? 0 : 1;
+            },
+
+            setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
+                const levels = { easy: 0, normal: 1, hard: 2 };
+                // Can't go higher than the max difficulty any guess was submitted at
+                if (
+                    levels[level] > this.maxDifficultyUsed &&
+                    this.active_row > 0 &&
+                    !this.game_over
+                ) {
+                    this.difficultyShake = true;
+                    this.difficultyWarning = true;
+                    setTimeout(() => {
+                        this.difficultyShake = false;
+                    }, 500);
+                    return;
+                }
+                this.difficultyWarning = false;
+                this.allow_any_word = level === 'easy';
+                this.hardMode = level === 'hard';
+                try {
+                    localStorage.setItem('hardMode', this.hardMode ? 'true' : 'false');
+                    localStorage.setItem('allowAnyWord', this.allow_any_word ? 'true' : 'false');
+                } catch {
+                    // localStorage unavailable
+                }
+                analytics.trackSettingsChange({
+                    setting: 'hard_mode',
+                    value: this.hardMode,
+                });
+            },
+
+            /**
+             * Validate a guess against hard mode rules.
+             * Returns an error message if invalid, or null if valid.
+             */
+            checkHardMode(guess: string): string | null {
+                // Normalize a char for comparison (diacritics + positional variants)
+                const norm = (char: string): string => {
+                    const positionalNorm = toRegularForm(char, finalFormReverseMap);
+                    return (normalizeMap.get(positionalNorm) || positionalNorm).toLowerCase();
+                };
+
+                const guessNorm = [...guess].map(norm);
+
+                // Check all previously submitted rows for hints
+                for (let r = 0; r < this.active_row; r++) {
+                    const row = this.tiles[r];
+                    const classes = this.tile_classes[r];
+                    if (!row || !classes) continue;
+
+                    for (let c = 0; c < row.length; c++) {
+                        const tileClass = classes[c] || '';
+                        const letter = row[c];
+                        if (!letter) continue;
+
+                        const letterNorm = norm(letter);
+
+                        if (
+                            tileClass.includes('correct') &&
+                            !tileClass.includes('semicorrect') &&
+                            !tileClass.includes('incorrect')
+                        ) {
+                            // Green: must be in the same position
+                            if (guessNorm[c] !== letterNorm) {
+                                return `Hard mode: ${letter.toUpperCase()} must be in position ${c + 1}`;
+                            }
+                        } else if (tileClass.includes('semicorrect')) {
+                            // Yellow: must appear somewhere in the guess
+                            if (!guessNorm.includes(letterNorm)) {
+                                return `Hard mode: guess must contain ${letter.toUpperCase()}`;
+                            }
+                        }
+                    }
+                }
+                return null;
+            },
+
+            loadHighContrastPreference(): void {
+                try {
+                    const stored = localStorage.getItem('highContrast');
+                    if (stored === 'true') {
+                        this.highContrast = true;
+                        document.documentElement.classList.add('high-contrast');
+                    }
+                } catch {
+                    // localStorage unavailable
+                }
+            },
+
+            toggleHighContrast(): void {
+                this.$nextTick(() => {
+                    if (this.highContrast) {
+                        document.documentElement.classList.add('high-contrast');
+                    } else {
+                        document.documentElement.classList.remove('high-contrast');
+                    }
+                    try {
+                        localStorage.setItem('highContrast', this.highContrast ? 'true' : 'false');
+                    } catch {
+                        // localStorage unavailable
+                    }
+                    analytics.trackSettingsChange({
+                        setting: 'high_contrast',
+                        value: this.highContrast,
+                    });
                 });
             },
 
