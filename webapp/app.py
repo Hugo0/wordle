@@ -146,14 +146,23 @@ language_codes = [f.split("/")[-1] for f in glob.glob(f"{data_dir}/languages/*")
 language_characters = {lang: load_characters(lang) for lang in language_codes}
 
 
-def load_words(lang):
+def load_words(lang, lang_config=None):
     """loads the words and does some basic QA"""
+    import grapheme as _grapheme
+
     _5words = []
     with open(f"{data_dir}/languages/{lang}/{lang}_5words.txt") as f:
         for line in f:
             _5words.append(line.strip())
-    # QA
-    _5words = [word.lower() for word in _5words if len(word) == 5 and word.isalpha()]
+    # QA — use grapheme cluster counting for languages like Hindi
+    use_graphemes = lang_config and lang_config.get("grapheme_mode") == "true"
+    word_len = _grapheme.length if use_graphemes else len
+    # For grapheme_mode languages (Devanagari etc.), skip isalpha() since
+    # combining marks (virama, anusvara, vowel signs) fail Python's isalpha()
+    if use_graphemes:
+        _5words = [word for word in _5words if word.strip() and word_len(word) == 5]
+    else:
+        _5words = [word.lower() for word in _5words if word_len(word) == 5 and word.isalpha()]
     # remove words without correct characters
     _5words = [
         word for word in _5words if all([char in language_characters[lang] for char in word])
@@ -440,14 +449,17 @@ def idx_to_date(day_idx):
     return datetime.datetime(1970, 1, 1) + datetime.timedelta(days=n_days)
 
 
-language_codes_5words = {l_code: load_words(l_code) for l_code in language_codes}
+# Load configs first (needed for grapheme_mode in load_words)
+language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
+language_codes_5words = {
+    l_code: load_words(l_code, language_configs.get(l_code, {})) for l_code in language_codes
+}
 language_codes_5words_supplements = {
     l_code: load_supplemental_words(l_code) for l_code in language_codes
 }
 language_blocklists = {l_code: load_blocklist(l_code) for l_code in language_codes}
 language_daily_words = {l_code: load_daily_words(l_code) for l_code in language_codes}
 language_curated_schedules = {l_code: load_curated_schedule(l_code) for l_code in language_codes}
-language_configs = {l_code: load_language_config(l_code) for l_code in language_codes}
 
 # Load default language config for UI translations on homepage
 with open(f"{data_dir}default_language_config.json") as f:

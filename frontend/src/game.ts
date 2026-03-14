@@ -9,6 +9,7 @@ import { haptic, setHapticsEnabled } from './haptics';
 import { sound, setSoundEnabled } from './sounds';
 import { buildNormalizeMap, buildNormalizedWordMap, normalizeWord } from './diacritics';
 import { buildFinalFormReverseMap, toFinalForm, toRegularForm } from './positional';
+import { splitWord } from './graphemes';
 import analytics from './analytics';
 import { calculateCommunityPercentile } from './stats';
 import {
@@ -498,10 +499,14 @@ export const createGameApp = () => {
                     return fullNormalize(c1) === fullNormalize(c2);
                 };
 
+                // Split target word into characters (grapheme clusters for Hindi, codepoints otherwise)
+                const graphemeMode = this.config?.grapheme_mode === 'true';
+                const targetChars = splitWord(targetWord, graphemeMode);
+
                 // Count characters in target word using FULLY NORMALIZED forms
                 // This ensures "ä" and "a" are counted together, and "כ" and "ך" are counted together
                 const charCounts: Record<string, number> = {};
-                for (const char of targetWord) {
+                for (const char of targetChars) {
                     const normalizedChar = fullNormalize(char);
                     charCounts[normalizedChar] = (charCounts[normalizedChar] || 0) + 1;
                 }
@@ -515,7 +520,7 @@ export const createGameApp = () => {
                 // First pass: mark correct positions (using normalized comparison)
                 for (let i = 0; i < row.length; i++) {
                     const guessChar = row[i];
-                    const targetChar = targetWord[i];
+                    const targetChar = targetChars[i];
                     if (guessChar && targetChar && fullCharsMatch(guessChar, targetChar)) {
                         // Use splice for Vue 3 reactivity
                         classes.splice(i, 1, `correct ${baseClass}`);
@@ -537,9 +542,7 @@ export const createGameApp = () => {
                     const count = charCounts[normalizedGuess];
 
                     // Check if this normalized character exists in target (also normalized)
-                    const targetHasChar = [...targetWord].some((tc) =>
-                        fullCharsMatch(guessChar, tc)
-                    );
+                    const targetHasChar = targetChars.some((tc) => fullCharsMatch(guessChar, tc));
 
                     if (targetHasChar && count !== undefined && count > 0) {
                         // Use splice for Vue 3 reactivity
@@ -633,8 +636,10 @@ export const createGameApp = () => {
                         // Update tiles to show canonical form (with diacritics)
                         // This displays the correct accented letters after submission
                         if (row && canonicalWord !== typedWord) {
-                            for (let i = 0; i < canonicalWord.length; i++) {
-                                row.splice(i, 1, canonicalWord[i]);
+                            const graphemeMode = this.config?.grapheme_mode === 'true';
+                            const canonicalChars = splitWord(canonicalWord, graphemeMode);
+                            for (let i = 0; i < canonicalChars.length; i++) {
+                                row.splice(i, 1, canonicalChars[i]);
                             }
                         }
 

@@ -6,6 +6,7 @@ requires-python = ">=3.11"
 dependencies = [
     "flask>=3.1.0",
     "flask-cors>=6.0.0",
+    "grapheme>=0.6.0",
     "gunicorn>=24.0.0",
     "openai>=2.21.0",
     "pillow>=12.1.1",

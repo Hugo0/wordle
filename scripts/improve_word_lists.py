@@ -74,6 +74,12 @@ FREQ_LANG_MAP = {
     "nb": "no",
     "nn": "no",
     "hyw": "hy",
+    # New languages (2026-03)
+    "id": "id",
+    "ms": "ms",
+    "tl": "tl",
+    "sq": "sq",
+    "ur": "ur",
 }
 
 # Already high quality — skip
@@ -124,6 +130,12 @@ WORDFREQ_LANG_MAP = {
     # Close matches
     "hyw": "hy",
     # Not in wordfreq: br, eo, eu, gl, ka, is, la, ko
+    # New languages (2026-03)
+    "id": "id",
+    "ms": "ms",
+    "tl": "fil",  # wordfreq uses Filipino code
+    "ur": "ur",
+    # NOT included: sq, ha, yo, uz, om — wordfreq falls back to English/Russian
 }
 
 # Language names for SOURCES.md
@@ -168,6 +180,18 @@ LANG_NAMES = {
     "tr": "Turkish",
     "uk": "Ukrainian",
     "vi": "Vietnamese",
+    # New languages (2026-03)
+    "id": "Indonesian",
+    "ms": "Malay",
+    "tl": "Tagalog",
+    "sq": "Albanian",
+    "ur": "Urdu",
+    "ha": "Hausa",
+    "yo": "Yoruba",
+    "uz": "Uzbek",
+    "om": "Oromo",
+    "hi": "Hindi",
+    "mr": "Marathi",
 }
 
 
@@ -230,6 +254,169 @@ def load_common_names() -> set[str]:
         if line and not line.startswith("#"):
             names.add(line.lower())
     return names
+
+
+# ── Additional data source loaders ────────────────────────────────────────────
+
+KAIKKI_DIR = SCRIPT_DIR / ".freq_data" / "kaikki"
+LEIPZIG_DIR = SCRIPT_DIR / ".freq_data" / "leipzig"
+HUNSPELL_DIR = SCRIPT_DIR / ".freq_data" / "hunspell"
+KBBI_DIR = SCRIPT_DIR / ".freq_data" / "kbbi"
+KATLA_DIR = SCRIPT_DIR / ".freq_data" / "katla"
+
+# Which extra sources are available per language (checked at runtime)
+EXTRA_SOURCES = {
+    "id": {"leipzig", "hunspell", "kaikki", "kbbi", "katla"},
+    "ms": {"leipzig", "kaikki"},
+    "tl": {"leipzig", "kaikki"},
+    "sq": {"leipzig", "hunspell", "kaikki"},
+    "ur": {"leipzig", "kaikki"},
+    "ha": {"leipzig", "kaikki"},
+    "yo": {"leipzig", "kaikki"},
+    "uz": {"leipzig"},
+    "om": {"leipzig"},
+    "hi": {"leipzig", "hunspell", "kaikki"},
+}
+
+
+def _load_word_file(path: Path) -> set[str]:
+    """Load a simple word-per-line file as a set of 5-letter lowercase words."""
+    if not path.exists():
+        return set()
+    words = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        w = line.strip().lower()
+        if len(w) == 5 and w.isalpha():
+            words.add(w)
+    return words
+
+
+def load_kaikki_words(lang: str) -> set[str]:
+    """Load 5-letter words extracted from kaikki definition data."""
+    return _load_word_file(KAIKKI_DIR / f"{lang}_words.txt")
+
+
+def load_hunspell_words(lang: str) -> set[str]:
+    """Load 5-letter words from Hunspell dictionary."""
+    path = HUNSPELL_DIR / f"{lang}.dic"
+    if not path.exists():
+        return set()
+    words = set()
+    for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
+        # Strip affix flags after '/'
+        w = line.split("/")[0].strip().lower()
+        if len(w) == 5 and w.isalpha():
+            words.add(w)
+    return words
+
+
+def load_leipzig_words(lang: str) -> set[str]:
+    """Load 5-letter words from Leipzig Corpora frequency data."""
+    lang_dir = LEIPZIG_DIR / lang
+    if not lang_dir.exists():
+        return set()
+    words = set()
+    for f in lang_dir.glob("*-words.txt"):
+        for line in f.read_text(encoding="utf-8", errors="ignore").splitlines():
+            parts = line.strip().split("\t")
+            if len(parts) >= 2:
+                w = parts[1].strip().lower()
+                if len(w) == 5 and w.isalpha():
+                    words.add(w)
+    return words
+
+
+def load_kbbi_words() -> set[str]:
+    """Load KBBI Indonesian dictionary words."""
+    return _load_word_file(KBBI_DIR / "words.txt")
+
+
+def load_katla_words() -> tuple[set[str], set[str]]:
+    """Load Katla Indonesian Wordle answers and valid guesses."""
+    answers = _load_word_file(KATLA_DIR / "answers.txt")
+    valid = _load_word_file(KATLA_DIR / "valid.txt")
+    return answers, valid
+
+
+_english_words_cache: set[str] | None = None
+
+
+def load_english_words() -> set[str]:
+    """Load English 5-letter words for contamination detection."""
+    global _english_words_cache
+    if _english_words_cache is not None:
+        return _english_words_cache
+    en_path = DATA_DIR / "en" / "en_5words.txt"
+    words = set()
+    if en_path.exists():
+        words = {
+            line.strip().lower()
+            for line in en_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
+    # Also add kaikki English words
+    kaikki_en = load_kaikki_words("en")
+    words |= kaikki_en
+    _english_words_cache = words
+    return words
+
+
+def build_native_dictionary(lang: str) -> set[str]:
+    """Build a set of words confirmed to be in native-language dictionaries.
+
+    Combines all available sources for the language:
+    - Hunspell spell-check dictionary
+    - KBBI (Indonesian official dictionary)
+    - Katla (Indonesian Wordle curated list)
+    - kaikki.org (Wiktionary word extracts)
+    - Leipzig Corpora (newspaper/web frequency data, top words)
+    """
+    native: set[str] = set()
+    sources = EXTRA_SOURCES.get(lang, set())
+
+    if "hunspell" in sources:
+        hw = load_hunspell_words(lang)
+        if hw:
+            print(f"  Native dict: +{len(hw)} from Hunspell")
+            native |= hw
+
+    if "kbbi" in sources:
+        kw = load_kbbi_words()
+        if kw:
+            print(f"  Native dict: +{len(kw)} from KBBI")
+            native |= kw
+
+    if "katla" in sources:
+        answers, valid = load_katla_words()
+        ka = answers | valid
+        if ka:
+            print(f"  Native dict: +{len(ka)} from Katla")
+            native |= ka
+
+    if "kaikki" in sources:
+        kk = load_kaikki_words(lang)
+        if kk:
+            print(f"  Native dict: +{len(kk)} from kaikki")
+            native |= kk
+
+    if "leipzig" in sources:
+        lw = load_leipzig_words(lang)
+        if lw:
+            print(f"  Native dict: +{len(lw)} from Leipzig")
+            native |= lw
+
+    if native:
+        print(f"  Native dictionary total: {len(native)} unique words")
+    return native
+
+
+def is_english_contamination(word: str, english_words: set[str], native_dict: set[str]) -> bool:
+    """Check if a word is English contamination (in English but not in any native dictionary)."""
+    if word not in english_words:
+        return False
+    if word in native_dict:
+        return False  # Legitimate loanword attested in native dictionaries
+    return True
 
 
 _ROMAN_RE = re.compile(r"^[ivxlcdm]+$")
@@ -427,6 +614,24 @@ def process_language(
     filtered_count = (scored_pre - len(scored)) + (unscored_pre - len(unscored))
     if filtered_count:
         print(f"  Filtered from daily candidates: {filtered_count} words")
+
+    # English contamination filter — remove words that are in English
+    # but not attested in any native-language dictionary
+    native_dict = build_native_dictionary(lang)
+    if native_dict:
+        english_words = load_english_words()
+        scored_pre2 = len(scored)
+        scored = [
+            (w, f) for w, f in scored if not is_english_contamination(w, english_words, native_dict)
+        ]
+        unscored = [
+            w for w in unscored if not is_english_contamination(w, english_words, native_dict)
+        ]
+        en_removed = scored_pre2 - len(scored)
+        if en_removed:
+            print(
+                f"  English contamination filter: removed {en_removed} words from daily candidates"
+            )
 
     # Take top N
     target = min(daily_count, len(scored) + len(unscored))
@@ -757,6 +962,48 @@ def batch_process(daily_count: int, dry_run: bool, overwrite: bool):
     print(f"\nProcessed: {ok_count}/{len(results)} languages")
 
 
+def audit_contamination(langs: list[str]):
+    """Audit English contamination in language word lists."""
+    english_words = load_english_words()
+    print(f"English reference: {len(english_words)} words\n")
+
+    for lang in langs:
+        words = load_word_list(lang)
+        if not words:
+            print(f"{lang}: no word list found")
+            continue
+
+        daily_path = DATA_DIR / lang / f"{lang}_daily_words.txt"
+        daily = []
+        if daily_path.exists():
+            daily = [
+                l.strip() for l in daily_path.read_text(encoding="utf-8").splitlines() if l.strip()
+            ]
+
+        native_dict = build_native_dictionary(lang)
+        en_overlap = {w for w in words if w in english_words}
+        contamination = {w for w in en_overlap if w not in native_dict} if native_dict else set()
+        daily_contam = {w for w in daily if w in contamination} if daily else set()
+
+        print(f"{'=' * 50}")
+        print(f"{lang} ({LANG_NAMES.get(lang, lang)})")
+        print(f"  Main list: {len(words)} words")
+        print(f"  Daily words: {len(daily)}")
+        print(f"  Native dictionary: {len(native_dict)} words")
+        print(f"  English overlaps: {len(en_overlap)} ({100 * len(en_overlap) / len(words):.1f}%)")
+        print(
+            f"  Contamination (EN & not native): {len(contamination)} ({100 * len(contamination) / len(words):.1f}%)"
+        )
+        if daily:
+            print(
+                f"  Daily contamination: {len(daily_contam)} ({100 * len(daily_contam) / len(daily):.1f}%)"
+            )
+        if contamination:
+            sample = sorted(contamination)[:15]
+            print(f"  Sample contamination: {sample}")
+        print()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="FrequencyWords-based word list improvement pipeline"
@@ -789,6 +1036,10 @@ def main():
     batch.add_argument("--dry-run", action="store_true", help="Report only, no file writes")
     batch.add_argument("--overwrite", action="store_true", help="Overwrite existing files")
 
+    # Audit contamination
+    audit_cmd = subparsers.add_parser("audit", help="Audit English contamination in a language")
+    audit_cmd.add_argument("langs", nargs="+", help="Language codes to audit")
+
     args = parser.parse_args()
 
     if args.command == "download":
@@ -804,6 +1055,8 @@ def main():
             sys.exit(1)
     elif args.command == "batch":
         batch_process(args.daily_count, args.dry_run, args.overwrite)
+    elif args.command == "audit":
+        audit_contamination(args.langs)
     else:
         parser.print_help()
 

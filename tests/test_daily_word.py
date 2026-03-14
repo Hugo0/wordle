@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pytest
 
-from tests.conftest import ALL_LANGUAGES, load_word_list
+from tests.conftest import ALL_LANGUAGES, load_language_config, load_word_list
 
 # Migration cutoff - must match webapp/app.py
 MIGRATION_DAY_IDX = 1681
@@ -119,14 +119,21 @@ class TestDailyWordSelection:
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_daily_word_is_5_letters(self, lang):
-        """Daily word should be exactly 5 letters."""
+        """Daily word should be exactly 5 letters (or 5 grapheme clusters)."""
         words = load_word_list(lang)
         if not words:
             pytest.skip(f"{lang}: No word list")
 
         date = datetime.date(2025, 1, 15)
         word = get_daily_word(words, date)
-        assert len(word) == 5, f"{lang}: Daily word '{word}' is {len(word)} chars"
+        config = load_language_config(lang)
+        if config and config.get("grapheme_mode") == "true":
+            import grapheme
+
+            wlen = grapheme.length(word)
+        else:
+            wlen = len(word)
+        assert wlen == 5, f"{lang}: Daily word '{word}' is {wlen} units (expected 5)"
 
     def test_word_list_shuffling_is_deterministic(self):
         """Word list shuffling (if any) should be deterministic."""
