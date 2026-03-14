@@ -1,0 +1,1 @@
+import{_ as t}from"./DlAUqK2U.js";import{b as r,c as s,Y as a}from"./oPS-j4mc.js";const c={},o={class:"min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white"};function n(e,l){return r(),s("div",o,[a(e.$slots,"default")])}const f=t(c,[["render",n]]);export{f as default};

@@ -1,0 +1,1 @@
+import{_ as t}from"./DlAUqK2U.js";import{b as r,c as a,Y as o}from"./oPS-j4mc.js";const s={},c={class:"h-[100dvh] overflow-hidden bg-white dark:bg-neutral-900 text-black dark:text-white safe-area-inset"};function n(e,d){return r(),a("div",c,[o(e.$slots,"default")])}const i=t(s,[["render",n]]);export{i as default};

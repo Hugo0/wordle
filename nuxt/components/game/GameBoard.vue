@@ -3,7 +3,7 @@
         <div
             class="game-board grid grid-rows-6 relative w-full h-full max-w-[350px] max-h-[420px] gap-1 p-3 box-border"
         >
-            <TileRow
+            <GameTileRow
                 v-for="(row, i) in game.tilesVisual"
                 :key="i"
                 :tiles="row"

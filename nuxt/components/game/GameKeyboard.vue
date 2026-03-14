@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col container mx-auto gap-2 w-full max-w-lg pb-2 md:pb-5 px-2">
         <div v-for="(row, i) in keyboard" :key="i" class="flex gap-1">
-            <KeyboardKey
+            <GameKeyboardKey
                 v-for="key in row"
                 :key="key"
                 :char="key"

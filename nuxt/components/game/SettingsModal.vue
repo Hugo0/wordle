@@ -30,7 +30,7 @@
                         <div class="flex-grow">
                             <p>{{ lang.config?.ui?.dark_mode || 'Dark Mode' }}</p>
                         </div>
-                        <ToggleSwitch
+                        <SharedToggleSwitch
                             :model-value="settings.darkMode"
                             @update:model-value="settings.toggleDarkMode()"
                         />
@@ -47,7 +47,7 @@
                                 }}
                             </p>
                         </div>
-                        <ToggleSwitch
+                        <SharedToggleSwitch
                             :model-value="settings.feedbackEnabled"
                             @update:model-value="settings.toggleFeedback()"
                         />
@@ -66,7 +66,7 @@
                                 }}
                             </p>
                         </div>
-                        <ToggleSwitch
+                        <SharedToggleSwitch
                             :model-value="settings.wordInfoEnabled"
                             @update:model-value="settings.toggleWordInfo()"
                         />
@@ -158,7 +158,7 @@
                                 Colorblind-friendly colors
                             </p>
                         </div>
-                        <ToggleSwitch
+                        <SharedToggleSwitch
                             :model-value="settings.highContrast"
                             @update:model-value="settings.toggleHighContrast()"
                         />

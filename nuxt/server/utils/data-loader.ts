@@ -18,11 +18,10 @@ function resolveDataDir(): string {
     const envDataDir = process.env.NUXT_WEBAPP_DATA_DIR;
     if (envDataDir && existsSync(envDataDir)) return envDataDir;
 
-    // Development: resolve relative to project root
+    // Development: resolve relative to process cwd
     const candidates = [
         resolve(process.cwd(), '..', 'webapp', 'data'),
         resolve(process.cwd(), 'webapp', 'data'),
-        resolve(__dirname, '..', '..', '..', 'webapp', 'data'),
     ];
     for (const candidate of candidates) {
         if (existsSync(candidate)) return candidate;

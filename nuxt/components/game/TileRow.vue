@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-5 gap-1 w-full" :class="{ shake: shaking }">
-        <Tile
+        <GameTile
             v-for="(letter, j) in tiles"
             :key="j"
             :letter="letter"
