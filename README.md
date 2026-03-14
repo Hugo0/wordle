@@ -7,54 +7,9 @@
 
 [wordle.global](https://wordle.global/) — Open Source Wordle in 65+ languages
 
-**Pull requests welcome!** Especially for language addition and curation.
+**Pull requests welcome!** Especially for language addition and curation. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, architecture, and guidelines.
 
 Contact: wordle@hugo0.com
-
-**For developers**: See [CLAUDE.md](CLAUDE.md) for architecture details, key algorithms, and coding guidelines.
-
-## Adding a new language
-
-1. Create a folder in `webapp/data/languages/` with the language code (e.g. `en`, `de`, `fr`, `qya`)
-2. Add a list of 5-letter words: `{lang_code}_5words.txt` (one word per line, lowercase)
-3. (Optional) Add `language_config.json` — UI translations and metadata
-4. (Optional) Add `{lang_code}_keyboard.json` — custom keyboard layout
-5. (Optional) Add `{lang_code}_5words_supplement.txt` — additional valid guesses (rare words players might try)
-
-## How to run locally
-
-If you want to test out your changes, you can run the server locally.
-
-### Prerequisites
-
-- [uv](https://docs.astral.sh/uv/getting-started/installation/) (Python package manager)
-- Node.js 22+ and [pnpm](https://pnpm.io/installation)
-
-### Installation
-
-```bash
-git clone https://github.com/Hugo0/wordle.git
-cd wordle
-pnpm install
-```
-
-That's it — `uv` handles Python dependencies automatically.
-
-### Development
-
-```bash
-pnpm dev
-```
-
-This starts both the Flask server and the Vite frontend watcher. Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-
-### Running Tests
-
-```bash
-uv run pytest tests/     # Python tests (data validation)
-pnpm test                # TypeScript tests (game logic)
-pnpm test:watch          # TypeScript tests in watch mode
-```
 
 ## Language Coverage
 
