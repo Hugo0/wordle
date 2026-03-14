@@ -38,3 +38,6 @@ webapp/static/word-images/
 webapp/static/word-defs/
 webapp/static/word-stats/
 webapp/static/word-history/
+
+# Generated share images (rebuilt on deploy)
+webapp/static/images/share/
