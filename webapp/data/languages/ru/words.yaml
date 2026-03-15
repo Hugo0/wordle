@@ -37,15 +37,23 @@ words:
   scheduled_day: 1684
 - word: содом
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Sodom); though used figuratively, primarily biblical place
 - word: чухна
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Ethnic slur (derogatory term for Finnic peoples)
 - word: солод
   length: 5
   tier: daily
@@ -54,27 +62,43 @@ words:
   - main_list
 - word: нерол
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure chemistry term (nerol, terpene)
 - word: цапка
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Dialectal/regional for hoe; standard is тяпка
 - word: марти
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Marti)
 - word: тимин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Biochemistry term (thymine)
 - word: ивняк
   length: 5
   tier: daily
@@ -88,10 +112,14 @@ words:
   - main_list
 - word: миасс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Miass, city)
 - word: затес
   length: 5
   tier: daily
@@ -117,15 +145,23 @@ words:
   - main_list
 - word: алкен
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Chemistry term (alkene), not everyday vocabulary
 - word: ангоб
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure ceramics term
 - word: клоун
   length: 5
   tier: daily
@@ -153,30 +189,46 @@ words:
   - main_list
 - word: алеут
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ethnonym (Aleut); borderline proper noun
 - word: альпы
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (the Alps)
 - word: эрбий
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Chemical element, specialized
   history:
   - 1722
   scheduled_day: 1722
 - word: ротон
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure physics term (roton)
 - word: вокал
   length: 5
   tier: daily
@@ -191,16 +243,24 @@ words:
   - main_list
 - word: диона
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dione)
 - word: оскар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Oscar)
 - word: тумба
   length: 5
   tier: daily
@@ -209,15 +269,23 @@ words:
   - main_list
 - word: шхера
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat specialized nautical/geographical term (skerry)
 - word: чабер
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure herb (savory)
 - word: показ
   length: 5
   tier: daily
@@ -226,16 +294,24 @@ words:
   - main_list
 - word: динод
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.11
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure physics/electronics term
 - word: килим
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure (type of rug), but known
 - word: падре
   length: 5
   tier: daily
@@ -256,22 +332,34 @@ words:
   - main_list
 - word: левен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Leuven, city)
 - word: нюрка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Nyurka, diminutive of Anna)
 - word: абрам
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Abram)
 - word: барин
   length: 5
   tier: daily
@@ -280,9 +368,13 @@ words:
   - main_list
 - word: колюр
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure astronomy term
   history:
   - 1705
   scheduled_day: 1705
@@ -299,10 +391,14 @@ words:
   - main_list
 - word: адрон
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Physics term (hadron), not everyday vocabulary
 - word: сайка
   length: 5
   tier: daily
@@ -340,21 +436,33 @@ words:
   - main_list
 - word: волго
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name prefix (Volgo-, related to Volga)
 - word: шитик
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (sewn boat or caddisfly)
 - word: табес
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure medical term (tabes)
 - word: чужак
   length: 5
   tier: daily
@@ -363,10 +471,14 @@ words:
   - main_list
 - word: итиль
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Itil, historical name for Volga)
 - word: кетон
   length: 5
   tier: daily
@@ -375,10 +487,14 @@ words:
   - main_list
 - word: пярну
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Parnu, city in Estonia)
 - word: хлябь
   length: 5
   tier: daily
@@ -421,10 +537,14 @@ words:
   - main_list
 - word: гдыня
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gdynia, city)
 - word: рений
   length: 5
   tier: daily
@@ -445,16 +565,24 @@ words:
   - main_list
 - word: софья
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Sofya)
 - word: орлов
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Orlov)
 - word: зиять
   length: 5
   tier: daily
@@ -469,10 +597,14 @@ words:
   - main_list
 - word: калам
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure term (reed pen/Islamic theology term)
 - word: врозь
   length: 5
   tier: daily
@@ -493,10 +625,14 @@ words:
   - main_list
 - word: минск
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Minsk, city)
 - word: мамба
   length: 5
   tier: daily
@@ -523,10 +659,14 @@ words:
   - main_list
 - word: углич
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Uglich, city)
 - word: кляча
   length: 5
   tier: daily
@@ -541,9 +681,13 @@ words:
   - main_list
 - word: мосол
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal (bone, knuckle)
 - word: уклон
   length: 5
   tier: daily
@@ -564,9 +708,13 @@ words:
   - main_list
 - word: иксик
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure diminutive, not standard vocabulary
 - word: шпиль
   length: 5
   tier: daily
@@ -587,10 +735,14 @@ words:
   - main_list
 - word: адлер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Adler, city/surname)
 - word: фаска
   length: 5
   tier: daily
@@ -599,9 +751,13 @@ words:
   - main_list
 - word: белец
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure religious term (lay brother)
 - word: отбор
   length: 5
   tier: daily
@@ -646,10 +802,14 @@ words:
   - main_list
 - word: фукуи
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Fukui, Japanese city)
 - word: обгон
   length: 5
   tier: daily
@@ -681,9 +841,13 @@ words:
   - main_list
 - word: жиряк
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Derogatory term for overweight person
 - word: гипюр
   length: 5
   tier: daily
@@ -734,15 +898,23 @@ words:
   - main_list
 - word: тырло
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal (cattle resting spot)
 - word: жинка
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ukrainian word for wife, not standard Russian
 - word: нечет
   length: 5
   tier: daily
@@ -757,10 +929,14 @@ words:
   - main_list
 - word: футер
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Technical textile/web design term
 - word: завал
   length: 5
   tier: daily
@@ -787,10 +963,14 @@ words:
   - main_list
 - word: цимол
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure chemistry term (cymene)
 - word: опора
   length: 5
   tier: daily
@@ -799,10 +979,14 @@ words:
   - main_list
 - word: тулуз
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Toulouse, city)
 - word: узник
   length: 5
   tier: daily
@@ -823,10 +1007,14 @@ words:
   - main_list
 - word: бахус
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Bacchus)
 - word: бодун
   length: 5
   tier: daily
@@ -855,10 +1043,14 @@ words:
   scheduled_day: 1702
 - word: педик
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Offensive/derogatory slur
 - word: локус
   length: 5
   tier: daily
@@ -867,10 +1059,14 @@ words:
   - main_list
 - word: митин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Possessive adjective from name Митя (Mitya's)
 - word: ухожь
   length: 5
   tier: daily
@@ -908,10 +1104,14 @@ words:
   - main_list
 - word: маркс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Marx)
 - word: кочка
   length: 5
   tier: daily
@@ -949,16 +1149,24 @@ words:
   - main_list
 - word: сарос
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.32
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure astronomy term (Saros cycle)
 - word: могар
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.37
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure agricultural term (type of millet)
 - word: кисея
   length: 5
   tier: daily
@@ -972,16 +1180,24 @@ words:
   - main_list
 - word: фолио
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat specialized publishing term
 - word: могол
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.81
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Historical term (Mogul/Mughal), borderline proper noun
 - word: осляк
   length: 5
   tier: daily
@@ -989,16 +1205,24 @@ words:
   - main_list
 - word: артос
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure religious term (liturgical bread)
 - word: кацап
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Ethnic slur (derogatory term for Russians used by Ukrainians)
 - word: купол
   length: 5
   tier: daily
@@ -1024,10 +1248,14 @@ words:
   - main_list
 - word: памир
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pamir mountains)
 - word: выжим
   length: 5
   tier: daily
@@ -1035,10 +1263,14 @@ words:
   - main_list
 - word: хедив
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure historical term (khedive)
 - word: театр
   length: 5
   tier: daily
@@ -1047,9 +1279,13 @@ words:
   - main_list
 - word: нажин
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure agricultural term
 - word: карат
   length: 5
   tier: daily
@@ -1070,10 +1306,14 @@ words:
   - main_list
 - word: чехов
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Chekhov)
 - word: порез
   length: 5
   tier: daily
@@ -1100,9 +1340,13 @@ words:
   - main_list
 - word: корье
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal (bark for tanning)
 - word: павий
   length: 5
   tier: daily
@@ -1137,10 +1381,14 @@ words:
   - main_list
 - word: намюр
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Namur, city)
 - word: слайд
   length: 5
   tier: daily
@@ -1149,10 +1397,14 @@ words:
   - main_list
 - word: онега
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Onega, lake/river)
 - word: гряда
   length: 5
   tier: daily
@@ -1191,10 +1443,14 @@ words:
   - main_list
 - word: эндрю
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Andrew)
 - word: батат
   length: 5
   tier: daily
@@ -1239,10 +1495,14 @@ words:
   - main_list
 - word: кларк
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Clark)
 - word: зелот
   length: 5
   tier: daily
@@ -1256,10 +1516,14 @@ words:
   - main_list
 - word: витин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure possessive adjective from name Vitya
 - word: марал
   length: 5
   tier: daily
@@ -1280,10 +1544,14 @@ words:
   - main_list
 - word: суоми
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Suomi/Finland)
 - word: вживе
   length: 5
   tier: daily
@@ -1303,10 +1571,14 @@ words:
   - main_list
 - word: ромка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Romka, diminutive of Roman)
 - word: омыть
   length: 5
   tier: daily
@@ -1359,10 +1631,14 @@ words:
   - main_list
 - word: филер
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.55
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Historical term (secret police agent), somewhat obscure
 - word: съезд
   length: 5
   tier: daily
@@ -1377,10 +1653,14 @@ words:
   - main_list
 - word: лебег
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lebesgue, mathematician)
 - word: умолк
   length: 5
   tier: daily
@@ -1389,15 +1669,23 @@ words:
   - main_list
 - word: сутаж
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure (soutache braid)
 - word: шабот
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.03
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure metallurgical term (anvil block)
 - word: бурун
   length: 5
   tier: daily
@@ -1424,9 +1712,13 @@ words:
   - main_list
 - word: футор
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure technical term
 - word: клинч
   length: 5
   tier: daily
@@ -1452,10 +1744,14 @@ words:
   - main_list
 - word: архип
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Arkhip)
 - word: гарем
   length: 5
   tier: daily
@@ -1499,10 +1795,14 @@ words:
   - main_list
 - word: цевье
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.9
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat specialized (gun forearm/handguard)
 - word: облов
   length: 5
   tier: daily
@@ -1547,25 +1847,41 @@ words:
   - main_list
 - word: айрол
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure chemical/pharmaceutical term
 - word: муцин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Technical biochemistry term
 - word: гузно
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/vulgar word for buttocks
 - word: мерея
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure leather-working term
 - word: махра
   length: 5
   tier: daily
@@ -1574,10 +1890,14 @@ words:
   - main_list
 - word: дубай
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dubai)
 - word: тогда
   length: 5
   tier: daily
@@ -1622,10 +1942,14 @@ words:
   - main_list
 - word: коста
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Costa)
 - word: новье
   length: 5
   tier: daily
@@ -1640,16 +1964,24 @@ words:
   - main_list
 - word: марта
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Marta); also month genitive but primarily a name
 - word: бийск
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Biysk, city)
 - word: чибис
   length: 5
   tier: daily
@@ -1728,10 +2060,14 @@ words:
   - main_list
 - word: холмс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Holmes)
 - word: фреза
   length: 5
   tier: daily
@@ -1758,10 +2094,14 @@ words:
   - main_list
 - word: неман
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Neman river)
 - word: холуй
   length: 5
   tier: daily
@@ -1770,16 +2110,24 @@ words:
   - main_list
 - word: костя
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Kostya, diminutive of Konstantin)
 - word: двина
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dvina river)
 - word: честь
   length: 5
   tier: daily
@@ -1806,16 +2154,24 @@ words:
   - main_list
 - word: авгур
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Historical term (augur), somewhat literary
 - word: гелла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Hella)
 - word: фьорд
   length: 5
   tier: daily
@@ -1836,9 +2192,13 @@ words:
   - main_list
 - word: хурда
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal word
 - word: выпал
   length: 5
   tier: daily
@@ -1859,9 +2219,13 @@ words:
   - main_list
 - word: эмбии
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure entomological term (embioptera)
 - word: отсек
   length: 5
   tier: daily
@@ -1870,22 +2234,34 @@ words:
   - main_list
 - word: эллин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Historical/literary term for Greek (Hellene)
 - word: сучка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar insult; while literally 'small female dog', primarily used offensively
 - word: чехия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Czechia)
 - word: совик
   length: 5
   tier: daily
@@ -1929,16 +2305,24 @@ words:
   - main_list
 - word: щупик
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.2
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure entomological term (palpus)
 - word: иркин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Possessive adjective from name Ирка (Irka's)
 - word: туман
   length: 5
   tier: daily
@@ -1965,15 +2349,23 @@ words:
   - main_list
 - word: киник
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Philosophical term (Cynic), somewhat obscure
 - word: ламут
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure ethnonym (old name for Evens people)
 - word: рожок
   length: 5
   tier: daily
@@ -1982,10 +2374,14 @@ words:
   - main_list
 - word: диана
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Diana)
 - word: мошна
   length: 5
   tier: daily
@@ -2000,9 +2396,13 @@ words:
   - main_list
 - word: оолит
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure geology term
 - word: мячик
   length: 5
   tier: daily
@@ -2023,10 +2423,14 @@ words:
   - main_list
 - word: тромп
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.69
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure architectural/metallurgical term
 - word: пасти
   length: 5
   tier: daily
@@ -2035,10 +2439,14 @@ words:
   - main_list
 - word: шипка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Shipka, Bulgarian city/pass)
 - word: устье
   length: 5
   tier: daily
@@ -2083,14 +2491,22 @@ words:
   - main_list
 - word: гумит
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure mineralogical term
 - word: эпонж
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure textile term
 - word: унять
   length: 5
   tier: daily
@@ -2099,10 +2515,14 @@ words:
   - main_list
 - word: париж
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Paris)
 - word: клерк
   length: 5
   tier: daily
@@ -2111,10 +2531,14 @@ words:
   - main_list
 - word: оська
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name diminutive (Oska, from Osip)
 - word: жевок
   length: 5
   tier: daily
@@ -2157,10 +2581,14 @@ words:
   - main_list
 - word: карри
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily proper name (Curry); curry as food is uncommon in Russian daily use
 - word: наяву
   length: 5
   tier: daily
@@ -2169,10 +2597,14 @@ words:
   - main_list
 - word: нинин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Possessive adjective from name Нина (Nina's)
 - word: интим
   length: 5
   tier: daily
@@ -2196,10 +2628,14 @@ words:
   - main_list
 - word: алеха
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Alekha, colloquial for Alexey)
 - word: латук
   length: 5
   tier: daily
@@ -2220,10 +2656,14 @@ words:
   - main_list
 - word: раина
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Raina)
 - word: окоем
   length: 5
   tier: daily
@@ -2249,16 +2689,24 @@ words:
   - main_list
 - word: севак
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Sevak)
 - word: ацтек
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ethnonym (Aztec); borderline proper noun
 - word: калач
   length: 5
   tier: daily
@@ -2279,10 +2727,14 @@ words:
   - main_list
 - word: ленин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lenin)
 - word: аргон
   length: 5
   tier: daily
@@ -2303,10 +2755,14 @@ words:
   - main_list
 - word: дирак
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dirac, physicist)
 - word: добро
   length: 5
   tier: daily
@@ -2344,10 +2800,14 @@ words:
   - main_list
 - word: русин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ethnonym (Rusyn); borderline proper noun
 - word: совий
   length: 5
   tier: daily
@@ -2372,10 +2832,14 @@ words:
   - main_list
 - word: машка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Mashka, diminutive of Maria)
 - word: дедок
   length: 5
   tier: daily
@@ -2396,16 +2860,24 @@ words:
   - main_list
 - word: тимол
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.51
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure chemistry term (thymol)
 - word: эпсом
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Epsom, English town)
 - word: взрез
   length: 5
   tier: daily
@@ -2413,27 +2885,43 @@ words:
   - main_list
 - word: кечуа
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Language/people name; borderline proper noun
 - word: дутыш
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal word
 - word: кетоз
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.23
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Technical biochemistry term
 - word: коати
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure zoological term (coati animal)
 - word: ранчо
   length: 5
   tier: daily
@@ -2460,27 +2948,43 @@ words:
   - main_list
 - word: ольга
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Olga)
 - word: дамно
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/archaic financial term
 - word: койне
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure linguistics term
 - word: ходжа
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Title/term but primarily associated with proper names (Hodja)
 - word: почта
   length: 5
   tier: daily
@@ -2489,10 +2993,14 @@ words:
   - main_list
 - word: сычуг
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.61
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Specialized term (abomasum, rennet stomach)
 - word: редан
   length: 5
   tier: daily
@@ -2507,16 +3015,24 @@ words:
   - main_list
 - word: итака
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ithaca)
 - word: мцыри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Mtsyri, Lermontov character)
 - word: фавор
   length: 5
   tier: daily
@@ -2525,10 +3041,14 @@ words:
   - main_list
 - word: хаким
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Hakim)
 - word: рубеж
   length: 5
   tier: daily
@@ -2570,10 +3090,14 @@ words:
   - main_list
 - word: осака
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Osaka, city)
 - word: липка
   length: 5
   tier: daily
@@ -2611,10 +3135,14 @@ words:
   - main_list
 - word: ратай
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/poetic word for plowman
 - word: топик
   length: 5
   tier: daily
@@ -2623,15 +3151,23 @@ words:
   - main_list
 - word: дядин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Possessive adjective (uncle's), but primarily associated with name-derived forms
 - word: фацет
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure variant of фасет
 - word: тучка
   length: 5
   tier: daily
@@ -2664,9 +3200,13 @@ words:
   - main_list
 - word: хуеть
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word (obscene verb)
 - word: нагон
   length: 5
   tier: daily
@@ -2681,25 +3221,37 @@ words:
   - main_list
 - word: спика
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Spica, star)
 - word: бонды
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.03
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Financial jargon (bonds), not standard Russian
   history:
   - 1713
   scheduled_day: 1713
 - word: олимп
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Olympus)
 - word: рытье
   length: 5
   tier: daily
@@ -2720,10 +3272,14 @@ words:
   - main_list
 - word: скарн
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure geology term
 - word: бурса
   length: 5
   tier: daily
@@ -2732,15 +3288,23 @@ words:
   - main_list
 - word: глузд
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Dialectal/archaic word, uncommon
 - word: бердо
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure weaving tool term
 - word: носик
   length: 5
   tier: daily
@@ -2802,15 +3366,23 @@ words:
   - main_list
 - word: истод
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure botanical term (milkwort)
 - word: борат
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Borat, character)
 - word: гросс
   length: 5
   tier: daily
@@ -2866,10 +3438,14 @@ words:
   - main_list
 - word: банту
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ethnonym (Bantu); borderline proper noun
 - word: сайра
   length: 5
   tier: daily
@@ -2884,9 +3460,13 @@ words:
   - main_list
 - word: жниво
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Dialectal/archaic (stubble field)
 - word: фибра
   length: 5
   tier: daily
@@ -2895,10 +3475,14 @@ words:
   - main_list
 - word: фасет
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat technical (facet in specialized sense)
 - word: загул
   length: 5
   tier: daily
@@ -2925,10 +3509,14 @@ words:
   - main_list
 - word: аэрон
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure pharmaceutical/brand name
   history:
   - 1719
   scheduled_day: 1719
@@ -2946,16 +3534,24 @@ words:
   - main_list
 - word: илюша
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (diminutive of Ilya)
 - word: семен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Semyon)
 - word: колья
   length: 5
   tier: daily
@@ -2964,10 +3560,14 @@ words:
   - main_list
 - word: эпика
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.01
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat uncommon literary term
 - word: дерби
   length: 5
   tier: daily
@@ -3006,10 +3606,14 @@ words:
   - main_list
 - word: коран
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Quran)
 - word: киска
   length: 5
   tier: daily
@@ -3024,10 +3628,14 @@ words:
   - main_list
 - word: марат
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Marat)
 - word: смрад
   length: 5
   tier: daily
@@ -3048,10 +3656,14 @@ words:
   - main_list
 - word: толин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tolin, possessive adj from Tolya)
 - word: выдел
   length: 5
   tier: daily
@@ -3065,9 +3677,13 @@ words:
   - main_list
 - word: цибик
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (tea chest measure)
 - word: сушка
   length: 5
   tier: daily
@@ -3076,10 +3692,14 @@ words:
   - main_list
 - word: карча
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal term for submerged tree stump
 - word: душка
   length: 5
   tier: daily
@@ -3088,10 +3708,14 @@ words:
   - main_list
 - word: тузик
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Generic dog name / small inflatable boat; borderline
 - word: хорал
   length: 5
   tier: daily
@@ -3111,16 +3735,24 @@ words:
   - main_list
 - word: цепня
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.53
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal variant
 - word: инвар
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.36
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure metallurgical alloy name
 - word: загиб
   length: 5
   tier: daily
@@ -3129,16 +3761,24 @@ words:
   - main_list
 - word: гибдд
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Abbreviation (traffic police acronym), not a word
 - word: алька
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (diminutive of Alla/Alya)
 - word: лобан
   length: 5
   tier: daily
@@ -3147,16 +3787,24 @@ words:
   - main_list
 - word: орион
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Orion)
 - word: берта
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Bertha)
 - word: вовсю
   length: 5
   tier: daily
@@ -3171,10 +3819,14 @@ words:
   - main_list
 - word: трапп
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure geology term (trapp rock)
 - word: утеха
   length: 5
   tier: daily
@@ -3201,10 +3853,14 @@ words:
   - main_list
 - word: саран
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Saran, city)
 - word: пульт
   length: 5
   tier: daily
@@ -3225,10 +3881,14 @@ words:
   - main_list
 - word: савва
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Savva)
 - word: удерж
   length: 5
   tier: daily
@@ -3248,15 +3908,23 @@ words:
   - main_list
 - word: минет
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Sexual term, inappropriate for daily puzzle
 - word: пахит
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal word
 - word: выруб
   length: 5
   tier: daily
@@ -3287,10 +3955,14 @@ words:
   - main_list
 - word: фуляр
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure textile term (foulard)
 - word: ходок
   length: 5
   tier: daily
@@ -3328,10 +4000,14 @@ words:
   - main_list
 - word: флинт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Flint)
 - word: навет
   length: 5
   tier: daily
@@ -3340,10 +4016,14 @@ words:
   - main_list
 - word: шихан
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.83
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional geological term / proper noun
 - word: качка
   length: 5
   tier: daily
@@ -3352,10 +4032,14 @@ words:
   - main_list
 - word: бритт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Britt) or ethnic term that is borderline proper noun
   history:
   - 1687
   scheduled_day: 1687
@@ -3373,10 +4057,14 @@ words:
   - main_list
 - word: степа
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Stepa, diminutive of Stepan)
 - word: впору
   length: 5
   tier: daily
@@ -3415,27 +4103,43 @@ words:
   - main_list
 - word: айова
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Iowa)
 - word: назар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Nazar)
 - word: амман
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Amman, city)
 - word: эолов
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Possessive adjective from Aeolus (proper name)
 - word: лохмы
   length: 5
   tier: daily
@@ -3467,16 +4171,24 @@ words:
   - main_list
 - word: рутил
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure mineralogy term
 - word: вагиз
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Vagiz)
 - word: груша
   length: 5
   tier: daily
@@ -3485,10 +4197,14 @@ words:
   - main_list
 - word: никон
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Nikon)
 - word: чечен
   length: 5
   tier: daily
@@ -3520,10 +4236,14 @@ words:
   - main_list
 - word: динас
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical ceramics/refractory term
 - word: арбуз
   length: 5
   tier: daily
@@ -3538,10 +4258,14 @@ words:
   - main_list
 - word: кифоз
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.65
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Medical term (kyphosis)
 - word: умище
   length: 5
   tier: daily
@@ -3585,10 +4309,14 @@ words:
   - main_list
 - word: чурка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Ethnic slur; while literally means 'log/block', primarily used as offensive ethnic slur
 - word: шитво
   length: 5
   tier: daily
@@ -3620,10 +4348,14 @@ words:
   - main_list
 - word: пирен
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.36
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure chemistry term (pyrene)
 - word: мерси
   length: 5
   tier: daily
@@ -3662,16 +4394,24 @@ words:
   - main_list
 - word: рахис
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.23
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure botanical/anatomical term
 - word: крага
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.32
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Somewhat obscure (leather gauntlet)
 - word: покус
   length: 5
   tier: daily
@@ -3704,10 +4444,14 @@ words:
   - main_list
 - word: лидин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Possessive adjective from name Лида (Lida's)
 - word: амбар
   length: 5
   tier: daily
@@ -3733,9 +4477,13 @@ words:
   - main_list
 - word: цвель
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure brewing/winemaking term
 - word: редис
   length: 5
   tier: daily
@@ -3744,15 +4492,23 @@ words:
   - main_list
 - word: зумпф
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure mining term
 - word: амьен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Amiens, city)
 - word: отряд
   length: 5
   tier: daily
@@ -3773,10 +4529,14 @@ words:
   - main_list
 - word: саква
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure military/cavalry term (saddlebag)
 - word: табун
   length: 5
   tier: daily
@@ -3785,10 +4545,14 @@ words:
   - main_list
 - word: блядь
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word
 - word: отгул
   length: 5
   tier: daily
@@ -3797,10 +4561,14 @@ words:
   - main_list
 - word: триер
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Technical agricultural term (grain sorter)
 - word: гейша
   length: 5
   tier: daily
@@ -3809,10 +4577,14 @@ words:
   - main_list
 - word: мазда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Mazda, brand)
 - word: вязка
   length: 5
   tier: daily
@@ -3821,16 +4593,24 @@ words:
   - main_list
 - word: ганди
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gandhi)
 - word: абака
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure term (abaca plant / abacus frame)
 - word: уголь
   length: 5
   tier: daily
@@ -3845,10 +4625,14 @@ words:
   - main_list
 - word: авизо
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure financial/naval term
 - word: лайка
   length: 5
   tier: daily
@@ -3875,10 +4659,14 @@ words:
   - main_list
 - word: нотис
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure legal/shipping term (notice)
 - word: стреж
   length: 5
   tier: daily
@@ -3893,9 +4681,13 @@ words:
   - main_list
 - word: остяк
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Outdated/potentially offensive ethnonym (old name for Khanty)
 - word: теска
   length: 5
   tier: daily
@@ -3904,10 +4696,14 @@ words:
   - main_list
 - word: копра
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure (dried coconut meat)
 - word: кнехт
   length: 5
   tier: daily
@@ -3928,10 +4724,14 @@ words:
   - main_list
 - word: греко
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Greco)
 - word: любой
   length: 5
   tier: daily
@@ -3976,15 +4776,23 @@ words:
   - main_list
 - word: флейц
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (type of painting brush)
 - word: люсин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Possessive adjective from name Люся (Lusya's)
 - word: атлет
   length: 5
   tier: daily
@@ -4014,10 +4822,14 @@ words:
   - main_list
 - word: висла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Vistula river)
 - word: выгиб
   length: 5
   tier: daily
@@ -4025,10 +4837,14 @@ words:
   - main_list
 - word: мосье
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: French title (monsieur), not standard Russian word
 - word: саржа
   length: 5
   tier: daily
@@ -4043,10 +4859,14 @@ words:
   - main_list
 - word: липси
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (type of dance)
 - word: встык
   length: 5
   tier: daily
@@ -4067,16 +4887,24 @@ words:
   - main_list
 - word: темпл
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Temple)
 - word: сквид
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure physics acronym (SQUID)
 - word: износ
   length: 5
   tier: daily
@@ -4091,15 +4919,23 @@ words:
   - main_list
 - word: ренин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Specialized biochemistry term
 - word: стега
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal word
 - word: извоз
   length: 5
   tier: daily
@@ -4120,9 +4956,13 @@ words:
   - main_list
 - word: пропс
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Slang borrowed from English (props)
 - word: тромб
   length: 5
   tier: daily
@@ -4131,14 +4971,22 @@ words:
   - main_list
 - word: чебот
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/dialectal for boot
 - word: щаной
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/dialectal adjective (related to щи)
 - word: аудио
   length: 5
   tier: daily
@@ -4153,9 +5001,13 @@ words:
   - main_list
 - word: фурма
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure metallurgical term (tuyere)
 - word: тмить
   length: 5
   tier: daily
@@ -4205,10 +5057,14 @@ words:
   - main_list
 - word: гаити
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Haiti)
 - word: хилый
   length: 5
   tier: daily
@@ -4229,10 +5085,14 @@ words:
   - main_list
 - word: осмий
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.07
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Chemical element, somewhat specialized
 - word: навоз
   length: 5
   tier: daily
@@ -4241,15 +5101,23 @@ words:
   - main_list
 - word: тимор
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Timor, island)
 - word: ячать
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/dialectal verb
 - word: дележ
   length: 5
   tier: daily
@@ -4270,10 +5138,14 @@ words:
   - main_list
 - word: тында
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tynda, city)
 - word: маржа
   length: 5
   tier: daily
@@ -4317,10 +5189,14 @@ words:
   - main_list
 - word: ленка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lenka, diminutive of Elena)
 - word: желна
   length: 5
   tier: daily
@@ -4359,15 +5235,23 @@ words:
   - main_list
 - word: вабик
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure hunting term (bird call device)
 - word: кобел
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.08
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Truncated form; standard is кобель
 - word: пинок
   length: 5
   tier: daily
@@ -4382,10 +5266,14 @@ words:
   - main_list
 - word: макар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Makar)
 - word: боров
   length: 5
   tier: daily
@@ -4411,10 +5299,14 @@ words:
   - main_list
 - word: бруно
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Bruno)
 - word: длить
   length: 5
   tier: daily
@@ -4423,16 +5315,24 @@ words:
   - main_list
 - word: пегас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pegasus)
 - word: мюзик
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Informal truncation of мюзикл, not standard word
 - word: газон
   length: 5
   tier: daily
@@ -4441,9 +5341,13 @@ words:
   - main_list
 - word: тацет
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure musical term (tacet)
 - word: обряд
   length: 5
   tier: daily
@@ -4458,9 +5362,13 @@ words:
   - main_list
 - word: фетюк
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/archaic insult from Dead Souls
 - word: валун
   length: 5
   tier: daily
@@ -4469,28 +5377,44 @@ words:
   - main_list
 - word: адыге
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Adyghe ethnonym/place)
 - word: пышма
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Pyshma, river/city)
 - word: мигли
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.44
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure/dialectal word
 - word: павел
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pavel/Paul)
 - word: мазок
   length: 5
   tier: daily
@@ -4499,16 +5423,24 @@ words:
   - main_list
 - word: лошок
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.65
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang (sucker/fool), somewhat crude
 - word: жиган
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Criminal slang (thief/con), somewhat crude
 - word: кайра
   length: 5
   tier: daily
@@ -4529,10 +5461,14 @@ words:
   - main_list
 - word: шхеры
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Plural of шхера; duplicate concept
 - word: огонь
   length: 5
   tier: daily
@@ -4571,16 +5507,24 @@ words:
   - main_list
 - word: сотов
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Genitive plural of сот or surname; not standard standalone word
 - word: эйлер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Euler)
 - word: дебри
   length: 5
   tier: daily
@@ -4589,10 +5533,14 @@ words:
   - main_list
 - word: бабло
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for money, colloquial but widely known
 - word: жулье
   length: 5
   tier: daily
@@ -4601,10 +5549,14 @@ words:
   - main_list
 - word: марья
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Marya)
   history:
   - 1728
   scheduled_day: 1728
@@ -4627,16 +5579,24 @@ words:
   - main_list
 - word: арбат
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Arbat, Moscow street)
 - word: амбец
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Vulgar slang (game over/kaput)
 - word: шпрот
   length: 5
   tier: daily
@@ -4651,10 +5611,14 @@ words:
   - main_list
 - word: тимка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Timka, diminutive)
 - word: лузга
   length: 5
   tier: daily
@@ -4728,10 +5692,14 @@ words:
   - main_list
 - word: палыч
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name patronymic (short for Palych)
 - word: босой
   length: 5
   tier: daily
@@ -4763,15 +5731,23 @@ words:
   - main_list
 - word: плица
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure nautical term (bailer)
 - word: фрины
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure zoological term (amblypygi)
 - word: урыть
   length: 5
   tier: daily
@@ -4779,10 +5755,14 @@ words:
   - main_list
 - word: дурик
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mildly derogatory slang (fool/crazy person)
 - word: тешка
   length: 5
   tier: daily
@@ -4790,10 +5770,14 @@ words:
   - main_list
 - word: хмырь
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Colloquial pejorative (shady person)
 - word: оплыв
   length: 5
   tier: daily
@@ -4801,10 +5785,14 @@ words:
   - main_list
 - word: илюха
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (diminutive of Ilya)
 - word: хетты
   length: 5
   tier: daily
@@ -4819,10 +5807,14 @@ words:
   - main_list
 - word: царев
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily surname (Tsarev), but also old adjective form
 - word: шинок
   length: 5
   tier: daily
@@ -4837,10 +5829,14 @@ words:
   - main_list
 - word: предо
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Archaic/poetic preposition variant, not standard
 - word: оптом
   length: 5
   tier: daily
@@ -4861,10 +5857,14 @@ words:
   - main_list
 - word: мойша
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Moisha), potentially offensive usage
 - word: запой
   length: 5
   tier: daily
@@ -4873,10 +5873,14 @@ words:
   - main_list
 - word: силан
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure chemistry term
 - word: штиль
   length: 5
   tier: daily
@@ -4903,10 +5907,14 @@ words:
   - main_list
 - word: устюг
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ustyug, city)
 - word: амеба
   length: 5
   tier: daily
@@ -4915,14 +5923,22 @@ words:
   - main_list
 - word: емшан
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/poetic word for wormwood
 - word: дулеб
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure historical ethnonym
 - word: обруч
   length: 5
   tier: daily
@@ -4937,10 +5953,14 @@ words:
   - main_list
 - word: гинея
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Guinea) or historical coin; primarily geographic
 - word: кумир
   length: 5
   tier: daily
@@ -4972,22 +5992,34 @@ words:
   - main_list
 - word: емеля
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Emelya, folklore character)
 - word: тризм
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Medical term (trismus, jaw lock)
 - word: панин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Panin, surname)
 - word: ганаш
   length: 5
   tier: daily
@@ -5038,10 +6070,14 @@ words:
   - main_list
 - word: токио
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tokyo)
 - word: факел
   length: 5
   tier: daily
@@ -5102,10 +6138,14 @@ words:
   - main_list
 - word: пекин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Beijing/Peking)
 - word: алыча
   length: 5
   tier: valid
@@ -5161,10 +6201,14 @@ words:
   - main_list
 - word: дайна
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Daina)
 - word: домок
   length: 5
   tier: valid
@@ -5516,10 +6560,14 @@ words:
   - main_list
 - word: левин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Levin)
 - word: проба
   length: 5
   tier: valid
@@ -5737,10 +6785,14 @@ words:
   - main_list
 - word: пасха
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Easter/Passover); also a dessert but primarily a holiday name
 - word: аддис
   length: 5
   tier: valid
@@ -5836,10 +6888,14 @@ words:
   - main_list
 - word: малик
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Malik)
 - word: убрус
   length: 5
   tier: valid
@@ -6141,16 +7197,24 @@ words:
   - main_list
 - word: самом
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.34
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Pronoun form (prepositional of сам), not ideal for puzzle
 - word: тибет
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tibet)
 - word: пурин
   length: 5
   tier: valid
@@ -6255,10 +7319,14 @@ words:
   - main_list
 - word: донья
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Spanish title (Doña), not standard Russian word
 - word: халат
   length: 5
   tier: daily
@@ -6345,10 +7413,14 @@ words:
   - main_list
 - word: алкаш
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Derogatory slang for alcoholic
 - word: буфер
   length: 5
   tier: valid
@@ -6423,10 +7495,14 @@ words:
   - main_list
 - word: марго
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Margo)
 - word: певец
   length: 5
   tier: daily
@@ -6500,10 +7576,14 @@ words:
   - main_list
 - word: шерри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Sherry); also a wine type but uncommon in Russian
 - word: бровь
   length: 5
   tier: daily
@@ -6512,10 +7592,14 @@ words:
   - main_list
 - word: донна
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Donna)
 - word: драма
   length: 5
   tier: daily
@@ -6996,10 +8080,14 @@ words:
   - main_list
 - word: данте
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dante)
 - word: свеча
   length: 5
   tier: daily
@@ -7192,10 +8280,14 @@ words:
   - main_list
 - word: киото
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Kyoto)
 - word: перга
   length: 5
   tier: valid
@@ -7204,10 +8296,14 @@ words:
   - main_list
 - word: давид
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (David)
 - word: ковар
   length: 5
   tier: valid
@@ -7477,10 +8573,14 @@ words:
   - main_list
 - word: скотт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Scott)
 - word: серый
   length: 5
   tier: daily
@@ -7607,16 +8707,24 @@ words:
   - main_list
 - word: курва
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar/offensive word borrowed from Polish
 - word: далия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Dalia/Dahlia as name)
 - word: кучер
   length: 5
   tier: valid
@@ -7636,10 +8744,14 @@ words:
   - main_list
 - word: вадим
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Vadim)
 - word: степс
   length: 5
   tier: valid
@@ -7801,10 +8913,14 @@ words:
   - main_list
 - word: бернс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Burns)
 - word: витек
   length: 5
   tier: valid
@@ -7867,10 +8983,14 @@ words:
   - main_list
 - word: георг
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Georg)
 - word: сойма
   length: 5
   tier: valid
@@ -7996,10 +9116,14 @@ words:
   - main_list
 - word: шелли
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Shelley)
 - word: самый
   length: 5
   tier: daily
@@ -8247,10 +9371,14 @@ words:
   - main_list
 - word: говно
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word
 - word: хлест
   length: 5
   tier: valid
@@ -8294,10 +9422,14 @@ words:
   - main_list
 - word: бордо
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Bordeaux)
 - word: драга
   length: 5
   tier: valid
@@ -8396,16 +9528,24 @@ words:
   - main_list
 - word: денис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Denis)
 - word: иоанн
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (John/Ioann)
 - word: стиль
   length: 5
   tier: daily
@@ -8559,10 +9699,14 @@ words:
   - main_list
 - word: мудак
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word
 - word: шаттл
   length: 5
   tier: daily
@@ -8612,10 +9756,14 @@ words:
   - main_list
 - word: монте
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Monte)
 - word: бакен
   length: 5
   tier: valid
@@ -8624,16 +9772,24 @@ words:
   - main_list
 - word: фиджи
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Fiji)
 - word: конго
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Congo)
   history:
   - 1712
   scheduled_day: 1712
@@ -8756,10 +9912,14 @@ words:
   - main_list
 - word: алжир
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Algeria/Algiers)
 - word: дылда
   length: 5
   tier: valid
@@ -8897,10 +10057,14 @@ words:
   - main_list
 - word: пьеро
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Pierrot, commedia dell'arte character)
 - word: апчхи
   length: 5
   tier: valid
@@ -8977,10 +10141,14 @@ words:
   - main_list
 - word: жуков
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Zhukov)
 - word: будто
   length: 5
   tier: daily
@@ -9037,10 +10205,14 @@ words:
   - main_list
 - word: санта
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Santa)
 - word: фагот
   length: 5
   tier: valid
@@ -9261,10 +10433,14 @@ words:
   - main_list
 - word: вегас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Vegas)
 - word: эозин
   length: 5
   tier: valid
@@ -9471,10 +10647,14 @@ words:
   - main_list
 - word: афины
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Athens)
 - word: русый
   length: 5
   tier: valid
@@ -9606,10 +10786,14 @@ words:
   - main_list
 - word: папин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Possessive adjective (dad's); keeping as valid - common enough
 - word: унаби
   length: 5
   tier: valid
@@ -9693,10 +10877,14 @@ words:
   - main_list
 - word: вебер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Weber)
 - word: цифра
   length: 5
   tier: daily
@@ -9875,10 +11063,14 @@ words:
   - main_list
 - word: санкт
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun fragment: part of ''Saint Petersburg'' (Sankt-Peterburg)'
 - word: шитый
   length: 5
   tier: valid
@@ -9969,10 +11161,14 @@ words:
   - main_list
 - word: духов
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Genitive plural or surname; ambiguous standalone
 - word: шулер
   length: 5
   tier: valid
@@ -10466,10 +11662,14 @@ words:
   - main_list
 - word: трона
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure mineralogy term
 - word: ботик
   length: 5
   tier: valid
@@ -10716,10 +11916,14 @@ words:
   - main_list
 - word: кевин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Kevin)
 - word: слово
   length: 5
   tier: daily
@@ -10758,10 +11962,14 @@ words:
   - main_list
 - word: алекс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Alex)
 - word: сверх
   length: 5
   tier: daily
@@ -10848,10 +12056,14 @@ words:
   - main_list
 - word: дарья
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Darya)
 - word: димка
   length: 5
   tier: valid
@@ -11062,10 +12274,14 @@ words:
   - main_list
 - word: гомик
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Offensive/derogatory slur
 - word: волна
   length: 5
   tier: daily
@@ -11367,10 +12583,14 @@ words:
   - main_list
 - word: елена
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Elena)
 - word: ижора
   length: 5
   tier: valid
@@ -11439,10 +12659,14 @@ words:
   - main_list
 - word: пепси
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pepsi, brand)
 - word: шеища
   length: 5
   tier: valid
@@ -11473,10 +12697,14 @@ words:
   - main_list
 - word: хулио
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Julio)
 - word: дурак
   length: 5
   tier: daily
@@ -11485,10 +12713,14 @@ words:
   - main_list
 - word: афина
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Athena)
 - word: явить
   length: 5
   tier: valid
@@ -11856,10 +13088,14 @@ words:
   - main_list
 - word: гомер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Homer)
 - word: бычок
   length: 5
   tier: valid
@@ -11910,10 +13146,14 @@ words:
   - main_list
 - word: колли
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Dog breed (collie); somewhat specialized
 - word: надир
   length: 5
   tier: valid
@@ -11970,10 +13210,14 @@ words:
   - main_list
 - word: лючия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lucia)
 - word: шпунт
   length: 5
   tier: valid
@@ -12066,10 +13310,14 @@ words:
   - main_list
 - word: альма
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Alma)
 - word: почто
   length: 5
   tier: valid
@@ -12143,10 +13391,14 @@ words:
   - main_list
 - word: корея
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Korea)
 - word: анчар
   length: 5
   tier: valid
@@ -12336,10 +13588,14 @@ words:
   - main_list
 - word: херня
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar word
 - word: набег
   length: 5
   tier: daily
@@ -12609,10 +13865,14 @@ words:
   - main_list
 - word: карла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Carla/Karl genitive)
 - word: ларек
   length: 5
   tier: valid
@@ -12680,10 +13940,14 @@ words:
   - main_list
 - word: милан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Milan, city)
 - word: нерпа
   length: 5
   tier: valid
@@ -12991,10 +14255,14 @@ words:
   - main_list
 - word: адель
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Adele)
 - word: арина
   length: 5
   tier: valid
@@ -13354,10 +14622,14 @@ words:
   - main_list
 - word: иосиф
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Joseph)
 - word: лихва
   length: 5
   tier: valid
@@ -13487,10 +14759,14 @@ words:
   - main_list
 - word: харви
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Harvey)
 - word: ритка
   length: 5
   tier: valid
@@ -13586,10 +14862,14 @@ words:
   - main_list
 - word: генри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Henry)
 - word: рупия
   length: 5
   tier: valid
@@ -13598,10 +14878,14 @@ words:
   - main_list
 - word: антон
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Anton)
 - word: дзинь
   length: 5
   tier: daily
@@ -13622,10 +14906,14 @@ words:
   - main_list
 - word: месье
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: French title (monsieur), not standard Russian word
 - word: выезд
   length: 5
   tier: daily
@@ -13811,10 +15099,14 @@ words:
   - main_list
 - word: лилия
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Can be both a flower (lily) and a proper name; keeping as valid since it's also a common noun
 - word: хорда
   length: 5
   tier: valid
@@ -13930,10 +15222,14 @@ words:
   - main_list
 - word: огайо
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ohio)
   history:
   - 1691
   scheduled_day: 1691
@@ -13974,10 +15270,14 @@ words:
   - main_list
 - word: кайла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Kayla)
 - word: гиляк
   length: 5
   tier: valid
@@ -14252,10 +15552,14 @@ words:
   - main_list
 - word: брэнд
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Nonstandard transliteration; standard Russian is бренд
 - word: вилка
   length: 5
   tier: daily
@@ -14386,10 +15690,14 @@ words:
   - main_list
 - word: копал
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure term (copal resin)
 - word: кумач
   length: 5
   tier: valid
@@ -14422,10 +15730,14 @@ words:
   - main_list
 - word: жучка
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily a dog's name (Zhuchka), though can mean 'little bug'
 - word: пироп
   length: 5
   tier: valid
@@ -14653,10 +15965,14 @@ words:
   - main_list
 - word: гуччи
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gucci, brand)
 - word: зенон
   length: 5
   tier: valid
@@ -14828,10 +16144,14 @@ words:
   - main_list
 - word: чарли
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Charlie)
 - word: пирке
   length: 5
   tier: valid
@@ -14963,10 +16283,14 @@ words:
   - main_list
 - word: морзе
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Morse)
   history:
   - 1720
   scheduled_day: 1720
@@ -15091,10 +16415,14 @@ words:
   - main_list
 - word: рашид
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Rashid)
 - word: кивок
   length: 5
   tier: valid
@@ -15115,10 +16443,14 @@ words:
   - main_list
 - word: гарри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Harry)
 - word: амбре
   length: 5
   tier: valid
@@ -15258,10 +16590,14 @@ words:
   - main_list
 - word: белла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Bella)
 - word: спирт
   length: 5
   tier: daily
@@ -15413,10 +16749,14 @@ words:
   - main_list
 - word: жрать
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar for 'to eat'; common but crude
 - word: приор
   length: 5
   tier: daily
@@ -16066,10 +17406,14 @@ words:
   - main_list
 - word: ахмед
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ahmed)
 - word: шассе
   length: 5
   tier: valid
@@ -16202,10 +17546,14 @@ words:
   - main_list
 - word: перси
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Percy)
 - word: витье
   length: 5
   tier: valid
@@ -16272,10 +17620,14 @@ words:
   - main_list
 - word: карло
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Carlo)
 - word: майна
   length: 5
   tier: valid
@@ -16598,10 +17950,14 @@ words:
   - main_list
 - word: уэльс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Wales)
 - word: химик
   length: 5
   tier: daily
@@ -16748,10 +18104,14 @@ words:
   - main_list
 - word: грета
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Greta)
 - word: шваль
   length: 5
   tier: valid
@@ -16819,10 +18179,14 @@ words:
   - main_list
 - word: пенис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Anatomical/sexual term, inappropriate for daily puzzle
 - word: рачий
   length: 5
   tier: valid
@@ -16928,10 +18292,14 @@ words:
   - main_list
 - word: бобби
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Bobby)
 - word: тариф
   length: 5
   tier: daily
@@ -17114,10 +18482,14 @@ words:
   - main_list
 - word: эдгар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Edgar)
 - word: выкса
   length: 5
   tier: valid
@@ -17173,10 +18545,14 @@ words:
   - main_list
 - word: майер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Mayer)
 - word: линек
   length: 5
   tier: valid
@@ -17251,10 +18627,14 @@ words:
   - main_list
 - word: мамин
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Possessive adjective (mom's) but also a surname; keeping as valid - common enough
 - word: новик
   length: 5
   tier: valid
@@ -17350,16 +18730,24 @@ words:
   - main_list
 - word: хрень
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mildly vulgar slang; borderline for daily puzzle
 - word: ебать
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word (obscene verb)
 - word: зазор
   length: 5
   tier: valid
@@ -17565,16 +18953,24 @@ words:
   - main_list
 - word: исаак
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Isaac)
 - word: ирина
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Irina)
 - word: шкерт
   length: 5
   tier: valid
@@ -17622,10 +19018,14 @@ words:
   - main_list
 - word: игорь
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Igor)
 - word: ропот
   length: 5
   tier: valid
@@ -17739,10 +19139,14 @@ words:
   - main_list
 - word: аллен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Allen)
 - word: козон
   length: 5
   tier: valid
@@ -18037,10 +19441,14 @@ words:
   - main_list
 - word: ницше
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Nietzsche)
 - word: шитье
   length: 5
   tier: valid
@@ -18083,10 +19491,14 @@ words:
   - main_list
 - word: мария
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Maria)
 - word: гриль
   length: 5
   tier: daily
@@ -18815,10 +20227,14 @@ words:
   - main_list
 - word: фюрер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Offensive connotation (Fuhrer, associated with Nazism)
 - word: далее
   length: 5
   tier: daily
@@ -18875,10 +20291,14 @@ words:
   - main_list
 - word: шарль
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Charles)
 - word: писец
   length: 5
   tier: valid
@@ -19008,6 +20428,10 @@ words:
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 2
+    reason: 'Ambiguous: common noun ''zenith'' but also well-known football club name'
 - word: блюмс
   length: 5
   tier: valid
@@ -19141,10 +20565,14 @@ words:
   - main_list
 - word: макса
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (genitive of Max)
 - word: лайма
   length: 5
   tier: daily
@@ -19212,10 +20640,14 @@ words:
   - main_list
 - word: софия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Sofia/Sophia)
 - word: косач
   length: 5
   tier: valid
@@ -19458,10 +20890,14 @@ words:
   - main_list
 - word: диего
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Diego)
 - word: игрец
   length: 5
   tier: valid
@@ -19660,10 +21096,14 @@ words:
   - main_list
 - word: будда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Buddha)
 - word: отрог
   length: 5
   tier: valid
@@ -19774,10 +21214,14 @@ words:
   - main_list
 - word: ванда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Wanda)
 - word: льяло
   length: 5
   tier: valid
@@ -19901,10 +21345,14 @@ words:
   - main_list
 - word: лидия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lydia)
 - word: девиз
   length: 5
   tier: daily
@@ -19967,10 +21415,14 @@ words:
   - main_list
 - word: техас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Texas)
 - word: парез
   length: 5
   tier: valid
@@ -19985,10 +21437,14 @@ words:
   - main_list
 - word: таити
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tahiti)
 - word: ведро
   length: 5
   tier: daily
@@ -20174,10 +21630,14 @@ words:
   - main_list
 - word: майкл
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Michael)
 - word: укать
   length: 5
   tier: valid
@@ -20219,10 +21679,14 @@ words:
   - main_list
 - word: сукин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Offensive (as in 'сукин сын'); also a surname
 - word: пузцо
   length: 5
   tier: valid
@@ -20236,10 +21700,14 @@ words:
   - main_list
 - word: хинди
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Language name; borderline proper noun
 - word: бочар
   length: 5
   tier: valid
@@ -20487,10 +21955,14 @@ words:
   - main_list
 - word: пенни
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Penny) / foreign currency unit
 - word: хомут
   length: 5
   tier: valid
@@ -20646,10 +22118,14 @@ words:
   - main_list
 - word: орфей
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Orpheus)
 - word: завод
   length: 5
   tier: daily
@@ -20664,10 +22140,14 @@ words:
   - main_list
 - word: индия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (India)
 - word: купаж
   length: 5
   tier: valid
@@ -20777,10 +22257,14 @@ words:
   - main_list
 - word: магда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Magda)
 - word: детка
   length: 5
   tier: daily
@@ -20812,10 +22296,14 @@ words:
   - main_list
 - word: бланш
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily proper name (Blanche) or term карт-бланш
 - word: тафья
   length: 5
   tier: valid
@@ -21326,16 +22814,24 @@ words:
   - main_list
 - word: рубен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ruben)
 - word: падла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar insult
 - word: кешью
   length: 5
   tier: valid
@@ -21498,10 +22994,14 @@ words:
   - main_list
 - word: мойра
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Moira)
 - word: куцый
   length: 5
   tier: valid
@@ -21702,10 +23202,14 @@ words:
   - main_list
 - word: лаура
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Laura)
 - word: ушной
   length: 5
   tier: valid
@@ -21916,10 +23420,14 @@ words:
   - main_list
 - word: срать
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar word
 - word: кулеш
   length: 5
   tier: valid
@@ -22254,10 +23762,14 @@ words:
   - main_list
 - word: самой
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.12
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Pronoun form (instrumental/genitive of сама), not ideal for puzzle
 - word: орава
   length: 5
   tier: valid
@@ -22374,10 +23886,14 @@ words:
   - main_list
 - word: аллах
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Allah)
 - word: щелка
   length: 5
   tier: valid
@@ -22467,10 +23983,14 @@ words:
   - main_list
 - word: артур
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Arthur)
 - word: носач
   length: 5
   tier: valid
@@ -22622,10 +24142,14 @@ words:
   - main_list
 - word: винни
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Winnie)
 - word: сдвиг
   length: 5
   tier: daily
@@ -22676,10 +24200,14 @@ words:
   - main_list
 - word: эмиль
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Emil)
 - word: глипт
   length: 5
   tier: valid
@@ -22716,16 +24244,24 @@ words:
   - main_list
 - word: рсфср
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: ''RSFSR'' (Russian Soviet Federative Socialist Republic)'
 - word: роман
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Both a proper name and common noun (novel); keeping as valid since роман=novel is very common
 - word: топка
   length: 5
   tier: valid
@@ -22897,10 +24433,14 @@ words:
   - main_list
 - word: шлюха
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word (derogatory term for woman)
 - word: гофер
   length: 5
   tier: valid
@@ -23246,10 +24786,14 @@ words:
   - main_list
 - word: жанна
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jeanne/Zhanna)
 - word: напев
   length: 5
   tier: valid
@@ -23363,10 +24907,14 @@ words:
   - main_list
 - word: акира
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Akira)
 - word: зажин
   length: 5
   tier: valid
@@ -23403,10 +24951,14 @@ words:
   - main_list
 - word: сенна
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily proper name (Senna); as herb, standard form is сенна but uncommon
 - word: фраза
   length: 5
   tier: daily
@@ -23438,10 +24990,14 @@ words:
   - main_list
 - word: нигер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Niger, country/river) and potentially offensive homophone
 - word: помор
   length: 5
   tier: valid
@@ -23579,10 +25135,14 @@ words:
   - main_list
 - word: ислам
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Islam, religion)
 - word: зэчка
   length: 5
   tier: valid
@@ -23691,10 +25251,14 @@ words:
   - main_list
 - word: алена
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Alena)
 - word: рубин
   length: 5
   tier: daily
@@ -23853,10 +25417,14 @@ words:
   - main_list
 - word: иисус
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jesus)
   history:
   - 1717
   scheduled_day: 1717
@@ -24314,7 +25882,7 @@ words:
   - main_list
 - word: рубль
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - main_list
@@ -24435,10 +26003,14 @@ words:
   - main_list
 - word: хасан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Hassan)
 - word: батут
   length: 5
   tier: valid
@@ -24598,10 +26170,14 @@ words:
   - main_list
 - word: ромео
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Romeo)
 - word: балык
   length: 5
   tier: valid
@@ -24812,10 +26388,14 @@ words:
   - main_list
 - word: рауль
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Raul)
 - word: лелик
   length: 5
   tier: valid
@@ -25139,10 +26719,14 @@ words:
   - main_list
 - word: ливия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Libya)
 - word: гаусс
   length: 5
   tier: valid
@@ -25216,10 +26800,14 @@ words:
   - main_list
 - word: остин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Austin/Austen)
 - word: смета
   length: 5
   tier: valid
@@ -25246,10 +26834,14 @@ words:
   - main_list
 - word: абдул
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Abdul)
 - word: салун
   length: 5
   tier: valid
@@ -25369,10 +26961,14 @@ words:
   - main_list
 - word: клара
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Clara)
   history:
   - 1716
   scheduled_day: 1716
@@ -25439,10 +27035,14 @@ words:
   - main_list
 - word: шаров
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily a surname (Sharov) or genitive plural
 - word: песня
   length: 5
   tier: daily
@@ -25463,10 +27063,14 @@ words:
   - main_list
 - word: битлз
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Beatles)
 - word: милый
   length: 5
   tier: daily
@@ -25517,10 +27121,14 @@ words:
   - main_list
 - word: питер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Peter / St. Petersburg colloquial)
 - word: мялка
   length: 5
   tier: valid
@@ -25604,10 +27212,14 @@ words:
   - main_list
 - word: томас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Thomas)
 - word: битый
   length: 5
   tier: valid
@@ -25646,10 +27258,14 @@ words:
   - main_list
 - word: света
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Sveta, diminutive of Svetlana)
 - word: падуб
   length: 5
   tier: valid
@@ -25804,10 +27420,14 @@ words:
   - main_list
 - word: алиса
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Alice/Alisa)
 - word: слега
   length: 5
   tier: valid
@@ -25852,10 +27472,14 @@ words:
   - main_list
 - word: борис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Boris)
 - word: мучка
   length: 5
   tier: valid
@@ -26017,10 +27641,14 @@ words:
   - main_list
 - word: луиза
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Louise)
 - word: взнос
   length: 5
   tier: daily
@@ -26134,10 +27762,14 @@ words:
   - main_list
 - word: колин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Colin)
 - word: мелос
   length: 5
   tier: valid
@@ -26175,10 +27807,14 @@ words:
   - main_list
 - word: львов
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lvov, city)
 - word: десна
   length: 5
   tier: valid
@@ -26338,10 +27974,14 @@ words:
   - main_list
 - word: милка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Milka, brand/name)
 - word: риска
   length: 5
   tier: daily
@@ -26350,10 +27990,14 @@ words:
   - main_list
 - word: авель
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Abel)
 - word: рагби
   length: 5
   tier: valid
@@ -26421,10 +28065,14 @@ words:
   - main_list
 - word: андре
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Andre)
 - word: шанкр
   length: 5
   tier: valid
@@ -26463,10 +28111,14 @@ words:
   - main_list
 - word: телом
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Instrumental case of тело, not base form
   history:
   - 1718
   scheduled_day: 1718
@@ -26555,10 +28207,14 @@ words:
   - main_list
 - word: бухло
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for booze, somewhat vulgar for daily puzzle
 - word: типаж
   length: 5
   tier: daily
@@ -26597,10 +28253,14 @@ words:
   - main_list
 - word: гейтс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gates)
 - word: кбайт
   length: 5
   tier: valid
@@ -26609,10 +28269,14 @@ words:
   - main_list
 - word: самое
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.34
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Pronoun form (neuter of самый), not a standalone word for puzzle
 - word: тосол
   length: 5
   tier: valid
@@ -27005,10 +28669,14 @@ words:
   - main_list
 - word: грант
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily a proper name in Russian; 'grant' as common noun is borrowed
 - word: фужер
   length: 5
   tier: valid
@@ -27106,10 +28774,14 @@ words:
   - main_list
 - word: макао
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Macau)
 - word: чарка
   length: 5
   tier: valid
@@ -27291,10 +28963,14 @@ words:
   - main_list
 - word: мишка
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper name diminutive (Mishka) but also means 'teddy bear' colloquially; borderline
 - word: рытый
   length: 5
   tier: valid
@@ -27562,10 +29238,14 @@ words:
   - main_list
 - word: гиббс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gibbs)
 - word: разик
   length: 5
   tier: valid
@@ -27668,10 +29348,14 @@ words:
   - main_list
 - word: эльза
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Elsa)
 - word: балда
   length: 5
   tier: daily
@@ -29579,13 +31263,13 @@ words:
   - supplement
 - word: акции
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
 - word: акций
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -31691,7 +33375,7 @@ words:
   - supplement
 - word: армии
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
@@ -31709,7 +33393,7 @@ words:
   - supplement
 - word: армию
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -32413,7 +34097,7 @@ words:
   - supplement
 - word: атаки
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -35354,7 +37038,7 @@ words:
   - supplement
 - word: белые
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -35366,7 +37050,7 @@ words:
   - supplement
 - word: белых
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -36661,7 +38345,7 @@ words:
   - supplement
 - word: ближе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -37833,7 +39517,7 @@ words:
   - supplement
 - word: борту
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -38162,7 +39846,7 @@ words:
   - supplement
 - word: боюсь
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -38396,7 +40080,7 @@ words:
   - supplement
 - word: брата
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -39107,7 +40791,7 @@ words:
   - supplement
 - word: будем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -39119,7 +40803,7 @@ words:
   - supplement
 - word: будет
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.23
   sources:
   - supplement
@@ -39179,7 +40863,7 @@ words:
   - supplement
 - word: будут
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.6
   sources:
   - supplement
@@ -40570,7 +42254,7 @@ words:
   - supplement
 - word: важно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.16
   sources:
   - supplement
@@ -41492,7 +43176,7 @@ words:
   - supplement
 - word: вашей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -41510,7 +43194,7 @@ words:
   - supplement
 - word: ваших
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -41821,7 +43505,7 @@ words:
   - supplement
 - word: ведет
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -41851,7 +43535,7 @@ words:
   - supplement
 - word: ведут
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -42397,7 +44081,7 @@ words:
   - supplement
 - word: верно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -42771,7 +44455,7 @@ words:
   - supplement
 - word: вечно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -42843,7 +44527,7 @@ words:
   - supplement
 - word: вещей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -42959,13 +44643,13 @@ words:
   - supplement
 - word: взяла
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
 - word: взяли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -43069,7 +44753,7 @@ words:
   - supplement
 - word: видел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
@@ -43086,7 +44770,7 @@ words:
   - supplement
 - word: видим
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -43098,7 +44782,7 @@ words:
   - supplement
 - word: видит
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.73
   sources:
   - supplement
@@ -43121,7 +44805,7 @@ words:
   - supplement
 - word: видно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.89
   sources:
   - supplement
@@ -43133,13 +44817,13 @@ words:
   - supplement
 - word: видов
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
 - word: видом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -43151,7 +44835,7 @@ words:
   - supplement
 - word: видят
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -44235,7 +45919,7 @@ words:
   - supplement
 - word: водой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -44393,7 +46077,7 @@ words:
   - supplement
 - word: войне
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -44405,19 +46089,19 @@ words:
   - supplement
 - word: войну
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.82
   sources:
   - supplement
 - word: войны
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.41
   sources:
   - supplement
 - word: войск
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -44523,7 +46207,7 @@ words:
   - supplement
 - word: волны
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -44792,7 +46476,7 @@ words:
   - supplement
 - word: вошли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -44881,7 +46565,7 @@ words:
   - supplement
 - word: врага
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -44934,7 +46618,7 @@ words:
   - supplement
 - word: врача
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -44946,7 +46630,7 @@ words:
   - supplement
 - word: врачи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -45061,19 +46745,19 @@ words:
   - supplement
 - word: всего
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.91
   sources:
   - supplement
 - word: всеми
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
 - word: всему
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -45206,7 +46890,7 @@ words:
   - supplement
 - word: вузов
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -45684,7 +47368,7 @@ words:
   - supplement
 - word: вырос
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -45785,7 +47469,7 @@ words:
   - supplement
 - word: вышел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -45815,19 +47499,19 @@ words:
   - supplement
 - word: вышла
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
 - word: вышли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
 - word: вышло
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -47800,7 +49484,7 @@ words:
   - supplement
 - word: герои
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -47812,7 +49496,7 @@ words:
   - supplement
 - word: героя
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -48378,7 +50062,7 @@ words:
   - supplement
 - word: главе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -48396,7 +50080,7 @@ words:
   - supplement
 - word: главы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -48420,7 +50104,7 @@ words:
   - supplement
 - word: глаза
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
@@ -48926,7 +50610,7 @@ words:
   - supplement
 - word: годам
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -48949,7 +50633,7 @@ words:
   - supplement
 - word: годах
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -48996,13 +50680,13 @@ words:
   - supplement
 - word: годов
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
 - word: годом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -49253,7 +50937,7 @@ words:
   - supplement
 - word: гонки
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -49594,7 +51278,7 @@ words:
   - supplement
 - word: гости
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.69
   sources:
   - supplement
@@ -49636,7 +51320,7 @@ words:
   - supplement
 - word: готов
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -50451,7 +52135,7 @@ words:
   - supplement
 - word: груди
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -50505,7 +52189,7 @@ words:
   - supplement
 - word: групп
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -51456,7 +53140,7 @@ words:
   - supplement
 - word: давай
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -51699,7 +53383,7 @@ words:
   - supplement
 - word: дайте
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -52527,7 +54211,7 @@ words:
   - supplement
 - word: двери
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -52580,7 +54264,7 @@ words:
   - supplement
 - word: двоих
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -52592,7 +54276,7 @@ words:
   - supplement
 - word: дворе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -52616,7 +54300,7 @@ words:
   - supplement
 - word: двумя
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -52892,19 +54576,19 @@ words:
   - supplement
 - word: делай
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
 - word: делал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
 - word: делам
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -52916,7 +54600,7 @@ words:
   - supplement
 - word: делаю
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -53012,7 +54696,7 @@ words:
   - supplement
 - word: делом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -53158,7 +54842,7 @@ words:
   - supplement
 - word: денег
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.25
   sources:
   - supplement
@@ -53421,7 +55105,7 @@ words:
   - supplement
 - word: детей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
@@ -53450,7 +55134,7 @@ words:
   - supplement
 - word: детям
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -55425,7 +57109,7 @@ words:
   - supplement
 - word: долго
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - supplement
@@ -55536,7 +57220,7 @@ words:
   - supplement
 - word: домов
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -55740,7 +57424,7 @@ words:
   - supplement
 - word: дорог
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.69
   sources:
   - supplement
@@ -56299,7 +57983,7 @@ words:
   - supplement
 - word: друга
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -56323,7 +58007,7 @@ words:
   - supplement
 - word: другу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -56703,7 +58387,7 @@ words:
   - supplement
 - word: думал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -56721,7 +58405,7 @@ words:
   - supplement
 - word: думаю
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.4
   sources:
   - supplement
@@ -57305,10 +58989,14 @@ words:
   - supplement
 - word: дэвид
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.56
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''David'' (transliterated)'
 - word: дэвис
   length: 5
   tier: valid
@@ -59193,7 +60881,7 @@ words:
   - supplement
 - word: желаю
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -59299,7 +60987,7 @@ words:
   - supplement
 - word: женой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -59357,7 +61045,7 @@ words:
   - supplement
 - word: жертв
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -59446,7 +61134,7 @@ words:
   - supplement
 - word: живет
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -59481,7 +61169,7 @@ words:
   - supplement
 - word: живут
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -59522,7 +61210,7 @@ words:
   - supplement
 - word: живых
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -59591,7 +61279,7 @@ words:
   - supplement
 - word: жизни
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.81
   sources:
   - supplement
@@ -60290,7 +61978,7 @@ words:
   - supplement
 - word: забил
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -60342,7 +62030,7 @@ words:
   - supplement
 - word: забыл
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -60485,7 +62173,7 @@ words:
   - supplement
 - word: задач
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -61006,7 +62694,7 @@ words:
   - supplement
 - word: занял
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -61476,7 +63164,7 @@ words:
   - supplement
 - word: звезд
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -61804,19 +63492,19 @@ words:
   - supplement
 - word: земле
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement
 - word: земли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
 - word: землю
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
@@ -61964,7 +63652,7 @@ words:
   - supplement
 - word: зимой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -62209,13 +63897,13 @@ words:
   - supplement
 - word: знаем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
 - word: знает
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.25
   sources:
   - supplement
@@ -62257,13 +63945,13 @@ words:
   - supplement
 - word: знала
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
 - word: знали
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -62287,7 +63975,7 @@ words:
   - supplement
 - word: знают
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -62315,7 +64003,7 @@ words:
   - supplement
 - word: зовут
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -62933,10 +64621,14 @@ words:
   - supplement
 - word: ивана
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.46
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: genitive of personal name ''Ivan'''
 - word: иване
   length: 5
   tier: valid
@@ -63153,7 +64845,7 @@ words:
   - supplement
 - word: играл
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -63171,7 +64863,7 @@ words:
   - supplement
 - word: играх
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -63839,7 +65531,7 @@ words:
   - supplement
 - word: имеет
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
@@ -63851,13 +65543,13 @@ words:
   - supplement
 - word: имела
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
 - word: имели
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -63869,13 +65561,13 @@ words:
   - supplement
 - word: имена
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
 - word: имени
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -63886,7 +65578,7 @@ words:
   - supplement
 - word: имеют
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -63993,10 +65685,14 @@ words:
   - supplement
 - word: индии
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: prepositional/genitive of country name ''India'''
 - word: индио
   length: 5
   tier: valid
@@ -65002,13 +66698,13 @@ words:
   - supplement
 - word: итоге
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
 - word: итоги
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -65492,10 +67188,14 @@ words:
   - supplement
 - word: йорке
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: prepositional of ''York'' (as in New York)'
 - word: йорку
   length: 5
   tier: valid
@@ -66116,7 +67816,7 @@ words:
   - supplement
 - word: какая
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.31
   sources:
   - supplement
@@ -66128,19 +67828,19 @@ words:
   - supplement
 - word: какие
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.45
   sources:
   - supplement
 - word: каким
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
 - word: каких
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement
@@ -66152,13 +67852,13 @@ words:
   - supplement
 - word: какое
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement
 - word: каком
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -66187,7 +67887,7 @@ words:
   - supplement
 - word: какую
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.97
   sources:
   - supplement
@@ -67056,13 +68756,13 @@ words:
   - supplement
 - word: карту
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
 - word: карты
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -68673,16 +70373,24 @@ words:
   - supplement
 - word: киева
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.57
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: genitive of city name ''Kyiv'''
 - word: киеве
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.9
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: prepositional of city name ''Kyiv'''
 - word: киево
   length: 5
   tier: valid
@@ -69283,10 +70991,14 @@ words:
   - supplement
 - word: китае
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.65
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: prepositional of country name ''China'''
 - word: китам
   length: 5
   tier: valid
@@ -69307,10 +71019,14 @@ words:
   - supplement
 - word: китая
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.75
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: genitive of country name ''China'''
 - word: китеж
   length: 5
   tier: valid
@@ -70004,13 +71720,13 @@ words:
   - supplement
 - word: клуба
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
 - word: клубе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -70250,19 +71966,19 @@ words:
   - supplement
 - word: книге
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
 - word: книги
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
 - word: книгу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.89
   sources:
   - supplement
@@ -71486,19 +73202,19 @@ words:
   - supplement
 - word: конца
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.19
   sources:
   - supplement
 - word: конце
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.35
   sources:
   - supplement
 - word: концу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -72223,7 +73939,7 @@ words:
   - supplement
 - word: кости
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -73185,7 +74901,7 @@ words:
   - supplement
 - word: крови
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -73445,7 +75161,7 @@ words:
   - supplement
 - word: круто
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -73532,10 +75248,14 @@ words:
   - supplement
 - word: крыма
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.66
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: genitive of place name ''Crimea'''
 - word: крыме
   length: 5
   tier: valid
@@ -73544,10 +75264,14 @@ words:
   - supplement
 - word: крыму
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.77
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: dative/prepositional of place name ''Crimea'''
 - word: крысе
   length: 5
   tier: valid
@@ -73797,7 +75521,7 @@ words:
   - supplement
 - word: кубка
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -74307,7 +76031,7 @@ words:
   - supplement
 - word: купил
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -74509,13 +76233,13 @@ words:
   - supplement
 - word: курса
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
 - word: курсе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -74533,7 +76257,7 @@ words:
   - supplement
 - word: курсы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -75559,7 +77283,7 @@ words:
   - supplement
 - word: ладно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -76733,7 +78457,7 @@ words:
   - supplement
 - word: легко
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -76768,7 +78492,7 @@ words:
   - supplement
 - word: легче
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -76815,7 +78539,7 @@ words:
   - supplement
 - word: лежит
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -77577,7 +79301,7 @@ words:
   - supplement
 - word: летию
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -77630,7 +79354,7 @@ words:
   - supplement
 - word: летом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -78384,7 +80108,7 @@ words:
   - supplement
 - word: линии
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -78396,7 +80120,7 @@ words:
   - supplement
 - word: линию
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -78982,7 +80706,7 @@ words:
   - supplement
 - word: лицом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -79016,7 +80740,7 @@ words:
   - supplement
 - word: лично
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -80586,7 +82310,7 @@ words:
   - supplement
 - word: лучше
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.67
   sources:
   - supplement
@@ -81015,7 +82739,7 @@ words:
   - supplement
 - word: любви
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -81027,7 +82751,7 @@ words:
   - supplement
 - word: любил
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -81045,7 +82769,7 @@ words:
   - supplement
 - word: любит
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -81069,7 +82793,7 @@ words:
   - supplement
 - word: люблю
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.33
   sources:
   - supplement
@@ -81081,13 +82805,13 @@ words:
   - supplement
 - word: любое
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
 - word: любом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -81105,7 +82829,7 @@ words:
   - supplement
 - word: любую
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -81116,7 +82840,7 @@ words:
   - supplement
 - word: любые
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -81134,13 +82858,13 @@ words:
   - supplement
 - word: любят
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
 - word: людей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.76
   sources:
   - supplement
@@ -81158,7 +82882,7 @@ words:
   - supplement
 - word: людям
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -83087,6 +84811,10 @@ words:
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: 'Proper noun in prepositional case: ''in March'' - month names are proper nouns in Russian'
 - word: марту
   length: 5
   tier: valid
@@ -83463,19 +85191,19 @@ words:
   - supplement
 - word: матча
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
 - word: матче
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
 - word: матчи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -83794,7 +85522,7 @@ words:
   - supplement
 - word: машин
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -84616,13 +86344,13 @@ words:
   - supplement
 - word: места
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
 - word: месте
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.37
   sources:
   - supplement
@@ -84906,7 +86634,7 @@ words:
   - supplement
 - word: мечты
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -85198,7 +86926,7 @@ words:
   - supplement
 - word: милая
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -85542,7 +87270,7 @@ words:
   - supplement
 - word: минут
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -85691,7 +87419,7 @@ words:
   - supplement
 - word: миром
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -86230,7 +87958,7 @@ words:
   - supplement
 - word: много
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.75
   sources:
   - supplement
@@ -86291,19 +88019,19 @@ words:
   - supplement
 - word: могла
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
 - word: могли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.24
   sources:
   - supplement
 - word: могло
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.79
   sources:
   - supplement
@@ -86315,7 +88043,7 @@ words:
   - supplement
 - word: могут
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.59
   sources:
   - supplement
@@ -86392,13 +88120,13 @@ words:
   - supplement
 - word: моего
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
 - word: моему
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
@@ -86422,13 +88150,13 @@ words:
   - supplement
 - word: можем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement
 - word: может
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.17
   sources:
   - supplement
@@ -86452,7 +88180,7 @@ words:
   - supplement
 - word: мозга
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -87619,7 +89347,7 @@ words:
   - supplement
 - word: музея
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -88138,7 +89866,7 @@ words:
   - supplement
 - word: мысли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -89670,7 +91398,7 @@ words:
   - supplement
 - word: науки
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -89788,7 +91516,7 @@ words:
   - supplement
 - word: начал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -89840,19 +91568,19 @@ words:
   - supplement
 - word: нашей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.38
   sources:
   - supplement
 - word: нашел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
 - word: нашем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -89863,25 +91591,25 @@ words:
   - supplement
 - word: нашим
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
 - word: наших
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.24
   sources:
   - supplement
 - word: нашла
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
 - word: нашли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -90627,7 +92355,7 @@ words:
   - supplement
 - word: нефти
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -91236,7 +92964,7 @@ words:
   - supplement
 - word: ничем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -91370,7 +93098,7 @@ words:
   - supplement
 - word: новая
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -91405,19 +93133,19 @@ words:
   - supplement
 - word: новое
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
 - word: новой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
 - word: новом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -91434,25 +93162,25 @@ words:
   - supplement
 - word: новую
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement
 - word: новые
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.4
   sources:
   - supplement
 - word: новым
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
 - word: новых
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -91821,7 +93549,7 @@ words:
   - supplement
 - word: носит
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -92014,7 +93742,7 @@ words:
   - supplement
 - word: ночью
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -92132,25 +93860,25 @@ words:
   - supplement
 - word: нужен
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
 - word: нужна
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
 - word: нужно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.77
   sources:
   - supplement
 - word: нужны
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -92625,10 +94353,14 @@ words:
   - supplement
 - word: обама
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.53
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Obama'''
 - word: обаме
   length: 5
   tier: valid
@@ -92691,7 +94423,7 @@ words:
   - supplement
 - word: обеих
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -92890,7 +94622,7 @@ words:
   - supplement
 - word: обоих
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -93031,25 +94763,25 @@ words:
   - supplement
 - word: общая
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
 - word: общее
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
 - word: общей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
 - word: общем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -93548,7 +95280,7 @@ words:
   - supplement
 - word: одним
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -93560,13 +95292,13 @@ words:
   - supplement
 - word: одной
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.52
   sources:
   - supplement
 - word: одном
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
@@ -94760,7 +96492,7 @@ words:
   - supplement
 - word: опыта
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -95398,7 +97130,7 @@ words:
   - supplement
 - word: особо
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -95628,7 +97360,7 @@ words:
   - supplement
 - word: отдал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -95864,7 +97596,7 @@ words:
   - supplement
 - word: отцом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -96121,7 +97853,7 @@ words:
   - supplement
 - word: очков
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -97104,7 +98836,7 @@ words:
   - supplement
 - word: парке
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -97152,7 +98884,7 @@ words:
   - supplement
 - word: парни
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -97164,7 +98896,7 @@ words:
   - supplement
 - word: парня
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -98445,7 +100177,7 @@ words:
   - supplement
 - word: песен
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -98487,13 +100219,13 @@ words:
   - supplement
 - word: песни
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
 - word: песню
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -98591,10 +100323,14 @@ words:
   - supplement
 - word: петра
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: genitive of personal name ''Peter/Pyotr'''
 - word: петре
   length: 5
   tier: valid
@@ -99260,7 +100996,7 @@ words:
   - supplement
 - word: писал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -99461,7 +101197,7 @@ words:
   - supplement
 - word: пишет
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -99482,7 +101218,7 @@ words:
   - supplement
 - word: пишут
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -99550,13 +101286,13 @@ words:
   - supplement
 - word: плана
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
 - word: плане
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -99586,7 +101322,7 @@ words:
   - supplement
 - word: планы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.82
   sources:
   - supplement
@@ -99633,7 +101369,7 @@ words:
   - supplement
 - word: платы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -99938,7 +101674,7 @@ words:
   - supplement
 - word: плохо
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.19
   sources:
   - supplement
@@ -100439,7 +102175,7 @@ words:
   - supplement
 - word: пойду
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -100781,7 +102517,7 @@ words:
   - supplement
 - word: помню
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -100793,7 +102529,7 @@ words:
   - supplement
 - word: помог
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -100930,7 +102666,7 @@ words:
   - supplement
 - word: понял
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -100954,7 +102690,7 @@ words:
   - supplement
 - word: попал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -101154,7 +102890,7 @@ words:
   - supplement
 - word: порой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -101297,7 +103033,7 @@ words:
   - supplement
 - word: после
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.17
   sources:
   - supplement
@@ -101477,7 +103213,7 @@ words:
   - supplement
 - word: похож
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -101584,19 +103320,19 @@ words:
   - supplement
 - word: пошел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
 - word: пошла
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
 - word: пошли
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -101720,7 +103456,7 @@ words:
   - supplement
 - word: права
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
@@ -102348,13 +104084,13 @@ words:
   - supplement
 - word: прошу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
 - word: проще
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -102466,7 +104202,7 @@ words:
   - supplement
 - word: прямо
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - supplement
@@ -102574,7 +104310,7 @@ words:
   - supplement
 - word: птицы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -102973,7 +104709,7 @@ words:
   - supplement
 - word: путем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -102984,10 +104720,14 @@ words:
   - supplement
 - word: путин
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.09
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Putin'''
 - word: путна
   length: 5
   tier: valid
@@ -103894,7 +105634,7 @@ words:
   - supplement
 - word: работ
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.11
   sources:
   - supplement
@@ -103959,7 +105699,7 @@ words:
   - supplement
 - word: равно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.31
   sources:
   - supplement
@@ -105350,7 +107090,7 @@ words:
   - supplement
 - word: ребят
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -105484,7 +107224,7 @@ words:
   - supplement
 - word: редко
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -105560,7 +107300,7 @@ words:
   - supplement
 - word: резко
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -106229,7 +107969,7 @@ words:
   - supplement
 - word: решил
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -107078,7 +108818,7 @@ words:
   - supplement
 - word: ровно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -107885,7 +109625,7 @@ words:
   - supplement
 - word: роста
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -108241,7 +109981,7 @@ words:
   - supplement
 - word: рубля
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -108415,7 +110155,7 @@ words:
   - supplement
 - word: руках
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -108437,7 +110177,7 @@ words:
   - supplement
 - word: рукой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -109162,13 +110902,13 @@ words:
   - supplement
 - word: рынка
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
 - word: рынке
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -109561,7 +111301,7 @@ words:
   - supplement
 - word: рядом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.34
   sources:
   - supplement
@@ -110178,13 +111918,13 @@ words:
   - supplement
 - word: сайта
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
 - word: сайте
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.19
   sources:
   - supplement
@@ -110510,7 +112250,7 @@ words:
   - supplement
 - word: самая
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -110545,7 +112285,7 @@ words:
   - supplement
 - word: самим
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -110563,7 +112303,7 @@ words:
   - supplement
 - word: самих
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -110658,7 +112398,7 @@ words:
   - supplement
 - word: самую
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -110682,19 +112422,19 @@ words:
   - supplement
 - word: самые
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
 - word: самым
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
 - word: самых
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -111796,7 +113536,7 @@ words:
   - supplement
 - word: свете
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -112004,13 +113744,13 @@ words:
   - supplement
 - word: своей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.73
   sources:
   - supplement
 - word: своем
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -112034,13 +113774,13 @@ words:
   - supplement
 - word: своим
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.37
   sources:
   - supplement
 - word: своих
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.59
   sources:
   - supplement
@@ -112070,7 +113810,7 @@ words:
   - supplement
 - word: своём
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -112088,7 +113828,7 @@ words:
   - supplement
 - word: связи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.54
   sources:
   - supplement
@@ -112798,7 +114538,7 @@ words:
   - supplement
 - word: семей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -112860,19 +114600,19 @@ words:
   - supplement
 - word: семье
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
 - word: семьи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
 - word: семью
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -113112,7 +114852,7 @@ words:
   - supplement
 - word: серии
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -113136,7 +114876,7 @@ words:
   - supplement
 - word: серию
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -113648,7 +115388,7 @@ words:
   - supplement
 - word: сидел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -113666,7 +115406,7 @@ words:
   - supplement
 - word: сидит
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -113908,7 +115648,7 @@ words:
   - supplement
 - word: силой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -114206,10 +115946,14 @@ words:
   - supplement
 - word: сирии
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.73
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: prepositional/genitive of country name ''Syria'''
 - word: сирик
   length: 5
   tier: valid
@@ -114458,13 +116202,13 @@ words:
   - supplement
 - word: скажи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
 - word: скажу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.73
   sources:
   - supplement
@@ -114773,7 +116517,7 @@ words:
   - supplement
 - word: скоро
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -115039,7 +116783,7 @@ words:
   - supplement
 - word: следы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -115215,7 +116959,7 @@ words:
   - supplement
 - word: слова
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
@@ -115442,7 +117186,7 @@ words:
   - supplement
 - word: слухи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -115757,7 +117501,7 @@ words:
   - supplement
 - word: смогу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -116240,7 +117984,7 @@ words:
   - supplement
 - word: собой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.45
   sources:
   - supplement
@@ -117028,7 +118772,7 @@ words:
   - supplement
 - word: сотни
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -117330,7 +119074,7 @@ words:
   - supplement
 - word: союза
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -117949,7 +119693,7 @@ words:
   - supplement
 - word: среды
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -117973,7 +119717,7 @@ words:
   - supplement
 - word: срока
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -117985,7 +119729,7 @@ words:
   - supplement
 - word: сроки
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -118214,19 +119958,19 @@ words:
   - supplement
 - word: стала
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.34
   sources:
   - supplement
 - word: стали
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.41
   sources:
   - supplement
 - word: стало
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.32
   sources:
   - supplement
@@ -118517,7 +120261,7 @@ words:
   - supplement
 - word: стены
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -118660,7 +120404,7 @@ words:
   - supplement
 - word: стиле
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -118735,7 +120479,7 @@ words:
   - supplement
 - word: стихи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -118783,7 +120527,7 @@ words:
   - supplement
 - word: стоит
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
@@ -118812,13 +120556,13 @@ words:
   - supplement
 - word: стола
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
 - word: столе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -118932,19 +120676,19 @@ words:
   - supplement
 - word: стоял
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
 - word: стоят
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
 - word: стран
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -119470,7 +121214,7 @@ words:
   - supplement
 - word: судов
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -119713,7 +121457,7 @@ words:
   - supplement
 - word: сумел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -119765,13 +121509,13 @@ words:
   - supplement
 - word: сумму
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
 - word: суммы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -119981,7 +121725,7 @@ words:
   - supplement
 - word: суток
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -120219,7 +121963,7 @@ words:
   - supplement
 - word: сфере
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -120260,7 +122004,7 @@ words:
   - supplement
 - word: схемы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -120353,7 +122097,7 @@ words:
   - supplement
 - word: сцене
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -120365,13 +122109,13 @@ words:
   - supplement
 - word: сцены
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
 - word: счета
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -120565,7 +122309,7 @@ words:
   - supplement
 - word: сыном
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -121424,7 +123168,7 @@ words:
   - supplement
 - word: такая
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.39
   sources:
   - supplement
@@ -121448,7 +123192,7 @@ words:
   - supplement
 - word: такие
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.53
   sources:
   - supplement
@@ -121460,7 +123204,7 @@ words:
   - supplement
 - word: таким
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.49
   sources:
   - supplement
@@ -121472,7 +123216,7 @@ words:
   - supplement
 - word: таких
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.38
   sources:
   - supplement
@@ -121484,13 +123228,13 @@ words:
   - supplement
 - word: такое
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.63
   sources:
   - supplement
 - word: таком
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -121550,7 +123294,7 @@ words:
   - supplement
 - word: такую
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -122468,7 +124212,7 @@ words:
   - supplement
 - word: твоей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -122492,7 +124236,7 @@ words:
   - supplement
 - word: твоих
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -124047,7 +125791,7 @@ words:
   - supplement
 - word: тобой
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement
@@ -125071,13 +126815,13 @@ words:
   - supplement
 - word: точки
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
 - word: точку
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -125089,7 +126833,7 @@ words:
   - supplement
 - word: точно
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.34
   sources:
   - supplement
@@ -125738,7 +127482,7 @@ words:
   - supplement
 - word: труда
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -125762,7 +127506,7 @@ words:
   - supplement
 - word: труды
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -126727,7 +128471,7 @@ words:
   - supplement
 - word: тысяч
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.27
   sources:
   - supplement
@@ -127319,6 +129063,10 @@ words:
   frequency: 4.62
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Verb 'to kill' - common word but potentially sensitive for daily puzzle
 - word: убога
   length: 5
   tier: valid
@@ -127829,7 +129577,7 @@ words:
   - supplement
 - word: удачи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -128161,7 +129909,7 @@ words:
   - supplement
 - word: узнал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -128618,19 +130366,19 @@ words:
   - supplement
 - word: улице
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
 - word: улицу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
 - word: улицы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -128815,7 +130563,7 @@ words:
   - supplement
 - word: умеет
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -129723,7 +131471,7 @@ words:
   - supplement
 - word: услуг
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -129798,7 +131546,7 @@ words:
   - supplement
 - word: успел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -130048,7 +131796,7 @@ words:
   - supplement
 - word: утром
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -130905,7 +132653,7 @@ words:
   - supplement
 - word: факты
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -131960,7 +133708,7 @@ words:
   - supplement
 - word: фирмы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -132230,7 +133978,7 @@ words:
   - supplement
 - word: флота
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -132443,7 +134191,7 @@ words:
   - supplement
 - word: фонда
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.69
   sources:
   - supplement
@@ -132594,7 +134342,7 @@ words:
   - supplement
 - word: форме
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -132606,13 +134354,13 @@ words:
   - supplement
 - word: форму
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.73
   sources:
   - supplement
 - word: формы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -135332,7 +137080,7 @@ words:
   - supplement
 - word: химии
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -136225,13 +137973,13 @@ words:
   - supplement
 - word: хотел
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
 - word: хотим
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -136243,7 +137991,7 @@ words:
   - supplement
 - word: хотят
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -136295,7 +138043,7 @@ words:
   - supplement
 - word: хочет
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.32
   sources:
   - supplement
@@ -137328,7 +139076,7 @@ words:
   - supplement
 - word: цвета
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -137414,7 +139162,7 @@ words:
   - supplement
 - word: целей
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -137449,7 +139197,7 @@ words:
   - supplement
 - word: целом
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -137491,7 +139239,7 @@ words:
   - supplement
 - word: целью
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
@@ -137509,7 +139257,7 @@ words:
   - supplement
 - word: целях
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -138519,7 +140267,7 @@ words:
   - supplement
 - word: часов
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -138531,13 +140279,13 @@ words:
   - supplement
 - word: части
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.49
   sources:
   - supplement
 - word: часто
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.34
   sources:
   - supplement
@@ -139484,13 +141232,13 @@ words:
   - supplement
 - word: числа
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.89
   sources:
   - supplement
 - word: числе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.4
   sources:
   - supplement
@@ -139508,7 +141256,7 @@ words:
   - supplement
 - word: чисто
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -139532,7 +141280,7 @@ words:
   - supplement
 - word: читал
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -139626,7 +141374,7 @@ words:
   - supplement
 - word: члена
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -139644,7 +141392,7 @@ words:
   - supplement
 - word: члены
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -141592,7 +143340,7 @@ words:
   - supplement
 - word: шести
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -142163,19 +143911,19 @@ words:
   - supplement
 - word: школе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
 - word: школу
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
 - word: школы
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement
@@ -142825,7 +144573,7 @@ words:
   - supplement
 - word: штаба
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -142884,7 +144632,7 @@ words:
   - supplement
 - word: штата
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -145300,7 +147048,7 @@ words:
   - supplement
 - word: эпохи
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -145714,13 +147462,13 @@ words:
   - supplement
 - word: этапа
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
 - word: этапе
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -145779,7 +147527,7 @@ words:
   - supplement
 - word: этими
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -145795,13 +147543,13 @@ words:
   - supplement
 - word: этого
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.02
   sources:
   - supplement
 - word: этому
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
@@ -145865,7 +147613,7 @@ words:
   - supplement
 - word: эфире
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -146131,6 +147879,10 @@ words:
   frequency: 4.73
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 1
+    reason: Common adjective 'southern' - acceptable despite use in place names
 - word: южном
   length: 5
   tier: valid
@@ -147087,13 +148839,13 @@ words:
   - supplement
 - word: языка
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
 - word: языке
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement

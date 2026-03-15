@@ -52,10 +52,14 @@ words:
   - main_list
 - word: milán
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Milan, Italy)
 - word: losas
   length: 5
   tier: daily
@@ -141,16 +145,24 @@ words:
   - main_list
 - word: doral
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Doral, city in Florida) or very obscure
 - word: serán
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.97
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of ser, not base form
 - word: felón
   length: 5
   tier: daily
@@ -189,10 +201,14 @@ words:
   - main_list
 - word: estad
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative plural of estar, very rarely used form
 - word: asnal
   length: 5
   tier: daily
@@ -228,10 +244,14 @@ words:
   - main_list
 - word: noval
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure agricultural term (newly cultivated land)
 - word: sumar
   length: 5
   tier: daily
@@ -240,10 +260,14 @@ words:
   - main_list
 - word: ester
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Chemistry term (ester), also a proper name
 - word: yunto
   length: 5
   tier: valid
@@ -286,10 +310,14 @@ words:
   - main_list
 - word: porno
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar / inappropriate for daily puzzle
 - word: soeza
   length: 5
   tier: valid
@@ -320,10 +348,14 @@ words:
   - main_list
 - word: bután
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Bhutan, the country)
 - word: revés
   length: 5
   tier: daily
@@ -338,10 +370,14 @@ words:
   - main_list
 - word: judas
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper noun origin but used as common noun (peephole/traitor)
 - word: grumo
   length: 5
   tier: valid
@@ -374,10 +410,14 @@ words:
   - main_list
 - word: light
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, though used colloquially in Spanish
 - word: focal
   length: 5
   tier: daily
@@ -443,10 +483,14 @@ words:
   - main_list
 - word: dupla
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Latin American regionalism for pair/duo, not universal
 - word: flato
   length: 5
   tier: valid
@@ -467,10 +511,14 @@ words:
   - main_list
 - word: turia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Turia river in Valencia)
 - word: cerio
   length: 5
   tier: valid
@@ -493,10 +541,14 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'Ambiguous: common word for chili pepper but also country name'
 - word: óyele
   length: 5
   tier: valid
@@ -510,10 +562,14 @@ words:
   - main_list
 - word: chito
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure traditional game, rarely known
 - word: rajar
   length: 5
   tier: daily
@@ -563,9 +619,13 @@ words:
   - main_list
 - word: dular
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure/rare verb
 - word: erguí
   length: 5
   tier: valid
@@ -579,10 +639,14 @@ words:
   - main_list
 - word: macau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Macau)
 - word: ojera
   length: 5
   tier: daily
@@ -609,16 +673,24 @@ words:
   - main_list
 - word: jorge
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: badea
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.43
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: 'Obscure: insipid melon variety or dull person (archaic)'
 - word: motor
   length: 5
   tier: daily
@@ -721,10 +793,14 @@ words:
   - main_list
 - word: facto
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Only used in phrase 'de facto', not standalone Spanish
 - word: talco
   length: 5
   tier: daily
@@ -745,10 +821,14 @@ words:
   - main_list
 - word: conil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Conil de la Frontera, town in Cádiz)
 - word: jorfe
   length: 5
   tier: valid
@@ -762,10 +842,14 @@ words:
   - main_list
 - word: sport
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, Spanish uses 'deporte'
 - word: ázimo
   length: 5
   tier: valid
@@ -860,10 +944,14 @@ words:
   - main_list
 - word: marra
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure (type of hoe or a miss/gap), not widely known
 - word: filme
   length: 5
   tier: daily
@@ -896,10 +984,14 @@ words:
   - main_list
 - word: aspro
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/dialectal for 'áspero', rarely used
 - word: ronca
   length: 5
   tier: daily
@@ -920,10 +1012,14 @@ words:
   - main_list
 - word: tropo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical rhetorical/atmospheric term, very obscure
 - word: reloj
   length: 5
   tier: daily
@@ -967,9 +1063,13 @@ words:
   - main_list
 - word: fosar
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure verb (to dig a ditch), rarely used
 - word: ínter
   length: 5
   tier: daily
@@ -1032,10 +1132,14 @@ words:
   - main_list
 - word: cauda
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.12
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/literary for tail (cola), very rarely used
 - word: ciclo
   length: 5
   tier: daily
@@ -1091,10 +1195,14 @@ words:
   - main_list
 - word: jauja
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Used in 'esto es Jauja' but origin is proper noun (Peruvian city)
 - word: falaz
   length: 5
   tier: daily
@@ -1115,15 +1223,23 @@ words:
   - main_list
 - word: úseme
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (use me), not standalone
 - word: molle
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional South American tree, not universal Spanish
 - word: araba
   length: 5
   tier: daily
@@ -1132,10 +1248,14 @@ words:
   - main_list
 - word: telde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city in Gran Canaria)
 - word: posar
   length: 5
   tier: daily
@@ -1209,10 +1329,14 @@ words:
   - main_list
 - word: hertz
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Unit of measurement from proper noun, technical
 - word: cielo
   length: 5
   tier: daily
@@ -1247,10 +1371,14 @@ words:
   - main_list
 - word: mario
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: ayuno
   length: 5
   tier: daily
@@ -1287,10 +1415,14 @@ words:
   - main_list
 - word: jesús
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jesus)
 - word: yerba
   length: 5
   tier: daily
@@ -1340,9 +1472,13 @@ words:
   - main_list
 - word: pagro
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure fish species (sea bream variant)
 - word: plato
   length: 5
   tier: daily
@@ -1398,10 +1534,14 @@ words:
   - main_list
 - word: cugat
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Xavier Cugat, musician / place name)
 - word: digna
   length: 5
   tier: daily
@@ -1422,16 +1562,24 @@ words:
   - main_list
 - word: varea
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Verb form of varear (to beat olives), very specific
 - word: dinos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (tell us), not standalone
 - word: cacho
   length: 5
   tier: daily
@@ -1440,10 +1588,14 @@ words:
   - main_list
 - word: bonga
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure term (type of palm tree)
 - word: brear
   length: 5
   tier: valid
@@ -1463,10 +1615,14 @@ words:
   - main_list
 - word: calpe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (ancient name for Gibraltar / town in Alicante)
 - word: archa
   length: 5
   tier: valid
@@ -1481,10 +1637,14 @@ words:
   - main_list
 - word: brial
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic garment term (medieval skirt), very obscure
 - word: cetro
   length: 5
   tier: daily
@@ -1533,10 +1693,14 @@ words:
   - main_list
 - word: marte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.03
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper noun (Mars planet) but commonly known; borderline
 - word: cidra
   length: 5
   tier: daily
@@ -1591,10 +1755,14 @@ words:
   - main_list
 - word: jatib
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Very obscure Arabic-origin term (Islamic preacher), not standard Spanish
 - word: bacín
   length: 5
   tier: valid
@@ -1609,10 +1777,14 @@ words:
   - main_list
 - word: riera
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Catalan word for stream, not standard Spanish; also surname
 - word: variz
   length: 5
   tier: valid
@@ -1621,10 +1793,14 @@ words:
   - main_list
 - word: gante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ghent, city in Belgium)
 - word: sueca
   length: 5
   tier: daily
@@ -1639,10 +1815,14 @@ words:
   - main_list
 - word: mesto
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (type of oak hybrid), archaic/literary
 - word: viril
   length: 5
   tier: daily
@@ -1681,10 +1861,14 @@ words:
   - main_list
 - word: bantú
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ethnic/linguistic group name, borderline proper noun
 - word: ungir
   length: 5
   tier: daily
@@ -1716,9 +1900,13 @@ words:
   - main_list
 - word: grelo
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Galician/regional term for turnip greens, not universal Spanish
   history:
   - 1719
   scheduled_day: 1719
@@ -1742,10 +1930,14 @@ words:
   - main_list
 - word: laura
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: fango
   length: 5
   tier: daily
@@ -1772,9 +1964,13 @@ words:
   - main_list
 - word: bofia
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for police, very colloquial/regional
 - word: lejos
   length: 5
   tier: daily
@@ -1801,16 +1997,24 @@ words:
   - main_list
 - word: viada
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.83
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure nautical term (ship's speed)
 - word: metra
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (type of marble for games), regional
 - word: plexo
   length: 5
   tier: daily
@@ -1899,10 +2103,14 @@ words:
   - main_list
 - word: jerez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (city in Spain), though also means sherry wine
 - word: fuero
   length: 5
   tier: daily
@@ -1929,16 +2137,24 @@ words:
   - main_list
 - word: ágata
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Gemstone (agate) is valid, but also common as proper name Ágata
 - word: están
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.9
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated form of estar, not base form
 - word: buzos
   length: 5
   tier: daily
@@ -1959,10 +2175,14 @@ words:
   - main_list
 - word: libio
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Libyan), derived from proper noun
 - word: jaula
   length: 5
   tier: daily
@@ -2007,10 +2227,14 @@ words:
   - main_list
 - word: tollo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.86
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (type of dogfish or muddy hole), rarely used
 - word: sovoz
   length: 5
   tier: valid
@@ -2018,9 +2242,13 @@ words:
   - main_list
 - word: jerpa
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (vine shoot), rarely known
 - word: sudor
   length: 5
   tier: daily
@@ -2064,10 +2292,14 @@ words:
   - main_list
 - word: leila
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: agraz
   length: 5
   tier: daily
@@ -2150,16 +2382,24 @@ words:
   - main_list
 - word: genil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Genil river in Andalusia)
 - word: darán
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future tense of dar, not base form
 - word: conde
   length: 5
   tier: daily
@@ -2168,10 +2408,14 @@ words:
   - main_list
 - word: coord
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Abbreviation of 'coordinador/coordinación', not a word
 - word: bofar
   length: 5
   tier: valid
@@ -2216,10 +2460,14 @@ words:
   - main_list
 - word: alosa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.35
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure fish species (shad), not commonly known
 - word: fósil
   length: 5
   tier: daily
@@ -2240,10 +2488,14 @@ words:
   - main_list
 - word: panco
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.45
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (type of boat or being calm), rarely used
 - word: lerda
   length: 5
   tier: daily
@@ -2293,9 +2545,13 @@ words:
   - main_list
 - word: hicso
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure historical term (Hyksos people)
 - word: reina
   length: 5
   tier: daily
@@ -2304,15 +2560,23 @@ words:
   - main_list
 - word: ramón
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: úsale
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic, not standalone
 - word: casal
   length: 5
   tier: daily
@@ -2344,10 +2608,14 @@ words:
   - main_list
 - word: salce
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.43
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic form of 'sauce' (willow tree), very rarely used
 - word: torda
   length: 5
   tier: daily
@@ -2368,10 +2636,14 @@ words:
   - main_list
 - word: dalla
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (type of scythe), rarely known
 - word: heril
   length: 5
   tier: valid
@@ -2379,10 +2651,14 @@ words:
   - main_list
 - word: nerón
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Roman emperor Nero)
 - word: bilis
   length: 5
   tier: daily
@@ -2397,16 +2673,24 @@ words:
   - main_list
 - word: diría
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated conditional of decir, not base form
 - word: huiro
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional Chilean term for seaweed, not universal Spanish
 - word: otoba
   length: 5
   tier: valid
@@ -2438,10 +2722,14 @@ words:
   - main_list
 - word: nansa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.73
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional term for fish trap, very obscure
 - word: pollo
   length: 5
   tier: daily
@@ -2491,10 +2779,14 @@ words:
   - main_list
 - word: ibais
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated imperfect of ir (you all were going), not base form
 - word: punzó
   length: 5
   tier: valid
@@ -2514,10 +2806,14 @@ words:
   - main_list
 - word: vítor
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic exclamation of triumph, rarely used today
 - word: finar
   length: 5
   tier: valid
@@ -2526,10 +2822,14 @@ words:
   - main_list
 - word: denlo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic, not standalone
 - word: mirto
   length: 5
   tier: daily
@@ -2597,10 +2897,14 @@ words:
   - main_list
 - word: argel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Algiers in Spanish)
 - word: elite
   length: 5
   tier: daily
@@ -2627,16 +2931,24 @@ words:
   - main_list
 - word: simón
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (personal name)
 - word: masto
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.03
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (grafted trunk or pillar), archaic
 - word: costo
   length: 5
   tier: daily
@@ -2645,22 +2957,34 @@ words:
   - main_list
 - word: hazle
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic, not standalone
 - word: julio
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (person name); also means 'July' but that is a proper noun too
 - word: longa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Musical term (long note), very obscure
 - word: rezón
   length: 5
   tier: daily
@@ -2680,16 +3004,24 @@ words:
   - main_list
 - word: vermú
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vermouth - valid hispanicized loanword, reasonably common
 - word: vélez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname / Vélez-Málaga)
 - word: sacar
   length: 5
   tier: daily
@@ -2721,9 +3053,13 @@ words:
   - main_list
 - word: aovar
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Rare verb (to lay eggs), very uncommon usage
 - word: áspid
   length: 5
   tier: valid
@@ -2732,10 +3068,14 @@ words:
   - main_list
 - word: tutía
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (zinc oxide used in alchemy/pharmacy), mainly in phrase 'no hay tutía'
 - word: miope
   length: 5
   tier: daily
@@ -2773,10 +3113,14 @@ words:
   - main_list
 - word: alfoz
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Archaic administrative term (medieval district), obscure
 - word: cusir
   length: 5
   tier: valid
@@ -2825,16 +3169,24 @@ words:
   - main_list
 - word: denos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (give us), not standalone
 - word: semis
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Informal plural of 'semifinal', colloquial abbreviation
 - word: ninfa
   length: 5
   tier: daily
@@ -2932,10 +3284,14 @@ words:
   - main_list
 - word: coatí
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.81
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure animal (coati), not widely known in Spain
 - word: cegar
   length: 5
   tier: daily
@@ -2955,10 +3311,14 @@ words:
   - main_list
 - word: irían
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated conditional of ir, not base form
 - word: fajar
   length: 5
   tier: valid
@@ -3038,10 +3398,14 @@ words:
   - main_list
 - word: moche
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Pre-Columbian culture name, very niche
 - word: quito
   length: 5
   tier: daily
@@ -3085,10 +3449,14 @@ words:
   - main_list
 - word: ámalo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.66
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (love him), not standalone word
 - word: baria
   length: 5
   tier: valid
@@ -3103,10 +3471,14 @@ words:
   - main_list
 - word: alfaz
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.66
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure botanical/place term, not widely known
 - word: panza
   length: 5
   tier: daily
@@ -3142,10 +3514,14 @@ words:
   - main_list
 - word: imada
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure nautical term (launching cradle)
 - word: lesna
   length: 5
   tier: valid
@@ -3240,10 +3616,14 @@ words:
   - main_list
 - word: anafe
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Archaic/regional term for portable stove, obscure
 - word: congo
   length: 5
   tier: daily
@@ -3258,22 +3638,34 @@ words:
   - main_list
 - word: mauro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (personal name); literary for Moor but archaic
 - word: putón
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar/offensive augmentative
 - word: molla
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.06
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional/dialectal for crumb or soft part of bread
 - word: vigor
   length: 5
   tier: daily
@@ -3356,10 +3748,14 @@ words:
   - main_list
 - word: irakí
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Iraqi), alternative spelling; demonyms are borderline
 - word: izqdo
   length: 5
   tier: valid
@@ -3397,16 +3793,24 @@ words:
   - main_list
 - word: cella
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical architectural term (inner chamber of temple), very obscure
 - word: horco
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (string of onions/garlic or regional term)
 - word: dueto
   length: 5
   tier: daily
@@ -3456,10 +3860,14 @@ words:
   - main_list
 - word: durán
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: tañer
   length: 5
   tier: valid
@@ -3528,9 +3936,13 @@ words:
   - main_list
 - word: gonce
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic form of 'gozne' (hinge), very rarely used
 - word: pagel
   length: 5
   tier: valid
@@ -3549,10 +3961,14 @@ words:
   - main_list
 - word: mijas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (town in Málaga)
 - word: erraj
   length: 5
   tier: valid
@@ -3593,10 +4009,14 @@ words:
   - main_list
 - word: denle
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (give him/her), not standalone
 - word: cacto
   length: 5
   tier: daily
@@ -3617,10 +4037,14 @@ words:
   - main_list
 - word: hiyab
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Arabic loanword for hijab, becoming common but still niche
 - word: perno
   length: 5
   tier: daily
@@ -3664,10 +4088,14 @@ words:
   - main_list
 - word: morón
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (town names in Spain/Argentina)
 - word: nadar
   length: 5
   tier: daily
@@ -3723,27 +4151,43 @@ words:
   - main_list
 - word: bisáu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Bissau, capital of Guinea-Bissau)
 - word: aruba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Caribbean island)
 - word: tueco
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (hollow in wood from worm damage)
 - word: boyar
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.32
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure nautical term or reference to Slavic nobility
 - word: etilo
   length: 5
   tier: daily
@@ -3786,16 +4230,24 @@ words:
   - main_list
 - word: había
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.81
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated imperfect of haber, not base form
 - word: daría
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated conditional of dar, not base form
 - word: musco
   length: 5
   tier: valid
@@ -3815,10 +4267,14 @@ words:
   - main_list
 - word: ardoz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of place name 'Torrejón de Ardoz', not a standalone word
 - word: maese
   length: 5
   tier: valid
@@ -3827,10 +4283,14 @@ words:
   - main_list
 - word: jaime
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: aleja
   length: 5
   tier: daily
@@ -3845,10 +4305,14 @@ words:
   - main_list
 - word: soria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city/province in Spain)
 - word: cesto
   length: 5
   tier: daily
@@ -3903,10 +4367,14 @@ words:
   - main_list
 - word: canso
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Archaic/dialectal adjective, standard Spanish uses 'cansado'
 - word: ruñar
   length: 5
   tier: valid
@@ -3932,16 +4400,24 @@ words:
   - main_list
 - word: litar
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.3
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure verb (to perform libation), archaic
 - word: macis
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure spice term (mace, from nutmeg), rarely known
 - word: bidón
   length: 5
   tier: daily
@@ -3980,10 +4456,14 @@ words:
   - main_list
 - word: boyal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.87
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/rural term (related to oxen grazing land)
 - word: greba
   length: 5
   tier: valid
@@ -4009,16 +4489,24 @@ words:
   - main_list
 - word: colla
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional/dialectal term, obscure in standard Spanish
 - word: galea
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical/archaic term (type of helmet), very obscure
 - word: orina
   length: 5
   tier: daily
@@ -4050,10 +4538,14 @@ words:
   - main_list
 - word: bubón
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.01
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Medical term (swollen lymph node), obscure for most
 - word: sarzo
   length: 5
   tier: valid
@@ -4084,10 +4576,14 @@ words:
   - main_list
 - word: sexis
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Hispanicized plural of 'sexy', informal
 - word: rafia
   length: 5
   tier: daily
@@ -4102,9 +4598,13 @@ words:
   - main_list
 - word: arcea
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure botanical/archaic term
 - word: taifa
   length: 5
   tier: daily
@@ -4154,10 +4654,14 @@ words:
   - main_list
 - word: vayas
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated subjunctive of ir, not base form
 - word: desdá
   length: 5
   tier: valid
@@ -4236,16 +4740,24 @@ words:
   - main_list
 - word: trole
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Trolley/trolleybus, somewhat dated but known
 - word: solía
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.2
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated imperfect of soler, not base form
 - word: lleva
   length: 5
   tier: daily
@@ -4271,10 +4783,14 @@ words:
   - main_list
 - word: maula
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure (lazy person, worthless thing)
 - word: merma
   length: 5
   tier: daily
@@ -4289,10 +4805,14 @@ words:
   - main_list
 - word: arilo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical botanical term (seed covering), very obscure
 - word: rubro
   length: 5
   tier: daily
@@ -4313,10 +4833,14 @@ words:
   - main_list
 - word: iréis
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of ir, not base form
 - word: fusil
   length: 5
   tier: daily
@@ -4342,16 +4866,24 @@ words:
   - main_list
 - word: despí
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sant Joan Despí, town near Barcelona)
 - word: virgo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Zodiac sign (proper noun) and anatomical term
 - word: buril
   length: 5
   tier: daily
@@ -4377,10 +4909,14 @@ words:
   - main_list
 - word: félix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: razar
   length: 5
   tier: valid
@@ -4424,10 +4960,14 @@ words:
   - main_list
 - word: aries
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily known as zodiac sign proper noun
 - word: terno
   length: 5
   tier: daily
@@ -4447,10 +4987,14 @@ words:
   - main_list
 - word: torga
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure regional term (wooden collar for animals)
 - word: repón
   length: 5
   tier: valid
@@ -4458,10 +5002,14 @@ words:
   - main_list
 - word: guaco
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure botanical/zoological term, not widely known
 - word: chozo
   length: 5
   tier: daily
@@ -4518,10 +5066,14 @@ words:
   - main_list
 - word: morga
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (olive oil residue), archaic
 - word: áteme
   length: 5
   tier: valid
@@ -4559,10 +5111,14 @@ words:
   - main_list
 - word: pinna
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Latin/scientific term (type of mollusk), not standard Spanish
 - word: perol
   length: 5
   tier: daily
@@ -4582,10 +5138,14 @@ words:
   - main_list
 - word: raque
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.46
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (beachcombing/scavenging), archaic
 - word: bolar
   length: 5
   tier: valid
@@ -4605,10 +5165,14 @@ words:
   - main_list
 - word: serlo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic, not standalone word
 - word: cribo
   length: 5
   tier: valid
@@ -4616,10 +5180,14 @@ words:
   - main_list
 - word: excmo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Abbreviation of 'excelentísimo', not a word
 - word: jalar
   length: 5
   tier: daily
@@ -4652,10 +5220,14 @@ words:
   - main_list
 - word: lacha
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure regional term (shame or type of anchovy)
 - word: álaga
   length: 5
   tier: valid
@@ -4716,16 +5288,24 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country in Pacific)
 - word: taina
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (hiding place for cattle), archaic/regional
 - word: aleya
   length: 5
   tier: valid
@@ -4739,9 +5319,13 @@ words:
   - main_list
 - word: habón
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure (large skin welt), medical-leaning
 - word: miedo
   length: 5
   tier: daily
@@ -4849,10 +5433,14 @@ words:
   - main_list
 - word: elche
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city in Alicante, Spain)
 - word: pixel
   length: 5
   tier: valid
@@ -4873,16 +5461,24 @@ words:
   - main_list
 - word: tormo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (isolated rock), regional/archaic
 - word: siena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (city in Italy); also used as color name
 - word: osudo
   length: 5
   tier: valid
@@ -4890,10 +5486,14 @@ words:
   - main_list
 - word: dador
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Archaic/legal term for 'giver', standard Spanish uses 'donante'
 - word: plano
   length: 5
   tier: daily
@@ -4912,10 +5512,14 @@ words:
   - main_list
 - word: isora
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Guía de Isora, town in Tenerife)
 - word: nicho
   length: 5
   tier: daily
@@ -4988,10 +5592,14 @@ words:
   - main_list
 - word: liego
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (uncultivated land), archaic
 - word: erial
   length: 5
   tier: daily
@@ -5053,10 +5661,14 @@ words:
   - main_list
 - word: bosta
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Regional term for animal dung, coarse and obscure
 - word: celos
   length: 5
   tier: daily
@@ -5139,10 +5751,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dante Alighieri)
 - word: acilo
   length: 5
   tier: valid
@@ -5156,10 +5772,14 @@ words:
   - main_list
 - word: gocha
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.44
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure regional term (sow/pig)
 - word: melar
   length: 5
   tier: daily
@@ -5167,10 +5787,14 @@ words:
   - main_list
 - word: pacho
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional/dialectal, or nickname (proper noun)
 - word: borla
   length: 5
   tier: daily
@@ -5179,10 +5803,14 @@ words:
   - main_list
 - word: kurdo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Kurdish), borderline
 - word: vahar
   length: 5
   tier: valid
@@ -5276,10 +5904,14 @@ words:
   - main_list
 - word: micer
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic title (sir/master), medieval usage only
 - word: anexo
   length: 5
   tier: daily
@@ -5340,10 +5972,14 @@ words:
   - main_list
 - word: elena
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: tener
   length: 5
   tier: daily
@@ -5367,6 +6003,10 @@ words:
   frequency: 4.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be proper noun (Linda) but also means 'pretty/beautiful' — valid as adjective
 - word: humus
   length: 5
   tier: daily
@@ -5399,10 +6039,14 @@ words:
   - main_list
 - word: vodka
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Russian loanword, widely used but foreign origin
 - word: fundo
   length: 5
   tier: daily
@@ -5434,10 +6078,14 @@ words:
   - main_list
 - word: haití
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Haiti, country)
 - word: ámela
   length: 5
   tier: valid
@@ -5451,7 +6099,7 @@ words:
   - main_list
 - word: noble
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - main_list
@@ -5462,10 +6110,14 @@ words:
   - main_list
 - word: samoa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (country in Pacific)
 - word: pezón
   length: 5
   tier: daily
@@ -5485,10 +6137,14 @@ words:
   - main_list
 - word: váter
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Hispanicized 'water closet', common in Spain
 - word: sabre
   length: 5
   tier: daily
@@ -5572,10 +6228,14 @@ words:
   - main_list
 - word: pipil
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Indigenous people/language name, very niche
 - word: borda
   length: 5
   tier: daily
@@ -5618,16 +6278,24 @@ words:
   - main_list
 - word: yagua
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional Caribbean term (palm leaf sheath), very obscure
 - word: palau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Palau, country in Pacific)
 - word: óbito
   length: 5
   tier: daily
@@ -5654,10 +6322,14 @@ words:
   - main_list
 - word: podré
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of poder, not base form
 - word: bolsa
   length: 5
   tier: daily
@@ -5689,10 +6361,14 @@ words:
   - main_list
 - word: morse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Samuel Morse / Morse code)
 - word: poste
   length: 5
   tier: daily
@@ -5719,10 +6395,14 @@ words:
   - main_list
 - word: punki
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Hispanicized 'punk/punky', informal loanword
 - word: fiera
   length: 5
   tier: daily
@@ -5737,16 +6417,24 @@ words:
   - main_list
 - word: pavía
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pavia, Italian city); also a type of peach but primarily place name
 - word: clara
   length: 5
   tier: valid
   frequency: 4.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be proper noun (Clara) but also means 'clear/light' — valid as adjective
 - word: timar
   length: 5
   tier: daily
@@ -5755,10 +6443,14 @@ words:
   - main_list
 - word: chita
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat obscure (ankle bone game piece, or 'a la chita callando')
 - word: llana
   length: 5
   tier: daily
@@ -5860,10 +6552,14 @@ words:
   - main_list
 - word: estay
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Nautical term (stay), very obscure
 - word: figle
   length: 5
   tier: valid
@@ -5907,10 +6603,14 @@ words:
   - main_list
 - word: serte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic, not standalone word
 - word: gripe
   length: 5
   tier: daily
@@ -5943,10 +6643,14 @@ words:
   - main_list
 - word: badal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure term (part of animal jaw or harness piece)
 - word: hadar
   length: 5
   tier: valid
@@ -6001,10 +6705,14 @@ words:
   - main_list
 - word: ícaro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Icarus from Greek mythology)
 - word: fonio
   length: 5
   tier: valid
@@ -6039,10 +6747,14 @@ words:
   scheduled_day: 1695
 - word: lurte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure Aragonese dialectal term (avalanche)
 - word: lieis
   length: 5
   tier: valid
@@ -6050,16 +6762,24 @@ words:
   - main_list
 - word: harpa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.76
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Archaic spelling of 'arpa' (harp), rarely used
 - word: úsela
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (use it formal), not standalone
 - word: jamba
   length: 5
   tier: valid
@@ -6074,10 +6794,14 @@ words:
   - main_list
 - word: boira
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.63
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional/dialectal (Aragonese) for fog, not standard Spanish
 - word: voraz
   length: 5
   tier: daily
@@ -6167,6 +6891,10 @@ words:
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be proper noun (Norma) but also means 'norm/rule' in Spanish
 - word: cariz
   length: 5
   tier: daily
@@ -6175,10 +6903,14 @@ words:
   - main_list
 - word: china
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'Ambiguous: common word (pebble/girl) but also country name'
 - word: doler
   length: 5
   tier: daily
@@ -6187,10 +6919,14 @@ words:
   - main_list
 - word: bocel
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical architectural term (molding), very obscure
 - word: cursi
   length: 5
   tier: daily
@@ -6229,15 +6965,23 @@ words:
   - main_list
 - word: dadme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative with enclitic pronoun (give me), not standalone word
 - word: femar
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure dialectal verb (to manure fields)
 - word: ratas
   length: 5
   tier: daily
@@ -6258,16 +7002,24 @@ words:
   - main_list
 - word: stand
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, though used in Spanish for exhibition stands
 - word: llera
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure regional term (pebbly riverbed)
 - word: pícea
   length: 5
   tier: daily
@@ -6276,21 +7028,33 @@ words:
   - main_list
 - word: nidio
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure literary/archaic for smooth/polished
 - word: borja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (personal name / town in Aragon)
 - word: festa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Catalan/dialectal for fiesta, not standard Spanish
 - word: mayar
   length: 5
   tier: daily
@@ -6305,10 +7069,14 @@ words:
   - main_list
 - word: depto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Abbreviation of 'departamento', not a real word
 - word: plepa
   length: 5
   tier: valid
@@ -6340,10 +7108,14 @@ words:
   - main_list
 - word: jávea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (town in Alicante)
 - word: notro
   length: 5
   tier: valid
@@ -6382,10 +7154,14 @@ words:
   - main_list
 - word: herma
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical archaeological term (herm statue), very obscure
 - word: yerre
   length: 5
   tier: valid
@@ -6406,16 +7182,24 @@ words:
   - main_list
 - word: fraga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily a proper noun (surname/town), dialectal meaning very obscure
 - word: irles
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic, not standalone word
 - word: duelo
   length: 5
   tier: daily
@@ -6430,10 +7214,14 @@ words:
   - main_list
 - word: itrio
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.47
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Chemical element (yttrium), very technical
 - word: sacio
   length: 5
   tier: valid
@@ -6447,10 +7235,14 @@ words:
   - main_list
 - word: sesma
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.29
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic measurement (one sixth), very obscure
 - word: toldo
   length: 5
   tier: daily
@@ -6517,10 +7309,14 @@ words:
   - main_list
 - word: solla
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.92
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional variant of 'solla' (plaice fish), dialectal
 - word: ámbar
   length: 5
   tier: daily
@@ -6535,10 +7331,14 @@ words:
   - main_list
 - word: darme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic pronoun, not standalone word
 - word: verja
   length: 5
   tier: daily
@@ -6613,9 +7413,13 @@ words:
   - main_list
 - word: tegeo
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (from Tegea, ancient Greek city), archaic
 - word: broza
   length: 5
   tier: daily
@@ -6648,10 +7452,14 @@ words:
   - main_list
 - word: delos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Greek island Delos)
 - word: ergio
   length: 5
   tier: valid
@@ -6688,9 +7496,13 @@ words:
   - main_list
 - word: bilao
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure regional term (flat basket)
 - word: lataz
   length: 5
   tier: valid
@@ -6745,10 +7557,14 @@ words:
   - main_list
 - word: pello
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.89
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure dialectal term
 - word: ladra
   length: 5
   tier: daily
@@ -6757,9 +7573,13 @@ words:
   - main_list
 - word: gayar
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure verb (to decorate with stripes)
 - word: saúco
   length: 5
   tier: valid
@@ -6798,10 +7618,14 @@ words:
   - main_list
 - word: dalle
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure variant of dalla (scythe)
 - word: deñar
   length: 5
   tier: valid
@@ -6827,27 +7651,43 @@ words:
   - main_list
 - word: aprox
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Abbreviation of 'aproximadamente', not a real word
 - word: jonio
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.53
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Architectural/historical term (Ionic), somewhat obscure
 - word: cajel
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (type of orange), rarely known
 - word: miera
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.35
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (juniper tar), rarely known
 - word: trote
   length: 5
   tier: daily
@@ -6904,10 +7744,14 @@ words:
   - main_list
 - word: darse
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.51
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic pronoun, not standalone word
 - word: nares
   length: 5
   tier: valid
@@ -6916,10 +7760,14 @@ words:
   - main_list
 - word: minga
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Regional Latin American term (communal work); also vulgar slang in some regions
 - word: bomba
   length: 5
   tier: daily
@@ -6975,10 +7823,14 @@ words:
   - main_list
 - word: danos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic 'da nos' (give us), not standalone
 - word: bulto
   length: 5
   tier: daily
@@ -6992,15 +7844,23 @@ words:
   - main_list
 - word: úsele
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic, not standalone
 - word: trial
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword (trial motorcycle), used in Spanish sports
 - word: suite
   length: 5
   tier: daily
@@ -7039,16 +7899,24 @@ words:
   - main_list
 - word: jaldo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure heraldic term (bright yellow)
 - word: joule
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Unit of measurement from proper noun, technical
 - word: subir
   length: 5
   tier: daily
@@ -7057,10 +7925,14 @@ words:
   - main_list
 - word: henry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: apear
   length: 5
   tier: daily
@@ -7081,10 +7953,14 @@ words:
   - main_list
 - word: dando
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Gerund of dar, not standalone
 - word: tupir
   length: 5
   tier: daily
@@ -7109,10 +7985,14 @@ words:
   - main_list
 - word: libia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Libya)
 - word: yunta
   length: 5
   tier: daily
@@ -7121,16 +8001,24 @@ words:
   - main_list
 - word: ojota
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.11
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Regional Latin American term for sandal, not universal
 - word: dilos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (say them), not standalone
 - word: añejo
   length: 5
   tier: daily
@@ -7145,16 +8033,24 @@ words:
   - main_list
 - word: cerna
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (sifted flour or tree heartwood)
 - word: varal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (long pole), rarely used in modern Spanish
 - word: tedio
   length: 5
   tier: daily
@@ -7179,10 +8075,14 @@ words:
   - main_list
 - word: sardo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Sardinian), somewhat obscure
 - word: alezo
   length: 5
   tier: valid
@@ -7190,10 +8090,14 @@ words:
   - main_list
 - word: verga
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Nautical term (yard of sail) but widely known as vulgar slang in Latin America
 - word: habla
   length: 5
   tier: daily
@@ -7208,16 +8112,24 @@ words:
   - main_list
 - word: diego
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: hazla
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (do it fem.), not standalone
 - word: ácaro
   length: 5
   tier: daily
@@ -7265,10 +8177,14 @@ words:
   scheduled_day: 1690
 - word: nevis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Saint Kitts and Nevis)
 - word: marea
   length: 5
   tier: daily
@@ -7277,10 +8193,14 @@ words:
   - main_list
 - word: maría
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (personal name); also slang but primarily a name
 - word: móvil
   length: 5
   tier: daily
@@ -7295,15 +8215,23 @@ words:
   - main_list
 - word: cerne
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (heartwood), rarely used
 - word: ojoso
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure/rare adjective (having many eyes/holes)
 - word: motil
   length: 5
   tier: valid
@@ -7322,10 +8250,14 @@ words:
   - main_list
 - word: besós
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Besòs river in Barcelona)
 - word: rever
   length: 5
   tier: daily
@@ -7351,10 +8283,14 @@ words:
   - main_list
 - word: dente
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/dialectal for 'diente', not standard Spanish
 - word: ocelo
   length: 5
   tier: valid
@@ -7369,10 +8305,14 @@ words:
   - main_list
 - word: muñoz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: güira
   length: 5
   tier: daily
@@ -7393,9 +8333,13 @@ words:
   - main_list
 - word: yergo
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic conjugated form of erguir, very rarely used
 - word: idear
   length: 5
   tier: daily
@@ -7404,10 +8348,14 @@ words:
   - main_list
 - word: diese
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated past subjunctive of dar, not base form
 - word: cilla
   length: 5
   tier: valid
@@ -7416,10 +8364,14 @@ words:
   - main_list
 - word: lomba
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Regional/dialectal for hill, not standard Spanish
 - word: yedra
   length: 5
   tier: daily
@@ -7434,16 +8386,24 @@ words:
   - main_list
 - word: bótox
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.12
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Brand name (Botox), borderline proper noun
 - word: deses
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.68
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Plural of 'des' (letter D), very obscure
 - word: pavés
   length: 5
   tier: daily
@@ -7458,10 +8418,14 @@ words:
   - main_list
 - word: serna
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic (cultivated land), also surname; very obscure
 - word: ámeme
   length: 5
   tier: valid
@@ -7528,10 +8492,14 @@ words:
   - main_list
 - word: nerja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (town in Málaga)
 - word: afear
   length: 5
   tier: daily
@@ -7546,9 +8514,13 @@ words:
   - main_list
 - word: nabar
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (turnip field), archaic
 - word: uníos
   length: 5
   tier: daily
@@ -7557,10 +8529,14 @@ words:
   - main_list
 - word: bonus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English word, Spanish uses 'bono' or 'bonificación'
 - word: aliar
   length: 5
   tier: daily
@@ -7569,10 +8545,14 @@ words:
   - main_list
 - word: dable
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very rare/archaic adjective meaning 'feasible'
 - word: hutía
   length: 5
   tier: valid
@@ -7615,10 +8595,14 @@ words:
   - main_list
 - word: rouge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: French word, not standard Spanish (use 'colorete')
 - word: catre
   length: 5
   tier: daily
@@ -7650,10 +8634,14 @@ words:
   - main_list
 - word: quier
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/poetic truncated form of 'quiere', not standard
 - word: rodea
   length: 5
   tier: daily
@@ -7679,10 +8667,14 @@ words:
   - main_list
 - word: hayas
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated subjunctive of haber or plural of haya (beech tree)
 - word: padre
   length: 5
   tier: daily
@@ -7786,10 +8778,14 @@ words:
   - main_list
 - word: estén
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.78
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated subjunctive of estar, not base form
 - word: balay
   length: 5
   tier: valid
@@ -7828,10 +8824,14 @@ words:
   - main_list
 - word: gómez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: yendo
   length: 5
   tier: daily
@@ -7846,10 +8846,14 @@ words:
   - main_list
 - word: carla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: gruir
   length: 5
   tier: valid
@@ -7898,10 +8902,14 @@ words:
   - main_list
 - word: galés
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Welsh) - demonyms are borderline but can work
 - word: suevo
   length: 5
   tier: valid
@@ -7933,10 +8941,14 @@ words:
   - main_list
 - word: érase
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Only used in fixed phrase 'érase una vez', not standalone
 - word: gusto
   length: 5
   tier: daily
@@ -8034,10 +9046,14 @@ words:
   - main_list
 - word: hazte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (make yourself), not standalone
 - word: tacho
   length: 5
   tier: daily
@@ -8179,10 +9195,14 @@ words:
   - main_list
 - word: green
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word (golf green used in Spanish but still English)
 - word: sonso
   length: 5
   tier: valid
@@ -8219,10 +9239,14 @@ words:
   - main_list
 - word: átalo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (tie it), not standalone word
 - word: turbo
   length: 5
   tier: daily
@@ -8300,10 +9324,14 @@ words:
   - main_list
 - word: únete
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (join yourself), not standalone word
 - word: freza
   length: 5
   tier: valid
@@ -8342,10 +9370,14 @@ words:
   - main_list
 - word: rusia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Russia)
 - word: señal
   length: 5
   tier: daily
@@ -8448,10 +9480,14 @@ words:
   - main_list
 - word: haced
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative plural of hacer, rarely used form
 - word: boina
   length: 5
   tier: daily
@@ -8597,10 +9633,14 @@ words:
   - main_list
 - word: aquél
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Accented form deprecated by RAE since 2010, duplicate of aquel
 - word: llave
   length: 5
   tier: daily
@@ -8936,10 +9976,14 @@ words:
   - main_list
 - word: serle
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic, not standalone word
 - word: dogal
   length: 5
   tier: valid
@@ -8995,10 +10039,14 @@ words:
   - main_list
 - word: hayan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.78
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated subjunctive of haber, not base form
 - word: citar
   length: 5
   tier: daily
@@ -9075,10 +10123,14 @@ words:
   - main_list
 - word: jordi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Catalan personal name)
 - word: rabel
   length: 5
   tier: valid
@@ -9123,10 +10175,14 @@ words:
   - main_list
 - word: lucía
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily a proper noun (personal name); also conjugated form of lucir
 - word: mutis
   length: 5
   tier: valid
@@ -9159,10 +10215,14 @@ words:
   - main_list
 - word: podía
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.08
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated imperfect of poder, not base form
 - word: guamo
   length: 5
   tier: valid
@@ -9171,10 +10231,14 @@ words:
   - main_list
 - word: roque
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper noun (name) but also chess rook (archaic); borderline
 - word: valva
   length: 5
   tier: valid
@@ -9207,10 +10271,14 @@ words:
   - main_list
 - word: oídme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.66
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (hear me), not standalone
 - word: gluon
   length: 5
   tier: valid
@@ -9248,10 +10316,14 @@ words:
   - main_list
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country Malta); also malt but primarily place name
 - word: amibo
   length: 5
   tier: valid
@@ -9415,10 +10487,14 @@ words:
   - main_list
 - word: siria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Syria)
 - word: mojón
   length: 5
   tier: daily
@@ -9451,10 +10527,14 @@ words:
   - main_list
 - word: óyeme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (hear me), not standalone
 - word: color
   length: 5
   tier: daily
@@ -9502,10 +10582,14 @@ words:
   - main_list
 - word: seáis
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated subjunctive of ser, not base form
 - word: anglo
   length: 5
   tier: valid
@@ -9532,16 +10616,24 @@ words:
   - main_list
 - word: diste
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated preterite of dar (you gave), not base form
 - word: force
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/French word, not Spanish
 - word: orive
   length: 5
   tier: valid
@@ -9614,6 +10706,10 @@ words:
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be part of proper noun (Montevideo) but also means 'mount/hill' — valid as common noun
 - word: muñir
   length: 5
   tier: valid
@@ -9627,16 +10723,24 @@ words:
   - main_list
 - word: venus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper noun (planet/goddess) but commonly known
 - word: ícono
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'Duplicate: standard form is ''icono'' without accent (already in list)'
 - word: manar
   length: 5
   tier: valid
@@ -9733,10 +10837,14 @@ words:
   - main_list
 - word: greco
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily El Greco (proper noun), but also archaic adjective for Greek
 - word: patín
   length: 5
   tier: daily
@@ -9856,10 +10964,14 @@ words:
   - main_list
 - word: chapo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily associated with 'El Chapo' drug lord; also obscure interjection
 - word: éster
   length: 5
   tier: valid
@@ -9886,10 +10998,14 @@ words:
   - main_list
 - word: gales
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Wales in Spanish, as in País de Gales)
 - word: salso
   length: 5
   tier: valid
@@ -9933,10 +11049,14 @@ words:
   - main_list
 - word: dirán
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of decir, not base form
 - word: peñón
   length: 5
   tier: valid
@@ -9945,10 +11065,14 @@ words:
   - main_list
 - word: bosón
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Physics term (boson), technical for most speakers
 - word: pared
   length: 5
   tier: daily
@@ -10103,10 +11227,14 @@ words:
   - main_list
 - word: ostia
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Religious term (host/communion wafer); also vulgar exclamation variant
 - word: lucir
   length: 5
   tier: daily
@@ -10502,10 +11630,14 @@ words:
   - main_list
 - word: salio
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (relating to ancient Salii priests)
 - word: cequí
   length: 5
   tier: valid
@@ -10525,10 +11657,14 @@ words:
   - main_list
 - word: diles
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (tell them), not standalone
 - word: venta
   length: 5
   tier: daily
@@ -10753,10 +11889,14 @@ words:
   - main_list
 - word: nacho
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (personal name diminutive); nachos are plural
 - word: murta
   length: 5
   tier: valid
@@ -10919,10 +12059,14 @@ words:
   - main_list
 - word: sería
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.39
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated conditional of ser, not base form
 - word: grifa
   length: 5
   tier: valid
@@ -11166,10 +12310,14 @@ words:
   - main_list
 - word: world
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Spanish
 - word: brota
   length: 5
   tier: daily
@@ -11196,10 +12344,14 @@ words:
   - main_list
 - word: kenia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Kenya)
 - word: culta
   length: 5
   tier: daily
@@ -11256,10 +12408,14 @@ words:
   - main_list
 - word: niego
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated present of negar (I deny); also falconry term
 - word: burka
   length: 5
   tier: valid
@@ -11274,10 +12430,14 @@ words:
   - main_list
 - word: cross
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, Spanish uses 'campo a través' or 'motocross'
 - word: savia
   length: 5
   tier: daily
@@ -11389,10 +12549,14 @@ words:
   - main_list
 - word: únase
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (join), not standalone word
 - word: céreo
   length: 5
   tier: valid
@@ -11401,10 +12565,14 @@ words:
   - main_list
 - word: dense
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily English word; Spanish subjunctive of 'dar' is unusual usage
 - word: tonos
   length: 5
   tier: daily
@@ -11618,10 +12786,14 @@ words:
   - main_list
 - word: hazme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (do me/make me), not standalone
 - word: cable
   length: 5
   tier: daily
@@ -11845,10 +13017,14 @@ words:
   - main_list
 - word: yemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (country)
 - word: loina
   length: 5
   tier: valid
@@ -12074,10 +13250,14 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name / award name)
 - word: ferro
   length: 5
   tier: valid
@@ -12196,10 +13376,14 @@ words:
   - main_list
 - word: argos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Greek mythological figure/city)
 - word: agote
   length: 5
   tier: daily
@@ -12522,10 +13706,14 @@ words:
   - main_list
 - word: hazlo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (do it), not standalone
 - word: avugo
   length: 5
   tier: valid
@@ -12580,10 +13768,14 @@ words:
   - main_list
 - word: dimos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated preterite of dar (we gave), not base form
 - word: mucho
   length: 5
   tier: daily
@@ -12610,10 +13802,14 @@ words:
   - main_list
 - word: sansa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure (olive pomace), rarely used
 - word: impío
   length: 5
   tier: daily
@@ -12639,10 +13835,14 @@ words:
   - main_list
 - word: curie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Marie Curie) / unit named after person
 - word: vedar
   length: 5
   tier: valid
@@ -12761,10 +13961,14 @@ words:
   - main_list
 - word: úsala
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (use it fem.), not standalone
 - word: lacio
   length: 5
   tier: valid
@@ -12773,10 +13977,14 @@ words:
   - main_list
 - word: irnos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic, not standalone word
 - word: mango
   length: 5
   tier: daily
@@ -12890,10 +14098,14 @@ words:
   - main_list
 - word: jugué
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated preterite of jugar, not base form
 - word: bizma
   length: 5
   tier: valid
@@ -12918,10 +14130,14 @@ words:
   - main_list
 - word: india
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (country name); as adjective 'india' is borderline
 - word: fugaz
   length: 5
   tier: daily
@@ -13015,10 +14231,14 @@ words:
   - main_list
 - word: dabas
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated verb form (2nd person singular imperfect of dar)
 - word: coser
   length: 5
   tier: daily
@@ -13045,10 +14265,14 @@ words:
   - main_list
 - word: verme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.03
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic (to see me), not standalone
 - word: delas
   length: 5
   tier: valid
@@ -13069,10 +14293,14 @@ words:
   - main_list
 - word: lópez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: remar
   length: 5
   tier: daily
@@ -13143,10 +14371,14 @@ words:
   - main_list
 - word: damos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated form (we give), not a base/standalone word
   history:
   - 1692
   scheduled_day: 1692
@@ -13218,10 +14450,14 @@ words:
   - main_list
 - word: salma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (personal name, e.g. Salma Hayek)
 - word: satén
   length: 5
   tier: daily
@@ -13290,10 +14526,14 @@ words:
   - main_list
 - word: vidal
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: acure
   length: 5
   tier: valid
@@ -13360,10 +14600,14 @@ words:
   - main_list
 - word: dadas
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Past participle plural feminine of dar, not standalone
 - word: bance
   length: 5
   tier: valid
@@ -13378,10 +14622,14 @@ words:
   - main_list
 - word: hindi
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Language name, borderline common knowledge
 - word: dopar
   length: 5
   tier: valid
@@ -13490,16 +14738,24 @@ words:
   - main_list
 - word: marco
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (person name); also means 'frame' but primarily a name
 - word: dirás
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of decir, not base form
 - word: capaz
   length: 5
   tier: daily
@@ -13562,10 +14818,14 @@ words:
   - main_list
 - word: rugby
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, though widely used in Spanish
 - word: fasto
   length: 5
   tier: valid
@@ -13659,10 +14919,14 @@ words:
   - main_list
 - word: estés
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.5
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated subjunctive of estar, not base form
 - word: mesmo
   length: 5
   tier: valid
@@ -13706,10 +14970,14 @@ words:
   - main_list
 - word: vendí
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated preterite of vender, not base form
 - word: ébano
   length: 5
   tier: daily
@@ -13723,10 +14991,14 @@ words:
   - main_list
 - word: danes
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Plural of 'dan' (archaic rank), obscure without accent (danés)
 - word: seseo
   length: 5
   tier: valid
@@ -13771,10 +15043,14 @@ words:
   - main_list
 - word: kappa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Greek letter name, not a Spanish word
 - word: feroz
   length: 5
   tier: daily
@@ -14068,10 +15344,14 @@ words:
   - main_list
 - word: ámame
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (love me), not standalone word
 - word: naipe
   length: 5
   tier: valid
@@ -14137,10 +15417,14 @@ words:
   - main_list
 - word: ibiza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (island in Spain)
 - word: llena
   length: 5
   tier: daily
@@ -14178,10 +15462,14 @@ words:
   - main_list
 - word: mingo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Obscure (target ball in bowls), also proper name
 - word: quino
   length: 5
   tier: valid
@@ -14347,10 +15635,14 @@ words:
   - main_list
 - word: podrá
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.86
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of poder, not base form
 - word: átala
   length: 5
   tier: valid
@@ -14359,10 +15651,14 @@ words:
   - main_list
 - word: prevé
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated present of prever, not base form
 - word: prole
   length: 5
   tier: valid
@@ -14418,10 +15714,14 @@ words:
   - main_list
 - word: chocó
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Chocó department in Colombia)
 - word: holco
   length: 5
   tier: valid
@@ -14504,10 +15804,14 @@ words:
   - main_list
 - word: longo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure/dialectal for long
 - word: basta
   length: 5
   tier: daily
@@ -14539,10 +15843,14 @@ words:
   - main_list
 - word: ghana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (country in Africa)
 - word: nueva
   length: 5
   tier: daily
@@ -14574,10 +15882,14 @@ words:
   - main_list
 - word: serme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic, not standalone word
 - word: maslo
   length: 5
   tier: valid
@@ -14738,10 +16050,14 @@ words:
   - main_list
 - word: iraní
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Iranian), borderline but reasonably common
 - word: secar
   length: 5
   tier: daily
@@ -14903,10 +16219,14 @@ words:
   - main_list
 - word: valía
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Can be noun (worth/value) which is valid; also imperfect of valer
 - word: ataúd
   length: 5
   tier: daily
@@ -14933,10 +16253,14 @@ words:
   - main_list
 - word: swing
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not naturalized in Spanish
 - word: larra
   length: 5
   tier: valid
@@ -15088,10 +16412,14 @@ words:
   - main_list
 - word: nobel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Nobel Prize / Alfred Nobel)
 - word: batán
   length: 5
   tier: valid
@@ -15164,10 +16492,14 @@ words:
   - main_list
 - word: saint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English/French word, not Spanish
 - word: falla
   length: 5
   tier: daily
@@ -15230,10 +16562,14 @@ words:
   - main_list
 - word: daros
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic pronoun, not standalone word
 - word: cajón
   length: 5
   tier: daily
@@ -15370,10 +16706,14 @@ words:
   - main_list
 - word: jolín
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mild exclamation, but legitimate Spanish interjection
 - word: oidor
   length: 5
   tier: valid
@@ -15855,10 +17195,14 @@ words:
   - main_list
 - word: japón
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Japan)
 - word: lilao
   length: 5
   tier: valid
@@ -15884,10 +17228,14 @@ words:
   - main_list
 - word: darte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic pronoun, not standalone word
 - word: obtén
   length: 5
   tier: daily
@@ -16040,10 +17388,14 @@ words:
   - main_list
 - word: deles
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.11
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Subjunctive+enclitic, not standalone word
 - word: linio
   length: 5
   tier: valid
@@ -16099,10 +17451,14 @@ words:
   - main_list
 - word: marta
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: salve
   length: 5
   tier: daily
@@ -16543,10 +17899,14 @@ words:
   - main_list
 - word: diera
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated past subjunctive of dar, not base form
   history:
   - 1685
   scheduled_day: 1685
@@ -16652,10 +18012,14 @@ words:
   - main_list
 - word: ortiz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: resal
   length: 5
   tier: valid
@@ -16747,10 +18111,14 @@ words:
   - main_list
 - word: pedro
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: truco
   length: 5
   tier: daily
@@ -16854,10 +18222,14 @@ words:
   - main_list
 - word: lanka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of proper noun (Sri Lanka)
 - word: salir
   length: 5
   tier: daily
@@ -17008,16 +18380,24 @@ words:
   - main_list
 - word: dados
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'Ambiguous: could be dice (good) or participle of dar (less good). Keeping as borderline'
 - word: estás
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated form of estar, not base form
 - word: arana
   length: 5
   tier: valid
@@ -17037,10 +18417,14 @@ words:
   - main_list
 - word: darle
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic pronoun, not standalone word
 - word: prima
   length: 5
   tier: daily
@@ -17120,10 +18504,14 @@ words:
   - main_list
 - word: mirza
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.84
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure Persian title, not standard Spanish
 - word: pleon
   length: 5
   tier: valid
@@ -17346,10 +18734,14 @@ words:
   - main_list
 - word: óscar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name / Oscar award)
 - word: adive
   length: 5
   tier: valid
@@ -17375,10 +18767,14 @@ words:
   - main_list
 - word: vayan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.63
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated subjunctive of ir, not base form
 - word: flete
   length: 5
   tier: valid
@@ -17393,10 +18789,14 @@ words:
   - main_list
 - word: dales
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative with enclitic (give them), not standalone word
 - word: tuera
   length: 5
   tier: valid
@@ -17496,10 +18896,14 @@ words:
   - main_list
 - word: luisa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: fuego
   length: 5
   tier: daily
@@ -17594,10 +18998,14 @@ words:
   - main_list
 - word: román
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: trono
   length: 5
   tier: daily
@@ -17653,10 +19061,14 @@ words:
   - main_list
 - word: fusco
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/literary for dark-colored, very rarely used
 - word: jaral
   length: 5
   tier: valid
@@ -17671,10 +19083,14 @@ words:
   - main_list
 - word: flash
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, though widely used in Spanish
 - word: mitín
   length: 5
   tier: valid
@@ -17700,10 +19116,14 @@ words:
   - main_list
 - word: weber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (surname) / unit from proper noun
 - word: folgo
   length: 5
   tier: valid
@@ -17923,10 +19343,14 @@ words:
   - main_list
 - word: pablo
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: galas
   length: 5
   tier: daily
@@ -18038,10 +19462,14 @@ words:
   - main_list
 - word: grand
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English/French word, not Spanish
 - word: loica
   length: 5
   tier: valid
@@ -18130,16 +19558,24 @@ words:
   - main_list
 - word: úsalo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (use it), not standalone
 - word: celia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: nauru
   length: 5
   tier: valid
@@ -18166,10 +19602,14 @@ words:
   - main_list
 - word: dandi
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.12
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Hispanicized 'dandy', somewhat obscure
 - word: cabal
   length: 5
   tier: daily
@@ -18247,10 +19687,14 @@ words:
   - main_list
 - word: habrá
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.02
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of haber, not base form
 - word: fisio
   length: 5
   tier: valid
@@ -18264,10 +19708,14 @@ words:
   - main_list
 - word: blues
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, not fully naturalized in Spanish
 - word: lande
   length: 5
   tier: valid
@@ -18624,10 +20072,14 @@ words:
   - main_list
 - word: saudí
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Saudi), derived from proper noun
 - word: ninfo
   length: 5
   tier: valid
@@ -18695,10 +20147,14 @@ words:
   - main_list
 - word: corps
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: French/English word, not Spanish
 - word: necio
   length: 5
   tier: daily
@@ -18736,10 +20192,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: antes
   length: 5
   tier: daily
@@ -18766,10 +20226,14 @@ words:
   - main_list
 - word: ferry
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'English loanword, though widely used. Spanish alternative: transbordador'
 - word: rabos
   length: 5
   tier: valid
@@ -18813,10 +20277,14 @@ words:
   - main_list
 - word: sexys
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English-style plural of 'sexy', not properly Spanish
 - word: rispo
   length: 5
   tier: valid
@@ -18898,10 +20366,14 @@ words:
   - main_list
 - word: denme
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Imperative+enclitic (give me), not standalone
 - word: otoño
   length: 5
   tier: daily
@@ -18921,10 +20393,14 @@ words:
   - main_list
 - word: dalia
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Dahlia flower - valid but also a proper name; flower meaning is fine
 - word: rojal
   length: 5
   tier: valid
@@ -19057,10 +20533,14 @@ words:
   - main_list
 - word: crack
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword used in Spanish (star player/drug) but foreign spelling
 - word: feble
   length: 5
   tier: valid
@@ -19224,10 +20704,14 @@ words:
   - main_list
 - word: dance
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword / subjunctive of danzar (obscure form)
 - word: tasto
   length: 5
   tier: valid
@@ -19241,10 +20725,14 @@ words:
   - main_list
 - word: heard
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word (past tense of hear), not Spanish
 - word: niazo
   length: 5
   tier: valid
@@ -19377,10 +20865,14 @@ words:
   - main_list
 - word: islam
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Religious proper noun, borderline
 - word: algar
   length: 5
   tier: valid
@@ -19488,10 +20980,14 @@ words:
   - main_list
 - word: tours
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city in France) / English word
 - word: dedil
   length: 5
   tier: valid
@@ -19565,10 +21061,14 @@ words:
   - main_list
 - word: mongo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Can be offensive (short for mongólico); also bean in Caribbean Spanish
 - word: varar
   length: 5
   tier: valid
@@ -19740,10 +21240,14 @@ words:
   - main_list
 - word: serás
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of ser, not base form
 - word: clase
   length: 5
   tier: daily
@@ -19797,10 +21301,14 @@ words:
   - main_list
 - word: drago
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Dragon tree (Canarian), somewhat regional
 - word: capuz
   length: 5
   tier: valid
@@ -19897,10 +21405,14 @@ words:
   - main_list
 - word: darás
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future tense of dar, not base form
 - word: alelo
   length: 5
   tier: valid
@@ -19909,10 +21421,14 @@ words:
   - main_list
 - word: darlo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Infinitive+enclitic pronoun, not standalone word
 - word: firme
   length: 5
   tier: daily
@@ -20086,10 +21602,14 @@ words:
   - main_list
 - word: sirio
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Syrian), derived from proper noun
 - word: baena
   length: 5
   tier: valid
@@ -20181,10 +21701,14 @@ words:
   - main_list
 - word: roses
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (town in Catalonia, Girona)
 - word: elisa
   length: 5
   tier: valid
@@ -20203,6 +21727,10 @@ words:
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be proper noun (Diana) but also means 'target/bullseye' in Spanish
 - word: módem
   length: 5
   tier: valid
@@ -20223,10 +21751,14 @@ words:
   - main_list
 - word: hippy
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, Spanish prefers 'hippie' or 'jipi'
 - word: honra
   length: 5
   tier: daily
@@ -20499,10 +22031,14 @@ words:
   - main_list
 - word: rubén
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (personal name)
 - word: veste
   length: 5
   tier: valid
@@ -20511,10 +22047,14 @@ words:
   - main_list
 - word: curry
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, though widely used in Spanish cooking
 - word: albor
   length: 5
   tier: valid
@@ -20693,10 +22233,14 @@ words:
   - main_list
 - word: habré
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated future of haber, not base form
 - word: xenón
   length: 5
   tier: valid
@@ -20735,10 +22279,14 @@ words:
   - main_list
 - word: daban
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Conjugated verb form (3rd person plural imperfect of dar), not base form
 - word: ágape
   length: 5
   tier: valid
@@ -20876,10 +22424,14 @@ words:
   - main_list
 - word: logar
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic form of 'lograr', not used in modern Spanish
 - word: sopor
   length: 5
   tier: valid
@@ -21104,10 +22656,14 @@ words:
   - main_list
 - word: núñez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: picor
   length: 5
   tier: daily
@@ -21140,10 +22696,14 @@ words:
   - main_list
 - word: pérez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: rozas
   length: 5
   tier: valid
@@ -21210,10 +22770,14 @@ words:
   - main_list
 - word: demos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Subjunctive of dar; also could be confused with Greek 'demos'
 - word: elote
   length: 5
   tier: valid
@@ -21228,10 +22792,14 @@ words:
   - main_list
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (country)
 - word: bario
   length: 5
   tier: valid
@@ -21879,7 +23447,7 @@ words:
   - supplement
 - word: abrió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -21978,13 +23546,13 @@ words:
   - supplement
 - word: acaba
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
 - word: acabe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -22001,7 +23569,7 @@ words:
   - supplement
 - word: acabó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -22188,7 +23756,7 @@ words:
   - supplement
 - word: acero
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.31
   sources:
   - supplement
@@ -22414,7 +23982,7 @@ words:
   - supplement
 - word: acoso
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -22529,7 +24097,7 @@ words:
   - supplement
 - word: actos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -22577,7 +24145,7 @@ words:
   - supplement
 - word: actúa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -24073,7 +25641,7 @@ words:
   - supplement
 - word: aguas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -24649,6 +26217,10 @@ words:
   frequency: 4.99
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Part of Buenos Aires (proper noun) but also means 'airs/breezes' — valid as common noun
 - word: aireó
   length: 5
   tier: valid
@@ -25840,10 +27412,14 @@ words:
   - supplement
 - word: algun
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.48
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'algún'
 - word: algón
   length: 5
   tier: valid
@@ -26174,7 +27750,7 @@ words:
   - supplement
 - word: almas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - supplement
@@ -26414,7 +27990,7 @@ words:
   - supplement
 - word: altas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -26471,7 +28047,7 @@ words:
   - supplement
 - word: altos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -27209,7 +28785,7 @@ words:
   - supplement
 - word: amiga
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -28050,10 +29626,14 @@ words:
   - supplement
 - word: angel
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.15
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'ángel'
 - word: anger
   length: 5
   tier: valid
@@ -28239,10 +29819,14 @@ words:
   - supplement
 - word: anime
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Japanese loanword; not a native Spanish word
 - word: animo
   length: 5
   tier: valid
@@ -29222,7 +30806,7 @@ words:
   - supplement
 - word: apoya
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.4
   sources:
   - supplement
@@ -29234,7 +30818,7 @@ words:
   - supplement
 - word: apoyo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -29296,10 +30880,14 @@ words:
   - supplement
 - word: apple
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.25
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / brand name
 - word: aprad
   length: 5
   tier: valid
@@ -30545,7 +32133,7 @@ words:
   - supplement
 - word: armas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -30989,7 +32577,7 @@ words:
   - supplement
 - word: artes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -32852,7 +34440,7 @@ words:
   - supplement
 - word: autos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -33621,7 +35209,7 @@ words:
   - supplement
 - word: ayude
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -33645,7 +35233,7 @@ words:
   - supplement
 - word: ayudó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.28
   sources:
   - supplement
@@ -33973,7 +35561,7 @@ words:
   - supplement
 - word: añade
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -34661,7 +36249,7 @@ words:
   - supplement
 - word: bajas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -34697,7 +36285,7 @@ words:
   - supplement
 - word: bajos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -34789,7 +36377,7 @@ words:
   - supplement
 - word: balas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -35604,7 +37192,7 @@ words:
   - supplement
 - word: bases
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -36170,7 +37758,7 @@ words:
   - supplement
 - word: baños
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -36382,7 +37970,7 @@ words:
   - supplement
 - word: bebés
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.22
   sources:
   - supplement
@@ -36399,7 +37987,7 @@ words:
   - supplement
 - word: becas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -36719,6 +38307,10 @@ words:
   frequency: 4.49
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be proper noun (Bella) but also means 'beautiful' — valid as adjective
 - word: belle
   length: 5
   tier: valid
@@ -37340,7 +38932,7 @@ words:
   - supplement
 - word: besos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
@@ -38265,10 +39857,14 @@ words:
   - supplement
 - word: black
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.3
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: blade
   length: 5
   tier: valid
@@ -39049,7 +40645,7 @@ words:
   - supplement
 - word: bolas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -40390,10 +41986,14 @@ words:
   - supplement
 - word: brian
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.1
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: briar
   length: 5
   tier: valid
@@ -40687,10 +42287,14 @@ words:
   - supplement
 - word: brown
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name) / English word
 - word: brows
   length: 5
   tier: valid
@@ -41684,7 +43288,7 @@ words:
   - supplement
 - word: busco
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.31
   sources:
   - supplement
@@ -42733,7 +44337,7 @@ words:
   - supplement
 - word: cajas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.34
   sources:
   - supplement
@@ -43506,7 +45110,7 @@ words:
   - supplement
 - word: capas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -43710,7 +45314,7 @@ words:
   - supplement
 - word: caras
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -44066,7 +45670,7 @@ words:
   - supplement
 - word: casas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -44153,7 +45757,7 @@ words:
   - supplement
 - word: casos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.25
   sources:
   - supplement
@@ -44426,7 +46030,7 @@ words:
   - supplement
 - word: causó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -45785,7 +47389,7 @@ words:
   - supplement
 - word: cerró
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -47243,10 +48847,14 @@ words:
   - supplement
 - word: chris
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.22
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: chron
   length: 5
   tier: valid
@@ -48239,7 +49847,7 @@ words:
   - supplement
 - word: citas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
@@ -48640,10 +50248,14 @@ words:
   - supplement
 - word: click
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.13
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word; Spanish uses 'clic'
 - word: clics
   length: 5
   tier: valid
@@ -50397,7 +52009,7 @@ words:
   - supplement
 - word: contó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -50517,7 +52129,7 @@ words:
   - supplement
 - word: copas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -50897,7 +52509,7 @@ words:
   - supplement
 - word: corre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -50945,7 +52557,7 @@ words:
   - supplement
 - word: corta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -51033,7 +52645,7 @@ words:
   - supplement
 - word: cosas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.85
   sources:
   - supplement
@@ -51677,13 +53289,13 @@ words:
   - supplement
 - word: crean
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.29
   sources:
   - supplement
 - word: creas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -51695,7 +53307,7 @@ words:
   - supplement
 - word: crece
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -51749,7 +53361,7 @@ words:
   - supplement
 - word: creen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -51761,7 +53373,7 @@ words:
   - supplement
 - word: crees
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -51901,7 +53513,7 @@ words:
   - supplement
 - word: creía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -52540,7 +54152,7 @@ words:
   - supplement
 - word: cubre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
@@ -53428,7 +55040,7 @@ words:
   - supplement
 - word: cuyas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -53440,7 +55052,7 @@ words:
   - supplement
 - word: cuyos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -54234,7 +55846,7 @@ words:
   - supplement
 - word: damas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -54760,7 +56372,7 @@ words:
   - supplement
 - word: datos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.32
   sources:
   - supplement
@@ -55021,7 +56633,7 @@ words:
   - supplement
 - word: daños
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -55089,13 +56701,13 @@ words:
   - supplement
 - word: deben
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
 - word: debes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -55131,7 +56743,7 @@ words:
   - supplement
 - word: debió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -55167,7 +56779,7 @@ words:
   - supplement
 - word: debía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -55269,7 +56881,7 @@ words:
   - supplement
 - word: decía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.89
   sources:
   - supplement
@@ -55298,7 +56910,7 @@ words:
   - supplement
 - word: dedos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -55503,7 +57115,7 @@ words:
   - supplement
 - word: dejan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -55515,13 +57127,13 @@ words:
   - supplement
 - word: dejas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
 - word: dejen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -55532,7 +57144,7 @@ words:
   - supplement
 - word: dejes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -55788,10 +57400,14 @@ words:
   - supplement
 - word: demas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'demás'
 - word: demba
   length: 5
   tier: valid
@@ -56241,7 +57857,7 @@ words:
   - supplement
 - word: desea
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -56877,7 +58493,7 @@ words:
   - supplement
 - word: dicen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -56889,7 +58505,7 @@ words:
   - supplement
 - word: dices
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -57093,13 +58709,13 @@ words:
   - supplement
 - word: digan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
 - word: digas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -59231,7 +60847,7 @@ words:
   - supplement
 - word: dudas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -59270,7 +60886,7 @@ words:
   - supplement
 - word: duele
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -59604,7 +61220,7 @@ words:
   - supplement
 - word: duras
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.1
   sources:
   - supplement
@@ -59669,7 +61285,7 @@ words:
   - supplement
 - word: duros
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
@@ -61570,7 +63186,7 @@ words:
   - supplement
 - word: elige
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.19
   sources:
   - supplement
@@ -61715,7 +63331,7 @@ words:
   - supplement
 - word: ellas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
@@ -61768,7 +63384,7 @@ words:
   - supplement
 - word: ellos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.8
   sources:
   - supplement
@@ -62846,7 +64462,7 @@ words:
   - supplement
 - word: entra
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -62870,7 +64486,7 @@ words:
   - supplement
 - word: entró
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -62934,13 +64550,13 @@ words:
   - supplement
 - word: envió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
 - word: envía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -63969,10 +65585,14 @@ words:
   - supplement
 - word: estan
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.78
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'están'
 - word: estao
   length: 5
   tier: valid
@@ -63981,7 +65601,7 @@ words:
   - supplement
 - word: estas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.75
   sources:
   - supplement
@@ -64093,7 +65713,7 @@ words:
   - supplement
 - word: estos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.77
   sources:
   - supplement
@@ -64417,6 +66037,10 @@ words:
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Currency name; borderline but commonly used
 - word: eurus
   length: 5
   tier: valid
@@ -64556,7 +66180,7 @@ words:
   - supplement
 - word: evita
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -64750,7 +66374,7 @@ words:
   - supplement
 - word: exige
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -65140,10 +66764,14 @@ words:
   - supplement
 - word: facil
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.12
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'fácil'
 - word: facio
   length: 5
   tier: valid
@@ -67385,10 +69013,14 @@ words:
   - supplement
 - word: fidel
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.1
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name, Fidel Castro)
 - word: fides
   length: 5
   tier: valid
@@ -67555,7 +69187,7 @@ words:
   - supplement
 - word: filas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - supplement
@@ -69266,7 +70898,7 @@ words:
   - supplement
 - word: fotos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.24
   sources:
   - supplement
@@ -69449,10 +71081,14 @@ words:
   - supplement
 - word: frank
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.25
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: frans
   length: 5
   tier: valid
@@ -71253,7 +72889,7 @@ words:
   - supplement
 - word: ganan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - supplement
@@ -71265,7 +72901,7 @@ words:
   - supplement
 - word: ganas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -73803,7 +75439,7 @@ words:
   - supplement
 - word: goles
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -75177,7 +76813,7 @@ words:
   - supplement
 - word: guapa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
@@ -75747,13 +77383,13 @@ words:
   - supplement
 - word: gusta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
 - word: guste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -75771,7 +77407,7 @@ words:
   - supplement
 - word: gustó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -76160,10 +77796,14 @@ words:
   - supplement
 - word: habia
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.73
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'había'
 - word: habib
   length: 5
   tier: valid
@@ -76196,13 +77836,13 @@ words:
   - supplement
 - word: hable
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
 - word: hablo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -76220,7 +77860,7 @@ words:
   - supplement
 - word: habló
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -76254,13 +77894,13 @@ words:
   - supplement
 - word: hacen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.38
   sources:
   - supplement
 - word: haces
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -76302,7 +77942,7 @@ words:
   - supplement
 - word: hacía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -76436,7 +78076,7 @@ words:
   - supplement
 - word: hagan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.79
   sources:
   - supplement
@@ -76448,7 +78088,7 @@ words:
   - supplement
 - word: hagas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -77287,10 +78927,14 @@ words:
   - supplement
 - word: harry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.52
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: harta
   length: 5
   tier: valid
@@ -77352,7 +78996,7 @@ words:
   - supplement
 - word: harán
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
@@ -77364,7 +79008,7 @@ words:
   - supplement
 - word: haría
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -78734,7 +80378,7 @@ words:
   - supplement
 - word: hijas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -78751,7 +80395,7 @@ words:
   - supplement
 - word: hijos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.31
   sources:
   - supplement
@@ -79243,7 +80887,7 @@ words:
   - supplement
 - word: hojas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -79557,7 +81201,7 @@ words:
   - supplement
 - word: horas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.46
   sources:
   - supplement
@@ -79741,10 +81385,14 @@ words:
   - supplement
 - word: house
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.2
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: houte
   length: 5
   tier: valid
@@ -79896,10 +81544,14 @@ words:
   - supplement
 - word: https
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word; URL protocol abbreviation
 - word: huaba
   length: 5
   tier: valid
@@ -81229,7 +82881,7 @@ words:
   - supplement
 - word: ideas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
@@ -85269,10 +86921,14 @@ words:
   - supplement
 - word: jamas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.18
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'jamás'
 - word: jambi
   length: 5
   tier: valid
@@ -85299,10 +86955,14 @@ words:
   - supplement
 - word: james
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.59
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: jamey
   length: 5
   tier: valid
@@ -86013,7 +87673,7 @@ words:
   - supplement
 - word: jefes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -87062,10 +88722,14 @@ words:
   - supplement
 - word: jones
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.15
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: jongh
   length: 5
   tier: valid
@@ -87687,10 +89351,14 @@ words:
   - supplement
 - word: julia
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.24
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: julie
   length: 5
   tier: valid
@@ -89934,10 +91602,14 @@ words:
   - supplement
 - word: kevin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.24
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: kevyn
   length: 5
   tier: valid
@@ -90257,7 +91929,7 @@ words:
   - supplement
 - word: kilos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.29
   sources:
   - supplement
@@ -93189,7 +94861,7 @@ words:
   - supplement
 - word: lanzó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
@@ -94882,7 +96554,7 @@ words:
   - supplement
 - word: lenta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.1
   sources:
   - supplement
@@ -95360,7 +97032,7 @@ words:
   - supplement
 - word: leyes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -96183,10 +97855,14 @@ words:
   - supplement
 - word: linea
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.27
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'línea'
 - word: lines
   length: 5
   tier: valid
@@ -96665,13 +98341,13 @@ words:
   - supplement
 - word: llame
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
 - word: llamo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -96689,7 +98365,7 @@ words:
   - supplement
 - word: llamó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -96731,7 +98407,7 @@ words:
   - supplement
 - word: llego
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -96743,7 +98419,7 @@ words:
   - supplement
 - word: llegó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -96778,13 +98454,13 @@ words:
   - supplement
 - word: lleve
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
 - word: llevo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -96802,7 +98478,7 @@ words:
   - supplement
 - word: llevó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -97068,7 +98744,7 @@ words:
   - supplement
 - word: locos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -97177,7 +98853,7 @@ words:
   - supplement
 - word: logra
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -97195,7 +98871,7 @@ words:
   - supplement
 - word: logró
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -97841,10 +99517,14 @@ words:
   - supplement
 - word: louis
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.36
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: louit
   length: 5
   tier: valid
@@ -98088,10 +99768,14 @@ words:
   - supplement
 - word: lucas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.45
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: lucca
   length: 5
   tier: valid
@@ -98128,7 +99812,7 @@ words:
   - supplement
 - word: luces
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -99236,10 +100920,14 @@ words:
   - supplement
 - word: macri
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.39
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Argentine politician)
 - word: macul
   length: 5
   tier: valid
@@ -100090,7 +101778,7 @@ words:
   - supplement
 - word: malas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -100261,7 +101949,7 @@ words:
   - supplement
 - word: malos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -100553,7 +102241,7 @@ words:
   - supplement
 - word: mandó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -100726,7 +102414,7 @@ words:
   - supplement
 - word: manos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -100825,7 +102513,7 @@ words:
   - supplement
 - word: mapas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.13
   sources:
   - supplement
@@ -101056,10 +102744,14 @@ words:
   - supplement
 - word: maria
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.44
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name); correct Spanish is 'María'
 - word: maric
   length: 5
   tier: valid
@@ -101405,7 +103097,7 @@ words:
   - supplement
 - word: masas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.29
   sources:
   - supplement
@@ -101652,7 +103344,7 @@ words:
   - supplement
 - word: matan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - supplement
@@ -101706,10 +103398,14 @@ words:
   - supplement
 - word: mateo
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.11
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: mater
   length: 5
   tier: valid
@@ -102981,6 +104677,10 @@ words:
   frequency: 2.8
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Very obscure dialectal term
 - word: melly
   length: 5
   tier: valid
@@ -103592,7 +105292,7 @@ words:
   - supplement
 - word: mesas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -103696,7 +105396,7 @@ words:
   - supplement
 - word: metas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.33
   sources:
   - supplement
@@ -103756,7 +105456,7 @@ words:
   - supplement
 - word: metió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -103908,10 +105608,14 @@ words:
   - supplement
 - word: miami
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.34
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name)
 - word: miamo
   length: 5
   tier: valid
@@ -104360,7 +106064,7 @@ words:
   - supplement
 - word: miles
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -104566,7 +106270,7 @@ words:
   - supplement
 - word: minas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -104818,7 +106522,7 @@ words:
   - supplement
 - word: miras
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - supplement
@@ -104846,7 +106550,7 @@ words:
   - supplement
 - word: miren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -104979,7 +106683,7 @@ words:
   - supplement
 - word: misma
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.51
   sources:
   - supplement
@@ -105471,7 +107175,7 @@ words:
   - supplement
 - word: modos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -106025,7 +107729,7 @@ words:
   - supplement
 - word: monto
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - supplement
@@ -106510,10 +108214,14 @@ words:
   - supplement
 - word: moscú
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.31
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name, Moscow)
 - word: mosen
   length: 5
   tier: valid
@@ -107046,7 +108754,7 @@ words:
   - supplement
 - word: mucha
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -107140,7 +108848,7 @@ words:
   - supplement
 - word: muere
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -107164,7 +108872,7 @@ words:
   - supplement
 - word: mueve
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
@@ -107654,7 +109362,7 @@ words:
   - supplement
 - word: murió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -107671,7 +109379,7 @@ words:
   - supplement
 - word: muros
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -108456,7 +110164,7 @@ words:
   - supplement
 - word: nació
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -109675,7 +111383,7 @@ words:
   - supplement
 - word: naves
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -111020,7 +112728,7 @@ words:
   - supplement
 - word: niega
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -111603,7 +113311,7 @@ words:
   - supplement
 - word: niñas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -111621,7 +113329,7 @@ words:
   - supplement
 - word: niños
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.39
   sources:
   - supplement
@@ -111927,10 +113635,14 @@ words:
   - supplement
 - word: nomas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.12
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Colloquial/regional (Mexican Spanish); missing accent for 'nomás'
 - word: nombe
   length: 5
   tier: valid
@@ -112183,7 +113895,7 @@ words:
   - supplement
 - word: notas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -112309,7 +114021,7 @@ words:
   - supplement
 - word: novia
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -112466,7 +114178,7 @@ words:
   - supplement
 - word: nubes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.19
   sources:
   - supplement
@@ -113129,10 +114841,14 @@ words:
   - supplement
 - word: obama
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.34
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: obara
   length: 5
   tier: valid
@@ -113235,7 +114951,7 @@ words:
   - supplement
 - word: obras
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
@@ -113523,7 +115239,7 @@ words:
   - supplement
 - word: ocupa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -114060,10 +115776,14 @@ words:
   - supplement
 - word: ojala
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'ojalá'
 - word: ojani
   length: 5
   tier: valid
@@ -116422,7 +118142,7 @@ words:
   - supplement
 - word: otras
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.67
   sources:
   - supplement
@@ -116434,7 +118154,7 @@ words:
   - supplement
 - word: otros
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.87
   sources:
   - supplement
@@ -117254,7 +118974,7 @@ words:
   - supplement
 - word: pagan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -117289,7 +119009,7 @@ words:
   - supplement
 - word: pagos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -117967,7 +119687,7 @@ words:
   - supplement
 - word: papas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.19
   sources:
   - supplement
@@ -118181,10 +119901,14 @@ words:
   - supplement
 - word: paris
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.13
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name); missing accent for 'París'
 - word: parió
   length: 5
   tier: valid
@@ -118357,10 +120081,14 @@ words:
   - supplement
 - word: parís
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.76
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name)
 - word: pasad
   length: 5
   tier: valid
@@ -118375,7 +120103,7 @@ words:
   - supplement
 - word: pasan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -118387,7 +120115,7 @@ words:
   - supplement
 - word: pasas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -118417,7 +120145,7 @@ words:
   - supplement
 - word: pasen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -118474,7 +120202,7 @@ words:
   - supplement
 - word: pasos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -118745,10 +120473,14 @@ words:
   - supplement
 - word: paula
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.13
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: paule
   length: 5
   tier: valid
@@ -118763,10 +120495,14 @@ words:
   - supplement
 - word: paulo
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name, as in São Paulo)
 - word: pauls
   length: 5
   tier: valid
@@ -119181,7 +120917,7 @@ words:
   - supplement
 - word: peces
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -119723,7 +121459,7 @@ words:
   - supplement
 - word: penas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -119823,13 +121559,13 @@ words:
   - supplement
 - word: pensé
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
 - word: pensó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -120011,7 +121747,7 @@ words:
   - supplement
 - word: perdí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
@@ -120311,7 +122047,7 @@ words:
   - supplement
 - word: pesos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.89
   sources:
   - supplement
@@ -120380,10 +122116,14 @@ words:
   - supplement
 - word: peter
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.48
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: petes
   length: 5
   tier: valid
@@ -120904,7 +122644,7 @@ words:
   - supplement
 - word: piden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -120922,7 +122662,7 @@ words:
   - supplement
 - word: pidió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -121715,7 +123455,7 @@ words:
   - supplement
 - word: pisos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -122093,7 +123833,7 @@ words:
   - supplement
 - word: plazo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -122242,7 +123982,7 @@ words:
   - supplement
 - word: pocas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -122276,7 +124016,7 @@ words:
   - supplement
 - word: pocos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
@@ -122306,16 +124046,20 @@ words:
   - supplement
 - word: podes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
 - word: podia
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.1
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'podía'
 - word: podil
   length: 5
   tier: valid
@@ -122646,13 +124390,13 @@ words:
   - supplement
 - word: ponen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
 - word: pones
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
@@ -122664,13 +124408,13 @@ words:
   - supplement
 - word: ponga
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
 - word: pongo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -122735,7 +124479,7 @@ words:
   - supplement
 - word: ponte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -123128,7 +124872,7 @@ words:
   - supplement
 - word: posee
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -123206,10 +124950,14 @@ words:
   - supplement
 - word: posts
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.12
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: postó
   length: 5
   tier: valid
@@ -123684,10 +125432,14 @@ words:
   - supplement
 - word: press
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: presu
   length: 5
   tier: valid
@@ -124877,10 +126629,14 @@ words:
   - supplement
 - word: putas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.39
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar / offensive word
 - word: putea
   length: 5
   tier: valid
@@ -125579,7 +127335,7 @@ words:
   - supplement
 - word: quede
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -125591,13 +127347,13 @@ words:
   - supplement
 - word: quedé
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.27
   sources:
   - supplement
 - word: quedó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -125963,13 +127719,13 @@ words:
   - supplement
 - word: quise
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
 - word: quiso
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -126646,10 +128402,14 @@ words:
   - supplement
 - word: rajoy
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.22
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Spanish politician)
 - word: rajwa
   length: 5
   tier: valid
@@ -126767,7 +128527,7 @@ words:
   - supplement
 - word: ramas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -126859,10 +128619,14 @@ words:
   - supplement
 - word: ramos
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (person name); also means 'branches/bouquets' but primarily known as surname
 - word: ramoz
   length: 5
   tier: valid
@@ -127135,7 +128899,7 @@ words:
   - supplement
 - word: raras
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -127567,7 +129331,7 @@ words:
   - supplement
 - word: rayos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -127628,10 +129392,14 @@ words:
   - supplement
 - word: razon
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.42
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'razón'
 - word: razor
   length: 5
   tier: valid
@@ -127864,7 +129632,7 @@ words:
   - supplement
 - word: redes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -129304,7 +131072,7 @@ words:
   - supplement
 - word: reúne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -129573,7 +131341,7 @@ words:
   - supplement
 - word: ricos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -130195,10 +131963,14 @@ words:
   - supplement
 - word: river
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.4
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (River Plate)
 - word: rives
   length: 5
   tier: valid
@@ -130467,7 +132239,7 @@ words:
   - supplement
 - word: rocas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.13
   sources:
   - supplement
@@ -130822,7 +132594,7 @@ words:
   - supplement
 - word: rojas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -130838,7 +132610,7 @@ words:
   - supplement
 - word: rojos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.19
   sources:
   - supplement
@@ -131069,7 +132841,7 @@ words:
   - supplement
 - word: rompe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.27
   sources:
   - supplement
@@ -131258,7 +133030,7 @@ words:
   - supplement
 - word: rosas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -132248,7 +134020,7 @@ words:
   - supplement
 - word: rusos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -132284,7 +134056,7 @@ words:
   - supplement
 - word: rutas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -132668,13 +134440,13 @@ words:
   - supplement
 - word: saben
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
 - word: sabes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.25
   sources:
   - supplement
@@ -132686,7 +134458,7 @@ words:
   - supplement
 - word: sabia
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.34
   sources:
   - supplement
@@ -132757,7 +134529,7 @@ words:
   - supplement
 - word: sabía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -132787,7 +134559,7 @@ words:
   - supplement
 - word: sacan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -133499,7 +135271,7 @@ words:
   - supplement
 - word: salas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -133558,7 +135330,7 @@ words:
   - supplement
 - word: salen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -133570,7 +135342,7 @@ words:
   - supplement
 - word: sales
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -133587,7 +135359,7 @@ words:
   - supplement
 - word: salgo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -133653,7 +135425,7 @@ words:
   - supplement
 - word: salió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -133704,6 +135476,10 @@ words:
   frequency: 4.32
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be proper noun (Argentine city) but also means 'jumps' — valid as verb
 - word: salte
   length: 5
   tier: valid
@@ -133783,7 +135559,7 @@ words:
   - supplement
 - word: salía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.1
   sources:
   - supplement
@@ -134414,10 +136190,14 @@ words:
   - supplement
 - word: sarah
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.12
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: sarai
   length: 5
   tier: valid
@@ -135384,10 +137164,14 @@ words:
   - supplement
 - word: scott
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: scout
   length: 5
   tier: valid
@@ -135848,10 +137632,14 @@ words:
   - supplement
 - word: segun
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.29
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'según'
 - word: seguí
   length: 5
   tier: valid
@@ -136434,7 +138222,7 @@ words:
   - supplement
 - word: sentí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
@@ -136489,7 +138277,7 @@ words:
   - supplement
 - word: sepan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -136501,7 +138289,7 @@ words:
   - supplement
 - word: sepas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -136611,7 +138399,7 @@ words:
   - supplement
 - word: seria
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -138208,7 +139996,7 @@ words:
   - supplement
 - word: sigan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -138289,7 +140077,7 @@ words:
   - supplement
 - word: sigue
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.38
   sources:
   - supplement
@@ -138611,10 +140399,14 @@ words:
   - supplement
 - word: simon
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.11
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: simos
   length: 5
   tier: valid
@@ -138984,7 +140776,7 @@ words:
   - supplement
 - word: sirve
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -139669,10 +141461,14 @@ words:
   - supplement
 - word: smith
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.2
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: smits
   length: 5
   tier: valid
@@ -140190,7 +141986,7 @@ words:
   - supplement
 - word: solas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -140321,7 +142117,7 @@ words:
   - supplement
 - word: solos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -141728,10 +143524,14 @@ words:
   - supplement
 - word: steve
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.2
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: stevo
   length: 5
   tier: valid
@@ -142281,7 +144081,7 @@ words:
   - supplement
 - word: subió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -142437,7 +144237,7 @@ words:
   - supplement
 - word: suena
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -142490,7 +144290,7 @@ words:
   - supplement
 - word: sufre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.31
   sources:
   - supplement
@@ -142807,7 +144607,7 @@ words:
   - supplement
 - word: super
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -142956,7 +144756,7 @@ words:
   - supplement
 - word: surge
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -143182,7 +144982,7 @@ words:
   - supplement
 - word: suyos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -144274,7 +146074,7 @@ words:
   - supplement
 - word: tales
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -144685,7 +146485,7 @@ words:
   - supplement
 - word: tanta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -145065,7 +146865,7 @@ words:
   - supplement
 - word: tasas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -145923,7 +147723,7 @@ words:
   - supplement
 - word: temas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -146107,7 +147907,7 @@ words:
   - supplement
 - word: tenes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -146119,7 +147919,7 @@ words:
   - supplement
 - word: tenga
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement
@@ -146131,7 +147931,7 @@ words:
   - supplement
 - word: tengo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.91
   sources:
   - supplement
@@ -146273,13 +148073,13 @@ words:
   - supplement
 - word: tenés
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
 - word: tenía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.51
   sources:
   - supplement
@@ -146573,10 +148373,14 @@ words:
   - supplement
 - word: tetas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.21
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar slang for breasts; inappropriate for daily puzzle
 - word: tetaz
   length: 5
   tier: valid
@@ -146666,10 +148470,14 @@ words:
   - supplement
 - word: texas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.2
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (US state)
 - word: texel
   length: 5
   tier: valid
@@ -147275,7 +149083,7 @@ words:
   - supplement
 - word: tiene
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.15
   sources:
   - supplement
@@ -147530,10 +149338,14 @@ words:
   - supplement
 - word: times
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.21
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (newspaper)
 - word: timma
   length: 5
   tier: valid
@@ -147727,7 +149539,7 @@ words:
   - supplement
 - word: tipos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -147820,7 +149632,7 @@ words:
   - supplement
 - word: tiros
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -148202,7 +150014,7 @@ words:
   - supplement
 - word: todas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.78
   sources:
   - supplement
@@ -148249,7 +150061,7 @@ words:
   - supplement
 - word: todos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.19
   sources:
   - supplement
@@ -148350,10 +150162,14 @@ words:
   - supplement
 - word: tokio
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.1
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name, Tokyo)
 - word: tokko
   length: 5
   tier: valid
@@ -148472,13 +150288,13 @@ words:
   - supplement
 - word: toman
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
 - word: tomas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.29
   sources:
   - supplement
@@ -148519,7 +150335,7 @@ words:
   - supplement
 - word: tomen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -148608,10 +150424,14 @@ words:
   - supplement
 - word: tomás
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: tonak
   length: 5
   tier: valid
@@ -148683,7 +150503,7 @@ words:
   - supplement
 - word: tonta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -149453,7 +151273,7 @@ words:
   - supplement
 - word: trajo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.27
   sources:
   - supplement
@@ -149555,7 +151375,7 @@ words:
   - supplement
 - word: trate
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -149573,7 +151393,7 @@ words:
   - supplement
 - word: trató
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.34
   sources:
   - supplement
@@ -150092,10 +151912,14 @@ words:
   - supplement
 - word: trump
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.53
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (person name)
 - word: trung
   length: 5
   tier: valid
@@ -152478,19 +154302,23 @@ words:
   - supplement
 - word: unico
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.29
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Missing accent; correct form is 'único'
 - word: unida
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
 - word: unido
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -154037,7 +155865,7 @@ words:
   - supplement
 - word: valen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
@@ -154629,7 +156457,7 @@ words:
   - supplement
 - word: veces
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.67
   sources:
   - supplement
@@ -154890,7 +156718,7 @@ words:
   - supplement
 - word: vemos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
@@ -154936,7 +156764,7 @@ words:
   - supplement
 - word: vende
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -154972,13 +156800,13 @@ words:
   - supplement
 - word: venga
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
 - word: vengo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -155095,7 +156923,7 @@ words:
   - supplement
 - word: venía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -155119,7 +156947,7 @@ words:
   - supplement
 - word: veras
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
@@ -155203,7 +157031,7 @@ words:
   - supplement
 - word: verla
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -155215,7 +157043,7 @@ words:
   - supplement
 - word: verlo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -155286,7 +157114,7 @@ words:
   - supplement
 - word: verse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
@@ -155315,7 +157143,7 @@ words:
   - supplement
 - word: verte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -155374,7 +157202,7 @@ words:
   - supplement
 - word: verás
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
@@ -155773,7 +157601,7 @@ words:
   - supplement
 - word: vidas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -155855,7 +157683,7 @@ words:
   - supplement
 - word: vieja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -155873,7 +157701,7 @@ words:
   - supplement
 - word: viene
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -156110,7 +157938,7 @@ words:
   - supplement
 - word: vimos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -156439,7 +158267,7 @@ words:
   - supplement
 - word: viste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -156599,7 +158427,7 @@ words:
   - supplement
 - word: viven
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -156611,7 +158439,7 @@ words:
   - supplement
 - word: vives
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.22
   sources:
   - supplement
@@ -156641,13 +158469,13 @@ words:
   - supplement
 - word: vivió
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
 - word: vivos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -156676,7 +158504,7 @@ words:
   - supplement
 - word: vivía
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.33
   sources:
   - supplement
@@ -156802,7 +158630,7 @@ words:
   - supplement
 - word: voces
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -157007,7 +158835,7 @@ words:
   - supplement
 - word: volví
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - supplement
@@ -157070,7 +158898,7 @@ words:
   - supplement
 - word: votos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -157255,7 +159083,7 @@ words:
   - supplement
 - word: véase
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -162740,7 +164568,7 @@ words:
   - supplement
 - word: zonas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -163294,7 +165122,7 @@ words:
   - supplement
 - word: áreas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.79
   sources:
   - supplement
@@ -163536,13 +165364,13 @@ words:
   - supplement
 - word: éstas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
 - word: éstos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -163917,7 +165745,7 @@ words:
   - supplement
 - word: única
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.16
   sources:
   - supplement

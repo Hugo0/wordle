@@ -1576,10 +1576,14 @@ words:
   - main_list
 - word: aires
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Buenos Aires surname) — not a common standalone Portuguese word
 - word: airou
   length: 5
   tier: valid
@@ -1963,10 +1967,14 @@ words:
   - main_list
 - word: alien
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, not fully naturalized in standard Portuguese (alienígena preferred)
 - word: alies
   length: 5
   tier: valid
@@ -2076,10 +2084,14 @@ words:
   - main_list
 - word: alpes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — the Alps mountain range
 - word: altai
   length: 5
   tier: valid
@@ -2476,10 +2488,14 @@ words:
   - main_list
 - word: amish
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — refers to the Amish religious group
 - word: amita
   length: 5
   tier: valid
@@ -2782,10 +2798,14 @@ words:
   - main_list
 - word: angus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — breed name / personal name, not a common Portuguese word
 - word: anhar
   length: 5
   tier: valid
@@ -2799,10 +2819,14 @@ words:
   - main_list
 - word: anime
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Japanese loanword, not native Portuguese
 - word: animo
   length: 5
   tier: valid
@@ -3225,10 +3249,14 @@ words:
   - main_list
 - word: apolo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Greek god Apollo
 - word: aporá
   length: 5
   tier: valid
@@ -4227,7 +4255,7 @@ words:
   - main_list
 - word: ativa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.4
   sources:
   - main_list
@@ -5040,10 +5068,14 @@ words:
   - main_list
 - word: bacon
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword widely used in Portuguese but still foreign origin
 - word: badio
   length: 5
   tier: valid
@@ -5107,10 +5139,14 @@ words:
   - main_list
 - word: bahia
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Brazilian state)
 - word: baiar
   length: 5
   tier: valid
@@ -5316,10 +5352,14 @@ words:
   - main_list
 - word: bambi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Disney character name
 - word: bambo
   length: 5
   tier: valid
@@ -6031,10 +6071,14 @@ words:
   - main_list
 - word: bento
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese first name)
 - word: bentô
   length: 5
   tier: valid
@@ -6193,10 +6237,14 @@ words:
   - main_list
 - word: bicha
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Means queue (PT) but homophobic slur in BR — risky for daily puzzle
 - word: bicho
   length: 5
   tier: daily
@@ -6562,16 +6610,24 @@ words:
   - main_list
 - word: blues
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword for music genre — recognizable but not a Portuguese word
 - word: bluff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word not naturalized in Portuguese (blefe is the Portuguese form)
 - word: blusa
   length: 5
   tier: daily
@@ -6978,10 +7034,14 @@ words:
   - main_list
 - word: bosta
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar word (dung/crap) — crude for daily puzzle
 - word: bosão
   length: 5
   tier: valid
@@ -7138,10 +7198,14 @@ words:
   - main_list
 - word: braga
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese city)
 - word: brama
   length: 5
   tier: valid
@@ -7270,10 +7334,14 @@ words:
   - main_list
 - word: brick
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Portuguese (tijolo is the Portuguese word)
 - word: brida
   length: 5
   tier: valid
@@ -7432,10 +7500,14 @@ words:
   - main_list
 - word: bruno
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: bruta
   length: 5
   tier: daily
@@ -7672,10 +7744,14 @@ words:
   - main_list
 - word: bunda
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Brazilian slang for buttocks — informal/crude
 - word: bundá
   length: 5
   tier: valid
@@ -8247,10 +8323,14 @@ words:
   - main_list
 - word: cagar
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar word (to defecate) — recognizable but crude for daily puzzle
 - word: cagas
   length: 5
   tier: valid
@@ -8325,10 +8405,14 @@ words:
   - main_list
 - word: cairo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — capital of Egypt
 - word: cairá
   length: 5
   tier: daily
@@ -9379,10 +9463,14 @@ words:
   - main_list
 - word: ceará
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Brazilian state)
 - word: ceava
   length: 5
   tier: valid
@@ -9576,10 +9664,14 @@ words:
   - main_list
 - word: celso
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: celta
   length: 5
   tier: valid
@@ -10067,10 +10159,14 @@ words:
   - main_list
 - word: chico
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Primarily a proper noun (name); informal/regional as common noun
 - word: chiei
   length: 5
   tier: valid
@@ -10095,16 +10191,24 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — country name
 - word: chili
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/Spanish word, not standard Portuguese (chili/chile pepper)
 - word: chima
   length: 5
   tier: valid
@@ -10113,16 +10217,24 @@ words:
   - main_list
 - word: china
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Primarily a proper noun (country); lowercase use as porcelain is archaic
 - word: chino
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Spanish word for Chinese, not standard Portuguese (chinês is Portuguese)
 - word: chios
   length: 5
   tier: valid
@@ -10296,10 +10408,14 @@ words:
   - main_list
 - word: chulo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Means pimp — potentially offensive connotation
 - word: chulé
   length: 5
   tier: valid
@@ -10775,10 +10891,14 @@ words:
   - main_list
 - word: clara
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (first name); also adjective 'clear' but primarily a name
 - word: claro
   length: 5
   tier: daily
@@ -10840,10 +10960,14 @@ words:
   - main_list
 - word: clipe
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword (clip/music video); not traditional Portuguese
 - word: clips
   length: 5
   tier: valid
@@ -11428,10 +11552,14 @@ words:
   - main_list
 - word: conas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar slang — offensive for daily puzzle
 - word: conca
   length: 5
   tier: valid
@@ -12113,10 +12241,14 @@ words:
   - main_list
 - word: crack
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword — used in Portuguese for drugs/sports but still foreign
 - word: crase
   length: 5
   tier: valid
@@ -12634,10 +12766,14 @@ words:
   - main_list
 - word: cunha
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: cunhe
   length: 5
   tier: valid
@@ -13006,10 +13142,14 @@ words:
   - main_list
 - word: césar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — personal name / Caesar
 - word: césio
   length: 5
   tier: valid
@@ -13588,10 +13728,14 @@ words:
   - main_list
 - word: delia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — personal name
 - word: delir
   length: 5
   tier: valid
@@ -13718,10 +13862,14 @@ words:
   - main_list
 - word: derby
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword used in sports context, not a native Portuguese word
 - word: derem
   length: 5
   tier: daily
@@ -14543,10 +14691,14 @@ words:
   - main_list
 - word: donut
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword — donuts/dónute not fully naturalized
 - word: dopar
   length: 5
   tier: valid
@@ -14804,10 +14956,14 @@ words:
   - main_list
 - word: drive
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word not naturalized in Portuguese
 - word: droga
   length: 5
   tier: daily
@@ -14821,10 +14977,14 @@ words:
   - main_list
 - word: drone
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword increasingly used but still foreign
 - word: drope
   length: 5
   tier: valid
@@ -14951,10 +15111,14 @@ words:
   - main_list
 - word: dumas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — surname (Alexandre Dumas)
 - word: dumba
   length: 5
   tier: valid
@@ -15545,10 +15709,14 @@ words:
   - main_list
 - word: email
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword, not native Portuguese
 - word: emana
   length: 5
   tier: valid
@@ -16873,10 +17041,14 @@ words:
   - main_list
 - word: faraó
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Somewhat uncommon word (pharaoh) — recognizable but not everyday vocabulary
 - word: farda
   length: 5
   tier: daily
@@ -17452,10 +17624,14 @@ words:
   - main_list
 - word: ferry
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword — ferri/balsa are Portuguese alternatives
 - word: ferrã
   length: 5
   tier: valid
@@ -18057,10 +18233,14 @@ words:
   - main_list
 - word: flash
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword widely used but still foreign
 - word: flate
   length: 5
   tier: valid
@@ -18234,10 +18414,14 @@ words:
   - main_list
 - word: fodas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar/offensive conjugation of foder
 - word: fodaz
   length: 5
   tier: valid
@@ -18256,10 +18440,14 @@ words:
   - main_list
 - word: foder
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar/offensive word
 - word: fodes
   length: 5
   tier: valid
@@ -19726,10 +19914,14 @@ words:
   - main_list
 - word: gallo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Spanish word for rooster, not Portuguese (galo is Portuguese)
 - word: galos
   length: 5
   tier: daily
@@ -19879,10 +20071,14 @@ words:
   - main_list
 - word: ganza
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for cannabis — too informal/drug-related for daily puzzle
 - word: ganzá
   length: 5
   tier: valid
@@ -20890,10 +21086,14 @@ words:
   - main_list
 - word: graal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mostly appears in 'Santo Graal' (Holy Grail) — not a standalone common word
 - word: grada
   length: 5
   tier: valid
@@ -21360,10 +21560,14 @@ words:
   - main_list
 - word: guiné
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — country name (Guinea)
 - word: guiou
   length: 5
   tier: valid
@@ -21594,10 +21798,14 @@ words:
   - main_list
 - word: hades
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Greek god of the underworld
 - word: hadiz
   length: 5
   tier: valid
@@ -21773,10 +21981,14 @@ words:
   - main_list
 - word: henry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: heras
   length: 5
   tier: valid
@@ -21893,10 +22105,14 @@ words:
   - main_list
 - word: hindu
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym/religious term — valid but somewhat niche for daily puzzle
 - word: hinos
   length: 5
   tier: valid
@@ -21928,10 +22144,14 @@ words:
   - main_list
 - word: hobby
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword widely used but still foreign
 - word: hodja
   length: 5
   tier: valid
@@ -21963,10 +22183,14 @@ words:
   - main_list
 - word: honor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/Spanish spelling — Portuguese is honra
 - word: honra
   length: 5
   tier: daily
@@ -22044,10 +22268,14 @@ words:
   - main_list
 - word: house
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Portuguese
 - word: houve
   length: 5
   tier: daily
@@ -22953,10 +23181,14 @@ words:
   - main_list
 - word: islão
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Religious proper noun (Islam) — not a common standalone puzzle word
 - word: isola
   length: 5
   tier: valid
@@ -23198,10 +23430,14 @@ words:
   - main_list
 - word: japão
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country name (Japan)
 - word: jaque
   length: 5
   tier: valid
@@ -23304,10 +23540,14 @@ words:
   - main_list
 - word: jeans
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword widely adopted but still foreign origin
 - word: jebas
   length: 5
   tier: valid
@@ -23388,10 +23628,14 @@ words:
   - main_list
 - word: jesus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — religious figure name
 - word: jetom
   length: 5
   tier: valid
@@ -23426,10 +23670,14 @@ words:
   - main_list
 - word: jimbo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun / not a standard Portuguese word
 - word: jines
   length: 5
   tier: valid
@@ -23513,10 +23761,14 @@ words:
   - main_list
 - word: joker
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword used in card games, not native Portuguese
 - word: jolda
   length: 5
   tier: valid
@@ -23617,10 +23869,14 @@ words:
   - main_list
 - word: judas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Primarily a proper noun; lowercase use (traitor/peephole) exists but name dominates
 - word: judeu
   length: 5
   tier: daily
@@ -23848,16 +24104,24 @@ words:
   - main_list
 - word: júlia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — personal name
 - word: júlio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — personal name (not the month, which is julho)
 - word: júris
   length: 5
   tier: valid
@@ -24166,10 +24430,14 @@ words:
   - main_list
 - word: lagos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Primarily a proper noun (city in Portugal/Nigeria); common noun lagos (lakes) exists but uncommon form
 - word: lagôa
   length: 5
   tier: valid
@@ -24263,10 +24531,14 @@ words:
   - main_list
 - word: lance
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: lande
   length: 5
   tier: valid
@@ -24384,10 +24656,14 @@ words:
   - main_list
 - word: laser
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English-origin technical term — widely known but still a loanword acronym
 - word: lassa
   length: 5
   tier: valid
@@ -25294,10 +25570,14 @@ words:
   - main_list
 - word: light
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Portuguese
 - word: ligou
   length: 5
   tier: daily
@@ -25408,10 +25688,14 @@ words:
   - main_list
 - word: linda
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (name); also means 'pretty' in Portuguese but primarily recognized as name
 - word: linde
   length: 5
   tier: valid
@@ -25818,10 +26102,14 @@ words:
   - main_list
 - word: lorde
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English title (lord) adapted to Portuguese — somewhat uncommon
 - word: lorfo
   length: 5
   tier: valid
@@ -26362,10 +26650,14 @@ words:
   - main_list
 - word: líbia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country name (Libya)
 - word: líbio
   length: 5
   tier: valid
@@ -27187,10 +27479,14 @@ words:
   scheduled_day: 1686
 - word: marco
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name); also means 'frame/mark' but primarily a name
 - word: marei
   length: 5
   tier: valid
@@ -27216,10 +27512,14 @@ words:
   - main_list
 - word: maria
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: marma
   length: 5
   tier: valid
@@ -27250,10 +27550,14 @@ words:
   - main_list
 - word: marta
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: marão
   length: 5
   tier: valid
@@ -27396,10 +27700,14 @@ words:
   - main_list
 - word: maura
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — personal name; feminine of mouro would be moura
 - word: mauro
   length: 5
   tier: valid
@@ -27414,10 +27722,14 @@ words:
   - main_list
 - word: mayor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English/Spanish word — not Portuguese (prefeito/presidente de câmara)
 - word: maçai
   length: 5
   tier: valid
@@ -27824,10 +28136,14 @@ words:
   - main_list
 - word: merda
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.33
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Very common vulgar word (shit) — widely known but crude for puzzle
   history:
   - 1699
   scheduled_day: 1699
@@ -27966,7 +28282,7 @@ words:
   - main_list
 - word: metrô
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - main_list
@@ -28218,10 +28534,14 @@ words:
   - main_list
 - word: mijar
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar slang for urinating — not ideal for daily puzzle
 - word: mijas
   length: 5
   tier: valid
@@ -28745,10 +29065,14 @@ words:
   - main_list
 - word: modus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Latin word (as in modus operandi), not a standalone Portuguese word
 - word: moeda
   length: 5
   tier: daily
@@ -28825,10 +29149,14 @@ words:
   - main_list
 - word: moira
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Greek mythology / personal name
 - word: moiro
   length: 5
   tier: valid
@@ -28963,10 +29291,14 @@ words:
   - main_list
 - word: monte
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Can be proper noun (place names) or common noun (mount/hill); borderline
 - word: monto
   length: 5
   tier: valid
@@ -29227,10 +29559,14 @@ words:
   - main_list
 - word: moura
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname/city)
 - word: mouro
   length: 5
   tier: valid
@@ -29239,10 +29575,14 @@ words:
   - main_list
 - word: mouse
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword used for computer mouse — widely known but foreign
 - word: mouta
   length: 5
   tier: valid
@@ -30472,10 +30812,14 @@ words:
   - main_list
 - word: neves
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Primarily a proper noun (common Portuguese surname); plural of neve (snow) is unusual
 - word: nevão
   length: 5
   tier: valid
@@ -30521,10 +30865,14 @@ words:
   - main_list
 - word: night
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Portuguese
 - word: nilgó
   length: 5
   tier: valid
@@ -30562,10 +30910,14 @@ words:
   - main_list
 - word: ninja
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Japanese loanword — universally known but not a native Portuguese word
 - word: niple
   length: 5
   tier: valid
@@ -30596,10 +30948,14 @@ words:
   - main_list
 - word: nobel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Nobel Prize / Alfred Nobel
 - word: nobre
   length: 5
   tier: daily
@@ -30699,7 +31055,7 @@ words:
   - main_list
 - word: norma
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - main_list
@@ -30891,10 +31247,14 @@ words:
   - main_list
 - word: nunes
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: nutar
   length: 5
   tier: valid
@@ -31531,10 +31891,14 @@ words:
   - main_list
 - word: omega
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Greek letter — recognized but not a common daily-use Portuguese word
 - word: omita
   length: 5
   tier: valid
@@ -32346,10 +32710,14 @@ words:
   - main_list
 - word: pager
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word for obsolete device — not a Portuguese word
 - word: pagos
   length: 5
   tier: daily
@@ -32829,10 +33197,14 @@ words:
   - main_list
 - word: paris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — city name
 - word: pariu
   length: 5
   tier: daily
@@ -32915,10 +33287,14 @@ words:
   - main_list
 - word: party
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Portuguese (festa is Portuguese)
 - word: parva
   length: 5
   tier: daily
@@ -33062,10 +33438,14 @@ words:
   - main_list
 - word: paula
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: pausa
   length: 5
   tier: daily
@@ -33086,7 +33466,7 @@ words:
   - main_list
 - word: pauta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - main_list
@@ -33312,10 +33692,14 @@ words:
   - main_list
 - word: peido
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Crude word (fart) — common but not ideal puzzle vocabulary
 - word: peina
   length: 5
   tier: valid
@@ -34437,10 +34821,14 @@ words:
   - main_list
 - word: pizza
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Italian loanword universally adopted — borderline, keeping as valid since very common
   history:
   - 1698
   scheduled_day: 1698
@@ -34655,10 +35043,14 @@ words:
   - main_list
 - word: point
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Portuguese
 - word: poios
   length: 5
   tier: valid
@@ -34689,10 +35081,14 @@ words:
   - main_list
 - word: poker
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword for the card game — widely used but foreign
 - word: polar
   length: 5
   tier: daily
@@ -34931,10 +35327,14 @@ words:
   - main_list
 - word: porra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar expletive — offensive for daily puzzle
 - word: porre
   length: 5
   tier: valid
@@ -35363,10 +35763,14 @@ words:
   - main_list
 - word: prime
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word (Amazon Prime etc.) — not a standard Portuguese word
 - word: primo
   length: 5
   tier: daily
@@ -35878,10 +36282,14 @@ words:
   - main_list
 - word: putos
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Can mean kids (PT) or offensive (BR) — ambiguous and potentially vulgar
 - word: puxai
   length: 5
   tier: valid
@@ -36172,10 +36580,14 @@ words:
   - main_list
 - word: quark
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Physics term — too technical for most players
 - word: quase
   length: 5
   tier: daily
@@ -38413,10 +38825,14 @@ words:
   - main_list
 - word: romeu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Romeo (personal name)
 - word: rompa
   length: 5
   tier: valid
@@ -38644,10 +39060,14 @@ words:
   - main_list
 - word: round
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Portuguese
 - word: roupa
   length: 5
   tier: daily
@@ -39642,7 +40062,7 @@ words:
   - main_list
 - word: samba
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - main_list
@@ -39840,10 +40260,14 @@ words:
   - main_list
 - word: sarin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Chemical weapon name — too obscure and morbid for daily puzzle
 - word: sarja
   length: 5
   tier: valid
@@ -40687,16 +41111,24 @@ words:
   - main_list
 - word: shots
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Portuguese
 - word: shows
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword very commonly used in Portuguese — borderline
 - word: shoyo
   length: 5
   tier: valid
@@ -40784,10 +41216,14 @@ words:
   - main_list
 - word: silva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily a proper noun (extremely common Portuguese surname)
 - word: silve
   length: 5
   tier: valid
@@ -40861,10 +41297,14 @@ words:
   - main_list
 - word: sioux
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Native American people name
 - word: sipae
   length: 5
   tier: valid
@@ -40952,10 +41392,14 @@ words:
   - main_list
 - word: sites
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword commonly used but still foreign
 - word: sitia
   length: 5
   tier: valid
@@ -40991,10 +41435,14 @@ words:
   - main_list
 - word: skate
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword commonly used in Portuguese but still foreign
 - word: skiff
   length: 5
   tier: valid
@@ -41566,10 +42014,14 @@ words:
   - main_list
 - word: sousa
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: souto
   length: 5
   tier: valid
@@ -41578,10 +42030,14 @@ words:
   - main_list
 - word: souza
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: sovai
   length: 5
   tier: valid
@@ -41642,16 +42098,24 @@ words:
   - main_list
 - word: sport
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word; also proper noun (Sport Club)
 - word: spray
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword commonly used but still foreign
 - word: sprue
   length: 5
   tier: valid
@@ -41676,10 +42140,14 @@ words:
   - main_list
 - word: stand
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word used in Portuguese for exhibition stands — still very foreign
 - word: start
   length: 5
   tier: valid
@@ -41694,10 +42162,14 @@ words:
   - main_list
 - word: stock
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word — estoque is the Portuguese form
 - word: stoll
   length: 5
   tier: blocked
@@ -41712,10 +42184,14 @@ words:
   - main_list
 - word: strip
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Portuguese
 - word: style
   length: 5
   tier: valid
@@ -42023,10 +42499,14 @@ words:
   - main_list
 - word: super
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Latin-origin prefix used colloquially — not a standalone word in standard Portuguese
 - word: supor
   length: 5
   tier: daily
@@ -42184,10 +42664,14 @@ words:
   - main_list
 - word: sushi
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Japanese loanword universally adopted — very common but foreign
 - word: sussa
   length: 5
   tier: valid
@@ -42302,10 +42786,14 @@ words:
   - main_list
 - word: swing
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Portuguese
 - word: swázi
   length: 5
   tier: valid
@@ -42441,10 +42929,14 @@ words:
   - main_list
 - word: síria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country name (Syria)
 - word: sírio
   length: 5
   tier: valid
@@ -43702,16 +44194,24 @@ words:
   - main_list
 - word: tesão
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Sexual arousal slang — too suggestive for daily puzzle
 - word: tetas
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Informal/crude word for breasts — not ideal for daily puzzle
 - word: tetos
   length: 5
   tier: valid
@@ -43787,10 +44287,14 @@ words:
   - main_list
 - word: theta
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Greek letter — too technical/academic for daily puzzle
 - word: tiara
   length: 5
   tier: daily
@@ -43869,10 +44373,14 @@ words:
   - main_list
 - word: times
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Brazilian Portuguese for sports teams — valid but primarily BR usage
 - word: timão
   length: 5
   tier: valid
@@ -46487,7 +46995,7 @@ words:
   - main_list
 - word: usina
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - main_list
@@ -46986,10 +47494,14 @@ words:
   - main_list
 - word: vasco
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name / football club)
 - word: vasos
   length: 5
   tier: daily
@@ -47845,10 +48357,14 @@ words:
   - main_list
 - word: villa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Italian/Spanish/English spelling — Portuguese is vila
   history:
   - 1687
   scheduled_day: 1687
@@ -47944,7 +48460,7 @@ words:
   - main_list
 - word: viola
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - main_list
@@ -48305,16 +48821,24 @@ words:
   - main_list
 - word: vodca
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Adapted spelling of vodka — valid Portuguese word
 - word: vodka
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Foreign spelling — vodca is the Portuguese adaptation; having both is redundant
 - word: voeis
   length: 5
   tier: valid
@@ -48602,7 +49126,7 @@ words:
   - main_list
 - word: vôlei
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - main_list
@@ -48634,10 +49158,14 @@ words:
   - main_list
 - word: weber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun / physics unit — not a common Portuguese word
 - word: wenge
   length: 5
   tier: valid
@@ -49842,10 +50370,14 @@ words:
   - main_list
 - word: índia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Primarily proper noun (India); índia (indigenous woman) exists but country dominates
 - word: índio
   length: 5
   tier: daily
@@ -53974,7 +54506,7 @@ words:
   - supplement
 - word: ajudá
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.34
   sources:
   - supplement
@@ -54765,10 +55297,14 @@ words:
   - supplement
 - word: alice
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.46
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: alida
   length: 5
   tier: valid
@@ -55285,10 +55821,14 @@ words:
   - supplement
 - word: alves
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.58
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: alvey
   length: 5
   tier: valid
@@ -56305,10 +56845,14 @@ words:
   - supplement
 - word: andré
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: andrê
   length: 5
   tier: valid
@@ -57241,10 +57785,14 @@ words:
   - supplement
 - word: apple
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.29
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English brand name, not Portuguese
 - word: apraz
   length: 5
   tier: valid
@@ -62514,10 +63062,14 @@ words:
   - supplement
 - word: belém
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Brazilian city / Lisbon district)
 - word: belén
   length: 5
   tier: valid
@@ -63978,10 +64530,14 @@ words:
   - supplement
 - word: black
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.54
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: blade
   length: 5
   tier: valid
@@ -64209,10 +64765,14 @@ words:
   - supplement
 - word: blogs
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.18
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword, not native Portuguese
 - word: blois
   length: 5
   tier: valid
@@ -65867,10 +66427,14 @@ words:
   - supplement
 - word: brian
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.33
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: briar
   length: 5
   tier: valid
@@ -66098,10 +66662,14 @@ words:
   - supplement
 - word: brown
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.31
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: broxe
   length: 5
   tier: valid
@@ -66132,10 +66700,14 @@ words:
   - supplement
 - word: bruce
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.16
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: bruck
   length: 5
   tier: valid
@@ -68602,10 +69174,14 @@ words:
   - supplement
 - word: carol
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.29
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: caron
   length: 5
   tier: valid
@@ -71454,10 +72030,14 @@ words:
   - supplement
 - word: chris
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.54
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: chron
   length: 5
   tier: valid
@@ -73820,10 +74400,14 @@ words:
   - supplement
 - word: congo
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.15
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (country name)
 - word: congr
   length: 5
   tier: valid
@@ -77068,10 +77652,14 @@ words:
   - supplement
 - word: david
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.92
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: davin
   length: 5
   tier: valid
@@ -78890,10 +79478,14 @@ words:
   - supplement
 - word: diana
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: diane
   length: 5
   tier: valid
@@ -79068,10 +79660,14 @@ words:
   - supplement
 - word: diego
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.52
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: diehl
   length: 5
   tier: valid
@@ -79259,10 +79855,14 @@ words:
   - supplement
 - word: dilma
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.87
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Brazilian president's name)
 - word: dilmo
   length: 5
   tier: valid
@@ -82726,10 +83326,14 @@ words:
   - supplement
 - word: egito
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.52
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Egypt in Portuguese)
 - word: eglée
   length: 5
   tier: valid
@@ -83783,10 +84387,14 @@ words:
   - supplement
 - word: emily
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: emine
   length: 5
   tier: valid
@@ -88370,10 +88978,14 @@ words:
   - supplement
 - word: first
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.18
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: firth
   length: 5
   tier: valid
@@ -89507,10 +90119,14 @@ words:
   - supplement
 - word: frank
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.47
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: frans
   length: 5
   tier: valid
@@ -90432,10 +91048,14 @@ words:
   - supplement
 - word: fábio
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.3
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: fápio
   length: 5
   tier: valid
@@ -90927,10 +91547,14 @@ words:
   - supplement
 - word: games
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: gamia
   length: 5
   tier: valid
@@ -93131,10 +93755,14 @@ words:
   - supplement
 - word: goiás
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.34
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Brazilian state)
 - word: golan
   length: 5
   tier: valid
@@ -93251,10 +93879,14 @@ words:
   - supplement
 - word: gomes
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.6
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: gomez
   length: 5
   tier: valid
@@ -93937,10 +94569,14 @@ words:
   - supplement
 - word: green
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word/surname, not Portuguese
 - word: greep
   length: 5
   tier: valid
@@ -94272,10 +94908,14 @@ words:
   - supplement
 - word: group
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: grous
   length: 5
   tier: valid
@@ -96185,10 +96825,14 @@ words:
   - supplement
 - word: harry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.73
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: harte
   length: 5
   tier: valid
@@ -98546,10 +99190,14 @@ words:
   - supplement
 - word: https
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.48
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: URL protocol prefix, not a word
 - word: huaca
   length: 5
   tier: valid
@@ -100999,10 +101647,14 @@ words:
   - supplement
 - word: inter
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Prefix/brand name (football club), not a standalone Portuguese word
 - word: intra
   length: 5
   tier: valid
@@ -103086,10 +103738,14 @@ words:
   - supplement
 - word: james
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.7
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: jamey
   length: 5
   tier: valid
@@ -103491,10 +104147,14 @@ words:
   - supplement
 - word: jason
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.21
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: jassa
   length: 5
   tier: valid
@@ -104697,10 +105357,14 @@ words:
   - supplement
 - word: jones
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: jonga
   length: 5
   tier: valid
@@ -104801,10 +105465,14 @@ words:
   - supplement
 - word: jorge
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.79
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: joris
   length: 5
   tier: valid
@@ -105227,10 +105895,14 @@ words:
   - supplement
 - word: julia
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: julie
   length: 5
   tier: valid
@@ -107245,10 +107917,14 @@ words:
   - supplement
 - word: kelly
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.24
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: kelma
   length: 5
   tier: valid
@@ -107685,10 +108361,14 @@ words:
   - supplement
 - word: kevin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.3
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: kevyn
   length: 5
   tier: valid
@@ -111163,10 +111843,14 @@ words:
   - supplement
 - word: larry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.32
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: larsa
   length: 5
   tier: valid
@@ -111340,10 +112024,14 @@ words:
   - supplement
 - word: laura
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.39
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: laure
   length: 5
   tier: valid
@@ -113218,10 +113906,14 @@ words:
   - supplement
 - word: links
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.47
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: linna
   length: 5
   tier: valid
@@ -114090,10 +114782,14 @@ words:
   - supplement
 - word: lopes
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: lopez
   length: 5
   tier: valid
@@ -114290,10 +114986,14 @@ words:
   - supplement
 - word: louis
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.62
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name)
 - word: louka
   length: 5
   tier: valid
@@ -114474,10 +115174,14 @@ words:
   - supplement
 - word: lucas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: lucca
   length: 5
   tier: valid
@@ -117364,10 +118068,14 @@ words:
   - supplement
 - word: mario
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.31
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: maris
   length: 5
   tier: valid
@@ -119081,10 +119789,14 @@ words:
   - supplement
 - word: mello
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.19
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese surname)
 - word: melly
   length: 5
   tier: valid
@@ -119665,10 +120377,14 @@ words:
   - supplement
 - word: miami
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.32
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name)
 - word: miana
   length: 5
   tier: valid
@@ -122593,10 +123309,14 @@ words:
   - supplement
 - word: music
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word, not Portuguese (Portuguese: música)'
 - word: musik
   length: 5
   tier: valid
@@ -122935,10 +123655,14 @@ words:
   - supplement
 - word: mário
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.36
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: máter
   length: 5
   tier: valid
@@ -125013,7 +125737,7 @@ words:
   - supplement
 - word: nessa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -125919,7 +126643,7 @@ words:
   - supplement
 - word: nisso
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -129454,10 +130178,14 @@ words:
   - supplement
 - word: oscar
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name/award)
 - word: oscat
   length: 5
   tier: valid
@@ -130162,10 +130890,14 @@ words:
   - supplement
 - word: pablo
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Spanish first name)
 - word: pabst
   length: 5
   tier: valid
@@ -131334,10 +132066,14 @@ words:
   - supplement
 - word: paulo
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.68
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name / São Paulo)
 - word: pauls
   length: 5
   tier: valid
@@ -131773,10 +132509,14 @@ words:
   - supplement
 - word: pedro
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.07
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: peele
   length: 5
   tier: valid
@@ -132426,10 +133166,14 @@ words:
   - supplement
 - word: peter
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.69
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: petey
   length: 5
   tier: valid
@@ -132751,10 +133495,14 @@ words:
   - supplement
 - word: piauí
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.19
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Brazilian state)
 - word: piave
   length: 5
   tier: valid
@@ -134460,10 +135208,14 @@ words:
   - supplement
 - word: posts
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.19
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: postá
   length: 5
   tier: valid
@@ -134570,10 +135322,14 @@ words:
   - supplement
 - word: power
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.34
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: poxim
   length: 5
   tier: valid
@@ -134869,10 +135625,14 @@ words:
   - supplement
 - word: press
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.32
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: prest
   length: 5
   tier: valid
@@ -136605,10 +137365,14 @@ words:
   - supplement
 - word: radio
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.35
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English spelling; Portuguese is 'rádio' with accent
 - word: radix
   length: 5
   tier: valid
@@ -140087,10 +140851,14 @@ words:
   - supplement
 - word: roger
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: roget
   length: 5
   tier: valid
@@ -143075,10 +143843,14 @@ words:
   - supplement
 - word: sarah
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.41
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: saray
   length: 5
   tier: valid
@@ -143860,10 +144632,14 @@ words:
   - supplement
 - word: scott
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: scrat
   length: 5
   tier: valid
@@ -147121,10 +147897,14 @@ words:
   - supplement
 - word: simon
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.31
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: simpa
   length: 5
   tier: valid
@@ -148035,10 +148815,14 @@ words:
   - supplement
 - word: smith
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.27
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: smits
   length: 5
   tier: valid
@@ -149120,10 +149904,14 @@ words:
   - supplement
 - word: south
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.2
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: sowai
   length: 5
   tier: valid
@@ -149741,10 +150529,14 @@ words:
   - supplement
 - word: state
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.19
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: stati
   length: 5
   tier: valid
@@ -149929,10 +150721,14 @@ words:
   - supplement
 - word: steve
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.4
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: stevo
   length: 5
   tier: valid
@@ -153950,10 +154746,14 @@ words:
   - supplement
 - word: texas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (US state)
 - word: texel
   length: 5
   tier: valid
@@ -154463,10 +155263,14 @@ words:
   - supplement
 - word: tiago
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portuguese first name)
 - word: tiamo
   length: 5
   tier: valid
@@ -159924,10 +160728,14 @@ words:
   - supplement
 - word: vegas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.16
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Las Vegas)
 - word: veggi
   length: 5
   tier: valid
@@ -160568,10 +161376,14 @@ words:
   - supplement
 - word: video
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.74
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English spelling; Portuguese is 'vídeo' with accent
 - word: vides
   length: 5
   tier: valid
@@ -162688,10 +163500,14 @@ words:
   - supplement
 - word: white
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word/surname, not Portuguese
 - word: whois
   length: 5
   tier: valid
@@ -163212,10 +164028,14 @@ words:
   - supplement
 - word: world
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.75
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Portuguese
 - word: worry
   length: 5
   tier: valid

@@ -60,6 +60,36 @@ def cmd_run(args):
             print(f"  ⚠ {w}")
 
 
+def cmd_stats(args):
+    from .stats import generate_report
+
+    report = generate_report(args.langs if args.langs else None)
+    if args.output:
+        from pathlib import Path
+
+        Path(args.output).write_text(report, encoding="utf-8")
+        print(f"Report written to {args.output}")
+    else:
+        print(report)
+
+
+def cmd_extract(args):
+    from .extract import extract_all
+
+    results = extract_all(args.langs)
+    for lang, path in results.items():
+        count = len(path.read_text().strip().split("\n"))
+        print(f"{lang}: {count} daily words → {path}")
+
+
+def cmd_merge(args):
+    from .extract import merge_curation
+
+    for lang in args.langs:
+        changed = merge_curation(lang)
+        print(f"{lang}: {changed} tier changes applied")
+
+
 def main():
     parser = argparse.ArgumentParser(prog="word_pipeline", description="Word data pipeline")
     sub = parser.add_subparsers(dest="command")
@@ -77,6 +107,22 @@ def main():
     run_parser.add_argument("--max-batches", type=int, help="Max LLM batches (for testing)")
     run_parser.add_argument("--dry-run", action="store_true", help="Preview without writing")
     run_parser.set_defaults(func=cmd_run)
+
+    # stats command
+    stats_parser = sub.add_parser("stats", help="Generate language stats report")
+    stats_parser.add_argument("langs", nargs="*", help="Language codes (default: all)")
+    stats_parser.add_argument("-o", "--output", help="Output file path (default: stdout)")
+    stats_parser.set_defaults(func=cmd_stats)
+
+    # extract command
+    extract_parser = sub.add_parser("extract", help="Extract daily words for LLM review")
+    extract_parser.add_argument("langs", nargs="+", help="Language codes")
+    extract_parser.set_defaults(func=cmd_extract)
+
+    # merge command
+    merge_parser = sub.add_parser("merge", help="Merge LLM curation results back into words.yaml")
+    merge_parser.add_argument("langs", nargs="+", help="Language codes")
+    merge_parser.set_defaults(func=cmd_merge)
 
     args = parser.parse_args()
     if not args.command:

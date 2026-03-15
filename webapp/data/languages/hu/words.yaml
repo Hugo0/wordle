@@ -86,14 +86,22 @@ words:
   - main_list
 - word: ricsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (nickname for Richárd)
 - word: hodor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily known as fictional character name, not a common Hungarian word
 - word: halál
   length: 5
   tier: daily
@@ -170,15 +178,23 @@ words:
   - main_list
 - word: hévíz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (spa town in Hungary); also common noun 'hot water' but would be written as two words
 - word: rauch
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname / brand
 - word: rívom
   length: 5
   tier: valid
@@ -196,9 +212,13 @@ words:
   - main_list
 - word: bélás
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Derived from proper name Béla
 - word: reptű
   length: 5
   tier: valid
@@ -245,9 +265,13 @@ words:
   - main_list
 - word: knopp
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: barka
   length: 5
   tier: daily
@@ -293,21 +317,33 @@ words:
   - main_list
 - word: berki
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname (Berki)
 - word: péter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Péter = Peter)
 - word: staub
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname / brand
 - word: szláv
   length: 5
   tier: daily
@@ -321,9 +357,13 @@ words:
   - main_list
 - word: kaesz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: kéret
   length: 5
   tier: daily
@@ -371,10 +411,14 @@ words:
   - main_list
 - word: zenta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (town in Serbia)
 - word: pihen
   length: 5
   tier: daily
@@ -394,10 +438,14 @@ words:
   - main_list
 - word: essen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (German city)
 - word: duzár
   length: 5
   tier: valid
@@ -454,10 +502,14 @@ words:
   - main_list
 - word: lilla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lilla)
 - word: ivott
   length: 5
   tier: daily
@@ -482,20 +534,32 @@ words:
   - main_list
 - word: enese
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Enese)
 - word: dráva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dráva river)
 - word: mucsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (village in Hungary) or surname
 - word: korsó
   length: 5
   tier: daily
@@ -563,9 +627,13 @@ words:
   - main_list
 - word: zsabó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname variant
 - word: rutén
   length: 5
   tier: valid
@@ -583,20 +651,32 @@ words:
   - main_list
 - word: bolhó
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Very informal/slang for flea market, uncommon
 - word: spiné
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang/informal for girlfriend, borderline
 - word: tibor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tibor)
 - word: lakos
   length: 5
   tier: daily
@@ -627,9 +707,13 @@ words:
   - main_list
 - word: keszi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (place name in Hungary)
 - word: metró
   length: 5
   tier: daily
@@ -656,9 +740,13 @@ words:
   - main_list
 - word: dános
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname or place name
 - word: repít
   length: 5
   tier: daily
@@ -758,9 +846,13 @@ words:
   - main_list
 - word: plútó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Pluto)
 - word: sivít
   length: 5
   tier: daily
@@ -835,9 +927,13 @@ words:
   - main_list
 - word: gorál
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure ethnic term (Gorals), most speakers would not know it
 - word: himod
   length: 5
   tier: valid
@@ -851,10 +947,14 @@ words:
   - main_list
 - word: norbi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Norbi, nickname for Norbert)
 - word: mégse
   length: 5
   tier: daily
@@ -889,9 +989,13 @@ words:
   - main_list
 - word: lelle
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Balatonlelle)
 - word: sereg
   length: 5
   tier: daily
@@ -932,10 +1036,14 @@ words:
   - main_list
 - word: hilda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Hilda)
 - word: létra
   length: 5
   tier: daily
@@ -944,9 +1052,13 @@ words:
   - main_list
 - word: kubik
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Informal/slang for cubic meter, borderline
 - word: telít
   length: 5
   tier: daily
@@ -1001,10 +1113,14 @@ words:
   - main_list
 - word: kádár
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname (Kádár János); also means 'cooper' but primarily recognized as name
 - word: pelus
   length: 5
   tier: daily
@@ -1134,10 +1250,14 @@ words:
   - main_list
 - word: gogol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gogol, writer)
 - word: támív
   length: 5
   tier: valid
@@ -1200,9 +1320,13 @@ words:
   - main_list
 - word: pirók
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname or very obscure
 - word: spóra
   length: 5
   tier: daily
@@ -1238,9 +1362,13 @@ words:
   - main_list
 - word: ecker
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign surname
 - word: kerék
   length: 5
   tier: daily
@@ -1260,15 +1388,23 @@ words:
   - main_list
 - word: szöul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Seoul)
 - word: haláp
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (place name, Nyíregyháza-Haláp)
 - word: tízet
   length: 5
   tier: daily
@@ -1303,9 +1439,13 @@ words:
   - main_list
 - word: kenti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Adjective from Kent (proper name), very uncommon
 - word: őtőle
   length: 5
   tier: daily
@@ -1336,9 +1476,13 @@ words:
   - main_list
 - word: barth
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign surname
 - word: karma
   length: 5
   tier: valid
@@ -1352,10 +1496,14 @@ words:
   - main_list
 - word: klein
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign surname
 - word: miatt
   length: 5
   tier: daily
@@ -1426,9 +1574,13 @@ words:
   - main_list
 - word: hottó
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure interjection/dialectal, uncommon
   history:
   - 1698
   scheduled_day: 1698
@@ -1454,10 +1606,14 @@ words:
   - main_list
 - word: mazda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Brand name (Mazda)
 - word: támfa
   length: 5
   tier: valid
@@ -1511,9 +1667,13 @@ words:
   - main_list
 - word: fajsz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (village in Hungary)
 - word: tájék
   length: 5
   tier: daily
@@ -1538,10 +1698,14 @@ words:
   - main_list
 - word: piusz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pope Pius)
 - word: díjló
   length: 5
   tier: valid
@@ -1560,9 +1724,13 @@ words:
   - main_list
 - word: palin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (village/surname)
 - word: újonc
   length: 5
   tier: daily
@@ -1605,23 +1773,35 @@ words:
   scheduled_day: 1711
 - word: dudek
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname
   history:
   - 1693
   scheduled_day: 1693
 - word: kótaj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (village in Hungary)
 - word: robin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: tapiz
   length: 5
   tier: valid
@@ -1719,9 +1899,13 @@ words:
   - main_list
 - word: márti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (nickname for Márta)
 - word: öblöz
   length: 5
   tier: valid
@@ -1734,9 +1918,13 @@ words:
   - main_list
 - word: lugos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (town in Romania, Lugoj)
 - word: nézsa
   length: 5
   tier: valid
@@ -1744,9 +1932,13 @@ words:
   - main_list
 - word: incze
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: baktó
   length: 5
   tier: valid
@@ -1765,9 +1957,13 @@ words:
   - main_list
 - word: tausz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: fülke
   length: 5
   tier: daily
@@ -1803,10 +1999,14 @@ words:
   - main_list
 - word: jókai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname (Jókai Mór)
 - word: olíva
   length: 5
   tier: daily
@@ -1843,9 +2043,13 @@ words:
   - main_list
 - word: somos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname / place name
 - word: plakk
   length: 5
   tier: daily
@@ -1916,14 +2120,22 @@ words:
   - main_list
 - word: togói
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Adjective from Togo (country), very uncommon
 - word: glatz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: téret
   length: 5
   tier: valid
@@ -1963,9 +2175,13 @@ words:
   - main_list
 - word: csank
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure word, most speakers would not know it
 - word: óhitű
   length: 5
   tier: daily
@@ -1985,10 +2201,14 @@ words:
   - main_list
 - word: kinga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Kinga)
 - word: illós
   length: 5
   tier: valid
@@ -2011,10 +2231,14 @@ words:
   - main_list
 - word: fradi
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Informal nickname for Ferencváros football club
 - word: lakli
   length: 5
   tier: valid
@@ -2028,14 +2252,22 @@ words:
   - main_list
 - word: brigi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (nickname for Brigitta)
 - word: varbó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (village in Hungary)
 - word: értük
   length: 5
   tier: daily
@@ -2061,10 +2293,14 @@ words:
   - main_list
 - word: petit
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: French word/name, not standard Hungarian
 - word: ihász
   length: 5
   tier: daily
@@ -2100,14 +2336,22 @@ words:
   - main_list
 - word: roboz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname
 - word: detre
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name
 - word: túlzó
   length: 5
   tier: daily
@@ -2146,10 +2390,14 @@ words:
   - main_list
 - word: málta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (country Malta)
 - word: finom
   length: 5
   tier: daily
@@ -2163,10 +2411,14 @@ words:
   - main_list
 - word: anjou
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Historical dynasty/place name, not a common word
 - word: seper
   length: 5
   tier: daily
@@ -2210,10 +2462,14 @@ words:
   - main_list
 - word: tokaj
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Tokaj wine region/town)
 - word: guppi
   length: 5
   tier: valid
@@ -2221,9 +2477,13 @@ words:
   - main_list
 - word: oszkó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (village in Hungary)
 - word: műrom
   length: 5
   tier: valid
@@ -2339,9 +2599,13 @@ words:
   - main_list
 - word: bazsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Nickname/diminutive proper name (for Balázs)
 - word: csolt
   length: 5
   tier: valid
@@ -2381,10 +2645,14 @@ words:
   - main_list
 - word: jézus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jesus)
 - word: herma
   length: 5
   tier: valid
@@ -2392,10 +2660,14 @@ words:
   - main_list
 - word: orbán
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Orbán)
 - word: békás
   length: 5
   tier: daily
@@ -2403,9 +2675,13 @@ words:
   - main_list
 - word: szücs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily recognized as proper surname; archaic word for furrier
 - word: euler
   length: 5
   tier: valid
@@ -2449,14 +2725,22 @@ words:
   - main_list
 - word: nadap
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (village in Hungary)
 - word: gabon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (country Gabon)
 - word: köpet
   length: 5
   tier: daily
@@ -2470,9 +2754,13 @@ words:
   - main_list
 - word: dancs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname
 - word: adutt
   length: 5
   tier: valid
@@ -2480,9 +2768,13 @@ words:
   - main_list
 - word: rencz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: lókút
   length: 5
   tier: valid
@@ -2563,9 +2855,13 @@ words:
   - main_list
 - word: gohér
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure grape variety, most speakers would not know it
 - word: hiszi
   length: 5
   tier: daily
@@ -2579,9 +2875,13 @@ words:
   - main_list
 - word: kandó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname (Kandó Kálmán)
 - word: borul
   length: 5
   tier: daily
@@ -2611,9 +2911,13 @@ words:
   - main_list
 - word: tabdi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (village in Hungary)
 - word: ejhaj
   length: 5
   tier: valid
@@ -2646,10 +2950,14 @@ words:
   - main_list
 - word: tátra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tatra mountains)
 - word: pohár
   length: 5
   tier: daily
@@ -2668,9 +2976,13 @@ words:
   - main_list
 - word: kunst
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: German word (art), not standard Hungarian
 - word: páhol
   length: 5
   tier: valid
@@ -2703,9 +3015,13 @@ words:
   - main_list
 - word: darnó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (village in Hungary)
 - word: graef
   length: 5
   tier: valid
@@ -2723,9 +3039,13 @@ words:
   - main_list
 - word: pauli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pauli)
 - word: latin
   length: 5
   tier: daily
@@ -2750,9 +3070,13 @@ words:
   - main_list
 - word: vinkó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname or very informal slang for cheap wine
 - word: veréb
   length: 5
   tier: daily
@@ -2788,14 +3112,22 @@ words:
   - main_list
 - word: ráhel
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ráhel = Rachel)
 - word: bögöz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (village in Romania)
 - word: belák
   length: 5
   tier: valid
@@ -2841,10 +3173,14 @@ words:
   - main_list
 - word: botka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname (László Botka)
 - word: dimer
   length: 5
   tier: valid
@@ -2863,9 +3199,13 @@ words:
   - main_list
 - word: riszt
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname, not a common Hungarian word
 - word: aludt
   length: 5
   tier: daily
@@ -2884,9 +3224,13 @@ words:
   - main_list
 - word: pelle
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Pelé / Pelle)
 - word: fogkő
   length: 5
   tier: daily
@@ -2894,9 +3238,13 @@ words:
   - main_list
 - word: bögöt
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (village in Hungary)
 - word: dolog
   length: 5
   tier: daily
@@ -2996,9 +3344,13 @@ words:
   - main_list
 - word: ancsa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Diminutive proper name (nickname for Anna)
 - word: ludáj
   length: 5
   tier: valid
@@ -3027,19 +3379,31 @@ words:
   - main_list
 - word: batta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname, not a common Hungarian word
 - word: berkó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname
 - word: kérdé
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Truncated/archaic literary verb form, not a standalone word
 - word: kobak
   length: 5
   tier: valid
@@ -3047,9 +3411,13 @@ words:
   - main_list
 - word: laczó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: etted
   length: 5
   tier: daily
@@ -3067,10 +3435,14 @@ words:
   - main_list
 - word: lázár
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lázár)
   history:
   - 1723
   scheduled_day: 1723
@@ -3098,14 +3470,22 @@ words:
   - main_list
 - word: bacsa
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure/archaic word, most speakers would not recognize
 - word: kálló
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Nagykálló)
 - word: bögre
   length: 5
   tier: daily
@@ -3178,9 +3558,13 @@ words:
   - main_list
 - word: karap
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure/dialectal word
 - word: vásít
   length: 5
   tier: valid
@@ -3198,9 +3582,13 @@ words:
   - main_list
 - word: pethe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: rókáz
   length: 5
   tier: valid
@@ -3208,15 +3596,23 @@ words:
   - main_list
 - word: domán
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname
 - word: magdi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Magdi, nickname for Magda)
 - word: tréfa
   length: 5
   tier: daily
@@ -3240,10 +3636,14 @@ words:
   - main_list
 - word: janus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Janus)
 - word: rákai
   length: 5
   tier: valid
@@ -3251,10 +3651,14 @@ words:
   - main_list
 - word: fülöp
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Fülöp = Philip)
 - word: zálog
   length: 5
   tier: daily
@@ -3272,9 +3676,13 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (country Tonga)
 - word: őrölő
   length: 5
   tier: valid
@@ -3282,21 +3690,33 @@ words:
   - main_list
 - word: ágost
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ágost = August)
 - word: kautz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: aires
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of Buenos Aires, not a standalone Hungarian word
 - word: áztat
   length: 5
   tier: daily
@@ -3367,9 +3787,13 @@ words:
   - main_list
 - word: vukov
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Serbian/place name)
 - word: sózat
   length: 5
   tier: valid
@@ -3421,15 +3845,23 @@ words:
   - main_list
 - word: ipper
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Not a standard Hungarian word
 - word: markó
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: lőnöd
   length: 5
   tier: valid
@@ -3453,9 +3885,13 @@ words:
   - main_list
 - word: fiume
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (historical name for Rijeka)
 - word: liffa
   length: 5
   tier: valid
@@ -3490,9 +3926,13 @@ words:
   - main_list
 - word: benke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: űrbél
   length: 5
   tier: valid
@@ -3562,10 +4002,14 @@ words:
   - main_list
 - word: svájc
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Switzerland in Hungarian)
 - word: talon
   length: 5
   tier: daily
@@ -3573,14 +4017,22 @@ words:
   - main_list
 - word: váczi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname (archaic spelling of Váci)
 - word: hegel
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (philosopher Hegel)
 - word: érfal
   length: 5
   tier: daily
@@ -3609,9 +4061,13 @@ words:
   - main_list
 - word: kiotó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Kyoto)
 - word: fokol
   length: 5
   tier: valid
@@ -3624,9 +4080,13 @@ words:
   - main_list
 - word: barót
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (town in Romania)
 - word: alvás
   length: 5
   tier: daily
@@ -3646,9 +4106,13 @@ words:
   - main_list
 - word: posch
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: segéd
   length: 5
   tier: daily
@@ -3662,9 +4126,13 @@ words:
   - main_list
 - word: márkó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name
 - word: kúrál
   length: 5
   tier: valid
@@ -3677,9 +4145,13 @@ words:
   - main_list
 - word: hende
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname (Csaba Hende)
 - word: angin
   length: 5
   tier: daily
@@ -3702,10 +4174,14 @@ words:
   - main_list
 - word: józsa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: reves
   length: 5
   tier: valid
@@ -3713,9 +4189,13 @@ words:
   - main_list
 - word: turán
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Turan, historical region)
 - word: metil
   length: 5
   tier: valid
@@ -3755,9 +4235,13 @@ words:
   - main_list
 - word: lorca
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (García Lorca)
 - word: fősor
   length: 5
   tier: valid
@@ -3770,9 +4254,13 @@ words:
   - main_list
 - word: ilike
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Not a Hungarian word
 - word: sóház
   length: 5
   tier: valid
@@ -3785,10 +4273,14 @@ words:
   - main_list
 - word: light
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not standard Hungarian
 - word: rektó
   length: 5
   tier: valid
@@ -3817,10 +4309,14 @@ words:
   - main_list
 - word: mária
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Mária = Mary)
 - word: derít
   length: 5
   tier: daily
@@ -3849,9 +4345,13 @@ words:
   - main_list
 - word: lenke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lenke)
 - word: híres
   length: 5
   tier: daily
@@ -3906,9 +4406,13 @@ words:
   - main_list
 - word: kuncz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: fúlak
   length: 5
   tier: valid
@@ -3942,9 +4446,13 @@ words:
   - main_list
 - word: kuzma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name
 - word: velős
   length: 5
   tier: daily
@@ -4008,9 +4516,13 @@ words:
   - main_list
 - word: hella
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name / brand
 - word: rabnő
   length: 5
   tier: daily
@@ -4145,10 +4657,14 @@ words:
   - main_list
 - word: vilma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Vilma)
 - word: altáj
   length: 5
   tier: valid
@@ -4156,15 +4672,23 @@ words:
   - main_list
 - word: orlai
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: bence
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Bence)
 - word: fölöz
   length: 5
   tier: daily
@@ -4189,9 +4713,13 @@ words:
   - main_list
 - word: évike
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Évike, diminutive of Éva)
 - word: bontz
   length: 5
   tier: valid
@@ -4199,9 +4727,13 @@ words:
   - main_list
 - word: géczi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: zajog
   length: 5
   tier: valid
@@ -4256,9 +4788,13 @@ words:
   - main_list
 - word: raics
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: insta
   length: 5
   tier: daily
@@ -4304,10 +4840,14 @@ words:
   - main_list
 - word: csaba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Csaba)
 - word: clark
   length: 5
   tier: valid
@@ -4364,21 +4904,33 @@ words:
   - main_list
 - word: nérói
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Adjective from proper name Nero
 - word: ázsia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Asia)
 - word: barcs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (town in Hungary)
 - word: modul
   length: 5
   tier: daily
@@ -4473,15 +5025,23 @@ words:
   - main_list
 - word: diána
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Diana)
 - word: lackó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (nickname for László)
 - word: emezé
   length: 5
   tier: valid
@@ -4569,14 +5129,22 @@ words:
   - main_list
 - word: pirén
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Obscure chemistry term (pyrene), not daily-quality
 - word: jerke
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Archaic/dialectal word, most speakers would not know it
 - word: bohóc
   length: 5
   tier: daily
@@ -4585,9 +5153,13 @@ words:
   - main_list
 - word: théba
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Thebes)
 - word: szőtt
   length: 5
   tier: daily
@@ -4639,14 +5211,22 @@ words:
   - main_list
 - word: stefi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Stefi, nickname for Stefánia)
 - word: páger
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname (Páger Antal)
 - word: rőfös
   length: 5
   tier: valid
@@ -4659,10 +5239,14 @@ words:
   - main_list
 - word: zugló
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (district of Budapest)
 - word: donor
   length: 5
   tier: daily
@@ -4681,10 +5265,14 @@ words:
   - main_list
 - word: teréz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Teréz = Teresa)
 - word: náluk
   length: 5
   tier: daily
@@ -4698,9 +5286,13 @@ words:
   - main_list
 - word: nizza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Nice, France)
 - word: muksó
   length: 5
   tier: valid
@@ -4740,10 +5332,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dante Alighieri)
 - word: éjfél
   length: 5
   tier: daily
@@ -4804,16 +5400,24 @@ words:
   - main_list
 - word: imola
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Imola)
 - word: ignác
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ignác)
 - word: zanza
   length: 5
   tier: valid
@@ -4914,15 +5518,23 @@ words:
   - main_list
 - word: picsa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word
 - word: pócza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: fővám
   length: 5
   tier: daily
@@ -4952,9 +5564,13 @@ words:
   - main_list
 - word: pacsa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (village in Hungary)
 - word: rótta
   length: 5
   tier: daily
@@ -4967,10 +5583,14 @@ words:
   - main_list
 - word: dorog
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (town in Hungary), though verb 'dorog' exists it is very rare
 - word: ívrét
   length: 5
   tier: valid
@@ -4983,15 +5603,23 @@ words:
   - main_list
 - word: trója
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Troy)
 - word: bajza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname (József Bajza, street name)
 - word: genom
   length: 5
   tier: daily
@@ -5014,9 +5642,13 @@ words:
   - main_list
 - word: meskó
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper surname
 - word: daczi
   length: 5
   tier: valid
@@ -5029,9 +5661,13 @@ words:
   - main_list
 - word: timár
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily a proper surname; archaic word for tanner
 - word: vakog
   length: 5
   tier: valid
@@ -5045,10 +5681,14 @@ words:
   - main_list
 - word: sümeg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (town in Hungary)
 - word: izzuk
   length: 5
   tier: valid
@@ -5090,10 +5730,14 @@ words:
   - main_list
 - word: nílus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Nile river)
 - word: argon
   length: 5
   tier: daily
@@ -5139,10 +5783,14 @@ words:
   - main_list
 - word: punci
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar slang
 - word: papiz
   length: 5
   tier: valid
@@ -5253,9 +5901,13 @@ words:
   - main_list
 - word: kuala
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of Kuala Lumpur, not a Hungarian word
 - word: lovei
   length: 5
   tier: valid
@@ -5353,10 +6005,14 @@ words:
   - main_list
 - word: dorka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (nickname for Dorottya)
 - word: smafu
   length: 5
   tier: daily
@@ -5420,9 +6076,13 @@ words:
   - main_list
 - word: tekla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tekla)
 - word: ablak
   length: 5
   tier: daily
@@ -5492,15 +6152,23 @@ words:
   - main_list
 - word: gréta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gréta)
 - word: csabi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (nickname for Csaba)
 - word: bútor
   length: 5
   tier: daily
@@ -5531,9 +6199,13 @@ words:
   - main_list
 - word: fiáth
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname, archaic
 - word: ólmok
   length: 5
   tier: daily
@@ -5552,9 +6224,13 @@ words:
   - main_list
 - word: polik
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname
 - word: aluli
   length: 5
   tier: daily
@@ -5609,10 +6285,14 @@ words:
   - main_list
 - word: anett
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Anett)
 - word: menni
   length: 5
   tier: daily
@@ -5642,9 +6322,13 @@ words:
   - main_list
 - word: kőrös
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (river/place name Körös)
 - word: laskó
   length: 5
   tier: valid
@@ -5664,10 +6348,14 @@ words:
   - main_list
 - word: panna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Panna)
 - word: csüng
   length: 5
   tier: daily
@@ -5733,10 +6421,14 @@ words:
   - main_list
 - word: tudor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Tudor dynasty/brand)
 - word: sonka
   length: 5
   tier: daily
@@ -6046,10 +6738,14 @@ words:
   - main_list
 - word: freud
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Sigmund Freud)
 - word: bánik
   length: 5
   tier: daily
@@ -6136,10 +6832,14 @@ words:
   - main_list
 - word: terra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Latin word, not standard Hungarian
 - word: habos
   length: 5
   tier: daily
@@ -6169,10 +6869,14 @@ words:
   - main_list
 - word: james
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: muksi
   length: 5
   tier: valid
@@ -6388,9 +7092,13 @@ words:
   - main_list
 - word: keats
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (English poet Keats)
 - word: glett
   length: 5
   tier: valid
@@ -6955,10 +7663,14 @@ words:
   - main_list
 - word: stand
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English/German loanword used in Hungarian, borderline
 - word: pacáz
   length: 5
   tier: valid
@@ -7059,10 +7771,14 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name/award)
 - word: tövez
   length: 5
   tier: valid
@@ -7328,10 +8044,14 @@ words:
   - main_list
 - word: dánia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Denmark in Hungarian)
 - word: sikló
   length: 5
   tier: daily
@@ -7466,10 +8186,14 @@ words:
   - main_list
 - word: stark
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign surname / word
 - word: abuja
   length: 5
   tier: valid
@@ -7643,10 +8367,14 @@ words:
   - main_list
 - word: adler
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname (Adler), not a Hungarian common word
 - word: ellet
   length: 5
   tier: valid
@@ -7689,10 +8417,14 @@ words:
   - main_list
 - word: allah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Allah)
 - word: ármin
   length: 5
   tier: valid
@@ -7733,10 +8465,14 @@ words:
   - main_list
 - word: devon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (English county/name)
 - word: halló
   length: 5
   tier: daily
@@ -8204,10 +8940,14 @@ words:
   - main_list
 - word: milla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Milla)
 - word: újaké
   length: 5
   tier: valid
@@ -8638,10 +9378,14 @@ words:
   - main_list
 - word: hajdú
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname / region name Hajdú)
 - word: gelse
   length: 5
   tier: valid
@@ -8682,10 +9426,14 @@ words:
   - main_list
 - word: bauer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname, not a Hungarian common word
 - word: hátul
   length: 5
   tier: daily
@@ -8953,10 +9701,14 @@ words:
   - main_list
 - word: berta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Berta)
 - word: cetli
   length: 5
   tier: daily
@@ -11478,10 +12230,14 @@ words:
   - main_list
 - word: endre
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hungarian first name)
 - word: lövés
   length: 5
   tier: daily
@@ -11502,10 +12258,14 @@ words:
   - main_list
 - word: ágnes
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hungarian first name)
 - word: palóc
   length: 5
   tier: valid
@@ -11561,9 +12321,13 @@ words:
   - main_list
 - word: melák
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper surname or very obscure slang
 - word: hőköl
   length: 5
   tier: valid
@@ -12547,10 +13311,14 @@ words:
   - main_list
 - word: spéci
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for buddy/special, borderline
 - word: kujon
   length: 5
   tier: valid
@@ -12660,10 +13428,14 @@ words:
   - main_list
 - word: gábor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gábor)
 - word: ulain
   length: 5
   tier: valid
@@ -13431,10 +14203,14 @@ words:
   - main_list
 - word: trade
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Hungarian
 - word: leesz
   length: 5
   tier: valid
@@ -14186,10 +14962,14 @@ words:
   - main_list
 - word: rómeó
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Romeo)
 - word: remél
   length: 5
   tier: daily
@@ -14676,10 +15456,14 @@ words:
   - main_list
 - word: leila
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Leila)
 - word: malom
   length: 5
   tier: daily
@@ -14899,10 +15683,14 @@ words:
   - main_list
 - word: cézár
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Caesar), though used figuratively
 - word: késél
   length: 5
   tier: valid
@@ -15270,10 +16058,14 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: csali
   length: 5
   tier: daily
@@ -15569,10 +16361,14 @@ words:
   - main_list
 - word: antal
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hungarian first name)
 - word: dundi
   length: 5
   tier: valid
@@ -15629,9 +16425,13 @@ words:
   - main_list
 - word: merci
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: French loanword used informally, borderline
 - word: oldat
   length: 5
   tier: valid
@@ -15765,10 +16565,14 @@ words:
   - main_list
 - word: cecil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Cecil)
 - word: jolán
   length: 5
   tier: valid
@@ -15975,10 +16779,14 @@ words:
   - main_list
 - word: lajos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lajos = Louis)
 - word: márga
   length: 5
   tier: valid
@@ -15997,9 +16805,13 @@ words:
   - main_list
 - word: verda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Slang for car (from police jargon), very informal
 - word: fotel
   length: 5
   tier: daily
@@ -16121,10 +16933,14 @@ words:
   - main_list
 - word: vegas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Las Vegas)
 - word: omszk
   length: 5
   tier: valid
@@ -16245,10 +17061,14 @@ words:
   - main_list
 - word: laura
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: madár
   length: 5
   tier: daily
@@ -16467,10 +17287,14 @@ words:
   - main_list
 - word: vinci
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Leonardo da Vinci)
 - word: bódít
   length: 5
   tier: valid
@@ -16776,10 +17600,14 @@ words:
   - main_list
 - word: korea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (country Korea)
 - word: tirts
   length: 5
   tier: valid
@@ -17270,10 +18098,14 @@ words:
   - main_list
 - word: haiti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (country)
 - word: rusói
   length: 5
   tier: valid
@@ -17461,10 +18293,14 @@ words:
   - main_list
 - word: dobra
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Obscure/archaic, or place name
 - word: babus
   length: 5
   tier: valid
@@ -17689,10 +18525,14 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lenin)
 - word: húzat
   length: 5
   tier: valid
@@ -17971,10 +18811,14 @@ words:
   - main_list
 - word: scott
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: fúnak
   length: 5
   tier: valid
@@ -18182,10 +19026,14 @@ words:
   - main_list
 - word: grimm
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Brothers Grimm)
 - word: rámol
   length: 5
   tier: valid
@@ -18854,10 +19702,14 @@ words:
   - main_list
 - word: tokió
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tokyo)
 - word: rumba
   length: 5
   tier: valid
@@ -19005,10 +19857,14 @@ words:
   - main_list
 - word: jakab
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jakab = Jacob)
 - word: himlő
   length: 5
   tier: daily
@@ -19490,10 +20346,14 @@ words:
   - main_list
 - word: jákob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jákob = Jacob)
 - word: köret
   length: 5
   tier: valid
@@ -19679,10 +20539,14 @@ words:
   - main_list
 - word: frida
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Frida)
 - word: dóczi
   length: 5
   tier: valid
@@ -19707,9 +20571,13 @@ words:
   - main_list
 - word: szása
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name / obscure
 - word: rókus
   length: 5
   tier: valid
@@ -19769,10 +20637,14 @@ words:
   - main_list
 - word: zeusz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Zeus)
 - word: pödrő
   length: 5
   tier: valid
@@ -20106,16 +20978,24 @@ words:
   - main_list
 - word: magda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Magda)
 - word: bambi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Disney character/brand)
 - word: rítok
   length: 5
   tier: valid
@@ -20330,10 +21210,14 @@ words:
   - main_list
 - word: kurva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/offensive word
 - word: tartó
   length: 5
   tier: daily
@@ -20407,10 +21291,14 @@ words:
   - main_list
 - word: rhode
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Rhode Island)
 - word: rátót
   length: 5
   tier: valid
@@ -20545,10 +21433,14 @@ words:
   - main_list
 - word: dávid
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (David)
 - word: hínák
   length: 5
   tier: valid
@@ -20581,10 +21473,14 @@ words:
   - main_list
 - word: break
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword, not standard Hungarian
 - word: idült
   length: 5
   tier: valid
@@ -20625,10 +21521,14 @@ words:
   - main_list
 - word: claus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign proper name
 - word: accra
   length: 5
   tier: valid
@@ -20812,10 +21712,14 @@ words:
   - main_list
 - word: lukas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lukas)
 - word: sipka
   length: 5
   tier: valid
@@ -20893,9 +21797,13 @@ words:
   - main_list
 - word: bobot
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Accusative of 'bob', uncommon as daily word
 - word: voith
   length: 5
   tier: valid
@@ -20914,10 +21822,14 @@ words:
   - main_list
 - word: tisza
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (river name)
 - word: túloz
   length: 5
   tier: daily
@@ -21304,10 +22216,14 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (country)
 - word: opció
   length: 5
   tier: daily
@@ -21680,10 +22596,14 @@ words:
   - main_list
 - word: árpád
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hungarian first name / historical figure)
 - word: vágat
   length: 5
   tier: valid
@@ -21903,10 +22823,14 @@ words:
   - main_list
 - word: judit
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Judit)
 - word: álcáz
   length: 5
   tier: valid
@@ -22222,9 +23146,13 @@ words:
   - main_list
 - word: tilda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tilda)
 - word: besse
   length: 5
   tier: valid
@@ -22806,10 +23734,14 @@ words:
   - main_list
 - word: mason
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English proper name / word
 - word: rolli
   length: 5
   tier: valid
@@ -22990,10 +23922,14 @@ words:
   - main_list
 - word: faber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign surname / brand (Faber-Castell)
 - word: komáz
   length: 5
   tier: valid
@@ -23283,10 +24219,14 @@ words:
   - main_list
 - word: júdás
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Judas), though used figuratively it's still primarily a name
 - word: lazúr
   length: 5
   tier: valid
@@ -23883,10 +24823,14 @@ words:
   - main_list
 - word: jános
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (János = John)
 - word: tabló
   length: 5
   tier: valid
@@ -23900,10 +24844,14 @@ words:
   - main_list
 - word: mózes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Moses)
 - word: képed
   length: 5
   tier: daily
@@ -24142,10 +25090,14 @@ words:
   - main_list
 - word: jankó
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Jankó), though also a folk character
 - word: linek
   length: 5
   tier: valid
@@ -24288,10 +25240,14 @@ words:
   - main_list
 - word: delhi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (city in India)
 - word: blama
   length: 5
   tier: valid
@@ -24491,10 +25447,14 @@ words:
   - main_list
 - word: eliza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Eliza)
 - word: apuci
   length: 5
   tier: daily
@@ -24544,10 +25504,14 @@ words:
   - main_list
 - word: verne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jules Verne)
 - word: vezza
   length: 5
   tier: valid
@@ -24850,10 +25814,14 @@ words:
   - main_list
 - word: artúr
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Arthur)
 - word: kaspó
   length: 5
   tier: valid
@@ -25024,10 +25992,14 @@ words:
   - main_list
 - word: prága
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Prague)
 - word: javai
   length: 5
   tier: valid
@@ -25313,10 +26285,14 @@ words:
   - main_list
 - word: ranch
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, not standard Hungarian
 - word: redőz
   length: 5
   tier: valid
@@ -25657,10 +26633,14 @@ words:
   - main_list
 - word: varga
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (very common Hungarian surname)
 - word: rajka
   length: 5
   tier: valid
@@ -25711,10 +26691,14 @@ words:
   - main_list
 - word: times
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / brand (The Times)
 - word: ugord
   length: 5
   tier: valid
@@ -25968,10 +26952,14 @@ words:
   - main_list
 - word: johan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Johan)
 - word: elagg
   length: 5
   tier: valid
@@ -26025,10 +27013,14 @@ words:
   - main_list
 - word: token
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword (tech term), borderline
 - word: zacsi
   length: 5
   tier: valid
@@ -26223,9 +27215,13 @@ words:
   - main_list
 - word: clair
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign proper name
 - word: timkó
   length: 5
   tier: valid
@@ -26317,7 +27313,7 @@ words:
   - main_list
 - word: ellen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.69
   sources:
   - main_list
@@ -26604,10 +27600,14 @@ words:
   - main_list
 - word: tünde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tünde)
 - word: papol
   length: 5
   tier: valid
@@ -26947,10 +27947,14 @@ words:
   - main_list
 - word: braun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname / brand name
 - word: moraj
   length: 5
   tier: valid
@@ -27488,10 +28492,14 @@ words:
   - main_list
 - word: frank
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: altat
   length: 5
   tier: valid
@@ -27798,10 +28806,14 @@ words:
   - main_list
 - word: orion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (constellation/brand)
 - word: tomaj
   length: 5
   tier: valid
@@ -28108,10 +29120,14 @@ words:
   - main_list
 - word: paulo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Paulo)
 - word: mióta
   length: 5
   tier: daily
@@ -28170,10 +29186,14 @@ words:
   - main_list
 - word: miami
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (city Miami)
 - word: ázsió
   length: 5
   tier: valid
@@ -28265,10 +29285,14 @@ words:
   - main_list
 - word: júlia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Júlia)
 - word: botos
   length: 5
   tier: valid
@@ -28554,10 +29578,14 @@ words:
   - main_list
 - word: fasza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar slang
 - word: bíbor
   length: 5
   tier: daily
@@ -29060,10 +30088,14 @@ words:
   - main_list
 - word: jones
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: burma
   length: 5
   tier: valid
@@ -29306,10 +30338,14 @@ words:
   - main_list
 - word: tamás
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tamás = Thomas)
 - word: tákol
   length: 5
   tier: valid
@@ -29611,10 +30647,14 @@ words:
   - main_list
 - word: vogel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign surname (German for bird)
   history:
   - 1700
   scheduled_day: 1700
@@ -29809,10 +30849,14 @@ words:
   - main_list
 - word: costa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign proper name / brand
 - word: lampl
   length: 5
   tier: valid
@@ -30384,10 +31428,14 @@ words:
   - main_list
 - word: zsolt
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hungarian first name)
 - word: detek
   length: 5
   tier: valid
@@ -30674,10 +31722,14 @@ words:
   - main_list
 - word: steak
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but fairly commonly used in Hungarian
 - word: lepel
   length: 5
   tier: daily
@@ -31598,10 +32650,14 @@ words:
   - main_list
 - word: kevin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: fermi
   length: 5
   tier: valid
@@ -31799,10 +32855,14 @@ words:
   - main_list
 - word: gemma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name, or very specialized term
 - word: petró
   length: 5
   tier: valid
@@ -32563,7 +33623,7 @@ words:
   - supplement
 - word: adják
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -32600,7 +33660,7 @@ words:
   - supplement
 - word: adnak
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -32711,13 +33771,13 @@ words:
   - supplement
 - word: adtak
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
 - word: adtam
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -32739,7 +33799,7 @@ words:
   - supplement
 - word: adták
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -32772,7 +33832,7 @@ words:
   - supplement
 - word: adunk
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -33265,7 +34325,7 @@ words:
   - supplement
 - word: ahogy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.73
   sources:
   - supplement
@@ -33585,7 +34645,7 @@ words:
   - supplement
 - word: akart
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -33957,7 +35017,7 @@ words:
   - supplement
 - word: alapú
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -34604,7 +35664,7 @@ words:
   - supplement
 - word: amely
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.78
   sources:
   - supplement
@@ -34833,7 +35893,7 @@ words:
   - supplement
 - word: amúgy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -35113,7 +36173,7 @@ words:
   - supplement
 - word: annyi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
@@ -35242,7 +36302,7 @@ words:
   - supplement
 - word: anyag
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -35254,7 +36314,7 @@ words:
   - supplement
 - word: anyja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -35287,7 +36347,7 @@ words:
   - supplement
 - word: anyám
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -35445,10 +36505,14 @@ words:
   - supplement
 - word: apple
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.52
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English brand/word, not Hungarian
 - word: appok
   length: 5
   tier: valid
@@ -35584,7 +36648,7 @@ words:
   - supplement
 - word: arany
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
@@ -36717,7 +37781,7 @@ words:
   - supplement
 - word: autót
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -36738,7 +37802,7 @@ words:
   - supplement
 - word: avagy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -37517,7 +38581,7 @@ words:
   - supplement
 - word: bajom
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -37722,7 +38786,7 @@ words:
   - supplement
 - word: balra
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -39548,10 +40612,14 @@ words:
   - supplement
 - word: black
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.67
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Hungarian
 - word: blade
   length: 5
   tier: valid
@@ -39845,7 +40913,7 @@ words:
   - supplement
 - word: bocsi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -40745,10 +41813,14 @@ words:
   - supplement
 - word: brian
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.45
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: brice
   length: 5
   tier: valid
@@ -42373,7 +43445,7 @@ words:
   - supplement
 - word: bírom
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -44022,10 +45094,14 @@ words:
   - supplement
 - word: chris
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.58
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: chuan
   length: 5
   tier: valid
@@ -46139,7 +47215,7 @@ words:
   - supplement
 - word: cégek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -46235,7 +47311,7 @@ words:
   - supplement
 - word: célja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.97
   sources:
   - supplement
@@ -46343,13 +47419,13 @@ words:
   - supplement
 - word: címen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
 - word: címet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -47044,10 +48120,14 @@ words:
   - supplement
 - word: david
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.03
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: davie
   length: 5
   tier: valid
@@ -48348,7 +49428,7 @@ words:
   - supplement
 - word: dolga
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -49479,7 +50559,7 @@ words:
   - supplement
 - word: díjat
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.11
   sources:
   - supplement
@@ -50365,13 +51445,13 @@ words:
   - supplement
 - word: egyes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.43
   sources:
   - supplement
 - word: egyet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -50383,7 +51463,7 @@ words:
   - supplement
 - word: egyik
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.03
   sources:
   - supplement
@@ -50405,13 +51485,13 @@ words:
   - supplement
 - word: egyre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
 - word: egyéb
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.27
   sources:
   - supplement
@@ -51441,7 +52521,7 @@ words:
   - supplement
 - word: elért
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -51535,7 +52615,7 @@ words:
   - supplement
 - word: előtt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.79
   sources:
   - supplement
@@ -51907,7 +52987,7 @@ words:
   - supplement
 - word: ennyi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
@@ -51970,7 +53050,7 @@ words:
   - supplement
 - word: enyém
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.79
   sources:
   - supplement
@@ -52109,7 +53189,7 @@ words:
   - supplement
 - word: ereje
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -52366,7 +53446,7 @@ words:
   - supplement
 - word: esett
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -52590,7 +53670,7 @@ words:
   - supplement
 - word: estét
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.82
   sources:
   - supplement
@@ -52659,7 +53739,7 @@ words:
   - supplement
 - word: esély
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -53900,7 +54980,7 @@ words:
   - supplement
 - word: fejem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -53950,7 +55030,7 @@ words:
   - supplement
 - word: fejét
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -54066,7 +55146,7 @@ words:
   - supplement
 - word: felét
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -54886,7 +55966,7 @@ words:
   - supplement
 - word: fogja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -54908,25 +55988,25 @@ words:
   - supplement
 - word: fogod
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.73
   sources:
   - supplement
 - word: fogok
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
 - word: fogom
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
 - word: fogsz
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -55085,7 +56165,7 @@ words:
   - supplement
 - word: folyó
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -55773,7 +56853,7 @@ words:
   - supplement
 - word: futás
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -56067,7 +57147,7 @@ words:
   - supplement
 - word: félek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -56239,7 +57319,7 @@ words:
   - supplement
 - word: férje
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -59096,7 +60176,7 @@ words:
   - supplement
 - word: gyere
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
@@ -59132,7 +60212,7 @@ words:
   - supplement
 - word: gyors
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
@@ -59166,10 +60246,14 @@ words:
   - supplement
 - word: gyula
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.94
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hungarian first name/city)
 - word: gyuri
   length: 5
   tier: valid
@@ -59294,10 +60378,14 @@ words:
   - supplement
 - word: győri
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.74
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper adjective derived from city name Győr
 - word: győrt
   length: 5
   tier: valid
@@ -59623,7 +60711,7 @@ words:
   - supplement
 - word: gépet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -60229,7 +61317,7 @@ words:
   - supplement
 - word: hagyd
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -60884,10 +61972,14 @@ words:
   - supplement
 - word: harry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.86
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: hartl
   length: 5
   tier: valid
@@ -61326,7 +62418,7 @@ words:
   - supplement
 - word: hegyi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -61425,10 +62517,14 @@ words:
   - supplement
 - word: hello
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.84
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not native Hungarian
 - word: hellu
   length: 5
   tier: valid
@@ -61451,13 +62547,13 @@ words:
   - supplement
 - word: helye
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
 - word: helyi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.3
   sources:
   - supplement
@@ -61525,10 +62621,14 @@ words:
   - supplement
 - word: henry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.57
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: herci
   length: 5
   tier: valid
@@ -61780,7 +62880,7 @@ words:
   - supplement
 - word: hibát
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -62550,10 +63650,14 @@ words:
   - supplement
 - word: house
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.58
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Hungarian
 - word: hover
   length: 5
   tier: valid
@@ -62592,7 +63696,7 @@ words:
   - supplement
 - word: hozni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -62627,7 +63731,7 @@ words:
   - supplement
 - word: hozta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
@@ -62644,7 +63748,7 @@ words:
   - supplement
 - word: hozza
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -62730,10 +63834,14 @@ words:
   - supplement
 - word: https
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.98
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: URL protocol prefix, not a word
 - word: huaca
   length: 5
   tier: valid
@@ -63475,7 +64583,7 @@ words:
   - supplement
 - word: házat
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.69
   sources:
   - supplement
@@ -63602,7 +64710,7 @@ words:
   - supplement
 - word: héten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
@@ -63618,7 +64726,7 @@ words:
   - supplement
 - word: hétig
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -63735,7 +64843,7 @@ words:
   - supplement
 - word: hírek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -63849,7 +64957,7 @@ words:
   - supplement
 - word: hívta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -64023,7 +65131,7 @@ words:
   - supplement
 - word: hölgy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -64211,10 +65319,14 @@ words:
   - supplement
 - word: hülye
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.13
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Mildly vulgar/offensive (means 'stupid/idiot')
 - word: hütte
   length: 5
   tier: valid
@@ -64521,7 +65633,7 @@ words:
   - supplement
 - word: ideje
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.24
   sources:
   - supplement
@@ -64663,7 +65775,7 @@ words:
   - supplement
 - word: időre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.82
   sources:
   - supplement
@@ -64749,7 +65861,7 @@ words:
   - supplement
 - word: igaza
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.65
   sources:
   - supplement
@@ -65074,7 +66186,7 @@ words:
   - supplement
 - word: ilyen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.03
   sources:
   - supplement
@@ -65085,7 +66197,7 @@ words:
   - supplement
 - word: ilyet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.16
   sources:
   - supplement
@@ -65485,7 +66597,7 @@ words:
   - supplement
 - word: innen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -65842,7 +66954,7 @@ words:
   - supplement
 - word: irány
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -67265,10 +68377,14 @@ words:
   - supplement
 - word: jimmy
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.49
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: jimny
   length: 5
   tier: valid
@@ -67441,7 +68557,7 @@ words:
   - supplement
 - word: jogot
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -68097,7 +69213,7 @@ words:
   - supplement
 - word: jutni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -68236,7 +69352,7 @@ words:
   - supplement
 - word: járni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -68252,7 +69368,7 @@ words:
   - supplement
 - word: járok
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -68542,7 +69658,7 @@ words:
   - supplement
 - word: jóval
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -69068,7 +70184,7 @@ words:
   - supplement
 - word: kapja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -69080,7 +70196,7 @@ words:
   - supplement
 - word: kapni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -69097,7 +70213,7 @@ words:
   - supplement
 - word: kapok
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -69119,7 +70235,7 @@ words:
   - supplement
 - word: kapsz
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -70161,7 +71277,7 @@ words:
   - supplement
 - word: kezem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -70184,7 +71300,7 @@ words:
   - supplement
 - word: kezét
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -70610,7 +71726,7 @@ words:
   - supplement
 - word: kinek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -70830,7 +71946,7 @@ words:
   - supplement
 - word: kivel
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -72333,7 +73449,7 @@ words:
   - supplement
 - word: kutya
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement
@@ -72658,7 +73774,7 @@ words:
   - supplement
 - word: kávét
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -72750,7 +73866,7 @@ words:
   - supplement
 - word: képek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -72762,13 +73878,13 @@ words:
   - supplement
 - word: képen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
 - word: képet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -72834,13 +73950,13 @@ words:
   - supplement
 - word: kérek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.69
   sources:
   - supplement
 - word: kérem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -72873,7 +73989,7 @@ words:
   - supplement
 - word: kérni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -72890,7 +74006,7 @@ words:
   - supplement
 - word: kérte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -73377,7 +74493,7 @@ words:
   - supplement
 - word: könyv
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -73613,7 +74729,7 @@ words:
   - supplement
 - word: közel
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.35
   sources:
   - supplement
@@ -73630,7 +74746,7 @@ words:
   - supplement
 - word: közzé
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -73804,7 +74920,7 @@ words:
   - supplement
 - word: külön
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
@@ -76568,10 +77684,14 @@ words:
   - supplement
 - word: louis
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.75
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name)
 - word: loupe
   length: 5
   tier: valid
@@ -77320,7 +78440,7 @@ words:
   - supplement
 - word: lánya
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -77331,7 +78451,7 @@ words:
   - supplement
 - word: lányt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -77682,7 +78802,7 @@ words:
   - supplement
 - word: létre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -78245,7 +79365,7 @@ words:
   - supplement
 - word: magát
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.54
   sources:
   - supplement
@@ -79813,7 +80933,7 @@ words:
   - supplement
 - word: megye
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -80392,10 +81512,14 @@ words:
   - supplement
 - word: metal
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.46
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English loanword, not native Hungarian (Hungarian: fém)'
 - word: metem
   length: 5
   tier: valid
@@ -80549,13 +81673,13 @@ words:
   - supplement
 - word: miben
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
 - word: miből
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -80976,7 +82100,7 @@ words:
   - supplement
 - word: minek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -81077,7 +82201,7 @@ words:
   - supplement
 - word: minél
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -81158,7 +82282,7 @@ words:
   - supplement
 - word: miről
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -81293,7 +82417,7 @@ words:
   - supplement
 - word: mitől
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -81345,7 +82469,7 @@ words:
   - supplement
 - word: miért
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.0
   sources:
   - supplement
@@ -81718,7 +82842,7 @@ words:
   - supplement
 - word: mondd
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -82478,10 +83602,14 @@ words:
   - supplement
 - word: music
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.77
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word, not Hungarian (Hungarian: zene)'
 - word: musil
   length: 5
   tier: valid
@@ -82812,7 +83940,7 @@ words:
   - supplement
 - word: mások
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -83256,7 +84384,7 @@ words:
   - supplement
 - word: módja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -83278,7 +84406,7 @@ words:
   - supplement
 - word: módon
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.35
   sources:
   - supplement
@@ -83907,7 +85035,7 @@ words:
   - supplement
 - word: napig
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -83923,7 +85051,7 @@ words:
   - supplement
 - word: napja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -83940,7 +85068,7 @@ words:
   - supplement
 - word: napok
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -83952,13 +85080,13 @@ words:
   - supplement
 - word: napon
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
 - word: napot
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - supplement
@@ -83974,7 +85102,7 @@ words:
   - supplement
 - word: napra
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -84507,7 +85635,7 @@ words:
   - supplement
 - word: nemet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -84684,7 +85812,7 @@ words:
   - supplement
 - word: neved
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -84696,7 +85824,7 @@ words:
   - supplement
 - word: nevem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -84728,13 +85856,13 @@ words:
   - supplement
 - word: nevén
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
 - word: nevét
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -84885,10 +86013,14 @@ words:
   - supplement
 - word: night
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.45
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Hungarian
 - word: nihad
   length: 5
   tier: valid
@@ -85657,7 +86789,7 @@ words:
   - supplement
 - word: nyelv
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -85687,7 +86819,7 @@ words:
   - supplement
 - word: nyert
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement
@@ -85782,7 +86914,7 @@ words:
   - supplement
 - word: nyolc
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -85837,7 +86969,7 @@ words:
   - supplement
 - word: nyugi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -85878,7 +87010,7 @@ words:
   - supplement
 - word: nyári
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -85914,7 +87046,7 @@ words:
   - supplement
 - word: nyílt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -86228,7 +87360,7 @@ words:
   - supplement
 - word: néven
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -86261,19 +87393,19 @@ words:
   - supplement
 - word: nézek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
 - word: nézel
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
 - word: nézem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -86291,7 +87423,7 @@ words:
   - supplement
 - word: nézni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -86313,7 +87445,7 @@ words:
   - supplement
 - word: nézze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -86476,7 +87608,7 @@ words:
   - supplement
 - word: nőket
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -87243,7 +88375,7 @@ words:
   - supplement
 - word: olyan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.32
   sources:
   - supplement
@@ -87254,7 +88386,7 @@ words:
   - supplement
 - word: olyat
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.79
   sources:
   - supplement
@@ -87457,7 +88589,7 @@ words:
   - supplement
 - word: onnan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -89319,7 +90451,7 @@ words:
   - supplement
 - word: perce
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -89466,10 +90598,14 @@ words:
   - supplement
 - word: pesti
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.66
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Demonym adjective from proper noun Pest (Budapest)
 - word: pesto
   length: 5
   tier: valid
@@ -89522,10 +90658,14 @@ words:
   - supplement
 - word: peter
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.87
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: petey
   length: 5
   tier: valid
@@ -89726,7 +90866,7 @@ words:
   - supplement
 - word: picit
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -91306,7 +92446,7 @@ words:
   - supplement
 - word: pálya
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -91337,10 +92477,14 @@ words:
   - supplement
 - word: pápai
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.5
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper adjective derived from city Pápa or can mean 'papal' - ambiguous but primarily geographical
 - word: pápay
   length: 5
   tier: valid
@@ -91503,10 +92647,14 @@ words:
   - supplement
 - word: pécsi
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.81
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper adjective derived from city name Pécs
 - word: pékek
   length: 5
   tier: valid
@@ -91535,7 +92683,7 @@ words:
   - supplement
 - word: pénzt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -94307,7 +95455,7 @@ words:
   - supplement
 - word: ruhát
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -95083,13 +96231,13 @@ words:
   - supplement
 - word: része
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.41
   sources:
   - supplement
 - word: részt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.44
   sources:
   - supplement
@@ -97684,7 +98832,7 @@ words:
   - supplement
 - word: simán
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -98415,7 +99563,7 @@ words:
   - supplement
 - word: sokat
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
@@ -99264,10 +100412,14 @@ words:
   - supplement
 - word: steve
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.57
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: steyr
   length: 5
   tier: valid
@@ -99746,10 +100898,14 @@ words:
   - supplement
 - word: super
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.44
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not native Hungarian
 - word: supot
   length: 5
   tier: valid
@@ -100064,10 +101220,14 @@ words:
   - supplement
 - word: szart
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.59
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (accusative of 'szar' = shit)
 - word: szarí
   length: 5
   tier: valid
@@ -100175,7 +101335,7 @@ words:
   - supplement
 - word: szeme
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -100215,7 +101375,7 @@ words:
   - supplement
 - word: szert
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -100618,7 +101778,7 @@ words:
   - supplement
 - word: száma
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.34
   sources:
   - supplement
@@ -100629,7 +101789,7 @@ words:
   - supplement
 - word: számú
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
@@ -100726,7 +101886,7 @@ words:
   - supplement
 - word: színe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -100771,7 +101931,7 @@ words:
   - supplement
 - word: szóba
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -100788,7 +101948,7 @@ words:
   - supplement
 - word: szólt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.82
   sources:
   - supplement
@@ -101910,7 +103070,7 @@ words:
   - supplement
 - word: tagja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -101921,7 +103081,7 @@ words:
   - supplement
 - word: tagok
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -103014,7 +104174,7 @@ words:
   - supplement
 - word: terén
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -104782,7 +105942,7 @@ words:
   - supplement
 - word: tudja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.59
   sources:
   - supplement
@@ -104793,13 +105953,13 @@ words:
   - supplement
 - word: tudna
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
 - word: tudni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
@@ -104811,19 +105971,19 @@ words:
   - supplement
 - word: tudod
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.47
   sources:
   - supplement
 - word: tudok
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.56
   sources:
   - supplement
 - word: tudom
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.99
   sources:
   - supplement
@@ -104834,7 +105994,7 @@ words:
   - supplement
 - word: tudsz
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.11
   sources:
   - supplement
@@ -105386,7 +106546,7 @@ words:
   - supplement
 - word: tárgy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -105513,7 +106673,7 @@ words:
   - supplement
 - word: télen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -105648,7 +106808,7 @@ words:
   - supplement
 - word: téren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -106703,7 +107863,7 @@ words:
   - supplement
 - word: ugyan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -106983,7 +108143,7 @@ words:
   - supplement
 - word: uniós
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -107368,7 +108528,7 @@ words:
   - supplement
 - word: utcán
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.73
   sources:
   - supplement
@@ -109095,7 +110255,7 @@ words:
   - supplement
 - word: vizet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -109784,13 +110944,13 @@ words:
   - supplement
 - word: várja
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
 - word: várni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -109813,7 +110973,7 @@ words:
   - supplement
 - word: várom
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
@@ -110047,7 +111207,7 @@ words:
   - supplement
 - word: véget
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -110785,10 +111945,14 @@ words:
   - supplement
 - word: young
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.49
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Hungarian
 - word: younn
   length: 5
   tier: valid
@@ -111334,7 +112498,7 @@ words:
   - supplement
 - word: zenét
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -112025,7 +113189,7 @@ words:
   - supplement
 - word: zárva
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -112550,7 +113714,7 @@ words:
   - supplement
 - word: állni
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -112566,7 +113730,7 @@ words:
   - supplement
 - word: állok
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -113667,7 +114831,7 @@ words:
   - supplement
 - word: élete
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -113742,7 +114906,7 @@ words:
   - supplement
 - word: élnek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -113843,7 +115007,7 @@ words:
   - supplement
 - word: élünk
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -113978,7 +115142,7 @@ words:
   - supplement
 - word: épült
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -114174,7 +115338,7 @@ words:
   - supplement
 - word: értek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -114293,7 +115457,7 @@ words:
   - supplement
 - word: érzem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.3
   sources:
   - supplement
@@ -114382,7 +115546,7 @@ words:
   - supplement
 - word: észre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -114416,7 +115580,7 @@ words:
   - supplement
 - word: évben
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.31
   sources:
   - supplement
@@ -114520,7 +115684,7 @@ words:
   - supplement
 - word: évvel
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -114759,7 +115923,7 @@ words:
   - supplement
 - word: írtam
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -115115,7 +116279,7 @@ words:
   - supplement
 - word: óráig
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -115141,7 +116305,7 @@ words:
   - supplement
 - word: órája
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -115152,7 +116316,7 @@ words:
   - supplement
 - word: órára
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -115534,7 +116698,7 @@ words:
   - supplement
 - word: önnek
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -115853,7 +117017,7 @@ words:
   - supplement
 - word: úgyis
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -115865,7 +117029,7 @@ words:
   - supplement
 - word: újabb
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.44
   sources:
   - supplement
@@ -116250,7 +117414,7 @@ words:
   - supplement
 - word: ügyes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement

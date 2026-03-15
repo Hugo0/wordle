@@ -75,10 +75,14 @@ words:
   - main_list
 - word: crack
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English word / drug reference
 - word: danna
   length: 5
   tier: valid
@@ -98,10 +102,14 @@ words:
   - main_list
 - word: titan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mythological term, but used figuratively — borderline
 - word: todel
   length: 5
   tier: valid
@@ -180,10 +188,14 @@ words:
   - main_list
 - word: pence
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English currency unit / surname
 - word: høyne
   length: 5
   tier: valid
@@ -596,10 +608,14 @@ words:
   - main_list
 - word: frans
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: lauer
   length: 5
   tier: valid
@@ -608,10 +624,14 @@ words:
   - main_list
 - word: berte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: onkos
   length: 5
   tier: valid
@@ -871,10 +891,14 @@ words:
   - main_list
 - word: trine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: ujamt
   length: 5
   tier: valid
@@ -1112,10 +1136,14 @@ words:
   - main_list
 - word: kairo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun (city: Cairo)'
 - word: ivevd
   length: 5
   tier: valid
@@ -1139,10 +1167,14 @@ words:
   - main_list
 - word: johan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: svovl
   length: 5
   tier: valid
@@ -1150,10 +1182,14 @@ words:
   - main_list
 - word: suite
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: French/English loanword, somewhat integrated
 - word: benin
   length: 5
   tier: valid
@@ -1452,10 +1488,14 @@ words:
   - main_list
 - word: small
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word; Norwegian 'small' exists as a noun (narrow strait) but very uncommon
 - word: hanna
   length: 5
   tier: valid
@@ -1480,10 +1520,14 @@ words:
   - main_list
 - word: scott
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: løyvd
   length: 5
   tier: valid
@@ -1632,10 +1676,14 @@ words:
   - main_list
 - word: miami
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city)
 - word: prise
   length: 5
   tier: daily
@@ -1825,10 +1873,14 @@ words:
   - main_list
 - word: cross
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English word; Norwegian equivalent exists
 - word: audun
   length: 5
   tier: valid
@@ -2001,10 +2053,14 @@ words:
   - main_list
 - word: frank
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: talet
   length: 5
   tier: valid
@@ -2159,10 +2215,14 @@ words:
   - main_list
 - word: rikke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: flømt
   length: 5
   tier: valid
@@ -2259,10 +2319,14 @@ words:
   - main_list
 - word: kreml
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (the Kremlin)
 - word: henny
   length: 5
   tier: valid
@@ -2313,10 +2377,14 @@ words:
   - main_list
 - word: sorry
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but well-integrated colloquially
 - word: rådig
   length: 5
   tier: valid
@@ -2687,10 +2755,14 @@ words:
   - main_list
 - word: twist
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but fairly integrated
 - word: legal
   length: 5
   tier: valid
@@ -2699,10 +2771,14 @@ words:
   - main_list
 - word: elton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: seato
   length: 5
   tier: valid
@@ -2716,10 +2792,14 @@ words:
   - main_list
 - word: north
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Norwegian
 - word: fræna
   length: 5
   tier: valid
@@ -2903,10 +2983,14 @@ words:
   - main_list
 - word: vidar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: bydag
   length: 5
   tier: valid
@@ -2919,10 +3003,14 @@ words:
   - main_list
 - word: graff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (surname)
 - word: grunn
   length: 5
   tier: daily
@@ -3079,10 +3167,14 @@ words:
   - main_list
 - word: sylvi
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: annen
   length: 5
   tier: daily
@@ -3312,10 +3404,14 @@ words:
   - main_list
 - word: troms
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian county/region)
 - word: buffé
   length: 5
   tier: valid
@@ -3399,10 +3495,14 @@ words:
   - main_list
 - word: dodge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (car brand) or English word
 - word: kribl
   length: 5
   tier: valid
@@ -3553,10 +3653,14 @@ words:
   - main_list
 - word: sound
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Norwegian
 - word: sette
   length: 5
   tier: daily
@@ -3599,10 +3703,14 @@ words:
   - main_list
 - word: troja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Troy)
 - word: serai
   length: 5
   tier: valid
@@ -3638,10 +3746,14 @@ words:
   - main_list
 - word: hardy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (surname) or English adjective
 - word: dhene
   length: 5
   tier: valid
@@ -3660,10 +3772,14 @@ words:
   - main_list
 - word: kreta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun (island: Crete)'
 - word: irisk
   length: 5
   tier: valid
@@ -3671,10 +3787,14 @@ words:
   - main_list
 - word: osaka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Japanese city)
 - word: stein
   length: 5
   tier: daily
@@ -4019,10 +4139,14 @@ words:
   - main_list
 - word: hilda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: geipe
   length: 5
   tier: valid
@@ -4128,10 +4252,14 @@ words:
   - main_list
 - word: guide
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English/French loanword, but somewhat integrated
 - word: hakke
   length: 5
   tier: daily
@@ -4140,10 +4268,14 @@ words:
   - main_list
 - word: frida
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: tøffe
   length: 5
   tier: daily
@@ -4513,10 +4645,14 @@ words:
   - main_list
 - word: arvid
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: åvint
   length: 5
   tier: valid
@@ -4705,10 +4841,14 @@ words:
   - main_list
 - word: nanna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: punkt
   length: 5
   tier: daily
@@ -4823,10 +4963,14 @@ words:
   - main_list
 - word: dalai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of proper noun (Dalai Lama)
 - word: pjutr
   length: 5
   tier: valid
@@ -4929,10 +5073,14 @@ words:
   - main_list
 - word: jaffa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (city)
 - word: hatig
   length: 5
   tier: valid
@@ -5000,10 +5148,14 @@ words:
   - main_list
 - word: squaw
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Offensive term for Native American women
 - word: husby
   length: 5
   tier: valid
@@ -5128,10 +5280,14 @@ words:
   - main_list
 - word: bengt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: mørke
   length: 5
   tier: daily
@@ -5249,10 +5405,14 @@ words:
   - main_list
 - word: rambo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (movie character)
 - word: sjans
   length: 5
   tier: daily
@@ -5302,10 +5462,14 @@ words:
   - main_list
 - word: giske
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian place name / surname)
 - word: løfte
   length: 5
   tier: daily
@@ -5739,10 +5903,14 @@ words:
   - main_list
 - word: laila
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: bumse
   length: 5
   tier: valid
@@ -5784,10 +5952,14 @@ words:
   - main_list
 - word: signe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: algol
   length: 5
   tier: valid
@@ -5866,10 +6038,14 @@ words:
   - main_list
 - word: neger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Considered offensive/outdated racial term
 - word: naken
   length: 5
   tier: daily
@@ -5997,10 +6173,14 @@ words:
   - main_list
 - word: speed
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, somewhat integrated
 - word: imens
   length: 5
   tier: daily
@@ -6512,10 +6692,14 @@ words:
   - main_list
 - word: holst
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (surname)
 - word: saven
   length: 5
   tier: valid
@@ -6728,10 +6912,14 @@ words:
   - main_list
 - word: smith
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: furte
   length: 5
   tier: valid
@@ -6808,10 +6996,14 @@ words:
   - main_list
 - word: worth
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / surname, not Norwegian
 - word: løyer
   length: 5
   tier: valid
@@ -6842,10 +7034,14 @@ words:
   - main_list
 - word: grete
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: skyts
   length: 5
   tier: daily
@@ -6938,10 +7134,14 @@ words:
   - main_list
 - word: allah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Religious proper noun
 - word: meldt
   length: 5
   tier: daily
@@ -7043,10 +7243,14 @@ words:
   - main_list
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: quipu
   length: 5
   tier: valid
@@ -7203,10 +7407,14 @@ words:
   - main_list
 - word: mikke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person, e.g. Mikke Mus)
 - word: ideen
   length: 5
   tier: daily
@@ -7821,16 +8029,24 @@ words:
   - main_list
 - word: bronx
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (place in New York)
 - word: dokka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Norwegian town)
 - word: terne
   length: 5
   tier: valid
@@ -8058,10 +8274,14 @@ words:
   - main_list
 - word: thorn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / surname, not Norwegian
 - word: fygle
   length: 5
   tier: valid
@@ -8128,10 +8348,14 @@ words:
   - main_list
 - word: prime
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English word; Norwegian uses 'prim' or other equivalents
 - word: utarm
   length: 5
   tier: valid
@@ -8221,10 +8445,14 @@ words:
   - main_list
 - word: praha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun (city: Prague)'
 - word: sauna
   length: 5
   tier: valid
@@ -8388,10 +8616,14 @@ words:
   - main_list
 - word: fancy
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English word, not standard Norwegian
 - word: rakne
   length: 5
   tier: valid
@@ -8804,10 +9036,14 @@ words:
   - main_list
 - word: sofie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: endiv
   length: 5
   tier: valid
@@ -8860,10 +9096,14 @@ words:
   - main_list
 - word: saint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/French word, not Norwegian
 - word: kvikk
   length: 5
   tier: daily
@@ -9042,10 +9282,14 @@ words:
   - main_list
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: kløve
   length: 5
   tier: valid
@@ -9226,10 +9470,14 @@ words:
   - main_list
 - word: knull
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar word (sexual), borderline for family game
 - word: avhør
   length: 5
   tier: daily
@@ -9504,10 +9752,14 @@ words:
   - main_list
 - word: derby
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily English proper noun / sports term
 - word: dotte
   length: 5
   tier: valid
@@ -9719,10 +9971,14 @@ words:
   - main_list
 - word: truck
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but integrated in Norwegian
 - word: stamp
   length: 5
   tier: valid
@@ -9811,16 +10067,24 @@ words:
   - main_list
 - word: seoul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city)
 - word: trade
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not standard Norwegian
 - word: melle
   length: 5
   tier: valid
@@ -9857,10 +10121,14 @@ words:
   - main_list
 - word: brown
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English surname, not a Norwegian word
 - word: klein
   length: 5
   tier: daily
@@ -10144,7 +10412,7 @@ words:
   - main_list
 - word: areal
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - main_list
@@ -10335,10 +10603,14 @@ words:
   - main_list
 - word: aires
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Part of Buenos Aires, not a standalone Norwegian word
 - word: linse
   length: 5
   tier: valid
@@ -10694,10 +10966,14 @@ words:
   - main_list
 - word: toast
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but well-integrated in Norwegian
 - word: jafse
   length: 5
   tier: valid
@@ -10900,10 +11176,14 @@ words:
   - main_list
 - word: sobel
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Uncommon word (sable fur), borderline
 - word: vimet
   length: 5
   tier: valid
@@ -10951,10 +11231,14 @@ words:
   - main_list
 - word: jarle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: hankø
   length: 5
   tier: valid
@@ -10963,7 +11247,7 @@ words:
   - main_list
 - word: roman
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - main_list
@@ -11082,10 +11366,14 @@ words:
   - main_list
 - word: hades
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Greek mythology)
 - word: vegne
   length: 5
   tier: daily
@@ -11156,10 +11444,14 @@ words:
   - main_list
 - word: berit
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
   history:
   - 1720
   scheduled_day: 1720
@@ -11982,10 +12274,14 @@ words:
   - main_list
 - word: janne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: dvele
   length: 5
   tier: daily
@@ -12148,10 +12444,14 @@ words:
   - main_list
 - word: håkon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: polkø
   length: 5
   tier: valid
@@ -12645,10 +12945,14 @@ words:
   - main_list
 - word: søren
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: hakel
   length: 5
   tier: valid
@@ -12673,10 +12977,14 @@ words:
   - main_list
 - word: paris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (city)
 - word: homer
   length: 5
   tier: valid
@@ -12702,10 +13010,14 @@ words:
   - main_list
 - word: shell
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (oil company) or English word
 - word: avlet
   length: 5
   tier: daily
@@ -13155,10 +13467,14 @@ words:
   - main_list
 - word: skien
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian city)
 - word: kjenn
   length: 5
   tier: daily
@@ -13185,10 +13501,14 @@ words:
   - main_list
 - word: stine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: aktes
   length: 5
   tier: valid
@@ -13376,10 +13696,14 @@ words:
   - main_list
 - word: mills
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (brand/surname)
 - word: muntr
   length: 5
   tier: valid
@@ -13633,10 +13957,14 @@ words:
   - main_list
 - word: lasse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: tykke
   length: 5
   tier: daily
@@ -13818,10 +14146,14 @@ words:
   - main_list
 - word: marit
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: kvann
   length: 5
   tier: valid
@@ -14039,10 +14371,14 @@ words:
   - main_list
 - word: grand
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English/French word, not standard Norwegian
 - word: kijev
   length: 5
   tier: valid
@@ -14181,10 +14517,14 @@ words:
   - main_list
 - word: water
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Norwegian
 - word: drikk
   length: 5
   tier: daily
@@ -14453,10 +14793,14 @@ words:
   - main_list
 - word: chief
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not standard Norwegian
 - word: drøyt
   length: 5
   tier: daily
@@ -14698,10 +15042,14 @@ words:
   - main_list
 - word: jemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun (country: Yemen)'
 - word: hegge
   length: 5
   tier: valid
@@ -14893,10 +15241,14 @@ words:
   - main_list
 - word: heavy
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword
 - word: knust
   length: 5
   tier: daily
@@ -14985,10 +15337,14 @@ words:
   - main_list
 - word: beate
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: grøde
   length: 5
   tier: valid
@@ -15009,10 +15365,14 @@ words:
   - main_list
 - word: downs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word / part of 'Down syndrome'
 - word: vågal
   length: 5
   tier: valid
@@ -15213,10 +15573,14 @@ words:
   - main_list
 - word: force
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English word, not standard Norwegian
 - word: treng
   length: 5
   tier: valid
@@ -15237,10 +15601,14 @@ words:
   - main_list
 - word: leeds
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (English city)
 - word: banna
   length: 5
   tier: valid
@@ -15397,10 +15765,14 @@ words:
   - main_list
 - word: norge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 6.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun (country: Norway)'
 - word: rosse
   length: 5
   tier: valid
@@ -15432,10 +15804,14 @@ words:
   - main_list
 - word: alden
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Uncommon/archaic definite form, not daily-quality
 - word: rutet
   length: 5
   tier: valid
@@ -15598,10 +15974,14 @@ words:
   - main_list
 - word: frode
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: sendt
   length: 5
   tier: daily
@@ -15762,10 +16142,14 @@ words:
   - main_list
 - word: rouge
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: French word; used in Norwegian but uncommon
 - word: tårne
   length: 5
   tier: valid
@@ -15825,10 +16209,14 @@ words:
   - main_list
 - word: jævel
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Profanity (devil/bastard), but commonly used
 - word: bever
   length: 5
   tier: daily
@@ -15878,10 +16266,14 @@ words:
   - main_list
 - word: alpha
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English/Greek spelling; Norwegian uses 'alfa'
 - word: proft
   length: 5
   tier: valid
@@ -16299,10 +16691,14 @@ words:
   - main_list
 - word: texas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (US state)
 - word: haust
   length: 5
   tier: valid
@@ -16357,10 +16753,14 @@ words:
   - main_list
 - word: omega
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Greek letter / brand name, borderline
 - word: biavl
   length: 5
   tier: valid
@@ -16421,10 +16821,14 @@ words:
   - main_list
 - word: yngve
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: mulig
   length: 5
   tier: daily
@@ -16745,10 +17149,14 @@ words:
   - main_list
 - word: spray
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, well-integrated
 - word: treiv
   length: 5
   tier: valid
@@ -16762,10 +17170,14 @@ words:
   - main_list
 - word: sanne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person); also adjective form but primarily a name
 - word: lorje
   length: 5
   tier: valid
@@ -16832,10 +17244,14 @@ words:
   - main_list
 - word: meryl
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: kvell
   length: 5
   tier: valid
@@ -17028,10 +17444,14 @@ words:
   - main_list
 - word: kings
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Norwegian
 - word: skaft
   length: 5
   tier: valid
@@ -17133,10 +17553,14 @@ words:
   - main_list
 - word: scoop
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, somewhat integrated in journalism
 - word: noret
   length: 5
   tier: valid
@@ -17357,10 +17781,14 @@ words:
   - main_list
 - word: hanne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: horda
   length: 5
   tier: valid
@@ -17431,10 +17859,14 @@ words:
   - main_list
 - word: delhi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city)
 - word: desto
   length: 5
   tier: daily
@@ -17449,10 +17881,14 @@ words:
   - main_list
 - word: ocean
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English spelling; Norwegian uses 'hav' or 'osean'
 - word: utlat
   length: 5
   tier: valid
@@ -17513,10 +17949,14 @@ words:
   - main_list
 - word: drite
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar verb (to defecate), borderline
 - word: øksel
   length: 5
   tier: valid
@@ -17795,10 +18235,14 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name/award)
 - word: snoke
   length: 5
   tier: daily
@@ -18068,10 +18512,14 @@ words:
   - main_list
 - word: jakob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: smekt
   length: 5
   tier: valid
@@ -18118,10 +18566,14 @@ words:
   - main_list
 - word: devon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (English county/name)
 - word: berop
   length: 5
   tier: valid
@@ -18233,10 +18685,14 @@ words:
   - main_list
 - word: trond
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: furie
   length: 5
   tier: valid
@@ -18665,10 +19121,14 @@ words:
   - main_list
 - word: heinz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (brand/name)
 - word: pedal
   length: 5
   tier: valid
@@ -18819,10 +19279,14 @@ words:
   - main_list
 - word: porno
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Inappropriate for a family word game
 - word: fluor
   length: 5
   tier: valid
@@ -18973,10 +19437,14 @@ words:
   - main_list
 - word: block
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English spelling; Norwegian uses 'blokk'
 - word: rolex
   length: 5
   tier: valid
@@ -19153,10 +19621,14 @@ words:
   - main_list
 - word: espen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: duett
   length: 5
   tier: daily
@@ -19320,10 +19792,14 @@ words:
   - main_list
 - word: pauls
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name possessive (English)
 - word: ecafe
   length: 5
   tier: valid
@@ -19405,10 +19881,14 @@ words:
   - main_list
 - word: georg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: søtet
   length: 5
   tier: valid
@@ -19584,10 +20064,14 @@ words:
   - main_list
 - word: brian
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: ørken
   length: 5
   tier: daily
@@ -19620,10 +20104,14 @@ words:
   - main_list
 - word: trump
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: entré
   length: 5
   tier: daily
@@ -19682,10 +20170,14 @@ words:
   - main_list
 - word: cæsar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (historical figure)
 - word: fridd
   length: 5
   tier: daily
@@ -20044,10 +20536,14 @@ words:
   - main_list
 - word: hamar
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian city)
 - word: rokka
   length: 5
   tier: valid
@@ -20141,10 +20637,14 @@ words:
   - main_list
 - word: wales
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (country)
 - word: farga
   length: 5
   tier: valid
@@ -20218,10 +20718,14 @@ words:
   - main_list
 - word: apple
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English brand name, not Norwegian
 - word: grøss
   length: 5
   tier: valid
@@ -20293,10 +20797,14 @@ words:
   - main_list
 - word: pelle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: snill
   length: 5
   tier: daily
@@ -20578,10 +21086,14 @@ words:
   - main_list
 - word: nobel
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily Nobel Prize proper noun; also adjective meaning 'noble' but uncommon
 - word: bedra
   length: 5
   tier: daily
@@ -20698,10 +21210,14 @@ words:
   - main_list
 - word: davos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Swiss city)
 - word: minst
   length: 5
   tier: daily
@@ -20905,10 +21421,14 @@ words:
   - main_list
 - word: kenya
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: valne
   length: 5
   tier: valid
@@ -20988,10 +21508,14 @@ words:
   - main_list
 - word: motsi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person), not a Norwegian word
 - word: bikke
   length: 5
   tier: valid
@@ -21082,10 +21606,14 @@ words:
   - main_list
 - word: eirik
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: smake
   length: 5
   tier: daily
@@ -21106,10 +21634,14 @@ words:
   - main_list
 - word: kabul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city)
 - word: narde
   length: 5
   tier: valid
@@ -21241,10 +21773,14 @@ words:
   - main_list
 - word: stone
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word / surname
 - word: enkét
   length: 5
   tier: valid
@@ -21343,10 +21879,14 @@ words:
   - main_list
 - word: happy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Norwegian
 - word: gamet
   length: 5
   tier: valid
@@ -21383,10 +21923,14 @@ words:
   - main_list
 - word: costa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (part of place names), not a Norwegian word
 - word: tobøl
   length: 5
   tier: valid
@@ -21418,10 +21962,14 @@ words:
   - main_list
 - word: bambi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Disney character/name)
 - word: førde
   length: 5
   tier: valid
@@ -21500,10 +22048,14 @@ words:
   - main_list
 - word: kødde
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang verb (to joke/mess around), borderline
 - word: baske
   length: 5
   tier: valid
@@ -21518,10 +22070,14 @@ words:
   - main_list
 - word: aslam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: klove
   length: 5
   tier: valid
@@ -21564,10 +22120,14 @@ words:
   - main_list
 - word: josef
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: briks
   length: 5
   tier: valid
@@ -21655,10 +22215,14 @@ words:
   - main_list
 - word: sudan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: tjukn
   length: 5
   tier: valid
@@ -21850,10 +22414,14 @@ words:
   - main_list
 - word: tommy
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: kjave
   length: 5
   tier: valid
@@ -21947,10 +22515,14 @@ words:
   - main_list
 - word: andré
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: flage
   length: 5
   tier: valid
@@ -22100,10 +22672,14 @@ words:
   - main_list
 - word: lilly
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
   history:
   - 1682
   scheduled_day: 1682
@@ -22127,10 +22703,14 @@ words:
   - main_list
 - word: niles
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: suser
   length: 5
   tier: daily
@@ -22150,7 +22730,7 @@ words:
   - main_list
 - word: andre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.32
   sources:
   - main_list
@@ -22230,10 +22810,14 @@ words:
   - main_list
 - word: helle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person); also a verb but uncommon
 - word: gjørs
   length: 5
   tier: valid
@@ -22719,10 +23303,14 @@ words:
   - main_list
 - word: agder
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian region/county)
 - word: fløte
   length: 5
   tier: daily
@@ -23019,10 +23607,14 @@ words:
   - main_list
 - word: lukas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: holth
   length: 5
   tier: valid
@@ -23088,10 +23680,14 @@ words:
   - main_list
 - word: light
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word
 - word: tusje
   length: 5
   tier: valid
@@ -23105,10 +23701,14 @@ words:
   - main_list
 - word: peder
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: feier
   length: 5
   tier: daily
@@ -23210,10 +23810,14 @@ words:
   - main_list
 - word: hands
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Norwegian
 - word: lugne
   length: 5
   tier: valid
@@ -23474,10 +24078,14 @@ words:
   - main_list
 - word: julie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: flint
   length: 5
   tier: daily
@@ -23752,10 +24360,14 @@ words:
   - main_list
 - word: viggo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: svans
   length: 5
   tier: valid
@@ -24147,10 +24759,14 @@ words:
   - main_list
 - word: venus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (planet/goddess)
 - word: porto
   length: 5
   tier: valid
@@ -24182,10 +24798,14 @@ words:
   - main_list
 - word: dubai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city)
 - word: gryte
   length: 5
   tier: daily
@@ -24490,10 +25110,14 @@ words:
   - main_list
 - word: horse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not standard Norwegian
 - word: gjæra
   length: 5
   tier: valid
@@ -24824,10 +25448,14 @@ words:
   - main_list
 - word: roger
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: pyoré
   length: 5
   tier: valid
@@ -24873,10 +25501,14 @@ words:
   - main_list
 - word: randi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: utart
   length: 5
   tier: valid
@@ -24981,10 +25613,14 @@ words:
   - main_list
 - word: dæven
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mild expletive/interjection, borderline daily quality
 - word: forgi
   length: 5
   tier: valid
@@ -25015,10 +25651,14 @@ words:
   - main_list
 - word: homse
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Can be considered derogatory term for homosexual
 - word: hangl
   length: 5
   tier: valid
@@ -25110,10 +25750,14 @@ words:
   - main_list
 - word: niels
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: unnta
   length: 5
   tier: valid
@@ -25386,10 +26030,14 @@ words:
   - main_list
 - word: image
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, though somewhat integrated
 - word: fatwa
   length: 5
   tier: valid
@@ -25416,10 +26064,14 @@ words:
   - main_list
 - word: sabra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun / Hebrew term, not standard Norwegian
 - word: myrde
   length: 5
   tier: daily
@@ -25439,10 +26091,14 @@ words:
   - main_list
 - word: sibir
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Siberia)
 - word: uremi
   length: 5
   tier: valid
@@ -25469,10 +26125,14 @@ words:
   - main_list
 - word: bærum
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian municipality)
 - word: flise
   length: 5
   tier: valid
@@ -25499,10 +26159,14 @@ words:
   - main_list
 - word: burma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: bismo
   length: 5
   tier: valid
@@ -25994,10 +26658,14 @@ words:
   - main_list
 - word: green
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / surname, not Norwegian
 - word: hovne
   length: 5
   tier: daily
@@ -26416,10 +27084,14 @@ words:
   - main_list
 - word: britt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: utkok
   length: 5
   tier: valid
@@ -26527,7 +27199,7 @@ words:
   - main_list
 - word: alder
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - main_list
@@ -26727,10 +27399,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: fåing
   length: 5
   tier: valid
@@ -27122,10 +27798,14 @@ words:
   - main_list
 - word: dritt
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar noun (shit), but commonly used
 - word: stase
   length: 5
   tier: valid
@@ -27139,10 +27819,14 @@ words:
   - main_list
 - word: athen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun (city: Athens)'
 - word: tøyte
   length: 5
   tier: daily
@@ -27295,10 +27979,14 @@ words:
   - main_list
 - word: vogue
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/French word / brand name
 - word: skimt
   length: 5
   tier: valid
@@ -27419,10 +28107,14 @@ words:
   - main_list
 - word: yacht
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Loanword, somewhat integrated but uncommon
 - word: gauss
   length: 5
   tier: valid
@@ -27514,10 +28206,14 @@ words:
   - main_list
 - word: arild
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: sabel
   length: 5
   tier: valid
@@ -27550,10 +28246,14 @@ words:
   - main_list
 - word: sonja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person, Norwegian queen)
 - word: surne
   length: 5
   tier: valid
@@ -27678,10 +28378,14 @@ words:
   - main_list
 - word: haiti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (country)
 - word: fløde
   length: 5
   tier: valid
@@ -27701,10 +28405,14 @@ words:
   - main_list
 - word: smurf
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (fictional character)
 - word: humpe
   length: 5
   tier: valid
@@ -27769,10 +28477,14 @@ words:
   - main_list
 - word: party
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword; Norwegian uses 'fest'
 - word: flyst
   length: 5
   tier: valid
@@ -27898,10 +28610,14 @@ words:
   - main_list
 - word: bæsje
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Childish/informal word for defecation, borderline
 - word: lurve
   length: 5
   tier: valid
@@ -28111,10 +28827,14 @@ words:
   - main_list
 - word: buick
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (car brand)
 - word: kråle
   length: 5
   tier: valid
@@ -28413,10 +29133,14 @@ words:
   - main_list
 - word: snake
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word; Norwegian uses 'slange'
 - word: ishus
   length: 5
   tier: valid
@@ -28447,10 +29171,14 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (region)
 - word: snubl
   length: 5
   tier: valid
@@ -28498,10 +29226,14 @@ words:
   - main_list
 - word: house
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Norwegian
 - word: robbe
   length: 5
   tier: valid
@@ -28916,10 +29648,14 @@ words:
   - main_list
 - word: ellen
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (name); also means 'or' but that is 'eller'
 - word: gøran
   length: 5
   tier: valid
@@ -29150,10 +29886,14 @@ words:
   - main_list
 - word: lunch
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, though fairly integrated; Norwegian also uses 'lunsj'
 - word: tosse
   length: 5
   tier: valid
@@ -29572,10 +30312,14 @@ words:
   - main_list
 - word: norad
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (acronym/organization)
 - word: ratio
   length: 5
   tier: valid
@@ -29659,10 +30403,14 @@ words:
   - main_list
 - word: freud
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (surname)
 - word: trend
   length: 5
   tier: valid
@@ -29867,10 +30615,14 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: fatle
   length: 5
   tier: valid
@@ -30145,10 +30897,14 @@ words:
   - main_list
 - word: svend
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: varet
   length: 5
   tier: valid
@@ -30169,10 +30925,14 @@ words:
   - main_list
 - word: louis
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: harke
   length: 5
   tier: valid
@@ -30323,10 +31083,14 @@ words:
   - main_list
 - word: ahmad
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: sivil
   length: 5
   tier: daily
@@ -30461,10 +31225,14 @@ words:
   - main_list
 - word: tulsa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (US city)
 - word: kauer
   length: 5
   tier: valid
@@ -30484,10 +31252,14 @@ words:
   - main_list
 - word: morse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (surname); 'morsekode' is compound
 - word: avmål
   length: 5
   tier: valid
@@ -30505,10 +31277,14 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: norol
   length: 5
   tier: valid
@@ -31025,10 +31801,14 @@ words:
   - main_list
 - word: steen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (surname)
 - word: snurp
   length: 5
   tier: valid
@@ -31137,10 +31917,14 @@ words:
   scheduled_day: 1698
 - word: macho
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Spanish loanword, somewhat integrated
 - word: aleut
   length: 5
   tier: valid
@@ -31167,10 +31951,14 @@ words:
   - main_list
 - word: trent
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person/place)
 - word: føden
   length: 5
   tier: daily
@@ -31239,10 +32027,14 @@ words:
   - main_list
 - word: omaha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (US city)
 - word: strid
   length: 5
   tier: daily
@@ -31302,10 +32094,14 @@ words:
   - main_list
 - word: libya
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: gnike
   length: 5
   tier: valid
@@ -31325,10 +32121,14 @@ words:
   - main_list
 - word: idaho
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (US state)
 - word: petum
   length: 5
   tier: valid
@@ -31446,10 +32246,14 @@ words:
   - main_list
 - word: svein
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: surre
   length: 5
   tier: valid
@@ -31609,10 +32413,14 @@ words:
   - main_list
 - word: tispe
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Can be derogatory for a woman (also means female dog)
 - word: trutn
   length: 5
   tier: valid
@@ -31620,10 +32428,14 @@ words:
   - main_list
 - word: mount
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Norwegian
 - word: skorp
   length: 5
   tier: valid
@@ -31930,10 +32742,14 @@ words:
   - main_list
 - word: nilen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (the Nile, definite form)
 - word: lønsk
   length: 5
   tier: valid
@@ -31941,10 +32757,14 @@ words:
   - main_list
 - word: story
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Norwegian
 - word: ounce
   length: 5
   tier: valid
@@ -32084,10 +32904,14 @@ words:
   - main_list
 - word: capri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Italian island)
 - word: kladd
   length: 5
   tier: valid
@@ -32108,10 +32932,14 @@ words:
   - main_list
 - word: meyer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (surname)
 - word: halse
   length: 5
   tier: valid
@@ -32427,16 +33255,24 @@ words:
   - main_list
 - word: india
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (country name)
 - word: peter
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: penne
   length: 5
   tier: valid
@@ -32515,10 +33351,14 @@ words:
   - main_list
 - word: essex
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (English county)
 - word: spark
   length: 5
   tier: daily
@@ -32715,10 +33555,14 @@ words:
   - main_list
 - word: tokyo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (city)
 - word: digge
   length: 5
   tier: daily
@@ -32745,10 +33589,14 @@ words:
   - main_list
 - word: crazy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Norwegian
 - word: likør
   length: 5
   tier: valid
@@ -33099,10 +33947,14 @@ words:
   - main_list
 - word: hurpe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Derogatory slang term for a woman
 - word: gjett
   length: 5
   tier: daily
@@ -33176,10 +34028,14 @@ words:
   - main_list
 - word: molde
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian city)
 - word: kloke
   length: 5
   tier: daily
@@ -33330,10 +34186,14 @@ words:
   - main_list
 - word: ulrik
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: løytt
   length: 5
   tier: valid
@@ -33527,7 +34387,7 @@ words:
   - main_list
 - word: netto
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - main_list
@@ -33746,10 +34606,14 @@ words:
   - main_list
 - word: touch
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword
 - word: balsa
   length: 5
   tier: valid
@@ -33821,10 +34685,14 @@ words:
   - main_list
 - word: sioux
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Native American people)
 - word: venås
   length: 5
   tier: valid
@@ -34209,10 +35077,14 @@ words:
   - main_list
 - word: ronny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: amour
   length: 5
   tier: valid
@@ -34249,10 +35121,14 @@ words:
   - main_list
 - word: great
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Norwegian
 - word: rompe
   length: 5
   tier: daily
@@ -34470,10 +35346,14 @@ words:
   - main_list
 - word: hydra
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mythological proper noun / uncommon
 - word: trupp
   length: 5
   tier: valid
@@ -34541,10 +35421,14 @@ words:
   - main_list
 - word: mosby
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (place/surname)
 - word: baser
   length: 5
   tier: daily
@@ -34749,10 +35633,14 @@ words:
   - main_list
 - word: jonny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: gjepe
   length: 5
   tier: valid
@@ -34771,10 +35659,14 @@ words:
   - main_list
 - word: franc
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Currency unit, uncommon in daily Norwegian
 - word: skjøt
   length: 5
   tier: daily
@@ -35264,10 +36156,14 @@ words:
   - main_list
 - word: flash
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword
 - word: suset
   length: 5
   tier: valid
@@ -35452,10 +36348,14 @@ words:
   - main_list
 - word: trust
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, somewhat integrated (business term)
 - word: samos
   length: 5
   tier: valid
@@ -35550,10 +36450,14 @@ words:
   - main_list
 - word: flush
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word (poker term)
 - word: ambra
   length: 5
   tier: valid
@@ -35620,10 +36524,14 @@ words:
   - main_list
 - word: lupus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Medical/Latin term, uncommon for daily puzzle
 - word: boots
   length: 5
   tier: valid
@@ -35700,10 +36608,14 @@ words:
   - main_list
 - word: rhode
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Rhode Island)
 - word: knubb
   length: 5
   tier: valid
@@ -35769,10 +36681,14 @@ words:
   - main_list
 - word: syria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: seink
   length: 5
   tier: valid
@@ -35838,10 +36754,14 @@ words:
   - main_list
 - word: blues
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, music genre — borderline
 - word: ærlig
   length: 5
   tier: daily
@@ -35856,10 +36776,14 @@ words:
   - main_list
 - word: runke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar slang (masturbate)
 - word: luset
   length: 5
   tier: valid
@@ -36313,10 +37237,14 @@ words:
   - main_list
 - word: olsen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (surname)
 - word: sadel
   length: 5
   tier: valid
@@ -36449,10 +37377,14 @@ words:
   - main_list
 - word: tyfus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.82
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Medical term (typhus), uncommon daily word
 - word: kaker
   length: 5
   tier: daily
@@ -36483,10 +37415,14 @@ words:
   - main_list
 - word: pippi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pippi Longstocking)
 - word: tufse
   length: 5
   tier: valid
@@ -36511,10 +37447,14 @@ words:
   - main_list
 - word: jacob
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: skake
   length: 5
   tier: valid
@@ -36682,10 +37622,14 @@ words:
   - main_list
 - word: helge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person)
 - word: fevei
   length: 5
   tier: valid
@@ -36708,10 +37652,14 @@ words:
   - main_list
 - word: borch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (surname)
 - word: frise
   length: 5
   tier: valid
@@ -36749,10 +37697,14 @@ words:
   - main_list
 - word: south
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Norwegian
 - word: flask
   length: 5
   tier: valid
@@ -36847,10 +37799,14 @@ words:
   - main_list
 - word: white
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / surname, not Norwegian
 - word: våryr
   length: 5
   tier: valid
@@ -37824,10 +38780,14 @@ words:
   - main_list
 - word: ibiza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Spanish island)
 - word: vindu
   length: 5
   tier: daily
@@ -37970,10 +38930,14 @@ words:
   - main_list
 - word: paulo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person, São Paulo)
 - word: eilat
   length: 5
   tier: valid
@@ -38229,10 +39193,14 @@ words:
   - main_list
 - word: super
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but well-integrated as prefix/exclamation
 - word: hører
   length: 5
   tier: daily
@@ -38683,10 +39651,14 @@ words:
   - main_list
 - word: asker
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian municipality/city)
 - word: skank
   length: 5
   tier: valid
@@ -38800,10 +39772,14 @@ words:
   - main_list
 - word: henry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: driva
   length: 5
   tier: valid
@@ -39159,10 +40135,14 @@ words:
   - main_list
 - word: freak
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword
 - word: smalt
   length: 5
   tier: daily
@@ -39466,10 +40446,14 @@ words:
   - main_list
 - word: fitte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar slang term
 - word: svare
   length: 5
   tier: daily
@@ -39481,10 +40465,14 @@ words:
   scheduled_day: 1716
 - word: magda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: fiske
   length: 5
   tier: daily
@@ -39538,16 +40526,24 @@ words:
   - main_list
 - word: trick
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but fairly integrated
 - word: funky
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword
 - word: gylle
   length: 5
   tier: valid
@@ -39739,10 +40735,14 @@ words:
   - main_list
 - word: vader
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Primarily known as Darth Vader; archaic Norwegian for 'wading places'
 - word: narko
   length: 5
   tier: daily
@@ -39899,10 +40899,14 @@ words:
   - main_list
 - word: beach
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, not well-integrated into Norwegian
 - word: naube
   length: 5
   tier: valid
@@ -40075,10 +41079,14 @@ words:
   - main_list
 - word: cheng
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person), not a Norwegian word
 - word: plass
   length: 5
   tier: daily
@@ -40120,10 +41128,14 @@ words:
   - main_list
 - word: terje
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: vanse
   length: 5
   tier: valid
@@ -40171,10 +41183,14 @@ words:
   - main_list
 - word: score
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, but well-integrated in Norwegian
 - word: babel
   length: 5
   tier: valid
@@ -40194,7 +41210,7 @@ words:
   - main_list
 - word: åring
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - main_list
@@ -40332,10 +41348,14 @@ words:
   - main_list
 - word: milan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (city)
 - word: steam
   length: 5
   tier: valid
@@ -40516,10 +41536,14 @@ words:
   - main_list
 - word: shake
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword
 - word: luleå
   length: 5
   tier: valid
@@ -40624,10 +41648,14 @@ words:
   - main_list
 - word: korea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: miljø
   length: 5
   tier: daily
@@ -40648,10 +41676,14 @@ words:
   - main_list
 - word: karen
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: datum
   length: 5
   tier: valid
@@ -40853,10 +41885,14 @@ words:
   - main_list
 - word: mette
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (person); also a verb but primarily a name
 - word: ruske
   length: 5
   tier: valid
@@ -41090,16 +42126,24 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: saudi
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (country demonym)
 - word: brask
   length: 5
   tier: valid
@@ -41238,10 +42282,14 @@ words:
   - main_list
 - word: katja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: raner
   length: 5
   tier: daily
@@ -41515,10 +42563,14 @@ words:
   - main_list
 - word: pluto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (planet/Disney character)
 - word: ågrer
   length: 5
   tier: valid
@@ -41587,10 +42639,14 @@ words:
   - main_list
 - word: claus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (person)
 - word: kvæve
   length: 5
   tier: valid
@@ -41791,10 +42847,14 @@ words:
   - main_list
 - word: right
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Norwegian
   history:
   - 1724
   scheduled_day: 1724
@@ -42165,10 +43225,14 @@ words:
   scheduled_day: 1723
 - word: irish
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'English word, not Norwegian (norsk: irsk)'
 - word: gapet
   length: 5
   tier: valid
@@ -42201,10 +43265,14 @@ words:
   - main_list
 - word: johns
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English proper name / possessive
 - word: sverj
   length: 5
   tier: valid
@@ -42568,10 +43636,14 @@ words:
   - main_list
 - word: harry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name); in Norwegian slang means 'tacky' but primarily a name
 - word: tiøre
   length: 5
   tier: valid
@@ -42579,10 +43651,14 @@ words:
   - main_list
 - word: farao
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Uncommon word (pharaoh), borderline daily quality
 - word: plagd
   length: 5
   tier: valid
@@ -42687,7 +43763,7 @@ words:
   - main_list
 - word: storm
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - main_list
@@ -42773,16 +43849,24 @@ words:
   - main_list
 - word: egypt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (country)
 - word: pisse
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar verb (to urinate), borderline
 - word: letta
   length: 5
   tier: valid
@@ -42802,10 +43886,14 @@ words:
   - main_list
 - word: santa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Santa Claus / part of place names)
 - word: erdal
   length: 5
   tier: valid
@@ -42876,10 +43964,14 @@ words:
   - main_list
 - word: deuce
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word (tennis term)
 - word: dyppe
   length: 5
   tier: daily
@@ -42888,10 +43980,14 @@ words:
   - main_list
 - word: fight
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword
 - word: spelt
   length: 5
   tier: valid
@@ -44529,7 +45625,7 @@ words:
   - supplement
 - word: alene
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.25
   sources:
   - supplement
@@ -44720,7 +45816,7 @@ words:
   - supplement
 - word: aller
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -45645,7 +46741,7 @@ words:
   - supplement
 - word: angår
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - supplement
@@ -45835,13 +46931,13 @@ words:
   - supplement
 - word: anser
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.29
   sources:
   - supplement
 - word: anses
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -45877,7 +46973,7 @@ words:
   - supplement
 - word: antar
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -46064,7 +47160,7 @@ words:
   - supplement
 - word: appen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -46629,7 +47725,7 @@ words:
   - supplement
 - word: arter
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -47755,7 +48851,7 @@ words:
   - supplement
 - word: badet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -48297,13 +49393,13 @@ words:
   - supplement
 - word: barna
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.19
   sources:
   - supplement
 - word: barne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -49377,7 +50473,7 @@ words:
   - supplement
 - word: betyr
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.54
   sources:
   - supplement
@@ -49579,13 +50675,13 @@ words:
   - supplement
 - word: bilen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
 - word: biler
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -49908,10 +51004,14 @@ words:
   - supplement
 - word: black
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.52
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Norwegian
 - word: bladd
   length: 5
   tier: valid
@@ -50216,7 +51316,7 @@ words:
   - supplement
 - word: blått
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -50304,7 +51404,7 @@ words:
   - supplement
 - word: bodde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -51226,7 +52326,7 @@ words:
   - supplement
 - word: bredt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -51428,7 +52528,7 @@ words:
   - supplement
 - word: broen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.22
   sources:
   - supplement
@@ -52406,13 +53506,13 @@ words:
   - supplement
 - word: byene
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
 - word: byens
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -52424,7 +53524,7 @@ words:
   - supplement
 - word: bygde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -52659,7 +53759,7 @@ words:
   - supplement
 - word: bøker
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -54092,10 +55192,14 @@ words:
   - supplement
 - word: chris
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.43
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: chrix
   length: 5
   tier: valid
@@ -55583,7 +56687,7 @@ words:
   - supplement
 - word: cupen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -55839,7 +56943,7 @@ words:
   - supplement
 - word: dager
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
@@ -56116,7 +57220,7 @@ words:
   - supplement
 - word: damer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -56876,7 +57980,7 @@ words:
   - supplement
 - word: delte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -59035,7 +60139,7 @@ words:
   - supplement
 - word: døden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -59098,7 +60202,7 @@ words:
   - supplement
 - word: dører
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -59823,10 +60927,14 @@ words:
   - supplement
 - word: einar
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.33
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: einbu
   length: 5
   tier: valid
@@ -60272,7 +61380,7 @@ words:
   - supplement
 - word: eller
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.46
   sources:
   - supplement
@@ -60414,7 +61522,7 @@ words:
   - supplement
 - word: elven
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -60646,7 +61754,7 @@ words:
   - supplement
 - word: enden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -60681,7 +61789,7 @@ words:
   - supplement
 - word: endte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.8
   sources:
   - supplement
@@ -60765,7 +61873,7 @@ words:
   - supplement
 - word: enige
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -60800,7 +61908,7 @@ words:
   - supplement
 - word: enkle
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -61655,13 +62763,13 @@ words:
   - supplement
 - word: evnen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.22
   sources:
   - supplement
 - word: evner
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -63065,10 +64173,14 @@ words:
   - supplement
 - word: first
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.38
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Norwegian
 - word: firte
   length: 5
   tier: valid
@@ -63312,7 +64424,7 @@ words:
   - supplement
 - word: flere
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.12
   sources:
   - supplement
@@ -63441,7 +64553,7 @@ words:
   - supplement
 - word: flyet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -63608,13 +64720,13 @@ words:
   - supplement
 - word: folka
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
 - word: folks
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -63865,7 +64977,7 @@ words:
   - supplement
 - word: foten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -64442,7 +65554,7 @@ words:
   - supplement
 - word: fulle
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -64655,7 +65767,7 @@ words:
   - supplement
 - word: fyren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -64826,7 +65938,7 @@ words:
   - supplement
 - word: føles
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -64838,7 +65950,7 @@ words:
   - supplement
 - word: følte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -64873,7 +65985,7 @@ words:
   - supplement
 - word: førte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -65397,7 +66509,7 @@ words:
   - supplement
 - word: gaten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
@@ -65490,7 +66602,7 @@ words:
   - supplement
 - word: gaver
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -67172,7 +68284,7 @@ words:
   - supplement
 - word: greia
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -67190,7 +68302,7 @@ words:
   - supplement
 - word: greit
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.55
   sources:
   - supplement
@@ -67362,10 +68474,14 @@ words:
   - supplement
 - word: group
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Norwegian
 - word: grout
   length: 5
   tier: valid
@@ -67380,13 +68496,13 @@ words:
   - supplement
 - word: grove
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.19
   sources:
   - supplement
 - word: grovt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -67839,7 +68955,7 @@ words:
   - supplement
 - word: gutta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -68957,7 +70073,7 @@ words:
   - supplement
 - word: hatet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.22
   sources:
   - supplement
@@ -69071,7 +70187,7 @@ words:
   - supplement
 - word: havet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -69448,10 +70564,14 @@ words:
   - supplement
 - word: helga
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.33
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: helgi
   length: 5
   tier: valid
@@ -69537,7 +70657,7 @@ words:
   - supplement
 - word: helst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -69809,7 +70929,7 @@ words:
   - supplement
 - word: heter
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.17
   sources:
   - supplement
@@ -69885,7 +71005,7 @@ words:
   - supplement
 - word: hevet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -70311,7 +71431,7 @@ words:
   - supplement
 - word: hodet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -70869,10 +71989,14 @@ words:
   - supplement
 - word: hotel
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.57
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/international loanword; Norwegian uses 'hotell'
 - word: hotri
   length: 5
   tier: valid
@@ -71045,10 +72169,14 @@ words:
   - supplement
 - word: https
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.42
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: URL protocol prefix, not a word
 - word: huang
   length: 5
   tier: valid
@@ -71334,7 +72462,7 @@ words:
   - supplement
 - word: huset
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -71634,7 +72762,7 @@ words:
   - supplement
 - word: hytta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -71667,7 +72795,7 @@ words:
   - supplement
 - word: hånda
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -71697,13 +72825,13 @@ words:
   - supplement
 - word: håper
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.49
   sources:
   - supplement
 - word: håpet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -71787,7 +72915,7 @@ words:
   - supplement
 - word: hæren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -71958,7 +73086,7 @@ words:
   - supplement
 - word: hørte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -72632,10 +73760,14 @@ words:
   - supplement
 - word: inger
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: inges
   length: 5
   tier: valid
@@ -73773,10 +74905,14 @@ words:
   - supplement
 - word: james
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.69
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: jamey
   length: 5
   tier: valid
@@ -74256,10 +75392,14 @@ words:
   - supplement
 - word: jesus
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.81
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (religious figure)
 - word: jetas
   length: 5
   tier: valid
@@ -74596,10 +75736,14 @@ words:
   - supplement
 - word: jonas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.47
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian first name)
 - word: jondo
   length: 5
   tier: valid
@@ -74607,10 +75751,14 @@ words:
   - supplement
 - word: jones
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.44
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (surname)
 - word: jonis
   length: 5
   tier: valid
@@ -74684,7 +75832,7 @@ words:
   - supplement
 - word: jorda
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.4
   sources:
   - supplement
@@ -75247,10 +76395,14 @@ words:
   - supplement
 - word: jævla
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.96
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar expletive (Norwegian profanity, 'damn/fucking')
 - word: józef
   length: 5
   tier: valid
@@ -75265,10 +76417,14 @@ words:
   - supplement
 - word: jøder
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.57
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Sensitive ethnic/religious term (Jews); could cause controversy as puzzle answer
 - word: jølle
   length: 5
   tier: valid
@@ -75577,13 +76733,13 @@ words:
   - supplement
 - word: kalde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
 - word: kaldt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
@@ -75647,7 +76803,7 @@ words:
   - supplement
 - word: kalte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -76588,10 +77744,14 @@ words:
   - supplement
 - word: kevin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.19
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: keyes
   length: 5
   tier: valid
@@ -77156,7 +78316,7 @@ words:
   - supplement
 - word: kjekt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -77186,7 +78346,7 @@ words:
   - supplement
 - word: kjipt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
@@ -77641,7 +78801,7 @@ words:
   - supplement
 - word: koden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -79056,7 +80216,7 @@ words:
   - supplement
 - word: kåret
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -79270,7 +80430,7 @@ words:
   - supplement
 - word: lagde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -79282,7 +80442,7 @@ words:
   - supplement
 - word: laget
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.55
   sources:
   - supplement
@@ -79570,7 +80730,7 @@ words:
   - supplement
 - word: langs
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -80053,7 +81213,7 @@ words:
   - supplement
 - word: ledet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -80130,7 +81290,7 @@ words:
   - supplement
 - word: legen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -80632,7 +81792,7 @@ words:
   - supplement
 - word: levde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -80998,7 +82158,7 @@ words:
   - supplement
 - word: liker
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.67
   sources:
   - supplement
@@ -81359,7 +82519,7 @@ words:
   - supplement
 - word: lista
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -81383,7 +82543,7 @@ words:
   - supplement
 - word: liten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.54
   sources:
   - supplement
@@ -81449,7 +82609,7 @@ words:
   - supplement
 - word: livet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.6
   sources:
   - supplement
@@ -82123,7 +83283,7 @@ words:
   - supplement
 - word: loven
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
@@ -82135,7 +83295,7 @@ words:
   - supplement
 - word: lovet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -82539,7 +83699,7 @@ words:
   - supplement
 - word: lurer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -82568,7 +83728,7 @@ words:
   - supplement
 - word: lurte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -82711,13 +83871,13 @@ words:
   - supplement
 - word: lyden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
 - word: lyder
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -82909,7 +84069,7 @@ words:
   - supplement
 - word: lyset
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -83016,7 +84176,7 @@ words:
   - supplement
 - word: låter
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.28
   sources:
   - supplement
@@ -83082,7 +84242,7 @@ words:
   - supplement
 - word: lærte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
@@ -83208,7 +84368,7 @@ words:
   - supplement
 - word: løpet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.34
   sources:
   - supplement
@@ -83526,7 +84686,7 @@ words:
   - supplement
 - word: magen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -84300,10 +85460,14 @@ words:
   - supplement
 - word: maria
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.69
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: maric
   length: 5
   tier: valid
@@ -84312,10 +85476,14 @@ words:
   - supplement
 - word: marie
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.49
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: mario
   length: 5
   tier: valid
@@ -84645,7 +85813,7 @@ words:
   - supplement
 - word: maten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.68
   sources:
   - supplement
@@ -85444,7 +86612,7 @@ words:
   - supplement
 - word: mener
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.83
   sources:
   - supplement
@@ -85515,7 +86683,7 @@ words:
   - supplement
 - word: mente
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -85678,7 +86846,7 @@ words:
   - supplement
 - word: meste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -87944,7 +89112,7 @@ words:
   - supplement
 - word: månen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
@@ -88022,7 +89190,7 @@ words:
   - supplement
 - word: måten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -88117,31 +89285,31 @@ words:
   - supplement
 - word: mørkt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
 - word: møter
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
 - word: møtes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
 - word: møtet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.53
   sources:
   - supplement
 - word: møtte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -89027,7 +90195,7 @@ words:
   - supplement
 - word: neida
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.29
   sources:
   - supplement
@@ -89232,7 +90400,7 @@ words:
   - supplement
 - word: nesen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - supplement
@@ -90744,7 +91912,7 @@ words:
   - supplement
 - word: nyere
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -90767,7 +91935,7 @@ words:
   - supplement
 - word: nylig
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -91138,10 +92306,14 @@ words:
   - supplement
 - word: obama
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.18
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: obara
   length: 5
   tier: valid
@@ -92169,7 +93341,7 @@ words:
   - supplement
 - word: ordet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -92238,7 +93410,7 @@ words:
   - supplement
 - word: orker
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -92414,10 +93586,14 @@ words:
   - supplement
 - word: oslos
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Genitive of proper noun Oslo
 - word: osnes
   length: 5
   tier: valid
@@ -93293,7 +94469,7 @@ words:
   - supplement
 - word: paret
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -94899,7 +96075,7 @@ words:
   - supplement
 - word: poeng
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -95268,10 +96444,14 @@ words:
   - supplement
 - word: power
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Norwegian
 - word: pozzo
   length: 5
   tier: valid
@@ -97026,7 +98206,7 @@ words:
   - supplement
 - word: raskt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -97624,7 +98804,7 @@ words:
   - supplement
 - word: reist
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -97935,7 +99115,7 @@ words:
   - supplement
 - word: revet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -99594,7 +100774,7 @@ words:
   - supplement
 - word: rumpa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -99886,7 +101066,7 @@ words:
   - supplement
 - word: rådet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.33
   sources:
   - supplement
@@ -100551,7 +101731,7 @@ words:
   - supplement
 - word: saker
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -101171,7 +102351,7 @@ words:
   - supplement
 - word: satte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -101843,7 +103023,7 @@ words:
   - supplement
 - word: selve
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.97
   sources:
   - supplement
@@ -101919,7 +103099,7 @@ words:
   - supplement
 - word: senga
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
@@ -102810,7 +103990,7 @@ words:
   - supplement
 - word: siden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.06
   sources:
   - supplement
@@ -103366,7 +104546,7 @@ words:
   - supplement
 - word: siste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.81
   sources:
   - supplement
@@ -103596,7 +104776,7 @@ words:
   - supplement
 - word: sjøen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -104036,7 +105216,7 @@ words:
   - supplement
 - word: slags
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - supplement
@@ -104112,13 +105292,13 @@ words:
   - supplement
 - word: slike
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.31
   sources:
   - supplement
 - word: slikt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -104395,7 +105575,7 @@ words:
   - supplement
 - word: snart
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.4
   sources:
   - supplement
@@ -104718,7 +105898,7 @@ words:
   - supplement
 - word: solen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -105386,7 +106566,7 @@ words:
   - supplement
 - word: sprer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -105470,7 +106650,7 @@ words:
   - supplement
 - word: spørs
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -105802,10 +106982,14 @@ words:
   - supplement
 - word: steve
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.39
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun (name)
 - word: steyr
   length: 5
   tier: valid
@@ -105973,7 +107157,7 @@ words:
   - supplement
 - word: stort
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
@@ -106248,10 +107432,14 @@ words:
   - supplement
 - word: støre
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.36
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian PM surname); also valid comparative but primarily recognized as name
 - word: størt
   length: 5
   tier: valid
@@ -106334,7 +107522,7 @@ words:
   - supplement
 - word: suger
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
@@ -106614,13 +107802,13 @@ words:
   - supplement
 - word: svake
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
 - word: svakt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.21
   sources:
   - supplement
@@ -106728,7 +107916,7 @@ words:
   - supplement
 - word: svært
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
@@ -106958,13 +108146,13 @@ words:
   - supplement
 - word: synes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.54
   sources:
   - supplement
 - word: synet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement
@@ -107076,7 +108264,7 @@ words:
   - supplement
 - word: sånne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -107118,7 +108306,7 @@ words:
   - supplement
 - word: såret
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
@@ -107533,7 +108721,7 @@ words:
   - supplement
 - word: taket
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -107841,7 +109029,7 @@ words:
   - supplement
 - word: tapte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.67
   sources:
   - supplement
@@ -109167,13 +110355,13 @@ words:
   - supplement
 - word: tiden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.6
   sources:
   - supplement
 - word: tider
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -109290,22 +110478,26 @@ words:
   - supplement
 - word: timen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
 - word: timer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
 - word: times
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.32
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word (newspaper name), not Norwegian
 - word: timex
   length: 5
   tier: valid
@@ -109770,7 +110962,7 @@ words:
   - supplement
 - word: toget
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -110627,13 +111819,17 @@ words:
   - supplement
 - word: trodd
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.51
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Non-standard form; correct past participle is 'trodd' but very unusual standalone
 - word: troen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
@@ -110716,7 +111912,7 @@ words:
   - supplement
 - word: truer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -110728,7 +111924,7 @@ words:
   - supplement
 - word: truet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -111240,7 +112436,7 @@ words:
   - supplement
 - word: tvers
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -111315,7 +112511,7 @@ words:
   - supplement
 - word: tyder
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
@@ -111387,13 +112583,13 @@ words:
   - supplement
 - word: typen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.77
   sources:
   - supplement
 - word: typer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.73
   sources:
   - supplement
@@ -111451,7 +112647,7 @@ words:
   - supplement
 - word: tyske
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -111517,7 +112713,7 @@ words:
   - supplement
 - word: tåler
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.51
   sources:
   - supplement
@@ -111800,7 +112996,7 @@ words:
   - supplement
 - word: uenig
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -111932,7 +113128,7 @@ words:
   - supplement
 - word: ukene
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -112011,13 +113207,13 @@ words:
   - supplement
 - word: ulike
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.27
   sources:
   - supplement
 - word: ulikt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
@@ -112238,13 +113434,13 @@ words:
   - supplement
 - word: ungen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
 - word: unger
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -112903,7 +114099,7 @@ words:
   - supplement
 - word: vakre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -113180,7 +114376,7 @@ words:
   - supplement
 - word: varer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -113487,7 +114683,7 @@ words:
   - supplement
 - word: veien
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.38
   sources:
   - supplement
@@ -113734,7 +114930,7 @@ words:
   - supplement
 - word: verdt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -113769,7 +114965,7 @@ words:
   - supplement
 - word: verre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -114178,10 +115374,14 @@ words:
   - supplement
 - word: viken
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.17
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Norwegian county)
 - word: vikki
   length: 5
   tier: valid
@@ -114409,7 +115609,7 @@ words:
   - supplement
 - word: vises
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -114444,7 +115644,7 @@ words:
   - supplement
 - word: visst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -114456,7 +115656,7 @@ words:
   - supplement
 - word: viste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -114770,7 +115970,7 @@ words:
   - supplement
 - word: vondt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -114911,7 +116111,7 @@ words:
   - supplement
 - word: våger
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - supplement
@@ -114953,7 +116153,7 @@ words:
   - supplement
 - word: våren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -115001,7 +116201,7 @@ words:
   - supplement
 - word: været
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
@@ -116275,10 +117475,14 @@ words:
   - supplement
 - word: world
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.35
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Norwegian
 - word: worms
   length: 5
   tier: valid
@@ -116869,7 +118073,7 @@ words:
   - supplement
 - word: yngre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -117007,10 +118211,14 @@ words:
   - supplement
 - word: young
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Norwegian
 - word: yours
   length: 5
   tier: valid
@@ -118038,25 +119246,25 @@ words:
   - supplement
 - word: åpent
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
 - word: åpnes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.19
   sources:
   - supplement
 - word: åpnet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
 - word: årene
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.51
   sources:
   - supplement
@@ -118068,7 +119276,7 @@ words:
   - supplement
 - word: årets
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -118440,7 +119648,7 @@ words:
   - supplement
 - word: ørene
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.2
   sources:
   - supplement

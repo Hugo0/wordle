@@ -39,7 +39,9 @@ webapp/static/word-defs/
 webapp/static/word-stats/
 webapp/static/word-history/
 
-
 # Generated share images (rebuilt on deploy)
 webapp/static/images/share/
 scripts/.freq_data
+
+# Curation review temp files
+scripts/.curation_review/
