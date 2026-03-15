@@ -290,12 +290,30 @@ export interface LanguageData {
 
 let _cachedData: LanguageData | null = null;
 
+// ---------------------------------------------------------------------------
+// Compiled JSON loading (from word pipeline)
+// ---------------------------------------------------------------------------
+
+interface CompiledWords {
+    daily: string[];
+    valid: string[];
+    blocked: string[];
+    supplement?: string[];
+    meta: { language_code: string; daily_count: number; valid_count: number; compiled_at: string };
+}
+
+function loadCompiledWords(lang: string): CompiledWords | null {
+    const compiledPath = join(DATA_DIR, 'languages', lang, 'words_compiled.json');
+    return readJsonFile<CompiledWords>(compiledPath);
+}
+
 export function loadAllData(): LanguageData {
     if (_cachedData) return _cachedData;
 
     console.log('[data-loader] Loading data...');
     const langDir = join(DATA_DIR, 'languages');
     const languageCodes = readdirSync(langDir).filter((f) =>
+        existsSync(join(langDir, f, 'words_compiled.json')) ||
         existsSync(join(langDir, f, `${f}_5words.txt`)),
     );
 
@@ -303,7 +321,6 @@ export function loadAllData(): LanguageData {
     const characters: Record<string, string[]> = {};
     for (const lc of languageCodes) {
         configs[lc] = loadLanguageConfig(lc);
-        characters[lc] = loadCharacters(lc);
     }
 
     const wordLists: Record<string, string[]> = {};
@@ -312,14 +329,46 @@ export function loadAllData(): LanguageData {
     const dailyWords: Record<string, string[] | null> = {};
     const curatedSchedules: Record<string, string[] | null> = {};
     const keyboards: Record<string, KeyboardConfig> = {};
+    let compiledCount = 0;
 
     for (const lc of languageCodes) {
-        wordLists[lc] = loadWords(lc, configs[lc]!);
-        supplements[lc] = loadSupplementalWords(lc);
-        blocklists[lc] = loadBlocklist(lc);
-        dailyWords[lc] = loadDailyWords(lc);
-        curatedSchedules[lc] = loadCuratedSchedule(lc);
-        keyboards[lc] = loadKeyboard(lc);
+        // Try compiled JSON first (from word pipeline)
+        const compiled = loadCompiledWords(lc);
+        if (compiled) {
+            // Use compiled data: all tiers combined = word list
+            wordLists[lc] = [...compiled.daily, ...compiled.valid, ...compiled.blocked];
+            supplements[lc] = compiled.supplement || [];
+            blocklists[lc] = new Set(compiled.blocked);
+            dailyWords[lc] = compiled.daily.length > 0 ? compiled.daily : null;
+            curatedSchedules[lc] = loadCuratedSchedule(lc); // may be null if file deleted
+            keyboards[lc] = loadKeyboard(lc);
+            compiledCount++;
+        } else {
+            // Fall back to raw text files
+            wordLists[lc] = loadWords(lc, configs[lc]!);
+            supplements[lc] = loadSupplementalWords(lc);
+            blocklists[lc] = loadBlocklist(lc);
+            dailyWords[lc] = loadDailyWords(lc);
+            curatedSchedules[lc] = loadCuratedSchedule(lc);
+            keyboards[lc] = loadKeyboard(lc);
+        }
+    }
+
+    // Derive characters from word lists (or load from file if available)
+    for (const lc of languageCodes) {
+        const charPath = join(DATA_DIR, 'languages', lc, `${lc}_characters.txt`);
+        if (existsSync(charPath)) {
+            characters[lc] = readTextLines(charPath);
+        } else {
+            // Derive from word list
+            const charSet = new Set<string>();
+            for (const word of wordLists[lc] || []) {
+                for (const char of word) {
+                    charSet.add(char);
+                }
+            }
+            characters[lc] = [...charSet].sort();
+        }
     }
 
     // Build language name map
@@ -351,8 +400,12 @@ export function loadAllData(): LanguageData {
     const stats = {
         totalLanguages: languageCodes.length,
         withSupplements: Object.values(supplements).filter((s) => s.length > 0).length,
+        fromCompiled: compiledCount,
     };
-    console.log(`[data-loader] Loaded ${stats.totalLanguages} languages (${stats.withSupplements} with supplements)`);
+    console.log(
+        `[data-loader] Loaded ${stats.totalLanguages} languages ` +
+        `(${stats.withSupplements} with supplements, ${stats.fromCompiled} from compiled JSON)`,
+    );
 
     _cachedData = {
         languageCodes,

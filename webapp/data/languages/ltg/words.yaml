@@ -1,0 +1,2168 @@
+metadata:
+  language_code: ltg
+  language_name: Latgalian
+  last_pipeline_run: '2026-03-15T00:44:33.263875+00:00'
+  migrated_from: text_files
+  sources:
+  - name: main_list
+    type: community
+    file: ltg_5words.txt
+words:
+- word: izeja
+  length: 5
+  tier: daily
+  frequency: 3.98
+  sources:
+  - main_list
+- word: īlīkt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: uopss
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: reize
+  length: 5
+  tier: daily
+  frequency: 4.63
+  sources:
+  - main_list
+- word: tiļža
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: saukt
+  length: 5
+  tier: daily
+  frequency: 4.6
+  sources:
+  - main_list
+- word: osnys
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: izsīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dzeļt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1724
+  scheduled_day: 1724
+- word: minēt
+  length: 5
+  tier: daily
+  frequency: 4.31
+  sources:
+  - main_list
+- word: klīgt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1725
+  scheduled_day: 1725
+- word: daudz
+  length: 5
+  tier: daily
+  frequency: 6.22
+  sources:
+  - main_list
+- word: ībēgt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: vuokt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: guozt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: treit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1691
+  scheduled_day: 1691
+- word: skrīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: mozus
+  length: 5
+  tier: daily
+  frequency: 4.1
+  sources:
+  - main_list
+  history:
+  - 1707
+  scheduled_day: 1707
+- word: nikur
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: smeļt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: obeji
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1684
+  scheduled_day: 1684
+- word: stīpt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: siļče
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1716
+  scheduled_day: 1716
+- word: kleja
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kuots
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bolva
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dyrkš
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: gaška
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īrast
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kļaus
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pļaut
+  length: 5
+  tier: daily
+  frequency: 3.15
+  sources:
+  - main_list
+- word: gaiļs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ījuot
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nauda
+  length: 5
+  tier: daily
+  frequency: 5.24
+  sources:
+  - main_list
+- word: nūlīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: cikom
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: blāgs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: grīzt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ferma
+  length: 5
+  tier: daily
+  frequency: 3.77
+  sources:
+  - main_list
+- word: ītikt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pīrīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: suojs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: saime
+  length: 5
+  tier: daily
+  frequency: 3.71
+  sources:
+  - main_list
+- word: svece
+  length: 5
+  tier: daily
+  frequency: 3.39
+  sources:
+  - main_list
+- word: skane
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kuoje
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: plita
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: izdēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nuove
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īraut
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: revēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: berzt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1729
+  scheduled_day: 1729
+- word: krušs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: palīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: agrys
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bruno
+  length: 5
+  tier: daily
+  frequency: 4.02
+  sources:
+  - main_list
+- word: krist
+  length: 5
+  tier: daily
+  frequency: 4.1
+  sources:
+  - main_list
+- word: vakar
+  length: 5
+  tier: daily
+  frequency: 5.14
+  sources:
+  - main_list
+- word: ingus
+  length: 5
+  tier: daily
+  frequency: 3.56
+  sources:
+  - main_list
+- word: īnest
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: klāvs
+  length: 5
+  tier: daily
+  frequency: 3.45
+  sources:
+  - main_list
+- word: maize
+  length: 5
+  tier: daily
+  frequency: 4.14
+  sources:
+  - main_list
+  history:
+  - 1689
+  scheduled_day: 1689
+- word: sasīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1719
+  scheduled_day: 1719
+- word: īzyls
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dzert
+  length: 5
+  tier: daily
+  frequency: 4.66
+  sources:
+  - main_list
+- word: kokts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nūrīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: atdēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dzeja
+  length: 5
+  tier: daily
+  frequency: 4.2
+  sources:
+  - main_list
+- word: pylns
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: neikt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: muoja
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dzeit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: velēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: golva
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: sukne
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: spīgt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: prīde
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: rudiņ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: saīts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: forma
+  length: 5
+  tier: daily
+  frequency: 4.66
+  sources:
+  - main_list
+  history:
+  - 1704
+  scheduled_day: 1704
+- word: šuopt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īceļt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1720
+  scheduled_day: 1720
+- word: bryks
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: jauns
+  length: 5
+  tier: daily
+  frequency: 5.23
+  sources:
+  - main_list
+- word: āzeja
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: sarkt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pyrma
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: klase
+  length: 5
+  tier: daily
+  frequency: 4.83
+  sources:
+  - main_list
+- word: gvido
+  length: 5
+  tier: daily
+  frequency: 3.86
+  sources:
+  - main_list
+- word: sēdēt
+  length: 5
+  tier: daily
+  frequency: 4.63
+  sources:
+  - main_list
+- word: viļkt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tikai
+  length: 5
+  tier: daily
+  frequency: 6.55
+  sources:
+  - main_list
+- word: kaukt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īsmys
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1709
+  - 1721
+  scheduled_day: 1721
+- word: pļova
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: snīgt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: karte
+  length: 5
+  tier: daily
+  frequency: 4.79
+  sources:
+  - main_list
+- word: aprīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1703
+  scheduled_day: 1703
+- word: līkne
+  length: 5
+  tier: daily
+  frequency: 3.12
+  sources:
+  - main_list
+- word: kvīkt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: norma
+  length: 5
+  tier: daily
+  frequency: 4.42
+  sources:
+  - main_list
+  history:
+  - 1700
+  scheduled_day: 1700
+- word: tagad
+  length: 5
+  tier: daily
+  frequency: 6.24
+  sources:
+  - main_list
+- word: trīkt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nazyn
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kuoss
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: izrīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ateja
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kōrts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: stuot
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dziļs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: spīst
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: aplīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: žanrs
+  length: 5
+  tier: daily
+  frequency: 3.58
+  sources:
+  - main_list
+- word: telts
+  length: 5
+  tier: daily
+  frequency: 4.14
+  sources:
+  - main_list
+- word: īkūrt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1695
+  scheduled_day: 1695
+- word: švaks
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1688
+  scheduled_day: 1688
+- word: veile
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1693
+  scheduled_day: 1693
+- word: molka
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: arabs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īmīgt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: proza
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bļaka
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dīzyn
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īsaut
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: šķēle
+  length: 5
+  tier: daily
+  frequency: 3.78
+  sources:
+  - main_list
+- word: kauns
+  length: 5
+  tier: daily
+  frequency: 4.54
+  sources:
+  - main_list
+- word: šudiņ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: zorna
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nicik
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: traps
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kuopt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pyust
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: raitu
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īdūbt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1710
+  scheduled_day: 1710
+- word: knībt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1692
+  - 1698
+  scheduled_day: 1698
+- word: beņčs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: viezs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: šaurs
+  length: 5
+  tier: daily
+  frequency: 3.48
+  sources:
+  - main_list
+  history:
+  - 1708
+  scheduled_day: 1708
+- word: īecēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: teirs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ideja
+  length: 5
+  tier: daily
+  frequency: 5.03
+  sources:
+  - main_list
+- word: tuoli
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: jezus
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: sadēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: čuopt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īdūrt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: juoņs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: drūši
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: omots
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: jyura
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: jiura
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: syurs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: malns
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: malta
+  length: 5
+  tier: daily
+  frequency: 3.97
+  sources:
+  - main_list
+- word: nakai
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tauta
+  length: 5
+  tier: daily
+  frequency: 4.68
+  sources:
+  - main_list
+- word: dorbs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īšyut
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tolka
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: grimt
+  length: 5
+  tier: daily
+  frequency: 3.12
+  sources:
+  - main_list
+- word: apsīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ryukt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: krīvs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: vītom
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: syukt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ārrts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: adeit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ruopu
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1701
+  scheduled_day: 1701
+- word: zeime
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1711
+  scheduled_day: 1711
+- word: reibt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: jauki
+  length: 5
+  tier: daily
+  frequency: 5.28
+  sources:
+  - main_list
+- word: viejs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: stigt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: grupa
+  length: 5
+  tier: daily
+  frequency: 5.23
+  sources:
+  - main_list
+- word: šūgod
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: puors
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: teišs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: blogs
+  length: 5
+  tier: daily
+  frequency: 3.96
+  sources:
+  - main_list
+- word: īmeit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1712
+  scheduled_day: 1712
+- word: īteit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1685
+  scheduled_day: 1685
+- word: sauss
+  length: 5
+  tier: daily
+  frequency: 4.06
+  sources:
+  - main_list
+- word: otkon
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: smogs
+  length: 5
+  tier: daily
+  frequency: 3.05
+  sources:
+  - main_list
+- word: krīze
+  length: 5
+  tier: daily
+  frequency: 4.36
+  sources:
+  - main_list
+- word: īcere
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tupēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1697
+  scheduled_day: 1697
+- word: laiva
+  length: 5
+  tier: daily
+  frequency: 3.95
+  sources:
+  - main_list
+- word: šaļts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tyvai
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: suons
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: opols
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: deigt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1706
+  scheduled_day: 1706
+- word: syuds
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pīdēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: olūts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: plyks
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: calms
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1715
+  scheduled_day: 1715
+- word: zvīgt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īpeit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kraut
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: sylts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ryugt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: meils
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: vylks
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: vuoks
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: azars
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īreja
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: lyugt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: banka
+  length: 5
+  tier: daily
+  frequency: 4.77
+  sources:
+  - main_list
+- word: banda
+  length: 5
+  tier: daily
+  frequency: 3.78
+  sources:
+  - main_list
+- word: jiugt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: vaļde
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: atrīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: drūss
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ruods
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: najau
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nikas
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: iveit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: smēde
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: alise
+  length: 5
+  tier: daily
+  frequency: 4.14
+  sources:
+  - main_list
+- word: spors
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: gosts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kauls
+  length: 5
+  tier: daily
+  frequency: 4.02
+  sources:
+  - main_list
+- word: prese
+  length: 5
+  tier: daily
+  frequency: 3.98
+  sources:
+  - main_list
+- word: sieņs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: mīlis
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1699
+  scheduled_day: 1699
+- word: vaine
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: burts
+  length: 5
+  tier: daily
+  frequency: 3.87
+  sources:
+  - main_list
+- word: poukš
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: izlīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: buoba
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dails
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kazyn
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pīlīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kļovs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nīdre
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: gaišs
+  length: 5
+  tier: daily
+  frequency: 3.87
+  sources:
+  - main_list
+- word: kluot
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nūsīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: byuds
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: parīt
+  length: 5
+  tier: daily
+  frequency: 3.68
+  sources:
+  - main_list
+- word: īslīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: cytur
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: reizi
+  length: 5
+  tier: daily
+  frequency: 5.68
+  sources:
+  - main_list
+- word: reits
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dzens
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: poema
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: oklys
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: leigt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pīsīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1714
+  scheduled_day: 1714
+- word: abāds
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: škola
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: škeļt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: vysur
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: taids
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: žbans
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tūgod
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tyukt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dyžan
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: amura
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īsist
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pyrms
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: meija
+  length: 5
+  tier: daily
+  frequency: 3.04
+  sources:
+  - main_list
+- word: mikus
+  length: 5
+  tier: daily
+  frequency: 3.25
+  sources:
+  - main_list
+- word: bļūda
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tūzīm
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ubogs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1722
+  scheduled_day: 1722
+- word: gavēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dyukt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bārzs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: čabēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: prīca
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: reiga
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dzimt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1696
+  scheduled_day: 1696
+- word: snigt
+  length: 5
+  tier: daily
+  frequency: 3.05
+  sources:
+  - main_list
+- word: žults
+  length: 5
+  tier: daily
+  frequency: 3.34
+  sources:
+  - main_list
+  history:
+  - 1687
+  scheduled_day: 1687
+- word: muosa
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: nūdēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ītupt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1728
+  scheduled_day: 1728
+- word: sarīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īrībt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: zvons
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: tymss
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: filma
+  length: 5
+  tier: daily
+  frequency: 5.28
+  sources:
+  - main_list
+- word: pasīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1705
+  scheduled_day: 1705
+- word: muiža
+  length: 5
+  tier: daily
+  frequency: 4.16
+  sources:
+  - main_list
+- word: puiss
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1686
+  scheduled_day: 1686
+- word: syuna
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: slave
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īkūpt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bolss
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īvest
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: muote
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kluss
+  length: 5
+  tier: daily
+  frequency: 3.99
+  sources:
+  - main_list
+- word: voļns
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īmigt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: byukš
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kolns
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: valns
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: sirds
+  length: 5
+  tier: daily
+  frequency: 5.35
+  sources:
+  - main_list
+- word: īvirt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: svors
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: peile
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: suoļs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: zuole
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: sakne
+  length: 5
+  tier: daily
+  frequency: 3.73
+  sources:
+  - main_list
+- word: gulēt
+  length: 5
+  tier: daily
+  frequency: 4.98
+  sources:
+  - main_list
+- word: brist
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1717
+  scheduled_day: 1717
+- word: īveļt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īkaļt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: laiks
+  length: 5
+  tier: daily
+  frequency: 5.81
+  sources:
+  - main_list
+- word: luocs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: grebt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: lieni
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: pants
+  length: 5
+  tier: daily
+  frequency: 4.27
+  sources:
+  - main_list
+- word: turēt
+  length: 5
+  tier: daily
+  frequency: 4.63
+  sources:
+  - main_list
+- word: treis
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dalīt
+  length: 5
+  tier: daily
+  frequency: 3.87
+  sources:
+  - main_list
+- word: vysod
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: veirs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: jumts
+  length: 5
+  tier: daily
+  frequency: 4.18
+  sources:
+  - main_list
+- word: īmest
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bārns
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bravo
+  length: 5
+  tier: daily
+  frequency: 4.18
+  sources:
+  - main_list
+- word: īaugt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: slyms
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: leikt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: svīst
+  length: 5
+  tier: daily
+  frequency: 3.64
+  sources:
+  - main_list
+- word: škībt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1682
+  scheduled_day: 1682
+- word: kaids
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1690
+  - 1718
+  scheduled_day: 1718
+- word: shema
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: buozt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: marta
+  length: 5
+  tier: daily
+  frequency: 4.94
+  sources:
+  - main_list
+- word: dunēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: salīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: peikt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: bauda
+  length: 5
+  tier: daily
+  frequency: 4.13
+  sources:
+  - main_list
+- word: īūrbt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: stors
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1683
+  scheduled_day: 1683
+- word: kuoļš
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: lauzt
+  length: 5
+  tier: daily
+  frequency: 3.73
+  sources:
+  - main_list
+- word: dagda
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: maukt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: vīgls
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ziļbe
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kruot
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1727
+  scheduled_day: 1727
+- word: īleit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: geibt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ūneja
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kungs
+  length: 5
+  tier: daily
+  frequency: 4.98
+  sources:
+  - main_list
+- word: vuojs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: gords
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: aleja
+  length: 5
+  tier: daily
+  frequency: 3.52
+  sources:
+  - main_list
+- word: jaukt
+  length: 5
+  tier: daily
+  frequency: 3.71
+  sources:
+  - main_list
+- word: solts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: osums
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īlikt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: niule
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: zeile
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: varēt
+  length: 5
+  tier: daily
+  frequency: 3.29
+  sources:
+  - main_list
+- word: teika
+  length: 5
+  tier: daily
+  frequency: 3.86
+  sources:
+  - main_list
+- word: īcept
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: symts
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: atlīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: storp
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1713
+  scheduled_day: 1713
+- word: rāzna
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1726
+  scheduled_day: 1726
+- word: īneit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īlēkt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: četri
+  length: 5
+  tier: daily
+  frequency: 4.89
+  sources:
+  - main_list
+- word: atsīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: avīze
+  length: 5
+  tier: daily
+  frequency: 4.35
+  sources:
+  - main_list
+- word: nīzēt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: spert
+  length: 5
+  tier: daily
+  frequency: 3.87
+  sources:
+  - main_list
+  history:
+  - 1702
+  scheduled_day: 1702
+- word: cilts
+  length: 5
+  tier: daily
+  frequency: 4.16
+  sources:
+  - main_list
+- word: saule
+  length: 5
+  tier: daily
+  frequency: 4.86
+  sources:
+  - main_list
+- word: tuļzt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dasīt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: zeist
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: edžus
+  length: 5
+  tier: daily
+  frequency: 3.58
+  sources:
+  - main_list
+- word: īmaļt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īrēkt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: īzīst
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1694
+  scheduled_day: 1694
+- word: zyrgs
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: atīzt
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1723
+  scheduled_day: 1723
+- word: dyums
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: šūzīm
+  length: 5
+  tier: daily
+  sources:
+  - main_list

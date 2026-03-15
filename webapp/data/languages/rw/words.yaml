@@ -1,0 +1,193 @@
+metadata:
+  language_code: rw
+  language_name: Kinyarwanda
+  last_pipeline_run: '2026-03-15T00:47:02.581749+00:00'
+  migrated_from: text_files
+  sources:
+  - name: main_list
+    type: community
+    file: rw_5words.txt
+words:
+- word: titir
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1712
+  scheduled_day: 1712
+- word: garam
+  length: 5
+  tier: daily
+  frequency: 1.74
+  sources:
+  - main_list
+  history:
+  - 1698
+  - 1708
+  - 1723
+  - 1724
+  - 1726
+  scheduled_day: 1726
+- word: sutam
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1688
+  - 1705
+  - 1720
+  scheduled_day: 1720
+- word: ganir
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1685
+  - 1690
+  - 1700
+  - 1704
+  - 1707
+  - 1709
+  - 1710
+  - 1718
+  - 1725
+  - 1729
+  scheduled_day: 1729
+- word: karab
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: shyir
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1683
+  - 1716
+  - 1719
+  scheduled_day: 1719
+- word: takar
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1711
+  scheduled_day: 1711
+- word: tigit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: hirit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1684
+  scheduled_day: 1684
+- word: samir
+  length: 5
+  tier: daily
+  frequency: 3.38
+  sources:
+  - main_list
+  history:
+  - 1703
+  scheduled_day: 1703
+- word: tanag
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1727
+  scheduled_day: 1727
+- word: karag
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1689
+  scheduled_day: 1689
+- word: curam
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1697
+  - 1701
+  scheduled_day: 1701
+- word: rigit
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1728
+  scheduled_day: 1728
+- word: curik
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1682
+  - 1687
+  - 1692
+  - 1693
+  - 1714
+  - 1715
+  scheduled_day: 1715
+- word: tamir
+  length: 5
+  tier: daily
+  frequency: 2.02
+  sources:
+  - main_list
+  history:
+  - 1686
+  scheduled_day: 1686
+- word: hirik
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: kamat
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1691
+  - 1694
+  - 1695
+  - 1717
+  scheduled_day: 1717
+- word: andik
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: dodor
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1696
+  - 1699
+  - 1702
+  - 1706
+  - 1713
+  - 1721
+  - 1722
+  scheduled_day: 1722

@@ -58,8 +58,28 @@ def get_all_language_codes():
     return [d.name for d in LANGUAGES_DIR.iterdir() if d.is_dir()]
 
 
+_compiled_cache: dict[str, dict | None] = {}
+
+
+def _load_compiled(lang_code: str) -> dict | None:
+    """Load compiled JSON for a language."""
+    if lang_code in _compiled_cache:
+        return _compiled_cache[lang_code]
+    compiled_file = LANGUAGES_DIR / lang_code / "words_compiled.json"
+    if not compiled_file.exists():
+        _compiled_cache[lang_code] = None
+        return None
+    with open(compiled_file, encoding="utf-8") as f:
+        result = json.load(f)
+    _compiled_cache[lang_code] = result
+    return result
+
+
 def load_word_list(lang_code: str) -> list[str]:
-    """Load the main word list for a language."""
+    """Load the main word list for a language (from compiled JSON or text file)."""
+    compiled = _load_compiled(lang_code)
+    if compiled:
+        return compiled["daily"] + compiled["valid"] + compiled["blocked"]
     word_file = LANGUAGES_DIR / lang_code / f"{lang_code}_5words.txt"
     if not word_file.exists():
         return []
@@ -69,6 +89,9 @@ def load_word_list(lang_code: str) -> list[str]:
 
 def load_supplement_words(lang_code: str) -> list[str]:
     """Load the supplemental word list for a language."""
+    compiled = _load_compiled(lang_code)
+    if compiled:
+        return compiled.get("supplement", [])
     word_file = LANGUAGES_DIR / lang_code / f"{lang_code}_5words_supplement.txt"
     if not word_file.exists():
         return []
@@ -77,10 +100,10 @@ def load_supplement_words(lang_code: str) -> list[str]:
 
 
 def load_daily_words(lang_code: str) -> list[str]:
-    """Load the curated daily word list for a language.
-
-    Matches production behavior in app.py: skips comment lines and lowercases.
-    """
+    """Load the curated daily word list for a language."""
+    compiled = _load_compiled(lang_code)
+    if compiled:
+        return compiled["daily"]
     word_file = LANGUAGES_DIR / lang_code / f"{lang_code}_daily_words.txt"
     if not word_file.exists():
         return []
@@ -92,6 +115,9 @@ def load_daily_words(lang_code: str) -> list[str]:
 
 def load_blocklist(lang_code: str) -> set[str]:
     """Load blocklist words for a language."""
+    compiled = _load_compiled(lang_code)
+    if compiled:
+        return set(compiled["blocked"])
     blocklist_file = LANGUAGES_DIR / lang_code / f"{lang_code}_blocklist.txt"
     if not blocklist_file.exists():
         return set()
@@ -102,12 +128,18 @@ def load_blocklist(lang_code: str) -> set[str]:
 
 
 def load_characters(lang_code: str) -> list[str]:
-    """Load the character set for a language."""
+    """Load the character set for a language (derived from word list)."""
     char_file = LANGUAGES_DIR / lang_code / f"{lang_code}_characters.txt"
-    if not char_file.exists():
-        return []
-    with open(char_file, encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip()]
+    if char_file.exists():
+        with open(char_file, encoding="utf-8") as f:
+            return [line.strip() for line in f if line.strip()]
+    # Derive from word list
+    words = load_word_list(lang_code)
+    chars = set()
+    for word in words:
+        for ch in word:
+            chars.add(ch)
+    return sorted(chars)
 
 
 def load_language_config(lang_code: str) -> dict | None:
