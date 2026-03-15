@@ -82,7 +82,7 @@ export function getDailyWordConsistentHash(
     words: string[],
     exclude: Set<string>,
     dayIdx: number,
-    langCode: string,
+    langCode: string
 ): string {
     const ring = getHashRing(words, langCode);
     const dayH = dayHash(dayIdx, langCode);
@@ -102,7 +102,7 @@ export function getDailyWordConsistentHash(
 export function getDailyWordLegacy(
     words: string[],
     blocklist: Set<string>,
-    dayIdx: number,
+    dayIdx: number
 ): string {
     const listLen = words.length;
 

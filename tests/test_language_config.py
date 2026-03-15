@@ -170,9 +170,7 @@ class TestKeyboardConfig:
             pytest.skip(f"{lang}: only {daily_count} daily words (stub language)")
 
         keyboard_file = LANGUAGES_DIR / lang / f"{lang}_keyboard.json"
-        assert keyboard_file.exists(), (
-            f"{lang}: {daily_count} daily words but no keyboard file"
-        )
+        assert keyboard_file.exists(), f"{lang}: {daily_count} daily words but no keyboard file"
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_not_empty(self, lang):

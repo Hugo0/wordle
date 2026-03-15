@@ -24,14 +24,10 @@ describe('SSR Rendering', () => {
         let html: string;
 
         // First SSR fetch triggers Nuxt page compilation — needs extra time
-        it(
-            'contains title tag with Wordle',
-            async () => {
-                html = await fetchHtml('/en');
-                expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
-            },
-            30_000,
-        );
+        it('contains title tag with Wordle', async () => {
+            html = await fetchHtml('/en');
+            expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
+        }, 30_000);
 
         it('contains og:title meta tag', async () => {
             html = html || (await fetchHtml('/en'));

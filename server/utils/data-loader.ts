@@ -19,10 +19,7 @@ function resolveDataDir(): string {
     if (envDataDir && existsSync(envDataDir)) return envDataDir;
 
     // Development: resolve relative to process cwd
-    const candidates = [
-        resolve(process.cwd(), 'data'),
-        resolve(process.cwd(), '..', 'data'),
-    ];
+    const candidates = [resolve(process.cwd(), 'data'), resolve(process.cwd(), '..', 'data')];
     for (const candidate of candidates) {
         if (existsSync(candidate)) return candidate;
     }
@@ -59,7 +56,7 @@ let _defaultConfig: Record<string, any> | null = null;
 export function loadLanguageConfig(lang: string): LanguageConfig {
     if (!_defaultConfig) {
         _defaultConfig = readJsonFile<Record<string, any>>(
-            join(DATA_DIR, 'default_language_config.json'),
+            join(DATA_DIR, 'default_language_config.json')
         )!;
     }
     const defaultConfig = _defaultConfig;
@@ -244,7 +241,7 @@ export function loadAllData(): LanguageData {
     console.log('[data-loader] Loading data...');
     const langDir = join(DATA_DIR, 'languages');
     const languageCodes = readdirSync(langDir).filter((f) =>
-        existsSync(join(langDir, f, 'words.json')),
+        existsSync(join(langDir, f, 'words.json'))
     );
 
     const configs: Record<string, LanguageConfig> = {};
@@ -292,7 +289,7 @@ export function loadAllData(): LanguageData {
         totalWords: Object.values(wordLists).reduce((sum, wl) => sum + wl.length, 0),
     };
     console.log(
-        `[data-loader] Loaded ${stats.totalLanguages} languages (${stats.totalWords} total words)`,
+        `[data-loader] Loaded ${stats.totalLanguages} languages (${stats.totalWords} total words)`
     );
 
     _cachedData = {

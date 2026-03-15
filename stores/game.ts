@@ -174,7 +174,6 @@ export const useGameStore = defineStore('game', () => {
         return _normalizedWordMap;
     }
 
-
     /**
      * Fully normalize a character (positional variants + diacritics).
      * E.g., "ך" -> "כ" -> "כ", or "ä" -> "a".

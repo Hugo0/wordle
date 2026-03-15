@@ -59,9 +59,7 @@ class TestHistoryPreservation:
         all_days = set()
         for entry in words_data.words:
             for d in entry.history:
-                assert d not in all_days, (
-                    f"{lang}: day {d} appears in history for multiple words"
-                )
+                assert d not in all_days, f"{lang}: day {d} appears in history for multiple words"
                 all_days.add(d)
 
 

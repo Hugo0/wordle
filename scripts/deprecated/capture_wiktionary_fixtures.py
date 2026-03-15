@@ -20,9 +20,7 @@ from pathlib import Path
 # It is deprecated and non-functional.
 PROJECT_ROOT = Path(__file__).parent.parent
 
-raise ImportError(
-    "This script depends on the deleted Flask wiktionary module. It is deprecated."
-)
+raise ImportError("This script depends on the deleted Flask wiktionary module. It is deprecated.")
 
 from wiktionary import WIKT_LANG_MAP, parse_wikt_definition  # noqa: E402
 
