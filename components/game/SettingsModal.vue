@@ -373,7 +373,7 @@ function installPwa(): void {
 function setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
     if (!canSetDifficulty(level)) {
         settings.difficultyShake = true;
-        settings.difficultyWarning = 'Can\'t change difficulty after guessing';
+        settings.difficultyWarning = "Can't change difficulty after guessing";
         setTimeout(() => {
             settings.difficultyShake = false;
             settings.difficultyWarning = '';
