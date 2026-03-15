@@ -11,6 +11,8 @@
         "postinstall": "nuxt prepare",
         "test": "vitest run",
         "test:watch": "vitest",
+        "test:e2e": "playwright test --config playwright.config.ts",
+        "test:e2e:headed": "playwright test --config playwright.config.ts --headed",
         "format": "prettier --write \"**/*.{ts,js,vue,json}\"",
         "format:check": "prettier --check \"**/*.{ts,js,vue,json}\""
     },
