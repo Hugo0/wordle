@@ -127,11 +127,18 @@ describe('API Routes', () => {
             expect(data.words.length).toBeGreaterThan(0);
             expect(data.words.length).toBeLessThanOrEqual(30);
 
-            // Check word entry shape
-            const word = data.words[0];
-            expect(word.day_idx).toBeDefined();
-            expect(typeof word.word).toBe('string');
-            expect(word.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+            // First entry is today's word (hidden)
+            const todayWord = data.words[0];
+            expect(todayWord.day_idx).toBeDefined();
+            expect(todayWord.is_today).toBe(true);
+            expect(todayWord.word).toBeNull();
+
+            // Second entry is a past word (visible)
+            if (data.words.length > 1) {
+                const pastWord = data.words[1];
+                expect(typeof pastWord.word).toBe('string');
+                expect(pastWord.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+            }
         });
     });
 

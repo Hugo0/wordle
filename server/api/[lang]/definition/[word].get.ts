@@ -6,7 +6,7 @@ import { fetchDefinition } from '../../../utils/definitions';
 
 export default defineEventHandler(async (event) => {
     const lang = getRouterParam(event, 'lang')!;
-    const word = getRouterParam(event, 'word')!;
+    const word = getRouterParam(event, 'word')!.normalize('NFC');
     const data = loadAllData();
 
     if (!data.languageCodes.includes(lang)) {

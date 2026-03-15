@@ -61,24 +61,27 @@ export default defineEventHandler((event) => {
 
     const words: Array<{
         day_idx: number;
-        word: string;
+        word: string | null;
         date: string;
         definition: { definition: string; part_of_speech?: string } | null;
         stats: { total: number; wins: number } | null;
+        is_today: boolean;
     }> = [];
 
     for (let idx = startIdx; idx > endIdx; idx--) {
+        const isToday = idx === todaysIdx;
         const word = getWordForDay(lang, idx);
         const date = idxToDate(idx);
-        const stats = loadWordStats(lang, idx);
-        const defResult = readCachedDefinition(word, lang);
+        const stats = isToday ? null : loadWordStats(lang, idx);
+        const defResult = isToday ? null : readCachedDefinition(word, lang);
 
         words.push({
             day_idx: idx,
-            word,
+            word: isToday ? null : word,
             date: date.toISOString().slice(0, 10),
             definition: defResult,
             stats: stats ? { total: stats.total, wins: stats.wins } : null,
+            is_today: isToday,
         });
     }
 
