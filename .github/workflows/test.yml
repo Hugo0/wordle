@@ -86,6 +86,9 @@ jobs:
   nuxt-tests:
     name: Nuxt Tests (vitest)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nuxt
 
     steps:
       - uses: actions/checkout@v4
@@ -97,17 +100,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-workspace
+
+      - name: Prepare Nuxt
+        run: node node_modules/nuxt/bin/nuxt.mjs prepare
 
       - name: Run vitest (unit + integration + parity)
-        run: pnpm --filter wordle-global-nuxt test
+        run: pnpm test
 
   nuxt-e2e:
     name: Nuxt E2E (Playwright)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nuxt
 
     steps:
       - uses: actions/checkout@v4
@@ -119,16 +127,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-workspace
+
+      - name: Prepare Nuxt
+        run: node node_modules/nuxt/bin/nuxt.mjs prepare
 
       - name: Install Playwright browsers
-        run: cd nuxt && npx playwright install chromium --with-deps
+        run: npx playwright install chromium --with-deps
 
       - name: Run Playwright E2E tests
-        run: pnpm --filter wordle-global-nuxt test:e2e
+        run: pnpm test:e2e
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
