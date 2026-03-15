@@ -19,10 +19,7 @@ function resolveDataDir(): string {
     if (envDataDir && existsSync(envDataDir)) return envDataDir;
 
     // Development: resolve relative to process cwd
-    const candidates = [
-        resolve(process.cwd(), 'data'),
-        resolve(process.cwd(), '..', 'data'),
-    ];
+    const candidates = [resolve(process.cwd(), 'data'), resolve(process.cwd(), '..', 'data')];
     for (const candidate of candidates) {
         if (existsSync(candidate)) return candidate;
     }
@@ -323,7 +320,7 @@ export function loadAllData(): LanguageData {
     const languageCodes = readdirSync(langDir).filter(
         (f) =>
             existsSync(join(langDir, f, 'words.json')) ||
-            existsSync(join(langDir, f, `${f}_5words.txt`)),
+            existsSync(join(langDir, f, `${f}_5words.txt`))
     );
 
     const configs: Record<string, LanguageConfig> = {};
@@ -416,7 +413,7 @@ export function loadAllData(): LanguageData {
     };
     console.log(
         `[data-loader] Loaded ${stats.totalLanguages} languages ` +
-            `(${stats.withSupplements} with supplements, ${stats.fromWordsJson} from words.json)`,
+            `(${stats.withSupplements} with supplements, ${stats.fromWordsJson} from words.json)`
     );
 
     _cachedData = {

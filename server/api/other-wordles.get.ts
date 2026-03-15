@@ -14,10 +14,7 @@ function resolveDataDir(): string {
     const envDataDir = process.env.NUXT_DATA_DIR;
     if (envDataDir && existsSync(envDataDir)) return envDataDir;
 
-    const candidates = [
-        resolve(process.cwd(), 'data'),
-        resolve(process.cwd(), '..', 'data'),
-    ];
+    const candidates = [resolve(process.cwd(), 'data'), resolve(process.cwd(), '..', 'data')];
     for (const candidate of candidates) {
         if (existsSync(candidate)) return candidate;
     }
