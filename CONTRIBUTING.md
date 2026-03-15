@@ -33,8 +33,7 @@ wordle/
 ├── webapp/
 │   └── data/                  # Language data (word lists, configs, keyboards)
 │       ├── languages/{lang}/  # Per-language files
-│       │   ├── words.yaml              # Source of truth (word pipeline)
-│       │   ├── words_compiled.json     # Runtime word data
+│       │   ├── words.json               # Word data (source of truth + runtime)
 │       │   ├── keyboard.json           # Keyboard layout
 │       │   └── language_config.json    # UI translations, metadata
 │       └── default_language_config.json
@@ -55,7 +54,7 @@ wordle/
 ### Daily Word Selection
 - Algorithm in `server/utils/data-loader.ts`
 - Consistent hashing (post Jan 25, 2026), legacy shuffle before that
-- Word data loaded from `webapp/data/languages/{lang}/words_compiled.json`
+- Word data loaded from `webapp/data/languages/{lang}/words.json`
 
 ### Color Algorithm (Wordle rules)
 - Green (correct): Letter in correct position
@@ -101,7 +100,7 @@ uv run pytest tests/                           # Run Python tests
 
 ### Word Lists
 
-Word data is managed via the word pipeline in `scripts/word_pipeline/`. Source of truth is `webapp/data/languages/{lang}/words.yaml`.
+Word data is managed via the word pipeline in `scripts/word_pipeline/`. Source of truth is `webapp/data/languages/{lang}/words.json`.
 
 ### Keyboards
 
@@ -126,7 +125,7 @@ UI text is in `webapp/data/languages/{lang}/language_config.json`. Please ensure
 ### Adding a New Language
 
 1. Create folder: `webapp/data/languages/{lang_code}/`
-2. Add `words.yaml` with word list data
+2. Add `words.json` with word list data
 3. Run the word pipeline: `cd scripts && uv run python -m word_pipeline run {lang_code}`
 4. (Optional) Add `language_config.json` — UI translations and metadata
 5. (Optional) Add `keyboard.json` — custom keyboard layout
