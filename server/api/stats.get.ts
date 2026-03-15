@@ -64,7 +64,7 @@ export default defineEventHandler(() => {
         });
     }
 
-    langStats.sort((a, b) => b.n_words - a.n_words);
+    langStats.sort((a, b) => a.name.localeCompare(b.name));
 
     const globalPlays = langStats.reduce((sum, ls) => sum + ls.total_plays, 0);
     const globalWins = langStats.reduce((sum, ls) => sum + ls.total_wins, 0);
