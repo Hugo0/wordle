@@ -34,7 +34,7 @@ def build_land_grid(coastlines, resolution=720):
             if len(pts) >= 3:
                 draw.polygon(pts, fill=255)
     # Crop the center strip
-    grid_arr = np.array(grid_img)[:, w:w*2]
+    grid_arr = np.array(grid_img)[:, w : w * 2]
     return grid_arr > 128, w, h
 
 
@@ -97,8 +97,9 @@ def render_shaded(rotation_deg, land_grid, grid_w, grid_h):
     spec = spec.filter(ImageFilter.GaussianBlur(18))
     mask = Image.new("L", (RENDER_SIZE, RENDER_SIZE), 0)
     R = int(RADIUS)
-    ImageDraw.Draw(mask).ellipse([int(CX)-R, int(CY)-R, int(CX)+R, int(CY)+R], fill=255)
+    ImageDraw.Draw(mask).ellipse([int(CX) - R, int(CY) - R, int(CX) + R, int(CY) + R], fill=255)
     from PIL import ImageChops
+
     spec.putalpha(ImageChops.multiply(spec.split()[3], mask))
     img = Image.alpha_composite(img, spec)
 
@@ -117,7 +118,7 @@ def main():
     for shape in sf.shapes():
         parts = list(shape.parts) + [len(shape.points)]
         for i in range(len(parts) - 1):
-            ring = shape.points[parts[i]:parts[i + 1]]
+            ring = shape.points[parts[i] : parts[i + 1]]
             coastlines.append([(pt[1], pt[0]) for pt in ring])
     print(f"  {len(coastlines)} polygons")
 
@@ -130,14 +131,17 @@ def main():
         angle = (360.0 / FRAMES) * i
         frame = render_shaded(angle, land_grid, gw, gh)
         frames.append(frame)
-        print(f"  {i+1}/{FRAMES}")
+        print(f"  {i + 1}/{FRAMES}")
 
     # Save APNG — 350ms per frame = slow, gentle rotation
     delay = 350
     frames[0].save(
         out / "globe_v3.apng",
-        save_all=True, append_images=frames[1:],
-        duration=delay, loop=0, disposal=2,
+        save_all=True,
+        append_images=frames[1:],
+        duration=delay,
+        loop=0,
+        disposal=2,
     )
     frames[0].save(out / "globe_v3_f0.png")
     frames[4].save(out / "globe_v3_f4.png")
