@@ -36,8 +36,8 @@ jobs:
 
       - name: Check Python formatting & linting (ruff)
         run: |
-          uv run ruff check webapp/ tests/
-          uv run ruff format --check webapp/ tests/
+          uv run ruff check webapp/ tests/ scripts/
+          uv run ruff format --check webapp/ tests/ scripts/
 
       - name: Check TypeScript formatting (prettier)
         run: pnpm format:check
@@ -80,36 +80,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run vitest with coverage
-        run: pnpm test:coverage
-
-  nuxt-tests:
-    name: Nuxt Tests (vitest)
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-
-      - name: Install Nuxt dependencies
-        run: cd nuxt && pnpm install --no-frozen-lockfile
-
       - name: Prepare Nuxt
-        run: cd nuxt && node node_modules/nuxt/bin/nuxt.mjs prepare
+        run: npx nuxt prepare
 
-      - name: Run vitest (unit + integration + parity)
-        run: cd nuxt && pnpm test
+      - name: Run vitest
+        run: pnpm test
 
-  nuxt-e2e:
-    name: Nuxt E2E (Playwright)
+  e2e:
+    name: E2E Tests (Playwright)
     runs-on: ubuntu-latest
 
     steps:
@@ -123,24 +101,24 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install Nuxt dependencies
-        run: cd nuxt && pnpm install --no-frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Prepare Nuxt
-        run: cd nuxt && node node_modules/nuxt/bin/nuxt.mjs prepare
+        run: npx nuxt prepare
 
       - name: Install Playwright browsers
-        run: cd nuxt && npx playwright install chromium --with-deps
+        run: npx playwright install chromium --with-deps
 
       - name: Run Playwright E2E tests
-        run: cd nuxt && pnpm test:e2e
+        run: pnpm test:e2e
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: nuxt/playwright-report/
+          path: playwright-report/
           retention-days: 14
 
   build:
@@ -149,12 +127,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Set up Python
-        run: uv python install 3.14
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
@@ -166,12 +138,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: |
-          uv sync
-          pnpm install
-
-      - name: Type check
-        run: pnpm exec vue-tsc --noEmit
+        run: pnpm install
 
       - name: Build
         run: pnpm build

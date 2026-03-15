@@ -9,6 +9,10 @@ node_modules/
 .pnpm-store/
 webapp/static/dist/
 
+# Nuxt
+.nuxt/
+.output/
+
 # Python
 __pycache__/
 *.py[cod]

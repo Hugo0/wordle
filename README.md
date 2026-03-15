@@ -1,17 +1,17 @@
 # Wordle Global
 
 [![Tests](https://github.com/Hugo0/wordle/actions/workflows/test.yml/badge.svg)](https://github.com/Hugo0/wordle/actions/workflows/test.yml)
-[![Languages](https://img.shields.io/badge/languages-65+-blue)](https://wordle.global)
+[![Languages](https://img.shields.io/badge/languages-78-blue)](https://wordle.global)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Hugo0/wordle/pulls)
 
-![Wordle Global](webapp/static/images/og-image.png)
+![Wordle Global](public/images/og-image.png)
 
-**[Play now at wordle.global](https://wordle.global/)** — the daily word guessing game in 65+ languages. Open source, community-driven, no ads.
+**[Play now at wordle.global](https://wordle.global/)** — the daily word guessing game in 78 languages. Open source, community-driven, no ads.
 
 ## Languages
 
-‎العربية‎ · Azərbaycan · български · brezhoneg · català · ‎کوردی‎ · čeština · dansk · Deutsch · Ελληνικά · English · Esperanto · Español · eesti · euskara · ‎فارسی‎ · Suomi · føroyskt · français · Friulian · Frysk · Gaeilge · Gàidhlig · Galego · ‎עברית‎ · hrvatski · magyar · Հայերեն · արեւմտահայերէն · Interlingua · Occidental · Íslenska · Italiano · ქართული · 한국어 · latine · latgaliski · latviešu · Lëtzebuergesch · lietuvių · Māori · македонски · Монгол · नेपाली · Nederlands · Norsk Bokmål · Norsk Nynorsk · occitan · Palauan · Plattdüütsch · polski · Português · Quenya · Română · русский · Ikinyarwanda · slovenčina · Slovenski · српски · Svenska · Türkçe · Türkmençe · tlhIngan · Українська · Tiếng Việt
+‎العربية‎ · Azərbaycan · বাংলা · български · brezhoneg · català · ‎کوردی‎ · čeština · dansk · Deutsch · Ελληνικά · English · Esperanto · Español · eesti · euskara · ‎فارسی‎ · Suomi · føroyskt · français · Friulian · Frysk · Gaeilge · Gàidhlig · Galego · Hausa · ‎हिन्दी‎ · ‎עברית‎ · hrvatski · magyar · Հայերեն · արեւմdelays ‎ · bahasa Indonesia · Interlingua · Occidental · Íslenska · Italiano · 日本語 · ქართული · 한국어 · latine · latgaliski · latviešu · Lëtzebuergesch · lietuvių · Māori · македонски · Melayu · Монгол · मराठी · नेपाली · Nederlands · Norsk Bokmål · Norsk Nynorsk · occitan · ‎ਪੰਜਾਬੀ‎ · Palauan · Plattdüütsch · polski · Português · Quenya · Română · русский · Ikinyarwanda · shqip · slovenčina · Slovenski · српски · Svenska · Tagalog · Türkçe · Türkmençe · tlhIngan · Українська · ‎اردو‎ · Oʻzbekcha · Tiếng Việt · Yorùbá
 
 Don't see your language? [Add it!](#add-a-new-language)
 
@@ -25,7 +25,7 @@ Found a bad word, missing character, or bug? [Open an issue](https://github.com/
 
 ### Improve a word list
 
-Each language has a word list you can [edit directly on GitHub](https://github.com/Hugo0/wordle/tree/main/webapp/data/languages) (click any language folder, then the pencil icon on the `_5words.txt` file). Remove bad words, add missing ones, fix misspellings — GitHub will walk you through creating a pull request.
+Word data is managed via `words.yaml` files in each language folder under [`webapp/data/languages/`](https://github.com/Hugo0/wordle/tree/main/webapp/data/languages). Remove bad words, add missing ones, fix misspellings — GitHub will walk you through creating a pull request.
 
 ### Translate the UI
 
@@ -34,14 +34,15 @@ If text is showing in English when it should be in your language, edit the `lang
 ### Add a new language
 
 1. Create a folder: `webapp/data/languages/{lang_code}/`
-2. Add a word list: `{lang_code}_5words.txt` (one 5-letter word per line, lowercase)
-3. (Optional) Add a keyboard layout, UI translations, and supplement words
+2. Add a `words.yaml` with word list data
+3. Run the word pipeline: `cd scripts && uv run python -m word_pipeline run {lang_code}`
+4. (Optional) Add a keyboard layout, UI translations
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full details and dev setup.
 
 ## For Developers
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for architecture, code style, and guidelines.
+Built with **Nuxt 3** (Vue 3, Nitro server, Tailwind CSS v4). See [CONTRIBUTING.md](CONTRIBUTING.md) for architecture, code style, and guidelines.
 
 ```bash
 git clone https://github.com/Hugo0/wordle.git && cd wordle
