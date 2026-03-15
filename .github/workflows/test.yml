@@ -99,11 +99,8 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
 
-      - name: Install root dependencies
-        run: pnpm install
-
       - name: Install Nuxt dependencies
-        run: cd nuxt && pnpm install --ignore-workspace
+        run: cd nuxt && pnpm install --no-frozen-lockfile
 
       - name: Prepare Nuxt
         run: cd nuxt && node node_modules/nuxt/bin/nuxt.mjs prepare
@@ -125,13 +122,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'pnpm'
-
-      - name: Install root dependencies
-        run: pnpm install
 
       - name: Install Nuxt dependencies
-        run: cd nuxt && pnpm install --ignore-workspace
+        run: cd nuxt && pnpm install --no-frozen-lockfile
 
       - name: Prepare Nuxt
         run: cd nuxt && node node_modules/nuxt/bin/nuxt.mjs prepare

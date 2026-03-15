@@ -65,10 +65,30 @@ def _get_git_provenance(lang: str) -> str:
             [
                 "git",
                 "log",
+                "--all",
                 "--diff-filter=A",
                 "--format=%as",
                 "--",
                 f"webapp/data/languages/{lang}/{lang}_5words.txt",
+            ],
+            capture_output=True,
+            text=True,
+            cwd=repo_root,
+            timeout=5,
+        )
+        lines = result.stdout.strip().split("\n")
+        if lines and lines[-1]:
+            return lines[-1]
+        # Try words.yaml if original file not found
+        result = subprocess.run(
+            [
+                "git",
+                "log",
+                "--all",
+                "--diff-filter=A",
+                "--format=%as",
+                "--",
+                f"webapp/data/languages/{lang}/words.yaml",
             ],
             capture_output=True,
             text=True,
