@@ -4,7 +4,7 @@ posthog.init('phc_DMY07B83ghetzxgIbBhobbdSjlueym6vNVVZwM79SPp', {
     api_host: 'https://eu.i.posthog.com',
     defaults: '2026-01-30',
     autocapture: false,
-    capture_pageview: false, // We track pageviews via trackPageView/trackHomepageView
+    capture_pageview: false,
     capture_pageleave: true,
     disable_session_recording: false,
     session_recording: {

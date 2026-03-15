@@ -55,7 +55,7 @@ import posthog from './posthog';
 // GA4 only tracks these core events (with registered custom dimensions: language, won, attempts).
 // Everything else is PostHog-only. GA4 silently drops unregistered dimensions, so there's no
 // point sending rich events to it.
-const GA4_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon', 'page_view_enhanced']);
+const GA4_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon', '$pageview']);
 
 // Events excluded from PostHog to stay within free tier (1M events/month).
 // These high-volume events (fired per-guess) are still tracked in GA4 where there is no cap.
@@ -145,7 +145,7 @@ interface ErrorParams {
 
 /**
  * Safe dual-send wrapper.
- * GA4: only core events (game_start, game_complete, game_abandon, page_view_enhanced).
+ * GA4: only core events (game_start, game_complete, game_abandon, $pageview).
  * PostHog: everything except high-volume per-guess events.
  */
 const track = (eventName: string, params?: Record<string, unknown>): void => {
@@ -727,7 +727,7 @@ export const trackReferralLanding = (language: string, referralParam: string): v
  * Call once on page load to capture session context
  */
 export const trackPageView = (language: string): void => {
-    track('page_view_enhanced', {
+    track('$pageview', {
         language,
         is_pwa: isStandalone(),
         platform: getPlatform(),
