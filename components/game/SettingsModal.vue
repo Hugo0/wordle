@@ -63,6 +63,7 @@
                     </p>
                     <div
                         class="flex rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-600"
+                        :class="{ shake: settings.difficultyShake }"
                     >
                         <button
                             type="button"
@@ -296,14 +297,58 @@ watch(
 // TODO: When localRtl changes, update the game board direction
 // (requires adding a mutable RTL override to the language or game store)
 
-/** Can't go higher than the max difficulty any guess was submitted at. */
+/**
+ * Smart difficulty gating: check if all past guesses satisfy the target level.
+ * - Easy → Normal: all guesses must be valid dictionary words
+ * - Easy/Normal → Hard: all guesses must follow hard mode rules (use revealed hints)
+ * Going down is always allowed.
+ */
 const DIFFICULTY_LEVELS = { easy: 0, normal: 1, hard: 2 } as const;
-const canSetDifficulty = (level: 'easy' | 'normal' | 'hard') => {
+
+function allGuessesAreValidWords(): boolean {
+    for (let r = 0; r < game.activeRow; r++) {
+        const row = game.tiles[r];
+        if (!row) continue;
+        const word = row.join('').toLowerCase();
+        if (word && !lang.wordListSet.has(word)) return false;
+    }
+    return true;
+}
+
+function allGuessesFollowHardMode(): boolean {
+    for (let r = 1; r < game.activeRow; r++) {
+        const row = game.tiles[r];
+        if (!row) continue;
+        const guess = row.join('').toLowerCase();
+        if (!guess) continue;
+        for (let prev = 0; prev < r; prev++) {
+            const prevRow = game.tiles[prev];
+            const prevColors = game.tileColors[prev];
+            if (!prevRow || !prevColors) continue;
+            for (let c = 0; c < prevRow.length; c++) {
+                const color = prevColors[c];
+                const letter = prevRow[c]?.toLowerCase();
+                if (!letter) continue;
+                if (color === 'correct' && guess[c] !== letter) return false;
+                if (color === 'semicorrect' && !guess.includes(letter)) return false;
+            }
+        }
+    }
+    return true;
+}
+
+function canSetDifficulty(level: 'easy' | 'normal' | 'hard'): boolean {
     if (game.activeRow === 0 || game.gameOver) return true;
-    return DIFFICULTY_LEVELS[level] <= game.maxDifficultyUsed;
-};
-// Keep canToggleHard for the Hard button styling
-const canToggleHard = computed(() => canSetDifficulty('hard'));
+
+    const currentLevel = settings.hardMode ? 2 : allowAnyWord.value ? 0 : 1;
+    // Going down is always allowed
+    if (DIFFICULTY_LEVELS[level] <= currentLevel) return true;
+
+    // Going up: check if past guesses satisfy the target
+    if (DIFFICULTY_LEVELS[level] >= 1 && !allGuessesAreValidWords()) return false;
+    if (DIFFICULTY_LEVELS[level] >= 2 && !allGuessesFollowHardMode()) return false;
+    return true;
+}
 
 /** PWA install support -- will be false until a beforeinstallprompt event fires. */
 const canInstallPwa = ref(false);
