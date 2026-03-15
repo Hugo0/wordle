@@ -19,6 +19,7 @@ import { splitWord } from '~/utils/graphemes';
 import { calculateCommunityPercentile } from '~/utils/stats';
 import { WORD_LENGTH, MAX_GUESSES } from '~/utils/types';
 import type { KeyState, TileColor, Notification } from '~/utils/types';
+import { animateRevealRow, animateKeyNudge } from '~/utils/game/useGameAnimations';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -122,6 +123,21 @@ export const useGameStore = defineStore('game', () => {
     const allowAnyWord = ref(false);
 
     const maxDifficultyUsed = ref(0);
+
+    // =======================================================================
+    // DOM refs (set by game page via setBoardEl/setKeyboardEl)
+    // =======================================================================
+
+    let _getBoardEl: (() => HTMLElement | null) | null = null;
+    let _getKeyboardEl: (() => HTMLElement | null) | null = null;
+
+    function setBoardEl(getter: () => HTMLElement | null): void {
+        _getBoardEl = getter;
+    }
+
+    function setKeyboardEl(getter: () => HTMLElement | null): void {
+        _getKeyboardEl = getter;
+    }
 
     // =======================================================================
     // Timing state for analytics (module-level equivalent)
@@ -586,67 +602,36 @@ export const useGameStore = defineStore('game', () => {
     /** Staggered flip animation for a completed row. Returns a Promise. */
     function revealRow(rowIndex: number): Promise<void> {
         if (!import.meta.client) {
-            // During SSR, just sync tiles immediately
             showTiles();
             return Promise.resolve();
         }
 
-        const FLIP_DURATION = 500;
-        const MIDPOINT = 250;
-        const STAGGER = 200;
-        const tileCount = WORD_LENGTH;
         const lang = useLanguageStore();
         const keys = keyClasses.value;
-
-        const board = document.querySelector('.game-board');
-        const rowEl = board?.children[rowIndex] as HTMLElement | undefined;
+        const boardEl = _getBoardEl?.() ?? null;
 
         return new Promise((resolve) => {
-            for (let t = 0; t < tileCount; t++) {
-                const visualIdx = lang.rightToLeft ? tileCount - 1 - t : t;
-                const dataIdx = lang.rightToLeft ? tileCount - 1 - visualIdx : visualIdx;
+            animateRevealRow(boardEl, rowIndex, lang.rightToLeft, {
+                onMidpoint(visualIdx, dataIdx) {
+                    const finalClass = tileClasses.value[rowIndex]?.[dataIdx] || '';
+                    tileClassesVisual.value[rowIndex]?.splice(visualIdx, 1, finalClass);
+                    const tileChar = tiles.value[rowIndex]?.[dataIdx] || '';
+                    tilesVisual.value[rowIndex]?.splice(visualIdx, 1, tileChar);
 
-                setTimeout(() => {
-                    const tileEl = rowEl?.children[visualIdx] as HTMLElement | undefined;
-                    if (tileEl) {
-                        tileEl.style.animation = `flipReveal ${FLIP_DURATION}ms ease-in-out`;
+                    const keyUpdate = pendingKeyUpdates.value[dataIdx];
+                    if (keyUpdate) {
+                        updateKeyColor(keyUpdate.char, keyUpdate.state, keys);
                     }
-
-                    // At midpoint: swap color via reactivity
-                    setTimeout(() => {
-                        const finalClass = tileClasses.value[rowIndex]?.[dataIdx] || '';
-                        tileClassesVisual.value[rowIndex]?.splice(visualIdx, 1, finalClass);
-                        const tileChar = tiles.value[rowIndex]?.[dataIdx] || '';
-                        tilesVisual.value[rowIndex]?.splice(visualIdx, 1, tileChar);
-
-                        // Update keyboard color for this tile
-                        const keyUpdate = pendingKeyUpdates.value[dataIdx];
-                        if (keyUpdate) {
-                            updateKeyColor(keyUpdate.char, keyUpdate.state, keys);
-                        }
-                    }, MIDPOINT);
-
-                    // Clean up after animation
-                    setTimeout(() => {
-                        if (tileEl) tileEl.style.animation = '';
-                        if (t === tileCount - 1) resolve();
-                    }, FLIP_DURATION);
-                }, t * STAGGER);
-            }
+                },
+                onComplete: resolve,
+            });
         });
     }
 
     /** Animate a keyboard key with a CSS animation class. */
     function _nudgeKey(char: string, animClass: string): void {
         if (!import.meta.client) return;
-        const el = document.querySelector(`button[data-char="${CSS.escape(char)}"]`);
-        if (!el) return;
-        el.classList.remove(animClass);
-        void (el as HTMLElement).offsetWidth; // Force reflow
-        el.classList.add(animClass);
-        el.addEventListener('animationend', () => el.classList.remove(animClass), {
-            once: true,
-        });
+        animateKeyNudge(_getKeyboardEl?.() ?? null, char, animClass);
     }
 
     /** Shake animation for an invalid input. */
@@ -1245,6 +1230,8 @@ export const useGameStore = defineStore('game', () => {
         // hardMode is owned by settings store
 
         // Actions
+        setBoardEl,
+        setKeyboardEl,
         initKeyClasses,
         resetCaches,
         initTimingState,

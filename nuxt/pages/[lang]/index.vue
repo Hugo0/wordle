@@ -121,8 +121,16 @@ if (allLangs.value?.language_codes) {
     useHreflang(allLangs.value.language_codes);
 }
 
+// Template refs for animation DOM access (avoids document.querySelector in store)
+const gameBoardRef = ref<{ boardEl: HTMLElement | null } | null>(null);
+const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);
+
 // --- Client-side initialization ---
 onMounted(() => {
+    // Pass DOM refs to game store for animations
+    game.setBoardEl(() => gameBoardRef.value?.boardEl ?? null);
+    game.setKeyboardEl(() => gameKeyboardRef.value?.$el ?? null);
+
     // Keyboard event listener — MUST be first, before anything that might throw
     window.addEventListener('keydown', handleKeyDown);
 
@@ -187,10 +195,10 @@ function handleKeyDown(e: KeyboardEvent) {
             />
 
             <!-- The game board -->
-            <GameBoard />
+            <GameBoard ref="gameBoardRef" />
 
             <!-- The keyboard -->
-            <GameKeyboard
+            <GameKeyboard ref="gameKeyboardRef"
                 :keyboard="langStore.keyboard"
                 :hints="langStore.keyDiacriticHints"
             />
