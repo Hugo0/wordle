@@ -4162,6 +4162,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15727,6 +15730,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,

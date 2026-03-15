@@ -43,6 +43,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -87,6 +90,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -125,6 +131,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -539,7 +548,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "deáin",
@@ -557,6 +569,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -618,6 +633,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -744,6 +762,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -758,6 +779,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -772,6 +796,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -920,6 +947,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1030,6 +1060,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1188,6 +1221,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1509,6 +1545,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1649,6 +1688,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -1671,6 +1713,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -1745,7 +1790,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "binbe",
@@ -1861,6 +1909,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -2316,6 +2367,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -2338,6 +2392,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -2488,6 +2545,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -2567,6 +2627,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -2653,6 +2716,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -3004,6 +3070,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3048,6 +3117,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3175,6 +3247,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3306,6 +3381,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3542,7 +3620,10 @@
       "frequency": 2.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dúmas",
@@ -3993,7 +4074,10 @@
       "frequency": 1.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "potaí",
@@ -4059,6 +4143,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4256,7 +4343,10 @@
       "frequency": 1.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mamat",
@@ -4348,6 +4438,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4733,6 +4826,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4811,6 +4907,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -5135,6 +5234,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -5235,6 +5337,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -5383,6 +5488,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -5502,7 +5610,10 @@
       "frequency": 5.01,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "clóbh",
@@ -5552,6 +5663,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -6220,6 +6334,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -6503,6 +6620,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -6602,6 +6722,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -6816,6 +6939,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -6911,6 +7037,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -7079,6 +7208,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -7369,7 +7501,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gcoda",
@@ -8022,6 +8157,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -8139,7 +8277,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salem",
@@ -8397,6 +8538,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -8418,7 +8562,10 @@
       "frequency": 1.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nuige",
@@ -8467,7 +8614,10 @@
       "frequency": 4.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gogal",
@@ -9056,6 +9206,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9142,6 +9295,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9439,6 +9595,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9592,6 +9751,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9937,6 +10099,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10022,7 +10187,10 @@
       "frequency": 2.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "uaire",
@@ -10101,7 +10269,10 @@
       "frequency": 2.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "magan",
@@ -10125,6 +10296,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10256,7 +10430,10 @@
       "frequency": 4.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "féach",
@@ -10451,6 +10628,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10529,6 +10709,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10605,6 +10788,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10988,6 +11174,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -11233,7 +11422,10 @@
       "frequency": 2.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bunóc",
@@ -11330,6 +11522,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -11399,7 +11594,10 @@
       "frequency": 2.36,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gáibh",
@@ -11440,7 +11638,10 @@
       "frequency": 2.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mblas",
@@ -11569,7 +11770,10 @@
       "frequency": 2.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blióg",
@@ -11641,7 +11845,10 @@
       "frequency": 1.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "meala",
@@ -11659,6 +11866,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -11805,7 +12015,10 @@
       "frequency": 2.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mbord",
@@ -12104,6 +12317,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12227,6 +12443,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12241,6 +12460,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -12308,7 +12530,10 @@
       "frequency": 1.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ngall",
@@ -12371,7 +12596,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dcccl",
@@ -12379,7 +12607,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "munch",
@@ -12389,6 +12620,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12426,7 +12660,10 @@
       "frequency": 3.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tsáír",
@@ -12557,7 +12794,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "merle",
@@ -12567,6 +12807,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12854,6 +13097,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12925,6 +13171,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -13253,6 +13502,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -13457,7 +13709,10 @@
       "frequency": 3.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "roinn",
@@ -13711,7 +13966,10 @@
       "frequency": 2.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ghlao",
@@ -13777,7 +14035,10 @@
       "frequency": 2.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maine",
@@ -14307,7 +14568,10 @@
       "frequency": 3.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cosán",
@@ -14467,6 +14731,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -14664,7 +14931,10 @@
       "frequency": 2.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "leath",
@@ -14941,7 +15211,10 @@
       "frequency": 2.73,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gáifí",
@@ -14999,6 +15272,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15035,6 +15311,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15076,6 +15355,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15105,7 +15387,10 @@
       "frequency": 3.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "priam",
@@ -15311,6 +15596,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15540,6 +15828,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15742,7 +16033,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "milne",
@@ -16902,7 +17196,10 @@
       "frequency": 3.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "anoir",
@@ -17107,6 +17404,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17129,6 +17429,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17142,7 +17445,10 @@
       "frequency": 3.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "plána",
@@ -17340,6 +17646,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17362,6 +17671,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17416,6 +17728,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17494,6 +17809,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17549,6 +17867,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -17762,6 +18083,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17861,7 +18185,10 @@
       "frequency": 1.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mílic",
@@ -17955,6 +18282,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -18228,7 +18558,10 @@
       "frequency": 1.36,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "carúl",
@@ -18494,6 +18827,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -18892,6 +19228,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19343,6 +19682,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19391,6 +19733,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19405,6 +19750,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19736,6 +20084,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19780,6 +20131,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19855,7 +20209,10 @@
       "frequency": 4.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maire",
@@ -20331,6 +20688,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -20353,6 +20713,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -20685,7 +21048,10 @@
       "frequency": 3.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "písín",
@@ -20741,6 +21107,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -20817,6 +21186,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -20953,6 +21325,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21377,6 +21752,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21455,6 +21833,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21549,6 +21930,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21588,6 +21972,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21643,6 +22030,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21771,6 +22161,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21897,7 +22290,10 @@
       "frequency": 3.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "breab",
@@ -21961,7 +22357,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "irial",
@@ -22019,6 +22418,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -22089,6 +22491,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -22158,6 +22563,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -22291,6 +22699,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -22381,6 +22792,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -22491,6 +22905,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -22503,7 +22920,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "heala",
@@ -23151,6 +23571,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -23932,6 +24355,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -24542,6 +24968,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -24844,6 +25273,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -25222,6 +25654,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -25421,6 +25856,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -25802,6 +26240,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -25954,7 +26395,10 @@
       "frequency": 2.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fothú",
@@ -26199,6 +26643,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -26292,6 +26739,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -26344,6 +26794,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -26437,7 +26890,10 @@
       "frequency": 2.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "séala",
@@ -26668,7 +27124,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "troid",
@@ -26766,6 +27225,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -26936,6 +27398,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -27044,7 +27509,10 @@
       "frequency": 2.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tréad",
@@ -27149,6 +27617,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -27389,6 +27860,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -27958,6 +28432,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -28122,7 +28599,10 @@
       "frequency": 2.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "díslí",
@@ -28659,6 +29139,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -29021,6 +29504,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -29357,6 +29843,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -29445,6 +29934,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -29523,7 +30015,10 @@
       "frequency": 3.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mútaí",
@@ -29792,6 +30287,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -29983,6 +30481,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -30083,6 +30584,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -30170,7 +30674,10 @@
       "frequency": 2.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "leoin",
@@ -30266,6 +30773,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -30653,7 +31163,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "basán",
@@ -30719,6 +31232,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -30812,6 +31328,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -30894,6 +31413,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -30983,6 +31505,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -31366,6 +31891,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -31379,7 +31907,10 @@
       "frequency": 1.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fonsú",
@@ -31643,7 +32174,10 @@
       "frequency": 2.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "réadú",
@@ -31801,7 +32335,10 @@
       "frequency": 2.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cróit",
@@ -31844,6 +32381,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -31880,6 +32420,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32027,6 +32570,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32239,6 +32785,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32384,6 +32933,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32497,6 +33049,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32535,6 +33090,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32605,6 +33163,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32748,6 +33309,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -32863,7 +33427,10 @@
       "frequency": 2.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cuaig",
@@ -33271,7 +33838,10 @@
       "frequency": 3.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bport",
@@ -33671,6 +34241,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -33800,7 +34373,10 @@
       "frequency": 2.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "booth",
@@ -33810,6 +34386,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -33944,6 +34523,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -33999,6 +34581,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -34254,7 +34839,10 @@
       "frequency": 2.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gcána",
@@ -34434,7 +35022,10 @@
       "frequency": 3.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dhúna",
@@ -34540,6 +35131,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -34860,6 +35454,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -34994,6 +35591,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -35158,6 +35758,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -35594,6 +36197,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -35818,6 +36424,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -35936,7 +36545,10 @@
       "frequency": 2.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ranna",
@@ -36209,7 +36821,10 @@
       "frequency": 2.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ucits",
@@ -36228,6 +36843,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -36241,7 +36859,10 @@
       "frequency": 2.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sucaí",
@@ -36291,6 +36912,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1717
       ]
@@ -36319,6 +36943,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -36465,6 +37092,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -36488,6 +37118,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -36551,6 +37184,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -36581,6 +37217,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -36857,6 +37496,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37061,6 +37703,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37237,6 +37882,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37267,6 +37915,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37653,6 +38304,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37748,6 +38402,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37794,6 +38451,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37833,6 +38493,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -37869,6 +38532,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -38053,6 +38719,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -38105,6 +38774,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -38189,6 +38861,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -38288,7 +38963,10 @@
       "frequency": 2.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tráil",
@@ -38304,7 +38982,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "fuála",
@@ -38894,7 +39575,10 @@
       "frequency": 3.01,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sámaí",
@@ -39142,6 +39826,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -39229,6 +39916,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -39337,7 +40027,10 @@
       "frequency": 2.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maith",
@@ -39472,7 +40165,10 @@
       "frequency": 2.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "toicí",
@@ -39645,6 +40341,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -39737,6 +40436,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -39982,6 +40684,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -40556,6 +41261,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -40616,6 +41324,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -40921,6 +41632,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -41025,7 +41739,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "manga",
@@ -41034,7 +41751,10 @@
       "frequency": 3.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "haifa",
@@ -41076,6 +41796,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -41315,6 +42038,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -41374,7 +42100,10 @@
       "frequency": 1.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mhaol",
@@ -42398,7 +43127,10 @@
       "frequency": 3.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "achtú",
@@ -42501,7 +43233,10 @@
       "frequency": 2.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alain",
@@ -42756,7 +43491,10 @@
       "frequency": 3.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "caoga",
@@ -43050,6 +43788,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -43110,6 +43851,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -43132,6 +43876,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -43176,6 +43923,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -43369,6 +44119,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -43894,6 +44647,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -43926,7 +44682,10 @@
       "frequency": 2.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "feisí",
@@ -43974,6 +44733,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -44034,6 +44796,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -44143,6 +44908,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -44582,6 +45350,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,

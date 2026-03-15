@@ -35,7 +35,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "heyst",
@@ -134,7 +137,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "svisk",
@@ -342,7 +348,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kyknu",
@@ -406,7 +415,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skørð",
@@ -486,7 +498,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skarn",
@@ -526,7 +541,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "peiki",
@@ -624,7 +642,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aksla",
@@ -1021,7 +1042,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "úrgom",
@@ -1688,7 +1712,10 @@
       "frequency": 3.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jóels",
@@ -1793,7 +1820,10 @@
       "frequency": 4.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hóttu",
@@ -1892,7 +1922,10 @@
       "frequency": 3.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útlán",
@@ -2067,7 +2100,10 @@
       "frequency": 3.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "snevl",
@@ -2083,7 +2119,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kveis",
@@ -2220,7 +2259,10 @@
       "frequency": 3.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ørsmá",
@@ -2284,7 +2326,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brotn",
@@ -2332,7 +2377,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gerst",
@@ -2436,7 +2484,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rubin",
@@ -2445,7 +2496,10 @@
       "frequency": 3.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avoyð",
@@ -2470,7 +2524,10 @@
       "frequency": 4.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "íbygd",
@@ -2849,7 +2906,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "libyi",
@@ -3099,7 +3159,10 @@
       "frequency": 3.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "smáum",
@@ -3171,7 +3234,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hesin",
@@ -3310,7 +3376,10 @@
       "frequency": 3.81,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "greta",
@@ -3552,7 +3621,10 @@
       "frequency": 3.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rósin",
@@ -3705,7 +3777,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avund",
@@ -4283,7 +4358,10 @@
       "frequency": 3.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rammi",
@@ -4443,7 +4521,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alfeg",
@@ -4501,7 +4582,10 @@
       "frequency": 4.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "knúgv",
@@ -4681,6 +4765,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1684
       ]
@@ -4699,7 +4786,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "smink",
@@ -4732,7 +4822,10 @@
       "frequency": 3.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "livur",
@@ -5216,7 +5309,10 @@
       "frequency": 3.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tongd",
@@ -5578,7 +5674,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spýti",
@@ -5999,7 +6098,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "basun",
@@ -6072,7 +6174,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bress",
@@ -6137,7 +6242,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ímund",
@@ -6202,7 +6310,10 @@
       "frequency": 3.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "plógv",
@@ -6332,7 +6443,10 @@
       "frequency": 3.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vilja",
@@ -6380,7 +6494,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bleyt",
@@ -6486,7 +6603,10 @@
       "frequency": 4.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lógar",
@@ -7081,7 +7201,10 @@
       "frequency": 3.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blink",
@@ -7090,7 +7213,10 @@
       "frequency": 3.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gentu",
@@ -7243,7 +7369,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "árógv",
@@ -7379,7 +7508,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "glugg",
@@ -7742,7 +7874,10 @@
       "frequency": 3.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aðrir",
@@ -7846,7 +7981,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lakku",
@@ -8207,7 +8345,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lívsá",
@@ -8440,7 +8581,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "andøv",
@@ -8496,7 +8640,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "doyðs",
@@ -8558,7 +8705,10 @@
       "frequency": 3.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ásigl",
@@ -8782,7 +8932,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hálað",
@@ -9282,7 +9435,10 @@
       "frequency": 3.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "slagu",
@@ -9339,7 +9495,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "seoul",
@@ -9573,7 +9732,10 @@
       "frequency": 4.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "johns",
@@ -9582,7 +9744,10 @@
       "frequency": 3.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dummi",
@@ -9646,7 +9811,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tevir",
@@ -9774,7 +9942,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "óeydn",
@@ -9910,7 +10081,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rakul",
@@ -10327,7 +10501,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "flogi",
@@ -10464,7 +10641,10 @@
       "frequency": 3.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mækan",
@@ -10529,7 +10709,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lilja",
@@ -10545,7 +10728,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "broyt",
@@ -10930,7 +11116,10 @@
       "frequency": 4.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skori",
@@ -11085,7 +11274,10 @@
       "frequency": 3.95,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "moral",
@@ -11094,7 +11286,10 @@
       "frequency": 4.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "slakk",
@@ -11389,7 +11584,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "óenda",
@@ -12043,7 +12241,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fiska",
@@ -12776,7 +12977,10 @@
       "frequency": 3.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hálvd",
@@ -12905,7 +13109,10 @@
       "frequency": 4.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "slavn",
@@ -13002,7 +13209,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "paula",
@@ -13187,7 +13397,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "órusl",
@@ -13908,7 +14121,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kodda",
@@ -14389,7 +14605,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bjóði",
@@ -14429,7 +14648,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klæði",
@@ -14677,7 +14899,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lykkj",
@@ -14765,7 +14990,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tøðið",
@@ -14943,7 +15171,10 @@
       "frequency": 3.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skóta",
@@ -15498,7 +15729,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lødda",
@@ -15571,7 +15805,10 @@
       "frequency": 3.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "virdu",
@@ -16332,7 +16569,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "knøst",
@@ -16659,7 +16899,10 @@
       "frequency": 3.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hoyri",
@@ -17210,7 +17453,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bólið",
@@ -17378,7 +17624,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lunna",
@@ -17664,7 +17913,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "teist",
@@ -17809,7 +18061,10 @@
       "frequency": 3.61,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "merkj",
@@ -17890,7 +18145,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "glapp",
@@ -17974,7 +18232,10 @@
       "frequency": 5.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gníst",
@@ -18055,7 +18316,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stink",
@@ -18063,7 +18327,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "unnur",
@@ -18099,7 +18366,10 @@
       "frequency": 3.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jasøg",
@@ -18208,7 +18478,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "faðir",
@@ -18232,7 +18505,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dyngd",
@@ -18344,7 +18620,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kimað",
@@ -18562,7 +18841,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "síggi",
@@ -18794,7 +19076,10 @@
       "frequency": 4.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "føstu",
@@ -18891,7 +19176,10 @@
       "frequency": 3.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "drátt",
@@ -19197,7 +19485,10 @@
       "frequency": 3.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "órætt",
@@ -19256,7 +19547,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gerða",
@@ -19641,7 +19935,10 @@
       "frequency": 3.89,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bøtar",
@@ -19761,7 +20058,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aldin",
@@ -19777,7 +20077,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "flytt",
@@ -19945,7 +20248,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dygst",
@@ -20645,7 +20951,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trung",
@@ -20669,7 +20978,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "áslak",
@@ -20718,7 +21030,10 @@
       "frequency": 3.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "røddi",
@@ -21508,7 +21823,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "karti",
@@ -21938,7 +22256,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "raðan",
@@ -23094,7 +23415,10 @@
       "frequency": 3.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tengt",
@@ -23142,7 +23466,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "elina",
@@ -23406,7 +23733,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kenst",
@@ -23438,7 +23768,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "oydnu",
@@ -23813,7 +24146,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "parað",
@@ -23886,7 +24222,10 @@
       "frequency": 3.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kólað",
@@ -23950,7 +24289,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lisnu",
@@ -24119,7 +24461,10 @@
       "frequency": 3.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ábyrg",
@@ -24568,7 +24913,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eggum",
@@ -24681,7 +25029,10 @@
       "frequency": 3.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kløtr",
@@ -24883,7 +25234,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mastr",
@@ -25404,7 +25758,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fræað",
@@ -25932,7 +26289,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "virus",
@@ -25942,6 +26302,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -25970,7 +26333,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "frill",
@@ -25978,7 +26344,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "suðan",
@@ -26051,7 +26420,10 @@
       "frequency": 3.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ástar",
@@ -26293,7 +26665,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lagað",
@@ -26310,7 +26685,10 @@
       "frequency": 3.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lotta",
@@ -26567,7 +26945,10 @@
       "frequency": 3.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dugna",
@@ -26816,7 +27197,10 @@
       "frequency": 3.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "óskøf",
@@ -26889,7 +27273,10 @@
       "frequency": 3.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stúgv",
@@ -27050,7 +27437,10 @@
       "frequency": 3.95,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "deils",
@@ -27099,7 +27489,10 @@
       "frequency": 3.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hátta",
@@ -27359,7 +27752,10 @@
       "frequency": 4.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sonar",
@@ -27368,7 +27764,10 @@
       "frequency": 3.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grunn",
@@ -27457,7 +27856,10 @@
       "frequency": 4.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tepru",
@@ -27610,7 +28012,10 @@
       "frequency": 3.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oyðót",
@@ -27917,7 +28322,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "talvu",
@@ -28193,7 +28601,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spikk",
@@ -28420,7 +28831,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spíld",
@@ -28517,7 +28931,10 @@
       "frequency": 3.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útriv",
@@ -28675,7 +29092,10 @@
       "frequency": 4.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sølva",
@@ -29106,7 +29526,10 @@
       "frequency": 3.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "girar",
@@ -29194,7 +29617,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bøllu",
@@ -29419,7 +29845,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avnór",
@@ -29519,7 +29948,10 @@
       "frequency": 3.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "satsa",
@@ -29633,7 +30065,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mælsk",
@@ -29658,7 +30093,10 @@
       "frequency": 4.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hvørt",
@@ -29936,7 +30374,10 @@
       "frequency": 4.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skíri",
@@ -30294,7 +30735,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fress",
@@ -30375,7 +30819,10 @@
       "frequency": 5.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grudd",
@@ -30554,7 +31001,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gilið",
@@ -30634,7 +31084,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kláar",
@@ -30687,7 +31140,10 @@
       "frequency": 3.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "føgru",
@@ -30743,7 +31199,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stend",
@@ -30751,7 +31210,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sveiv",
@@ -31048,7 +31510,10 @@
       "frequency": 3.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bøgan",
@@ -31065,7 +31530,10 @@
       "frequency": 4.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avogn",
@@ -31257,7 +31725,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "langa",
@@ -31529,7 +32000,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pínum",
@@ -31554,7 +32028,10 @@
       "frequency": 3.81,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bræva",
@@ -31722,7 +32199,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alkom",
@@ -32259,7 +32739,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "miðla",
@@ -32307,7 +32790,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bukað",
@@ -32443,7 +32929,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "havró",
@@ -32958,7 +33447,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oyrar",
@@ -32983,7 +33475,10 @@
       "frequency": 4.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vevað",
@@ -33265,7 +33760,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skins",
@@ -33273,7 +33771,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hoppi",
@@ -33415,7 +33916,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "moren",
@@ -33574,7 +34078,10 @@
       "frequency": 4.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "visas",
@@ -33582,7 +34089,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "múrar",
@@ -33683,7 +34193,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "feigd",
@@ -33843,7 +34356,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "næsti",
@@ -33867,7 +34383,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hanus",
@@ -34031,7 +34550,10 @@
       "frequency": 3.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oyðar",
@@ -34377,7 +34899,10 @@
       "frequency": 3.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trøpp",
@@ -35252,7 +35777,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "yngvu",
@@ -35396,7 +35924,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bøtta",
@@ -35484,7 +36015,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "órædd",
@@ -35764,7 +36298,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tváið",
@@ -35920,7 +36457,10 @@
       "frequency": 3.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "polsk",
@@ -36303,6 +36843,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -36683,7 +37226,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "øsini",
@@ -36867,7 +37413,10 @@
       "frequency": 3.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "finnu",
@@ -37284,7 +37833,10 @@
       "frequency": 3.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "árætt",
@@ -37370,7 +37922,10 @@
       "frequency": 3.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grátu",
@@ -37442,7 +37997,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "krika",
@@ -37899,7 +38457,10 @@
       "frequency": 3.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "røvað",
@@ -37995,7 +38556,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "knøss",
@@ -38020,7 +38584,10 @@
       "frequency": 3.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ovtik",
@@ -38037,7 +38604,10 @@
       "frequency": 3.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hússj",
@@ -38093,7 +38663,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ósælu",
@@ -39065,7 +39638,10 @@
       "frequency": 3.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hjarr",
@@ -39129,7 +39705,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bøtti",
@@ -39204,7 +39783,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skála",
@@ -39292,7 +39874,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "toppu",
@@ -40215,7 +40800,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "óhygg",
@@ -40601,7 +41189,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "flákr",
@@ -40761,7 +41352,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "geisp",
@@ -41071,7 +41665,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fátæk",
@@ -41871,7 +42468,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fríðu",
@@ -42040,7 +42640,10 @@
       "frequency": 3.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ørari",
@@ -42064,7 +42667,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lætti",
@@ -42192,7 +42798,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "koykl",
@@ -42241,7 +42850,10 @@
       "frequency": 4.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ríkan",
@@ -42330,7 +42942,10 @@
       "frequency": 4.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "smelt",
@@ -42338,7 +42953,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rómað",
@@ -42388,7 +43006,10 @@
       "frequency": 3.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nátar",
@@ -42516,7 +43137,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vektr",
@@ -42854,7 +43478,10 @@
       "frequency": 3.87,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "onkra",
@@ -42878,7 +43505,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kyrra",
@@ -42926,7 +43556,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grímu",
@@ -42942,7 +43575,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "datst",
@@ -43530,7 +44166,10 @@
       "frequency": 3.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "barka",
@@ -43627,7 +44266,10 @@
       "frequency": 4.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pínsl",
@@ -44024,7 +44666,10 @@
       "frequency": 3.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grísa",
@@ -44057,7 +44702,10 @@
       "frequency": 5.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "floym",
@@ -44138,7 +44786,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mjóva",
@@ -44186,7 +44837,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "enntó",
@@ -44403,7 +45057,10 @@
       "frequency": 4.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nígan",
@@ -44471,7 +45128,10 @@
       "frequency": 3.01,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "føsil",
@@ -44562,7 +45222,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tinað",
@@ -44597,7 +45260,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "svigt",
@@ -44744,7 +45410,10 @@
       "frequency": 4.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blakt",
@@ -45033,7 +45702,10 @@
       "frequency": 3.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útløg",
@@ -45151,7 +45823,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tíðar",
@@ -45461,7 +46136,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "elsti",
@@ -45486,7 +46164,10 @@
       "frequency": 4.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tænar",
@@ -45575,7 +46256,10 @@
       "frequency": 4.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rakar",
@@ -45827,7 +46511,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "óhold",
@@ -46143,7 +46830,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mesta",
@@ -46184,7 +46874,10 @@
       "frequency": 3.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kjarn",
@@ -46352,7 +47045,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tempo",
@@ -46361,7 +47057,10 @@
       "frequency": 4.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skilj",
@@ -46514,7 +47213,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "áhøld",
@@ -46699,7 +47401,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grøti",
@@ -46835,7 +47540,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hýsis",
@@ -46981,7 +47689,10 @@
       "frequency": 3.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ginað",
@@ -47066,7 +47777,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kløkk",
@@ -47154,7 +47868,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nærru",
@@ -47426,7 +48143,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "størr",
@@ -47466,7 +48186,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "smask",
@@ -47483,7 +48206,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "munka",
@@ -47547,7 +48273,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "holds",
@@ -47556,7 +48285,10 @@
       "frequency": 3.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "løgdu",
@@ -47589,7 +48321,10 @@
       "frequency": 5.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ilskó",
@@ -47964,7 +48699,10 @@
       "frequency": 4.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hugna",
@@ -48037,7 +48775,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ísaki",
@@ -48101,7 +48842,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "korum",
@@ -48133,7 +48877,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ófest",
@@ -48258,7 +49005,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ósýni",
@@ -48275,7 +49025,10 @@
       "frequency": 3.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "átrok",
@@ -48452,7 +49205,10 @@
       "frequency": 4.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grikk",
@@ -48549,7 +49305,10 @@
       "frequency": 4.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "slurk",
@@ -49566,7 +50325,10 @@
       "frequency": 4.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rotað",
@@ -49662,7 +50424,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klamp",
@@ -49686,7 +50451,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skitl",
@@ -49910,7 +50678,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fargi",
@@ -50473,7 +51244,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "heiðr",
@@ -51115,7 +51889,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tjóða",
@@ -51131,7 +51908,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gleim",
@@ -51468,7 +52248,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stjøl",
@@ -51550,7 +52333,10 @@
       "frequency": 3.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maggu",
@@ -51721,7 +52507,10 @@
       "frequency": 4.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "byrði",
@@ -51857,7 +52646,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fluor",
@@ -51865,7 +52657,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pannu",
@@ -52027,7 +52822,10 @@
       "frequency": 3.73,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klukk",
@@ -52076,7 +52874,10 @@
       "frequency": 4.89,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jauar",
@@ -52205,7 +53006,10 @@
       "frequency": 3.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fíggj",

@@ -106,7 +106,10 @@
       "frequency": 3.36,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tinne",
@@ -163,7 +166,10 @@
       "frequency": 1.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blokt",
@@ -319,7 +325,10 @@
       "frequency": 1.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stuts",
@@ -800,7 +809,10 @@
       "frequency": 2.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "webke",
@@ -869,7 +881,10 @@
       "frequency": 2.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dikyt",
@@ -993,7 +1008,10 @@
       "frequency": 1.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "astma",
@@ -1403,7 +1421,10 @@
       "frequency": 2.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fetse",
@@ -1549,7 +1570,10 @@
       "frequency": 2.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bûgen",
@@ -1860,7 +1884,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "shops",
@@ -1869,7 +1896,10 @@
       "frequency": 2.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nokes",
@@ -1994,7 +2024,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "steur",
@@ -2507,7 +2540,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "damme",
@@ -2849,7 +2885,10 @@
       "frequency": 1.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tempe",
@@ -2963,7 +3002,10 @@
       "frequency": 1.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "krite",
@@ -3158,7 +3200,10 @@
       "frequency": 2.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ritso",
@@ -3645,6 +3690,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3821,7 +3869,10 @@
       "frequency": 1.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "yntar",
@@ -3875,7 +3926,10 @@
       "frequency": 1.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dûker",
@@ -4025,7 +4079,10 @@
       "frequency": 2.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fielt",
@@ -4580,7 +4637,10 @@
       "frequency": 1.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "speak",
@@ -4589,7 +4649,10 @@
       "frequency": 3.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "garst",
@@ -5029,7 +5092,10 @@
       "frequency": 4.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "djipt",
@@ -5079,7 +5145,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oplês",
@@ -5145,7 +5214,10 @@
       "frequency": 4.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "homar",
@@ -5161,7 +5233,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gleed",
@@ -5262,7 +5337,10 @@
       "frequency": 3.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sorry",
@@ -5401,7 +5479,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "loper",
@@ -5662,7 +5743,10 @@
       "frequency": 2.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "krêbe",
@@ -5891,7 +5975,10 @@
       "frequency": 3.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sijke",
@@ -6403,7 +6490,10 @@
       "frequency": 3.61,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "testo",
@@ -7015,7 +7105,10 @@
       "frequency": 2.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skide",
@@ -7091,7 +7184,10 @@
       "frequency": 1.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tejei",
@@ -7198,7 +7294,10 @@
       "frequency": 1.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "taast",
@@ -7383,7 +7482,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "wybke",
@@ -7648,7 +7750,10 @@
       "frequency": 1.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hufke",
@@ -7724,7 +7829,10 @@
       "frequency": 1.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "manys",
@@ -7758,7 +7866,10 @@
       "frequency": 2.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opbod",
@@ -8067,7 +8178,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "habbe",
@@ -8174,7 +8288,10 @@
       "frequency": 2.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mafst",
@@ -8208,7 +8325,10 @@
       "frequency": 3.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kûpee",
@@ -8273,7 +8393,10 @@
       "frequency": 2.76,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opaal",
@@ -8497,7 +8620,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jûnje",
@@ -8565,7 +8691,10 @@
       "frequency": 1.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ynlis",
@@ -8599,7 +8728,10 @@
       "frequency": 4.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "daalt",
@@ -8683,7 +8815,10 @@
       "frequency": 3.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hasto",
@@ -8809,6 +8944,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9032,7 +9170,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "raket",
@@ -9058,7 +9199,10 @@
       "frequency": 1.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sleat",
@@ -9281,7 +9425,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "forma",
@@ -9342,7 +9489,10 @@
       "frequency": 3.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lepra",
@@ -9411,7 +9561,10 @@
       "frequency": 1.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fuive",
@@ -9427,7 +9580,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rabby",
@@ -9688,6 +9844,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1699
       ]
@@ -9851,7 +10010,10 @@
       "frequency": 2.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kaaks",
@@ -9875,7 +10037,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hosto",
@@ -10102,7 +10267,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tarin",
@@ -10187,7 +10355,10 @@
       "frequency": 2.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hoske",
@@ -10274,7 +10445,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "meuch",
@@ -10324,7 +10498,10 @@
       "frequency": 1.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gapje",
@@ -10542,7 +10719,10 @@
       "frequency": 2.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bisto",
@@ -10759,7 +10939,10 @@
       "frequency": 2.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opera",
@@ -10907,7 +11090,10 @@
       "frequency": 3.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "froed",
@@ -11030,7 +11216,10 @@
       "frequency": 2.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kunde",
@@ -11081,7 +11270,10 @@
       "frequency": 2.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kavel",
@@ -11650,7 +11842,10 @@
       "frequency": 4.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "knuft",
@@ -11786,6 +11981,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -11830,7 +12028,10 @@
       "frequency": 3.05,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "peade",
@@ -11863,7 +12064,10 @@
       "frequency": 1.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "seind",
@@ -12105,7 +12309,10 @@
       "frequency": 1.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "loens",
@@ -12148,7 +12355,10 @@
       "frequency": 2.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útjit",
@@ -12854,7 +13064,10 @@
       "frequency": 2.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dumpt",
@@ -12947,7 +13160,10 @@
       "frequency": 2.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "baard",
@@ -12965,7 +13181,10 @@
       "frequency": 3.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "omwyn",
@@ -13049,7 +13268,10 @@
       "frequency": 2.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "baret",
@@ -13100,7 +13322,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "leech",
@@ -13118,7 +13343,10 @@
       "frequency": 3.01,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gnaut",
@@ -13198,7 +13426,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kanon",
@@ -13441,7 +13672,10 @@
       "frequency": 2.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gobje",
@@ -13900,7 +14134,10 @@
       "frequency": 3.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "iraky",
@@ -14497,7 +14734,10 @@
       "frequency": 2.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lukas",
@@ -14528,7 +14768,10 @@
       "frequency": 1.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ilige",
@@ -14602,7 +14845,10 @@
       "frequency": 2.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sulky",
@@ -14642,7 +14888,10 @@
       "frequency": 2.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "idwer",
@@ -14675,7 +14924,10 @@
       "frequency": 1.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oppep",
@@ -14727,6 +14979,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -14999,7 +15254,10 @@
       "frequency": 3.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "roerd",
@@ -15544,7 +15802,10 @@
       "frequency": 2.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bliuw",
@@ -15662,7 +15923,10 @@
       "frequency": 1.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sûper",
@@ -15703,7 +15967,10 @@
       "frequency": 1.81,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stikt",
@@ -15808,7 +16075,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trest",
@@ -15989,7 +16259,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "raast",
@@ -16057,7 +16330,10 @@
       "frequency": 1.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lobke",
@@ -16475,7 +16751,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sinde",
@@ -16732,7 +17011,10 @@
       "frequency": 2.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bûden",
@@ -16749,7 +17031,10 @@
       "frequency": 2.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hypes",
@@ -16758,7 +17043,10 @@
       "frequency": 2.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ophaw",
@@ -16775,7 +17063,10 @@
       "frequency": 2.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klipt",
@@ -16999,7 +17290,10 @@
       "frequency": 2.6,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sytsk",
@@ -17016,7 +17310,10 @@
       "frequency": 3.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "films",
@@ -17041,7 +17338,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lynje",
@@ -17528,7 +17828,10 @@
       "frequency": 1.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "felje",
@@ -17629,7 +17932,10 @@
       "frequency": 2.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "firma",
@@ -18027,7 +18333,10 @@
       "frequency": 1.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "komak",
@@ -18593,7 +18902,10 @@
       "frequency": 2.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tiers",
@@ -18602,7 +18914,10 @@
       "frequency": 1.81,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nukke",
@@ -19301,7 +19616,10 @@
       "frequency": 2.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eward",
@@ -19381,7 +19699,10 @@
       "frequency": 1.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kuras",
@@ -19424,7 +19745,10 @@
       "frequency": 4.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "harem",
@@ -19637,7 +19961,10 @@
       "frequency": 1.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "poken",
@@ -20352,7 +20679,10 @@
       "frequency": 4.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "peile",
@@ -20524,7 +20854,10 @@
       "frequency": 2.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sweve",
@@ -20571,7 +20904,10 @@
       "frequency": 3.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skrok",
@@ -20587,7 +20923,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "olger",
@@ -20712,7 +21051,10 @@
       "frequency": 2.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lûdet",
@@ -20832,7 +21174,10 @@
       "frequency": 1.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "potte",
@@ -21066,7 +21411,10 @@
       "frequency": 1.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "esjek",
@@ -21092,7 +21440,10 @@
       "frequency": 2.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kerve",
@@ -21291,7 +21642,10 @@
       "frequency": 2.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brosj",
@@ -21510,7 +21864,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kruie",
@@ -21634,7 +21991,10 @@
       "frequency": 2.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "manko",
@@ -21708,7 +22068,10 @@
       "frequency": 3.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ynhaw",
@@ -21876,7 +22239,10 @@
       "frequency": 1.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klots",
@@ -22681,7 +23047,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tolke",
@@ -22855,7 +23224,10 @@
       "frequency": 4.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "siuwe",
@@ -22929,7 +23301,10 @@
       "frequency": 2.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gipse",
@@ -23306,7 +23681,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dinet",
@@ -23386,7 +23764,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tysje",
@@ -23613,7 +23994,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "úttei",
@@ -23906,7 +24290,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ronke",
@@ -24009,7 +24396,10 @@
       "frequency": 3.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opfei",
@@ -24119,7 +24509,10 @@
       "frequency": 1.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "barde",
@@ -24441,7 +24834,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "watst",
@@ -24569,7 +24965,10 @@
       "frequency": 1.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bromd",
@@ -24586,7 +24985,10 @@
       "frequency": 2.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fâden",
@@ -24685,7 +25087,10 @@
       "frequency": 1.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "besto",
@@ -24741,7 +25146,10 @@
       "frequency": 1.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "befke",
@@ -25091,7 +25499,10 @@
       "frequency": 1.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "samar",
@@ -25380,7 +25791,10 @@
       "frequency": 3.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "roman",
@@ -25415,7 +25829,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "feech",
@@ -25479,7 +25896,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "amige",
@@ -25495,7 +25915,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kloat",
@@ -25512,7 +25935,10 @@
       "frequency": 2.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oefet",
@@ -25780,7 +26206,10 @@
       "frequency": 3.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "knies",
@@ -26038,7 +26467,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "proai",
@@ -26231,7 +26663,10 @@
       "frequency": 2.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pudze",
@@ -26400,6 +26835,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -26563,7 +27001,10 @@
       "frequency": 3.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sjeze",
@@ -26672,7 +27113,10 @@
       "frequency": 3.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gulde",
@@ -26772,7 +27216,10 @@
       "frequency": 2.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pakke",
@@ -26881,7 +27328,10 @@
       "frequency": 2.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brûns",
@@ -26989,7 +27439,10 @@
       "frequency": 2.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "float",
@@ -27066,7 +27519,10 @@
       "frequency": 1.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skylt",
@@ -27149,7 +27605,10 @@
       "frequency": 1.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "minke",
@@ -27262,7 +27721,10 @@
       "frequency": 2.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dokes",
@@ -27346,6 +27808,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -27641,7 +28106,10 @@
       "frequency": 2.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "krike",
@@ -27711,7 +28179,10 @@
       "frequency": 1.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "muzen",
@@ -27847,7 +28318,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lêbet",
@@ -28556,7 +29030,10 @@
       "frequency": 1.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hisen",
@@ -28631,7 +29108,10 @@
       "frequency": 2.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sekke",
@@ -28721,7 +29201,10 @@
       "frequency": 2.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "houde",
@@ -29148,7 +29631,10 @@
       "frequency": 2.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stoal",
@@ -29172,7 +29658,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "barke",
@@ -29373,7 +29862,10 @@
       "frequency": 2.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "heane",
@@ -29439,7 +29931,10 @@
       "frequency": 1.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "wouda",
@@ -29540,7 +30035,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aakje",
@@ -29621,7 +30119,10 @@
       "frequency": 1.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kerne",
@@ -29767,7 +30268,10 @@
       "frequency": 2.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hains",
@@ -29777,6 +30281,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1697
       ]
@@ -30863,7 +31370,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "makke",
@@ -31402,7 +31912,10 @@
       "frequency": 2.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jerke",
@@ -31518,7 +32031,10 @@
       "frequency": 2.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opwyn",
@@ -31954,7 +32470,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "liere",
@@ -32109,7 +32628,10 @@
       "frequency": 2.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "beage",
@@ -32167,7 +32689,10 @@
       "frequency": 2.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "goait",
@@ -32192,7 +32717,10 @@
       "frequency": 4.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kende",
@@ -32278,7 +32806,10 @@
       "frequency": 1.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nihyl",
@@ -32468,7 +32999,10 @@
       "frequency": 3.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kiosk",
@@ -32543,7 +33077,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pupil",
@@ -32593,7 +33130,10 @@
       "frequency": 2.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "super",
@@ -32763,7 +33303,10 @@
       "frequency": 2.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "winen",
@@ -32855,7 +33398,10 @@
       "frequency": 2.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "burch",
@@ -32890,7 +33436,10 @@
       "frequency": 2.6,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "helms",
@@ -32950,7 +33499,10 @@
       "frequency": 1.87,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trema",
@@ -32995,6 +33547,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -33032,7 +33587,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ymkje",
@@ -33058,7 +33616,10 @@
       "frequency": 2.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salto",
@@ -34849,7 +35410,10 @@
       "frequency": 1.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "motto",
@@ -35287,7 +35851,10 @@
       "frequency": 2.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "haiko",
@@ -35365,7 +35932,10 @@
       "frequency": 2.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blûze",
@@ -35546,7 +36116,10 @@
       "frequency": 2.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opryd",
@@ -35587,7 +36160,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "samoä",
@@ -35816,7 +36392,10 @@
       "frequency": 3.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ôfiet",
@@ -36117,7 +36696,10 @@
       "frequency": 2.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lapet",
@@ -36295,7 +36877,10 @@
       "frequency": 2.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "omjit",
@@ -36485,7 +37070,10 @@
       "frequency": 1.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ronge",
@@ -36581,7 +37169,10 @@
       "frequency": 3.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "geaud",
@@ -36702,7 +37293,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "neare",
@@ -36895,7 +37489,10 @@
       "frequency": 1.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sline",
@@ -37034,7 +37631,10 @@
       "frequency": 1.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jabik",
@@ -37430,7 +38030,10 @@
       "frequency": 3.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eigen",
@@ -37574,7 +38177,10 @@
       "frequency": 2.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lytse",
@@ -37658,7 +38264,10 @@
       "frequency": 1.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "warre",
@@ -37809,7 +38418,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lekte",
@@ -37906,7 +38518,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "omdyk",
@@ -38300,7 +38915,10 @@
       "frequency": 2.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "deite",
@@ -38791,7 +39409,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nimst",
@@ -39103,7 +39724,10 @@
       "frequency": 3.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jekje",
@@ -39346,7 +39970,10 @@
       "frequency": 2.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "doopt",
@@ -39527,7 +40154,10 @@
       "frequency": 2.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "smook",
@@ -39553,7 +40183,10 @@
       "frequency": 3.37,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mango",
@@ -39562,7 +40195,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mêkje",
@@ -39687,7 +40323,10 @@
       "frequency": 1.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brein",
@@ -39844,7 +40483,10 @@
       "frequency": 2.73,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ritse",
@@ -39895,7 +40537,10 @@
       "frequency": 2.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bitst",
@@ -40077,7 +40722,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "moard",
@@ -40450,7 +41098,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "boech",
@@ -40820,7 +41471,10 @@
       "frequency": 2.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "boste",
@@ -41505,7 +42159,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tekst",
@@ -41629,7 +42286,10 @@
       "frequency": 1.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rânen",
@@ -41836,7 +42496,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ôfpas",
@@ -42145,7 +42808,10 @@
       "frequency": 2.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útite",
@@ -42645,7 +43311,10 @@
       "frequency": 3.76,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "draam",
@@ -42703,7 +43372,10 @@
       "frequency": 2.6,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mûtel",
@@ -42829,7 +43501,10 @@
       "frequency": 2.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "weest",
@@ -42913,7 +43588,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klakt",
@@ -43111,7 +43789,10 @@
       "frequency": 3.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "loeft",
@@ -43257,7 +43938,10 @@
       "frequency": 1.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kloek",
@@ -43429,7 +44113,10 @@
       "frequency": 2.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sodze",
@@ -43495,7 +44182,10 @@
       "frequency": 2.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pinst",
@@ -43528,7 +44218,10 @@
       "frequency": 1.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "iesto",
@@ -43578,7 +44271,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "truck",
@@ -43736,7 +44432,10 @@
       "frequency": 2.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útgie",
@@ -43878,7 +44577,10 @@
       "frequency": 2.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kezen",
@@ -44116,7 +44818,10 @@
       "frequency": 2.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dulde",
@@ -44159,6 +44864,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -44239,7 +44947,10 @@
       "frequency": 2.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "wanne",
@@ -44281,7 +44992,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rôvet",
@@ -44465,7 +45179,10 @@
       "frequency": 3.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "faria",
@@ -44483,7 +45200,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "susje",
@@ -44736,7 +45456,10 @@
       "frequency": 3.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skake",
@@ -44820,7 +45543,10 @@
       "frequency": 2.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útlos",
@@ -44871,7 +45597,10 @@
       "frequency": 2.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "goeds",
@@ -45496,7 +46225,10 @@
       "frequency": 2.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gleie",
@@ -45721,7 +46453,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "plûms",
@@ -46302,7 +47037,10 @@
       "frequency": 2.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tsjil",
@@ -46962,7 +47700,10 @@
       "frequency": 2.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "loofd",
@@ -47408,7 +48149,10 @@
       "frequency": 1.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "golve",
@@ -47509,7 +48253,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gliid",
@@ -47604,7 +48351,10 @@
       "frequency": 3.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "peare",
@@ -48048,7 +48798,10 @@
       "frequency": 3.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "japon",
@@ -48156,7 +48909,10 @@
       "frequency": 2.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rêste",
@@ -48281,7 +49037,10 @@
       "frequency": 4.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "naïve",
@@ -48558,7 +49317,10 @@
       "frequency": 1.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "foske",
@@ -48909,7 +49671,10 @@
       "frequency": 1.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dalen",
@@ -49024,7 +49789,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klaas",
@@ -49115,7 +49883,10 @@
       "frequency": 2.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sûnen",
@@ -49215,7 +49986,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "útret",
@@ -49399,7 +50173,10 @@
       "frequency": 3.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "wreed",
@@ -49499,7 +50276,10 @@
       "frequency": 3.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opdis",
@@ -50127,7 +50907,10 @@
       "frequency": 1.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "matsk",
@@ -50169,6 +50952,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -50539,7 +51325,10 @@
       "frequency": 1.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ynnim",
@@ -50913,7 +51702,10 @@
       "frequency": 2.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spion",
@@ -50972,7 +51764,10 @@
       "frequency": 1.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brant",
@@ -51149,7 +51944,10 @@
       "frequency": 3.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rôlje",
@@ -51623,7 +52421,10 @@
       "frequency": 1.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mêden",
@@ -51640,7 +52441,10 @@
       "frequency": 2.05,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "harde",
@@ -51725,6 +52529,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1728
       ]
@@ -51816,7 +52623,10 @@
       "frequency": 1.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kappe",
@@ -52064,7 +52874,10 @@
       "frequency": 2.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "djips",
@@ -52549,7 +53362,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "singt",

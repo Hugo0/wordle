@@ -684,7 +684,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gugti",
@@ -700,7 +703,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nadas",
@@ -1079,7 +1085,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ergas",
@@ -1231,7 +1240,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mirkt",
@@ -1981,7 +1993,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "darna",
@@ -2168,7 +2183,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skuba",
@@ -2491,7 +2509,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "artis",
@@ -2500,7 +2521,10 @@
       "frequency": 3.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sopus",
@@ -2713,7 +2737,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "artus",
@@ -3384,7 +3411,10 @@
       "frequency": 3.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "elona",
@@ -3934,7 +3964,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tisas",
@@ -4715,7 +4748,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "klypo",
@@ -4958,7 +4994,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rinka",
@@ -5058,7 +5097,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rytis",
@@ -5340,7 +5382,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lysti",
@@ -5521,7 +5566,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lepus",
@@ -6631,7 +6679,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "drybt",
@@ -7474,6 +7525,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -7603,7 +7657,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lepsi",
@@ -7628,7 +7685,10 @@
       "frequency": 3.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pypsi",
@@ -7907,7 +7967,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "zumso",
@@ -8064,7 +8127,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lamdo",
@@ -8311,7 +8377,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nikas",
@@ -8634,7 +8703,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "knyga",
@@ -8886,7 +8958,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ledai",
@@ -9059,7 +9134,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "penas",
@@ -11341,7 +11419,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "supti",
@@ -12024,7 +12105,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "igoda",
@@ -13614,7 +13698,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "glebo",
@@ -13775,7 +13862,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "norta",
@@ -14470,7 +14560,10 @@
       "frequency": 3.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "augys",
@@ -14649,7 +14742,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tynis",
@@ -15451,7 +15547,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dumia",
@@ -15475,7 +15574,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "glosa",
@@ -15855,7 +15957,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "delsa",
@@ -16883,7 +16988,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kovai",
@@ -17652,7 +17760,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "adjap",
@@ -19138,7 +19249,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alona",
@@ -20568,7 +20682,10 @@
       "frequency": 3.39,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ariją",
@@ -21932,7 +22049,10 @@
       "frequency": 3.23,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avary",
@@ -21999,7 +22119,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avino",
@@ -23289,7 +23412,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "barbė",
@@ -23548,7 +23674,10 @@
       "frequency": 3.17,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "batio",
@@ -23572,7 +23701,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "batus",
@@ -24124,7 +24256,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "benio",
@@ -24166,7 +24301,10 @@
       "frequency": 3.26,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bento",
@@ -24671,7 +24809,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "biles",
@@ -24722,7 +24863,10 @@
       "frequency": 3.04,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "billy",
@@ -24812,7 +24956,10 @@
       "frequency": 3.3,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bioko",
@@ -25338,7 +25485,10 @@
       "frequency": 3.36,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blodė",
@@ -25598,7 +25748,10 @@
       "frequency": 3.28,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bobrų",
@@ -26209,7 +26362,10 @@
       "frequency": 3.06,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "break",
@@ -26218,7 +26374,10 @@
       "frequency": 3.44,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bredo",
@@ -27962,7 +28121,10 @@
       "frequency": 3.11,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cadel",
@@ -28276,7 +28438,10 @@
       "frequency": 3.17,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ceche",
@@ -28664,7 +28829,10 @@
       "frequency": 3.39,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cheek",
@@ -29202,7 +29370,10 @@
       "frequency": 3.32,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cleef",
@@ -29416,7 +29587,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "copas",
@@ -29483,7 +29657,10 @@
       "frequency": 3.05,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "coupe",
@@ -29578,7 +29755,10 @@
       "frequency": 3.4,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "creso",
@@ -29871,7 +30051,10 @@
       "frequency": 3.27,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dadis",
@@ -32106,7 +32289,10 @@
       "frequency": 3.52,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dingę",
@@ -32478,7 +32664,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dobis",
@@ -32561,7 +32750,10 @@
       "frequency": 3.22,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "doičo",
@@ -32808,7 +33000,10 @@
       "frequency": 3.42,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dorai",
@@ -36336,7 +36531,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "emeri",
@@ -37465,7 +37663,10 @@
       "frequency": 3.36,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eviai",
@@ -37852,7 +38053,10 @@
       "frequency": 3.25,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "false",
@@ -38855,7 +39059,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "flino",
@@ -39625,7 +39832,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fuchs",
@@ -40322,7 +40532,10 @@
       "frequency": 3.22,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "garbo",
@@ -40919,7 +41132,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "geidė",
@@ -41467,7 +41683,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "giant",
@@ -41557,7 +41776,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gilby",
@@ -41752,7 +41974,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gintų",
@@ -42063,7 +42288,10 @@
       "frequency": 3.45,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "globo",
@@ -42427,7 +42655,10 @@
       "frequency": 3.48,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gonzo",
@@ -42573,7 +42804,10 @@
       "frequency": 3.25,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gotus",
@@ -42791,7 +43025,10 @@
       "frequency": 3.21,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grave",
@@ -42901,7 +43138,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gregu",
@@ -45406,7 +45646,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "heros",
@@ -45978,7 +46221,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "homer",
@@ -46003,7 +46249,10 @@
       "frequency": 3.12,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "homus",
@@ -46087,7 +46336,10 @@
       "frequency": 3.11,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "horna",
@@ -46453,7 +46705,10 @@
       "frequency": 3.11,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hydro",
@@ -50001,7 +50256,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jungk",
@@ -51410,7 +51668,10 @@
       "frequency": 3.25,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kandi",
@@ -54975,7 +55236,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "koike",
@@ -55760,7 +56024,10 @@
       "frequency": 3.24,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kraki",
@@ -55828,7 +56095,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kravė",
@@ -57711,7 +57981,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ladva",
@@ -57810,7 +58083,10 @@
       "frequency": 3.6,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "laike",
@@ -61199,7 +61475,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "loren",
@@ -63107,7 +63386,10 @@
       "frequency": 3.21,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mamba",
@@ -63115,7 +63397,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mambo",
@@ -63157,7 +63442,10 @@
       "frequency": 3.06,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mamos",
@@ -63233,7 +63521,10 @@
       "frequency": 3.37,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mango",
@@ -63268,7 +63559,10 @@
       "frequency": 3.3,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "manna",
@@ -63334,7 +63628,10 @@
       "frequency": 3.41,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mantą",
@@ -64056,7 +64353,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "matin",
@@ -65260,7 +65560,10 @@
       "frequency": 3.97,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "metju",
@@ -65799,7 +66102,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "milly",
@@ -65948,7 +66254,10 @@
       "frequency": 3.12,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mintį",
@@ -65998,7 +66307,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mirio",
@@ -66448,7 +66760,10 @@
       "frequency": 3.25,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "moirų",
@@ -66676,7 +66991,10 @@
       "frequency": 3.79,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "moniu",
@@ -66790,7 +67108,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "moore",
@@ -67012,7 +67333,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mothe",
@@ -68362,7 +68686,10 @@
       "frequency": 3.03,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nansi",
@@ -68484,7 +68811,10 @@
       "frequency": 3.37,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nario",
@@ -69486,7 +69816,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nevio",
@@ -69982,7 +70315,10 @@
       "frequency": 3.04,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nitta",
@@ -70295,7 +70631,10 @@
       "frequency": 3.17,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "norit",
@@ -71060,7 +71399,10 @@
       "frequency": 3.47,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oazes",
@@ -72495,7 +72837,10 @@
       "frequency": 3.28,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "padus",
@@ -72859,7 +73204,10 @@
       "frequency": 3.49,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pando",
@@ -74012,7 +74360,10 @@
       "frequency": 3.41,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "perak",
@@ -74375,7 +74726,10 @@
       "frequency": 3.34,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "picea",
@@ -74882,7 +75236,10 @@
       "frequency": 3.06,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pinta",
@@ -75148,7 +75505,10 @@
       "frequency": 3.41,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "piteo",
@@ -76532,7 +76892,10 @@
       "frequency": 3.87,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "prieš",
@@ -76550,7 +76913,10 @@
       "frequency": 3.43,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "primo",
@@ -76687,7 +77053,10 @@
       "frequency": 3.33,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "proof",
@@ -77221,7 +77590,10 @@
       "frequency": 3.17,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pupos",
@@ -77239,7 +77611,10 @@
       "frequency": 3.05,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "purio",
@@ -80811,7 +81186,10 @@
       "frequency": 3.44,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rolės",
@@ -81113,7 +81491,10 @@
       "frequency": 3.14,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "route",
@@ -81632,7 +82013,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rusus",
@@ -83054,7 +83438,10 @@
       "frequency": 3.37,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sambo",
@@ -83322,7 +83709,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sargo",
@@ -84288,7 +84678,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "semla",
@@ -84478,7 +84871,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "septi",
@@ -84703,7 +85099,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sečės",
@@ -85314,7 +85713,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "simno",
@@ -85545,7 +85947,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sitos",
@@ -85857,7 +86262,10 @@
       "frequency": 3.04,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skito",
@@ -86468,7 +86876,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "smogė",
@@ -87077,7 +87488,10 @@
       "frequency": 3.39,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sorte",
@@ -87706,7 +88120,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stall",
@@ -87714,7 +88131,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stalo",
@@ -87759,7 +88179,10 @@
       "frequency": 3.49,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stano",
@@ -88596,7 +89019,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sudas",
@@ -89112,7 +89538,10 @@
       "frequency": 3.04,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "supus",
@@ -91379,7 +91808,10 @@
       "frequency": 3.3,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "telkė",
@@ -91478,7 +91910,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tempk",
@@ -91512,7 +91947,10 @@
       "frequency": 3.17,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tempt",
@@ -91520,7 +91958,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tempu",
@@ -91619,7 +92060,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tepeu",
@@ -91737,7 +92181,10 @@
       "frequency": 3.67,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tesos",
@@ -91949,7 +92396,10 @@
       "frequency": 3.29,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "thaon",
@@ -92049,7 +92499,10 @@
       "frequency": 3.64,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "third",
@@ -92319,7 +92772,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tikim",
@@ -93411,7 +93867,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "torva",
@@ -94759,7 +95218,10 @@
       "frequency": 3.19,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tyson",
@@ -97298,7 +97760,10 @@
       "frequency": 3.47,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vegos",
@@ -98852,7 +99317,10 @@
       "frequency": 3.01,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vitai",
@@ -99054,7 +99522,10 @@
       "frequency": 3.26,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vodės",
@@ -100295,7 +100766,10 @@
       "frequency": 3.08,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "zebrų",

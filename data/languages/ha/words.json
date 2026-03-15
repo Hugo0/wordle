@@ -43133,7 +43133,10 @@
       "frequency": 2.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "sasha",

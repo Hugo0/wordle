@@ -242,7 +242,10 @@
       "frequency": 2.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "amoka",
@@ -756,7 +759,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "auroa",
@@ -3525,7 +3531,10 @@
       "frequency": 1.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mahue",
@@ -3618,7 +3627,10 @@
       "frequency": 2.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maiti",
@@ -3767,7 +3779,10 @@
       "frequency": 3.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mānia",
@@ -4424,7 +4439,10 @@
       "frequency": 1.37,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "murau",
@@ -4589,7 +4607,10 @@
       "frequency": 1.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ngake",
@@ -4986,7 +5007,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "niwha",
@@ -5448,7 +5472,10 @@
       "frequency": 1.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pānga",
@@ -6604,6 +6631,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -6738,7 +6768,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rauru",
@@ -7331,7 +7364,10 @@
       "frequency": 2.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "taina",
@@ -7513,7 +7549,10 @@
       "frequency": 2.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tānga",
@@ -7540,6 +7579,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1708
       ]
@@ -9638,7 +9680,10 @@
       "frequency": 6.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "whero",

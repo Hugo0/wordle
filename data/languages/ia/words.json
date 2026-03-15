@@ -61,7 +61,10 @@
       "frequency": 2.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vulgo",
@@ -70,7 +73,10 @@
       "frequency": 1.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tilio",
@@ -96,7 +102,10 @@
       "frequency": 2.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pilav",
@@ -147,7 +156,10 @@
       "frequency": 2.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "royal",
@@ -156,7 +168,10 @@
       "frequency": 4.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lumen",
@@ -165,7 +180,10 @@
       "frequency": 3.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "terse",
@@ -174,7 +192,10 @@
       "frequency": 2.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "abece",
@@ -247,7 +268,10 @@
       "frequency": 3.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "paulo",
@@ -286,7 +310,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "noema",
@@ -312,7 +339,10 @@
       "frequency": 3.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "scena",
@@ -321,7 +351,10 @@
       "frequency": 1.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "museo",
@@ -338,7 +371,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "loure",
@@ -346,7 +382,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "drusa",
@@ -363,7 +402,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mumia",
@@ -381,7 +423,10 @@
       "frequency": 2.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "georg",
@@ -421,7 +466,10 @@
       "frequency": 3.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "autor",
@@ -446,7 +494,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lydie",
@@ -503,7 +554,10 @@
       "frequency": 4.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nasal",
@@ -512,7 +566,10 @@
       "frequency": 3.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dacic",
@@ -561,7 +618,10 @@
       "frequency": 3.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "leger",
@@ -596,7 +656,10 @@
       "frequency": 4.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "obvie",
@@ -613,7 +676,10 @@
       "frequency": 2.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sport",
@@ -622,7 +688,10 @@
       "frequency": 4.73,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "corda",
@@ -659,6 +728,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -734,7 +806,10 @@
       "frequency": 3.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cross",
@@ -743,7 +818,10 @@
       "frequency": 5.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "inope",
@@ -792,7 +870,10 @@
       "frequency": 2.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maggi",
@@ -911,6 +992,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -924,7 +1008,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trago",
@@ -941,7 +1028,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sicut",
@@ -959,7 +1049,10 @@
       "frequency": 3.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "censo",
@@ -976,7 +1069,10 @@
       "frequency": 4.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cameo",
@@ -985,7 +1081,10 @@
       "frequency": 3.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "polir",
@@ -1016,7 +1115,10 @@
       "frequency": 2.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "barra",
@@ -1025,7 +1127,10 @@
       "frequency": 2.89,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rader",
@@ -1053,6 +1158,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1088,7 +1196,10 @@
       "frequency": 1.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oidio",
@@ -1105,7 +1216,10 @@
       "frequency": 3.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oculo",
@@ -1130,7 +1244,10 @@
       "frequency": 3.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "turre",
@@ -1164,7 +1281,10 @@
       "frequency": 3.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "carne",
@@ -1196,7 +1316,10 @@
       "frequency": 2.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hosea",
@@ -1219,7 +1342,10 @@
       "frequency": 5.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "natal",
@@ -1228,7 +1354,10 @@
       "frequency": 3.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "iraki",
@@ -1266,7 +1395,10 @@
       "frequency": 2.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "azide",
@@ -1275,7 +1407,10 @@
       "frequency": 2.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "acaju",
@@ -1300,7 +1435,10 @@
       "frequency": 1.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spion",
@@ -1352,7 +1490,10 @@
       "frequency": 4.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "scuma",
@@ -1394,7 +1535,10 @@
       "frequency": 3.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alofi",
@@ -1460,6 +1604,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1474,6 +1621,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1728
       ]
@@ -1502,7 +1652,10 @@
       "frequency": 2.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sedar",
@@ -1529,7 +1682,10 @@
       "frequency": 5.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "balto",
@@ -1561,7 +1717,10 @@
       "frequency": 4.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hypha",
@@ -1570,7 +1729,10 @@
       "frequency": 1.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cacao",
@@ -1579,7 +1741,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nihil",
@@ -1605,7 +1770,10 @@
       "frequency": 2.05,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tusse",
@@ -1641,6 +1809,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1680,7 +1851,10 @@
       "frequency": 3.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salpa",
@@ -1715,7 +1889,10 @@
       "frequency": 1.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "suber",
@@ -1724,7 +1901,10 @@
       "frequency": 1.62,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "latex",
@@ -1733,7 +1913,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "renta",
@@ -1823,7 +2006,10 @@
       "frequency": 3.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kafka",
@@ -1847,6 +2033,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -1860,7 +2049,10 @@
       "frequency": 2.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sahib",
@@ -1870,6 +2062,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -1926,7 +2121,10 @@
       "frequency": 3.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "folio",
@@ -1935,7 +2133,10 @@
       "frequency": 3.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "altor",
@@ -2005,7 +2206,10 @@
       "frequency": 4.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "infra",
@@ -2014,7 +2218,10 @@
       "frequency": 2.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "peleo",
@@ -2080,7 +2287,10 @@
       "frequency": 4.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "foder",
@@ -2122,7 +2332,10 @@
       "frequency": 1.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "haiti",
@@ -2192,7 +2405,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "patta",
@@ -2219,7 +2435,10 @@
       "frequency": 2.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dakar",
@@ -2250,7 +2469,10 @@
       "frequency": 4.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lucas",
@@ -2291,7 +2513,10 @@
       "frequency": 2.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "round",
@@ -2300,7 +2525,10 @@
       "frequency": 5.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "morar",
@@ -2335,7 +2563,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "visar",
@@ -2375,7 +2606,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "berna",
@@ -2414,7 +2648,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "josue",
@@ -2437,7 +2674,10 @@
       "frequency": 1.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rodin",
@@ -2477,7 +2717,10 @@
       "frequency": 2.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "myste",
@@ -2503,6 +2746,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -2516,7 +2762,10 @@
       "frequency": 3.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kabul",
@@ -2569,7 +2818,10 @@
       "frequency": 1.62,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sulco",
@@ -2640,7 +2892,10 @@
       "frequency": 1.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "upupa",
@@ -2657,7 +2912,10 @@
       "frequency": 3.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ozena",
@@ -2674,7 +2932,10 @@
       "frequency": 2.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "perse",
@@ -2684,6 +2945,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1683
       ]
@@ -2695,7 +2959,10 @@
       "frequency": 1.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "uvula",
@@ -2704,7 +2971,10 @@
       "frequency": 1.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rotar",
@@ -2729,7 +2999,10 @@
       "frequency": 2.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "serra",
@@ -2738,7 +3011,10 @@
       "frequency": 2.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jurar",
@@ -2755,7 +3031,10 @@
       "frequency": 2.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trabe",
@@ -2772,7 +3051,10 @@
       "frequency": 4.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "redox",
@@ -2781,7 +3063,10 @@
       "frequency": 2.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alaas",
@@ -2807,7 +3092,10 @@
       "frequency": 1.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tanno",
@@ -2834,7 +3122,10 @@
       "frequency": 4.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pinee",
@@ -2863,7 +3154,10 @@
       "frequency": 1.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "briza",
@@ -2881,7 +3175,10 @@
       "frequency": 5.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hasid",
@@ -2904,7 +3201,10 @@
       "frequency": 2.95,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "taxar",
@@ -2957,6 +3257,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -2973,7 +3276,10 @@
       "frequency": 1.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "yaren",
@@ -3022,7 +3328,10 @@
       "frequency": 3.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "derny",
@@ -3031,7 +3340,10 @@
       "frequency": 1.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tuffo",
@@ -3074,7 +3386,10 @@
       "frequency": 3.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "turin",
@@ -3120,7 +3435,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gubia",
@@ -3146,6 +3464,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -3167,7 +3488,10 @@
       "frequency": 2.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "basic",
@@ -3176,7 +3500,10 @@
       "frequency": 4.89,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ogiva",
@@ -3210,7 +3537,10 @@
       "frequency": 1.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vesta",
@@ -3219,7 +3549,10 @@
       "frequency": 2.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "judea",
@@ -3306,7 +3639,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "suite",
@@ -3315,7 +3651,10 @@
       "frequency": 4.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "corco",
@@ -3354,7 +3693,10 @@
       "frequency": 3.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bates",
@@ -3364,6 +3706,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3394,7 +3739,10 @@
       "frequency": 5.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "prole",
@@ -3403,7 +3751,10 @@
       "frequency": 1.79,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brisa",
@@ -3420,7 +3771,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gonna",
@@ -3429,7 +3783,10 @@
       "frequency": 5.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cuman",
@@ -3521,7 +3878,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nicol",
@@ -3531,6 +3891,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3545,6 +3908,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -3589,7 +3955,10 @@
       "frequency": 2.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "adder",
@@ -3598,7 +3967,10 @@
       "frequency": 2.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spray",
@@ -3607,7 +3979,10 @@
       "frequency": 4.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kulak",
@@ -3616,7 +3991,10 @@
       "frequency": 1.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "volga",
@@ -3639,7 +4017,10 @@
       "frequency": 5.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "circo",
@@ -3656,7 +4037,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lamna",
@@ -3768,7 +4152,10 @@
       "frequency": 2.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "teddy",
@@ -3777,7 +4164,10 @@
       "frequency": 3.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "renal",
@@ -3804,6 +4194,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3890,7 +4283,10 @@
       "frequency": 1.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sigla",
@@ -3899,7 +4295,10 @@
       "frequency": 1.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "torve",
@@ -3917,6 +4316,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -3931,6 +4333,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4016,6 +4421,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4029,7 +4437,10 @@
       "frequency": 2.36,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "draco",
@@ -4039,6 +4450,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4052,7 +4466,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "garbo",
@@ -4061,7 +4478,10 @@
       "frequency": 2.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "calde",
@@ -4078,7 +4498,10 @@
       "frequency": 3.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "theta",
@@ -4087,7 +4510,10 @@
       "frequency": 3.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "edema",
@@ -4096,7 +4522,10 @@
       "frequency": 2.95,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salmi",
@@ -4105,7 +4534,10 @@
       "frequency": 1.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vanno",
@@ -4148,7 +4580,10 @@
       "frequency": 4.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sofia",
@@ -4171,7 +4606,10 @@
       "frequency": 2.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sedia",
@@ -4189,7 +4627,10 @@
       "frequency": 3.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blusa",
@@ -4214,7 +4655,10 @@
       "frequency": 2.76,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sicyo",
@@ -4231,7 +4675,10 @@
       "frequency": 3.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "karma",
@@ -4240,7 +4687,10 @@
       "frequency": 3.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vacca",
@@ -4258,7 +4708,10 @@
       "frequency": 4.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "usnea",
@@ -4267,7 +4720,10 @@
       "frequency": 1.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sunda",
@@ -4298,7 +4754,10 @@
       "frequency": 2.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "punch",
@@ -4307,7 +4766,10 @@
       "frequency": 4.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "potto",
@@ -4316,7 +4778,10 @@
       "frequency": 1.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "junca",
@@ -4390,7 +4855,10 @@
       "frequency": 4.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "credo",
@@ -4399,7 +4867,10 @@
       "frequency": 2.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nonas",
@@ -4444,7 +4915,10 @@
       "frequency": 3.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "yemen",
@@ -4490,7 +4964,10 @@
       "frequency": 1.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "anima",
@@ -4542,7 +5019,10 @@
       "frequency": 4.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "molle",
@@ -4560,7 +5040,10 @@
       "frequency": 3.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vital",
@@ -4569,7 +5052,10 @@
       "frequency": 4.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bantu",
@@ -4579,6 +5065,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4617,7 +5106,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "locke",
@@ -4640,7 +5132,10 @@
       "frequency": 1.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "esule",
@@ -4657,7 +5152,10 @@
       "frequency": 1.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arles",
@@ -4667,6 +5165,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4713,7 +5214,10 @@
       "frequency": 4.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hades",
@@ -4723,6 +5227,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4744,7 +5251,10 @@
       "frequency": 2.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "galea",
@@ -4753,7 +5263,10 @@
       "frequency": 2.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ichor",
@@ -4762,7 +5275,10 @@
       "frequency": 1.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nepta",
@@ -4788,7 +5304,10 @@
       "frequency": 4.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gerer",
@@ -4806,6 +5325,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4827,7 +5349,10 @@
       "frequency": 2.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fenar",
@@ -4872,6 +5397,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4886,6 +5414,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -4899,7 +5430,10 @@
       "frequency": 1.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "secta",
@@ -4970,7 +5504,10 @@
       "frequency": 4.62,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spina",
@@ -4979,7 +5516,10 @@
       "frequency": 2.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "velia",
@@ -5016,7 +5556,10 @@
       "frequency": 2.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "chile",
@@ -5062,7 +5605,10 @@
       "frequency": 3.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rotor",
@@ -5071,7 +5617,10 @@
       "frequency": 3.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spath",
@@ -5089,7 +5638,10 @@
       "frequency": 4.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "anure",
@@ -5133,6 +5685,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -5146,7 +5701,10 @@
       "frequency": 4.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "scaro",
@@ -5210,7 +5768,10 @@
       "frequency": 4.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "apera",
@@ -5227,7 +5788,10 @@
       "frequency": 1.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fuchs",
@@ -5303,7 +5867,10 @@
       "frequency": 4.95,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lemma",
@@ -5312,7 +5879,10 @@
       "frequency": 2.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stilo",
@@ -5344,7 +5914,10 @@
       "frequency": 4.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tamil",
@@ -5367,7 +5940,10 @@
       "frequency": 1.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vocal",
@@ -5376,7 +5952,10 @@
       "frequency": 4.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "caule",
@@ -5394,6 +5973,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -5407,7 +5989,10 @@
       "frequency": 3.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sepia",
@@ -5416,7 +6001,10 @@
       "frequency": 2.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "folle",
@@ -5460,7 +6048,10 @@
       "frequency": 1.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lette",
@@ -5478,7 +6069,10 @@
       "frequency": 2.36,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "color",
@@ -5487,7 +6081,10 @@
       "frequency": 4.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cesto",
@@ -5513,7 +6110,10 @@
       "frequency": 1.76,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fasce",
@@ -5538,7 +6138,10 @@
       "frequency": 4.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "plaid",
@@ -5547,7 +6150,10 @@
       "frequency": 3.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "halar",
@@ -5595,7 +6201,10 @@
       "frequency": 3.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "curve",
@@ -5604,7 +6213,10 @@
       "frequency": 4.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "potar",
@@ -5687,7 +6299,10 @@
       "frequency": 3.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lahar",
@@ -5696,7 +6311,10 @@
       "frequency": 1.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "docer",
@@ -5752,7 +6370,10 @@
       "frequency": 3.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "athos",
@@ -5786,7 +6407,10 @@
       "frequency": 2.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sumer",
@@ -5809,7 +6433,10 @@
       "frequency": 1.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ducha",
@@ -5829,7 +6456,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tumer",
@@ -5863,7 +6493,10 @@
       "frequency": 1.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fidji",
@@ -5893,7 +6526,10 @@
       "frequency": 1.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "braya",
@@ -5911,6 +6547,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -5924,7 +6563,10 @@
       "frequency": 1.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arcan",
@@ -5951,6 +6593,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -5964,7 +6609,10 @@
       "frequency": 2.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vagir",
@@ -5989,7 +6637,10 @@
       "frequency": 2.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "glial",
@@ -5998,7 +6649,10 @@
       "frequency": 2.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aviso",
@@ -6007,7 +6661,10 @@
       "frequency": 1.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bubon",
@@ -6024,7 +6681,10 @@
       "frequency": 2.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "palla",
@@ -6033,7 +6693,10 @@
       "frequency": 1.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "impur",
@@ -6075,7 +6738,10 @@
       "frequency": 1.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sampi",
@@ -6083,7 +6749,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "diade",
@@ -6263,6 +6932,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -6289,7 +6961,10 @@
       "frequency": 2.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "glauc",
@@ -6315,7 +6990,10 @@
       "frequency": 3.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cygno",
@@ -6350,6 +7028,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -6363,7 +7044,10 @@
       "frequency": 3.37,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "halma",
@@ -6372,7 +7056,10 @@
       "frequency": 1.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "elobe",
@@ -6389,7 +7076,10 @@
       "frequency": 4.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "firme",
@@ -6416,6 +7106,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -6470,7 +7163,10 @@
       "frequency": 3.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mento",
@@ -6502,7 +7198,10 @@
       "frequency": 2.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "twist",
@@ -6511,7 +7210,10 @@
       "frequency": 4.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tinca",
@@ -6546,7 +7248,10 @@
       "frequency": 2.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grill",
@@ -6555,7 +7260,10 @@
       "frequency": 3.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "insan",
@@ -6585,7 +7293,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gneis",
@@ -6634,7 +7345,10 @@
       "frequency": 4.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "thiol",
@@ -6643,7 +7357,10 @@
       "frequency": 2.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cocer",
@@ -6660,7 +7377,10 @@
       "frequency": 3.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "latta",
@@ -6708,7 +7428,10 @@
       "frequency": 1.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grado",
@@ -6734,7 +7457,10 @@
       "frequency": 2.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "groom",
@@ -6743,7 +7469,10 @@
       "frequency": 3.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "urceo",
@@ -6792,7 +7521,10 @@
       "frequency": 3.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sorbo",
@@ -6801,7 +7533,10 @@
       "frequency": 1.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alyte",
@@ -6818,7 +7553,10 @@
       "frequency": 1.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "amido",
@@ -6827,7 +7565,10 @@
       "frequency": 1.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "marin",
@@ -6859,7 +7600,10 @@
       "frequency": 1.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kayak",
@@ -6868,7 +7612,10 @@
       "frequency": 3.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "combo",
@@ -6877,7 +7624,10 @@
       "frequency": 3.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "amomo",
@@ -6902,7 +7652,10 @@
       "frequency": 1.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "adieu",
@@ -6911,7 +7664,10 @@
       "frequency": 2.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arcar",
@@ -6955,7 +7711,10 @@
       "frequency": 1.61,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "victo",
@@ -6973,7 +7732,10 @@
       "frequency": 2.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jejun",
@@ -6990,7 +7752,10 @@
       "frequency": 2.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pisca",
@@ -7029,7 +7794,10 @@
       "frequency": 3.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "marna",
@@ -7101,7 +7869,10 @@
       "frequency": 3.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mneme",
@@ -7109,7 +7880,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ovulo",
@@ -7168,7 +7942,10 @@
       "frequency": 3.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "metro",
@@ -7177,7 +7954,10 @@
       "frequency": 4.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "laude",
@@ -7244,7 +8024,10 @@
       "frequency": 4.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hymno",
@@ -7270,7 +8053,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stato",
@@ -7305,7 +8091,10 @@
       "frequency": 1.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "impun",
@@ -7322,7 +8111,10 @@
       "frequency": 2.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sexte",
@@ -7383,7 +8175,10 @@
       "frequency": 3.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tacto",
@@ -7400,7 +8195,10 @@
       "frequency": 3.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tanga",
@@ -7409,7 +8207,10 @@
       "frequency": 2.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "talco",
@@ -7471,7 +8272,10 @@
       "frequency": 3.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "chaco",
@@ -7520,7 +8324,10 @@
       "frequency": 3.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "calor",
@@ -7539,6 +8346,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -7613,7 +8423,10 @@
       "frequency": 4.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sorba",
@@ -7630,7 +8443,10 @@
       "frequency": 2.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "epiro",
@@ -7660,7 +8476,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lecto",
@@ -7687,7 +8506,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "patin",
@@ -7705,7 +8527,10 @@
       "frequency": 1.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trias",
@@ -7748,7 +8573,10 @@
       "frequency": 1.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "minus",
@@ -7809,7 +8637,10 @@
       "frequency": 4.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fidel",
@@ -7853,7 +8684,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "esopo",
@@ -7923,7 +8757,10 @@
       "frequency": 1.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vacar",
@@ -7948,7 +8785,10 @@
       "frequency": 4.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "musco",
@@ -7974,7 +8814,10 @@
       "frequency": 5.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tonka",
@@ -7983,7 +8826,10 @@
       "frequency": 2.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "verga",
@@ -8001,7 +8847,10 @@
       "frequency": 3.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "yazoo",
@@ -8024,7 +8873,10 @@
       "frequency": 2.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "genua",
@@ -8033,7 +8885,10 @@
       "frequency": 1.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "apice",
@@ -8076,7 +8931,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "palin",
@@ -8137,7 +8995,10 @@
       "frequency": 2.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avion",
@@ -8163,7 +9024,10 @@
       "frequency": 3.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "atone",
@@ -8172,7 +9036,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "furca",
@@ -8181,7 +9048,10 @@
       "frequency": 1.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lupus",
@@ -8190,7 +9060,10 @@
       "frequency": 3.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rugar",
@@ -8207,7 +9080,10 @@
       "frequency": 3.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "typho",
@@ -8225,7 +9101,10 @@
       "frequency": 1.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "koine",
@@ -8235,6 +9114,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1701
       ]
@@ -8246,7 +9128,10 @@
       "frequency": 4.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "haver",
@@ -8255,7 +9140,10 @@
       "frequency": 2.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ictus",
@@ -8264,7 +9152,10 @@
       "frequency": 1.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sabir",
@@ -8273,7 +9164,10 @@
       "frequency": 1.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "latte",
@@ -8282,7 +9176,10 @@
       "frequency": 3.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "antho",
@@ -8299,7 +9196,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cofia",
@@ -8324,7 +9224,10 @@
       "frequency": 1.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "karst",
@@ -8333,7 +9236,10 @@
       "frequency": 2.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "indri",
@@ -8342,7 +9248,10 @@
       "frequency": 1.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "onlay",
@@ -8351,7 +9260,10 @@
       "frequency": 1.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bulbo",
@@ -8429,7 +9341,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "intro",
@@ -8439,6 +9354,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1727
       ]
@@ -8450,7 +9368,10 @@
       "frequency": 3.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hadji",
@@ -8476,7 +9397,10 @@
       "frequency": 4.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "macis",
@@ -8621,7 +9545,10 @@
       "frequency": 3.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "quasi",
@@ -8630,7 +9557,10 @@
       "frequency": 3.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "casco",
@@ -8639,7 +9569,10 @@
       "frequency": 2.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fanal",
@@ -8647,7 +9580,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "genal",
@@ -8656,7 +9592,10 @@
       "frequency": 1.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "totem",
@@ -8665,7 +9604,10 @@
       "frequency": 3.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "solea",
@@ -8701,6 +9643,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -8731,7 +9676,10 @@
       "frequency": 2.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ordir",
@@ -8748,7 +9696,10 @@
       "frequency": 1.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "banio",
@@ -8774,7 +9725,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rubee",
@@ -8791,7 +9745,10 @@
       "frequency": 1.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gorga",
@@ -8849,7 +9806,10 @@
       "frequency": 2.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lobar",
@@ -8858,7 +9818,10 @@
       "frequency": 1.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trass",
@@ -8866,7 +9829,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "midas",
@@ -8903,7 +9869,10 @@
       "frequency": 3.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trema",
@@ -8921,7 +9890,10 @@
       "frequency": 1.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "scuto",
@@ -8938,7 +9910,10 @@
       "frequency": 2.37,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "altar",
@@ -8947,7 +9922,10 @@
       "frequency": 3.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trica",
@@ -8996,7 +9974,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "axial",
@@ -9005,7 +9986,10 @@
       "frequency": 3.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "areca",
@@ -9014,7 +9998,10 @@
       "frequency": 1.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "simon",
@@ -9037,7 +10024,10 @@
       "frequency": 2.61,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cyclo",
@@ -9046,7 +10036,10 @@
       "frequency": 2.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "novar",
@@ -9148,7 +10141,10 @@
       "frequency": 3.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "laser",
@@ -9157,7 +10153,10 @@
       "frequency": 4.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sitar",
@@ -9167,6 +10166,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1722
       ]
@@ -9178,7 +10180,10 @@
       "frequency": 5.01,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vallo",
@@ -9214,7 +10219,10 @@
       "frequency": 3.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cosmo",
@@ -9240,7 +10248,10 @@
       "frequency": 2.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tramp",
@@ -9249,7 +10260,10 @@
       "frequency": 3.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rusco",
@@ -9275,7 +10289,10 @@
       "frequency": 1.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "coach",
@@ -9284,7 +10301,10 @@
       "frequency": 4.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "parve",
@@ -9310,7 +10330,10 @@
       "frequency": 2.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "calao",
@@ -9336,7 +10359,10 @@
       "frequency": 4.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "celta",
@@ -9359,7 +10385,10 @@
       "frequency": 3.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ducal",
@@ -9368,7 +10397,10 @@
       "frequency": 2.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spino",
@@ -9386,7 +10418,10 @@
       "frequency": 2.62,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "freno",
@@ -9420,7 +10455,10 @@
       "frequency": 2.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "serum",
@@ -9429,7 +10467,10 @@
       "frequency": 3.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "acyle",
@@ -9446,7 +10487,10 @@
       "frequency": 1.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jonas",
@@ -9544,6 +10588,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9557,7 +10604,10 @@
       "frequency": 4.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "satan",
@@ -9597,7 +10647,10 @@
       "frequency": 1.05,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pelta",
@@ -9605,7 +10658,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alibi",
@@ -9615,6 +10671,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1694
       ]
@@ -9626,7 +10685,10 @@
       "frequency": 1.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aerar",
@@ -9643,7 +10705,10 @@
       "frequency": 1.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rebus",
@@ -9652,7 +10717,10 @@
       "frequency": 2.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "croup",
@@ -9661,7 +10729,10 @@
       "frequency": 2.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "traha",
@@ -9679,6 +10750,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1725
       ]
@@ -9739,7 +10813,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "henry",
@@ -9749,6 +10826,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9763,6 +10843,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -9785,6 +10868,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -9798,7 +10884,10 @@
       "frequency": 1.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "petro",
@@ -9821,7 +10910,10 @@
       "frequency": 1.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "macia",
@@ -9870,7 +10962,10 @@
       "frequency": 1.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "skiar",
@@ -9887,7 +10982,10 @@
       "frequency": 2.81,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kraal",
@@ -9896,7 +10994,10 @@
       "frequency": 1.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "scapo",
@@ -9966,7 +11067,10 @@
       "frequency": 3.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "colza",
@@ -9975,7 +11079,10 @@
       "frequency": 1.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dyade",
@@ -10133,7 +11240,10 @@
       "frequency": 1.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rider",
@@ -10165,7 +11275,10 @@
       "frequency": 3.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fruer",
@@ -10183,6 +11296,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1697
       ]
@@ -10203,6 +11319,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -10225,7 +11344,10 @@
       "frequency": 3.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "poppa",
@@ -10234,7 +11356,10 @@
       "frequency": 2.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vesir",
@@ -10251,7 +11376,10 @@
       "frequency": 2.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "roder",
@@ -10300,7 +11428,10 @@
       "frequency": 3.01,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sosia",
@@ -10350,7 +11481,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trend",
@@ -10359,7 +11493,10 @@
       "frequency": 4.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "liber",
@@ -10368,7 +11505,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sulky",
@@ -10377,7 +11517,10 @@
       "frequency": 2.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nubie",
@@ -10400,6 +11543,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10497,7 +11643,10 @@
       "frequency": 1.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sucre",
@@ -10507,6 +11656,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10520,7 +11672,10 @@
       "frequency": 1.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "scone",
@@ -10529,7 +11684,10 @@
       "frequency": 2.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "yukon",
@@ -10562,6 +11720,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -10574,7 +11735,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salve",
@@ -10583,7 +11747,10 @@
       "frequency": 2.81,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ronco",
@@ -10601,7 +11768,10 @@
       "frequency": 2.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "viage",
@@ -10619,7 +11789,10 @@
       "frequency": 3.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "scout",
@@ -10628,7 +11801,10 @@
       "frequency": 3.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aurar",
@@ -10636,7 +11812,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "waldo",
@@ -10646,6 +11825,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10712,7 +11894,10 @@
       "frequency": 5.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "micca",
@@ -10731,6 +11916,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -10803,7 +11991,10 @@
       "frequency": 3.61,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cuppa",
@@ -10812,7 +12003,10 @@
       "frequency": 2.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nacre",
@@ -10821,7 +12015,10 @@
       "frequency": 1.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cruor",
@@ -10829,7 +12026,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "betel",
@@ -10838,7 +12038,10 @@
       "frequency": 2.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "farad",
@@ -10847,7 +12050,10 @@
       "frequency": 1.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lares",
@@ -10857,6 +12063,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -10870,7 +12079,10 @@
       "frequency": 3.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "phase",
@@ -10879,7 +12091,10 @@
       "frequency": 4.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "derby",
@@ -10888,7 +12103,10 @@
       "frequency": 4.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "panic",
@@ -10897,7 +12115,10 @@
       "frequency": 4.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pisan",
@@ -10920,7 +12141,10 @@
       "frequency": 1.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "purim",
@@ -10951,7 +12175,10 @@
       "frequency": 1.37,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rabbi",
@@ -10960,7 +12187,10 @@
       "frequency": 3.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rigar",
@@ -11002,7 +12232,10 @@
       "frequency": 1.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "guppy",
@@ -11011,7 +12244,10 @@
       "frequency": 2.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tamen",
@@ -11030,6 +12266,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -11055,7 +12294,10 @@
       "frequency": 1.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ceder",
@@ -11064,7 +12306,10 @@
       "frequency": 1.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eneas",
@@ -11110,6 +12355,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -11188,6 +12436,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -11201,7 +12452,10 @@
       "frequency": 2.81,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "linir",
@@ -11218,7 +12472,10 @@
       "frequency": 1.95,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "curso",
@@ -11236,7 +12493,10 @@
       "frequency": 3.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vidue",
@@ -11283,7 +12543,10 @@
       "frequency": 2.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mufla",
@@ -11326,7 +12589,10 @@
       "frequency": 1.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sahel",
@@ -11393,7 +12659,10 @@
       "frequency": 3.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "motin",
@@ -11427,7 +12696,10 @@
       "frequency": 2.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brasa",
@@ -11459,7 +12731,10 @@
       "frequency": 2.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "galio",
@@ -11477,7 +12752,10 @@
       "frequency": 4.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cunar",
@@ -11503,7 +12781,10 @@
       "frequency": 1.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "atele",
@@ -11545,7 +12826,10 @@
       "frequency": 1.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "orion",
@@ -11583,6 +12867,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1693
       ]
@@ -11658,6 +12945,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -11671,7 +12961,10 @@
       "frequency": 1.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "argot",
@@ -11680,7 +12973,10 @@
       "frequency": 1.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salar",
@@ -11706,7 +13002,10 @@
       "frequency": 2.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "canna",
@@ -11715,7 +13014,10 @@
       "frequency": 2.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "furor",
@@ -11724,7 +13026,10 @@
       "frequency": 2.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hanse",
@@ -11734,6 +13039,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -11747,7 +13055,10 @@
       "frequency": 3.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "andes",
@@ -11786,7 +13097,10 @@
       "frequency": 1.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "carro",
@@ -11804,7 +13118,10 @@
       "frequency": 2.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ileal",
@@ -11813,7 +13130,10 @@
       "frequency": 1.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "crise",
@@ -11855,7 +13175,10 @@
       "frequency": 1.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "forma",
@@ -11873,7 +13196,10 @@
       "frequency": 1.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "saxon",
@@ -11904,7 +13230,10 @@
       "frequency": 2.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "minio",
@@ -11945,7 +13274,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "septe",
@@ -11970,7 +13302,10 @@
       "frequency": 2.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hasta",
@@ -11979,7 +13314,10 @@
       "frequency": 2.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "malar",
@@ -11988,7 +13326,10 @@
       "frequency": 2.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pavon",
@@ -12020,7 +13361,10 @@
       "frequency": 1.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pence",
@@ -12029,7 +13373,10 @@
       "frequency": 3.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "botte",
@@ -12056,7 +13403,10 @@
       "frequency": 2.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "adoxa",
@@ -12073,7 +13423,10 @@
       "frequency": 2.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fusil",
@@ -12082,7 +13435,10 @@
       "frequency": 1.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "binon",
@@ -12107,7 +13463,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "milos",
@@ -12117,6 +13476,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12138,7 +13500,10 @@
       "frequency": 3.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "apena",
@@ -12155,7 +13520,10 @@
       "frequency": 2.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mauve",
@@ -12164,7 +13532,10 @@
       "frequency": 2.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "soler",
@@ -12173,7 +13544,10 @@
       "frequency": 2.36,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blanc",
@@ -12191,7 +13565,10 @@
       "frequency": 1.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "esque",
@@ -12260,7 +13637,10 @@
       "frequency": 3.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "magne",
@@ -12296,7 +13676,10 @@
       "frequency": 1.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "libyc",
@@ -12350,7 +13733,10 @@
       "frequency": 3.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "canor",
@@ -12376,7 +13762,10 @@
       "frequency": 4.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "porro",
@@ -12416,7 +13805,10 @@
       "frequency": 3.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pyrex",
@@ -12426,6 +13818,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12454,7 +13849,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spike",
@@ -12463,7 +13861,10 @@
       "frequency": 3.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cnida",
@@ -12471,7 +13872,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ruche",
@@ -12480,7 +13884,10 @@
       "frequency": 1.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "uncia",
@@ -12489,7 +13896,10 @@
       "frequency": 1.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tropo",
@@ -12545,7 +13955,10 @@
       "frequency": 2.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ducer",
@@ -12571,6 +13984,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12584,7 +14000,10 @@
       "frequency": 3.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "golfo",
@@ -12625,7 +14044,10 @@
       "frequency": 3.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cochi",
@@ -12684,7 +14106,10 @@
       "frequency": 5.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "deuce",
@@ -12693,7 +14118,10 @@
       "frequency": 2.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "defia",
@@ -12710,7 +14138,10 @@
       "frequency": 1.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cidra",
@@ -12728,6 +14159,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -12749,7 +14183,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "retro",
@@ -12785,7 +14222,10 @@
       "frequency": 3.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "serac",
@@ -12794,7 +14234,10 @@
       "frequency": 1.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tenue",
@@ -12803,7 +14246,10 @@
       "frequency": 1.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "damar",
@@ -12812,7 +14258,10 @@
       "frequency": 1.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "halto",
@@ -12845,7 +14294,10 @@
       "frequency": 2.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "odeon",
@@ -12854,7 +14306,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gypso",
@@ -12871,7 +14326,10 @@
       "frequency": 2.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ajour",
@@ -12896,7 +14354,10 @@
       "frequency": 3.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "seren",
@@ -12923,7 +14384,10 @@
       "frequency": 2.89,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "munde",
@@ -12966,7 +14430,10 @@
       "frequency": 3.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tibia",
@@ -12975,7 +14442,10 @@
       "frequency": 2.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pampa",
@@ -12984,7 +14454,10 @@
       "frequency": 2.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "louis",
@@ -12994,6 +14467,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -13024,7 +14500,10 @@
       "frequency": 4.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "argus",
@@ -13034,6 +14513,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -13047,7 +14529,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "affin",
@@ -13065,7 +14550,10 @@
       "frequency": 4.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fermi",
@@ -13075,6 +14563,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -13136,7 +14627,10 @@
       "frequency": 2.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "carer",
@@ -13145,7 +14639,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salsa",
@@ -13154,7 +14651,10 @@
       "frequency": 3.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aleut",
@@ -13207,7 +14707,10 @@
       "frequency": 3.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pauco",
@@ -13227,7 +14730,10 @@
       "frequency": 3.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "drone",
@@ -13236,7 +14742,10 @@
       "frequency": 4.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hiato",
@@ -13288,7 +14797,10 @@
       "frequency": 3.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "katal",
@@ -13296,7 +14808,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "larva",
@@ -13305,7 +14820,10 @@
       "frequency": 2.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "puteo",
@@ -13330,7 +14848,10 @@
       "frequency": 3.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "exito",
@@ -13358,6 +14879,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -13371,7 +14895,10 @@
       "frequency": 2.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bulla",
@@ -13380,7 +14907,10 @@
       "frequency": 2.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "attic",
@@ -13389,7 +14919,10 @@
       "frequency": 3.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sasir",
@@ -13420,7 +14953,10 @@
       "frequency": 1.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fusta",
@@ -13437,7 +14973,10 @@
       "frequency": 2.37,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "crude",
@@ -13446,7 +14985,10 @@
       "frequency": 4.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gimel",
@@ -13455,7 +14997,10 @@
       "frequency": 1.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ardue",
@@ -13488,7 +15033,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "regal",
@@ -13497,7 +15045,10 @@
       "frequency": 3.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "locus",
@@ -13506,7 +15057,10 @@
       "frequency": 3.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ulema",
@@ -13515,7 +15069,10 @@
       "frequency": 2.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "geode",
@@ -13524,7 +15081,10 @@
       "frequency": 2.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dpula",
@@ -13546,7 +15106,10 @@
       "frequency": 3.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "civet",
@@ -13555,7 +15118,10 @@
       "frequency": 2.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "prato",
@@ -13573,7 +15139,10 @@
       "frequency": 4.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "suabe",
@@ -13595,7 +15164,10 @@
       "frequency": 3.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "elide",
@@ -13604,7 +15176,10 @@
       "frequency": 1.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "zonda",
@@ -13613,7 +15188,10 @@
       "frequency": 1.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rolar",
@@ -13665,7 +15243,10 @@
       "frequency": 1.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cobol",
@@ -13714,7 +15295,10 @@
       "frequency": 4.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cirro",
@@ -13732,7 +15316,10 @@
       "frequency": 2.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "olear",
@@ -13749,7 +15336,10 @@
       "frequency": 1.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "musca",
@@ -13758,7 +15348,10 @@
       "frequency": 1.76,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "palau",
@@ -13781,7 +15374,10 @@
       "frequency": 2.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lauro",
@@ -13904,7 +15500,10 @@
       "frequency": 2.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lutra",
@@ -13923,6 +15522,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -13935,7 +15537,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "texan",
@@ -13992,7 +15597,10 @@
       "frequency": 4.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "junio",
@@ -14018,7 +15626,10 @@
       "frequency": 3.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eurus",
@@ -14036,7 +15647,10 @@
       "frequency": 3.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "minsk",
@@ -14085,7 +15699,10 @@
       "frequency": 2.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "butyl",
@@ -14094,7 +15711,10 @@
       "frequency": 2.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dosar",
@@ -14119,7 +15739,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "manes",
@@ -14128,7 +15751,10 @@
       "frequency": 2.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "finta",
@@ -14168,7 +15794,10 @@
       "frequency": 2.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ibide",
@@ -14209,7 +15838,10 @@
       "frequency": 1.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lydia",
@@ -14240,7 +15872,10 @@
       "frequency": 3.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "okapi",
@@ -14249,7 +15884,10 @@
       "frequency": 1.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "petra",
@@ -14272,7 +15910,10 @@
       "frequency": 3.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "super",
@@ -14313,7 +15954,10 @@
       "frequency": 1.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "watta",
@@ -14331,7 +15975,10 @@
       "frequency": 2.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "landa",
@@ -14349,7 +15996,10 @@
       "frequency": 1.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "beige",
@@ -14358,7 +16008,10 @@
       "frequency": 3.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "manar",
@@ -14425,7 +16078,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "beate",
@@ -14447,6 +16103,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -14486,7 +16145,10 @@
       "frequency": 3.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tumba",
@@ -14513,7 +16175,10 @@
       "frequency": 2.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alien",
@@ -14522,7 +16187,10 @@
       "frequency": 4.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "marie",
@@ -14545,7 +16213,10 @@
       "frequency": 1.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "animo",
@@ -14563,7 +16234,10 @@
       "frequency": 3.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "allel",
@@ -14581,6 +16255,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -14594,7 +16271,10 @@
       "frequency": 1.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "torno",
@@ -14612,7 +16292,10 @@
       "frequency": 1.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lanee",
@@ -14654,7 +16337,10 @@
       "frequency": 3.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "julio",
@@ -14709,7 +16395,10 @@
       "frequency": 3.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "caseo",
@@ -14726,7 +16415,10 @@
       "frequency": 4.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "favor",
@@ -14736,6 +16428,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1685
       ]
@@ -14756,7 +16451,10 @@
       "frequency": 2.16,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "baron",
@@ -14765,7 +16463,10 @@
       "frequency": 3.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "signo",
@@ -14783,7 +16484,10 @@
       "frequency": 3.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "juxta",
@@ -14818,6 +16522,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -14853,7 +16560,10 @@
       "frequency": 4.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "humor",
@@ -14862,7 +16572,10 @@
       "frequency": 4.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ajuga",
@@ -14871,7 +16584,10 @@
       "frequency": 1.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "albor",
@@ -14902,7 +16618,10 @@
       "frequency": 2.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "turdo",
@@ -14966,6 +16685,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -14996,7 +16718,10 @@
       "frequency": 3.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aquar",
@@ -15049,7 +16774,10 @@
       "frequency": 2.87,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ignee",
@@ -15109,7 +16837,10 @@
       "frequency": 3.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "matar",
@@ -15145,6 +16876,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15194,7 +16928,10 @@
       "frequency": 4.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "merce",
@@ -15213,6 +16950,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -15235,7 +16975,10 @@
       "frequency": 2.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cruce",
@@ -15262,7 +17005,10 @@
       "frequency": 2.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trave",
@@ -15271,7 +17017,10 @@
       "frequency": 1.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tedio",
@@ -15288,7 +17037,10 @@
       "frequency": 1.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "union",
@@ -15297,7 +17049,10 @@
       "frequency": 5.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gnomo",
@@ -15314,7 +17069,10 @@
       "frequency": 4.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "irate",
@@ -15323,7 +17081,10 @@
       "frequency": 2.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "punir",
@@ -15349,7 +17110,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stick",
@@ -15358,7 +17122,10 @@
       "frequency": 4.76,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ballo",
@@ -15393,7 +17160,10 @@
       "frequency": 3.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nicen",
@@ -15446,7 +17216,10 @@
       "frequency": 1.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "armar",
@@ -15479,7 +17252,10 @@
       "frequency": 1.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bordo",
@@ -15550,7 +17326,10 @@
       "frequency": 1.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "myoma",
@@ -15559,7 +17338,10 @@
       "frequency": 1.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "epodo",
@@ -15576,7 +17358,10 @@
       "frequency": 2.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rumex",
@@ -15594,7 +17379,10 @@
       "frequency": 2.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "polea",
@@ -15628,7 +17416,10 @@
       "frequency": 3.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "celle",
@@ -15655,7 +17446,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pupal",
@@ -15673,7 +17467,10 @@
       "frequency": 3.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "carpa",
@@ -15692,6 +17489,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -15727,7 +17527,10 @@
       "frequency": 4.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fugir",
@@ -15744,7 +17547,10 @@
       "frequency": 2.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "licet",
@@ -15771,7 +17577,10 @@
       "frequency": 2.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bingo",
@@ -15780,7 +17589,10 @@
       "frequency": 3.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sheik",
@@ -15789,7 +17601,10 @@
       "frequency": 3.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "histo",
@@ -15807,7 +17622,10 @@
       "frequency": 2.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "drama",
@@ -15816,7 +17634,10 @@
       "frequency": 4.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mixar",
@@ -15859,7 +17680,10 @@
       "frequency": 1.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aosta",
@@ -15882,7 +17706,10 @@
       "frequency": 3.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cader",
@@ -15924,7 +17751,10 @@
       "frequency": 2.67,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brema",
@@ -15961,7 +17791,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "freon",
@@ -15970,7 +17803,10 @@
       "frequency": 2.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "prude",
@@ -15979,7 +17815,10 @@
       "frequency": 2.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sposa",
@@ -16044,7 +17883,10 @@
       "frequency": 2.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tabla",
@@ -16053,7 +17895,10 @@
       "frequency": 2.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rupia",
@@ -16061,7 +17906,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nadir",
@@ -16070,7 +17918,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "samba",
@@ -16079,7 +17930,10 @@
       "frequency": 3.18,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "faxar",
@@ -16099,7 +17953,10 @@
       "frequency": 2.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vogar",
@@ -16150,7 +18007,10 @@
       "frequency": 1.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "passe",
@@ -16176,7 +18036,10 @@
       "frequency": 1.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "forte",
@@ -16185,7 +18048,10 @@
       "frequency": 3.24,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "noria",
@@ -16194,7 +18060,10 @@
       "frequency": 1.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "terna",
@@ -16233,7 +18102,10 @@
       "frequency": 2.6,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "limon",
@@ -16251,7 +18123,10 @@
       "frequency": 2.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mover",
@@ -16269,7 +18144,10 @@
       "frequency": 2.01,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tenia",
@@ -16303,7 +18181,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "patre",
@@ -16330,7 +18211,10 @@
       "frequency": 4.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "etage",
@@ -16370,7 +18254,10 @@
       "frequency": 2.76,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "spada",
@@ -16410,7 +18297,10 @@
       "frequency": 3.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ganio",
@@ -16441,7 +18331,10 @@
       "frequency": 3.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "longe",
@@ -16462,7 +18355,10 @@
       "frequency": 3.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grumo",
@@ -16510,7 +18406,10 @@
       "frequency": 2.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "seder",
@@ -16618,7 +18517,10 @@
       "frequency": 2.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tonna",
@@ -16636,7 +18538,10 @@
       "frequency": 2.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "puera",
@@ -16690,7 +18595,10 @@
       "frequency": 3.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dacha",
@@ -16699,7 +18607,10 @@
       "frequency": 2.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "macie",
@@ -16748,7 +18659,10 @@
       "frequency": 4.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "toast",
@@ -16757,7 +18671,10 @@
       "frequency": 3.96,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "certo",
@@ -16784,7 +18701,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rogar",
@@ -16826,7 +18746,10 @@
       "frequency": 3.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "juvar",
@@ -16852,7 +18775,10 @@
       "frequency": 2.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nitor",
@@ -16869,7 +18795,10 @@
       "frequency": 3.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sorte",
@@ -16904,7 +18833,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "these",
@@ -16913,7 +18845,10 @@
       "frequency": 6.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lunar",
@@ -16922,7 +18857,10 @@
       "frequency": 3.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "semel",
@@ -16941,6 +18879,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -16954,7 +18895,10 @@
       "frequency": 2.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "reper",
@@ -17000,6 +18944,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17020,7 +18967,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "david",
@@ -17059,7 +19009,10 @@
       "frequency": 2.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "terra",
@@ -17068,7 +19021,10 @@
       "frequency": 3.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "loira",
@@ -17091,6 +19047,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1717
       ]
@@ -17102,7 +19061,10 @@
       "frequency": 2.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "corte",
@@ -17170,6 +19132,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -17225,7 +19190,10 @@
       "frequency": 2.87,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "prope",
@@ -17261,7 +19229,10 @@
       "frequency": 3.6,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "video",
@@ -17270,7 +19241,10 @@
       "frequency": 5.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fenil",
@@ -17295,7 +19269,10 @@
       "frequency": 3.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dardo",
@@ -17322,7 +19299,10 @@
       "frequency": 2.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "valle",
@@ -17340,7 +19320,10 @@
       "frequency": 1.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "podio",
@@ -17370,7 +19353,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "levar",
@@ -17388,7 +19374,10 @@
       "frequency": 3.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pugno",
@@ -17405,7 +19394,10 @@
       "frequency": 3.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "huppa",
@@ -17430,7 +19422,10 @@
       "frequency": 3.38,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "corti",
@@ -17462,7 +19457,10 @@
       "frequency": 1.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "wisla",
@@ -17528,7 +19526,10 @@
       "frequency": 3.73,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "macro",
@@ -17537,7 +19538,10 @@
       "frequency": 3.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lumbo",
@@ -17596,7 +19600,10 @@
       "frequency": 2.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bysso",
@@ -17631,7 +19638,10 @@
       "frequency": 2.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pulpa",
@@ -17648,7 +19658,10 @@
       "frequency": 1.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "optic",
@@ -17657,7 +19670,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "haspa",
@@ -17674,7 +19690,10 @@
       "frequency": 1.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "myrto",
@@ -17692,7 +19711,10 @@
       "frequency": 2.37,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "villa",
@@ -17701,7 +19723,10 @@
       "frequency": 4.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pelle",
@@ -17753,7 +19778,10 @@
       "frequency": 4.87,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cossa",
@@ -17785,7 +19813,10 @@
       "frequency": 3.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "timer",
@@ -17803,7 +19834,10 @@
       "frequency": 2.36,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nimis",
@@ -17833,7 +19867,10 @@
       "frequency": 3.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cairo",
@@ -17866,6 +19903,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1696
       ]
@@ -17886,7 +19926,10 @@
       "frequency": 1.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dieta",
@@ -17913,7 +19956,10 @@
       "frequency": 2.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avaro",
@@ -17961,7 +20007,10 @@
       "frequency": 1.91,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cocco",
@@ -17970,7 +20019,10 @@
       "frequency": 1.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "droga",
@@ -17996,7 +20048,10 @@
       "frequency": 2.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "supra",
@@ -18005,7 +20060,10 @@
       "frequency": 3.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mensa",
@@ -18014,7 +20072,10 @@
       "frequency": 2.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alcun",
@@ -18040,7 +20101,10 @@
       "frequency": 2.68,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "taler",
@@ -18049,7 +20113,10 @@
       "frequency": 1.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "stipe",
@@ -18058,7 +20125,10 @@
       "frequency": 2.73,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "turba",
@@ -18089,7 +20159,10 @@
       "frequency": 1.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salon",
@@ -18124,7 +20197,10 @@
       "frequency": 1.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "belle",
@@ -18142,7 +20218,10 @@
       "frequency": 2.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "micar",
@@ -18185,7 +20264,10 @@
       "frequency": 1.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lapis",
@@ -18194,7 +20276,10 @@
       "frequency": 2.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fovea",
@@ -18203,7 +20288,10 @@
       "frequency": 2.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "globo",
@@ -18247,7 +20335,10 @@
       "frequency": 5.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "perca",
@@ -18265,7 +20356,10 @@
       "frequency": 1.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nandu",
@@ -18274,7 +20368,10 @@
       "frequency": 2.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "breve",
@@ -18300,7 +20397,10 @@
       "frequency": 3.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pivot",
@@ -18309,7 +20409,10 @@
       "frequency": 3.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "muton",
@@ -18317,7 +20420,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alora",
@@ -18362,7 +20468,10 @@
       "frequency": 2.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pavir",
@@ -18393,7 +20502,10 @@
       "frequency": 3.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pruno",
@@ -18428,7 +20540,10 @@
       "frequency": 3.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "falta",
@@ -18479,7 +20594,10 @@
       "frequency": 4.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "horto",
@@ -18505,7 +20623,10 @@
       "frequency": 2.62,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sacre",
@@ -18598,7 +20719,10 @@
       "frequency": 1.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gilet",
@@ -18607,7 +20731,10 @@
       "frequency": 1.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maser",
@@ -18616,7 +20743,10 @@
       "frequency": 2.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sablo",
@@ -18632,7 +20762,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "anque",
@@ -18688,7 +20821,10 @@
       "frequency": 3.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "slave",
@@ -18697,7 +20833,10 @@
       "frequency": 4.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pista",
@@ -18715,7 +20854,10 @@
       "frequency": 3.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "psoco",
@@ -18755,7 +20897,10 @@
       "frequency": 4.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "agile",
@@ -18764,7 +20909,10 @@
       "frequency": 3.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bivac",
@@ -18808,6 +20956,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -18821,7 +20972,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arubo",
@@ -18898,7 +21052,10 @@
       "frequency": 4.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kerma",
@@ -18907,7 +21064,10 @@
       "frequency": 1.8,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "flirt",
@@ -18916,7 +21076,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "blese",
@@ -18948,6 +21111,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -18961,7 +21127,10 @@
       "frequency": 2.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "astro",
@@ -19012,7 +21181,10 @@
       "frequency": 2.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "najas",
@@ -19030,7 +21202,10 @@
       "frequency": 2.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "panty",
@@ -19039,7 +21214,10 @@
       "frequency": 2.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "paros",
@@ -19128,7 +21306,10 @@
       "frequency": 1.84,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ampex",
@@ -19208,7 +21389,10 @@
       "frequency": 4.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lynce",
@@ -19225,7 +21409,10 @@
       "frequency": 4.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "falce",
@@ -19242,7 +21429,10 @@
       "frequency": 2.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cisto",
@@ -19267,7 +21457,10 @@
       "frequency": 1.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "impie",
@@ -19284,7 +21477,10 @@
       "frequency": 2.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eruca",
@@ -19346,7 +21542,10 @@
       "frequency": 3.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "helix",
@@ -19355,7 +21554,10 @@
       "frequency": 3.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "drain",
@@ -19364,7 +21566,10 @@
       "frequency": 4.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jugal",
@@ -19373,7 +21578,10 @@
       "frequency": 1.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cormo",
@@ -19391,6 +21599,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19413,7 +21624,10 @@
       "frequency": 3.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bovil",
@@ -19446,7 +21660,10 @@
       "frequency": 4.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "panda",
@@ -19455,7 +21672,10 @@
       "frequency": 3.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "labor",
@@ -19464,7 +21684,10 @@
       "frequency": 4.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "joste",
@@ -19481,7 +21704,10 @@
       "frequency": 1.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lapso",
@@ -19497,7 +21723,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "addax",
@@ -19506,7 +21735,10 @@
       "frequency": 1.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pizza",
@@ -19515,7 +21747,10 @@
       "frequency": 4.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "morbo",
@@ -19533,7 +21768,10 @@
       "frequency": 2.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alger",
@@ -19559,7 +21797,10 @@
       "frequency": 1.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nukus",
@@ -19606,7 +21847,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "polka",
@@ -19615,7 +21859,10 @@
       "frequency": 3.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "telex",
@@ -19624,7 +21871,10 @@
       "frequency": 2.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mansi",
@@ -19642,7 +21892,10 @@
       "frequency": 3.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "balsa",
@@ -19651,7 +21904,10 @@
       "frequency": 2.48,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "marte",
@@ -19675,6 +21931,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1704
       ]
@@ -19686,7 +21945,10 @@
       "frequency": 4.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gluma",
@@ -19703,7 +21965,10 @@
       "frequency": 2.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "japon",
@@ -19726,7 +21991,10 @@
       "frequency": 2.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "optar",
@@ -19765,7 +22033,10 @@
       "frequency": 2.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "visir",
@@ -19782,7 +22053,10 @@
       "frequency": 4.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "local",
@@ -19791,7 +22065,10 @@
       "frequency": 5.43,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ontic",
@@ -19800,7 +22077,10 @@
       "frequency": 1.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "devie",
@@ -19839,7 +22119,10 @@
       "frequency": 2.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "kendo",
@@ -19848,7 +22131,10 @@
       "frequency": 2.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "matur",
@@ -19869,7 +22155,10 @@
       "frequency": 1.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "donar",
@@ -19887,7 +22176,10 @@
       "frequency": 3.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rosee",
@@ -19905,7 +22197,10 @@
       "frequency": 5.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nimie",
@@ -19967,7 +22262,10 @@
       "frequency": 4.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "crepe",
@@ -19976,7 +22274,10 @@
       "frequency": 2.87,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "heard",
@@ -19986,6 +22287,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -19999,7 +22303,10 @@
       "frequency": 5.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cotta",
@@ -20008,7 +22315,10 @@
       "frequency": 2.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "clava",
@@ -20078,7 +22388,10 @@
       "frequency": 2.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mimar",
@@ -20097,6 +22410,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -20119,6 +22435,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 2,
@@ -20193,7 +22512,10 @@
       "frequency": 3.6,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "thymo",
@@ -20284,6 +22606,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -20298,6 +22623,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -20325,7 +22653,10 @@
       "frequency": 2.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aquee",
@@ -20373,7 +22704,10 @@
       "frequency": 3.55,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gothe",
@@ -20396,7 +22730,10 @@
       "frequency": 5.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mamba",
@@ -20405,7 +22742,10 @@
       "frequency": 2.64,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eluer",
@@ -20435,7 +22775,10 @@
       "frequency": 3.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vulva",
@@ -20444,7 +22787,10 @@
       "frequency": 2.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bahut",
@@ -20453,7 +22799,10 @@
       "frequency": 1.56,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bavar",
@@ -20484,7 +22833,10 @@
       "frequency": 1.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avena",
@@ -20564,7 +22916,10 @@
       "frequency": 3.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mural",
@@ -20573,7 +22928,10 @@
       "frequency": 3.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fresc",
@@ -20599,7 +22957,10 @@
       "frequency": 5.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bucla",
@@ -20625,7 +22986,10 @@
       "frequency": 4.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "equar",
@@ -20659,7 +23023,10 @@
       "frequency": 1.83,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "brest",
@@ -20691,7 +23058,10 @@
       "frequency": 2.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rally",
@@ -20700,7 +23070,10 @@
       "frequency": 4.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "joker",
@@ -20709,7 +23082,10 @@
       "frequency": 3.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bromo",
@@ -20718,7 +23094,10 @@
       "frequency": 2.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "oliva",
@@ -20744,7 +23123,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lardo",
@@ -20807,7 +23189,10 @@
       "frequency": 2.22,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alveo",
@@ -20856,7 +23241,10 @@
       "frequency": 1.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fixar",
@@ -20898,7 +23286,10 @@
       "frequency": 4.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sodio",
@@ -20929,7 +23320,10 @@
       "frequency": 1.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "taiga",
@@ -20938,7 +23332,10 @@
       "frequency": 2.62,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "silva",
@@ -20947,7 +23344,10 @@
       "frequency": 3.77,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rumor",
@@ -20956,7 +23356,10 @@
       "frequency": 3.73,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "quito",
@@ -21025,7 +23428,10 @@
       "frequency": 3.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "jalon",
@@ -21075,7 +23481,10 @@
       "frequency": 2.35,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "icone",
@@ -21092,7 +23501,10 @@
       "frequency": 5.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grave",
@@ -21101,7 +23513,10 @@
       "frequency": 4.31,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nutar",
@@ -21164,6 +23579,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21177,7 +23595,10 @@
       "frequency": 2.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "salep",
@@ -21186,7 +23607,10 @@
       "frequency": 1.2,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sapio",
@@ -21204,7 +23628,10 @@
       "frequency": 1.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "codar",
@@ -21221,7 +23648,10 @@
       "frequency": 4.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arder",
@@ -21275,6 +23705,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21288,7 +23721,10 @@
       "frequency": 2.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "alate",
@@ -21297,7 +23733,10 @@
       "frequency": 1.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gaffa",
@@ -21315,7 +23754,10 @@
       "frequency": 4.29,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tosti",
@@ -21346,7 +23788,10 @@
       "frequency": 3.4,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "caler",
@@ -21380,7 +23825,10 @@
       "frequency": 3.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "denim",
@@ -21389,7 +23837,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "furto",
@@ -21406,7 +23857,10 @@
       "frequency": 2.88,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "macla",
@@ -21445,7 +23899,10 @@
       "frequency": 2.09,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sinai",
@@ -21512,7 +23969,10 @@
       "frequency": 3.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arrha",
@@ -21529,7 +23989,10 @@
       "frequency": 4.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "deber",
@@ -21565,7 +24028,10 @@
       "frequency": 3.11,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ruber",
@@ -21600,7 +24066,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "saper",
@@ -21634,7 +24103,10 @@
       "frequency": 2.32,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "trama",
@@ -21682,7 +24154,10 @@
       "frequency": 4.02,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tonga",
@@ -21692,6 +24167,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21714,6 +24192,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -21727,7 +24208,10 @@
       "frequency": 1.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "feudo",
@@ -21752,7 +24236,10 @@
       "frequency": 3.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lysar",
@@ -21783,7 +24270,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "furia",
@@ -21801,7 +24291,10 @@
       "frequency": 2.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "putar",
@@ -21868,7 +24361,10 @@
       "frequency": 1.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ental",
@@ -21885,7 +24381,10 @@
       "frequency": 1.47,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sural",
@@ -21894,7 +24393,10 @@
       "frequency": 1.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grate",
@@ -21903,7 +24405,10 @@
       "frequency": 3.17,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cobra",
@@ -21912,7 +24417,10 @@
       "frequency": 3.51,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tilde",
@@ -21921,7 +24429,10 @@
       "frequency": 2.19,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ruina",
@@ -21939,7 +24450,10 @@
       "frequency": 1.54,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "boron",
@@ -21948,7 +24462,10 @@
       "frequency": 2.92,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "talon",
@@ -21957,7 +24474,10 @@
       "frequency": 2.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "acuba",
@@ -22029,7 +24549,10 @@
       "frequency": 2.63,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "molto",
@@ -22047,7 +24570,10 @@
       "frequency": 3.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "eubea",
@@ -22100,7 +24626,10 @@
       "frequency": 1.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "taxon",
@@ -22109,7 +24638,10 @@
       "frequency": 2.5,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "citro",
@@ -22135,7 +24667,10 @@
       "frequency": 3.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "xysto",
@@ -22160,7 +24695,10 @@
       "frequency": 1.06,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "babka",
@@ -22169,7 +24707,10 @@
       "frequency": 1.74,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "socio",
@@ -22196,7 +24737,10 @@
       "frequency": 4.46,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gonio",
@@ -22222,7 +24766,10 @@
       "frequency": 3.05,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "choro",
@@ -22240,7 +24787,10 @@
       "frequency": 3.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "invar",
@@ -22249,7 +24799,10 @@
       "frequency": 1.28,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "zuavo",
@@ -22266,7 +24819,10 @@
       "frequency": 3.9,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gruta",
@@ -22297,7 +24853,10 @@
       "frequency": 2.44,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "chios",
@@ -22320,7 +24879,10 @@
       "frequency": 1.86,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gallo",
@@ -22343,7 +24905,10 @@
       "frequency": 4.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "rodar",
@@ -22399,7 +24964,10 @@
       "frequency": 3.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cella",
@@ -22408,7 +24976,10 @@
       "frequency": 2.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "banco",
@@ -22417,7 +24988,10 @@
       "frequency": 3.03,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "paula",
@@ -22440,7 +25014,10 @@
       "frequency": 3.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "secur",
@@ -22459,6 +25036,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1721
       ]
@@ -22485,7 +25065,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "opera",
@@ -22494,7 +25077,10 @@
       "frequency": 4.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pinna",
@@ -22503,7 +25089,10 @@
       "frequency": 2.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gobio",
@@ -22528,7 +25117,10 @@
       "frequency": 1.13,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fundo",
@@ -22546,7 +25138,10 @@
       "frequency": 1.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "grano",
@@ -22585,7 +25180,10 @@
       "frequency": 1.75,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sever",
@@ -22603,7 +25201,10 @@
       "frequency": 1.59,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "large",
@@ -22612,7 +25213,10 @@
       "frequency": 5.39,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "twill",
@@ -22621,7 +25225,10 @@
       "frequency": 2.66,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "emule",
@@ -22630,7 +25237,10 @@
       "frequency": 1.26,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "abaco",
@@ -22688,7 +25298,10 @@
       "frequency": 2.42,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "sunna",
@@ -22711,7 +25324,10 @@
       "frequency": 2.15,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "extra",
@@ -22720,7 +25336,10 @@
       "frequency": 4.98,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "total",
@@ -22730,6 +25349,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1711
       ]
@@ -22749,7 +25371,10 @@
       "tier": "daily",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "regno",
@@ -22776,7 +25401,10 @@
       "frequency": 3.04,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tamis",
@@ -22785,7 +25413,10 @@
       "frequency": 1.21,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "conto",
@@ -22803,7 +25434,10 @@
       "frequency": 3.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gruto",
@@ -22849,7 +25483,10 @@
       "frequency": 2.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "morso",
@@ -22866,7 +25503,10 @@
       "frequency": 1.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "wafla",
@@ -22948,7 +25588,10 @@
       "frequency": 4.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "derma",
@@ -22957,7 +25600,10 @@
       "frequency": 2.08,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "valde",
@@ -22975,7 +25621,10 @@
       "frequency": 1.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "intus",
@@ -23017,7 +25666,10 @@
       "frequency": 2.87,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tappo",
@@ -23034,7 +25686,10 @@
       "frequency": 1.25,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nicot",
@@ -23057,7 +25712,10 @@
       "frequency": 1.99,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "manco",
@@ -23084,7 +25742,10 @@
       "frequency": 3.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nepto",
@@ -23118,7 +25779,10 @@
       "frequency": 1.94,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "escar",
@@ -23178,6 +25842,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -23200,7 +25867,10 @@
       "frequency": 4.0,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pulpo",
@@ -23227,7 +25897,10 @@
       "frequency": 4.07,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "testo",
@@ -23269,7 +25942,10 @@
       "frequency": 3.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "filet",
@@ -23295,7 +25971,10 @@
       "frequency": 2.34,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "julia",
@@ -23348,7 +26027,10 @@
       "frequency": 2.7,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tetra",
@@ -23357,7 +26039,10 @@
       "frequency": 2.72,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aural",
@@ -23366,7 +26051,10 @@
       "frequency": 2.78,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "calce",

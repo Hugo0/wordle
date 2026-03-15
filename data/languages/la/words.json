@@ -24,7 +24,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nvnce",
@@ -1375,7 +1378,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "separ",
@@ -1556,7 +1562,10 @@
       "frequency": 3.52,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arula",
@@ -2202,6 +2211,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -2338,6 +2350,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 4,
@@ -2635,6 +2650,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -2876,6 +2894,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -3284,7 +3305,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "aleus",
@@ -4839,6 +4863,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -6973,6 +7000,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 3,
@@ -7357,6 +7387,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -7394,7 +7427,10 @@
       "frequency": 2.61,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "axula",
@@ -9150,6 +9186,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 4,
@@ -9243,7 +9282,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avexi",
@@ -9710,6 +9752,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -9983,7 +10028,10 @@
       "tier": "blocked",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "arion",
@@ -10126,6 +10174,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -10245,6 +10296,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -10258,6 +10312,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -10506,6 +10563,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -10585,6 +10645,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -13550,7 +13613,10 @@
       "frequency": 1.41,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "odevm",
@@ -15307,7 +15373,10 @@
       "frequency": 2.69,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "annvi",
@@ -15990,6 +16059,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -16674,6 +16746,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -17193,6 +17268,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -18066,6 +18144,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -18103,6 +18184,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -18903,6 +18987,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -19387,7 +19474,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "locus",
@@ -19563,6 +19653,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -20026,7 +20119,10 @@
       "frequency": 1.58,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "golgi",
@@ -20381,6 +20477,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -21083,6 +21182,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -22142,7 +22244,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "bulga",
@@ -22160,7 +22265,10 @@
       "frequency": 2.71,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "chilo",
@@ -22330,6 +22438,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 4,
@@ -22418,7 +22529,10 @@
       "frequency": 2.3,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "facia",
@@ -22551,7 +22665,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "clino",
@@ -23040,6 +23157,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 4,
@@ -23142,6 +23262,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -23563,6 +23686,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -23733,7 +23859,10 @@
       "frequency": 1.65,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "cerea",
@@ -24364,6 +24493,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -25718,7 +25850,10 @@
       "frequency": 1.14,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "vanus",
@@ -25822,6 +25957,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -26392,6 +26530,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -26501,7 +26642,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "solen",
@@ -27231,7 +27375,10 @@
       "frequency": 1.23,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "semel",
@@ -27250,6 +27397,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -27474,6 +27624,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -27556,7 +27709,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "hispo",
@@ -27792,6 +27948,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -28236,7 +28395,10 @@
       "frequency": 1.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "mvcvs",
@@ -28278,6 +28440,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "history": [
         1694
       ]
@@ -28788,7 +28953,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "fullo",
@@ -30043,7 +30211,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "meton",
@@ -30950,6 +31121,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -31236,6 +31410,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -31495,7 +31672,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "avlvs",
@@ -31615,7 +31795,10 @@
       "frequency": 2.57,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "clveo",
@@ -32502,6 +32685,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -33428,6 +33614,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -33647,6 +33836,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 4,
@@ -35636,7 +35828,10 @@
       "frequency": 2.33,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ocrim",
@@ -36947,7 +37142,10 @@
       "frequency": 2.93,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nolit",
@@ -37302,7 +37500,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "gamba",
@@ -37794,7 +37995,10 @@
       "frequency": 2.27,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pvgna",
@@ -37955,7 +38159,10 @@
       "frequency": 2.82,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "tapes",
@@ -37989,7 +38196,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "pleps",
@@ -38175,7 +38385,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "nobis",
@@ -38324,7 +38537,10 @@
       "frequency": 2.12,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "maneo",
@@ -39140,7 +39356,10 @@
       "frequency": 1.49,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "odoro",
@@ -39384,7 +39603,10 @@
       "frequency": 1.85,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lygdi",
@@ -40108,6 +40330,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -40301,7 +40526,10 @@
       "frequency": 1.53,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ancvs",
@@ -40804,7 +41032,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "isdem",
@@ -42057,7 +42288,10 @@
       "frequency": 1.97,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "apyri",
@@ -42224,6 +42458,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -42689,7 +42926,10 @@
       "frequency": 1.1,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "uzita",
@@ -44042,7 +44282,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "flato",
@@ -44159,7 +44402,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "uirgo",
@@ -44880,7 +45126,10 @@
       "frequency": 3.45,
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "ilios",
@@ -46260,6 +46509,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "foreign": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 4,
@@ -46616,7 +46868,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "forma",
@@ -46958,7 +47213,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "absit",
@@ -47290,7 +47548,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "dolon",
@@ -48153,6 +48414,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -48705,6 +48969,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -49055,7 +49322,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "provt",
@@ -49485,7 +49755,10 @@
       "tier": "valid",
       "sources": [
         "main_list"
-      ]
+      ],
+      "flags": {
+        "foreign": true
+      }
     },
     {
       "word": "lupia",
@@ -49527,6 +49800,9 @@
       "sources": [
         "main_list"
       ],
+      "flags": {
+        "proper_noun": true
+      },
       "llm": {
         "tier": "reject",
         "confidence": 5,
@@ -60439,7 +60715,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "ccmxv",
@@ -60447,7 +60726,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "ccxix",
@@ -60455,7 +60737,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "cdeli",
@@ -61799,7 +62084,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "clivo",
@@ -61885,7 +62173,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "cnptl",
@@ -63651,7 +63942,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "cxliv",
@@ -63659,7 +63953,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "cxxii",
@@ -63668,7 +63965,10 @@
       "frequency": 1.1,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "cycli",
@@ -64527,7 +64827,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "dcxli",
@@ -64535,7 +64838,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "ddaru",
@@ -81893,7 +82199,10 @@
       "frequency": 1.52,
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "livio",
@@ -84294,7 +84603,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mcrae",
@@ -84311,7 +84623,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mdcxx",
@@ -84319,7 +84634,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mdlxv",
@@ -84327,7 +84645,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mdxci",
@@ -84335,7 +84656,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mdxlv",
@@ -84343,7 +84667,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mdxxv",
@@ -84351,7 +84678,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "meade",
@@ -85630,7 +85960,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mmxxi",
@@ -85638,7 +85971,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "mneme",
@@ -86856,7 +87192,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "myaus",
@@ -110054,7 +110393,10 @@
       "tier": "valid",
       "sources": [
         "supplement"
-      ]
+      ],
+      "flags": {
+        "proper_noun": true
+      }
     },
     {
       "word": "xotis",
