@@ -1,32 +1,11 @@
 <template>
-    <div
-        v-show="visible"
-        class="fixed top-10 left-0 w-full h-full z-50 items-center flex"
-    >
-        <div
-            class="modal-animate relative mx-auto w-full max-w-lg z-50 border-2 border-slate-200 dark:border-neutral-600 rounded-xl max-h-[85vh] overflow-y-auto"
-        >
-            <div
-                class="border-0 rounded-lg drop-shadow-xl relative flex flex-col w-full bg-white dark:bg-neutral-800 outline-none focus:outline-none"
-            >
+    <SharedBaseModal :visible="visible" size="lg" no-padding @close="$emit('close')">
                 <!-- Header -->
                 <div class="flex-initial relative mx-5 mt-5 z-50">
                     <h3 class="flex-auto text-center text-xl font-bold">
                         Wordle {{ lang.config?.name_native }}
                         #{{ lang.todaysIdx }} {{ game.attempts }}/6
                     </h3>
-                    <button
-                        type="button"
-                        aria-label="Close"
-                        class="absolute top-0 right-0 p-1 ml-auto z-50"
-                        @click="$emit('close')"
-                    >
-                        <span
-                            class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none"
-                        >
-                            &times;
-                        </span>
-                    </button>
                 </div>
 
                 <!-- Tab buttons -->
@@ -493,9 +472,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+    </SharedBaseModal>
 </template>
 
 <script setup lang="ts">

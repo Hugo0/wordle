@@ -1,25 +1,7 @@
 <template>
-    <div
-        v-show="visible"
-        id="HelpModal"
-        class="fixed top-10 left-0 w-full h-full z-50 items-center flex mx-auto"
-    >
-        <div
-            class="modal-animate bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-md sm:max-w-lg"
-        >
-            <div class="flex flex-col gap-2 relative">
-                <!-- Close (X) button -->
-                <button
-                    type="button"
-                    aria-label="Close"
-                    class="absolute top-0 right-0 p-1 ml-auto z-50"
-                    @click="$emit('close')"
-                >
-                    <span
-                        class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none"
-                        >&times;</span
-                    >
-                </button>
+    <SharedBaseModal :visible="visible" size="md" @close="$emit('close')">
+            <div class="flex flex-col gap-2">
+                <!-- Title -->
 
                 <!-- Title -->
                 <h2 class="flex mx-auto uppercase font-bold text-2xl tracking-wider">
@@ -198,8 +180,7 @@
                     <span class="text-lg text-neutral-400">&times;</span>
                 </button>
             </div>
-        </div>
-    </div>
+    </SharedBaseModal>
 </template>
 
 <script setup lang="ts">

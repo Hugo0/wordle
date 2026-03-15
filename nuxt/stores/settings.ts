@@ -9,30 +9,7 @@
  */
 import { ref, computed, watch } from 'vue';
 import { defineStore } from 'pinia';
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-/** Safely read a value from localStorage. Returns null on SSR or error. */
-function readLocal(key: string): string | null {
-    if (!import.meta.client) return null;
-    try {
-        return localStorage.getItem(key);
-    } catch {
-        return null;
-    }
-}
-
-/** Safely write a value to localStorage. No-ops on SSR or error. */
-function writeLocal(key: string, value: string): void {
-    if (!import.meta.client) return;
-    try {
-        localStorage.setItem(key, value);
-    } catch {
-        // localStorage unavailable (private browsing, quota, etc.)
-    }
-}
+import { readLocal, writeLocal } from '~/utils/storage';
 
 // ---------------------------------------------------------------------------
 // Store

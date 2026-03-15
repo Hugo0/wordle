@@ -1,25 +1,6 @@
 <template>
-    <div
-        v-show="visible"
-        class="fixed top-10 left-0 w-full h-full z-30 items-center mx-auto flex"
-    >
-        <div
-            class="modal-animate bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
-        >
-            <div class="flex flex-col gap-2 relative">
-                <!-- Close (X) button -->
-                <button
-                    type="button"
-                    aria-label="Close"
-                    class="absolute top-0 right-0 p-1 ml-auto z-50"
-                    @click="$emit('close')"
-                >
-                    <span
-                        class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none"
-                        >&times;</span
-                    >
-                </button>
-
+    <SharedBaseModal :visible="visible" size="sm" :z-index="30" @close="$emit('close')">
+            <div class="flex flex-col gap-2">
                 <h3 class="uppercase font-bold text-xl tracking-wider mb-5">
                     {{ lang.config?.ui?.settings || 'Settings' }}
                 </h3>
@@ -342,8 +323,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </SharedBaseModal>
 </template>
 
 <script setup lang="ts">
