@@ -17,7 +17,12 @@ import { defineStore } from 'pinia';
 import { useLanguageStore } from '~/stores/language';
 import { useSettingsStore } from '~/stores/settings';
 import { useStatsStore } from '~/stores/stats';
-import { buildNormalizedWordMap, normalizeWord } from '~/utils/diacritics';
+import {
+    buildNormalizedWordMap,
+    charsMatch,
+    normalizeChar,
+    normalizeWord,
+} from '~/utils/diacritics';
 import { toFinalForm, toRegularForm } from '~/utils/positional';
 import { splitWord } from '~/utils/graphemes';
 import { calculateCommunityPercentile } from '~/utils/stats';
@@ -967,6 +972,9 @@ export const useGameStore = defineStore('game', () => {
      * Returns an error message if invalid, or null if valid.
      */
     function checkHardMode(guess: string): string | null {
+        const lang = useLanguageStore();
+        const nMap = lang.normalizeMap;
+
         for (let r = 0; r < activeRow.value; r++) {
             const row = tiles.value[r];
             const colors = tileColors.value[r];
@@ -978,11 +986,15 @@ export const useGameStore = defineStore('game', () => {
                 if (!letter) continue;
 
                 if (color === 'correct') {
-                    if (guess[c]?.toLowerCase() !== letter.toLowerCase()) {
+                    if (!charsMatch(guess[c] || '', letter, nMap)) {
                         return `Hard mode: ${letter.toUpperCase()} must be in position ${c + 1}`;
                     }
                 } else if (color === 'semicorrect') {
-                    if (!guess.toLowerCase().includes(letter.toLowerCase())) {
+                    const normalizedLetter = normalizeChar(letter, nMap).toLowerCase();
+                    const guessHasLetter = [...guess].some(
+                        (g) => normalizeChar(g, nMap).toLowerCase() === normalizedLetter
+                    );
+                    if (!guessHasLetter) {
                         return `Hard mode: guess must contain ${letter.toUpperCase()}`;
                     }
                 }
