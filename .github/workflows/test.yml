@@ -59,12 +59,7 @@ jobs:
         run: uv sync
 
       - name: Run pytest with coverage
-        run: >
-          uv run pytest tests/ -v --tb=short
-          --deselect tests/test_language_config.py::TestKeyboardConfig::test_keyboard_covers_all_characters[uk]
-          --deselect tests/test_word_lists.py::TestKeyboardCoverage::test_keyboard_covers_all_word_characters[uk]
-          --deselect tests/test_word_lists.py::TestDailyWordQuality::test_arabic_no_rare_characters_in_daily_words
-          --deselect tests/test_word_lists.py::TestDailyWordQuality::test_hebrew_no_large_suffix_groups_in_daily_words
+        run: uv run pytest tests/ -v --tb=short
 
   typescript-tests:
     name: TypeScript Tests (vitest)
