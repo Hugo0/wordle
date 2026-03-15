@@ -23,6 +23,7 @@ function onBannerClick() {
     } catch {
         // Silently fail
     }
+    dismissBanner();
 }
 
 function dismissBanner() {
@@ -248,22 +249,22 @@ function handleKeyDown(e: KeyboardEvent) {
             <!-- Language improvement banner (ko, ja) -->
             <div
                 v-if="showImprovementBanner"
-                class="relative flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium cursor-pointer bg-amber-100 text-amber-900 dark:bg-amber-900/40 dark:text-amber-200 border-b border-amber-200 dark:border-amber-700"
+                class="relative flex items-center justify-center gap-2 px-3 py-2 text-sm cursor-pointer bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border-b border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-neutral-200 dark:hover:bg-neutral-700"
                 @click="onBannerClick"
             >
                 <span
-                    >This language is being improved &mdash; tap here to let us know you're
+                    >This language is being improved &mdash; tap to let us know you're
                     interested!</span
                 >
                 <button
-                    class="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-amber-200 dark:hover:bg-amber-800 text-amber-700 dark:text-amber-400"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-400 dark:text-neutral-500"
                     aria-label="Dismiss"
                     @click.stop="dismissBanner"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
+                        width="14"
+                        height="14"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"

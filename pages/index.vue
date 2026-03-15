@@ -383,7 +383,14 @@ function openLink(url: string): void {
             </button>
             <div class="absolute right-0 left-0 text-center">
                 <h1 class="uppercase font-bold text-xl tiny:text-3xl sm:text-4xl tracking-wider">
-                    <NuxtLink to="/">WORDLE &#127757;</NuxtLink>
+                    <NuxtLink to="/" class="inline-flex items-center gap-0.5"
+                        >WORDLE
+                        <img
+                            src="/images/globe.apng"
+                            alt="🌍"
+                            class="inline-block h-7 tiny:h-9 sm:h-11"
+                        />
+                    </NuxtLink>
                 </h1>
             </div>
             <div class="flex flex-row gap-3 z-30">
