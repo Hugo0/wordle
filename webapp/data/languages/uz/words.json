@@ -1,0 +1,4880 @@
+{
+  "metadata": {
+    "language_code": "uz",
+    "language_name": "Uzbek",
+    "last_pipeline_run": "2026-03-15T00:48:58.823815+00:00",
+    "migrated_from": "text_files",
+    "sources": [
+      {
+        "name": "main_list",
+        "type": "community",
+        "file": "uz_5words.txt"
+      }
+    ]
+  },
+  "words": [
+    {
+      "word": "huzur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arvoh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "radiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qizil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vatan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qabih",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "voris",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bitta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "izhor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "johil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sigir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "isloh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aslan",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.42,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hadis",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "otadi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zohid",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ildiz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "baliq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pyotr",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Russian name Peter)"
+      }
+    },
+    {
+      "word": "bugun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fason",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yoqub",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (name Jacob/Yaqub)"
+      },
+      "history": [
+        1709
+      ],
+      "scheduled_day": 1709
+    },
+    {
+      "word": "kuyik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sobor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nuqta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urush",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yemoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zakon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "siyoh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1692
+      ],
+      "scheduled_day": 1692
+    },
+    {
+      "word": "amina",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.14,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pirat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qaror",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "isrof",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ihota",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hasan",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.84,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "negiz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qozoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "raqam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toʻrt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ahvol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "savat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mufti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kiyik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nigoh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zohir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ixlos",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nufuz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sevgi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zamin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pyesa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1714
+      ],
+      "scheduled_day": 1714
+    },
+    {
+      "word": "parik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "muguz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hissa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ongli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tamom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1688
+      ],
+      "scheduled_day": 1688
+    },
+    {
+      "word": "boqiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shukr",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xodim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sirka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hokim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1729
+      ],
+      "scheduled_day": 1729
+    },
+    {
+      "word": "mayiz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "korol",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.03,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oydek",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xitob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "savob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qorin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jasad",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zamon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oʻyin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1708
+      ],
+      "scheduled_day": 1708
+    },
+    {
+      "word": "nomus",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chili",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 2.48,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Chile) or English loanword"
+      }
+    },
+    {
+      "word": "shams",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.14,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qalay",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sabot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sonet",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "doʻst",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huquq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ablah",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "molik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "avlod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "luzum",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nasha",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.64,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "litiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "eshon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "terim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zakar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "momiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zarar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "demoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1689
+      ],
+      "scheduled_day": 1689
+    },
+    {
+      "word": "oʻlar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nosir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oʻtov",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kofir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "iqbol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "salom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pitsa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "choch",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "muqim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "davom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qatra",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ssuda",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Russian loanword, not standard Uzbek"
+      }
+    },
+    {
+      "word": "oshiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "isyon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "savol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hissi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1720
+      ],
+      "scheduled_day": 1720
+    },
+    {
+      "word": "bodom",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.87,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rioya",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Rioja region)"
+      }
+    },
+    {
+      "word": "salib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ovchi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hojat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ishoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "erkak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tovar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "otash",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "birga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qarir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "alayh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kanva",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ichak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nahor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tamal",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xitoy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sahro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aprel",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "takya",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "askar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "guruh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hozir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sarob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qiyos",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xatib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1726
+      ],
+      "scheduled_day": 1726
+    },
+    {
+      "word": "malta",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 2.2,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (country Malta)"
+      }
+    },
+    {
+      "word": "aorta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hasad",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shakl",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "razil",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Brazil)"
+      }
+    },
+    {
+      "word": "burga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urugʻ",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tinch",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "radar",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.76,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "laziz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xutba",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jigar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bilan",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.45,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shoir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ombor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hatto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shkaf",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sohil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "murod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "karam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "iroda",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "karta",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.7,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1719
+      ],
+      "scheduled_day": 1719
+    },
+    {
+      "word": "tulki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fitna",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qomat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kelin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dabba",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tavba",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rajab",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qaysi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "teatr",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.61,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1721
+      ],
+      "scheduled_day": 1721
+    },
+    {
+      "word": "xabar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mudir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "halqa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "seara",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rusni",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lager",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.75,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hamza",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vanna",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "boʻsh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "niyat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "olmoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "javob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tunis",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.82,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Tunisia/city)"
+      }
+    },
+    {
+      "word": "sumka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "iffat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sovuq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dariy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "soqol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aqida",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "surat",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.26,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1702
+      ],
+      "scheduled_day": 1702
+    },
+    {
+      "word": "ochiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lekin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vafot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ikrom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "omina",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ilyos",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (name Ilyas)"
+      },
+      "history": [
+        1697
+      ],
+      "scheduled_day": 1697
+    },
+    {
+      "word": "taqvo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inson",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nihon",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.72,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "radif",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ovqat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rupor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fahsh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 2,
+        "reason": "Potentially offensive (means 'obscene/indecent')"
+      }
+    },
+    {
+      "word": "tilla",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qasam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vazir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bobiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bolta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "issiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shaxs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "gʻozi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "quruq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hamla",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "badan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mohir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lozim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qayiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okean",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.31,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1695
+      ],
+      "scheduled_day": 1695
+    },
+    {
+      "word": "kimyo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xayol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shina",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "havza",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "makon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "buyuk",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mavzu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1700
+      ],
+      "scheduled_day": 1700
+    },
+    {
+      "word": "begim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "safar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sihat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "baxil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "buzoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vasiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pemza",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maqol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "limon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "holat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1705
+      ],
+      "scheduled_day": 1705
+    },
+    {
+      "word": "qonun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "muhim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bizga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sharq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuyuq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zilol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nafas",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qonli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zaboy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1683
+      ],
+      "scheduled_day": 1683
+    },
+    {
+      "word": "foniy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "terak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pesha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "faraz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manba",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hayot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oltin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1699
+      ],
+      "scheduled_day": 1699
+    },
+    {
+      "word": "kalit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tabib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zavod",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.81,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1722
+      ],
+      "scheduled_day": 1722
+    },
+    {
+      "word": "sovun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anhor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fasih",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kecha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lotin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tomat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qalin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "reniy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tutun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jinni",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zuhra",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "daxma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yetti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maqom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aynan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "murch",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yangi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.25,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lampa",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.09,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hovuz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "olmos",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ermoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "atama",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bayon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hafta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ajdod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kabob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1685,
+        1687,
+        1704,
+        1712
+      ],
+      "scheduled_day": 1712
+    },
+    {
+      "word": "afyun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "najib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "insof",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1728
+      ],
+      "scheduled_day": 1728
+    },
+    {
+      "word": "xamsa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1711
+      ],
+      "scheduled_day": 1711
+    },
+    {
+      "word": "sonli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "namoz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qadim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xarip",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "misol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "iqror",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qiliq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "voqea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sifat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "soyuz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "garov",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hadya",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "geliy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yozuv",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "islom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sobiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uchun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1724,
+        1725
+      ],
+      "scheduled_day": 1725
+    },
+    {
+      "word": "adyol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "olcha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "foyda",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toifa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tatar",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.83,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 2,
+        "reason": "Proper noun (ethnic group, though also common word)"
+      }
+    },
+    {
+      "word": "gʻarb",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qovun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1684
+      ],
+      "scheduled_day": 1684
+    },
+    {
+      "word": "shart",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuzum",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tojik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jihat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1686
+      ],
+      "scheduled_day": 1686
+    },
+    {
+      "word": "rumin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sizga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "butun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ruhan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "somsa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tovus",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sohir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1703
+      ],
+      "scheduled_day": 1703
+    },
+    {
+      "word": "osiyo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uslub",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ahmoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paqir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vosit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pirog",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ziyon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "katta",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.02,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qissa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "daryo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "raqib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urmoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xolos",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "devor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uradi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fosiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qavat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuzni",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paxta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1713
+      ],
+      "scheduled_day": 1713
+    },
+    {
+      "word": "xiyli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "palov",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tizim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qabul",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "burun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "akula",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lahza",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qolip",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jasur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "diniy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1682,
+        1690
+      ],
+      "scheduled_day": 1690
+    },
+    {
+      "word": "faqat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "avval",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taroq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qadar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1707
+      ],
+      "scheduled_day": 1707
+    },
+    {
+      "word": "gilam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "loyiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yunon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shayx",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1691
+      ],
+      "scheduled_day": 1691
+    },
+    {
+      "word": "atrof",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "savdo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuxum",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qisqa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kiyim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bordi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mayak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "halab",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Aleppo in Arabic)"
+      }
+    },
+    {
+      "word": "qismi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sokin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nukus",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Uzbek city)"
+      }
+    },
+    {
+      "word": "xiyla",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1693
+      ],
+      "scheduled_day": 1693
+    },
+    {
+      "word": "ildam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "menga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zavja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kitob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "iqlim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yomon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oqmoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aholi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "irqiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "alloh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qibla",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shuur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "somiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hassa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "imkon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pilik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "quloq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "boʻri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "milod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inkor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jonli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bahor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xalat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qanot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "erkin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shnur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dubay",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Dubai)"
+      }
+    },
+    {
+      "word": "abzal",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fotih",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "katet",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oddiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jihod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "barot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tufli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sodiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "malay",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.48,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1710
+      ],
+      "scheduled_day": 1710
+    },
+    {
+      "word": "hakim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "beliz",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Belize)"
+      }
+    },
+    {
+      "word": "nazar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xusus",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sudya",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dalil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1694
+      ],
+      "scheduled_day": 1694
+    },
+    {
+      "word": "osmon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yurak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "muboh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "baron",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.21,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1706
+      ],
+      "scheduled_day": 1706
+    },
+    {
+      "word": "salat",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.03,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "faqir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1727
+      ],
+      "scheduled_day": 1727
+    },
+    {
+      "word": "subut",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ellik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1716
+      ],
+      "scheduled_day": 1716
+    },
+    {
+      "word": "janub",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fozil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "guvoh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zafar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "insho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ispan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uymoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jahon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1717
+      ],
+      "scheduled_day": 1717
+    },
+    {
+      "word": "keldi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "axloq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kishi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shifo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ariza",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nikoh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "josus",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "elchi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qimiz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "quyon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zarif",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ehson",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ilhom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aloqa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hovli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "parij",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oʻrta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "unsur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kerak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mebel",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "talab",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "haqir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kohin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "botil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zakot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nusxa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "usmon",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (name Osman/Uthman)"
+      }
+    },
+    {
+      "word": "tojir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "doira",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ruhiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "eston",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Estonian, or name)"
+      }
+    },
+    {
+      "word": "muhit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "totli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "balki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pakki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yelka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sariq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urgʻu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tarix",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tovuq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jadal",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qadam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sklad",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qurol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "marta",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.99,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (name Martha)"
+      }
+    },
+    {
+      "word": "tuhfa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jamoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ogʻir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arman",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.65,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oybek",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Uzbek name)"
+      },
+      "history": [
+        1696
+      ],
+      "scheduled_day": 1696
+    },
+    {
+      "word": "muzey",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qomus",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "notiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "modda",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bulut",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "albom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vodiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "shafe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rohat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1718
+      ],
+      "scheduled_day": 1718
+    },
+    {
+      "word": "vakil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "eshik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taraf",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nodir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dunyo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anjir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "banan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "gʻayr",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hamma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kabel",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.72,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1698
+      ],
+      "scheduled_day": 1698
+    },
+    {
+      "word": "sovet",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.55,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sohib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jussa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "zarba",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "barak",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.46,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xamir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "biroq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuman",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "moyli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sabab",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "saxiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1715
+      ],
+      "scheduled_day": 1715
+    },
+    {
+      "word": "idrok",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mahal",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.5,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arzon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "suzuk",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qorli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yoqut",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "asriy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "havas",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.81,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaliy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xonim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qalam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "siloh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "narsa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jalab",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "eshak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "gʻayn",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kotib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "adash",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "gunoh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "osmoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nomli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "izzat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "otmoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "alban",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.55,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Albanian/name)"
+      }
+    },
+    {
+      "word": "aksar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "falaj",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "loyli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1701
+      ],
+      "scheduled_day": 1701
+    },
+    {
+      "word": "sabiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tizza",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mufid",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kasal",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hisob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1723
+      ],
+      "scheduled_day": 1723
+    },
+    {
+      "word": "temir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fagot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bilim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "gʻayb",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vujud",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "litva",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Lithuania)"
+      }
+    },
+    {
+      "word": "viski",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "basra",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Iraqi city)"
+      }
+    },
+    {
+      "word": "qahva",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ogayo",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun (Ohio)"
+      }
+    },
+    {
+      "word": "suyak",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dofin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "isbot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qirol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tamiz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kamol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qoida",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sadaf",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tariq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kapot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "fojir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "radio",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.66,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sahar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hilol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "madad",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xotin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "xoʻja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "doimo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ilmiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ogʻiz",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okrug",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nafar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "etnik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "irsiy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "diloq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    }
+  ]
+}

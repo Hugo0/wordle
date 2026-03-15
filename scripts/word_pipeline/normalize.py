@@ -6,14 +6,14 @@ import json
 import logging
 
 from . import DATA_DIR
-from .schema import WordsYaml
+from .schema import WordsData
 
 log = logging.getLogger(__name__)
 
 GRAPHEME_LANGS = {"hi", "bn", "mr", "pa"}
 
 
-def normalize_pool(words_yaml: WordsYaml, lang: str) -> WordsYaml:
+def normalize_pool(words_yaml: WordsData, lang: str) -> WordsData:
     """Normalize all word entries: lowercase, dedup, fix length, apply final forms."""
     config = _load_config(lang)
     final_form_map = config.get("final_form_map", {})

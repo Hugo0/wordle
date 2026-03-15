@@ -62,15 +62,27 @@ _compiled_cache: dict[str, dict | None] = {}
 
 
 def _load_compiled(lang_code: str) -> dict | None:
-    """Load compiled JSON for a language."""
+    """Load words.json and extract tier lists for a language."""
     if lang_code in _compiled_cache:
         return _compiled_cache[lang_code]
-    compiled_file = LANGUAGES_DIR / lang_code / "words_compiled.json"
-    if not compiled_file.exists():
+    words_file = LANGUAGES_DIR / lang_code / "words.json"
+    if not words_file.exists():
         _compiled_cache[lang_code] = None
         return None
-    with open(compiled_file, encoding="utf-8") as f:
-        result = json.load(f)
+    with open(words_file, encoding="utf-8") as f:
+        data = json.load(f)
+    # Build compiled-style dict from words array
+    daily, valid, blocked = [], [], []
+    for w in data.get("words", []):
+        tier = w.get("tier", "valid")
+        word = w.get("word", "")
+        if tier == "daily":
+            daily.append(word)
+        elif tier == "valid":
+            valid.append(word)
+        elif tier == "blocked":
+            blocked.append(word)
+    result = {"daily": daily, "valid": valid, "blocked": blocked}
     _compiled_cache[lang_code] = result
     return result
 
