@@ -1,0 +1,56 @@
+{
+    "name": "Maori",
+    "name_native": "Māori",
+    "language_code": "mi",
+    "language_code_3": "mi",
+    "language_code_iso_639_3": "mi",
+    "keyboard": "",
+    "right_to_left": "false",
+    "meta": {
+        "title": "Te kēmu kupu o ia rā",
+        "description": "Matapakihia te kupu huna i roto i ngā ngana e 6 (iti iho rānei). He pakanga hou ia rā, ia rā!",
+        "keywords": "māori, pakanga, kupu, kēmu, ipurangi, matapaki, ia rā",
+        "locale": ""
+    },
+    "text": {
+        "subheader": "",
+        "next_word": "Next word",
+        "no_attempts": "You haven't tried any words yet!",
+        "share": "Tohatoha",
+        "notification-copied": "Copied to clipboard",
+        "notification-word-not-valid": "Word is not valid",
+        "notification-partial-word": "Please enter a full word",
+        "share_challenge_win": "I oti au te Wordle o tēnei rā i ngā ngana {n}. Ka taea e koe te hinga i ahau?",
+        "share_challenge_lose": "Kāore au i te Wordle o tēnei rā. Ka taea e koe?"
+    },
+    "help": {
+        "title": "How to Play",
+        "title_2": "Examples",
+        "close": "Close this message",
+        "text_1_1_1": "Guess the",
+        "text_1_1_2": "in six tries or less.",
+        "text_1_2": "Each guess must be a valid five letter word. Press the enter button to submit your guess.",
+        "text_1_3": "After you guess, the tiles will change color to indicate which letters of your word are correct or almost correct.",
+        "text_2_1": "is in the word and in the correct location!",
+        "text_2_2": "is in the word, but not in the correct location.",
+        "text_2_3": "is not present in the word you are trying to guess.",
+        "text_3": "A new word will be available each day!"
+    },
+    "diacritic_map": {
+        "a": [
+            "ā"
+        ],
+        "e": [
+            "ē"
+        ],
+        "i": [
+            "ī"
+        ],
+        "o": [
+            "ō"
+        ],
+        "u": [
+            "ū"
+        ]
+    }
+}

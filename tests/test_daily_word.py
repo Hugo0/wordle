@@ -16,17 +16,17 @@ from pathlib import Path
 
 import pytest
 
-from tests.conftest import ALL_LANGUAGES, load_language_config, load_word_list
+from tests.conftest import ALL_LANGUAGES, load_blocklist, load_language_config, load_word_list
 
-# Migration cutoff - must match webapp/app.py
+# Migration cutoff - must match server/utils/word-selection.ts
 MIGRATION_DAY_IDX = 1681
-DATA_DIR = Path(__file__).parent.parent / "webapp" / "data" / "languages"
+DATA_DIR = Path(__file__).parent.parent / "data" / "languages"
 
 
 def get_todays_idx(date: datetime.date = None) -> int:
     """
     Calculate the word index for a given date.
-    Must match the algorithm in webapp/app.py exactly.
+    Must match the algorithm in server/utils/word-selection.ts exactly.
     """
     if date is None:
         date = datetime.datetime.utcnow().date()
@@ -205,13 +205,13 @@ class TestWordCycling:
 
 
 def _word_hash(word: str, lang_code: str) -> int:
-    """Get stable hash for a word (must match webapp/app.py)."""
+    """Get stable hash for a word (must match server/utils/word-selection.ts)."""
     h = hashlib.sha256(f"{lang_code}:{word}".encode()).digest()
     return int.from_bytes(h[:8], "big")
 
 
 def _day_hash(day_idx: int, lang_code: str) -> int:
-    """Get hash for a day (must match webapp/app.py)."""
+    """Get hash for a day (must match server/utils/word-selection.ts)."""
     h = hashlib.sha256(f"{lang_code}:day:{day_idx}".encode()).digest()
     return int.from_bytes(h[:8], "big")
 
@@ -219,7 +219,7 @@ def _day_hash(day_idx: int, lang_code: str) -> int:
 def get_daily_word_consistent_hash(
     words: list, blocklist: set, day_idx: int, lang_code: str
 ) -> str:
-    """Consistent hashing algorithm (must match webapp/app.py)."""
+    """Consistent hashing algorithm (must match server/utils/word-selection.ts)."""
     day_h = _day_hash(day_idx, lang_code)
     candidates = []
     for word in words:
@@ -235,7 +235,7 @@ def get_daily_word_consistent_hash(
 
 
 def get_daily_word_legacy(words: list, blocklist: set, day_idx: int) -> str:
-    """Legacy shuffle algorithm (must match webapp/app.py)."""
+    """Legacy shuffle algorithm (must match server/utils/word-selection.ts)."""
     list_len = len(words)
     if not blocklist:
         return words[day_idx % list_len]
@@ -245,19 +245,6 @@ def get_daily_word_legacy(words: list, blocklist: set, day_idx: int) -> str:
         if word not in blocklist:
             return word
     return words[day_idx % list_len]
-
-
-def load_blocklist(lang: str) -> set:
-    """Load blocklist for a language."""
-    path = DATA_DIR / lang / f"{lang}_blocklist.txt"
-    if not path.exists():
-        return set()
-    blocklist = set()
-    for line in path.read_text().strip().split("\n"):
-        line = line.strip()
-        if line and not line.startswith("#"):
-            blocklist.add(line.lower())
-    return blocklist
 
 
 class TestMigrationCutoff:

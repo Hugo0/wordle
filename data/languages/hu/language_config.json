@@ -1,0 +1,88 @@
+{
+    "language_code": "hu",
+    "name": "Hungarian",
+    "timezone": "Europe/Budapest",
+    "name_native": "magyar",
+    "meta": {
+        "locale": "hu",
+        "title": "Napi szójáték",
+        "description": "Találd ki a rejtett szót 6 próbálkozásból (vagy kevesebbből). Minden nap új rejtvény áll rendelkezésre!",
+        "keywords": "magyar, puzzle, szó, játék, játék, online, kitalálni, naponta"
+    },
+    "text": {
+        "subheader": "magyar",
+        "next_word": "Következő szó ",
+        "no_attempts": "Még nem próbáltad meg a szót! ",
+        "share": "Megosztás",
+        "notification-copied": "A vágólapra másolt ",
+        "notification-partial-word": "Kérjük, adjon meg egy teljes szót ",
+        "share_challenge_win": "A mai Wordle-t {n} próbálkozásból oldottam meg. Te meg tudod verni?",
+        "share_challenge_lose": "A mai Wordle-t nem sikerült megoldanom. Neked sikerül?"
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Hogyan kell játszani ",
+        "title_2": "Példák ",
+        "close": "Zárja be ezt az üzenetet ",
+        "text_1_1_1": "Kitalál ",
+        "text_1_1_2": "hat vagy annál kevesebb próbálkozás. ",
+        "text_1_2": "Minden találgatásnak érvényes öt betűs szónak kell lennie. Nyomja meg az ENTER gombot a találgatás elküldéséhez. ",
+        "text_1_3": "Miután kitalálta, a csempe megváltoztatja a színt, hogy jelezze, hogy a szó helyes betűjei helyesek vagy szinte helyesek. ",
+        "text_2_1": "van a szóban és a helyes helyen! ",
+        "text_2_2": "a szóban van, de nem a megfelelő helyen. ",
+        "text_2_3": "nincs jelen a szóban, amit megpróbálsz kitalálni. ",
+        "text_3": "Minden nap új szó lesz elérhető! "
+    },
+    "ui": {
+        "settings": "Beállítások",
+        "dark_mode": "Sötét mód",
+        "dark_mode_desc": "Sötét téma váltása",
+        "haptic_feedback": "Haptikus visszajelzés",
+        "haptic_feedback_desc": "Rezgés érintéskor",
+        "sound_effects": "Hangeffektusok",
+        "sound_effects_desc": "Nyerés/vesztés hangok",
+        "right_to_left": "Jobbról balra",
+        "keyboard_layout": "Billentyűzetkiosztás",
+        "easy_mode": "Bármilyen szó engedélyezése",
+        "easy_mode_label": "könnyű mód",
+        "install_app": "Alkalmazás telepítése",
+        "install_app_desc": "Játssz offline és kapj app ikont",
+        "report_issue": "Hiba jelentése",
+        "view_source": "Forráskód megtekintése",
+        "guess_distribution": "Tippelési eloszlás",
+        "games": "Játékok",
+        "win_percent": "Győzelem %",
+        "streak": "Sorozat",
+        "best": "Legjobb",
+        "all_languages": "Összes nyelv",
+        "languages": "Nyelvek",
+        "play_more_languages": "Játssz több nyelven az összesített statisztikákhoz!",
+        "add_to_home": "Hozzáadás a kezdőképernyőhöz",
+        "play_daily_like_app": "Játssz Wordle-t naponta mint alkalmazást",
+        "install": "Telepítés",
+        "close": "bezárás"
+    },
+    "diacritic_map": {
+        "a": [
+            "á"
+        ],
+        "e": [
+            "é"
+        ],
+        "i": [
+            "í"
+        ],
+        "o": [
+            "ó",
+            "ö",
+            "ő"
+        ],
+        "u": [
+            "ú",
+            "ü",
+            "ű"
+        ]
+    }
+}

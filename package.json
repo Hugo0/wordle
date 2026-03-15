@@ -1,50 +1,50 @@
 {
     "name": "wordle-global",
     "version": "1.0.0",
-    "description": "Daily word puzzle game in 65+ languages",
+    "private": true,
     "type": "module",
+    "packageManager": "pnpm@10.17.1",
     "scripts": {
-        "dev": "pre-commit install 2>/dev/null; lsof -ti:8000 | xargs kill 2>/dev/null; pnpm build && concurrently -k -n server,vite -c blue,magenta \"uv run gunicorn -c gunicorn.dev.py --chdir webapp app:app\" \"pnpm watch\"",
-        "build": "vite build && uv run python scripts/generate_share_images.py",
-        "watch": "vite build --watch --emptyOutDir false",
+        "dev": "nuxt dev",
+        "build": "nuxt build",
+        "preview": "nuxt preview",
+        "generate": "nuxt generate",
+        "postinstall": "nuxt prepare",
         "test": "vitest run",
         "test:watch": "vitest",
-        "test:coverage": "vitest run --coverage",
-        "test:e2e": "playwright test",
-        "test:e2e:headed": "playwright test --headed",
-        "test:e2e:ui": "playwright test --ui",
-        "format": "prettier --write \"frontend/src/**/*.{ts,js,vue}\" \"*.{js,ts,json}\"",
-        "format:check": "prettier --check \"frontend/src/**/*.{ts,js,vue}\" \"*.{js,ts,json}\""
+        "test:e2e": "playwright test --config playwright.config.ts",
+        "test:e2e:headed": "playwright test --config playwright.config.ts --headed",
+        "format": "prettier --write \"**/*.{ts,js,vue,json}\"",
+        "format:check": "prettier --check \"**/*.{ts,js,vue,json}\""
     },
-    "keywords": [
-        "wordle",
-        "game",
-        "puzzle",
-        "multilingual"
-    ],
-    "author": "Hugo",
-    "license": "MIT",
-    "packageManager": "pnpm@10.17.1",
     "dependencies": {
         "@khmyznikov/pwa-install": "^0.6.2",
-        "posthog-js": "^1.360.2"
+        "@pinia/nuxt": "^0.10.1",
+        "nuxt": "^3.17.5",
+        "openai": "^5.8.2",
+        "pinia": "^3.0.3",
+        "posthog-js": "^1.360.2",
+        "proper-lockfile": "^4.1.2",
+        "sharp": "^0.34.3",
+        "vue": "^3.5.27"
+    },
+    "pnpm": {
+        "ignoredBuiltDependencies": [
+            "esbuild"
+        ]
     },
     "devDependencies": {
-        "@playwright/test": "^1.58.0",
+        "@playwright/test": "^1.58.2",
         "@tailwindcss/vite": "^4.1.18",
-        "@types/node": "^25.0.10",
-        "@vitejs/plugin-vue": "^6.0.3",
-        "@vitest/coverage-v8": "^4.0.18",
-        "autoprefixer": "^10.4.23",
-        "concurrently": "^9.2.1",
+        "@types/proper-lockfile": "^4.1.4",
+        "@vite-pwa/nuxt": "^0.10.8",
+        "playwright": "^1.58.2",
         "jsdom": "^27.4.0",
-        "postcss": "^8.5.6",
         "prettier": "^3.8.1",
         "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",
         "vite": "^7.3.1",
         "vitest": "^4.0.18",
-        "vue": "^3.5.27",
         "vue-tsc": "^3.2.3"
     }
 }

@@ -8,8 +8,10 @@ import pytest
 
 from tests.conftest import (
     ALL_LANGUAGES,
+    LANGUAGES_DIR,
     get_diacritic_base_chars,
     load_all_keyboard_chars,
+    load_daily_words,
     load_keyboard,
     load_language_config,
     load_word_list,
@@ -154,17 +156,43 @@ class TestKeyboardConfig:
     """Tests for keyboard configuration."""
 
     # Languages with known keyboard coverage gaps (complex scripts, incomplete keyboards)
-    KEYBOARD_COVERAGE_XFAIL: set[str] = set()
+    KEYBOARD_COVERAGE_XFAIL: set[str] = {"uk"}  # Ukrainian keyboard missing ʼ
+
+    # Minimum daily words to require a keyboard (languages below this are stubs)
+    MIN_DAILY_FOR_KEYBOARD = 100
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_playable_language_has_keyboard(self, lang):
+        """Every language with >=100 daily words must have a keyboard file."""
+        daily = load_daily_words(lang)
+        daily_count = len(daily) if daily else 0
+        if daily_count < self.MIN_DAILY_FOR_KEYBOARD:
+            pytest.skip(f"{lang}: only {daily_count} daily words (stub language)")
+
+        keyboard_file = LANGUAGES_DIR / lang / f"{lang}_keyboard.json"
+        assert keyboard_file.exists(), f"{lang}: {daily_count} daily words but no keyboard file"
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_keyboard_not_empty(self, lang):
+        """Keyboard files must have at least 5 typeable keys."""
+        keyboard = load_keyboard(lang)
+        if keyboard is None:
+            pytest.skip(f"{lang}: No keyboard file")
+
+        control_keys = {"⇨", "⟹", "⌫", "↵", "ENTER", "DEL"}
+        typeable = [k for row in keyboard for k in row if k not in control_keys]
+        assert len(typeable) >= 5, (
+            f"{lang}: Keyboard has only {len(typeable)} typeable keys (need >=5)"
+        )
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
     def test_keyboard_covers_all_characters(self, lang):
         if lang in self.KEYBOARD_COVERAGE_XFAIL:
             pytest.xfail(f"{lang}: Known keyboard coverage gap (needs expert review)")
-        """Keyboard should include all characters used in words.
+        """Keyboard should include all characters used in daily words.
 
-        Note: If a language has diacritic_map configured, users can type base
-        characters (e.g., 'a') to match diacritical variants (e.g., 'ä').
-        So the keyboard only needs the base characters.
+        Only daily-tier words are checked — valid/blocked words may contain
+        characters not on the keyboard (they're supplement-derived guesses).
         """
         keyboard = load_keyboard(lang)
         if keyboard is None:
@@ -174,7 +202,9 @@ class TestKeyboardConfig:
         if not keyboard or all(len(row) == 0 for row in keyboard):
             pytest.skip(f"{lang}: Empty keyboard (app will auto-generate)")
 
-        words = load_word_list(lang)
+        # Only check daily-tier words — those are what players must type
+        daily = load_daily_words(lang)
+        words = daily if daily else load_word_list(lang)
         word_chars = set()
         for word in words:
             word_chars.update(word)

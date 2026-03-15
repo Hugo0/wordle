@@ -1,0 +1,5782 @@
+{
+  "metadata": {
+    "language_code": "ltg",
+    "language_name": "Latgalian",
+    "last_pipeline_run": "2026-03-15T00:44:33.263875+00:00",
+    "migrated_from": "text_files",
+    "sources": [
+      {
+        "name": "main_list",
+        "type": "community",
+        "file": "ltg_5words.txt"
+      }
+    ]
+  },
+  "words": [
+    {
+      "word": "izeja",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.98,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        387,
+        774,
+        1161,
+        1548
+      ]
+    },
+    {
+      "word": "īlīkt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1,
+        388,
+        775,
+        1162,
+        1549
+      ]
+    },
+    {
+      "word": "uopss",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        2,
+        389,
+        776,
+        1163,
+        1550
+      ]
+    },
+    {
+      "word": "reize",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.63,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        3,
+        390,
+        777,
+        1164,
+        1551
+      ]
+    },
+    {
+      "word": "tiļža",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        4,
+        391,
+        778,
+        1165,
+        1552
+      ]
+    },
+    {
+      "word": "saukt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.6,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        5,
+        392,
+        779,
+        1166,
+        1553
+      ]
+    },
+    {
+      "word": "osnys",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        6,
+        393,
+        780,
+        1167,
+        1554
+      ]
+    },
+    {
+      "word": "izsīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        7,
+        394,
+        781,
+        1168,
+        1555
+      ]
+    },
+    {
+      "word": "dzeļt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        8,
+        395,
+        782,
+        1169,
+        1556,
+        1724
+      ]
+    },
+    {
+      "word": "minēt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.31,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        9,
+        396,
+        783,
+        1170,
+        1557
+      ]
+    },
+    {
+      "word": "klīgt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        10,
+        397,
+        784,
+        1171,
+        1558,
+        1725
+      ]
+    },
+    {
+      "word": "daudz",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 6.22,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        11,
+        398,
+        785,
+        1172,
+        1559
+      ]
+    },
+    {
+      "word": "ībēgt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        12,
+        399,
+        786,
+        1173,
+        1560
+      ]
+    },
+    {
+      "word": "vuokt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        13,
+        400,
+        787,
+        1174,
+        1561
+      ]
+    },
+    {
+      "word": "guozt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        14,
+        401,
+        788,
+        1175,
+        1562
+      ]
+    },
+    {
+      "word": "treit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        15,
+        402,
+        789,
+        1176,
+        1563,
+        1691
+      ]
+    },
+    {
+      "word": "skrīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        16,
+        403,
+        790,
+        1177,
+        1564
+      ]
+    },
+    {
+      "word": "mozus",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 4.1,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Moses"
+      },
+      "history": [
+        17,
+        404,
+        791,
+        1178,
+        1565,
+        1707
+      ]
+    },
+    {
+      "word": "nikur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        18,
+        405,
+        792,
+        1179,
+        1566
+      ]
+    },
+    {
+      "word": "smeļt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        19,
+        406,
+        793,
+        1180,
+        1567
+      ]
+    },
+    {
+      "word": "obeji",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        20,
+        407,
+        794,
+        1181,
+        1568,
+        1684
+      ]
+    },
+    {
+      "word": "stīpt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        21,
+        408,
+        795,
+        1182,
+        1569
+      ]
+    },
+    {
+      "word": "siļče",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        22,
+        409,
+        796,
+        1183,
+        1570,
+        1716
+      ]
+    },
+    {
+      "word": "kleja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        23,
+        410,
+        797,
+        1184,
+        1571
+      ]
+    },
+    {
+      "word": "kuots",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        24,
+        411,
+        798,
+        1185,
+        1572
+      ]
+    },
+    {
+      "word": "bolva",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        25,
+        412,
+        799,
+        1186,
+        1573
+      ]
+    },
+    {
+      "word": "dyrkš",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        26,
+        413,
+        800,
+        1187,
+        1574
+      ]
+    },
+    {
+      "word": "gaška",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        27,
+        414,
+        801,
+        1188,
+        1575
+      ]
+    },
+    {
+      "word": "īrast",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        28,
+        415,
+        802,
+        1189,
+        1576
+      ]
+    },
+    {
+      "word": "kļaus",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        29,
+        416,
+        803,
+        1190,
+        1577
+      ]
+    },
+    {
+      "word": "pļaut",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.15,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        30,
+        417,
+        804,
+        1191,
+        1578
+      ]
+    },
+    {
+      "word": "gaiļs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        31,
+        418,
+        805,
+        1192,
+        1579
+      ]
+    },
+    {
+      "word": "ījuot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        32,
+        419,
+        806,
+        1193,
+        1580
+      ]
+    },
+    {
+      "word": "nauda",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.24,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        33,
+        420,
+        807,
+        1194,
+        1581
+      ]
+    },
+    {
+      "word": "nūlīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        34,
+        421,
+        808,
+        1195,
+        1582
+      ]
+    },
+    {
+      "word": "cikom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        35,
+        422,
+        809,
+        1196,
+        1583
+      ]
+    },
+    {
+      "word": "blāgs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        36,
+        423,
+        810,
+        1197,
+        1584
+      ]
+    },
+    {
+      "word": "grīzt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        37,
+        424,
+        811,
+        1198,
+        1585
+      ]
+    },
+    {
+      "word": "ferma",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.77,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        38,
+        425,
+        812,
+        1199,
+        1586
+      ]
+    },
+    {
+      "word": "ītikt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        39,
+        426,
+        813,
+        1200,
+        1587
+      ]
+    },
+    {
+      "word": "pīrīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        40,
+        427,
+        814,
+        1201,
+        1588
+      ]
+    },
+    {
+      "word": "suojs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        41,
+        428,
+        815,
+        1202,
+        1589
+      ]
+    },
+    {
+      "word": "saime",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.71,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        42,
+        429,
+        816,
+        1203,
+        1590
+      ]
+    },
+    {
+      "word": "svece",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.39,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        43,
+        430,
+        817,
+        1204,
+        1591
+      ]
+    },
+    {
+      "word": "skane",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        44,
+        431,
+        818,
+        1205,
+        1592
+      ]
+    },
+    {
+      "word": "kuoje",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        45,
+        432,
+        819,
+        1206,
+        1593
+      ]
+    },
+    {
+      "word": "plita",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        46,
+        433,
+        820,
+        1207,
+        1594
+      ]
+    },
+    {
+      "word": "izdēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        47,
+        434,
+        821,
+        1208,
+        1595
+      ]
+    },
+    {
+      "word": "nuove",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        48,
+        435,
+        822,
+        1209,
+        1596
+      ]
+    },
+    {
+      "word": "īraut",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        49,
+        436,
+        823,
+        1210,
+        1597
+      ]
+    },
+    {
+      "word": "revēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        50,
+        437,
+        824,
+        1211,
+        1598
+      ]
+    },
+    {
+      "word": "berzt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        51,
+        438,
+        825,
+        1212,
+        1599,
+        1729
+      ]
+    },
+    {
+      "word": "krušs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        52,
+        439,
+        826,
+        1213,
+        1600
+      ]
+    },
+    {
+      "word": "palīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        53,
+        440,
+        827,
+        1214,
+        1601
+      ]
+    },
+    {
+      "word": "agrys",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        54,
+        441,
+        828,
+        1215,
+        1602
+      ]
+    },
+    {
+      "word": "bruno",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 4.02,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: personal name Bruno"
+      },
+      "history": [
+        55,
+        442,
+        829,
+        1216,
+        1603
+      ]
+    },
+    {
+      "word": "krist",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.1,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        56,
+        443,
+        830,
+        1217,
+        1604
+      ]
+    },
+    {
+      "word": "vakar",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.14,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        57,
+        444,
+        831,
+        1218,
+        1605
+      ]
+    },
+    {
+      "word": "ingus",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 3.56,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: personal name Ingus"
+      },
+      "history": [
+        58,
+        445,
+        832,
+        1219,
+        1606
+      ]
+    },
+    {
+      "word": "īnest",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        59,
+        446,
+        833,
+        1220,
+        1607
+      ]
+    },
+    {
+      "word": "klāvs",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.45,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        60,
+        447,
+        834,
+        1221,
+        1608
+      ]
+    },
+    {
+      "word": "maize",
+      "length": 5,
+      "tier": "valid",
+      "frequency": 4.14,
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        61,
+        448,
+        835,
+        1222,
+        1609,
+        1689
+      ]
+    },
+    {
+      "word": "sasīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        62,
+        449,
+        836,
+        1223,
+        1610,
+        1719
+      ]
+    },
+    {
+      "word": "īzyls",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        63,
+        450,
+        837,
+        1224,
+        1611
+      ]
+    },
+    {
+      "word": "dzert",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.66,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        64,
+        451,
+        838,
+        1225,
+        1612
+      ]
+    },
+    {
+      "word": "kokts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        65,
+        452,
+        839,
+        1226,
+        1613
+      ]
+    },
+    {
+      "word": "nūrīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        66,
+        453,
+        840,
+        1227,
+        1614
+      ]
+    },
+    {
+      "word": "atdēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        67,
+        454,
+        841,
+        1228,
+        1615
+      ]
+    },
+    {
+      "word": "dzeja",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.2,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        68,
+        455,
+        842,
+        1229,
+        1616
+      ]
+    },
+    {
+      "word": "pylns",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        69,
+        456,
+        843,
+        1230,
+        1617
+      ]
+    },
+    {
+      "word": "neikt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        70,
+        457,
+        844,
+        1231,
+        1618
+      ]
+    },
+    {
+      "word": "muoja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        71,
+        458,
+        845,
+        1232,
+        1619
+      ]
+    },
+    {
+      "word": "dzeit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        72,
+        459,
+        846,
+        1233,
+        1620
+      ]
+    },
+    {
+      "word": "velēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        73,
+        460,
+        847,
+        1234,
+        1621
+      ]
+    },
+    {
+      "word": "golva",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        74,
+        461,
+        848,
+        1235,
+        1622
+      ]
+    },
+    {
+      "word": "sukne",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        75,
+        462,
+        849,
+        1236,
+        1623
+      ]
+    },
+    {
+      "word": "spīgt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        76,
+        463,
+        850,
+        1237,
+        1624
+      ]
+    },
+    {
+      "word": "prīde",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        77,
+        464,
+        851,
+        1238,
+        1625
+      ]
+    },
+    {
+      "word": "rudiņ",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        78,
+        465,
+        852,
+        1239,
+        1626
+      ]
+    },
+    {
+      "word": "saīts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        79,
+        466,
+        853,
+        1240,
+        1627
+      ]
+    },
+    {
+      "word": "forma",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.66,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        80,
+        467,
+        854,
+        1241,
+        1628,
+        1704
+      ]
+    },
+    {
+      "word": "šuopt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        81,
+        468,
+        855,
+        1242,
+        1629
+      ]
+    },
+    {
+      "word": "īceļt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        82,
+        469,
+        856,
+        1243,
+        1630,
+        1720
+      ]
+    },
+    {
+      "word": "bryks",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        83,
+        470,
+        857,
+        1244,
+        1631
+      ]
+    },
+    {
+      "word": "jauns",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.23,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        84,
+        471,
+        858,
+        1245,
+        1632
+      ]
+    },
+    {
+      "word": "āzeja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        85,
+        472,
+        859,
+        1246,
+        1633
+      ]
+    },
+    {
+      "word": "sarkt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        86,
+        473,
+        860,
+        1247,
+        1634
+      ]
+    },
+    {
+      "word": "pyrma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        87,
+        474,
+        861,
+        1248,
+        1635
+      ]
+    },
+    {
+      "word": "klase",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.83,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        88,
+        475,
+        862,
+        1249,
+        1636
+      ]
+    },
+    {
+      "word": "gvido",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 3.86,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: personal name Gvido (Guido)"
+      },
+      "history": [
+        89,
+        476,
+        863,
+        1250,
+        1637
+      ]
+    },
+    {
+      "word": "sēdēt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.63,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        90,
+        477,
+        864,
+        1251,
+        1638
+      ]
+    },
+    {
+      "word": "viļkt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        91,
+        478,
+        865,
+        1252,
+        1639
+      ]
+    },
+    {
+      "word": "tikai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 6.55,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        92,
+        479,
+        866,
+        1253,
+        1640
+      ]
+    },
+    {
+      "word": "kaukt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        93,
+        480,
+        867,
+        1254,
+        1641
+      ]
+    },
+    {
+      "word": "īsmys",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        94,
+        481,
+        868,
+        1255,
+        1642,
+        1709,
+        1721
+      ]
+    },
+    {
+      "word": "pļova",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        95,
+        482,
+        869,
+        1256,
+        1643
+      ]
+    },
+    {
+      "word": "snīgt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        96,
+        483,
+        870,
+        1257,
+        1644
+      ]
+    },
+    {
+      "word": "karte",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.79,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        97,
+        484,
+        871,
+        1258,
+        1645
+      ]
+    },
+    {
+      "word": "aprīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        98,
+        485,
+        872,
+        1259,
+        1646,
+        1703
+      ]
+    },
+    {
+      "word": "līkne",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.12,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        99,
+        486,
+        873,
+        1260,
+        1647
+      ]
+    },
+    {
+      "word": "kvīkt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        100,
+        487,
+        874,
+        1261,
+        1648
+      ]
+    },
+    {
+      "word": "norma",
+      "length": 5,
+      "tier": "valid",
+      "frequency": 4.42,
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        101,
+        488,
+        875,
+        1262,
+        1649,
+        1700
+      ]
+    },
+    {
+      "word": "tagad",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 6.24,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        102,
+        489,
+        876,
+        1263,
+        1650
+      ]
+    },
+    {
+      "word": "trīkt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        103,
+        490,
+        877,
+        1264,
+        1651
+      ]
+    },
+    {
+      "word": "nazyn",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        104,
+        491,
+        878,
+        1265,
+        1652
+      ]
+    },
+    {
+      "word": "kuoss",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        105,
+        492,
+        879,
+        1266,
+        1653
+      ]
+    },
+    {
+      "word": "izrīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        106,
+        493,
+        880,
+        1267,
+        1654
+      ]
+    },
+    {
+      "word": "ateja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        107,
+        494,
+        881,
+        1268,
+        1655
+      ]
+    },
+    {
+      "word": "kōrts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        108,
+        495,
+        882,
+        1269,
+        1656
+      ]
+    },
+    {
+      "word": "stuot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        109,
+        496,
+        883,
+        1270,
+        1657
+      ]
+    },
+    {
+      "word": "dziļs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        110,
+        497,
+        884,
+        1271,
+        1658
+      ]
+    },
+    {
+      "word": "spīst",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        111,
+        498,
+        885,
+        1272,
+        1659
+      ]
+    },
+    {
+      "word": "aplīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        112,
+        499,
+        886,
+        1273,
+        1660
+      ]
+    },
+    {
+      "word": "žanrs",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.58,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        113,
+        500,
+        887,
+        1274,
+        1661
+      ]
+    },
+    {
+      "word": "telts",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.14,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        114,
+        501,
+        888,
+        1275,
+        1662
+      ]
+    },
+    {
+      "word": "īkūrt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        115,
+        502,
+        889,
+        1276,
+        1663,
+        1695
+      ]
+    },
+    {
+      "word": "švaks",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        116,
+        503,
+        890,
+        1277,
+        1664,
+        1688
+      ]
+    },
+    {
+      "word": "veile",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        117,
+        504,
+        891,
+        1278,
+        1665,
+        1693
+      ]
+    },
+    {
+      "word": "molka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        118,
+        505,
+        892,
+        1279,
+        1666
+      ]
+    },
+    {
+      "word": "arabs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        119,
+        506,
+        893,
+        1280,
+        1667
+      ]
+    },
+    {
+      "word": "īmīgt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        120,
+        507,
+        894,
+        1281,
+        1668
+      ]
+    },
+    {
+      "word": "proza",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        121,
+        508,
+        895,
+        1282,
+        1669
+      ]
+    },
+    {
+      "word": "bļaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        122,
+        509,
+        896,
+        1283,
+        1670
+      ]
+    },
+    {
+      "word": "dīzyn",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        123,
+        510,
+        897,
+        1284,
+        1671
+      ]
+    },
+    {
+      "word": "īsaut",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        124,
+        511,
+        898,
+        1285,
+        1672
+      ]
+    },
+    {
+      "word": "šķēle",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.78,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        125,
+        512,
+        899,
+        1286,
+        1673
+      ]
+    },
+    {
+      "word": "kauns",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.54,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        126,
+        513,
+        900,
+        1287,
+        1674
+      ]
+    },
+    {
+      "word": "šudiņ",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        127,
+        514,
+        901,
+        1288,
+        1675
+      ]
+    },
+    {
+      "word": "zorna",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        128,
+        515,
+        902,
+        1289,
+        1676
+      ]
+    },
+    {
+      "word": "nicik",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        129,
+        516,
+        903,
+        1290,
+        1677
+      ]
+    },
+    {
+      "word": "traps",
+      "length": 5,
+      "tier": "valid",
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        130,
+        517,
+        904,
+        1291,
+        1678
+      ]
+    },
+    {
+      "word": "kuopt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        131,
+        518,
+        905,
+        1292,
+        1679
+      ]
+    },
+    {
+      "word": "pyust",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        132,
+        519,
+        906,
+        1293,
+        1680
+      ]
+    },
+    {
+      "word": "raitu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        133,
+        520,
+        907,
+        1294,
+        1681
+      ]
+    },
+    {
+      "word": "īdūbt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        134,
+        521,
+        908,
+        1295,
+        1710
+      ]
+    },
+    {
+      "word": "knībt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        135,
+        522,
+        909,
+        1296,
+        1692,
+        1698
+      ]
+    },
+    {
+      "word": "beņčs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        136,
+        523,
+        910,
+        1297
+      ]
+    },
+    {
+      "word": "viezs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        137,
+        524,
+        911,
+        1298
+      ]
+    },
+    {
+      "word": "šaurs",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.48,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        138,
+        525,
+        912,
+        1299,
+        1708
+      ]
+    },
+    {
+      "word": "īecēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        139,
+        526,
+        913,
+        1300
+      ]
+    },
+    {
+      "word": "teirs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        140,
+        527,
+        914,
+        1301
+      ]
+    },
+    {
+      "word": "ideja",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.03,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        141,
+        528,
+        915,
+        1302
+      ]
+    },
+    {
+      "word": "tuoli",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        142,
+        529,
+        916,
+        1303
+      ]
+    },
+    {
+      "word": "jezus",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Jesus"
+      },
+      "history": [
+        143,
+        530,
+        917,
+        1304
+      ]
+    },
+    {
+      "word": "sadēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        144,
+        531,
+        918,
+        1305
+      ]
+    },
+    {
+      "word": "čuopt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        145,
+        532,
+        919,
+        1306
+      ]
+    },
+    {
+      "word": "īdūrt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        146,
+        533,
+        920,
+        1307
+      ]
+    },
+    {
+      "word": "juoņs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        147,
+        534,
+        921,
+        1308
+      ]
+    },
+    {
+      "word": "drūši",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        148,
+        535,
+        922,
+        1309
+      ]
+    },
+    {
+      "word": "omots",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        149,
+        536,
+        923,
+        1310
+      ]
+    },
+    {
+      "word": "jyura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        150,
+        537,
+        924,
+        1311
+      ]
+    },
+    {
+      "word": "jiura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        151,
+        538,
+        925,
+        1312
+      ]
+    },
+    {
+      "word": "syurs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        152,
+        539,
+        926,
+        1313
+      ]
+    },
+    {
+      "word": "malns",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        153,
+        540,
+        927,
+        1314
+      ]
+    },
+    {
+      "word": "malta",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 3.97,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Malta (country name)"
+      },
+      "history": [
+        154,
+        541,
+        928,
+        1315
+      ]
+    },
+    {
+      "word": "nakai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        155,
+        542,
+        929,
+        1316
+      ]
+    },
+    {
+      "word": "tauta",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.68,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        156,
+        543,
+        930,
+        1317
+      ]
+    },
+    {
+      "word": "dorbs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        157,
+        544,
+        931,
+        1318
+      ]
+    },
+    {
+      "word": "īšyut",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        158,
+        545,
+        932,
+        1319
+      ]
+    },
+    {
+      "word": "tolka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        159,
+        546,
+        933,
+        1320
+      ]
+    },
+    {
+      "word": "grimt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.12,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        160,
+        547,
+        934,
+        1321
+      ]
+    },
+    {
+      "word": "apsīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        161,
+        548,
+        935,
+        1322
+      ]
+    },
+    {
+      "word": "ryukt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        162,
+        549,
+        936,
+        1323
+      ]
+    },
+    {
+      "word": "krīvs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        163,
+        550,
+        937,
+        1324
+      ]
+    },
+    {
+      "word": "vītom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        164,
+        551,
+        938,
+        1325
+      ]
+    },
+    {
+      "word": "syukt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        165,
+        552,
+        939,
+        1326
+      ]
+    },
+    {
+      "word": "ārrts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        166,
+        553,
+        940,
+        1327
+      ]
+    },
+    {
+      "word": "adeit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        167,
+        554,
+        941,
+        1328
+      ]
+    },
+    {
+      "word": "ruopu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        168,
+        555,
+        942,
+        1329,
+        1701
+      ]
+    },
+    {
+      "word": "zeime",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        169,
+        556,
+        943,
+        1330,
+        1711
+      ]
+    },
+    {
+      "word": "reibt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        170,
+        557,
+        944,
+        1331
+      ]
+    },
+    {
+      "word": "jauki",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.28,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        171,
+        558,
+        945,
+        1332
+      ]
+    },
+    {
+      "word": "viejs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        172,
+        559,
+        946,
+        1333
+      ]
+    },
+    {
+      "word": "stigt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        173,
+        560,
+        947,
+        1334
+      ]
+    },
+    {
+      "word": "grupa",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.23,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        174,
+        561,
+        948,
+        1335
+      ]
+    },
+    {
+      "word": "šūgod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        175,
+        562,
+        949,
+        1336
+      ]
+    },
+    {
+      "word": "puors",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        176,
+        563,
+        950,
+        1337
+      ]
+    },
+    {
+      "word": "teišs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        177,
+        564,
+        951,
+        1338
+      ]
+    },
+    {
+      "word": "blogs",
+      "length": 5,
+      "tier": "valid",
+      "frequency": 3.96,
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        178,
+        565,
+        952,
+        1339
+      ]
+    },
+    {
+      "word": "īmeit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        179,
+        566,
+        953,
+        1340,
+        1712
+      ]
+    },
+    {
+      "word": "īteit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        180,
+        567,
+        954,
+        1341,
+        1685
+      ]
+    },
+    {
+      "word": "sauss",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.06,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        181,
+        568,
+        955,
+        1342
+      ]
+    },
+    {
+      "word": "otkon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        182,
+        569,
+        956,
+        1343
+      ]
+    },
+    {
+      "word": "smogs",
+      "length": 5,
+      "tier": "valid",
+      "frequency": 3.05,
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        183,
+        570,
+        957,
+        1344
+      ]
+    },
+    {
+      "word": "krīze",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.36,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        184,
+        571,
+        958,
+        1345
+      ]
+    },
+    {
+      "word": "īcere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        185,
+        572,
+        959,
+        1346
+      ]
+    },
+    {
+      "word": "tupēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        186,
+        573,
+        960,
+        1347,
+        1697
+      ]
+    },
+    {
+      "word": "laiva",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.95,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        187,
+        574,
+        961,
+        1348
+      ]
+    },
+    {
+      "word": "šaļts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        188,
+        575,
+        962,
+        1349
+      ]
+    },
+    {
+      "word": "tyvai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        189,
+        576,
+        963,
+        1350
+      ]
+    },
+    {
+      "word": "suons",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        190,
+        577,
+        964,
+        1351
+      ]
+    },
+    {
+      "word": "opols",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        191,
+        578,
+        965,
+        1352
+      ]
+    },
+    {
+      "word": "deigt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        192,
+        579,
+        966,
+        1353,
+        1706
+      ]
+    },
+    {
+      "word": "syuds",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        193,
+        580,
+        967,
+        1354
+      ]
+    },
+    {
+      "word": "pīdēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        194,
+        581,
+        968,
+        1355
+      ]
+    },
+    {
+      "word": "olūts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        195,
+        582,
+        969,
+        1356
+      ]
+    },
+    {
+      "word": "plyks",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        196,
+        583,
+        970,
+        1357
+      ]
+    },
+    {
+      "word": "calms",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        197,
+        584,
+        971,
+        1358,
+        1715
+      ]
+    },
+    {
+      "word": "zvīgt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        198,
+        585,
+        972,
+        1359
+      ]
+    },
+    {
+      "word": "īpeit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        199,
+        586,
+        973,
+        1360
+      ]
+    },
+    {
+      "word": "kraut",
+      "length": 5,
+      "tier": "valid",
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        200,
+        587,
+        974,
+        1361
+      ]
+    },
+    {
+      "word": "sylts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        201,
+        588,
+        975,
+        1362
+      ]
+    },
+    {
+      "word": "ryugt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        202,
+        589,
+        976,
+        1363
+      ]
+    },
+    {
+      "word": "meils",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        203,
+        590,
+        977,
+        1364
+      ]
+    },
+    {
+      "word": "vylks",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        204,
+        591,
+        978,
+        1365
+      ]
+    },
+    {
+      "word": "vuoks",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        205,
+        592,
+        979,
+        1366
+      ]
+    },
+    {
+      "word": "azars",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        206,
+        593,
+        980,
+        1367
+      ]
+    },
+    {
+      "word": "īreja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        207,
+        594,
+        981,
+        1368
+      ]
+    },
+    {
+      "word": "lyugt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        208,
+        595,
+        982,
+        1369
+      ]
+    },
+    {
+      "word": "banka",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.77,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        209,
+        596,
+        983,
+        1370
+      ]
+    },
+    {
+      "word": "banda",
+      "length": 5,
+      "tier": "valid",
+      "frequency": 3.78,
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        210,
+        597,
+        984,
+        1371
+      ]
+    },
+    {
+      "word": "jiugt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        211,
+        598,
+        985,
+        1372
+      ]
+    },
+    {
+      "word": "vaļde",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        212,
+        599,
+        986,
+        1373
+      ]
+    },
+    {
+      "word": "atrīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        213,
+        600,
+        987,
+        1374
+      ]
+    },
+    {
+      "word": "drūss",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        214,
+        601,
+        988,
+        1375
+      ]
+    },
+    {
+      "word": "ruods",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        215,
+        602,
+        989,
+        1376
+      ]
+    },
+    {
+      "word": "najau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        216,
+        603,
+        990,
+        1377
+      ]
+    },
+    {
+      "word": "nikas",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        217,
+        604,
+        991,
+        1378
+      ]
+    },
+    {
+      "word": "iveit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        218,
+        605,
+        992,
+        1379
+      ]
+    },
+    {
+      "word": "smēde",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        219,
+        606,
+        993,
+        1380
+      ]
+    },
+    {
+      "word": "alise",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.14,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        220,
+        607,
+        994,
+        1381
+      ]
+    },
+    {
+      "word": "spors",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        221,
+        608,
+        995,
+        1382
+      ]
+    },
+    {
+      "word": "gosts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        222,
+        609,
+        996,
+        1383
+      ]
+    },
+    {
+      "word": "kauls",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.02,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        223,
+        610,
+        997,
+        1384
+      ]
+    },
+    {
+      "word": "prese",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.98,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        224,
+        611,
+        998,
+        1385
+      ]
+    },
+    {
+      "word": "sieņs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        225,
+        612,
+        999,
+        1386
+      ]
+    },
+    {
+      "word": "mīlis",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        226,
+        613,
+        1000,
+        1387,
+        1699
+      ]
+    },
+    {
+      "word": "vaine",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        227,
+        614,
+        1001,
+        1388
+      ]
+    },
+    {
+      "word": "burts",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.87,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        228,
+        615,
+        1002,
+        1389
+      ]
+    },
+    {
+      "word": "poukš",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        229,
+        616,
+        1003,
+        1390
+      ]
+    },
+    {
+      "word": "izlīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        230,
+        617,
+        1004,
+        1391
+      ]
+    },
+    {
+      "word": "buoba",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        231,
+        618,
+        1005,
+        1392
+      ]
+    },
+    {
+      "word": "dails",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        232,
+        619,
+        1006,
+        1393
+      ]
+    },
+    {
+      "word": "kazyn",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        233,
+        620,
+        1007,
+        1394
+      ]
+    },
+    {
+      "word": "pīlīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        234,
+        621,
+        1008,
+        1395
+      ]
+    },
+    {
+      "word": "kļovs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        235,
+        622,
+        1009,
+        1396
+      ]
+    },
+    {
+      "word": "nīdre",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        236,
+        623,
+        1010,
+        1397
+      ]
+    },
+    {
+      "word": "gaišs",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.87,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        237,
+        624,
+        1011,
+        1398
+      ]
+    },
+    {
+      "word": "kluot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        238,
+        625,
+        1012,
+        1399
+      ]
+    },
+    {
+      "word": "nūsīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        239,
+        626,
+        1013,
+        1400
+      ]
+    },
+    {
+      "word": "byuds",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        240,
+        627,
+        1014,
+        1401
+      ]
+    },
+    {
+      "word": "parīt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.68,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        241,
+        628,
+        1015,
+        1402
+      ]
+    },
+    {
+      "word": "īslīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        242,
+        629,
+        1016,
+        1403
+      ]
+    },
+    {
+      "word": "cytur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        243,
+        630,
+        1017,
+        1404
+      ]
+    },
+    {
+      "word": "reizi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.68,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        244,
+        631,
+        1018,
+        1405
+      ]
+    },
+    {
+      "word": "reits",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        245,
+        632,
+        1019,
+        1406
+      ]
+    },
+    {
+      "word": "dzens",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        246,
+        633,
+        1020,
+        1407
+      ]
+    },
+    {
+      "word": "poema",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        247,
+        634,
+        1021,
+        1408
+      ]
+    },
+    {
+      "word": "oklys",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        248,
+        635,
+        1022,
+        1409
+      ]
+    },
+    {
+      "word": "leigt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        249,
+        636,
+        1023,
+        1410
+      ]
+    },
+    {
+      "word": "pīsīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        250,
+        637,
+        1024,
+        1411,
+        1714
+      ]
+    },
+    {
+      "word": "abāds",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        251,
+        638,
+        1025,
+        1412
+      ]
+    },
+    {
+      "word": "škola",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        252,
+        639,
+        1026,
+        1413
+      ]
+    },
+    {
+      "word": "škeļt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        253,
+        640,
+        1027,
+        1414
+      ]
+    },
+    {
+      "word": "vysur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        254,
+        641,
+        1028,
+        1415
+      ]
+    },
+    {
+      "word": "taids",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        255,
+        642,
+        1029,
+        1416
+      ]
+    },
+    {
+      "word": "žbans",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        256,
+        643,
+        1030,
+        1417
+      ]
+    },
+    {
+      "word": "tūgod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        257,
+        644,
+        1031,
+        1418
+      ]
+    },
+    {
+      "word": "tyukt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        258,
+        645,
+        1032,
+        1419
+      ]
+    },
+    {
+      "word": "dyžan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        259,
+        646,
+        1033,
+        1420
+      ]
+    },
+    {
+      "word": "amura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        260,
+        647,
+        1034,
+        1421
+      ]
+    },
+    {
+      "word": "īsist",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        261,
+        648,
+        1035,
+        1422
+      ]
+    },
+    {
+      "word": "pyrms",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        262,
+        649,
+        1036,
+        1423
+      ]
+    },
+    {
+      "word": "meija",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.04,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        263,
+        650,
+        1037,
+        1424
+      ]
+    },
+    {
+      "word": "mikus",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 3.25,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: personal name Mikus"
+      },
+      "history": [
+        264,
+        651,
+        1038,
+        1425
+      ]
+    },
+    {
+      "word": "bļūda",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        265,
+        652,
+        1039,
+        1426
+      ]
+    },
+    {
+      "word": "tūzīm",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        266,
+        653,
+        1040,
+        1427
+      ]
+    },
+    {
+      "word": "ubogs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        267,
+        654,
+        1041,
+        1428,
+        1722
+      ]
+    },
+    {
+      "word": "gavēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        268,
+        655,
+        1042,
+        1429
+      ]
+    },
+    {
+      "word": "dyukt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        269,
+        656,
+        1043,
+        1430
+      ]
+    },
+    {
+      "word": "bārzs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        270,
+        657,
+        1044,
+        1431
+      ]
+    },
+    {
+      "word": "čabēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        271,
+        658,
+        1045,
+        1432
+      ]
+    },
+    {
+      "word": "prīca",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        272,
+        659,
+        1046,
+        1433
+      ]
+    },
+    {
+      "word": "reiga",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Riga (capital of Latvia)"
+      },
+      "history": [
+        273,
+        660,
+        1047,
+        1434
+      ]
+    },
+    {
+      "word": "dzimt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        274,
+        661,
+        1048,
+        1435,
+        1696
+      ]
+    },
+    {
+      "word": "snigt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.05,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        275,
+        662,
+        1049,
+        1436
+      ]
+    },
+    {
+      "word": "žults",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.34,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        276,
+        663,
+        1050,
+        1437,
+        1687
+      ]
+    },
+    {
+      "word": "muosa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        277,
+        664,
+        1051,
+        1438
+      ]
+    },
+    {
+      "word": "nūdēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        278,
+        665,
+        1052,
+        1439
+      ]
+    },
+    {
+      "word": "ītupt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        279,
+        666,
+        1053,
+        1440,
+        1728
+      ]
+    },
+    {
+      "word": "sarīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        280,
+        667,
+        1054,
+        1441
+      ]
+    },
+    {
+      "word": "īrībt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        281,
+        668,
+        1055,
+        1442
+      ]
+    },
+    {
+      "word": "zvons",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        282,
+        669,
+        1056,
+        1443
+      ]
+    },
+    {
+      "word": "tymss",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        283,
+        670,
+        1057,
+        1444
+      ]
+    },
+    {
+      "word": "filma",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.28,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        284,
+        671,
+        1058,
+        1445
+      ]
+    },
+    {
+      "word": "pasīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        285,
+        672,
+        1059,
+        1446,
+        1705
+      ]
+    },
+    {
+      "word": "muiža",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.16,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        286,
+        673,
+        1060,
+        1447
+      ]
+    },
+    {
+      "word": "puiss",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        287,
+        674,
+        1061,
+        1448,
+        1686
+      ]
+    },
+    {
+      "word": "syuna",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        288,
+        675,
+        1062,
+        1449
+      ]
+    },
+    {
+      "word": "slave",
+      "length": 5,
+      "tier": "valid",
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        289,
+        676,
+        1063,
+        1450
+      ]
+    },
+    {
+      "word": "īkūpt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        290,
+        677,
+        1064,
+        1451
+      ]
+    },
+    {
+      "word": "bolss",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        291,
+        678,
+        1065,
+        1452
+      ]
+    },
+    {
+      "word": "īvest",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        292,
+        679,
+        1066,
+        1453
+      ]
+    },
+    {
+      "word": "muote",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        293,
+        680,
+        1067,
+        1454
+      ]
+    },
+    {
+      "word": "kluss",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.99,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        294,
+        681,
+        1068,
+        1455
+      ]
+    },
+    {
+      "word": "voļns",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        295,
+        682,
+        1069,
+        1456
+      ]
+    },
+    {
+      "word": "īmigt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        296,
+        683,
+        1070,
+        1457
+      ]
+    },
+    {
+      "word": "byukš",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        297,
+        684,
+        1071,
+        1458
+      ]
+    },
+    {
+      "word": "kolns",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        298,
+        685,
+        1072,
+        1459
+      ]
+    },
+    {
+      "word": "valns",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        299,
+        686,
+        1073,
+        1460
+      ]
+    },
+    {
+      "word": "sirds",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.35,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        300,
+        687,
+        1074,
+        1461
+      ]
+    },
+    {
+      "word": "īvirt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        301,
+        688,
+        1075,
+        1462
+      ]
+    },
+    {
+      "word": "svors",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        302,
+        689,
+        1076,
+        1463
+      ]
+    },
+    {
+      "word": "peile",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        303,
+        690,
+        1077,
+        1464
+      ]
+    },
+    {
+      "word": "suoļs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        304,
+        691,
+        1078,
+        1465
+      ]
+    },
+    {
+      "word": "zuole",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        305,
+        692,
+        1079,
+        1466
+      ]
+    },
+    {
+      "word": "sakne",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.73,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        306,
+        693,
+        1080,
+        1467
+      ]
+    },
+    {
+      "word": "gulēt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.98,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        307,
+        694,
+        1081,
+        1468
+      ]
+    },
+    {
+      "word": "brist",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        308,
+        695,
+        1082,
+        1469,
+        1717
+      ]
+    },
+    {
+      "word": "īveļt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        309,
+        696,
+        1083,
+        1470
+      ]
+    },
+    {
+      "word": "īkaļt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        310,
+        697,
+        1084,
+        1471
+      ]
+    },
+    {
+      "word": "laiks",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 5.81,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        311,
+        698,
+        1085,
+        1472
+      ]
+    },
+    {
+      "word": "luocs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        312,
+        699,
+        1086,
+        1473,
+        1730
+      ]
+    },
+    {
+      "word": "grebt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        313,
+        700,
+        1087,
+        1474
+      ]
+    },
+    {
+      "word": "lieni",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        314,
+        701,
+        1088,
+        1475
+      ]
+    },
+    {
+      "word": "pants",
+      "length": 5,
+      "tier": "valid",
+      "frequency": 4.27,
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        315,
+        702,
+        1089,
+        1476
+      ]
+    },
+    {
+      "word": "turēt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.63,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        316,
+        703,
+        1090,
+        1477
+      ]
+    },
+    {
+      "word": "treis",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        317,
+        704,
+        1091,
+        1478
+      ]
+    },
+    {
+      "word": "dalīt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.87,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        318,
+        705,
+        1092,
+        1479
+      ]
+    },
+    {
+      "word": "vysod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        319,
+        706,
+        1093,
+        1480
+      ]
+    },
+    {
+      "word": "veirs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        320,
+        707,
+        1094,
+        1481
+      ]
+    },
+    {
+      "word": "jumts",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.18,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        321,
+        708,
+        1095,
+        1482
+      ]
+    },
+    {
+      "word": "īmest",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        322,
+        709,
+        1096,
+        1483
+      ]
+    },
+    {
+      "word": "bārns",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        323,
+        710,
+        1097,
+        1484
+      ]
+    },
+    {
+      "word": "bravo",
+      "length": 5,
+      "tier": "valid",
+      "frequency": 4.18,
+      "sources": [
+        "main_list"
+      ],
+      "flags": {
+        "foreign": true
+      },
+      "history": [
+        324,
+        711,
+        1098,
+        1485
+      ]
+    },
+    {
+      "word": "īaugt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        325,
+        712,
+        1099,
+        1486
+      ]
+    },
+    {
+      "word": "slyms",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        326,
+        713,
+        1100,
+        1487
+      ]
+    },
+    {
+      "word": "leikt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        327,
+        714,
+        1101,
+        1488
+      ]
+    },
+    {
+      "word": "svīst",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.64,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        328,
+        715,
+        1102,
+        1489
+      ]
+    },
+    {
+      "word": "škībt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        329,
+        716,
+        1103,
+        1490,
+        1682
+      ]
+    },
+    {
+      "word": "kaids",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        330,
+        717,
+        1104,
+        1491,
+        1690,
+        1718
+      ]
+    },
+    {
+      "word": "shema",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        331,
+        718,
+        1105,
+        1492
+      ]
+    },
+    {
+      "word": "buozt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        332,
+        719,
+        1106,
+        1493
+      ]
+    },
+    {
+      "word": "marta",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 4.94,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: personal name Marta"
+      },
+      "history": [
+        333,
+        720,
+        1107,
+        1494
+      ]
+    },
+    {
+      "word": "dunēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        334,
+        721,
+        1108,
+        1495
+      ]
+    },
+    {
+      "word": "salīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        335,
+        722,
+        1109,
+        1496
+      ]
+    },
+    {
+      "word": "peikt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        336,
+        723,
+        1110,
+        1497
+      ]
+    },
+    {
+      "word": "bauda",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.13,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        337,
+        724,
+        1111,
+        1498
+      ]
+    },
+    {
+      "word": "īūrbt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        338,
+        725,
+        1112,
+        1499
+      ]
+    },
+    {
+      "word": "stors",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        339,
+        726,
+        1113,
+        1500,
+        1683
+      ]
+    },
+    {
+      "word": "kuoļš",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        340,
+        727,
+        1114,
+        1501
+      ]
+    },
+    {
+      "word": "lauzt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.73,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        341,
+        728,
+        1115,
+        1502
+      ]
+    },
+    {
+      "word": "dagda",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Dagda (town in Latvia)"
+      },
+      "history": [
+        342,
+        729,
+        1116,
+        1503
+      ]
+    },
+    {
+      "word": "maukt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        343,
+        730,
+        1117,
+        1504
+      ]
+    },
+    {
+      "word": "vīgls",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        344,
+        731,
+        1118,
+        1505
+      ]
+    },
+    {
+      "word": "ziļbe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        345,
+        732,
+        1119,
+        1506
+      ]
+    },
+    {
+      "word": "kruot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        346,
+        733,
+        1120,
+        1507,
+        1727
+      ]
+    },
+    {
+      "word": "īleit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        347,
+        734,
+        1121,
+        1508
+      ]
+    },
+    {
+      "word": "geibt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        348,
+        735,
+        1122,
+        1509
+      ]
+    },
+    {
+      "word": "ūneja",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        349,
+        736,
+        1123,
+        1510
+      ]
+    },
+    {
+      "word": "kungs",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.98,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        350,
+        737,
+        1124,
+        1511
+      ]
+    },
+    {
+      "word": "vuojs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        351,
+        738,
+        1125,
+        1512
+      ]
+    },
+    {
+      "word": "gords",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        352,
+        739,
+        1126,
+        1513
+      ]
+    },
+    {
+      "word": "aleja",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.52,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        353,
+        740,
+        1127,
+        1514
+      ]
+    },
+    {
+      "word": "jaukt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.71,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        354,
+        741,
+        1128,
+        1515
+      ]
+    },
+    {
+      "word": "solts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        355,
+        742,
+        1129,
+        1516
+      ]
+    },
+    {
+      "word": "osums",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        356,
+        743,
+        1130,
+        1517
+      ]
+    },
+    {
+      "word": "īlikt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        357,
+        744,
+        1131,
+        1518
+      ]
+    },
+    {
+      "word": "niule",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        358,
+        745,
+        1132,
+        1519
+      ]
+    },
+    {
+      "word": "zeile",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        359,
+        746,
+        1133,
+        1520
+      ]
+    },
+    {
+      "word": "varēt",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.29,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        360,
+        747,
+        1134,
+        1521
+      ]
+    },
+    {
+      "word": "teika",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.86,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        361,
+        748,
+        1135,
+        1522
+      ]
+    },
+    {
+      "word": "īcept",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        362,
+        749,
+        1136,
+        1523
+      ]
+    },
+    {
+      "word": "symts",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        363,
+        750,
+        1137,
+        1524
+      ]
+    },
+    {
+      "word": "atlīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        364,
+        751,
+        1138,
+        1525
+      ]
+    },
+    {
+      "word": "storp",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        365,
+        752,
+        1139,
+        1526,
+        1713
+      ]
+    },
+    {
+      "word": "rāzna",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        366,
+        753,
+        1140,
+        1527,
+        1726
+      ]
+    },
+    {
+      "word": "īneit",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        367,
+        754,
+        1141,
+        1528
+      ]
+    },
+    {
+      "word": "īlēkt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        368,
+        755,
+        1142,
+        1529
+      ]
+    },
+    {
+      "word": "četri",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.89,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        369,
+        756,
+        1143,
+        1530
+      ]
+    },
+    {
+      "word": "atsīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        370,
+        757,
+        1144,
+        1531
+      ]
+    },
+    {
+      "word": "avīze",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.35,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        371,
+        758,
+        1145,
+        1532
+      ]
+    },
+    {
+      "word": "nīzēt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        372,
+        759,
+        1146,
+        1533
+      ]
+    },
+    {
+      "word": "spert",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.87,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        373,
+        760,
+        1147,
+        1534,
+        1702
+      ]
+    },
+    {
+      "word": "cilts",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.16,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        374,
+        761,
+        1148,
+        1535
+      ]
+    },
+    {
+      "word": "saule",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.86,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        375,
+        762,
+        1149,
+        1536
+      ]
+    },
+    {
+      "word": "tuļzt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        376,
+        763,
+        1150,
+        1537
+      ]
+    },
+    {
+      "word": "dasīt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        377,
+        764,
+        1151,
+        1538
+      ]
+    },
+    {
+      "word": "zeist",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        378,
+        765,
+        1152,
+        1539
+      ]
+    },
+    {
+      "word": "edžus",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.58,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        379,
+        766,
+        1153,
+        1540
+      ]
+    },
+    {
+      "word": "īmaļt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        380,
+        767,
+        1154,
+        1541
+      ]
+    },
+    {
+      "word": "īrēkt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        381,
+        768,
+        1155,
+        1542
+      ]
+    },
+    {
+      "word": "īzīst",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        382,
+        769,
+        1156,
+        1543,
+        1694
+      ]
+    },
+    {
+      "word": "zyrgs",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        383,
+        770,
+        1157,
+        1544
+      ]
+    },
+    {
+      "word": "atīzt",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        384,
+        771,
+        1158,
+        1545,
+        1723
+      ]
+    },
+    {
+      "word": "dyums",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        385,
+        772,
+        1159,
+        1546
+      ]
+    },
+    {
+      "word": "šūzīm",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        386,
+        773,
+        1160,
+        1547
+      ]
+    }
+  ]
+}

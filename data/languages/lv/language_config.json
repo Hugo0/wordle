@@ -1,0 +1,102 @@
+{
+    "language_code": "lv",
+    "name": "Latvian",
+    "timezone": "Europe/Riga",
+    "name_native": "latviešu valoda",
+    "meta": {
+        "locale": "lv",
+        "title": "Ikdienas vārdu spēle ",
+        "description": "Uzminiet slēpto vārdu 6 mēģinājumos (vai mazāk). Katru dienu ir pieejama jauna puzzle! ",
+        "keywords": "latviešu valoda, puzzle, vārds, spēlēt, spēle, online, minējums, katru dienu"
+    },
+    "text": {
+        "subheader": "latviešu valoda",
+        "next_word": "Nākamais vārds ",
+        "no_attempts": "Jūs vēl neesat mēģinājis nevienu vārdu! ",
+        "share": "Dalīties ",
+        "notification-copied": "Kopēts starpliktuvē ",
+        "notification-partial-word": "Lūdzu, ievadiet pilnu vārdu ",
+        "share_challenge_win": "Šodienas Wordle atrisināju {n} mēģinājumos. Vai tu vari labāk?",
+        "share_challenge_lose": "Šodienas Wordle neatrisināju. Vai tu vari?"
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Kā spēlēt ",
+        "title_2": "Piemēri ",
+        "close": "Aizveriet šo ziņojumu ",
+        "text_1_1_1": "Uzminēt ",
+        "text_1_1_2": "sešās mēģinājumos vai mazāk. ",
+        "text_1_2": "Katram minējumam jābūt derīgam piecu burtu vārdam. Nospiediet taustiņu ENTER, lai iesniegtu savu minējumu. ",
+        "text_1_3": "Pēc tam, kad jūs uzminējāt, flīzes mainīs krāsu, lai norādītu, kuras burti ir pareizi vai gandrīz pareizi. ",
+        "text_2_1": "ir vārdā un pareizajā vietā! ",
+        "text_2_2": "ir vārdā, bet ne pareizajā vietā. ",
+        "text_2_3": "nav klāt vārdu jūs mēģināt uzminēt. ",
+        "text_3": "Katru dienu būs pieejams jauns vārds! "
+    },
+    "ui": {
+        "settings": "Iestatījumi",
+        "dark_mode": "Tumšais režīms",
+        "dark_mode_desc": "Pārslēgt tumšo motīvu",
+        "haptic_feedback": "Haptiskā atgriezeniskā saite",
+        "haptic_feedback_desc": "Vibrācija pieskāriena laikā",
+        "sound_effects": "Skaņas efekti",
+        "sound_effects_desc": "Uzvaras/zaudējuma skaņas",
+        "right_to_left": "No labās uz kreiso",
+        "keyboard_layout": "Tastatūras izkārtojums",
+        "easy_mode": "Atļaut jebkuru vārdu",
+        "easy_mode_label": "vieglais režīms",
+        "install_app": "Instalēt lietotni",
+        "install_app_desc": "Spēlē bezsaistē un saņem ikonu",
+        "report_issue": "Ziņot par problēmu",
+        "view_source": "Skatīt pirmkodu",
+        "guess_distribution": "Minējumu sadalījums",
+        "games": "Spēles",
+        "win_percent": "Uzvaras %",
+        "streak": "Sērija",
+        "best": "Labākais",
+        "all_languages": "Visas valodas",
+        "languages": "Valodas",
+        "play_more_languages": "Spēlē vairāk valodās, lai redzētu kopējo statistiku!",
+        "add_to_home": "Pievienot sākuma ekrānam",
+        "play_daily_like_app": "Spēlē Wordle katru dienu kā lietotni",
+        "install": "Instalēt",
+        "close": "aizvērt"
+    },
+    "diacritic_map": {
+        "a": [
+            "ā"
+        ],
+        "c": [
+            "č"
+        ],
+        "e": [
+            "ē"
+        ],
+        "g": [
+            "ģ"
+        ],
+        "i": [
+            "ī"
+        ],
+        "k": [
+            "ķ"
+        ],
+        "l": [
+            "ļ"
+        ],
+        "n": [
+            "ņ"
+        ],
+        "s": [
+            "š"
+        ],
+        "u": [
+            "ū"
+        ],
+        "z": [
+            "ž"
+        ]
+    }
+}

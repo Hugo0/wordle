@@ -1,4 +1,5 @@
 node_modules/
-webapp/static/dist/
+data/
+scripts/
 *.min.js
 pnpm-lock.yaml

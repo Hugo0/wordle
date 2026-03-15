@@ -1,0 +1,64 @@
+{
+    "language_code": "tl",
+    "name": "Tagalog",
+    "name_native": "Tagalog",
+    "timezone": "Asia/Manila",
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "meta": {
+        "locale": "tl",
+        "wordle_native": "Wordle",
+        "title": "Pang-araw-araw na laro ng salita",
+        "description": "Hulaan ang nakatagong salita sa 6 na pagsubok (o mas kaunti). May bagong palaisipan araw-araw!",
+        "keywords": "Tagalog, Filipino, palaisipan, salita, laro, online, hulaan, araw-araw"
+    },
+    "text": {
+        "subheader": "Tagalog",
+        "next_word": "Susunod na salita",
+        "no_attempts": "Wala ka pang sinusubukang salita!",
+        "share": "Ibahagi",
+        "shared": "Naibahagi!",
+        "copied": "Nakopya!",
+        "notification-copied": "Nakopya sa clipboard",
+        "notification-word-not-valid": "Hindi valid ang salita",
+        "notification-partial-word": "Maglagay ng buong salita"
+    },
+    "help": {
+        "title": "Paano Maglaro",
+        "title_2": "Mga Halimbawa",
+        "close": "Isara",
+        "text_1_1_1": "Hulaan ang",
+        "text_1_1_2": "sa anim na pagsubok o mas kaunti.",
+        "text_1_2": "Ang bawat hula ay dapat valid na limang titik na salita. Pindutin ang enter para isumite.",
+        "text_1_3": "Pagkatapos hulaan, magbabago ang kulay ng mga tile para ipakita kung aling mga titik ang tama o halos tama.",
+        "text_2_1": "nasa salita at nasa tamang posisyon!",
+        "text_2_2": "nasa salita, pero hindi nasa tamang posisyon.",
+        "text_2_3": "wala sa salitang sinusubukan mong hulaan.",
+        "text_3": "May bagong salita araw-araw!"
+    },
+    "ui": {
+        "settings": "Mga Setting",
+        "dark_mode": "Dark Mode",
+        "dark_mode_desc": "I-toggle ang dark theme",
+        "keyboard_layout": "Layout ng keyboard",
+        "easy_mode": "Payagan lahat ng salita",
+        "easy_mode_label": "madaling mode",
+        "install_app": "I-install ang App",
+        "games": "Mga Laro",
+        "win_percent": "% Panalo",
+        "streak": "Sunud-sunod",
+        "best": "Pinakamahusay",
+        "all_languages": "Lahat ng Wika",
+        "languages": "Mga Wika",
+        "play": "Maglaro",
+        "search_language": "Maghanap ng wika...",
+        "definition": "Kahulugan",
+        "look_up_on_wiktionary": "Hanapin sa Wiktionary"
+    },
+    "diacritic_map": {
+        "n": [
+            "ñ"
+        ]
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "language_code": "ro",
+    "name": "Romanian",
+    "timezone": "Europe/Bucharest",
+    "name_native": "Română",
+    "meta": {
+        "locale": "ro",
+        "title": "Jocul zilnic de cuvinte",
+        "description": "Ghiciți cuvântul ascuns în 6 încercări (sau mai puțin). Un nou puzzle este disponibil în fiecare zi!",
+        "keywords": "Română, Puzzle, Word, Joacă, joc, Online, Ghici, Daily"
+    },
+    "text": {
+        "subheader": "Română",
+        "next_word": "Cuvântul următor",
+        "no_attempts": "Nu ați încercat încă niciun cuvânt!",
+        "share": "Partajează",
+        "notification-copied": "Copiat în clipboard.",
+        "notification-partial-word": "Introduceți un cuvânt complet ",
+        "share_challenge_win": "Am rezolvat Wordle de azi din {n} încercări. Poți mai bine?",
+        "share_challenge_lose": "Nu am rezolvat Wordle de azi. Tu poți?"
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Cum se joacă",
+        "title_2": "Exemple",
+        "close": "Închideți acest mesaj",
+        "text_1_1_1": "Ghiciți ",
+        "text_1_1_2": "în cel mult șase încercări. ",
+        "text_1_2": "Fiecare încercare trebuie să fie un cuvânt valid format din cinci litere. Apăsați butonul ENTER pentru a trimite încercarea dvs. ",
+        "text_1_3": "După fiecare încercare, plăcile își vor schimba culoarea pentru a indica ce litere ale cuvântului dvs. sunt corecte sau aproape corecte. ",
+        "text_2_1": "este în cuvânt și în poziția corectă! ",
+        "text_2_2": "este în cuvânt, dar nu în poziția corectă. ",
+        "text_2_3": "nu este prezent în cuvântul pe care încercați să îl ghiciți. ",
+        "text_3": "Un nou cuvânt va fi disponibil în fiecare zi! "
+    },
+    "ui": {
+        "settings": "Setări",
+        "dark_mode": "Mod întunecat",
+        "dark_mode_desc": "Comută tema întunecată",
+        "haptic_feedback": "Feedback haptic",
+        "haptic_feedback_desc": "Vibrație la atingere",
+        "sound_effects": "Efecte sonore",
+        "sound_effects_desc": "Sunete de câștig/pierdere",
+        "right_to_left": "De la dreapta la stânga",
+        "keyboard_layout": "Aspect tastatură",
+        "easy_mode": "Permite orice cuvânt",
+        "easy_mode_label": "mod ușor",
+        "install_app": "Instalează aplicația",
+        "install_app_desc": "Joacă offline și obține pictograma",
+        "report_issue": "Raportează o problemă",
+        "view_source": "Vezi codul sursă",
+        "guess_distribution": "Distribuția încercărilor",
+        "games": "Jocuri",
+        "win_percent": "Victorii %",
+        "streak": "Serie",
+        "best": "Cel mai bun",
+        "all_languages": "Toate limbile",
+        "languages": "Limbi",
+        "play_more_languages": "Joacă mai multe limbi pentru statistici globale!",
+        "add_to_home": "Adaugă pe ecranul principal",
+        "play_daily_like_app": "Joacă Wordle zilnic ca o aplicație",
+        "install": "Instalează",
+        "close": "închide"
+    },
+    "diacritic_map": {
+        "a": [
+            "â",
+            "ă"
+        ],
+        "i": [
+            "î"
+        ],
+        "s": [
+            "ș"
+        ],
+        "t": [
+            "ț"
+        ]
+    }
+}

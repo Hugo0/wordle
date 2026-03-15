@@ -1,8 +1,8 @@
-# Word Data Architecture — Migration Plan
+# Word Data Architecture
 
-> Status: PLANNED (not yet implemented)
-> Date: 2026-03-14
-> Context: PR #149 (language expansion), Issue #157 (sub-component tiles), upcoming Nuxt migration
+> Status: IMPLEMENTED (words.json per language, pipeline reads/writes JSON directly)
+> Date: 2026-03-15
+> Context: PR #149 (language expansion), Issue #157 (sub-component tiles), Nuxt migration
 
 ## Problem
 
@@ -28,97 +28,73 @@ Problems:
 - No per-word metadata (frequency, difficulty, LLM classification, source)
 - Adding a new game mode (phrase-of-the-day, multi-board) requires new file types
 
-## Decision: Single YAML per language
+## Decision: Single JSON per language
 
-### Target file structure
+### File structure
 
 ```
 {lang}/
-├── words.yaml           ← ALL words, all lengths, fully scored + classified (pipeline output)
+├── words.json           ← ALL words, all lengths, fully scored + classified (pipeline output)
 ├── contribute/
 │   ├── words.txt        ← community word submissions (plain text, one per line)
-│   └── overrides.yaml   ← community corrections (tier overrides, flags)
-├── word_history.jsonl   ← frozen past daily words per mode (runtime safety)
+│   └── overrides.json   ← community corrections (tier overrides, flags)
 ├── keyboard.json        ← keyboard layout(s) (manually maintained)
-├── config.yaml          ← UI translations + script normalization (manually maintained)
-└── README.md            ← how to contribute words for this language
+└── language_config.json ← UI translations + script normalization (manually maintained)
 ```
 
-### Why YAML for words.yaml
+### Why JSON
 
-- **Human-readable**: contributors and maintainers can scan/grep it
-- **Comments**: can annotate sections, document decisions inline
-- **Git diffs**: adding a word is 8-10 readable lines, easy to review in PRs
-- **Structured**: per-word metadata without the noise of JSON brackets
+- **~50x faster** to parse than YAML (critical for 78 languages, 104MB total)
+- **No compile step** needed — `words.json` is both source of truth and runtime format
+- **Standard**: no extra dependency (pyyaml removed)
+- **Readable**: `indent=2, ensure_ascii=False` for clean diffs
+- Pipeline reads and writes `words.json` directly
 
-YAML is slower to parse than JSON (~3s for 50K entries vs ~0.1s). Solution: pipeline compiles YAML → optimized JSON at build time. The app reads compiled JSON, never parses YAML at runtime.
+## words.json schema
 
-### Why NOT JSONL
-
-JSONL was considered for the word list. Rejected because:
-- Less readable (bracket noise on every line)
-- No comments
-- Git diffs are harder to scan
-- YAML performance concern only applies at pipeline time, not runtime
-
-### Why NOT one big JSON
-
-- No comments
-- Deeply nested structures are hard to hand-edit
-- Merge conflicts are worse (closing brackets)
-
-## words.yaml schema
-
-```yaml
-# Header — language-level metadata
-metadata:
-  language_code: ko
-  last_pipeline_run: "2026-03-14T12:00:00Z"
-  sources:
-    - name: jmdict
-      type: dictionary
-      version: "3.6.2"
-    - name: wordfreq
-      type: frequency
-      version: "3.1"
-    - name: community
-      contributors: ["@Hugo0"]
-
-# Word entries
-words:
-  - word: 정보
-    length: 2              # character/syllable/grapheme count (script-dependent)
-    tier: daily            # daily | valid | blocked
-    frequency: 4.2         # wordfreq Zipf score (0-7, higher = more common)
-    difficulty: 0.35       # 0.0 (easy) to 1.0 (hard), computed + LLM-adjusted
-    sources: [jmdict, wordfreq]
-    flags:
-      profanity: false
-      foreign: false       # anglicism/loanword in wrong language
-      proper_noun: false
-      phrase: false        # multi-word expression, not standalone word
-    llm:
-      tier: daily
-      confidence: 5        # 1-5, self-assessed per language
-      reason: "common noun: information"
-      definition: "知識や事実"
-      definition_en: "information"
-    reviewed: false         # true = human-verified, pipeline won't override tier
-
-  - word: なんにちも
-    length: 5
-    tier: blocked
-    frequency: 3.1
-    difficulty: 0.5
-    sources: [jmdict]
-    flags:
-      phrase: true
-    llm:
-      tier: reject
-      confidence: 5
-      reason: "phrase: for many days (何日も)"
-    reviewed: false
+```json
+{
+  "metadata": {
+    "language_code": "ko",
+    "language_name": "Korean",
+    "last_pipeline_run": "2026-03-14T12:00:00Z",
+    "sources": [
+      {"name": "jmdict", "type": "dictionary", "version": "3.6.2"},
+      {"name": "wordfreq", "type": "frequency", "version": "3.1"}
+    ]
+  },
+  "words": [
+    {
+      "word": "정보",
+      "length": 2,
+      "tier": "daily",
+      "frequency": 4.2,
+      "sources": ["jmdict", "wordfreq"],
+      "llm": {
+        "tier": "daily",
+        "confidence": 5,
+        "reason": "common noun: information"
+      },
+      "reviewed": true
+    },
+    {
+      "word": "나쁜말",
+      "length": 3,
+      "tier": "blocked",
+      "frequency": 3.1,
+      "sources": ["jmdict"],
+      "flags": {"phrase": true},
+      "llm": {
+        "tier": "reject",
+        "confidence": 5,
+        "reason": "phrase: for many days"
+      }
+    }
+  ]
+}
 ```
+
+Sparse format: fields with default values (empty lists, false bools, null) are omitted.
 
 ### Field definitions
 
@@ -235,9 +211,9 @@ Lowest-friction contribution format. One word per line, no metadata.
 우정
 ```
 
-Pipeline picks these up, scores them, and merges into `words.yaml` with `sources: [community]`. If a word is already in `words.yaml`, it's skipped. If it's new, pipeline assigns tier, frequency, etc.
+Pipeline picks these up, scores them, and merges into `words.json` with `sources: [community]`. If a word is already in `words.json`, it's skipped. If it's new, pipeline assigns tier, frequency, etc.
 
-### contribute/overrides.yaml
+### contribute/overrides.json
 
 For corrections that override pipeline decisions:
 
@@ -287,7 +263,7 @@ For each language with daily words, spawn an LLM agent (Claude Opus 4.6) that:
 
 ### Output
 
-Stored in `llm` field per word in `words.yaml`. The `llm.tier` is a recommendation — the pipeline makes the final `tier` decision based on `llm.tier` + `llm.confidence` + `flags`.
+Stored in `llm` field per word in `words.json`. The `llm.tier` is a recommendation — the pipeline makes the final `tier` decision based on `llm.tier` + `llm.confidence` + `flags`.
 
 Decision logic:
 ```python
@@ -338,15 +314,7 @@ else:
 └──────────────────────┬──────────────────────────────────┘
                        ▼
 ┌─────────────────────────────────────────────────────────┐
-│ Stage 5: COMPILE                                        │
-│   Generate words.yaml (source of truth)                  │
-│   Compute difficulty scores                              │
-│   Validate pool depths per mode                          │
-│   Compile to optimized JSON for runtime                  │
-└──────────────────────┬──────────────────────────────────┘
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│ Stage 6: FREEZE                                         │
+│ Stage 5: FREEZE                                         │
 │   Update word_history.jsonl with past daily words        │
 │   Lock selections — past words never change              │
 └─────────────────────────────────────────────────────────┘
@@ -360,11 +328,11 @@ else:
 - Use scores to filter existing `daily_words.txt`
 
 ### Phase 2: YAML migration (with Nuxt refactor)
-- Write migration script: existing files + word_scores → words.yaml
+- Write migration script: existing files + word_scores → words.json
 - New pipeline reads/writes YAML
 - Nuxt build step compiles YAML → JSON
 - One PR per language batch (or big-bang with verification)
-- Backward compatibility: if words.yaml doesn't exist, fall back to old files
+- Backward compatibility: if words.json doesn't exist, fall back to old files
 
 ### Phase 3: Multi-mode support (after Nuxt)
 - Pipeline generates all-length word pools
@@ -374,7 +342,7 @@ else:
 
 ## Languages with special considerations
 
-| Language | Issue | How words.yaml handles it |
+| Language | Issue | How words.json handles it |
 |---|---|---|
 | Korean (ko) | Jamo encoding mismatch, compound jongseong keyboard gap | `diacritic_map` in config.yaml, `flags.keyboard_gap: true` on blocked words |
 | Hindi (hi) | Grapheme mode, only 15 daily words from pipeline | LLM curation bypasses broken dictionary gate, scores full word list directly |
@@ -391,7 +359,7 @@ else:
 
 ## Sub-component tile coloring (Issue #157)
 
-The words.yaml schema is forward-compatible with the future sub-component tile system:
+The words.json schema is forward-compatible with the future sub-component tile system:
 
 ```yaml
 - word: 한
@@ -406,6 +374,6 @@ This is a future addition — not needed for the initial YAML migration.
 ## Open questions
 
 1. **Word history format**: Keep as flat text files (simple) or migrate to JSONL (supports mode + length dimensions)?
-2. **Curated schedule**: Keep as a separate concept or fold into words.yaml with a `scheduled_day` field?
-3. **Definition caching**: Currently a separate disk cache system. Should definitions live in words.yaml or stay separate? (words.yaml would get very large with definitions for 50K+ words)
+2. **Curated schedule**: Keep as a separate concept or fold into words.json with a `scheduled_day` field?
+3. **Definition caching**: Currently a separate disk cache system. Should definitions live in words.json or stay separate? (words.json would get very large with definitions for 50K+ words)
 4. **Keyboard config**: Keep as JSON or migrate to YAML? JSON is what the frontend expects directly.

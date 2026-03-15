@@ -1,0 +1,85 @@
+{
+    "language_code": "et",
+    "name": "Estonian",
+    "timezone": "Europe/Tallinn",
+    "name_native": "eesti",
+    "meta": {
+        "locale": "et",
+        "title": "Igapäevane sõnamäng",
+        "description": "Arva Varjatud sõna 6 püüab (või vähem). Iga päev on saadaval uus puzzle! ",
+        "keywords": "eesti, puzzle, sõna, mängimine, mäng, võrgus, arvan, iga päev"
+    },
+    "text": {
+        "subheader": "eesti",
+        "next_word": "Järgmine sõna ",
+        "no_attempts": "Sa pole veel ühtegi sõna proovinud! ",
+        "share": "Jagama ",
+        "notification-copied": "Kopeeritud lõikepuhvrisse ",
+        "notification-partial-word": "Palun sisestage täielik sõna ",
+        "share_challenge_win": "Lahendasin tänase Wordle {n} katsega. Kas sa suudad paremini?",
+        "share_challenge_lose": "Ma ei lahendanud tänast Wordle't. Kas sina suudad?"
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Kuidas mängida ",
+        "title_2": "Näited ",
+        "close": "Sulge see sõnum ",
+        "text_1_1_1": "Arva ",
+        "text_1_1_2": "kuus püüab või vähem. ",
+        "text_1_2": "Iga vist peab olema kehtiv viis kirja sõna. Vajutage ENTER nuppu, et esitada oma vist. ",
+        "text_1_3": "Pärast arvata, plaadid muudavad värvi, et näidata, millised teie sõna tähed on õiged või peaaegu õiged. ",
+        "text_2_1": "on sõna ja õiges kohas! ",
+        "text_2_2": "on sõna, kuid mitte õiges kohas. ",
+        "text_2_3": "ei ole sõna sõna, mida sa üritad ära arvata. ",
+        "text_3": "Uus sõna on iga päev kättesaadav! "
+    },
+    "ui": {
+        "settings": "Seaded",
+        "dark_mode": "Tume režiim",
+        "dark_mode_desc": "Lülita tume teema",
+        "haptic_feedback": "Haptiline tagasiside",
+        "haptic_feedback_desc": "Vibratsioon puudutamisel",
+        "sound_effects": "Heliefektid",
+        "sound_effects_desc": "Võidu/kaotuse helid",
+        "right_to_left": "Paremalt vasakule",
+        "keyboard_layout": "Klaviatuuripaigutus",
+        "easy_mode": "Luba iga sõna",
+        "easy_mode_label": "lihtne režiim",
+        "install_app": "Paigalda rakendus",
+        "install_app_desc": "Mängi võrguühenduseta ja saa rakenduse ikoon",
+        "report_issue": "Teata probleemist",
+        "view_source": "Vaata lähtekoodi",
+        "guess_distribution": "Arvamiste jaotus",
+        "games": "Mängud",
+        "win_percent": "Võit %",
+        "streak": "Seeria",
+        "best": "Parim",
+        "all_languages": "Kõik keeled",
+        "languages": "Keeled",
+        "play_more_languages": "Mängi rohkem keeli, et näha oma üldstatistikat!",
+        "add_to_home": "Lisa avakuvale",
+        "play_daily_like_app": "Mängi Wordle't iga päev nagu rakendust",
+        "install": "Paigalda",
+        "close": "sulge"
+    },
+    "diacritic_map": {
+        "a": [
+            "ä"
+        ],
+        "o": [
+            "õ",
+            "ö"
+        ],
+        "u": [
+            "ü"
+        ],
+        "s": [
+            "š"
+        ],
+        "z": [
+            "ž"
+        ]
+    }
+}

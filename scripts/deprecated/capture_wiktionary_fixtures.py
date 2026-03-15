@@ -16,13 +16,15 @@ import urllib.parse
 import urllib.request as urlreq
 from pathlib import Path
 
-# Add webapp to path
+# ⚠️  MIGRATION WARNING: This script depends on the deleted Flask wiktionary module.
+# It is deprecated and non-functional.
 PROJECT_ROOT = Path(__file__).parent.parent
-sys.path.insert(0, str(PROJECT_ROOT / "webapp"))
 
-from wiktionary import WIKT_LANG_MAP, parse_wikt_definition
+raise ImportError("This script depends on the deleted Flask wiktionary module. It is deprecated.")
 
-LANGUAGES_DIR = PROJECT_ROOT / "webapp" / "data" / "languages"
+from wiktionary import WIKT_LANG_MAP, parse_wikt_definition  # noqa: E402
+
+LANGUAGES_DIR = PROJECT_ROOT / "data" / "languages"
 FIXTURES_DIR = PROJECT_ROOT / "tests" / "fixtures" / "wiktionary"
 
 

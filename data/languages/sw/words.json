@@ -1,0 +1,4325 @@
+{
+  "metadata": {
+    "language_code": "sw",
+    "language_name": "Swahili",
+    "last_pipeline_run": "2026-03-15T00:00:00Z",
+    "sources": [
+      {
+        "name": "llm_generated",
+        "type": "community"
+      }
+    ]
+  },
+  "words": [
+    {
+      "word": "jambo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kweli",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bwana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndugu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndiyo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwetu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwake",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwako",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwenu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyote",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtoto",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "binti",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mgeni",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwizi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fundi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mzazi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtume",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mhuni",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkazi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mlevi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "msomi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwema",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mdogo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtemi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mpiga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mlezi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mteja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mfano",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mzuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mpira",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jamaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wazee",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wengi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "maiti",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwili",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwivi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dhobi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkono",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tumbo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jicho",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sikio",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mfupa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ngozi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ubavu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mdomo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwapa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kifua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kiuno",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shavu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ulimi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "macho",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "miguu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mapua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndevu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kucha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "utosi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pumzi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jasho",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chozi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "donda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "upele",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "simba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tembo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyoka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndege",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "panya",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chura",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ngiri",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "twiga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbuzi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mjusi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyati",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "punda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kanga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bundi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyani",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chatu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "njiwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bweha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyuki",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "panzi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nungu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbega",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mamba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jogoo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndama",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "njugu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ugali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pilau",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndizi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tufaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "limau",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "papai",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mboga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "siagi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "asali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyama",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkate",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "maini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dengu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bamia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pweza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dagaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "togwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "divai",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ladha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tambi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mlima",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "msitu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwitu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bonde",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pwani",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ardhi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wingu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dunia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mpaka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtawi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbegu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shina",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tunda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shimo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "moshi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ghuba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wimbi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mvuke",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyota",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "umeme",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bwawa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtoni",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "usiku",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jioni",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwaka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwezi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "upepo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ukame",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shule",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jimbo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bunge",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ngome",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "banda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jumba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ofisi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ukuta",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uwani",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jengo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kituo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shati",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kofia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kiatu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fedha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chuma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mfuko",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chupa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtego",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "zulia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "taulo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kamba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shoka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "koleo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fimbo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jembe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jungu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chaki",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "picha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pazia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kombe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkeka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ngazi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pingu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "gunia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "rungu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkufu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkoba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kibao",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "barua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "stovu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tochi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kanzu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndoto",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sauti",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nafsi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tabia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "imani",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ibada",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hatia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "adabu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tamaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "neema",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "laana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "amani",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pendo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uhuru",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "umoja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "siasa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "taifa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fursa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sanaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "elimu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ujuzi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uwezo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nguzo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lugha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "maana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "namba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "swali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "utata",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "rangi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "alama",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wimbo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jamii",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hisia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akili",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "idadi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hadhi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shuku",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbele",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndani",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nyuma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kando",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hatua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kubwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ndogo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nzuri",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbaya",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "imara",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bichi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mzima",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "laini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chafu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ngumu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "usawa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "utupu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uwazi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uzima",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ukali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "unene",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "upana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "urefu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "upesi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "utamu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "upole",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uzuri",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ubora",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "usafi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "udogo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ujira",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mzigo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwiko",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkasa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "redio",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "benki",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "faida",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mauzo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbinu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbuga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkato",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mradi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtaji",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtaro",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mnara",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mpini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "msemo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwaga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mzaha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ghala",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hafla",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hiari",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hundi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kabla",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lundo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tangu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uvuli",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ziada",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dhiki",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "haiba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "janga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jeshi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nukta",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pambo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pango",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shida",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "madai",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "makaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tauni",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ubani",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wasia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shibe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nadra",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "rundo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tanzu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "upako",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "vituo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "falme",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ganzi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "gongo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "samli",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tundu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "asili",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "arusi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lishe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "msala",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tembe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tanga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wanja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nauli",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fungu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mlipa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mnada",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtepe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "habwe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kiazi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kiota",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kiini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kijia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "makao",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "maafa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "masaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "miaka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "miezi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "penda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "cheza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jenga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fanya",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "funga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "vunja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "choma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chora",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "choka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "cheka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "elewa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "eleza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ambia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "achia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "agiza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "amini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "amsha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "azima",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "eneza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "epuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fikia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ficha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "geuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "geuza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "gonga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "gomba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ingia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "inuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "itika",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kataa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kinga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lamba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "linda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lisha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "menya",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nunua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ogopa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "okota",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ondoa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pakia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pamba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "panda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "panga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pasha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "patia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "peana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pekua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pigwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pikia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pinda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pinga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pokea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "potea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pumua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "rejea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "rudia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sahau",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "salia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shika",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shona",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "shuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sikia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sogea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "somea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "stahi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tekwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tenda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tetea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tikia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "timia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "toboa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tokea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tulia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tumia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "uliza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "valia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "vamia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "washa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "winda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "yumba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "zalia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chota",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dunga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "endia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fukua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "gawia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hamia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "honga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "imbia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jazia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kaidi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kalia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kamua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "katia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kosha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kunja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "laumu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "legea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "letea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "letwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "limia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lipia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lipua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "levya",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "oshea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "onana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "juana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "patwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bweka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dukia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "endea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ramba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "konda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ganda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "baini",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bisha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bomoa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwama",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kumba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "somwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pikwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sifia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lemaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fukia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kulia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kujua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kulya",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kuona",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kuuma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kuota",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kutia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kuvua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kupaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kuoga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kuiba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kusia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mbili",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "abaki",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "abeba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "adeka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "aenda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "afika",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "afuma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "afuta",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "agema",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "agura",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "agusa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ahama",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "aimba",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ajuma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ajuta",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akata",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akaza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "aketi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akifa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akija",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akila",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akipa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "akiwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "akopa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "akula",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "alala",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "alewa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "alifa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "alija",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "alika",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "alila",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "alima",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "alipa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "aliua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "aliwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "amefa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ameja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "amela",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "amepa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "amewa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "amlia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anafa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anaja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anala",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anaua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anawa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "anena",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anila",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "anuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apaka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apata",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apiga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apika",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apita",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apona",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "arema",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "arudi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "aruka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "asema",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "askia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "asoma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "asuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "atafa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ataja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ataka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "atala",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ataoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "atapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ataua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "atawa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ateza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "atoka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "atupa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "avuma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "avuta",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "awaka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "aweka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "aweza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ayuta",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "azama",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "azika",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bweni",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chama",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "cheti",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "dafna",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "duara",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "farsi",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "fidia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "garma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haama",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haana",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haaza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haboa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haeka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haeza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haika",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haima",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haita",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haiwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hajua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hakua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "halia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hanoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haoga",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haoha",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haoma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haona",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haota",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "haoza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hapia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hapoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "harua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hatoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hauga",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hauka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hauma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hauza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "havua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hazoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hekla",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huama",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huana",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huaza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huboa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hueka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hueza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huiba",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huika",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huima",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huita",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "huiwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hujua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hukua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hulia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hulya",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hunoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huoga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "huoha",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huoma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huona",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "huota",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "huoza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hupia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hupoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hurua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hutia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "hutoa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "huuga",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huuka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huuma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huuza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "huvua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "huzoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ibara",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ijara",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "imamu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "jeuri",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kadhi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "komba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "lawla",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "makuu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mapya",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mazao",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mdosi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkasi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkifa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mkija",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mkila",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mkipa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mkiwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mlaji",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mlifa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mlija",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mlila",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mliwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mmefa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mmeja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mmela",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mmepa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mmewa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mnafa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mnaja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mnala",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mnapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mnawa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mnazi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mpuzi",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "msiba",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtafa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mtaja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mtaka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mtala",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mtapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mtawa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mtoza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "naapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "naeka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "naita",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "najua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nakua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "nalia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nanga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "naoga",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "naona",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "naota",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "napoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "natia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "natoa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nauka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nauma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "nauza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nenda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nijua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "nimfa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "nimja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "pacha",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "padri",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "patea",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "pochi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "rahma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "siama",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siana",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siaza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siboa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sieka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sieza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siiba",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siika",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siima",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siita",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siiwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sijua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sikua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "silia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sinoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sioga",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sioha",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sioma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siona",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siota",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sioza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sipia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sipoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sirua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sitia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sitoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siuga",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siuka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siuma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "siuza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sivua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "sizoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "somba",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tausi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tolea",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tujua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tukua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuona",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tupaa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tutia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tutoa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "twala",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ukifa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ukija",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ukila",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ukipa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ukiwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ulifa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ulija",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ulila",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "ulipa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "uliwa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "umefa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "umeja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "umela",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "umepa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "umewa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "unafa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "unaja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "unala",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "unapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "unawa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "utafa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "utaja",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "utala",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "utapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "utawa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "wahyi",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waita",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wajua",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "walia",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "waona",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wapaa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "watoa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wauza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "yombo",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "mboni",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mhogo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwato",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mvuli",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mhema",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mfupi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mpaji",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkuki",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mpole",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mzizi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtamu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mfumo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkito",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mwigo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtuma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mtozo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mkopo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "mliko",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ngano",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nondo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "sabri",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hatma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kasma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "chewa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "guppi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "songo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bokoo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pimbi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fungo",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwata",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "randa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "tweza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "quran",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "swala",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "wudhu",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "hijab",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nikah",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "fatwa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "amana",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "bondi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "kwaya",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ahadi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "pombe",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "nonda",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "asiri",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ateka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apuma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "awahi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ajali",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "alaza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "avuja",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ajisi",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "apima",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "agawa",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ajaza",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "ayuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "azuka",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "adura",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "agoma",
+      "length": 5,
+      "tier": "daily"
+    },
+    {
+      "word": "navua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "naiba",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "naoza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "naima",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "naoma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tupoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuvua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuoga",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuota",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuiba",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuuma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuuza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuita",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tueka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuoza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuima",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "tuoma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "wapoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "wakua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "watia",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "wavua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waoga",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waota",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waiba",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "wauma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waeka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waoza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waima",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "waoma",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kutoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kupoa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kukua",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kuuza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kuita",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kuapa",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kueka",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kuoza",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kuima",
+      "length": 5,
+      "tier": "valid"
+    },
+    {
+      "word": "kuoma",
+      "length": 5,
+      "tier": "valid"
+    }
+  ]
+}

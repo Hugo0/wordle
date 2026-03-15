@@ -1,0 +1,73 @@
+{
+    "language_code": "ltg",
+    "name": "Latgalian",
+    "timezone": "Europe/Riga",
+    "name_native": "latgaliski",
+    "meta": {
+        "locale": "ltg",
+        "title": "Ikdīnys vuordu spēle",
+        "description": "Atminēt paslāptu vuordu 6 meģinojumūs (ci mozuok). Jauna meikla katru dīnu!",
+        "keywords": "latgaliski, meikla, vuords, spēle, tīklā, atminēt, ikdīnys"
+    },
+    "text": {
+        "subheader": "latgaliski",
+        "next_word": "Next word ",
+        "no_attempts": "You haven't tried any words yet! ",
+        "share": "Daleit",
+        "notification-copied": "Copied to clipboard ",
+        "notification-partial-word": "Please enter a full word ",
+        "share_challenge_win": "Šudienis Wordle atminēju ar {n} mēginojumim. Voi tu lobōk?",
+        "share_challenge_lose": "Šudienis Wordle naatminēju. Voi tu?"
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "How to Play",
+        "title_2": "Examples",
+        "close": "Close this message",
+        "text_1_1_1": "Guess the",
+        "text_1_1_2": "in six tries or less.",
+        "text_1_2": "Each guess must be a valid five letter word. Press the enter button to submit your guess.",
+        "text_1_3": "After you guess, the tiles will change color to indicate which letters of your word are correct or almost correct.",
+        "text_2_1": "is in the word and in the correct location!",
+        "text_2_2": "is in the word, but not in the correct location.",
+        "text_2_3": "is not present in the word you are trying to guess.",
+        "text_3": "A new word will be available each day!"
+    },
+    "diacritic_map": {
+        "a": [
+            "ā"
+        ],
+        "c": [
+            "č"
+        ],
+        "e": [
+            "ē"
+        ],
+        "i": [
+            "ī"
+        ],
+        "k": [
+            "ķ"
+        ],
+        "l": [
+            "ļ"
+        ],
+        "n": [
+            "ņ"
+        ],
+        "o": [
+            "ō"
+        ],
+        "s": [
+            "š"
+        ],
+        "u": [
+            "ū"
+        ],
+        "z": [
+            "ž"
+        ]
+    }
+}

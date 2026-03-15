@@ -58,7 +58,7 @@ class google_new_transError(Exception):
             if status == 403:
                 cause = "Bad token or upstream API changes"
             elif status == 200 and not tts.lang_check:
-                cause = "No audio stream in response. Unsupported language '%s'" % self.tts.lang
+                cause = f"No audio stream in response. Unsupported language '{self.tts.lang}'"
             elif status >= 500:
                 cause = "Uptream API error. Try again later."
 
@@ -118,11 +118,11 @@ class google_translator:
 
     def translate(self, text, lang_tgt="auto", lang_src="auto", pronounce=False):
         try:
-            lang = LANGUAGES[lang_src]
+            LANGUAGES[lang_src]
         except:
             lang_src = "auto"
         try:
-            lang = LANGUAGES[lang_tgt]
+            LANGUAGES[lang_tgt]
         except:
             lang_src = "auto"
         text = str(text)
@@ -145,7 +145,7 @@ class google_translator:
             headers=headers,
         )
         try:
-            if self.proxies == None or type(self.proxies) != dict:
+            if self.proxies is None or type(self.proxies) != dict:
                 self.proxies = {}
             with requests.Session() as s:
                 s.proxies = self.proxies
@@ -166,18 +166,18 @@ class google_translator:
                                 sentences = response[0][5]
                             else:  ## only url
                                 sentences = response[0][0]
-                                if pronounce == False:
+                                if not pronounce:
                                     return sentences
-                                elif pronounce == True:
+                                elif pronounce:
                                     return [sentences, None, None]
                             translate_text = ""
                             for sentence in sentences:
                                 sentence = sentence[0]
                                 translate_text += sentence.strip() + " "
                             translate_text = translate_text
-                            if pronounce == False:
+                            if not pronounce:
                                 return translate_text
-                            elif pronounce == True:
+                            elif pronounce:
                                 pronounce_src = response_[0][0]
                                 pronounce_tgt = response_[1][0][0][1]
                                 return [translate_text, pronounce_src, pronounce_tgt]
@@ -185,9 +185,9 @@ class google_translator:
                             sentences = []
                             for i in response:
                                 sentences.append(i[0])
-                            if pronounce == False:
+                            if not pronounce:
                                 return sentences
-                            elif pronounce == True:
+                            elif pronounce:
                                 pronounce_src = response_[0][0]
                                 pronounce_tgt = response_[1][0][0][1]
                                 return [sentences, pronounce_src, pronounce_tgt]
@@ -219,7 +219,7 @@ class google_translator:
         freq = self._package_rpc(text)
         response = requests.Request(method="POST", url=self.url, data=freq, headers=headers)
         try:
-            if self.proxies == None or type(self.proxies) != dict:
+            if self.proxies is None or type(self.proxies) != dict:
                 self.proxies = {}
             with requests.Session() as s:
                 s.proxies = self.proxies

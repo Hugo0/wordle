@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode (Tailwind v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =============================================================================
+   Wordle Game Styles
+   ============================================================================= */
+
+/* Tile states */
+.correct {
+    @apply bg-green-500;
+}
+
+.semicorrect {
+    @apply bg-yellow-500;
+}
+
+.incorrect {
+    @apply bg-neutral-500;
+}
+
+/* High contrast / colorblind mode overrides */
+.high-contrast .correct {
+    background-color: #85c0f9;
+}
+
+.high-contrast .semicorrect {
+    background-color: #f5793a;
+}
+
+/* Keyboard key states */
+.key {
+    @apply bg-neutral-200 text-black;
+    touch-action: manipulation;
+}
+
+/* Key with diacritic hint - stack main char with hint above or below */
+.key.has-hint {
+    @apply flex flex-col items-center justify-center gap-0;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+/* When hint is above the main letter (for keys with many variants) */
+.key.has-hint.hint-above {
+    @apply flex-col;
+}
+
+.key-main {
+    @apply block leading-tight;
+}
+
+.key-hint {
+    @apply block text-[0.6rem] leading-none font-normal lowercase opacity-60;
+    letter-spacing: -0.3px;
+}
+
+.dark .key-hint {
+    @apply opacity-70;
+}
+
+/* Keyboard key shake for wasted guess (already known letter) */
+@keyframes key-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-2px); }
+    40%, 80% { transform: translateX(2px); }
+}
+
+.key-correct {
+    @apply bg-green-500 text-white;
+    animation: key-pop 200ms ease-out;
+}
+
+.key-semicorrect {
+    @apply bg-yellow-500 text-white;
+    animation: key-pop 200ms ease-out;
+}
+
+.key-incorrect {
+    @apply bg-neutral-500 text-white;
+}
+
+/* High contrast keyboard key overrides */
+.high-contrast .key-correct {
+    background-color: #85c0f9;
+}
+
+.high-contrast .key-semicorrect {
+    background-color: #f5793a;
+}
+
+
+.key-shake {
+    animation: key-shake 400ms ease-in-out;
+}
+
+.key-pulse {
+    animation: key-pop 300ms ease-out;
+}
+
+/* Safe area insets for notched devices */
+.safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Android PWA: gesture bar overlaps app but env(safe-area-inset-bottom) is 0,
+   so add fallback bottom padding in standalone mode to prevent keyboard clipping */
+@media (display-mode: standalone) {
+    .safe-area-inset {
+        padding-bottom: max(env(safe-area-inset-bottom), 12px);
+    }
+}
+
+/* Bottom Banners (shared base for PWA install + embed banners) */
+.bottom-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.bottom-banner .action-btn {
+    background: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.1s;
+}
+
+.bottom-banner .action-btn:active {
+    transform: scale(0.95);
+}
+
+.bottom-banner button.dismiss {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 8px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.pwa-install-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.pwa-install-banner .action-btn {
+    color: #667eea;
+}
+
+.embed-banner {
+    background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
+}
+
+.embed-banner .action-btn {
+    color: #2d6a4f;
+}
+
+/* Modal fade-in */
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-animate {
+    animation: modalIn 200ms ease-out;
+}
+
+/* Prevent text selection on game elements */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 3D perspective for tile flip */
+.game-board {
+    perspective: 1000px;
+}
+
+/* Single smooth flip — color swaps at midpoint (90deg, tile invisible) */
+@keyframes flipReveal {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+/* Win celebration bounce with Pixar-style squash & stretch */
+@keyframes tile-bounce {
+    0%   { transform: translateY(0); }
+    8%   { transform: translateY(2px)   scale(1.12, 0.82); }
+    22%  { transform: translateY(-44px) scale(0.82, 1.18); }
+    32%  { transform: translateY(-48px) scale(0.95, 1.05); }
+    50%  { transform: translateY(0)     scale(1, 1); }
+    54%  { transform: translateY(2px)   scale(1.1, 0.86); }
+    66%  { transform: translateY(-18px) scale(0.9, 1.1); }
+    78%  { transform: translateY(0)     scale(1, 1); }
+    82%  { transform: translateY(1px)   scale(1.04, 0.96); }
+    90%  { transform: translateY(-5px)  scale(0.98, 1.02); }
+    100% { transform: translateY(0)     scale(1, 1); }
+}
+
+.tile-bounce {
+    animation: tile-bounce 1000ms ease;
+}
+
+/* Keyboard key pop when color is revealed */
+@keyframes key-pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Shake animation for invalid words */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Pop animation for typed letters */
+@keyframes pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
+
+.pop {
+    animation: pop 100ms ease-out;
+    border-color: #878a8c !important;
+}
+
+.dark .pop {
+    border-color: #565758 !important;
+}

@@ -1,0 +1,47 @@
+{
+    "language_code": "lb",
+    "name": "Luxembourgish",
+    "timezone": "Europe/Luxembourg",
+    "name_native": "Lëtzebuergesch",
+    "meta": {
+        "locale": "lb",
+        "title": "Dat alldeeglecht Wuert Spill ",
+        "description": "Guess de verstoppte Wuert an 6 Versich (oder manner). En neie Puzzel ass all Dag verfügbar! ",
+        "keywords": "Lëtzebuergesch, Puzzel, Wuert, spillt, Spill, online, fir deesdag"
+    },
+    "text": {
+        "subheader": "Lëtzebuergesch",
+        "next_word": "Neit Wuert ",
+        "no_attempts": "Dir hutt nach keng Wierder probéiert! ",
+        "share": "Deelen ",
+        "notification-copied": "Op Clipboard kopéiert ",
+        "notification-partial-word": "Gitt w.e.g. eng voll Wuert un ",
+        "share_challenge_win": "Ech hunn den haitege Wordle an {n} Versich geschafft. Kanns du et besser?",
+        "share_challenge_lose": "Ech hunn den haitege Wordle net geschafft. Kanns du?"
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Wéi ze spillen ",
+        "title_2": "Beispiller ",
+        "close": "Zoumaachen dëse Message ",
+        "text_1_1_1": "Gén, de ",
+        "text_1_1_2": "a sechs Versich oder manner. ",
+        "text_1_2": "All Rotschléi muss e gültege fënnef Bréifwuert sinn. Dréckt op den Enter Knäppchen fir Är Rot ofzeginn. ",
+        "text_1_3": "Nodeems Dir mengt, d'Fliesen ännert d'Faarf fir unzeginn wéi eng Bréiwer vun Ärem Wuert richteg oder bal korrekt sinn. ",
+        "text_2_1": "ass am Wuert an an der richteger Plaz! ",
+        "text_2_2": "ass am Wuert, awer net op der richteger Plaz. ",
+        "text_2_3": "ass net am Wuert präsent wat Dir probéiert ze roden. ",
+        "text_3": "En neit Wuert gëtt all Dag disponibel! "
+    },
+    "diacritic_map": {
+        "a": [
+            "ä"
+        ],
+        "e": [
+            "é",
+            "ë"
+        ]
+    }
+}

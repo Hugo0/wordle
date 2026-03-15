@@ -1,6 +1,6 @@
 # Contributing to Wordle Global
 
-Thanks for your interest in contributing! This project supports 65+ languages and we welcome help improving word lists, keyboards, translations, and code.
+Thanks for your interest in contributing! This project supports 78 languages and we welcome help improving word lists, keyboards, translations, and code.
 
 ## Quick Start
 
@@ -8,7 +8,7 @@ Thanks for your interest in contributing! This project supports 65+ languages an
 git clone https://github.com/Hugo0/wordle.git
 cd wordle
 pnpm install
-pnpm dev           # Starts Flask server + Vite watcher
+pnpm dev           # Starts Nuxt dev server at localhost:3000
 ```
 
 `uv` handles Python dependencies automatically.
@@ -17,39 +17,43 @@ pnpm dev           # Starts Flask server + Vite watcher
 
 ```text
 wordle/
-├── webapp/                    # Flask backend
-│   ├── app.py                 # Main Flask app, routes, data loading
-│   ├── data/                  # Language data (word lists, configs, keyboards)
-│   │   ├── languages/{lang}/  # Per-language files
-│   │   │   ├── {lang}_5words.txt           # Main word list
-│   │   │   ├── {lang}_5words_supplement.txt # Valid guesses (not daily words)
-│   │   │   ├── {lang}_characters.txt       # Valid characters
-│   │   │   ├── {lang}_keyboard.json        # Keyboard layout
-│   │   │   └── language_config.json        # UI translations, metadata
-│   │   └── default_language_config.json    # Fallback config
-│   ├── templates/             # Jinja2 templates
-│   │   ├── game.html          # Main game page (uses Vite assets)
-│   │   └── index.html         # Homepage
-│   └── static/
-│       └── dist/              # Vite build output (gitignored)
-├── frontend/                  # TypeScript/Vue frontend source
-│   └── src/
-│       ├── main.ts            # Entry point
-│       ├── game.ts            # Vue app with game logic
-│       ├── pwa.ts             # PWA install prompt
-│       ├── types/index.ts     # TypeScript interfaces
-│       └── __tests__/         # Vitest unit tests
-├── tests/                     # pytest tests for data validation
-└── scripts/                   # Utility scripts
+├── pages/                     # Nuxt page routes
+├── components/                # Vue components
+├── composables/               # Vue composables
+├── stores/                    # Pinia stores
+├── server/                    # Nitro server (API routes, data loading)
+│   ├── api/                   # API endpoints
+│   ├── plugins/               # Server startup plugins
+│   └── utils/                 # Server utilities (data-loader, definitions)
+├── layouts/                   # Nuxt layouts
+├── plugins/                   # Client/server plugins
+├── assets/                    # CSS, static assets processed by Vite
+├── public/                    # Static files served as-is
+├── utils/                     # Shared utilities
+├── data/                      # Language data (word lists, configs, keyboards)
+│   ├── languages/{lang}/      # Per-language files
+│   │   ├── words.json         # Word data (source of truth + runtime)
+│   │   ├── keyboard.json      # Keyboard layout
+│   │   └── language_config.json # UI translations, metadata
+│   └── default_language_config.json
+├── tests/                     # All tests (pytest + vitest)
+│   ├── test_*.py              # Python tests (pytest)
+│   ├── *.test.ts              # TypeScript tests (vitest)
+│   └── stores/                # Store tests
+├── e2e/                       # Playwright E2E tests
+├── scripts/                   # Python utility scripts & word pipeline
+├── app.vue                    # Root Vue component
+├── nuxt.config.ts             # Nuxt configuration
+├── package.json               # Node.js dependencies & scripts
+└── pyproject.toml             # Python dependencies
 ```
 
 ## Key Concepts
 
 ### Daily Word Selection
-- Algorithm in `webapp/app.py:get_todays_idx()`
-- Based on days since epoch with offset: `n_days - 18992 + 195`
-- Word list is shuffled with `random.seed(42)` for determinism
-- Daily word = `word_list[todays_idx % len(word_list)]`
+- Algorithm in `server/utils/data-loader.ts`
+- Consistent hashing (post Jan 25, 2026), legacy shuffle before that
+- Word data loaded from `data/languages/{lang}/words.json`
 
 ### Color Algorithm (Wordle rules)
 - Green (correct): Letter in correct position
@@ -58,16 +62,17 @@ wordle/
 - **Important**: Handles duplicate letters correctly - green takes priority
 
 ### Build System
-- **Vite** bundles TypeScript + Tailwind CSS
-- Assets go to `webapp/static/dist/` with content hashes
-- Flask reads `.vite/manifest.json` to get hashed filenames
+- **Nuxt 3** with Nitro server and Vite bundling
+- Tailwind CSS v4 via `@tailwindcss/vite` plugin
+- PWA support via `@vite-pwa/nuxt`
 - Run `pnpm build` before deploying
 
 ### Testing
-- `pytest tests/` - Validates word lists, configs, daily word algorithm
-- `pnpm test` - TypeScript unit tests for game logic
-- CI runs both on every PR
-- ~4 pytest xfails expected (pre-existing data quality issues)
+- `uv run pytest tests/` — Python tests for word lists, configs, daily word algorithm
+- `pnpm test` — TypeScript unit tests (vitest) for game logic, API, definitions
+- `pnpm test:e2e` — Playwright E2E tests
+- CI runs all three on every PR
+- `npx nuxt prepare` required before running vitest
 
 ## Code Style
 
@@ -77,40 +82,28 @@ wordle/
 
 ### Python
 - Ruff formatter + linter, 100 char line length
-- Run `uv run ruff format webapp/ tests/` and `uv run ruff check webapp/ tests/` before committing
+- Run `uv run ruff format scripts/ tests/` and `uv run ruff check scripts/ tests/`
 - Pre-commit hooks run both automatically
 
 ## Before Committing
 
 ```bash
-pnpm format                          # Format TypeScript
-uv run ruff format webapp/ tests/    # Format Python
-uv run ruff check webapp/ tests/     # Lint Python
-pnpm test                            # Run TS tests
-uv run pytest tests/                 # Run Python tests
+pnpm format                                    # Format TypeScript
+uv run ruff format scripts/ tests/     # Format Python
+uv run ruff check scripts/ tests/      # Lint Python
+npx nuxt prepare && pnpm test                  # Run TS tests
+uv run pytest tests/                           # Run Python tests
 ```
 
 ## How to Contribute
 
 ### Word Lists
 
-Word lists are stored in `webapp/data/languages/{lang}/{lang}_5words.txt`.
-
-**Good words:**
-- Common 5-letter words in the language
-- Words that native speakers would recognize
-- Nouns, verbs, adjectives in their base/common forms
-
-**Words to avoid:**
-- Proper names (people, cities, brands)
-- Offensive or inappropriate words
-- Abbreviations or words from other languages
-- Obscure technical terms
-- Incorrect conjugations/declensions
+Word data is managed via the word pipeline in `scripts/word_pipeline/`. Source of truth is `data/languages/{lang}/words.json`.
 
 ### Keyboards
 
-Keyboard layouts are in `webapp/data/languages/{lang}/{lang}_keyboard.json`.
+Keyboard layouts are in `data/languages/{lang}/keyboard.json`.
 
 ```json
 [
@@ -126,15 +119,15 @@ Keyboard layouts are in `webapp/data/languages/{lang}/{lang}_keyboard.json`.
 
 ### Translations
 
-UI text is in `webapp/data/languages/{lang}/language_config.json`. Please ensure translations are natural and accurate (not machine-translated).
+UI text is in `data/languages/{lang}/language_config.json`. Please ensure translations are natural and accurate (not machine-translated).
 
 ### Adding a New Language
 
-1. Create folder: `webapp/data/languages/{lang_code}/`
-2. Add word list: `{lang}_5words.txt` (one 5-letter word per line, lowercase)
-3. (Optional) Add `language_config.json` — UI translations and metadata
-4. (Optional) Add `{lang_code}_keyboard.json` — custom keyboard layout
-5. (Optional) Add `{lang_code}_5words_supplement.txt` — additional valid guesses
+1. Create folder: `data/languages/{lang_code}/`
+2. Add `words.json` with word list data
+3. Run the word pipeline: `cd scripts && uv run python -m word_pipeline run {lang_code}`
+4. (Optional) Add `language_config.json` — UI translations and metadata
+5. (Optional) Add `keyboard.json` — custom keyboard layout
 
 ## Pull Requests
 
@@ -147,14 +140,13 @@ UI text is in `webapp/data/languages/{lang}/language_config.json`. Please ensure
 - Add try-catch around localStorage (fails in private browsing)
 - Test both light and dark modes
 - Consider RTL languages (Hebrew, Arabic, Persian)
-- Keep bundle size small (~75KB gzipped target)
+- Keep bundle size small
 
 ## Don't
 
-- Change random seed (42) — breaks word selection globally
-- Assume word lists are alphabetical — they're shuffled
+- Change the daily word algorithm — breaks word selection globally
 - Add console.logs to production code
-- Modify `webapp/static/dist/` manually (auto-generated)
+- Modify `.nuxt/` or `.output/` manually (auto-generated)
 
 ## License Agreement
 

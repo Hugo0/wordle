@@ -25,14 +25,13 @@ import argparse
 import json
 import shutil
 import subprocess
-import sys
 import tarfile
 import urllib.request
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
 FREQ_DATA = SCRIPT_DIR / ".freq_data"
-DEFINITIONS_DIR = SCRIPT_DIR.parent / "webapp" / "data" / "definitions"
+DEFINITIONS_DIR = SCRIPT_DIR.parent / "data" / "definitions"
 
 # Leipzig Corpora: map our lang codes → Leipzig corpus identifiers
 # Leipzig uses ISO 639-3 codes + source type
@@ -68,15 +67,10 @@ LEIPZIG_CORPORA = {
     "lt": "lit_wikipedia_2021_100K",
     "mk": "mkd_wikipedia_2021_100K",
     "mn": "mon_wikipedia_2021_100K",
-    "ms": "msa_wikipedia_2021_100K",
-    "nb": "nor_wikipedia_2021_100K",
     "ne": "nep_wikipedia_2021_100K",
     "nn": "nno_wikipedia_2021_100K",
     "oc": "oci_wikipedia_2021_100K",
-    "ru": "rus_wikipedia_2021_100K",
-    "sq": "sqi_wikipedia_2021_100K",
-    "tl": "tgl_wikipedia_2021_100K",
-    "ur": "urd_wikipedia_2021_100K",
+    "sw": "swh_wikipedia_2021_100K",
     "vi": "vie_wikipedia_2021_100K",
     # Existing languages
     "ar": "ara_news_2024_1M",
@@ -122,6 +116,7 @@ KAIKKI_LANGS = {
     "om": "Oromo",
     "hi": "Hindi",
     "mr": "Marathi",
+    "sw": "Swahili",
 }
 
 
@@ -394,7 +389,7 @@ def extract_kaikki():
 
         try:
             data = json.loads(json_file.read_text(encoding="utf-8"))
-            words = sorted(w for w in data.keys() if len(w) == 5 and w.isalpha() and w == w.lower())
+            words = sorted(w for w in data if len(w) == 5 and w.isalpha() and w == w.lower())
             if words:
                 out_file.write_text("\n".join(words) + "\n", encoding="utf-8")
                 print(f"  {lang}: {len(words)} 5-letter words from kaikki")
@@ -412,7 +407,7 @@ def extract_kaikki():
 
         try:
             data = json.loads(json_file.read_text(encoding="utf-8"))
-            words = sorted(w for w in data.keys() if len(w) == 5 and w.isalpha() and w == w.lower())
+            words = sorted(w for w in data if len(w) == 5 and w.isalpha() and w == w.lower())
             if words:
                 out_file.write_text("\n".join(words) + "\n", encoding="utf-8")
                 print(f"  {lang}: {len(words)} 5-letter words from kaikki (native)")
@@ -442,9 +437,7 @@ def download_kaikki(langs: list[str]):
             # Extract from existing file
             try:
                 data = json.loads(def_file.read_text(encoding="utf-8"))
-                words = sorted(
-                    w for w in data.keys() if len(w) == 5 and w.isalpha() and w == w.lower()
-                )
+                words = sorted(w for w in data if len(w) == 5 and w.isalpha() and w == w.lower())
                 if words:
                     out_file.write_text("\n".join(words) + "\n", encoding="utf-8")
                     print(f"  {lang}: {len(words)} 5-letter words from existing kaikki")

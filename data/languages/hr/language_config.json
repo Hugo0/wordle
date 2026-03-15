@@ -1,0 +1,82 @@
+{
+    "language_code": "hr",
+    "name": "Croatian",
+    "timezone": "Europe/Zagreb",
+    "name_native": "hrvatski jezik",
+    "meta": {
+        "locale": "hr",
+        "title": "Dnevna riječ ",
+        "description": "Pogodite skrivenu riječ u 6 pokušaja (ili manje). Nova zagonetka dostupna je svaki dan! ",
+        "keywords": "hrvatski jezik, zagonetka, riječ, igra, igra, online, pogodite, svakodnevno"
+    },
+    "text": {
+        "subheader": "hrvatski jezik",
+        "next_word": "Slijedeća riječ ",
+        "no_attempts": "Još niste isprobali riječi! ",
+        "share": "Podijeli",
+        "notification-copied": "Kopirati u međuspremnik ",
+        "notification-partial-word": "Unesite cijelu riječ ",
+        "share_challenge_win": "Riješio/la sam današnji Wordle u {n} pokušaja. Možeš li bolje?",
+        "share_challenge_lose": "Nisam riješio/la današnji Wordle. Možeš li ti?"
+    },
+    "language_code_3": "",
+    "language_code_iso_639_3": "",
+    "right_to_left": "false",
+    "help": {
+        "title": "Kako igrati ",
+        "title_2": "Primjeri ",
+        "close": "Zatvorite ovu poruku ",
+        "text_1_1_1": "Pogodite ",
+        "text_1_1_2": "u šest pokušaja ili manje. ",
+        "text_1_2": "Svaka pretpostavka mora biti valjana riječ od pet slova. Pritisnite gumb ENTER za slanje valjka. ",
+        "text_1_3": "Nakon što pogađate, pločice će promijeniti boju za označavanje koje su slova vaše riječi ispravna ili gotovo ispravna. ",
+        "text_2_1": "je u riječi i na ispravnom mjestu! ",
+        "text_2_2": "je u riječi, ali ne na ispravnom mjestu. ",
+        "text_2_3": "nije prisutan u riječi koju pokušavate pogoditi. ",
+        "text_3": "Nova riječ će biti dostupna svaki dan! "
+    },
+    "ui": {
+        "settings": "Postavke",
+        "dark_mode": "Tamni način",
+        "dark_mode_desc": "Uključi tamnu temu",
+        "haptic_feedback": "Haptička povratna informacija",
+        "haptic_feedback_desc": "Vibracija pri dodiru",
+        "sound_effects": "Zvučni efekti",
+        "sound_effects_desc": "Zvukovi pobjede/poraza",
+        "right_to_left": "S desna na lijevo",
+        "keyboard_layout": "Raspored tipkovnice",
+        "easy_mode": "Dopusti bilo koju riječ",
+        "easy_mode_label": "lagani način",
+        "install_app": "Instaliraj aplikaciju",
+        "install_app_desc": "Igraj offline i dobij ikonu aplikacije",
+        "report_issue": "Prijavi problem",
+        "view_source": "Pogledaj izvorni kod",
+        "guess_distribution": "Raspodjela pokušaja",
+        "games": "Igre",
+        "win_percent": "Pobjeda %",
+        "streak": "Niz",
+        "best": "Najbolje",
+        "all_languages": "Svi jezici",
+        "languages": "Jezici",
+        "play_more_languages": "Igraj više jezika da vidiš ukupnu statistiku!",
+        "add_to_home": "Dodaj na početni zaslon",
+        "play_daily_like_app": "Igraj Wordle svakodnevno kao aplikaciju",
+        "install": "Instaliraj",
+        "close": "zatvori"
+    },
+    "diacritic_map": {
+        "c": [
+            "ć",
+            "č"
+        ],
+        "d": [
+            "đ"
+        ],
+        "s": [
+            "š"
+        ],
+        "z": [
+            "ž"
+        ]
+    }
+}

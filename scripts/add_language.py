@@ -26,7 +26,7 @@ from pathlib import Path
 from improve_word_lists import load_frequency_data
 
 SCRIPT_DIR = Path(__file__).parent
-DATA_DIR = SCRIPT_DIR.parent / "webapp" / "data" / "languages"
+DATA_DIR = SCRIPT_DIR.parent / "data" / "languages"
 EN_KEYBOARD_PATH = DATA_DIR / "en" / "en_keyboard.json"
 
 # Cache for keyboard JSON files (avoid re-reading per language)
@@ -780,14 +780,14 @@ def create_language(lang: str, dry_run: bool = False) -> bool:
     keyboard = generate_keyboard(lang, lang_def, characters)
     config = generate_config(lang, lang_def)
 
-    print(f"\n  Summary:")
+    print("\n  Summary:")
     print(f"    Words: {len(words)}")
     print(f"    Characters: {len(characters)}")
     print(f"    Keyboard layouts: {len(keyboard.get('layouts', {}))}")
     print(f"    RTL: {config.get('right_to_left', 'false')}")
 
     if dry_run:
-        print(f"\n  DRY RUN — no files written")
+        print("\n  DRY RUN — no files written")
         return True
 
     # Create directory and write files
@@ -813,7 +813,7 @@ def create_language(lang: str, dry_run: bool = False) -> bool:
     config_path.write_text(
         json.dumps(config, indent=4, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    print(f"  Wrote language_config.json")
+    print("  Wrote language_config.json")
 
     # SOURCES.md
     sources_path = lang_dir / "SOURCES.md"
@@ -840,7 +840,7 @@ def create_language(lang: str, dry_run: bool = False) -> bool:
         sources.append("- URL: https://wortschatz.uni-leipzig.de/en/download/")
         sources.append("- License: CC-BY 4.0\n")
     sources_path.write_text("\n".join(sources) + "\n", encoding="utf-8")
-    print(f"  Wrote SOURCES.md")
+    print("  Wrote SOURCES.md")
 
     return True
 

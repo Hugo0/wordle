@@ -15,7 +15,7 @@ Usage:
 
 Subcommands:
     download  - Download kaikki.org JSONL files for our languages
-    process   - Extract definitions from downloaded data into webapp/data/definitions/
+    process   - Extract definitions from downloaded data into data/definitions/
     stats     - Show coverage statistics per language
 """
 
@@ -33,8 +33,8 @@ import urllib.request
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
-LANGUAGES_DIR = os.path.join(PROJECT_ROOT, "webapp", "data", "languages")
-DEFINITIONS_DIR = os.path.join(PROJECT_ROOT, "webapp", "data", "definitions")
+LANGUAGES_DIR = os.path.join(PROJECT_ROOT, "data", "languages")
+DEFINITIONS_DIR = os.path.join(PROJECT_ROOT, "data", "definitions")
 KAIKKI_DATA_DIR = os.path.join(SCRIPT_DIR, ".kaikki_data")
 
 # ---------------------------------------------------------------------------
@@ -350,14 +350,11 @@ def _clean_gloss(gloss):
     if len(gloss) > 300:
         # Cut at last sentence boundary within 300 chars
         cut = gloss[:300].rfind(".")
-        if cut > 100:
-            gloss = gloss[: cut + 1]
-        else:
-            gloss = gloss[:300].rstrip() + "…"
+        gloss = gloss[: cut + 1] if cut > 100 else gloss[:300].rstrip() + "…"
     return gloss
 
 
-import re as _re
+import re as _re  # noqa: E402
 
 # Bare grammatical form labels with no base-word reference (uninformative as game hints)
 _BARE_FORM_RE = _re.compile(
@@ -385,15 +382,12 @@ _OFFENSIVE_TAGS = {"derogatory", "offensive", "slur", "vulgar", "pejorative"}
 
 def _is_unhelpful_gloss(gloss):
     """Return True if a gloss is a bare grammatical form or unhelpful form-of reference."""
-    if _BARE_FORM_RE.match(gloss):
+    if _BARE_FORM_RE.match(gloss) and " of " not in gloss.lower():
         # Allow if it also contains "of " (i.e. references the base word)
-        if " of " not in gloss.lower():
-            return True
+        return True
     if _FORM_OF_RE.match(gloss):
         return True
-    if _CROSS_REF_RE.match(gloss):
-        return True
-    return False
+    return bool(_CROSS_REF_RE.match(gloss))
 
 
 def _is_offensive_sense(sense):
