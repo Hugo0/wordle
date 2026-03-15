@@ -171,7 +171,7 @@ const track = (eventName: string, params?: Record<string, unknown>): void => {
 /**
  * Get referrer or 'direct'
  */
-const getReferrer = (): string => getReferrer();
+const getReferrer = (): string => document.referrer || 'direct';
 
 /**
  * Get platform type for PWA tracking
