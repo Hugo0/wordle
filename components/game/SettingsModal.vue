@@ -79,12 +79,11 @@
                         <button
                             type="button"
                             class="flex-1 py-2 px-1 text-xs font-medium transition-colors border-x border-neutral-300 dark:border-neutral-600"
-                            :class="[
+                            :class="
                                 !allowAnyWord && !settings.hardMode
                                     ? 'bg-green-500 text-white'
-                                    : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600',
-                                canSetDifficulty('normal') ? '' : 'opacity-40 cursor-not-allowed',
-                            ]"
+                                    : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'
+                            "
                             @click="setDifficulty('normal')"
                         >
                             Normal
@@ -92,12 +91,11 @@
                         <button
                             type="button"
                             class="flex-1 py-2 px-1 text-xs font-medium transition-colors"
-                            :class="[
+                            :class="
                                 settings.hardMode
                                     ? 'bg-green-500 text-white'
-                                    : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600',
-                                canSetDifficulty('hard') ? '' : 'opacity-40 cursor-not-allowed',
-                            ]"
+                                    : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'
+                            "
                             @click="setDifficulty('hard')"
                         >
                             Hard
