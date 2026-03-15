@@ -16,8 +16,6 @@ import type { GameData } from '../../utils/types';
 // Mock auto-imported composables that the game store uses
 // ---------------------------------------------------------------------------
 
-
-
 // Mock composables used by game store
 const mockHaptic = { error: vi.fn(), confirm: vi.fn(), success: vi.fn() };
 const mockHapticFn = Object.assign(vi.fn(), mockHaptic);
@@ -69,8 +67,32 @@ function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
         word_list: ['crane', 'slate', 'hello', 'world', 'apple', 'cairn', 'party', 'aback'],
         word_list_supplement: ['stare', 'raise', 'crate'],
         characters: [
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            'a',
+            'b',
+            'c',
+            'd',
+            'e',
+            'f',
+            'g',
+            'h',
+            'i',
+            'j',
+            'k',
+            'l',
+            'm',
+            'n',
+            'o',
+            'p',
+            'q',
+            'r',
+            's',
+            't',
+            'u',
+            'v',
+            'w',
+            'x',
+            'y',
+            'z',
         ],
         config: {
             language_code: 'en',
@@ -79,13 +101,25 @@ function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
             right_to_left: 'false',
             meta: { locale: 'en', title: 'Wordle English', description: '', keywords: '' },
             text: {
-                subheader: '', next_word: '', no_attempts: '',
-                share: 'Share', shared: 'Shared!', copied: 'Copied!',
+                subheader: '',
+                next_word: '',
+                no_attempts: '',
+                share: 'Share',
+                shared: 'Shared!',
+                copied: 'Copied!',
             },
             help: {
-                title: '', title_2: '', close: '',
-                text_1_1_1: '', text_1_1_2: '', text_1_2: '', text_1_3: '',
-                text_2_1: '', text_2_2: '', text_2_3: '', text_3: '',
+                title: '',
+                title_2: '',
+                close: '',
+                text_1_1_1: '',
+                text_1_1_2: '',
+                text_1_2: '',
+                text_1_3: '',
+                text_2_1: '',
+                text_2_2: '',
+                text_2_3: '',
+                text_3: '',
             },
         },
         todays_idx: 1700,
@@ -228,8 +262,33 @@ describe('Game Store', () => {
             const { gameStore } = setupStores({
                 word_list: ['börde', 'crane', 'slate'],
                 characters: [
-                    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-                    'n', 'o', 'ö', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                    'a',
+                    'b',
+                    'c',
+                    'd',
+                    'e',
+                    'f',
+                    'g',
+                    'h',
+                    'i',
+                    'j',
+                    'k',
+                    'l',
+                    'm',
+                    'n',
+                    'o',
+                    'ö',
+                    'p',
+                    'q',
+                    'r',
+                    's',
+                    't',
+                    'u',
+                    'v',
+                    'w',
+                    'x',
+                    'y',
+                    'z',
                 ],
                 config: {
                     language_code: 'de',
@@ -240,9 +299,17 @@ describe('Game Store', () => {
                     meta: { locale: 'de', title: '', description: '', keywords: '' },
                     text: { subheader: '', next_word: '', no_attempts: '', share: '' },
                     help: {
-                        title: '', title_2: '', close: '',
-                        text_1_1_1: '', text_1_1_2: '', text_1_2: '', text_1_3: '',
-                        text_2_1: '', text_2_2: '', text_2_3: '', text_3: '',
+                        title: '',
+                        title_2: '',
+                        close: '',
+                        text_1_1_1: '',
+                        text_1_1_2: '',
+                        text_1_2: '',
+                        text_1_3: '',
+                        text_2_1: '',
+                        text_2_2: '',
+                        text_2_3: '',
+                        text_3: '',
                     },
                 },
             });
@@ -330,7 +397,13 @@ describe('Game Store', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             // Simulate first guess with 'c' in position 0 correct
             gameStore.tiles[0] = ['c', 'l', 'u', 'b', 's'];
-            gameStore.tileColors[0] = ['correct', 'incorrect', 'incorrect', 'incorrect', 'incorrect'];
+            gameStore.tileColors[0] = [
+                'correct',
+                'incorrect',
+                'incorrect',
+                'incorrect',
+                'incorrect',
+            ];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('slate');
@@ -340,7 +413,13 @@ describe('Game Store', () => {
         it('rejects guess missing a revealed yellow letter', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             gameStore.tiles[0] = ['r', 'a', 'i', 's', 'e'];
-            gameStore.tileColors[0] = ['semicorrect', 'semicorrect', 'incorrect', 'incorrect', 'semicorrect'];
+            gameStore.tileColors[0] = [
+                'semicorrect',
+                'semicorrect',
+                'incorrect',
+                'incorrect',
+                'semicorrect',
+            ];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('blufs');
@@ -350,7 +429,13 @@ describe('Game Store', () => {
         it('accepts valid hard mode guess', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             gameStore.tiles[0] = ['c', 'l', 'u', 'b', 's'];
-            gameStore.tileColors[0] = ['correct', 'incorrect', 'incorrect', 'incorrect', 'incorrect'];
+            gameStore.tileColors[0] = [
+                'correct',
+                'incorrect',
+                'incorrect',
+                'incorrect',
+                'incorrect',
+            ];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('crane');
@@ -364,7 +449,13 @@ describe('Game Store', () => {
         it('generates correct emoji pattern', () => {
             const { gameStore } = setupStores();
             // Simulate one completed row
-            gameStore.tileColors[0] = ['correct', 'semicorrect', 'incorrect', 'incorrect', 'correct'];
+            gameStore.tileColors[0] = [
+                'correct',
+                'semicorrect',
+                'incorrect',
+                'incorrect',
+                'correct',
+            ];
             gameStore.gameOver = true;
             gameStore.gameWon = true;
 

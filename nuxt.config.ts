@@ -101,8 +101,7 @@ export default defineNuxtConfig({
                     // HTML pages and API routes: NetworkFirst
                     // Pages contain the daily word which changes, so always try network
                     urlPattern: ({ request, url }) =>
-                        request.mode === 'navigate' ||
-                        url.pathname.startsWith('/api/'),
+                        request.mode === 'navigate' || url.pathname.startsWith('/api/'),
                     handler: 'NetworkFirst',
                     options: {
                         cacheName: 'wordle-pages',

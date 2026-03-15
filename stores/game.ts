@@ -85,9 +85,13 @@ export const useGameStore = defineStore('game', () => {
 
     const tiles = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, ''));
     const tileColors = ref<TileColor[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, 'empty'));
-    const tileClasses = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS));
+    const tileClasses = ref<string[][]>(
+        makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS)
+    );
     const tilesVisual = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, ''));
-    const tileClassesVisual = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS));
+    const tileClassesVisual = ref<string[][]>(
+        makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS)
+    );
 
     const activeRow = ref(0);
     const activeCell = ref(0);
@@ -173,7 +177,7 @@ export const useGameStore = defineStore('game', () => {
         const lang = useLanguageStore();
         _normalizedSupplementMap = buildNormalizedWordMap(
             lang.wordListSupplement,
-            lang.normalizeMap,
+            lang.normalizeMap
         );
         return _normalizedSupplementMap;
     }
@@ -360,7 +364,7 @@ export const useGameStore = defineStore('game', () => {
     function updateKeyColor(
         char: string,
         newState: KeyState,
-        keys: Record<string, KeyState>,
+        keys: Record<string, KeyState>
     ): void {
         const lang = useLanguageStore();
 
@@ -476,32 +480,23 @@ export const useGameStore = defineStore('game', () => {
                 // Track first guess delay (time from page load to first interaction)
                 if (!firstGuessFired && gameStartTime) {
                     const delaySeconds = Math.floor((Date.now() - gameStartTime) / 1000);
-                    analytics.trackFirstGuessDelay(
-                        lang.languageCode,
-                        delaySeconds,
-                    );
+                    analytics.trackFirstGuessDelay(lang.languageCode, delaySeconds);
                     firstGuessFired = true;
                 }
 
                 // Track time between guesses
                 if (lastGuessTime && activeRow.value > 0) {
-                    const secondsSinceLast = Math.floor(
-                        (Date.now() - lastGuessTime) / 1000,
-                    );
+                    const secondsSinceLast = Math.floor((Date.now() - lastGuessTime) / 1000);
                     analytics.trackGuessTime(
                         lang.languageCode,
                         activeRow.value + 1,
-                        secondsSinceLast,
+                        secondsSinceLast
                     );
                 }
                 lastGuessTime = Date.now();
 
                 // Track valid guess submission
-                analytics.trackGuessSubmit(
-                    lang.languageCode,
-                    activeRow.value + 1,
-                    true,
-                );
+                analytics.trackGuessSubmit(lang.languageCode, activeRow.value + 1, true);
 
                 // Update tiles to show canonical form (with diacritics)
                 if (row && canonicalWord !== typedWord) {
@@ -514,8 +509,9 @@ export const useGameStore = defineStore('game', () => {
                 updateColors();
 
                 // Track highest difficulty a guess was submitted at
-                const currentDifficulty = settings.hardMode ? 2 : (allowAnyWord.value ? 0 : 1);
-                if (currentDifficulty > maxDifficultyUsed.value) maxDifficultyUsed.value = currentDifficulty;
+                const currentDifficulty = settings.hardMode ? 2 : allowAnyWord.value ? 0 : 1;
+                if (currentDifficulty > maxDifficultyUsed.value)
+                    maxDifficultyUsed.value = currentDifficulty;
 
                 const revealingRow = activeRow.value;
                 activeRow.value++;
@@ -551,11 +547,7 @@ export const useGameStore = defineStore('game', () => {
                     language: lang.languageCode,
                     attempt_number: activeRow.value + 1,
                 });
-                analytics.trackGuessSubmit(
-                    lang.languageCode,
-                    activeRow.value + 1,
-                    false,
-                );
+                analytics.trackGuessSubmit(lang.languageCode, activeRow.value + 1, false);
             }
         } else if (['Backspace', 'Delete', '⌫'].includes(key) && activeCell.value > 0) {
             activeCell.value--;
@@ -659,7 +651,7 @@ export const useGameStore = defineStore('game', () => {
                 tileClassesVisual.value[rowIndex]?.splice(
                     visualIdx,
                     1,
-                    `${currentClass} tile-bounce`,
+                    `${currentClass} tile-bounce`
                 );
                 setTimeout(() => {
                     tileClassesVisual.value[rowIndex]?.splice(visualIdx, 1, currentClass);
@@ -699,7 +691,7 @@ export const useGameStore = defineStore('game', () => {
         // Load definition for stats modal display
         if (import.meta.client) {
             const { fetchDefinition } = useDefinitions();
-            fetchDefinition(lang.todaysWord, lang.languageCode).then(def => {
+            fetchDefinition(lang.todaysWord, lang.languageCode).then((def) => {
                 // Store definition for stats modal to display
                 // For now, just mark that we tried to load it
             });
@@ -761,7 +753,7 @@ export const useGameStore = defineStore('game', () => {
         // Load definition for stats modal display
         if (import.meta.client) {
             const { fetchDefinition } = useDefinitions();
-            fetchDefinition(lang.todaysWord, lang.languageCode).then(def => {
+            fetchDefinition(lang.todaysWord, lang.languageCode).then((def) => {
                 // Store definition for stats modal to display
                 // For now, just mark that we tried to load it
             });
@@ -928,12 +920,18 @@ export const useGameStore = defineStore('game', () => {
                     // Derive from CSS classes for legacy saves
                     tileColors.value = data.tile_classes.map((row) =>
                         row.map((cls): TileColor => {
-                            if (cls.includes('correct') && !cls.includes('semicorrect') && !cls.includes('incorrect')) return 'correct';
+                            if (
+                                cls.includes('correct') &&
+                                !cls.includes('semicorrect') &&
+                                !cls.includes('incorrect')
+                            )
+                                return 'correct';
                             if (cls.includes('semicorrect')) return 'semicorrect';
                             if (cls.includes('incorrect')) return 'incorrect';
-                            if (cls.includes('pop') || cls.includes('border-neutral-500')) return 'active';
+                            if (cls.includes('pop') || cls.includes('border-neutral-500'))
+                                return 'active';
                             return 'empty';
-                        }),
+                        })
                     );
                 }
             }
@@ -1052,8 +1050,7 @@ export const useGameStore = defineStore('game', () => {
             })
                 .then((stats: any) => {
                     if (!stats || !stats.total || !won) return;
-                    const playerAttempts =
-                        typeof attemptsVal === 'number' ? attemptsVal : 7;
+                    const playerAttempts = typeof attemptsVal === 'number' ? attemptsVal : 7;
                     const result = calculateCommunityPercentile(playerAttempts, stats);
                     if (result !== null) {
                         communityPercentile.value = result.percentile;
@@ -1093,7 +1090,7 @@ export const useGameStore = defineStore('game', () => {
                 langCode,
                 gameWon.value,
                 attempts.value,
-                emojiBoard.value,
+                emojiBoard.value
             );
             setTimeout(() => {
                 shareButtonState.value = 'idle';
@@ -1148,8 +1145,7 @@ export const useGameStore = defineStore('game', () => {
         try {
             const textarea = document.createElement('textarea');
             textarea.value = text;
-            textarea.style.cssText =
-                'position:fixed;top:0;left:0;width:2em;height:2em;opacity:0;';
+            textarea.style.cssText = 'position:fixed;top:0;left:0;width:2em;height:2em;opacity:0;';
             document.body.appendChild(textarea);
             textarea.focus();
             textarea.select();

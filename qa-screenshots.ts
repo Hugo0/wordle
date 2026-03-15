@@ -68,7 +68,10 @@ async function run() {
         });
 
         try {
-            const response = await p.goto(`${BASE}${page.url}`, { waitUntil: 'networkidle', timeout: 15000 });
+            const response = await p.goto(`${BASE}${page.url}`, {
+                waitUntil: 'networkidle',
+                timeout: 15000,
+            });
             console.log(`  Status: ${response?.status()}`);
 
             await p.waitForTimeout(page.wait);

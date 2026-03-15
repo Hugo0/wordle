@@ -48,12 +48,17 @@ function getPageKey(): string {
 function deriveTileColorsFromClasses(tileClasses: string[][]): TileColor[][] {
     return tileClasses.map((row) =>
         row.map((cls): TileColor => {
-            if (cls.includes('correct') && !cls.includes('semicorrect') && !cls.includes('incorrect')) return 'correct';
+            if (
+                cls.includes('correct') &&
+                !cls.includes('semicorrect') &&
+                !cls.includes('incorrect')
+            )
+                return 'correct';
             if (cls.includes('semicorrect')) return 'semicorrect';
             if (cls.includes('incorrect')) return 'incorrect';
             if (cls.includes('pop') || cls.includes('border-neutral-500')) return 'active';
             return 'empty';
-        }),
+        })
     );
 }
 

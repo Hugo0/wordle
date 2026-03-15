@@ -49,15 +49,16 @@ export default defineNuxtPlugin(() => {
     // --- Internal helpers ---
 
     const getComponent = () =>
-        document.querySelector('pwa-install') as HTMLElement & {
-            showDialog: (force?: boolean) => void;
-            isInstallAvailable?: boolean;
-            isAppleMobilePlatform?: boolean;
-            isAppleDesktopPlatform?: boolean;
-        } | null;
+        document.querySelector('pwa-install') as
+            | (HTMLElement & {
+                  showDialog: (force?: boolean) => void;
+                  isInstallAvailable?: boolean;
+                  isAppleMobilePlatform?: boolean;
+                  isAppleDesktopPlatform?: boolean;
+              })
+            | null;
 
-    const getBanner = (): HTMLElement | null =>
-        document.getElementById('pwa-install-banner');
+    const getBanner = (): HTMLElement | null => document.getElementById('pwa-install-banner');
 
     function hideBanner(): void {
         const banner = getBanner();
@@ -108,10 +109,7 @@ export default defineNuxtPlugin(() => {
     function dismiss(): void {
         dismissed = true;
         try {
-            localStorage.setItem(
-                'pwa_install_dismissed_at',
-                Date.now().toString(),
-            );
+            localStorage.setItem('pwa_install_dismissed_at', Date.now().toString());
         } catch {
             // localStorage may throw in private browsing mode
         }
@@ -167,7 +165,7 @@ export default defineNuxtPlugin(() => {
                 // Slight delay so the win animation plays first
                 setTimeout(() => showBanner(), 2000);
             }
-        },
+        }
     );
 
     // --- Provide PWA utilities to the app ---

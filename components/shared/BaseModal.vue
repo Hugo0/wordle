@@ -45,7 +45,7 @@ const props = withDefaults(
         size: 'md',
         zIndex: 50,
         noPadding: false,
-    },
+    }
 );
 defineEmits<{ close: [] }>();
 

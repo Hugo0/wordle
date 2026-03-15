@@ -7,7 +7,13 @@
  */
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { GameResult, GameResults, GameStats, GuessDistribution, TotalStats } from '~/utils/types';
+import type {
+    GameResult,
+    GameResults,
+    GameStats,
+    GuessDistribution,
+    TotalStats,
+} from '~/utils/types';
 
 const EMPTY_DISTRIBUTION: GuessDistribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
 
@@ -176,8 +182,7 @@ export const useStatsStore = defineStore('stats', () => {
             }
         }
         all_results.sort(
-            (a, b) =>
-                new Date(a.date as string).getTime() - new Date(b.date as string).getTime(),
+            (a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime()
         );
 
         // Calculate overall streaks
@@ -185,10 +190,7 @@ export const useStatsStore = defineStore('stats', () => {
             if (result.won) {
                 n_victories++;
                 current_overall_streak++;
-                longest_overall_streak = Math.max(
-                    longest_overall_streak,
-                    current_overall_streak,
-                );
+                longest_overall_streak = Math.max(longest_overall_streak, current_overall_streak);
             } else {
                 n_losses++;
                 current_overall_streak = 0;

@@ -28,9 +28,7 @@ import { getTodaysIdx } from '../lib/day-index';
  * Get a stable hash for a word. Doesn't change if the word list changes.
  */
 function wordHash(word: string, langCode: string): bigint {
-    const h = createHash('sha256')
-        .update(`${langCode}:${word}`)
-        .digest();
+    const h = createHash('sha256').update(`${langCode}:${word}`).digest();
     return h.readBigUInt64BE(0);
 }
 
@@ -38,9 +36,7 @@ function wordHash(word: string, langCode: string): bigint {
  * Get a deterministic hash for a specific day.
  */
 function dayHash(dayIdx: number, langCode: string): bigint {
-    const h = createHash('sha256')
-        .update(`${langCode}:day:${dayIdx}`)
-        .digest();
+    const h = createHash('sha256').update(`${langCode}:day:${dayIdx}`).digest();
     return h.readBigUInt64BE(0);
 }
 
@@ -59,7 +55,7 @@ export function getDailyWordConsistentHash(
     words: string[],
     blocklist: Set<string>,
     dayIdx: number,
-    langCode: string,
+    langCode: string
 ): string {
     const dayH = dayHash(dayIdx, langCode);
 
@@ -93,7 +89,7 @@ export function getDailyWordConsistentHash(
 export function getDailyWordLegacy(
     words: string[],
     blocklist: Set<string>,
-    dayIdx: number,
+    dayIdx: number
 ): string {
     const listLen = words.length;
 

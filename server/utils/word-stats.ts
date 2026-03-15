@@ -34,7 +34,7 @@ export async function updateWordStats(
     langCode: string,
     dayIdx: number,
     won: boolean,
-    attempts: number,
+    attempts: number
 ): Promise<void> {
     const statsDir = join(WORD_STATS_DIR, langCode);
     const statsPath = join(statsDir, `${dayIdx}.json`);
@@ -96,8 +96,7 @@ function _writeStats(statsPath: string, won: boolean, attempts: number): void {
     if (won) {
         stats.wins += 1;
         if (typeof attempts === 'number' && attempts >= 1 && attempts <= 6) {
-            stats.distribution[String(attempts)] =
-                (stats.distribution[String(attempts)] || 0) + 1;
+            stats.distribution[String(attempts)] = (stats.distribution[String(attempts)] || 0) + 1;
         }
     } else {
         stats.losses += 1;
@@ -122,7 +121,7 @@ export function isDuplicateSubmission(
     langCode: string,
     dayIdx: number,
     clientId: string,
-    todaysIdx: number,
+    todaysIdx: number
 ): boolean {
     // Reset dedup map on new day
     if (_statsSeenDay !== todaysIdx) {

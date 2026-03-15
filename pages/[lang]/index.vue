@@ -44,20 +44,21 @@ const config = gameData.value.config;
 const wordleNative = config.meta?.wordle_native || '';
 const metaTitle = (config.meta?.title || 'The daily word game').trim();
 const wordleBase = `Wordle ${config.name_native}`;
-const wordleShort = wordleNative
-    ? `${wordleBase} (${wordleNative})`
-    : wordleBase;
-const isUntranslatedTitle =
-    metaTitle === 'The daily word game' && config.language_code !== 'en';
+const wordleShort = wordleNative ? `${wordleBase} (${wordleNative})` : wordleBase;
+const isUntranslatedTitle = metaTitle === 'The daily word game' && config.language_code !== 'en';
 
 let seoTitle = isUntranslatedTitle
     ? `${wordleBase} — Play in ${config.name}`
     : `${wordleShort} — ${metaTitle}`;
 if (seoTitle.length > 60) seoTitle = wordleShort;
 
-const nativeDesc = (config.meta?.description || 'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!').trim();
+const nativeDesc = (
+    config.meta?.description ||
+    'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!'
+).trim();
 const isUntranslatedDesc =
-    nativeDesc === 'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!' &&
+    nativeDesc ===
+        'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!' &&
     config.language_code !== 'en';
 let seoDescription = isUntranslatedDesc
     ? `Play Wordle in ${config.name} (${config.name_native}) — ${nativeDesc}`
@@ -107,8 +108,18 @@ useHead({
                 '@context': 'https://schema.org',
                 '@type': 'BreadcrumbList',
                 itemListElement: [
-                    { '@type': 'ListItem', position: 1, name: 'Wordle Global', item: 'https://wordle.global/' },
-                    { '@type': 'ListItem', position: 2, name: wordleBase, item: `https://wordle.global/${lang}` },
+                    {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: 'Wordle Global',
+                        item: 'https://wordle.global/',
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: wordleBase,
+                        item: `https://wordle.global/${lang}`,
+                    },
                 ],
             }),
         },
@@ -159,7 +170,11 @@ onMounted(() => {
         // Analytics initialization
         const analytics = useAnalytics();
         analytics.trackPageView(langStore.languageCode);
-        analytics.trackGameStart({ language: langStore.languageCode, is_returning: stats.stats.n_games > 0, current_streak: stats.stats.current_streak });
+        analytics.trackGameStart({
+            language: langStore.languageCode,
+            is_returning: stats.stats.n_games > 0,
+            current_streak: stats.stats.current_streak,
+        });
         analytics.trackPWASession(langStore.languageCode);
         analytics.initAbandonTracking(() => ({
             language: langStore.languageCode,
@@ -176,7 +191,10 @@ onMounted(() => {
 
 function handleKeyDown(e: KeyboardEvent) {
     // Don't handle if a modal is open and it's not Escape
-    if (e.key !== 'Escape' && (game.showHelpModal || game.showStatsModal || game.showOptionsModal)) {
+    if (
+        e.key !== 'Escape' &&
+        (game.showHelpModal || game.showStatsModal || game.showOptionsModal)
+    ) {
         return;
     }
     game.keyDown(e);
@@ -198,24 +216,28 @@ function handleKeyDown(e: KeyboardEvent) {
             <GameBoard ref="gameBoardRef" />
 
             <!-- The keyboard -->
-            <GameKeyboard ref="gameKeyboardRef"
+            <GameKeyboard
+                ref="gameKeyboardRef"
                 :keyboard="langStore.keyboard"
                 :hints="langStore.keyDiacriticHints"
             />
         </div>
 
         <!-- NOTIFICATIONS & MODALS -->
-        <div class="container mx-auto flex w-full max-w-lg justify-center items-center overflow z-1">
+        <div
+            class="container mx-auto flex w-full max-w-lg justify-center items-center overflow z-1"
+        >
             <SharedModalBackdrop
                 :visible="game.showHelpModal || game.showStatsModal || game.showOptionsModal"
-                @close="game.showHelpModal = false; game.showStatsModal = false; game.showOptionsModal = false"
+                @close="
+                    game.showHelpModal = false;
+                    game.showStatsModal = false;
+                    game.showOptionsModal = false;
+                "
             />
 
             <!-- help modal -->
-            <GameHelpModal
-                :visible="game.showHelpModal"
-                @close="game.showHelpModal = false"
-            />
+            <GameHelpModal :visible="game.showHelpModal" @close="game.showHelpModal = false" />
 
             <!-- options modal -->
             <GameSettingsModal
@@ -225,10 +247,7 @@ function handleKeyDown(e: KeyboardEvent) {
         </div>
 
         <!-- stats modal -->
-        <GameStatsModal
-            :visible="game.showStatsModal"
-            @close="game.showStatsModal = false"
-        />
+        <GameStatsModal :visible="game.showStatsModal" @close="game.showStatsModal = false" />
 
         <!-- Toast notification -->
         <GameNotificationToast :notification="game.notification" />
@@ -238,14 +257,28 @@ function handleKeyDown(e: KeyboardEvent) {
          data-allow-mismatch suppresses Vue hydration warning since noscript
          content is parsed differently by browser vs SSR. -->
     <noscript data-allow-mismatch>
-        <div style="max-width: 600px; margin: 40px auto; padding: 20px; font-family: system-ui, sans-serif; color: #333;">
-            <h1>Wordle {{ config.name_native }} — {{ config.meta?.title || 'The daily word game' }}</h1>
+        <div
+            style="
+                max-width: 600px;
+                margin: 40px auto;
+                padding: 20px;
+                font-family: system-ui, sans-serif;
+                color: #333;
+            "
+        >
+            <h1>
+                Wordle {{ config.name_native }} — {{ config.meta?.title || 'The daily word game' }}
+            </h1>
             <h2>{{ config.help?.title }}</h2>
-            <p>{{ config.help?.text_1_1_1 }} <strong>Wordle</strong> {{ config.help?.text_1_1_2 }}</p>
+            <p>
+                {{ config.help?.text_1_1_1 }} <strong>Wordle</strong> {{ config.help?.text_1_1_2 }}
+            </p>
             <p>{{ config.help?.text_1_2 }}</p>
             <p>{{ config.help?.text_1_3 }}</p>
             <p>{{ config.help?.text_3 }}</p>
-            <p><a href="https://wordle.global/">Play Wordle in 65+ languages at wordle.global</a></p>
+            <p>
+                <a href="https://wordle.global/">Play Wordle in 65+ languages at wordle.global</a>
+            </p>
         </div>
     </noscript>
 </template>

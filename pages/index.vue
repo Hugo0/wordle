@@ -17,9 +17,7 @@ const { data: langData } = await useFetch('/api/languages');
 const { data: otherWordles } = await useFetch('/api/other-wordles');
 
 const langCount = computed(() => langData.value?.language_codes?.length || 65);
-const languagePopularity = computed(
-    () => langData.value?.language_popularity || [],
-);
+const languagePopularity = computed(() => langData.value?.language_popularity || []);
 const languages = computed(
     () =>
         (langData.value?.languages as Record<
@@ -29,23 +27,20 @@ const languages = computed(
                 language_name_native: string;
                 language_code: string;
             }
-        >) || {},
+        >) || {}
 );
-const languageCodes = computed(
-    () => (langData.value?.language_codes as string[]) || [],
-);
+const languageCodes = computed(() => (langData.value?.language_codes as string[]) || []);
 
 // ---------------------------------------------------------------------------
 // SEO
 // ---------------------------------------------------------------------------
 
 const title = computed(
-    () =>
-        `Wordle Global \u2014 Play the Free Daily Word Game in ${langCount.value}+ Languages`,
+    () => `Wordle Global \u2014 Play the Free Daily Word Game in ${langCount.value}+ Languages`
 );
 const description = computed(
     () =>
-        `Play Wordle today in ${langCount.value}+ languages \u2014 free, daily 5-letter word puzzle. Guess the word in 6 tries. No account needed. Available in English, Spanish, German, Arabic, Hebrew, Finnish and more.`,
+        `Play Wordle today in ${langCount.value}+ languages \u2014 free, daily 5-letter word puzzle. Guess the word in 6 tries. No account needed. Available in English, Spanish, German, Arabic, Hebrew, Finnish and more.`
 );
 
 useSeoMeta({
@@ -74,8 +69,7 @@ useHead({
     meta: [
         {
             name: 'keywords',
-            content:
-                'wordle, english, puzzle, word, play, game, online, guess, free, daily',
+            content: 'wordle, english, puzzle, word, play, game, online, guess, free, daily',
         },
         { name: 'msvalidate.01', content: '609E2DD36EFFA9A3C673F46020FDF0D3' },
         { property: 'twitter:domain', content: 'wordle.global' },
@@ -128,14 +122,12 @@ useHead({
                 '@type': 'ItemList',
                 name: 'Wordle Languages',
                 numberOfItems: langCount.value,
-                itemListElement: [...languageCodes.value]
-                    .sort()
-                    .map((lc: string, i: number) => ({
-                        '@type': 'ListItem',
-                        position: i + 1,
-                        url: `https://wordle.global/${lc}`,
-                        name: `Wordle ${languages.value[lc]?.language_name_native || lc}`,
-                    })),
+                itemListElement: [...languageCodes.value].sort().map((lc: string, i: number) => ({
+                    '@type': 'ListItem',
+                    position: i + 1,
+                    url: `https://wordle.global/${lc}`,
+                    name: `Wordle ${languages.value[lc]?.language_name_native || lc}`,
+                })),
             }),
         },
     ],
@@ -156,10 +148,7 @@ const clickedLanguage = ref('');
 
 // Game results from localStorage
 const gameResults = ref<
-    Record<
-        string,
-        Array<{ won: boolean; attempts: number | string; date: string }>
-    >
+    Record<string, Array<{ won: boolean; attempts: number | string; date: string }>>
 >({});
 const detectedLanguageCode = ref<string | null>(null);
 
@@ -181,10 +170,7 @@ onMounted(() => {
 
     // Cache languages for game page
     try {
-        localStorage.setItem(
-            'languages_cache',
-            JSON.stringify(languages.value),
-        );
+        localStorage.setItem('languages_cache', JSON.stringify(languages.value));
     } catch {
         // ignore
     }
@@ -194,9 +180,7 @@ onMounted(() => {
 
     // Check PWA install availability
     try {
-        canInstallPwa.value = !window.matchMedia(
-            '(display-mode: standalone)',
-        ).matches;
+        canInstallPwa.value = !window.matchMedia('(display-mode: standalone)').matches;
     } catch {
         canInstallPwa.value = false;
     }
@@ -220,9 +204,7 @@ function onKeyDown(e: KeyboardEvent): void {
 
 function installPwa(): void {
     const nuxtApp = useNuxtApp();
-    const pwa = (nuxtApp as any).$pwaInstall as
-        | { install: () => void }
-        | undefined;
+    const pwa = (nuxtApp as any).$pwaInstall as { install: () => void } | undefined;
     if (pwa) {
         pwa.install();
     }
@@ -235,9 +217,7 @@ function installPwa(): void {
 function detectBrowserLanguage(): string | null {
     try {
         const candidates =
-            navigator.languages?.length > 0
-                ? navigator.languages
-                : [navigator.language || ''];
+            navigator.languages?.length > 0 ? navigator.languages : [navigator.language || ''];
         for (const browserLang of candidates) {
             const lower = browserLang.toLowerCase();
             if (languages.value[lower]) return lower;
@@ -276,14 +256,8 @@ function getSortedLanguages(): Array<{
     played.sort((a, b) => {
         const ra = gameResults.value[a.language_code] || [];
         const rb = gameResults.value[b.language_code] || [];
-        const da =
-            ra.length > 0
-                ? new Date(ra[ra.length - 1]!.date).getTime()
-                : 0;
-        const db =
-            rb.length > 0
-                ? new Date(rb[rb.length - 1]!.date).getTime()
-                : 0;
+        const da = ra.length > 0 ? new Date(ra[ra.length - 1]!.date).getTime() : 0;
+        const db = rb.length > 0 ? new Date(rb[rb.length - 1]!.date).getTime() : 0;
         return db - da;
     });
 
@@ -298,9 +272,7 @@ function getSortedLanguages(): Array<{
 
     // Move detected browser language to front
     if (detectedLanguageCode.value) {
-        const idx = sorted.findIndex(
-            (l) => l.language_code === detectedLanguageCode.value,
-        );
+        const idx = sorted.findIndex((l) => l.language_code === detectedLanguageCode.value);
         if (idx > 0) {
             sorted.unshift(...sorted.splice(idx, 1));
         }
@@ -317,22 +289,21 @@ const languagesVis = computed(() => {
         (l) =>
             l.language_name.toLowerCase().includes(q) ||
             l.language_name_native.toLowerCase().includes(q) ||
-            l.language_code.toLowerCase().includes(q),
+            l.language_code.toLowerCase().includes(q)
     );
 });
 
 const otherWordlesVis = computed(() => {
-    const list = (otherWordles.value as Array<{
-        name: string;
-        language: string;
-        url: string;
-    }>) || [];
+    const list =
+        (otherWordles.value as Array<{
+            name: string;
+            language: string;
+            url: string;
+        }>) || [];
     const q = searchText.value.toLowerCase();
     if (!q) return list;
     return list.filter(
-        (w) =>
-            w.name.toLowerCase().includes(q) ||
-            w.language.toLowerCase().includes(q),
+        (w) => w.name.toLowerCase().includes(q) || w.language.toLowerCase().includes(q)
     );
 });
 
@@ -411,9 +382,7 @@ function openLink(url: string): void {
                 </svg>
             </button>
             <div class="absolute right-0 left-0 text-center">
-                <h1
-                    class="uppercase font-bold text-xl tiny:text-3xl sm:text-4xl tracking-wider"
-                >
+                <h1 class="uppercase font-bold text-xl tiny:text-3xl sm:text-4xl tracking-wider">
                     <NuxtLink to="/">WORDLE &#127757;</NuxtLink>
                 </h1>
             </div>
@@ -508,10 +477,7 @@ function openLink(url: string): void {
                             v-if="getCurrentStreak(language.language_code) > 0"
                             class="absolute top-2 right-2 text-orange-500 dark:text-orange-400 text-xs font-bold flex items-center gap-0.5"
                         >
-                            <span>&#128293;</span
-                            >{{
-                                getCurrentStreak(language.language_code)
-                            }}
+                            <span>&#128293;</span>{{ getCurrentStreak(language.language_code) }}
                         </span>
                         <!-- Checkmark for played but no streak -->
                         <span
@@ -535,18 +501,9 @@ function openLink(url: string): void {
                             class="text-xs text-neutral-500 dark:text-neutral-500 text-center mt-1"
                         >
                             {{ getGamesPlayed(language.language_code) }}
-                            game<span
-                                v-if="
-                                    getGamesPlayed(language.language_code) !== 1
-                                "
-                                >s</span
-                            >
+                            game<span v-if="getGamesPlayed(language.language_code) !== 1">s</span>
                             &middot;
-                            {{
-                                Math.round(
-                                    getWinRate(language.language_code),
-                                )
-                            }}% wins
+                            {{ Math.round(getWinRate(language.language_code)) }}% wins
                         </p>
                     </div>
                 </div>
@@ -555,12 +512,8 @@ function openLink(url: string): void {
 
         <!-- separator — Other Wordles -->
         <div class="w-full mt-16 mx-auto text-center">
-            <hr
-                class="border-b-1 border-gray-400 dark:border-gray-600 w-1/2 mx-auto"
-            />
-            <h2 class="text-2xl text-neutral-500 dark:text-neutral-400 mt-4">
-                External Links
-            </h2>
+            <hr class="border-b-1 border-gray-400 dark:border-gray-600 w-1/2 mx-auto" />
+            <h2 class="text-2xl text-neutral-500 dark:text-neutral-400 mt-4">External Links</h2>
         </div>
 
         <div
@@ -577,9 +530,7 @@ function openLink(url: string): void {
                 >
                     <div class="px-5 py-4">
                         <h5>{{ otherWordle.name }}</h5>
-                        <p
-                            class="text-sm italic text-neutral-600 dark:text-neutral-400"
-                        >
+                        <p class="text-sm italic text-neutral-600 dark:text-neutral-400">
                             {{ otherWordle.language }}
                         </p>
                     </div>
@@ -620,9 +571,7 @@ function openLink(url: string): void {
                                 >&times;</span
                             >
                         </button>
-                        <h3
-                            class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2"
-                        >
+                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">
                             About
                         </h3>
                         <p class="text-center text-sm">
@@ -630,16 +579,13 @@ function openLink(url: string): void {
                             <span class="italic">really</span> fun game.
                         </p>
                         <p class="text-center text-sm">
-                            My skills are mostly in backend/ML, with lacking
-                            frontend experience. I wanted to change that, so why
-                            not recreate one of my favorite current games? The
-                            aim was to make something useful whilst also learning
-                            a lot.
+                            My skills are mostly in backend/ML, with lacking frontend experience. I
+                            wanted to change that, so why not recreate one of my favorite current
+                            games? The aim was to make something useful whilst also learning a lot.
                         </p>
                         <p class="text-center text-sm">
-                            The whole thing is open-source, and you can (and
-                            actually, please do) suggest improvements or fixes
-                            over at
+                            The whole thing is open-source, and you can (and actually, please do)
+                            suggest improvements or fixes over at
                             <a
                                 href="https://github.com/Hugo0/wordle/issues"
                                 class="text-neutral-500 dark:text-neutral-400 underline"
@@ -647,9 +593,9 @@ function openLink(url: string): void {
                             >
                         </p>
                         <p class="text-center text-sm">
-                            There's fun languages, like Klingon or Tolkien's
-                            Elvish that you can measure yourself on, as well as
-                            right to left languages like Arabic or Hebrew. Stats
+                            There's fun languages, like Klingon or Tolkien's Elvish that you can
+                            measure yourself on, as well as right to left languages like Arabic or
+                            Hebrew. Stats
                             <a
                                 href="/stats"
                                 target="_blank"
@@ -658,17 +604,15 @@ function openLink(url: string): void {
                             >.
                         </p>
                         <p class="text-center text-sm">
-                            A lot of other great Wordle spin-offs exist, and
-                            I've linked a bunch below for easy access. (credit:
+                            A lot of other great Wordle spin-offs exist, and I've linked a bunch
+                            below for easy access. (credit:
                             <a
                                 href="https://rwmpelstilzchen.gitlab.io/wordles/"
                                 class="text-neutral-500 dark:text-neutral-400 underline"
                                 >Wordles of the World</a
                             >)
                         </p>
-                        <p class="text-center text-sm">
-                            Have fun, and I hope you enjoy!
-                        </p>
+                        <p class="text-center text-sm">Have fun, and I hope you enjoy!</p>
                     </div>
                 </div>
             </div>
@@ -693,57 +637,40 @@ function openLink(url: string): void {
                                 >&times;</span
                             >
                         </button>
-                        <h3
-                            class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2"
-                        >
+                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">
                             Settings
                         </h3>
 
                         <!-- Dark Mode Toggle -->
-                        <div
-                            class="flex flex-row items-center justify-between"
-                        >
+                        <div class="flex flex-row items-center justify-between">
                             <div class="flex flex-col">
                                 <span class="font-medium">Dark Mode</span>
-                                <span
-                                    class="text-sm text-neutral-500 dark:text-neutral-400"
+                                <span class="text-sm text-neutral-500 dark:text-neutral-400"
                                     >Toggle dark theme</span
                                 >
                             </div>
                             <SharedToggleSwitch
                                 :model-value="settings.darkMode"
-                                @update:model-value="
-                                    settings.toggleDarkMode()
-                                "
+                                @update:model-value="settings.toggleDarkMode()"
                             />
                         </div>
 
                         <!-- Separator -->
-                        <hr
-                            class="border-neutral-300 dark:border-neutral-600"
-                        />
+                        <hr class="border-neutral-300 dark:border-neutral-600" />
 
                         <!-- Sound & Haptics Toggle -->
-                        <div
-                            class="flex flex-row items-center justify-between"
-                        >
+                        <div class="flex flex-row items-center justify-between">
                             <div class="flex flex-col">
-                                <span class="font-medium"
-                                    >Sound &amp; Haptics</span
-                                >
+                                <span class="font-medium">Sound &amp; Haptics</span>
                             </div>
                             <SharedToggleSwitch
                                 :model-value="settings.feedbackEnabled"
-                                @update:model-value="
-                                    settings.toggleFeedback()
-                                "
+                                @update:model-value="settings.toggleFeedback()"
                             />
                         </div>
 
                         <!-- Separator -->
-                        <hr
-                            class="border-neutral-300 dark:border-neutral-600"
-                        />
+                        <hr class="border-neutral-300 dark:border-neutral-600" />
 
                         <!-- Install App button (only shown when not already installed) -->
                         <div v-if="canInstallPwa" class="pt-2">
@@ -763,11 +690,7 @@ function openLink(url: string): void {
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                 >
-                                    <path
-                                        stroke="none"
-                                        d="M0 0h24v24H0z"
-                                        fill="none"
-                                    />
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path
                                         d="M12 18h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7.5"
                                     />
@@ -790,37 +713,24 @@ function openLink(url: string): void {
         <!-- Popup for if a language is unavailable -->
         <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full z-50">
             <div class="flex items-center justify-center w-full h-full">
-                <div
-                    class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-4"
-                >
+                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-4">
                     <div class="flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-center">
-                            &#128119;&#128679;
-                        </h3>
+                        <h3 class="text-2xl font-bold text-center">&#128119;&#128679;</h3>
                         <br />
-                        <p class="text-center">
-                            {{ clickedLanguage }} &nbsp; is coming soon!
-                        </p>
-                        <button class="mt-4" @click="showPopup = false">
-                            Close
-                        </button>
+                        <p class="text-center">{{ clickedLanguage }} &nbsp; is coming soon!</p>
+                        <button class="mt-4" @click="showPopup = false">Close</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- shadow -->
-        <div
-            v-if="showPopup"
-            class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black"
-        />
+        <div v-if="showPopup" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black" />
     </div>
 
     <!-- Server-rendered language links — crawlable by search engines even without JS -->
     <nav id="language-links" class="max-w-2xl mx-auto px-4 py-8 text-center">
-        <h2
-            class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-4"
-        >
+        <h2 class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-4">
             Play Wordle in Your Language
         </h2>
         <div class="flex flex-wrap justify-center gap-2">
@@ -839,10 +749,7 @@ function openLink(url: string): void {
     <noscript>
         <nav class="max-w-2xl mx-auto px-4 py-8 text-center">
             <h2>Play Wordle in Your Language</h2>
-            <p>
-                JavaScript is required to play the game, but here are links to
-                all languages:
-            </p>
+            <p>JavaScript is required to play the game, but here are links to all languages:</p>
         </nav>
     </noscript>
 </template>

@@ -63,7 +63,8 @@ export default defineEventHandler(() => {
             has_schedule: hasSchedule,
             total_plays: langTotalPlays,
             total_wins: langTotalWins,
-            win_rate: langTotalPlays > 0 ? Math.round((langTotalWins / langTotalPlays) * 100) : null,
+            win_rate:
+                langTotalPlays > 0 ? Math.round((langTotalWins / langTotalPlays) * 100) : null,
         });
     }
 

@@ -24,7 +24,12 @@ import posthog from 'posthog-js';
 const POSTHOG_SKIP_EVENTS = new Set(['guess_submit', 'guess_time', 'first_guess_delay']);
 
 // Only these 4 core events are sent to GA4 to keep the property slim.
-const GA4_CORE_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon', 'page_view_enhanced']);
+const GA4_CORE_EVENTS = new Set([
+    'game_start',
+    'game_complete',
+    'game_abandon',
+    'page_view_enhanced',
+]);
 
 // Default game mode - used as fallback across all game lifecycle events.
 const DEFAULT_GAME_MODE = 'daily';
@@ -213,7 +218,7 @@ export function useAnalytics() {
 
     /** Single-pass computation of user properties from game results */
     const computeUserProperties = (
-        gameResults: Record<string, { won: boolean }[]>,
+        gameResults: Record<string, { won: boolean }[]>
     ): UserProperties => {
         const languagesPlayed: string[] = [];
         let totalGames = 0;
@@ -261,9 +266,7 @@ export function useAnalytics() {
      * Call once on page load after game_results are available.
      * Returns computed properties for reuse by the caller.
      */
-    const identifyUser = (
-        gameResults: Record<string, { won: boolean }[]>,
-    ): UserProperties => {
+    const identifyUser = (gameResults: Record<string, { won: boolean }[]>): UserProperties => {
         const props = computeUserProperties(gameResults);
 
         if (!import.meta.client) return props;
@@ -303,9 +306,7 @@ export function useAnalytics() {
     /**
      * Update person properties after a game completes.
      */
-    const updateUserProperties = (
-        gameResults: Record<string, { won: boolean }[]>,
-    ): void => {
+    const updateUserProperties = (gameResults: Record<string, { won: boolean }[]>): void => {
         if (!import.meta.client) return;
         try {
             const props = computeUserProperties(gameResults);
@@ -380,11 +381,7 @@ export function useAnalytics() {
      * Track each guess submission
      * Answers: How many guesses per game? Invalid word rate?
      */
-    const trackGuessSubmit = (
-        language: string,
-        attemptNumber: number,
-        isValid: boolean,
-    ): void => {
+    const trackGuessSubmit = (language: string, attemptNumber: number, isValid: boolean): void => {
         track('guess_submit', {
             language,
             attempt_number: attemptNumber,
@@ -424,7 +421,7 @@ export function useAnalytics() {
     const trackGuessTime = (
         language: string,
         attemptNumber: number,
-        secondsSinceLastGuess: number,
+        secondsSinceLastGuess: number
     ): void => {
         track('guess_time', {
             language,
@@ -445,7 +442,7 @@ export function useAnalytics() {
         language: string,
         daysSinceLast: number,
         currentStreak: number,
-        totalLanguagesPlayed?: number,
+        totalLanguagesPlayed?: number
     ): void => {
         track('returning_player', {
             language,
@@ -478,7 +475,7 @@ export function useAnalytics() {
     const trackStreakBroken = (
         language: string,
         previousStreak: number,
-        daysSinceLast: number,
+        daysSinceLast: number
     ): void => {
         track('streak_broken', {
             language,
@@ -552,7 +549,7 @@ export function useAnalytics() {
         language: string,
         won: boolean,
         attempts: number | string,
-        emojiPattern: string,
+        emojiPattern: string
     ): void => {
         const greens = (emojiPattern.match(/\u{1F7E9}/gu) || []).length;
         const yellows = (emojiPattern.match(/\u{1F7E8}/gu) || []).length;
@@ -669,7 +666,7 @@ export function useAnalytics() {
         currentConsecutiveInvalid++;
         maxConsecutiveInvalidCount = Math.max(
             maxConsecutiveInvalidCount,
-            currentConsecutiveInvalid,
+            currentConsecutiveInvalid
         );
         trackInvalidWord(params);
     };
@@ -736,10 +733,7 @@ export function useAnalytics() {
      * Track language selection from homepage
      * Answers: Which languages do people seek out?
      */
-    const trackLanguageSelect = (
-        language: string,
-        source: 'search' | 'list' | 'flag',
-    ): void => {
+    const trackLanguageSelect = (language: string, source: 'search' | 'list' | 'flag'): void => {
         track('language_select', {
             language,
             source,
@@ -754,10 +748,7 @@ export function useAnalytics() {
      * Track when a user starts playing a second language for the first time
      * Answers: Are users discovering the multi-language value prop?
      */
-    const trackSecondLanguageStart = (
-        newLanguage: string,
-        previousLanguages: string[],
-    ): void => {
+    const trackSecondLanguageStart = (newLanguage: string, previousLanguages: string[]): void => {
         track('second_language_start', {
             new_language: newLanguage,
             previous_languages: previousLanguages,
@@ -771,7 +762,7 @@ export function useAnalytics() {
      */
     const trackMultiLanguageSession = (
         currentLanguage: string,
-        sessionLanguages: string[],
+        sessionLanguages: string[]
     ): void => {
         track('multi_language_session', {
             current_language: currentLanguage,
@@ -901,7 +892,7 @@ export function useAnalytics() {
             activeRow: number;
             gameOver: boolean;
             lastGuessValid: boolean;
-        },
+        }
     ): void => {
         if (!import.meta.client || _abandonTrackingInit) return;
         _abandonTrackingInit = true;

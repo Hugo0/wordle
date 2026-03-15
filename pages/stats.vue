@@ -11,12 +11,12 @@ const { data: stats } = await useFetch('/api/stats');
 const title = computed(() =>
     stats.value
         ? `Wordle Global Stats \u2014 ${stats.value.total_languages} Languages, ${stats.value.total_words.toLocaleString()} Words`
-        : 'Wordle Global Stats',
+        : 'Wordle Global Stats'
 );
 const description = computed(() =>
     stats.value
         ? `Wordle Global statistics: ${stats.value.total_languages} languages, ${stats.value.total_words.toLocaleString()} words, and ${stats.value.total_puzzles.toLocaleString()} daily puzzles served. See word counts, community win rates, and more.`
-        : 'Wordle Global statistics across all languages.',
+        : 'Wordle Global statistics across all languages.'
 );
 
 useSeoMeta({
@@ -26,7 +26,7 @@ useSeoMeta({
     ogDescription: computed(() =>
         stats.value
             ? `${stats.value.total_languages} languages, ${stats.value.total_words.toLocaleString()} words. Free daily word game in dozens of languages.`
-            : 'Wordle Global statistics.',
+            : 'Wordle Global statistics.'
     ),
     ogUrl: 'https://wordle.global/stats',
     ogType: 'website',
@@ -35,7 +35,7 @@ useSeoMeta({
     twitterDescription: computed(() =>
         stats.value
             ? `${stats.value.total_languages} languages, ${stats.value.total_words.toLocaleString()} words. Free daily word game in dozens of languages.`
-            : 'Wordle Global statistics.',
+            : 'Wordle Global statistics.'
     ),
 });
 
@@ -107,9 +107,10 @@ function loadMyStats() {
     } catch {
         // private browsing
     }
-    const gameResults: Record<string, Array<{ won: boolean; attempts: string | number; date: string }>> = raw
-        ? JSON.parse(raw)
-        : {};
+    const gameResults: Record<
+        string,
+        Array<{ won: boolean; attempts: string | number; date: string }>
+    > = raw ? JSON.parse(raw) : {};
     const langCodes = Object.keys(gameResults);
 
     if (langCodes.length === 0) {
@@ -146,7 +147,8 @@ function loadMyStats() {
     for (const r of allResults) {
         if (r.won) {
             currentOverallStreak++;
-            if (currentOverallStreak > longestOverallStreak) longestOverallStreak = currentOverallStreak;
+            if (currentOverallStreak > longestOverallStreak)
+                longestOverallStreak = currentOverallStreak;
             const att = parseInt(String(r.attempts), 10);
             if (att >= 1 && att <= 6) {
                 dist[att]!++;
@@ -219,7 +221,9 @@ function myDistPct(n: number): string {
 </script>
 
 <template>
-    <div class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <div
+        class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors"
+    >
         <div class="max-w-4xl mx-auto px-4 py-6">
             <!-- Header -->
             <header class="text-center mb-6">
@@ -287,47 +291,69 @@ function myDistPct(n: number): string {
                         <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                                 <div>
-                                    <p class="text-xl font-bold">{{ myTotalGames.toLocaleString() }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Played</p>
+                                    <p class="text-xl font-bold">
+                                        {{ myTotalGames.toLocaleString() }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Games Played
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-xl font-bold">{{ myWinRate }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win Rate</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Win Rate
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-xl font-bold">
                                         {{ myCurrentStreak > 0 ? '\uD83D\uDD25' : ''
                                         }}{{ myCurrentStreak }}
                                     </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Current Streak</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Current Streak
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-xl font-bold">{{ myLanguagesWon }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages Won</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Languages Won
+                                    </p>
                                 </div>
                             </div>
                             <!-- Secondary row -->
-                            <div class="grid grid-cols-2 gap-3 text-center mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-700">
+                            <div
+                                class="grid grid-cols-2 gap-3 text-center mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-700"
+                            >
                                 <div>
                                     <p class="text-lg font-bold">{{ myAvgAttempts }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Avg Attempts</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Avg Attempts
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-lg font-bold">{{ myBestStreak }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Best Streak</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Best Streak
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Guess distribution -->
                         <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center">
+                            <h2
+                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center"
+                            >
                                 Guess Distribution
                             </h2>
                             <div class="space-y-0.5">
                                 <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
-                                    <span class="w-3 text-xs font-medium text-neutral-500">{{ n }}</span>
-                                    <div class="flex-1 h-5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                                    <span class="w-3 text-xs font-medium text-neutral-500">{{
+                                        n
+                                    }}</span>
+                                    <div
+                                        class="flex-1 h-5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden"
+                                    >
                                         <div
                                             class="h-full flex items-center justify-end px-1.5 text-[10px] font-bold text-white rounded-sm bg-green-500"
                                             :style="{ width: myDistPct(n) }"
@@ -341,7 +367,9 @@ function myDistPct(n: number): string {
 
                         <!-- Per-language list -->
                         <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3">
+                            <h2
+                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3"
+                            >
                                 Your Languages
                             </h2>
                             <div class="space-y-2 max-h-80 overflow-y-auto">
@@ -364,14 +392,13 @@ function myDistPct(n: number): string {
                                             {{ l.nameNative }}
                                         </span>
                                     </div>
-                                    <div class="flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
+                                    <div
+                                        class="flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400"
+                                    >
                                         <span>{{ l.games }} games</span>
                                         <span>{{ l.winPct }}%</span>
                                         <span>{{ l.avgAttempts }} avg</span>
-                                        <span
-                                            v-if="l.streak > 0"
-                                            class="text-orange-500 font-bold"
-                                        >
+                                        <span v-if="l.streak > 0" class="text-orange-500 font-bold">
                                             &#x1F525;{{ l.streak }}
                                         </span>
                                     </div>
@@ -393,33 +420,57 @@ function myDistPct(n: number): string {
                     <!-- Global Stats overview -->
                     <div class="max-w-lg mx-auto">
                         <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
+                            <h2
+                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center"
+                            >
                                 Overview
                             </h2>
                             <div class="grid grid-cols-3 gap-3 text-center">
                                 <div>
-                                    <p class="text-xl font-bold text-green-500">{{ stats.total_languages }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Languages</p>
+                                    <p class="text-xl font-bold text-green-500">
+                                        {{ stats.total_languages }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Languages
+                                    </p>
                                 </div>
                                 <div>
-                                    <p class="text-xl font-bold">{{ stats.total_words.toLocaleString() }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Total Words</p>
+                                    <p class="text-xl font-bold">
+                                        {{ stats.total_words.toLocaleString() }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Total Words
+                                    </p>
                                 </div>
                                 <div>
-                                    <p class="text-xl font-bold">{{ stats.total_daily_words.toLocaleString() }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Daily Word Pool</p>
+                                    <p class="text-xl font-bold">
+                                        {{ stats.total_daily_words.toLocaleString() }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Daily Word Pool
+                                    </p>
                                 </div>
                                 <div>
                                     <p class="text-xl font-bold">{{ stats.n_curated }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Curated Languages</p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Curated Languages
+                                    </p>
                                 </div>
                                 <div>
-                                    <p class="text-xl font-bold">{{ stats.todays_idx.toLocaleString() }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Days Running</p>
+                                    <p class="text-xl font-bold">
+                                        {{ stats.todays_idx.toLocaleString() }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Days Running
+                                    </p>
                                 </div>
                                 <div>
-                                    <p class="text-xl font-bold">{{ stats.total_puzzles.toLocaleString() }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Puzzles Served</p>
+                                    <p class="text-xl font-bold">
+                                        {{ stats.total_puzzles.toLocaleString() }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Puzzles Served
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -429,7 +480,9 @@ function myDistPct(n: number): string {
                             v-if="stats.global_plays > 0"
                             class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
                         >
-                            <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1 text-center">
+                            <h2
+                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1 text-center"
+                            >
                                 Community Stats
                             </h2>
                             <p
@@ -440,16 +493,28 @@ function myDistPct(n: number): string {
                             </p>
                             <div class="grid grid-cols-3 gap-2 text-center">
                                 <div>
-                                    <p class="text-lg font-bold">{{ stats.global_plays.toLocaleString() }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Played</p>
+                                    <p class="text-lg font-bold">
+                                        {{ stats.global_plays.toLocaleString() }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Games Played
+                                    </p>
                                 </div>
                                 <div>
-                                    <p class="text-lg font-bold">{{ stats.global_wins.toLocaleString() }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Games Won</p>
+                                    <p class="text-lg font-bold">
+                                        {{ stats.global_wins.toLocaleString() }}
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Games Won
+                                    </p>
                                 </div>
                                 <div>
-                                    <p class="text-lg font-bold text-green-500">{{ stats.global_win_rate }}%</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win Rate</p>
+                                    <p class="text-lg font-bold text-green-500">
+                                        {{ stats.global_win_rate }}%
+                                    </p>
+                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                        Win Rate
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -457,21 +522,41 @@ function myDistPct(n: number): string {
 
                     <!-- Language table -->
                     <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                        <h2 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center">
+                        <h2
+                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center"
+                        >
                             All Languages ({{ stats.total_languages }})
                         </h2>
                         <div class="overflow-x-auto">
                             <table class="w-full text-xs">
                                 <thead>
-                                    <tr class="text-left text-neutral-400 dark:text-neutral-500 border-b border-neutral-200 dark:border-neutral-700">
+                                    <tr
+                                        class="text-left text-neutral-400 dark:text-neutral-500 border-b border-neutral-200 dark:border-neutral-700"
+                                    >
                                         <th class="py-2 pr-2 font-medium">Language</th>
-                                        <th class="py-2 px-2 font-medium text-right">Daily Words</th>
-                                        <th class="py-2 px-2 font-medium text-right">Total Words</th>
-                                        <th v-if="stats.global_plays > 0" class="py-2 px-2 font-medium text-right">Plays</th>
-                                        <th v-if="stats.global_plays > 0" class="py-2 pl-2 font-medium text-right">Win %</th>
+                                        <th class="py-2 px-2 font-medium text-right">
+                                            Daily Words
+                                        </th>
+                                        <th class="py-2 px-2 font-medium text-right">
+                                            Total Words
+                                        </th>
+                                        <th
+                                            v-if="stats.global_plays > 0"
+                                            class="py-2 px-2 font-medium text-right"
+                                        >
+                                            Plays
+                                        </th>
+                                        <th
+                                            v-if="stats.global_plays > 0"
+                                            class="py-2 pl-2 font-medium text-right"
+                                        >
+                                            Win %
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-neutral-100 dark:divide-neutral-700/50">
+                                <tbody
+                                    class="divide-y divide-neutral-100 dark:divide-neutral-700/50"
+                                >
                                     <tr
                                         v-for="lang in stats.lang_stats"
                                         :key="lang.code"
@@ -485,7 +570,10 @@ function myDistPct(n: number): string {
                                                 {{ lang.name }}
                                             </NuxtLink>
                                             <span
-                                                v-if="lang.name_native && lang.name_native !== lang.name"
+                                                v-if="
+                                                    lang.name_native &&
+                                                    lang.name_native !== lang.name
+                                                "
                                                 class="text-neutral-400 dark:text-neutral-500 ml-1"
                                             >
                                                 {{ lang.name_native }}
@@ -508,8 +596,12 @@ function myDistPct(n: number): string {
                                             </template>
                                             <template v-else>&mdash;</template>
                                         </td>
-                                        <td class="py-1.5 px-2 text-right tabular-nums text-neutral-500 dark:text-neutral-400">
-                                            {{ (lang.n_words + lang.n_supplement).toLocaleString() }}
+                                        <td
+                                            class="py-1.5 px-2 text-right tabular-nums text-neutral-500 dark:text-neutral-400"
+                                        >
+                                            {{
+                                                (lang.n_words + lang.n_supplement).toLocaleString()
+                                            }}
                                         </td>
                                         <td
                                             v-if="stats.global_plays > 0"
@@ -536,14 +628,17 @@ function myDistPct(n: number): string {
                                 </tbody>
                             </table>
                         </div>
-                        <div class="mt-3 text-[10px] text-neutral-400 dark:text-neutral-500 space-y-0.5">
+                        <div
+                            class="mt-3 text-[10px] text-neutral-400 dark:text-neutral-500 space-y-0.5"
+                        >
                             <p>
                                 <strong>Daily Words</strong> = curated daily word pool.
-                                <strong>Total Words</strong> = all valid 5-letter words (including guesses).
-                                Color:
-                                <span class="text-green-600 dark:text-green-400">green</span> = 2,000+,
-                                <span class="text-yellow-600 dark:text-yellow-400">yellow</span> = 1,000+,
-                                <span class="text-orange-500">orange</span> = &lt;1,000,
+                                <strong>Total Words</strong> = all valid 5-letter words (including
+                                guesses). Color:
+                                <span class="text-green-600 dark:text-green-400">green</span> =
+                                2,000+,
+                                <span class="text-yellow-600 dark:text-yellow-400">yellow</span> =
+                                1,000+, <span class="text-orange-500">orange</span> = &lt;1,000,
                                 <span class="text-neutral-400">&mdash;</span> = not yet curated.
                             </p>
                         </div>

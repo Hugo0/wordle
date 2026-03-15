@@ -25,11 +25,11 @@ const totalPages = computed(() => wordsData.value!.total_pages);
 const words = computed(() => wordsData.value!.words);
 
 const title = computed(
-    () => `Wordle ${langNameNative.value} \u2014 All Words | ${langName.value} Word Archive`,
+    () => `Wordle ${langNameNative.value} \u2014 All Words | ${langName.value} Word Archive`
 );
 const description = computed(
     () =>
-        `Browse all ${todaysIdx.value} past Wordle words in ${langName.value} (${langNameNative.value}). See definitions, AI art, and community stats for every daily word.`,
+        `Browse all ${todaysIdx.value} past Wordle words in ${langName.value} (${langNameNative.value}). See definitions, AI art, and community stats for every daily word.`
 );
 
 useSeoMeta({
@@ -50,7 +50,7 @@ useHead({
             rel: 'canonical',
             href: computed(
                 () =>
-                    `https://wordle.global/${lang}/words${page.value > 1 ? `?page=${page.value}` : ''}`,
+                    `https://wordle.global/${lang}/words${page.value > 1 ? `?page=${page.value}` : ''}`
             ),
         },
         ...(page.value > 1
@@ -90,7 +90,7 @@ useHead({
                             name: `${w.word.toUpperCase()} \u2014 Wordle ${langNameNative.value} #${w.day_idx}`,
                         })),
                     },
-                }),
+                })
             ),
         },
         {
@@ -119,7 +119,7 @@ useHead({
                             item: `https://wordle.global/${lang}/words`,
                         },
                     ],
-                }),
+                })
             ),
         },
     ],
@@ -141,7 +141,9 @@ function winRate(stats: { total: number; wins: number }): number {
 </script>
 
 <template>
-    <div class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <div
+        class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors"
+    >
         <div class="max-w-4xl mx-auto px-4 py-6">
             <!-- Header -->
             <header class="text-center mb-6">
@@ -211,8 +213,16 @@ function winRate(stats: { total: number; wins: number }): number {
                             :alt="w.word"
                             class="w-full h-24 object-cover"
                             loading="lazy"
-                            @load="($event.target as HTMLImageElement).parentElement!.classList.remove('hidden')"
-                            @error="($event.target as HTMLImageElement).parentElement!.classList.add('hidden')"
+                            @load="
+                                ($event.target as HTMLImageElement).parentElement!.classList.remove(
+                                    'hidden'
+                                )
+                            "
+                            @error="
+                                ($event.target as HTMLImageElement).parentElement!.classList.add(
+                                    'hidden'
+                                )
+                            "
                         />
                     </div>
                 </NuxtLink>

@@ -33,7 +33,7 @@ export interface LanguageSession {
  */
 export function buildLanguageSession(
     langCode: string,
-    requestedLayout?: string | null,
+    requestedLayout?: string | null
 ): LanguageSession {
     const data = loadAllData();
     const config = data.configs[langCode]!;
@@ -79,7 +79,7 @@ export function buildLanguageSession(
     const keyboardLayoutName = selectKeyboardLayout(
         keyboardLayouts,
         requestedLayout || null,
-        keyboardConfig.default,
+        keyboardConfig.default
     );
     const layoutMeta = keyboardLayouts[keyboardLayoutName]!;
     const keyboard = layoutMeta.rows;
@@ -111,7 +111,7 @@ export function buildLanguageSession(
 
 function buildKeyboardLayouts(
     keyboardConfig: KeyboardConfig,
-    characters: string[],
+    characters: string[]
 ): Record<string, KeyboardLayout> {
     const layouts: Record<string, KeyboardLayout> = {};
     for (const [name, meta] of Object.entries(keyboardConfig.layouts)) {
@@ -134,7 +134,7 @@ function buildKeyboardLayouts(
 function selectKeyboardLayout(
     layouts: Record<string, KeyboardLayout>,
     requested: string | null,
-    defaultLayout: string | null,
+    defaultLayout: string | null
 ): string {
     if (requested && requested in layouts) return requested;
     if (defaultLayout && defaultLayout in layouts) return defaultLayout;
@@ -172,7 +172,7 @@ function generateAlphabeticalKeyboard(characters: string[]): string[][] {
 
 function buildKeyDiacriticHints(
     config: LanguageConfig,
-    keyboard: string[][],
+    keyboard: string[][]
 ): Record<string, { text: string; above: boolean }> {
     const diacriticMap = config.diacritic_map;
     if (!diacriticMap) return {};

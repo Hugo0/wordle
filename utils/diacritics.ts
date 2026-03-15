@@ -59,7 +59,7 @@ export function normalizeWord(word: string, normalizeMap: Map<string, string>): 
 export function charsMatch(
     guessChar: string,
     targetChar: string,
-    normalizeMap: Map<string, string>,
+    normalizeMap: Map<string, string>
 ): boolean {
     return normalizeChar(guessChar, normalizeMap) === normalizeChar(targetChar, normalizeMap);
 }
@@ -71,7 +71,7 @@ export function charsMatch(
  */
 export function buildNormalizedWordMap(
     wordList: string[],
-    normalizeMap: Map<string, string>,
+    normalizeMap: Map<string, string>
 ): Map<string, string> {
     const map = new Map<string, string>();
     for (const word of wordList) {

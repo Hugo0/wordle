@@ -11,9 +11,36 @@ import { fetchDefinition } from '../../../utils/definitions';
 
 // Top 30 languages get DALL-E images (cost control)
 const LANGUAGE_POPULARITY = [
-    'fi', 'en', 'ar', 'tr', 'hr', 'bg', 'de', 'he', 'sv', 'ru',
-    'hu', 'es', 'et', 'da', 'sr', 'ro', 'ca', 'sk', 'it', 'az',
-    'fr', 'lv', 'la', 'gl', 'mk', 'uk', 'pt', 'vi', 'pl', 'hy',
+    'fi',
+    'en',
+    'ar',
+    'tr',
+    'hr',
+    'bg',
+    'de',
+    'he',
+    'sv',
+    'ru',
+    'hu',
+    'es',
+    'et',
+    'da',
+    'sr',
+    'ro',
+    'ca',
+    'sk',
+    'it',
+    'az',
+    'fr',
+    'lv',
+    'la',
+    'gl',
+    'mk',
+    'uk',
+    'pt',
+    'vi',
+    'pl',
+    'hy',
 ];
 const IMAGE_LANGUAGES = new Set(LANGUAGE_POPULARITY);
 const IMAGE_MIN_DAY_IDX = 1708;
@@ -131,7 +158,9 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Image generation failed' });
     } finally {
         if (existsSync(pendingPath)) {
-            try { unlinkSync(pendingPath); } catch {}
+            try {
+                unlinkSync(pendingPath);
+            } catch {}
         }
     }
 });

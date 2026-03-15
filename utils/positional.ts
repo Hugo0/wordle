@@ -87,7 +87,7 @@ export function normalizePositionalChar(char: string, reverseMap: Map<string, st
 export function positionalCharsMatch(
     char1: string,
     char2: string,
-    reverseMap: Map<string, string>,
+    reverseMap: Map<string, string>
 ): boolean {
     const norm1 = normalizePositionalChar(char1, reverseMap);
     const norm2 = normalizePositionalChar(char2, reverseMap);

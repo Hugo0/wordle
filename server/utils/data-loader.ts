@@ -26,9 +26,7 @@ function resolveDataDir(): string {
     for (const candidate of candidates) {
         if (existsSync(candidate)) return candidate;
     }
-    throw new Error(
-        `Cannot find webapp/data/ directory. Tried: ${candidates.join(', ')}`,
-    );
+    throw new Error(`Cannot find webapp/data/ directory. Tried: ${candidates.join(', ')}`);
 }
 
 const DATA_DIR = resolveDataDir();
@@ -118,12 +116,7 @@ export function loadWords(lang: string, langConfig: LanguageConfig | null): stri
     // Check if list is sorted and needs shuffling
     // For legacy algorithm compatibility, we load pre-shuffled lists
     // The shuffled list should be pre-computed by the Python script
-    const shuffledPath = join(
-        DATA_DIR,
-        'languages',
-        lang,
-        `${lang}_5words_shuffled.json`,
-    );
+    const shuffledPath = join(DATA_DIR, 'languages', lang, `${lang}_5words_shuffled.json`);
     if (existsSync(shuffledPath)) {
         const shuffled = readJsonFile<string[]>(shuffledPath);
         if (shuffled && shuffled.length > 0) return shuffled;
@@ -139,7 +132,7 @@ export function loadWords(lang: string, langConfig: LanguageConfig | null): stri
     if (words.length > 0 && nInOrder / words.length > 0.8) {
         console.warn(
             `[data-loader] ${lang} words appear sorted but no _shuffled.json found. ` +
-                `Run: uv run python scripts/preshuffle_word_lists.py`,
+                `Run: uv run python scripts/preshuffle_word_lists.py`
         );
     }
 
@@ -147,16 +140,9 @@ export function loadWords(lang: string, langConfig: LanguageConfig | null): stri
 }
 
 export function loadSupplementalWords(lang: string): string[] {
-    const supplementPath = join(
-        DATA_DIR,
-        'languages',
-        lang,
-        `${lang}_5words_supplement.txt`,
-    );
+    const supplementPath = join(DATA_DIR, 'languages', lang, `${lang}_5words_supplement.txt`);
     const characters = new Set(loadCharacters(lang));
-    return readTextLines(supplementPath).filter((w) =>
-        [...w].every((c) => characters.has(c)),
-    );
+    return readTextLines(supplementPath).filter((w) => [...w].every((c) => characters.has(c)));
 }
 
 export function loadBlocklist(lang: string): Set<string> {
@@ -172,12 +158,7 @@ export function loadDailyWords(lang: string): string[] | null {
 }
 
 export function loadCuratedSchedule(lang: string): string[] | null {
-    const schedulePath = join(
-        DATA_DIR,
-        'languages',
-        lang,
-        `${lang}_curated_schedule.txt`,
-    );
+    const schedulePath = join(DATA_DIR, 'languages', lang, `${lang}_curated_schedule.txt`);
     const lines = readNonCommentLines(schedulePath).map((w) => w.toLowerCase());
     return lines.length > 0 ? lines : null;
 }
@@ -191,7 +172,7 @@ let _defaultConfig: Record<string, any> | null = null;
 export function loadLanguageConfig(lang: string): LanguageConfig {
     if (!_defaultConfig) {
         _defaultConfig = readJsonFile<Record<string, any>>(
-            join(DATA_DIR, 'default_language_config.json'),
+            join(DATA_DIR, 'default_language_config.json')
         )!;
     }
     const defaultConfig = _defaultConfig;
@@ -243,16 +224,16 @@ export function loadKeyboard(lang: string): KeyboardConfig {
     const sourceLayouts: Record<string, any> =
         typeof layoutsBlock === 'object' && layoutsBlock !== null
             ? layoutsBlock
-            : Object.fromEntries(
-                  Object.entries(raw).filter(([k]) => k !== 'default'),
-              );
+            : Object.fromEntries(Object.entries(raw).filter(([k]) => k !== 'default'));
 
     const normalizedLayouts: Record<string, KeyboardLayout> = {};
     for (const [name, value] of Object.entries(sourceLayouts)) {
         if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
             const v = value as Record<string, any>;
             normalizedLayouts[name] = {
-                label: (v.label as string) || name.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+                label:
+                    (v.label as string) ||
+                    name.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
                 rows: (v.rows as string[][]) || [],
             };
         } else {
@@ -285,7 +266,10 @@ export interface LanguageData {
     curatedSchedules: Record<string, string[] | null>;
     characters: Record<string, string[]>;
     keyboards: Record<string, KeyboardConfig>;
-    languages: Record<string, { language_name: string; language_name_native: string; language_code: string }>;
+    languages: Record<
+        string,
+        { language_name: string; language_name_native: string; language_code: string }
+    >;
 }
 
 let _cachedData: LanguageData | null = null;
@@ -312,9 +296,10 @@ export function loadAllData(): LanguageData {
 
     console.log('[data-loader] Loading data...');
     const langDir = join(DATA_DIR, 'languages');
-    const languageCodes = readdirSync(langDir).filter((f) =>
-        existsSync(join(langDir, f, 'words_compiled.json')) ||
-        existsSync(join(langDir, f, `${f}_5words.txt`)),
+    const languageCodes = readdirSync(langDir).filter(
+        (f) =>
+            existsSync(join(langDir, f, 'words_compiled.json')) ||
+            existsSync(join(langDir, f, `${f}_5words.txt`))
     );
 
     const configs: Record<string, LanguageConfig> = {};
@@ -372,7 +357,10 @@ export function loadAllData(): LanguageData {
     }
 
     // Build language name map
-    const languages: Record<string, { language_name: string; language_name_native: string; language_code: string }> = {};
+    const languages: Record<
+        string,
+        { language_name: string; language_name_native: string; language_code: string }
+    > = {};
     for (const lc of languageCodes) {
         const config = configs[lc]!;
         languages[lc] = {
@@ -392,7 +380,7 @@ export function loadAllData(): LanguageData {
             console.warn(
                 `[data-loader] WORD SAFETY: ${lc} curated_schedule has ${scheduleLen} entries ` +
                     `but ${daysSinceMigration} days since migration. ` +
-                    `Run: uv run python scripts/freeze_past_words.py ${lc}`,
+                    `Run: uv run python scripts/freeze_past_words.py ${lc}`
             );
         }
     }
@@ -404,7 +392,7 @@ export function loadAllData(): LanguageData {
     };
     console.log(
         `[data-loader] Loaded ${stats.totalLanguages} languages ` +
-        `(${stats.withSupplements} with supplements, ${stats.fromCompiled} from compiled JSON)`,
+            `(${stats.withSupplements} with supplements, ${stats.fromCompiled} from compiled JSON)`
     );
 
     _cachedData = {

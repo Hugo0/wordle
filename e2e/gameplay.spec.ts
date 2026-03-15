@@ -79,7 +79,9 @@ test.describe('Game Page', () => {
         await page.keyboard.type('hello', { delay: 50 });
 
         // Filled tiles get border-neutral-500 class (active tile styling)
-        const filledTiles = page.locator('.game-board .grid-cols-5:first-of-type [class*="border-neutral-500"]');
+        const filledTiles = page.locator(
+            '.game-board .grid-cols-5:first-of-type [class*="border-neutral-500"]'
+        );
         await expect(filledTiles).toHaveCount(5, { timeout: 5000 });
     });
 
@@ -92,7 +94,9 @@ test.describe('Game Page', () => {
             await page.waitForTimeout(100);
         }
 
-        const filledTiles = page.locator('.game-board .grid-cols-5:first-of-type [class*="border-neutral-500"]');
+        const filledTiles = page.locator(
+            '.game-board .grid-cols-5:first-of-type [class*="border-neutral-500"]'
+        );
         await expect(filledTiles).toHaveCount(5, { timeout: 5000 });
     });
 
@@ -122,7 +126,7 @@ test.describe('Game Page', () => {
         // First row tiles get correct/semicorrect/incorrect in their class
         const coloredTiles = page.locator(
             '.game-board .grid-cols-5:first-of-type [class*="correct"], ' +
-            '.game-board .grid-cols-5:first-of-type [class*="incorrect"]',
+                '.game-board .grid-cols-5:first-of-type [class*="incorrect"]'
         );
         await expect(coloredTiles).toHaveCount(5, { timeout: 5000 });
     });
@@ -155,7 +159,7 @@ test.describe('RTL Language', () => {
     test('Hebrew keyboard has Hebrew letters', async ({ page }) => {
         await page.goto('/he');
         const hebrewKeys = page.locator(
-            'button[data-char="א"], button[data-char="ב"], button[data-char="ג"]',
+            'button[data-char="א"], button[data-char="ב"], button[data-char="ג"]'
         );
         await expect(hebrewKeys.first()).toBeVisible({ timeout: 15000 });
         expect(await hebrewKeys.count()).toBeGreaterThan(0);
@@ -184,7 +188,7 @@ test.describe('State Persistence', () => {
         // Verify tiles are colored
         const coloredBefore = page.locator(
             '.game-board .grid-cols-5:first-of-type [class*="correct"], ' +
-            '.game-board .grid-cols-5:first-of-type [class*="incorrect"]',
+                '.game-board .grid-cols-5:first-of-type [class*="incorrect"]'
         );
         await expect(coloredBefore).toHaveCount(5, { timeout: 5000 });
 
@@ -196,7 +200,7 @@ test.describe('State Persistence', () => {
         // Tiles should still be colored after restore
         const coloredAfter = page.locator(
             '.game-board .grid-cols-5:first-of-type [class*="correct"], ' +
-            '.game-board .grid-cols-5:first-of-type [class*="incorrect"]',
+                '.game-board .grid-cols-5:first-of-type [class*="incorrect"]'
         );
         await expect(coloredAfter).toHaveCount(5, { timeout: 5000 });
     });

@@ -15,7 +15,7 @@ export function useGameShare() {
     /** Generate the emoji grid from tile colors. */
     function buildEmojiBoard(
         tileColors: TileColor[][],
-        highContrast: boolean,
+        highContrast: boolean
     ): { board: string; attemptCount: string } {
         let board = '';
         let attemptCount = '0';
@@ -86,7 +86,7 @@ export function useGameShare() {
                 opts.langCode,
                 opts.gameWon,
                 opts.attempts,
-                opts.emojiBoard,
+                opts.emojiBoard
             );
             setTimeout(() => {
                 shareButtonState.value = 'idle';
@@ -136,8 +136,7 @@ export function useGameShare() {
         try {
             const textarea = document.createElement('textarea');
             textarea.value = text;
-            textarea.style.cssText =
-                'position:fixed;top:0;left:0;width:2em;height:2em;opacity:0;';
+            textarea.style.cssText = 'position:fixed;top:0;left:0;width:2em;height:2em;opacity:0;';
             document.body.appendChild(textarea);
             textarea.focus();
             textarea.select();

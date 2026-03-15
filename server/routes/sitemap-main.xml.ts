@@ -10,12 +10,14 @@ export default defineEventHandler((event) => {
     const urls: string[] = [];
 
     // Homepage
-    urls.push(`  <url><loc>${base}/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>`);
+    urls.push(
+        `  <url><loc>${base}/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>`
+    );
 
     // Language pages
     for (const lc of Object.keys(data.languages).sort()) {
         urls.push(
-            `  <url><loc>${base}/${lc}</loc><changefreq>daily</changefreq><priority>0.9</priority></url>`,
+            `  <url><loc>${base}/${lc}</loc><changefreq>daily</changefreq><priority>0.9</priority></url>`
         );
     }
 
@@ -24,7 +26,7 @@ export default defineEventHandler((event) => {
         for (let page = 1; page <= hubTotalPages; page++) {
             const pageParam = page > 1 ? `?page=${page}` : '';
             urls.push(
-                `  <url><loc>${base}/${lc}/words${pageParam}</loc><changefreq>daily</changefreq><priority>0.5</priority></url>`,
+                `  <url><loc>${base}/${lc}/words${pageParam}</loc><changefreq>daily</changefreq><priority>0.5</priority></url>`
             );
         }
     }

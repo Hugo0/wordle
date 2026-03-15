@@ -22,7 +22,7 @@ export interface CommunityPercentileResult {
  */
 export function calculateCommunityPercentile(
     playerAttempts: number,
-    stats: WordStatsData,
+    stats: WordStatsData
 ): CommunityPercentileResult | null {
     if (!stats || !stats.total || playerAttempts < 1 || playerAttempts > 6) return null;
 

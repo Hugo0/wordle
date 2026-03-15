@@ -20,7 +20,7 @@ export default defineNuxtPlugin(() => {
         'color: #888',
         'color: #666',
         'color: #6aaa63; font-weight: bold',
-        'color: #666',
+        'color: #666'
     );
 
     const debug = {
@@ -104,7 +104,7 @@ export default defineNuxtPlugin(() => {
                     .flatMap(() => [
                         'color: #6aaa63; font-weight: bold',
                         'color: #999; font-weight: normal',
-                    ]),
+                    ])
             );
         },
     };

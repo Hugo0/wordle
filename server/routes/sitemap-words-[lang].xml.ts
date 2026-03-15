@@ -18,7 +18,7 @@ export default defineEventHandler((event) => {
         const ageRatio = (todaysIdx - dIdx) / Math.max(todaysIdx, 1);
         const priority = Math.round(Math.max(0.3, 1.0 - ageRatio * 0.7) * 10) / 10;
         urls.push(
-            `  <url><loc>${base}/${lang}/word/${dIdx}</loc><lastmod>${dDate}</lastmod><priority>${priority}</priority></url>`,
+            `  <url><loc>${base}/${lang}/word/${dIdx}</loc><lastmod>${dDate}</lastmod><priority>${priority}</priority></url>`
         );
     }
 

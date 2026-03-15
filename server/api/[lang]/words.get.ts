@@ -19,7 +19,7 @@ const WORDS_PER_PAGE = 30;
  */
 function readCachedDefinition(
     word: string,
-    langCode: string,
+    langCode: string
 ): { definition: string; part_of_speech?: string } | null {
     const cachePath = join(WORD_DEFS_DIR, langCode, `${word.toLowerCase()}.json`);
     if (!existsSync(cachePath)) return null;

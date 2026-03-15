@@ -12,7 +12,7 @@ export default defineEventHandler((event) => {
         `  <sitemap><loc>${base}/sitemap-main.xml</loc><lastmod>${todayStr}</lastmod></sitemap>`,
         ...sortedLangs.map(
             (lc) =>
-                `  <sitemap><loc>${base}/sitemap-words-${lc}.xml</loc><lastmod>${todayStr}</lastmod></sitemap>`,
+                `  <sitemap><loc>${base}/sitemap-words-${lc}.xml</loc><lastmod>${todayStr}</lastmod></sitemap>`
         ),
     ];
 

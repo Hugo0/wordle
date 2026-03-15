@@ -45,7 +45,7 @@ function loadKaikkiFile(cacheKey: string, filePath: string): Record<string, stri
 function lookupKaikki(
     word: string,
     langCode: string,
-    variant: 'native' | 'en',
+    variant: 'native' | 'en'
 ): Record<string, any> | null {
     const cacheKey = variant === 'native' ? `${langCode}_native` : `${langCode}_en`;
     const fileName = variant === 'native' ? `${langCode}.json` : `${langCode}_en.json`;
@@ -85,20 +85,62 @@ function wiktionaryUrl(word: string, langCode: string): string {
 // ---------------------------------------------------------------------------
 
 const LLM_LANG_NAMES: Record<string, string> = {
-    en: 'English', fi: 'Finnish', de: 'German', fr: 'French', es: 'Spanish',
-    it: 'Italian', pt: 'Portuguese', nl: 'Dutch', sv: 'Swedish',
-    nb: 'Norwegian Bokmål', nn: 'Norwegian Nynorsk', da: 'Danish',
-    pl: 'Polish', ru: 'Russian', uk: 'Ukrainian', bg: 'Bulgarian',
-    hr: 'Croatian', sr: 'Serbian', sl: 'Slovenian', cs: 'Czech',
-    sk: 'Slovak', ro: 'Romanian', hu: 'Hungarian', tr: 'Turkish',
-    az: 'Azerbaijani', et: 'Estonian', lt: 'Lithuanian', lv: 'Latvian',
-    el: 'Greek', ka: 'Georgian', hy: 'Armenian', he: 'Hebrew',
-    ar: 'Arabic', fa: 'Persian', vi: 'Vietnamese', id: 'Indonesian',
-    ms: 'Malay', ca: 'Catalan', gl: 'Galician', eu: 'Basque',
-    br: 'Breton', oc: 'Occitan', la: 'Latin', ko: 'Korean',
-    sq: 'Albanian', mk: 'Macedonian', is: 'Icelandic', ga: 'Irish',
-    cy: 'Welsh', mt: 'Maltese', hyw: 'Western Armenian', ckb: 'Central Kurdish',
-    pau: 'Palauan', ie: 'Interlingue', rw: 'Kinyarwanda', tlh: 'Klingon',
+    en: 'English',
+    fi: 'Finnish',
+    de: 'German',
+    fr: 'French',
+    es: 'Spanish',
+    it: 'Italian',
+    pt: 'Portuguese',
+    nl: 'Dutch',
+    sv: 'Swedish',
+    nb: 'Norwegian Bokmål',
+    nn: 'Norwegian Nynorsk',
+    da: 'Danish',
+    pl: 'Polish',
+    ru: 'Russian',
+    uk: 'Ukrainian',
+    bg: 'Bulgarian',
+    hr: 'Croatian',
+    sr: 'Serbian',
+    sl: 'Slovenian',
+    cs: 'Czech',
+    sk: 'Slovak',
+    ro: 'Romanian',
+    hu: 'Hungarian',
+    tr: 'Turkish',
+    az: 'Azerbaijani',
+    et: 'Estonian',
+    lt: 'Lithuanian',
+    lv: 'Latvian',
+    el: 'Greek',
+    ka: 'Georgian',
+    hy: 'Armenian',
+    he: 'Hebrew',
+    ar: 'Arabic',
+    fa: 'Persian',
+    vi: 'Vietnamese',
+    id: 'Indonesian',
+    ms: 'Malay',
+    ca: 'Catalan',
+    gl: 'Galician',
+    eu: 'Basque',
+    br: 'Breton',
+    oc: 'Occitan',
+    la: 'Latin',
+    ko: 'Korean',
+    sq: 'Albanian',
+    mk: 'Macedonian',
+    is: 'Icelandic',
+    ga: 'Irish',
+    cy: 'Welsh',
+    mt: 'Maltese',
+    hyw: 'Western Armenian',
+    ckb: 'Central Kurdish',
+    pau: 'Palauan',
+    ie: 'Interlingue',
+    rw: 'Kinyarwanda',
+    tlh: 'Klingon',
     qya: 'Quenya',
 };
 
@@ -106,7 +148,7 @@ const LLM_MODEL = 'gpt-5.2';
 
 async function callLlmDefinition(
     word: string,
-    langCode: string,
+    langCode: string
 ): Promise<Record<string, any> | null> {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) return null;
@@ -163,7 +205,7 @@ async function callLlmDefinition(
 
         if (!definitionEn || confidence < 0.3) {
             console.log(
-                `[LLM LOW] ${langCode}/${word}: confidence=${confidence}, def_en=${definitionEn}`,
+                `[LLM LOW] ${langCode}/${word}: confidence=${confidence}, def_en=${definitionEn}`
             );
             return null;
         }
@@ -198,7 +240,7 @@ async function callLlmDefinition(
 export async function fetchDefinition(
     word: string,
     langCode: string,
-    options: { skipNegativeCache?: boolean } = {},
+    options: { skipNegativeCache?: boolean } = {}
 ): Promise<Record<string, any> | null> {
     const cacheDir = WORD_DEFS_DIR;
     const langCacheDir = join(cacheDir, langCode);
@@ -229,9 +271,7 @@ export async function fetchDefinition(
 
     // --- Tier 3: Kaikki fallback ---
     if (!result) {
-        result =
-            lookupKaikki(word, langCode, 'native') ||
-            lookupKaikki(word, langCode, 'en');
+        result = lookupKaikki(word, langCode, 'native') || lookupKaikki(word, langCode, 'en');
     }
 
     // Cache result (including negative results)
@@ -239,10 +279,8 @@ export async function fetchDefinition(
         mkdirSync(langCacheDir, { recursive: true });
         writeFileSync(
             cachePath,
-            JSON.stringify(
-                result || { not_found: true, ts: Math.floor(Date.now() / 1000) },
-            ),
-            'utf-8',
+            JSON.stringify(result || { not_found: true, ts: Math.floor(Date.now() / 1000) }),
+            'utf-8'
         );
     } catch {
         // Non-critical

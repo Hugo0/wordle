@@ -23,11 +23,14 @@
         </button>
         <div class="absolute text-center right-0 left-0">
             <h1 class="uppercase font-bold text-2xl sm:text-4xl tracking-wider">
-                <a href="/">Wordle
+                <a href="/"
+                    >Wordle
                     <span
                         class="text-xl sm:text-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded px-1 py-0"
                     >
-                        {{ langCode }}</span></a>
+                        {{ langCode }}</span
+                    ></a
+                >
             </h1>
         </div>
         <div class="flex flex-row gap-3 z-30">

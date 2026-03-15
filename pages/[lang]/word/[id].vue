@@ -168,9 +168,35 @@ onMounted(async () => {
 
 // Giscus theme sync
 const giscusLangs = [
-    'ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 'eo', 'es', 'eu', 'fa', 'fr',
-    'he', 'hu', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr',
-    'uk', 'uz', 'vi',
+    'ar',
+    'be',
+    'bg',
+    'ca',
+    'cs',
+    'da',
+    'de',
+    'en',
+    'eo',
+    'es',
+    'eu',
+    'fa',
+    'fr',
+    'he',
+    'hu',
+    'id',
+    'it',
+    'ja',
+    'ko',
+    'nl',
+    'pl',
+    'pt',
+    'ro',
+    'ru',
+    'th',
+    'tr',
+    'uk',
+    'uz',
+    'vi',
 ];
 const giscusLang = giscusLangs.includes(lang.slice(0, 2)) ? lang.slice(0, 2) : 'en';
 
@@ -190,7 +216,10 @@ onMounted(() => {
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '1');
     script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute('data-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    script.setAttribute(
+        'data-theme',
+        document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+    );
     script.setAttribute('data-lang', giscusLang);
     script.setAttribute('data-loading', 'lazy');
     script.crossOrigin = 'anonymous';
@@ -205,14 +234,16 @@ onMounted(() => {
         const isDark = document.documentElement.classList.contains('dark');
         iframe.contentWindow?.postMessage(
             { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
-            'https://giscus.app',
+            'https://giscus.app'
         );
     });
 });
 </script>
 
 <template>
-    <div class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors">
+    <div
+        class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors"
+    >
         <div class="max-w-lg mx-auto px-4 py-6">
             <!-- Header -->
             <header class="text-center mb-6">
@@ -222,9 +253,7 @@ onMounted(() => {
                 >
                     &larr; Play Wordle {{ langNameNative }}
                 </NuxtLink>
-                <h1 class="text-2xl font-bold mt-2">
-                    Wordle {{ langNameNative }} #{{ dayIdx }}
-                </h1>
+                <h1 class="text-2xl font-bold mt-2">Wordle {{ langNameNative }} #{{ dayIdx }}</h1>
                 <p v-if="wordDate" class="text-sm text-neutral-500 dark:text-neutral-400">
                     {{ wordDate }}
                 </p>
@@ -271,8 +300,16 @@ onMounted(() => {
                         :src="`/api/${lang}/word-image/${word}?day_idx=${dayIdx}`"
                         :alt="word"
                         class="w-full max-h-64 object-contain rounded-xl shadow-md mx-auto"
-                        @load="($event.target as HTMLImageElement).parentElement!.classList.remove('hidden')"
-                        @error="($event.target as HTMLImageElement).parentElement!.classList.add('hidden')"
+                        @load="
+                            ($event.target as HTMLImageElement).parentElement!.classList.remove(
+                                'hidden'
+                            )
+                        "
+                        @error="
+                            ($event.target as HTMLImageElement).parentElement!.classList.add(
+                                'hidden'
+                            )
+                        "
                     />
                 </div>
 
@@ -293,7 +330,9 @@ onMounted(() => {
                     class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
                 >
                     <div class="flex items-center gap-2 mb-1">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                        <span
+                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                        >
                             Definition
                         </span>
                         <span
@@ -323,7 +362,9 @@ onMounted(() => {
                     class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
                 >
                     <div class="flex items-center gap-2 mb-1">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+                        <span
+                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                        >
                             Definition
                         </span>
                         <span
@@ -356,9 +397,18 @@ onMounted(() => {
                         class="inline-flex items-center gap-1 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
                     >
                         Look up on Wiktionary
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-3.5 w-3.5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
+                            />
+                            <path
+                                d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
+                            />
                         </svg>
                     </a>
                 </div>
@@ -368,30 +418,40 @@ onMounted(() => {
                     v-if="wordStats && wordStats.total > 0"
                     class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
                 >
-                    <h3 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center">
+                    <h3
+                        class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center"
+                    >
                         Community Stats
                     </h3>
                     <div class="grid grid-cols-3 gap-2 text-center mb-3">
                         <div>
                             <p class="text-lg font-bold">{{ wordStats.total }}</p>
-                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Players</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                Players
+                            </p>
                         </div>
                         <div>
                             <p class="text-lg font-bold">
                                 {{ Math.round((wordStats.wins / wordStats.total) * 100) }}%
                             </p>
-                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Win Rate</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                Win Rate
+                            </p>
                         </div>
                         <div>
                             <p class="text-lg font-bold">{{ avgAttempts }}</p>
-                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">Avg Attempts</p>
+                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                                Avg Attempts
+                            </p>
                         </div>
                     </div>
                     <!-- Mini guess distribution -->
                     <div class="space-y-0.5">
                         <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
                             <span class="w-3 text-xs font-medium text-neutral-500">{{ n }}</span>
-                            <div class="flex-1 h-3 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden">
+                            <div
+                                class="flex-1 h-3 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden"
+                            >
                                 <div
                                     class="h-full bg-green-500 rounded-sm transition-all"
                                     :style="{ width: distWidth(n) }"

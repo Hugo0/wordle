@@ -100,24 +100,20 @@ describe.skipIf(SKIP)('Migration Parity: Nuxt vs Flask', () => {
 
 describe('Word selection algorithm', () => {
     it('idxToDate and getTodaysIdx are inverse operations', async () => {
-        const { getTodaysIdx, idxToDate } = await import(
-            '../server/utils/word-selection'
-        );
+        const { getTodaysIdx, idxToDate } = await import('../server/utils/word-selection');
 
         const todaysIdx = getTodaysIdx('UTC');
         const date = idxToDate(todaysIdx);
 
         const today = new Date();
         const expectedDate = new Date(
-            Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()),
+            Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate())
         );
         expect(date.getTime()).toBe(expectedDate.getTime());
     });
 
     it('getTodaysIdx returns consistent value for same day', async () => {
-        const { getTodaysIdx } = await import(
-            '../server/utils/word-selection'
-        );
+        const { getTodaysIdx } = await import('../server/utils/word-selection');
 
         const idx1 = getTodaysIdx('UTC');
         const idx2 = getTodaysIdx('UTC');
@@ -125,9 +121,7 @@ describe('Word selection algorithm', () => {
     });
 
     it('getDailyWordConsistentHash is deterministic', async () => {
-        const { getDailyWordConsistentHash } = await import(
-            '../server/utils/word-selection'
-        );
+        const { getDailyWordConsistentHash } = await import('../server/utils/word-selection');
 
         const words = ['crane', 'slate', 'hello', 'world', 'apple'];
         const word1 = getDailyWordConsistentHash(words, new Set(), 1700, 'en');
@@ -136,25 +130,16 @@ describe('Word selection algorithm', () => {
     });
 
     it('getDailyWordConsistentHash respects blocklist', async () => {
-        const { getDailyWordConsistentHash } = await import(
-            '../server/utils/word-selection'
-        );
+        const { getDailyWordConsistentHash } = await import('../server/utils/word-selection');
 
         const words = ['crane', 'slate', 'hello', 'world', 'apple'];
         const wordNoBl = getDailyWordConsistentHash(words, new Set(), 1700, 'en');
-        const wordWithBl = getDailyWordConsistentHash(
-            words,
-            new Set([wordNoBl]),
-            1700,
-            'en',
-        );
+        const wordWithBl = getDailyWordConsistentHash(words, new Set([wordNoBl]), 1700, 'en');
         expect(wordWithBl).not.toBe(wordNoBl);
     });
 
     it('getDailyWordLegacy uses simple modulo', async () => {
-        const { getDailyWordLegacy } = await import(
-            '../server/utils/word-selection'
-        );
+        const { getDailyWordLegacy } = await import('../server/utils/word-selection');
 
         const words = ['crane', 'slate', 'hello', 'world', 'apple'];
         expect(getDailyWordLegacy(words, new Set(), 0)).toBe('crane');

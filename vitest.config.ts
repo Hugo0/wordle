@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config'
-import { resolve } from 'path'
-import { type Plugin } from 'vite'
+import { defineConfig } from 'vitest/config';
+import { resolve } from 'path';
+import { type Plugin } from 'vite';
 
 /**
  * Vite plugin that replaces `import.meta.client` → `true` and
@@ -11,13 +11,14 @@ function nuxtMetaPlugin(): Plugin {
         name: 'vitest-nuxt-meta',
         enforce: 'pre',
         transform(code, id) {
-            if (id.includes('node_modules')) return
-            if (!code.includes('import.meta.client') && !code.includes('import.meta.server')) return
+            if (id.includes('node_modules')) return;
+            if (!code.includes('import.meta.client') && !code.includes('import.meta.server'))
+                return;
             return code
                 .replace(/import\.meta\.client/g, '(true)')
-                .replace(/import\.meta\.server/g, '(false)')
+                .replace(/import\.meta\.server/g, '(false)');
         },
-    }
+    };
 }
 
 export default defineConfig({
@@ -33,4 +34,4 @@ export default defineConfig({
         },
     },
     plugins: [nuxtMetaPlugin()],
-})
+});

@@ -33,9 +33,7 @@ export function getTodaysIdx(timezone: string = 'UTC'): number {
     const [y, m, d] = dateStr.split('-').map(Number);
     const localDate = new Date(Date.UTC(y!, m! - 1, d!));
     const epoch = new Date(Date.UTC(1970, 0, 1));
-    const nDays = Math.floor(
-        (localDate.getTime() - epoch.getTime()) / (86400 * 1000),
-    );
+    const nDays = Math.floor((localDate.getTime() - epoch.getTime()) / (86400 * 1000));
     return nDays - EPOCH_OFFSET + WORDLE_OFFSET;
 }
 

@@ -43,7 +43,7 @@ export function animateRevealRow(
     boardEl: HTMLElement | null,
     rowIndex: number,
     rightToLeft: boolean,
-    callbacks: RevealCallbacks,
+    callbacks: RevealCallbacks
 ): void {
     const rowEl = boardEl?.children[rowIndex] as HTMLElement | undefined;
     const tileCount = WORD_LENGTH;
@@ -86,7 +86,7 @@ export function animateRevealRow(
 export function animateKeyNudge(
     keyboardEl: HTMLElement | null,
     char: string,
-    animClass: string,
+    animClass: string
 ): void {
     if (!keyboardEl) return;
     const el = keyboardEl.querySelector(`button[data-char="${CSS.escape(char)}"]`);
