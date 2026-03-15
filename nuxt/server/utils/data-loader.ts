@@ -369,27 +369,5 @@ export function loadAllData(): LanguageData {
     return _cachedData;
 }
 
-// ---------------------------------------------------------------------------
-// Helper to get today's index (forward declaration — implemented in word-selection.ts)
-// ---------------------------------------------------------------------------
-
-function getTodaysIdx(timezone: string = 'UTC'): number {
-    // Inline implementation to avoid circular dependency
-    const now = new Date();
-    let localDate: Date;
-    try {
-        const formatter = new Intl.DateTimeFormat('en-CA', {
-            timeZone: timezone,
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-        const parts = formatter.format(now);
-        localDate = new Date(parts + 'T00:00:00Z');
-    } catch {
-        localDate = now;
-    }
-    const epoch = new Date('1970-01-01T00:00:00Z');
-    const nDays = Math.floor((localDate.getTime() - epoch.getTime()) / (86400 * 1000));
-    return nDays - 18992 + 195;
-}
+// Import from day-index.ts (not word-selection.ts) to avoid circular dependency
+import { getTodaysIdx } from '../lib/day-index';

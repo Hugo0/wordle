@@ -140,8 +140,18 @@ export interface TotalStats {
     n_losses: number;
 }
 
-export type TileState = string; // CSS classes
+/** Semantic tile color state — independent of CSS class names. */
+export type TileColor = 'correct' | 'semicorrect' | 'incorrect' | 'empty' | 'active';
+
 export type KeyState = '' | 'key-correct' | 'key-semicorrect' | 'key-incorrect';
+
+// =============================================================================
+// Game Constants
+// =============================================================================
+
+/** Default game grid dimensions. Will be parameterized for alternate word lengths. */
+export const WORD_LENGTH = 5;
+export const MAX_GUESSES = 6;
 
 // =============================================================================
 // Definition Types

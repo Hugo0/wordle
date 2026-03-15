@@ -17,7 +17,8 @@ import { buildNormalizedWordMap, normalizeWord } from '~/utils/diacritics';
 import { toFinalForm, toRegularForm } from '~/utils/positional';
 import { splitWord } from '~/utils/graphemes';
 import { calculateCommunityPercentile } from '~/utils/stats';
-import type { KeyState, Notification } from '~/utils/types';
+import { WORD_LENGTH, MAX_GUESSES } from '~/utils/types';
+import type { KeyState, TileColor, Notification } from '~/utils/types';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -53,6 +54,7 @@ function makeEmptyNotification(): Notification {
 /** Type for saved game state in localStorage */
 interface SavedGameState {
     tiles: string[][];
+    tile_colors?: TileColor[][]; // Added in Nuxt migration; absent in legacy saves
     tile_classes: string[][];
     key_classes: Record<string, KeyState>;
     active_row: number;
@@ -80,10 +82,11 @@ export const useGameStore = defineStore('game', () => {
     // State
     // =======================================================================
 
-    const tiles = ref<string[][]>(makeEmptyGrid(6, 5, ''));
-    const tileClasses = ref<string[][]>(makeEmptyGrid(6, 5, DEFAULT_TILE_CLASS));
-    const tilesVisual = ref<string[][]>(makeEmptyGrid(6, 5, ''));
-    const tileClassesVisual = ref<string[][]>(makeEmptyGrid(6, 5, DEFAULT_TILE_CLASS));
+    const tiles = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, ''));
+    const tileColors = ref<TileColor[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, 'empty'));
+    const tileClasses = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS));
+    const tilesVisual = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, ''));
+    const tileClassesVisual = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS));
 
     const activeRow = ref(0);
     const activeCell = ref(0);
@@ -221,13 +224,14 @@ export const useGameStore = defineStore('game', () => {
         const row = tiles.value[activeRow.value];
         const rowClasses = tileClasses.value[activeRow.value];
         if (row && rowClasses) {
-            const isLastPosition = activeCell.value === 4;
+            const isLastPosition = activeCell.value === WORD_LENGTH - 1;
             const displayChar = toFinalForm(char, isLastPosition, lang.config ?? {});
             row.splice(activeCell.value, 1, displayChar);
             rowClasses.splice(activeCell.value, 1, ACTIVE_TILE_CLASS);
+            tileColors.value[activeRow.value]?.splice(activeCell.value, 1, 'active');
         }
-        activeCell.value = Math.min(activeCell.value + 1, 5);
-        if (activeCell.value === 5) {
+        activeCell.value = Math.min(activeCell.value + 1, WORD_LENGTH);
+        if (activeCell.value === WORD_LENGTH) {
             fullWordInputted.value = true;
         }
     }
@@ -278,7 +282,8 @@ export const useGameStore = defineStore('game', () => {
 
         const row = tiles.value[activeRow.value];
         const classes = tileClasses.value[activeRow.value];
-        if (!row || !classes) return;
+        const colors = tileColors.value[activeRow.value];
+        if (!row || !classes || !colors) return;
 
         // Store per-tile keyboard updates for staggered reveal
         pendingKeyUpdates.value = [];
@@ -288,6 +293,7 @@ export const useGameStore = defineStore('game', () => {
             const guessChar = row[i];
             const targetChar = targetChars[i];
             if (guessChar && targetChar && fullCharsMatch(guessChar, targetChar)) {
+                colors.splice(i, 1, 'correct');
                 classes.splice(i, 1, `correct ${BASE_REVEALED_CLASS}`);
                 row.splice(i, 1, targetChar);
                 pendingKeyUpdates.value[i] = {
@@ -303,7 +309,7 @@ export const useGameStore = defineStore('game', () => {
         // Second pass: mark semi-correct and incorrect
         for (let i = 0; i < row.length; i++) {
             const guessChar = row[i];
-            if (!guessChar || classes[i]?.includes('correct')) continue;
+            if (!guessChar || colors[i] === 'correct') continue;
 
             const normalizedGuess = fullNormalize(guessChar);
             const count = charCounts[normalizedGuess];
@@ -311,6 +317,7 @@ export const useGameStore = defineStore('game', () => {
             const targetHasChar = targetChars.some((tc) => fullCharsMatch(guessChar, tc));
 
             if (targetHasChar && count !== undefined && count > 0) {
+                colors.splice(i, 1, 'semicorrect');
                 classes.splice(i, 1, `semicorrect ${BASE_REVEALED_CLASS}`);
                 pendingKeyUpdates.value[i] = {
                     char: guessChar,
@@ -318,6 +325,7 @@ export const useGameStore = defineStore('game', () => {
                 };
                 charCounts[normalizedGuess] = count - 1;
             } else {
+                colors.splice(i, 1, 'incorrect');
                 classes.splice(i, 1, `incorrect ${BASE_REVEALED_CLASS}`);
                 pendingKeyUpdates.value[i] = {
                     char: guessChar,
@@ -508,7 +516,7 @@ export const useGameStore = defineStore('game', () => {
                     const normalizedTarget = normalizeWord(lang.todaysWord, lang.normalizeMap);
                     if (normalizedGuess === normalizedTarget) {
                         handleGameWon();
-                    } else if (activeRow.value === 6) {
+                    } else if (activeRow.value === MAX_GUESSES) {
                         handleGameLost();
                     }
 
@@ -540,6 +548,7 @@ export const useGameStore = defineStore('game', () => {
             if (row && rowClasses) {
                 row.splice(activeCell.value, 1, '');
                 rowClasses.splice(activeCell.value, 1, DEFAULT_TILE_CLASS);
+                tileColors.value[activeRow.value]?.splice(activeCell.value, 1, 'empty');
             }
             fullWordInputted.value = false;
         } else if (!fullWordInputted.value && lang.acceptableCharacters.includes(key)) {
@@ -585,7 +594,7 @@ export const useGameStore = defineStore('game', () => {
         const FLIP_DURATION = 500;
         const MIDPOINT = 250;
         const STAGGER = 200;
-        const tileCount = 5;
+        const tileCount = WORD_LENGTH;
         const lang = useLanguageStore();
         const keys = keyClasses.value;
 
@@ -655,7 +664,7 @@ export const useGameStore = defineStore('game', () => {
         if (!import.meta.client) return;
         const STAGGER = 150;
         const DURATION = 1000;
-        const tileCount = 5;
+        const tileCount = WORD_LENGTH;
         const lang = useLanguageStore();
 
         for (let t = 0; t < tileCount; t++) {
@@ -838,34 +847,31 @@ export const useGameStore = defineStore('game', () => {
 
     // ---- Emoji board ----
 
-    /** Generate the share emoji grid from tile classes. */
+    /** Generate the share emoji grid from tile colors. */
     function getEmojiBoard(): string {
         const settings = useSettingsStore();
         let board = '';
         const greenEmoji = settings.highContrast ? '🟦' : '🟩';
         const yellowEmoji = settings.highContrast ? '🟧' : '🟨';
 
-        for (let i = 0; i < tileClasses.value.length; i++) {
-            const row = tileClasses.value[i];
+        for (let i = 0; i < tileColors.value.length; i++) {
+            const row = tileColors.value[i];
             if (!row) continue;
 
-            for (const tileClass of row) {
-                if (
-                    tileClass.includes('correct') &&
-                    !tileClass.includes('semicorrect') &&
-                    !tileClass.includes('incorrect')
-                ) {
+            for (const color of row) {
+                if (color === 'correct') {
                     board += greenEmoji;
-                } else if (tileClass.includes('semicorrect')) {
+                } else if (color === 'semicorrect') {
                     board += yellowEmoji;
-                } else if (tileClass.includes('incorrect')) {
+                } else if (color === 'incorrect') {
                     board += '⬜';
                 } else {
+                    // Row not fully revealed yet — stop here
                     attempts.value = String(i);
                     return board;
                 }
             }
-            if (i < tileClasses.value.length - 1) board += '\n';
+            if (i < tileColors.value.length - 1) board += '\n';
             attempts.value = String(i + 1);
         }
         if (gameOver.value && !gameWon.value) attempts.value = 'X';
@@ -890,6 +896,7 @@ export const useGameStore = defineStore('game', () => {
             const pageName = window.location.pathname.split('/').pop() || 'home';
             const data: SavedGameState = {
                 tiles: tiles.value,
+                tile_colors: tileColors.value,
                 tile_classes: tileClasses.value,
                 key_classes: keyClasses.value,
                 active_row: activeRow.value,
@@ -929,7 +936,21 @@ export const useGameStore = defineStore('game', () => {
                 attempts.value = data.attempts;
                 fullWordInputted.value = data.full_word_inputted;
 
-                // gameLost is derived from gameOver && !gameWon
+                // Restore tileColors (backward-compatible with legacy saves without it)
+                if (data.tile_colors) {
+                    tileColors.value = data.tile_colors;
+                } else {
+                    // Derive from CSS classes for legacy saves
+                    tileColors.value = data.tile_classes.map((row) =>
+                        row.map((cls): TileColor => {
+                            if (cls.includes('correct') && !cls.includes('semicorrect') && !cls.includes('incorrect')) return 'correct';
+                            if (cls.includes('semicorrect')) return 'semicorrect';
+                            if (cls.includes('incorrect')) return 'incorrect';
+                            if (cls.includes('pop') || cls.includes('border-neutral-500')) return 'active';
+                            return 'empty';
+                        }),
+                    );
+                }
             }
         } catch {
             // localStorage unavailable or corrupted data
@@ -971,25 +992,19 @@ export const useGameStore = defineStore('game', () => {
     function checkHardMode(guess: string): string | null {
         for (let r = 0; r < activeRow.value; r++) {
             const row = tiles.value[r];
-            const classes = tileClasses.value[r];
-            if (!row || !classes) continue;
+            const colors = tileColors.value[r];
+            if (!row || !colors) continue;
 
             for (let c = 0; c < row.length; c++) {
-                const tileClass = classes[c] || '';
+                const color = colors[c];
                 const letter = row[c];
                 if (!letter) continue;
 
-                if (
-                    tileClass.includes('correct') &&
-                    !tileClass.includes('semicorrect') &&
-                    !tileClass.includes('incorrect')
-                ) {
-                    // Green: must be in the same position
+                if (color === 'correct') {
                     if (guess[c]?.toLowerCase() !== letter.toLowerCase()) {
                         return `Hard mode: ${letter.toUpperCase()} must be in position ${c + 1}`;
                     }
-                } else if (tileClass.includes('semicorrect')) {
-                    // Yellow: must appear somewhere in the guess
+                } else if (color === 'semicorrect') {
                     if (!guess.toLowerCase().includes(letter.toLowerCase())) {
                         return `Hard mode: guess must contain ${letter.toUpperCase()}`;
                     }
@@ -1199,6 +1214,7 @@ export const useGameStore = defineStore('game', () => {
     return {
         // State
         tiles,
+        tileColors,
         tileClasses,
         tilesVisual,
         tileClassesVisual,

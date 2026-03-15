@@ -16,45 +16,9 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync, renameSync } from '
 import { join, dirname } from 'path';
 import { MIGRATION_DAY_IDX, WORD_HISTORY_DIR, loadAllData } from './data-loader';
 
-// ---------------------------------------------------------------------------
-// Day index calculation
-// ---------------------------------------------------------------------------
-
-/**
- * Calculate the daily word index based on timezone.
- * Matches Python: `n_days - 18992 + 195` where n_days = days since epoch.
- */
-export function getTodaysIdx(timezone: string = 'UTC'): number {
-    const now = new Date();
-    let dateStr: string;
-    try {
-        const formatter = new Intl.DateTimeFormat('en-CA', {
-            timeZone: timezone,
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-        dateStr = formatter.format(now); // "YYYY-MM-DD"
-    } catch {
-        // Fallback to UTC
-        dateStr = now.toISOString().slice(0, 10);
-    }
-    const [y, m, d] = dateStr.split('-').map(Number);
-    const localDate = new Date(Date.UTC(y!, m! - 1, d!));
-    const epoch = new Date(Date.UTC(1970, 0, 1));
-    const nDays = Math.floor(
-        (localDate.getTime() - epoch.getTime()) / (86400 * 1000),
-    );
-    return nDays - 18992 + 195;
-}
-
-/**
- * Reverse of getTodaysIdx: convert a day index back to a calendar date.
- */
-export function idxToDate(dayIdx: number): Date {
-    const nDays = dayIdx + 18992 - 195;
-    return new Date(Date.UTC(1970, 0, 1 + nDays));
-}
+// Re-export day index functions so existing consumers don't need to change imports
+export { getTodaysIdx, idxToDate } from '../lib/day-index';
+import { getTodaysIdx } from '../lib/day-index';
 
 // ---------------------------------------------------------------------------
 // Hash functions
