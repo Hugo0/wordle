@@ -127,9 +127,7 @@
                 </div>
             </div>
             <div v-else-if="game.todayImageUrl" class="px-6 pt-1 pb-2">
-                <a
-                    :href="'/' + lang.languageCode + '/word/' + lang.todaysIdx"
-                >
+                <a :href="'/' + lang.languageCode + '/word/' + lang.todaysIdx">
                     <img
                         :src="game.todayImageUrl"
                         :alt="lang.todaysWord"
