@@ -5,6 +5,7 @@ from __future__ import annotations
 import datetime
 import hashlib
 import logging
+from collections import deque
 
 from . import MIGRATION_DAY_IDX
 from .schema import WordsData
@@ -28,21 +29,21 @@ def _day_hash(day_idx: int, lang: str) -> str:
     return hashlib.sha256(f"{lang}:day:{day_idx}".encode()).hexdigest()
 
 
-def _consistent_hash_select(
-    words: list[str], exclude: set[str], day_idx: int, lang: str
-) -> str:
-    """Consistent hashing word selection with exclusion set."""
-    day_h = _day_hash(day_idx, lang)
-    candidates = sorted((_word_hash(w, lang), w) for w in words if w not in exclude)
-    if not candidates:
-        # Safety: if all excluded, fall back to full pool
-        candidates = sorted((_word_hash(w, lang), w) for w in words)
-    if not candidates:
-        return words[0] if words else ""
-    for word_h, word in candidates:
+def _ring_select(
+    precomputed: list[tuple[str, str]],
+    exclude: set[str],
+    day_h: str,
+) -> str | None:
+    """Pick the first word on the hash ring >= day_h, skipping excluded words."""
+    first_valid = None
+    for word_h, word in precomputed:
+        if word in exclude:
+            continue
+        if first_valid is None:
+            first_valid = word  # wraparound fallback
         if word_h >= day_h:
             return word
-    return candidates[0][1]
+    return first_valid  # wraparound or None if all excluded
 
 
 def freeze_history(words_data: WordsData, lang: str) -> WordsData:
@@ -70,23 +71,40 @@ def freeze_history(words_data: WordsData, lang: str) -> WordsData:
     for entry in words_data.words:
         entry.history = []
 
-    # Track recent picks for recency filtering
-    recent_picks: list[str] = []  # ordered list of picks (most recent last)
+    # Precompute sorted (hash, word) pairs once — avoids rehashing per day
+    precomputed = sorted((_word_hash(w, lang), w) for w in daily_pool)
+
+    # Track recent picks with a bounded deque
+    recent: deque[str] = deque(maxlen=RECENCY_WINDOW)
+    recent_set: set[str] = set()
 
     # Compute word for each post-migration day
     for i in range(days_since_migration):
         day_idx = MIGRATION_DAY_IDX + 1 + i
+        day_h = _day_hash(day_idx, lang)
 
-        # Build exclusion set: blocked + recently picked
-        recent_set = set(recent_picks[-RECENCY_WINDOW:])
         exclude = blocked | recent_set
+        word = _ring_select(precomputed, exclude, day_h)
 
-        word = _consistent_hash_select(daily_pool, exclude, day_idx, lang)
+        if word is None:
+            # All words excluded by recency — fall back to full pool
+            word = _ring_select(precomputed, blocked, day_h)
+        if word is None:
+            word = daily_pool[0]
 
         if word in word_map:
             word_map[word].history.append(day_idx)
 
-        recent_picks.append(word)
+        # Update recency window incrementally
+        if len(recent) == RECENCY_WINDOW:
+            evicted = recent[0]
+            # Only remove from set if no other occurrence in window
+            recent.append(word)
+            if evicted not in recent:
+                recent_set.discard(evicted)
+        else:
+            recent.append(word)
+        recent_set.add(word)
 
     history_count = sum(1 for e in words_data.words if e.history)
     log.info(f"{lang}: froze {days_since_migration} days across {history_count} unique words")

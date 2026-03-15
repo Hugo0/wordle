@@ -20,25 +20,55 @@ export { getTodaysIdx, idxToDate } from '../lib/day-index';
 import { getTodaysIdx } from '../lib/day-index';
 
 const RECENCY_WINDOW = 60;
+const EMPTY_SET: Set<string> = new Set();
+
+// Cache of precomputed hash rings per language
+const _hashRingCache = new Map<string, [bigint, string][]>();
 
 // ---------------------------------------------------------------------------
 // Hash functions
 // ---------------------------------------------------------------------------
 
-/**
- * Get a stable hash for a word. Doesn't change if the word list changes.
- */
 function wordHash(word: string, langCode: string): bigint {
     const h = createHash('sha256').update(`${langCode}:${word}`).digest();
     return h.readBigUInt64BE(0);
 }
 
-/**
- * Get a deterministic hash for a specific day.
- */
 function dayHash(dayIdx: number, langCode: string): bigint {
     const h = createHash('sha256').update(`${langCode}:day:${dayIdx}`).digest();
     return h.readBigUInt64BE(0);
+}
+
+// ---------------------------------------------------------------------------
+// Hash ring helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Get or build the sorted hash ring for a language's daily word pool.
+ * Cached after first computation — word hashes are stable.
+ */
+function getHashRing(words: string[], langCode: string): [bigint, string][] {
+    const key = langCode;
+    let ring = _hashRingCache.get(key);
+    if (!ring) {
+        ring = words.map((w) => [wordHash(w, langCode), w] as [bigint, string]);
+        ring.sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
+        _hashRingCache.set(key, ring);
+    }
+    return ring;
+}
+
+/**
+ * Pick the nearest word on the hash ring >= dayH, skipping excluded words.
+ */
+function ringSelect(ring: [bigint, string][], dayH: bigint, exclude: Set<string>): string | null {
+    let firstValid: string | null = null;
+    for (const [wh, word] of ring) {
+        if (exclude.has(word)) continue;
+        if (firstValid === null) firstValid = word;
+        if (wh >= dayH) return word;
+    }
+    return firstValid; // wraparound, or null if all excluded
 }
 
 // ---------------------------------------------------------------------------
@@ -47,10 +77,6 @@ function dayHash(dayIdx: number, langCode: string): bigint {
 
 /**
  * Select daily word using consistent hashing (post-migration algorithm).
- *
- * Each word has a fixed hash. Each day has a fixed hash.
- * We pick the word whose hash is closest to (>=) the day's hash on the ring.
- * Excluded words (blocked + recently used) are removed from candidates.
  */
 export function getDailyWordConsistentHash(
     words: string[],
@@ -58,36 +84,15 @@ export function getDailyWordConsistentHash(
     dayIdx: number,
     langCode: string,
 ): string {
+    const ring = getHashRing(words, langCode);
     const dayH = dayHash(dayIdx, langCode);
 
-    // Build sorted list of (hash, word) for non-excluded words
-    let candidates: [bigint, string][] = [];
-    for (const word of words) {
-        if (!exclude.has(word)) {
-            candidates.push([wordHash(word, langCode), word]);
-        }
-    }
+    const word = ringSelect(ring, dayH, exclude);
+    if (word) return word;
 
-    // Safety: if all words excluded by recency, fall back to full pool
-    if (candidates.length === 0) {
-        for (const word of words) {
-            candidates.push([wordHash(word, langCode), word]);
-        }
-    }
-
-    if (candidates.length === 0) {
-        return words[0] || '';
-    }
-
-    candidates.sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
-
-    // Find first word with hash >= day_hash (consistent hashing ring)
-    for (const [wh, word] of candidates) {
-        if (wh >= dayH) return word;
-    }
-
-    // Wraparound: day_hash is larger than all word hashes, pick first
-    return candidates[0]![1];
+    // All words excluded by recency — fall back ignoring exclusions
+    const fallback = ringSelect(ring, dayH, EMPTY_SET);
+    return fallback || words[0] || '';
 }
 
 /**
@@ -105,7 +110,6 @@ export function getDailyWordLegacy(
         return words[dayIdx % listLen]!;
     }
 
-    // Skip blocked words by walking forward
     for (let offset = 0; offset < listLen; offset++) {
         const idx = (dayIdx + offset) % listLen;
         const word = words[idx]!;
@@ -119,19 +123,16 @@ export function getDailyWordLegacy(
 // Main word selection (with history lookup and recency filtering)
 // ---------------------------------------------------------------------------
 
-/**
- * Compute the daily word from word lists (no disk caching).
- */
 function computeWordForDay(langCode: string, dayIdx: number): string {
     const data = loadAllData();
     const wordList = data.wordLists[langCode]!;
-    const blocklist = data.blocklists[langCode]!;
     const dailyWords = data.dailyWords[langCode];
+    const blocklist = data.blocklists[langCode]!;
     const history = data.wordHistory[langCode];
 
     // Legacy algorithm for pre-migration days
     if (dayIdx <= MIGRATION_DAY_IDX) {
-        return getDailyWordLegacy(wordList, new Set(), dayIdx);
+        return getDailyWordLegacy(wordList, EMPTY_SET, dayIdx);
     }
 
     // Check frozen history first (pinned past words from words.json)
@@ -140,22 +141,16 @@ function computeWordForDay(langCode: string, dayIdx: number): string {
     }
 
     // Build recency exclusion set from history
-    const recentWords = new Set<string>();
+    const exclude = new Set<string>(blocklist);
     if (history) {
         for (let d = dayIdx - RECENCY_WINDOW; d < dayIdx; d++) {
             const w = history.get(d);
-            if (w) recentWords.add(w);
+            if (w) exclude.add(w);
         }
     }
 
-    // Add blocked words to exclusion set
-    for (const w of blocklist) {
-        recentWords.add(w);
-    }
-
-    // Use daily words pool if available, otherwise full word list
     const pool = dailyWords && dailyWords.length > 0 ? dailyWords : wordList;
-    return getDailyWordConsistentHash(pool, recentWords, dayIdx, langCode);
+    return getDailyWordConsistentHash(pool, exclude, dayIdx, langCode);
 }
 
 /**

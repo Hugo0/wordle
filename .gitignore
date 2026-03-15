@@ -7,7 +7,6 @@ docs/
 # Node.js / Frontend
 node_modules/
 .pnpm-store/
-webapp/static/dist/
 
 # Nuxt
 .nuxt/
@@ -38,13 +37,10 @@ scripts/.freq_data/
 scripts/.kaikki_data/
 
 # Runtime caches (server-generated)
-webapp/static/word-images/
-webapp/static/word-defs/
-webapp/static/word-stats/
-webapp/static/word-history/
-
-# Generated share images (rebuilt on deploy)
-webapp/static/images/share/
+/word-images/
+/word-defs/
+/word-stats/
+/word-history/
 scripts/.freq_data
 
 # Curation review temp files

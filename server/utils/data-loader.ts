@@ -31,8 +31,8 @@ function resolveDataDir(): string {
 
 const DATA_DIR = resolveDataDir();
 
-// Persistent data directory for runtime-generated files
-const PERSISTENT_DIR = process.env.DATA_DIR || resolve(DATA_DIR, '..', 'webapp', 'static');
+// Persistent data directory for runtime-generated files (project root)
+const PERSISTENT_DIR = process.env.DATA_DIR || resolve(DATA_DIR, '..');
 export const WORD_IMAGES_DIR = join(PERSISTENT_DIR, 'word-images');
 export const WORD_DEFS_DIR = join(PERSISTENT_DIR, 'word-defs');
 export const WORD_STATS_DIR = join(PERSISTENT_DIR, 'word-stats');
@@ -184,7 +184,8 @@ function loadWordsJson(lang: string): ParsedWords | null {
 
     for (const w of data.words) {
         // Only include 5-letter words in the game lists
-        if (w.length !== 5 && w.word.length !== 5) continue;
+        const wordLen = w.length ?? w.word.length;
+        if (wordLen !== 5) continue;
 
         if (w.tier === 'blocked') {
             blocked.add(w.word);
