@@ -68,11 +68,75 @@
                 </a>
             </div>
 
-            <!-- Definition Card (shown after game completion) -->
-            <div id="definition-card" class="px-6 pb-2" style="display: none" />
+            <!-- Definition Card -->
+            <div v-if="game.todayDefinitionLoading" class="px-6 pb-2">
+                <div class="animate-pulse flex gap-2">
+                    <div class="flex-1 space-y-1.5">
+                        <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-20" />
+                        <div class="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-full" />
+                    </div>
+                </div>
+            </div>
+            <div v-else-if="game.todayDefinition" class="px-6 pb-2">
+                <div class="flex items-start gap-2">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-0.5">
+                            <span
+                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                            >
+                                {{ lang.config?.ui?.definition || 'Definition' }}
+                            </span>
+                            <span
+                                v-if="game.todayDefinition.partOfSpeech"
+                                class="text-xs text-neutral-400 dark:text-neutral-500 italic"
+                            >
+                                {{ game.todayDefinition.partOfSpeech }}
+                            </span>
+                        </div>
+                        <p class="text-sm text-neutral-800 dark:text-neutral-200">
+                            <strong class="uppercase">{{ game.todayDefinition.word }}</strong>
+                            &mdash; {{ game.todayDefinition.definition }}
+                        </p>
+                    </div>
+                    <a
+                        v-if="game.todayDefinition.url"
+                        :href="game.todayDefinition.url"
+                        class="flex-shrink-0 text-neutral-400 hover:text-blue-500 dark:text-neutral-500 dark:hover:text-blue-400"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4 w-4"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
+                            />
+                            <path
+                                d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
+                            />
+                        </svg>
+                    </a>
+                </div>
+            </div>
 
-            <!-- Word Art Image (shown after game completion, if enabled) -->
-            <div id="word-image-card" class="px-6 pt-1 pb-2" style="display: none" />
+            <!-- Word Art Image -->
+            <div v-if="game.todayImageLoading" class="px-6 pt-1 pb-2">
+                <div class="animate-pulse">
+                    <div class="h-48 bg-neutral-200 dark:bg-neutral-700 rounded-lg w-full" />
+                </div>
+            </div>
+            <div v-else-if="game.todayImageUrl" class="px-6 pt-1 pb-2">
+                <a
+                    :href="'/' + lang.languageCode + '/word/' + lang.todaysIdx"
+                >
+                    <img
+                        :src="game.todayImageUrl"
+                        :alt="lang.todaysWord"
+                        class="w-full max-h-48 object-contain rounded-lg"
+                    />
+                </a>
+            </div>
 
             <!-- Percentile + Share -->
             <div class="px-6 py-3 border-t border-gray-200 dark:border-gray-600">
