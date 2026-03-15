@@ -32,10 +32,6 @@ def cmd_run(args):
         result = run_pipeline(
             lang,
             stages=stages,
-            use_llm=args.llm,
-            llm_model=args.llm_model,
-            llm_batch_size=args.batch_size,
-            llm_max_batches=args.max_batches,
             dry_run=args.dry_run,
         )
         results.append(result)
@@ -101,10 +97,6 @@ def main():
     run_parser.add_argument(
         "--stages", help="Comma-separated stages: source,normalize,score,curate,freeze"
     )
-    run_parser.add_argument("--llm", action="store_true", help="Enable LLM curation")
-    run_parser.add_argument("--llm-model", default="claude-sonnet-4-20250514", help="LLM model")
-    run_parser.add_argument("--batch-size", type=int, default=50, help="LLM batch size")
-    run_parser.add_argument("--max-batches", type=int, help="Max LLM batches (for testing)")
     run_parser.add_argument("--dry-run", action="store_true", help="Preview without writing")
     run_parser.set_defaults(func=cmd_run)
 

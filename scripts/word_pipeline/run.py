@@ -20,10 +20,6 @@ ALL_STAGES = ["source", "normalize", "score", "curate", "freeze"]
 def run_pipeline(
     lang: str,
     stages: list[str] | None = None,
-    use_llm: bool = False,
-    llm_model: str = "claude-sonnet-4-20250514",
-    llm_batch_size: int = 50,
-    llm_max_batches: int | None = None,
     dry_run: bool = False,
 ) -> dict:
     """Run the pipeline for a single language.
@@ -57,16 +53,9 @@ def run_pipeline(
         words_data = score_pool(words_data, lang)
         result["stages_run"].append("score")
 
-    # Stage 4: CURATE — rule-based + LLM classification + overrides
+    # Stage 4: CURATE — rule-based filtering + community overrides
     if "curate" in stages:
-        words_data = curate_pool(
-            words_data,
-            lang,
-            use_llm=use_llm,
-            llm_batch_size=llm_batch_size,
-            llm_max_batches=llm_max_batches,
-            llm_model=llm_model,
-        )
+        words_data = curate_pool(words_data, lang)
         result["stages_run"].append("curate")
 
     # Stage 5: FREEZE — compute word history
