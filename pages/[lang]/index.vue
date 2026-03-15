@@ -27,7 +27,6 @@ const stats = useStatsStore();
 // Populate language store from API response
 langStore.init({
     word_list: gameData.value.word_list,
-    word_list_supplement: gameData.value.word_list_supplement,
     characters: gameData.value.characters,
     config: gameData.value.config,
     todays_idx: gameData.value.todays_idx,

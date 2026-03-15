@@ -2,11 +2,15 @@
  * Game Store — Core Wordle game logic
  *
  * This is the main Pinia store that manages game state and logic.
- * It replaces the monolithic Vue Options API component from the
- * Flask-era game.ts with a Composition API store.
  *
  * SSR-safe: all localStorage, document, and window access is guarded
  * behind `import.meta.client`.
+ *
+ * localStorage compatibility: The save format is backward-compatible with the
+ * Flask-era frontend. Old saves lack the `tile_colors` field — when detected,
+ * colors are derived from CSS class strings (see loadFromLocalStorage). Do not
+ * change the save key format (language code from URL path) or remove the
+ * tile_colors derivation without a migration path.
  */
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
@@ -157,7 +161,6 @@ export const useGameStore = defineStore('game', () => {
 
     /** Cached normalized word maps — built lazily on first use. */
     let _normalizedWordMap: Map<string, string> | null = null;
-    let _normalizedSupplementMap: Map<string, string> | null = null;
 
     // =======================================================================
     // Private helpers
@@ -171,16 +174,6 @@ export const useGameStore = defineStore('game', () => {
         return _normalizedWordMap;
     }
 
-    /** Get or build the normalized word map for the supplement word list. */
-    function getNormalizedSupplementMap(): Map<string, string> {
-        if (_normalizedSupplementMap) return _normalizedSupplementMap;
-        const lang = useLanguageStore();
-        _normalizedSupplementMap = buildNormalizedWordMap(
-            lang.wordListSupplement,
-            lang.normalizeMap
-        );
-        return _normalizedSupplementMap;
-    }
 
     /**
      * Fully normalize a character (positional variants + diacritics).
@@ -224,7 +217,6 @@ export const useGameStore = defineStore('game', () => {
      */
     function resetCaches(): void {
         _normalizedWordMap = null;
-        _normalizedSupplementMap = null;
     }
 
     /**
@@ -269,16 +261,11 @@ export const useGameStore = defineStore('game', () => {
 
         // Try exact match first
         if (lang.wordListSet.has(word)) return word;
-        if (lang.wordListSupplementSet.has(word)) return word;
 
         // Try normalized match (e.g., "borde" matches "börde")
         const normalized = normalizeWord(word, lang.normalizeMap);
         const canonical = getNormalizedWordMap().get(normalized);
         if (canonical) return canonical;
-
-        // Check supplement with normalization
-        const supplementCanonical = getNormalizedSupplementMap().get(normalized);
-        if (supplementCanonical) return supplementCanonical;
 
         return null;
     }

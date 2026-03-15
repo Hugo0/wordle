@@ -38,8 +38,7 @@ class WordEntry:
     flags: WordFlags = field(default_factory=WordFlags)
     llm: LLMCuration | None = None
     reviewed: bool = False
-    history: list[int] = field(default_factory=list)  # day indices
-    scheduled_day: int | None = None
+    history: list[int] = field(default_factory=list)  # day indices this word was the daily word
 
 
 @dataclass
@@ -96,8 +95,6 @@ def _entry_to_dict(entry: WordEntry) -> dict:
         d["reviewed"] = True
     if entry.history:
         d["history"] = entry.history
-    if entry.scheduled_day is not None:
-        d["scheduled_day"] = entry.scheduled_day
     return d
 
 
@@ -116,7 +113,6 @@ def _entry_from_dict(d: dict) -> WordEntry:
         llm=llm,
         reviewed=d.get("reviewed", False),
         history=d.get("history", []),
-        scheduled_day=d.get("scheduled_day"),
     )
 
 

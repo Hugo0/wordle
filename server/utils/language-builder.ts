@@ -16,7 +16,6 @@ export interface LanguageSession {
     languageCode: string;
     config: LanguageConfig;
     wordList: string[];
-    wordListSupplement: string[];
     characters: string[];
     dailyWord: string;
     todaysIdx: number;
@@ -38,7 +37,6 @@ export function buildLanguageSession(
     const data = loadAllData();
     const config = data.configs[langCode]!;
     const wordList = data.wordLists[langCode]!;
-    const wordListSupplement = data.supplements[langCode]!;
 
     // Timezone
     const timezone = config.timezone || 'UTC';
@@ -92,7 +90,6 @@ export function buildLanguageSession(
         languageCode: langCode,
         config,
         wordList,
-        wordListSupplement,
         characters,
         dailyWord,
         todaysIdx,

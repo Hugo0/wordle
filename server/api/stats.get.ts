@@ -24,13 +24,11 @@ export default defineEventHandler(() => {
 
     for (const lc of data.languageCodes) {
         const nWords = data.wordLists[lc]?.length || 0;
-        const nSupplement = data.supplements[lc]?.length || 0;
-        totalWordsAll += nWords + nSupplement;
+        totalWordsAll += nWords;
 
         const daily = data.dailyWords[lc];
         const nDaily = daily ? daily.length : 0;
         const nBlocklist = data.blocklists[lc]?.size || 0;
-        const hasSchedule = !!data.curatedSchedules[lc];
         totalDailyWordsAll += nDaily || nWords;
 
         let langTotalPlays = 0;
@@ -57,10 +55,8 @@ export default defineEventHandler(() => {
             name: data.languages[lc]?.language_name || lc,
             name_native: data.languages[lc]?.language_name_native || '',
             n_words: nWords,
-            n_supplement: nSupplement,
             n_daily: nDaily,
             n_blocklist: nBlocklist,
-            has_schedule: hasSchedule,
             total_plays: langTotalPlays,
             total_wins: langTotalWins,
             win_rate:

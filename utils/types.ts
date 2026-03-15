@@ -67,7 +67,6 @@ export interface LanguageConfig {
 
 export interface GameData {
     word_list: string[];
-    word_list_supplement: string[];
     characters: string[];
     config: LanguageConfig;
     todays_idx: number;

@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
 
     // Only serve definitions for valid words
     const wordLower = word.toLowerCase();
-    const allWords = new Set([...data.wordLists[lang]!, ...data.supplements[lang]!]);
+    const allWords = new Set(data.wordLists[lang]!);
     if (!allWords.has(wordLower)) {
         throw createError({ statusCode: 404, message: 'Unknown word' });
     }

@@ -18,7 +18,6 @@ export const useLanguageStore = defineStore('language', () => {
 
     const config = ref<LanguageConfig | undefined>(undefined);
     const wordList = ref<string[]>([]);
-    const wordListSupplement = ref<string[]>([]);
     const characters = ref<string[]>([]);
     const todaysIdx = ref(0);
     const todaysWord = ref('');
@@ -53,9 +52,6 @@ export const useLanguageStore = defineStore('language', () => {
     /** Word list as Set for O(1) exact-match lookups. */
     const wordListSet = computed(() => new Set(wordList.value));
 
-    /** Supplement list as Set for O(1) exact-match lookups. */
-    const wordListSupplementSet = computed(() => new Set(wordListSupplement.value));
-
     // -----------------------------------------------------------------------
     // Actions
     // -----------------------------------------------------------------------
@@ -69,7 +65,6 @@ export const useLanguageStore = defineStore('language', () => {
     function init(data: GameData): void {
         config.value = data.config;
         wordList.value = data.word_list;
-        wordListSupplement.value = data.word_list_supplement;
         characters.value = data.characters;
         todaysIdx.value = data.todays_idx;
         todaysWord.value = data.todays_word;
@@ -103,7 +98,6 @@ export const useLanguageStore = defineStore('language', () => {
         // State
         config,
         wordList,
-        wordListSupplement,
         characters,
         todaysIdx,
         todaysWord,
@@ -121,7 +115,6 @@ export const useLanguageStore = defineStore('language', () => {
         graphemeMode,
         languageCode,
         wordListSet,
-        wordListSupplementSet,
 
         // Actions
         init,

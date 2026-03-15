@@ -5,20 +5,21 @@
  * - Legacy (day_idx <= MIGRATION_DAY_IDX): shuffle + modulo from pre-shuffled list
  * - Consistent hash (day_idx > MIGRATION_DAY_IDX): SHA-256 ring-based selection
  *
- * Three-tier selection hierarchy:
- * 1. Curated schedule (ordered list for specific days)
- * 2. Daily words (curated high-quality words, consistent hash)
- * 3. Main word list with blocklist filtering (consistent hash)
+ * Selection hierarchy for post-migration days:
+ * 1. Frozen history (words.json history field) — pinned past words
+ * 2. Consistent hash with 60-day recency filter
  */
 
 import { createHash } from 'crypto';
 import { existsSync, readFileSync, writeFileSync, mkdirSync, renameSync } from 'fs';
-import { join, dirname } from 'path';
+import { join } from 'path';
 import { MIGRATION_DAY_IDX, WORD_HISTORY_DIR, loadAllData } from './data-loader';
 
 // Re-export day index functions so existing consumers don't need to change imports
 export { getTodaysIdx, idxToDate } from '../lib/day-index';
 import { getTodaysIdx } from '../lib/day-index';
+
+const RECENCY_WINDOW = 60;
 
 // ---------------------------------------------------------------------------
 // Hash functions
@@ -49,20 +50,27 @@ function dayHash(dayIdx: number, langCode: string): bigint {
  *
  * Each word has a fixed hash. Each day has a fixed hash.
  * We pick the word whose hash is closest to (>=) the day's hash on the ring.
- * Blocklisted words are simply excluded from consideration.
+ * Excluded words (blocked + recently used) are removed from candidates.
  */
 export function getDailyWordConsistentHash(
     words: string[],
-    blocklist: Set<string>,
+    exclude: Set<string>,
     dayIdx: number,
-    langCode: string
+    langCode: string,
 ): string {
     const dayH = dayHash(dayIdx, langCode);
 
-    // Build sorted list of (hash, word) for non-blocked words
-    const candidates: [bigint, string][] = [];
+    // Build sorted list of (hash, word) for non-excluded words
+    let candidates: [bigint, string][] = [];
     for (const word of words) {
-        if (!blocklist.has(word)) {
+        if (!exclude.has(word)) {
+            candidates.push([wordHash(word, langCode), word]);
+        }
+    }
+
+    // Safety: if all words excluded by recency, fall back to full pool
+    if (candidates.length === 0) {
+        for (const word of words) {
             candidates.push([wordHash(word, langCode), word]);
         }
     }
@@ -89,7 +97,7 @@ export function getDailyWordConsistentHash(
 export function getDailyWordLegacy(
     words: string[],
     blocklist: Set<string>,
-    dayIdx: number
+    dayIdx: number,
 ): string {
     const listLen = words.length;
 
@@ -108,31 +116,46 @@ export function getDailyWordLegacy(
 }
 
 // ---------------------------------------------------------------------------
-// Main word selection (3-tier with caching)
+// Main word selection (with history lookup and recency filtering)
 // ---------------------------------------------------------------------------
 
 /**
- * Compute the daily word from word lists (no caching).
+ * Compute the daily word from word lists (no disk caching).
  */
 function computeWordForDay(langCode: string, dayIdx: number): string {
     const data = loadAllData();
     const wordList = data.wordLists[langCode]!;
     const blocklist = data.blocklists[langCode]!;
     const dailyWords = data.dailyWords[langCode];
-    const curatedSchedule = data.curatedSchedules[langCode];
+    const history = data.wordHistory[langCode];
 
+    // Legacy algorithm for pre-migration days
     if (dayIdx <= MIGRATION_DAY_IDX) {
         return getDailyWordLegacy(wordList, new Set(), dayIdx);
     }
 
-    const scheduleIdx = dayIdx - MIGRATION_DAY_IDX - 1;
-    if (curatedSchedule && scheduleIdx < curatedSchedule.length) {
-        return curatedSchedule[scheduleIdx]!;
+    // Check frozen history first (pinned past words from words.json)
+    if (history && history.has(dayIdx)) {
+        return history.get(dayIdx)!;
     }
-    if (dailyWords) {
-        return getDailyWordConsistentHash(dailyWords, new Set(), dayIdx, langCode);
+
+    // Build recency exclusion set from history
+    const recentWords = new Set<string>();
+    if (history) {
+        for (let d = dayIdx - RECENCY_WINDOW; d < dayIdx; d++) {
+            const w = history.get(d);
+            if (w) recentWords.add(w);
+        }
     }
-    return getDailyWordConsistentHash(wordList, blocklist, dayIdx, langCode);
+
+    // Add blocked words to exclusion set
+    for (const w of blocklist) {
+        recentWords.add(w);
+    }
+
+    // Use daily words pool if available, otherwise full word list
+    const pool = dailyWords && dailyWords.length > 0 ? dailyWords : wordList;
+    return getDailyWordConsistentHash(pool, recentWords, dayIdx, langCode);
 }
 
 /**

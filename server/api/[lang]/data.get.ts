@@ -1,7 +1,7 @@
 /**
  * GET /api/[lang]/data — language game data.
  *
- * Returns word list, supplement, characters, config, keyboard, daily word info.
+ * Returns word list, characters, config, keyboard, daily word info.
  */
 import { loadAllData } from '../../utils/data-loader';
 import { buildLanguageSession } from '../../utils/language-builder';
@@ -21,7 +21,6 @@ export default defineEventHandler((event) => {
 
     return {
         word_list: session.wordList,
-        word_list_supplement: session.wordListSupplement,
         characters: session.characters,
         config: session.config,
         todays_idx: session.todaysIdx,

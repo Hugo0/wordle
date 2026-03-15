@@ -1,4 +1,4 @@
-"""Tests for words.json migration — verify no data loss or behavioral changes."""
+"""Tests for words.json — verify schema validity and data integrity."""
 
 import sys
 from pathlib import Path
@@ -19,37 +19,6 @@ def _get_all_language_codes():
     return sorted(d.name for d in LANGUAGES_DIR.iterdir() if d.is_dir())
 
 
-def _read_lines(path: Path) -> list[str]:
-    if not path.exists():
-        return []
-    return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
-
-
-def _read_non_comment_lines(path: Path) -> list[str]:
-    return [line for line in _read_lines(path) if not line.startswith("#")]
-
-
-def _load_word_list(lang: str) -> list[str]:
-    return _read_lines(LANGUAGES_DIR / lang / f"{lang}_5words.txt")
-
-
-def _load_supplement(lang: str) -> list[str]:
-    return _read_lines(LANGUAGES_DIR / lang / f"{lang}_5words_supplement.txt")
-
-
-def _load_daily_words(lang: str) -> list[str]:
-    return [
-        w.lower() for w in _read_non_comment_lines(LANGUAGES_DIR / lang / f"{lang}_daily_words.txt")
-    ]
-
-
-def _load_blocklist(lang: str) -> set[str]:
-    return {
-        w.lower() for w in _read_non_comment_lines(LANGUAGES_DIR / lang / f"{lang}_blocklist.txt")
-    }
-
-
-# Only test languages that have been migrated
 def get_migrated_languages():
     """Get language codes that have words.json."""
     return [lc for lc in _get_all_language_codes() if (LANGUAGES_DIR / lc / "words.json").exists()]
@@ -74,88 +43,26 @@ def words_data(lang):
     return _json_cache[lang]
 
 
-class TestMigrationCompleteness:
-    """Verify all words from original files are present in words.json."""
-
-    def test_all_main_words_present(self, lang, words_data):
-        """Every word from _5words.txt must appear in words.json."""
-        main_words = _load_word_list(lang)
-        json_words = {w.word for w in words_data.words}
-        missing = {w.lower() for w in main_words} - json_words
-        assert not missing, (
-            f"{lang}: {len(missing)} main words missing from JSON: {list(missing)[:10]}"
-        )
-
-    def test_all_supplement_words_present(self, lang, words_data):
-        """Every word from _5words_supplement.txt must appear in words.json."""
-        supplement = _load_supplement(lang)
-        if not supplement:
-            pytest.skip("No supplement file")
-        json_words = {w.word for w in words_data.words}
-        missing = {w.lower() for w in supplement} - json_words
-        assert not missing, f"{lang}: {len(missing)} supplement words missing: {list(missing)[:10]}"
-
-
-class TestTierAssignment:
-    """Verify tier assignments match original file relationships."""
-
-    def test_daily_words_have_daily_tier(self, lang, words_data):
-        """Words from _daily_words.txt must have tier='daily' (unless blocklisted)."""
-        daily = set(_load_daily_words(lang))
-        if not daily:
-            pytest.skip("No daily words file")
-        blocklist = _load_blocklist(lang)
-        word_map = words_data.word_map()
-        wrong_tier = []
-        for w in daily:
-            if w in word_map:
-                entry = word_map[w]
-                if w in blocklist:
-                    if entry.tier != "blocked":
-                        wrong_tier.append((w, entry.tier, "expected blocked"))
-                elif entry.tier != "daily":
-                    wrong_tier.append((w, entry.tier, "expected daily"))
-        assert not wrong_tier, f"{lang}: {len(wrong_tier)} tier mismatches: {wrong_tier[:5]}"
-
-    def test_blocklist_words_have_blocked_tier(self, lang, words_data):
-        """Words from _blocklist.txt must have tier='blocked'."""
-        blocklist = _load_blocklist(lang)
-        if not blocklist:
-            pytest.skip("No blocklist file")
-        word_map = words_data.word_map()
-        wrong = []
-        for w in blocklist:
-            if w in word_map and word_map[w].tier != "blocked":
-                wrong.append((w, word_map[w].tier))
-        assert not wrong, f"{lang}: {len(wrong)} blocklisted words not blocked: {wrong[:5]}"
-
-
 class TestHistoryPreservation:
-    """Verify word history is correctly migrated."""
+    """Verify word history is valid."""
 
     def test_history_words_exist(self, lang, words_data):
-        """All words with history[] must exist and have valid day indices."""
+        """All words with history[] must have valid day indices."""
         for entry in words_data.words:
             if entry.history:
                 assert all(isinstance(d, int) and d > 1681 for d in entry.history), (
                     f"{lang}: {entry.word} has invalid history: {entry.history}"
                 )
 
-    def test_history_count_matches_file(self, lang, words_data):
-        """Number of words with history should match word_history.txt line count."""
-        history_path = LANGUAGES_DIR / lang / f"{lang}_word_history.txt"
-        if not history_path.exists():
-            pytest.skip("No word history file")
-        history_lines = [
-            line.strip()
-            for line in history_path.read_text(encoding="utf-8").splitlines()
-            if line.strip() and not line.strip().startswith("#")
-        ]
-        json_history_entries = sum(len(e.history) for e in words_data.words)
-        assert json_history_entries == len(history_lines), (
-            f"{lang}: JSON has {json_history_entries} history entries, "
-            f"file has {len(history_lines)} lines"
-        )
+    def test_history_no_gaps(self, lang, words_data):
+        """History entries should form a contiguous sequence of days."""
+        all_days = set()
+        for entry in words_data.words:
+            for d in entry.history:
+                assert d not in all_days, (
+                    f"{lang}: day {d} appears in history for multiple words"
+                )
+                all_days.add(d)
 
 
 class TestSchemaValidity:

@@ -64,8 +64,7 @@ vi.stubGlobal('$fetch', vi.fn().mockResolvedValue({}));
 
 function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
     return {
-        word_list: ['crane', 'slate', 'hello', 'world', 'apple', 'cairn', 'party', 'aback'],
-        word_list_supplement: ['stare', 'raise', 'crate'],
+        word_list: ['crane', 'slate', 'hello', 'world', 'apple', 'cairn', 'party', 'aback', 'stare', 'raise', 'crate'],
         characters: [
             'a',
             'b',
