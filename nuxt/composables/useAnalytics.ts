@@ -864,11 +864,16 @@ export function useAnalytics() {
     // INITIALIZATION HELPERS
     // ========================================================================
 
+    // Guards to prevent duplicate listener registration
+    let _errorTrackingInit = false;
+    let _abandonTrackingInit = false;
+
     /**
-     * Set up global error tracking
+     * Set up global error tracking (idempotent — safe to call multiple times)
      */
     const initErrorTracking = (language: string): void => {
-        if (!import.meta.client) return;
+        if (!import.meta.client || _errorTrackingInit) return;
+        _errorTrackingInit = true;
 
         window.addEventListener('error', (event) => {
             trackError({
@@ -888,7 +893,7 @@ export function useAnalytics() {
     };
 
     /**
-     * Track game abandonment on page unload
+     * Track game abandonment on page unload (idempotent)
      */
     const initAbandonTracking = (
         getState: () => {
@@ -898,7 +903,8 @@ export function useAnalytics() {
             lastGuessValid: boolean;
         },
     ): void => {
-        if (!import.meta.client) return;
+        if (!import.meta.client || _abandonTrackingInit) return;
+        _abandonTrackingInit = true;
 
         window.addEventListener('beforeunload', () => {
             const state = getState();

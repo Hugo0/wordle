@@ -8,7 +8,7 @@
  * SSR-safe: all localStorage, document, and window access is guarded
  * behind `import.meta.client`.
  */
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '~/stores/language';
 import { useSettingsStore } from '~/stores/settings';
@@ -90,7 +90,7 @@ export const useGameStore = defineStore('game', () => {
     const fullWordInputted = ref(false);
 
     const gameOver = ref(false);
-    const gameLost = ref(false);
+    const gameLost = computed(() => gameOver.value && !gameWon.value);
     const gameWon = ref(false);
     const attempts = ref('0');
 
@@ -762,7 +762,6 @@ export const useGameStore = defineStore('game', () => {
 
         gameOver.value = true;
         gameWon.value = false;
-        gameLost.value = true;
         attempts.value = 'X';
 
         // Load definition for stats modal display
@@ -930,10 +929,7 @@ export const useGameStore = defineStore('game', () => {
                 attempts.value = data.attempts;
                 fullWordInputted.value = data.full_word_inputted;
 
-                // Derive gameLost from saved state
-                if (data.game_over && !data.game_won) {
-                    gameLost.value = true;
-                }
+                // gameLost is derived from gameOver && !gameWon
             }
         } catch {
             // localStorage unavailable or corrupted data
@@ -1035,14 +1031,11 @@ export const useGameStore = defineStore('game', () => {
         const dayIdx = lang.todaysIdx;
         if (!langCode || isNaN(dayIdx)) return;
 
-        // Get or create client ID
+        // Get or create client ID (same logic as useAnalytics.getOrCreateClientId)
         let clientId = 'unknown';
         try {
-            clientId = localStorage.getItem('client_id') || '';
-            if (!clientId) {
-                clientId = crypto.randomUUID();
-                localStorage.setItem('client_id', clientId);
-            }
+            clientId = localStorage.getItem('client_id') || crypto.randomUUID();
+            localStorage.setItem('client_id', clientId);
         } catch {
             // localStorage unavailable
         }
@@ -1199,16 +1192,6 @@ export const useGameStore = defineStore('game', () => {
         });
     }
 
-    /** Convenience alias used by templates. */
-    function copyEmojiBoard(): void {
-        shareResults();
-    }
-
-    /** Alias for the share button. */
-    function share(): void {
-        shareResults();
-    }
-
     // =======================================================================
     // Return public API
     // =======================================================================
@@ -1272,7 +1255,5 @@ export const useGameStore = defineStore('game', () => {
         maybeShowTutorial,
         submitWordStats,
         shareResults,
-        copyEmojiBoard,
-        share,
     };
 });

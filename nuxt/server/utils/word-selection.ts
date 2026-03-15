@@ -12,7 +12,7 @@
  */
 
 import { createHash } from 'crypto';
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, renameSync } from 'fs';
 import { join, dirname } from 'path';
 import { MIGRATION_DAY_IDX, WORD_HISTORY_DIR, loadAllData } from './data-loader';
 
@@ -203,7 +203,6 @@ export function getWordForDay(langCode: string, dayIdx: number): string {
         const tmpPath = cachePath + '.tmp';
         try {
             writeFileSync(tmpPath, word, 'utf-8');
-            const { renameSync } = require('fs');
             renameSync(tmpPath, cachePath);
         } catch {
             // Non-critical

@@ -359,8 +359,11 @@ const settings = useSettingsStore();
 const lang = useLanguageStore();
 const game = useGameStore();
 
-/** Track easy mode (allow any word) locally -- not persisted in settings store yet. */
-const allowAnyWord = ref(false);
+/** Easy mode (allow any word) — synced with game store. */
+const allowAnyWord = computed({
+    get: () => game.allowAnyWord,
+    set: (v: boolean) => { game.allowAnyWord = v; },
+});
 
 /** Local RTL toggle -- mirrors the computed value but allows user override. */
 const localRtl = ref(lang.rightToLeft);
