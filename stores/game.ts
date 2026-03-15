@@ -128,6 +128,17 @@ export const useGameStore = defineStore('game', () => {
 
     const shareButtonState = ref<'idle' | 'success'>('idle');
 
+    // Definition & word image for stats modal display
+    const todayDefinition = ref<{
+        word: string;
+        definition: string;
+        partOfSpeech?: string;
+        url?: string;
+    } | null>(null);
+    const todayImageUrl = ref<string | null>(null);
+    const todayImageLoading = ref(false);
+    const todayDefinitionLoading = ref(false);
+
     const allowAnyWord = ref(false);
 
     const maxDifficultyUsed = ref(0);
@@ -674,13 +685,9 @@ export const useGameStore = defineStore('game', () => {
             }, 2500);
         }
 
-        // Load definition for stats modal display
+        // Load definition and image for stats modal display
         if (import.meta.client) {
-            const { fetchDefinition } = useDefinitions();
-            fetchDefinition(lang.todaysWord, lang.languageCode).then((def) => {
-                // Store definition for stats modal to display
-                // For now, just mark that we tried to load it
-            });
+            loadDefinitionAndImage(lang.todaysWord, lang.languageCode, lang.todaysIdx);
         }
 
         submitWordStats(true, activeRow.value);
@@ -736,13 +743,9 @@ export const useGameStore = defineStore('game', () => {
         gameWon.value = false;
         attempts.value = 'X';
 
-        // Load definition for stats modal display
+        // Load definition and image for stats modal display
         if (import.meta.client) {
-            const { fetchDefinition } = useDefinitions();
-            fetchDefinition(lang.todaysWord, lang.languageCode).then((def) => {
-                // Store definition for stats modal to display
-                // For now, just mark that we tried to load it
-            });
+            loadDefinitionAndImage(lang.todaysWord, lang.languageCode, lang.todaysIdx);
         }
 
         submitWordStats(false, activeRow.value);
@@ -920,6 +923,11 @@ export const useGameStore = defineStore('game', () => {
                         })
                     );
                 }
+
+                // Load definition/image if game was already completed
+                if (data.game_over) {
+                    loadDefinitionAndImage(lang.todaysWord, lang.languageCode, lang.todaysIdx);
+                }
             }
         } catch {
             // localStorage unavailable or corrupted data
@@ -1049,6 +1057,42 @@ export const useGameStore = defineStore('game', () => {
         } catch {
             // Ignore errors
         }
+    }
+
+    // ---- Definition & Image for Stats Modal ----
+
+    function loadDefinitionAndImage(word: string, langCode: string, dayIdx: number): void {
+        // Always load — template controls visibility via settings.wordInfoEnabled
+        todayDefinitionLoading.value = true;
+        todayImageLoading.value = true;
+
+        const { fetchDefinition } = useDefinitions();
+        fetchDefinition(word, langCode)
+            .then((def) => {
+                if (def.definition) {
+                    todayDefinition.value = {
+                        word: def.word,
+                        definition: def.definition,
+                        partOfSpeech: def.partOfSpeech,
+                        url: `/${langCode}/word/${dayIdx}`,
+                    };
+                }
+            })
+            .finally(() => {
+                todayDefinitionLoading.value = false;
+            });
+
+        // Load word image
+        const imgUrl = `/api/${langCode}/word-image/${encodeURIComponent(word)}?day_idx=${dayIdx}`;
+        const img = new Image();
+        img.onload = () => {
+            todayImageUrl.value = imgUrl;
+            todayImageLoading.value = false;
+        };
+        img.onerror = () => {
+            todayImageLoading.value = false;
+        };
+        img.src = imgUrl;
     }
 
     // ---- Share ----
@@ -1207,6 +1251,10 @@ export const useGameStore = defineStore('game', () => {
         communityTotal,
         communityStatsLink,
         shareButtonState,
+        todayDefinition,
+        todayImageUrl,
+        todayImageLoading,
+        todayDefinitionLoading,
         allowAnyWord,
         maxDifficultyUsed,
         // hardMode is owned by settings store
