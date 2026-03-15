@@ -104,7 +104,7 @@ jobs:
         run: cd nuxt && pnpm install
 
       - name: Prepare Nuxt (generate .nuxt/tsconfig.json)
-        run: cd nuxt && pnpm run postinstall
+        run: cd nuxt && ./node_modules/.bin/nuxt prepare
 
       - name: Run vitest (unit + integration + parity)
         run: cd nuxt && pnpm test
@@ -130,7 +130,7 @@ jobs:
         run: cd nuxt && pnpm install
 
       - name: Prepare Nuxt (generate .nuxt/tsconfig.json)
-        run: cd nuxt && pnpm run postinstall
+        run: cd nuxt && ./node_modules/.bin/nuxt prepare
 
       - name: Install Playwright browsers
         run: cd nuxt && npx playwright install chromium --with-deps

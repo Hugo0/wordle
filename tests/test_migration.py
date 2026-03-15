@@ -38,21 +38,21 @@ def _load_supplement(lang: str) -> list[str]:
 
 
 def _load_daily_words(lang: str) -> list[str]:
-    return [w.lower() for w in _read_non_comment_lines(LANGUAGES_DIR / lang / f"{lang}_daily_words.txt")]
+    return [
+        w.lower() for w in _read_non_comment_lines(LANGUAGES_DIR / lang / f"{lang}_daily_words.txt")
+    ]
 
 
 def _load_blocklist(lang: str) -> set[str]:
-    return {w.lower() for w in _read_non_comment_lines(LANGUAGES_DIR / lang / f"{lang}_blocklist.txt")}
+    return {
+        w.lower() for w in _read_non_comment_lines(LANGUAGES_DIR / lang / f"{lang}_blocklist.txt")
+    }
 
 
 # Only test languages that have been migrated
 def get_migrated_languages():
     """Get language codes that have words.yaml."""
-    return [
-        lc
-        for lc in _get_all_language_codes()
-        if (LANGUAGES_DIR / lc / "words.yaml").exists()
-    ]
+    return [lc for lc in _get_all_language_codes() if (LANGUAGES_DIR / lc / "words.yaml").exists()]
 
 
 @pytest.fixture(params=get_migrated_languages(), ids=lambda x: x)
@@ -82,7 +82,9 @@ class TestMigrationCompleteness:
         main_words = _load_word_list(lang)
         yaml_words = {w.word for w in words_yaml.words}
         missing = {w.lower() for w in main_words} - yaml_words
-        assert not missing, f"{lang}: {len(missing)} main words missing from YAML: {list(missing)[:10]}"
+        assert not missing, (
+            f"{lang}: {len(missing)} main words missing from YAML: {list(missing)[:10]}"
+        )
 
     def test_all_supplement_words_present(self, lang, words_yaml):
         """Every word from _5words_supplement.txt must appear in words.yaml."""
@@ -135,9 +137,9 @@ class TestHistoryPreservation:
         """All words with history[] must exist and have valid day indices."""
         for entry in words_yaml.words:
             if entry.history:
-                assert all(
-                    isinstance(d, int) and d > 1681 for d in entry.history
-                ), f"{lang}: {entry.word} has invalid history: {entry.history}"
+                assert all(isinstance(d, int) and d > 1681 for d in entry.history), (
+                    f"{lang}: {entry.word} has invalid history: {entry.history}"
+                )
 
     def test_history_count_matches_file(self, lang, words_yaml):
         """Number of words with history should match word_history.txt line count."""
