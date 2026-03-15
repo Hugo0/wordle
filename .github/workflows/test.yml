@@ -85,8 +85,6 @@ jobs:
 
       - name: Run vitest
         run: pnpm test
-        env:
-          SKIP_PARITY: '1'
 
   e2e:
     name: E2E Tests (Playwright)

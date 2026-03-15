@@ -11,17 +11,17 @@ interface OtherWordle {
 }
 
 function resolveDataDir(): string {
-    const envDataDir = process.env.NUXT_WEBAPP_DATA_DIR;
+    const envDataDir = process.env.NUXT_DATA_DIR;
     if (envDataDir && existsSync(envDataDir)) return envDataDir;
 
     const candidates = [
-        resolve(process.cwd(), '..', 'webapp', 'data'),
-        resolve(process.cwd(), 'webapp', 'data'),
+        resolve(process.cwd(), 'data'),
+        resolve(process.cwd(), '..', 'data'),
     ];
     for (const candidate of candidates) {
         if (existsSync(candidate)) return candidate;
     }
-    throw new Error(`Cannot find webapp/data/ directory.`);
+    throw new Error(`Cannot find data/ directory.`);
 }
 
 let _cached: OtherWordle[] | null = null;

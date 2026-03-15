@@ -25,7 +25,7 @@ from collections import defaultdict
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
-DATA_DIR = SCRIPT_DIR.parent / "webapp" / "data" / "languages"
+DATA_DIR = SCRIPT_DIR.parent / "data" / "languages"
 
 
 # ---------------------------------------------------------------------------
@@ -217,7 +217,7 @@ def find_suffix_groups(words: list[str], min_group_size: int = 3) -> dict[str, l
     Returns {stem: [word1, word2, ...]} for groups with >= min_group_size members.
     """
     groups = defaultdict(list)
-    word_set = set(words)
+    set(words)
 
     for word in words:
         if len(word) == 5 and word[-1] in HEBREW_SUFFIXES:
@@ -324,7 +324,7 @@ def cmd_hebrew_quality(args):
         print(f"{'=' * 50}")
         # Show first N
         limit = args.limit or 100
-        for word, zf in sorted(not_in_wordfreq)[:limit]:
+        for word, _zf in sorted(not_in_wordfreq)[:limit]:
             print(f"  {word}")
         if len(not_in_wordfreq) > limit:
             print(f"  ... and {len(not_in_wordfreq) - limit} more")

@@ -35,7 +35,7 @@ def pytest_collection_modifyitems(config, items):
 
 # Project paths
 PROJECT_ROOT = Path(__file__).parent.parent
-DATA_DIR = PROJECT_ROOT / "webapp" / "data"
+DATA_DIR = PROJECT_ROOT / "data"
 LANGUAGES_DIR = DATA_DIR / "languages"
 
 

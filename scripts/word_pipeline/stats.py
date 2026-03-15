@@ -65,7 +65,7 @@ def _get_all_git_provenance() -> dict[str, str]:
                 "--format=%as",
                 "--name-only",
                 "--",
-                "webapp/data/languages/",
+                "data/languages/",
             ],
             capture_output=True,
             text=True,

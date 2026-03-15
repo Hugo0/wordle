@@ -20,7 +20,7 @@ from tests.conftest import ALL_LANGUAGES, load_language_config, load_word_list
 
 # Migration cutoff - must match webapp/app.py
 MIGRATION_DAY_IDX = 1681
-DATA_DIR = Path(__file__).parent.parent / "webapp" / "data" / "languages"
+DATA_DIR = Path(__file__).parent.parent / "data" / "languages"
 
 
 def get_todays_idx(date: datetime.date = None) -> int:

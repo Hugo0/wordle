@@ -25,7 +25,7 @@ Found a bad word, missing character, or bug? [Open an issue](https://github.com/
 
 ### Improve a word list
 
-Word data is managed via `words.yaml` files in each language folder under [`webapp/data/languages/`](https://github.com/Hugo0/wordle/tree/main/webapp/data/languages). Remove bad words, add missing ones, fix misspellings — GitHub will walk you through creating a pull request.
+Word data is managed via `words.json` files in each language folder under [`data/languages/`](https://github.com/Hugo0/wordle/tree/main/data/languages). Remove bad words, add missing ones, fix misspellings — GitHub will walk you through creating a pull request.
 
 ### Translate the UI
 
@@ -33,8 +33,8 @@ If text is showing in English when it should be in your language, edit the `lang
 
 ### Add a new language
 
-1. Create a folder: `webapp/data/languages/{lang_code}/`
-2. Add a `words.yaml` with word list data
+1. Create a folder: `data/languages/{lang_code}/`
+2. Add a `words.json` with word list data
 3. Run the word pipeline: `cd scripts && uv run python -m word_pipeline run {lang_code}`
 4. (Optional) Add a keyboard layout, UI translations
 

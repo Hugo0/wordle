@@ -14,10 +14,9 @@ def file_to_list(in_file):
         line = line.strip("\n")
 
         # Ignore empty lines
-        if line != "":
+        if line != "" and line[0] != "#":
             # Ignore comments
-            if line[0] != "#":
-                lines.append(line)
+            lines.append(line)
 
     return lines
 
@@ -29,7 +28,7 @@ class AffixRule:
         # SETUP
         self.flag = flag
         self.opt = opt
-        self.combine = True if combine == "Y" else False
+        self.combine = combine == "Y"
         self.char_to_strip = "" if char_to_strip == "0" else char_to_strip
         self.affix = affix
         self.condition = "." if condition == "," else re.compile(condition + "$")
@@ -44,9 +43,7 @@ class AffixRule:
 
     def meets_condition(self, word):
         """Checks if word meets conditionr requirements defined in affix rule"""
-        if self.condition.search(word):
-            return True
-        return False
+        return bool(self.condition.search(word))
 
     def create_derivative(self, word):
         """Creates derivative of (base) word by adding any affixes that apply"""
@@ -59,10 +56,7 @@ class AffixRule:
                 result = word[0 : len(word) - len(self.char_to_strip)]
                 result = result + self.affix
         else:  # No characters to strip
-            if self.opt == "PFX":
-                result = self.affix + word
-            else:  # SFX
-                result = word + self.affix
+            result = self.affix + word if self.opt == "PFX" else word + self.affix
 
         # None means word does not meet the set condition
         return result
@@ -256,12 +250,10 @@ class DICT:
 
         result += new_line + tab + '"words": {'
 
-        i = 0
-        for word in self.words:
+        for i, word in enumerate(self.words):
             val = self.words[word]
             comma = "," if i < len(self.words) - 1 else ""
             result += new_line + tab + tab + '"' + word + '":[' + ",".join(val) + "]" + comma
-            i += 1
 
         result += new_line + tab + "}"
         result += new_line + "}"
@@ -284,7 +276,7 @@ class DICT:
             # Base Word
             self.num_words += 1
 
-            if flags != None:
+            if flags is not None:
                 # Derivatives possible
                 for flag in flags:
                     # Compound?
@@ -397,45 +389,31 @@ def main():
 
         # Open AFF file
         try:
-            aff_file = open(aff_path, encoding="ISO8859-1")
-            aff_rules = AFF(aff_file)
-            aff_file.close()
+            with open(aff_path, encoding="ISO8859-1") as aff_file:
+                aff_rules = AFF(aff_file)
         except OSError:
             print(aff_path + " not found")
 
         # Open DIC file
         try:
-            dict_file = open(dict_path, encoding="ISO8859-1")
-            dictionary = DICT(
-                dict_file,
-                aff_rules,
-                args.format,
-                args.key,
-                args.noCompounds,
-                args.rep_table,
-                args.pretty,
-            )
+            with open(dict_path, encoding="ISO8859-1") as dict_file:
+                dictionary = DICT(
+                    dict_file,
+                    aff_rules,
+                    args.format,
+                    args.key,
+                    args.noCompounds,
+                    args.rep_table,
+                    args.pretty,
+                )
 
-            # Open output file
-            if args.output:
-                if args.gzip:
-                    out_file = gzip.open(args.output, "wb")
-                else:
-                    out_file = open(args.output, "w")
-            else:
-                if args.gzip:
-                    out_file = gzip.open(
-                        os.getcwd() + "/" + dict_path.split(".")[0] + ".json", "wb"
-                    )
-                else:
-                    out_file = open(os.getcwd() + "/" + dict_path.split(".")[0] + ".json", "w")
+            # Open output file and write JSON
+            out_path = args.output or os.getcwd() + "/" + dict_path.split(".")[0] + ".json"
 
-            # Output json file
-            dictionary.generate_json(out_file, args.gzip)
-
-            out_file.close()
-
-            dict_file.close()
+            opener = gzip.open if args.gzip else open
+            mode = "wb" if args.gzip else "w"
+            with opener(out_path, mode) as out_file:
+                dictionary.generate_json(out_file, args.gzip)
         except OSError:
             print(dict_path + " not found")
 

@@ -7,7 +7,7 @@ import pytest
 
 # Project paths (same as conftest.py)
 PROJECT_ROOT = Path(__file__).parent.parent
-LANGUAGES_DIR = PROJECT_ROOT / "webapp" / "data" / "languages"
+LANGUAGES_DIR = PROJECT_ROOT / "data" / "languages"
 
 # Add scripts dir to import pipeline modules
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))

@@ -20,9 +20,9 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / "webapp"))
 
-from wiktionary import WIKT_LANG_MAP, parse_wikt_definition
+from wiktionary import WIKT_LANG_MAP, parse_wikt_definition  # noqa: E402
 
-LANGUAGES_DIR = PROJECT_ROOT / "webapp" / "data" / "languages"
+LANGUAGES_DIR = PROJECT_ROOT / "data" / "languages"
 FIXTURES_DIR = PROJECT_ROOT / "tests" / "fixtures" / "wiktionary"
 
 

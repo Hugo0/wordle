@@ -1,8 +1,8 @@
 /**
- * Data loading utilities — port of webapp/app.py data loading functions.
+ * Data loading utilities.
  *
  * Loads word lists, configs, keyboards, blocklists, and curated schedules
- * from the webapp/data/ directory at startup. All data is cached in memory.
+ * from the data/ directory at startup. All data is cached in memory.
  */
 
 import { readFileSync, existsSync, readdirSync, writeFileSync } from 'fs';
@@ -15,24 +15,24 @@ import type { LanguageConfig, KeyboardConfig, KeyboardLayout } from '~/utils/typ
 
 function resolveDataDir(): string {
     // Try env var first (production)
-    const envDataDir = process.env.NUXT_WEBAPP_DATA_DIR;
+    const envDataDir = process.env.NUXT_DATA_DIR;
     if (envDataDir && existsSync(envDataDir)) return envDataDir;
 
     // Development: resolve relative to process cwd
     const candidates = [
-        resolve(process.cwd(), '..', 'webapp', 'data'),
-        resolve(process.cwd(), 'webapp', 'data'),
+        resolve(process.cwd(), 'data'),
+        resolve(process.cwd(), '..', 'data'),
     ];
     for (const candidate of candidates) {
         if (existsSync(candidate)) return candidate;
     }
-    throw new Error(`Cannot find webapp/data/ directory. Tried: ${candidates.join(', ')}`);
+    throw new Error(`Cannot find data/ directory. Tried: ${candidates.join(', ')}`);
 }
 
 const DATA_DIR = resolveDataDir();
 
 // Persistent data directory for runtime-generated files
-const PERSISTENT_DIR = process.env.DATA_DIR || resolve(DATA_DIR, '..', 'static');
+const PERSISTENT_DIR = process.env.DATA_DIR || resolve(DATA_DIR, '..', 'webapp', 'static');
 export const WORD_IMAGES_DIR = join(PERSISTENT_DIR, 'word-images');
 export const WORD_DEFS_DIR = join(PERSISTENT_DIR, 'word-defs');
 export const WORD_STATS_DIR = join(PERSISTENT_DIR, 'word-stats');

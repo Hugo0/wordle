@@ -12,10 +12,10 @@ export default defineNuxtConfig({
         plugins: [tailwindcss()],
     },
 
-    // Resolve data directory: webapp/data/ relative to project root
+    // Resolve data directory: data/ relative to project root
     runtimeConfig: {
         dataDir: process.env.DATA_DIR || '',
-        webappDataDir: '', // Set in nitro plugin at startup
+        nuxtDataDir: '', // Set in nitro plugin at startup
         openaiApiKey: process.env.OPENAI_API_KEY || '',
         wordImagesDir: '',
         wordDefsDir: '',

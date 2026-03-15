@@ -17,7 +17,7 @@ import json
 import os
 import random
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "webapp", "data")
+DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 
 
 def load_and_shuffle_words(lang, lang_config=None):
@@ -111,7 +111,7 @@ def main():
         total_words += len(words)
 
     print(f"\nDone! {total_words} total words across {len(language_codes)} languages.")
-    print("Files written: webapp/data/languages/{lang}/{lang}_5words_shuffled.json")
+    print("Files written: data/languages/{lang}/{lang}_5words_shuffled.json")
 
 
 if __name__ == "__main__":

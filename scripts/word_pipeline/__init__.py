@@ -3,5 +3,5 @@
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent.parent
-DATA_DIR = SCRIPT_DIR.parent / "webapp" / "data" / "languages"
+DATA_DIR = SCRIPT_DIR.parent / "data" / "languages"
 MIGRATION_DAY_IDX = 1681  # Jan 25, 2026

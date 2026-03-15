@@ -24,7 +24,7 @@ from pathlib import Path
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
-DATA_DIR = SCRIPT_DIR.parent / "webapp" / "data" / "languages"
+DATA_DIR = SCRIPT_DIR.parent / "data" / "languages"
 
 
 def get_todays_idx(date: datetime.date = None) -> int:

@@ -29,7 +29,7 @@ import sys
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
-DATA_DIR = SCRIPT_DIR.parent / "webapp" / "data"
+DATA_DIR = SCRIPT_DIR.parent / "data"
 LANGUAGES_DIR = DATA_DIR / "languages"
 
 # Must match webapp/app.py
@@ -90,12 +90,18 @@ def load_language_data(lang):
     word_file = lang_dir / f"{lang}_5words.txt"
     if not word_file.exists():
         return None
-    words = [l.strip() for l in word_file.read_text(encoding="utf-8").splitlines() if l.strip()]
+    words = [
+        line.strip() for line in word_file.read_text(encoding="utf-8").splitlines() if line.strip()
+    ]
 
     # Load characters for QA filter
     char_file = lang_dir / f"{lang}_characters.txt"
     if char_file.exists():
-        chars = {l.strip() for l in char_file.read_text(encoding="utf-8").splitlines() if l.strip()}
+        chars = {
+            line.strip()
+            for line in char_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        }
     else:
         chars = set(c for w in words for c in w)
 
@@ -131,7 +137,9 @@ def load_language_data(lang):
     daily_words = None
     if daily_file.exists():
         daily_words = [
-            l.strip() for l in daily_file.read_text(encoding="utf-8").splitlines() if l.strip()
+            line.strip()
+            for line in daily_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
         ]
 
     # Blocklist
@@ -229,7 +237,7 @@ def freeze_language(lang, check_only=False):
     if data["daily_words"]:
         daily_hash = hashlib.sha256("\n".join(data["daily_words"][:100]).encode()).hexdigest()[:12]
 
-    header = f"# Frozen daily words — DO NOT EDIT MANUALLY\n"
+    header = "# Frozen daily words — DO NOT EDIT MANUALLY\n"
     header += f"# Generated: {datetime.date.today().isoformat()}\n"
     header += f"# word_list_hash: {words_hash}\n"
     if daily_hash:

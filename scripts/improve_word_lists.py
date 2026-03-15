@@ -26,7 +26,7 @@ import sys
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
-DATA_DIR = SCRIPT_DIR.parent / "webapp" / "data" / "languages"
+DATA_DIR = SCRIPT_DIR.parent / "data" / "languages"
 FREQ_DIR = SCRIPT_DIR / ".freq_data" / "FrequencyWords" / "content" / "2018"
 
 DEFAULT_DAILY_COUNT = 2000
@@ -472,7 +472,7 @@ def build_native_dictionary(lang: str, exclude_leipzig: bool = False) -> set[str
             print(f"  Native dict: +{len(lw)} from Leipzig")
             native |= lw
     elif "leipzig" in sources and exclude_leipzig:
-        print(f"  Native dict: skipping Leipzig (used as frequency source)")
+        print("  Native dict: skipping Leipzig (used as frequency source)")
 
     if native:
         print(f"  Native dictionary total: {len(native)} unique words")
@@ -483,9 +483,8 @@ def is_english_contamination(word: str, english_words: set[str], native_dict: se
     """Check if a word is English contamination (in English but not in any native dictionary)."""
     if word not in english_words:
         return False
-    if word in native_dict:
-        return False  # Legitimate loanword attested in native dictionaries
-    return True
+    # Legitimate loanword attested in native dictionaries
+    return word not in native_dict
 
 
 _ROMAN_RE = re.compile(r"^[ivxlcdm]+$")
@@ -1072,7 +1071,9 @@ def audit_contamination(langs: list[str]):
         daily = []
         if daily_path.exists():
             daily = [
-                l.strip() for l in daily_path.read_text(encoding="utf-8").splitlines() if l.strip()
+                line.strip()
+                for line in daily_path.read_text(encoding="utf-8").splitlines()
+                if line.strip()
             ]
 
         native_dict = build_native_dictionary(lang)

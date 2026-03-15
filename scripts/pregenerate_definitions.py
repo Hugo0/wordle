@@ -25,14 +25,14 @@ _project_root = os.path.join(_script_dir, "..")
 sys.path.insert(0, _project_root)
 os.chdir(os.path.join(_project_root, "webapp"))
 
-from webapp.app import (
+from webapp.app import (  # noqa: E402
     WORD_DEFS_DIR,
     get_todays_idx,
     get_word_for_day,
     language_codes,
     language_configs,
 )
-from webapp.definitions import _call_llm_definition
+from webapp.definitions import _call_llm_definition  # noqa: E402
 
 
 def main():

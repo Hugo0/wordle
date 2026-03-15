@@ -25,7 +25,7 @@ _project_root = os.path.join(_script_dir, "..")
 sys.path.insert(0, _project_root)
 os.chdir(os.path.join(_project_root, "webapp"))
 
-from webapp.app import (
+from webapp.app import (  # noqa: E402
     IMAGE_LANGUAGES,
     WORD_IMAGES_DIR,
     fetch_definition,

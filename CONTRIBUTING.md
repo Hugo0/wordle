@@ -30,13 +30,12 @@ wordle/
 ├── assets/                    # CSS, static assets processed by Vite
 ├── public/                    # Static files served as-is
 ├── utils/                     # Shared utilities
-├── webapp/
-│   └── data/                  # Language data (word lists, configs, keyboards)
-│       ├── languages/{lang}/  # Per-language files
-│       │   ├── words.json               # Word data (source of truth + runtime)
-│       │   ├── keyboard.json           # Keyboard layout
-│       │   └── language_config.json    # UI translations, metadata
-│       └── default_language_config.json
+├── data/                      # Language data (word lists, configs, keyboards)
+│   ├── languages/{lang}/      # Per-language files
+│   │   ├── words.json         # Word data (source of truth + runtime)
+│   │   ├── keyboard.json      # Keyboard layout
+│   │   └── language_config.json # UI translations, metadata
+│   └── default_language_config.json
 ├── tests/                     # All tests (pytest + vitest)
 │   ├── test_*.py              # Python tests (pytest)
 │   ├── *.test.ts              # TypeScript tests (vitest)
@@ -54,7 +53,7 @@ wordle/
 ### Daily Word Selection
 - Algorithm in `server/utils/data-loader.ts`
 - Consistent hashing (post Jan 25, 2026), legacy shuffle before that
-- Word data loaded from `webapp/data/languages/{lang}/words.json`
+- Word data loaded from `data/languages/{lang}/words.json`
 
 ### Color Algorithm (Wordle rules)
 - Green (correct): Letter in correct position
@@ -83,15 +82,15 @@ wordle/
 
 ### Python
 - Ruff formatter + linter, 100 char line length
-- Run `uv run ruff format webapp/ tests/` and `uv run ruff check webapp/ tests/`
+- Run `uv run ruff format scripts/ tests/` and `uv run ruff check scripts/ tests/`
 - Pre-commit hooks run both automatically
 
 ## Before Committing
 
 ```bash
 pnpm format                                    # Format TypeScript
-uv run ruff format webapp/ tests/     # Format Python
-uv run ruff check webapp/ tests/      # Lint Python
+uv run ruff format scripts/ tests/     # Format Python
+uv run ruff check scripts/ tests/      # Lint Python
 npx nuxt prepare && pnpm test                  # Run TS tests
 uv run pytest tests/                           # Run Python tests
 ```
@@ -100,11 +99,11 @@ uv run pytest tests/                           # Run Python tests
 
 ### Word Lists
 
-Word data is managed via the word pipeline in `scripts/word_pipeline/`. Source of truth is `webapp/data/languages/{lang}/words.json`.
+Word data is managed via the word pipeline in `scripts/word_pipeline/`. Source of truth is `data/languages/{lang}/words.json`.
 
 ### Keyboards
 
-Keyboard layouts are in `webapp/data/languages/{lang}/keyboard.json`.
+Keyboard layouts are in `data/languages/{lang}/keyboard.json`.
 
 ```json
 [
@@ -120,11 +119,11 @@ Keyboard layouts are in `webapp/data/languages/{lang}/keyboard.json`.
 
 ### Translations
 
-UI text is in `webapp/data/languages/{lang}/language_config.json`. Please ensure translations are natural and accurate (not machine-translated).
+UI text is in `data/languages/{lang}/language_config.json`. Please ensure translations are natural and accurate (not machine-translated).
 
 ### Adding a New Language
 
-1. Create folder: `webapp/data/languages/{lang_code}/`
+1. Create folder: `data/languages/{lang_code}/`
 2. Add `words.json` with word list data
 3. Run the word pipeline: `cd scripts && uv run python -m word_pipeline run {lang_code}`
 4. (Optional) Add `language_config.json` — UI translations and metadata

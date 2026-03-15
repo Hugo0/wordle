@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 # Paths
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(ROOT, "webapp", "data")
+DATA_DIR = os.path.join(ROOT, "data")
 LANG_DIR = os.path.join(DATA_DIR, "languages")
 OUTPUT_DIR = os.path.join(ROOT, "webapp", "static", "images", "share")
 DEFAULT_CONFIG_PATH = os.path.join(DATA_DIR, "default_language_config.json")
