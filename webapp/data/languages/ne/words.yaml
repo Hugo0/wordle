@@ -1,0 +1,11614 @@
+metadata:
+  language_code: ne
+  language_name: Nepali
+  last_pipeline_run: '2026-03-15T00:44:53.481931+00:00'
+  migrated_from: text_files
+  sources:
+  - name: main_list
+    type: community
+    file: ne_5words.txt
+  - name: supplement
+    type: pipeline
+    file: ne_5words_supplement.txt
+words:
+- word: घोपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अठिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समवाय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अथारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोथाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पनाति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महनीय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बरबाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अकबरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिमजङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लौकिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नकारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हजारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बगाही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बरालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पछिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिताउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मटिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोतला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिउरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डाइनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बखिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फनफनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकपटक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1708
+  scheduled_day: 1708
+- word: मानिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बितरक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टनाटन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिनाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वालरस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरपोस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हररोज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महिना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपयोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आलपिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सटासट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आकलित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सनातन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विशाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साबरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिमार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रहवास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कबिला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बकवाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बचकना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भीमाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उजाडि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमिला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धारित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हियाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महाशय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमीरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छपाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरौलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तथौरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अठोटि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किताप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बगावत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोषित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वितान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिहाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शालीन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एएफपी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनथली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विचार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिरती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिनाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माहौल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फहराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निजोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनहरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छहकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हियाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नालिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिहाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चपाती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पडसरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनादि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उगालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रतीभर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरिफा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सादगी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाङठा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहजाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अजोडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसनीय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौथाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उसिनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सलीमा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कविता
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हमरजङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मझकोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहाडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आहारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नाराज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सनाखत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विशोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हकहित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घबडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनवसर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1686
+  - 1688
+  - 1689
+  - 1707
+  - 1721
+  scheduled_day: 1721
+- word: सहगमन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1691
+  - 1702
+  - 1715
+  scheduled_day: 1715
+- word: फोगिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खमारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बबिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पलायी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पदलोप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनिता
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलोम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनियम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तापनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोहरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आहारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विजित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किसिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जकडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महवीर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ललकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरबखत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बगौडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोपरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओजिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिझाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भङाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भाटना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोशनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रायाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कलकलक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1726
+  scheduled_day: 1726
+- word: उदासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आशौची
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सावरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बचावट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोदिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिउडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नकचरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उरालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपसोच
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वापिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिथित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विधवा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डकारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माथवर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिजोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकसदन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1700
+  - 1710
+  - 1724
+  scheduled_day: 1724
+- word: पगितो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बसाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मसिनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटौती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निखार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गलहार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अघोरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मानसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नाइटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कपाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हडकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वाचकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पकापक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जमानत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनोगत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठसाठस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साइकल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जरायो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मझौला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तगारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घटराज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उनासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धरातल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निदाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सकारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नाजयज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओडालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आयोजन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कविवर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महाबल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनौरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमलची
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनवाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फितलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तजविज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकसरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आरामी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महिला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विदित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोबलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निराश
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिगार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोषणा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नतिजा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मालिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रवाना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उजारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अजिमा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किनाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जितार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खटिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिछडि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गजिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कलनाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शोभित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टनटनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलयक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आमाशय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोबोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लाचार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकपदी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अधिगत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इजलास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाहान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आदाता
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साभार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समिति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आखिरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आबारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिसार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तकलिफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शौकीन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लीलाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विरोह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शिविर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोलखा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गमौडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अलकाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकटका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भासित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौघडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिउरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनभोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गहिरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरौरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गालित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिटिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पालना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोजाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिताइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भदाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गजराज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उधारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भयानक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मझौरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ढोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहनाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सलिफा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मदालस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घिचाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मरमरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोहरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जसलाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नजाती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गितार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अफगान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किताब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चकाचक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आरोपक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वापसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सतराज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कनिका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कारणी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धिताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सयकडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिजास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओसिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उछितो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अडियो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोताइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हडपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रजौटा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरबार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहयोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लाहोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिपरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओछाबी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पगारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोखिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दारिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोधित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकनास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिचौर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भतभती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोइला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धरहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घाचोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झकझकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भताभत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिछाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परागत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तराही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकजीउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उकालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनाना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भानिज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विराम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खचाखच
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खलासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पदभार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खियाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घबराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मजाको
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रतौली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वसियत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपमोड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवसान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नःबही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोफसल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोगटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोहनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिछोड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिरलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: करकाप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनोरथ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिरिज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हतपती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राडार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विवाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसायन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भवदीय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खलियो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कलाटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकाकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निदान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झटारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जलपान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोरही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वनवीर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोतार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवनति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परायण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पचासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धादिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोजाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पातली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थकौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिथलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समकोण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिजोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घरबार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झोसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: योगफल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हपाहप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकलास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोधनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लालसा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दङदास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किटान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टाइगर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरामी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लठारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कागती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोरली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिरला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दियाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलाही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सलतनत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जलोदर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दतिवन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठमठमी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोपार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धननाश
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपावन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाउडर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोगटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आलोकन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अफसोस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हाङफा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिकाब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टपाटप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चाकडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उखाडि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पलापि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डोलसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरोबर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोहबर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टमाटम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भनाभन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिउनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नालाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोहोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दौतिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समाति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिथवा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शिवजल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जलजला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गफाडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिमरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पखालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भारोप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पसिना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वाइबा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरवान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिझाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हिकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भसभसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहजाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हिकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खरायो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निगाध
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रापती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राहाफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वलयित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोकिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धरपकड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विकास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धामिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नोकरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थकाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डकराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नाचघर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कठताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गलकोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विजयी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपरथी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिभिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिउलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गलफती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जीसीअ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओकलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थोपरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उकासि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पलायन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निमठि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ककपीट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झपारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थिचाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोकलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वराहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भकभकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोहित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लखौरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इमारत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बराला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोपाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिलिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राइटर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनसार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अधिगम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फलाको
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हतकडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भावगत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: योगबल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोताउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झोराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बितरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कहालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गरिमा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: षोडशी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिसौट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थमौती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धीमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चकारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निसाफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोपनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मथलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिपोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरासर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जटाधर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एलियट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थपाथप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वरदान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोथाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पातित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोझिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एरीयल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हडपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ऋषिदह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिताम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोटरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जसिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साधित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लिवाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मदानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सफासफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकटकि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गभारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिमाख
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अभिमत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सपारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकतीस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मामलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साजिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राजीव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जगनाथ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भसाभस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: करवीर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सापिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विरही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रामफल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आलोडन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समताप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जलजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दलबदल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1712
+  - 1727
+  - 1729
+  scheduled_day: 1729
+- word: सबथोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दामली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलाया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समागत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झकाझक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घिनाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खनाखन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसादी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जवानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिनाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बदलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निधान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोमिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चहकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दलाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोरलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोइलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सलामी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बयासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लखौरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नलिनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वनचरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सियाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वनभोज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नरिवल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तकदिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बितोल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरपीठ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोदान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: असिना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिसिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिसर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शारदी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लबालब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाउला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डोबाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलोप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छाउनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रगडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सकौनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हसहसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उतिको
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वाचबी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिङाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तपोवन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरौतो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पथोना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गिलास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बढौती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एसओएस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1690
+  - 1696
+  - 1697
+  - 1718
+  - 1722
+  scheduled_day: 1722
+- word: अवतरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1693
+  scheduled_day: 1693
+- word: छिपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धकाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फाइदा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिउला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जजमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धामपस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोनौल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिझाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फटाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बटारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अबोला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दलाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चनौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आयोजक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जागीर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अभिनय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समाधि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गमगढी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: काइदा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सायास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमिटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निफनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोलित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कामपा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यापित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जबाफी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पामटप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपायक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कीमती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दाखिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धमिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हथौडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अगणित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कराही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: होमाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धामजा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अतिथि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मसारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चितवन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिनिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तयारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बनौटा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खगौती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तहबिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एपोलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तलतिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिङसा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थलाजङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परोठा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनवाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वकालत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तारिख
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रमिता
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झरिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गबारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाइलट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बौराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विषधर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कचोटि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विषमय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हानाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भटाभट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समापन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोचाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सविनय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समोसा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जमदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घिचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सायरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपगति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिधि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जीवनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कागजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खजाना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अभिनव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हाइटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपशोच
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आमसभा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जियाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिलित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिउसो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमिलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पटासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोगडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोगडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राजपथ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भोगाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हडकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिलास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपजोड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घरकाज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टौमडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विसाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बहाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खगौतो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फलालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकौटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मासाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाइतो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मीलित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तकिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फलाकि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चटारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिलाप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोइलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विभोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जागिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपवाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बालचर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शारदा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पलानि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धताहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टठिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बसिला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पकवान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलीन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोइरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पघारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निचोड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विभाव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौबास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हपारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रमजान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गाहकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बजारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनवरत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1685
+  - 1705
+  - 1717
+  scheduled_day: 1717
+- word: भियना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिमलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोइलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोखरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बथानि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सफारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोइला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कसरती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विमला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सावयव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सझिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गिरोह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विछोड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: असमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनाहत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलयन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विपिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कठघरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बटौली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उभाडि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कवाडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अजाति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थकानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हाउडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रखालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवगाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आसमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पनौतो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिबटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माझफल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हडबडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वितरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मसौदा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चहारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोसाक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कडापन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उफारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिनाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शोषित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनाही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपहरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1713
+  scheduled_day: 1713
+- word: भरोसा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घिरिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अशोभन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उरालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कनपास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनारस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अठतीस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नियमी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दौडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लिखित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिजाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फलदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भगवती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अविरल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाइसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकौटा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मासिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दिलीप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसीया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कहानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाङमा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तमघास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वीरबस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उभडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रौतहट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खराखर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रामदल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरखार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोहली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अदालत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एमिकस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोगटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मालिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अयोनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौकोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोयली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जातकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोकसि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दौरान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाउसो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनकोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जीवित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लडाकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोगटा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खसालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फारसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गौतरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनीषी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवरोध
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शोणित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाजरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अधितो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनागत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रगडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सपाही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शरीरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नकचरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनाति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौकोस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिउरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छटोना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपमित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धसारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लौकही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घातकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हाकिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फतलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोकना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उबारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विपथन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साउती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सजावट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धमिरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डायरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निछाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फरासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहवास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोगाड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकौरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वानरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अविलय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यासोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सारथि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किनार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टाउको
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तोषित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हलिउड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विमार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समाजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बितलब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाबला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सियाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपवास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निपात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आजीवन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अफालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सनपाट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हवाला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमजोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोखिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वासिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोदाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लताहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकदिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आलटाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मथिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साइबर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गदालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धावित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कहलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पछाडि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घचारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टमाटर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आउजाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिखडो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धाङडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिपला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोगाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कठायत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पराहत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमानक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आइमाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिकिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कसिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोषित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अदिति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भारवि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टहलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सामरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हकिकत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रखबार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमीबा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विहीन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिवाज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहायक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकौरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परमपद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निशान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जहाजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहवीर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकिरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सलसली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उकाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निजगढ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपभोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विषयी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिढाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विजया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माइली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकटकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ऐराकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलबर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थिचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोखाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोतरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोखाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निधार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मासाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोखाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भाउचर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विचलन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तादात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सनासो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अगोचर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकोटा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छाउरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निरोध
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अठासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दियाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बौराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माइकल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नरबलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फसादी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मधानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निविड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बरोबर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बदलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलामी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: काषाय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पियाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: औडाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तपसिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खानदह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विभाग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बरखास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनोबल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओसारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चटारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमिसन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भइपरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खरखरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निगाह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आराधक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नाजोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओइलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोखरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हडताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थलाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अघटित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परापर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मराठी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिचडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यसपटक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1695
+  scheduled_day: 1695
+- word: हपारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आङचोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाउलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नौतिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मसिना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहमरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उमठाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोइटा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साइनो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बातिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिथरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अबाटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आसानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मालिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इजाजत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नियोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोतरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रामवन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओछयान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सानाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जलौरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चटारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवतार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छतारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मावली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनोरम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विनीत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरहदी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तोपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिषद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहोदर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तामसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इटहरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हिमकण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोरतर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मदिरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोहना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोरठी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झडकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोजाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहाडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हटिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फडानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिचास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ललिपप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डरपोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओइलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अथइति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सालिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलोल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिहार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फाराम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिचलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धोधरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रखवार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पबितो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परपरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: औराहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झोसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झपझपी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सामना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौखाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अभोगी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साधना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पापहर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मतलबी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हसनदह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1725
+  scheduled_day: 1725
+- word: कायदा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिसोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मामला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सराबी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जकडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिताइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओराली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोयाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोताङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बहकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फिटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ननिको
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मझगवा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बनौला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकाला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सजिवन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कालिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झिकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओकलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दमौली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समापक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दीपित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनगढी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ढोगाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घनघोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नरहरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चटाकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फरिको
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कखौतो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उभडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भताहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपहार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाठित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मालती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठोसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिडाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिवोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटाकट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोतलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सारणी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मसिनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लाइटर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वियोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विषाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पचाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लचिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विचरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सायमी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धारणा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जाउलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निकास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कामना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फरिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डोबाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरोगा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लतराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हकारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नारकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठगाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोपाक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छटाछट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भकारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आसामी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भटमास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अफबाह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चियाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मौलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पालकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धाइजन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लडाका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छाउरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटौरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उधिनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौधरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिनभर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रामजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनकवि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सङालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इटहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोयाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दिङला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कसलाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिगार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निखनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वनवास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: करामत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लगायत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घकालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनरसा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोदोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिथात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गथासो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बसौटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ताथली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लिलाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सजिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिनकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धरोहर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अरगजा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धिमाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यातना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विमति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दायरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एएफसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हौसला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोलित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मौलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कदापि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आणविक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एसिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोदाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मरौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माहिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पखाला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपासक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महारथ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किरीट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फिदिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिनास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खियाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सासना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बखानि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिकास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिदिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपराध
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चखिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दिउरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पालित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोखाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यामान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अखानो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कचौरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आभारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पटापट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: करटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोदलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कजिनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आरोहण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विदलन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोवाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोरलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उछिनि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अविचल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिगत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तलासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिदिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चलाचल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यापोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थालनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिजाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शापित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खलिपा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महोदय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राउटर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ढोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पदनाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उभयचर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1692
+  - 1711
+  scheduled_day: 1711
+- word: सोलोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आवारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परतिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोहित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: औतारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अलिनो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पसालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आबादी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धरहरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोकसो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आइजाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपहास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गफागफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अरिनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कहाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बयरबन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोपान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दाहाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पलायक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाहिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लावान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बढिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिहाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चटाचट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बघारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवकाश
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमानत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घबडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकझमट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मातहत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अडिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विमना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लतलती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जाईफल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खसिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चराचर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उजागर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घिसिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हठयोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निथार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पातलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वाजिब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनमति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खटाखट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यशोदा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साङथा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निवार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उभारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोभाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिजोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वासना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विषयक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घटघटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दतिउन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तौमढी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रनाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सलवार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तमासा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलिमस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वितरक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: याचित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिराम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिमटि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भवानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खरदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चनाखो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इरादा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अधमरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थरथरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धमौरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बजिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोलित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोदाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पतवार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वासित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लालची
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोपडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आवाहक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कालिज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नालिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अटाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समधिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घरघरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाहार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घसारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गहिरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जयनगर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1684
+  scheduled_day: 1684
+- word: कौटिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धबौली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भतारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छदाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माउरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनीति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भाइरस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भगिनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोटास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिणय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरतरह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1683
+  - 1714
+  scheduled_day: 1714
+- word: थावाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोइला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिसिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खौराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौहान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोरखा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पारित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भाजित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनपति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भावना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकाफक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घचिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बताही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निचरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महादल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तारिफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: औलिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरभाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोगटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जागरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तापित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपकरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1701
+  - 1704
+  scheduled_day: 1704
+- word: चियाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अडाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बडथली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आचरित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिविस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बराहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भतिजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निरास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जडौरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अभागी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पराजय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिरिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिनाक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चाहार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उजिलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सामलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फलानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भरपाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आमचौर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किलिप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जोडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यजमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोइली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनाहक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शिशिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लगानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोइलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कठालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महाजन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पीडिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कपाकप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जियाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गरियो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिसिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खटिरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भरथरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपाधि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लछारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिहाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकजोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विहित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मडारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विवसन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनमोल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोहित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिचाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपठित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अबिरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बदनाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विरोध
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बताहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खरिदी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अरोचक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सारनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनजान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लखपति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शासित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गफगाफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तनाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घरवास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भटौली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समादर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोसिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छलकपट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यमराज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गाविस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरघडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरिजन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकाना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तलबार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बगौली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आलोचन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वाइवा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बलराम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परभाव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पारखी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टहलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनिदो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गानटन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फतौरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दानछी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कथमपि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठनाठन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिङठो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बहिनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिरलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनौठो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरवाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तालिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घडघडो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धमाधम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सितार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पगारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रमोला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हासिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकलाक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चाउरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनावर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अचानक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सतासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झडकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पसाङि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनधीत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सतोसत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकराब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तडातड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोपरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अविषय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ढोगाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दाउरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नौरथा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छालिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिरहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सारिण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भकारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: औराही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झलारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिचाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओहायो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आरोहक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निहित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिमलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घटिका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिलाफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हानाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भतिजा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आमोदी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिहाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घबराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोतरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फलानि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनमाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निगौल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घरपति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गठिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गाभिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थापना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोधार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मदरसा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थचारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोहडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तरबार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नगरदह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1682
+  - 1716
+  scheduled_day: 1716
+- word: रमरमी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तोडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनोहर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पासाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पदयोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सठिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विपना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकसरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दमाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उमारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गतिमय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पथौटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सदाशय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दशमलव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निकाय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिसान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: करौटा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खनाति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हिजडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपघात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनिटर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अचलगढ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोटनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बनौली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओदारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोसाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिबाज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धरौटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झिकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समागम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पलौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फाजिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दनादन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आफालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महिषी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोताइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोभान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खौराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमानव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लतारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओथारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किशोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिरान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोइटि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाथटब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सविता
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनितो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरिता
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रजाया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फिनाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बलारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नारान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आवधिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सापटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमरोज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मखनाह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोकान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नवराज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरनाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बासना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तोडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वनिता
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फहराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौबीस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बनावट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिसाब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिरि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिनार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लिपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिढाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अकथित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पचपची
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठहराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चाहना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिचय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फकफकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिझाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनसाय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समिधा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बलौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तथापि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहमति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरदिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विनोद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चमचाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिहान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छयासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठोसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लाहान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिहान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नतोदर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चालीस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भलिबल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकछाक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विनाश
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राजगढ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरिहर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बलिउड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आजकाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ताडित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जानकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किनाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाचकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मचिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मतापी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भलायो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बितलव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निसान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: योजना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निखिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अकारण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राङसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भगीरथ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वाचाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गमिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहभोज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सामिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झोराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिङाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नहोला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिसाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिउरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सनसनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भावित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जगदीश
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तामाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाहिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपदान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अफिसर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सयताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कलिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शवदाह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनियत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिचरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहभाव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिचरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोकरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नरालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बगाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हाजिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माधवी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आचारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहगान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छहारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिफिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किचाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बराबर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनादर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हतारो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खाइबा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: राइफल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिनाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनहित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरमाह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसपाक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किसान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खरानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दिमाग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सौगात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झलनाथ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपदफा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिलान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाथरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोदाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गडबडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लबानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भोगाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वीररस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यसोरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डिपोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिझिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मङसिर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कवासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनायक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डीएनए
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कलकली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रङिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यमलोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कठजोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरापि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कचकरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फतफती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सीमित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पदाहत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माहोल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जमाना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उदारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बहकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहकाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोलाज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जलाशय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सतबिउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मोहनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जापान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अभिधा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकतान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तहसिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओरालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पटारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विराग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोजाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपाही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पगालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ओरालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सवारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: होमाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दसगजा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पनौती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तरिका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भकाभक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पटकथा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तोकाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मतवाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटौरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फोडाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकमना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मागधी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिनाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अगाडि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अमरदह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हलालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रिटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साधार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फिराद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इराकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अरालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लछराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गधावा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धमाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नटआउट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1719
+  - 1720
+  scheduled_day: 1720
+- word: गोइठी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सडियल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिताइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोकिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भरमार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोलोन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिशाच
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घिचास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घटिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कचिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पटाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मथलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपचार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपासि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकाएक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वारिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उधारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बलवान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चाकरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पडताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रसबरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बहाना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अजायब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लाखिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बनारस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: योजित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोताउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बोवाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नौलखा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोगभी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोचाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जिलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोसाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वालिङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सजाति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विकलन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जनवरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हिमोट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विहार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नटराज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खकारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निषाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आबहवा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उजरात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परधाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फतलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: होचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अजोरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आपणिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनीषा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शाणित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चाराङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बजिनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाजिब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकलाख
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिउरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: समालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोटाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भयावह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाइबल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सातसय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गिजलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हडिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निछाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परलोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाइला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बयलीस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोभार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आरोही
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फटाफट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अबादी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पालिस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पालपा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गजारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिणत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विधान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उमठाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठकठकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोइरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोकलय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बालिग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आगामी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाषाण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आङदिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: काकडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लतिका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आरोपण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नमकिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवबोध
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सोधाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नियति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लयाती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शिवजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हबिगत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोहनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाइलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिकअप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवयवी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोपलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हगासन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहोडा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नौमति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भौतिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिरन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवरोह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खटिरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चलअचल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1698
+  - 1703
+  - 1709
+  scheduled_day: 1709
+- word: कारित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कचहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनौजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भरिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बरियो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दहचोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिठाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भिजाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिहाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तपोधन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दधीचि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिडिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिठाई
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सराहन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गोदाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टकाटक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अखबार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झटाझट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कतिपय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विलाप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खकालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धकिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सालाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठहराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कनकमय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1728
+  scheduled_day: 1728
+- word: खोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लतराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनोमय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सजिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इलाका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अतिशय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नीलिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बदमास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अराजी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उघारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पछितो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लालित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सहवरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1694
+  scheduled_day: 1694
+- word: यौगिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तोपाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आमचोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सकारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वाकिफ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: यासाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दलपति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सावधि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कहलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हिमाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एरिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थरहरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निवास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साबिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कालीन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गणपति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपनाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोकडो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ययाति
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिवाङ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भावमय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अविनव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उचालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बटारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बदलाव
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाबरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अलौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भाषिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लोभित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दाडिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: डायना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिविन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जयगान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ताउलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बरदान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उखालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उकालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कालधन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ठोकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: योजीत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सामान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिठास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दोकला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पसारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: परिमल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विघटन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सपासप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महभीर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकवचन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निहार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खगारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धनवीर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बहिरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घरानी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खोजाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नादान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सीडीओ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लिपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अपनाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विवरण
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आगजनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खारिज
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अवसाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हिसाब
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भगवान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आडिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अजनबी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खमिरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पातकी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खिचलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पटौरा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाडरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनरीत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छिलाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: होइनौ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खरीदी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गडगडि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उमालि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थिएटर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नासमझ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विराट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिनको
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनपरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मौलिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फरमान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टोपलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तपोमय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लछारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निभाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छादित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सरसरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गरिवी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गनौटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकौटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साकार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कमिना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिचिम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धजिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दौडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पोहोर
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भारती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खरिदि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अबगाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साबित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बढारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अकबरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छटपटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मनमती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हरसमय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1723
+  scheduled_day: 1723
+- word: घिनाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पिउरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कौशिक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: जलारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निदाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अचानो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विविध
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोभाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: वनभात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाचोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दिलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सीबान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निरीह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खालङा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनाडी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: नकआउट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सफाचट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: महकाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: माइती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकटिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लघारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौतीस
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिनाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खपाखप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इसारा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कसाहा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: साहसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हताहत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घरधनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भाचोक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मौसमी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लावती
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निदाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धरालो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चिताउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निभाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घोटाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शासना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मिहिन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिलसा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तमादी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फाइनल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तपतपी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एकवार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: याचना
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: फिटाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: असहाय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दरदाम
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: उपरचट
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1699
+  scheduled_day: 1699
+- word: बढावा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिराउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निहाल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलिका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सखिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छरितो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धमिरो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छोयला
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ऐयासी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निरोग
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तछारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भटारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मतदान
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: छपाछप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भाषित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विवाह
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: सिसवा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ससरका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोइली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दाउनी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटारी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पहिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दबदबा
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: इटाली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: एनजीओ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: झिरिप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भागवत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पाखरी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कटकटी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलखाद
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: गतिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: शिरीष
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: आसपास
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: निबिड
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिताउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: भरिया
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: किजात
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: मलिलो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: काउली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोचलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बाधित
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: ताउली
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चोइटो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पताका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: बिछाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: लछराइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: चौडाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अडियल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पथारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: विरचन
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तीनसय
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: रोलाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: टिपाउ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अलापि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: हकदार
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: दाइजो
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: तिनका
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: काबिल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अविकल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: असहमत
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+  history:
+  - 1687
+  - 1706
+  scheduled_day: 1706
+- word: लगारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: करताल
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: कोचाइ
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: घसघसी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: थपथाप
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: धमिलि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: पछारि
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अराजक
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: खराबी
+  length: 5
+  tier: daily
+  sources:
+  - main_list
+- word: अनकभर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अनगमन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अनवरण
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अपघटन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अपनउन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अपरदन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अपसरण
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अबतरण
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अमरतक
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अवतरन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: अवतलन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आइएफए
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आइएमई
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आइएलओ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आइएसओ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आइओएस
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आईएफए
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आईएमई
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आईओएस
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आकरमण
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आठपटक
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आरएसए
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आरओएच
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आरओएल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आरयसए
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: आवशयक
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: इएफएल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: इएसआर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: इनगरल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: इमरसन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: इलखनउ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उतपदक
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उतपदन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उदगयन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उदघरण
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उदयरस
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उपचरण
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उपनगर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उपनयन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उपलबध
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उपसहर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उभएचर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: उसलमई
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एआइएम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एआइएस
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एआरएम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एएचएम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एएनएम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एएफएम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एएफएल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एएसएल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एकपयन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एनआरए
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एनएएस
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एफएफए
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एमएएच
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एमएमए
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एमरसन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एयरबस
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: एसएमई
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: ओएनआई
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: ओभरचर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: गजवदन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: गणभवन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: गनकबध
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: जगतभर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: जडभरत
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: जयकलस
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: जसकरण
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: टलकजङ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: डटआईओ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: दशकगत
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: दशमलब
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: दशमलम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: धनकलश
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: नभइकन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: नभईकन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: पवनगढ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: पहनकर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: फरइभर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: फरकपन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: बकरइद
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: बबलगम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: बरणवल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: बसजहर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: भएसरह
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: भयङकर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: मनकबत
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: महनगर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: महरगढ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: यसबखत
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: यसलनई
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: यससमय
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: रनरअप
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: शमसतक
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: शहरसङ
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: सङकलन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: सफदरल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: सफलतम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: समझकर
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: सरलतम
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: सलरफल
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: ससरकध
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: सहरमन
+  length: 5
+  tier: valid
+  sources:
+  - supplement
+- word: हमसफर
+  length: 5
+  tier: valid
+  sources:
+  - supplement

@@ -10,8 +10,11 @@
  * Override: PARITY_TARGET=http://other-flask pnpm test -- tests/parity.test.ts
  * Disable: SKIP_PARITY=1 pnpm test
  */
-import { describe, it, expect, beforeAll } from 'vitest';
-import { testBaseUrl } from './helpers';
+import { describe, it, expect } from 'vitest';
+
+function nuxtUrl(): string {
+    return process.env.TEST_BASE_URL || 'http://localhost:3000';
+}
 
 const FLASK_URL = process.env.PARITY_TARGET || 'https://wordle.global';
 const SKIP = !!process.env.SKIP_PARITY;
@@ -64,14 +67,13 @@ describe.skipIf(SKIP)('Migration Parity: Nuxt vs Flask', () => {
             let flaskHtml: string;
             let nuxtData: any;
 
-            beforeAll(async () => {
+            // Fetch both in parallel once per language
+            it('produces same daily word', async () => {
                 [nuxtData, flaskHtml] = await Promise.all([
-                    fetch(`${testBaseUrl()}/api/${lang}/data`).then((r) => r.json()),
+                    fetch(`${nuxtUrl()}/api/${lang}/data`).then((r) => r.json()),
                     fetchFlaskPage(lang),
                 ]);
-            });
 
-            it('produces same daily word', () => {
                 const flaskWord = extractFlaskWord(flaskHtml);
                 expect(flaskWord).not.toBeNull();
                 expect(nuxtData.todays_word).toBe(flaskWord);
@@ -85,7 +87,10 @@ describe.skipIf(SKIP)('Migration Parity: Nuxt vs Flask', () => {
 
             it('has matching word list length (±5%)', () => {
                 const flaskLen = extractFlaskWordListLength(flaskHtml);
-                if (flaskLen === null) return;
+                if (flaskLen === null) {
+                    // Some languages may use a different format; don't fail
+                    return;
+                }
                 const nuxtLen = nuxtData.word_list.length;
                 const tolerance = Math.ceil(Math.max(nuxtLen, flaskLen) * 0.05);
                 expect(Math.abs(nuxtLen - flaskLen)).toBeLessThanOrEqual(tolerance);

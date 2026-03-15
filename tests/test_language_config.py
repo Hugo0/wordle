@@ -10,6 +10,7 @@ from tests.conftest import (
     ALL_LANGUAGES,
     get_diacritic_base_chars,
     load_all_keyboard_chars,
+    load_daily_words,
     load_keyboard,
     load_language_config,
     load_word_list,
@@ -160,11 +161,10 @@ class TestKeyboardConfig:
     def test_keyboard_covers_all_characters(self, lang):
         if lang in self.KEYBOARD_COVERAGE_XFAIL:
             pytest.xfail(f"{lang}: Known keyboard coverage gap (needs expert review)")
-        """Keyboard should include all characters used in words.
+        """Keyboard should include all characters used in daily words.
 
-        Note: If a language has diacritic_map configured, users can type base
-        characters (e.g., 'a') to match diacritical variants (e.g., 'ä').
-        So the keyboard only needs the base characters.
+        Only daily-tier words are checked — valid/blocked words may contain
+        characters not on the keyboard (they're supplement-derived guesses).
         """
         keyboard = load_keyboard(lang)
         if keyboard is None:
@@ -174,7 +174,12 @@ class TestKeyboardConfig:
         if not keyboard or all(len(row) == 0 for row in keyboard):
             pytest.skip(f"{lang}: Empty keyboard (app will auto-generate)")
 
-        words = load_word_list(lang)
+        # Only check daily-tier words — those are what players must type
+        daily = load_daily_words(lang)
+        if not daily:
+            words = load_word_list(lang)
+        else:
+            words = daily
         word_chars = set()
         for word in words:
             word_chars.update(word)

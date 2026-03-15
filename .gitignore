@@ -39,6 +39,9 @@ webapp/static/word-defs/
 webapp/static/word-stats/
 webapp/static/word-history/
 
+# Compiled word data (generated from words.yaml at build time)
+webapp/data/languages/*/words_compiled.json
+
 # Generated share images (rebuilt on deploy)
 webapp/static/images/share/
 scripts/.freq_data

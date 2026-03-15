@@ -12,7 +12,6 @@ function nuxtMetaPlugin(): Plugin {
         enforce: 'pre',
         transform(code, id) {
             if (id.includes('node_modules')) return
-            if (!/\.[jt]sx?$/.test(id) && !id.endsWith('.vue')) return
             if (!code.includes('import.meta.client') && !code.includes('import.meta.server')) return
             return code
                 .replace(/import\.meta\.client/g, '(true)')

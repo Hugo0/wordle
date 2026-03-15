@@ -16,6 +16,15 @@ import type { GameData } from '../../utils/types';
 // Mock auto-imported composables that the game store uses
 // ---------------------------------------------------------------------------
 
+vi.stubGlobal('import', { meta: { client: true } });
+
+vi.mock('#imports', () => ({
+    defineStore: vi.fn(),
+    ref: vi.fn(),
+    computed: vi.fn(),
+    watch: vi.fn(),
+}));
+
 // Mock composables used by game store
 const mockHaptic = { error: vi.fn(), confirm: vi.fn(), success: vi.fn() };
 const mockHapticFn = Object.assign(vi.fn(), mockHaptic);
@@ -62,12 +71,6 @@ vi.stubGlobal('$fetch', vi.fn().mockResolvedValue({}));
 // Test data
 // ---------------------------------------------------------------------------
 
-const TEST_KEYBOARD_ROWS: string[][] = [
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-    ['⇨', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
-];
-
 function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
     return {
         word_list: ['crane', 'slate', 'hello', 'world', 'apple', 'cairn', 'party', 'aback'],
@@ -95,9 +98,20 @@ function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
         todays_idx: 1700,
         todays_word: 'crane',
         timezone_offset: 0,
-        keyboard: TEST_KEYBOARD_ROWS,
+        keyboard: [
+            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+            ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+            ['⇨', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
+        ],
         keyboard_layouts: {
-            default: { label: 'Default', rows: TEST_KEYBOARD_ROWS },
+            default: {
+                label: 'Default',
+                rows: [
+                    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+                    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+                    ['⇨', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
+                ],
+            },
         },
         keyboard_layout_name: 'default',
         key_diacritic_hints: {},
@@ -284,9 +298,11 @@ describe('Game Store', () => {
             for (const c of ['c', 'r', 'a', 'n', 'e']) gameStore.addChar(c);
             gameStore.updateColors();
 
-            const colors = gameStore.tileColors[0]!;
-            for (const color of colors) {
-                expect(color).toBe('correct');
+            const classes = gameStore.tileClasses[0]!;
+            for (const cls of classes) {
+                expect(cls).toContain('correct');
+                expect(cls).not.toContain('semicorrect');
+                expect(cls).not.toContain('incorrect');
             }
         });
 
@@ -295,9 +311,9 @@ describe('Game Store', () => {
             for (const c of ['b', 'l', 'u', 'f', 'f']) gameStore.addChar(c);
             gameStore.updateColors();
 
-            const colors = gameStore.tileColors[0]!;
-            for (const color of colors) {
-                expect(color).toBe('incorrect');
+            const classes = gameStore.tileClasses[0]!;
+            for (const cls of classes) {
+                expect(cls).toContain('incorrect');
             }
         });
 
@@ -306,13 +322,13 @@ describe('Game Store', () => {
             for (const c of ['a', 'b', 'a', 'c', 'a']) gameStore.addChar(c);
             gameStore.updateColors();
 
-            const colors = gameStore.tileColors[0]!;
+            const classes = gameStore.tileClasses[0]!;
             // positions 0,1,2,3 = correct; position 4 ('a' vs 'k') = incorrect (both a's used)
-            expect(colors[0]).toBe('correct');
-            expect(colors[1]).toBe('correct');
-            expect(colors[2]).toBe('correct');
-            expect(colors[3]).toBe('correct');
-            expect(colors[4]).toBe('incorrect');
+            expect(classes[0]).toContain('correct');
+            expect(classes[1]).toContain('correct');
+            expect(classes[2]).toContain('correct');
+            expect(classes[3]).toContain('correct');
+            expect(classes[4]).toContain('incorrect');
         });
     });
 
@@ -321,8 +337,15 @@ describe('Game Store', () => {
     describe('checkHardMode', () => {
         it('rejects guess missing a revealed green letter', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
+            // Simulate first guess with 'c' in position 0 correct
             gameStore.tiles[0] = ['c', 'l', 'u', 'b', 's'];
-            gameStore.tileColors[0] = ['correct', 'incorrect', 'incorrect', 'incorrect', 'incorrect'];
+            gameStore.tileClasses[0] = [
+                'correct text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+            ];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('slate');
@@ -332,7 +355,13 @@ describe('Game Store', () => {
         it('rejects guess missing a revealed yellow letter', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             gameStore.tiles[0] = ['r', 'a', 'i', 's', 'e'];
-            gameStore.tileColors[0] = ['semicorrect', 'semicorrect', 'incorrect', 'incorrect', 'semicorrect'];
+            gameStore.tileClasses[0] = [
+                'semicorrect text-2xl',
+                'semicorrect text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+                'semicorrect text-2xl',
+            ];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('blufs');
@@ -342,7 +371,13 @@ describe('Game Store', () => {
         it('accepts valid hard mode guess', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             gameStore.tiles[0] = ['c', 'l', 'u', 'b', 's'];
-            gameStore.tileColors[0] = ['correct', 'incorrect', 'incorrect', 'incorrect', 'incorrect'];
+            gameStore.tileClasses[0] = [
+                'correct text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+            ];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('crane');
@@ -356,7 +391,13 @@ describe('Game Store', () => {
         it('generates correct emoji pattern', () => {
             const { gameStore } = setupStores();
             // Simulate one completed row
-            gameStore.tileColors[0] = ['correct', 'semicorrect', 'incorrect', 'incorrect', 'correct'];
+            gameStore.tileClasses[0] = [
+                'correct text-2xl',
+                'semicorrect text-2xl',
+                'incorrect text-2xl',
+                'incorrect text-2xl',
+                'correct text-2xl',
+            ];
             gameStore.gameOver = true;
             gameStore.gameWon = true;
 
