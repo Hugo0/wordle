@@ -419,6 +419,7 @@ defineEmits<{
 const game = useGameStore();
 const statsStore = useStatsStore();
 const lang = useLanguageStore();
+const settings = useSettingsStore();
 
 // ---------------------------------------------------------------------------
 // Local state
