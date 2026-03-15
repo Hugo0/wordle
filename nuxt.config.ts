@@ -40,6 +40,11 @@ export default defineNuxtConfig({
                     href: '/favicon/apple-touch-icon.png',
                 },
             ],
+            meta: [
+                { property: 'og:image', content: 'https://wordle.global/images/og-image.png' },
+                { property: 'og:image:width', content: '1200' },
+                { property: 'og:image:height', content: '630' },
+            ],
         },
     },
 

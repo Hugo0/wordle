@@ -51,12 +51,16 @@ useSeoMeta({
     ogType: 'website',
     ogDescription: description.value,
     ogLocale: 'en',
+    ogImage: 'https://wordle.global/images/og-image.png',
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
     twitterCard: 'summary_large_image',
     twitterTitle: title.value,
     twitterDescription: description.value,
 });
 
 useHead({
+    htmlAttrs: { lang: 'en' },
     link: [
         { rel: 'canonical', href: 'https://wordle.global/' },
         {

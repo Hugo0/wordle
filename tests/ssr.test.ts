@@ -58,22 +58,97 @@ describe('SSR Rendering', () => {
     });
 
     describe('Homepage /', () => {
+        let html: string;
+
         it('contains structured data', async () => {
-            const html = await fetchHtml('/');
-            // Should have JSON-LD or relevant structured data
+            html = await fetchHtml('/');
             expect(html).toMatch(/application\/ld\+json|ItemList|WebApplication/);
         });
 
         it('contains title', async () => {
-            const html = await fetchHtml('/');
+            html = html || (await fetchHtml('/'));
             expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
+        });
+
+        it('has lang="en" on html tag', async () => {
+            html = html || (await fetchHtml('/'));
+            expect(html).toMatch(/lang="en"/);
+        });
+
+        it('has og:image meta tag', async () => {
+            html = html || (await fetchHtml('/'));
+            expect(html).toMatch(/property="og:image"/);
+        });
+
+        it('has og:image dimensions', async () => {
+            html = html || (await fetchHtml('/'));
+            expect(html).toMatch(/property="og:image:width"/);
+            expect(html).toMatch(/property="og:image:height"/);
+        });
+
+        it('has hreflang tags', async () => {
+            html = html || (await fetchHtml('/'));
+            expect(html).toMatch(/hreflang="x-default"/);
+            expect(html).toMatch(/hreflang="en"/);
+        });
+    });
+
+    describe('Game page /en SEO completeness', () => {
+        let html: string;
+
+        it('has og:image with dimensions', async () => {
+            html = await fetchHtml('/en');
+            expect(html).toMatch(/property="og:image"/);
+            expect(html).toMatch(/property="og:image:width"/);
+            expect(html).toMatch(/property="og:image:height"/);
+        }, 30_000);
+
+        it('has canonical URL', async () => {
+            html = html || (await fetchHtml('/en'));
+            expect(html).toMatch(/rel="canonical".*href="https:\/\/wordle\.global\/en"/);
+        });
+
+        it('has x-default hreflang', async () => {
+            html = html || (await fetchHtml('/en'));
+            expect(html).toMatch(/hreflang="x-default"/);
         });
     });
 
     describe('Words page /en/words', () => {
+        let html: string;
+
         it('renders words page', async () => {
-            const html = await fetchHtml('/en/words');
+            html = await fetchHtml('/en/words');
             expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
+        });
+
+        it('has hreflang tags', async () => {
+            html = html || (await fetchHtml('/en/words'));
+            expect(html).toMatch(/hreflang="x-default"/);
+        });
+
+        it('has canonical URL', async () => {
+            html = html || (await fetchHtml('/en/words'));
+            expect(html).toMatch(/rel="canonical"/);
+        });
+    });
+
+    describe('Word detail page /en/word/1', () => {
+        let html: string;
+
+        it('renders word page with title', async () => {
+            html = await fetchHtml('/en/word/1');
+            expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
+        });
+
+        it('has hreflang tags', async () => {
+            html = html || (await fetchHtml('/en/word/1'));
+            expect(html).toMatch(/hreflang="x-default"/);
+        });
+
+        it('has breadcrumb structured data', async () => {
+            html = html || (await fetchHtml('/en/word/1'));
+            expect(html).toMatch(/BreadcrumbList/);
         });
     });
 });
