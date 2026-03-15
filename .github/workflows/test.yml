@@ -98,16 +98,12 @@ jobs:
         with:
           node-version: '22'
           cache: 'pnpm'
-          cache-dependency-path: nuxt/pnpm-lock.yaml
 
-      - name: Install Nuxt dependencies
-        run: pnpm --dir nuxt install
-
-      - name: Prepare Nuxt (generate .nuxt/tsconfig.json)
-        run: pnpm --dir nuxt run postinstall
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Run vitest (unit + integration + parity)
-        run: pnpm --dir nuxt test
+        run: pnpm --filter wordle-global-nuxt test
 
   nuxt-e2e:
     name: Nuxt E2E (Playwright)
@@ -124,19 +120,15 @@ jobs:
         with:
           node-version: '22'
           cache: 'pnpm'
-          cache-dependency-path: nuxt/pnpm-lock.yaml
 
-      - name: Install Nuxt dependencies
-        run: pnpm --dir nuxt install
-
-      - name: Prepare Nuxt (generate .nuxt/tsconfig.json)
-        run: pnpm --dir nuxt run postinstall
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Install Playwright browsers
         run: cd nuxt && npx playwright install chromium --with-deps
 
       - name: Run Playwright E2E tests
-        run: pnpm --dir nuxt test:e2e
+        run: pnpm --filter wordle-global-nuxt test:e2e
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4

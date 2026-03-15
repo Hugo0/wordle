@@ -1,2 +1,4 @@
+packages:
+  - 'nuxt'
 ignoredBuiltDependencies:
   - esbuild

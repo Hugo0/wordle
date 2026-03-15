@@ -1,11 +1,9 @@
 """Generate a comprehensive stats report for all languages.
 
-Outputs a markdown document with per-language stats including:
-- Word counts (daily, valid, blocked, total)
-- LLM curation stats (processed, rejected, flagged reasons)
-- Data quality metrics (English contamination, proper nouns, loanwords)
-- Word history (frozen days, coverage)
-- Source provenance
+Outputs a single markdown document with:
+1. One big overview table (all key metrics per language)
+2. Legend explaining metrics
+3. Issues & recommended actions (only for languages with problems)
 """
 
 from __future__ import annotations
@@ -17,6 +15,8 @@ from datetime import date
 
 from . import DATA_DIR, MIGRATION_DAY_IDX
 from .schema import load_words_yaml
+from .score import WORDFREQ_LANG_MAP
+from .source import EXTRA_SOURCES, FREQ_LANG_MAP
 
 log = logging.getLogger(__name__)
 
@@ -33,249 +33,255 @@ def _load_config(lang: str) -> dict:
     return {}
 
 
-def compute_language_stats(lang: str) -> dict:
+def _get_data_sources(lang: str) -> list[str]:
+    """Determine the actual data sources available for a language."""
+    sources = []
+    if lang in WORDFREQ_LANG_MAP:
+        sources.append("wf")  # wordfreq (Wikipedia, Reddit, Books)
+    if lang in FREQ_LANG_MAP:
+        sources.append("fw")  # FrequencyWords (OpenSubtitles)
+    extras = EXTRA_SOURCES.get(lang, set())
+    if "kaikki" in extras:
+        sources.append("kk")  # kaikki.org (Wiktionary)
+    if "leipzig" in extras:
+        sources.append("lz")  # Leipzig Corpora (newspaper)
+    if "hunspell" in extras:
+        sources.append("hs")  # Hunspell spellcheck
+    if "kbbi" in extras:
+        sources.append("kb")  # KBBI (Indonesian dict)
+    if "katla" in extras:
+        sources.append("kt")  # Katla (Indonesian Wordle)
+    if not sources:
+        sources.append("--")  # community-only
+    return sources
+
+
+def compute_language_stats(lang: str) -> dict | None:
     """Compute comprehensive stats for a single language."""
     yaml_path = DATA_DIR / lang / "words.yaml"
     if not yaml_path.exists():
-        return {"lang": lang, "status": "no_yaml"}
+        return None
 
     wy = load_words_yaml(yaml_path)
     config = _load_config(lang)
 
-    # Basic counts
+    # Tier counts
     daily = [w for w in wy.words if w.tier == "daily"]
     valid = [w for w in wy.words if w.tier == "valid"]
     blocked = [w for w in wy.words if w.tier == "blocked"]
-    total = len(wy.words)
 
-    # Sources
-    source_counts: Counter = Counter()
-    for w in wy.words:
-        for s in w.sources:
-            source_counts[s] += 1
-
-    # Frequency stats
-    with_freq = [w for w in wy.words if w.frequency > 0]
-    avg_freq_daily = sum(w.frequency for w in daily if w.frequency > 0) / max(
-        1, sum(1 for w in daily if w.frequency > 0)
+    # Frequency
+    daily_with_freq = [w for w in daily if w.frequency > 0]
+    freq_pct = len(daily_with_freq) / max(1, len(daily)) * 100
+    avg_zipf = (
+        sum(w.frequency for w in daily_with_freq) / max(1, len(daily_with_freq))
+        if daily_with_freq
+        else 0
     )
-    avg_freq_all = sum(w.frequency for w in with_freq) / max(1, len(with_freq))
 
-    # LLM curation stats
-    llm_processed = [w for w in wy.words if w.llm is not None]
-    llm_rejected = [w for w in llm_processed if w.llm.tier == "reject"]
-    llm_valid = [w for w in llm_processed if w.llm.tier == "valid"]
-    llm_daily = [w for w in llm_processed if w.llm.tier == "daily"]
-    reviewed = [w for w in wy.words if w.reviewed]
+    # LLM curation
+    llm_curated = [w for w in wy.words if w.llm is not None]
+    llm_demoted = [w for w in llm_curated if w.llm.tier in ("reject", "valid")]
 
-    # LLM reason categorization
-    reason_categories: Counter = Counter()
-    for w in llm_processed:
-        reason = w.llm.reason.lower()
-        if "proper" in reason or "name" in reason or "surname" in reason:
-            reason_categories["proper_nouns"] += 1
-        elif "english" in reason or "loanword" in reason or "foreign" in reason:
-            reason_categories["foreign/loanwords"] += 1
-        elif "vulgar" in reason or "offensive" in reason or "slur" in reason:
-            reason_categories["vulgar/offensive"] += 1
-        elif "archaic" in reason or "obsolete" in reason or "rare" in reason:
-            reason_categories["archaic/rare"] += 1
-        elif "technical" in reason or "scientific" in reason:
-            reason_categories["technical"] += 1
-        elif "conjugat" in reason or "verb" in reason or "inflect" in reason:
-            reason_categories["inflected_forms"] += 1
+    # LLM reason categories
+    reasons: Counter = Counter()
+    for w in llm_curated:
+        r = w.llm.reason.lower()
+        if "proper" in r or "name" in r or "surname" in r:
+            reasons["names"] += 1
+        elif "english" in r or "loanword" in r or "foreign" in r:
+            reasons["foreign"] += 1
+        elif "vulgar" in r or "offensive" in r or "slur" in r:
+            reasons["vulgar"] += 1
+        elif "archaic" in r or "obsolete" in r or "rare" in r or "technical" in r:
+            reasons["obscure"] += 1
         else:
-            reason_categories["other"] += 1
+            reasons["other"] += 1
 
-    # Flags stats
-    flag_counts = {
-        "profanity": sum(1 for w in wy.words if w.flags.profanity),
-        "foreign": sum(1 for w in wy.words if w.flags.foreign),
-        "proper_noun": sum(1 for w in wy.words if w.flags.proper_noun),
-        "phrase": sum(1 for w in wy.words if w.flags.phrase),
-    }
+    # History
+    days_since = _get_todays_idx() - MIGRATION_DAY_IDX
+    history_days = sum(len(w.history) for w in wy.words if w.history)
 
-    # Word history
-    words_with_history = [w for w in wy.words if w.history]
-    total_history_days = sum(len(w.history) for w in words_with_history)
-    days_since_migration = _get_todays_idx() - MIGRATION_DAY_IDX
+    # Data sources
+    data_sources = _get_data_sources(lang)
 
-    # Config metadata
-    lang_name = config.get("name", lang)
-    lang_native = config.get("name_native", "")
-    timezone = config.get("timezone", "UTC")
-    rtl = config.get("right_to_left", "false") == "true"
-    grapheme_mode = config.get("grapheme_mode", "false") == "true"
+    # Issues
+    issues = []
+    if len(daily) < 365:
+        issues.append(f"CRITICAL: only {len(daily)} daily words ({len(daily) / 365:.1f} years)")
+    elif len(daily) < 1000:
+        issues.append(f"LOW: only {len(daily)} daily words ({len(daily) / 365:.1f} years)")
+    if not llm_curated:
+        issues.append("not LLM-curated")
+    if freq_pct < 20:
+        issues.append(f"low freq coverage ({freq_pct:.0f}%)")
+    if reasons.get("names", 0) > len(llm_curated) * 0.3 and llm_curated:
+        issues.append(f"name contamination ({reasons['names']}/{len(llm_curated)})")
 
-    # Keyboard
-    keyboard_path = DATA_DIR / lang / f"{lang}_keyboard.json"
-    has_keyboard = keyboard_path.exists()
+    # Config flags
+    flags = []
+    if config.get("right_to_left", "false") == "true":
+        flags.append("RTL")
+    if config.get("grapheme_mode", "false") == "true":
+        flags.append("grapheme")
 
     return {
         "lang": lang,
-        "status": "ok",
-        "name": lang_name,
-        "name_native": lang_native,
-        "timezone": timezone,
-        "rtl": rtl,
-        "grapheme_mode": grapheme_mode,
-        "has_keyboard": has_keyboard,
-        # Word counts
-        "total": total,
+        "name": config.get("name", lang),
+        "name_native": config.get("name_native", ""),
+        "flags": flags,
+        # Counts
         "daily": len(daily),
         "valid": len(valid),
         "blocked": len(blocked),
+        "total": len(wy.words),
         # Frequency
-        "with_frequency": len(with_freq),
-        "freq_coverage": len(with_freq) / max(1, total) * 100,
-        "avg_freq_daily": round(avg_freq_daily, 2),
-        "avg_freq_all": round(avg_freq_all, 2),
+        "freq_pct": round(freq_pct),
+        "avg_zipf": round(avg_zipf, 1),
         # Sources
-        "sources": dict(source_counts.most_common()),
-        # LLM curation
-        "llm_processed": len(llm_processed),
-        "llm_rejected": len(llm_rejected),
-        "llm_valid": len(llm_valid),
-        "llm_daily": len(llm_daily),
-        "llm_reasons": dict(reason_categories.most_common()),
-        "reviewed": len(reviewed),
-        # Flags
-        "flags": flag_counts,
+        "data_sources": data_sources,
+        # LLM
+        "llm_curated": len(llm_curated),
+        "llm_demoted": len(llm_demoted),
+        "llm_reasons": dict(reasons.most_common()),
+        "reviewed": sum(1 for w in wy.words if w.reviewed),
         # History
-        "words_with_history": len(words_with_history),
-        "total_history_days": total_history_days,
-        "days_since_migration": days_since_migration,
-        "history_coverage": total_history_days / max(1, days_since_migration) * 100,
-        # Pool health
-        "daily_years": round(len(daily) / 365, 1),
+        "history_days": history_days,
+        "days_since": days_since,
+        # Health
+        "years": round(len(daily) / 365, 1),
+        # Issues
+        "issues": issues,
     }
 
 
 def generate_report(langs: list[str] | None = None) -> str:
-    """Generate a comprehensive markdown stats report."""
+    """Generate markdown stats report."""
     if langs is None:
         langs = sorted(
             d.name for d in DATA_DIR.iterdir() if d.is_dir() and (d / "words.yaml").exists()
         )
 
-    all_stats = []
-    for lang in langs:
-        stats = compute_language_stats(lang)
-        if stats["status"] == "ok":
-            all_stats.append(stats)
-
+    all_stats = [s for lang in langs if (s := compute_language_stats(lang)) is not None]
     today = date.today().isoformat()
     days_since = _get_todays_idx() - MIGRATION_DAY_IDX
 
-    # Build report
-    lines = []
-    lines.append("# Word Data Stats Report")
-    lines.append("")
-    lines.append(f"Generated: {today}")
-    lines.append(f"Languages: {len(all_stats)}")
-    lines.append(f"Days since migration: {days_since}")
-    lines.append("")
-
-    # Global summary
     total_words = sum(s["total"] for s in all_stats)
     total_daily = sum(s["daily"] for s in all_stats)
-    total_blocked = sum(s["blocked"] for s in all_stats)
-    total_llm = sum(s["llm_processed"] for s in all_stats)
-    lines.append("## Global Summary")
+    total_llm = sum(s["llm_curated"] for s in all_stats)
+
+    lines: list[str] = []
+    lines.append("# Word Data Report")
     lines.append("")
-    lines.append("| Metric | Value |")
-    lines.append("|--------|------:|")
-    lines.append(f"| Total languages | {len(all_stats)} |")
-    lines.append(f"| Total words | {total_words:,} |")
-    lines.append(f"| Total daily words | {total_daily:,} |")
-    lines.append(f"| Total blocked words | {total_blocked:,} |")
-    lines.append(f"| LLM-curated words | {total_llm:,} |")
-    lines.append(f"| Avg daily per language | {total_daily // len(all_stats):,} |")
+    lines.append(
+        f"*Generated {today} | {len(all_stats)} languages | "
+        f"{total_words:,} total words | {total_daily:,} daily | "
+        f"{total_llm:,} LLM-curated | {days_since} days since migration*"
+    )
     lines.append("")
 
-    # Overview table
-    lines.append("## Language Overview")
+    # === MAIN TABLE ===
+    lines.append("## All Languages")
     lines.append("")
-    lines.append("| Lang | Name | Daily | Valid | Block | Total | Freq% | LLM | Yrs |")
-    lines.append("|------|------|------:|------:|------:|------:|------:|----:|----:|")
+    lines.append(
+        "| Code | Language | Daily | Valid | Block | Total | "
+        "Freq | Zipf | Sources | LLM | Yrs | Issues |"
+    )
+    lines.append(
+        "|------|----------|------:|------:|------:|------:|"
+        "----:|-----:|---------|----:|----:|--------|"
+    )
+
     for s in sorted(all_stats, key=lambda x: -x["daily"]):
+        src_str = ",".join(s["data_sources"])
+        issue_str = "; ".join(s["issues"]) if s["issues"] else ""
+        name = s["name"][:14]
+        if s["flags"]:
+            name += " " + " ".join(f"[{f}]" for f in s["flags"])
+
         lines.append(
-            f"| {s['lang']} | {s['name'][:12]} | {s['daily']:,} | {s['valid']:,} | "
-            f"{s['blocked']:,} | {s['total']:,} | {s['freq_coverage']:.0f}% | "
-            f"{s['llm_processed']} | {s['daily_years']} |"
+            f"| {s['lang']} | {name} | {s['daily']:,} | {s['valid']:,} | "
+            f"{s['blocked']:,} | {s['total']:,} | "
+            f"{s['freq_pct']}% | {s['avg_zipf']} | {src_str} | "
+            f"{s['llm_curated'] or '--'} | {s['years']} | {issue_str} |"
         )
     lines.append("")
 
-    # Per-language detail
-    lines.append("## Language Details")
+    # === LEGEND ===
+    lines.append("## Legend")
+    lines.append("")
+    lines.append(
+        "**Tiers:** Daily = puzzle answers, Valid = accepted guesses only, Blocked = excluded"
+    )
+    lines.append("")
+    lines.append("**Freq:** % of daily words with a frequency score from wordfreq/FrequencyWords")
+    lines.append("")
+    lines.append(
+        "**Zipf:** Average word commonness (1=rare, 4=common, 7=ultra-common like 'the'). "
+        "Good daily words are typically 3.5-5.5."
+    )
+    lines.append("")
+    lines.append("**Sources:**")
+    lines.append("- `wf` = wordfreq (Wikipedia, Reddit, Twitter, Google Books)")
+    lines.append("- `fw` = FrequencyWords (OpenSubtitles)")
+    lines.append("- `kk` = kaikki.org (Wiktionary word extracts)")
+    lines.append("- `lz` = Leipzig Corpora (newspaper/web text)")
+    lines.append("- `hs` = Hunspell (spellcheck dictionary)")
+    lines.append("- `kb` = KBBI (Indonesian official dictionary)")
+    lines.append("- `kt` = Katla (Indonesian Wordle answers)")
+    lines.append("- `--` = community-contributed only (no external frequency/dictionary source)")
+    lines.append("")
+    lines.append(
+        "**LLM:** Number of words reviewed by Claude. "
+        "Words flagged as names/foreign/vulgar are demoted from daily tier."
+    )
+    lines.append("")
+    lines.append("**Yrs:** Years of unique daily words at one word per day.")
     lines.append("")
 
-    for s in sorted(all_stats, key=lambda x: x["lang"]):
-        native = f" ({s['name_native']})" if s["name_native"] else ""
-        lines.append(f"### {s['name']}{native} — `{s['lang']}`")
+    # === ISSUES ===
+    with_issues = [s for s in all_stats if s["issues"]]
+    if with_issues:
+        lines.append("## Issues & Recommendations")
         lines.append("")
+        for s in sorted(with_issues, key=lambda x: x["daily"]):
+            lines.append(f"### {s['name']} (`{s['lang']}`)")
+            lines.append("")
+            for issue in s["issues"]:
+                lines.append(f"- {issue}")
 
-        # Basic info
-        attrs = []
-        if s["rtl"]:
-            attrs.append("RTL")
-        if s["grapheme_mode"]:
-            attrs.append("grapheme-mode")
-        attrs.append(f"tz: {s['timezone']}")
-        if s["has_keyboard"]:
-            attrs.append("custom keyboard")
-        lines.append(f"*{', '.join(attrs)}*")
-        lines.append("")
-
-        # Word counts
-        lines.append(
-            f"**Words:** {s['total']:,} total — {s['daily']:,} daily, {s['valid']:,} valid, {s['blocked']:,} blocked"
-        )
-        lines.append("")
-        lines.append(f"**Pool health:** {s['daily_years']} years of daily words")
-        lines.append("")
-
-        # Frequency
-        lines.append(
-            f"**Frequency:** {s['freq_coverage']:.0f}% scored, avg Zipf {s['avg_freq_daily']} (daily), {s['avg_freq_all']} (all)"
-        )
-        lines.append("")
-
-        # Sources
-        if s["sources"]:
-            src_parts = [f"{k}: {v}" for k, v in s["sources"].items()]
-            lines.append(f"**Sources:** {', '.join(src_parts)}")
+            # Recommendations
+            if s["daily"] < 365:
+                lines.append(
+                    f"- **Action:** Run LLM curation on valid pool ({s['valid']:,} words) "
+                    "to find promotable daily words"
+                )
+            if not s["llm_curated"]:
+                lines.append(
+                    "- **Action:** Run LLM curation: "
+                    f"`cd scripts && uv run python -m word_pipeline extract {s['lang']} && "
+                    "# then spawn curation agent`"
+                )
             lines.append("")
 
-        # LLM curation
-        if s["llm_processed"]:
+    # === LLM CURATION BREAKDOWN ===
+    curated = [s for s in all_stats if s["llm_curated"]]
+    if curated:
+        lines.append("## LLM Curation Summary")
+        lines.append("")
+        lines.append(
+            "| Code | Language | Curated | Demoted | Names | Foreign | Vulgar | Obscure | Other |"
+        )
+        lines.append(
+            "|------|----------|--------:|--------:|------:|--------:|-------:|--------:|------:|"
+        )
+        for s in sorted(curated, key=lambda x: -x["llm_curated"]):
+            r = s["llm_reasons"]
             lines.append(
-                f"**LLM curation:** {s['llm_processed']} processed — {s['llm_rejected']} reject, {s['llm_valid']} valid, {s['llm_daily']} daily"
+                f"| {s['lang']} | {s['name'][:14]} | {s['llm_curated']} | {s['llm_demoted']} | "
+                f"{r.get('names', 0)} | {r.get('foreign', 0)} | {r.get('vulgar', 0)} | "
+                f"{r.get('obscure', 0)} | {r.get('other', 0)} |"
             )
-            if s["llm_reasons"]:
-                reason_parts = [f"{k}: {v}" for k, v in s["llm_reasons"].items()]
-                lines.append(f"  Reasons: {', '.join(reason_parts)}")
-            lines.append("")
-
-        if s["reviewed"]:
-            lines.append(f"**Human reviewed:** {s['reviewed']} words")
-            lines.append("")
-
-        # Flags
-        active_flags = {k: v for k, v in s["flags"].items() if v > 0}
-        if active_flags:
-            flag_parts = [f"{k}: {v}" for k, v in active_flags.items()]
-            lines.append(f"**Flags:** {', '.join(flag_parts)}")
-            lines.append("")
-
-        # History
-        lines.append(
-            f"**History:** {s['words_with_history']} unique words served, "
-            f"{s['total_history_days']}/{s['days_since_migration']} days covered "
-            f"({s['history_coverage']:.0f}%)"
-        )
-        lines.append("")
-        lines.append("---")
         lines.append("")
 
     return "\n".join(lines)
