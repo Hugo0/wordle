@@ -85,7 +85,7 @@ export default defineEventHandler(async (event) => {
     }
 
     const expectedWord = getWordForDay(lang, dayIdx);
-    if (word.toLowerCase() !== expectedWord.toLowerCase()) {
+    if (word.toLowerCase().normalize('NFC') !== expectedWord.toLowerCase().normalize('NFC')) {
         throw createError({ statusCode: 403, message: 'Not a valid daily word' });
     }
 

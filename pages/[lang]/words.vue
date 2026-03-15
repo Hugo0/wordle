@@ -146,6 +146,44 @@ function formatDate(dateStr: string): string {
 function winRate(stats: { total: number; wins: number }): number {
     return Math.round((stats.wins / stats.total) * 100);
 }
+
+// Client-side: reveal today's word if game is over (won or lost)
+const todayRevealed = ref<string | null>(null);
+const completedDays = ref(new Set<number>());
+
+onMounted(() => {
+    try {
+        // Check current game state — key is the language code
+        const saved = localStorage.getItem(lang);
+        if (saved) {
+            const state = JSON.parse(saved);
+            if (state.game_over && state.todays_word) {
+                todayRevealed.value = state.todays_word;
+            }
+        }
+
+        // Build set of completed day indices from game_results
+        const results = localStorage.getItem('game_results');
+        if (results) {
+            const parsed = JSON.parse(results);
+            const langResults = parsed[lang];
+            if (Array.isArray(langResults)) {
+                // game_results stores [{won, attempts, date}, ...]
+                // We need to map dates to day indices
+                for (const r of langResults) {
+                    if (r.date) {
+                        const d = new Date(r.date);
+                        const nDays = Math.floor(d.getTime() / 86400000);
+                        const idx = nDays - 18992 + 195;
+                        completedDays.value.add(idx);
+                    }
+                }
+            }
+        }
+    } catch {
+        // localStorage unavailable
+    }
+});
 </script>
 
 <template>
@@ -172,9 +210,9 @@ function winRate(stats: { total: number; wins: number }): number {
             <!-- Word Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                 <template v-for="w in words" :key="w.day_idx">
-                    <!-- Today's word: mystery card -->
+                    <!-- Today's word: revealed if game over, mystery if not -->
                     <NuxtLink
-                        v-if="w.is_today"
+                        v-if="w.is_today && !todayRevealed"
                         :to="`/${lang}`"
                         class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group border-2 border-dashed border-green-500/40"
                     >
@@ -197,12 +235,44 @@ function winRate(stats: { total: number; wins: number }): number {
                         </p>
                     </NuxtLink>
 
+                    <!-- Today's word: revealed (game over) -->
+                    <NuxtLink
+                        v-else-if="w.is_today && todayRevealed"
+                        :to="`/${lang}/word/${w.day_idx}`"
+                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group border-2 border-green-500/40"
+                    >
+                        <div class="flex justify-center gap-1 mb-2">
+                            <div
+                                v-for="(letter, li) in todayRevealed"
+                                :key="li"
+                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-green-500 rounded uppercase"
+                            >
+                                {{ letter }}
+                            </div>
+                        </div>
+                        <p class="text-xs text-neutral-400 text-center">
+                            #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
+                        </p>
+                        <p
+                            class="text-sm font-semibold text-green-600 dark:text-green-400 mt-1 text-center"
+                        >
+                            Today
+                        </p>
+                    </NuxtLink>
+
                     <!-- Past word: normal card -->
                     <NuxtLink
                         v-else
                         :to="`/${lang}/word/${w.day_idx}`"
-                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group"
+                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group relative"
                     >
+                        <!-- Played checkmark -->
+                        <span
+                            v-if="completedDays.has(w.day_idx)"
+                            class="absolute top-2 right-2 text-green-500 dark:text-green-400 text-xs"
+                            title="Played"
+                            >&#10003;</span
+                        >
                         <!-- Word tiles (mini) -->
                         <div class="flex justify-center gap-1 mb-2">
                             <div
