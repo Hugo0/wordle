@@ -176,7 +176,7 @@ class TestKeyboardConfig:
 
         # Only check daily-tier words — those are what players must type
         daily = load_daily_words(lang)
-        words = load_word_list(lang) if not daily else daily
+        words = daily if daily else load_word_list(lang)
         word_chars = set()
         for word in words:
             word_chars.update(word)
