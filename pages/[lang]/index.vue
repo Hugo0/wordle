@@ -11,6 +11,29 @@ definePageMeta({ layout: 'game' });
 const route = useRoute();
 const lang = route.params.lang as string;
 
+// --- Language improvement banner (ko, ja) ---
+const IMPROVEMENT_LANGS = ['ko', 'ja'];
+const showImprovementBanner = ref(false);
+
+function onBannerClick() {
+    try {
+        import('posthog-js').then((mod) =>
+            mod.default.capture('language_interest', { language: lang })
+        );
+    } catch {
+        // Silently fail
+    }
+}
+
+function dismissBanner() {
+    showImprovementBanner.value = false;
+    try {
+        localStorage.setItem(`banner_dismissed_${lang}`, '1');
+    } catch {
+        // localStorage unavailable
+    }
+}
+
 // --- Server-side data fetch (SSR) ---
 const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
 
@@ -137,6 +160,17 @@ const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);
 
 // --- Client-side initialization ---
 onMounted(() => {
+    // Show improvement banner for ko/ja if not dismissed
+    if (IMPROVEMENT_LANGS.includes(lang)) {
+        try {
+            if (!localStorage.getItem(`banner_dismissed_${lang}`)) {
+                showImprovementBanner.value = true;
+            }
+        } catch {
+            showImprovementBanner.value = true;
+        }
+    }
+
     // Pass DOM refs to game store for animations
     game.setBoardEl(() => gameBoardRef.value?.boardEl ?? null);
     game.setKeyboardEl(() => gameKeyboardRef.value?.$el ?? null);
@@ -210,6 +244,38 @@ function handleKeyDown(e: KeyboardEvent) {
                 @stats="game.showStatsModal = !game.showStatsModal"
                 @settings="game.showOptionsModal = !game.showOptionsModal"
             />
+
+            <!-- Language improvement banner (ko, ja) -->
+            <div
+                v-if="showImprovementBanner"
+                class="relative flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium cursor-pointer bg-amber-100 text-amber-900 dark:bg-amber-900/40 dark:text-amber-200 border-b border-amber-200 dark:border-amber-700"
+                @click="onBannerClick"
+            >
+                <span
+                    >This language is being improved &mdash; tap here to let us know you're
+                    interested!</span
+                >
+                <button
+                    class="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-amber-200 dark:hover:bg-amber-800 text-amber-700 dark:text-amber-400"
+                    aria-label="Dismiss"
+                    @click.stop="dismissBanner"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
 
             <!-- The game board -->
             <GameBoard ref="gameBoardRef" />
