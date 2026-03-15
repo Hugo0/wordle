@@ -130,6 +130,7 @@ EXTRA_SOURCES = {
     "sk": {"kaikki", "leipzig"},
     "sl": {"kaikki", "leipzig"},
     "sq": {"kaikki", "hunspell", "leipzig"},
+    "sw": {"kaikki"},
     "sr": {"kaikki", "leipzig"},
     "sv": {"kaikki", "leipzig"},
     "tk": {"kaikki"},

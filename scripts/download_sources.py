@@ -70,6 +70,7 @@ LEIPZIG_CORPORA = {
     "ne": "nep_wikipedia_2021_100K",
     "nn": "nno_wikipedia_2021_100K",
     "oc": "oci_wikipedia_2021_100K",
+    "sw": "swh_wikipedia_2021_100K",
     "vi": "vie_wikipedia_2021_100K",
     # Existing languages
     "ar": "ara_news_2024_1M",
@@ -115,6 +116,7 @@ KAIKKI_LANGS = {
     "om": "Oromo",
     "hi": "Hindi",
     "mr": "Marathi",
+    "sw": "Swahili",
 }
 
 
