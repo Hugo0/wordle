@@ -209,7 +209,7 @@ function winRate(stats: { total: number; wins: number }): number {
                     <!-- AI art thumbnail (loads async) -->
                     <div class="mt-2 overflow-hidden rounded hidden" :data-img-id="w.day_idx">
                         <img
-                            :src="`/${lang}/api/word-image/${w.word}?day_idx=${w.day_idx}`"
+                            :src="`/api/${lang}/word-image/${w.word}?day_idx=${w.day_idx}`"
                             :alt="w.word"
                             class="w-full h-24 object-cover"
                             loading="lazy"
