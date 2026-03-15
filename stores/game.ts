@@ -1062,9 +1062,7 @@ export const useGameStore = defineStore('game', () => {
     // ---- Definition & Image for Stats Modal ----
 
     function loadDefinitionAndImage(word: string, langCode: string, dayIdx: number): void {
-        const settings = useSettingsStore();
-        if (!settings.wordInfoEnabled) return;
-
+        // Always load — template controls visibility via settings.wordInfoEnabled
         todayDefinitionLoading.value = true;
         todayImageLoading.value = true;
 

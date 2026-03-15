@@ -68,8 +68,8 @@
                 </a>
             </div>
 
-            <!-- Definition Card -->
-            <div v-if="game.todayDefinitionLoading" class="px-6 pb-2">
+            <!-- Definition Card (respects Word Info toggle) -->
+            <div v-if="settings.wordInfoEnabled && game.todayDefinitionLoading" class="px-6 pb-2">
                 <div class="animate-pulse flex gap-2">
                     <div class="flex-1 space-y-1.5">
                         <div class="h-3 bg-neutral-200 dark:bg-neutral-700 rounded w-20" />
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div v-else-if="game.todayDefinition" class="px-6 pb-2">
+            <div v-else-if="settings.wordInfoEnabled && game.todayDefinition" class="px-6 pb-2">
                 <div class="flex items-start gap-2">
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center gap-2 mb-0.5">
@@ -101,6 +101,7 @@
                     <a
                         v-if="game.todayDefinition.url"
                         :href="game.todayDefinition.url"
+                        aria-label="View word details"
                         class="flex-shrink-0 text-neutral-400 hover:text-blue-500 dark:text-neutral-500 dark:hover:text-blue-400"
                     >
                         <svg
@@ -120,13 +121,13 @@
                 </div>
             </div>
 
-            <!-- Word Art Image -->
-            <div v-if="game.todayImageLoading" class="px-6 pt-1 pb-2">
+            <!-- Word Art Image (respects Word Info toggle) -->
+            <div v-if="settings.wordInfoEnabled && game.todayImageLoading" class="px-6 pt-1 pb-2">
                 <div class="animate-pulse">
                     <div class="h-48 bg-neutral-200 dark:bg-neutral-700 rounded-lg w-full" />
                 </div>
             </div>
-            <div v-else-if="game.todayImageUrl" class="px-6 pt-1 pb-2">
+            <div v-else-if="settings.wordInfoEnabled && game.todayImageUrl" class="px-6 pt-1 pb-2">
                 <a :href="'/' + lang.languageCode + '/word/' + lang.todaysIdx">
                     <img
                         :src="game.todayImageUrl"
