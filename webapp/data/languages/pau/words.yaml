@@ -794,9 +794,13 @@ words:
   - main_list
 - word: miles
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word/name - likely not a Palauan word
 - word: metir
   length: 5
   tier: daily
@@ -1909,9 +1913,13 @@ words:
   - main_list
 - word: charm
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word - not a Palauan word
 - word: chaus
   length: 5
   tier: daily
@@ -2775,9 +2783,13 @@ words:
   - main_list
 - word: metal
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - not a native Palauan word
 - word: metau
   length: 5
   tier: daily
@@ -5046,9 +5058,13 @@ words:
   - main_list
 - word: touch
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word - not a Palauan word
 - word: tudab
   length: 5
   tier: daily
@@ -5864,9 +5880,13 @@ words:
   - main_list
 - word: dekor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (German/French 'decor') - not a native Palauan word
 - word: deoll
   length: 5
   tier: daily
@@ -5879,9 +5899,13 @@ words:
   - main_list
 - word: derek
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Likely English proper noun (name Derek) rather than Palauan word
 - word: derik
   length: 5
   tier: daily
@@ -7195,9 +7219,13 @@ words:
   - main_list
 - word: remus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Roman mythological figure, not a Palauan word
 - word: rikel
   length: 5
   tier: daily
@@ -7385,9 +7413,13 @@ words:
   - main_list
 - word: small
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word - not a Palauan word
 - word: smalo
   length: 5
   tier: daily
@@ -8340,9 +8372,13 @@ words:
   - main_list
 - word: moros
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially a proper noun (Moros people of Philippines) rather than Palauan word
 - word: metut
   length: 5
   tier: daily

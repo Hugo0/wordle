@@ -580,9 +580,13 @@ words:
   - main_list
 - word: شەریف
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Sharif'
 - word: شەفاف
   length: 5
   tier: daily
@@ -595,9 +599,13 @@ words:
   - main_list
 - word: شەیدا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Shayda'
 - word: عیناد
   length: 5
   tier: daily
@@ -873,9 +881,13 @@ words:
   - main_list
 - word: نەجیب
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Najib'
 - word: نەخۆش
   length: 5
   tier: daily
@@ -1011,11 +1023,19 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Yazidi (ethnic/religious group)'
 - word: ئیتنی
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: possibly Whitney/Itni'
 - word: ئەمنی
   length: 5
   tier: daily
@@ -1354,9 +1374,13 @@ words:
   - main_list
 - word: تامیل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tamil (language/people)'
 - word: سووری
   length: 5
   tier: daily
@@ -1427,6 +1451,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Turkey/Turkish'
 - word: ڕووسی
   length: 5
   tier: daily
@@ -2370,6 +2398,10 @@ words:
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be common word (wallet) - verify before rejecting
 - word: جگەرە
   length: 5
   tier: daily
@@ -2410,6 +2442,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Sensitive religious/political term
 - word: جیھاز
   length: 5
   tier: daily
@@ -2587,9 +2623,13 @@ words:
   - main_list
 - word: حەکیم
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hakim'
 - word: حەمام
   length: 5
   tier: daily
@@ -3044,6 +3084,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Foreign loanword: robot'
 - word: ڕۆتین
   length: 5
   tier: daily
@@ -3382,9 +3426,13 @@ words:
   - main_list
 - word: سربیا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Serbia'
 - word: سروشت
   length: 5
   tier: daily
@@ -3407,9 +3455,13 @@ words:
   - main_list
 - word: سکایپ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Skype (brand)'
 - word: سکرۆڵ
   length: 5
   tier: daily
@@ -3719,9 +3771,13 @@ words:
   - main_list
 - word: شیلان
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Shilan'
 - word: شیوعی
   length: 5
   tier: daily
@@ -3911,6 +3967,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'English loanword: forum'
 - word: فۆسیل
   length: 5
   tier: daily
@@ -3983,9 +4043,13 @@ words:
   - main_list
 - word: قابیل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cain (biblical)'
 - word: قاچاخ
   length: 5
   tier: daily
@@ -4144,9 +4208,13 @@ words:
   - main_list
 - word: قەحبە
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar/offensive: prostitute'
 - word: قەدەر
   length: 5
   tier: daily
@@ -4517,9 +4585,13 @@ words:
   - main_list
 - word: گاگەل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Google variant'
 - word: گاڵتە
   length: 5
   tier: daily
@@ -4896,6 +4968,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Foreign loanword: Mafia'
 - word: ماڵات
   length: 5
   tier: daily
@@ -5098,9 +5174,13 @@ words:
   - main_list
 - word: مەلیک
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Malik'
 - word: مەلەف
   length: 5
   tier: daily
@@ -5258,9 +5338,13 @@ words:
   - main_list
 - word: نەسیم
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Nasim'
 - word: نەغمە
   length: 5
   tier: daily
@@ -5379,9 +5463,13 @@ words:
   - main_list
 - word: ھیلال
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hilal'
 - word: ھەتاو
   length: 5
   tier: daily
@@ -5681,9 +5769,13 @@ words:
   - main_list
 - word: ئۆفیس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Office (brand) / English loanword'
 - word: ئێزگە
   length: 5
   tier: daily
@@ -5856,19 +5948,31 @@ words:
   - main_list
 - word: بدلیس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bitlis (Turkish city)'
 - word: بۆسنە
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bosnia'
 - word: بۆکان
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bukan (Iranian city)'
 - word: بیارە
   length: 5
   tier: daily
@@ -5896,14 +6000,22 @@ words:
   - main_list
 - word: بەغدا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Baghdad'
 - word: پاریس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Paris'
 - word: پشدەر
   length: 5
   tier: daily
@@ -5916,9 +6028,13 @@ words:
   - main_list
 - word: پەکین
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Beijing/Peking'
 - word: تاران
   length: 5
   tier: daily
@@ -5982,14 +6098,22 @@ words:
   - main_list
 - word: دیالە
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Diyala (Iraqi province)'
 - word: دیجلە
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tigris river'
 - word: ڕانیە
   length: 5
   tier: daily
@@ -6032,9 +6156,13 @@ words:
   - main_list
 - word: سۆماڵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Somalia'
 - word: سێمێل
   length: 5
   tier: daily
@@ -6063,10 +6191,14 @@ words:
   - main_list
 - word: شیراز
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Shiraz (Iranian city)'
 - word: عومان
   length: 5
   tier: daily
@@ -6091,14 +6223,22 @@ words:
   - main_list
 - word: قوبرس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cyprus'
 - word: کۆریا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Korea'
 - word: کۆڕەک
   length: 5
   tier: daily
@@ -6139,14 +6279,22 @@ words:
   - main_list
 - word: مووسڵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mosul (Iraqi city)'
 - word: مۆسکۆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Moscow'
 - word: مەریخ
   length: 5
   tier: daily
@@ -6154,9 +6302,13 @@ words:
   - main_list
 - word: مەککە
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mecca'
 - word: نۆدشە
   length: 5
   tier: daily
@@ -6164,14 +6316,22 @@ words:
   - main_list
 - word: نیپاڵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nepal'
 - word: نەجەف
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Najaf (Iraqi city)'
 - word: نەمسا
   length: 5
   tier: daily
@@ -6189,9 +6349,13 @@ words:
   - main_list
 - word: یەمەن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Yemen'
 - word: ئاراس
   length: 5
   tier: daily
@@ -6219,9 +6383,13 @@ words:
   - main_list
 - word: ئۆسلۆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Oslo (Norwegian capital)'
 - word: ئێران
   length: 5
   tier: daily
@@ -6292,15 +6460,23 @@ words:
   - main_list
 - word: بایرن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bayern/Bavaria'
 - word: بلباو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bilbao (Spanish city)'
   history:
   - 1692
   scheduled_day: 1692
@@ -6346,9 +6522,13 @@ words:
   - main_list
 - word: گووگڵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Google (brand)'
 - word: گۆڕان
   length: 5
   tier: daily
@@ -6387,14 +6567,22 @@ words:
   scheduled_day: 1714
 - word: بایدن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Biden (political figure)'
 - word: بوشرا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Bushra'
 - word: بێکەس
   length: 5
   tier: daily
@@ -6402,14 +6590,22 @@ words:
   - main_list
 - word: بیژەن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Bizhan'
 - word: بیلال
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Bilal'
 - word: بەدری
   length: 5
   tier: daily
@@ -6417,19 +6613,31 @@ words:
   - main_list
 - word: بەشار
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Bashar'
 - word: بەشیر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Bashir'
 - word: پاڤێڵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Pavel'
 - word: پاموک
   length: 5
   tier: daily
@@ -6437,9 +6645,13 @@ words:
   - main_list
 - word: پاولۆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Paulo'
 - word: تاریق
   length: 5
   tier: daily
@@ -6452,9 +6664,13 @@ words:
   - main_list
 - word: ترەمپ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Trump (political figure)'
 - word: تۆفیق
   length: 5
   tier: daily
@@ -6462,14 +6678,22 @@ words:
   - main_list
 - word: جۆزێف
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Joseph'
 - word: جۆنسن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Johnson'
 - word: جێفری
   length: 5
   tier: daily
@@ -6477,34 +6701,58 @@ words:
   - main_list
 - word: جەبار
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jabbar'
 - word: جەلال
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jalal'
 - word: جەلیل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jalil'
 - word: جەمال
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jamal'
 - word: جەمیل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jamil'
 - word: جەواد
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jawad'
 - word: حاتەم
   length: 5
   tier: daily
@@ -6512,24 +6760,40 @@ words:
   - main_list
 - word: حامید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hamid'
 - word: حوسنی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hosni'
 - word: حوسێن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hussein'
 - word: حەبیب
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Habib'
 - word: حەپسە
   length: 5
   tier: daily
@@ -6537,39 +6801,67 @@ words:
   - main_list
 - word: حەداد
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name/surname Haddad'
 - word: حەسەن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hassan'
 - word: حەفید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hafid'
 - word: حەمدی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hamdi'
 - word: حەمزە
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hamza'
 - word: حەمید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hamid'
 - word: حەمەد
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hamad'
 - word: خالقی
   length: 5
   tier: daily
@@ -6577,9 +6869,13 @@ words:
   - main_list
 - word: خالید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Khalid'
 - word: خەتیب
   length: 5
   tier: daily
@@ -6587,9 +6883,13 @@ words:
   - main_list
 - word: خەلیل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Khalil'
 - word: خەلەف
   length: 5
   tier: daily
@@ -6617,9 +6917,13 @@ words:
   - main_list
 - word: دیلان
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Dilan'
 - word: دەباغ
   length: 5
   tier: daily
@@ -6682,10 +6986,14 @@ words:
   - main_list
 - word: ساسان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sassan (dynasty/name)'
 - word: ساعدی
   length: 5
   tier: daily
@@ -6709,19 +7017,31 @@ words:
   - main_list
 - word: سۆنیا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Sonia'
 - word: سەباح
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Sabah'
 - word: سەبری
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Sabri'
 - word: سەحەر
   length: 5
   tier: daily
@@ -6729,14 +7049,22 @@ words:
   - main_list
 - word: سەعدی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Saadi (poet)'
 - word: سەعید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Saeed'
 - word: سەفین
   length: 5
   tier: daily
@@ -6749,14 +7077,22 @@ words:
   - main_list
 - word: سەلما
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Salma'
 - word: سەلیم
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Salim'
 - word: سەڵاح
   length: 5
   tier: daily
@@ -6764,9 +7100,13 @@ words:
   - main_list
 - word: سەمیر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Samir'
 - word: سەمیع
   length: 5
   tier: daily
@@ -6774,14 +7114,22 @@ words:
   - main_list
 - word: سەمەد
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Samad'
 - word: شاناز
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Shanaz'
 - word: شاھین
   length: 5
   tier: daily
@@ -6804,14 +7152,22 @@ words:
   - main_list
 - word: شەفیق
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Shafiq'
 - word: شەھاب
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Shahab'
 - word: شەھێن
   length: 5
   tier: daily
@@ -6819,9 +7175,13 @@ words:
   - main_list
 - word: شەیما
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Shaima'
 - word: عامری
   length: 5
   tier: daily
@@ -6847,14 +7207,22 @@ words:
   - main_list
 - word: عەباس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Abbas'
 - word: عەفان
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Affan'
 - word: عەونی
   length: 5
   tier: daily
@@ -6867,14 +7235,22 @@ words:
   - main_list
 - word: فاتمە
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Fatma'
 - word: فاتیح
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Fatih'
 - word: فایەق
   length: 5
   tier: daily
@@ -6882,9 +7258,13 @@ words:
   - main_list
 - word: فرۆید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Freud'
 - word: فوئاد
   length: 5
   tier: daily
@@ -6892,27 +7272,43 @@ words:
   - main_list
 - word: فەتاح
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Fattah'
 - word: فەتحی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Fathi'
   history:
   - 1719
   scheduled_day: 1719
 - word: فەخری
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Fakhri'
 - word: فەرید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Farid'
 - word: فەرەج
   length: 5
   tier: daily
@@ -6940,9 +7336,13 @@ words:
   - main_list
 - word: کارلۆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Carlo'
 - word: کازمی
   length: 5
   tier: daily
@@ -6960,22 +7360,34 @@ words:
   - main_list
 - word: کلارک
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Clark'
   history:
   - 1706
   scheduled_day: 1706
 - word: کۆستا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Costa'
 - word: کەریم
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Karim'
 - word: کەژاڵ
   length: 5
   tier: daily
@@ -6988,9 +7400,13 @@ words:
   - main_list
 - word: کەمال
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Kamal'
 - word: گاریس
   length: 5
   tier: daily
@@ -6998,9 +7414,13 @@ words:
   - main_list
 - word: گاندی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gandhi'
 - word: گولەن
   length: 5
   tier: daily
@@ -7013,9 +7433,13 @@ words:
   - main_list
 - word: گۆران
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / political movement Goran'
 - word: گەردی
   length: 5
   tier: daily
@@ -7023,9 +7447,13 @@ words:
   - main_list
 - word: لاھور
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lahore (Pakistani city)'
 - word: لاوێن
   length: 5
   tier: daily
@@ -7043,9 +7471,13 @@ words:
   - main_list
 - word: لەیلا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Layla'
 - word: ماجید
   length: 5
   tier: daily
@@ -7053,24 +7485,40 @@ words:
   - main_list
 - word: مارکس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marx'
 - word: مارکۆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marco'
 - word: ماریا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Maria'
 - word: ماریۆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Mario'
 - word: ماملێ
   length: 5
   tier: daily
@@ -7083,14 +7531,22 @@ words:
   - main_list
 - word: مایکڵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Michael'
 - word: مریەم
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Maryam'
 - word: موراد
   length: 5
   tier: daily
@@ -7104,19 +7560,31 @@ words:
   - main_list
 - word: مووسا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Musa/Moses'
 - word: مەتین
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Matin'
 - word: مەجید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Majid'
 - word: مەحوی
   length: 5
   tier: daily
@@ -7134,9 +7602,13 @@ words:
   - main_list
 - word: مەھدی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Mahdi'
 - word: نادیە
   length: 5
   tier: daily
@@ -7147,9 +7619,13 @@ words:
   scheduled_day: 1694
 - word: نازری
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Nazri'
 - word: ناسیح
   length: 5
   tier: daily
@@ -7157,9 +7633,13 @@ words:
   - main_list
 - word: نامیق
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Namiq'
 - word: نووری
   length: 5
   tier: daily
@@ -7170,14 +7650,22 @@ words:
   scheduled_day: 1728
 - word: نەبیل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Nabil'
 - word: نەھرۆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nehru'
 - word: ھاشمی
   length: 5
   tier: daily
@@ -7190,9 +7678,13 @@ words:
   - main_list
 - word: ھیشام
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hisham'
 - word: ھەرکی
   length: 5
   tier: daily
@@ -7210,9 +7702,13 @@ words:
   - main_list
 - word: واحید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Wahid'
 - word: وەلید
   length: 5
   tier: daily
@@ -7235,32 +7731,52 @@ words:
   - main_list
 - word: یاسین
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Yasin'
 - word: یووسف
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Yusuf'
 - word: یوونس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Younis'
 - word: یەحیا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Yahya'
   history:
   - 1703
   scheduled_day: 1703
 - word: یەزید
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Yazid'
   history:
   - 1695
   scheduled_day: 1695

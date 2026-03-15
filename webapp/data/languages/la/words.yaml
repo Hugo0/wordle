@@ -177,9 +177,13 @@ words:
   - main_list
 - word: mosen
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Moses accusative)
 - word: gvbia
   length: 5
   tier: daily
@@ -210,10 +214,14 @@ words:
   - main_list
 - word: narbo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Narbo/Narbonne, city)
 - word: later
   length: 5
   tier: daily
@@ -285,10 +293,14 @@ words:
   - main_list
 - word: pelia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pelias, mythological)
 - word: uisus
   length: 5
   tier: daily
@@ -409,10 +421,14 @@ words:
   - main_list
 - word: aulus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aulus, Roman praenomen)
 - word: simia
   length: 5
   tier: daily
@@ -499,10 +515,14 @@ words:
   - main_list
 - word: nerva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nerva, Roman emperor)
 - word: insvm
   length: 5
   tier: daily
@@ -571,16 +591,24 @@ words:
   - main_list
 - word: tunes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Tunis, city)
 - word: catia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Catia, personal name)
 - word: perdo
   length: 5
   tier: daily
@@ -634,9 +662,13 @@ words:
   - main_list
 - word: drino
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Drino, river)
 - word: betin
   length: 5
   tier: daily
@@ -712,9 +744,13 @@ words:
   - main_list
 - word: dymae
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dymae, Greek city)
 - word: foria
   length: 5
   tier: daily
@@ -780,10 +816,14 @@ words:
   - main_list
 - word: norba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Norba, city)
 - word: fervs
   length: 5
   tier: daily
@@ -915,15 +955,23 @@ words:
   - main_list
 - word: athon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Athon/Athos, mountain)
 - word: davus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Davus, stock comedy name)
 - word: mervm
   length: 5
   tier: daily
@@ -936,9 +984,13 @@ words:
   - main_list
 - word: liuia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Livia, personal name)
 - word: idyme
   length: 5
   tier: daily
@@ -984,10 +1036,14 @@ words:
   - main_list
 - word: elias
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Elias/Elijah, biblical)
 - word: nolet
   length: 5
   tier: daily
@@ -1054,10 +1110,14 @@ words:
   - main_list
 - word: thera
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Thera/Santorini, island)
 - word: pindi
   length: 5
   tier: daily
@@ -1181,9 +1241,13 @@ words:
   - main_list
 - word: aenii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aenii, people name)
 - word: aspri
   length: 5
   tier: daily
@@ -1253,9 +1317,13 @@ words:
   - main_list
 - word: arnvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arnus variant)
 - word: cumba
   length: 5
   tier: daily
@@ -1263,9 +1331,13 @@ words:
   - main_list
 - word: chuni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Chuni/Huns)
 - word: hedus
   length: 5
   tier: daily
@@ -1315,16 +1387,24 @@ words:
   - main_list
 - word: aetna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aetna/Etna, volcano)
 - word: hales
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hales, river)
 - word: pylev
   length: 5
   tier: daily
@@ -1342,10 +1422,14 @@ words:
   - main_list
 - word: lxvii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (67), not a word
 - word: tinus
   length: 5
   tier: daily
@@ -1397,9 +1481,13 @@ words:
   - main_list
 - word: pytho
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pytho/Delphi)
 - word: spado
   length: 5
   tier: daily
@@ -1423,10 +1511,14 @@ words:
   - main_list
 - word: xenon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Xenon, personal name)
 - word: adque
   length: 5
   tier: daily
@@ -1582,10 +1674,14 @@ words:
   - main_list
 - word: celia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Celia, personal name)
 - word: napvs
   length: 5
   tier: daily
@@ -1593,9 +1689,13 @@ words:
   - main_list
 - word: issos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Issus, battle site)
 - word: eligo
   length: 5
   tier: daily
@@ -1603,10 +1703,14 @@ words:
   - main_list
 - word: xxiii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (23), not a word
 - word: vitio
   length: 5
   tier: daily
@@ -1636,9 +1740,13 @@ words:
   - main_list
 - word: tyrvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Tyrus variant)
 - word: levis
   length: 5
   tier: daily
@@ -1738,9 +1846,13 @@ words:
   - main_list
 - word: vsian
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Usian variant)
 - word: emoui
   length: 5
   tier: daily
@@ -1748,10 +1860,14 @@ words:
   - main_list
 - word: lviii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (58), not a word
 - word: pulix
   length: 5
   tier: daily
@@ -1759,9 +1875,13 @@ words:
   - main_list
 - word: linvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Linus variant)
 - word: rvsvs
   length: 5
   tier: daily
@@ -1888,10 +2008,14 @@ words:
   - main_list
 - word: galla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Galla, personal name)
 - word: subis
   length: 5
   tier: daily
@@ -2041,10 +2165,14 @@ words:
   - main_list
 - word: melos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Melos, Greek island)
 - word: pauos
   length: 5
   tier: daily
@@ -2083,9 +2211,13 @@ words:
   - main_list
 - word: hvnni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Hunni variant)
 - word: antae
   length: 5
   tier: daily
@@ -2098,15 +2230,23 @@ words:
   - main_list
 - word: ilias
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Iliad, Homer's epic)
 - word: hiero
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Hiero, Syracusan tyrant)
 - word: forvm
   length: 5
   tier: daily
@@ -2181,9 +2321,13 @@ words:
   - main_list
 - word: sacae
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Sacae, Central Asian people)
 - word: accii
   length: 5
   tier: daily
@@ -2228,9 +2372,13 @@ words:
   - main_list
 - word: cypri
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cyprus, island)
 - word: hygra
   length: 5
   tier: daily
@@ -2249,9 +2397,13 @@ words:
   - main_list
 - word: astur
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Astur, people/person)
 - word: defui
   length: 5
   tier: daily
@@ -2259,10 +2411,14 @@ words:
   - main_list
 - word: svevi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Suebi variant)
 - word: tybur
   length: 5
   tier: daily
@@ -2336,10 +2492,14 @@ words:
   - main_list
 - word: libye
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Libya variant)
 - word: pouer
   length: 5
   tier: daily
@@ -2357,9 +2517,13 @@ words:
   - main_list
 - word: rvfvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Rufus variant)
 - word: verro
   length: 5
   tier: daily
@@ -2430,10 +2594,14 @@ words:
   - main_list
 - word: abram
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Abraham, biblical name)
 - word: hylev
   length: 5
   tier: daily
@@ -2522,10 +2690,14 @@ words:
   - main_list
 - word: isara
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Isara, river)
 - word: notos
   length: 5
   tier: daily
@@ -2587,10 +2759,14 @@ words:
   - main_list
 - word: paula
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Paula, personal name)
 - word: nugus
   length: 5
   tier: daily
@@ -2640,14 +2816,22 @@ words:
   - main_list
 - word: anien
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Anien/Anio, river)
 - word: erana
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Erana, place name)
 - word: unius
   length: 5
   tier: daily
@@ -2747,9 +2931,13 @@ words:
   - main_list
 - word: zeten
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Zetes, mythological)
 - word: copti
   length: 5
   tier: daily
@@ -2785,14 +2973,22 @@ words:
   - main_list
 - word: aeace
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aeaces, personal name - vocative)
 - word: argei
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Argei, Roman ritual sites)
 - word: zygia
   length: 5
   tier: daily
@@ -2820,10 +3016,14 @@ words:
   - main_list
 - word: iesus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jesus)
 - word: bilis
   length: 5
   tier: daily
@@ -2932,10 +3132,14 @@ words:
   - main_list
 - word: xcvii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (97), not a word
 - word: sapii
   length: 5
   tier: daily
@@ -3008,21 +3212,33 @@ words:
   - main_list
 - word: sinai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sinai, mountain/peninsula)
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Malta, island)
 - word: mysia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Mysia, region)
 - word: lupor
   length: 5
   tier: daily
@@ -3084,9 +3300,13 @@ words:
   - main_list
 - word: uxama
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Uxama, Spanish city)
 - word: myrvs
   length: 5
   tier: daily
@@ -3115,10 +3335,14 @@ words:
   - main_list
 - word: tyrus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Tyrus/Tyre)
 - word: dirus
   length: 5
   tier: daily
@@ -3138,9 +3362,13 @@ words:
   - main_list
 - word: cydon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cydon, Cretan city)
 - word: aqvae
   length: 5
   tier: daily
@@ -3230,10 +3458,14 @@ words:
   - main_list
 - word: liger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Liger/Loire, river)
 - word: funus
   length: 5
   tier: daily
@@ -3312,9 +3544,13 @@ words:
   - main_list
 - word: svlla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sulla variant)
 - word: miser
   length: 5
   tier: daily
@@ -3506,10 +3742,14 @@ words:
   - main_list
 - word: cosmi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Cosmus, personal name)
 - word: orgia
   length: 5
   tier: daily
@@ -3523,9 +3763,13 @@ words:
   - main_list
 - word: harii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Harii, Germanic tribe)
 - word: sinua
   length: 5
   tier: daily
@@ -3597,9 +3841,13 @@ words:
   - main_list
 - word: chaon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Chaon, mythological)
 - word: tvrma
   length: 5
   tier: daily
@@ -3617,16 +3865,24 @@ words:
   - main_list
 - word: carmo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Carmo, place name)
 - word: atina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Atina, Italian town)
 - word: adqvi
   length: 5
   tier: daily
@@ -3645,10 +3901,14 @@ words:
   - main_list
 - word: adria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Adria/Adriatic, place name)
 - word: cales
   length: 5
   tier: daily
@@ -3662,10 +3922,14 @@ words:
   - main_list
 - word: appia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Appia, Via Appia)
 - word: aedes
   length: 5
   tier: daily
@@ -3757,9 +4021,13 @@ words:
   - main_list
 - word: fvtvo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/obscene (sexual verb variant)
 - word: pvgio
   length: 5
   tier: daily
@@ -3787,9 +4055,13 @@ words:
   - main_list
 - word: lysas
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lysas, personal name)
 - word: garvm
   length: 5
   tier: daily
@@ -3828,16 +4100,24 @@ words:
   - main_list
 - word: lethe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lethe, river of forgetfulness)
 - word: sinon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sinon, Greek spy at Troy)
 - word: linea
   length: 5
   tier: daily
@@ -3908,9 +4188,13 @@ words:
   - main_list
 - word: avlis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aulis variant)
 - word: magma
   length: 5
   tier: daily
@@ -3935,10 +4219,14 @@ words:
   - main_list
 - word: henna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Henna, Sicilian city)
 - word: retis
   length: 5
   tier: daily
@@ -3972,10 +4260,14 @@ words:
   - main_list
 - word: creon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Creon, mythological king)
 - word: fadvm
   length: 5
   tier: daily
@@ -4010,10 +4302,14 @@ words:
   - main_list
 - word: cinga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cinga, river)
 - word: sedvc
   length: 5
   tier: daily
@@ -4072,9 +4368,13 @@ words:
   - main_list
 - word: hyble
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hybla variant)
 - word: obsis
   length: 5
   tier: daily
@@ -4108,16 +4408,24 @@ words:
   - main_list
 - word: gadir
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gadir/Cadiz, place name)
 - word: scoti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Scoti, Scots)
 - word: fvsvm
   length: 5
   tier: daily
@@ -4136,9 +4444,13 @@ words:
   - main_list
 - word: aegea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aegean)
 - word: evito
   length: 5
   tier: daily
@@ -4147,10 +4459,14 @@ words:
   - main_list
 - word: capua
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Capua, Italian city)
 - word: styga
   length: 5
   tier: daily
@@ -4207,10 +4523,14 @@ words:
   - main_list
 - word: arias
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Arias, personal name)
 - word: gluma
   length: 5
   tier: daily
@@ -4219,9 +4539,13 @@ words:
   - main_list
 - word: atrev
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Atreus variant)
 - word: sagvm
   length: 5
   tier: daily
@@ -4447,9 +4771,13 @@ words:
   - main_list
 - word: mdlvi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (1556), not a word
 - word: colvi
   length: 5
   tier: daily
@@ -4692,9 +5020,13 @@ words:
   - main_list
 - word: svria
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Syria variant)
 - word: caros
   length: 5
   tier: daily
@@ -4754,10 +5086,14 @@ words:
   - main_list
 - word: ionia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ionia, region)
 - word: noceo
   length: 5
   tier: daily
@@ -4867,9 +5203,13 @@ words:
   - main_list
 - word: avson
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Auson variant)
 - word: cotvs
   length: 5
   tier: daily
@@ -4892,10 +5232,14 @@ words:
   - main_list
 - word: pavla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Paula variant)
 - word: venia
   length: 5
   tier: daily
@@ -4963,9 +5307,13 @@ words:
   - main_list
 - word: tvsci
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Tusci variant)
 - word: uirus
   length: 5
   tier: daily
@@ -4994,9 +5342,13 @@ words:
   - main_list
 - word: svebi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Suebi variant)
 - word: gvmma
   length: 5
   tier: daily
@@ -5019,9 +5371,13 @@ words:
   - main_list
 - word: avlon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aulon variant)
 - word: tiphy
   length: 5
   tier: daily
@@ -5098,10 +5454,14 @@ words:
   - main_list
 - word: bessi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bessi, Thracian tribe)
 - word: elisi
   length: 5
   tier: daily
@@ -5216,10 +5576,14 @@ words:
   - main_list
 - word: persa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Persa, Persian)
 - word: seras
   length: 5
   tier: daily
@@ -5249,9 +5613,13 @@ words:
   - main_list
 - word: lydvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lydus variant)
 - word: rvgio
   length: 5
   tier: daily
@@ -5557,10 +5925,14 @@ words:
   - main_list
 - word: maron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Maron, personal name)
 - word: aphri
   length: 5
   tier: daily
@@ -5579,10 +5951,14 @@ words:
   - main_list
 - word: sidon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sidon, Phoenician city)
 - word: renvi
   length: 5
   tier: daily
@@ -5673,10 +6049,14 @@ words:
   - main_list
 - word: syrus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Syrus, a Syrian)
 - word: inlex
   length: 5
   tier: daily
@@ -5789,10 +6169,14 @@ words:
   - main_list
 - word: barce
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Barce, place name)
 - word: gelum
   length: 5
   tier: daily
@@ -5876,10 +6260,14 @@ words:
   - main_list
 - word: hiera
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hiera, island name)
 - word: latui
   length: 5
   tier: daily
@@ -5898,9 +6286,13 @@ words:
   - main_list
 - word: mdlii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (1552), not a word
 - word: nomas
   length: 5
   tier: daily
@@ -5914,9 +6306,13 @@ words:
   - main_list
 - word: zetes
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Zetes, Argonaut)
 - word: drvna
   length: 5
   tier: daily
@@ -6011,10 +6407,14 @@ words:
   - main_list
 - word: titus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Titus, Roman praenomen)
 - word: hedvs
   length: 5
   tier: daily
@@ -6027,9 +6427,13 @@ words:
   - main_list
 - word: hygia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hygia/Hygeia, goddess)
 - word: colon
   length: 5
   tier: daily
@@ -6064,10 +6468,14 @@ words:
   - main_list
 - word: arion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arion, mythological)
 - word: uisso
   length: 5
   tier: daily
@@ -6147,10 +6555,14 @@ words:
   - main_list
 - word: xlvii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (47), not a word
 - word: violo
   length: 5
   tier: daily
@@ -6222,15 +6634,23 @@ words:
   - main_list
 - word: xviii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (18), not a word
 - word: mmxiv
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (2014), not a word
 - word: adulo
   length: 5
   tier: daily
@@ -6259,9 +6679,13 @@ words:
   - main_list
 - word: baeto
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Baeto, place-related)
 - word: uanga
   length: 5
   tier: daily
@@ -6355,10 +6779,14 @@ words:
   - main_list
 - word: moses
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Moses, biblical)
 - word: adluo
   length: 5
   tier: daily
@@ -6377,9 +6805,13 @@ words:
   - main_list
 - word: mdlxx
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (1570), not a word
 - word: rvbeo
   length: 5
   tier: daily
@@ -6407,10 +6839,14 @@ words:
   - main_list
 - word: atlas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Atlas, mythological titan)
 - word: delus
   length: 5
   tier: daily
@@ -6421,10 +6857,14 @@ words:
   scheduled_day: 1729
 - word: lxxiv
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (74), not a word
 - word: ambae
   length: 5
   tier: daily
@@ -6553,9 +6993,13 @@ words:
   - main_list
 - word: dauid
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (David, biblical king)
 - word: iidem
   length: 5
   tier: daily
@@ -6682,9 +7126,13 @@ words:
   - main_list
 - word: lvcas
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lucas variant)
 - word: extum
   length: 5
   tier: daily
@@ -6708,9 +7156,13 @@ words:
   - main_list
 - word: zacon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Zacon, personal name)
 - word: venvs
   length: 5
   tier: daily
@@ -6774,9 +7226,13 @@ words:
   - main_list
 - word: ivlia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Julia variant)
 - word: tabes
   length: 5
   tier: daily
@@ -6869,10 +7325,14 @@ words:
   - main_list
 - word: maria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Maria, personal name)
 - word: velum
   length: 5
   tier: daily
@@ -6897,15 +7357,23 @@ words:
   - main_list
 - word: pyrro
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pyrrhus, king)
 - word: erice
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Eryx/Erice, Sicilian city)
 - word: evhoe
   length: 5
   tier: daily
@@ -7051,9 +7519,13 @@ words:
   - main_list
 - word: clvsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Clusium variant)
 - word: oreum
   length: 5
   tier: daily
@@ -7240,10 +7712,14 @@ words:
   - main_list
 - word: herma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Herma, related to Hermes)
 - word: rhina
   length: 5
   tier: daily
@@ -7288,10 +7764,14 @@ words:
   - main_list
 - word: dafne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Daphne, mythological)
 - word: lotos
   length: 5
   tier: daily
@@ -7382,15 +7862,23 @@ words:
   - main_list
 - word: apuli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Apuli, ethnic group)
 - word: gomor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gomorrah, biblical)
 - word: iudex
   length: 5
   tier: daily
@@ -7457,10 +7945,14 @@ words:
   - main_list
 - word: brito
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Brito, a Briton)
 - word: nanvs
   length: 5
   tier: daily
@@ -7652,10 +8144,14 @@ words:
   - main_list
 - word: betis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Betis/Baetis, river)
 - word: uolam
   length: 5
   tier: daily
@@ -7799,16 +8295,24 @@ words:
   - main_list
 - word: bilbo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bilbo, place name)
 - word: argus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Argus, mythological)
 - word: causo
   length: 5
   tier: daily
@@ -7878,10 +8382,14 @@ words:
   - main_list
 - word: pylos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Pylos, Nestor's city)
 - word: vllvs
   length: 5
   tier: daily
@@ -7904,10 +8412,14 @@ words:
   - main_list
 - word: prusa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Prusa, city)
 - word: pereo
   length: 5
   tier: daily
@@ -7994,10 +8506,14 @@ words:
   - main_list
 - word: melia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Melia, mythological nymph)
 - word: antis
   length: 5
   tier: daily
@@ -8056,10 +8572,14 @@ words:
   - main_list
 - word: ninus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ninus, Assyrian king)
 - word: uulua
   length: 5
   tier: daily
@@ -8083,9 +8603,13 @@ words:
   - main_list
 - word: assir
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Assir, biblical name)
 - word: alces
   length: 5
   tier: daily
@@ -8116,10 +8640,14 @@ words:
   - main_list
 - word: bonna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bonna/Bonn, place name)
 - word: litvs
   length: 5
   tier: daily
@@ -8137,10 +8665,14 @@ words:
   - main_list
 - word: caius
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Caius/Gaius, Roman praenomen)
 - word: iocvr
   length: 5
   tier: daily
@@ -8180,10 +8712,14 @@ words:
   - main_list
 - word: linus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Linus, mythological)
 - word: vicia
   length: 5
   tier: daily
@@ -8209,15 +8745,23 @@ words:
   - main_list
 - word: hesvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Hesus variant)
 - word: dacus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Dacus, a Dacian)
 - word: fvllo
   length: 5
   tier: daily
@@ -8256,9 +8800,13 @@ words:
   - main_list
 - word: iesvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jesus variant)
 - word: feror
   length: 5
   tier: daily
@@ -8292,10 +8840,14 @@ words:
   - main_list
 - word: arsen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arsen, personal name)
 - word: ivnxi
   length: 5
   tier: daily
@@ -8303,9 +8855,13 @@ words:
   - main_list
 - word: cyrea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cyrea, place name)
 - word: tvmba
   length: 5
   tier: daily
@@ -8355,10 +8911,14 @@ words:
   - main_list
 - word: minos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Minos, mythological king)
 - word: uolua
   length: 5
   tier: daily
@@ -8582,9 +9142,13 @@ words:
   - main_list
 - word: astvr
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Astur variant)
 - word: mazax
   length: 5
   tier: daily
@@ -8662,9 +9226,13 @@ words:
   - main_list
 - word: apvli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Apuli variant, ethnic group)
 - word: quare
   length: 5
   tier: daily
@@ -8693,10 +9261,14 @@ words:
   - main_list
 - word: dacia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Dacia, Roman province)
 - word: iazyx
   length: 5
   tier: daily
@@ -8704,10 +9276,14 @@ words:
   - main_list
 - word: doris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Doris, region/deity)
 - word: colus
   length: 5
   tier: daily
@@ -8915,9 +9491,13 @@ words:
   - main_list
 - word: clusi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Clusium, Etruscan city)
 - word: norit
   length: 5
   tier: daily
@@ -8936,15 +9516,23 @@ words:
   - main_list
 - word: locri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Locri, Greek city)
 - word: ahala
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ahala, Roman cognomen)
 - word: rhium
   length: 5
   tier: daily
@@ -8967,9 +9555,13 @@ words:
   - main_list
 - word: acran
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Acran, place name)
 - word: uruum
   length: 5
   tier: daily
@@ -8982,10 +9574,14 @@ words:
   - main_list
 - word: daren
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dares, personal name)
 - word: obiex
   length: 5
   tier: daily
@@ -9003,10 +9599,14 @@ words:
   - main_list
 - word: heron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Heron, personal name)
 - word: ianua
   length: 5
   tier: daily
@@ -9042,10 +9642,14 @@ words:
   - main_list
 - word: vesta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vesta, Roman goddess)
 - word: decus
   length: 5
   tier: daily
@@ -9137,9 +9741,13 @@ words:
   - main_list
 - word: argvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Argus variant)
 - word: velle
   length: 5
   tier: daily
@@ -9269,10 +9877,14 @@ words:
   - main_list
 - word: cauci
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cauci, Germanic tribe)
 - word: adnvi
   length: 5
   tier: daily
@@ -9280,10 +9892,14 @@ words:
   - main_list
 - word: alpis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Alpis, the Alps)
 - word: rvber
   length: 5
   tier: daily
@@ -9291,10 +9907,14 @@ words:
   - main_list
 - word: titan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Titan, mythological)
 - word: acini
   length: 5
   tier: daily
@@ -9334,10 +9954,14 @@ words:
   - main_list
 - word: argia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Argia, mythological)
 - word: merui
   length: 5
   tier: daily
@@ -9393,9 +10017,13 @@ words:
   - main_list
 - word: mavri
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Mauri variant)
 - word: aflvo
   length: 5
   tier: daily
@@ -9425,9 +10053,13 @@ words:
   - main_list
 - word: tvnes
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Tunis variant)
 - word: video
   length: 5
   tier: daily
@@ -9598,10 +10230,14 @@ words:
   - main_list
 - word: carni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Carni, Celtic tribe)
 - word: aphye
   length: 5
   tier: daily
@@ -9614,10 +10250,14 @@ words:
   - main_list
 - word: alpes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Alpes/Alps, mountain range)
 - word: avsci
   length: 5
   tier: daily
@@ -9690,10 +10330,14 @@ words:
   - main_list
 - word: melan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Melan, personal name)
 - word: firgo
   length: 5
   tier: daily
@@ -9716,9 +10360,13 @@ words:
   - main_list
 - word: dcccc
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (900), not a word
 - word: caedo
   length: 5
   tier: daily
@@ -9742,9 +10390,13 @@ words:
   - main_list
 - word: caivs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Caius variant)
 - word: rvdvs
   length: 5
   tier: daily
@@ -9779,9 +10431,13 @@ words:
   - main_list
 - word: graii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Graii, Greeks)
 - word: secum
   length: 5
   tier: daily
@@ -9888,9 +10544,13 @@ words:
   - main_list
 - word: clodi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Clodius, Roman name)
 - word: pirum
   length: 5
   tier: daily
@@ -10063,10 +10723,14 @@ words:
   - main_list
 - word: damon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Damon, personal name)
 - word: doceo
   length: 5
   tier: daily
@@ -10135,9 +10799,13 @@ words:
   - main_list
 - word: xxxxv
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (45), not a word
 - word: curuo
   length: 5
   tier: daily
@@ -10226,10 +10894,14 @@ words:
   - main_list
 - word: mosis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Moses genitive)
 - word: vasvs
   length: 5
   tier: daily
@@ -10460,10 +11132,14 @@ words:
   - main_list
 - word: xxxiv
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (34), not a word
 - word: tingi
   length: 5
   tier: daily
@@ -10616,15 +11292,23 @@ words:
   - main_list
 - word: aonis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aonis, of Aonia)
 - word: circe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Circe, mythological sorceress)
 - word: rvtvs
   length: 5
   tier: daily
@@ -10680,10 +11364,14 @@ words:
   - main_list
 - word: belga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Belgae)
 - word: canvm
   length: 5
   tier: daily
@@ -10727,9 +11415,13 @@ words:
   - main_list
 - word: cavci
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cauci variant)
 - word: asser
   length: 5
   tier: daily
@@ -10897,10 +11589,14 @@ words:
   - main_list
 - word: dione
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dione, deity)
 - word: armus
   length: 5
   tier: daily
@@ -10956,9 +11652,13 @@ words:
   - main_list
 - word: attys
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Attys, personal name)
 - word: pvbvi
   length: 5
   tier: daily
@@ -10983,10 +11683,14 @@ words:
   - main_list
 - word: halys
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Halys, river)
 - word: vinxi
   length: 5
   tier: daily
@@ -10997,9 +11701,13 @@ words:
   scheduled_day: 1693
 - word: mdliv
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (1554), not a word
 - word: eqvio
   length: 5
   tier: daily
@@ -11017,9 +11725,13 @@ words:
   - main_list
 - word: tyros
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Tyros/Tyre, Phoenician city)
 - word: pelli
   length: 5
   tier: daily
@@ -11039,9 +11751,13 @@ words:
   - main_list
 - word: cnevs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Cneus variant)
 - word: fagus
   length: 5
   tier: daily
@@ -11173,14 +11889,22 @@ words:
   - main_list
 - word: araci
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Araci, place name)
 - word: cyane
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cyane, mythological)
 - word: dulus
   length: 5
   tier: daily
@@ -11310,10 +12034,14 @@ words:
   - main_list
 - word: naxos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Naxos, Greek island)
 - word: ecquo
   length: 5
   tier: daily
@@ -11342,9 +12070,13 @@ words:
   - main_list
 - word: dahae
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dahae, Central Asian people)
 - word: avlio
   length: 5
   tier: daily
@@ -11458,9 +12190,13 @@ words:
   - main_list
 - word: cnide
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cnidus, Greek city)
 - word: musio
   length: 5
   tier: daily
@@ -11469,9 +12205,13 @@ words:
   - main_list
 - word: abyla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Abyla, place name)
 - word: intuo
   length: 5
   tier: daily
@@ -11503,10 +12243,14 @@ words:
   - main_list
 - word: lxxxi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (81), not a word
 - word: sacal
   length: 5
   tier: daily
@@ -11556,9 +12300,13 @@ words:
   - main_list
 - word: futuo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/obscene (sexual verb)
 - word: tonvi
   length: 5
   tier: daily
@@ -11672,9 +12420,13 @@ words:
   - main_list
 - word: baete
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Baetis, river)
 - word: helui
   length: 5
   tier: daily
@@ -11856,10 +12608,14 @@ words:
   - main_list
 - word: celta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Celta, a Celt)
 - word: uvens
   length: 5
   tier: daily
@@ -11912,10 +12668,14 @@ words:
   - main_list
 - word: lxxxv
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (85), not a word
 - word: acqvo
   length: 5
   tier: daily
@@ -11992,9 +12752,13 @@ words:
   - main_list
 - word: maedi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Maedi, Thracian tribe)
 - word: tacui
   length: 5
   tier: daily
@@ -12007,9 +12771,13 @@ words:
   - main_list
 - word: hunni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Hunni, the Huns)
 - word: ianvs
   length: 5
   tier: daily
@@ -12017,9 +12785,13 @@ words:
   - main_list
 - word: lerne
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lerna variant)
 - word: echvs
   length: 5
   tier: daily
@@ -12114,9 +12886,13 @@ words:
   - main_list
 - word: mosea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Moses, biblical)
 - word: evolo
   length: 5
   tier: daily
@@ -12137,10 +12913,14 @@ words:
   - main_list
 - word: saxon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Saxon)
 - word: vafri
   length: 5
   tier: daily
@@ -12163,9 +12943,13 @@ words:
   - main_list
 - word: getes
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Getes, Getae)
 - word: altvs
   length: 5
   tier: daily
@@ -12178,9 +12962,13 @@ words:
   - main_list
 - word: alypi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Alypius, personal name)
 - word: volva
   length: 5
   tier: daily
@@ -12189,10 +12977,14 @@ words:
   - main_list
 - word: golgi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Golgi, place in Cyprus)
 - word: stola
   length: 5
   tier: daily
@@ -12245,9 +13037,13 @@ words:
   - main_list
 - word: arnus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arnus/Arno, river)
 - word: eccum
   length: 5
   tier: daily
@@ -12255,10 +13051,14 @@ words:
   - main_list
 - word: delos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Delos, Greek island)
 - word: telon
   length: 5
   tier: daily
@@ -12288,9 +13088,13 @@ words:
   - main_list
 - word: belis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Belis, personal name)
 - word: petra
   length: 5
   tier: daily
@@ -12400,10 +13204,14 @@ words:
   - main_list
 - word: xliii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (43), not a word
 - word: fixvm
   length: 5
   tier: daily
@@ -12422,15 +13230,23 @@ words:
   - main_list
 - word: nemea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nemea, sanctuary)
 - word: aruns
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aruns, Etruscan name)
 - word: pomvs
   length: 5
   tier: daily
@@ -12453,9 +13269,13 @@ words:
   - main_list
 - word: biton
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Biton, mythological)
 - word: horto
   length: 5
   tier: daily
@@ -12558,9 +13378,13 @@ words:
   - main_list
 - word: alope
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Alope, mythological)
 - word: carna
   length: 5
   tier: daily
@@ -12596,9 +13420,13 @@ words:
   - main_list
 - word: dymas
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dymas, mythological)
 - word: canua
   length: 5
   tier: daily
@@ -12734,9 +13562,13 @@ words:
   - main_list
 - word: laton
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Laton/Latona, deity)
 - word: pyleu
   length: 5
   tier: daily
@@ -12802,10 +13634,14 @@ words:
   - main_list
 - word: lamia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lamia, mythological/city)
 - word: insto
   length: 5
   tier: daily
@@ -12823,9 +13659,13 @@ words:
   - main_list
 - word: mdlix
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (1559), not a word
 - word: hahae
   length: 5
   tier: daily
@@ -12838,9 +13678,13 @@ words:
   - main_list
 - word: bogvd
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bogud variant)
 - word: veita
   length: 5
   tier: daily
@@ -12878,10 +13722,14 @@ words:
   - main_list
 - word: gorgo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gorgo, personal name)
 - word: otior
   length: 5
   tier: daily
@@ -13034,10 +13882,14 @@ words:
   - main_list
 - word: caron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Caron/Charon, mythological)
 - word: iader
   length: 5
   tier: daily
@@ -13115,9 +13967,13 @@ words:
   - main_list
 - word: attyn
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Attys form)
 - word: uitor
   length: 5
   tier: daily
@@ -13212,16 +14068,24 @@ words:
   - main_list
 - word: casca
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Casca, Roman cognomen)
 - word: thebe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Thebes, city)
 - word: magia
   length: 5
   tier: daily
@@ -13252,16 +14116,24 @@ words:
   - main_list
 - word: creta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Creta/Crete, island)
 - word: aenea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aenea, related to Aeneas)
 - word: milax
   length: 5
   tier: daily
@@ -13342,9 +14214,13 @@ words:
   - main_list
 - word: laeca
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Laeca, Roman name)
 - word: acies
   length: 5
   tier: daily
@@ -13407,10 +14283,14 @@ words:
   - main_list
 - word: suebi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Suebi, Germanic tribe)
 - word: zaeta
   length: 5
   tier: daily
@@ -13445,9 +14325,13 @@ words:
   - main_list
 - word: remvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Remus variant)
 - word: narce
   length: 5
   tier: daily
@@ -13483,10 +14367,14 @@ words:
   - main_list
 - word: chilo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Chilo, personal name)
 - word: uoueo
   length: 5
   tier: daily
@@ -13574,15 +14462,23 @@ words:
   - main_list
 - word: davvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Davus variant)
 - word: gorge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gorge, mythological)
 - word: nigri
   length: 5
   tier: daily
@@ -13671,9 +14567,13 @@ words:
   - main_list
 - word: anaxo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Anaxo, mythological)
 - word: echei
   length: 5
   tier: daily
@@ -13706,10 +14606,14 @@ words:
   - main_list
 - word: orion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Orion, mythological hunter)
 - word: tores
   length: 5
   tier: daily
@@ -13723,15 +14627,23 @@ words:
   - main_list
 - word: niobe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Niobe, mythological)
 - word: aegle
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aegle, mythological name)
 - word: bvxvs
   length: 5
   tier: daily
@@ -13761,10 +14673,14 @@ words:
   - main_list
 - word: hanno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 6.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Hanno, Carthaginian general)
 - word: mvrra
   length: 5
   tier: daily
@@ -13811,10 +14727,14 @@ words:
   - main_list
 - word: livia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Livia, personal name)
 - word: debui
   length: 5
   tier: daily
@@ -13943,9 +14863,13 @@ words:
   - main_list
 - word: baiae
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Baiae, Roman resort)
 - word: secui
   length: 5
   tier: daily
@@ -14010,9 +14934,13 @@ words:
   - main_list
 - word: gadis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gadis, place name)
 - word: inbuo
   length: 5
   tier: daily
@@ -14057,10 +14985,14 @@ words:
   - main_list
 - word: diona
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Diona/Dione, deity)
 - word: pyrvm
   length: 5
   tier: daily
@@ -14068,10 +15000,14 @@ words:
   - main_list
 - word: lxxix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (79), not a word
 - word: aulio
   length: 5
   tier: daily
@@ -14121,10 +15057,14 @@ words:
   - main_list
 - word: olbia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Olbia, Greek colony)
 - word: carpa
   length: 5
   tier: daily
@@ -14165,9 +15105,13 @@ words:
   - main_list
 - word: maeon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Maeon, personal name)
 - word: seges
   length: 5
   tier: daily
@@ -14192,10 +15136,14 @@ words:
   - main_list
 - word: libya
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Libya, country/region)
 - word: malvi
   length: 5
   tier: daily
@@ -14280,15 +15228,23 @@ words:
   - main_list
 - word: helle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Helle, mythological)
 - word: aonia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aonia, region in Greece)
 - word: vidua
   length: 5
   tier: daily
@@ -14319,9 +15275,13 @@ words:
   - main_list
 - word: mmxii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (2012), not a word
 - word: cesor
   length: 5
   tier: daily
@@ -14340,9 +15300,13 @@ words:
   - main_list
 - word: cneus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Cneus/Gnaeus, Roman praenomen)
 - word: dvlco
   length: 5
   tier: daily
@@ -14360,10 +15324,14 @@ words:
   - main_list
 - word: rufus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Rufus, Roman cognomen)
 - word: vrbvm
   length: 5
   tier: daily
@@ -14371,10 +15339,14 @@ words:
   - main_list
 - word: galli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Galli, Gauls)
 - word: fabus
   length: 5
   tier: daily
@@ -14714,10 +15686,14 @@ words:
   - main_list
 - word: elisa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Elisa/Dido, personal name)
 - word: ecqvi
   length: 5
   tier: daily
@@ -14757,10 +15733,14 @@ words:
   - main_list
 - word: flora
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Flora, Roman goddess) - also common noun
 - word: arvum
   length: 5
   tier: daily
@@ -14813,10 +15793,14 @@ words:
   - main_list
 - word: xciii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (93), not a word
 - word: batvo
   length: 5
   tier: daily
@@ -14829,9 +15813,13 @@ words:
   - main_list
 - word: attym
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Attys form)
 - word: dromi
   length: 5
   tier: daily
@@ -14860,9 +15848,13 @@ words:
   - main_list
 - word: ascra
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ascra, Greek town)
 - word: feruo
   length: 5
   tier: daily
@@ -14895,10 +15887,14 @@ words:
   - main_list
 - word: pelea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Peleus, mythological)
 - word: typus
   length: 5
   tier: daily
@@ -14907,15 +15903,23 @@ words:
   - main_list
 - word: doron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Doron, personal name)
 - word: chvni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Chuni variant)
 - word: tapsi
   length: 5
   tier: daily
@@ -14968,10 +15972,14 @@ words:
   - main_list
 - word: ciani
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ciani, personal name)
 - word: ictio
   length: 5
   tier: daily
@@ -15050,9 +16058,13 @@ words:
   - main_list
 - word: tyani
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Tyanians)
 - word: feram
   length: 5
   tier: daily
@@ -15178,10 +16190,14 @@ words:
   - main_list
 - word: thule
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Thule, legendary island)
 - word: uibex
   length: 5
   tier: daily
@@ -15261,10 +16277,14 @@ words:
   - main_list
 - word: milon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Milo, personal name)
 - word: pergo
   length: 5
   tier: daily
@@ -15340,9 +16360,13 @@ words:
   - main_list
 - word: achor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Achor, biblical place)
 - word: obruo
   length: 5
   tier: daily
@@ -15486,10 +16510,14 @@ words:
   - main_list
 - word: syria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Syria, country/region)
 - word: circi
   length: 5
   tier: daily
@@ -15617,9 +16645,13 @@ words:
   - main_list
 - word: syrvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Syrus variant)
 - word: mvnde
   length: 5
   tier: daily
@@ -15705,10 +16737,14 @@ words:
   - main_list
 - word: xxvii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (27), not a word
 - word: numus
   length: 5
   tier: daily
@@ -15721,9 +16757,13 @@ words:
   - main_list
 - word: herse
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Herse, mythological)
 - word: uespa
   length: 5
   tier: daily
@@ -15748,9 +16788,13 @@ words:
   - main_list
 - word: aeson
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aeson, mythological name)
 - word: ludus
   length: 5
   tier: daily
@@ -15781,9 +16825,13 @@ words:
   - main_list
 - word: lamvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lamus variant)
 - word: edvca
   length: 5
   tier: daily
@@ -15852,9 +16900,13 @@ words:
   - main_list
 - word: tyana
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Tyana, Cappadocian city)
 - word: trusi
   length: 5
   tier: daily
@@ -15883,10 +16935,14 @@ words:
   - main_list
 - word: minoa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Minoa, place name)
 - word: spico
   length: 5
   tier: daily
@@ -16017,10 +17073,14 @@ words:
   - main_list
 - word: athos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Athos, Mount Athos)
 - word: urpex
   length: 5
   tier: daily
@@ -16048,10 +17108,14 @@ words:
   - main_list
 - word: xxxxi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (41), not a word
 - word: forte
   length: 5
   tier: daily
@@ -16169,9 +17233,13 @@ words:
   - main_list
 - word: koppa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Greek letter name, not a Latin word
 - word: vltri
   length: 5
   tier: daily
@@ -16201,9 +17269,13 @@ words:
   - main_list
 - word: cilix
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cilix, mythological)
 - word: trois
   length: 5
   tier: daily
@@ -16248,10 +17320,14 @@ words:
   - main_list
 - word: cinna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Cinna, Roman cognomen)
 - word: ratvs
   length: 5
   tier: daily
@@ -16274,10 +17350,14 @@ words:
   - main_list
 - word: vibia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Vibia, Roman gens)
 - word: soror
   length: 5
   tier: daily
@@ -16341,9 +17421,13 @@ words:
   - main_list
 - word: hesus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Hesus, Celtic deity)
 - word: metor
   length: 5
   tier: daily
@@ -16402,10 +17486,14 @@ words:
   - main_list
 - word: chloe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Chloe, personal name)
 - word: galus
   length: 5
   tier: daily
@@ -16526,9 +17614,13 @@ words:
   - main_list
 - word: arvns
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aruns variant)
 - word: ibant
   length: 5
   tier: daily
@@ -16547,10 +17639,14 @@ words:
   - main_list
 - word: lucas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lucas, personal name)
 - word: svnto
   length: 5
   tier: daily
@@ -16570,10 +17666,14 @@ words:
   - main_list
 - word: lxxvi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (76), not a word
 - word: avger
   length: 5
   tier: daily
@@ -16655,9 +17755,13 @@ words:
   - main_list
 - word: cylla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cylla, place name)
 - word: servm
   length: 5
   tier: daily
@@ -16707,9 +17811,13 @@ words:
   - main_list
 - word: mmiii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (2003), not a word
 - word: aesim
   length: 5
   tier: daily
@@ -16717,10 +17825,14 @@ words:
   - main_list
 - word: nabis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Nabis, Spartan tyrant)
 - word: attat
   length: 5
   tier: daily
@@ -16758,9 +17870,13 @@ words:
   - main_list
 - word: hispo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hispo, personal name)
 - word: tvrsi
   length: 5
   tier: daily
@@ -16768,9 +17884,13 @@ words:
   - main_list
 - word: aeoli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aeoli, ethnic name - Aeolians)
 - word: avona
   length: 5
   tier: daily
@@ -16836,15 +17956,23 @@ words:
   - main_list
 - word: lysis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lysis, personal name)
 - word: gaivs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gaius variant)
 - word: eueni
   length: 5
   tier: daily
@@ -16882,15 +18010,23 @@ words:
   - main_list
 - word: abila
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Abila, ancient city)
 - word: mmxvi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (2016), not a word
 - word: capvs
   length: 5
   tier: daily
@@ -16941,9 +18077,13 @@ words:
   - main_list
 - word: bogud
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bogud, Mauretanian king)
 - word: malba
   length: 5
   tier: daily
@@ -16966,9 +18106,13 @@ words:
   - main_list
 - word: galii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gallii, people of Gaul)
 - word: gania
   length: 5
   tier: daily
@@ -16986,10 +18130,14 @@ words:
   - main_list
 - word: gaius
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gaius, Roman praenomen)
 - word: torvs
   length: 5
   tier: daily
@@ -17053,10 +18201,14 @@ words:
   - main_list
 - word: ammon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ammon, deity/place)
 - word: malam
   length: 5
   tier: daily
@@ -17106,9 +18258,13 @@ words:
   - main_list
 - word: capva
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Capua variant)
 - word: anxvr
   length: 5
   tier: daily
@@ -17136,9 +18292,13 @@ words:
   - main_list
 - word: pylvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Pylos variant)
 - word: ipsos
   length: 5
   tier: daily
@@ -17182,21 +18342,33 @@ words:
   scheduled_day: 1694
 - word: bitia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bitia, place name)
 - word: troia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Troia/Troy)
 - word: amase
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Amasia, place name)
 - word: inaro
   length: 5
   tier: daily
@@ -17241,10 +18413,14 @@ words:
   - main_list
 - word: balbo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Balbo, Roman cognomen)
 - word: illim
   length: 5
   tier: daily
@@ -17308,10 +18484,14 @@ words:
   - main_list
 - word: midas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Midas, mythological king)
 - word: arcus
   length: 5
   tier: daily
@@ -17373,10 +18553,14 @@ words:
   - main_list
 - word: delia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Delia, epithet of Artemis)
 - word: favna
   length: 5
   tier: daily
@@ -17427,10 +18611,14 @@ words:
   - main_list
 - word: gabii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gabii, ancient city)
 - word: nepte
   length: 5
   tier: daily
@@ -17471,10 +18659,14 @@ words:
   - main_list
 - word: crete
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Crete)
 - word: nisei
   length: 5
   tier: daily
@@ -17569,10 +18761,14 @@ words:
   - main_list
 - word: cyran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cyranae/Cyrene)
 - word: perus
   length: 5
   tier: daily
@@ -17641,10 +18837,14 @@ words:
   - main_list
 - word: india
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (India, country)
 - word: cyphi
   length: 5
   tier: daily
@@ -17702,9 +18902,13 @@ words:
   - main_list
 - word: gygis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gyges genitive)
 - word: flvta
   length: 5
   tier: daily
@@ -17849,10 +19053,14 @@ words:
   - main_list
 - word: cirta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cirta, North African city)
 - word: durui
   length: 5
   tier: daily
@@ -17880,10 +19088,14 @@ words:
   - main_list
 - word: zenon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Zenon/Zeno, philosopher)
 - word: svbdo
   length: 5
   tier: daily
@@ -17969,10 +19181,14 @@ words:
   - main_list
 - word: guido
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Guido, personal name)
 - word: afluo
   length: 5
   tier: daily
@@ -17995,9 +19211,13 @@ words:
   - main_list
 - word: agaue
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Agaue/Agave, mythological)
 - word: preco
   length: 5
   tier: daily
@@ -18096,10 +19316,14 @@ words:
   - main_list
 - word: ophir
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ophir, biblical land)
 - word: hausi
   length: 5
   tier: daily
@@ -18211,9 +19435,13 @@ words:
   - main_list
 - word: danus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Danus, personal name)
 - word: lotvm
   length: 5
   tier: daily
@@ -18432,9 +19660,13 @@ words:
   - main_list
 - word: lamus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lamus, mythological)
 - word: stiva
   length: 5
   tier: daily
@@ -18634,9 +19866,13 @@ words:
   - main_list
 - word: brimo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Brimo, deity epithet)
 - word: lvcto
   length: 5
   tier: daily
@@ -18715,9 +19951,13 @@ words:
   - main_list
 - word: hisbo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hisbo, place name)
 - word: evasi
   length: 5
   tier: daily
@@ -18815,10 +20055,14 @@ words:
   - main_list
 - word: lxxii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (72), not a word
 - word: catti
   length: 5
   tier: daily
@@ -18998,9 +20242,13 @@ words:
   - main_list
 - word: mmvii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (2007), not a word
 - word: lytri
   length: 5
   tier: daily
@@ -19055,10 +20303,14 @@ words:
   - main_list
 - word: gothi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Gothi, Goths)
 - word: octvs
   length: 5
   tier: daily
@@ -19081,10 +20333,14 @@ words:
   - main_list
 - word: bryan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Bryan, modern name - anachronistic)
 - word: agnva
   length: 5
   tier: daily
@@ -19092,10 +20348,14 @@ words:
   - main_list
 - word: nerea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Nereus, sea god)
 - word: caere
   length: 5
   tier: daily
@@ -19156,9 +20416,13 @@ words:
   - main_list
 - word: avlvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aulus variant)
 - word: indvo
   length: 5
   tier: daily
@@ -19216,9 +20480,13 @@ words:
   - main_list
 - word: futui
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/obscene (sexual verb form)
 - word: grama
   length: 5
   tier: daily
@@ -19259,10 +20527,14 @@ words:
   - main_list
 - word: tusci
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Tusci, Etruscans)
 - word: heivs
   length: 5
   tier: daily
@@ -19339,9 +20611,13 @@ words:
   - main_list
 - word: gyges
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gyges, Lydian king)
 - word: alcea
   length: 5
   tier: daily
@@ -19439,10 +20715,14 @@ words:
   - main_list
 - word: soter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Soter, epithet/personal name)
 - word: tepor
   length: 5
   tier: daily
@@ -19580,9 +20860,13 @@ words:
   - main_list
 - word: samvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Samos variant)
 - word: potis
   length: 5
   tier: daily
@@ -19623,10 +20907,14 @@ words:
   - main_list
 - word: hippo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hippo, North African city)
 - word: niteo
   length: 5
   tier: daily
@@ -19634,9 +20922,13 @@ words:
   - main_list
 - word: nilvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nilus variant)
   history:
   - 1703
   scheduled_day: 1703
@@ -19669,10 +20961,14 @@ words:
   - main_list
 - word: delon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Delos, Greek island)
 - word: nvgvs
   length: 5
   tier: daily
@@ -19707,9 +21003,13 @@ words:
   - main_list
 - word: aulis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aulis, Greek port)
 - word: venor
   length: 5
   tier: daily
@@ -19729,10 +21029,14 @@ words:
   - main_list
 - word: remus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Remus, founder of Rome)
 - word: palvs
   length: 5
   tier: daily
@@ -19762,10 +21066,14 @@ words:
   - main_list
 - word: xxxii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (32), not a word
 - word: porus
   length: 5
   tier: daily
@@ -19811,10 +21119,14 @@ words:
   - main_list
 - word: ladon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ladon, river/dragon)
 - word: odivm
   length: 5
   tier: daily
@@ -19935,9 +21247,13 @@ words:
   - main_list
 - word: aello
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aello, mythological name)
 - word: obsim
   length: 5
   tier: daily
@@ -19960,10 +21276,14 @@ words:
   - main_list
 - word: rhoda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Rhoda, personal/place name)
 - word: conca
   length: 5
   tier: daily
@@ -20025,10 +21345,14 @@ words:
   - main_list
 - word: aisne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aisne, French river)
 - word: avsvr
   length: 5
   tier: daily
@@ -20036,10 +21360,14 @@ words:
   - main_list
 - word: sosia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sosia, personal name)
 - word: felix
   length: 5
   tier: daily
@@ -20148,10 +21476,14 @@ words:
   - main_list
 - word: mauri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Mauri, Moors)
 - word: obedo
   length: 5
   tier: daily
@@ -20159,10 +21491,14 @@ words:
   - main_list
 - word: cleon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Cleon, Athenian politician)
 - word: denus
   length: 5
   tier: daily
@@ -20224,16 +21560,24 @@ words:
   - main_list
 - word: caria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Caria, region in Asia Minor)
 - word: epona
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Epona, Celtic goddess)
 - word: calpe
   length: 5
   tier: daily
@@ -20251,9 +21595,13 @@ words:
   - main_list
 - word: belus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Belus, mythological king)
 - word: siris
   length: 5
   tier: daily
@@ -20325,9 +21673,13 @@ words:
   - main_list
 - word: mmxix
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (2019), not a word
 - word: telum
   length: 5
   tier: daily
@@ -20382,10 +21734,14 @@ words:
   - main_list
 - word: berna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Berna, place name)
 - word: aquae
   length: 5
   tier: daily
@@ -20459,9 +21815,13 @@ words:
   - main_list
 - word: arses
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arses, Persian king)
 - word: docvi
   length: 5
   tier: daily
@@ -20480,10 +21840,14 @@ words:
   - main_list
 - word: medea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Medea, mythological sorceress)
 - word: scola
   length: 5
   tier: daily
@@ -20534,10 +21898,14 @@ words:
   - main_list
 - word: cyrus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Cyrus, Persian king)
 - word: vngvo
   length: 5
   tier: daily
@@ -20889,10 +22257,14 @@ words:
   - main_list
 - word: lycia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lycia, region)
 - word: calua
   length: 5
   tier: daily
@@ -20995,9 +22367,13 @@ words:
   - main_list
 - word: cyras
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cyras, personal name)
 - word: antii
   length: 5
   tier: daily
@@ -21011,9 +22387,13 @@ words:
   - main_list
 - word: aetra
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aetra, mythological name)
 - word: invvs
   length: 5
   tier: daily
@@ -21047,15 +22427,23 @@ words:
   - main_list
 - word: aenia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aenia, place name)
 - word: velia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Velia, Italian city)
 - word: capri
   length: 5
   tier: daily
@@ -21173,10 +22561,14 @@ words:
   - main_list
 - word: alani
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Alani, ethnic group)
 - word: indic
   length: 5
   tier: daily
@@ -21207,10 +22599,14 @@ words:
   - main_list
 - word: hymen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hymen, god of marriage)
 - word: porro
   length: 5
   tier: daily
@@ -21230,10 +22626,14 @@ words:
   - main_list
 - word: erato
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Erato, Muse)
 - word: emolo
   length: 5
   tier: daily
@@ -21463,10 +22863,14 @@ words:
   - main_list
 - word: alice
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Alice, personal name)
 - word: alvta
   length: 5
   tier: daily
@@ -21671,10 +23075,14 @@ words:
   - main_list
 - word: isaac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Isaac, biblical)
 - word: pedes
   length: 5
   tier: daily
@@ -21732,9 +23140,13 @@ words:
   - main_list
 - word: bolae
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bolae, place name)
 - word: fatis
   length: 5
   tier: daily
@@ -21742,10 +23154,14 @@ words:
   - main_list
 - word: reate
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Reate, Sabine city)
 - word: eivno
   length: 5
   tier: daily
@@ -21836,10 +23252,14 @@ words:
   - main_list
 - word: boria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Boria, place name)
 - word: potus
   length: 5
   tier: daily
@@ -21853,10 +23273,14 @@ words:
   - main_list
 - word: galba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Galba, Roman emperor)
 - word: sisto
   length: 5
   tier: daily
@@ -21896,9 +23320,13 @@ words:
   - main_list
 - word: ladas
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ladas, runner)
 - word: aeris
   length: 5
   tier: daily
@@ -21917,10 +23345,14 @@ words:
   - main_list
 - word: beroe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Beroe, mythological)
 - word: tubus
   length: 5
   tier: daily
@@ -21984,10 +23416,14 @@ words:
   - main_list
 - word: iceni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Iceni, British tribe)
 - word: fvant
   length: 5
   tier: daily
@@ -22005,9 +23441,13 @@ words:
   - main_list
 - word: acmon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Acmon, mythological name)
 - word: tinio
   length: 5
   tier: daily
@@ -22114,10 +23554,14 @@ words:
   - main_list
 - word: aulon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aulon, place name)
 - word: gvmia
   length: 5
   tier: daily
@@ -22315,9 +23759,13 @@ words:
   - main_list
 - word: iulus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Iulus, mythological)
 - word: psora
   length: 5
   tier: daily
@@ -22379,10 +23827,14 @@ words:
   - main_list
 - word: arcas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arcas, mythological)
 - word: uerno
   length: 5
   tier: daily
@@ -22395,9 +23847,13 @@ words:
   - main_list
 - word: issvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Issus variant)
 - word: calyx
   length: 5
   tier: daily
@@ -22538,9 +23994,13 @@ words:
   - main_list
 - word: capys
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Capys, mythological)
 - word: myxvm
   length: 5
   tier: daily
@@ -22571,10 +24031,14 @@ words:
   - main_list
 - word: cimon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Cimon, Athenian general)
 - word: epvlo
   length: 5
   tier: daily
@@ -22582,10 +24046,14 @@ words:
   - main_list
 - word: bison
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Bison, place) or common noun (bison animal)
 - word: palor
   length: 5
   tier: daily
@@ -22652,10 +24120,14 @@ words:
   - main_list
 - word: ardea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ardea, Italian city)
 - word: fiber
   length: 5
   tier: daily
@@ -22769,9 +24241,13 @@ words:
   - main_list
 - word: azoni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Azoni, place-related)
 - word: arbos
   length: 5
   tier: daily
@@ -22838,10 +24314,14 @@ words:
   - main_list
 - word: bosra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bosra, place name)
 - word: tendo
   length: 5
   tier: daily
@@ -23244,9 +24724,13 @@ words:
   - main_list
 - word: auson
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Auson, mythological)
 - word: salum
   length: 5
   tier: daily
@@ -23287,10 +24771,14 @@ words:
   - main_list
 - word: crito
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Crito, Socratic dialogue)
 - word: torvm
   length: 5
   tier: daily
@@ -23314,9 +24802,13 @@ words:
   - main_list
 - word: icari
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Icarus, mythological)
 - word: manto
   length: 5
   tier: daily
@@ -23406,9 +24898,13 @@ words:
   - main_list
 - word: pydna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pydna, battle site)
 - word: fleui
   length: 5
   tier: daily
@@ -23446,10 +24942,14 @@ words:
   - main_list
 - word: chios
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Chios, Greek island)
 - word: ampla
   length: 5
   tier: daily
@@ -23570,10 +25070,14 @@ words:
   - main_list
 - word: corsa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Corsica)
 - word: infas
   length: 5
   tier: daily
@@ -23592,9 +25096,13 @@ words:
   - main_list
 - word: hylan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hylas)
 - word: assvs
   length: 5
   tier: daily
@@ -23613,9 +25121,13 @@ words:
   - main_list
 - word: ivlvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Iulus variant)
 - word: atyos
   length: 5
   tier: daily
@@ -23628,10 +25140,14 @@ words:
   - main_list
 - word: plato
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Plato, philosopher)
 - word: iniui
   length: 5
   tier: daily
@@ -23953,15 +25469,23 @@ words:
   - main_list
 - word: cotta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cotta, Roman cognomen)
 - word: belvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Belus variant)
 - word: uireo
   length: 5
   tier: daily
@@ -24023,9 +25547,13 @@ words:
   - main_list
 - word: aenos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aenos, place name)
 - word: olevi
   length: 5
   tier: daily
@@ -24043,9 +25571,13 @@ words:
   - main_list
 - word: aegos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aegos, place name)
 - word: docui
   length: 5
   tier: daily
@@ -24079,10 +25611,14 @@ words:
   - main_list
 - word: dirce
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dirce, mythological)
 - word: eleus
   length: 5
   tier: daily
@@ -24359,10 +25895,14 @@ words:
   - main_list
 - word: arabs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Arabs)
 - word: ascea
   length: 5
   tier: daily
@@ -24454,16 +25994,24 @@ words:
   - main_list
 - word: xxxix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (39), not a word
 - word: delfi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Delphi)
 - word: drvis
   length: 5
   tier: daily
@@ -24476,9 +26024,13 @@ words:
   - main_list
 - word: aegae
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aegae, place name)
 - word: sallo
   length: 5
   tier: daily
@@ -24498,9 +26050,13 @@ words:
   - main_list
 - word: gvido
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Guido variant)
 - word: sapsa
   length: 5
   tier: daily
@@ -24524,9 +26080,13 @@ words:
   - main_list
 - word: usian
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Usian, place-related)
 - word: curio
   length: 5
   tier: daily
@@ -24574,9 +26134,13 @@ words:
   - main_list
 - word: cyrvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Cyrus variant)
 - word: puera
   length: 5
   tier: daily
@@ -24673,10 +26237,14 @@ words:
   - main_list
 - word: leros
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Leros, island)
 - word: tybvr
   length: 5
   tier: daily
@@ -24689,9 +26257,13 @@ words:
   - main_list
 - word: pisae
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pisae/Pisa, city)
 - word: ualeo
   length: 5
   tier: daily
@@ -24724,10 +26296,14 @@ words:
   - main_list
 - word: marsi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Marsi, Italic tribe)
 - word: diues
   length: 5
   tier: daily
@@ -24757,10 +26333,14 @@ words:
   - main_list
 - word: iulia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Iulia/Julia, personal name)
 - word: svsvm
   length: 5
   tier: daily
@@ -25091,10 +26671,14 @@ words:
   - main_list
 - word: paros
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Paros, Greek island)
 - word: uates
   length: 5
   tier: daily
@@ -25107,9 +26691,13 @@ words:
   - main_list
 - word: caeso
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Caeso, Roman praenomen)
 - word: erogo
   length: 5
   tier: daily
@@ -25366,14 +26954,22 @@ words:
   - main_list
 - word: attvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Attus variant)
 - word: gelon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gelon, tyrant of Syracuse)
 - word: rhois
   length: 5
   tier: daily
@@ -25500,10 +27096,14 @@ words:
   - main_list
 - word: ixion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ixion, mythological)
 - word: ameca
   length: 5
   tier: daily
@@ -25590,10 +27190,14 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Simon, personal name)
 - word: ubero
   length: 5
   tier: daily
@@ -25755,15 +27359,23 @@ words:
   - main_list
 - word: xxxvi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (36), not a word
 - word: titvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Titus variant)
 - word: canvi
   length: 5
   tier: daily
@@ -25831,10 +27443,14 @@ words:
   - main_list
 - word: lerna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lerna, mythological site)
 - word: qvove
   length: 5
   tier: daily
@@ -25955,10 +27571,14 @@ words:
   - main_list
 - word: enoch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Enoch, biblical)
 - word: inflo
   length: 5
   tier: daily
@@ -25998,10 +27618,14 @@ words:
   - main_list
 - word: issus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Issus)
 - word: burio
   length: 5
   tier: daily
@@ -26043,14 +27667,22 @@ words:
   - main_list
 - word: uzita
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Uzita, North African city)
 - word: ninvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ninus variant)
 - word: opivm
   length: 5
   tier: daily
@@ -26224,9 +27856,13 @@ words:
   - main_list
 - word: iesvm
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jesus variant)
 - word: enoto
   length: 5
   tier: daily
@@ -26285,9 +27921,13 @@ words:
   - main_list
 - word: attye
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Attys, personal name)
 - word: fusum
   length: 5
   tier: daily
@@ -26480,10 +28120,14 @@ words:
   - main_list
 - word: danae
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Danae, mythological)
 - word: uelim
   length: 5
   tier: daily
@@ -26512,10 +28156,14 @@ words:
   - main_list
 - word: ninos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ninos/Ninus, Assyrian king)
 - word: malle
   length: 5
   tier: daily
@@ -26552,15 +28200,23 @@ words:
   - main_list
 - word: pella
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pella, Macedonian capital)
 - word: dacvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Dacus variant)
 - word: fvror
   length: 5
   tier: daily
@@ -26584,10 +28240,14 @@ words:
   - main_list
 - word: nilus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nilus/Nile, river)
 - word: laida
   length: 5
   tier: daily
@@ -26619,9 +28279,13 @@ words:
   - main_list
 - word: aetne
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aetne, variant of Aetna)
 - word: timum
   length: 5
   tier: daily
@@ -26661,10 +28325,14 @@ words:
   - main_list
 - word: lacon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lacon, Spartan)
 - word: uella
   length: 5
   tier: daily
@@ -26705,10 +28373,14 @@ words:
   - main_list
 - word: merda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar (excrement)
 - word: pauci
   length: 5
   tier: daily
@@ -26727,10 +28399,14 @@ words:
   - main_list
 - word: hydra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hydra, mythological monster)
 - word: velim
   length: 5
   tier: daily
@@ -26959,10 +28635,14 @@ words:
   - main_list
 - word: argos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Argos, Greek city)
 - word: intvo
   length: 5
   tier: daily
@@ -27350,10 +29030,14 @@ words:
   - main_list
 - word: diana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Diana, Roman goddess)
 - word: urium
   length: 5
   tier: daily
@@ -27403,10 +29087,14 @@ words:
   - main_list
 - word: ilios
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ilios/Troy)
 - word: volet
   length: 5
   tier: daily
@@ -27767,10 +29455,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (David, biblical king)
 - word: lenio
   length: 5
   tier: daily
@@ -27783,9 +29475,13 @@ words:
   - main_list
 - word: atreu
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Atreus)
 - word: umido
   length: 5
   tier: daily
@@ -27794,9 +29490,13 @@ words:
   - main_list
 - word: cacvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cacus variant)
 - word: fixio
   length: 5
   tier: daily
@@ -28120,10 +29820,14 @@ words:
   - main_list
 - word: myron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Myron, Greek sculptor)
 - word: scupi
   length: 5
   tier: daily
@@ -28153,9 +29857,13 @@ words:
   - main_list
 - word: naxon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Naxos form)
 - word: demeo
   length: 5
   tier: daily
@@ -28179,10 +29887,14 @@ words:
   - main_list
 - word: bryon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bryon, personal name)
 - word: surio
   length: 5
   tier: daily
@@ -28264,10 +29976,14 @@ words:
   - main_list
 - word: taras
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Taras/Tarentum, city)
 - word: guuia
   length: 5
   tier: daily
@@ -28333,10 +30049,14 @@ words:
   - main_list
 - word: amasi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Amasis, Egyptian pharaoh)
 - word: ossum
   length: 5
   tier: daily
@@ -28354,9 +30074,13 @@ words:
   - main_list
 - word: thvle
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Thule variant)
 - word: pingo
   length: 5
   tier: daily
@@ -28371,9 +30095,13 @@ words:
   - main_list
 - word: brixa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Brixia, place name)
 - word: menix
   length: 5
   tier: daily
@@ -28531,9 +30259,13 @@ words:
   - main_list
 - word: nerua
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Nerva, Roman emperor)
 - word: hervs
   length: 5
   tier: daily
@@ -28715,10 +30447,14 @@ words:
   - main_list
 - word: melas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Melas, personal name)
 - word: seiue
   length: 5
   tier: daily
@@ -28736,10 +30472,14 @@ words:
   - main_list
 - word: attus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Attus, personal name)
 - word: leuca
   length: 5
   tier: daily
@@ -28834,9 +30574,13 @@ words:
   - main_list
 - word: fvtvi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar/obscene (sexual verb variant)
 - word: adduc
   length: 5
   tier: daily
@@ -28907,9 +30651,13 @@ words:
   - main_list
 - word: dolon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dolon, Trojan spy)
 - word: liuor
   length: 5
   tier: daily
@@ -28932,9 +30680,13 @@ words:
   - main_list
 - word: cacus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cacus, mythological)
 - word: cneci
   length: 5
   tier: daily
@@ -28994,10 +30746,14 @@ words:
   - main_list
 - word: samos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Samos, Greek island)
 - word: lynca
   length: 5
   tier: daily
@@ -29094,10 +30850,14 @@ words:
   - main_list
 - word: dares
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Dares, Trojan priest)
 - word: seduc
   length: 5
   tier: daily
@@ -29105,10 +30865,14 @@ words:
   - main_list
 - word: itali
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun/ethnic (Itali, Italians)
 - word: bovom
   length: 5
   tier: daily
@@ -29153,9 +30917,13 @@ words:
   - main_list
 - word: danvs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Danus variant)
 - word: apivs
   length: 5
   tier: daily
@@ -29173,15 +30941,23 @@ words:
   - main_list
 - word: atrea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Atreus, mythological)
 - word: babel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Babel, biblical)
 - word: novus
   length: 5
   tier: daily
@@ -29212,10 +30988,14 @@ words:
   - main_list
 - word: iesum
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jesus accusative)
 - word: myxon
   length: 5
   tier: daily
@@ -29267,9 +31047,13 @@ words:
   - main_list
 - word: lydus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lydus, Lydian person)
 - word: ruris
   length: 5
   tier: daily
@@ -29293,10 +31077,14 @@ words:
   - main_list
 - word: barca
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Barca, Carthaginian family)
 - word: scema
   length: 5
   tier: daily
@@ -29305,10 +31093,14 @@ words:
   - main_list
 - word: iacob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jacob, biblical)
 - word: vices
   length: 5
   tier: daily
@@ -29344,10 +31136,14 @@ words:
   - main_list
 - word: aegon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Aegon, personal name)
 - word: eivlo
   length: 5
   tier: daily
@@ -29360,10 +31156,14 @@ words:
   - main_list
 - word: attis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Attis, deity)
 - word: clavo
   length: 5
   tier: daily
@@ -29409,9 +31209,13 @@ words:
   - main_list
 - word: mcccc
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (1400), not a word
 - word: edera
   length: 5
   tier: daily
@@ -29448,10 +31252,14 @@ words:
   - main_list
 - word: cotys
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Cotys, Thracian king)
 - word: passo
   length: 5
   tier: daily
@@ -29541,10 +31349,14 @@ words:
   - main_list
 - word: gelas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gelas, personal name)
 - word: sepia
   length: 5
   tier: daily
@@ -29682,9 +31494,13 @@ words:
   - main_list
 - word: ioppe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Joppa, place name)
 - word: fvsor
   length: 5
   tier: daily
@@ -29751,10 +31567,14 @@ words:
   - main_list
 - word: lxiii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (63), not a word
 - word: maeua
   length: 5
   tier: daily
@@ -29762,10 +31582,14 @@ words:
   - main_list
 - word: satan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Satan, religious figure)
 - word: normo
   length: 5
   tier: daily
@@ -29774,9 +31598,13 @@ words:
   - main_list
 - word: hadra
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hadra, place name)
 - word: ecqvo
   length: 5
   tier: daily
@@ -29784,10 +31612,14 @@ words:
   - main_list
 - word: hybla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hybla, Sicilian city)
 - word: spons
   length: 5
   tier: daily
@@ -29805,10 +31637,14 @@ words:
   - main_list
 - word: lydia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lydia, region/personal name)
 - word: famul
   length: 5
   tier: daily
@@ -29831,10 +31667,14 @@ words:
   - main_list
 - word: didon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Dido, Carthaginian queen)
 - word: depso
   length: 5
   tier: daily
@@ -29880,9 +31720,13 @@ words:
   - main_list
 - word: ixios
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ixion genitive)
 - word: nixus
   length: 5
   tier: daily
@@ -30163,10 +32007,14 @@ words:
   - main_list
 - word: assos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Assos, place)
 - word: chaos
   length: 5
   tier: daily
@@ -30190,10 +32038,14 @@ words:
   - main_list
 - word: ilion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ilion/Troy)
 - word: prior
   length: 5
   tier: daily
@@ -30213,10 +32065,14 @@ words:
   - main_list
 - word: sulla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sulla, Roman dictator)
 - word: mirvs
   length: 5
   tier: daily
@@ -30245,9 +32101,13 @@ words:
   - main_list
 - word: mdccc
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Roman numeral (1800), not a word
 - word: lycos
   length: 5
   tier: daily
@@ -30287,10 +32147,14 @@ words:
   - main_list
 - word: hylas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Hylas, mythological)
 - word: nugor
   length: 5
   tier: daily
@@ -30390,9 +32254,13 @@ words:
   - main_list
 - word: ufens
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ufens, river/personal name)
 - word: facto
   length: 5
   tier: daily
@@ -30423,9 +32291,13 @@ words:
   - main_list
 - word: prvsa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Prusa variant)
 - word: buris
   length: 5
   tier: daily
@@ -30532,14 +32404,22 @@ words:
   - main_list
 - word: asena
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Asena, personal name)
 - word: bromi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Bromius, epithet of Bacchus)
 - word: gerra
   length: 5
   tier: daily
@@ -30610,10 +32490,14 @@ words:
   - main_list
 - word: arsia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arsia, place name)
 - word: lucis
   length: 5
   tier: daily
@@ -30666,10 +32550,14 @@ words:
   - main_list
 - word: iason
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jason, mythological)
 - word: ethos
   length: 5
   tier: daily
@@ -30705,9 +32593,13 @@ words:
   - main_list
 - word: acron
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Acron, personal name)
 - word: memor
   length: 5
   tier: daily
@@ -30795,10 +32687,14 @@ words:
   - main_list
 - word: andes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Andes, place/people)
 - word: speca
   length: 5
   tier: daily

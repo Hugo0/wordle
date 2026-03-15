@@ -165,9 +165,13 @@ words:
   - main_list
 - word: costa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Costa Rica reference / brand'
 - word: suupt
   length: 5
   tier: daily
@@ -265,9 +269,13 @@ words:
   - main_list
 - word: paris
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: French city'
 - word: ämter
   length: 5
   tier: daily
@@ -526,14 +534,22 @@ words:
   scheduled_day: 1690
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: haiti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: plock
   length: 5
   tier: daily
@@ -541,9 +557,13 @@ words:
   - main_list
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: alpen
   length: 5
   tier: daily
@@ -732,9 +752,13 @@ words:
   - main_list
 - word: gabun
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gabon'
 - word: gliek
   length: 5
   tier: daily
@@ -920,9 +944,13 @@ words:
   - main_list
 - word: kmail
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: KDE email client'
 - word: graff
   length: 5
   tier: daily
@@ -1058,9 +1086,13 @@ words:
   scheduled_day: 1695
 - word: lucia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / Saint Lucia'
 - word: bleek
   length: 5
   tier: daily
@@ -1796,9 +1828,13 @@ words:
   - main_list
 - word: asien
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Asia'
 - word: slaan
   length: 5
   tier: daily
@@ -1849,9 +1885,13 @@ words:
   - main_list
 - word: ghana
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
   history:
   - 1701
   scheduled_day: 1701
@@ -1892,9 +1932,13 @@ words:
   - main_list
 - word: hindi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: language name'
   history:
   - 1717
   scheduled_day: 1717
@@ -1955,9 +1999,13 @@ words:
   - main_list
 - word: sudan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: böker
   length: 5
   tier: daily
@@ -2075,9 +2123,13 @@ words:
   - main_list
 - word: ascii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Technical acronym, not a Low German word
 - word: disse
   length: 5
   tier: daily
@@ -2155,9 +2207,13 @@ words:
   - main_list
 - word: zaire
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: former country'
 - word: hooch
   length: 5
   tier: daily
@@ -2353,9 +2409,13 @@ words:
   - main_list
 - word: burma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Myanmar'
 - word: luern
   length: 5
   tier: daily
@@ -2411,9 +2471,13 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: region'
 - word: dicht
   length: 5
   tier: daily
@@ -2496,9 +2560,13 @@ words:
   - main_list
 - word: xfree
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: XFree86 display server'
 - word: weder
   length: 5
   tier: daily
@@ -2704,9 +2772,13 @@ words:
   - main_list
 - word: xhtml
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Technical acronym
 - word: keken
   length: 5
   tier: daily
@@ -2822,9 +2894,13 @@ words:
   - main_list
 - word: niger
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: plant
   length: 5
   tier: daily
@@ -2882,9 +2958,13 @@ words:
   - main_list
 - word: jemen
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Yemen'
 - word: beden
   length: 5
   tier: daily
@@ -2943,9 +3023,13 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Congo'
 - word: tiden
   length: 5
   tier: daily
@@ -2963,9 +3047,13 @@ words:
   - main_list
 - word: farsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: language name'
 - word: damen
   length: 5
   tier: daily
@@ -3101,9 +3189,13 @@ words:
   - main_list
 - word: kenia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kenya'
 - word: köpen
   length: 5
   tier: daily
@@ -3373,9 +3465,13 @@ words:
   - main_list
 - word: emacs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: text editor, not a Low German word'
 - word: index
   length: 5
   tier: daily
@@ -3441,9 +3537,13 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: ammer
   length: 5
   tier: daily
@@ -3670,6 +3770,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword, not standard Low German
 - word: stärk
   length: 5
   tier: daily
@@ -3883,9 +3987,13 @@ words:
   scheduled_day: 1726
 - word: china
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: stump
   length: 5
   tier: daily
@@ -3903,9 +4011,13 @@ words:
   - main_list
 - word: proxy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English technical term, not Low German
 - word: maker
   length: 5
   tier: daily
@@ -3973,9 +4085,13 @@ words:
   - main_list
 - word: adria
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Adriatic'
 - word: warrt
   length: 5
   tier: daily
@@ -4092,9 +4208,13 @@ words:
   - main_list
 - word: apple
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name (English word)'
 - word: frömd
   length: 5
   tier: daily
@@ -4172,9 +4292,13 @@ words:
   - main_list
 - word: xterm
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: terminal emulator'
 - word: makao
   length: 5
   tier: daily
@@ -4202,9 +4326,13 @@ words:
   - main_list
 - word: benin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: sloot
   length: 5
   tier: daily
@@ -4277,9 +4405,13 @@ words:
   - main_list
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: sluut
   length: 5
   tier: daily
@@ -4292,9 +4424,13 @@ words:
   - main_list
 - word: nauru
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: riddt
   length: 5
   tier: daily
@@ -4495,9 +4631,13 @@ words:
   - main_list
 - word: wales
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: tweet
   length: 5
   tier: daily
@@ -4583,9 +4723,13 @@ words:
   - main_list
 - word: linux
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: operating system'
 - word: ställ
   length: 5
   tier: daily
@@ -4689,14 +4833,22 @@ words:
   - main_list
 - word: korea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Korea'
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: boort
   length: 5
   tier: daily
@@ -4892,9 +5044,13 @@ words:
   - main_list
 - word: khtml
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Technical acronym: HTML rendering engine'
 - word: graue
   length: 5
   tier: daily
@@ -4917,9 +5073,13 @@ words:
   - main_list
 - word: palau
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: grien
   length: 5
   tier: daily
@@ -5020,9 +5180,13 @@ words:
   - main_list
 - word: neger
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Offensive: racial slur'
 - word: affig
   length: 5
   tier: daily

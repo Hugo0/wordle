@@ -109,10 +109,14 @@ words:
   - main_list
 - word: mozus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Moses'
   history:
   - 1707
   scheduled_day: 1707
@@ -317,10 +321,14 @@ words:
   - main_list
 - word: bruno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Bruno'
 - word: krist
   length: 5
   tier: daily
@@ -335,10 +343,14 @@ words:
   - main_list
 - word: ingus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Ingus'
 - word: īnest
   length: 5
   tier: daily
@@ -510,10 +522,14 @@ words:
   - main_list
 - word: gvido
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Gvido (Guido)'
 - word: sēdēt
   length: 5
   tier: daily
@@ -822,9 +838,13 @@ words:
   - main_list
 - word: jezus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jesus'
 - word: sadēt
   length: 5
   tier: daily
@@ -877,10 +897,14 @@ words:
   - main_list
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Malta (country name)'
 - word: nakai
   length: 5
   tier: daily
@@ -1474,10 +1498,14 @@ words:
   - main_list
 - word: mikus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Mikus'
 - word: bļūda
   length: 5
   tier: daily
@@ -1523,9 +1551,13 @@ words:
   - main_list
 - word: reiga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Riga (capital of Latvia)'
 - word: dzimt
   length: 5
   tier: daily
@@ -1863,10 +1895,14 @@ words:
   - main_list
 - word: marta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Marta'
 - word: dunēt
   length: 5
   tier: daily
@@ -1914,9 +1950,13 @@ words:
   - main_list
 - word: dagda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dagda (town in Latvia)'
 - word: maukt
   length: 5
   tier: daily

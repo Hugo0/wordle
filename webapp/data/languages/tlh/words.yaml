@@ -288,10 +288,14 @@ words:
   - main_list
 - word: human
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Klingon vocabulary
 - word: cheng
   length: 5
   tier: daily
@@ -434,16 +438,24 @@ words:
   - main_list
 - word: duras
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Duras (Star Trek family name)'
 - word: nipon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Japan (country name)'
 - word: qatlh
   length: 5
   tier: daily
@@ -703,10 +715,14 @@ words:
   - main_list
 - word: jorja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Georgia (country name)'
 - word: baqa'
   length: 5
   tier: daily
@@ -1297,9 +1313,13 @@ words:
   - main_list
 - word: denib
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Denib (Star Trek planet)'
 - word: chay'
   length: 5
   tier: daily
@@ -1455,9 +1475,13 @@ words:
   - main_list
 - word: molor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Molor (Star Trek character)'
 - word: lutlh
   length: 5
   tier: daily
@@ -1473,9 +1497,13 @@ words:
   - main_list
 - word: qonos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Qo''noS (Klingon homeworld)'
 - word: '''uma'''
   length: 5
   tier: daily

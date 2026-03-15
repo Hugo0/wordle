@@ -41,9 +41,13 @@ words:
   - main_list
 - word: gossa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: sprok
   length: 5
   tier: daily
@@ -90,10 +94,14 @@ words:
   - main_list
 - word: halbo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fiers
   length: 5
   tier: daily
@@ -176,10 +184,14 @@ words:
   - main_list
 - word: niger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: rûzer
   length: 5
   tier: daily
@@ -220,10 +232,14 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: skjin
   length: 5
   tier: daily
@@ -569,16 +585,24 @@ words:
   - main_list
 - word: gauke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: simme
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: pafte
   length: 5
   tier: daily
@@ -708,10 +732,14 @@ words:
   - main_list
 - word: sipke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: frear
   length: 5
   tier: daily
@@ -736,9 +764,13 @@ words:
   - main_list
 - word: elfke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: niske
   length: 5
   tier: daily
@@ -899,14 +931,22 @@ words:
   - main_list
 - word: wobke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: jipke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: jubel
   length: 5
   tier: daily
@@ -1033,9 +1073,13 @@ words:
   - main_list
 - word: piebe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: gûlen
   length: 5
   tier: daily
@@ -1102,10 +1146,14 @@ words:
   - main_list
 - word: breda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dutch city'
 - word: haald
   length: 5
   tier: daily
@@ -1222,9 +1270,13 @@ words:
   - main_list
 - word: gepko
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: tsjep
   length: 5
   tier: daily
@@ -1254,10 +1306,14 @@ words:
   - main_list
 - word: nanne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: hotty
   length: 5
   tier: daily
@@ -1342,9 +1398,13 @@ words:
   - main_list
 - word: ankje
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: kimet
   length: 5
   tier: daily
@@ -1464,10 +1524,14 @@ words:
   - main_list
 - word: geike
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: frame
   length: 5
   tier: daily
@@ -1524,9 +1588,13 @@ words:
   - main_list
 - word: jilke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: tiede
   length: 5
   tier: daily
@@ -1716,10 +1784,14 @@ words:
   - main_list
 - word: anton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: sitst
   length: 5
   tier: daily
@@ -1770,10 +1842,14 @@ words:
   - main_list
 - word: ruurd
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: arsis
   length: 5
   tier: daily
@@ -1804,9 +1880,13 @@ words:
   - main_list
 - word: jerne
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: agaat
   length: 5
   tier: daily
@@ -2088,9 +2168,13 @@ words:
   - main_list
 - word: gilke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: kalke
   length: 5
   tier: daily
@@ -2147,10 +2231,14 @@ words:
   - main_list
 - word: femke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: grine
   length: 5
   tier: daily
@@ -2277,10 +2365,14 @@ words:
   - main_list
 - word: sippy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: speur
   length: 5
   tier: daily
@@ -2299,9 +2391,13 @@ words:
   - main_list
 - word: jelma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: reina
   length: 5
   tier: daily
@@ -2584,10 +2680,14 @@ words:
   - main_list
 - word: simen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: opwyk
   length: 5
   tier: daily
@@ -2641,9 +2741,13 @@ words:
   scheduled_day: 1729
 - word: tetty
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: ôflês
   length: 5
   tier: daily
@@ -2688,10 +2792,14 @@ words:
   - main_list
 - word: foeke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: krôle
   length: 5
   tier: daily
@@ -2783,10 +2891,14 @@ words:
   - main_list
 - word: berta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: piuwe
   length: 5
   tier: daily
@@ -2910,10 +3022,14 @@ words:
   - main_list
 - word: fokje
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: heupe
   length: 5
   tier: daily
@@ -2943,10 +3059,14 @@ words:
   - main_list
 - word: gerry
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tilde
   length: 5
   tier: daily
@@ -3040,10 +3160,14 @@ words:
   - main_list
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: kater
   length: 5
   tier: daily
@@ -3073,16 +3197,24 @@ words:
   - main_list
 - word: bosma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian surname'
 - word: eefje
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: corps
   length: 5
   tier: daily
@@ -3393,9 +3525,13 @@ words:
   - main_list
 - word: hinse
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: loaze
   length: 5
   tier: daily
@@ -3424,10 +3560,14 @@ words:
   - main_list
 - word: henno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: sutel
   length: 5
   tier: daily
@@ -3445,10 +3585,14 @@ words:
   - main_list
 - word: petra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: biten
   length: 5
   tier: daily
@@ -3524,10 +3668,14 @@ words:
   - main_list
 - word: aafje
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: polka
   length: 5
   tier: daily
@@ -3647,10 +3795,14 @@ words:
   - main_list
 - word: frank
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: buike
   length: 5
   tier: daily
@@ -3690,16 +3842,24 @@ words:
   - main_list
 - word: judas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: biblical name'
 - word: gerke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: belij
   length: 5
   tier: daily
@@ -3899,10 +4059,14 @@ words:
   - main_list
 - word: wobbe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: filst
   length: 5
   tier: daily
@@ -3920,10 +4084,14 @@ words:
   - main_list
 - word: anske
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: retor
   length: 5
   tier: daily
@@ -4087,10 +4255,14 @@ words:
   - main_list
 - word: abram
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: biblical/personal name'
 - word: fizer
   length: 5
   tier: daily
@@ -4250,10 +4422,14 @@ words:
   - main_list
 - word: almar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: dûsen
   length: 5
   tier: daily
@@ -4627,9 +4803,13 @@ words:
   - main_list
 - word: jimme
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: noard
   length: 5
   tier: daily
@@ -4788,10 +4968,14 @@ words:
   - main_list
 - word: jitze
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: spoar
   length: 5
   tier: daily
@@ -4863,9 +5047,13 @@ words:
   - main_list
 - word: memke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: salon
   length: 5
   tier: daily
@@ -4891,10 +5079,14 @@ words:
   - main_list
 - word: jiske
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: swolt
   length: 5
   tier: daily
@@ -5043,9 +5235,13 @@ words:
   - main_list
 - word: habbe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: föhnd
   length: 5
   tier: daily
@@ -5147,10 +5343,14 @@ words:
   - main_list
 - word: fenna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: goaie
   length: 5
   tier: daily
@@ -5263,10 +5463,14 @@ words:
   scheduled_day: 1683
 - word: jehan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: greau
   length: 5
   tier: daily
@@ -5505,10 +5709,14 @@ words:
   - main_list
 - word: nanna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: lânet
   length: 5
   tier: daily
@@ -5723,9 +5931,13 @@ words:
   - main_list
 - word: gabke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ukjes
   length: 5
   tier: daily
@@ -5753,15 +5965,23 @@ words:
   - main_list
 - word: parys
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Paris'
 - word: frana
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: reüny
   length: 5
   tier: daily
@@ -5774,15 +5994,23 @@ words:
   - main_list
 - word: gurbe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: geppy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: bylje
   length: 5
   tier: daily
@@ -5895,10 +6123,14 @@ words:
   - main_list
 - word: mekka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mecca'
 - word: ôflis
   length: 5
   tier: daily
@@ -5993,9 +6225,13 @@ words:
   - main_list
 - word: bepke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: drûge
   length: 5
   tier: daily
@@ -6063,10 +6299,14 @@ words:
   - main_list
 - word: evert
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: manne
   length: 5
   tier: daily
@@ -6075,10 +6315,14 @@ words:
   - main_list
 - word: jelle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: rezyn
   length: 5
   tier: daily
@@ -6103,10 +6347,14 @@ words:
   - main_list
 - word: agata
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: surch
   length: 5
   tier: daily
@@ -6269,10 +6517,14 @@ words:
   - main_list
 - word: famke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name (though also means ''girl'')'
 - word: eeuwe
   length: 5
   tier: daily
@@ -6281,10 +6533,14 @@ words:
   - main_list
 - word: wodan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Norse god'
 - word: toeve
   length: 5
   tier: daily
@@ -6398,10 +6654,14 @@ words:
   - main_list
 - word: ewoud
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: swerf
   length: 5
   tier: daily
@@ -6652,9 +6912,13 @@ words:
   - main_list
 - word: kaike
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: skuon
   length: 5
   tier: daily
@@ -6756,10 +7020,14 @@ words:
   - main_list
 - word: eelko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: gouwe
   length: 5
   tier: daily
@@ -6790,10 +7058,14 @@ words:
   - main_list
 - word: piter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name (Peter)'
 - word: beeft
   length: 5
   tier: daily
@@ -7004,10 +7276,14 @@ words:
   - main_list
 - word: adele
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: skade
   length: 5
   tier: daily
@@ -7235,9 +7511,13 @@ words:
   - main_list
 - word: feddo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: debyl
   length: 5
   tier: daily
@@ -7362,12 +7642,20 @@ words:
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword
 - word: popke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: bewyn
   length: 5
   tier: daily
@@ -7458,6 +7746,10 @@ words:
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be personal name or Frisian for 'grandmother' - keep if grandmother
 - word: keffe
   length: 5
   tier: daily
@@ -7497,9 +7789,13 @@ words:
   - main_list
 - word: berte
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tagie
   length: 5
   tier: daily
@@ -7622,10 +7918,14 @@ words:
   - main_list
 - word: griet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: wiske
   length: 5
   tier: daily
@@ -7997,10 +8297,14 @@ words:
   - main_list
 - word: ankie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: rapet
   length: 5
   tier: daily
@@ -8113,10 +8417,14 @@ words:
   - main_list
 - word: elslo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: place name'
 - word: úthou
   length: 5
   tier: daily
@@ -8124,9 +8432,13 @@ words:
   - main_list
 - word: ennie
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: ophuf
   length: 5
   tier: daily
@@ -8274,10 +8586,14 @@ words:
   - main_list
 - word: hobbe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: drild
   length: 5
   tier: daily
@@ -8421,10 +8737,14 @@ words:
   - main_list
 - word: adema
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian surname'
 - word: dosto
   length: 5
   tier: daily
@@ -8442,10 +8762,14 @@ words:
   - main_list
 - word: penny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / English word'
 - word: gibet
   length: 5
   tier: daily
@@ -8458,10 +8782,14 @@ words:
   - main_list
 - word: arjen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: wurdt
   length: 5
   tier: daily
@@ -8475,9 +8803,13 @@ words:
   - main_list
 - word: nelie
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: oazen
   length: 5
   tier: daily
@@ -8566,10 +8898,14 @@ words:
   - main_list
 - word: jezus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jesus'
 - word: súlke
   length: 5
   tier: daily
@@ -8711,9 +9047,13 @@ words:
   - main_list
 - word: houke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: seach
   length: 5
   tier: daily
@@ -8775,9 +9115,13 @@ words:
   - main_list
 - word: gabbe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: delta
   length: 5
   tier: daily
@@ -8937,9 +9281,13 @@ words:
   - main_list
 - word: siske
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ôfwar
   length: 5
   tier: daily
@@ -9052,10 +9400,14 @@ words:
   - main_list
 - word: lukas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tadie
   length: 5
   tier: daily
@@ -9074,10 +9426,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: oaren
   length: 5
   tier: daily
@@ -9125,10 +9481,14 @@ words:
   - main_list
 - word: bente
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: stoma
   length: 5
   tier: daily
@@ -9185,10 +9545,14 @@ words:
   - main_list
 - word: femmy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: saûdy
   length: 5
   tier: daily
@@ -9292,10 +9656,14 @@ words:
   - main_list
 - word: wigle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: soeit
   length: 5
   tier: daily
@@ -9444,10 +9812,14 @@ words:
   - main_list
 - word: jobke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: feilt
   length: 5
   tier: daily
@@ -9611,9 +9983,13 @@ words:
   - main_list
 - word: jippe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: erjen
   length: 5
   tier: daily
@@ -9668,10 +10044,14 @@ words:
   - main_list
 - word: jiska
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: apele
   length: 5
   tier: daily
@@ -9716,9 +10096,13 @@ words:
   - main_list
 - word: dafke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ipers
   length: 5
   tier: daily
@@ -9748,10 +10132,14 @@ words:
   - main_list
 - word: hieke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: dieve
   length: 5
   tier: daily
@@ -9819,10 +10207,14 @@ words:
   - main_list
 - word: bouma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian surname'
 - word: toert
   length: 5
   tier: daily
@@ -9831,10 +10223,14 @@ words:
   - main_list
 - word: fenne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: smout
   length: 5
   tier: daily
@@ -10012,15 +10408,23 @@ words:
   - main_list
 - word: lobke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: gjert
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: seech
   length: 5
   tier: daily
@@ -10044,10 +10448,14 @@ words:
   - main_list
 - word: tymen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: wenje
   length: 5
   tier: daily
@@ -10282,10 +10690,14 @@ words:
   - main_list
 - word: jurre
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: socht
   length: 5
   tier: daily
@@ -10308,9 +10720,13 @@ words:
   - main_list
 - word: namke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: praat
   length: 5
   tier: daily
@@ -10373,10 +10789,14 @@ words:
   - main_list
 - word: haike
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fabel
   length: 5
   tier: daily
@@ -10391,10 +10811,14 @@ words:
   - main_list
 - word: hanna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: trêft
   length: 5
   tier: daily
@@ -10554,9 +10978,13 @@ words:
   - main_list
 - word: girbe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: roete
   length: 5
   tier: daily
@@ -10659,10 +11087,14 @@ words:
   - main_list
 - word: hille
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: luste
   length: 5
   tier: daily
@@ -10681,10 +11113,14 @@ words:
   - main_list
 - word: jitte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: pepte
   length: 5
   tier: daily
@@ -11028,10 +11464,14 @@ words:
   - main_list
 - word: eefke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: weaks
   length: 5
   tier: daily
@@ -11153,10 +11593,14 @@ words:
   - main_list
 - word: ewald
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: meint
   length: 5
   tier: daily
@@ -11426,10 +11870,14 @@ words:
   - main_list
 - word: menne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: nykle
   length: 5
   tier: daily
@@ -11577,10 +12025,14 @@ words:
   - main_list
 - word: jemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Yemen'
 - word: pelst
   length: 5
   tier: daily
@@ -11588,10 +12040,14 @@ words:
   - main_list
 - word: wiebe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: meant
   length: 5
   tier: daily
@@ -11632,10 +12088,14 @@ words:
   - main_list
 - word: adams
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname'
 - word: lûkst
   length: 5
   tier: daily
@@ -11841,10 +12301,14 @@ words:
   - main_list
 - word: douwe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: beurs
   length: 5
   tier: daily
@@ -12019,10 +12483,14 @@ words:
   - main_list
 - word: henny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: bêste
   length: 5
   tier: daily
@@ -12047,10 +12515,14 @@ words:
   - main_list
 - word: eward
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: kúmst
   length: 5
   tier: daily
@@ -12155,10 +12627,14 @@ words:
   - main_list
 - word: kenia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kenya'
 - word: misje
   length: 5
   tier: daily
@@ -12262,9 +12738,13 @@ words:
   - main_list
 - word: fanke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: floks
   length: 5
   tier: daily
@@ -12339,10 +12819,14 @@ words:
   - main_list
 - word: japke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: breuk
   length: 5
   tier: daily
@@ -12351,10 +12835,14 @@ words:
   - main_list
 - word: joris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: raten
   length: 5
   tier: daily
@@ -12396,10 +12884,14 @@ words:
   - main_list
 - word: sieta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: tepte
   length: 5
   tier: daily
@@ -12518,9 +13010,13 @@ words:
   - main_list
 - word: gepje
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: split
   length: 5
   tier: daily
@@ -12534,9 +13030,13 @@ words:
   - main_list
 - word: korry
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: skeat
   length: 5
   tier: daily
@@ -12580,9 +13080,13 @@ words:
   - main_list
 - word: siard
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: feryt
   length: 5
   tier: daily
@@ -12641,10 +13145,14 @@ words:
   - main_list
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: bleke
   length: 5
   tier: daily
@@ -12723,10 +13231,14 @@ words:
   - main_list
 - word: japik
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fange
   length: 5
   tier: daily
@@ -12803,10 +13315,14 @@ words:
   - main_list
 - word: herke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: gniis
   length: 5
   tier: daily
@@ -12884,10 +13400,14 @@ words:
   - main_list
 - word: elske
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fieme
   length: 5
   tier: daily
@@ -12969,10 +13489,14 @@ words:
   - main_list
 - word: assur
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient Assyrian city'
 - word: fysyk
   length: 5
   tier: daily
@@ -13168,10 +13692,14 @@ words:
   - main_list
 - word: gjalt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: skaai
   length: 5
   tier: daily
@@ -13189,10 +13717,14 @@ words:
   - main_list
 - word: rokus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: romte
   length: 5
   tier: daily
@@ -13376,10 +13908,14 @@ words:
   - main_list
 - word: benny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: samos
   length: 5
   tier: daily
@@ -13453,9 +13989,13 @@ words:
   - main_list
 - word: hitjo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ikene
   length: 5
   tier: daily
@@ -13580,9 +14120,13 @@ words:
   - main_list
 - word: gelke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: betar
   length: 5
   tier: daily
@@ -13595,10 +14139,14 @@ words:
   - main_list
 - word: betty
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: hoeve
   length: 5
   tier: daily
@@ -13810,9 +14358,13 @@ words:
   - main_list
 - word: nauke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: treil
   length: 5
   tier: daily
@@ -13820,10 +14372,14 @@ words:
   - main_list
 - word: jorne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: bylûd
   length: 5
   tier: daily
@@ -14233,10 +14789,14 @@ words:
   - main_list
 - word: aafke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fyske
   length: 5
   tier: daily
@@ -14284,10 +14844,14 @@ words:
   - main_list
 - word: golda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: riget
   length: 5
   tier: daily
@@ -14311,10 +14875,14 @@ words:
   - main_list
 - word: tekla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: hûgen
   length: 5
   tier: daily
@@ -14411,10 +14979,14 @@ words:
   - main_list
 - word: adrie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: ierde
   length: 5
   tier: daily
@@ -14513,9 +15085,13 @@ words:
   - main_list
 - word: wimke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: krêms
   length: 5
   tier: daily
@@ -14550,10 +15126,14 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: stryp
   length: 5
   tier: daily
@@ -14660,9 +15240,13 @@ words:
   - main_list
 - word: heppe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: kromp
   length: 5
   tier: daily
@@ -14760,10 +15344,14 @@ words:
   - main_list
 - word: fokko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: outer
   length: 5
   tier: daily
@@ -15049,10 +15637,14 @@ words:
   - main_list
 - word: watse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: orale
   length: 5
   tier: daily
@@ -15207,10 +15799,14 @@ words:
   - main_list
 - word: jouke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: smous
   length: 5
   tier: daily
@@ -15262,10 +15858,14 @@ words:
   - main_list
 - word: rinse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: lobby
   length: 5
   tier: daily
@@ -15381,10 +15981,14 @@ words:
   - main_list
 - word: hilde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: byset
   length: 5
   tier: daily
@@ -15403,10 +16007,14 @@ words:
   - main_list
 - word: alwin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tylsk
   length: 5
   tier: daily
@@ -15431,9 +16039,13 @@ words:
   - main_list
 - word: befke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: jonge
   length: 5
   tier: daily
@@ -15442,9 +16054,13 @@ words:
   - main_list
 - word: fenno
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tabyt
   length: 5
   tier: daily
@@ -15569,9 +16185,13 @@ words:
   - main_list
 - word: eekma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian surname'
 - word: roely
   length: 5
   tier: daily
@@ -15679,10 +16299,14 @@ words:
   - main_list
 - word: rommy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tikke
   length: 5
   tier: daily
@@ -15702,10 +16326,14 @@ words:
   - main_list
 - word: sachs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: German surname'
 - word: ôfrêd
   length: 5
   tier: daily
@@ -15952,10 +16580,14 @@ words:
   - main_list
 - word: garmt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: hiaat
   length: 5
   tier: daily
@@ -16091,9 +16723,13 @@ words:
   - main_list
 - word: hymke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: nûmer
   length: 5
   tier: daily
@@ -16131,10 +16767,14 @@ words:
   - main_list
 - word: fedde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ûnske
   length: 5
   tier: daily
@@ -16464,10 +17104,14 @@ words:
   - main_list
 - word: hilly
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: maksy
   length: 5
   tier: daily
@@ -16623,10 +17267,14 @@ words:
   - main_list
 - word: ewold
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: oepke
   length: 5
   tier: daily
@@ -16946,10 +17594,14 @@ words:
   - main_list
 - word: minke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: hante
   length: 5
   tier: daily
@@ -16975,10 +17627,14 @@ words:
   - main_list
 - word: jesse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: meppe
   length: 5
   tier: daily
@@ -17060,10 +17716,14 @@ words:
   - main_list
 - word: jelly
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / English word'
 - word: snuve
   length: 5
   tier: daily
@@ -17152,10 +17812,14 @@ words:
   - main_list
 - word: gosse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: opnim
   length: 5
   tier: daily
@@ -17237,9 +17901,13 @@ words:
   - main_list
 - word: jitty
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: singe
   length: 5
   tier: daily
@@ -17253,10 +17921,14 @@ words:
   - main_list
 - word: aukje
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: keart
   length: 5
   tier: daily
@@ -17264,10 +17936,14 @@ words:
   - main_list
 - word: heine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name/poet'
 - word: skyke
   length: 5
   tier: daily
@@ -17430,9 +18106,13 @@ words:
   - main_list
 - word: aaike
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: omkes
   length: 5
   tier: daily
@@ -17440,10 +18120,14 @@ words:
   - main_list
 - word: maria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: pieke
   length: 5
   tier: daily
@@ -17584,9 +18268,13 @@ words:
   - main_list
 - word: herro
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: plege
   length: 5
   tier: daily
@@ -18015,10 +18703,14 @@ words:
   - main_list
 - word: porno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Inappropriate for daily puzzle
 - word: dôven
   length: 5
   tier: daily
@@ -18222,9 +18914,13 @@ words:
   - main_list
 - word: gebke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: siler
   length: 5
   tier: daily
@@ -18381,10 +19077,14 @@ words:
   - main_list
 - word: wouda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian surname'
 - word: krune
   length: 5
   tier: daily
@@ -18444,9 +19144,13 @@ words:
   - main_list
 - word: aakje
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fidel
   length: 5
   tier: daily
@@ -18503,9 +19207,13 @@ words:
   - main_list
 - word: gouke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ynjou
   length: 5
   tier: daily
@@ -18597,9 +19305,13 @@ words:
   - main_list
 - word: wipke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: oarre
   length: 5
   tier: daily
@@ -18719,9 +19431,13 @@ words:
   - main_list
 - word: tjirk
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ynlos
   length: 5
   tier: daily
@@ -18772,10 +19488,14 @@ words:
   - main_list
 - word: frida
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: islam
   length: 5
   tier: daily
@@ -18790,9 +19510,13 @@ words:
   - main_list
 - word: hobke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: benei
   length: 5
   tier: daily
@@ -18839,10 +19563,14 @@ words:
   - main_list
 - word: fokke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: rikje
   length: 5
   tier: daily
@@ -18951,10 +19679,14 @@ words:
   - main_list
 - word: eelde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dutch town'
 - word: liene
   length: 5
   tier: daily
@@ -18968,10 +19700,14 @@ words:
   - main_list
 - word: minne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ûnwis
   length: 5
   tier: daily
@@ -19031,10 +19767,14 @@ words:
   - main_list
 - word: trude
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: helpt
   length: 5
   tier: daily
@@ -19054,9 +19794,13 @@ words:
   - main_list
 - word: jimke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: einen
   length: 5
   tier: daily
@@ -19154,16 +19898,24 @@ words:
   - main_list
 - word: hoyte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: herre
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: hetze
   length: 5
   tier: daily
@@ -19307,10 +20059,14 @@ words:
   - main_list
 - word: tjerk
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fulva
   length: 5
   tier: daily
@@ -19438,10 +20194,14 @@ words:
   - main_list
 - word: hidde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: sonde
   length: 5
   tier: daily
@@ -19455,10 +20215,14 @@ words:
   - main_list
 - word: jente
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: rôler
   length: 5
   tier: daily
@@ -19487,9 +20251,13 @@ words:
   - main_list
 - word: jisse
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: lyfke
   length: 5
   tier: daily
@@ -19591,9 +20359,13 @@ words:
   - main_list
 - word: jerke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: leget
   length: 5
   tier: daily
@@ -19824,10 +20596,14 @@ words:
   - main_list
 - word: arjan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: preke
   length: 5
   tier: daily
@@ -19845,10 +20621,14 @@ words:
   - main_list
 - word: watze
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: weine
   length: 5
   tier: daily
@@ -20194,10 +20974,14 @@ words:
   - main_list
 - word: gabon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: arkje
   length: 5
   tier: daily
@@ -20288,9 +21072,13 @@ words:
   - main_list
 - word: hepke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: keurt
   length: 5
   tier: daily
@@ -20597,10 +21385,14 @@ words:
   - main_list
 - word: jetty
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: ripen
   length: 5
   tier: daily
@@ -20676,15 +21468,23 @@ words:
   - main_list
 - word: sadat
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Egyptian president'
 - word: hypke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: woest
   length: 5
   tier: daily
@@ -21090,9 +21890,13 @@ words:
   - main_list
 - word: hynke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: wolke
   length: 5
   tier: daily
@@ -21378,9 +22182,13 @@ words:
   - main_list
 - word: damke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: mofke
   length: 5
   tier: daily
@@ -21511,9 +22319,13 @@ words:
   - main_list
 - word: gelko
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: tafel
   length: 5
   tier: daily
@@ -21597,10 +22409,14 @@ words:
   - main_list
 - word: sytse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: rypma
   length: 5
   tier: daily
@@ -21665,10 +22481,14 @@ words:
   - main_list
 - word: jakob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: bûten
   length: 5
   tier: daily
@@ -21890,10 +22710,14 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Congo'
 - word: ôffei
   length: 5
   tier: daily
@@ -22047,10 +22871,14 @@ words:
   - main_list
 - word: haiko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: meine
   length: 5
   tier: daily
@@ -22080,9 +22908,13 @@ words:
   - main_list
 - word: simke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: galop
   length: 5
   tier: daily
@@ -22102,10 +22934,14 @@ words:
   - main_list
 - word: peter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: hosty
   length: 5
   tier: daily
@@ -22326,10 +23162,14 @@ words:
   - main_list
 - word: jitse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: knypt
   length: 5
   tier: daily
@@ -22489,9 +23329,13 @@ words:
   - main_list
 - word: touke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: seale
   length: 5
   tier: daily
@@ -22516,9 +23360,13 @@ words:
   - main_list
 - word: memmy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: spyts
   length: 5
   tier: daily
@@ -22756,10 +23604,14 @@ words:
   - main_list
 - word: halbe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: steun
   length: 5
   tier: daily
@@ -22833,9 +23685,13 @@ words:
   - main_list
 - word: hipke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: lispe
   length: 5
   tier: daily
@@ -22916,10 +23772,14 @@ words:
   - main_list
 - word: rinze
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: torso
   length: 5
   tier: daily
@@ -23140,10 +24000,14 @@ words:
   - main_list
 - word: jabik
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name (Jacob)'
 - word: grito
   length: 5
   tier: daily
@@ -23180,10 +24044,14 @@ words:
   - main_list
 - word: jonas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: waaid
   length: 5
   tier: daily
@@ -23555,10 +24423,14 @@ words:
   - main_list
 - word: bauke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: offer
   length: 5
   tier: daily
@@ -23681,10 +24553,14 @@ words:
   - main_list
 - word: hanno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: kreep
   length: 5
   tier: daily
@@ -23789,10 +24665,14 @@ words:
   - main_list
 - word: tomme
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: feart
   length: 5
   tier: daily
@@ -23965,9 +24845,13 @@ words:
   - main_list
 - word: jappy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: risto
   length: 5
   tier: daily
@@ -24198,10 +25082,14 @@ words:
   - main_list
 - word: orion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: constellation'
 - word: koarn
   length: 5
   tier: daily
@@ -24307,16 +25195,24 @@ words:
   - main_list
 - word: sippe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: tomke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: pypse
   length: 5
   tier: daily
@@ -24387,15 +25283,23 @@ words:
   - main_list
 - word: rinny
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: jappe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: skras
   length: 5
   tier: daily
@@ -24646,10 +25550,14 @@ words:
   - main_list
 - word: neger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Offensive: racial slur'
 - word: tanen
   length: 5
   tier: daily
@@ -24695,10 +25603,14 @@ words:
   - main_list
 - word: gerda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: manna
   length: 5
   tier: daily
@@ -24776,10 +25688,14 @@ words:
   scheduled_day: 1692
 - word: wopke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: krypt
   length: 5
   tier: daily
@@ -25119,10 +26035,14 @@ words:
   - main_list
 - word: benno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: krige
   length: 5
   tier: daily
@@ -25317,10 +26237,14 @@ words:
   - main_list
 - word: satan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious figure'
 - word: shock
   length: 5
   tier: daily
@@ -25605,10 +26529,14 @@ words:
   - main_list
 - word: hilda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: opere
   length: 5
   tier: daily
@@ -25702,10 +26630,14 @@ words:
   - main_list
 - word: palau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: heare
   length: 5
   tier: daily
@@ -25718,9 +26650,13 @@ words:
   - main_list
 - word: foeko
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: kiche
   length: 5
   tier: daily
@@ -25790,9 +26726,13 @@ words:
   - main_list
 - word: antke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: triko
   length: 5
   tier: daily
@@ -25963,10 +26903,14 @@ words:
   - main_list
 - word: hiske
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: hopen
   length: 5
   tier: daily
@@ -26065,10 +27009,14 @@ words:
   - main_list
 - word: janus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological/personal name'
 - word: kosta
   length: 5
   tier: daily
@@ -26103,10 +27051,14 @@ words:
   - main_list
 - word: sodom
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: biblical city'
 - word: folys
   length: 5
   tier: daily
@@ -26124,10 +27076,14 @@ words:
   - main_list
 - word: haije
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: papen
   length: 5
   tier: daily
@@ -26194,10 +27150,14 @@ words:
   - main_list
 - word: femma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: lymfe
   length: 5
   tier: daily
@@ -26379,10 +27339,14 @@ words:
   - main_list
 - word: jetse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: bebou
   length: 5
   tier: daily
@@ -26447,10 +27411,14 @@ words:
   - main_list
 - word: bouke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: hinge
   length: 5
   tier: daily
@@ -26947,10 +27915,14 @@ words:
   - main_list
 - word: janny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: prate
   length: 5
   tier: daily
@@ -27024,10 +27996,14 @@ words:
   - main_list
 - word: kerry
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: troan
   length: 5
   tier: daily
@@ -27288,10 +28264,14 @@ words:
   - main_list
 - word: feike
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: sechd
   length: 5
   tier: daily
@@ -27323,10 +28303,14 @@ words:
   - main_list
 - word: henke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: treed
   length: 5
   tier: daily
@@ -27427,10 +28411,14 @@ words:
   - main_list
 - word: adolf
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name with sensitive associations'
 - word: rebus
   length: 5
   tier: daily
@@ -27627,9 +28615,13 @@ words:
   - main_list
 - word: gerbe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: slute
   length: 5
   tier: daily
@@ -27911,10 +28903,14 @@ words:
   - main_list
 - word: ansje
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: derôf
   length: 5
   tier: daily
@@ -28146,10 +29142,14 @@ words:
   - main_list
 - word: tette
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: bizar
   length: 5
   tier: daily
@@ -28201,9 +29201,13 @@ words:
   - main_list
 - word: hupke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: skite
   length: 5
   tier: daily
@@ -28211,10 +29215,14 @@ words:
   - main_list
 - word: eppie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: belul
   length: 5
   tier: daily
@@ -28502,9 +29510,13 @@ words:
   - main_list
 - word: frouk
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: oerút
   length: 5
   tier: daily
@@ -28544,9 +29556,13 @@ words:
   - main_list
 - word: gibke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: ynsko
   length: 5
   tier: daily
@@ -28840,9 +29856,13 @@ words:
   - main_list
 - word: jissy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: sjiep
   length: 5
   tier: daily
@@ -29024,10 +30044,14 @@ words:
   - main_list
 - word: gepke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fearn
   length: 5
   tier: daily
@@ -29047,9 +30071,13 @@ words:
   - main_list
 - word: jinke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: terge
   length: 5
   tier: daily
@@ -29226,10 +30254,14 @@ words:
   - main_list
 - word: harke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: útdol
   length: 5
   tier: daily
@@ -29274,10 +30306,14 @@ words:
   - main_list
 - word: henne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: wulft
   length: 5
   tier: daily
@@ -29311,9 +30347,13 @@ words:
   - main_list
 - word: souke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: sakje
   length: 5
   tier: daily
@@ -29371,9 +30411,13 @@ words:
   - main_list
 - word: gebbe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: sling
   length: 5
   tier: daily
@@ -29518,10 +30562,14 @@ words:
   - main_list
 - word: hinke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: genen
   length: 5
   tier: daily
@@ -29774,10 +30822,14 @@ words:
   - main_list
 - word: wytse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: stamp
   length: 5
   tier: daily
@@ -30111,10 +31163,14 @@ words:
   - main_list
 - word: warns
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian town'
 - word: mûzje
   length: 5
   tier: daily
@@ -30235,10 +31291,14 @@ words:
   - main_list
 - word: jelke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: heart
   length: 5
   tier: daily
@@ -30317,10 +31377,14 @@ words:
   - main_list
 - word: walda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal/place name'
 - word: hokse
   length: 5
   tier: daily
@@ -30348,10 +31412,14 @@ words:
   - main_list
 - word: greta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: foute
   length: 5
   tier: daily
@@ -30398,10 +31466,14 @@ words:
   - main_list
 - word: jelte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: lipke
   length: 5
   tier: daily
@@ -30543,10 +31615,14 @@ words:
   - main_list
 - word: jikke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: kûper
   length: 5
   tier: daily
@@ -30708,10 +31784,14 @@ words:
   - main_list
 - word: nynke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: grage
   length: 5
   tier: daily
@@ -30900,10 +31980,14 @@ words:
   - main_list
 - word: ursel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: kreas
   length: 5
   tier: daily
@@ -30986,9 +32070,13 @@ words:
   - main_list
 - word: jamke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: taset
   length: 5
   tier: daily
@@ -31029,10 +32117,14 @@ words:
   - main_list
 - word: trien
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: fideo
   length: 5
   tier: daily
@@ -31093,10 +32185,14 @@ words:
   - main_list
 - word: jibbe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: snein
   length: 5
   tier: daily
@@ -31150,10 +32246,14 @@ words:
   - main_list
 - word: ulrik
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: echte
   length: 5
   tier: daily
@@ -31174,10 +32274,14 @@ words:
   - main_list
 - word: rinke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: devys
   length: 5
   tier: daily
@@ -31207,16 +32311,24 @@ words:
   - main_list
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: rinus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: kamme
   length: 5
   tier: daily
@@ -31273,9 +32385,13 @@ words:
   - main_list
 - word: tobke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: seurt
   length: 5
   tier: daily
@@ -31382,10 +32498,14 @@ words:
   - main_list
 - word: fenny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: rûchs
   length: 5
   tier: daily
@@ -31527,10 +32647,14 @@ words:
   - main_list
 - word: popma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian surname'
 - word: opwip
   length: 5
   tier: daily
@@ -31671,16 +32795,24 @@ words:
   - main_list
 - word: hilke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: tymon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: fâdes
   length: 5
   tier: daily
@@ -31703,9 +32835,13 @@ words:
   - main_list
 - word: wimer
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: bient
   length: 5
   tier: daily
@@ -31743,9 +32879,13 @@ words:
   - main_list
 - word: gerre
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: koait
   length: 5
   tier: daily
@@ -31937,10 +33077,14 @@ words:
   - main_list
 - word: romke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: genus
   length: 5
   tier: daily
@@ -32157,10 +33301,14 @@ words:
   - main_list
 - word: eelke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: sekst
   length: 5
   tier: daily
@@ -32245,10 +33393,14 @@ words:
   - main_list
 - word: lolke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: bakje
   length: 5
   tier: daily
@@ -32405,9 +33557,13 @@ words:
   - main_list
 - word: heila
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: maars
   length: 5
   tier: daily
@@ -32524,9 +33680,13 @@ words:
   - main_list
 - word: wipie
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: tegel
   length: 5
   tier: daily
@@ -32615,9 +33775,13 @@ words:
   - main_list
 - word: alfke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: hûnsk
   length: 5
   tier: daily
@@ -32641,16 +33805,24 @@ words:
   - main_list
 - word: waldo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: wouke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
   history:
   - 1702
   scheduled_day: 1702
@@ -32880,10 +34052,14 @@ words:
   - main_list
 - word: hanne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: sonar
   length: 5
   tier: daily
@@ -32913,14 +34089,22 @@ words:
   - main_list
 - word: heppo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: himke
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frisian personal name'
 - word: mokka
   length: 5
   tier: daily
@@ -32992,10 +34176,14 @@ words:
   - main_list
 - word: haico
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: bijen
   length: 5
   tier: daily

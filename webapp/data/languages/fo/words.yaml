@@ -1222,10 +1222,14 @@ words:
   - main_list
 - word: anton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Anton
 - word: neyts
   length: 5
   tier: daily
@@ -1618,9 +1622,13 @@ words:
   - main_list
 - word: arnar
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Arnar
 - word: ódygg
   length: 5
   tier: daily
@@ -1758,9 +1766,13 @@ words:
   - main_list
 - word: jóhan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Jóhan
 - word: limað
   length: 5
   tier: daily
@@ -3508,10 +3520,14 @@ words:
   - main_list
 - word: alvin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Alvin
 - word: skóka
   length: 5
   tier: daily
@@ -3547,10 +3563,14 @@ words:
   - main_list
 - word: lukas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Lukas
 - word: glødd
   length: 5
   tier: daily
@@ -3669,9 +3689,13 @@ words:
   - main_list
 - word: krist
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Christ
 - word: goyst
   length: 5
   tier: daily
@@ -5346,9 +5370,13 @@ words:
   - main_list
 - word: sigga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Sigga
 - word: spray
   length: 5
   tier: daily
@@ -6789,10 +6817,14 @@ words:
   - main_list
 - word: elias
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Elias
 - word: málan
   length: 5
   tier: daily
@@ -8949,9 +8981,13 @@ words:
   - main_list
 - word: dávid
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name David
   history:
   - 1701
   scheduled_day: 1701
@@ -8967,9 +9003,13 @@ words:
   - main_list
 - word: pauli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Paul (declined)
 - word: kanin
   length: 5
   tier: daily
@@ -10301,9 +10341,13 @@ words:
   - main_list
 - word: eirik
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Eirik
 - word: hirða
   length: 5
   tier: daily
@@ -10678,10 +10722,14 @@ words:
   - main_list
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Japan
 - word: grøtt
   length: 5
   tier: daily
@@ -10960,9 +11008,13 @@ words:
   - main_list
 - word: jónas
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Jónas
   history:
   - 1687
   scheduled_day: 1687
@@ -11342,9 +11394,13 @@ words:
   - main_list
 - word: birgi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Birgi(t)
 - word: ripar
   length: 5
   tier: daily
@@ -12644,10 +12700,14 @@ words:
   - main_list
 - word: athen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Athens
 - word: hjøll
   length: 5
   tier: daily
@@ -12691,9 +12751,13 @@ words:
   - main_list
 - word: petur
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Petur/Peter
 - word: løgað
   length: 5
   tier: daily
@@ -13097,10 +13161,14 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tibet
 - word: umtos
   length: 5
   tier: daily
@@ -13554,9 +13622,13 @@ words:
   - main_list
 - word: afrik
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Africa
 - word: knykl
   length: 5
   tier: daily
@@ -13624,10 +13696,14 @@ words:
   - main_list
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Nepal
 - word: lámað
   length: 5
   tier: daily
@@ -13770,9 +13846,13 @@ words:
   - main_list
 - word: artur
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Arthur
 - word: fjali
   length: 5
   tier: daily
@@ -14114,6 +14194,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - given name Arsen
 - word: drýpi
   length: 5
   tier: daily
@@ -14755,10 +14839,14 @@ words:
   - main_list
 - word: anita
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Anita
 - word: fjølg
   length: 5
   tier: daily
@@ -16228,6 +16316,10 @@ words:
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: International loanword
 - word: graði
   length: 5
   tier: daily
@@ -17902,9 +17994,13 @@ words:
   - main_list
 - word: eriku
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Erik (declined)
 - word: hálæt
   length: 5
   tier: daily
@@ -18053,9 +18149,13 @@ words:
   - main_list
 - word: ólavi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Olav (declined)
 - word: pliað
   length: 5
   tier: daily
@@ -19412,9 +19512,13 @@ words:
   scheduled_day: 1704
 - word: egypt
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Egypt
 - word: statt
   length: 5
   tier: daily
@@ -19619,9 +19723,13 @@ words:
   - main_list
 - word: assýr
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Assyrian
 - word: ríkja
   length: 5
   tier: daily
@@ -20881,9 +20989,13 @@ words:
   - main_list
 - word: indra
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Hindu deity Indra
 - word: nauru
   length: 5
   tier: daily
@@ -20932,9 +21044,13 @@ words:
   - main_list
 - word: alban
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Alban
 - word: basún
   length: 5
   tier: daily
@@ -21028,9 +21144,13 @@ words:
   - main_list
 - word: dania
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Denmark (Dania)
 - word: skjal
   length: 5
   tier: daily
@@ -22336,10 +22456,14 @@ words:
   - main_list
 - word: petra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Petra
 - word: futti
   length: 5
   tier: daily
@@ -22716,6 +22840,10 @@ words:
   frequency: 4.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - male given name Brand
 - word: nýtið
   length: 5
   tier: daily
@@ -23372,9 +23500,13 @@ words:
   - main_list
 - word: ragna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Ragna
 - word: glans
   length: 5
   tier: daily
@@ -23453,10 +23585,14 @@ words:
   - main_list
 - word: maria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Maria
 - word: ávenj
   length: 5
   tier: daily
@@ -23870,10 +24006,14 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Oskar
 - word: gákan
   length: 5
   tier: daily
@@ -23935,9 +24075,13 @@ words:
   - main_list
 - word: aleks
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Aleks/Alex
 - word: evjað
   length: 5
   tier: daily
@@ -25634,6 +25778,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun derived - Asian
 - word: fæhus
   length: 5
   tier: daily
@@ -25898,9 +26046,13 @@ words:
   - main_list
 - word: arnór
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Arnór
 - word: gudný
   length: 5
   tier: daily
@@ -28191,10 +28343,14 @@ words:
   - main_list
 - word: adolf
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Adolf
 - word: østum
   length: 5
   tier: daily
@@ -28317,9 +28473,13 @@ words:
   - main_list
 - word: agnar
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Agnar
 - word: meink
   length: 5
   tier: daily
@@ -29424,9 +29584,13 @@ words:
   - main_list
 - word: albin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Albin
 - word: blund
   length: 5
   tier: daily
@@ -29897,10 +30061,14 @@ words:
   - main_list
 - word: marta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Marta
 - word: várký
   length: 5
   tier: daily
@@ -30175,9 +30343,13 @@ words:
   - main_list
 - word: tórur
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Tórur
 - word: kvotu
   length: 5
   tier: daily
@@ -30921,9 +31093,13 @@ words:
   - main_list
 - word: svein
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Svein
 - word: døtti
   length: 5
   tier: daily
@@ -31848,9 +32024,13 @@ words:
   - main_list
 - word: irena
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Irena
 - word: ludað
   length: 5
   tier: daily

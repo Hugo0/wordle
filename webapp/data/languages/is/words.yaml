@@ -116,10 +116,14 @@ words:
   - main_list
 - word: magga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Magga)
 - word: drita
   length: 5
   tier: valid
@@ -440,10 +444,14 @@ words:
   - main_list
 - word: jakob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jakob)
 - word: espar
   length: 5
   tier: valid
@@ -1367,6 +1375,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Childish/informal word (doggy)
 - word: fástu
   length: 5
   tier: daily
@@ -1563,10 +1575,14 @@ words:
   - main_list
 - word: nanna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Nanna)
 - word: surðu
   length: 5
   tier: valid
@@ -1718,10 +1734,14 @@ words:
   - main_list
 - word: paris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Paris)
 - word: elgar
   length: 5
   tier: valid
@@ -1791,10 +1811,14 @@ words:
   - main_list
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Japan)
 - word: kæfum
   length: 5
   tier: valid
@@ -2289,6 +2313,10 @@ words:
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (major) but used in Icelandic
 - word: legri
   length: 5
   tier: valid
@@ -2352,10 +2380,14 @@ words:
   - main_list
 - word: bulls
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bulls team)
 - word: maron
   length: 5
   tier: valid
@@ -2457,10 +2489,14 @@ words:
   - main_list
 - word: mikki
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Mikki/Mickey)
 - word: reyfi
   length: 5
   tier: valid
@@ -2511,10 +2547,14 @@ words:
   - main_list
 - word: júlíu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Júlía, accusative)
 - word: sykra
   length: 5
   tier: valid
@@ -2604,10 +2644,14 @@ words:
   - main_list
 - word: gotti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Gotti)
 - word: sigur
   length: 5
   tier: daily
@@ -2658,10 +2702,14 @@ words:
   - main_list
 - word: silja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Silja)
 - word: sakið
   length: 5
   tier: valid
@@ -3286,10 +3334,14 @@ words:
   - main_list
 - word: raggi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Raggi)
 - word: mólok
   length: 5
   tier: valid
@@ -3643,10 +3695,14 @@ words:
   - main_list
 - word: hanks
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hanks)
 - word: óvíða
   length: 5
   tier: valid
@@ -3943,10 +3999,14 @@ words:
   - main_list
 - word: parís
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (París)
 - word: þegja
   length: 5
   tier: daily
@@ -4028,10 +4088,14 @@ words:
   - main_list
 - word: haítí
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Haiti)
 - word: hlykk
   length: 5
   tier: valid
@@ -4273,6 +4337,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (vodka, dative)
 - word: sjóað
   length: 5
   tier: valid
@@ -4372,10 +4440,14 @@ words:
   - main_list
 - word: pillu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (vagina, accusative)
 - word: kæmuð
   length: 5
   tier: valid
@@ -4633,9 +4705,13 @@ words:
   - main_list
 - word: bjána
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Bjáni, genitive)
 - word: sæból
   length: 5
   tier: valid
@@ -4659,10 +4735,14 @@ words:
   - main_list
 - word: extra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (extra)
 - word: neinu
   length: 5
   tier: daily
@@ -4873,10 +4953,14 @@ words:
   - main_list
 - word: krist
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Christ)
 - word: indra
   length: 5
   tier: valid
@@ -5331,6 +5415,10 @@ words:
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Úlfur) or common noun (wolf)
 - word: semdu
   length: 5
   tier: daily
@@ -6159,10 +6247,14 @@ words:
   - main_list
 - word: rakel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Rakel)
 - word: stæða
   length: 5
   tier: valid
@@ -6315,10 +6407,14 @@ words:
   scheduled_day: 1724
 - word: bengt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name Bengt)
 - word: biluð
   length: 5
   tier: daily
@@ -6992,10 +7088,14 @@ words:
   - main_list
 - word: davíð
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Davíð/David)
 - word: áróra
   length: 5
   tier: valid
@@ -7143,10 +7243,14 @@ words:
   - main_list
 - word: júlía
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Júlía)
 - word: litin
   length: 5
   tier: valid
@@ -7160,10 +7264,14 @@ words:
   - main_list
 - word: danni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Danni)
 - word: skokk
   length: 5
   tier: valid
@@ -7325,10 +7433,14 @@ words:
   - main_list
 - word: bessa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Bessa)
 - word: enska
   length: 5
   tier: daily
@@ -7422,10 +7534,14 @@ words:
   - main_list
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nepal)
 - word: tæmum
   length: 5
   tier: daily
@@ -7461,10 +7577,14 @@ words:
   - main_list
 - word: gréta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Gréta)
 - word: ötula
   length: 5
   tier: valid
@@ -8254,6 +8374,10 @@ words:
   frequency: 5.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Björn) but also common word (bear)
 - word: ykist
   length: 5
   tier: valid
@@ -9467,9 +9591,13 @@ words:
   - main_list
 - word: toggi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Toggi)
 - word: syrta
   length: 5
   tier: valid
@@ -9616,10 +9744,14 @@ words:
   - main_list
 - word: bubba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Bubbi, accusative)
 - word: kysum
   length: 5
   tier: valid
@@ -9731,10 +9863,14 @@ words:
   - main_list
 - word: pétri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Pétur, dative)
 - word: dofni
   length: 5
   tier: valid
@@ -9843,10 +9979,14 @@ words:
   - main_list
 - word: einar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Einar)
 - word: skútu
   length: 5
   tier: valid
@@ -10449,10 +10589,14 @@ words:
   - main_list
 - word: alger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Algeria/Algiers)
 - word: talin
   length: 5
   tier: daily
@@ -10683,9 +10827,13 @@ words:
   - main_list
 - word: runka
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (to masturbate)
 - word: þyrla
   length: 5
   tier: daily
@@ -10782,6 +10930,10 @@ words:
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (vodka)
 - word: geðli
   length: 5
   tier: valid
@@ -10837,10 +10989,14 @@ words:
   - main_list
 - word: búrma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Burma)
 - word: býðst
   length: 5
   tier: valid
@@ -11105,6 +11261,10 @@ words:
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Mildly vulgar (shit/dirt)
 - word: merks
   length: 5
   tier: valid
@@ -11388,10 +11548,14 @@ words:
   - main_list
 - word: hommi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially offensive slang (gay person)
 - word: sæðið
   length: 5
   tier: valid
@@ -11590,9 +11754,13 @@ words:
   - main_list
 - word: elenu
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Elena, accusative)
 - word: alæta
   length: 5
   tier: valid
@@ -11740,10 +11908,14 @@ words:
   - main_list
 - word: mikka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Mikka)
 - word: fiðri
   length: 5
   tier: valid
@@ -12479,10 +12651,14 @@ words:
   - main_list
 - word: sigga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Sigga)
 - word: komin
   length: 5
   tier: daily
@@ -12852,9 +13028,13 @@ words:
   - main_list
 - word: teddi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Teddy)
 - word: hélar
   length: 5
   tier: valid
@@ -12862,10 +13042,14 @@ words:
   - main_list
 - word: allan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name Allan)
 - word: millj
   length: 5
   tier: valid
@@ -13711,10 +13895,14 @@ words:
   - main_list
 - word: halli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Halli)
 - word: þrúðu
   length: 5
   tier: valid
@@ -14983,9 +15171,13 @@ words:
   - main_list
 - word: irena
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name Irena)
 - word: æfðar
   length: 5
   tier: valid
@@ -15095,10 +15287,14 @@ words:
   - main_list
 - word: lúkas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Lúkas)
 - word: fýldu
   length: 5
   tier: valid
@@ -15126,9 +15322,13 @@ words:
   - main_list
 - word: smaug
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Smaug, fictional character)
 - word: vórum
   length: 5
   tier: valid
@@ -15383,16 +15583,24 @@ words:
   - main_list
 - word: íslam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Islam)
 - word: maría
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name María)
 - word: betls
   length: 5
   tier: valid
@@ -15443,10 +15651,14 @@ words:
   - main_list
 - word: tommi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tommi)
 - word: fylki
   length: 5
   tier: daily
@@ -16260,10 +16472,14 @@ words:
   - main_list
 - word: massi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Massi)
 - word: vekið
   length: 5
   tier: valid
@@ -17299,10 +17515,14 @@ words:
   - main_list
 - word: bessi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Bessi)
 - word: holli
   length: 5
   tier: valid
@@ -17605,6 +17825,10 @@ words:
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Álfur) or common noun (elf)
 - word: grýtu
   length: 5
   tier: valid
@@ -17797,10 +18021,14 @@ words:
   - main_list
 - word: högni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Högni)
 - word: mottu
   length: 5
   tier: daily
@@ -19176,6 +19404,10 @@ words:
   frequency: 5.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Helgi) or common noun (holiday)
 - word: spíru
   length: 5
   tier: valid
@@ -19239,10 +19471,14 @@ words:
   - main_list
 - word: rómeó
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Romeo)
 - word: kátar
   length: 5
   tier: valid
@@ -19922,9 +20158,13 @@ words:
   - main_list
 - word: kunta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar/offensive word
 - word: vespu
   length: 5
   tier: valid
@@ -20173,10 +20413,14 @@ words:
   - main_list
 - word: pálmi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Pálmi)
 - word: götun
   length: 5
   tier: valid
@@ -20785,10 +21029,14 @@ words:
   - main_list
 - word: úlfar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Úlfar)
 - word: eykst
   length: 5
   tier: daily
@@ -21689,10 +21937,14 @@ words:
   - main_list
 - word: gimli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gimli, from mythology/fiction)
 - word: gullu
   length: 5
   tier: valid
@@ -22179,10 +22431,14 @@ words:
   - main_list
 - word: oddur
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Oddur)
 - word: másið
   length: 5
   tier: valid
@@ -22190,10 +22446,14 @@ words:
   - main_list
 - word: klára
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Klára)
 - word: könum
   length: 5
   tier: valid
@@ -23070,10 +23330,14 @@ words:
   - main_list
 - word: jesus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Jesus)
 - word: mædda
   length: 5
   tier: valid
@@ -23235,9 +23499,13 @@ words:
   - main_list
 - word: tuddi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tuddi)
   history:
   - 1715
   scheduled_day: 1715
@@ -23383,9 +23651,13 @@ words:
   - main_list
 - word: hassi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Hassi)
 - word: ornað
   length: 5
   tier: valid
@@ -23514,10 +23786,14 @@ words:
   - main_list
 - word: kiddi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Kiddi)
 - word: örófi
   length: 5
   tier: valid
@@ -25013,10 +25289,14 @@ words:
   - main_list
 - word: embla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Embla, from Norse mythology)
 - word: orgin
   length: 5
   tier: valid
@@ -25165,6 +25445,10 @@ words:
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Lilja) or common word (lily)
 - word: hæðum
   length: 5
   tier: valid
@@ -25218,16 +25502,24 @@ words:
   - main_list
 - word: sally
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name Sally)
 - word: metta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Metta)
 - word: spáði
   length: 5
   tier: valid
@@ -25340,10 +25632,14 @@ words:
   - main_list
 - word: mekka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Mecca)
 - word: mílur
   length: 5
   tier: daily
@@ -26164,9 +26460,13 @@ words:
   - main_list
 - word: kjána
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Kjáni, accusative)
 - word: nísti
   length: 5
   tier: valid
@@ -26344,10 +26644,14 @@ words:
   - main_list
 - word: elvar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Elvar)
 - word: tóman
   length: 5
   tier: valid
@@ -26669,10 +26973,14 @@ words:
   - main_list
 - word: sonja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Sonja)
 - word: sviðu
   length: 5
   tier: valid
@@ -27252,10 +27560,14 @@ words:
   - main_list
 - word: tobbi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tobbi)
 - word: kukli
   length: 5
   tier: valid
@@ -27526,9 +27838,13 @@ words:
   - main_list
 - word: rússi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Russian person) or nickname
   history:
   - 1696
   scheduled_day: 1696
@@ -28105,10 +28421,14 @@ words:
   - main_list
 - word: ágúst
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Ágúst)
   history:
   - 1701
   scheduled_day: 1701
@@ -28471,10 +28791,14 @@ words:
   - main_list
 - word: torfi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Torfi)
 - word: ákæru
   length: 5
   tier: daily
@@ -29137,10 +29461,14 @@ words:
   - main_list
 - word: títan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Titan)
 - word: rjúfa
   length: 5
   tier: daily
@@ -29259,6 +29587,10 @@ words:
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Helga, accusative) or adjective (holy)
 - word: lyngi
   length: 5
   tier: valid
@@ -30788,10 +31120,14 @@ words:
   - main_list
 - word: júdas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Judas)
 - word: jöfnu
   length: 5
   tier: daily
@@ -30805,9 +31141,13 @@ words:
   - main_list
 - word: simba
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Simba)
 - word: dýjum
   length: 5
   tier: valid
@@ -31003,10 +31343,14 @@ words:
   - main_list
 - word: ennis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ennis)
 - word: kátum
   length: 5
   tier: valid
@@ -31362,10 +31706,14 @@ words:
   - main_list
 - word: typpi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (penis)
 - word: óháðu
   length: 5
   tier: valid
@@ -31761,6 +32109,10 @@ words:
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Björk) but also common word (birch)
 - word: reifa
   length: 5
   tier: valid
@@ -32709,10 +33061,14 @@ words:
   - main_list
 - word: venus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Venus)
 - word: fagra
   length: 5
   tier: daily
@@ -32756,6 +33112,10 @@ words:
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (whisky)
 - word: auðna
   length: 5
   tier: valid
@@ -33622,9 +33982,13 @@ words:
   - main_list
 - word: bögga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Bögga)
 - word: migum
   length: 5
   tier: valid
@@ -33816,10 +34180,14 @@ words:
   - main_list
 - word: pétur
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Pétur)
 - word: sýrðu
   length: 5
   tier: valid
@@ -34017,10 +34385,14 @@ words:
   - main_list
 - word: jeppi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jeppi)
 - word: notar
   length: 5
   tier: daily
@@ -34097,10 +34469,14 @@ words:
   - main_list
 - word: tíbet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tibet)
 - word: amper
   length: 5
   tier: valid
@@ -34512,6 +34888,10 @@ words:
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword (smart)
 - word: lóðir
   length: 5
   tier: valid
@@ -34810,10 +35190,14 @@ words:
   - main_list
 - word: arnór
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Icelandic name Arnór)
 - word: prósa
   length: 5
   tier: valid
@@ -35012,10 +35396,14 @@ words:
   - main_list
 - word: jenni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name Jenni)
 - word: skarf
   length: 5
   tier: valid
@@ -35093,10 +35481,14 @@ words:
   - main_list
 - word: bubbi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Bubbi)
 - word: rörum
   length: 5
   tier: valid
@@ -35347,9 +35739,13 @@ words:
   - main_list
 - word: gubba
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Gubbi, accusative) or slang
 - word: verga
   length: 5
   tier: valid
@@ -35476,10 +35872,14 @@ words:
   - main_list
 - word: búdda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Buddha)
 - word: tjóði
   length: 5
   tier: valid
@@ -35510,9 +35910,13 @@ words:
   - main_list
 - word: lævís
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign brand name (Levi's)
 - word: gráðu
   length: 5
   tier: daily
@@ -36232,6 +36636,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (cougar)
 - word: boðuð
   length: 5
   tier: valid
@@ -36441,10 +36849,14 @@ words:
   - main_list
 - word: lalli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Lalli)
 - word: bullu
   length: 5
   tier: valid
@@ -36924,10 +37336,14 @@ words:
   - main_list
 - word: grétu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Gréta, accusative)
 - word: neins
   length: 5
   tier: daily
@@ -36957,10 +37373,14 @@ words:
   - main_list
 - word: texas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Texas)
 - word: rakna
   length: 5
   tier: valid
@@ -37111,10 +37531,14 @@ words:
   - main_list
 - word: aires
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Buenos Aires)
 - word: tóbak
   length: 5
   tier: valid
@@ -37386,10 +37810,14 @@ words:
   - main_list
 - word: jemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Yemen)
 - word: piano
   length: 5
   tier: valid
@@ -38073,9 +38501,13 @@ words:
   - main_list
 - word: gossa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Gossa)
 - word: amors
   length: 5
   tier: valid
@@ -39597,10 +40029,14 @@ words:
   - main_list
 - word: north
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word, not Icelandic
 - word: útséð
   length: 5
   tier: valid
@@ -40399,10 +40835,14 @@ words:
   - main_list
 - word: díana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Díana)
 - word: forum
   length: 5
   tier: valid
@@ -40665,10 +41105,14 @@ words:
   - main_list
 - word: siggi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Siggi)
 - word: karsi
   length: 5
   tier: valid
@@ -41202,9 +41646,13 @@ words:
   - main_list
 - word: kelli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (name Kelly)
 - word: bægði
   length: 5
   tier: valid
@@ -41528,10 +41976,14 @@ words:
   - main_list
 - word: símon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Símon)
 - word: nafla
   length: 5
   tier: daily
@@ -41640,6 +42092,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign proper noun (Sherry)
 - word: hylli
   length: 5
   tier: daily
@@ -41886,9 +42342,13 @@ words:
   - main_list
 - word: totta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Totta)
 - word: rappa
   length: 5
   tier: daily
@@ -43009,16 +43469,24 @@ words:
   - main_list
 - word: pissa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (to piss)
 - word: jesús
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jesús)
 - word: hásri
   length: 5
   tier: valid
@@ -43408,9 +43876,13 @@ words:
   - main_list
 - word: forks
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Forks)
 - word: rakni
   length: 5
   tier: valid
@@ -43585,10 +44057,14 @@ words:
   - main_list
 - word: sjeik
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (sheik)
 - word: böðuð
   length: 5
   tier: valid
@@ -43851,10 +44327,14 @@ words:
   - main_list
 - word: baggi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Baggi)
 - word: linur
   length: 5
   tier: daily
@@ -44118,10 +44598,14 @@ words:
   - main_list
 - word: georg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Georg)
 - word: notað
   length: 5
   tier: daily

@@ -235,9 +235,13 @@ words:
   - main_list
 - word: λόρδε
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (lord, vocative)
 - word: κοιτά
   length: 5
   tier: daily
@@ -390,10 +394,14 @@ words:
   - main_list
 - word: φιλίπ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Philip)
 - word: κώνου
   length: 5
   tier: valid
@@ -419,10 +427,14 @@ words:
   - main_list
 - word: θιβέτ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tibet)
 - word: πένες
   length: 5
   tier: daily
@@ -504,10 +516,14 @@ words:
   - main_list
 - word: κάρολ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Carol)
 - word: δαλάι
   length: 5
   tier: valid
@@ -611,10 +627,14 @@ words:
   - main_list
 - word: μόντε
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Monte)
 - word: ψόγων
   length: 5
   tier: valid
@@ -1314,10 +1334,14 @@ words:
   - main_list
 - word: ίγκορ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Igor)
 - word: θόριο
   length: 5
   tier: valid
@@ -1378,10 +1402,14 @@ words:
   - main_list
 - word: στάιν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Stein)
 - word: έξεων
   length: 5
   tier: valid
@@ -1431,9 +1459,13 @@ words:
   - main_list
 - word: λέμον
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lemon)
 - word: άγαμε
   length: 5
   tier: valid
@@ -1493,6 +1525,10 @@ words:
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign onomatopoeia (boom)
 - word: λοκρέ
   length: 5
   tier: valid
@@ -1547,10 +1583,14 @@ words:
   - main_list
 - word: πάολο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Paolo)
 - word: αριθμ
   length: 5
   tier: valid
@@ -1743,10 +1783,14 @@ words:
   - main_list
 - word: φίσερ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Fisher)
 - word: έλκον
   length: 5
   tier: valid
@@ -2270,10 +2314,14 @@ words:
   - main_list
 - word: έκτωρ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hector)
 - word: φέστα
   length: 5
   tier: valid
@@ -2630,10 +2678,14 @@ words:
   - main_list
 - word: αλάνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Alana)
 - word: δίκες
   length: 5
   tier: daily
@@ -2698,10 +2750,14 @@ words:
   - main_list
 - word: τόκιο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tokyo)
 - word: ζίτσα
   length: 5
   tier: valid
@@ -2861,10 +2917,14 @@ words:
   - main_list
 - word: λίντα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Linda)
 - word: ιώδιο
   length: 5
   tier: valid
@@ -2930,10 +2990,14 @@ words:
   - main_list
 - word: μάικλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Michael)
 - word: σφίγξ
   length: 5
   tier: valid
@@ -3530,10 +3594,14 @@ words:
   - main_list
 - word: έλτον
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Elton)
 - word: εδική
   length: 5
   tier: valid
@@ -3750,6 +3818,10 @@ words:
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (snob)
 - word: σπόρε
   length: 5
   tier: valid
@@ -3826,10 +3898,14 @@ words:
   - main_list
 - word: ιησού
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Jesus)
 - word: ξυρών
   length: 5
   tier: valid
@@ -4382,10 +4458,14 @@ words:
   - main_list
 - word: διάνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Diana)
 - word: κενοί
   length: 5
   tier: valid
@@ -4409,10 +4489,14 @@ words:
   - main_list
 - word: όσκαρ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Oscar)
 - word: μόνου
   length: 5
   tier: valid
@@ -4534,10 +4618,14 @@ words:
   - main_list
 - word: τσαντ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Chad)
 - word: ρώγας
   length: 5
   tier: valid
@@ -4603,10 +4691,14 @@ words:
   - main_list
 - word: άντον
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Anton)
 - word: χάφτω
   length: 5
   tier: valid
@@ -4649,6 +4741,10 @@ words:
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (cliche)
 - word: όλμων
   length: 5
   tier: valid
@@ -4939,16 +5035,24 @@ words:
   - main_list
 - word: λούκα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Luca)
 - word: μέρφι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Murphy)
 - word: χασών
   length: 5
   tier: valid
@@ -5253,9 +5357,13 @@ words:
   - main_list
 - word: άιρις
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Iris/Iris)
 - word: ξαβιέ
   length: 5
   tier: valid
@@ -5306,9 +5414,13 @@ words:
   - main_list
 - word: σούζι
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Suzie)
 - word: θηρίο
   length: 5
   tier: daily
@@ -5354,10 +5466,14 @@ words:
   - main_list
 - word: χομπς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hobbs)
 - word: ινίων
   length: 5
   tier: valid
@@ -5625,10 +5741,14 @@ words:
   - main_list
 - word: οχάιο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ohio)
 - word: ξελέν
   length: 5
   tier: valid
@@ -5667,9 +5787,13 @@ words:
   - main_list
 - word: αράπη
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially offensive term (Arab, pejorative use)
 - word: γερού
   length: 5
   tier: valid
@@ -5867,10 +5991,14 @@ words:
   - main_list
 - word: μουνί
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (female genitalia)
 - word: λωτού
   length: 5
   tier: valid
@@ -5909,10 +6037,14 @@ words:
   - main_list
 - word: μαξίμ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Maxim)
 - word: δώρας
   length: 5
   tier: valid
@@ -5941,10 +6073,14 @@ words:
   - main_list
 - word: μπλου
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word (blue)
 - word: κρότε
   length: 5
   tier: valid
@@ -6086,10 +6222,14 @@ words:
   - main_list
 - word: πόρσε
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign brand name (Porsche)
 - word: όμορά
   length: 5
   tier: valid
@@ -6107,9 +6247,13 @@ words:
   - main_list
 - word: κέιλι
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kaylee)
 - word: θίγου
   length: 5
   tier: valid
@@ -6252,10 +6396,14 @@ words:
   - main_list
 - word: γκριν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Green)
 - word: ταγών
   length: 5
   tier: valid
@@ -6282,10 +6430,14 @@ words:
   - main_list
 - word: έλενα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Elena)
 - word: σάμων
   length: 5
   tier: valid
@@ -6876,10 +7028,14 @@ words:
   - main_list
 - word: ντόνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Donna)
 - word: μισός
   length: 5
   tier: daily
@@ -7083,10 +7239,14 @@ words:
   scheduled_day: 1720
 - word: σάντα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Santa)
 - word: πιάσω
   length: 5
   tier: daily
@@ -7411,9 +7571,13 @@ words:
   - main_list
 - word: πέπερ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Pepper)
 - word: βοερέ
   length: 5
   tier: valid
@@ -7877,9 +8041,13 @@ words:
   - main_list
 - word: τζίνο
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Gino)
 - word: βόιδι
   length: 5
   tier: valid
@@ -8067,10 +8235,14 @@ words:
   - main_list
 - word: χέζει
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (to defecate)
 - word: λεπτό
   length: 5
   tier: daily
@@ -8821,10 +8993,14 @@ words:
   - main_list
 - word: γαμάς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (to fuck, 2nd person)
 - word: όσους
   length: 5
   tier: daily
@@ -8949,9 +9125,13 @@ words:
   - main_list
 - word: νέγρο
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially offensive term (negro)
 - word: έσυρε
   length: 5
   tier: daily
@@ -9157,6 +9337,10 @@ words:
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (comic)
 - word: μύθος
   length: 5
   tier: daily
@@ -9202,10 +9386,14 @@ words:
   - main_list
 - word: μπλακ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Black)
   history:
   - 1724
   scheduled_day: 1724
@@ -9403,10 +9591,14 @@ words:
   - main_list
 - word: βυζιά
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (breasts, slang)
 - word: πίεση
   length: 5
   tier: daily
@@ -9487,6 +9679,10 @@ words:
   frequency: 4.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign proper noun (Andrea) — but could be accusative of 'man'
 - word: φάρσα
   length: 5
   tier: daily
@@ -9547,10 +9743,14 @@ words:
   - main_list
 - word: γκραν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word (Gran/Grand)
 - word: ξηροί
   length: 5
   tier: valid
@@ -9715,10 +9915,14 @@ words:
   - main_list
 - word: ιούδα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Judas)
 - word: τρέχω
   length: 5
   tier: daily
@@ -10148,10 +10352,14 @@ words:
   - main_list
 - word: πράις
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Price)
 - word: άρπας
   length: 5
   tier: valid
@@ -10180,10 +10388,14 @@ words:
   - main_list
 - word: φίλιπ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Philip)
 - word: γάγαι
   length: 5
   tier: valid
@@ -10211,10 +10423,14 @@ words:
   - main_list
 - word: μπόιλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Boyle)
 - word: δίφρο
   length: 5
   tier: valid
@@ -10227,9 +10443,13 @@ words:
   - main_list
 - word: τσίκο
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Chico)
 - word: βίωση
   length: 5
   tier: valid
@@ -10276,10 +10496,14 @@ words:
   - main_list
 - word: μάριο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Mario)
 - word: θερμό
   length: 5
   tier: daily
@@ -10305,10 +10529,14 @@ words:
   - main_list
 - word: μωυσή
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Moses)
 - word: ικρία
   length: 5
   tier: valid
@@ -10371,10 +10599,14 @@ words:
   - main_list
 - word: μάρκο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Marco)
 - word: χάσκε
   length: 5
   tier: valid
@@ -10915,15 +11147,23 @@ words:
   - main_list
 - word: υόρκη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (York)
 - word: τόνικ
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (tonic)
 - word: εμβέρ
   length: 5
   tier: valid
@@ -11220,10 +11460,14 @@ words:
   - main_list
 - word: αλίκη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Aliki)
 - word: κάκια
   length: 5
   tier: valid
@@ -11236,10 +11480,14 @@ words:
   - main_list
 - word: τανκς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (tanks)
 - word: δρόγη
   length: 5
   tier: valid
@@ -11300,10 +11548,14 @@ words:
   - main_list
 - word: άστον
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Aston)
 - word: ελάτε
   length: 5
   tier: daily
@@ -11451,10 +11703,14 @@ words:
   - main_list
 - word: νόβακ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Novak)
 - word: ντοσέ
   length: 5
   tier: valid
@@ -11589,10 +11845,14 @@ words:
   - main_list
 - word: τζόις
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Joyce)
 - word: υάδες
   length: 5
   tier: valid
@@ -11791,10 +12051,14 @@ words:
   - main_list
 - word: βίασε
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sensitive word (raped, verb form)
 - word: γριές
   length: 5
   tier: daily
@@ -12599,10 +12863,14 @@ words:
   - main_list
 - word: σάλεμ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Salem)
 - word: βιζών
   length: 5
   tier: valid
@@ -12888,10 +13156,14 @@ words:
   - main_list
 - word: σταρκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Stark)
 - word: άξενο
   length: 5
   tier: valid
@@ -12966,9 +13238,13 @@ words:
   - main_list
 - word: φλόρα
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Flora)
 - word: απτών
   length: 5
   tier: valid
@@ -12976,10 +13252,14 @@ words:
   - main_list
 - word: μάρτα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Marta)
 - word: εξώλη
   length: 5
   tier: valid
@@ -13260,10 +13540,14 @@ words:
   - main_list
 - word: τζίνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Gina)
 - word: σκύλο
   length: 5
   tier: daily
@@ -13384,16 +13668,24 @@ words:
   - main_list
 - word: ανίτα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Anita)
 - word: γκλεν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Glen)
 - word: κομψό
   length: 5
   tier: daily
@@ -13656,10 +13948,14 @@ words:
   - main_list
 - word: κόστα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Costa)
 - word: ήρεμε
   length: 5
   tier: valid
@@ -13729,10 +14025,14 @@ words:
   - main_list
 - word: δράκο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Draco)
 - word: βόριο
   length: 5
   tier: valid
@@ -13929,6 +14229,10 @@ words:
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be common word (dame/checkers) in Greek
 - word: αίνοι
   length: 5
   tier: valid
@@ -13983,10 +14287,14 @@ words:
   - main_list
 - word: κάιρο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cairo)
 - word: δεξιέ
   length: 5
   tier: valid
@@ -14062,6 +14370,10 @@ words:
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (spray)
 - word: κολλώ
   length: 5
   tier: valid
@@ -14088,6 +14400,10 @@ words:
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (shorts)
 - word: μιαρό
   length: 5
   tier: valid
@@ -14173,10 +14489,14 @@ words:
   - main_list
 - word: λόρεν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lauren)
 - word: ισάζω
   length: 5
   tier: valid
@@ -14252,10 +14572,14 @@ words:
   - main_list
 - word: ντίνο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dino)
 - word: είδες
   length: 5
   tier: daily
@@ -14280,10 +14604,14 @@ words:
   - main_list
 - word: κάρλο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Carlo)
 - word: σαγής
   length: 5
   tier: valid
@@ -14445,9 +14773,13 @@ words:
   - main_list
 - word: άιζακ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Isaac)
 - word: δαρτέ
   length: 5
   tier: valid
@@ -14482,6 +14814,10 @@ words:
   frequency: 4.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (name Sofia) - but also common noun 'wisdom'
 - word: έπλεε
   length: 5
   tier: valid
@@ -14655,9 +14991,13 @@ words:
   - main_list
 - word: γουόν
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Won)
 - word: κάσιο
   length: 5
   tier: valid
@@ -14702,10 +15042,14 @@ words:
   - main_list
 - word: μπόνι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bonnie)
 - word: βάτων
   length: 5
   tier: valid
@@ -15219,10 +15563,14 @@ words:
   - main_list
 - word: λονγκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Long)
 - word: άξιοι
   length: 5
   tier: valid
@@ -15284,10 +15632,14 @@ words:
   - main_list
 - word: αντρέ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (André)
 - word: ολικέ
   length: 5
   tier: valid
@@ -15458,6 +15810,10 @@ words:
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Common noun (laurel) but also proper noun (Daphne)
 - word: κύψει
   length: 5
   tier: valid
@@ -15565,10 +15921,14 @@ words:
   - main_list
 - word: ιωσήφ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Joseph)
   history:
   - 1715
   scheduled_day: 1715
@@ -15594,16 +15954,24 @@ words:
   - main_list
 - word: μαίρη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Mary)
 - word: σκατό
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (shit)
 - word: χίλια
   length: 5
   tier: daily
@@ -15622,10 +15990,14 @@ words:
   - main_list
 - word: όστιν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Austin)
 - word: πιέτα
   length: 5
   tier: valid
@@ -15803,10 +16175,14 @@ words:
   - main_list
 - word: μόρις
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Morris)
 - word: θηρών
   length: 5
   tier: valid
@@ -16055,10 +16431,14 @@ words:
   - main_list
 - word: φρανκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Frank)
 - word: έξτρα
   length: 5
   tier: daily
@@ -16186,10 +16566,14 @@ words:
   - main_list
 - word: φοίβη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Phoebe)
 - word: σαρλώ
   length: 5
   tier: valid
@@ -16245,10 +16629,14 @@ words:
   - main_list
 - word: λουίς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Louis)
 - word: αρωγό
   length: 5
   tier: valid
@@ -16437,10 +16825,14 @@ words:
   - main_list
 - word: χονγκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hong)
 - word: βίζες
   length: 5
   tier: valid
@@ -16676,9 +17068,13 @@ words:
   - main_list
 - word: πόουπ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Pope)
 - word: ψυχών
   length: 5
   tier: daily
@@ -16840,10 +17236,14 @@ words:
   - main_list
 - word: ελένη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Eleni)
 - word: ευαγή
   length: 5
   tier: valid
@@ -16919,10 +17319,14 @@ words:
   - main_list
 - word: χουάν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Juan)
 - word: βρύση
   length: 5
   tier: daily
@@ -17197,9 +17601,13 @@ words:
   - main_list
 - word: γκριρ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Greer)
 - word: αμάτι
   length: 5
   tier: valid
@@ -17650,10 +18058,14 @@ words:
   - main_list
 - word: λούνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Luna)
 - word: ντους
   length: 5
   tier: daily
@@ -17756,9 +18168,13 @@ words:
   - main_list
 - word: ντόιλ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Doyle)
 - word: χιώτη
   length: 5
   tier: valid
@@ -17836,10 +18252,14 @@ words:
   - main_list
 - word: δανία
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Denmark)
 - word: άψητα
   length: 5
   tier: valid
@@ -18170,10 +18590,14 @@ words:
   - main_list
 - word: περού
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Peru)
 - word: έτους
   length: 5
   tier: daily
@@ -18197,10 +18621,14 @@ words:
   - main_list
 - word: πέιτζ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Paige)
 - word: μαβής
   length: 5
   tier: valid
@@ -18458,10 +18886,14 @@ words:
   - main_list
 - word: ραμόν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ramon)
 - word: γοφοί
   length: 5
   tier: valid
@@ -18749,10 +19181,14 @@ words:
   - main_list
 - word: χόρχε
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jorge)
 - word: λόγον
   length: 5
   tier: valid
@@ -18819,10 +19255,14 @@ words:
   - main_list
 - word: κάτια
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Katia)
 - word: ψελλά
   length: 5
   tier: valid
@@ -19030,10 +19470,14 @@ words:
   - main_list
 - word: λόιντ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lloyd)
 - word: άκατε
   length: 5
   tier: valid
@@ -19395,6 +19839,10 @@ words:
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Paula) or common word (dash/pause)
 - word: φυσάς
   length: 5
   tier: valid
@@ -19537,10 +19985,14 @@ words:
   - main_list
 - word: πινγκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word/proper noun (ping)
 - word: διήγε
   length: 5
   tier: valid
@@ -19674,10 +20126,14 @@ words:
   - main_list
 - word: σκατά
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (shit, plural)
 - word: άρχει
   length: 5
   tier: valid
@@ -19685,10 +20141,14 @@ words:
   - main_list
 - word: ααρών
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Aaron)
 - word: γκαβό
   length: 5
   tier: valid
@@ -19864,10 +20324,14 @@ words:
   - main_list
 - word: φήλιξ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Felix, alt spelling)
 - word: μάριε
   length: 5
   tier: valid
@@ -19971,10 +20435,14 @@ words:
   - main_list
 - word: μπένι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Benny)
 - word: άρεως
   length: 5
   tier: valid
@@ -20005,10 +20473,14 @@ words:
   - main_list
 - word: κλάιν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Klein)
 - word: ρεύσω
   length: 5
   tier: valid
@@ -20130,10 +20602,14 @@ words:
   - main_list
 - word: λιντς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lynch/Linz)
 - word: κρύβε
   length: 5
   tier: valid
@@ -20260,10 +20736,14 @@ words:
   - main_list
 - word: ντόρα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dora)
 - word: ινάτι
   length: 5
   tier: valid
@@ -21236,10 +21716,14 @@ words:
   - main_list
 - word: νόρμα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Norma)
 - word: ραΐζω
   length: 5
   tier: valid
@@ -21622,10 +22106,14 @@ words:
   - main_list
 - word: κορέα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Korea)
 - word: ωρύει
   length: 5
   tier: valid
@@ -22018,10 +22506,14 @@ words:
   - main_list
 - word: αθήνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Athens)
 - word: τρέφω
   length: 5
   tier: daily
@@ -22055,10 +22547,14 @@ words:
   - main_list
 - word: μάντι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Mandy)
 - word: νόησε
   length: 5
   tier: valid
@@ -22198,10 +22694,14 @@ words:
   - main_list
 - word: λόρδο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (lord, accusative)
 - word: βάζων
   length: 5
   tier: valid
@@ -22645,9 +23145,13 @@ words:
   - main_list
 - word: χαφιέ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Javier)
 - word: θυμοί
   length: 5
   tier: valid
@@ -22676,10 +23180,14 @@ words:
   - main_list
 - word: σιέρα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Sierra)
 - word: όσιας
   length: 5
   tier: valid
@@ -22817,6 +23325,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (lotto)
 - word: άρκτε
   length: 5
   tier: valid
@@ -23008,16 +23520,24 @@ words:
   - main_list
 - word: σεούλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Seoul)
 - word: ρώμης
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Rome, genitive)
 - word: γέρου
   length: 5
   tier: daily
@@ -23111,9 +23631,13 @@ words:
   - main_list
 - word: ίντιθ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Edith)
 - word: σκόρε
   length: 5
   tier: valid
@@ -23231,10 +23755,14 @@ words:
   - main_list
 - word: μπιτς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word (beach/bitch), inappropriate
 - word: τρωτό
   length: 5
   tier: valid
@@ -23323,6 +23851,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (taco) — but also could be Greek word
   history:
   - 1710
   scheduled_day: 1710
@@ -23539,10 +24071,14 @@ words:
   - main_list
 - word: ραούλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Raoul)
 - word: κάπρο
   length: 5
   tier: valid
@@ -23675,10 +24211,14 @@ words:
   - main_list
 - word: ισλάμ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Islam)
 - word: χλωρό
   length: 5
   tier: valid
@@ -24053,11 +24593,19 @@ words:
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be proper noun (Pedro/Petro) or 'stone' accusative
 - word: κολέτ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Colette)
 - word: φάσκω
   length: 5
   tier: valid
@@ -24116,10 +24664,14 @@ words:
   - main_list
 - word: ρίτσι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ritchie)
 - word: χυμός
   length: 5
   tier: daily
@@ -24175,9 +24727,13 @@ words:
   - main_list
 - word: κρέιν
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Crane)
 - word: ψαρός
   length: 5
   tier: valid
@@ -24308,10 +24864,14 @@ words:
   - main_list
 - word: κρουζ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cruz)
 - word: αδρές
   length: 5
   tier: valid
@@ -24454,10 +25014,14 @@ words:
   - main_list
 - word: καύλα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (horniness)
 - word: έλαφε
   length: 5
   tier: valid
@@ -24908,10 +25472,14 @@ words:
   - main_list
 - word: κέλερ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Keller)
 - word: ζάχος
   length: 5
   tier: valid
@@ -25038,10 +25606,14 @@ words:
   - main_list
 - word: έλβις
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Elvis)
 - word: ξηράς
   length: 5
   tier: valid
@@ -25196,9 +25768,13 @@ words:
   - main_list
 - word: πέγκι
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Peggy)
 - word: λόγγο
   length: 5
   tier: valid
@@ -25211,9 +25787,13 @@ words:
   - main_list
 - word: λόρελ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Laurel)
 - word: καιρώ
   length: 5
   tier: daily
@@ -25762,9 +26342,13 @@ words:
   - main_list
 - word: φιντς
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Finch)
 - word: ξινές
   length: 5
   tier: valid
@@ -25820,10 +26404,14 @@ words:
   - main_list
 - word: ναόμι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Naomi)
 - word: ζέατε
   length: 5
   tier: valid
@@ -26245,6 +26833,10 @@ words:
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (sketch)
 - word: νανάς
   length: 5
   tier: valid
@@ -26703,6 +27295,10 @@ words:
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (club)
 - word: λύπην
   length: 5
   tier: valid
@@ -27068,10 +27664,14 @@ words:
   - main_list
 - word: άνταμ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Adam)
 - word: τρανή
   length: 5
   tier: valid
@@ -27079,10 +27679,14 @@ words:
   - main_list
 - word: λυδία
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Lydia)
 - word: αλκές
   length: 5
   tier: valid
@@ -27090,10 +27694,14 @@ words:
   - main_list
 - word: όρσον
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Orson)
 - word: κυτίο
   length: 5
   tier: valid
@@ -27352,10 +27960,14 @@ words:
   - main_list
 - word: αλλάχ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Allah)
   history:
   - 1706
   scheduled_day: 1706
@@ -28104,10 +28716,14 @@ words:
   - main_list
 - word: μινγκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ming)
   history:
   - 1703
   scheduled_day: 1703
@@ -28277,10 +28893,14 @@ words:
   - main_list
 - word: ράντι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Randy)
 - word: ζεύκι
   length: 5
   tier: valid
@@ -28340,10 +28960,14 @@ words:
   - main_list
 - word: μπάρι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Barry)
 - word: ρόχθε
   length: 5
   tier: valid
@@ -28366,10 +28990,14 @@ words:
   - main_list
 - word: μάρθα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Martha)
 - word: ηβική
   length: 5
   tier: valid
@@ -28537,10 +29165,14 @@ words:
   - main_list
 - word: κλιντ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Clint)
   history:
   - 1682
   scheduled_day: 1682
@@ -28646,10 +29278,14 @@ words:
   - main_list
 - word: πέους
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit term (penis, genitive)
 - word: κάλως
   length: 5
   tier: valid
@@ -28880,10 +29516,14 @@ words:
   - main_list
 - word: έμιλι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Emily)
 - word: ναδίρ
   length: 5
   tier: valid
@@ -28976,10 +29616,14 @@ words:
   - main_list
 - word: χαβάη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hawaii)
 - word: πιοτό
   length: 5
   tier: daily
@@ -29138,10 +29782,14 @@ words:
   - main_list
 - word: λανγκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lang)
 - word: ογρές
   length: 5
   tier: valid
@@ -29159,10 +29807,14 @@ words:
   - main_list
 - word: ρινγκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (ring)
 - word: ακμών
   length: 5
   tier: valid
@@ -29320,10 +29972,14 @@ words:
   - main_list
 - word: κούβα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cuba)
 - word: υγρές
   length: 5
   tier: valid
@@ -29386,10 +30042,14 @@ words:
   - main_list
 - word: κέιτζ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cage)
 - word: ντίας
   length: 5
   tier: valid
@@ -29477,10 +30137,14 @@ words:
   - main_list
 - word: πάρις
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Paris)
 - word: παλτά
   length: 5
   tier: daily
@@ -29699,10 +30363,14 @@ words:
   - main_list
 - word: αβάνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Havana)
 - word: παύση
   length: 5
   tier: daily
@@ -29725,6 +30393,10 @@ words:
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Frenchman) - could be common adjective
 - word: πάισα
   length: 5
   tier: valid
@@ -29810,10 +30482,14 @@ words:
   - main_list
 - word: μαρία
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Maria)
 - word: χαράς
   length: 5
   tier: daily
@@ -29863,9 +30539,13 @@ words:
   - main_list
 - word: μορίν
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Maureen)
 - word: ταγκά
   length: 5
   tier: valid
@@ -30100,10 +30780,14 @@ words:
   - main_list
 - word: κάρλα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Karla)
 - word: όψεων
   length: 5
   tier: valid
@@ -30186,10 +30870,14 @@ words:
   - main_list
 - word: ινδία
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (India)
 - word: ρόδος
   length: 5
   tier: valid
@@ -30231,16 +30919,24 @@ words:
   - main_list
 - word: τάλιν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tallinn)
 - word: μπους
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bush/Booth)
 - word: ωραίε
   length: 5
   tier: valid
@@ -30248,10 +30944,14 @@ words:
   - main_list
 - word: γουντ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Wood)
 - word: ασεβή
   length: 5
   tier: valid
@@ -30530,10 +31230,14 @@ words:
   - main_list
 - word: σανέλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign brand name (Chanel)
 - word: λίμας
   length: 5
   tier: valid
@@ -30697,10 +31401,14 @@ words:
   - main_list
 - word: τζίνι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jeanie)
 - word: ρήσου
   length: 5
   tier: valid
@@ -31238,10 +31946,14 @@ words:
   - main_list
 - word: κώλος
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (ass)
 - word: έθυσε
   length: 5
   tier: valid
@@ -31776,10 +32488,14 @@ words:
   - main_list
 - word: σιάτλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Seattle)
 - word: πνίγε
   length: 5
   tier: valid
@@ -31931,10 +32647,14 @@ words:
   - main_list
 - word: χόουπ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hope)
 - word: τσάρε
   length: 5
   tier: valid
@@ -31967,10 +32687,14 @@ words:
   - main_list
 - word: κλάρα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Clara/Klara)
 - word: κλιτά
   length: 5
   tier: valid
@@ -32004,10 +32728,14 @@ words:
   - main_list
 - word: χολμς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Holmes)
 - word: άνοια
   length: 5
   tier: daily
@@ -32164,10 +32892,14 @@ words:
   - main_list
 - word: κλαρκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Clark)
 - word: σύρων
   length: 5
   tier: valid
@@ -32913,10 +33645,14 @@ words:
   - main_list
 - word: ρέινς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Reins/Rains)
 - word: έλκος
   length: 5
   tier: daily
@@ -32957,10 +33693,14 @@ words:
   - main_list
 - word: μπερκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Burke)
 - word: ένεση
   length: 5
   tier: daily
@@ -33027,9 +33767,13 @@ words:
   - main_list
 - word: λίμπι
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Libby)
 - word: οροφή
   length: 5
   tier: daily
@@ -33148,10 +33892,14 @@ words:
   - main_list
 - word: κένεθ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kenneth)
 - word: σείσω
   length: 5
   tier: valid
@@ -33180,9 +33928,13 @@ words:
   - main_list
 - word: γουίκ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Wick)
 - word: σίνας
   length: 5
   tier: valid
@@ -33557,10 +34309,14 @@ words:
   - main_list
 - word: πάτσι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Patsy)
 - word: ειλεό
   length: 5
   tier: valid
@@ -33713,10 +34469,14 @@ words:
   - main_list
 - word: γιορκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (York)
 - word: βόγκε
   length: 5
   tier: valid
@@ -33745,10 +34505,14 @@ words:
   - main_list
 - word: μίλερ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Miller)
 - word: βιζόν
   length: 5
   tier: valid
@@ -33761,10 +34525,14 @@ words:
   - main_list
 - word: συρία
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Syria)
 - word: ελιών
   length: 5
   tier: valid
@@ -34085,10 +34853,14 @@ words:
   - main_list
 - word: μάιλς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Miles)
 - word: αράξω
   length: 5
   tier: daily
@@ -34361,10 +35133,14 @@ words:
   - main_list
 - word: δελχί
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Delhi)
 - word: γοργή
   length: 5
   tier: valid
@@ -34825,10 +35601,14 @@ words:
   - main_list
 - word: βούδα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Buddha)
 - word: άκμων
   length: 5
   tier: valid
@@ -35455,10 +36235,14 @@ words:
   - main_list
 - word: όουεν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Owen)
 - word: ηραία
   length: 5
   tier: valid
@@ -35482,10 +36266,14 @@ words:
   - main_list
 - word: ράιαν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ryan)
 - word: κράσε
   length: 5
   tier: valid
@@ -35533,6 +36321,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign currency (peso)
 - word: έρμαν
   length: 5
   tier: valid
@@ -35786,10 +36578,14 @@ words:
   - main_list
 - word: μάρεϊ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Murray)
 - word: λόγιο
   length: 5
   tier: valid
@@ -35843,10 +36639,14 @@ words:
   - main_list
 - word: ντόλι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dolly)
 - word: λούφα
   length: 5
   tier: valid
@@ -35932,10 +36732,14 @@ words:
   - main_list
 - word: μισέλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Michelle)
 - word: λόγου
   length: 5
   tier: daily
@@ -36072,10 +36876,14 @@ words:
   - main_list
 - word: έβανς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Evans)
 - word: βλάχο
   length: 5
   tier: valid
@@ -36451,10 +37259,14 @@ words:
   - main_list
 - word: φορντ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun/brand (Ford)
 - word: όρθια
   length: 5
   tier: daily
@@ -36741,10 +37553,14 @@ words:
   - main_list
 - word: δαυίδ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (David, biblical spelling)
 - word: αρωγά
   length: 5
   tier: valid
@@ -36762,10 +37578,14 @@ words:
   - main_list
 - word: μπίλι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Billy)
 - word: κείος
   length: 5
   tier: valid
@@ -37546,10 +38366,14 @@ words:
   - main_list
 - word: λούις
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Louis)
 - word: έκτης
   length: 5
   tier: valid
@@ -37558,10 +38382,14 @@ words:
   - main_list
 - word: μορίς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Maurice)
 - word: σαπρή
   length: 5
   tier: valid
@@ -37722,9 +38550,13 @@ words:
   - main_list
 - word: στίβι
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Stevie)
 - word: έξαγε
   length: 5
   tier: valid
@@ -37753,10 +38585,14 @@ words:
   - main_list
 - word: κόλιν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Colin)
 - word: ζερβί
   length: 5
   tier: valid
@@ -37795,10 +38631,14 @@ words:
   - main_list
 - word: τζέρι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jerry)
 - word: φίχτε
   length: 5
   tier: valid
@@ -37970,9 +38810,13 @@ words:
   - main_list
 - word: μπρικ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Brick)
 - word: κοτλέ
   length: 5
   tier: valid
@@ -38088,10 +38932,14 @@ words:
   - main_list
 - word: τζόαν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Joan)
 - word: μηκών
   length: 5
   tier: valid
@@ -38840,10 +39688,14 @@ words:
   - main_list
 - word: μπαρτ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bart)
 - word: ηχούν
   length: 5
   tier: valid
@@ -39223,10 +40075,14 @@ words:
   - main_list
 - word: κέβιν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kevin)
 - word: αναΐς
   length: 5
   tier: valid
@@ -39588,10 +40444,14 @@ words:
   - main_list
 - word: κλοντ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Claude)
 - word: γουάτ
   length: 5
   tier: valid
@@ -39946,10 +40806,14 @@ words:
   - main_list
 - word: ισαάκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Isaac)
   history:
   - 1695
   - 1719
@@ -40134,9 +40998,13 @@ words:
   - main_list
 - word: τσέρι
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cherry)
 - word: διάκο
   length: 5
   tier: valid
@@ -40149,10 +41017,14 @@ words:
   - main_list
 - word: σελίν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Celine)
 - word: πυκνό
   length: 5
   tier: valid
@@ -40161,10 +41033,14 @@ words:
   - main_list
 - word: ντάνι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Danny)
 - word: ρύμης
   length: 5
   tier: valid
@@ -40373,9 +41249,13 @@ words:
   - main_list
 - word: ντουκ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Duke)
   history:
   - 1687
   scheduled_day: 1687
@@ -40500,10 +41380,14 @@ words:
   - main_list
 - word: σάνον
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Shannon)
 - word: φίκου
   length: 5
   tier: valid
@@ -40611,10 +41495,14 @@ words:
   - main_list
 - word: καυλί
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (erection/penis)
 - word: ειλεέ
   length: 5
   tier: valid
@@ -40664,10 +41552,14 @@ words:
   - main_list
 - word: νόρις
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Norris)
   history:
   - 1705
   scheduled_day: 1705
@@ -40712,10 +41604,14 @@ words:
   - main_list
 - word: ρούσο
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Russo)
 - word: φάρδη
   length: 5
   tier: valid
@@ -41541,6 +42437,10 @@ words:
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (collier/necklace)
 - word: μίνας
   length: 5
   tier: valid
@@ -41603,10 +42503,14 @@ words:
   - main_list
 - word: μόσχα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Moscow)
 - word: δήμος
   length: 5
   tier: valid
@@ -41724,10 +42628,14 @@ words:
   - main_list
 - word: τζίμι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jimmy)
 - word: άζηλο
   length: 5
   tier: valid
@@ -41788,9 +42696,13 @@ words:
   - main_list
 - word: λαμάρ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lamar)
 - word: μάτην
   length: 5
   tier: valid
@@ -42220,10 +43132,14 @@ words:
   - main_list
 - word: αθηνά
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Athena)
 - word: ύμνου
   length: 5
   tier: valid
@@ -42344,10 +43260,14 @@ words:
   - main_list
 - word: τζέιν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jane)
 - word: κοφτώ
   length: 5
   tier: valid
@@ -42382,10 +43302,14 @@ words:
   - main_list
 - word: πίτερ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Peter)
 - word: νταρί
   length: 5
   tier: valid
@@ -42403,10 +43327,14 @@ words:
   - main_list
 - word: τέξας
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Texas)
 - word: γύρος
   length: 5
   tier: daily
@@ -42670,6 +43598,10 @@ words:
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (chips)
 - word: ρόγχο
   length: 5
   tier: valid
@@ -42898,10 +43830,14 @@ words:
   - main_list
 - word: σάρον
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Sharon)
 - word: κελεέ
   length: 5
   tier: valid
@@ -43239,9 +44175,13 @@ words:
   - main_list
 - word: σέλμα
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Selma)
 - word: γρέγο
   length: 5
   tier: valid
@@ -44118,10 +45058,14 @@ words:
   - main_list
 - word: κόουλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cole)
 - word: μυήσω
   length: 5
   tier: valid
@@ -44129,10 +45073,14 @@ words:
   - main_list
 - word: κένυα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kenya)
 - word: λείπε
   length: 5
   tier: valid
@@ -44238,10 +45186,14 @@ words:
   - main_list
 - word: ρωσία
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Russia)
 - word: βύρων
   length: 5
   tier: valid
@@ -44756,6 +45708,10 @@ words:
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (hockey)
 - word: μασνέ
   length: 5
   tier: valid
@@ -45322,10 +46278,14 @@ words:
   - main_list
 - word: κεμάλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kemal)
 - word: λάκκε
   length: 5
   tier: valid
@@ -45553,10 +46513,14 @@ words:
   - main_list
 - word: μπέτι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Betty)
 - word: λήθην
   length: 5
   tier: valid
@@ -45737,10 +46701,14 @@ words:
   - main_list
 - word: πορνό
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit term (porn)
 - word: άρρην
   length: 5
   tier: valid
@@ -46265,10 +47233,14 @@ words:
   - main_list
 - word: πράγα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Prague)
 - word: άμονε
   length: 5
   tier: valid
@@ -46444,10 +47416,14 @@ words:
   - main_list
 - word: τζόελ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Joel)
 - word: φτωχή
   length: 5
   tier: daily
@@ -46884,9 +47860,13 @@ words:
   - main_list
 - word: βέγκα
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Vega)
 - word: οπούς
   length: 5
   tier: valid
@@ -46894,9 +47874,13 @@ words:
   - main_list
 - word: ιόλαε
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Iolaus)
 - word: μοχτώ
   length: 5
   tier: valid
@@ -46924,6 +47908,10 @@ words:
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (foul)
 - word: τέφρα
   length: 5
   tier: valid
@@ -47425,10 +48413,14 @@ words:
   - main_list
 - word: σιμόν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Simon)
 - word: οζώδη
   length: 5
   tier: valid
@@ -47493,10 +48485,14 @@ words:
   - main_list
 - word: σαούλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Saul)
 - word: ντορή
   length: 5
   tier: valid
@@ -47685,6 +48681,10 @@ words:
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (stress)
 - word: κάλχα
   length: 5
   tier: valid
@@ -47738,9 +48738,13 @@ words:
   - main_list
 - word: χόμερ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Homer)
 - word: σχολή
   length: 5
   tier: daily
@@ -47917,10 +48921,14 @@ words:
   - main_list
 - word: σάμερ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Summer)
 - word: παρόν
   length: 5
   tier: daily
@@ -48496,10 +49504,14 @@ words:
   - main_list
 - word: φέλιξ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Felix)
 - word: ρέαμε
   length: 5
   tier: valid
@@ -48750,10 +49762,14 @@ words:
   - main_list
 - word: ρόμαν
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Roman)
 - word: φόρτο
   length: 5
   tier: valid
@@ -49088,10 +50104,14 @@ words:
   - main_list
 - word: μόντι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Monty)
 - word: άπυρη
   length: 5
   tier: valid
@@ -49147,10 +50167,14 @@ words:
   - main_list
 - word: ντάνα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dana)
 - word: είρων
   length: 5
   tier: valid
@@ -49767,9 +50791,13 @@ words:
   - main_list
 - word: ντερκ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dirk)
 - word: τόσοι
   length: 5
   tier: daily
@@ -49859,10 +50887,14 @@ words:
   - main_list
 - word: στύση
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit term (erection)
 - word: βουβέ
   length: 5
   tier: valid
@@ -49922,10 +50954,14 @@ words:
   - main_list
 - word: νικόλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nicole)
 - word: ροιές
   length: 5
   tier: valid
@@ -49981,10 +51017,14 @@ words:
   - main_list
 - word: πόρνη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Offensive term (prostitute)
 - word: ποσώς
   length: 5
   tier: valid
@@ -50034,10 +51074,14 @@ words:
   - main_list
 - word: λέσλι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Leslie)
 - word: κίελο
   length: 5
   tier: valid
@@ -50364,10 +51408,14 @@ words:
   - main_list
 - word: κώλου
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (ass, genitive)
 - word: αψηφά
   length: 5
   tier: valid
@@ -50395,10 +51443,14 @@ words:
   - main_list
 - word: δαβίδ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (David)
 - word: κολλά
   length: 5
   tier: valid
@@ -50520,10 +51572,14 @@ words:
   - main_list
 - word: τόμας
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Thomas)
 - word: ριγεί
   length: 5
   tier: valid
@@ -50640,10 +51696,14 @@ words:
   - main_list
 - word: γκάρι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Gary)
 - word: φώλοι
   length: 5
   tier: valid
@@ -50754,10 +51814,14 @@ words:
   - main_list
 - word: μπομπ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bob)
 - word: βοηθέ
   length: 5
   tier: daily
@@ -50901,10 +51965,14 @@ words:
   - main_list
 - word: γουλφ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Gulf/Wolf)
 - word: ύμνων
   length: 5
   tier: valid
@@ -51350,10 +52418,14 @@ words:
   - main_list
 - word: έλιοτ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Eliot)
 - word: άχερα
   length: 5
   tier: valid
@@ -51403,10 +52475,14 @@ words:
   - main_list
 - word: νίξον
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nixon)
 - word: πυγών
   length: 5
   tier: valid
@@ -51987,10 +53063,14 @@ words:
   - main_list
 - word: γαμάω
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word (to fuck)
 - word: έθιγε
   length: 5
   tier: valid
@@ -52014,10 +53094,14 @@ words:
   - main_list
 - word: τζένη
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jenny)
 - word: γρύσε
   length: 5
   tier: valid
@@ -52168,9 +53252,13 @@ words:
   - main_list
 - word: κάρλι
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Karly)
 - word: ελεμέ
   length: 5
   tier: valid
@@ -52271,10 +53359,14 @@ words:
   - main_list
 - word: τζόνι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Johnny)
 - word: θέσιν
   length: 5
   tier: valid
@@ -52375,10 +53467,14 @@ words:
   - main_list
 - word: τάιμς
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Times)
 - word: φανέν
   length: 5
   tier: valid
@@ -52852,10 +53948,14 @@ words:
   - main_list
 - word: φρεντ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Fred)
 - word: κουτά
   length: 5
   tier: valid
@@ -53011,10 +54111,14 @@ words:
   - main_list
 - word: μπέλα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bella)
 - word: βρύων
   length: 5
   tier: valid
@@ -53022,10 +54126,14 @@ words:
   - main_list
 - word: λούης
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Louis)
 - word: νάξος
   length: 5
   tier: valid
@@ -53305,9 +54413,13 @@ words:
   - main_list
 - word: λούση
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lucy)
 - word: όρυξε
   length: 5
   tier: valid
@@ -53388,10 +54500,14 @@ words:
   - main_list
 - word: χένρι
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Henry)
 - word: κοψιά
   length: 5
   tier: valid
@@ -53718,10 +54834,14 @@ words:
   - main_list
 - word: νέβιλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Neville)
 - word: δοτών
   length: 5
   tier: valid
@@ -53796,6 +54916,10 @@ words:
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Underwear - mildly inappropriate for daily puzzle
 - word: κίρκη
   length: 5
   tier: valid
@@ -53894,10 +55018,14 @@ words:
   - main_list
 - word: σινγκ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Singh)
 - word: λύτης
   length: 5
   tier: valid
@@ -54027,10 +55155,14 @@ words:
   - main_list
 - word: σίλβα
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Silva)
 - word: δελής
   length: 5
   tier: valid
@@ -54054,10 +55186,14 @@ words:
   - main_list
 - word: ράσελ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Russell)
 - word: τροφέ
   length: 5
   tier: valid
@@ -54065,10 +55201,14 @@ words:
   - main_list
 - word: τεμπλ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Temple)
 - word: άρχος
   length: 5
   tier: valid

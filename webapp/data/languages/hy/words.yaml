@@ -224,9 +224,13 @@ words:
   - main_list
 - word: սամիթ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Samit, personal name)
 - word: տնքոց
   length: 5
   tier: daily
@@ -247,9 +251,13 @@ words:
   - main_list
 - word: արշիլ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arshil, personal name)
 - word: խորոտ
   length: 5
   tier: daily
@@ -257,9 +265,13 @@ words:
   - main_list
 - word: գոհար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gohar, personal name)
 - word: խոթել
   length: 5
   tier: daily
@@ -342,9 +354,13 @@ words:
   - main_list
 - word: ջհուդ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar/offensive (Jhud, derogatory term)
 - word: արձակ
   length: 5
   tier: daily
@@ -485,9 +501,13 @@ words:
   - main_list
 - word: ռոման
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Roman, personal name)
 - word: փաթոթ
   length: 5
   tier: daily
@@ -505,9 +525,13 @@ words:
   - main_list
 - word: կախեթ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Kakhet/Kakheti, place name)
 - word: մաղախ
   length: 5
   tier: daily
@@ -565,9 +589,13 @@ words:
   - main_list
 - word: տորոն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Toron, place name)
 - word: տխրել
   length: 5
   tier: daily
@@ -585,9 +613,13 @@ words:
   - main_list
 - word: վիլեն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vilen, personal name)
 - word: լուսե
   length: 5
   tier: daily
@@ -630,9 +662,13 @@ words:
   - main_list
 - word: վահան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vahan, personal name)
 - word: գտանք
   length: 5
   tier: daily
@@ -743,9 +779,13 @@ words:
   - main_list
 - word: տիրան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Tiran, personal name)
 - word: սավան
   length: 5
   tier: daily
@@ -798,9 +838,13 @@ words:
   - main_list
 - word: լեւան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Levan, personal name)
 - word: բումբ
   length: 5
   tier: daily
@@ -956,9 +1000,13 @@ words:
   - main_list
 - word: վալեր
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Valer, personal name)
 - word: ճաշակ
   length: 5
   tier: daily
@@ -1097,9 +1145,13 @@ words:
   - main_list
 - word: վիրաբ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Virab, personal name)
 - word: տեսակ
   length: 5
   tier: daily
@@ -1117,9 +1169,13 @@ words:
   - main_list
 - word: չեխով
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Chekhov, personal name)
 - word: դրդել
   length: 5
   tier: daily
@@ -1147,9 +1203,13 @@ words:
   - main_list
 - word: ալֆիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Alfik, diminutive name)
 - word: ղժժոց
   length: 5
   tier: daily
@@ -1202,9 +1262,13 @@ words:
   - main_list
 - word: վրացի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Vratsi/Georgian)
 - word: պզուկ
   length: 5
   tier: daily
@@ -1247,9 +1311,13 @@ words:
   - main_list
 - word: նելլի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nelli, personal name)
 - word: ոչինչ
   length: 5
   tier: daily
@@ -1277,9 +1345,13 @@ words:
   - main_list
 - word: սոֆյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sofya/Sophia, personal name)
 - word: ուսին
   length: 5
   tier: daily
@@ -1342,9 +1414,13 @@ words:
   - main_list
 - word: գյոթե
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Gyothe/Goethe, personal name)
 - word: մոդել
   length: 5
   tier: daily
@@ -1547,9 +1623,13 @@ words:
   - main_list
 - word: սիբիր
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sibir/Siberia, place name)
 - word: վսսոց
   length: 5
   tier: daily
@@ -1632,9 +1712,13 @@ words:
   - main_list
 - word: սաթիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Satik, personal name)
 - word: անկոթ
   length: 5
   tier: daily
@@ -1662,9 +1746,13 @@ words:
   - main_list
 - word: աղդամ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Agdam, place in Azerbaijan)
 - word: կազան
   length: 5
   tier: daily
@@ -1772,14 +1860,22 @@ words:
   - main_list
 - word: սայաթ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sayat, personal name)
 - word: սադամ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sadam/Saddam, personal name)
 - word: գողոն
   length: 5
   tier: daily
@@ -1822,9 +1918,13 @@ words:
   - main_list
 - word: վիգեն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vigen, personal name)
 - word: թրծել
   length: 5
   tier: daily
@@ -1867,9 +1967,13 @@ words:
   - main_list
 - word: վաչիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vachik, personal name)
 - word: մեդիա
   length: 5
   tier: daily
@@ -1917,9 +2021,13 @@ words:
   - main_list
 - word: դավիդ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (David, personal name)
 - word: թզկել
   length: 5
   tier: daily
@@ -1942,9 +2050,13 @@ words:
   - main_list
 - word: նազար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nazar, personal name)
 - word: իշուկ
   length: 5
   tier: daily
@@ -1965,19 +2077,31 @@ words:
   scheduled_day: 1715
 - word: յուրա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Yura, personal name)
 - word: արթին
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Arthin, personal name)
 - word: արմիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Armik, personal name)
 - word: մակիչ
   length: 5
   tier: daily
@@ -2013,9 +2137,13 @@ words:
   - main_list
 - word: ժենիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Zhenik, personal name)
 - word: հարկի
   length: 5
   tier: daily
@@ -2048,9 +2176,13 @@ words:
   - main_list
 - word: եղիեւ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Yeghiyev, biblical name Elijah)
 - word: զորել
   length: 5
   tier: daily
@@ -2083,9 +2215,13 @@ words:
   - main_list
 - word: լիլյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lilya, personal name)
 - word: հղում
   length: 5
   tier: daily
@@ -2203,9 +2339,13 @@ words:
   - main_list
 - word: վասիլ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vasil, personal name)
 - word: առողջ
   length: 5
   tier: daily
@@ -2278,9 +2418,13 @@ words:
   - main_list
 - word: թամար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Tamar, personal name)
 - word: ծերին
   length: 5
   tier: daily
@@ -2288,9 +2432,13 @@ words:
   - main_list
 - word: էստոն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Eston/Estonia, place name)
 - word: ումբր
   length: 5
   tier: daily
@@ -2308,9 +2456,13 @@ words:
   - main_list
 - word: բորիս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Boris, personal name)
 - word: գռռալ
   length: 5
   tier: daily
@@ -2353,9 +2505,13 @@ words:
   - main_list
 - word: արտիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Artik, Armenian city)
   history:
   - 1707
   scheduled_day: 1707
@@ -2371,9 +2527,13 @@ words:
   - main_list
 - word: սլավա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Slava, personal name)
 - word: պզտիկ
   length: 5
   tier: daily
@@ -2502,9 +2662,13 @@ words:
   - main_list
 - word: ռաիսա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Raisa, personal name)
 - word: մատակ
   length: 5
   tier: daily
@@ -2547,9 +2711,13 @@ words:
   - main_list
 - word: վոլգա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Volga, place name)
 - word: գետին
   length: 5
   tier: daily
@@ -2557,9 +2725,13 @@ words:
   - main_list
 - word: նաիռա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Naira, personal name)
 - word: փայտե
   length: 5
   tier: daily
@@ -2572,9 +2744,13 @@ words:
   - main_list
 - word: մրտիմ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Mrtim, personal name)
 - word: հնչել
   length: 5
   tier: daily
@@ -2657,9 +2833,13 @@ words:
   - main_list
 - word: ջալալ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Jalal, personal name)
 - word: նորոգ
   length: 5
   tier: daily
@@ -2667,9 +2847,13 @@ words:
   - main_list
 - word: ռոմեո
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Romeo, personal name)
 - word: հյուր
   length: 5
   tier: daily
@@ -2755,9 +2939,13 @@ words:
   - main_list
 - word: վիլիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Vilik, personal name)
 - word: էրնեկ
   length: 5
   tier: daily
@@ -2923,9 +3111,13 @@ words:
   - main_list
 - word: ատանա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Atana/Adana, place name)
 - word: նալել
   length: 5
   tier: daily
@@ -2963,9 +3155,13 @@ words:
   - main_list
 - word: սեւադ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sevad, personal name)
 - word: ճկռել
   length: 5
   tier: daily
@@ -3003,9 +3199,13 @@ words:
   - main_list
 - word: հույն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Huyn/Greek)
 - word: պալար
   length: 5
   tier: daily
@@ -3023,9 +3223,13 @@ words:
   - main_list
 - word: զաուր
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Zaur, personal name)
 - word: տանու
   length: 5
   tier: daily
@@ -3071,9 +3275,13 @@ words:
   - main_list
 - word: ալետա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Aleta, personal name)
 - word: հանձն
   length: 5
   tier: daily
@@ -3146,9 +3354,13 @@ words:
   - main_list
 - word: շիրին
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Shirin, personal name)
 - word: խզզոց
   length: 5
   tier: daily
@@ -3228,9 +3440,13 @@ words:
   - main_list
 - word: մարգո
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Margo, personal name)
 - word: կողակ
   length: 5
   tier: daily
@@ -3258,9 +3474,13 @@ words:
   - main_list
 - word: տամար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Tamar, personal name)
 - word: հրշեջ
   length: 5
   tier: daily
@@ -3298,9 +3518,13 @@ words:
   - main_list
 - word: ռոմեն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Romen, personal name)
 - word: անսազ
   length: 5
   tier: daily
@@ -3371,9 +3595,13 @@ words:
   - main_list
 - word: սվետա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sveta, personal name)
 - word: անրակ
   length: 5
   tier: daily
@@ -3494,9 +3722,13 @@ words:
   - main_list
 - word: լիանա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Liana, personal name)
 - word: սինամ
   length: 5
   tier: daily
@@ -3524,9 +3756,13 @@ words:
   - main_list
 - word: սոֆիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sofik, personal name)
   history:
   - 1727
   scheduled_day: 1727
@@ -3572,9 +3808,13 @@ words:
   - main_list
 - word: աբրամ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Abram, biblical/personal name)
 - word: ճկում
   length: 5
   tier: daily
@@ -3632,9 +3872,13 @@ words:
   - main_list
 - word: կեսար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Kesar/Caesar, personal name)
 - word: անպոզ
   length: 5
   tier: daily
@@ -3662,9 +3906,13 @@ words:
   - main_list
 - word: ժենյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Zhenya, personal name)
 - word: հովիկ
   length: 5
   tier: daily
@@ -3682,14 +3930,22 @@ words:
   - main_list
 - word: մագդա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Magda, personal name)
 - word: արինա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Arina, personal name)
 - word: շողոմ
   length: 5
   tier: daily
@@ -3722,14 +3978,22 @@ words:
   - main_list
 - word: նիկոլ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nikol, personal name)
 - word: ալինա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Alina, personal name)
 - word: ղալամ
   length: 5
   tier: daily
@@ -3785,9 +4049,13 @@ words:
   - main_list
 - word: նոյան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Noyan, personal name/title)
 - word: ոհմակ
   length: 5
   tier: daily
@@ -3810,9 +4078,13 @@ words:
   - main_list
 - word: էդգար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Edgar, personal name)
 - word: դրսեկ
   length: 5
   tier: daily
@@ -3820,9 +4092,13 @@ words:
   - main_list
 - word: լազար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lazar, personal name)
 - word: թնդոց
   length: 5
   tier: daily
@@ -3835,9 +4111,13 @@ words:
   - main_list
 - word: կիրիլ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Kiril/Cyril, personal name)
 - word: պղերգ
   length: 5
   tier: daily
@@ -3900,9 +4180,13 @@ words:
   - main_list
 - word: մաջառ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Majar/Hungarian)
 - word: կախան
   length: 5
   tier: daily
@@ -4018,9 +4302,13 @@ words:
   - main_list
 - word: էսթեր
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Esther, personal name)
 - word: նովել
   length: 5
   tier: daily
@@ -4028,9 +4316,13 @@ words:
   - main_list
 - word: ցոլակ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Tsolak, personal name)
 - word: օրենք
   length: 5
   tier: daily
@@ -4083,9 +4375,13 @@ words:
   - main_list
 - word: ամիրա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Amira, personal name)
 - word: էրինջ
   length: 5
   tier: daily
@@ -4093,9 +4389,13 @@ words:
   - main_list
 - word: լեննա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Lenna, personal name)
 - word: օպերա
   length: 5
   tier: daily
@@ -4133,9 +4433,13 @@ words:
   - main_list
 - word: իոսիֆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Yosif/Joseph, personal name)
 - word: բուրգ
   length: 5
   tier: daily
@@ -4148,9 +4452,13 @@ words:
   - main_list
 - word: արտեմ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Artem, personal name)
 - word: լացող
   length: 5
   tier: daily
@@ -4163,14 +4471,22 @@ words:
   - main_list
 - word: թորոս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Toros, personal name)
 - word: նուշի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Nushi, personal name)
 - word: սգերթ
   length: 5
   tier: daily
@@ -4228,9 +4544,13 @@ words:
   - main_list
 - word: վալյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Valya, personal name)
 - word: վշշալ
   length: 5
   tier: daily
@@ -4268,9 +4588,13 @@ words:
   - main_list
 - word: էլմաս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Elmas, personal name)
 - word: խաբել
   length: 5
   tier: daily
@@ -4293,9 +4617,13 @@ words:
   - main_list
 - word: ադոնց
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Adonts, Armenian surname)
 - word: ագռավ
   length: 5
   tier: daily
@@ -4363,14 +4691,22 @@ words:
   - main_list
 - word: աղասի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Aghasi, personal name)
 - word: ռոմիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Romik, personal name)
 - word: տվինք
   length: 5
   tier: daily
@@ -4458,9 +4794,13 @@ words:
   - main_list
 - word: թուրք
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Ethnic demonym (Turk)
 - word: զմուռ
   length: 5
   tier: daily
@@ -4488,9 +4828,13 @@ words:
   - main_list
 - word: մելիք
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Melik, personal name)
 - word: իզուր
   length: 5
   tier: daily
@@ -4503,9 +4847,13 @@ words:
   - main_list
 - word: սյոմա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Syoma, personal name)
 - word: շիթիլ
   length: 5
   tier: daily
@@ -4513,9 +4861,13 @@ words:
   - main_list
 - word: եղիյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Yeghiya, biblical name)
 - word: անգեղ
   length: 5
   tier: daily
@@ -4623,14 +4975,22 @@ words:
   - main_list
 - word: լիտվա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Litva/Lithuania, place name)
 - word: ռոլան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Rolan/Roland, personal name)
 - word: խզում
   length: 5
   tier: daily
@@ -4761,9 +5121,13 @@ words:
   - main_list
 - word: նաիրի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nairi, historical name/place)
 - word: բարոք
   length: 5
   tier: daily
@@ -4792,9 +5156,13 @@ words:
   - main_list
 - word: սիսակ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sisak, personal name)
 - word: սիրող
   length: 5
   tier: daily
@@ -4807,9 +5175,13 @@ words:
   - main_list
 - word: պողոս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Poghos/Paul, personal name)
 - word: փակոց
   length: 5
   tier: daily
@@ -4897,9 +5269,13 @@ words:
   - main_list
 - word: րաբբի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Religious title (Rabbi)
 - word: ցուրտ
   length: 5
   tier: daily
@@ -4932,9 +5308,13 @@ words:
   - main_list
 - word: կսմիթ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Ksmith, foreign name)
 - word: անծոր
   length: 5
   tier: daily
@@ -4987,9 +5367,13 @@ words:
   - main_list
 - word: սիփան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sipan, personal name)
 - word: շիրոտ
   length: 5
   tier: daily
@@ -5012,9 +5396,13 @@ words:
   - main_list
 - word: մորիս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Morris, personal name)
 - word: տոկոս
   length: 5
   tier: daily
@@ -5047,9 +5435,13 @@ words:
   - main_list
 - word: սեսիա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sesia, place name)
 - word: գաջոտ
   length: 5
   tier: daily
@@ -5067,9 +5459,13 @@ words:
   - main_list
 - word: թուլա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Tula, place name)
 - word: ակտիվ
   length: 5
   tier: daily
@@ -5232,9 +5628,13 @@ words:
   - main_list
 - word: արենի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Areni, Armenian village)
 - word: դառան
   length: 5
   tier: daily
@@ -5247,9 +5647,13 @@ words:
   - main_list
 - word: չեչեն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun/ethnic demonym (Chechen)
 - word: տաղիկ
   length: 5
   tier: daily
@@ -5257,9 +5661,13 @@ words:
   - main_list
 - word: դուբա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Duba/Dubai, place name)
 - word: լնգալ
   length: 5
   tier: daily
@@ -5345,9 +5753,13 @@ words:
   scheduled_day: 1701
 - word: շիրակ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Shirak, place name)
 - word: ջրցան
   length: 5
   tier: daily
@@ -5443,9 +5855,13 @@ words:
   - main_list
 - word: վիլկո
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Vilko, personal name)
 - word: քնարբ
   length: 5
   tier: daily
@@ -5473,9 +5889,13 @@ words:
   - main_list
 - word: նինել
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ninel, personal name)
 - word: փաթաթ
   length: 5
   tier: daily
@@ -5498,9 +5918,13 @@ words:
   - main_list
 - word: դավիթ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Davit, personal name)
 - word: տարվա
   length: 5
   tier: daily
@@ -5526,9 +5950,13 @@ words:
   - main_list
 - word: ագապի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Agapi, personal name)
 - word: փշատի
   length: 5
   tier: daily
@@ -5561,9 +5989,13 @@ words:
   - main_list
 - word: սիմոն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Simon, personal name)
 - word: անտիկ
   length: 5
   tier: daily
@@ -5601,9 +6033,13 @@ words:
   - main_list
 - word: սեւիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sevik, personal name)
 - word: ջեռոց
   length: 5
   tier: daily
@@ -5694,9 +6130,13 @@ words:
   - main_list
 - word: րաֆֆի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Raffi, personal name)
 - word: ածվել
   length: 5
   tier: daily
@@ -5754,9 +6194,13 @@ words:
   - main_list
 - word: նադյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Nadya, personal name)
 - word: ֆշշոց
   length: 5
   tier: daily
@@ -5784,9 +6228,13 @@ words:
   - main_list
 - word: ջավադ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Javad, personal name)
 - word: թողել
   length: 5
   tier: daily
@@ -5799,14 +6247,22 @@ words:
   - main_list
 - word: օքսեն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Oksen, personal name)
 - word: խամիլ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Khamil, personal name)
 - word: արտել
   length: 5
   tier: daily
@@ -5882,19 +6338,31 @@ words:
   - main_list
 - word: երմոն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Hermon, biblical mountain)
 - word: մուսա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Musa, personal name)
 - word: միսիա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Misia, place name)
 - word: ցնցիչ
   length: 5
   tier: daily
@@ -5957,9 +6425,13 @@ words:
   - main_list
 - word: իգդիր
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Igdir, place name in Turkey)
 - word: շողոտ
   length: 5
   tier: daily
@@ -5967,9 +6439,13 @@ words:
   - main_list
 - word: գարիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Garik, personal name)
 - word: քոթակ
   length: 5
   tier: daily
@@ -6002,9 +6478,13 @@ words:
   - main_list
 - word: աթյան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Athyan, surname)
 - word: թղթիկ
   length: 5
   tier: daily
@@ -6072,9 +6552,13 @@ words:
   - main_list
 - word: վարյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Varya, personal name)
 - word: անկաթ
   length: 5
   tier: daily
@@ -6105,9 +6589,13 @@ words:
   - main_list
 - word: սերգո
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sergo, personal name)
   history:
   - 1713
   scheduled_day: 1713
@@ -6133,9 +6621,13 @@ words:
   - main_list
 - word: ռաշիդ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Rashid, personal name)
 - word: գնդիկ
   length: 5
   tier: daily
@@ -6143,9 +6635,13 @@ words:
   - main_list
 - word: ալժիր
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Algeria, country name)
 - word: թպպոց
   length: 5
   tier: daily
@@ -6158,14 +6654,22 @@ words:
   - main_list
 - word: եսայի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Yesayi/Isaiah, biblical name)
 - word: լյովա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Lyova, personal name)
 - word: գղթոր
   length: 5
   tier: daily
@@ -6253,9 +6757,13 @@ words:
   - main_list
 - word: մագոգ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Magog, biblical name)
 - word: մանեւ
   length: 5
   tier: daily
@@ -6533,9 +7041,13 @@ words:
   - main_list
 - word: պրուս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Prus/Prussian)
 - word: տնանկ
   length: 5
   tier: daily
@@ -6548,9 +7060,13 @@ words:
   - main_list
 - word: մարատ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Marat, personal name)
 - word: կարծր
   length: 5
   tier: daily
@@ -6593,9 +7109,13 @@ words:
   - main_list
 - word: ֆեդյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Fedya, personal name)
 - word: զխկալ
   length: 5
   tier: daily
@@ -6758,9 +7278,13 @@ words:
   - main_list
 - word: մասիս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Masis, Armenian name for Mt. Ararat)
 - word: խյուս
   length: 5
   tier: daily
@@ -6823,9 +7347,13 @@ words:
   - main_list
 - word: յակով
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Yakov/Jacob, personal name)
 - word: մոտիկ
   length: 5
   tier: daily
@@ -6931,9 +7459,13 @@ words:
   - main_list
 - word: սոնիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Sonik, personal name)
 - word: գղձիկ
   length: 5
   tier: daily
@@ -7001,9 +7533,13 @@ words:
   - main_list
 - word: օսյան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Osyan, personal name)
 - word: դժխեմ
   length: 5
   tier: daily
@@ -7026,9 +7562,13 @@ words:
   - main_list
 - word: կայեն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Kayen/Cayenne, place name)
 - word: տեւել
   length: 5
   tier: daily
@@ -7111,9 +7651,13 @@ words:
   - main_list
 - word: արուս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Arus, personal name)
 - word: հրթիռ
   length: 5
   tier: daily
@@ -7216,9 +7760,13 @@ words:
   - main_list
 - word: գրիշա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Grisha, personal name)
 - word: մետաղ
   length: 5
   tier: daily
@@ -7226,9 +7774,13 @@ words:
   - main_list
 - word: պետյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Petya, personal name)
 - word: վհուկ
   length: 5
   tier: daily
@@ -7286,9 +7838,13 @@ words:
   - main_list
 - word: ադոլֆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Adolf, personal name)
 - word: պատվո
   length: 5
   tier: daily
@@ -7311,14 +7867,22 @@ words:
   - main_list
 - word: լեզգի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Lezgi)
 - word: մերան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Meran, personal name)
 - word: զոլել
   length: 5
   tier: daily
@@ -7331,9 +7895,13 @@ words:
   - main_list
 - word: վասակ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vasak, personal name)
 - word: ամուլ
   length: 5
   tier: daily
@@ -7356,14 +7924,22 @@ words:
   - main_list
 - word: ղազար
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ghazar, personal name)
 - word: նուրի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Nuri, personal name)
 - word: էապես
   length: 5
   tier: daily
@@ -7394,9 +7970,13 @@ words:
   - main_list
 - word: գեղամ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gegham, personal name/mountain)
 - word: զուսպ
   length: 5
   tier: daily
@@ -7663,9 +8243,13 @@ words:
   - main_list
 - word: բերիա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Beria, personal name)
 - word: զգաստ
   length: 5
   tier: daily
@@ -7698,9 +8282,13 @@ words:
   - main_list
 - word: զորիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Zorik, personal name)
 - word: նշում
   length: 5
   tier: daily
@@ -7718,9 +8306,13 @@ words:
   - main_list
 - word: ռոզիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Rozik, personal name)
 - word: թխվել
   length: 5
   tier: daily
@@ -7793,14 +8385,22 @@ words:
   - main_list
 - word: ինդիա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (India, country name)
 - word: լեւիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Levik, personal name)
 - word: պահակ
   length: 5
   tier: daily
@@ -7823,9 +8423,13 @@ words:
   - main_list
 - word: տաճիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Tajik)
 - word: լակոտ
   length: 5
   tier: daily
@@ -7853,9 +8457,13 @@ words:
   - main_list
 - word: գառնի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Garni, Armenian historical site)
 - word: ճմլոց
   length: 5
   tier: daily
@@ -7883,9 +8491,13 @@ words:
   - main_list
 - word: արշամ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Arsham, personal name)
 - word: բլանդ
   length: 5
   tier: daily
@@ -7928,14 +8540,22 @@ words:
   - main_list
 - word: հաբեթ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Habet, personal name)
 - word: ասորի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Asori/Assyrian)
 - word: գավակ
   length: 5
   tier: daily
@@ -7943,14 +8563,22 @@ words:
   - main_list
 - word: ապփիա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Appia, biblical name)
 - word: ռոբեն
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Roben, personal name)
 - word: ուլիկ
   length: 5
   tier: daily
@@ -8008,9 +8636,13 @@ words:
   - main_list
 - word: էսմիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Esmik, personal name)
 - word: շաբաշ
   length: 5
   tier: daily
@@ -8083,9 +8715,13 @@ words:
   - main_list
 - word: խիզան
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Khizan, place name)
 - word: նավազ
   length: 5
   tier: daily
@@ -8181,9 +8817,13 @@ words:
   - main_list
 - word: մարթա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Martha, personal name)
 - word: կռլու
   length: 5
   tier: daily
@@ -8191,9 +8831,13 @@ words:
   - main_list
 - word: էթերի
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Eteri, personal name)
 - word: գրեթե
   length: 5
   tier: daily
@@ -8341,9 +8985,13 @@ words:
   - main_list
 - word: ժանետ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Janet/Zhanet, personal name)
   history:
   - 1717
   scheduled_day: 1717
@@ -8512,9 +9160,13 @@ words:
   - main_list
 - word: վիտյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Vitya, personal name)
 - word: աղբրի
   length: 5
   tier: daily
@@ -8532,9 +9184,13 @@ words:
   - main_list
 - word: գրետա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Greta, personal name)
 - word: գցված
   length: 5
   tier: daily
@@ -8615,9 +9271,13 @@ words:
   - main_list
 - word: նժդեհ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Nzhdeh, personal name)
 - word: կապան
   length: 5
   tier: daily
@@ -8643,9 +9303,13 @@ words:
   - main_list
 - word: լաերտ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Laert, personal name)
 - word: լծվել
   length: 5
   tier: daily
@@ -8736,9 +9400,13 @@ words:
   scheduled_day: 1693
 - word: մարիա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Maria, personal name)
 - word: ձեւել
   length: 5
   tier: daily
@@ -8786,9 +9454,13 @@ words:
   - main_list
 - word: գագիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Gagik, Armenian personal name)
 - word: վզնոց
   length: 5
   tier: daily
@@ -8796,9 +9468,13 @@ words:
   - main_list
 - word: հնդիկ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Hndik/Indian)
 - word: ծպտոց
   length: 5
   tier: daily
@@ -8846,9 +9522,13 @@ words:
   - main_list
 - word: էստեր
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ester, personal name)
 - word: սորոր
   length: 5
   tier: daily
@@ -8916,9 +9596,13 @@ words:
   - main_list
 - word: սոնյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Sonya, personal name)
 - word: անջատ
   length: 5
   tier: daily
@@ -8991,9 +9675,13 @@ words:
   - main_list
 - word: ռամիլ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Ramil, personal name)
 - word: ջրվել
   length: 5
   tier: daily
@@ -9011,9 +9699,13 @@ words:
   - main_list
 - word: գենյա
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Genya, personal name)
 - word: վխտալ
   length: 5
   tier: daily
@@ -10691,9 +11383,13 @@ words:
   - main_list
 - word: ջեյմս
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (James, foreign personal name)
 - word: սարիկ
   length: 5
   tier: valid
@@ -14773,9 +15469,13 @@ words:
   - main_list
 - word: փարիզ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Pariz/Paris, place name)
 - word: պապակ
   length: 5
   tier: valid

@@ -51,9 +51,13 @@ words:
   - main_list
 - word: ਹੋਮਵਰਕ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'homework'
 - word: ਪ੍ਰਾਹੁਣਿਆਂ
   length: 5
   tier: daily
@@ -81,9 +85,13 @@ words:
   - main_list
 - word: ਲਾਇਬਰੇਰੀ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'library'
 - word: ਸਕਿਥਿਅਨ
   length: 5
   tier: daily
@@ -106,9 +114,13 @@ words:
   - main_list
 - word: ਡਰਾਈਵਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'driver'
 - word: ਪਰਮਬੀਰ
   length: 5
   tier: daily
@@ -161,9 +173,13 @@ words:
   - main_list
 - word: ਜਰੂਸ਼ਲਮ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Jerusalem)
 - word: ਵਿਸਰਜਨ
   length: 5
   tier: daily
@@ -196,9 +212,13 @@ words:
   - main_list
 - word: ਅਕਸਰਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'Oxford', proper noun
 - word: ਟਾਬਿਨਗੇਨ
   length: 5
   tier: daily
@@ -211,9 +231,13 @@ words:
   - main_list
 - word: ਮੈਕਮਾਹੋਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (McMahon)
 - word: ਸਿਸੋਦੀਆਵੀ
   length: 5
   tier: daily
@@ -416,9 +440,13 @@ words:
   - main_list
 - word: ਕਾਰਪੇਂਟਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'carpenter' or proper noun
 - word: ਮਜਲਨਿਕ
   length: 5
   tier: daily
@@ -456,9 +484,13 @@ words:
   - main_list
 - word: ਟ੍ਰੌਟਸਕੀ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Trotsky)
 - word: ਦ੍ਰਿੜਾਉਣ
   length: 5
   tier: daily
@@ -486,9 +518,13 @@ words:
   - main_list
 - word: ਫਰੈਡਰਿਕ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Frederick)
 - word: ਕਰਿਸਮਸ
   length: 5
   tier: daily
@@ -678,9 +714,13 @@ words:
   - main_list
 - word: ਕਾਂਸਟੈਂਟੀਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Constantine)
 - word: ਪ੍ਰੋਵੈਸਰ
   length: 5
   tier: daily
@@ -883,9 +923,13 @@ words:
   - main_list
 - word: ਆਟੋਮੋਟਿਵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'automotive'
 - word: ਗੁਰਬਖ਼ਸ
   length: 5
   tier: daily
@@ -993,9 +1037,13 @@ words:
   - main_list
 - word: ਮੈਕਡੋਨਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (McDonald)
 - word: ਪ੍ਰੈਕਟਿਸ
   length: 5
   tier: daily
@@ -1303,9 +1351,13 @@ words:
   - main_list
 - word: ਆਰਸੈਨਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Arsenal)
 - word: ਫਰੂਖਾਬਾਦ
   length: 5
   tier: daily
@@ -1448,9 +1500,13 @@ words:
   - main_list
 - word: ਅਫਕੋਰਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'of course', not Punjabi
 - word: ਓਰਦੋਨੇਜ਼
   length: 5
   tier: daily
@@ -1498,9 +1554,13 @@ words:
   - main_list
 - word: ਅਜੀਤਪਾਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Punjabi name)
 - word: ਸਾਰਯਾਜਨੀ
   length: 5
   tier: daily
@@ -1638,9 +1698,13 @@ words:
   - main_list
 - word: ਵੈਬਸਾਈਟ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'website'
 - word: ਪ੍ਰਾਥਮਿਕ
   length: 5
   tier: daily
@@ -1683,9 +1747,13 @@ words:
   - main_list
 - word: ਓਇਡੀਪਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Oedipus)
 - word: ਪੋਘੋਸਿਆਨ
   length: 5
   tier: daily
@@ -2018,9 +2086,13 @@ words:
   - main_list
 - word: ਅਰਸੇਨਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Arsenal football club)
 - word: ਸਹੂਲੀਅਤ
   length: 5
   tier: daily
@@ -2330,9 +2402,13 @@ words:
   - main_list
 - word: ਅਟਲਾਂਟਿਕ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Atlantic)
 - word: ਅਸੀਦੁਰਗਾ
   length: 5
   tier: daily
@@ -2430,9 +2506,13 @@ words:
   - main_list
 - word: ਗ੍ਰੀਨਲੈਂਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Greenland)
 - word: ਅਕੈਡਮੀਜ਼
   length: 5
   tier: daily
@@ -2440,9 +2520,13 @@ words:
   - main_list
 - word: ਹਰਕੂਲਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hercules)
 - word: ਗੋਰਟੀਰੀਆ
   length: 5
   tier: daily
@@ -2585,9 +2669,13 @@ words:
   - main_list
 - word: ਬੁਲਡੋਜ਼ਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'bulldozer'
 - word: ਡਿਲੀਰੀਅਮ
   length: 5
   tier: daily
@@ -2690,9 +2778,13 @@ words:
   - main_list
 - word: ਅਲਬੇਰਟਾ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Alberta)
 - word: ਦੇਦਾਵਾਂਤਟ
   length: 5
   tier: daily
@@ -2715,9 +2807,13 @@ words:
   - main_list
 - word: ਐਨਜੇਲੀਨਾ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Angelina)
 - word: ਐਲੋਪੀਸੀਆ
   length: 5
   tier: daily
@@ -2975,9 +3071,13 @@ words:
   - main_list
 - word: ਰੈਸਟੋਰੈਂਟਾਂ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'restaurants'
 - word: ਖੜਕਾਇਆ
   length: 5
   tier: daily
@@ -3005,9 +3105,13 @@ words:
   - main_list
 - word: ਅਰਸਲਾਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Arslan)
 - word: ਗੁਰੁਦੁਆਰਾ
   length: 5
   tier: daily
@@ -3095,9 +3199,13 @@ words:
   - main_list
 - word: ਅਫੇਅਰਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'affairs', foreign loanword
 - word: ਉੜਨਸ਼ੀਲ
   length: 5
   tier: daily
@@ -3145,9 +3253,13 @@ words:
   - main_list
 - word: ਐਂਡਰੌਇਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'Android', brand name
 - word: ਫਲੁਟਿਸਟ
   length: 5
   tier: daily
@@ -3320,9 +3432,13 @@ words:
   - main_list
 - word: ਸਟਾਕਹੋਮ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Stockholm)
 - word: ਪੀਐਸਆਈ
   length: 5
   tier: daily
@@ -3425,9 +3541,13 @@ words:
   - main_list
 - word: ਕਾਰਲਸਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Carlson)
 - word: ਏਸਕਾਰਿਸ
   length: 5
   tier: daily
@@ -3440,9 +3560,13 @@ words:
   - main_list
 - word: ਅਰਮੀਨੀਆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Armenia)
 - word: ਬਟੇਸ਼ਵਰ
   length: 5
   tier: daily
@@ -3505,9 +3629,13 @@ words:
   - main_list
 - word: ਐਨਟੋਨੀਓ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Antonio)
 - word: ਕਾਸ਼ਤਕਾਰ
   length: 5
   tier: daily
@@ -3530,9 +3658,13 @@ words:
   - main_list
 - word: ਵੈਬਸਾਈਟਾਂ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'websites'
 - word: ਟ੍ਰਿਬਿਊਨ
   length: 5
   tier: daily
@@ -3575,9 +3707,13 @@ words:
   - main_list
 - word: ਇਲਾਹਾਬਾਦ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Allahabad)
 - word: ਪ੍ਰਹਲਾਦ
   length: 5
   tier: daily
@@ -3610,9 +3746,13 @@ words:
   - main_list
 - word: ਅਲਿਜ਼ਾਬੈਥ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Elizabeth)
 - word: ਸੂਨਿਆਤਰ
   length: 5
   tier: daily
@@ -3660,9 +3800,13 @@ words:
   - main_list
 - word: ਅਬਰਾਹਾਮੀ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun derived (Abrahamic)
 - word: ਇਕਟੇਰੀਨਾ
   length: 5
   tier: daily
@@ -3720,9 +3864,13 @@ words:
   - main_list
 - word: ਜੈਕੋਬਾਬਾਦ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Jacobabad)
 - word: ਵਿਸ਼ਵਕੋਸ਼
   length: 5
   tier: daily
@@ -3775,9 +3923,13 @@ words:
   - main_list
 - word: ਵਾਲਮਾਰਟ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Walmart brand)
 - word: ਓਸਤਮਾਨ
   length: 5
   tier: daily
@@ -3900,9 +4052,13 @@ words:
   - main_list
 - word: ਡਿਕਸਨਰੀ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'dictionary'
 - word: ਡਾਇਨੈਸਟੀ
   length: 5
   tier: daily
@@ -3980,9 +4136,13 @@ words:
   - main_list
 - word: ਚੈਂਬਰਲੈਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Chamberlain)
 - word: ਮੁਸਾਮਦਾਰ
   length: 5
   tier: daily
@@ -4070,9 +4230,13 @@ words:
   - main_list
 - word: ਬ੍ਰੈਡਮੈਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Bradman)
 - word: ਕਾਨੋਨੀਕਲ
   length: 5
   tier: daily
@@ -4185,9 +4349,13 @@ words:
   - main_list
 - word: ਇਸਤਾਂਬੁਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Istanbul)
 - word: ਫੈਨਟੇਜ਼ਨ
   length: 5
   tier: daily
@@ -4250,9 +4418,13 @@ words:
   - main_list
 - word: ਡ੍ਰੇਸਡਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Dresden)
 - word: ਪੀਟਲੈਂਡਜ਼
   length: 5
   tier: daily
@@ -4280,9 +4452,13 @@ words:
   - main_list
 - word: ਅਡੈਪਸ਼ਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'adaptation', foreign loanword
 - word: ਗਲੈਮਰਸ
   length: 5
   tier: daily
@@ -4320,9 +4496,13 @@ words:
   - main_list
 - word: ਗਰੀਨਲੀਫ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Greenleaf)
 - word: ਖੋਬਰਾਗੜੇ
   length: 5
   tier: daily
@@ -4470,9 +4650,13 @@ words:
   - main_list
 - word: ਪਾਕਿਸਤਾਨੋਂ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Pakistan)
 - word: ਕਾਰਟੂਨਿਸ਼
   length: 5
   tier: daily
@@ -4510,14 +4694,22 @@ words:
   - main_list
 - word: ਮੈਨਹੈਟਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Manhattan)
 - word: ਮੋਂਟ੍ਰੀਅਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Montreal)
 - word: ਜਮਾਲੁਦੀਨ
   length: 5
   tier: daily
@@ -4780,9 +4972,13 @@ words:
   - main_list
 - word: ਅਸਟੇਟਜ਼
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'estates'
 - word: ਰੈਫ਼੍ਰੈਂਡਮ
   length: 5
   tier: daily
@@ -4925,9 +5121,13 @@ words:
   - main_list
 - word: ਫ੍ਰਾਂਸਿਸਕੋ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Francisco)
 - word: ਬੈਕਸਟੇਜ
   length: 5
   tier: daily
@@ -5117,9 +5317,13 @@ words:
   - main_list
 - word: ਹੌਟਸਟਾਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hotstar brand)
 - word: ਪ੍ਰਦੂਸ਼ਨ
   length: 5
   tier: daily
@@ -5217,9 +5421,13 @@ words:
   - main_list
 - word: ਯੂਨਾਈਟੇਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'United'
 - word: ਰਿਜ਼ਲਟਸ
   length: 5
   tier: daily
@@ -5227,9 +5435,13 @@ words:
   - main_list
 - word: ਅਬਰਾਹਮ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Abraham)
 - word: ਵੇਜ਼ਕੁਏਜ਼
   length: 5
   tier: daily
@@ -5257,9 +5469,13 @@ words:
   - main_list
 - word: ਸਪੁਟਨਿਕ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Sputnik)
 - word: ਰਿਕਸ਼ਾਵਾਲੀ
   length: 5
   tier: daily
@@ -5407,9 +5623,13 @@ words:
   - main_list
 - word: ਟਾਈਗ੍ਰਿਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tigris river)
 - word: ਲਹਿਰਾਉਣਾ
   length: 5
   tier: daily
@@ -5517,9 +5737,13 @@ words:
   - main_list
 - word: ਪੈਟ੍ਰਿਸ਼ੀਆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Patricia)
 - word: ਲਾਇਬ੍ਰੇਰੀ
   length: 5
   tier: daily
@@ -5769,9 +5993,13 @@ words:
   - main_list
 - word: ਏਡਵਰਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Edward)
 - word: ਐਕਪ੍ਰੈਸ
   length: 5
   tier: daily
@@ -5859,9 +6087,13 @@ words:
   - main_list
 - word: ਜਬਲੋਂਸਕੀ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Jablonski)
 - word: ਐਸ਼ਵਰੀਆ
   length: 5
   tier: daily
@@ -6029,9 +6261,13 @@ words:
   - main_list
 - word: ਐਂਡਰਸਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Anderson)
 - word: ਪੜ੍ਹਾਉਣੇ
   length: 5
   tier: daily
@@ -6044,9 +6280,13 @@ words:
   - main_list
 - word: ਸਾਲਵਾਦੋਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Salvador)
 - word: ਮਸੂਰਕਰ
   length: 5
   tier: daily
@@ -6064,9 +6304,13 @@ words:
   - main_list
 - word: ਫ਼ਿਰੋਜ਼ਪੁਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Firozpur city)
 - word: ਤਰਿਮੂਰਤੀ
   length: 5
   tier: daily
@@ -6074,9 +6318,13 @@ words:
   - main_list
 - word: ਲੀਵਰਪੂਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Liverpool)
 - word: ਥਾਈਰੋਇਡ
   length: 5
   tier: daily
@@ -6129,9 +6377,13 @@ words:
   - main_list
 - word: ਬਰਿਟੇਨਿਕ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'Britannic'
 - word: ਇਨਵਰਸ
   length: 5
   tier: daily
@@ -6169,9 +6421,13 @@ words:
   - main_list
 - word: ਨਾਇਜੀਰਿਆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Nigeria)
 - word: ਫਰੀਦਕੋਟੀ
   length: 5
   tier: daily
@@ -6184,9 +6440,13 @@ words:
   - main_list
 - word: ਤਨਜ਼ਾਨੀਆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tanzania)
 - word: ਅਭਿਕਰਿਆ
   length: 5
   tier: daily
@@ -6364,9 +6624,13 @@ words:
   - main_list
 - word: ਨਿਊਜਰਸੀ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (New Jersey)
 - word: ਪਰਿਆਟਕੋਂ
   length: 5
   tier: daily
@@ -6389,9 +6653,13 @@ words:
   - main_list
 - word: ਸੂਪਰਹੀਰੋ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'superhero'
 - word: ਮਿਨਿਸਟਰੀ
   length: 5
   tier: daily
@@ -6414,9 +6682,13 @@ words:
   - main_list
 - word: ਆਟੋਮੇਸ਼ਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'automation'
 - word: ਫੋਰਟਸਨ
   length: 5
   tier: daily
@@ -6479,9 +6751,13 @@ words:
   - main_list
 - word: ਕਾਸਪਾਰੋਵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Kasparov)
 - word: ਰੇਸ਼ਮਈਆ
   length: 5
   tier: daily
@@ -6589,9 +6865,13 @@ words:
   - main_list
 - word: ਟਰਾਂਸਫ਼ਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'transfer'
 - word: ਪੈਨਿਸਿਲਿਨ
   length: 5
   tier: daily
@@ -6684,9 +6964,13 @@ words:
   - main_list
 - word: ਈਸਟਵੁਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Eastwood)
 - word: ਗ੍ਰਹਿਸਥੀ
   length: 5
   tier: daily
@@ -6814,9 +7098,13 @@ words:
   - main_list
 - word: ਗ੍ਰੀਨਵਿਚ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Greenwich)
 - word: ਅਨੁਕਾਰਯ
   length: 5
   tier: daily
@@ -6919,9 +7207,13 @@ words:
   - main_list
 - word: ਅਲਜੇਰੀਆ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Algeria)
 - word: ਸਬਮੁਕੋਸਾ
   length: 5
   tier: daily
@@ -6949,9 +7241,13 @@ words:
   - main_list
 - word: ਫ੍ਰੈਂਕਲੀਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Franklin)
 - word: ਥੀਓਲੋਜੀਕਾ
   length: 5
   tier: daily
@@ -6969,9 +7265,13 @@ words:
   - main_list
 - word: ਡਿਟੈਕਟਿਵ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'detective'
 - word: ਹੈਲੀਕਾਈਟ
   length: 5
   tier: daily
@@ -7114,14 +7414,22 @@ words:
   - main_list
 - word: ਆਰਟੀਕਲ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'article'
 - word: ਟ੍ਰੋਯਲਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Troilus)
 - word: ਕਠਫੋੜਿਆਂ
   length: 5
   tier: daily
@@ -7189,9 +7497,13 @@ words:
   - main_list
 - word: ਸਕਾਟਲੈਂਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Scotland)
 - word: ਅਣਸਾਹਿਤ
   length: 5
   tier: daily
@@ -7224,9 +7536,13 @@ words:
   - main_list
 - word: ਅਲੈਕਸਿਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Alexis)
 - word: ਉਪਯੋਗਿਕ
   length: 5
   tier: daily
@@ -7234,9 +7550,13 @@ words:
   - main_list
 - word: ਪੋਰਟਲੈਂਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Portland)
 - word: ਅਵਿਸ਼੍ਕਾਰਾਂ
   length: 5
   tier: daily
@@ -7649,9 +7969,13 @@ words:
   - main_list
 - word: ਟੈਲੀਵਿਜ਼ਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'television'
 - word: ਇਸਤਿਮਾਲ
   length: 5
   tier: daily
@@ -8084,9 +8408,13 @@ words:
   - main_list
 - word: ਟਾਈਫਾਈਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'typhoid'
 - word: ਬੈਚਲਰਸ
   length: 5
   tier: daily
@@ -8094,9 +8422,13 @@ words:
   - main_list
 - word: ਅਡਵਾਂਸਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'advanced', foreign loanword
 - word: ਲਈਸ਼ਲਾਘਾ
   length: 5
   tier: daily
@@ -8104,9 +8436,13 @@ words:
   - main_list
 - word: ਰੋਟਰਦਾਮ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Rotterdam)
 - word: ਮਿਲੋਸੈਵਿਕ
   length: 5
   tier: daily
@@ -8354,9 +8690,13 @@ words:
   - main_list
 - word: ਕ੍ਰਿਸਟੀਨਾ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Christina)
 - word: ਮਅਰਫ਼ਤ
   length: 5
   tier: daily
@@ -8769,9 +9109,13 @@ words:
   - main_list
 - word: ਕਿਡਨੈਪਰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'kidnapper'
 - word: ਡੈਰੀਵੇਟਿਡ
   length: 5
   tier: daily
@@ -8814,9 +9158,13 @@ words:
   - main_list
 - word: ਵੀਅਤਨਾਮ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Vietnam)
 - word: ਸਲੋਬੋਦਾਨ
   length: 5
   tier: daily
@@ -11543,9 +11891,13 @@ words:
   - main_list
 - word: ਅਲਬਰਟ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Albert)
 - word: ਆਰਸ਼ਸ਼ਣ
   length: 5
   tier: valid
@@ -22061,9 +22413,13 @@ words:
   - main_list
 - word: ਐਲਫਰਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Alfred)
 - word: ਗਾਇਕਵਾੜ
   length: 5
   tier: valid
@@ -27959,9 +28315,13 @@ words:
   - main_list
 - word: ਅਡਜਸਟ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'adjust', foreign loanword
 - word: ਵਰਚੁਅਲ
   length: 5
   tier: valid
@@ -32509,9 +32869,13 @@ words:
   - main_list
 - word: ਅਸਗਰਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Asgard, fictional place)
 - word: ਜਲਪਰੀਆਂ
   length: 5
   tier: valid
@@ -34928,9 +35292,13 @@ words:
   - main_list
 - word: ਵਟਸਐਪ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (WhatsApp brand)
 - word: ਸ਼ਹਿਰਿਆਰ
   length: 5
   tier: valid
@@ -36383,9 +36751,13 @@ words:
   - main_list
 - word: ਐਡਵਰਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Edward)
 - word: ਅਰਗੈਟਸ
   length: 5
   tier: valid
@@ -40471,9 +40843,13 @@ words:
   - main_list
 - word: ਐਲਬਰਟ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Albert)
 - word: ਹਾਈਡਪਸ
   length: 5
   tier: valid
@@ -43216,9 +43592,13 @@ words:
   - main_list
 - word: ਫਰਗਸਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ferguson)
 - word: ਗਵਰਨਰਾਂ
   length: 5
   tier: valid
@@ -47193,9 +47573,13 @@ words:
   - main_list
 - word: ਅਰਸਲਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Arslan)
 - word: ਸ਼ਿਕਲੀਗਰ
   length: 5
   tier: valid
@@ -47503,9 +47887,13 @@ words:
   - main_list
 - word: ਅਰਨਸਟ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ernst)
 - word: ਰਵੀਦਾਸੀਏ
   length: 5
   tier: valid
@@ -50714,9 +51102,13 @@ words:
   - main_list
 - word: ਅਰਡਰਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ardern)
 - word: ਸਮਕਾਲੀਆਂ
   length: 5
   tier: valid
@@ -55443,9 +55835,13 @@ words:
   - main_list
 - word: ਅਲਫਰਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Alfred)
 - word: ਦਾਵਾਨਗਰੇ
   length: 5
   tier: valid
@@ -58480,9 +58876,13 @@ words:
   - main_list
 - word: ਆਰਨਲਡ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Arnold)
 - word: ਪੈਨਸਲੀਨਾਂ
   length: 5
   tier: valid
@@ -59415,9 +59815,13 @@ words:
   - main_list
 - word: ਐਵਰਟਨ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Everton)
 - word: ਬਹੁਮਾਤਰਾ
   length: 5
   tier: valid
@@ -61707,9 +62111,13 @@ words:
   - main_list
 - word: ਐਕਟਰਸ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'actors'
 - word: ਚਮਕਾਉਂਦੇ
   length: 5
   tier: valid

@@ -53,9 +53,13 @@ words:
   - main_list
 - word: अकबरि
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - related to Akbar (Mughal emperor)
 - word: सिमजङ
   length: 5
   tier: daily
@@ -251,9 +255,13 @@ words:
   - main_list
 - word: भीमाद
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name Bhimad
 - word: उजाडि
   length: 5
   tier: daily
@@ -341,9 +349,13 @@ words:
   - main_list
 - word: एएफपी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation - AFP (news agency)
 - word: एकासी
   length: 5
   tier: daily
@@ -613,9 +625,13 @@ words:
   - main_list
 - word: अनिता
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Anita
 - word: विलोम
   length: 5
   tier: daily
@@ -904,6 +920,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - cycle/bicycle
 - word: जरायो
   length: 5
   tier: daily
@@ -1064,6 +1084,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Nepali deity name Ajima
 - word: किनाइ
   length: 5
   tier: daily
@@ -1124,6 +1148,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - robot
 - word: लाचार
   length: 5
   tier: daily
@@ -1211,9 +1239,13 @@ words:
   - main_list
 - word: दोलखा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Dolakha district
 - word: गमौडी
   length: 5
   tier: daily
@@ -1274,6 +1306,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - meeting
 - word: पालना
   length: 5
   tier: daily
@@ -1364,11 +1400,19 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - guitar
 - word: अफगान
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Afghan/Afghanistan
 - word: किताब
   length: 5
   tier: daily
@@ -1476,9 +1520,13 @@ words:
   - main_list
 - word: लाहोर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Lahore city
 - word: पिपरा
   length: 5
   tier: daily
@@ -1719,6 +1767,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - radar
 - word: विवाद
   length: 5
   tier: daily
@@ -1796,9 +1848,13 @@ words:
   - main_list
 - word: धादिङ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Dhading district
 - word: दोजाई
   length: 5
   tier: daily
@@ -1876,9 +1932,13 @@ words:
   - main_list
 - word: दङदास
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Dangdas
 - word: किटान
   length: 5
   tier: daily
@@ -1886,9 +1946,13 @@ words:
   - main_list
 - word: टाइगर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - tiger
 - word: हरामी
   length: 5
   tier: daily
@@ -1964,6 +2028,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - powder
 - word: मोडाइ
   length: 5
   tier: daily
@@ -2241,9 +2309,13 @@ words:
   - main_list
 - word: गलकोट
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Galakot place name
 - word: विजयी
   length: 5
   tier: daily
@@ -2271,9 +2343,13 @@ words:
   - main_list
 - word: जीसीअ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation - GCA
 - word: ओकलाउ
   length: 5
   tier: daily
@@ -2301,9 +2377,13 @@ words:
   - main_list
 - word: ककपीट
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - cockpit
 - word: झपारि
   length: 5
   tier: daily
@@ -2351,9 +2431,13 @@ words:
   - main_list
 - word: गोपाल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Gopal
 - word: चिलिम
   length: 5
   tier: daily
@@ -2361,9 +2445,13 @@ words:
   - main_list
 - word: राइटर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - writer
 - word: धनसार
   length: 5
   tier: daily
@@ -2424,6 +2512,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure Sanskrit term - too rare for daily
 - word: सिसौट
   length: 5
   tier: daily
@@ -2476,9 +2568,13 @@ words:
   - main_list
 - word: एलियट
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Eliot/Elliott
 - word: थपाथप
   length: 5
   tier: daily
@@ -2511,9 +2607,13 @@ words:
   - main_list
 - word: एरीयल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - aerial / brand name
 - word: हडपाइ
   length: 5
   tier: daily
@@ -2526,9 +2626,13 @@ words:
   - main_list
 - word: ऋषिदह
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name Rishidaha
 - word: पिताम
   length: 5
   tier: daily
@@ -2536,9 +2640,13 @@ words:
   - main_list
 - word: रोटरी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - Rotary
 - word: जसिलो
   length: 5
   tier: daily
@@ -2606,14 +2714,22 @@ words:
   - main_list
 - word: राजीव
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Rajiv
 - word: जगनाथ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Jagannath (deity)
 - word: भसाभस
   length: 5
   tier: daily
@@ -2776,9 +2892,13 @@ words:
   - main_list
 - word: नलिनी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Nalini
 - word: वनचरी
   length: 5
   tier: daily
@@ -2936,9 +3056,13 @@ words:
   - main_list
 - word: एसओएस
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation - SOS
   history:
   - 1690
   - 1696
@@ -3074,6 +3198,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - committee
 - word: निफनि
   length: 5
   tier: daily
@@ -3181,9 +3309,13 @@ words:
   - main_list
 - word: चितवन
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Chitwan district
 - word: जिनिस
   length: 5
   tier: daily
@@ -3221,9 +3353,13 @@ words:
   - main_list
 - word: एपोलो
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Apollo
 - word: तलतिर
   length: 5
   tier: daily
@@ -3279,6 +3415,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - pilot
 - word: बौराउ
   length: 5
   tier: daily
@@ -3391,9 +3531,13 @@ words:
   - main_list
 - word: हाइटी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Haiti
 - word: अपशोच
   length: 5
   tier: daily
@@ -3601,9 +3745,13 @@ words:
   - main_list
 - word: शारदा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Sharda river / given name
 - word: पलानि
   length: 5
   tier: daily
@@ -3711,9 +3859,13 @@ words:
   - main_list
 - word: पोखरा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Pokhara city
 - word: बथानि
   length: 5
   tier: daily
@@ -3736,9 +3888,13 @@ words:
   - main_list
 - word: विमला
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Vimala
 - word: सावयव
   length: 5
   tier: daily
@@ -3846,9 +4002,13 @@ words:
   - main_list
 - word: टिबटो
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tibet
 - word: माझफल
   length: 5
   tier: daily
@@ -3987,6 +4147,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - name of goddess Bhagwati
 - word: अविरल
   length: 5
   tier: daily
@@ -4014,9 +4178,13 @@ words:
   - main_list
 - word: दिलीप
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Dilip
 - word: रसीया
   length: 5
   tier: daily
@@ -4054,9 +4222,13 @@ words:
   - main_list
 - word: रौतहट
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Rautahat district
 - word: खराखर
   length: 5
   tier: daily
@@ -4084,9 +4256,13 @@ words:
   - main_list
 - word: एमिकस
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Legal Latin loanword - amicus
 - word: कोगटी
   length: 5
   tier: daily
@@ -4337,6 +4513,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - diary
 - word: निछाउ
   length: 5
   tier: daily
@@ -4414,9 +4594,13 @@ words:
   - main_list
 - word: हलिउड
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Hollywood
 - word: विमार
   length: 5
   tier: daily
@@ -4534,9 +4718,13 @@ words:
   - main_list
 - word: साइबर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - cyber
 - word: गदालो
   length: 5
   tier: daily
@@ -4667,6 +4855,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Scientific loanword - amoeba
 - word: विहीन
   length: 5
   tier: daily
@@ -4729,9 +4921,13 @@ words:
   - main_list
 - word: निजगढ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Nijgadh place
 - word: उपभोग
   length: 5
   tier: daily
@@ -4754,14 +4950,22 @@ words:
   - main_list
 - word: विजया
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Vijaya
 - word: माइली
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Miley
 - word: टकटकी
   length: 5
   tier: daily
@@ -4819,9 +5023,13 @@ words:
   - main_list
 - word: भाउचर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - voucher
 - word: विचलन
   length: 5
   tier: daily
@@ -4879,9 +5087,13 @@ words:
   - main_list
 - word: माइकल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Michael
 - word: नरबलि
   length: 5
   tier: daily
@@ -4982,6 +5194,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - commission
 - word: भइपरी
   length: 5
   tier: daily
@@ -5049,9 +5265,13 @@ words:
   - main_list
 - word: मराठी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Marathi language
 - word: खिचडी
   length: 5
   tier: daily
@@ -5535,9 +5755,13 @@ words:
   - main_list
 - word: मझगवा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Majhgawa place
 - word: बनौला
   length: 5
   tier: daily
@@ -5575,9 +5799,13 @@ words:
   - main_list
 - word: दमौली
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Damauli town
 - word: समापक
   length: 5
   tier: daily
@@ -5590,9 +5818,13 @@ words:
   - main_list
 - word: धनगढी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Dhangadhi city
 - word: ढोगाइ
   length: 5
   tier: daily
@@ -5688,6 +5920,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - lighter
 - word: वियोग
   length: 5
   tier: daily
@@ -5870,9 +6106,13 @@ words:
   - main_list
 - word: रामजी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ramji (Lord Ram)
 - word: जनकवि
   length: 5
   tier: daily
@@ -6025,9 +6265,13 @@ words:
   - main_list
 - word: एएफसी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation - AFC
 - word: हौसला
   length: 5
   tier: daily
@@ -6088,6 +6332,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Pakhala place name
 - word: उपासक
   length: 5
   tier: daily
@@ -6295,9 +6543,13 @@ words:
   - main_list
 - word: राउटर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - router
 - word: ढोलाइ
   length: 5
   tier: daily
@@ -6419,9 +6671,13 @@ words:
   - main_list
 - word: दाहाल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname Dahal
 - word: घोचाइ
   length: 5
   tier: daily
@@ -6564,9 +6820,13 @@ words:
   - main_list
 - word: यशोदा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Yashoda (mother of Krishna)
 - word: साङथा
   length: 5
   tier: daily
@@ -6684,9 +6944,13 @@ words:
   - main_list
 - word: भवानी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - goddess Bhavani / given name
 - word: खरदार
   length: 5
   tier: daily
@@ -6804,17 +7068,25 @@ words:
   - main_list
 - word: जयनगर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Janakpur/Jayanagar place
   history:
   - 1684
   scheduled_day: 1684
 - word: कौटिल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Kautilya (ancient political thinker)
 - word: धबौली
   length: 5
   tier: daily
@@ -6845,6 +7117,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - virus
 - word: भगिनी
   length: 5
   tier: daily
@@ -6896,14 +7172,22 @@ words:
   - main_list
 - word: चौहान
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Chauhan clan/surname
 - word: गोरखा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Gorkha district/city
 - word: पारित
   length: 5
   tier: daily
@@ -7245,9 +7529,13 @@ words:
   - main_list
 - word: रोहित
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Rohit
 - word: मिचाउ
   length: 5
   tier: daily
@@ -7363,6 +7651,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Yamraj (deity of death)
 - word: गाविस
   length: 5
   tier: daily
@@ -7378,6 +7670,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Potentially offensive - outdated caste term, considered patronizing
 - word: दरिलो
   length: 5
   tier: daily
@@ -7410,9 +7706,13 @@ words:
   - main_list
 - word: बलराम
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Balaram (deity)
 - word: परभाव
   length: 5
   tier: daily
@@ -7625,9 +7925,13 @@ words:
   - main_list
 - word: छालिङ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Chaling place name
 - word: ठोकाउ
   length: 5
   tier: daily
@@ -7675,9 +7979,13 @@ words:
   - main_list
 - word: ओहायो
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ohio
 - word: सोचाइ
   length: 5
   tier: daily
@@ -7793,6 +8101,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Arabic loanword - madrasa
 - word: कटानी
   length: 5
   tier: daily
@@ -7907,6 +8219,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Technical math term - decimal, too obscure for daily
 - word: निकाय
   length: 5
   tier: daily
@@ -7929,9 +8245,13 @@ words:
   - main_list
 - word: हिजडा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially offensive - derogatory term for transgender
 - word: उपघात
   length: 5
   tier: daily
@@ -7939,14 +8259,22 @@ words:
   - main_list
 - word: मनिटर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - monitor
 - word: अचलगढ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Achalgarh fort/place
 - word: लोटनी
   length: 5
   tier: daily
@@ -8074,14 +8402,22 @@ words:
   - main_list
 - word: बाथटब
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - bathtub
 - word: सविता
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Savita
 - word: मनितो
   length: 5
   tier: daily
@@ -8089,9 +8425,13 @@ words:
   - main_list
 - word: सरिता
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Sarita
 - word: छिपाउ
   length: 5
   tier: daily
@@ -8202,6 +8542,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Arabic/Persian loanword - minaret
 - word: लोटाउ
   length: 5
   tier: daily
@@ -8312,6 +8656,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Sahara desert / company name
 - word: छयासी
   length: 5
   tier: daily
@@ -8374,9 +8722,13 @@ words:
   - main_list
 - word: बलिउड
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun / English loanword - Bollywood
 - word: आजकाल
   length: 5
   tier: daily
@@ -8389,9 +8741,13 @@ words:
   - main_list
 - word: जानकी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Janaki (Sita)
 - word: किनाउ
   length: 5
   tier: daily
@@ -8434,9 +8790,13 @@ words:
   - main_list
 - word: निखिल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Nikhil
 - word: अकारण
   length: 5
   tier: daily
@@ -8449,9 +8809,13 @@ words:
   - main_list
 - word: भगीरथ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - mythological king Bhagirath
 - word: वाचाल
   length: 5
   tier: daily
@@ -8514,9 +8878,13 @@ words:
   - main_list
 - word: जगदीश
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Jagdish
 - word: तामाङ
   length: 5
   tier: daily
@@ -8632,6 +9000,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - tiffin
 - word: किचाउ
   length: 5
   tier: daily
@@ -8667,6 +9039,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - rifle
 - word: चिनाइ
   length: 5
   tier: daily
@@ -8709,9 +9085,13 @@ words:
   - main_list
 - word: झलनाथ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Jhalnath
 - word: उपदफा
   length: 5
   tier: daily
@@ -8727,6 +9107,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Milan city
 - word: पाथरी
   length: 5
   tier: daily
@@ -8794,9 +9178,13 @@ words:
   - main_list
 - word: डीएनए
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation - DNA
 - word: कलकली
   length: 5
   tier: daily
@@ -8899,9 +9287,13 @@ words:
   - main_list
 - word: जापान
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Japan
 - word: चिलाउ
   length: 5
   tier: daily
@@ -9243,9 +9635,13 @@ words:
   - main_list
 - word: बनारस
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Banaras/Varanasi city
 - word: योजित
   length: 5
   tier: daily
@@ -9321,6 +9717,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - January
 - word: हिमोट
   length: 5
   tier: daily
@@ -9383,9 +9783,13 @@ words:
   - main_list
 - word: मनीषा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Manisha
 - word: शाणित
   length: 5
   tier: daily
@@ -9428,9 +9832,13 @@ words:
   - main_list
 - word: खोटाङ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Khotang district
 - word: चोपाइ
   length: 5
   tier: daily
@@ -9443,9 +9851,13 @@ words:
   - main_list
 - word: बाइबल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Bible
 - word: सातसय
   length: 5
   tier: daily
@@ -9561,6 +9973,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Archaic/Sanskrit - too literary for daily puzzle
 - word: आङदिम
   length: 5
   tier: daily
@@ -9608,9 +10024,13 @@ words:
   - main_list
 - word: शिवजी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Shivaji (historical king)
 - word: हबिगत
   length: 5
   tier: daily
@@ -9628,9 +10048,13 @@ words:
   - main_list
 - word: पिकअप
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - pickup
 - word: अवयवी
   length: 5
   tier: daily
@@ -9743,14 +10167,22 @@ words:
   - main_list
 - word: दधीचि
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - sage Dadhichi
 - word: मिडिल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - middle
 - word: मिठाई
   length: 5
   tier: daily
@@ -9962,6 +10394,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - area
 - word: थरहरी
   length: 5
   tier: daily
@@ -9984,9 +10420,13 @@ words:
   - main_list
 - word: गणपति
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ganapati (deity)
 - word: उपनाम
   length: 5
   tier: daily
@@ -9999,9 +10439,13 @@ words:
   - main_list
 - word: ययाति
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - mythological king Yayati
 - word: छिवाङ
   length: 5
   tier: daily
@@ -10039,9 +10483,13 @@ words:
   - main_list
 - word: बाबरी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Babri (mosque)
 - word: अलौटो
   length: 5
   tier: daily
@@ -10064,9 +10512,13 @@ words:
   - main_list
 - word: डायना
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Diana
 - word: सिविन
   length: 5
   tier: daily
@@ -10204,9 +10656,13 @@ words:
   - main_list
 - word: सीडीओ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation - CDO
 - word: लिपाउ
   length: 5
   tier: daily
@@ -10247,6 +10703,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun usage - God (Bhagwan)
 - word: आडिलो
   length: 5
   tier: daily
@@ -10282,6 +10742,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Portuguese loanword - padre/priest
 - word: अनरीत
   length: 5
   tier: daily
@@ -10317,6 +10781,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - theater
 - word: नासमझ
   length: 5
   tier: daily
@@ -10327,6 +10795,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Virat (mythological king / cricket player)
 - word: तिनको
   length: 5
   tier: daily
@@ -10454,9 +10926,13 @@ words:
   - main_list
 - word: अकबरी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - related to Akbar (Mughal emperor)
 - word: छटपटी
   length: 5
   tier: daily
@@ -10487,9 +10963,13 @@ words:
   - main_list
 - word: कौशिक
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name/clan name Kaushik
 - word: जलारी
   length: 5
   tier: daily
@@ -10695,6 +11175,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword - final
 - word: तपतपी
   length: 5
   tier: daily
@@ -10855,14 +11339,22 @@ words:
   - main_list
 - word: इटाली
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Italy
 - word: एनजीओ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation - NGO
 - word: झिरिप
   length: 5
   tier: daily

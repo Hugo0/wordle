@@ -101,9 +101,13 @@ words:
   - main_list
 - word: pyotr
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Russian name Peter)
 - word: bugun
   length: 5
   tier: daily
@@ -116,9 +120,13 @@ words:
   - main_list
 - word: yoqub
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jacob/Yaqub)
   history:
   - 1709
   scheduled_day: 1709
@@ -382,10 +390,14 @@ words:
   - main_list
 - word: chili
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Chile) or English loanword
 - word: shams
   length: 5
   tier: daily
@@ -538,9 +550,13 @@ words:
   - main_list
 - word: ssuda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword, not standard Uzbek
 - word: oshiq
   length: 5
   tier: daily
@@ -572,9 +588,13 @@ words:
   - main_list
 - word: rioya
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Rioja region)
 - word: salib
   length: 5
   tier: daily
@@ -700,10 +720,14 @@ words:
   scheduled_day: 1726
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (country Malta)
 - word: aorta
   length: 5
   tier: daily
@@ -721,9 +745,13 @@ words:
   - main_list
 - word: razil
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Brazil)
 - word: burga
   length: 5
   tier: daily
@@ -927,10 +955,14 @@ words:
   - main_list
 - word: tunis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tunisia/city)
 - word: sumka
   length: 5
   tier: daily
@@ -997,9 +1029,13 @@ words:
   - main_list
 - word: ilyos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Ilyas)
   history:
   - 1697
   scheduled_day: 1697
@@ -1039,6 +1075,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Potentially offensive (means 'obscene/indecent')
 - word: tilla
   length: 5
   tier: daily
@@ -1593,6 +1633,10 @@ words:
   frequency: 1.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (ethnic group, though also common word)
 - word: gʻarb
   length: 5
   tier: daily
@@ -1908,9 +1952,13 @@ words:
   - main_list
 - word: halab
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Aleppo in Arabic)
 - word: qismi
   length: 5
   tier: daily
@@ -1923,9 +1971,13 @@ words:
   - main_list
 - word: nukus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Uzbek city)
 - word: xiyla
   length: 5
   tier: daily
@@ -2066,9 +2118,13 @@ words:
   - main_list
 - word: dubay
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Dubai)
 - word: abzal
   length: 5
   tier: daily
@@ -2125,9 +2181,13 @@ words:
   - main_list
 - word: beliz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Belize)
 - word: nazar
   length: 5
   tier: daily
@@ -2382,9 +2442,13 @@ words:
   - main_list
 - word: usmon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Osman/Uthman)
 - word: tojir
   length: 5
   tier: daily
@@ -2402,9 +2466,13 @@ words:
   - main_list
 - word: eston
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Estonian, or name)
 - word: muhit
   length: 5
   tier: daily
@@ -2472,10 +2540,14 @@ words:
   - main_list
 - word: marta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Martha)
 - word: tuhfa
   length: 5
   tier: daily
@@ -2499,9 +2571,13 @@ words:
   - main_list
 - word: oybek
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Uzbek name)
   history:
   - 1696
   scheduled_day: 1696
@@ -2786,10 +2862,14 @@ words:
   - main_list
 - word: alban
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Albanian/name)
 - word: aksar
   length: 5
   tier: daily
@@ -2863,9 +2943,13 @@ words:
   - main_list
 - word: litva
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Lithuania)
 - word: viski
   length: 5
   tier: daily
@@ -2873,9 +2957,13 @@ words:
   - main_list
 - word: basra
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Iraqi city)
 - word: qahva
   length: 5
   tier: daily
@@ -2883,9 +2971,13 @@ words:
   - main_list
 - word: ogayo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ohio)
 - word: suyak
   length: 5
   tier: daily

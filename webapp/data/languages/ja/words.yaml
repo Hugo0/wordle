@@ -188,9 +188,13 @@ words:
   - main_list
 - word: ほんと゜に
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: おなじとし
   length: 5
   tier: daily
@@ -373,9 +377,13 @@ words:
   - main_list
 - word: たっか゜い
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: じゅうにん
   length: 5
   tier: daily
@@ -413,9 +421,13 @@ words:
   - main_list
 - word: げ゜むせい
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: おつきさま
   length: 5
   tier: daily
@@ -1878,9 +1890,13 @@ words:
   - main_list
 - word: かわい゜い
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: どうじかん
   length: 5
   tier: daily
@@ -1923,9 +1939,13 @@ words:
   - main_list
 - word: えっちぼん
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit - ecchi book (pornographic book)
 - word: なんかげつ
   length: 5
   tier: daily
@@ -2288,9 +2308,13 @@ words:
   - main_list
 - word: しんち゜む
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: ごせいこう
   length: 5
   tier: daily
@@ -2428,9 +2452,13 @@ words:
   - main_list
 - word: ほんめ゜る
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: えいぎょう
   length: 5
   tier: daily
@@ -2463,9 +2491,13 @@ words:
   - main_list
 - word: なまか゜ど
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: なんばいも
   length: 5
   tier: daily
@@ -2758,9 +2790,13 @@ words:
   - main_list
 - word: で゜ためい
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: こうにゅう
   length: 5
   tier: daily
@@ -2958,14 +2994,22 @@ words:
   - main_list
 - word: なまで゜た
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: えろまんが
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit - erotic manga/pornographic manga
 - word: かぞくほう
   length: 5
   tier: daily
@@ -3128,9 +3172,13 @@ words:
   - main_list
 - word: えろがぞう
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit - erotic image/pornographic image
 - word: しごとうた
   length: 5
   tier: daily
@@ -3278,9 +3326,13 @@ words:
   - main_list
 - word: で゜たてん
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: きほんおん
   length: 5
   tier: daily
@@ -3323,9 +3375,13 @@ words:
   - main_list
 - word: ぐる゜ぷか
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: きんづくり
   length: 5
   tier: daily
@@ -3338,9 +3394,13 @@ words:
   - main_list
 - word: ぺ゜じすう
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: いろちがい
   length: 5
   tier: daily
@@ -3443,9 +3503,13 @@ words:
   - main_list
 - word: で゜たがた
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: りんくがた
   length: 5
   tier: daily
@@ -3813,9 +3877,13 @@ words:
   - main_list
 - word: ち゜むせん
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: おとなよう
   length: 5
   tier: daily
@@ -3873,9 +3941,13 @@ words:
   - main_list
 - word: の゜たりん
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: ぐんせいふ
   length: 5
   tier: daily
@@ -4108,9 +4180,13 @@ words:
   - main_list
 - word: ぺ゜じもの
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: きょくのみ
   length: 5
   tier: daily
@@ -4173,14 +4249,22 @@ words:
   - main_list
 - word: げ゜むのう
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: めいし゜ん
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: だいにしゅ
   length: 5
   tier: daily
@@ -4243,9 +4327,13 @@ words:
   - main_list
 - word: はっや゜い
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: おやのだい
   length: 5
   tier: daily
@@ -4318,9 +4406,13 @@ words:
   - main_list
 - word: ちゃくえろ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit - clothed erotica genre
 - word: あんぜんき
   length: 5
   tier: daily
@@ -4533,9 +4625,13 @@ words:
   - main_list
 - word: み゜しぇん
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: おんなぶり
   length: 5
   tier: daily
@@ -4873,9 +4969,13 @@ words:
   - main_list
 - word: え゜きゅう
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: らいきょく
   length: 5
   tier: daily
@@ -5103,9 +5203,13 @@ words:
   - main_list
 - word: くにこ゜ど
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: じどうしき
   length: 5
   tier: daily
@@ -5218,9 +5322,13 @@ words:
   - main_list
 - word: ふっか゜つ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: けっていぎ
   length: 5
   tier: daily
@@ -5278,9 +5386,13 @@ words:
   - main_list
 - word: こ゜どめい
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: めっけもん
   length: 5
   tier: daily
@@ -5493,9 +5605,13 @@ words:
   - main_list
 - word: び゜きゅう
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: むらむすめ
   length: 5
   tier: daily
@@ -5613,9 +5729,13 @@ words:
   - main_list
 - word: ゆ゜ざめい
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: そうちめい
   length: 5
   tier: daily
@@ -5768,9 +5888,13 @@ words:
   - main_list
 - word: で゜たもじ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: もじで゜た
   length: 5
   tier: daily
@@ -5863,9 +5987,13 @@ words:
   - main_list
 - word: で゜たほご
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: にほんぶん
   length: 5
   tier: daily
@@ -5971,6 +6099,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Sexually suggestive - sexual arousal/being in heat
 - word: つけぐすり
   length: 5
   tier: daily
@@ -6103,14 +6235,22 @@ words:
   - main_list
 - word: だいすた゜
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: すた゜せい
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: じょうへん
   length: 5
   tier: daily
@@ -6238,9 +6378,13 @@ words:
   - main_list
 - word: お゜ぷんか
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: せいひんか
   length: 5
   tier: daily
@@ -6288,9 +6432,13 @@ words:
   - main_list
 - word: りり゜すび
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: ぱんつのひ
   length: 5
   tier: daily
@@ -6308,9 +6456,13 @@ words:
   - main_list
 - word: さっか゜ぶ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: じょうぶん
   length: 5
   tier: daily
@@ -6373,9 +6525,13 @@ words:
   - main_list
 - word: ぺ゜じづけ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: でんきだい
   length: 5
   tier: daily
@@ -6438,9 +6594,13 @@ words:
   - main_list
 - word: えんま゜く
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: きんしぶつ
   length: 5
   tier: daily
@@ -6553,9 +6713,13 @@ words:
   - main_list
 - word: からめ゜る
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: せかいきぼ
   length: 5
   tier: daily
@@ -6593,9 +6757,13 @@ words:
   - main_list
 - word: ゆ゜ざがわ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: たびすがた
   length: 5
   tier: daily
@@ -6628,9 +6796,13 @@ words:
   - main_list
 - word: こぐる゜ぷ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: さんきょう
   length: 5
   tier: daily
@@ -6846,11 +7018,19 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Violent/disturbing - god killing/deicide (variant reading)
 - word: かみころし
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Violent/disturbing - god killing/deicide
 - word: じかんたい
   length: 5
   tier: daily
@@ -7123,9 +7303,13 @@ words:
   - main_list
 - word: てぃ゜そう
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: りょうしゅ
   length: 5
   tier: daily
@@ -7403,9 +7587,13 @@ words:
   - main_list
 - word: こ゜ひ゜や
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten marks (゜) improperly
 - word: らくてんか
   length: 5
   tier: daily
@@ -7423,9 +7611,13 @@ words:
   - main_list
 - word: すた゜がた
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: まじうける
   length: 5
   tier: daily
@@ -7483,14 +7675,22 @@ words:
   - main_list
 - word: じぇ゜たい
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) and non-standard kana
 - word: じぇいたい
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Malformed transliteration - J-tai (self-defense force), uses non-standard じぇ
 - word: ひとつあな
   length: 5
   tier: daily
@@ -7523,9 +7723,13 @@ words:
   - main_list
 - word: でぃ゜そう
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: ひひょうじ
   length: 5
   tier: daily
@@ -7538,9 +7742,13 @@ words:
   - main_list
 - word: しんる゜る
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: うんてんし
   length: 5
   tier: daily
@@ -7721,6 +7929,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Sexually suggestive - face underwear (fetish term)
 - word: くらしかた
   length: 5
   tier: daily
@@ -8328,9 +8540,13 @@ words:
   - main_list
 - word: あたりめ゜
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: あたりめえ
   length: 5
   tier: daily
@@ -8386,6 +8602,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Violent/disturbing - king killing/regicide
 - word: じつじかん
   length: 5
   tier: daily
@@ -8701,6 +8921,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Violent/disturbing - dog killing (plant name, but unpleasant as daily word)
 - word: そうぎいん
   length: 5
   tier: daily
@@ -8713,9 +8937,13 @@ words:
   - main_list
 - word: きのうき゜
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: ぎょうすう
   length: 5
   tier: daily
@@ -8968,9 +9196,13 @@ words:
   - main_list
 - word: すぽ゜つし
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: しはいりつ
   length: 5
   tier: daily
@@ -8986,6 +9218,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Violent/disturbing - patricide (father killing)
 - word: せいぞうき
   length: 5
   tier: daily
@@ -9153,9 +9389,13 @@ words:
   - main_list
 - word: ぺ゜じわく
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: しょきてん
   length: 5
   tier: daily
@@ -9408,9 +9648,13 @@ words:
   - main_list
 - word: お゜きゃく
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: ふぁんそう
   length: 5
   tier: daily
@@ -9423,9 +9667,13 @@ words:
   - main_list
 - word: はつえっち
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sexually explicit - first sexual experience
 - word: しみんけん
   length: 5
   tier: daily
@@ -9583,9 +9831,13 @@ words:
   - main_list
 - word: し゜げんご
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: あきのそら
   length: 5
   tier: daily
@@ -9633,9 +9885,13 @@ words:
   - main_list
 - word: ま゜くづけ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: しにかわる
   length: 5
   tier: daily
@@ -9698,9 +9954,13 @@ words:
   - main_list
 - word: おか゜さん
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: かんししゃ
   length: 5
   tier: daily
@@ -9803,9 +10063,13 @@ words:
   - main_list
 - word: しろぼ゜る
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - contains half-width handakuten mark (゜) improperly
 - word: おおくびえ
   length: 5
   tier: daily

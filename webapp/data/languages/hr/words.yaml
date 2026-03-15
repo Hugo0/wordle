@@ -109,16 +109,24 @@ words:
   - main_list
 - word: karla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: perun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Slavic deity
 - word: zorni
   length: 5
   tier: daily
@@ -324,10 +332,14 @@ words:
   - main_list
 - word: josip
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: pampa
   length: 5
   tier: daily
@@ -491,10 +503,14 @@ words:
   - main_list
 - word: adela
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: vrije
   length: 5
   tier: daily
@@ -581,9 +597,13 @@ words:
   - main_list
 - word: erdut
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Croatia
 - word: upeti
   length: 5
   tier: daily
@@ -655,15 +675,23 @@ words:
   - main_list
 - word: cipar
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Cyprus
 - word: alisa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (Alisa/Alice)
 - word: prišt
   length: 5
   tier: daily
@@ -792,10 +820,14 @@ words:
   - main_list
 - word: sisak
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - city in Croatia (also means helmet)
 - word: brica
   length: 5
   tier: valid
@@ -935,10 +967,14 @@ words:
   - main_list
 - word: radić
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Stjepan Radić)
 - word: začet
   length: 5
   tier: daily
@@ -1098,9 +1134,13 @@ words:
   - main_list
 - word: edita
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: ravni
   length: 5
   tier: daily
@@ -1169,10 +1209,14 @@ words:
   - main_list
 - word: asean
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: acronym - ASEAN organization
 - word: ovuda
   length: 5
   tier: daily
@@ -1215,9 +1259,13 @@ words:
   - main_list
 - word: teuta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Illyrian queen name
 - word: frend
   length: 5
   tier: daily
@@ -1246,10 +1294,14 @@ words:
   - main_list
 - word: goran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: putar
   length: 5
   tier: daily
@@ -1272,10 +1324,14 @@ words:
   - main_list
 - word: alžir
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name (Algeria)
 - word: jahač
   length: 5
   tier: daily
@@ -1300,10 +1356,14 @@ words:
   - main_list
 - word: pazin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Istria
 - word: potop
   length: 5
   tier: daily
@@ -1353,10 +1413,14 @@ words:
   - main_list
 - word: tirol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Tyrol region
 - word: somun
   length: 5
   tier: daily
@@ -1498,9 +1562,13 @@ words:
   - main_list
 - word: šuica
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Šuica)
 - word: vozni
   length: 5
   tier: daily
@@ -1552,10 +1620,14 @@ words:
   - main_list
 - word: gacka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - river/region in Croatia
 - word: šogor
   length: 5
   tier: daily
@@ -1569,10 +1641,14 @@ words:
   - main_list
 - word: janja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name / town name
 - word: bluza
   length: 5
   tier: daily
@@ -1591,9 +1667,13 @@ words:
   - main_list
 - word: asuan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city name (Aswan)
 - word: napis
   length: 5
   tier: daily
@@ -1631,10 +1711,14 @@ words:
   - main_list
 - word: burma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: ambiguous - wedding ring in Croatian but also country name
 - word: zapor
   length: 5
   tier: valid
@@ -1664,9 +1748,13 @@ words:
   - main_list
 - word: sinaj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Sinai
 - word: paket
   length: 5
   tier: daily
@@ -1790,19 +1878,31 @@ words:
   - main_list
 - word: tilda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (also tilde character)
 - word: mohač
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city (Mohács)
 - word: zenon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - name (Zeno)
 - word: splav
   length: 5
   tier: daily
@@ -1842,9 +1942,13 @@ words:
   - main_list
 - word: sušak
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - historic city (now part of Rijeka)
 - word: vodik
   length: 5
   tier: daily
@@ -1928,10 +2032,14 @@ words:
   - main_list
 - word: turke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Turks (accusative)
 - word: koćar
   length: 5
   tier: valid
@@ -1994,9 +2102,13 @@ words:
   - main_list
 - word: jarun
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - lake/neighborhood in Zagreb
 - word: upora
   length: 5
   tier: valid
@@ -2004,10 +2116,14 @@ words:
   - main_list
 - word: pilat
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Pontius Pilate
 - word: mirni
   length: 5
   tier: daily
@@ -2133,9 +2249,13 @@ words:
   - main_list
 - word: alojz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name (Alojz)
 - word: lider
   length: 5
   tier: daily
@@ -2423,10 +2543,14 @@ words:
   - main_list
 - word: stevo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: umalo
   length: 5
   tier: daily
@@ -2516,9 +2640,13 @@ words:
   - main_list
 - word: nobel
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Nobel (prize/name)
 - word: metež
   length: 5
   tier: daily
@@ -2533,9 +2661,13 @@ words:
   - main_list
 - word: trsat
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - neighborhood in Rijeka
 - word: časni
   length: 5
   tier: daily
@@ -2671,16 +2803,24 @@ words:
   - main_list
 - word: klara
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: crnac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: potentially offensive racial term
 - word: zijan
   length: 5
   tier: daily
@@ -2694,10 +2834,14 @@ words:
   - main_list
 - word: peder
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: offensive/homophobic slur
 - word: psiha
   length: 5
   tier: daily
@@ -2766,9 +2910,13 @@ words:
   - main_list
 - word: theta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Greek letter - too technical/foreign for daily puzzle
 - word: uživo
   length: 5
   tier: daily
@@ -2865,9 +3013,13 @@ words:
   - main_list
 - word: afgan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: demonym/proper - Afghan
 - word: sivac
   length: 5
   tier: daily
@@ -2885,9 +3037,13 @@ words:
   - main_list
 - word: buzet
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Istria
 - word: ideal
   length: 5
   tier: daily
@@ -2912,10 +3068,14 @@ words:
   - main_list
 - word: ljuba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: jedan
   length: 5
   tier: daily
@@ -2993,10 +3153,14 @@ words:
   - main_list
 - word: alija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name (Alija)
 - word: otući
   length: 5
   tier: valid
@@ -3164,10 +3328,14 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name
 - word: prgav
   length: 5
   tier: daily
@@ -3222,10 +3390,14 @@ words:
   - main_list
 - word: zlata
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (also genitive of gold)
 - word: pelud
   length: 5
   tier: daily
@@ -3405,9 +3577,13 @@ words:
   - main_list
 - word: tisno
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Croatia
 - word: kombi
   length: 5
   tier: daily
@@ -3451,9 +3627,13 @@ words:
   - main_list
 - word: agram
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: archaic German name for Zagreb - proper noun
 - word: trema
   length: 5
   tier: daily
@@ -3478,9 +3658,13 @@ words:
   - main_list
 - word: ilica
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - street name in Zagreb
 - word: delfi
   length: 5
   tier: valid
@@ -3515,9 +3699,13 @@ words:
   - main_list
 - word: katon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Cato
 - word: ičega
   length: 5
   tier: daily
@@ -3564,9 +3752,13 @@ words:
   - main_list
 - word: tezej
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Theseus
 - word: kozar
   length: 5
   tier: daily
@@ -3683,10 +3875,14 @@ words:
   - main_list
 - word: lazar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: zadrt
   length: 5
   tier: valid
@@ -3747,10 +3943,14 @@ words:
   - main_list
 - word: hrvat
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: demonym - Croat
 - word: grlić
   length: 5
   tier: daily
@@ -3838,9 +4038,13 @@ words:
   - main_list
 - word: izida
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Isis (deity)
 - word: pesos
   length: 5
   tier: valid
@@ -3859,10 +4063,14 @@ words:
   - main_list
 - word: pegaz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Pegasus
 - word: pokop
   length: 5
   tier: daily
@@ -3956,9 +4164,13 @@ words:
   - main_list
 - word: vučko
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - mascot name (1984 Olympics)
 - word: krzno
   length: 5
   tier: daily
@@ -3993,9 +4205,13 @@ words:
   - main_list
 - word: lipik
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Croatia
 - word: ambra
   length: 5
   tier: daily
@@ -4003,9 +4219,13 @@ words:
   - main_list
 - word: rodos
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Rhodes island
 - word: dvama
   length: 5
   tier: daily
@@ -4093,9 +4313,13 @@ words:
   - main_list
 - word: šokac
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: ethnic group name - can be sensitive
 - word: limit
   length: 5
   tier: daily
@@ -4134,9 +4358,13 @@ words:
   - main_list
 - word: homić
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname
 - word: nerad
   length: 5
   tier: daily
@@ -4241,10 +4469,14 @@ words:
   - main_list
 - word: pavla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: kvrga
   length: 5
   tier: daily
@@ -4304,9 +4536,13 @@ words:
   - main_list
 - word: kreta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - island (Crete)
 - word: minus
   length: 5
   tier: daily
@@ -4443,10 +4679,14 @@ words:
   - main_list
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - country name
 - word: rikša
   length: 5
   tier: valid
@@ -4572,9 +4812,13 @@ words:
   - main_list
 - word: čiovo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - island in Croatia
 - word: trkač
   length: 5
   tier: daily
@@ -4588,9 +4832,13 @@ words:
   - main_list
 - word: hdssb
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: acronym - Croatian political party
 - word: suzni
   length: 5
   tier: daily
@@ -4642,10 +4890,14 @@ words:
   - main_list
 - word: ranka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: gulaš
   length: 5
   tier: daily
@@ -4880,10 +5132,14 @@ words:
   - main_list
 - word: budim
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - Buda (part of Budapest)
 - word: ubrus
   length: 5
   tier: daily
@@ -4912,9 +5168,13 @@ words:
   - main_list
 - word: argus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - mythological name
 - word: prost
   length: 5
   tier: daily
@@ -5095,10 +5355,14 @@ words:
   - main_list
 - word: pariz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Paris (city)
 - word: drvni
   length: 5
   tier: daily
@@ -5203,9 +5467,13 @@ words:
   - main_list
 - word: badel
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Croatian company/brand name
 - word: počev
   length: 5
   tier: daily
@@ -5253,10 +5521,14 @@ words:
   - main_list
 - word: sudan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name
 - word: okuka
   length: 5
   tier: daily
@@ -5275,10 +5547,14 @@ words:
   - main_list
 - word: rajna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Rhine river
 - word: rjeđi
   length: 5
   tier: daily
@@ -5286,10 +5562,14 @@ words:
   - main_list
 - word: borna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: ražen
   length: 5
   tier: valid
@@ -5479,9 +5759,13 @@ words:
   - main_list
 - word: horus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Egyptian deity
 - word: posve
   length: 5
   tier: daily
@@ -5606,10 +5890,14 @@ words:
   - main_list
 - word: paris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Paris (city/mythological)
 - word: ćorav
   length: 5
   tier: daily
@@ -5627,9 +5915,13 @@ words:
   - main_list
 - word: kozak
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - Cossack
 - word: vršak
   length: 5
   tier: daily
@@ -5642,9 +5934,13 @@ words:
   - main_list
 - word: eskim
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: potentially offensive term - Eskimo
 - word: jedva
   length: 5
   tier: daily
@@ -5682,10 +5978,14 @@ words:
   - main_list
 - word: zoran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: talog
   length: 5
   tier: daily
@@ -5764,10 +6064,14 @@ words:
   - main_list
 - word: sanja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (also verb form 'dreams')
 - word: ikamo
   length: 5
   tier: daily
@@ -5865,10 +6169,14 @@ words:
   - main_list
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - country name (also means mortar)
 - word: aspik
   length: 5
   tier: valid
@@ -5882,9 +6190,13 @@ words:
   - main_list
 - word: bičić
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname
 - word: bahat
   length: 5
   tier: daily
@@ -5909,10 +6221,14 @@ words:
   - main_list
 - word: mađar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: demonym - Hungarian
 - word: sučev
   length: 5
   tier: daily
@@ -6020,10 +6336,14 @@ words:
   - main_list
 - word: petar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Peter)
 - word: dolet
   length: 5
   tier: daily
@@ -6143,10 +6463,14 @@ words:
   - main_list
 - word: ivica
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: ronac
   length: 5
   tier: valid
@@ -6213,9 +6537,13 @@ words:
   - main_list
 - word: finac
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: demonym - Finn
 - word: jezik
   length: 5
   tier: daily
@@ -6229,10 +6557,14 @@ words:
   - main_list
 - word: solin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town near Split
 - word: kočni
   length: 5
   tier: valid
@@ -6284,10 +6616,14 @@ words:
   - main_list
 - word: ilija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: ižeti
   length: 5
   tier: valid
@@ -6316,10 +6652,14 @@ words:
   - main_list
 - word: pavlu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - name (dative of Pavle)
 - word: ekcem
   length: 5
   tier: daily
@@ -6410,10 +6750,14 @@ words:
   - main_list
 - word: slunj
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Croatia
 - word: reket
   length: 5
   tier: daily
@@ -6491,9 +6835,13 @@ words:
   - main_list
 - word: ferdo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: dupli
   length: 5
   tier: daily
@@ -6525,9 +6873,13 @@ words:
   - main_list
 - word: vojko
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: mačka
   length: 5
   tier: daily
@@ -6559,9 +6911,13 @@ words:
   - main_list
 - word: unfpa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: acronym - UN agency
 - word: puhač
   length: 5
   tier: valid
@@ -6605,10 +6961,14 @@ words:
   - main_list
 - word: budva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city in Montenegro
 - word: garež
   length: 5
   tier: daily
@@ -6812,10 +7172,14 @@ words:
   - main_list
 - word: avnoj
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: acronym - AVNOJ (Yugoslav political body)
 - word: sirot
   length: 5
   tier: daily
@@ -6851,10 +7215,14 @@ words:
   - main_list
 - word: govno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - shit
 - word: nujni
   length: 5
   tier: valid
@@ -6916,10 +7284,14 @@ words:
   - main_list
 - word: kijev
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city name (Kyiv)
 - word: upola
   length: 5
   tier: daily
@@ -6960,9 +7332,13 @@ words:
   - main_list
 - word: aztek
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Aztec people
 - word: biser
   length: 5
   tier: daily
@@ -7238,10 +7614,14 @@ words:
   - main_list
 - word: apolo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - mythological name (Apollo)
 - word: nosiv
   length: 5
   tier: valid
@@ -7282,10 +7662,14 @@ words:
   - main_list
 - word: kipar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Cyprus
 - word: kljun
   length: 5
   tier: daily
@@ -7462,15 +7846,23 @@ words:
   - main_list
 - word: krist
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Christ
 - word: labin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Istria
 - word: vinov
   length: 5
   tier: valid
@@ -7489,10 +7881,14 @@ words:
   - main_list
 - word: titov
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - possessive of Tito
 - word: lihva
   length: 5
   tier: daily
@@ -7510,16 +7906,24 @@ words:
   - main_list
 - word: emina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: bosna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - country/region name (Bosnia)
 - word: lavić
   length: 5
   tier: daily
@@ -7566,10 +7970,14 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Tibet
 - word: beril
   length: 5
   tier: daily
@@ -7611,9 +8019,13 @@ words:
   - main_list
 - word: matoš
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (A.G. Matoš)
 - word: gajen
   length: 5
   tier: valid
@@ -7672,9 +8084,13 @@ words:
   - main_list
 - word: žminj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Istria
 - word: kreol
   length: 5
   tier: daily
@@ -7688,10 +8104,14 @@ words:
   - main_list
 - word: dušan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: drvar
   length: 5
   tier: daily
@@ -7753,10 +8173,14 @@ words:
   - main_list
 - word: tomić
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname
 - word: prkno
   length: 5
   tier: valid
@@ -7786,10 +8210,14 @@ words:
   - main_list
 - word: drniš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - town in Croatia
 - word: kopač
   length: 5
   tier: daily
@@ -7852,10 +8280,14 @@ words:
   - main_list
 - word: antun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Antun)
 - word: utaja
   length: 5
   tier: daily
@@ -7943,9 +8375,13 @@ words:
   - main_list
 - word: bursa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city in Turkey
 - word: nogar
   length: 5
   tier: valid
@@ -8002,10 +8438,14 @@ words:
   - main_list
 - word: arsen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - male name (also arsenic element, ambiguous)
 - word: povod
   length: 5
   tier: daily
@@ -8020,9 +8460,13 @@ words:
   - main_list
 - word: semit
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: ethnic/religious designation - Semite
 - word: svrha
   length: 5
   tier: daily
@@ -8037,9 +8481,13 @@ words:
   - main_list
 - word: carić
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname
 - word: pačić
   length: 5
   tier: daily
@@ -8195,14 +8643,22 @@ words:
   - main_list
 - word: mosor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - mountain in Croatia
 - word: erato
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Greek muse name
 - word: dubok
   length: 5
   tier: daily
@@ -8296,9 +8752,13 @@ words:
   - main_list
 - word: fidži
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name (Fiji)
 - word: šnita
   length: 5
   tier: daily
@@ -8672,9 +9132,13 @@ words:
   - main_list
 - word: kaleb
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name (Caleb)
 - word: odati
   length: 5
   tier: daily
@@ -8818,10 +9282,14 @@ words:
   - main_list
 - word: joint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: rasti
   length: 5
   tier: daily
@@ -9193,9 +9661,13 @@ words:
   - main_list
 - word: prdac
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: crude - farter/fart
 - word: triju
   length: 5
   tier: daily
@@ -9676,10 +10148,14 @@ words:
   - main_list
 - word: filip
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: tužba
   length: 5
   tier: daily
@@ -9759,10 +10235,14 @@ words:
   - main_list
 - word: šupak
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - asshole
 - word: libor
   length: 5
   tier: valid
@@ -9802,10 +10282,14 @@ words:
   - main_list
 - word: gilda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: perač
   length: 5
   tier: valid
@@ -9968,9 +10452,13 @@ words:
   - main_list
 - word: pluto
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - Pluto (also means cork - ambiguous)
 - word: fazon
   length: 5
   tier: valid
@@ -10264,10 +10752,14 @@ words:
   - main_list
 - word: jakov
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Jacob)
 - word: kobni
   length: 5
   tier: valid
@@ -10491,10 +10983,14 @@ words:
   - main_list
 - word: kinez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: demonym - Chinese person
 - word: supka
   length: 5
   tier: valid
@@ -10793,10 +11289,14 @@ words:
   - main_list
 - word: split
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - city in Croatia
 - word: laura
   length: 5
   tier: valid
@@ -11790,10 +12290,14 @@ words:
   - main_list
 - word: orion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - constellation/mythological name
 - word: stoti
   length: 5
   tier: daily
@@ -12260,10 +12764,14 @@ words:
   - main_list
 - word: osama
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - name (Osama)
 - word: komin
   length: 5
   tier: valid
@@ -12659,10 +13167,14 @@ words:
   - main_list
 - word: marko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: inače
   length: 5
   tier: daily
@@ -13060,10 +13572,14 @@ words:
   - main_list
 - word: novak
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname
 - word: perad
   length: 5
   tier: valid
@@ -13209,10 +13725,14 @@ words:
   - main_list
 - word: kuran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Quran
 - word: lavež
   length: 5
   tier: valid
@@ -13566,10 +14086,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - name (Dante)
 - word: krpež
   length: 5
   tier: valid
@@ -13661,10 +14185,14 @@ words:
   - main_list
 - word: lejla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: odgoj
   length: 5
   tier: daily
@@ -13740,10 +14268,14 @@ words:
   - main_list
 - word: atena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Athens/Athena
 - word: rađen
   length: 5
   tier: valid
@@ -13835,10 +14367,14 @@ words:
   - main_list
 - word: turci
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Turks (plural demonym)
 - word: telur
   length: 5
   tier: valid
@@ -13918,10 +14454,14 @@ words:
   - main_list
 - word: troja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Troy
 - word: tacna
   length: 5
   tier: valid
@@ -14119,10 +14659,14 @@ words:
   - main_list
 - word: tokio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - city name (Tokyo)
 - word: nakon
   length: 5
   tier: daily
@@ -14353,10 +14897,14 @@ words:
   - main_list
 - word: sibir
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Siberia
 - word: suada
   length: 5
   tier: valid
@@ -14612,10 +15160,14 @@ words:
   - main_list
 - word: istra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Istria region
 - word: svrab
   length: 5
   tier: daily
@@ -15317,10 +15869,14 @@ words:
   - main_list
 - word: kučka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - bitch (offensive usage common)
 - word: nosat
   length: 5
   tier: valid
@@ -15382,10 +15938,14 @@ words:
   - main_list
 - word: cezar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Caesar
 - word: bačka
   length: 5
   tier: valid
@@ -15740,10 +16300,14 @@ words:
   - main_list
 - word: irska
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Ireland
 - word: sanje
   length: 5
   tier: valid
@@ -16044,10 +16608,14 @@ words:
   - main_list
 - word: azija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - continent name (Asia)
 - word: dugme
   length: 5
   tier: daily
@@ -16427,15 +16995,23 @@ words:
   - main_list
 - word: pizda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar - female genitalia
 - word: pavao
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: afiks
   length: 5
   tier: valid
@@ -16476,10 +17052,14 @@ words:
   - main_list
 - word: matej
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Matthew)
 - word: danas
   length: 5
   tier: daily
@@ -16753,10 +17333,14 @@ words:
   - main_list
 - word: kurac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar - penis
 - word: žučni
   length: 5
   tier: valid
@@ -17007,10 +17591,14 @@ words:
   - main_list
 - word: kurva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar/offensive - whore
   history:
   - 1729
   scheduled_day: 1729
@@ -17209,10 +17797,14 @@ words:
   - main_list
 - word: kolja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name (Kolja/Nikolaj)
 - word: škija
   length: 5
   tier: valid
@@ -17417,9 +18009,13 @@ words:
   - main_list
 - word: prdež
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: crude - farting
 - word: zamor
   length: 5
   tier: valid
@@ -18166,10 +18762,14 @@ words:
   - main_list
 - word: atila
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - historical name (Attila)
 - word: labud
   length: 5
   tier: daily
@@ -18223,10 +18823,14 @@ words:
   - main_list
 - word: židov
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: ethnic/religious designation - can be sensitive in daily puzzle context
 - word: stega
   length: 5
   tier: valid
@@ -18326,10 +18930,14 @@ words:
   - main_list
 - word: disco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword not naturalized - use 'disko'
 - word: dinar
   length: 5
   tier: valid
@@ -18453,10 +19061,14 @@ words:
   - main_list
 - word: pička
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar - female genitalia
 - word: unhcr
   length: 5
   tier: valid
@@ -18704,10 +19316,14 @@ words:
   - main_list
 - word: božić
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - surname (also means Christmas - ambiguous)
 - word: redov
   length: 5
   tier: valid
@@ -18881,10 +19497,14 @@ words:
   - main_list
 - word: milan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name / city
 - word: oteti
   length: 5
   tier: daily
@@ -19366,10 +19986,14 @@ words:
   - main_list
 - word: hasan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: đurin
   length: 5
   tier: valid
@@ -19590,10 +20214,14 @@ words:
   - main_list
 - word: kairo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - city name (Cairo)
 - word: tmast
   length: 5
   tier: valid

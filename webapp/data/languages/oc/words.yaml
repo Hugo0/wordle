@@ -289,9 +289,13 @@ words:
   - main_list
 - word: aglàs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Aglas (mythological)
 - word: ioïde
   length: 5
   tier: daily
@@ -878,6 +882,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Culinary loanword now international - aioli
 - word: fenal
   length: 5
   tier: daily
@@ -1391,10 +1399,14 @@ words:
   - main_list
 - word: abdon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - biblical name Abdon
 - word: ratós
   length: 5
   tier: daily
@@ -1846,10 +1858,14 @@ words:
   - main_list
 - word: abeba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Addis Abeba
 - word: defés
   length: 5
   tier: daily
@@ -3211,14 +3227,22 @@ words:
   - main_list
 - word: airòs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Airós (place name)
 - word: ainac
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - town name Ainac
 - word: varon
   length: 5
   tier: daily
@@ -5398,10 +5422,14 @@ words:
   - main_list
 - word: enric
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Enric/Henri
 - word: abòci
   length: 5
   tier: daily
@@ -5836,9 +5864,13 @@ words:
   - main_list
 - word: irèna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Irena
 - word: nelha
   length: 5
   tier: daily
@@ -7046,9 +7078,13 @@ words:
   - main_list
 - word: adòlf
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Adolf
 - word: anèla
   length: 5
   tier: daily
@@ -7284,9 +7320,13 @@ words:
   - main_list
 - word: ainat
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - town name Ainat
 - word: sabor
   length: 5
   tier: daily
@@ -7506,10 +7546,14 @@ words:
   - main_list
 - word: aimar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Aimar
 - word: quich
   length: 5
   tier: daily
@@ -7755,10 +7799,14 @@ words:
   - main_list
 - word: abzac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - town in Gironde, France
 - word: còrda
   length: 5
   tier: daily
@@ -9428,10 +9476,14 @@ words:
   - main_list
 - word: agata
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Agata
 - word: forre
   length: 5
   tier: daily
@@ -9853,10 +9905,14 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Oscar
 - word: règla
   length: 5
   tier: daily
@@ -10062,9 +10118,13 @@ words:
   - main_list
 - word: adèla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Adela
 - word: pipar
   length: 5
   tier: daily
@@ -11029,10 +11089,14 @@ words:
   - main_list
 - word: aisne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - French department Aisne
 - word: peràs
   length: 5
   tier: daily
@@ -12392,10 +12456,14 @@ words:
   - main_list
 - word: albin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Albin
 - word: blesa
   length: 5
   tier: daily
@@ -12520,10 +12588,14 @@ words:
   - main_list
 - word: aland
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Åland islands
 - word: mural
   length: 5
   tier: daily
@@ -13147,9 +13219,13 @@ words:
   - main_list
 - word: amèli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Amélie
 - word: micro
   length: 5
   tier: daily
@@ -13939,6 +14015,10 @@ words:
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - given name Urban / Pope Urban
 - word: erbar
   length: 5
   tier: daily
@@ -14205,9 +14285,13 @@ words:
   - main_list
 - word: airòl
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Airolo (Swiss town)
 - word: ramós
   length: 5
   tier: daily
@@ -14319,10 +14403,14 @@ words:
   - main_list
 - word: alana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - given name Alana
 - word: alisa
   length: 5
   tier: daily
@@ -14648,9 +14736,13 @@ words:
   - main_list
 - word: aisac
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Isaac
 - word: xiven
   length: 5
   tier: daily
@@ -15727,9 +15819,13 @@ words:
   - main_list
 - word: adast
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - commune in Hautes-Pyrénées
 - word: licèu
   length: 5
   tier: daily
@@ -16855,10 +16951,14 @@ words:
   - main_list
 - word: addis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Addis (Ababa)
 - word: crotz
   length: 5
   tier: daily
@@ -17848,6 +17948,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Occitan given name Aimat
 - word: pomat
   length: 5
   tier: daily
@@ -18706,10 +18810,14 @@ words:
   - main_list
 - word: abuja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - capital of Nigeria
 - word: osmic
   length: 5
   tier: daily
@@ -19509,9 +19617,13 @@ words:
   - main_list
 - word: aglaè
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Aglaé
 - word: calam
   length: 5
   tier: daily
@@ -19583,10 +19695,14 @@ words:
   - main_list
 - word: alban
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Alban
 - word: seuna
   length: 5
   tier: daily
@@ -19682,10 +19798,14 @@ words:
   - main_list
 - word: agnès
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Agnès
 - word: filum
   length: 5
   tier: daily
@@ -19694,9 +19814,13 @@ words:
   - main_list
 - word: sòfia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Sofia
 - word: bodin
   length: 5
   tier: daily
@@ -20875,9 +20999,13 @@ words:
   - main_list
 - word: adich
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Adige river
 - word: ròssa
   length: 5
   tier: daily
@@ -21240,10 +21368,14 @@ words:
   - main_list
 - word: aimon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Aimon
 - word: talòs
   length: 5
   tier: daily
@@ -21282,10 +21414,14 @@ words:
   - main_list
 - word: accra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - capital of Ghana
 - word: caduc
   length: 5
   tier: daily
@@ -22306,6 +22442,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - given name Dalia
 - word: limpa
   length: 5
   tier: daily
@@ -25748,6 +25888,10 @@ words:
   frequency: 3.78
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Atlas (mythology/mountains)
 - word: atman
   length: 5
   tier: valid
@@ -33907,9 +34051,13 @@ words:
   - supplement
 - word: cèsar
   length: 5
-  tier: valid
+  tier: blocked
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Caesar/César
 - word: cédar
   length: 5
   tier: valid
@@ -39679,6 +39827,10 @@ words:
   frequency: 3.35
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - female given name Flora
 - word: flore
   length: 5
   tier: valid
@@ -45990,10 +46142,14 @@ words:
   - supplement
 - word: jesús
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 2.36
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Jesus
 - word: jetar
   length: 5
   tier: valid
@@ -46286,9 +46442,13 @@ words:
   - supplement
 - word: josèp
   length: 5
-  tier: valid
+  tier: blocked
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Joseph
 - word: jouir
   length: 5
   tier: valid
@@ -46494,10 +46654,14 @@ words:
   - supplement
 - word: julià
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 1.24
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Julian
 - word: jumel
   length: 5
   tier: valid
@@ -49505,10 +49669,14 @@ words:
   - supplement
 - word: lluís
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 1.68
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Lluís/Louis
 - word: lléon
   length: 5
   tier: valid
@@ -51340,10 +51508,14 @@ words:
   - supplement
 - word: maria
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.35
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Maria
 - word: marib
   length: 5
   tier: valid
@@ -51480,10 +51652,14 @@ words:
   - supplement
 - word: marta
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 3.17
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Marta
 - word: marti
   length: 5
   tier: valid
@@ -51671,9 +51847,13 @@ words:
   - supplement
 - word: matèu
   length: 5
-  tier: valid
+  tier: blocked
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Matthew
 - word: matís
   length: 5
   tier: valid
@@ -51818,9 +51998,13 @@ words:
   - supplement
 - word: maòri
   length: 5
-  tier: valid
+  tier: blocked
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Maori people
 - word: mbian
   length: 5
   tier: valid
@@ -57802,10 +57986,14 @@ words:
   - supplement
 - word: paris
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.71
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Paris city
 - word: parit
   length: 5
   tier: valid
@@ -63127,10 +63315,14 @@ words:
   - supplement
 - word: roger
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.35
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Roger
 - word: roges
   length: 5
   tier: valid
@@ -69948,10 +70140,14 @@ words:
   - supplement
 - word: tomàs
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 1.31
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Tomás
 - word: tomás
   length: 5
   tier: valid
@@ -71161,9 +71357,13 @@ words:
   - supplement
 - word: tòmas
   length: 5
-  tier: valid
+  tier: blocked
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Thomas
 - word: tòmes
   length: 5
   tier: valid
@@ -73793,9 +73993,13 @@ words:
   - supplement
 - word: vènus
   length: 5
-  tier: valid
+  tier: blocked
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Venus
 - word: vèrbs
   length: 5
   tier: valid

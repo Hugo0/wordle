@@ -79,9 +79,13 @@ words:
   - main_list
 - word: ফিজউইগ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Fezziwig from Christmas Carol)
 - word: সার্বিয়ান
   length: 5
   tier: daily
@@ -95,10 +99,14 @@ words:
   - main_list
 - word: লাগার্ডিয়া
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (LaGuardia)
 - word: ধৈর্যটাই
   length: 5
   tier: daily
@@ -192,10 +200,14 @@ words:
   - main_list
 - word: লিওনার্দো
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Leonardo)
 - word: সংবিধানের
   length: 5
   tier: daily
@@ -234,10 +246,14 @@ words:
   - main_list
 - word: ফরচুনাকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Fortunata
 - word: স্পন্দিত
   length: 5
   tier: daily
@@ -276,9 +292,13 @@ words:
   - main_list
 - word: গ্লুভারকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Gluver
 - word: সাউথপোকে
   length: 5
   tier: daily
@@ -346,10 +366,14 @@ words:
   - main_list
 - word: দয়ানন্দ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Dayanand)
 - word: নাটূকেপনা
   length: 5
   tier: daily
@@ -433,10 +457,14 @@ words:
   - main_list
 - word: মেলভিনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Melvin
 - word: কাদামাটিতে
   length: 5
   tier: daily
@@ -469,10 +497,14 @@ words:
   - main_list
 - word: বাক্সটার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Baxter) variant
 - word: কর্মচারি
   length: 5
   tier: daily
@@ -535,9 +567,13 @@ words:
   - main_list
 - word: রুপাঞ্জেল
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Rapunzel)
 - word: কনটেন্ট
   length: 5
   tier: daily
@@ -564,10 +600,14 @@ words:
   - main_list
 - word: ব্রায়ানের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Brian's
 - word: প্রচ্ছদ
   length: 5
   tier: daily
@@ -576,16 +616,24 @@ words:
   - main_list
 - word: বসনিয়ায়
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Bosnia
 - word: বেলজিয়াম
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Belgium)
 - word: একজনকে
   length: 5
   tier: daily
@@ -606,10 +654,14 @@ words:
   - main_list
 - word: হিউস্টন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Houston)
 - word: আপনজন
   length: 5
   tier: daily
@@ -618,14 +670,22 @@ words:
   - main_list
 - word: সুলিভানকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Sullivan
 - word: ট্যালসের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive
 - word: ততোক্ষণ
   length: 5
   tier: daily
@@ -710,9 +770,13 @@ words:
   - main_list
 - word: স্পেল্মেন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Spellman)
 - word: তারপরও
   length: 5
   tier: daily
@@ -745,10 +809,14 @@ words:
   - main_list
 - word: রচেস্টার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place/character name (Rochester)
 - word: বহুদিনের
   length: 5
   tier: daily
@@ -757,9 +825,13 @@ words:
   - main_list
 - word: আম্বুঝাম
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: ওয়েটারটা
   length: 5
   tier: daily
@@ -796,10 +868,14 @@ words:
   - main_list
 - word: ক্লারেন্স
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Clarence)
 - word: এফবিআই
   length: 5
   tier: daily
@@ -820,10 +896,14 @@ words:
   - main_list
 - word: আর্থারের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Arthur's
 - word: প্রোগ্রামে
   length: 5
   tier: daily
@@ -853,10 +933,14 @@ words:
   scheduled_day: 1706
 - word: ব্রেন্ডাকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Brenda
 - word: পদ্মফুল
   length: 5
   tier: daily
@@ -894,9 +978,13 @@ words:
   - main_list
 - word: লুদউইগ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Ludwig)
 - word: ভদ্রতার
   length: 5
   tier: daily
@@ -953,9 +1041,13 @@ words:
   - main_list
 - word: ম্যালেনার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Malena
 - word: এখনকার
   length: 5
   tier: daily
@@ -993,9 +1085,13 @@ words:
   - main_list
 - word: ফিউরিয়োসা
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Furiosa from Mad Max)
 - word: ঢুকেছিলাম
   length: 5
   tier: daily
@@ -1027,10 +1123,14 @@ words:
   - main_list
 - word: ফকিন্নির
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive
 - word: অন্যদিন
   length: 5
   tier: daily
@@ -1109,10 +1209,14 @@ words:
   - main_list
 - word: অগাস্টিন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Augustine)
 - word: বুদ্ধিমান
   length: 5
   tier: daily
@@ -1121,10 +1225,14 @@ words:
   - main_list
 - word: অ্যালেক্টো
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Alecto)
 - word: উপসর্গ
   length: 5
   tier: daily
@@ -1163,9 +1271,13 @@ words:
   - main_list
 - word: সম্ভাশিবা
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Appears to be garbled/nonsense word
 - word: পরিক্ষক
   length: 5
   tier: daily
@@ -1174,9 +1286,13 @@ words:
   - main_list
 - word: ক্যালেবের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Caleb's
 - word: দুজনেরই
   length: 5
   tier: daily
@@ -1278,10 +1394,14 @@ words:
   - main_list
 - word: এডিসনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Edison's
 - word: উল্লাসিত
   length: 5
   tier: daily
@@ -1332,10 +1452,14 @@ words:
   - main_list
 - word: ব্রেন্ডার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Brenda's
 - word: সাগরেদের
   length: 5
   tier: daily
@@ -1380,10 +1504,14 @@ words:
   - main_list
 - word: ক্রিস্টাল
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Crystal)
 - word: নিঃসন্দেহে
   length: 5
   tier: daily
@@ -1422,10 +1550,14 @@ words:
   - main_list
 - word: হাইনরিশ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Heinrich)
 - word: শোনাচ্ছিল
   length: 5
   tier: daily
@@ -1462,10 +1594,14 @@ words:
   - main_list
 - word: ক্লিনটন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Clinton)
 - word: কর্টেক্স
   length: 5
   tier: daily
@@ -1533,10 +1669,14 @@ words:
   - main_list
 - word: স্কারফেস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - movie name (Scarface)
 - word: তরমুজের
   length: 5
   tier: daily
@@ -1593,9 +1733,13 @@ words:
   - main_list
 - word: শায়ামুয়েল
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Samuel)
 - word: প্ল্যানের
   length: 5
   tier: daily
@@ -1610,10 +1754,14 @@ words:
   - main_list
 - word: স্পেন্সার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Spencer)
 - word: চিন্তারও
   length: 5
   tier: daily
@@ -1622,10 +1770,14 @@ words:
   - main_list
 - word: হ্যারল্ড
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Harold)
 - word: ফ্রেন্ডের
   length: 5
   tier: daily
@@ -1676,10 +1828,14 @@ words:
   - main_list
 - word: ফ্রীম্যান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Freeman)
 - word: মানুষগুলো
   length: 5
   tier: daily
@@ -1735,10 +1891,14 @@ words:
   - main_list
 - word: নেপোলিয়ান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Napoleon
 - word: পাল্টাচ্ছে
   length: 5
   tier: daily
@@ -1781,9 +1941,13 @@ words:
   - main_list
 - word: বারটনকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Barton
 - word: পরিপন্থী
   length: 5
   tier: daily
@@ -1792,9 +1956,13 @@ words:
   - main_list
 - word: আনিঙ্গাক
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name
 - word: মনোবলের
   length: 5
   tier: daily
@@ -1850,9 +2018,13 @@ words:
   - main_list
 - word: বুরগোইন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Burgoyne)
 - word: উলটাইয়া
   length: 5
   tier: daily
@@ -1903,25 +2075,41 @@ words:
   - main_list
 - word: আনাসুয়াকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Anasuya
 - word: মোরালেসের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Morales
 - word: অ্যারোরার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Aurora's
 - word: এভারডিন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Everdeen from Hunger Games)
 - word: নকশাগুলো
   length: 5
   tier: daily
@@ -1960,14 +2148,22 @@ words:
   - main_list
 - word: রিভেন্ডেল
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional place (Rivendell from Lord of the Rings)
 - word: বিলিগার্ড
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Billiard/Beauregard)
 - word: আলবাট্রা
   length: 5
   tier: daily
@@ -1981,9 +2177,13 @@ words:
   - main_list
 - word: গুলবেয়াজ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: কচ্কচিয়া
   length: 5
   tier: daily
@@ -2010,10 +2210,14 @@ words:
   - main_list
 - word: মাদারচোত
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar/offensive - extremely offensive profanity
 - word: হানাহানির
   length: 5
   tier: daily
@@ -2040,9 +2244,13 @@ words:
   - main_list
 - word: কুইনানের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Quinan
 - word: পদদলিত
   length: 5
   tier: daily
@@ -2104,10 +2312,14 @@ words:
   - main_list
 - word: ট্যালবট
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Talbot)
 - word: সহায়তার
   length: 5
   tier: daily
@@ -2216,10 +2428,14 @@ words:
   - main_list
 - word: ডাচম্যান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Dutchman (character name)
 - word: বদলায়নি
   length: 5
   tier: daily
@@ -2228,9 +2444,13 @@ words:
   - main_list
 - word: রেডফ্রড
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Redford)
 - word: কুদরেতের
   length: 5
   tier: daily
@@ -2238,9 +2458,13 @@ words:
   - main_list
 - word: উম্বাসিকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case
 - word: ভিমরুলের
   length: 5
   tier: daily
@@ -2249,10 +2473,14 @@ words:
   - main_list
 - word: আর্নস্ট
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Ernst)
 - word: হৃদপিণ্ড
   length: 5
   tier: daily
@@ -2267,9 +2495,13 @@ words:
   - main_list
 - word: মনসাইকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case
 - word: রাজকার্যে
   length: 5
   tier: daily
@@ -2307,14 +2539,22 @@ words:
   - main_list
 - word: এঙ্গোলায়
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Angola)
 - word: ম্যাড্রিচ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Madrich)
 - word: মহাবিশ্ব
   length: 5
   tier: daily
@@ -2323,14 +2563,22 @@ words:
   - main_list
 - word: শার্লকই
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with emphasis particle - Sherlock
 - word: রানস্টক
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun
 - word: মুক্তাগুলো
   length: 5
   tier: daily
@@ -2392,10 +2640,14 @@ words:
   - main_list
 - word: ভ্রনস্কি
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Vronsky from Anna Karenina)
 - word: দেখতেছিস
   length: 5
   tier: daily
@@ -2403,9 +2655,13 @@ words:
   - main_list
 - word: ব্লেচলিতে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Bletchley
 - word: প্রণামাম
   length: 5
   tier: daily
@@ -2425,10 +2681,14 @@ words:
   - main_list
 - word: ফ্রেডরিকা
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Frederica)
 - word: টাইটানিকে
   length: 5
   tier: daily
@@ -2458,10 +2718,14 @@ words:
   - main_list
 - word: স্টিফেনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Stephen's
 - word: চৌরাস্তায়
   length: 5
   tier: daily
@@ -2488,10 +2752,14 @@ words:
   - main_list
 - word: হার্ভার্ড
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - university name (Harvard)
 - word: দলনেতার
   length: 5
   tier: daily
@@ -2541,9 +2809,13 @@ words:
   - main_list
 - word: নারনীয়ান
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional adjective (Narnian from Narnia)
 - word: চেকপোস্ট
   length: 5
   tier: daily
@@ -2558,10 +2830,14 @@ words:
   - main_list
 - word: ব্যালিওল
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Balliol)
 - word: বলতেছেন
   length: 5
   tier: daily
@@ -2570,15 +2846,23 @@ words:
   - main_list
 - word: আজহারুল
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: মূথ্যিয়ম
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: আউটপুট
   length: 5
   tier: daily
@@ -2685,10 +2969,14 @@ words:
   - main_list
 - word: অ্যান্থনি
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Anthony)
 - word: করতেছেন
   length: 5
   tier: daily
@@ -2697,10 +2985,14 @@ words:
   - main_list
 - word: প্রেন্টিস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Prentiss)
 - word: নির্বাপক
   length: 5
   tier: daily
@@ -2715,10 +3007,14 @@ words:
   - main_list
 - word: ওয়াটার্স
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Waters)
 - word: কুকুরটার
   length: 5
   tier: daily
@@ -2738,10 +3034,14 @@ words:
   - main_list
 - word: নরবার্ট
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Norbert)
 - word: সেন্টিনেল
   length: 5
   tier: daily
@@ -2774,10 +3074,14 @@ words:
   - main_list
 - word: প্লুটার্ক
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Plutarch)
 - word: বিশ্রান্ত
   length: 5
   tier: daily
@@ -2803,15 +3107,23 @@ words:
   - main_list
 - word: বাল্টিমোরে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Baltimore
 - word: মেলবিনের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Melvin
 - word: সুন্দরীকে
   length: 5
   tier: daily
@@ -2843,10 +3155,14 @@ words:
   - main_list
 - word: সমারসেট
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place/personal name (Somerset)
 - word: মাইলেরও
   length: 5
   tier: daily
@@ -2909,9 +3225,13 @@ words:
   - main_list
 - word: ড্যুনানের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Dunant
 - word: পাইলটের
   length: 5
   tier: daily
@@ -2931,16 +3251,24 @@ words:
   - main_list
 - word: প্যাটেলার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Patella/Patel
 - word: বাল্টিমোর
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Baltimore) variant
 - word: লজেন্সটা
   length: 5
   tier: daily
@@ -3057,10 +3385,14 @@ words:
   - main_list
 - word: খাত্তাবের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Khattab
 - word: সাধারনত
   length: 5
   tier: daily
@@ -3099,9 +3431,13 @@ words:
   - main_list
 - word: পম্পিডোর
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Pompadour/Pompidou)
 - word: কপালপোড়া
   length: 5
   tier: daily
@@ -3188,9 +3524,13 @@ words:
   - main_list
 - word: ড্রাক্সের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Drax (Marvel)
 - word: রিচমন্ডে
   length: 5
   tier: daily
@@ -3262,10 +3602,14 @@ words:
   - main_list
 - word: নিকাব্রিক
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Nikabrik from Narnia)
 - word: ঠিকাদারেরা
   length: 5
   tier: daily
@@ -3315,9 +3659,13 @@ words:
   - main_list
 - word: রামিরেযের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Ramirez
 - word: উদ্দিষ্ট
   length: 5
   tier: daily
@@ -3384,15 +3732,23 @@ words:
   - main_list
 - word: সান্তিনোকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Santino (Godfather)
 - word: স্প্যারোর
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Sparrow (Jack Sparrow)
 - word: সংঘবদ্ধ
   length: 5
   tier: daily
@@ -3407,10 +3763,14 @@ words:
   - main_list
 - word: হামবুর্গ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Hamburg)
 - word: রাস্তাঘাট
   length: 5
   tier: daily
@@ -3419,10 +3779,14 @@ words:
   - main_list
 - word: অলিভারের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Oliver's
 - word: গতিদানব
   length: 5
   tier: daily
@@ -3437,9 +3801,13 @@ words:
   - main_list
 - word: স্কাইনেটে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Skynet (Terminator)
 - word: মিষ্টিগুলো
   length: 5
   tier: daily
@@ -3448,9 +3816,13 @@ words:
   - main_list
 - word: কুবলাদার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun
 - word: খুজছিলাম
   length: 5
   tier: daily
@@ -3483,16 +3855,24 @@ words:
   - main_list
 - word: মাদুরাইয়ে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Madurai
 - word: ক্রিস্টিন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Christine)
 - word: ঘুমপাড়ানি
   length: 5
   tier: daily
@@ -3609,9 +3989,13 @@ words:
   - main_list
 - word: সারুমনের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Saruman (Lord of the Rings)
 - word: জটিলতার
   length: 5
   tier: daily
@@ -3626,9 +4010,13 @@ words:
   - main_list
 - word: অ্যারোরাকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Aurora
 - word: অন্ধভাবে
   length: 5
   tier: daily
@@ -3649,22 +4037,34 @@ words:
   - main_list
 - word: টারটারাস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tartarus (Greek mythology)
 - word: সেডরিককে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Cedric
 - word: হারমায়োনি
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Hermione from Harry Potter)
 - word: কতক্ষণ
   length: 5
   tier: daily
@@ -3712,10 +4112,14 @@ words:
   - main_list
 - word: এলফদের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Elves (fantasy)
 - word: সুইমিংপুল
   length: 5
   tier: daily
@@ -3742,9 +4146,13 @@ words:
   - main_list
 - word: ঠাংগাবালির
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - place name
 - word: কপিরাইট
   length: 5
   tier: daily
@@ -3789,10 +4197,14 @@ words:
   - main_list
 - word: রবার্টস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Roberts)
 - word: মাইয়্যার
   length: 5
   tier: daily
@@ -3801,15 +4213,23 @@ words:
   - main_list
 - word: কস্টেলোকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Costello
 - word: প্যাসকেল
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Pascal)
 - word: নেচেছিলাম
   length: 5
   tier: daily
@@ -3829,9 +4249,13 @@ words:
   - main_list
 - word: কালাহারির
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Kalahari (desert)
 - word: রোডব্লক
   length: 5
   tier: daily
@@ -3855,9 +4279,13 @@ words:
   - main_list
 - word: এসপিনকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Espin
 - word: কন্ট্রোল
   length: 5
   tier: daily
@@ -3872,9 +4300,13 @@ words:
   - main_list
 - word: কিংসম্যান
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - movie title (Kingsman)
 - word: বর্ণগুলো
   length: 5
   tier: daily
@@ -3893,6 +4325,10 @@ words:
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun with case - Allah (religious figure)
 - word: হাসিখুশিই
   length: 5
   tier: daily
@@ -3931,10 +4367,14 @@ words:
   - main_list
 - word: ডেভিডসন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Davidson)
 - word: বর্তমানে
   length: 5
   tier: daily
@@ -3997,16 +4437,24 @@ words:
   - main_list
 - word: রবার্টের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Robert's
 - word: সিন্ডারেলা
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Cinderella)
 - word: ডায়াবেটিক
   length: 5
   tier: daily
@@ -4027,10 +4475,14 @@ words:
   - main_list
 - word: ওয়ালটন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Walton)
 - word: উইন্টার
   length: 5
   tier: daily
@@ -4062,10 +4514,14 @@ words:
   - main_list
 - word: স্টাইনার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Steiner)
 - word: চোখওয়ালা
   length: 5
   tier: daily
@@ -4121,9 +4577,13 @@ words:
   - main_list
 - word: গ্যারিডোকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Garrido
 - word: মেকানিকাল
   length: 5
   tier: daily
@@ -4173,9 +4633,13 @@ words:
   - main_list
 - word: ডেলমনিকো
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - name (Delmonico)
 - word: দৈনন্দিন
   length: 5
   tier: daily
@@ -4189,9 +4653,13 @@ words:
   - main_list
 - word: স্ল্যাটারি
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Slattery)
 - word: এইগুলাই
   length: 5
   tier: daily
@@ -4216,10 +4684,14 @@ words:
   - main_list
 - word: ব্ল্যাকের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Black's (Harry Potter)
 - word: লাইসেন্স
   length: 5
   tier: daily
@@ -4246,10 +4718,14 @@ words:
   - main_list
 - word: কাস্পিয়ান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Caspian (Narnia character/sea)
 - word: তারপরই
   length: 5
   tier: daily
@@ -4287,10 +4763,14 @@ words:
   - main_list
 - word: ড্র্যাক্স
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Drax)
 - word: ইচ্ছেমত
   length: 5
   tier: daily
@@ -4328,10 +4808,14 @@ words:
   - main_list
 - word: ওয়াসিংটন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Washington)
 - word: পঙ্গুটাকে
   length: 5
   tier: daily
@@ -4351,10 +4835,14 @@ words:
   - main_list
 - word: কিরণমালা
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name / TV show name
 - word: রিসিভারটা
   length: 5
   tier: daily
@@ -4387,9 +4875,13 @@ words:
   - main_list
 - word: আ্যলবাস
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with typo - Albus (Harry Potter character)
 - word: সমস্যাকে
   length: 5
   tier: daily
@@ -4427,9 +4919,13 @@ words:
   - main_list
 - word: বোম্বার্ডা
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - spell name from Harry Potter (Bombarda)
 - word: খ্যাতনামা
   length: 5
   tier: daily
@@ -4490,10 +4986,14 @@ words:
   - main_list
 - word: অ্যাঙ্গেলে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Angela)
 - word: ড্রয়ারটা
   length: 5
   tier: daily
@@ -4565,9 +5065,13 @@ words:
   - main_list
 - word: কটওয়েল
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Cotwell)
 - word: সর্বাধিক
   length: 5
   tier: daily
@@ -4624,10 +5128,14 @@ words:
   - main_list
 - word: ডেসমন্ড
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Desmond)
 - word: সুইমিংপুলে
   length: 5
   tier: daily
@@ -4636,10 +5144,14 @@ words:
   - main_list
 - word: গ্যারিসন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Garrison)
 - word: ক্লায়েন্ট
   length: 5
   tier: daily
@@ -4654,9 +5166,13 @@ words:
   - main_list
 - word: ক্যাটেলিন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Catelyn from GoT)
 - word: কয়েকবার
   length: 5
   tier: daily
@@ -4713,15 +5229,23 @@ words:
   - main_list
 - word: হারামজাদা
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar/offensive - offensive slur
 - word: ্যাঙ্কেল
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed word - starts with hasanta, missing initial consonant
 - word: ইন্ডিয়ান
   length: 5
   tier: daily
@@ -4764,10 +5288,14 @@ words:
   - main_list
 - word: অ্যানাবেথ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Annabeth)
 - word: মস্তিস্কে
   length: 5
   tier: daily
@@ -4776,10 +5304,14 @@ words:
   - main_list
 - word: ক্যাথারিন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Catherine)
 - word: এনেছিলেন
   length: 5
   tier: daily
@@ -4800,9 +5332,13 @@ words:
   - main_list
 - word: অ্যাানাবেথ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with typo - Annabeth
 - word: অ্যাপ্লাই
   length: 5
   tier: daily
@@ -4833,15 +5369,23 @@ words:
   - main_list
 - word: চান্দ্রিকা
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Chandrika)
 - word: সক্রেটিস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Socrates)
 - word: বহিষ্কার
   length: 5
   tier: daily
@@ -4921,9 +5465,13 @@ words:
   - main_list
 - word: এভালেনেডা
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name
 - word: টুকরোগুলো
   length: 5
   tier: daily
@@ -4932,10 +5480,14 @@ words:
   - main_list
 - word: হবিটদের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Hobbits (Lord of the Rings)
 - word: বিশ্রামের
   length: 5
   tier: daily
@@ -4956,9 +5508,13 @@ words:
   - main_list
 - word: অংঙ্গীকার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Misspelling - should be অঙ্গীকার (commitment)
 - word: জায়াগামত
   length: 5
   tier: daily
@@ -5006,16 +5562,24 @@ words:
   - main_list
 - word: টামনাসকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Tumnus (Narnia)
 - word: আফ্রোদিতি
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - goddess name (Aphrodite)
 - word: ট্যাঙ্কের
   length: 5
   tier: daily
@@ -5054,15 +5618,23 @@ words:
   - main_list
 - word: গ্রামাটন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional term (Grammaton)
 - word: বালটিমোর
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Baltimore)
 - word: এডিটরকে
   length: 5
   tier: daily
@@ -5139,10 +5711,14 @@ words:
   - main_list
 - word: হারফোর্ড
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Harford/Hartford)
 - word: উইন্ডের
   length: 5
   tier: daily
@@ -5220,12 +5796,20 @@ words:
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Sexually explicit term (ejaculation) - inappropriate for daily puzzle
 - word: কলোরাডোতে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Colorado
 - word: পার্টিকল
   length: 5
   tier: daily
@@ -5251,10 +5835,14 @@ words:
   - main_list
 - word: অ্যাডামস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Adams)
 - word: বেসরকারী
   length: 5
   tier: daily
@@ -5320,10 +5908,14 @@ words:
   - main_list
 - word: অ্যাঞ্জেলো
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Angelo)
 - word: খারাপভাবে
   length: 5
   tier: daily
@@ -5332,9 +5924,13 @@ words:
   - main_list
 - word: রেমেডিসের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Remedios
 - word: সিকুয়েন্স
   length: 5
   tier: daily
@@ -5486,9 +6082,13 @@ words:
   - main_list
 - word: ওয়ান্ডাকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Wanda
 - word: পুর্বদিকে
   length: 5
   tier: daily
@@ -5509,22 +6109,34 @@ words:
   - main_list
 - word: হ্যারিসন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Harrison)
 - word: বার্নসের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Barnes's
 - word: বক্সটার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Baxter)
 - word: সুপরিচিত
   length: 5
   tier: daily
@@ -5545,9 +6157,13 @@ words:
   - main_list
 - word: অমিতাবের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Amitabh's
 - word: মরুভূমির
   length: 5
   tier: daily
@@ -5568,9 +6184,13 @@ words:
   - main_list
 - word: হ্যানাওয়ে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Hanaway)
 - word: কয়েকদিন
   length: 5
   tier: daily
@@ -5627,15 +6247,23 @@ words:
   - main_list
 - word: জ্যাফেথের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Japheth (biblical)
 - word: বেঞ্জামিন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Benjamin)
 - word: মডেলদের
   length: 5
   tier: daily
@@ -5692,9 +6320,13 @@ words:
   - main_list
 - word: আপ্পুভাই
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: চৌবাচ্চার
   length: 5
   tier: daily
@@ -5727,9 +6359,13 @@ words:
   - main_list
 - word: গ্লোরিয়াকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Gloria
 - word: শব্দজট
   length: 5
   tier: daily
@@ -5767,10 +6403,14 @@ words:
   - main_list
 - word: কলোরাডোর
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Colorado's
 - word: প্রেমিকারে
   length: 5
   tier: daily
@@ -5796,10 +6436,14 @@ words:
   - main_list
 - word: লিভিংস্টোন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Livingstone)
 - word: আনন্দটা
   length: 5
   tier: daily
@@ -5825,10 +6469,14 @@ words:
   - main_list
 - word: বার্লিনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Berlin
 - word: উচ্চপদে
   length: 5
   tier: daily
@@ -5866,10 +6514,14 @@ words:
   - main_list
 - word: সিদ্ধার্থ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Siddhartha)
 - word: ক্র্যাকোতে
   length: 5
   tier: daily
@@ -5878,9 +6530,13 @@ words:
   - main_list
 - word: আরেব্বাহ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: ছবিগুলোর
   length: 5
   tier: daily
@@ -5895,16 +6551,24 @@ words:
   - main_list
 - word: স্ট্যানিস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Stannis from GoT)
 - word: শার্লকের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Sherlock's
 - word: ধুরন্ধর
   length: 5
   tier: daily
@@ -5913,9 +6577,13 @@ words:
   - main_list
 - word: ওমাটিকায়া
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional clan (Avatar movie)
 - word: প্রচারণা
   length: 5
   tier: daily
@@ -5954,10 +6622,14 @@ words:
   - main_list
 - word: মুশফিকুর
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Mushfiqur)
 - word: ডলারগুলো
   length: 5
   tier: daily
@@ -5994,9 +6666,13 @@ words:
   - main_list
 - word: রবার্টার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Roberta's
 - word: সেকারণেই
   length: 5
   tier: daily
@@ -6034,10 +6710,14 @@ words:
   - main_list
 - word: স্পার্টার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Sparta's
 - word: টার্টলের
   length: 5
   tier: daily
@@ -6268,9 +6948,13 @@ words:
   scheduled_day: 1728
 - word: মিথ্রানের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Mithran
 - word: ডেনমার্ক
   length: 5
   tier: daily
@@ -6327,9 +7011,13 @@ words:
   - main_list
 - word: জ্যাকসুলি
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Jake Sully from Avatar)
 - word: ডুয়ার্ফের
   length: 5
   tier: daily
@@ -6354,10 +7042,14 @@ words:
   - main_list
 - word: ওকলাহোমা
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - US state (Oklahoma)
 - word: প্রতিযোগী
   length: 5
   tier: daily
@@ -6378,9 +7070,13 @@ words:
   - main_list
 - word: ওলিনিয়াক
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Oliniak)
 - word: জমিদারের
   length: 5
   tier: daily
@@ -6459,19 +7155,31 @@ words:
   - main_list
 - word: মারচিসন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Murchison)
 - word: চাওডারের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Chowder (character)
 - word: ড্যান্টন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Danton)
 - word: তিরস্কার
   length: 5
   tier: daily
@@ -6486,10 +7194,14 @@ words:
   - main_list
 - word: লিওনার্ড
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Leonard)
 - word: প্রোটোকল
   length: 5
   tier: daily
@@ -6504,10 +7216,14 @@ words:
   - main_list
 - word: ফ্র্যাঙ্কি
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Frankie)
 - word: প্রতারিত
   length: 5
   tier: daily
@@ -6634,9 +7350,13 @@ words:
   - main_list
 - word: ভেঙ্কানার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Venkatana
 - word: ভার্শনের
   length: 5
   tier: daily
@@ -6645,10 +7365,14 @@ words:
   - main_list
 - word: অলিভিয়ার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Olivia/Olivier)
 - word: বদমায়েশি
   length: 5
   tier: daily
@@ -6693,15 +7417,23 @@ words:
   - main_list
 - word: রোজলিনের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Roslyn
 - word: নিগ্রোদের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Offensive/outdated racial term with case marker - Negroes
 - word: পূর্বদিক
   length: 5
   tier: daily
@@ -6722,16 +7454,24 @@ words:
   - main_list
 - word: আনুবিসের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Anubis
 - word: ক্লেমেন্তে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Clemente)
 - word: ইউজারের
   length: 5
   tier: daily
@@ -6740,9 +7480,13 @@ words:
   - main_list
 - word: মার্কউড
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Markwood)
 - word: অজান্তেই
   length: 5
   tier: daily
@@ -6791,9 +7535,13 @@ words:
   - main_list
 - word: দাইজিউন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: ভালোবাসছো
   length: 5
   tier: daily
@@ -6819,9 +7567,13 @@ words:
   - main_list
 - word: ্যাচেলই
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed word - starts with hasanta, missing initial consonant
 - word: বর্তমান
   length: 5
   tier: daily
@@ -6918,9 +7670,13 @@ words:
   - main_list
 - word: গ্যারেল্ড
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Gerald)
 - word: কাজকর্ম
   length: 5
   tier: daily
@@ -6964,10 +7720,14 @@ words:
   - main_list
 - word: লুইজিয়ানা
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - US state (Louisiana)
 - word: জায়গাটির
   length: 5
   tier: daily
@@ -7024,10 +7784,14 @@ words:
   - main_list
 - word: আরিব্বাস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: অন্যদের
   length: 5
   tier: daily
@@ -7036,10 +7800,14 @@ words:
   - main_list
 - word: কলোম্বিয়া
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Colombia)
 - word: এগারোটার
   length: 5
   tier: daily
@@ -7108,9 +7876,13 @@ words:
   - main_list
 - word: ক্রেকোঝিয়া
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional country
 - word: অমরত্ব
   length: 5
   tier: daily
@@ -7129,10 +7901,14 @@ words:
   - main_list
 - word: আজকাবানে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional place (Azkaban from Harry Potter)
 - word: ছেলেমেয়েরা
   length: 5
   tier: daily
@@ -7141,10 +7917,14 @@ words:
   - main_list
 - word: স্যামসন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Samson)
 - word: ফেলছিলাম
   length: 5
   tier: daily
@@ -7219,9 +7999,13 @@ words:
   - main_list
 - word: প্রোথেরোর
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Prothero
 - word: জাদুগরের
   length: 5
   tier: daily
@@ -7301,15 +8085,23 @@ words:
   - main_list
 - word: মিত্রানের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Mitran
 - word: রদ্রিগেজ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Rodriguez)
 - word: সাইকেলটা
   length: 5
   tier: daily
@@ -7370,9 +8162,13 @@ words:
   - main_list
 - word: ভাল্লুভার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Thiruvalluvar
 - word: দেওয়ালের
   length: 5
   tier: daily
@@ -7428,9 +8224,13 @@ words:
   - main_list
 - word: এল্ভসরা
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Elves (fantasy term from Lord of the Rings)
 - word: অদরকারি
   length: 5
   tier: daily
@@ -7523,10 +8323,14 @@ words:
   - main_list
 - word: নেহওয়াল
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Nehwal)
 - word: উচ্চারণ
   length: 5
   tier: daily
@@ -7594,9 +8398,13 @@ words:
   - main_list
 - word: তাতাগ্লিয়া
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Tattaglia from Godfather)
 - word: নিউটনের
   length: 5
   tier: daily
@@ -7629,15 +8437,23 @@ words:
   - main_list
 - word: অ্যান্ড্রু
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Andrew)
 - word: পূবিলিয়াস
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Publius)
 - word: প্রাইভেসি
   length: 5
   tier: daily
@@ -7646,10 +8462,14 @@ words:
   - main_list
 - word: কর্নেলের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Colonel/Cornell
 - word: বানাচ্ছেন
   length: 5
   tier: daily
@@ -7775,9 +8595,13 @@ words:
   - main_list
 - word: কোট্টালামে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name
 - word: হোয়াইটের
   length: 5
   tier: daily
@@ -7792,15 +8616,23 @@ words:
   - main_list
 - word: বসনিয়াতে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Bosnia
 - word: গ্রীমালের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive
 - word: অসুস্থতা
   length: 5
   tier: daily
@@ -7845,9 +8677,13 @@ words:
   - main_list
 - word: গ্ল্যাসার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Glaser)
 - word: ড্রাগসের
   length: 5
   tier: daily
@@ -7856,9 +8692,13 @@ words:
   - main_list
 - word: জ্যানেটকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Janet
 - word: উদবিড়াল
   length: 5
   tier: daily
@@ -7932,10 +8772,14 @@ words:
   - main_list
 - word: বেলজিয়ামে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Belgium
 - word: বসেছিলাম
   length: 5
   tier: daily
@@ -7950,10 +8794,14 @@ words:
   - main_list
 - word: অরবিন্দ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Aurobindo/Aravind)
 - word: প্রস্তাব
   length: 5
   tier: daily
@@ -7992,10 +8840,14 @@ words:
   - main_list
 - word: টাইলারের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Tyler's
 - word: ঘোষণাকারী
   length: 5
   tier: daily
@@ -8045,10 +8897,14 @@ words:
   - main_list
 - word: ভানুমতিকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Bhanumati
 - word: কেন্দ্রের
   length: 5
   tier: daily
@@ -8097,9 +8953,13 @@ words:
   - main_list
 - word: লরিস্টন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Lauriston)
 - word: রেকর্ডের
   length: 5
   tier: daily
@@ -8114,10 +8974,14 @@ words:
   - main_list
 - word: স্যান্ডির
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Sandy's
 - word: চুষতাসিস
   length: 5
   tier: daily
@@ -8173,10 +9037,14 @@ words:
   - main_list
 - word: মার্লিনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Merlin's
 - word: স্বাস্থ্য
   length: 5
   tier: daily
@@ -8297,9 +9165,13 @@ words:
   - main_list
 - word: কালুয়াদের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case
 - word: ইয়ার্ডের
   length: 5
   tier: daily
@@ -8332,14 +9204,22 @@ words:
   - main_list
 - word: মালারভিড়ি
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name
 - word: ম্যককল
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (McCall)
 - word: অনুসরণ
   length: 5
   tier: daily
@@ -8378,10 +9258,14 @@ words:
   - main_list
 - word: ম্যারিওন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Marion)
 - word: জিনিসেরও
   length: 5
   tier: daily
@@ -8396,26 +9280,42 @@ words:
   - main_list
 - word: জাপাতোরিয়া
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Zaporizhia)
 - word: ব্যালারিনা
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - ballerina (English/Italian)
 - word: মারওয়ান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Marwan)
 - word: ডাবলিনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Dublin
 - word: ইউনিটের
   length: 5
   tier: daily
@@ -8454,10 +9354,14 @@ words:
   - main_list
 - word: টাইলারকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Tyler
 - word: ওদেরকেই
   length: 5
   tier: daily
@@ -8489,9 +9393,13 @@ words:
   - main_list
 - word: টাংগাবালির
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - place name
 - word: সম্পুর্ণ
   length: 5
   tier: daily
@@ -8530,10 +9438,14 @@ words:
   - main_list
 - word: ওয়ালারকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Waller
 - word: জমাটবাধা
   length: 5
   tier: daily
@@ -8548,9 +9460,13 @@ words:
   - main_list
 - word: পেট্টিগ্রূ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Pettigrew from Harry Potter)
 - word: কারাসবের
   length: 5
   tier: daily
@@ -8570,9 +9486,13 @@ words:
   - main_list
 - word: হ্যালারিন
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun
 - word: বন্ধুকেও
   length: 5
   tier: daily
@@ -8665,9 +9585,13 @@ words:
   - main_list
 - word: হ্যান্সের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Hans
 - word: ওয়াইল্ড
   length: 5
   tier: daily
@@ -8733,10 +9657,14 @@ words:
   - main_list
 - word: ভেঙ্কটেশ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Venkatesh)
 - word: নিরাপরাধ
   length: 5
   tier: daily
@@ -8757,9 +9685,13 @@ words:
   - main_list
 - word: ক্রনসের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Kronos
 - word: পরিবারকে
   length: 5
   tier: daily
@@ -8804,9 +9736,13 @@ words:
   - main_list
 - word: হাউসারের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Hauser
 - word: মেয়েমানুষ
   length: 5
   tier: daily
@@ -8917,10 +9853,14 @@ words:
   - main_list
 - word: রেঙ্গুনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Rangoon
 - word: ম্যাজিকাল
   length: 5
   tier: daily
@@ -8929,10 +9869,14 @@ words:
   - main_list
 - word: হল্যান্ড
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Holland)
 - word: কাগজটায়
   length: 5
   tier: daily
@@ -8947,10 +9891,14 @@ words:
   - main_list
 - word: পন্ডিচেরি
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Pondicherry)
 - word: ওয়ালাদের
   length: 5
   tier: daily
@@ -8971,9 +9919,13 @@ words:
   - main_list
 - word: পাটানচিরু
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name
 - word: এনডিউর
   length: 5
   tier: daily
@@ -8993,10 +9945,14 @@ words:
   - main_list
 - word: এঙ্গেলের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Engels
 - word: অনুভবও
   length: 5
   tier: daily
@@ -9011,9 +9967,13 @@ words:
   - main_list
 - word: মরগানার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Morgana
 - word: কোনরকমে
   length: 5
   tier: daily
@@ -9028,10 +9988,14 @@ words:
   - main_list
 - word: অক্সফাম
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - brand name (Oxfam)
 - word: কুটনৈতিক
   length: 5
   tier: daily
@@ -9058,10 +10022,14 @@ words:
   - main_list
 - word: ফিলিপসকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Phillips
 - word: কন্ট্রল
   length: 5
   tier: daily
@@ -9183,10 +10151,14 @@ words:
   - main_list
 - word: অরলিন্স
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Orleans)
 - word: ভোর্টেক্স
   length: 5
   tier: daily
@@ -9201,10 +10173,14 @@ words:
   - main_list
 - word: হরলিক্স
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - brand name (Horlicks)
 - word: ফলপ্রসূ
   length: 5
   tier: daily
@@ -9219,9 +10195,13 @@ words:
   - main_list
 - word: ইবেনযার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Ebenezer)
 - word: সহ্রদয়
   length: 5
   tier: daily
@@ -9252,9 +10232,13 @@ words:
   - main_list
 - word: ক্যাটনিস
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Katniss from Hunger Games)
 - word: মধ্যরাতে
   length: 5
   tier: daily
@@ -9281,10 +10265,14 @@ words:
   - main_list
 - word: হুসেইনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Hussein's
 - word: নাশপাতির
   length: 5
   tier: daily
@@ -9352,9 +10340,13 @@ words:
   - main_list
 - word: কাভালেটিস
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname
 - word: সংক্রমিত
   length: 5
   tier: daily
@@ -9381,10 +10373,14 @@ words:
   - main_list
 - word: মাখজুমের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Makhzum (Arab clan)
 - word: জায়গাটিকে
   length: 5
   tier: daily
@@ -9411,9 +10407,13 @@ words:
   - main_list
 - word: নাগাভেলির
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Nagaveli
 - word: দুজনকেই
   length: 5
   tier: daily
@@ -9428,9 +10428,13 @@ words:
   - main_list
 - word: প্যাটসির
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Patsy's
 - word: বুঝলামনা
   length: 5
   tier: daily
@@ -9480,9 +10484,13 @@ words:
   - main_list
 - word: ড্যাথোরাকি
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional people (Dothraki from GoT)
 - word: বিকলাঙ্গ
   length: 5
   tier: daily
@@ -9568,9 +10576,13 @@ words:
   - main_list
 - word: ঘাসসানের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Ghassan
 - word: শুক্রবারে
   length: 5
   tier: daily
@@ -9585,9 +10597,13 @@ words:
   - main_list
 - word: গ্যারিডোর
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Garrido
 - word: ইমপ্রেস
   length: 5
   tier: daily
@@ -9616,6 +10632,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword with article - graffiti
 - word: লজ্জাহীন
   length: 5
   tier: daily
@@ -9630,10 +10650,14 @@ words:
   - main_list
 - word: মার্শালের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Marshal's
 - word: পরমাণুর
   length: 5
   tier: daily
@@ -9642,14 +10666,22 @@ words:
   - main_list
 - word: জিওসাপ্পি
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name
 - word: ডার্ডনকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case
 - word: প্রাক্কালে
   length: 5
   tier: daily
@@ -9670,10 +10702,14 @@ words:
   - main_list
 - word: উইলসন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Wilson)
 - word: মুলগুলোর
   length: 5
   tier: daily
@@ -9754,9 +10790,13 @@ words:
   scheduled_day: 1712
 - word: পাস্পারতু
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Passepartout)
 - word: স্থলপথে
   length: 5
   tier: daily
@@ -9813,22 +10853,34 @@ words:
   - main_list
 - word: অ্যারিজোনা
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - US state name (Arizona)
 - word: প্যাংবর্ন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Pangborn)
 - word: এসপোসিতো
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Esposito)
 - word: কাউন্টিতে
   length: 5
   tier: daily
@@ -10003,10 +11055,14 @@ words:
   - main_list
 - word: সুলিভানের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Sullivan's
 - word: অনলাইন
   length: 5
   tier: daily
@@ -10097,9 +11153,13 @@ words:
   - main_list
 - word: নাৎজিদের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sensitive term with case marker - Nazis
 - word: বিশ্লেষন
   length: 5
   tier: daily
@@ -10170,9 +11230,13 @@ words:
   - main_list
 - word: উইকিনস
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Wilkins)
 - word: ভালবাসলে
   length: 5
   tier: daily
@@ -10187,9 +11251,13 @@ words:
   - main_list
 - word: লেস্ত্রাড
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Lestrade from Sherlock Holmes)
 - word: কিছুএকটা
   length: 5
   tier: daily
@@ -10197,9 +11265,13 @@ words:
   - main_list
 - word: ব্লাকউড
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Blackwood)
 - word: এইজন্য
   length: 5
   tier: daily
@@ -10235,15 +11307,23 @@ words:
   - main_list
 - word: লিক্লেয়ার
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Leclair)
 - word: ফ্রিটাউনে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Freetown)
 - word: হিউমারের
   length: 5
   tier: daily
@@ -10262,10 +11342,14 @@ words:
   - main_list
 - word: হিটলারের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Hitler's
 - word: ঝুটঝামেলা
   length: 5
   tier: daily
@@ -10285,10 +11369,14 @@ words:
   - main_list
 - word: ক্যালিবান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Caliban)
 - word: ছায়াপথের
   length: 5
   tier: daily
@@ -10321,9 +11409,13 @@ words:
   - main_list
 - word: নাগাভেলিকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Nagaveli
 - word: পারবেননা
   length: 5
   tier: daily
@@ -10367,10 +11459,14 @@ words:
   - main_list
 - word: কুরাইজার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun
 - word: উদঘাটন
   length: 5
   tier: daily
@@ -10379,15 +11475,23 @@ words:
   - main_list
 - word: পিক্যাডেলি
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Piccadilly)
 - word: পন্টিয়াক
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place/brand name (Pontiac)
 - word: ব্র্যাঞ্চে
   length: 5
   tier: daily
@@ -10407,16 +11511,24 @@ words:
   - main_list
 - word: বেডফোর্ড
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Bedford)
 - word: ওয়ালথার
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Walther)
 - word: মহাভারত
   length: 5
   tier: daily
@@ -10455,10 +11567,14 @@ words:
   - main_list
 - word: ক্যালভিন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Calvin)
 - word: আর্তনাদ
   length: 5
   tier: daily
@@ -10478,10 +11594,14 @@ words:
   - main_list
 - word: লরেন্সকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Lawrence
 - word: ক্ষেত্রেও
   length: 5
   tier: daily
@@ -10526,16 +11646,24 @@ words:
   - main_list
 - word: মন্ট্রিলে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Montreal
 - word: অ্যারনকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Aaron
 - word: অনেকবার
   length: 5
   tier: daily
@@ -10616,16 +11744,24 @@ words:
   - main_list
 - word: ম্যারিয়ন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Marion) variant
 - word: ম্যারিয়াস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Marius)
 - word: উন্নতির
   length: 5
   tier: daily
@@ -10640,10 +11776,14 @@ words:
   - main_list
 - word: কোলম্যান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Coleman)
 - word: হয়েছিলেন
   length: 5
   tier: daily
@@ -10718,10 +11858,14 @@ words:
   - main_list
 - word: রবিনসন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Robinson)
 - word: কামনাকারী
   length: 5
   tier: daily
@@ -10736,10 +11880,14 @@ words:
   - main_list
 - word: অর্লিন্সে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case marker - Orleans
 - word: সর্বচ্চো
   length: 5
   tier: daily
@@ -10760,16 +11908,24 @@ words:
   - main_list
 - word: মার্টিনের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Martin's
 - word: কুইন্সের
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Queens
 - word: সফলভাবে
   length: 5
   tier: daily
@@ -10867,9 +12023,13 @@ words:
   - main_list
 - word: ডুশ্যাম্প
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Duchamp)
 - word: মাগফিরাত
   length: 5
   tier: daily
@@ -10884,9 +12044,13 @@ words:
   - main_list
 - word: পাচাইমুথু
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: ক্রান্তীয়
   length: 5
   tier: daily
@@ -10934,10 +12098,14 @@ words:
   - main_list
 - word: অ্যাঙ্গাস
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Angus)
 - word: ইষ্টেশোনে
   length: 5
   tier: daily
@@ -11013,10 +12181,14 @@ words:
   - main_list
 - word: বার্নসকে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Barnes
 - word: খাওয়াইতে
   length: 5
   tier: daily
@@ -11089,21 +12261,37 @@ words:
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Sensitive term with case - brothel
 - word: মিনাম্মাকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Minamma
 - word: ক্যালভেট
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Calvet)
 - word: বেশ্যাটাকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Offensive term with case - derogatory term for sex worker
 - word: বাছাইয়ের
   length: 5
   tier: daily
@@ -11112,9 +12300,13 @@ words:
   - main_list
 - word: মাদ্রেসের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Madras
 - word: যন্ত্রটি
   length: 5
   tier: daily
@@ -11135,10 +12327,14 @@ words:
   - main_list
 - word: উইলিয়াম
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (William)
 - word: সত্ত্বাকে
   length: 5
   tier: daily
@@ -11159,20 +12355,32 @@ words:
   - main_list
 - word: শারম্যান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Sherman)
 - word: গ্রেইসকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Grace
 - word: মেসিয়াসের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Messiah's
 - word: তাড়াহুড়ার
   length: 5
   tier: daily
@@ -11187,9 +12395,13 @@ words:
   - main_list
 - word: মিনেটঙ্কা
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Minnetonka)
 - word: পার্সেন্ট
   length: 5
   tier: daily
@@ -11268,16 +12480,24 @@ words:
   - main_list
 - word: কস্টিগান
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character name (Costigan)
 - word: ফ্রাঙ্ককে
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Frank
 - word: ভেবেছিলেন
   length: 5
   tier: daily
@@ -11304,9 +12524,13 @@ words:
   - main_list
 - word: পিমব্রোকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Pembroke)
 - word: বেরিয়েছিলো
   length: 5
   tier: daily
@@ -11417,9 +12641,13 @@ words:
   - main_list
 - word: এডলারকে
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with case - Adler
 - word: নিকটতম
   length: 5
   tier: daily
@@ -11451,9 +12679,13 @@ words:
   - main_list
 - word: ঃঅনুবাদ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed word - starts with visarga improperly
 - word: আমেরিকাও
   length: 5
   tier: daily
@@ -11490,9 +12722,13 @@ words:
   - main_list
 - word: ব্রাভোসের
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with possessive - Braavos (GoT)
 - word: জন্মেছিলে
   length: 5
   tier: daily
@@ -11566,10 +12802,14 @@ words:
   - main_list
 - word: আলফোনসো
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Alfonso)
 - word: নিম্নরূপ
   length: 5
   tier: daily
@@ -20806,10 +22046,14 @@ words:
   - main_list
 - word: আরউইন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Arwen/Irwin)
 - word: নাৎসিদের
   length: 5
   tier: valid
@@ -42325,10 +43569,14 @@ words:
   - main_list
 - word: এডউইন
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Edwin)
 - word: রক্তমাখা
   length: 5
   tier: valid

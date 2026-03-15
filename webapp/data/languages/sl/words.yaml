@@ -3320,10 +3320,14 @@ words:
   - main_list
 - word: burns
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Burns (surname)'
 - word: okisa
   length: 5
   tier: valid
@@ -3954,10 +3958,14 @@ words:
   - main_list
 - word: stark
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Stark (surname)'
 - word: kopah
   length: 5
   tier: valid
@@ -4570,10 +4578,14 @@ words:
   - main_list
 - word: marko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marko (personal name)'
 - word: haagu
   length: 5
   tier: valid
@@ -6390,10 +6402,14 @@ words:
   - main_list
 - word: pariz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Paris (city name)'
 - word: noseh
   length: 5
   tier: valid
@@ -6510,10 +6526,14 @@ words:
   - main_list
 - word: bauer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bauer (German surname)'
 - word: mešat
   length: 5
   tier: valid
@@ -7595,10 +7615,14 @@ words:
   - main_list
 - word: iraku
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Iraq (country, locative)'
 - word: jazzu
   length: 5
   tier: valid
@@ -9065,6 +9089,10 @@ words:
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Dejan (Slovenian personal name) - borderline, common name'
 - word: robim
   length: 5
   tier: valid
@@ -9381,10 +9409,14 @@ words:
   - main_list
 - word: brent
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Brent (personal name)'
 - word: špika
   length: 5
   tier: valid
@@ -9397,10 +9429,14 @@ words:
   - main_list
 - word: henri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Henri (personal name)'
 - word: rojak
   length: 5
   tier: valid
@@ -9510,10 +9546,14 @@ words:
   - main_list
 - word: cigan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Offensive: ethnic slur for Roma people'
 - word: samso
   length: 5
   tier: valid
@@ -9555,6 +9595,10 @@ words:
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Denis (personal name)'
 - word: gulim
   length: 5
   tier: valid
@@ -9620,10 +9664,14 @@ words:
   - main_list
 - word: grimm
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Grimm (surname)'
 - word: jurač
   length: 5
   tier: valid
@@ -10351,10 +10399,14 @@ words:
   - main_list
 - word: jurij
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jurij (personal name)'
 - word: ucvre
   length: 5
   tier: valid
@@ -11228,10 +11280,14 @@ words:
   - main_list
 - word: jakob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jakob (personal name)'
 - word: majaš
   length: 5
   tier: valid
@@ -11291,10 +11347,14 @@ words:
   - main_list
 - word: georg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Georg (personal name)'
 - word: otaja
   length: 5
   tier: valid
@@ -12450,6 +12510,10 @@ words:
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Jelko (Slovenian personal name)'
 - word: magij
   length: 5
   tier: valid
@@ -12527,10 +12591,14 @@ words:
   - main_list
 - word: robot
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'Valid: well-established word in Slovenian (Czech origin)'
 - word: turnu
   length: 5
   tier: valid
@@ -13054,10 +13122,14 @@ words:
   - main_list
 - word: filip
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Filip (personal name)'
 - word: pasus
   length: 5
   tier: valid
@@ -13258,10 +13330,14 @@ words:
   - main_list
 - word: grand
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English loanword: grand'
 - word: mešaš
   length: 5
   tier: valid
@@ -13929,10 +14005,14 @@ words:
   - main_list
 - word: kosov
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kosovo (place, genitive)'
 - word: lepin
   length: 5
   tier: valid
@@ -14631,10 +14711,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dante (personal name)'
 - word: stiha
   length: 5
   tier: valid
@@ -17173,10 +17257,14 @@ words:
   - main_list
 - word: maine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Maine (US state)'
 - word: kurim
   length: 5
   tier: valid
@@ -17329,6 +17417,10 @@ words:
   frequency: 4.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Milan (personal name / Italian city)'
 - word: pitne
   length: 5
   tier: valid
@@ -17489,10 +17581,14 @@ words:
   - main_list
 - word: braun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Braun (German surname / brand)'
 - word: judit
   length: 5
   tier: valid
@@ -17890,10 +17986,14 @@ words:
   - main_list
 - word: irski
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Irish (adjective)'
 - word: ogeln
   length: 5
   tier: valid
@@ -20498,10 +20598,14 @@ words:
   - main_list
 - word: devon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Devon (English place name)'
 - word: ubere
   length: 5
   tier: valid
@@ -20969,10 +21073,14 @@ words:
   - main_list
 - word: koran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Quran (religious text)'
 - word: metla
   length: 5
   tier: valid
@@ -23182,10 +23290,14 @@ words:
   - main_list
 - word: tokio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tokyo (city name)'
 - word: abdul
   length: 5
   tier: valid
@@ -24435,10 +24547,14 @@ words:
   - main_list
 - word: jožef
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jožef (personal name)'
 - word: žanah
   length: 5
   tier: valid
@@ -24957,10 +25073,14 @@ words:
   - main_list
 - word: matej
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Matej (personal name)'
 - word: vtika
   length: 5
   tier: daily
@@ -25033,10 +25153,14 @@ words:
   - main_list
 - word: locke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Locke (surname)'
 - word: štrus
   length: 5
   tier: valid
@@ -27375,10 +27499,14 @@ words:
   - main_list
 - word: black
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word / proper noun: Black (surname)'
 - word: zredi
   length: 5
   tier: valid
@@ -27711,10 +27839,14 @@ words:
   - main_list
 - word: lukas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lukas (personal name)'
 - word: gagam
   length: 5
   tier: valid
@@ -27737,10 +27869,14 @@ words:
   - main_list
 - word: klein
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Klein (German surname)'
 - word: pesen
   length: 5
   tier: valid
@@ -28067,10 +28203,14 @@ words:
   - main_list
 - word: irsko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Irish (adjective)'
 - word: vlako
   length: 5
   tier: valid
@@ -28650,6 +28790,10 @@ words:
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Offensive/insulting: idiot'
 - word: sedem
   length: 5
   tier: daily
@@ -29306,10 +29450,14 @@ words:
   - main_list
 - word: švici
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Switzerland (locative)'
 - word: zdeti
   length: 5
   tier: valid
@@ -30434,10 +30582,14 @@ words:
   - main_list
 - word: gomez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gomez (surname)'
 - word: pleti
   length: 5
   tier: valid
@@ -31105,10 +31257,14 @@ words:
   - main_list
 - word: irske
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Irish (adjective)'
 - word: oblit
   length: 5
   tier: valid
@@ -31235,10 +31391,14 @@ words:
   - main_list
 - word: times
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word / Proper noun: Times (publication)'
 - word: vegov
   length: 5
   tier: valid
@@ -32471,10 +32631,14 @@ words:
   - main_list
 - word: satan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Satan (religious figure)'
   history:
   - 1720
   scheduled_day: 1720
@@ -32941,10 +33105,14 @@ words:
   - main_list
 - word: miami
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Miami (city name)'
 - word: kirij
   length: 5
   tier: valid
@@ -35804,10 +35972,14 @@ words:
   - main_list
 - word: kairu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cairo (city, locative)'
 - word: vizam
   length: 5
   tier: valid
@@ -36143,6 +36315,10 @@ words:
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially inappropriate: fetish'
 - word: haaga
   length: 5
   tier: valid
@@ -36749,10 +36925,14 @@ words:
   - main_list
 - word: perez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Perez (surname)'
 - word: bezat
   length: 5
   tier: valid
@@ -36951,10 +37131,14 @@ words:
   - main_list
 - word: stone
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Stone (English surname) / English word'
 - word: obudi
   length: 5
   tier: valid
@@ -37112,10 +37296,14 @@ words:
   - main_list
 - word: cezar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Caesar (personal name)'
 - word: šrekl
   length: 5
   tier: valid
@@ -37170,10 +37358,14 @@ words:
   - main_list
 - word: johan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Johan (personal name)'
 - word: mirja
   length: 5
   tier: valid
@@ -37313,10 +37505,14 @@ words:
   - main_list
 - word: rossi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Rossi (Italian surname)'
 - word: šalki
   length: 5
   tier: valid
@@ -38726,10 +38922,14 @@ words:
   - main_list
 - word: iraka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Iraq (country, genitive)'
 - word: vrveh
   length: 5
   tier: valid
@@ -39400,10 +39600,14 @@ words:
   - main_list
 - word: hasan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hasan (personal name)'
 - word: sodri
   length: 5
   tier: valid
@@ -40682,10 +40886,14 @@ words:
   - main_list
 - word: janez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Janez (Slovenian personal name)'
 - word: vrtaj
   length: 5
   tier: valid
@@ -40800,10 +41008,14 @@ words:
   - main_list
 - word: gibbs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gibbs (surname)'
 - word: žegru
   length: 5
   tier: valid
@@ -40846,6 +41058,10 @@ words:
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Marin (personal name)'
 - word: mikal
   length: 5
   tier: valid
@@ -41247,9 +41463,13 @@ words:
   - main_list
 - word: micah
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Micah (personal name)'
 - word: mazal
   length: 5
   tier: valid
@@ -41897,10 +42117,14 @@ words:
   - main_list
 - word: jezus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jesus (religious figure)'
 - word: umiti
   length: 5
   tier: daily
@@ -42499,6 +42723,10 @@ words:
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Novak (Slovenian surname) - also means ''newcomer'''
 - word: tilen
   length: 5
   tier: valid
@@ -43263,6 +43491,10 @@ words:
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'English/Latin loanword: ultra'
 - word: semič
   length: 5
   tier: valid
@@ -44105,10 +44337,14 @@ words:
   - main_list
 - word: blair
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Blair (personal/surname)'
 - word: odlog
   length: 5
   tier: daily
@@ -44439,10 +44675,14 @@ words:
   - main_list
 - word: baker
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Baker (English surname)'
 - word: zdrči
   length: 5
   tier: valid
@@ -44703,10 +44943,14 @@ words:
   - main_list
 - word: dunaj
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dunaj (Danube river / Vienna in Slovenian)'
 - word: bobič
   length: 5
   tier: valid
@@ -45636,10 +45880,14 @@ words:
   - main_list
 - word: janko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Janko (personal name)'
 - word: enoti
   length: 5
   tier: daily
@@ -45677,6 +45925,10 @@ words:
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: July (month name) or Julius'
 - word: nožki
   length: 5
   tier: valid
@@ -45795,10 +46047,14 @@ words:
   - main_list
 - word: joško
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Joško (Slovenian personal name)'
 - word: brvjo
   length: 5
   tier: valid
@@ -46468,10 +46724,14 @@ words:
   - main_list
 - word: marek
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marek (personal name)'
 - word: gospa
   length: 5
   tier: daily
@@ -46543,10 +46803,14 @@ words:
   - main_list
 - word: cohen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cohen (surname)'
 - word: šotam
   length: 5
   tier: valid
@@ -46908,9 +47172,13 @@ words:
   - main_list
 - word: jazon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jason (personal name)'
 - word: sovin
   length: 5
   tier: valid
@@ -47487,10 +47755,14 @@ words:
   - main_list
 - word: egipt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Egypt (country name)'
 - word: čugam
   length: 5
   tier: valid
@@ -47713,10 +47985,14 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Oskar (personal name)'
 - word: bašin
   length: 5
   tier: valid
@@ -48003,10 +48279,14 @@ words:
   - main_list
 - word: moran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Moran (surname)'
 - word: gluši
   length: 5
   tier: valid
@@ -50653,10 +50933,14 @@ words:
   - main_list
 - word: iranu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Iran (country, locative)'
 - word: delan
   length: 5
   tier: valid
@@ -50685,10 +50969,14 @@ words:
   - main_list
 - word: tokiu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tokyo (city name, locative)'
 - word: lahek
   length: 5
   tier: daily
@@ -50958,6 +51246,10 @@ words:
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Duška (personal name)'
 - word: oljim
   length: 5
   tier: valid
@@ -52423,10 +52715,14 @@ words:
   - main_list
 - word: bosni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bosnia (country, dative)'
 - word: jokav
   length: 5
   tier: valid
@@ -52821,6 +53117,10 @@ words:
   frequency: 5.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'English loanword: super'
 - word: kršiš
   length: 5
   tier: valid
@@ -53632,10 +53932,14 @@ words:
   - main_list
 - word: leeds
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Leeds (English city)'
 - word: kopan
   length: 5
   tier: valid
@@ -56203,6 +56507,10 @@ words:
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Islam (religion name)'
 - word: šineš
   length: 5
   tier: valid
@@ -58784,6 +59092,10 @@ words:
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Borka (personal name)'
 - word: letel
   length: 5
   tier: daily
@@ -58818,10 +59130,14 @@ words:
   - main_list
 - word: adler
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Adler (surname)'
 - word: akuti
   length: 5
   tier: valid
@@ -59002,10 +59318,14 @@ words:
   - main_list
 - word: irska
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ireland (country name)'
 - word: črnil
   length: 5
   tier: valid
@@ -60196,10 +60516,14 @@ words:
   - main_list
 - word: kenta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kent (place name, genitive)'
 - word: topič
   length: 5
   tier: valid
@@ -60396,10 +60720,14 @@ words:
   - main_list
 - word: freud
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Freud (surname)'
 - word: lopič
   length: 5
   tier: valid

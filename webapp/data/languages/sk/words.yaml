@@ -225,10 +225,14 @@ words:
   - main_list
 - word: kokot
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Vulgar: common Slovak profanity (also means rooster, but primarily vulgar)'
 - word: desný
   length: 5
   tier: valid
@@ -236,9 +240,13 @@ words:
   - main_list
 - word: sučka
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Vulgar: bitch (vulgar insult, also means female dog)'
 - word: osiel
   length: 5
   tier: daily
@@ -383,16 +391,24 @@ words:
   - main_list
 - word: vista
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Foreign word / brand name (Windows Vista)
 - word: mirko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Mirko'
 - word: drieť
   length: 5
   tier: valid
@@ -405,9 +421,13 @@ words:
   - main_list
 - word: cigáň
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Offensive: verb derived from derogatory Roma term (to lie)'
 - word: znedo
   length: 5
   tier: valid
@@ -425,9 +445,13 @@ words:
   - main_list
 - word: etela
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Etela'
 - word: arché
   length: 5
   tier: daily
@@ -594,9 +618,13 @@ words:
   - main_list
 - word: lyone
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Lyon (city name)'
 - word: mióza
   length: 5
   tier: valid
@@ -686,9 +714,13 @@ words:
   - main_list
 - word: tatár
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: Tatar (ethnic group)'
 - word: bajku
   length: 5
   tier: valid
@@ -779,10 +811,14 @@ words:
   - main_list
 - word: katka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Katka (diminutive)'
 - word: pejky
   length: 5
   tier: valid
@@ -869,10 +905,14 @@ words:
   - main_list
 - word: juice
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: objal
   length: 5
   tier: daily
@@ -1075,10 +1115,14 @@ words:
   - main_list
 - word: sound
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: vrtný
   length: 5
   tier: daily
@@ -1118,10 +1162,14 @@ words:
   - main_list
 - word: ľuboš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Ľuboš'
 - word: howgh
   length: 5
   tier: valid
@@ -1248,10 +1296,14 @@ words:
   - main_list
 - word: atari
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: brand name Atari'
 - word: halda
   length: 5
   tier: daily
@@ -1821,9 +1873,13 @@ words:
   - main_list
 - word: homér
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Homer (Greek poet)'
 - word: pinka
   length: 5
   tier: daily
@@ -2052,9 +2108,13 @@ words:
   - main_list
 - word: jánov
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: place name Jánov'
 - word: búvať
   length: 5
   tier: valid
@@ -2298,15 +2358,23 @@ words:
   - main_list
 - word: lukin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname Lukin'
 - word: tomáš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Tomáš'
   history:
   - 1705
   scheduled_day: 1705
@@ -2396,10 +2464,14 @@ words:
   - main_list
 - word: match
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: zrieť
   length: 5
   tier: daily
@@ -2478,9 +2550,13 @@ words:
   - main_list
 - word: silvu
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Silva (dative)'
 - word: ďugať
   length: 5
   tier: valid
@@ -2586,9 +2662,13 @@ words:
   - main_list
 - word: hádes
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Greek god Hades'
 - word: breše
   length: 5
   tier: valid
@@ -2642,10 +2722,14 @@ words:
   - main_list
 - word: adela
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Adela'
 - word: oslám
   length: 5
   tier: daily
@@ -2688,9 +2772,13 @@ words:
   - main_list
 - word: pskov
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Pskov (Russian city)'
 - word: sonet
   length: 5
   tier: daily
@@ -2703,9 +2791,13 @@ words:
   - main_list
 - word: očová
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Očová (Slovak village name)'
 - word: lalok
   length: 5
   tier: daily
@@ -2897,10 +2989,14 @@ words:
   - main_list
 - word: stern
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname Stern / German word'
 - word: zmrač
   length: 5
   tier: valid
@@ -3060,9 +3156,13 @@ words:
   - main_list
 - word: jitka
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Jitka'
 - word: laváž
   length: 5
   tier: valid
@@ -3300,9 +3400,13 @@ words:
   - main_list
 - word: kunov
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: place name Kunov'
 - word: aziat
   length: 5
   tier: valid
@@ -3423,9 +3527,13 @@ words:
   - main_list
 - word: lutza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Lutza'
 - word: ujcov
   length: 5
   tier: daily
@@ -3485,9 +3593,13 @@ words:
   - main_list
 - word: ghana
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Ghana (country name)'
 - word: ladný
   length: 5
   tier: valid
@@ -3600,9 +3712,13 @@ words:
   - main_list
 - word: štrby
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Štrby (plural/genitive of Štrba)'
 - word: dunčy
   length: 5
   tier: valid
@@ -3615,9 +3731,13 @@ words:
   - main_list
 - word: chabo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Slang/Romani loanword, too informal for puzzle
 - word: príma
   length: 5
   tier: daily
@@ -3733,9 +3853,13 @@ words:
   - main_list
 - word: paulu
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Paul (dative)'
 - word: ovsom
   length: 5
   tier: valid
@@ -3807,9 +3931,13 @@ words:
   - main_list
 - word: ferre
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname Ferre'
 - word: poňať
   length: 5
   tier: daily
@@ -3828,9 +3956,13 @@ words:
   - main_list
 - word: dijon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Dijon (city name)'
 - word: diana
   length: 5
   tier: valid
@@ -3850,10 +3982,14 @@ words:
   - main_list
 - word: žofia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Žofia'
 - word: bábam
   length: 5
   tier: valid
@@ -4006,10 +4142,14 @@ words:
   - main_list
 - word: award
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: buďto
   length: 5
   tier: daily
@@ -4055,10 +4195,14 @@ words:
   - main_list
 - word: štrba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Štrba (Slovak town name)'
 - word: nehor
   length: 5
   tier: valid
@@ -4133,9 +4277,13 @@ words:
   - main_list
 - word: badín
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Badín (Slovak village name)'
 - word: sypký
   length: 5
   tier: daily
@@ -4243,10 +4391,14 @@ words:
   - main_list
 - word: braun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: German surname / brand name'
 - word: fičúr
   length: 5
   tier: valid
@@ -4338,9 +4490,13 @@ words:
   - main_list
 - word: serve
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: major
   length: 5
   tier: daily
@@ -4775,9 +4931,13 @@ words:
   - main_list
 - word: dácia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Dacia (historical region / car brand)'
 - word: srním
   length: 5
   tier: valid
@@ -5259,10 +5419,14 @@ words:
   - main_list
 - word: pavla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Pavla'
 - word: pažba
   length: 5
   tier: valid
@@ -5993,10 +6157,14 @@ words:
   - main_list
 - word: crash
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: skóre
   length: 5
   tier: daily
@@ -6108,10 +6276,14 @@ words:
   - main_list
 - word: brick
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / proper noun
 - word: vamýr
   length: 5
   tier: valid
@@ -7067,10 +7239,14 @@ words:
   - main_list
 - word: corps
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English/French word, not Slovak
 - word: opaly
   length: 5
   tier: valid
@@ -7679,10 +7855,14 @@ words:
   - main_list
 - word: cyril
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Cyril'
 - word: hertz
   length: 5
   tier: valid
@@ -7843,10 +8023,14 @@ words:
   - main_list
 - word: budha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Buddha'
 - word: nengó
   length: 5
   tier: valid
@@ -8248,10 +8432,14 @@ words:
   - main_list
 - word: vanda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Vanda'
 - word: kovať
   length: 5
   tier: valid
@@ -9436,10 +9624,14 @@ words:
   - main_list
 - word: leone
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Leone'
 - word: duriť
   length: 5
   tier: valid
@@ -9493,10 +9685,14 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Congo (country name)'
 - word: reťaz
   length: 5
   tier: daily
@@ -9505,10 +9701,14 @@ words:
   - main_list
 - word: blues
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: rušno
   length: 5
   tier: valid
@@ -9527,10 +9727,14 @@ words:
   - main_list
 - word: margo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Margo'
 - word: hálka
   length: 5
   tier: valid
@@ -9560,10 +9764,14 @@ words:
   - main_list
 - word: jakub
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Jakub'
 - word: pagod
   length: 5
   tier: valid
@@ -10452,10 +10660,14 @@ words:
   - main_list
 - word: islam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: Islam (religion name)'
 - word: vinár
   length: 5
   tier: valid
@@ -11340,9 +11552,13 @@ words:
   - main_list
 - word: dandy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: útkom
   length: 5
   tier: valid
@@ -11518,10 +11734,14 @@ words:
   - main_list
 - word: truck
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: jalty
   length: 5
   tier: valid
@@ -11991,10 +12211,14 @@ words:
   - main_list
 - word: hilda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Hilda'
 - word: arany
   length: 5
   tier: valid
@@ -12085,10 +12309,14 @@ words:
   - main_list
 - word: mária
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Mária'
 - word: tenúť
   length: 5
   tier: valid
@@ -12149,10 +12377,14 @@ words:
   - main_list
 - word: alica
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Alica (Alice)'
 - word: kolón
   length: 5
   tier: valid
@@ -12387,10 +12619,14 @@ words:
   - main_list
 - word: santa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Santa (foreign word)'
 - word: pavle
   length: 5
   tier: valid
@@ -12544,16 +12780,24 @@ words:
   - main_list
 - word: burke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname Burke'
 - word: hovno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Vulgar: shit in Slovak'
 - word: rosiť
   length: 5
   tier: valid
@@ -12819,10 +13063,14 @@ words:
   - main_list
 - word: eliza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Eliza'
 - word: žičiť
   length: 5
   tier: valid
@@ -13327,10 +13575,14 @@ words:
   - main_list
 - word: dillí
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Delhi (city name)'
 - word: tagal
   length: 5
   tier: valid
@@ -13508,10 +13760,14 @@ words:
   - main_list
 - word: music
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: vyzuť
   length: 5
   tier: daily
@@ -13577,10 +13833,14 @@ words:
   - main_list
 - word: denis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Denis'
 - word: doslň
   length: 5
   tier: valid
@@ -13872,10 +14132,14 @@ words:
   - main_list
 - word: swift
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / proper noun
 - word: volať
   length: 5
   tier: daily
@@ -13894,10 +14158,14 @@ words:
   - main_list
 - word: jumbo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: celok
   length: 5
   tier: daily
@@ -13926,10 +14194,14 @@ words:
   - main_list
 - word: cigán
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Offensive: derogatory term for Roma people'
 - word: pedál
   length: 5
   tier: daily
@@ -15612,10 +15884,14 @@ words:
   - main_list
 - word: story
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: plech
   length: 5
   tier: daily
@@ -15997,10 +16273,14 @@ words:
   - main_list
 - word: after
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: húska
   length: 5
   tier: valid
@@ -16370,10 +16650,14 @@ words:
   - main_list
 - word: capri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Capri (island name)'
 - word: zdobu
   length: 5
   tier: valid
@@ -16443,10 +16727,14 @@ words:
   - main_list
 - word: matúš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Matúš'
 - word: dielo
   length: 5
   tier: daily
@@ -16657,10 +16945,14 @@ words:
   - main_list
 - word: break
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: haďom
   length: 5
   tier: valid
@@ -16778,10 +17070,14 @@ words:
   - main_list
 - word: enter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: fádne
   length: 5
   tier: valid
@@ -17847,10 +18143,14 @@ words:
   - main_list
 - word: route
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English/French word, not Slovak
 - word: samit
   length: 5
   tier: valid
@@ -18232,10 +18532,14 @@ words:
   - main_list
 - word: trust
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: ibiše
   length: 5
   tier: valid
@@ -18460,10 +18764,14 @@ words:
   - main_list
 - word: rusko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Russia (country name)'
 - word: gáter
   length: 5
   tier: valid
@@ -18967,10 +19275,14 @@ words:
   - main_list
 - word: spike
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / proper noun
 - word: manul
   length: 5
   tier: valid
@@ -19249,10 +19561,14 @@ words:
   - main_list
 - word: silva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname Silva'
 - word: glgáč
   length: 5
   tier: valid
@@ -19368,10 +19684,14 @@ words:
   - main_list
 - word: félix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Félix'
 - word: šanon
   length: 5
   tier: valid
@@ -19478,10 +19798,14 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Chile (country name)'
 - word: beluj
   length: 5
   tier: valid
@@ -20232,9 +20556,13 @@ words:
   - main_list
 - word: poole
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname/place Poole'
 - word: šomáž
   length: 5
   tier: valid
@@ -20446,10 +20774,14 @@ words:
   - main_list
 - word: blanc
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: French surname/place name'
 - word: zápač
   length: 5
   tier: valid
@@ -20634,10 +20966,14 @@ words:
   - main_list
 - word: padre
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Foreign word (Spanish/Italian), not Slovak
 - word: pozvi
   length: 5
   tier: valid
@@ -21118,10 +21454,14 @@ words:
   - main_list
 - word: emile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Emile'
 - word: príkl
   length: 5
   tier: valid
@@ -21275,10 +21615,14 @@ words:
   - main_list
 - word: milan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Milan / city name'
 - word: fíčer
   length: 5
   tier: valid
@@ -21627,10 +21971,14 @@ words:
   - main_list
 - word: press
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word, not Slovak
 - word: rukom
   length: 5
   tier: valid
@@ -21831,10 +22179,14 @@ words:
   - main_list
 - word: miško
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Miško (diminutive)'
 - word: bagún
   length: 5
   tier: valid
@@ -22107,10 +22459,14 @@ words:
   - main_list
 - word: union
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: nebor
   length: 5
   tier: valid
@@ -22265,10 +22621,14 @@ words:
   - main_list
 - word: kamil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Kamil'
 - word: marše
   length: 5
   tier: valid
@@ -22593,10 +22953,14 @@ words:
   - main_list
 - word: poker
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: spiša
   length: 5
   tier: valid
@@ -22871,10 +23235,14 @@ words:
   - main_list
 - word: lýdia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Lýdia'
 - word: vagus
   length: 5
   tier: valid
@@ -23297,10 +23665,14 @@ words:
   - main_list
 - word: point
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: dopla
   length: 5
   tier: valid
@@ -23446,10 +23818,14 @@ words:
   - main_list
 - word: level
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: rafať
   length: 5
   tier: valid
@@ -23929,9 +24305,13 @@ words:
   - main_list
 - word: šukaj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Vulgar: extremely offensive Slovak verb'
 - word: háfiz
   length: 5
   tier: valid
@@ -24179,9 +24559,13 @@ words:
   - main_list
 - word: šukať
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Vulgar: extremely offensive Slovak verb'
 - word: nesup
   length: 5
   tier: valid
@@ -25068,10 +25452,14 @@ words:
   - main_list
 - word: ježiš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Jesus (religious figure)'
 - word: nefič
   length: 5
   tier: valid
@@ -25793,10 +26181,14 @@ words:
   - main_list
 - word: eugen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Eugen'
 - word: vedný
   length: 5
   tier: valid
@@ -25809,10 +26201,14 @@ words:
   - main_list
 - word: texas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Texas (place name)'
 - word: averz
   length: 5
   tier: valid
@@ -25874,10 +26270,14 @@ words:
   - main_list
 - word: rover
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: brand name / English word'
 - word: sodar
   length: 5
   tier: valid
@@ -26503,10 +26903,14 @@ words:
   - main_list
 - word: júlia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Júlia'
 - word: jelší
   length: 5
   tier: valid
@@ -26545,10 +26949,14 @@ words:
   - main_list
 - word: derby
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword / proper noun
 - word: fylit
   length: 5
   tier: valid
@@ -28280,10 +28688,14 @@ words:
   - main_list
 - word: group
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: vytáp
   length: 5
   tier: valid
@@ -29193,10 +29605,14 @@ words:
   - main_list
 - word: gemma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Gemma'
 - word: radiť
   length: 5
   tier: daily
@@ -29215,10 +29631,14 @@ words:
   - main_list
 - word: judáš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Judas (biblical figure)'
 - word: ligne
   length: 5
   tier: valid
@@ -29356,10 +29776,14 @@ words:
   - main_list
 - word: crazy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: mrzák
   length: 5
   tier: daily
@@ -30158,10 +30582,14 @@ words:
   - main_list
 - word: beryl
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Beryl'
 - word: plánt
   length: 5
   tier: valid
@@ -30220,10 +30648,14 @@ words:
   - main_list
 - word: kappa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Greek letter / brand name, not Slovak word
 - word: sovom
   length: 5
   tier: valid
@@ -30976,10 +31408,14 @@ words:
   scheduled_day: 1722
 - word: wales
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Wales (country name)'
 - word: krupá
   length: 5
   tier: valid
@@ -31666,10 +32102,14 @@ words:
   - main_list
 - word: karol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Karol'
   history:
   - 1698
   scheduled_day: 1698
@@ -31691,9 +32131,13 @@ words:
   - main_list
 - word: lesba
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Potentially offensive: slang for lesbian'
 - word: sabat
   length: 5
   tier: valid
@@ -32170,10 +32614,14 @@ words:
   - main_list
 - word: idaho
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Idaho (US state)'
 - word: šumom
   length: 5
   tier: valid
@@ -32346,10 +32794,14 @@ words:
   - main_list
 - word: karla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Karla (genitive of Karel)'
 - word: linux
   length: 5
   tier: valid
@@ -32363,10 +32815,14 @@ words:
   - main_list
 - word: hobby
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: blana
   length: 5
   tier: valid
@@ -33202,10 +33658,14 @@ words:
   - main_list
 - word: janus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Janus (Roman god)'
 - word: jmime
   length: 5
   tier: valid
@@ -33531,10 +33991,14 @@ words:
   - main_list
 - word: athos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Mount Athos / literary character'
 - word: požať
   length: 5
   tier: valid
@@ -33585,10 +34049,14 @@ words:
   - main_list
 - word: dávid
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name David'
 - word: znelý
   length: 5
   tier: valid
@@ -34006,10 +34474,14 @@ words:
   - main_list
 - word: hanka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Hanka (diminutive)'
 - word: ságam
   length: 5
   tier: valid
@@ -34570,10 +35042,14 @@ words:
   - main_list
 - word: berta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Berta'
 - word: grata
   length: 5
   tier: valid
@@ -35085,10 +35561,14 @@ words:
   - main_list
 - word: coach
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: rumun
   length: 5
   tier: valid
@@ -35566,10 +36046,14 @@ words:
   - main_list
 - word: jasna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Jasna / place name'
 - word: orkán
   length: 5
   tier: valid
@@ -36109,10 +36593,14 @@ words:
   - main_list
 - word: adria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Adriatic / personal name'
 - word: líšiť
   length: 5
   tier: valid
@@ -36228,9 +36716,13 @@ words:
   - main_list
 - word: moira
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Moira'
 - word: ovčín
   length: 5
   tier: valid
@@ -36825,10 +37317,14 @@ words:
   - main_list
 - word: albín
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Albín'
 - word: lyzol
   length: 5
   tier: valid
@@ -37742,10 +38238,14 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Lenin (historical figure)'
 - word: školí
   length: 5
   tier: valid
@@ -37885,10 +38385,14 @@ words:
   - main_list
 - word: janko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Janko'
   history:
   - 1708
   scheduled_day: 1708
@@ -38396,10 +38900,14 @@ words:
   - main_list
 - word: filip
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Filip'
   history:
   - 1692
   scheduled_day: 1692
@@ -38618,10 +39126,14 @@ words:
   - main_list
 - word: power
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: atest
   length: 5
   tier: valid
@@ -38827,10 +39339,14 @@ words:
   - main_list
 - word: malik
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Malik'
 - word: nesrš
   length: 5
   tier: valid
@@ -39068,10 +39584,14 @@ words:
   - main_list
 - word: ultra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Latin/English loanword
 - word: žihať
   length: 5
   tier: valid
@@ -39848,10 +40368,14 @@ words:
   - main_list
 - word: marek
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Marek'
 - word: klaka
   length: 5
   tier: valid
@@ -40231,10 +40755,14 @@ words:
   - main_list
 - word: drina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Drina (river name)'
 - word: opica
   length: 5
   tier: daily
@@ -40897,10 +41425,14 @@ words:
   - main_list
 - word: image
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: urien
   length: 5
   tier: valid
@@ -41057,10 +41589,14 @@ words:
   - main_list
 - word: pavol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Pavol'
 - word: pista
   length: 5
   tier: valid
@@ -41208,10 +41744,14 @@ words:
   - main_list
 - word: soule
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun / English word
 - word: dĺžok
   length: 5
   tier: valid
@@ -41419,10 +41959,14 @@ words:
   - main_list
 - word: belle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun / French word, not Slovak
 - word: zrnil
   length: 5
   tier: valid
@@ -41734,10 +42278,14 @@ words:
   - main_list
 - word: magda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Magda'
 - word: airom
   length: 5
   tier: valid
@@ -43230,10 +43778,14 @@ words:
   - main_list
 - word: steak
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: čertu
   length: 5
   tier: valid
@@ -43623,10 +44175,14 @@ words:
   - main_list
 - word: graya
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Gray (surname, genitive)'
 - word: jánus
   length: 5
   tier: valid
@@ -44279,10 +44835,14 @@ words:
   - main_list
 - word: happy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: ušatý
   length: 5
   tier: valid
@@ -44571,9 +45131,13 @@ words:
   - main_list
 - word: caddy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: preso
   length: 5
   tier: valid
@@ -44612,10 +45176,14 @@ words:
   - main_list
 - word: rugby
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: durmi
   length: 5
   tier: valid
@@ -44888,10 +45456,14 @@ words:
   - main_list
 - word: soulu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Seoul (dative)'
 - word: výluh
   length: 5
   tier: valid
@@ -45077,10 +45649,14 @@ words:
   - main_list
 - word: times
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / proper noun (newspaper)
 - word: omlad
   length: 5
   tier: valid
@@ -45252,10 +45828,14 @@ words:
   - main_list
 - word: paule
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Paul (dative)'
 - word: vykýv
   length: 5
   tier: valid
@@ -45373,10 +45953,14 @@ words:
   - main_list
 - word: weber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname Weber'
 - word: fíčry
   length: 5
   tier: valid
@@ -45818,10 +46402,14 @@ words:
   - main_list
 - word: joint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: bodka
   length: 5
   tier: daily
@@ -45934,9 +46522,13 @@ words:
   - main_list
 - word: vinca
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Vinca'
 - word: bruty
   length: 5
   tier: valid
@@ -46047,10 +46639,14 @@ words:
   - main_list
 - word: tokio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Tokyo (city name)'
 - word: výrov
   length: 5
   tier: valid
@@ -46179,10 +46775,14 @@ words:
   - main_list
 - word: egypt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Egypt (country name)'
 - word: ritný
   length: 5
   tier: valid
@@ -46258,10 +46858,14 @@ words:
   - main_list
 - word: georg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Georg'
 - word: halač
   length: 5
   tier: valid
@@ -46679,10 +47283,14 @@ words:
   - main_list
 - word: irina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Irina'
 - word: nával
   length: 5
   tier: daily
@@ -46782,10 +47390,14 @@ words:
   - main_list
 - word: debil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Offensive: imbecile/idiot (derogatory)'
 - word: obtok
   length: 5
   tier: valid
@@ -46897,10 +47509,14 @@ words:
   - main_list
 - word: leona
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Leona'
 - word: borka
   length: 5
   tier: valid
@@ -47055,16 +47671,24 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Oskar'
 - word: cézar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Caesar'
 - word: mätež
   length: 5
   tier: valid
@@ -47980,9 +48604,13 @@ words:
   - main_list
 - word: neger
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Offensive: racial slur'
 - word: dopne
   length: 5
   tier: valid
@@ -48190,9 +48818,13 @@ words:
   - main_list
 - word: brink
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word / proper noun
   history:
   - 1690
   scheduled_day: 1690
@@ -48366,10 +48998,14 @@ words:
   - main_list
 - word: kurva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Vulgar: whore/prostitute in Slovak'
 - word: kolor
   length: 5
   tier: valid
@@ -48558,10 +49194,14 @@ words:
   - main_list
 - word: twist
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: pečeň
   length: 5
   tier: daily
@@ -49074,10 +49714,14 @@ words:
   - main_list
 - word: satan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: Satan (religious figure)'
 - word: črpák
   length: 5
   tier: valid
@@ -49173,10 +49817,14 @@ words:
   - main_list
 - word: irena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Irena'
 - word: žatca
   length: 5
   tier: valid
@@ -49261,10 +49909,14 @@ words:
   - main_list
 - word: drink
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: zrada
   length: 5
   tier: daily
@@ -49704,9 +50356,13 @@ words:
   - main_list
 - word: fagan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: surname Fagan'
 - word: sofia
   length: 5
   tier: valid
@@ -49776,10 +50432,14 @@ words:
   - main_list
 - word: swing
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: sadra
   length: 5
   tier: valid
@@ -49853,10 +50513,14 @@ words:
   - main_list
 - word: ramón
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Ramón'
   history:
   - 1715
   scheduled_day: 1715
@@ -50124,10 +50788,14 @@ words:
   - main_list
 - word: marin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Marin'
 - word: proti
   length: 5
   tier: daily
@@ -50636,10 +51304,14 @@ words:
   - main_list
 - word: drive
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: minet
   length: 5
   tier: valid
@@ -50704,10 +51376,14 @@ words:
   - main_list
 - word: fénix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Phoenix'
 - word: kulík
   length: 5
   tier: valid
@@ -50725,10 +51401,14 @@ words:
   - main_list
 - word: manny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Manny'
 - word: skrze
   length: 5
   tier: daily
@@ -51416,10 +52096,14 @@ words:
   - main_list
 - word: ivana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Ivana'
 - word: sojka
   length: 5
   tier: valid
@@ -51573,10 +52257,14 @@ words:
   - main_list
 - word: alana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Alana'
 - word: súbeh
   length: 5
   tier: valid
@@ -52151,10 +52839,14 @@ words:
   - main_list
 - word: jozef
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Jozef'
 - word: fošní
   length: 5
   tier: valid
@@ -52476,10 +53168,14 @@ words:
   - main_list
 - word: pluto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: Pluto (planet/Roman god)'
 - word: dusný
   length: 5
   tier: valid
@@ -52487,10 +53183,14 @@ words:
   - main_list
 - word: horák
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: common Slovak surname Horák'
 - word: žabec
   length: 5
   tier: valid
@@ -52789,10 +53489,14 @@ words:
   - main_list
 - word: mário
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Mário'
 - word: hňupa
   length: 5
   tier: valid
@@ -53415,10 +54119,14 @@ words:
   - main_list
 - word: proxy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Slovak
 - word: cnosť
   length: 5
   tier: daily
@@ -53508,10 +54216,14 @@ words:
   - main_list
 - word: vinci
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: part of Leonardo da Vinci'
 - word: fyndo
   length: 5
   tier: valid
@@ -54039,10 +54751,14 @@ words:
   - main_list
 - word: buffy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Buffy'
 - word: dodať
   length: 5
   tier: daily
@@ -54209,10 +54925,14 @@ words:
   - main_list
 - word: kórea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Korea (country name)'
 - word: užitý
   length: 5
   tier: valid
@@ -54272,10 +54992,14 @@ words:
   - main_list
 - word: klára
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Klára'
 - word: otras
   length: 5
   tier: daily
@@ -54349,10 +55073,14 @@ words:
   - main_list
 - word: juana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Juana'
 - word: vodne
   length: 5
   tier: valid

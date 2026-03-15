@@ -1257,10 +1257,14 @@ words:
   - main_list
 - word: ботев
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Hristo Botev (Bulgarian poet/revolutionary)
 - word: ботуш
   length: 5
   tier: daily
@@ -2555,10 +2559,14 @@ words:
   - main_list
 - word: волво
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Volvo brand name
 - word: волга
   length: 5
   tier: valid
@@ -3573,9 +3581,13 @@ words:
   - main_list
 - word: гугла
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Google (verb form 'to google')
 - word: гузен
   length: 5
   tier: daily
@@ -3766,10 +3778,14 @@ words:
   - main_list
 - word: гърци
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: demonym - Greeks (plural)
 - word: гърча
   length: 5
   tier: valid
@@ -4695,10 +4711,14 @@ words:
   - main_list
 - word: дунав
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Danube river
 - word: дунда
   length: 5
   tier: valid
@@ -5038,10 +5058,14 @@ words:
   scheduled_day: 1710
 - word: елена
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name / town name (also means deer - ambiguous)
 - word: елече
   length: 5
   tier: valid
@@ -6707,10 +6731,14 @@ words:
   - main_list
 - word: индия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name (India)
 - word: индус
   length: 5
   tier: valid
@@ -8071,10 +8099,14 @@ words:
   scheduled_day: 1729
 - word: корея
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name (Korea)
 - word: кория
   length: 5
   tier: valid
@@ -9120,10 +9152,14 @@ words:
   - main_list
 - word: литва
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name (Lithuania)
 - word: литий
   length: 5
   tier: daily
@@ -9557,9 +9593,13 @@ words:
   - main_list
 - word: мазда
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Mazda brand name
 - word: мазев
   length: 5
   tier: valid
@@ -9972,10 +10012,14 @@ words:
   - main_list
 - word: мерси
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: French loanword - 'merci', not standard Bulgarian
 - word: месар
   length: 5
   tier: daily
@@ -10250,10 +10294,14 @@ words:
   - main_list
 - word: мисис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword - 'Mrs.' not naturalized in Bulgarian
 - word: мисия
   length: 5
   tier: valid
@@ -11481,9 +11529,13 @@ words:
   - main_list
 - word: негър
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: offensive racial term
 - word: недей
   length: 5
   tier: daily
@@ -11577,10 +11629,14 @@ words:
   - main_list
 - word: немец
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: demonym - German person
 - word: немея
   length: 5
   tier: valid
@@ -13688,10 +13744,14 @@ words:
   - main_list
 - word: пенис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: anatomical term - inappropriate for daily puzzle
 - word: пепев
   length: 5
   tier: daily
@@ -14498,15 +14558,23 @@ words:
   - main_list
 - word: поляк
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: demonym - Polish person
 - word: помак
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: ethnic designation - Pomak, can be sensitive
 - word: помая
   length: 5
   tier: valid
@@ -14835,10 +14903,14 @@ words:
   - main_list
 - word: прага
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - Prague (also means threshold - ambiguous)
 - word: пране
   length: 5
   tier: valid
@@ -14991,9 +15063,13 @@ words:
   - main_list
 - word: пруст
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Proust (author)
 - word: пръст
   length: 5
   tier: daily
@@ -16097,15 +16173,23 @@ words:
   - main_list
 - word: русин
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: demonym - Rusyn person
 - word: русия
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name (Russia)
 - word: руска
   length: 5
   tier: valid
@@ -16678,10 +16762,14 @@ words:
   - main_list
 - word: секси
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - 'sexy'
 - word: секта
   length: 5
   tier: daily
@@ -18150,10 +18238,14 @@ words:
   - main_list
 - word: супер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English/international loanword
 - word: суров
   length: 5
   tier: daily
@@ -18826,10 +18918,14 @@ words:
   - main_list
 - word: тесла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - Tesla (name/brand, also unit - ambiguous)
 - word: тесни
   length: 5
   tier: valid
@@ -19429,10 +19525,14 @@ words:
   - main_list
 - word: турци
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: demonym - Turks (plural)
 - word: турча
   length: 5
   tier: daily
@@ -20946,10 +21046,14 @@ words:
   - main_list
 - word: хонда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Honda brand name
 - word: хорал
   length: 5
   tier: valid
@@ -21427,9 +21531,13 @@ words:
   - main_list
 - word: чекия
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Czechia (country name)
 - word: чекна
   length: 5
   tier: daily
@@ -22277,15 +22385,23 @@ words:
   - main_list
 - word: шумен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - city in Bulgaria (also means noisy - ambiguous)
 - word: шумер
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Sumer/Sumerian
 - word: шумка
   length: 5
   tier: valid
@@ -22458,10 +22574,14 @@ words:
   - main_list
 - word: щраус
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Strauss (surname)
 - word: щукна
   length: 5
   tier: valid

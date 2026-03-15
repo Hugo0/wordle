@@ -132,10 +132,14 @@ words:
   - main_list
 - word: девон
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Devon'
 - word: гариг
   length: 5
   tier: daily
@@ -175,9 +179,13 @@ words:
   - main_list
 - word: вланк
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Vlank/Planck fragment'
 - word: нефуд
   length: 5
   tier: daily
@@ -307,10 +315,14 @@ words:
   - main_list
 - word: аллах
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: God in Islam'
 - word: нялъя
   length: 5
   tier: daily
@@ -335,9 +347,13 @@ words:
   - main_list
 - word: аляск
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Alaska (truncated)'
 - word: тоног
   length: 5
   tier: daily
@@ -640,10 +656,14 @@ words:
   - main_list
 - word: судан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sudan'
 - word: риман
   length: 5
   tier: daily
@@ -681,6 +701,10 @@ words:
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Cossack / Kazakh'
 - word: скапа
   length: 5
   tier: daily
@@ -710,10 +734,14 @@ words:
   - main_list
 - word: аланд
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Aland Islands'
 - word: фотон
   length: 5
   tier: daily
@@ -887,10 +915,14 @@ words:
   - main_list
 - word: монте
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Monte'
 - word: эргүй
   length: 5
   tier: daily
@@ -1182,10 +1214,14 @@ words:
   - main_list
 - word: габон
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: дошоо
   length: 5
   tier: daily
@@ -1371,10 +1407,14 @@ words:
   - main_list
 - word: ильич
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russian patronymic (Lenin)'
 - word: цавуу
   length: 5
   tier: daily
@@ -1444,10 +1484,14 @@ words:
   - main_list
 - word: мбайт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Technical term: megabyte, not native Mongolian'
 - word: уугиа
   length: 5
   tier: daily
@@ -1522,10 +1566,14 @@ words:
   - main_list
 - word: цюрих
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Zurich'
 - word: адтай
   length: 5
   tier: daily
@@ -1571,10 +1619,14 @@ words:
   - main_list
 - word: турин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Turin'
 - word: галуу
   length: 5
   tier: daily
@@ -1861,10 +1913,14 @@ words:
   - main_list
 - word: дубна
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dubna (Russian city)'
 - word: адилс
   length: 5
   tier: daily
@@ -2076,10 +2132,14 @@ words:
   - main_list
 - word: исаак
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Isaac'
 - word: танаг
   length: 5
   tier: daily
@@ -2471,10 +2531,14 @@ words:
   - main_list
 - word: рашид
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: дюпен
   length: 5
   tier: daily
@@ -2503,10 +2567,14 @@ words:
   - main_list
 - word: эндрю
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Andrew'
 - word: болох
   length: 5
   tier: daily
@@ -2525,10 +2593,14 @@ words:
   - main_list
 - word: франц
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Franz'
 - word: ажрав
   length: 5
   tier: daily
@@ -2583,10 +2655,14 @@ words:
   - main_list
 - word: ферми
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Fermi (physicist)'
 - word: дэгээ
   length: 5
   tier: daily
@@ -2694,9 +2770,13 @@ words:
   - main_list
 - word: убцтс
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: оёсон
   length: 5
   tier: daily
@@ -2974,10 +3054,14 @@ words:
   - main_list
 - word: катар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Qatar'
 - word: артай
   length: 5
   tier: daily
@@ -2990,10 +3074,14 @@ words:
   - main_list
 - word: гиббс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gibbs'
 - word: банкс
   length: 5
   tier: daily
@@ -3044,10 +3132,14 @@ words:
   - main_list
 - word: эллис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ellis'
 - word: жавар
   length: 5
   tier: daily
@@ -3147,10 +3239,14 @@ words:
   - main_list
 - word: вегас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Las Vegas'
 - word: оздог
   length: 5
   tier: daily
@@ -3386,10 +3482,14 @@ words:
   - main_list
 - word: курск
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kursk'
 - word: хурал
   length: 5
   tier: daily
@@ -3794,10 +3894,14 @@ words:
   - main_list
 - word: еврей
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Ethnic/religious term, potentially sensitive
 - word: спекл
   length: 5
   tier: daily
@@ -4088,10 +4192,14 @@ words:
   - main_list
 - word: диего
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Diego'
 - word: мориц
   length: 5
   tier: daily
@@ -4232,10 +4340,14 @@ words:
   - main_list
 - word: девис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Davis'
 - word: хагас
   length: 5
   tier: daily
@@ -4472,10 +4584,14 @@ words:
   - main_list
 - word: дирак
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dirac (physicist)'
 - word: ялгам
   length: 5
   tier: daily
@@ -4706,9 +4822,13 @@ words:
   - main_list
 - word: өзбтс
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: сэхэж
   length: 5
   tier: daily
@@ -4716,10 +4836,14 @@ words:
   - main_list
 - word: путин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: political figure'
 - word: үйсэн
   length: 5
   tier: daily
@@ -4785,12 +4909,20 @@ words:
   frequency: 1.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Could be common Mongolian word (queen) - verify
 - word: скотт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Scott'
 - word: ацдах
   length: 5
   tier: daily
@@ -5046,10 +5178,14 @@ words:
   - main_list
 - word: чечен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Chechen'
 - word: тарин
   length: 5
   tier: daily
@@ -5145,16 +5281,24 @@ words:
   - main_list
 - word: дрейк
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Drake'
 - word: артур
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: хахаа
   length: 5
   tier: daily
@@ -5440,10 +5584,14 @@ words:
   - main_list
 - word: ромео
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Romeo'
 - word: бодол
   length: 5
   tier: daily
@@ -5849,10 +5997,14 @@ words:
   - main_list
 - word: цельс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Celsius'
 - word: оновч
   length: 5
   tier: daily
@@ -5896,9 +6048,13 @@ words:
   - main_list
 - word: бнмау
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: old name of Mongolia (БНМАУ)'
 - word: тусам
   length: 5
   tier: daily
@@ -5931,10 +6087,14 @@ words:
   - main_list
 - word: франк
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frank'
 - word: товой
   length: 5
   tier: daily
@@ -6227,10 +6387,14 @@ words:
   - main_list
 - word: киото
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kyoto'
 - word: ондоо
   length: 5
   tier: daily
@@ -6649,10 +6813,14 @@ words:
   - main_list
 - word: гбайт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Technical term: gigabyte, not native Mongolian'
 - word: үлдээ
   length: 5
   tier: daily
@@ -6991,10 +7159,14 @@ words:
   - main_list
 - word: киров
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kirov'
 - word: харва
   length: 5
   tier: daily
@@ -7270,10 +7442,14 @@ words:
   - main_list
 - word: актон
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Acton'
 - word: зуных
   length: 5
   tier: daily
@@ -7371,10 +7547,14 @@ words:
   - main_list
 - word: ильин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russian surname'
 - word: уутат
   length: 5
   tier: daily
@@ -7643,10 +7823,14 @@ words:
   - main_list
 - word: рабат
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Rabat'
 - word: асжээ
   length: 5
   tier: daily
@@ -7707,9 +7891,13 @@ words:
   - main_list
 - word: мксек
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: technical unit'
 - word: кокос
   length: 5
   tier: daily
@@ -7718,10 +7906,14 @@ words:
   - main_list
 - word: гейне
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Heine'
 - word: ханга
   length: 5
   tier: daily
@@ -7789,10 +7981,14 @@ words:
   - main_list
 - word: бенин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: аргач
   length: 5
   tier: daily
@@ -7963,10 +8159,14 @@ words:
   - main_list
 - word: паули
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Pauli (physicist)'
 - word: оршиг
   length: 5
   tier: daily
@@ -7994,10 +8194,14 @@ words:
   - main_list
 - word: борис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: тунар
   length: 5
   tier: daily
@@ -8263,10 +8467,14 @@ words:
   - main_list
 - word: марко
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marco'
 - word: төлөв
   length: 5
   tier: daily
@@ -8462,16 +8670,24 @@ words:
   - main_list
 - word: томск
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tomsk'
 - word: антон
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: нутаг
   length: 5
   tier: daily
@@ -8865,6 +9081,10 @@ words:
   frequency: 4.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Russian loanword rather than native Mongolian
 - word: туваг
   length: 5
   tier: daily
@@ -9024,10 +9244,14 @@ words:
   - main_list
 - word: керри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kerry'
 - word: сувив
   length: 5
   tier: daily
@@ -9040,10 +9264,14 @@ words:
   - main_list
 - word: ллойд
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lloyd'
 - word: бэлгэ
   length: 5
   tier: daily
@@ -9237,10 +9465,14 @@ words:
   - main_list
 - word: родос
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Rhodes'
 - word: хивэг
   length: 5
   tier: daily
@@ -9274,9 +9506,13 @@ words:
   - main_list
 - word: оасдн
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: ялгац
   length: 5
   tier: daily
@@ -9678,10 +9914,14 @@ words:
   - main_list
 - word: федор
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: ороог
   length: 5
   tier: daily
@@ -10007,10 +10247,14 @@ words:
   - main_list
 - word: фарго
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Fargo'
 - word: танив
   length: 5
   tier: daily
@@ -10038,10 +10282,14 @@ words:
   - main_list
 - word: довер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dover'
 - word: амжин
   length: 5
   tier: daily
@@ -10070,10 +10318,14 @@ words:
   - main_list
 - word: аккад
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient Akkad'
 - word: уобаш
   length: 5
   tier: daily
@@ -10485,10 +10737,14 @@ words:
   scheduled_day: 1693
 - word: алекс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: бахиа
   length: 5
   tier: daily
@@ -10723,10 +10979,14 @@ words:
   - main_list
 - word: фишер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Fischer'
 - word: удвал
   length: 5
   tier: daily
@@ -10800,10 +11060,14 @@ words:
   - main_list
 - word: псков
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Pskov (Russian city)'
 - word: эхлэн
   length: 5
   tier: daily
@@ -10851,10 +11115,14 @@ words:
   - main_list
 - word: пфафф
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Pfaff'
 - word: чичил
   length: 5
   tier: daily
@@ -10862,9 +11130,13 @@ words:
   - main_list
 - word: увдис
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation/acronym
   history:
   - 1694
   scheduled_day: 1694
@@ -11064,10 +11336,14 @@ words:
   - main_list
 - word: гаити
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Haiti'
 - word: ирлэг
   length: 5
   tier: daily
@@ -11080,10 +11356,14 @@ words:
   - main_list
 - word: будда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious figure'
 - word: утуул
   length: 5
   tier: daily
@@ -11149,10 +11429,14 @@ words:
   - main_list
 - word: лагос
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lagos'
 - word: гуурс
   length: 5
   tier: daily
@@ -11517,10 +11801,14 @@ words:
   - main_list
 - word: ассам
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Indian state'
 - word: гурон
   length: 5
   tier: daily
@@ -11596,10 +11884,14 @@ words:
   - main_list
 - word: минск
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Minsk'
 - word: турбо
   length: 5
   tier: daily
@@ -11842,10 +12134,14 @@ words:
   - main_list
 - word: измир
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Turkish city'
 - word: элдэв
   length: 5
   tier: daily
@@ -11866,10 +12162,14 @@ words:
   - main_list
 - word: тибет
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tibet'
 - word: хочил
   length: 5
   tier: daily
@@ -11970,10 +12270,14 @@ words:
   - main_list
 - word: генри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Henry'
 - word: үхжих
   length: 5
   tier: daily
@@ -12128,10 +12432,14 @@ words:
   - main_list
 - word: гаага
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: The Hague'
 - word: лейкс
   length: 5
   tier: daily
@@ -12332,10 +12640,14 @@ words:
   - main_list
 - word: непал
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nepal'
 - word: дорги
   length: 5
   tier: daily
@@ -12626,10 +12938,14 @@ words:
   - main_list
 - word: шварц
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Schwarz'
 - word: сүүлд
   length: 5
   tier: daily
@@ -12714,10 +13030,14 @@ words:
   - main_list
 - word: дунай
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Danube'
 - word: нарны
   length: 5
   tier: daily
@@ -12764,10 +13084,14 @@ words:
   - main_list
 - word: аддис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Addis (Ababa)'
 - word: насаж
   length: 5
   tier: daily
@@ -12951,10 +13275,14 @@ words:
   - main_list
 - word: йемен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Yemen'
 - word: охиуд
   length: 5
   tier: daily
@@ -12970,10 +13298,14 @@ words:
   scheduled_day: 1710
 - word: белиз
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Belize'
   history:
   - 1708
   scheduled_day: 1708
@@ -13025,10 +13357,14 @@ words:
   - main_list
 - word: гессе
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hesse'
 - word: өмчит
   length: 5
   tier: daily
@@ -13255,10 +13591,14 @@ words:
   - main_list
 - word: ленин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lenin'
 - word: сэвхт
   length: 5
   tier: daily
@@ -13526,16 +13866,24 @@ words:
   - main_list
 - word: акрон
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Akron (US city)'
 - word: тонга
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tonga'
 - word: элчин
   length: 5
   tier: daily
@@ -13548,10 +13896,14 @@ words:
   - main_list
 - word: самоа
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Samoa'
 - word: уриул
   length: 5
   tier: daily
@@ -13634,10 +13986,14 @@ words:
   - main_list
 - word: парис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Paris'
 - word: гитар
   length: 5
   tier: daily
@@ -13668,9 +14024,13 @@ words:
   - main_list
 - word: зхукн
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: гэрээ
   length: 5
   tier: daily
@@ -14070,10 +14430,14 @@ words:
   - main_list
 - word: эннис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ennis'
 - word: ээсэн
   length: 5
   tier: daily
@@ -14127,10 +14491,14 @@ words:
   - main_list
 - word: реймс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Reims'
 - word: зарга
   length: 5
   tier: daily
@@ -14250,10 +14618,14 @@ words:
   - main_list
 - word: алжир
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Algeria'
 - word: хөхөл
   length: 5
   tier: daily
@@ -14261,10 +14633,14 @@ words:
   - main_list
 - word: оскар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Oscar'
 - word: ямбий
   length: 5
   tier: daily
@@ -14324,10 +14700,14 @@ words:
   - main_list
 - word: маркс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marx'
 - word: судал
   length: 5
   tier: daily
@@ -14387,10 +14767,14 @@ words:
   - main_list
 - word: женев
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Geneva (truncated)'
 - word: эхдээ
   length: 5
   tier: daily
@@ -14506,10 +14890,14 @@ words:
   - main_list
 - word: кбайт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Technical term: kilobyte, not native Mongolian'
 - word: махий
   length: 5
   tier: daily
@@ -14636,9 +15024,13 @@ words:
   - main_list
 - word: хздхя
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: мөчүү
   length: 5
   tier: daily
@@ -14761,9 +15153,13 @@ words:
   - main_list
 - word: эсдээ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: Social Democrat abbreviation'
 - word: адгуу
   length: 5
   tier: daily
@@ -14787,10 +15183,14 @@ words:
   - main_list
 - word: парри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Parry'
 - word: чилий
   length: 5
   tier: daily
@@ -15014,10 +15414,14 @@ words:
   - main_list
 - word: данди
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dundee'
 - word: хулхи
   length: 5
   tier: daily
@@ -15136,10 +15540,14 @@ words:
   scheduled_day: 1715
 - word: бруно
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: зүдэр
   length: 5
   tier: daily
@@ -15222,10 +15630,14 @@ words:
   - main_list
 - word: тунис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tunisia'
 - word: мөнгө
   length: 5
   tier: daily
@@ -15609,10 +16021,14 @@ words:
   - main_list
 - word: гейтс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gates'
 - word: норго
   length: 5
   tier: daily
@@ -15680,10 +16096,14 @@ words:
   - main_list
 - word: одесс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Odessa (truncated)'
 - word: сөөлж
   length: 5
   tier: daily
@@ -15701,9 +16121,13 @@ words:
   - main_list
 - word: бнхау
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: People''s Republic of China in Mongolian'
 - word: үржих
   length: 5
   tier: daily
@@ -15905,10 +16329,14 @@ words:
   - main_list
 - word: коста
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Costa'
 - word: ихсэх
   length: 5
   tier: daily
@@ -16562,10 +16990,14 @@ words:
   - main_list
 - word: вебер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Weber (physicist)'
 - word: зөөлд
   length: 5
   tier: daily
@@ -16662,10 +17094,14 @@ words:
   - main_list
 - word: техас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Texas'
 - word: канар
   length: 5
   tier: daily
@@ -17089,10 +17525,14 @@ words:
   - main_list
 - word: аламо
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: the Alamo'
 - word: умгар
   length: 5
   tier: daily
@@ -17262,10 +17702,14 @@ words:
   - main_list
 - word: узбек
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Uzbek'
 - word: гэсэр
   length: 5
   tier: daily
@@ -17279,9 +17723,13 @@ words:
   - main_list
 - word: есбхб
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: трейд
   length: 5
   tier: daily
@@ -17554,10 +18002,14 @@ words:
   - main_list
 - word: львов
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lvov'
   history:
   - 1685
   scheduled_day: 1685
@@ -17785,10 +18237,14 @@ words:
   - main_list
 - word: ассир
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Assyria reference'
 - word: хумиа
   length: 5
   tier: daily
@@ -17899,10 +18355,14 @@ words:
   - main_list
 - word: монро
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Monroe'
 - word: цохин
   length: 5
   tier: daily
@@ -17969,10 +18429,14 @@ words:
   - main_list
 - word: тесла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tesla'
 - word: бишир
   length: 5
   tier: daily
@@ -17980,10 +18444,14 @@ words:
   - main_list
 - word: аннан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Annan (surname)'
 - word: дулут
   length: 5
   tier: daily
@@ -18013,10 +18481,14 @@ words:
   - main_list
 - word: данил
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Daniel'
 - word: үгдэр
   length: 5
   tier: daily
@@ -18419,9 +18891,13 @@ words:
   - main_list
 - word: тзхэг
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: acronym'
 - word: өрийн
   length: 5
   tier: daily
@@ -18434,10 +18910,14 @@ words:
   - main_list
 - word: чехов
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Chekhov'
 - word: судаг
   length: 5
   tier: daily
@@ -18617,10 +19097,14 @@ words:
   - main_list
 - word: дакка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dhaka'
 - word: шадын
   length: 5
   tier: daily
@@ -18710,10 +19194,14 @@ words:
   - main_list
 - word: кабул
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kabul'
 - word: угзар
   length: 5
   tier: daily
@@ -18758,10 +19246,14 @@ words:
   - main_list
 - word: тампа
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tampa'
 - word: снейк
   length: 5
   tier: daily
@@ -18800,10 +19292,14 @@ words:
   - main_list
 - word: бауэр
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bauer (surname)'
 - word: үдэлц
   length: 5
   tier: daily
@@ -18928,10 +19424,14 @@ words:
   - main_list
 - word: штерн
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Stern'
 - word: ачаал
   length: 5
   tier: daily
@@ -19061,10 +19561,14 @@ words:
   - main_list
 - word: гаусс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gauss (mathematician)'
 - word: пеано
   length: 5
   tier: daily
@@ -19078,10 +19582,14 @@ words:
   - main_list
 - word: игорь
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: удсан
   length: 5
   tier: daily
@@ -19176,10 +19684,14 @@ words:
   - main_list
 - word: казах
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kazakh ethnic group'
 - word: сагаг
   length: 5
   tier: daily
@@ -19202,10 +19714,14 @@ words:
   - main_list
 - word: эдвин
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Edwin'
 - word: жерси
   length: 5
   tier: daily
@@ -19265,10 +19781,14 @@ words:
   - main_list
 - word: жозеф
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Joseph'
 - word: яримз
   length: 5
   tier: daily
@@ -19495,10 +20015,14 @@ words:
   - main_list
 - word: кызыл
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kyzyl (Russian city)'
 - word: эпсом
   length: 5
   tier: daily
@@ -19584,10 +20108,14 @@ words:
   - main_list
 - word: милан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Milan'
 - word: хаялц
   length: 5
   tier: daily
@@ -19605,10 +20133,14 @@ words:
   - main_list
 - word: палау
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Palau'
 - word: тохио
   length: 5
   tier: daily
@@ -19987,10 +20519,14 @@ words:
   - main_list
 - word: амман
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Amman (capital of Jordan)'
 - word: купар
   length: 5
   tier: daily
@@ -20368,10 +20904,14 @@ words:
   - main_list
 - word: башир
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bashir'
 - word: чухаг
   length: 5
   tier: daily
@@ -20475,9 +21015,13 @@ words:
   - main_list
 - word: бидэн
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Biden'
 - word: номер
   length: 5
   tier: daily
@@ -20868,10 +21412,14 @@ words:
   - main_list
 - word: волга
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russian river'
 - word: тором
   length: 5
   tier: daily
@@ -21247,10 +21795,14 @@ words:
   - main_list
 - word: дакар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dakar'
 - word: сорио
   length: 5
   tier: daily
@@ -21428,10 +21980,14 @@ words:
   - main_list
 - word: фрэнк
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frank (English)'
 - word: шидэг
   length: 5
   tier: daily
@@ -21460,10 +22016,14 @@ words:
   - main_list
 - word: вадуц
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Vaduz (capital of Liechtenstein)'
 - word: эвдэг
   length: 5
   tier: daily
@@ -21607,10 +22167,14 @@ words:
   - main_list
 - word: аккра
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Accra (capital of Ghana)'
 - word: орших
   length: 5
   tier: daily
@@ -21903,10 +22467,14 @@ words:
   - main_list
 - word: серби
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Serbia (truncated)'
 - word: эрэлт
   length: 5
   tier: daily
@@ -22100,10 +22668,14 @@ words:
   - main_list
 - word: томас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Thomas'
 - word: очийг
   length: 5
   tier: daily
@@ -22193,10 +22765,14 @@ words:
   - main_list
 - word: карло
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Carlo'
 - word: шодож
   length: 5
   tier: daily
@@ -22621,10 +23197,14 @@ words:
   - main_list
 - word: франс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: France'
 - word: хонио
   length: 5
   tier: daily
@@ -22811,9 +23391,13 @@ words:
   - main_list
 - word: оухдс
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: наалц
   length: 5
   tier: daily
@@ -22881,9 +23465,13 @@ words:
   - main_list
 - word: хбнгу
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: птуха
   length: 5
   tier: daily
@@ -23059,10 +23647,14 @@ words:
   - main_list
 - word: ислам
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religion'
 - word: туриа
   length: 5
   tier: daily
@@ -23070,10 +23662,14 @@ words:
   - main_list
 - word: давос
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Davos'
 - word: чадал
   length: 5
   tier: daily
@@ -23228,10 +23824,14 @@ words:
   - main_list
 - word: карно
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Carnot'
 - word: минин
   length: 5
   tier: daily
@@ -23376,10 +23976,14 @@ words:
   - main_list
 - word: донец
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Donets'
 - word: услан
   length: 5
   tier: daily
@@ -23514,10 +24118,14 @@ words:
   - main_list
 - word: конго
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Congo'
 - word: соорт
   length: 5
   tier: daily
@@ -23577,10 +24185,14 @@ words:
   - main_list
 - word: адамс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Adams (surname)'
 - word: шодоо
   length: 5
   tier: daily
@@ -23659,9 +24271,13 @@ words:
   - main_list
 - word: бсшуя
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: Ministry acronym'
 - word: годго
   length: 5
   tier: daily
@@ -23737,10 +24353,14 @@ words:
   - main_list
 - word: павел
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Pavel'
 - word: шатаа
   length: 5
   tier: daily
@@ -24097,6 +24717,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possible transliteration of foreign word
 - word: гичий
   length: 5
   tier: daily
@@ -24135,10 +24759,14 @@ words:
   - main_list
 - word: георг
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: George'
 - word: гарди
   length: 5
   tier: daily
@@ -24347,10 +24975,14 @@ words:
   - main_list
 - word: шмидт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Schmidt'
 - word: өдөөг
   length: 5
   tier: daily
@@ -24485,10 +25117,14 @@ words:
   - main_list
 - word: токио
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tokyo'
 - word: язлаг
   length: 5
   tier: daily
@@ -24623,10 +25259,14 @@ words:
   - main_list
 - word: блафс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word, not native Mongolian
 - word: урвуу
   length: 5
   tier: daily
@@ -24791,9 +25431,13 @@ words:
   - main_list
 - word: мтерм
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Technical term: not a Mongolian word'
 - word: барих
   length: 5
   tier: daily
@@ -24869,9 +25513,13 @@ words:
   - main_list
 - word: сэздс
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Abbreviation: organizational acronym'
 - word: таягд
   length: 5
   tier: daily
@@ -24884,10 +25532,14 @@ words:
   - main_list
 - word: тарту
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tartu (Estonian city)'
 - word: хадар
   length: 5
   tier: daily
@@ -24982,10 +25634,14 @@ words:
   - main_list
 - word: днепр
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dnieper river'
 - word: эвлэг
   length: 5
   tier: daily
@@ -25019,10 +25675,14 @@ words:
   - main_list
 - word: генуя
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Genoa'
 - word: тохид
   length: 5
   tier: daily
@@ -25143,10 +25803,14 @@ words:
   - main_list
 - word: ганди
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gandhi'
 - word: аргүй
   length: 5
   tier: daily

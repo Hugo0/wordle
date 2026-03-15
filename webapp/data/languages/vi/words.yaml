@@ -573,9 +573,13 @@ words:
   - main_list
 - word: basoi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Obscure/rare Vietnamese word - may not be widely recognized
 - word: xuổng
   length: 5
   tier: daily
@@ -2705,9 +2709,13 @@ words:
   - main_list
 - word: telex
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (telex), not a native Vietnamese word
 - word: quỷnh
   length: 5
   tier: daily
@@ -3372,9 +3380,13 @@ words:
   - main_list
 - word: ascii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English technical acronym (ASCII), not a Vietnamese word
   history:
   - 1715
   scheduled_day: 1715

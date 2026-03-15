@@ -616,10 +616,14 @@ words:
   - main_list
 - word: siria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Syria)
 - word: òbáró
   length: 5
   tier: valid
@@ -1272,6 +1276,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Transliterated English 'video', foreign loanword
 - word: apola
   length: 5
   tier: daily
@@ -1710,9 +1718,13 @@ words:
   - main_list
 - word: rọṣia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Russia)
 - word: báyìí
   length: 5
   tier: valid
@@ -2122,6 +2134,10 @@ words:
   frequency: 1.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Yoruba personal name, though also means 'born after twins')
 - word: abule
   length: 5
   tier: daily
@@ -2546,9 +2562,13 @@ words:
   - main_list
 - word: matiu
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Matthew)
 - word: jiyan
   length: 5
   tier: daily
@@ -3087,10 +3107,14 @@ words:
   - main_list
 - word: adamu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Adam)
 - word: fihan
   length: 5
   tier: valid
@@ -5184,10 +5208,14 @@ words:
   - main_list
 - word: libia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Libya)
 - word: hurun
   length: 5
   tier: valid
@@ -5507,9 +5535,13 @@ words:
   - main_list
 - word: kọngọ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Congo)
 - word: ninuy
   length: 5
   tier: valid
@@ -5668,10 +5700,14 @@ words:
   - main_list
 - word: abuja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Nigerian capital city)
 - word: ìṣírí
   length: 5
   tier: valid
@@ -6097,9 +6133,13 @@ words:
   - main_list
 - word: kẹnya
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Kenya)
 - word: ìtọjú
   length: 5
   tier: valid
@@ -6556,9 +6596,13 @@ words:
   - main_list
 - word: ẹnugu
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Nigerian city)
 - word: gusau
   length: 5
   tier: valid
@@ -7999,10 +8043,14 @@ words:
   - main_list
 - word: itali
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Italy)
 - word: dalai
   length: 5
   tier: valid
@@ -8833,6 +8881,10 @@ words:
   frequency: 1.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Yoruba personal name)
 - word: ìbímọ
   length: 5
   tier: valid
@@ -8952,6 +9004,10 @@ words:
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Yoruba personal name for first twin)
 - word: walsh
   length: 5
   tier: valid
@@ -12370,6 +12426,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Transliterated English 'phone', foreign loanword
 - word: human
   length: 5
   tier: valid
@@ -14565,6 +14625,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Yoruba personal name)
 - word: arobo
   length: 5
   tier: daily
@@ -14612,10 +14676,14 @@ words:
   - main_list
 - word: aliyu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: hopes
   length: 5
   tier: valid
@@ -15600,9 +15668,13 @@ words:
   - main_list
 - word: jọjia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Georgia)
 - word: gbére
   length: 5
   tier: valid
@@ -18157,6 +18229,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Yoruba name)
 - word: túnmọ
   length: 5
   tier: valid
@@ -21039,9 +21115,13 @@ words:
   - main_list
 - word: joṣua
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Joshua)
   history:
   - 1700
   scheduled_day: 1700
@@ -21156,10 +21236,14 @@ words:
   - main_list
 - word: kaaba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Islamic holy site)
 - word: ifesi
   length: 5
   tier: valid
@@ -21176,6 +21260,10 @@ words:
   frequency: 2.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Slang for Nigeria, not standard Yoruba
 - word: márún
   length: 5
   tier: valid
@@ -22335,9 +22423,13 @@ words:
   - main_list
 - word: nipọn
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Nippon/Japan)
 - word: susan
   length: 5
   tier: valid

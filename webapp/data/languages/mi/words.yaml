@@ -131,9 +131,13 @@ words:
   - main_list
 - word: āmene
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Loanword from English 'amen' - religious borrowing
   history:
   - 1688
   scheduled_day: 1688
@@ -249,10 +253,14 @@ words:
   - main_list
 - word: aotea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Aotea is a place name (Great Barrier Island / Aotea Square)
 - word: aouru
   length: 5
   tier: daily
@@ -316,10 +324,14 @@ words:
   - main_list
 - word: arawa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Te Arawa is a tribal/canoe name
 - word: arero
   length: 5
   tier: daily
@@ -2414,10 +2426,14 @@ words:
   - main_list
 - word: maori
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun / ethnonym - refers to the Maori people specifically
 - word: māota
   length: 5
   tier: daily
@@ -2980,10 +2996,14 @@ words:
   - main_list
 - word: ngāti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun prefix - Ngāti is used exclusively as a tribal prefix (e.g. Ngāti Porou)
 - word: ngatu
   length: 5
   tier: daily
@@ -3288,10 +3308,14 @@ words:
   - main_list
 - word: orewa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Orewa is a town north of Auckland
 - word: orite
   length: 5
   tier: daily
@@ -3309,9 +3333,13 @@ words:
   - main_list
 - word: ōtāne
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Otane is a town in Hawke's Bay
 - word: otiia
   length: 5
   tier: daily
@@ -4170,10 +4198,14 @@ words:
   - main_list
 - word: range
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - not a native Te Reo Maori word
 - word: rangi
   length: 5
   tier: daily
@@ -5193,10 +5225,14 @@ words:
   - main_list
 - word: timor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Timor is an island/country name, not a Maori word
 - word: tinei
   length: 5
   tier: daily
@@ -5427,10 +5463,14 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Ambiguous - could be the country Tonga; as a common word (south) it should be 'tonga' but risks confusion
 - word: tōnga
   length: 5
   tier: daily
@@ -5804,9 +5844,13 @@ words:
   - main_list
 - word: urewa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Te Urewera is a region/former national park
 - word: uruao
   length: 5
   tier: daily
@@ -5893,9 +5937,13 @@ words:
   - main_list
 - word: waina
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Loanword from English 'wine'
 - word: waipo
   length: 5
   tier: daily

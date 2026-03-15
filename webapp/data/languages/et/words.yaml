@@ -36,9 +36,13 @@ words:
   - main_list
 - word: helin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Helin'
 - word: tipme
   length: 5
   tier: valid
@@ -4494,9 +4498,13 @@ words:
   - main_list
 - word: henri
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Henri'
 - word: kepsi
   length: 5
   tier: valid
@@ -7039,9 +7047,13 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Congo (country name)'
 - word: tudun
   length: 5
   tier: valid
@@ -7865,9 +7877,13 @@ words:
   - main_list
 - word: soome
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Finland (country name, genitive)'
 - word: hälin
   length: 5
   tier: valid
@@ -9416,9 +9432,13 @@ words:
   - main_list
 - word: perse
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Vulgar: means ass in Estonian'
 - word: drahm
   length: 5
   tier: valid
@@ -9486,9 +9506,13 @@ words:
   - main_list
 - word: devon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: Devon (English place name)'
 - word: kösse
   length: 5
   tier: valid
@@ -9827,9 +9851,13 @@ words:
   - main_list
 - word: tisse
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Vulgar: slang for breasts'
 - word: uhkle
   length: 5
   tier: valid
@@ -10783,9 +10811,13 @@ words:
   - main_list
 - word: vodka
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: International loanword
 - word: inter
   length: 5
   tier: valid
@@ -12456,9 +12488,13 @@ words:
   - main_list
 - word: mnjah
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Interjection/onomatopoeia, not a real word for puzzle
 - word: puhin
   length: 5
   tier: valid
@@ -13329,9 +13365,13 @@ words:
   - main_list
 - word: abiga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Abigail variant'
 - word: ledin
   length: 5
   tier: valid
@@ -13599,9 +13639,13 @@ words:
   - main_list
 - word: robot
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: International loanword (Czech origin)
 - word: tõuku
   length: 5
   tier: valid
@@ -13769,9 +13813,13 @@ words:
   - main_list
 - word: juuli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: July (month name, genitive)'
 - word: murtu
   length: 5
   tier: valid
@@ -14507,9 +14555,13 @@ words:
   - main_list
 - word: irina
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: personal name Irina'
 - word: salvi
   length: 5
   tier: daily
@@ -15010,9 +15062,13 @@ words:
   - main_list
 - word: aidaa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Interjection, not suitable for daily puzzle
 - word: kunne
   length: 5
   tier: valid
@@ -15255,9 +15311,13 @@ words:
   - main_list
 - word: juudi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Potentially sensitive: refers to Jewish person'
 - word: linuv
   length: 5
   tier: valid
@@ -16023,9 +16083,13 @@ words:
   - main_list
 - word: litse
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Vulgar/offensive: prostitute (slang)'
 - word: puusa
   length: 5
   tier: valid
@@ -17572,9 +17636,13 @@ words:
   - main_list
 - word: super
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/international loanword
 - word: kängu
   length: 5
   tier: valid
@@ -18337,9 +18405,13 @@ words:
   - main_list
 - word: tohoh
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Interjection, not suitable for daily puzzle
 - word: kaile
   length: 5
   tier: valid
@@ -18747,9 +18819,13 @@ words:
   - main_list
 - word: belle
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun or French loanword
 - word: tekki
   length: 5
   tier: daily
@@ -19160,9 +19236,13 @@ words:
   - main_list
 - word: marsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: Mars (planet, genitive)'
 - word: troon
   length: 5
   tier: daily
@@ -19720,9 +19800,13 @@ words:
   - main_list
 - word: hallo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: International greeting loanword
 - word: pooka
   length: 5
   tier: valid
@@ -24564,9 +24648,13 @@ words:
   - main_list
 - word: britt
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Britt or British person'
 - word: leota
   length: 5
   tier: valid
@@ -25274,9 +25362,13 @@ words:
   - main_list
 - word: sport
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: argse
   length: 5
   tier: valid
@@ -25814,9 +25906,13 @@ words:
   - main_list
 - word: helge
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Helge'
 - word: touga
   length: 5
   tier: valid
@@ -26412,9 +26508,13 @@ words:
   - main_list
 - word: grand
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: künde
   length: 5
   tier: valid
@@ -28149,9 +28249,13 @@ words:
   - main_list
 - word: eesti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Estonia (country name)'
 - word: lattu
   length: 5
   tier: daily
@@ -29139,9 +29243,13 @@ words:
   - main_list
 - word: ahhaa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Interjection, not suitable for daily puzzle
 - word: nipet
   length: 5
   tier: valid
@@ -29857,9 +29965,13 @@ words:
   - main_list
 - word: ultra
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/Latin loanword prefix used as word
 - word: kokri
   length: 5
   tier: valid
@@ -30585,9 +30697,13 @@ words:
   - main_list
 - word: juuda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: Judah/Judea'
 - word: kulul
   length: 5
   tier: daily
@@ -32057,9 +32173,13 @@ words:
   - main_list
 - word: video
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English/international loanword
 - word: kõdun
   length: 5
   tier: valid
@@ -33000,9 +33120,13 @@ words:
   - main_list
 - word: jussi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: personal name Jussi (Finnish/Estonian)'
 - word: hülsi
   length: 5
   tier: valid
@@ -33953,9 +34077,13 @@ words:
   - main_list
 - word: sitta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Vulgar: shit (illative case)'
 - word: kandu
   length: 5
   tier: valid
@@ -34153,9 +34281,13 @@ words:
   - main_list
 - word: rooma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Rome (city name, partitive case)'
 - word: jahme
   length: 5
   tier: valid
@@ -36430,9 +36562,13 @@ words:
   - main_list
 - word: bluff
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword
 - word: latri
   length: 5
   tier: valid
@@ -37491,9 +37627,13 @@ words:
   - main_list
 - word: saksa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Germany (country name)'
 - word: lõpme
   length: 5
   tier: valid
@@ -38056,9 +38196,13 @@ words:
   - main_list
 - word: paska
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Vulgar: means shit/crap in Estonian'
 - word: ploom
   length: 5
   tier: valid
@@ -39009,9 +39153,13 @@ words:
   - main_list
 - word: tissi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Vulgar: slang for breasts'
 - word: naket
   length: 5
   tier: valid
@@ -40049,9 +40197,13 @@ words:
   - main_list
 - word: kurva
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Vulgar: prostitute/whore'
 - word: hõõga
   length: 5
   tier: valid
@@ -40124,9 +40276,13 @@ words:
   - main_list
 - word: kurat
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Vulgar: common Estonian swear word (devil)'
 - word: edikt
   length: 5
   tier: valid
@@ -42298,9 +42454,13 @@ words:
   - main_list
 - word: jajah
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Interjection, not suitable for daily puzzle
 - word: raale
   length: 5
   tier: valid
@@ -43146,9 +43306,13 @@ words:
   - main_list
 - word: kalle
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: common Estonian male name'
 - word: õieti
   length: 5
   tier: daily
@@ -43954,9 +44118,13 @@ words:
   - main_list
 - word: natsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Offensive/sensitive: Nazi'
 - word: tuian
   length: 5
   tier: valid
@@ -44294,9 +44462,13 @@ words:
   - main_list
 - word: korea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: 'Proper noun: Korea (country name)'
 - word: taude
   length: 5
   tier: valid
@@ -44654,9 +44826,13 @@ words:
   - main_list
 - word: briti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: 'Proper noun: refers to British/Brits'
 - word: üheli
   length: 5
   tier: valid
@@ -45790,9 +45966,13 @@ words:
   - main_list
 - word: grill
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: miila
   length: 5
   tier: valid

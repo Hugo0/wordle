@@ -517,10 +517,14 @@ words:
   - main_list
 - word: مکزیک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mexico (country name)'
 - word: اعجاب
   length: 5
   tier: valid
@@ -529,10 +533,14 @@ words:
   - main_list
 - word: سانتا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Santa (name)'
 - word: واقعی
   length: 5
   tier: daily
@@ -1186,10 +1194,14 @@ words:
   - main_list
 - word: لارنس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lawrence (personal name)'
 - word: برشتن
   length: 5
   tier: valid
@@ -1308,10 +1320,14 @@ words:
   - main_list
 - word: تایمز
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Times (brand name)'
 - word: نروند
   length: 5
   tier: valid
@@ -1548,10 +1564,14 @@ words:
   - main_list
 - word: برزیل
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Brazil (country name)'
 - word: برکشم
   length: 5
   tier: valid
@@ -1732,10 +1752,14 @@ words:
   - main_list
 - word: آندره
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Andre (personal name)'
 - word: سبکسر
   length: 5
   tier: valid
@@ -1749,10 +1773,14 @@ words:
   - main_list
 - word: تایلر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tyler (personal name)'
 - word: نرشتی
   length: 5
   tier: valid
@@ -2366,10 +2394,14 @@ words:
   - main_list
 - word: جسیکا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jessica (personal name)'
 - word: سجودی
   length: 5
   tier: valid
@@ -2586,10 +2618,14 @@ words:
   - main_list
 - word: چارلی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Charlie (personal name)'
 - word: درضمن
   length: 5
   tier: daily
@@ -2662,10 +2698,14 @@ words:
   - main_list
 - word: جرارد
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gerard (personal name)'
 - word: آبگیر
   length: 5
   tier: valid
@@ -2971,6 +3011,10 @@ words:
   frequency: 4.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun / military rank: general'
 - word: ستانم
   length: 5
   tier: valid
@@ -3421,10 +3465,14 @@ words:
   - main_list
 - word: موساد
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mossad (intelligence agency)'
 - word: ساکنی
   length: 5
   tier: valid
@@ -3819,10 +3867,14 @@ words:
   - main_list
 - word: هوارد
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Howard (personal name)'
 - word: بدجنس
   length: 5
   tier: daily
@@ -3909,10 +3961,14 @@ words:
   - main_list
 - word: سوفیا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sofia (personal/city name)'
 - word: اکوان
   length: 5
   tier: valid
@@ -4249,10 +4305,14 @@ words:
   - main_list
 - word: آنتون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Anton (personal name)'
 - word: نریند
   length: 5
   tier: valid
@@ -4359,6 +4419,10 @@ words:
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Foreign loanword: national (English)'
 - word: جاوید
   length: 5
   tier: valid
@@ -4588,10 +4652,14 @@ words:
   - main_list
 - word: بتمرگ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar: rude imperative (drop dead)'
 - word: اسبچه
   length: 5
   tier: valid
@@ -4702,10 +4770,14 @@ words:
   - main_list
 - word: تگزاس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Texas (place name, variant)'
 - word: همصدا
   length: 5
   tier: valid
@@ -5043,10 +5115,14 @@ words:
   - main_list
 - word: استلا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Stella (personal name)'
 - word: بپلکد
   length: 5
   tier: valid
@@ -5842,10 +5918,14 @@ words:
   - main_list
 - word: سیمون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Simon (personal name)'
 - word: منویس
   length: 5
   tier: valid
@@ -5953,10 +6033,14 @@ words:
   - main_list
 - word: استون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Stone/Aston (personal/place name)'
 - word: مذبور
   length: 5
   tier: valid
@@ -6872,10 +6956,14 @@ words:
   - main_list
 - word: مدونا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Madonna (personal name)'
 - word: هلاکو
   length: 5
   tier: valid
@@ -8202,10 +8290,14 @@ words:
   - main_list
 - word: توماس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Thomas (personal name)'
 - word: پرندی
   length: 5
   tier: valid
@@ -8826,6 +8918,10 @@ words:
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun / military rank: general'
 - word: شریعه
   length: 5
   tier: valid
@@ -9318,10 +9414,14 @@ words:
   - main_list
 - word: ماریا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Maria (personal name)'
 - word: توفند
   length: 5
   tier: valid
@@ -9434,10 +9534,14 @@ words:
   - main_list
 - word: آرتور
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Arthur (personal name)'
 - word: یاقوت
   length: 5
   tier: valid
@@ -9674,10 +9778,14 @@ words:
   - main_list
 - word: باتلر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Butler (English surname)'
 - word: نداگر
   length: 5
   tier: valid
@@ -9866,10 +9974,14 @@ words:
   - main_list
 - word: آگوست
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: August (personal name)'
 - word: بجوشی
   length: 5
   tier: valid
@@ -9908,6 +10020,10 @@ words:
   frequency: 4.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially inappropriate for daily puzzle: sperm'
 - word: اشراف
   length: 5
   tier: daily
@@ -10657,10 +10773,14 @@ words:
   - main_list
 - word: کلارک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Clark (surname)'
 - word: اضافه
   length: 5
   tier: daily
@@ -10891,10 +11011,14 @@ words:
   - main_list
 - word: ریگان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Reagan (surname)'
 - word: استخر
   length: 5
   tier: daily
@@ -11002,10 +11126,14 @@ words:
   - main_list
 - word: کارتر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Carter (surname)'
 - word: جریحه
   length: 5
   tier: valid
@@ -11091,10 +11219,14 @@ words:
   - main_list
 - word: تهران
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 6.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tehran (city name)'
 - word: نجران
   length: 5
   tier: valid
@@ -11136,10 +11268,14 @@ words:
   - main_list
 - word: آلفرد
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Alfred (personal name)'
   history:
   - 1698
   scheduled_day: 1698
@@ -11224,10 +11360,14 @@ words:
   - main_list
 - word: امیلی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Emily (personal name)'
 - word: مبتنی
   length: 5
   tier: valid
@@ -11559,6 +11699,10 @@ words:
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun adjective: Japanese'
 - word: آوردم
   length: 5
   tier: daily
@@ -12248,10 +12392,14 @@ words:
   - main_list
 - word: هوراس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Horace (personal name)'
 - word: خروسه
   length: 5
   tier: valid
@@ -13767,10 +13915,14 @@ words:
   - main_list
 - word: مورگن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Morgan (surname)'
   history:
   - 1689
   scheduled_day: 1689
@@ -14121,10 +14273,14 @@ words:
   - main_list
 - word: کلاوس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Klaus (personal name)'
 - word: بیزار
   length: 5
   tier: valid
@@ -14480,10 +14636,14 @@ words:
   - main_list
 - word: پاریس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Paris (city name)'
 - word: آوانس
   length: 5
   tier: valid
@@ -15296,10 +15456,14 @@ words:
   - main_list
 - word: ادگار
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Edgar (personal name)'
 - word: رزمگه
   length: 5
   tier: valid
@@ -16137,10 +16301,14 @@ words:
   - main_list
 - word: نورمن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Norman (personal name)'
 - word: سزیدم
   length: 5
   tier: valid
@@ -17002,10 +17170,14 @@ words:
   - main_list
 - word: آنجلس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Angeles (place name)'
 - word: اطوار
   length: 5
   tier: valid
@@ -17051,10 +17223,14 @@ words:
   - main_list
 - word: مارکو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marco (personal name)'
 - word: اطهری
   length: 5
   tier: valid
@@ -17738,10 +17914,14 @@ words:
   - main_list
 - word: رائول
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Raul (personal name)'
 - word: زودتر
   length: 5
   tier: daily
@@ -17846,10 +18026,14 @@ words:
   - main_list
 - word: فورمن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Forman (surname)'
 - word: قیطان
   length: 5
   tier: valid
@@ -17885,10 +18069,14 @@ words:
   - main_list
 - word: نوادا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nevada (place name)'
 - word: بماسی
   length: 5
   tier: valid
@@ -18066,16 +18254,24 @@ words:
   - main_list
 - word: مایکل
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Michael (personal name)'
 - word: هانتر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hunter (personal name)'
 - word: اطناب
   length: 5
   tier: valid
@@ -18405,10 +18601,14 @@ words:
   - main_list
 - word: پالمر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Palmer (surname)'
 - word: مهجور
   length: 5
   tier: valid
@@ -19008,10 +19208,14 @@ words:
   - main_list
 - word: لیندا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Linda (personal name)'
 - word: شورگل
   length: 5
   tier: valid
@@ -19126,10 +19330,14 @@ words:
   - main_list
 - word: تکزاس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Texas (place name)'
 - word: بزیند
   length: 5
   tier: valid
@@ -19268,10 +19476,14 @@ words:
   - main_list
 - word: دیویس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Davis (surname)'
 - word: خلوصی
   length: 5
   tier: valid
@@ -19752,10 +19964,14 @@ words:
   - main_list
 - word: چارلز
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Charles (personal name)'
 - word: نیوتن
   length: 5
   tier: valid
@@ -19958,10 +20174,14 @@ words:
   - main_list
 - word: والاس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Wallace (surname)'
 - word: عوارض
   length: 5
   tier: daily
@@ -20036,10 +20256,14 @@ words:
   - main_list
 - word: سوزان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Susan (personal name)'
 - word: مسحور
   length: 5
   tier: daily
@@ -20183,9 +20407,13 @@ words:
   - main_list
 - word: جوآنا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Joanna (personal name)'
 - word: منظره
   length: 5
   tier: daily
@@ -20296,16 +20524,24 @@ words:
   - main_list
 - word: میسون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mason (personal name)'
 - word: آنجلو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Angelo (personal name)'
 - word: ورآیی
   length: 5
   tier: valid
@@ -20475,10 +20711,14 @@ words:
   - main_list
 - word: مارگو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Margot (personal name)'
 - word: مودار
   length: 5
   tier: valid
@@ -20659,10 +20899,14 @@ words:
   - main_list
 - word: آدولف
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Adolf (personal name)'
 - word: مراجع
   length: 5
   tier: valid
@@ -20906,10 +21150,14 @@ words:
   - main_list
 - word: چرچیل
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Churchill (surname)'
 - word: ملزوم
   length: 5
   tier: valid
@@ -21817,10 +22065,14 @@ words:
   - main_list
 - word: ایران
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 6.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Iran (country name)'
 - word: نبندم
   length: 5
   tier: valid
@@ -21828,10 +22080,14 @@ words:
   - main_list
 - word: روسیه
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russia (country name)'
 - word: نرشتم
   length: 5
   tier: valid
@@ -21913,10 +22169,14 @@ words:
   - main_list
 - word: آیزاک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Isaac (personal name)'
 - word: همگان
   length: 5
   tier: daily
@@ -22714,10 +22974,14 @@ words:
   - main_list
 - word: یونان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greece (country name)'
 - word: چیستی
   length: 5
   tier: valid
@@ -23157,10 +23421,14 @@ words:
   - main_list
 - word: اسکات
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Scott (personal name)'
 - word: قندزا
   length: 5
   tier: valid
@@ -23650,10 +23918,14 @@ words:
   - main_list
 - word: جولیا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Julia (personal name)'
 - word: نچینی
   length: 5
   tier: valid
@@ -23665,6 +23937,10 @@ words:
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially inappropriate: breast'
   history:
   - 1724
   scheduled_day: 1724
@@ -23818,10 +24094,14 @@ words:
   - main_list
 - word: میامی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Miami (city name)'
 - word: فواصل
   length: 5
   tier: valid
@@ -24762,10 +25042,14 @@ words:
   - main_list
 - word: لورنس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lawrence (personal name, variant)'
 - word: ضربتی
   length: 5
   tier: valid
@@ -25103,10 +25387,14 @@ words:
   - main_list
 - word: شارون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sharon (personal name)'
 - word: منتقد
   length: 5
   tier: valid
@@ -25340,6 +25628,10 @@ words:
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Bible/Gospel (religious text)'
 - word: مقصور
   length: 5
   tier: valid
@@ -25798,10 +26090,14 @@ words:
   - main_list
 - word: دانیل
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Daniel (personal name)'
 - word: سردرد
   length: 5
   tier: daily
@@ -26049,10 +26345,14 @@ words:
   - main_list
 - word: هولمز
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Holmes (surname)'
 - word: مطرقه
   length: 5
   tier: valid
@@ -26109,10 +26409,14 @@ words:
   - main_list
 - word: کوئین
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Quinn (personal name)'
 - word: کلرید
   length: 5
   tier: valid
@@ -26173,6 +26477,10 @@ words:
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Foreign loanword: cartel'
 - word: بورزد
   length: 5
   tier: valid
@@ -26303,10 +26611,14 @@ words:
   - main_list
 - word: پابلو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Pablo (personal name)'
 - word: میهنی
   length: 5
   tier: valid
@@ -26630,10 +26942,14 @@ words:
   - main_list
 - word: یوجین
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Eugene (personal name)'
 - word: خزنده
   length: 5
   tier: daily
@@ -27252,10 +27568,14 @@ words:
   - main_list
 - word: فلورا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Flora (personal name)'
 - word: مدافع
   length: 5
   tier: daily
@@ -27442,10 +27762,14 @@ words:
   - main_list
 - word: ترومن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Truman (personal name)'
 - word: فرشچی
   length: 5
   tier: valid
@@ -27751,6 +28075,10 @@ words:
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially inappropriate: diarrhea'
 - word: سردست
   length: 5
   tier: valid
@@ -28503,10 +28831,14 @@ words:
   - main_list
 - word: رامسس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ramses (historical name)'
 - word: افگند
   length: 5
   tier: valid
@@ -28595,10 +28927,14 @@ words:
   - main_list
 - word: شرلوک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sherlock (fictional character)'
 - word: پلیمر
   length: 5
   tier: valid
@@ -28651,10 +28987,14 @@ words:
   - main_list
 - word: کلارا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Clara (personal name)'
 - word: تجویز
   length: 5
   tier: valid
@@ -28982,10 +29322,14 @@ words:
   - main_list
 - word: آدامز
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Adams (English surname)'
 - word: کهنگی
   length: 5
   tier: valid
@@ -29189,10 +29533,14 @@ words:
   - main_list
 - word: سوسول
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar/offensive: derogatory slang'
 - word: نانجس
   length: 5
   tier: valid
@@ -29398,10 +29746,14 @@ words:
   - main_list
 - word: آنجلا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Angela (personal name)'
 - word: فسرده
   length: 5
   tier: valid
@@ -29868,10 +30220,14 @@ words:
   - main_list
 - word: التون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Elton (personal name)'
 - word: پرگرد
   length: 5
   tier: valid
@@ -30013,10 +30369,14 @@ words:
   - main_list
 - word: بغداد
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Baghdad (city name)'
 - word: زوبین
   length: 5
   tier: valid
@@ -30209,10 +30569,14 @@ words:
   - main_list
 - word: راجرز
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Rogers (surname)'
 - word: چلمنی
   length: 5
   tier: valid
@@ -31042,10 +31406,14 @@ words:
   - main_list
 - word: رابین
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Robin (personal name)'
 - word: معایب
   length: 5
   tier: valid
@@ -31468,10 +31836,14 @@ words:
   - main_list
 - word: الیور
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Oliver (personal name)'
 - word: نیاخت
   length: 5
   tier: valid
@@ -32298,10 +32670,14 @@ words:
   - main_list
 - word: ایگور
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Igor (personal name)'
 - word: دوجین
   length: 5
   tier: valid
@@ -32709,10 +33085,14 @@ words:
   - main_list
 - word: مارتا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Martha (personal name)'
 - word: بیشتر
   length: 5
   tier: daily
@@ -32921,10 +33301,14 @@ words:
   - main_list
 - word: رومئو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Romeo (personal name)'
 - word: دشمنی
   length: 5
   tier: daily
@@ -33378,10 +33762,14 @@ words:
   - main_list
 - word: روبین
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Robin (personal name, variant)'
 - word: رفعتی
   length: 5
   tier: valid
@@ -33592,10 +33980,14 @@ words:
   - main_list
 - word: الینا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Elena (personal name)'
 - word: گوبلز
   length: 5
   tier: valid
@@ -33707,10 +34099,14 @@ words:
   - main_list
 - word: جوردن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jordan (personal/place name)'
 - word: سهیلی
   length: 5
   tier: valid
@@ -33729,10 +34125,14 @@ words:
   - main_list
 - word: جکسون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jackson (surname)'
 - word: متالم
   length: 5
   tier: valid
@@ -33750,10 +34150,14 @@ words:
   - main_list
 - word: اسمیت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Smith (English surname)'
 - word: واجبه
   length: 5
   tier: daily
@@ -33996,10 +34400,14 @@ words:
   - main_list
 - word: دیوید
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: David (personal name)'
 - word: تکانی
   length: 5
   tier: valid
@@ -35103,10 +35511,14 @@ words:
   - main_list
 - word: مرسدس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mercedes (brand/personal name)'
   history:
   - 1712
   scheduled_day: 1712
@@ -35247,10 +35659,14 @@ words:
   - main_list
 - word: اکتبر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: October (month name, foreign form)'
 - word: عرابه
   length: 5
   tier: valid
@@ -35303,10 +35719,14 @@ words:
   - main_list
 - word: نلسون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nelson (surname)'
 - word: روکار
   length: 5
   tier: valid
@@ -35379,10 +35799,14 @@ words:
   - main_list
 - word: اودسا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Odessa (city name)'
 - word: ساندز
   length: 5
   tier: valid
@@ -35396,10 +35820,14 @@ words:
   - main_list
 - word: سودان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sudan (country name)'
 - word: اجنبی
   length: 5
   tier: valid
@@ -35594,10 +36022,14 @@ words:
   - main_list
 - word: هربرت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Herbert (personal name)'
 - word: شایقی
   length: 5
   tier: valid
@@ -35663,12 +36095,20 @@ words:
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially disturbing: slaughtering'
 - word: نانسی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nancy (personal name)'
 - word: ریوفی
   length: 5
   tier: valid
@@ -35983,10 +36423,14 @@ words:
   - main_list
 - word: داوود
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: David (personal name)'
 - word: دولول
   length: 5
   tier: valid
@@ -36421,16 +36865,24 @@ words:
   - main_list
 - word: جنیفر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jennifer (personal name)'
 - word: وارنر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Warner (surname/brand)'
 - word: بدقول
   length: 5
   tier: valid
@@ -38030,10 +38482,14 @@ words:
   - main_list
 - word: شلخته
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar/offensive: slut/slovenly woman'
 - word: درحول
   length: 5
   tier: valid
@@ -38399,10 +38855,14 @@ words:
   - main_list
 - word: آدامس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Adams (English surname variant)'
 - word: نپزند
   length: 5
   tier: valid
@@ -38447,10 +38907,14 @@ words:
   - main_list
 - word: دالاس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dallas (city name)'
 - word: بسطام
   length: 5
   tier: valid
@@ -38643,10 +39107,14 @@ words:
   - main_list
 - word: سیدنی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sydney (city name)'
 - word: بشاشی
   length: 5
   tier: valid
@@ -38734,10 +39202,14 @@ words:
   - main_list
 - word: مارسل
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marcel (personal name)'
 - word: بترشم
   length: 5
   tier: valid
@@ -39039,10 +39511,14 @@ words:
   - main_list
 - word: فاحشه
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar/offensive: prostitute'
 - word: نورون
   length: 5
   tier: valid
@@ -39106,10 +39582,14 @@ words:
   - main_list
 - word: موریس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Morris (surname)'
 - word: بچریم
   length: 5
   tier: valid
@@ -39169,10 +39649,14 @@ words:
   - main_list
 - word: شوروی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Soviet (political entity)'
 - word: صافات
   length: 5
   tier: valid
@@ -39687,10 +40171,14 @@ words:
   - main_list
 - word: هارپر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Harper (surname)'
 - word: واکسی
   length: 5
   tier: valid
@@ -40815,6 +41303,10 @@ words:
   frequency: 4.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Hamoun (personal/place name)'
 - word: مختار
   length: 5
   tier: valid
@@ -40857,10 +41349,14 @@ words:
   - main_list
 - word: پائول
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Paul (personal name)'
 - word: همسان
   length: 5
   tier: valid
@@ -41026,10 +41522,14 @@ words:
   - main_list
 - word: سانچز
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sanchez (surname)'
 - word: شریدر
   length: 5
   tier: valid
@@ -41931,10 +42431,14 @@ words:
   - main_list
 - word: اروپا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Europe (continent)'
 - word: درصدی
   length: 5
   tier: valid
@@ -41996,10 +42500,14 @@ words:
   - main_list
 - word: آگاتا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Agatha (personal name)'
 - word: نزاده
   length: 5
   tier: valid
@@ -42228,10 +42736,14 @@ words:
   - main_list
 - word: کارلو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Carlo (personal name)'
 - word: مسیله
   length: 5
   tier: valid
@@ -42305,10 +42817,14 @@ words:
   - main_list
 - word: ملیسا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Melissa (personal name)'
 - word: بشستم
   length: 5
   tier: valid
@@ -42657,10 +43173,14 @@ words:
   - main_list
 - word: الیاس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Elias (personal name)'
 - word: ببارم
   length: 5
   tier: valid
@@ -43682,6 +44202,10 @@ words:
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Foreign loanword: password (English tech term)'
 - word: دیدگی
   length: 5
   tier: valid
@@ -43780,6 +44304,10 @@ words:
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Pharaoh (title/historical)'
 - word: انفاس
   length: 5
   tier: valid
@@ -43883,10 +44411,14 @@ words:
   - main_list
 - word: چندلر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Chandler (surname)'
 - word: بترکم
   length: 5
   tier: valid
@@ -44023,10 +44555,14 @@ words:
   - main_list
 - word: هرمان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Herman (personal name)'
 - word: مقدور
   length: 5
   tier: valid
@@ -44100,10 +44636,14 @@ words:
   - main_list
 - word: جرالد
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gerald (personal name)'
 - word: تزاحم
   length: 5
   tier: valid
@@ -44168,10 +44708,14 @@ words:
   - main_list
 - word: هرکول
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hercules (mythological name)'
 - word: بامیه
   length: 5
   tier: valid
@@ -44304,10 +44848,14 @@ words:
   - main_list
 - word: استیو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Steve (personal name)'
 - word: سالگی
   length: 5
   tier: daily
@@ -44557,10 +45105,14 @@ words:
   - main_list
 - word: هیتلر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hitler (surname, offensive association)'
 - word: چندتا
   length: 5
   tier: daily
@@ -44623,10 +45175,14 @@ words:
   - main_list
 - word: کومار
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kumar (personal name)'
 - word: تانکر
   length: 5
   tier: daily
@@ -44690,10 +45246,14 @@ words:
   - main_list
 - word: نولان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nolan (surname)'
 - word: وژسیچ
   length: 5
   tier: valid
@@ -44712,10 +45272,14 @@ words:
   - main_list
 - word: برونو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bruno (personal name)'
 - word: بدحال
   length: 5
   tier: valid
@@ -44816,10 +45380,14 @@ words:
   - main_list
 - word: براون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Brown (English surname)'
 - word: پابوس
   length: 5
   tier: valid
@@ -45665,10 +46233,14 @@ words:
   - main_list
 - word: والتر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Walter (personal name)'
 - word: تفلیس
   length: 5
   tier: valid
@@ -46063,6 +46635,10 @@ words:
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially inappropriate: feces/excrement'
 - word: گویچه
   length: 5
   tier: valid
@@ -46081,10 +46657,14 @@ words:
   - main_list
 - word: رابرت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Robert (personal name)'
 - word: نستان
   length: 5
   tier: valid
@@ -46092,10 +46672,14 @@ words:
   - main_list
 - word: آلمان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Germany (country name)'
 - word: بزدیم
   length: 5
   tier: valid
@@ -46501,10 +47085,14 @@ words:
   - main_list
 - word: رومرو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Romero (surname)'
 - word: متکلف
   length: 5
   tier: valid
@@ -46916,10 +47504,14 @@ words:
   - main_list
 - word: فرانک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frank (personal name)'
 - word: شراره
   length: 5
   tier: valid
@@ -46954,6 +47546,10 @@ words:
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially sensitive: virgin'
 - word: قبادی
   length: 5
   tier: valid
@@ -47212,10 +47808,14 @@ words:
   - main_list
 - word: برتون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Burton (English surname)'
 - word: گاموف
   length: 5
   tier: valid
@@ -47381,10 +47981,14 @@ words:
   - main_list
 - word: وبستر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Webster (surname)'
 - word: انشان
   length: 5
   tier: valid
@@ -47508,6 +48112,10 @@ words:
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Foreign loanword: upload (English tech term)'
 - word: بیغال
   length: 5
   tier: valid
@@ -47640,10 +48248,14 @@ words:
   - main_list
 - word: جیسون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jason (personal name)'
 - word: دزفول
   length: 5
   tier: valid
@@ -47917,10 +48529,14 @@ words:
   - main_list
 - word: مورفی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Murphy (surname)'
 - word: متجلی
   length: 5
   tier: valid
@@ -47935,10 +48551,14 @@ words:
   - main_list
 - word: گرگور
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gregor (personal name)'
 - word: روشنک
   length: 5
   tier: valid
@@ -48443,6 +49063,10 @@ words:
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Naseri (surname)'
 - word: گوزید
   length: 5
   tier: valid
@@ -48544,10 +49168,14 @@ words:
   - main_list
 - word: گرانت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Grant (personal name)'
 - word: دماغه
   length: 5
   tier: daily
@@ -48947,10 +49575,14 @@ words:
   - main_list
 - word: توکیو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tokyo (city name)'
 - word: مورال
   length: 5
   tier: valid
@@ -48980,10 +49612,14 @@ words:
   - main_list
 - word: هافمن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Huffman (surname)'
 - word: اشرار
   length: 5
   tier: valid
@@ -49820,10 +50456,14 @@ words:
   - main_list
 - word: القدس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jerusalem (city name)'
 - word: قرقیز
   length: 5
   tier: valid
@@ -50244,10 +50884,14 @@ words:
   - main_list
 - word: ارنست
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ernest (personal name)'
 - word: هجویه
   length: 5
   tier: valid
@@ -50919,6 +51563,10 @@ words:
   frequency: 5.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Islam (religion name)'
 - word: گدازم
   length: 5
   tier: valid
@@ -51164,10 +51812,14 @@ words:
   - main_list
 - word: روبرت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Robert (personal name, variant)'
 - word: شراکت
   length: 5
   tier: daily
@@ -51372,10 +52024,14 @@ words:
   - main_list
 - word: آپولو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Apollo (mythological/brand name)'
 - word: دوگرا
   length: 5
   tier: valid
@@ -51761,10 +52417,14 @@ words:
   - main_list
 - word: الیوت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Elliot (personal name)'
 - word: پردار
   length: 5
   tier: valid
@@ -51979,10 +52639,14 @@ words:
   - main_list
 - word: دانته
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dante (personal name)'
 - word: مرتهن
   length: 5
   tier: valid
@@ -52018,10 +52682,14 @@ words:
   - main_list
 - word: پورشه
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Porsche (brand name)'
 - word: محابا
   length: 5
   tier: valid
@@ -52420,10 +53088,14 @@ words:
   - main_list
 - word: اورست
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Everest (mountain name)'
 - word: کشانم
   length: 5
   tier: valid
@@ -52973,10 +53645,14 @@ words:
   - main_list
 - word: فاستر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Foster (surname)'
 - word: بوزان
   length: 5
   tier: valid
@@ -53499,10 +54175,14 @@ words:
   - main_list
 - word: پورنو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar/offensive: pornography'
 - word: بندری
   length: 5
   tier: valid
@@ -53600,10 +54280,14 @@ words:
   - main_list
 - word: دیانا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Diana (personal name)'
 - word: پادرد
   length: 5
   tier: valid
@@ -53689,10 +54373,14 @@ words:
   - main_list
 - word: برلین
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Berlin (city name)'
 - word: متعدی
   length: 5
   tier: valid
@@ -53957,10 +54645,14 @@ words:
   - main_list
 - word: هکتور
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hector (personal name)'
 - word: درختی
   length: 5
   tier: valid
@@ -54055,10 +54747,14 @@ words:
   - main_list
 - word: خاویر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Xavier (personal name)'
 - word: همکیش
   length: 5
   tier: valid
@@ -54153,10 +54849,14 @@ words:
   - main_list
 - word: رومان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Roman (personal name)'
 - word: قبائل
   length: 5
   tier: valid
@@ -54237,10 +54937,14 @@ words:
   - main_list
 - word: منهتن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Manhattan (place name)'
 - word: برقصم
   length: 5
   tier: daily
@@ -54639,10 +55343,14 @@ words:
   - main_list
 - word: استفن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Stephen (personal name)'
 - word: محظور
   length: 5
   tier: valid
@@ -55027,10 +55735,14 @@ words:
   - main_list
 - word: سیسکو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cisco (brand name)'
 - word: افطار
   length: 5
   tier: valid
@@ -55109,10 +55821,14 @@ words:
   - main_list
 - word: اسکار
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Oscar (personal name/award)'
 - word: نشیند
   length: 5
   tier: valid
@@ -55709,10 +56425,14 @@ words:
   - main_list
 - word: لوئیس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Louis (personal name)'
 - word: مشکسا
   length: 5
   tier: valid
@@ -55835,10 +56555,14 @@ words:
   - main_list
 - word: لامصب
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar: profanity/insult'
 - word: صارمی
   length: 5
   tier: valid
@@ -56868,10 +57592,14 @@ words:
   - main_list
 - word: آلبرت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Albert (personal name)'
 - word: نوردد
   length: 5
   tier: valid
@@ -56995,10 +57723,14 @@ words:
   - main_list
 - word: سیاتل
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Seattle (city name)'
 - word: رفتید
   length: 5
   tier: valid
@@ -57215,10 +57947,14 @@ words:
   - main_list
 - word: نیکول
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nicole (personal name)'
 - word: سمبول
   length: 5
   tier: valid
@@ -57512,10 +58248,14 @@ words:
   - main_list
 - word: والری
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Valerie (personal name)'
 - word: فوریت
   length: 5
   tier: valid
@@ -57668,10 +58408,14 @@ words:
   - main_list
 - word: نیکوس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nikos (personal name)'
 - word: ابقاء
   length: 5
   tier: valid
@@ -57735,10 +58479,14 @@ words:
   - main_list
 - word: لوکاس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lucas (personal name)'
 - word: اکتفا
   length: 5
   tier: valid
@@ -58543,10 +59291,14 @@ words:
   - main_list
 - word: کالین
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Colin (personal name)'
 - word: صقراط
   length: 5
   tier: valid
@@ -59241,10 +59993,14 @@ words:
   - main_list
 - word: رامون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ramon (personal name)'
 - word: سوختن
   length: 5
   tier: daily
@@ -59273,10 +60029,14 @@ words:
   - main_list
 - word: مارکس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marx (surname)'
 - word: بترکی
   length: 5
   tier: valid
@@ -59652,10 +60412,14 @@ words:
   - main_list
 - word: تیلور
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Taylor (personal name)'
 - word: ثمرات
   length: 5
   tier: valid
@@ -60489,10 +61253,14 @@ words:
   - main_list
 - word: فیلیپ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Philip (personal name)'
 - word: مویند
   length: 5
   tier: valid
@@ -60927,10 +61695,14 @@ words:
   - main_list
 - word: ماریو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mario (personal name)'
 - word: نفهمی
   length: 5
   tier: valid
@@ -60959,6 +61731,10 @@ words:
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially inappropriate: urination'
 - word: ویکلی
   length: 5
   tier: valid
@@ -61065,10 +61841,14 @@ words:
   - main_list
 - word: کارول
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Carol (personal name)'
 - word: آئودا
   length: 5
   tier: valid

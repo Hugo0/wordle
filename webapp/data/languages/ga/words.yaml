@@ -15,16 +15,24 @@ words:
   - main_list
 - word: russo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: ridge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: ciúta
   length: 5
   tier: daily
@@ -37,16 +45,24 @@ words:
   - main_list
 - word: perth
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: prima
   length: 5
   tier: daily
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Italian/Latin loanword
 - word: mblag
   length: 5
   tier: daily
@@ -64,10 +80,14 @@ words:
   - main_list
 - word: riggs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: luasa
   length: 5
   tier: daily
@@ -196,10 +216,14 @@ words:
   - main_list
 - word: calum
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Scottish personal name)
 - word: trúpa
   length: 5
   tier: daily
@@ -217,10 +241,14 @@ words:
   - main_list
 - word: glenn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: haras
   length: 5
   tier: daily
@@ -269,10 +297,14 @@ words:
   - main_list
 - word: chris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: imill
   length: 5
   tier: daily
@@ -326,10 +358,14 @@ words:
   - main_list
 - word: honda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: bobán
   length: 5
   tier: daily
@@ -342,10 +378,14 @@ words:
   - main_list
 - word: cuffe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: galar
   length: 5
   tier: daily
@@ -363,6 +403,10 @@ words:
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Latin prefix, not a standalone Irish word
 - word: cotún
   length: 5
   tier: daily
@@ -391,10 +435,14 @@ words:
   - main_list
 - word: ernst
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / brand)
 - word: adaic
   length: 5
   tier: daily
@@ -412,10 +460,14 @@ words:
   - main_list
 - word: bobbi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ragaí
   length: 5
   tier: daily
@@ -431,22 +483,34 @@ words:
   scheduled_day: 1713
 - word: moses
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: craig
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bates
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: togha
   length: 5
   tier: daily
@@ -473,6 +537,10 @@ words:
   frequency: 1.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (place name - Syria)
 - word: cnádú
   length: 5
   tier: daily
@@ -530,10 +598,14 @@ words:
   - main_list
 - word: ariel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / brand)
 - word: seilí
   length: 5
   tier: daily
@@ -546,10 +618,14 @@ words:
   - main_list
 - word: gmail
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: teibí
   length: 5
   tier: daily
@@ -594,16 +670,24 @@ words:
   - main_list
 - word: creed
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: aidan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English form of personal name)
 - word: deich
   length: 5
   tier: daily
@@ -688,10 +772,14 @@ words:
   - main_list
 - word: digit
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: gread
   length: 5
   tier: daily
@@ -726,6 +814,10 @@ words:
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: French/English loanword
 - word: grean
   length: 5
   tier: daily
@@ -744,10 +836,14 @@ words:
   - main_list
 - word: nagle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: cairp
   length: 5
   tier: daily
@@ -755,10 +851,14 @@ words:
   - main_list
 - word: soros
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: clibe
   length: 5
   tier: daily
@@ -792,10 +892,14 @@ words:
   - main_list
 - word: hamid
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: suime
   length: 5
   tier: daily
@@ -848,10 +952,14 @@ words:
   - main_list
 - word: singh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: dtáin
   length: 5
   tier: daily
@@ -874,10 +982,14 @@ words:
   - main_list
 - word: louis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ndéag
   length: 5
   tier: daily
@@ -900,10 +1012,14 @@ words:
   - main_list
 - word: regan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: aoise
   length: 5
   tier: daily
@@ -960,6 +1076,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Vulgar/scatological word
 - word: drúis
   length: 5
   tier: daily
@@ -971,6 +1091,10 @@ words:
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Latin scientific term
 - word: cruaí
   length: 5
   tier: daily
@@ -998,10 +1122,14 @@ words:
   - main_list
 - word: boise
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: crios
   length: 5
   tier: daily
@@ -1044,10 +1172,14 @@ words:
   - main_list
 - word: debra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: droim
   length: 5
   tier: daily
@@ -1079,10 +1211,14 @@ words:
   - main_list
 - word: glass
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: mocha
   length: 5
   tier: daily
@@ -1232,10 +1368,14 @@ words:
   - main_list
 - word: stagg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: máire
   length: 5
   tier: daily
@@ -1290,10 +1430,14 @@ words:
   - main_list
 - word: fabio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: cuirí
   length: 5
   tier: daily
@@ -1331,10 +1475,14 @@ words:
   - main_list
 - word: breen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: daimh
   length: 5
   tier: daily
@@ -1347,16 +1495,24 @@ words:
   - main_list
 - word: beale
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: pulse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: ithir
   length: 5
   tier: daily
@@ -1364,10 +1520,14 @@ words:
   - main_list
 - word: aggie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tsuca
   length: 5
   tier: daily
@@ -1385,10 +1545,14 @@ words:
   - main_list
 - word: meade
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: atóga
   length: 5
   tier: daily
@@ -1396,10 +1560,14 @@ words:
   - main_list
 - word: prodi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: créam
   length: 5
   tier: daily
@@ -1422,10 +1590,14 @@ words:
   - main_list
 - word: eason
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand / surname)
 - word: fhríl
   length: 5
   tier: daily
@@ -1433,10 +1605,14 @@ words:
   - main_list
 - word: ethel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ampla
   length: 5
   tier: daily
@@ -1444,16 +1620,24 @@ words:
   - main_list
 - word: monte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: aaron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: oibrí
   length: 5
   tier: daily
@@ -1489,10 +1673,14 @@ words:
   - main_list
 - word: sting
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: mátaí
   length: 5
   tier: daily
@@ -1505,10 +1693,14 @@ words:
   - main_list
 - word: sonia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: taisc
   length: 5
   tier: daily
@@ -1542,6 +1734,10 @@ words:
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English scientific term
 - word: bosaí
   length: 5
   tier: daily
@@ -1559,28 +1755,44 @@ words:
   - main_list
 - word: brien
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: margo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bella
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: mille
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: fiosú
   length: 5
   tier: daily
@@ -1715,10 +1927,14 @@ words:
   - main_list
 - word: tobin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: astar
   length: 5
   tier: daily
@@ -1742,16 +1958,24 @@ words:
   - main_list
 - word: adobe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword / brand name
 - word: simon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: araon
   length: 5
   tier: daily
@@ -1764,10 +1988,14 @@ words:
   - main_list
 - word: chang
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: hinse
   length: 5
   tier: daily
@@ -1841,10 +2069,14 @@ words:
   - main_list
 - word: robin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name) / English word
 - word: ndiúc
   length: 5
   tier: daily
@@ -1862,16 +2094,24 @@ words:
   - main_list
 - word: diego
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: fegan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: práta
   length: 5
   tier: daily
@@ -1915,10 +2155,14 @@ words:
   - main_list
 - word: gemma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: déaga
   length: 5
   tier: daily
@@ -1931,10 +2175,14 @@ words:
   - main_list
 - word: osama
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: fionn
   length: 5
   tier: daily
@@ -1983,10 +2231,14 @@ words:
   - main_list
 - word: rocco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ceasa
   length: 5
   tier: daily
@@ -2092,10 +2344,14 @@ words:
   - main_list
 - word: gogan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: tírse
   length: 5
   tier: daily
@@ -2191,10 +2447,14 @@ words:
   - main_list
 - word: irene
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bunús
   length: 5
   tier: daily
@@ -2210,10 +2470,14 @@ words:
   - main_list
 - word: ellie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: maola
   length: 5
   tier: daily
@@ -2374,10 +2638,14 @@ words:
   - main_list
 - word: grace
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name) / English word
 - word: cailc
   length: 5
   tier: daily
@@ -2451,10 +2719,14 @@ words:
   - main_list
 - word: paine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: réabh
   length: 5
   tier: daily
@@ -2551,10 +2823,14 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: pháid
   length: 5
   tier: daily
@@ -2650,10 +2926,14 @@ words:
   - main_list
 - word: nader
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: hóigh
   length: 5
   tier: daily
@@ -2754,10 +3034,14 @@ words:
   - main_list
 - word: rushe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: corda
   length: 5
   tier: daily
@@ -2786,10 +3070,14 @@ words:
   - main_list
 - word: rubin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: nglas
   length: 5
   tier: daily
@@ -2832,10 +3120,14 @@ words:
   - main_list
 - word: spear
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: ramás
   length: 5
   tier: daily
@@ -2955,10 +3247,14 @@ words:
   - main_list
 - word: hearn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: gcinn
   length: 5
   tier: daily
@@ -3016,10 +3312,14 @@ words:
   - main_list
 - word: mahon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: eacea
   length: 5
   tier: daily
@@ -3031,6 +3331,10 @@ words:
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Spanish/English loanword
 - word: spíce
   length: 5
   tier: daily
@@ -3053,10 +3357,14 @@ words:
   - main_list
 - word: shine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: bogás
   length: 5
   tier: daily
@@ -3084,10 +3392,14 @@ words:
   - main_list
 - word: roach
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: cleas
   length: 5
   tier: daily
@@ -3095,10 +3407,14 @@ words:
   - main_list
 - word: assad
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: morna
   length: 5
   tier: daily
@@ -3117,10 +3433,14 @@ words:
   - main_list
 - word: regis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ardas
   length: 5
   tier: daily
@@ -3173,6 +3493,10 @@ words:
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English word / acronym (CITES)
 - word: éidiú
   length: 5
   tier: daily
@@ -3185,10 +3509,14 @@ words:
   - main_list
 - word: macao
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: smiot
   length: 5
   tier: daily
@@ -3196,10 +3524,14 @@ words:
   - main_list
 - word: hegel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: iomún
   length: 5
   tier: daily
@@ -3222,10 +3554,14 @@ words:
   - main_list
 - word: nolan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: creis
   length: 5
   tier: daily
@@ -3268,6 +3604,10 @@ words:
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Hebrew religious term, not Irish
 - word: cogaí
   length: 5
   tier: daily
@@ -3397,10 +3737,14 @@ words:
   - main_list
 - word: sadie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ciúin
   length: 5
   tier: daily
@@ -3491,10 +3835,14 @@ words:
   - main_list
 - word: cecil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: cuing
   length: 5
   tier: daily
@@ -3529,10 +3877,14 @@ words:
   - main_list
 - word: abner
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (biblical name)
 - word: néidí
   length: 5
   tier: daily
@@ -3605,10 +3957,14 @@ words:
   - main_list
 - word: marco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: gorma
   length: 5
   tier: daily
@@ -3651,10 +4007,14 @@ words:
   - main_list
 - word: donie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: angar
   length: 5
   tier: daily
@@ -3672,6 +4032,10 @@ words:
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Italian loanword, not naturalized in Irish
 - word: séisí
   length: 5
   tier: daily
@@ -3760,16 +4124,24 @@ words:
   - main_list
 - word: trott
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: edith
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: eadra
   length: 5
   tier: daily
@@ -3813,10 +4185,14 @@ words:
   - main_list
 - word: snape
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (fictional / surname)
 - word: tsrón
   length: 5
   tier: daily
@@ -3835,10 +4211,14 @@ words:
   - main_list
 - word: comer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / English word
 - word: horna
   length: 5
   tier: daily
@@ -3857,10 +4237,14 @@ words:
   - main_list
 - word: lucia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: mónóg
   length: 5
   tier: daily
@@ -3868,10 +4252,14 @@ words:
   - main_list
 - word: andre
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: áfach
   length: 5
   tier: daily
@@ -3889,10 +4277,14 @@ words:
   - main_list
 - word: maria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: stail
   length: 5
   tier: daily
@@ -3915,10 +4307,14 @@ words:
   - main_list
 - word: higgs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: fíric
   length: 5
   tier: daily
@@ -4018,10 +4414,14 @@ words:
   - main_list
 - word: colin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: fálta
   length: 5
   tier: daily
@@ -4075,10 +4475,14 @@ words:
   - main_list
 - word: oasis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (band)
 - word: conlú
   length: 5
   tier: daily
@@ -4150,10 +4554,14 @@ words:
   scheduled_day: 1716
 - word: freda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: beoga
   length: 5
   tier: daily
@@ -4176,10 +4584,14 @@ words:
   - main_list
 - word: pearl
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: díbir
   length: 5
   tier: daily
@@ -4667,10 +5079,14 @@ words:
   - main_list
 - word: horne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: cheis
   length: 5
   tier: daily
@@ -4678,10 +5094,14 @@ words:
   - main_list
 - word: felim
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: dónal
   length: 5
   tier: daily
@@ -4729,10 +5149,14 @@ words:
   - main_list
 - word: behan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: anála
   length: 5
   tier: daily
@@ -4760,10 +5184,14 @@ words:
   - main_list
 - word: mills
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: taise
   length: 5
   tier: daily
@@ -4776,10 +5204,14 @@ words:
   - main_list
 - word: megan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bhfás
   length: 5
   tier: daily
@@ -4835,10 +5267,14 @@ words:
   - main_list
 - word: salem
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: midhe
   length: 5
   tier: daily
@@ -4919,10 +5355,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: chiot
   length: 5
   tier: daily
@@ -4990,6 +5430,10 @@ words:
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Portuguese loanword
 - word: pílir
   length: 5
   tier: daily
@@ -5069,10 +5513,14 @@ words:
   - main_list
 - word: donna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ndair
   length: 5
   tier: daily
@@ -5156,6 +5604,10 @@ words:
   frequency: 1.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin word, not Irish
 - word: daora
   length: 5
   tier: daily
@@ -5209,10 +5661,14 @@ words:
   - main_list
 - word: godot
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (fictional name)
 - word: páras
   length: 5
   tier: daily
@@ -5225,10 +5681,14 @@ words:
   - main_list
 - word: olson
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: gceis
   length: 5
   tier: daily
@@ -5236,10 +5696,14 @@ words:
   - main_list
 - word: huber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: sólfá
   length: 5
   tier: daily
@@ -5384,10 +5848,14 @@ words:
   - main_list
 - word: marsh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: scáil
   length: 5
   tier: daily
@@ -5406,10 +5874,14 @@ words:
   - main_list
 - word: hirst
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: brata
   length: 5
   tier: daily
@@ -5433,10 +5905,14 @@ words:
   - main_list
 - word: honor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: rásaí
   length: 5
   tier: daily
@@ -5479,10 +5955,14 @@ words:
   - main_list
 - word: oates
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: galaí
   length: 5
   tier: daily
@@ -5520,9 +6000,13 @@ words:
   - main_list
 - word: taafe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: ndáil
   length: 5
   tier: daily
@@ -5610,10 +6094,14 @@ words:
   - main_list
 - word: monde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: French word, not Irish
 - word: laigí
   length: 5
   tier: daily
@@ -5704,10 +6192,14 @@ words:
   - main_list
 - word: manet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: gunna
   length: 5
   tier: daily
@@ -5722,10 +6214,14 @@ words:
   - main_list
 - word: anton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: maidí
   length: 5
   tier: daily
@@ -5738,10 +6234,14 @@ words:
   - main_list
 - word: ellen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: sóilí
   length: 5
   tier: daily
@@ -5809,10 +6309,14 @@ words:
   - main_list
 - word: blair
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: aiste
   length: 5
   tier: daily
@@ -5830,10 +6334,14 @@ words:
   - main_list
 - word: elton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: scoth
   length: 5
   tier: daily
@@ -5907,10 +6415,14 @@ words:
   - main_list
 - word: brent
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / place)
 - word: éadrá
   length: 5
   tier: daily
@@ -5984,10 +6496,14 @@ words:
   - main_list
 - word: donal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: docht
   length: 5
   tier: daily
@@ -6011,16 +6527,24 @@ words:
   - main_list
 - word: magan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: north
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: matha
   length: 5
   tier: daily
@@ -6040,16 +6564,24 @@ words:
   - main_list
 - word: renee
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: boris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: guaim
   length: 5
   tier: daily
@@ -6206,16 +6738,24 @@ words:
   - main_list
 - word: hagan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: prior
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: naosa
   length: 5
   tier: daily
@@ -6258,10 +6798,14 @@ words:
   - main_list
 - word: roger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: troda
   length: 5
   tier: daily
@@ -6269,10 +6813,14 @@ words:
   - main_list
 - word: ennis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: gcóra
   length: 5
   tier: daily
@@ -6300,10 +6848,14 @@ words:
   - main_list
 - word: basho
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: rangú
   length: 5
   tier: daily
@@ -6486,10 +7038,14 @@ words:
   - main_list
 - word: lalor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: bodán
   length: 5
   tier: daily
@@ -6527,16 +7083,24 @@ words:
   - main_list
 - word: bragg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: flirt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: stada
   length: 5
   tier: daily
@@ -6641,10 +7205,14 @@ words:
   - main_list
 - word: maude
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: forar
   length: 5
   tier: daily
@@ -6709,10 +7277,14 @@ words:
   - main_list
 - word: ernie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: suirí
   length: 5
   tier: daily
@@ -6740,10 +7312,14 @@ words:
   - main_list
 - word: toner
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: inmhí
   length: 5
   tier: daily
@@ -6767,10 +7343,14 @@ words:
   - main_list
 - word: giles
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: scara
   length: 5
   tier: daily
@@ -6858,10 +7438,14 @@ words:
   - main_list
 - word: bruno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: clící
   length: 5
   tier: daily
@@ -6911,10 +7495,14 @@ words:
   - main_list
 - word: dodds
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: mamaí
   length: 5
   tier: daily
@@ -6938,10 +7526,14 @@ words:
   - main_list
 - word: roper
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / English word
 - word: chama
   length: 5
   tier: daily
@@ -6955,10 +7547,14 @@ words:
   - main_list
 - word: roche
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: imrím
   length: 5
   tier: daily
@@ -6977,10 +7573,14 @@ words:
   - main_list
 - word: aiden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: éanán
   length: 5
   tier: daily
@@ -6998,10 +7598,14 @@ words:
   - main_list
 - word: marie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: panna
   length: 5
   tier: daily
@@ -7077,10 +7681,14 @@ words:
   - main_list
 - word: friel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: áirím
   length: 5
   tier: daily
@@ -7141,10 +7749,14 @@ words:
   - main_list
 - word: allan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: meere
   length: 5
   tier: daily
@@ -7203,10 +7815,14 @@ words:
   - main_list
 - word: court
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: iseas
   length: 5
   tier: daily
@@ -7215,10 +7831,14 @@ words:
   - main_list
 - word: papua
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: ionga
   length: 5
   tier: daily
@@ -7226,10 +7846,14 @@ words:
   - main_list
 - word: ruane
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: adaim
   length: 5
   tier: daily
@@ -7272,16 +7896,24 @@ words:
   - main_list
 - word: snell
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / English word
 - word: sushi
   length: 5
   tier: daily
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Japanese loanword, not naturalized in Irish
 - word: séana
   length: 5
   tier: daily
@@ -7289,10 +7921,14 @@ words:
   - main_list
 - word: clare
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / place)
 - word: fútar
   length: 5
   tier: daily
@@ -7331,10 +7967,14 @@ words:
   - main_list
 - word: llosa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: alpaí
   length: 5
   tier: daily
@@ -7363,10 +8003,14 @@ words:
   - main_list
 - word: munch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / English word
 - word: imram
   length: 5
   tier: daily
@@ -7473,10 +8117,14 @@ words:
   - main_list
 - word: merle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: teilg
   length: 5
   tier: daily
@@ -7525,10 +8173,14 @@ words:
   - main_list
 - word: idaho
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: adóib
   length: 5
   tier: daily
@@ -7546,10 +8198,14 @@ words:
   - main_list
 - word: forde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: dolaí
   length: 5
   tier: daily
@@ -7594,10 +8250,14 @@ words:
   - main_list
 - word: mohan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: adair
   length: 5
   tier: daily
@@ -7644,10 +8304,14 @@ words:
   - main_list
 - word: carol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: earós
   length: 5
   tier: daily
@@ -7686,10 +8350,14 @@ words:
   - main_list
 - word: conte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: steig
   length: 5
   tier: daily
@@ -7775,10 +8443,14 @@ words:
   - main_list
 - word: bosch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand / surname)
 - word: dáilí
   length: 5
   tier: daily
@@ -7887,10 +8559,14 @@ words:
   - main_list
 - word: hutch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: niall
   length: 5
   tier: daily
@@ -7909,22 +8585,34 @@ words:
   - main_list
 - word: lidia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: rothe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: alton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place/personal name)
 - word: atrua
   length: 5
   tier: daily
@@ -7937,10 +8625,14 @@ words:
   - main_list
 - word: tammi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: asóir
   length: 5
   tier: daily
@@ -7989,12 +8681,20 @@ words:
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (disease named after place)
 - word: anson
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: carat
   length: 5
   tier: daily
@@ -8023,10 +8723,14 @@ words:
   - main_list
 - word: dream
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: séimh
   length: 5
   tier: daily
@@ -8105,10 +8809,14 @@ words:
   - main_list
 - word: abbie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: aodán
   length: 5
   tier: daily
@@ -8241,16 +8949,24 @@ words:
   - main_list
 - word: sarah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: aston
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place/personal name)
 - word: iompú
   length: 5
   tier: daily
@@ -8328,10 +9044,14 @@ words:
   - main_list
 - word: dolan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: pigín
   length: 5
   tier: daily
@@ -8380,10 +9100,14 @@ words:
   - main_list
 - word: miami
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: reoim
   length: 5
   tier: daily
@@ -8452,10 +9176,14 @@ words:
   - main_list
 - word: reece
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: micil
   length: 5
   tier: daily
@@ -8488,10 +9216,14 @@ words:
   - main_list
 - word: clegg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: calma
   length: 5
   tier: daily
@@ -8526,10 +9258,14 @@ words:
   - main_list
 - word: usain
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: taosc
   length: 5
   tier: daily
@@ -8573,10 +9309,14 @@ words:
   - main_list
 - word: breda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / place)
 - word: falsa
   length: 5
   tier: daily
@@ -8605,10 +9345,14 @@ words:
   - main_list
 - word: dodge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand) / English word
 - word: tírín
   length: 5
   tier: daily
@@ -8631,10 +9375,14 @@ words:
   - main_list
 - word: olsen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: botaí
   length: 5
   tier: daily
@@ -8711,10 +9459,14 @@ words:
   - main_list
 - word: starr
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: sríoc
   length: 5
   tier: daily
@@ -8786,10 +9538,14 @@ words:
   - main_list
 - word: enron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: faing
   length: 5
   tier: daily
@@ -8887,10 +9643,14 @@ words:
   - main_list
 - word: eunan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: glean
   length: 5
   tier: daily
@@ -8929,10 +9689,14 @@ words:
   - main_list
 - word: mason
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name) / English word
 - word: fhása
   length: 5
   tier: daily
@@ -8940,16 +9704,24 @@ words:
   - main_list
 - word: foran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: santo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: háram
   length: 5
   tier: daily
@@ -8970,10 +9742,14 @@ words:
   - main_list
 - word: morse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: sambó
   length: 5
   tier: daily
@@ -9077,10 +9853,14 @@ words:
   - main_list
 - word: pablo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: iaigí
   length: 5
   tier: daily
@@ -9114,16 +9894,24 @@ words:
   - main_list
 - word: clint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: earle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: baoil
   length: 5
   tier: daily
@@ -9136,10 +9924,14 @@ words:
   - main_list
 - word: loire
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: bloic
   length: 5
   tier: daily
@@ -9147,10 +9939,14 @@ words:
   - main_list
 - word: tesco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: gófar
   length: 5
   tier: daily
@@ -9229,22 +10025,34 @@ words:
   - main_list
 - word: paula
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: roald
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: stone
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: dhola
   length: 5
   tier: daily
@@ -9278,10 +10086,14 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: toirm
   length: 5
   tier: daily
@@ -9309,10 +10121,14 @@ words:
   - main_list
 - word: hehir
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: pocán
   length: 5
   tier: daily
@@ -9341,10 +10157,14 @@ words:
   - main_list
 - word: frida
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: banga
   length: 5
   tier: daily
@@ -9364,10 +10184,14 @@ words:
   - main_list
 - word: milne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: odhar
   length: 5
   tier: daily
@@ -9457,10 +10281,14 @@ words:
   - main_list
 - word: arlen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: reaca
   length: 5
   tier: daily
@@ -9520,10 +10348,14 @@ words:
   scheduled_day: 1690
 - word: eliot
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: lásaí
   length: 5
   tier: daily
@@ -9561,10 +10393,14 @@ words:
   - main_list
 - word: laing
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: úmtar
   length: 5
   tier: daily
@@ -9678,10 +10514,14 @@ words:
   - main_list
 - word: elena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: aonta
   length: 5
   tier: daily
@@ -9694,10 +10534,14 @@ words:
   - main_list
 - word: alito
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: garaí
   length: 5
   tier: daily
@@ -9751,10 +10595,14 @@ words:
   - main_list
 - word: chung
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: gcúis
   length: 5
   tier: daily
@@ -9787,10 +10635,14 @@ words:
   - main_list
 - word: ahmed
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: cathú
   length: 5
   tier: daily
@@ -9979,10 +10831,14 @@ words:
   - main_list
 - word: naomi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: gcéad
   length: 5
   tier: daily
@@ -10112,10 +10968,14 @@ words:
   - main_list
 - word: palin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: neide
   length: 5
   tier: daily
@@ -10192,10 +11052,14 @@ words:
   - main_list
 - word: crane
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / English word
 - word: méarú
   length: 5
   tier: daily
@@ -10203,10 +11067,14 @@ words:
   - main_list
 - word: short
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: triad
   length: 5
   tier: daily
@@ -10261,10 +11129,14 @@ words:
   - main_list
 - word: delia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: stáit
   length: 5
   tier: daily
@@ -10283,10 +11155,14 @@ words:
   - main_list
 - word: aimee
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: cúlán
   length: 5
   tier: daily
@@ -10299,10 +11175,14 @@ words:
   - main_list
 - word: banff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: gorta
   length: 5
   tier: daily
@@ -10325,10 +11205,14 @@ words:
   - main_list
 - word: ollie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: aralt
   length: 5
   tier: daily
@@ -10336,10 +11220,14 @@ words:
   - main_list
 - word: laura
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: rúraí
   length: 5
   tier: daily
@@ -10367,10 +11255,14 @@ words:
   - main_list
 - word: fried
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: druga
   length: 5
   tier: daily
@@ -10413,10 +11305,14 @@ words:
   - main_list
 - word: piers
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ngalf
   length: 5
   tier: daily
@@ -10449,6 +11345,10 @@ words:
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Portuguese loanword, not naturalized in Irish
 - word: cógas
   length: 5
   tier: daily
@@ -10472,10 +11372,14 @@ words:
   - main_list
 - word: leeds
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: chnaí
   length: 5
   tier: daily
@@ -10560,10 +11464,14 @@ words:
   - main_list
 - word: sunda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: learg
   length: 5
   tier: daily
@@ -10571,10 +11479,14 @@ words:
   - main_list
 - word: mitch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tibhe
   length: 5
   tier: daily
@@ -10602,10 +11514,14 @@ words:
   - main_list
 - word: simms
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: tufar
   length: 5
   tier: daily
@@ -10639,10 +11555,14 @@ words:
   - main_list
 - word: rhona
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: mhóáb
   length: 5
   tier: daily
@@ -10650,10 +11570,14 @@ words:
   - main_list
 - word: susan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: cíoch
   length: 5
   tier: daily
@@ -10681,10 +11605,14 @@ words:
   - main_list
 - word: south
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: oisín
   length: 5
   tier: daily
@@ -10909,6 +11837,10 @@ words:
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Italian word, not Irish
 - word: fiúir
   length: 5
   tier: daily
@@ -10997,10 +11929,14 @@ words:
   - main_list
 - word: agnes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: stíle
   length: 5
   tier: daily
@@ -11013,10 +11949,14 @@ words:
   - main_list
 - word: rapid
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (sports)
 - word: dtaga
   length: 5
   tier: daily
@@ -11024,10 +11964,14 @@ words:
   - main_list
 - word: beach
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word (Irish uses 'trá')
 - word: mbeag
   length: 5
   tier: daily
@@ -11040,10 +11984,14 @@ words:
   - main_list
 - word: shane
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: preab
   length: 5
   tier: daily
@@ -11255,10 +12203,14 @@ words:
   - main_list
 - word: flora
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bhfad
   length: 5
   tier: daily
@@ -11271,9 +12223,13 @@ words:
   - main_list
 - word: dotie
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: spleá
   length: 5
   tier: daily
@@ -11297,10 +12253,14 @@ words:
   - main_list
 - word: dilma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: eanga
   length: 5
   tier: daily
@@ -11349,10 +12309,14 @@ words:
   - main_list
 - word: damon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: holam
   length: 5
   tier: daily
@@ -11407,10 +12371,14 @@ words:
   - main_list
 - word: india
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: ioraí
   length: 5
   tier: daily
@@ -11491,10 +12459,14 @@ words:
   - main_list
 - word: henri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: clann
   length: 5
   tier: daily
@@ -11523,10 +12495,14 @@ words:
   - main_list
 - word: small
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: eirre
   length: 5
   tier: daily
@@ -11551,16 +12527,24 @@ words:
   - main_list
 - word: noble
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: norma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tulca
   length: 5
   tier: daily
@@ -11618,10 +12602,14 @@ words:
   - main_list
 - word: orpen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: meáin
   length: 5
   tier: daily
@@ -11644,10 +12632,14 @@ words:
   - main_list
 - word: grohl
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: rúpaí
   length: 5
   tier: daily
@@ -11655,10 +12647,14 @@ words:
   - main_list
 - word: hosni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: thílí
   length: 5
   tier: daily
@@ -11754,10 +12750,14 @@ words:
   - main_list
 - word: arles
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: mbród
   length: 5
   tier: daily
@@ -11770,16 +12770,24 @@ words:
   - main_list
 - word: silas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: shell
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (brand)
 - word: iamba
   length: 5
   tier: daily
@@ -11812,10 +12820,14 @@ words:
   - main_list
 - word: tulsa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: costa
   length: 5
   tier: daily
@@ -11855,10 +12867,14 @@ words:
   - main_list
 - word: diana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: casla
   length: 5
   tier: daily
@@ -11896,10 +12912,14 @@ words:
   - main_list
 - word: sagan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: anáil
   length: 5
   tier: daily
@@ -12094,10 +13114,14 @@ words:
   - main_list
 - word: mabel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: seicí
   length: 5
   tier: daily
@@ -12110,10 +13134,14 @@ words:
   - main_list
 - word: crump
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: spior
   length: 5
   tier: daily
@@ -12121,10 +13149,14 @@ words:
   - main_list
 - word: capri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: éimiú
   length: 5
   tier: daily
@@ -12204,10 +13236,14 @@ words:
   - main_list
 - word: hamas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (organization name)
 - word: iaróí
   length: 5
   tier: daily
@@ -12296,10 +13332,14 @@ words:
   - main_list
 - word: doran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: anóid
   length: 5
   tier: daily
@@ -12333,10 +13373,14 @@ words:
   - main_list
 - word: rodin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: cuail
   length: 5
   tier: daily
@@ -12354,16 +13398,24 @@ words:
   - main_list
 - word: cisco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand / personal name)
 - word: rohan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / fictional)
 - word: pálás
   length: 5
   tier: daily
@@ -12396,10 +13448,14 @@ words:
   - main_list
 - word: homer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: smuta
   length: 5
   tier: daily
@@ -12479,16 +13535,24 @@ words:
   - main_list
 - word: miles
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name) / English word
 - word: celia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: smuit
   length: 5
   tier: daily
@@ -12623,10 +13687,14 @@ words:
   - main_list
 - word: bohan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: drige
   length: 5
   tier: daily
@@ -12680,10 +13748,14 @@ words:
   - main_list
 - word: brest
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: caine
   length: 5
   tier: daily
@@ -12692,10 +13764,14 @@ words:
   - main_list
 - word: obama
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: tangó
   length: 5
   tier: daily
@@ -12718,10 +13794,14 @@ words:
   - main_list
 - word: arnie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: gualú
   length: 5
   tier: daily
@@ -12729,10 +13809,14 @@ words:
   - main_list
 - word: ascot
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: maróg
   length: 5
   tier: daily
@@ -12775,10 +13859,14 @@ words:
   - main_list
 - word: peter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: seide
   length: 5
   tier: daily
@@ -12812,10 +13900,14 @@ words:
   - main_list
 - word: loren
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: scoil
   length: 5
   tier: daily
@@ -12829,10 +13921,14 @@ words:
   - main_list
 - word: brand
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: tosca
   length: 5
   tier: daily
@@ -12851,10 +13947,14 @@ words:
   - main_list
 - word: pedro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: storc
   length: 5
   tier: daily
@@ -12883,10 +13983,14 @@ words:
   - main_list
 - word: sharp
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (brand)
 - word: sútar
   length: 5
   tier: daily
@@ -12961,10 +14065,14 @@ words:
   - main_list
 - word: grant
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name) / English word
 - word: ionam
   length: 5
   tier: daily
@@ -13118,6 +14226,10 @@ words:
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Italian loanword, not naturalized in Irish
 - word: dubhó
   length: 5
   tier: daily
@@ -13155,10 +14267,14 @@ words:
   - main_list
 - word: cross
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: frasú
   length: 5
   tier: daily
@@ -13182,10 +14298,14 @@ words:
   - main_list
 - word: adele
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: séirí
   length: 5
   tier: daily
@@ -13193,10 +14313,14 @@ words:
   - main_list
 - word: denis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: nígir
   length: 5
   tier: daily
@@ -13214,10 +14338,14 @@ words:
   - main_list
 - word: bello
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: stobh
   length: 5
   tier: daily
@@ -13245,10 +14373,14 @@ words:
   - main_list
 - word: ethan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: lucht
   length: 5
   tier: daily
@@ -13269,10 +14401,14 @@ words:
   - main_list
 - word: haugh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: teile
   length: 5
   tier: daily
@@ -13280,10 +14416,14 @@ words:
   - main_list
 - word: dobbs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: sceon
   length: 5
   tier: daily
@@ -13296,10 +14436,14 @@ words:
   - main_list
 - word: corrs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (band name / surname)
 - word: féata
   length: 5
   tier: daily
@@ -13317,10 +14461,14 @@ words:
   - main_list
 - word: bloom
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: carna
   length: 5
   tier: daily
@@ -13365,10 +14513,14 @@ words:
   - main_list
 - word: fusco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: spéir
   length: 5
   tier: daily
@@ -13381,10 +14533,14 @@ words:
   - main_list
 - word: stein
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / German word
 - word: mmdcc
   length: 5
   tier: daily
@@ -13473,10 +14629,14 @@ words:
   - main_list
 - word: bauer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: armaí
   length: 5
   tier: daily
@@ -13591,10 +14751,14 @@ words:
   - main_list
 - word: cogan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: cnámh
   length: 5
   tier: daily
@@ -13789,10 +14953,14 @@ words:
   - main_list
 - word: steam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: nódaí
   length: 5
   tier: daily
@@ -13810,10 +14978,14 @@ words:
   - main_list
 - word: carlo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: seisí
   length: 5
   tier: daily
@@ -13987,10 +15159,14 @@ words:
   - main_list
 - word: allah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (religious name)
 - word: cogal
   length: 5
   tier: daily
@@ -14013,16 +15189,24 @@ words:
   - main_list
 - word: somme
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: goode
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: bórón
   length: 5
   tier: daily
@@ -14050,10 +15234,14 @@ words:
   - main_list
 - word: hodge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: hoirc
   length: 5
   tier: daily
@@ -14097,10 +15285,14 @@ words:
   - main_list
 - word: maher
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: biúró
   length: 5
   tier: daily
@@ -14164,10 +15356,14 @@ words:
   - main_list
 - word: ronan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: seáin
   length: 5
   tier: daily
@@ -14257,10 +15453,14 @@ words:
   - main_list
 - word: sands
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: aneas
   length: 5
   tier: daily
@@ -14273,10 +15473,14 @@ words:
   - main_list
 - word: ellis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: giúis
   length: 5
   tier: daily
@@ -14289,10 +15493,14 @@ words:
   - main_list
 - word: selma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / place)
 - word: bríce
   length: 5
   tier: daily
@@ -14320,10 +15528,14 @@ words:
   - main_list
 - word: eddie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: líomh
   length: 5
   tier: daily
@@ -14392,10 +15604,14 @@ words:
   - main_list
 - word: dunne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: caróg
   length: 5
   tier: daily
@@ -14403,10 +15619,14 @@ words:
   - main_list
 - word: halle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / place)
 - word: heite
   length: 5
   tier: daily
@@ -14455,10 +15675,14 @@ words:
   - main_list
 - word: finan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: birín
   length: 5
   tier: daily
@@ -14552,10 +15776,14 @@ words:
   - main_list
 - word: ebert
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: beadh
   length: 5
   tier: daily
@@ -14573,10 +15801,14 @@ words:
   - main_list
 - word: poole
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place/surname)
 - word: geard
   length: 5
   tier: daily
@@ -14615,10 +15847,14 @@ words:
   - main_list
 - word: hogan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: síris
   length: 5
   tier: daily
@@ -14666,10 +15902,14 @@ words:
   - main_list
 - word: brunn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: coisí
   length: 5
   tier: daily
@@ -14734,10 +15974,14 @@ words:
   - main_list
 - word: reich
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: German word / proper noun
 - word: dosaí
   length: 5
   tier: daily
@@ -14797,10 +16041,14 @@ words:
   - main_list
 - word: sheen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: ramón
   length: 5
   tier: daily
@@ -14864,16 +16112,24 @@ words:
   - main_list
 - word: moran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: lamar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: geana
   length: 5
   tier: daily
@@ -14906,10 +16162,14 @@ words:
   - main_list
 - word: chloe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: liopa
   length: 5
   tier: daily
@@ -14922,10 +16182,14 @@ words:
   - main_list
 - word: hobbs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: lenar
   length: 5
   tier: daily
@@ -15021,10 +16285,14 @@ words:
   - main_list
 - word: trump
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: ionaí
   length: 5
   tier: daily
@@ -15037,10 +16305,14 @@ words:
   - main_list
 - word: lagos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: botha
   length: 5
   tier: daily
@@ -15133,16 +16405,24 @@ words:
   - main_list
 - word: bosco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tramp
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: neoin
   length: 5
   tier: daily
@@ -15233,10 +16513,14 @@ words:
   - main_list
 - word: shaun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: seilg
   length: 5
   tier: daily
@@ -15249,10 +16533,14 @@ words:
   - main_list
 - word: utica
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: gorán
   length: 5
   tier: daily
@@ -15370,10 +16658,14 @@ words:
   - main_list
 - word: rouen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: shíní
   length: 5
   tier: daily
@@ -15391,10 +16683,14 @@ words:
   - main_list
 - word: maura
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: éilis
   length: 5
   tier: daily
@@ -15412,10 +16708,14 @@ words:
   - main_list
 - word: guido
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: géagú
   length: 5
   tier: daily
@@ -15428,10 +16728,14 @@ words:
   - main_list
 - word: piotr
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: stáin
   length: 5
   tier: daily
@@ -15609,10 +16913,14 @@ words:
   - main_list
 - word: salle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: French word / proper noun
 - word: uanaí
   length: 5
   tier: daily
@@ -15620,10 +16928,14 @@ words:
   - main_list
 - word: greer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: naofa
   length: 5
   tier: daily
@@ -15631,10 +16943,14 @@ words:
   - main_list
 - word: tocco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: olúla
   length: 5
   tier: daily
@@ -15664,6 +16980,10 @@ words:
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword
 - word: léice
   length: 5
   tier: daily
@@ -15681,16 +17001,24 @@ words:
   - main_list
 - word: allen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: hatch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: dúnta
   length: 5
   tier: daily
@@ -15774,10 +17102,14 @@ words:
   - main_list
 - word: temer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: eures
   length: 5
   tier: daily
@@ -15801,10 +17133,14 @@ words:
   - main_list
 - word: arfon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Welsh place name)
 - word: ráthú
   length: 5
   tier: daily
@@ -15845,10 +17181,14 @@ words:
   - main_list
 - word: freud
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: druma
   length: 5
   tier: daily
@@ -15942,10 +17282,14 @@ words:
   - main_list
 - word: paolo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: pléim
   length: 5
   tier: daily
@@ -15963,10 +17307,14 @@ words:
   - main_list
 - word: nabil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: banda
   length: 5
   tier: daily
@@ -16011,10 +17359,14 @@ words:
   - main_list
 - word: reims
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: nítrí
   length: 5
   tier: daily
@@ -16032,16 +17384,24 @@ words:
   - main_list
 - word: elias
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: flood
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: déirc
   length: 5
   tier: daily
@@ -16049,10 +17409,14 @@ words:
   - main_list
 - word: bossi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: péint
   length: 5
   tier: daily
@@ -16137,10 +17501,14 @@ words:
   - main_list
 - word: anita
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: neill
   length: 5
   tier: daily
@@ -16168,6 +17536,10 @@ words:
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (Spanish) / brand name
 - word: fásra
   length: 5
   tier: daily
@@ -16255,10 +17627,14 @@ words:
   - main_list
 - word: braun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand / surname)
 - word: dioca
   length: 5
   tier: daily
@@ -16297,10 +17673,14 @@ words:
   - main_list
 - word: mihai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: cocún
   length: 5
   tier: daily
@@ -16308,10 +17688,14 @@ words:
   - main_list
 - word: doris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: atadh
   length: 5
   tier: daily
@@ -16395,10 +17779,14 @@ words:
   - main_list
 - word: rosie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ataic
   length: 5
   tier: daily
@@ -16412,10 +17800,14 @@ words:
   - main_list
 - word: gonne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: barou
   length: 5
   tier: daily
@@ -16423,10 +17815,14 @@ words:
   - main_list
 - word: lucca
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: truán
   length: 5
   tier: daily
@@ -16444,10 +17840,14 @@ words:
   - main_list
 - word: helen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: cocán
   length: 5
   tier: daily
@@ -16592,10 +17992,14 @@ words:
   - main_list
 - word: bligh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: súram
   length: 5
   tier: daily
@@ -16649,10 +18053,14 @@ words:
   - main_list
 - word: smart
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: ionsú
   length: 5
   tier: daily
@@ -16680,10 +18088,14 @@ words:
   - main_list
 - word: trish
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: maige
   length: 5
   tier: daily
@@ -16790,10 +18202,14 @@ words:
   - main_list
 - word: april
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: ródas
   length: 5
   tier: daily
@@ -16821,10 +18237,14 @@ words:
   - main_list
 - word: putin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: úiríd
   length: 5
   tier: daily
@@ -16867,10 +18287,14 @@ words:
   - main_list
 - word: orson
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: taoma
   length: 5
   tier: daily
@@ -16903,16 +18327,24 @@ words:
   - main_list
 - word: susie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: lelia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: aosaí
   length: 5
   tier: daily
@@ -17051,10 +18483,14 @@ words:
   - main_list
 - word: morsi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: muirn
   length: 5
   tier: daily
@@ -17071,6 +18507,10 @@ words:
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword
 - word: forás
   length: 5
   tier: daily
@@ -17148,10 +18588,14 @@ words:
   - main_list
 - word: burge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: dóire
   length: 5
   tier: daily
@@ -17173,6 +18617,10 @@ words:
   frequency: 2.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Italian religious term / proper noun
 - word: nosló
   length: 5
   tier: daily
@@ -17185,10 +18633,14 @@ words:
   - main_list
 - word: prius
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: pluga
   length: 5
   tier: daily
@@ -17201,10 +18653,14 @@ words:
   - main_list
 - word: misha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: grúpa
   length: 5
   tier: daily
@@ -17252,16 +18708,24 @@ words:
   - main_list
 - word: clara
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: carla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: gclós
   length: 5
   tier: daily
@@ -17274,10 +18738,14 @@ words:
   - main_list
 - word: dolce
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand) / Italian word
 - word: chuig
   length: 5
   tier: daily
@@ -17349,10 +18817,14 @@ words:
   - main_list
 - word: terri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tnúth
   length: 5
   tier: daily
@@ -17381,10 +18853,14 @@ words:
   - main_list
 - word: rogan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: dóigh
   length: 5
   tier: daily
@@ -17478,10 +18954,14 @@ words:
   - main_list
 - word: bubba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English slang name
 - word: imris
   length: 5
   tier: daily
@@ -17531,10 +19011,14 @@ words:
   - main_list
 - word: ralph
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: rince
   length: 5
   tier: daily
@@ -17747,10 +19231,14 @@ words:
   - main_list
 - word: heron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: náise
   length: 5
   tier: daily
@@ -17766,10 +19254,14 @@ words:
   scheduled_day: 1696
 - word: angie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: rinní
   length: 5
   tier: daily
@@ -17787,10 +19279,14 @@ words:
   - main_list
 - word: horan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: fíora
   length: 5
   tier: daily
@@ -17860,10 +19356,14 @@ words:
   - main_list
 - word: romeo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: fíním
   length: 5
   tier: daily
@@ -17891,10 +19391,14 @@ words:
   - main_list
 - word: arden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place/personal name)
 - word: toinn
   length: 5
   tier: daily
@@ -17917,10 +19421,14 @@ words:
   - main_list
 - word: largo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name) / Italian musical term
 - word: foral
   length: 5
   tier: daily
@@ -18006,10 +19514,14 @@ words:
   - main_list
 - word: hansa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (historical organization)
 - word: práib
   length: 5
   tier: daily
@@ -18027,10 +19539,14 @@ words:
   - main_list
 - word: lance
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name) / English word
 - word: múine
   length: 5
   tier: daily
@@ -18124,10 +19640,14 @@ words:
   - main_list
 - word: memel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: druil
   length: 5
   tier: daily
@@ -18232,10 +19752,14 @@ words:
   - main_list
 - word: elisa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: háige
   length: 5
   tier: daily
@@ -18295,16 +19819,24 @@ words:
   - main_list
 - word: isaac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: stern
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / English word
 - word: búcla
   length: 5
   tier: daily
@@ -18343,10 +19875,14 @@ words:
   - main_list
 - word: leigh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: áitrí
   length: 5
   tier: daily
@@ -18354,22 +19890,34 @@ words:
   - main_list
 - word: erica
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: hilda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: fidel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: hiúil
   length: 5
   tier: daily
@@ -18397,16 +19945,24 @@ words:
   - main_list
 - word: flint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: annie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: modha
   length: 5
   tier: daily
@@ -18430,22 +19986,34 @@ words:
   - main_list
 - word: notre
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: French word (Notre Dame), not Irish
 - word: lucas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: opera
   length: 5
   tier: daily
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Italian loanword
 - word: hailp
   length: 5
   tier: daily
@@ -18503,10 +20071,14 @@ words:
   - main_list
 - word: rubio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: boird
   length: 5
   tier: daily
@@ -18559,10 +20131,14 @@ words:
   - main_list
 - word: adler
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: arann
   length: 5
   tier: daily
@@ -18602,10 +20178,14 @@ words:
   - main_list
 - word: gould
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: suimí
   length: 5
   tier: daily
@@ -18658,9 +20238,13 @@ words:
   - main_list
 - word: murfi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gaelicized Murphy)
 - word: chóbh
   length: 5
   tier: daily
@@ -18668,10 +20252,14 @@ words:
   - main_list
 - word: smith
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: farad
   length: 5
   tier: daily
@@ -18748,10 +20336,14 @@ words:
   - main_list
 - word: bushe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: aosán
   length: 5
   tier: daily
@@ -18784,10 +20376,14 @@ words:
   - main_list
 - word: mcgee
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: daill
   length: 5
   tier: daily
@@ -18871,10 +20467,14 @@ words:
   - main_list
 - word: elise
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: logaí
   length: 5
   tier: daily
@@ -18882,10 +20482,14 @@ words:
   - main_list
 - word: harte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: bréag
   length: 5
   tier: daily
@@ -18956,10 +20560,14 @@ words:
   - main_list
 - word: madge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: olair
   length: 5
   tier: daily
@@ -18967,16 +20575,24 @@ words:
   - main_list
 - word: logue
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: intel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: airne
   length: 5
   tier: daily
@@ -18994,10 +20610,14 @@ words:
   - main_list
 - word: salah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ionar
   length: 5
   tier: daily
@@ -19036,10 +20656,14 @@ words:
   - main_list
 - word: nuala
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: claon
   length: 5
   tier: daily
@@ -19057,10 +20681,14 @@ words:
   - main_list
 - word: sloan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: blúit
   length: 5
   tier: daily
@@ -19113,10 +20741,14 @@ words:
   - main_list
 - word: burma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: áille
   length: 5
   tier: daily
@@ -19184,10 +20816,14 @@ words:
   - main_list
 - word: louie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
   history:
   - 1699
   scheduled_day: 1699
@@ -19240,10 +20876,14 @@ words:
   - main_list
 - word: arndt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: spalp
   length: 5
   tier: daily
@@ -19271,10 +20911,14 @@ words:
   - main_list
 - word: moira
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: beola
   length: 5
   tier: daily
@@ -19340,10 +20984,14 @@ words:
   - main_list
 - word: lotus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / brand name
 - word: scáin
   length: 5
   tier: daily
@@ -19361,10 +21009,14 @@ words:
   - main_list
 - word: belle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun / English-French loanword
 - word: ílínn
   length: 5
   tier: daily
@@ -19402,10 +21054,14 @@ words:
   - main_list
 - word: cling
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: pórtó
   length: 5
   tier: daily
@@ -19489,10 +21145,14 @@ words:
   - main_list
 - word: field
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: inide
   length: 5
   tier: daily
@@ -19650,10 +21310,14 @@ words:
   - main_list
 - word: elsie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: peann
   length: 5
   tier: daily
@@ -19672,10 +21336,14 @@ words:
   - main_list
 - word: alice
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: leona
   length: 5
   tier: daily
@@ -19832,10 +21500,14 @@ words:
   - main_list
 - word: crohn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (medical eponym)
 - word: cabha
   length: 5
   tier: daily
@@ -19953,10 +21625,14 @@ words:
   - main_list
 - word: accra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name - capital of Ghana)
 - word: iaróg
   length: 5
   tier: daily
@@ -20063,16 +21739,24 @@ words:
   - main_list
 - word: cohen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: dirac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: ndíol
   length: 5
   tier: daily
@@ -20101,10 +21785,14 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: choca
   length: 5
   tier: daily
@@ -20123,10 +21811,14 @@ words:
   - main_list
 - word: seppo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Finnish personal name)
 - word: sigmí
   length: 5
   tier: daily
@@ -20140,10 +21832,14 @@ words:
   - main_list
 - word: booth
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: caomh
   length: 5
   tier: daily
@@ -20221,10 +21917,14 @@ words:
   - main_list
 - word: force
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: ciara
   length: 5
   tier: daily
@@ -20257,12 +21957,20 @@ words:
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin word / brand name
 - word: fagan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: iontu
   length: 5
   tier: daily
@@ -20275,10 +21983,14 @@ words:
   - main_list
 - word: oprah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bhfál
   length: 5
   tier: daily
@@ -20367,16 +22079,24 @@ words:
   - main_list
 - word: eames
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: brett
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: gréin
   length: 5
   tier: daily
@@ -20416,10 +22136,14 @@ words:
   - main_list
 - word: amlin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: róbat
   length: 5
   tier: daily
@@ -20432,10 +22156,14 @@ words:
   - main_list
 - word: bruce
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bodah
   length: 5
   tier: daily
@@ -20448,10 +22176,14 @@ words:
   - main_list
 - word: linda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: seoch
   length: 5
   tier: daily
@@ -20571,10 +22303,14 @@ words:
   - main_list
 - word: leech
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: ochón
   length: 5
   tier: daily
@@ -20639,10 +22375,14 @@ words:
   - main_list
 - word: ahern
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: egteo
   length: 5
   tier: daily
@@ -20675,10 +22415,14 @@ words:
   - main_list
 - word: paulo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: eisia
   length: 5
   tier: daily
@@ -20716,10 +22460,14 @@ words:
   - main_list
 - word: munro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: bruis
   length: 5
   tier: daily
@@ -20727,10 +22475,14 @@ words:
   - main_list
 - word: bahia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: saofa
   length: 5
   tier: daily
@@ -20758,10 +22510,14 @@ words:
   - main_list
 - word: pratt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: monaí
   length: 5
   tier: daily
@@ -20831,16 +22587,24 @@ words:
   - main_list
 - word: geoff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tours
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name) / English word
 - word: dátaí
   length: 5
   tier: daily
@@ -20883,16 +22647,24 @@ words:
   - main_list
 - word: fargo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name / brand)
 - word: moore
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: éitir
   length: 5
   tier: daily
@@ -20932,10 +22704,14 @@ words:
   - main_list
 - word: honan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: alpán
   length: 5
   tier: daily
@@ -20967,6 +22743,10 @@ words:
   frequency: 1.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (place name - Libya)
 - word: lampa
   length: 5
   tier: daily
@@ -20975,10 +22755,14 @@ words:
   - main_list
 - word: reese
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: bhaba
   length: 5
   tier: daily
@@ -21078,16 +22862,24 @@ words:
   - main_list
 - word: nigel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: nadal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: siada
   length: 5
   tier: daily
@@ -21121,10 +22913,14 @@ words:
   - main_list
 - word: inman
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: riast
   length: 5
   tier: daily
@@ -21157,10 +22953,14 @@ words:
   - main_list
 - word: pogba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: stáca
   length: 5
   tier: daily
@@ -21168,10 +22968,14 @@ words:
   - main_list
 - word: adolf
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: crúim
   length: 5
   tier: daily
@@ -21184,10 +22988,14 @@ words:
   - main_list
 - word: lohan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: smiog
   length: 5
   tier: daily
@@ -21226,16 +23034,24 @@ words:
   - main_list
 - word: dubai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: hesse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname / place)
 - word: dúirt
   length: 5
   tier: daily
@@ -21258,10 +23074,14 @@ words:
   - main_list
 - word: tempe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: íorna
   length: 5
   tier: daily
@@ -21305,16 +23125,24 @@ words:
   - main_list
 - word: santa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun
 - word: leger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: cóich
   length: 5
   tier: daily
@@ -21415,10 +23243,14 @@ words:
   - main_list
 - word: conor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English form of Irish name)
 - word: leasú
   length: 5
   tier: daily
@@ -21498,10 +23330,14 @@ words:
   - main_list
 - word: moshe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: mbleá
   length: 5
   tier: daily
@@ -21562,10 +23398,14 @@ words:
   - main_list
 - word: poots
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: caird
   length: 5
   tier: daily
@@ -21618,10 +23458,14 @@ words:
   - main_list
 - word: logan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: báirí
   length: 5
   tier: daily
@@ -21669,10 +23513,14 @@ words:
   - main_list
 - word: alfie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: rincs
   length: 5
   tier: daily
@@ -21695,16 +23543,24 @@ words:
   - main_list
 - word: lorna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: since
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: stolp
   length: 5
   tier: daily
@@ -21713,10 +23569,14 @@ words:
   - main_list
 - word: bacon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword / proper noun (surname)
 - word: seinm
   length: 5
   tier: daily
@@ -21750,10 +23610,14 @@ words:
   - main_list
 - word: basil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name) / English word
 - word: ocbác
   length: 5
   tier: daily
@@ -21770,6 +23634,10 @@ words:
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: French/English loanword
 - word: gargú
   length: 5
   tier: daily
@@ -21912,10 +23780,14 @@ words:
   - main_list
 - word: sasha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ollás
   length: 5
   tier: daily
@@ -21933,10 +23805,14 @@ words:
   - main_list
 - word: hurst
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: sheán
   length: 5
   tier: daily
@@ -22001,10 +23877,14 @@ words:
   - main_list
 - word: argos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand / place name)
 - word: thiar
   length: 5
   tier: daily
@@ -22022,10 +23902,14 @@ words:
   - main_list
 - word: hoare
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: creim
   length: 5
   tier: daily
@@ -22053,10 +23937,14 @@ words:
   - main_list
 - word: shiel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: meann
   length: 5
   tier: daily
@@ -22079,10 +23967,14 @@ words:
   - main_list
 - word: rosen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: abrám
   length: 5
   tier: daily
@@ -22105,10 +23997,14 @@ words:
   - main_list
 - word: licia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: gibir
   length: 5
   tier: daily
@@ -22141,10 +24037,14 @@ words:
   - main_list
 - word: hoban
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: seinn
   length: 5
   tier: daily
@@ -22152,10 +24052,14 @@ words:
   - main_list
 - word: trust
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: loiní
   length: 5
   tier: daily
@@ -22168,10 +24072,14 @@ words:
   - main_list
 - word: chase
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: leofa
   length: 5
   tier: daily
@@ -22189,10 +24097,14 @@ words:
   - main_list
 - word: maier
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: réime
   length: 5
   tier: daily
@@ -22205,10 +24117,14 @@ words:
   - main_list
 - word: steph
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tailm
   length: 5
   tier: daily
@@ -22216,10 +24132,14 @@ words:
   - main_list
 - word: duran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: óraím
   length: 5
   tier: daily
@@ -22252,10 +24172,14 @@ words:
   - main_list
 - word: angus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / place name)
 - word: ápúil
   length: 5
   tier: daily
@@ -22314,16 +24238,24 @@ words:
   - main_list
 - word: gupta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: norah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: insím
   length: 5
   tier: daily
@@ -22357,10 +24289,14 @@ words:
   - main_list
 - word: dinah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: boilg
   length: 5
   tier: daily
@@ -22388,10 +24324,14 @@ words:
   - main_list
 - word: frost
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: cloch
   length: 5
   tier: daily
@@ -22445,10 +24385,14 @@ words:
   - main_list
 - word: assam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: huain
   length: 5
   tier: daily
@@ -22471,10 +24415,14 @@ words:
   - main_list
 - word: acton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: dalla
   length: 5
   tier: daily
@@ -22493,16 +24441,24 @@ words:
   - main_list
 - word: gates
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: damer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: bánte
   length: 5
   tier: daily
@@ -22510,10 +24466,14 @@ words:
   - main_list
 - word: green
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: éimhí
   length: 5
   tier: daily
@@ -22567,10 +24527,14 @@ words:
   - main_list
 - word: tampa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: spídí
   length: 5
   tier: daily
@@ -22583,10 +24547,14 @@ words:
   - main_list
 - word: omaha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: cneas
   length: 5
   tier: daily
@@ -22619,10 +24587,14 @@ words:
   - main_list
 - word: birch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: buafa
   length: 5
   tier: daily
@@ -22640,22 +24612,34 @@ words:
   - main_list
 - word: brahe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: cliff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: sachs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: gibne
   length: 5
   tier: daily
@@ -22693,10 +24677,14 @@ words:
   - main_list
 - word: heath
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: ainín
   length: 5
   tier: daily
@@ -22739,10 +24727,14 @@ words:
   - main_list
 - word: condi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: aisti
   length: 5
   tier: daily
@@ -22786,10 +24778,14 @@ words:
   - main_list
 - word: harri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: sruth
   length: 5
   tier: daily
@@ -22858,16 +24854,24 @@ words:
   - main_list
 - word: gucci
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: rhode
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: maoil
   length: 5
   tier: daily
@@ -23065,10 +25069,14 @@ words:
   - main_list
 - word: tessa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: gcois
   length: 5
   tier: daily
@@ -23081,10 +25089,14 @@ words:
   - main_list
 - word: hagar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (biblical name)
 - word: búrca
   length: 5
   tier: daily
@@ -23219,10 +25231,14 @@ words:
   - main_list
 - word: magee
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: banaí
   length: 5
   tier: daily
@@ -23270,10 +25286,14 @@ words:
   - main_list
 - word: laden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname) / English word
 - word: aonán
   length: 5
   tier: daily
@@ -23322,10 +25342,14 @@ words:
   - main_list
 - word: flash
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: clipe
   length: 5
   tier: daily
@@ -23378,6 +25402,10 @@ words:
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (mythological figure)
 - word: brobh
   length: 5
   tier: daily
@@ -23397,10 +25425,14 @@ words:
   - main_list
 - word: biden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: úctha
   length: 5
   tier: daily
@@ -23423,10 +25455,14 @@ words:
   - main_list
 - word: gibbs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: paoil
   length: 5
   tier: daily
@@ -23574,10 +25610,14 @@ words:
   - main_list
 - word: price
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun (surname)
 - word: gutha
   length: 5
   tier: daily
@@ -23590,10 +25630,14 @@ words:
   - main_list
 - word: scott
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: folig
   length: 5
   tier: daily
@@ -23626,10 +25670,14 @@ words:
   - main_list
 - word: manus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: agard
   length: 5
   tier: daily
@@ -23678,10 +25726,14 @@ words:
   - main_list
 - word: rutte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: síoga
   length: 5
   tier: daily
@@ -23774,10 +25826,14 @@ words:
   - main_list
 - word: burns
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: putóg
   length: 5
   tier: daily
@@ -23830,10 +25886,14 @@ words:
   - main_list
 - word: deane
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: púróg
   length: 5
   tier: daily
@@ -23916,10 +25976,14 @@ words:
   - main_list
 - word: drumm
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: flípe
   length: 5
   tier: daily
@@ -23957,10 +26021,14 @@ words:
   - main_list
 - word: niles
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / place)
 - word: seict
   length: 5
   tier: daily
@@ -24004,10 +26072,14 @@ words:
   - main_list
 - word: beggs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: aoire
   length: 5
   tier: daily
@@ -24048,10 +26120,14 @@ words:
   scheduled_day: 1720
 - word: luigi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: soith
   length: 5
   tier: daily
@@ -24120,10 +26196,14 @@ words:
   - main_list
 - word: hinds
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: inslí
   length: 5
   tier: daily
@@ -24131,10 +26211,14 @@ words:
   - main_list
 - word: abdul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: sútán
   length: 5
   tier: daily
@@ -24152,10 +26236,14 @@ words:
   - main_list
 - word: drill
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word
 - word: máirí
   length: 5
   tier: daily
@@ -24188,10 +26276,14 @@ words:
   - main_list
 - word: noone
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: litrí
   length: 5
   tier: daily
@@ -24235,10 +26327,14 @@ words:
   - main_list
 - word: bruen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: pláta
   length: 5
   tier: daily
@@ -24246,19 +26342,27 @@ words:
   - main_list
 - word: messi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
   history:
   - 1693
   scheduled_day: 1693
 - word: edgar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: sámhú
   length: 5
   tier: daily
@@ -24302,10 +26406,14 @@ words:
   - main_list
 - word: clune
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: smóil
   length: 5
   tier: daily
@@ -24328,10 +26436,14 @@ words:
   - main_list
 - word: potts
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: ciana
   length: 5
   tier: daily
@@ -24345,10 +26457,14 @@ words:
   - main_list
 - word: grimm
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: dtóga
   length: 5
   tier: daily
@@ -24402,10 +26518,14 @@ words:
   - main_list
 - word: haifa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: broma
   length: 5
   tier: daily
@@ -24420,10 +26540,14 @@ words:
   - main_list
 - word: lodge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: niadh
   length: 5
   tier: daily
@@ -24523,10 +26647,14 @@ words:
   - main_list
 - word: duane
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: aolta
   length: 5
   tier: daily
@@ -24569,12 +26697,20 @@ words:
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin/English anatomical term
 - word: mario
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ceise
   length: 5
   tier: daily
@@ -24608,10 +26744,14 @@ words:
   - main_list
 - word: ipsos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (brand name)
 - word: banna
   length: 5
   tier: daily
@@ -24770,6 +26910,10 @@ words:
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin phrase fragment (de facto), not Irish
 - word: lóbaí
   length: 5
   tier: daily
@@ -24782,10 +26926,14 @@ words:
   - main_list
 - word: hanna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: gurab
   length: 5
   tier: daily
@@ -24868,10 +27016,14 @@ words:
   - main_list
 - word: heidi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: misní
   length: 5
   tier: daily
@@ -24957,10 +27109,14 @@ words:
   - main_list
 - word: ringo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: igíní
   length: 5
   tier: daily
@@ -25065,16 +27221,24 @@ words:
   - main_list
 - word: gahan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: brian
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: brise
   length: 5
   tier: daily
@@ -25138,16 +27302,24 @@ words:
   - main_list
 - word: lambe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: boole
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: síntí
   length: 5
   tier: daily
@@ -25237,10 +27409,14 @@ words:
   - main_list
 - word: boggs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: niúit
   length: 5
   tier: daily
@@ -25397,10 +27573,14 @@ words:
   - main_list
 - word: bondi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: casúr
   length: 5
   tier: daily
@@ -25554,10 +27734,14 @@ words:
   - main_list
 - word: ahmad
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: foirm
   length: 5
   tier: daily
@@ -25585,10 +27769,14 @@ words:
   - main_list
 - word: annan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname / place name)
 - word: lánaí
   length: 5
   tier: daily
@@ -25620,6 +27808,10 @@ words:
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin word, not Irish
 - word: sotal
   length: 5
   tier: daily
@@ -25632,10 +27824,14 @@ words:
   - main_list
 - word: monet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: niasc
   length: 5
   tier: daily
@@ -25648,10 +27844,14 @@ words:
   - main_list
 - word: emmet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / surname)
 - word: sáíre
   length: 5
   tier: daily
@@ -25659,10 +27859,14 @@ words:
   - main_list
 - word: fermi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: peacú
   length: 5
   tier: daily
@@ -25675,16 +27879,24 @@ words:
   - main_list
 - word: greta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: diane
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
   history:
   - 1710
   scheduled_day: 1710
@@ -25782,10 +27994,14 @@ words:
   - main_list
 - word: lille
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: áirce
   length: 5
   tier: daily
@@ -25798,10 +28014,14 @@ words:
   - main_list
 - word: stout
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: séada
   length: 5
   tier: daily
@@ -25809,10 +28029,14 @@ words:
   - main_list
 - word: delap
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: morga
   length: 5
   tier: daily
@@ -25861,22 +28085,34 @@ words:
   - main_list
 - word: gough
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: adams
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: rhoda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: daróg
   length: 5
   tier: daily
@@ -25968,10 +28204,14 @@ words:
   - main_list
 - word: upton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: parte
   length: 5
   tier: daily
@@ -26036,10 +28276,14 @@ words:
   - main_list
 - word: niels
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: tátal
   length: 5
   tier: daily
@@ -26085,10 +28329,14 @@ words:
   scheduled_day: 1700
 - word: gregg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name / brand)
 - word: cáblú
   length: 5
   tier: daily
@@ -26101,16 +28349,24 @@ words:
   - main_list
 - word: nessa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: shore
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / proper noun
 - word: fhola
   length: 5
   tier: daily
@@ -26147,22 +28403,34 @@ words:
   - main_list
 - word: nobel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: lapis
   length: 5
   tier: daily
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin word, not naturalized in Irish
 - word: aslan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (fictional name)
 - word: fátha
   length: 5
   tier: daily
@@ -26185,10 +28453,14 @@ words:
   - main_list
 - word: tesla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname / brand)
 - word: guaig
   length: 5
   tier: daily
@@ -26201,10 +28473,14 @@ words:
   - main_list
 - word: rossa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: dhreo
   length: 5
   tier: daily
@@ -26252,6 +28528,10 @@ words:
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin word / proper noun
 - word: miúil
   length: 5
   tier: daily
@@ -26259,10 +28539,14 @@ words:
   - main_list
 - word: dessi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: mhicí
   length: 5
   tier: daily
@@ -26373,16 +28657,24 @@ words:
   - main_list
 - word: basel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (place name)
 - word: greco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: áirsí
   length: 5
   tier: daily
@@ -26445,10 +28737,14 @@ words:
   - main_list
 - word: patti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: dearg
   length: 5
   tier: daily
@@ -26479,10 +28775,14 @@ words:
   - main_list
 - word: folan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: otras
   length: 5
   tier: daily
@@ -26510,10 +28810,14 @@ words:
   - main_list
 - word: apple
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / brand name
   history:
   - 1698
   scheduled_day: 1698
@@ -26550,10 +28854,14 @@ words:
   - main_list
 - word: ascii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English technical acronym
 - word: papúl
   length: 5
   tier: daily

@@ -10,10 +10,14 @@ metadata:
 words:
 - word: तक्षशिला
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - ancient city name (Taxila/Takshashila)
 - word: पर्यटक
   length: 5
   tier: daily
@@ -49,10 +53,14 @@ words:
   - main_list
 - word: युधिष्ठिर
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character from Mahabharata
 - word: सप्टेंबर
   length: 5
   tier: daily
@@ -95,19 +103,27 @@ words:
   - main_list
 - word: छत्रपति
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - royal title (Chhatrapati), strongly associated with Shivaji
   history:
   - 1705
   scheduled_day: 1705
 - word: भावनगर
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in Gujarat
 - word: अडखळणे
   length: 5
   tier: daily
@@ -121,9 +137,13 @@ words:
   - main_list
 - word: सांताक्रूझ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Santa Cruz)
 - word: अंतर्गत
   length: 5
   tier: daily
@@ -185,10 +205,14 @@ words:
   scheduled_day: 1687
 - word: औरंगाबाद
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in Maharashtra
 - word: छायाचित्र
   length: 5
   tier: daily
@@ -248,10 +272,14 @@ words:
   - main_list
 - word: इस्राइल
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Israel)
 - word: राष्ट्रीय
   length: 5
   tier: daily
@@ -265,10 +293,14 @@ words:
   - main_list
 - word: सावरकर
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Savarkar)
 - word: अनुमानणे
   length: 5
   tier: daily
@@ -303,10 +335,14 @@ words:
   - main_list
 - word: ऐश्वर्या
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Aishwarya)
 - word: धर्मशाळा
   length: 5
   tier: daily
@@ -362,9 +398,13 @@ words:
   - main_list
 - word: येहेजकेल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - biblical name (Ezekiel)
 - word: फेब्रुवारी
   length: 5
   tier: daily
@@ -495,6 +535,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - baptism, from Portuguese/Greek
 - word: न्यायासन
   length: 5
   tier: daily
@@ -508,10 +552,14 @@ words:
   - main_list
 - word: फरीदाबाद
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Faridabad)
 - word: घरजावई
   length: 5
   tier: daily
@@ -551,9 +599,13 @@ words:
   - main_list
 - word: एफ्राईम
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal/biblical name (Ephraim)
 - word: अपूर्णांक
   length: 5
   tier: daily
@@ -566,9 +618,13 @@ words:
   - main_list
 - word: गाझियाबाद
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Ghaziabad)
 - word: उत्पन्न
   length: 5
   tier: daily
@@ -577,16 +633,24 @@ words:
   - main_list
 - word: पाकिस्तान
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Pakistan)
 - word: परशुराम
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Hindu deity/avatar name (Parashurama)
 - word: नोव्हेंबर
   length: 5
   tier: daily
@@ -627,10 +691,14 @@ words:
   - main_list
 - word: अमरावती
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in Maharashtra
 - word: उपनिषद
   length: 5
   tier: daily
@@ -850,10 +918,14 @@ words:
   - main_list
 - word: सत्यवती
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character from Mahabharata
 - word: नियमितता
   length: 5
   tier: daily
@@ -913,10 +985,14 @@ words:
   scheduled_day: 1688
 - word: हैदराबाद
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Hyderabad)
 - word: प्रतिज्ञा
   length: 5
   tier: daily
@@ -929,6 +1005,10 @@ words:
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - cricketer (English)
 - word: अनुप्रास
   length: 5
   tier: daily
@@ -953,9 +1033,13 @@ words:
   - main_list
 - word: मालवेअर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword - malware (English tech term)
 - word: नास्तिकता
   length: 5
   tier: daily
@@ -973,6 +1057,10 @@ words:
   frequency: 4.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - country name (Hindustan/India)
 - word: वाढदिवस
   length: 5
   tier: daily
@@ -980,10 +1068,14 @@ words:
   - main_list
 - word: सरस्वती
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Hindu goddess name
 - word: पर्यटन
   length: 5
   tier: daily
@@ -1090,9 +1182,13 @@ words:
   - main_list
 - word: आर्मेनिया
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Armenia)
 - word: काटकसर
   length: 5
   tier: daily
@@ -1130,10 +1226,14 @@ words:
   - main_list
 - word: राजस्थान
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - state name (Rajasthan)
 - word: मुक्तछंद
   length: 5
   tier: daily
@@ -1150,6 +1250,10 @@ words:
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Sensitive/uncomfortable topic for daily puzzle (abortion)
 - word: राजकन्या
   length: 5
   tier: daily
@@ -1166,9 +1270,13 @@ words:
   scheduled_day: 1726
 - word: इस्रायल
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Israel), duplicate variant
 - word: गुन्हेगार
   length: 5
   tier: daily
@@ -1185,9 +1293,13 @@ words:
   scheduled_day: 1684
 - word: एडमंटन
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Edmonton)
 - word: अट्टाहास
   length: 5
   tier: daily
@@ -1245,9 +1357,13 @@ words:
   - main_list
 - word: भिस्मिल्ला
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun / religious phrase (Bismillah)
 - word: ग्रंथालय
   length: 5
   tier: daily
@@ -1265,14 +1381,22 @@ words:
   - main_list
 - word: एस्टोनिया
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Estonia)
 - word: रावळपिंडी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Rawalpindi)
   history:
   - 1703
   scheduled_day: 1703
@@ -1410,10 +1534,14 @@ words:
   - main_list
 - word: आकाशगंगा
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Milky Way galaxy
 - word: हिसकावणे
   length: 5
   tier: daily
@@ -1604,6 +1732,10 @@ words:
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - website (English)
 - word: एकपेशीय
   length: 5
   tier: daily
@@ -1657,9 +1789,13 @@ words:
   - main_list
 - word: बांगलादेश
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Bangladesh)
 - word: गुणगुणणे
   length: 5
   tier: daily
@@ -1676,6 +1812,10 @@ words:
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - passport (English)
 - word: नहाणवली
   length: 5
   tier: daily
@@ -1708,10 +1848,14 @@ words:
   - main_list
 - word: इंडोनेशिया
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Indonesia)
 - word: अनुसरण
   length: 5
   tier: daily
@@ -1720,9 +1864,13 @@ words:
   - main_list
 - word: आब्राहाम
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Abraham)
 - word: प्रतिनिधी
   length: 5
   tier: daily
@@ -1770,9 +1918,13 @@ words:
   - main_list
 - word: मराठवाडा
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - region name in Maharashtra
   history:
   - 1699
   scheduled_day: 1699
@@ -1835,10 +1987,14 @@ words:
   - main_list
 - word: रामचंद्र
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name / deity name (Ramchandra)
 - word: भाग्यहीन
   length: 5
   tier: daily
@@ -1872,10 +2028,14 @@ words:
   - main_list
 - word: अब्दुल्ला
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Abdullah)
 - word: जमाखर्ची
   length: 5
   tier: daily
@@ -1886,14 +2046,22 @@ words:
   scheduled_day: 1685
 - word: सायप्रस
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name (Cyprus)
 - word: बिनयामिन
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal/biblical name (Benjamin)
 - word: गौणकल्प
   length: 5
   tier: daily
@@ -1924,6 +2092,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - country name variant (Hindustan/India)
 - word: फाजीलपणा
   length: 5
   tier: daily
@@ -1975,10 +2147,14 @@ words:
   - main_list
 - word: कार्तिकेय
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Hindu deity name (Kartikeya)
 - word: दुःस्वप्न
   length: 5
   tier: daily
@@ -2057,10 +2233,14 @@ words:
   - main_list
 - word: लक्ष्मण
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - character from Ramayana
 - word: अनुमोदन
   length: 5
   tier: daily
@@ -2084,10 +2264,14 @@ words:
   - main_list
 - word: मंगेशकर
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Mangeshkar)
 - word: देवनागरी
   length: 5
   tier: daily
@@ -2223,9 +2407,13 @@ words:
   - main_list
 - word: तेंडुलकर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Tendulkar)
 - word: स्वस्तिक
   length: 5
   tier: daily
@@ -2260,9 +2448,13 @@ words:
   - main_list
 - word: ग्वाल्हेर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name (Gwalior)
 - word: महत्त्व
   length: 5
   tier: daily
@@ -2276,9 +2468,13 @@ words:
   - main_list
 - word: कोल्हापूर
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in Maharashtra
   history:
   - 1693
   - 1711
@@ -2350,10 +2546,14 @@ words:
   - main_list
 - word: कुलकर्णी
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (Kulkarni)
 - word: आमंत्रण
   length: 5
   tier: daily
@@ -2455,9 +2655,13 @@ words:
   - main_list
 - word: इंद्रायणी
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - river name in Maharashtra
   history:
   - 1717
   scheduled_day: 1717

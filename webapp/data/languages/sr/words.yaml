@@ -37,9 +37,13 @@ words:
   - main_list
 - word: сезер
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Sezer)
 - word: влаћа
   length: 5
   tier: daily
@@ -53,9 +57,13 @@ words:
   - main_list
 - word: ларса
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name genitive (Lars)
 - word: смети
   length: 5
   tier: daily
@@ -131,9 +139,13 @@ words:
   - main_list
 - word: норин
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Noreen)
 - word: срезу
   length: 5
   tier: daily
@@ -196,10 +208,14 @@ words:
   - main_list
 - word: авала
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - mountain near Belgrade
 - word: пиште
   length: 5
   tier: daily
@@ -238,9 +254,13 @@ words:
   - main_list
 - word: мурло
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: vulgar/offensive - ugly mug/face
 - word: китим
   length: 5
   tier: daily
@@ -253,9 +273,13 @@ words:
   - main_list
 - word: панис
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Panis)
 - word: ђукин
   length: 5
   tier: blocked
@@ -588,9 +612,13 @@ words:
   - main_list
 - word: ћколу
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: error - appears to be misspelling of школу
 - word: поети
   length: 5
   tier: daily
@@ -677,10 +705,14 @@ words:
   - main_list
 - word: санда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: прочу
   length: 5
   tier: daily
@@ -742,9 +774,13 @@ words:
   - main_list
 - word: митро
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: грала
   length: 5
   tier: daily
@@ -762,14 +798,22 @@ words:
   - main_list
 - word: сејди
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - name (Sadie/Sejdi)
 - word: немет
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Nemet/Német)
 - word: бивам
   length: 5
   tier: daily
@@ -807,9 +851,13 @@ words:
   - main_list
 - word: спасо
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: ступо
   length: 5
   tier: daily
@@ -831,9 +879,13 @@ words:
   - main_list
 - word: јоран
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Göran)
 - word: азоти
   length: 5
   tier: daily
@@ -873,9 +925,13 @@ words:
   - main_list
 - word: брајо
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - name / informal 'bro'
 - word: водих
   length: 5
   tier: daily
@@ -907,9 +963,13 @@ words:
   - main_list
 - word: скоте
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: can be offensive - vocative of 'skot' (brute/beast, used as insult)
 - word: искуп
   length: 5
   tier: daily
@@ -965,9 +1025,13 @@ words:
   - main_list
 - word: ромер
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Romer)
 - word: орлов
   length: 5
   tier: daily
@@ -1043,9 +1107,13 @@ words:
   - main_list
 - word: крејг
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Craig)
 - word: гамад
   length: 5
   tier: daily
@@ -1111,9 +1179,13 @@ words:
   - main_list
 - word: мосад
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Israeli intelligence agency
 - word: момче
   length: 5
   tier: daily
@@ -1122,10 +1194,14 @@ words:
   - main_list
 - word: петар
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Peter)
 - word: лажна
   length: 5
   tier: daily
@@ -1139,9 +1215,13 @@ words:
   - main_list
 - word: шемсу
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (dative)
 - word: финац
   length: 5
   tier: daily
@@ -1169,9 +1249,13 @@ words:
   - main_list
 - word: едхем
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: скуха
   length: 5
   tier: daily
@@ -1195,9 +1279,13 @@ words:
   - main_list
 - word: еклак
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: not a standard Serbian word - obscure/error
 - word: болне
   length: 5
   tier: daily
@@ -1286,9 +1374,13 @@ words:
   - main_list
 - word: сафин
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Safin)
 - word: циљна
   length: 5
   tier: daily
@@ -1367,14 +1459,22 @@ words:
   - main_list
 - word: хенан
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Henan (Chinese province)
 - word: лунда
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Lunda (place/people)
 - word: југов
   length: 5
   tier: daily
@@ -1392,9 +1492,13 @@ words:
   - main_list
 - word: хинка
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: кртог
   length: 5
   tier: daily
@@ -1407,10 +1511,14 @@ words:
   - main_list
 - word: кинга
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Kinga)
 - word: шаљив
   length: 5
   tier: daily
@@ -1525,9 +1633,13 @@ words:
   - main_list
 - word: јухуа
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: not a standard Serbian word - possible transliteration error
 - word: слање
   length: 5
   tier: daily
@@ -1584,10 +1696,14 @@ words:
   - main_list
 - word: марте
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (Marta, genitive)
 - word: чвора
   length: 5
   tier: daily
@@ -1607,10 +1723,14 @@ words:
   - main_list
 - word: хегел
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Hegel)
 - word: жутим
   length: 5
   tier: daily
@@ -1619,10 +1739,14 @@ words:
   - main_list
 - word: марие
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Marie)
 - word: кокус
   length: 5
   tier: daily
@@ -1635,9 +1759,13 @@ words:
   - main_list
 - word: лорде
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - lord (vocative)
 - word: воћко
   length: 5
   tier: daily
@@ -1667,9 +1795,13 @@ words:
   - main_list
 - word: перко
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: мазач
   length: 5
   tier: daily
@@ -1723,10 +1855,14 @@ words:
   - main_list
 - word: цирих
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city name (Zurich)
 - word: истру
   length: 5
   tier: daily
@@ -1735,9 +1871,13 @@ words:
   - main_list
 - word: ћићко
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - name/nickname
 - word: видни
   length: 5
   tier: daily
@@ -1836,9 +1976,13 @@ words:
   - main_list
 - word: цредо
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: likely error or foreign word - not standard Serbian
 - word: носно
   length: 5
   tier: daily
@@ -1872,10 +2016,14 @@ words:
   - main_list
 - word: карла
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name / genitive of Karl
 - word: повит
   length: 5
   tier: daily
@@ -1914,20 +2062,32 @@ words:
   - main_list
 - word: орфеј
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Orpheus
 - word: шарон
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - name (Sharon)
 - word: сашка
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (diminutive of Saša)
 - word: шумне
   length: 5
   tier: daily
@@ -1979,10 +2139,14 @@ words:
   - main_list
 - word: жозеф
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Joseph)
 - word: патњу
   length: 5
   tier: daily
@@ -2008,9 +2172,13 @@ words:
   - main_list
 - word: јефто
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: цркао
   length: 5
   tier: daily
@@ -2045,9 +2213,13 @@ words:
   - main_list
 - word: хорна
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Horn, genitive)
 - word: чиним
   length: 5
   tier: daily
@@ -2073,10 +2245,14 @@ words:
   - main_list
 - word: аљоша
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Alyosha)
 - word: давши
   length: 5
   tier: daily
@@ -2085,9 +2261,13 @@ words:
   - main_list
 - word: кларо
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - name
 - word: левка
   length: 5
   tier: daily
@@ -2181,9 +2361,13 @@ words:
   - main_list
 - word: планк
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Planck)
 - word: жреца
   length: 5
   tier: daily
@@ -2191,10 +2375,14 @@ words:
   - main_list
 - word: маркс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Marx)
   history:
   - 1702
   scheduled_day: 1702
@@ -2246,9 +2434,13 @@ words:
   - main_list
 - word: цецом
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (Ceca, instrumental)
 - word: узлет
   length: 5
   tier: daily
@@ -2299,15 +2491,23 @@ words:
   - main_list
 - word: натан
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Nathan)
 - word: олимп
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Mount Olympus
 - word: напор
   length: 5
   tier: daily
@@ -2343,9 +2543,13 @@ words:
   - main_list
 - word: круно
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: шанцу
   length: 5
   tier: daily
@@ -2413,9 +2617,13 @@ words:
   - main_list
 - word: синај
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Sinai
 - word: нашта
   length: 5
   tier: daily
@@ -2502,9 +2710,13 @@ words:
   - main_list
 - word: левич
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Levich)
 - word: бурке
   length: 5
   tier: daily
@@ -2534,9 +2746,13 @@ words:
   - main_list
 - word: шваби
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: ethnic designation - Swabians, can be pejorative
 - word: дакао
   length: 5
   tier: daily
@@ -2836,15 +3052,23 @@ words:
   - main_list
 - word: илиев
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (possessive)
 - word: авној
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: acronym - AVNOJ (Yugoslav political body)
 - word: неуре
   length: 5
   tier: daily
@@ -2872,14 +3096,22 @@ words:
   - main_list
 - word: ренцо
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Renzo)
 - word: стајн
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Stein)
 - word: нажње
   length: 5
   tier: daily
@@ -2938,9 +3170,13 @@ words:
   - main_list
 - word: јевту
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name (dative)
 - word: клаху
   length: 5
   tier: daily
@@ -2963,10 +3199,14 @@ words:
   - main_list
 - word: либан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - country name (Lebanon)
 - word: ирвас
   length: 5
   tier: daily
@@ -2997,10 +3237,14 @@ words:
   - main_list
 - word: самир
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: гркој
   length: 5
   tier: daily
@@ -3106,10 +3350,14 @@ words:
   - main_list
 - word: љиљан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 6 letters when decoded - may be encoding issue, also proper name Ljiljan
 - word: рајем
   length: 5
   tier: daily
@@ -3129,9 +3377,13 @@ words:
   - main_list
 - word: кучко
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - bitch (vocative)
 - word: геаци
   length: 5
   tier: daily
@@ -3144,9 +3396,13 @@ words:
   - main_list
 - word: годој
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Godoy)
 - word: окоми
   length: 5
   tier: daily
@@ -3159,9 +3415,13 @@ words:
   - main_list
 - word: кењац
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: crude - someone who defecates (donkey in some dialects)
 - word: орвал
   length: 5
   tier: daily
@@ -3198,9 +3458,13 @@ words:
   - main_list
 - word: сеула
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Seoul (genitive)
 - word: банеш
   length: 5
   tier: daily
@@ -3213,10 +3477,14 @@ words:
   - main_list
 - word: луисе
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - name (Louise)
 - word: етосе
   length: 5
   tier: daily
@@ -3344,9 +3612,13 @@ words:
   - main_list
 - word: хасид
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: religious designation - Hasidic
 - word: гудке
   length: 5
   tier: daily
@@ -3433,10 +3705,14 @@ words:
   - main_list
 - word: јосеф
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Josef)
 - word: стиде
   length: 5
   tier: daily
@@ -3575,9 +3851,13 @@ words:
   - main_list
 - word: дидом
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - name (instrumental of Dido)
 - word: грмен
   length: 5
   tier: daily
@@ -3655,9 +3935,13 @@ words:
   - main_list
 - word: сигне
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (Signe)
 - word: тимеа
   length: 5
   tier: blocked
@@ -3681,10 +3965,14 @@ words:
   - main_list
 - word: хелен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Helen)
 - word: мнењу
   length: 5
   tier: daily
@@ -3728,9 +4016,13 @@ words:
   - main_list
 - word: тимур
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Timur)
 - word: ували
   length: 5
   tier: daily
@@ -3739,10 +4031,14 @@ words:
   - main_list
 - word: лорда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - lord (genitive)
 - word: касап
   length: 5
   tier: daily
@@ -3750,9 +4046,13 @@ words:
   - main_list
 - word: цардс
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word 'cards' in Cyrillic transliteration - error
 - word: бојки
   length: 5
   tier: daily
@@ -3803,10 +4103,14 @@ words:
   - main_list
 - word: вршац
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city in Serbia
 - word: сечем
   length: 5
   tier: daily
@@ -3831,10 +4135,14 @@ words:
   - main_list
 - word: нигхт
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word 'night' in Cyrillic transliteration
 - word: ћупом
   length: 5
   tier: daily
@@ -3853,9 +4161,13 @@ words:
   - main_list
 - word: адоби
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Adobe brand name
 - word: дунда
   length: 5
   tier: daily
@@ -3876,10 +4188,14 @@ words:
   - main_list
 - word: педер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: offensive/homophobic slur
 - word: цвате
   length: 5
   tier: daily
@@ -3923,14 +4239,22 @@ words:
   - main_list
 - word: карев
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - possessive of surname Kara
 - word: милен
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - male name (also adjective 'dear')
 - word: зрело
   length: 5
   tier: daily
@@ -3939,9 +4263,13 @@ words:
   - main_list
 - word: пешко
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name
 - word: цвеје
   length: 5
   tier: daily
@@ -3975,9 +4303,13 @@ words:
   - main_list
 - word: мичел
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Mitchell)
 - word: лихва
   length: 5
   tier: daily
@@ -4006,10 +4338,14 @@ words:
   - main_list
 - word: фрида
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Frida)
 - word: коџић
   length: 5
   tier: blocked
@@ -4079,15 +4415,23 @@ words:
   - main_list
 - word: стено
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - name (Steno)
 - word: агата
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (Agatha)
 - word: дојми
   length: 5
   tier: daily
@@ -4131,10 +4475,14 @@ words:
   - main_list
 - word: лаура
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: вирне
   length: 5
   tier: daily
@@ -4189,9 +4537,13 @@ words:
   - main_list
 - word: клоуз
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Close)
 - word: ујеле
   length: 5
   tier: daily
@@ -4205,9 +4557,13 @@ words:
   - main_list
 - word: кењаш
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - you shit/defecate
 - word: кичме
   length: 5
   tier: daily
@@ -4232,9 +4588,13 @@ words:
   - main_list
 - word: мулин
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Moulin (as in Moulin Rouge)
 - word: чедну
   length: 5
   tier: daily
@@ -4262,10 +4622,14 @@ words:
   - main_list
 - word: жидов
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: ethnic/religious designation - can be considered offensive
 - word: дојма
   length: 5
   tier: daily
@@ -4299,10 +4663,14 @@ words:
   - main_list
 - word: душко
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: жеђао
   length: 5
   tier: daily
@@ -4316,9 +4684,13 @@ words:
   - main_list
 - word: суада
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: летни
   length: 5
   tier: daily
@@ -4417,15 +4789,23 @@ words:
   - main_list
 - word: поаро
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Poirot (fictional detective)
 - word: дорис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Doris)
 - word: шкопе
   length: 5
   tier: daily
@@ -4545,9 +4925,13 @@ words:
   - main_list
 - word: цвија
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Cvija)
 - word: наиђу
   length: 5
   tier: daily
@@ -4675,9 +5059,13 @@ words:
   - main_list
 - word: смиту
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Smith, dative)
 - word: удице
   length: 5
   tier: daily
@@ -4685,9 +5073,13 @@ words:
   - main_list
 - word: цефта
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: acronym - CEFTA trade agreement
 - word: голом
   length: 5
   tier: daily
@@ -4732,9 +5124,13 @@ words:
   - main_list
 - word: јебач
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar - fucker
 - word: уреди
   length: 5
   tier: daily
@@ -4743,10 +5139,14 @@ words:
   - main_list
 - word: харис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Haris)
 - word: шпици
   length: 5
   tier: daily
@@ -4785,10 +5185,14 @@ words:
   - main_list
 - word: понте
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - place name
   history:
   - 1693
   scheduled_day: 1693
@@ -4832,9 +5236,13 @@ words:
   - main_list
 - word: доган
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Dogan)
 - word: урном
   length: 5
   tier: daily
@@ -4905,9 +5313,13 @@ words:
   scheduled_day: 1696
 - word: кучма
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Kuchma)
 - word: гајди
   length: 5
   tier: daily
@@ -4920,15 +5332,23 @@ words:
   - main_list
 - word: лујзу
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Lujza, accusative)
 - word: пирот
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - city in Serbia
 - word: упири
   length: 5
   tier: daily
@@ -4967,9 +5387,13 @@ words:
   - main_list
 - word: фотос
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: not standard Serbian - Greek/English hybrid
 - word: мазио
   length: 5
   tier: daily
@@ -5078,9 +5502,13 @@ words:
   - main_list
 - word: мбеки
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Mbeki)
 - word: јасна
   length: 5
   tier: daily
@@ -5105,9 +5533,13 @@ words:
   - main_list
 - word: јунит
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword - 'unit'
 - word: такси
   length: 5
   tier: daily
@@ -5116,9 +5548,13 @@ words:
   - main_list
 - word: слоба
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - nickname for Slobodan
 - word: драму
   length: 5
   tier: daily
@@ -5155,9 +5591,13 @@ words:
   - main_list
 - word: ређеп
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Redžep/Recep)
 - word: зезаш
   length: 5
   tier: daily
@@ -5272,9 +5712,13 @@ words:
   - main_list
 - word: едипа
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Oedipus (genitive)
 - word: цваст
   length: 5
   tier: daily
@@ -5293,10 +5737,14 @@ words:
   - main_list
 - word: јован
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: свачи
   length: 5
   tier: daily
@@ -5408,9 +5856,13 @@ words:
   - main_list
 - word: тапаи
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: not a standard Serbian word - likely error
 - word: попул
   length: 5
   tier: daily
@@ -5485,10 +5937,14 @@ words:
   - main_list
 - word: паоло
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Paolo)
 - word: кртих
   length: 5
   tier: daily
@@ -5508,20 +5964,32 @@ words:
   - main_list
 - word: гугла
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Google (verb form)
 - word: нзија
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: abbreviation fragment - not a word
 - word: курве
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar/offensive - whores
 - word: румбе
   length: 5
   tier: daily
@@ -5539,9 +6007,13 @@ words:
   - main_list
 - word: хејнс
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Haynes/Haines)
 - word: лобов
   length: 5
   tier: daily
@@ -5554,9 +6026,13 @@ words:
   - main_list
 - word: ристу
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (dative of Risto)
 - word: гејша
   length: 5
   tier: daily
@@ -5564,9 +6040,13 @@ words:
   - main_list
 - word: овбпм
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: abbreviation/acronym - not a word
 - word: секли
   length: 5
   tier: daily
@@ -5660,9 +6140,13 @@ words:
   scheduled_day: 1711
 - word: талса
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - city (Tulsa)
 - word: гусне
   length: 5
   tier: daily
@@ -5681,10 +6165,14 @@ words:
   - main_list
 - word: лопез
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Lopez)
 - word: ретки
   length: 5
   tier: daily
@@ -5762,9 +6250,13 @@ words:
   - main_list
 - word: клуни
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Clooney)
 - word: јаћих
   length: 5
   tier: daily
@@ -5772,9 +6264,13 @@ words:
   - main_list
 - word: волпи
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Volpi)
 - word: дражо
   length: 5
   tier: daily
@@ -5840,10 +6336,14 @@ words:
   - main_list
 - word: анита
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: товно
   length: 5
   tier: daily
@@ -5872,9 +6372,13 @@ words:
   - main_list
 - word: флори
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (Flori)
 - word: клаше
   length: 5
   tier: daily
@@ -5914,9 +6418,13 @@ words:
   - main_list
 - word: рорти
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Rorty)
 - word: дивош
   length: 5
   tier: daily
@@ -5961,10 +6469,14 @@ words:
   - main_list
 - word: карол
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - name (Carol)
 - word: утаји
   length: 5
   tier: daily
@@ -5972,10 +6484,14 @@ words:
   - main_list
 - word: парис
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Paris (mythological)
 - word: толар
   length: 5
   tier: daily
@@ -6066,9 +6582,13 @@ words:
   - main_list
 - word: јовом
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (instrumental)
 - word: боцка
   length: 5
   tier: daily
@@ -6113,9 +6633,13 @@ words:
   - main_list
 - word: данон
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - brand name (Danone)
 - word: начео
   length: 5
   tier: daily
@@ -6155,9 +6679,13 @@ words:
   - main_list
 - word: хашко
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - relating to The Hague
 - word: самит
   length: 5
   tier: daily
@@ -6176,14 +6704,22 @@ words:
   - main_list
 - word: хелас
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Hellas (Greece)
 - word: менгс
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Mengs)
 - word: плаци
   length: 5
   tier: daily
@@ -6229,10 +6765,14 @@ words:
   - main_list
 - word: јожеф
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (József)
 - word: љутњи
   length: 5
   tier: daily
@@ -6336,9 +6876,13 @@ words:
   - main_list
 - word: ђуров
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - possessive of surname Đuro
 - word: агенс
   length: 5
   tier: daily
@@ -6347,9 +6891,13 @@ words:
   - main_list
 - word: фсово
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: abbreviation/error - not a standard word
   history:
   - 1718
   scheduled_day: 1718
@@ -6399,10 +6947,14 @@ words:
   - main_list
 - word: луиса
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - name (Luisa/Louis genitive)
 - word: ошини
   length: 5
   tier: daily
@@ -6416,9 +6968,13 @@ words:
   - main_list
 - word: нинка
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: руску
   length: 5
   tier: daily
@@ -6427,9 +6983,13 @@ words:
   - main_list
 - word: ебарт
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Ebart)
 - word: иберу
   length: 5
   tier: daily
@@ -6513,15 +7073,23 @@ words:
   - main_list
 - word: цугер
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Zuger (German origin)
 - word: мусиц
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word 'music' in Cyrillic transliteration - error
 - word: бурма
   length: 5
   tier: daily
@@ -6651,10 +7219,14 @@ words:
   - main_list
 - word: ханка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: нашој
   length: 5
   tier: daily
@@ -6663,9 +7235,13 @@ words:
   - main_list
 - word: ђогат
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: dialectal/regional - white-legged horse, may be too obscure
 - word: зубља
   length: 5
   tier: daily
@@ -6707,10 +7283,14 @@ words:
   - main_list
 - word: џорџа
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name genitive (George)
 - word: шапки
   length: 5
   tier: daily
@@ -6735,9 +7315,13 @@ words:
   - main_list
 - word: порше
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Porsche brand name
 - word: утоку
   length: 5
   tier: daily
@@ -6861,9 +7445,13 @@ words:
   - main_list
 - word: ротар
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname
 - word: помњу
   length: 5
   tier: daily
@@ -6876,9 +7464,13 @@ words:
   - main_list
 - word: крису
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (dative of Kris)
 - word: повик
   length: 5
   tier: daily
@@ -6891,14 +7483,22 @@ words:
   - main_list
 - word: волфа
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname genitive (Wolf)
 - word: елени
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (dative/plural)
 - word: кошер
   length: 5
   tier: daily
@@ -6912,9 +7512,13 @@ words:
   - main_list
 - word: дркаш
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - you jerk off
 - word: омиље
   length: 5
   tier: daily
@@ -6993,10 +7597,14 @@ words:
   - main_list
 - word: ивану
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - male name (dative of Ivan)
 - word: млаву
   length: 5
   tier: daily
@@ -7056,9 +7664,13 @@ words:
   - main_list
 - word: шимун
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Šimun)
 - word: точно
   length: 5
   tier: daily
@@ -7089,9 +7701,13 @@ words:
   - main_list
 - word: швабо
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: ethnic slur - Swabian (pejorative for Germans)
 - word: сричу
   length: 5
   tier: daily
@@ -7166,9 +7782,13 @@ words:
   - main_list
 - word: нојес
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - surname (Noyes)
 - word: помак
   length: 5
   tier: daily
@@ -7188,9 +7808,13 @@ words:
   - main_list
 - word: ребек
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name (Rebecca)
 - word: хабер
   length: 5
   tier: daily
@@ -7224,9 +7848,13 @@ words:
   - main_list
 - word: фуаду
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (dative of Fuad)
 - word: благу
   length: 5
   tier: daily
@@ -7269,10 +7897,14 @@ words:
   - main_list
 - word: кихот
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - Quixote (Don Quixote)
 - word: мензу
   length: 5
   tier: daily
@@ -7322,9 +7954,13 @@ words:
   - main_list
 - word: рагуа
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - place name (Ragua)
 - word: нагла
   length: 5
   tier: daily
@@ -7394,9 +8030,13 @@ words:
   - main_list
 - word: банов
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: proper noun - possessive of surname Ban
 - word: сахну
   length: 5
   tier: daily
@@ -7404,9 +8044,13 @@ words:
   - main_list
 - word: талфј
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: not a word - appears to be an error/abbreviation
 - word: лашић
   length: 5
   tier: blocked
@@ -7414,9 +8058,13 @@ words:
   - main_list
 - word: јенко
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - surname (Jenko)
 - word: плену
   length: 5
   tier: daily
@@ -7434,9 +8082,13 @@ words:
   - main_list
 - word: јукоп
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun/acronym - not a standard word
 - word: лотје
   length: 5
   tier: daily
@@ -11194,10 +11846,14 @@ words:
   - main_list
 - word: алекс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Alex)
 - word: млели
   length: 5
   tier: valid
@@ -11407,10 +12063,14 @@ words:
   - main_list
 - word: чарлс
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Charles)
 - word: елиту
   length: 5
   tier: valid
@@ -14041,10 +14701,14 @@ words:
   - main_list
 - word: супер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English/international loanword
 - word: узнет
   length: 5
   tier: valid
@@ -14052,10 +14716,14 @@ words:
   - main_list
 - word: карен
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: стече
   length: 5
   tier: valid
@@ -16483,10 +17151,14 @@ words:
   - main_list
 - word: хенри
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Henry)
 - word: свећу
   length: 5
   tier: valid
@@ -27648,9 +28320,13 @@ words:
   - main_list
 - word: јебеш
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar - you fuck
 - word: свежи
   length: 5
   tier: valid
@@ -28201,10 +28877,14 @@ words:
   - main_list
 - word: срања
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - shit (genitive)
 - word: очита
   length: 5
   tier: valid
@@ -28833,10 +29513,14 @@ words:
   - main_list
 - word: париз
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - city name (Paris)
 - word: поуњу
   length: 5
   tier: valid
@@ -30139,10 +30823,14 @@ words:
   - main_list
 - word: срање
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - shit/shitting
 - word: чамцу
   length: 5
   tier: valid
@@ -30918,10 +31606,14 @@ words:
   - main_list
 - word: исусе
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - Jesus (vocative)
 - word: пионе
   length: 5
   tier: valid
@@ -41676,10 +42368,14 @@ words:
   - main_list
 - word: дерек
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Derek)
 - word: кусцу
   length: 5
   tier: valid
@@ -46520,10 +47216,14 @@ words:
   - main_list
 - word: јебем
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar - I fuck
 - word: аласу
   length: 5
   tier: valid
@@ -48194,10 +48894,14 @@ words:
   - main_list
 - word: елена
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: proper noun - female name
 - word: уреса
   length: 5
   tier: valid
@@ -52536,9 +53240,13 @@ words:
   - main_list
 - word: керол
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Carol)
 - word: сјаше
   length: 5
   tier: valid
@@ -53734,10 +54442,14 @@ words:
   - main_list
 - word: кучка
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - bitch
 - word: звала
   length: 5
   tier: daily
@@ -54285,10 +54997,14 @@ words:
   - main_list
 - word: марко
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name
 - word: пакра
   length: 5
   tier: valid
@@ -62775,10 +63491,14 @@ words:
   - main_list
 - word: курва
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar/offensive - whore
 - word: мраве
   length: 5
   tier: valid
@@ -70552,10 +71272,14 @@ words:
   - main_list
 - word: френк
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Frank)
 - word: пинеу
   length: 5
   tier: valid
@@ -71673,10 +72397,14 @@ words:
   - main_list
 - word: чарли
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Charlie)
 - word: крчаг
   length: 5
   tier: valid
@@ -71809,10 +72537,14 @@ words:
   - main_list
 - word: говно
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: vulgar - shit
 - word: шифру
   length: 5
   tier: valid
@@ -72397,10 +73129,14 @@ words:
   - main_list
 - word: емили
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Emily)
 - word: ивице
   length: 5
   tier: valid
@@ -79044,10 +79780,14 @@ words:
   - main_list
 - word: томас
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Thomas)
 - word: прова
   length: 5
   tier: valid
@@ -79145,10 +79885,14 @@ words:
   - main_list
 - word: курац
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: vulgar - penis
 - word: пушић
   length: 5
   tier: blocked
@@ -83080,10 +83824,14 @@ words:
   - main_list
 - word: секси
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword - 'sexy'
 - word: тапет
   length: 5
   tier: valid
@@ -87649,10 +88397,14 @@ words:
   - main_list
 - word: сузан
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name (Susan)
 - word: обрћи
   length: 5
   tier: valid
@@ -89240,10 +89992,14 @@ words:
   - main_list
 - word: линда
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - female name
 - word: нерад
   length: 5
   tier: valid
@@ -90883,10 +91639,14 @@ words:
   - main_list
 - word: питер
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: proper noun - male name (Peter, English form)
 - word: потоп
   length: 5
   tier: valid

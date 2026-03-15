@@ -71,10 +71,14 @@ words:
   - main_list
 - word: jesus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - religious figure name
 - word: zooss
   length: 5
   tier: daily
@@ -82,10 +86,14 @@ words:
   - main_list
 - word: kreml
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - the Kremlin
 - word: krëpp
   length: 5
   tier: daily
@@ -211,10 +219,14 @@ words:
   - main_list
 - word: sofia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name / personal name
 - word: jäger
   length: 5
   tier: daily
@@ -326,10 +338,14 @@ words:
   - main_list
 - word: lexus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Lexus car company
 - word: ecart
   length: 5
   tier: daily
@@ -353,10 +369,14 @@ words:
   - main_list
 - word: gauck
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (former German president)
 - word: hires
   length: 5
   tier: daily
@@ -563,10 +583,14 @@ words:
   - main_list
 - word: ghana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: zalot
   length: 5
   tier: daily
@@ -666,10 +690,14 @@ words:
   - main_list
 - word: linux
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Linux operating system
 - word: pater
   length: 5
   tier: daily
@@ -702,10 +730,14 @@ words:
   - main_list
 - word: maria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: zetär
   length: 5
   tier: daily
@@ -719,10 +751,14 @@ words:
   - main_list
 - word: texas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - US state name
   history:
   - 1702
   scheduled_day: 1702
@@ -740,10 +776,14 @@ words:
   - main_list
 - word: vasco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Vasco da Gama)
 - word: block
   length: 5
   tier: daily
@@ -788,9 +828,13 @@ words:
   - main_list
 - word: menfp
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation/acronym - Luxembourg ministry acronym
 - word: ajoen
   length: 5
   tier: daily
@@ -803,10 +847,14 @@ words:
   - main_list
 - word: lopez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname
 - word: spint
   length: 5
   tier: daily
@@ -929,10 +977,14 @@ words:
   - main_list
 - word: wales
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: stier
   length: 5
   tier: daily
@@ -1033,10 +1085,14 @@ words:
   - main_list
 - word: aruba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country/territory name
 - word: lachs
   length: 5
   tier: daily
@@ -1092,10 +1148,14 @@ words:
   - main_list
 - word: tours
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in France
 - word: ëmbau
   length: 5
   tier: daily
@@ -1186,10 +1246,14 @@ words:
   - main_list
 - word: nancy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in France / personal name
 - word: uginn
   length: 5
   tier: daily
@@ -1231,16 +1295,24 @@ words:
   - main_list
 - word: polen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Poland (country name)
 - word: sudan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: bidon
   length: 5
   tier: daily
@@ -1319,10 +1391,14 @@ words:
   - main_list
 - word: mario
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: jëwwi
   length: 5
   tier: daily
@@ -1495,10 +1571,14 @@ words:
   - main_list
 - word: weber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (though also means 'weaver')
 - word: bretz
   length: 5
   tier: daily
@@ -1520,10 +1600,14 @@ words:
   - main_list
 - word: tokio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tokyo (city name)
 - word: kräiz
   length: 5
   tier: daily
@@ -1536,10 +1620,14 @@ words:
   - main_list
 - word: osman
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name / Ottoman
 - word: bross
   length: 5
   tier: daily
@@ -1554,10 +1642,14 @@ words:
   - main_list
 - word: félix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: snack
   length: 5
   tier: daily
@@ -1691,10 +1783,14 @@ words:
   - main_list
 - word: osaka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: thees
   length: 5
   tier: daily
@@ -1919,10 +2015,14 @@ words:
   - main_list
 - word: alain
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - French personal name
 - word: knäip
   length: 5
   tier: daily
@@ -1966,10 +2066,14 @@ words:
   - main_list
 - word: trump
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname of US politician (though also an English word, not Luxembourgish)
 - word: royal
   length: 5
   tier: daily
@@ -2012,10 +2116,14 @@ words:
   - main_list
 - word: tessy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Princess Tessy of Luxembourg)
 - word: relax
   length: 5
   tier: daily
@@ -2234,16 +2342,24 @@ words:
   - main_list
 - word: edgar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: chloé
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: wäsch
   length: 5
   tier: daily
@@ -2258,10 +2374,14 @@ words:
   - main_list
 - word: volvo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Volvo car company
 - word: gléck
   length: 5
   tier: daily
@@ -2318,10 +2438,14 @@ words:
   - main_list
 - word: babel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tower of Babel / city name
 - word: lasch
   length: 5
   tier: daily
@@ -2409,10 +2533,14 @@ words:
   - main_list
 - word: laure
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: monde
   length: 5
   tier: daily
@@ -2427,10 +2555,14 @@ words:
   - main_list
 - word: mudam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/acronym - MUDAM (Luxembourg museum)
 - word: mogul
   length: 5
   tier: daily
@@ -2470,10 +2602,14 @@ words:
   scheduled_day: 1698
 - word: vaduz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - capital of Liechtenstein
 - word: gerät
   length: 5
   tier: daily
@@ -2505,10 +2641,14 @@ words:
   - main_list
 - word: qatar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: kramp
   length: 5
   tier: daily
@@ -2541,10 +2681,14 @@ words:
   - main_list
 - word: skype
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Skype software
 - word: ameis
   length: 5
   tier: daily
@@ -2553,10 +2697,14 @@ words:
   - main_list
 - word: tania
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: pampa
   length: 5
   tier: daily
@@ -2565,10 +2713,14 @@ words:
   - main_list
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: stuel
   length: 5
   tier: daily
@@ -2581,10 +2733,14 @@ words:
   - main_list
 - word: luigi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: fouer
   length: 5
   tier: daily
@@ -2602,10 +2758,14 @@ words:
   - main_list
 - word: mazda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Mazda car company
   history:
   - 1682
   scheduled_day: 1682
@@ -2667,10 +2827,14 @@ words:
   - main_list
 - word: asien
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Asia (continent name)
 - word: kajak
   length: 5
   tier: daily
@@ -2858,10 +3022,14 @@ words:
   - main_list
 - word: mainz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: héich
   length: 5
   tier: daily
@@ -2943,10 +3111,14 @@ words:
   - main_list
 - word: adler
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname (though also German for eagle; not standard Luxembourgish)
 - word: cycle
   length: 5
   tier: daily
@@ -3007,10 +3179,14 @@ words:
   - main_list
 - word: breda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in Netherlands
 - word: lotus
   length: 5
   tier: daily
@@ -3079,10 +3255,14 @@ words:
   - main_list
 - word: adolf
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - the name Adolf, with strong negative historical association
 - word: tatta
   length: 5
   tier: daily
@@ -3096,10 +3276,14 @@ words:
   - main_list
 - word: peter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: sexus
   length: 5
   tier: daily
@@ -3160,10 +3344,14 @@ words:
   - main_list
 - word: leeds
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: oflag
   length: 5
   tier: daily
@@ -3280,10 +3468,14 @@ words:
   - main_list
 - word: carlo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: marod
   length: 5
   tier: daily
@@ -3323,16 +3515,24 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name or award name
 - word: dijon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: iewen
   length: 5
   tier: daily
@@ -3352,10 +3552,14 @@ words:
   - main_list
 - word: sanaa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Sanaa (capital of Yemen)
 - word: klomp
   length: 5
   tier: daily
@@ -3412,10 +3616,14 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Congo (country name)
 - word: dinde
   length: 5
   tier: daily
@@ -3423,10 +3631,14 @@ words:
   - main_list
 - word: roger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: perte
   length: 5
   tier: daily
@@ -3506,10 +3718,14 @@ words:
   - main_list
 - word: célia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: stëmm
   length: 5
   tier: daily
@@ -3517,10 +3733,14 @@ words:
   - main_list
 - word: dexia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Dexia (bank)
 - word: proff
   length: 5
   tier: daily
@@ -3674,10 +3894,14 @@ words:
   - main_list
 - word: perth
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: schal
   length: 5
   tier: daily
@@ -3735,10 +3959,14 @@ words:
   - main_list
 - word: julia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: heini
   length: 5
   tier: daily
@@ -3850,10 +4078,14 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tibet (region name)
 - word: dämon
   length: 5
   tier: daily
@@ -3910,10 +4142,14 @@ words:
   - main_list
 - word: romeo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: manga
   length: 5
   tier: daily
@@ -4062,10 +4298,14 @@ words:
   - main_list
 - word: shoah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sensitive historical term - the Holocaust; inappropriate for a word game
 - word: avoué
   length: 5
   tier: daily
@@ -4095,10 +4335,14 @@ words:
   - main_list
 - word: pepsi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Pepsi company
 - word: käler
   length: 5
   tier: daily
@@ -4214,16 +4458,24 @@ words:
   - main_list
 - word: hamas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - political/militant organization, politically sensitive
 - word: miami
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: waarm
   length: 5
   tier: daily
@@ -4248,10 +4500,14 @@ words:
   - main_list
 - word: louis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: enges
   length: 5
   tier: daily
@@ -4260,10 +4516,14 @@ words:
   - main_list
 - word: nelly
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: genat
   length: 5
   tier: daily
@@ -4309,10 +4569,14 @@ words:
   - main_list
 - word: palau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: séien
   length: 5
   tier: daily
@@ -4337,10 +4601,14 @@ words:
   - main_list
 - word: tesla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tesla (company/person name)
 - word: serie
   length: 5
   tier: daily
@@ -4400,10 +4668,14 @@ words:
   - main_list
 - word: marie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: buhen
   length: 5
   tier: daily
@@ -4424,10 +4696,14 @@ words:
   - main_list
 - word: kyoto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: bréck
   length: 5
   tier: daily
@@ -4447,10 +4723,14 @@ words:
   - main_list
 - word: kairo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Cairo (city name)
 - word: kafta
   length: 5
   tier: daily
@@ -4458,10 +4738,14 @@ words:
   - main_list
 - word: carla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: hello
   length: 5
   tier: daily
@@ -4575,10 +4859,14 @@ words:
   - main_list
 - word: serge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: bilan
   length: 5
   tier: daily
@@ -4587,10 +4875,14 @@ words:
   - main_list
 - word: arles
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in France
 - word: pitti
   length: 5
   tier: daily
@@ -4611,10 +4903,14 @@ words:
   - main_list
 - word: goetz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname
 - word: rumba
   length: 5
   tier: daily
@@ -4679,10 +4975,14 @@ words:
   - main_list
 - word: davos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: esseg
   length: 5
   tier: daily
@@ -4691,10 +4991,14 @@ words:
   - main_list
 - word: loire
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Loire (river/region in France)
 - word: pléck
   length: 5
   tier: daily
@@ -4731,10 +5035,14 @@ words:
   - main_list
 - word: leone
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Sierra Leone / personal name
 - word: geraf
   length: 5
   tier: daily
@@ -4747,10 +5055,14 @@ words:
   - main_list
 - word: judas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - biblical figure name
 - word: zaang
   length: 5
   tier: daily
@@ -4770,10 +5082,14 @@ words:
   - main_list
 - word: lydie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: deene
   length: 5
   tier: daily
@@ -4816,10 +5132,14 @@ words:
   - main_list
 - word: stasi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - East German secret police
 - word: uruff
   length: 5
   tier: daily
@@ -4832,10 +5152,14 @@ words:
   - main_list
 - word: apple
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Apple company, English word not Luxembourgish
 - word: fipen
   length: 5
   tier: daily
@@ -5036,10 +5360,14 @@ words:
   - main_list
 - word: busen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially inappropriate for daily puzzle - breasts
 - word: recht
   length: 5
   tier: daily
@@ -5071,10 +5399,14 @@ words:
   - main_list
 - word: neger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Offensive/outdated racial term
 - word: fonds
   length: 5
   tier: daily
@@ -5140,10 +5472,14 @@ words:
   - main_list
 - word: josée
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: utile
   length: 5
   tier: daily
@@ -5239,10 +5575,14 @@ words:
   - main_list
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: uried
   length: 5
   tier: daily
@@ -5274,10 +5614,14 @@ words:
   - main_list
 - word: dubai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city/country name
 - word: garer
   length: 5
   tier: daily
@@ -5325,10 +5669,14 @@ words:
   - main_list
 - word: athen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Athens (city name)
 - word: agang
   length: 5
   tier: daily
@@ -5417,10 +5765,14 @@ words:
   - main_list
 - word: ascii
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation/technical acronym - not a real word
 - word: boxen
   length: 5
   tier: daily
@@ -5513,10 +5865,14 @@ words:
   - main_list
 - word: tunis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city/country name
 - word: quick
   length: 5
   tier: daily
@@ -5589,10 +5945,14 @@ words:
   - main_list
 - word: excel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Microsoft Excel
 - word: kromm
   length: 5
   tier: daily
@@ -5661,10 +6021,14 @@ words:
   - main_list
 - word: minsk
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: voile
   length: 5
   tier: daily
@@ -5678,10 +6042,14 @@ words:
   - main_list
 - word: kabul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: frans
   length: 5
   tier: daily
@@ -5696,10 +6064,14 @@ words:
   - main_list
 - word: kevin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: gigot
   length: 5
   tier: daily
@@ -5720,10 +6092,14 @@ words:
   - main_list
 - word: lydia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: porra
   length: 5
   tier: daily
@@ -5923,16 +6299,24 @@ words:
   - main_list
 - word: karin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: jemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Yemen (country name)
 - word: tanga
   length: 5
   tier: daily
@@ -6044,10 +6428,14 @@ words:
   - main_list
 - word: andré
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: arkan
   length: 5
   tier: daily
@@ -6062,10 +6450,14 @@ words:
   - main_list
 - word: ewald
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: promi
   length: 5
   tier: daily
@@ -6126,10 +6518,14 @@ words:
   - main_list
 - word: guido
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: solar
   length: 5
   tier: daily
@@ -6302,10 +6698,14 @@ words:
   - main_list
 - word: tokyo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
   history:
   - 1705
   scheduled_day: 1705
@@ -6350,16 +6750,24 @@ words:
   - main_list
 - word: ellen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: basel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: kloen
   length: 5
   tier: daily
@@ -6411,10 +6819,14 @@ words:
   - main_list
 - word: jules
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: falen
   length: 5
   tier: daily
@@ -6429,10 +6841,14 @@ words:
   - main_list
 - word: turin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name
 - word: bizar
   length: 5
   tier: daily
@@ -6829,10 +7245,14 @@ words:
   - main_list
 - word: krupp
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Krupp (German industrial family/company)
 - word: rësel
   length: 5
   tier: daily
@@ -7003,10 +7423,14 @@ words:
   - main_list
 - word: benin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: krabb
   length: 5
   tier: daily
@@ -7118,10 +7542,14 @@ words:
   - main_list
 - word: brown
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - English surname, not a Luxembourgish word
 - word: arees
   length: 5
   tier: daily
@@ -7187,10 +7615,14 @@ words:
   - main_list
 - word: honda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Honda company
 - word: furen
   length: 5
   tier: daily
@@ -7221,10 +7653,14 @@ words:
   - main_list
 - word: edson
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
   history:
   - 1715
   scheduled_day: 1715
@@ -7250,10 +7686,14 @@ words:
   - main_list
 - word: hoden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially inappropriate for daily puzzle - testicles
 - word: leier
   length: 5
   tier: daily
@@ -7273,10 +7713,14 @@ words:
   - main_list
 - word: lille
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in France
 - word: aremt
   length: 5
   tier: daily
@@ -7294,10 +7738,14 @@ words:
   - main_list
 - word: yahoo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Yahoo company
 - word: trakt
   length: 5
   tier: daily
@@ -7382,16 +7830,24 @@ words:
   scheduled_day: 1687
 - word: https
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation/protocol - not a real word
 - word: brest
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in France/Belarus
 - word: wafel
   length: 5
   tier: daily
@@ -7399,19 +7855,27 @@ words:
   - main_list
 - word: emile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
   history:
   - 1717
   scheduled_day: 1717
 - word: idaho
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - US state name
 - word: seuch
   length: 5
   tier: daily
@@ -7449,10 +7913,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: offer
   length: 5
   tier: daily
@@ -7472,10 +7940,14 @@ words:
   - main_list
 - word: aosta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city/region name in Italy
 - word: nolaf
   length: 5
   tier: daily
@@ -7548,10 +8020,14 @@ words:
   - main_list
 - word: haiti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: adept
   length: 5
   tier: daily
@@ -7582,10 +8058,14 @@ words:
   - main_list
 - word: wolff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname
 - word: ausso
   length: 5
   tier: daily
@@ -7641,10 +8121,14 @@ words:
   - main_list
 - word: porno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Inappropriate for daily puzzle - pornography
 - word: gaaps
   length: 5
   tier: daily
@@ -7686,16 +8170,24 @@ words:
   - main_list
 - word: creos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Creos (Luxembourg energy company)
 - word: brics
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation/acronym - not a word
 - word: genau
   length: 5
   tier: daily
@@ -7732,10 +8224,14 @@ words:
   - main_list
 - word: georg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
   history:
   - 1729
   scheduled_day: 1729
@@ -7856,10 +8352,14 @@ words:
   - main_list
 - word: sedan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city in France
 - word: leeën
   length: 5
   tier: daily
@@ -7969,10 +8469,14 @@ words:
   - main_list
 - word: putin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname of Russian president
 - word: arkad
   length: 5
   tier: daily
@@ -8018,10 +8522,14 @@ words:
   - main_list
 - word: fatah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - political organization, politically sensitive
 - word: senil
   length: 5
   tier: daily
@@ -8075,10 +8583,14 @@ words:
   - main_list
 - word: namur
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city name in Belgium
 - word: mënch
   length: 5
   tier: daily
@@ -8160,16 +8672,24 @@ words:
   - main_list
 - word: maine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - US state name
 - word: satan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - religious figure name
   history:
   - 1724
   scheduled_day: 1724
@@ -8217,10 +8737,14 @@ words:
   - main_list
 - word: dilma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Dilma Rousseff)
 - word: stuer
   length: 5
   tier: daily
@@ -8283,10 +8807,14 @@ words:
   - main_list
 - word: niger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name, also potentially offensive in some contexts
 - word: rural
   length: 5
   tier: daily
@@ -8307,10 +8835,14 @@ words:
   - main_list
 - word: obama
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname of former US president
   history:
   - 1718
   scheduled_day: 1718
@@ -8332,10 +8864,14 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - historical political figure
 - word: stonn
   length: 5
   tier: daily
@@ -8439,10 +8975,14 @@ words:
   - main_list
 - word: lgbti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation/acronym - not a word
   history:
   - 1694
   scheduled_day: 1694
@@ -8469,10 +9009,14 @@ words:
   - main_list
 - word: samoa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: wisel
   length: 5
   tier: daily
@@ -8686,9 +9230,13 @@ words:
   - main_list
 - word: cgdis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation/acronym - Luxembourg emergency services
 - word: längt
   length: 5
   tier: daily
@@ -8702,10 +9250,14 @@ words:
   - main_list
 - word: kreta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Crete (island name)
 - word: järeg
   length: 5
   tier: daily
@@ -8757,10 +9309,14 @@ words:
   - main_list
 - word: tirol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tyrol (region name)
 - word: ëmpeg
   length: 5
   tier: daily
@@ -8870,19 +9426,27 @@ words:
   - main_list
 - word: bambi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional character name
   history:
   - 1706
   scheduled_day: 1706
 - word: felix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: giess
   length: 5
   tier: daily
@@ -8942,10 +9506,14 @@ words:
   - main_list
 - word: diane
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: jeans
   length: 5
   tier: daily
@@ -9050,10 +9618,14 @@ words:
   - main_list
 - word: denis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: kranz
   length: 5
   tier: daily
@@ -9163,10 +9735,14 @@ words:
   - main_list
 - word: josef
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: juxeg
   length: 5
   tier: daily
@@ -9192,10 +9768,14 @@ words:
   - main_list
 - word: shell
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Shell oil company; also English word
 - word: dette
   length: 5
   tier: daily
@@ -9243,10 +9823,14 @@ words:
   - main_list
 - word: marco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: minus
   length: 5
   tier: daily
@@ -9287,16 +9871,24 @@ words:
   - main_list
 - word: penis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially inappropriate for daily puzzle - anatomical term
 - word: tepco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - TEPCO (Japanese power company)
 - word: fooss
   length: 5
   tier: daily
@@ -9309,10 +9901,14 @@ words:
   - main_list
 - word: zelda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name / video game character
 - word: tëlee
   length: 5
   tier: daily
@@ -9386,10 +9982,14 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: emoji
   length: 5
   tier: daily
@@ -9432,10 +10032,14 @@ words:
   - main_list
 - word: baden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Baden (region name in Germany)
 - word: troll
   length: 5
   tier: daily
@@ -9455,10 +10059,14 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
   history:
   - 1721
   scheduled_day: 1721
@@ -9486,10 +10094,14 @@ words:
   - main_list
 - word: franz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: jodel
   length: 5
   tier: daily
@@ -9521,10 +10133,14 @@ words:
   - main_list
 - word: nauru
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country name
 - word: domän
   length: 5
   tier: daily
@@ -9587,10 +10203,14 @@ words:
   - main_list
 - word: jacob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: difus
   length: 5
   tier: daily
@@ -9659,10 +10279,14 @@ words:
   - main_list
 - word: sarah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: astra
   length: 5
   tier: daily
@@ -9732,10 +10356,14 @@ words:
   - main_list
 - word: clark
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - surname
 - word: néier
   length: 5
   tier: daily
@@ -9778,10 +10406,14 @@ words:
   - main_list
 - word: henri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name (Grand Duke of Luxembourg)
 - word: idiot
   length: 5
   tier: daily
@@ -9802,10 +10434,14 @@ words:
   - main_list
 - word: boris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: zugab
   length: 5
   tier: daily
@@ -9844,10 +10480,14 @@ words:
   - main_list
 - word: harry
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - personal name
 - word: knosp
   length: 5
   tier: daily
@@ -9918,10 +10558,14 @@ words:
   - main_list
 - word: zorro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - fictional character name
 - word: spike
   length: 5
   tier: daily
@@ -10017,10 +10661,14 @@ words:
   - main_list
 - word: nokia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/brand - Nokia company
 - word: tapis
   length: 5
   tier: daily

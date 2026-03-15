@@ -154,10 +154,14 @@ words:
   - main_list
 - word: bērks
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Berks/Burke)
 - word: miece
   length: 5
   tier: daily
@@ -255,10 +259,14 @@ words:
   - main_list
 - word: ivans
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Ivans)
 - word: ķēķis
   length: 5
   tier: daily
@@ -519,9 +527,13 @@ words:
   - main_list
 - word: ulafs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Ulafs)
 - word: saite
   length: 5
   tier: daily
@@ -617,10 +629,14 @@ words:
   - main_list
 - word: monta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Monta)
 - word: ķūlis
   length: 5
   tier: daily
@@ -650,10 +666,14 @@ words:
   - main_list
 - word: edžus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - male name
 - word: nulle
   length: 5
   tier: daily
@@ -688,9 +708,13 @@ words:
   - main_list
 - word: svens
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Svens)
 - word: pirkt
   length: 5
   tier: daily
@@ -709,9 +733,13 @@ words:
   - main_list
 - word: minna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Minna)
 - word: šalka
   length: 5
   tier: daily
@@ -736,10 +764,14 @@ words:
   - main_list
 - word: gauja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - river name (Gauja); though also common noun
 - word: čalas
   length: 5
   tier: daily
@@ -763,9 +795,13 @@ words:
   - main_list
 - word: leima
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Leima)
 - word: drīzs
   length: 5
   tier: daily
@@ -773,9 +809,13 @@ words:
   - main_list
 - word: olavs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Olavs)
 - word: zampa
   length: 5
   tier: daily
@@ -789,10 +829,14 @@ words:
   - main_list
 - word: agate
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Agate)
 - word: ārdīt
   length: 5
   tier: daily
@@ -848,10 +892,14 @@ words:
   - main_list
 - word: andis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Andis)
 - word: rīmēt
   length: 5
   tier: daily
@@ -859,9 +907,13 @@ words:
   - main_list
 - word: ivita
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Ivita)
 - word: bāris
   length: 5
   tier: daily
@@ -908,9 +960,13 @@ words:
   - main_list
 - word: joāna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Joāna)
 - word: baļļa
   length: 5
   tier: daily
@@ -1013,9 +1069,13 @@ words:
   - main_list
 - word: velda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Velda)
 - word: izžūt
   length: 5
   tier: daily
@@ -1168,10 +1228,14 @@ words:
   - main_list
 - word: aldis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Aldis)
 - word: šķore
   length: 5
   tier: daily
@@ -1179,9 +1243,13 @@ words:
   - main_list
 - word: efija
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Efija)
   history:
   - 1724
   scheduled_day: 1724
@@ -1464,10 +1532,14 @@ words:
   - main_list
 - word: brūce
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Bruce)
   history:
   - 1710
   scheduled_day: 1710
@@ -1521,10 +1593,14 @@ words:
   - main_list
 - word: jēzus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - religious name (Jesus)
 - word: brusa
   length: 5
   tier: daily
@@ -1537,15 +1613,23 @@ words:
   - main_list
 - word: liena
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Liena)
 - word: igors
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Igors)
 - word: bērns
   length: 5
   tier: daily
@@ -1603,15 +1687,23 @@ words:
   - main_list
 - word: rolfs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Rolfs)
 - word: elija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Elija)
 - word: flote
   length: 5
   tier: daily
@@ -1721,16 +1813,24 @@ words:
   - main_list
 - word: irēna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Irēna)
 - word: gatis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Gatis)
   history:
   - 1703
   scheduled_day: 1703
@@ -1888,10 +1988,14 @@ words:
   - main_list
 - word: alise
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Alise/Alice)
 - word: lobīt
   length: 5
   tier: daily
@@ -1899,9 +2003,13 @@ words:
   - main_list
 - word: agnis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Agnis)
 - word: atšūt
   length: 5
   tier: daily
@@ -2086,10 +2194,14 @@ words:
   - main_list
 - word: sanda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Sanda)
 - word: ozols
   length: 5
   tier: daily
@@ -2146,10 +2258,14 @@ words:
   - main_list
 - word: vizma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Vizma)
 - word: grupa
   length: 5
   tier: daily
@@ -2168,9 +2284,13 @@ words:
   - main_list
 - word: izīda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - name (Izīda/Isis)
 - word: nāvēt
   length: 5
   tier: daily
@@ -2216,15 +2336,23 @@ words:
   - main_list
 - word: odesa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Odessa)
 - word: laima
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Laima) and brand
 - word: valgs
   length: 5
   tier: daily
@@ -2252,16 +2380,24 @@ words:
   - main_list
 - word: prāga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Prague)
 - word: ausma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Ausma); also common noun 'dawn'
 - word: luvra
   length: 5
   tier: daily
@@ -2318,15 +2454,23 @@ words:
   - main_list
 - word: kipra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Cyprus)
 - word: durbe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian place name (Durbe)
 - word: frotē
   length: 5
   tier: daily
@@ -2339,10 +2483,14 @@ words:
   - main_list
 - word: irāna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Iran)
 - word: masts
   length: 5
   tier: daily
@@ -2351,9 +2499,13 @@ words:
   - main_list
 - word: frīda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Frīda)
 - word: valks
   length: 5
   tier: daily
@@ -2543,9 +2695,13 @@ words:
   - main_list
 - word: ītona
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Eton)
 - word: gūsts
   length: 5
   tier: daily
@@ -2714,10 +2870,14 @@ words:
   - main_list
 - word: vilis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Vilis)
 - word: omāna
   length: 5
   tier: daily
@@ -2783,10 +2943,14 @@ words:
   - main_list
 - word: elīna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Elīna)
 - word: vēdas
   length: 5
   tier: daily
@@ -2835,9 +2999,13 @@ words:
   - main_list
 - word: inuta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Inuta)
 - word: mēsls
   length: 5
   tier: daily
@@ -2904,9 +3072,13 @@ words:
   - main_list
 - word: urāli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Urals)
 - word: sazin
   length: 5
   tier: daily
@@ -2939,9 +3111,13 @@ words:
   - main_list
 - word: aloja
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian town (Aloja)
 - word: glābt
   length: 5
   tier: daily
@@ -2956,15 +3132,23 @@ words:
   - main_list
 - word: hilda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Hilda)
 - word: ralfs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Ralfs)
 - word: saīgt
   length: 5
   tier: daily
@@ -3024,15 +3208,23 @@ words:
   - main_list
 - word: lelde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Lelde)
 - word: egīls
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name variant (Egīls)
 - word: molls
   length: 5
   tier: daily
@@ -3050,10 +3242,14 @@ words:
   - main_list
 - word: justs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Justs)
 - word: kasēs
   length: 5
   tier: daily
@@ -3084,9 +3280,13 @@ words:
   - main_list
 - word: milda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Milda)
 - word: ģilde
   length: 5
   tier: daily
@@ -3211,9 +3411,13 @@ words:
   - main_list
 - word: antis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - male name (Antis)
 - word: dārks
   length: 5
   tier: daily
@@ -3329,10 +3533,14 @@ words:
   - main_list
 - word: ādams
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Adams)
 - word: garša
   length: 5
   tier: daily
@@ -3467,9 +3675,13 @@ words:
   - main_list
 - word: amele
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Amele)
 - word: īrisa
   length: 5
   tier: daily
@@ -3495,9 +3707,13 @@ words:
   - main_list
 - word: efeza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Ephesus)
   history:
   - 1721
   scheduled_day: 1721
@@ -3524,16 +3740,24 @@ words:
   - main_list
 - word: maiga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - Latvian female name (Maiga); also adjective 'gentle'
 - word: ojārs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Ojārs)
 - word: ideja
   length: 5
   tier: daily
@@ -3636,9 +3860,13 @@ words:
   - main_list
 - word: zaira
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Zaira)
 - word: triks
   length: 5
   tier: daily
@@ -3657,10 +3885,14 @@ words:
   - main_list
 - word: dirsa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar word (buttocks, crude)
 - word: rutks
   length: 5
   tier: daily
@@ -3769,15 +4001,23 @@ words:
   - main_list
 - word: ādaži
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian town (Ādaži)
 - word: mirta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Mirta)
 - word: paīss
   length: 5
   tier: daily
@@ -3838,10 +4078,14 @@ words:
   - main_list
 - word: arvis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Arvis)
 - word: dzēst
   length: 5
   tier: daily
@@ -4186,10 +4430,14 @@ words:
   - main_list
 - word: kurts
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Kurts)
 - word: vidus
   length: 5
   tier: daily
@@ -4219,10 +4467,14 @@ words:
   - main_list
 - word: oļegs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Oļegs)
 - word: sēdos
   length: 5
   tier: daily
@@ -4253,9 +4505,13 @@ words:
   - main_list
 - word: elijā
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name declension (Elija loc.)
 - word: labot
   length: 5
   tier: daily
@@ -4316,10 +4572,14 @@ words:
   - main_list
 - word: rūdis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Rūdis)
 - word: kūtrs
   length: 5
   tier: daily
@@ -4407,10 +4667,14 @@ words:
   - main_list
 - word: baiba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Baiba)
 - word: šilte
   length: 5
   tier: daily
@@ -4444,9 +4708,13 @@ words:
   - main_list
 - word: nelda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Nelda)
 - word: jumis
   length: 5
   tier: daily
@@ -4466,10 +4734,14 @@ words:
   - main_list
 - word: krima
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Crimea)
 - word: jupis
   length: 5
   tier: daily
@@ -4504,9 +4776,13 @@ words:
   - main_list
 - word: moris
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Moris/Morris)
 - word: tarba
   length: 5
   tier: daily
@@ -4514,10 +4790,14 @@ words:
   - main_list
 - word: ludza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian town name (Ludza)
 - word: paēst
   length: 5
   tier: daily
@@ -4613,9 +4893,13 @@ words:
   - main_list
 - word: atēna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Athens)
   history:
   - 1723
   scheduled_day: 1723
@@ -4712,10 +4996,14 @@ words:
   - main_list
 - word: īrija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Ireland)
 - word: zīmēt
   length: 5
   tier: daily
@@ -4746,9 +5034,13 @@ words:
   - main_list
 - word: agita
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Agita)
 - word: mitrs
   length: 5
   tier: daily
@@ -4784,9 +5076,13 @@ words:
   - main_list
 - word: anisa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Anisa)
 - word: kaste
   length: 5
   tier: daily
@@ -4859,9 +5155,13 @@ words:
   - main_list
 - word: dagne
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Dagne)
 - word: reibt
   length: 5
   tier: daily
@@ -4920,9 +5220,13 @@ words:
   - main_list
 - word: zinta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Zinta)
 - word: hlors
   length: 5
   tier: daily
@@ -4930,9 +5234,13 @@ words:
   - main_list
 - word: trūdi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Trūdi)
 - word: anāls
   length: 5
   tier: daily
@@ -4940,10 +5248,14 @@ words:
   - main_list
 - word: zanda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Zanda)
 - word: erols
   length: 5
   tier: daily
@@ -4966,10 +5278,14 @@ words:
   - main_list
 - word: berta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Berta)
 - word: alods
   length: 5
   tier: daily
@@ -5049,9 +5365,13 @@ words:
   - main_list
 - word: vilma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Vilma)
 - word: višķi
   length: 5
   tier: daily
@@ -5069,10 +5389,14 @@ words:
   - main_list
 - word: emīls
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Emīls)
 - word: lakot
   length: 5
   tier: daily
@@ -5261,9 +5585,13 @@ words:
   - main_list
 - word: dānis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - male name (Dānis)
 - word: šurpu
   length: 5
   tier: daily
@@ -5272,10 +5600,14 @@ words:
   - main_list
 - word: reina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Reina)
 - word: papūt
   length: 5
   tier: daily
@@ -5346,10 +5678,14 @@ words:
   scheduled_day: 1697
 - word: rauls
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Rauls)
 - word: slida
   length: 5
   tier: daily
@@ -5430,9 +5766,13 @@ words:
   - main_list
 - word: zelma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Zelma)
 - word: atlīt
   length: 5
   tier: daily
@@ -5499,9 +5839,13 @@ words:
   - main_list
 - word: mirte
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Mirte)
 - word: seims
   length: 5
   tier: daily
@@ -5514,10 +5858,14 @@ words:
   - main_list
 - word: žanna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Žanna)
 - word: melns
   length: 5
   tier: daily
@@ -5565,15 +5913,23 @@ words:
   - main_list
 - word: meija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - surname/name (Meija)
 - word: guama
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Guam)
 - word: naula
   length: 5
   tier: daily
@@ -5613,10 +5969,14 @@ words:
   - main_list
 - word: ingus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Ingus)
 - word: diegs
   length: 5
   tier: daily
@@ -5673,10 +6033,14 @@ words:
   - main_list
 - word: silva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Silva)
 - word: fogts
   length: 5
   tier: daily
@@ -5746,9 +6110,13 @@ words:
   - main_list
 - word: tirza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Tirza)
 - word: tepat
   length: 5
   tier: daily
@@ -5890,10 +6258,14 @@ words:
   - main_list
 - word: āzija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Asia)
 - word: trice
   length: 5
   tier: daily
@@ -6036,16 +6408,24 @@ words:
   - main_list
 - word: vanda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Vanda)
 - word: ēriks
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Ēriks)
 - word: cikus
   length: 5
   tier: daily
@@ -6096,16 +6476,24 @@ words:
   - main_list
 - word: gints
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Gints)
 - word: artis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Artis)
 - word: apačs
   length: 5
   tier: daily
@@ -6231,10 +6619,14 @@ words:
   - main_list
 - word: selga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Selga)
 - word: ciska
   length: 5
   tier: daily
@@ -6242,9 +6634,13 @@ words:
   - main_list
 - word: draza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Draža)
 - word: bokss
   length: 5
   tier: daily
@@ -6267,9 +6663,13 @@ words:
   - main_list
 - word: magda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Magda)
 - word: galms
   length: 5
   tier: daily
@@ -6424,10 +6824,14 @@ words:
   - main_list
 - word: māris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Māris)
 - word: hinds
   length: 5
   tier: daily
@@ -6440,10 +6844,14 @@ words:
   - main_list
 - word: krišs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Krišs)
 - word: iepīt
   length: 5
   tier: daily
@@ -6480,9 +6888,13 @@ words:
   - main_list
 - word: ildze
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Ildze)
 - word: vāģis
   length: 5
   tier: daily
@@ -6571,15 +6983,23 @@ words:
   - main_list
 - word: džons
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (John)
 - word: drava
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - river name (Drava)
 - word: slims
   length: 5
   tier: daily
@@ -6663,10 +7083,14 @@ words:
   - main_list
 - word: leons
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Leons)
 - word: pasen
   length: 5
   tier: daily
@@ -6685,10 +7109,14 @@ words:
   - main_list
 - word: daiga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Daiga)
 - word: ķītrs
   length: 5
   tier: daily
@@ -6744,9 +7172,13 @@ words:
   - main_list
 - word: brigi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Brigi/Brigitte)
 - word: lotēs
   length: 5
   tier: daily
@@ -7226,10 +7658,14 @@ words:
   - main_list
 - word: ivars
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Ivars)
 - word: iepūt
   length: 5
   tier: daily
@@ -7237,9 +7673,13 @@ words:
   - main_list
 - word: daibe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Mild expletive/minced oath
 - word: koala
   length: 5
   tier: daily
@@ -7303,9 +7743,13 @@ words:
   - main_list
 - word: tekla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Tekla)
 - word: knuts
   length: 5
   tier: daily
@@ -7348,9 +7792,13 @@ words:
   - main_list
 - word: bonna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Bonn)
 - word: ķērne
   length: 5
   tier: daily
@@ -7396,10 +7844,14 @@ words:
   - main_list
 - word: gvido
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Gvido)
 - word: salds
   length: 5
   tier: daily
@@ -7424,10 +7876,14 @@ words:
   - main_list
 - word: volga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - river name (Volga)
 - word: stāvs
   length: 5
   tier: daily
@@ -7468,10 +7924,14 @@ words:
   - main_list
 - word: iveta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Iveta)
 - word: bauda
   length: 5
   tier: daily
@@ -7554,10 +8014,14 @@ words:
   - main_list
 - word: facto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Latin/foreign loanword (de facto), not native Latvian
 - word: robot
   length: 5
   tier: daily
@@ -7579,9 +8043,13 @@ words:
   - main_list
 - word: aivis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Aivis)
 - word: odere
   length: 5
   tier: daily
@@ -7726,9 +8194,13 @@ words:
   - main_list
 - word: alīna
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Alīna)
 - word: sauna
   length: 5
   tier: daily
@@ -7840,9 +8312,13 @@ words:
   - main_list
 - word: inita
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Inita)
 - word: tango
   length: 5
   tier: daily
@@ -7866,9 +8342,13 @@ words:
   - main_list
 - word: andžs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - personal name
 - word: dzens
   length: 5
   tier: daily
@@ -7993,9 +8473,13 @@ words:
   - main_list
 - word: elīze
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Elīze)
 - word: aorta
   length: 5
   tier: daily
@@ -8030,9 +8514,13 @@ words:
   - main_list
 - word: nelga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Nelga)
 - word: masēt
   length: 5
   tier: daily
@@ -8062,9 +8550,13 @@ words:
   - main_list
 - word: daris
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Daris)
 - word: ķidas
   length: 5
   tier: daily
@@ -8153,9 +8645,13 @@ words:
   - main_list
 - word: ginta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Ginta)
 - word: uzirt
   length: 5
   tier: daily
@@ -8169,10 +8665,14 @@ words:
   - main_list
 - word: klāvs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Klāvs)
 - word: reihs
   length: 5
   tier: daily
@@ -8202,15 +8702,23 @@ words:
   - main_list
 - word: talsi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian town (Talsi)
 - word: gunis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Gunis)
 - word: omula
   length: 5
   tier: daily
@@ -8297,9 +8805,13 @@ words:
   - main_list
 - word: germi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - place name (Germi)
 - word: klips
   length: 5
   tier: daily
@@ -8366,10 +8878,14 @@ words:
   - main_list
 - word: anete
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Anete)
 - word: sēdus
   length: 5
   tier: daily
@@ -8378,10 +8894,14 @@ words:
   - main_list
 - word: enija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Enija)
 - word: spīts
   length: 5
   tier: daily
@@ -8443,9 +8963,13 @@ words:
   - main_list
 - word: taīda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Taīda)
 - word: cilme
   length: 5
   tier: daily
@@ -8545,9 +9069,13 @@ words:
   - main_list
 - word: alīne
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Alīne)
 - word: svešs
   length: 5
   tier: daily
@@ -8561,10 +9089,14 @@ words:
   - main_list
 - word: egils
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Egils)
 - word: krīze
   length: 5
   tier: daily
@@ -8590,10 +9122,14 @@ words:
   - main_list
 - word: diāna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Diāna)
 - word: barot
   length: 5
   tier: daily
@@ -8693,10 +9229,14 @@ words:
   - main_list
 - word: luīze
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Luīze)
 - word: sirds
   length: 5
   tier: daily
@@ -8774,9 +9314,13 @@ words:
   - main_list
 - word: madis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - male name (Madis)
 - word: laidi
   length: 5
   tier: daily
@@ -8877,10 +9421,14 @@ words:
   - main_list
 - word: arnis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Arnis)
 - word: fadžs
   length: 5
   tier: daily
@@ -8917,10 +9465,14 @@ words:
   - main_list
 - word: ineta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Ineta)
 - word: pagūt
   length: 5
   tier: daily
@@ -9118,10 +9670,14 @@ words:
   - main_list
 - word: valda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Valda)
 - word: brēkt
   length: 5
   tier: valid
@@ -9733,10 +10289,14 @@ words:
   - main_list
 - word: džims
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Jim)
 - word: birma
   length: 5
   tier: valid
@@ -9812,15 +10372,23 @@ words:
   - main_list
 - word: santa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Santa)
 - word: helma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Helma)
 - word: iztīt
   length: 5
   tier: valid
@@ -9994,10 +10562,14 @@ words:
   - main_list
 - word: ērika
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Ērika)
 - word: fisks
   length: 5
   tier: valid
@@ -10184,9 +10756,13 @@ words:
   - main_list
 - word: dodžs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - brand name (Dodge)
 - word: ķerra
   length: 5
   tier: valid
@@ -10515,10 +11091,14 @@ words:
   - main_list
 - word: edijs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Edijs)
 - word: trūce
   length: 5
   tier: valid
@@ -10687,10 +11267,14 @@ words:
   - main_list
 - word: inese
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Inese)
 - word: putot
   length: 5
   tier: valid
@@ -10778,10 +11362,14 @@ words:
   - main_list
 - word: elīza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Elīza)
 - word: ripot
   length: 5
   tier: daily
@@ -10865,10 +11453,14 @@ words:
   - main_list
 - word: jānis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian male name (Jānis)
 - word: pikts
   length: 5
   tier: valid
@@ -10990,10 +11582,14 @@ words:
   - main_list
 - word: edīte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Edīte)
 - word: tiešs
   length: 5
   tier: daily
@@ -11597,10 +12193,14 @@ words:
   - main_list
 - word: mozus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Moses)
 - word: laist
   length: 5
   tier: daily
@@ -12043,9 +12643,13 @@ words:
   - main_list
 - word: eliju
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name declension (Elija acc.)
 - word: zarna
   length: 5
   tier: valid
@@ -12344,10 +12948,14 @@ words:
   - main_list
 - word: laila
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Laila)
 - word: jamss
   length: 5
   tier: valid
@@ -12492,9 +13100,13 @@ words:
   - main_list
 - word: drako
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Drako)
 - word: šauba
   length: 5
   tier: valid
@@ -12522,10 +13134,14 @@ words:
   - main_list
 - word: laida
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - female name (Laida)
 - word: sēņot
   length: 5
   tier: valid
@@ -12991,10 +13607,14 @@ words:
   - main_list
 - word: aliņš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian surname (Aliņš)
 - word: šķūre
   length: 5
   tier: valid
@@ -13101,10 +13721,14 @@ words:
   - main_list
 - word: maija
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - Latvian female name (Maija)
 - word: ibiza
   length: 5
   tier: valid
@@ -13399,10 +14023,14 @@ words:
   - main_list
 - word: omārs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Omārs)
 - word: janka
   length: 5
   tier: valid
@@ -13562,9 +14190,13 @@ words:
   - main_list
 - word: kenta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Kent)
 - word: nimfa
   length: 5
   tier: valid
@@ -14195,10 +14827,14 @@ words:
   - main_list
 - word: vilna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Vilnius/Vilna)
 - word: žanis
   length: 5
   tier: valid
@@ -14499,10 +15135,14 @@ words:
   - main_list
 - word: viena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - place name (Vienna); but also Latvian word for 'one (feminine)'
 - word: norāt
   length: 5
   tier: valid
@@ -14541,10 +15181,14 @@ words:
   - main_list
 - word: klāra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Klāra)
 - word: odums
   length: 5
   tier: valid
@@ -14629,10 +15273,14 @@ words:
   - main_list
 - word: freds
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Freds)
 - word: velsa
   length: 5
   tier: valid
@@ -14833,10 +15481,14 @@ words:
   - main_list
 - word: maira
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Maira)
 - word: mesls
   length: 5
   tier: valid

@@ -190,9 +190,13 @@ words:
   - main_list
 - word: usono
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - USA (Usono)
 - word: certe
   length: 5
   tier: daily
@@ -316,9 +320,13 @@ words:
   - main_list
 - word: usona
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - American (USona)
 - word: povos
   length: 5
   tier: daily
@@ -365,9 +373,13 @@ words:
   - main_list
 - word: angla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - English
 - word: vidas
   length: 5
   tier: daily
@@ -492,9 +504,13 @@ words:
   - main_list
 - word: ĉinio
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - China
 - word: bonan
   length: 5
   tier: daily
@@ -642,10 +658,14 @@ words:
   - main_list
 - word: julio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - July or the name Julio
 - word: okaze
   length: 5
   tier: daily
@@ -686,10 +706,14 @@ words:
   - main_list
 - word: marto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - March
 - word: lokaj
   length: 5
   tier: daily
@@ -823,10 +847,14 @@ words:
   - main_list
 - word: junio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - June
 - word: kurso
   length: 5
   tier: daily
@@ -1026,10 +1054,14 @@ words:
   - main_list
 - word: itala
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Italian
 - word: resti
   length: 5
   tier: daily
@@ -1102,10 +1134,14 @@ words:
   - main_list
 - word: brita
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - British
 - word: horoj
   length: 5
   tier: daily
@@ -1121,9 +1157,13 @@ words:
   - main_list
 - word: irako
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Iraq
 - word: trans
   length: 5
   tier: daily
@@ -1230,9 +1270,13 @@ words:
   - main_list
 - word: irano
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Iran
 - word: aĉeti
   length: 5
   tier: daily
@@ -1467,9 +1511,13 @@ words:
   - main_list
 - word: judoj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Jews (plural nominative)
 - word: grave
   length: 5
   tier: daily
@@ -1483,10 +1531,14 @@ words:
   - main_list
 - word: araba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Arab/Arabic
 - word: hejmo
   length: 5
   tier: daily
@@ -1658,9 +1710,13 @@ words:
   - main_list
 - word: ĉinaj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Chinese (plural)
   history:
   - 1694
   scheduled_day: 1694
@@ -1814,9 +1870,13 @@ words:
   - main_list
 - word: greka
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Greek
 - word: finis
   length: 5
   tier: daily
@@ -2214,9 +2274,13 @@ words:
   - main_list
 - word: sveda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Swedish
 - word: korto
   length: 5
   tier: daily
@@ -2357,10 +2421,14 @@ words:
   scheduled_day: 1718
 - word: angle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adverb - in English
 - word: sesio
   length: 5
   tier: daily
@@ -2378,9 +2446,13 @@ words:
   - main_list
 - word: rusaj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Russian (plural)
 - word: prava
   length: 5
   tier: daily
@@ -2660,10 +2732,14 @@ words:
   scheduled_day: 1704
 - word: marko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Ambiguous - could be proper noun Marco/Mark, but also 'mark/sign' in Esperanto; rejecting to be safe
 - word: dorso
   length: 5
   tier: daily
@@ -2778,9 +2854,13 @@ words:
   - main_list
 - word: rusoj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Russians (plural)
 - word: imagu
   length: 5
   tier: daily
@@ -2816,9 +2896,13 @@ words:
   - main_list
 - word: turka
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Turkish
 - word: ligno
   length: 5
   tier: daily
@@ -2826,9 +2910,13 @@ words:
   - main_list
 - word: ĉinoj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Chinese people (plural)
 - word: brila
   length: 5
   tier: daily
@@ -3012,9 +3100,13 @@ words:
   - main_list
 - word: irana
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Iranian
 - word: daŭra
   length: 5
   tier: daily
@@ -3187,9 +3279,13 @@ words:
   - main_list
 - word: aziaj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Asian (plural)
 - word: vinon
   length: 5
   tier: daily
@@ -3207,9 +3303,13 @@ words:
   - main_list
 - word: vilno
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Vilnius (Vilno)
 - word: paŝon
   length: 5
   tier: daily
@@ -3263,9 +3363,13 @@ words:
   - main_list
 - word: svisa
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Swiss
 - word: adiaŭ
   length: 5
   tier: daily
@@ -3337,9 +3441,13 @@ words:
   - main_list
 - word: rusan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Russian (accusative)
 - word: faroj
   length: 5
   tier: daily
@@ -3402,9 +3510,13 @@ words:
   scheduled_day: 1728
 - word: leono
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - the name Leon/Leo
 - word: kapoj
   length: 5
   tier: daily
@@ -3492,10 +3604,14 @@ words:
   - main_list
 - word: siria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Syrian
 - word: heroo
   length: 5
   tier: daily
@@ -3540,10 +3656,14 @@ words:
   - main_list
 - word: eriko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - the name Eric/Erik
 - word: taksi
   length: 5
   tier: daily
@@ -3595,9 +3715,13 @@ words:
   - main_list
 - word: iraka
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Iraq (Irako in standard Esperanto)
 - word: fiere
   length: 5
   tier: daily
@@ -3666,10 +3790,14 @@ words:
   - main_list
 - word: serba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Serbian
 - word: elito
   length: 5
   tier: daily
@@ -3774,9 +3902,13 @@ words:
   - main_list
 - word: ĉinan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Chinese (accusative)
 - word: supro
   length: 5
   tier: daily
@@ -3926,9 +4058,13 @@ words:
   - main_list
 - word: skota
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Scottish
 - word: scioj
   length: 5
   tier: daily
@@ -4028,10 +4164,14 @@ words:
   - main_list
 - word: belga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Belgian
 - word: koran
   length: 5
   tier: daily
@@ -4130,9 +4270,13 @@ words:
   - main_list
 - word: seulo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Seoul
 - word: koroj
   length: 5
   tier: daily
@@ -4315,10 +4459,14 @@ words:
   - main_list
 - word: hinda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Hindu/Indian
 - word: kovri
   length: 5
   tier: daily
@@ -4419,10 +4567,14 @@ words:
   - main_list
 - word: finna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Finnish
 - word: aĉeto
   length: 5
   tier: daily
@@ -4547,9 +4699,13 @@ words:
   - main_list
 - word: gaela
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Gaelic
 - word: vendo
   length: 5
   tier: daily
@@ -4582,9 +4738,13 @@ words:
   - main_list
 - word: judaj
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Jews (plural accusative)
 - word: karbo
   length: 5
   tier: daily
@@ -4619,10 +4779,14 @@ words:
   - main_list
 - word: rusia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Russian
 - word: glate
   length: 5
   tier: daily
@@ -5036,10 +5200,14 @@ words:
   - main_list
 - word: persa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun adjective - Persian
 - word: nesto
   length: 5
   tier: daily
@@ -5394,10 +5562,14 @@ words:
   - main_list
 - word: viena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Vienna (the city)
 - word: manke
   length: 5
   tier: daily

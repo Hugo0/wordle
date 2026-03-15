@@ -326,6 +326,10 @@ words:
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Latin/English loanword, not naturalized in Scottish Gaelic
 - word: allas
   length: 5
   tier: daily
@@ -600,6 +604,10 @@ words:
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/scientific loanword (chemical element)
 - word: arpag
   length: 5
   tier: daily
@@ -728,6 +736,10 @@ words:
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Greek loanword / proper noun
 - word: babag
   length: 5
   tier: daily
@@ -1883,6 +1895,10 @@ words:
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: French loanword, not naturalized in Scottish Gaelic
 - word: bidhe
   length: 5
   tier: daily
@@ -3527,6 +3543,10 @@ words:
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Italian/English loanword, not naturalized in Scottish Gaelic
 - word: ceuma
   length: 5
   tier: daily
@@ -5288,6 +5308,10 @@ words:
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (personal name)
 - word: conas
   length: 5
   tier: daily
@@ -6558,6 +6582,10 @@ words:
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Greek loanword, not naturalized in Scottish Gaelic
 - word: deoch
   length: 5
   tier: daily
@@ -6569,6 +6597,10 @@ words:
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/French loanword, not naturalized in Scottish Gaelic
 - word: deura
   length: 5
   tier: daily
@@ -7186,10 +7218,14 @@ words:
   - main_list
 - word: diana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: diast
   length: 5
   tier: daily
@@ -7262,6 +7298,10 @@ words:
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword, not naturalized in Scottish Gaelic
 - word: diubh
   length: 5
   tier: daily
@@ -7365,6 +7405,10 @@ words:
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Greek loanword, not naturalized in Scottish Gaelic
 - word: doile
   length: 5
   tier: daily
@@ -7498,6 +7542,10 @@ words:
   frequency: 4.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword, not naturalized in Scottish Gaelic
 - word: dreag
   length: 5
   tier: daily
@@ -8251,6 +8299,10 @@ words:
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Greek loanword, not naturalized in Scottish Gaelic
 - word: euban
   length: 5
   tier: daily
@@ -11552,6 +11604,10 @@ words:
   frequency: 4.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (surname) / English word
 - word: grath
   length: 5
   tier: daily
@@ -11824,6 +11880,10 @@ words:
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Spanish/English loanword, not naturalized in Scottish Gaelic
 - word: gucag
   length: 5
   tier: daily
@@ -11877,6 +11937,10 @@ words:
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Russian loanword / proper noun
 - word: gulba
   length: 5
   tier: daily
@@ -11888,6 +11952,10 @@ words:
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword, not naturalized in Scottish Gaelic
 - word: gunna
   length: 5
   tier: daily
@@ -12126,10 +12194,14 @@ words:
   - main_list
 - word: idris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: ileag
   length: 5
   tier: daily
@@ -12700,6 +12772,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword (lymph), not naturalized in Scottish Gaelic
 - word: lince
   length: 5
   tier: daily
@@ -12829,6 +12905,10 @@ words:
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: German/English geological term, not naturalized in Scottish Gaelic
 - word: lofan
   length: 5
   tier: daily
@@ -12975,10 +13055,14 @@ words:
   - main_list
 - word: lucas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (personal name)
 - word: lucha
   length: 5
   tier: daily
@@ -13365,6 +13449,10 @@ words:
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword, not naturalized in Scottish Gaelic
 - word: magha
   length: 5
   tier: daily
@@ -13377,6 +13465,10 @@ words:
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Latin scientific term, not naturalized in Scottish Gaelic
 - word: maide
   length: 5
   tier: daily
@@ -13477,6 +13569,10 @@ words:
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword, not naturalized in Scottish Gaelic
 - word: manna
   length: 5
   tier: daily
@@ -14499,6 +14595,10 @@ words:
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Italian loanword, not naturalized in Scottish Gaelic
 - word: muala
   length: 5
   tier: daily
@@ -15289,6 +15389,10 @@ words:
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Latin loanword, not naturalized in Scottish Gaelic
 - word: orach
   length: 5
   tier: daily
@@ -15438,6 +15542,10 @@ words:
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Italian/English loanword, not naturalized in Scottish Gaelic
 - word: patan
   length: 5
   tier: daily
@@ -17663,12 +17771,20 @@ words:
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: French/English loanword, not naturalized in Scottish Gaelic
 - word: salsa
   length: 5
   tier: daily
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Spanish/English loanword, not naturalized in Scottish Gaelic
 - word: saman
   length: 5
   tier: daily
@@ -17742,6 +17858,10 @@ words:
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Finnish/English loanword, not naturalized in Scottish Gaelic
 - word: seaca
   length: 5
   tier: daily
@@ -21012,6 +21132,10 @@ words:
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Japanese/English loanword, not naturalized in Scottish Gaelic
 - word: sutha
   length: 5
   tier: daily
@@ -21439,6 +21563,10 @@ words:
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Spanish/English loanword, not naturalized in Scottish Gaelic
 - word: tannt
   length: 5
   tier: daily
@@ -21649,6 +21777,10 @@ words:
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/Italian loanword, not naturalized in Scottish Gaelic
 - word: teoba
   length: 5
   tier: daily

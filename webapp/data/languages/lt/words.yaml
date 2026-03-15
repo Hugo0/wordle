@@ -31,10 +31,14 @@ words:
   - main_list
 - word: luiza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: setas
   length: 5
   tier: daily
@@ -238,10 +242,14 @@ words:
   - main_list
 - word: samoa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: kirst
   length: 5
   tier: daily
@@ -555,6 +563,10 @@ words:
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Asia'
 - word: pirko
   length: 5
   tier: daily
@@ -790,10 +802,14 @@ words:
   - main_list
 - word: utena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lithuanian city'
 - word: marta
   length: 5
   tier: valid
@@ -1553,10 +1569,14 @@ words:
   - main_list
 - word: milda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / Lithuanian goddess'
 - word: elada
   length: 5
   tier: daily
@@ -1930,10 +1950,14 @@ words:
   - main_list
 - word: palau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: kokia
   length: 5
   tier: daily
@@ -2002,10 +2026,14 @@ words:
   - main_list
 - word: inesa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: kalus
   length: 5
   tier: daily
@@ -2168,9 +2196,13 @@ words:
   - main_list
 - word: elona
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: vonia
   length: 5
   tier: daily
@@ -2206,9 +2238,13 @@ words:
   - main_list
 - word: kreta
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Crete'
 - word: kusti
   length: 5
   tier: daily
@@ -3159,9 +3195,13 @@ words:
   - main_list
 - word: rukla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lithuanian town'
 - word: tanas
   length: 5
   tier: daily
@@ -3186,9 +3226,13 @@ words:
   - main_list
 - word: denys
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: krata
   length: 5
   tier: daily
@@ -3543,9 +3587,13 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: kakta
   length: 5
   tier: daily
@@ -3825,10 +3873,14 @@ words:
   - main_list
 - word: vilna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Vilnius'
 - word: truko
   length: 5
   tier: daily
@@ -4182,10 +4234,14 @@ words:
   - main_list
 - word: irina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: dykti
   length: 5
   tier: daily
@@ -4268,10 +4324,14 @@ words:
   - main_list
 - word: odesa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ukrainian city'
 - word: engia
   length: 5
   tier: daily
@@ -4370,10 +4430,14 @@ words:
   - main_list
 - word: joana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: vilki
   length: 5
   tier: daily
@@ -4548,9 +4612,13 @@ words:
   - main_list
 - word: dhtml
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Technical acronym, not a Lithuanian word
 - word: abrys
   length: 5
   tier: daily
@@ -4598,10 +4666,14 @@ words:
   - main_list
 - word: delfi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Delphi / Lithuanian news portal'
 - word: antai
   length: 5
   tier: daily
@@ -4712,10 +4784,14 @@ words:
   - main_list
 - word: beata
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tepti
   length: 5
   tier: daily
@@ -4761,9 +4837,13 @@ words:
   - main_list
 - word: emacs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: text editor name'
 - word: sykis
   length: 5
   tier: daily
@@ -4771,9 +4851,13 @@ words:
   - main_list
 - word: tilda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: graso
   length: 5
   tier: daily
@@ -4968,9 +5052,13 @@ words:
   - main_list
 - word: troff
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Technical term: Unix text formatter, not Lithuanian'
 - word: likti
   length: 5
   tier: daily
@@ -5082,10 +5170,14 @@ words:
   - main_list
 - word: enter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword, keyboard key label
 - word: susti
   length: 5
   tier: daily
@@ -5157,9 +5249,13 @@ words:
   - main_list
 - word: ivona
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: nimfa
   length: 5
   tier: daily
@@ -5297,10 +5393,14 @@ words:
   - main_list
 - word: tokia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tokyo'
 - word: akyti
   length: 5
   tier: daily
@@ -5391,10 +5491,14 @@ words:
   - main_list
 - word: eliza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: nokti
   length: 5
   tier: daily
@@ -5573,10 +5677,14 @@ words:
   - main_list
 - word: irena
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: sodas
   length: 5
   tier: daily
@@ -5644,6 +5752,10 @@ words:
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: personal name (Anyta)'
 - word: gurus
   length: 5
   tier: daily
@@ -5657,10 +5769,14 @@ words:
   - main_list
 - word: makao
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Macau'
 - word: rauna
   length: 5
   tier: daily
@@ -5962,9 +6078,13 @@ words:
   - main_list
 - word: hilda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: eimys
   length: 5
   tier: daily
@@ -6495,10 +6615,14 @@ words:
   - main_list
 - word: klara
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: kepti
   length: 5
   tier: daily
@@ -6533,9 +6657,13 @@ words:
   - main_list
 - word: ineza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: dorys
   length: 5
   tier: daily
@@ -6590,10 +6718,14 @@ words:
   - main_list
 - word: daiva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tvora
   length: 5
   tier: daily
@@ -6634,15 +6766,23 @@ words:
   - main_list
 - word: slist
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Technical term, not a Lithuanian word
 - word: galia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: rufas
   length: 5
   tier: daily
@@ -6693,10 +6833,14 @@ words:
   - main_list
 - word: odeta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: jotys
   length: 5
   tier: daily
@@ -6764,9 +6908,13 @@ words:
   - main_list
 - word: birma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Burma/Myanmar'
 - word: pajus
   length: 5
   tier: daily
@@ -6924,9 +7072,13 @@ words:
   - main_list
 - word: nauru
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: alibi
   length: 5
   tier: daily
@@ -7161,10 +7313,14 @@ words:
   - main_list
 - word: lukas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: pasak
   length: 5
   tier: daily
@@ -7178,10 +7334,14 @@ words:
   - main_list
 - word: iveta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: norti
   length: 5
   tier: daily
@@ -7215,9 +7375,13 @@ words:
   - main_list
 - word: corel
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: software brand'
 - word: ginda
   length: 5
   tier: daily
@@ -7251,9 +7415,13 @@ words:
   - main_list
 - word: frida
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: kreko
   length: 5
   tier: daily
@@ -7349,9 +7517,13 @@ words:
   - main_list
 - word: ascii
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Technical acronym, not a Lithuanian word
 - word: sabys
   length: 5
   tier: daily
@@ -7571,10 +7743,14 @@ words:
   - main_list
 - word: dalia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name (also Lithuanian president)'
 - word: udrys
   length: 5
   tier: daily
@@ -7729,10 +7905,14 @@ words:
   - main_list
 - word: tegul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated/abbreviation, not standard word form
 - word: urbti
   length: 5
   tier: daily
@@ -8252,9 +8432,13 @@ words:
   - main_list
 - word: aruba
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: island/country'
 - word: greit
   length: 5
   tier: daily
@@ -8433,10 +8617,14 @@ words:
   - main_list
 - word: papua
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Papua New Guinea'
 - word: ilgai
   length: 5
   tier: daily
@@ -8757,10 +8945,14 @@ words:
   - main_list
 - word: berta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: macos
   length: 5
   tier: valid
@@ -8791,9 +8983,13 @@ words:
   - main_list
 - word: leona
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: nikst
   length: 5
   tier: daily
@@ -8862,10 +9058,14 @@ words:
   - main_list
 - word: edita
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: dygys
   length: 5
   tier: daily
@@ -9248,9 +9448,13 @@ words:
   - main_list
 - word: techn
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word, not valid Lithuanian
 - word: stygo
   length: 5
   tier: daily
@@ -9619,9 +9823,13 @@ words:
   - main_list
 - word: bisau
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bissau (capital of Guinea-Bissau)'
 - word: virbo
   length: 5
   tier: daily
@@ -9696,9 +9904,13 @@ words:
   - main_list
 - word: odena
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: possibly Odense'
 - word: abiem
   length: 5
   tier: daily
@@ -9987,9 +10199,13 @@ words:
   - main_list
 - word: zelva
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: place name'
 - word: razma
   length: 5
   tier: daily
@@ -10065,9 +10281,13 @@ words:
   - main_list
 - word: vcard
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Technical term: digital contact format'
 - word: karia
   length: 5
   tier: daily
@@ -10243,9 +10463,13 @@ words:
   - main_list
 - word: zelma
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: tarsi
   length: 5
   tier: daily
@@ -10378,10 +10602,14 @@ words:
   - main_list
 - word: praha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Prague'
 - word: renis
   length: 5
   tier: daily
@@ -10608,10 +10836,14 @@ words:
   - main_list
 - word: laima
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / goddess of fate'
 - word: seiki
   length: 5
   tier: daily
@@ -10826,9 +11058,13 @@ words:
   - main_list
 - word: gconf
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Technical term (GNOME config), not a Lithuanian word
 - word: freza
   length: 5
   tier: daily
@@ -10901,10 +11137,14 @@ words:
   - main_list
 - word: denis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: galas
   length: 5
   tier: daily

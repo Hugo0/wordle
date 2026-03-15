@@ -1141,9 +1141,13 @@ words:
   - main_list
 - word: gumry
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Gyumri (city in Armenia)'
 - word: badyg
   length: 5
   tier: daily
@@ -2543,10 +2547,14 @@ words:
   - main_list
 - word: blank
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Foreign loanword: English word with no Turkmen adaptation'
 - word: tazyg
   length: 5
   tier: daily
@@ -3455,10 +3463,14 @@ words:
   - main_list
 - word: alban
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Albanian (demonym)'
 - word: kanwa
   length: 5
   tier: daily
@@ -4018,9 +4030,13 @@ words:
   - main_list
 - word: akdep
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Akdepe (place name in Turkmenistan)'
 - word: şapla
   length: 5
   tier: daily
@@ -4218,9 +4234,13 @@ words:
   - main_list
 - word: eşred
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Eshred'
 - word: ownaş
   length: 5
   tier: daily
@@ -4258,9 +4278,13 @@ words:
   - main_list
 - word: aleut
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Aleut (ethnic group)'
 - word: gapar
   length: 5
   tier: daily
@@ -5479,10 +5503,14 @@ words:
   - main_list
 - word: ahmed
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Ahmed'
 - word: aglag
   length: 5
   tier: daily
@@ -7864,9 +7892,13 @@ words:
   - main_list
 - word: budda
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Buddha (religious figure)'
 - word: gurag
   length: 5
   tier: daily
@@ -8697,9 +8729,13 @@ words:
   - main_list
 - word: aýnur
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Aynur'
 - word: ymsyn
   length: 5
   tier: daily
@@ -9701,10 +9737,14 @@ words:
   - main_list
 - word: ahmet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Ahmet'
 - word: dogra
   length: 5
   tier: daily
@@ -10251,9 +10291,13 @@ words:
   - main_list
 - word: halha
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Khalkha (Mongol ethnic group)'
 - word: söweş
   length: 5
   tier: daily
@@ -11469,9 +11513,13 @@ words:
   - main_list
 - word: hamyd
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Hamid'
 - word: pökgi
   length: 5
   tier: daily
@@ -12101,9 +12149,13 @@ words:
   - main_list
 - word: aknur
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Aknur'
 - word: gyryg
   length: 5
   tier: daily
@@ -12256,9 +12308,13 @@ words:
   - main_list
 - word: durdy
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Durdy'
 - word: itert
   length: 5
   tier: daily
@@ -13847,9 +13903,13 @@ words:
   - main_list
 - word: eşrep
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Eshref'
 - word: guzaý
   length: 5
   tier: daily
@@ -15151,9 +15211,13 @@ words:
   - main_list
 - word: gürji
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Georgian (demonym)'
 - word: doýuş
   length: 5
   tier: daily
@@ -15207,9 +15271,13 @@ words:
   - main_list
 - word: ispan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Spanish (demonym)'
 - word: içege
   length: 5
   tier: daily
@@ -15273,9 +15341,13 @@ words:
   - main_list
 - word: eston
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Estonian (demonym)'
 - word: walla
   length: 5
   tier: daily
@@ -16126,9 +16198,13 @@ words:
   - main_list
 - word: jemal
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jemal'
 - word: žiraf
   length: 5
   tier: daily
@@ -18709,10 +18785,14 @@ words:
   - main_list
 - word: harry
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Harry (English)'
 - word: güpbi
   length: 5
   tier: daily
@@ -23408,9 +23488,13 @@ words:
   - main_list
 - word: eýran
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Iran (country name)'
 - word: husyt
   length: 5
   tier: daily
@@ -23564,9 +23648,13 @@ words:
   - main_list
 - word: hytaý
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: China (country name)'
 - word: ýazyg
   length: 5
   tier: daily
@@ -24445,9 +24533,13 @@ words:
   - main_list
 - word: kerim
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Kerim'
 - word: hajat
   length: 5
   tier: daily
@@ -25165,9 +25257,13 @@ words:
   - main_list
 - word: akaba
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Aqaba (city in Jordan)'
 - word: jerim
   length: 5
   tier: daily
@@ -26642,10 +26738,14 @@ words:
   - main_list
 - word: frank
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Frank (ethnic group / personal name)'
 - word: simab
   length: 5
   tier: daily
@@ -27443,10 +27543,14 @@ words:
   - main_list
 - word: jamal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Jamal'
 - word: utujy
   length: 5
   tier: daily
@@ -27489,9 +27593,13 @@ words:
   - main_list
 - word: ermen
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Armenian (demonym)'
 - word: inder
   length: 5
   tier: daily
@@ -27877,9 +27985,13 @@ words:
   - main_list
 - word: myrat
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Myrat (Murat)'
 - word: eýsem
   length: 5
   tier: daily
@@ -28474,9 +28586,13 @@ words:
   - main_list
 - word: awaza
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Avaza (resort zone in Turkmenistan)'
 - word: tizle
   length: 5
   tier: daily

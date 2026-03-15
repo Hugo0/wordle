@@ -324,10 +324,14 @@ words:
   - main_list
 - word: emili
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Emily)
 - word: koner
   length: 5
   tier: valid
@@ -435,9 +439,13 @@ words:
   - main_list
 - word: uilli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Willie)
 - word: mamin
   length: 5
   tier: daily
@@ -479,9 +487,13 @@ words:
   - main_list
 - word: xheri
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jerry)
 - word: jamie
   length: 5
   tier: valid
@@ -926,10 +938,14 @@ words:
   - main_list
 - word: lesli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Leslie)
 - word: zaret
   length: 5
   tier: valid
@@ -949,9 +965,13 @@ words:
   - main_list
 - word: uvejs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: lutej
   length: 5
   tier: valid
@@ -980,10 +1000,14 @@ words:
   - main_list
 - word: denis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: fazen
   length: 5
   tier: valid
@@ -1001,10 +1025,14 @@ words:
   - main_list
 - word: tuvia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: pidhi
   length: 5
   tier: valid
@@ -1202,10 +1230,14 @@ words:
   - main_list
 - word: jezus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Jesus)
 - word: liman
   length: 5
   tier: valid
@@ -1486,10 +1518,14 @@ words:
   - main_list
 - word: pauli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: borxh
   length: 5
   tier: daily
@@ -1677,9 +1713,13 @@ words:
   - main_list
 - word: grejs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Grace variant)
 - word: erdha
   length: 5
   tier: daily
@@ -2055,6 +2095,10 @@ words:
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Potentially vulgar (means 'buttocks', definite)
 - word: split
   length: 5
   tier: valid
@@ -2508,9 +2552,13 @@ words:
   - main_list
 - word: keixh
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled)
 - word: kupen
   length: 5
   tier: valid
@@ -2623,9 +2671,13 @@ words:
   - main_list
 - word: kejti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Katie)
 - word: ronda
   length: 5
   tier: valid
@@ -2738,15 +2790,23 @@ words:
   - main_list
 - word: henri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: nensi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Nancy)
 - word: iagje
   length: 5
   tier: valid
@@ -2885,10 +2945,14 @@ words:
   - main_list
 - word: kaleb
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: nxirë
   length: 5
   tier: daily
@@ -3075,6 +3139,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Vulgar/offensive (prostitute)
 - word: trash
   length: 5
   tier: valid
@@ -3407,6 +3475,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Vulgar/offensive (prostitute, definite form)
 - word: kokat
   length: 5
   tier: daily
@@ -3655,9 +3727,13 @@ words:
   - main_list
 - word: deizi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Albanian transliteration of Daisy)
 - word: doris
   length: 5
   tier: valid
@@ -3873,9 +3949,13 @@ words:
   - main_list
 - word: klajd
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Clyde)
 - word: kahje
   length: 5
   tier: valid
@@ -3940,9 +4020,13 @@ words:
   - main_list
 - word: zeusi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Zeus)
 - word: akuzo
   length: 5
   tier: valid
@@ -3982,10 +4066,14 @@ words:
   - main_list
 - word: marni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: devis
   length: 5
   tier: valid
@@ -4120,10 +4208,14 @@ words:
   - main_list
 - word: holli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Holly)
 - word: daget
   length: 5
   tier: valid
@@ -4526,10 +4618,14 @@ words:
   - main_list
 - word: klark
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Clark)
 - word: vetmë
   length: 5
   tier: valid
@@ -4537,9 +4633,13 @@ words:
   - main_list
 - word: xhoni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Johnny)
 - word: çekan
   length: 5
   tier: valid
@@ -4620,6 +4720,10 @@ words:
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Albanian surname)
 - word: kujdo
   length: 5
   tier: valid
@@ -4752,10 +4856,14 @@ words:
   - main_list
 - word: nikol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Nicole)
 - word: donna
   length: 5
   tier: valid
@@ -4810,10 +4918,14 @@ words:
   - main_list
 - word: locke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: pjalm
   length: 5
   tier: valid
@@ -5093,10 +5205,14 @@ words:
   - main_list
 - word: dubai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name)
 - word: vasko
   length: 5
   tier: valid
@@ -5227,10 +5343,14 @@ words:
   - main_list
 - word: piter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Peter)
 - word: quash
   length: 5
   tier: valid
@@ -5563,10 +5683,14 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: thauj
   length: 5
   tier: valid
@@ -6114,12 +6238,20 @@ words:
   frequency: 1.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword 'lord' - could be valid in Albanian context
 - word: marku
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Mark)
 - word: leckë
   length: 5
   tier: valid
@@ -6485,6 +6617,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Vulgar/offensive (prostitute)
 - word: sahni
   length: 5
   tier: valid
@@ -6602,10 +6738,14 @@ words:
   - main_list
 - word: lopez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: stema
   length: 5
   tier: valid
@@ -6732,9 +6872,13 @@ words:
   - main_list
 - word: krisi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Chrissy)
 - word: iehtë
   length: 5
   tier: daily
@@ -6961,10 +7105,14 @@ words:
   - main_list
 - word: gandi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gandhi)
 - word: lajmi
   length: 5
   tier: daily
@@ -7754,9 +7902,13 @@ words:
   - main_list
 - word: kleri
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: class
   length: 5
   tier: valid
@@ -7867,9 +8019,13 @@ words:
   - main_list
 - word: uoren
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Warren)
 - word: falja
   length: 5
   tier: daily
@@ -7977,10 +8133,14 @@ words:
   - main_list
 - word: megan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English name)
 - word: itaka
   length: 5
   tier: valid
@@ -8072,9 +8232,13 @@ words:
   - main_list
 - word: kriso
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: qëras
   length: 5
   tier: valid
@@ -8320,9 +8484,13 @@ words:
   - main_list
 - word: xheik
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jake)
 - word: metro
   length: 5
   tier: valid
@@ -8521,9 +8689,13 @@ words:
   - main_list
 - word: kluzo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Inspector Clouseau)
 - word: dijen
   length: 5
   tier: valid
@@ -8849,9 +9021,13 @@ words:
   - main_list
 - word: xhesi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jesse)
 - word: keqën
   length: 5
   tier: valid
@@ -9275,9 +9451,13 @@ words:
   - main_list
 - word: stivi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Steve)
 - word: grimm
   length: 5
   tier: valid
@@ -9916,10 +10096,14 @@ words:
   - main_list
 - word: silvi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Silvia)
 - word: hotei
   length: 5
   tier: valid
@@ -10293,10 +10477,14 @@ words:
   - main_list
 - word: brend
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'brand'
 - word: preji
   length: 5
   tier: valid
@@ -10346,6 +10534,10 @@ words:
   frequency: 1.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Offensive (means 'imbecile/retard')
 - word: ciiin
   length: 5
   tier: valid
@@ -10576,10 +10768,14 @@ words:
   - main_list
 - word: klara
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: piotë
   length: 5
   tier: valid
@@ -10590,6 +10786,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Potentially vulgar (means 'buttocks')
 - word: kudër
   length: 5
   tier: valid
@@ -10767,9 +10967,13 @@ words:
   - main_list
 - word: xhemi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jamie)
 - word: grant
   length: 5
   tier: valid
@@ -11547,10 +11751,14 @@ words:
   - main_list
 - word: naina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: globe
   length: 5
   tier: valid
@@ -11659,9 +11867,13 @@ words:
   - main_list
 - word: greis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Grace)
 - word: kredi
   length: 5
   tier: daily
@@ -11675,9 +11887,13 @@ words:
   - main_list
 - word: faini
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'fine'
 - word: taims
   length: 5
   tier: valid
@@ -11831,6 +12047,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Potentially vulgar (means 'buttocks')
 - word: heard
   length: 5
   tier: valid
@@ -11896,10 +12116,14 @@ words:
   - main_list
 - word: dilan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Dylan)
   history:
   - 1717
   scheduled_day: 1717
@@ -11973,10 +12197,14 @@ words:
   - main_list
 - word: karol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: tenda
   length: 5
   tier: valid
@@ -12138,9 +12366,13 @@ words:
   - main_list
 - word: xhuni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name June)
 - word: indit
   length: 5
   tier: valid
@@ -12148,9 +12380,13 @@ words:
   - main_list
 - word: dejzi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Albanian transliteration of Daisy)
 - word: evans
   length: 5
   tier: valid
@@ -12207,10 +12443,14 @@ words:
   - main_list
 - word: alvin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English name)
 - word: obama
   length: 5
   tier: valid
@@ -12286,10 +12526,14 @@ words:
   - main_list
 - word: kosta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: isuke
   length: 5
   tier: valid
@@ -12506,10 +12750,14 @@ words:
   - main_list
 - word: manny
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English name)
 - word: teler
   length: 5
   tier: valid
@@ -12517,10 +12765,14 @@ words:
   - main_list
 - word: alisa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: pagoi
   length: 5
   tier: daily
@@ -12549,10 +12801,14 @@ words:
   - main_list
 - word: kelli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Kelly)
 - word: tipik
   length: 5
   tier: valid
@@ -12821,10 +13077,14 @@ words:
   - main_list
 - word: braun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name/brand)
 - word: supën
   length: 5
   tier: valid
@@ -12859,9 +13119,13 @@ words:
   - main_list
 - word: xhudi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jude)
 - word: louie
   length: 5
   tier: valid
@@ -12970,6 +13234,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Offensive (means 'idiot')
 - word: qante
   length: 5
   tier: daily
@@ -12977,10 +13245,14 @@ words:
   - main_list
 - word: persi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Percy)
 - word: oishi
   length: 5
   tier: valid
@@ -13057,9 +13329,13 @@ words:
   - main_list
 - word: rajli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Riley)
 - word: gabua
   length: 5
   tier: valid
@@ -13342,10 +13618,14 @@ words:
   - main_list
 - word: rajan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Indian name)
 - word: dritë
   length: 5
   tier: daily
@@ -13810,10 +14090,14 @@ words:
   - main_list
 - word: misha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: eluej
   length: 5
   tier: valid
@@ -13919,10 +14203,14 @@ words:
   - main_list
 - word: riina
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: malik
   length: 5
   tier: valid
@@ -14363,10 +14651,14 @@ words:
   - main_list
 - word: harri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Harry)
 - word: fllad
   length: 5
   tier: valid
@@ -14668,10 +14960,14 @@ words:
   - main_list
 - word: fredi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Freddy)
 - word: bredi
   length: 5
   tier: valid
@@ -14884,9 +15180,13 @@ words:
   - main_list
 - word: lusin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: hoqen
   length: 5
   tier: valid
@@ -15196,9 +15496,13 @@ words:
   - main_list
 - word: lerri
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Larry)
 - word: moshe
   length: 5
   tier: daily
@@ -15718,9 +16022,13 @@ words:
   - main_list
 - word: jorku
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (York)
 - word: acaro
   length: 5
   tier: valid
@@ -16095,9 +16403,13 @@ words:
   - main_list
 - word: skiro
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: lante
   length: 5
   tier: valid
@@ -16164,9 +16476,13 @@ words:
   - main_list
 - word: kejll
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a standard Albanian word
 - word: lutur
   length: 5
   tier: daily
@@ -16179,10 +16495,14 @@ words:
   - main_list
 - word: eliza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: found
   length: 5
   tier: valid
@@ -17294,9 +17614,13 @@ words:
   - main_list
 - word: herri
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: boone
   length: 5
   tier: valid
@@ -17588,10 +17912,14 @@ words:
   - main_list
 - word: miami
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (city name)
 - word: porky
   length: 5
   tier: valid
@@ -18040,9 +18368,13 @@ words:
   - main_list
 - word: maksi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Max)
 - word: qantë
   length: 5
   tier: valid
@@ -18050,10 +18382,14 @@ words:
   - main_list
 - word: roxie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: tanja
   length: 5
   tier: valid
@@ -18067,10 +18403,14 @@ words:
   - main_list
 - word: santa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Santa Claus)
 - word: zogjt
   length: 5
   tier: valid
@@ -18538,10 +18878,14 @@ words:
   - main_list
 - word: filip
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: heder
   length: 5
   tier: valid
@@ -18797,10 +19141,14 @@ words:
   - main_list
 - word: sonja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: vonon
   length: 5
   tier: valid
@@ -19450,9 +19798,13 @@ words:
   - main_list
 - word: dejvi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Albanian transliteration of Davy)
 - word: saiki
   length: 5
   tier: valid
@@ -19498,9 +19850,13 @@ words:
   - main_list
 - word: eriku
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Eric)
 - word: gjahu
   length: 5
   tier: valid
@@ -19678,10 +20034,14 @@ words:
   - main_list
 - word: johni
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Johnny)
 - word: bills
   length: 5
   tier: valid
@@ -19748,9 +20108,13 @@ words:
   - main_list
 - word: shejn
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Shane)
 - word: siena
   length: 5
   tier: valid
@@ -19828,6 +20192,10 @@ words:
   frequency: 2.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Can be vulgar/offensive in Albanian slang (derogatory for homosexual)
 - word: freno
   length: 5
   tier: valid
@@ -20498,10 +20866,14 @@ words:
   - main_list
 - word: susan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: deshe
   length: 5
   tier: daily
@@ -20657,10 +21029,14 @@ words:
   - main_list
 - word: shrek
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (fictional character)
 - word: anuar
   length: 5
   tier: valid
@@ -20669,9 +21045,13 @@ words:
   - main_list
 - word: xhejn
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jane)
 - word: hakim
   length: 5
   tier: valid
@@ -21201,9 +21581,13 @@ words:
   - main_list
 - word: majki
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Mike)
 - word: banno
   length: 5
   tier: valid
@@ -21378,9 +21762,13 @@ words:
   - main_list
 - word: rodni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Rodney)
 - word: ajaka
   length: 5
   tier: valid
@@ -21398,9 +21786,13 @@ words:
   - main_list
 - word: çarls
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Charles)
 - word: lorin
   length: 5
   tier: valid
@@ -21566,10 +21958,14 @@ words:
   - main_list
 - word: katie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: këpus
   length: 5
   tier: daily
@@ -22222,9 +22618,13 @@ words:
   - main_list
 - word: rexhi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Reggie)
 - word: gaius
   length: 5
   tier: valid
@@ -22255,9 +22655,13 @@ words:
   - main_list
 - word: konor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Connor)
 - word: urinë
   length: 5
   tier: daily
@@ -22713,10 +23117,14 @@ words:
   - main_list
 - word: lukas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: truri
   length: 5
   tier: daily
@@ -22847,10 +23255,14 @@ words:
   - main_list
 - word: julie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: azinë
   length: 5
   tier: valid
@@ -22915,9 +23327,13 @@ words:
   - main_list
 - word: xhuli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Julie)
 - word: akeçi
   length: 5
   tier: valid
@@ -23176,10 +23592,14 @@ words:
   - main_list
 - word: sindi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Cindy)
 - word: zonje
   length: 5
   tier: daily
@@ -23209,10 +23629,14 @@ words:
   - main_list
 - word: bruna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: ndaje
   length: 5
   tier: daily
@@ -23489,10 +23913,14 @@ words:
   - main_list
 - word: kolin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Colin)
 - word: pijnë
   length: 5
   tier: daily
@@ -25382,9 +25810,13 @@ words:
   - main_list
 - word: bejbi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'baby', foreign slang
 - word: brune
   length: 5
   tier: valid
@@ -25517,10 +25949,14 @@ words:
   - main_list
 - word: angus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English/Scottish name)
 - word: desha
   length: 5
   tier: daily
@@ -25719,10 +26155,14 @@ words:
   - main_list
 - word: rusia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Russia)
 - word: palau
   length: 5
   tier: valid
@@ -25909,9 +26349,13 @@ words:
   - main_list
 - word: xhina
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (China/name Gina)
 - word: vones
   length: 5
   tier: valid
@@ -25929,10 +26373,14 @@ words:
   - main_list
 - word: aleks
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Albanian short form of Aleksandër)
 - word: gotta
   length: 5
   tier: valid
@@ -26239,9 +26687,13 @@ words:
   - main_list
 - word: pitër
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Peter)
 - word: cheng
   length: 5
   tier: valid
@@ -26765,10 +27217,14 @@ words:
   - main_list
 - word: rambo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (fictional character)
 - word: laser
   length: 5
   tier: valid
@@ -27059,9 +27515,13 @@ words:
   - main_list
 - word: xheki
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jack)
 - word: viski
   length: 5
   tier: valid
@@ -27287,9 +27747,13 @@ words:
   - main_list
 - word: majku
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Mike, dative)
 - word: vijim
   length: 5
   tier: valid
@@ -27356,10 +27820,14 @@ words:
   - main_list
 - word: benin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (country name)
 - word: duron
   length: 5
   tier: daily
@@ -27666,9 +28134,13 @@ words:
   - main_list
 - word: skoti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Scotty)
 - word: syrit
   length: 5
   tier: daily
@@ -27900,10 +28372,14 @@ words:
   - main_list
 - word: karli
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: raket
   length: 5
   tier: valid
@@ -28666,9 +29142,13 @@ words:
   - main_list
 - word: xheku
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jack)
 - word: lashë
   length: 5
   tier: daily
@@ -28794,10 +29274,14 @@ words:
   - main_list
 - word: sayid
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: kanoe
   length: 5
   tier: valid
@@ -29202,6 +29686,10 @@ words:
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Albanian surname)
 - word: angli
   length: 5
   tier: daily
@@ -29231,10 +29719,14 @@ words:
   - main_list
 - word: keith
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English name)
 - word: lidia
   length: 5
   tier: valid
@@ -29378,9 +29870,13 @@ words:
   - main_list
 - word: xhons
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jones/Johns)
 - word: mbane
   length: 5
   tier: daily
@@ -29759,9 +30255,13 @@ words:
   - main_list
 - word: kejsi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Kasey)
 - word: virus
   length: 5
   tier: valid
@@ -29880,10 +30380,14 @@ words:
   - main_list
 - word: billi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Billy)
 - word: mekgi
   length: 5
   tier: valid
@@ -30150,9 +30654,13 @@ words:
   - main_list
 - word: xhein
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jane)
 - word: loder
   length: 5
   tier: valid
@@ -30218,10 +30726,14 @@ words:
   - main_list
 - word: makau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Macau)
 - word: miqte
   length: 5
   tier: daily
@@ -30284,9 +30796,13 @@ words:
   - main_list
 - word: xhena
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jenna)
 - word: ardhe
   length: 5
   tier: valid
@@ -30326,10 +30842,14 @@ words:
   - main_list
 - word: priya
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Indian name)
   history:
   - 1714
   scheduled_day: 1714
@@ -30388,10 +30908,14 @@ words:
   - main_list
 - word: kumar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Indian name) - also means 'gambling' in Albanian which is valid
 - word: uitni
   length: 5
   tier: valid
@@ -31041,9 +31565,13 @@ words:
   - main_list
 - word: xhejk
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jake)
 - word: votës
   length: 5
   tier: valid
@@ -31093,10 +31621,14 @@ words:
   - main_list
 - word: suzan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: qifte
   length: 5
   tier: valid
@@ -31346,10 +31878,14 @@ words:
   - main_list
 - word: kafka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: sadam
   length: 5
   tier: valid
@@ -31388,6 +31924,10 @@ words:
   frequency: 1.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (disco)
 - word: dinim
   length: 5
   tier: daily
@@ -32057,9 +32597,13 @@ words:
   - main_list
 - word: xhosh
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Josh)
 - word: dario
   length: 5
   tier: valid
@@ -32137,10 +32681,14 @@ words:
   - main_list
 - word: tokio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tokyo)
 - word: loçkë
   length: 5
   tier: valid
@@ -32169,10 +32717,14 @@ words:
   - main_list
 - word: frodo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (fictional character)
 - word: choco
   length: 5
   tier: valid
@@ -32369,10 +32921,14 @@ words:
   - main_list
 - word: marko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: ecnit
   length: 5
   tier: valid
@@ -32477,9 +33033,13 @@ words:
   - main_list
 - word: marfi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Murphy)
 - word: vetse
   length: 5
   tier: valid
@@ -32604,10 +33164,14 @@ words:
   - main_list
 - word: peeta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (fictional character)
 - word: rroja
   length: 5
   tier: valid
@@ -33328,9 +33892,13 @@ words:
   - main_list
 - word: xhimi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Jimmy)
 - word: djall
   length: 5
   tier: daily
@@ -34029,10 +34597,14 @@ words:
   - main_list
 - word: flynn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English name)
 - word: leito
   length: 5
   tier: valid
@@ -34178,9 +34750,13 @@ words:
   - main_list
 - word: raian
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Ryan)
 - word: liroi
   length: 5
   tier: valid
@@ -34282,9 +34858,13 @@ words:
   - main_list
 - word: keiti
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Katie)
 - word: luger
   length: 5
   tier: valid
@@ -35829,10 +36409,14 @@ words:
   - main_list
 - word: gordo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun/Spanish word, not Albanian
 - word: kryqe
   length: 5
   tier: valid
@@ -35913,10 +36497,14 @@ words:
   - main_list
 - word: ferri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname)
 - word: vleje
   length: 5
   tier: valid
@@ -36211,9 +36799,13 @@ words:
   - main_list
 - word: çarli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Charlie)
 - word: folls
   length: 5
   tier: valid
@@ -36293,6 +36885,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Albanian name)
 - word: lermë
   length: 5
   tier: daily
@@ -36358,10 +36954,14 @@ words:
   - main_list
 - word: taani
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: qeset
   length: 5
   tier: valid
@@ -36411,9 +37011,13 @@ words:
   - main_list
 - word: nansi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Nancy)
 - word: mishi
   length: 5
   tier: daily
@@ -36458,9 +37062,13 @@ words:
   - main_list
 - word: sidni
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Sydney)
 - word: ngele
   length: 5
   tier: valid
@@ -36736,9 +37344,13 @@ words:
   - main_list
 - word: majls
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Miles)
 - word: henry
   length: 5
   tier: valid
@@ -36799,22 +37411,34 @@ words:
   - main_list
 - word: kuper
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Cooper)
 - word: keito
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name)
 - word: marty
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (English name)
 - word: ndanë
   length: 5
   tier: daily

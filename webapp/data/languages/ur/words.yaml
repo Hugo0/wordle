@@ -88,10 +88,14 @@ words:
   - main_list
 - word: توکیا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (variant of Tokyo?)
 - word: پھنسا
   length: 5
   tier: daily
@@ -217,9 +221,13 @@ words:
   - main_list
 - word: یلرجی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'allergy'
 - word: اسپاٹ
   length: 5
   tier: daily
@@ -257,10 +265,14 @@ words:
   - main_list
 - word: مارکس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Marx/Marks)
 - word: اقامہ
   length: 5
   tier: valid
@@ -335,16 +347,24 @@ words:
   - main_list
 - word: ڈریگن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'dragon'
 - word: اورجب
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (run-together 'aur jab')
 - word: نےبھی
   length: 5
   tier: valid
@@ -627,9 +647,13 @@ words:
   - main_list
 - word: مرتھا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Martha)
 - word: گاہوں
   length: 5
   tier: daily
@@ -740,10 +764,14 @@ words:
   - main_list
 - word: ہاورڈ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Howard)
 - word: آبائی
   length: 5
   tier: valid
@@ -895,9 +923,13 @@ words:
   - main_list
 - word: کرسٹن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Kristen)
 - word: ہندسہ
   length: 5
   tier: valid
@@ -1028,6 +1060,10 @@ words:
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Offensive (means 'bastard/scoundrel')
 - word: چیخنا
   length: 5
   tier: daily
@@ -1292,9 +1328,13 @@ words:
   - main_list
 - word: ڈیاگو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Diego)
 - word: اسرار
   length: 5
   tier: daily
@@ -1392,9 +1432,13 @@ words:
   - main_list
 - word: کوژیہ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: آتشیں
   length: 5
   tier: daily
@@ -1703,9 +1747,13 @@ words:
   - main_list
 - word: آریئر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'arrear'
 - word: شوٹنگ
   length: 5
   tier: daily
@@ -1816,9 +1864,13 @@ words:
   - main_list
 - word: والکر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Walker)
 - word: انجمن
   length: 5
   tier: valid
@@ -1921,9 +1973,13 @@ words:
   - main_list
 - word: آرڈمر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ardmore)
 - word: عاجزی
   length: 5
   tier: daily
@@ -1968,10 +2024,14 @@ words:
   - main_list
 - word: بیروت
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Beirut)
 - word: نکلسن
   length: 5
   tier: valid
@@ -2565,10 +2625,14 @@ words:
   - main_list
 - word: تھنڈر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'thunder'
 - word: بکثرت
   length: 5
   tier: valid
@@ -2726,10 +2790,14 @@ words:
   - main_list
 - word: ہینری
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Henry)
 - word: کسٹمر
   length: 5
   tier: valid
@@ -3024,10 +3092,14 @@ words:
   - main_list
 - word: رابرٹ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Robert)
 - word: تاریخ
   length: 5
   tier: daily
@@ -3449,9 +3521,13 @@ words:
   - main_list
 - word: بارنس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Barnes)
 - word: شکنیں
   length: 5
   tier: daily
@@ -3895,9 +3971,13 @@ words:
   - main_list
 - word: نیٹلی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Natalie)
 - word: پردیپ
   length: 5
   tier: valid
@@ -3906,9 +3986,13 @@ words:
   - main_list
 - word: گلمور
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gilmore)
 - word: پہلوی
   length: 5
   tier: valid
@@ -4119,9 +4203,13 @@ words:
   - main_list
 - word: ہجآتہ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled/OCR error)
 - word: بنکوں
   length: 5
   tier: valid
@@ -4457,9 +4545,13 @@ words:
   - main_list
 - word: فینکس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Phoenix)
 - word: جبروت
   length: 5
   tier: valid
@@ -4646,10 +4738,14 @@ words:
   - main_list
 - word: بولٹن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Bolton)
 - word: اومان
   length: 5
   tier: valid
@@ -4688,9 +4784,13 @@ words:
   - main_list
 - word: اورہر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (run-together 'aur har')
 - word: کاعمل
   length: 5
   tier: valid
@@ -4733,6 +4833,10 @@ words:
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (Bible)
 - word: سرسوں
   length: 5
   tier: daily
@@ -5087,10 +5191,14 @@ words:
   - main_list
 - word: قذافی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gaddafi)
 - word: درندہ
   length: 5
   tier: valid
@@ -5308,9 +5416,13 @@ words:
   - main_list
 - word: ٹونگا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tonga)
 - word: لگاؤں
   length: 5
   tier: valid
@@ -5331,10 +5443,14 @@ words:
   - main_list
 - word: بیجنگ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Beijing)
 - word: پھوٹی
   length: 5
   tier: valid
@@ -5453,10 +5569,14 @@ words:
   - main_list
 - word: کلارک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Clark)
 - word: بدائع
   length: 5
   tier: valid
@@ -6077,10 +6197,14 @@ words:
   - main_list
 - word: سٹیفن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Stephen)
 - word: رومان
   length: 5
   tier: valid
@@ -6185,9 +6309,13 @@ words:
   - main_list
 - word: پاؤلو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Paulo)
 - word: موعود
   length: 5
   tier: valid
@@ -6423,10 +6551,14 @@ words:
   - main_list
 - word: نادیہ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Nadia)
 - word: بدولت
   length: 5
   tier: valid
@@ -6473,6 +6605,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Variant/informal spelling
 - word: اہداف
   length: 5
   tier: daily
@@ -6746,10 +6882,14 @@ words:
   - main_list
 - word: سانتا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Santa)
 - word: ترغیب
   length: 5
   tier: valid
@@ -7038,9 +7178,13 @@ words:
   - main_list
 - word: ایملی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Emily)
 - word: شیڈول
   length: 5
   tier: daily
@@ -7321,9 +7465,13 @@ words:
   - main_list
 - word: تجاست
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu (garbled)
 - word: مشتبہ
   length: 5
   tier: daily
@@ -7582,10 +7730,14 @@ words:
   - main_list
 - word: گولڈن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'golden'
 - word: دیرپا
   length: 5
   tier: daily
@@ -8247,9 +8399,13 @@ words:
   - main_list
 - word: ٹروجن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Trojan)
 - word: پلازے
   length: 5
   tier: valid
@@ -8743,10 +8899,14 @@ words:
   - main_list
 - word: آجاتا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Ajata)
 - word: ماڈلز
   length: 5
   tier: valid
@@ -8778,9 +8938,13 @@ words:
   - main_list
 - word: گلبرٹ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gilbert)
 - word: تذکرے
   length: 5
   tier: daily
@@ -9009,9 +9173,13 @@ words:
   - main_list
 - word: زانٹی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: گورکی
   length: 5
   tier: valid
@@ -9020,9 +9188,13 @@ words:
   - main_list
 - word: حسنسن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled)
 - word: دائیں
   length: 5
   tier: daily
@@ -9049,10 +9221,14 @@ words:
   - main_list
 - word: ہینڈل
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Handel) or transliterated 'handle'
 - word: بندھن
   length: 5
   tier: daily
@@ -9366,9 +9542,13 @@ words:
   - main_list
 - word: سوادج
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
   history:
   - 1724
   scheduled_day: 1724
@@ -9440,9 +9620,13 @@ words:
   - main_list
 - word: مریگا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: بنسبت
   length: 5
   tier: valid
@@ -9798,9 +9982,13 @@ words:
   - main_list
 - word: مہودی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be یہودی)
 - word: اظہار
   length: 5
   tier: daily
@@ -9903,9 +10091,13 @@ words:
   - main_list
 - word: نراشا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu (Hindi word)
 - word: فریال
   length: 5
   tier: valid
@@ -10136,10 +10328,14 @@ words:
   - main_list
 - word: ماسکو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Moscow)
 - word: اعراب
   length: 5
   tier: valid
@@ -10160,14 +10356,22 @@ words:
   - main_list
 - word: اگلوا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: ھمممم
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Interjection/filler, not a word
 - word: ظاہری
   length: 5
   tier: valid
@@ -10206,9 +10410,13 @@ words:
   - main_list
 - word: توپاک
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tupac)
 - word: کھاکر
   length: 5
   tier: valid
@@ -10389,9 +10597,13 @@ words:
   - main_list
 - word: مینڈی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Mandy)
 - word: کھوڑو
   length: 5
   tier: valid
@@ -10454,14 +10666,22 @@ words:
   - main_list
 - word: ایونز
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Evans)
 - word: ڈامنو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'domino'
 - word: جوابی
   length: 5
   tier: daily
@@ -10547,9 +10767,13 @@ words:
   - main_list
 - word: سیلاس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Silas)
 - word: لرزاں
   length: 5
   tier: daily
@@ -10731,9 +10955,13 @@ words:
   - main_list
 - word: سٹیوی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Stevie)
 - word: متعدد
   length: 5
   tier: valid
@@ -10766,10 +10994,14 @@ words:
   - main_list
 - word: جنیوا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Geneva)
 - word: محتسب
   length: 5
   tier: valid
@@ -10862,10 +11094,14 @@ words:
   - main_list
 - word: گورڈن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gordon)
 - word: حقیقت
   length: 5
   tier: daily
@@ -10938,6 +11174,10 @@ words:
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Transliterated English 'cigarette'
 - word: ڈائری
   length: 5
   tier: valid
@@ -11006,10 +11246,14 @@ words:
   - main_list
 - word: مارکو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Marco)
 - word: سنیچر
   length: 5
   tier: valid
@@ -11334,9 +11578,13 @@ words:
   - main_list
 - word: شہسہا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled)
 - word: سطروں
   length: 5
   tier: valid
@@ -11426,15 +11674,23 @@ words:
   - main_list
 - word: بیبسی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Pepsi brand)
 - word: ڈارون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Darwin)
 - word: وظیفہ
   length: 5
   tier: valid
@@ -11579,9 +11835,13 @@ words:
   - main_list
 - word: وففوہ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled/OCR error)
 - word: سکنات
   length: 5
   tier: valid
@@ -11783,10 +12043,14 @@ words:
   - main_list
 - word: جولیا
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Julia)
 - word: الفتن
   length: 5
   tier: valid
@@ -12330,10 +12594,14 @@ words:
   - main_list
 - word: ٹائٹس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Titus)
 - word: پکڑتا
   length: 5
   tier: valid
@@ -12545,9 +12813,13 @@ words:
   - main_list
 - word: ہیوگو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hugo)
 - word: ملکوں
   length: 5
   tier: valid
@@ -12616,9 +12888,13 @@ words:
   - main_list
 - word: بتاءو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Garbled spelling (should be بتاؤ)
 - word: کمسنی
   length: 5
   tier: valid
@@ -12669,9 +12945,13 @@ words:
   - main_list
 - word: والیس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Wallace)
 - word: الیون
   length: 5
   tier: valid
@@ -13083,9 +13363,13 @@ words:
   - main_list
 - word: نےٹلی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun with typo (Natalie)
 - word: ہواؤں
   length: 5
   tier: daily
@@ -13382,9 +13666,13 @@ words:
   - main_list
 - word: ضآؤاط
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled/OCR error)
 - word: مصوری
   length: 5
   tier: valid
@@ -14059,10 +14347,14 @@ words:
   - main_list
 - word: رولنگ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'rolling'
 - word: کیمرا
   length: 5
   tier: daily
@@ -14107,10 +14399,14 @@ words:
   - main_list
 - word: اسٹیو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Steve)
 - word: سماعت
   length: 5
   tier: daily
@@ -14345,9 +14641,13 @@ words:
   - main_list
 - word: لافلن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Laughlin)
 - word: دقیقہ
   length: 5
   tier: valid
@@ -14492,9 +14792,13 @@ words:
   - main_list
 - word: ہںسنا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Garbled spelling (should be ہنسنا)
 - word: تشکیک
   length: 5
   tier: valid
@@ -14639,9 +14943,13 @@ words:
   - main_list
 - word: سٹارک
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Stark)
 - word: بلاتے
   length: 5
   tier: daily
@@ -14716,9 +15024,13 @@ words:
   - main_list
 - word: کارسن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Carson)
 - word: قسمیں
   length: 5
   tier: daily
@@ -14769,9 +15081,13 @@ words:
   - main_list
 - word: شاؤلن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Shaolin)
 - word: ہابیل
   length: 5
   tier: valid
@@ -14885,14 +15201,22 @@ words:
   - main_list
 - word: ویکسی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: ویچلن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: مقبول
   length: 5
   tier: daily
@@ -15111,9 +15435,13 @@ words:
   - main_list
 - word: گولسن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Golson)
 - word: ویٹنگ
   length: 5
   tier: valid
@@ -15184,9 +15512,13 @@ words:
   - main_list
 - word: مکاوت
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: سڑکوں
   length: 5
   tier: daily
@@ -15405,10 +15737,14 @@ words:
   - main_list
 - word: سنوڈن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Snowden)
 - word: سینیر
   length: 5
   tier: valid
@@ -15470,9 +15806,13 @@ words:
   - main_list
 - word: رونلڈ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ronald)
 - word: نوالہ
   length: 5
   tier: valid
@@ -15553,10 +15893,14 @@ words:
   - main_list
 - word: بوسٹن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Boston)
 - word: رائٹر
   length: 5
   tier: valid
@@ -15666,9 +16010,13 @@ words:
   - main_list
 - word: ربیکا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Rebecca)
 - word: دھچکہ
   length: 5
   tier: valid
@@ -15833,10 +16181,14 @@ words:
   - main_list
 - word: جانسن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Johnson)
 - word: مسدود
   length: 5
   tier: daily
@@ -15874,9 +16226,13 @@ words:
   - main_list
 - word: کیمبل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Campbell)
 - word: پچھاڑ
   length: 5
   tier: valid
@@ -15979,10 +16335,14 @@ words:
   - main_list
 - word: مروان
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Marwan)
 - word: کنجوس
   length: 5
   tier: valid
@@ -16099,9 +16459,13 @@ words:
   - main_list
 - word: مطمعن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be مطمئن)
 - word: دھانی
   length: 5
   tier: valid
@@ -16443,10 +16807,14 @@ words:
   - main_list
 - word: ٹویٹر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Twitter brand)
 - word: رجحان
   length: 5
   tier: daily
@@ -16502,9 +16870,13 @@ words:
   - main_list
 - word: سمنوی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: دستوں
   length: 5
   tier: valid
@@ -16740,9 +17112,13 @@ words:
   - main_list
 - word: ذہجءز
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled/OCR error)
 - word: ریحام
   length: 5
   tier: valid
@@ -16799,9 +17175,13 @@ words:
   - main_list
 - word: ھاںسی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu (garbled)
 - word: محمود
   length: 5
   tier: valid
@@ -16894,10 +17274,14 @@ words:
   - main_list
 - word: نیوٹن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Newton)
 - word: نااہل
   length: 5
   tier: daily
@@ -17049,9 +17433,13 @@ words:
   - main_list
 - word: وبالا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: ہزارے
   length: 5
   tier: valid
@@ -17284,9 +17672,13 @@ words:
   - main_list
 - word: سمتبر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be ستمبر September)
 - word: رہاہے
   length: 5
   tier: valid
@@ -17675,9 +18067,13 @@ words:
   - main_list
 - word: تمارا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tamara)
 - word: نادان
   length: 5
   tier: daily
@@ -17881,10 +18277,14 @@ words:
   - main_list
 - word: ٹائٹن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Titan)
 - word: منادی
   length: 5
   tier: valid
@@ -17929,10 +18329,14 @@ words:
   - main_list
 - word: ٹھٹھہ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Thatta city) or onomatopoeia
   history:
   - 1717
   scheduled_day: 1717
@@ -18130,9 +18534,13 @@ words:
   - main_list
 - word: سائرل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Cyril)
 - word: ہائپر
   length: 5
   tier: valid
@@ -18322,6 +18730,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Medical term (gonorrhea), potentially inappropriate for daily puzzle
 - word: متوجہ
   length: 5
   tier: daily
@@ -18489,6 +18901,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Not standard Urdu
 - word: پھیلے
   length: 5
   tier: valid
@@ -18533,10 +18949,14 @@ words:
   - main_list
 - word: موساد
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Mossad)
 - word: سناتا
   length: 5
   tier: daily
@@ -18748,9 +19168,13 @@ words:
   - main_list
 - word: اطءلہ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Garbled/OCR error
 - word: بھیجے
   length: 5
   tier: daily
@@ -18908,9 +19332,13 @@ words:
   - main_list
 - word: شگاگو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Chicago)
 - word: کرپشن
   length: 5
   tier: valid
@@ -19393,9 +19821,13 @@ words:
   - main_list
 - word: جوہان
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Johan)
 - word: حرارت
   length: 5
   tier: daily
@@ -19463,9 +19895,13 @@ words:
   - main_list
 - word: یووتی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: قوالی
   length: 5
   tier: valid
@@ -19564,14 +20000,22 @@ words:
   - main_list
 - word: سیلمن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Salman/Salmon)
 - word: آکٹپس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'octopus'
 - word: لادین
   length: 5
   tier: valid
@@ -19628,10 +20072,14 @@ words:
   - main_list
 - word: اسامہ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Osama), potentially sensitive
 - word: فرانس
   length: 5
   tier: daily
@@ -19844,9 +20292,13 @@ words:
   - main_list
 - word: تبولی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign food word (tabbouleh)
   history:
   - 1688
   scheduled_day: 1688
@@ -19917,9 +20369,13 @@ words:
   - main_list
 - word: خہجءز
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled/OCR error)
 - word: آستین
   length: 5
   tier: valid
@@ -19952,9 +20408,13 @@ words:
   - main_list
 - word: خروںچ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Garbled spelling (should be خراش)
 - word: سائرن
   length: 5
   tier: daily
@@ -19974,9 +20434,13 @@ words:
   - main_list
 - word: شیپرڈ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Shepherd)
 - word: افراط
   length: 5
   tier: valid
@@ -20169,9 +20633,13 @@ words:
   - main_list
 - word: چروکی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Cherokee)
 - word: سپریم
   length: 5
   tier: daily
@@ -20520,10 +20988,14 @@ words:
   - main_list
 - word: مورگن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Morgan)
 - word: ترویج
   length: 5
   tier: valid
@@ -20633,10 +21105,14 @@ words:
   - main_list
 - word: کمشنر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'commissioner'
 - word: کھینچ
   length: 5
   tier: daily
@@ -20715,9 +21191,13 @@ words:
   - main_list
 - word: اپددر
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled)
 - word: فیڈرل
   length: 5
   tier: daily
@@ -20996,9 +21476,13 @@ words:
   - main_list
 - word: آرسیی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu (garbled)
 - word: گنڈوں
   length: 5
   tier: daily
@@ -21030,9 +21514,13 @@ words:
   - main_list
 - word: جللاد
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be جلاد)
 - word: لکھنی
   length: 5
   tier: valid
@@ -21474,9 +21962,13 @@ words:
   - main_list
 - word: ویشیا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Offensive (means 'prostitute' in Hindi/Urdu)
 - word: باؤلر
   length: 5
   tier: valid
@@ -21497,9 +21989,13 @@ words:
   - main_list
 - word: ہمممم
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Interjection/filler, not a word
 - word: معدوم
   length: 5
   tier: valid
@@ -21603,9 +22099,13 @@ words:
   - main_list
 - word: بیونس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Beyonce)
 - word: کریلے
   length: 5
   tier: valid
@@ -21632,9 +22132,13 @@ words:
   - main_list
 - word: بفیلو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Buffalo)
 - word: پرندہ
   length: 5
   tier: daily
@@ -21679,9 +22183,13 @@ words:
   - main_list
 - word: یلئڈی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled)
 - word: سرویس
   length: 5
   tier: valid
@@ -21994,9 +22502,13 @@ words:
   - main_list
 - word: لوسرن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Lucerne)
 - word: منیشا
   length: 5
   tier: valid
@@ -22029,9 +22541,13 @@ words:
   - main_list
 - word: طالاب
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be تالاب for pond)
 - word: حمائت
   length: 5
   tier: valid
@@ -22804,10 +23320,14 @@ words:
   - main_list
 - word: مارٹن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Martin)
 - word: حادثے
   length: 5
   tier: daily
@@ -22917,10 +23437,14 @@ words:
   - main_list
 - word: کیپلر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Kepler)
 - word: اضلاع
   length: 5
   tier: valid
@@ -23029,9 +23553,13 @@ words:
   - main_list
 - word: سلویو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Silvio)
 - word: فاشزم
   length: 5
   tier: valid
@@ -23177,9 +23705,13 @@ words:
   - main_list
 - word: کیمڈن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Camden)
 - word: صداقت
   length: 5
   tier: valid
@@ -23418,10 +23950,14 @@ words:
   - main_list
 - word: ٹوکیو
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tokyo)
 - word: اسقاط
   length: 5
   tier: valid
@@ -23436,10 +23972,14 @@ words:
   - main_list
 - word: فرینک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Frank)
 - word: جلانا
   length: 5
   tier: valid
@@ -23754,9 +24294,13 @@ words:
   scheduled_day: 1725
 - word: بڑپپن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled, should be بڑپن)
 - word: غوثیہ
   length: 5
   tier: valid
@@ -24311,9 +24855,13 @@ words:
   - main_list
 - word: دیانا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Diana)
 - word: راتیں
   length: 5
   tier: valid
@@ -24616,9 +25164,13 @@ words:
   - main_list
 - word: چجرسی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled, maybe 'Jersey')
 - word: لطافت
   length: 5
   tier: valid
@@ -25055,9 +25607,13 @@ words:
   - main_list
 - word: سبارو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Subaru brand)
 - word: قدرتی
   length: 5
   tier: daily
@@ -25321,9 +25877,13 @@ words:
   - main_list
 - word: مورٹز
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Moritz)
 - word: ہوجاؤ
   length: 5
   tier: daily
@@ -25446,10 +26006,14 @@ words:
   - main_list
 - word: ہیکٹر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Hector)
 - word: دھڑلے
   length: 5
   tier: valid
@@ -25571,10 +26135,14 @@ words:
   - main_list
 - word: جیکسن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Jackson)
 - word: کنارا
   length: 5
   tier: valid
@@ -26288,10 +26856,14 @@ words:
   - main_list
 - word: تھامس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Thomas)
 - word: نوبیل
   length: 5
   tier: valid
@@ -26412,10 +26984,14 @@ words:
   - main_list
 - word: پیٹرک
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Patrick)
 - word: ہمدرد
   length: 5
   tier: daily
@@ -26548,9 +27124,13 @@ words:
   - main_list
 - word: کونور
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Connor)
 - word: بگڑتا
   length: 5
   tier: valid
@@ -26633,9 +27213,13 @@ words:
   - main_list
 - word: ریمزے
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ramsay)
 - word: عائلی
   length: 5
   tier: valid
@@ -26680,10 +27264,14 @@ words:
   - main_list
 - word: اینڈی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Andy)
 - word: مستعد
   length: 5
   tier: valid
@@ -26730,9 +27318,13 @@ words:
   - main_list
 - word: سییلی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word (garbled)
 - word: حالیہ
   length: 5
   tier: daily
@@ -27009,10 +27601,14 @@ words:
   - main_list
 - word: کارٹر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Carter)
 - word: تکرار
   length: 5
   tier: valid
@@ -27104,9 +27700,13 @@ words:
   - main_list
 - word: معزرت
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be معذرت)
 - word: ٹوئیٹ
   length: 5
   tier: valid
@@ -28027,9 +28627,13 @@ words:
   - main_list
 - word: مہاشی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu
 - word: جمائے
   length: 5
   tier: valid
@@ -28576,9 +29180,13 @@ words:
   - main_list
 - word: اینجل
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Angel)
 - word: شلوار
   length: 5
   tier: valid
@@ -28849,9 +29457,13 @@ words:
   - main_list
 - word: ییومن
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu (garbled)
 - word: سینیٹ
   length: 5
   tier: valid
@@ -29458,9 +30070,13 @@ words:
   - main_list
 - word: گلرمو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Guillermo)
 - word: دربدر
   length: 5
   tier: valid
@@ -29688,9 +30304,13 @@ words:
   - main_list
 - word: راجرز
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Rogers)
 - word: بچھڑے
   length: 5
   tier: valid
@@ -30150,9 +30770,13 @@ words:
   - main_list
 - word: ڈیمین
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Damien)
 - word: ضمیمہ
   length: 5
   tier: valid
@@ -30233,9 +30857,13 @@ words:
   - main_list
 - word: ٹریور
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Trevor)
 - word: سناتی
   length: 5
   tier: valid
@@ -30631,9 +31259,13 @@ words:
   - main_list
 - word: رولنڈ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Roland)
 - word: سرمئی
   length: 5
   tier: daily
@@ -30838,9 +31470,13 @@ words:
   - main_list
 - word: یہسان
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be احسان)
 - word: شمارہ
   length: 5
   tier: valid
@@ -31333,9 +31969,13 @@ words:
   - main_list
 - word: ٹوبیس
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tobias)
 - word: رضوان
   length: 5
   tier: valid
@@ -31344,9 +31984,13 @@ words:
   - main_list
 - word: لورین
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Lorraine)
 - word: پولنگ
   length: 5
   tier: valid
@@ -31733,6 +32377,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Offensive (feminine form of 'bastard')
 - word: راکشس
   length: 5
   tier: valid
@@ -31981,9 +32629,13 @@ words:
   - main_list
 - word: تہارا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Dialectal/non-standard (should be تمہارا)
 - word: اٹھاو
   length: 5
   tier: daily
@@ -32042,6 +32694,10 @@ words:
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Offensive (plural of 'bastard')
 - word: نغموں
   length: 5
   tier: valid
@@ -32671,10 +33327,14 @@ words:
   - main_list
 - word: منیجر
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'manager'
 - word: پکوان
   length: 5
   tier: valid
@@ -33330,10 +33990,14 @@ words:
   - main_list
 - word: کرسمس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Christmas)
 - word: مستقل
   length: 5
   tier: daily
@@ -33661,10 +34325,14 @@ words:
   - main_list
 - word: کینڈی
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Candy/Kennedy)
 - word: اکھٹی
   length: 5
   tier: valid
@@ -34173,9 +34841,13 @@ words:
   - main_list
 - word: سامبو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially offensive term
 - word: لاٹوں
   length: 5
   tier: valid
@@ -34375,10 +35047,14 @@ words:
   - main_list
 - word: ویگاس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Vegas)
 - word: کیبلز
   length: 5
   tier: valid
@@ -34404,9 +35080,13 @@ words:
   - main_list
 - word: الینا
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Alina)
 - word: دوماہ
   length: 5
   tier: valid
@@ -34704,9 +35384,13 @@ words:
   - main_list
 - word: تہارے
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Dialectal/non-standard (should be تمہارے)
 - word: مستول
   length: 5
   tier: daily
@@ -35113,10 +35797,14 @@ words:
   - main_list
 - word: سٹیون
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Steven)
 - word: ترچھی
   length: 5
   tier: valid
@@ -35245,9 +35933,13 @@ words:
   - main_list
 - word: محتاظ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Typo (should be محتاط)
 - word: سہارے
   length: 5
   tier: daily
@@ -36474,10 +37166,14 @@ words:
   - main_list
 - word: میڈرڈ
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Madrid)
 - word: شمشاد
   length: 5
   tier: valid
@@ -36504,9 +37200,13 @@ words:
   - main_list
 - word: لنڈسے
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Lindsay)
 - word: نوازش
   length: 5
   tier: valid
@@ -36849,15 +37549,23 @@ words:
   - main_list
 - word: ھیںچو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not standard Urdu (garbled)
 - word: لارنس
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Lawrence)
 - word: بیٹری
   length: 5
   tier: daily
@@ -38298,9 +39006,13 @@ words:
   - main_list
 - word: ریمسی
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Ramsey)
 - word: پولیو
   length: 5
   tier: valid
@@ -38356,9 +39068,13 @@ words:
   - main_list
 - word: چکاگو
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Chicago)
 - word: لبادہ
   length: 5
   tier: valid
@@ -38604,9 +39320,13 @@ words:
   - main_list
 - word: مسٹرد
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Transliterated English 'mustard'
 - word: ٹیسلا
   length: 5
   tier: valid
@@ -38675,9 +39395,13 @@ words:
   - main_list
 - word: أہغاد
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a standard Urdu word (garbled/OCR error)
 - word: آقاؤں
   length: 5
   tier: valid
@@ -38925,10 +39649,14 @@ words:
   - main_list
 - word: بنجمن
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Benjamin)
 - word: غمزدہ
   length: 5
   tier: daily

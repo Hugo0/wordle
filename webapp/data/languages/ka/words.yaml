@@ -16,9 +16,13 @@ metadata:
 words:
 - word: ნადიმ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nadim)
 - word: ყრიდა
   length: 5
   tier: daily
@@ -34,9 +38,13 @@ words:
   - main_list
 - word: მეგის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Meg's)
 - word: შაობა
   length: 5
   tier: daily
@@ -54,9 +62,13 @@ words:
   - main_list
 - word: ნაინა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Naina)
 - word: არუფა
   length: 5
   tier: daily
@@ -69,9 +81,13 @@ words:
   - main_list
 - word: ფოლკი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (folk)
 - word: კაუჭა
   length: 5
   tier: daily
@@ -89,9 +105,13 @@ words:
   - main_list
 - word: გივიმ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Givi) case form
 - word: სინჯე
   length: 5
   tier: daily
@@ -104,9 +124,13 @@ words:
   - main_list
 - word: სუუულ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Elongated interjection, not a standard word
 - word: ნათელ
   length: 5
   tier: daily
@@ -134,14 +158,22 @@ words:
   - main_list
 - word: სოფომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Sofo) case form
 - word: შალკე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Schalke)
 - word: უკეთუ
   length: 5
   tier: daily
@@ -159,9 +191,13 @@ words:
   - main_list
 - word: ლიტვა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lithuania)
 - word: პასკა
   length: 5
   tier: daily
@@ -174,9 +210,13 @@ words:
   - main_list
 - word: პოპოლ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Popol)
 - word: მენჯი
   length: 5
   tier: daily
@@ -204,9 +244,13 @@ words:
   - main_list
 - word: ოლაფი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Olaf)
 - word: ღონედ
   length: 5
   tier: daily
@@ -269,9 +313,13 @@ words:
   - main_list
 - word: ჯამილ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jamil)
 - word: კეკუა
   length: 5
   tier: daily
@@ -284,17 +332,25 @@ words:
   - main_list
 - word: აიპოდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign brand name (iPod)
   history:
   - 1686
   scheduled_day: 1686
 - word: დავაი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (davai)
 - word: პაუხი
   length: 5
   tier: daily
@@ -342,9 +398,13 @@ words:
   - main_list
 - word: გიგლა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Georgian name Gigla)
 - word: ქუაბი
   length: 5
   tier: daily
@@ -357,9 +417,13 @@ words:
   - main_list
 - word: ჰაგია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hagia)
 - word: მაინს
   length: 5
   tier: daily
@@ -432,9 +496,13 @@ words:
   - main_list
 - word: ნელლა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nella)
 - word: ირგებ
   length: 5
   tier: daily
@@ -447,14 +515,22 @@ words:
   - main_list
 - word: ინდრა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Indra)
 - word: ლუსია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lucia)
 - word: დააბი
   length: 5
   tier: daily
@@ -472,9 +548,13 @@ words:
   - main_list
 - word: მუსიე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Musie)
 - word: რასიუ
   length: 5
   tier: daily
@@ -547,9 +627,13 @@ words:
   - main_list
 - word: ბორიო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Borio)
 - word: გოგრა
   length: 5
   tier: daily
@@ -562,9 +646,13 @@ words:
   - main_list
 - word: გუილდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word (guild) in Georgian script
 - word: ზღუად
   length: 5
   tier: daily
@@ -587,9 +675,13 @@ words:
   - main_list
 - word: ნარინ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Narin)
 - word: მგელო
   length: 5
   tier: daily
@@ -627,9 +719,13 @@ words:
   - main_list
 - word: ზექიე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Zequie)
 - word: ჰღირს
   length: 5
   tier: daily
@@ -647,9 +743,13 @@ words:
   - main_list
 - word: აითან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ethan)
 - word: სალტე
   length: 5
   tier: daily
@@ -706,14 +806,22 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (attache), obscure
   history:
   - 1721
   scheduled_day: 1721
 - word: ლევონ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Levon)
 - word: წვრილ
   length: 5
   tier: daily
@@ -726,9 +834,13 @@ words:
   - main_list
 - word: ნარიე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Narie)
 - word: ვანია
   length: 5
   tier: daily
@@ -817,9 +929,13 @@ words:
   - main_list
 - word: დაუდი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Daudi)
 - word: კრედო
   length: 5
   tier: daily
@@ -837,24 +953,40 @@ words:
   - main_list
 - word: ტჰეირ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word 'their' transliterated into Georgian script
 - word: რომენ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Romen)
 - word: ალიკა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Alika)
 - word: მრუში
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Potentially offensive (adulteress)
 - word: ბუკია
   length: 5
   tier: daily
@@ -887,9 +1019,13 @@ words:
   - main_list
 - word: ოველი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Orwell/Ovel)
 - word: იქნებ
   length: 5
   tier: daily
@@ -902,14 +1038,22 @@ words:
   - main_list
 - word: კორსო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Corso)
 - word: ტაისა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Taisa)
 - word: მატჩი
   length: 5
   tier: daily
@@ -917,9 +1061,13 @@ words:
   - main_list
 - word: ჰელის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun
 - word: მითქს
   length: 5
   tier: daily
@@ -945,9 +1093,13 @@ words:
   scheduled_day: 1697
 - word: არმინ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Armin)
 - word: გენას
   length: 5
   tier: daily
@@ -970,9 +1122,13 @@ words:
   - main_list
 - word: ჯიაძე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Jiadze)
 - word: წუელი
   length: 5
   tier: daily
@@ -985,9 +1141,13 @@ words:
   - main_list
 - word: ბენდს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word (bands) in Georgian script
 - word: ბოლუს
   length: 5
   tier: daily
@@ -1010,9 +1170,13 @@ words:
   - main_list
 - word: მეურნ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment
 - word: დიაცთ
   length: 5
   tier: daily
@@ -1080,9 +1244,13 @@ words:
   - main_list
 - word: სერჟი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Sergei/Serge)
 - word: წაჰყო
   length: 5
   tier: daily
@@ -1090,9 +1258,13 @@ words:
   - main_list
 - word: ნიგერ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Niger)
   history:
   - 1712
   scheduled_day: 1712
@@ -1118,9 +1290,13 @@ words:
   - main_list
 - word: ჰევეა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun/technical (Hevea)
 - word: ტეჟუს
   length: 5
   tier: daily
@@ -1143,9 +1319,13 @@ words:
   - main_list
 - word: დავიდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (David)
 - word: ლენტი
   length: 5
   tier: daily
@@ -1168,9 +1348,13 @@ words:
   - main_list
 - word: გახუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Gakhua)
 - word: მიგდე
   length: 5
   tier: daily
@@ -1183,9 +1367,13 @@ words:
   - main_list
 - word: მარიე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Marie)
 - word: უპოვნ
   length: 5
   tier: daily
@@ -1258,9 +1446,13 @@ words:
   - main_list
 - word: არშია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Arshia)
 - word: ასწილ
   length: 5
   tier: daily
@@ -1303,9 +1495,13 @@ words:
   - main_list
 - word: ტატემ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tate) case form
 - word: არაინ
   length: 5
   tier: daily
@@ -1333,9 +1529,13 @@ words:
   - main_list
 - word: ალექს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Alex)
 - word: ცკალი
   length: 5
   tier: daily
@@ -1343,9 +1543,13 @@ words:
   - main_list
 - word: სროკს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (srok)
 - word: დადის
   length: 5
   tier: daily
@@ -1378,14 +1582,22 @@ words:
   - main_list
 - word: კუმსი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kumsi)
 - word: ილგამ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ilgam)
 - word: აშხენ
   length: 5
   tier: daily
@@ -1433,9 +1645,13 @@ words:
   - main_list
 - word: ლურდი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lourdes)
 - word: პემზა
   length: 5
   tier: daily
@@ -1458,9 +1674,13 @@ words:
   - main_list
 - word: კურტს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kurt's)
 - word: ოციოდ
   length: 5
   tier: daily
@@ -1508,9 +1728,13 @@ words:
   - main_list
 - word: ბეპოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun
 - word: ფიჭას
   length: 5
   tier: daily
@@ -1518,19 +1742,31 @@ words:
   - main_list
 - word: ხალიდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Khalid)
 - word: სურეი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Surrey)
 - word: ბაროუ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Barrow)
 - word: მოედო
   length: 5
   tier: daily
@@ -1576,11 +1812,19 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (rodeo)
 - word: ჰანის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Han's)
 - word: იდინე
   length: 5
   tier: daily
@@ -1636,9 +1880,13 @@ words:
   - main_list
 - word: ვსეგო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian word (vsego) in Georgian script
 - word: ასხმა
   length: 5
   tier: daily
@@ -1676,9 +1924,13 @@ words:
   - main_list
 - word: ნადია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nadia)
 - word: საქმე
   length: 5
   tier: daily
@@ -1686,9 +1938,13 @@ words:
   - main_list
 - word: თინას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tina's)
 - word: კამეა
   length: 5
   tier: daily
@@ -1696,9 +1952,13 @@ words:
   - main_list
 - word: ფიდეი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Fidei)
 - word: კანონ
   length: 5
   tier: daily
@@ -1751,9 +2011,13 @@ words:
   - main_list
 - word: დელლე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Delle)
 - word: ლოთიც
   length: 5
   tier: daily
@@ -1841,9 +2105,13 @@ words:
   - main_list
 - word: ნალია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nalia)
 - word: წრფივ
   length: 5
   tier: daily
@@ -1869,9 +2137,13 @@ words:
   - main_list
 - word: რელიგ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment (relig...)
 - word: ჯავზი
   length: 5
   tier: daily
@@ -1879,9 +2151,13 @@ words:
   - main_list
 - word: ტიმმა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tim)
 - word: კულტი
   length: 5
   tier: daily
@@ -1909,9 +2185,13 @@ words:
   - main_list
 - word: ნინოც
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Nino) case form
 - word: სთქუა
   length: 5
   tier: daily
@@ -1929,9 +2209,13 @@ words:
   - main_list
 - word: ხოსეპ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Josep)
 - word: მომყე
   length: 5
   tier: daily
@@ -2002,9 +2286,13 @@ words:
   - main_list
 - word: დაგნი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dagny)
 - word: წინეთ
   length: 5
   tier: daily
@@ -2022,9 +2310,13 @@ words:
   - main_list
 - word: შუქრი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Shukri)
 - word: მთხოვ
   length: 5
   tier: daily
@@ -2037,9 +2329,13 @@ words:
   - main_list
 - word: ჯემალ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Georgian name Jemal)
 - word: ებლად
   length: 5
   tier: daily
@@ -2077,9 +2373,13 @@ words:
   - main_list
 - word: კლიმს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Klim's)
 - word: იცანთ
   length: 5
   tier: daily
@@ -2107,19 +2407,31 @@ words:
   - main_list
 - word: გიზოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gizo) case form
 - word: გაგრა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gagra, city)
 - word: ჰინდუ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (Hindu)
 - word: დაწვი
   length: 5
   tier: daily
@@ -2142,9 +2454,13 @@ words:
   - main_list
 - word: ნოდარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Georgian name Nodar)
 - word: თხილი
   length: 5
   tier: daily
@@ -2162,9 +2478,13 @@ words:
   - main_list
 - word: ლინჩი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lynch)
   history:
   - 1699
   scheduled_day: 1699
@@ -2175,19 +2495,31 @@ words:
   - main_list
 - word: ბიჩერ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Beecher)
 - word: ნაზია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nazia)
 - word: ბარტს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bart's)
 - word: მაგლი
   length: 5
   tier: daily
@@ -2253,9 +2585,13 @@ words:
   - main_list
 - word: ჰესის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hess's)
 - word: ბურთი
   length: 5
   tier: daily
@@ -2316,6 +2652,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (blog)
 - word: რვავე
   length: 5
   tier: daily
@@ -2343,9 +2683,13 @@ words:
   - main_list
 - word: კარელ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Karel)
 - word: ემცნო
   length: 5
   tier: daily
@@ -2353,9 +2697,13 @@ words:
   - main_list
 - word: ძიუცუ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (jiu-jitsu)
 - word: ეგევე
   length: 5
   tier: daily
@@ -2363,9 +2711,13 @@ words:
   - main_list
 - word: დეიკი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Deiki)
 - word: რახსი
   length: 5
   tier: daily
@@ -2378,9 +2730,13 @@ words:
   - main_list
 - word: არცტგ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment
 - word: ხანამ
   length: 5
   tier: daily
@@ -2393,14 +2749,22 @@ words:
   - main_list
 - word: ასტონ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Aston)
 - word: ერაძე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Eradze)
 - word: ქროდა
   length: 5
   tier: daily
@@ -2466,14 +2830,22 @@ words:
   - main_list
 - word: აჰმად
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ahmad)
 - word: ხოსრო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Khosro)
 - word: ახლოთ
   length: 5
   tier: daily
@@ -2531,9 +2903,13 @@ words:
   - main_list
 - word: წჰიცჰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word 'which' transliterated into Georgian script
 - word: უცები
   length: 5
   tier: daily
@@ -2576,9 +2952,13 @@ words:
   - main_list
 - word: მიური
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Muir)
 - word: აფიშა
   length: 5
   tier: daily
@@ -2591,9 +2971,13 @@ words:
   - main_list
 - word: ჰილის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hill's)
 - word: შეიღო
   length: 5
   tier: daily
@@ -2631,9 +3015,13 @@ words:
   - main_list
 - word: ნათიგ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Natig)
 - word: შეთან
   length: 5
   tier: daily
@@ -2656,9 +3044,13 @@ words:
   - main_list
 - word: ბაჩუკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bachuk)
 - word: ბგერა
   length: 5
   tier: daily
@@ -2666,9 +3058,13 @@ words:
   - main_list
 - word: ლეილი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Leili)
 - word: ნატრი
   length: 5
   tier: daily
@@ -2681,9 +3077,13 @@ words:
   - main_list
 - word: თჰრეე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word 'three' transliterated into Georgian script
 - word: მაღლი
   length: 5
   tier: daily
@@ -2691,9 +3091,13 @@ words:
   - main_list
 - word: უჩაძე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Uchadze)
 - word: დომბა
   length: 5
   tier: daily
@@ -2711,9 +3115,13 @@ words:
   - main_list
 - word: სტორი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word (story) in Georgian script
 - word: რითღა
   length: 5
   tier: daily
@@ -2721,9 +3129,13 @@ words:
   - main_list
 - word: ჯეელი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun
 - word: მინდი
   length: 5
   tier: daily
@@ -2741,14 +3153,22 @@ words:
   - main_list
 - word: ჯენის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jenny's)
 - word: თოლია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tolia)
 - word: ჯვართ
   length: 5
   tier: daily
@@ -2761,14 +3181,22 @@ words:
   - main_list
 - word: ნეგრო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Potentially offensive foreign word
 - word: არმაზ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Armaz, Georgian deity/place)
 - word: ღარიბ
   length: 5
   tier: daily
@@ -2811,9 +3239,13 @@ words:
   - main_list
 - word: კორეა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Korea)
 - word: ვწერე
   length: 5
   tier: daily
@@ -2854,14 +3286,22 @@ words:
   scheduled_day: 1707
 - word: კონტი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Conti)
 - word: სურიკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Surik)
 - word: ეფერა
   length: 5
   tier: daily
@@ -2879,9 +3319,13 @@ words:
   - main_list
 - word: ტოლია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tolia)
 - word: მოსცა
   length: 5
   tier: daily
@@ -2902,9 +3346,13 @@ words:
   scheduled_day: 1718
 - word: ნატიგ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Natig)
 - word: ულდთა
   length: 5
   tier: daily
@@ -2927,9 +3375,13 @@ words:
   - main_list
 - word: სუკრე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Sucre)
 - word: ერთვი
   length: 5
   tier: daily
@@ -2947,9 +3399,13 @@ words:
   - main_list
 - word: ვულფი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Wolfe)
 - word: იურტა
   length: 5
   tier: daily
@@ -2957,9 +3413,13 @@ words:
   - main_list
 - word: ხოსეს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jose's)
 - word: ფინთი
   length: 5
   tier: daily
@@ -2977,9 +3437,13 @@ words:
   - main_list
 - word: აიზეკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Isaac)
 - word: ჰერეთ
   length: 5
   tier: daily
@@ -2987,14 +3451,22 @@ words:
   - main_list
 - word: ლეიას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Leia's)
 - word: ნიდერ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated foreign word (Neder/Nider...)
 - word: სპადა
   length: 5
   tier: daily
@@ -3007,9 +3479,13 @@ words:
   - main_list
 - word: იანგი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Young)
 - word: ფორას
   length: 5
   tier: daily
@@ -3052,9 +3528,13 @@ words:
   - main_list
 - word: სიმონ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Simon)
 - word: რალურ
   length: 5
   tier: daily
@@ -3092,9 +3572,13 @@ words:
   - main_list
 - word: ელბაი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Elba)
 - word: სიტას
   length: 5
   tier: daily
@@ -3117,9 +3601,13 @@ words:
   - main_list
 - word: ხანიმ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Khanim)
   history:
   - 1723
   scheduled_day: 1723
@@ -3155,14 +3643,22 @@ words:
   - main_list
 - word: ფლატე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Platte/Flate)
 - word: მერჩი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Merci)
 - word: მასწი
   length: 5
   tier: daily
@@ -3190,14 +3686,22 @@ words:
   - main_list
 - word: ირინე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Irine)
 - word: რამონ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ramon)
 - word: მოემი
   length: 5
   tier: daily
@@ -3205,14 +3709,22 @@ words:
   - main_list
 - word: ბაქირ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bakir)
 - word: არვინ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Arvin)
 - word: ბღუჯა
   length: 5
   tier: daily
@@ -3230,19 +3742,31 @@ words:
   - main_list
 - word: ზაბიტ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Zabit)
 - word: შუტკა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (shutka/joke)
 - word: ბოზურ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar/offensive term
 - word: დაწყი
   length: 5
   tier: daily
@@ -3275,14 +3799,22 @@ words:
   - main_list
 - word: იაშარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Yashar)
 - word: პოლიტ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment (polit...)
 - word: იქებს
   length: 5
   tier: daily
@@ -3295,14 +3827,22 @@ words:
   - main_list
 - word: ნოდია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Nodia)
 - word: ხხხვი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Nonsense/interjection string
 - word: გონიო
   length: 5
   tier: daily
@@ -3320,9 +3860,13 @@ words:
   - main_list
 - word: თასია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tasia)
 - word: იჭვის
   length: 5
   tier: daily
@@ -3355,9 +3899,13 @@ words:
   - main_list
 - word: ბარაკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Barack)
 - word: ეუწყა
   length: 5
   tier: daily
@@ -3385,9 +3933,13 @@ words:
   - main_list
 - word: ვერონ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Veron)
 - word: მღერი
   length: 5
   tier: daily
@@ -3420,9 +3972,13 @@ words:
   - main_list
 - word: პაკოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Pako's)
 - word: იქადი
   length: 5
   tier: daily
@@ -3450,9 +4006,13 @@ words:
   - main_list
 - word: ნიგარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nigar)
 - word: ღერბი
   length: 5
   tier: daily
@@ -3465,9 +4025,13 @@ words:
   - main_list
 - word: ანუკა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Anuka)
 - word: დააღო
   length: 5
   tier: daily
@@ -3485,9 +4049,13 @@ words:
   - main_list
 - word: გოტიე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Gautier)
 - word: დადევ
   length: 5
   tier: daily
@@ -3495,9 +4063,13 @@ words:
   - main_list
 - word: კოტიკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (kotik)
 - word: ხუილი
   length: 5
   tier: daily
@@ -3525,9 +4097,13 @@ words:
   - main_list
 - word: ვოლტა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Volta)
 - word: თხელს
   length: 5
   tier: daily
@@ -3558,9 +4134,13 @@ words:
   - main_list
 - word: ტუპაკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tupac)
 - word: დაბლა
   length: 5
   tier: daily
@@ -3616,9 +4196,13 @@ words:
   - main_list
 - word: თათია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tatia)
 - word: კამოს
   length: 5
   tier: daily
@@ -3636,19 +4220,31 @@ words:
   - main_list
 - word: ლიუბა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lyuba)
 - word: კოლინ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Colin)
 - word: ოსმან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Osman)
 - word: ჯაყის
   length: 5
   tier: daily
@@ -3689,9 +4285,13 @@ words:
   scheduled_day: 1711
 - word: კატია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Katia)
 - word: შტოთა
   length: 5
   tier: daily
@@ -3704,9 +4304,13 @@ words:
   - main_list
 - word: ინგას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Inga's)
 - word: დუღდა
   length: 5
   tier: daily
@@ -3799,14 +4403,22 @@ words:
   - main_list
 - word: კანტი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kant)
 - word: კოტრდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment
 - word: იწვავ
   length: 5
   tier: daily
@@ -3824,14 +4436,22 @@ words:
   - main_list
 - word: კრეტა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Crete)
 - word: ჰილზი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hills)
 - word: იჩერს
   length: 5
   tier: daily
@@ -3844,9 +4464,13 @@ words:
   - main_list
 - word: ბოიზი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Boise)
 - word: დახევ
   length: 5
   tier: daily
@@ -3859,9 +4483,13 @@ words:
   - main_list
 - word: ჰელგა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Helga)
 - word: ამარა
   length: 5
   tier: daily
@@ -3889,9 +4517,13 @@ words:
   - main_list
 - word: ჩიკოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Chico's)
 - word: გელდი
   length: 5
   tier: daily
@@ -3924,9 +4556,13 @@ words:
   - main_list
 - word: ვინჩი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Vinci)
 - word: არტოს
   length: 5
   tier: daily
@@ -3964,19 +4600,31 @@ words:
   - main_list
 - word: რადიკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Radik)
 - word: ავსტრ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment (Austr...)
 - word: შუდრა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (Shudra, caste term)
 - word: კამის
   length: 5
   tier: daily
@@ -3999,9 +4647,13 @@ words:
   - main_list
 - word: ლუსის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lucy's)
 - word: შენიო
   length: 5
   tier: daily
@@ -4019,9 +4671,13 @@ words:
   - main_list
 - word: ნაილა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Naila)
 - word: ეფერო
   length: 5
   tier: daily
@@ -4052,9 +4708,13 @@ words:
   - main_list
 - word: სონას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Sona's)
 - word: ხდება
   length: 5
   tier: daily
@@ -4077,19 +4737,31 @@ words:
   - main_list
 - word: ხხიიი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Nonsense/interjection string
 - word: ლიზას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lisa's)
 - word: ხუხია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Khukhia)
 - word: ბოდვა
   length: 5
   tier: daily
@@ -4147,9 +4819,13 @@ words:
   - main_list
 - word: კოდუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Kodua)
   history:
   - 1702
   scheduled_day: 1702
@@ -4265,9 +4941,13 @@ words:
   - main_list
 - word: ოჰაიო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ohio)
 - word: უფლბა
   length: 5
   tier: daily
@@ -4295,9 +4975,13 @@ words:
   - main_list
 - word: რომან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Roman)
 - word: მხარე
   length: 5
   tier: daily
@@ -4320,9 +5004,13 @@ words:
   - main_list
 - word: კიტსი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Keats/Kitts)
 - word: მერედ
   length: 5
   tier: daily
@@ -4335,14 +5023,22 @@ words:
   - main_list
 - word: ასმიკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Asmik)
 - word: შამაშ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Shamash)
 - word: სათუო
   length: 5
   tier: daily
@@ -4355,9 +5051,13 @@ words:
   - main_list
 - word: იგორა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Igor)
 - word: ხვალო
   length: 5
   tier: daily
@@ -4398,9 +5098,13 @@ words:
   - main_list
 - word: ნვარდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nvard)
   history:
   - 1720
   scheduled_day: 1720
@@ -4441,9 +5145,13 @@ words:
   - main_list
 - word: ასკარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Askar)
 - word: სეიფს
   length: 5
   tier: daily
@@ -4486,9 +5194,13 @@ words:
   - main_list
 - word: მედიც
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment (medic...)
 - word: აროსა
   length: 5
   tier: daily
@@ -4496,9 +5208,13 @@ words:
   - main_list
 - word: ბოილი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Boyle)
 - word: თიყვა
   length: 5
   tier: daily
@@ -4536,9 +5252,13 @@ words:
   - main_list
 - word: ელმან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Elman)
 - word: წაბლა
   length: 5
   tier: daily
@@ -4556,9 +5276,13 @@ words:
   - main_list
 - word: ნინომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Nino) case form
 - word: ქონდა
   length: 5
   tier: daily
@@ -4566,9 +5290,13 @@ words:
   - main_list
 - word: ვისლა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Vistula/Wisla)
 - word: ჩასცა
   length: 5
   tier: daily
@@ -4676,9 +5404,13 @@ words:
   - main_list
 - word: ხობუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Khobua)
 - word: ესერი
   length: 5
   tier: daily
@@ -4711,14 +5443,22 @@ words:
   - main_list
 - word: დინომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dino)
 - word: ტიერი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Thierry)
 - word: ირაოს
   length: 5
   tier: daily
@@ -4731,9 +5471,13 @@ words:
   - main_list
 - word: მიგელ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Miguel)
 - word: ვაზის
   length: 5
   tier: daily
@@ -4756,9 +5500,13 @@ words:
   - main_list
 - word: ბლური
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (blurry)
 - word: ხვევს
   length: 5
   tier: daily
@@ -4776,9 +5524,13 @@ words:
   - main_list
 - word: ჩეხია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Czechia)
 - word: ტაბას
   length: 5
   tier: daily
@@ -4786,14 +5538,22 @@ words:
   - main_list
 - word: როიალ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word (royal)
 - word: დიანო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Diano)
 - word: აუწვა
   length: 5
   tier: daily
@@ -4844,9 +5604,13 @@ words:
   - main_list
 - word: სალიტ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment
 - word: საწუხ
   length: 5
   tier: daily
@@ -4874,9 +5638,13 @@ words:
   - main_list
 - word: ელიზე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Elysee)
 - word: ლათინ
   length: 5
   tier: daily
@@ -4924,9 +5692,13 @@ words:
   - main_list
 - word: ბახარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bahar)
 - word: ვერსა
   length: 5
   tier: daily
@@ -4944,9 +5716,13 @@ words:
   - main_list
 - word: მარტა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Marta)
 - word: ყალბი
   length: 5
   tier: daily
@@ -5024,9 +5800,13 @@ words:
   - main_list
 - word: ლაციო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lazio)
 - word: პულპა
   length: 5
   tier: daily
@@ -5084,9 +5864,13 @@ words:
   - main_list
 - word: აჰაჰა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Interjection/exclamation, not a real word
 - word: ჯანია
   length: 5
   tier: daily
@@ -5134,9 +5918,13 @@ words:
   - main_list
 - word: რევაზ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Georgian name Revaz)
 - word: მოვაო
   length: 5
   tier: daily
@@ -5194,9 +5982,13 @@ words:
   - main_list
 - word: კნუტს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Knut's)
 - word: ნანაი
   length: 5
   tier: daily
@@ -5224,9 +6016,13 @@ words:
   - main_list
 - word: კნიაზ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (kniaz/prince), obscure
 - word: იდიდა
   length: 5
   tier: daily
@@ -5244,9 +6040,13 @@ words:
   - main_list
 - word: პეტია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Petya)
 - word: სიენი
   length: 5
   tier: daily
@@ -5279,9 +6079,13 @@ words:
   - main_list
 - word: გენრი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Henry)
 - word: სიძეა
   length: 5
   tier: daily
@@ -5299,14 +6103,22 @@ words:
   - main_list
 - word: სეზარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cesar)
 - word: თამარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tamar)
 - word: იდოლი
   length: 5
   tier: daily
@@ -5364,9 +6176,13 @@ words:
   - main_list
 - word: სამირ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Samir)
   history:
   - 1703
   scheduled_day: 1703
@@ -5377,9 +6193,13 @@ words:
   - main_list
 - word: ჰილდა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hilda)
 - word: ულდმა
   length: 5
   tier: daily
@@ -5427,9 +6247,13 @@ words:
   - main_list
 - word: ტჰეოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English/Greek word transliterated into Georgian script
 - word: უგონო
   length: 5
   tier: daily
@@ -5445,9 +6269,13 @@ words:
   - main_list
 - word: მარფა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Marfa)
 - word: ნამუს
   length: 5
   tier: daily
@@ -5455,9 +6283,13 @@ words:
   - main_list
 - word: ნორიკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Norik)
 - word: მღერა
   length: 5
   tier: daily
@@ -5475,9 +6307,13 @@ words:
   - main_list
 - word: კატეგ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment (kateg...)
 - word: იტყობ
   length: 5
   tier: daily
@@ -5490,24 +6326,40 @@ words:
   - main_list
 - word: ნამიგ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Namig)
 - word: უაიტი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (White)
 - word: თერგი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tergi river)
 - word: ასლან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Aslan)
 - word: ავლუს
   length: 5
   tier: daily
@@ -5515,9 +6367,13 @@ words:
   - main_list
 - word: ჰეეეე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Interjection/exclamation, not a real word
 - word: აგური
   length: 5
   tier: daily
@@ -5533,9 +6389,13 @@ words:
   - main_list
 - word: ასტრა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Astra)
 - word: ლაჰჯი
   length: 5
   tier: daily
@@ -5548,9 +6408,13 @@ words:
   - main_list
 - word: შადიე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Shadie)
 - word: ჩიჩიო
   length: 5
   tier: daily
@@ -5558,14 +6422,22 @@ words:
   - main_list
 - word: გენუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Genua/Genoa)
 - word: ჭოჭუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Chochua)
 - word: დაიცო
   length: 5
   tier: daily
@@ -5573,9 +6445,13 @@ words:
   - main_list
 - word: ჰეროს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Heros)
 - word: იჯრან
   length: 5
   tier: daily
@@ -5683,9 +6559,13 @@ words:
   - main_list
 - word: ჰელოუ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word (hello) in Georgian script
 - word: გქვია
   length: 5
   tier: daily
@@ -5693,9 +6573,13 @@ words:
   - main_list
 - word: დებაი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Debay)
 - word: ხვადს
   length: 5
   tier: daily
@@ -5703,9 +6587,13 @@ words:
   - main_list
 - word: ანტონ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Anton)
 - word: აკლია
   length: 5
   tier: daily
@@ -5718,9 +6606,13 @@ words:
   - main_list
 - word: იოჰან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Johan)
 - word: ხუცმა
   length: 5
   tier: daily
@@ -5728,9 +6620,13 @@ words:
   - main_list
 - word: გრინი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Green)
 - word: ტარდი
   length: 5
   tier: daily
@@ -5746,9 +6642,13 @@ words:
   scheduled_day: 1706
 - word: მანდა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar word
 - word: აეშვა
   length: 5
   tier: daily
@@ -5756,9 +6656,13 @@ words:
   - main_list
 - word: სემის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Sami's)
 - word: ქისტი
   length: 5
   tier: daily
@@ -5786,24 +6690,40 @@ words:
   - main_list
 - word: არლის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Arlis)
 - word: გოეთე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Goethe)
 - word: დედრი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dedri)
 - word: უეიდი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Wade)
 - word: მახია
   length: 5
   tier: daily
@@ -5811,9 +6731,13 @@ words:
   - main_list
 - word: აინუს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ainus) declension
 - word: კილის
   length: 5
   tier: daily
@@ -5836,9 +6760,13 @@ words:
   - main_list
 - word: ილკინ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ilkin)
 - word: ენახა
   length: 5
   tier: daily
@@ -5899,9 +6827,13 @@ words:
   scheduled_day: 1708
 - word: ტილდა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tilda)
 - word: იძინო
   length: 5
   tier: daily
@@ -5919,14 +6851,22 @@ words:
   - main_list
 - word: ნიობე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Niobe)
 - word: ტიტას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Titas)
 - word: მტერთ
   length: 5
   tier: daily
@@ -5954,9 +6894,13 @@ words:
   - main_list
 - word: ნატამ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Natam)
 - word: სვამი
   length: 5
   tier: daily
@@ -6009,9 +6953,13 @@ words:
   - main_list
 - word: არშაკ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Arshak)
 - word: გუნდა
   length: 5
   tier: daily
@@ -6019,9 +6967,13 @@ words:
   - main_list
 - word: პოტომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian word (potom) in Georgian script
 - word: ზანგი
   length: 5
   tier: daily
@@ -6029,19 +6981,31 @@ words:
   - main_list
 - word: ბლისა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bliss)
 - word: ჩზეცჰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word 'Czech' transliterated into Georgian script
 - word: ნიურა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Niura)
 - word: სიჰბა
   length: 5
   tier: daily
@@ -6069,9 +7033,13 @@ words:
   - main_list
 - word: ნიშან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nishan)
 - word: მწიფო
   length: 5
   tier: daily
@@ -6084,14 +7052,22 @@ words:
   - main_list
 - word: ანაიდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Anaid)
 - word: ბერტა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Berta)
 - word: კვირა
   length: 5
   tier: daily
@@ -6104,14 +7080,22 @@ words:
   - main_list
 - word: ელიზა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Eliza)
 - word: ბონდი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bond)
 - word: ყარსი
   length: 5
   tier: daily
@@ -6139,9 +7123,13 @@ words:
   - main_list
 - word: ოსაკა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Osaka)
 - word: მიტრა
   length: 5
   tier: daily
@@ -6159,14 +7147,22 @@ words:
   - main_list
 - word: მატერ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated foreign word (mater...)
 - word: ლიონი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lyon)
 - word: ცეკვა
   length: 5
   tier: daily
@@ -6179,14 +7175,22 @@ words:
   - main_list
 - word: მელუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (surname Melua)
 - word: რუსკი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (ruski)
 - word: ფაილს
   length: 5
   tier: daily
@@ -6199,14 +7203,22 @@ words:
   - main_list
 - word: კენტი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kent)
 - word: ასოცი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment (associ...)
 - word: ქშენა
   length: 5
   tier: daily
@@ -6285,9 +7297,13 @@ words:
   - main_list
 - word: მაულე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Maule)
 - word: ულდუზ
   length: 5
   tier: daily
@@ -6315,9 +7331,13 @@ words:
   - main_list
 - word: ქორეა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Korea)
 - word: იდეალ
   length: 5
   tier: daily
@@ -6380,9 +7400,13 @@ words:
   - main_list
 - word: ოტჰერ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word 'other' transliterated into Georgian script
 - word: ნატიფ
   length: 5
   tier: daily
@@ -6390,9 +7414,13 @@ words:
   - main_list
 - word: ჩარლზ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Charles)
 - word: იკმარ
   length: 5
   tier: daily
@@ -6420,9 +7448,13 @@ words:
   - main_list
 - word: კესოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Keso)
 - word: ურიამ
   length: 5
   tier: daily
@@ -6435,9 +7467,13 @@ words:
   - main_list
 - word: პურუს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Purus)
 - word: ასევე
   length: 5
   tier: daily
@@ -6460,19 +7496,31 @@ words:
   - main_list
 - word: გრანტ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Grant)
 - word: ელბის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Elbe/Elvis)
 - word: მსსის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Abbreviation fragment
 - word: აუგეს
   length: 5
   tier: daily
@@ -6483,9 +7531,13 @@ words:
   scheduled_day: 1728
 - word: სანქტ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated foreign word (Sankt...)
 - word: იხმეს
   length: 5
   tier: daily
@@ -6503,9 +7555,13 @@ words:
   - main_list
 - word: ჯანიო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Janio)
 - word: ქიშტი
   length: 5
   tier: daily
@@ -6518,9 +7574,13 @@ words:
   - main_list
 - word: ნამდვ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment
 - word: ესსეს
   length: 5
   tier: daily
@@ -6548,9 +7608,13 @@ words:
   - main_list
 - word: ქეისი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Casey)
 - word: ძოწის
   length: 5
   tier: daily
@@ -6558,9 +7622,13 @@ words:
   - main_list
 - word: ვიტალ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Vital)
 - word: კასტა
   length: 5
   tier: daily
@@ -6598,9 +7666,13 @@ words:
   - main_list
 - word: ოლიკო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Georgian name Oliko)
 - word: ლეობა
   length: 5
   tier: daily
@@ -6613,9 +7685,13 @@ words:
   - main_list
 - word: ტროას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Troy)
 - word: ძუკუს
   length: 5
   tier: daily
@@ -6623,9 +7699,13 @@ words:
   - main_list
 - word: უნშიუ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign/obscure word (unshu)
 - word: ბედან
   length: 5
   tier: daily
@@ -6663,9 +7743,13 @@ words:
   - main_list
 - word: სარრა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Sarra)
 - word: ნაშაა
   length: 5
   tier: daily
@@ -6688,9 +7772,13 @@ words:
   - main_list
 - word: ჰენრი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Henry)
 - word: გყვნე
   length: 5
   tier: daily
@@ -6736,9 +7824,13 @@ words:
   - main_list
 - word: ვუკოლ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Vukol)
 - word: ლიანი
   length: 5
   tier: daily
@@ -6751,9 +7843,13 @@ words:
   - main_list
 - word: თეკლა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Tekla)
 - word: დაიწო
   length: 5
   tier: daily
@@ -6761,9 +7857,13 @@ words:
   - main_list
 - word: ანხელ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Angel, Spanish)
 - word: გრუზა
   length: 5
   tier: daily
@@ -6796,9 +7896,13 @@ words:
   - main_list
 - word: ჩაჩბა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Surname (Chachba)
 - word: მხოლო
   length: 5
   tier: daily
@@ -6836,9 +7940,13 @@ words:
   - main_list
 - word: ირმას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Irma's)
 - word: ვირგო
   length: 5
   tier: daily
@@ -6861,9 +7969,13 @@ words:
   - main_list
 - word: სინდი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Cindy)
 - word: რაჯის
   length: 5
   tier: daily
@@ -6896,9 +8008,13 @@ words:
   - main_list
 - word: ჰლამი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (khlam/junk)
 - word: ძმანო
   length: 5
   tier: daily
@@ -6941,9 +8057,13 @@ words:
   - main_list
 - word: ლარსს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lars)
 - word: კარიო
   length: 5
   tier: daily
@@ -6971,9 +8091,13 @@ words:
   - main_list
 - word: ბექის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Becky's)
 - word: უპოვი
   length: 5
   tier: daily
@@ -7001,9 +8125,13 @@ words:
   - main_list
 - word: პაულო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Paulo)
 - word: გულია
   length: 5
   tier: daily
@@ -7011,14 +8139,22 @@ words:
   - main_list
 - word: დიარა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Diara)
 - word: ჯოდან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jordan)
 - word: ტაშით
   length: 5
   tier: daily
@@ -7061,9 +8197,13 @@ words:
   - main_list
 - word: ლაურა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Laura)
 - word: ვყავთ
   length: 5
   tier: daily
@@ -7081,9 +8221,13 @@ words:
   - main_list
 - word: მატეო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Mateo)
 - word: შეჯდე
   length: 5
   tier: daily
@@ -7106,9 +8250,13 @@ words:
   - main_list
 - word: ტოკაი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tokay)
 - word: ესავი
   length: 5
   tier: daily
@@ -7116,9 +8264,13 @@ words:
   - main_list
 - word: ბექამ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Beckham)
 - word: პაწომ
   length: 5
   tier: daily
@@ -7151,9 +8303,13 @@ words:
   - main_list
 - word: გუერა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Guerra)
 - word: რკინა
   length: 5
   tier: daily
@@ -7161,9 +8317,13 @@ words:
   - main_list
 - word: პრადო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Prado)
 - word: რეგბი
   length: 5
   tier: daily
@@ -7171,9 +8331,13 @@ words:
   - main_list
 - word: გიგის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gigi's)
 - word: გზანი
   length: 5
   tier: daily
@@ -7191,9 +8355,13 @@ words:
   - main_list
 - word: ფოგტი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Fogt/Vogt)
 - word: აძურა
   length: 5
   tier: daily
@@ -7286,9 +8454,13 @@ words:
   - main_list
 - word: გოგუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Gogua)
 - word: უარყო
   length: 5
   tier: daily
@@ -7321,9 +8493,13 @@ words:
   - main_list
 - word: ოდინი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Odin)
 - word: ფთილა
   length: 5
   tier: daily
@@ -7341,9 +8517,13 @@ words:
   - main_list
 - word: ალინა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Alina)
 - word: მოხუც
   length: 5
   tier: daily
@@ -7381,9 +8561,13 @@ words:
   - main_list
 - word: კაზას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Casa/Kaza)
 - word: წყება
   length: 5
   tier: daily
@@ -7444,9 +8628,13 @@ words:
   - main_list
 - word: გრიმი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Grimm)
 - word: ჰფლობ
   length: 5
   tier: daily
@@ -7454,9 +8642,13 @@ words:
   - main_list
 - word: ფრიცი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Fritz)
 - word: ჩავლა
   length: 5
   tier: daily
@@ -7464,9 +8656,13 @@ words:
   - main_list
 - word: ჯობსო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jobs)
 - word: მცალს
   length: 5
   tier: daily
@@ -7482,6 +8678,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun (surname Bichau)
 - word: მწამს
   length: 5
   tier: daily
@@ -7504,19 +8704,31 @@ words:
   - main_list
 - word: ელტონ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Elton)
 - word: ნოსტე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated foreign word (noste...)
 - word: აინურ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ainur)
 - word: ბიძამ
   length: 5
   tier: daily
@@ -7529,9 +8741,13 @@ words:
   - main_list
 - word: ხუხუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Khukhua)
 - word: სცნობ
   length: 5
   tier: daily
@@ -7549,9 +8765,13 @@ words:
   - main_list
 - word: ტალია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Talia)
 - word: უსასო
   length: 5
   tier: daily
@@ -7559,9 +8779,13 @@ words:
   - main_list
 - word: გიგომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Gigo) case form
   history:
   - 1692
   scheduled_day: 1692
@@ -7582,9 +8806,13 @@ words:
   - main_list
 - word: ილხამ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ilham)
 - word: ლაჩრი
   length: 5
   tier: daily
@@ -7607,9 +8835,13 @@ words:
   - main_list
 - word: ლილია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lilia)
 - word: ვამეყ
   length: 5
   tier: daily
@@ -7632,9 +8864,13 @@ words:
   - main_list
 - word: ქეთომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Keto) case form
 - word: სხუაი
   length: 5
   tier: daily
@@ -7642,9 +8878,13 @@ words:
   - main_list
 - word: კინგი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (King)
 - word: პიკემ
   length: 5
   tier: daily
@@ -7672,9 +8912,13 @@ words:
   - main_list
 - word: გიზამ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Giza) case form
 - word: კვერს
   length: 5
   tier: daily
@@ -7687,9 +8931,13 @@ words:
   - main_list
 - word: ალტერ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated foreign word (alter...)
 - word: სხივი
   length: 5
   tier: daily
@@ -7712,9 +8960,13 @@ words:
   - main_list
 - word: მეირი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Meiri)
 - word: მულტი
   length: 5
   tier: daily
@@ -7787,9 +9039,13 @@ words:
   - main_list
 - word: აიტენ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun
 - word: ხარბს
   length: 5
   tier: daily
@@ -7802,9 +9058,13 @@ words:
   - main_list
 - word: ლონდა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Londa)
 - word: მონურ
   length: 5
   tier: daily
@@ -7820,14 +9080,22 @@ words:
   scheduled_day: 1700
 - word: ომარი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Omari)
 - word: ჩუბინ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Chubin)
 - word: იკოსი
   length: 5
   tier: daily
@@ -7840,9 +9108,13 @@ words:
   - main_list
 - word: დონნა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Donna)
 - word: ელვარ
   length: 5
   tier: daily
@@ -7905,14 +9177,22 @@ words:
   - main_list
 - word: სოფოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Sofo) case form
 - word: წეხან
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Archaic/dialectal, too obscure
 - word: ქმნილ
   length: 5
   tier: daily
@@ -7920,9 +9200,13 @@ words:
   - main_list
 - word: შირლი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Shirley)
 - word: შენცა
   length: 5
   tier: daily
@@ -7955,9 +9239,13 @@ words:
   - main_list
 - word: ტობიმ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Tobi)
 - word: ესსაყ
   length: 5
   tier: daily
@@ -7995,9 +9283,13 @@ words:
   - main_list
 - word: უოლეს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Wallace)
 - word: ოხითა
   length: 5
   tier: daily
@@ -8005,9 +9297,13 @@ words:
   - main_list
 - word: თემომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Temo) case form
 - word: ძველი
   length: 5
   tier: daily
@@ -8015,9 +9311,13 @@ words:
   - main_list
 - word: როსის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ross's)
 - word: ნაყოფ
   length: 5
   tier: daily
@@ -8025,9 +9325,13 @@ words:
   - main_list
 - word: ლუისა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Louisa)
 - word: ალუჩა
   length: 5
   tier: daily
@@ -8040,9 +9344,13 @@ words:
   - main_list
 - word: მაურო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Mauro)
 - word: ხომლი
   length: 5
   tier: daily
@@ -8095,9 +9403,13 @@ words:
   - main_list
 - word: კოლტს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Colts)
 - word: ვცემე
   length: 5
   tier: daily
@@ -8148,9 +9460,13 @@ words:
   - main_list
 - word: სასპე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Truncated word fragment (saspe...)
 - word: ინათა
   length: 5
   tier: daily
@@ -8166,9 +9482,13 @@ words:
   - main_list
 - word: ჰალსი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Halsey)
 - word: ხნიერ
   length: 5
   tier: daily
@@ -8186,19 +9506,31 @@ words:
   - main_list
 - word: ნიკომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Niko) case form
 - word: ზაქია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Zakia)
 - word: პრაშუ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign/obscure word
 - word: ოსეფა
   length: 5
   tier: daily
@@ -8231,9 +9563,13 @@ words:
   - main_list
 - word: ივეტა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Iveta)
 - word: გოგლა
   length: 5
   tier: daily
@@ -8256,9 +9592,13 @@ words:
   - main_list
 - word: საადი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Saadi)
 - word: ჯუმის
   length: 5
   tier: daily
@@ -8276,14 +9616,22 @@ words:
   - main_list
 - word: ოლეგი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Oleg)
 - word: უიტნი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Whitney)
   history:
   - 1715
   - 1716
@@ -8335,9 +9683,13 @@ words:
   - main_list
 - word: კიმის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Kim's)
 - word: სტილე
   length: 5
   tier: daily
@@ -8350,9 +9702,13 @@ words:
   - main_list
 - word: მარლა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Marla)
 - word: უთავს
   length: 5
   tier: daily
@@ -8370,14 +9726,22 @@ words:
   - main_list
 - word: მემედ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Memed)
 - word: პიოტრ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Piotr)
 - word: ხვდებ
   length: 5
   tier: daily
@@ -8390,19 +9754,31 @@ words:
   - main_list
 - word: ფენია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Fenia)
 - word: გრანდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign word (Grand)
 - word: გაგუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Gagua)
 - word: შიფრი
   length: 5
   tier: daily
@@ -8410,9 +9786,13 @@ words:
   - main_list
 - word: ლამია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lamia)
 - word: შვლის
   length: 5
   tier: daily
@@ -8465,9 +9845,13 @@ words:
   - main_list
 - word: მაგდო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (name Magda)
 - word: ამათა
   length: 5
   tier: daily
@@ -8475,9 +9859,13 @@ words:
   - main_list
 - word: გერჩი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Gerchi)
 - word: ძრწის
   length: 5
   tier: daily
@@ -8495,9 +9883,13 @@ words:
   - main_list
 - word: სურაჰ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun/word (Surah)
 - word: რითმი
   length: 5
   tier: daily
@@ -8515,14 +9907,22 @@ words:
   - main_list
 - word: სტრიტ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word (street) in Georgian script
 - word: ჯოჯუა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Jojua)
 - word: აგინა
   length: 5
   tier: daily
@@ -8585,9 +9985,13 @@ words:
   - main_list
 - word: როუზი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Rouzi)
 - word: ყმანი
   length: 5
   tier: daily
@@ -8625,9 +10029,13 @@ words:
   - main_list
 - word: ჩოსტა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Costa)
 - word: თრობა
   length: 5
   tier: daily
@@ -8650,9 +10058,13 @@ words:
   - main_list
 - word: ენდრი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Andri/Andre)
 - word: მუხლთ
   length: 5
   tier: daily
@@ -8663,6 +10075,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign proper noun (Major) or rank loanword
 - word: ტაიჭი
   length: 5
   tier: daily
@@ -8700,9 +10116,13 @@ words:
   - main_list
 - word: ლესია
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lesia)
 - word: წერომ
   length: 5
   tier: daily
@@ -8725,9 +10145,13 @@ words:
   - main_list
 - word: იორგი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Iorgi/Georgi)
 - word: აგებთ
   length: 5
   tier: daily
@@ -8778,9 +10202,13 @@ words:
   - main_list
 - word: ჰანსი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Hans)
 - word: ჩარტი
   length: 5
   tier: daily
@@ -8808,9 +10236,13 @@ words:
   - main_list
 - word: პჰასე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word 'phase' transliterated into Georgian script
 - word: ტანკა
   length: 5
   tier: daily
@@ -8848,9 +10280,13 @@ words:
   - main_list
 - word: ფორდს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ford's)
 - word: აღვიძ
   length: 5
   tier: daily
@@ -8868,9 +10304,13 @@ words:
   - main_list
 - word: ბელას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bella's)
 - word: აუშვა
   length: 5
   tier: daily
@@ -8883,14 +10323,22 @@ words:
   - main_list
 - word: ლიკამ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lika)
 - word: ვანოს
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Vano) case form
 - word: მოიწი
   length: 5
   tier: daily
@@ -8898,14 +10346,22 @@ words:
   - main_list
 - word: გრაის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Grice/Grace)
 - word: ბოარდ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word (board) in Georgian script
 - word: შკალა
   length: 5
   tier: daily
@@ -8928,14 +10384,22 @@ words:
   - main_list
 - word: ომაძე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Georgian surname (Omadze)
 - word: დოდომ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dodoma)
 - word: აეწია
   length: 5
   tier: daily
@@ -8943,9 +10407,13 @@ words:
   - main_list
 - word: დულცე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Dulce)
 - word: ფისომ
   length: 5
   tier: daily
@@ -9813,9 +11281,13 @@ words:
   - main_list
 - word: ჯეიმი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Jamie)
 - word: სწორი
   length: 5
   tier: daily
@@ -9868,9 +11340,13 @@ words:
   - main_list
 - word: ლაიკა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Laika)
 - word: ტრაკს
   length: 5
   tier: valid
@@ -11478,9 +12954,13 @@ words:
   - main_list
 - word: მალკა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Malka)
 - word: აწვინ
   length: 5
   tier: valid
@@ -14978,9 +16458,13 @@ words:
   - main_list
 - word: როლან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Roland)
 - word: ბალღი
   length: 5
   tier: valid
@@ -15783,9 +17267,13 @@ words:
   - main_list
 - word: ნიცშე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nietzsche)
 - word: ხხვიი
   length: 5
   tier: valid
@@ -17688,9 +19176,13 @@ words:
   - main_list
 - word: ლორდი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword (lord)
 - word: ცოტაა
   length: 5
   tier: valid
@@ -22158,9 +23650,13 @@ words:
   - main_list
 - word: რაიან
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Ryan)
 - word: ბუვიე
   length: 5
   tier: valid
@@ -24293,9 +25789,13 @@ words:
   - main_list
 - word: კარლო
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Carlo)
 - word: მეტია
   length: 5
   tier: daily
@@ -28508,9 +30008,13 @@ words:
   - main_list
 - word: ლაზარ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Lazar)
 - word: მაქეს
   length: 5
   tier: valid
@@ -31108,9 +32612,13 @@ words:
   - main_list
 - word: მესიე
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Messier)
 - word: ბუხუს
   length: 5
   tier: valid
@@ -32126,6 +33634,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword (whisky)
 - word: იჯერა
   length: 5
   tier: valid
@@ -34426,9 +35938,13 @@ words:
   - main_list
 - word: ლიანა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Liana)
 - word: ტომრი
   length: 5
   tier: valid
@@ -35386,9 +36902,13 @@ words:
   - main_list
 - word: პატრა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Patra)
 - word: პილწი
   length: 5
   tier: valid
@@ -36219,9 +37739,13 @@ words:
   - main_list
 - word: დეიდა
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Deida)
 - word: ჯალილ
   length: 5
   tier: valid
@@ -37404,9 +38928,13 @@ words:
   - main_list
 - word: ნენსი
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Nancy)
 - word: ხარჯი
   length: 5
   tier: valid
@@ -39369,9 +40897,13 @@ words:
   - main_list
 - word: თომას
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Thomas)
 - word: კატაი
   length: 5
   tier: valid
@@ -41320,9 +42852,13 @@ words:
   - main_list
 - word: მაიკლ
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Michael)
   history:
   - 1698
   scheduled_day: 1698
@@ -43308,9 +44844,13 @@ words:
   - main_list
 - word: ბობის
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign proper noun (Bobby's)
 - word: დადექ
   length: 5
   tier: valid

@@ -819,9 +819,13 @@ words:
   - main_list
 - word: stevi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Stevi'
 - word: sapan
   length: 5
   tier: daily
@@ -1452,9 +1456,13 @@ words:
   - main_list
 - word: josef
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Josef'
 - word: cubiâ
   length: 5
   tier: daily
@@ -2896,9 +2904,13 @@ words:
   - main_list
 - word: denis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Denis'
 - word: grant
   length: 5
   tier: daily
@@ -4301,9 +4313,13 @@ words:
   - main_list
 - word: zuane
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Zuane (Friulian form of Giovanni)'
 - word: seiso
   length: 5
   tier: daily
@@ -5206,9 +5222,13 @@ words:
   - main_list
 - word: checo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Czech (demonym)'
 - word: libic
   length: 5
   tier: daily
@@ -5657,9 +5677,13 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Chile (country name)'
 - word: doplâ
   length: 5
   tier: daily
@@ -5897,9 +5921,13 @@ words:
   - main_list
 - word: stano
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Stano'
 - word: orgoi
   length: 5
   tier: daily
@@ -7362,9 +7390,13 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Simon'
 - word: sbocâ
   length: 5
   tier: daily
@@ -7635,9 +7667,13 @@ words:
   - main_list
 - word: heine
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Heine'
 - word: sablâ
   length: 5
   tier: daily
@@ -7843,9 +7879,13 @@ words:
   - main_list
 - word: steve
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Steve'
 - word: inceâ
   length: 5
   tier: daily
@@ -8314,9 +8354,13 @@ words:
   - main_list
 - word: milan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Milan (city in Italy)'
 - word: corès
   length: 5
   tier: daily
@@ -9219,9 +9263,13 @@ words:
   - main_list
 - word: turin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Turin (city in Italy)'
 - word: gatar
   length: 5
   tier: daily
@@ -10137,9 +10185,13 @@ words:
   - main_list
 - word: atene
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Athens (capital of Greece)'
 - word: miute
   length: 5
   tier: daily
@@ -10988,9 +11040,13 @@ words:
   - main_list
 - word: aoste
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Aosta (city in Italy)'
 - word: smodâ
   length: 5
   tier: daily
@@ -13142,9 +13198,13 @@ words:
   - main_list
 - word: emili
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Emili (Emily)'
 - word: bands
   length: 5
   tier: daily
@@ -13480,9 +13540,13 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name David'
 - word: tiziâ
   length: 5
   tier: daily
@@ -14282,9 +14346,13 @@ words:
   - main_list
 - word: jesus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jesus (religious figure)'
 - word: timit
   length: 5
   tier: daily
@@ -14860,9 +14928,13 @@ words:
   - main_list
 - word: ernie
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Ernie'
 - word: favôr
   length: 5
   tier: daily
@@ -15533,9 +15605,13 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Dante'
 - word: piere
   length: 5
   tier: daily
@@ -16303,9 +16379,13 @@ words:
   - main_list
 - word: filip
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Filip (Philip)'
 - word: parei
   length: 5
   tier: daily
@@ -16626,9 +16706,13 @@ words:
   - main_list
 - word: chine
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: China (country name)'
 - word: zoiel
   length: 5
   tier: daily
@@ -17688,9 +17772,13 @@ words:
   - main_list
 - word: stali
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Stalin (historical figure reference)'
 - word: viole
   length: 5
   tier: daily
@@ -17903,9 +17991,13 @@ words:
   - main_list
 - word: pauli
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name Pauli (Paul)'
 - word: legri
   length: 5
   tier: daily

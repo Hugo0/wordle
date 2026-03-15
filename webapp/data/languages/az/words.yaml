@@ -95,10 +95,14 @@ words:
   - main_list
 - word: altay
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Altay, place/mountain name)
 - word: altun
   length: 5
   tier: daily
@@ -2321,9 +2325,13 @@ words:
   - main_list
 - word: firon
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun (Pharaoh, used as proper name in Azerbaijani)
 - word: fitnə
   length: 5
   tier: daily
@@ -2477,9 +2485,13 @@ words:
   - main_list
 - word: gürcü
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Georgian)
 - word: gürzə
   length: 5
   tier: daily
@@ -2726,9 +2738,13 @@ words:
   - main_list
 - word: hicaz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Hejaz, place name in Saudi Arabia)
 - word: hicri
   length: 5
   tier: daily
@@ -2746,10 +2762,14 @@ words:
   - main_list
 - word: hindu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic/religious demonym (Hindu)
 - word: hisli
   length: 5
   tier: daily
@@ -2836,9 +2856,13 @@ words:
   - main_list
 - word: iblis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Iblis, Islamic name for Satan)
 - word: icarə
   length: 5
   tier: daily
@@ -3020,9 +3044,13 @@ words:
   - main_list
 - word: incil
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Bible/Gospel, religious text name)
 - word: incir
   length: 5
   tier: daily
@@ -3108,10 +3136,14 @@ words:
   - main_list
 - word: islam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun (Islam, religion name)
   history:
   - 1688
   scheduled_day: 1688
@@ -6310,10 +6342,14 @@ words:
   - main_list
 - word: tatar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Ethnic demonym (Tatar)
 - word: tavan
   length: 5
   tier: daily
@@ -6539,9 +6575,13 @@ words:
   - main_list
 - word: tiran
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Tiran, place name) - also means tyrant
 - word: tirmə
   length: 5
   tier: daily
@@ -7385,9 +7425,13 @@ words:
   - main_list
 - word: yunan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Ethnic demonym (Greek/Yunan)
 - word: yüyən
   length: 5
   tier: daily

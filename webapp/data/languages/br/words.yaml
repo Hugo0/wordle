@@ -104,9 +104,13 @@ words:
   - main_list
 - word: dahud
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - legendary Breton figure Dahud
 - word: tehou
   length: 5
   tier: daily
@@ -264,9 +268,13 @@ words:
   - main_list
 - word: ixvet
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word - Roman numeral notation (19th)
 - word: broig
   length: 5
   tier: daily
@@ -325,6 +333,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Eden (biblical)
 - word: blech
   length: 5
   tier: daily
@@ -391,9 +403,13 @@ words:
   - main_list
 - word: senan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Saint Senan
 - word: basat
   length: 5
   tier: daily
@@ -421,10 +437,14 @@ words:
   - main_list
 - word: khmer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Khmer people/language
 - word: preoz
   length: 5
   tier: daily
@@ -528,6 +548,10 @@ words:
   frequency: 2.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Japanese loanword
 - word: mmccc
   length: 5
   tier: valid
@@ -545,9 +569,13 @@ words:
   - main_list
 - word: khasi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Khasi people/language
 - word: polod
   length: 5
   tier: daily
@@ -842,10 +870,14 @@ words:
   - main_list
 - word: osage
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Osage people
 - word: ellig
   length: 5
   tier: daily
@@ -873,10 +905,14 @@ words:
   - main_list
 - word: lubin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Saint Lubin / town name
 - word: mabeg
   length: 5
   tier: daily
@@ -1332,10 +1368,14 @@ words:
   - main_list
 - word: rosko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Roscoff (Breton town)
 - word: varad
   length: 5
   tier: daily
@@ -1467,10 +1507,14 @@ words:
   - main_list
 - word: tirol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tyrol region
 - word: rabez
   length: 5
   tier: daily
@@ -1605,10 +1649,14 @@ words:
   - main_list
 - word: mekka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Mecca
 - word: peilh
   length: 5
   tier: daily
@@ -1772,10 +1820,14 @@ words:
   - main_list
 - word: addis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Addis (Ababa), capital city
 - word: pakva
   length: 5
   tier: daily
@@ -1828,9 +1880,13 @@ words:
   - main_list
 - word: grebo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Grebo people/language
 - word: hudek
   length: 5
   tier: daily
@@ -2214,9 +2270,13 @@ words:
   - main_list
 - word: iltud
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Saint Iltud
 - word: james
   length: 5
   tier: valid
@@ -2286,10 +2346,14 @@ words:
   - main_list
 - word: kuban
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Kuban region
 - word: emvev
   length: 5
   tier: daily
@@ -2418,16 +2482,24 @@ words:
   - main_list
 - word: kitts
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Saint Kitts
 - word: agata
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Agata
 - word: bront
   length: 5
   tier: daily
@@ -2569,10 +2641,14 @@ words:
   - main_list
 - word: uriel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - archangel Uriel
 - word: ampon
   length: 5
   tier: daily
@@ -2718,10 +2794,14 @@ words:
   - main_list
 - word: suzon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Suzon
 - word: klemm
   length: 5
   tier: daily
@@ -2734,6 +2814,10 @@ words:
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword from Spanish/English
 - word: rodañ
   length: 5
   tier: daily
@@ -2761,16 +2845,24 @@ words:
   - main_list
 - word: alban
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Alban
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country Chile
 - word: kobig
   length: 5
   tier: daily
@@ -2798,6 +2890,10 @@ words:
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Breton given name Hamon
 - word: baraa
   length: 5
   tier: daily
@@ -3172,9 +3268,13 @@ words:
   - main_list
 - word: fhnom
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun fragment - Phnom (Penh)
 - word: sklat
   length: 5
   tier: daily
@@ -3250,15 +3350,23 @@ words:
   - main_list
 - word: waray
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Waray language/people
 - word: studi
   length: 5
   tier: daily
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - studio/study
 - word: mxvii
   length: 5
   tier: valid
@@ -3271,10 +3379,14 @@ words:
   - main_list
 - word: nizza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Nice (city, Italian spelling)
 - word: eilig
   length: 5
   tier: daily
@@ -3315,10 +3427,14 @@ words:
   - main_list
 - word: dhabi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Abu Dhabi
 - word: vagol
   length: 5
   tier: daily
@@ -3390,6 +3506,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Breton given name Meven
 - word: bipie
   length: 5
   tier: daily
@@ -3427,6 +3547,10 @@ words:
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Polynesian name
   history:
   - 1704
   scheduled_day: 1704
@@ -3855,10 +3979,14 @@ words:
   - main_list
 - word: lazar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Lazarus
 - word: raval
   length: 5
   tier: daily
@@ -3887,10 +4015,14 @@ words:
   - main_list
 - word: wolof
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Wolof language/people
 - word: ebrel
   length: 5
   tier: daily
@@ -3972,6 +4104,10 @@ words:
   frequency: 1.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Russian loanword - a type of whip
 - word: eokat
   length: 5
   tier: daily
@@ -4025,6 +4161,10 @@ words:
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/French loanword
   history:
   - 1727
   scheduled_day: 1727
@@ -4081,10 +4221,14 @@ words:
   - main_list
 - word: saint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: French/English loanword - saint
 - word: gafir
   length: 5
   tier: daily
@@ -4194,10 +4338,14 @@ words:
   - main_list
 - word: porto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Porto city
 - word: foioù
   length: 5
   tier: daily
@@ -4256,10 +4404,14 @@ words:
   - main_list
 - word: yemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Yemen
 - word: roial
   length: 5
   tier: daily
@@ -4372,10 +4524,14 @@ words:
   - main_list
 - word: herve
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Hervé
 - word: alese
   length: 5
   tier: daily
@@ -4561,6 +4717,10 @@ words:
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword
 - word: hiilh
   length: 5
   tier: daily
@@ -4597,6 +4757,10 @@ words:
   frequency: 1.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - helmet/helm
 - word: kwamm
   length: 5
   tier: daily
@@ -4690,10 +4854,14 @@ words:
   - main_list
 - word: start
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: kaoud
   length: 5
   tier: daily
@@ -4799,9 +4967,13 @@ words:
   - main_list
 - word: gitts
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun fragment - Saint Kitts
 - word: vodiñ
   length: 5
   tier: daily
@@ -4896,10 +5068,14 @@ words:
   - main_list
 - word: rouen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Rouen (French city)
 - word: mdclx
   length: 5
   tier: valid
@@ -4935,10 +5111,14 @@ words:
   - main_list
 - word: albin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Albin
 - word: sunañ
   length: 5
   tier: daily
@@ -4988,10 +5168,14 @@ words:
   - main_list
 - word: dafne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Daphne
 - word: mateo
   length: 5
   tier: valid
@@ -5016,16 +5200,24 @@ words:
   - main_list
 - word: plato
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Plato (philosopher)
 - word: phnom
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun fragment - Phnom (Penh)
 - word: driaz
   length: 5
   tier: daily
@@ -5048,10 +5240,14 @@ words:
   - main_list
 - word: babel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tower of Babel
 - word: ezkef
   length: 5
   tier: daily
@@ -5145,6 +5341,10 @@ words:
   frequency: 1.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Breton given name Elven
 - word: lourd
   length: 5
   tier: daily
@@ -5229,9 +5429,13 @@ words:
   - main_list
 - word: alepo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - city Aleppo
 - word: diwan
   length: 5
   tier: daily
@@ -5265,10 +5469,14 @@ words:
   - main_list
 - word: artus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - King Arthur (Artus)
 - word: zunio
   length: 5
   tier: daily
@@ -5318,6 +5526,10 @@ words:
   frequency: 2.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Indonesian city Ambon
 - word: zeval
   length: 5
   tier: daily
@@ -5418,10 +5630,14 @@ words:
   - main_list
 - word: dhaka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - capital of Bangladesh
 - word: mclix
   length: 5
   tier: valid
@@ -5444,10 +5660,14 @@ words:
   - main_list
 - word: drink
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: tudañ
   length: 5
   tier: daily
@@ -5470,9 +5690,13 @@ words:
   - main_list
 - word: ginea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Guinea
 - word: zamez
   length: 5
   tier: daily
@@ -5709,9 +5933,13 @@ words:
   - main_list
 - word: kadog
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Breton saint name Kadog
 - word: cdxvi
   length: 5
   tier: valid
@@ -5851,10 +6079,14 @@ words:
   - main_list
 - word: leila
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Leila
 - word: savat
   length: 5
   tier: daily
@@ -5877,10 +6109,14 @@ words:
   - main_list
 - word: wilde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Oscar Wilde
 - word: rakva
   length: 5
   tier: daily
@@ -6019,10 +6255,14 @@ words:
   - main_list
 - word: mafia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Foreign loanword from Italian
 - word: kroaz
   length: 5
   tier: daily
@@ -6076,10 +6316,14 @@ words:
   - main_list
 - word: turki
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Turkey/Turkish
 - word: badus
   length: 5
   tier: daily
@@ -6092,9 +6336,13 @@ words:
   - main_list
 - word: xxvet
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a word - Roman numeral notation (20th)
 - word: gazeg
   length: 5
   tier: daily
@@ -6135,10 +6383,14 @@ words:
   - main_list
 - word: match
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: dcciv
   length: 5
   tier: valid
@@ -6283,10 +6535,14 @@ words:
   - main_list
 - word: praha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Prague
 - word: gwell
   length: 5
   tier: daily
@@ -6387,6 +6643,10 @@ words:
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Japanese loanword
 - word: clxii
   length: 5
   tier: valid
@@ -6584,10 +6844,14 @@ words:
   - main_list
 - word: flask
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword
 - word: takon
   length: 5
   tier: daily
@@ -6761,10 +7025,14 @@ words:
   - main_list
 - word: rusia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Russia
 - word: tlead
   length: 5
   tier: daily
@@ -6869,6 +7137,10 @@ words:
   frequency: 1.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - disco
 - word: jodoù
   length: 5
   tier: daily
@@ -7056,9 +7328,13 @@ words:
   - main_list
 - word: serzh
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Serge/Serzh
 - word: mclxi
   length: 5
   tier: valid
@@ -7522,10 +7798,14 @@ words:
   - main_list
 - word: libia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Libya
 - word: chevr
   length: 5
   tier: daily
@@ -7640,9 +7920,13 @@ words:
   - main_list
 - word: eliaz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Elias
 - word: korzh
   length: 5
   tier: daily
@@ -7695,10 +7979,14 @@ words:
   - main_list
 - word: kasia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Kasia
 - word: gudon
   length: 5
   tier: daily
@@ -7884,6 +8172,10 @@ words:
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: International loanword
 - word: pigos
   length: 5
   tier: daily
@@ -8053,10 +8345,14 @@ words:
   - main_list
 - word: bemba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Bemba people/language
 - word: kozig
   length: 5
   tier: daily
@@ -8246,6 +8542,10 @@ words:
   frequency: 1.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Breton given name Tangi
 - word: jangl
   length: 5
   tier: daily
@@ -8321,10 +8621,14 @@ words:
   - main_list
 - word: sedan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Sedan (French city)
 - word: beleg
   length: 5
   tier: daily
@@ -8581,9 +8885,13 @@ words:
   - main_list
 - word: nogay
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Nogay people
 - word: alarm
   length: 5
   tier: daily
@@ -8791,10 +9099,14 @@ words:
   - main_list
 - word: yanna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Breton given name Yanna
 - word: zarch
   length: 5
   tier: daily
@@ -9873,9 +10185,13 @@ words:
   - main_list
 - word: spagn
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Spain (Spagn)
 - word: strap
   length: 5
   tier: valid
@@ -10192,10 +10508,14 @@ words:
   - main_list
 - word: major
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English/French loanword
 - word: anoaz
   length: 5
   tier: valid
@@ -10856,9 +11176,13 @@ words:
   - main_list
 - word: frañs
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - France
 - word: assav
   length: 5
   tier: valid
@@ -11562,6 +11886,10 @@ words:
   frequency: 1.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Breton given name Kador
 - word: laosk
   length: 5
   tier: daily
@@ -13986,6 +14314,10 @@ words:
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Russian loanword
 - word: emren
   length: 5
   tier: daily
@@ -17925,6 +18257,10 @@ words:
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign abbreviation - météo
 - word: ekant
   length: 5
   tier: valid
@@ -18426,6 +18762,10 @@ words:
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword
 - word: mdcli
   length: 5
   tier: valid
@@ -19849,6 +20189,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun variant - Inferno/Hell as proper place
 - word: dugad
   length: 5
   tier: valid
@@ -20342,6 +20686,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - album
 - word: beler
   length: 5
   tier: valid
@@ -21652,10 +22000,14 @@ words:
   - main_list
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - country Japan
 - word: fegad
   length: 5
   tier: valid
@@ -21913,10 +22265,14 @@ words:
   - main_list
 - word: korea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Korea
 - word: preig
   length: 5
   tier: valid
@@ -22187,12 +22543,20 @@ words:
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Dogon people variant
 - word: itron
   length: 5
   tier: daily
   frequency: 1.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun usage - Our Lady (Itron Varia)
 - word: dlxxx
   length: 5
   tier: valid
@@ -23790,6 +24154,10 @@ words:
   frequency: 5.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English/French loanword
 - word: zrama
   length: 5
   tier: valid
@@ -24192,9 +24560,13 @@ words:
   - main_list
 - word: dokyo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Tokyo (dokyo is a variant)
 - word: menez
   length: 5
   tier: daily
@@ -25272,6 +25644,10 @@ words:
   frequency: 4.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Italian loanword
 - word: pegañ
   length: 5
   tier: daily
@@ -25990,6 +26366,10 @@ words:
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: International loanword
 - word: tivin
   length: 5
   tier: valid
@@ -26042,6 +26422,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword / proper noun
 - word: hunoù
   length: 5
   tier: valid
@@ -26149,10 +26533,14 @@ words:
   - main_list
 - word: krist
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Christ
 - word: pistr
   length: 5
   tier: valid
@@ -27581,10 +27969,14 @@ words:
   - main_list
 - word: jozef
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - male given name Joseph
 - word: manav
   length: 5
   tier: valid
@@ -27773,6 +28165,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Foreign loanword - guitar
 - word: fruig
   length: 5
   tier: valid
@@ -28017,10 +28413,14 @@ words:
   - main_list
 - word: eston
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Estonia demonym
 - word: okapi
   length: 5
   tier: valid
@@ -28510,10 +28910,14 @@ words:
   - main_list
 - word: morse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Morse code
 - word: tepot
   length: 5
   tier: valid
@@ -28798,9 +29202,13 @@ words:
   - main_list
 - word: jezuz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Jesus
 - word: amand
   length: 5
   tier: valid
@@ -30647,10 +31055,14 @@ words:
   - main_list
 - word: armel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Breton male given name Armel
 - word: vrust
   length: 5
   tier: valid
@@ -30778,10 +31190,14 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Congo
 - word: costa
   length: 5
   tier: valid
@@ -31305,10 +31721,14 @@ words:
   - main_list
 - word: adela
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Adela
 - word: dimbr
   length: 5
   tier: valid
@@ -31408,10 +31828,14 @@ words:
   - main_list
 - word: latin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Latin language/people
 - word: prank
   length: 5
   tier: valid
@@ -35717,9 +36141,13 @@ words:
   - main_list
 - word: pariz
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Paris
 - word: mdxci
   length: 5
   tier: valid
@@ -36430,10 +36858,14 @@ words:
   - main_list
 - word: ugent
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ghent city (Ugent)
 - word: oriya
   length: 5
   tier: valid
@@ -36451,10 +36883,14 @@ words:
   - main_list
 - word: reims
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Reims (French city)
 - word: birig
   length: 5
   tier: valid

@@ -101,10 +101,14 @@ words:
   - main_list
 - word: scout
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (scout)
 - word: adral
   length: 5
   tier: daily
@@ -123,9 +127,13 @@ words:
   - main_list
 - word: xihad
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Loanword from Arabic - loaded political term (jihad)
 - word: saúde
   length: 5
   tier: daily
@@ -289,10 +297,14 @@ words:
   - main_list
 - word: kyrie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Greek/Latin loanword - religious term
 - word: zócar
   length: 5
   tier: daily
@@ -850,9 +862,13 @@ words:
   - main_list
 - word: fóder
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar word (to fuck, stressed variant)
 - word: vulva
   length: 5
   tier: valid
@@ -895,15 +911,23 @@ words:
   - main_list
 - word: xulia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - female name (Xulia/Julia)
 - word: stick
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (stick)
 - word: manso
   length: 5
   tier: daily
@@ -928,9 +952,13 @@ words:
   - main_list
 - word: octpc
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Not a valid word - appears to be a data error
 - word: suave
   length: 5
   tier: daily
@@ -1259,10 +1287,14 @@ words:
   - main_list
 - word: khmer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - ethnic/language name (Khmer)
 - word: catro
   length: 5
   tier: daily
@@ -1440,10 +1472,14 @@ words:
   - main_list
 - word: babel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - biblical place name (Babel)
 - word: vougo
   length: 5
   tier: daily
@@ -1591,9 +1627,13 @@ words:
   - main_list
 - word: rdlex
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Not a valid Galician word - appears to be an error or abbreviation
 - word: certo
   length: 5
   tier: daily
@@ -1649,10 +1689,14 @@ words:
   - main_list
 - word: joule
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English/French loanword - scientific unit (joule)
 - word: látir
   length: 5
   tier: daily
@@ -1987,10 +2031,14 @@ words:
   - main_list
 - word: hertz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - surname / unit name (Hertz)
 - word: plano
   length: 5
   tier: daily
@@ -2161,10 +2209,14 @@ words:
   - main_list
 - word: hippy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (hippy)
 - word: orneo
   length: 5
   tier: daily
@@ -2268,10 +2320,14 @@ words:
   - main_list
 - word: lycra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - brand name (Lycra)
 - word: rasar
   length: 5
   tier: daily
@@ -2626,9 +2682,13 @@ words:
   - main_list
 - word: xudeu
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Can be considered offensive depending on context (Jew as noun)
 - word: ligón
   length: 5
   tier: daily
@@ -2869,10 +2929,14 @@ words:
   - main_list
 - word: dandi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword (dandy)
 - word: xerar
   length: 5
   tier: daily
@@ -3542,10 +3606,14 @@ words:
   - main_list
 - word: stock
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (stock)
   history:
   - 1714
   scheduled_day: 1714
@@ -3765,10 +3833,14 @@ words:
   - main_list
 - word: xerez
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - place name (Jerez)
 - word: citra
   length: 5
   tier: daily
@@ -3826,10 +3898,14 @@ words:
   - main_list
 - word: merda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar word (shit)
 - word: amina
   length: 5
   tier: daily
@@ -3983,10 +4059,14 @@ words:
   - main_list
 - word: óscar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Óscar)
 - word: leste
   length: 5
   tier: daily
@@ -4311,10 +4391,14 @@ words:
   - main_list
 - word: tarot
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: French loanword (tarot)
 - word: chave
   length: 5
   tier: daily
@@ -4351,10 +4435,14 @@ words:
   - main_list
 - word: suite
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: French/English loanword (suite)
 - word: arpeu
   length: 5
   tier: daily
@@ -4473,16 +4561,24 @@ words:
   - main_list
 - word: radar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword/acronym (radar)
 - word: kappa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Greek loanword - letter name
 - word: rinle
   length: 5
   tier: daily
@@ -4679,10 +4775,14 @@ words:
   - main_list
 - word: rugby
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (rugby)
 - word: rúbir
   length: 5
   tier: daily
@@ -4929,10 +5029,14 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - country name (Chile)
 - word: rapar
   length: 5
   tier: daily
@@ -5054,10 +5158,14 @@ words:
   - main_list
 - word: mahdi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - religious title (Mahdi)
 - word: ácaro
   length: 5
   tier: daily
@@ -5419,10 +5527,14 @@ words:
   - main_list
 - word: láser
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword/acronym (laser)
 - word: papón
   length: 5
   tier: daily
@@ -5501,10 +5613,14 @@ words:
   - main_list
 - word: nicol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - personal name (Nicol)
 - word: terno
   length: 5
   tier: daily
@@ -5638,10 +5754,14 @@ words:
   - main_list
 - word: crack
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (crack)
 - word: óptar
   length: 5
   tier: daily
@@ -6107,10 +6227,14 @@ words:
   - main_list
 - word: robot
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Czech loanword (robot) - widely adopted
 - word: rodeo
   length: 5
   tier: daily
@@ -6154,10 +6278,14 @@ words:
   - main_list
 - word: tutti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Italian loanword (tutti)
 - word: cazón
   length: 5
   tier: daily
@@ -6317,10 +6445,14 @@ words:
   - main_list
 - word: islam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - religion name (Islam)
 - word: fabal
   length: 5
   tier: daily
@@ -6882,10 +7014,14 @@ words:
   - main_list
 - word: mitin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword (meeting)
 - word: morte
   length: 5
   tier: daily
@@ -8172,10 +8308,14 @@ words:
   - main_list
 - word: pudin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword (pudding)
 - word: barda
   length: 5
   tier: valid
@@ -8511,16 +8651,24 @@ words:
   - main_list
 - word: xulio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - male name (Xulio/Julio); though also month of July
 - word: cagar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar word (to defecate)
 - word: carpo
   length: 5
   tier: valid
@@ -9395,10 +9543,14 @@ words:
   - main_list
 - word: pizza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Italian loanword - though widely used internationally
 - word: proxy
   length: 5
   tier: valid
@@ -10144,10 +10296,14 @@ words:
   - main_list
 - word: porro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Slang for marijuana joint; also a type of leek
 - word: xunto
   length: 5
   tier: daily
@@ -10328,10 +10484,14 @@ words:
   - main_list
 - word: porra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar/offensive word (damn, also vulgar noun)
 - word: nauta
   length: 5
   tier: valid
@@ -10662,10 +10822,14 @@ words:
   - main_list
 - word: foder
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Vulgar word (to fuck)
 - word: gallo
   length: 5
   tier: daily
@@ -11513,10 +11677,14 @@ words:
   - main_list
 - word: vídeo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword (video)
 - word: xenol
   length: 5
   tier: valid
@@ -11668,10 +11836,14 @@ words:
   - main_list
 - word: hobby
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (hobby)
 - word: trela
   length: 5
   tier: valid
@@ -13018,10 +13190,14 @@ words:
   - main_list
 - word: nadal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - surname (Nadal); though also means 'Christmas' in some dialects
 - word: biolo
   length: 5
   tier: valid
@@ -15419,16 +15595,24 @@ words:
   - main_list
 - word: maría
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (María)
 - word: coñac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun - brand/place name (Cognac)
 - word: cairo
   length: 5
   tier: daily
@@ -15687,10 +15871,14 @@ words:
   - main_list
 - word: twist
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (twist)
 - word: local
   length: 5
   tier: daily
@@ -15897,10 +16085,14 @@ words:
   - main_list
 - word: round
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (round)
 - word: vinda
   length: 5
   tier: valid
@@ -16414,10 +16606,14 @@ words:
   - main_list
 - word: morse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - surname (Morse)
 - word: foula
   length: 5
   tier: valid
@@ -16500,10 +16696,14 @@ words:
   - main_list
 - word: vodka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Russian loanword (vodka)
 - word: solfa
   length: 5
   tier: valid
@@ -17678,10 +17878,14 @@ words:
   - main_list
 - word: póker
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword (poker)
 - word: épico
   length: 5
   tier: daily
@@ -18171,10 +18375,14 @@ words:
   - main_list
 - word: flash
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English loanword (flash)
 - word: xaspe
   length: 5
   tier: valid
@@ -18377,10 +18585,14 @@ words:
   - main_list
 - word: césar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (César)
 - word: vírar
   length: 5
   tier: valid
@@ -18558,10 +18770,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun - personal name (Dante)
 - word: duque
   length: 5
   tier: daily
@@ -98536,10 +98752,14 @@ words:
   - supplement
 - word: pixel
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 3.25
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword (pixel)
 - word: pizan
   length: 5
   tier: valid

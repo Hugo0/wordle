@@ -137,10 +137,14 @@ words:
   - main_list
 - word: samoa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: butea
   length: 5
   tier: daily
@@ -160,10 +164,14 @@ words:
   - main_list
 - word: paulo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: libro
   length: 5
   tier: daily
@@ -244,10 +252,14 @@ words:
   - main_list
 - word: georg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: siclo
   length: 5
   tier: daily
@@ -283,10 +295,14 @@ words:
   - main_list
 - word: lydie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: sonda
   length: 5
   tier: daily
@@ -323,10 +339,14 @@ words:
   - main_list
 - word: dacic
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dacian reference'
 - word: robur
   length: 5
   tier: daily
@@ -410,10 +430,14 @@ words:
   - main_list
 - word: rabat
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Morocco'
 - word: morte
   length: 5
   tier: daily
@@ -422,10 +446,14 @@ words:
   - main_list
 - word: chern
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun fragment: Chernobyl reference'
 - word: suger
   length: 5
   tier: daily
@@ -439,10 +467,14 @@ words:
   - main_list
 - word: mahdi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Islamic messianic figure'
 - word: phylo
   length: 5
   tier: daily
@@ -473,10 +505,14 @@ words:
   - main_list
 - word: riyad
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Riyadh'
 - word: palar
   length: 5
   tier: daily
@@ -491,10 +527,14 @@ words:
   - main_list
 - word: maggi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name'
 - word: verbo
   length: 5
   tier: daily
@@ -509,10 +549,14 @@ words:
   - main_list
 - word: adria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Adriatic region'
 - word: jocar
   length: 5
   tier: daily
@@ -525,10 +569,14 @@ words:
   - main_list
 - word: moyse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Moses variant'
   history:
   - 1690
   scheduled_day: 1690
@@ -544,16 +592,24 @@ words:
   - main_list
 - word: praga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Prague'
 - word: james
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: dildo
   length: 5
   tier: daily
@@ -607,10 +663,14 @@ words:
   - main_list
 - word: hanoi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Vietnam'
 - word: testa
   length: 5
   tier: daily
@@ -637,16 +697,24 @@ words:
   - main_list
 - word: zaire
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: former country name'
 - word: adige
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian river'
 - word: medie
   length: 5
   tier: daily
@@ -719,6 +787,10 @@ words:
   frequency: 5.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: month name (capitalized in most languages)'
 - word: tuner
   length: 5
   tier: daily
@@ -727,10 +799,14 @@ words:
   - main_list
 - word: hosea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: biblical name'
 - word: light
   length: 5
   tier: daily
@@ -745,9 +821,13 @@ words:
   - main_list
 - word: iraki
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Iraqi demonym'
 - word: povre
   length: 5
   tier: daily
@@ -835,10 +915,14 @@ words:
   scheduled_day: 1709
 - word: allah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious name'
 - word: mango
   length: 5
   tier: daily
@@ -847,10 +931,14 @@ words:
   - main_list
 - word: alofi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Niue'
 - word: obolo
   length: 5
   tier: daily
@@ -880,10 +968,14 @@ words:
   - main_list
 - word: niger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country/river'
 - word: zloty
   length: 5
   tier: daily
@@ -930,10 +1022,14 @@ words:
   - main_list
 - word: balto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Baltic reference'
 - word: malia
   length: 5
   tier: daily
@@ -994,10 +1090,14 @@ words:
   - main_list
 - word: cocos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cocos Islands'
 - word: hurra
   length: 5
   tier: daily
@@ -1070,10 +1170,14 @@ words:
   - main_list
 - word: maori
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic group'
 - word: gesto
   length: 5
   tier: daily
@@ -1088,9 +1192,13 @@ words:
   - main_list
 - word: serbe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Serbian reference'
 - word: major
   length: 5
   tier: daily
@@ -1111,16 +1219,24 @@ words:
   - main_list
 - word: kafka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: author'
 - word: dover
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: English city'
 - word: fatwa
   length: 5
   tier: daily
@@ -1133,6 +1249,10 @@ words:
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: honorific title'
 - word: scala
   length: 5
   tier: daily
@@ -1227,9 +1347,13 @@ words:
   - main_list
 - word: peleo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Peleus (mythological)'
 - word: picea
   length: 5
   tier: daily
@@ -1294,15 +1418,23 @@ words:
   - main_list
 - word: haiti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: egina
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek island Aegina'
 - word: tamia
   length: 5
   tier: daily
@@ -1351,10 +1483,14 @@ words:
   - main_list
 - word: dakar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Senegal'
 - word: oasic
   length: 5
   tier: daily
@@ -1368,10 +1504,14 @@ words:
   - main_list
 - word: lucas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: remar
   length: 5
   tier: daily
@@ -1426,10 +1566,14 @@ words:
   - main_list
 - word: occam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: William of Occam'
 - word: barbo
   length: 5
   tier: daily
@@ -1444,10 +1588,14 @@ words:
   - main_list
 - word: berna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bern (Swiss city)'
 - word: sonio
   length: 5
   tier: daily
@@ -1466,10 +1614,14 @@ words:
   - main_list
 - word: josue
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Joshua'
 - word: vigia
   length: 5
   tier: daily
@@ -1478,10 +1630,14 @@ words:
   - main_list
 - word: rodin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: sculptor'
 - word: murar
   length: 5
   tier: daily
@@ -1511,10 +1667,14 @@ words:
   - main_list
 - word: maria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: recon
   length: 5
   tier: daily
@@ -1523,10 +1683,14 @@ words:
   - main_list
 - word: kabul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Afghanistan'
 - word: ignar
   length: 5
   tier: daily
@@ -1534,10 +1698,14 @@ words:
   - main_list
 - word: hindu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religion/ethnic reference'
 - word: lacio
   length: 5
   tier: daily
@@ -1567,16 +1735,24 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: political figure'
 - word: aries
   length: 5
   tier: daily
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: zodiac sign'
 - word: pompa
   length: 5
   tier: daily
@@ -1751,10 +1927,14 @@ words:
   - main_list
 - word: hasid
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hasidic movement'
 - word: navel
   length: 5
   tier: daily
@@ -1773,21 +1953,33 @@ words:
   - main_list
 - word: talib
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Taliban reference'
 - word: cufic
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kufic script reference'
 - word: delos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek island'
   history:
   - 1684
   scheduled_day: 1684
@@ -1799,9 +1991,13 @@ words:
   - main_list
 - word: yaren
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Nauru'
 - word: hypno
   length: 5
   tier: daily
@@ -1862,10 +2058,14 @@ words:
   - main_list
 - word: turin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian city'
 - word: lista
   length: 5
   tier: daily
@@ -1874,10 +2074,14 @@ words:
   - main_list
 - word: saudi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Saudi Arabia'
 - word: fetal
   length: 5
   tier: daily
@@ -1900,6 +2104,10 @@ words:
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Ottoman title'
 - word: actea
   length: 5
   tier: daily
@@ -1947,10 +2155,14 @@ words:
   - main_list
 - word: judea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: historical region'
 - word: filon
   length: 5
   tier: daily
@@ -1965,9 +2177,13 @@ words:
   - main_list
 - word: eolie
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Aeolian Islands'
 - word: mytho
   length: 5
   tier: daily
@@ -2008,10 +2224,14 @@ words:
   - main_list
 - word: macau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: territory'
 - word: neuma
   length: 5
   tier: daily
@@ -2025,10 +2245,14 @@ words:
   - main_list
 - word: bates
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname'
 - word: puero
   length: 5
   tier: daily
@@ -2071,10 +2295,14 @@ words:
   - main_list
 - word: cuman
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cuman people'
 - word: risma
   length: 5
   tier: daily
@@ -2088,10 +2316,14 @@ words:
   - main_list
 - word: dania
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Denmark'
 - word: poplo
   length: 5
   tier: daily
@@ -2099,10 +2331,14 @@ words:
   - main_list
 - word: verdi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: composer'
 - word: mycel
   length: 5
   tier: daily
@@ -2121,16 +2357,24 @@ words:
   - main_list
 - word: nicol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: bacon
   length: 5
   tier: daily
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: English loanword, not standard Interlingua
 - word: musli
   length: 5
   tier: daily
@@ -2139,10 +2383,14 @@ words:
   - main_list
 - word: nippo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nippon/Japan reference'
 - word: ecese
   length: 5
   tier: daily
@@ -2174,10 +2422,14 @@ words:
   - main_list
 - word: volga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russian river'
 - word: trust
   length: 5
   tier: daily
@@ -2208,10 +2460,14 @@ words:
   - main_list
 - word: finno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Finno- ethnic prefix'
 - word: sappa
   length: 5
   tier: daily
@@ -2219,10 +2475,14 @@ words:
   - main_list
 - word: milan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian city'
 - word: valor
   length: 5
   tier: daily
@@ -2243,10 +2503,14 @@ words:
   - main_list
 - word: didon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dido (mythological queen)'
 - word: ferro
   length: 5
   tier: daily
@@ -2278,16 +2542,24 @@ words:
   - main_list
 - word: paris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: French city'
 - word: syria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: virar
   length: 5
   tier: daily
@@ -2345,27 +2617,43 @@ words:
   - main_list
 - word: judas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: biblical name'
 - word: bayes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bayes (mathematician)'
 - word: cuban
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cuban demonym'
 - word: andyr
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Anadyr (Russian city)'
 - word: styge
   length: 5
   tier: daily
@@ -2397,10 +2685,14 @@ words:
   - main_list
 - word: ammon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient kingdom/deity'
 - word: calla
   length: 5
   tier: daily
@@ -2409,10 +2701,14 @@ words:
   - main_list
 - word: draco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: constellation / historical figure'
 - word: matte
   length: 5
   tier: daily
@@ -2484,10 +2780,14 @@ words:
   - main_list
 - word: sofia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bulgarian capital / personal name'
 - word: aleph
   length: 5
   tier: daily
@@ -2559,10 +2859,14 @@ words:
   - main_list
 - word: sunda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sunda Islands'
 - word: dioic
   length: 5
   tier: daily
@@ -2671,10 +2975,14 @@ words:
   - main_list
 - word: yemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: ponte
   length: 5
   tier: daily
@@ -2683,10 +2991,14 @@ words:
   - main_list
 - word: belge
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Belgian demonym'
 - word: uveal
   length: 5
   tier: daily
@@ -2747,10 +3059,14 @@ words:
   - main_list
 - word: bantu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic/language group'
 - word: tsuga
   length: 5
   tier: daily
@@ -2775,10 +3091,14 @@ words:
   - main_list
 - word: locke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: philosopher'
 - word: stria
   length: 5
   tier: daily
@@ -2798,10 +3118,14 @@ words:
   - main_list
 - word: arles
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: French city'
 - word: echio
   length: 5
   tier: daily
@@ -2815,9 +3139,13 @@ words:
   - main_list
 - word: numea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Noumea'
   history:
   - 1724
   scheduled_day: 1724
@@ -2829,10 +3157,14 @@ words:
   - main_list
 - word: hades
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek god/underworld'
 - word: alqui
   length: 5
   tier: daily
@@ -2880,10 +3212,14 @@ words:
   - main_list
 - word: worms
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: German city'
 - word: sadic
   length: 5
   tier: daily
@@ -2920,16 +3256,24 @@ words:
   - main_list
 - word: peter
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: ariel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal/brand name'
 - word: corno
   length: 5
   tier: daily
@@ -2944,10 +3288,14 @@ words:
   - main_list
 - word: berne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bern (Swiss city)'
 - word: metir
   length: 5
   tier: daily
@@ -2960,10 +3308,14 @@ words:
   - main_list
 - word: liszt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: composer'
 - word: gamon
   length: 5
   tier: daily
@@ -2984,16 +3336,24 @@ words:
   - main_list
 - word: velia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient Italian city'
 - word: cosac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cossack'
 - word: daman
   length: 5
   tier: daily
@@ -3002,16 +3362,24 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: lhasa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tibetan city'
 - word: tante
   length: 5
   tier: daily
@@ -3070,6 +3438,10 @@ words:
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: personal name (also a plant genus)'
 - word: corps
   length: 5
   tier: daily
@@ -3083,10 +3455,14 @@ words:
   - main_list
 - word: aryan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sensitive term with offensive connotations
 - word: palmo
   length: 5
   tier: daily
@@ -3127,10 +3503,14 @@ words:
   - main_list
 - word: fuchs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: German surname'
 - word: scopo
   length: 5
   tier: daily
@@ -3144,10 +3524,14 @@ words:
   - main_list
 - word: tyrol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Austrian/Italian region'
 - word: antea
   length: 5
   tier: daily
@@ -3156,9 +3540,13 @@ words:
   - main_list
 - word: accad
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient Akkad'
 - word: hotel
   length: 5
   tier: daily
@@ -3179,10 +3567,14 @@ words:
   - main_list
 - word: omani
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Omani demonym'
 - word: brave
   length: 5
   tier: daily
@@ -3191,10 +3583,14 @@ words:
   - main_list
 - word: tamil
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: language/ethnic group'
 - word: buran
   length: 5
   tier: daily
@@ -3214,10 +3610,14 @@ words:
   - main_list
 - word: delft
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Dutch city'
 - word: pinot
   length: 5
   tier: daily
@@ -3323,10 +3723,14 @@ words:
   - main_list
 - word: ruman
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Romanian reference'
 - word: tenta
   length: 5
   tier: daily
@@ -3432,10 +3836,14 @@ words:
   - main_list
 - word: corfu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek island'
 - word: ounce
   length: 5
   tier: daily
@@ -3444,10 +3852,14 @@ words:
   - main_list
 - word: athos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mount Athos / literary character'
   history:
   - 1723
   scheduled_day: 1723
@@ -3464,10 +3876,14 @@ words:
   - main_list
 - word: sumer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient civilization'
 - word: moner
   length: 5
   tier: daily
@@ -3512,9 +3928,13 @@ words:
   - main_list
 - word: fidji
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Fiji'
 - word: lucto
   length: 5
   tier: daily
@@ -3533,10 +3953,14 @@ words:
   - main_list
 - word: porno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar / inappropriate for daily puzzle
 - word: hilar
   length: 5
   tier: daily
@@ -3556,10 +3980,14 @@ words:
   - main_list
 - word: corse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Corsica'
 - word: volta
   length: 5
   tier: daily
@@ -3695,10 +4123,14 @@ words:
   - main_list
 - word: troia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Troy'
 - word: apode
   length: 5
   tier: daily
@@ -3712,10 +4144,14 @@ words:
   - main_list
 - word: judee
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Judea variant'
 - word: crase
   length: 5
   tier: daily
@@ -3724,10 +4160,14 @@ words:
   - main_list
 - word: namur
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Belgian city'
 - word: pelve
   length: 5
   tier: daily
@@ -3746,15 +4186,23 @@ words:
   - main_list
 - word: mecca
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: holy city'
 - word: coito
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Potentially inappropriate: sexual intercourse'
 - word: loran
   length: 5
   tier: daily
@@ -3796,10 +4244,14 @@ words:
   - main_list
 - word: curie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Marie Curie'
 - word: haste
   length: 5
   tier: daily
@@ -3836,10 +4288,14 @@ words:
   - main_list
 - word: petri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Petri dish inventor'
 - word: tribo
   length: 5
   tier: daily
@@ -3854,10 +4310,14 @@ words:
   - main_list
 - word: seoul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: South Korean capital'
 - word: flave
   length: 5
   tier: daily
@@ -3878,10 +4338,14 @@ words:
   - main_list
 - word: annam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: historical region in Vietnam'
 - word: dulce
   length: 5
   tier: daily
@@ -3957,10 +4421,14 @@ words:
   - main_list
 - word: crito
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Plato''s dialogue character'
 - word: casse
   length: 5
   tier: daily
@@ -4003,10 +4471,14 @@ words:
   - main_list
 - word: lucca
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian city'
 - word: pecia
   length: 5
   tier: daily
@@ -4103,10 +4575,14 @@ words:
   - main_list
 - word: parsi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Parsi people'
 - word: livor
   length: 5
   tier: daily
@@ -4211,10 +4687,14 @@ words:
   - main_list
 - word: nicea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient city'
 - word: stout
   length: 5
   tier: daily
@@ -4229,10 +4709,14 @@ words:
   - main_list
 - word: russe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russian reference'
 - word: varva
   length: 5
   tier: daily
@@ -4332,10 +4816,14 @@ words:
   - main_list
 - word: arion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological figure'
 - word: dagar
   length: 5
   tier: daily
@@ -4412,9 +4900,13 @@ words:
   - main_list
 - word: lydic
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Lydian reference'
 - word: fuina
   length: 5
   tier: daily
@@ -4428,10 +4920,14 @@ words:
   - main_list
 - word: creta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Crete'
 - word: jumbo
   length: 5
   tier: daily
@@ -4472,10 +4968,14 @@ words:
   - main_list
 - word: diana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.02
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / goddess'
 - word: banda
   length: 5
   tier: daily
@@ -4496,10 +4996,14 @@ words:
   - main_list
 - word: chaco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: region in South America'
 - word: alque
   length: 5
   tier: daily
@@ -4531,10 +5035,14 @@ words:
   - main_list
 - word: nizam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Indian ruler title'
 - word: porto
   length: 5
   tier: daily
@@ -4594,9 +5102,13 @@ words:
   - main_list
 - word: epiro
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Epirus region'
 - word: tepor
   length: 5
   tier: daily
@@ -4708,10 +5220,14 @@ words:
   - main_list
 - word: fidel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: fardo
   length: 5
   tier: daily
@@ -4719,10 +5235,14 @@ words:
   - main_list
 - word: kodak
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name'
 - word: xylol
   length: 5
   tier: daily
@@ -4730,15 +5250,23 @@ words:
   - main_list
 - word: esopo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Aesop'
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
   history:
   - 1699
   scheduled_day: 1699
@@ -4755,10 +5283,14 @@ words:
   - main_list
 - word: sudan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: fjeld
   length: 5
   tier: daily
@@ -4818,10 +5350,14 @@ words:
   - main_list
 - word: yazoo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: river/place name'
 - word: tinea
   length: 5
   tier: daily
@@ -4879,10 +5415,14 @@ words:
   scheduled_day: 1706
 - word: appia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Appian Way'
 - word: edace
   length: 5
   tier: daily
@@ -5055,16 +5595,24 @@ words:
   - main_list
 - word: kyzyl
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russian city'
 - word: nobel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Alfred Nobel'
 - word: hirte
   length: 5
   tier: daily
@@ -5141,21 +5689,33 @@ words:
   - main_list
 - word: reims
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: French city'
 - word: algol
   length: 5
   tier: daily
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: star name / programming language'
 - word: creso
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Croesus'
 - word: simia
   length: 5
   tier: daily
@@ -5174,10 +5734,14 @@ words:
   - main_list
 - word: china
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: milio
   length: 5
   tier: daily
@@ -5186,10 +5750,14 @@ words:
   - main_list
 - word: khmer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic/language group'
 - word: brute
   length: 5
   tier: daily
@@ -5244,10 +5812,14 @@ words:
   - main_list
 - word: jesus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious figure'
 - word: poema
   length: 5
   tier: daily
@@ -5318,10 +5890,14 @@ words:
   - main_list
 - word: faroe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Faroe Islands'
 - word: collo
   length: 5
   tier: daily
@@ -5352,16 +5928,24 @@ words:
   - main_list
 - word: midas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological king'
 - word: corea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Korea'
 - word: sorta
   length: 5
   tier: daily
@@ -5442,10 +6026,14 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: guano
   length: 5
   tier: daily
@@ -5490,10 +6078,14 @@ words:
   - main_list
 - word: dione
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological figure / moon'
 - word: atavo
   length: 5
   tier: daily
@@ -5653,6 +6245,10 @@ words:
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Celtic reference'
 - word: mafia
   length: 5
   tier: daily
@@ -5718,10 +6314,14 @@ words:
   - main_list
 - word: jonas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal/biblical name'
 - word: apyre
   length: 5
   tier: daily
@@ -5746,10 +6346,14 @@ words:
   - main_list
 - word: isaia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Isaiah'
 - word: trufa
   length: 5
   tier: daily
@@ -5769,10 +6373,14 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / award'
 - word: robot
   length: 5
   tier: daily
@@ -5781,10 +6389,14 @@ words:
   - main_list
 - word: satan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious figure'
 - word: botta
   length: 5
   tier: daily
@@ -5898,16 +6510,24 @@ words:
   - main_list
 - word: henry
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: maxim
   length: 5
   tier: daily
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: personal name'
 - word: sirop
   length: 5
   tier: daily
@@ -5915,10 +6535,14 @@ words:
   - main_list
 - word: house
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English loanword, not standard Interlingua
 - word: cyano
   length: 5
   tier: daily
@@ -5931,6 +6555,10 @@ words:
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: personal name prefix'
 - word: volva
   length: 5
   tier: daily
@@ -5956,10 +6584,14 @@ words:
   - main_list
 - word: libya
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: flexo
   length: 5
   tier: daily
@@ -5995,16 +6627,24 @@ words:
   - main_list
 - word: cesar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Caesar'
 - word: pavia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian city'
 - word: redar
   length: 5
   tier: daily
@@ -6140,10 +6780,14 @@ words:
   - main_list
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: pagan
   length: 5
   tier: daily
@@ -6175,6 +6819,10 @@ words:
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Doric order (architectural style)'
 - word: salir
   length: 5
   tier: daily
@@ -6212,10 +6860,14 @@ words:
   - main_list
 - word: gabon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: spora
   length: 5
   tier: daily
@@ -6285,15 +6937,23 @@ words:
   - main_list
 - word: nubie
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nubian reference'
 - word: india
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: bufon
   length: 5
   tier: daily
@@ -6307,9 +6967,13 @@ words:
   - main_list
 - word: svede
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Swedish reference'
 - word: civil
   length: 5
   tier: daily
@@ -6329,16 +6993,24 @@ words:
   - main_list
 - word: baden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: German region'
 - word: islam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religion'
 - word: minar
   length: 5
   tier: daily
@@ -6347,10 +7019,14 @@ words:
   - main_list
 - word: sucre
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bolivian capital / currency'
 - word: annal
   length: 5
   tier: daily
@@ -6365,10 +7041,14 @@ words:
   - main_list
 - word: yukon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Canadian territory'
 - word: purga
   length: 5
   tier: daily
@@ -6381,6 +7061,10 @@ words:
   frequency: 4.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Roman reference'
 - word: pudic
   length: 5
   tier: daily
@@ -6429,10 +7113,14 @@ words:
   - main_list
 - word: waldo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: oryce
   length: 5
   tier: daily
@@ -6445,16 +7133,24 @@ words:
   - main_list
 - word: hesse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: German state / author'
 - word: ceuta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Spanish city'
 - word: pappa
   length: 5
   tier: daily
@@ -6475,22 +7171,34 @@ words:
   - main_list
 - word: venus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: goddess/planet'
 - word: argos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek city'
 - word: lucio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: dolor
   length: 5
   tier: daily
@@ -6499,10 +7207,14 @@ words:
   - main_list
 - word: junon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Juno (goddess)'
 - word: lanar
   length: 5
   tier: daily
@@ -6549,6 +7261,10 @@ words:
   frequency: 1.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Roman household gods'
 - word: snack
   length: 5
   tier: daily
@@ -6575,10 +7291,14 @@ words:
   - main_list
 - word: pisan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: from Pisa'
 - word: quipu
   length: 5
   tier: daily
@@ -6587,10 +7307,14 @@ words:
   - main_list
 - word: purim
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jewish holiday'
 - word: lucer
   length: 5
   tier: daily
@@ -6649,10 +7373,14 @@ words:
   - main_list
 - word: pluto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: god/planet'
   history:
   - 1715
   scheduled_day: 1715
@@ -6676,16 +7404,24 @@ words:
   - main_list
 - word: eneas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Aeneas'
 - word: ghana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: simun
   length: 5
   tier: daily
@@ -6697,6 +7433,10 @@ words:
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: mythological race / moon'
 - word: melle
   length: 5
   tier: daily
@@ -6715,10 +7455,14 @@ words:
   - main_list
 - word: koran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious text'
 - word: ossee
   length: 5
   tier: daily
@@ -6737,10 +7481,14 @@ words:
   - main_list
 - word: congo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: fjord
   length: 5
   tier: daily
@@ -6787,10 +7535,14 @@ words:
   - main_list
 - word: vilna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Vilnius (Lithuanian capital)'
 - word: gulag
   length: 5
   tier: daily
@@ -6827,16 +7579,24 @@ words:
   - main_list
 - word: sahel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: African region'
 - word: dolby
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name'
 - word: necar
   length: 5
   tier: daily
@@ -6849,10 +7609,14 @@ words:
   - main_list
 - word: mario
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: serge
   length: 5
   tier: daily
@@ -6889,10 +7653,14 @@ words:
   - main_list
 - word: alvin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: rayon
   length: 5
   tier: daily
@@ -6957,16 +7725,24 @@ words:
   - main_list
 - word: orion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: constellation / mythological figure'
 - word: zenon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Zeno'
 - word: culpa
   length: 5
   tier: daily
@@ -6984,10 +7760,14 @@ words:
   - main_list
 - word: dhaka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Bangladesh'
 - word: ratto
   length: 5
   tier: daily
@@ -7002,10 +7782,14 @@ words:
   - main_list
 - word: euler
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mathematician'
 - word: pindo
   length: 5
   tier: daily
@@ -7013,10 +7797,14 @@ words:
   - main_list
 - word: tatar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic group'
 - word: bonze
   length: 5
   tier: daily
@@ -7060,10 +7848,14 @@ words:
   - main_list
 - word: hanse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hanseatic League'
 - word: sling
   length: 5
   tier: daily
@@ -7072,10 +7864,14 @@ words:
   - main_list
 - word: andes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mountain range'
 - word: rocar
   length: 5
   tier: daily
@@ -7151,10 +7947,14 @@ words:
   - main_list
 - word: saxon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic group'
 - word: cavar
   length: 5
   tier: daily
@@ -7228,10 +8028,14 @@ words:
   - main_list
 - word: anton
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: stear
   length: 5
   tier: daily
@@ -7297,10 +8101,14 @@ words:
   - main_list
 - word: milos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek island'
 - word: villo
   length: 5
   tier: daily
@@ -7375,10 +8183,14 @@ words:
   - main_list
 - word: jason
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal/mythological name'
 - word: clado
   length: 5
   tier: daily
@@ -7416,9 +8228,13 @@ words:
   - main_list
 - word: libyc
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Libyan reference'
 - word: praia
   length: 5
   tier: daily
@@ -7433,10 +8249,14 @@ words:
   - main_list
 - word: padua
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian city'
 - word: nylon
   length: 5
   tier: daily
@@ -7474,9 +8294,13 @@ words:
   - main_list
 - word: edipo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Oedipus'
 - word: haiku
   length: 5
   tier: daily
@@ -7485,10 +8309,14 @@ words:
   - main_list
 - word: pyrex
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name'
 - word: vacue
   length: 5
   tier: daily
@@ -7541,9 +8369,13 @@ words:
   - main_list
 - word: tchec
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Czech reference'
 - word: nocue
   length: 5
   tier: daily
@@ -7572,10 +8404,14 @@ words:
   - main_list
 - word: baker
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun / English word
 - word: polar
   length: 5
   tier: daily
@@ -7590,10 +8426,14 @@ words:
   - main_list
 - word: qatar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: facie
   length: 5
   tier: daily
@@ -7668,10 +8508,14 @@ words:
   - main_list
 - word: gauss
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mathematician'
 - word: ducto
   length: 5
   tier: daily
@@ -7839,10 +8683,14 @@ words:
   - main_list
 - word: louis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: acino
   length: 5
   tier: daily
@@ -7862,10 +8710,14 @@ words:
   - main_list
 - word: argus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological figure'
 - word: shunt
   length: 5
   tier: daily
@@ -7886,10 +8738,14 @@ words:
   - main_list
 - word: fermi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: physicist'
 - word: pausa
   length: 5
   tier: daily
@@ -7909,10 +8765,14 @@ words:
   - main_list
 - word: ebola
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: virus named after river'
 - word: cablo
   length: 5
   tier: daily
@@ -7938,15 +8798,23 @@ words:
   - main_list
 - word: aleut
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic group'
 - word: mosan
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Meuse river reference'
 - word: teste
   length: 5
   tier: daily
@@ -8059,10 +8927,14 @@ words:
   - main_list
 - word: zante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek island'
 - word: henna
   length: 5
   tier: daily
@@ -8088,10 +8960,14 @@ words:
   - main_list
 - word: uzbek
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic group'
 - word: quina
   length: 5
   tier: daily
@@ -8168,9 +9044,13 @@ words:
   - main_list
 - word: dpula
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Not a recognizable Interlingua word
 - word: tweed
   length: 5
   tier: daily
@@ -8197,9 +9077,13 @@ words:
   - main_list
 - word: suabe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Swabian reference'
 - word: probe
   length: 5
   tier: daily
@@ -8254,10 +9138,14 @@ words:
   - main_list
 - word: cobol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: programming language acronym'
   history:
   - 1726
   scheduled_day: 1726
@@ -8269,10 +9157,14 @@ words:
   - main_list
 - word: sakha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sakha Republic'
 - word: lunch
   length: 5
   tier: daily
@@ -8310,10 +9202,14 @@ words:
   - main_list
 - word: palau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: raper
   length: 5
   tier: daily
@@ -8384,10 +9280,14 @@ words:
   - main_list
 - word: syrie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Syria variant'
 - word: ilice
   length: 5
   tier: daily
@@ -8407,10 +9307,14 @@ words:
   - main_list
 - word: ceres
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: goddess / dwarf planet'
 - word: urubu
   length: 5
   tier: daily
@@ -8418,10 +9322,14 @@ words:
   - main_list
 - word: texan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Texan demonym'
 - word: lycio
   length: 5
   tier: daily
@@ -8481,10 +9389,14 @@ words:
   - main_list
 - word: minsk
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Belarus'
 - word: exina
   length: 5
   tier: daily
@@ -8544,10 +9456,14 @@ words:
   - main_list
 - word: virgo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: zodiac sign / constellation'
 - word: vexar
   length: 5
   tier: daily
@@ -8587,10 +9503,14 @@ words:
   - main_list
 - word: lydia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / ancient region'
 - word: adito
   length: 5
   tier: daily
@@ -8610,10 +9530,14 @@ words:
   - main_list
 - word: petra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jordanian city / personal name'
 - word: scalp
   length: 5
   tier: daily
@@ -8628,10 +9552,14 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: region'
 - word: saldo
   length: 5
   tier: daily
@@ -8682,10 +9610,14 @@ words:
   - main_list
 - word: lucia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: oncle
   length: 5
   tier: daily
@@ -8726,10 +9658,14 @@ words:
   scheduled_day: 1719
 - word: denis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: cardo
   length: 5
   tier: daily
@@ -8779,10 +9715,14 @@ words:
   - main_list
 - word: marie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: hevea
   length: 5
   tier: daily
@@ -8808,10 +9748,14 @@ words:
   - main_list
 - word: morse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: inventor surname'
 - word: simul
   length: 5
   tier: daily
@@ -8859,10 +9803,14 @@ words:
   - main_list
 - word: julio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / month'
 - word: lacte
   length: 5
   tier: daily
@@ -8957,10 +9905,14 @@ words:
   - main_list
 - word: torah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious text'
 - word: bolla
   length: 5
   tier: daily
@@ -8969,9 +9921,13 @@ words:
   - main_list
 - word: nesso
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological centaur'
 - word: serve
   length: 5
   tier: daily
@@ -8997,10 +9953,14 @@ words:
   - main_list
 - word: isaac
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal/biblical name'
 - word: mambo
   length: 5
   tier: daily
@@ -9019,10 +9979,14 @@ words:
   - main_list
 - word: marco
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: fulve
   length: 5
   tier: daily
@@ -9040,10 +10004,14 @@ words:
   - main_list
 - word: texas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: US state'
 - word: fluxo
   length: 5
   tier: daily
@@ -9154,16 +10122,24 @@ words:
   - main_list
 - word: jaffa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Israeli city'
 - word: golgi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: biologist'
 - word: cacar
   length: 5
   tier: daily
@@ -9171,10 +10147,14 @@ words:
   - main_list
 - word: wilde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Oscar Wilde'
 - word: route
   length: 5
   tier: daily
@@ -9193,6 +10173,10 @@ words:
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: mythological figure (though also common noun)'
 - word: cavea
   length: 5
   tier: daily
@@ -9311,9 +10295,13 @@ words:
   - main_list
 - word: nicen
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nicene reference'
 - word: guisa
   length: 5
   tier: daily
@@ -9327,10 +10315,14 @@ words:
   - main_list
 - word: tunis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tunisian capital'
 - word: tabes
   length: 5
   tier: daily
@@ -9494,16 +10486,24 @@ words:
   - main_list
 - word: parma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian city'
 - word: benin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: ollar
   length: 5
   tier: daily
@@ -9604,10 +10604,14 @@ words:
   - main_list
 - word: aosta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Italian city'
 - word: viola
   length: 5
   tier: daily
@@ -9643,9 +10647,13 @@ words:
   - main_list
 - word: brema
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bremen'
 - word: opalo
   length: 5
   tier: daily
@@ -9686,10 +10694,14 @@ words:
   - main_list
 - word: cumae
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient Greek colony'
 - word: puric
   length: 5
   tier: daily
@@ -9824,9 +10836,13 @@ words:
   - main_list
 - word: kurde
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Kurdish reference'
 - word: bursa
   length: 5
   tier: daily
@@ -9905,10 +10921,14 @@ words:
   - main_list
 - word: sarre
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Saar region'
 - word: zonar
   length: 5
   tier: daily
@@ -9928,10 +10948,14 @@ words:
   - main_list
 - word: aruba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: island/country'
 - word: conio
   length: 5
   tier: daily
@@ -9950,10 +10974,14 @@ words:
   - main_list
 - word: loire
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Loire river'
 - word: curry
   length: 5
   tier: daily
@@ -9988,10 +11016,14 @@ words:
   - main_list
 - word: faust
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: literary character'
 - word: obelo
   length: 5
   tier: daily
@@ -10027,10 +11059,14 @@ words:
   - main_list
 - word: malay
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic/language group'
 - word: picca
   length: 5
   tier: daily
@@ -10089,16 +11125,24 @@ words:
   - main_list
 - word: marne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: French river'
 - word: astor
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal/family name'
 - word: mille
   length: 5
   tier: daily
@@ -10136,10 +11180,14 @@ words:
   - main_list
 - word: coran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Quran'
 - word: virus
   length: 5
   tier: daily
@@ -10268,10 +11316,14 @@ words:
   - main_list
 - word: weber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: physicist surname'
 - word: bidet
   length: 5
   tier: daily
@@ -10285,22 +11337,34 @@ words:
   - main_list
 - word: ladin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Ladin language/people'
 - word: capet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Capetian dynasty'
 - word: xerox
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name'
 - word: astur
   length: 5
   tier: daily
@@ -10313,10 +11377,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: nasua
   length: 5
   tier: daily
@@ -10341,9 +11409,13 @@ words:
   - main_list
 - word: loira
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Loire river'
 - word: limes
   length: 5
   tier: daily
@@ -10367,10 +11439,14 @@ words:
   - main_list
 - word: icaro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Icarus'
 - word: haber
   length: 5
   tier: daily
@@ -10396,10 +11472,14 @@ words:
   - main_list
 - word: moses
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: biblical name'
 - word: pedon
   length: 5
   tier: daily
@@ -10571,10 +11651,14 @@ words:
   - main_list
 - word: corti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: organ of Corti (anatomist name)'
 - word: vigor
   length: 5
   tier: daily
@@ -10589,10 +11673,14 @@ words:
   - main_list
 - word: wisla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Vistula river'
 - word: finir
   length: 5
   tier: daily
@@ -10653,10 +11741,14 @@ words:
   - main_list
 - word: cypro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Cyprus reference'
 - word: fraga
   length: 5
   tier: daily
@@ -10780,10 +11872,14 @@ words:
   - main_list
 - word: altai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Altai region'
 - word: flush
   length: 5
   tier: daily
@@ -10825,10 +11921,14 @@ words:
   - main_list
 - word: cairo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Egypt'
 - word: masca
   length: 5
   tier: daily
@@ -10881,10 +11981,14 @@ words:
   - main_list
 - word: kazan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Russian city'
 - word: ebore
   length: 5
   tier: daily
@@ -10974,9 +12078,13 @@ words:
   - main_list
 - word: mogol
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mughal reference'
 - word: hadal
   length: 5
   tier: daily
@@ -11170,10 +12278,14 @@ words:
   - main_list
 - word: talia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Thalia (muse)'
 - word: gamma
   length: 5
   tier: daily
@@ -11359,9 +12471,13 @@ words:
   - main_list
 - word: scyro
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Skyros (Greek island)'
 - word: prima
   length: 5
   tier: daily
@@ -11393,10 +12509,14 @@ words:
   - main_list
 - word: alpes
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: the Alps'
 - word: voler
   length: 5
   tier: daily
@@ -11439,10 +12559,14 @@ words:
   - main_list
 - word: mason
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / Proper noun
 - word: missa
   length: 5
   tier: daily
@@ -11522,12 +12646,20 @@ words:
   frequency: 2.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Dutch city (though also common for cheese)'
 - word: comus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological figure'
 - word: agave
   length: 5
   tier: daily
@@ -11587,10 +12719,14 @@ words:
   - main_list
 - word: paros
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek island'
 - word: colar
   length: 5
   tier: daily
@@ -11627,10 +12763,14 @@ words:
   - main_list
 - word: neron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Nero'
 - word: logia
   length: 5
   tier: daily
@@ -11639,10 +12779,14 @@ words:
   - main_list
 - word: ampex
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name'
 - word: mugir
   length: 5
   tier: daily
@@ -11741,10 +12885,14 @@ words:
   - main_list
 - word: azeri
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ethnic demonym'
 - word: canoa
   length: 5
   tier: daily
@@ -11758,10 +12906,14 @@ words:
   - main_list
 - word: abuja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Nigeria'
 - word: pedal
   length: 5
   tier: daily
@@ -11793,10 +12945,14 @@ words:
   - main_list
 - word: tesla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: inventor / brand'
 - word: perla
   length: 5
   tier: daily
@@ -11889,10 +13045,14 @@ words:
   - main_list
 - word: alger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Algiers'
   history:
   - 1720
   scheduled_day: 1720
@@ -11904,9 +13064,13 @@ words:
   - main_list
 - word: nukus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Uzbek city'
 - word: gelar
   length: 5
   tier: daily
@@ -11961,10 +13125,14 @@ words:
   - main_list
 - word: marte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Mars (god/planet)'
 - word: tango
   length: 5
   tier: daily
@@ -11993,10 +13161,14 @@ words:
   - main_list
 - word: japon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Japan'
 - word: loris
   length: 5
   tier: daily
@@ -12015,10 +13187,14 @@ words:
   - main_list
 - word: medoc
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: French wine region'
 - word: horst
   length: 5
   tier: daily
@@ -12059,6 +13235,10 @@ words:
   frequency: 1.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Holy Grail'
 - word: farsa
   length: 5
   tier: daily
@@ -12164,10 +13344,14 @@ words:
   - main_list
 - word: heard
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word / Proper noun: Heard Island'
 - word: party
   length: 5
   tier: daily
@@ -12234,10 +13418,14 @@ words:
   - main_list
 - word: minos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: mythological king'
 - word: morsa
   length: 5
   tier: daily
@@ -12249,12 +13437,20 @@ words:
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Greek liturgical term'
 - word: nauru
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: bovin
   length: 5
   tier: daily
@@ -12278,10 +13474,14 @@ words:
   - main_list
 - word: lynch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun / sensitive term
 - word: caste
   length: 5
   tier: daily
@@ -12301,10 +13501,14 @@ words:
   - main_list
 - word: byron
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: pileo
   length: 5
   tier: daily
@@ -12339,22 +13543,34 @@ words:
   - main_list
 - word: amman
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Jordan'
 - word: nubia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: historical region'
 - word: hindi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: language name'
 - word: toddy
   length: 5
   tier: daily
@@ -12368,10 +13584,14 @@ words:
   - main_list
 - word: reich
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Sensitive historical term
 - word: galla
   length: 5
   tier: daily
@@ -12391,10 +13611,14 @@ words:
   - main_list
 - word: gothe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Goth reference'
 - word: drive
   length: 5
   tier: daily
@@ -12414,9 +13638,13 @@ words:
   - main_list
 - word: hunno
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hun reference'
 - word: harem
   length: 5
   tier: daily
@@ -12437,9 +13665,13 @@ words:
   - main_list
 - word: bavar
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Bavaria reference'
 - word: volar
   length: 5
   tier: daily
@@ -12465,16 +13697,24 @@ words:
   - main_list
 - word: basel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Swiss city'
 - word: swazi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Swazi people'
 - word: juste
   length: 5
   tier: daily
@@ -12562,10 +13802,14 @@ words:
   - main_list
 - word: brest
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: French/Belarusian city'
 - word: agame
   length: 5
   tier: daily
@@ -12636,12 +13880,20 @@ words:
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: language name'
 - word: stuka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: WWII aircraft'
 - word: penna
   length: 5
   tier: daily
@@ -12656,10 +13908,14 @@ words:
   - main_list
 - word: mimas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: moon of Saturn'
 - word: fumar
   length: 5
   tier: daily
@@ -12711,10 +13967,14 @@ words:
   - main_list
 - word: tchad
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Chad'
 - word: chela
   length: 5
   tier: daily
@@ -12741,10 +14001,14 @@ words:
   - main_list
 - word: quito
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Ecuador'
 - word: thera
   length: 5
   tier: daily
@@ -12759,16 +14023,24 @@ words:
   - main_list
 - word: valdo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Waldensian reference'
 - word: tokai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Hungarian wine region'
 - word: ethos
   length: 5
   tier: daily
@@ -12795,10 +14067,14 @@ words:
   - main_list
 - word: sarde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.03
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sardinian reference'
 - word: phlox
   length: 5
   tier: daily
@@ -12829,10 +14105,14 @@ words:
   - main_list
 - word: alice
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: negro
   length: 5
   tier: daily
@@ -12846,16 +14126,24 @@ words:
   - main_list
 - word: tokyo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Japanese capital'
 - word: orlon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand name'
 - word: ergot
   length: 5
   tier: daily
@@ -12898,10 +14186,14 @@ words:
   - main_list
 - word: dacia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ancient region/brand'
 - word: teger
   length: 5
   tier: daily
@@ -12909,16 +14201,24 @@ words:
   - main_list
 - word: raman
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: physicist'
 - word: asdic
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Military acronym, too obscure
 - word: prion
   length: 5
   tier: daily
@@ -12951,9 +14251,13 @@ words:
   - main_list
 - word: cunno
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar: obscene anatomical term'
 - word: zebra
   length: 5
   tier: daily
@@ -13011,10 +14315,14 @@ words:
   - main_list
 - word: vaduz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.52
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Liechtenstein'
 - word: aspic
   length: 5
   tier: daily
@@ -13023,10 +14331,14 @@ words:
   - main_list
 - word: sinai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Sinai peninsula'
   history:
   - 1718
   scheduled_day: 1718
@@ -13050,10 +14362,14 @@ words:
   - main_list
 - word: merda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar: excrement'
 - word: pixel
   length: 5
   tier: daily
@@ -13153,10 +14469,14 @@ words:
   - main_list
 - word: kenya
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: acere
   length: 5
   tier: daily
@@ -13170,10 +14490,14 @@ words:
   - main_list
 - word: tonga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: country'
 - word: adipe
   length: 5
   tier: daily
@@ -13181,10 +14505,14 @@ words:
   - main_list
 - word: babel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tower of Babel'
 - word: xeric
   length: 5
   tier: daily
@@ -13214,10 +14542,14 @@ words:
   - main_list
 - word: wolff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname'
 - word: fauna
   length: 5
   tier: daily
@@ -13366,10 +14698,14 @@ words:
   - main_list
 - word: tirol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tyrol region'
 - word: focar
   length: 5
   tier: daily
@@ -13395,9 +14731,13 @@ words:
   - main_list
 - word: eubea
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Euboea (Greek island)'
 - word: sauro
   length: 5
   tier: daily
@@ -13411,10 +14751,14 @@ words:
   - main_list
 - word: accra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: capital of Ghana'
 - word: tacet
   length: 5
   tier: daily
@@ -13538,9 +14882,13 @@ words:
   - main_list
 - word: targi
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Tuareg reference'
 - word: basso
   length: 5
   tier: daily
@@ -13549,10 +14897,14 @@ words:
   - main_list
 - word: chios
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Greek island'
 - word: toman
   length: 5
   tier: daily
@@ -13565,6 +14917,10 @@ words:
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: 'Proper noun: Gallic/Gaul reference'
 - word: swing
   length: 5
   tier: daily
@@ -13588,10 +14944,14 @@ words:
   - main_list
 - word: wilno
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Vilnius'
 - word: pharo
   length: 5
   tier: daily
@@ -13618,10 +14978,14 @@ words:
   - main_list
 - word: paula
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: apnea
   length: 5
   tier: daily
@@ -13780,10 +15144,14 @@ words:
   - main_list
 - word: kyoto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Japanese city'
 - word: festa
   length: 5
   tier: daily
@@ -13792,10 +15160,14 @@ words:
   - main_list
 - word: sunna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Islamic tradition'
 - word: liman
   length: 5
   tier: daily
@@ -13946,10 +15318,14 @@ words:
   - main_list
 - word: papua
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Papua New Guinea'
 - word: acute
   length: 5
   tier: daily
@@ -14014,10 +15390,14 @@ words:
   - main_list
 - word: nicot
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Jean Nicot (nicotine)'
 - word: grana
   length: 5
   tier: daily
@@ -14098,10 +15478,14 @@ words:
   - main_list
 - word: assam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Indian state'
 - word: hodie
   length: 5
   tier: daily
@@ -14178,16 +15562,24 @@ words:
   - main_list
 - word: julia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name'
 - word: krebs
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: scientist surname'
 - word: phago
   length: 5
   tier: daily
@@ -14223,10 +15615,14 @@ words:
   - main_list
 - word: farsi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: Persian language name'
 - word: friso
   length: 5
   tier: daily
@@ -14241,10 +15637,14 @@ words:
   - main_list
 - word: hegel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: philosopher'
 - word: barba
   length: 5
   tier: daily

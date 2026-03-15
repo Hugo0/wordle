@@ -43,6 +43,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Italian - verify Quenya attestation
 - word: remba
   length: 5
   tier: daily
@@ -85,9 +89,13 @@ words:
   - main_list
 - word: finwe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Finwë, High King of the Noldor
 - word: valde
   length: 5
   tier: daily
@@ -191,6 +199,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Estel, Aragorn's childhood name
 - word: loica
   length: 5
   tier: daily
@@ -326,6 +338,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun element - Sorontar/Thorondor, used in names
 - word: sarta
   length: 5
   tier: daily
@@ -535,9 +551,13 @@ words:
   scheduled_day: 1709
 - word: vandl
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - consonant cluster 'dl' not valid in Quenya phonology
 - word: caima
   length: 5
   tier: daily
@@ -803,9 +823,13 @@ words:
   - main_list
 - word: túrin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Túrin Turambar, hero of the Silmarillion
 - word: rámen
   length: 5
   tier: daily
@@ -968,9 +992,13 @@ words:
   - main_list
 - word: orome
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Oromë, one of the Valar
 - word: misil
   length: 5
   tier: daily
@@ -1068,9 +1096,13 @@ words:
   - main_list
 - word: umbar
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Umbar, a port city in Middle-earth
 - word: waiya
   length: 5
   tier: daily
@@ -1106,6 +1138,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun - Kemen, character name in Tolkien
 - word: suhte
   length: 5
   tier: daily
@@ -1156,6 +1192,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure early Quenya form - may not be canonical
 - word: corme
   length: 5
   tier: daily
@@ -1231,6 +1271,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Latin/Italian - verify Quenya attestation
 - word: nasar
   length: 5
   tier: daily
@@ -1346,6 +1390,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Latin/Italian 'menta' (mint) - verify
 - word: vilin
   length: 5
   tier: daily
@@ -1386,6 +1434,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun ethnic - variant of Sindar
 - word: lucie
   length: 5
   tier: daily
@@ -1581,6 +1633,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - initial ng- cluster unusual even for Quenya
   history:
   - 1715
   scheduled_day: 1715
@@ -1599,6 +1655,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun usage - Essëa, related to proper naming
 - word: ruhta
   length: 5
   tier: daily
@@ -1672,9 +1732,13 @@ words:
   - main_list
 - word: ingwe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ingwë, High King of the Vanyar
 - word: linde
   length: 5
   tier: daily
@@ -1702,9 +1766,13 @@ words:
   - main_list
 - word: mundo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Non-Quenya - Spanish/Portuguese word for 'world'
 - word: ausie
   length: 5
   tier: daily
@@ -1855,9 +1923,13 @@ words:
   - main_list
 - word: ilmen
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ilmen, region of the upper atmosphere in Arda
 - word: loita
   length: 5
   tier: daily
@@ -1868,6 +1940,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - 'ts' cluster unusual in Quenya
 - word: yulma
   length: 5
   tier: daily
@@ -1958,6 +2034,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Uses archaic thorn character (þ) - may confuse players
 - word: litse
   length: 5
   tier: daily
@@ -2043,6 +2123,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun element - Huinë, darkness (used in place names)
 - word: tavas
   length: 5
   tier: daily
@@ -2113,6 +2197,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Diaeresis unusual in Quenya - possibly malformed or early draft
 - word: quile
   length: 5
   tier: daily
@@ -2221,6 +2309,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun ethnic - related to Sindar
 - word: tarya
   length: 5
   tier: daily
@@ -2281,6 +2373,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Italian/English - verify Quenya attestation
 - word: máhan
   length: 5
   tier: daily
@@ -2291,6 +2387,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - 'ts' cluster unusual in Quenya
 - word: raust
   length: 5
   tier: daily
@@ -2501,9 +2601,13 @@ words:
   - main_list
 - word: maría
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Mary (not native Quenya)
 - word: seron
   length: 5
   tier: daily
@@ -2556,9 +2660,13 @@ words:
   - main_list
 - word: yésus
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Jesus (not native Quenya)
 - word: rahta
   length: 5
   tier: daily
@@ -2579,6 +2687,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - poorly attested form
 - word: fuine
   length: 5
   tier: daily
@@ -2769,6 +2881,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - poorly attested form
 - word: nande
   length: 5
   tier: daily
@@ -2924,9 +3040,13 @@ words:
   - main_list
 - word: melko
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Melko/Melkor, the Dark Lord
 - word: itila
   length: 5
   tier: daily
@@ -3401,9 +3521,13 @@ words:
   scheduled_day: 1696
 - word: latin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Non-Quenya word - Latin language, not part of Elvish vocabulary
 - word: pempe
   length: 5
   tier: daily
@@ -3464,9 +3588,13 @@ words:
   - main_list
 - word: endor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Middle-earth place name Endor (also biblical)
   history:
   - 1689
   scheduled_day: 1689
@@ -3706,6 +3834,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun ethnic - Noldo, member of the Noldor (proper faction)
 - word: faire
   length: 5
   tier: daily
@@ -3849,6 +3981,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Latin/Romance 'forte' - verify attestation
 - word: tavar
   length: 5
   tier: daily
@@ -3909,6 +4045,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - 'ts' cluster unusual in Quenya
 - word: ohtar
   length: 5
   tier: daily
@@ -4104,9 +4244,13 @@ words:
   - main_list
 - word: manwe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Manwë, chief of the Valar
 - word: horme
   length: 5
   tier: daily
@@ -4175,6 +4319,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - initial ng- cluster unusual even for Quenya
 - word: turea
   length: 5
   tier: daily
@@ -4248,9 +4396,13 @@ words:
   - main_list
 - word: moryo
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Moryo, Quenya name of Caranthir
 - word: larma
   length: 5
   tier: daily
@@ -4296,6 +4448,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun class - Istari (the Wizards), used as proper category
 - word: linge
   length: 5
   tier: daily
@@ -4354,6 +4510,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun usage - Menel (the heavens), often used as proper name
 - word: nilmo
   length: 5
   tier: daily
@@ -4404,6 +4564,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - poorly attested form
 - word: lelta
   length: 5
   tier: daily
@@ -4591,9 +4755,13 @@ words:
   - main_list
 - word: falas
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - coastal region in Middle-earth
 - word: quáme
   length: 5
   tier: daily
@@ -4707,6 +4875,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - poorly attested, possibly early draft only
 - word: ringe
   length: 5
   tier: daily
@@ -4787,9 +4959,13 @@ words:
   - main_list
 - word: elwen
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Elwën, variant of Elenwë (character)
 - word: sambe
   length: 5
   tier: daily
@@ -4853,11 +5029,19 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very specialized Tolkien taxonomy term - growing things with roots
 - word: eonwe
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Eönwë, herald of Manwë
 - word: yenya
   length: 5
   tier: daily
@@ -4880,9 +5064,13 @@ words:
   - main_list
 - word: ingor
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ingor, character name
 - word: ailin
   length: 5
   tier: daily
@@ -4916,6 +5104,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun ethnic - plural/variant of Sindar
 - word: cesta
   length: 5
   tier: daily
@@ -5154,6 +5346,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - attested only in early drafts, not reliable Quenya
 - word: hísen
   length: 5
   tier: daily
@@ -5211,9 +5407,13 @@ words:
   - main_list
 - word: elena
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - female given name Elena, not Quenya vocabulary
 - word: felme
   length: 5
   tier: daily
@@ -5304,6 +5504,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Latin/Spanish 'casta' - verify
 - word: malle
   length: 5
   tier: daily
@@ -5367,6 +5571,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun ethnic - Sinda, member of the Sindar elves
 - word: cilin
   length: 5
   tier: daily
@@ -5495,6 +5703,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure early draft form - may not be canonical Quenya
 - word: lunca
   length: 5
   tier: daily
@@ -5766,6 +5978,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Proper noun usage - Tuilë, name of a season, borderline
 - word: astye
   length: 5
   tier: daily
@@ -5816,6 +6032,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - poorly attested form
 - word: vecca
   length: 5
   tier: daily
@@ -5858,9 +6078,13 @@ words:
   - main_list
 - word: indis
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Indis, second wife of Finwë
 - word: tolvo
   length: 5
   tier: daily
@@ -5987,6 +6211,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - poorly attested form
 - word: vanwa
   length: 5
   tier: daily
@@ -6012,14 +6240,22 @@ words:
   - main_list
 - word: findl
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Malformed - consonant cluster 'dl' not valid in Quenya phonology
 - word: tango
   length: 5
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Spanish 'tango' - verify Quenya attestation
 - word: laive
   length: 5
   tier: daily
@@ -6362,14 +6598,22 @@ words:
   - main_list
 - word: thúle
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Thule, mythical northern land, not native Quenya
 - word: irmin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Germanic deity/name, not Quenya
 - word: vista
   length: 5
   tier: daily
@@ -6377,9 +6621,13 @@ words:
   - main_list
 - word: duine
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Non-Quenya word - Irish/Gaelic word for 'person'
 - word: melme
   length: 5
   tier: daily
@@ -6400,11 +6648,19 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - poorly attested Quenya form
 - word: ilúve
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Ilúvatar's creation concept, theological term
 - word: nyére
   length: 5
   tier: daily
@@ -6475,6 +6731,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Onomatopoeic/very obscure - poorly attested
 - word: wilin
   length: 5
   tier: daily
@@ -6500,6 +6760,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Very obscure - 'ts' cluster unusual in Quenya
 - word: harda
   length: 5
   tier: daily
@@ -6595,9 +6859,13 @@ words:
   - main_list
 - word: hurin
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun - Húrin, character in Silmarillion
 - word: álame
   length: 5
   tier: daily
@@ -6738,6 +7006,10 @@ words:
   tier: daily
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Possibly contaminated from Latin/Romance 'forma' - verify attestation
 - word: yerna
   length: 5
   tier: daily
