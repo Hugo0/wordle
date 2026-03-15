@@ -86,9 +86,6 @@ jobs:
   nuxt-tests:
     name: Nuxt Tests (vitest)
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: nuxt
 
     steps:
       - uses: actions/checkout@v4
@@ -100,22 +97,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install --ignore-workspace
+      - name: Install root dependencies
+        run: pnpm install
+
+      - name: Install Nuxt dependencies
+        run: cd nuxt && pnpm install --ignore-workspace
 
       - name: Prepare Nuxt
-        run: node node_modules/nuxt/bin/nuxt.mjs prepare
+        run: cd nuxt && node node_modules/nuxt/bin/nuxt.mjs prepare
 
       - name: Run vitest (unit + integration + parity)
-        run: pnpm test
+        run: cd nuxt && pnpm test
 
   nuxt-e2e:
     name: Nuxt E2E (Playwright)
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: nuxt
 
     steps:
       - uses: actions/checkout@v4
@@ -127,18 +125,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install --ignore-workspace
+      - name: Install root dependencies
+        run: pnpm install
+
+      - name: Install Nuxt dependencies
+        run: cd nuxt && pnpm install --ignore-workspace
 
       - name: Prepare Nuxt
-        run: node node_modules/nuxt/bin/nuxt.mjs prepare
+        run: cd nuxt && node node_modules/nuxt/bin/nuxt.mjs prepare
 
       - name: Install Playwright browsers
-        run: npx playwright install chromium --with-deps
+        run: cd nuxt && npx playwright install chromium --with-deps
 
       - name: Run Playwright E2E tests
-        run: pnpm test:e2e
+        run: cd nuxt && pnpm test:e2e
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
