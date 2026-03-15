@@ -21,7 +21,7 @@
     {
       "word": "amias",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -37,7 +37,7 @@
     {
       "word": "iulis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -70,7 +70,7 @@
     {
       "word": "tasis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -270,7 +270,7 @@
     {
       "word": "nubis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -382,7 +382,7 @@
     {
       "word": "panus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -424,7 +424,7 @@
     {
       "word": "docis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -432,7 +432,7 @@
     {
       "word": "adlui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -522,7 +522,7 @@
     {
       "word": "artio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -594,7 +594,7 @@
     {
       "word": "bipes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -654,7 +654,7 @@
     {
       "word": "aulus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.47,
       "sources": [
         "main_list"
@@ -685,7 +685,7 @@
     {
       "word": "abluo",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -838,7 +838,7 @@
     {
       "word": "felio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -854,7 +854,7 @@
     {
       "word": "rudor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -870,7 +870,7 @@
     {
       "word": "domio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -902,7 +902,7 @@
     {
       "word": "sagio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -1119,7 +1119,7 @@
     {
       "word": "colle",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.17,
       "sources": [
         "main_list"
@@ -1184,7 +1184,7 @@
     {
       "word": "socio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.52,
       "sources": [
         "main_list"
@@ -1586,7 +1586,7 @@
     {
       "word": "corda",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.15,
       "sources": [
         "main_list"
@@ -1642,7 +1642,7 @@
     {
       "word": "oreas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -1764,7 +1764,7 @@
     {
       "word": "rauus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -1821,7 +1821,7 @@
     {
       "word": "sulco",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -1887,7 +1887,7 @@
     {
       "word": "cepis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -1934,7 +1934,7 @@
     {
       "word": "aspri",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.15,
       "sources": [
         "main_list"
@@ -2021,7 +2021,7 @@
     {
       "word": "ecfor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2029,7 +2029,7 @@
     {
       "word": "bimus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2071,7 +2071,7 @@
     {
       "word": "hedus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2087,7 +2087,7 @@
     {
       "word": "pluor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2189,7 +2189,7 @@
     {
       "word": "nesis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -2228,7 +2228,7 @@
     {
       "word": "pugno",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.26,
       "sources": [
         "main_list"
@@ -2279,7 +2279,7 @@
     {
       "word": "optus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2308,7 +2308,7 @@
     {
       "word": "lubui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2390,7 +2390,7 @@
     {
       "word": "deois",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2480,7 +2480,7 @@
     {
       "word": "orses",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2653,7 +2653,7 @@
     {
       "word": "feber",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2750,7 +2750,7 @@
     {
       "word": "pabus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -2963,7 +2963,7 @@
     {
       "word": "grais",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -3045,7 +3045,7 @@
     {
       "word": "seror",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3116,7 +3116,7 @@
     {
       "word": "subis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3190,7 +3190,7 @@
     {
       "word": "mador",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3232,7 +3232,7 @@
     {
       "word": "dureo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3289,7 +3289,7 @@
     {
       "word": "aleus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3306,7 +3306,7 @@
     {
       "word": "ipsas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3410,7 +3410,7 @@
     {
       "word": "druis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -3439,7 +3439,7 @@
     {
       "word": "toreo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3633,7 +3633,7 @@
     {
       "word": "halus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3718,7 +3718,7 @@
     {
       "word": "defui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3864,7 +3864,7 @@
     {
       "word": "pouer",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -3880,7 +3880,7 @@
     {
       "word": "sabis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -3952,7 +3952,7 @@
     {
       "word": "sigma",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.19,
       "sources": [
         "main_list"
@@ -4005,7 +4005,7 @@
     {
       "word": "abram",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.42,
       "sources": [
         "main_list"
@@ -4128,7 +4128,7 @@
     {
       "word": "admeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4136,7 +4136,7 @@
     {
       "word": "adiui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4242,7 +4242,7 @@
     {
       "word": "pubor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4273,7 +4273,7 @@
     {
       "word": "nugus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4281,7 +4281,7 @@
     {
       "word": "paene",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -4434,7 +4434,7 @@
     {
       "word": "labis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4458,7 +4458,7 @@
     {
       "word": "atius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -4555,7 +4555,7 @@
     {
       "word": "ircus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -4580,7 +4580,7 @@
     {
       "word": "teius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -4762,7 +4762,7 @@
     {
       "word": "rapui",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -4802,7 +4802,7 @@
     {
       "word": "butio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4856,7 +4856,7 @@
     {
       "word": "aluus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4889,7 +4889,7 @@
     {
       "word": "bibio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -4998,7 +4998,7 @@
     {
       "word": "lupor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5006,7 +5006,7 @@
     {
       "word": "anius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5031,7 +5031,7 @@
     {
       "word": "didus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -5167,7 +5167,7 @@
     {
       "word": "gelus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5213,7 +5213,7 @@
     {
       "word": "obrui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5230,7 +5230,7 @@
     {
       "word": "cenum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5379,7 +5379,7 @@
     {
       "word": "liueo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5405,7 +5405,7 @@
     {
       "word": "sexis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5439,7 +5439,7 @@
     {
       "word": "istas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5577,7 +5577,7 @@
     {
       "word": "mango",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.48,
       "sources": [
         "main_list"
@@ -5594,7 +5594,7 @@
     {
       "word": "obsui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5695,7 +5695,7 @@
     {
       "word": "gesum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5754,7 +5754,7 @@
     {
       "word": "offio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5864,7 +5864,7 @@
     {
       "word": "affor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5889,7 +5889,7 @@
     {
       "word": "bubus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -5974,7 +5974,7 @@
     {
       "word": "atina",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.14,
       "sources": [
         "main_list"
@@ -6013,7 +6013,7 @@
     {
       "word": "adria",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 3.16,
       "sources": [
         "main_list"
@@ -6044,7 +6044,7 @@
     {
       "word": "appia",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 3.23,
       "sources": [
         "main_list"
@@ -6100,7 +6100,7 @@
     {
       "word": "iuueo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6149,7 +6149,7 @@
     {
       "word": "iones",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -6190,7 +6190,7 @@
     {
       "word": "sauio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6227,7 +6227,7 @@
     {
       "word": "athis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -6243,7 +6243,7 @@
     {
       "word": "euias",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6305,7 +6305,7 @@
     {
       "word": "sopio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6534,7 +6534,7 @@
     {
       "word": "ganio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6676,7 +6676,7 @@
     {
       "word": "tabum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6746,7 +6746,7 @@
     {
       "word": "obsis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6892,7 +6892,7 @@
     {
       "word": "nemen",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -6917,7 +6917,7 @@
     {
       "word": "campa",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.21,
       "sources": [
         "main_list"
@@ -6951,7 +6951,7 @@
     {
       "word": "expui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7053,7 +7053,7 @@
     {
       "word": "utris",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7111,7 +7111,7 @@
     {
       "word": "punus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7127,7 +7127,7 @@
     {
       "word": "silva",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.86,
       "sources": [
         "main_list"
@@ -7136,7 +7136,7 @@
     {
       "word": "oleui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7177,7 +7177,7 @@
     {
       "word": "obiui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7345,7 +7345,7 @@
     {
       "word": "zelor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7390,7 +7390,7 @@
     {
       "word": "sorbo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.61,
       "sources": [
         "main_list"
@@ -7450,7 +7450,7 @@
     {
       "word": "notor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7491,7 +7491,7 @@
     {
       "word": "immeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7576,7 +7576,7 @@
     {
       "word": "rasio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7778,7 +7778,7 @@
     {
       "word": "libus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7802,7 +7802,7 @@
     {
       "word": "uipio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -7932,7 +7932,7 @@
     {
       "word": "tarum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8001,7 +8001,7 @@
     {
       "word": "pubui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8017,7 +8017,7 @@
     {
       "word": "rosor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8046,7 +8046,7 @@
     {
       "word": "diuus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8134,7 +8134,7 @@
     {
       "word": "acror",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8222,7 +8222,7 @@
     {
       "word": "uinco",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -8268,7 +8268,7 @@
     {
       "word": "uilui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8330,7 +8330,7 @@
     {
       "word": "limio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8338,7 +8338,7 @@
     {
       "word": "tabeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8495,7 +8495,7 @@
     {
       "word": "apsis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8503,7 +8503,7 @@
     {
       "word": "rugio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8511,7 +8511,7 @@
     {
       "word": "euius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8568,7 +8568,7 @@
     {
       "word": "nolam",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -8576,7 +8576,7 @@
     {
       "word": "ceres",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.61,
       "sources": [
         "main_list"
@@ -8594,7 +8594,7 @@
     {
       "word": "auium",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8634,7 +8634,7 @@
     {
       "word": "girus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8642,7 +8642,7 @@
     {
       "word": "elbus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -8822,7 +8822,7 @@
     {
       "word": "mandi",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.94,
       "sources": [
         "main_list"
@@ -8840,7 +8840,7 @@
     {
       "word": "astus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9011,7 +9011,7 @@
     {
       "word": "desum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9113,7 +9113,7 @@
     {
       "word": "rauio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9121,7 +9121,7 @@
     {
       "word": "uitus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9240,7 +9240,7 @@
     {
       "word": "reses",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9256,7 +9256,7 @@
     {
       "word": "hamio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9281,7 +9281,7 @@
     {
       "word": "pugil",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -9297,7 +9297,7 @@
     {
       "word": "oesus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9435,7 +9435,7 @@
     {
       "word": "pleui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9459,7 +9459,7 @@
     {
       "word": "umbro",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.15,
       "sources": [
         "main_list"
@@ -9492,7 +9492,7 @@
     {
       "word": "cubus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9538,7 +9538,7 @@
     {
       "word": "gelum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9562,7 +9562,7 @@
     {
       "word": "faxis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9595,7 +9595,7 @@
     {
       "word": "fauus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9643,7 +9643,7 @@
     {
       "word": "deses",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9736,7 +9736,7 @@
     {
       "word": "zetes",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -9773,7 +9773,7 @@
     {
       "word": "ueles",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9797,7 +9797,7 @@
     {
       "word": "canui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9839,7 +9839,7 @@
     {
       "word": "nugas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9879,7 +9879,7 @@
     {
       "word": "mirio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -9980,7 +9980,7 @@
     {
       "word": "thous",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -9988,7 +9988,7 @@
     {
       "word": "arion",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.2,
       "sources": [
         "main_list"
@@ -10018,7 +10018,7 @@
     {
       "word": "setus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -10026,7 +10026,7 @@
     {
       "word": "exiui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -10180,7 +10180,7 @@
     {
       "word": "alica",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.29,
       "sources": [
         "main_list"
@@ -10214,7 +10214,7 @@
     {
       "word": "rutus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -10404,7 +10404,7 @@
     {
       "word": "lunus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -10531,7 +10531,7 @@
     {
       "word": "pupus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -10555,7 +10555,7 @@
     {
       "word": "atlas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 3.13,
       "sources": [
         "main_list"
@@ -10569,7 +10569,7 @@
     {
       "word": "delus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -10594,7 +10594,7 @@
     {
       "word": "ambae",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -10702,7 +10702,7 @@
     {
       "word": "horus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.6,
       "sources": [
         "main_list"
@@ -10764,7 +10764,7 @@
     {
       "word": "oetor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -10826,7 +10826,7 @@
     {
       "word": "poeas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -10957,7 +10957,7 @@
     {
       "word": "lagus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -10982,7 +10982,7 @@
     {
       "word": "ustum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11011,7 +11011,7 @@
     {
       "word": "extum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11036,7 +11036,7 @@
     {
       "word": "opses",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11082,7 +11082,7 @@
     {
       "word": "buxum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11108,7 +11108,7 @@
     {
       "word": "nexus",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.41,
       "sources": [
         "main_list"
@@ -11181,7 +11181,7 @@
     {
       "word": "canae",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11239,7 +11239,7 @@
     {
       "word": "tagis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -11256,7 +11256,7 @@
     {
       "word": "absis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11296,7 +11296,7 @@
     {
       "word": "circo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.01,
       "sources": [
         "main_list"
@@ -11397,7 +11397,7 @@
     {
       "word": "ustor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11405,7 +11405,7 @@
     {
       "word": "ardus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11429,7 +11429,7 @@
     {
       "word": "rusor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11537,7 +11537,7 @@
     {
       "word": "muceo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11554,7 +11554,7 @@
     {
       "word": "tusum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11617,7 +11617,7 @@
     {
       "word": "oreum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11758,7 +11758,7 @@
     {
       "word": "eleui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11782,7 +11782,7 @@
     {
       "word": "binum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11833,7 +11833,7 @@
     {
       "word": "ostes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11841,7 +11841,7 @@
     {
       "word": "fedus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -11898,7 +11898,7 @@
     {
       "word": "uelis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12102,7 +12102,7 @@
     {
       "word": "uapio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12150,7 +12150,7 @@
     {
       "word": "gomor",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -12205,7 +12205,7 @@
     {
       "word": "ruror",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12255,7 +12255,7 @@
     {
       "word": "dauus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -12263,7 +12263,7 @@
     {
       "word": "brito",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.49,
       "sources": [
         "main_list"
@@ -12310,7 +12310,7 @@
     {
       "word": "aenus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12334,7 +12334,7 @@
     {
       "word": "uomui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12367,7 +12367,7 @@
     {
       "word": "sardo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.91,
       "sources": [
         "main_list"
@@ -12376,7 +12376,7 @@
     {
       "word": "inmeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12401,7 +12401,7 @@
     {
       "word": "posia",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12409,7 +12409,7 @@
     {
       "word": "dicio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12417,7 +12417,7 @@
     {
       "word": "abito",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.49,
       "sources": [
         "main_list"
@@ -12524,7 +12524,7 @@
     {
       "word": "cilla",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.26,
       "sources": [
         "main_list"
@@ -12557,7 +12557,7 @@
     {
       "word": "pomus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12574,7 +12574,7 @@
     {
       "word": "betis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.55,
       "sources": [
         "main_list"
@@ -12596,7 +12596,7 @@
     {
       "word": "mauis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12620,7 +12620,7 @@
     {
       "word": "folus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12636,7 +12636,7 @@
     {
       "word": "naxus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -12668,7 +12668,7 @@
     {
       "word": "uehes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12768,7 +12768,7 @@
     {
       "word": "iuger",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -12793,7 +12793,7 @@
     {
       "word": "saepe",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.58,
       "sources": [
         "main_list"
@@ -12810,7 +12810,7 @@
     {
       "word": "bilbo",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.74,
       "sources": [
         "main_list"
@@ -12824,7 +12824,7 @@
     {
       "word": "argus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.58,
       "sources": [
         "main_list"
@@ -12856,7 +12856,7 @@
     {
       "word": "rodus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -13057,7 +13057,7 @@
     {
       "word": "troes",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -13098,7 +13098,7 @@
     {
       "word": "grias",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13122,7 +13122,7 @@
     {
       "word": "effor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13169,7 +13169,7 @@
     {
       "word": "fluto",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13217,7 +13217,7 @@
     {
       "word": "lades",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -13263,7 +13263,7 @@
     {
       "word": "salmo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.49,
       "sources": [
         "main_list"
@@ -13311,7 +13311,7 @@
     {
       "word": "isses",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -13366,7 +13366,7 @@
     {
       "word": "netum",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -13374,7 +13374,7 @@
     {
       "word": "caius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.19,
       "sources": [
         "main_list"
@@ -13469,7 +13469,7 @@
     {
       "word": "cassa",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.49,
       "sources": [
         "main_list"
@@ -13478,7 +13478,7 @@
     {
       "word": "uniui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13530,7 +13530,7 @@
     {
       "word": "tudes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13571,7 +13571,7 @@
     {
       "word": "othus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -13641,7 +13641,7 @@
     {
       "word": "arsen",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.56,
       "sources": [
         "main_list"
@@ -13701,7 +13701,7 @@
     {
       "word": "tolis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13781,7 +13781,7 @@
     {
       "word": "alsus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13838,7 +13838,7 @@
     {
       "word": "logus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -13969,7 +13969,7 @@
     {
       "word": "seuum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14077,7 +14077,7 @@
     {
       "word": "mungo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.27,
       "sources": [
         "main_list"
@@ -14132,7 +14132,7 @@
     {
       "word": "arsis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14140,7 +14140,7 @@
     {
       "word": "maces",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14166,7 +14166,7 @@
     {
       "word": "pedor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14225,7 +14225,7 @@
     {
       "word": "adfor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14254,7 +14254,7 @@
     {
       "word": "quare",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.64,
       "sources": [
         "main_list"
@@ -14331,7 +14331,7 @@
     {
       "word": "colus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14396,7 +14396,7 @@
     {
       "word": "dubis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -14446,7 +14446,7 @@
     {
       "word": "obfui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14471,7 +14471,7 @@
     {
       "word": "nicia",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.29,
       "sources": [
         "main_list"
@@ -14488,7 +14488,7 @@
     {
       "word": "bombo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.47,
       "sources": [
         "main_list"
@@ -14513,7 +14513,7 @@
     {
       "word": "cusus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14537,7 +14537,7 @@
     {
       "word": "adsto",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -14570,7 +14570,7 @@
     {
       "word": "zetus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -14628,7 +14628,7 @@
     {
       "word": "fanor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14645,7 +14645,7 @@
     {
       "word": "semul",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -14666,7 +14666,7 @@
     {
       "word": "norit",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14674,7 +14674,7 @@
     {
       "word": "opter",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14718,7 +14718,7 @@
     {
       "word": "rhium",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -14726,7 +14726,7 @@
     {
       "word": "oscus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -14763,7 +14763,7 @@
     {
       "word": "uruum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -14945,7 +14945,7 @@
     {
       "word": "teses",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -15003,7 +15003,7 @@
     {
       "word": "vagia",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -15101,7 +15101,7 @@
     {
       "word": "epeus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -15177,7 +15177,7 @@
     {
       "word": "casse",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.12,
       "sources": [
         "main_list"
@@ -15194,7 +15194,7 @@
     {
       "word": "uasus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -15210,7 +15210,7 @@
     {
       "word": "inpes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -15267,7 +15267,7 @@
     {
       "word": "alpis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.07,
       "sources": [
         "main_list"
@@ -15361,7 +15361,7 @@
     {
       "word": "argia",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.8,
       "sources": [
         "main_list"
@@ -15391,7 +15391,7 @@
     {
       "word": "garus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -15449,7 +15449,7 @@
     {
       "word": "cifra",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.45,
       "sources": [
         "main_list"
@@ -15479,7 +15479,7 @@
     {
       "word": "ciner",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -15703,7 +15703,7 @@
     {
       "word": "uoxor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -15738,7 +15738,7 @@
     {
       "word": "armum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -15817,7 +15817,7 @@
     {
       "word": "alpes",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.65,
       "sources": [
         "main_list"
@@ -16208,7 +16208,7 @@
     {
       "word": "fugax",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -16224,7 +16224,7 @@
     {
       "word": "anxia",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -16343,7 +16343,7 @@
     {
       "word": "iugus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -16501,7 +16501,7 @@
     {
       "word": "itius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -16654,7 +16654,7 @@
     {
       "word": "saces",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -16662,7 +16662,7 @@
     {
       "word": "defio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -16788,7 +16788,7 @@
     {
       "word": "sodes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -16893,7 +16893,7 @@
     {
       "word": "cerda",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.27,
       "sources": [
         "main_list"
@@ -16936,7 +16936,7 @@
     {
       "word": "ausus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17079,7 +17079,7 @@
     {
       "word": "genum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17105,7 +17105,7 @@
     {
       "word": "eruum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17113,7 +17113,7 @@
     {
       "word": "libis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17235,7 +17235,7 @@
     {
       "word": "deous",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17327,7 +17327,7 @@
     {
       "word": "rosus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17335,7 +17335,7 @@
     {
       "word": "sagus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17354,7 +17354,7 @@
     {
       "word": "tosto",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.53,
       "sources": [
         "main_list"
@@ -17395,7 +17395,7 @@
     {
       "word": "gurus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17436,7 +17436,7 @@
     {
       "word": "aonis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -17471,7 +17471,7 @@
     {
       "word": "lubeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17512,7 +17512,7 @@
     {
       "word": "cohus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17546,7 +17546,7 @@
     {
       "word": "belga",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 3.82,
       "sources": [
         "main_list"
@@ -17584,7 +17584,7 @@
     {
       "word": "sorus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17600,7 +17600,7 @@
     {
       "word": "sanga",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.28,
       "sources": [
         "main_list"
@@ -17655,7 +17655,7 @@
     {
       "word": "ussus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17663,7 +17663,7 @@
     {
       "word": "ceras",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -17674,7 +17674,7 @@
     {
       "word": "lutus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17809,7 +17809,7 @@
     {
       "word": "adqui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17858,7 +17858,7 @@
     {
       "word": "clius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -17916,7 +17916,7 @@
     {
       "word": "futio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -18218,7 +18218,7 @@
     {
       "word": "irpus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -18260,7 +18260,7 @@
     {
       "word": "batto",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.94,
       "sources": [
         "main_list"
@@ -18378,7 +18378,7 @@
     {
       "word": "dulus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -18386,7 +18386,7 @@
     {
       "word": "inous",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -18504,7 +18504,7 @@
     {
       "word": "nilum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -18536,7 +18536,7 @@
     {
       "word": "futis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -18607,7 +18607,7 @@
     {
       "word": "troas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -18632,7 +18632,7 @@
     {
       "word": "dahae",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -18653,7 +18653,7 @@
     {
       "word": "ausum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -18718,7 +18718,7 @@
     {
       "word": "adsis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -19015,7 +19015,7 @@
     {
       "word": "uilla",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -19039,7 +19039,7 @@
     {
       "word": "expio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -19072,7 +19072,7 @@
     {
       "word": "cerus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -19139,7 +19139,7 @@
     {
       "word": "album",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 4.78,
       "sources": [
         "main_list"
@@ -19157,7 +19157,7 @@
     {
       "word": "ligus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -19165,7 +19165,7 @@
     {
       "word": "cupes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -19235,7 +19235,7 @@
     {
       "word": "salto",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.44,
       "sources": [
         "main_list"
@@ -19616,7 +19616,7 @@
     {
       "word": "camum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -19648,7 +19648,7 @@
     {
       "word": "ualde",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -19885,7 +19885,7 @@
     {
       "word": "gillo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.2,
       "sources": [
         "main_list"
@@ -19894,7 +19894,7 @@
     {
       "word": "mosea",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -19980,7 +19980,7 @@
     {
       "word": "getes",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -20122,7 +20122,7 @@
     {
       "word": "arnus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -20135,7 +20135,7 @@
     {
       "word": "eccum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -20173,7 +20173,7 @@
     {
       "word": "tursi",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.62,
       "sources": [
         "main_list"
@@ -20199,7 +20199,7 @@
     {
       "word": "belis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -20230,7 +20230,7 @@
     {
       "word": "sepis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -20238,7 +20238,7 @@
     {
       "word": "tetus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -20350,7 +20350,7 @@
     {
       "word": "boius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -20398,7 +20398,7 @@
     {
       "word": "palmo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.5,
       "sources": [
         "main_list"
@@ -20604,7 +20604,7 @@
     {
       "word": "ascio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -20683,7 +20683,7 @@
     {
       "word": "denuo",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.18,
       "sources": [
         "main_list"
@@ -20762,7 +20762,7 @@
     {
       "word": "abati",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.95,
       "sources": [
         "main_list"
@@ -20814,7 +20814,7 @@
     {
       "word": "sudus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -20830,7 +20830,7 @@
     {
       "word": "aleum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -20870,7 +20870,7 @@
     {
       "word": "binio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21033,7 +21033,7 @@
     {
       "word": "fadum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21092,7 +21092,7 @@
     {
       "word": "hahae",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21137,7 +21137,7 @@
     {
       "word": "hiber",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -21145,7 +21145,7 @@
     {
       "word": "aruum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21153,7 +21153,7 @@
     {
       "word": "uirui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21359,7 +21359,7 @@
     {
       "word": "essum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21400,7 +21400,7 @@
     {
       "word": "foueo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21439,7 +21439,7 @@
     {
       "word": "iader",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -21569,7 +21569,7 @@
     {
       "word": "uitor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21586,7 +21586,7 @@
     {
       "word": "sucus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21740,7 +21740,7 @@
     {
       "word": "magia",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.41,
       "sources": [
         "main_list"
@@ -21797,7 +21797,7 @@
     {
       "word": "aenea",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.44,
       "sources": [
         "main_list"
@@ -21819,7 +21819,7 @@
     {
       "word": "puxis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -21987,7 +21987,7 @@
     {
       "word": "citum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22084,7 +22084,7 @@
     {
       "word": "semus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22229,7 +22229,7 @@
     {
       "word": "arpus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22432,7 +22432,7 @@
     {
       "word": "thois",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -22448,7 +22448,7 @@
     {
       "word": "omino",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.16,
       "sources": [
         "main_list"
@@ -22510,7 +22510,7 @@
     {
       "word": "abnuo",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -22548,7 +22548,7 @@
     {
       "word": "tores",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22665,7 +22665,7 @@
     {
       "word": "cauus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22708,7 +22708,7 @@
     {
       "word": "celes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22746,7 +22746,7 @@
     {
       "word": "plano",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.51,
       "sources": [
         "main_list"
@@ -22772,7 +22772,7 @@
     {
       "word": "badia",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.64,
       "sources": [
         "main_list"
@@ -22781,7 +22781,7 @@
     {
       "word": "alcis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22917,7 +22917,7 @@
     {
       "word": "uasum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -22925,7 +22925,7 @@
     {
       "word": "baiae",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -22987,7 +22987,7 @@
     {
       "word": "fecis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23036,7 +23036,7 @@
     {
       "word": "gadis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -23151,7 +23151,7 @@
     {
       "word": "aulio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23175,7 +23175,7 @@
     {
       "word": "gutus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23248,7 +23248,7 @@
     {
       "word": "fobeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23289,7 +23289,7 @@
     {
       "word": "palla",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.51,
       "sources": [
         "main_list"
@@ -23391,7 +23391,7 @@
     {
       "word": "parma",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.55,
       "sources": [
         "main_list"
@@ -23533,7 +23533,7 @@
     {
       "word": "combe",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.04,
       "sources": [
         "main_list"
@@ -23572,7 +23572,7 @@
     {
       "word": "cesor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23597,7 +23597,7 @@
     {
       "word": "cneus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -23670,7 +23670,7 @@
     {
       "word": "fabus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23678,7 +23678,7 @@
     {
       "word": "susum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23779,7 +23779,7 @@
     {
       "word": "reneo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23796,7 +23796,7 @@
     {
       "word": "bobus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23903,7 +23903,7 @@
     {
       "word": "rusum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -23970,7 +23970,7 @@
     {
       "word": "deius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24011,7 +24011,7 @@
     {
       "word": "tardo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.92,
       "sources": [
         "main_list"
@@ -24029,7 +24029,7 @@
     {
       "word": "ebrio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24054,7 +24054,7 @@
     {
       "word": "ancus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24096,7 +24096,7 @@
     {
       "word": "draus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24122,7 +24122,7 @@
     {
       "word": "pusus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24310,7 +24310,7 @@
     {
       "word": "hegio",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -24334,7 +24334,7 @@
     {
       "word": "pauio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24419,7 +24419,7 @@
     {
       "word": "impes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24435,7 +24435,7 @@
     {
       "word": "siser",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24496,7 +24496,7 @@
     {
       "word": "oaxes",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -24614,7 +24614,7 @@
     {
       "word": "mundo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.32,
       "sources": [
         "main_list"
@@ -24645,7 +24645,7 @@
     {
       "word": "ictio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24710,7 +24710,7 @@
     {
       "word": "oaxis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -24726,7 +24726,7 @@
     {
       "word": "facil",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.57,
       "sources": [
         "main_list"
@@ -24818,7 +24818,7 @@
     {
       "word": "altor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24902,7 +24902,7 @@
     {
       "word": "globo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.89,
       "sources": [
         "main_list"
@@ -24911,7 +24911,7 @@
     {
       "word": "piius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -24919,7 +24919,7 @@
     {
       "word": "dasia",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -25055,7 +25055,7 @@
     {
       "word": "pauus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25072,7 +25072,7 @@
     {
       "word": "selas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25151,7 +25151,7 @@
     {
       "word": "sarui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25159,7 +25159,7 @@
     {
       "word": "senus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25233,7 +25233,7 @@
     {
       "word": "achor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -25346,7 +25346,7 @@
     {
       "word": "pexum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25362,7 +25362,7 @@
     {
       "word": "culus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25524,7 +25524,7 @@
     {
       "word": "aunus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25668,7 +25668,7 @@
     {
       "word": "rusus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25831,7 +25831,7 @@
     {
       "word": "numus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -25924,7 +25924,7 @@
     {
       "word": "prono",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.65,
       "sources": [
         "main_list"
@@ -25942,7 +25942,7 @@
     {
       "word": "rasor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -26013,7 +26013,7 @@
     {
       "word": "iphis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -26029,7 +26029,7 @@
     {
       "word": "ocium",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -26333,7 +26333,7 @@
     {
       "word": "athos",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.91,
       "sources": [
         "main_list"
@@ -26371,7 +26371,7 @@
     {
       "word": "forus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -26426,7 +26426,7 @@
     {
       "word": "isium",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -26458,7 +26458,7 @@
     {
       "word": "medus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -26629,7 +26629,7 @@
     {
       "word": "murio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -26691,7 +26691,7 @@
     {
       "word": "ganea",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -26870,7 +26870,7 @@
     {
       "word": "hesus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -26934,7 +26934,7 @@
     {
       "word": "umbri",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.04,
       "sources": [
         "main_list"
@@ -26983,7 +26983,7 @@
     {
       "word": "galus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -27058,7 +27058,7 @@
     {
       "word": "virga",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.14,
       "sources": [
         "main_list"
@@ -27085,7 +27085,7 @@
     {
       "word": "algus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -27188,7 +27188,7 @@
     {
       "word": "hexis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -27196,7 +27196,7 @@
     {
       "word": "crini",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.26,
       "sources": [
         "main_list"
@@ -27236,7 +27236,7 @@
     {
       "word": "semel",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.95,
       "sources": [
         "main_list"
@@ -27366,7 +27366,7 @@
     {
       "word": "cotis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -27428,7 +27428,7 @@
     {
       "word": "deceo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -27537,7 +27537,7 @@
     {
       "word": "auena",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -27842,7 +27842,7 @@
     {
       "word": "cerro",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.18,
       "sources": [
         "main_list"
@@ -27913,7 +27913,7 @@
     {
       "word": "areus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28045,7 +28045,7 @@
     {
       "word": "susis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28061,7 +28061,7 @@
     {
       "word": "aonas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -28069,7 +28069,7 @@
     {
       "word": "ammon",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.05,
       "sources": [
         "main_list"
@@ -28092,7 +28092,7 @@
     {
       "word": "andis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28149,7 +28149,7 @@
     {
       "word": "cotio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28285,7 +28285,7 @@
     {
       "word": "bitia",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.02,
       "sources": [
         "main_list"
@@ -28375,7 +28375,7 @@
     {
       "word": "coeus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28392,7 +28392,7 @@
     {
       "word": "balbo",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 3.04,
       "sources": [
         "main_list"
@@ -28438,7 +28438,7 @@
     {
       "word": "caeus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28454,7 +28454,7 @@
     {
       "word": "surus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28559,7 +28559,7 @@
     {
       "word": "sufes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28631,7 +28631,7 @@
     {
       "word": "cotus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28674,7 +28674,7 @@
     {
       "word": "uegeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28746,7 +28746,7 @@
     {
       "word": "iutum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28907,7 +28907,7 @@
     {
       "word": "basio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -28945,7 +28945,7 @@
     {
       "word": "perus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29077,7 +29077,7 @@
     {
       "word": "ditis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29133,7 +29133,7 @@
     {
       "word": "assus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29178,7 +29178,7 @@
     {
       "word": "lisus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29351,7 +29351,7 @@
     {
       "word": "tegus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29461,7 +29461,7 @@
     {
       "word": "ochus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -29469,7 +29469,7 @@
     {
       "word": "inrui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29510,7 +29510,7 @@
     {
       "word": "mineo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.05,
       "sources": [
         "main_list"
@@ -29606,7 +29606,7 @@
     {
       "word": "cenor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29721,7 +29721,7 @@
     {
       "word": "oetum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29777,7 +29777,7 @@
     {
       "word": "diuum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29849,7 +29849,7 @@
     {
       "word": "robus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29857,7 +29857,7 @@
     {
       "word": "pausa",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.5,
       "sources": [
         "main_list"
@@ -29882,7 +29882,7 @@
     {
       "word": "leuis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29898,7 +29898,7 @@
     {
       "word": "hexas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29906,7 +29906,7 @@
     {
       "word": "gauis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -29922,7 +29922,7 @@
     {
       "word": "cutio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -29979,7 +29979,7 @@
     {
       "word": "danus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -30083,7 +30083,7 @@
     {
       "word": "aeuum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30091,7 +30091,7 @@
     {
       "word": "karus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30133,7 +30133,7 @@
     {
       "word": "ficum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30158,7 +30158,7 @@
     {
       "word": "leuor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30182,7 +30182,7 @@
     {
       "word": "cabus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30256,7 +30256,7 @@
     {
       "word": "haueo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30331,7 +30331,7 @@
     {
       "word": "lamus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -30419,7 +30419,7 @@
     {
       "word": "mesor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30427,7 +30427,7 @@
     {
       "word": "echus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30492,7 +30492,7 @@
     {
       "word": "octus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30565,7 +30565,7 @@
     {
       "word": "ionas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -30598,7 +30598,7 @@
     {
       "word": "uiror",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30821,7 +30821,7 @@
     {
       "word": "cinus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30921,7 +30921,7 @@
     {
       "word": "noles",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30929,7 +30929,7 @@
     {
       "word": "tofus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -30959,7 +30959,7 @@
     {
       "word": "catti",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.24,
       "sources": [
         "main_list"
@@ -31019,7 +31019,7 @@
     {
       "word": "morta",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.6,
       "sources": [
         "main_list"
@@ -31208,7 +31208,7 @@
     {
       "word": "enyus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -31311,7 +31311,7 @@
     {
       "word": "putus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -31373,7 +31373,7 @@
     {
       "word": "bryan",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 3.34,
       "sources": [
         "main_list"
@@ -31539,7 +31539,7 @@
     {
       "word": "clueo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -31611,7 +31611,7 @@
     {
       "word": "grama",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.57,
       "sources": [
         "main_list"
@@ -31628,7 +31628,7 @@
     {
       "word": "bigae",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -31692,7 +31692,7 @@
     {
       "word": "varum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -31846,7 +31846,7 @@
     {
       "word": "fufae",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -31930,7 +31930,7 @@
     {
       "word": "uisor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32018,7 +32018,7 @@
     {
       "word": "alito",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.33,
       "sources": [
         "main_list"
@@ -32296,7 +32296,7 @@
     {
       "word": "geris",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32313,7 +32313,7 @@
     {
       "word": "allus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32321,7 +32321,7 @@
     {
       "word": "ather",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32402,7 +32402,7 @@
     {
       "word": "aulis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -32432,7 +32432,7 @@
     {
       "word": "furio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.04,
       "sources": [
         "main_list"
@@ -32511,7 +32511,7 @@
     {
       "word": "porus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -32618,7 +32618,7 @@
     {
       "word": "amium",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32721,7 +32721,7 @@
     {
       "word": "ocnus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -32858,7 +32858,7 @@
     {
       "word": "monda",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.38,
       "sources": [
         "main_list"
@@ -32867,7 +32867,7 @@
     {
       "word": "rosum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32892,7 +32892,7 @@
     {
       "word": "arger",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32916,7 +32916,7 @@
     {
       "word": "silus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -32969,7 +32969,7 @@
     {
       "word": "nauus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -32994,7 +32994,7 @@
     {
       "word": "norus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33162,7 +33162,7 @@
     {
       "word": "denus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33303,7 +33303,7 @@
     {
       "word": "belus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -33366,7 +33366,7 @@
     {
       "word": "bigus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33445,7 +33445,7 @@
     {
       "word": "bidis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33495,7 +33495,7 @@
     {
       "word": "veius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33503,7 +33503,7 @@
     {
       "word": "ocris",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33519,7 +33519,7 @@
     {
       "word": "berna",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 3.54,
       "sources": [
         "main_list"
@@ -33584,7 +33584,7 @@
     {
       "word": "lupio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33643,7 +33643,7 @@
     {
       "word": "arses",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -33695,7 +33695,7 @@
     {
       "word": "scola",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.21,
       "sources": [
         "main_list"
@@ -33737,7 +33737,7 @@
     {
       "word": "fotus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33745,7 +33745,7 @@
     {
       "word": "aecus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -33818,7 +33818,7 @@
     {
       "word": "cuias",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -34110,7 +34110,7 @@
     {
       "word": "ceueo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -34201,7 +34201,7 @@
     {
       "word": "deuus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -34275,7 +34275,7 @@
     {
       "word": "aecor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -34283,7 +34283,7 @@
     {
       "word": "axius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -34403,7 +34403,7 @@
     {
       "word": "infor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.08,
       "sources": [
         "main_list"
@@ -34428,7 +34428,7 @@
     {
       "word": "auius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -34436,7 +34436,7 @@
     {
       "word": "aequi",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -34486,7 +34486,7 @@
     {
       "word": "oenus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -34570,7 +34570,7 @@
     {
       "word": "netus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -34578,7 +34578,7 @@
     {
       "word": "stips",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -34679,7 +34679,7 @@
     {
       "word": "obses",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -34799,7 +34799,7 @@
     {
       "word": "alani",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.32,
       "sources": [
         "main_list"
@@ -35069,7 +35069,7 @@
     {
       "word": "ubius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35127,7 +35127,7 @@
     {
       "word": "fenum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35187,7 +35187,7 @@
     {
       "word": "thoas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -35263,7 +35263,7 @@
     {
       "word": "alice",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 4.29,
       "sources": [
         "main_list"
@@ -35309,7 +35309,7 @@
     {
       "word": "cipus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35317,7 +35317,7 @@
     {
       "word": "oisus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35429,7 +35429,7 @@
     {
       "word": "aigis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35470,7 +35470,7 @@
     {
       "word": "cobio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35544,7 +35544,7 @@
     {
       "word": "seneo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35649,7 +35649,7 @@
     {
       "word": "sepes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35666,7 +35666,7 @@
     {
       "word": "manos",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.26,
       "sources": [
         "main_list"
@@ -35705,7 +35705,7 @@
     {
       "word": "fatis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35863,7 +35863,7 @@
     {
       "word": "boria",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.49,
       "sources": [
         "main_list"
@@ -35934,7 +35934,7 @@
     {
       "word": "abigo",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -35950,7 +35950,7 @@
     {
       "word": "muger",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -35966,7 +35966,7 @@
     {
       "word": "ladas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -36018,7 +36018,7 @@
     {
       "word": "tubus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36034,7 +36034,7 @@
     {
       "word": "iusta",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.28,
       "sources": [
         "main_list"
@@ -36060,7 +36060,7 @@
     {
       "word": "nefio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36163,7 +36163,7 @@
     {
       "word": "tinio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36179,7 +36179,7 @@
     {
       "word": "ecfio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36220,7 +36220,7 @@
     {
       "word": "elius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -36262,7 +36262,7 @@
     {
       "word": "infio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36564,7 +36564,7 @@
     {
       "word": "tenus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36614,7 +36614,7 @@
     {
       "word": "istae",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36630,7 +36630,7 @@
     {
       "word": "beaui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36647,7 +36647,7 @@
     {
       "word": "iulus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -36702,7 +36702,7 @@
     {
       "word": "fotum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36752,7 +36752,7 @@
     {
       "word": "arcas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.68,
       "sources": [
         "main_list"
@@ -36774,7 +36774,7 @@
     {
       "word": "cocus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36829,7 +36829,7 @@
     {
       "word": "geres",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36862,7 +36862,7 @@
     {
       "word": "fotor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -36935,7 +36935,7 @@
     {
       "word": "orsus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -37170,7 +37170,7 @@
     {
       "word": "excio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -37203,7 +37203,7 @@
     {
       "word": "ardea",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.94,
       "sources": [
         "main_list"
@@ -37299,7 +37299,7 @@
     {
       "word": "octas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -37453,7 +37453,7 @@
     {
       "word": "pipio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -37527,7 +37527,7 @@
     {
       "word": "istis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -37790,7 +37790,7 @@
     {
       "word": "talon",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.27,
       "sources": [
         "main_list"
@@ -37969,7 +37969,7 @@
     {
       "word": "aroma",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.31,
       "sources": [
         "main_list"
@@ -37986,7 +37986,7 @@
     {
       "word": "butes",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38026,7 +38026,7 @@
     {
       "word": "dilui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38197,7 +38197,7 @@
     {
       "word": "lauer",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.1,
       "sources": [
         "main_list"
@@ -38245,7 +38245,7 @@
     {
       "word": "cuneo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.97,
       "sources": [
         "main_list"
@@ -38460,7 +38460,7 @@
     {
       "word": "iasis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38490,7 +38490,7 @@
     {
       "word": "ampla",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.19,
       "sources": [
         "main_list"
@@ -38499,7 +38499,7 @@
     {
       "word": "effio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38663,7 +38663,7 @@
     {
       "word": "pigui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38685,7 +38685,7 @@
     {
       "word": "infas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38791,7 +38791,7 @@
     {
       "word": "iniui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38903,7 +38903,7 @@
     {
       "word": "equio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -38995,7 +38995,7 @@
     {
       "word": "sinis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.38,
       "sources": [
         "main_list"
@@ -39029,7 +39029,7 @@
     {
       "word": "iadis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39481,7 +39481,7 @@
     {
       "word": "fimum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39519,7 +39519,7 @@
     {
       "word": "eleus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -39567,7 +39567,7 @@
     {
       "word": "ictis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39609,7 +39609,7 @@
     {
       "word": "laius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -39625,7 +39625,7 @@
     {
       "word": "obuio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39702,7 +39702,7 @@
     {
       "word": "rauis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39884,7 +39884,7 @@
     {
       "word": "rugus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39916,7 +39916,7 @@
     {
       "word": "citus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39924,7 +39924,7 @@
     {
       "word": "cusor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -39941,7 +39941,7 @@
     {
       "word": "nexio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40030,7 +40030,7 @@
     {
       "word": "orbus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40063,7 +40063,7 @@
     {
       "word": "corus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40147,7 +40147,7 @@
     {
       "word": "aegae",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -40343,7 +40343,7 @@
     {
       "word": "dogma",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.47,
       "sources": [
         "main_list"
@@ -40438,7 +40438,7 @@
     {
       "word": "nodia",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40446,7 +40446,7 @@
     {
       "word": "arsum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40502,7 +40502,7 @@
     {
       "word": "pisae",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -40585,7 +40585,7 @@
     {
       "word": "albor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40610,7 +40610,7 @@
     {
       "word": "reste",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.43,
       "sources": [
         "main_list"
@@ -40767,7 +40767,7 @@
     {
       "word": "coiui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40809,7 +40809,7 @@
     {
       "word": "isdem",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -40892,7 +40892,7 @@
     {
       "word": "silis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.05,
       "sources": [
         "main_list"
@@ -40945,7 +40945,7 @@
     {
       "word": "porca",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.35,
       "sources": [
         "main_list"
@@ -40995,7 +40995,7 @@
     {
       "word": "neuis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41069,7 +41069,7 @@
     {
       "word": "bocis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41077,7 +41077,7 @@
     {
       "word": "apius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41118,7 +41118,7 @@
     {
       "word": "oreae",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41135,7 +41135,7 @@
     {
       "word": "sarca",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.42,
       "sources": [
         "main_list"
@@ -41212,7 +41212,7 @@
     {
       "word": "aemus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41236,7 +41236,7 @@
     {
       "word": "cluor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41284,7 +41284,7 @@
     {
       "word": "aquor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41309,7 +41309,7 @@
     {
       "word": "ropio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41333,7 +41333,7 @@
     {
       "word": "obfio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41341,7 +41341,7 @@
     {
       "word": "arsus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41349,7 +41349,7 @@
     {
       "word": "sibus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41382,7 +41382,7 @@
     {
       "word": "iutor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41390,7 +41390,7 @@
     {
       "word": "ganeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41529,7 +41529,7 @@
     {
       "word": "macio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41554,7 +41554,7 @@
     {
       "word": "sipus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41614,7 +41614,7 @@
     {
       "word": "rhois",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -41622,7 +41622,7 @@
     {
       "word": "eleis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -41753,7 +41753,7 @@
     {
       "word": "cicis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41761,7 +41761,7 @@
     {
       "word": "seria",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.49,
       "sources": [
         "main_list"
@@ -41778,7 +41778,7 @@
     {
       "word": "aedus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41794,7 +41794,7 @@
     {
       "word": "nomio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -41856,7 +41856,7 @@
     {
       "word": "molus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -42020,7 +42020,7 @@
     {
       "word": "oinus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -42078,7 +42078,7 @@
     {
       "word": "saxus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -42153,7 +42153,7 @@
     {
       "word": "deuio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -42516,7 +42516,7 @@
     {
       "word": "basus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -42634,7 +42634,7 @@
     {
       "word": "burio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -42829,7 +42829,7 @@
     {
       "word": "cloni",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.43,
       "sources": [
         "main_list"
@@ -42838,7 +42838,7 @@
     {
       "word": "batus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -42897,7 +42897,7 @@
     {
       "word": "toles",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43056,7 +43056,7 @@
     {
       "word": "binus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43064,7 +43064,7 @@
     {
       "word": "cunus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43102,7 +43102,7 @@
     {
       "word": "fusum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43144,7 +43144,7 @@
     {
       "word": "minio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.16,
       "sources": [
         "main_list"
@@ -43209,7 +43209,7 @@
     {
       "word": "ausis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43431,7 +43431,7 @@
     {
       "word": "datis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43652,7 +43652,7 @@
     {
       "word": "timum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43854,7 +43854,7 @@
     {
       "word": "ollus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43870,7 +43870,7 @@
     {
       "word": "ambas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -43878,7 +43878,7 @@
     {
       "word": "pansa",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.97,
       "sources": [
         "main_list"
@@ -44091,7 +44091,7 @@
     {
       "word": "tabis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44140,7 +44140,7 @@
     {
       "word": "cauum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44180,7 +44180,7 @@
     {
       "word": "pexus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44188,7 +44188,7 @@
     {
       "word": "argos",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.31,
       "sources": [
         "main_list"
@@ -44263,7 +44263,7 @@
     {
       "word": "calis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44348,7 +44348,7 @@
     {
       "word": "fagum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44388,7 +44388,7 @@
     {
       "word": "pusio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44514,7 +44514,7 @@
     {
       "word": "arfor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44694,7 +44694,7 @@
     {
       "word": "freno",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.97,
       "sources": [
         "main_list"
@@ -44781,7 +44781,7 @@
     {
       "word": "uomis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44811,7 +44811,7 @@
     {
       "word": "urium",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44819,7 +44819,7 @@
     {
       "word": "uatis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44827,7 +44827,7 @@
     {
       "word": "seius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -44843,7 +44843,7 @@
     {
       "word": "rumis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -44851,7 +44851,7 @@
     {
       "word": "amens",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -45073,7 +45073,7 @@
     {
       "word": "unxia",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -45114,7 +45114,7 @@
     {
       "word": "bifer",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -45251,7 +45251,7 @@
     {
       "word": "marus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -45310,7 +45310,7 @@
     {
       "word": "lopas",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ],
@@ -45362,7 +45362,7 @@
     {
       "word": "subus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -45517,7 +45517,7 @@
     {
       "word": "fixio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -45541,7 +45541,7 @@
     {
       "word": "copis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -45673,7 +45673,7 @@
     {
       "word": "asius",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -45879,7 +45879,7 @@
     {
       "word": "sunto",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.03,
       "sources": [
         "main_list"
@@ -46084,7 +46084,7 @@
     {
       "word": "demeo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -46109,7 +46109,7 @@
     {
       "word": "orsis",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -46206,7 +46206,7 @@
     {
       "word": "gazum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -46222,7 +46222,7 @@
     {
       "word": "robor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -46379,7 +46379,7 @@
     {
       "word": "ossum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -46425,7 +46425,7 @@
     {
       "word": "menta",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.67,
       "sources": [
         "main_list"
@@ -46664,7 +46664,7 @@
     {
       "word": "iuges",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -46880,7 +46880,7 @@
     {
       "word": "adito",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.25,
       "sources": [
         "main_list"
@@ -47057,7 +47057,7 @@
     {
       "word": "lutor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -47149,7 +47149,7 @@
     {
       "word": "drama",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.8,
       "sources": [
         "main_list"
@@ -47261,7 +47261,7 @@
     {
       "word": "putor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -47340,7 +47340,7 @@
     {
       "word": "cacus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ],
@@ -47386,7 +47386,7 @@
     {
       "word": "adimo",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -47402,7 +47402,7 @@
     {
       "word": "nutus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -47465,7 +47465,7 @@
     {
       "word": "iusum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -47481,7 +47481,7 @@
     {
       "word": "heius",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -47666,7 +47666,7 @@
     {
       "word": "fusor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -47757,7 +47757,7 @@
     {
       "word": "babel",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.83,
       "sources": [
         "main_list"
@@ -47925,7 +47925,7 @@
     {
       "word": "ablui",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -47950,7 +47950,7 @@
     {
       "word": "barca",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 4.39,
       "sources": [
         "main_list"
@@ -48005,7 +48005,7 @@
     {
       "word": "sensi",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 4.63,
       "sources": [
         "main_list"
@@ -48022,7 +48022,7 @@
     {
       "word": "iudas",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -48038,7 +48038,7 @@
     {
       "word": "aegon",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.25,
       "sources": [
         "main_list"
@@ -48068,7 +48068,7 @@
     {
       "word": "attis",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.01,
       "sources": [
         "main_list"
@@ -48108,7 +48108,7 @@
     {
       "word": "calco",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.09,
       "sources": [
         "main_list"
@@ -48117,7 +48117,7 @@
     {
       "word": "lepos",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "main_list"
       ]
@@ -48228,7 +48228,7 @@
     {
       "word": "passo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 5.16,
       "sources": [
         "main_list"
@@ -48312,7 +48312,7 @@
     {
       "word": "sputo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.31,
       "sources": [
         "main_list"
@@ -48321,7 +48321,7 @@
     {
       "word": "plias",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -48394,7 +48394,7 @@
     {
       "word": "lagea",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -48434,7 +48434,7 @@
     {
       "word": "uarus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -48477,7 +48477,7 @@
     {
       "word": "iures",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -48502,7 +48502,7 @@
     {
       "word": "orsum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -48527,7 +48527,7 @@
     {
       "word": "inuus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -48552,7 +48552,7 @@
     {
       "word": "bullo",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.46,
       "sources": [
         "main_list"
@@ -48633,7 +48633,7 @@
     {
       "word": "bicia",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -48667,7 +48667,7 @@
     {
       "word": "tonor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49036,7 +49036,7 @@
     {
       "word": "rabio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49084,7 +49084,7 @@
     {
       "word": "narus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49134,7 +49134,7 @@
     {
       "word": "luror",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49193,7 +49193,7 @@
     {
       "word": "pator",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49226,7 +49226,7 @@
     {
       "word": "uanor",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49242,7 +49242,7 @@
     {
       "word": "uagio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49570,7 +49570,7 @@
     {
       "word": "samio",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -49694,7 +49694,7 @@
     {
       "word": "olfio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49828,7 +49828,7 @@
     {
       "word": "buris",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49861,7 +49861,7 @@
     {
       "word": "inuio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49943,7 +49943,7 @@
     {
       "word": "cocio",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49951,7 +49951,7 @@
     {
       "word": "iseum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -49984,7 +49984,7 @@
     {
       "word": "aruus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -50038,7 +50038,7 @@
     {
       "word": "prema",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 2.64,
       "sources": [
         "main_list"
@@ -50097,7 +50097,7 @@
     {
       "word": "demum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -50122,7 +50122,7 @@
     {
       "word": "arsia",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 1.49,
       "sources": [
         "main_list"
@@ -50172,7 +50172,7 @@
     {
       "word": "citer",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -50236,7 +50236,7 @@
     {
       "word": "melum",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -50253,7 +50253,7 @@
     {
       "word": "spira",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "frequency": 3.05,
       "sources": [
         "main_list"
@@ -50391,7 +50391,7 @@
     {
       "word": "iscus",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "sources": [
         "main_list"
       ]
@@ -50424,7 +50424,7 @@
     {
       "word": "andes",
       "length": 5,
-      "tier": "daily",
+      "tier": "blocked",
       "frequency": 2.57,
       "sources": [
         "main_list"
@@ -50472,7 +50472,7 @@
     {
       "word": "sauus",
       "length": 5,
-      "tier": "daily",
+      "tier": "valid",
       "sources": [
         "main_list"
       ]
@@ -53361,7 +53361,7 @@
     {
       "word": "amato",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 4.45,
       "sources": [
         "supplement"
@@ -60727,7 +60727,7 @@
     {
       "word": "cepit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.11,
       "sources": [
         "supplement"
@@ -60788,7 +60788,7 @@
     {
       "word": "certa",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 4.89,
       "sources": [
         "supplement"
@@ -61654,7 +61654,7 @@
     {
       "word": "clara",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.82,
       "sources": [
         "supplement"
@@ -63115,7 +63115,7 @@
     {
       "word": "cruda",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.6,
       "sources": [
         "supplement"
@@ -64654,7 +64654,7 @@
     {
       "word": "dedit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.69,
       "sources": [
         "supplement"
@@ -65239,7 +65239,7 @@
     {
       "word": "digna",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.53,
       "sources": [
         "supplement"
@@ -65518,7 +65518,7 @@
     {
       "word": "dixit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.15,
       "sources": [
         "supplement"
@@ -65571,7 +65571,7 @@
     {
       "word": "docta",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.37,
       "sources": [
         "supplement"
@@ -66508,7 +66508,7 @@
     {
       "word": "dulce",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.61,
       "sources": [
         "supplement"
@@ -66741,7 +66741,7 @@
     {
       "word": "duxit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "supplement"
       ]
@@ -67878,7 +67878,7 @@
     {
       "word": "empta",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "supplement"
       ]
@@ -69670,7 +69670,7 @@
     {
       "word": "fecit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.31,
       "sources": [
         "supplement"
@@ -70381,7 +70381,7 @@
     {
       "word": "firma",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 4.61,
       "sources": [
         "supplement"
@@ -71389,7 +71389,7 @@
     {
       "word": "fudit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "supplement"
       ]
@@ -71446,7 +71446,7 @@
     {
       "word": "fugit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.24,
       "sources": [
         "supplement"
@@ -73454,7 +73454,7 @@
     {
       "word": "grata",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.73,
       "sources": [
         "supplement"
@@ -77088,7 +77088,7 @@
     {
       "word": "inane",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.35,
       "sources": [
         "supplement"
@@ -80038,7 +80038,7 @@
     {
       "word": "laeta",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.74,
       "sources": [
         "supplement"
@@ -80460,7 +80460,7 @@
     {
       "word": "larga",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 4.51,
       "sources": [
         "supplement"
@@ -80958,7 +80958,7 @@
     {
       "word": "legit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.5,
       "sources": [
         "supplement"
@@ -82175,7 +82175,7 @@
     {
       "word": "longa",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.84,
       "sources": [
         "supplement"
@@ -82470,7 +82470,7 @@
     {
       "word": "lucet",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.06,
       "sources": [
         "supplement"
@@ -83078,7 +83078,7 @@
     {
       "word": "macro",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.58,
       "sources": [
         "supplement"
@@ -83226,7 +83226,7 @@
     {
       "word": "magna",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 4.02,
       "sources": [
         "supplement"
@@ -83606,7 +83606,7 @@
     {
       "word": "manet",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.76,
       "sources": [
         "supplement"
@@ -85440,7 +85440,7 @@
     {
       "word": "misit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "supplement"
       ]
@@ -85998,7 +85998,7 @@
     {
       "word": "morbi",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.02,
       "sources": [
         "supplement"
@@ -86007,7 +86007,7 @@
     {
       "word": "morbo",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.42,
       "sources": [
         "supplement"
@@ -88011,7 +88011,7 @@
     {
       "word": "nigra",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.78,
       "sources": [
         "supplement"
@@ -90141,7 +90141,7 @@
     {
       "word": "optat",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "supplement"
       ]
@@ -91567,7 +91567,7 @@
     {
       "word": "paret",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.73,
       "sources": [
         "supplement"
@@ -92601,7 +92601,7 @@
     {
       "word": "petit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 3.35,
       "sources": [
         "supplement"
@@ -93263,7 +93263,7 @@
     {
       "word": "plane",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.56,
       "sources": [
         "supplement"
@@ -93388,7 +93388,7 @@
     {
       "word": "plena",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.35,
       "sources": [
         "supplement"
@@ -94357,7 +94357,7 @@
     {
       "word": "probe",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 2.28,
       "sources": [
         "supplement"
@@ -96460,7 +96460,7 @@
     {
       "word": "rexit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "supplement"
       ]
@@ -98314,7 +98314,7 @@
     {
       "word": "sacra",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 4.21,
       "sources": [
         "supplement"
@@ -105870,7 +105870,7 @@
     {
       "word": "totum",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.67,
       "sources": [
         "supplement"
@@ -106325,7 +106325,7 @@
     {
       "word": "tulit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "sources": [
         "supplement"
       ]
@@ -109640,7 +109640,7 @@
     {
       "word": "vixit",
       "length": 5,
-      "tier": "valid",
+      "tier": "daily",
       "frequency": 1.41,
       "sources": [
         "supplement"
