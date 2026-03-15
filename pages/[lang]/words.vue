@@ -83,12 +83,14 @@ useHead({
                     mainEntity: {
                         '@type': 'ItemList',
                         numberOfItems: words.value.length,
-                        itemListElement: words.value.map((w, i) => ({
-                            '@type': 'ListItem',
-                            position: i + 1 + (page.value - 1) * 30,
-                            url: `https://wordle.global/${lang}/word/${w.day_idx}`,
-                            name: `${w.word.toUpperCase()} \u2014 Wordle ${langNameNative.value} #${w.day_idx}`,
-                        })),
+                        itemListElement: words.value
+                            .filter((w) => w.word)
+                            .map((w, i) => ({
+                                '@type': 'ListItem',
+                                position: i + 1 + (page.value - 1) * 30,
+                                url: `https://wordle.global/${lang}/word/${w.day_idx}`,
+                                name: `${w.word!.toUpperCase()} \u2014 Wordle ${langNameNative.value} #${w.day_idx}`,
+                            })),
                     },
                 })
             ),
