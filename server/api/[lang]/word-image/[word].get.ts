@@ -47,7 +47,7 @@ const IMAGE_MIN_DAY_IDX = 1708;
 
 export default defineEventHandler(async (event) => {
     const lang = getRouterParam(event, 'lang')!;
-    const word = getRouterParam(event, 'word')!;
+    const word = getRouterParam(event, 'word')!.normalize('NFC');
     const data = loadAllData();
 
     if (!data.languageCodes.includes(lang)) {

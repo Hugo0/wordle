@@ -169,69 +169,96 @@ function winRate(stats: { total: number; wins: number }): number {
 
             <!-- Word Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                <NuxtLink
-                    v-for="w in words"
-                    :key="w.day_idx"
-                    :to="`/${lang}/word/${w.day_idx}`"
-                    class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group"
-                >
-                    <!-- Word tiles (mini) -->
-                    <div class="flex justify-center gap-1 mb-2">
-                        <div
-                            v-for="(letter, li) in w.word"
-                            :key="li"
-                            class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-green-500 rounded uppercase"
-                        >
-                            {{ letter }}
+                <template v-for="w in words" :key="w.day_idx">
+                    <!-- Today's word: mystery card -->
+                    <NuxtLink
+                        v-if="w.is_today"
+                        :to="`/${lang}`"
+                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group border-2 border-dashed border-green-500/40"
+                    >
+                        <div class="flex justify-center gap-1 mb-2">
+                            <div
+                                v-for="i in 5"
+                                :key="i"
+                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-neutral-400 dark:bg-neutral-600 rounded"
+                            >
+                                ?
+                            </div>
                         </div>
-                    </div>
+                        <p class="text-xs text-neutral-400 text-center">
+                            #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
+                        </p>
+                        <p
+                            class="text-sm font-semibold text-green-600 dark:text-green-400 mt-2 text-center"
+                        >
+                            Today's word &mdash; Play to reveal!
+                        </p>
+                    </NuxtLink>
 
-                    <!-- Day and date -->
-                    <p class="text-xs text-neutral-400 text-center">
-                        #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
-                    </p>
-
-                    <!-- Definition snippet -->
-                    <p
-                        v-if="w.definition && w.definition.definition"
-                        class="text-xs text-neutral-600 dark:text-neutral-300 mt-1 line-clamp-2 text-center"
+                    <!-- Past word: normal card -->
+                    <NuxtLink
+                        v-else
+                        :to="`/${lang}/word/${w.day_idx}`"
+                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group"
                     >
-                        {{
-                            w.definition.definition.length > 80
-                                ? w.definition.definition.slice(0, 80) + '\u2026'
-                                : w.definition.definition
-                        }}
-                    </p>
+                        <!-- Word tiles (mini) -->
+                        <div class="flex justify-center gap-1 mb-2">
+                            <div
+                                v-for="(letter, li) in w.word"
+                                :key="li"
+                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-green-500 rounded uppercase"
+                            >
+                                {{ letter }}
+                            </div>
+                        </div>
 
-                    <!-- Stats summary -->
-                    <div
-                        v-if="w.stats && w.stats.total > 0"
-                        class="flex justify-center gap-3 mt-2 text-[10px] text-neutral-400"
-                    >
-                        <span>{{ w.stats.total }} plays</span>
-                        <span>{{ winRate(w.stats) }}% win</span>
-                    </div>
+                        <!-- Day and date -->
+                        <p class="text-xs text-neutral-400 text-center">
+                            #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
+                        </p>
 
-                    <!-- AI art thumbnail (loads async) -->
-                    <div class="mt-2 overflow-hidden rounded hidden" :data-img-id="w.day_idx">
-                        <img
-                            :src="`/api/${lang}/word-image/${w.word}?day_idx=${w.day_idx}`"
-                            :alt="w.word"
-                            class="w-full h-24 object-cover"
-                            loading="lazy"
-                            @load="
-                                ($event.target as HTMLImageElement).parentElement!.classList.remove(
-                                    'hidden'
-                                )
-                            "
-                            @error="
-                                ($event.target as HTMLImageElement).parentElement!.classList.add(
-                                    'hidden'
-                                )
-                            "
-                        />
-                    </div>
-                </NuxtLink>
+                        <!-- Definition snippet -->
+                        <p
+                            v-if="w.definition && w.definition.definition"
+                            class="text-xs text-neutral-600 dark:text-neutral-300 mt-1 line-clamp-2 text-center"
+                        >
+                            {{
+                                w.definition.definition.length > 80
+                                    ? w.definition.definition.slice(0, 80) + '\u2026'
+                                    : w.definition.definition
+                            }}
+                        </p>
+
+                        <!-- Stats summary -->
+                        <div
+                            v-if="w.stats && w.stats.total > 0"
+                            class="flex justify-center gap-3 mt-2 text-[10px] text-neutral-400"
+                        >
+                            <span>{{ w.stats.total }} plays</span>
+                            <span>{{ winRate(w.stats) }}% win</span>
+                        </div>
+
+                        <!-- AI art thumbnail (loads async) -->
+                        <div class="mt-2 overflow-hidden rounded hidden" :data-img-id="w.day_idx">
+                            <img
+                                :src="`/api/${lang}/word-image/${w.word}?day_idx=${w.day_idx}`"
+                                :alt="w.word || ''"
+                                class="w-full h-24 object-cover"
+                                loading="lazy"
+                                @load="
+                                    (
+                                        $event.target as HTMLImageElement
+                                    ).parentElement!.classList.remove('hidden')
+                                "
+                                @error="
+                                    (
+                                        $event.target as HTMLImageElement
+                                    ).parentElement!.classList.add('hidden')
+                                "
+                            />
+                        </div>
+                    </NuxtLink>
+                </template>
             </div>
 
             <!-- Pagination -->
