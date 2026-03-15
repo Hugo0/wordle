@@ -167,24 +167,30 @@ const todayRevealed = ref<string | null>(null);
 const todayRevealedDef = ref<any>(null);
 
 onMounted(async () => {
-    // Check if today's word should be revealed (game over)
-    if (d.is_today && !word) {
+    // Check if today's word should be revealed (game over in localStorage)
+    if (d.is_today) {
         try {
             const saved = localStorage.getItem(lang);
             if (saved) {
                 const state = JSON.parse(saved);
-                if (state.game_over && state.todays_word) {
-                    todayRevealed.value = state.todays_word;
-                    // Fetch definition for the revealed word
-                    try {
-                        const defData = await $fetch(
-                            `/api/${lang}/definition/${encodeURIComponent(state.todays_word)}`
-                        );
-                        if (defData && (defData as any).definition) {
-                            todayRevealedDef.value = defData;
+                if (state.game_over) {
+                    // Use word from localStorage or from SSR data
+                    const revealedWord = state.todays_word || word;
+                    if (revealedWord) {
+                        todayRevealed.value = revealedWord;
+                        // Fetch definition for the revealed word
+                        if (!definition?.definition) {
+                            try {
+                                const defData = await $fetch(
+                                    `/api/${lang}/definition/${encodeURIComponent(revealedWord)}`
+                                );
+                                if (defData && (defData as any).definition) {
+                                    todayRevealedDef.value = defData;
+                                }
+                            } catch {
+                                // definition not available
+                            }
                         }
-                    } catch {
-                        // definition not available
                     }
                 }
             }
@@ -345,9 +351,12 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- Definition -->
+                <!-- Definition (use SSR definition or async-fetched) -->
                 <div
-                    v-if="todayRevealedDef && todayRevealedDef.definition"
+                    v-if="
+                        (todayRevealedDef && todayRevealedDef.definition) ||
+                        (definition && definition.definition)
+                    "
                     class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
                 >
                     <div class="flex items-center gap-2 mb-1">
@@ -357,15 +366,18 @@ onMounted(() => {
                             Definition
                         </span>
                         <span
-                            v-if="todayRevealedDef.part_of_speech"
+                            v-if="(todayRevealedDef || definition)?.part_of_speech"
                             class="text-xs text-neutral-400 dark:text-neutral-500 italic"
                         >
-                            {{ todayRevealedDef.part_of_speech }}
+                            {{ (todayRevealedDef || definition).part_of_speech }}
                         </span>
                     </div>
                     <p class="text-sm text-neutral-800 dark:text-neutral-200">
                         <strong class="uppercase">{{ todayRevealed }}</strong> &mdash;
-                        {{ todayRevealedDef.definition_native || todayRevealedDef.definition }}
+                        {{
+                            (todayRevealedDef || definition).definition_native ||
+                            (todayRevealedDef || definition).definition
+                        }}
                     </p>
                     <a
                         :href="`https://${wiktLang}.wiktionary.org/wiki/${todayRevealed}`"
