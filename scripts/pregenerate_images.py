@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Pre-generate AI word art images for upcoming daily words.
 
+⚠️  MIGRATION WARNING: This script depends on the deleted Flask app (webapp/app.py).
+It needs to be rewritten to use the Nuxt server API or standalone Python equivalents.
+See server/api/[lang]/word-image/[word].get.ts for the Nuxt endpoint.
+
 Run daily via cron to ensure images are cached before players see them.
 Generates images for today and tomorrow across top languages.
 
@@ -13,10 +17,16 @@ Usage:
 Requires OPENAI_API_KEY in .env or environment.
 """
 
-import argparse
-import os
-import sys
-import time
+raise ImportError(
+    "This script depends on the deleted Flask app (webapp/app.py). "
+    "It needs to be rewritten for the Nuxt migration. "
+    "See server/api/[lang]/word-image/[word].get.ts for the ported logic."
+)
+
+import argparse  # noqa: E402
+import os  # noqa: E402
+import sys  # noqa: E402
+import time  # noqa: E402
 
 # Add project root to path so we can import from webapp
 # The app uses relative paths from webapp/, so chdir there

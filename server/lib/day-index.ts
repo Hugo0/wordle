@@ -6,7 +6,7 @@
  * word-selection.ts (which imports from data-loader).
  *
  * Formula: dayIdx = nDaysSinceEpoch - 18992 + 195
- * Matches Python: webapp/app.py get_todays_idx()
+ * Matches Python: scripts/word_pipeline/freeze.py get_todays_idx()
  */
 
 /** Magic offset constants matching the Python implementation. */

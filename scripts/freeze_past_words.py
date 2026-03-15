@@ -32,30 +32,30 @@ SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data"
 LANGUAGES_DIR = DATA_DIR / "languages"
 
-# Must match webapp/app.py
+# Must match server/utils/word-selection.ts
 MIGRATION_DAY_IDX = 1681
 
 
 def get_todays_idx():
-    """Calculate today's day index (must match webapp/app.py)."""
+    """Calculate today's day index (must match server/utils/word-selection.ts)."""
     n_days = (datetime.date.today() - datetime.date(1970, 1, 1)).days
     return n_days - 18992 + 195
 
 
 def _word_hash(word, lang_code):
-    """Hash a word for consistent hashing (must match webapp/app.py)."""
+    """Hash a word for consistent hashing (must match server/utils/word-selection.ts)."""
     key = f"{lang_code}:{word}"
     return hashlib.sha256(key.encode()).hexdigest()
 
 
 def _day_hash(day_idx, lang_code):
-    """Hash a day index for consistent hashing (must match webapp/app.py)."""
+    """Hash a day index for consistent hashing (must match server/utils/word-selection.ts)."""
     key = f"{lang_code}:day:{day_idx}"
     return hashlib.sha256(key.encode()).hexdigest()
 
 
 def get_daily_word_consistent_hash(words, blocklist, day_idx, lang_code):
-    """Consistent hashing word selection (must match webapp/app.py)."""
+    """Consistent hashing word selection (must match server/utils/word-selection.ts)."""
     day_h = _day_hash(day_idx, lang_code)
     candidates = []
     for word in words:
@@ -71,7 +71,7 @@ def get_daily_word_consistent_hash(words, blocklist, day_idx, lang_code):
 
 
 def get_daily_word_legacy(words, blocklist, day_idx):
-    """Legacy shuffle word selection (must match webapp/app.py)."""
+    """Legacy shuffle word selection (must match server/utils/word-selection.ts)."""
     list_len = len(words)
     if not blocklist:
         return words[day_idx % list_len]

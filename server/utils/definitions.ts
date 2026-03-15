@@ -1,5 +1,5 @@
 /**
- * Definition fetching — port of webapp/definitions.py.
+ * Definition fetching.
  *
  * 3-tier system: disk cache → LLM (GPT-5.2) → kaikki (offline Wiktionary).
  */

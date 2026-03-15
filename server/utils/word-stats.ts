@@ -1,5 +1,5 @@
 /**
- * Anonymous word stats collection — port of webapp/app.py stats functions.
+ * Anonymous word stats collection.
  *
  * Uses proper-lockfile instead of fcntl.flock() for atomic read-modify-write.
  */

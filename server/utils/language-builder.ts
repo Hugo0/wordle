@@ -1,5 +1,5 @@
 /**
- * Language builder — port of the Language class from webapp/app.py.
+ * Language builder — builds the complete language data for a game session.
  *
  * Builds the complete language data object for a game session, including:
  * - Daily word selection

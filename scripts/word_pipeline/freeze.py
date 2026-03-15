@@ -13,7 +13,7 @@ log = logging.getLogger(__name__)
 
 
 def get_todays_idx() -> int:
-    """Calculate today's day index (must match webapp/app.py)."""
+    """Calculate today's day index (must match server/utils/word-selection.ts)."""
     n_days = (datetime.date.today() - datetime.date(1970, 1, 1)).days
     return n_days - 18992 + 195
 
@@ -27,7 +27,7 @@ def _day_hash(day_idx: int, lang: str) -> str:
 
 
 def _consistent_hash_select(words: list[str], blocklist: set[str], day_idx: int, lang: str) -> str:
-    """Consistent hashing word selection (must match webapp/app.py)."""
+    """Consistent hashing word selection (must match server/utils/word-selection.ts)."""
     day_h = _day_hash(day_idx, lang)
     candidates = sorted((_word_hash(w, lang), w) for w in words if w not in blocklist)
     if not candidates:

@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Pre-generate LLM definitions for upcoming daily words.
 
+⚠️  MIGRATION WARNING: This script depends on the deleted Flask app (webapp/app.py,
+webapp/definitions.py). It needs to be rewritten to use the Nuxt server API
+(server/utils/definitions.ts, server/utils/data-loader.ts) or standalone Python
+equivalents. See server/api/[lang]/definition/[word].get.ts for the Nuxt endpoint.
+
 Run daily via cron to ensure definitions are cached before players see them.
 Generates definitions for today and tomorrow across all languages.
 
@@ -14,10 +19,16 @@ Usage:
 Requires OPENAI_API_KEY in .env or environment.
 """
 
-import argparse
-import os
-import sys
-import time
+raise ImportError(
+    "This script depends on the deleted Flask app (webapp/app.py). "
+    "It needs to be rewritten for the Nuxt migration. "
+    "See server/utils/definitions.ts for the ported logic."
+)
+
+import argparse  # noqa: E402
+import os  # noqa: E402
+import sys  # noqa: E402
+import time  # noqa: E402
 
 # Add project root to path so we can import from webapp
 _script_dir = os.path.dirname(os.path.abspath(__file__))

@@ -7,7 +7,7 @@ This script helps with:
 2. Checking blocklist coverage
 3. Viewing curation status
 
-IMPORTANT: Blocklists are applied at RUNTIME in webapp/app.py, not by modifying
+IMPORTANT: Blocklists are applied at RUNTIME in server/utils/word-selection.ts, not by modifying
 word list files. This preserves shuffle order for backwards compatibility.
 Blocklisted words are still valid guesses, just skipped as daily words.
 
@@ -28,7 +28,7 @@ DATA_DIR = SCRIPT_DIR.parent / "data" / "languages"
 
 
 def get_todays_idx(date: datetime.date = None) -> int:
-    """Calculate the word index for a given date (matches webapp/app.py)."""
+    """Calculate the word index for a given date (matches server/utils/word-selection.ts)."""
     if date is None:
         date = datetime.datetime.utcnow().date()
     if isinstance(date, datetime.date) and not isinstance(date, datetime.datetime):
@@ -160,7 +160,7 @@ def load_blocklist(lang: str) -> set[str]:
 def check_blocklist(lang: str) -> None:
     """Check how many words in word list would be filtered by blocklist.
 
-    NOTE: Blocklists are applied at RUNTIME in webapp/app.py, not by modifying
+    NOTE: Blocklists are applied at RUNTIME in server/utils/word-selection.ts, not by modifying
     word list files. This preserves shuffle order for backwards compatibility.
     Blocklisted words are still valid guesses, just skipped as daily words.
     """

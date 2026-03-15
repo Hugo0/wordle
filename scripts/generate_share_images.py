@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate social share preview images (OG images) for all languages × results.
 
-Produces 1200×630 PNGs in webapp/static/images/share/{lang}_{r}.png
+Produces 1200×630 PNGs in public/images/share/{lang}_{r}.png
 where r is 1-6 (win) or x (loss).
 
 Usage:
@@ -25,9 +25,9 @@ logger = logging.getLogger(__name__)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
 LANG_DIR = os.path.join(DATA_DIR, "languages")
-OUTPUT_DIR = os.path.join(ROOT, "webapp", "static", "images", "share")
+OUTPUT_DIR = os.path.join(ROOT, "public", "images", "share")
 DEFAULT_CONFIG_PATH = os.path.join(DATA_DIR, "default_language_config.json")
-OG_IMAGE_PATH = os.path.join(ROOT, "webapp", "static", "images", "og-image.png")
+OG_IMAGE_PATH = os.path.join(ROOT, "public", "images", "og-image.png")
 
 # Image dimensions (standard OG image)
 WIDTH, HEIGHT = 1200, 630

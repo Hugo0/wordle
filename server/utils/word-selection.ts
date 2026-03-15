@@ -1,5 +1,5 @@
 /**
- * Daily word selection algorithm — port of webapp/app.py word selection.
+ * Daily word selection algorithm.
  *
  * Two algorithms:
  * - Legacy (day_idx <= MIGRATION_DAY_IDX): shuffle + modulo from pre-shuffled list
