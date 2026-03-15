@@ -8,11 +8,9 @@ import os
 import time
 from pathlib import Path
 
-import yaml
-
 from . import DATA_DIR, SCRIPT_DIR
 from .prompts import CURATION_SYSTEM_PROMPT, build_curation_prompt, get_script_type
-from .schema import LLMCuration, WordsYaml
+from .schema import LLMCuration, WordsData
 
 log = logging.getLogger(__name__)
 
@@ -32,7 +30,7 @@ def _load_set_file(path: Path) -> set[str]:
     return result
 
 
-def curate_rules(words_yaml: WordsYaml, lang: str) -> WordsYaml:
+def curate_rules(words_yaml: WordsData, lang: str) -> WordsData:
     """Apply rule-based curation: profanity, names, flags → tier adjustments.
 
     Does NOT modify words with reviewed=True.
@@ -58,12 +56,12 @@ def curate_rules(words_yaml: WordsYaml, lang: str) -> WordsYaml:
 
 
 def curate_llm(
-    words_yaml: WordsYaml,
+    words_yaml: WordsData,
     lang: str,
     batch_size: int = 50,
     max_batches: int | None = None,
     model: str = "claude-sonnet-4-20250514",
-) -> WordsYaml:
+) -> WordsData:
     """Apply LLM curation to words that haven't been curated yet.
 
     Only processes words where reviewed=False and llm=None.
@@ -146,7 +144,7 @@ def curate_llm(
     return words_yaml
 
 
-def apply_llm_tiers(words_yaml: WordsYaml) -> WordsYaml:
+def apply_llm_tiers(words_yaml: WordsData) -> WordsData:
     """Apply LLM tier recommendations to word entries.
 
     Decision logic:
@@ -176,13 +174,13 @@ def apply_llm_tiers(words_yaml: WordsYaml) -> WordsYaml:
     return words_yaml
 
 
-def apply_community_overrides(words_yaml: WordsYaml, lang: str) -> WordsYaml:
-    """Apply community overrides from contribute/overrides.yaml."""
-    overrides_path = DATA_DIR / lang / "contribute" / "overrides.yaml"
+def apply_community_overrides(words_yaml: WordsData, lang: str) -> WordsData:
+    """Apply community overrides from contribute/overrides.json."""
+    overrides_path = DATA_DIR / lang / "contribute" / "overrides.json"
     if not overrides_path.exists():
         return words_yaml
 
-    overrides = yaml.safe_load(overrides_path.read_text(encoding="utf-8"))
+    overrides = json.loads(overrides_path.read_text(encoding="utf-8"))
     if not overrides:
         return words_yaml
 
@@ -204,13 +202,13 @@ def apply_community_overrides(words_yaml: WordsYaml, lang: str) -> WordsYaml:
 
 
 def curate_pool(
-    words_yaml: WordsYaml,
+    words_yaml: WordsData,
     lang: str,
     use_llm: bool = False,
     llm_batch_size: int = 50,
     llm_max_batches: int | None = None,
     llm_model: str = "claude-sonnet-4-20250514",
-) -> WordsYaml:
+) -> WordsData:
     """Full curation pipeline: rules → LLM → apply LLM tiers → community overrides."""
     words_yaml = curate_rules(words_yaml, lang)
 

@@ -7,7 +7,7 @@ import hashlib
 import logging
 
 from . import MIGRATION_DAY_IDX
-from .schema import WordsYaml
+from .schema import WordsData
 
 log = logging.getLogger(__name__)
 
@@ -38,7 +38,7 @@ def _consistent_hash_select(words: list[str], blocklist: set[str], day_idx: int,
     return candidates[0][1]
 
 
-def freeze_history(words_yaml: WordsYaml, lang: str) -> WordsYaml:
+def freeze_history(words_yaml: WordsData, lang: str) -> WordsData:
     """Compute daily words for all past days and set history field per word.
 
     This replaces the old freeze_past_words.py script.
@@ -49,7 +49,7 @@ def freeze_history(words_yaml: WordsYaml, lang: str) -> WordsYaml:
     if days_since_migration <= 0:
         return words_yaml
 
-    # Build daily pool and blocklist from words.yaml
+    # Build daily pool and blocklist from words.json
     daily_pool = sorted(w.word for w in words_yaml.words if w.tier == "daily")
     blocked = {w.word for w in words_yaml.words if w.tier == "blocked"}
 

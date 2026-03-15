@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 import re
 
-from .schema import WordsYaml
+from .schema import WordsData
 from .source import build_native_dictionary, load_english_words
 
 log = logging.getLogger(__name__)
@@ -59,7 +59,7 @@ WORDFREQ_LANG_MAP = {
 }
 
 
-def score_pool(words_yaml: WordsYaml, lang: str) -> WordsYaml:
+def score_pool(words_yaml: WordsData, lang: str) -> WordsData:
     """Assign frequency scores and detection flags to all words."""
     # Score with wordfreq
     wf_lang = WORDFREQ_LANG_MAP.get(lang)
@@ -92,7 +92,7 @@ def score_pool(words_yaml: WordsYaml, lang: str) -> WordsYaml:
 _english_cache: set[str] | None = None
 
 
-def _flag_contamination(words_yaml: WordsYaml, lang: str) -> None:
+def _flag_contamination(words_yaml: WordsData, lang: str) -> None:
     """Flag English contamination and set foreign flag."""
     global _english_cache
     if lang == "en":
@@ -112,7 +112,7 @@ def _flag_contamination(words_yaml: WordsYaml, lang: str) -> None:
         log.info(f"{lang}: flagged {flagged} words as English contamination")
 
 
-def _flag_roman_numerals(words_yaml: WordsYaml) -> None:
+def _flag_roman_numerals(words_yaml: WordsData) -> None:
     """Flag Roman numerals."""
     for entry in words_yaml.words:
         if _is_roman_numeral(entry.word):

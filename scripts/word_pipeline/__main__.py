@@ -16,7 +16,7 @@ def cmd_run(args):
 
     if args.all:
         langs = sorted(
-            d.name for d in DATA_DIR.iterdir() if d.is_dir() and (d / "words.yaml").exists()
+            d.name for d in DATA_DIR.iterdir() if d.is_dir() and (d / "words.json").exists()
         )
     elif args.langs:
         langs = args.langs
@@ -97,9 +97,9 @@ def main():
     # run command
     run_parser = sub.add_parser("run", help="Run pipeline stages")
     run_parser.add_argument("langs", nargs="*", help="Language codes")
-    run_parser.add_argument("--all", action="store_true", help="Process all migrated languages")
+    run_parser.add_argument("--all", action="store_true", help="Process all languages")
     run_parser.add_argument(
-        "--stages", help="Comma-separated stages: source,normalize,score,curate,compile,freeze"
+        "--stages", help="Comma-separated stages: source,normalize,score,curate,freeze"
     )
     run_parser.add_argument("--llm", action="store_true", help="Enable LLM curation")
     run_parser.add_argument("--llm-model", default="claude-sonnet-4-20250514", help="LLM model")
@@ -120,7 +120,7 @@ def main():
     extract_parser.set_defaults(func=cmd_extract)
 
     # merge command
-    merge_parser = sub.add_parser("merge", help="Merge LLM curation results back into words.yaml")
+    merge_parser = sub.add_parser("merge", help="Merge LLM curation results back into words.json")
     merge_parser.add_argument("langs", nargs="+", help="Language codes")
     merge_parser.set_defaults(func=cmd_merge)
 

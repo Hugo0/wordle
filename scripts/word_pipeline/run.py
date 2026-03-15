@@ -1,21 +1,20 @@
-"""Pipeline orchestrator — run stages on words.yaml files."""
+"""Pipeline orchestrator — run stages on words.json files."""
 
 from __future__ import annotations
 
 import logging
 
 from . import DATA_DIR
-from .compile import compile_language, save_compiled, validate_pool_depth
 from .curate import curate_pool
 from .freeze import freeze_history
 from .normalize import normalize_pool
-from .schema import load_words_yaml, save_words_yaml
+from .schema import load_words, save_words
 from .score import score_pool
 from .source import source_new_words
 
 log = logging.getLogger(__name__)
 
-ALL_STAGES = ["source", "normalize", "score", "curate", "compile", "freeze"]
+ALL_STAGES = ["source", "normalize", "score", "curate", "freeze"]
 
 
 def run_pipeline(
@@ -29,39 +28,39 @@ def run_pipeline(
 ) -> dict:
     """Run the pipeline for a single language.
 
-    Requires words.yaml to already exist (run migrate_to_yaml.py first).
+    Requires words.json to already exist.
     """
     if stages is None:
         stages = ALL_STAGES
 
-    yaml_path = DATA_DIR / lang / "words.yaml"
-    if not yaml_path.exists():
-        log.warning(f"{lang}: no words.yaml found. Run migrate_to_yaml.py first.")
-        return {"lang": lang, "status": "skipped", "reason": "no words.yaml"}
+    json_path = DATA_DIR / lang / "words.json"
+    if not json_path.exists():
+        log.warning(f"{lang}: no words.json found.")
+        return {"lang": lang, "status": "skipped", "reason": "no words.json"}
 
-    words_yaml = load_words_yaml(yaml_path)
+    words_data = load_words(json_path)
     config = _load_config(lang)
     result: dict = {"lang": lang, "status": "ok", "stages_run": []}
 
     # Stage 1: SOURCE — discover new words from external sources
     if "source" in stages:
-        words_yaml = source_new_words(words_yaml, lang, config)
+        words_data = source_new_words(words_data, lang, config)
         result["stages_run"].append("source")
 
     # Stage 2: NORMALIZE — lowercase, dedup, fix length, final forms
     if "normalize" in stages:
-        words_yaml = normalize_pool(words_yaml, lang)
+        words_data = normalize_pool(words_data, lang)
         result["stages_run"].append("normalize")
 
     # Stage 3: SCORE — frequency scores, contamination flags
     if "score" in stages:
-        words_yaml = score_pool(words_yaml, lang)
+        words_data = score_pool(words_data, lang)
         result["stages_run"].append("score")
 
     # Stage 4: CURATE — rule-based + LLM classification + overrides
     if "curate" in stages:
-        words_yaml = curate_pool(
-            words_yaml,
+        words_data = curate_pool(
+            words_data,
             lang,
             use_llm=use_llm,
             llm_batch_size=llm_batch_size,
@@ -70,34 +69,19 @@ def run_pipeline(
         )
         result["stages_run"].append("curate")
 
-    # Stage 5: COMPILE — YAML → optimized JSON for runtime
-    if "compile" in stages:
-        compiled = compile_language(lang, words_yaml)
-        result["stages_run"].append("compile")
-        result["daily_count"] = compiled["meta"]["daily_count"]
-        result["valid_count"] = compiled["meta"]["valid_count"]
-
-        warnings = validate_pool_depth(words_yaml, lang)
-        if warnings:
-            result["warnings"] = warnings
-
-        if not dry_run:
-            save_compiled(lang, compiled)
-
-    # Stage 6: FREEZE — compute word history
+    # Stage 5: FREEZE — compute word history
     if "freeze" in stages:
-        words_yaml = freeze_history(words_yaml, lang)
+        words_data = freeze_history(words_data, lang)
         result["stages_run"].append("freeze")
 
-    # Save words.yaml (if any stage besides compile ran)
-    non_compile_stages = [s for s in result["stages_run"] if s != "compile"]
-    if non_compile_stages and not dry_run:
-        save_words_yaml(words_yaml, yaml_path)
+    # Save words.json
+    if result["stages_run"] and not dry_run:
+        save_words(words_data, json_path)
 
     # Summary stats
-    result["total_words"] = len(words_yaml.words)
+    result["total_words"] = len(words_data.words)
     tier_counts = {}
-    for e in words_yaml.words:
+    for e in words_data.words:
         tier_counts[e.tier] = tier_counts.get(e.tier, 0) + 1
     result["tiers"] = tier_counts
 

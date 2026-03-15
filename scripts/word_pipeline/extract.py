@@ -1,4 +1,4 @@
-"""Extract daily-tier words from words.yaml for LLM curation review."""
+"""Extract daily-tier words from words.json for LLM curation review."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ import logging
 from pathlib import Path
 
 from . import DATA_DIR, SCRIPT_DIR
-from .schema import load_words_yaml
+from .schema import load_words
 
 log = logging.getLogger(__name__)
 
@@ -20,12 +20,12 @@ def extract_daily(lang: str) -> Path:
     Output: .curation_review/{lang}_daily.txt — one word per line.
     Returns the output path.
     """
-    yaml_path = DATA_DIR / lang / "words.yaml"
-    if not yaml_path.exists():
-        raise FileNotFoundError(f"No words.yaml for {lang}")
+    json_path = DATA_DIR / lang / "words.json"
+    if not json_path.exists():
+        raise FileNotFoundError(f"No words.json for {lang}")
 
-    words_yaml = load_words_yaml(yaml_path)
-    daily = [w.word for w in words_yaml.words if w.tier == "daily"]
+    words_data = load_words(json_path)
+    daily = [w.word for w in words_data.words if w.tier == "daily"]
 
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
     out_path = REVIEW_DIR / f"{lang}_daily.txt"
@@ -47,12 +47,12 @@ def extract_all(langs: list[str]) -> dict[str, Path]:
 
 
 def merge_curation(lang: str) -> int:
-    """Merge LLM curation results back into words.yaml.
+    """Merge LLM curation results back into words.json.
 
     Reads: .curation_review/{lang}_curation.json
     Format: [{"word": "...", "tier": "daily|valid|reject", "confidence": 1-5, "reason": "..."}]
     """
-    from .schema import LLMCuration, save_words_yaml
+    from .schema import LLMCuration, save_words
 
     results_path = REVIEW_DIR / f"{lang}_curation.json"
     if not results_path.exists():
@@ -63,10 +63,10 @@ def merge_curation(lang: str) -> int:
     if not results:
         return 0
 
-    # Load words.yaml
-    yaml_path = DATA_DIR / lang / "words.yaml"
-    words_yaml = load_words_yaml(yaml_path)
-    word_map = {w.word: w for w in words_yaml.words}
+    # Load words.json
+    json_path = DATA_DIR / lang / "words.json"
+    words_data = load_words(json_path)
+    word_map = {w.word: w for w in words_data.words}
 
     # Apply results
     applied = 0
@@ -100,6 +100,6 @@ def merge_curation(lang: str) -> int:
         if entry.tier != old_tier:
             changed += 1
 
-    save_words_yaml(words_yaml, yaml_path)
+    save_words(words_data, json_path)
     log.info(f"{lang}: applied {applied} curation results, {changed} tier changes")
     return changed

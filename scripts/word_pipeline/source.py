@@ -6,7 +6,7 @@ import logging
 from pathlib import Path
 
 from . import DATA_DIR, SCRIPT_DIR
-from .schema import WordEntry, WordsYaml
+from .schema import WordEntry, WordsData
 
 log = logging.getLogger(__name__)
 
@@ -228,11 +228,11 @@ def load_community_words(lang: str) -> list[str]:
 
 
 def source_new_words(
-    words_yaml: WordsYaml,
+    words_yaml: WordsData,
     lang: str,
     config: dict | None = None,
-) -> WordsYaml:
-    """Discover new words from external sources and add them to words.yaml.
+) -> WordsData:
+    """Discover new words from external sources and add them to words.json.
 
     Only adds words not already present. New words get tier='valid' (uncurated).
     """

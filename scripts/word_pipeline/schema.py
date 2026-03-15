@@ -1,12 +1,10 @@
-"""Schema for words.yaml — the single source of truth per language."""
+"""Schema for words.json — the single source of truth per language."""
 
 from __future__ import annotations
 
+import json
 from dataclasses import asdict, dataclass, field
-from datetime import UTC, datetime
 from pathlib import Path
-
-import yaml
 
 
 @dataclass
@@ -52,7 +50,7 @@ class SourceInfo:
 
 
 @dataclass
-class WordsYaml:
+class WordsData:
     metadata: dict
     words: list[WordEntry]
 
@@ -73,7 +71,7 @@ class WordsYaml:
 
 
 def _entry_to_dict(entry: WordEntry) -> dict:
-    """Convert WordEntry to a clean dict for YAML output."""
+    """Convert WordEntry to a clean dict for JSON output."""
     d: dict = {"word": entry.word, "length": entry.length, "tier": entry.tier}
     if entry.frequency:
         d["frequency"] = round(entry.frequency, 2)
@@ -104,7 +102,7 @@ def _entry_to_dict(entry: WordEntry) -> dict:
 
 
 def _entry_from_dict(d: dict) -> WordEntry:
-    """Parse a dict from YAML into a WordEntry."""
+    """Parse a dict into a WordEntry."""
     flags = WordFlags(**d["flags"]) if "flags" in d else WordFlags()
     llm = LLMCuration(**d["llm"]) if "llm" in d else None
     return WordEntry(
@@ -122,98 +120,27 @@ def _entry_from_dict(d: dict) -> WordEntry:
     )
 
 
-def _get_yaml_dumper():
-    """Get the fastest available YAML dumper."""
-    try:
-        return yaml.CDumper
-    except AttributeError:
-        return yaml.Dumper
-
-
-def to_yaml(words_yaml: WordsYaml) -> str:
-    """Serialize WordsYaml to YAML string."""
+def to_json(words_data: WordsData) -> str:
+    """Serialize WordsData to JSON string."""
     doc = {
-        "metadata": words_yaml.metadata,
-        "words": [_entry_to_dict(w) for w in words_yaml.words],
+        "metadata": words_data.metadata,
+        "words": [_entry_to_dict(w) for w in words_data.words],
     }
-    return yaml.dump(
-        doc,
-        Dumper=_get_yaml_dumper(),
-        allow_unicode=True,
-        default_flow_style=False,
-        sort_keys=False,
-        width=120,
-    )
+    return json.dumps(doc, ensure_ascii=False, indent=2, sort_keys=False)
 
 
-def _get_yaml_loader():
-    """Get the fastest available YAML loader."""
-    try:
-        return yaml.CSafeLoader
-    except AttributeError:
-        return yaml.SafeLoader
-
-
-def from_yaml(text: str) -> WordsYaml:
-    """Parse YAML string into WordsYaml."""
-    doc = yaml.load(text, Loader=_get_yaml_loader())  # noqa: S506
+def from_json(text: str) -> WordsData:
+    """Parse JSON string into WordsData."""
+    doc = json.loads(text)
     words = [_entry_from_dict(w) for w in doc.get("words", [])]
-    return WordsYaml(metadata=doc.get("metadata", {}), words=words)
+    return WordsData(metadata=doc.get("metadata", {}), words=words)
 
 
-def load_words_yaml(path: Path) -> WordsYaml:
-    """Load words.yaml from disk."""
-    return from_yaml(path.read_text(encoding="utf-8"))
+def load_words(path: Path) -> WordsData:
+    """Load words.json from disk."""
+    return from_json(path.read_text(encoding="utf-8"))
 
 
-def save_words_yaml(words_yaml: WordsYaml, path: Path) -> None:
-    """Save words.yaml to disk."""
-    path.write_text(to_yaml(words_yaml), encoding="utf-8")
-
-
-def to_compiled_json(words_yaml: WordsYaml) -> dict:
-    """Compile WordsYaml to optimized JSON for runtime consumption."""
-    daily, valid, blocked = [], [], []
-    for w in words_yaml.words:
-        if w.tier == "daily":
-            daily.append(w.word)
-        elif w.tier == "valid":
-            valid.append(w.word)
-        elif w.tier == "blocked":
-            blocked.append(w.word)
-    daily.sort()
-    valid.sort()
-    blocked.sort()
-
-    # LLM curation stats (so report doesn't need to parse YAML)
-    llm_curated = [w for w in words_yaml.words if w.llm is not None]
-    llm_demoted = [w for w in llm_curated if w.llm.tier in ("reject", "valid")]
-    reviewed = sum(1 for w in words_yaml.words if w.reviewed)
-
-    # Frequency stats for daily words
-    daily_entries = [w for w in words_yaml.words if w.tier == "daily"]
-    daily_with_freq = [w for w in daily_entries if w.frequency > 0]
-    avg_zipf = (
-        round(sum(w.frequency for w in daily_with_freq) / len(daily_with_freq), 1)
-        if daily_with_freq
-        else 0
-    )
-    freq_pct = round(len(daily_with_freq) / max(1, len(daily_entries)) * 100)
-
-    return {
-        "daily": daily,
-        "valid": valid,
-        "blocked": blocked,
-        "meta": {
-            "language_code": words_yaml.metadata.get("language_code", ""),
-            "daily_count": len(daily),
-            "valid_count": len(valid),
-            "blocked_count": len(blocked),
-            "compiled_at": datetime.now(UTC).isoformat(),
-            "llm_curated": len(llm_curated),
-            "llm_demoted": len(llm_demoted),
-            "reviewed": reviewed,
-            "avg_zipf": avg_zipf,
-            "freq_pct": freq_pct,
-        },
-    }
+def save_words(words_data: WordsData, path: Path) -> None:
+    """Save words.json to disk."""
+    path.write_text(to_json(words_data) + "\n", encoding="utf-8")

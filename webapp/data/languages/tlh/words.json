@@ -1,0 +1,2426 @@
+{
+  "metadata": {
+    "language_code": "tlh",
+    "language_name": "Klingon",
+    "last_pipeline_run": "2026-03-15T00:47:56.368203+00:00",
+    "migrated_from": "text_files",
+    "sources": [
+      {
+        "name": "main_list",
+        "type": "community",
+        "file": "tlh_5words.txt"
+      }
+    ]
+  },
+  "words": [
+    {
+      "word": "vorgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yitlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghung",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1710
+      ],
+      "scheduled_day": 1710
+    },
+    {
+      "word": "tlhoy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1725
+      ],
+      "scheduled_day": 1725
+    },
+    {
+      "word": "'epil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhob",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1690,
+        1691,
+        1702
+      ],
+      "scheduled_day": 1702
+    },
+    {
+      "word": "virgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhil",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'obe'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.97,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhuh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhap",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yuwey",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhod",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1719
+      ],
+      "scheduled_day": 1719
+    },
+    {
+      "word": "retlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tamey",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhoj",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yomij",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhim",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vatlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhiq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mabeb",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toduj",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1697
+      ],
+      "scheduled_day": 1697
+    },
+    {
+      "word": "bargh",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.65,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sutay",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dusaq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maris",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.96,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "surgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhej",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "buran",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.65,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1698
+      ],
+      "scheduled_day": 1698
+    },
+    {
+      "word": "ngech",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1718
+      ],
+      "scheduled_day": 1718
+    },
+    {
+      "word": "'argh",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.95,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qurgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhut",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yorgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "totlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "torgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "masir",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhub",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'elas",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.89,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "botlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wabdo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhih",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sesor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chaw'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.01,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "niteb",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhin",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1712
+      ],
+      "scheduled_day": 1712
+    },
+    {
+      "word": "ngugh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "human",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 5.35,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "English word, not Klingon vocabulary"
+      }
+    },
+    {
+      "word": "cheng",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.37,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhep",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qargh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1701
+      ],
+      "scheduled_day": 1701
+    },
+    {
+      "word": "nitlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rodis",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qorgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "largh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1707
+      ],
+      "scheduled_day": 1707
+    },
+    {
+      "word": "ghach",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "do'ol",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.98,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rura'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.55,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ji'ev",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.45,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhiv",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghoch",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "da'ar",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.94,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "satlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1695
+      ],
+      "scheduled_day": 1695
+    },
+    {
+      "word": "chagh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nargh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qoleq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhay",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "targh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'oqe'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "barat",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.27,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhab",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'etlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "duras",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 2.17,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Duras (Star Trek family name)"
+      }
+    },
+    {
+      "word": "nipon",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.2,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Japan (country name)"
+      }
+    },
+    {
+      "word": "qatlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "motlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'aqad",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qetlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qebeq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bergh",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.14,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghugh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pilam",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhij",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghuy'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "witlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "diron",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.06,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "telun",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "boqor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "letlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1696
+      ],
+      "scheduled_day": 1696
+    },
+    {
+      "word": "butlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1692
+      ],
+      "scheduled_day": 1692
+    },
+    {
+      "word": "hedon",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.38,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qoreq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'usu'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.4,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghegh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "damu'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.74,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mojaq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sorgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1717
+      ],
+      "scheduled_day": 1717
+    },
+    {
+      "word": "hivhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "potlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1705
+      ],
+      "scheduled_day": 1705
+    },
+    {
+      "word": "viras",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1708,
+        1728
+      ],
+      "scheduled_day": 1728
+    },
+    {
+      "word": "'irgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qitoy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhol",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhom",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hatlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngoy'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qo'qo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chich",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.41,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vergh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ha'on",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.58,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhan",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pa'vo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "latlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "norgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1727
+      ],
+      "scheduled_day": 1727
+    },
+    {
+      "word": "petaq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1722
+      ],
+      "scheduled_day": 1722
+    },
+    {
+      "word": "tlhaj",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1700
+      ],
+      "scheduled_day": 1700
+    },
+    {
+      "word": "tlhot",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhuq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mitlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jorja",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.8,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Georgia (country name)"
+      }
+    },
+    {
+      "word": "baqa'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "matlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hija'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.9,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngang",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.12,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vetlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qama'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghaw'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhed",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhov",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1711
+      ],
+      "scheduled_day": 1711
+    },
+    {
+      "word": "tlhu'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dotlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yotlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhos",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "meyis",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1699
+      ],
+      "scheduled_day": 1699
+    },
+    {
+      "word": "morgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngoch",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "vi'ir",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.54,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlha'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhup",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jatlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngogh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1726
+      ],
+      "scheduled_day": 1726
+    },
+    {
+      "word": "vitlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sosoy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hasta",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.56,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlheh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hargh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghogh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mohaq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1688
+      ],
+      "scheduled_day": 1688
+    },
+    {
+      "word": "piqad",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1720
+      ],
+      "scheduled_day": 1720
+    },
+    {
+      "word": "pargh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngay'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sila'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.51,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wani'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.5,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ritlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghong",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "burgh",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.86,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1715
+      ],
+      "scheduled_day": 1715
+    },
+    {
+      "word": "'ewro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhib",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'ulus",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.6,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chach",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.26,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tomat",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.02,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1724
+      ],
+      "scheduled_day": 1724
+    },
+    {
+      "word": "ngach",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "patlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bitlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tatlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lurgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1694
+      ],
+      "scheduled_day": 1694
+    },
+    {
+      "word": "rotlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "separ",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.32,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1703,
+        1706
+      ],
+      "scheduled_day": 1706
+    },
+    {
+      "word": "niylo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1714
+      ],
+      "scheduled_day": 1714
+    },
+    {
+      "word": "hurgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nural",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "di'on",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 4.33,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "po'oh",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.96,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qevas",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "bireq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qamor",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sibi'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.08,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chong",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.15,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghigh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hu'ma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghich",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "patat",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lotlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhop",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dawi'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sargh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1686,
+        1687,
+        1729
+      ],
+      "scheduled_day": 1729
+    },
+    {
+      "word": "tlham",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "barot",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.47,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhis",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sanid",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qivon",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlher",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'utlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "quba'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.19,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qotlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1723
+      ],
+      "scheduled_day": 1723
+    },
+    {
+      "word": "ngeng",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chung",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.42,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pitlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pariy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "batlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1693
+      ],
+      "scheduled_day": 1693
+    },
+    {
+      "word": "nging",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "divi'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.54,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghagh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "duran",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.12,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nadev",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "loval",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rorgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1689
+      ],
+      "scheduled_day": 1689
+    },
+    {
+      "word": "'oray",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhud",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1682,
+        1685
+      ],
+      "scheduled_day": 1685
+    },
+    {
+      "word": "sutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1709
+      ],
+      "scheduled_day": 1709
+    },
+    {
+      "word": "vavoy",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chegh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "watlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chuch",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.48,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "dargh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ghang",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "daqav",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "denib",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Denib (Star Trek planet)"
+      }
+    },
+    {
+      "word": "chay'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.12,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tetlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sipoq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hergh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhur",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "chech",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.54,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jargh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qotar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hotlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1684,
+        1716
+      ],
+      "scheduled_day": 1716
+    },
+    {
+      "word": "tlhaq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1683
+      ],
+      "scheduled_day": 1683
+    },
+    {
+      "word": "tera'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.73,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'itlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlho'",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhas",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1721
+      ],
+      "scheduled_day": 1721
+    },
+    {
+      "word": "yatlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngong",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.9,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "yergh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "siril",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "jinaq",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "natlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qovij",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "porgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1704
+      ],
+      "scheduled_day": 1704
+    },
+    {
+      "word": "ratlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qumeh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngagh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'ergh",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.65,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "notlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "molor",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Molor (Star Trek character)"
+      }
+    },
+    {
+      "word": "lutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1713
+      ],
+      "scheduled_day": 1713
+    },
+    {
+      "word": "jotlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "qonos",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun: Qo'noS (Klingon homeworld)"
+      }
+    },
+    {
+      "word": "'uma'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.9,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'urgh",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.8,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tlhe'",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.47,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hutlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "quvar",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "banan",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.43,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "lerup",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mergh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "netlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "'otlh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "sirgh",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-"""Generate word data report from compiled JSON (fast, no YAML parsing)."""
+"""Generate word data report from words.json."""
 
 from __future__ import annotations
 
@@ -95,9 +95,7 @@ def generate_report(langs: list[str] | None = None) -> str:
     """Generate markdown stats report from compiled JSON only."""
     if langs is None:
         langs = sorted(
-            d.name
-            for d in DATA_DIR.iterdir()
-            if d.is_dir() and (d / "words_compiled.json").exists()
+            d.name for d in DATA_DIR.iterdir() if d.is_dir() and (d / "words.json").exists()
         )
 
     today = date.today().isoformat()
@@ -108,8 +106,8 @@ def generate_report(langs: list[str] | None = None) -> str:
 
     for lang in langs:
         config = _load_config(lang)
-        compiled = json.loads((DATA_DIR / lang / "words_compiled.json").read_text(encoding="utf-8"))
-        meta = compiled.get("meta", {})
+        data = json.loads((DATA_DIR / lang / "words.json").read_text(encoding="utf-8"))
+        words = data.get("words", [])
         sources = _get_data_sources(lang)
         added = provenance.get(lang, "?")
 
@@ -120,15 +118,27 @@ def generate_report(langs: list[str] | None = None) -> str:
             flags.append("G")
 
         name = config.get("name", lang)
-        llm_curated = meta.get("llm_curated", 0)
-        avg_zipf = meta.get("avg_zipf", 0)
-        freq_pct = meta.get("freq_pct", 0)
+
+        # Compute stats from words array
+        daily_entries = [w for w in words if w.get("tier") == "daily"]
+        valid_entries = [w for w in words if w.get("tier") == "valid"]
+        blocked_entries = [w for w in words if w.get("tier") == "blocked"]
+        llm_curated = sum(1 for w in words if w.get("llm") is not None)
+        daily_with_freq = [w for w in daily_entries if w.get("frequency", 0) > 0]
+        avg_zipf = (
+            round(sum(w["frequency"] for w in daily_with_freq) / len(daily_with_freq), 1)
+            if daily_with_freq
+            else 0
+        )
+        freq_pct = (
+            round(len(daily_with_freq) / max(1, len(daily_entries)) * 100) if daily_entries else 0
+        )
 
         for wl in WORD_LENGTHS:
             if wl == 5:
-                daily_n = len(compiled["daily"])
-                valid_n = len(compiled["valid"])
-                blocked_n = len(compiled["blocked"])
+                daily_n = len(daily_entries)
+                valid_n = len(valid_entries)
+                blocked_n = len(blocked_entries)
 
                 issues = []
                 if daily_n < 365:

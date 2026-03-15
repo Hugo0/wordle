@@ -1,0 +1,9808 @@
+{
+  "metadata": {
+    "language_code": "mi",
+    "language_name": "Maori",
+    "last_pipeline_run": "2026-03-15T00:44:34.597349+00:00",
+    "migrated_from": "text_files",
+    "sources": [
+      {
+        "name": "main_list",
+        "type": "community",
+        "file": "mi_5words.txt"
+      }
+    ]
+  },
+  "words": [
+    {
+      "word": "aeaeā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ahahu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āhaku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1698
+      ],
+      "scheduled_day": 1698
+    },
+    {
+      "word": "āhana",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āhere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āhiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ahine",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ahore",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ahotu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āhuru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aiahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āinga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aituā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aiutu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "akahu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ākikō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "akiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "akitu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "akoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "akura",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.05,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "akutō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "amaia",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.65,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "amaru",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.05,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āmene",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Loanword from English 'amen' - religious borrowing"
+      },
+      "history": [
+        1688
+      ],
+      "scheduled_day": 1688
+    },
+    {
+      "word": "āmiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "amiku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "amine",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.79,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "amoka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "amoko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āmuri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anahe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anake",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anana",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.75,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ānehu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ānene",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ānewa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "angai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "angoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ānini",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anipā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1724
+      ],
+      "scheduled_day": 1724
+    },
+    {
+      "word": "āniwa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anuhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "anuhē",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aoake",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aonga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aotea",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.26,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun - Aotea is a place name (Great Barrier Island / Aotea Square)"
+      }
+    },
+    {
+      "word": "aouru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āpāha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āpāia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āpāno",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āpiti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āpōpō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āpure",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āpuru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āputa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arara",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.14,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "araro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arawa",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.4,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun - Te Arawa is a tribal/canoe name"
+      }
+    },
+    {
+      "word": "arero",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arewa",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.36,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1728
+      ],
+      "scheduled_day": 1728
+    },
+    {
+      "word": "ārika",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ariki",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.57,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aroha",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.9,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ārohi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aropā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "arowa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aruhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "atahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ātahu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "atata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "atatu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ātete",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "atiia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "atiru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "atiti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ātute",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auaha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auara",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1726
+      ],
+      "scheduled_day": 1726
+    },
+    {
+      "word": "auere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aumoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aumou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āunga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aurei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "autui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "auwhi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āwaiā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āwake",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "awata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "aweke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1683
+      ],
+      "scheduled_day": 1683
+    },
+    {
+      "word": "aweko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "awere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "awhai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "awheo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "āwhio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "eaoia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ehake",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1682
+      ],
+      "scheduled_day": 1682
+    },
+    {
+      "word": "ēhara",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ehinu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "enaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "engei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "engia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "etahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ētahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "etehi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "haere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hahae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hahao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hahau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "haipu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hākui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāmua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hānea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hanga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.53,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hānga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāngi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hango",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.02,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāngū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāpai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāpua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hapui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "harau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hārau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāria",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "harua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hātai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hātea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "haukū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hauma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "haumi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "haupa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1712
+      ],
+      "scheduled_day": 1712
+    },
+    {
+      "word": "haupū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "haura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hauru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hautō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hautū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hawai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.97,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hāwea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hawhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "heheu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "heipū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "henga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hēnga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "heuea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hiako",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hiamo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hiapo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hiawe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hieke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hiemi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hīhue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hīkoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hīnau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hinga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.14,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hiore",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hipae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hīrau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hīrea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hirou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hitau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hiwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hīwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hoake",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hoata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hoatu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hohou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hoiho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hoipū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hokai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hokio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hokoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "homai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "honae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "honea",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.45,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "honga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōngā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōngē",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hongi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.57,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōngī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōnia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hopīi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōpua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "horoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōrua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōteo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōtiu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hōtoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "houhi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "houto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huamo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1685
+      ],
+      "scheduled_day": 1685
+    },
+    {
+      "word": "hūare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hueke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huene",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.36,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huhoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huhua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "huhue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hūiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hūkui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hunga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.29,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hūnua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hūoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1700
+      ],
+      "scheduled_day": 1700
+    },
+    {
+      "word": "hūrau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "hūwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ianei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ikura",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.26,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inaho",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.54,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inaia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inake",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inana",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inapō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inara",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.02,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inati",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ingoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "inohi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāeti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaeto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kahau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāhia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāhua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāhui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaiao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaiau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāika",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaipo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaitā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaitu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kakai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.22,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kakao",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.32,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kakau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kakīi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kākoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kanae",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.82,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kanga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.16,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kānga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kanoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaore",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaoto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kapeu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāpia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kapua",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.14,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāpui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "karae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kārau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "karei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kareu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "karia",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.31,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kātae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kātao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "katau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "katea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "katoa",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.18,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kātoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kātua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāuhi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāuki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kauko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kaupe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kauri",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.94,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāuta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāuto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kautu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kautū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kawau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kāwau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kawiu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kēhua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kekeu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kengo",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.61,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kereū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kēroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "keuea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1718
+      ],
+      "scheduled_day": 1718
+    },
+    {
+      "word": "kewha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kiaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kiano",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kiato",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kiatu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kihau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kihei",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.85,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kiore",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kirea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōaha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōanu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koara",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koari",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koaru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koawa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koeha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koehu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koeka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koeke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koemi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koera",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koero",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kohae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kohai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.36,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kohao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kohea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kohei",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.97,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōhia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōhoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōhua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōhue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koiha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1694
+      ],
+      "scheduled_day": 1694
+    },
+    {
+      "word": "koihu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōina",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koipi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koira",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koiro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōiro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koiti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koito",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.07,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōiwi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōkai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōkau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōkēi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kokio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kokoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "komae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "komai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.22,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōmau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "konae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōnao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "konau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōnei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "konga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.79,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōngū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōnia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koniu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "konui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōpae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōpeo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kopia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōpio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kopou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōpua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "korae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōrau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōrea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koria",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōrio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koroī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "korou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōrua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kotae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1710
+      ],
+      "scheduled_day": 1710
+    },
+    {
+      "word": "kotai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kotao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōtao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kotau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōtea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koteo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōtiu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōtua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōtui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kouka",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.06,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōuma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōumu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kounu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koura",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.22,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koure",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōuru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "koutu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōwao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kōwha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kūaha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kūāka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuanu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuara",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuawa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kūemi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kūene",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kueto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kūihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuika",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuiti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuiwi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kukau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kumou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kupae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kurae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1690
+      ],
+      "scheduled_day": 1690
+    },
+    {
+      "word": "kūtai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kutao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kūwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kūwao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "kuwha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maawe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maehe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māeke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maeko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maene",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maero",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maewa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mahau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mahea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maheu",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.52,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māhia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māhie",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māhoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māhoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mahua",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.44,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mahue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maiao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maiea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maihe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1684
+      ],
+      "scheduled_day": 1684
+    },
+    {
+      "word": "maihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māika",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maina",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.11,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māipi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maire",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.28,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maiti",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.16,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "makao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "makau",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.25,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "makiu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "makoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mākoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "makue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mamae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mamao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mamau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manea",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.34,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.97,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mangā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mānga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māngi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mangō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mania",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.44,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mānia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manua",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.51,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "manuā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maoho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māoka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maopo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maori",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 3.24,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun / ethnonym - refers to the Maori people specifically"
+      }
+    },
+    {
+      "word": "māota",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māpou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māpua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "marae",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.85,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "marau",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.08,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mārau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "marea",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.88,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mārie",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mariu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maroī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mārua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mārui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mataī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mātai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mātao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "matau",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.18,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mātau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "matea",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.24,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mātia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mātie",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "matoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "matoi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.32,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "matou",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.4,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mātou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "matua",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.37,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mātua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mauka",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.58,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mauki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mauku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maunu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māunu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maupu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "maure",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.28,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mauri",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.99,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mauru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māuru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1715
+      ],
+      "scheduled_day": 1715
+    },
+    {
+      "word": "maute",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.26,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mauti",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.05,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māweu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "māwhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "meāke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mēmea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "miere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mikao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1702
+      ],
+      "scheduled_day": 1702
+    },
+    {
+      "word": "mingo",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.48,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mirei",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.25,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "miroi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōaho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "moana",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.76,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "moari",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "moata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mohio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mohoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mohou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōhou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mokai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōkau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mokoā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "momoe",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.13,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mongi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.37,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōrea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōria",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "morua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōtea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōtoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mounu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mōunu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mouri",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.48,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "moutī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "munga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.37,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "murau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mūrea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "mūrei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nahau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nāhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nahea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nahui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nanao",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.59,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nanau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nanea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nanīi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nanua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "napia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nāupe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nāwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nenei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaeo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1711
+      ],
+      "scheduled_day": 1711
+    },
+    {
+      "word": "ngaha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngahu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaio",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.47,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngake",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngako",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1716
+      ],
+      "scheduled_day": 1716
+    },
+    {
+      "word": "ngami",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngana",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngapu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngārā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngari",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngata",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.87,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngatē",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngāti",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.21,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun prefix - Ngāti is used exclusively as a tribal prefix (e.g. Ngāti Porou)"
+      }
+    },
+    {
+      "word": "ngatu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngaue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngāue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngawē",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngehe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngehi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngene",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngeni",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngera",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngeri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngeru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngete",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngeti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngiha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngita",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngohi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngoio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngōki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1691
+      ],
+      "scheduled_day": 1691
+    },
+    {
+      "word": "ngōko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngora",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngore",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngoru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngota",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngote",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngoto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngotu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nguha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngunu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ngutu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nikau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "niwha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nohia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nōhou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nonoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "nunui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ohaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ohāki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ohere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ōhoku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ōhona",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okaka",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.22,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okehu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okeke",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.75,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okewa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1714
+      ],
+      "scheduled_day": 1714
+    },
+    {
+      "word": "ōkioi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okiwa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okori",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "okoro",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.73,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "omaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "omeke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1695
+      ],
+      "scheduled_day": 1695
+    },
+    {
+      "word": "onetu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "onewa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "opeti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ōpure",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "opuru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "orewa",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 1.24,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun - Orewa is a town north of Auckland"
+      }
+    },
+    {
+      "word": "orite",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oroko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "orotā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ōtāne",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun - Otane is a town in Hawke's Bay"
+      }
+    },
+    {
+      "word": "otiia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "otiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "otirā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "otoru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "oturu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paaha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paeke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paeko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāhao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pahau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāhia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pahīi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāhua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāike",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pairi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.05,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāiru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paitu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pākai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pākia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pakoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "panau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "panga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.84,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pānga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1709
+      ],
+      "scheduled_day": 1709
+    },
+    {
+      "word": "pango",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.74,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāngū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pānui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāohe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paoho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paoka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paoke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paowa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paowe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "papae",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.29,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "papai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.17,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "papaī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāpua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paraē",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pārae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pārai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pārau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1713
+      ],
+      "scheduled_day": 1713
+    },
+    {
+      "word": "parea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1707
+      ],
+      "scheduled_day": 1707
+    },
+    {
+      "word": "pārua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pātai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pātea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pātia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "patoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pātoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "patou",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.59,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pātua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "patui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāuhu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pauku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāuma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "paunu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pauri",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.34,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāuru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pāwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pēnei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "perei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pērua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "petea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "piahu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "piaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "piako",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "piari",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pieke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "piere",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.21,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pīhao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pīhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pihoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pīkau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pikoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pioka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1703
+      ],
+      "scheduled_day": 1703
+    },
+    {
+      "word": "piori",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pioro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1729
+      ],
+      "scheduled_day": 1729
+    },
+    {
+      "word": "pirau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pitao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pitau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pītau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pītoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "piwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōaha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "poaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "poare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1696
+      ],
+      "scheduled_day": 1696
+    },
+    {
+      "word": "poarū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pohau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pohio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1705
+      ],
+      "scheduled_day": 1705
+    },
+    {
+      "word": "pōhoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōike",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "poiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōito",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pokai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ponae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ponga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.67,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1699
+      ],
+      "scheduled_day": 1699
+    },
+    {
+      "word": "pōnga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pongi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "poniu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "popoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "popoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōrae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "porai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "porea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōria",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "porou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōtae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "potau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pouri",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.02,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōuto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "poutū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pōwhā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puaha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūaho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puano",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūanu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puaru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puawe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūehu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūeku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūeru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūhoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūhou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūhua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puhue",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūiti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūkio",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūmau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "punga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.12,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūnga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūniu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "punua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūnui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūoho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puoru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "puoto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pupau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "purau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūrou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūrua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūtao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūtoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūtoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "pūwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rahua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rāhui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rāihe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rāina",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "raipo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rākau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rākei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ranea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rānei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ranga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.16,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "range",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 5.12,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "English loanword - not a native Te Reo Maori word"
+      }
+    },
+    {
+      "word": "rangi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.03,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rango",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.04,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rāowa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rāpoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rapou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rarai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rarau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rarīi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rarua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rātau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rātou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rauhi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rauoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "raupā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "raupī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "raupo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rauru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rautū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rāwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rawha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rehea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rehia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rehua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "reira",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.04,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "renga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.59,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rerei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rētao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rēwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rewha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "riaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "riaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rieki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ringo",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.16,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rinoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ripoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ripua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ririo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ririu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "riroi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rīroi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ritua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "riuka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "riwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "riwha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "roaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rohai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rōhia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rōiho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rokia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rongo",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.35,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "roniu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rōrāi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rōrea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "roria",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "roroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "roroi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "routu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rowau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1693
+      ],
+      "scheduled_day": 1693
+    },
+    {
+      "word": "ruaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "rueke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "runga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ruwha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taahu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taaku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taana",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāaru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taeka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taeke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāeki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taepu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taera",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taero",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāewa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāhae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāhei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāhoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāhoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1697
+      ],
+      "scheduled_day": 1697
+    },
+    {
+      "word": "tahua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taiao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taiea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1717
+      ],
+      "scheduled_day": 1717
+    },
+    {
+      "word": "tāiha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1687
+      ],
+      "scheduled_day": 1687
+    },
+    {
+      "word": "tāiho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāika",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taiko",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.23,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taina",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.49,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāina",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taipa",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.28,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taipo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taipū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tairi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tairo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāiro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taitā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taitu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "takai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.7,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "takao",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.2,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tākau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "takeo",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.28,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "takoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tākou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāmau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāmoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāmou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tanae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tanga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.27,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tānga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tangi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.87,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tango",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 3.58,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1708
+      ],
+      "scheduled_day": 1708
+    },
+    {
+      "word": "tānoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tanoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāoki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāore",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāoru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāpai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tapau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāpau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāpia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāpoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāpoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tapou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāpua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tārai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tarao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tārau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1686
+      ],
+      "scheduled_day": 1686
+    },
+    {
+      "word": "tarie",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāroi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tārua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tatae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tātai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tatao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tatau",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.41,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tātau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tātāu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tātea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tātoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tātou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tātua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāuhi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāuhu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tauia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāuka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāuke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taunu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taupā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāupe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taupō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taupū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taura",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.25,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tauru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāuru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tauta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "taute",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1719
+      ],
+      "scheduled_day": 1719
+    },
+    {
+      "word": "tautō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāwae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tawao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tawau",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.34,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tawhā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tawhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tāwhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tawhi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tēhea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tekau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tēnei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tenga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.99,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tengi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tēure",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiaho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiare",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.35,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiari",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiehe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiehu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tieke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiemi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiepa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tihao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tihau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tihei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tihoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1704
+      ],
+      "scheduled_day": 1704
+    },
+    {
+      "word": "tihou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1725
+      ],
+      "scheduled_day": 1725
+    },
+    {
+      "word": "tikai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tikei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tikoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tikou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "timor",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 3.27,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun - Timor is an island/country name, not a Maori word"
+      }
+    },
+    {
+      "word": "tinei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tinga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.78,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tinia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tioho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tioko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tioma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiora",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiori",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tioro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tipae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tipao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tipau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tipua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tirau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tirea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tirua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "titei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "titoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiwae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tiwha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toari",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōeke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1723
+      ],
+      "scheduled_day": 1723
+    },
+    {
+      "word": "toemi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toene",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toera",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōhou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toihā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōihi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōine",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōiti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1722
+      ],
+      "scheduled_day": 1722
+    },
+    {
+      "word": "toitū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toiwi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tokai",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.21,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōkai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōkia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tokoū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōmau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōmua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tonae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tonga",
+      "length": 5,
+      "tier": "blocked",
+      "frequency": 3.1,
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Ambiguous - could be the country Tonga; as a common word (south) it should be 'tonga' but risks confusion"
+      }
+    },
+    {
+      "word": "tōnga",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōngā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tongi",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.07,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōnui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "torea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōrea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōroa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "toroī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōrua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "totoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōtōa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "totoe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "totoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tōwai",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "towha",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "towhe",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūaho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūahu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūāhu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuapa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūāpō",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuara",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuare",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuata",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuatu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūāua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tueke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuhau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūhea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūhua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuhui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuiau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tukau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tukou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tumou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tumua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tunga",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.37,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tungu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tunou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tunui",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūohu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuoma",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuone",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuora",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuoro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuota",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1720
+      ],
+      "scheduled_day": 1720
+    },
+    {
+      "word": "tūpou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "turei",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.16,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūria",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "turoa",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "turou",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "turua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūrua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tutae",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tutei",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūtūā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tuuta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "tūwhā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uarua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uhono",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ukura",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "umere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "umiki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "unahi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "unene",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "unuku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "upane",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "ūpoko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uretū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urewa",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Proper noun - Te Urewera is a region/former national park"
+      }
+    },
+    {
+      "word": "uruao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1727
+      ],
+      "scheduled_day": 1727
+    },
+    {
+      "word": "uruhi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urupā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urupū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "urutā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1692
+      ],
+      "scheduled_day": 1692
+    },
+    {
+      "word": "urutū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "utoka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "utoki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "uturi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waere",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waero",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wahia",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1706
+      ],
+      "scheduled_day": 1706
+    },
+    {
+      "word": "wahie",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waihā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waiho",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waina",
+      "length": 5,
+      "tier": "blocked",
+      "sources": [
+        "main_list"
+      ],
+      "llm": {
+        "tier": "reject",
+        "confidence": 3,
+        "reason": "Loanword from English 'wine'"
+      }
+    },
+    {
+      "word": "waipo",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waipū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1689
+      ],
+      "scheduled_day": 1689
+    },
+    {
+      "word": "waitī",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wakea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wanea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waoko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "waoku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "warea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wātea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wawao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wāwau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "werau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whaea",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whaka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whākā",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whaki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whāki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whana",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whara",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whare",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 2.02,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wharu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whata",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.91,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whati",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.37,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whatu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheao",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1701
+      ],
+      "scheduled_day": 1701
+    },
+    {
+      "word": "wheau",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheka",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whēke",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheki",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheko",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheku",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whena",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whēna",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheoi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "where",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 6.0,
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whero",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whēru",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheta",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheti",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheto",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whetū",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "wheua",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whioi",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whiri",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whiro",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whita",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whiti",
+      "length": 5,
+      "tier": "daily",
+      "frequency": 1.09,
+      "sources": [
+        "main_list"
+      ],
+      "history": [
+        1721
+      ],
+      "scheduled_day": 1721
+    },
+    {
+      "word": "whito",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    },
+    {
+      "word": "whitu",
+      "length": 5,
+      "tier": "daily",
+      "sources": [
+        "main_list"
+      ]
+    }
+  ]
+}

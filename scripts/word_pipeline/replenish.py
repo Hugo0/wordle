@@ -10,14 +10,14 @@ from __future__ import annotations
 import logging
 
 from . import DATA_DIR
-from .schema import WordsYaml, load_words_yaml, save_words_yaml
+from .schema import WordsData
 
 log = logging.getLogger(__name__)
 
 TARGET_DAILY = 2000
 
 
-def get_candidates(words_yaml: WordsYaml) -> list:
+def get_candidates(words_yaml: WordsData) -> list:
     """Get valid-tier words sorted by frequency (best candidates first).
 
     Excludes words with flags (profanity, foreign, proper_noun, phrase)
@@ -41,13 +41,13 @@ def get_candidates(words_yaml: WordsYaml) -> list:
 
 
 def replenish_daily(
-    words_yaml: WordsYaml,
+    words_yaml: WordsData,
     lang: str,
     target: int = TARGET_DAILY,
-) -> tuple[WordsYaml, list[str]]:
+) -> tuple[WordsData, list[str]]:
     """Promote top valid words to daily tier to reach target pool size.
 
-    Returns (updated WordsYaml, list of promoted words).
+    Returns (updated WordsData, list of promoted words).
     """
     current_daily = sum(1 for w in words_yaml.words if w.tier == "daily")
     needed = target - current_daily
@@ -75,7 +75,7 @@ def replenish_daily(
     return words_yaml, promoted
 
 
-def extract_for_review(words_yaml: WordsYaml, words: list[str], lang: str) -> None:
+def extract_for_review(words_yaml: WordsData, words: list[str], lang: str) -> None:
     """Write promoted words to a review file for LLM curation check."""
     review_dir = DATA_DIR.parent.parent / "scripts" / ".curation_review"
     review_dir.mkdir(parents=True, exist_ok=True)

@@ -291,20 +291,44 @@ export interface LanguageData {
 let _cachedData: LanguageData | null = null;
 
 // ---------------------------------------------------------------------------
-// Compiled JSON loading (from word pipeline)
+// Words JSON loading (from word pipeline)
 // ---------------------------------------------------------------------------
 
-interface CompiledWords {
+interface WordEntry {
+    word: string;
+    length: number;
+    tier: 'daily' | 'valid' | 'blocked';
+    frequency?: number;
+    sources?: string[];
+    reviewed?: boolean;
+    history?: number[];
+}
+
+interface WordsFile {
+    metadata: { language_code: string; language_name: string; last_pipeline_run?: string };
+    words: WordEntry[];
+}
+
+interface ParsedWords {
     daily: string[];
     valid: string[];
     blocked: string[];
-    supplement?: string[];
-    meta: { language_code: string; daily_count: number; valid_count: number; compiled_at: string };
 }
 
-function loadCompiledWords(lang: string): CompiledWords | null {
-    const compiledPath = join(DATA_DIR, 'languages', lang, 'words_compiled.json');
-    return readJsonFile<CompiledWords>(compiledPath);
+function loadWordsJson(lang: string): ParsedWords | null {
+    const wordsPath = join(DATA_DIR, 'languages', lang, 'words.json');
+    const data = readJsonFile<WordsFile>(wordsPath);
+    if (!data) return null;
+
+    const daily: string[] = [];
+    const valid: string[] = [];
+    const blocked: string[] = [];
+    for (const w of data.words) {
+        if (w.tier === 'daily') daily.push(w.word);
+        else if (w.tier === 'valid') valid.push(w.word);
+        else if (w.tier === 'blocked') blocked.push(w.word);
+    }
+    return { daily, valid, blocked };
 }
 
 export function loadAllData(): LanguageData {
@@ -313,7 +337,7 @@ export function loadAllData(): LanguageData {
     console.log('[data-loader] Loading data...');
     const langDir = join(DATA_DIR, 'languages');
     const languageCodes = readdirSync(langDir).filter((f) =>
-        existsSync(join(langDir, f, 'words_compiled.json')) ||
+        existsSync(join(langDir, f, 'words.json')) ||
         existsSync(join(langDir, f, `${f}_5words.txt`)),
     );
 
@@ -332,14 +356,14 @@ export function loadAllData(): LanguageData {
     let compiledCount = 0;
 
     for (const lc of languageCodes) {
-        // Try compiled JSON first (from word pipeline)
-        const compiled = loadCompiledWords(lc);
-        if (compiled) {
-            // Use compiled data: all tiers combined = word list
-            wordLists[lc] = [...compiled.daily, ...compiled.valid, ...compiled.blocked];
-            supplements[lc] = compiled.supplement || [];
-            blocklists[lc] = new Set(compiled.blocked);
-            dailyWords[lc] = compiled.daily.length > 0 ? compiled.daily : null;
+        // Try words.json first (from word pipeline)
+        const parsed = loadWordsJson(lc);
+        if (parsed) {
+            // Use parsed data: all tiers combined = word list
+            wordLists[lc] = [...parsed.daily, ...parsed.valid, ...parsed.blocked];
+            supplements[lc] = [];
+            blocklists[lc] = new Set(parsed.blocked);
+            dailyWords[lc] = parsed.daily.length > 0 ? parsed.daily : null;
             curatedSchedules[lc] = loadCuratedSchedule(lc); // may be null if file deleted
             keyboards[lc] = loadKeyboard(lc);
             compiledCount++;
@@ -400,11 +424,11 @@ export function loadAllData(): LanguageData {
     const stats = {
         totalLanguages: languageCodes.length,
         withSupplements: Object.values(supplements).filter((s) => s.length > 0).length,
-        fromCompiled: compiledCount,
+        fromWordsJson: compiledCount,
     };
     console.log(
         `[data-loader] Loaded ${stats.totalLanguages} languages ` +
-        `(${stats.withSupplements} with supplements, ${stats.fromCompiled} from compiled JSON)`,
+        `(${stats.withSupplements} with supplements, ${stats.fromWordsJson} from words.json)`,
     );
 
     _cachedData = {
