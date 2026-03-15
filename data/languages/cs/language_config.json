@@ -34,5 +34,48 @@
         "text_2_2": "je ve slově, ale ne ve správném místě. ",
         "text_2_3": "není přítomen ve slově, který se snaží myslet. ",
         "text_3": "Každý den bude k dispozici nové slovo! "
+    },
+    "diacritic_map": {
+        "a": [
+            "á"
+        ],
+        "e": [
+            "é",
+            "ě"
+        ],
+        "i": [
+            "í"
+        ],
+        "o": [
+            "ó"
+        ],
+        "u": [
+            "ú",
+            "ů"
+        ],
+        "y": [
+            "ý"
+        ],
+        "c": [
+            "č"
+        ],
+        "d": [
+            "ď"
+        ],
+        "n": [
+            "ň"
+        ],
+        "r": [
+            "ř"
+        ],
+        "s": [
+            "š"
+        ],
+        "t": [
+            "ť"
+        ],
+        "z": [
+            "ž"
+        ]
     }
 }

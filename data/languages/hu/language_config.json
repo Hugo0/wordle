@@ -63,5 +63,26 @@
         "play_daily_like_app": "Játssz Wordle-t naponta mint alkalmazást",
         "install": "Telepítés",
         "close": "bezárás"
+    },
+    "diacritic_map": {
+        "a": [
+            "á"
+        ],
+        "e": [
+            "é"
+        ],
+        "i": [
+            "í"
+        ],
+        "o": [
+            "ó",
+            "ö",
+            "ő"
+        ],
+        "u": [
+            "ú",
+            "ü",
+            "ű"
+        ]
     }
 }

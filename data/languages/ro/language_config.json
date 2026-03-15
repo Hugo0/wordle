@@ -63,5 +63,20 @@
         "play_daily_like_app": "Joacă Wordle zilnic ca o aplicație",
         "install": "Instalează",
         "close": "închide"
+    },
+    "diacritic_map": {
+        "a": [
+            "â",
+            "ă"
+        ],
+        "i": [
+            "î"
+        ],
+        "s": [
+            "ș"
+        ],
+        "t": [
+            "ț"
+        ]
     }
 }

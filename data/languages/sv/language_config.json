@@ -63,5 +63,14 @@
         "play_daily_like_app": "Spela Wordle dagligen som en app",
         "install": "Installera",
         "close": "stäng"
+    },
+    "diacritic_map": {
+        "a": [
+            "ä",
+            "å"
+        ],
+        "o": [
+            "ö"
+        ]
     }
 }

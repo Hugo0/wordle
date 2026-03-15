@@ -65,5 +65,18 @@
         "play_daily_like_app": "Pelaa Wordlea päivittäin kuin sovellusta",
         "install": "Asenna",
         "close": "sulje"
+    },
+    "diacritic_map": {
+        "a": [
+            "à",
+            "ä",
+            "å"
+        ],
+        "e": [
+            "é"
+        ],
+        "o": [
+            "ö"
+        ]
     }
 }

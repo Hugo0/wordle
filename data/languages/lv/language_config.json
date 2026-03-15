@@ -63,5 +63,40 @@
         "play_daily_like_app": "Spēlē Wordle katru dienu kā lietotni",
         "install": "Instalēt",
         "close": "aizvērt"
+    },
+    "diacritic_map": {
+        "a": [
+            "ā"
+        ],
+        "c": [
+            "č"
+        ],
+        "e": [
+            "ē"
+        ],
+        "g": [
+            "ģ"
+        ],
+        "i": [
+            "ī"
+        ],
+        "k": [
+            "ķ"
+        ],
+        "l": [
+            "ļ"
+        ],
+        "n": [
+            "ņ"
+        ],
+        "s": [
+            "š"
+        ],
+        "u": [
+            "ū"
+        ],
+        "z": [
+            "ž"
+        ]
     }
 }

@@ -34,5 +34,27 @@
         "text_2_2": "is in the word, but not in the correct location.",
         "text_2_3": "is not present in the word you are trying to guess.",
         "text_3": "A new word will be available each day!"
+    },
+    "diacritic_map": {
+        "a": [
+            "á",
+            "æ"
+        ],
+        "i": [
+            "í"
+        ],
+        "d": [
+            "ð"
+        ],
+        "o": [
+            "ó",
+            "ø"
+        ],
+        "u": [
+            "ú"
+        ],
+        "y": [
+            "ý"
+        ]
     }
 }

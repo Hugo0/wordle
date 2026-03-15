@@ -63,5 +63,37 @@
         "play_daily_like_app": "Graj w Wordle codziennie jak w aplikacji",
         "install": "Zainstaluj",
         "close": "zamknij"
+    },
+    "diacritic_map": {
+        "c": [
+            "ç",
+            "ć"
+        ],
+        "o": [
+            "ó",
+            "ö"
+        ],
+        "u": [
+            "ü"
+        ],
+        "a": [
+            "ą"
+        ],
+        "e": [
+            "ę"
+        ],
+        "l": [
+            "ł"
+        ],
+        "n": [
+            "ń"
+        ],
+        "s": [
+            "ś"
+        ],
+        "z": [
+            "ź",
+            "ż"
+        ]
     }
 }

@@ -33,5 +33,33 @@
         "text_2_2": "er í orði, en ekki á réttum stað. ",
         "text_2_3": "er ekki til staðar í orði sem þú ert að reyna að giska á. ",
         "text_3": "Nýtt orð verður í boði á hverjum degi! "
+    },
+    "diacritic_map": {
+        "a": [
+            "á",
+            "æ"
+        ],
+        "e": [
+            "é"
+        ],
+        "i": [
+            "í"
+        ],
+        "d": [
+            "ð"
+        ],
+        "o": [
+            "ó",
+            "ö"
+        ],
+        "u": [
+            "ú"
+        ],
+        "y": [
+            "ý"
+        ],
+        "t": [
+            "þ"
+        ]
     }
 }
