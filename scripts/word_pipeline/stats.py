@@ -198,11 +198,13 @@ def generate_report(langs: list[str] | None = None) -> str:
         name = s["name"][:14]
         if s["flags"]:
             name += " " + " ".join(f"[{f}]" for f in s["flags"])
+        zipf_str = str(s["avg_zipf"]) if s["avg_zipf"] > 0 else "—"
+        freq_str = f"{s['freq_pct']}%" if s["freq_pct"] > 0 else "—"
 
         lines.append(
             f"| {s['lang']} | {name} | {s['daily']:,} | {s['valid']:,} | "
             f"{s['blocked']:,} | {s['total']:,} | "
-            f"{s['freq_pct']}% | {s['avg_zipf']} | {src_str} | "
+            f"{freq_str} | {zipf_str} | {src_str} | "
             f"{s['llm_curated'] or '--'} | {s['years']} | {issue_str} |"
         )
     lines.append("")
