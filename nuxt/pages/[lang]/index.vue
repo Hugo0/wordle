@@ -234,8 +234,10 @@ function handleKeyDown(e: KeyboardEvent) {
         <GameNotificationToast :notification="game.notification" />
     </div>
 
-    <!-- SEO content — visible only when JS is disabled (crawlers, screen readers, noscript browsers). -->
-    <noscript>
+    <!-- SEO content — visible only when JS is disabled (crawlers, noscript browsers).
+         data-allow-mismatch suppresses Vue hydration warning since noscript
+         content is parsed differently by browser vs SSR. -->
+    <noscript data-allow-mismatch>
         <div style="max-width: 600px; margin: 40px auto; padding: 20px; font-family: system-ui, sans-serif; color: #333;">
             <h1>Wordle {{ config.name_native }} — {{ config.meta?.title || 'The daily word game' }}</h1>
             <h2>{{ config.help?.title }}</h2>
@@ -243,20 +245,7 @@ function handleKeyDown(e: KeyboardEvent) {
             <p>{{ config.help?.text_1_2 }}</p>
             <p>{{ config.help?.text_1_3 }}</p>
             <p>{{ config.help?.text_3 }}</p>
-            <h2>Play Wordle in other languages</h2>
-            <p>Wordle Global is a free, open-source Wordle game available in 65+ languages. No ads, no account required — just play.</p>
-            <ul>
-                <li v-for="[lc, name] in [
-                    ['en', 'English'], ['fi', 'Finnish'], ['de', 'German'], ['es', 'Spanish'],
-                    ['fr', 'French'], ['ar', 'Arabic'], ['he', 'Hebrew'], ['tr', 'Turkish'],
-                    ['ru', 'Russian'], ['it', 'Italian'], ['pt', 'Portuguese'], ['nl', 'Dutch'],
-                    ['sv', 'Swedish'], ['da', 'Danish'], ['pl', 'Polish'], ['hr', 'Croatian'],
-                    ['hu', 'Hungarian'], ['bg', 'Bulgarian'], ['ro', 'Romanian'], ['ko', 'Korean'],
-                ].filter(([c]) => c !== lang)" :key="lc">
-                    <a :href="'https://wordle.global/' + lc">Wordle in {{ name }}</a>
-                </li>
-            </ul>
-            <p><a href="https://wordle.global/">View all 65+ languages</a></p>
+            <p><a href="https://wordle.global/">Play Wordle in 65+ languages at wordle.global</a></p>
         </div>
     </noscript>
 </template>

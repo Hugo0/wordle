@@ -16,14 +16,7 @@ import type { GameData } from '../../utils/types';
 // Mock auto-imported composables that the game store uses
 // ---------------------------------------------------------------------------
 
-vi.stubGlobal('import', { meta: { client: true } });
 
-vi.mock('#imports', () => ({
-    defineStore: vi.fn(),
-    ref: vi.fn(),
-    computed: vi.fn(),
-    watch: vi.fn(),
-}));
 
 // Mock composables used by game store
 const mockHaptic = { error: vi.fn(), confirm: vi.fn(), success: vi.fn() };
@@ -298,11 +291,9 @@ describe('Game Store', () => {
             for (const c of ['c', 'r', 'a', 'n', 'e']) gameStore.addChar(c);
             gameStore.updateColors();
 
-            const classes = gameStore.tileClasses[0]!;
-            for (const cls of classes) {
-                expect(cls).toContain('correct');
-                expect(cls).not.toContain('semicorrect');
-                expect(cls).not.toContain('incorrect');
+            const colors = gameStore.tileColors[0]!;
+            for (const color of colors) {
+                expect(color).toBe('correct');
             }
         });
 
@@ -311,9 +302,9 @@ describe('Game Store', () => {
             for (const c of ['b', 'l', 'u', 'f', 'f']) gameStore.addChar(c);
             gameStore.updateColors();
 
-            const classes = gameStore.tileClasses[0]!;
-            for (const cls of classes) {
-                expect(cls).toContain('incorrect');
+            const colors = gameStore.tileColors[0]!;
+            for (const color of colors) {
+                expect(color).toBe('incorrect');
             }
         });
 
@@ -322,13 +313,13 @@ describe('Game Store', () => {
             for (const c of ['a', 'b', 'a', 'c', 'a']) gameStore.addChar(c);
             gameStore.updateColors();
 
-            const classes = gameStore.tileClasses[0]!;
+            const colors = gameStore.tileColors[0]!;
             // positions 0,1,2,3 = correct; position 4 ('a' vs 'k') = incorrect (both a's used)
-            expect(classes[0]).toContain('correct');
-            expect(classes[1]).toContain('correct');
-            expect(classes[2]).toContain('correct');
-            expect(classes[3]).toContain('correct');
-            expect(classes[4]).toContain('incorrect');
+            expect(colors[0]).toBe('correct');
+            expect(colors[1]).toBe('correct');
+            expect(colors[2]).toBe('correct');
+            expect(colors[3]).toBe('correct');
+            expect(colors[4]).toBe('incorrect');
         });
     });
 
@@ -339,13 +330,7 @@ describe('Game Store', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             // Simulate first guess with 'c' in position 0 correct
             gameStore.tiles[0] = ['c', 'l', 'u', 'b', 's'];
-            gameStore.tileClasses[0] = [
-                'correct text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-            ];
+            gameStore.tileColors[0] = ['correct', 'incorrect', 'incorrect', 'incorrect', 'incorrect'];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('slate');
@@ -355,13 +340,7 @@ describe('Game Store', () => {
         it('rejects guess missing a revealed yellow letter', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             gameStore.tiles[0] = ['r', 'a', 'i', 's', 'e'];
-            gameStore.tileClasses[0] = [
-                'semicorrect text-2xl',
-                'semicorrect text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-                'semicorrect text-2xl',
-            ];
+            gameStore.tileColors[0] = ['semicorrect', 'semicorrect', 'incorrect', 'incorrect', 'semicorrect'];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('blufs');
@@ -371,13 +350,7 @@ describe('Game Store', () => {
         it('accepts valid hard mode guess', () => {
             const { gameStore } = setupStores({ todays_word: 'crane' });
             gameStore.tiles[0] = ['c', 'l', 'u', 'b', 's'];
-            gameStore.tileClasses[0] = [
-                'correct text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-            ];
+            gameStore.tileColors[0] = ['correct', 'incorrect', 'incorrect', 'incorrect', 'incorrect'];
             gameStore.activeRow = 1;
 
             const error = gameStore.checkHardMode('crane');
@@ -391,13 +364,7 @@ describe('Game Store', () => {
         it('generates correct emoji pattern', () => {
             const { gameStore } = setupStores();
             // Simulate one completed row
-            gameStore.tileClasses[0] = [
-                'correct text-2xl',
-                'semicorrect text-2xl',
-                'incorrect text-2xl',
-                'incorrect text-2xl',
-                'correct text-2xl',
-            ];
+            gameStore.tileColors[0] = ['correct', 'semicorrect', 'incorrect', 'incorrect', 'correct'];
             gameStore.gameOver = true;
             gameStore.gameWon = true;
 

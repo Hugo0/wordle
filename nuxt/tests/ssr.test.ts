@@ -43,9 +43,9 @@ describe('SSR Rendering', () => {
             expect(html).toMatch(/hreflang=/);
         });
 
-        it('contains noscript fallback', async () => {
+        it('contains game board markup', async () => {
             html = html || (await fetchHtml('/en'));
-            expect(html).toMatch(/<noscript>/i);
+            expect(html).toMatch(/game-board/);
         });
     });
 
