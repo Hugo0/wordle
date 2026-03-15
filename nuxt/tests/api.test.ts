@@ -7,10 +7,7 @@
  * Override the server URL: TEST_BASE_URL=https://wordle.global pnpm test -- tests/api.test.ts
  */
 import { describe, it, expect, beforeAll } from 'vitest';
-
-function baseUrl(): string {
-    return process.env.TEST_BASE_URL || 'http://localhost:3000';
-}
+import { testBaseUrl } from './helpers';
 
 describe('API Routes', () => {
     // ---- GET /api/languages ----
@@ -19,7 +16,7 @@ describe('API Routes', () => {
         let data: any;
 
         beforeAll(async () => {
-            const res = await fetch(`${baseUrl()}/api/languages`);
+            const res = await fetch(`${testBaseUrl()}/api/languages`);
             data = await res.json();
         });
 
@@ -47,7 +44,7 @@ describe('API Routes', () => {
         let data: any;
 
         beforeAll(async () => {
-            const res = await fetch(`${baseUrl()}/api/en/data`);
+            const res = await fetch(`${testBaseUrl()}/api/en/data`);
             data = await res.json();
         });
 
@@ -79,7 +76,7 @@ describe('API Routes', () => {
 
     describe('GET /api/he/data', () => {
         it('has right_to_left set', async () => {
-            const res = await fetch(`${baseUrl()}/api/he/data`);
+            const res = await fetch(`${testBaseUrl()}/api/he/data`);
             const data = await res.json();
             expect(data.config.right_to_left).toBe('true');
         });
@@ -87,7 +84,7 @@ describe('API Routes', () => {
 
     describe('GET /api/ko/data', () => {
         it('has physical_key_map in config', async () => {
-            const res = await fetch(`${baseUrl()}/api/ko/data`);
+            const res = await fetch(`${testBaseUrl()}/api/ko/data`);
             const data = await res.json();
             expect(data.config.physical_key_map).toBeDefined();
             expect(typeof data.config.physical_key_map).toBe('object');
@@ -98,7 +95,7 @@ describe('API Routes', () => {
 
     describe('GET /api/stats', () => {
         it('returns expected shape', async () => {
-            const res = await fetch(`${baseUrl()}/api/stats`);
+            const res = await fetch(`${testBaseUrl()}/api/stats`);
             const data = await res.json();
 
             expect(typeof data.total_languages).toBe('number');
@@ -118,7 +115,7 @@ describe('API Routes', () => {
 
     describe('GET /api/en/words', () => {
         it('returns paginated word list', async () => {
-            const res = await fetch(`${baseUrl()}/api/en/words?page=1`);
+            const res = await fetch(`${testBaseUrl()}/api/en/words?page=1`);
             const data = await res.json();
 
             expect(data.lang_code).toBe('en');
@@ -139,7 +136,7 @@ describe('API Routes', () => {
 
     describe('GET /api/en/word/[id]', () => {
         it('returns past word details', async () => {
-            const res = await fetch(`${baseUrl()}/api/en/word/1700`);
+            const res = await fetch(`${testBaseUrl()}/api/en/word/1700`);
             const data = await res.json();
 
             expect(data.lang_code).toBe('en');
@@ -151,7 +148,7 @@ describe('API Routes', () => {
         });
 
         it('returns is_future for far future index', async () => {
-            const res = await fetch(`${baseUrl()}/api/en/word/99999`);
+            const res = await fetch(`${testBaseUrl()}/api/en/word/99999`);
             const data = await res.json();
 
             expect(data.is_future).toBe(true);
@@ -163,7 +160,7 @@ describe('API Routes', () => {
 
     describe('POST /api/en/word-stats', () => {
         it('rejects stats for non-today index', async () => {
-            const res = await fetch(`${baseUrl()}/api/en/word-stats`, {
+            const res = await fetch(`${testBaseUrl()}/api/en/word-stats`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ day_idx: 1, won: true, attempts: 3 }),
@@ -177,7 +174,7 @@ describe('API Routes', () => {
 
     describe('Error handling', () => {
         it('returns 404 for unknown language data', async () => {
-            const res = await fetch(`${baseUrl()}/api/nonexistent/data`);
+            const res = await fetch(`${testBaseUrl()}/api/nonexistent/data`);
             expect(res.status).toBe(404);
         });
     });

@@ -98,16 +98,33 @@ export async function setup(): Promise<void> {
 }
 
 export async function teardown(): Promise<void> {
-    if (serverProcess) {
-        console.log('[setup-server] Stopping Nuxt dev server...');
+    if (!serverProcess) return;
 
-        // Kill the entire process group to clean up child processes
-        try {
-            process.kill(-serverProcess.pid!, 'SIGKILL');
-        } catch {
-            serverProcess.kill('SIGKILL');
-        }
+    console.log('[setup-server] Stopping Nuxt dev server...');
+    const pid = serverProcess.pid!;
 
-        serverProcess = null;
+    // Try graceful SIGTERM first, escalate to SIGKILL after 3s
+    try {
+        process.kill(-pid, 'SIGTERM');
+    } catch {
+        serverProcess.kill('SIGTERM');
     }
+
+    await new Promise<void>((resolve) => {
+        const timeout = setTimeout(() => {
+            try {
+                process.kill(-pid, 'SIGKILL');
+            } catch {
+                serverProcess?.kill('SIGKILL');
+            }
+            resolve();
+        }, 3000);
+
+        serverProcess!.on('exit', () => {
+            clearTimeout(timeout);
+            resolve();
+        });
+    });
+
+    serverProcess = null;
 }

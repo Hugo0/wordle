@@ -6,14 +6,11 @@
  *
  * Override the server URL: TEST_BASE_URL=https://wordle.global pnpm test -- tests/ssr.test.ts
  */
-import { describe, it, expect } from 'vitest';
-
-function baseUrl(): string {
-    return process.env.TEST_BASE_URL || 'http://localhost:3000';
-}
+import { describe, it, expect, beforeAll } from 'vitest';
+import { testBaseUrl } from './helpers';
 
 async function fetchHtml(path: string): Promise<string> {
-    const res = await fetch(`${baseUrl()}${path}`, {
+    const res = await fetch(`${testBaseUrl()}${path}`, {
         headers: { Accept: 'text/html' },
     });
     return res.text();
@@ -23,28 +20,27 @@ describe('SSR Rendering', () => {
     describe('Game page /en', () => {
         let html: string;
 
-        it('contains title tag with Wordle', async () => {
+        beforeAll(async () => {
             html = await fetchHtml('/en');
+        });
+
+        it('contains title tag with Wordle', () => {
             expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
         });
 
-        it('contains og:title meta tag', async () => {
-            html = html || (await fetchHtml('/en'));
+        it('contains og:title meta tag', () => {
             expect(html).toMatch(/property="og:title"/);
         });
 
-        it('contains canonical link', async () => {
-            html = html || (await fetchHtml('/en'));
+        it('contains canonical link', () => {
             expect(html).toMatch(/rel="canonical"/);
         });
 
-        it('contains hreflang tags', async () => {
-            html = html || (await fetchHtml('/en'));
+        it('contains hreflang tags', () => {
             expect(html).toMatch(/hreflang=/);
         });
 
-        it('contains noscript fallback', async () => {
-            html = html || (await fetchHtml('/en'));
+        it('contains noscript fallback', () => {
             expect(html).toMatch(/<noscript>/i);
         });
     });
@@ -57,14 +53,17 @@ describe('SSR Rendering', () => {
     });
 
     describe('Homepage /', () => {
-        it('contains structured data', async () => {
-            const html = await fetchHtml('/');
-            // Should have JSON-LD or relevant structured data
+        let html: string;
+
+        beforeAll(async () => {
+            html = await fetchHtml('/');
+        });
+
+        it('contains structured data', () => {
             expect(html).toMatch(/application\/ld\+json|ItemList|WebApplication/);
         });
 
-        it('contains title', async () => {
-            const html = await fetchHtml('/');
+        it('contains title', () => {
             expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
         });
     });

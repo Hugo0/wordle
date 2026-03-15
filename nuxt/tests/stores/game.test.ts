@@ -16,15 +16,6 @@ import type { GameData } from '../../utils/types';
 // Mock auto-imported composables that the game store uses
 // ---------------------------------------------------------------------------
 
-vi.stubGlobal('import', { meta: { client: true } });
-
-vi.mock('#imports', () => ({
-    defineStore: vi.fn(),
-    ref: vi.fn(),
-    computed: vi.fn(),
-    watch: vi.fn(),
-}));
-
 // Mock composables used by game store
 const mockHaptic = { error: vi.fn(), confirm: vi.fn(), success: vi.fn() };
 const mockHapticFn = Object.assign(vi.fn(), mockHaptic);
@@ -71,6 +62,12 @@ vi.stubGlobal('$fetch', vi.fn().mockResolvedValue({}));
 // Test data
 // ---------------------------------------------------------------------------
 
+const TEST_KEYBOARD_ROWS: string[][] = [
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+    ['⇨', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
+];
+
 function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
     return {
         word_list: ['crane', 'slate', 'hello', 'world', 'apple', 'cairn', 'party', 'aback'],
@@ -98,20 +95,9 @@ function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
         todays_idx: 1700,
         todays_word: 'crane',
         timezone_offset: 0,
-        keyboard: [
-            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-            ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-            ['⇨', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
-        ],
+        keyboard: TEST_KEYBOARD_ROWS,
         keyboard_layouts: {
-            default: {
-                label: 'Default',
-                rows: [
-                    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-                    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-                    ['⇨', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '⌫'],
-                ],
-            },
+            default: { label: 'Default', rows: TEST_KEYBOARD_ROWS },
         },
         keyboard_layout_name: 'default',
         key_diacritic_hints: {},
