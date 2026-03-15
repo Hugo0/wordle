@@ -84,15 +84,15 @@ wordle/
 
 ### Python
 - Ruff formatter + linter, 100 char line length
-- Run `uv run ruff format webapp/ tests/ scripts/` and `uv run ruff check webapp/ tests/ scripts/`
+- Run `uv run ruff format webapp/ tests/` and `uv run ruff check webapp/ tests/`
 - Pre-commit hooks run both automatically
 
 ## Before Committing
 
 ```bash
 pnpm format                                    # Format TypeScript
-uv run ruff format webapp/ tests/ scripts/     # Format Python
-uv run ruff check webapp/ tests/ scripts/      # Lint Python
+uv run ruff format webapp/ tests/     # Format Python
+uv run ruff check webapp/ tests/      # Lint Python
 npx nuxt prepare && pnpm test                  # Run TS tests
 uv run pytest tests/                           # Run Python tests
 ```

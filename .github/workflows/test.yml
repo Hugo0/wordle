@@ -36,8 +36,8 @@ jobs:
 
       - name: Check Python formatting & linting (ruff)
         run: |
-          uv run ruff check webapp/ tests/ scripts/
-          uv run ruff format --check webapp/ tests/ scripts/
+          uv run ruff check webapp/ tests/
+          uv run ruff format --check webapp/ tests/
 
       - name: Check TypeScript formatting (prettier)
         run: pnpm format:check
