@@ -88,6 +88,29 @@ let seoDescription = isUntranslatedDesc
     : `${nativeDesc} | Wordle ${config.name}`;
 if (seoDescription.length > 160) seoDescription = nativeDesc.substring(0, 155) + '...';
 
+// Share result param (?r=1-6 or ?r=x) — used for social preview when sharing
+const shareResult = route.query.r as string | undefined;
+const validResults = ['1', '2', '3', '4', '5', '6', 'x'];
+const isShareLink = shareResult !== undefined && validResults.includes(shareResult);
+
+// Dynamic share image: use result-specific image for share links, default to _1 otherwise
+const shareImageSuffix = isShareLink ? shareResult : '1';
+const shareImageUrl = `https://wordle.global/images/share/${lang}_${shareImageSuffix}.png`;
+
+// Override title/description for share links (matches Flask behavior)
+const configText = gameData.value.config.text || {};
+if (isShareLink) {
+    if (shareResult === 'x') {
+        seoTitle = `${wordleBase} — X/6`;
+        seoDescription = configText.share_challenge_lose || "I didn't get today's Wordle. Can you?";
+    } else {
+        seoTitle = `${wordleBase} — ${shareResult}/6`;
+        const challengeWin =
+            configText.share_challenge_win || "I got today's Wordle in {n}. Can you beat me?";
+        seoDescription = challengeWin.replace('{n}', shareResult!);
+    }
+}
+
 useSeoMeta({
     title: seoTitle,
     description: seoDescription,
@@ -96,7 +119,7 @@ useSeoMeta({
     ogUrl: `https://wordle.global/${lang}`,
     ogType: 'website',
     ogLocale: config.meta?.locale || lang,
-    ogImage: `https://wordle.global/images/share/${lang}_1.png`,
+    ogImage: shareImageUrl,
     ogImageWidth: 1200,
     ogImageHeight: 630,
     twitterCard: 'summary_large_image',
