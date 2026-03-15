@@ -579,7 +579,7 @@ function myDistPct(n: number): string {
                                                 {{ lang.name_native }}
                                             </span>
                                             <span
-                                                v-if="lang.has_schedule"
+                                                v-if="lang.n_daily > 0"
                                                 class="ml-1 text-[9px] bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-1 rounded"
                                             >
                                                 curated
@@ -599,9 +599,7 @@ function myDistPct(n: number): string {
                                         <td
                                             class="py-1.5 px-2 text-right tabular-nums text-neutral-500 dark:text-neutral-400"
                                         >
-                                            {{
-                                                (lang.n_words + lang.n_supplement).toLocaleString()
-                                            }}
+                                            {{ lang.n_words.toLocaleString() }}
                                         </td>
                                         <td
                                             v-if="stats.global_plays > 0"
