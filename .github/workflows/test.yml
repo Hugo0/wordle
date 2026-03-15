@@ -86,9 +86,6 @@ jobs:
   nuxt-tests:
     name: Nuxt Tests (vitest)
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: nuxt
 
     steps:
       - uses: actions/checkout@v4
@@ -103,21 +100,18 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: nuxt/pnpm-lock.yaml
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install Nuxt dependencies
+        run: pnpm --dir nuxt install
 
       - name: Prepare Nuxt (generate .nuxt/tsconfig.json)
-        run: pnpm run postinstall
+        run: pnpm --dir nuxt run postinstall
 
       - name: Run vitest (unit + integration + parity)
-        run: pnpm test
+        run: pnpm --dir nuxt test
 
   nuxt-e2e:
     name: Nuxt E2E (Playwright)
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: nuxt
 
     steps:
       - uses: actions/checkout@v4
@@ -132,17 +126,17 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: nuxt/pnpm-lock.yaml
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install Nuxt dependencies
+        run: pnpm --dir nuxt install
 
       - name: Prepare Nuxt (generate .nuxt/tsconfig.json)
-        run: pnpm run postinstall
+        run: pnpm --dir nuxt run postinstall
 
       - name: Install Playwright browsers
-        run: npx playwright install chromium --with-deps
+        run: cd nuxt && npx playwright install chromium --with-deps
 
       - name: Run Playwright E2E tests
-        run: pnpm test:e2e
+        run: pnpm --dir nuxt test:e2e
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
