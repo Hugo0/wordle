@@ -16,8 +16,8 @@ const NEGATIVE_CACHE_TTL = 24 * 3600; // 24 hours
 
 function resolveDefinitionsDir(): string {
     const candidates = [
-        resolve(process.cwd(), '..', 'webapp', 'data', 'definitions'),
-        resolve(process.cwd(), 'webapp', 'data', 'definitions'),
+        resolve(process.cwd(), 'data', 'definitions'),
+        resolve(process.cwd(), '..', 'data', 'definitions'),
     ];
     for (const c of candidates) {
         if (existsSync(c)) return c;
