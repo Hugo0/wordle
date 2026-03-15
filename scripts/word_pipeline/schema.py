@@ -185,6 +185,21 @@ def to_compiled_json(words_yaml: WordsYaml) -> dict:
     valid.sort()
     blocked.sort()
 
+    # LLM curation stats (so report doesn't need to parse YAML)
+    llm_curated = [w for w in words_yaml.words if w.llm is not None]
+    llm_demoted = [w for w in llm_curated if w.llm.tier in ("reject", "valid")]
+    reviewed = sum(1 for w in words_yaml.words if w.reviewed)
+
+    # Frequency stats for daily words
+    daily_entries = [w for w in words_yaml.words if w.tier == "daily"]
+    daily_with_freq = [w for w in daily_entries if w.frequency > 0]
+    avg_zipf = (
+        round(sum(w.frequency for w in daily_with_freq) / len(daily_with_freq), 1)
+        if daily_with_freq
+        else 0
+    )
+    freq_pct = round(len(daily_with_freq) / max(1, len(daily_entries)) * 100)
+
     return {
         "daily": daily,
         "valid": valid,
@@ -195,5 +210,10 @@ def to_compiled_json(words_yaml: WordsYaml) -> dict:
             "valid_count": len(valid),
             "blocked_count": len(blocked),
             "compiled_at": datetime.now(UTC).isoformat(),
+            "llm_curated": len(llm_curated),
+            "llm_demoted": len(llm_demoted),
+            "reviewed": reviewed,
+            "avg_zipf": avg_zipf,
+            "freq_pct": freq_pct,
         },
     }
