@@ -79,11 +79,12 @@
                         <button
                             type="button"
                             class="flex-1 py-2 px-1 text-xs font-medium transition-colors border-x border-neutral-300 dark:border-neutral-600"
-                            :class="
+                            :class="[
                                 !allowAnyWord && !settings.hardMode
                                     ? 'bg-green-500 text-white'
-                                    : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600'
-                            "
+                                    : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600',
+                                canSetDifficulty('normal') ? '' : 'opacity-40 cursor-not-allowed',
+                            ]"
                             @click="setDifficulty('normal')"
                         >
                             Normal
@@ -95,7 +96,7 @@
                                 settings.hardMode
                                     ? 'bg-green-500 text-white'
                                     : 'bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-600',
-                                canToggleHard ? '' : 'opacity-40 cursor-not-allowed',
+                                canSetDifficulty('hard') ? '' : 'opacity-40 cursor-not-allowed',
                             ]"
                             @click="setDifficulty('hard')"
                         >
@@ -120,8 +121,8 @@
                     >
                         Revealed hints must be used in subsequent guesses
                     </p>
-                    <p v-if="!canToggleHard" class="text-xs text-amber-500 mt-1">
-                        Hard mode can be enabled before your first guess tomorrow
+                    <p v-if="settings.difficultyWarning" class="text-xs text-amber-500 mt-1">
+                        {{ settings.difficultyWarning }}
                     </p>
                 </div>
 
@@ -297,8 +298,14 @@ watch(
 // TODO: When localRtl changes, update the game board direction
 // (requires adding a mutable RTL override to the language or game store)
 
-/** Whether the player can still toggle hard mode (only before first guess). */
-const canToggleHard = computed(() => settings.hardMode || game.activeRow === 0 || game.gameOver);
+/** Can't go higher than the max difficulty any guess was submitted at. */
+const DIFFICULTY_LEVELS = { easy: 0, normal: 1, hard: 2 } as const;
+const canSetDifficulty = (level: 'easy' | 'normal' | 'hard') => {
+    if (game.activeRow === 0 || game.gameOver) return true;
+    return DIFFICULTY_LEVELS[level] <= game.maxDifficultyUsed;
+};
+// Keep canToggleHard for the Hard button styling
+const canToggleHard = computed(() => canSetDifficulty('hard'));
 
 /** PWA install support -- will be false until a beforeinstallprompt event fires. */
 const canInstallPwa = ref(false);
@@ -321,6 +328,15 @@ function installPwa(): void {
 }
 
 function setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
+    if (!canSetDifficulty(level)) {
+        settings.difficultyShake = true;
+        settings.difficultyWarning = 'Can\'t change difficulty after guessing';
+        setTimeout(() => {
+            settings.difficultyShake = false;
+            settings.difficultyWarning = '';
+        }, 1500);
+        return;
+    }
     if (level === 'easy') {
         allowAnyWord.value = true;
         if (settings.hardMode) settings.toggleHardMode();
@@ -328,7 +344,6 @@ function setDifficulty(level: 'easy' | 'normal' | 'hard'): void {
         allowAnyWord.value = false;
         if (settings.hardMode) settings.toggleHardMode();
     } else if (level === 'hard') {
-        if (!canToggleHard.value) return;
         allowAnyWord.value = false;
         if (!settings.hardMode) settings.toggleHardMode();
     }
