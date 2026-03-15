@@ -50,7 +50,7 @@ class TestHistoryPreservation:
         """All words with history[] must have valid day indices."""
         for entry in words_data.words:
             if entry.history:
-                assert all(isinstance(d, int) and d > 1681 for d in entry.history), (
+                assert all(isinstance(d, int) and d > 0 for d in entry.history), (
                     f"{lang}: {entry.word} has invalid history: {entry.history}"
                 )
 

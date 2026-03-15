@@ -17,7 +17,6 @@ import datetime
 import hashlib
 import json
 import random
-import sys
 from collections import deque
 from pathlib import Path
 
@@ -145,9 +144,9 @@ def freeze_language(lang: str, todays_idx: int) -> dict:
     prod_hist_path = PROD_DATA_DIR / lang / f"{lang}_word_history.txt"
     if prod_hist_path.exists():
         prod_history = [
-            l.strip().lower()
-            for l in prod_hist_path.read_text("utf-8").splitlines()
-            if l.strip() and not l.startswith("#")
+            line.strip().lower()
+            for line in prod_hist_path.read_text("utf-8").splitlines()
+            if line.strip() and not line.startswith("#")
         ]
 
     daily_pool = sorted(w["word"] for w in data["words"] if w["tier"] == "daily")
