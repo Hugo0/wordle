@@ -125,6 +125,12 @@ useHead({
     ],
 });
 
+// Hreflang tags for all languages
+const { data: allLangsWords } = await useFetch('/api/languages');
+if (allLangsWords.value?.language_codes) {
+    useHreflang(allLangsWords.value.language_codes, '/words');
+}
+
 function formatDate(dateStr: string): string {
     const d = new Date(dateStr + 'T00:00:00Z');
     return d.toLocaleDateString('en-US', {

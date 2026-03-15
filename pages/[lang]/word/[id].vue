@@ -69,6 +69,15 @@ useSeoMeta({
 
 useHead({
     link: [{ rel: 'canonical', href: `https://wordle.global/${lang}/word/${dayIdx}` }],
+});
+
+// Hreflang tags for all languages
+const { data: allLangsWord } = await useFetch('/api/languages');
+if (allLangsWord.value?.language_codes) {
+    useHreflang(allLangsWord.value.language_codes, `/word/${dayIdx}`);
+}
+
+useHead({
     script: [
         {
             type: 'application/ld+json',
