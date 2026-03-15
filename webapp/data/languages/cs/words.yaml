@@ -436,10 +436,14 @@ words:
   - main_list
 - word: grega
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Grega), surname
 - word: pálit
   length: 5
   tier: daily
@@ -654,10 +658,14 @@ words:
   - main_list
 - word: marek
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Marek/Mark), male first name
 - word: jiroš
   length: 5
   tier: valid
@@ -755,10 +763,14 @@ words:
   - main_list
 - word: paříž
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Paris/Paříž), city name
 - word: dubné
   length: 5
   tier: valid
@@ -872,10 +884,14 @@ words:
   - main_list
 - word: rover
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword/brand, not fully naturalized in Czech
 - word: jenže
   length: 5
   tier: daily
@@ -1460,10 +1476,14 @@ words:
   - main_list
 - word: mount
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Czech
 - word: výměr
   length: 5
   tier: valid
@@ -1717,10 +1737,14 @@ words:
   - main_list
 - word: bohem
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Instrumental case of 'bůh' (god); also means 'Bohemian' — ambiguous but usable
 - word: hltat
   length: 5
   tier: valid
@@ -2489,10 +2513,14 @@ words:
   - main_list
 - word: dillí
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Delhi/Dillí), city name
 - word: valeš
   length: 5
   tier: valid
@@ -3047,10 +3075,14 @@ words:
   - main_list
 - word: lucie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lucie), female first name
 - word: honem
   length: 5
   tier: daily
@@ -3660,10 +3692,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Dante), foreign proper name
 - word: aspoň
   length: 5
   tier: daily
@@ -4544,10 +4580,14 @@ words:
   - main_list
 - word: česko
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (short name for Czech Republic)
 - word: žílův
   length: 5
   tier: valid
@@ -5136,10 +5176,14 @@ words:
   - main_list
 - word: irský
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Adjective from proper name (Irish/irský)
 - word: práci
   length: 5
   tier: daily
@@ -5253,10 +5297,14 @@ words:
   - main_list
 - word: texas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Texas), US state
 - word: erben
   length: 5
   tier: valid
@@ -5357,10 +5405,14 @@ words:
   - main_list
 - word: děvka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Offensive/derogatory word for woman (whore)
 - word: cinkl
   length: 5
   tier: valid
@@ -5416,10 +5468,14 @@ words:
   - main_list
 - word: payne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English surname, not a Czech word
 - word: úplný
   length: 5
   tier: daily
@@ -5539,10 +5595,14 @@ words:
   - main_list
 - word: blanc
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: French word/surname, not Czech
 - word: riese
   length: 5
   tier: valid
@@ -5930,10 +5990,14 @@ words:
   - main_list
 - word: němec
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (German person); also common surname
 - word: bacat
   length: 5
   tier: valid
@@ -6152,10 +6216,14 @@ words:
   - main_list
 - word: brown
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English surname, not a Czech word
 - word: odběr
   length: 5
   tier: daily
@@ -6260,10 +6328,14 @@ words:
   - main_list
 - word: haiti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Haiti), country name
 - word: cévní
   length: 5
   tier: valid
@@ -6410,10 +6482,14 @@ words:
   - main_list
 - word: lejno
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Crude word for animal droppings; unpleasant for daily
 - word: vyšlý
   length: 5
   tier: valid
@@ -7133,10 +7209,14 @@ words:
   - main_list
 - word: kačer
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Means 'drake' (male duck); also Donald Duck's Czech name; fine as daily
 - word: parte
   length: 5
   tier: valid
@@ -7761,10 +7841,14 @@ words:
   - main_list
 - word: príma
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Colloquial variant of 'prima'; duplicate concept
 - word: silák
   length: 5
   tier: daily
@@ -7819,10 +7903,14 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lenin), historical figure
 - word: požár
   length: 5
   tier: daily
@@ -8108,10 +8196,14 @@ words:
   - main_list
 - word: honza
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper name (Honza/Johnny), though culturally iconic Czech name
 - word: úžina
   length: 5
   tier: valid
@@ -8458,10 +8550,14 @@ words:
   - main_list
 - word: leona
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Leona), female first name
 - word: dojda
   length: 5
   tier: valid
@@ -8772,10 +8868,14 @@ words:
   - main_list
 - word: cyril
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Cyril), male first name
 - word: helan
   length: 5
   tier: valid
@@ -8892,10 +8992,14 @@ words:
   - main_list
 - word: theta
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Greek letter, not a common Czech word
 - word: budka
   length: 5
   tier: daily
@@ -8910,10 +9014,14 @@ words:
   - main_list
 - word: devon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Devon), English place name
 - word: vacík
   length: 5
   tier: valid
@@ -9078,10 +9186,14 @@ words:
   - main_list
 - word: karel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Karel/Charles), male first name
 - word: zitin
   length: 5
   tier: valid
@@ -9131,10 +9243,14 @@ words:
   - main_list
 - word: čurat
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Crude word (to pee); childish/vulgar for daily
 - word: pičín
   length: 5
   tier: valid
@@ -9285,10 +9401,14 @@ words:
   - main_list
 - word: ruský
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Adjective from proper name (Russian/ruský)
 - word: beata
   length: 5
   tier: valid
@@ -9911,10 +10031,14 @@ words:
   - main_list
 - word: house
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Czech
 - word: louda
   length: 5
   tier: valid
@@ -10057,10 +10181,14 @@ words:
   - main_list
 - word: drink
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword; used in Czech but not native
 - word: lnový
   length: 5
   tier: valid
@@ -10178,10 +10306,14 @@ words:
   - main_list
 - word: praha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Prague/Praha), city name
 - word: lišej
   length: 5
   tier: valid
@@ -10685,10 +10817,14 @@ words:
   - main_list
 - word: jaffa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Jaffa), city/brand name
 - word: svého
   length: 5
   tier: daily
@@ -10973,10 +11109,14 @@ words:
   - main_list
 - word: stein
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German word/surname, not Czech
 - word: panel
   length: 5
   tier: daily
@@ -11376,10 +11516,14 @@ words:
   - main_list
 - word: jakub
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jakub/Jacob), male first name
 - word: dolín
   length: 5
   tier: valid
@@ -11766,10 +11910,14 @@ words:
   - main_list
 - word: vogel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname, not a Czech word
 - word: milín
   length: 5
   tier: valid
@@ -11864,10 +12012,14 @@ words:
   - main_list
 - word: jidáš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Judas/Jidáš), biblical figure
 - word: rýžka
   length: 5
   tier: valid
@@ -12448,10 +12600,14 @@ words:
   - main_list
 - word: stáňa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Stáňa), diminutive first name
 - word: skryt
   length: 5
   tier: valid
@@ -12483,10 +12639,14 @@ words:
   - main_list
 - word: lukáš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lukáš/Lucas), male first name
 - word: melan
   length: 5
   tier: valid
@@ -12507,10 +12667,14 @@ words:
   - main_list
 - word: ruska
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Genitive of Rusko (Russia), proper name form
 - word: ortův
   length: 5
   tier: valid
@@ -12683,10 +12847,14 @@ words:
   - main_list
 - word: prdel
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar word (ass); crude for daily puzzle
 - word: zvící
   length: 5
   tier: valid
@@ -12996,10 +13164,14 @@ words:
   - main_list
 - word: mayer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German/English surname, not a Czech word
 - word: prásk
   length: 5
   tier: daily
@@ -13035,10 +13207,14 @@ words:
   - main_list
 - word: andré
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (André), foreign first name
 - word: kutík
   length: 5
   tier: valid
@@ -13397,10 +13573,14 @@ words:
   - main_list
 - word: klein
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname, not a Czech word
 - word: rauer
   length: 5
   tier: valid
@@ -13522,10 +13702,14 @@ words:
   - main_list
 - word: egypt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Egypt), country name
 - word: nudit
   length: 5
   tier: daily
@@ -13885,10 +14069,14 @@ words:
   - main_list
 - word: orion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Orion), constellation/brand
 - word: tlach
   length: 5
   tier: valid
@@ -14150,10 +14338,14 @@ words:
   - main_list
 - word: kurva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Highly vulgar/offensive profanity
 - word: pobit
   length: 5
   tier: valid
@@ -14834,10 +15026,14 @@ words:
   - main_list
 - word: fidži
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Fiji/Fidži), country name
 - word: ničím
   length: 5
   tier: daily
@@ -15362,10 +15558,14 @@ words:
   - main_list
 - word: facto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Latin word fragment (de facto), not a standalone Czech word
 - word: ustůj
   length: 5
   tier: valid
@@ -15453,10 +15653,14 @@ words:
   - main_list
 - word: ivana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Ivana), female first name
 - word: bosna
   length: 5
   tier: valid
@@ -15611,10 +15815,14 @@ words:
   - main_list
 - word: sedan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Sedan, French city) or English car type
 - word: zefír
   length: 5
   tier: valid
@@ -15687,10 +15895,14 @@ words:
   - main_list
 - word: turek
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Turk) or 'Turkish coffee'; borderline
 - word: kroft
   length: 5
   tier: valid
@@ -16553,10 +16765,14 @@ words:
   - main_list
 - word: hanka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Hanka), female first name
 - word: režim
   length: 5
   tier: daily
@@ -16662,10 +16878,14 @@ words:
   - main_list
 - word: lenka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Lenka), female first name
 - word: turná
   length: 5
   tier: valid
@@ -17070,10 +17290,14 @@ words:
   - main_list
 - word: crack
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not naturalized Czech
 - word: fetiš
   length: 5
   tier: daily
@@ -17326,10 +17550,14 @@ words:
   - main_list
 - word: vídeň
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.47
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Vienna/Vídeň), city name
 - word: jašek
   length: 5
   tier: valid
@@ -17534,10 +17762,14 @@ words:
   - main_list
 - word: pavla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Pavla), female first name
 - word: lanýž
   length: 5
   tier: valid
@@ -18031,10 +18263,14 @@ words:
   - main_list
 - word: herák
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for heroin addict; pejorative and obscure
 - word: jejda
   length: 5
   tier: daily
@@ -18102,10 +18338,14 @@ words:
   - main_list
 - word: bohům
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Dative plural of 'bůh' (to gods); obscure grammatical form
 - word: kumšt
   length: 5
   tier: valid
@@ -18194,10 +18434,14 @@ words:
   - main_list
 - word: rusko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Russia/Rusko), country name
 - word: ročov
   length: 5
   tier: valid
@@ -18283,10 +18527,14 @@ words:
   - main_list
 - word: saint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English/French word, not Czech
 - word: bínův
   length: 5
   tier: valid
@@ -18749,10 +18997,14 @@ words:
   - main_list
 - word: gates
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Gates), English surname
 - word: jolka
   length: 5
   tier: valid
@@ -18807,10 +19059,14 @@ words:
   - main_list
 - word: silva
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Silva), foreign surname
 - word: banka
   length: 5
   tier: daily
@@ -19463,10 +19719,14 @@ words:
   - main_list
 - word: blues
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword; used in Czech but not a Czech word per se
 - word: šejch
   length: 5
   tier: valid
@@ -19847,10 +20107,14 @@ words:
   - main_list
 - word: feťák
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for drug addict; pejorative
 - word: patyi
   length: 5
   tier: valid
@@ -20729,10 +20993,14 @@ words:
   - main_list
 - word: verne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Jules Verne), surname
 - word: bycov
   length: 5
   tier: valid
@@ -20923,10 +21191,14 @@ words:
   - main_list
 - word: black
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Czech
   history:
   - 1725
   scheduled_day: 1725
@@ -21032,10 +21304,14 @@ words:
   - main_list
 - word: ježíš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Jesus/Ježíš), religious figure
 - word: sekul
   length: 5
   tier: valid
@@ -21952,10 +22228,14 @@ words:
   - main_list
 - word: alois
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Alois), male first name
 - word: brzký
   length: 5
   tier: valid
@@ -22053,10 +22333,14 @@ words:
   - main_list
 - word: derby
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword; used in Czech but foreign origin
 - word: sklad
   length: 5
   tier: daily
@@ -22137,10 +22421,14 @@ words:
   - main_list
 - word: gusta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Gusta/Augusta), first name
 - word: zvací
   length: 5
   tier: valid
@@ -22214,10 +22502,14 @@ words:
   - main_list
 - word: weiss
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname, not a Czech word
 - word: věrni
   length: 5
   tier: valid
@@ -22280,10 +22572,14 @@ words:
   - main_list
 - word: lesba
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Informal/potentially offensive term for lesbian
 - word: korzo
   length: 5
   tier: valid
@@ -22491,10 +22787,14 @@ words:
   - main_list
 - word: klára
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Klára/Clara), female first name
 - word: koval
   length: 5
   tier: valid
@@ -22628,10 +22928,14 @@ words:
   - main_list
 - word: kšeft
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Colloquial (deal/business), from German; very informal
 - word: onšov
   length: 5
   tier: valid
@@ -22646,10 +22950,14 @@ words:
   - main_list
 - word: artuš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (King Arthur/Artuš)
 - word: lámův
   length: 5
   tier: valid
@@ -23146,10 +23454,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (first name)
 - word: klapy
   length: 5
   tier: valid
@@ -23233,10 +23545,14 @@ words:
   - main_list
 - word: zeman
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Czech president surname); also archaic word for 'squire' but primarily recognized as name
 - word: větný
   length: 5
   tier: valid
@@ -23396,10 +23712,14 @@ words:
   - main_list
 - word: pavel
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Czech first name / president)
 - word: abbéy
   length: 5
   tier: valid
@@ -23593,10 +23913,14 @@ words:
   - main_list
 - word: pluto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Pluto), planet/mythological figure
 - word: pakli
   length: 5
   tier: valid
@@ -23812,10 +24136,14 @@ words:
   - main_list
 - word: marka
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.2
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Can mean 'mark' (currency/stamp) but also genitive of Marek; ambiguous
 - word: kotle
   length: 5
   tier: daily
@@ -23910,10 +24238,14 @@ words:
   - main_list
 - word: milan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Milan), male first name or city
 - word: engův
   length: 5
   tier: valid
@@ -23975,10 +24307,14 @@ words:
   - main_list
 - word: český
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.45
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Adjective from proper name (Czech); very common in daily use
 - word: šámal
   length: 5
   tier: valid
@@ -24217,10 +24553,14 @@ words:
   - main_list
 - word: julie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Julie), female first name
 - word: vanky
   length: 5
   tier: valid
@@ -24281,10 +24621,14 @@ words:
   - main_list
 - word: sibiř
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Siberia/Sibiř), geographic name
 - word: rupie
   length: 5
   tier: valid
@@ -24529,10 +24873,14 @@ words:
   - main_list
 - word: korea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Korea), country name
 - word: ohrát
   length: 5
   tier: valid
@@ -24624,10 +24972,14 @@ words:
   - main_list
 - word: morse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Morse), surname
 - word: napit
   length: 5
   tier: valid
@@ -24738,10 +25090,14 @@ words:
   - main_list
 - word: debil
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Offensive term (moron/imbecile); ableist slur
 - word: bloch
   length: 5
   tier: valid
@@ -24903,10 +25259,14 @@ words:
   - main_list
 - word: machr
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Colloquial (expert/hotshot), from German; informal
 - word: lojem
   length: 5
   tier: valid
@@ -25110,10 +25470,14 @@ words:
   - main_list
 - word: polák
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Pole/Polish person); can be surname too
 - word: mertl
   length: 5
   tier: valid
@@ -26366,10 +26730,14 @@ words:
   - main_list
 - word: bruna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Bruna/Bruno genitive), not a common word
 - word: salón
   length: 5
   tier: daily
@@ -26568,10 +26936,14 @@ words:
   - main_list
 - word: číňan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym (Chinese person)
 - word: nosič
   length: 5
   tier: daily
@@ -27219,10 +27591,14 @@ words:
   - main_list
 - word: nicka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name or anglicism (nickname), not standard Czech
 - word: pudil
   length: 5
   tier: valid
@@ -27552,10 +27928,14 @@ words:
   - main_list
 - word: braun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname/brand, not a Czech word
 - word: naiva
   length: 5
   tier: valid
@@ -27582,10 +27962,14 @@ words:
   - main_list
 - word: havaj
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Hawaii/Havaj)
 - word: dědův
   length: 5
   tier: valid
@@ -27713,10 +28097,14 @@ words:
   - main_list
 - word: švorc
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for 'broke/penniless'; very colloquial
 - word: nýčův
   length: 5
   tier: valid
@@ -27801,10 +28189,14 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Oskar/Oscar), male first name
 - word: wenig
   length: 5
   tier: valid
@@ -28240,10 +28632,14 @@ words:
   - main_list
 - word: karla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Karla), or genitive of Karel
 - word: vašut
   length: 5
   tier: valid
@@ -28282,10 +28678,14 @@ words:
   - main_list
 - word: alexi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Alexi), not a common Czech word
 - word: voňka
   length: 5
   tier: valid
@@ -29084,10 +29484,14 @@ words:
   - main_list
 - word: hajzl
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.86
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar slang for toilet/jerk; crude for daily puzzle
 - word: drmla
   length: 5
   tier: valid
@@ -29203,10 +29607,14 @@ words:
   - main_list
 - word: prejt
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.24
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Dialectal/colloquial form of 'přejít'; nonstandard
 - word: boran
   length: 5
   tier: valid
@@ -29523,10 +29931,14 @@ words:
   - main_list
 - word: čůrat
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Crude word (to pee); duplicate variant of čurat
 - word: střep
   length: 5
   tier: valid
@@ -29745,10 +30157,14 @@ words:
   - main_list
 - word: bauer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: German surname, not a Czech common word
 - word: biřic
   length: 5
   tier: valid
@@ -29885,10 +30301,14 @@ words:
   - main_list
 - word: hovno
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Vulgar word (shit); crude for daily puzzle
 - word: krčit
   length: 5
   tier: valid
@@ -29907,10 +30327,14 @@ words:
   - main_list
 - word: twist
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword, somewhat naturalized in Czech
 - word: vacov
   length: 5
   tier: valid
@@ -30992,10 +31416,14 @@ words:
   - main_list
 - word: putna
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Putna), surname or place
 - word: čtivo
   length: 5
   tier: valid
@@ -31178,10 +31606,14 @@ words:
   - main_list
 - word: adler
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: German surname (Adler), not a Czech common word
 - word: sumec
   length: 5
   tier: valid
@@ -31580,10 +32012,14 @@ words:
   - main_list
 - word: joint
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword; used in Czech slang but not native
 - word: elita
   length: 5
   tier: daily
@@ -32270,10 +32706,14 @@ words:
   - main_list
 - word: pašák
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Colloquial (cool guy); very informal slang
 - word: mýlka
   length: 5
   tier: valid
@@ -32684,10 +33124,14 @@ words:
   - main_list
 - word: filip
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Filip), male first name
 - word: hádes
   length: 5
   tier: valid
@@ -32776,10 +33220,14 @@ words:
   - main_list
 - word: cikán
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Offensive ethnic slur for Roma people
 - word: farář
   length: 5
   tier: daily
@@ -32957,10 +33405,14 @@ words:
   - main_list
 - word: korán
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper name (Quran/Korán), religious text; though recognizable
 - word: cipra
   length: 5
   tier: valid
@@ -33462,10 +33914,14 @@ words:
   - main_list
 - word: alláh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Allah), religious figure
 - word: ledči
   length: 5
   tier: valid
@@ -33864,10 +34320,14 @@ words:
   - main_list
 - word: česká
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Feminine adjective from proper name (Czech); very common in daily use
 - word: mince
   length: 5
   tier: daily
@@ -33933,10 +34393,14 @@ words:
   - main_list
 - word: tokio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tokyo/Tokio), city name
 - word: vařák
   length: 5
   tier: valid
@@ -34698,10 +35162,14 @@ words:
   - main_list
 - word: livie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Livie), female first name
 - word: zírat
   length: 5
   tier: daily
@@ -34850,10 +35318,14 @@ words:
   - main_list
 - word: řecko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Greece/Řecko), country name
 - word: barev
   length: 5
   tier: daily
@@ -34956,10 +35428,14 @@ words:
   - main_list
 - word: asiat
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Potentially offensive ethnic label; demonym not ideal for daily puzzle
 - word: mámit
   length: 5
   tier: valid
@@ -35580,10 +36056,14 @@ words:
   - main_list
 - word: řecký
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Adjective from proper name (Greek/řecký)
 - word: všanc
   length: 5
   tier: valid
@@ -35710,10 +36190,14 @@ words:
   - main_list
 - word: swift
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word/surname, not Czech
 - word: zajel
   length: 5
   tier: daily
@@ -35881,10 +36365,14 @@ words:
   - main_list
 - word: marko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Marko), male first name
 - word: svině
   length: 5
   tier: daily
@@ -36342,10 +36830,14 @@ words:
   - main_list
 - word: josef
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.88
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Josef), male first name
 - word: ševce
   length: 5
   tier: valid
@@ -36676,16 +37168,24 @@ words:
   - main_list
 - word: berta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Berta), female first name
 - word: plzeň
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Czech city Pilsen)
 - word: zdivo
   length: 5
   tier: valid
@@ -36812,10 +37312,14 @@ words:
   - main_list
 - word: freud
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Freud), surname
 - word: živel
   length: 5
   tier: daily
@@ -37117,10 +37621,14 @@ words:
   - main_list
 - word: sigma
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Greek letter/brand name; not a common Czech word
 - word: houně
   length: 5
   tier: valid
@@ -37307,10 +37815,14 @@ words:
   - main_list
 - word: coura
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Vulgar/offensive word for promiscuous woman
 - word: slout
   length: 5
   tier: valid
@@ -37481,10 +37993,14 @@ words:
   - main_list
 - word: irsko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Ireland/Irsko), country name
 - word: cvaky
   length: 5
   tier: valid
@@ -37848,10 +38364,14 @@ words:
   - main_list
 - word: these
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Czech (Czech for thesis is 'teze')
 - word: desén
   length: 5
   tier: valid
@@ -37865,10 +38385,14 @@ words:
   - main_list
 - word: grázl
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Slang for scoundrel; colloquial but recognizable
 - word: šubík
   length: 5
   tier: valid
@@ -39605,10 +40129,14 @@ words:
   - main_list
 - word: sokol
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Means 'falcon' but also famous Czech organization name; keep as valid
 - word: nomád
   length: 5
   tier: valid
@@ -39890,10 +40418,14 @@ words:
   - main_list
 - word: tomáš
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 5.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Tomáš/Thomas), male first name
   history:
   - 1704
   scheduled_day: 1704
@@ -40348,10 +40880,14 @@ words:
   - main_list
 - word: blití
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verbal noun from 'blít' (to vomit); uncommon/unpleasant for daily
 - word: janek
   length: 5
   tier: valid
@@ -40500,10 +41036,14 @@ words:
   - main_list
 - word: steak
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword; used in Czech but not native
 - word: masív
   length: 5
   tier: valid
@@ -40748,10 +41288,14 @@ words:
   - main_list
 - word: micka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Micka), surname/diminutive
 - word: fluor
   length: 5
   tier: valid
@@ -40830,10 +41374,14 @@ words:
   - main_list
 - word: sofie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Sofie/Sophie), female first name
 - word: jáčův
   length: 5
   tier: valid
@@ -41120,10 +41668,14 @@ words:
   - main_list
 - word: satan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Proper name (Satan), though culturally recognizable
 - word: sukně
   length: 5
   tier: daily
@@ -41797,10 +42349,14 @@ words:
   - main_list
 - word: sýrie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (Syria/Sýrie), country name
 - word: mluva
   length: 5
   tier: valid
@@ -42063,10 +42619,14 @@ words:
   - main_list
 - word: islám
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Religious proper noun; potentially sensitive for daily
 - word: daněk
   length: 5
   tier: valid
@@ -42480,10 +43040,14 @@ words:
   - main_list
 - word: šmrnc
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Colloquial word (flair/panache); very informal
 - word: hamák
   length: 5
   tier: valid
@@ -42510,10 +43074,14 @@ words:
   - main_list
 - word: pilar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Spanish proper name, not a Czech word
 - word: hlíza
   length: 5
   tier: valid
@@ -42659,10 +43227,14 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Chile), country name
 - word: kolmo
   length: 5
   tier: valid
@@ -42711,10 +43283,14 @@ words:
   - main_list
 - word: kripl
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Offensive slang for disabled person (cripple)
 - word: rigol
   length: 5
   tier: valid
@@ -42806,10 +43382,14 @@ words:
   - main_list
 - word: říman
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name demonym (Roman/Říman)
 - word: webrů
   length: 5
   tier: valid
@@ -43179,10 +43759,14 @@ words:
   - main_list
 - word: indie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper name (India/Indie), country name
 - word: žukův
   length: 5
   tier: valid
@@ -43480,10 +44064,14 @@ words:
   - main_list
 - word: leone
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper name (Leone), foreign name
 - word: lišov
   length: 5
   tier: valid
@@ -43677,10 +44265,14 @@ words:
   - main_list
 - word: petra
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Czech first name, genitive of Petr)
 - word: nerad
   length: 5
   tier: daily
@@ -55374,7 +55966,7 @@ words:
   - supplement
 - word: budeš
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.97
   sources:
   - supplement
@@ -55408,7 +56000,7 @@ words:
   - supplement
 - word: budou
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.77
   sources:
   - supplement
@@ -57965,7 +58557,7 @@ words:
   - supplement
 - word: celou
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.4
   sources:
   - supplement
@@ -58007,7 +58599,7 @@ words:
   - supplement
 - word: celém
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -58296,19 +58888,19 @@ words:
   - supplement
 - word: cestu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
 - word: cesty
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.11
   sources:
   - supplement
 - word: cestě
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -58582,7 +59174,7 @@ words:
   - supplement
 - word: chceš
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -58941,7 +59533,7 @@ words:
   - supplement
 - word: chodí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -59273,7 +59865,7 @@ words:
   - supplement
 - word: chybí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -59350,7 +59942,7 @@ words:
   - supplement
 - word: chápu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -61809,7 +62401,7 @@ words:
   - supplement
 - word: cílem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -61880,7 +62472,7 @@ words:
   - supplement
 - word: cítím
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -63342,7 +63934,7 @@ words:
   - supplement
 - word: denně
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -64503,7 +65095,7 @@ words:
   - supplement
 - word: dobře
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.76
   sources:
   - supplement
@@ -65404,7 +65996,7 @@ words:
   - supplement
 - word: došlo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
@@ -66034,7 +66626,7 @@ words:
   - supplement
 - word: druhá
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -66370,7 +66962,7 @@ words:
   - supplement
 - word: dubna
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -67902,7 +68494,7 @@ words:
   - supplement
 - word: dělám
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -72284,7 +72876,7 @@ words:
   - supplement
 - word: filmu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
@@ -72475,7 +73067,7 @@ words:
   - supplement
 - word: firmy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
@@ -73375,7 +73967,7 @@ words:
   - supplement
 - word: fotky
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -80273,13 +80865,13 @@ words:
   - supplement
 - word: hlavu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
 - word: hlavy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -80866,7 +81458,7 @@ words:
   - supplement
 - word: hodin
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.45
   sources:
   - supplement
@@ -81132,7 +81724,7 @@ words:
   - supplement
 - word: holky
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -82055,7 +82647,7 @@ words:
   - supplement
 - word: hraje
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -82577,7 +83169,7 @@ words:
   - supplement
 - word: hráči
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -86734,7 +87326,7 @@ words:
   - supplement
 - word: jasné
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -86746,7 +87338,7 @@ words:
   - supplement
 - word: jasně
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.17
   sources:
   - supplement
@@ -87059,7 +87651,7 @@ words:
   - supplement
 - word: jedná
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -87181,7 +87773,7 @@ words:
   - supplement
 - word: jejím
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -87831,7 +88423,7 @@ words:
   - supplement
 - word: jinou
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -88124,7 +88716,7 @@ words:
   - supplement
 - word: jména
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -91471,13 +92063,13 @@ words:
   - supplement
 - word: každá
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
 - word: každé
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -92944,7 +93536,7 @@ words:
   - supplement
 - word: klidu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -93133,7 +93725,7 @@ words:
   - supplement
 - word: kluci
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
@@ -93537,7 +94129,7 @@ words:
   - supplement
 - word: knihy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.11
   sources:
   - supplement
@@ -94286,7 +94878,7 @@ words:
   - supplement
 - word: končí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -94630,7 +95222,7 @@ words:
   - supplement
 - word: korun
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.06
   sources:
   - supplement
@@ -95308,13 +95900,13 @@ words:
   - supplement
 - word: kraje
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
 - word: kraji
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -96335,13 +96927,13 @@ words:
   - supplement
 - word: která
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.1
   sources:
   - supplement
 - word: které
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.3
   sources:
   - supplement
@@ -96370,7 +96962,7 @@ words:
   - supplement
 - word: kteří
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.76
   sources:
   - supplement
@@ -99796,7 +100388,7 @@ words:
   - supplement
 - word: ledna
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -108391,7 +108983,7 @@ words:
   - supplement
 - word: metrů
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
@@ -109112,7 +109704,7 @@ words:
   - supplement
 - word: minut
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.42
   sources:
   - supplement
@@ -109723,7 +110315,7 @@ words:
   - supplement
 - word: mluví
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -110080,13 +110672,13 @@ words:
   - supplement
 - word: mohla
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.39
   sources:
   - supplement
 - word: mohli
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
@@ -110097,7 +110689,7 @@ words:
   - supplement
 - word: mohlo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.19
   sources:
   - supplement
@@ -110115,7 +110707,7 @@ words:
   - supplement
 - word: mohou
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.52
   sources:
   - supplement
@@ -110986,7 +111578,7 @@ words:
   - supplement
 - word: možné
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.44
   sources:
   - supplement
@@ -112694,7 +113286,7 @@ words:
   - supplement
 - word: místa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -112724,7 +113316,7 @@ words:
   - supplement
 - word: místě
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.44
   sources:
   - supplement
@@ -113097,7 +113689,7 @@ words:
   - supplement
 - word: města
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.52
   sources:
   - supplement
@@ -113121,7 +113713,7 @@ words:
   - supplement
 - word: městě
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.18
   sources:
   - supplement
@@ -113269,7 +113861,7 @@ words:
   - supplement
 - word: můžeš
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -114404,7 +114996,7 @@ words:
   - supplement
 - word: našem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -114539,7 +115131,7 @@ words:
   - supplement
 - word: nebyl
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.38
   sources:
   - supplement
@@ -114907,7 +115499,7 @@ words:
   - supplement
 - word: nejde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -115102,7 +115694,7 @@ words:
   - supplement
 - word: nelze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -115196,7 +115788,7 @@ words:
   - supplement
 - word: nemám
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.46
   sources:
   - supplement
@@ -115225,7 +115817,7 @@ words:
   - supplement
 - word: neměl
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement
@@ -115471,7 +116063,7 @@ words:
   - supplement
 - word: nesmí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
@@ -115662,7 +116254,7 @@ words:
   - supplement
 - word: nevím
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.6
   sources:
   - supplement
@@ -117061,7 +117653,7 @@ words:
   - supplement
 - word: novou
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.18
   sources:
   - supplement
@@ -117085,13 +117677,13 @@ words:
   - supplement
 - word: novém
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.92
   sources:
   - supplement
 - word: novým
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -117459,7 +118051,7 @@ words:
   - supplement
 - word: nutné
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -121103,7 +121695,7 @@ words:
   - supplement
 - word: osoby
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -122974,7 +123566,7 @@ words:
   - supplement
 - word: parku
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -123342,7 +123934,7 @@ words:
   - supplement
 - word: patří
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.45
   sources:
   - supplement
@@ -125847,7 +126439,7 @@ words:
   - supplement
 - word: platí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.17
   sources:
   - supplement
@@ -126438,7 +127030,7 @@ words:
   - supplement
 - word: plánu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -127943,7 +128535,7 @@ words:
   - supplement
 - word: počtu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.97
   sources:
   - supplement
@@ -128249,10 +128841,14 @@ words:
   - supplement
 - word: praze
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.57
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Locative of proper noun Praha (Prague)
 - word: prašť
   length: 5
   tier: valid
@@ -128941,7 +129537,7 @@ words:
   - supplement
 - word: práva
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement
@@ -130633,7 +131229,7 @@ words:
   - supplement
 - word: pěkně
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -135507,7 +136103,7 @@ words:
   - supplement
 - word: rukou
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.02
   sources:
   - supplement
@@ -135758,10 +136354,14 @@ words:
   - supplement
 - word: ruské
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.86
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Adjective derived from proper noun (Russian); sensitive geopolitical term
 - word: russe
   length: 5
   tier: valid
@@ -136720,7 +137320,7 @@ words:
   - supplement
 - word: různé
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -142063,7 +142663,7 @@ words:
   - supplement
 - word: slova
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -142896,7 +143496,7 @@ words:
   - supplement
 - word: snaží
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -143859,7 +144459,7 @@ words:
   - supplement
 - word: soudu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -144937,7 +145537,7 @@ words:
   - supplement
 - word: srpna
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -145172,7 +145772,7 @@ words:
   - supplement
 - word: stala
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.97
   sources:
   - supplement
@@ -145190,7 +145790,7 @@ words:
   - supplement
 - word: stalo
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - supplement
@@ -145220,7 +145820,7 @@ words:
   - supplement
 - word: stane
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -145314,7 +145914,7 @@ words:
   - supplement
 - word: staré
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -145368,7 +145968,7 @@ words:
   - supplement
 - word: stavu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -145398,7 +145998,7 @@ words:
   - supplement
 - word: stačí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -145729,7 +146329,7 @@ words:
   - supplement
 - word: stojí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.33
   sources:
   - supplement
@@ -145902,7 +146502,7 @@ words:
   - supplement
 - word: stran
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -146224,7 +146824,7 @@ words:
   - supplement
 - word: stále
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.64
   sources:
   - supplement
@@ -146289,7 +146889,7 @@ words:
   - supplement
 - word: státu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - supplement
@@ -146301,7 +146901,7 @@ words:
   - supplement
 - word: států
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -147577,7 +148177,7 @@ words:
   - supplement
 - word: světa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.49
   sources:
   - supplement
@@ -147607,7 +148207,7 @@ words:
   - supplement
 - word: světě
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.42
   sources:
   - supplement
@@ -154297,7 +154897,7 @@ words:
   - supplement
 - word: tvoří
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -154327,7 +154927,7 @@ words:
   - supplement
 - word: tvrdí
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -155019,7 +155619,7 @@ words:
   - supplement
 - word: týdny
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -155339,7 +155939,7 @@ words:
   - supplement
 - word: těžko
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.86
   sources:
   - supplement
@@ -155351,7 +155951,7 @@ words:
   - supplement
 - word: těžké
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -155457,7 +156057,7 @@ words:
   - supplement
 - word: třídy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -156285,7 +156885,7 @@ words:
   - supplement
 - word: ulici
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -159600,13 +160200,13 @@ words:
   - supplement
 - word: velká
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.27
   sources:
   - supplement
 - word: velké
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.52
   sources:
   - supplement
@@ -159939,7 +160539,7 @@ words:
   - supplement
 - word: verzi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -161262,7 +161862,7 @@ words:
   - supplement
 - word: vlasy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -161540,7 +162140,7 @@ words:
   - supplement
 - word: vlády
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -161977,7 +162577,7 @@ words:
   - supplement
 - word: volby
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -163973,7 +164573,7 @@ words:
   - supplement
 - word: války
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -164220,7 +164820,7 @@ words:
   - supplement
 - word: vážně
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
@@ -165218,7 +165818,7 @@ words:
   - supplement
 - word: věřím
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.93
   sources:
   - supplement
@@ -168220,7 +168820,7 @@ words:
   - supplement
 - word: začal
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.27
   sources:
   - supplement
@@ -168262,7 +168862,7 @@ words:
   - supplement
 - word: začne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -169686,7 +170286,7 @@ words:
   - supplement
 - word: změny
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -172154,7 +172754,7 @@ words:
   - supplement
 - word: února
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -172265,7 +172865,7 @@ words:
   - supplement
 - word: úplně
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.55
   sources:
   - supplement
@@ -172734,7 +173334,7 @@ words:
   - supplement
 - word: úřadu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -173412,10 +174012,14 @@ words:
   - supplement
 - word: česku
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.18
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Dative/locative of proper noun Česko (Czech Republic)
 - word: česky
   length: 5
   tier: valid
@@ -173428,6 +174032,10 @@ words:
   frequency: 5.82
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Adjective from proper name (Czech); though very common
 - word: česlo
   length: 5
   tier: valid
@@ -173899,7 +174507,7 @@ words:
   - supplement
 - word: členů
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -174419,7 +175027,7 @@ words:
   - supplement
 - word: části
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.43
   sources:
   - supplement
@@ -174762,7 +175370,7 @@ words:
   - supplement
 - word: řekla
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.28
   sources:
   - supplement
@@ -175247,7 +175855,7 @@ words:
   - supplement
 - word: října
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -175265,7 +175873,7 @@ words:
   - supplement
 - word: říkal
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -175283,7 +175891,7 @@ words:
   - supplement
 - word: říkám
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.11
   sources:
   - supplement
@@ -175601,7 +176209,7 @@ words:
   - supplement
 - word: šanci
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -176429,7 +177037,7 @@ words:
   - supplement
 - word: škole
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.12
   sources:
   - supplement
@@ -176441,13 +177049,13 @@ words:
   - supplement
 - word: školu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
 - word: školy
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.43
   sources:
   - supplement
@@ -179422,13 +180030,13 @@ words:
   - supplement
 - word: žádná
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
 - word: žádné
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.32
   sources:
   - supplement

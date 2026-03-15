@@ -964,10 +964,14 @@ words:
   - main_list
 - word: denim
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English loanword; also Turkish verb form 'denim' (my trial) but primarily associated with fabric
 - word: tüyüp
   length: 5
   tier: valid
@@ -1091,10 +1095,14 @@ words:
   - main_list
 - word: tonya
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper noun (place name in Turkey or foreign name)
 - word: gazel
   length: 5
   tier: valid
@@ -1449,10 +1457,14 @@ words:
   - main_list
 - word: begüm
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name (female given name, from begum)
 - word: kekre
   length: 5
   tier: valid
@@ -1584,10 +1596,14 @@ words:
   - main_list
 - word: eylül
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.42
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Month name (September); also used as a female name
 - word: havle
   length: 5
   tier: valid
@@ -1754,10 +1770,14 @@ words:
   - main_list
 - word: fatih
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Turkish first name / Istanbul district); also means 'conqueror' but primarily a proper noun
 - word: eklet
   length: 5
   tier: valid
@@ -2705,10 +2725,14 @@ words:
   - main_list
 - word: rusça
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper adjective (Russian language)
 - word: zevce
   length: 5
   tier: valid
@@ -4768,10 +4792,14 @@ words:
   - main_list
 - word: japon
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.67
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Demonym/proper adjective (Japanese)
 - word: bilge
   length: 5
   tier: daily
@@ -5662,10 +5690,14 @@ words:
   - main_list
 - word: libya
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (country name)
 - word: ışıma
   length: 5
   tier: valid
@@ -5701,10 +5733,14 @@ words:
   - main_list
 - word: çinli
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.27
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Demonym (Chinese person) - proper adjective
 - word: nevra
   length: 5
   tier: valid
@@ -6885,10 +6921,14 @@ words:
   - main_list
 - word: salih
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name; also means 'righteous' but archaic
   history:
   - 1708
   scheduled_day: 1708
@@ -7493,10 +7533,14 @@ words:
   - main_list
 - word: cemal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.64
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name (male given name), though also means 'beauty' it is archaic
 - word: sidik
   length: 5
   tier: daily
@@ -8376,10 +8420,14 @@ words:
   - main_list
 - word: havva
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.66
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper name (Eve, female given name)
 - word: beğin
   length: 5
   tier: valid
@@ -8457,10 +8505,14 @@ words:
   - main_list
 - word: alman
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym/proper adjective (German); also verb form but primarily ethnic label
 - word: apiko
   length: 5
   tier: valid
@@ -10261,10 +10313,14 @@ words:
   - main_list
 - word: mesih
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper noun (Messiah)
 - word: silik
   length: 5
   tier: valid
@@ -10891,10 +10947,14 @@ words:
   - main_list
 - word: basil
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'Ambiguous: could be read as English ''basil'' or Turkish verb form; not common standalone Turkish word'
 - word: bando
   length: 5
   tier: daily
@@ -11869,10 +11929,14 @@ words:
   - main_list
 - word: bursa
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Turkish city)
 - word: nemli
   length: 5
   tier: daily
@@ -12096,10 +12160,14 @@ words:
   - main_list
 - word: hasan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.08
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper name (male given name)
 - word: casus
   length: 5
   tier: daily
@@ -12272,10 +12340,14 @@ words:
   - main_list
 - word: mayıs
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.23
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Month name (May)
 - word: bunal
   length: 5
   tier: valid
@@ -12822,10 +12894,14 @@ words:
   - main_list
 - word: haiti
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (country name)
 - word: saplı
   length: 5
   tier: valid
@@ -13478,10 +13554,14 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (country name)
 - word: debbe
   length: 5
   tier: valid
@@ -13628,10 +13708,14 @@ words:
   - main_list
 - word: kadir
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily a proper name; also means 'worth/value' but archaic in common speech
 - word: massı
   length: 5
   tier: valid
@@ -13670,10 +13754,14 @@ words:
   - main_list
 - word: latin
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper adjective (Latin)
 - word: temas
   length: 5
   tier: daily
@@ -15196,10 +15284,14 @@ words:
   - main_list
 - word: tokyo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (city name)
 - word: kösçü
   length: 5
   tier: blocked
@@ -15563,10 +15655,14 @@ words:
   - main_list
 - word: macar
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Demonym/proper adjective (Hungarian)
 - word: başol
   length: 5
   tier: valid
@@ -16182,10 +16278,14 @@ words:
   - main_list
 - word: selim
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name (male given name)
 - word: uruba
   length: 5
   tier: valid
@@ -16970,10 +17070,14 @@ words:
   - main_list
 - word: götlü
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Vulgar word (having a butt, crude)
 - word: ester
   length: 5
   tier: valid
@@ -17607,10 +17711,14 @@ words:
   - main_list
 - word: hakan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.81
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name; also means 'ruler' but rarely used as common noun
 - word: yemiş
   length: 5
   tier: daily
@@ -18348,10 +18456,14 @@ words:
   scheduled_day: 1688
 - word: cemre
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily a proper name now; traditional meaning (ember marking spring) is known but name usage dominates
 - word: enayi
   length: 5
   tier: daily
@@ -18412,9 +18524,13 @@ words:
   - main_list
 - word: kayla
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign proper name, not a standard Turkish word
 - word: sağal
   length: 5
   tier: valid
@@ -18598,10 +18714,14 @@ words:
   - main_list
 - word: şubat
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.23
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Month name (February)
 - word: devam
   length: 5
   tier: daily
@@ -18807,10 +18927,14 @@ words:
   - main_list
 - word: kenya
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (country name)
 - word: fasık
   length: 5
   tier: valid
@@ -19553,10 +19677,14 @@ words:
   - main_list
 - word: kuran
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.74
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily recognized as Quran (proper noun); also verb form 'one who sets up' but ambiguous
 - word: roket
   length: 5
   tier: daily
@@ -19828,10 +19956,14 @@ words:
   - main_list
 - word: ladin
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Means 'spruce tree' but strongly associated with Osama bin Laden; also a proper noun
 - word: paçoz
   length: 5
   tier: valid
@@ -20054,10 +20186,14 @@ words:
   - main_list
 - word: taşak
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.53
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Vulgar slang (testicles)
 - word: usanç
   length: 5
   tier: valid
@@ -22710,10 +22846,14 @@ words:
   - main_list
 - word: sıçıp
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Vulgar verb form (defecating)
 - word: hırcı
   length: 5
   tier: blocked
@@ -23722,10 +23862,14 @@ words:
   scheduled_day: 1723
 - word: rusya
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.06
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (Russia)
 - word: beria
   length: 5
   tier: valid
@@ -24963,9 +25107,13 @@ words:
   - main_list
 - word: pines
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Not a standard Turkish word; likely English or misspelling
   history:
   - 1689
   scheduled_day: 1689
@@ -25517,10 +25665,14 @@ words:
   - main_list
 - word: adana
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Turkish city)
 - word: kutlu
   length: 5
   tier: daily
@@ -27285,10 +27437,14 @@ words:
   - main_list
 - word: sudan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper noun (country name); also ablative of 'su' (from water) but primarily geographic
 - word: nodul
   length: 5
   tier: valid
@@ -29053,10 +29209,14 @@ words:
   - main_list
 - word: afgan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Demonym/proper adjective (Afghan)
 - word: sadet
   length: 5
   tier: valid
@@ -30039,10 +30199,14 @@ words:
   - main_list
 - word: çello
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Foreign musical term (cello); Turkish typically uses 'viyolonsel'
 - word: haris
   length: 5
   tier: valid
@@ -30331,10 +30495,14 @@ words:
   - main_list
 - word: bosna
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (Bosnia)
 - word: neshe
   length: 5
   tier: valid
@@ -31760,10 +31928,14 @@ words:
   - main_list
 - word: mesut
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily a proper name; also means 'happy' but archaic compared to 'mutlu'
 - word: mehdi
   length: 5
   tier: valid
@@ -33105,10 +33277,14 @@ words:
   - main_list
 - word: yunan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.69
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Demonym/proper adjective (Greek)
 - word: kesik
   length: 5
   tier: daily
@@ -33568,16 +33744,24 @@ words:
   - main_list
 - word: venüs
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper noun (Venus)
 - word: orion
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (constellation name, foreign origin)
 - word: cebre
   length: 5
   tier: valid
@@ -33630,10 +33814,14 @@ words:
   - main_list
 - word: murat
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.04
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper name (male given name)
 - word: mazur
   length: 5
   tier: daily
@@ -33957,10 +34145,14 @@ words:
   - main_list
 - word: çince
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper adjective (Chinese language)
 - word: ağnat
   length: 5
   tier: valid
@@ -35168,10 +35360,14 @@ words:
   - main_list
 - word: kemal
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Turkish first name, Atatürk's name)
 - word: astık
   length: 5
   tier: valid
@@ -36203,10 +36399,14 @@ words:
   - main_list
 - word: nisan
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.33
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily a month name (April); borderline but months are proper-ish
 - word: teori
   length: 5
   tier: daily
@@ -36445,10 +36645,14 @@ words:
   - main_list
 - word: pekin
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper noun (Beijing in Turkish)
 - word: misal
   length: 5
   tier: daily
@@ -37018,9 +37222,13 @@ words:
   - main_list
 - word: talia
   length: 5
-  tier: daily
+  tier: blocked
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign proper name, not a standard Turkish word
 - word: nikel
   length: 5
   tier: valid
@@ -37556,10 +37764,14 @@ words:
   - main_list
 - word: deniz
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 2
+    reason: Common noun meaning 'sea' but also very common as a first name; acceptable as common noun
 - word: esans
   length: 5
   tier: valid
@@ -38130,10 +38342,14 @@ words:
   - main_list
 - word: salim
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name; also means 'safe/sound' but archaic
 - word: bidat
   length: 5
   tier: valid
@@ -38713,10 +38929,14 @@ words:
   - main_list
 - word: moğol
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Demonym/proper adjective (Mongol)
 - word: buluş
   length: 5
   tier: daily
@@ -39798,10 +40018,14 @@ words:
   - main_list
 - word: april
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: English word, not Turkish (Turkish uses 'nisan' for April)
 - word: yiyim
   length: 5
   tier: valid
@@ -39928,10 +40152,14 @@ words:
   - main_list
 - word: boklu
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Vulgar/crude word (covered in excrement)
 - word: samcı
   length: 5
   tier: blocked
@@ -40478,10 +40706,14 @@ words:
   - main_list
 - word: carla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Foreign proper name, not a Turkish word
 - word: sunak
   length: 5
   tier: valid
@@ -40527,10 +40759,14 @@ words:
   - main_list
 - word: burak
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name (male given name)
 - word: gelip
   length: 5
   tier: daily
@@ -40842,10 +41078,14 @@ words:
   - main_list
 - word: bilal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper name (male given name)
 - word: göğün
   length: 5
   tier: valid
@@ -40930,10 +41170,14 @@ words:
   - main_list
 - word: suudi
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.67
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper adjective (Saudi)
 - word: yazım
   length: 5
   tier: daily
@@ -41179,10 +41423,14 @@ words:
   - main_list
 - word: hindu
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Proper adjective (Hindu)
 - word: astım
   length: 5
   tier: daily
@@ -41549,10 +41797,14 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.61
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (person name)
 - word: pelte
   length: 5
   tier: valid
@@ -42422,10 +42674,14 @@ words:
   - main_list
 - word: halil
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper name (male given name)
 - word: gediş
   length: 5
   tier: valid
@@ -42777,10 +43033,14 @@ words:
   - main_list
 - word: kudüs
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.33
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (Jerusalem in Turkish)
 - word: ebleh
   length: 5
   tier: valid
@@ -43133,10 +43393,14 @@ words:
   - main_list
 - word: selen
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Primarily a proper name (female given name); selenium in chemistry but rarely used
 - word: belam
   length: 5
   tier: valid
@@ -45885,10 +46149,14 @@ words:
   - main_list
 - word: mösyö
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: French loanword (monsieur); understood but not native Turkish
 - word: sisli
   length: 5
   tier: valid
@@ -46157,10 +46425,14 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.52
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 5
+    reason: Proper noun (place name)
 - word: taraş
   length: 5
   tier: valid
@@ -48329,10 +48601,14 @@ words:
   - main_list
 - word: kasım
   length: 5
-  tier: daily
+  tier: valid
   frequency: 5.24
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Month name (November); also a proper name
 - word: pisin
   length: 5
   tier: valid
@@ -48661,10 +48937,14 @@ words:
   - main_list
 - word: benin
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: 'Ambiguous: genitive of ''ben'' (my) but also Benin (country); as genitive form it''s too inflected for daily'
 - word: boruk
   length: 5
   tier: valid
@@ -50182,7 +50462,7 @@ words:
   - supplement
 - word: adamı
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -50465,13 +50745,13 @@ words:
   - supplement
 - word: adına
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.24
   sources:
   - supplement
 - word: adını
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.23
   sources:
   - supplement
@@ -50765,10 +51045,14 @@ words:
   - supplement
 - word: ahmet
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.39
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Turkish first name)
 - word: ahola
   length: 5
   tier: valid
@@ -51403,7 +51687,7 @@ words:
   - supplement
 - word: alanı
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
@@ -51535,7 +51819,7 @@ words:
   - supplement
 - word: aldım
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.11
   sources:
   - supplement
@@ -51755,10 +52039,14 @@ words:
   - supplement
 - word: allah
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.44
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (God in Islam); sensitive religious term
 - word: allam
   length: 5
   tier: valid
@@ -52695,7 +52983,7 @@ words:
   - supplement
 - word: annem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -53058,7 +53346,7 @@ words:
   - supplement
 - word: arada
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.39
   sources:
   - supplement
@@ -53121,13 +53409,13 @@ words:
   - supplement
 - word: arası
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.16
   sources:
   - supplement
 - word: araya
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.05
   sources:
   - supplement
@@ -56577,7 +56865,7 @@ words:
   - supplement
 - word: başta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -56938,7 +57226,7 @@ words:
   - supplement
 - word: bence
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.6
   sources:
   - supplement
@@ -56969,7 +57257,7 @@ words:
   - supplement
 - word: benim
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.13
   sources:
   - supplement
@@ -57504,7 +57792,7 @@ words:
   - supplement
 - word: bilir
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -57790,7 +58078,7 @@ words:
   - supplement
 - word: bitti
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.13
   sources:
   - supplement
@@ -57842,7 +58130,7 @@ words:
   - supplement
 - word: bizim
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.84
   sources:
   - supplement
@@ -59549,7 +59837,7 @@ words:
   - supplement
 - word: bunun
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.83
   sources:
   - supplement
@@ -60453,7 +60741,7 @@ words:
   - supplement
 - word: canım
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -64154,7 +64442,7 @@ words:
   - supplement
 - word: dedim
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.41
   sources:
   - supplement
@@ -68753,7 +69041,7 @@ words:
   - supplement
 - word: ettim
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.17
   sources:
   - supplement
@@ -70128,7 +70416,7 @@ words:
   - supplement
 - word: filmi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -71863,7 +72151,7 @@ words:
   - supplement
 - word: geldi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.74
   sources:
   - supplement
@@ -72191,7 +72479,7 @@ words:
   - supplement
 - word: geçti
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.33
   sources:
   - supplement
@@ -72544,7 +72832,7 @@ words:
   - supplement
 - word: gitti
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.29
   sources:
   - supplement
@@ -74199,7 +74487,7 @@ words:
   - supplement
 - word: günde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.1
   sources:
   - supplement
@@ -74255,7 +74543,7 @@ words:
   - supplement
 - word: günün
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -74751,7 +75039,7 @@ words:
   - supplement
 - word: halde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.31
   sources:
   - supplement
@@ -75324,7 +75612,7 @@ words:
   - supplement
 - word: hatta
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
@@ -78637,10 +78925,14 @@ words:
   - supplement
 - word: islam
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.26
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (religion name); sensitive term
 - word: islem
   length: 5
   tier: valid
@@ -78754,7 +79046,7 @@ words:
   - supplement
 - word: ister
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.39
   sources:
   - supplement
@@ -78989,10 +79281,14 @@ words:
   - supplement
 - word: izmir
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.38
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Proper noun (Turkish city)
 - word: izmit
   length: 5
   tier: valid
@@ -79040,7 +79336,7 @@ words:
   - supplement
 - word: içine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.36
   sources:
   - supplement
@@ -80706,7 +81002,7 @@ words:
   - supplement
 - word: kaldı
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.45
   sources:
   - supplement
@@ -90168,7 +90464,7 @@ words:
   - supplement
 - word: misin
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
@@ -92359,7 +92655,7 @@ words:
   - supplement
 - word: nedir
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
@@ -92486,7 +92782,7 @@ words:
   - supplement
 - word: neler
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.3
   sources:
   - supplement
@@ -92787,7 +93083,7 @@ words:
   - supplement
 - word: neyse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.26
   sources:
   - supplement
@@ -94524,7 +94820,7 @@ words:
   - supplement
 - word: oldum
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -94670,7 +94966,7 @@ words:
   - supplement
 - word: olsun
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.92
   sources:
   - supplement
@@ -94830,7 +95126,7 @@ words:
   - supplement
 - word: ondan
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -94872,7 +95168,7 @@ words:
   - supplement
 - word: onlar
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.53
   sources:
   - supplement
@@ -95031,7 +95327,7 @@ words:
   - supplement
 - word: orada
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -95679,7 +95975,7 @@ words:
   - supplement
 - word: oyunu
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -102437,7 +102733,7 @@ words:
   - supplement
 - word: satın
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.37
   sources:
   - supplement
@@ -103204,7 +103500,7 @@ words:
   - supplement
 - word: sende
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.18
   sources:
   - supplement
@@ -103221,7 +103517,7 @@ words:
   - supplement
 - word: senin
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.89
   sources:
   - supplement
@@ -104721,7 +105017,7 @@ words:
   - supplement
 - word: sizin
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.74
   sources:
   - supplement
@@ -112671,7 +112967,7 @@ words:
   - supplement
 - word: vardı
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
@@ -112720,7 +113016,7 @@ words:
   - supplement
 - word: varsa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.44
   sources:
   - supplement
@@ -113088,13 +113384,13 @@ words:
   - supplement
 - word: verin
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.15
   sources:
   - supplement
 - word: verir
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.18
   sources:
   - supplement
@@ -114142,7 +114438,7 @@ words:
   - supplement
 - word: yapar
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -114172,7 +114468,7 @@ words:
   - supplement
 - word: yaptı
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
@@ -114596,7 +114892,7 @@ words:
   - supplement
 - word: yerde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.6
   sources:
   - supplement
@@ -114794,7 +115090,7 @@ words:
   - supplement
 - word: yoksa
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.59
   sources:
   - supplement
@@ -115287,7 +115583,7 @@ words:
   - supplement
 - word: yılda
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.07
   sources:
   - supplement
@@ -115311,7 +115607,7 @@ words:
   - supplement
 - word: yılın
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -117659,7 +117955,7 @@ words:
   - supplement
 - word: üyesi
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.17
   sources:
   - supplement
@@ -118341,7 +118637,7 @@ words:
   - supplement
 - word: şeyin
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.14
   sources:
   - supplement

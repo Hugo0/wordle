@@ -40,10 +40,14 @@ words:
   - main_list
 - word: asien
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Asia
 - word: braun
   length: 5
   tier: daily
@@ -58,10 +62,14 @@ words:
   - main_list
 - word: bambi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — character/brand name
 - word: unart
   length: 5
   tier: daily
@@ -106,10 +114,14 @@ words:
   - main_list
 - word: negev
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — desert in Israel
 - word: abweg
   length: 5
   tier: valid
@@ -151,10 +163,14 @@ words:
   - main_list
 - word: allwo
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.46
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/literary adverb, not commonly used
 - word: imker
   length: 5
   tier: daily
@@ -232,16 +248,24 @@ words:
   - main_list
 - word: alice
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Alice'''
 - word: hydra
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Greek mythological creature
 - word: drüse
   length: 5
   tier: daily
@@ -310,10 +334,14 @@ words:
   - main_list
 - word: julia
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Julia'''
 - word: armut
   length: 5
   tier: daily
@@ -340,10 +368,14 @@ words:
   - main_list
 - word: kenia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country (Kenya)
 - word: bande
   length: 5
   tier: daily
@@ -478,10 +510,14 @@ words:
   - main_list
 - word: tegel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Berlin-Tegel airport/district
 - word: zehnt
   length: 5
   tier: daily
@@ -490,28 +526,44 @@ words:
   - main_list
 - word: sinti
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ethnic group name (Sinti and Roma)
 - word: kirch
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Leo Kirch; also prefix fragment, not standalone
 - word: miami
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — US city
 - word: werks
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Genitive of 'Werk'; not standalone
 - word: öfter
   length: 5
   tier: daily
@@ -592,10 +644,14 @@ words:
   - main_list
 - word: udssr
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Historical abbreviation (UdSSR / USSR)
 - word: täter
   length: 5
   tier: daily
@@ -661,10 +717,14 @@ words:
   - main_list
 - word: berta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: ricke
   length: 5
   tier: valid
@@ -697,10 +757,14 @@ words:
   - main_list
 - word: klemm
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone word
 - word: diwan
   length: 5
   tier: daily
@@ -829,10 +893,14 @@ words:
   - main_list
 - word: meran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Italian/South Tyrolean city
 - word: jubel
   length: 5
   tier: daily
@@ -841,10 +909,14 @@ words:
   - main_list
 - word: setup
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.23
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English technical term
 - word: patch
   length: 5
   tier: valid
@@ -853,7 +925,7 @@ words:
   - main_list
 - word: ernst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - main_list
@@ -1057,10 +1129,14 @@ words:
   - main_list
 - word: liszt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — composer Franz Liszt
 - word: stunt
   length: 5
   tier: daily
@@ -1123,10 +1199,14 @@ words:
   - main_list
 - word: fritz
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Fritz'''
 - word: zuzug
   length: 5
   tier: daily
@@ -1153,10 +1233,14 @@ words:
   - main_list
 - word: edeka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.82
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — supermarket brand
 - word: rubel
   length: 5
   tier: daily
@@ -1183,10 +1267,14 @@ words:
   - main_list
 - word: hertz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — physicist; unit typically abbreviated Hz
 - word: organ
   length: 5
   tier: daily
@@ -1237,10 +1325,14 @@ words:
   - main_list
 - word: harry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Harry'''
 - word: faxen
   length: 5
   tier: daily
@@ -1351,10 +1443,14 @@ words:
   - main_list
 - word: zaire
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — former country name
 - word: tafel
   length: 5
   tier: daily
@@ -1369,10 +1465,14 @@ words:
   - main_list
 - word: jaffa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — city in Israel
 - word: docht
   length: 5
   tier: daily
@@ -1381,22 +1481,34 @@ words:
   - main_list
 - word: schul
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.79
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone word
 - word: islam
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — religion name
 - word: putin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Putin'''
 - word: enzym
   length: 5
   tier: daily
@@ -1447,10 +1559,14 @@ words:
   - main_list
 - word: inuit
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Ethnic group name
 - word: zeige
   length: 5
   tier: daily
@@ -1465,10 +1581,14 @@ words:
   - main_list
 - word: hagen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — city and first name
 - word: birne
   length: 5
   tier: daily
@@ -1504,16 +1624,24 @@ words:
   - main_list
 - word: otmar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: curie
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Marie Curie / unit named after person
 - word: fürze
   length: 5
   tier: blocked
@@ -1528,10 +1656,14 @@ words:
   - main_list
 - word: forsa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — polling institute
 - word: karte
   length: 5
   tier: daily
@@ -1546,10 +1678,14 @@ words:
   - main_list
 - word: kabul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Afghan capital
 - word: modus
   length: 5
   tier: daily
@@ -1594,10 +1730,14 @@ words:
   - main_list
 - word: torus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.38
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Mathematical/technical term
 - word: kohle
   length: 5
   tier: daily
@@ -1665,9 +1805,13 @@ words:
   - main_list
 - word: äthyl
   length: 5
-  tier: daily
+  tier: valid
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Chemistry term (ethyl); very technical
 - word: pokal
   length: 5
   tier: daily
@@ -1694,10 +1838,14 @@ words:
   - main_list
 - word: kaaba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Islamic holy site
 - word: pudel
   length: 5
   tier: daily
@@ -1715,10 +1863,14 @@ words:
   scheduled_day: 1716
 - word: hunne
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Historical term — a Hun; very uncommon
 - word: bongo
   length: 5
   tier: daily
@@ -1757,10 +1909,14 @@ words:
   - main_list
 - word: prime
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English word; not standard German
 - word: pylon
   length: 5
   tier: daily
@@ -1925,10 +2081,14 @@ words:
   - main_list
 - word: kurie
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Catholic Church term (Curia); specialized
 - word: sahne
   length: 5
   tier: daily
@@ -1949,10 +2109,14 @@ words:
   - main_list
 - word: streu
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone
 - word: anker
   length: 5
   tier: daily
@@ -2009,16 +2173,24 @@ words:
   scheduled_day: 1721
 - word: fermi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — physicist
 - word: aurel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — first name
 - word: umbra
   length: 5
   tier: valid
@@ -2111,10 +2283,14 @@ words:
   - main_list
 - word: fulda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city/river
 - word: ocker
   length: 5
   tier: daily
@@ -2147,10 +2323,14 @@ words:
   - main_list
 - word: vogts
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — surname (Berti Vogts)
 - word: fließ
   length: 5
   tier: daily
@@ -2210,10 +2390,14 @@ words:
   - main_list
 - word: paris
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — French capital
 - word: leber
   length: 5
   tier: daily
@@ -2258,10 +2442,14 @@ words:
   - main_list
 - word: pfarr
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.84
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone word
 - word: blase
   length: 5
   tier: daily
@@ -2288,10 +2476,14 @@ words:
   - main_list
 - word: qubit
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.25
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Quantum computing term; very technical
 - word: tango
   length: 5
   tier: daily
@@ -2318,10 +2510,14 @@ words:
   - main_list
 - word: peter
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 5.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Peter'''
 - word: braue
   length: 5
   tier: daily
@@ -2336,16 +2532,24 @@ words:
   - main_list
 - word: merck
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.32
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — pharmaceutical company
 - word: sudan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country
 - word: liebe
   length: 5
   tier: daily
@@ -2372,10 +2576,14 @@ words:
   - main_list
 - word: dürer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German artist
 - word: tenne
   length: 5
   tier: daily
@@ -2390,10 +2598,14 @@ words:
   - main_list
 - word: dover
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — English city
 - word: hotel
   length: 5
   tier: daily
@@ -2402,10 +2614,14 @@ words:
   - main_list
 - word: haifa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Israeli city
 - word: glatt
   length: 5
   tier: daily
@@ -2426,16 +2642,24 @@ words:
   - main_list
 - word: joule
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — unit named after person
 - word: rabat
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Moroccan capital
 - word: pfote
   length: 5
   tier: daily
@@ -2462,10 +2686,14 @@ words:
   - main_list
 - word: vista
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Windows Vista; Spanish/Italian word
 - word: rasen
   length: 5
   tier: daily
@@ -2602,10 +2830,14 @@ words:
   - main_list
 - word: nizza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Nice (French city)
 - word: rosig
   length: 5
   tier: daily
@@ -2626,10 +2858,14 @@ words:
   - main_list
 - word: celle
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: prost
   length: 5
   tier: daily
@@ -2692,10 +2928,14 @@ words:
   - main_list
 - word: spree
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Berlin river
 - word: wedel
   length: 5
   tier: daily
@@ -2755,10 +2995,14 @@ words:
   - main_list
 - word: grenz
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/stem fragment, not standalone word
 - word: luxus
   length: 5
   tier: daily
@@ -3039,10 +3283,14 @@ words:
   - main_list
 - word: porno
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar/inappropriate for daily puzzle
 - word: banal
   length: 5
   tier: daily
@@ -3051,16 +3299,24 @@ words:
   - main_list
 - word: gödel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — mathematician Kurt Gödel
 - word: worms
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — German city
 - word: junge
   length: 5
   tier: daily
@@ -3081,10 +3337,14 @@ words:
   - main_list
 - word: kairo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Cairo
 - word: erbse
   length: 5
   tier: daily
@@ -3099,10 +3359,14 @@ words:
   - main_list
 - word: brech
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone word
 - word: lügen
   length: 5
   tier: daily
@@ -3158,10 +3422,14 @@ words:
   - main_list
 - word: eifel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — German region
 - word: starr
   length: 5
   tier: daily
@@ -3170,10 +3438,14 @@ words:
   - main_list
 - word: trink
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem / compound element, not standalone
 - word: magma
   length: 5
   tier: daily
@@ -3206,10 +3478,14 @@ words:
   - main_list
 - word: indus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — river in Asia
 - word: rufer
   length: 5
   tier: daily
@@ -3224,10 +3500,14 @@ words:
   - main_list
 - word: juist
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German island
 - word: hörer
   length: 5
   tier: daily
@@ -3248,10 +3528,14 @@ words:
   - main_list
 - word: meyer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — surname
 - word: rampe
   length: 5
   tier: daily
@@ -3272,10 +3556,14 @@ words:
   - main_list
 - word: andre
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Andre'''
 - word: farbe
   length: 5
   tier: daily
@@ -3326,16 +3614,24 @@ words:
   - main_list
 - word: lette
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym — Latvian person; uncommon
 - word: japan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country
 - word: sehen
   length: 5
   tier: daily
@@ -3368,10 +3664,14 @@ words:
   - main_list
 - word: korea
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.83
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country
 - word: jüdin
   length: 5
   tier: daily
@@ -3440,16 +3740,24 @@ words:
   - main_list
 - word: kafka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — author
 - word: hegel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — philosopher
 - word: hüten
   length: 5
   tier: daily
@@ -3464,10 +3772,14 @@ words:
   - main_list
 - word: anton
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Anton'''
 - word: beide
   length: 5
   tier: daily
@@ -3482,10 +3794,14 @@ words:
   - main_list
 - word: santa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.0
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Foreign word; part of proper nouns (Santa Claus, Santa Cruz)
 - word: linie
   length: 5
   tier: daily
@@ -3506,10 +3822,14 @@ words:
   - main_list
 - word: weser
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German river
 - word: kamel
   length: 5
   tier: daily
@@ -3548,10 +3868,14 @@ words:
   - main_list
 - word: hilde
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: osten
   length: 5
   tier: daily
@@ -3578,10 +3902,14 @@ words:
   - main_list
 - word: hesse
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — author Hermann Hesse; also person from Hessen
 - word: ikone
   length: 5
   tier: daily
@@ -3602,10 +3930,14 @@ words:
   - main_list
 - word: oscar
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name / brand ''Oscar'''
 - word: sport
   length: 5
   tier: daily
@@ -3614,10 +3946,14 @@ words:
   - main_list
 - word: akaba
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — city in Jordan (Aqaba)
 - word: leine
   length: 5
   tier: daily
@@ -3638,10 +3974,14 @@ words:
   - main_list
 - word: schad
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone word
 - word: mappe
   length: 5
   tier: daily
@@ -3668,10 +4008,14 @@ words:
   - main_list
 - word: babel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — biblical city
 - word: senat
   length: 5
   tier: daily
@@ -3698,10 +4042,14 @@ words:
   - main_list
 - word: pluto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — planet/mythological god
 - word: luchs
   length: 5
   tier: daily
@@ -3710,10 +4058,14 @@ words:
   - main_list
 - word: nepal
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country
 - word: rügen
   length: 5
   tier: daily
@@ -3734,10 +4086,14 @@ words:
   - main_list
 - word: nehru
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.35
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Indian leader
 - word: bogen
   length: 5
   tier: daily
@@ -3773,10 +4129,14 @@ words:
   - main_list
 - word: bozen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Italian city (Bolzano)
 - word: kunst
   length: 5
   tier: daily
@@ -3815,10 +4175,14 @@ words:
   - main_list
 - word: atari
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — brand name
 - word: muffe
   length: 5
   tier: valid
@@ -3845,10 +4209,14 @@ words:
   - main_list
 - word: horst
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — male first name; also eagle's nest but uncommon
 - word: seato
   length: 5
   tier: valid
@@ -3857,10 +4225,14 @@ words:
   - main_list
 - word: kreml
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — the Kremlin
 - word: fasan
   length: 5
   tier: valid
@@ -3923,10 +4295,14 @@ words:
   - main_list
 - word: tbyte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Technical abbreviation, not a real word
 - word: beleg
   length: 5
   tier: daily
@@ -3938,10 +4314,14 @@ words:
   scheduled_day: 1689
 - word: mainz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: nebst
   length: 5
   tier: daily
@@ -3962,10 +4342,14 @@ words:
   - main_list
 - word: james
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''James'''
 - word: hymne
   length: 5
   tier: daily
@@ -4004,10 +4388,14 @@ words:
   - main_list
 - word: ebert
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — surname (German president)
 - word: weich
   length: 5
   tier: daily
@@ -4022,10 +4410,14 @@ words:
   - main_list
 - word: husum
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: mutti
   length: 5
   tier: daily
@@ -4094,16 +4486,24 @@ words:
   - main_list
 - word: louis
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Louis'''
 - word: seren
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Plural of 'Serum'; very technical/uncommon
 - word: bitte
   length: 5
   tier: daily
@@ -4160,10 +4560,14 @@ words:
   - main_list
 - word: obama
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Obama'''
 - word: lachs
   length: 5
   tier: daily
@@ -4190,10 +4594,14 @@ words:
   - main_list
 - word: clone
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.7
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English word; German is 'Klon'
 - word: isaac
   length: 5
   tier: valid
@@ -4232,10 +4640,14 @@ words:
   - main_list
 - word: tunis
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Tunisian capital
 - word: modul
   length: 5
   tier: daily
@@ -4268,10 +4680,14 @@ words:
   - main_list
 - word: stasi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun / abbreviation — East German secret police
 - word: serum
   length: 5
   tier: daily
@@ -4280,10 +4696,14 @@ words:
   - main_list
 - word: davos
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Swiss town
 - word: fesch
   length: 5
   tier: daily
@@ -4304,10 +4724,14 @@ words:
   - main_list
 - word: steve
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Steve'''
 - word: abzog
   length: 5
   tier: daily
@@ -4370,10 +4794,14 @@ words:
   - main_list
 - word: wolfs
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Genitive of 'Wolf'; unusual standalone
 - word: kippe
   length: 5
   tier: daily
@@ -4382,10 +4810,14 @@ words:
   - main_list
 - word: dusch
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone word
 - word: aroma
   length: 5
   tier: daily
@@ -4412,22 +4844,34 @@ words:
   - main_list
 - word: simon
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Simon'''
 - word: anden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — the Andes mountains
 - word: malta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country
 - word: hoden
   length: 5
   tier: daily
@@ -4436,10 +4880,14 @@ words:
   - main_list
 - word: becks
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — brand name (Beck's beer)
 - word: wurde
   length: 5
   tier: daily
@@ -4448,10 +4896,14 @@ words:
   - main_list
 - word: stütz
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone
 - word: knapp
   length: 5
   tier: daily
@@ -4478,10 +4930,14 @@ words:
   - main_list
 - word: arndt
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.59
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — surname
 - word: nacht
   length: 5
   tier: daily
@@ -4513,10 +4969,14 @@ words:
   - main_list
 - word: raver
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English loanword from rave culture
 - word: kajak
   length: 5
   tier: daily
@@ -4606,16 +5066,24 @@ words:
   - main_list
 - word: turin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Italian city
 - word: linux
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: brand/product name ''Linux'''
 - word: knopf
   length: 5
   tier: daily
@@ -4648,10 +5116,14 @@ words:
   - main_list
 - word: gotha
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.64
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: skier
   length: 5
   tier: daily
@@ -4738,10 +5210,14 @@ words:
   - main_list
 - word: kongo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country/river
 - word: ergab
   length: 5
   tier: daily
@@ -4821,10 +5297,14 @@ words:
   - main_list
 - word: klipp
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Only in 'klipp und klar'; not standalone
 - word: prall
   length: 5
   tier: daily
@@ -4881,10 +5361,14 @@ words:
   - main_list
 - word: amrum
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German island
 - word: jeans
   length: 5
   tier: daily
@@ -4911,10 +5395,14 @@ words:
   - main_list
 - word: jakob
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.2
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: bänke
   length: 5
   tier: daily
@@ -4947,10 +5435,14 @@ words:
   - main_list
 - word: devon
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.33
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — English county/name
 - word: zügig
   length: 5
   tier: daily
@@ -5043,10 +5535,14 @@ words:
   - main_list
 - word: facto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Latin fragment (de facto); not standalone German
 - word: taxen
   length: 5
   tier: daily
@@ -5061,22 +5557,34 @@ words:
   - main_list
 - word: grete
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: silke
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.48
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: marne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — French river
 - word: kader
   length: 5
   tier: daily
@@ -5109,10 +5617,14 @@ words:
   - main_list
 - word: midas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — mythological king
 - word: dösen
   length: 5
   tier: daily
@@ -5121,10 +5633,14 @@ words:
   - main_list
 - word: tibet
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — region
 - word: peggy
   length: 5
   tier: valid
@@ -5139,10 +5655,14 @@ words:
   - main_list
 - word: reset
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English technical term
 - word: gesäß
   length: 5
   tier: daily
@@ -5151,10 +5671,14 @@ words:
   - main_list
 - word: räson
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.1
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Archaic/literary (zur Räson bringen); rare standalone
 - word: muten
   length: 5
   tier: daily
@@ -5229,10 +5753,14 @@ words:
   - main_list
 - word: meier
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — surname
 - word: länge
   length: 5
   tier: daily
@@ -5337,16 +5865,24 @@ words:
   - main_list
 - word: wolga
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Russian river
 - word: texas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.07
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — US state
 - word: intim
   length: 5
   tier: daily
@@ -5451,10 +5987,14 @@ words:
   - main_list
 - word: jalta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — city (Yalta)
 - word: umweg
   length: 5
   tier: daily
@@ -5517,10 +6057,14 @@ words:
   - main_list
 - word: polis
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.84
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Greek term for city-state; academic
 - word: agave
   length: 5
   tier: valid
@@ -5541,10 +6085,14 @@ words:
   - main_list
 - word: höhlt
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Rare conjugation of 'höhlen' (to hollow); uncommon
 - word: flugs
   length: 5
   tier: daily
@@ -5559,10 +6107,14 @@ words:
   - main_list
 - word: dante
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Italian poet
 - word: hütte
   length: 5
   tier: daily
@@ -5577,16 +6129,24 @@ words:
   - main_list
 - word: thora
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Jewish holy text (Torah); also first name
 - word: hanne
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.1
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: ampel
   length: 5
   tier: daily
@@ -5613,10 +6173,14 @@ words:
   - main_list
 - word: sperr
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone word
 - word: labil
   length: 5
   tier: daily
@@ -5745,10 +6309,14 @@ words:
   - main_list
 - word: celli
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Plural of cello, very rare form
 - word: abbau
   length: 5
   tier: daily
@@ -5766,10 +6334,14 @@ words:
   - main_list
 - word: karla
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.11
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: immer
   length: 5
   tier: daily
@@ -5886,10 +6458,14 @@ words:
   - main_list
 - word: jemen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country (Yemen)
 - word: stute
   length: 5
   tier: daily
@@ -5898,10 +6474,14 @@ words:
   - main_list
 - word: khmer
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — ethnic group / language
 - word: viper
   length: 5
   tier: valid
@@ -5928,10 +6508,14 @@ words:
   - main_list
 - word: cadiz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Spanish city
 - word: beuge
   length: 5
   tier: daily
@@ -5940,10 +6524,14 @@ words:
   - main_list
 - word: niger
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.27
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country/river
 - word: abkam
   length: 5
   tier: daily
@@ -5970,10 +6558,14 @@ words:
   - main_list
 - word: duden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — dictionary brand
 - word: oktav
   length: 5
   tier: valid
@@ -5994,10 +6586,14 @@ words:
   - main_list
 - word: balte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.62
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym — person from the Baltics; uncommon
 - word: miliz
   length: 5
   tier: daily
@@ -6042,10 +6638,14 @@ words:
   - main_list
 - word: argus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Mythological proper noun, used figuratively but obscure
 - word: bahre
   length: 5
   tier: daily
@@ -6072,10 +6672,14 @@ words:
   - main_list
 - word: adolf
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Adolf'''
 - word: suche
   length: 5
   tier: daily
@@ -6120,10 +6724,14 @@ words:
   - main_list
 - word: arosa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Swiss resort town
 - word: flöge
   length: 5
   tier: daily
@@ -6180,16 +6788,24 @@ words:
   - main_list
 - word: burma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country name
 - word: typus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Latin/academic form; German uses 'Typ'
 - word: blitz
   length: 5
   tier: daily
@@ -6207,10 +6823,14 @@ words:
   - main_list
 - word: trias
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.03
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Geological term; specialized
 - word: humus
   length: 5
   tier: daily
@@ -6225,10 +6845,14 @@ words:
   - main_list
 - word: gizeh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Egyptian city (Giza)
 - word: msdos
   length: 5
   tier: valid
@@ -6236,10 +6860,14 @@ words:
   - main_list
 - word: array
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.0
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English programming term, not standard German
 - word: durch
   length: 5
   tier: daily
@@ -6296,10 +6924,14 @@ words:
   - main_list
 - word: trier
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: löhne
   length: 5
   tier: daily
@@ -6356,10 +6988,14 @@ words:
   - main_list
 - word: verdi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — composer / German union (ver.di)
 - word: fidel
   length: 5
   tier: valid
@@ -6440,10 +7076,14 @@ words:
   - main_list
 - word: fluor
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Chemical element name, technical
 - word: zobel
   length: 5
   tier: daily
@@ -6452,10 +7092,14 @@ words:
   - main_list
 - word: bernd
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.39
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: pepsi
   length: 5
   tier: valid
@@ -6500,10 +7144,14 @@ words:
   - main_list
 - word: jones
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Jones'''
 - word: iltis
   length: 5
   tier: daily
@@ -6518,16 +7166,24 @@ words:
   - main_list
 - word: athen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.09
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Athens
 - word: havel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German river / Václav Havel
 - word: umbau
   length: 5
   tier: daily
@@ -6542,10 +7198,14 @@ words:
   - main_list
 - word: dröge
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.72
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Northern German dialect for 'dry/boring'; regional
 - word: dirne
   length: 5
   tier: blocked
@@ -6620,10 +7280,14 @@ words:
   - main_list
 - word: hanau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: juras
   length: 5
   tier: valid
@@ -6644,10 +7308,14 @@ words:
   - main_list
 - word: spike
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.08
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English loanword
 - word: rigid
   length: 5
   tier: valid
@@ -6680,10 +7348,14 @@ words:
   - main_list
 - word: aalen
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: City name (Aalen); as verb 'sich aalen' uncommon
 - word: klein
   length: 5
   tier: daily
@@ -6776,10 +7448,14 @@ words:
   - main_list
 - word: jutta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: knien
   length: 5
   tier: daily
@@ -6788,10 +7464,14 @@ words:
   - main_list
 - word: hanoi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Vietnamese capital
 - word: areal
   length: 5
   tier: daily
@@ -6800,10 +7480,14 @@ words:
   - main_list
 - word: kleve
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — German city (Kleve/Cleves)
 - word: umzug
   length: 5
   tier: daily
@@ -6830,10 +7514,14 @@ words:
   - main_list
 - word: vögte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.44
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Plural of 'Vogt'; archaic/uncommon
 - word: türme
   length: 5
   tier: daily
@@ -6842,10 +7530,14 @@ words:
   - main_list
 - word: judäa
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — historical region (Judea)
 - word: polig
   length: 5
   tier: valid
@@ -6872,10 +7564,14 @@ words:
   - main_list
 - word: mosel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.56
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — German river
 - word: zugig
   length: 5
   tier: valid
@@ -6884,16 +7580,24 @@ words:
   - main_list
 - word: dakar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — capital of Senegal
 - word: träfe
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Subjunctive II of 'treffen'; very rare form
 - word: swing
   length: 5
   tier: daily
@@ -6914,10 +7618,14 @@ words:
   - main_list
 - word: garbo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Greta Garbo
 - word: malve
   length: 5
   tier: daily
@@ -6938,10 +7646,14 @@ words:
   - main_list
 - word: forma
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.95
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Latin fragment (pro forma); not standalone German
 - word: yacht
   length: 5
   tier: daily
@@ -6956,10 +7668,14 @@ words:
   - main_list
 - word: haber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — surname; dialect for 'Hafer'
 - word: edukt
   length: 5
   tier: valid
@@ -7028,10 +7744,14 @@ words:
   - main_list
 - word: gorki
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Russian author/city
 - word: sonst
   length: 5
   tier: daily
@@ -7058,16 +7778,24 @@ words:
   - main_list
 - word: brems
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.8
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone word
 - word: seoul
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.51
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — South Korean capital
 - word: wuchs
   length: 5
   tier: daily
@@ -7076,10 +7804,14 @@ words:
   - main_list
 - word: klaus
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.68
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Klaus'''
 - word: anbot
   length: 5
   tier: daily
@@ -7229,10 +7961,14 @@ words:
   - main_list
 - word: tanja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.91
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: reell
   length: 5
   tier: daily
@@ -7259,10 +7995,14 @@ words:
   - main_list
 - word: hauff
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — surname (Wilhelm Hauff)
 - word: weite
   length: 5
   tier: daily
@@ -7325,10 +8065,14 @@ words:
   - main_list
 - word: heiko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: depot
   length: 5
   tier: daily
@@ -7352,10 +8096,14 @@ words:
   - main_list
 - word: henry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.37
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Henry'''
 - word: promi
   length: 5
   tier: daily
@@ -7376,10 +8124,14 @@ words:
   - main_list
 - word: björn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: salut
   length: 5
   tier: daily
@@ -7412,22 +8164,34 @@ words:
   - main_list
 - word: venus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — planet/goddess
 - word: memel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — city/river
 - word: stech
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.65
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone
 - word: dreck
   length: 5
   tier: daily
@@ -7490,10 +8254,14 @@ words:
   - main_list
 - word: franz
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Franz'''
 - word: seide
   length: 5
   tier: daily
@@ -7514,10 +8282,14 @@ words:
   - main_list
 - word: penis
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: Vulgar/inappropriate for daily puzzle
 - word: haben
   length: 5
   tier: daily
@@ -7568,16 +8340,24 @@ words:
   - main_list
 - word: lenin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.58
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Soviet leader
 - word: burda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — brand/company name
 - word: tauen
   length: 5
   tier: daily
@@ -7592,10 +8372,14 @@ words:
   - main_list
 - word: volks
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Genitive/compound element of 'Volk'; not standalone
 - word: gräbt
   length: 5
   tier: daily
@@ -7622,10 +8406,14 @@ words:
   - main_list
 - word: basic
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.63
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English word / programming language name
 - word: codex
   length: 5
   tier: daily
@@ -7634,10 +8422,14 @@ words:
   - main_list
 - word: gabun
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.63
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country (Gabon)
 - word: stola
   length: 5
   tier: daily
@@ -7673,10 +8465,14 @@ words:
   - main_list
 - word: eliza
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: säure
   length: 5
   tier: daily
@@ -7697,10 +8493,14 @@ words:
   - main_list
 - word: basel
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.41
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Swiss city
 - word: rupie
   length: 5
   tier: daily
@@ -7709,10 +8509,14 @@ words:
   - main_list
 - word: roger
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.22
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Roger'''
 - word: glied
   length: 5
   tier: daily
@@ -7775,10 +8579,14 @@ words:
   - main_list
 - word: bayer
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.23
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily brand/company name; also demonym but usually capitalized
 - word: nässe
   length: 5
   tier: daily
@@ -7814,10 +8622,14 @@ words:
   - main_list
 - word: gesät
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.09
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Past participle of 'säen'; uncommon in isolation
 - word: etüde
   length: 5
   tier: daily
@@ -7826,10 +8638,14 @@ words:
   - main_list
 - word: proxy
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English/technical term
 - word: essay
   length: 5
   tier: daily
@@ -7844,10 +8660,14 @@ words:
   - main_list
 - word: pippi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Pippi Longstocking; also childish/vulgar
 - word: axiom
   length: 5
   tier: daily
@@ -7892,10 +8712,14 @@ words:
   - main_list
 - word: tokio
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Japanese capital
 - word: latex
   length: 5
   tier: daily
@@ -7931,22 +8755,34 @@ words:
   - main_list
 - word: troja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Troy
 - word: willi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.04
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: knaur
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.53
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — publisher name
 - word: neben
   length: 5
   tier: daily
@@ -7955,10 +8791,14 @@ words:
   - main_list
 - word: bruno
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Bruno'''
 - word: zunft
   length: 5
   tier: daily
@@ -7982,10 +8822,14 @@ words:
   - main_list
 - word: neuss
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: antik
   length: 5
   tier: daily
@@ -8042,10 +8886,14 @@ words:
   - main_list
 - word: brenn
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone word
 - word: linde
   length: 5
   tier: daily
@@ -8069,10 +8917,14 @@ words:
   scheduled_day: 1687
 - word: dumas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — French author
 - word: schaf
   length: 5
   tier: daily
@@ -8099,10 +8951,14 @@ words:
   - main_list
 - word: ghana
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country name
 - word: ohren
   length: 5
   tier: daily
@@ -8129,10 +8985,14 @@ words:
   - main_list
 - word: quota
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.99
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Latin; German uses 'Quote'
 - word: sprit
   length: 5
   tier: daily
@@ -8159,10 +9019,14 @@ words:
   - main_list
 - word: arier
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.94
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Sensitive racial term (Aryan)
 - word: gegen
   length: 5
   tier: daily
@@ -8177,10 +9041,14 @@ words:
   - main_list
 - word: tiber
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Italian river
 - word: acryl
   length: 5
   tier: daily
@@ -8225,10 +9093,14 @@ words:
   - main_list
 - word: böhme
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — surname; also 'person from Bohemia' but uncommon
 - word: geste
   length: 5
   tier: daily
@@ -8294,16 +9166,24 @@ words:
   - main_list
 - word: bryan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — English first name
 - word: hamas
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — political organization
 - word: eifer
   length: 5
   tier: daily
@@ -8312,10 +9192,14 @@ words:
   - main_list
 - word: sodom
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — biblical city
 - word: filet
   length: 5
   tier: daily
@@ -8402,10 +9286,14 @@ words:
   - main_list
 - word: orion
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — constellation/mythological figure
 - word: unfug
   length: 5
   tier: daily
@@ -8450,10 +9338,14 @@ words:
   - main_list
 - word: adria
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — the Adriatic Sea
 - word: kutte
   length: 5
   tier: daily
@@ -8474,16 +9366,24 @@ words:
   - main_list
 - word: lille
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — French city
 - word: fluid
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.93
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Technical/scientific term
 - word: namur
   length: 5
   tier: valid
@@ -8555,10 +9455,14 @@ words:
   - main_list
 - word: genua
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Genoa
 - word: höhle
   length: 5
   tier: daily
@@ -8585,10 +9489,14 @@ words:
   - main_list
 - word: loire
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.99
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — French river
 - word: hilft
   length: 5
   tier: daily
@@ -8597,10 +9505,14 @@ words:
   - main_list
 - word: haydn
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.31
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — composer
 - word: trott
   length: 5
   tier: daily
@@ -8663,10 +9575,14 @@ words:
   - main_list
 - word: xenix
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.14
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — operating system brand
 - word: wären
   length: 5
   tier: daily
@@ -8711,10 +9627,14 @@ words:
   - main_list
 - word: lösch
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.41
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone word
 - word: sumpf
   length: 5
   tier: daily
@@ -8723,10 +9643,14 @@ words:
   - main_list
 - word: polen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.72
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country (Poland)
 - word: geäst
   length: 5
   tier: daily
@@ -8747,10 +9671,14 @@ words:
   - main_list
 - word: letal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.05
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Medical/technical term (lethal)
 - word: krepp
   length: 5
   tier: daily
@@ -8771,16 +9699,24 @@ words:
   - main_list
 - word: queen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English word; proper noun (band/title)
 - word: indio
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.51
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Spanish/Portuguese term for indigenous person; not standard German
 - word: kraut
   length: 5
   tier: daily
@@ -8807,10 +9743,14 @@ words:
   - main_list
 - word: achim
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: hölle
   length: 5
   tier: daily
@@ -8837,16 +9777,24 @@ words:
   - main_list
 - word: jahwe
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — name of God
 - word: robin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Robin'''
 - word: abbat
   length: 5
   tier: valid
@@ -8890,10 +9838,14 @@ words:
   - main_list
 - word: sarde
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.59
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Demonym — Sardinian person; very uncommon
 - word: groll
   length: 5
   tier: daily
@@ -8935,10 +9887,14 @@ words:
   - main_list
 - word: streb
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.11
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone
 - word: beben
   length: 5
   tier: daily
@@ -8965,10 +9921,14 @@ words:
   - main_list
 - word: josef
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.61
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: vulva
   length: 5
   tier: valid
@@ -9025,10 +9985,14 @@ words:
   - main_list
 - word: trump
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Trump'''
 - word: piezo
   length: 5
   tier: valid
@@ -9061,10 +10025,14 @@ words:
   - main_list
 - word: seiko
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — watch brand
 - word: video
   length: 5
   tier: daily
@@ -9085,10 +10053,14 @@ words:
   - main_list
 - word: brest
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — French/Belarusian city
 - word: zutun
   length: 5
   tier: daily
@@ -9193,10 +10165,14 @@ words:
   - main_list
 - word: moser
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — surname
 - word: agent
   length: 5
   tier: daily
@@ -9211,16 +10187,24 @@ words:
   - main_list
 - word: gälte
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.18
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Subjunctive II of 'gelten'; rare form
 - word: freud
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Sigmund Freud; also archaic for 'Freude'
 - word: kodak
   length: 5
   tier: valid
@@ -9265,10 +10249,14 @@ words:
   - main_list
 - word: hedda
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: wägen
   length: 5
   tier: daily
@@ -9304,10 +10292,14 @@ words:
   - main_list
 - word: china
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country name
 - word: mögen
   length: 5
   tier: daily
@@ -9358,10 +10350,14 @@ words:
   - main_list
 - word: allah
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.76
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — religious name
 - word: tuten
   length: 5
   tier: valid
@@ -9370,10 +10366,14 @@ words:
   - main_list
 - word: press
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.88
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone
 - word: alpin
   length: 5
   tier: daily
@@ -9400,10 +10400,14 @@ words:
   - main_list
 - word: kioto
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Japanese city (Kyoto)
 - word: salat
   length: 5
   tier: daily
@@ -9442,10 +10446,14 @@ words:
   - main_list
 - word: kreta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Crete
 - word: gebot
   length: 5
   tier: daily
@@ -9502,10 +10510,14 @@ words:
   - main_list
 - word: ggmbh
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Legal abbreviation (gGmbH), not a word
 - word: kalif
   length: 5
   tier: daily
@@ -9532,10 +10544,14 @@ words:
   - main_list
 - word: ascii
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical abbreviation (ASCII)
 - word: herum
   length: 5
   tier: daily
@@ -9544,16 +10560,24 @@ words:
   - main_list
 - word: laude
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.75
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Latin phrase fragment (cum laude); not standalone German
 - word: olymp
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Mount Olympus
 - word: suppe
   length: 5
   tier: daily
@@ -9598,10 +10622,14 @@ words:
   - main_list
 - word: erwin
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: bälde
   length: 5
   tier: daily
@@ -9616,10 +10644,14 @@ words:
   - main_list
 - word: leica
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — camera brand
 - word: mücke
   length: 5
   tier: daily
@@ -9628,16 +10660,24 @@ words:
   - main_list
 - word: heino
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.29
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German singer
 - word: klapp
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone word
 - word: knall
   length: 5
   tier: daily
@@ -9658,10 +10698,14 @@ words:
   - main_list
 - word: shell
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — oil company; also English word
 - word: datex
   length: 5
   tier: valid
@@ -9844,16 +10888,24 @@ words:
   - main_list
 - word: stell
   length: 5
-  tier: daily
+  tier: valid
   frequency: 4.43
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone
 - word: delhi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Indian city
 - word: kuppe
   length: 5
   tier: daily
@@ -9886,10 +10938,14 @@ words:
   - main_list
 - word: plato
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — philosopher
 - word: kuben
   length: 5
   tier: daily
@@ -9910,10 +10966,14 @@ words:
   - main_list
 - word: pavia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.87
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Italian city
 - word: neger
   length: 5
   tier: blocked
@@ -9958,10 +11018,14 @@ words:
   - main_list
 - word: franc
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Foreign currency name / proper noun
 - word: nebel
   length: 5
   tier: daily
@@ -9982,10 +11046,14 @@ words:
   - main_list
 - word: mekka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — holy city (Mecca)
 - word: seele
   length: 5
   tier: daily
@@ -9994,10 +11062,14 @@ words:
   - main_list
 - word: treib
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.76
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone
 - word: drift
   length: 5
   tier: daily
@@ -10185,10 +11257,14 @@ words:
   - main_list
 - word: emden
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.62
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: werbe
   length: 5
   tier: daily
@@ -10598,7 +11674,7 @@ words:
   - main_list
 - word: roman
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - main_list
@@ -10640,10 +11716,14 @@ words:
   - main_list
 - word: steig
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.5
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem / compound element
 - word: sorge
   length: 5
   tier: daily
@@ -10838,10 +11918,14 @@ words:
   scheduled_day: 1684
 - word: heinz
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.65
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name / brand
 - word: monat
   length: 5
   tier: daily
@@ -10868,10 +11952,14 @@ words:
   - main_list
 - word: maori
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.81
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — ethnic group
 - word: radau
   length: 5
   tier: daily
@@ -10922,10 +12010,14 @@ words:
   - main_list
 - word: katia
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.71
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: eigen
   length: 5
   tier: daily
@@ -10952,16 +12044,24 @@ words:
   - main_list
 - word: felix
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.4
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Felix'''
 - word: wotan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.86
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Germanic god
 - word: toast
   length: 5
   tier: daily
@@ -11036,10 +12136,14 @@ words:
   - main_list
 - word: kbyte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.16
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Technical abbreviation, not a real word
 - word: loben
   length: 5
   tier: daily
@@ -11173,10 +12277,14 @@ words:
   - main_list
 - word: dhabi
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of proper noun (Abu Dhabi)
 - word: wille
   length: 5
   tier: daily
@@ -11287,10 +12395,14 @@ words:
   - main_list
 - word: garni
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.36
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: French loanword (Hotel garni); not standard German
 - word: werte
   length: 5
   tier: daily
@@ -11299,10 +12411,14 @@ words:
   - main_list
 - word: token
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English technical term
 - word: äffen
   length: 5
   tier: daily
@@ -11323,22 +12439,34 @@ words:
   - main_list
 - word: apple
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.54
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English word / brand name
 - word: cäsar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.44
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Caesar
 - word: kosak
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.3
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Historical term — Cossack; uncommon
 - word: dachs
   length: 5
   tier: daily
@@ -11383,10 +12511,14 @@ words:
   - main_list
 - word: dalai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of proper noun (Dalai Lama)
 - word: abhob
   length: 5
   tier: daily
@@ -11407,16 +12539,24 @@ words:
   - main_list
 - word: beate
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.8
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: summa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Latin phrase element (summa summarum); not standalone German
 - word: fängt
   length: 5
   tier: daily
@@ -11425,10 +12565,14 @@ words:
   - main_list
 - word: neiße
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.3
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German/Polish river
 - word: kappa
   length: 5
   tier: daily
@@ -11437,10 +12581,14 @@ words:
   - main_list
 - word: sexus
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.28
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Latin/academic term; uncommon in everyday German
 - word: näpfe
   length: 5
   tier: daily
@@ -11455,10 +12603,14 @@ words:
   - main_list
 - word: steck
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.47
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone
 - word: derby
   length: 5
   tier: daily
@@ -11467,10 +12619,14 @@ words:
   - main_list
 - word: gbyte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Technical abbreviation, not a real word
 - word: quint
   length: 5
   tier: daily
@@ -11479,10 +12635,14 @@ words:
   - main_list
 - word: cathy
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.24
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: tagen
   length: 5
   tier: daily
@@ -11491,10 +12651,14 @@ words:
   - main_list
 - word: herta
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: ärmel
   length: 5
   tier: daily
@@ -11545,10 +12709,14 @@ words:
   scheduled_day: 1693
 - word: artus
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.06
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — King Arthur
 - word: innig
   length: 5
   tier: daily
@@ -11769,10 +12937,14 @@ words:
   - main_list
 - word: rhein
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.6
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Rhine river
 - word: trieb
   length: 5
   tier: daily
@@ -11829,10 +13001,14 @@ words:
   - main_list
 - word: jacob
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Jacob'''
 - word: folge
   length: 5
   tier: daily
@@ -11886,10 +13062,14 @@ words:
   - main_list
 - word: malmö
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.34
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Swedish city
 - word: euter
   length: 5
   tier: daily
@@ -11904,10 +13084,14 @@ words:
   - main_list
 - word: bator
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.43
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of proper noun (Ulan Bator)
 - word: bögen
   length: 5
   tier: daily
@@ -11922,10 +13106,14 @@ words:
   - main_list
 - word: prado
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.73
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — museum in Madrid
 - word: süßen
   length: 5
   tier: daily
@@ -11940,10 +13128,14 @@ words:
   - main_list
 - word: baske
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.92
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Demonym — Basque person; uncommon standalone
 - word: buhen
   length: 5
   tier: daily
@@ -11952,10 +13144,14 @@ words:
   - main_list
 - word: straf
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone
 - word: birgt
   length: 5
   tier: daily
@@ -11970,16 +13166,24 @@ words:
   - main_list
 - word: lanka
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.36
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Part of proper noun (Sri Lanka)
 - word: grimm
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Brothers Grimm; adjective form is 'grimmig'
 - word: ratte
   length: 5
   tier: daily
@@ -11994,10 +13198,14 @@ words:
   - main_list
 - word: cebit
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.19
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — trade fair brand (now defunct)
 - word: karre
   length: 5
   tier: daily
@@ -12071,10 +13279,14 @@ words:
   - main_list
 - word: oskar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name / Oscar award
 - word: rinde
   length: 5
   tier: daily
@@ -12089,22 +13301,34 @@ words:
   - main_list
 - word: betty
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: porti
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.56
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Plural of 'Porto' (postage); very rare form
 - word: anwar
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.69
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: paula
   length: 5
   tier: valid
@@ -12185,10 +13409,14 @@ words:
   - main_list
 - word: barak
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.49
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — personal name
 - word: durst
   length: 5
   tier: daily
@@ -12263,10 +13491,14 @@ words:
   - main_list
 - word: osram
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.98
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — brand name
 - word: zuvor
   length: 5
   tier: daily
@@ -12281,10 +13513,14 @@ words:
   - main_list
 - word: haiti
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.28
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country
 - word: reuig
   length: 5
   tier: valid
@@ -12350,10 +13586,14 @@ words:
   - main_list
 - word: david
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.79
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''David'''
 - word: login
   length: 5
   tier: valid
@@ -12422,10 +13662,14 @@ words:
   - main_list
 - word: aerob
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.94
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical/scientific term, not commonly known
 - word: mitte
   length: 5
   tier: daily
@@ -12452,10 +13696,14 @@ words:
   - main_list
 - word: heike
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.67
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: bruch
   length: 5
   tier: daily
@@ -12473,10 +13721,14 @@ words:
   - main_list
 - word: koran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.78
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — holy book of Islam
 - word: famos
   length: 5
   tier: daily
@@ -12566,10 +13818,14 @@ words:
   - main_list
 - word: isaak
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.13
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — biblical name
 - word: zirka
   length: 5
   tier: daily
@@ -12578,10 +13834,14 @@ words:
   - main_list
 - word: georg
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.66
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: zwirn
   length: 5
   tier: daily
@@ -12596,10 +13856,14 @@ words:
   - main_list
 - word: kpdsu
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.97
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Political abbreviation (KPdSU)
 - word: mädel
   length: 5
   tier: daily
@@ -12650,10 +13914,14 @@ words:
   - main_list
 - word: unita
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.08
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — political organization (UNITA)
 - word: waffe
   length: 5
   tier: daily
@@ -12662,10 +13930,14 @@ words:
   - main_list
 - word: sinai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.25
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Sinai peninsula
 - word: wespe
   length: 5
   tier: daily
@@ -12680,10 +13952,14 @@ words:
   - main_list
 - word: ebola
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.46
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — named after Ebola river
 - word: juror
   length: 5
   tier: valid
@@ -12698,10 +13974,14 @@ words:
   - main_list
 - word: dubio
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.32
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Latin phrase fragment (in dubio); not standalone German
 - word: logik
   length: 5
   tier: daily
@@ -12764,10 +14044,14 @@ words:
   - main_list
 - word: chile
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.9
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — country name
 - word: lanze
   length: 5
   tier: daily
@@ -12782,10 +14066,14 @@ words:
   - main_list
 - word: codec
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Technical term
 - word: adams
   length: 5
   tier: valid
@@ -12890,16 +14178,24 @@ words:
   - main_list
 - word: misch
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.21
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem/prefix fragment, not standalone
 - word: heine
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — poet Heinrich Heine
 - word: eilen
   length: 5
   tier: daily
@@ -12908,16 +14204,24 @@ words:
   - main_list
 - word: fürth
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.89
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — German city
 - word: fress
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.77
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Verb stem fragment, not standalone word
 - word: cisco
   length: 5
   tier: valid
@@ -12932,10 +14236,14 @@ words:
   - main_list
 - word: donau
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.12
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — the Danube river
 - word: worin
   length: 5
   tier: daily
@@ -12980,16 +14288,24 @@ words:
   - main_list
 - word: antje
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.42
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: geölt
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.6
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Past participle of 'ölen'; uncommon standalone
 - word: recht
   length: 5
   tier: daily
@@ -13010,10 +14326,14 @@ words:
   - main_list
 - word: stimm
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.17
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Prefix/compound element, not standalone
 - word: sigma
   length: 5
   tier: daily
@@ -13028,10 +14348,14 @@ words:
   - main_list
 - word: royal
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.05
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''royal'''
 - word: pegel
   length: 5
   tier: daily
@@ -13040,10 +14364,14 @@ words:
   - main_list
 - word: eupen
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Belgian city
 - word: leibt
   length: 5
   tier: daily
@@ -13064,10 +14392,14 @@ words:
   - main_list
 - word: milan
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.55
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — city (Milan) / first name
 - word: abart
   length: 5
   tier: valid
@@ -13082,10 +14414,14 @@ words:
   - main_list
 - word: hamed
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.74
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: wolke
   length: 5
   tier: daily
@@ -13175,10 +14511,14 @@ words:
   - main_list
 - word: harro
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.57
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: gunst
   length: 5
   tier: daily
@@ -13199,10 +14539,14 @@ words:
   - main_list
 - word: dubai
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.75
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — city/emirate
 - word: heran
   length: 5
   tier: daily
@@ -13265,10 +14609,14 @@ words:
   - main_list
 - word: minsk
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.45
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Belarusian capital
 - word: ginko
   length: 5
   tier: valid
@@ -13283,10 +14631,14 @@ words:
   - main_list
 - word: tirol
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.18
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — Austrian/Italian region
 - word: indem
   length: 5
   tier: daily
@@ -13391,10 +14743,14 @@ words:
   - main_list
 - word: lotte
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.7
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: stach
   length: 5
   tier: daily
@@ -13498,16 +14854,24 @@ words:
   - main_list
 - word: blair
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.38
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — surname
 - word: civil
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.4
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: English/Latin word; German uses 'zivil'
 - word: kähne
   length: 5
   tier: daily
@@ -13543,10 +14907,14 @@ words:
   - main_list
 - word: frank
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.84
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Frank'''
 - word: stieg
   length: 5
   tier: daily
@@ -13579,10 +14947,14 @@ words:
   - main_list
 - word: sonja
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.77
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — female first name
 - word: eimer
   length: 5
   tier: daily
@@ -13609,16 +14981,24 @@ words:
   scheduled_day: 1713
 - word: erich
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 4.21
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — male first name
 - word: swapo
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 1.96
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Proper noun — political party abbreviation
 - word: krähe
   length: 5
   tier: daily
@@ -13627,10 +15007,14 @@ words:
   - main_list
 - word: hades
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.01
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: Proper noun — Greek underworld/god
 - word: narbe
   length: 5
   tier: daily
@@ -13687,10 +15071,14 @@ words:
   - main_list
 - word: versa
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.85
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Latin fragment (vice versa); not standalone German
 - word: kasus
   length: 5
   tier: valid
@@ -16458,25 +17846,25 @@ words:
   - supplement
 - word: allem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.58
   sources:
   - supplement
 - word: allen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.52
   sources:
   - supplement
 - word: aller
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.3
   sources:
   - supplement
 - word: alles
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.02
   sources:
   - supplement
@@ -16799,7 +18187,7 @@ words:
   - supplement
 - word: altes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -17929,7 +19317,7 @@ words:
   - supplement
 - word: anlaß
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -20384,7 +21772,7 @@ words:
   - supplement
 - word: autos
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -21953,10 +23341,14 @@ words:
   - supplement
 - word: bands
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.11
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''bands'''
 - word: bandt
   length: 5
   tier: valid
@@ -22764,10 +24156,14 @@ words:
   - supplement
 - word: beach
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.07
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''beach'''
 - word: beahm
   length: 5
   tier: valid
@@ -23185,7 +24581,7 @@ words:
   - supplement
 - word: beine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -24077,7 +25473,7 @@ words:
   - supplement
 - word: beste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.25
   sources:
   - supplement
@@ -24502,7 +25898,7 @@ words:
   - supplement
 - word: biete
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
@@ -25097,10 +26493,14 @@ words:
   - supplement
 - word: black
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.55
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''black'''
 - word: blade
   length: 5
   tier: valid
@@ -25179,7 +26579,7 @@ words:
   - supplement
 - word: blaue
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -25232,7 +26632,7 @@ words:
   - supplement
 - word: bleib
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -25448,7 +26848,7 @@ words:
   - supplement
 - word: bloss
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -25597,7 +26997,7 @@ words:
   - supplement
 - word: blöde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.09
   sources:
   - supplement
@@ -27392,7 +28792,7 @@ words:
   - supplement
 - word: bring
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -27632,10 +29032,14 @@ words:
   - supplement
 - word: brown
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.05
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: English proper noun / surname 'Brown'
 - word: brrrr
   length: 5
   tier: valid
@@ -28387,7 +29791,7 @@ words:
   - supplement
 - word: bunte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.06
   sources:
   - supplement
@@ -28638,7 +30042,7 @@ words:
   - supplement
 - word: busse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.19
   sources:
   - supplement
@@ -28919,7 +30323,7 @@ words:
   - supplement
 - word: bäume
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
@@ -29116,7 +30520,7 @@ words:
   - supplement
 - word: bösen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
@@ -31380,10 +32784,14 @@ words:
   - supplement
 - word: chris
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.33
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Chris'''
 - word: chriz
   length: 5
   tier: valid
@@ -32168,10 +33576,14 @@ words:
   - supplement
 - word: cloud
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.09
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''cloud'''
 - word: cluba
   length: 5
   tier: valid
@@ -32179,10 +33591,14 @@ words:
   - supplement
 - word: clubs
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''clubs'''
 - word: cluse
   length: 5
   tier: valid
@@ -32223,10 +33639,14 @@ words:
   - supplement
 - word: coach
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English loanword: ''coach'''
 - word: coady
   length: 5
   tier: valid
@@ -32790,7 +34210,7 @@ words:
   - supplement
 - word: coole
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.05
   sources:
   - supplement
@@ -33132,10 +34552,14 @@ words:
   - supplement
 - word: costa
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.09
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname/brand ''Costa'''
 - word: coste
   length: 5
   tier: valid
@@ -34684,7 +36108,7 @@ words:
   - supplement
 - word: danke
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.64
   sources:
   - supplement
@@ -34886,7 +36310,7 @@ words:
   - supplement
 - word: darin
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -35368,7 +36792,7 @@ words:
   - supplement
 - word: decke
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -35608,7 +37032,7 @@ words:
   - supplement
 - word: deine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.56
   sources:
   - supplement
@@ -35925,7 +37349,7 @@ words:
   - supplement
 - word: denen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.57
   sources:
   - supplement
@@ -35985,13 +37409,13 @@ words:
   - supplement
 - word: denke
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.25
   sources:
   - supplement
 - word: denkt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.89
   sources:
   - supplement
@@ -36155,7 +37579,7 @@ words:
   - supplement
 - word: deren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.44
   sources:
   - supplement
@@ -36560,7 +37984,7 @@ words:
   - supplement
 - word: dicke
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -36699,7 +38123,7 @@ words:
   - supplement
 - word: dient
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -36727,7 +38151,7 @@ words:
   - supplement
 - word: diese
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.2
   sources:
   - supplement
@@ -36983,7 +38407,7 @@ words:
   - supplement
 - word: dinge
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -38350,7 +39774,7 @@ words:
   - supplement
 - word: dreht
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -38504,7 +39928,7 @@ words:
   - supplement
 - word: droht
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -39028,7 +40452,7 @@ words:
   - supplement
 - word: dumme
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -39895,7 +41319,7 @@ words:
   - supplement
 - word: echte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -40650,19 +42074,19 @@ words:
   - supplement
 - word: einem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.35
   sources:
   - supplement
 - word: einer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.42
   sources:
   - supplement
 - word: eines
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.91
   sources:
   - supplement
@@ -40680,7 +42104,7 @@ words:
   - supplement
 - word: einst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -41739,7 +43163,7 @@ words:
   - supplement
 - word: endet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -41785,7 +43209,7 @@ words:
   - supplement
 - word: enger
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -42562,7 +43986,7 @@ words:
   - supplement
 - word: erste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.57
   sources:
   - supplement
@@ -43047,7 +44471,7 @@ words:
   - supplement
 - word: etwas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.94
   sources:
   - supplement
@@ -43139,19 +44563,19 @@ words:
   - supplement
 - word: eurem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
 - word: euren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
 - word: eurer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -43235,10 +44659,14 @@ words:
   - supplement
 - word: event
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.34
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English loanword: ''event'''
 - word: evers
   length: 5
   tier: valid
@@ -43815,7 +45243,7 @@ words:
   - supplement
 - word: fahre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -44313,7 +45741,7 @@ words:
   - supplement
 - word: fasst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.07
   sources:
   - supplement
@@ -44673,7 +46101,7 @@ words:
   - supplement
 - word: fehlt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement
@@ -44730,7 +46158,7 @@ words:
   - supplement
 - word: feine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -45064,7 +46492,7 @@ words:
   - supplement
 - word: ferne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.07
   sources:
   - supplement
@@ -45129,7 +46557,7 @@ words:
   - supplement
 - word: feste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.38
   sources:
   - supplement
@@ -45170,7 +46598,7 @@ words:
   - supplement
 - word: fette
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.09
   sources:
   - supplement
@@ -45573,7 +47001,7 @@ words:
   - supplement
 - word: filme
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.72
   sources:
   - supplement
@@ -45583,6 +47011,10 @@ words:
   frequency: 4.07
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Could be German genitive of 'Film' but looks English
 - word: filmt
   length: 5
   tier: valid
@@ -45638,7 +47070,7 @@ words:
   - supplement
 - word: finde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.3
   sources:
   - supplement
@@ -46499,7 +47931,7 @@ words:
   - supplement
 - word: folgt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.9
   sources:
   - supplement
@@ -46562,6 +47994,10 @@ words:
   frequency: 4.19
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 1
+    reason: Established loanword in German financial vocabulary - acceptable
 - word: fonnt
   length: 5
   tier: valid
@@ -46828,6 +48264,10 @@ words:
   frequency: 4.92
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 1
+    reason: Germanized loanword, plural of 'Foto' - widely accepted in German
 - word: fouad
   length: 5
   tier: valid
@@ -46943,7 +48383,7 @@ words:
   - supplement
 - word: fragt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.69
   sources:
   - supplement
@@ -47130,7 +48570,7 @@ words:
   - supplement
 - word: freie
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.83
   sources:
   - supplement
@@ -47195,7 +48635,7 @@ words:
   - supplement
 - word: freue
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -47207,7 +48647,7 @@ words:
   - supplement
 - word: freut
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -47529,7 +48969,7 @@ words:
   - supplement
 - word: frühe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.11
   sources:
   - supplement
@@ -47987,13 +49427,13 @@ words:
   - supplement
 - word: fälle
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
 - word: fällt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -48120,13 +49560,13 @@ words:
   - supplement
 - word: fühle
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
 - word: fühlt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -48138,7 +49578,7 @@ words:
   - supplement
 - word: führt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.18
   sources:
   - supplement
@@ -48184,13 +49624,13 @@ words:
   - supplement
 - word: füsse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
 - word: füßen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.3
   sources:
   - supplement
@@ -48213,7 +49653,7 @@ words:
   - supplement
 - word: gaben
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -48582,10 +50022,14 @@ words:
   - supplement
 - word: games
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.36
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''games'''
 - word: gamla
   length: 5
   tier: valid
@@ -48666,7 +50110,7 @@ words:
   - supplement
 - word: ganze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.49
   sources:
   - supplement
@@ -49340,13 +50784,13 @@ words:
   - supplement
 - word: gehst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.35
   sources:
   - supplement
 - word: gehts
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
@@ -49375,10 +50819,14 @@ words:
   - supplement
 - word: geile
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.4
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Vulgar: slang term with sexual connotation'
 - word: geilo
   length: 5
   tier: valid
@@ -49456,7 +50904,7 @@ words:
   - supplement
 - word: gelbe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - supplement
@@ -49711,7 +51159,7 @@ words:
   - supplement
 - word: genuß
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -49847,7 +51295,7 @@ words:
   - supplement
 - word: gerne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.49
   sources:
   - supplement
@@ -50031,7 +51479,7 @@ words:
   - supplement
 - word: gewiß
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.1
   sources:
   - supplement
@@ -50172,7 +51620,7 @@ words:
   - supplement
 - word: gibts
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -50559,10 +52007,14 @@ words:
   - supplement
 - word: girls
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.12
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''girls'''
 - word: girly
   length: 5
   tier: valid
@@ -50767,7 +52219,7 @@ words:
   - supplement
 - word: glaub
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -51934,7 +53386,7 @@ words:
   - supplement
 - word: grade
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -52063,10 +53515,14 @@ words:
   - supplement
 - word: grand
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.27
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English/French word: ''grand'''
 - word: grano
   length: 5
   tier: valid
@@ -52229,10 +53685,14 @@ words:
   - supplement
 - word: green
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.15
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''green'''
 - word: greer
   length: 5
   tier: valid
@@ -52632,7 +54092,7 @@ words:
   - supplement
 - word: gross
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.21
   sources:
   - supplement
@@ -52672,10 +54132,14 @@ words:
   - supplement
 - word: group
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.27
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''group'''
 - word: groux
   length: 5
   tier: valid
@@ -52689,7 +54153,7 @@ words:
   - supplement
 - word: große
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.55
   sources:
   - supplement
@@ -52915,7 +54379,7 @@ words:
   - supplement
 - word: grüne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -52956,7 +54420,7 @@ words:
   - supplement
 - word: grüße
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -53471,25 +54935,25 @@ words:
   - supplement
 - word: gutem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.28
   sources:
   - supplement
 - word: guten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.43
   sources:
   - supplement
 - word: guter
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
 - word: gutes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -54091,7 +55555,7 @@ words:
   - supplement
 - word: haare
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.62
   sources:
   - supplement
@@ -54687,7 +56151,7 @@ words:
   - supplement
 - word: halbe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -54785,6 +56249,10 @@ words:
   frequency: 4.76
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: 'Ambiguous: German common noun ''hall'' but also city name Halle'
 - word: halli
   length: 5
   tier: valid
@@ -55231,10 +56699,14 @@ words:
   - supplement
 - word: happy
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.24
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''happy'''
 - word: haque
   length: 5
   tier: valid
@@ -55407,7 +56879,7 @@ words:
   - supplement
 - word: harte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -55431,10 +56903,14 @@ words:
   - supplement
 - word: hartz
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.11
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: ''Hartz'' (as in Hartz IV welfare system, named after Peter Hartz)'
 - word: harun
   length: 5
   tier: valid
@@ -55541,7 +57017,7 @@ words:
   - supplement
 - word: hasse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.54
   sources:
   - supplement
@@ -55553,7 +57029,7 @@ words:
   - supplement
 - word: hasst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.09
   sources:
   - supplement
@@ -55734,7 +57210,7 @@ words:
   - supplement
 - word: hause
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.17
   sources:
   - supplement
@@ -56390,7 +57866,7 @@ words:
   - supplement
 - word: heiss
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -56436,13 +57912,13 @@ words:
   - supplement
 - word: heiße
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
 - word: heißt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
@@ -56967,7 +58443,7 @@ words:
   - supplement
 - word: herrn
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -57351,7 +58827,7 @@ words:
   - supplement
 - word: hiess
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.61
   sources:
   - supplement
@@ -58022,7 +59498,7 @@ words:
   - supplement
 - word: hoffe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -58079,25 +59555,25 @@ words:
   - supplement
 - word: hohem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
 - word: hohen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
 - word: hoher
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
 - word: hohes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -58217,7 +59693,7 @@ words:
   - supplement
 - word: holte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -58758,10 +60234,14 @@ words:
   - supplement
 - word: house
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.27
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''house'''
 - word: hovda
   length: 5
   tier: valid
@@ -58931,10 +60411,14 @@ words:
   - supplement
 - word: https
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.42
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Not a word: URL protocol prefix'
 - word: huang
   length: 5
   tier: valid
@@ -59627,7 +61111,7 @@ words:
   - supplement
 - word: hängt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.74
   sources:
   - supplement
@@ -59962,7 +61446,7 @@ words:
   - supplement
 - word: hörte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
@@ -60644,7 +62128,7 @@ words:
   - supplement
 - word: ihnen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.74
   sources:
   - supplement
@@ -60660,25 +62144,25 @@ words:
   - supplement
 - word: ihrem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.53
   sources:
   - supplement
 - word: ihren
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.74
   sources:
   - supplement
 - word: ihrer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.76
   sources:
   - supplement
 - word: ihres
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.09
   sources:
   - supplement
@@ -61311,6 +62795,10 @@ words:
   frequency: 4.56
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 1
+    reason: Germanized loanword, plural of 'Info' - widely accepted in German
 - word: infra
   length: 5
   tier: valid
@@ -62806,7 +64294,7 @@ words:
   - supplement
 - word: jahre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.82
   sources:
   - supplement
@@ -63529,25 +65017,25 @@ words:
   - supplement
 - word: jedem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.19
   sources:
   - supplement
 - word: jeden
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.5
   sources:
   - supplement
 - word: jeder
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.62
   sources:
   - supplement
 - word: jedes
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -63710,13 +65198,13 @@ words:
   - supplement
 - word: jenen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
 - word: jener
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.39
   sources:
   - supplement
@@ -63912,10 +65400,14 @@ words:
   - supplement
 - word: jesus
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.59
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: religious name ''Jesus'''
 - word: jeter
   length: 5
   tier: valid
@@ -64459,10 +65951,14 @@ words:
   - supplement
 - word: jonas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.07
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Jonas'''
 - word: jonen
   length: 5
   tier: valid
@@ -65100,7 +66596,7 @@ words:
   - supplement
 - word: jungs
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -66126,7 +67622,7 @@ words:
   - supplement
 - word: kalte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.13
   sources:
   - supplement
@@ -66183,7 +67679,7 @@ words:
   - supplement
 - word: kamen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.0
   sources:
   - supplement
@@ -66977,7 +68473,7 @@ words:
   - supplement
 - word: katze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -67012,7 +68508,7 @@ words:
   - supplement
 - word: kaufe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -67030,7 +68526,7 @@ words:
   - supplement
 - word: kauft
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -67326,7 +68822,7 @@ words:
   - supplement
 - word: kehrt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -67402,7 +68898,7 @@ words:
   - supplement
 - word: keine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.16
   sources:
   - supplement
@@ -67638,7 +69134,7 @@ words:
   - supplement
 - word: kenne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.99
   sources:
   - supplement
@@ -67650,7 +69146,7 @@ words:
   - supplement
 - word: kennt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -67907,10 +69403,14 @@ words:
   - supplement
 - word: kevin
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.4
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Kevin'''
 - word: keyes
   length: 5
   tier: valid
@@ -68854,7 +70354,7 @@ words:
   - supplement
 - word: klare
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -70202,7 +71702,7 @@ words:
   - supplement
 - word: komme
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
@@ -70214,7 +71714,7 @@ words:
   - supplement
 - word: kommt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.88
   sources:
   - supplement
@@ -72184,7 +73684,7 @@ words:
   - supplement
 - word: kurse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.17
   sources:
   - supplement
@@ -72237,7 +73737,7 @@ words:
   - supplement
 - word: kurze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.79
   sources:
   - supplement
@@ -72744,7 +74244,7 @@ words:
   - supplement
 - word: könne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.78
   sources:
   - supplement
@@ -72755,7 +74255,7 @@ words:
   - supplement
 - word: könnt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.84
   sources:
   - supplement
@@ -72970,7 +74470,7 @@ words:
   - supplement
 - word: kürze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.1
   sources:
   - supplement
@@ -73121,7 +74621,7 @@ words:
   - supplement
 - word: lacht
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.32
   sources:
   - supplement
@@ -73564,7 +75064,7 @@ words:
   - supplement
 - word: lange
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.59
   sources:
   - supplement
@@ -73840,13 +75340,13 @@ words:
   - supplement
 - word: lasse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
 - word: lasst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -73942,7 +75442,7 @@ words:
   - supplement
 - word: laufe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -73989,10 +75489,14 @@ words:
   - supplement
 - word: laura
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.23
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Laura'''
 - word: laure
   length: 5
   tier: valid
@@ -74306,7 +75810,7 @@ words:
   - supplement
 - word: lebte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.33
   sources:
   - supplement
@@ -74438,7 +75942,7 @@ words:
   - supplement
 - word: leere
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.26
   sources:
   - supplement
@@ -74543,7 +76047,7 @@ words:
   - supplement
 - word: legte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.63
   sources:
   - supplement
@@ -74567,7 +76071,7 @@ words:
   - supplement
 - word: lehnt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.04
   sources:
   - supplement
@@ -75092,13 +76596,13 @@ words:
   - supplement
 - word: lerne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.07
   sources:
   - supplement
 - word: lernt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.36
   sources:
   - supplement
@@ -75748,7 +77252,7 @@ words:
   - supplement
 - word: liebt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.55
   sources:
   - supplement
@@ -75796,7 +77300,7 @@ words:
   - supplement
 - word: liegt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.55
   sources:
   - supplement
@@ -75849,7 +77353,7 @@ words:
   - supplement
 - word: liess
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.08
   sources:
   - supplement
@@ -76469,7 +77973,7 @@ words:
   - supplement
 - word: liste
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.96
   sources:
   - supplement
@@ -77003,7 +78507,7 @@ words:
   - supplement
 - word: lohnt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -78001,10 +79505,14 @@ words:
   - supplement
 - word: lukas
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Lukas'''
 - word: luken
   length: 5
   tier: valid
@@ -79019,7 +80527,7 @@ words:
   - supplement
 - word: mache
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.97
   sources:
   - supplement
@@ -79536,10 +81044,14 @@ words:
   - supplement
 - word: mails
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.22
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English loanword: ''mails'''
 - word: mailt
   length: 5
   tier: valid
@@ -80363,10 +81875,14 @@ words:
   - supplement
 - word: marco
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.3
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Marco'''
 - word: marcs
   length: 5
   tier: valid
@@ -80489,10 +82005,14 @@ words:
   - supplement
 - word: mario
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.45
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Mario'''
 - word: maris
   length: 5
   tier: valid
@@ -80525,7 +82045,7 @@ words:
   - supplement
 - word: marke
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.52
   sources:
   - supplement
@@ -80894,10 +82414,14 @@ words:
   - supplement
 - word: match
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.07
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English loanword: ''match'''
 - word: matec
   length: 5
   tier: valid
@@ -81326,10 +82850,14 @@ words:
   - supplement
 - word: mayer
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.04
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Mayer'''
 - word: mayet
   length: 5
   tier: valid
@@ -81420,7 +82948,7 @@ words:
   - supplement
 - word: maßen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - supplement
@@ -81915,7 +83443,7 @@ words:
   - supplement
 - word: meine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.97
   sources:
   - supplement
@@ -81933,7 +83461,7 @@ words:
   - supplement
 - word: meint
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.87
   sources:
   - supplement
@@ -82443,7 +83971,7 @@ words:
   - supplement
 - word: merkt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.45
   sources:
   - supplement
@@ -82593,10 +84121,14 @@ words:
   - supplement
 - word: metal
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.12
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''metal'''
 - word: metas
   length: 5
   tier: valid
@@ -84153,6 +85685,10 @@ words:
   frequency: 4.24
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: English loanword but commonly used in German - borderline
 - word: moden
   length: 5
   tier: valid
@@ -85860,10 +87396,14 @@ words:
   - supplement
 - word: music
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.2
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''music'' (German is ''Musik'')'
 - word: musig
   length: 5
   tier: valid
@@ -86024,7 +87564,7 @@ words:
   - supplement
 - word: mußte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.38
   sources:
   - supplement
@@ -86595,19 +88135,19 @@ words:
   - supplement
 - word: müsse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.56
   sources:
   - supplement
 - word: müsst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
 - word: müßte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.95
   sources:
   - supplement
@@ -87672,10 +89212,14 @@ words:
   - supplement
 - word: nazis
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.59
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Sensitive/offensive: ''Nazis'''
 - word: nazor
   length: 5
   tier: valid
@@ -87921,7 +89465,7 @@ words:
   - supplement
 - word: nehme
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -87933,7 +89477,7 @@ words:
   - supplement
 - word: nehmt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.08
   sources:
   - supplement
@@ -88123,13 +89667,13 @@ words:
   - supplement
 - word: nenne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
 - word: nennt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.88
   sources:
   - supplement
@@ -88182,7 +89726,7 @@ words:
   - supplement
 - word: nervt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -88285,7 +89829,7 @@ words:
   - supplement
 - word: nette
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -88319,19 +89863,19 @@ words:
   - supplement
 - word: neuem
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.28
   sources:
   - supplement
 - word: neuen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.63
   sources:
   - supplement
 - word: neues
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.2
   sources:
   - supplement
@@ -88839,10 +90383,14 @@ words:
   - supplement
 - word: night
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.2
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''night'''
 - word: nighy
   length: 5
   tier: valid
@@ -90279,13 +91827,13 @@ words:
   - supplement
 - word: nutze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.09
   sources:
   - supplement
 - word: nutzt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -90571,7 +92119,7 @@ words:
   - supplement
 - word: obere
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -92804,7 +94352,7 @@ words:
   - supplement
 - word: paare
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.09
   sources:
   - supplement
@@ -93808,7 +95356,7 @@ words:
   - supplement
 - word: passt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -96149,7 +97697,7 @@ words:
   - supplement
 - word: plant
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.27
   sources:
   - supplement
@@ -99992,7 +101540,7 @@ words:
   - supplement
 - word: rande
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.31
   sources:
   - supplement
@@ -100738,7 +102286,7 @@ words:
   - supplement
 - word: redet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.48
   sources:
   - supplement
@@ -101121,7 +102669,7 @@ words:
   - supplement
 - word: reife
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -101223,7 +102771,7 @@ words:
   - supplement
 - word: reine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -102561,7 +104109,7 @@ words:
   - supplement
 - word: ringe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.05
   sources:
   - supplement
@@ -103825,7 +105373,7 @@ words:
   - supplement
 - word: roten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.71
   sources:
   - supplement
@@ -104854,7 +106402,7 @@ words:
   - supplement
 - word: räume
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.4
   sources:
   - supplement
@@ -105044,7 +106592,7 @@ words:
   - supplement
 - word: rüber
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.16
   sources:
   - supplement
@@ -105689,13 +107237,13 @@ words:
   - supplement
 - word: sagst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
 - word: sagte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.48
   sources:
   - supplement
@@ -105740,7 +107288,7 @@ words:
   - supplement
 - word: sahen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.44
   sources:
   - supplement
@@ -106644,10 +108192,14 @@ words:
   - supplement
 - word: sarah
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.28
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Sarah'''
 - word: sarai
   length: 5
   tier: valid
@@ -107478,7 +109030,7 @@ words:
   - supplement
 - word: schuß
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -107578,10 +109130,14 @@ words:
   - supplement
 - word: scott
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.13
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: personal name ''Scott'''
 - word: scout
   length: 5
   tier: valid
@@ -107953,7 +109509,7 @@ words:
   - supplement
 - word: seien
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.04
   sources:
   - supplement
@@ -108015,7 +109571,7 @@ words:
   - supplement
 - word: seine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 6.03
   sources:
   - supplement
@@ -108688,13 +110244,13 @@ words:
   - supplement
 - word: setze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
 - word: setzt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.01
   sources:
   - supplement
@@ -109276,10 +110832,14 @@ words:
   - supplement
 - word: shirt
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.33
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English loanword: ''shirt'''
 - word: shiso
   length: 5
   tier: valid
@@ -109624,7 +111184,7 @@ words:
   - supplement
 - word: siege
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -109654,7 +111214,7 @@ words:
   - supplement
 - word: siehe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.03
   sources:
   - supplement
@@ -110149,7 +111709,7 @@ words:
   - supplement
 - word: singt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.22
   sources:
   - supplement
@@ -110173,13 +111733,13 @@ words:
   - supplement
 - word: sinkt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.12
   sources:
   - supplement
 - word: sinne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.89
   sources:
   - supplement
@@ -110389,13 +111949,13 @@ words:
   - supplement
 - word: sitze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.47
   sources:
   - supplement
 - word: sitzt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -110988,10 +112548,14 @@ words:
   - supplement
 - word: smith
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'Proper noun: surname ''Smith'''
 - word: smits
   length: 5
   tier: valid
@@ -111236,7 +112800,7 @@ words:
   - supplement
 - word: sodaß
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
@@ -111691,10 +113255,14 @@ words:
   - supplement
 - word: songs
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.43
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''songs'''
 - word: sonia
   length: 5
   tier: valid
@@ -111851,7 +113419,7 @@ words:
   - supplement
 - word: sorgt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.58
   sources:
   - supplement
@@ -111880,10 +113448,14 @@ words:
   - supplement
 - word: sorry
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.68
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''sorry'''
 - word: sosei
   length: 5
   tier: valid
@@ -111998,7 +113570,7 @@ words:
   - supplement
 - word: sowas
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.98
   sources:
   - supplement
@@ -112162,7 +113734,7 @@ words:
   - supplement
 - word: spass
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.22
   sources:
   - supplement
@@ -112934,10 +114506,14 @@ words:
   - supplement
 - word: stars
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.31
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''stars'''
 - word: stary
   length: 5
   tier: valid
@@ -113112,7 +114688,7 @@ words:
   - supplement
 - word: stehe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.59
   sources:
   - supplement
@@ -113136,7 +114712,7 @@ words:
   - supplement
 - word: steht
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.68
   sources:
   - supplement
@@ -114020,7 +115596,7 @@ words:
   - supplement
 - word: stört
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.33
   sources:
   - supplement
@@ -115318,7 +116894,7 @@ words:
   - supplement
 - word: süsse
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.41
   sources:
   - supplement
@@ -116267,7 +117843,7 @@ words:
   - supplement
 - word: taten
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.46
   sources:
   - supplement
@@ -116513,10 +118089,14 @@ words:
   - supplement
 - word: teams
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.61
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''teams'''
 - word: tears
   length: 5
   tier: valid
@@ -116697,13 +118277,13 @@ words:
   - supplement
 - word: teils
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.64
   sources:
   - supplement
 - word: teilt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.31
   sources:
   - supplement
@@ -117198,10 +118778,14 @@ words:
   - supplement
 - word: tests
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.32
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''tests'''
 - word: tetik
   length: 5
   tier: valid
@@ -117302,7 +118886,7 @@ words:
   - supplement
 - word: texte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.6
   sources:
   - supplement
@@ -118054,7 +119638,7 @@ words:
   - supplement
 - word: tiefe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.5
   sources:
   - supplement
@@ -118084,7 +119668,7 @@ words:
   - supplement
 - word: tiere
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.85
   sources:
   - supplement
@@ -118273,10 +119857,14 @@ words:
   - supplement
 - word: times
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.14
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''times'''
 - word: timme
   length: 5
   tier: valid
@@ -118400,6 +119988,10 @@ words:
   frequency: 4.6
   sources:
   - supplement
+  llm:
+    tier: valid
+    confidence: 2
+    reason: Germanized English loanword 'tips' - commonly used but borderline
 - word: tippt
   length: 5
   tier: valid
@@ -118871,7 +120463,7 @@ words:
   - supplement
 - word: tolle
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.81
   sources:
   - supplement
@@ -121318,7 +122910,7 @@ words:
   - supplement
 - word: tötet
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.06
   sources:
   - supplement
@@ -121352,7 +122944,7 @@ words:
   - supplement
 - word: türen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.4
   sources:
   - supplement
@@ -124044,7 +125636,7 @@ words:
   - supplement
 - word: viele
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.83
   sources:
   - supplement
@@ -124841,7 +126433,7 @@ words:
   - supplement
 - word: volle
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.49
   sources:
   - supplement
@@ -124986,7 +126578,7 @@ words:
   - supplement
 - word: vorne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.73
   sources:
   - supplement
@@ -125500,7 +127092,7 @@ words:
   - supplement
 - word: wahre
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -125934,7 +127526,7 @@ words:
   - supplement
 - word: warnt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.18
   sources:
   - supplement
@@ -125945,7 +127537,7 @@ words:
   - supplement
 - word: warst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -126184,7 +127776,7 @@ words:
   - supplement
 - word: waßer
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.32
   sources:
   - supplement
@@ -126375,7 +127967,7 @@ words:
   - supplement
 - word: wegen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.67
   sources:
   - supplement
@@ -126529,7 +128121,7 @@ words:
   - supplement
 - word: weile
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.43
   sources:
   - supplement
@@ -126553,7 +128145,7 @@ words:
   - supplement
 - word: weine
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.1
   sources:
   - supplement
@@ -126583,13 +128175,13 @@ words:
   - supplement
 - word: weiss
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.75
   sources:
   - supplement
 - word: weist
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.57
   sources:
   - supplement
@@ -126619,7 +128211,7 @@ words:
   - supplement
 - word: weiße
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.69
   sources:
   - supplement
@@ -126846,7 +128438,7 @@ words:
   - supplement
 - word: wenns
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
@@ -126887,7 +128479,7 @@ words:
   - supplement
 - word: werde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.6
   sources:
   - supplement
@@ -126922,7 +128514,7 @@ words:
   - supplement
 - word: werke
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.75
   sources:
   - supplement
@@ -127211,10 +128803,14 @@ words:
   - supplement
 - word: white
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.26
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''white'''
 - word: whois
   length: 5
   tier: valid
@@ -127492,7 +129088,7 @@ words:
   - supplement
 - word: wilde
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.22
   sources:
   - supplement
@@ -127757,7 +129353,7 @@ words:
   - supplement
 - word: wirkt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.79
   sources:
   - supplement
@@ -127853,7 +129449,7 @@ words:
   - supplement
 - word: wisst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.37
   sources:
   - supplement
@@ -127899,7 +129495,7 @@ words:
   - supplement
 - word: witze
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.24
   sources:
   - supplement
@@ -128055,13 +129651,13 @@ words:
   - supplement
 - word: wohne
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.14
   sources:
   - supplement
 - word: wohnt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.42
   sources:
   - supplement
@@ -128155,7 +129751,7 @@ words:
   - supplement
 - word: wollt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.7
   sources:
   - supplement
@@ -128272,10 +129868,14 @@ words:
   - supplement
 - word: world
   length: 5
-  tier: valid
+  tier: blocked
   frequency: 4.55
   sources:
   - supplement
+  llm:
+    tier: reject
+    confidence: 3
+    reason: 'English word: ''world'''
 - word: worlf
   length: 5
   tier: valid
@@ -128306,7 +129906,7 @@ words:
   - supplement
 - word: worte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -128597,7 +130197,7 @@ words:
   - supplement
 - word: wußte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.94
   sources:
   - supplement
@@ -128700,7 +130300,7 @@ words:
   - supplement
 - word: wählt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.34
   sources:
   - supplement
@@ -128772,7 +130372,7 @@ words:
   - supplement
 - word: wärst
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.09
   sources:
   - supplement
@@ -128997,7 +130597,7 @@ words:
   - supplement
 - word: wüßte
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.28
   sources:
   - supplement
@@ -130236,7 +131836,7 @@ words:
   - supplement
 - word: zahlt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.4
   sources:
   - supplement
@@ -130755,7 +132355,7 @@ words:
   - supplement
 - word: zeigt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 5.34
   sources:
   - supplement
@@ -130976,7 +132576,7 @@ words:
   - supplement
 - word: zeuge
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.15
   sources:
   - supplement
@@ -131136,7 +132736,7 @@ words:
   - supplement
 - word: ziehe
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.09
   sources:
   - supplement
@@ -131160,13 +132760,13 @@ words:
   - supplement
 - word: zieht
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.91
   sources:
   - supplement
 - word: ziele
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.66
   sources:
   - supplement
@@ -131558,7 +133158,7 @@ words:
   - supplement
 - word: zogen
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.25
   sources:
   - supplement
@@ -132220,7 +133820,7 @@ words:
   - supplement
 - word: zählt
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.76
   sources:
   - supplement
@@ -132734,7 +134334,7 @@ words:
   - supplement
 - word: übers
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.28
   sources:
   - supplement
@@ -132770,7 +134370,7 @@ words:
   - supplement
 - word: übung
   length: 5
-  tier: valid
+  tier: daily
   frequency: 4.23
   sources:
   - supplement

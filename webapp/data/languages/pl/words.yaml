@@ -1547,10 +1547,14 @@ words:
   - main_list
 - word: duran
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 3.15
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 5
+    reason: Not a standard Polish word; likely a surname (Duran) or unattested slang. No established dictionary entry.
 - word: dureń
   length: 5
   tier: valid
@@ -1949,10 +1953,14 @@ words:
   - main_list
 - word: flint
   length: 5
-  tier: daily
+  tier: blocked
   frequency: 2.92
   sources:
   - main_list
+  llm:
+    tier: reject
+    confidence: 4
+    reason: English loanword not naturalized in Polish. Polish uses 'krzemień' for flint. Would confuse players.
 - word: flirt
   length: 5
   tier: valid
@@ -2264,10 +2272,15 @@ words:
   - main_list
 - word: graal
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.67
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Primarily associated with Holy Grail (Święty Graal) — essentially a proper noun reference. Uncommon as standalone
+      word.
 - word: gracz
   length: 5
   tier: valid
@@ -3005,10 +3018,14 @@ words:
   - main_list
 - word: kibla
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.57
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Genitive of 'kibel' (vulgar/colloquial for toilet). Too crude for daily puzzle use.
 - word: kicha
   length: 5
   tier: valid
@@ -4037,10 +4054,14 @@ words:
   - main_list
 - word: luzik
   length: 5
-  tier: daily
+  tier: valid
   frequency: 3.22
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: Informal diminutive slang ('na luziku' = easy/chill). Too colloquial for a daily puzzle word.
 - word: luźny
   length: 5
   tier: valid
@@ -6176,10 +6197,14 @@ words:
   - main_list
 - word: pozer
   length: 5
-  tier: daily
+  tier: valid
   frequency: 1.39
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 3
+    reason: English-origin slang ('poser'). Not well-established in standard Polish dictionaries. Colloquial/youth slang.
 - word: pozew
   length: 5
   tier: valid
@@ -6860,10 +6885,14 @@ words:
   - main_list
 - word: rzygi
   length: 5
-  tier: daily
+  tier: valid
   frequency: 2.14
   sources:
   - main_list
+  llm:
+    tier: valid
+    confidence: 4
+    reason: Vulgar slang for vomit. Inappropriate for a family-friendly daily puzzle word.
 - word: rządy
   length: 5
   tier: valid
