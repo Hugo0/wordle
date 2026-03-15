@@ -162,7 +162,38 @@ function shareWord() {
 const asyncDef = ref<any>(null);
 const showAsyncDef = ref(false);
 
+// Client-side: reveal today's word if game is over
+const todayRevealed = ref<string | null>(null);
+const todayRevealedDef = ref<any>(null);
+
 onMounted(async () => {
+    // Check if today's word should be revealed (game over)
+    if (d.is_today && !word) {
+        try {
+            const saved = localStorage.getItem(lang);
+            if (saved) {
+                const state = JSON.parse(saved);
+                if (state.game_over && state.todays_word) {
+                    todayRevealed.value = state.todays_word;
+                    // Fetch definition for the revealed word
+                    try {
+                        const defData = await $fetch(
+                            `/api/${lang}/definition/${encodeURIComponent(state.todays_word)}`
+                        );
+                        if (defData && (defData as any).definition) {
+                            todayRevealedDef.value = defData;
+                        }
+                    } catch {
+                        // definition not available
+                    }
+                }
+            }
+        } catch {
+            // localStorage unavailable
+        }
+        return;
+    }
+
     if (!word || (definition && definition.definition)) return;
     try {
         const data = await $fetch(`/api/${lang}/definition/${word}`);
@@ -283,8 +314,8 @@ onMounted(() => {
                 </div>
             </template>
 
-            <!-- Today's word -->
-            <template v-else-if="d.is_today">
+            <!-- Today's word: not yet played -->
+            <template v-else-if="d.is_today && !todayRevealed">
                 <div class="text-center py-8">
                     <p class="text-lg font-bold text-green-700 dark:text-green-400 mb-2">
                         Today's word!
@@ -298,6 +329,52 @@ onMounted(() => {
                     >
                         Play now
                     </NuxtLink>
+                </div>
+            </template>
+
+            <!-- Today's word: revealed (game over) -->
+            <template v-else-if="d.is_today && todayRevealed">
+                <!-- Word Tiles -->
+                <div class="flex justify-center gap-1.5 mb-4">
+                    <div
+                        v-for="(letter, li) in todayRevealed"
+                        :key="li"
+                        class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center text-xl sm:text-2xl font-bold text-white bg-green-500 rounded-md shadow-sm uppercase"
+                    >
+                        {{ letter }}
+                    </div>
+                </div>
+
+                <!-- Definition -->
+                <div
+                    v-if="todayRevealedDef && todayRevealedDef.definition"
+                    class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
+                >
+                    <div class="flex items-center gap-2 mb-1">
+                        <span
+                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                        >
+                            Definition
+                        </span>
+                        <span
+                            v-if="todayRevealedDef.part_of_speech"
+                            class="text-xs text-neutral-400 dark:text-neutral-500 italic"
+                        >
+                            {{ todayRevealedDef.part_of_speech }}
+                        </span>
+                    </div>
+                    <p class="text-sm text-neutral-800 dark:text-neutral-200">
+                        <strong class="uppercase">{{ todayRevealed }}</strong> &mdash;
+                        {{ todayRevealedDef.definition_native || todayRevealedDef.definition }}
+                    </p>
+                    <a
+                        :href="`https://${wiktLang}.wiktionary.org/wiki/${todayRevealed}`"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 mt-2 text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                        Wiktionary &#8599;
+                    </a>
                 </div>
             </template>
 

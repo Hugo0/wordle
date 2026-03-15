@@ -13,9 +13,10 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Unknown language' });
     }
 
-    // Only serve definitions for valid words
-    const wordLower = word.toLowerCase();
-    if (!data.wordLists[lang]!.includes(wordLower)) {
+    // Only serve definitions for valid words (normalize to NFC for consistent matching)
+    const wordLower = word.toLowerCase().normalize('NFC');
+    const wordList = data.wordLists[lang]!;
+    if (!wordList.includes(wordLower) && !wordList.includes(wordLower.normalize('NFD'))) {
         throw createError({ statusCode: 404, message: 'Unknown word' });
     }
 
