@@ -151,7 +151,7 @@ def main():
     for lang_code in sorted(REMOVE_ALL | set(REMOVE_SPECIFIC.keys())):
         cfg_path = os.path.join(DATA, lang_code, "language_config.json")
         if os.path.exists(cfg_path) and fix_language(lang_code):
-                count += 1
+            count += 1
     print(f"\nFixed {count} languages")
 
 
