@@ -216,6 +216,124 @@ test.describe('Tutorial', () => {
     });
 });
 
+test.describe('Diacritic Popup', () => {
+    test('long-press on Esperanto key shows diacritic popup', async ({ page }) => {
+        await page.goto('/eo');
+        await waitForGame(page);
+
+        // Find the "c" key (has ĉ diacritic)
+        const cKey = page.locator('button[data-char="c"]');
+        await expect(cKey).toBeVisible({ timeout: 15000 });
+
+        // Long-press: mousedown, wait 400ms, then check popup
+        const box = await cKey.boundingBox();
+        expect(box).toBeTruthy();
+
+        await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+        await page.mouse.down();
+        await page.waitForTimeout(400);
+
+        // Popup should appear with base char + variant
+        const popup = page.locator('.diacritic-popup');
+        await expect(popup).toBeVisible({ timeout: 2000 });
+
+        const options = popup.locator('.diacritic-option');
+        expect(await options.count()).toBe(2); // c + ĉ
+
+        // Release on first option (base char)
+        await page.mouse.up();
+
+        // Popup should disappear
+        await expect(popup).not.toBeVisible({ timeout: 1000 });
+    });
+
+    test('long-press and slide selects diacritic variant', async ({ page }) => {
+        await page.goto('/eo');
+        await waitForGame(page);
+
+        const cKey = page.locator('button[data-char="c"]');
+        const box = await cKey.boundingBox();
+        expect(box).toBeTruthy();
+
+        // Long-press
+        await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+        await page.mouse.down();
+        await page.waitForTimeout(400);
+
+        // Popup should be visible
+        const popup = page.locator('.diacritic-popup');
+        await expect(popup).toBeVisible({ timeout: 2000 });
+
+        // Slide right to select ĉ (second option, ~40px right)
+        await page.mouse.move(box!.x + box!.width / 2 + 40, box!.y - 30);
+        await page.waitForTimeout(100);
+        await page.mouse.up();
+
+        // ĉ should be typed in the first tile
+        const firstTile = page.locator('.game-board .grid-cols-5').first().locator('div').first();
+        await expect(firstTile).toContainText('ĉ', { timeout: 2000, ignoreCase: true });
+    });
+
+    test('quick tap on diacritic key types base char', async ({ page }) => {
+        await page.goto('/eo');
+        await waitForGame(page);
+
+        const cKey = page.locator('button[data-char="c"]');
+        await cKey.click();
+        await page.waitForTimeout(300);
+
+        // Should type "c" (base char), not "ĉ"
+        const firstTile = page.locator('.game-board .grid-cols-5').first().locator('div').first();
+        await expect(firstTile).toContainText('c', { timeout: 2000, ignoreCase: true });
+    });
+
+    test('key without diacritics has no popup on long-press', async ({ page }) => {
+        await page.goto('/eo');
+        await waitForGame(page);
+
+        // "b" has no diacritics in Esperanto
+        const bKey = page.locator('button[data-char="b"]');
+        const box = await bKey.boundingBox();
+        expect(box).toBeTruthy();
+
+        await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+        await page.mouse.down();
+        await page.waitForTimeout(400);
+
+        const popup = page.locator('.diacritic-popup');
+        await expect(popup).not.toBeVisible();
+        await page.mouse.up();
+    });
+});
+
+test.describe('Cross-Language State', () => {
+    test('navigating between languages does not bleed game state', async ({ page }) => {
+        // Play a word in English
+        await page.goto('/en');
+        await waitForGame(page);
+        await page.keyboard.type('crane', { delay: 50 });
+        await page.keyboard.press('Enter');
+        await page.waitForTimeout(3000);
+
+        // Verify English has colored tiles
+        const enColored = page.locator(
+            '.game-board .grid-cols-5:first-of-type [class*="correct"], ' +
+                '.game-board .grid-cols-5:first-of-type [class*="incorrect"]'
+        );
+        await expect(enColored).toHaveCount(5, { timeout: 5000 });
+
+        // Navigate to Finnish
+        await page.goto('/fi');
+        await waitForGame(page, { keepState: true });
+
+        // Finnish board should be empty (no English guesses bleeding)
+        const fiFirstRow = page.locator('.game-board .grid-cols-5').first();
+        const fiTileTexts = await fiFirstRow.locator('div').allTextContents();
+        const hasContent = fiTileTexts.some((t) => t.trim().length > 0);
+        expect(hasContent).toBe(false);
+    });
+});
+
 test.describe('Multi-language Loading', () => {
     const languages = ['es', 'fr', 'de', 'ar', 'ru', 'it', 'tr'];
 

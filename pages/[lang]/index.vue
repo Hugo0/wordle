@@ -6,7 +6,12 @@
  * initializes stores, and renders the game board + keyboard.
  */
 
-definePageMeta({ layout: 'game' });
+definePageMeta({
+    layout: 'game',
+    // Force full remount when language changes — prevents game state bleed
+    // between languages (Pinia stores are singletons, stale tiles/colors persist)
+    key: (route) => route.params.lang as string,
+});
 
 const route = useRoute();
 const lang = route.params.lang as string;
@@ -17,9 +22,7 @@ const showImprovementBanner = ref(false);
 
 function onBannerClick() {
     try {
-        import('posthog-js').then((mod) =>
-            mod.default.capture('language_interest', { language: lang })
-        );
+        usePostHog()?.capture('language_interest', { language: lang });
     } catch {
         // Silently fail
     }
@@ -241,8 +244,7 @@ onMounted(() => {
             gameOver: game.gameOver,
             lastGuessValid: true,
         }));
-        analytics.initErrorTracking(langStore.languageCode);
-        analytics.identifyUser(langStore.languageCode);
+        analytics.identifyUser(stats.gameResults);
     } catch (err) {
         console.warn('[wordle] Failed to restore game state:', err);
     }

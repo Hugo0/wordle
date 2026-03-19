@@ -29,6 +29,7 @@ import { calculateCommunityPercentile } from '~/utils/stats';
 import { WORD_LENGTH, MAX_GUESSES } from '~/utils/types';
 import type { KeyState, TileColor, Notification } from '~/utils/types';
 import { animateRevealRow, animateKeyNudge } from '~/utils/game/useGameAnimations';
+import { getOrCreateId } from '~/utils/storage';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -132,6 +133,9 @@ export const useGameStore = defineStore('game', () => {
     const communityStatsLink = ref<string | null>(null);
 
     const shareButtonState = ref<'idle' | 'success'>('idle');
+
+    /** Screen reader announcement — updated after each guess reveal. */
+    const srAnnouncement = ref('');
 
     // Definition & word image for stats modal display
     const todayDefinition = ref<{
@@ -274,10 +278,11 @@ export const useGameStore = defineStore('game', () => {
 
         const lang = useLanguageStore();
 
-        // Try exact match first
+        // Exact match — respect what the user typed (e.g., "lapiz" stays "lapiz")
         if (lang.wordListSet.has(word)) return word;
 
-        // Try normalized match (e.g., "borde" matches "börde")
+        // Normalized match — auto-correct to canonical form (e.g., "borde" → "börde")
+        // Only triggers when the typed form isn't in the word list itself
         const normalized = normalizeWord(word, lang.normalizeMap);
         const canonical = getNormalizedWordMap().get(normalized);
         if (canonical) return canonical;
@@ -448,7 +453,9 @@ export const useGameStore = defineStore('game', () => {
         if (['Enter', '⇨', '⟹', 'ENTER'].includes(key)) {
             if (!fullWordInputted.value) {
                 shakeRow(activeRow.value);
-                showNotification('Please enter a full word');
+                showNotification(
+                    lang.config?.text?.['notification-partial-word'] || 'Please enter a full word',
+                );
                 return;
             }
 
@@ -525,6 +532,23 @@ export const useGameStore = defineStore('game', () => {
                     animating.value = false;
                     showTiles();
 
+                    // Announce guess result for screen readers
+                    const rowTiles = tiles.value[revealingRow];
+                    const rowColors = tileColors.value[revealingRow];
+                    if (rowTiles && rowColors) {
+                        const parts = rowTiles.map((letter, i) => {
+                            const color = rowColors[i];
+                            const state =
+                                color === 'correct'
+                                    ? 'correct'
+                                    : color === 'semicorrect'
+                                      ? 'present'
+                                      : 'absent';
+                            return `${letter} ${state}`;
+                        });
+                        srAnnouncement.value = `Row ${revealingRow + 1}: ${parts.join(', ')}`;
+                    }
+
                     // Compare normalized forms for win detection
                     const normalizedGuess = normalizeWord(canonicalWord, lang.normalizeMap);
                     const normalizedTarget = normalizeWord(lang.todaysWord, lang.normalizeMap);
@@ -542,12 +566,15 @@ export const useGameStore = defineStore('game', () => {
                     haptic.error();
                 }
                 shakeRow(activeRow.value);
-                showNotification('Word is not valid');
+                showNotification(
+                    lang.config?.text?.['notification-word-not-valid'] || 'Word is not valid',
+                );
 
                 // Track invalid word and update session frustration state
                 analytics.trackInvalidWordAndUpdateState({
                     language: lang.languageCode,
                     attempt_number: activeRow.value + 1,
+                    word: typedWord,
                 });
                 analytics.trackGuessSubmit(lang.languageCode, activeRow.value + 1, false);
             }
@@ -573,21 +600,15 @@ export const useGameStore = defineStore('game', () => {
 
     // ---- Visual sync ----
 
-    /** Sync data layer to visual layer, handling RTL reversal. */
+    /** Sync data layer to visual layer. RTL is handled by CSS direction on the grid. */
     function showTiles(): void {
-        const lang = useLanguageStore();
         for (let i = 0; i < tiles.value.length; i++) {
             const tilesRow = tiles.value[i];
             const classesRow = tileClasses.value[i];
             if (!tilesRow || !classesRow) continue;
 
-            if (lang.rightToLeft) {
-                tilesVisual.value.splice(i, 1, [...tilesRow].reverse());
-                tileClassesVisual.value.splice(i, 1, [...classesRow].reverse());
-            } else {
-                tilesVisual.value.splice(i, 1, [...tilesRow]);
-                tileClassesVisual.value.splice(i, 1, [...classesRow]);
-            }
+            tilesVisual.value.splice(i, 1, [...tilesRow]);
+            tileClassesVisual.value.splice(i, 1, [...classesRow]);
         }
     }
 
@@ -605,14 +626,14 @@ export const useGameStore = defineStore('game', () => {
         const boardEl = _getBoardEl?.() ?? null;
 
         return new Promise((resolve) => {
-            animateRevealRow(boardEl, rowIndex, lang.rightToLeft, {
-                onMidpoint(visualIdx, dataIdx) {
-                    const finalClass = tileClasses.value[rowIndex]?.[dataIdx] || '';
+            animateRevealRow(boardEl, rowIndex, {
+                onMidpoint(visualIdx) {
+                    const finalClass = tileClasses.value[rowIndex]?.[visualIdx] || '';
                     tileClassesVisual.value[rowIndex]?.splice(visualIdx, 1, finalClass);
-                    const tileChar = tiles.value[rowIndex]?.[dataIdx] || '';
+                    const tileChar = tiles.value[rowIndex]?.[visualIdx] || '';
                     tilesVisual.value[rowIndex]?.splice(visualIdx, 1, tileChar);
 
-                    const keyUpdate = pendingKeyUpdates.value[dataIdx];
+                    const keyUpdate = pendingKeyUpdates.value[visualIdx];
                     if (keyUpdate) {
                         updateKeyColor(keyUpdate.char, keyUpdate.state, keys);
                     }
@@ -644,10 +665,9 @@ export const useGameStore = defineStore('game', () => {
         const STAGGER = 150;
         const DURATION = 1000;
         const tileCount = WORD_LENGTH;
-        const lang = useLanguageStore();
 
         for (let t = 0; t < tileCount; t++) {
-            const visualIdx = lang.rightToLeft ? tileCount - 1 - t : t;
+            const visualIdx = t;
             setTimeout(() => {
                 const currentClass = tileClassesVisual.value[rowIndex]?.[visualIdx] || '';
                 tileClassesVisual.value[rowIndex]?.splice(
@@ -718,6 +738,7 @@ export const useGameStore = defineStore('game', () => {
             time_to_complete_seconds: timeToComplete,
         });
         analytics.trackStreakMilestone(lang.languageCode, statsStore.stats.current_streak);
+        analytics.updateUserProperties(statsStore.gameResults);
 
         // Show embed banner after game completion
         if (import.meta.client) {
@@ -775,6 +796,7 @@ export const useGameStore = defineStore('game', () => {
             had_frustration: lossFrustrationState.hadFrustration,
             time_to_complete_seconds: lossTimeToComplete,
         });
+        analytics.updateUserProperties(statsStore.gameResults);
 
         // Show embed banner after game completion
         if (import.meta.client) {
@@ -885,9 +907,40 @@ export const useGameStore = defineStore('game', () => {
         }
     }
 
+    /** Reset all game state to defaults. Called before loading a new language's game. */
+    function resetGameState(): void {
+        tiles.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, '');
+        tileColors.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, 'empty');
+        tileClasses.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS);
+        tilesVisual.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, '');
+        tileClassesVisual.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS);
+        activeRow.value = 0;
+        activeCell.value = 0;
+        fullWordInputted.value = false;
+        gameOver.value = false;
+        gameWon.value = false;
+        attempts.value = '0';
+        keyClasses.value = {};
+        pendingKeyUpdates.value = [];
+        emojiBoard.value = '';
+        communityPercentile.value = null;
+        communityIsTopScore.value = false;
+        communityTotal.value = 0;
+        communityStatsLink.value = null;
+        shareButtonState.value = 'idle';
+        srAnnouncement.value = '';
+        todayDefinition.value = null;
+        todayImageUrl.value = null;
+        todayImageLoading.value = false;
+        todayDefinitionLoading.value = false;
+        maxDifficultyUsed.value = 0;
+        notification.value = makeEmptyNotification();
+    }
+
     /** Restore game state from localStorage. */
     function loadFromLocalStorage(): void {
         if (!import.meta.client) return;
+        resetGameState();
         try {
             const lang = useLanguageStore();
             const pageName = window.location.pathname.split('/').pop() || 'home';
@@ -1035,14 +1088,7 @@ export const useGameStore = defineStore('game', () => {
         const dayIdx = lang.todaysIdx;
         if (!langCode || isNaN(dayIdx)) return;
 
-        // Get or create client ID (same logic as useAnalytics.getOrCreateClientId)
-        let clientId = 'unknown';
-        try {
-            clientId = localStorage.getItem('client_id') || crypto.randomUUID();
-            localStorage.setItem('client_id', clientId);
-        } catch {
-            // localStorage unavailable
-        }
+        const clientId = getOrCreateId('client_id');
 
         try {
             $fetch(`/api/${langCode}/word-stats`, {
@@ -1081,10 +1127,10 @@ export const useGameStore = defineStore('game', () => {
         const { fetchDefinition } = useDefinitions();
         fetchDefinition(word, langCode)
             .then((def) => {
-                if (def.definition) {
+                if (def.definition || def.definitionNative) {
                     todayDefinition.value = {
                         word: def.word,
-                        definition: def.definition,
+                        definition: def.definitionNative || def.definition,
                         partOfSpeech: def.partOfSpeech,
                         url: `/${langCode}/word/${dayIdx}`,
                     };
@@ -1263,6 +1309,7 @@ export const useGameStore = defineStore('game', () => {
         communityTotal,
         communityStatsLink,
         shareButtonState,
+        srAnnouncement,
         todayDefinition,
         todayImageUrl,
         todayImageLoading,
@@ -1292,6 +1339,7 @@ export const useGameStore = defineStore('game', () => {
         showNotification,
         getEmojiBoard,
         getShareText,
+        resetGameState,
         saveToLocalStorage,
         loadFromLocalStorage,
         getTimeUntilNextDay,

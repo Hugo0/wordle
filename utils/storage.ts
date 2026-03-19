@@ -109,3 +109,16 @@ export function isDismissedWithCooldown(key: string, durationMs: number): boolea
 export function dismissWithCooldown(key: string): void {
     writeLocal(key, Date.now().toString());
 }
+
+// ---------------------------------------------------------------------------
+// Platform detection
+// ---------------------------------------------------------------------------
+
+/** Check if running as installed PWA (standalone mode). SSR-safe. */
+export function isStandalone(): boolean {
+    if (!import.meta.client) return false;
+    return (
+        window.matchMedia('(display-mode: standalone)').matches ||
+        (navigator as Navigator & { standalone?: boolean }).standalone === true
+    );
+}

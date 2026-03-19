@@ -1,6 +1,9 @@
 <template>
     <div
         v-if="notification.show"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
         class="fixed top-0 inset-x-0 mx-auto z-50 max-w-xs justify-items-center text-center transition-opacity duration-300"
         :class="{ 'opacity-0': notification.fading }"
     >

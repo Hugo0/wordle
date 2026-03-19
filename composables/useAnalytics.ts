@@ -17,7 +17,7 @@
  * 9. FUNNEL: Where do users drop off?
  */
 
-import posthog from 'posthog-js';
+import { isStandalone, getOrCreateId } from '~/utils/storage';
 
 // Events excluded from PostHog to stay within free tier (1M events/month).
 // These high-volume events (fired per-guess) are still tracked in GA4 where there is no cap.
@@ -80,7 +80,7 @@ interface ShareParams {
 interface InvalidWordParams {
     language: string;
     attempt_number: number;
-    // Note: We intentionally don't track the actual word for privacy
+    word?: string;
 }
 
 interface SettingsChangeParams {
@@ -99,12 +99,6 @@ interface SettingsChangeParams {
 interface PWAParams {
     platform?: 'ios' | 'android' | 'desktop' | 'unknown';
     source?: 'banner' | 'settings' | 'auto';
-}
-
-interface ErrorParams {
-    error_type: string;
-    language?: string;
-    details?: string;
 }
 
 export interface FrustrationState {
@@ -126,6 +120,8 @@ interface UserProperties {
 // ============================================================================
 
 export function useAnalytics() {
+    const posthog = usePostHog();
+
     // ========================================================================
     // FRUSTRATION STATE (per-session, kept in composable closure)
     // ========================================================================
@@ -156,7 +152,7 @@ export function useAnalytics() {
         // PostHog (skip high-volume events to stay within free tier)
         try {
             if (!POSTHOG_SKIP_EVENTS.has(eventName)) {
-                posthog.capture(eventName, params);
+                posthog?.capture(eventName, params);
             }
         } catch {
             // Silently fail
@@ -185,17 +181,6 @@ export function useAnalytics() {
         if (/Android/.test(ua)) return 'android';
         if (/Windows|Mac|Linux/.test(ua) && !/Mobile/.test(ua)) return 'desktop';
         return 'unknown';
-    };
-
-    /**
-     * Check if running as installed PWA
-     */
-    const isStandalone = (): boolean => {
-        if (!import.meta.client) return false;
-        return (
-            window.matchMedia('(display-mode: standalone)').matches ||
-            (navigator as Navigator & { standalone?: boolean }).standalone === true
-        );
     };
 
     /**
@@ -244,24 +229,6 @@ export function useAnalytics() {
     };
 
     /**
-     * Get or create a persistent anonymous client ID.
-     * Reuses the same localStorage key as the game store.
-     */
-    const getOrCreateClientId = (): string => {
-        if (!import.meta.client) return 'unknown';
-        try {
-            let id = localStorage.getItem('client_id');
-            if (!id) {
-                id = crypto.randomUUID();
-                localStorage.setItem('client_id', id);
-            }
-            return id;
-        } catch {
-            return 'unknown';
-        }
-    };
-
-    /**
      * Identify user with persistent anonymous ID and set person properties.
      * Call once on page load after game_results are available.
      * Returns computed properties for reuse by the caller.
@@ -272,7 +239,7 @@ export function useAnalytics() {
         if (!import.meta.client) return props;
 
         try {
-            const clientId = getOrCreateClientId();
+            const clientId = getOrCreateId('client_id');
 
             let firstSeenDate: string | undefined;
             try {
@@ -288,7 +255,7 @@ export function useAnalytics() {
                 // localStorage unavailable
             }
 
-            posthog.identify(clientId, {
+            posthog?.identify(clientId, {
                 first_seen_date: firstSeenDate,
                 total_games_played: props.totalGames,
                 total_wins: props.totalWins,
@@ -310,7 +277,7 @@ export function useAnalytics() {
         if (!import.meta.client) return;
         try {
             const props = computeUserProperties(gameResults);
-            posthog.setPersonProperties({
+            posthog?.setPersonProperties({
                 total_games_played: props.totalGames,
                 total_wins: props.totalWins,
                 total_languages_played: props.languagesPlayed.length,
@@ -628,6 +595,7 @@ export function useAnalytics() {
         track('invalid_word', {
             language: params.language,
             attempt_number: params.attempt_number,
+            word: params.word && params.word.length <= 10 ? params.word.toLowerCase() : undefined,
         });
     };
 
@@ -641,17 +609,8 @@ export function useAnalytics() {
         });
     };
 
-    /**
-     * Track page errors
-     * Answers: Is the app crashing? Which languages have issues?
-     */
-    const trackError = (params: ErrorParams): void => {
-        track('page_error', {
-            error_type: params.error_type,
-            language: params.language,
-            details: params.details,
-        });
-    };
+    // Error tracking is handled automatically by @posthog/nuxt module
+    // (captures $exception events with proper stack traces and source maps)
 
     // ========================================================================
     // FRUSTRATION SIGNALS (session-aggregated, included in game_complete)
@@ -843,6 +802,9 @@ export function useAnalytics() {
      * Call once on page load to capture session context
      */
     const trackPageView = (language: string): void => {
+        // Register language as a super property on all future PostHog events
+        posthog?.register({ language });
+
         track('page_view_enhanced', {
             language,
             is_pwa: isStandalone(),
@@ -856,32 +818,8 @@ export function useAnalytics() {
     // ========================================================================
 
     // Guards to prevent duplicate listener registration
-    let _errorTrackingInit = false;
     let _abandonTrackingInit = false;
 
-    /**
-     * Set up global error tracking (idempotent — safe to call multiple times)
-     */
-    const initErrorTracking = (language: string): void => {
-        if (!import.meta.client || _errorTrackingInit) return;
-        _errorTrackingInit = true;
-
-        window.addEventListener('error', (event) => {
-            trackError({
-                error_type: 'javascript_error',
-                language,
-                details: event.message?.substring(0, 100),
-            });
-        });
-
-        window.addEventListener('unhandledrejection', (event) => {
-            trackError({
-                error_type: 'unhandled_promise',
-                language,
-                details: String(event.reason)?.substring(0, 100),
-            });
-        });
-    };
 
     /**
      * Track game abandonment on page unload (idempotent)
@@ -940,7 +878,6 @@ export function useAnalytics() {
         // Friction
         trackInvalidWord,
         trackKeyboardMissingChar,
-        trackError,
         // Frustration (session-aggregated)
         trackInvalidWordAndUpdateState,
         onValidWord,
@@ -963,7 +900,6 @@ export function useAnalytics() {
         // Session
         trackPageView,
         // Init
-        initErrorTracking,
         initAbandonTracking,
         // PostHog user identification
         identifyUser,

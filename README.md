@@ -1,7 +1,8 @@
 # Wordle Global
 
 [![Tests](https://github.com/Hugo0/wordle/actions/workflows/test.yml/badge.svg)](https://github.com/Hugo0/wordle/actions/workflows/test.yml)
-[![Languages](https://img.shields.io/badge/languages-78-blue)](https://wordle.global)
+[![Languages](https://img.shields.io/badge/languages-79-blue)](https://wordle.global)
+[![Accessibility](https://img.shields.io/badge/a11y-WCAG_2.1_AA-green)](https://wordle.global/accessibility)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Hugo0/wordle/pulls)
 

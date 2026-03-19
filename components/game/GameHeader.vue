@@ -2,7 +2,7 @@
     <header
         class="relative flex flex-row justify-between items-center h-[50px] my-auto p-1 px-3 lg:px-1 border-b border-neutral-300 dark:border-neutral-600"
     >
-        <button class="z-40 text-neutral-500" aria-label="instructions" @click="$emit('help')">
+        <button class="z-40 text-neutral-500 p-2" aria-label="How to play" @click="$emit('help')">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="text-neutral-500"
@@ -14,6 +14,7 @@
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                aria-hidden="true"
             >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <circle cx="12" cy="12" r="9" />
@@ -34,7 +35,7 @@
             </h1>
         </div>
         <div class="flex flex-row gap-3 z-30">
-            <button class="m-0 sm:my-1" @click="$emit('stats')">
+            <button class="m-0 sm:my-1 p-2" aria-label="Statistics" @click="$emit('stats')">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6 text-neutral-500"
@@ -46,6 +47,7 @@
                     fill="none"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    aria-hidden="true"
                 >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <rect x="3" y="12" width="6" height="8" rx="1" />
@@ -54,7 +56,7 @@
                     <line x1="4" y1="20" x2="18" y2="20" />
                 </svg>
             </button>
-            <button class="m-0 sm:my-1" @click="$emit('settings')">
+            <button class="m-0 sm:my-1 p-2" aria-label="Settings" @click="$emit('settings')">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="text-neutral-500"
@@ -66,6 +68,7 @@
                     fill="none"
                     stroke-linecap="round"
                     stroke-linejoin="round"
+                    aria-hidden="true"
                 >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path

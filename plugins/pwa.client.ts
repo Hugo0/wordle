@@ -13,6 +13,7 @@
 import '@khmyznikov/pwa-install';
 
 import type { BeforeInstallPromptEvent, PWAStatus } from '~/utils/types';
+import { isStandalone } from '~/utils/storage';
 
 const DISMISS_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 1 week
 
@@ -32,13 +33,6 @@ function isIOS(): boolean {
     return (
         /iPad|iPhone|iPod/.test(navigator.userAgent) ||
         (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent))
-    );
-}
-
-function isStandalone(): boolean {
-    return (
-        window.matchMedia('(display-mode: standalone)').matches ||
-        (navigator as Navigator & { standalone?: boolean }).standalone === true
     );
 }
 
@@ -75,6 +69,9 @@ export default defineNuxtPlugin(() => {
         const banner = getBanner();
         if (banner && (deferredPrompt || isIOS())) {
             banner.style.display = 'flex';
+            try {
+                usePostHog()?.capture('pwa_prompt_shown');
+            } catch {}
         }
     }
 
@@ -97,9 +94,14 @@ export default defineNuxtPlugin(() => {
         if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choice) => {
-                if (choice.outcome === 'accepted') {
-                    // Analytics tracking could go here
-                }
+                try {
+                    const ph = usePostHog();
+                    if (choice.outcome === 'accepted') {
+                        ph?.capture('pwa_install');
+                    } else {
+                        ph?.capture('pwa_dismiss');
+                    }
+                } catch {}
                 deferredPrompt = null;
                 hideBanner();
             });
@@ -113,6 +115,9 @@ export default defineNuxtPlugin(() => {
         } catch {
             // localStorage may throw in private browsing mode
         }
+        try {
+            usePostHog()?.capture('pwa_dismiss');
+        } catch {}
         hideBanner();
     }
 

@@ -9,6 +9,7 @@
 
 const route = useRoute();
 const lang = route.params.lang as string;
+const langStore = useLanguageStore();
 const page = computed(() => parseInt((route.query.page as string) || '1', 10));
 
 const { data: wordsData, error } = await useFetch(`/api/${lang}/words`, {
@@ -200,10 +201,11 @@ onMounted(() => {
                     &larr; Play Wordle {{ langNameNative }}
                 </NuxtLink>
                 <h1 class="text-2xl font-bold mt-2">
-                    Wordle {{ langNameNative }} &mdash; All Words
+                    Wordle {{ langNameNative }} &mdash; {{ langStore.config?.ui?.all_words }}
                 </h1>
                 <p class="text-sm text-neutral-500 dark:text-neutral-400">
-                    {{ todaysIdx.toLocaleString() }} daily words and counting
+                    {{ todaysIdx.toLocaleString() }}
+                    {{ langStore.config?.ui?.daily_words_counting }}
                 </p>
             </header>
 
@@ -231,7 +233,7 @@ onMounted(() => {
                         <p
                             class="text-sm font-semibold text-green-600 dark:text-green-400 mt-2 text-center"
                         >
-                            Today's word &mdash; Play to reveal!
+                            {{ langStore.config?.ui?.todays_word_reveal }}
                         </p>
                     </NuxtLink>
 
@@ -256,7 +258,7 @@ onMounted(() => {
                         <p
                             class="text-sm font-semibold text-green-600 dark:text-green-400 mt-1 text-center"
                         >
-                            Today
+                            {{ langStore.config?.ui?.today }}
                         </p>
                     </NuxtLink>
 
@@ -306,8 +308,8 @@ onMounted(() => {
                             v-if="w.stats && w.stats.total > 0"
                             class="flex justify-center gap-3 mt-2 text-[10px] text-neutral-400"
                         >
-                            <span>{{ w.stats.total }} plays</span>
-                            <span>{{ winRate(w.stats) }}% win</span>
+                            <span>{{ w.stats.total }} {{ langStore.config?.ui?.plays }}</span>
+                            <span>{{ winRate(w.stats) }}% {{ langStore.config?.ui?.win }}</span>
                         </div>
 
                         <!-- AI art thumbnail (loads async) -->

@@ -1,11 +1,9 @@
 /**
  * Analytics Plugin (client-only)
  *
- * Initializes Google Analytics (GA4) and PostHog.
- * Defers script loading to after page load for performance.
+ * Initializes Google Analytics (GA4).
+ * PostHog is handled by @posthog/nuxt module (see nuxt.config.ts).
  */
-
-import posthog from 'posthog-js';
 
 declare global {
     interface Window {
@@ -15,8 +13,6 @@ declare global {
 }
 
 const GA_MEASUREMENT_ID = 'G-273H1MLL3T';
-const POSTHOG_KEY = 'phc_DMY07B83ghetzxgIbBhobbdSjlueym6vNVVZwM79SPp';
-const POSTHOG_HOST = 'https://eu.i.posthog.com';
 
 function loadGtagScript() {
     const script = document.createElement('script');
@@ -42,40 +38,6 @@ function initGA4() {
     }
 }
 
-function initPostHog() {
-    try {
-        posthog.init(POSTHOG_KEY, {
-            api_host: POSTHOG_HOST,
-            defaults: '2026-01-30',
-            autocapture: false,
-            capture_pageview: false, // We track pageviews via trackPageView/trackHomepageView
-            capture_pageleave: true,
-            disable_session_recording: false,
-            session_recording: {
-                sampleRate: 0.03,
-            },
-            persistence: 'localStorage+cookie',
-            loaded: (ph) => {
-                // Register language as a super property if available via route
-                const route = useRoute();
-                const lang = route.params.lang as string | undefined;
-                if (lang) {
-                    ph.register({ language: lang });
-                }
-            },
-        });
-    } catch {
-        // Silently fail - analytics should never break the app
-    }
-}
-
 export default defineNuxtPlugin(() => {
     initGA4();
-    initPostHog();
-
-    return {
-        provide: {
-            posthog: posthog,
-        },
-    };
 });

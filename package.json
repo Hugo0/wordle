@@ -20,10 +20,10 @@
     "dependencies": {
         "@khmyznikov/pwa-install": "^0.6.2",
         "@pinia/nuxt": "^0.10.1",
+        "@posthog/nuxt": "^1.5.87",
         "nuxt": "^3.17.5",
         "openai": "^5.8.2",
         "pinia": "^3.0.3",
-        "posthog-js": "^1.360.2",
         "proper-lockfile": "^4.1.2",
         "sharp": "^0.34.3",
         "vue": "^3.5.27"
@@ -38,8 +38,8 @@
         "@tailwindcss/vite": "^4.1.18",
         "@types/proper-lockfile": "^4.1.4",
         "@vite-pwa/nuxt": "^0.10.8",
-        "playwright": "^1.58.2",
         "jsdom": "^27.4.0",
+        "playwright": "^1.58.2",
         "prettier": "^3.8.1",
         "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",

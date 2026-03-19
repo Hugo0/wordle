@@ -1,6 +1,9 @@
 <template>
     <div
         v-show="visible"
+        role="dialog"
+        aria-modal="true"
+        :aria-labelledby="labelId"
         class="fixed top-10 left-0 w-full h-full items-center flex"
         :class="zClass"
     >
@@ -9,7 +12,7 @@
             :class="sizeClass"
         >
             <div
-                class="bg-white dark:bg-neutral-800 rounded-lg relative flex flex-col w-full outline-none focus:outline-none"
+                class="bg-white dark:bg-neutral-800 rounded-lg relative flex flex-col w-full outline-none"
                 :class="paddingClass"
             >
                 <div class="relative">
@@ -17,13 +20,10 @@
                     <button
                         type="button"
                         aria-label="Close"
-                        class="absolute top-0 right-0 p-1 ml-auto z-50"
+                        class="absolute top-0 right-0 p-2 ml-auto z-50 text-3xl leading-none text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
                         @click="$emit('close')"
                     >
-                        <span
-                            class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none"
-                            >&times;</span
-                        >
+                        &times;
                     </button>
 
                     <slot />
@@ -40,11 +40,13 @@ const props = withDefaults(
         size?: 'sm' | 'md' | 'lg';
         zIndex?: 30 | 50;
         noPadding?: boolean;
+        labelId?: string;
     }>(),
     {
         size: 'md',
         zIndex: 50,
         noPadding: false,
+        labelId: undefined,
     }
 );
 defineEmits<{ close: [] }>();
