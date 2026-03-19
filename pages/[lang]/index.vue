@@ -96,9 +96,10 @@ const shareResult = route.query.r as string | undefined;
 const validResults = ['1', '2', '3', '4', '5', '6', 'x'];
 const isShareLink = shareResult !== undefined && validResults.includes(shareResult);
 
-// Dynamic share image: use result-specific image for share links, default to _1 otherwise
-const shareImageSuffix = isShareLink ? shareResult : '1';
-const shareImageUrl = `https://wordle.global/images/share/${lang}_${shareImageSuffix}.png`;
+// Dynamic share image: result-specific for share links, generic OG image otherwise
+const shareImageUrl = isShareLink
+    ? `https://wordle.global/images/share/${lang}_${shareResult}.png`
+    : 'https://wordle.global/images/og-image.png';
 
 // Override title/description for share links (matches Flask behavior)
 const configText = gameData.value.config.text || {};
