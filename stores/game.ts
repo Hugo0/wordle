@@ -454,7 +454,7 @@ export const useGameStore = defineStore('game', () => {
             if (!fullWordInputted.value) {
                 shakeRow(activeRow.value);
                 showNotification(
-                    lang.config?.text?.['notification-partial-word'] || 'Please enter a full word',
+                    lang.config?.text?.notification_partial_word || 'Please enter a full word'
                 );
                 return;
             }
@@ -567,7 +567,7 @@ export const useGameStore = defineStore('game', () => {
                 }
                 shakeRow(activeRow.value);
                 showNotification(
-                    lang.config?.text?.['notification-word-not-valid'] || 'Word is not valid',
+                    lang.config?.text?.notification_word_not_valid || 'Word is not valid'
                 );
 
                 // Track invalid word and update session frustration state
@@ -1040,7 +1040,12 @@ export const useGameStore = defineStore('game', () => {
 
                 if (color === 'correct') {
                     if (!charsMatch(guess[c] || '', letter, nMap)) {
-                        return `Hard mode: ${letter.toUpperCase()} must be in position ${c + 1}`;
+                        const tmpl =
+                            lang.config?.text?.hard_mode_position ||
+                            'Hard mode: {letter} must be in position {position}';
+                        return tmpl
+                            .replace('{letter}', letter.toUpperCase())
+                            .replace('{position}', String(c + 1));
                     }
                 } else if (color === 'semicorrect') {
                     const normalizedLetter = normalizeChar(letter, nMap).toLowerCase();
@@ -1048,7 +1053,10 @@ export const useGameStore = defineStore('game', () => {
                         (g) => normalizeChar(g, nMap).toLowerCase() === normalizedLetter
                     );
                     if (!guessHasLetter) {
-                        return `Hard mode: guess must contain ${letter.toUpperCase()}`;
+                        const tmpl2 =
+                            lang.config?.text?.hard_mode_contains ||
+                            'Hard mode: guess must contain {letter}';
+                        return tmpl2.replace('{letter}', letter.toUpperCase());
                     }
                 }
             }

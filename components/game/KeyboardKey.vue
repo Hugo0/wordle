@@ -19,11 +19,7 @@
 
         <!-- Diacritic popup (iOS-style) — only mount Teleport for keys with variants -->
         <Teleport v-if="variants?.length" to="body">
-            <div
-                v-if="popupVisible"
-                class="diacritic-popup"
-                :style="popupStyle"
-            >
+            <div v-if="popupVisible" class="diacritic-popup" :style="popupStyle">
                 <div class="diacritic-popup-inner">
                     <div
                         v-for="(variant, i) in popupVariants"

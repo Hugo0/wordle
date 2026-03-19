@@ -820,7 +820,6 @@ export function useAnalytics() {
     // Guards to prevent duplicate listener registration
     let _abandonTrackingInit = false;
 
-
     /**
      * Track game abandonment on page unload (idempotent)
      */

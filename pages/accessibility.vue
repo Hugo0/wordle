@@ -13,7 +13,9 @@ useSeoMeta({
 <template>
     <div class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white">
         <main class="max-w-2xl mx-auto px-4 py-8">
-            <a href="/" class="text-blue-500 hover:underline text-sm">&larr; Back to Wordle Global</a>
+            <a href="/" class="text-blue-500 hover:underline text-sm"
+                >&larr; Back to Wordle Global</a
+            >
 
             <h1 class="text-3xl font-bold mt-4 mb-6">Accessibility Statement</h1>
 
@@ -47,17 +49,15 @@ useSeoMeta({
                     <strong>High contrast / colorblind mode:</strong> Available in Settings.
                     Replaces green/yellow with blue/orange for deuteranopia and protanopia.
                 </li>
-                <li>
-                    <strong>Dark mode:</strong> Full dark mode support, togglable in Settings.
-                </li>
+                <li><strong>Dark mode:</strong> Full dark mode support, togglable in Settings.</li>
                 <li>
                     <strong>RTL languages:</strong> Hebrew, Arabic, Persian, Kurdish, and Urdu
                     render right-to-left with correct typing direction.
                 </li>
                 <li>
                     <strong>79 languages:</strong> Each language has a localized keyboard, diacritic
-                    support (long-press for accented characters), and normalized input so accents are
-                    optional.
+                    support (long-press for accented characters), and normalized input so accents
+                    are optional.
                 </li>
             </ul>
 

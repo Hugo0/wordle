@@ -20,9 +20,9 @@
         "share": "Bagikan",
         "shared": "Dibagikan!",
         "copied": "Disalin!",
-        "notification-copied": "Disalin ke papan klip",
-        "notification-word-not-valid": "Kata tidak valid",
-        "notification-partial-word": "Masukkan kata lengkap"
+        "notification_copied": "Disalin ke papan klip",
+        "notification_word_not_valid": "Kata tidak valid",
+        "notification_partial_word": "Masukkan kata lengkap"
     },
     "help": {
         "title": "Cara Bermain",
@@ -41,14 +41,8 @@
         "settings": "Pengaturan",
         "dark_mode": "Mode Gelap",
         "dark_mode_desc": "Ubah tema gelap",
-        "haptic_feedback": "Umpan Balik Haptic",
-        "haptic_feedback_desc": "Getar saat sentuh",
-        "sound_effects": "Efek Suara",
-        "sound_effects_desc": "Suara menang/kalah",
         "right_to_left": "Kanan ke kiri",
         "keyboard_layout": "Tata letak keyboard",
-        "easy_mode": "Izinkan semua kata",
-        "easy_mode_label": "mode mudah",
         "install_app": "Instal Aplikasi",
         "install_app_desc": "Main offline & dapatkan ikon",
         "report_issue": "Laporkan Masalah",
@@ -85,11 +79,7 @@
         "coming_soon": "segera hadir!",
         "game": "permainan",
         "games_lowercase": "permainan",
-        "show_definitions": "Tampilkan Definisi",
-        "show_definitions_desc": "Tampilkan arti kata setelah permainan",
         "definition": "Definisi",
-        "look_up_on_wiktionary": "Cari di Wiktionary",
-        "word_art": "Seni Kata",
-        "word_art_desc": "Ilustrasi AI kata harian"
+        "look_up_on_wiktionary": "Cari di Wiktionary"
     }
 }

@@ -19,9 +19,9 @@
         "share": "साझा करें",
         "shared": "साझा किया!",
         "copied": "कॉपी किया!",
-        "notification-copied": "क्लिपबोर्ड पर कॉपी किया",
-        "notification-word-not-valid": "शब्द मान्य नहीं है",
-        "notification-partial-word": "कृपया पूरा शब्द दर्ज करें"
+        "notification_copied": "क्लिपबोर्ड पर कॉपी किया",
+        "notification_word_not_valid": "शब्द मान्य नहीं है",
+        "notification_partial_word": "कृपया पूरा शब्द दर्ज करें"
     },
     "help": {
         "title": "कैसे खेलें",
@@ -41,8 +41,6 @@
         "dark_mode": "डार्क मोड",
         "dark_mode_desc": "डार्क थीम टॉगल करें",
         "keyboard_layout": "कीबोर्ड लेआउट",
-        "easy_mode": "सभी शब्द अनुमति दें",
-        "easy_mode_label": "आसान मोड",
         "install_app": "ऐप इंस्टॉल करें",
         "games": "खेल",
         "win_percent": "% जीत",

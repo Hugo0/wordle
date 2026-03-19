@@ -1,5 +1,9 @@
 <template>
-    <div role="group" aria-label="Keyboard" class="flex flex-col container mx-auto gap-2 w-full max-w-lg pb-2 md:pb-5 px-2">
+    <div
+        role="group"
+        aria-label="Keyboard"
+        class="flex flex-col container mx-auto gap-2 w-full max-w-lg pb-2 md:pb-5 px-2"
+    >
         <div v-for="(row, i) in keyboard" :key="i" class="flex gap-1">
             <GameKeyboardKey
                 v-for="key in row"

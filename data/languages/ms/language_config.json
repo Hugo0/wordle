@@ -20,9 +20,9 @@
         "share": "Kongsi",
         "shared": "Dikongsi!",
         "copied": "Disalin!",
-        "notification-copied": "Disalin ke papan klip",
-        "notification-word-not-valid": "Perkataan tidak sah",
-        "notification-partial-word": "Sila masukkan perkataan penuh"
+        "notification_copied": "Disalin ke papan klip",
+        "notification_word_not_valid": "Perkataan tidak sah",
+        "notification_partial_word": "Sila masukkan perkataan penuh"
     },
     "help": {
         "title": "Cara Bermain",
@@ -41,13 +41,7 @@
         "settings": "Tetapan",
         "dark_mode": "Mod Gelap",
         "dark_mode_desc": "Tukar tema gelap",
-        "haptic_feedback": "Maklum Balas Haptic",
-        "haptic_feedback_desc": "Getaran semasa sentuh",
-        "sound_effects": "Kesan Bunyi",
-        "sound_effects_desc": "Bunyi menang/kalah",
         "keyboard_layout": "Susun atur papan kekunci",
-        "easy_mode": "Benarkan semua perkataan",
-        "easy_mode_label": "mod mudah",
         "install_app": "Pasang Aplikasi",
         "install_app_desc": "Main luar talian & dapatkan ikon",
         "report_issue": "Laporkan Masalah",

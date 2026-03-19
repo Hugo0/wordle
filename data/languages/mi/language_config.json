@@ -17,11 +17,11 @@
         "next_word": "Next word",
         "no_attempts": "You haven't tried any words yet!",
         "share": "Tohatoha",
-        "notification-copied": "Copied to clipboard",
-        "notification-word-not-valid": "Word is not valid",
-        "notification-partial-word": "Please enter a full word",
         "share_challenge_win": "I oti au te Wordle o tēnei rā i ngā ngana {n}. Ka taea e koe te hinga i ahau?",
-        "share_challenge_lose": "Kāore au i te Wordle o tēnei rā. Ka taea e koe?"
+        "share_challenge_lose": "Kāore au i te Wordle o tēnei rā. Ka taea e koe?",
+        "notification_copied": "Copied to clipboard",
+        "notification_word_not_valid": "Word is not valid",
+        "notification_partial_word": "Please enter a full word"
     },
     "help": {
         "title": "How to Play",

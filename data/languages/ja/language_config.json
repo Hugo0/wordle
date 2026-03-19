@@ -18,11 +18,11 @@
         "share": "シェア",
         "shared": "シェアしました！",
         "copied": "コピーしました！",
-        "notification-copied": "クリップボードにコピーしました",
-        "notification-word-not-valid": "その言葉は無効です",
-        "notification-partial-word": "5文字すべて入力してください",
         "share_challenge_win": "今日のワードルを{n}回で正解しました。あなたは解けますか？",
-        "share_challenge_lose": "今日のワードルは解けませんでした。あなたはどうですか？"
+        "share_challenge_lose": "今日のワードルは解けませんでした。あなたはどうですか？",
+        "notification_copied": "クリップボードにコピーしました",
+        "notification_word_not_valid": "その言葉は無効です",
+        "notification_partial_word": "5文字すべて入力してください"
     },
     "help": {
         "title": "遊び方",
@@ -41,14 +41,8 @@
         "settings": "設定",
         "dark_mode": "ダークモード",
         "dark_mode_desc": "ダークテーマに切り替え",
-        "haptic_feedback": "振動フィードバック",
-        "haptic_feedback_desc": "タッチ時に振動",
-        "sound_effects": "効果音",
-        "sound_effects_desc": "勝敗時の効果音",
         "right_to_left": "右から左",
         "keyboard_layout": "キーボード配列",
-        "easy_mode": "どの言葉でも許可",
-        "easy_mode_label": "イージーモード",
         "install_app": "アプリをインストール",
         "install_app_desc": "オフラインでプレイ＆アプリアイコンを取得",
         "report_issue": "問題を報告",
@@ -85,11 +79,7 @@
         "coming_soon": "近日公開！",
         "game": "ゲーム",
         "games_lowercase": "ゲーム",
-        "show_definitions": "意味を表示",
-        "show_definitions_desc": "ゲーム後に言葉の意味を表示",
         "definition": "定義",
-        "look_up_on_wiktionary": "ウィクショナリーで調べる",
-        "word_art": "ワードアート",
-        "word_art_desc": "今日の言葉のAIイラスト"
+        "look_up_on_wiktionary": "ウィクショナリーで調べる"
     }
 }
