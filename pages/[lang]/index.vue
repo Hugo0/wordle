@@ -6,7 +6,12 @@
  * initializes stores, and renders the game board + keyboard.
  */
 
-definePageMeta({ layout: 'game' });
+definePageMeta({
+    layout: 'game',
+    // Force full remount when language changes — prevents game state bleed
+    // between languages (Pinia stores are singletons, stale tiles/colors persist)
+    key: (route) => route.params.lang as string,
+});
 
 const route = useRoute();
 const lang = route.params.lang as string;
@@ -17,9 +22,7 @@ const showImprovementBanner = ref(false);
 
 function onBannerClick() {
     try {
-        import('posthog-js').then((mod) =>
-            mod.default.capture('language_interest', { language: lang })
-        );
+        usePostHog()?.capture('language_interest', { language: lang });
     } catch {
         // Silently fail
     }
@@ -93,9 +96,10 @@ const shareResult = route.query.r as string | undefined;
 const validResults = ['1', '2', '3', '4', '5', '6', 'x'];
 const isShareLink = shareResult !== undefined && validResults.includes(shareResult);
 
-// Dynamic share image: use result-specific image for share links, default to _1 otherwise
-const shareImageSuffix = isShareLink ? shareResult : '1';
-const shareImageUrl = `https://wordle.global/images/share/${lang}_${shareImageSuffix}.png`;
+// Dynamic share image: result-specific for share links, generic OG image otherwise
+const shareImageUrl = isShareLink
+    ? `https://wordle.global/images/share/${lang}_${shareResult}.png`
+    : 'https://wordle.global/images/og-image.png';
 
 // Override title/description for share links (matches Flask behavior)
 const configText = gameData.value.config.text || {};
@@ -241,8 +245,7 @@ onMounted(() => {
             gameOver: game.gameOver,
             lastGuessValid: true,
         }));
-        analytics.initErrorTracking(langStore.languageCode);
-        analytics.identifyUser(langStore.languageCode);
+        analytics.identifyUser(stats.gameResults);
     } catch (err) {
         console.warn('[wordle] Failed to restore game state:', err);
     }

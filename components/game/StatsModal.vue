@@ -20,7 +20,7 @@
                 "
                 @click="statsTab = 'today'"
             >
-                {{ lang.config?.ui?.today || 'Today' }}
+                {{ lang.config?.ui?.today }}
             </button>
             <button
                 role="tab"
@@ -33,7 +33,7 @@
                 "
                 @click="statsTab = 'stats'"
             >
-                {{ lang.config?.ui?.statistics || 'Stats' }}
+                {{ lang.config?.ui?.statistics }}
             </button>
             <button
                 role="tab"
@@ -46,7 +46,7 @@
                 "
                 @click="statsTab = 'global'"
             >
-                {{ lang.config?.ui?.all_languages || 'All Languages' }}
+                {{ lang.config?.ui?.all_languages }}
             </button>
         </div>
 
@@ -84,7 +84,7 @@
                             <span
                                 class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
                             >
-                                {{ lang.config?.ui?.definition || 'Definition' }}
+                                {{ lang.config?.ui?.definition }}
                             </span>
                             <span
                                 v-if="game.todayDefinition.partOfSpeech"
@@ -144,12 +144,16 @@
                         :href="game.communityStatsLink"
                         class="inline-flex items-center gap-1 text-sm text-green-600 dark:text-green-400 hover:underline"
                     >
-                        <template v-if="game.communityTotal <= 1"> First to play today! </template>
-                        <template v-else-if="game.communityIsTopScore"> Top score today! </template>
+                        <template v-if="game.communityTotal <= 1">
+                            {{ lang.config?.ui?.first_to_play }}
+                        </template>
+                        <template v-else-if="game.communityIsTopScore">
+                            {{ lang.config?.ui?.top_score }}
+                        </template>
                         <template v-else>
-                            {{ lang.config?.ui?.better_than || 'Better than' }}
+                            {{ lang.config?.ui?.better_than }}
                             {{ game.communityPercentile }}%
-                            {{ lang.config?.ui?.of_players || 'of players' }}
+                            {{ lang.config?.ui?.of_players }}
                         </template>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +181,7 @@
                 >
                     <span v-if="game.shareButtonState === 'success'">
                         &#10003;
-                        {{ lang.config?.text?.copied || 'Copied!' }}
+                        {{ lang.config?.text?.copied }}
                     </span>
                     <span v-else>
                         {{ lang.config?.text?.share }}
@@ -206,7 +210,7 @@
                 <h4
                     class="text-xs font-semibold uppercase tracking-wide mb-1 text-center text-neutral-500 dark:text-neutral-400"
                 >
-                    {{ lang.config?.ui?.guess_distribution || 'Guess Distribution' }}
+                    {{ lang.config?.ui?.guess_distribution }}
                 </h4>
                 <div class="space-y-0.5">
                     <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
@@ -246,7 +250,7 @@
                             {{ statsStore.stats.n_games }}
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.games || 'Games' }}
+                            {{ lang.config?.ui?.games }}
                         </p>
                     </div>
                     <div class="text-center">
@@ -254,7 +258,7 @@
                             {{ Math.round(statsStore.stats.win_percentage) }}%
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.win_percent || 'Win %' }}
+                            {{ lang.config?.ui?.win_percent }}
                         </p>
                     </div>
                     <div class="text-center">
@@ -263,7 +267,7 @@
                             >{{ statsStore.stats.current_streak }}
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.streak || 'Streak' }}
+                            {{ lang.config?.ui?.streak }}
                         </p>
                     </div>
                     <div class="text-center">
@@ -271,7 +275,7 @@
                             {{ statsStore.stats.longest_streak }}
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.best || 'Best' }}
+                            {{ lang.config?.ui?.best }}
                         </p>
                     </div>
                 </div>
@@ -308,7 +312,7 @@
                 >
                     <span v-if="game.shareButtonState === 'success'">
                         &#10003;
-                        {{ lang.config?.text?.copied || 'Copied!' }}
+                        {{ lang.config?.text?.copied }}
                     </span>
                     <span v-else>
                         {{ lang.config?.text?.share }}
@@ -329,7 +333,7 @@
                             {{ statsStore.totalStats.total_games }}
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.games || 'Games' }}
+                            {{ lang.config?.ui?.games }}
                         </p>
                     </div>
                     <div class="text-center">
@@ -337,7 +341,7 @@
                             {{ Math.round(statsStore.totalStats.total_win_percentage) }}%
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.win_percent || 'Win %' }}
+                            {{ lang.config?.ui?.win_percent }}
                         </p>
                     </div>
                     <div class="text-center">
@@ -347,7 +351,7 @@
                             >{{ statsStore.totalStats.current_overall_streak }}
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.streak || 'Streak' }}
+                            {{ lang.config?.ui?.streak }}
                         </p>
                     </div>
                     <div class="text-center">
@@ -355,7 +359,7 @@
                             {{ statsStore.totalStats.languages_won?.length || 0 }}
                         </p>
                         <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                            {{ lang.config?.ui?.languages || 'Languages' }}
+                            {{ lang.config?.ui?.languages }}
                         </p>
                     </div>
                 </div>
@@ -386,10 +390,7 @@
                     v-else
                     class="text-xs text-neutral-500 dark:text-neutral-400 text-center pt-1 border-t border-neutral-200 dark:border-neutral-600"
                 >
-                    {{
-                        lang.config?.ui?.play_more_languages ||
-                        'Play more languages to see your global stats!'
-                    }}
+                    {{ lang.config?.ui?.play_more_languages }}
                 </p>
             </div>
         </div>

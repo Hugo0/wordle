@@ -20,9 +20,9 @@
         "share": "شیئر کریں",
         "shared": "شیئر ہو گیا!",
         "copied": "کاپی ہو گیا!",
-        "notification-copied": "کلپ بورڈ پر کاپی ہو گیا",
-        "notification-word-not-valid": "لفظ درست نہیں ہے",
-        "notification-partial-word": "براہ کرم مکمل لفظ درج کریں"
+        "notification_copied": "کلپ بورڈ پر کاپی ہو گیا",
+        "notification_word_not_valid": "لفظ درست نہیں ہے",
+        "notification_partial_word": "براہ کرم مکمل لفظ درج کریں"
     },
     "help": {
         "title": "کیسے کھیلیں",
@@ -43,8 +43,6 @@
         "dark_mode_desc": "ڈارک تھیم تبدیل کریں",
         "right_to_left": "دائیں سے بائیں",
         "keyboard_layout": "کی بورڈ ترتیب",
-        "easy_mode": "تمام الفاظ کی اجازت دیں",
-        "easy_mode_label": "آسان موڈ",
         "install_app": "ایپ انسٹال کریں",
         "games": "کھیل",
         "win_percent": "% جیت",

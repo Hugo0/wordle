@@ -4,7 +4,22 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-06-14',
     devtools: { enabled: true },
 
-    modules: ['@pinia/nuxt', '@vite-pwa/nuxt'],
+    modules: ['@pinia/nuxt', '@vite-pwa/nuxt', '@posthog/nuxt'],
+
+    posthogConfig: {
+        publicKey: 'phc_DMY07B83ghetzxgIbBhobbdSjlueym6vNVVZwM79SPp',
+        clientConfig: {
+            api_host: '/t', // Proxied through Nitro server route
+            ui_host: 'https://eu.posthog.com',
+            autocapture: false,
+            capture_pageview: 'history_change', // Auto-track SPA navigations
+            capture_pageleave: true,
+            session_recording: {
+                sampleRate: 0.03,
+            },
+            persistence: 'localStorage+cookie',
+        },
+    },
 
     css: ['~/assets/css/main.css'],
 

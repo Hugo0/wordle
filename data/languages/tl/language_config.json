@@ -20,9 +20,9 @@
         "share": "Ibahagi",
         "shared": "Naibahagi!",
         "copied": "Nakopya!",
-        "notification-copied": "Nakopya sa clipboard",
-        "notification-word-not-valid": "Hindi valid ang salita",
-        "notification-partial-word": "Maglagay ng buong salita"
+        "notification_copied": "Nakopya sa clipboard",
+        "notification_word_not_valid": "Hindi valid ang salita",
+        "notification_partial_word": "Maglagay ng buong salita"
     },
     "help": {
         "title": "Paano Maglaro",
@@ -42,8 +42,6 @@
         "dark_mode": "Dark Mode",
         "dark_mode_desc": "I-toggle ang dark theme",
         "keyboard_layout": "Layout ng keyboard",
-        "easy_mode": "Payagan lahat ng salita",
-        "easy_mode_label": "madaling mode",
         "install_app": "I-install ang App",
         "games": "Mga Laro",
         "win_percent": "% Panalo",

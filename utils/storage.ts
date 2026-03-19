@@ -82,16 +82,11 @@ export function writeJson(key: string, value: unknown): void {
  */
 export function getOrCreateId(key: string): string {
     if (!import.meta.client) return 'unknown';
-    try {
-        let id = localStorage.getItem(key);
-        if (!id) {
-            id = crypto.randomUUID();
-            localStorage.setItem(key, id);
-        }
-        return id;
-    } catch {
-        return 'unknown';
-    }
+    const existing = readLocal(key);
+    if (existing) return existing;
+    const id = crypto.randomUUID();
+    writeLocal(key, id);
+    return id;
 }
 
 /**
@@ -108,4 +103,17 @@ export function isDismissedWithCooldown(key: string, durationMs: number): boolea
 /** Record a dismissal timestamp. */
 export function dismissWithCooldown(key: string): void {
     writeLocal(key, Date.now().toString());
+}
+
+// ---------------------------------------------------------------------------
+// Platform detection
+// ---------------------------------------------------------------------------
+
+/** Check if running as installed PWA (standalone mode). SSR-safe. */
+export function isStandalone(): boolean {
+    if (!import.meta.client) return false;
+    return (
+        window.matchMedia('(display-mode: standalone)').matches ||
+        (navigator as Navigator & { standalone?: boolean }).standalone === true
+    );
 }

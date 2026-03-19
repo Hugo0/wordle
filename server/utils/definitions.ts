@@ -59,6 +59,7 @@ function lookupKaikki(
             part_of_speech: null,
             source,
             url: wiktionaryUrl(word, langCode),
+            ts: Math.floor(Date.now() / 1000),
         };
     }
     return null;
@@ -138,10 +139,35 @@ const LLM_LANG_NAMES: Record<string, string> = {
     hyw: 'Western Armenian',
     ckb: 'Central Kurdish',
     pau: 'Palauan',
+    ia: 'Interlingua',
     ie: 'Interlingue',
     rw: 'Kinyarwanda',
     tlh: 'Klingon',
     qya: 'Quenya',
+    // Added: languages that were missing LLM definition support
+    bn: 'Bengali',
+    eo: 'Esperanto',
+    fo: 'Faroese',
+    fur: 'Friulian',
+    fy: 'West Frisian',
+    gd: 'Scottish Gaelic',
+    ha: 'Hausa',
+    hi: 'Hindi',
+    ja: 'Japanese',
+    lb: 'Luxembourgish',
+    ltg: 'Latgalian',
+    mi: 'Māori',
+    mn: 'Mongolian',
+    mr: 'Marathi',
+    nds: 'Low German',
+    ne: 'Nepali',
+    pa: 'Punjabi',
+    sw: 'Swahili',
+    tk: 'Turkmen',
+    tl: 'Tagalog',
+    ur: 'Urdu',
+    uz: 'Uzbek',
+    yo: 'Yoruba',
 };
 
 const LLM_MODEL = 'gpt-5.2';
@@ -259,7 +285,17 @@ export async function fetchDefinition(
                 }
                 // Expired — fall through to LLM
             } else if (loaded && Object.keys(loaded).length > 0) {
-                return loaded;
+                // If cached result is English-only (kaikki-en fallback), try LLM for native
+                // But only retry once per 24h to avoid hammering LLM
+                if (loaded.source === 'kaikki-en' && !loaded.definition_native) {
+                    const cachedTs = loaded.ts || 0;
+                    if (Date.now() / 1000 - cachedTs < NEGATIVE_CACHE_TTL) {
+                        return loaded; // Too soon to retry, serve cached English
+                    }
+                    // Expired — fall through to LLM
+                } else {
+                    return loaded;
+                }
             }
         } catch {
             // Fall through

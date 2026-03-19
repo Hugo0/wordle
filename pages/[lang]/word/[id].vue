@@ -8,6 +8,7 @@
 
 const route = useRoute();
 const lang = route.params.lang as string;
+const langStore = useLanguageStore();
 const dayIdx = parseInt(route.params.id as string, 10);
 
 const { data: wordData, error } = await useFetch(`/api/${lang}/word/${dayIdx}`);
@@ -324,7 +325,7 @@ onMounted(() => {
             <template v-else-if="d.is_today && !todayRevealed">
                 <div class="text-center py-8">
                     <p class="text-lg font-bold text-green-700 dark:text-green-400 mb-2">
-                        Today's word!
+                        {{ langStore.config?.ui?.todays_word_reveal }}
                     </p>
                     <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
                         Play today's game to reveal this word.
@@ -333,7 +334,7 @@ onMounted(() => {
                         :to="`/${lang}`"
                         class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors"
                     >
-                        Play now
+                        {{ langStore.config?.ui?.play_now }}
                     </NuxtLink>
                 </div>
             </template>
@@ -363,7 +364,7 @@ onMounted(() => {
                         <span
                             class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
                         >
-                            Definition
+                            {{ langStore.config?.ui?.definition }}
                         </span>
                         <span
                             v-if="(todayRevealedDef || definition)?.part_of_speech"
@@ -431,7 +432,7 @@ onMounted(() => {
                         <span
                             class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
                         >
-                            Definition
+                            {{ langStore.config?.ui?.definition }}
                         </span>
                         <span
                             v-if="definition.part_of_speech"
@@ -463,7 +464,7 @@ onMounted(() => {
                         <span
                             class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
                         >
-                            Definition
+                            {{ langStore.config?.ui?.definition }}
                         </span>
                         <span
                             v-if="asyncDef.part_of_speech"
@@ -519,13 +520,13 @@ onMounted(() => {
                     <h3
                         class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center"
                     >
-                        Community Stats
+                        {{ langStore.config?.ui?.community_stats }}
                     </h3>
                     <div class="grid grid-cols-3 gap-2 text-center mb-3">
                         <div>
                             <p class="text-lg font-bold">{{ wordStats.total }}</p>
                             <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                Players
+                                {{ langStore.config?.ui?.players }}
                             </p>
                         </div>
                         <div>
@@ -624,7 +625,7 @@ onMounted(() => {
                     rel="noopener noreferrer"
                     class="text-xs text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
                 >
-                    Report bad word
+                    {{ langStore.config?.ui?.report_bad_word }}
                 </a>
             </p>
         </div>

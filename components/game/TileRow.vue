@@ -1,5 +1,10 @@
 <template>
-    <div class="grid grid-cols-5 gap-1 w-full" :class="{ shake: shaking }">
+    <div
+        role="row"
+        class="grid grid-cols-5 gap-1 w-full"
+        :class="{ shake: shaking }"
+        :style="rtl ? { direction: 'rtl' } : undefined"
+    >
         <GameTile
             v-for="(letter, j) in tiles"
             :key="j"
@@ -14,5 +19,6 @@ defineProps<{
     tiles: string[];
     classes: string[];
     shaking: boolean;
+    rtl?: boolean;
 }>();
 </script>

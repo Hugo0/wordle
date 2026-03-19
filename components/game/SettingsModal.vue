@@ -2,7 +2,7 @@
     <SharedBaseModal :visible="visible" size="sm" :z-index="30" @close="$emit('close')">
         <div class="flex flex-col gap-2">
             <h3 class="uppercase font-bold text-xl tracking-wider mb-5">
-                {{ lang.config?.ui?.settings || 'Settings' }}
+                {{ lang.config?.ui?.settings }}
             </h3>
 
             <div class="space-y-4">
@@ -10,7 +10,7 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p>
-                            {{ lang.config?.ui?.dark_mode || 'Dark Mode' }}
+                            {{ lang.config?.ui?.dark_mode }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -25,7 +25,7 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p>
-                            {{ lang.config?.ui?.sound_and_haptics || 'Sound & Haptics' }}
+                            {{ lang.config?.ui?.sound_and_haptics }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -40,12 +40,10 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p>
-                            {{ lang.config?.ui?.word_info || 'Word Info' }}
+                            {{ lang.config?.ui?.word_info }}
                         </p>
                         <p class="text-xs text-neutral-500 dark:text-neutral-400">
-                            {{
-                                lang.config?.ui?.word_info_desc || 'Definition & AI art after game'
-                            }}
+                            {{ lang.config?.ui?.word_info_desc }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -59,7 +57,7 @@
                 <!-- Difficulty selector (3-way: Easy / Normal / Hard) -->
                 <div>
                     <p class="text-sm font-semibold mb-2">
-                        {{ lang.config?.ui?.difficulty || 'Difficulty' }}
+                        {{ lang.config?.ui?.difficulty }}
                     </p>
                     <div
                         class="flex rounded-lg overflow-hidden border border-neutral-300 dark:border-neutral-600"
@@ -75,7 +73,7 @@
                             "
                             @click="setDifficulty('easy')"
                         >
-                            Easy
+                            {{ lang.config?.ui?.easy }}
                         </button>
                         <button
                             type="button"
@@ -87,7 +85,7 @@
                             "
                             @click="setDifficulty('normal')"
                         >
-                            Normal
+                            {{ lang.config?.ui?.normal }}
                         </button>
                         <button
                             type="button"
@@ -99,26 +97,26 @@
                             "
                             @click="setDifficulty('hard')"
                         >
-                            Hard
+                            {{ lang.config?.ui?.hard }}
                         </button>
                     </div>
                     <p
                         v-if="allowAnyWord && !settings.hardMode"
                         class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
                     >
-                        Any word accepted, even if not in the dictionary
+                        {{ lang.config?.ui?.easy_desc }}
                     </p>
                     <p
                         v-if="!allowAnyWord && !settings.hardMode"
                         class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
                     >
-                        Guesses must be valid words from the dictionary
+                        {{ lang.config?.ui?.normal_desc }}
                     </p>
                     <p
                         v-if="settings.hardMode"
                         class="text-xs text-neutral-500 dark:text-neutral-400 mt-1"
                     >
-                        Revealed hints must be used in subsequent guesses
+                        {{ lang.config?.ui?.hard_desc }}
                     </p>
                     <p v-if="settings.difficultyWarning" class="text-xs text-amber-500 mt-1">
                         {{ settings.difficultyWarning }}
@@ -130,9 +128,9 @@
                 <!-- High Contrast / Colorblind mode -->
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
-                        <p>High Contrast</p>
+                        <p>{{ lang.config?.ui?.high_contrast }}</p>
                         <p class="text-xs text-neutral-500 dark:text-neutral-400">
-                            Colorblind-friendly colors
+                            {{ lang.config?.ui?.high_contrast_desc }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -146,7 +144,7 @@
                 <!-- Right-to-left toggle -->
                 <div class="flex flex-row">
                     <p class="flex-grow">
-                        {{ lang.config?.ui?.right_to_left || 'Right to left' }}
+                        {{ lang.config?.ui?.right_to_left }}
                     </p>
                     <div class="flex flex-row items-center">
                         <label for="right_to_left" class="flex items-center ml-2 animate-bounce">
@@ -187,7 +185,7 @@
                     <div class="border-t-2 border-gray-300 dark:border-gray-600" />
                     <div class="flex flex-row items-center">
                         <p id="keyboard-layout-label" class="flex-grow">
-                            {{ lang.config?.ui?.keyboard_layout || 'Keyboard layout' }}
+                            {{ lang.config?.ui?.keyboard_layout }}
                         </p>
                         <select
                             id="keyboard-layout-select"
@@ -213,13 +211,13 @@
                 <div class="border-t-2 border-gray-300 dark:border-gray-600" />
                 <div class="flex flex-row items-center">
                     <p class="flex-grow">
-                        {{ lang.config?.ui?.language || 'Language' }}
+                        {{ lang.config?.ui?.language }}
                     </p>
                     <NuxtLink
                         to="/"
                         class="border border-neutral-300 dark:border-neutral-600 rounded px-3 py-1 bg-white dark:bg-neutral-700 dark:text-white text-sm hover:bg-neutral-100 dark:hover:bg-neutral-600 transition-colors"
                     >
-                        {{ lang.config?.ui?.change_language || 'Change Language' }}
+                        {{ lang.config?.ui?.change_language }}
                     </NuxtLink>
                 </div>
 
@@ -251,10 +249,10 @@
                             <path d="M16 19h6" />
                             <path d="M19 16v6" />
                         </svg>
-                        {{ lang.config?.ui?.install_app || 'Install App' }}
+                        {{ lang.config?.ui?.install_app }}
                     </button>
                     <p class="text-xs text-center text-neutral-500 dark:text-neutral-400 mt-1">
-                        {{ lang.config?.ui?.install_app_desc || 'Play offline & get app icon' }}
+                        {{ lang.config?.ui?.install_app_desc }}
                     </p>
                 </div>
             </div>

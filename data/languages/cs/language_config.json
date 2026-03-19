@@ -5,35 +5,35 @@
     "name_native": "čeština",
     "meta": {
         "locale": "cs",
-        "title": "Denní slovo ",
-        "description": "Hádejte skryté slovo v 6 pokusech (nebo méně). Každý den je k dispozici nový puzzle! ",
+        "title": "Denní slovo",
+        "description": "Hádejte skryté slovo v 6 pokusech (nebo méně). Každý den je k dispozici nový puzzle!",
         "keywords": "čeština, puzzle, slovo, hra, hra, online, hádat, denně"
     },
     "text": {
         "subheader": "čeština",
-        "next_word": "Další slovo ",
-        "no_attempts": "Ještě jste nezkoušeli žádná slova! ",
+        "next_word": "Další slovo",
+        "no_attempts": "Ještě jste nezkoušeli žádná slova!",
         "share": "Sdílet",
-        "notification-copied": "Zkopírován do schránky ",
-        "notification-partial-word": "Zadejte prosím úplné slovo ",
         "share_challenge_win": "Dnešní Wordle jsem dal/a za {n} pokusů. Dokážeš to líp?",
-        "share_challenge_lose": "Dnešní Wordle jsem neuhodl/a. Dokážeš to ty?"
+        "share_challenge_lose": "Dnešní Wordle jsem neuhodl/a. Dokážeš to ty?",
+        "notification_copied": "Zkopírován do schránky",
+        "notification_partial_word": "Zadejte prosím úplné slovo"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
     "right_to_left": "false",
     "help": {
-        "title": "Jak hrát ",
-        "title_2": "Příklady ",
-        "close": "Zavřete tuto zprávu ",
-        "text_1_1_1": "Odhadnout ",
-        "text_1_1_2": "v šesti pokusech nebo méně. ",
-        "text_1_2": "Každý odhad musí být platným pěti písmenem. Stisknutím tlačítka ENTER odeslejte odhad. ",
-        "text_1_3": "Poté, co odhadnete, dlaždice změní barvu, která označuje, která písmena vašeho slova jsou správná nebo téměř správná. ",
-        "text_2_1": "je ve slově a ve správném místě! ",
-        "text_2_2": "je ve slově, ale ne ve správném místě. ",
-        "text_2_3": "není přítomen ve slově, který se snaží myslet. ",
-        "text_3": "Každý den bude k dispozici nové slovo! "
+        "title": "Jak hrát",
+        "title_2": "Příklady",
+        "close": "Zavřete tuto zprávu",
+        "text_1_1_1": "Odhadnout",
+        "text_1_1_2": "v šesti pokusech nebo méně.",
+        "text_1_2": "Každý odhad musí být platným pěti písmenem. Stisknutím tlačítka ENTER odeslejte odhad.",
+        "text_1_3": "Poté, co odhadnete, dlaždice změní barvu, která označuje, která písmena vašeho slova jsou správná nebo téměř správná.",
+        "text_2_1": "je ve slově a ve správném místě!",
+        "text_2_2": "je ve slově, ale ne ve správném místě.",
+        "text_2_3": "není přítomen ve slově, který se snaží myslet.",
+        "text_3": "Každý den bude k dispozici nové slovo!"
     },
     "diacritic_map": {
         "a": [

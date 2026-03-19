@@ -251,3 +251,48 @@
 .dark .pop {
     border-color: #565758 !important;
 }
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .shake,
+    .pop,
+    .tile-bounce,
+    .key-shake,
+    .key-pulse,
+    .modal-animate,
+    .key-correct,
+    .key-semicorrect {
+        animation: none !important;
+    }
+
+    .diacritic-popup {
+        animation: none !important;
+    }
+}
+
+/* Skip to content link — visible only on keyboard focus */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding: 8px 16px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    border-radius: 0 0 6px 6px;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus-visible ring for interactive elements (keyboard only, not mouse) */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
