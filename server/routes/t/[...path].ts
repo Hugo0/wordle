@@ -9,18 +9,11 @@ export default defineEventHandler(async (event) => {
     const url = getRequestURL(event);
     const search = url.search || '';
 
-    // Reject oversized payloads (PostHog batches are typically <10KB)
-    const contentLength = getHeader(event, 'content-length');
-    if (contentLength && parseInt(contentLength, 10) > 1_000_000) {
-        setResponseStatus(event, 413);
-        return 'Payload too large';
-    }
-
     const hostname = path.startsWith('static/') ? 'eu-assets.i.posthog.com' : 'eu.i.posthog.com';
     const targetUrl = `https://${hostname}/${path}${search}`;
 
-    // Forward client IP for geolocation
-    const clientIp = getHeader(event, 'x-forwarded-for') || getRequestIP(event);
+    // Use server-observed IP only (ignore client x-forwarded-for to prevent spoofing)
+    const clientIp = getRequestIP(event, { xForwardedFor: true });
 
     return proxyRequest(event, targetUrl, {
         headers: {

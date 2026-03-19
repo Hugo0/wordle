@@ -8,7 +8,7 @@
 
 ![Wordle Global](public/images/og-image.png)
 
-**[Play now at wordle.global](https://wordle.global/)** — the daily word guessing game in 78 languages. Open source, community-driven, no ads.
+**[Play now at wordle.global](https://wordle.global/)** — the daily word guessing game in 79 languages. Open source, community-driven, no ads.
 
 ## Languages
 

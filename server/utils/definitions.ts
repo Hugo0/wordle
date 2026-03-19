@@ -59,6 +59,7 @@ function lookupKaikki(
             part_of_speech: null,
             source,
             url: wiktionaryUrl(word, langCode),
+            ts: Math.floor(Date.now() / 1000),
         };
     }
     return null;
@@ -285,8 +286,13 @@ export async function fetchDefinition(
                 // Expired — fall through to LLM
             } else if (loaded && Object.keys(loaded).length > 0) {
                 // If cached result is English-only (kaikki-en fallback), try LLM for native
+                // But only retry once per 24h to avoid hammering LLM
                 if (loaded.source === 'kaikki-en' && !loaded.definition_native) {
-                    // Fall through to LLM to get native definition
+                    const cachedTs = loaded.ts || 0;
+                    if (Date.now() / 1000 - cachedTs < NEGATIVE_CACHE_TTL) {
+                        return loaded; // Too soon to retry, serve cached English
+                    }
+                    // Expired — fall through to LLM
                 } else {
                     return loaded;
                 }

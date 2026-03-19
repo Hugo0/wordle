@@ -21,33 +21,33 @@
         "locale": "de",
         "title": "Das tägliche Wortspiel",
         "description": "Erraten Sie das verborgene Wort in 6 Versuchen (oder weniger). Jeden Tag ist ein neues Rätsel verfügbar!",
-        "keywords": "Deutsch, Englisch, Puzzle, Word, Spiel, Spiel, online, Vermutung, täglich, Ratespiel, wordle "
+        "keywords": "Deutsch, Englisch, Puzzle, Word, Spiel, Spiel, online, Vermutung, täglich, Ratespiel, wordle"
     },
     "text": {
         "subheader": "Deutsch",
-        "next_word": "Nächstes Wort ",
-        "no_attempts": "Sie haben noch keine Wörter versucht! ",
-        "share": "Teilen ",
+        "next_word": "Nächstes Wort",
+        "no_attempts": "Sie haben noch keine Wörter versucht!",
+        "share": "Teilen",
         "share_challenge_win": "Ich habe das heutige Wordle in {n} Versuchen gelöst. Schaffst du es besser?",
         "share_challenge_lose": "Ich habe das heutige Wordle nicht geschafft. Schaffst du es?",
-        "notification_copied": "In die Zwischenablage kopiert. ",
-        "notification_partial_word": "Bitte geben Sie ein vollständiges Wort ein! "
+        "notification_copied": "In die Zwischenablage kopiert.",
+        "notification_partial_word": "Bitte geben Sie ein vollständiges Wort ein!"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
     "right_to_left": "false",
     "help": {
-        "title": "Spielanleitung ",
-        "title_2": "Beispiele ",
-        "close": "Schließen ",
-        "text_1_1_1": "Erraten Sie das ",
-        "text_1_1_2": "in sechs Versuchen oder weniger. ",
-        "text_1_2": "Jeder Versuch muss ein gültiges Wort mit fünf Buchstaben sein. Drücken Sie die ENTER-Taste, um Ihren Versuch einzureichen. ",
-        "text_1_3": "Nachdem Sie ein Wort eingegeben haben, ändern die Kacheln die Farbe, um anzuzeigen, welche Buchstaben Ihres Wortes korrekt oder fast korrekt sind. ",
-        "text_2_1": "ist im Wort und am richtigen Ort! ",
-        "text_2_2": "ist im Wort, aber nicht an der richtigen Stelle. ",
-        "text_2_3": "ist nicht in dem gesuchten Wort vorhanden. ",
-        "text_3": "Ein neues Wort wird täglich verfügbar sein! "
+        "title": "Spielanleitung",
+        "title_2": "Beispiele",
+        "close": "Schließen",
+        "text_1_1_1": "Erraten Sie das",
+        "text_1_1_2": "in sechs Versuchen oder weniger.",
+        "text_1_2": "Jeder Versuch muss ein gültiges Wort mit fünf Buchstaben sein. Drücken Sie die ENTER-Taste, um Ihren Versuch einzureichen.",
+        "text_1_3": "Nachdem Sie ein Wort eingegeben haben, ändern die Kacheln die Farbe, um anzuzeigen, welche Buchstaben Ihres Wortes korrekt oder fast korrekt sind.",
+        "text_2_1": "ist im Wort und am richtigen Ort!",
+        "text_2_2": "ist im Wort, aber nicht an der richtigen Stelle.",
+        "text_2_3": "ist nicht in dem gesuchten Wort vorhanden.",
+        "text_3": "Ein neues Wort wird täglich verfügbar sein!"
     },
     "ui": {
         "settings": "Einstellungen",

@@ -6,34 +6,34 @@
     "meta": {
         "locale": "et",
         "title": "Igapäevane sõnamäng",
-        "description": "Arva Varjatud sõna 6 püüab (või vähem). Iga päev on saadaval uus puzzle! ",
+        "description": "Arva Varjatud sõna 6 püüab (või vähem). Iga päev on saadaval uus puzzle!",
         "keywords": "eesti, puzzle, sõna, mängimine, mäng, võrgus, arvan, iga päev"
     },
     "text": {
         "subheader": "eesti",
-        "next_word": "Järgmine sõna ",
-        "no_attempts": "Sa pole veel ühtegi sõna proovinud! ",
-        "share": "Jagama ",
+        "next_word": "Järgmine sõna",
+        "no_attempts": "Sa pole veel ühtegi sõna proovinud!",
+        "share": "Jagama",
         "share_challenge_win": "Lahendasin tänase Wordle {n} katsega. Kas sa suudad paremini?",
         "share_challenge_lose": "Ma ei lahendanud tänast Wordle't. Kas sina suudad?",
-        "notification_copied": "Kopeeritud lõikepuhvrisse ",
-        "notification_partial_word": "Palun sisestage täielik sõna "
+        "notification_copied": "Kopeeritud lõikepuhvrisse",
+        "notification_partial_word": "Palun sisestage täielik sõna"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
     "right_to_left": "false",
     "help": {
-        "title": "Kuidas mängida ",
-        "title_2": "Näited ",
-        "close": "Sulge see sõnum ",
-        "text_1_1_1": "Arva ",
-        "text_1_1_2": "kuus püüab või vähem. ",
-        "text_1_2": "Iga vist peab olema kehtiv viis kirja sõna. Vajutage ENTER nuppu, et esitada oma vist. ",
-        "text_1_3": "Pärast arvata, plaadid muudavad värvi, et näidata, millised teie sõna tähed on õiged või peaaegu õiged. ",
-        "text_2_1": "on sõna ja õiges kohas! ",
-        "text_2_2": "on sõna, kuid mitte õiges kohas. ",
-        "text_2_3": "ei ole sõna sõna, mida sa üritad ära arvata. ",
-        "text_3": "Uus sõna on iga päev kättesaadav! "
+        "title": "Kuidas mängida",
+        "title_2": "Näited",
+        "close": "Sulge see sõnum",
+        "text_1_1_1": "Arva",
+        "text_1_1_2": "kuus püüab või vähem.",
+        "text_1_2": "Iga vist peab olema kehtiv viis kirja sõna. Vajutage ENTER nuppu, et esitada oma vist.",
+        "text_1_3": "Pärast arvata, plaadid muudavad värvi, et näidata, millised teie sõna tähed on õiged või peaaegu õiged.",
+        "text_2_1": "on sõna ja õiges kohas!",
+        "text_2_2": "on sõna, kuid mitte õiges kohas.",
+        "text_2_3": "ei ole sõna sõna, mida sa üritad ära arvata.",
+        "text_3": "Uus sõna on iga päev kättesaadav!"
     },
     "ui": {
         "settings": "Seaded",
