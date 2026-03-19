@@ -8,7 +8,7 @@
         @click="handleClick"
         @touchstart.passive="handleTouchStart"
         @touchmove.passive="handleTouchMove"
-        @touchend.prevent="handleTouchEnd"
+        @touchend="handleTouchEnd"
         @touchcancel="handleTouchCancel"
         @mousedown="handleMouseDown"
         @contextmenu="variants?.length ? $event.preventDefault() : undefined"
@@ -148,7 +148,7 @@ function handleTouchMove(e: TouchEvent) {
     updateActiveVariant(touch.clientX);
 }
 
-function handleTouchEnd() {
+function handleTouchEnd(e: TouchEvent) {
     if (!props.variants?.length) {
         touchActive = false;
         return;
@@ -158,6 +158,7 @@ function handleTouchEnd() {
     touchActive = false;
 
     if (popupVisible.value) {
+        e.preventDefault(); // Only prevent click when popup was used
         selectAndDismiss();
     }
 }
