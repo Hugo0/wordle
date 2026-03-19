@@ -5,7 +5,7 @@
             role="switch"
             class="sr-only peer"
             :checked="modelValue"
-            :aria-label="label"
+            :aria-label="label || undefined"
             @change="$emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
         />
         <div

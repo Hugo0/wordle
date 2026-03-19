@@ -3,7 +3,7 @@
         v-show="visible"
         role="dialog"
         aria-modal="true"
-        :aria-labelledby="labelId"
+        :aria-labelledby="labelId || undefined"
         class="fixed top-10 left-0 w-full h-full items-center flex"
         :class="zClass"
     >

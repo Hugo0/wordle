@@ -82,16 +82,11 @@ export function writeJson(key: string, value: unknown): void {
  */
 export function getOrCreateId(key: string): string {
     if (!import.meta.client) return 'unknown';
-    try {
-        let id = localStorage.getItem(key);
-        if (!id) {
-            id = crypto.randomUUID();
-            localStorage.setItem(key, id);
-        }
-        return id;
-    } catch {
-        return 'unknown';
-    }
+    const existing = readLocal(key);
+    if (existing) return existing;
+    const id = crypto.randomUUID();
+    writeLocal(key, id);
+    return id;
 }
 
 /**
