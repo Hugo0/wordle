@@ -4,6 +4,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 import { useStatsStore } from '../../stores/stats';
+import { buildStatsKey, createGameConfig, isClassicDailyStatsKey } from '../../utils/game-modes';
 
 // jsdom provides localStorage natively when import.meta.client = true
 
@@ -76,6 +77,49 @@ describe('Stats Store', () => {
         });
     });
 
+    describe('mode-specific stats keys', () => {
+        it('keeps classic and dordle stats separate', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en', true, 3);
+            stats.saveResult('en', true, 4);
+            stats.saveResult('en_dordle', true, 7);
+            stats.saveResult('en_dordle', false, 7);
+
+            const classic = stats.calculateStats('en');
+            expect(classic.n_games).toBe(2);
+            expect(classic.n_wins).toBe(2);
+            expect(classic.current_streak).toBe(2);
+
+            const dordle = stats.calculateStats('en_dordle', 7);
+            expect(dordle.n_games).toBe(2);
+            expect(dordle.n_wins).toBe(1);
+            expect(dordle.current_streak).toBe(0); // last game was a loss
+        });
+
+        it('dordle loss does not break classic streak', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en', true, 3);
+            stats.saveResult('en', true, 2);
+            stats.saveResult('en_dordle', false, 7);
+            stats.saveResult('en', true, 4);
+
+            const classic = stats.calculateStats('en');
+            expect(classic.current_streak).toBe(3);
+            expect(classic.n_games).toBe(3);
+        });
+
+        it('builds distribution with correct maxGuesses for quordle', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en_quordle', true, 8);
+            stats.saveResult('en_quordle', true, 9);
+
+            const quordle = stats.calculateStats('en_quordle', 9);
+            expect(quordle.guessDistribution[8]).toBe(1);
+            expect(quordle.guessDistribution[9]).toBe(1);
+            expect(quordle.guessDistribution[7]).toBe(0);
+        });
+    });
+
     describe('calculateTotalStats', () => {
         it('aggregates across multiple languages', () => {
             const stats = useStatsStore();
@@ -92,6 +136,198 @@ describe('Stats Store', () => {
             expect(total.languages_won).toContain('de');
             expect(total.game_stats['en']).toBeDefined();
             expect(total.game_stats['de']).toBeDefined();
+        });
+
+        it('overall streaks only count classic daily results', () => {
+            const stats = useStatsStore();
+            // Classic wins
+            stats.saveResult('en', true, 3);
+            stats.saveResult('en', true, 2);
+            // Unlimited loss — should NOT break classic streak
+            stats.saveResult('en_unlimited', false, 6);
+            // Another classic win
+            stats.saveResult('en', true, 4);
+
+            const total = stats.calculateTotalStats();
+            expect(total.current_overall_streak).toBe(3);
+            expect(total.n_victories).toBe(3);
+            // Non-classic results excluded from total counts
+            expect(total.n_losses).toBe(0);
+        });
+
+        it('excludes mode-specific keys from game_stats and languages_won', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en', true, 3);
+            stats.saveResult('en_dordle', true, 5);
+
+            const total = stats.calculateTotalStats();
+            expect(total.languages_won).toContain('en');
+            expect(total.languages_won).not.toContain('en_dordle');
+            expect(total.game_stats['en']).toBeDefined();
+            expect(total.game_stats['en_dordle']).toBeUndefined();
+        });
+
+        it('does not overwrite stats ref when computing per-language totals', () => {
+            const stats = useStatsStore();
+            // Set up current stats for English classic
+            stats.saveResult('en', true, 3);
+            stats.saveResult('de', true, 2);
+            stats.saveResult('de', false, 6);
+
+            // Calculate stats for English specifically
+            stats.calculateStats('en');
+            expect(stats.stats.n_games).toBe(1);
+            expect(stats.stats.current_streak).toBe(1);
+
+            // calculateTotalStats should NOT overwrite stats ref
+            stats.calculateTotalStats();
+            expect(stats.stats.n_games).toBe(1); // Still English
+            expect(stats.stats.current_streak).toBe(1);
+        });
+    });
+
+    describe('buildStatsKey integration', () => {
+        it('classic daily returns bare language code', () => {
+            const config = createGameConfig('classic', 'en');
+            expect(buildStatsKey(config)).toBe('en');
+        });
+
+        it('dordle returns lang_mode format', () => {
+            const config = createGameConfig('dordle', 'en');
+            expect(buildStatsKey(config)).toBe('en_dordle');
+        });
+
+        it('tridle returns lang_mode format', () => {
+            const config = createGameConfig('tridle', 'fr');
+            expect(buildStatsKey(config)).toBe('fr_tridle');
+        });
+
+        it('quordle returns lang_mode format', () => {
+            const config = createGameConfig('quordle', 'de');
+            expect(buildStatsKey(config)).toBe('de_quordle');
+        });
+
+        it('unlimited returns lang_mode format', () => {
+            const config = createGameConfig('unlimited', 'en');
+            expect(buildStatsKey(config)).toBe('en_unlimited');
+        });
+
+        it('speed returns lang_mode format', () => {
+            const config = createGameConfig('speed', 'en');
+            expect(buildStatsKey(config)).toBe('en_speed');
+        });
+    });
+
+    describe('isClassicDailyStatsKey', () => {
+        it('bare language codes are classic daily', () => {
+            expect(isClassicDailyStatsKey('en')).toBe(true);
+            expect(isClassicDailyStatsKey('de')).toBe(true);
+            expect(isClassicDailyStatsKey('fr')).toBe(true);
+            expect(isClassicDailyStatsKey('zh')).toBe(true);
+        });
+
+        it('mode-suffixed keys are not classic daily', () => {
+            expect(isClassicDailyStatsKey('en_dordle')).toBe(false);
+            expect(isClassicDailyStatsKey('en_tridle')).toBe(false);
+            expect(isClassicDailyStatsKey('en_quordle')).toBe(false);
+            expect(isClassicDailyStatsKey('en_unlimited')).toBe(false);
+            expect(isClassicDailyStatsKey('en_speed')).toBe(false);
+        });
+
+        it('is consistent with buildStatsKey for all modes', () => {
+            // Classic daily should produce a key that isClassicDailyStatsKey recognizes
+            expect(isClassicDailyStatsKey(buildStatsKey(createGameConfig('classic', 'en')))).toBe(
+                true
+            );
+            // All other modes should not
+            expect(isClassicDailyStatsKey(buildStatsKey(createGameConfig('dordle', 'en')))).toBe(
+                false
+            );
+            expect(isClassicDailyStatsKey(buildStatsKey(createGameConfig('unlimited', 'en')))).toBe(
+                false
+            );
+            expect(isClassicDailyStatsKey(buildStatsKey(createGameConfig('speed', 'en')))).toBe(
+                false
+            );
+        });
+    });
+
+    describe('streak edge cases', () => {
+        it('streak is zero after all losses', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en', false, 6);
+            stats.saveResult('en', false, 6);
+
+            const result = stats.calculateStats('en');
+            expect(result.current_streak).toBe(0);
+            expect(result.longest_streak).toBe(0);
+        });
+
+        it('streak survives across multiple languages in overall stats', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en', true, 3);
+            stats.saveResult('de', true, 2);
+            stats.saveResult('fr', true, 4);
+
+            const total = stats.calculateTotalStats();
+            expect(total.current_overall_streak).toBe(3);
+        });
+
+        it('overall streak broken by classic loss but not mode loss', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en', true, 3);
+            stats.saveResult('en', true, 2);
+            stats.saveResult('en_dordle', false, 7); // should not break
+            stats.saveResult('en_unlimited', false, 6); // should not break
+            stats.saveResult('en', false, 6); // THIS breaks it
+            stats.saveResult('en', true, 4);
+
+            const total = stats.calculateTotalStats();
+            expect(total.current_overall_streak).toBe(1);
+            expect(total.longest_overall_streak).toBe(2);
+        });
+
+        it('per-mode streaks are independent', () => {
+            const stats = useStatsStore();
+            // Classic: win, win, loss
+            stats.saveResult('en', true, 3);
+            stats.saveResult('en', true, 2);
+            stats.saveResult('en', false, 6);
+            // Dordle: win, win, win
+            stats.saveResult('en_dordle', true, 5);
+            stats.saveResult('en_dordle', true, 6);
+            stats.saveResult('en_dordle', true, 7);
+
+            const classic = stats.calculateStats('en');
+            expect(classic.current_streak).toBe(0);
+            expect(classic.longest_streak).toBe(2);
+
+            const dordle = stats.calculateStats('en_dordle', 7);
+            expect(dordle.current_streak).toBe(3);
+            expect(dordle.longest_streak).toBe(3);
+        });
+
+        it('distribution ignores attempts beyond maxGuesses', () => {
+            const stats = useStatsStore();
+            // Dordle: maxGuesses=7, attempt 8 should be ignored
+            stats.saveResult('en_dordle', true, 7);
+            stats.saveResult('en_dordle', true, 8); // out of range for dordle
+
+            const dordle = stats.calculateStats('en_dordle', 7);
+            expect(dordle.guessDistribution[7]).toBe(1);
+            expect(dordle.guessDistribution[8]).toBeUndefined();
+            expect(dordle.n_wins).toBe(2); // still counted as win
+        });
+
+        it('string attempts are parsed correctly', () => {
+            const stats = useStatsStore();
+            stats.saveResult('en', true, '3' as unknown as number);
+            stats.saveResult('en', true, '5' as unknown as number);
+
+            const result = stats.calculateStats('en');
+            expect(result.guessDistribution[3]).toBe(1);
+            expect(result.guessDistribution[5]).toBe(1);
+            expect(result.current_streak).toBe(2);
         });
     });
 });

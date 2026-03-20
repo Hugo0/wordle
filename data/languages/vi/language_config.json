@@ -91,7 +91,29 @@
         "locale": "vi",
         "title": "Trò chơi Word hàng ngày",
         "description": "Đoán từ ẩn trong 6 lần thử (hoặc ít hơn). Một câu đố mới có sẵn mỗi ngày!",
-        "keywords": "Tiếng Việt, câu đố, từ, chơi, trò chơi, trực tuyến, đoán, hàng ngày"
+        "keywords": "Tiếng Việt, câu đố, từ, chơi, trò chơi, trực tuyến, đoán, hàng ngày",
+        "modes": {
+            "unlimited": {
+                "title": "Chơi không giới hạn — không cần chờ",
+                "description": "Chơi Wordle tiếng Việt không giới hạn. Không cần chờ — từ mới mỗi lần chơi."
+            },
+            "speed": {
+                "title": "Speed Streak — đua với thời gian",
+                "description": "Speed Streak: giải càng nhiều từ Wordle tiếng Việt càng tốt trong 5 phút."
+            },
+            "dordle": {
+                "title": "Dordle — 2 bảng cùng lúc",
+                "description": "Chơi Dordle tiếng Việt. Giải 2 bảng Wordle cùng lúc với 7 lượt đoán."
+            },
+            "tridle": {
+                "title": "Tridle — 3 bảng cùng lúc",
+                "description": "Chơi Tridle tiếng Việt. Giải 3 bảng Wordle cùng lúc với 8 lượt đoán."
+            },
+            "quordle": {
+                "title": "Quordle — 4 bảng cùng lúc",
+                "description": "Chơi Quordle tiếng Việt. Giải 4 bảng Wordle cùng lúc với 9 lượt đoán."
+            }
+        }
     },
     "text": {
         "subheader": "Tiếng Việt",

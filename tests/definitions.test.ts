@@ -14,10 +14,11 @@ vi.stubGlobal('$fetch', mock$fetch);
 // Import after mocking so the composable picks up the stubbed $fetch
 import { useDefinitions } from '../composables/useDefinitions';
 
-const { fetchDefinition } = useDefinitions();
+const { fetchDefinition, clearCache } = useDefinitions();
 
 beforeEach(() => {
     mock$fetch.mockReset();
+    clearCache();
 });
 
 describe('fetchDefinition', () => {

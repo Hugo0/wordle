@@ -6,7 +6,29 @@
         "locale": "ga",
         "title": "An cluiche laethúil focal",
         "description": "Buille faoi thuairim an focal i bhfolach i 6 iarracht (nó níos lú). Tá bhfreagra nua ar fáil gach lá!",
-        "keywords": "Gaeilge, bhfreagra, focal, súgradh, cluiche, ar líne, buille faoi thuairim, gach lá"
+        "keywords": "Gaeilge, bhfreagra, focal, súgradh, cluiche, ar líne, buille faoi thuairim, gach lá",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Irish. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Irish as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Irish. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Irish. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Irish. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Gaeilge",

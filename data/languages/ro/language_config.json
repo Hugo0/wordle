@@ -7,7 +7,29 @@
         "locale": "ro",
         "title": "Jocul zilnic de cuvinte",
         "description": "Ghiciți cuvântul ascuns în 6 încercări (sau mai puțin). Un nou puzzle este disponibil în fiecare zi!",
-        "keywords": "Română, Puzzle, Word, Joacă, joc, Online, Ghici, Daily"
+        "keywords": "Română, Puzzle, Word, Joacă, joc, Online, Ghici, Daily",
+        "modes": {
+            "unlimited": {
+                "title": "Joacă nelimitat — fără așteptare",
+                "description": "Joacă Wordle în română nelimitat. Fără așteptare — un cuvânt nou de fiecare dată."
+            },
+            "speed": {
+                "title": "Speed Streak — cursă contra cronometru",
+                "description": "Speed Streak: rezolvă cât mai multe cuvinte Wordle în română în 5 minute."
+            },
+            "dordle": {
+                "title": "Dordle — 2 table deodată",
+                "description": "Joacă Dordle în română. Rezolvă 2 table Wordle deodată cu 7 încercări."
+            },
+            "tridle": {
+                "title": "Tridle — 3 table deodată",
+                "description": "Joacă Tridle în română. Rezolvă 3 table Wordle deodată cu 8 încercări."
+            },
+            "quordle": {
+                "title": "Quordle — 4 table deodată",
+                "description": "Joacă Quordle în română. Rezolvă 4 table Wordle deodată cu 9 încercări."
+            }
+        }
     },
     "text": {
         "subheader": "Română",

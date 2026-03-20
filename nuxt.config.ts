@@ -64,6 +64,7 @@ export default defineNuxtConfig({
                 { rel: 'manifest', href: '/manifest.json' },
             ],
             meta: [
+                // Default og:image fallback — pages override with useSeoMeta({ ogImage })
                 { property: 'og:image', content: 'https://wordle.global/images/og-image.png' },
                 { property: 'og:image:width', content: '1200' },
                 { property: 'og:image:height', content: '630' },
@@ -77,7 +78,7 @@ export default defineNuxtConfig({
         manifest: {
             name: 'Wordle Global',
             short_name: 'Wordle',
-            description: 'Daily word puzzle game in 65+ languages',
+            description: 'Daily word puzzle game in 80+ languages',
             start_url: '/',
             display: 'standalone',
             background_color: '#ffffff',

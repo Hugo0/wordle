@@ -9,7 +9,29 @@
         "title": "I ilaurëa quettalëa tyalië",
         "description": "Hosta i nurna quetta sé lepsessë (hya ú). Vinya sanwë ná harya ilya aurë!",
         "keywords": "quenya, sanwë, quetta, tyalië, palantír, hosta, ilaurëa",
-        "locale": ""
+        "locale": "",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Quenya. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Quenya as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Quenya. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Quenya. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Quenya. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "",

@@ -26,7 +26,8 @@ async function waitForGame(page: import('@playwright/test').Page, opts?: { keepS
         await page.keyboard.press('Escape');
         await page.waitForTimeout(200);
     }
-    const backdrop = page.locator('.fixed.bg-black');
+    // Close any modal backdrop (design system uses bg-ink/25 or bg-ink/30)
+    const backdrop = page.locator('.fixed[class*="bg-ink"]');
     if (await backdrop.isVisible().catch(() => false)) {
         await backdrop.click({ force: true });
         await page.waitForTimeout(300);
@@ -34,25 +35,26 @@ async function waitForGame(page: import('@playwright/test').Page, opts?: { keepS
 }
 
 test.describe('Homepage', () => {
-    test('loads and shows 65+ language cards', async ({ page }) => {
+    test('loads and shows 65+ language items', async ({ page }) => {
         await page.goto('/');
         await expect(page).toHaveTitle(/Wordle/i);
 
-        // Language cards are <button> elements inside the grid
-        const cards = page.locator('button.group');
-        await expect(cards.first()).toBeVisible({ timeout: 10000 });
-        const count = await cards.count();
+        // Language items are <button> elements inside the border-t language grid
+        const items = page.locator('.border-t button:has(.flag-icon)');
+        await expect(items.first()).toBeVisible({ timeout: 10000 });
+        const count = await items.count();
         expect(count).toBeGreaterThanOrEqual(65);
     });
 
-    test('language search filters cards', async ({ page }) => {
+    test('language search filters items', async ({ page }) => {
         await page.goto('/');
-        await page.locator('button.group').first().waitFor({ timeout: 10000 });
+        const items = page.locator('.border-t button:has(.flag-icon)');
+        await items.first().waitFor({ timeout: 10000 });
 
         const search = page.locator('input[placeholder*="earch"]');
         await search.fill('Finnish');
         await page.waitForTimeout(500);
-        const visible = page.locator('button.group:visible');
+        const visible = page.locator('.border-t button:has(.flag-icon):visible');
         const count = await visible.count();
         expect(count).toBeLessThan(65);
         expect(count).toBeGreaterThan(0);
@@ -78,10 +80,8 @@ test.describe('Game Page', () => {
 
         await page.keyboard.type('hello', { delay: 50 });
 
-        // Filled tiles get border-neutral-500 class (active tile styling)
-        const filledTiles = page.locator(
-            '.game-board .grid-cols-5:first-of-type [class*="border-neutral-500"]'
-        );
+        // Filled tiles get 'filled' class (border changes to ink color)
+        const filledTiles = page.locator('.game-board .grid-cols-5:first-of-type .tile.filled');
         await expect(filledTiles).toHaveCount(5, { timeout: 5000 });
     });
 
@@ -94,9 +94,7 @@ test.describe('Game Page', () => {
             await page.waitForTimeout(100);
         }
 
-        const filledTiles = page.locator(
-            '.game-board .grid-cols-5:first-of-type [class*="border-neutral-500"]'
-        );
+        const filledTiles = page.locator('.game-board .grid-cols-5:first-of-type .tile.filled');
         await expect(filledTiles).toHaveCount(5, { timeout: 5000 });
     });
 
@@ -107,8 +105,8 @@ test.describe('Game Page', () => {
         await page.keyboard.type('zzzzz', { delay: 50 });
         await page.keyboard.press('Enter');
 
-        // Notification toast: black rounded div with bold white text
-        const toast = page.locator('.bg-black.rounded-lg p.font-bold.text-white');
+        // Notification toast (design system: bg-ink with text)
+        const toast = page.locator('[role="alert"]');
         await expect(toast).toBeVisible({ timeout: 3000 });
     });
 

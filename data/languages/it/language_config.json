@@ -25,7 +25,29 @@
         "locale": "it",
         "title": "Il gioco di parole quotidiane",
         "description": "Indovina la parola nascosta in 6 tentativi (o meno). Un nuovo puzzle è disponibile ogni giorno!",
-        "keywords": "Italiano, Puzzle, Word, Play, Game, Online, Guess, Daily"
+        "keywords": "Italiano, Puzzle, Word, Play, Game, Online, Guess, Daily",
+        "modes": {
+            "unlimited": {
+                "title": "Gioca senza limiti — senza attese",
+                "description": "Gioca a Wordle in italiano senza limiti. Senza attese — una parola nuova ogni volta."
+            },
+            "speed": {
+                "title": "Speed Streak — sfida il tempo",
+                "description": "Speed Streak: risolvi quante più parole Wordle in italiano riesci in 5 minuti."
+            },
+            "dordle": {
+                "title": "Dordle — 2 griglie alla volta",
+                "description": "Gioca a Dordle in italiano. Risolvi 2 griglie Wordle alla volta con 7 tentativi."
+            },
+            "tridle": {
+                "title": "Tridle — 3 griglie alla volta",
+                "description": "Gioca a Tridle in italiano. Risolvi 3 griglie Wordle alla volta con 8 tentativi."
+            },
+            "quordle": {
+                "title": "Quordle — 4 griglie alla volta",
+                "description": "Gioca a Quordle in italiano. Risolvi 4 griglie Wordle alla volta con 9 tentativi."
+            }
+        }
     },
     "text": {
         "subheader": "Italiano",

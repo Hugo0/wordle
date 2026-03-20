@@ -10,7 +10,29 @@
         "wordle_native": "वर्डल",
         "title": "दैनिक शब्द खेल",
         "description": "छिपे हुए शब्द को 6 प्रयासों (या कम) में पहचानें। हर दिन एक नई पहेली!",
-        "keywords": "हिन्दी, पहेली, शब्द, खेल, ऑनलाइन, अनुमान, दैनिक"
+        "keywords": "हिन्दी, पहेली, शब्द, खेल, ऑनलाइन, अनुमान, दैनिक",
+        "modes": {
+            "unlimited": {
+                "title": "असीमित खेलें — बिना इंतज़ार",
+                "description": "हिंदी में Wordle असीमित खेलें। बिना इंतज़ार — हर बार एक नया शब्द।"
+            },
+            "speed": {
+                "title": "Speed Streak — समय से दौड़",
+                "description": "Speed Streak: 5 मिनट में जितने हो सके हिंदी Wordle शब्द हल करें।"
+            },
+            "dordle": {
+                "title": "Dordle — एक साथ 2 बोर्ड",
+                "description": "हिंदी में Dordle खेलें। 7 अनुमानों में एक साथ 2 Wordle बोर्ड हल करें।"
+            },
+            "tridle": {
+                "title": "Tridle — एक साथ 3 बोर्ड",
+                "description": "हिंदी में Tridle खेलें। 8 अनुमानों में एक साथ 3 Wordle बोर्ड हल करें।"
+            },
+            "quordle": {
+                "title": "Quordle — एक साथ 4 बोर्ड",
+                "description": "हिंदी में Quordle खेलें। 9 अनुमानों में एक साथ 4 Wordle बोर्ड हल करें।"
+            }
+        }
     },
     "text": {
         "subheader": "हिन्दी",

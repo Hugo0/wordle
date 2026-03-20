@@ -1,8 +1,9 @@
 <template>
     <button
         ref="buttonRef"
-        class="flex-1 rounded uppercase text-sm font-bold p-1 sm:p-2 h-14 key relative select-none"
-        :class="[state, { 'has-hint': hint, 'hint-above': hintAbove }]"
+        class="flex-1 uppercase text-[13px] font-semibold p-1 sm:p-2 h-12 key relative select-none font-body"
+        :class="[splitGradient ? '' : state, { 'has-hint': hint, 'hint-above': hintAbove }]"
+        :style="splitGradient ? { background: splitGradient, color: 'white' } : undefined"
         :data-char="char"
         :aria-label="char === '⇨' ? 'Enter' : char === '⌫' ? 'Backspace' : keyAriaLabel"
         @click="handleClick"
@@ -42,10 +43,38 @@ import { useHaptics } from '~/composables/useHaptics';
 const props = defineProps<{
     char: string;
     state: string;
+    boardStates?: string[];
     hint?: string;
     hintAbove?: boolean;
     variants?: string[];
 }>();
+
+const STATE_COLORS: Record<string, string> = {
+    'key-correct': 'var(--color-correct)',
+    'key-semicorrect': 'var(--color-semicorrect)',
+    'key-incorrect': 'var(--color-muted)',
+};
+
+/** Generate a vertical split gradient for multi-board keyboard keys */
+const splitGradient = computed(() => {
+    if (!props.boardStates || props.boardStates.length <= 1) return null;
+    // Only show gradient if at least one board has a state
+    if (props.boardStates.every((s) => !s)) return null;
+
+    const n = props.boardStates.length;
+    const step = 100 / n;
+    const stops: string[] = [];
+
+    for (let i = 0; i < n; i++) {
+        const color = STATE_COLORS[props.boardStates[i]!] || 'var(--color-paper-warm, #e8e8e8)';
+        const start = i * step;
+        const end = (i + 1) * step;
+        stops.push(`${color} ${start}%`);
+        stops.push(`${color} ${end}%`);
+    }
+
+    return `linear-gradient(to right, ${stops.join(', ')})`;
+});
 
 const emit = defineEmits<{ press: [key: string] }>();
 
@@ -291,16 +320,9 @@ function updateActiveVariant(clientX: number) {
     border-radius: 8px;
     overflow: hidden;
     box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-    background: #565758;
-}
-
-:root:not(.dark) .diacritic-popup-inner {
-    background: #d3d6da;
-    box-shadow:
         0 4px 20px rgba(0, 0, 0, 0.15),
         0 0 0 1px rgba(0, 0, 0, 0.1);
+    background: var(--color-muted-soft);
 }
 
 .diacritic-option {
@@ -312,16 +334,12 @@ function updateActiveVariant(clientX: number) {
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
-    color: white;
+    color: var(--color-ink);
     transition: background 0.08s ease;
 }
 
-:root:not(.dark) .diacritic-option {
-    color: #1a1a1b;
-}
-
 .diacritic-active {
-    background: #3b82f6;
+    background: var(--color-accent);
     color: white;
     border-radius: 6px;
 }
@@ -331,13 +349,9 @@ function updateActiveVariant(clientX: number) {
     bottom: -7px;
     width: 12px;
     height: 12px;
-    background: #565758;
+    background: var(--color-muted-soft);
     transform: rotate(45deg);
     border-radius: 0 0 3px 0;
-}
-
-:root:not(.dark) .diacritic-stem {
-    background: #d3d6da;
 }
 
 @keyframes diacritic-popup-in {

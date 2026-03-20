@@ -145,7 +145,7 @@ function posLabel(pos: string | undefined | null): string {
 
 // Share button
 const shareBtnText = ref('Share');
-const shareBtnClass = ref('bg-green-500 hover:bg-green-600');
+const shareBtnClass = ref('bg-correct hover:opacity-90');
 
 function shareWord() {
     const text = `Wordle ${langNameNative} #${dayIdx} \u2014 ${word!.toUpperCase()}\nhttps://wordle.global/${lang}/word/${dayIdx}`;
@@ -154,10 +154,10 @@ function shareWord() {
     } else if (navigator.clipboard) {
         navigator.clipboard.writeText(text).then(() => {
             shareBtnText.value = 'Copied!';
-            shareBtnClass.value = 'bg-emerald-600';
+            shareBtnClass.value = 'bg-correct opacity-90';
             setTimeout(() => {
                 shareBtnText.value = 'Share';
-                shareBtnClass.value = 'bg-green-500 hover:bg-green-600';
+                shareBtnClass.value = 'bg-correct hover:opacity-90';
             }, 2000);
         });
     }
@@ -292,20 +292,17 @@ onMounted(() => {
 </script>
 
 <template>
-    <div
-        class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors"
-    >
+    <div class="min-h-screen bg-paper text-ink transition-colors">
         <div class="max-w-lg mx-auto px-4 py-6">
             <!-- Header -->
             <header class="text-center mb-6">
-                <NuxtLink
-                    :to="`/${lang}`"
-                    class="text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
-                >
+                <NuxtLink :to="`/${lang}`" class="text-sm text-accent hover:opacity-80">
                     &larr; Play Wordle {{ langNameNative }}
                 </NuxtLink>
-                <h1 class="text-2xl font-bold mt-2">Wordle {{ langNameNative }} #{{ dayIdx }}</h1>
-                <p v-if="wordDate" class="text-sm text-neutral-500 dark:text-neutral-400">
+                <h1 class="heading-display text-2xl mt-2">
+                    Wordle {{ langNameNative }} #{{ dayIdx }}
+                </h1>
+                <p v-if="wordDate" class="text-sm text-muted">
                     {{ wordDate }}
                 </p>
             </header>
@@ -313,12 +310,12 @@ onMounted(() => {
             <!-- Future word -->
             <template v-if="d.is_future">
                 <div class="text-center py-8">
-                    <p class="text-neutral-500 dark:text-neutral-400 mb-4">
+                    <p class="text-muted mb-4">
                         This word hasn't been played yet. Come back later!
                     </p>
                     <NuxtLink
                         :to="`/${lang}`"
-                        class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors"
+                        class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-correct hover:opacity-90 transition-colors"
                     >
                         Play Today's Wordle
                     </NuxtLink>
@@ -328,15 +325,13 @@ onMounted(() => {
             <!-- Today's word: not yet played -->
             <template v-else-if="d.is_today && !todayRevealed">
                 <div class="text-center py-8">
-                    <p class="text-lg font-bold text-green-700 dark:text-green-400 mb-2">
+                    <p class="text-lg font-bold text-correct mb-2">
                         {{ langStore.config?.ui?.todays_word_reveal }}
                     </p>
-                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
-                        Play today's game to reveal this word.
-                    </p>
+                    <p class="text-sm text-muted mb-4">Play today's game to reveal this word.</p>
                     <NuxtLink
                         :to="`/${lang}`"
-                        class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors"
+                        class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-correct hover:opacity-90 transition-colors"
                     >
                         {{ langStore.config?.ui?.play_now }}
                     </NuxtLink>
@@ -350,7 +345,7 @@ onMounted(() => {
                     <div
                         v-for="(letter, li) in todayRevealed"
                         :key="li"
-                        class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center text-xl sm:text-2xl font-bold text-white bg-green-500 rounded-md shadow-sm uppercase"
+                        class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center text-xl sm:text-2xl font-bold text-white bg-correct rounded-md shadow-sm uppercase"
                     >
                         {{ letter }}
                     </div>
@@ -362,22 +357,20 @@ onMounted(() => {
                         (todayRevealedDef && todayRevealedDef.definition) ||
                         (definition && definition.definition)
                     "
-                    class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
+                    class="bg-paper-warm rounded-lg p-4 mb-4"
                 >
                     <div class="flex items-center gap-2 mb-1">
-                        <span
-                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
-                        >
+                        <span class="text-xs font-semibold uppercase tracking-wide text-muted">
                             {{ langStore.config?.ui?.definition }}
                         </span>
                         <span
                             v-if="(todayRevealedDef || definition)?.part_of_speech"
-                            class="text-xs text-neutral-400 dark:text-neutral-500 italic"
+                            class="text-xs text-muted italic"
                         >
                             {{ posLabel((todayRevealedDef || definition).part_of_speech) }}
                         </span>
                     </div>
-                    <p class="text-sm text-neutral-800 dark:text-neutral-200">
+                    <p class="text-sm text-ink">
                         <strong class="uppercase">{{ todayRevealed }}</strong> &mdash;
                         {{
                             (todayRevealedDef || definition).definition_native ||
@@ -388,7 +381,7 @@ onMounted(() => {
                         :href="`https://${wiktLang}.wiktionary.org/wiki/${todayRevealed}`"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-1 mt-2 text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                        class="inline-flex items-center gap-1 mt-2 text-xs text-accent hover:opacity-80"
                     >
                         Wiktionary &#8599;
                     </a>
@@ -421,7 +414,7 @@ onMounted(() => {
                     <div
                         v-for="(letter, li) in word"
                         :key="li"
-                        class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center text-xl sm:text-2xl font-bold text-white bg-green-500 rounded-md shadow-sm uppercase"
+                        class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center text-xl sm:text-2xl font-bold text-white bg-correct rounded-md shadow-sm uppercase"
                     >
                         {{ letter }}
                     </div>
@@ -430,22 +423,17 @@ onMounted(() => {
                 <!-- Definition (server-rendered) -->
                 <div
                     v-if="definition && definition.definition"
-                    class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
+                    class="bg-paper-warm rounded-lg p-4 mb-4"
                 >
                     <div class="flex items-center gap-2 mb-1">
-                        <span
-                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
-                        >
+                        <span class="text-xs font-semibold uppercase tracking-wide text-muted">
                             {{ langStore.config?.ui?.definition }}
                         </span>
-                        <span
-                            v-if="definition.part_of_speech"
-                            class="text-xs text-neutral-400 dark:text-neutral-500 italic"
-                        >
+                        <span v-if="definition.part_of_speech" class="text-xs text-muted italic">
                             {{ posLabel(definition.part_of_speech) }}
                         </span>
                     </div>
-                    <p class="text-sm text-neutral-800 dark:text-neutral-200">
+                    <p class="text-sm text-ink">
                         <strong class="uppercase">{{ word }}</strong> &mdash;
                         {{ definition.definition_native || definition.definition }}
                     </p>
@@ -453,31 +441,23 @@ onMounted(() => {
                         :href="`https://${wiktLang}.wiktionary.org/wiki/${word}`"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-1 mt-2 text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                        class="inline-flex items-center gap-1 mt-2 text-xs text-accent hover:opacity-80"
                     >
                         Wiktionary &#8599;
                     </a>
                 </div>
 
                 <!-- Async definition (client-fetched) -->
-                <div
-                    v-else-if="showAsyncDef && asyncDef"
-                    class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
-                >
+                <div v-else-if="showAsyncDef && asyncDef" class="bg-paper-warm rounded-lg p-4 mb-4">
                     <div class="flex items-center gap-2 mb-1">
-                        <span
-                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
-                        >
+                        <span class="text-xs font-semibold uppercase tracking-wide text-muted">
                             {{ langStore.config?.ui?.definition }}
                         </span>
-                        <span
-                            v-if="asyncDef.part_of_speech"
-                            class="text-xs text-neutral-400 dark:text-neutral-500 italic"
-                        >
+                        <span v-if="asyncDef.part_of_speech" class="text-xs text-muted italic">
                             {{ posLabel(asyncDef.part_of_speech) }}
                         </span>
                     </div>
-                    <p class="text-sm text-neutral-800 dark:text-neutral-200">
+                    <p class="text-sm text-ink">
                         <strong class="uppercase">{{ word }}</strong> &mdash;
                         {{ asyncDef.definition_native || asyncDef.definition }}
                     </p>
@@ -485,7 +465,7 @@ onMounted(() => {
                         :href="`https://${wiktLang}.wiktionary.org/wiki/${word}`"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-1 mt-2 text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                        class="inline-flex items-center gap-1 mt-2 text-xs text-accent hover:opacity-80"
                     >
                         Wiktionary &#8599;
                     </a>
@@ -497,7 +477,7 @@ onMounted(() => {
                         :href="`https://${wiktLang}.wiktionary.org/wiki/${word}`"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-1 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                        class="inline-flex items-center gap-1 text-sm text-accent hover:opacity-80"
                     >
                         Look up on Wiktionary
                         <svg
@@ -519,17 +499,17 @@ onMounted(() => {
                 <!-- Word Stats -->
                 <div
                     v-if="wordStats && wordStats.total > 0"
-                    class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
+                    class="bg-paper-warm rounded-lg p-4 mb-4"
                 >
                     <h3
-                        class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center"
+                        class="text-xs font-semibold uppercase tracking-wide text-muted mb-2 text-center"
                     >
                         {{ langStore.config?.ui?.community_stats }}
                     </h3>
                     <div class="grid grid-cols-3 gap-2 text-center mb-3">
                         <div>
                             <p class="text-lg font-bold">{{ wordStats.total }}</p>
-                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
+                            <p class="text-[10px] text-muted">
                                 {{ langStore.config?.ui?.players }}
                             </p>
                         </div>
@@ -537,30 +517,24 @@ onMounted(() => {
                             <p class="text-lg font-bold">
                                 {{ Math.round((wordStats.wins / wordStats.total) * 100) }}%
                             </p>
-                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                Win Rate
-                            </p>
+                            <p class="text-[10px] text-muted">Win Rate</p>
                         </div>
                         <div>
                             <p class="text-lg font-bold">{{ avgAttempts }}</p>
-                            <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                Avg Attempts
-                            </p>
+                            <p class="text-[10px] text-muted">Avg Attempts</p>
                         </div>
                     </div>
                     <!-- Mini guess distribution -->
                     <div class="space-y-0.5">
                         <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
-                            <span class="w-3 text-xs font-medium text-neutral-500">{{ n }}</span>
-                            <div
-                                class="flex-1 h-3 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden"
-                            >
+                            <span class="w-3 text-xs font-medium text-muted">{{ n }}</span>
+                            <div class="flex-1 h-3 bg-muted-soft rounded-sm overflow-hidden">
                                 <div
-                                    class="h-full bg-green-500 rounded-sm transition-all"
+                                    class="h-full bg-correct rounded-sm transition-all"
                                     :style="{ width: distWidth(n) }"
                                 />
                             </div>
-                            <span class="w-5 text-[10px] text-neutral-400 text-right">
+                            <span class="w-5 text-[10px] text-muted text-right">
                                 {{ distCount(n) }}
                             </span>
                         </div>
@@ -571,7 +545,7 @@ onMounted(() => {
                 <div class="mb-4">
                     <button
                         :class="[
-                            'w-full py-2.5 px-4 text-white font-semibold rounded-lg shadow-md active:bg-green-700 transition-colors',
+                            'w-full py-2.5 px-4 text-white font-semibold rounded-lg shadow-md active:opacity-80 transition-colors',
                             shareBtnClass,
                         ]"
                         @click="shareWord"
@@ -586,7 +560,7 @@ onMounted(() => {
                 <NuxtLink
                     v-if="dayIdx > 1"
                     :to="`/${lang}/word/${dayIdx - 1}`"
-                    class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                    class="text-accent hover:opacity-80"
                 >
                     &larr; #{{ dayIdx - 1 }}
                 </NuxtLink>
@@ -594,7 +568,7 @@ onMounted(() => {
 
                 <NuxtLink
                     :to="`/${lang}`"
-                    class="py-1.5 px-4 text-sm font-medium text-green-600 dark:text-green-400 border border-green-500 rounded-lg hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+                    class="py-1.5 px-4 text-sm font-medium text-correct border border-correct rounded-lg hover:bg-correct-soft transition-colors"
                 >
                     Play Today's Wordle
                 </NuxtLink>
@@ -602,18 +576,15 @@ onMounted(() => {
                 <NuxtLink
                     v-if="dayIdx < todaysIdx"
                     :to="`/${lang}/word/${dayIdx + 1}`"
-                    class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                    class="text-accent hover:opacity-80"
                 >
                     #{{ dayIdx + 1 }} &rarr;
                 </NuxtLink>
-                <span v-else class="text-xs text-neutral-400">Latest</span>
+                <span v-else class="text-xs text-muted">Latest</span>
             </nav>
 
             <p class="text-center mt-4">
-                <NuxtLink
-                    :to="`/${lang}/words`"
-                    class="text-xs text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
-                >
+                <NuxtLink :to="`/${lang}/words`" class="text-xs text-muted hover:text-ink">
                     View all {{ langNameNative }} words
                 </NuxtLink>
             </p>
@@ -624,10 +595,10 @@ onMounted(() => {
             <!-- Report bad word -->
             <p v-if="word" class="text-center mt-6 mb-2">
                 <a
-                    :href="`https://github.com/Hugo0/wordle/issues/new?template=bad-word.yml&title=Bad+word:+${word}+(${lang}+%23${dayIdx})`"
+                    :href="`https://github.com/Hugo0/wordle/issues/new?template=bad-word.yml&title=Bad+word:+${word}+(${lang}+%23${dayIdx})&word=${encodeURIComponent(word)}`"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-xs text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+                    class="text-xs text-muted hover:text-ink"
                 >
                     {{ langStore.config?.ui?.report_bad_word }}
                 </a>

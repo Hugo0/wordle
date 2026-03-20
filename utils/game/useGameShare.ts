@@ -1,12 +1,12 @@
 /**
  * Game share/clipboard composable.
  *
- * Handles sharing game results via Web Share API, clipboard, or
- * legacy execCommand fallback. Extracted from the game store.
+ * Single source of truth for sharing game results via Web Share API,
+ * clipboard, or legacy execCommand fallback. Used by:
+ *   - stores/game.ts (classic/unlimited/multi-board share)
+ *   - pages/[lang]/speed.vue (speed streak share)
  */
 import { ref } from 'vue';
-import { useLanguageStore } from '~/stores/language';
-import { useSettingsStore } from '~/stores/settings';
 import type { TileColor } from '~/utils/types';
 
 export function useGameShare() {
@@ -45,7 +45,7 @@ export function useGameShare() {
         return { board, attemptCount };
     }
 
-    /** Build the full share text. */
+    /** Build the full share text for classic/multi-board modes. */
     function getShareText(opts: {
         emojiBoard: string;
         attempts: string;
@@ -58,36 +58,48 @@ export function useGameShare() {
         return `Wordle ${opts.namaNative} #${opts.todaysIdx} — ${opts.attempts}/6${hardModeFlag}\n\n${opts.emojiBoard}`;
     }
 
-    /** Share results via Web Share API, clipboard, or fallback. */
+    /**
+     * Share results via Web Share API, clipboard, or legacy execCommand fallback.
+     *
+     * Callbacks allow callers to handle notifications and final fallback UI:
+     *   - onNotify: called on successful copy with a suggested message
+     *   - onAllFailed: called when all share methods fail (e.g., show a manual copy modal)
+     */
     async function shareResults(opts: {
         shareText: string;
         langCode: string;
         gameWon: boolean;
         attempts: string;
         emojiBoard: string;
-        notificationText: string;
+        gameMode?: string;
+        onNotify?: (message: string) => void;
+        onAllFailed?: (text: string) => void;
     }): Promise<void> {
         if (!import.meta.client) return;
 
         const analytics = useAnalytics();
-        const url = `https://wordle.global/${opts.langCode}?r=${opts.gameWon ? opts.attempts : 'x'}`;
+        const modePath = opts.gameMode && opts.gameMode !== 'classic' ? `/${opts.gameMode}` : '';
+        const url = `https://wordle.global/${opts.langCode}${modePath}?r=${opts.gameWon ? opts.attempts : 'x'}`;
         const fullText = `${opts.shareText}\n\n${url}`;
 
         const shareParams = {
             language: opts.langCode,
             won: opts.gameWon,
             attempts: opts.attempts,
+            game_mode: opts.gameMode,
         };
 
         const onSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
             shareButtonState.value = 'success';
             analytics.trackShareSuccess({ ...shareParams, method });
-            analytics.trackShareContentGenerated(
-                opts.langCode,
-                opts.gameWon,
-                opts.attempts,
-                opts.emojiBoard
-            );
+            if (opts.emojiBoard) {
+                analytics.trackShareContentGenerated(
+                    opts.langCode,
+                    opts.gameWon,
+                    opts.attempts,
+                    opts.emojiBoard
+                );
+            }
             setTimeout(() => {
                 shareButtonState.value = 'idle';
             }, 2000);
@@ -98,6 +110,7 @@ export function useGameShare() {
             analytics.trackShareClick({ ...shareParams, method: 'native' });
             try {
                 await navigator.share({ text: fullText });
+                opts.onNotify?.('Shared!');
                 onSuccess('native');
                 return;
             } catch (error) {
@@ -111,6 +124,7 @@ export function useGameShare() {
             analytics.trackShareClick({ ...shareParams, method: 'clipboard' });
             try {
                 await navigator.clipboard.writeText(fullText);
+                opts.onNotify?.('Copied to clipboard!');
                 onSuccess('clipboard');
                 return;
             } catch (error) {
@@ -123,11 +137,13 @@ export function useGameShare() {
         // Legacy execCommand fallback
         analytics.trackShareClick({ ...shareParams, method: 'fallback' });
         if (copyViaExecCommand(fullText)) {
+            opts.onNotify?.('Copied to clipboard!');
             onSuccess('fallback');
             return;
         }
 
         analytics.trackShareFail(opts.langCode, 'fallback', 'all_methods_failed');
+        opts.onAllFailed?.(fullText);
     }
 
     /** Copy text via legacy execCommand. Returns true on success. */

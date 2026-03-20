@@ -71,7 +71,7 @@ export default defineNuxtPlugin(() => {
         if (banner && (deferredPrompt || isIOS())) {
             banner.style.display = 'flex';
             try {
-                usePostHog()?.capture('pwa_prompt_shown');
+                useAnalytics().trackPWAPromptShown('banner');
             } catch {}
         }
     }
@@ -96,11 +96,11 @@ export default defineNuxtPlugin(() => {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choice) => {
                 try {
-                    const ph = usePostHog();
+                    const a = useAnalytics();
                     if (choice.outcome === 'accepted') {
-                        ph?.capture('pwa_install');
+                        a.trackPWAInstall({ source: 'banner' });
                     } else {
-                        ph?.capture('pwa_dismiss');
+                        a.trackPWADismiss();
                     }
                 } catch {}
                 deferredPrompt = null;
@@ -117,7 +117,7 @@ export default defineNuxtPlugin(() => {
             // localStorage may throw in private browsing mode
         }
         try {
-            usePostHog()?.capture('pwa_dismiss');
+            useAnalytics().trackPWADismiss();
         } catch {}
         hideBanner();
     }

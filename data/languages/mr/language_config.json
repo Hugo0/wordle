@@ -10,7 +10,29 @@
         "wordle_native": "वर्डल",
         "title": "दैनंदिन शब्द खेळ",
         "description": "लपलेला शब्द 6 प्रयत्नांत (किंवा कमी) ओळखा. दररोज एक नवे कोडे!",
-        "keywords": "मराठी, कोडे, शब्द, खेळ, ऑनलाइन, अंदाज, दैनंदिन"
+        "keywords": "मराठी, कोडे, शब्द, खेळ, ऑनलाइन, अंदाज, दैनंदिन",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Marathi. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Marathi as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Marathi. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Marathi. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Marathi. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "मराठी",

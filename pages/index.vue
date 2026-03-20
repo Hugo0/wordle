@@ -6,6 +6,9 @@
  * Matches the legacy Flask index.html exactly.
  */
 import { useSettingsStore } from '~/stores/settings';
+import { Flame, Check, X, Download } from 'lucide-vue-next';
+import { useFlag } from '~/composables/useFlag';
+import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
 
 const settings = useSettingsStore();
 
@@ -51,12 +54,16 @@ useSeoMeta({
     ogType: 'website',
     ogDescription: description.value,
     ogLocale: 'en',
-    ogImage: 'https://wordle.global/images/og-image.png',
-    ogImageWidth: 1200,
-    ogImageHeight: 630,
     twitterCard: 'summary_large_image',
     twitterTitle: title.value,
     twitterDescription: description.value,
+});
+
+// Restore og:image (static file generated at build time)
+useSeoMeta({
+    ogImage: 'https://wordle.global/images/og-image.png',
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
 });
 
 useHead({
@@ -71,10 +78,6 @@ useHead({
         },
     ],
     meta: [
-        {
-            name: 'keywords',
-            content: 'wordle, english, puzzle, word, play, game, online, guess, free, daily',
-        },
         { name: 'msvalidate.01', content: '609E2DD36EFFA9A3C673F46020FDF0D3' },
         { property: 'twitter:domain', content: 'wordle.global' },
         { property: 'twitter:url', content: 'https://wordle.global/' },
@@ -134,6 +137,66 @@ useHead({
                 })),
             }),
         },
+        {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'Wordle Global',
+                url: 'https://wordle.global',
+                logo: 'https://wordle.global/images/og-image.png',
+                sameAs: ['https://github.com/Hugo0/wordle'],
+            }),
+        },
+        {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: [
+                    {
+                        '@type': 'Question',
+                        name: 'What is Wordle Global?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: `Wordle Global is a free daily word puzzle game available in ${langCount.value}+ languages. Guess the hidden 5-letter word in 6 tries — a new puzzle every day.`,
+                        },
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'How many languages does Wordle Global support?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: `Wordle Global currently supports ${langCount.value} languages, including English, Finnish, Spanish, German, Arabic, Hebrew, French, Portuguese, and many more. New languages are added regularly.`,
+                        },
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'Is Wordle Global free?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Yes, Wordle Global is completely free to play. No account or sign-up required. Just pick a language and start playing.',
+                        },
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'What game modes are available?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Wordle Global offers 5 game modes: Classic (daily puzzle), Unlimited (play as many as you want), Speed Streak (race the clock), Dordle (2 boards), and Quordle (4 boards). More modes coming soon.',
+                        },
+                    },
+                    {
+                        '@type': 'Question',
+                        name: 'How do I play Wordle?',
+                        acceptedAnswer: {
+                            '@type': 'Answer',
+                            text: 'Type a 5-letter word and press Enter. Green means the letter is correct and in the right position. Yellow means the letter is in the word but in the wrong position. Gray means the letter is not in the word. You have 6 tries to guess the word.',
+                        },
+                    },
+                ],
+            }),
+        },
     ],
 });
 
@@ -147,8 +210,11 @@ useHreflang(languageCodes.value);
 const searchText = ref('');
 const showAboutModal = ref(false);
 const showSettingsModal = ref(false);
-const showPopup = ref(false);
-const clickedLanguage = ref('');
+
+// Game mode picker
+const showModePicker = ref(false);
+const selectedLangCode = ref('');
+const selectedLangName = ref('');
 
 // Game results from localStorage
 const gameResults = ref<
@@ -159,8 +225,13 @@ const detectedLanguageCode = ref<string | null>(null);
 // PWA install
 const canInstallPwa = ref(false);
 
+const analytics = useAnalytics();
+
 onMounted(() => {
     settings.init();
+
+    // Analytics: track homepage view
+    analytics.trackHomepageView();
 
     // Load game results
     try {
@@ -180,7 +251,8 @@ onMounted(() => {
     }
 
     // Detect browser language
-    detectedLanguageCode.value = detectBrowserLanguage();
+    // Prefer most recently played language, then browser language
+    detectedLanguageCode.value = getMostRecentLanguage() || detectBrowserLanguage();
 
     // Check PWA install availability
     try {
@@ -217,6 +289,25 @@ function installPwa(): void {
 // ---------------------------------------------------------------------------
 // Language detection
 // ---------------------------------------------------------------------------
+
+/**
+ * Check localStorage game_results for the most recently played language.
+ * Returns the language code with the most recent game, or null.
+ */
+function getMostRecentLanguage(): string | null {
+    if (!gameResults.value || Object.keys(gameResults.value).length === 0) return null;
+    let bestCode: string | null = null;
+    let bestDate = '';
+    for (const [code, results] of Object.entries(gameResults.value)) {
+        if (!results.length || !languages.value[code]) continue;
+        const lastDate = results[results.length - 1]!.date;
+        if (lastDate > bestDate) {
+            bestDate = lastDate;
+            bestCode = code;
+        }
+    }
+    return bestCode;
+}
 
 function detectBrowserLanguage(): string | null {
     try {
@@ -345,8 +436,66 @@ function getWinRate(code: string): number {
 // Navigation
 // ---------------------------------------------------------------------------
 
-function selectLanguageWithCode(code: string): void {
-    navigateTo(`/${code}`);
+function selectLanguageWithCode(code: string, source: 'search' | 'list' | 'flag' = 'list'): void {
+    const lang = languages.value[code];
+    selectedLangCode.value = code;
+    selectedLangName.value = lang?.language_name_native || lang?.language_name || code;
+    showModePicker.value = true;
+    analytics.trackLanguageSelect(code, source);
+}
+
+// Memoized flag lookup to avoid double-calling useFlag in template
+const flagCache = new Map<string, string | null>();
+function getFlag(code: string): string | null {
+    if (flagCache.has(code)) return flagCache.get(code)!;
+    const flag = useFlag(code);
+    flagCache.set(code, flag);
+    return flag;
+}
+
+// ---------------------------------------------------------------------------
+// Homepage mode cards
+// ---------------------------------------------------------------------------
+
+const defaultLang = computed(() => detectedLanguageCode.value || 'en');
+
+// Homepage shows first 5 modes from shared source + "& More" card
+const HOMEPAGE_MODE_IDS = ['classic', 'unlimited', 'speed', 'dordle', 'quordle'];
+
+const homepageModes = computed(() => {
+    const lang = defaultLang.value;
+    const featured = GAME_MODES_UI.filter((m) => HOMEPAGE_MODE_IDS.includes(m.id)).map((m) => ({
+        id: m.id,
+        icon: m.icon,
+        label: m.label,
+        desc: m.description,
+        tag: m.badge || '',
+        route: getModeRoute(m, lang),
+    }));
+    featured.push({
+        id: 'more',
+        icon: null as any,
+        label: '& More',
+        desc: 'Quordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon.',
+        tag: 'EXPLORE',
+        route: null,
+    });
+    return featured;
+});
+
+function handleChangeLanguage(): void {
+    showModePicker.value = false;
+    setTimeout(() => {
+        document.getElementById('languages')?.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+}
+
+function openMoreModes(): void {
+    const code = defaultLang.value;
+    const lang = languages.value[code];
+    selectedLangCode.value = code;
+    selectedLangName.value = lang?.language_name_native || lang?.language_name || code;
+    showModePicker.value = true;
 }
 
 function openLink(url: string): void {
@@ -358,409 +507,254 @@ function openLink(url: string): void {
 
 <template>
     <div class="pb-12">
-        <!-- The Header -->
-        <header
-            class="relative flex flex-row justify-between items-center p-1 px-3 lg:px-1 h-[50px] my-auto border-b border-neutral-300 dark:border-neutral-600 max-w-screen-sm mx-auto"
+        <!-- ═══ Announcement Bar ═══ -->
+        <div
+            class="bg-ink text-paper font-mono text-[10px] tracking-[0.05em] text-center py-1 px-3 whitespace-nowrap overflow-hidden text-ellipsis"
         >
-            <button
-                class="z-30 text-neutral-500 dark:text-neutral-400"
-                aria-label="about"
-                @click="showAboutModal = !showAboutModal"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-info-circle"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <circle cx="12" cy="12" r="9" />
-                    <line x1="12" y1="8" x2="12.01" y2="8" />
-                    <polyline points="11 12 12 12 12 16 13 16" />
-                </svg>
-            </button>
-            <div class="absolute right-0 left-0 text-center">
-                <h1 class="uppercase font-bold text-xl tiny:text-3xl sm:text-4xl tracking-wider">
-                    <NuxtLink to="/" class="inline-flex items-center gap-0.5"
-                        >WORDLE
-                        <img
-                            src="/images/globe.apng"
-                            alt="🌍"
-                            class="inline-block h-7 tiny:h-9 sm:h-11"
-                        />
-                    </NuxtLink>
-                </h1>
+            &#127881; New game modes! Unlimited, Speed Streak, Dordle &amp; Quordle
+        </div>
+
+        <!-- ═══ Masthead ═══ -->
+        <div class="text-center pt-10 sm:pt-10 mb-12 px-4">
+            <h1 class="heading-display text-[40px] sm:text-[56px] text-ink">
+                Wordle<span class="text-accent">.</span>Global
+            </h1>
+            <div class="mono-label mt-2" style="letter-spacing: 0.2em">
+                The world's word game &mdash; {{ langCount }} languages
             </div>
-            <div class="flex flex-row gap-3 z-30">
+            <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
+        </div>
+
+        <!-- ═══ Mode Cards ═══ -->
+        <div
+            class="grid grid-cols-1 sm:grid-cols-3 border border-rule max-w-[800px] mx-4 sm:mx-auto mb-14"
+            style="background: var(--color-rule); gap: 1px"
+        >
+            <template v-for="mode in homepageModes" :key="mode.id">
                 <NuxtLink
-                    to="/stats"
-                    class="m-0 sm:my-1 text-neutral-500 dark:text-neutral-400"
-                    aria-label="statistics"
+                    v-if="mode.route"
+                    :to="mode.route"
+                    class="bg-paper py-8 px-7 text-left transition-colors flex flex-col hover:bg-paper-warm cursor-pointer"
+                    @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="currentColor"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                    <div class="flex gap-1 mb-3">
+                        <component :is="mode.icon" :size="18" class="text-ink" />
+                    </div>
+                    <div class="heading-section text-[22px] mb-1.5">{{ mode.label }}</div>
+                    <p class="text-sm text-muted leading-[1.45] flex-1">{{ mode.desc }}</p>
+                    <span
+                        class="editorial-tag mt-3 self-start"
+                        :class="mode.tag === 'NEW' ? 'editorial-tag-new' : ''"
                     >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <rect x="3" y="12" width="6" height="8" rx="1" />
-                        <rect x="9" y="8" width="6" height="12" rx="1" />
-                        <rect x="15" y="4" width="6" height="16" rx="1" />
-                        <line x1="4" y1="20" x2="18" y2="20" />
-                    </svg>
+                        {{ mode.tag }}
+                    </span>
                 </NuxtLink>
                 <button
-                    class="m-0 sm:my-1 text-neutral-500 dark:text-neutral-400"
-                    aria-label="settings"
-                    @click="showSettingsModal = !showSettingsModal"
+                    v-else
+                    class="bg-paper py-8 px-7 text-left transition-colors flex flex-col hover:bg-paper-warm cursor-pointer"
+                    @click="openMoreModes()"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="currentColor"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
-                        />
-                        <circle cx="12" cy="12" r="3" />
-                    </svg>
+                    <div class="flex gap-1 mb-3">
+                        <span class="text-muted text-lg">···</span>
+                    </div>
+                    <div class="heading-section text-[22px] mb-1.5">{{ mode.label }}</div>
+                    <p class="text-sm text-muted leading-[1.45] flex-1">{{ mode.desc }}</p>
+                    <span class="editorial-tag mt-3 self-start">
+                        {{ mode.tag }}
+                    </span>
                 </button>
-            </div>
-        </header>
+            </template>
+        </div>
 
-        <!-- language search box -->
-        <div class="flex justify-center mt-12">
-            <div
-                class="flex flex-col break-words bg-white dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-600 rounded shadow-md mx-4 mb-2 sm:mb-6 w-full max-w-xs md:max-w-sm lg:max-w-md"
+        <!-- ═══ Language Section ═══ -->
+        <div id="languages" class="max-w-[800px] mx-auto mt-14 px-4">
+            <h2
+                class="font-display text-[24px] sm:text-[28px] font-light text-center mb-2"
+                style="font-variation-settings: 'opsz' 48"
             >
-                <input
-                    v-model="searchText"
-                    class="shadow appearance-none w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-neutral-800 leading-tight focus:outline-none focus:shadow-outline hover:shadow-xl"
-                    type="text"
-                    placeholder="Search language..."
-                />
-            </div>
-        </div>
+                Choose your language
+            </h2>
+            <p class="text-sm text-muted text-center mb-6">
+                {{ langCount }} languages and counting — more added regularly.
+            </p>
 
-        <!-- tailwind grid of language cards that fill max space -->
-        <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 mt-7 sm:gap-10 sm:mt-10 md:gap-14 mt-14 w-2/3 mx-auto"
-        >
-            <!-- card for each language -->
-            <button
-                v-for="language in languagesVis"
-                :key="language.language_code"
-                class="group col-span-1 cursor-pointer rounded-lg shadow-lg hover:shadow-2xl"
-                @click="selectLanguageWithCode(language.language_code)"
-            >
-                <div
-                    class="h-full border-2 rounded-lg group-hover:font-bold transition-colors"
-                    :class="
-                        hasPlayed(language.language_code)
-                            ? 'border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-900/20 group-hover:bg-green-100 dark:group-hover:bg-green-900/40'
-                            : 'border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 group-hover:bg-neutral-100 dark:group-hover:bg-neutral-700'
-                    "
-                >
-                    <div class="px-5 py-4 relative">
-                        <!-- Streak badge (top right) -->
-                        <span
-                            v-if="getCurrentStreak(language.language_code) > 0"
-                            class="absolute top-2 right-2 text-orange-500 dark:text-orange-400 text-xs font-bold flex items-center gap-0.5"
-                        >
-                            <span>&#128293;</span>{{ getCurrentStreak(language.language_code) }}
-                        </span>
-                        <!-- Checkmark for played but no streak -->
-                        <span
-                            v-else-if="hasPlayed(language.language_code)"
-                            class="absolute top-2 right-2 text-green-500 dark:text-green-400 text-xs"
-                            >&#10003;</span
-                        >
-
-                        <h5 class="text-center">
-                            {{ language.language_name_native }}
-                        </h5>
-                        <p
-                            class="text-sm italic text-neutral-600 dark:text-neutral-400 text-center"
-                        >
-                            {{ language.language_name }}
-                        </p>
-
-                        <!-- Games played indicator -->
-                        <p
-                            v-if="hasPlayed(language.language_code)"
-                            class="text-xs text-neutral-500 dark:text-neutral-500 text-center mt-1"
-                        >
-                            {{ getGamesPlayed(language.language_code) }}
-                            game<span v-if="getGamesPlayed(language.language_code) !== 1">s</span>
-                            &middot;
-                            {{ Math.round(getWinRate(language.language_code)) }}% wins
-                        </p>
-                    </div>
-                </div>
-            </button>
-        </div>
-
-        <!-- separator — Other Wordles -->
-        <div class="w-full mt-16 mx-auto text-center">
-            <hr class="border-b-1 border-gray-400 dark:border-gray-600 w-1/2 mx-auto" />
-            <h2 class="text-2xl text-neutral-500 dark:text-neutral-400 mt-4">External Links</h2>
-        </div>
-
-        <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 mt-16 w-2/3 mx-auto"
-        >
-            <button
-                v-for="otherWordle in otherWordlesVis"
-                :key="otherWordle.url"
-                class="col-span-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg shadow-lg"
-                @click="openLink(otherWordle.url)"
-            >
-                <div
-                    class="shadow-lg h-full border-2 border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 rounded-lg hover:shadow-2xl hover:font-bold"
-                >
-                    <div class="px-5 py-4">
-                        <h5>{{ otherWordle.name }}</h5>
-                        <p class="text-sm italic text-neutral-600 dark:text-neutral-400">
-                            {{ otherWordle.language }}
-                        </p>
-                    </div>
-                </div>
-            </button>
-        </div>
-
-        <!-- NOTIFICATIONS & MODALS -->
-        <div
-            class="container mx-auto flex w-full max-w-lg justify-center items-center overflow-auto z-1"
-        >
-            <!-- Modal backdrop -->
-            <SharedModalBackdrop
-                :visible="showAboutModal || showSettingsModal"
-                @close="
-                    showAboutModal = false;
-                    showSettingsModal = false;
-                "
+            <!-- Search -->
+            <input
+                v-model="searchText"
+                class="block w-full max-w-[400px] mx-auto mb-8 px-4 py-3 border border-rule bg-transparent text-ink font-body text-[15px] focus:outline-none focus:border-ink transition-colors placeholder:text-muted placeholder:italic"
+                type="text"
+                placeholder="Search languages..."
             />
 
-            <!-- About modal -->
-            <div
-                v-show="showAboutModal"
-                class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
-            >
-                <div
-                    class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-lg"
+            <!-- Language grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 border-t border-rule">
+                <button
+                    v-for="language in languagesVis"
+                    :key="language.language_code"
+                    class="flex items-center gap-3 text-left border-b border-rule hover:bg-paper-warm transition-colors cursor-pointer"
+                    style="padding: 14px 16px"
+                    @click="selectLanguageWithCode(language.language_code)"
                 >
-                    <div class="flex flex-col gap-2 relative">
-                        <button
-                            type="button"
-                            aria-label="Close"
-                            class="absolute top-0 right-0 p-1 ml-auto z-50"
-                            @click="showAboutModal = false"
-                        >
-                            <span
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none"
-                                >&times;</span
-                            >
-                        </button>
-                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">
-                            About
-                        </h3>
-                        <p class="text-center text-sm">
-                            Hi! You probably know about Wordle already. It's a
-                            <span class="italic">really</span> fun game.
-                        </p>
-                        <p class="text-center text-sm">
-                            My skills are mostly in backend/ML, with lacking frontend experience. I
-                            wanted to change that, so why not recreate one of my favorite current
-                            games? The aim was to make something useful whilst also learning a lot.
-                        </p>
-                        <p class="text-center text-sm">
-                            The whole thing is open-source, and you can (and actually, please do)
-                            suggest improvements or fixes over at
-                            <a
-                                href="https://github.com/Hugo0/wordle/issues"
-                                class="text-neutral-500 dark:text-neutral-400 underline"
-                                >GitHub</a
-                            >
-                        </p>
-                        <p class="text-center text-sm">
-                            There's fun languages, like Klingon or Tolkien's Elvish that you can
-                            measure yourself on, as well as right to left languages like Arabic or
-                            Hebrew. Stats
-                            <a
-                                href="/stats"
-                                target="_blank"
-                                class="text-neutral-500 dark:text-neutral-400 underline"
-                                >here</a
-                            >.
-                        </p>
-                        <p class="text-center text-sm">
-                            A lot of other great Wordle spin-offs exist, and I've linked a bunch
-                            below for easy access. (credit:
-                            <a
-                                href="https://rwmpelstilzchen.gitlab.io/wordles/"
-                                class="text-neutral-500 dark:text-neutral-400 underline"
-                                >Wordles of the World</a
-                            >)
-                        </p>
-                        <p class="text-center text-sm">Have fun, and I hope you enjoy!</p>
+                    <img
+                        v-if="getFlag(language.language_code)"
+                        :src="getFlag(language.language_code)!"
+                        :alt="language.language_name"
+                        class="flag-icon"
+                    />
+                    <div
+                        v-else
+                        class="flag-icon bg-paper-warm border border-rule flex items-center justify-center text-ink text-[11px] font-display font-bold"
+                    >
+                        {{ language.language_name_native.charAt(0) }}
                     </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-sm font-semibold text-ink truncate">
+                            {{ language.language_name_native }}
+                        </div>
+                        <div class="text-xs text-muted truncate">
+                            {{ language.language_name }}
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 flex-shrink-0">
+                        <template v-if="getCurrentStreak(language.language_code) > 0">
+                            <Flame :size="14" class="text-correct" />
+                            <span class="mono-label-md text-correct font-semibold">
+                                {{ getCurrentStreak(language.language_code) }}
+                            </span>
+                        </template>
+                        <Check
+                            v-else-if="hasPlayed(language.language_code)"
+                            :size="14"
+                            class="text-correct"
+                        />
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- External links hidden for now — SSR handles SEO discoverability -->
+        <!-- TODO: Consider adding back as a footer or separate page if users miss it -->
+
+        <!-- ═══ Modals ═══ -->
+        <SharedModalBackdrop
+            :visible="showAboutModal || showSettingsModal"
+            @close="
+                showAboutModal = false;
+                showSettingsModal = false;
+            "
+        />
+
+        <!-- About modal -->
+        <div
+            v-show="showAboutModal"
+            class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
+        >
+            <div
+                class="bg-paper border border-rule shadow-lg p-6 m-4 mx-auto w-full max-w-xs sm:max-w-lg"
+            >
+                <div class="flex flex-col gap-3 relative">
+                    <button
+                        type="button"
+                        aria-label="Close"
+                        class="absolute top-0 right-0 p-1 text-muted hover:text-ink"
+                        @click="showAboutModal = false"
+                    >
+                        <X :size="20" />
+                    </button>
+                    <h3 class="heading-section text-xl text-center mb-2">About</h3>
+                    <p class="text-center text-sm text-ink">
+                        Hi! You probably know about Wordle already. It's a
+                        <span class="italic">really</span> fun game.
+                    </p>
+                    <p class="text-center text-sm text-ink">
+                        The whole thing is open-source. Suggest improvements or fixes at
+                        <a
+                            href="https://github.com/Hugo0/wordle/issues"
+                            class="text-muted underline hover:text-ink"
+                            >GitHub</a
+                        >.
+                    </p>
+                    <p class="text-center text-sm text-ink">
+                        There's fun languages, like Klingon or Tolkien's Elvish, plus right-to-left
+                        languages like Arabic or Hebrew.
+                    </p>
+                    <p class="text-center text-sm text-ink">Have fun!</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Settings modal -->
+        <!-- Settings modal -->
+        <div
+            v-show="showSettingsModal"
+            class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
+        >
             <div
-                v-show="showSettingsModal"
-                class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
+                class="bg-paper border border-rule shadow-lg p-6 m-4 mx-auto w-full max-w-xs sm:max-w-md"
             >
-                <div
-                    class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-5 m-4 border-2 border-slate-200 dark:border-neutral-600 mx-auto w-full max-w-xs sm:max-w-md"
-                >
-                    <div class="flex flex-col gap-4 relative">
+                <div class="flex flex-col gap-4 relative">
+                    <button
+                        type="button"
+                        aria-label="Close"
+                        class="absolute top-0 right-0 p-1 text-muted hover:text-ink"
+                        @click="showSettingsModal = false"
+                    >
+                        <X :size="20" />
+                    </button>
+                    <h3 class="heading-section text-xl text-center mb-2">Settings</h3>
+
+                    <div class="flex flex-row items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-ink">Dark Mode</span>
+                            <span class="text-xs text-muted">Toggle dark theme</span>
+                        </div>
+                        <SharedToggleSwitch
+                            :model-value="settings.darkMode"
+                            @update:model-value="settings.toggleDarkMode()"
+                        />
+                    </div>
+
+                    <hr class="border-rule" />
+
+                    <div class="flex flex-row items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-ink">Sound &amp; Haptics</span>
+                        </div>
+                        <SharedToggleSwitch
+                            :model-value="settings.feedbackEnabled"
+                            @update:model-value="settings.toggleFeedback()"
+                        />
+                    </div>
+
+                    <hr class="border-rule" />
+
+                    <div v-if="canInstallPwa" class="pt-2">
                         <button
-                            type="button"
-                            aria-label="Close"
-                            class="absolute top-0 right-0 p-1 ml-auto z-50"
-                            @click="showSettingsModal = false"
+                            class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
+                            @click="installPwa"
                         >
-                            <span
-                                class="leading-[0.25] h-5 w-5 text-3xl text-neutral-400 block outline-none focus:outline-none"
-                                >&times;</span
-                            >
+                            <Download :size="18" />
+                            Install App
                         </button>
-                        <h3 class="flex mx-auto uppercase font-bold text-2xl tracking-wider mb-2">
-                            Settings
-                        </h3>
-
-                        <!-- Dark Mode Toggle -->
-                        <div class="flex flex-row items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="font-medium">Dark Mode</span>
-                                <span class="text-sm text-neutral-500 dark:text-neutral-400"
-                                    >Toggle dark theme</span
-                                >
-                            </div>
-                            <SharedToggleSwitch
-                                :model-value="settings.darkMode"
-                                @update:model-value="settings.toggleDarkMode()"
-                            />
-                        </div>
-
-                        <!-- Separator -->
-                        <hr class="border-neutral-300 dark:border-neutral-600" />
-
-                        <!-- Sound & Haptics Toggle -->
-                        <div class="flex flex-row items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="font-medium">Sound &amp; Haptics</span>
-                            </div>
-                            <SharedToggleSwitch
-                                :model-value="settings.feedbackEnabled"
-                                @update:model-value="settings.toggleFeedback()"
-                            />
-                        </div>
-
-                        <!-- Separator -->
-                        <hr class="border-neutral-300 dark:border-neutral-600" />
-
-                        <!-- Install App button (only shown when not already installed) -->
-                        <div v-if="canInstallPwa" class="pt-2">
-                            <button
-                                class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg"
-                                @click="installPwa"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="2"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M12 18h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7.5"
-                                    />
-                                    <path d="M16 19h6" />
-                                    <path d="M19 16v6" />
-                                </svg>
-                                Install App
-                            </button>
-                            <p
-                                class="text-xs text-center text-neutral-500 dark:text-neutral-400 mt-1"
-                            >
-                                Play offline &amp; get app icon
-                            </p>
-                        </div>
+                        <p class="text-xs text-center text-muted mt-1">
+                            Play offline &amp; get app icon
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Popup for if a language is unavailable -->
-        <div v-if="showPopup" class="fixed top-0 left-0 w-full h-full z-50">
-            <div class="flex items-center justify-center w-full h-full">
-                <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-4">
-                    <div class="flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-center">&#128119;&#128679;</h3>
-                        <br />
-                        <p class="text-center">{{ clickedLanguage }} &nbsp; is coming soon!</p>
-                        <button class="mt-4" @click="showPopup = false">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- shadow -->
-        <div v-if="showPopup" class="opacity-25 fixed top-0 left-0 w-full h-full z-1 bg-black" />
+        <!-- Game Mode Picker modal -->
+        <AppGameModePicker
+            :visible="showModePicker"
+            :lang-code="selectedLangCode"
+            :language-name="selectedLangName"
+            @close="showModePicker = false"
+            @select="showModePicker = false"
+            @change-language="handleChangeLanguage"
+        />
     </div>
 
-    <!-- Server-rendered language links — crawlable by search engines even without JS -->
-    <nav id="language-links" class="max-w-2xl mx-auto px-4 py-8 text-center">
-        <h2 class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-4">
-            Play Wordle in Your Language
-        </h2>
-        <div class="flex flex-wrap justify-center gap-2">
-            <NuxtLink
-                v-for="lc in [...languageCodes].sort()"
-                :key="lc"
-                :to="`/${lc}`"
-                class="text-sm px-2 py-1 text-blue-600 dark:text-blue-400 hover:underline"
-            >
-                {{ languages[lc]?.language_name || lc }}
-            </NuxtLink>
-        </div>
-    </nav>
-
-    <!-- noscript block for SEO -->
-    <noscript>
-        <nav class="max-w-2xl mx-auto px-4 py-8 text-center">
-            <h2>Play Wordle in Your Language</h2>
-            <p>JavaScript is required to play the game, but here are links to all languages:</p>
-        </nav>
-    </noscript>
+    <!-- Footer SEO links removed — Nuxt SSR renders all language pages server-side,
+         so crawlers discover them via the sitemap and SSR-rendered language grid above.
+         The noscript fallback is also unnecessary with SSR. -->
 </template>

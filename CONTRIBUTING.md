@@ -150,11 +150,14 @@ UI text is in `data/languages/{lang}/language_config.json`. Please ensure transl
 
 ## License Agreement
 
+This project is licensed under the **PolyForm Noncommercial 1.0.0** license. You may use, modify, and distribute it for any noncommercial purpose. Commercial use (ads, subscriptions, selling) requires written permission from the licensor.
+
 By submitting a pull request, you agree that:
 
-1. Your contributions are licensed under the [MIT License](LICENSE).
-2. You have the right to submit the contribution.
-3. For word lists and language data, you confirm the data is from a source that permits redistribution, or is your own compilation.
+1. Your contributions are licensed under the [PolyForm Noncommercial 1.0.0](LICENSE) license.
+2. You grant the project maintainer the right to relicense your contribution under future license terms.
+3. You have the right to submit the contribution.
+4. For word lists and language data, you confirm the data is from a source that permits redistribution, or is your own compilation.
 
 ## Language Maintainers
 

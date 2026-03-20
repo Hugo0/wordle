@@ -7,7 +7,29 @@
         "locale": "lt",
         "title": "Kasdieninis žodžių žaidimas",
         "description": "Atspėti paslėptą žodį 6 bandymuose (ar mažiau). Kiekvieną dieną galima įsigyti naują galvosūkį!",
-        "keywords": "lietuvių kalba, dėlionės, žodis, žaidimas, žaidimas, internete, atspėti, kasdien"
+        "keywords": "lietuvių kalba, dėlionės, žodis, žaidimas, žaidimas, internete, atspėti, kasdien",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Lithuanian. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Lithuanian as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Lithuanian. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Lithuanian. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Lithuanian. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "lietuvių kalba",

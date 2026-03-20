@@ -7,7 +7,29 @@
         "locale": "da",
         "title": "Det daglige ordspil",
         "description": "Gæt det skjulte ord i 6 forsøg (eller mindre). Et nyt puslespil er tilgængelig hver dag!",
-        "keywords": "dansk, Puslespil, Word, Play, Game, Online, Gæt, Dagligt"
+        "keywords": "dansk, Puslespil, Word, Play, Game, Online, Gæt, Dagligt",
+        "modes": {
+            "unlimited": {
+                "title": "Spil ubegrænset — ingen ventetid",
+                "description": "Spil Wordle på dansk ubegrænset. Ingen ventetid — et nyt ord hver gang."
+            },
+            "speed": {
+                "title": "Speed Streak — kapløb mod uret",
+                "description": "Speed Streak: løs så mange danske Wordle-ord du kan på 5 minutter."
+            },
+            "dordle": {
+                "title": "Dordle — 2 brætter på én gang",
+                "description": "Spil Dordle på dansk. Løs 2 Wordle-brætter på én gang med 7 gæt."
+            },
+            "tridle": {
+                "title": "Tridle — 3 brætter på én gang",
+                "description": "Spil Tridle på dansk. Løs 3 Wordle-brætter på én gang med 8 gæt."
+            },
+            "quordle": {
+                "title": "Quordle — 4 brætter på én gang",
+                "description": "Spil Quordle på dansk. Løs 4 Wordle-brætter på én gang med 9 gæt."
+            }
+        }
     },
     "text": {
         "subheader": "dansk",

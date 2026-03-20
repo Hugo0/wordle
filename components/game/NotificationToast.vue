@@ -8,10 +8,10 @@
         :class="{ 'opacity-0': notification.fading }"
     >
         <div
-            class="top-50 bg-black p-4 m-4 rounded-lg shadow-lg"
+            class="top-50 bg-ink text-paper p-4 m-4 shadow-lg font-body font-semibold text-sm"
             :style="{ top: notification.top + 'px' }"
         >
-            <p class="font-bold text-white">{{ notification.message }}</p>
+            {{ notification.message }}
         </div>
     </div>
 </template>

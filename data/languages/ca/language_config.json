@@ -31,7 +31,29 @@
         "locale": "ca",
         "title": "El joc de paraules diàries",
         "description": "Endevina la paraula oculta en 6 intents (o menys). Cada dia hi ha un nou trencaclosques.",
-        "keywords": "català, trencaclosques, paraula, joc, joc, en línia, suposo, diari"
+        "keywords": "català, trencaclosques, paraula, joc, joc, en línia, suposo, diari",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Catalan. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Catalan as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Catalan. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Catalan. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Catalan. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "català",

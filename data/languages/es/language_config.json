@@ -25,7 +25,29 @@
         "locale": "es",
         "title": "El juego diario de palabras",
         "description": "Adivina la palabra oculta en 6 intentos (o menos). ¡Un nuevo rompecabezas está disponible cada día!",
-        "keywords": "Español, rompecabezas, palabra, juego, juego, en línea, supongo, diariamente"
+        "keywords": "Español, rompecabezas, palabra, juego, juego, en línea, supongo, diariamente",
+        "modes": {
+            "unlimited": {
+                "title": "Juega sin límite — sin esperas",
+                "description": "Juega Wordle en español sin límite. Sin esperas — una palabra nueva cada vez."
+            },
+            "speed": {
+                "title": "Speed Streak — contra el reloj",
+                "description": "Speed Streak: resuelve tantas palabras Wordle en español como puedas en 5 minutos."
+            },
+            "dordle": {
+                "title": "Dordle — 2 tableros a la vez",
+                "description": "Juega Dordle en español. Resuelve 2 tableros Wordle a la vez con 7 intentos."
+            },
+            "tridle": {
+                "title": "Tridle — 3 tableros a la vez",
+                "description": "Juega Tridle en español. Resuelve 3 tableros Wordle a la vez con 8 intentos."
+            },
+            "quordle": {
+                "title": "Quordle — 4 tableros a la vez",
+                "description": "Juega Quordle en español. Resuelve 4 tableros Wordle a la vez con 9 intentos."
+            }
+        }
     },
     "text": {
         "subheader": "Español",

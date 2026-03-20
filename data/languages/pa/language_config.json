@@ -9,7 +9,29 @@
         "locale": "pa",
         "title": "ਰੋਜ਼ਾਨਾ ਸ਼ਬਦ ਖੇਡ",
         "description": "ਲੁਕੇ ਹੋਏ ਸ਼ਬਦ ਨੂੰ 6 ਕੋਸ਼ਿਸ਼ਾਂ (ਜਾਂ ਘੱਟ) ਵਿੱਚ ਲੱਭੋ। ਹਰ ਰੋਜ਼ ਨਵੀਂ ਬੁਝਾਰਤ!",
-        "keywords": "ਪੰਜਾਬੀ, ਬੁਝਾਰਤ, ਸ਼ਬਦ, ਖੇਡ, ਔਨਲਾਈਨ, ਅੰਦਾਜ਼ਾ, ਰੋਜ਼ਾਨਾ"
+        "keywords": "ਪੰਜਾਬੀ, ਬੁਝਾਰਤ, ਸ਼ਬਦ, ਖੇਡ, ਔਨਲਾਈਨ, ਅੰਦਾਜ਼ਾ, ਰੋਜ਼ਾਨਾ",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Punjabi. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Punjabi as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Punjabi. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Punjabi. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Punjabi. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "ਪੰਜਾਬੀ",

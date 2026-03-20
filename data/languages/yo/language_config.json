@@ -39,7 +39,29 @@
         "wordle_native": "Wordle",
         "title": "Eré ọ̀rọ̀ ojoojúmọ́",
         "description": "Fojú inú wo ọ̀rọ̀ tí a fi pamọ́ ní ìgbìyànjú 6 (tàbí kéréje). Àdánwò tuntun lójoojúmọ́!",
-        "keywords": "Yorùbá, àdánwò, ọ̀rọ̀, eré, online, fojú inú wo, ojoojúmọ́"
+        "keywords": "Yorùbá, àdánwò, ọ̀rọ̀, eré, online, fojú inú wo, ojoojúmọ́",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Yoruba. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Yoruba as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Yoruba. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Yoruba. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Yoruba. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Yorùbá",

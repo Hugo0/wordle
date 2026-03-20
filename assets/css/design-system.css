@@ -1,0 +1,188 @@
+/* =============================================================================
+   Wordle Global — Design System (Direction A: Editorial)
+   =============================================================================
+   Token layer: colors, fonts, spacing registered via Tailwind v4 @theme.
+   Editorial utilities: typographic recipes that can't be expressed as utilities.
+   Dark mode: token overrides under .dark.
+
+   Architecture note: all visual styling flows through CSS custom properties.
+   This enables future theme switching (premium themes, Direction C, etc.)
+   by simply swapping the token values on :root.
+   ============================================================================= */
+
+/* ─── Self-hosted fonts via @fontsource ─── */
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/fraunces/full-italic.css';
+@import '@fontsource-variable/source-sans-3';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-600.css';
+
+/* ─── Tailwind v4 theme tokens ─── */
+@theme {
+    /* Colors — semantic names to avoid collision with Tailwind's built-in scales */
+    --color-ink: #1a1a1a;
+    --color-paper: #faf8f5;
+    --color-paper-warm: #f3efe8;
+    --color-accent: #c0392b;
+    --color-accent-soft: #e8d5d0;
+    --color-correct: #2d8544;
+    --color-correct-soft: #d4edda;
+    --color-semicorrect: #b8860b;
+    --color-semicorrect-soft: #fdf3d0;
+    --color-muted: #8c8c8c;
+    --color-muted-soft: #e8e8e8;
+    --color-rule: #d4cfc7;
+
+    /* Font families */
+    --font-display: 'Fraunces Variable', Georgia, serif;
+    --font-body: 'Source Sans 3 Variable', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Sidebar */
+    --spacing-sidebar: 280px;
+}
+
+/* ─── Dark mode token overrides ─── */
+.dark {
+    --color-ink: #e8e4dc;
+    --color-paper: #1a1a1a;
+    --color-paper-warm: #242220;
+    --color-accent: #e05a4f;
+    --color-accent-soft: #3d2624;
+    --color-correct: #4ead6a;
+    --color-correct-soft: #1e3328;
+    --color-semicorrect: #d4a62a;
+    --color-semicorrect-soft: #3a3019;
+    --color-muted: #9a9a9a;
+    --color-muted-soft: #333333;
+    --color-rule: #3d3a36;
+}
+
+/* =============================================================================
+   Editorial Utility Classes
+
+   These encode typographic recipes that require composite CSS properties
+   (font-variation-settings, letter-spacing + text-transform combos, etc.)
+   that Tailwind can't express as single utilities.
+   ============================================================================= */
+
+/* Display heading — large titles, masthead, hero text */
+.heading-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-variation-settings: 'opsz' 144;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+/* Section heading — mode cards, modal titles, sidebar logo */
+.heading-section {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variation-settings: 'opsz' 48;
+    line-height: 1.2;
+}
+
+/* Body heading — game header title, card titles */
+.heading-body {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+    line-height: 1.25;
+}
+
+/* Mono label — section headers, tags, metadata, dates */
+.mono-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+/* Mono label (slightly larger) — game numbers, stats labels */
+.mono-label-md {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+}
+
+/* Editorial rule — 1px separator lines */
+.editorial-rule {
+    border-bottom: 1px solid var(--color-rule);
+}
+
+/* Editorial rule with thick center accent (masthead style) */
+.editorial-rule-accent {
+    position: relative;
+    height: 1px;
+    background: var(--color-ink);
+}
+.editorial-rule-accent::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--color-ink);
+    margin: -1px auto 0;
+}
+
+/* Serif italic tagline */
+.editorial-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-variation-settings: 'opsz' 20;
+    color: var(--color-muted);
+}
+
+/* Mode tag — small pill labels */
+.editorial-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--color-rule);
+    color: var(--color-muted);
+}
+.editorial-tag-new {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Game tiles — editorial style with serif font and square borders */
+.tile {
+    border: 2px solid var(--color-rule);
+    font-family: var(--font-display);
+    transition: border-color 0.1s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.tile.correct,
+.tile.semicorrect,
+.tile.incorrect {
+    color: white;
+    border-color: transparent;
+}
+.tile.filled {
+    border-color: var(--color-ink);
+}
+
+/* Flag icon — consistent circular flag display */
+.flag-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.flag-icon-sm {
+    width: 20px;
+    height: 20px;
+}
+.flag-icon-lg {
+    width: 28px;
+    height: 28px;
+}

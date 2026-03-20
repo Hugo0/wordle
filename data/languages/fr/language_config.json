@@ -39,7 +39,29 @@
         "locale": "fr",
         "title": "Le jeu de mots quotidien",
         "description": "Devinez le mot caché dans 6 essais (ou moins). Un nouveau puzzle est disponible chaque jour!",
-        "keywords": "français, puzzle, mot, jouer, jeu, en ligne, devinez, quotidiennement"
+        "keywords": "français, puzzle, mot, jouer, jeu, en ligne, devinez, quotidiennement",
+        "modes": {
+            "unlimited": {
+                "title": "Jeu illimité — sans attendre",
+                "description": "Jouez à Wordle en français sans limite. Sans attente — un nouveau mot à chaque fois."
+            },
+            "speed": {
+                "title": "Speed Streak — contre la montre",
+                "description": "Speed Streak : résolvez un maximum de mots Wordle en français en 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 grilles en même temps",
+                "description": "Jouez au Dordle en français. Résolvez 2 grilles Wordle en même temps en 7 essais."
+            },
+            "tridle": {
+                "title": "Tridle — 3 grilles en même temps",
+                "description": "Jouez au Tridle en français. Résolvez 3 grilles Wordle en même temps en 8 essais."
+            },
+            "quordle": {
+                "title": "Quordle — 4 grilles en même temps",
+                "description": "Jouez au Quordle en français. Résolvez 4 grilles Wordle en même temps en 9 essais."
+            }
+        }
     },
     "text": {
         "subheader": "français",

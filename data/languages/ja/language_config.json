@@ -9,7 +9,29 @@
         "wordle_native": "ワードル",
         "title": "毎日の言葉あてゲーム",
         "description": "隠された言葉を6回以内に当てよう！毎日新しいパズルが登場します！",
-        "keywords": "日本語, パズル, 言葉, ゲーム, オンライン, 推測, 毎日"
+        "keywords": "日本語, パズル, 言葉, ゲーム, オンライン, 推測, 毎日",
+        "modes": {
+            "unlimited": {
+                "title": "無制限プレイ — 待ち時間なし",
+                "description": "日本語のWordle を無制限にプレイ。待ち時間なし — 毎回新しい単語に挑戦。"
+            },
+            "speed": {
+                "title": "Speed Streak — 時間との勝負",
+                "description": "Speed Streak：5分間で日本語のWordle をできるだけ多く解こう。"
+            },
+            "dordle": {
+                "title": "Dordle — 2つの盤面を同時に",
+                "description": "日本語でDordleをプレイ。7回の推測で2つのWordle盤面を同時に解こう。"
+            },
+            "tridle": {
+                "title": "Tridle — 3つの盤面を同時に",
+                "description": "日本語でTridleをプレイ。8回の推測で3つのWordle盤面を同時に解こう。"
+            },
+            "quordle": {
+                "title": "Quordle — 4つの盤面を同時に",
+                "description": "日本語でQuordleをプレイ。9回の推測で4つのWordle盤面を同時に解こう。"
+            }
+        }
     },
     "text": {
         "subheader": "日本語",

@@ -8,7 +8,29 @@
         "wordle_native": "워들",
         "title": "일일 단어 게임",
         "description": "6 시도 (이하)에서 숨겨진 단어를 추측하십시오. 매일 새로운 퍼즐을 사용할 수 있습니다!",
-        "keywords": "한국어, 퍼즐, 단어, 놀이, 게임, 온라인, 추측, 매일"
+        "keywords": "한국어, 퍼즐, 단어, 놀이, 게임, 온라인, 추측, 매일",
+        "modes": {
+            "unlimited": {
+                "title": "무제한 플레이 — 기다림 없이",
+                "description": "한국어 Wordle을 무제한으로 플레이하세요. 기다림 없이 매번 새로운 단어."
+            },
+            "speed": {
+                "title": "Speed Streak — 시간과의 경쟁",
+                "description": "Speed Streak: 5분 안에 한국어 Wordle 단어를 최대한 많이 풀어보세요."
+            },
+            "dordle": {
+                "title": "Dordle — 보드 2개를 동시에",
+                "description": "한국어로 Dordle을 플레이하세요. 7번의 추측으로 Wordle 보드 2개를 동시에 풀어보세요."
+            },
+            "tridle": {
+                "title": "Tridle — 보드 3개를 동시에",
+                "description": "한국어로 Tridle을 플레이하세요. 8번의 추측으로 Wordle 보드 3개를 동시에 풀어보세요."
+            },
+            "quordle": {
+                "title": "Quordle — 보드 4개를 동시에",
+                "description": "한국어로 Quordle을 플레이하세요. 9번의 추측으로 Wordle 보드 4개를 동시에 풀어보세요."
+            }
+        }
     },
     "text": {
         "subheader": "한국어",

@@ -11,7 +11,29 @@
         "wordle_native": "ورڈل",
         "title": "روزانہ لفظ کا کھیل",
         "description": "چھپے ہوئے لفظ کو 6 کوششوں (یا کم) میں پہچانیں۔ ہر روز ایک نئی پہیلی!",
-        "keywords": "اردو، پہیلی، لفظ، کھیل، آن لائن، اندازہ، روزانہ"
+        "keywords": "اردو، پہیلی، لفظ، کھیل، آن لائن، اندازہ، روزانہ",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Urdu. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Urdu as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Urdu. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Urdu. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Urdu. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "اردو",

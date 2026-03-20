@@ -7,7 +7,29 @@
         "locale": "pl",
         "title": "Codzienna gra słowna",
         "description": "Zgadnij ukryte słowo w maksymalnie 6 próbach. Nowa łamigłówka codziennie!",
-        "keywords": "polski, słowo, gra, zagadka, online, zgadywanie, codziennie"
+        "keywords": "polski, słowo, gra, zagadka, online, zgadywanie, codziennie",
+        "modes": {
+            "unlimited": {
+                "title": "Graj bez limitu — bez czekania",
+                "description": "Graj w Wordle po polsku bez limitu. Bez czekania — nowe słowo za każdym razem."
+            },
+            "speed": {
+                "title": "Speed Streak — wyścig z czasem",
+                "description": "Speed Streak: rozwiąż jak najwięcej polskich słów Wordle w 5 minut."
+            },
+            "dordle": {
+                "title": "Dordle — 2 plansze naraz",
+                "description": "Graj w Dordle po polsku. Rozwiąż 2 plansze Wordle naraz w 7 prób."
+            },
+            "tridle": {
+                "title": "Tridle — 3 plansze naraz",
+                "description": "Graj w Tridle po polsku. Rozwiąż 3 plansze Wordle naraz w 8 prób."
+            },
+            "quordle": {
+                "title": "Quordle — 4 plansze naraz",
+                "description": "Graj w Quordle po polsku. Rozwiąż 4 plansze Wordle naraz w 9 prób."
+            }
+        }
     },
     "text": {
         "subheader": "język polski",

@@ -157,6 +157,7 @@ export interface GameData {
     config: LanguageConfig;
     todays_idx: number;
     todays_word: string;
+    todays_words?: string[]; // Multi-board modes: array of target words
     timezone_offset: number;
     keyboard: string[][];
     keyboard_layouts: Record<string, KeyboardLayout>;
@@ -192,7 +193,21 @@ export interface Notification {
     slideInterval: number;
 }
 
-export type GuessDistribution = Record<1 | 2 | 3 | 4 | 5 | 6, number>;
+/**
+ * Dynamic guess distribution supporting any maxGuesses value.
+ * Keys are 1-based guess numbers. Values are win counts on that guess.
+ * Backward compatible: old `Record<1|2|3|4|5|6, number>` is a subtype.
+ */
+export type GuessDistribution = Record<number, number>;
+
+/** Create an empty distribution for a given max guesses. */
+export function createEmptyDistribution(maxGuesses: number): GuessDistribution {
+    const dist: GuessDistribution = {};
+    for (let i = 1; i <= maxGuesses; i++) {
+        dist[i] = 0;
+    }
+    return dist;
+}
 
 export interface GameStats {
     n_wins: number;
@@ -237,6 +252,89 @@ export type KeyState = '' | 'key-correct' | 'key-semicorrect' | 'key-incorrect';
 /** Default game grid dimensions. Will be parameterized for alternate word lengths. */
 export const WORD_LENGTH = 5;
 export const MAX_GUESSES = 6;
+
+// =============================================================================
+// Board State (multi-board architecture)
+// =============================================================================
+
+/**
+ * Complete state for a single game board.
+ * Plain interface (not a class) for Vue 3 reactivity compatibility.
+ * The game store holds `ref<BoardState[]>` and manipulates boards via pure functions.
+ */
+export interface BoardState {
+    /** Board index within the session (0 for classic, 0-3 for quordle) */
+    readonly boardIndex: number;
+
+    // Grid data (logical layer)
+    tiles: string[][];
+    tileColors: TileColor[][];
+    tileClasses: string[][];
+
+    // Grid data (visual/animation layer — updated at animation midpoints)
+    tilesVisual: string[][];
+    tileClassesVisual: string[][];
+
+    // Cursor position
+    activeRow: number;
+    activeCell: number;
+    fullWordInputted: boolean;
+
+    // Board completion state
+    solved: boolean;
+    won: boolean;
+    solvedAtGuess: number | null;
+    solvedAtTimestamp: number | null;
+
+    // Per-board keyboard state
+    keyStates: Record<string, KeyState>;
+    pendingKeyUpdates: Array<{ char: string; state: KeyState } | undefined>;
+
+    // Target word for this board
+    targetWord: string;
+
+    // Results
+    emojiBoard: string;
+    attempts: string;
+}
+
+const DEFAULT_TILE_CLASS = '';
+
+/** Helper to create a 2D grid filled with a default value. */
+function makeGrid<T>(rows: number, cols: number, value: T): T[][] {
+    return Array.from({ length: rows }, () => Array.from({ length: cols }, () => value));
+}
+
+/**
+ * Create a fresh BoardState with empty grids sized by maxGuesses × wordLength.
+ */
+export function createBoardState(
+    boardIndex: number,
+    targetWord: string,
+    maxGuesses: number,
+    wordLength: number
+): BoardState {
+    return {
+        boardIndex,
+        tiles: makeGrid(maxGuesses, wordLength, ''),
+        tileColors: makeGrid(maxGuesses, wordLength, 'empty' as TileColor),
+        tileClasses: makeGrid(maxGuesses, wordLength, DEFAULT_TILE_CLASS),
+        tilesVisual: makeGrid(maxGuesses, wordLength, ''),
+        tileClassesVisual: makeGrid(maxGuesses, wordLength, DEFAULT_TILE_CLASS),
+        activeRow: 0,
+        activeCell: 0,
+        fullWordInputted: false,
+        solved: false,
+        won: false,
+        solvedAtGuess: null,
+        solvedAtTimestamp: null,
+        keyStates: {},
+        pendingKeyUpdates: [],
+        targetWord,
+        emojiBoard: '',
+        attempts: '0',
+    };
+}
 
 // =============================================================================
 // Definition Types

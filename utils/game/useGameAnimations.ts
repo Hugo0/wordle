@@ -44,21 +44,26 @@ export interface RevealCallbacks {
 export function animateRevealRow(
     boardEl: HTMLElement | null,
     rowIndex: number,
-    callbacks: RevealCallbacks
+    callbacks: RevealCallbacks,
+    speedMultiplier: number = 1
 ): void {
     const rowEl = boardEl?.children[rowIndex] as HTMLElement | undefined;
-    const tileCount = WORD_LENGTH;
+    const tileCount = rowEl?.children.length ?? WORD_LENGTH;
     const reduceMotion =
         typeof window !== 'undefined' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const flipDuration = Math.round(FLIP_DURATION * speedMultiplier);
+    const flipMidpoint = Math.round(FLIP_MIDPOINT * speedMultiplier);
+    const flipStagger = Math.round(FLIP_STAGGER * speedMultiplier);
+
     for (let t = 0; t < tileCount; t++) {
-        const delay = reduceMotion ? 0 : t * FLIP_STAGGER;
+        const delay = reduceMotion ? 0 : t * flipStagger;
 
         setTimeout(() => {
             const tileEl = rowEl?.children[t] as HTMLElement | undefined;
             if (tileEl && !reduceMotion) {
-                tileEl.style.animation = `flipReveal ${FLIP_DURATION}ms ease-in-out`;
+                tileEl.style.animation = `flipReveal ${flipDuration}ms ease-in-out`;
             }
 
             // At midpoint (or immediately if reduced motion): swap visual state
@@ -66,7 +71,7 @@ export function animateRevealRow(
                 () => {
                     callbacks.onMidpoint(t);
                 },
-                reduceMotion ? 0 : FLIP_MIDPOINT
+                reduceMotion ? 0 : flipMidpoint
             );
 
             // Clean up after animation
@@ -75,7 +80,7 @@ export function animateRevealRow(
                     if (tileEl) tileEl.style.animation = '';
                     if (t === tileCount - 1) callbacks.onComplete();
                 },
-                reduceMotion ? 0 : FLIP_DURATION
+                reduceMotion ? 0 : flipDuration
             );
         }, delay);
     }

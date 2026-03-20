@@ -10,7 +10,29 @@
         "title": "Te kēmu kupu o ia rā",
         "description": "Matapakihia te kupu huna i roto i ngā ngana e 6 (iti iho rānei). He pakanga hou ia rā, ia rā!",
         "keywords": "māori, pakanga, kupu, kēmu, ipurangi, matapaki, ia rā",
-        "locale": ""
+        "locale": "",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Maori. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Maori as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Maori. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Maori. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Maori. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "",

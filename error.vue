@@ -32,35 +32,44 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-900 px-4">
-        <div class="text-center max-w-lg">
-            <h1 class="text-6xl font-bold text-neutral-300 dark:text-neutral-600 mb-4">
-                {{ error.statusCode }}
-            </h1>
-            <p class="text-xl text-neutral-600 dark:text-neutral-400 mb-8">
-                {{ error.message || "This page doesn't exist." }}
-            </p>
-            <NuxtLink
-                to="/"
-                class="inline-block px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-            >
-                Play Wordle
-            </NuxtLink>
-
-            <div v-if="languageCodes.length" class="mt-10">
-                <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-3">
-                    Or pick a language:
+    <div class="min-h-screen flex flex-col bg-paper">
+        <!-- Error message — always vertically + horizontally centered -->
+        <div class="flex-1 flex items-center justify-center px-4">
+            <div class="text-center">
+                <h1
+                    class="font-display font-bold text-muted mb-2"
+                    style="font-size: 72px; font-variation-settings: 'opsz' 144; line-height: 1"
+                >
+                    {{ error.statusCode }}
+                </h1>
+                <p class="text-lg text-muted mb-8">
+                    {{
+                        error.statusCode === 404
+                            ? "This page doesn't exist."
+                            : 'Something went wrong.'
+                    }}
                 </p>
-                <div class="flex flex-wrap justify-center gap-2">
-                    <NuxtLink
-                        v-for="lc in languageCodes"
-                        :key="lc"
-                        :to="`/${lc}`"
-                        class="text-sm px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-green-100 dark:hover:bg-green-900 transition-colors"
-                    >
-                        {{ languages[lc]?.language_name_native || lc }}
-                    </NuxtLink>
-                </div>
+                <NuxtLink
+                    to="/"
+                    class="inline-block py-3 px-8 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
+                >
+                    Play Wordle
+                </NuxtLink>
+            </div>
+        </div>
+
+        <!-- Language picker — bottom section, separate from centering -->
+        <div v-if="languageCodes.length" class="px-4 pb-10 pt-4">
+            <div class="mono-label mb-4 text-center">Or pick a language</div>
+            <div class="max-w-3xl mx-auto flex flex-wrap justify-center gap-2">
+                <NuxtLink
+                    v-for="lc in languageCodes"
+                    :key="lc"
+                    :to="`/${lc}`"
+                    class="text-sm px-2.5 py-1 border border-rule text-ink hover:bg-paper-warm transition-colors"
+                >
+                    {{ languages[lc]?.language_name_native || lc }}
+                </NuxtLink>
             </div>
         </div>
     </div>

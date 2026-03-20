@@ -23,11 +23,21 @@ import {
     normalizeChar,
     normalizeWord,
 } from '~/utils/diacritics';
-import { toFinalForm, toRegularForm } from '~/utils/positional';
+import { toFinalForm } from '~/utils/positional';
 import { splitWord } from '~/utils/graphemes';
 import { calculateCommunityPercentile } from '~/utils/stats';
-import { WORD_LENGTH, MAX_GUESSES } from '~/utils/types';
-import type { KeyState, TileColor, Notification } from '~/utils/types';
+import { WORD_LENGTH, MAX_GUESSES, createBoardState } from '~/utils/types';
+import type { KeyState, TileColor, Notification, BoardState } from '~/utils/types';
+import {
+    createGameConfig,
+    mergeKeyStates,
+    buildSaveKey,
+    buildStatsKey,
+    GAME_MODE_CONFIG,
+} from '~/utils/game-modes';
+import type { GameConfig, GameMode } from '~/utils/game-modes';
+import { computeRowColors } from '~/utils/game/colorAlgorithm';
+import type { NormalizationContext } from '~/utils/game/colorAlgorithm';
 import { animateRevealRow, animateKeyNudge } from '~/utils/game/useGameAnimations';
 import { getOrCreateId } from '~/utils/storage';
 
@@ -37,18 +47,14 @@ import { getOrCreateId } from '~/utils/storage';
 
 const WIN_WORDS = ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'] as const;
 
-const DEFAULT_TILE_CLASS = 'border-2 border-neutral-300';
-const ACTIVE_TILE_CLASS =
-    'text-2xl tiny:text-4xl uppercase font-bold select-none border-2 border-neutral-500 pop';
-const BASE_REVEALED_CLASS = 'text-2xl tiny:text-4xl uppercase font-bold select-none text-white';
+// Tile border styling is handled by CSS in design-system.css via the `.tile` base class.
+// These constants only carry semantic state classes — no visual Tailwind utilities.
+const DEFAULT_TILE_CLASS = '';
+const ACTIVE_TILE_CLASS = 'filled pop';
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-function makeEmptyGrid<T>(rows: number, cols: number, value: T): T[][] {
-    return Array.from({ length: rows }, () => Array.from({ length: cols }, () => value));
-}
 
 function makeEmptyNotification(): Notification {
     return {
@@ -90,30 +96,103 @@ export const useGameStore = defineStore('game', () => {
     const analytics = useAnalytics();
 
     // =======================================================================
-    // State
+    // Multi-Board Architecture
     // =======================================================================
 
-    const tiles = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, ''));
-    const tileColors = ref<TileColor[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, 'empty'));
-    const tileClasses = ref<string[][]>(
-        makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS)
+    const gameConfig = ref<GameConfig>(
+        createGameConfig('classic', 'en', { wordLength: WORD_LENGTH })
     );
-    const tilesVisual = ref<string[][]>(makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, ''));
-    const tileClassesVisual = ref<string[][]>(
-        makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS)
-    );
+    const boards = ref<BoardState[]>([createBoardState(0, '', MAX_GUESSES, WORD_LENGTH)]);
+    const activeBoardIndex = ref(0);
 
-    const activeRow = ref(0);
-    const activeCell = ref(0);
-    const fullWordInputted = ref(false);
+    // =======================================================================
+    // Computed Proxies — backward-compatible access to boards[activeBoardIndex]
+    //
+    // All existing components read game.tiles, game.activeRow, etc.
+    // These proxies delegate to the active board so nothing breaks.
+    // =======================================================================
+
+    const tiles = computed({
+        get: () => boards.value[activeBoardIndex.value]!.tiles,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.tiles = v;
+        },
+    });
+    const tileColors = computed({
+        get: () => boards.value[activeBoardIndex.value]!.tileColors,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.tileColors = v;
+        },
+    });
+    const tileClasses = computed({
+        get: () => boards.value[activeBoardIndex.value]!.tileClasses,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.tileClasses = v;
+        },
+    });
+    const tilesVisual = computed({
+        get: () => boards.value[activeBoardIndex.value]!.tilesVisual,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.tilesVisual = v;
+        },
+    });
+    const tileClassesVisual = computed({
+        get: () => boards.value[activeBoardIndex.value]!.tileClassesVisual,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.tileClassesVisual = v;
+        },
+    });
+    const activeRow = computed({
+        get: () => boards.value[activeBoardIndex.value]!.activeRow,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.activeRow = v;
+        },
+    });
+    const activeCell = computed({
+        get: () => boards.value[activeBoardIndex.value]!.activeCell,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.activeCell = v;
+        },
+    });
+    const fullWordInputted = computed({
+        get: () => boards.value[activeBoardIndex.value]!.fullWordInputted,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.fullWordInputted = v;
+        },
+    });
+    const emojiBoard = computed({
+        get: () => boards.value[activeBoardIndex.value]!.emojiBoard,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.emojiBoard = v;
+        },
+    });
+    const attempts = computed({
+        get: () => boards.value[activeBoardIndex.value]!.attempts,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.attempts = v;
+        },
+    });
+    const pendingKeyUpdates = computed({
+        get: () => boards.value[activeBoardIndex.value]!.pendingKeyUpdates,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.pendingKeyUpdates = v;
+        },
+    });
+    // keyClasses proxies to keyStates (renamed in BoardState for clarity)
+    const keyClasses = computed({
+        get: () => boards.value[activeBoardIndex.value]!.keyStates,
+        set: (v) => {
+            boards.value[activeBoardIndex.value]!.keyStates = v;
+        },
+    });
+
+    // =======================================================================
+    // Top-Level State (not per-board)
+    // =======================================================================
 
     const gameOver = ref(false);
     const gameLost = computed(() => gameOver.value && !gameWon.value);
     const gameWon = ref(false);
-    const attempts = ref('0');
-
-    const keyClasses = ref<Record<string, KeyState>>({});
-    const pendingKeyUpdates = ref<Array<{ char: string; state: KeyState } | undefined>>([]);
 
     const animating = ref(false);
     const shakingRow = ref(-1);
@@ -124,7 +203,6 @@ export const useGameStore = defineStore('game', () => {
 
     const notification = ref<Notification>(makeEmptyNotification());
 
-    const emojiBoard = ref('');
     const timeUntilNextDay = ref('');
 
     const communityPercentile = ref<number | null>(null);
@@ -148,9 +226,117 @@ export const useGameStore = defineStore('game', () => {
     const todayImageLoading = ref(false);
     const todayDefinitionLoading = ref(false);
 
+    // Multi-board definitions (dordle/tridle/quordle) — one per board
+    const boardDefinitions = ref<
+        Array<{ word: string; definition: string; partOfSpeech?: string } | null>
+    >([]);
+    const boardDefinitionsLoading = ref(false);
+
     const allowAnyWord = ref(false);
 
     const maxDifficultyUsed = ref(0);
+
+    // =======================================================================
+    // Speed Streak State
+    // =======================================================================
+
+    // Speed Streak arcade state
+    const SPEED_INITIAL_TIME = 180_000; // 3 minutes
+    const SPEED_FAIL_PENALTY = 30_000; // -30s on fail
+    const SPEED_RAMP_INTERVAL = 3; // every 3 words, timer ticks faster
+    const SPEED_BONUS_TABLE = [0, 60_000, 50_000, 40_000, 30_000, 20_000, 10_000]; // index = guesses used
+
+    const speedState = ref<{
+        active: boolean;
+        timeRemaining: number;
+        totalTime: number;
+        wordsSolved: number;
+        wordsFailed: number;
+        totalGuesses: number;
+        solvedWords: Array<{ word: string; guesses: number; timeMs: number; points: number }>;
+        failedWords: string[];
+        wordStartTime: number;
+        countdownPhase: 'idle' | 'countdown' | 'playing' | 'finished';
+        score: number;
+        combo: number;
+        maxCombo: number;
+        tickSpeed: number; // multiplier: 1.0, 1.2, 1.5, 2.0
+        lastTimeDelta: number; // +/- ms from last event (for UI flash feedback)
+        lastEvent: 'none' | 'solve' | 'fail' | 'milestone';
+        urgencyLevel: number; // 0=calm, 1=warm, 2=hot, 3=critical
+        // Arcade event queue — consumed by SpeedOverlay component
+        arcadeEvents: Array<{
+            id: number;
+            type: 'solve' | 'fail' | 'milestone' | 'combo';
+            word?: string;
+            guesses?: number;
+            points?: number;
+            bonus?: number; // time bonus in ms
+            penalty?: number; // time penalty in ms
+            combo?: number;
+            milestone?: number;
+            label?: string;
+            emoji?: string;
+        }>;
+        lastMissedWord: string; // word that was in progress when time ran out
+    }>({
+        active: false,
+        timeRemaining: SPEED_INITIAL_TIME,
+        totalTime: SPEED_INITIAL_TIME,
+        wordsSolved: 0,
+        wordsFailed: 0,
+        totalGuesses: 0,
+        solvedWords: [],
+        failedWords: [],
+        wordStartTime: 0,
+        countdownPhase: 'idle',
+        score: 0,
+        combo: 0,
+        maxCombo: 0,
+        tickSpeed: 1.0,
+        lastTimeDelta: 0,
+        lastEvent: 'none',
+        urgencyLevel: 0,
+        arcadeEvents: [],
+        lastMissedWord: '',
+    });
+
+    let _arcadeEventId = 0;
+
+    const SOLVE_REACTIONS = [
+        '', // 0 guesses (impossible)
+        '🤯 GENIUS',
+        '⚡ BRILLIANT',
+        '🔥 GREAT',
+        '✓ NICE',
+        '😅 CLOSE',
+        '😤 PHEW',
+    ];
+
+    function pushArcadeEvent(event: (typeof speedState.value.arcadeEvents)[number]) {
+        speedState.value.arcadeEvents.push(event);
+        // Auto-remove after 2.5s to prevent memory leak
+        const id = event.id;
+        setTimeout(() => {
+            speedState.value.arcadeEvents = speedState.value.arcadeEvents.filter(
+                (e) => e.id !== id
+            );
+        }, 2500);
+    }
+
+    let _speedTimerInterval: ReturnType<typeof setInterval> | null = null;
+    let _speedWordList: string[] = [];
+
+    // =======================================================================
+    // Multi-Board Computed Helpers
+    // =======================================================================
+
+    const isMultiBoard = computed(() => gameConfig.value.boardCount > 1);
+
+    const mergedKeyStates = computed(() => {
+        if (!isMultiBoard.value) return keyClasses.value;
+        return mergeKeyStates(boards.value);
+    });
 
     // =======================================================================
     // DOM refs (set by game page via setBoardEl/setKeyboardEl)
@@ -158,6 +344,7 @@ export const useGameStore = defineStore('game', () => {
 
     let _getBoardEl: (() => HTMLElement | null) | null = null;
     let _getKeyboardEl: (() => HTMLElement | null) | null = null;
+    let _getBoardElForIndex: ((index: number) => HTMLElement | null) | null = null;
 
     function setBoardEl(getter: () => HTMLElement | null): void {
         _getBoardEl = getter;
@@ -165,6 +352,10 @@ export const useGameStore = defineStore('game', () => {
 
     function setKeyboardEl(getter: () => HTMLElement | null): void {
         _getKeyboardEl = getter;
+    }
+
+    function setBoardElForIndex(getter: (index: number) => HTMLElement | null): void {
+        _getBoardElForIndex = getter;
     }
 
     // =======================================================================
@@ -192,21 +383,6 @@ export const useGameStore = defineStore('game', () => {
         const lang = useLanguageStore();
         _normalizedWordMap = buildNormalizedWordMap(lang.wordList, lang.normalizeMap);
         return _normalizedWordMap;
-    }
-
-    /**
-     * Fully normalize a character (positional variants + diacritics).
-     * E.g., "ך" -> "כ" -> "כ", or "ä" -> "a".
-     */
-    function fullNormalize(char: string): string {
-        const lang = useLanguageStore();
-        const positionalNorm = toRegularForm(char, lang.finalFormReverseMap);
-        return lang.normalizeMap.get(positionalNorm) || positionalNorm;
-    }
-
-    /** Check if two characters match considering both normalizations. */
-    function fullCharsMatch(c1: string, c2: string): boolean {
-        return fullNormalize(c1) === fullNormalize(c2);
     }
 
     // =======================================================================
@@ -252,18 +428,47 @@ export const useGameStore = defineStore('game', () => {
     /** Add a character to the current active cell. */
     function addChar(char: string): void {
         const lang = useLanguageStore();
-        const row = tiles.value[activeRow.value];
-        const rowClasses = tileClasses.value[activeRow.value];
-        if (row && rowClasses) {
-            const isLastPosition = activeCell.value === WORD_LENGTH - 1;
-            const displayChar = toFinalForm(char, isLastPosition, lang.config ?? {});
-            row.splice(activeCell.value, 1, displayChar);
-            rowClasses.splice(activeCell.value, 1, ACTIVE_TILE_CLASS);
-            tileColors.value[activeRow.value]?.splice(activeCell.value, 1, 'active');
+        const isLastPosition = activeCell.value === WORD_LENGTH - 1;
+        const displayChar = toFinalForm(char, isLastPosition, lang.config ?? {});
+        const cellIdx = activeCell.value;
+        const rowIdx = activeRow.value;
+
+        if (isMultiBoard.value) {
+            // Multi-board: write typed letter to ALL unsolved boards simultaneously
+            for (const board of boards.value) {
+                if (board.solved) continue;
+                const row = board.tiles[rowIdx];
+                const rowClasses = board.tileClasses[rowIdx];
+                if (row && rowClasses) {
+                    row.splice(cellIdx, 1, displayChar);
+                    rowClasses.splice(cellIdx, 1, ACTIVE_TILE_CLASS);
+                    board.tileColors[rowIdx]?.splice(cellIdx, 1, 'active');
+                }
+            }
+        } else {
+            // Single-board: write via proxy (classic, unlimited, speed)
+            const row = tiles.value[rowIdx];
+            const rowClasses = tileClasses.value[rowIdx];
+            if (row && rowClasses) {
+                row.splice(cellIdx, 1, displayChar);
+                rowClasses.splice(cellIdx, 1, ACTIVE_TILE_CLASS);
+                tileColors.value[rowIdx]?.splice(cellIdx, 1, 'active');
+            }
         }
-        activeCell.value = Math.min(activeCell.value + 1, WORD_LENGTH);
-        if (activeCell.value === WORD_LENGTH) {
-            fullWordInputted.value = true;
+
+        const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
+        const isFull = newCell === WORD_LENGTH;
+
+        if (isMultiBoard.value) {
+            // Sync cursor position across all unsolved boards
+            for (const board of boards.value) {
+                if (board.solved) continue;
+                board.activeCell = newCell;
+                board.fullWordInputted = isFull;
+            }
+        } else {
+            activeCell.value = newCell;
+            if (isFull) fullWordInputted.value = true;
         }
     }
 
@@ -292,74 +497,40 @@ export const useGameStore = defineStore('game', () => {
 
     // ---- Color algorithm ----
 
-    /** Update tile colors for the current row based on Wordle rules. */
-    function updateColors(): void {
+    /** Build NormalizationContext from current language store. */
+    function getNormalizationContext(): NormalizationContext {
         const lang = useLanguageStore();
-        const targetWord = lang.todaysWord;
+        return {
+            graphemeMode: lang.graphemeMode,
+            normalizeMap: lang.normalizeMap,
+            finalFormReverseMap: lang.finalFormReverseMap,
+        };
+    }
 
-        // Split target word into characters (grapheme clusters or codepoints)
-        const targetChars = splitWord(targetWord, lang.graphemeMode);
+    /** Update tile colors for the current row (single-board). Delegates to updateColorsForBoard. */
+    function updateColors(): void {
+        const board = boards.value[activeBoardIndex.value]!;
+        updateColorsForBoard(board, board.activeRow);
+        // Sync the pendingKeyUpdates proxy (updateColorsForBoard writes to the board directly)
+        pendingKeyUpdates.value = board.pendingKeyUpdates;
+    }
 
-        // Count characters in target using fully normalized forms
-        const charCounts: Record<string, number> = {};
-        for (const char of targetChars) {
-            const normalizedChar = fullNormalize(char);
-            charCounts[normalizedChar] = (charCounts[normalizedChar] || 0) + 1;
+    /** Update tile colors for a specific board at a specific row. */
+    function updateColorsForBoard(board: BoardState, rowIndex: number): void {
+        const ctx = getNormalizationContext();
+        const guessRow = board.tiles[rowIndex];
+        if (!guessRow) return;
+
+        const targetWord = board.targetWord || useLanguageStore().todaysWord;
+        const result = computeRowColors(guessRow, targetWord, ctx);
+
+        // Use splice for Vue reactivity (direct index assignment may not trigger updates)
+        for (let i = 0; i < result.colors.length; i++) {
+            board.tileColors[rowIndex]?.splice(i, 1, result.colors[i]!);
+            board.tileClasses[rowIndex]?.splice(i, 1, result.classes[i]!);
+            board.tiles[rowIndex]?.splice(i, 1, result.tiles[i]!);
         }
-
-        const row = tiles.value[activeRow.value];
-        const classes = tileClasses.value[activeRow.value];
-        const colors = tileColors.value[activeRow.value];
-        if (!row || !classes || !colors) return;
-
-        // Store per-tile keyboard updates for staggered reveal
-        pendingKeyUpdates.value = [];
-
-        // First pass: mark correct positions
-        for (let i = 0; i < row.length; i++) {
-            const guessChar = row[i];
-            const targetChar = targetChars[i];
-            if (guessChar && targetChar && fullCharsMatch(guessChar, targetChar)) {
-                colors.splice(i, 1, 'correct');
-                classes.splice(i, 1, `correct ${BASE_REVEALED_CLASS}`);
-                row.splice(i, 1, targetChar);
-                pendingKeyUpdates.value[i] = {
-                    char: guessChar,
-                    state: 'key-correct' as KeyState,
-                };
-                const normalizedChar = fullNormalize(guessChar);
-                const count = charCounts[normalizedChar];
-                if (count !== undefined) charCounts[normalizedChar] = count - 1;
-            }
-        }
-
-        // Second pass: mark semi-correct and incorrect
-        for (let i = 0; i < row.length; i++) {
-            const guessChar = row[i];
-            if (!guessChar || colors[i] === 'correct') continue;
-
-            const normalizedGuess = fullNormalize(guessChar);
-            const count = charCounts[normalizedGuess];
-
-            const targetHasChar = targetChars.some((tc) => fullCharsMatch(guessChar, tc));
-
-            if (targetHasChar && count !== undefined && count > 0) {
-                colors.splice(i, 1, 'semicorrect');
-                classes.splice(i, 1, `semicorrect ${BASE_REVEALED_CLASS}`);
-                pendingKeyUpdates.value[i] = {
-                    char: guessChar,
-                    state: 'key-semicorrect' as KeyState,
-                };
-                charCounts[normalizedGuess] = count - 1;
-            } else {
-                colors.splice(i, 1, 'incorrect');
-                classes.splice(i, 1, `incorrect ${BASE_REVEALED_CLASS}`);
-                pendingKeyUpdates.value[i] = {
-                    char: guessChar,
-                    state: 'key-incorrect' as KeyState,
-                };
-            }
-        }
+        board.pendingKeyUpdates = result.keyUpdates;
     }
 
     // ---- Keyboard color ----
@@ -474,8 +645,8 @@ export const useGameStore = defineStore('game', () => {
             const canonicalWord = checkWord(typedWord);
 
             if (canonicalWord) {
-                // Hard mode validation
-                if (settings.hardMode) {
+                // Hard mode validation (disabled for multi-board — contradictions between boards)
+                if (settings.hardMode && !isMultiBoard.value) {
                     const hardModeError = checkHardMode(canonicalWord);
                     if (hardModeError) {
                         if (import.meta.client) {
@@ -515,7 +686,12 @@ export const useGameStore = defineStore('game', () => {
                 lastGuessTime = Date.now();
 
                 // Track valid guess submission
-                analytics.trackGuessSubmit(lang.languageCode, activeRow.value + 1, true);
+                analytics.trackGuessSubmit(
+                    lang.languageCode,
+                    activeRow.value + 1,
+                    true,
+                    gameConfig.value.mode
+                );
 
                 // Update tiles to show canonical form (with diacritics)
                 if (row && canonicalWord !== typedWord) {
@@ -523,6 +699,12 @@ export const useGameStore = defineStore('game', () => {
                     for (let i = 0; i < canonicalChars.length; i++) {
                         row.splice(i, 1, canonicalChars[i]);
                     }
+                }
+
+                // Multi-board: branch to dedicated game loop
+                if (isMultiBoard.value) {
+                    processMultiBoardGuess(canonicalWord);
+                    return;
                 }
 
                 updateColors();
@@ -538,8 +720,8 @@ export const useGameStore = defineStore('game', () => {
                 fullWordInputted.value = false;
                 animating.value = true;
 
-                revealRow(revealingRow).then(() => {
-                    animating.value = false;
+                const speedMult = gameConfig.value.mode === 'speed' ? 0.5 : 1;
+                revealRow(revealingRow, speedMult).then(() => {
                     showTiles();
 
                     // Announce guess result for screen readers
@@ -561,14 +743,31 @@ export const useGameStore = defineStore('game', () => {
 
                     // Compare normalized forms for win detection
                     const normalizedGuess = normalizeWord(canonicalWord, lang.normalizeMap);
-                    const normalizedTarget = normalizeWord(lang.todaysWord, lang.normalizeMap);
+                    const targetWord =
+                        gameConfig.value.mode === 'speed'
+                            ? boards.value[activeBoardIndex.value]!.targetWord
+                            : lang.todaysWord;
+                    const normalizedTarget = normalizeWord(targetWord, lang.normalizeMap);
                     if (normalizedGuess === normalizedTarget) {
-                        handleGameWon();
-                    } else if (activeRow.value === MAX_GUESSES) {
-                        handleGameLost();
+                        if (gameConfig.value.mode === 'speed') {
+                            handleSpeedWordSolved();
+                        } else {
+                            handleGameWon();
+                        }
+                    } else if (activeRow.value === gameConfig.value.maxGuesses) {
+                        if (gameConfig.value.mode === 'speed') {
+                            handleSpeedWordFailed();
+                        } else {
+                            handleGameLost();
+                        }
                     }
 
-                    saveToLocalStorage();
+                    if (gameConfig.value.mode !== 'speed') {
+                        saveToLocalStorage();
+                    }
+
+                    // Set animating = false AFTER speed handlers (they may reset the board)
+                    animating.value = false;
                 });
             } else {
                 if (import.meta.client) {
@@ -586,71 +785,73 @@ export const useGameStore = defineStore('game', () => {
                     attempt_number: activeRow.value + 1,
                     word: typedWord,
                 });
-                analytics.trackGuessSubmit(lang.languageCode, activeRow.value + 1, false);
+                analytics.trackGuessSubmit(
+                    lang.languageCode,
+                    activeRow.value + 1,
+                    false,
+                    gameConfig.value.mode
+                );
             }
         } else if (['Backspace', 'Delete', '⌫'].includes(key) && activeCell.value > 0) {
-            activeCell.value--;
-            const row = tiles.value[activeRow.value];
-            const rowClasses = tileClasses.value[activeRow.value];
-            if (row && rowClasses) {
-                row.splice(activeCell.value, 1, '');
-                rowClasses.splice(activeCell.value, 1, DEFAULT_TILE_CLASS);
-                tileColors.value[activeRow.value]?.splice(activeCell.value, 1, 'empty');
+            const rowIdx = activeRow.value;
+
+            if (isMultiBoard.value) {
+                // Multi-board: decrement cursor and clear from ALL unsolved boards
+                const newCell = activeCell.value - 1;
+                for (const board of boards.value) {
+                    if (board.solved) continue;
+                    board.activeCell = newCell;
+                    board.fullWordInputted = false;
+                    const row = board.tiles[rowIdx];
+                    const rowClasses = board.tileClasses[rowIdx];
+                    if (row && rowClasses) {
+                        row.splice(newCell, 1, '');
+                        rowClasses.splice(newCell, 1, DEFAULT_TILE_CLASS);
+                        board.tileColors[rowIdx]?.splice(newCell, 1, 'empty');
+                    }
+                }
+            } else {
+                activeCell.value--;
+                const cellIdx = activeCell.value;
+                const row = tiles.value[rowIdx];
+                const rowClasses = tileClasses.value[rowIdx];
+                if (row && rowClasses) {
+                    row.splice(cellIdx, 1, '');
+                    rowClasses.splice(cellIdx, 1, DEFAULT_TILE_CLASS);
+                    tileColors.value[rowIdx]?.splice(cellIdx, 1, 'empty');
+                }
+                fullWordInputted.value = false;
             }
-            fullWordInputted.value = false;
         } else if (!fullWordInputted.value && lang.acceptableCharacters.includes(key)) {
             addChar(key);
         }
 
         if (!animating.value) {
-            showTiles();
-            saveToLocalStorage();
+            if (isMultiBoard.value) {
+                showTilesAllBoards();
+                saveMultiBoardToLocalStorage();
+            } else if (gameConfig.value.mode !== 'speed') {
+                showTiles();
+                saveToLocalStorage();
+            } else {
+                showTiles();
+                // Speed mode: don't persist ephemeral game state
+            }
         }
     }
 
     // ---- Visual sync ----
 
-    /** Sync data layer to visual layer. RTL is handled by CSS direction on the grid. */
+    /** Sync data layer to visual layer for the active board. Delegates to showTilesForBoard. */
     function showTiles(): void {
-        for (let i = 0; i < tiles.value.length; i++) {
-            const tilesRow = tiles.value[i];
-            const classesRow = tileClasses.value[i];
-            if (!tilesRow || !classesRow) continue;
-
-            tilesVisual.value.splice(i, 1, [...tilesRow]);
-            tileClassesVisual.value.splice(i, 1, [...classesRow]);
-        }
+        showTilesForBoard(activeBoardIndex.value);
     }
 
     // ---- Animations ----
 
-    /** Staggered flip animation for a completed row. Returns a Promise. */
-    function revealRow(rowIndex: number): Promise<void> {
-        if (!import.meta.client) {
-            showTiles();
-            return Promise.resolve();
-        }
-
-        const lang = useLanguageStore();
-        const keys = keyClasses.value;
-        const boardEl = _getBoardEl?.() ?? null;
-
-        return new Promise((resolve) => {
-            animateRevealRow(boardEl, rowIndex, {
-                onMidpoint(visualIdx) {
-                    const finalClass = tileClasses.value[rowIndex]?.[visualIdx] || '';
-                    tileClassesVisual.value[rowIndex]?.splice(visualIdx, 1, finalClass);
-                    const tileChar = tiles.value[rowIndex]?.[visualIdx] || '';
-                    tilesVisual.value[rowIndex]?.splice(visualIdx, 1, tileChar);
-
-                    const keyUpdate = pendingKeyUpdates.value[visualIdx];
-                    if (keyUpdate) {
-                        updateKeyColor(keyUpdate.char, keyUpdate.state, keys);
-                    }
-                },
-                onComplete: resolve,
-            });
-        });
+    /** Staggered flip animation for a completed row. Delegates to revealRowForBoard. */
+    function revealRow(rowIndex: number, speedMultiplier: number = 1): Promise<void> {
+        return revealRowForBoard(activeBoardIndex.value, rowIndex, speedMultiplier);
     }
 
     /** Animate a keyboard key with a CSS animation class. */
@@ -694,42 +895,87 @@ export const useGameStore = defineStore('game', () => {
 
     // ---- Game end handlers ----
 
-    /** Handle a winning game. */
-    function handleGameWon(): void {
+    /**
+     * Shared ceremony for completing a game session (classic or multi-board).
+     * Sets game-over flags, plays haptics/sounds, persists stats, and shows the stats modal.
+     */
+    function completeGameSession(
+        won: boolean,
+        options: {
+            attemptsValue: number | string;
+            emojiBoardText: string;
+            notification: string;
+            notificationDuration?: number;
+            modalDelay?: number;
+            statsAttempts: number; // numeric attempts for stats (0 for losses)
+        }
+    ): void {
         const lang = useLanguageStore();
         const statsStore = useStatsStore();
 
+        emojiBoard.value = options.emojiBoardText;
+        attempts.value = String(options.attemptsValue);
         gameOver.value = true;
-        gameWon.value = true;
-        emojiBoard.value = getEmojiBoard();
-        const winWord = WIN_WORDS[activeRow.value - 1] || 'Phew';
-        showNotification(winWord, 3);
+        gameWon.value = won;
+
+        showNotification(options.notification, options.notificationDuration ?? 3);
 
         if (import.meta.client) {
             const { haptic } = useHaptics();
             const { sound } = useSounds();
-            haptic.success();
-            sound.win();
+            if (won) {
+                haptic.success();
+                sound.win();
+            } else {
+                haptic();
+                sound.lose();
+            }
 
+            setTimeout(
+                () => {
+                    showStatsModal.value = true;
+                },
+                options.modalDelay ?? (won ? 2500 : 1800)
+            );
+        }
+
+        // Speed mode is session-based — no persistent stats
+        if (gameConfig.value.mode !== 'speed') {
+            const statsKey = buildStatsKey(gameConfig.value);
+            statsStore.saveResult(statsKey, won, options.statsAttempts);
+            statsStore.calculateStats(statsKey, gameConfig.value.maxGuesses);
+            statsStore.calculateTotalStats();
+        }
+    }
+
+    /** Handle a winning game (classic single-board, including unlimited). */
+    function handleGameWon(): void {
+        const lang = useLanguageStore();
+        const statsStore = useStatsStore();
+        const winWord = WIN_WORDS[activeRow.value - 1] || 'Phew';
+        const targetWord = boards.value[0]?.targetWord || lang.todaysWord;
+
+        completeGameSession(true, {
+            attemptsValue: activeRow.value,
+            emojiBoardText: getEmojiBoard(),
+            notification: winWord,
+            statsAttempts: activeRow.value,
+        });
+
+        // Win-specific: bounce animation
+        if (import.meta.client) {
             setTimeout(() => {
                 bounceRow(activeRow.value - 1);
             }, 300);
-
-            setTimeout(() => {
-                showStatsModal.value = true;
-            }, 2500);
         }
 
-        // Load definition and image for stats modal display
-        if (import.meta.client) {
-            loadDefinitionAndImage(lang.todaysWord, lang.languageCode, lang.todaysIdx);
+        // Load definition/image for stats modal — only for daily modes (cached content)
+        // Unlimited/speed words are random and likely have no pre-generated definition/image
+        if (import.meta.client && gameConfig.value.playType === 'daily') {
+            loadDefinitionAndImage(targetWord, lang.languageCode, lang.todaysIdx);
         }
 
         submitWordStats(true, activeRow.value);
-
-        statsStore.saveResult(lang.languageCode, true, activeRow.value);
-        statsStore.calculateStats(lang.languageCode);
-        statsStore.calculateTotalStats();
 
         // Analytics: track game completion and streak milestones
         const frustrationState = analytics.resetFrustrationState();
@@ -742,6 +988,7 @@ export const useGameStore = defineStore('game', () => {
             won: true,
             attempts: activeRow.value,
             streak_after: statsStore.stats.current_streak,
+            game_mode: gameConfig.value.mode,
             total_invalid_attempts: frustrationState.totalInvalidAttempts,
             max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
             had_frustration: frustrationState.hadFrustration,
@@ -757,38 +1004,29 @@ export const useGameStore = defineStore('game', () => {
         }
     }
 
-    /** Handle a losing game. */
+    /** Handle a losing game (classic single-board, including unlimited). */
     function handleGameLost(): void {
         const lang = useLanguageStore();
         const statsStore = useStatsStore();
+        const targetWord = boards.value[0]?.targetWord || lang.todaysWord;
 
-        showNotification(lang.todaysWord.toUpperCase(), 12);
+        // Capture streak before it resets
+        const previousStreak = statsStore.stats.current_streak;
 
-        if (import.meta.client) {
-            const { haptic } = useHaptics();
-            const { sound } = useSounds();
-            haptic();
-            sound.lose();
+        completeGameSession(false, {
+            attemptsValue: 'X',
+            emojiBoardText: getEmojiBoard(),
+            notification: targetWord.toUpperCase(),
+            notificationDuration: 12,
+            statsAttempts: 0,
+        });
 
-            setTimeout(() => {
-                showStatsModal.value = true;
-            }, 1800);
-        }
-
-        gameOver.value = true;
-        gameWon.value = false;
-        attempts.value = 'X';
-
-        // Load definition and image for stats modal display
-        if (import.meta.client) {
-            loadDefinitionAndImage(lang.todaysWord, lang.languageCode, lang.todaysIdx);
+        // Load definition/image — only for daily modes (see handleGameWon comment)
+        if (import.meta.client && gameConfig.value.playType === 'daily') {
+            loadDefinitionAndImage(targetWord, lang.languageCode, lang.todaysIdx);
         }
 
         submitWordStats(false, activeRow.value);
-
-        statsStore.saveResult(lang.languageCode, false, activeRow.value);
-        statsStore.calculateStats(lang.languageCode);
-        statsStore.calculateTotalStats();
 
         // Analytics: track game completion
         const lossFrustrationState = analytics.resetFrustrationState();
@@ -801,12 +1039,18 @@ export const useGameStore = defineStore('game', () => {
             won: false,
             attempts: 'X',
             streak_after: 0,
+            game_mode: gameConfig.value.mode,
             total_invalid_attempts: lossFrustrationState.totalInvalidAttempts,
             max_consecutive_invalid: lossFrustrationState.maxConsecutiveInvalid,
             had_frustration: lossFrustrationState.hadFrustration,
             time_to_complete_seconds: lossTimeToComplete,
         });
         analytics.updateUserProperties(statsStore.gameResults);
+
+        // Analytics: track streak broken (if user had an active streak)
+        if (previousStreak > 0) {
+            analytics.trackStreakBroken(lang.languageCode, previousStreak, 0);
+        }
 
         // Show embed banner after game completion
         if (import.meta.client) {
@@ -887,7 +1131,11 @@ export const useGameStore = defineStore('game', () => {
         const settings = useSettingsStore();
         const name = lang.config?.name_native || lang.config?.language_code || '';
         const hardModeFlag = settings.hardMode ? ' *' : '';
-        return `Wordle ${name} #${lang.todaysIdx} — ${attempts.value}/6${hardModeFlag}\n\n${emojiBoard.value}`;
+        const modeLabel =
+            gameConfig.value.mode !== 'classic'
+                ? ` ${GAME_MODE_CONFIG[gameConfig.value.mode].label}`
+                : '';
+        return `Wordle ${name}${modeLabel} #${lang.todaysIdx} — ${attempts.value}/${gameConfig.value.maxGuesses}${hardModeFlag}\n\n${emojiBoard.value}`;
     }
 
     // ---- Persistence ----
@@ -919,20 +1167,27 @@ export const useGameStore = defineStore('game', () => {
 
     /** Reset all game state to defaults. Called before loading a new language's game. */
     function resetGameState(): void {
-        tiles.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, '');
-        tileColors.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, 'empty');
-        tileClasses.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS);
-        tilesVisual.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, '');
-        tileClassesVisual.value = makeEmptyGrid(MAX_GUESSES, WORD_LENGTH, DEFAULT_TILE_CLASS);
-        activeRow.value = 0;
-        activeCell.value = 0;
-        fullWordInputted.value = false;
+        // Clean up speed timer if running
+        if (_speedTimerInterval) {
+            clearInterval(_speedTimerInterval);
+            _speedTimerInterval = null;
+        }
+
+        // Reset board state via fresh BoardState
+        const lang = useLanguageStore();
+        const config = createGameConfig('classic', lang.languageCode || 'en', {
+            wordLength: WORD_LENGTH,
+            dayIndex: lang.todaysIdx,
+        });
+        gameConfig.value = config;
+        boards.value = [
+            createBoardState(0, lang.todaysWord || '', config.maxGuesses, config.wordLength),
+        ];
+        activeBoardIndex.value = 0;
+
+        // Reset top-level state
         gameOver.value = false;
         gameWon.value = false;
-        attempts.value = '0';
-        keyClasses.value = {};
-        pendingKeyUpdates.value = [];
-        emojiBoard.value = '';
         communityPercentile.value = null;
         communityIsTopScore.value = false;
         communityTotal.value = 0;
@@ -985,8 +1240,7 @@ export const useGameStore = defineStore('game', () => {
                                 return 'correct';
                             if (cls.includes('semicorrect')) return 'semicorrect';
                             if (cls.includes('incorrect')) return 'incorrect';
-                            if (cls.includes('pop') || cls.includes('border-neutral-500'))
-                                return 'active';
+                            if (cls.includes('pop') || cls.includes('filled')) return 'active';
                             return 'empty';
                         })
                     );
@@ -1171,127 +1425,742 @@ export const useGameStore = defineStore('game', () => {
         img.src = imgUrl;
     }
 
+    /**
+     * Load definitions for all boards in a multi-board game.
+     * Uses the cached fetchDefinition — no duplicate API calls for the same word.
+     */
+    function loadDefinitionsForBoards(): void {
+        if (!import.meta.client) return;
+        const lang = useLanguageStore();
+        const langCode = lang.languageCode;
+        const words = boards.value.map((b) => b.targetWord);
+
+        boardDefinitionsLoading.value = true;
+        boardDefinitions.value = words.map(() => null);
+
+        const { fetchDefinition } = useDefinitions();
+        const promises = words.map((word, i) =>
+            fetchDefinition(word, langCode).then((def) => {
+                if (def.definition || def.definitionNative) {
+                    boardDefinitions.value[i] = {
+                        word: def.word,
+                        definition: def.definitionNative || def.definition,
+                        partOfSpeech: def.partOfSpeech,
+                    };
+                }
+            })
+        );
+
+        Promise.all(promises).finally(() => {
+            boardDefinitionsLoading.value = false;
+        });
+    }
+
     // ---- Share ----
 
-    /** Share results via Web Share API, clipboard, or fallback. */
+    /** Share results via useGameShare composable (single source of truth). */
     async function shareResults(): Promise<void> {
         if (!import.meta.client) return;
 
         const lang = useLanguageStore();
-        const shareText = getShareText();
-        const langCode = lang.languageCode;
-        const url = `https://wordle.global/${langCode}?r=${gameWon.value ? attempts.value : 'x'}`;
-        const fullText = `${shareText}\n\n${url}`;
+        const { shareResults: doShare, shareButtonState: shareState } = useGameShare();
 
-        const shareParams = {
-            language: langCode,
-            won: gameWon.value,
+        // Sync useGameShare's button state to the store's reactive ref
+        watch(shareState, (v) => {
+            shareButtonState.value = v;
+        });
+
+        await doShare({
+            shareText: getShareText(),
+            langCode: lang.languageCode,
+            gameWon: gameWon.value,
             attempts: attempts.value,
-        };
-
-        const onSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
-            shareButtonState.value = 'success';
-            analytics.trackShareSuccess({ ...shareParams, method });
-            analytics.trackShareContentGenerated(
-                langCode,
-                gameWon.value,
-                attempts.value,
-                emojiBoard.value
-            );
-            setTimeout(() => {
-                shareButtonState.value = 'idle';
-            }, 2000);
-        };
-
-        // Try Web Share API first
-        if (navigator.share) {
-            analytics.trackShareClick({ ...shareParams, method: 'native' });
-            try {
-                await navigator.share({ text: fullText });
-                showNotification(lang.config?.text?.shared || 'Shared!');
-                onSuccess('native');
-                return;
-            } catch (error) {
-                if (error instanceof Error && error.name === 'AbortError') return;
-                analytics.trackShareFail(langCode, 'native', 'share_api_failed');
-            }
-        }
-
-        // Try Clipboard API
-        if (navigator.clipboard?.writeText && window.isSecureContext) {
-            analytics.trackShareClick({ ...shareParams, method: 'clipboard' });
-            try {
-                await navigator.clipboard.writeText(fullText);
-                showNotification(lang.config?.text?.copied || 'Copied to clipboard!');
-                onSuccess('clipboard');
-                return;
-            } catch (error) {
-                if (error instanceof Error) {
-                    analytics.trackShareFail(langCode, 'clipboard', error.message);
-                }
-            }
-        }
-
-        // Legacy execCommand fallback
-        analytics.trackShareClick({ ...shareParams, method: 'fallback' });
-        if (copyViaExecCommand(fullText)) {
-            showNotification(lang.config?.text?.copied || 'Copied to clipboard!');
-            onSuccess('fallback');
-            return;
-        }
-
-        // Final fallback: show modal
-        analytics.trackShareFail(langCode, 'fallback', 'all_methods_failed');
-        showCopyFallbackModal(fullText);
+            emojiBoard: emojiBoard.value,
+            gameMode: gameConfig.value.mode,
+            onNotify: (msg) => {
+                // Use localized text if available, otherwise the default
+                const localizedMsg = gameWon.value
+                    ? lang.config?.text?.shared || lang.config?.text?.copied || msg
+                    : lang.config?.text?.copied || msg;
+                showNotification(localizedMsg);
+            },
+            onAllFailed: (text) => showCopyFallbackModal(text),
+        });
     }
 
-    /** Copy text via legacy execCommand. Returns true on success. */
-    function copyViaExecCommand(text: string): boolean {
+    // Copy fallback modal — rendered by GameCopyFallbackModal component
+    const copyFallbackText = ref<string | null>(null);
+
+    function showCopyFallbackModal(text: string): void {
+        copyFallbackText.value = text;
+    }
+
+    function closeCopyFallbackModal(): void {
+        copyFallbackText.value = null;
+    }
+
+    // =======================================================================
+    // Multi-Board Game Loop
+    // =======================================================================
+
+    /** Core multi-board guess handler — copies guess to all unsolved boards, colors, animates. */
+    function processMultiBoardGuess(canonicalWord: string): void {
+        const lang = useLanguageStore();
+        // Use first UNSOLVED board's activeRow (not board[0] which may be solved/frozen)
+        const unsolvedBoard = boards.value.find((b) => !b.solved);
+        if (!unsolvedBoard) return;
+        const rowIndex = unsolvedBoard.activeRow;
+        const guessChars = splitWord(canonicalWord, lang.graphemeMode);
+        const boardsToReveal: number[] = [];
+
+        // 1. Copy typed letters to all unsolved boards and compute colors
+        for (const board of boards.value) {
+            if (board.solved) continue;
+
+            // Copy guess characters to this board's tiles
+            for (let i = 0; i < guessChars.length; i++) {
+                board.tiles[rowIndex]?.splice(i, 1, guessChars[i]!);
+            }
+
+            // Compute colors for this board
+            updateColorsForBoard(board, rowIndex);
+
+            // Update per-board key states from pending updates
+            for (const keyUpdate of board.pendingKeyUpdates) {
+                if (keyUpdate) {
+                    updateKeyColor(keyUpdate.char, keyUpdate.state, board.keyStates);
+                }
+            }
+
+            boardsToReveal.push(board.boardIndex);
+        }
+
+        // Force Vue reactivity on merged keyboard states
+        // (deep property mutations on board.keyStates may not trigger computed re-evaluation)
+        boards.value = [...boards.value];
+
+        // 2. Advance activeRow on ALL unsolved boards
+        for (const board of boards.value) {
+            if (board.solved) continue;
+            board.activeRow++;
+            board.activeCell = 0;
+            board.fullWordInputted = false;
+        }
+
+        // Reset input state on the first unsolved board (for typing the next guess)
+        const nextUnsolved = boards.value.find((b) => !b.solved);
+        if (nextUnsolved) {
+            nextUnsolved.activeCell = 0;
+            nextUnsolved.fullWordInputted = false;
+        }
+
+        // 3. Animate all boards with 50ms stagger between boards
+        animating.value = true;
+        const BOARD_STAGGER = 50;
+        const revealPromises: Promise<void>[] = [];
+
+        for (let i = 0; i < boardsToReveal.length; i++) {
+            const boardIdx = boardsToReveal[i]!;
+            const promise = new Promise<void>((resolve) => {
+                setTimeout(() => {
+                    revealRowForBoard(boardIdx, rowIndex).then(resolve);
+                }, i * BOARD_STAGGER);
+            });
+            revealPromises.push(promise);
+        }
+
+        Promise.all(revealPromises).then(() => {
+            animating.value = false;
+            showTilesAllBoards();
+            checkMultiBoardCompletion(canonicalWord, rowIndex);
+            saveMultiBoardToLocalStorage();
+        });
+    }
+
+    /** Staggered flip animation for a specific board at a specific row. */
+    function revealRowForBoard(
+        boardIndex: number,
+        rowIndex: number,
+        speedMultiplier: number = 1
+    ): Promise<void> {
+        if (!import.meta.client) {
+            showTilesForBoard(boardIndex);
+            return Promise.resolve();
+        }
+
+        const board = boards.value[boardIndex];
+        if (!board) return Promise.resolve();
+
+        // Try index-based getter first, fall back to single-board getter for the active board
+        const boardEl =
+            _getBoardElForIndex?.(boardIndex) ??
+            (boardIndex === activeBoardIndex.value ? _getBoardEl?.() : null) ??
+            null;
+        const keys = board.keyStates;
+
+        return new Promise((resolve) => {
+            animateRevealRow(
+                boardEl,
+                rowIndex,
+                {
+                    onMidpoint(visualIdx) {
+                        const finalClass = board.tileClasses[rowIndex]?.[visualIdx] || '';
+                        board.tileClassesVisual[rowIndex]?.splice(visualIdx, 1, finalClass);
+                        const tileChar = board.tiles[rowIndex]?.[visualIdx] || '';
+                        board.tilesVisual[rowIndex]?.splice(visualIdx, 1, tileChar);
+
+                        const keyUpdate = board.pendingKeyUpdates[visualIdx];
+                        if (keyUpdate) {
+                            updateKeyColor(keyUpdate.char, keyUpdate.state, keys);
+                        }
+                    },
+                    onComplete: resolve,
+                },
+                speedMultiplier
+            );
+        });
+    }
+
+    /** Copy data layer to visual layer for one board. */
+    function showTilesForBoard(boardIndex: number): void {
+        const board = boards.value[boardIndex];
+        if (!board) return;
+
+        // For solved boards, only sync rows up to solvedAtGuess to prevent
+        // later guesses from appearing on already-solved boards.
+        const maxRow =
+            board.solved && board.solvedAtGuess != null ? board.solvedAtGuess : board.tiles.length;
+
+        for (let i = 0; i < maxRow; i++) {
+            const tilesRow = board.tiles[i];
+            const classesRow = board.tileClasses[i];
+            if (!tilesRow || !classesRow) continue;
+
+            board.tilesVisual.splice(i, 1, [...tilesRow]);
+            board.tileClassesVisual.splice(i, 1, [...classesRow]);
+        }
+    }
+
+    /** Copy data layer to visual layer for all boards. */
+    function showTilesAllBoards(): void {
+        for (let i = 0; i < boards.value.length; i++) {
+            showTilesForBoard(i);
+        }
+    }
+
+    /** Check each unsolved board for a win, and check overall completion. */
+    function checkMultiBoardCompletion(canonicalWord: string, revealedRow: number): void {
+        const lang = useLanguageStore();
+        const normalizedGuess = normalizeWord(canonicalWord, lang.normalizeMap);
+
+        for (const board of boards.value) {
+            if (board.solved) continue;
+
+            const normalizedTarget = normalizeWord(board.targetWord, lang.normalizeMap);
+            if (normalizedGuess === normalizedTarget) {
+                board.solved = true;
+                board.won = true;
+                board.solvedAtGuess = revealedRow + 1;
+                board.solvedAtTimestamp = Date.now();
+            }
+        }
+
+        // Check overall game state
+        const allSolved = boards.value.every((b) => b.solved);
+        const maxGuesses = gameConfig.value.maxGuesses;
+        const currentRow =
+            boards.value.find((b) => !b.solved)?.activeRow ?? boards.value[0]!.activeRow;
+        const outOfGuesses = currentRow >= maxGuesses;
+
+        if (allSolved) {
+            handleMultiBoardWon();
+        } else if (outOfGuesses) {
+            handleMultiBoardLost();
+        }
+    }
+
+    /** Handle winning all boards in multi-board mode. */
+    function handleMultiBoardWon(): void {
+        const maxSolvedRow = Math.max(...boards.value.map((b) => b.solvedAtGuess ?? 0));
+        const winWord = WIN_WORDS[maxSolvedRow - 1] || 'Phew';
+
+        completeGameSession(true, {
+            attemptsValue: maxSolvedRow,
+            emojiBoardText: getMultiBoardEmojiBoard(),
+            notification: winWord,
+            statsAttempts: maxSolvedRow,
+        });
+
+        if (import.meta.client) loadDefinitionsForBoards();
+    }
+
+    /** Handle losing in multi-board mode — show unsolved target words. */
+    function handleMultiBoardLost(): void {
+        const unsolvedWords = boards.value
+            .filter((b) => !b.solved)
+            .map((b) => b.targetWord.toUpperCase())
+            .join(', ');
+
+        completeGameSession(false, {
+            attemptsValue: 'X',
+            emojiBoardText: getMultiBoardEmojiBoard(),
+            notification: unsolvedWords,
+            notificationDuration: 12,
+            statsAttempts: 0,
+        });
+
+        if (import.meta.client) loadDefinitionsForBoards();
+    }
+
+    /** Generate emoji grids for all boards in multi-board mode. */
+    function getMultiBoardEmojiBoard(): string {
+        const settings = useSettingsStore();
+        const greenEmoji = settings.highContrast ? '🟦' : '🟩';
+        const yellowEmoji = settings.highContrast ? '🟧' : '🟨';
+        const boardCount = boards.value.length;
+        const parts: string[] = [];
+
+        for (let b = 0; b < boardCount; b++) {
+            const board = boards.value[b]!;
+            const solvedLabel = board.solved
+                ? `${board.solvedAtGuess}/${gameConfig.value.maxGuesses}`
+                : `X/${gameConfig.value.maxGuesses}`;
+            let boardStr = `Board ${b + 1} (${solvedLabel})\n`;
+
+            // Only show rows up to where the board was solved (or all rows if unsolved)
+            const rowCount = board.solved
+                ? (board.solvedAtGuess ?? board.activeRow)
+                : board.activeRow;
+
+            for (let i = 0; i < rowCount; i++) {
+                const row = board.tileColors[i];
+                if (!row) continue;
+                for (const color of row) {
+                    if (color === 'correct') boardStr += greenEmoji;
+                    else if (color === 'semicorrect') boardStr += yellowEmoji;
+                    else if (color === 'incorrect') boardStr += '⬜';
+                    else break;
+                }
+                if (i < rowCount - 1) boardStr += '\n';
+            }
+            parts.push(boardStr);
+        }
+
+        return parts.join('\n\n');
+    }
+
+    /** Save multi-board state to localStorage. */
+    function saveMultiBoardToLocalStorage(): void {
+        if (!import.meta.client) return;
+        try {
+            const key = buildSaveKey(gameConfig.value);
+            const data = {
+                version: 2,
+                mode: gameConfig.value.mode,
+                active_row: boards.value[0]!.activeRow,
+                game_over: gameOver.value,
+                game_won: gameWon.value,
+                boards: boards.value.map((board) => ({
+                    board_index: board.boardIndex,
+                    target_word: board.targetWord,
+                    tiles: board.tiles,
+                    tile_colors: board.tileColors,
+                    tile_classes: board.tileClasses,
+                    key_states: board.keyStates,
+                    solved: board.solved,
+                    won: board.won,
+                    solved_at_guess: board.solvedAtGuess,
+                    solved_at_timestamp: board.solvedAtTimestamp,
+                })),
+                emoji_board: emojiBoard.value,
+                attempts: attempts.value,
+            };
+            localStorage.setItem(key, JSON.stringify(data));
+        } catch {
+            // localStorage unavailable or quota exceeded
+        }
+    }
+
+    /** Load multi-board state from localStorage. Returns true if restored. */
+    function loadMultiBoardFromLocalStorage(mode: GameMode, targetWords: string[]): boolean {
         if (!import.meta.client) return false;
         try {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.cssText = 'position:fixed;top:0;left:0;width:2em;height:2em;opacity:0;';
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
-            textarea.setSelectionRange(0, text.length);
-            const success = document.execCommand('copy');
-            document.body.removeChild(textarea);
-            return success;
+            const lang = useLanguageStore();
+            const cfg = createGameConfig(mode, lang.languageCode, {
+                wordLength: WORD_LENGTH,
+                dayIndex: lang.todaysIdx,
+            });
+            const key = buildSaveKey(cfg);
+            const stored = localStorage.getItem(key);
+            if (!stored) return false;
+
+            const data = JSON.parse(stored);
+            if (data?.version !== 2) return false;
+            if (!data.boards || data.boards.length !== targetWords.length) return false;
+
+            // Validate target words match (ensures same day)
+            for (let i = 0; i < targetWords.length; i++) {
+                if (data.boards[i]?.target_word !== targetWords[i]) return false;
+            }
+
+            // Restore state
+            gameConfig.value = cfg;
+            boards.value = data.boards.map((saved: any, idx: number) => {
+                const board = createBoardState(
+                    idx,
+                    saved.target_word,
+                    cfg.maxGuesses,
+                    cfg.wordLength
+                );
+                board.tiles = saved.tiles;
+                board.tileColors = saved.tile_colors;
+                board.tileClasses = saved.tile_classes;
+                board.keyStates = saved.key_states || {};
+                board.solved = saved.solved || false;
+                board.won = saved.won || false;
+                board.solvedAtGuess = saved.solved_at_guess ?? null;
+                board.solvedAtTimestamp = saved.solved_at_timestamp ?? null;
+                // Solved boards keep their frozen activeRow; unsolved boards get the shared row
+                board.activeRow = board.solved
+                    ? (board.solvedAtGuess ?? data.active_row)
+                    : data.active_row;
+                board.activeCell = 0;
+                board.fullWordInputted = false;
+                return board;
+            });
+
+            activeBoardIndex.value = 0;
+            gameOver.value = data.game_over || false;
+            gameWon.value = data.game_won || false;
+            emojiBoard.value = data.emoji_board || '';
+            attempts.value = data.attempts || '0';
+
+            return true;
         } catch {
             return false;
         }
     }
 
-    /** Show a modal with the share text for manual copying. */
-    function showCopyFallbackModal(text: string): void {
-        if (!import.meta.client) return;
-        const modal = document.createElement('div');
-        modal.style.cssText =
-            'position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999;';
-        modal.innerHTML = `
-            <div style="background:white;border-radius:12px;padding:20px;margin:20px;max-width:320px;text-align:center;">
-                <p style="font-weight:600;margin-bottom:12px;">Copy your results:</p>
-                <textarea readonly style="width:100%;height:120px;padding:8px;border:1px solid #ccc;border-radius:6px;font-family:monospace;font-size:12px;resize:none;">${text.replace(/</g, '&lt;')}</textarea>
-                <p style="font-size:12px;color:#666;margin:12px 0;">Select all and copy (Ctrl+C / Cmd+C)</p>
-                <button style="background:#6aaa63;color:white;border:none;padding:10px 24px;border-radius:6px;font-weight:600;cursor:pointer;">Done</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
+    // =======================================================================
+    // Speed Streak Methods
+    // =======================================================================
 
-        const textarea = modal.querySelector('textarea');
-        if (textarea) {
-            textarea.focus();
-            textarea.select();
+    function pickSpeedWord(): string {
+        const list = _speedWordList;
+        if (list.length <= 1) return list[0] || '';
+        const currentWord = boards.value[0]?.targetWord || '';
+        let word: string;
+        do {
+            word = list[Math.floor(Math.random() * list.length)]!;
+        } while (word === currentWord && list.length > 1);
+        return word;
+    }
+
+    function speedTimerTick(): void {
+        // Pressure ramp: timer ticks faster based on words solved
+        const tickAmount = Math.round(100 * speedState.value.tickSpeed);
+        speedState.value.timeRemaining -= tickAmount;
+
+        if (speedState.value.timeRemaining <= 0) {
+            speedState.value.timeRemaining = 0;
+            finishSpeedSession();
+            return;
         }
 
-        modal.addEventListener('click', (e) => {
-            const target = e.target as HTMLElement;
-            if (target === modal || target.tagName === 'BUTTON') {
-                document.body.removeChild(modal);
-            }
+        // Update urgency level for background effects
+        const tr = speedState.value.timeRemaining;
+        speedState.value.urgencyLevel = tr > 60_000 ? 0 : tr > 30_000 ? 1 : tr > 10_000 ? 2 : 3;
+
+        // Tick sound + haptic only in last 5 seconds
+        if (tr <= 5_000 && tr % 1000 < tickAmount && import.meta.client) {
+            const { sound } = useSounds();
+            sound.tick();
+            const { haptic } = useHaptics();
+            haptic.confirm();
+        }
+
+        // Clear lastEvent after 600ms so UI flash resets
+        if (speedState.value.lastEvent !== 'none') {
+            setTimeout(() => {
+                speedState.value.lastEvent = 'none';
+            }, 600);
+        }
+    }
+
+    function startSpeedSession(wordList: string[]): void {
+        if (_speedTimerInterval) {
+            clearInterval(_speedTimerInterval);
+            _speedTimerInterval = null;
+        }
+        _speedWordList = wordList;
+        speedState.value = {
+            active: true,
+            timeRemaining: SPEED_INITIAL_TIME,
+            totalTime: SPEED_INITIAL_TIME,
+            wordsSolved: 0,
+            wordsFailed: 0,
+            totalGuesses: 0,
+            solvedWords: [],
+            failedWords: [],
+            wordStartTime: 0,
+            countdownPhase: 'countdown',
+            score: 0,
+            combo: 0,
+            maxCombo: 0,
+            tickSpeed: 1.0,
+            lastTimeDelta: 0,
+            lastEvent: 'none',
+            urgencyLevel: 0,
+            arcadeEvents: [],
+            lastMissedWord: '',
+        };
+        _arcadeEventId = 0;
+
+        // Pick first word and set up the board
+        const word = pickSpeedWord();
+        const cfg = createGameConfig('speed', gameConfig.value.language, { wordLength: 5 });
+        gameConfig.value = cfg;
+        boards.value = [createBoardState(0, word, cfg.maxGuesses, cfg.wordLength)];
+        activeBoardIndex.value = 0;
+        gameOver.value = false;
+        gameWon.value = false;
+        initKeyClasses();
+        showTiles();
+
+        // 3-2-1-GO countdown then start playing
+        setTimeout(() => {
+            speedState.value.countdownPhase = 'playing';
+            speedState.value.wordStartTime = Date.now();
+            _speedTimerInterval = setInterval(() => speedTimerTick(), 100);
+        }, 3000);
+    }
+
+    /** Pick a new speed word and reset the board for the next round. */
+    function resetSpeedBoard(): void {
+        const word = pickSpeedWord();
+        const cfg = gameConfig.value;
+        boards.value = [createBoardState(0, word, cfg.maxGuesses, cfg.wordLength)];
+        activeBoardIndex.value = 0;
+        initKeyClasses();
+        showTiles();
+        speedState.value.wordStartTime = Date.now();
+    }
+
+    function handleSpeedWordSolved(): void {
+        if (speedState.value.countdownPhase !== 'playing') return;
+        const board = boards.value[activeBoardIndex.value]!;
+        const guesses = board.activeRow;
+        const timeMs = Date.now() - speedState.value.wordStartTime;
+
+        // Combo tracking
+        speedState.value.combo++;
+        if (speedState.value.combo > speedState.value.maxCombo) {
+            speedState.value.maxCombo = speedState.value.combo;
+        }
+
+        // Scoring: (7 - guesses) × 100 × combo multiplier (1.0, 1.5, 2.0, 2.5, 3.0 cap)
+        const comboMultiplier = Math.min(1 + (speedState.value.combo - 1) * 0.5, 3.0);
+        const basePoints = (7 - guesses) * 100;
+        const points = Math.round(basePoints * comboMultiplier);
+        speedState.value.score += points;
+
+        speedState.value.solvedWords.push({ word: board.targetWord, guesses, timeMs, points });
+        speedState.value.wordsSolved++;
+        speedState.value.totalGuesses += guesses;
+
+        // Time bonus based on guesses (1=+60s, 2=+50s, ... 6=+10s)
+        const bonus = SPEED_BONUS_TABLE[Math.min(guesses, 6)] ?? 10_000;
+        speedState.value.timeRemaining += bonus;
+        speedState.value.lastTimeDelta = bonus;
+        speedState.value.lastEvent = 'solve';
+
+        // Pressure ramp: every SPEED_RAMP_INTERVAL words, tick faster
+        const rampLevel = Math.floor(speedState.value.wordsSolved / SPEED_RAMP_INTERVAL);
+        speedState.value.tickSpeed = Math.min(1.0 + rampLevel * 0.2, 2.5);
+
+        // Push arcade events for UI
+        pushArcadeEvent({
+            id: ++_arcadeEventId,
+            type: 'solve',
+            word: board.targetWord,
+            guesses,
+            points,
+            bonus,
+            combo: speedState.value.combo,
+            emoji: SOLVE_REACTIONS[Math.min(guesses, 6)],
         });
+
+        // Milestone check (every 5 words)
+        if (speedState.value.wordsSolved % 5 === 0) {
+            speedState.value.lastEvent = 'milestone';
+            pushArcadeEvent({
+                id: ++_arcadeEventId,
+                type: 'milestone',
+                milestone: speedState.value.wordsSolved,
+                label: `${speedState.value.wordsSolved} WORDS!`,
+                emoji: '🏆',
+            });
+        }
+
+        // Combo milestone at 3, 5, 10
+        if ([3, 5, 10].includes(speedState.value.combo)) {
+            pushArcadeEvent({
+                id: ++_arcadeEventId,
+                type: 'combo',
+                combo: speedState.value.combo,
+                label: `${speedState.value.combo}x COMBO`,
+                emoji: '🔥',
+            });
+        }
+
+        if (import.meta.client) {
+            const { haptic } = useHaptics();
+            const { sound } = useSounds();
+            // Stronger haptic for better solves
+            if (guesses <= 2) {
+                haptic.success();
+                haptic.success();
+            } else {
+                haptic.success();
+            }
+            sound.solveChime();
+        }
+
+        // Pick new word and reset board
+        resetSpeedBoard();
+    }
+
+    function handleSpeedWordFailed(): void {
+        if (speedState.value.countdownPhase !== 'playing') return;
+        const board = boards.value[activeBoardIndex.value]!;
+        speedState.value.failedWords.push(board.targetWord);
+        speedState.value.wordsFailed++;
+        speedState.value.totalGuesses += board.activeRow;
+
+        // Break combo
+        speedState.value.combo = 0;
+
+        // Time penalty: -30s
+        speedState.value.timeRemaining = Math.max(
+            0,
+            speedState.value.timeRemaining - SPEED_FAIL_PENALTY
+        );
+        speedState.value.lastTimeDelta = -SPEED_FAIL_PENALTY;
+        speedState.value.lastEvent = 'fail';
+
+        pushArcadeEvent({
+            id: ++_arcadeEventId,
+            type: 'fail',
+            word: board.targetWord,
+            penalty: SPEED_FAIL_PENALTY,
+            label: board.targetWord.toUpperCase(),
+            emoji: '💀',
+        });
+
+        if (speedState.value.timeRemaining <= 0) {
+            finishSpeedSession();
+            return;
+        }
+
+        if (import.meta.client) {
+            const { haptic } = useHaptics();
+            const { sound } = useSounds();
+            haptic.error();
+            haptic.error();
+            sound.failBuzz();
+        }
+
+        // Show target word briefly
+        showNotification(board.targetWord.toUpperCase(), 0.5);
+
+        // Pick new word and reset board
+        resetSpeedBoard();
+    }
+
+    function finishSpeedSession(): void {
+        if (_speedTimerInterval) {
+            clearInterval(_speedTimerInterval);
+            _speedTimerInterval = null;
+        }
+        // Save the word that was in progress when time ran out
+        const currentBoard = boards.value[activeBoardIndex.value];
+        speedState.value.lastMissedWord = currentBoard?.targetWord || '';
+        speedState.value.countdownPhase = 'finished';
+        speedState.value.active = false;
+        gameOver.value = true;
+
+        if (import.meta.client) {
+            const { sound } = useSounds();
+            const { haptic } = useHaptics();
+            sound.timeUp();
+            haptic.error();
+        }
+
+        // Analytics: track speed session completion
+        const lang = useLanguageStore();
+        const s = speedState.value;
+        const totalSolveTimeMs = s.solvedWords.reduce((sum, w) => sum + w.timeMs, 0);
+        analytics.trackSpeedSessionComplete({
+            language: lang.languageCode,
+            words_solved: s.wordsSolved,
+            words_failed: s.wordsFailed,
+            total_guesses: s.totalGuesses,
+            score: s.score,
+            max_combo: s.maxCombo,
+            avg_time_per_word_seconds:
+                s.wordsSolved > 0
+                    ? Math.round((totalSolveTimeMs / s.wordsSolved / 1000) * 10) / 10
+                    : 0,
+            total_time_seconds: SPEED_INITIAL_TIME / 1000,
+        });
+    }
+
+    function getSpeedShareText(): string {
+        const lang = useLanguageStore();
+        const name = lang.config?.name_native || lang.config?.language_code || '';
+        const solved = speedState.value.wordsSolved;
+        const avgGuesses = solved > 0 ? (speedState.value.totalGuesses / solved).toFixed(1) : '0';
+        const avgTime =
+            solved > 0
+                ? (
+                      speedState.value.solvedWords.reduce((s, w) => s + w.timeMs, 0) /
+                      solved /
+                      1000
+                  ).toFixed(1)
+                : '0';
+        const score = speedState.value.score;
+        const maxCombo = speedState.value.maxCombo;
+        return `Wordle ${name} ⚡ Speed Streak\n🏆 ${solved} words · ${score.toLocaleString()} pts\n🔥 ${maxCombo}x max combo\nAvg: ${avgGuesses} guesses · ${avgTime}s/word`;
+    }
+
+    function resetSpeedState(): void {
+        if (_speedTimerInterval) {
+            clearInterval(_speedTimerInterval);
+            _speedTimerInterval = null;
+        }
+        speedState.value = {
+            active: false,
+            timeRemaining: SPEED_INITIAL_TIME,
+            totalTime: SPEED_INITIAL_TIME,
+            wordsSolved: 0,
+            wordsFailed: 0,
+            totalGuesses: 0,
+            solvedWords: [],
+            failedWords: [],
+            wordStartTime: 0,
+            countdownPhase: 'idle',
+            score: 0,
+            combo: 0,
+            maxCombo: 0,
+            tickSpeed: 1.0,
+            lastTimeDelta: 0,
+            lastEvent: 'none',
+            urgencyLevel: 0,
+            arcadeEvents: [],
+            lastMissedWord: '',
+        };
+        _arcadeEventId = 0;
+        _speedWordList = [];
     }
 
     // =======================================================================
@@ -1299,7 +2168,14 @@ export const useGameStore = defineStore('game', () => {
     // =======================================================================
 
     return {
-        // State
+        // Multi-board architecture
+        gameConfig,
+        boards,
+        activeBoardIndex,
+        isMultiBoard,
+        mergedKeyStates,
+
+        // State (computed proxies to active board)
         tiles,
         tileColors,
         tileClasses,
@@ -1327,17 +2203,23 @@ export const useGameStore = defineStore('game', () => {
         communityTotal,
         communityStatsLink,
         shareButtonState,
+        copyFallbackText,
+        closeCopyFallbackModal,
         srAnnouncement,
         todayDefinition,
         todayImageUrl,
         todayImageLoading,
         todayDefinitionLoading,
+        boardDefinitions,
+        boardDefinitionsLoading,
+        loadDefinitionsForBoards,
         allowAnyWord,
         maxDifficultyUsed,
         // hardMode is owned by settings store
 
         // Actions
         setBoardEl,
+        setBoardElForIndex,
         setKeyboardEl,
         initKeyClasses,
         resetCaches,
@@ -1349,6 +2231,8 @@ export const useGameStore = defineStore('game', () => {
         keyClick,
         keyDown,
         showTiles,
+        showTilesForBoard,
+        showTilesAllBoards,
         revealRow,
         shakeRow,
         bounceRow,
@@ -1360,11 +2244,20 @@ export const useGameStore = defineStore('game', () => {
         resetGameState,
         saveToLocalStorage,
         loadFromLocalStorage,
+        loadMultiBoardFromLocalStorage,
+        saveMultiBoardToLocalStorage,
         getTimeUntilNextDay,
         updateTimeUntilNextDay,
         checkHardMode,
         maybeShowTutorial,
         submitWordStats,
         shareResults,
+
+        // Speed Streak
+        speedState,
+        startSpeedSession,
+        finishSpeedSession,
+        resetSpeedState,
+        getSpeedShareText,
     };
 });

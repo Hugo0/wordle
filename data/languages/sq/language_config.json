@@ -11,7 +11,29 @@
         "wordle_native": "Wordle",
         "title": "Loja ditore e fjalëve",
         "description": "Gjeni fjalën e fshehur në 6 përpjekje (ose më pak). Një enigmë e re çdo ditë!",
-        "keywords": "shqip, enigmë, fjalë, lojë, online, gjej, ditore"
+        "keywords": "shqip, enigmë, fjalë, lojë, online, gjej, ditore",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Albanian. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Albanian as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Albanian. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Albanian. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Albanian. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Shqip",

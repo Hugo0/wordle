@@ -10,7 +10,29 @@
         "wordle_native": "ওয়ার্ডল",
         "title": "দৈনিক শব্দ খেলা",
         "description": "লুকানো শব্দটি ৬ বার চেষ্টায় (বা কম) খুঁজে বের করুন। প্রতিদিন নতুন ধাঁধা!",
-        "keywords": "বাংলা, ধাঁধা, শব্দ, খেলা, অনলাইন, অনুমান, দৈনিক"
+        "keywords": "বাংলা, ধাঁধা, শব্দ, খেলা, অনলাইন, অনুমান, দৈনিক",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Bengali. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Bengali as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Bengali. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Bengali. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Bengali. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "বাংলা",

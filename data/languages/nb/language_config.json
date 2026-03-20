@@ -18,7 +18,29 @@
         "locale": "nb",
         "title": "Det daglige ordspillet",
         "description": "Gjett det skjulte ordet i 6 prøver (eller mindre). Et nytt puslespill er tilgjengelig hver dag!",
-        "keywords": "Norsk Bokmål, Puslespill, Ord, Spill, Spill, Online, Gjett, Daglig"
+        "keywords": "Norsk Bokmål, Puslespill, Ord, Spill, Spill, Online, Gjett, Daglig",
+        "modes": {
+            "unlimited": {
+                "title": "Spill ubegrenset — ingen venting",
+                "description": "Spill Wordle på norsk ubegrenset. Ingen venting — et nytt ord hver gang."
+            },
+            "speed": {
+                "title": "Speed Streak — kappløp mot klokka",
+                "description": "Speed Streak: løs så mange norske Wordle-ord du kan på 5 minutter."
+            },
+            "dordle": {
+                "title": "Dordle — 2 brett samtidig",
+                "description": "Spill Dordle på norsk. Løs 2 Wordle-brett samtidig med 7 forsøk."
+            },
+            "tridle": {
+                "title": "Tridle — 3 brett samtidig",
+                "description": "Spill Tridle på norsk. Løs 3 Wordle-brett samtidig med 8 forsøk."
+            },
+            "quordle": {
+                "title": "Quordle — 4 brett samtidig",
+                "description": "Spill Quordle på norsk. Løs 4 Wordle-brett samtidig med 9 forsøk."
+            }
+        }
     },
     "text": {
         "subheader": "Norsk Bokmål",

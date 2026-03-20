@@ -1,6 +1,7 @@
 <template>
     <div
-        class="w-full h-full justify-center items-center inline-flex"
+        class="tile w-full h-full justify-center items-center inline-flex font-display font-bold uppercase"
+        style="font-size: 26px"
         :class="tileClass"
         :aria-label="ariaLabel"
         role="gridcell"

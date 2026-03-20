@@ -7,7 +7,29 @@
         "locale": "eu",
         "title": "Eguneko hitz jokoa",
         "description": "Asmatu ezkutuko hitza 6 saiakera (edo gutxiago). Puzzle berri bat egunero eskuragarri dago!",
-        "keywords": "euskara, puzzlea, hitza, jolasa, jokoa, linean, asmatu, egunero"
+        "keywords": "euskara, puzzlea, hitza, jolasa, jokoa, linean, asmatu, egunero",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Basque. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Basque as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Basque. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Basque. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Basque. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "euskara",
