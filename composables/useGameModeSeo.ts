@@ -45,6 +45,9 @@ export function useGameModeSeo(opts: GameModeSeoOptions) {
         ogDescription: description,
         ogUrl: canonicalUrl,
         ogType: 'website',
+        ogImage: `https://wordle.global/images/modes/${modeSlug}/${lang}.png`,
+        ogImageWidth: 1200,
+        ogImageHeight: 630,
         twitterCard: 'summary_large_image',
         twitterTitle: title,
         twitterDescription: description,
@@ -103,23 +106,6 @@ export function useGameModeSeo(opts: GameModeSeoOptions) {
         ],
     });
 
-    // OG image — static file generated at build time
-    useSeoMeta({
-        ogImage: `https://wordle.global/images/modes/${modeSlug}/${lang}.png`,
-        ogImageWidth: 1200,
-        ogImageHeight: 630,
-    });
-
     return { title, description, canonicalUrl };
 }
 
-/**
- * Fetch all language codes and set hreflang tags for a game mode page.
- * Uses useAsyncData with a unique key per mode to avoid SSR conflicts.
- */
-export async function useGameModeHreflang(modeSlug: string) {
-    const { data } = await useAsyncData(`hreflang-${modeSlug}`, () => $fetch('/api/languages'));
-    if (data.value?.language_codes) {
-        useHreflang(data.value.language_codes as string[], `/${modeSlug}`);
-    }
-}

@@ -1,6 +1,6 @@
 <template>
     <main ref="containerRef" class="flex flex-auto justify-center items-center overflow-hidden">
-        <div class="grid grid-cols-2 gap-1 p-2 w-full" :style="gridStyle">
+        <div class="grid grid-cols-2 gap-1 p-2 w-full" :style="gridStyle" data-allow-mismatch>
             <GameMultiBoardPanel
                 v-for="i in boardCount"
                 :key="i - 1"

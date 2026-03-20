@@ -42,7 +42,8 @@ useGameModeSeo({
     langStore,
     config: config.value,
 });
-await useGameModeHreflang('speed');
+const { data: allLangs } = await useFetch('/api/languages');
+if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/speed');
 
 // --- Countdown flow ---
 const countdownNumber = ref<string | number>('');
