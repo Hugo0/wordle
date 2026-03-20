@@ -55,24 +55,47 @@ const STATE_COLORS: Record<string, string> = {
     'key-incorrect': 'var(--color-muted)',
 };
 
-/** Generate a vertical split gradient for multi-board keyboard keys */
+const DEFAULT_KEY_COLOR = 'var(--color-paper-warm, #e8e8e8)';
+
+function stateColor(state: string | undefined): string {
+    return STATE_COLORS[state || ''] || DEFAULT_KEY_COLOR;
+}
+
+/** Generate a split gradient for multi-board keyboard keys.
+ *  - 2 boards: vertical 50/50 split (left = board 1, right = board 2)
+ *  - 3 boards: vertical 33/33/33 split
+ *  - 4 boards: 2×2 quadrants matching the board grid layout
+ */
 const splitGradient = computed(() => {
     if (!props.boardStates || props.boardStates.length <= 1) return null;
-    // Only show gradient if at least one board has a state
     if (props.boardStates.every((s) => !s)) return null;
 
     const n = props.boardStates.length;
-    const step = 100 / n;
-    const stops: string[] = [];
 
-    for (let i = 0; i < n; i++) {
-        const color = STATE_COLORS[props.boardStates[i]!] || 'var(--color-paper-warm, #e8e8e8)';
-        const start = i * step;
-        const end = (i + 1) * step;
-        stops.push(`${color} ${start}%`);
-        stops.push(`${color} ${end}%`);
+    // 4 boards: 2×2 quadrant layout matching the board grid
+    // ┌──┬──┐
+    // │TL│TR│  TL=board0, TR=board1
+    // ├──┼──┤
+    // │BL│BR│  BL=board2, BR=board3
+    // └──┴──┘
+    if (n === 4) {
+        const tl = stateColor(props.boardStates[0]);
+        const tr = stateColor(props.boardStates[1]);
+        const bl = stateColor(props.boardStates[2]);
+        const br = stateColor(props.boardStates[3]);
+
+        // Two horizontal gradients stacked vertically
+        return `linear-gradient(to right, ${tl} 50%, ${tr} 50%) top/100% 50% no-repeat, linear-gradient(to right, ${bl} 50%, ${br} 50%) bottom/100% 50% no-repeat`;
     }
 
+    // 2 or 3 boards: vertical stripes
+    const step = 100 / n;
+    const stops: string[] = [];
+    for (let i = 0; i < n; i++) {
+        const color = stateColor(props.boardStates[i]);
+        stops.push(`${color} ${i * step}%`);
+        stops.push(`${color} ${(i + 1) * step}%`);
+    }
     return `linear-gradient(to right, ${stops.join(', ')})`;
 });
 

@@ -118,9 +118,7 @@ export function useGameModeSeo(opts: GameModeSeoOptions) {
  * Uses useAsyncData with a unique key per mode to avoid SSR conflicts.
  */
 export async function useGameModeHreflang(modeSlug: string) {
-    const { data } = await useAsyncData(`hreflang-${modeSlug}`, () =>
-        $fetch('/api/languages')
-    );
+    const { data } = await useAsyncData(`hreflang-${modeSlug}`, () => $fetch('/api/languages'));
     if (data.value?.language_codes) {
         useHreflang(data.value.language_codes as string[], `/${modeSlug}`);
     }

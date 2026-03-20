@@ -8,7 +8,7 @@
                 :ref="(el: any) => setPanelRef(i - 1, el)"
                 :board-index="i - 1"
             />
-            <!-- Tridle: empty 4th cell so grid stays symmetric -->
+            <!-- Tridle: empty 4th cell keeps grid symmetric, board 3 in bottom-left -->
             <div v-if="boardCount === 3" aria-hidden="true" />
         </div>
     </main>

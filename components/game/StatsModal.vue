@@ -249,9 +249,7 @@
                             <template v-else-if="game.communityIsTopScore">
                                 {{ lang.config?.ui?.top_score }}
                             </template>
-                            <template v-else>
-                                Top {{ 100 - game.communityPercentile }}%
-                            </template>
+                            <template v-else> Top {{ 100 - game.communityPercentile }}% </template>
                             <ExternalLink :size="12" />
                         </a>
                     </div>
