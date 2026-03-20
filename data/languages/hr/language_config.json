@@ -118,6 +118,11 @@
         "page_of": "Stranica {page} od {total}",
         "report_bad_word": "Prijavi neprikladnu riječ",
         "view_all_words": "Pogledaj sve {lang} riječi",
-        "difficulty_locked": "Težina se ne može promijeniti nakon pogađanja"
+        "difficulty_locked": "Težina se ne može promijeniti nakon pogađanja",
+        "pos_noun": "imenica",
+        "pos_verb": "glagol",
+        "pos_adjective": "pridjev",
+        "pos_adverb": "prilog",
+        "pos_other": ""
     }
 }

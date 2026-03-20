@@ -136,6 +136,11 @@
         "page_of": "Pagina {page} di {total}",
         "report_bad_word": "Segnala parola inappropriata",
         "view_all_words": "Vedi tutte le parole {lang}",
-        "difficulty_locked": "Non puoi cambiare la difficoltà dopo aver indovinato"
+        "difficulty_locked": "Non puoi cambiare la difficoltà dopo aver indovinato",
+        "pos_noun": "sostantivo",
+        "pos_verb": "verbo",
+        "pos_adjective": "aggettivo",
+        "pos_adverb": "avverbio",
+        "pos_other": ""
     }
 }

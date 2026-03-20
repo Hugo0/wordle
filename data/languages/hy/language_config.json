@@ -119,6 +119,11 @@
         "page_of": "Էջ {page} / {total}",
         "report_bad_word": "Հաղորդել վատ բառ",
         "view_all_words": "Տեսնել {lang} բառերը",
-        "difficulty_locked": "Բարդությունը չի կարելի փոխել"
+        "difficulty_locked": "Բարդությունը չի կարելի փոխել",
+        "pos_noun": "գոյական",
+        "pos_verb": "բայ",
+        "pos_adjective": "ածական",
+        "pos_adverb": "մակբայ",
+        "pos_other": ""
     }
 }

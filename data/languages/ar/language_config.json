@@ -129,6 +129,11 @@
         "page_of": "صفحة {page} من {total}",
         "report_bad_word": "الإبلاغ عن كلمة غير لائقة",
         "view_all_words": "عرض جميع كلمات {lang}",
-        "difficulty_locked": "لا يمكن تغيير الصعوبة بعد التخمين"
+        "difficulty_locked": "لا يمكن تغيير الصعوبة بعد التخمين",
+        "pos_noun": "اسم",
+        "pos_verb": "فعل",
+        "pos_adjective": "صفة",
+        "pos_adverb": "ظرف",
+        "pos_other": ""
     }
 }

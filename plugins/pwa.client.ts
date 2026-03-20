@@ -61,11 +61,12 @@ export default defineNuxtPlugin(() => {
 
     /**
      * Show the install banner.
-     * Should only be called after a game win — the game store
-     * watches gameWon and calls this when appropriate.
+     * Called after game over — guarded to fire at most once per session.
      */
+    let bannerShown = false;
     function showBanner(): void {
-        if (dismissed || isStandalone()) return;
+        if (bannerShown || dismissed || isStandalone()) return;
+        bannerShown = true;
         const banner = getBanner();
         if (banner && (deferredPrompt || isIOS())) {
             banner.style.display = 'flex';
@@ -152,6 +153,10 @@ export default defineNuxtPlugin(() => {
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e as BeforeInstallPromptEvent;
+        // If game is already over when the prompt arrives, show the banner now
+        if (gameStore.gameOver) {
+            setTimeout(() => showBanner(), 500);
+        }
     });
 
     window.addEventListener('appinstalled', () => {
@@ -159,18 +164,18 @@ export default defineNuxtPlugin(() => {
         hideBanner();
     });
 
-    // --- Watch game store for wins to show the banner ---
+    // --- Watch game store for game over to show the banner ---
 
-    // Use a nextTick + watch so the game store is available
     const gameStore = useGameStore();
     watch(
-        () => gameStore.gameWon,
-        (won) => {
-            if (won) {
-                // Slight delay so the win animation plays first
+        () => gameStore.gameOver,
+        (over) => {
+            if (over) {
+                // Slight delay so the win/loss animation plays first
                 setTimeout(() => showBanner(), 2000);
             }
-        }
+        },
+        { immediate: true }
     );
 
     // --- Provide PWA utilities to the app ---

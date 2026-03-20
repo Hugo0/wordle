@@ -118,7 +118,12 @@
         "page_of": "{page}. oldal / {total}",
         "report_bad_word": "Rossz szó jelentése",
         "view_all_words": "Összes {lang} szó megtekintése",
-        "difficulty_locked": "A nehézség nem változtatható tipp után"
+        "difficulty_locked": "A nehézség nem változtatható tipp után",
+        "pos_noun": "főnév",
+        "pos_verb": "ige",
+        "pos_adjective": "melléknév",
+        "pos_adverb": "határozószó",
+        "pos_other": ""
     },
     "diacritic_map": {
         "a": [

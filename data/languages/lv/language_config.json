@@ -118,6 +118,11 @@
         "page_of": "Lapa {page} no {total}",
         "report_bad_word": "Ziņot par sliktu vārdu",
         "view_all_words": "Skatīt visus {lang} vārdus",
-        "difficulty_locked": "Grūtību nevar mainīt pēc minējuma"
+        "difficulty_locked": "Grūtību nevar mainīt pēc minējuma",
+        "pos_noun": "lietvārds",
+        "pos_verb": "darbības vārds",
+        "pos_adjective": "īpašības vārds",
+        "pos_adverb": "apstākļa vārds",
+        "pos_other": ""
     }
 }

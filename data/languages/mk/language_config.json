@@ -119,6 +119,11 @@
         "page_of": "Страница {page} од {total}",
         "report_bad_word": "Пријави лош збор",
         "view_all_words": "Погледни ги сите {lang} зборови",
-        "difficulty_locked": "Тежината не може да се промени по обидот"
+        "difficulty_locked": "Тежината не може да се промени по обидот",
+        "pos_noun": "именка",
+        "pos_verb": "глагол",
+        "pos_adjective": "придавка",
+        "pos_adverb": "прилог",
+        "pos_other": ""
     }
 }

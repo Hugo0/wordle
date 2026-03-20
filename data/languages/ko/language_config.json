@@ -320,6 +320,11 @@
         "page_of": "{page} / {total} 페이지",
         "report_bad_word": "부적절한 단어 신고",
         "view_all_words": "모든 {lang} 단어 보기",
-        "difficulty_locked": "추측 후에는 난이도를 변경할 수 없습니다"
+        "difficulty_locked": "추측 후에는 난이도를 변경할 수 없습니다",
+        "pos_noun": "명사",
+        "pos_verb": "동사",
+        "pos_adjective": "형용사",
+        "pos_adverb": "부사",
+        "pos_other": ""
     }
 }

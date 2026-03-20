@@ -119,6 +119,11 @@
         "page_of": "გვერდი {page} / {total}",
         "report_bad_word": "უვარგისო სიტყვის შეტყობინება",
         "view_all_words": "ყველა {lang} სიტყვის ნახვა",
-        "difficulty_locked": "სირთულე ვერ შეიცვლება მიხვედრის შემდეგ"
+        "difficulty_locked": "სირთულე ვერ შეიცვლება მიხვედრის შემდეგ",
+        "pos_noun": "არსებითი სახელი",
+        "pos_verb": "ზმნა",
+        "pos_adjective": "ზედსართავი სახელი",
+        "pos_adverb": "ზმნიზედა",
+        "pos_other": ""
     }
 }

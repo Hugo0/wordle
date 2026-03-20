@@ -149,6 +149,11 @@
         "page_of": "Página {page} de {total}",
         "report_bad_word": "Reportar palavra indevida",
         "view_all_words": "Ver todas as palavras {lang}",
-        "difficulty_locked": "Não é possível alterar a dificuldade após adivinhar"
+        "difficulty_locked": "Não é possível alterar a dificuldade após adivinhar",
+        "pos_noun": "substantivo",
+        "pos_verb": "verbo",
+        "pos_adjective": "adjetivo",
+        "pos_adverb": "advérbio",
+        "pos_other": ""
     }
 }

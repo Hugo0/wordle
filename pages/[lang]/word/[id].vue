@@ -139,6 +139,10 @@ function distCount(n: number): number {
     return wordStats.distribution[String(n)] || 0;
 }
 
+function posLabel(pos: string | undefined | null): string {
+    return translatePos(pos, langStore.config?.ui);
+}
+
 // Share button
 const shareBtnText = ref('Share');
 const shareBtnClass = ref('bg-green-500 hover:bg-green-600');
@@ -370,7 +374,7 @@ onMounted(() => {
                             v-if="(todayRevealedDef || definition)?.part_of_speech"
                             class="text-xs text-neutral-400 dark:text-neutral-500 italic"
                         >
-                            {{ (todayRevealedDef || definition).part_of_speech }}
+                            {{ posLabel((todayRevealedDef || definition).part_of_speech) }}
                         </span>
                     </div>
                     <p class="text-sm text-neutral-800 dark:text-neutral-200">
@@ -438,7 +442,7 @@ onMounted(() => {
                             v-if="definition.part_of_speech"
                             class="text-xs text-neutral-400 dark:text-neutral-500 italic"
                         >
-                            {{ definition.part_of_speech }}
+                            {{ posLabel(definition.part_of_speech) }}
                         </span>
                     </div>
                     <p class="text-sm text-neutral-800 dark:text-neutral-200">
@@ -470,7 +474,7 @@ onMounted(() => {
                             v-if="asyncDef.part_of_speech"
                             class="text-xs text-neutral-400 dark:text-neutral-500 italic"
                         >
-                            {{ asyncDef.part_of_speech }}
+                            {{ posLabel(asyncDef.part_of_speech) }}
                         </span>
                     </div>
                     <p class="text-sm text-neutral-800 dark:text-neutral-200">

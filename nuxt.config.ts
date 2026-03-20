@@ -25,6 +25,13 @@ export default defineNuxtConfig({
 
     vite: {
         plugins: [tailwindcss()],
+        vue: {
+            template: {
+                compilerOptions: {
+                    isCustomElement: (tag: string) => tag === 'pwa-install',
+                },
+            },
+        },
     },
 
     // Resolve data directory: data/ relative to project root
@@ -54,6 +61,7 @@ export default defineNuxtConfig({
                     sizes: '180x180',
                     href: '/favicon/apple-touch-icon.png',
                 },
+                { rel: 'manifest', href: '/manifest.json' },
             ],
             meta: [
                 { property: 'og:image', content: 'https://wordle.global/images/og-image.png' },

@@ -118,6 +118,11 @@
         "page_of": "Page {page} of {total}",
         "report_bad_word": "Report bad word",
         "view_all_words": "View all {lang} words",
-        "difficulty_locked": "Can't change difficulty after guessing"
+        "difficulty_locked": "Can't change difficulty after guessing",
+        "pos_noun": "noun",
+        "pos_verb": "verb",
+        "pos_adjective": "adjective",
+        "pos_adverb": "adverb",
+        "pos_other": ""
     }
 }

@@ -118,7 +118,12 @@
         "page_of": "पृष्ठ {page} / {total}",
         "report_bad_word": "खराब शब्द की रिपोर्ट करें",
         "view_all_words": "सभी {lang} शब्द देखें",
-        "difficulty_locked": "अनुमान लगाने के बाद कठिनाई नहीं बदल सकते"
+        "difficulty_locked": "अनुमान लगाने के बाद कठिनाई नहीं बदल सकते",
+        "pos_noun": "संज्ञा",
+        "pos_verb": "क्रिया",
+        "pos_adjective": "विशेषण",
+        "pos_adverb": "क्रिया विशेषण",
+        "pos_other": ""
     },
     "diacritic_map": {
         "न": [

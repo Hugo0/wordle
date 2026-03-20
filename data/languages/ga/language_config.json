@@ -134,6 +134,11 @@
         "page_of": "Leathanach {page} as {total}",
         "report_bad_word": "Tuairiscigh drochfhocal",
         "view_all_words": "Féach ar gach focal {lang}",
-        "difficulty_locked": "Ní féidir an deacracht a athrú tar éis buille faoi thuairim"
+        "difficulty_locked": "Ní féidir an deacracht a athrú tar éis buille faoi thuairim",
+        "pos_noun": "ainmfhocal",
+        "pos_verb": "briathar",
+        "pos_adjective": "aidiacht",
+        "pos_adverb": "dobhriathar",
+        "pos_other": ""
     }
 }

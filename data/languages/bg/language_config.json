@@ -119,6 +119,11 @@
         "page_of": "Страница {page} от {total}",
         "report_bad_word": "Докладвай лоша дума",
         "view_all_words": "Виж всички думи на {lang}",
-        "difficulty_locked": "Не може да се смени трудността след опит"
+        "difficulty_locked": "Не може да се смени трудността след опит",
+        "pos_noun": "съществително",
+        "pos_verb": "глагол",
+        "pos_adjective": "прилагателно",
+        "pos_adverb": "наречие",
+        "pos_other": ""
     }
 }

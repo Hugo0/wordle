@@ -129,6 +129,11 @@
         "page_of": "Side {page} av {total}",
         "report_bad_word": "Rapporter dårleg ord",
         "view_all_words": "Sjå alle {lang} ord",
-        "difficulty_locked": "Kan ikkje endre vanskegrad etter gjetting"
+        "difficulty_locked": "Kan ikkje endre vanskegrad etter gjetting",
+        "pos_noun": "substantiv",
+        "pos_verb": "verb",
+        "pos_adjective": "adjektiv",
+        "pos_adverb": "adverb",
+        "pos_other": ""
     }
 }
