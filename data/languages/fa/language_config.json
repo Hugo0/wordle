@@ -131,6 +131,11 @@
         "page_of": "صفحه {page} از {total}",
         "report_bad_word": "گزارش کلمه نامناسب",
         "view_all_words": "مشاهده همه کلمات {lang}",
-        "difficulty_locked": "پس از حدس زدن نمی‌توان سختی را تغییر داد"
+        "difficulty_locked": "پس از حدس زدن نمی‌توان سختی را تغییر داد",
+        "pos_noun": "اسم",
+        "pos_verb": "فعل",
+        "pos_adjective": "صفت",
+        "pos_adverb": "قید",
+        "pos_other": ""
     }
 }

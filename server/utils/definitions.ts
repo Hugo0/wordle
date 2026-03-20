@@ -20,8 +20,12 @@ function resolveDefinitionsDir(): string {
         resolve(process.cwd(), '..', 'data', 'definitions'),
     ];
     for (const c of candidates) {
-        if (existsSync(c)) return c;
+        if (existsSync(c)) {
+            console.log(`[DEFS] Definitions dir: ${c}`);
+            return c;
+        }
     }
+    console.warn(`[DEFS] Definitions dir NOT FOUND, tried: ${candidates.join(', ')}`);
     return candidates[0]!;
 }
 
@@ -33,10 +37,14 @@ function loadKaikkiFile(cacheKey: string, filePath: string): Record<string, stri
     if (existsSync(filePath)) {
         try {
             _kaikkiCache[cacheKey] = JSON.parse(readFileSync(filePath, 'utf-8'));
+            console.log(
+                `[KAIKKI] Loaded ${cacheKey}: ${Object.keys(_kaikkiCache[cacheKey]!).length} entries`
+            );
         } catch {
             _kaikkiCache[cacheKey] = {};
         }
     } else {
+        console.warn(`[KAIKKI] File not found: ${filePath}`);
         _kaikkiCache[cacheKey] = {};
     }
     return _kaikkiCache[cacheKey]!;

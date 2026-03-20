@@ -119,6 +119,11 @@
         "page_of": "पृष्ठ {page} / {total}",
         "report_bad_word": "खराब शब्द रिपोर्ट गर्नुहोस्",
         "view_all_words": "सबै {lang} शब्दहरू हेर्नुहोस्",
-        "difficulty_locked": "अनुमान पछि कठिनाई बदल्न सकिँदैन"
+        "difficulty_locked": "अनुमान पछि कठिनाई बदल्न सकिँदैन",
+        "pos_noun": "नाम",
+        "pos_verb": "क्रिया",
+        "pos_adjective": "विशेषण",
+        "pos_adverb": "क्रियाविशेषण",
+        "pos_other": ""
     }
 }

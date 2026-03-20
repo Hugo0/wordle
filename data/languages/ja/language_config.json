@@ -117,6 +117,11 @@
         "hard_desc": "明らかになったヒントは次の推測で使う必要があります",
         "high_contrast": "ハイコントラスト",
         "high_contrast_desc": "色覚異常にやさしい色",
-        "difficulty_locked": "推測後は難易度を変更できません"
+        "difficulty_locked": "推測後は難易度を変更できません",
+        "pos_noun": "名詞",
+        "pos_verb": "動詞",
+        "pos_adjective": "形容詞",
+        "pos_adverb": "副詞",
+        "pos_other": ""
     }
 }

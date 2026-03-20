@@ -134,6 +134,11 @@
         "page_of": "Duilleag {page} de {total}",
         "report_bad_word": "Dèan aithris air droch fhacal",
         "view_all_words": "Seall a h-uile facal {lang}",
-        "difficulty_locked": "Chan urrainnear an duilgheadas atharrachadh às dèidh tomhas"
+        "difficulty_locked": "Chan urrainnear an duilgheadas atharrachadh às dèidh tomhas",
+        "pos_noun": "ainmear",
+        "pos_verb": "gnìomhair",
+        "pos_adjective": "buadhair",
+        "pos_adverb": "co-ghnìomhair",
+        "pos_other": ""
     }
 }

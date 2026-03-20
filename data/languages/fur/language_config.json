@@ -143,6 +143,11 @@
         "page_of": "Pagjine {page} di {total}",
         "report_bad_word": "Segnale une peraule sbaliade",
         "view_all_words": "Viôt dutis lis peraulis {lang}",
-        "difficulty_locked": "No si pues cambiâ la dificoltât dopo vê tentât"
+        "difficulty_locked": "No si pues cambiâ la dificoltât dopo vê tentât",
+        "pos_noun": "noun",
+        "pos_verb": "verb",
+        "pos_adjective": "adjective",
+        "pos_adverb": "adverb",
+        "pos_other": ""
     }
 }

@@ -129,6 +129,11 @@
         "page_of": "Pajenn {page} eus {total}",
         "report_bad_word": "Kemenn ur ger fall",
         "view_all_words": "Gwelet holl c'herioù {lang}",
-        "difficulty_locked": "N'haller ket cheñch an diaester goude un taol-esae"
+        "difficulty_locked": "N'haller ket cheñch an diaester goude un taol-esae",
+        "pos_noun": "anv",
+        "pos_verb": "verb",
+        "pos_adjective": "anv-gwan",
+        "pos_adverb": "adverb",
+        "pos_other": ""
     }
 }

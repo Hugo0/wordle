@@ -118,6 +118,11 @@
         "page_of": "Puslapis {page} iš {total}",
         "report_bad_word": "Pranešti apie blogą žodį",
         "view_all_words": "Peržiūrėti visus {lang} žodžius",
-        "difficulty_locked": "Sudėtingumo negalima keisti po spėjimo"
+        "difficulty_locked": "Sudėtingumo negalima keisti po spėjimo",
+        "pos_noun": "daiktavardis",
+        "pos_verb": "veiksmažodis",
+        "pos_adjective": "būdvardis",
+        "pos_adverb": "prieveiksmis",
+        "pos_other": ""
     }
 }

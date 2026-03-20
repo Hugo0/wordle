@@ -118,6 +118,11 @@
         "page_of": "পৃষ্ঠা {page} / {total}",
         "report_bad_word": "খারাপ শব্দ জানান",
         "view_all_words": "সব {lang} শব্দ দেখুন",
-        "difficulty_locked": "অনুমানের পর কঠিনতা পরিবর্তন করা যাবে না"
+        "difficulty_locked": "অনুমানের পর কঠিনতা পরিবর্তন করা যাবে না",
+        "pos_noun": "বিশেষ্য",
+        "pos_verb": "ক্রিয়া",
+        "pos_adjective": "বিশেষণ",
+        "pos_adverb": "ক্রিয়াবিশেষণ",
+        "pos_other": ""
     }
 }

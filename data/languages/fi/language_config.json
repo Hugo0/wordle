@@ -118,7 +118,12 @@
         "page_of": "Sivu {page}/{total}",
         "report_bad_word": "Ilmoita huono sana",
         "view_all_words": "Näytä kaikki {lang} sanat",
-        "difficulty_locked": "Vaikeustasoa ei voi muuttaa arvaamisen jälkeen"
+        "difficulty_locked": "Vaikeustasoa ei voi muuttaa arvaamisen jälkeen",
+        "pos_noun": "substantiivi",
+        "pos_verb": "verbi",
+        "pos_adjective": "adjektiivi",
+        "pos_adverb": "adverbi",
+        "pos_other": ""
     },
     "diacritic_map": {
         "a": [

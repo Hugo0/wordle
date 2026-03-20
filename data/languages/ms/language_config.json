@@ -119,6 +119,11 @@
         "page_of": "Halaman {page} daripada {total}",
         "report_bad_word": "Laporkan perkataan buruk",
         "view_all_words": "Lihat semua perkataan {lang}",
-        "difficulty_locked": "Tidak boleh menukar kesukaran selepas meneka"
+        "difficulty_locked": "Tidak boleh menukar kesukaran selepas meneka",
+        "pos_noun": "kata nama",
+        "pos_verb": "kata kerja",
+        "pos_adjective": "kata sifat",
+        "pos_adverb": "kata keterangan",
+        "pos_other": ""
     }
 }

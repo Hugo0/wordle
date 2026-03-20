@@ -136,6 +136,11 @@
         "page_of": "Página {page} de {total}",
         "report_bad_word": "Reportar palabra inapropiada",
         "view_all_words": "Ver todas las palabras en {lang}",
-        "difficulty_locked": "No se puede cambiar la dificultad después de adivinar"
+        "difficulty_locked": "No se puede cambiar la dificultad después de adivinar",
+        "pos_noun": "sustantivo",
+        "pos_verb": "verbo",
+        "pos_adjective": "adjetivo",
+        "pos_adverb": "adverbio",
+        "pos_other": ""
     }
 }

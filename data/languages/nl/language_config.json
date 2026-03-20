@@ -150,6 +150,11 @@
         "page_of": "Pagina {page} van {total}",
         "report_bad_word": "Slecht woord melden",
         "view_all_words": "Alle {lang} woorden bekijken",
-        "difficulty_locked": "Moeilijkheid kan niet worden gewijzigd na het gokken"
+        "difficulty_locked": "Moeilijkheid kan niet worden gewijzigd na het gokken",
+        "pos_noun": "zelfstandig naamwoord",
+        "pos_verb": "werkwoord",
+        "pos_adjective": "bijvoeglijk naamwoord",
+        "pos_adverb": "bijwoord",
+        "pos_other": ""
     }
 }

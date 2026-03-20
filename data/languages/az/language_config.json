@@ -117,6 +117,11 @@
         "page_of": "Səhifə {page} / {total}",
         "report_bad_word": "Pis sözü bildir",
         "view_all_words": "Bütün {lang} sözlərinə bax",
-        "difficulty_locked": "Təxmindən sonra çətinliyi dəyişmək olmaz"
+        "difficulty_locked": "Təxmindən sonra çətinliyi dəyişmək olmaz",
+        "pos_noun": "isim",
+        "pos_verb": "feil",
+        "pos_adjective": "sifət",
+        "pos_adverb": "zərf",
+        "pos_other": ""
     }
 }

@@ -142,6 +142,11 @@
         "page_of": "Pàgina {page} de {total}",
         "report_bad_word": "Informar d'una paraula inadequada",
         "view_all_words": "Veure totes les paraules en {lang}",
-        "difficulty_locked": "No es pot canviar la dificultat després d'endevinar"
+        "difficulty_locked": "No es pot canviar la dificultat després d'endevinar",
+        "pos_noun": "nom",
+        "pos_verb": "verb",
+        "pos_adjective": "adjectiu",
+        "pos_adverb": "adverbi",
+        "pos_other": ""
     }
 }

@@ -135,6 +135,11 @@
         "page_of": "Síða {page} av {total}",
         "report_bad_word": "Melda skaðligt orð",
         "view_all_words": "Vís øll {lang} orð",
-        "difficulty_locked": "Kann ikki broyta trupulleikagrað eftir gisking"
+        "difficulty_locked": "Kann ikki broyta trupulleikagrað eftir gisking",
+        "pos_noun": "navnorð",
+        "pos_verb": "sagnorð",
+        "pos_adjective": "lýsingarorð",
+        "pos_adverb": "hjáorð",
+        "pos_other": ""
     }
 }

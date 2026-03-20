@@ -118,6 +118,11 @@
         "page_of": "Page {page} er a {total}",
         "report_bad_word": "Report a mekngit el tekoi",
         "view_all_words": "Omes a rokui el {lang} tekoi",
-        "difficulty_locked": "Diak el sebechel meskau a difficulty a uriul a guess"
+        "difficulty_locked": "Diak el sebechel meskau a difficulty a uriul a guess",
+        "pos_noun": "noun",
+        "pos_verb": "verb",
+        "pos_adjective": "adjective",
+        "pos_adverb": "adverb",
+        "pos_other": ""
     }
 }

@@ -118,7 +118,12 @@
         "page_of": "Strona {page} z {total}",
         "report_bad_word": "Zgłoś złe słowo",
         "view_all_words": "Zobacz wszystkie słowa {lang}",
-        "difficulty_locked": "Nie można zmienić trudności po zgadywaniu"
+        "difficulty_locked": "Nie można zmienić trudności po zgadywaniu",
+        "pos_noun": "rzeczownik",
+        "pos_verb": "czasownik",
+        "pos_adjective": "przymiotnik",
+        "pos_adverb": "przysłówek",
+        "pos_other": ""
     },
     "diacritic_map": {
         "c": [

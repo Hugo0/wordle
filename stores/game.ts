@@ -406,6 +406,16 @@ export const useGameStore = defineStore('game', () => {
         if (lang.normalizeMap.has(char)) {
             updateSingleKey(normalizedChar, newState);
         }
+
+        // Also update positional variants (final ↔ regular forms)
+        // Hebrew: כ↔ך, מ↔ם, נ↔ן, פ↔ף, צ↔ץ. Greek: σ↔ς.
+        const finalFormMap = lang.config?.final_form_map;
+        if (finalFormMap) {
+            const finalForm = finalFormMap[char];
+            if (finalForm) updateSingleKey(finalForm, newState);
+            const regularForm = lang.finalFormReverseMap.get(char);
+            if (regularForm) updateSingleKey(regularForm, newState);
+        }
     }
 
     // ---- Input handling ----

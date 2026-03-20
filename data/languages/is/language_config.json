@@ -137,6 +137,11 @@
         "page_of": "Síða {page} af {total}",
         "report_bad_word": "Tilkynna slæmt orð",
         "view_all_words": "Skoða öll {lang} orð",
-        "difficulty_locked": "Ekki hægt að breyta erfiðleikastigi eftir giskun"
+        "difficulty_locked": "Ekki hægt að breyta erfiðleikastigi eftir giskun",
+        "pos_noun": "nafnorð",
+        "pos_verb": "sagnorð",
+        "pos_adjective": "lýsingarorð",
+        "pos_adverb": "atviksorð",
+        "pos_other": ""
     }
 }

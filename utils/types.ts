@@ -38,6 +38,92 @@ export interface LanguageHelp {
     text_3: string;
 }
 
+export interface UiStrings {
+    settings: string;
+    dark_mode: string;
+    dark_mode_desc: string;
+    sound_and_haptics: string;
+    difficulty: string;
+    word_info: string;
+    word_info_desc: string;
+    language: string;
+    change_language: string;
+    better_than: string;
+    of_players: string;
+    right_to_left: string;
+    keyboard_layout: string;
+    install_app: string;
+    install_app_desc: string;
+    report_issue: string;
+    view_source: string;
+    guess_distribution: string;
+    games: string;
+    win_percent: string;
+    streak: string;
+    best: string;
+    all_languages: string;
+    languages: string;
+    play_more_languages: string;
+    add_to_home: string;
+    play_daily_like_app: string;
+    install: string;
+    close: string;
+    about: string;
+    global_stats: string;
+    games_played: string;
+    win_rate: string;
+    current_streak: string;
+    languages_won: string;
+    best_overall_streak: string;
+    best_active_streak: string;
+    your_languages: string;
+    no_games_yet: string;
+    wins: string;
+    losses: string;
+    avg_attempts: string;
+    best_streak: string;
+    play: string;
+    search_language: string;
+    external_links: string;
+    coming_soon: string;
+    game: string;
+    games_lowercase: string;
+    definition: string;
+    look_up_on_wiktionary: string;
+    easy: string;
+    normal: string;
+    hard: string;
+    easy_desc: string;
+    normal_desc: string;
+    hard_desc: string;
+    high_contrast: string;
+    high_contrast_desc: string;
+    today: string;
+    statistics: string;
+    todays_word_reveal: string;
+    play_now: string;
+    future_word: string;
+    community_stats: string;
+    players: string;
+    plays: string;
+    win: string;
+    first_to_play: string;
+    top_score: string;
+    all_words: string;
+    daily_words_counting: string;
+    newer: string;
+    older: string;
+    page_of: string;
+    report_bad_word: string;
+    view_all_words: string;
+    difficulty_locked: string;
+    pos_noun: string;
+    pos_verb: string;
+    pos_adjective: string;
+    pos_adverb: string;
+    pos_other: string;
+}
+
 export interface LanguageConfig {
     language_code: string;
     name: string;
@@ -50,7 +136,7 @@ export interface LanguageConfig {
     meta: LanguageMeta;
     text: LanguageText;
     help: LanguageHelp;
-    ui?: Record<string, string>;
+    ui?: UiStrings;
     /** Optional diacritic normalization map. Maps base characters to their diacritic variants. */
     diacritic_map?: Record<string, string[]>;
     /** Optional final form map for positional character variants. */

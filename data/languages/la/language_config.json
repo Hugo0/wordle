@@ -117,6 +117,11 @@
         "page_of": "Pagina {page} ex {total}",
         "report_bad_word": "Refer verbum malum",
         "view_all_words": "Vide omnia verba {lang}",
-        "difficulty_locked": "Difficultas mutari non potest post coniecturam"
+        "difficulty_locked": "Difficultas mutari non potest post coniecturam",
+        "pos_noun": "nomen",
+        "pos_verb": "verbum",
+        "pos_adjective": "adiectivum",
+        "pos_adverb": "adverbium",
+        "pos_other": ""
     }
 }

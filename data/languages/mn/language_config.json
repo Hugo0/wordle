@@ -119,6 +119,11 @@
         "page_of": "Хуудас {page} / {total}",
         "report_bad_word": "Буруу үг мэдэгдэх",
         "view_all_words": "Бүх {lang} үгсийг харах",
-        "difficulty_locked": "Таамаглалын дараа түвшин өөрчлөх боломжгүй"
+        "difficulty_locked": "Таамаглалын дараа түвшин өөрчлөх боломжгүй",
+        "pos_noun": "нэр үг",
+        "pos_verb": "үйл үг",
+        "pos_adjective": "тэмдэг нэр",
+        "pos_adverb": "дайвар үг",
+        "pos_other": ""
     }
 }

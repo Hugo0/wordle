@@ -87,10 +87,14 @@
                                 {{ lang.config?.ui?.definition }}
                             </span>
                             <span
-                                v-if="game.todayDefinition.partOfSpeech"
+                                v-if="
+                                    translatePos(game.todayDefinition.partOfSpeech, lang.config?.ui)
+                                "
                                 class="text-xs text-neutral-400 dark:text-neutral-500 italic"
                             >
-                                {{ game.todayDefinition.partOfSpeech }}
+                                {{
+                                    translatePos(game.todayDefinition.partOfSpeech, lang.config?.ui)
+                                }}
                             </span>
                         </div>
                         <p class="text-sm text-neutral-800 dark:text-neutral-200">
@@ -183,8 +187,25 @@
                         &#10003;
                         {{ lang.config?.text?.copied }}
                     </span>
-                    <span v-else>
+                    <span v-else class="inline-flex items-center justify-center gap-1.5">
                         {{ lang.config?.text?.share }}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="18" cy="5" r="3" />
+                            <circle cx="6" cy="12" r="3" />
+                            <circle cx="18" cy="19" r="3" />
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                        </svg>
                     </span>
                 </button>
             </div>
@@ -314,8 +335,25 @@
                         &#10003;
                         {{ lang.config?.text?.copied }}
                     </span>
-                    <span v-else>
+                    <span v-else class="inline-flex items-center justify-center gap-1.5">
                         {{ lang.config?.text?.share }}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="18" cy="5" r="3" />
+                            <circle cx="6" cy="12" r="3" />
+                            <circle cx="18" cy="19" r="3" />
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                        </svg>
                     </span>
                 </button>
             </div>

@@ -126,6 +126,11 @@
         "page_of": "עמוד {page} מתוך {total}",
         "report_bad_word": "דווח על מילה לא ראויה",
         "view_all_words": "הצג את כל המילים ב{lang}",
-        "difficulty_locked": "לא ניתן לשנות קושי לאחר ניחוש"
+        "difficulty_locked": "לא ניתן לשנות קושי לאחר ניחוש",
+        "pos_noun": "שם עצם",
+        "pos_verb": "פועל",
+        "pos_adjective": "שם תואר",
+        "pos_adverb": "תואר הפועל",
+        "pos_other": ""
     }
 }

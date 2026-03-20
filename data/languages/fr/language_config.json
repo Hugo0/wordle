@@ -150,6 +150,11 @@
         "page_of": "Page {page} sur {total}",
         "report_bad_word": "Signaler un mot inapproprié",
         "view_all_words": "Voir tous les mots {lang}",
-        "difficulty_locked": "Impossible de changer la difficulté après avoir deviné"
+        "difficulty_locked": "Impossible de changer la difficulté après avoir deviné",
+        "pos_noun": "nom",
+        "pos_verb": "verbe",
+        "pos_adjective": "adjectif",
+        "pos_adverb": "adverbe",
+        "pos_other": ""
     }
 }

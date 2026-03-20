@@ -19,9 +19,8 @@
 
 import { isStandalone, getOrCreateId } from '~/utils/storage';
 
-// Events excluded from PostHog to stay within free tier (1M events/month).
-// These high-volume events (fired per-guess) are still tracked in GA4 where there is no cap.
-const POSTHOG_SKIP_EVENTS = new Set(['guess_submit', 'guess_time', 'first_guess_delay']);
+// Events to exclude from PostHog (currently none — kept as a kill-switch).
+const POSTHOG_SKIP_EVENTS = new Set<string>();
 
 // Only these 4 core events are sent to GA4 to keep the property slim.
 const GA4_CORE_EVENTS = new Set([
