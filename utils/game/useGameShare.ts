@@ -6,12 +6,9 @@
  *   - stores/game.ts (classic/unlimited/multi-board share)
  *   - pages/[lang]/speed.vue (speed streak share)
  */
-import { ref } from 'vue';
 import type { TileColor } from '~/utils/types';
 
 export function useGameShare() {
-    const shareButtonState = ref<'idle' | 'success'>('idle');
-
     /** Generate the emoji grid from tile colors. */
     function buildEmojiBoard(
         tileColors: TileColor[][],
@@ -73,6 +70,7 @@ export function useGameShare() {
         emojiBoard: string;
         gameMode?: string;
         onNotify?: (message: string) => void;
+        onSuccess?: () => void;
         onAllFailed?: (text: string) => void;
     }): Promise<void> {
         if (!import.meta.client) return;
@@ -89,8 +87,7 @@ export function useGameShare() {
             game_mode: opts.gameMode,
         };
 
-        const onSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
-            shareButtonState.value = 'success';
+        const handleSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
             analytics.trackShareSuccess({ ...shareParams, method });
             if (opts.emojiBoard) {
                 analytics.trackShareContentGenerated(
@@ -100,9 +97,7 @@ export function useGameShare() {
                     opts.emojiBoard
                 );
             }
-            setTimeout(() => {
-                shareButtonState.value = 'idle';
-            }, 2000);
+            opts.onSuccess?.();
         };
 
         // Try Web Share API
@@ -111,7 +106,7 @@ export function useGameShare() {
             try {
                 await navigator.share({ text: fullText });
                 opts.onNotify?.('Shared!');
-                onSuccess('native');
+                handleSuccess('native');
                 return;
             } catch (error) {
                 if (error instanceof Error && error.name === 'AbortError') return;
@@ -125,7 +120,7 @@ export function useGameShare() {
             try {
                 await navigator.clipboard.writeText(fullText);
                 opts.onNotify?.('Copied to clipboard!');
-                onSuccess('clipboard');
+                handleSuccess('clipboard');
                 return;
             } catch (error) {
                 if (error instanceof Error) {
@@ -138,7 +133,7 @@ export function useGameShare() {
         analytics.trackShareClick({ ...shareParams, method: 'fallback' });
         if (copyViaExecCommand(fullText)) {
             opts.onNotify?.('Copied to clipboard!');
-            onSuccess('fallback');
+            handleSuccess('fallback');
             return;
         }
 
@@ -166,9 +161,7 @@ export function useGameShare() {
     }
 
     return {
-        shareButtonState,
         buildEmojiBoard,
-        getShareText,
         shareResults,
     };
 }

@@ -880,6 +880,7 @@ export function useAnalytics() {
             activeRow: number;
             gameOver: boolean;
             lastGuessValid: boolean;
+            game_mode?: string;
         }
     ): void => {
         if (!import.meta.client) return;
@@ -896,6 +897,7 @@ export function useAnalytics() {
                     language: state.language,
                     attempt_number: state.activeRow,
                     last_guess_valid: state.lastGuessValid,
+                    game_mode: state.game_mode,
                 });
             }
         };

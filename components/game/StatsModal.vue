@@ -326,10 +326,11 @@ const analytics = useAnalytics();
 const imageExpanded = ref(false);
 const definitionTracked = ref(false);
 
-// Track definition/image view once when modal first opens with content
+// Track definition/image view once when modal is visible AND content is loaded.
+// Watches both visibility and definition data to handle late-loading definitions.
 watch(
-    () => props.visible,
-    (visible) => {
+    () => [props.visible, game.todayDefinition, game.boardDefinitions, game.todayImageUrl] as const,
+    ([visible]) => {
         if (!visible || definitionTracked.value) return;
         const hasDefinition = game.todayDefinition || game.boardDefinitions?.some((d: any) => d);
         if (hasDefinition || game.todayImageUrl) {

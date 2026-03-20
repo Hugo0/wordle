@@ -1463,12 +1463,7 @@ export const useGameStore = defineStore('game', () => {
         if (!import.meta.client) return;
 
         const lang = useLanguageStore();
-        const { shareResults: doShare, shareButtonState: shareState } = useGameShare();
-
-        // Sync useGameShare's button state to the store's reactive ref
-        watch(shareState, (v) => {
-            shareButtonState.value = v;
-        });
+        const { shareResults: doShare } = useGameShare();
 
         await doShare({
             shareText: getShareText(),
@@ -1483,6 +1478,12 @@ export const useGameStore = defineStore('game', () => {
                     ? lang.config?.text?.shared || lang.config?.text?.copied || msg
                     : lang.config?.text?.copied || msg;
                 showNotification(localizedMsg);
+            },
+            onSuccess: () => {
+                shareButtonState.value = 'success';
+                setTimeout(() => {
+                    shareButtonState.value = 'idle';
+                }, 2000);
             },
             onAllFailed: (text) => showCopyFallbackModal(text),
         });

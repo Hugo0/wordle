@@ -1,6 +1,6 @@
 <template>
     <div
-        class="relative rounded-lg border-2 transition-colors"
+        class="relative rounded-lg border-2 transition-colors w-full h-full min-h-0"
         :class="board.solved ? 'bg-correct-soft border-correct' : 'border-transparent'"
     >
         <div

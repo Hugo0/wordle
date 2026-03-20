@@ -6,10 +6,10 @@
 useSeoMeta({
     title: 'Accessibility — Wordle Global',
     description:
-        'Wordle Global accessibility statement. WCAG 2.1 AA compliant word game in 80 languages with screen reader support, keyboard navigation, and reduced motion.',
+        'Wordle Global accessibility statement. WCAG 2.1 AA compliant word game in 80+ languages with screen reader support, keyboard navigation, and reduced motion.',
     ogTitle: 'Accessibility — Wordle Global',
     ogDescription:
-        'WCAG 2.1 AA compliant word game in 80 languages with screen reader support, keyboard navigation, and reduced motion.',
+        'WCAG 2.1 AA compliant word game in 80+ languages with screen reader support, keyboard navigation, and reduced motion.',
     ogUrl: 'https://wordle.global/accessibility',
     ogType: 'website',
     twitterCard: 'summary',
@@ -67,9 +67,9 @@ useHead({
                     render right-to-left with correct typing direction.
                 </li>
                 <li>
-                    <strong>80 languages:</strong> Each language has a localized keyboard, diacritic
-                    support (long-press for accented characters), and normalized input so accents
-                    are optional.
+                    <strong>80+ languages:</strong> Each language has a localized keyboard,
+                    diacritic support (long-press for accented characters), and normalized input so
+                    accents are optional.
                 </li>
             </ul>
 
