@@ -250,9 +250,7 @@
                                 {{ lang.config?.ui?.top_score }}
                             </template>
                             <template v-else>
-                                {{ lang.config?.ui?.better_than }}
-                                {{ game.communityPercentile }}%
-                                {{ lang.config?.ui?.of_players }}
+                                Top {{ 100 - game.communityPercentile }}%
                             </template>
                             <ExternalLink :size="12" />
                         </a>

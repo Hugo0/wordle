@@ -36,24 +36,6 @@
 
                 <div class="editorial-rule" />
 
-                <!-- Word Info -->
-                <div class="flex flex-row items-center">
-                    <div class="flex-grow">
-                        <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.word_info }}
-                        </p>
-                        <p class="text-xs text-muted">
-                            {{ lang.config?.ui?.word_info_desc }}
-                        </p>
-                    </div>
-                    <SharedToggleSwitch
-                        :model-value="settings.wordInfoEnabled"
-                        @update:model-value="settings.toggleWordInfo()"
-                    />
-                </div>
-
-                <div class="editorial-rule" />
-
                 <!-- Difficulty selector (3-way: Easy / Normal / Hard) -->
                 <div>
                     <p class="text-sm font-semibold text-ink mb-2">
@@ -130,23 +112,7 @@
                     />
                 </div>
 
-                <div class="editorial-rule" />
-
-                <!-- Right-to-left toggle -->
-                <div class="flex flex-row items-center">
-                    <p class="flex-grow text-sm text-ink">
-                        {{ lang.config?.ui?.right_to_left }}
-                    </p>
-                    <div class="flex items-center gap-2">
-                        <ArrowLeftRight :size="16" class="text-muted" />
-                        <SharedToggleSwitch
-                            :model-value="localRtl"
-                            @update:model-value="localRtl = $event"
-                        />
-                    </div>
-                </div>
-
-                <!-- Keyboard layout selector (when multiple layouts available) -->
+                <!-- Keyboard layout selector (only when multiple layouts available) -->
                 <template v-if="Object.keys(lang.keyboardLayouts).length > 1">
                     <div class="editorial-rule" />
                     <div class="flex flex-row items-center">
@@ -173,22 +139,9 @@
                     </div>
                 </template>
 
-                <!-- Language selector -->
-                <div class="editorial-rule" />
-                <div class="flex flex-row items-center">
-                    <p class="flex-grow text-sm text-ink">
-                        {{ lang.config?.ui?.language }}
-                    </p>
-                    <NuxtLink
-                        to="/"
-                        class="border border-rule px-3 py-1 bg-paper text-ink text-sm hover:bg-paper-warm transition-colors"
-                    >
-                        {{ lang.config?.ui?.change_language }}
-                    </NuxtLink>
-                </div>
-
-                <!-- Install App button (only shown when PWA install is available) -->
-                <div v-if="canInstallPwa" class="editorial-rule mt-2 pt-4">
+                <!-- Install App (only shown when PWA install is available) -->
+                <template v-if="canInstallPwa">
+                    <div class="editorial-rule" />
                     <button
                         class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
                         @click="installPwa()"
@@ -199,15 +152,15 @@
                     <p class="text-xs text-center text-muted mt-1">
                         {{ lang.config?.ui?.install_app_desc }}
                     </p>
-                </div>
+                </template>
             </div>
         </div>
     </SharedBaseModal>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
-import { ArrowLeftRight, Download } from 'lucide-vue-next';
+import { ref, computed } from 'vue';
+import { Download } from 'lucide-vue-next';
 import { useSettingsStore } from '~/stores/settings';
 import { useLanguageStore } from '~/stores/language';
 import { useGameStore } from '~/stores/game';
@@ -226,17 +179,6 @@ const allowAnyWord = computed({
         game.allowAnyWord = v;
     },
 });
-
-/** Local RTL toggle -- mirrors the computed value but allows user override. */
-const localRtl = ref(lang.rightToLeft);
-
-// Sync local RTL with language store changes
-watch(
-    () => lang.rightToLeft,
-    (val) => {
-        localRtl.value = val;
-    }
-);
 
 /**
  * Smart difficulty gating: check if all past guesses satisfy the target level.

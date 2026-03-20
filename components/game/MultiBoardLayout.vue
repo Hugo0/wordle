@@ -7,8 +7,9 @@
                 :key="i - 1"
                 :ref="(el: any) => setPanelRef(i - 1, el)"
                 :board-index="i - 1"
-                :class="boardCount === 3 && i === 3 ? 'col-start-1 col-end-3 justify-self-center w-[calc(50%-2px)]' : ''"
             />
+            <!-- Tridle: empty 4th cell so grid stays symmetric -->
+            <div v-if="boardCount === 3" aria-hidden="true" />
         </div>
     </main>
 </template>
