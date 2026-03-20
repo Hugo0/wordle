@@ -388,7 +388,7 @@ def generate_main_og_image():
     tile_y = 370
     tile_font = font(FRAUNCES_PATH, 30)
 
-    for i, (letter, color) in enumerate(zip(letters, colors)):
+    for i, (letter, color) in enumerate(zip(letters, colors, strict=True)):
         x = start_x + i * (tile_size + gap)
         draw.rectangle([x, tile_y, x + tile_size, tile_y + tile_size], fill=color)
         lbox = draw.textbbox((0, 0), letter, font=tile_font)
