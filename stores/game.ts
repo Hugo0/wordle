@@ -742,11 +742,9 @@ export const useGameStore = defineStore('game', () => {
                     }
 
                     // Compare normalized forms for win detection
+                    // Always use board's targetWord (not lang.todaysWord which is only the daily word)
                     const normalizedGuess = normalizeWord(canonicalWord, lang.normalizeMap);
-                    const targetWord =
-                        gameConfig.value.mode === 'speed'
-                            ? boards.value[activeBoardIndex.value]!.targetWord
-                            : lang.todaysWord;
+                    const targetWord = boards.value[activeBoardIndex.value]!.targetWord || lang.todaysWord;
                     const normalizedTarget = normalizeWord(targetWord, lang.normalizeMap);
                     if (normalizedGuess === normalizedTarget) {
                         if (gameConfig.value.mode === 'speed') {
