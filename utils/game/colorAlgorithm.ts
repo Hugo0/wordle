@@ -93,11 +93,6 @@ export function computeRowColors(
         if (guessChar && targetChar && fullCharsMatch(guessChar, targetChar, ctx)) {
             colors[i] = 'correct';
             classes[i] = BASE_REVEALED_CLASS ? `correct ${BASE_REVEALED_CLASS}` : 'correct';
-            // Keep the user's typed character — don't replace with target's form.
-            // Replacing would leak diacritic info (e.g., typing "perro" showing "ó"
-            // reveals the target has an accent before the puzzle is solved).
-            // Whole-word auto-correction (e.g., "borde" → "börde") is handled
-            // separately in the game store after checkWord().
             keyUpdates[i] = { char: guessChar, state: 'key-correct' as KeyState };
             const normalizedChar = fullNormalize(guessChar, ctx);
             const count = charCounts[normalizedChar];
@@ -123,6 +118,16 @@ export function computeRowColors(
             colors[i] = 'incorrect';
             classes[i] = BASE_REVEALED_CLASS ? `incorrect ${BASE_REVEALED_CLASS}` : 'incorrect';
             keyUpdates[i] = { char: guessChar, state: 'key-incorrect' as KeyState };
+        }
+    }
+
+    // Only replace tiles with target characters on the winning row (all correct).
+    // On partial rows, keep user's typed chars to avoid leaking diacritic info
+    // (e.g., typing "perro" shouldn't show "ó" and reveal the target's accent).
+    const allCorrect = colors.every((c) => c === 'correct');
+    if (allCorrect) {
+        for (let i = 0; i < wordLength; i++) {
+            tiles[i] = targetChars[i]!;
         }
     }
 
