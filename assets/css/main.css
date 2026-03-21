@@ -84,13 +84,16 @@
 }
 
 .key-incorrect {
-    background-color: var(--color-muted);
+    background-color: var(--color-key-absent);
     color: white;
 }
 
-/* Dark mode keyboard: base key darker, correct/semicorrect use tokens (already dark-aware) */
+/* Dark mode keyboard — 3-step luminance ladder:
+   Unused (#818384) → Incorrect (#3a3a3c) → Background (#1a1a1a)
+   Each step is perceptually distinct. Matches NYT Wordle's dark mode contrast. */
 .dark .key {
-    background-color: #4a4a4a;
+    background-color: #818384;
+    color: white;
 }
 .dark .key-correct {
     background-color: var(--color-correct);
@@ -99,7 +102,7 @@
     background-color: var(--color-semicorrect);
 }
 .dark .key-incorrect {
-    background-color: #333;
+    background-color: var(--color-key-absent);
 }
 
 /* High contrast keyboard key overrides */

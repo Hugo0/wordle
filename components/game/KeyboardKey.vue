@@ -52,7 +52,7 @@ const props = defineProps<{
 const STATE_COLORS: Record<string, string> = {
     'key-correct': 'var(--color-correct)',
     'key-semicorrect': 'var(--color-semicorrect)',
-    'key-incorrect': 'var(--color-muted)',
+    'key-incorrect': 'var(--color-key-absent)',
 };
 
 const DEFAULT_KEY_COLOR = 'var(--color-paper-warm, #e8e8e8)';

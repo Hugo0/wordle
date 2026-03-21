@@ -31,6 +31,7 @@
     --color-semicorrect-soft: #fdf3d0;
     --color-muted: #8c8c8c;
     --color-muted-soft: #e8e8e8;
+    --color-key-absent: #8c8c8c;
     --color-rule: #d4cfc7;
 
     /* Font families */
@@ -55,6 +56,7 @@
     --color-semicorrect-soft: #3a3019;
     --color-muted: #9a9a9a;
     --color-muted-soft: #333333;
+    --color-key-absent: #3a3a3c;
     --color-rule: #3d3a36;
 }
 
