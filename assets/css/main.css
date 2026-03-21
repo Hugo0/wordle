@@ -212,6 +212,15 @@
     perspective: 1000px;
     user-select: none;
     -webkit-user-select: none;
+    container-type: inline-size;
+}
+
+/* Tile font sizing — scales with board width via container queries.
+   Single-board: large tiles get large text.
+   Multi-board: small tiles get proportionally smaller text.
+   45cqi = 45% of the board's inline size ÷ 5 columns ≈ 9% of board width per tile. */
+.game-board .tile {
+    font-size: clamp(14px, 9cqi, 2rem);
 }
 
 /* Single smooth flip — color swaps at midpoint (90deg, tile invisible) */
