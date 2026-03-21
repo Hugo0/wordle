@@ -137,7 +137,6 @@ function playAgain() {
 }
 
 // --- Share ---
-import { useGameShare } from '~/utils/game/useGameShare';
 const { shareResults: shareWithTracking } = useGameShare();
 
 async function shareSpeed() {
