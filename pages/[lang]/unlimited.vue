@@ -45,6 +45,8 @@ function pickRandomWord(): string {
     return pool[Math.floor(Math.random() * pool.length)]!;
 }
 
+const analytics = useAnalytics();
+
 function startNewGame() {
     const word = pickRandomWord();
     const cfg = createGameConfig('unlimited', lang, { wordLength: 5 });
@@ -56,6 +58,8 @@ function startNewGame() {
     game.initKeyClasses();
     game.showTiles();
     game.showStatsModal = false;
+    // Track each new round so unlimited rounds are counted individually
+    analytics.trackGameRoundStart(lang, 'unlimited');
 }
 
 onMounted(() => {

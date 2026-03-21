@@ -41,7 +41,6 @@ vi.stubGlobal('useAnalytics', () => ({
     trackShareClick: vi.fn(),
     trackShareFail: vi.fn(),
     trackShareContentGenerated: vi.fn(),
-    trackSpeedSessionComplete: vi.fn(),
     trackStreakBroken: vi.fn(),
     updateUserProperties: vi.fn(),
     resetFrustrationState: () => ({

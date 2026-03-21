@@ -39,5 +39,16 @@ function initGA4() {
 }
 
 export default defineNuxtPlugin(() => {
+    // Don't track analytics on localhost to avoid polluting prod data
+    if (window.location.hostname === 'localhost') {
+        // Opt out of PostHog capturing (initialized by @posthog/nuxt module)
+        try {
+            usePostHog()?.opt_out_capturing();
+        } catch {
+            // PostHog not yet available — will be handled by the module
+        }
+        return;
+    }
+
     initGA4();
 });

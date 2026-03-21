@@ -114,13 +114,19 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
         try {
             const analytics = useAnalytics();
             // Pageviews handled by PostHog's built-in $pageview (capture_pageview: 'history_change')
-            // Register language as super property on all future PostHog events
+            // Register language + game_mode as super properties on all future PostHog events
             analytics.registerLanguage(langStore.languageCode);
-            analytics.trackGameStart({
-                language: langStore.languageCode,
-                is_returning: stats.stats.n_games > 0,
-                current_streak: stats.stats.current_streak,
-                game_mode: game.gameConfig.mode,
+            analytics.registerGameMode(game.gameConfig.mode);
+            // Defer trackGameStart to nextTick so mode pages (unlimited, speed, etc.)
+            // have a chance to set their gameConfig.mode in their own onMounted hooks first.
+            nextTick(() => {
+                analytics.registerGameMode(game.gameConfig.mode);
+                analytics.trackGameStart({
+                    language: langStore.languageCode,
+                    is_returning: stats.stats.n_games > 0,
+                    current_streak: stats.stats.current_streak,
+                    game_mode: game.gameConfig.mode,
+                });
             });
             analytics.trackPWASession(langStore.languageCode);
             analytics.initAbandonTracking(() => ({
@@ -135,7 +141,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             // Retention events — based on last_played_date in localStorage
             const lastPlayed = localStorage.getItem('last_played_date');
             const daysSinceLast = analytics.daysSince(lastPlayed ?? undefined);
-            if (stats.stats.n_games > 0 && daysSinceLast !== undefined && daysSinceLast > 0) {
+            if (stats.stats.n_games > 0 && daysSinceLast !== undefined && daysSinceLast >= 1) {
                 analytics.trackReturningPlayer(
                     langStore.languageCode,
                     daysSinceLast,
