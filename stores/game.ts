@@ -483,14 +483,15 @@ export const useGameStore = defineStore('game', () => {
 
         const lang = useLanguageStore();
 
-        // Exact match — respect what the user typed (e.g., "lapiz" stays "lapiz")
-        if (lang.wordListSet.has(word)) return word;
-
-        // Normalized match — auto-correct to canonical form (e.g., "borde" → "börde")
-        // Only triggers when the typed form isn't in the word list itself
+        // Always prefer the canonical (accented) dictionary form.
+        // The in-game keyboard can't type accents, so "agito" should display
+        // as "agitó" if that's the dictionary spelling.
         const normalized = normalizeWord(word, lang.normalizeMap);
         const canonical = getNormalizedWordMap().get(normalized);
         if (canonical) return canonical;
+
+        // Fallback: exact match for words not covered by normalization
+        if (lang.wordListSet.has(word)) return word;
 
         return null;
     }

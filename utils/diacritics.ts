@@ -67,7 +67,11 @@ export function charsMatch(
 /**
  * Build a normalized word lookup map.
  * Maps normalized forms to their canonical (original) forms.
- * First word in the list wins in case of conflicts.
+ *
+ * When multiple words normalize to the same form (e.g., "agito" and "agitó"
+ * both normalize to "agito"), prefer the form WITH diacritics. This way,
+ * when a user types "agito" on the in-game keyboard (which can't type accents),
+ * the tiles display "agitó" — the proper dictionary spelling.
  */
 export function buildNormalizedWordMap(
     wordList: string[],
@@ -76,8 +80,12 @@ export function buildNormalizedWordMap(
     const map = new Map<string, string>();
     for (const word of wordList) {
         const normalized = normalizeWord(word, normalizeMap);
-        // First word wins (in case of conflicts)
-        if (!map.has(normalized)) {
+        const existing = map.get(normalized);
+        if (!existing) {
+            map.set(normalized, word);
+        } else if (word !== normalized && existing === normalized) {
+            // Replace plain form with accented form
+            // e.g., "agito" (plain) → "agitó" (accented)
             map.set(normalized, word);
         }
     }

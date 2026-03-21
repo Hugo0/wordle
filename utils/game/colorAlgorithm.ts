@@ -121,15 +121,5 @@ export function computeRowColors(
         }
     }
 
-    // Only replace tiles with target characters on the winning row (all correct).
-    // On partial rows, keep user's typed chars to avoid leaking diacritic info
-    // (e.g., typing "perro" shouldn't show "ó" and reveal the target's accent).
-    const allCorrect = colors.every((c) => c === 'correct');
-    if (allCorrect) {
-        for (let i = 0; i < wordLength; i++) {
-            tiles[i] = targetChars[i]!;
-        }
-    }
-
     return { colors, classes, tiles, keyUpdates };
 }
