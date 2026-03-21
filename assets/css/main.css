@@ -88,9 +88,15 @@
     color: white;
 }
 
-/* Dark mode: incorrect keys should look more "used up" (darker) than unused keys */
+/* Dark mode keyboard: base key darker, correct/semicorrect use tokens (already dark-aware) */
 .dark .key {
     background-color: #4a4a4a;
+}
+.dark .key-correct {
+    background-color: var(--color-correct);
+}
+.dark .key-semicorrect {
+    background-color: var(--color-semicorrect);
 }
 .dark .key-incorrect {
     background-color: #333;
