@@ -302,11 +302,9 @@ Words are guessable but won't be selected as the daily word.
 
 ## Medium Priority (should fix before production)
 
-### Multi-board missing analytics + community stats
-**Files:** `stores/game.ts` — `handleMultiBoardWon()`, `handleMultiBoardLost()`
-**Issue:** Multi-board game completions don't fire `analytics.trackGameComplete()`, `submitWordStats()`, or `analytics.trackStreakMilestone()`. Classic single-board handlers do all of these.
-**Impact:** No analytics data for dordle/tridle/quordle games. No community percentile for multi-board.
-**Fix:** Add analytics calls to multi-board handlers (needs separate event schema for board count, per-board results).
+### ~~Multi-board missing analytics~~ ✅ FIXED (2026-03-21 hotfix)
+Added `analytics.trackGameComplete()` with `game_mode`, frustration state, and timing to both `handleMultiBoardWon()` and `handleMultiBoardLost()`. Dordle/tridle/quordle completions now tracked.
+Speed streak already tracked via `speed_session_complete` event (added by design agent).
 
 ### Hardcoded "6" in community percentile + word stats
 **Files:** `utils/stats.ts:27,31`, `server/utils/word-stats.ts:98`

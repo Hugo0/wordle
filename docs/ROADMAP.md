@@ -1,6 +1,6 @@
 # Wordle Global — Product Roadmap
 
-*Created: March 19, 2026 · Updated: March 20, 2026*
+*Created: March 19, 2026 · Updated: March 21, 2026*
 
 Synthesizes findings from competitor research (`docs/competitor-research/`), the multi-board analysis (`docs/tridle_quordle_gamemodes.md`), the semantic mode design (`docs/semantic_explorer_mode.md`), the design exploration session (`../wordle-design-explorations/`), and a deep audit of the current codebase.
 
@@ -12,16 +12,37 @@ Wordle Global is the world's word game — 80+ languages, beautiful definitions 
 
 ---
 
-## Current State (March 2026)
+## Current State (March 21, 2026)
 
-- 80 languages, daily 5-letter classic Wordle
-- PWA (installable, offline-capable via service worker)
-- LLM definitions (GPT-5.2) + DALL-E word images post-game
+**Game Modes (6 playable):**
+- Classic daily (5-letter, 6 guesses, 80+ languages)
+- Unlimited (random words, play again immediately)
+- Speed Streak (3-min arcade timer, variable bonus, combo scoring, pressure ramp)
+- Dordle (2 boards, 7 guesses, free-play)
+- Tridle (3 boards, 8 guesses, free-play)
+- Quordle (4 boards, 9 guesses, free-play)
+
+**Design System (Direction A: Editorial):**
+- Fraunces Variable + Source Sans 3 + JetBrains Mono (self-hosted @fontsource)
+- Full design token system (Tailwind v4 @theme, 12 color tokens, dark mode)
+- Lucide icons throughout, Circle Flags for 80+ languages
+- Sidebar navigation, game mode picker modal, editorial game header
+- Endgame card: large word display, definition, AI image, distribution, share buttons
+
+**Features:**
+- LLM definitions (GPT-5.2) + DALL-E word images post-game (all modes)
 - Community percentile stats (anonymous, file-based)
+- Per-mode stats with compound keys, mode-aware help modal
 - Hard mode, high contrast, dark mode, haptics, sounds
+- PWA (installable, offline-capable)
 - PostHog + GA4 analytics
 - ~47K weekly sessions, ~6,700 DAU
-- **No database, no auth, no user accounts, no server-side user state**
+
+**Not yet built:**
+- No database, no auth, no user accounts, no server-side state
+- No Semantic Explorer, Custom Word, Party Mode
+- No leaderboards, badges, or social features
+- No monetization or native app
 
 ---
 
@@ -35,7 +56,7 @@ Two directions prototyped with 15+ screens each (see `../wordle-design-explorati
 - **Direction A: Editorial** — Fraunces serif + Source Sans 3, ink-on-paper, 1px rules, newspaper aesthetic
 - **Direction C: Quiet Craft** — Cormorant Garamond + Outfit, warm earth tones, soft shadows, tactile feel
 
-Final choice TBD — both work. The redesign ships later (see Phase 3) but code should be written with clean component boundaries to enable it.
+**Decided & shipped:** Direction A (Editorial). Full design token system, all pages migrated. See `docs/DESIGN_SYSTEM_DECISIONS.md`. Architecture supports future theme switching (Direction C could be a premium theme).
 
 ### Icon System
 - **Lucide** (`lucide-vue-next`) for UI icons — clean 2px strokes, MIT licensed, tree-shakeable
@@ -65,14 +86,15 @@ See design exploration files for full mockups of each screen.
 
 | Mode | Desktop | Mobile |
 |------|---------|--------|
-| **Dordle** (2 boards) | Side by side | Side by side (tiles ~170px each) |
-| **Tridle** (3 boards) | Stacked: 1 expanded + 2 collapsed | Same — expanded board on top, 2 collapsed below side-by-side |
+| **Dordle** (2 boards) | Side by side | Side by side |
+| **Tridle** (3 boards) | 2-col grid (3rd board bottom-left) | Same |
 | **Quordle** (4 boards) | 2×2 grid | 2×2 grid, tight padding, all 4 visible |
 
-- Collapsed tridle boards show last 2 completed rows + "Tap to expand"
-- No empty future-guess rows anywhere — use "N guesses remaining" text indicator
-- Keyboards show split vertical colors per board (2/3/4 way gradient splits)
+*Note: Tridle originally planned as expand/collapse — simplified to 2-col grid in implementation.*
+
+- Keyboards show split colors per board (2×2 quadrant layout for Quordle)
 - All game screens fit within 100vh (game bar + boards + keyboard as flex layout)
+- Multi-board modes are **free-play** (random words), not daily
 
 ### Game Header Bar
 
@@ -88,18 +110,16 @@ Consistent across all game modes (like NYT/La Palabra del Día):
 
 ### Game Modes
 
-| Feature | Description | Reference |
-|---------|-------------|-----------|
-| **Unlimited** | Play random words endlessly after the daily puzzle | wordleunlimited (8-15M/mo), Wekele, Sanuli |
-| **Dordle** | 2 boards simultaneously, 7 guesses, shared keyboard | Dordle (5-10M/mo) |
-| **Tridle** | 3 boards simultaneously, 8 guesses, shared keyboard | engaging-data.com/tridle |
-| **Quordle** | 4 boards simultaneously, 9 guesses, shared keyboard | Quordle/MW (15-30M/mo) |
-| **Variable Word Length** | 4, 5, 6, 7, 8-letter puzzles per language | Wekele (4-8), Sanuli (4-7), SUTOM (6-10) |
-| **Speed Streak** | Timed back-to-back rounds — solve as many as possible in 5 minutes | No major competitor |
-| **Semantic Explorer** | Navigate meaning space with compass + word map + LLM hints. 10 guesses. Novel mode. | Contexto (5-15M/mo), Semantle |
-| **Archive** | Play any past daily puzzle | NYT (premium), wordleunlimited |
-
-See `docs/tridle_quordle_gamemodes.md` for multi-board technical analysis.
+| Feature | Description | Reference | Status |
+|---------|-------------|-----------|--------|
+| **Unlimited** | Play random words endlessly after the daily puzzle | wordleunlimited (8-15M/mo) | ✅ Shipped |
+| **Dordle** | 2 boards simultaneously, 7 guesses, shared keyboard (free-play) | Dordle (5-10M/mo) | ✅ Shipped |
+| **Tridle** | 3 boards simultaneously, 8 guesses, shared keyboard (free-play) | engaging-data.com/tridle | ✅ Shipped |
+| **Quordle** | 4 boards simultaneously, 9 guesses, shared keyboard (free-play) | Quordle/MW (15-30M/mo) | ✅ Shipped |
+| **Speed Streak** | 3-min arcade timer, variable bonus (+10-60s), combo scoring, pressure ramp, paper-aging background | No major competitor | ✅ Shipped |
+| **Variable Word Length** | 4, 5, 6, 7, 8-letter puzzles per language | Wekele (4-8), Sanuli (4-7), SUTOM (6-10) | Phase 4 |
+| **Semantic Explorer** | Navigate meaning space with compass + word map + LLM hints. 10 guesses. | Contexto (5-15M/mo), Semantle | Phase 4 |
+| **Archive** | Play any past daily puzzle | NYT (premium), wordleunlimited | Phase 2 |
 See `docs/semantic_explorer_mode.md` for Semantic Explorer design.
 
 ### User System & Social
@@ -273,17 +293,17 @@ Stats keyed by language only. Needs compound keys: `{language}_{mode}_{wordLengt
 
 ## Build Order
 
-### Phase 0: Stabilize (now — in progress)
+### Phase 0: Stabilize (partially done)
 
-Fix Nuxt migration regressions before building new features. Full list in `docs/TODO.md`. Key items:
+Fix Nuxt migration regressions. Most game-breaking issues resolved. Remaining items in `docs/TODO.md`.
 
-- [ ] PWA install rate drop (4.5% → 2.8%)
+- [ ] PWA install rate drop (4.5% → 2.8%) — install banner exists in settings + post-win, but prompt timing needs work
 - [ ] Japanese IME handling broken (16-min median session)
-- [ ] Share rate regression (7.6% → 5.2%)
+- [ ] Share rate regression (7.6% → 5.2%) — share UX redesigned in endgame modal but regression not measured yet
 - [ ] Rewrite pregenerate scripts for Nuxt
 - [ ] Remove PostHog event skip list (~$90/mo cost, enables per-guess analytics)
 
-### Phase 1: Game Mode Expansion 🎯 NEXT
+### Phase 1: Game Mode Expansion ✅ SHIPPED
 
 **Goal:** Ship Unlimited + Dordle + Tridle + Quordle. Refactor the game store architecture to support all future modes.
 
@@ -312,27 +332,32 @@ Fix Nuxt migration regressions before building new features. Full list in `docs/
 - [x] Multi-board game loop — one guess submits to all unsolved boards
 - [x] Solved boards freeze (stop accepting input, stay visible)
 - [x] Per-board keyboard state tracking + merged display (green > yellow > gray)
-- [ ] Split-color keyboard rendering (CSS gradient per key, 2/3/4 way split)
+- [x] Split-color keyboard rendering (CSS gradient per key showing per-board state)
 - [x] **Dordle layout:** 2 boards side-by-side, always visible
-- [x] **Tridle layout:** Stacked — 1 expanded board + 2 collapsed. Tap to toggle focus.
+- [x] **Tridle layout:** 2-col grid (same as Quordle, 3rd board bottom-left). Expand/collapse removed — simpler UX.
 - [x] **Quordle layout:** 2×2 grid, all 4 boards always visible
 - [x] All layouts fit 100vh (flex layout: game bar + boards + keyboard)
-- [ ] "N guesses remaining" indicator instead of empty rows
+- [ ] "N guesses remaining" indicator instead of empty rows *(deferred — low priority polish)*
 - [x] Multi-board stats + sharing (multi-grid emoji boards)
 - [x] Routes: `/[lang]/dordle/`, `/[lang]/tridle/`, `/[lang]/quordle/`
-- [ ] Daily + Unlimited play type for all multi-board modes
+- [x] Multi-board modes are free-play (random words, "Play Again"). Daily mode deferred — free-play is simpler and lets users practice.
 
-#### Phase 1d: Speed Streak ✅ DONE
-- [x] Countdown timer (start at 5 min, +5s bonus per solve)
-- [x] Solve a word → immediately get next random word
-- [x] Score = words solved in time limit
-- [x] Solved-word ticker showing past words
-- [x] Stats: words solved, average guesses, average time per word
+#### Phase 1d: Speed Streak ✅ DONE (arcade overhaul Mar 21)
+- [x] Timer: 3 min start, variable bonus (1 guess=+60s → 6 guesses=+10s), -30s fail penalty
+- [x] Pressure ramp: timer ticks 1.2x→2.5x faster every 3 words solved
+- [x] Scoring: points with combo multiplier (up to 3x), combo breaks on fail
+- [x] Arcade overlay: word toasts with emoji reactions, points float-up, combo/milestone banners
+- [x] Paper-aging background (calm→warm→amber→red pulse by urgency)
+- [x] Screen shake on fail, timer bar flash green/red, screen flash
+- [x] Results modal: score, combo, last missed word, backdrop close, reopenable via stats
+- [x] Mode-aware help modal with rules, bonus table, scoring formula
+- [x] Inline start screen with racing shine button (no overlay blocking nav)
+- [x] Solved-word ticker, stats strip, haptics+sounds throughout
 - [x] Route: `/[lang]/speed/`
 
-**Phase 1 status:** All game modes shipped. Remaining polish items: split-color keyboard, "N guesses remaining" indicator, daily+unlimited play type for multi-board modes. These are tracked in TODO.md.
+**Phase 1 status:** All 6 game modes shipped and playable. Speed Streak has full arcade treatment (combo scoring, paper-aging background, screen shake, arcade overlay). Multi-board modes are free-play (not daily). Remaining polish tracked in TODO.md.
 
-**Also completed (was planned for Phase 3):** Full design system, sidebar, homepage hub, game mode picker, editorial typography. Pulled forward because it made sense to ship alongside game modes.
+**Also completed (was planned for Phase 3):** Full design system (Direction A: Editorial), sidebar navigation, homepage hub with mode cards, game mode picker modal, editorial typography, endgame card redesign. Pulled forward because it made sense to ship alongside game modes.
 
 **Architecture decisions to make now (for future-proofing):**
 - `GameConfig` includes `social: 'solo' | 'party'` and `playType: 'daily' | 'unlimited' | 'custom'` even though only solo/daily/unlimited ship in Phase 1
@@ -340,7 +365,7 @@ Fix Nuxt migration regressions before building new features. Full list in `docs/
 - Board state includes `solvedAtTimestamp` for future speed/party features
 - Word selection API supports custom word input (for future Custom Word feature)
 
-### Phase 2: Accounts + Retention
+### Phase 2: Accounts + Retention 🎯 NEXT
 
 **Goal:** Server-side state. User accounts with stats sync and badges.
 
@@ -355,11 +380,11 @@ Fix Nuxt migration regressions before building new features. Full list in `docs/
 - [ ] Archive mode — play any past daily puzzle. Per-language calendar. Premium feature (see Phase 5).
 - [ ] Migrate word-stats from JSON files to database. Keep file-based as fallback.
 
-### Phase 3: Redesign + Social
+### Phase 3: Social Features
 
-**Goal:** Ship the visual redesign alongside social features for maximum impact. New look + new capabilities = a "relaunch" moment.
+**Goal:** Ship social features that leverage the new design system and game modes.
 
-**Why bundled with redesign:** The redesign (homepage hub, config bar, game header, sidebar) creates a new user experience that naturally surfaces the social features. Shipping the redesign alone feels empty; shipping social without the redesign buries the features. Together they're a watershed moment.
+**Context:** The visual redesign was completed in Phase 1 (pulled forward). What remains here is the social layer: Custom Word, Party Mode, Leaderboard. These require Phase 2 (accounts) for some features but Party Mode can work without auth (ephemeral rooms).
 
 **Design system:** ✅ PULLED FORWARD TO V3 (completed March 20, 2026)
 - [x] Adopted Direction A (Editorial) — Fraunces + Source Sans 3 + JetBrains Mono
@@ -433,9 +458,9 @@ See `docs/competitor-research/monetization.md` for pricing analysis.
 | Ads (free tier) | — | — | — | — | — |
 | Premium (Polar) | — | Yes | Yes | — | Yes |
 
-**Two independent critical paths:**
-1. **BoardState refactor** → unlocks all game modes (Phase 1) — **doing this first**
-2. **Database + Auth** → unlocks social, engagement, monetization (Phases 2-5)
+**Critical path (remaining):**
+1. ~~**BoardState refactor** → unlocks all game modes (Phase 1)~~ — **DONE**
+2. **Database + Auth** → unlocks social, engagement, monetization (Phases 2-5) — **NEXT**
 
 ---
 
@@ -443,20 +468,20 @@ See `docs/competitor-research/monetization.md` for pricing analysis.
 
 ### Features to Adopt
 
-| Feature | Who Has It | Priority | Phase |
-|---------|-----------|----------|-------|
-| Unlimited mode | wordleunlimited (8-15M/mo), Wekele, Sanuli | **Critical** | 1 |
-| Multi-board (Dordle/Quordle) | Quordle/MW (15-30M/mo), Dordle (5-10M) | **Critical** | 1 |
-| Speed mode | No major competitor | **High** | 1 |
-| Account + stats sync | NYT, La Palabra del Dia | **High** | 2 |
-| Badges + achievements | NYT, Duolingo | **High** | 2 |
-| Archive (past puzzles) | NYT (premium), wordleunlimited | High | 2 |
-| Visual redesign | — | High | 3 |
-| Custom puzzle links | NYT, wordly.org | High | 3 |
-| Party/multiplayer | No major Wordle competitor | High | 3 |
-| Semantic word game | Contexto (5-15M/mo), Semantle | High | 4 |
-| Variable word length | Wekele (4-8), Sanuli (4-7), SUTOM (6-10) | Medium | 4 |
-| Native app | NYT (42M downloads), Wekele (100K) | Medium | 5 |
+| Feature | Who Has It | Priority | Status |
+|---------|-----------|----------|--------|
+| Unlimited mode | wordleunlimited (8-15M/mo), Wekele, Sanuli | **Critical** | ✅ Shipped |
+| Multi-board (Dordle/Quordle) | Quordle/MW (15-30M/mo), Dordle (5-10M) | **Critical** | ✅ Shipped |
+| Speed mode | No major competitor | **High** | ✅ Shipped |
+| Visual redesign | — | High | ✅ Shipped |
+| Account + stats sync | NYT, La Palabra del Dia | **High** | Phase 2 |
+| Badges + achievements | NYT, Duolingo | **High** | Phase 2 |
+| Archive (past puzzles) | NYT (premium), wordleunlimited | High | Phase 2 |
+| Custom puzzle links | NYT, wordly.org | High | Phase 3 |
+| Party/multiplayer | No major Wordle competitor | High | Phase 3 |
+| Semantic word game | Contexto (5-15M/mo), Semantle | High | Phase 4 |
+| Variable word length | Wekele (4-8), Sanuli (4-7), SUTOM (6-10) | Medium | Phase 4 |
+| Native app | NYT (42M downloads), Wekele (100K) | Medium | Phase 5 |
 
 ### Where We Lead (protect)
 
@@ -486,8 +511,8 @@ Strategy: coexist as the multilingual alternative, don't compete head-on.
 
 1. ~~Database hosting~~ — **Decided:** Render Postgres ($7/mo), Prisma ORM.
 2. ~~Auth provider~~ — **Decided:** `nuxt-auth-utils` (Google + Apple OAuth, email/password fallback).
-3. ~~Multi-board mobile UX~~ — **Decided:** Dordle side-by-side, Tridle stacked with expand/collapse toggle, Quordle 2×2 grid always visible. See design explorations.
-4. ~~Product navigation architecture~~ — **Decided:** Hybrid (Homepage Hub + Two-Step board picker + Config Bar). See design exploration Option F.
+3. ~~Multi-board mobile UX~~ — **Decided & shipped:** All modes use 2-col grid. Tridle expand/collapse was dropped (too complex). Dordle side-by-side, Tridle/Quordle 2×2 grid.
+4. ~~Product navigation architecture~~ — **Decided & shipped:** Sidebar + game mode picker modal + homepage mode cards. Config Bar deferred to when party/custom ship.
 5. ~~Icon system~~ — **Decided:** Lucide (UI icons) + Circle Flags (country flags).
 6. **Leaderboard scope:** Per-language only or cross-language? Daily/weekly/all-time?
 7. **Comments moderation:** Manual, community-flagging, or AI? 80 languages makes this very hard.
@@ -496,22 +521,23 @@ Strategy: coexist as the multilingual alternative, don't compete head-on.
 10. **Challenge words:** Any word or only from the word list? Custom words enable creativity but also abuse.
 11. **Stats migration:** On account creation, retroactively credit localStorage history? Handle multi-device conflicts?
 12. **Monetization timing:** Introduce premium before or after native app? How does it affect the brand?
-13. **Design direction:** Direction A (Editorial) or Direction C (Quiet Craft)? Or a hybrid?
+13. ~~Design direction~~ — **Decided & shipped:** Direction A (Editorial). Fraunces + Source Sans 3 + JetBrains Mono. See `docs/DESIGN_SYSTEM_DECISIONS.md`.
 14. **Party mode infrastructure:** Ephemeral rooms (Redis/in-memory with TTL) or persistent (DB)?
 
 ---
 
 ## Related Documents
 
-| Document | Contents |
-|----------|----------|
-| `docs/tridle_quordle_gamemodes.md` | Multi-board technical analysis — component readiness, store refactor, architecture sketch |
-| `docs/semantic_explorer_mode.md` | Semantic Explorer design — word map, compass, LLM hints, embeddings, rollout plan |
-| `docs/competitor-research/competitor-profiles.md` | 12 competitor deep dives — traffic, revenue, features |
-| `docs/competitor-research/recommendations.md` | Prioritized feature recommendations with UI mockups |
-| `docs/competitor-research/monetization.md` | Pricing strategy, conversion funnel, revenue projections |
-| `docs/TODO.md` | Current P0-P3 bug fixes and action items |
-| `docs/LANGUAGE_EXPANSION.md` | Adding new languages — pipeline, candidates, checklist |
-| `docs/WORD_DATA_ARCHITECTURE.md` | Word pipeline and data format |
-| `docs/nuxt-migration.md` | Nuxt 3 migration (completed, historical reference) |
-| `../wordle-design-explorations/` | Design exploration prototypes — Direction A (Editorial), Direction C (Quiet Craft), product architecture mockups, party mode screens |
+| Document | Contents | Status |
+|----------|----------|--------|
+| `docs/TODO.md` | Current P0-P3 bug fixes, V3 cleanup items, game mode audit | Active |
+| `docs/DELIGHT.md` | Animation, haptics, sound audit — every micro-interaction catalogued + recommendations | Active |
+| `docs/DESIGN_SYSTEM_DECISIONS.md` | Pixel-level audit, justified deviations, architecture decisions | Reference |
+| `docs/boardstate-refactor-notes.md` | Phase 1a BoardState refactor decision log | Completed |
+| `docs/semantic_explorer_mode.md` | Semantic Explorer design — word map, compass, LLM hints, embeddings | Future (Phase 4) |
+| `docs/competitor-research/` | 12 competitor deep dives, pricing strategy, feature recommendations | Reference |
+| `docs/LANGUAGE_EXPANSION.md` | Adding new languages — pipeline, candidates, checklist | Active |
+| `docs/WORD_DATA_ARCHITECTURE.md` | Word pipeline and data format | Active |
+| `docs/tridle_quordle_gamemodes.md` | Multi-board technical analysis (completed, historical) | Completed |
+| `docs/nuxt-migration.md` | Nuxt 3 migration (completed, historical) | Completed |
+| `public/design-explorations/` | Design exploration prototypes — Direction A (Editorial), Direction C (Quiet Craft) | Reference |

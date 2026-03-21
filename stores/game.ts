@@ -939,12 +939,36 @@ export const useGameStore = defineStore('game', () => {
             );
         }
 
-        // Speed mode is session-based — no persistent stats
+        // Speed mode is session-based — no persistent stats or game_complete analytics
+        // (speed has its own speed_session_complete event)
         if (gameConfig.value.mode !== 'speed') {
             const statsKey = buildStatsKey(gameConfig.value);
             statsStore.saveResult(statsKey, won, options.statsAttempts);
             statsStore.calculateStats(statsKey, gameConfig.value.maxGuesses);
             statsStore.calculateTotalStats();
+
+            // Analytics — track game completion for ALL modes (classic, unlimited, dordle, tridle, quordle)
+            const frustrationState = analytics.resetFrustrationState();
+            const timeToComplete = gameStartTime
+                ? Math.floor((Date.now() - gameStartTime) / 1000)
+                : undefined;
+
+            analytics.trackGameComplete({
+                language: lang.languageCode,
+                won,
+                attempts: options.statsAttempts,
+                streak_after: statsStore.stats.current_streak,
+                game_mode: gameConfig.value.mode,
+                total_invalid_attempts: frustrationState.totalInvalidAttempts,
+                max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
+                had_frustration: frustrationState.hadFrustration,
+                time_to_complete_seconds: timeToComplete,
+            });
+
+            if (won) {
+                analytics.trackStreakMilestone(lang.languageCode, statsStore.stats.current_streak);
+            }
+            analytics.updateUserProperties(statsStore.gameResults);
         }
     }
 
@@ -977,26 +1001,6 @@ export const useGameStore = defineStore('game', () => {
 
         submitWordStats(true, activeRow.value);
 
-        // Analytics: track game completion and streak milestones
-        const frustrationState = analytics.resetFrustrationState();
-        const timeToComplete = gameStartTime
-            ? Math.floor((Date.now() - gameStartTime) / 1000)
-            : undefined;
-
-        analytics.trackGameComplete({
-            language: lang.languageCode,
-            won: true,
-            attempts: activeRow.value,
-            streak_after: statsStore.stats.current_streak,
-            game_mode: gameConfig.value.mode,
-            total_invalid_attempts: frustrationState.totalInvalidAttempts,
-            max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
-            had_frustration: frustrationState.hadFrustration,
-            time_to_complete_seconds: timeToComplete,
-        });
-        analytics.trackStreakMilestone(lang.languageCode, statsStore.stats.current_streak);
-        analytics.updateUserProperties(statsStore.gameResults);
-
         // Show embed banner after game completion
         if (import.meta.client) {
             const { checkBanner } = useEmbed();
@@ -1027,25 +1031,6 @@ export const useGameStore = defineStore('game', () => {
         }
 
         submitWordStats(false, activeRow.value);
-
-        // Analytics: track game completion
-        const lossFrustrationState = analytics.resetFrustrationState();
-        const lossTimeToComplete = gameStartTime
-            ? Math.floor((Date.now() - gameStartTime) / 1000)
-            : undefined;
-
-        analytics.trackGameComplete({
-            language: lang.languageCode,
-            won: false,
-            attempts: 'X',
-            streak_after: 0,
-            game_mode: gameConfig.value.mode,
-            total_invalid_attempts: lossFrustrationState.totalInvalidAttempts,
-            max_consecutive_invalid: lossFrustrationState.maxConsecutiveInvalid,
-            had_frustration: lossFrustrationState.hadFrustration,
-            time_to_complete_seconds: lossTimeToComplete,
-        });
-        analytics.updateUserProperties(statsStore.gameResults);
 
         // Analytics: track streak broken (if user had an active streak)
         if (previousStreak > 0) {

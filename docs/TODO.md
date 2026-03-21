@@ -1,6 +1,6 @@
 # Action Items
 
-*Updated: March 19, 2026*
+*Updated: March 21, 2026*
 
 Near-term bugs and tasks. For feature planning, see `docs/ROADMAP.md`.
 
@@ -126,7 +126,7 @@ Findings from exhaustive feature-parity audit comparing new modes (Unlimited, Sp
 
 ### P1 — Help & Onboarding
 
-- [ ] **Help modal is not mode-aware** — Shows classic 5-letter/6-guess tutorial for all modes. Should explain: different guess limits (7/8/9), shared guesses across boards, speed timer mechanics, unlimited vs daily.
+- [x] **Help modal is now mode-aware** — Speed Streak shows specific rules (timer, bonus table, scoring, pressure ramp). Classic shows standard tutorial. Other modes still show classic tutorial — could be improved for multi-board. *(Mar 21)*
 
 ### P2 — Animations & Delight
 
