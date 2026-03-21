@@ -277,11 +277,11 @@
                         >
                             Unlimited
                         </NuxtLink>
-                        <!-- Non-daily modes → close modal (New Word button is on the page) -->
+                        <!-- Non-daily modes → new game button -->
                         <button
                             v-else
                             class="flex-1 py-3 px-3 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
-                            @click="$emit('close')"
+                            @click="$emit('newGame')"
                         >
                             {{ isDaily ? 'Close' : 'New Game' }}
                         </button>
@@ -316,7 +316,7 @@ import type { GuessDistribution } from '~/utils/types';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
 const props = defineProps<{ visible: boolean }>();
-defineEmits<{ close: [] }>();
+defineEmits<{ close: []; newGame: [] }>();
 
 const game = useGameStore();
 const statsStore = useStatsStore();

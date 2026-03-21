@@ -59,6 +59,7 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
         :visible="!!gameData"
         @toggle-sidebar="toggleSidebar"
         @close-sidebar="closeSidebar"
+        @new-game="startNewGame"
     >
         <GameMultiBoardLayout ref="multiBoardRef" />
 

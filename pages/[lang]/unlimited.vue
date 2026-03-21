@@ -74,8 +74,20 @@ onMounted(() => {
         :visible="!!gameData"
         @toggle-sidebar="toggleSidebar"
         @close-sidebar="closeSidebar"
+        @new-game="startNewGame"
     >
         <GameBoard ref="gameBoardRef" />
+
+        <template #post-keyboard>
+            <div v-if="game.gameOver" class="flex justify-center py-3">
+                <button
+                    class="px-6 py-2.5 bg-correct hover:opacity-90 text-white font-semibold text-sm transition-opacity"
+                    @click="startNewGame"
+                >
+                    New Word
+                </button>
+            </div>
+        </template>
     </GamePageShell>
 
     <noscript data-allow-mismatch>

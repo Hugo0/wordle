@@ -67,7 +67,14 @@
                     @close="game.showOptionsModal = false"
                 />
             </div>
-            <GameStatsModal :visible="game.showStatsModal" @close="game.showStatsModal = false" />
+            <GameStatsModal
+                :visible="game.showStatsModal"
+                @close="game.showStatsModal = false"
+                @new-game="
+                    game.showStatsModal = false;
+                    $emit('newGame');
+                "
+            />
             <GameCopyFallbackModal />
             <GameNotificationToast :notification="game.notification" />
 
@@ -99,7 +106,7 @@ const props = withDefaults(
     }
 );
 
-defineEmits<{ toggleSidebar: []; closeSidebar: [] }>();
+defineEmits<{ toggleSidebar: []; closeSidebar: []; newGame: [] }>();
 
 const game = useGameStore();
 const langStore = useLanguageStore();
