@@ -34,10 +34,19 @@ function measure() {
     }
 }
 
+let rafId = 0;
+function onResize() {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(measure);
+}
+
 onMounted(() => {
     measure();
-    window.addEventListener('resize', measure);
-    onUnmounted(() => window.removeEventListener('resize', measure));
+    window.addEventListener('resize', onResize);
+});
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', onResize);
+    cancelAnimationFrame(rafId);
 });
 
 const gridStyle = computed(() => {

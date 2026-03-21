@@ -25,13 +25,16 @@ export function useMultiBoardPage(mode: GameMode, wordList: string[], boardCount
     );
 
     /** Pick N distinct random words from the word list. */
+    /** Pick N distinct random words without copying the entire word list. */
     function pickRandomWords(n: number): string[] {
         const words: string[] = [];
-        const available = [...wordList];
-        for (let i = 0; i < n && available.length > 0; i++) {
-            const idx = Math.floor(Math.random() * available.length);
-            words.push(available[idx]!);
-            available.splice(idx, 1);
+        const used = new Set<number>();
+        while (words.length < n && used.size < wordList.length) {
+            const idx = Math.floor(Math.random() * wordList.length);
+            if (!used.has(idx)) {
+                used.add(idx);
+                words.push(wordList[idx]!);
+            }
         }
         return words;
     }

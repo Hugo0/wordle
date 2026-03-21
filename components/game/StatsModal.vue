@@ -313,6 +313,7 @@
 import { ref, computed } from 'vue';
 import { X, ExternalLink, Share2, Check } from 'lucide-vue-next';
 import type { GuessDistribution } from '~/utils/types';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
 const props = defineProps<{ visible: boolean }>();
 defineEmits<{ close: [] }>();
@@ -362,12 +363,7 @@ const nextWordLabel = computed(() => {
 const modeLabel = computed(() => {
     const mode = game.gameConfig.mode;
     if (mode === 'classic') return null;
-    if (mode === 'unlimited') return 'Unlimited';
-    if (mode === 'dordle') return 'Dordle';
-    if (mode === 'tridle') return 'Tridle';
-    if (mode === 'quordle') return 'Quordle';
-    if (mode === 'speed') return 'Speed Streak';
-    return null;
+    return GAME_MODE_CONFIG[mode]?.label ?? null;
 });
 
 const resultLabel = computed(() => {

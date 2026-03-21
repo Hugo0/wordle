@@ -31,14 +31,13 @@ export function useDefinitions() {
             _cache.set(key, result);
             return result;
         } catch {
-            const fallback: WordDefinition = {
+            // Don't cache errors — transient failures should be retryable
+            return {
                 word,
                 definition: '',
                 source: 'link',
                 url: `https://en.wiktionary.org/wiki/${encodeURIComponent(word)}`,
             };
-            _cache.set(key, fallback);
-            return fallback;
         }
     }
 
