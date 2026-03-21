@@ -35,17 +35,38 @@
                             {{ modeLabel }}
                         </div>
 
-                        <!-- Result label -->
-                        <div
-                            v-if="game.gameOver"
-                            class="font-mono uppercase text-[10px] tracking-[0.2em] mb-1"
-                            :class="game.gameWon ? 'text-correct' : 'text-accent'"
-                        >
-                            {{ resultLabel }}
-                        </div>
+                        <!-- Pre-game: masked word teaser -->
+                        <template v-if="!game.gameOver">
+                            <div
+                                class="font-display font-extrabold uppercase text-muted/40"
+                                style="
+                                    font-size: 42px;
+                                    letter-spacing: 0.2em;
+                                    font-variation-settings: 'opsz' 144;
+                                    line-height: 1.1;
+                                "
+                            >
+                                {{ maskedWord }}
+                            </div>
+                            <div
+                                class="font-mono uppercase text-[10px] tracking-[0.2em] text-muted mt-2"
+                            >
+                                Play to reveal
+                            </div>
+                        </template>
+
+                        <!-- Post-game: result label -->
+                        <template v-else>
+                            <div
+                                class="font-mono uppercase text-[10px] tracking-[0.2em] mb-1"
+                                :class="game.gameWon ? 'text-correct' : 'text-accent'"
+                            >
+                                {{ resultLabel }}
+                            </div>
+                        </template>
 
                         <!-- ── Single-board word display (classic, unlimited) ── -->
-                        <template v-if="!isMultiBoard">
+                        <template v-if="game.gameOver && !isMultiBoard">
                             <div
                                 class="font-display font-extrabold uppercase text-ink"
                                 style="
@@ -59,7 +80,7 @@
                             </div>
 
                             <div
-                                v-if="game.todayDefinition?.partOfSpeech"
+                                v-if="settings.wordInfoEnabled && game.todayDefinition?.partOfSpeech"
                                 class="font-display italic text-muted text-[15px] mt-1 mb-3"
                             >
                                 {{
@@ -86,7 +107,7 @@
                         </template>
 
                         <!-- ── Multi-board word display (dordle, tridle, quordle) ── -->
-                        <template v-else>
+                        <template v-else-if="game.gameOver && isMultiBoard">
                             <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 mt-1">
                                 <div
                                     v-for="(board, i) in game.boards"
@@ -162,9 +183,14 @@
                         </div>
                     </div>
 
-                    <!-- AI Image — single-board only, click to expand -->
+                    <!-- AI Image — single-board only, click to expand, only after game over -->
                     <div
-                        v-if="!isMultiBoard && settings.wordInfoEnabled && game.todayImageUrl"
+                        v-if="
+                            game.gameOver &&
+                            !isMultiBoard &&
+                            settings.wordInfoEnabled &&
+                            game.todayImageUrl
+                        "
                         class="editorial-rule cursor-pointer"
                         @click="imageExpanded = !imageExpanded"
                     >
@@ -254,9 +280,10 @@
                         </a>
                     </div>
 
-                    <!-- Action buttons -->
+                    <!-- Action buttons — share only available after game over -->
                     <div class="flex gap-3" style="padding: 20px 32px">
                         <button
+                            v-if="game.gameOver"
                             class="flex-1 py-3 px-5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85 cursor-pointer inline-flex items-center justify-center gap-2"
                             @click="game.shareResults()"
                         >
@@ -271,7 +298,7 @@
                         </button>
                         <!-- Classic daily → link to unlimited -->
                         <NuxtLink
-                            v-if="isClassicDaily"
+                            v-if="game.gameOver && isClassicDaily"
                             :to="'/' + lang.languageCode + '/unlimited'"
                             class="flex-1 py-3 px-3 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                         >
@@ -279,11 +306,19 @@
                         </NuxtLink>
                         <!-- Non-daily modes → new game button -->
                         <button
-                            v-else
+                            v-else-if="game.gameOver"
                             class="flex-1 py-3 px-3 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                             @click="$emit('newGame')"
                         >
                             {{ isDaily ? 'Close' : 'New Game' }}
+                        </button>
+                        <!-- Pre-game: just a close button -->
+                        <button
+                            v-else
+                            class="flex-1 py-3 px-5 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer"
+                            @click="$emit('close')"
+                        >
+                            Close
                         </button>
                     </div>
 
@@ -381,6 +416,11 @@ const resultLabel = computed(() => {
         return `Solved in ${game.attempts} ${n === 1 ? 'guess' : 'guesses'}`;
     }
     return 'Not solved';
+});
+
+const maskedWord = computed(() => {
+    const wordLength = game.gameConfig.wordLength || 5;
+    return '?'.repeat(wordLength);
 });
 
 const multiBoardWordStyle = computed(() => ({

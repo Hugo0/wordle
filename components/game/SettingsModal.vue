@@ -98,6 +98,48 @@
 
                 <div class="editorial-rule" />
 
+                <!-- Word Info (definition + image after game) -->
+                <div class="flex flex-row items-center">
+                    <div class="flex-grow">
+                        <p class="text-sm text-ink">
+                            {{ lang.config?.ui?.word_info || 'Word Info' }}
+                        </p>
+                        <p class="text-xs text-muted">
+                            {{
+                                lang.config?.ui?.word_info_desc ||
+                                'Show definition and image after solving'
+                            }}
+                        </p>
+                    </div>
+                    <SharedToggleSwitch
+                        :model-value="settings.wordInfoEnabled"
+                        @update:model-value="settings.toggleWordInfo()"
+                    />
+                </div>
+
+                <div class="editorial-rule" />
+
+                <!-- Animations -->
+                <div class="flex flex-row items-center">
+                    <div class="flex-grow">
+                        <p class="text-sm text-ink">
+                            {{ lang.config?.ui?.animations || 'Animations' }}
+                        </p>
+                        <p class="text-xs text-muted">
+                            {{
+                                lang.config?.ui?.animations_desc ||
+                                'Tile flip, bounce, and pop effects'
+                            }}
+                        </p>
+                    </div>
+                    <SharedToggleSwitch
+                        :model-value="settings.animationsEnabled"
+                        @update:model-value="settings.toggleAnimations()"
+                    />
+                </div>
+
+                <div class="editorial-rule" />
+
                 <!-- High Contrast / Colorblind mode -->
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">

@@ -21,6 +21,7 @@ export const useSettingsStore = defineStore('settings', () => {
     const darkMode = ref(false);
     const feedbackEnabled = ref(true);
     const wordInfoEnabled = ref(true);
+    const animationsEnabled = ref(true);
     const hardMode = ref(false);
     const highContrast = ref(false);
 
@@ -60,6 +61,15 @@ export const useSettingsStore = defineStore('settings', () => {
             wordInfoEnabled.value = storedWordInfo !== 'false';
         }
 
+        // Animations
+        const storedAnimations = readLocal('animationsEnabled');
+        if (storedAnimations !== null) {
+            animationsEnabled.value = storedAnimations !== 'false';
+        }
+        if (!animationsEnabled.value) {
+            document.documentElement.classList.add('reduce-animations');
+        }
+
         // Hard mode
         const storedHard = readLocal('hardMode');
         if (storedHard !== null) {
@@ -90,6 +100,14 @@ export const useSettingsStore = defineStore('settings', () => {
                 document.documentElement.classList.add('high-contrast');
             } else {
                 document.documentElement.classList.remove('high-contrast');
+            }
+        });
+
+        watch(animationsEnabled, (enabled) => {
+            if (enabled) {
+                document.documentElement.classList.remove('reduce-animations');
+            } else {
+                document.documentElement.classList.add('reduce-animations');
             }
         });
     }
@@ -139,6 +157,17 @@ export const useSettingsStore = defineStore('settings', () => {
         writeLocal('wordInfoEnabled', value ? 'true' : 'false');
     }
 
+    function toggleAnimations(): void {
+        animationsEnabled.value = !animationsEnabled.value;
+        writeLocal('animationsEnabled', animationsEnabled.value ? 'true' : 'false');
+        analytics.trackSettingsChange({ setting: 'animations', value: animationsEnabled.value });
+    }
+
+    function setAnimationsEnabled(value: boolean): void {
+        animationsEnabled.value = value;
+        writeLocal('animationsEnabled', value ? 'true' : 'false');
+    }
+
     function toggleHardMode(): void {
         hardMode.value = !hardMode.value;
         writeLocal('hardMode', hardMode.value ? 'true' : 'false');
@@ -166,6 +195,7 @@ export const useSettingsStore = defineStore('settings', () => {
         darkMode,
         feedbackEnabled,
         wordInfoEnabled,
+        animationsEnabled,
         hardMode,
         highContrast,
         difficultyShake,
@@ -179,6 +209,7 @@ export const useSettingsStore = defineStore('settings', () => {
         toggleDarkMode,
         toggleFeedback,
         toggleWordInfo,
+        toggleAnimations,
         toggleHardMode,
         toggleHighContrast,
 
@@ -186,6 +217,7 @@ export const useSettingsStore = defineStore('settings', () => {
         setDarkMode,
         setFeedbackEnabled,
         setWordInfoEnabled,
+        setAnimationsEnabled,
         setHardMode,
         setHighContrast,
     };

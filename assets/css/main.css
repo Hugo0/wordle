@@ -417,6 +417,21 @@
     }
 }
 
+/* In-app animations toggle (speed mode excluded — its effects are inherent) */
+.reduce-animations .shake,
+.reduce-animations .pop,
+.reduce-animations .tile-bounce,
+.reduce-animations .key-shake,
+.reduce-animations .key-pulse,
+.reduce-animations .key-correct,
+.reduce-animations .key-semicorrect {
+    animation: none !important;
+}
+
+.reduce-animations .diacritic-popup {
+    animation: none !important;
+}
+
 /* Skip to content link — visible only on keyboard focus */
 .skip-link {
     position: absolute;

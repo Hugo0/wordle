@@ -91,6 +91,7 @@ interface SettingsChangeParams {
         | 'feedback'
         | 'word_info'
         | 'definitions'
+        | 'animations'
         | 'hard_mode'
         | 'high_contrast';
     value: boolean;
