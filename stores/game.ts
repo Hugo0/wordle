@@ -1558,6 +1558,15 @@ export const useGameStore = defineStore('game', () => {
             animating.value = false;
             showTilesAllBoards();
             checkMultiBoardCompletion(canonicalWord, rowIndex);
+
+            // Keep activeBoardIndex pointing at an unsolved board so the
+            // computed proxies (activeRow, activeCell, etc.) read/write
+            // to a live board instead of a frozen solved one.
+            const firstUnsolved = boards.value.findIndex((b) => !b.solved);
+            if (firstUnsolved !== -1) {
+                activeBoardIndex.value = firstUnsolved;
+            }
+
             saveMultiBoardToLocalStorage();
         });
     }
@@ -1814,7 +1823,11 @@ export const useGameStore = defineStore('game', () => {
                 return board;
             });
 
-            activeBoardIndex.value = 0;
+            // Point activeBoardIndex at the first unsolved board (so computed
+            // proxies read from a live board, not a frozen solved one).
+            const firstUnsolvedIdx = boards.value.findIndex((b) => !b.solved);
+            activeBoardIndex.value = firstUnsolvedIdx !== -1 ? firstUnsolvedIdx : 0;
+
             gameOver.value = data.game_over || false;
             gameWon.value = data.game_won || false;
             emojiBoard.value = data.emoji_board || '';
