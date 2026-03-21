@@ -25,7 +25,29 @@
         "locale": "gl",
         "title": "O xogo de palabras diario",
         "description": "Adiviña a palabra escondida en 6 intentos (ou menos). Un novo rompecabezas está dispoñible cada día!",
-        "keywords": "Galego, Puzzle, Word, Play, Game, Online, Guess, Daily"
+        "keywords": "Galego, Puzzle, Word, Play, Game, Online, Guess, Daily",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Galician. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Galician as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Galician. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Galician. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Galician. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Galego",

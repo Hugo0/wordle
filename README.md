@@ -1,14 +1,14 @@
 # Wordle Global
 
 [![Tests](https://github.com/Hugo0/wordle/actions/workflows/test.yml/badge.svg)](https://github.com/Hugo0/wordle/actions/workflows/test.yml)
-[![Languages](https://img.shields.io/badge/languages-79-blue)](https://wordle.global)
+[![Languages](https://img.shields.io/badge/languages-80-blue)](https://wordle.global)
 [![Accessibility](https://img.shields.io/badge/a11y-WCAG_2.1_AA-green)](https://wordle.global/accessibility)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: PolyForm Noncommercial](https://img.shields.io/badge/License-PolyForm_NC-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Hugo0/wordle/pulls)
 
 ![Wordle Global](public/images/og-image.png)
 
-**[Play now at wordle.global](https://wordle.global/)** — the daily word guessing game in 79 languages. Open source, community-driven, no ads.
+**[Play now at wordle.global](https://wordle.global/)** — the daily word puzzle in 80+ languages. Free, open source, community-driven. Six game modes: Classic, Unlimited, Speed Streak, Dordle, Tridle, and Quordle.
 
 ## Languages
 
@@ -61,4 +61,4 @@ pnpm install && pnpm dev
 
 ## License
 
-[MIT](LICENSE)
+[PolyForm Noncommercial 1.0.0](LICENSE)

@@ -7,7 +7,29 @@
         "locale": "tr",
         "title": "Günlük kelime oyunu",
         "description": "6'daki gizli kelimeyi sanırım (veya daha az). Her gün yeni bir bulmaca mevcuttur!",
-        "keywords": "Türkçe, bulmaca, kelime, oyun, oyun, çevrimiçi, her gün tahmin"
+        "keywords": "Türkçe, bulmaca, kelime, oyun, oyun, çevrimiçi, her gün tahmin",
+        "modes": {
+            "unlimited": {
+                "title": "Sınırsız oyna — bekleme yok",
+                "description": "Türkçe Wordle'ı sınırsız oyna. Bekleme yok — her seferinde yeni bir kelime."
+            },
+            "speed": {
+                "title": "Speed Streak — zamana karşı yarış",
+                "description": "Speed Streak: 5 dakikada olabildiğince çok Türkçe Wordle kelimesi çöz."
+            },
+            "dordle": {
+                "title": "Dordle — aynı anda 2 tahta",
+                "description": "Türkçe Dordle oyna. 7 tahminle aynı anda 2 Wordle tahtası çöz."
+            },
+            "tridle": {
+                "title": "Tridle — aynı anda 3 tahta",
+                "description": "Türkçe Tridle oyna. 8 tahminle aynı anda 3 Wordle tahtası çöz."
+            },
+            "quordle": {
+                "title": "Quordle — aynı anda 4 tahta",
+                "description": "Türkçe Quordle oyna. 9 tahminle aynı anda 4 Wordle tahtası çöz."
+            }
+        }
     },
     "text": {
         "subheader": "Türkçe",

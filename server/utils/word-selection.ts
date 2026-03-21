@@ -150,6 +150,11 @@ function computeWordForDay(langCode: string, dayIdx: number): string {
     }
 
     const pool = dailyWords && dailyWords.length > 0 ? dailyWords : wordList;
+    if (!pool || pool.length === 0) {
+        throw new Error(
+            `[word-selection] Empty word pool for language "${langCode}" on day ${dayIdx}`
+        );
+    }
     return getDailyWordConsistentHash(pool, exclude, dayIdx, langCode);
 }
 
@@ -188,4 +193,36 @@ export function getWordForDay(langCode: string, dayIdx: number): string {
     }
 
     return word;
+}
+
+/**
+ * Get N distinct daily words for multi-board modes (Dordle, Tridle, Quordle).
+ *
+ * Board 0 always uses the same word as classic daily (todaysIdx directly).
+ * Boards 1-N use high slot offsets to ensure deterministic, unique words.
+ * If a collision occurs (same word for two boards), probes forward.
+ */
+const MULTI_BOARD_SLOT_OFFSET = 100_000;
+
+export function getWordsForDay(langCode: string, todaysIdx: number, count: number): string[] {
+    const words: string[] = [];
+    const used = new Set<string>();
+
+    for (let i = 0; i < count; i++) {
+        const slotIdx = i === 0 ? todaysIdx : todaysIdx + i * MULTI_BOARD_SLOT_OFFSET;
+        let word = getWordForDay(langCode, slotIdx);
+
+        // Dedup: probe forward if collision (bounded to prevent infinite loop)
+        let probe = 1;
+        const MAX_PROBE = 1000;
+        while (used.has(word) && probe < MAX_PROBE) {
+            word = getWordForDay(langCode, slotIdx + probe);
+            probe++;
+        }
+
+        used.add(word);
+        words.push(word);
+    }
+
+    return words;
 }

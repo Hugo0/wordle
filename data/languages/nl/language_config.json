@@ -39,7 +39,29 @@
         "locale": "nl",
         "title": "Het dagelijkse woordspel",
         "description": "Raden het verborgen woord in 6 (of minder). Er is elke dag een nieuwe puzzel beschikbaar!",
-        "keywords": "Nederlands, puzzel, woord, spelen, spel, online, raden, dagelijks"
+        "keywords": "Nederlands, puzzel, woord, spelen, spel, online, raden, dagelijks",
+        "modes": {
+            "unlimited": {
+                "title": "Speel onbeperkt — niet wachten",
+                "description": "Speel Wordle in het Nederlands onbeperkt. Niet wachten — elk spel een nieuw woord."
+            },
+            "speed": {
+                "title": "Speed Streak — race tegen de klok",
+                "description": "Speed Streak: los in 5 minuten zoveel mogelijk Nederlandse Wordle-woorden op."
+            },
+            "dordle": {
+                "title": "Dordle — 2 borden tegelijk",
+                "description": "Speel Dordle in het Nederlands. Los 2 Wordle-borden tegelijk op met 7 pogingen."
+            },
+            "tridle": {
+                "title": "Tridle — 3 borden tegelijk",
+                "description": "Speel Tridle in het Nederlands. Los 3 Wordle-borden tegelijk op met 8 pogingen."
+            },
+            "quordle": {
+                "title": "Quordle — 4 borden tegelijk",
+                "description": "Speel Quordle in het Nederlands. Los 4 Wordle-borden tegelijk op met 9 pogingen."
+            }
+        }
     },
     "text": {
         "subheader": "Nederlands",

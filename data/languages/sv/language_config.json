@@ -7,7 +7,29 @@
         "locale": "sv",
         "title": "Dagens ordspel",
         "description": "Gissa det dolda ordet på 6 försök (eller mindre). Varje dag är det ett nytt ord!",
-        "keywords": "svenska, knåp, ord, lek, spel, online, gissa"
+        "keywords": "svenska, knåp, ord, lek, spel, online, gissa",
+        "modes": {
+            "unlimited": {
+                "title": "Spela obegränsat — ingen väntan",
+                "description": "Spela Wordle på svenska obegränsat. Ingen väntan — ett nytt ord varje gång."
+            },
+            "speed": {
+                "title": "Speed Streak — mot klockan",
+                "description": "Speed Streak: lös så många svenska Wordle-ord du kan på 5 minuter."
+            },
+            "dordle": {
+                "title": "Dordle — 2 rutnät samtidigt",
+                "description": "Spela Dordle på svenska. Lös 2 Wordle-rutnät samtidigt med 7 gissningar."
+            },
+            "tridle": {
+                "title": "Tridle — 3 rutnät samtidigt",
+                "description": "Spela Tridle på svenska. Lös 3 Wordle-rutnät samtidigt med 8 gissningar."
+            },
+            "quordle": {
+                "title": "Quordle — 4 rutnät samtidigt",
+                "description": "Spela Quordle på svenska. Lös 4 Wordle-rutnät samtidigt med 9 gissningar."
+            }
+        }
     },
     "text": {
         "subheader": "Svenska",

@@ -38,7 +38,29 @@
         "locale": "pt",
         "title": "O jogo diário da palavra",
         "description": "Acho que a palavra oculta em 6 tentativas (ou menos). Um novo quebra-cabeça está disponível todos os dias!",
-        "keywords": "Português, Quebra-cabeça, Palavra, Jogue, Jogo, Online, Adivinha, Diário"
+        "keywords": "Português, Quebra-cabeça, Palavra, Jogue, Jogo, Online, Adivinha, Diário",
+        "modes": {
+            "unlimited": {
+                "title": "Jogue sem limite — sem espera",
+                "description": "Jogue Wordle em português sem limite. Sem espera — uma palavra nova a cada rodada."
+            },
+            "speed": {
+                "title": "Speed Streak — contra o relógio",
+                "description": "Speed Streak: resolva o máximo de palavras Wordle em português em 5 minutos."
+            },
+            "dordle": {
+                "title": "Dordle — 2 tabuleiros de uma vez",
+                "description": "Jogue Dordle em português. Resolva 2 tabuleiros Wordle de uma vez com 7 tentativas."
+            },
+            "tridle": {
+                "title": "Tridle — 3 tabuleiros de uma vez",
+                "description": "Jogue Tridle em português. Resolva 3 tabuleiros Wordle de uma vez com 8 tentativas."
+            },
+            "quordle": {
+                "title": "Quordle — 4 tabuleiros de uma vez",
+                "description": "Jogue Quordle em português. Resolva 4 tabuleiros Wordle de uma vez com 9 tentativas."
+            }
+        }
     },
     "text": {
         "subheader": "Português",

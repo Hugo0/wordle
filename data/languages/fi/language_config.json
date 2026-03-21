@@ -7,7 +7,29 @@
         "locale": "fi",
         "title": "Päivittäinen sanapeli",
         "description": "Arvaa sana maksimissaan 6 yrityksellä. Uusi sana on saatavilla joka päivä!",
-        "keywords": "Suomi, sanapeli, päivittäinen"
+        "keywords": "Suomi, sanapeli, päivittäinen",
+        "modes": {
+            "unlimited": {
+                "title": "Pelaa rajattomasti — ei odottelua",
+                "description": "Pelaa Wordlea suomeksi rajattomasti. Ei odottelua — uusi sana joka kerta."
+            },
+            "speed": {
+                "title": "Speed Streak — kilpaa kelloa vastaan",
+                "description": "Speed Streak: ratkaise niin monta suomenkielistä Wordle-sanaa kuin ehdit 5 minuutissa."
+            },
+            "dordle": {
+                "title": "Dordle — 2 ruudukkoa kerralla",
+                "description": "Pelaa Dordlea suomeksi. Ratkaise 2 Wordle-ruudukkoa kerralla 7 arvauksella."
+            },
+            "tridle": {
+                "title": "Tridle — 3 ruudukkoa kerralla",
+                "description": "Pelaa Tridlea suomeksi. Ratkaise 3 Wordle-ruudukkoa kerralla 8 arvauksella."
+            },
+            "quordle": {
+                "title": "Quordle — 4 ruudukkoa kerralla",
+                "description": "Pelaa Quordlea suomeksi. Ratkaise 4 Wordle-ruudukkoa kerralla 9 arvauksella."
+            }
+        }
     },
     "text": {
         "subheader": "Suomeksi",

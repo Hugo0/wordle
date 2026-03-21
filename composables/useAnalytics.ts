@@ -22,13 +22,11 @@ import { isStandalone, getOrCreateId } from '~/utils/storage';
 // Events to exclude from PostHog (currently none — kept as a kill-switch).
 const POSTHOG_SKIP_EVENTS = new Set<string>();
 
-// Only these 4 core events are sent to GA4 to keep the property slim.
-const GA4_CORE_EVENTS = new Set([
-    'game_start',
-    'game_complete',
-    'game_abandon',
-    'page_view_enhanced',
-]);
+// Only these 3 core events are sent to GA4 — bare event names only, no custom
+// params. GA4 is kept as a simple event counter + traffic source tracker.
+// All rich analytics (dimensions, user properties, funnels) live in PostHog.
+// Pageviews are handled by PostHog's built-in $pageview (capture_pageview: 'history_change').
+const GA4_CORE_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon']);
 
 // Default game mode - used as fallback across all game lifecycle events.
 const DEFAULT_GAME_MODE = 'daily';
@@ -100,6 +98,17 @@ interface PWAParams {
     source?: 'banner' | 'settings' | 'auto';
 }
 
+interface SpeedSessionCompleteParams {
+    language: string;
+    words_solved: number;
+    words_failed: number;
+    total_guesses: number;
+    score: number;
+    max_combo: number;
+    avg_time_per_word_seconds: number;
+    total_time_seconds: number;
+}
+
 export interface FrustrationState {
     totalInvalidAttempts: number;
     maxConsecutiveInvalid: number;
@@ -115,11 +124,23 @@ interface UserProperties {
 }
 
 // ============================================================================
+// MODULE-SCOPE STATE (shared across all useAnalytics() instances)
+// ============================================================================
+
+// Current beforeunload listener — replaced on each initAbandonTracking call
+// so SPA navigation doesn't accumulate stale listeners.
+let _abandonListener: (() => void) | null = null;
+
+// ============================================================================
 // COMPOSABLE
 // ============================================================================
 
 export function useAnalytics() {
-    const posthog = usePostHog();
+    // PostHog instance is resolved lazily on each call rather than captured
+    // eagerly at composable creation time. This avoids a timing issue where
+    // Pinia stores (which call useAnalytics() at setup time) can be created
+    // before the @posthog/nuxt plugin provides $posthog.
+    const getPostHog = () => usePostHog();
 
     // ========================================================================
     // FRUSTRATION STATE (per-session, kept in composable closure)
@@ -139,10 +160,11 @@ export function useAnalytics() {
     const track = (eventName: string, params?: Record<string, unknown>): void => {
         if (!import.meta.client) return;
 
-        // Google Analytics 4 (only core events)
+        // Google Analytics 4 — bare event names only, no custom params.
+        // GA4 custom dimensions are deprecated; PostHog handles all rich data.
         try {
             if (GA4_CORE_EVENTS.has(eventName) && typeof window.gtag === 'function') {
-                window.gtag('event', eventName, params);
+                window.gtag('event', eventName);
             }
         } catch {
             // Silently fail - analytics should never break the app
@@ -151,7 +173,7 @@ export function useAnalytics() {
         // PostHog (skip high-volume events to stay within free tier)
         try {
             if (!POSTHOG_SKIP_EVENTS.has(eventName)) {
-                posthog?.capture(eventName, params);
+                getPostHog()?.capture(eventName, params);
             }
         } catch {
             // Silently fail
@@ -254,7 +276,7 @@ export function useAnalytics() {
                 // localStorage unavailable
             }
 
-            posthog?.identify(clientId, {
+            getPostHog()?.identify(clientId, {
                 first_seen_date: firstSeenDate,
                 total_games_played: props.totalGames,
                 total_wins: props.totalWins,
@@ -276,7 +298,7 @@ export function useAnalytics() {
         if (!import.meta.client) return;
         try {
             const props = computeUserProperties(gameResults);
-            posthog?.setPersonProperties({
+            getPostHog()?.setPersonProperties({
                 total_games_played: props.totalGames,
                 total_wins: props.totalWins,
                 total_languages_played: props.languagesPlayed.length,
@@ -347,11 +369,17 @@ export function useAnalytics() {
      * Track each guess submission
      * Answers: How many guesses per game? Invalid word rate?
      */
-    const trackGuessSubmit = (language: string, attemptNumber: number, isValid: boolean): void => {
+    const trackGuessSubmit = (
+        language: string,
+        attemptNumber: number,
+        isValid: boolean,
+        gameMode?: string
+    ): void => {
         track('guess_submit', {
             language,
             attempt_number: attemptNumber,
             is_valid: isValid,
+            game_mode: gameMode ?? DEFAULT_GAME_MODE,
         });
     };
 
@@ -793,34 +821,58 @@ export function useAnalytics() {
     };
 
     // ========================================================================
+    // SPEED MODE EVENTS
+    // ========================================================================
+
+    /**
+     * Track speed session completion
+     * Answers: How do speed sessions perform? What scores are typical?
+     */
+    const trackSpeedSessionComplete = (params: SpeedSessionCompleteParams): void => {
+        track('speed_session_complete', {
+            ...params,
+            is_pwa: isStandalone(),
+        });
+    };
+
+    // ========================================================================
+    // MODE DISCOVERY EVENTS
+    // ========================================================================
+
+    /**
+     * Track game mode selection from homepage or picker
+     * Answers: Which modes are users discovering? What's the conversion from picker?
+     */
+    const trackModeSelected = (
+        mode: string,
+        source: 'homepage_card' | 'mode_picker' | 'sidebar'
+    ): void => {
+        track('mode_selected', {
+            mode,
+            source,
+        });
+    };
+
+    // ========================================================================
     // SESSION CONTEXT
     // ========================================================================
 
     /**
-     * Track page load with context
-     * Call once on page load to capture session context
+     * Register language as a PostHog super property on all future events.
+     * Call once per page load. Pageviews are tracked automatically by PostHog's
+     * built-in $pageview (capture_pageview: 'history_change' in nuxt.config.ts).
      */
-    const trackPageView = (language: string): void => {
-        // Register language as a super property on all future PostHog events
-        posthog?.register({ language });
-
-        track('page_view_enhanced', {
-            language,
-            is_pwa: isStandalone(),
-            platform: getPlatform(),
-            referrer: getReferrer(),
-        });
+    const registerLanguage = (language: string): void => {
+        getPostHog()?.register({ language });
     };
 
     // ========================================================================
     // INITIALIZATION HELPERS
     // ========================================================================
 
-    // Guards to prevent duplicate listener registration
-    let _abandonTrackingInit = false;
-
     /**
-     * Track game abandonment on page unload (idempotent)
+     * Track game abandonment on page unload.
+     * Replaces any previous listener on re-init (SPA navigation).
      */
     const initAbandonTracking = (
         getState: () => {
@@ -828,21 +880,29 @@ export function useAnalytics() {
             activeRow: number;
             gameOver: boolean;
             lastGuessValid: boolean;
+            game_mode?: string;
         }
     ): void => {
-        if (!import.meta.client || _abandonTrackingInit) return;
-        _abandonTrackingInit = true;
+        if (!import.meta.client) return;
 
-        window.addEventListener('beforeunload', () => {
+        // Remove previous listener if any (SPA navigation creates new pages)
+        if (_abandonListener) {
+            window.removeEventListener('beforeunload', _abandonListener);
+        }
+
+        _abandonListener = () => {
             const state = getState();
             if (!state.gameOver && state.activeRow > 0) {
                 trackGameAbandon({
                     language: state.language,
                     attempt_number: state.activeRow,
                     last_guess_valid: state.lastGuessValid,
+                    game_mode: state.game_mode,
                 });
             }
-        });
+        };
+
+        window.addEventListener('beforeunload', _abandonListener);
     };
 
     // ========================================================================
@@ -895,8 +955,12 @@ export function useAnalytics() {
         // Funnel
         trackHomepageView,
         trackReferralLanding,
+        // Speed mode
+        trackSpeedSessionComplete,
+        // Mode discovery
+        trackModeSelected,
         // Session
-        trackPageView,
+        registerLanguage,
         // Init
         initAbandonTracking,
         // PostHog user identification

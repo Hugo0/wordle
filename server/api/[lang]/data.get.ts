@@ -2,9 +2,14 @@
  * GET /api/[lang]/data — language game data.
  *
  * Returns word list, characters, config, keyboard, daily word info.
+ * For multi-board modes (?mode=dordle|tridle|quordle), also returns
+ * todays_words: an array of N distinct daily words.
  */
 import { loadAllData } from '../../utils/data-loader';
 import { buildLanguageSession } from '../../utils/language-builder';
+import { getWordsForDay } from '../../utils/word-selection';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import type { GameMode } from '~/utils/game-modes';
 
 export default defineEventHandler((event) => {
     const lang = getRouterParam(event, 'lang')!;
@@ -16,10 +21,11 @@ export default defineEventHandler((event) => {
 
     const query = getQuery(event);
     const layout = (query.layout as string) || undefined;
+    const mode = (query.mode as string) || 'classic';
 
     const session = buildLanguageSession(lang, layout);
 
-    return {
+    const response: Record<string, unknown> = {
         word_list: session.wordList,
         characters: session.characters,
         config: session.config,
@@ -31,4 +37,12 @@ export default defineEventHandler((event) => {
         keyboard_layout_name: session.keyboardLayoutName,
         key_diacritic_hints: session.keyDiacriticHints,
     };
+
+    // Multi-board modes: return N distinct daily words
+    const modeConfig = GAME_MODE_CONFIG[mode as GameMode];
+    if (modeConfig && modeConfig.boardCount > 1) {
+        response.todays_words = getWordsForDay(lang, session.todaysIdx, modeConfig.boardCount);
+    }
+
+    return response;
 });

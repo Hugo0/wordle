@@ -7,7 +7,29 @@
         "locale": "hr",
         "title": "Dnevna riječ",
         "description": "Pogodite skrivenu riječ u 6 pokušaja (ili manje). Nova zagonetka dostupna je svaki dan!",
-        "keywords": "hrvatski jezik, zagonetka, riječ, igra, igra, online, pogodite, svakodnevno"
+        "keywords": "hrvatski jezik, zagonetka, riječ, igra, igra, online, pogodite, svakodnevno",
+        "modes": {
+            "unlimited": {
+                "title": "Igraj neograničeno — bez čekanja",
+                "description": "Igraj Wordle na hrvatskom neograničeno. Bez čekanja — nova riječ svaki put."
+            },
+            "speed": {
+                "title": "Speed Streak — utrka s vremenom",
+                "description": "Speed Streak: riješi što više hrvatskih Wordle riječi u 5 minuta."
+            },
+            "dordle": {
+                "title": "Dordle — 2 ploče odjednom",
+                "description": "Igraj Dordle na hrvatskom. Riješi 2 Wordle ploče odjednom sa 7 pokušaja."
+            },
+            "tridle": {
+                "title": "Tridle — 3 ploče odjednom",
+                "description": "Igraj Tridle na hrvatskom. Riješi 3 Wordle ploče odjednom sa 8 pokušaja."
+            },
+            "quordle": {
+                "title": "Quordle — 4 ploče odjednom",
+                "description": "Igraj Quordle na hrvatskom. Riješi 4 Wordle ploče odjednom sa 9 pokušaja."
+            }
+        }
     },
     "text": {
         "subheader": "hrvatski jezik",

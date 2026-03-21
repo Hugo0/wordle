@@ -7,7 +7,29 @@
         "locale": "fur",
         "title": "The daily word game",
         "description": "Guess the hidden word in 6 tries (or less). A new puzzle is available each day!",
-        "keywords": "bèle fòòr, puzzle, word, play, game, online, guess, daily"
+        "keywords": "bèle fòòr, puzzle, word, play, game, online, guess, daily",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Fur. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Fur as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Fur. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Fur. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Fur. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "bèle fòòr",

@@ -64,6 +64,7 @@ export default defineNuxtConfig({
                 { rel: 'manifest', href: '/manifest.json' },
             ],
             meta: [
+                // Default og:image fallback — pages override with useSeoMeta({ ogImage })
                 { property: 'og:image', content: 'https://wordle.global/images/og-image.png' },
                 { property: 'og:image:width', content: '1200' },
                 { property: 'og:image:height', content: '630' },
@@ -77,7 +78,15 @@ export default defineNuxtConfig({
         manifest: {
             name: 'Wordle Global',
             short_name: 'Wordle',
-            description: 'Daily word puzzle game in 65+ languages',
+            // NOTE: Language count "80+" is hardcoded in several static contexts.
+            // When adding languages, update these locations:
+            //   - nuxt.config.ts (here, PWA manifest)
+            //   - public/manifest.json
+            //   - pages/accessibility.vue (meta + body text)
+            //   - pages/[lang]/*.vue noscript blocks (index, unlimited, dordle, tridle, quordle, speed)
+            //   - pages/[lang]/index.vue PWA install description
+            // The homepage (pages/index.vue) uses dynamic langCount from the API.
+            description: 'Daily word puzzle game in 80+ languages',
             start_url: '/',
             display: 'standalone',
             background_color: '#ffffff',

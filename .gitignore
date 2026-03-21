@@ -46,3 +46,12 @@ scripts/.freq_data
 # Curation review temp files
 scripts/.curation_review/
 .mcp.json
+
+# Archive (legacy assets, not tracked)
+archive/
+
+# Downloaded fonts for OG image scripts
+scripts/.fonts/
+
+# OG mode images: regenerate with `uv run python scripts/generate_mode_og_images.py --all`
+# Committed to git (~5MB) since Render build env lacks Python/uv.

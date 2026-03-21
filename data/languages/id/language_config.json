@@ -11,7 +11,29 @@
         "wordle_native": "Wordle",
         "title": "Permainan kata harian",
         "description": "Tebak kata tersembunyi dalam 6 percobaan (atau kurang). Teka-teki baru tersedia setiap hari!",
-        "keywords": "Indonesia, teka-teki, kata, main, permainan, online, tebak, harian"
+        "keywords": "Indonesia, teka-teki, kata, main, permainan, online, tebak, harian",
+        "modes": {
+            "unlimited": {
+                "title": "Main tanpa batas — tanpa menunggu",
+                "description": "Main Wordle bahasa Indonesia tanpa batas. Tanpa menunggu — kata baru setiap kali."
+            },
+            "speed": {
+                "title": "Speed Streak — kejar waktu",
+                "description": "Speed Streak: selesaikan sebanyak mungkin kata Wordle bahasa Indonesia dalam 5 menit."
+            },
+            "dordle": {
+                "title": "Dordle — 2 papan sekaligus",
+                "description": "Main Dordle bahasa Indonesia. Selesaikan 2 papan Wordle sekaligus dengan 7 tebakan."
+            },
+            "tridle": {
+                "title": "Tridle — 3 papan sekaligus",
+                "description": "Main Tridle bahasa Indonesia. Selesaikan 3 papan Wordle sekaligus dengan 8 tebakan."
+            },
+            "quordle": {
+                "title": "Quordle — 4 papan sekaligus",
+                "description": "Main Quordle bahasa Indonesia. Selesaikan 4 papan Wordle sekaligus dengan 9 tebakan."
+            }
+        }
     },
     "text": {
         "subheader": "Bahasa Indonesia",

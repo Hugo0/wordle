@@ -295,3 +295,43 @@ Words are guessable but won't be selected as the daily word.
    (needs email service + subscription flow) but powerful for retention.
 9. **P4 — Homepage/new tab extension** — Chrome extension that shows Wordle on new tab. Niche
    but high engagement for power users.
+
+---
+
+# Phase 1 Audit — Remaining Items (2026-03-20)
+
+## Medium Priority (should fix before production)
+
+### Multi-board missing analytics + community stats
+**Files:** `stores/game.ts` — `handleMultiBoardWon()`, `handleMultiBoardLost()`
+**Issue:** Multi-board game completions don't fire `analytics.trackGameComplete()`, `submitWordStats()`, or `analytics.trackStreakMilestone()`. Classic single-board handlers do all of these.
+**Impact:** No analytics data for dordle/tridle/quordle games. No community percentile for multi-board.
+**Fix:** Add analytics calls to multi-board handlers (needs separate event schema for board count, per-board results).
+
+### Hardcoded "6" in community percentile + word stats
+**Files:** `utils/stats.ts:27,31`, `server/utils/word-stats.ts:98`
+**Issue:** `calculateCommunityPercentile` rejects attempts > 6. Server-side word stats recording ignores attempts > 6.
+**Impact:** Non-classic modes (dordle=7, tridle=8, quordle=9, semantic=10) can't submit/display community stats.
+**Fix:** Pass `maxGuesses` from `GameConfig` to both functions.
+
+### Dordle/tridle/quordle pages are 95% identical
+**Files:** `pages/[lang]/dordle.vue`, `pages/[lang]/tridle.vue`, `pages/[lang]/quordle.vue`
+**Issue:** ~90 lines each, differing only in mode string and SEO text.
+**Fix:** Consolidate into `pages/[lang]/[mode].vue` dynamic route, or extract shared template into a thin wrapper.
+
+## Low Priority (cleanup)
+
+### English-only strings in speed/multi-board UI
+**Files:** StatsModal, SpeedResults, SpeedStatsStrip, MultiBoardLayout, AppSidebar
+**Issue:** Strings like "Solved in N guesses", "Board 1", "Tap to expand", "Speed Streak", sidebar labels are hardcoded English.
+**Fix:** Route through `language_config.json` UI translations (i18n). Phase 2 work.
+
+### Unused exports in game-modes.ts
+**Exports:** `SocialMode`, `PlayType`, `GameModeDefinition`
+**Issue:** Defined for future use (party mode, etc.) but not currently imported.
+**Fix:** Keep — they're part of the planned architecture.
+
+### Unused helpers in storage.ts
+**Exports:** `removeLocal`, `readBool`, `writeBool`, `readJson`, `writeJson`, `dismissWithCooldown`, `isDismissedWithCooldown`
+**Issue:** Pre-existing dead code, not from our refactor.
+**Fix:** Low priority cleanup.

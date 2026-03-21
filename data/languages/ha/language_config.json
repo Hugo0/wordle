@@ -8,7 +8,29 @@
         "locale": "ha",
         "title": "Wasan kalma na yau da kullum",
         "description": "Ka gano kalmar da aka boye cikin kokari 6 (ko kasa). Sabuwar wasa kowace rana!",
-        "keywords": "Hausa, wasa, kalma, buga, online, gano, yau da kullum"
+        "keywords": "Hausa, wasa, kalma, buga, online, gano, yau da kullum",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Hausa. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Hausa as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Hausa. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Hausa. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Hausa. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Hausa",

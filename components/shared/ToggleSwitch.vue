@@ -9,7 +9,8 @@
             @change="$emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
         />
         <div
-            class="w-11 h-6 bg-neutral-300 dark:bg-neutral-600 rounded-full peer peer-checked:bg-green-500 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+            class="w-11 h-6 rounded-full peer transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+            style="background-color: var(--color-muted-soft)"
         />
     </label>
 </template>
@@ -21,3 +22,9 @@ defineProps<{
 }>();
 defineEmits<{ 'update:modelValue': [value: boolean] }>();
 </script>
+
+<style scoped>
+.peer:checked + div {
+    background-color: var(--color-correct) !important;
+}
+</style>

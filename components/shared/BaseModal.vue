@@ -7,23 +7,17 @@
         class="fixed top-10 left-0 w-full h-full items-center flex"
         :class="zClass"
     >
-        <div
-            class="modal-animate mx-auto w-full border-2 border-slate-200 dark:border-neutral-600 rounded-lg shadow-lg"
-            :class="sizeClass"
-        >
-            <div
-                class="bg-white dark:bg-neutral-800 rounded-lg relative flex flex-col w-full outline-none"
-                :class="paddingClass"
-            >
+        <div class="modal-animate mx-auto w-full border border-rule shadow-lg" :class="sizeClass">
+            <div class="bg-paper relative flex flex-col w-full outline-none" :class="paddingClass">
                 <div class="relative">
                     <!-- Close (X) button -->
                     <button
                         type="button"
                         aria-label="Close"
-                        class="absolute top-0 right-0 p-2 ml-auto z-50 text-3xl leading-none text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
+                        class="absolute top-0 right-0 p-2 ml-auto z-50 text-muted hover:text-ink transition-colors"
                         @click="$emit('close')"
                     >
-                        &times;
+                        <X :size="20" />
                     </button>
 
                     <slot />
@@ -34,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+import { X } from 'lucide-vue-next';
 const props = withDefaults(
     defineProps<{
         visible: boolean;

@@ -2,76 +2,45 @@
 /**
  * Stats — /stats
  *
- * Two-tab layout: "Languages" (server data) and "My Stats" (localStorage).
- * Matches legacy stats.html template.
+ * Personal stats dashboard showing the user's play history across all game modes.
+ * Uses the editorial design system (Fraunces + Source Sans 3 + design tokens).
+ * All data comes from localStorage game_results — no server data.
  */
-
-const { data: stats } = await useFetch('/api/stats');
-
-const title = computed(() =>
-    stats.value
-        ? `Wordle Global Stats \u2014 ${stats.value.total_languages} Languages, ${stats.value.total_words.toLocaleString()} Words`
-        : 'Wordle Global Stats'
-);
-const description = computed(() =>
-    stats.value
-        ? `Wordle Global statistics: ${stats.value.total_languages} languages, ${stats.value.total_words.toLocaleString()} words, and ${stats.value.total_puzzles.toLocaleString()} daily puzzles served. See word counts, community win rates, and more.`
-        : 'Wordle Global statistics across all languages.'
-);
+import {
+    BarChart2,
+    Flame,
+    Trophy,
+    Target,
+    Square,
+    Infinity,
+    Zap,
+    Columns2,
+    Columns3,
+    Grid2x2,
+    ArrowLeft,
+    ChevronRight,
+} from 'lucide-vue-next';
+import { isClassicDailyStatsKey, GAME_MODE_CONFIG } from '~/utils/game-modes';
+import type { GameMode } from '~/utils/game-modes';
+import { createEmptyDistribution } from '~/utils/types';
 
 useSeoMeta({
-    title,
-    description,
-    ogTitle: 'Wordle Global Stats',
-    ogDescription: computed(() =>
-        stats.value
-            ? `${stats.value.total_languages} languages, ${stats.value.total_words.toLocaleString()} words. Free daily word game in dozens of languages.`
-            : 'Wordle Global statistics.'
-    ),
+    title: 'Your Stats — Wordle Global',
+    description: 'Your personal Wordle statistics across all languages and game modes.',
+    ogTitle: 'Your Stats — Wordle Global',
     ogUrl: 'https://wordle.global/stats',
     ogType: 'website',
     twitterCard: 'summary',
-    twitterTitle: 'Wordle Global Stats',
-    twitterDescription: computed(() =>
-        stats.value
-            ? `${stats.value.total_languages} languages, ${stats.value.total_words.toLocaleString()} words. Free daily word game in dozens of languages.`
-            : 'Wordle Global statistics.'
-    ),
 });
 
 useHead({
+    htmlAttrs: { lang: 'en' },
     link: [{ rel: 'canonical', href: 'https://wordle.global/stats' }],
 });
 
-// Tab switching
-const activeTab = ref<'languages' | 'my-stats'>('languages');
-
-function switchTab(tab: 'languages' | 'my-stats') {
-    activeTab.value = tab;
-    if (tab === 'my-stats') loadMyStats();
-}
-
-const tabClasses = (tab: string) =>
-    tab === activeTab.value
-        ? 'flex-1 py-2 text-sm font-medium transition-colors border-b-2 text-neutral-900 dark:text-white border-neutral-800 dark:border-neutral-200'
-        : 'flex-1 py-2 text-sm font-medium transition-colors border-b-2 text-neutral-500 dark:text-neutral-400 border-transparent hover:text-neutral-700 dark:hover:text-neutral-300';
-
-// Color classes for daily word count
-function dailyCountClass(n: number): string {
-    if (n >= 2000) return 'text-green-600 dark:text-green-400';
-    if (n >= 1000) return 'text-yellow-600 dark:text-yellow-400';
-    if (n > 0) return 'text-orange-500';
-    return 'text-neutral-300 dark:text-neutral-600';
-}
-
-function winRateClass(rate: number | null): string {
-    if (rate === null) return 'text-neutral-300 dark:text-neutral-600';
-    if (rate >= 70) return 'text-green-500';
-    if (rate >= 50) return 'text-yellow-500';
-    return 'text-red-500';
-}
-
-// ========== My Stats (localStorage) ==========
+// =========================================================================
+// Types
+// =========================================================================
 
 interface PerLangStats {
     code: string;
@@ -79,46 +48,93 @@ interface PerLangStats {
     nameNative: string;
     games: number;
     wins: number;
-    losses: number;
     winPct: number;
     avgAttempts: string;
     streak: number;
     best: number;
 }
 
-const myStatsLoaded = ref(false);
-const myStatsEmpty = ref(false);
-const myTotalGames = ref(0);
-const myWinRate = ref('0%');
-const myCurrentStreak = ref(0);
-const myLanguagesWon = ref(0);
-const myAvgAttempts = ref('-');
-const myBestStreak = ref(0);
-const myDist = ref<Record<number, number>>({ 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 });
-const myPerLang = ref<PerLangStats[]>([]);
+interface ModeStats {
+    mode: GameMode;
+    label: string;
+    icon: typeof Square;
+    games: number;
+    wins: number;
+    winPct: number;
+    avgAttempts: string;
+    streak: number;
+    bestStreak: number;
+    distribution: Record<number, number>;
+    maxGuesses: number;
+}
 
-function loadMyStats() {
-    if (myStatsLoaded.value) return;
-    myStatsLoaded.value = true;
+const MODE_ICONS: Record<string, typeof Square> = {
+    classic: Square,
+    unlimited: Infinity,
+    speed: Zap,
+    dordle: Columns2,
+    tridle: Columns3,
+    quordle: Grid2x2,
+};
 
-    let raw: string | null = null;
-    try {
-        raw = localStorage.getItem('game_results');
-    } catch {
-        // private browsing
-    }
-    const gameResults: Record<
-        string,
-        Array<{ won: boolean; attempts: string | number; date: string }>
-    > = raw ? JSON.parse(raw) : {};
-    const langCodes = Object.keys(gameResults);
+// =========================================================================
+// State — derived from the stats store (single source of truth)
+// =========================================================================
 
-    if (langCodes.length === 0) {
-        myStatsEmpty.value = true;
+const statsStore = useStatsStore();
+const loaded = ref(false);
+const empty = ref(false);
+
+// Classic daily (from store's calculateTotalStats)
+const totalGames = ref(0);
+const overallWinRate = ref(0);
+const currentStreak = ref(0);
+const bestStreak = ref(0);
+const languagesPlayed = ref(0);
+const overallDist = ref<Record<number, number>>(createEmptyDistribution(6));
+
+// Per-language (classic daily)
+const perLang = ref<PerLangStats[]>([]);
+
+// Per-mode (all modes that have results)
+const modeStats = ref<ModeStats[]>([]);
+
+// =========================================================================
+// Data loading — uses the stats store instead of reimplementing calculations
+// =========================================================================
+
+function loadStats() {
+    if (loaded.value) return;
+    loaded.value = true;
+
+    // Load all game results into the store
+    statsStore.loadGameResults();
+
+    const allKeys = Object.keys(statsStore.gameResults);
+    if (allKeys.length === 0) {
+        empty.value = true;
         return;
     }
 
-    // Language name cache
+    // --- Classic daily stats (use store's calculateTotalStats) ---
+    const total = statsStore.calculateTotalStats();
+
+    totalGames.value = total.total_games;
+    overallWinRate.value = total.total_games > 0 ? Math.round(total.total_win_percentage) : 0;
+    currentStreak.value = total.current_overall_streak;
+    bestStreak.value = total.longest_overall_streak;
+    languagesPlayed.value = total.languages_won.length;
+
+    // Build overall distribution from per-language stats
+    const dist = createEmptyDistribution(6);
+    for (const langStats of Object.values(total.game_stats)) {
+        for (let n = 1; n <= 6; n++) {
+            dist[n] = (dist[n] || 0) + (langStats.guessDistribution[n] || 0);
+        }
+    }
+    overallDist.value = dist;
+
+    // Language name cache (populated by homepage)
     let langCache: Record<string, { language_name?: string; language_name_native?: string }> = {};
     try {
         langCache = JSON.parse(localStorage.getItem('languages_cache') || '{}');
@@ -126,544 +142,436 @@ function loadMyStats() {
         // ignore
     }
 
-    let totalGames = 0;
-    let totalWins = 0;
-    let totalAttempts = 0;
-    let longestOverallStreak = 0;
-    let currentOverallStreak = 0;
-    let languagesWon = 0;
-    const dist: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-    const perLang: PerLangStats[] = [];
+    // Per-language breakdown (use store's per-key stats)
+    const classicKeys = allKeys.filter(isClassicDailyStatsKey);
+    const langs: PerLangStats[] = [];
+    for (const lc of classicKeys) {
+        const langStats = total.game_stats[lc];
+        if (!langStats || langStats.n_games === 0) continue;
 
-    // All results sorted by date for overall streak
-    const allResults: Array<{ won: boolean; attempts: string | number; date: string }> = [];
-    for (const lc of langCodes) {
-        for (const r of gameResults[lc]!) {
-            allResults.push(r);
-        }
-    }
-    allResults.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-
-    for (const r of allResults) {
-        if (r.won) {
-            currentOverallStreak++;
-            if (currentOverallStreak > longestOverallStreak)
-                longestOverallStreak = currentOverallStreak;
-            const att = parseInt(String(r.attempts), 10);
-            if (att >= 1 && att <= 6) {
-                dist[att]!++;
-                totalAttempts += att;
-            }
-            totalWins++;
-        } else {
-            currentOverallStreak = 0;
-        }
-        totalGames++;
-    }
-
-    for (const lc of langCodes) {
-        const results = gameResults[lc]!;
-        let wins = 0;
-        let losses = 0;
-        let attempts = 0;
-        let streak = 0;
-        let best = 0;
-        for (const r of results) {
-            if (r.won) {
-                wins++;
-                streak++;
-                if (streak > best) best = streak;
-                const att = parseInt(String(r.attempts), 10);
-                if (!isNaN(att)) attempts += att;
-            } else {
-                losses++;
-                streak = 0;
-            }
-        }
-        if (wins > 0) languagesWon++;
-
-        const langName = langCache[lc]?.language_name || lc;
-        const langNameNative = langCache[lc]?.language_name_native || '';
-
-        perLang.push({
+        langs.push({
             code: lc,
-            name: langName,
-            nameNative: langNameNative,
-            games: wins + losses,
-            wins,
-            losses,
-            winPct: wins + losses > 0 ? Math.round((wins / (wins + losses)) * 100) : 0,
-            avgAttempts: wins > 0 ? (attempts / wins).toFixed(1) : '-',
-            streak,
-            best,
+            name: langCache[lc]?.language_name || lc,
+            nameNative: langCache[lc]?.language_name_native || '',
+            games: langStats.n_games,
+            wins: langStats.n_wins,
+            winPct: Math.round(langStats.win_percentage),
+            avgAttempts: langStats.n_wins > 0 ? langStats.avg_attempts.toFixed(1) : '-',
+            streak: langStats.current_streak,
+            best: langStats.longest_streak,
         });
     }
+    langs.sort((a, b) => b.games - a.games);
+    perLang.value = langs;
 
-    perLang.sort((a, b) => b.games - a.games);
+    // --- Per-mode stats (aggregate results by mode) ---
+    const modeMap: Record<string, { mode: GameMode; keys: string[] }> = {};
+    for (const key of allKeys) {
+        let mode: GameMode;
+        if (isClassicDailyStatsKey(key)) {
+            mode = 'classic';
+        } else {
+            const parts = key.split('_');
+            const modePart = parts[1] as GameMode;
+            if (!GAME_MODE_CONFIG[modePart]) continue;
+            mode = modePart;
+        }
+        if (!modeMap[mode]) modeMap[mode] = { mode, keys: [] };
+        modeMap[mode]!.keys.push(key);
+    }
 
-    myTotalGames.value = totalGames;
-    myWinRate.value = totalGames > 0 ? Math.round((totalWins / totalGames) * 100) + '%' : '0%';
-    myCurrentStreak.value = currentOverallStreak;
-    myLanguagesWon.value = languagesWon;
-    myAvgAttempts.value = totalWins > 0 ? (totalAttempts / totalWins).toFixed(1) : '-';
-    myBestStreak.value = longestOverallStreak;
-    myDist.value = dist;
-    myPerLang.value = perLang;
+    const modes: ModeStats[] = [];
+    for (const [mode, data] of Object.entries(modeMap)) {
+        const gm = mode as GameMode;
+        const def = GAME_MODE_CONFIG[gm];
+        if (!def) continue;
+
+        // Calculate stats per mode by aggregating all keys for that mode
+        let totalWins = 0;
+        let totalLosses = 0;
+        let totalAttempts = 0;
+        let modeStreak = 0;
+        let modeBestStreak = 0;
+        const modeDist = createEmptyDistribution(def.maxGuesses);
+
+        for (const key of data.keys) {
+            const results = statsStore.gameResults[key] || [];
+            for (const r of results) {
+                const att = parseInt(String(r.attempts), 10);
+                if (r.won) {
+                    totalWins++;
+                    modeStreak++;
+                    if (modeStreak > modeBestStreak) modeBestStreak = modeStreak;
+                    if (att >= 1 && att <= def.maxGuesses) {
+                        modeDist[att] = (modeDist[att] || 0) + 1;
+                        totalAttempts += att;
+                    }
+                } else {
+                    totalLosses++;
+                    modeStreak = 0;
+                }
+            }
+        }
+
+        const games = totalWins + totalLosses;
+        if (games === 0) continue;
+
+        modes.push({
+            mode: gm,
+            label: def.label,
+            icon: MODE_ICONS[gm] || Square,
+            games,
+            wins: totalWins,
+            winPct: Math.round((totalWins / games) * 100),
+            avgAttempts: totalWins > 0 ? (totalAttempts / totalWins).toFixed(1) : '-',
+            streak: modeStreak,
+            bestStreak: modeBestStreak,
+            distribution: modeDist,
+            maxGuesses: def.maxGuesses,
+        });
+    }
+    modes.sort((a, b) => b.games - a.games);
+    modeStats.value = modes;
 }
 
-const myMaxDist = computed(() => Math.max(...Object.values(myDist.value), 1));
+onMounted(() => loadStats());
 
-function myDistPct(n: number): string {
-    const count = myDist.value[n] || 0;
-    const pct = count > 0 ? Math.max((count / myMaxDist.value) * 100, 8) : 0;
+// =========================================================================
+// Helpers
+// =========================================================================
+
+function distBarWidth(dist: Record<number, number>, n: number): string {
+    const count = dist[n] || 0;
+    const max = Math.max(...Object.values(dist), 1);
+    const pct = count > 0 ? Math.max((count / max) * 100, 8) : 0;
     return `${pct}%`;
 }
+
+// All-modes aggregated stats
+const allModesGames = computed(() => modeStats.value.reduce((sum, m) => sum + m.games, 0));
+const allModesWins = computed(() => modeStats.value.reduce((sum, m) => sum + m.wins, 0));
+const allModesWinRate = computed(() =>
+    allModesGames.value > 0 ? Math.round((allModesWins.value / allModesGames.value) * 100) : 0
+);
+const modesPlayed = computed(() => modeStats.value.filter((m) => m.games > 0).length);
+
+const modeOrder: GameMode[] = ['classic', 'dordle', 'tridle', 'quordle', 'unlimited', 'speed'];
+const sortedModes = computed(() =>
+    [...modeStats.value].sort((a, b) => modeOrder.indexOf(a.mode) - modeOrder.indexOf(b.mode))
+);
 </script>
 
 <template>
-    <div
-        class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors"
-    >
-        <div class="max-w-4xl mx-auto px-4 py-6">
+    <div class="min-h-screen bg-paper text-ink transition-colors">
+        <div class="max-w-[560px] mx-auto px-4 pt-6 pb-12">
             <!-- Header -->
-            <header class="text-center mb-6">
+            <header class="mb-10">
                 <NuxtLink
                     to="/"
-                    class="text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                    class="inline-flex items-center gap-1 text-sm text-muted hover:text-ink transition-colors mb-4"
                 >
-                    &larr; Home
+                    <ArrowLeft :size="14" />
+                    Home
                 </NuxtLink>
-                <h1 class="text-2xl font-bold mt-2">Wordle Global Stats</h1>
-                <p v-if="stats" class="text-sm text-neutral-500 dark:text-neutral-400">
-                    The free daily word game in {{ stats.total_languages }} languages
-                </p>
+                <h1 class="heading-display text-[32px] sm:text-[40px] text-ink">Your Stats</h1>
+                <div class="editorial-rule-accent w-[60px] mt-3" />
             </header>
 
-            <!-- Tab bar -->
-            <div
-                class="flex border-b border-neutral-200 dark:border-neutral-700 mb-4 max-w-lg mx-auto"
-                role="tablist"
-            >
-                <button
-                    role="tab"
-                    :aria-selected="activeTab === 'my-stats'"
-                    aria-controls="panel-my-stats"
-                    :class="tabClasses('my-stats')"
-                    @click="switchTab('my-stats')"
-                >
-                    My Stats
-                </button>
-                <button
-                    role="tab"
-                    :aria-selected="activeTab === 'languages'"
-                    aria-controls="panel-languages"
-                    :class="tabClasses('languages')"
-                    @click="switchTab('languages')"
-                >
-                    Languages
-                </button>
-            </div>
-
-            <!-- ===== MY STATS TAB ===== -->
-            <div
-                v-show="activeTab === 'my-stats'"
-                id="panel-my-stats"
-                role="tabpanel"
-                aria-labelledby="tab-my-stats"
-            >
-                <div class="max-w-lg mx-auto">
-                    <!-- Empty state -->
-                    <div v-if="myStatsEmpty" class="text-center py-8">
-                        <p class="text-neutral-500 dark:text-neutral-400 mb-4">
-                            You haven't played any games yet.
-                        </p>
-                        <NuxtLink
-                            to="/"
-                            class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors"
-                        >
-                            Pick a Language
-                        </NuxtLink>
-                    </div>
-
-                    <!-- Stats content -->
-                    <div v-else-if="myStatsLoaded && !myStatsEmpty">
-                        <!-- Summary grid -->
-                        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                                <div>
-                                    <p class="text-xl font-bold">
-                                        {{ myTotalGames.toLocaleString() }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Games Played
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">{{ myWinRate }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Win Rate
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">
-                                        {{ myCurrentStreak > 0 ? '\uD83D\uDD25' : ''
-                                        }}{{ myCurrentStreak }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Current Streak
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">{{ myLanguagesWon }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Languages Won
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Secondary row -->
-                            <div
-                                class="grid grid-cols-2 gap-3 text-center mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-700"
-                            >
-                                <div>
-                                    <p class="text-lg font-bold">{{ myAvgAttempts }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Avg Attempts
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-lg font-bold">{{ myBestStreak }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Best Streak
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Guess distribution -->
-                        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                            <h2
-                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2 text-center"
-                            >
-                                Guess Distribution
-                            </h2>
-                            <div class="space-y-0.5">
-                                <div v-for="n in 6" :key="n" class="flex items-center gap-1.5">
-                                    <span class="w-3 text-xs font-medium text-neutral-500">{{
-                                        n
-                                    }}</span>
-                                    <div
-                                        class="flex-1 h-5 bg-gray-100 dark:bg-neutral-700 rounded-sm overflow-hidden"
-                                    >
-                                        <div
-                                            class="h-full flex items-center justify-end px-1.5 text-[10px] font-bold text-white rounded-sm bg-green-500"
-                                            :style="{ width: myDistPct(n) }"
-                                        >
-                                            {{ myDist[n] || 0 }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Per-language list -->
-                        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                            <h2
-                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3"
-                            >
-                                Your Languages
-                            </h2>
-                            <div class="space-y-2 max-h-80 overflow-y-auto">
-                                <div
-                                    v-for="l in myPerLang"
-                                    :key="l.code"
-                                    class="flex items-center justify-between py-2 px-3 bg-white dark:bg-neutral-700/50 rounded-lg"
-                                >
-                                    <div>
-                                        <NuxtLink
-                                            :to="`/${l.code}`"
-                                            class="font-medium text-sm text-blue-600 dark:text-blue-400 hover:underline"
-                                        >
-                                            {{ l.name }}
-                                        </NuxtLink>
-                                        <span
-                                            v-if="l.nameNative && l.nameNative !== l.name"
-                                            class="text-xs text-neutral-400 ml-1"
-                                        >
-                                            {{ l.nameNative }}
-                                        </span>
-                                    </div>
-                                    <div
-                                        class="flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400"
-                                    >
-                                        <span>{{ l.games }} games</span>
-                                        <span>{{ l.winPct }}%</span>
-                                        <span>{{ l.avgAttempts }} avg</span>
-                                        <span v-if="l.streak > 0" class="text-orange-500 font-bold">
-                                            &#x1F525;{{ l.streak }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== LANGUAGES TAB ===== -->
-            <div
-                v-show="activeTab === 'languages'"
-                id="panel-languages"
-                role="tabpanel"
-                aria-labelledby="tab-languages"
-            >
-                <template v-if="stats">
-                    <!-- Global Stats overview -->
-                    <div class="max-w-lg mx-auto">
-                        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                            <h2
-                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center"
-                            >
-                                Overview
-                            </h2>
-                            <div class="grid grid-cols-3 gap-3 text-center">
-                                <div>
-                                    <p class="text-xl font-bold text-green-500">
-                                        {{ stats.total_languages }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Languages
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">
-                                        {{ stats.total_words.toLocaleString() }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Total Words
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">
-                                        {{ stats.total_daily_words.toLocaleString() }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Daily Word Pool
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">{{ stats.n_curated }}</p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Curated Languages
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">
-                                        {{ stats.todays_idx.toLocaleString() }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Days Running
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-xl font-bold">
-                                        {{ stats.total_puzzles.toLocaleString() }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Puzzles Served
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Community Stats -->
-                        <div
-                            v-if="stats.global_plays > 0"
-                            class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4"
-                        >
-                            <h2
-                                class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1 text-center"
-                            >
-                                Community Stats
-                            </h2>
-                            <p
-                                v-if="stats.stats_since_date"
-                                class="text-[10px] text-neutral-400 dark:text-neutral-500 text-center mb-3"
-                            >
-                                Since {{ stats.stats_since_date }}
-                            </p>
-                            <div class="grid grid-cols-3 gap-2 text-center">
-                                <div>
-                                    <p class="text-lg font-bold">
-                                        {{ stats.global_plays.toLocaleString() }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Games Played
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-lg font-bold">
-                                        {{ stats.global_wins.toLocaleString() }}
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Games Won
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="text-lg font-bold text-green-500">
-                                        {{ stats.global_win_rate }}%
-                                    </p>
-                                    <p class="text-[10px] text-neutral-500 dark:text-neutral-400">
-                                        Win Rate
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Language table -->
-                    <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-4">
-                        <h2
-                            class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3 text-center"
-                        >
-                            All Languages ({{ stats.total_languages }})
-                        </h2>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-xs">
-                                <thead>
-                                    <tr
-                                        class="text-left text-neutral-400 dark:text-neutral-500 border-b border-neutral-200 dark:border-neutral-700"
-                                    >
-                                        <th class="py-2 pr-2 font-medium">Language</th>
-                                        <th class="py-2 px-2 font-medium text-right">
-                                            Daily Words
-                                        </th>
-                                        <th class="py-2 px-2 font-medium text-right">
-                                            Total Words
-                                        </th>
-                                        <th
-                                            v-if="stats.global_plays > 0"
-                                            class="py-2 px-2 font-medium text-right"
-                                        >
-                                            Plays
-                                        </th>
-                                        <th
-                                            v-if="stats.global_plays > 0"
-                                            class="py-2 pl-2 font-medium text-right"
-                                        >
-                                            Win %
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody
-                                    class="divide-y divide-neutral-100 dark:divide-neutral-700/50"
-                                >
-                                    <tr
-                                        v-for="lang in stats.lang_stats"
-                                        :key="lang.code"
-                                        class="hover:bg-neutral-100 dark:hover:bg-neutral-700/50"
-                                    >
-                                        <td class="py-1.5 pr-2">
-                                            <NuxtLink
-                                                :to="`/${lang.code}/words`"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                                            >
-                                                {{ lang.name }}
-                                            </NuxtLink>
-                                            <span
-                                                v-if="
-                                                    lang.name_native &&
-                                                    lang.name_native !== lang.name
-                                                "
-                                                class="text-neutral-400 dark:text-neutral-500 ml-1"
-                                            >
-                                                {{ lang.name_native }}
-                                            </span>
-                                            <span
-                                                v-if="lang.n_daily > 0"
-                                                class="ml-1 text-[9px] bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-1 rounded"
-                                            >
-                                                curated
-                                            </span>
-                                        </td>
-                                        <td
-                                            :class="[
-                                                'py-1.5 px-2 text-right tabular-nums',
-                                                dailyCountClass(lang.n_daily),
-                                            ]"
-                                        >
-                                            <template v-if="lang.n_daily > 0">
-                                                {{ lang.n_daily.toLocaleString() }}
-                                            </template>
-                                            <template v-else>&mdash;</template>
-                                        </td>
-                                        <td
-                                            class="py-1.5 px-2 text-right tabular-nums text-neutral-500 dark:text-neutral-400"
-                                        >
-                                            {{ lang.n_words.toLocaleString() }}
-                                        </td>
-                                        <td
-                                            v-if="stats.global_plays > 0"
-                                            class="py-1.5 px-2 text-right tabular-nums text-neutral-400 dark:text-neutral-500"
-                                        >
-                                            <template v-if="lang.total_plays > 0">
-                                                {{ lang.total_plays.toLocaleString() }}
-                                            </template>
-                                            <template v-else>&mdash;</template>
-                                        </td>
-                                        <td
-                                            v-if="stats.global_plays > 0"
-                                            :class="[
-                                                'py-1.5 pl-2 text-right tabular-nums',
-                                                winRateClass(lang.win_rate),
-                                            ]"
-                                        >
-                                            <template v-if="lang.win_rate !== null">
-                                                {{ lang.win_rate }}%
-                                            </template>
-                                            <template v-else>&mdash;</template>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div
-                            class="mt-3 text-[10px] text-neutral-400 dark:text-neutral-500 space-y-0.5"
-                        >
-                            <p>
-                                <strong>Daily Words</strong> = curated daily word pool.
-                                <strong>Total Words</strong> = all valid 5-letter words (including
-                                guesses). Color:
-                                <span class="text-green-600 dark:text-green-400">green</span> =
-                                2,000+,
-                                <span class="text-yellow-600 dark:text-yellow-400">yellow</span> =
-                                1,000+, <span class="text-orange-500">orange</span> = &lt;1,000,
-                                <span class="text-neutral-400">&mdash;</span> = not yet curated.
-                            </p>
-                        </div>
-                    </div>
-                </template>
-            </div>
-
-            <!-- CTA -->
-            <div class="text-center mb-4">
+            <!-- Empty state -->
+            <div v-if="empty" class="text-center py-16">
+                <BarChart2 :size="40" class="text-muted mx-auto mb-4" />
+                <p class="text-muted mb-6">No games played yet.</p>
                 <NuxtLink
                     to="/"
-                    class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors"
+                    class="inline-block py-3 px-8 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
                 >
-                    Play Wordle
+                    Start Playing
                 </NuxtLink>
             </div>
 
-            <p class="text-center text-xs text-neutral-400">
-                <a
-                    href="https://github.com/Hugo0/wordle"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:underline"
+            <template v-else-if="loaded">
+                <!-- ═══ Overview (all modes combined) ═══ -->
+                <section class="mb-10">
+                    <div class="mono-label mb-4">Overview</div>
+
+                    <!-- Hero stats row -->
+                    <div
+                        class="grid grid-cols-4 border border-rule"
+                        style="background: var(--color-rule); gap: 1px"
+                    >
+                        <div class="bg-paper text-center" style="padding: 20px 8px">
+                            <div
+                                class="font-display font-bold text-ink"
+                                style="
+                                    font-size: 28px;
+                                    font-variation-settings: 'opsz' 72;
+                                    line-height: 1;
+                                "
+                            >
+                                {{ allModesGames }}
+                            </div>
+                            <div class="mono-label mt-1.5">Played</div>
+                        </div>
+                        <div class="bg-paper text-center" style="padding: 20px 8px">
+                            <div
+                                class="font-display font-bold"
+                                :class="allModesWinRate >= 50 ? 'text-correct' : 'text-ink'"
+                                style="
+                                    font-size: 28px;
+                                    font-variation-settings: 'opsz' 72;
+                                    line-height: 1;
+                                "
+                            >
+                                {{ allModesWinRate }}%
+                            </div>
+                            <div class="mono-label mt-1.5">Win Rate</div>
+                        </div>
+                        <div class="bg-paper text-center" style="padding: 20px 8px">
+                            <div
+                                class="font-display font-bold text-ink"
+                                style="
+                                    font-size: 28px;
+                                    font-variation-settings: 'opsz' 72;
+                                    line-height: 1;
+                                "
+                            >
+                                {{ modesPlayed }}
+                            </div>
+                            <div class="mono-label mt-1.5">Modes</div>
+                        </div>
+                        <div class="bg-paper text-center" style="padding: 20px 8px">
+                            <div
+                                class="font-display font-bold text-ink"
+                                style="
+                                    font-size: 28px;
+                                    font-variation-settings: 'opsz' 72;
+                                    line-height: 1;
+                                "
+                            >
+                                {{ languagesPlayed }}
+                            </div>
+                            <div class="mono-label mt-1.5">Languages</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ═══ Daily Classic ═══ -->
+                <section v-if="totalGames > 0" class="mb-10">
+                    <div class="mono-label mb-4">
+                        <Square :size="12" class="inline -mt-0.5 mr-1" />
+                        Daily Classic
+                    </div>
+
+                    <!-- Streak strip -->
+                    <div
+                        class="flex border border-rule"
+                        style="background: var(--color-rule); gap: 1px"
+                    >
+                        <div class="flex-1 bg-paper text-center" style="padding: 14px 8px">
+                            <div
+                                class="font-display font-bold text-ink"
+                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                            >
+                                {{ totalGames }}
+                            </div>
+                            <div class="mono-label mt-0.5">Played</div>
+                        </div>
+                        <div class="flex-1 bg-paper text-center" style="padding: 14px 8px">
+                            <div
+                                class="font-display font-bold"
+                                :class="overallWinRate >= 50 ? 'text-correct' : 'text-ink'"
+                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                            >
+                                {{ overallWinRate }}%
+                            </div>
+                            <div class="mono-label mt-0.5">Win</div>
+                        </div>
+                        <div
+                            class="flex-1 bg-paper flex items-center justify-center gap-1.5"
+                            style="padding: 14px 8px"
+                        >
+                            <Flame
+                                :size="14"
+                                :class="currentStreak > 0 ? 'text-correct' : 'text-muted'"
+                            />
+                            <span
+                                class="font-display font-bold text-[22px]"
+                                style="font-variation-settings: 'opsz' 72"
+                                >{{ currentStreak }}</span
+                            >
+                            <span class="mono-label">Streak</span>
+                        </div>
+                        <div
+                            class="flex-1 bg-paper flex items-center justify-center gap-1.5"
+                            style="padding: 14px 8px"
+                        >
+                            <Trophy :size="14" class="text-muted" />
+                            <span
+                                class="font-display font-bold text-[22px]"
+                                style="font-variation-settings: 'opsz' 72"
+                                >{{ bestStreak }}</span
+                            >
+                            <span class="mono-label">Best</span>
+                        </div>
+                    </div>
+
+                    <!-- Distribution -->
+                    <div class="border border-t-0 border-rule" style="padding: 14px 16px">
+                        <div class="space-y-1">
+                            <div v-for="n in 6" :key="n" class="flex items-center gap-2">
+                                <span
+                                    class="font-mono font-semibold text-[12px] w-3 text-right text-muted"
+                                >
+                                    {{ n }}
+                                </span>
+                                <div
+                                    class="h-[20px] flex items-center justify-end px-2 font-mono text-[10px] font-semibold text-white transition-all"
+                                    style="min-width: 20px"
+                                    :class="overallDist[n] > 0 ? 'bg-ink' : 'bg-muted-soft'"
+                                    :style="{ width: distBarWidth(overallDist, n) }"
+                                >
+                                    <span v-if="overallDist[n] > 0">{{ overallDist[n] }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ═══ Game Modes ═══ -->
+                <section
+                    v-if="sortedModes.length > 0 && sortedModes.some((m) => m.mode !== 'classic')"
+                    class="mb-10"
                 >
-                    Open source on GitHub
-                </a>
-            </p>
+                    <div class="mono-label mb-4">Game Modes</div>
+
+                    <div class="space-y-3">
+                        <div v-for="m in sortedModes" :key="m.mode" class="border border-rule">
+                            <!-- Mode header -->
+                            <div
+                                class="flex items-center gap-3 bg-paper-warm"
+                                style="padding: 12px 16px"
+                            >
+                                <component :is="m.icon" :size="16" class="text-ink" />
+                                <span class="heading-section text-[15px]">{{ m.label }}</span>
+                                <span class="mono-label ml-auto">{{ m.games }} games</span>
+                            </div>
+                            <!-- Mode stats row -->
+                            <div
+                                class="grid grid-cols-4"
+                                style="background: var(--color-rule); gap: 1px"
+                            >
+                                <div class="bg-paper text-center" style="padding: 10px 8px">
+                                    <div
+                                        class="font-display font-bold text-[18px] text-ink"
+                                        style="font-variation-settings: 'opsz' 72"
+                                    >
+                                        {{ m.winPct }}%
+                                    </div>
+                                    <div class="mono-label mt-0.5">Win</div>
+                                </div>
+                                <div class="bg-paper text-center" style="padding: 10px 8px">
+                                    <div
+                                        class="font-display font-bold text-[18px] text-ink"
+                                        style="font-variation-settings: 'opsz' 72"
+                                    >
+                                        {{ m.avgAttempts }}
+                                    </div>
+                                    <div class="mono-label mt-0.5">Avg</div>
+                                </div>
+                                <div class="bg-paper text-center" style="padding: 10px 8px">
+                                    <div
+                                        class="font-display font-bold text-[18px]"
+                                        :class="m.streak > 0 ? 'text-correct' : 'text-ink'"
+                                        style="font-variation-settings: 'opsz' 72"
+                                    >
+                                        {{ m.streak }}
+                                    </div>
+                                    <div class="mono-label mt-0.5">Streak</div>
+                                </div>
+                                <div class="bg-paper text-center" style="padding: 10px 8px">
+                                    <div
+                                        class="font-display font-bold text-[18px] text-ink"
+                                        style="font-variation-settings: 'opsz' 72"
+                                    >
+                                        {{ m.bestStreak }}
+                                    </div>
+                                    <div class="mono-label mt-0.5">Best</div>
+                                </div>
+                            </div>
+                            <!-- Mini distribution -->
+                            <div style="padding: 10px 16px">
+                                <div class="flex items-end gap-[2px]" style="height: 28px">
+                                    <div
+                                        v-for="n in m.maxGuesses"
+                                        :key="n"
+                                        class="flex-1 rounded-t-sm transition-all"
+                                        :class="m.distribution[n] > 0 ? 'bg-ink' : 'bg-muted-soft'"
+                                        :style="{
+                                            height: distBarWidth(m.distribution, n),
+                                            minHeight: m.distribution[n] > 0 ? '4px' : '2px',
+                                        }"
+                                    />
+                                </div>
+                                <div class="flex gap-[2px] mt-0.5">
+                                    <span
+                                        v-for="n in m.maxGuesses"
+                                        :key="n"
+                                        class="flex-1 text-center font-mono text-[8px] text-muted"
+                                    >
+                                        {{ n }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ═══ Languages ═══ -->
+                <section v-if="perLang.length > 0" class="mb-10">
+                    <div class="mono-label mb-4">Your Languages</div>
+
+                    <div class="border border-rule divide-y divide-rule">
+                        <NuxtLink
+                            v-for="l in perLang"
+                            :key="l.code"
+                            :to="`/${l.code}`"
+                            class="flex items-center hover:bg-paper-warm transition-colors"
+                            style="padding: 12px 16px"
+                        >
+                            <div class="flex-1 min-w-0">
+                                <span class="text-sm font-medium text-ink">{{ l.name }}</span>
+                                <span
+                                    v-if="l.nameNative && l.nameNative !== l.name"
+                                    class="text-xs text-muted ml-1.5"
+                                >
+                                    {{ l.nameNative }}
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-4 text-xs text-muted shrink-0">
+                                <span class="tabular-nums">{{ l.games }}</span>
+                                <span class="tabular-nums">{{ l.winPct }}%</span>
+                                <span
+                                    v-if="l.streak > 0"
+                                    class="text-correct font-semibold tabular-nums"
+                                >
+                                    <Flame :size="11" class="inline -mt-0.5" />{{ l.streak }}
+                                </span>
+                                <ChevronRight :size="14" class="text-muted" />
+                            </div>
+                        </NuxtLink>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <div class="text-center">
+                    <NuxtLink
+                        to="/"
+                        class="inline-block py-3 px-8 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
+                    >
+                        Play Wordle
+                    </NuxtLink>
+                </div>
+            </template>
         </div>
     </div>
 </template>

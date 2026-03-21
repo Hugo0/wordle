@@ -18,7 +18,29 @@
         "locale": "nn",
         "title": "Det daglege ordspelet",
         "description": "Gjett det gøymde ordet på 6 forsøk (eller færre). Eit nytt puslespel kvar dag!",
-        "keywords": "norsk nynorsk, puslespel, ord, spel, på nett, gjette, dagleg"
+        "keywords": "norsk nynorsk, puslespel, ord, spel, på nett, gjette, dagleg",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Norwegian Nynorsk. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Norwegian Nynorsk as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Norwegian Nynorsk. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Norwegian Nynorsk. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Norwegian Nynorsk. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Norsk Nynorsk",

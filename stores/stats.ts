@@ -14,10 +14,10 @@ import type {
     GuessDistribution,
     TotalStats,
 } from '~/utils/types';
+import { createEmptyDistribution } from '~/utils/types';
+import { isClassicDailyStatsKey } from '~/utils/game-modes';
 
-const EMPTY_DISTRIBUTION: GuessDistribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-
-function emptyStats(): GameStats {
+function emptyStats(maxGuesses: number = 6): GameStats {
     return {
         n_wins: 0,
         n_losses: 0,
@@ -27,7 +27,7 @@ function emptyStats(): GameStats {
         win_percentage: 0,
         longest_streak: 0,
         current_streak: 0,
-        guessDistribution: { ...EMPTY_DISTRIBUTION },
+        guessDistribution: createEmptyDistribution(maxGuesses),
     };
 }
 
@@ -82,16 +82,17 @@ export const useStatsStore = defineStore('stats', () => {
 
     /**
      * Record a game result and persist to localStorage.
+     * @param statsKey - Storage key: language code for classic daily, "{lang}_{mode}" for other modes.
      */
-    function saveResult(langCode: string, won: boolean, attempts: number): void {
-        if (!langCode) return;
+    function saveResult(statsKey: string, won: boolean, attempts: number): void {
+        if (!statsKey) return;
 
         const result: GameResult = { won, attempts, date: new Date() };
 
-        if (!gameResults.value[langCode]) {
-            gameResults.value[langCode] = [];
+        if (!gameResults.value[statsKey]) {
+            gameResults.value[statsKey] = [];
         }
-        gameResults.value[langCode].push(result);
+        gameResults.value[statsKey].push(result);
 
         if (import.meta.client) {
             try {
@@ -103,16 +104,12 @@ export const useStatsStore = defineStore('stats', () => {
     }
 
     /**
-     * Calculate statistics for a single language.
+     * Pure stats computation — no side effects on the reactive `stats` ref.
+     * Used by both calculateStats (which updates the ref) and calculateTotalStats (which doesn't).
      */
-    function calculateStats(languageCode: string | undefined): GameStats {
-        if (!languageCode) {
-            return emptyStats();
-        }
-
-        const results = gameResults.value[languageCode];
-        if (!results?.length) {
-            return emptyStats();
+    function computeStats(results: GameResult[], maxGuesses: number): GameStats {
+        if (!results.length) {
+            return emptyStats(maxGuesses);
         }
 
         let n_wins = 0;
@@ -120,7 +117,7 @@ export const useStatsStore = defineStore('stats', () => {
         let n_attempts = 0;
         let current_streak = 0;
         let longest_streak = 0;
-        const guessDistribution: GuessDistribution = { ...EMPTY_DISTRIBUTION };
+        const guessDistribution: GuessDistribution = createEmptyDistribution(maxGuesses);
 
         for (const result of results) {
             const attempts =
@@ -132,9 +129,8 @@ export const useStatsStore = defineStore('stats', () => {
                 n_wins++;
                 current_streak++;
                 longest_streak = Math.max(longest_streak, current_streak);
-                // Track which guess they won on (1-6)
-                if (attempts >= 1 && attempts <= 6) {
-                    guessDistribution[attempts as 1 | 2 | 3 | 4 | 5 | 6]++;
+                if (attempts >= 1 && attempts <= maxGuesses) {
+                    guessDistribution[attempts]++;
                 }
             } else {
                 n_losses++;
@@ -144,7 +140,7 @@ export const useStatsStore = defineStore('stats', () => {
         }
 
         const total = n_wins + n_losses;
-        const computed: GameStats = {
+        return {
             n_wins,
             n_losses,
             n_games: results.length,
@@ -155,13 +151,27 @@ export const useStatsStore = defineStore('stats', () => {
             current_streak,
             guessDistribution,
         };
+    }
 
-        stats.value = computed;
-        return computed;
+    /**
+     * Calculate statistics for a given stats key and update the reactive `stats` ref.
+     * @param statsKey - Storage key: language code for classic daily, "{lang}_{mode}" for other modes.
+     * @param maxGuesses - Max guesses for this mode (default 6). Determines distribution bar count.
+     */
+    function calculateStats(statsKey: string | undefined, maxGuesses: number = 6): GameStats {
+        if (!statsKey) {
+            stats.value = emptyStats(maxGuesses);
+            return stats.value;
+        }
+
+        const results = gameResults.value[statsKey];
+        stats.value = results?.length ? computeStats(results, maxGuesses) : emptyStats(maxGuesses);
+        return stats.value;
     }
 
     /**
      * Calculate aggregate statistics across all languages.
+     * Overall streaks only count classic daily results (bare language code keys).
      */
     function calculateTotalStats(): TotalStats {
         let n_victories = 0;
@@ -171,22 +181,25 @@ export const useStatsStore = defineStore('stats', () => {
         const languages_won: string[] = [];
         const game_stats: Record<string, GameStats> = {};
 
-        // Collect and sort all results by date
-        const all_results: (GameResult & { language?: string })[] = [];
-        for (const [language_code, results] of Object.entries(gameResults.value) as [
+        // Collect and sort classic daily results for overall streak calculation.
+        // Uses computeStats (pure) to avoid overwriting the reactive stats.value ref.
+        const daily_results: (GameResult & { language?: string })[] = [];
+        for (const [key, results] of Object.entries(gameResults.value) as [
             string,
             GameResult[],
         ][]) {
-            for (const result of results) {
-                all_results.push({ ...result, language: language_code });
+            if (isClassicDailyStatsKey(key)) {
+                for (const result of results) {
+                    daily_results.push({ ...result, language: key });
+                }
             }
         }
-        all_results.sort(
+        daily_results.sort(
             (a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime()
         );
 
-        // Calculate overall streaks
-        for (const result of all_results) {
+        // Overall streaks from classic daily only
+        for (const result of daily_results) {
             if (result.won) {
                 n_victories++;
                 current_overall_streak++;
@@ -197,13 +210,16 @@ export const useStatsStore = defineStore('stats', () => {
             }
         }
 
-        // Calculate per-language stats
-        for (const language_code of Object.keys(gameResults.value)) {
-            const langStats = calculateStats(language_code);
-            game_stats[language_code] = langStats;
+        // Per-language stats (classic daily keys only, default maxGuesses=6)
+        for (const key of Object.keys(gameResults.value)) {
+            if (isClassicDailyStatsKey(key)) {
+                const results = gameResults.value[key];
+                const langStats = results?.length ? computeStats(results, 6) : emptyStats();
+                game_stats[key] = langStats;
 
-            if (langStats.n_wins > 0) {
-                languages_won.push(language_code);
+                if (langStats.n_wins > 0) {
+                    languages_won.push(key);
+                }
             }
         }
 

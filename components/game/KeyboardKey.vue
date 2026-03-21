@@ -1,8 +1,9 @@
 <template>
     <button
         ref="buttonRef"
-        class="flex-1 rounded uppercase text-sm font-bold p-1 sm:p-2 h-14 key relative select-none"
-        :class="[state, { 'has-hint': hint, 'hint-above': hintAbove }]"
+        class="flex-1 uppercase text-[13px] font-semibold p-1 sm:p-2 h-12 key relative select-none font-body"
+        :class="[splitGradient ? '' : state, { 'has-hint': hint, 'hint-above': hintAbove }]"
+        :style="splitGradient ? { background: splitGradient, color: 'white' } : undefined"
         :data-char="char"
         :aria-label="char === '⇨' ? 'Enter' : char === '⌫' ? 'Backspace' : keyAriaLabel"
         @click="handleClick"
@@ -42,10 +43,61 @@ import { useHaptics } from '~/composables/useHaptics';
 const props = defineProps<{
     char: string;
     state: string;
+    boardStates?: string[];
     hint?: string;
     hintAbove?: boolean;
     variants?: string[];
 }>();
+
+const STATE_COLORS: Record<string, string> = {
+    'key-correct': 'var(--color-correct)',
+    'key-semicorrect': 'var(--color-semicorrect)',
+    'key-incorrect': 'var(--color-muted)',
+};
+
+const DEFAULT_KEY_COLOR = 'var(--color-paper-warm, #e8e8e8)';
+
+function stateColor(state: string | undefined): string {
+    return STATE_COLORS[state || ''] || DEFAULT_KEY_COLOR;
+}
+
+/** Generate a split gradient for multi-board keyboard keys.
+ *  - 2 boards: vertical 50/50 split (left = board 1, right = board 2)
+ *  - 3 boards: vertical 33/33/33 split
+ *  - 4 boards: 2×2 quadrants matching the board grid layout
+ */
+const splitGradient = computed(() => {
+    if (!props.boardStates || props.boardStates.length <= 1) return null;
+    if (props.boardStates.every((s) => !s)) return null;
+
+    const n = props.boardStates.length;
+
+    // 4 boards: 2×2 quadrant layout matching the board grid
+    // ┌──┬──┐
+    // │TL│TR│  TL=board0, TR=board1
+    // ├──┼──┤
+    // │BL│BR│  BL=board2, BR=board3
+    // └──┴──┘
+    if (n === 4) {
+        const tl = stateColor(props.boardStates[0]);
+        const tr = stateColor(props.boardStates[1]);
+        const bl = stateColor(props.boardStates[2]);
+        const br = stateColor(props.boardStates[3]);
+
+        // Two horizontal gradients stacked vertically
+        return `linear-gradient(to right, ${tl} 50%, ${tr} 50%) top/100% 50% no-repeat, linear-gradient(to right, ${bl} 50%, ${br} 50%) bottom/100% 50% no-repeat`;
+    }
+
+    // 2 or 3 boards: vertical stripes
+    const step = 100 / n;
+    const stops: string[] = [];
+    for (let i = 0; i < n; i++) {
+        const color = stateColor(props.boardStates[i]);
+        stops.push(`${color} ${i * step}%`);
+        stops.push(`${color} ${(i + 1) * step}%`);
+    }
+    return `linear-gradient(to right, ${stops.join(', ')})`;
+});
 
 const emit = defineEmits<{ press: [key: string] }>();
 
@@ -291,16 +343,9 @@ function updateActiveVariant(clientX: number) {
     border-radius: 8px;
     overflow: hidden;
     box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-    background: #565758;
-}
-
-:root:not(.dark) .diacritic-popup-inner {
-    background: #d3d6da;
-    box-shadow:
         0 4px 20px rgba(0, 0, 0, 0.15),
         0 0 0 1px rgba(0, 0, 0, 0.1);
+    background: var(--color-muted-soft);
 }
 
 .diacritic-option {
@@ -312,16 +357,12 @@ function updateActiveVariant(clientX: number) {
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
-    color: white;
+    color: var(--color-ink);
     transition: background 0.08s ease;
 }
 
-:root:not(.dark) .diacritic-option {
-    color: #1a1a1b;
-}
-
 .diacritic-active {
-    background: #3b82f6;
+    background: var(--color-accent);
     color: white;
     border-radius: 6px;
 }
@@ -331,13 +372,9 @@ function updateActiveVariant(clientX: number) {
     bottom: -7px;
     width: 12px;
     height: 12px;
-    background: #565758;
+    background: var(--color-muted-soft);
     transform: rotate(45deg);
     border-radius: 0 0 3px 0;
-}
-
-:root:not(.dark) .diacritic-stem {
-    background: #d3d6da;
 }
 
 @keyframes diacritic-popup-in {

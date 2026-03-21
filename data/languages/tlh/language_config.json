@@ -6,7 +6,29 @@
         "locale": "tlh",
         "title": "jaj Hoch mu' Quj",
         "description": "So'ta' mu' yItu' javlogh (pagh puS). jaj Hoch chu' Quj tu'lu'!",
-        "keywords": "tlhIngan, Quj, mu', reH, De'wI', tu', jaj Hoch"
+        "keywords": "tlhIngan, Quj, mu', reH, De'wI', tu', jaj Hoch",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Klingon. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Klingon as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Klingon. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Klingon. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Klingon. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "tlhIngan",

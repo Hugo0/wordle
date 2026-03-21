@@ -22,7 +22,7 @@ const showImprovementBanner = ref(false);
 
 function onBannerClick() {
     try {
-        usePostHog()?.capture('language_interest', { language: lang });
+        useAnalytics().trackLanguageSelect(lang, 'flag');
     } catch {
         // Silently fail
     }
@@ -45,50 +45,33 @@ if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
 
-// --- Initialize stores ---
-const langStore = useLanguageStore();
-const game = useGameStore();
-const settings = useSettingsStore();
-const stats = useStatsStore();
-
-// Populate language store from API response
-langStore.init({
-    word_list: gameData.value.word_list,
-    characters: gameData.value.characters,
-    config: gameData.value.config,
-    todays_idx: gameData.value.todays_idx,
-    todays_word: gameData.value.todays_word,
-    timezone_offset: gameData.value.timezone_offset,
-    keyboard: gameData.value.keyboard,
-    keyboard_layouts: gameData.value.keyboard_layouts,
-    keyboard_layout_name: gameData.value.keyboard_layout_name,
-    key_diacritic_hints: gameData.value.key_diacritic_hints,
-});
+const { langStore, game, stats, sidebarOpen, toggleSidebar, closeSidebar, gameBoardRef, config } =
+    useGamePage(gameData, lang);
 
 // --- SEO ---
-const config = gameData.value.config;
-const wordleNative = config.meta?.wordle_native || '';
-const metaTitle = (config.meta?.title || 'The daily word game').trim();
-const wordleBase = `Wordle ${config.name_native}`;
+const configVal = gameData.value.config;
+const wordleNative = configVal.meta?.wordle_native || '';
+const metaTitle = (configVal.meta?.title || 'The daily word game').trim();
+const wordleBase = `Wordle ${configVal.name_native}`;
 const wordleShort = wordleNative ? `${wordleBase} (${wordleNative})` : wordleBase;
-const isUntranslatedTitle = metaTitle === 'The daily word game' && config.language_code !== 'en';
+const isUntranslatedTitle = metaTitle === 'The daily word game' && configVal.language_code !== 'en';
 
 let seoTitle = isUntranslatedTitle
-    ? `${wordleBase} — Play in ${config.name}`
+    ? `${wordleBase} — Play in ${configVal.name}`
     : `${wordleShort} — ${metaTitle}`;
 if (seoTitle.length > 60) seoTitle = wordleShort;
 
 const nativeDesc = (
-    config.meta?.description ||
+    configVal.meta?.description ||
     'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!'
 ).trim();
 const isUntranslatedDesc =
     nativeDesc ===
         'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!' &&
-    config.language_code !== 'en';
+    configVal.language_code !== 'en';
 let seoDescription = isUntranslatedDesc
-    ? `Play Wordle in ${config.name} (${config.name_native}) — ${nativeDesc}`
-    : `${nativeDesc} | Wordle ${config.name}`;
+    ? `Play Wordle in ${configVal.name} (${configVal.name_native}) — ${nativeDesc}`
+    : `${nativeDesc} | Wordle ${configVal.name}`;
 if (seoDescription.length > 160) seoDescription = nativeDesc.substring(0, 155) + '...';
 
 // Share result param (?r=1-6 or ?r=x) — used for social preview when sharing
@@ -96,13 +79,9 @@ const shareResult = route.query.r as string | undefined;
 const validResults = ['1', '2', '3', '4', '5', '6', 'x'];
 const isShareLink = shareResult !== undefined && validResults.includes(shareResult);
 
-// Dynamic share image: result-specific for share links, generic OG image otherwise
-const shareImageUrl = isShareLink
-    ? `https://wordle.global/images/share/${lang}_${shareResult}.png`
-    : 'https://wordle.global/images/og-image.png';
-
-// Override title/description for share links (matches Flask behavior)
+// Override title/description for share links
 const configText = gameData.value.config.text || {};
+let challengeText = '';
 if (isShareLink) {
     if (shareResult === 'x') {
         seoTitle = `${wordleBase} — X/6`;
@@ -113,6 +92,7 @@ if (isShareLink) {
             configText.share_challenge_win || "I got today's Wordle in {n}. Can you beat me?";
         seoDescription = challengeWin.replace('{n}', shareResult!);
     }
+    challengeText = seoDescription;
 }
 
 useSeoMeta({
@@ -122,18 +102,26 @@ useSeoMeta({
     ogDescription: seoDescription,
     ogUrl: `https://wordle.global/${lang}`,
     ogType: 'website',
-    ogLocale: config.meta?.locale || lang,
-    ogImage: shareImageUrl,
-    ogImageWidth: 1200,
-    ogImageHeight: 630,
+    ogLocale: configVal.meta?.locale || lang,
     twitterCard: 'summary_large_image',
     twitterTitle: seoTitle,
     twitterDescription: seoDescription,
 });
 
+// OG image — static files generated at build time
+const shareImageUrl = isShareLink
+    ? `https://wordle.global/images/share/${lang}_${shareResult}.png`
+    : 'https://wordle.global/images/og-image.png';
+
+useSeoMeta({
+    ogImage: shareImageUrl,
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+});
+
 useHead({
     htmlAttrs: {
-        lang: config.meta?.locale?.split('_')[0] || lang,
+        lang: configVal.meta?.locale?.split('_')[0] || lang,
         dir: langStore.rightToLeft ? 'rtl' : 'ltr',
         translate: 'no',
     },
@@ -184,9 +172,12 @@ if (allLangs.value?.language_codes) {
     useHreflang(allLangs.value.language_codes);
 }
 
-// Template refs for animation DOM access (avoids document.querySelector in store)
-const gameBoardRef = ref<{ boardEl: HTMLElement | null } | null>(null);
-const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);
+// Game header
+const headerTitle = computed(() => configVal.name_native || 'Wordle');
+const headerSubtitle = computed(() => {
+    const idx = gameData.value?.todays_idx;
+    return idx != null ? `#${idx}` : '';
+});
 
 // --- Client-side initialization ---
 onMounted(() => {
@@ -201,26 +192,13 @@ onMounted(() => {
         }
     }
 
-    // Pass DOM refs to game store for animations
-    game.setBoardEl(() => gameBoardRef.value?.boardEl ?? null);
-    game.setKeyboardEl(() => gameKeyboardRef.value?.$el ?? null);
-
-    // Keyboard event listener — MUST be first, before anything that might throw
-    window.addEventListener('keydown', handleKeyDown);
-
     const interval = setInterval(() => {
         game.updateTimeUntilNextDay();
     }, 1000);
+    onUnmounted(() => clearInterval(interval));
 
-    onUnmounted(() => {
-        window.removeEventListener('keydown', handleKeyDown);
-        clearInterval(interval);
-    });
-
-    // Initialize stores from localStorage (may fail in private browsing)
+    // Initialize game from localStorage
     try {
-        settings.init();
-        stats.loadGameResults(langStore.languageCode);
         game.loadFromLocalStorage();
         game.showTiles();
 
@@ -229,156 +207,48 @@ onMounted(() => {
         } else {
             game.maybeShowTutorial();
         }
-
-        // Analytics initialization
-        const analytics = useAnalytics();
-        analytics.trackPageView(langStore.languageCode);
-        analytics.trackGameStart({
-            language: langStore.languageCode,
-            is_returning: stats.stats.n_games > 0,
-            current_streak: stats.stats.current_streak,
-        });
-        analytics.trackPWASession(langStore.languageCode);
-        analytics.initAbandonTracking(() => ({
-            language: langStore.languageCode,
-            activeRow: game.activeRow,
-            gameOver: game.gameOver,
-            lastGuessValid: true,
-        }));
-        analytics.identifyUser(stats.gameResults);
-    } catch (err) {
-        console.warn('[wordle] Failed to restore game state:', err);
+    } catch {
+        // Failed to restore game state — start fresh
     }
 });
-
-function handleKeyDown(e: KeyboardEvent) {
-    // Don't handle if a modal is open and it's not Escape
-    if (
-        e.key !== 'Escape' &&
-        (game.showHelpModal || game.showStatsModal || game.showOptionsModal)
-    ) {
-        return;
-    }
-    game.keyDown(e);
-}
 </script>
 
 <template>
-    <div v-if="gameData" class="min-h-[100dvh] h-[100dvh]">
-        <div class="wrapper container mx-auto flex flex-col h-full w-full max-w-lg safe-area-inset">
-            <!-- The Header -->
-            <GameHeader
-                :lang-code="lang"
-                @help="game.showHelpModal = !game.showHelpModal"
-                @stats="game.showStatsModal = !game.showStatsModal"
-                @settings="game.showOptionsModal = !game.showOptionsModal"
-            />
-
-            <!-- Language improvement banner (ko, ja) -->
-            <div
-                v-if="showImprovementBanner"
-                class="relative flex items-center justify-center gap-2 px-3 py-2 text-sm cursor-pointer bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border-b border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-neutral-200 dark:hover:bg-neutral-700"
-                @click="onBannerClick"
-            >
-                <span
-                    >This language is being improved &mdash; tap to let us know you're
-                    interested!</span
-                >
-                <button
-                    class="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-400 dark:text-neutral-500"
-                    aria-label="Dismiss"
-                    @click.stop="dismissBanner"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- The game board -->
-            <GameBoard ref="gameBoardRef" />
-
-            <!-- The keyboard -->
-            <GameKeyboard
-                ref="gameKeyboardRef"
-                :keyboard="langStore.keyboard"
-                :hints="langStore.keyDiacriticHints"
-            />
-        </div>
-
-        <!-- NOTIFICATIONS & MODALS -->
+    <GamePageShell
+        :lang="lang"
+        :language-name="configVal.name_native || configVal.name || lang"
+        current-mode="classic"
+        :title="headerTitle"
+        :subtitle="headerSubtitle"
+        :sidebar-open="sidebarOpen"
+        :visible="!!gameData"
+        @toggle-sidebar="toggleSidebar"
+        @close-sidebar="closeSidebar"
+    >
+        <!-- Language improvement banner (ko, ja) -->
         <div
-            class="container mx-auto flex w-full max-w-lg justify-center items-center overflow z-1"
+            v-if="showImprovementBanner"
+            class="relative flex items-center justify-center gap-2 px-3 py-2 text-sm cursor-pointer bg-paper-warm text-muted border-b border-rule transition-colors hover:bg-muted-soft"
+            @click="onBannerClick"
         >
-            <SharedModalBackdrop
-                :visible="game.showHelpModal || game.showStatsModal || game.showOptionsModal"
-                @close="
-                    game.showHelpModal = false;
-                    game.showStatsModal = false;
-                    game.showOptionsModal = false;
-                "
-            />
-
-            <!-- help modal -->
-            <GameHelpModal :visible="game.showHelpModal" @close="game.showHelpModal = false" />
-
-            <!-- options modal -->
-            <GameSettingsModal
-                :visible="game.showOptionsModal"
-                @close="game.showOptionsModal = false"
-            />
-        </div>
-
-        <!-- stats modal -->
-        <GameStatsModal :visible="game.showStatsModal" @close="game.showStatsModal = false" />
-
-        <!-- Toast notification -->
-        <GameNotificationToast :notification="game.notification" />
-
-        <!-- PWA install banner (shown after game win) -->
-        <div
-            id="pwa-install-banner"
-            class="fixed bottom-0 left-0 right-0 z-50 flex items-center gap-3 px-4 py-3 bg-green-600 text-white shadow-lg"
-            style="display: none"
-        >
-            <div class="flex-1 min-w-0">
-                <strong>{{ langStore.config?.ui?.add_to_home || 'Add to Home Screen' }}</strong>
-                <div class="text-sm opacity-90">
-                    {{
-                        langStore.config?.ui?.play_daily_like_app || 'Play Wordle daily like an app'
-                    }}
-                </div>
-            </div>
-            <button
-                class="shrink-0 px-4 py-1.5 bg-white text-green-700 rounded-lg font-semibold text-sm hover:bg-green-50"
-                @click="$pwaInstall?.install()"
+            <span
+                >This language is being improved &mdash; tap to let us know you're interested!</span
             >
-                {{ langStore.config?.ui?.install || 'Install' }}
-            </button>
             <button
-                class="shrink-0 p-1 opacity-70 hover:opacity-100"
+                class="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-muted-soft text-muted"
                 aria-label="Dismiss"
-                @click="$pwaInstall?.dismiss()"
+                @click.stop="dismissBanner"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
+                    width="14"
+                    height="14"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                 >
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
@@ -386,18 +256,64 @@ function handleKeyDown(e: KeyboardEvent) {
             </button>
         </div>
 
-        <!-- PWA install component (cross-platform install dialog) -->
-        <ClientOnly>
-            <pwa-install
-                manifest-url="/manifest.json"
-                name="Wordle Global"
-                description="Play Wordle in 79 languages"
-                install-description="Install for quick daily access"
-                manual-apple
-                manual-chrome
-            />
-        </ClientOnly>
-    </div>
+        <!-- The game board -->
+        <GameBoard ref="gameBoardRef" />
+
+        <template #overlays>
+            <!-- PWA install banner (shown after game win) -->
+            <div
+                id="pwa-install-banner"
+                class="fixed bottom-0 left-0 right-0 z-50 flex items-center gap-3 px-4 py-3 bg-correct text-white shadow-lg"
+                style="display: none"
+            >
+                <div class="flex-1 min-w-0">
+                    <strong>{{ langStore.config?.ui?.add_to_home || 'Add to Home Screen' }}</strong>
+                    <div class="text-sm opacity-90">
+                        {{
+                            langStore.config?.ui?.play_daily_like_app ||
+                            'Play Wordle daily like an app'
+                        }}
+                    </div>
+                </div>
+                <button
+                    class="shrink-0 px-4 py-1.5 bg-paper text-correct font-semibold text-sm hover:opacity-90"
+                    @click="$pwaInstall?.install()"
+                >
+                    {{ langStore.config?.ui?.install || 'Install' }}
+                </button>
+                <button
+                    class="shrink-0 p-1 opacity-70 hover:opacity-100"
+                    aria-label="Dismiss"
+                    @click="$pwaInstall?.dismiss()"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- PWA install component (cross-platform install dialog) -->
+            <ClientOnly>
+                <pwa-install
+                    manifest-url="/manifest.json"
+                    name="Wordle Global"
+                    description="Play Wordle in 80+ languages"
+                    install-description="Install for quick daily access"
+                    manual-apple
+                    manual-chrome
+                />
+            </ClientOnly>
+        </template>
+    </GamePageShell>
 
     <!-- SEO content — visible only when JS is disabled (crawlers, noscript browsers).
          data-allow-mismatch suppresses Vue hydration warning since noscript
@@ -413,17 +329,26 @@ function handleKeyDown(e: KeyboardEvent) {
             "
         >
             <h1>
-                Wordle {{ config.name_native }} — {{ config.meta?.title || 'The daily word game' }}
+                Wordle {{ configVal.name_native }} —
+                {{ configVal.meta?.title || 'The daily word game' }}
             </h1>
-            <h2>{{ config.help?.title }}</h2>
+            <h2>{{ configVal.help?.title }}</h2>
             <p>
-                {{ config.help?.text_1_1_1 }} <strong>Wordle</strong> {{ config.help?.text_1_1_2 }}
+                {{ configVal.help?.text_1_1_1 }} <strong>Wordle</strong>
+                {{ configVal.help?.text_1_1_2 }}
             </p>
-            <p>{{ config.help?.text_1_2 }}</p>
-            <p>{{ config.help?.text_1_3 }}</p>
-            <p>{{ config.help?.text_3 }}</p>
+            <p>{{ configVal.help?.text_1_2 }}</p>
+            <p>{{ configVal.help?.text_1_3 }}</p>
+            <p>{{ configVal.help?.text_3 }}</p>
             <p>
-                <a href="https://wordle.global/">Play Wordle in 65+ languages at wordle.global</a>
+                <a href="https://wordle.global/">Play Wordle in 80+ languages at wordle.global</a>
+            </p>
+            <p>
+                Game modes:
+                <a :href="`/${lang}/unlimited`">Unlimited</a> ·
+                <a :href="`/${lang}/speed`">Speed Streak</a> ·
+                <a :href="`/${lang}/dordle`">Dordle</a> ·
+                <a :href="`/${lang}/quordle`">Quordle</a>
             </p>
         </div>
     </noscript>

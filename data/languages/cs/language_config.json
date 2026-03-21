@@ -7,7 +7,29 @@
         "locale": "cs",
         "title": "Denní slovo",
         "description": "Hádejte skryté slovo v 6 pokusech (nebo méně). Každý den je k dispozici nový puzzle!",
-        "keywords": "čeština, puzzle, slovo, hra, hra, online, hádat, denně"
+        "keywords": "čeština, puzzle, slovo, hra, hra, online, hádat, denně",
+        "modes": {
+            "unlimited": {
+                "title": "Hraj neomezeně — bez čekání",
+                "description": "Hraj Wordle česky bez omezení. Bez čekání — nové slovo pokaždé."
+            },
+            "speed": {
+                "title": "Speed Streak — závod s časem",
+                "description": "Speed Streak: vyřeš co nejvíc českých Wordle slov za 5 minut."
+            },
+            "dordle": {
+                "title": "Dordle — 2 hrací plochy najednou",
+                "description": "Hraj Dordle česky. Vyřeš 2 Wordle plochy najednou se 7 pokusy."
+            },
+            "tridle": {
+                "title": "Tridle — 3 hrací plochy najednou",
+                "description": "Hraj Tridle česky. Vyřeš 3 Wordle plochy najednou s 8 pokusy."
+            },
+            "quordle": {
+                "title": "Quordle — 4 hrací plochy najednou",
+                "description": "Hraj Quordle česky. Vyřeš 4 Wordle plochy najednou s 9 pokusy."
+            }
+        }
     },
     "text": {
         "subheader": "čeština",

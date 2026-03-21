@@ -7,7 +7,29 @@
         "locale": "nds",
         "title": "Dat dääglich Woortspeel",
         "description": "Raat dat versteken Woort in 6 Versöök (oder weniger). Jeedeen Dag gifft dat en nee Rätsel!",
-        "keywords": "plattdüütsch, rätsel, woort, speel, online, raden, dääglich"
+        "keywords": "plattdüütsch, rätsel, woort, speel, online, raden, dääglich",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Low German. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Low German as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Low German. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Low German. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Low German. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Plattdüütsch",

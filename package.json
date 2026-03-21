@@ -18,9 +18,14 @@
         "format:check": "prettier --check \"**/*.{ts,js,vue,json}\""
     },
     "dependencies": {
+        "@fontsource-variable/fraunces": "^5.2.9",
+        "@fontsource-variable/source-sans-3": "^5.2.9",
+        "@fontsource/jetbrains-mono": "^5.2.8",
         "@khmyznikov/pwa-install": "^0.6.2",
         "@pinia/nuxt": "^0.10.1",
         "@posthog/nuxt": "^1.5.87",
+        "circle-flags": "^2.8.2",
+        "lucide-vue-next": "^0.577.0",
         "nuxt": "^3.17.5",
         "openai": "^5.8.2",
         "pinia": "^3.0.3",

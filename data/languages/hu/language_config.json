@@ -7,7 +7,29 @@
         "locale": "hu",
         "title": "Napi szójáték",
         "description": "Találd ki a rejtett szót 6 próbálkozásból (vagy kevesebbből). Minden nap új rejtvény áll rendelkezésre!",
-        "keywords": "magyar, puzzle, szó, játék, játék, online, kitalálni, naponta"
+        "keywords": "magyar, puzzle, szó, játék, játék, online, kitalálni, naponta",
+        "modes": {
+            "unlimited": {
+                "title": "Játssz korlátlanul — várakozás nélkül",
+                "description": "Játssz Wordle-t magyarul korlátlanul. Várakozás nélkül — minden alkalommal új szó."
+            },
+            "speed": {
+                "title": "Speed Streak — verseny az idővel",
+                "description": "Speed Streak: oldj meg minél több magyar Wordle-szót 5 perc alatt."
+            },
+            "dordle": {
+                "title": "Dordle — 2 tábla egyszerre",
+                "description": "Játssz Dordle-t magyarul. Oldj meg 2 Wordle-táblát egyszerre 7 tippből."
+            },
+            "tridle": {
+                "title": "Tridle — 3 tábla egyszerre",
+                "description": "Játssz Tridle-t magyarul. Oldj meg 3 Wordle-táblát egyszerre 8 tippből."
+            },
+            "quordle": {
+                "title": "Quordle — 4 tábla egyszerre",
+                "description": "Játssz Quordle-t magyarul. Oldj meg 4 Wordle-táblát egyszerre 9 tippből."
+            }
+        }
     },
     "text": {
         "subheader": "magyar",

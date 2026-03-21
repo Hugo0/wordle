@@ -21,7 +21,29 @@
         "locale": "de",
         "title": "Das tägliche Wortspiel",
         "description": "Erraten Sie das verborgene Wort in 6 Versuchen (oder weniger). Jeden Tag ist ein neues Rätsel verfügbar!",
-        "keywords": "Deutsch, Englisch, Puzzle, Word, Spiel, Spiel, online, Vermutung, täglich, Ratespiel, wordle"
+        "keywords": "Deutsch, Englisch, Puzzle, Word, Spiel, Spiel, online, Vermutung, täglich, Ratespiel, wordle",
+        "modes": {
+            "unlimited": {
+                "title": "Unbegrenzt spielen — ohne Wartezeit",
+                "description": "Spiele Wordle auf Deutsch ohne Limit. Kein Warten — jedes Mal ein neues Wort."
+            },
+            "speed": {
+                "title": "Speed Streak — gegen die Uhr",
+                "description": "Speed Streak: Löse in 5 Minuten so viele deutsche Wordle-Wörter wie möglich."
+            },
+            "dordle": {
+                "title": "Dordle — 2 Raster gleichzeitig",
+                "description": "Spiele Dordle auf Deutsch. Löse 2 Wordle-Raster gleichzeitig mit 7 Versuchen."
+            },
+            "tridle": {
+                "title": "Tridle — 3 Raster gleichzeitig",
+                "description": "Spiele Tridle auf Deutsch. Löse 3 Wordle-Raster gleichzeitig mit 8 Versuchen."
+            },
+            "quordle": {
+                "title": "Quordle — 4 Raster gleichzeitig",
+                "description": "Spiele Quordle auf Deutsch. Löse 4 Wordle-Raster gleichzeitig mit 9 Versuchen."
+            }
+        }
     },
     "text": {
         "subheader": "Deutsch",

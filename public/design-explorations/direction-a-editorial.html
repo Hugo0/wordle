@@ -1,0 +1,3830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction A: Editorial — Wordle Global Design Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Sans+3:wght@300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #1a1a1a;
+    --paper: #faf8f5;
+    --paper-warm: #f3efe8;
+    --accent: #c0392b;
+    --accent-soft: #e8d5d0;
+    --green: #2d8544;
+    --green-soft: #d4edda;
+    --yellow: #b8860b;
+    --yellow-soft: #fdf3d0;
+    --gray: #8c8c8c;
+    --gray-soft: #e8e8e8;
+    --rule: #d4cfc7;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Source Sans 3', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --sidebar-width: 280px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV INDICATOR ─── */
+.design-label {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+    padding: 6px 16px; text-align: center;
+}
+.design-label a { color: var(--accent-soft); margin: 0 12px; text-decoration: none; }
+.design-label a:hover { text-decoration: underline; }
+
+/* ─── SECTION NAV ─── */
+.section-nav {
+    position: fixed; top: 32px; right: 24px; z-index: 100;
+    display: flex; flex-direction: column; gap: 6px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.section-nav a {
+    color: var(--gray); text-decoration: none;
+    padding: 4px 10px; border-right: 2px solid transparent;
+    text-align: right; transition: all 0.2s;
+}
+.section-nav a:hover { color: var(--ink); border-color: var(--accent); }
+
+/* ─── SCREENS ─── */
+.screen {
+    min-height: 100vh;
+    padding: 80px 40px 60px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+}
+.screen-label {
+    position: absolute; top: 48px; left: 40px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray);
+}
+
+/* ═══════════════════════════════════════════════
+   SCREEN 1: HOMEPAGE
+   ═══════════════════════════════════════════════ */
+.homepage { background: var(--paper); display: flex; flex-direction: column; align-items: center; }
+
+.hp-masthead {
+    text-align: center; margin-bottom: 48px; padding-top: 40px;
+}
+.hp-masthead h1 {
+    font-family: var(--serif); font-size: 56px; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.05;
+    font-variation-settings: 'opsz' 144;
+}
+.hp-masthead h1 .dot { color: var(--accent); }
+.hp-masthead .edition {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gray); margin-top: 8px;
+}
+.hp-masthead .rule {
+    width: 120px; height: 1px; background: var(--ink);
+    margin: 16px auto 0;
+}
+.hp-masthead .rule::after {
+    content: ''; display: block; width: 40px; height: 3px;
+    background: var(--ink); margin: -1px auto 0;
+}
+
+.hp-tagline {
+    font-family: var(--serif); font-size: 20px; font-style: italic;
+    color: var(--gray); text-align: center; margin-bottom: 40px;
+    font-variation-settings: 'opsz' 20;
+}
+
+/* Game Mode Cards */
+.mode-grid {
+    display: grid; grid-template-columns: repeat(3, 260px); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule);
+    margin-bottom: 56px;
+}
+.mode-card {
+    background: var(--paper); padding: 32px 28px;
+    cursor: pointer; transition: background 0.25s;
+}
+.mode-card:hover { background: var(--paper-warm); }
+.mode-card .mode-icon {
+    font-size: 28px; margin-bottom: 12px;
+    display: flex; gap: 4px;
+}
+.mode-card .mode-icon .tile {
+    width: 22px; height: 22px; border: 2px solid var(--ink);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 12px; font-weight: 700;
+}
+.mode-card .mode-icon .tile.g { background: var(--green); border-color: var(--green); color: white; }
+.mode-card .mode-icon .tile.y { background: var(--yellow); border-color: var(--yellow); color: white; }
+.mode-card h3 {
+    font-family: var(--serif); font-size: 22px; font-weight: 700;
+    margin-bottom: 6px; font-variation-settings: 'opsz' 48;
+}
+.mode-card p {
+    font-size: 14px; color: var(--gray); line-height: 1.45;
+}
+.mode-card .mode-tag {
+    display: inline-block; margin-top: 12px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 3px 8px;
+    border: 1px solid var(--rule); color: var(--gray);
+}
+.mode-card .mode-tag.new { border-color: var(--accent); color: var(--accent); }
+
+/* Language Section */
+.lang-section { width: 100%; max-width: 800px; }
+.lang-section h2 {
+    font-family: var(--serif); font-size: 28px; font-weight: 300;
+    text-align: center; margin-bottom: 8px;
+    font-variation-settings: 'opsz' 48;
+}
+.lang-section .lang-sub {
+    text-align: center; font-size: 14px; color: var(--gray); margin-bottom: 24px;
+}
+.lang-search {
+    width: 100%; max-width: 400px; margin: 0 auto 32px;
+    display: block; padding: 12px 16px;
+    border: 1px solid var(--rule); background: transparent;
+    font-family: var(--sans); font-size: 15px;
+    outline: none; transition: border-color 0.2s;
+}
+.lang-search:focus { border-color: var(--ink); }
+.lang-search::placeholder { color: var(--gray); font-style: italic; }
+
+.lang-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid var(--rule);
+}
+.lang-item {
+    padding: 14px 16px; border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; transition: background 0.15s;
+    font-size: 14px;
+}
+.lang-item:hover { background: var(--paper-warm); }
+.lang-item .lang-name { font-weight: 600; }
+.lang-item .lang-flag { font-size: 18px; }
+.lang-item .lang-streak {
+    font-family: var(--mono); font-size: 11px; color: var(--green);
+}
+
+/* ═══════════════════════════════════════════════
+   SCREEN 2: SIDEBAR + GAME
+   ═══════════════════════════════════════════════ */
+.sidebar-demo {
+    display: flex; background: var(--paper); padding-top: 40px;
+}
+
+.sidebar {
+    width: var(--sidebar-width); min-height: calc(100vh - 80px);
+    border-right: 1px solid var(--rule);
+    padding: 24px 0; flex-shrink: 0;
+    display: flex; flex-direction: column;
+}
+.sidebar-logo {
+    font-family: var(--serif); font-size: 20px; font-weight: 800;
+    padding: 0 24px 20px; border-bottom: 1px solid var(--rule);
+    font-variation-settings: 'opsz' 72;
+}
+.sidebar-logo .dot { color: var(--accent); }
+
+.sidebar-section {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+}
+.sidebar-section-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gray);
+    padding: 0 24px 8px;
+}
+.sidebar-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 24px; cursor: pointer;
+    font-size: 14px; transition: all 0.15s;
+    border-left: 3px solid transparent;
+}
+.sidebar-item:hover { background: var(--paper-warm); }
+.sidebar-item.active {
+    background: var(--paper-warm);
+    border-left-color: var(--ink);
+    font-weight: 600;
+}
+.sidebar-item .item-icon { width: 20px; text-align: center; font-size: 16px; }
+.sidebar-item .item-badge {
+    margin-left: auto; font-family: var(--mono); font-size: 10px;
+    background: var(--accent); color: white; padding: 1px 6px;
+    border-radius: 2px;
+}
+
+.sidebar-profile {
+    margin-top: auto; padding: 16px 24px;
+    border-top: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer;
+}
+.sidebar-profile:hover { background: var(--paper-warm); }
+.sidebar-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 700; font-size: 14px;
+}
+.sidebar-profile-name { font-weight: 600; font-size: 14px; }
+.sidebar-profile-sub { font-size: 11px; color: var(--gray); }
+
+.game-area {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; padding: 40px 20px;
+}
+.game-header-bar {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 32px;
+}
+.game-header-bar h2 {
+    font-family: var(--serif); font-size: 24px; font-weight: 700;
+    font-variation-settings: 'opsz' 48;
+}
+.game-header-bar .game-number {
+    font-family: var(--mono); font-size: 11px; color: var(--gray);
+    letter-spacing: 0.05em;
+}
+
+/* Mini board */
+.mini-board { display: flex; flex-direction: column; gap: 5px; margin-bottom: 32px; }
+.mini-row { display: flex; gap: 5px; }
+.mini-tile {
+    width: 56px; height: 56px;
+    border: 2px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 26px; font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+.mini-tile.filled { border-color: var(--ink); }
+.mini-tile.g { background: var(--green); border-color: var(--green); color: white; }
+.mini-tile.y { background: var(--yellow); border-color: var(--yellow); color: white; }
+.mini-tile.x { background: var(--gray); border-color: var(--gray); color: white; }
+
+/* ═══════════════════════════════════════════════
+   SCREEN 3: END OF GAME
+   ═══════════════════════════════════════════════ */
+.endgame { background: var(--paper); display: flex; align-items: center; justify-content: center; }
+
+.endgame-card {
+    max-width: 480px; width: 100%;
+    border: 1px solid var(--rule);
+    background: white;
+}
+.endgame-top {
+    padding: 40px 40px 32px; text-align: center;
+    border-bottom: 1px solid var(--rule);
+}
+.endgame-result {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--green);
+    margin-bottom: 8px;
+}
+.endgame-word {
+    font-family: var(--serif); font-size: 48px; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 4px;
+    font-variation-settings: 'opsz' 144;
+}
+.endgame-pronunciation {
+    font-family: var(--serif); font-style: italic; color: var(--gray);
+    font-size: 16px; margin-bottom: 16px;
+}
+.endgame-definition {
+    font-size: 15px; color: #444; line-height: 1.55;
+    max-width: 360px; margin: 0 auto;
+    padding-top: 16px; border-top: 1px solid var(--rule);
+}
+.endgame-definition em { font-family: var(--serif); }
+
+/* Stats row */
+.endgame-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--rule);
+}
+.stat-cell {
+    padding: 20px 16px; text-align: center;
+    border-right: 1px solid var(--rule);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-number {
+    font-family: var(--serif); font-size: 32px; font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+}
+.stat-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-top: 2px;
+}
+
+/* Guess distribution */
+.endgame-distrib { padding: 28px 40px; border-bottom: 1px solid var(--rule); }
+.endgame-distrib h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 14px;
+}
+.distrib-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 6px; font-size: 13px;
+}
+.distrib-row .row-num {
+    font-family: var(--mono); width: 12px; text-align: right;
+    font-weight: 600; font-size: 12px;
+}
+.distrib-bar {
+    height: 22px; min-width: 24px;
+    background: var(--gray-soft);
+    display: flex; align-items: center; justify-content: flex-end;
+    padding: 0 8px; font-family: var(--mono); font-size: 11px;
+    font-weight: 600; color: white;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.distrib-bar.highlight { background: var(--green); }
+.distrib-bar:not(.highlight) { background: var(--gray); }
+
+/* Actions */
+.endgame-actions {
+    padding: 28px 40px;
+    display: flex; gap: 12px;
+}
+.btn-primary {
+    flex: 1; padding: 14px 20px;
+    background: var(--ink); color: var(--paper);
+    border: none; cursor: pointer;
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary {
+    flex: 1; padding: 14px 20px;
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--ink); cursor: pointer;
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+.endgame-next {
+    padding: 20px 40px; background: var(--paper-warm);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 14px;
+}
+.endgame-next .next-label { color: var(--gray); }
+.endgame-next .next-timer {
+    font-family: var(--mono); font-size: 22px; font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════════════════
+   SCREEN 4: BADGES / PROFILE
+   ═══════════════════════════════════════════════ */
+.badges-screen { background: var(--paper); }
+
+.profile-header {
+    max-width: 800px; margin: 0 auto 48px;
+    display: flex; align-items: center; gap: 32px;
+    padding-top: 40px;
+}
+.profile-avatar-lg {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 800; font-size: 32px;
+    flex-shrink: 0;
+}
+.profile-info h2 {
+    font-family: var(--serif); font-size: 28px; font-weight: 700;
+    font-variation-settings: 'opsz' 48;
+}
+.profile-info .profile-joined {
+    font-size: 13px; color: var(--gray); margin-top: 2px;
+}
+.profile-stats-row {
+    display: flex; gap: 24px; margin-top: 12px;
+}
+.profile-stat {
+    font-size: 13px; color: var(--gray);
+}
+.profile-stat strong {
+    font-family: var(--serif); font-size: 18px; color: var(--ink);
+    font-weight: 700; margin-right: 4px;
+}
+
+/* Badge Grid */
+.badges-section { max-width: 800px; margin: 0 auto; }
+.badges-section h3 {
+    font-family: var(--serif); font-size: 22px; font-weight: 700;
+    margin-bottom: 4px; font-variation-settings: 'opsz' 48;
+}
+.badges-section .section-sub {
+    font-size: 13px; color: var(--gray); margin-bottom: 20px;
+}
+.badge-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule);
+    margin-bottom: 48px;
+}
+.badge-card {
+    background: white; padding: 28px 20px; text-align: center;
+    transition: background 0.2s; cursor: default;
+}
+.badge-card:hover { background: var(--paper-warm); }
+.badge-card.locked { opacity: 0.35; }
+.badge-icon { font-size: 36px; margin-bottom: 10px; }
+.badge-name {
+    font-family: var(--serif); font-size: 14px; font-weight: 700;
+    margin-bottom: 4px;
+}
+.badge-desc { font-size: 11px; color: var(--gray); line-height: 1.4; }
+.badge-date {
+    font-family: var(--mono); font-size: 9px; color: var(--gray);
+    margin-top: 8px; letter-spacing: 0.05em;
+}
+.badge-progress {
+    width: 80%; height: 3px; background: var(--gray-soft);
+    margin: 10px auto 0; border-radius: 0;
+}
+.badge-progress-fill { height: 100%; background: var(--ink); }
+
+/* ═══════════════════════════════════════════════
+   SCREEN 5: SEMANTIC EXPLORER
+   ═══════════════════════════════════════════════ */
+.semantic-screen { background: #faf8f5; }
+
+.semantic-layout {
+    max-width: 900px; margin: 0 auto; padding-top: 40px;
+    display: grid; grid-template-columns: 1fr 340px; gap: 40px;
+}
+.semantic-sidebar-panel { border-left: 1px solid var(--rule); padding-left: 40px; }
+
+.semantic-title {
+    font-family: var(--serif); font-size: 28px; font-weight: 700;
+    margin-bottom: 4px; font-variation-settings: 'opsz' 48;
+}
+.semantic-subtitle {
+    font-size: 14px; color: var(--gray); margin-bottom: 32px;
+}
+
+/* Word map area */
+.word-map {
+    width: 100%; aspect-ratio: 1;
+    border: 1px solid var(--rule);
+    background: white;
+    position: relative;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+.map-dot {
+    position: absolute; width: 8px; height: 8px;
+    border-radius: 50%; transform: translate(-50%, -50%);
+}
+.map-dot.guess {
+    background: var(--ink); width: 10px; height: 10px;
+}
+.map-dot.cluster { background: var(--rule); width: 5px; height: 5px; }
+.map-label {
+    position: absolute; transform: translate(-50%, 8px);
+    font-family: var(--mono); font-size: 10px; white-space: nowrap;
+}
+.map-target {
+    position: absolute; width: 14px; height: 14px;
+    border: 2px solid var(--accent); border-radius: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%; left: 50%;
+}
+.map-target::after {
+    content: '?'; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif); font-size: 10px; font-weight: 700;
+    color: var(--accent);
+}
+.map-line {
+    position: absolute; height: 1px; background: var(--rule);
+    transform-origin: left center;
+}
+.map-axis-label {
+    position: absolute; font-family: var(--mono);
+    font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gray);
+}
+
+/* Compass */
+.compass-section { margin-bottom: 24px; }
+.compass-section h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 12px;
+}
+.compass-hints {
+    display: flex; flex-direction: column; gap: 8px;
+}
+.compass-hint {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--rule); background: white;
+    font-size: 14px;
+}
+.compass-arrow {
+    font-size: 18px; flex-shrink: 0; width: 24px; text-align: center;
+}
+.compass-text { color: #444; }
+.compass-text em { font-family: var(--serif); color: var(--ink); font-style: italic; }
+
+/* Proximity meter */
+.proximity-section { margin-bottom: 24px; }
+.proximity-section h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 10px;
+}
+.proximity-bar {
+    height: 12px; background: var(--gray-soft);
+    position: relative; border: 1px solid var(--rule);
+}
+.proximity-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db, #f1c40f, #e67e22, var(--green));
+    width: 62%;
+}
+.proximity-marker {
+    position: absolute; top: -6px; width: 2px; height: 24px;
+    background: var(--ink);
+}
+.proximity-labels {
+    display: flex; justify-content: space-between; margin-top: 4px;
+    font-family: var(--mono); font-size: 9px; color: var(--gray);
+    letter-spacing: 0.05em;
+}
+
+/* Guess list */
+.guess-list h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 12px;
+}
+.guess-entry {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+}
+.guess-num {
+    font-family: var(--mono); font-size: 11px; color: var(--gray);
+    width: 20px;
+}
+.guess-word { font-weight: 600; font-family: var(--serif); font-size: 16px; }
+.guess-score {
+    margin-left: auto; font-family: var(--mono); font-size: 12px;
+}
+.guess-score-dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    margin-right: 6px;
+}
+
+/* Semantic input */
+.semantic-input-area {
+    display: flex; gap: 8px; margin-top: 20px;
+}
+.semantic-input {
+    flex: 1; padding: 12px 16px;
+    border: 2px solid var(--ink); background: white;
+    font-family: var(--sans); font-size: 16px;
+    outline: none;
+}
+.semantic-input:focus { border-color: var(--accent); }
+.semantic-submit {
+    padding: 12px 24px; background: var(--ink); color: var(--paper);
+    border: none; font-family: var(--sans); font-size: 14px;
+    font-weight: 600; cursor: pointer; letter-spacing: 0.03em;
+}
+.semantic-submit:hover { opacity: 0.85; }
+.guesses-remaining {
+    font-family: var(--mono); font-size: 11px; color: var(--gray);
+    margin-top: 8px; letter-spacing: 0.05em;
+}
+
+/* ─── LUCIDE ICONS ─── */
+.icon {
+    width: 18px; height: 18px;
+    stroke: currentColor; stroke-width: 2;
+    fill: none; vertical-align: middle;
+    display: inline-block;
+}
+.badge-icon-svg { width: 32px; height: 32px; stroke-width: 1.5; }
+.badge-icon { font-size: inherit; display: flex; align-items: center; justify-content: center; }
+.streak-icon { width: 14px; height: 14px; color: inherit; }
+.ab-icon .icon { width: 22px; height: 22px; }
+.ch-share-btn .icon, .share-btn .icon { width: 16px; height: 16px; }
+
+/* ─── SHARED TILE STYLES ─── */
+.tile {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 700; text-transform: uppercase;
+    border: 2px solid var(--rule);
+}
+.tile.g { background: var(--green); border-color: var(--green); color: white; }
+.tile.y { background: var(--yellow); border-color: var(--yellow); color: white; }
+.tile.x { background: var(--gray); border-color: var(--gray); color: white; }
+.tile.filled { border-color: var(--ink); }
+.tile.empty { border-color: var(--rule); }
+
+/* ═══════════════════════════════════════════════
+   REMAINING INDICATOR (shared by all multi-board)
+   ═══════════════════════════════════════════════ */
+.remaining-indicator {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    text-align: center;
+    padding: 6px 0 2px;
+}
+.solved-indicator {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--green);
+    text-align: center;
+    padding: 6px 0 2px;
+    font-weight: 600;
+}
+
+/* ─── GAME HEADER BAR ─── */
+.game-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; max-width: 600px;
+    padding: 8px 4px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 12px;
+}
+.game-bar-left, .game-bar-right {
+    display: flex; align-items: center; gap: 8px;
+}
+.game-bar-left .icon, .game-bar-right .icon {
+    width: 20px; height: 20px; color: var(--gray);
+    cursor: pointer;
+}
+.game-bar-left .icon:hover, .game-bar-right .icon:hover {
+    color: var(--ink);
+}
+.game-bar-title {
+    text-align: center; flex: 1;
+}
+.game-bar-title h2 {
+    font-family: var(--serif); font-size: 20px; font-weight: 800;
+    font-variation-settings: 'opsz' 72;
+    display: inline;
+}
+.game-bar-title .game-bar-sub {
+    font-family: var(--mono); font-size: 10px; color: var(--gray);
+    letter-spacing: 0.08em; display: block; margin-top: 1px;
+}
+
+/* ═══════════════════════════════════════════════
+   DORDLE — 2 boards side by side
+   ═══════════════════════════════════════════════ */
+/* Game screens: viewport-height flex containers */
+.dordle-screen, .tridle-screen, .quordle-screen {
+    display: flex; flex-direction: column; align-items: center;
+    height: 100vh; max-height: 100vh; overflow: hidden;
+    padding: 48px 16px 12px;
+}
+.dordle-screen .game-bar, .tridle-screen .game-bar, .quordle-screen .game-bar {
+    flex-shrink: 0;
+}
+.dordle-screen .shared-keyboard, .tridle-screen .shared-keyboard, .quordle-screen .shared-keyboard {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+.dordle-screen {}
+.dordle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 560px; width: 100%; flex: 1; min-height: 0; overflow: hidden; }
+.d-board { border: 1px solid var(--rule); padding: 10px; background: white; display: flex; flex-direction: column; }
+.d-board.solved { background: var(--green-soft); border-color: var(--green); }
+.d-board-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; display: flex; justify-content: space-between; }
+.d-board-label .solved-tag { color: var(--green); font-weight: 600; }
+.d-rows { display: flex; flex-direction: column; gap: 3px; flex: 1; min-height: 0; }
+.d-row { display: flex; gap: 3px; width: 100%; }
+.d-tile { width: calc((100% - 12px) / 5); aspect-ratio: 1; height: auto; font-size: 18px; }
+
+/* ═══════════════════════════════════════════════
+   TRIDLE — Stacked vertically (expanded/collapsed)
+   ═══════════════════════════════════════════════ */
+.tridle-screen {}
+
+.tridle-stack {
+    max-width: 400px; width: 100%;
+    display: flex; flex-direction: column; gap: 6px;
+    flex: 1; min-height: 0; overflow: hidden;
+}
+
+/* Mini (collapsed) board */
+.t-board-mini {
+    border: 1px solid var(--rule); padding: 10px 12px;
+    background: white; cursor: pointer;
+    transition: all 0.2s;
+}
+.t-board-mini:hover { border-color: var(--ink); background: var(--paper-warm); }
+.t-board-mini.solved { background: var(--green-soft); border-color: var(--green); }
+.t-mini-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 6px;
+}
+.t-mini-title {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gray); font-weight: 600;
+}
+.t-mini-status {
+    font-family: var(--mono); font-size: 9px; color: var(--green);
+    letter-spacing: 0.08em; font-weight: 600;
+}
+.t-mini-toggle {
+    margin-left: auto;
+    font-family: var(--mono); font-size: 9px; color: var(--gray);
+    letter-spacing: 0.05em;
+}
+.t-mini-rows { display: flex; flex-direction: column; gap: 2px; }
+.t-mini-rows .t-row { display: flex; gap: 2px; width: 100%; }
+.t-mini-rows .t-tile {
+    width: calc((100% - 8px) / 5); aspect-ratio: 1; height: auto;
+    font-size: 12px;
+}
+
+/* Expanded board */
+.t-board-expanded {
+    border: 2px solid var(--ink); padding: 12px;
+    background: white; flex: 1; min-height: 0;
+    display: flex; flex-direction: column;
+}
+.t-board-expanded.solved { background: var(--green-soft); border-color: var(--green); }
+.t-expanded-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px;
+}
+.t-expanded-title {
+    font-family: var(--serif); font-size: 16px; font-weight: 700;
+    font-variation-settings: 'opsz' 48;
+}
+.t-expanded-status {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--green); font-weight: 600;
+}
+.t-expanded-rows { display: flex; flex-direction: column; gap: 4px; flex: 1; min-height: 0; }
+.t-expanded-rows .t-row { display: flex; gap: 4px; width: 100%; }
+.t-expanded-rows .t-tile {
+    width: calc((100% - 16px) / 5); aspect-ratio: 1; height: auto;
+    font-size: 22px;
+}
+
+/* ═══════════════════════════════════════════════
+   QUORDLE — 4 boards, 2x2 grid always visible
+   ═══════════════════════════════════════════════ */
+.quordle-screen {}
+
+.quordle-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    max-width: 600px; width: 100%; flex: 1; min-height: 0; overflow: hidden;
+}
+.q-board {
+    border: 1px solid var(--rule); padding: 8px;
+    background: white; display: flex; flex-direction: column;
+    min-height: 0; overflow: hidden;
+}
+.q-board.solved { background: var(--green-soft); border-color: var(--green); }
+.q-board-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 6px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.q-board-label .solved-tag { color: var(--green); font-weight: 600; }
+.q-rows { display: flex; flex-direction: column; gap: 2px; flex: 1; min-height: 0; }
+.q-row { display: flex; gap: 2px; width: 100%; }
+.q-tile {
+    width: calc((100% - 8px) / 5); aspect-ratio: 1; height: auto;
+    font-size: 14px;
+}
+
+/* Shared keyboard for quordle/tridle/dordle */
+.shared-keyboard {
+    max-width: 520px; width: 100%;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+}
+.kb-row { display: flex; gap: 4px; width: 100%; justify-content: center; }
+.kb-key {
+    min-width: 36px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    text-transform: uppercase;
+    background: #e2ddd4; color: var(--ink);
+    border: none; cursor: pointer;
+    transition: background 0.15s;
+}
+.kb-key:hover { filter: brightness(0.95); }
+.kb-key.split { color: white; }
+.kb-key.wide { min-width: 56px; font-size: 11px; letter-spacing: 0.05em; }
+
+/* ═══════════════════════════════════════════════
+   SCREEN 4: LANGUAGE SELECTION — Full page
+   ═══════════════════════════════════════════════ */
+.lang-select-screen {
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 60px;
+}
+.lang-select-header {
+    text-align: center; margin-bottom: 32px; padding-top: 20px;
+}
+.lang-select-header h2 {
+    font-family: var(--serif); font-size: 36px; font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+}
+.lang-select-header p {
+    font-size: 15px; color: var(--gray); margin-top: 6px;
+}
+
+/* Search + filters */
+.lang-controls {
+    max-width: 700px; width: 100%; margin-bottom: 28px;
+}
+.lang-search-bar {
+    display: flex; gap: 0; margin-bottom: 16px;
+    border: 1px solid var(--rule);
+}
+.lang-search-input {
+    flex: 1; padding: 14px 18px; border: none; background: white;
+    font-family: var(--sans); font-size: 15px; outline: none;
+}
+.lang-search-input::placeholder { color: var(--gray); font-style: italic; }
+.lang-search-count {
+    padding: 14px 18px; background: var(--paper-warm);
+    font-family: var(--mono); font-size: 12px; color: var(--gray);
+    display: flex; align-items: center; border-left: 1px solid var(--rule);
+}
+
+.lang-filters {
+    display: flex; gap: 8px; flex-wrap: wrap;
+}
+.lang-filter-btn {
+    padding: 6px 14px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--rule); background: transparent;
+    cursor: pointer; transition: all 0.15s;
+}
+.lang-filter-btn:hover { background: var(--paper-warm); }
+.lang-filter-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* Language cards — richer than homepage version */
+.lang-card-grid {
+    max-width: 700px; width: 100%;
+    display: flex; flex-direction: column; gap: 0;
+    border: 1px solid var(--rule);
+}
+.lang-card {
+    display: grid; grid-template-columns: 44px 1fr auto;
+    gap: 16px; align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--rule);
+    background: white;
+    cursor: pointer; transition: background 0.15s;
+}
+.lang-card:last-child { border-bottom: none; }
+.lang-card:hover { background: var(--paper-warm); }
+.lang-card.has-streak { border-left: 3px solid var(--green); }
+
+.lc-flag { font-size: 28px; text-align: center; }
+.lc-name {
+    font-family: var(--serif); font-size: 18px; font-weight: 700;
+    font-variation-settings: 'opsz' 48;
+}
+.lc-native { font-size: 13px; color: var(--gray); }
+.lc-modes {
+    display: flex; gap: 4px; margin-top: 4px;
+}
+.lc-mode-dot {
+    font-family: var(--mono); font-size: 8px; padding: 2px 6px;
+    background: var(--gray-soft); color: var(--gray);
+    letter-spacing: 0.05em;
+}
+.lc-mode-dot.available { background: var(--green-soft); color: var(--green); }
+
+.lc-stats { text-align: right; }
+.lc-streak {
+    font-family: var(--serif); font-size: 22px; font-weight: 700;
+    color: var(--green);
+    font-variation-settings: 'opsz' 72;
+}
+.lc-streak-label {
+    font-family: var(--mono); font-size: 9px; color: var(--gray);
+    letter-spacing: 0.08em;
+}
+.lc-winrate { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+/* Continent grouping headers */
+.lang-group-header {
+    padding: 10px 20px; background: var(--paper-warm);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray);
+    border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between;
+}
+
+/* ═══════════════════════════════════════════════
+   SCREEN 4: SPEED STREAK MODE
+   ═══════════════════════════════════════════════ */
+.speed-screen {
+    display: flex; flex-direction: column; align-items: center;
+    background: var(--ink); color: var(--paper);
+    padding-top: 60px;
+}
+.speed-header { text-align: center; margin-bottom: 24px; padding-top: 20px; }
+.speed-header h2 {
+    font-family: var(--serif); font-size: 32px; font-weight: 800;
+    font-variation-settings: 'opsz' 72;
+}
+.speed-header .sh-sub {
+    font-family: var(--mono); font-size: 11px; color: #8c8c8c;
+    letter-spacing: 0.1em; margin-top: 4px;
+}
+
+/* Timer bar */
+.speed-timer-bar {
+    max-width: 500px; width: 100%; margin-bottom: 28px;
+}
+.speed-timer-track {
+    height: 6px; background: rgba(255,255,255,0.1);
+    position: relative;
+}
+.speed-timer-fill {
+    height: 100%; background: var(--accent);
+    width: 68%; transition: width 1s linear;
+}
+.speed-timer-labels {
+    display: flex; justify-content: space-between; margin-top: 6px;
+    font-family: var(--mono); font-size: 11px; color: #8c8c8c;
+}
+.speed-timer-labels .stl-time {
+    font-size: 28px; font-weight: 600; color: var(--paper);
+    letter-spacing: 0.05em;
+}
+
+/* Score strip */
+.speed-score-strip {
+    display: flex; gap: 16px; margin-bottom: 28px;
+    font-family: var(--mono); font-size: 12px; color: #8c8c8c;
+}
+.speed-score-item { display: flex; align-items: center; gap: 6px; }
+.speed-score-item strong {
+    font-family: var(--serif); font-size: 24px; color: var(--paper);
+    font-weight: 700;
+}
+
+/* Speed board — compact */
+.speed-board {
+    display: flex; flex-direction: column; gap: 4px;
+    margin-bottom: 20px;
+}
+.speed-row { display: flex; gap: 4px; }
+.speed-tile {
+    width: 52px; height: 52px; font-size: 22px;
+    border-color: rgba(255,255,255,0.15);
+}
+.speed-tile.empty { border-color: rgba(255,255,255,0.08); }
+.speed-tile.filled { border-color: rgba(255,255,255,0.3); color: var(--paper); }
+
+/* Solved words ticker */
+.speed-solved-ticker {
+    max-width: 500px; width: 100%;
+    display: flex; gap: 8px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 24px;
+}
+.solved-word {
+    font-family: var(--serif); font-size: 13px; font-weight: 700;
+    padding: 4px 10px; background: rgba(45, 133, 68, 0.2);
+    color: var(--green); letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════
+   SCREEN 5: ARCHIVE — Calendar browser
+   ═══════════════════════════════════════════════ */
+.archive-screen {
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 60px;
+}
+.archive-header { text-align: center; margin-bottom: 32px; padding-top: 20px; }
+.archive-header h2 {
+    font-family: var(--serif); font-size: 32px; font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+}
+.archive-header p { font-size: 14px; color: var(--gray); margin-top: 6px; }
+.archive-header .premium-tag {
+    display: inline-block; margin-top: 10px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 4px 12px;
+    border: 1px solid var(--accent); color: var(--accent);
+}
+
+.archive-layout {
+    max-width: 700px; width: 100%;
+    display: grid; grid-template-columns: 1fr 240px; gap: 32px;
+}
+
+/* Calendar */
+.archive-calendar {
+    border: 1px solid var(--rule); background: white;
+}
+.cal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px; border-bottom: 1px solid var(--rule);
+}
+.cal-header h3 {
+    font-family: var(--serif); font-size: 18px; font-weight: 700;
+}
+.cal-nav { display: flex; gap: 8px; }
+.cal-nav button {
+    width: 28px; height: 28px; border: 1px solid var(--rule);
+    background: transparent; cursor: pointer; font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+}
+.cal-nav button:hover { background: var(--paper-warm); }
+
+.cal-grid { padding: 12px 18px 18px; }
+.cal-weekdays {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 6px;
+}
+.cal-weekday {
+    text-align: center; font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray);
+    padding: 4px 0;
+}
+.cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.cal-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; cursor: pointer; transition: all 0.15s;
+    position: relative;
+}
+.cal-day:hover { background: var(--paper-warm); }
+.cal-day.won { background: var(--green-soft); color: var(--green); font-weight: 600; }
+.cal-day.lost { background: #f8d7da; color: var(--accent); }
+.cal-day.today { font-weight: 700; box-shadow: inset 0 0 0 2px var(--ink); }
+.cal-day.future { color: var(--gray-soft); pointer-events: none; }
+.cal-day.empty { pointer-events: none; }
+.cal-day .day-dots {
+    position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 2px;
+}
+.day-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+}
+.day-dot.w { background: var(--green); }
+.day-dot.l { background: var(--accent); }
+
+/* Archive sidebar stats */
+.archive-month-stats {
+    border: 1px solid var(--rule); background: white;
+    padding: 20px; margin-bottom: 16px;
+}
+.archive-month-stats h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 12px;
+}
+.ams-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 6px 0; border-bottom: 1px solid var(--rule);
+    font-size: 13px;
+}
+.ams-row:last-child { border-bottom: none; }
+.ams-row .ams-label { color: var(--gray); }
+.ams-row .ams-value {
+    font-family: var(--serif); font-size: 18px; font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════
+   SCREEN 6: ACCOUNT / SIGN-IN
+   ═══════════════════════════════════════════════ */
+.account-screen {
+    display: flex; align-items: center; justify-content: center;
+}
+.account-card {
+    max-width: 400px; width: 100%;
+    border: 1px solid var(--rule); background: white;
+}
+.account-top {
+    padding: 40px 36px 32px; text-align: center;
+    border-bottom: 1px solid var(--rule);
+}
+.account-top h2 {
+    font-family: var(--serif); font-size: 28px; font-weight: 700;
+    font-variation-settings: 'opsz' 72; margin-bottom: 8px;
+}
+.account-top p { font-size: 14px; color: var(--gray); line-height: 1.5; }
+
+.account-benefits {
+    padding: 24px 36px; border-bottom: 1px solid var(--rule);
+}
+.account-benefit {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 8px 0; font-size: 14px;
+}
+.ab-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.ab-text .ab-title { font-weight: 600; }
+.ab-text .ab-desc { font-size: 12px; color: var(--gray); }
+
+.account-actions { padding: 28px 36px; }
+.auth-btn {
+    width: 100%; padding: 14px; margin-bottom: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; border: 1px solid var(--rule);
+}
+.auth-btn.google { background: white; color: var(--ink); }
+.auth-btn.google:hover { background: var(--paper-warm); }
+.auth-btn.apple { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.auth-btn.apple:hover { opacity: 0.9; }
+.auth-btn.email { background: transparent; color: var(--ink); }
+.auth-btn.email:hover { background: var(--paper-warm); }
+
+.account-footer {
+    padding: 16px 36px; border-top: 1px solid var(--rule);
+    text-align: center; font-size: 12px; color: var(--gray);
+}
+.account-footer a { color: var(--accent); text-decoration: none; }
+.account-skip {
+    display: block; margin-top: 12px;
+    font-family: var(--mono); font-size: 11px; color: var(--gray);
+    cursor: pointer; text-decoration: none;
+    letter-spacing: 0.05em;
+}
+.account-skip:hover { color: var(--ink); }
+
+/* ═══════════════════════════════════════════════
+   SCREEN 7: LEADERBOARD
+   ═══════════════════════════════════════════════ */
+.leaderboard-screen {
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 60px;
+}
+.lb-header { text-align: center; margin-bottom: 28px; padding-top: 20px; }
+.lb-header h2 {
+    font-family: var(--serif); font-size: 32px; font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+}
+
+/* Period tabs */
+.lb-tabs {
+    display: flex; gap: 0; border: 1px solid var(--rule);
+    margin-bottom: 28px;
+}
+.lb-tab {
+    padding: 10px 24px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; background: transparent;
+    border: none; border-right: 1px solid var(--rule);
+    transition: all 0.15s;
+}
+.lb-tab:last-child { border-right: none; }
+.lb-tab:hover { background: var(--paper-warm); }
+.lb-tab.active { background: var(--ink); color: var(--paper); }
+
+/* Leaderboard table */
+.lb-table {
+    max-width: 600px; width: 100%;
+    border: 1px solid var(--rule); background: white;
+}
+.lb-row {
+    display: grid; grid-template-columns: 48px 1fr 80px 80px 80px;
+    align-items: center; padding: 12px 16px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px; transition: background 0.15s;
+}
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: var(--paper-warm); }
+.lb-row.you { background: var(--green-soft); }
+.lb-row.header {
+    background: var(--paper-warm);
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gray);
+}
+.lb-rank {
+    font-family: var(--serif); font-size: 20px; font-weight: 700;
+    text-align: center;
+}
+.lb-rank.gold { color: #d4a017; }
+.lb-rank.silver { color: #8c8c8c; }
+.lb-rank.bronze { color: #a0522d; }
+.lb-user { display: flex; align-items: center; gap: 10px; }
+.lb-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gray-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 12px; font-weight: 700;
+}
+.lb-username { font-weight: 600; }
+.lb-you-tag {
+    font-family: var(--mono); font-size: 8px; background: var(--green);
+    color: white; padding: 1px 5px; letter-spacing: 0.08em;
+    margin-left: 4px;
+}
+.lb-stat { text-align: center; font-family: var(--mono); font-size: 12px; }
+
+/* ═══════════════════════════════════════════════
+   SCREEN 8: GAME MODE SELECTION MODAL
+   ═══════════════════════════════════════════════ */
+.mode-select-screen {
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.02);
+}
+.mode-select-card {
+    max-width: 540px; width: 100%;
+    border: 1px solid var(--rule); background: white;
+}
+.mode-select-header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid var(--rule);
+}
+.mode-select-header h2 {
+    font-family: var(--serif); font-size: 24px; font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+}
+.mode-select-header p {
+    font-size: 13px; color: var(--gray); margin-top: 4px;
+}
+.mode-select-header .current-lang {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 10px; padding: 4px 12px;
+    background: var(--paper-warm); font-size: 13px; font-weight: 600;
+}
+
+.mode-list { padding: 8px 0; }
+.mode-list-item {
+    display: grid; grid-template-columns: 48px 1fr auto;
+    gap: 14px; align-items: center;
+    padding: 16px 32px; cursor: pointer;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.15s;
+}
+.mode-list-item:last-child { border-bottom: none; }
+.mode-list-item:hover { background: var(--paper-warm); }
+.mode-list-item.locked { opacity: 0.4; pointer-events: none; }
+
+.mli-visual {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper-warm); border: 1px solid var(--rule);
+}
+.mli-visual .icon { width: 22px; height: 22px; stroke-width: 1.8; color: var(--ink); }
+
+.mli-info h4 {
+    font-family: var(--serif); font-size: 18px; font-weight: 700;
+    font-variation-settings: 'opsz' 48;
+}
+.mli-info p { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+.mli-right { text-align: right; }
+.mli-status {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.mli-status.completed { color: var(--green); }
+.mli-status.available { color: var(--ink); }
+.mli-status.locked { color: var(--gray); }
+.mli-streak {
+    font-family: var(--serif); font-size: 16px; font-weight: 700;
+    color: var(--green);
+}
+
+/* ═══════════════════════════════════════════════
+   SCREEN 9: CHALLENGE A FRIEND
+   ═══════════════════════════════════════════════ */
+.challenge-screen {
+    display: flex; align-items: center; justify-content: center;
+}
+.challenge-card {
+    max-width: 440px; width: 100%;
+    border: 1px solid var(--rule); background: white;
+    text-align: center;
+}
+.challenge-top { padding: 40px 36px 28px; border-bottom: 1px solid var(--rule); }
+.challenge-top h2 {
+    font-family: var(--serif); font-size: 28px; font-weight: 700;
+    font-variation-settings: 'opsz' 72; margin-bottom: 6px;
+}
+.challenge-top p { font-size: 14px; color: var(--gray); }
+
+.challenge-preview {
+    padding: 24px 36px; border-bottom: 1px solid var(--rule);
+}
+.challenge-tiles {
+    display: flex; gap: 4px; justify-content: center; margin-bottom: 12px;
+}
+.ch-tile {
+    width: 44px; height: 44px; font-size: 20px;
+}
+
+.challenge-word-hidden {
+    font-family: var(--mono); font-size: 12px; color: var(--gray);
+    letter-spacing: 0.1em;
+}
+
+.challenge-link-section { padding: 24px 36px; border-bottom: 1px solid var(--rule); }
+.challenge-link-box {
+    display: flex; gap: 0; border: 1px solid var(--rule);
+}
+.challenge-link-input {
+    flex: 1; padding: 12px 14px; border: none;
+    font-family: var(--mono); font-size: 12px;
+    background: var(--paper); color: var(--gray);
+    outline: none;
+}
+.challenge-link-copy {
+    padding: 12px 18px; background: var(--ink); color: var(--paper);
+    border: none; font-family: var(--sans); font-size: 13px;
+    font-weight: 600; cursor: pointer;
+}
+.challenge-link-copy:hover { opacity: 0.85; }
+
+.challenge-share { padding: 20px 36px; }
+.challenge-share-btns { display: flex; gap: 10px; justify-content: center; }
+.ch-share-btn {
+    padding: 10px 20px; border: 1px solid var(--rule);
+    background: transparent; cursor: pointer;
+    font-family: var(--sans); font-size: 13px;
+    display: flex; align-items: center; gap: 6px;
+    transition: all 0.2s;
+}
+.ch-share-btn:hover { background: var(--paper-warm); }
+
+/* ─── FLAG ICONS ─── */
+.flag-icon {
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+/* ═══════════════════════════════════════════════
+   EXPLORATORY — Product Architecture Options
+   ═══════════════════════════════════════════════ */
+.explore-divider {
+    min-height: auto; padding: 40px; text-align: center;
+    background: var(--ink); color: var(--paper);
+    border: none;
+}
+.explore-divider h2 {
+    font-family: var(--serif); font-size: 36px; font-weight: 800;
+    font-variation-settings: 'opsz' 72;
+}
+.explore-divider p {
+    font-size: 15px; color: var(--gray); margin-top: 8px;
+    max-width: 500px; margin-left: auto; margin-right: auto;
+}
+
+.explore-screen {
+    padding: 80px 40px 60px; position: relative;
+    border-bottom: 1px solid var(--rule);
+    min-height: auto;
+}
+.explore-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
+}
+.explore-title {
+    font-family: var(--serif); font-size: 28px; font-weight: 800;
+    font-variation-settings: 'opsz' 72; margin-bottom: 6px;
+}
+.explore-desc {
+    font-size: 14px; color: var(--gray); max-width: 600px; margin-bottom: 8px;
+}
+.explore-pros-cons {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    max-width: 600px; margin: 16px 0 32px;
+}
+.explore-pros, .explore-cons {
+    font-size: 13px; line-height: 1.6;
+}
+.explore-pros h4, .explore-cons h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 6px;
+}
+.explore-pros h4 { color: var(--green); }
+.explore-cons h4 { color: var(--accent); }
+.explore-pros li, .explore-cons li { margin-bottom: 4px; list-style: none; padding-left: 16px; position: relative; }
+.explore-pros li::before { content: '+'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+.explore-cons li::before { content: '−'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+/* Mockup containers */
+.mockup-frame {
+    max-width: 380px; width: 100%;
+    border: 2px solid var(--ink);
+    background: white;
+    margin-bottom: 24px;
+}
+.mockup-frame.wide { max-width: 600px; }
+.mockup-frame.phone { max-width: 340px; }
+
+.mockup-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; border-bottom: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 9px; color: var(--gray);
+    letter-spacing: 0.1em; text-transform: uppercase;
+}
+.mockup-content { padding: 20px; }
+.mockup-content h3 {
+    font-family: var(--serif); font-size: 20px; font-weight: 700;
+    margin-bottom: 12px; font-variation-settings: 'opsz' 48;
+}
+
+/* Reusable mockup elements */
+.mock-tabs {
+    display: flex; gap: 0; border-bottom: 2px solid var(--rule); margin-bottom: 16px;
+}
+.mock-tab {
+    padding: 8px 16px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray);
+    cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px;
+}
+.mock-tab.active { color: var(--ink); border-color: var(--ink); font-weight: 600; }
+
+.mock-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.mock-pill {
+    padding: 5px 12px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.06em; border: 1px solid var(--rule); background: white;
+}
+.mock-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.mock-pill.accent { background: var(--accent); color: white; border-color: var(--accent); }
+
+.mock-list-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+}
+.mock-list-item:last-child { border-bottom: none; }
+.mock-list-item .mock-icon { width: 32px; height: 32px; background: var(--paper-warm); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.mock-list-item .mock-label { font-weight: 600; }
+.mock-list-item .mock-sub { font-size: 11px; color: var(--gray); }
+.mock-list-item .mock-right { margin-left: auto; font-family: var(--mono); font-size: 10px; color: var(--gray); }
+
+.mock-btn {
+    display: inline-block; padding: 10px 20px;
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    cursor: pointer; text-align: center;
+}
+.mock-btn.primary { background: var(--ink); color: var(--paper); border: none; }
+.mock-btn.secondary { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.mock-btn.full { display: block; width: 100%; }
+
+.mock-toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+}
+.mock-toggle {
+    width: 36px; height: 20px; border-radius: 10px;
+    background: var(--gray-soft); position: relative;
+}
+.mock-toggle.on { background: var(--green); }
+.mock-toggle::after {
+    content: ''; position: absolute; top: 2px; left: 2px;
+    width: 16px; height: 16px; border-radius: 50%; background: white;
+    transition: left 0.2s;
+}
+.mock-toggle.on::after { left: 18px; }
+
+.mock-lobby {
+    border: 1px solid var(--rule); padding: 16px; margin-bottom: 12px;
+}
+.mock-lobby-players { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.mock-player {
+    display: flex; align-items: center; gap: 10px; font-size: 13px;
+}
+.mock-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 12px; font-weight: 700;
+}
+.mock-avatar.waiting { background: var(--gray-soft); color: var(--gray); }
+.mock-player-name { font-weight: 600; }
+.mock-player-status { font-family: var(--mono); font-size: 10px; color: var(--gray); margin-left: auto; }
+.mock-player-status.ready { color: var(--green); }
+
+/* Party in-game progress */
+.mock-progress-strip {
+    display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--rule);
+    margin-bottom: 12px;
+}
+.mock-progress-player {
+    display: flex; align-items: center; gap: 6px; font-size: 11px;
+}
+.mock-progress-dots { display: flex; gap: 2px; }
+.mock-progress-dot {
+    width: 8px; height: 8px; border-radius: 1px;
+}
+.mock-progress-dot.done { background: var(--green); }
+.mock-progress-dot.current { background: var(--yellow); }
+.mock-progress-dot.empty { background: var(--gray-soft); }
+
+/* Party results */
+.mock-results { margin-top: 12px; }
+.mock-result-row {
+    display: grid; grid-template-columns: 32px 1fr 60px 60px;
+    align-items: center; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid var(--rule);
+    font-size: 13px;
+}
+.mock-result-rank {
+    font-family: var(--serif); font-size: 20px; font-weight: 700; text-align: center;
+}
+.mock-result-rank.gold { color: #d4a017; }
+.mock-result-rank.silver { color: var(--gray); }
+.mock-result-stat { font-family: var(--mono); font-size: 11px; text-align: center; color: var(--gray); }
+
+.mock-note {
+    font-family: var(--mono); font-size: 10px; color: var(--gray);
+    letter-spacing: 0.05em; margin-top: 8px; font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════
+   REFINED: Option F Hybrid (E+D)
+   ═══════════════════════════════════════════════ */
+.refined-section {
+    padding: 60px 40px; position: relative;
+    border-bottom: 1px solid var(--rule);
+    min-height: auto;
+}
+.refined-divider {
+    min-height: auto; padding: 40px; text-align: center;
+    background: var(--accent); color: var(--paper);
+    border: none;
+}
+.refined-divider h2 {
+    font-family: var(--serif); font-size: 32px; font-weight: 800;
+    font-variation-settings: 'opsz' 72;
+}
+.refined-divider p {
+    font-size: 14px; color: var(--accent-soft); margin-top: 6px;
+    max-width: 480px; margin-left: auto; margin-right: auto;
+}
+
+.refined-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+}
+.refined-title {
+    font-family: var(--serif); font-size: 24px; font-weight: 800;
+    font-variation-settings: 'opsz' 72; margin-bottom: 6px;
+}
+.refined-desc {
+    font-size: 14px; color: var(--gray); max-width: 500px; margin-bottom: 24px;
+}
+
+/* Phone mockup frame */
+.phone-frame {
+    width: 340px; border: 2px solid var(--ink); border-radius: 20px;
+    overflow: hidden; background: white;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.phone-frame .pf-status {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 16px; font-family: var(--mono); font-size: 9px; color: var(--gray);
+    background: var(--paper);
+}
+.phone-frame .pf-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; border-bottom: 1px solid var(--rule);
+}
+.phone-frame .pf-header-title {
+    font-family: var(--serif); font-size: 18px; font-weight: 800;
+    font-variation-settings: 'opsz' 72;
+}
+.phone-frame .pf-header-icons {
+    display: flex; gap: 12px; color: var(--gray);
+}
+.phone-frame .pf-body { padding: 16px; }
+
+/* Config bar */
+.config-bar {
+    display: flex; align-items: center; gap: 4px;
+    padding: 8px 12px; background: var(--paper-warm);
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap; justify-content: center;
+}
+.config-pill {
+    padding: 4px 10px; font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.05em; border: 1px solid var(--rule);
+    background: white; color: var(--gray); cursor: pointer;
+}
+.config-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.config-pill.party { background: var(--accent); color: white; border-color: var(--accent); }
+.config-divider { width: 1px; height: 16px; background: var(--rule); margin: 0 4px; }
+
+/* Hub cards */
+.hub-section-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 8px;
+}
+.hub-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px; border: 1px solid var(--rule); margin-bottom: 6px;
+    cursor: pointer; transition: background 0.15s;
+}
+.hub-card:hover { background: var(--paper-warm); }
+.hub-card-icon {
+    width: 36px; height: 36px; background: var(--paper-warm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+}
+.hub-card-info { flex: 1; }
+.hub-card-title { font-weight: 600; font-size: 14px; }
+.hub-card-sub { font-size: 11px; color: var(--gray); margin-top: 1px; }
+.hub-card-action {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+    flex-shrink: 0;
+}
+.hub-card-action.solved { color: var(--green); }
+.hub-card-action.play { color: var(--ink); }
+
+.hub-langs {
+    display: flex; gap: 8px; align-items: center; margin-bottom: 16px;
+}
+.hub-lang-flag {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid var(--rule); cursor: pointer;
+    transition: border-color 0.15s;
+}
+.hub-lang-flag:hover { border-color: var(--ink); }
+.hub-lang-flag.active { border-color: var(--ink); }
+.hub-lang-add {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px dashed var(--rule); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 14px; color: var(--gray); cursor: pointer;
+}
+
+.hub-social-row { display: flex; gap: 8px; }
+.hub-social-btn {
+    flex: 1; padding: 10px; text-align: center;
+    border: 1px solid var(--rule); font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s;
+}
+.hub-social-btn:hover { background: var(--paper-warm); }
+
+.hub-stats {
+    display: flex; justify-content: center; gap: 16px;
+    padding: 12px 0; font-size: 12px; color: var(--gray);
+    border-top: 1px solid var(--rule); margin-top: 16px;
+}
+.hub-stats strong {
+    font-family: var(--serif); font-size: 16px; color: var(--ink);
+    font-weight: 700; margin-right: 2px;
+}
+
+/* Board picker */
+.board-picker-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--rule);
+    cursor: pointer; transition: background 0.15s;
+}
+.board-picker-item:hover { background: var(--paper-warm); margin: 0 -16px; padding: 14px 16px; }
+.board-picker-icon {
+    width: 40px; height: 40px; background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.board-picker-icon .icon { width: 20px; height: 20px; color: var(--ink); }
+.board-picker-info { flex: 1; }
+.board-picker-name { font-family: var(--serif); font-size: 16px; font-weight: 700; font-variation-settings: 'opsz' 48; }
+.board-picker-sub { font-size: 11px; color: var(--gray); margin-top: 1px; }
+.board-picker-arrow { font-size: 16px; color: var(--gray); }
+
+/* Party overlay */
+.party-overlay {
+    border: 1px solid var(--rule); border-radius: 12px 12px 0 0;
+    background: white; margin: 0 -16px -16px;
+    padding: 20px 16px;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+}
+.party-overlay-handle {
+    width: 32px; height: 4px; background: var(--gray-soft);
+    border-radius: 2px; margin: 0 auto 16px;
+}
+.party-overlay h3 {
+    font-family: var(--serif); font-size: 18px; font-weight: 700;
+    margin-bottom: 4px; font-variation-settings: 'opsz' 48;
+}
+.party-overlay .party-sub {
+    font-size: 12px; color: var(--gray); margin-bottom: 16px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+    body { overflow-x: hidden; }
+    .screen { padding: 80px 16px 40px; }
+    .screen-label { left: 16px; }
+    .section-nav { display: none; }
+
+    /* Homepage */
+    .mode-grid { grid-template-columns: 1fr; }
+    .lang-grid { grid-template-columns: repeat(2, 1fr); }
+    .hp-masthead h1 { font-size: 40px; }
+    .hp-tagline { font-size: 17px; padding: 0 8px; }
+    .lang-section { padding: 0; max-width: 100%; }
+    .lang-search { max-width: 100%; }
+
+    /* Sidebar + game */
+    .sidebar-demo { flex-direction: column; }
+    .sidebar { width: 100%; min-height: auto; border-right: none; border-bottom: 1px solid var(--rule); }
+
+    /* Endgame */
+    .endgame-card { margin: 0; }
+    .endgame-actions { flex-direction: column; padding: 24px; }
+    .endgame-stats { grid-template-columns: repeat(2, 1fr); }
+    .endgame-top { padding: 32px 24px 24px; }
+    .endgame-distrib { padding: 24px; }
+    .endgame-next { padding: 16px 24px; }
+
+    /* Badges / Profile */
+    .badge-grid { grid-template-columns: repeat(2, 1fr); }
+    .badges-section { padding: 0; max-width: 100%; }
+    .profile-header { flex-direction: column; text-align: center; padding: 24px 16px; max-width: 100%; }
+    .profile-stats-row { justify-content: center; flex-wrap: wrap; }
+
+    /* Semantic */
+    .semantic-layout { grid-template-columns: 1fr; }
+    .semantic-sidebar-panel { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 24px; }
+
+    /* Keyboard (shared) */
+    .kb-key { min-width: 0; flex: 1; height: 44px; font-size: 10px; padding: 2px; }
+    .kb-key.wide { min-width: 0; flex: 1.4; font-size: 8px; }
+    .shared-keyboard { max-width: 100%; }
+
+    /* Multi-board screens: fit within 100vh on mobile */
+    .dordle-screen, .tridle-screen, .quordle-screen {
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+        padding: 44px 8px 8px;
+    }
+    .game-bar {
+        padding: 6px 2px;
+        margin-bottom: 6px;
+        flex-shrink: 0;
+    }
+    .game-bar-title h2 { font-size: 16px; }
+    .game-bar-title .game-bar-sub { font-size: 9px; }
+
+    /* Boards area fills remaining space */
+    .dordle-grid, .tridle-stack, .quordle-grid {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    /* Keyboard fixed size at bottom */
+    .shared-keyboard {
+        flex-shrink: 0;
+        padding: 4px 0;
+    }
+
+    /* Tighter board padding on mobile */
+    .d-board { padding: 6px; }
+    .q-board { padding: 4px; }
+    .t-board-expanded { padding: 8px; }
+    .t-board-mini { padding: 6px; }
+
+    /* Smaller gaps */
+    .dordle-grid { gap: 4px; }
+    .quordle-grid { gap: 4px; }
+    .tridle-stack { gap: 4px; }
+
+    /* Dordle mobile */
+    .d-tile { font-size: 16px; }
+
+    /* Tridle mobile */
+    .tridle-stack { max-width: 100%; }
+    .t-expanded-rows .t-tile { font-size: 20px; }
+    .t-mini-rows .t-tile { font-size: 11px; }
+
+    /* Quordle mobile */
+    .quordle-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
+    .q-tile { max-width: none; font-size: 12px; }
+    .q-board-label { font-size: 8px; margin-bottom: 4px; }
+    .remaining-indicator { font-size: 8px; padding: 4px 0 1px; }
+    .solved-indicator { font-size: 8px; padding: 4px 0 1px; }
+
+    /* Language selection */
+    .lang-card { grid-template-columns: 36px 1fr auto; }
+    .lang-controls { padding: 0; max-width: 100%; }
+    .lang-card-grid { max-width: 100%; }
+    .lang-search-bar { flex-direction: column; }
+    .lang-select-header h2 { font-size: 28px; }
+
+    /* Speed streak */
+    .speed-stats, .speed-score-strip { flex-wrap: wrap; justify-content: center; }
+    .speed-timer-labels .stl-time { font-size: 22px; }
+
+    /* Archive */
+    .archive-layout { grid-template-columns: 1fr; max-width: 100%; }
+
+    /* Leaderboard */
+    .lb-row { grid-template-columns: 40px 1fr 60px 60px; }
+    .lb-row > :nth-child(4) { display: none; }
+    .lb-table { margin: 0; max-width: 100%; }
+
+    /* Modals / cards */
+    .mode-select-card { margin: 0; max-width: 100%; }
+    .challenge-card { margin: 0; max-width: 100%; }
+    .account-card { margin: 0; max-width: 100%; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="design-label">
+    DIRECTION A: EDITORIAL — Newspaper meets modern app
+    <a href="direction-c-quiet.html">View C: Quiet Craft →</a>
+</div>
+
+<nav class="section-nav">
+    <a href="#homepage">Homepage</a>
+    <a href="#sidebar">Sidebar</a>
+    <a href="#endgame">End Game</a>
+    <a href="#badges">Badges</a>
+    <a href="#semantic">Semantic</a>
+
+    <a href="#dordle">Dordle</a>
+    <a href="#tridle">Tridle</a>
+    <a href="#quordle">Quordle</a>
+    <a href="#languages">Languages</a>
+    <a href="#speed">Speed Streak</a>
+    <a href="#archive">Archive</a>
+    <a href="#account">Account</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#mode-select">Mode Select</a>
+    <a href="#challenge">Challenge</a>
+    <a href="#explore" style="margin-top: 12px; color: var(--accent); font-weight: 600;">— Exploratory —</a>
+    <a href="#option-a">Option A</a>
+    <a href="#option-b">Option B</a>
+    <a href="#option-c">Option C</a>
+    <a href="#option-d">Option D</a>
+    <a href="#option-e">Option E</a>
+    <a href="#party-screens">Party Screens</a>
+    <a href="#refined" style="margin-top: 12px; color: var(--accent); font-weight: 600;">— Refined —</a>
+    <a href="#refined-home">F1: Hub</a>
+    <a href="#refined-picker">F2: Picker</a>
+    <a href="#refined-game">F3: Game</a>
+    <a href="#refined-party">F4: Party</a>
+</nav>
+
+<!-- ━━━ SCREEN 1: HOMEPAGE ━━━ -->
+<section class="screen homepage" id="homepage">
+    <span class="screen-label">01 / Homepage</span>
+
+    <div class="hp-masthead">
+        <h1>Wordle<span class="dot">.</span>Global</h1>
+        <div class="edition">The world's word game — 80 languages</div>
+        <div class="rule"></div>
+    </div>
+
+    <p class="hp-tagline">One word. Six guesses. Every language on Earth.</p>
+
+    <div class="mode-grid">
+        <div class="mode-card">
+            <div class="mode-icon">
+                <span class="tile g">W</span><span class="tile y">O</span><span class="tile g">R</span><span class="tile">D</span><span class="tile g">S</span>
+            </div>
+            <h3>Daily Puzzle</h3>
+            <p>One word per day, per language. The classic. Come back tomorrow for a new challenge.</p>
+            <span class="mode-tag">Classic</span>
+        </div>
+        <div class="mode-card">
+            <div class="mode-icon">
+                <span class="tile">∞</span>
+            </div>
+            <h3>Unlimited</h3>
+            <p>Keep playing after you solve the daily. Random words, no waiting. Practice makes perfect.</p>
+            <span class="mode-tag new">New</span>
+        </div>
+        <div class="mode-card">
+            <div class="mode-icon">
+                <span class="tile" style="width:18px;height:18px;font-size:10px;">Q</span>
+                <span class="tile" style="width:18px;height:18px;font-size:10px;">U</span>
+                <span class="tile" style="width:18px;height:18px;font-size:10px;">A</span>
+                <span class="tile" style="width:18px;height:18px;font-size:10px;">D</span>
+            </div>
+            <h3>Quordle</h3>
+            <p>Four boards, one keyboard. Solve all four words in nine guesses or less.</p>
+            <span class="mode-tag new">New</span>
+        </div>
+    </div>
+
+    <div class="lang-section">
+        <h2>Choose your language</h2>
+        <p class="lang-sub">80 languages. Your streaks, your stats, your words.</p>
+        <input class="lang-search" placeholder="Search languages..." type="text">
+        <div class="lang-grid">
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="24" height="24" alt="English" class="flag-icon"></span><span class="lang-name">English</span><span class="lang-streak"><i data-lucide="flame" class="icon streak-icon"></i>14</span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/fi.svg" width="24" height="24" alt="Suomi" class="flag-icon"></span><span class="lang-name">Suomi</span><span class="lang-streak"><i data-lucide="flame" class="icon streak-icon"></i>7</span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/sa.svg" width="24" height="24" alt="Arabic" class="flag-icon"></span><span class="lang-name">العربية</span><span class="lang-streak"></span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="24" height="24" alt="Deutsch" class="flag-icon"></span><span class="lang-name">Deutsch</span><span class="lang-streak"><i data-lucide="flame" class="icon streak-icon"></i>3</span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="24" height="24" alt="Español" class="flag-icon"></span><span class="lang-name">Español</span><span class="lang-streak"></span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="24" height="24" alt="Français" class="flag-icon"></span><span class="lang-name">Français</span><span class="lang-streak"><i data-lucide="flame" class="icon streak-icon"></i>21</span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/it.svg" width="24" height="24" alt="Italiano" class="flag-icon"></span><span class="lang-name">Italiano</span><span class="lang-streak"></span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/pt.svg" width="24" height="24" alt="Português" class="flag-icon"></span><span class="lang-name">Português</span><span class="lang-streak"><i data-lucide="flame" class="icon streak-icon"></i>5</span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/ru.svg" width="24" height="24" alt="Русский" class="flag-icon"></span><span class="lang-name">Русский</span><span class="lang-streak"></span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/jp.svg" width="24" height="24" alt="日本語" class="flag-icon"></span><span class="lang-name">日本語</span><span class="lang-streak"></span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/kr.svg" width="24" height="24" alt="한국어" class="flag-icon"></span><span class="lang-name">한국어</span><span class="lang-streak"></span></div>
+            <div class="lang-item"><span class="lang-flag"><img src="https://hatscripts.github.io/circle-flags/flags/il.svg" width="24" height="24" alt="עברית" class="flag-icon"></span><span class="lang-name">עברית</span><span class="lang-streak"></span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ SCREEN 2: SIDEBAR + GAME ━━━ -->
+<section class="screen sidebar-demo" id="sidebar">
+    <span class="screen-label">02 / Sidebar Navigation</span>
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">Wordle<span class="dot">.</span>Global</div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-label">Play</div>
+            <div class="sidebar-item active">
+                <span class="item-icon"><i data-lucide="square" class="icon"></i></span> Daily Puzzle
+            </div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="infinity" class="icon"></i></span> Unlimited
+            </div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="grid-2x2" class="icon"></i></span> Quordle
+                <span class="item-badge">NEW</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="compass" class="icon"></i></span> Semantic Explorer
+                <span class="item-badge">NEW</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="zap" class="icon"></i></span> Speed Streak
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-label">Language</div>
+            <div class="sidebar-item">
+                <span class="item-icon"><img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="20" height="20" alt="English" class="flag-icon"></span> English
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-label">You</div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="bar-chart-2" class="icon"></i></span> Statistics
+            </div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="award" class="icon"></i></span> Badges
+            </div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="calendar" class="icon"></i></span> Archive
+            </div>
+            <div class="sidebar-item">
+                <span class="item-icon"><i data-lucide="settings" class="icon"></i></span> Settings
+            </div>
+        </div>
+
+        <div class="sidebar-profile">
+            <div class="sidebar-avatar">H</div>
+            <div>
+                <div class="sidebar-profile-name">Hugo</div>
+                <div class="sidebar-profile-sub">12 languages · 247 wins</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="game-area">
+        <div class="game-header-bar">
+            <h2>English</h2>
+            <span class="game-number">#247 · Mar 20, 2026</span>
+        </div>
+
+        <div class="mini-board">
+            <div class="mini-row">
+                <div class="mini-tile g">C</div>
+                <div class="mini-tile x">R</div>
+                <div class="mini-tile y">A</div>
+                <div class="mini-tile x">N</div>
+                <div class="mini-tile x">E</div>
+            </div>
+            <div class="mini-row">
+                <div class="mini-tile g">C</div>
+                <div class="mini-tile x">L</div>
+                <div class="mini-tile g">A</div>
+                <div class="mini-tile x">S</div>
+                <div class="mini-tile y">S</div>
+            </div>
+            <div class="mini-row">
+                <div class="mini-tile g">C</div>
+                <div class="mini-tile g">H</div>
+                <div class="mini-tile g">A</div>
+                <div class="mini-tile g">S</div>
+                <div class="mini-tile g">E</div>
+            </div>
+            <div class="mini-row">
+                <div class="mini-tile filled"></div>
+                <div class="mini-tile filled"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+            </div>
+            <div class="mini-row">
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+            </div>
+            <div class="mini-row">
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+                <div class="mini-tile"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ SCREEN 3: END OF GAME ━━━ -->
+<section class="screen endgame" id="endgame">
+    <span class="screen-label">03 / End of Game</span>
+
+    <div class="endgame-card">
+        <div class="endgame-top">
+            <div class="endgame-result">Solved in 3 guesses</div>
+            <div class="endgame-word">CHASE</div>
+            <div class="endgame-pronunciation">/tʃeɪs/ · verb</div>
+            <div class="endgame-definition">
+                To pursue in order to catch or catch up with.
+                <em>"The dog chased the rabbit across the field."</em>
+            </div>
+        </div>
+
+        <div class="endgame-stats">
+            <div class="stat-cell">
+                <div class="stat-number">247</div>
+                <div class="stat-label">Played</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-number">94</div>
+                <div class="stat-label">Win %</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Streak</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-number">21</div>
+                <div class="stat-label">Best</div>
+            </div>
+        </div>
+
+        <div class="endgame-distrib">
+            <h4>Guess Distribution</h4>
+            <div class="distrib-row"><span class="row-num">1</span><div class="distrib-bar" style="width: 8%;">2</div></div>
+            <div class="distrib-row"><span class="row-num">2</span><div class="distrib-bar" style="width: 22%;">14</div></div>
+            <div class="distrib-row"><span class="row-num">3</span><div class="distrib-bar highlight" style="width: 65%;">42</div></div>
+            <div class="distrib-row"><span class="row-num">4</span><div class="distrib-bar" style="width: 48%;">31</div></div>
+            <div class="distrib-row"><span class="row-num">5</span><div class="distrib-bar" style="width: 18%;">11</div></div>
+            <div class="distrib-row"><span class="row-num">6</span><div class="distrib-bar" style="width: 6%;">3</div></div>
+        </div>
+
+        <div class="endgame-actions">
+            <button class="btn-primary">Share Result</button>
+            <button class="btn-secondary">Play Unlimited</button>
+        </div>
+
+        <div class="endgame-next">
+            <span class="next-label">Next Wordle</span>
+            <span class="next-timer">07:42:15</span>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ SCREEN 4: BADGES ━━━ -->
+<section class="screen badges-screen" id="badges">
+    <span class="screen-label">04 / Badges &amp; Profile</span>
+
+    <div class="profile-header">
+        <div class="profile-avatar-lg">H</div>
+        <div class="profile-info">
+            <h2>Hugo</h2>
+            <div class="profile-joined">Joined January 2025 · Free tier</div>
+            <div class="profile-stats-row">
+                <div class="profile-stat"><strong>12</strong> languages</div>
+                <div class="profile-stat"><strong>247</strong> games won</div>
+                <div class="profile-stat"><strong>21</strong> best streak</div>
+                <div class="profile-stat"><strong>7</strong> badges</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="badges-section">
+        <h3>Achievement Badges</h3>
+        <p class="section-sub">7 of 24 earned</p>
+
+        <div class="badge-grid">
+            <div class="badge-card">
+                <div class="badge-icon"><i data-lucide="flame" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Week Warrior</div>
+                <div class="badge-desc">7-day streak in any language</div>
+                <div class="badge-date">Earned Feb 14, 2026</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon"><i data-lucide="globe" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Polyglot</div>
+                <div class="badge-desc">Win in 5 different languages</div>
+                <div class="badge-date">Earned Mar 2, 2026</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon"><i data-lucide="zap" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">First Try</div>
+                <div class="badge-desc">Solve a puzzle in one guess</div>
+                <div class="badge-date">Earned Jan 28, 2026</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon"><i data-lucide="book-open" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Scholar</div>
+                <div class="badge-desc">Read 50 word definitions</div>
+                <div class="badge-date">Earned Mar 10, 2026</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon"><i data-lucide="mountain" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Centurion</div>
+                <div class="badge-desc">Win 100 games total</div>
+                <div class="badge-date">Earned Mar 15, 2026</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon"><i data-lucide="target" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Sharp Shooter</div>
+                <div class="badge-desc">Average under 3.5 guesses (50+ games)</div>
+                <div class="badge-date">Earned Mar 18, 2026</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon"><i data-lucide="moon" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Night Owl</div>
+                <div class="badge-desc">Solve within 5 min of midnight</div>
+                <div class="badge-date">Earned Feb 8, 2026</div>
+            </div>
+            <div class="badge-card locked">
+                <div class="badge-icon"><i data-lucide="flame" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Month Master</div>
+                <div class="badge-desc">30-day streak in any language</div>
+                <div class="badge-progress"><div class="badge-progress-fill" style="width: 47%;"></div></div>
+            </div>
+            <div class="badge-card locked">
+                <div class="badge-icon"><i data-lucide="globe-2" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">World Traveler</div>
+                <div class="badge-desc">Win in 10 different languages</div>
+                <div class="badge-progress"><div class="badge-progress-fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="badge-card locked">
+                <div class="badge-icon"><i data-lucide="gem" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Diamond Streak</div>
+                <div class="badge-desc">100-day streak in any language</div>
+                <div class="badge-progress"><div class="badge-progress-fill" style="width: 14%;"></div></div>
+            </div>
+            <div class="badge-card locked">
+                <div class="badge-icon"><i data-lucide="brain" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Semantic Sage</div>
+                <div class="badge-desc">Win 10 Semantic Explorer games</div>
+                <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%;"></div></div>
+            </div>
+            <div class="badge-card locked">
+                <div class="badge-icon"><i data-lucide="swords" class="icon badge-icon-svg"></i></div>
+                <div class="badge-name">Quad Master</div>
+                <div class="badge-desc">Win 25 Quordle games</div>
+                <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%;"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ SCREEN 5: SEMANTIC EXPLORER ━━━ -->
+<section class="screen semantic-screen" id="semantic">
+    <span class="screen-label">05 / Semantic Explorer</span>
+
+    <div class="semantic-layout">
+        <div class="semantic-main">
+            <div class="semantic-title">Semantic Explorer</div>
+            <div class="semantic-subtitle">Navigate meaning space. Find the hidden word. 10 guesses.</div>
+
+            <div class="word-map">
+                <!-- Axis labels -->
+                <span class="map-axis-label" style="top: 8px; left: 50%; transform: translateX(-50%);">Abstract</span>
+                <span class="map-axis-label" style="bottom: 8px; left: 50%; transform: translateX(-50%);">Concrete</span>
+                <span class="map-axis-label" style="left: 8px; top: 50%; transform: translateY(-50%) rotate(-90deg);">Natural</span>
+                <span class="map-axis-label" style="right: 8px; top: 50%; transform: translateY(-50%) rotate(90deg);">Artificial</span>
+
+                <!-- Target -->
+                <div class="map-target"></div>
+
+                <!-- Cluster dots (nearby words) -->
+                <div class="map-dot cluster" style="top: 45%; left: 42%;"></div>
+                <div class="map-dot cluster" style="top: 52%; left: 55%;"></div>
+                <div class="map-dot cluster" style="top: 48%; left: 58%;"></div>
+                <div class="map-dot cluster" style="top: 55%; left: 47%;"></div>
+                <div class="map-dot cluster" style="top: 43%; left: 53%;"></div>
+
+                <!-- Guesses -->
+                <div class="map-dot guess" style="top: 20%; left: 75%;"></div>
+                <span class="map-label" style="top: 20%; left: 75%; color: var(--gray);">computer</span>
+
+                <div class="map-dot guess" style="top: 65%; left: 30%;"></div>
+                <span class="map-label" style="top: 65%; left: 30%; color: var(--yellow);">garden</span>
+
+                <div class="map-dot guess" style="top: 55%; left: 60%;"></div>
+                <span class="map-label" style="top: 55%; left: 60%; color: var(--green);">kitchen</span>
+            </div>
+
+            <div class="semantic-input-area">
+                <input class="semantic-input" type="text" placeholder="Type a word...">
+                <button class="semantic-submit">Guess</button>
+            </div>
+            <div class="guesses-remaining">7 of 10 guesses remaining</div>
+        </div>
+
+        <div class="semantic-sidebar-panel">
+            <div class="compass-section">
+                <h4>Compass Hints</h4>
+                <div class="compass-hints">
+                    <div class="compass-hint">
+                        <span class="compass-arrow">↗</span>
+                        <span class="compass-text">Think <em>smaller</em> and more <em>domestic</em></span>
+                    </div>
+                    <div class="compass-hint">
+                        <span class="compass-arrow">→</span>
+                        <span class="compass-text">Something you'd find <em>indoors</em></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proximity-section">
+                <h4>Proximity</h4>
+                <div class="proximity-bar">
+                    <div class="proximity-fill"></div>
+                    <div class="proximity-marker" style="left: 62%;"></div>
+                </div>
+                <div class="proximity-labels">
+                    <span>Cold</span>
+                    <span>Warm</span>
+                    <span>Hot</span>
+                    <span>Burning</span>
+                </div>
+            </div>
+
+            <div class="guess-list">
+                <h4>Your Guesses</h4>
+                <div class="guess-entry">
+                    <span class="guess-num">3</span>
+                    <span class="guess-word">kitchen</span>
+                    <span class="guess-score"><span class="guess-score-dot" style="background: var(--green);"></span>82%</span>
+                </div>
+                <div class="guess-entry">
+                    <span class="guess-num">2</span>
+                    <span class="guess-word">garden</span>
+                    <span class="guess-score"><span class="guess-score-dot" style="background: var(--yellow);"></span>45%</span>
+                </div>
+                <div class="guess-entry">
+                    <span class="guess-num">1</span>
+                    <span class="guess-word">computer</span>
+                    <span class="guess-score"><span class="guess-score-dot" style="background: var(--gray);"></span>12%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN: DORDLE ━━━ -->
+<section class="screen dordle-screen" id="dordle">
+    <span class="screen-label">01 / Dordle — 2 Boards</span>
+
+    <div class="game-bar">
+        <div class="game-bar-left">
+            <i data-lucide="info" class="icon"></i>
+            <i data-lucide="menu" class="icon"></i>
+        </div>
+        <div class="game-bar-title">
+            <h2>Dordle</h2>
+            <span class="game-bar-sub">English · #42 · Guess 5/7</span>
+        </div>
+        <div class="game-bar-right">
+            <i data-lucide="bar-chart-2" class="icon"></i>
+            <i data-lucide="settings" class="icon"></i>
+        </div>
+    </div>
+
+    <div class="dordle-grid">
+        <div class="d-board solved">
+            <div class="d-board-label"><span>Board 1</span><span class="solved-tag">Solved (4)</span></div>
+            <div class="d-rows">
+                <div class="d-row"><div class="tile d-tile g">S</div><div class="tile d-tile x">L</div><div class="tile d-tile y">A</div><div class="tile d-tile x">T</div><div class="tile d-tile x">E</div></div>
+                <div class="d-row"><div class="tile d-tile g">S</div><div class="tile d-tile x">H</div><div class="tile d-tile g">A</div><div class="tile d-tile y">R</div><div class="tile d-tile x">P</div></div>
+                <div class="d-row"><div class="tile d-tile g">S</div><div class="tile d-tile y">W</div><div class="tile d-tile g">A</div><div class="tile d-tile x">M</div><div class="tile d-tile y">P</div></div>
+                <div class="d-row"><div class="tile d-tile g">S</div><div class="tile d-tile g">P</div><div class="tile d-tile g">A</div><div class="tile d-tile g">R</div><div class="tile d-tile g">K</div></div>
+            </div>
+            <div class="solved-indicator">Solved ✓</div>
+        </div>
+        <div class="d-board">
+            <div class="d-board-label"><span>Board 2</span></div>
+            <div class="d-rows">
+                <div class="d-row"><div class="tile d-tile x">S</div><div class="tile d-tile x">L</div><div class="tile d-tile x">A</div><div class="tile d-tile y">T</div><div class="tile d-tile y">E</div></div>
+                <div class="d-row"><div class="tile d-tile x">S</div><div class="tile d-tile x">H</div><div class="tile d-tile x">A</div><div class="tile d-tile x">R</div><div class="tile d-tile x">P</div></div>
+                <div class="d-row"><div class="tile d-tile y">S</div><div class="tile d-tile x">W</div><div class="tile d-tile x">A</div><div class="tile d-tile x">M</div><div class="tile d-tile x">P</div></div>
+                <div class="d-row"><div class="tile d-tile x">S</div><div class="tile d-tile x">P</div><div class="tile d-tile x">A</div><div class="tile d-tile x">R</div><div class="tile d-tile x">K</div></div>
+                <div class="d-row"><div class="tile d-tile filled">M</div><div class="tile d-tile filled">I</div><div class="tile d-tile empty"></div><div class="tile d-tile empty"></div><div class="tile d-tile empty"></div></div>
+            </div>
+            <div class="remaining-indicator">2 guesses remaining</div>
+        </div>
+    </div>
+
+    <div class="shared-keyboard">
+        <div class="kb-row">
+            <div class="kb-key">Q</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--yellow) 50%, var(--gray) 50%);">W</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 50%, var(--yellow) 50%);">E</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 50%, var(--gray) 50%);">R</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 50%, var(--yellow) 50%);">T</div>
+            <div class="kb-key">Y</div>
+            <div class="kb-key">U</div>
+            <div class="kb-key">I</div>
+            <div class="kb-key">O</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 50%, var(--gray) 50%);">P</div>
+        </div>
+        <div class="kb-row">
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 50%, var(--gray) 50%);">A</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 50%, var(--yellow) 50%);">S</div>
+            <div class="kb-key">D</div>
+            <div class="kb-key">F</div>
+            <div class="kb-key">G</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 50%, var(--gray) 50%);">H</div>
+            <div class="kb-key">J</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 50%, var(--gray) 50%);">K</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 50%, var(--gray) 50%);">L</div>
+        </div>
+        <div class="kb-row">
+            <div class="kb-key wide">Enter</div>
+            <div class="kb-key">Z</div>
+            <div class="kb-key">X</div>
+            <div class="kb-key">C</div>
+            <div class="kb-key">V</div>
+            <div class="kb-key">B</div>
+            <div class="kb-key">N</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 50%, var(--gray) 50%);">M</div>
+            <div class="kb-key wide">⌫</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN: TRIDLE ━━━ -->
+<section class="screen tridle-screen" id="tridle">
+    <span class="screen-label">02 / Tridle — 3 Boards</span>
+
+    <div class="game-bar">
+        <div class="game-bar-left">
+            <i data-lucide="info" class="icon"></i>
+            <i data-lucide="menu" class="icon"></i>
+        </div>
+        <div class="game-bar-title">
+            <h2>Tridle</h2>
+            <span class="game-bar-sub">English · #42 · Guess 4/8</span>
+        </div>
+        <div class="game-bar-right">
+            <i data-lucide="bar-chart-2" class="icon"></i>
+            <i data-lucide="settings" class="icon"></i>
+        </div>
+    </div>
+
+    <div class="tridle-stack">
+        <!-- Collapsed Board 1 (solved) -->
+        <div class="t-board-mini solved">
+            <div class="t-mini-header">
+                <span class="t-mini-title">Board 1</span>
+                <span class="t-mini-status">Solved in 3</span>
+                <span class="t-mini-toggle">Tap to expand</span>
+            </div>
+            <div class="t-mini-rows">
+                <div class="t-row"><div class="tile t-tile g">C</div><div class="tile t-tile x">L</div><div class="tile t-tile g">A</div><div class="tile t-tile x">S</div><div class="tile t-tile y">S</div></div>
+                <div class="t-row"><div class="tile t-tile g">C</div><div class="tile t-tile g">H</div><div class="tile t-tile g">A</div><div class="tile t-tile g">S</div><div class="tile t-tile g">E</div></div>
+            </div>
+        </div>
+
+        <!-- Expanded Board 2 (active, focused) -->
+        <div class="t-board-expanded">
+            <div class="t-expanded-header">
+                <span class="t-expanded-title">Board 2</span>
+                <span class="t-expanded-status">Playing</span>
+            </div>
+            <div class="t-expanded-rows">
+                <div class="t-row"><div class="tile t-tile x">C</div><div class="tile t-tile y">R</div><div class="tile t-tile x">A</div><div class="tile t-tile x">N</div><div class="tile t-tile g">E</div></div>
+                <div class="t-row"><div class="tile t-tile x">C</div><div class="tile t-tile x">L</div><div class="tile t-tile x">A</div><div class="tile t-tile x">S</div><div class="tile t-tile x">S</div></div>
+                <div class="t-row"><div class="tile t-tile y">S</div><div class="tile t-tile x">T</div><div class="tile t-tile x">O</div><div class="tile t-tile x">N</div><div class="tile t-tile g">E</div></div>
+                <div class="t-row"><div class="tile t-tile filled">F</div><div class="tile t-tile filled">L</div><div class="tile t-tile empty"></div><div class="tile t-tile empty"></div><div class="tile t-tile empty"></div></div>
+            </div>
+            <div class="remaining-indicator">4 guesses remaining</div>
+        </div>
+
+        <!-- Collapsed Board 3 (unsolved) -->
+        <div class="t-board-mini">
+            <div class="t-mini-header">
+                <span class="t-mini-title">Board 3</span>
+                <span class="t-mini-toggle">Tap to focus</span>
+            </div>
+            <div class="t-mini-rows">
+                <div class="t-row"><div class="tile t-tile x">S</div><div class="tile t-tile x">T</div><div class="tile t-tile x">O</div><div class="tile t-tile g">N</div><div class="tile t-tile x">E</div></div>
+                <div class="t-row"><div class="tile t-tile filled">F</div><div class="tile t-tile filled">L</div><div class="tile t-tile empty"></div><div class="tile t-tile empty"></div><div class="tile t-tile empty"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tridle keyboard with 3-way split colors -->
+    <div class="shared-keyboard">
+        <div class="kb-row">
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--gray) 33.3% 66.6%, var(--gray) 66.6%));">Q</div>
+            <div class="kb-key">W</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--green) 33.3% 66.6%, var(--gray) 66.6%));">E</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--yellow) 33.3% 66.6%, var(--gray) 66.6%));">R</div>
+            <div class="kb-key">T</div>
+            <div class="kb-key">Y</div>
+            <div class="kb-key">U</div>
+            <div class="kb-key">I</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, #e2ddd4 33.3%, var(--gray) 33.3% 66.6%, var(--gray) 66.6%));">O</div>
+            <div class="kb-key">P</div>
+        </div>
+        <div class="kb-row">
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--yellow) 33.3%, var(--gray) 33.3% 66.6%, var(--green) 66.6%));">A</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--yellow) 33.3%, var(--yellow) 33.3% 66.6%, var(--gray) 66.6%));">S</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--gray) 33.3% 66.6%, var(--gray) 66.6%));">D</div>
+            <div class="kb-key">F</div>
+            <div class="kb-key">G</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 33.3%, var(--gray) 33.3% 66.6%, var(--gray) 66.6%));">H</div>
+            <div class="kb-key">J</div>
+            <div class="kb-key">K</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--gray) 33.3% 66.6%, var(--gray) 66.6%));">L</div>
+        </div>
+        <div class="kb-row">
+            <div class="kb-key wide">Enter</div>
+            <div class="kb-key">Z</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--gray) 33.3% 66.6%, var(--gray) 66.6%));">X</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 33.3%, var(--gray) 33.3% 66.6%, var(--gray) 66.6%));">C</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--yellow) 33.3% 66.6%, var(--gray) 66.6%));">V</div>
+            <div class="kb-key">B</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 33.3%, var(--gray) 33.3% 66.6%, var(--yellow) 66.6%));">N</div>
+            <div class="kb-key">M</div>
+            <div class="kb-key wide">⌫</div>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ SCREEN 1: QUORDLE ━━━ -->
+<section class="screen quordle-screen" id="quordle">
+    <span class="screen-label">03 / Quordle — 4 Boards</span>
+
+    <div class="game-bar">
+        <div class="game-bar-left">
+            <i data-lucide="info" class="icon"></i>
+            <i data-lucide="menu" class="icon"></i>
+        </div>
+        <div class="game-bar-title">
+            <h2>Quordle</h2>
+            <span class="game-bar-sub">English · #42 · Guess 5/9</span>
+        </div>
+        <div class="game-bar-right">
+            <i data-lucide="bar-chart-2" class="icon"></i>
+            <i data-lucide="settings" class="icon"></i>
+        </div>
+    </div>
+
+    <div class="quordle-grid">
+        <div class="q-board solved">
+            <div class="q-board-label"><span>Board 1</span><span class="solved-tag">Solved (3)</span></div>
+            <div class="q-rows">
+                <div class="q-row"><div class="tile q-tile g">C</div><div class="tile q-tile x">R</div><div class="tile q-tile y">A</div><div class="tile q-tile x">N</div><div class="tile q-tile x">E</div></div>
+                <div class="q-row"><div class="tile q-tile g">C</div><div class="tile q-tile x">L</div><div class="tile q-tile g">A</div><div class="tile q-tile x">S</div><div class="tile q-tile y">S</div></div>
+                <div class="q-row"><div class="tile q-tile g">C</div><div class="tile q-tile g">H</div><div class="tile q-tile g">A</div><div class="tile q-tile g">S</div><div class="tile q-tile g">E</div></div>
+            </div>
+            <div class="solved-indicator">Solved ✓</div>
+        </div>
+        <div class="q-board solved">
+            <div class="q-board-label"><span>Board 2</span><span class="solved-tag">Solved (4)</span></div>
+            <div class="q-rows">
+                <div class="q-row"><div class="tile q-tile x">C</div><div class="tile q-tile x">R</div><div class="tile q-tile x">A</div><div class="tile q-tile x">N</div><div class="tile q-tile y">E</div></div>
+                <div class="q-row"><div class="tile q-tile x">C</div><div class="tile q-tile y">L</div><div class="tile q-tile x">A</div><div class="tile q-tile x">S</div><div class="tile q-tile x">S</div></div>
+                <div class="q-row"><div class="tile q-tile x">S</div><div class="tile q-tile g">T</div><div class="tile q-tile y">O</div><div class="tile q-tile x">N</div><div class="tile q-tile g">E</div></div>
+                <div class="q-row"><div class="tile q-tile g">O</div><div class="tile q-tile g">T</div><div class="tile q-tile g">H</div><div class="tile q-tile g">E</div><div class="tile q-tile g">R</div></div>
+            </div>
+            <div class="solved-indicator">Solved ✓</div>
+        </div>
+        <div class="q-board">
+            <div class="q-board-label"><span>Board 3</span></div>
+            <div class="q-rows">
+                <div class="q-row"><div class="tile q-tile x">C</div><div class="tile q-tile y">R</div><div class="tile q-tile x">A</div><div class="tile q-tile x">N</div><div class="tile q-tile g">E</div></div>
+                <div class="q-row"><div class="tile q-tile x">C</div><div class="tile q-tile x">L</div><div class="tile q-tile x">A</div><div class="tile q-tile x">S</div><div class="tile q-tile x">S</div></div>
+                <div class="q-row"><div class="tile q-tile y">S</div><div class="tile q-tile x">T</div><div class="tile q-tile x">O</div><div class="tile q-tile x">N</div><div class="tile q-tile g">E</div></div>
+                <div class="q-row"><div class="tile q-tile x">D</div><div class="tile q-tile x">R</div><div class="tile q-tile x">I</div><div class="tile q-tile y">V</div><div class="tile q-tile g">E</div></div>
+                <div class="q-row"><div class="tile q-tile filled">F</div><div class="tile q-tile filled">L</div><div class="tile q-tile empty"></div><div class="tile q-tile empty"></div><div class="tile q-tile empty"></div></div>
+            </div>
+            <div class="remaining-indicator">4 remaining</div>
+        </div>
+        <div class="q-board">
+            <div class="q-board-label"><span>Board 4</span></div>
+            <div class="q-rows">
+                <div class="q-row"><div class="tile q-tile x">C</div><div class="tile q-tile x">R</div><div class="tile q-tile g">A</div><div class="tile q-tile y">N</div><div class="tile q-tile x">E</div></div>
+                <div class="q-row"><div class="tile q-tile x">C</div><div class="tile q-tile x">L</div><div class="tile q-tile g">A</div><div class="tile q-tile x">S</div><div class="tile q-tile x">S</div></div>
+                <div class="q-row"><div class="tile q-tile x">S</div><div class="tile q-tile x">T</div><div class="tile q-tile x">O</div><div class="tile q-tile g">N</div><div class="tile q-tile x">E</div></div>
+                <div class="q-row"><div class="tile q-tile x">D</div><div class="tile q-tile x">R</div><div class="tile q-tile x">I</div><div class="tile q-tile x">V</div><div class="tile q-tile x">E</div></div>
+                <div class="q-row"><div class="tile q-tile filled">F</div><div class="tile q-tile filled">L</div><div class="tile q-tile empty"></div><div class="tile q-tile empty"></div><div class="tile q-tile empty"></div></div>
+            </div>
+            <div class="remaining-indicator">4 remaining</div>
+        </div>
+    </div>
+
+    <div class="shared-keyboard">
+        <div class="kb-row">
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--gray) 25% 50%, var(--gray) 50% 75%, var(--gray) 75%);">Q</div>
+            <div class="kb-key">W</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--yellow) 25% 50%, var(--green) 50% 75%, var(--green) 75%);">E</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--gray) 25% 50%, var(--yellow) 50% 75%, var(--gray) 75%);">R</div>
+            <div class="kb-key">T</div>
+            <div class="kb-key">Y</div>
+            <div class="kb-key">U</div>
+            <div class="kb-key">I</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, #e2ddd4 25%, var(--yellow) 25% 50%, var(--gray) 50% 75%, var(--gray) 75%);">O</div>
+            <div class="kb-key">P</div>
+        </div>
+        <div class="kb-row">
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--yellow) 25%, var(--gray) 25% 50%, var(--gray) 50% 75%, var(--green) 75%);">A</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--yellow) 25%, var(--gray) 25% 50%, var(--yellow) 50% 75%, var(--gray) 75%);">S</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--gray) 25% 50%, var(--gray) 50% 75%, var(--gray) 75%);">D</div>
+            <div class="kb-key">F</div>
+            <div class="kb-key">G</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 25%, var(--green) 25% 50%, var(--gray) 50% 75%, var(--gray) 75%);">H</div>
+            <div class="kb-key">J</div>
+            <div class="kb-key">K</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--yellow) 25% 50%, var(--gray) 50% 75%, var(--gray) 75%);">L</div>
+        </div>
+        <div class="kb-row">
+            <div class="kb-key wide">Enter</div>
+            <div class="kb-key">Z</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--gray) 25% 50%, var(--gray) 50% 75%, var(--gray) 75%);">X</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--green) 25%, var(--gray) 25% 50%, var(--gray) 50% 75%, var(--gray) 75%);">C</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--gray) 25% 50%, var(--yellow) 50% 75%, var(--gray) 75%);">V</div>
+            <div class="kb-key">B</div>
+            <div class="kb-key split" style="background: linear-gradient(to right, var(--gray) 25%, var(--gray) 25% 50%, var(--gray) 50% 75%, var(--yellow) 75%);">N</div>
+            <div class="kb-key">M</div>
+            <div class="kb-key wide">⌫</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN 3: LANGUAGE SELECTION ━━━ -->
+<section class="screen lang-select-screen" id="languages">
+    <span class="screen-label">04 / Language Selection</span>
+
+    <div class="lang-select-header">
+        <h2>Choose Your Language</h2>
+        <p>80 languages. Your progress follows you everywhere.</p>
+    </div>
+
+    <div class="lang-controls">
+        <div class="lang-search-bar">
+            <input class="lang-search-input" type="text" placeholder="Search by name, region, or script...">
+            <span class="lang-search-count">80 languages</span>
+        </div>
+        <div class="lang-filters">
+            <button class="lang-filter-btn active">All</button>
+            <button class="lang-filter-btn">Playing</button>
+            <button class="lang-filter-btn">Latin</button>
+            <button class="lang-filter-btn">Cyrillic</button>
+            <button class="lang-filter-btn">Arabic</button>
+            <button class="lang-filter-btn">Asian</button>
+            <button class="lang-filter-btn">RTL</button>
+        </div>
+    </div>
+
+    <div class="lang-card-grid">
+        <div class="lang-group-header"><span>Active — Languages you're playing</span><span>4 languages</span></div>
+
+        <div class="lang-card has-streak">
+            <div class="lc-flag"><img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="24" height="24" alt="English" class="flag-icon"></div>
+            <div class="lc-info">
+                <div class="lc-name">English</div>
+                <div class="lc-native">English</div>
+                <div class="lc-modes">
+                    <span class="lc-mode-dot available">Daily</span>
+                    <span class="lc-mode-dot available">Unlimited</span>
+                    <span class="lc-mode-dot available">Quordle</span>
+                    <span class="lc-mode-dot available">Semantic</span>
+                </div>
+            </div>
+            <div class="lc-stats">
+                <div class="lc-streak">14</div>
+                <div class="lc-streak-label">day streak</div>
+                <div class="lc-winrate">94% win rate</div>
+            </div>
+        </div>
+
+        <div class="lang-card has-streak">
+            <div class="lc-flag"><img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="24" height="24" alt="Français" class="flag-icon"></div>
+            <div class="lc-info">
+                <div class="lc-name">French</div>
+                <div class="lc-native">Français</div>
+                <div class="lc-modes">
+                    <span class="lc-mode-dot available">Daily</span>
+                    <span class="lc-mode-dot available">Unlimited</span>
+                    <span class="lc-mode-dot">Quordle</span>
+                    <span class="lc-mode-dot">Semantic</span>
+                </div>
+            </div>
+            <div class="lc-stats">
+                <div class="lc-streak">21</div>
+                <div class="lc-streak-label">day streak</div>
+                <div class="lc-winrate">89% win rate</div>
+            </div>
+        </div>
+
+        <div class="lang-card has-streak">
+            <div class="lc-flag"><img src="https://hatscripts.github.io/circle-flags/flags/fi.svg" width="24" height="24" alt="Suomi" class="flag-icon"></div>
+            <div class="lc-info">
+                <div class="lc-name">Finnish</div>
+                <div class="lc-native">Suomi</div>
+                <div class="lc-modes">
+                    <span class="lc-mode-dot available">Daily</span>
+                    <span class="lc-mode-dot available">Unlimited</span>
+                    <span class="lc-mode-dot">Quordle</span>
+                    <span class="lc-mode-dot">Semantic</span>
+                </div>
+            </div>
+            <div class="lc-stats">
+                <div class="lc-streak">7</div>
+                <div class="lc-streak-label">day streak</div>
+                <div class="lc-winrate">76% win rate</div>
+            </div>
+        </div>
+
+        <div class="lang-card">
+            <div class="lc-flag"><img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="24" height="24" alt="Deutsch" class="flag-icon"></div>
+            <div class="lc-info">
+                <div class="lc-name">German</div>
+                <div class="lc-native">Deutsch</div>
+                <div class="lc-modes">
+                    <span class="lc-mode-dot available">Daily</span>
+                    <span class="lc-mode-dot available">Unlimited</span>
+                    <span class="lc-mode-dot">Quordle</span>
+                    <span class="lc-mode-dot">Semantic</span>
+                </div>
+            </div>
+            <div class="lc-stats">
+                <div class="lc-streak" style="color: var(--gray);">3</div>
+                <div class="lc-streak-label">games played</div>
+                <div class="lc-winrate">67% win rate</div>
+            </div>
+        </div>
+
+        <div class="lang-group-header"><span>Popular</span><span>12 languages</span></div>
+
+        <div class="lang-card">
+            <div class="lc-flag"><img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="24" height="24" alt="Español" class="flag-icon"></div>
+            <div class="lc-info">
+                <div class="lc-name">Spanish</div>
+                <div class="lc-native">Español</div>
+                <div class="lc-modes">
+                    <span class="lc-mode-dot available">Daily</span>
+                    <span class="lc-mode-dot available">Unlimited</span>
+                    <span class="lc-mode-dot">Quordle</span>
+                    <span class="lc-mode-dot">Semantic</span>
+                </div>
+            </div>
+            <div class="lc-stats"></div>
+        </div>
+
+        <div class="lang-card">
+            <div class="lc-flag"><img src="https://hatscripts.github.io/circle-flags/flags/sa.svg" width="24" height="24" alt="Arabic" class="flag-icon"></div>
+            <div class="lc-info">
+                <div class="lc-name">Arabic</div>
+                <div class="lc-native">العربية</div>
+                <div class="lc-modes">
+                    <span class="lc-mode-dot available">Daily</span>
+                    <span class="lc-mode-dot available">Unlimited</span>
+                    <span class="lc-mode-dot">Quordle</span>
+                    <span class="lc-mode-dot">Semantic</span>
+                </div>
+            </div>
+            <div class="lc-stats"></div>
+        </div>
+
+        <div class="lang-card">
+            <div class="lc-flag"><img src="https://hatscripts.github.io/circle-flags/flags/il.svg" width="24" height="24" alt="Hebrew" class="flag-icon"></div>
+            <div class="lc-info">
+                <div class="lc-name">Hebrew</div>
+                <div class="lc-native">עברית</div>
+                <div class="lc-modes">
+                    <span class="lc-mode-dot available">Daily</span>
+                    <span class="lc-mode-dot available">Unlimited</span>
+                    <span class="lc-mode-dot">Quordle</span>
+                    <span class="lc-mode-dot">Semantic</span>
+                </div>
+            </div>
+            <div class="lc-stats"></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN 4: SPEED STREAK ━━━ -->
+<section class="screen speed-screen" id="speed">
+    <span class="screen-label" style="color: #8c8c8c;">05 / Speed Streak</span>
+
+    <div class="speed-header">
+        <h2>Speed Streak</h2>
+        <div class="sh-sub">Solve as many as you can in 5 minutes</div>
+    </div>
+
+    <div class="speed-timer-bar">
+        <div class="speed-timer-track"><div class="speed-timer-fill"></div></div>
+        <div class="speed-timer-labels">
+            <span>0:00</span>
+            <span class="stl-time">3:24</span>
+            <span>5:00</span>
+        </div>
+    </div>
+
+    <div class="speed-score-strip">
+        <div class="speed-score-item"><strong>4</strong> solved</div>
+        <div class="speed-score-item"><strong>3.2</strong> avg guesses</div>
+        <div class="speed-score-item"><strong>28s</strong> avg time</div>
+    </div>
+
+    <div class="speed-board">
+        <div class="speed-row"><div class="tile speed-tile y">S</div><div class="tile speed-tile x">L</div><div class="tile speed-tile g">A</div><div class="tile speed-tile x">T</div><div class="tile speed-tile g">E</div></div>
+        <div class="speed-row"><div class="tile speed-tile filled">B</div><div class="tile speed-tile filled">R</div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div></div>
+        <div class="speed-row"><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div></div>
+        <div class="speed-row"><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div></div>
+        <div class="speed-row"><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div></div>
+        <div class="speed-row"><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div><div class="tile speed-tile empty"></div></div>
+    </div>
+
+    <div class="speed-solved-ticker">
+        <span class="solved-word">Crane</span>
+        <span class="solved-word">Light</span>
+        <span class="solved-word">Brisk</span>
+        <span class="solved-word">Flame</span>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN 5: ARCHIVE ━━━ -->
+<section class="screen archive-screen" id="archive">
+    <span class="screen-label">06 / Archive</span>
+
+    <div class="archive-header">
+        <h2>Archive</h2>
+        <p>Replay any past daily puzzle. See how your history stacks up.</p>
+        <span class="premium-tag">Premium Feature</span>
+    </div>
+
+    <div class="archive-layout">
+        <div class="archive-calendar">
+            <div class="cal-header">
+                <h3>March 2026</h3>
+                <div class="cal-nav">
+                    <button>←</button>
+                    <button>→</button>
+                </div>
+            </div>
+            <div class="cal-grid">
+                <div class="cal-weekdays">
+                    <span class="cal-weekday">Mon</span><span class="cal-weekday">Tue</span><span class="cal-weekday">Wed</span><span class="cal-weekday">Thu</span><span class="cal-weekday">Fri</span><span class="cal-weekday">Sat</span><span class="cal-weekday">Sun</span>
+                </div>
+                <div class="cal-days">
+                    <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div>
+                    <div class="cal-day won">1</div>
+                    <div class="cal-day won">2</div><div class="cal-day won">3</div><div class="cal-day won">4</div><div class="cal-day lost">5</div><div class="cal-day won">6</div><div class="cal-day won">7</div><div class="cal-day won">8</div>
+                    <div class="cal-day won">9</div><div class="cal-day won">10</div><div class="cal-day lost">11</div><div class="cal-day won">12</div><div class="cal-day won">13</div><div class="cal-day won">14</div><div class="cal-day won">15</div>
+                    <div class="cal-day won">16</div><div class="cal-day won">17</div><div class="cal-day won">18</div><div class="cal-day won">19</div><div class="cal-day today">20</div><div class="cal-day future">21</div><div class="cal-day future">22</div>
+                    <div class="cal-day future">23</div><div class="cal-day future">24</div><div class="cal-day future">25</div><div class="cal-day future">26</div><div class="cal-day future">27</div><div class="cal-day future">28</div><div class="cal-day future">29</div>
+                    <div class="cal-day future">30</div><div class="cal-day future">31</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="archive-stats">
+            <div class="archive-month-stats">
+                <h4>March Stats</h4>
+                <div class="ams-row"><span class="ams-label">Played</span><span class="ams-value">19</span></div>
+                <div class="ams-row"><span class="ams-label">Won</span><span class="ams-value">17</span></div>
+                <div class="ams-row"><span class="ams-label">Win Rate</span><span class="ams-value">89%</span></div>
+                <div class="ams-row"><span class="ams-label">Avg Guesses</span><span class="ams-value">3.4</span></div>
+                <div class="ams-row"><span class="ams-label">Best Streak</span><span class="ams-value">8</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN 6: ACCOUNT ━━━ -->
+<section class="screen account-screen" id="account">
+    <span class="screen-label">07 / Account — Progressive Sign-Up</span>
+
+    <div class="account-card">
+        <div class="account-top">
+            <h2>Save Your Progress</h2>
+            <p>Create an account to sync stats across devices, unlock badges, and compete on leaderboards.</p>
+        </div>
+
+        <div class="account-benefits">
+            <div class="account-benefit">
+                <span class="ab-icon"><i data-lucide="smartphone" class="icon"></i></span>
+                <div class="ab-text">
+                    <div class="ab-title">Sync across devices</div>
+                    <div class="ab-desc">Play on phone, continue on desktop. Your stats follow you.</div>
+                </div>
+            </div>
+            <div class="account-benefit">
+                <span class="ab-icon"><i data-lucide="award" class="icon"></i></span>
+                <div class="ab-text">
+                    <div class="ab-title">Earn badges</div>
+                    <div class="ab-desc">Track achievements across all languages and game modes.</div>
+                </div>
+            </div>
+            <div class="account-benefit">
+                <span class="ab-icon"><i data-lucide="bar-chart-2" class="icon"></i></span>
+                <div class="ab-text">
+                    <div class="ab-title">Leaderboards</div>
+                    <div class="ab-desc">See how you rank against other players in your languages.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="account-actions">
+            <button class="auth-btn google">
+                <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+                Continue with Google
+            </button>
+            <button class="auth-btn apple">
+                <svg width="16" height="18" viewBox="0 0 16 18" fill="white"><path d="M13.1 9.5c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.7-1.3-.1-2.5.8-3.1.8-.7 0-1.7-.7-2.8-.7-1.4 0-2.7.8-3.5 2.1-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.7.7 2.8.7 1.2 0 2-1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.4 0-.1-2.3-.9-2.3-3.4h-.4zM11 3.3c.6-.7 1-1.7.9-2.7-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2.1-.5 2.9-1.4z"/></svg>
+                Continue with Apple
+            </button>
+            <button class="auth-btn email">
+                ✉ Continue with email
+            </button>
+        </div>
+
+        <div class="account-footer">
+            By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+            <a href="#" class="account-skip">Skip for now — play without an account</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN 7: LEADERBOARD ━━━ -->
+<section class="screen leaderboard-screen" id="leaderboard">
+    <span class="screen-label">08 / Leaderboard</span>
+
+    <div class="lb-header">
+        <h2>English Leaderboard</h2>
+    </div>
+
+    <div class="lb-tabs">
+        <button class="lb-tab active">Today</button>
+        <button class="lb-tab">This Week</button>
+        <button class="lb-tab">All Time</button>
+    </div>
+
+    <div class="lb-table">
+        <div class="lb-row header">
+            <span></span><span>Player</span><span>Guesses</span><span>Win %</span><span>Streak</span>
+        </div>
+        <div class="lb-row">
+            <span class="lb-rank gold">1</span>
+            <span class="lb-user"><span class="lb-avatar">S</span><span class="lb-username">SannaK</span></span>
+            <span class="lb-stat">2</span><span class="lb-stat">98%</span><span class="lb-stat">47</span>
+        </div>
+        <div class="lb-row">
+            <span class="lb-rank silver">2</span>
+            <span class="lb-user"><span class="lb-avatar">M</span><span class="lb-username">MarcDP</span></span>
+            <span class="lb-stat">3</span><span class="lb-stat">96%</span><span class="lb-stat">33</span>
+        </div>
+        <div class="lb-row">
+            <span class="lb-rank bronze">3</span>
+            <span class="lb-user"><span class="lb-avatar">J</span><span class="lb-username">JWright</span></span>
+            <span class="lb-stat">3</span><span class="lb-stat">95%</span><span class="lb-stat">28</span>
+        </div>
+        <div class="lb-row you">
+            <span class="lb-rank">14</span>
+            <span class="lb-user"><span class="lb-avatar" style="background: var(--ink); color: var(--paper);">H</span><span class="lb-username">Hugo <span class="lb-you-tag">YOU</span></span></span>
+            <span class="lb-stat">3</span><span class="lb-stat">94%</span><span class="lb-stat">14</span>
+        </div>
+        <div class="lb-row">
+            <span class="lb-rank">15</span>
+            <span class="lb-user"><span class="lb-avatar">A</span><span class="lb-username">AnnaB</span></span>
+            <span class="lb-stat">4</span><span class="lb-stat">93%</span><span class="lb-stat">12</span>
+        </div>
+        <div class="lb-row">
+            <span class="lb-rank">16</span>
+            <span class="lb-user"><span class="lb-avatar">T</span><span class="lb-username">TinaM</span></span>
+            <span class="lb-stat">4</span><span class="lb-stat">91%</span><span class="lb-stat">9</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN 8: MODE SELECTION ━━━ -->
+<section class="screen mode-select-screen" id="mode-select">
+    <span class="screen-label">09 / Game Mode Selection</span>
+
+    <div class="mode-select-card">
+        <div class="mode-select-header">
+            <h2>Choose a Game Mode</h2>
+            <p>Different ways to play — same language, new challenges.</p>
+            <div class="current-lang"><img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="20" height="20" alt="English" class="flag-icon"> English</div>
+        </div>
+
+        <div class="mode-list">
+            <div class="mode-list-item">
+                <div class="mli-visual"><i data-lucide="square" class="icon"></i></div>
+                <div class="mli-info">
+                    <h4>Daily Puzzle</h4>
+                    <p>One word per day. 6 guesses. The classic.</p>
+                </div>
+                <div class="mli-right">
+                    <div class="mli-status completed">Solved ✓</div>
+                    <div class="mli-streak"><i data-lucide="flame" class="icon streak-icon"></i> 14</div>
+                </div>
+            </div>
+
+            <div class="mode-list-item">
+                <div class="mli-visual"><i data-lucide="infinity" class="icon"></i></div>
+                <div class="mli-info">
+                    <h4>Unlimited</h4>
+                    <p>Random words, no limit. Play as much as you want.</p>
+                </div>
+                <div class="mli-right">
+                    <div class="mli-status available">Play →</div>
+                </div>
+            </div>
+
+            <div class="mode-list-item">
+                <div class="mli-visual"><i data-lucide="columns-2" class="icon"></i></div>
+                <div class="mli-info">
+                    <h4>Dordle</h4>
+                    <p>2 boards, 1 keyboard, 7 guesses.</p>
+                </div>
+                <div class="mli-right">
+                    <div class="mli-status available">Play →</div>
+                </div>
+            </div>
+
+            <div class="mode-list-item">
+                <div class="mli-visual"><i data-lucide="columns-3" class="icon"></i></div>
+                <div class="mli-info">
+                    <h4>Tridle</h4>
+                    <p>3 boards, 1 keyboard, 8 guesses.</p>
+                </div>
+                <div class="mli-right">
+                    <div class="mli-status available">Play →</div>
+                </div>
+            </div>
+
+            <div class="mode-list-item">
+                <div class="mli-visual"><i data-lucide="grid-2x2" class="icon"></i></div>
+                <div class="mli-info">
+                    <h4>Quordle</h4>
+                    <p>4 boards, 1 keyboard, 9 guesses.</p>
+                </div>
+                <div class="mli-right">
+                    <div class="mli-status available">Play →</div>
+                </div>
+            </div>
+
+            <div class="mode-list-item">
+                <div class="mli-visual"><i data-lucide="compass" class="icon"></i></div>
+                <div class="mli-info">
+                    <h4>Semantic Explorer</h4>
+                    <p>Navigate meaning space. 10 guesses.</p>
+                </div>
+                <div class="mli-right">
+                    <div class="mli-status available">Play →</div>
+                </div>
+            </div>
+
+            <div class="mode-list-item">
+                <div class="mli-visual"><i data-lucide="zap" class="icon"></i></div>
+                <div class="mli-info">
+                    <h4>Speed Streak</h4>
+                    <p>5 minutes. Solve as many as you can.</p>
+                </div>
+                <div class="mli-right">
+                    <div class="mli-status available">Play →</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ━━━ SCREEN 9: CHALLENGE A FRIEND ━━━ -->
+<section class="screen challenge-screen" id="challenge">
+    <span class="screen-label">10 / Challenge a Friend</span>
+
+    <div class="challenge-card">
+        <div class="challenge-top">
+            <h2>Challenge a Friend</h2>
+            <p>Pick a word and send a link. See how many guesses your friend needs.</p>
+        </div>
+
+        <div class="challenge-preview">
+            <div class="challenge-tiles">
+                <div class="tile ch-tile g">C</div>
+                <div class="tile ch-tile g">H</div>
+                <div class="tile ch-tile g">A</div>
+                <div class="tile ch-tile g">S</div>
+                <div class="tile ch-tile g">E</div>
+            </div>
+            <div class="challenge-word-hidden">Your friend will see: _ _ _ _ _</div>
+        </div>
+
+        <div class="challenge-link-section">
+            <div class="challenge-link-box">
+                <input class="challenge-link-input" type="text" value="wordle.global/en/challenge/x7k9m" readonly>
+                <button class="challenge-link-copy">Copy</button>
+            </div>
+        </div>
+
+        <div class="challenge-share">
+            <div class="challenge-share-btns">
+                <button class="ch-share-btn"><i data-lucide="message-circle" class="icon"></i> WhatsApp</button>
+                <button class="ch-share-btn"><i data-lucide="send" class="icon"></i> Message</button>
+                <button class="ch-share-btn"><i data-lucide="link" class="icon"></i> Share</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     EXPLORATORY — Product Architecture Options
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="screen explore-divider" id="explore">
+    <h2>Exploratory</h2>
+    <p>How should users navigate the game mode matrix? Five approaches, each with tradeoffs.</p>
+    <p style="font-family: var(--mono); font-size: 11px; color: var(--gray); margin-top: 16px; letter-spacing: 0.1em;">BOARD TYPE × PLAY TYPE × SOCIAL × LANGUAGE</p>
+</section>
+
+<section class="explore-screen" id="option-a">
+    <div class="explore-label">Option A</div>
+    <div class="explore-title">The Configurator</div>
+    <div class="explore-desc">A "New Game" screen where you set all dimensions before playing. Like creating a custom match in a video game.</div>
+
+    <div class="explore-pros-cons">
+        <div class="explore-pros">
+            <h4>Pros</h4>
+            <ul>
+                <li>All options visible and discoverable</li>
+                <li>Clear mental model — set it and play</li>
+                <li>Easy to add new dimensions later</li>
+            </ul>
+        </div>
+        <div class="explore-cons">
+            <h4>Cons</h4>
+            <ul>
+                <li>Friction before play — too many choices</li>
+                <li>Intimidating for casual users</li>
+                <li>Daily puzzle doesn't need configuration</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mockup-frame">
+        <div class="mockup-bar"><span>New Game</span><span>✕</span></div>
+        <div class="mockup-content">
+            <h3>New Game</h3>
+
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px;">Board Type</div>
+            <div class="mock-pills">
+                <span class="mock-pill active">Classic</span>
+                <span class="mock-pill">Dordle</span>
+                <span class="mock-pill">Tridle</span>
+                <span class="mock-pill">Quordle</span>
+                <span class="mock-pill">Semantic</span>
+                <span class="mock-pill">Speed</span>
+            </div>
+
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px;">Play Type</div>
+            <div class="mock-pills">
+                <span class="mock-pill active">Daily</span>
+                <span class="mock-pill">Unlimited</span>
+                <span class="mock-pill">Custom Word</span>
+            </div>
+
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px;">Social</div>
+            <div class="mock-pills">
+                <span class="mock-pill active">Solo</span>
+                <span class="mock-pill accent">Party</span>
+            </div>
+
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px;">Language</div>
+            <div class="mock-pills">
+                <span class="mock-pill active">English</span>
+                <span class="mock-pill">Français</span>
+                <span class="mock-pill">Deutsch</span>
+                <span class="mock-pill" style="color: var(--gray);">+ 77 more</span>
+            </div>
+
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px; margin-top: 8px;">Word Length</div>
+            <div class="mock-pills">
+                <span class="mock-pill">4</span>
+                <span class="mock-pill active">5</span>
+                <span class="mock-pill">6</span>
+                <span class="mock-pill">7</span>
+                <span class="mock-pill">8</span>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button class="mock-btn primary full">Play Classic · Daily · Solo · English</button>
+            </div>
+            <div class="mock-note">The button label summarizes all selections</div>
+        </div>
+    </div>
+</section>
+
+<section class="explore-screen" id="option-b">
+    <div class="explore-label">Option B</div>
+    <div class="explore-title">Smart Defaults + In-Game Toggles</div>
+    <div class="explore-desc">Start playing instantly with defaults (Classic · Daily · Solo · your language). Change any dimension from within the game via the header bar. No pre-game configuration.</div>
+
+    <div class="explore-pros-cons">
+        <div class="explore-pros">
+            <h4>Pros</h4>
+            <ul>
+                <li>Zero friction — tap and play immediately</li>
+                <li>Discoverable through exploration</li>
+                <li>Feels lightweight, not overwhelming</li>
+            </ul>
+        </div>
+        <div class="explore-cons">
+            <h4>Cons</h4>
+            <ul>
+                <li>Dimensions hidden behind icons — less discoverable</li>
+                <li>Switching mid-game could be confusing</li>
+                <li>Hard to represent Party mode as a toggle</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mockup-frame">
+        <div class="mockup-bar">
+            <span style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-size: 12px;">ℹ️</span>
+                <span style="font-size: 12px;">☰</span>
+            </span>
+            <span style="font-family: var(--serif); font-size: 16px; font-weight: 700;">Wordle</span>
+            <span style="display: flex; gap: 8px; align-items: center;">
+                <span style="font-size: 12px;">📊</span>
+                <span style="font-size: 12px;">⚙</span>
+            </span>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 0; border-bottom: 1px solid var(--rule); background: var(--paper-warm);">
+            <span class="mock-tab active">Classic</span>
+            <span class="mock-tab">Dordle</span>
+            <span class="mock-tab">Tridle</span>
+            <span class="mock-tab">Quordle</span>
+            <span class="mock-tab">+</span>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--rule); font-size: 11px; color: var(--gray);">
+            <span class="mock-pill active" style="padding: 3px 10px; font-size: 9px;">Daily</span>
+            <span class="mock-pill" style="padding: 3px 10px; font-size: 9px;">Unlimited</span>
+            <span style="margin-left: auto; font-family: var(--mono); font-size: 10px;">🇬🇧 EN</span>
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--accent);">Party</span>
+        </div>
+        <div class="mockup-content" style="text-align: center; padding: 40px 20px;">
+            <div style="display: flex; flex-direction: column; gap: 4px; align-items: center; margin-bottom: 16px;">
+                <div style="display: flex; gap: 4px;"><div class="tile" style="width:40px;height:40px;font-size:18px;border-color:var(--rule);"></div><div class="tile" style="width:40px;height:40px;font-size:18px;border-color:var(--rule);"></div><div class="tile" style="width:40px;height:40px;font-size:18px;border-color:var(--rule);"></div><div class="tile" style="width:40px;height:40px;font-size:18px;border-color:var(--rule);"></div><div class="tile" style="width:40px;height:40px;font-size:18px;border-color:var(--rule);"></div></div>
+            </div>
+            <div class="mock-note">Board type tabs + play type pills + language/party in sub-bar</div>
+        </div>
+    </div>
+</section>
+
+<section class="explore-screen" id="option-c">
+    <div class="explore-label">Option C</div>
+    <div class="explore-title">Mode-First Sidebar</div>
+    <div class="explore-desc">The sidebar is the primary navigation hub. Board types are top-level items. Play type, social, and language are settings within each mode. Like Discord's server/channel hierarchy.</div>
+
+    <div class="explore-pros-cons">
+        <div class="explore-pros">
+            <h4>Pros</h4>
+            <ul>
+                <li>Familiar pattern (Discord, Slack, Notion)</li>
+                <li>Each mode feels like its own "space"</li>
+                <li>Room for per-mode stats and streaks</li>
+            </ul>
+        </div>
+        <div class="explore-cons">
+            <h4>Cons</h4>
+            <ul>
+                <li>Sidebar takes screen real estate on mobile</li>
+                <li>Deep nesting: Mode → Play Type → Social</li>
+                <li>Switching language requires digging</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mockup-frame wide">
+        <div class="mockup-bar"><span>Wordle Global</span></div>
+        <div style="display: flex;">
+            <div style="width: 200px; border-right: 1px solid var(--rule); padding: 12px 0; font-size: 13px;">
+                <div style="padding: 0 14px 8px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray);">Play</div>
+                <div style="padding: 8px 14px; background: var(--paper-warm); border-left: 3px solid var(--ink); font-weight: 600;">Classic</div>
+                <div style="padding: 8px 14px; padding-left: 30px; font-size: 12px; color: var(--gray);">Daily · Solo</div>
+                <div style="padding: 8px 14px; padding-left: 30px; font-size: 12px; color: var(--gray);">Unlimited</div>
+                <div style="padding: 8px 14px; padding-left: 30px; font-size: 12px; color: var(--accent);">Party ●</div>
+                <div style="padding: 8px 14px;">Dordle</div>
+                <div style="padding: 8px 14px;">Tridle</div>
+                <div style="padding: 8px 14px;">Quordle</div>
+                <div style="padding: 8px 14px;">Semantic</div>
+                <div style="padding: 8px 14px;">Speed Streak</div>
+                <div style="height: 1px; background: var(--rule); margin: 8px 14px;"></div>
+                <div style="padding: 0 14px 8px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray);">Language</div>
+                <div style="padding: 8px 14px; font-weight: 600;">🇬🇧 English</div>
+                <div style="padding: 8px 14px; font-size: 12px; color: var(--gray);">Change →</div>
+            </div>
+            <div style="flex: 1; padding: 20px; text-align: center;">
+                <div style="font-family: var(--mono); font-size: 10px; color: var(--gray); letter-spacing: 0.1em;">CLASSIC · DAILY · SOLO · ENGLISH</div>
+                <div style="margin-top: 16px; font-size: 13px; color: var(--gray);">[game board here]</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="explore-screen" id="option-d">
+    <div class="explore-label">Option D</div>
+    <div class="explore-title">Homepage Hub + Quick Actions</div>
+    <div class="explore-desc">The homepage shows your active games, streaks, and quick-launch cards. Each card is a pre-configured combo. "Continue" buttons for in-progress games. Party and Custom are actions, not modes.</div>
+
+    <div class="explore-pros-cons">
+        <div class="explore-pros">
+            <h4>Pros</h4>
+            <ul>
+                <li>Personalized — shows what matters to you</li>
+                <li>Quick resume for daily players</li>
+                <li>Party/Custom as actions feels natural</li>
+            </ul>
+        </div>
+        <div class="explore-cons">
+            <h4>Cons</h4>
+            <ul>
+                <li>Complex homepage to build</li>
+                <li>Empty state problem for new users</li>
+                <li>May hide modes you haven't tried</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mockup-frame">
+        <div class="mockup-bar"><span>Wordle Global</span><span>⚙</span></div>
+        <div class="mockup-content">
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Today's Puzzles</div>
+
+            <div class="mock-list-item">
+                <div class="mock-icon">■</div>
+                <div><div class="mock-label">English Daily</div><div class="mock-sub">Classic · 5 letters</div></div>
+                <div class="mock-right" style="color: var(--green);">Solved ✓</div>
+            </div>
+            <div class="mock-list-item">
+                <div class="mock-icon">■</div>
+                <div><div class="mock-label">Français Daily</div><div class="mock-sub">Classic · 5 letters</div></div>
+                <div class="mock-right" style="color: var(--accent);">Play →</div>
+            </div>
+            <div class="mock-list-item">
+                <div class="mock-icon">◧</div>
+                <div><div class="mock-label">English Quordle</div><div class="mock-sub">4 boards · Daily</div></div>
+                <div class="mock-right" style="color: var(--accent);">Play →</div>
+            </div>
+
+            <div style="height: 1px; background: var(--rule); margin: 16px 0;"></div>
+
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Quick Play</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px;">
+                <div style="border: 1px solid var(--rule); padding: 12px; text-align: center;">
+                    <div style="font-family: var(--serif); font-size: 15px; font-weight: 700;">Unlimited</div>
+                    <div style="font-size: 11px; color: var(--gray);">English · Classic</div>
+                </div>
+                <div style="border: 1px solid var(--rule); padding: 12px; text-align: center;">
+                    <div style="font-family: var(--serif); font-size: 15px; font-weight: 700;">Speed Streak</div>
+                    <div style="font-size: 11px; color: var(--gray);">5 min challenge</div>
+                </div>
+            </div>
+
+            <div style="height: 1px; background: var(--rule); margin: 16px 0;"></div>
+
+            <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Social</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="mock-btn secondary full" style="font-size: 12px;">Create Party</button>
+                <button class="mock-btn secondary full" style="font-size: 12px;">Custom Word</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="explore-screen" id="option-e">
+    <div class="explore-label">Option E</div>
+    <div class="explore-title">Two-Step: Pick Board → Configure</div>
+    <div class="explore-desc">Step 1: Choose your board type (the primary decision). Step 2: A compact config bar for play type, social, and language. Separates the "what" from the "how".</div>
+
+    <div class="explore-pros-cons">
+        <div class="explore-pros">
+            <h4>Pros</h4>
+            <ul>
+                <li>Progressive disclosure — one choice at a time</li>
+                <li>Board type is the hero — most visual impact</li>
+                <li>Config bar is reusable across all modes</li>
+                <li>Party/Custom are first-class but not overwhelming</li>
+            </ul>
+        </div>
+        <div class="explore-cons">
+            <h4>Cons</h4>
+            <ul>
+                <li>Two steps to start playing (vs one tap)</li>
+                <li>Config bar adds a row of UI to every game</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+            <div class="mock-note" style="margin-bottom: 8px;">Step 1: Pick board type</div>
+            <div class="mockup-frame phone">
+                <div class="mockup-bar"><span>Wordle Global</span></div>
+                <div class="mockup-content">
+                    <div class="mock-list-item">
+                        <div class="mock-icon">■</div>
+                        <div><div class="mock-label">Classic</div><div class="mock-sub">1 board · 6 guesses</div></div>
+                        <div class="mock-right">→</div>
+                    </div>
+                    <div class="mock-list-item">
+                        <div class="mock-icon">▦</div>
+                        <div><div class="mock-label">Dordle</div><div class="mock-sub">2 boards · 7 guesses</div></div>
+                        <div class="mock-right">→</div>
+                    </div>
+                    <div class="mock-list-item">
+                        <div class="mock-icon">▤</div>
+                        <div><div class="mock-label">Tridle</div><div class="mock-sub">3 boards · 8 guesses</div></div>
+                        <div class="mock-right">→</div>
+                    </div>
+                    <div class="mock-list-item">
+                        <div class="mock-icon">◧</div>
+                        <div><div class="mock-label">Quordle</div><div class="mock-sub">4 boards · 9 guesses</div></div>
+                        <div class="mock-right">→</div>
+                    </div>
+                    <div class="mock-list-item">
+                        <div class="mock-icon">◎</div>
+                        <div><div class="mock-label">Semantic</div><div class="mock-sub">Meaning space · 10 guesses</div></div>
+                        <div class="mock-right">→</div>
+                    </div>
+                    <div class="mock-list-item">
+                        <div class="mock-icon">⚡</div>
+                        <div><div class="mock-label">Speed Streak</div><div class="mock-sub">5 min timer</div></div>
+                        <div class="mock-right">→</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="mock-note" style="margin-bottom: 8px;">Step 2: Configure and play</div>
+            <div class="mockup-frame phone">
+                <div class="mockup-bar">
+                    <span>← Classic</span>
+                    <span style="display: flex; gap: 6px;">📊 ⚙</span>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 6px; padding: 8px 12px; border-bottom: 1px solid var(--rule); background: var(--paper-warm);">
+                    <span class="mock-pill active" style="padding: 4px 10px; font-size: 9px;">Daily</span>
+                    <span class="mock-pill" style="padding: 4px 10px; font-size: 9px;">Unlimited</span>
+                    <span class="mock-pill" style="padding: 4px 10px; font-size: 9px;">Custom</span>
+                    <span style="width: 1px; background: var(--rule);"></span>
+                    <span class="mock-pill" style="padding: 4px 10px; font-size: 9px;">Solo</span>
+                    <span class="mock-pill accent" style="padding: 4px 10px; font-size: 9px;">Party</span>
+                    <span style="width: 1px; background: var(--rule);"></span>
+                    <span class="mock-pill active" style="padding: 4px 10px; font-size: 9px;">EN</span>
+                </div>
+                <div class="mockup-content" style="text-align: center; padding: 30px 20px;">
+                    <div style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
+                        <div style="display: flex; gap: 4px;"><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div></div>
+                    </div>
+                    <div class="mock-note" style="margin-top: 12px;">Config bar stays visible during play<br>Tap Party to create lobby from here</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="explore-screen" id="party-screens">
+    <div class="explore-label">Party Mode Screens</div>
+    <div class="explore-title">Party: Lobby → In-Game → Results</div>
+    <div class="explore-desc">These screens work regardless of which navigation option is chosen. Party is an overlay that wraps any game mode.</div>
+
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start;">
+
+        <!-- Lobby -->
+        <div>
+            <div class="mock-note" style="margin-bottom: 8px;">1. Create &amp; share lobby</div>
+            <div class="mockup-frame phone">
+                <div class="mockup-bar"><span>Party Lobby</span><span>✕</span></div>
+                <div class="mockup-content">
+                    <div style="text-align: center; margin-bottom: 16px;">
+                        <div style="font-family: var(--serif); font-size: 18px; font-weight: 700;">Classic · English</div>
+                        <div style="font-size: 12px; color: var(--gray);">Daily puzzle · 5 letters</div>
+                    </div>
+
+                    <div class="mock-lobby">
+                        <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Players (2/6)</div>
+                        <div class="mock-lobby-players">
+                            <div class="mock-player">
+                                <div class="mock-avatar">H</div>
+                                <span class="mock-player-name">Hugo</span>
+                                <span class="mock-player-status ready">Ready ●</span>
+                            </div>
+                            <div class="mock-player">
+                                <div class="mock-avatar">S</div>
+                                <span class="mock-player-name">Sanna</span>
+                                <span class="mock-player-status ready">Ready ●</span>
+                            </div>
+                            <div class="mock-player">
+                                <div class="mock-avatar waiting">?</div>
+                                <span style="color: var(--gray); font-size: 12px;">Waiting for players...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border: 1px solid var(--rule); display: flex; margin-bottom: 12px;">
+                        <input type="text" value="wordle.global/party/x7k9m" readonly style="flex: 1; padding: 10px; border: none; font-family: var(--mono); font-size: 11px; color: var(--gray); background: var(--paper-warm);">
+                        <div style="padding: 10px 16px; background: var(--ink); color: var(--paper); font-size: 12px; font-weight: 600; cursor: pointer;">Copy</div>
+                    </div>
+
+                    <button class="mock-btn primary full">Start Game</button>
+                    <div class="mock-note">Everyone plays the same word simultaneously</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- In-Game -->
+        <div>
+            <div class="mock-note" style="margin-bottom: 8px;">2. Play with live progress</div>
+            <div class="mockup-frame phone">
+                <div class="mockup-bar"><span>Party · Classic</span><span>2 players</span></div>
+                <div class="mock-progress-strip" style="padding: 8px 14px;">
+                    <div class="mock-progress-player">
+                        <div class="mock-avatar" style="width: 20px; height: 20px; font-size: 9px;">H</div>
+                        <div class="mock-progress-dots">
+                            <div class="mock-progress-dot done"></div>
+                            <div class="mock-progress-dot done"></div>
+                            <div class="mock-progress-dot current"></div>
+                            <div class="mock-progress-dot empty"></div>
+                            <div class="mock-progress-dot empty"></div>
+                            <div class="mock-progress-dot empty"></div>
+                        </div>
+                    </div>
+                    <div class="mock-progress-player">
+                        <div class="mock-avatar" style="width: 20px; height: 20px; font-size: 9px;">S</div>
+                        <div class="mock-progress-dots">
+                            <div class="mock-progress-dot done"></div>
+                            <div class="mock-progress-dot current"></div>
+                            <div class="mock-progress-dot empty"></div>
+                            <div class="mock-progress-dot empty"></div>
+                            <div class="mock-progress-dot empty"></div>
+                            <div class="mock-progress-dot empty"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mockup-content" style="text-align: center; padding: 20px;">
+                    <div style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
+                        <div style="display: flex; gap: 4px;"><div class="tile g" style="width:36px;height:36px;font-size:16px;">C</div><div class="tile x" style="width:36px;height:36px;font-size:16px;">R</div><div class="tile y" style="width:36px;height:36px;font-size:16px;">A</div><div class="tile x" style="width:36px;height:36px;font-size:16px;">N</div><div class="tile x" style="width:36px;height:36px;font-size:16px;">E</div></div>
+                        <div style="display: flex; gap: 4px;"><div class="tile g" style="width:36px;height:36px;font-size:16px;">C</div><div class="tile x" style="width:36px;height:36px;font-size:16px;">L</div><div class="tile g" style="width:36px;height:36px;font-size:16px;">A</div><div class="tile x" style="width:36px;height:36px;font-size:16px;">S</div><div class="tile y" style="width:36px;height:36px;font-size:16px;">S</div></div>
+                        <div style="display: flex; gap: 4px;"><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--ink);">C</div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--ink);">H</div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div><div class="tile" style="width:36px;height:36px;font-size:16px;border-color:var(--rule);"></div></div>
+                    </div>
+                    <div class="mock-note" style="margin-top: 12px;">Progress strip shows guess # per player<br>No letter spoilers — just dots</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div>
+            <div class="mock-note" style="margin-bottom: 8px;">3. Results &amp; rematch</div>
+            <div class="mockup-frame phone">
+                <div class="mockup-bar"><span>Party Results</span><span>✕</span></div>
+                <div class="mockup-content">
+                    <div style="text-align: center; margin-bottom: 16px;">
+                        <div style="font-family: var(--serif); font-size: 32px; font-weight: 800; letter-spacing: 0.08em;">CHASE</div>
+                        <div style="font-size: 12px; color: var(--gray);">/tʃeɪs/ · verb</div>
+                    </div>
+
+                    <div class="mock-results">
+                        <div class="mock-result-row">
+                            <div class="mock-result-rank gold">1</div>
+                            <div><div style="font-weight: 600;">Sanna</div><div style="font-size: 11px; color: var(--gray);">Solved in 2 · 0:34</div></div>
+                            <div class="mock-result-stat">2 guesses</div>
+                            <div class="mock-result-stat">🏆</div>
+                        </div>
+                        <div class="mock-result-row">
+                            <div class="mock-result-rank silver">2</div>
+                            <div><div style="font-weight: 600;">Hugo</div><div style="font-size: 11px; color: var(--gray);">Solved in 3 · 1:12</div></div>
+                            <div class="mock-result-stat">3 guesses</div>
+                            <div class="mock-result-stat"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px; display: flex; gap: 8px;">
+                        <button class="mock-btn primary" style="flex: 1;">Rematch</button>
+                        <button class="mock-btn secondary" style="flex: 1;">Share</button>
+                    </div>
+                    <div class="mock-note">Rematch keeps the same lobby, new word</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     REFINED: Option F — The Hybrid (E+D)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="screen refined-divider" id="refined">
+    <h2>Refined: The Hybrid</h2>
+    <p>Combining the Homepage Hub (D) with Two-Step Flow (E). The recommended architecture.</p>
+</section>
+
+<section class="refined-section" id="refined-home">
+    <div class="refined-label">F1 / Returning User Homepage</div>
+    <div class="refined-title">Homepage Hub</div>
+    <div class="refined-desc">Returning users see their active games, languages, and social actions. One tap to continue. "New Game" for exploration.</div>
+
+    <div class="phone-frame">
+        <div class="pf-status"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+        <div class="pf-header">
+            <div class="pf-header-title">Wordle<span style="color: var(--accent);">.</span>Global</div>
+            <div class="pf-header-icons">
+                <i data-lucide="bell" class="icon" style="width:18px;height:18px;"></i>
+                <i data-lucide="settings" class="icon" style="width:18px;height:18px;"></i>
+            </div>
+        </div>
+        <div class="pf-body">
+            <div class="hub-section-label">Continue Playing</div>
+            <div class="hub-card">
+                <div class="hub-card-icon"><img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="24" height="24" class="flag-icon" alt="English"></div>
+                <div class="hub-card-info">
+                    <div class="hub-card-title">English Daily</div>
+                    <div class="hub-card-sub">Classic · 5 letters · #247</div>
+                </div>
+                <div class="hub-card-action solved">Solved ✓</div>
+            </div>
+            <div class="hub-card">
+                <div class="hub-card-icon"><img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="24" height="24" class="flag-icon" alt="French"></div>
+                <div class="hub-card-info">
+                    <div class="hub-card-title">Français Daily</div>
+                    <div class="hub-card-sub">Classic · 5 letters · 🔥 21</div>
+                </div>
+                <div class="hub-card-action play">Play →</div>
+            </div>
+            <div class="hub-card">
+                <div class="hub-card-icon"><i data-lucide="grid-2x2" class="icon" style="width:18px;height:18px;color:var(--gray);"></i></div>
+                <div class="hub-card-info">
+                    <div class="hub-card-title">English Quordle</div>
+                    <div class="hub-card-sub">4 boards · Daily · #42</div>
+                </div>
+                <div class="hub-card-action play">Play →</div>
+            </div>
+
+            <div style="margin: 16px 0;">
+                <button class="mock-btn primary full" style="font-size: 14px; padding: 14px;">New Game</button>
+            </div>
+
+            <div class="hub-section-label">Your Languages</div>
+            <div class="hub-langs">
+                <img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="28" height="28" class="hub-lang-flag active" alt="English">
+                <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="28" height="28" class="hub-lang-flag" alt="French">
+                <img src="https://hatscripts.github.io/circle-flags/flags/fi.svg" width="28" height="28" class="hub-lang-flag" alt="Finnish">
+                <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="28" height="28" class="hub-lang-flag" alt="German">
+                <div class="hub-lang-add">+</div>
+            </div>
+
+            <div class="hub-section-label">Social</div>
+            <div class="hub-social-row">
+                <div class="hub-social-btn"><i data-lucide="users" class="icon" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"></i> Create Party</div>
+                <div class="hub-social-btn"><i data-lucide="link" class="icon" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"></i> Custom Word</div>
+            </div>
+
+            <div class="hub-stats">
+                <span><strong>247</strong> won</span>
+                <span><strong>14</strong> streak</span>
+                <span><strong>12</strong> langs</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="refined-section" id="refined-picker">
+    <div class="refined-label">F2 / New Game → Board Type Picker</div>
+    <div class="refined-title">Pick Your Board</div>
+    <div class="refined-desc">The hero choice. Each board type is visually distinct. Tap to proceed to the game with the config bar.</div>
+
+    <div class="phone-frame">
+        <div class="pf-status"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+        <div class="pf-header">
+            <span style="font-size: 13px; color: var(--gray);">← Back</span>
+            <span style="font-family: var(--serif); font-size: 16px; font-weight: 700;">New Game</span>
+            <span></span>
+        </div>
+        <div class="pf-body">
+            <div class="board-picker-item">
+                <div class="board-picker-icon"><i data-lucide="square" class="icon"></i></div>
+                <div class="board-picker-info">
+                    <div class="board-picker-name">Classic</div>
+                    <div class="board-picker-sub">1 board · 6 guesses · The original</div>
+                </div>
+                <span class="board-picker-arrow">→</span>
+            </div>
+            <div class="board-picker-item">
+                <div class="board-picker-icon"><i data-lucide="columns-2" class="icon"></i></div>
+                <div class="board-picker-info">
+                    <div class="board-picker-name">Dordle</div>
+                    <div class="board-picker-sub">2 boards · 7 guesses</div>
+                </div>
+                <span class="board-picker-arrow">→</span>
+            </div>
+            <div class="board-picker-item">
+                <div class="board-picker-icon"><i data-lucide="columns-3" class="icon"></i></div>
+                <div class="board-picker-info">
+                    <div class="board-picker-name">Tridle</div>
+                    <div class="board-picker-sub">3 boards · 8 guesses</div>
+                </div>
+                <span class="board-picker-arrow">→</span>
+            </div>
+            <div class="board-picker-item">
+                <div class="board-picker-icon"><i data-lucide="grid-2x2" class="icon"></i></div>
+                <div class="board-picker-info">
+                    <div class="board-picker-name">Quordle</div>
+                    <div class="board-picker-sub">4 boards · 9 guesses</div>
+                </div>
+                <span class="board-picker-arrow">→</span>
+            </div>
+            <div class="board-picker-item">
+                <div class="board-picker-icon"><i data-lucide="compass" class="icon"></i></div>
+                <div class="board-picker-info">
+                    <div class="board-picker-name">Semantic Explorer</div>
+                    <div class="board-picker-sub">Navigate meaning · 10 guesses</div>
+                </div>
+                <span class="board-picker-arrow">→</span>
+            </div>
+            <div class="board-picker-item">
+                <div class="board-picker-icon"><i data-lucide="zap" class="icon"></i></div>
+                <div class="board-picker-info">
+                    <div class="board-picker-name">Speed Streak</div>
+                    <div class="board-picker-sub">5 minutes · Solve as many as you can</div>
+                </div>
+                <span class="board-picker-arrow">→</span>
+            </div>
+            <div class="mock-note" style="margin-top: 16px; text-align: center;">More modes coming soon</div>
+        </div>
+    </div>
+</section>
+
+<section class="refined-section" id="refined-game">
+    <div class="refined-label">F3 / In-Game with Config Bar</div>
+    <div class="refined-title">Play with Persistent Config</div>
+    <div class="refined-desc">The config bar stays visible during gameplay. Switch between Daily/Unlimited, toggle Party, or change language without leaving the game.</div>
+
+    <div class="phone-frame">
+        <div class="pf-status"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+        <div class="pf-header">
+            <span style="font-size: 13px; color: var(--gray);">←</span>
+            <span style="font-family: var(--serif); font-size: 16px; font-weight: 700;">Classic</span>
+            <div style="display: flex; gap: 10px; color: var(--gray);">
+                <i data-lucide="bar-chart-2" class="icon" style="width:18px;height:18px;"></i>
+                <i data-lucide="settings" class="icon" style="width:18px;height:18px;"></i>
+            </div>
+        </div>
+        <div class="config-bar">
+            <span class="config-pill active">Daily</span>
+            <span class="config-pill">Unlimited</span>
+            <span class="config-pill">Custom</span>
+            <span class="config-divider"></span>
+            <span class="config-pill active">Solo</span>
+            <span class="config-pill">Party</span>
+            <span class="config-divider"></span>
+            <span class="config-pill active">EN</span>
+        </div>
+        <div class="pf-body" style="text-align: center; padding: 12px 16px;">
+            <div style="font-family: var(--mono); font-size: 10px; color: var(--gray); margin-bottom: 8px; letter-spacing: 0.08em;">#247 · March 20, 2026</div>
+            <div style="display: flex; flex-direction: column; gap: 4px; align-items: center; margin-bottom: 12px;">
+                <div style="display: flex; gap: 4px;"><div class="tile g" style="width:44px;height:44px;font-size:20px;">C</div><div class="tile x" style="width:44px;height:44px;font-size:20px;">R</div><div class="tile y" style="width:44px;height:44px;font-size:20px;">A</div><div class="tile x" style="width:44px;height:44px;font-size:20px;">N</div><div class="tile x" style="width:44px;height:44px;font-size:20px;">E</div></div>
+                <div style="display: flex; gap: 4px;"><div class="tile g" style="width:44px;height:44px;font-size:20px;">C</div><div class="tile x" style="width:44px;height:44px;font-size:20px;">L</div><div class="tile g" style="width:44px;height:44px;font-size:20px;">A</div><div class="tile x" style="width:44px;height:44px;font-size:20px;">S</div><div class="tile y" style="width:44px;height:44px;font-size:20px;">S</div></div>
+                <div style="display: flex; gap: 4px;"><div class="tile" style="width:44px;height:44px;font-size:20px;border-color:var(--ink);">C</div><div class="tile" style="width:44px;height:44px;font-size:20px;border-color:var(--ink);">H</div><div class="tile" style="width:44px;height:44px;font-size:20px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;font-size:20px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;font-size:20px;border-color:var(--rule);"></div></div>
+                <div style="display: flex; gap: 4px;"><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div></div>
+                <div style="display: flex; gap: 4px;"><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div></div>
+                <div style="display: flex; gap: 4px;"><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div><div class="tile" style="width:44px;height:44px;border-color:var(--rule);"></div></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
+                <div style="display: flex; gap: 3px;"><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">Q</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">W</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--green);color:white;">E</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--yellow);color:white;">R</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">T</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">Y</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">U</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">I</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">O</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">P</div></div>
+                <div style="display: flex; gap: 3px;"><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--yellow);color:white;">A</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--yellow);color:white;">S</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">D</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">F</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">G</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--green);color:white;">H</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">J</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">K</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--gray);color:white;">L</div></div>
+                <div style="display: flex; gap: 3px;"><div class="kb-key" style="min-width:40px;height:36px;font-size:9px;">ENTER</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">Z</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--gray);color:white;">X</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--green);color:white;">C</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">V</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">B</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;background:var(--gray);color:white;">N</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">M</div><div class="kb-key" style="min-width:28px;height:36px;font-size:11px;">⌫</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="refined-section" id="refined-party">
+    <div class="refined-label">F4 / Party — Triggered from Config Bar</div>
+    <div class="refined-title">Party as an Overlay</div>
+    <div class="refined-desc">Tapping "Party" in the config bar opens a bottom sheet. Share the link, wait for friends, start when ready. Works for any board type.</div>
+
+    <div class="phone-frame">
+        <div class="pf-status"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+        <div class="pf-header">
+            <span style="font-size: 13px; color: var(--gray);">←</span>
+            <span style="font-family: var(--serif); font-size: 16px; font-weight: 700;">Classic</span>
+            <div style="display: flex; gap: 10px; color: var(--gray);">
+                <i data-lucide="bar-chart-2" class="icon" style="width:18px;height:18px;"></i>
+                <i data-lucide="settings" class="icon" style="width:18px;height:18px;"></i>
+            </div>
+        </div>
+        <div class="config-bar">
+            <span class="config-pill active">Daily</span>
+            <span class="config-pill">Unlimited</span>
+            <span class="config-pill">Custom</span>
+            <span class="config-divider"></span>
+            <span class="config-pill">Solo</span>
+            <span class="config-pill party">Party ●</span>
+            <span class="config-divider"></span>
+            <span class="config-pill active">EN</span>
+        </div>
+        <div class="pf-body" style="padding: 12px 16px; position: relative; min-height: 360px; display: flex; flex-direction: column; justify-content: flex-end;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.05);"></div>
+            <div class="party-overlay" style="position: relative; z-index: 1;">
+                <div class="party-overlay-handle"></div>
+                <h3>Party Mode</h3>
+                <div class="party-sub">Play Classic · English · Daily together</div>
+
+                <div class="mock-lobby" style="border-color: var(--rule);">
+                    <div style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Players (2/6)</div>
+                    <div class="mock-lobby-players">
+                        <div class="mock-player">
+                            <div class="mock-avatar">H</div>
+                            <span class="mock-player-name">Hugo</span>
+                            <span class="mock-player-status ready">Host ●</span>
+                        </div>
+                        <div class="mock-player">
+                            <div class="mock-avatar">S</div>
+                            <span class="mock-player-name">Sanna</span>
+                            <span class="mock-player-status ready">Joined ●</span>
+                        </div>
+                        <div class="mock-player">
+                            <div class="mock-avatar waiting">?</div>
+                            <span style="color: var(--gray); font-size: 12px;">Waiting...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border: 1px solid var(--rule); display: flex; margin-bottom: 12px;">
+                    <input type="text" value="wordle.global/party/x7k9m" readonly style="flex: 1; padding: 10px; border: none; font-family: var(--mono); font-size: 11px; color: var(--gray); background: var(--paper-warm);">
+                    <div style="padding: 10px 14px; background: var(--ink); color: var(--paper); font-size: 12px; font-weight: 600; cursor: pointer;">Copy</div>
+                </div>
+
+                <button class="mock-btn primary full">Start Game</button>
+                <div class="mock-note" style="text-align: center; margin-top: 8px;">Everyone plays the same word simultaneously</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/lucide@0.344.0"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

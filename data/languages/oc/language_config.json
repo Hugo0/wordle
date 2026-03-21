@@ -7,7 +7,29 @@
         "locale": "oc",
         "title": "Lo jòc de mots quotidian",
         "description": "Devinhatz lo mot amagat en 6 ensages (o mens). Un novèl enigma es disponible cada jorn!",
-        "keywords": "occitan, enigma, mot, jòc, en linha, devinhar, quotidian"
+        "keywords": "occitan, enigma, mot, jòc, en linha, devinhar, quotidian",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Occitan. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Occitan as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Occitan. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Occitan. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Occitan. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "occitan",

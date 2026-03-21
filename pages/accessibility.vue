@@ -6,18 +6,30 @@
 useSeoMeta({
     title: 'Accessibility — Wordle Global',
     description:
-        'Wordle Global accessibility statement. WCAG 2.1 AA compliant word game in 79 languages with screen reader support, keyboard navigation, and reduced motion.',
+        'Wordle Global accessibility statement. WCAG 2.1 AA compliant word game in 80+ languages with screen reader support, keyboard navigation, and reduced motion.',
+    ogTitle: 'Accessibility — Wordle Global',
+    ogDescription:
+        'WCAG 2.1 AA compliant word game in 80+ languages with screen reader support, keyboard navigation, and reduced motion.',
+    ogUrl: 'https://wordle.global/accessibility',
+    ogType: 'website',
+    twitterCard: 'summary',
+    twitterTitle: 'Accessibility — Wordle Global',
+});
+
+useHead({
+    htmlAttrs: { lang: 'en' },
+    link: [{ rel: 'canonical', href: 'https://wordle.global/accessibility' }],
 });
 </script>
 
 <template>
-    <div class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white">
+    <div class="min-h-screen bg-paper text-ink">
         <main class="max-w-2xl mx-auto px-4 py-8">
-            <a href="/" class="text-blue-500 hover:underline text-sm"
-                >&larr; Back to Wordle Global</a
+            <NuxtLink to="/" class="text-accent hover:underline text-sm"
+                >&larr; Back to Wordle Global</NuxtLink
             >
 
-            <h1 class="text-3xl font-bold mt-4 mb-6">Accessibility Statement</h1>
+            <h1 class="heading-display text-3xl mt-4 mb-6">Accessibility Statement</h1>
 
             <p class="mb-4">
                 Wordle Global is committed to being accessible to all players, including those who
@@ -26,7 +38,7 @@ useSeoMeta({
                 <strong>WCAG 2.1 Level AA</strong> conformance.
             </p>
 
-            <h2 class="text-xl font-bold mt-8 mb-3">What we support</h2>
+            <h2 class="heading-section text-xl mt-8 mb-3">What we support</h2>
 
             <ul class="list-disc pl-6 space-y-2 mb-6">
                 <li>
@@ -55,13 +67,13 @@ useSeoMeta({
                     render right-to-left with correct typing direction.
                 </li>
                 <li>
-                    <strong>79 languages:</strong> Each language has a localized keyboard, diacritic
-                    support (long-press for accented characters), and normalized input so accents
-                    are optional.
+                    <strong>80+ languages:</strong> Each language has a localized keyboard,
+                    diacritic support (long-press for accented characters), and normalized input so
+                    accents are optional.
                 </li>
             </ul>
 
-            <h2 class="text-xl font-bold mt-8 mb-3">Known limitations</h2>
+            <h2 class="heading-section text-xl mt-8 mb-3">Known limitations</h2>
 
             <ul class="list-disc pl-6 space-y-2 mb-6">
                 <li>
@@ -80,20 +92,20 @@ useSeoMeta({
                 </li>
             </ul>
 
-            <h2 class="text-xl font-bold mt-8 mb-3">Feedback</h2>
+            <h2 class="heading-section text-xl mt-8 mb-3">Feedback</h2>
 
             <p class="mb-4">
                 If you encounter an accessibility barrier, please
                 <a
-                    href="https://github.com/Hugo0/wordle/issues/new?labels=accessibility&template=accessibility.md"
-                    class="text-blue-500 hover:underline"
+                    href="https://github.com/Hugo0/wordle/issues/new?template=bug.yml&labels=bug,accessibility&title=Accessibility:+"
+                    class="text-accent hover:underline"
                     >open a GitHub issue</a
                 >
                 with the "accessibility" label. We take accessibility reports seriously and will
                 respond promptly.
             </p>
 
-            <p class="text-sm text-neutral-500 mt-8">
+            <p class="text-sm text-muted mt-8">
                 Last updated: March 2026. This statement is reviewed with each major release.
             </p>
         </main>

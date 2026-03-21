@@ -188,22 +188,17 @@ onMounted(() => {
 </script>
 
 <template>
-    <div
-        class="min-h-screen bg-white dark:bg-neutral-900 text-black dark:text-white transition-colors"
-    >
+    <div class="min-h-screen bg-paper text-ink transition-colors">
         <div class="max-w-4xl mx-auto px-4 py-6">
             <!-- Header -->
             <header class="text-center mb-6">
-                <NuxtLink
-                    :to="`/${lang}`"
-                    class="text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
-                >
+                <NuxtLink :to="`/${lang}`" class="text-sm text-accent hover:opacity-80">
                     &larr; Play Wordle {{ langNameNative }}
                 </NuxtLink>
-                <h1 class="text-2xl font-bold mt-2">
+                <h1 class="heading-display text-2xl mt-2">
                     Wordle {{ langNameNative }} &mdash; {{ langStore.config?.ui?.all_words }}
                 </h1>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                <p class="text-sm text-muted">
                     {{ todaysIdx.toLocaleString() }}
                     {{ langStore.config?.ui?.daily_words_counting }}
                 </p>
@@ -216,23 +211,21 @@ onMounted(() => {
                     <NuxtLink
                         v-if="w.is_today && !todayRevealed"
                         :to="`/${lang}`"
-                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group border-2 border-dashed border-green-500/40"
+                        class="block bg-paper-warm rounded-lg p-4 hover:shadow-md hover:bg-paper-warm transition-all group border-2 border-dashed border-correct/40"
                     >
                         <div class="flex justify-center gap-1 mb-2">
                             <div
                                 v-for="i in 5"
                                 :key="i"
-                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-neutral-400 dark:bg-neutral-600 rounded"
+                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-muted rounded"
                             >
                                 ?
                             </div>
                         </div>
-                        <p class="text-xs text-neutral-400 text-center">
+                        <p class="text-xs text-muted text-center">
                             #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
                         </p>
-                        <p
-                            class="text-sm font-semibold text-green-600 dark:text-green-400 mt-2 text-center"
-                        >
+                        <p class="text-sm font-semibold text-correct mt-2 text-center">
                             {{ langStore.config?.ui?.todays_word_reveal }}
                         </p>
                     </NuxtLink>
@@ -241,23 +234,21 @@ onMounted(() => {
                     <NuxtLink
                         v-else-if="w.is_today && todayRevealed"
                         :to="`/${lang}/word/${w.day_idx}`"
-                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group border-2 border-green-500/40"
+                        class="block bg-paper-warm rounded-lg p-4 hover:shadow-md hover:bg-paper-warm transition-all group border-2 border-correct/40"
                     >
                         <div class="flex justify-center gap-1 mb-2">
                             <div
                                 v-for="(letter, li) in todayRevealed"
                                 :key="li"
-                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-green-500 rounded uppercase"
+                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-correct rounded uppercase"
                             >
                                 {{ letter }}
                             </div>
                         </div>
-                        <p class="text-xs text-neutral-400 text-center">
+                        <p class="text-xs text-muted text-center">
                             #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
                         </p>
-                        <p
-                            class="text-sm font-semibold text-green-600 dark:text-green-400 mt-1 text-center"
-                        >
+                        <p class="text-sm font-semibold text-correct mt-1 text-center">
                             {{ langStore.config?.ui?.today }}
                         </p>
                     </NuxtLink>
@@ -266,12 +257,12 @@ onMounted(() => {
                     <NuxtLink
                         v-else
                         :to="`/${lang}/word/${w.day_idx}`"
-                        class="block bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-all group relative"
+                        class="block bg-paper-warm rounded-lg p-4 hover:shadow-md hover:bg-paper-warm transition-all group relative"
                     >
                         <!-- Played checkmark -->
                         <span
                             v-if="completedDays.has(w.day_idx)"
-                            class="absolute top-2 right-2 text-green-500 dark:text-green-400 text-xs"
+                            class="absolute top-2 right-2 text-correct text-xs"
                             title="Played"
                             >&#10003;</span
                         >
@@ -280,21 +271,21 @@ onMounted(() => {
                             <div
                                 v-for="(letter, li) in w.word"
                                 :key="li"
-                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-green-500 rounded uppercase"
+                                class="w-8 h-8 flex items-center justify-center text-sm font-bold text-white bg-correct rounded uppercase"
                             >
                                 {{ letter }}
                             </div>
                         </div>
 
                         <!-- Day and date -->
-                        <p class="text-xs text-neutral-400 text-center">
+                        <p class="text-xs text-muted text-center">
                             #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
                         </p>
 
                         <!-- Definition snippet -->
                         <p
                             v-if="w.definition && w.definition.definition"
-                            class="text-xs text-neutral-600 dark:text-neutral-300 mt-1 line-clamp-2 text-center"
+                            class="text-xs text-muted mt-1 line-clamp-2 text-center"
                         >
                             {{
                                 w.definition.definition.length > 80
@@ -306,7 +297,7 @@ onMounted(() => {
                         <!-- Stats summary -->
                         <div
                             v-if="w.stats && w.stats.total > 0"
-                            class="flex justify-center gap-3 mt-2 text-[10px] text-neutral-400"
+                            class="flex justify-center gap-3 mt-2 text-[10px] text-muted"
                         >
                             <span>{{ w.stats.total }} {{ langStore.config?.ui?.plays }}</span>
                             <span>{{ winRate(w.stats) }}% {{ langStore.config?.ui?.win }}</span>
@@ -340,17 +331,15 @@ onMounted(() => {
                 <NuxtLink
                     v-if="page > 1"
                     :to="`/${lang}/words${page > 2 ? `?page=${page - 1}` : ''}`"
-                    class="py-2 px-4 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 border border-blue-500 dark:border-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                    class="py-2 px-4 text-sm text-accent hover:opacity-80 border border-accent rounded-lg hover:bg-accent-soft transition-colors"
                 >
                     &larr; Newer
                 </NuxtLink>
-                <span class="text-sm text-neutral-500 dark:text-neutral-400">
-                    Page {{ page }} of {{ totalPages }}
-                </span>
+                <span class="text-sm text-muted"> Page {{ page }} of {{ totalPages }} </span>
                 <NuxtLink
                     v-if="page < totalPages"
                     :to="`/${lang}/words?page=${page + 1}`"
-                    class="py-2 px-4 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 border border-blue-500 dark:border-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                    class="py-2 px-4 text-sm text-accent hover:opacity-80 border border-accent rounded-lg hover:bg-accent-soft transition-colors"
                 >
                     Older &rarr;
                 </NuxtLink>
@@ -360,13 +349,13 @@ onMounted(() => {
             <div class="text-center mb-4">
                 <NuxtLink
                     :to="`/${lang}`"
-                    class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-green-500 hover:bg-green-600 transition-colors"
+                    class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-correct hover:opacity-90 transition-colors"
                 >
                     Play Today's Wordle
                 </NuxtLink>
             </div>
 
-            <p class="text-center text-xs text-neutral-400">
+            <p class="text-center text-xs text-muted">
                 <NuxtLink to="/stats" class="hover:underline">Global Stats</NuxtLink>
                 &middot;
                 <a

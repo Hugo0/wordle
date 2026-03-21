@@ -8,7 +8,29 @@
         "wordle_native": "वर्डल",
         "title": "दैनिक शब्द खेल",
         "description": "Kids को प्रयास (वा कम) मा लुकेको शब्द अनुमान लगाउनुहोस्। नयाँ पजल प्रत्येक दिन उपलब्ध छ!",
-        "keywords": "नेपाली, पज्जल, शब्द, खेल, खेल, अनलाइन, अनलाइन, दैनिक"
+        "keywords": "नेपाली, पज्जल, शब्द, खेल, खेल, अनलाइन, अनलाइन, दैनिक",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Nepali. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Nepali as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Nepali. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Nepali. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Nepali. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "नेपाली",

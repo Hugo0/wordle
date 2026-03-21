@@ -11,7 +11,29 @@
         "wordle_native": "Wordle",
         "title": "Pang-araw-araw na laro ng salita",
         "description": "Hulaan ang nakatagong salita sa 6 na pagsubok (o mas kaunti). May bagong palaisipan araw-araw!",
-        "keywords": "Tagalog, Filipino, palaisipan, salita, laro, online, hulaan, araw-araw"
+        "keywords": "Tagalog, Filipino, palaisipan, salita, laro, online, hulaan, araw-araw",
+        "modes": {
+            "unlimited": {
+                "title": "Play unlimited — no waiting",
+                "description": "Play unlimited Wordle in Tagalog. No waiting — get a new word every time."
+            },
+            "speed": {
+                "title": "Speed Streak — race the clock",
+                "description": "Speed Streak: solve as many Wordle words in Tagalog as you can in 5 minutes."
+            },
+            "dordle": {
+                "title": "Dordle — 2 boards at once",
+                "description": "Play Dordle in Tagalog. Solve 2 Wordle boards at once with 7 guesses."
+            },
+            "tridle": {
+                "title": "Tridle — 3 boards at once",
+                "description": "Play Tridle in Tagalog. Solve 3 Wordle boards at once with 8 guesses."
+            },
+            "quordle": {
+                "title": "Quordle — 4 boards at once",
+                "description": "Play Quordle in Tagalog. Solve 4 Wordle boards at once with 9 guesses."
+            }
+        }
     },
     "text": {
         "subheader": "Tagalog",
