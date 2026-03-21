@@ -12,7 +12,7 @@
  * change the save key format (language code from URL path) or remove the
  * tile_colors derivation without a migration path.
  */
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '~/stores/language';
 import { useSettingsStore } from '~/stores/settings';
@@ -104,6 +104,14 @@ export const useGameStore = defineStore('game', () => {
     );
     const boards = ref<BoardState[]>([createBoardState(0, '', MAX_GUESSES, WORD_LENGTH)]);
     const activeBoardIndex = ref(0);
+
+    // Keep PostHog game_mode super property in sync with gameConfig changes
+    watch(
+        () => gameConfig.value.mode,
+        (mode) => {
+            analytics.registerGameMode(mode);
+        }
+    );
 
     // =======================================================================
     // Computed Proxies — backward-compatible access to boards[activeBoardIndex]
@@ -939,8 +947,7 @@ export const useGameStore = defineStore('game', () => {
             );
         }
 
-        // Speed mode is session-based — no persistent stats or game_complete analytics
-        // (speed has its own speed_session_complete event)
+        // Speed mode is session-based — no persistent stats (tracked via finishSpeedSession)
         if (gameConfig.value.mode !== 'speed') {
             const statsKey = buildStatsKey(gameConfig.value);
             statsStore.saveResult(statsKey, won, options.statsAttempts);
@@ -1943,6 +1950,9 @@ export const useGameStore = defineStore('game', () => {
         initKeyClasses();
         showTiles();
         speedState.value.wordStartTime = Date.now();
+        // Track each new round so we can count individual rounds within a session
+        const lang = useLanguageStore();
+        analytics.trackGameRoundStart(lang.languageCode, 'speed');
     }
 
     function handleSpeedWordSolved(): void {
@@ -2095,22 +2105,25 @@ export const useGameStore = defineStore('game', () => {
             haptic.error();
         }
 
-        // Analytics: track speed session completion
+        // Analytics: single game_complete with speed-specific extras
         const lang = useLanguageStore();
         const s = speedState.value;
         const totalSolveTimeMs = s.solvedWords.reduce((sum, w) => sum + w.timeMs, 0);
-        analytics.trackSpeedSessionComplete({
+        analytics.trackGameComplete({
             language: lang.languageCode,
+            won: false,
+            attempts: s.totalGuesses,
+            streak_after: 0,
+            game_mode: 'speed',
+            time_to_complete_seconds: SPEED_INITIAL_TIME / 1000,
             words_solved: s.wordsSolved,
             words_failed: s.wordsFailed,
-            total_guesses: s.totalGuesses,
             score: s.score,
             max_combo: s.maxCombo,
             avg_time_per_word_seconds:
                 s.wordsSolved > 0
                     ? Math.round((totalSolveTimeMs / s.wordsSolved / 1000) * 10) / 10
                     : 0,
-            total_time_seconds: SPEED_INITIAL_TIME / 1000,
         });
     }
 

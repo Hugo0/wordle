@@ -28,9 +28,6 @@ const POSTHOG_SKIP_EVENTS = new Set<string>();
 // Pageviews are handled by PostHog's built-in $pageview (capture_pageview: 'history_change').
 const GA4_CORE_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon']);
 
-// Default game mode - used as fallback across all game lifecycle events.
-const DEFAULT_GAME_MODE = 'daily';
-
 // ============================================================================
 // TYPE DEFINITIONS
 // ============================================================================
@@ -57,6 +54,12 @@ interface GameCompleteParams {
     max_consecutive_invalid?: number;
     had_frustration?: boolean;
     time_to_complete_seconds?: number;
+    // Speed mode extras
+    words_solved?: number;
+    words_failed?: number;
+    score?: number;
+    max_combo?: number;
+    avg_time_per_word_seconds?: number;
 }
 
 interface GameAbandonParams {
@@ -96,17 +99,6 @@ interface SettingsChangeParams {
 interface PWAParams {
     platform?: 'ios' | 'android' | 'desktop' | 'unknown';
     source?: 'banner' | 'settings' | 'auto';
-}
-
-interface SpeedSessionCompleteParams {
-    language: string;
-    words_solved: number;
-    words_failed: number;
-    total_guesses: number;
-    score: number;
-    max_combo: number;
-    avg_time_per_word_seconds: number;
-    total_time_seconds: number;
 }
 
 export interface FrustrationState {
@@ -159,6 +151,8 @@ export function useAnalytics() {
      */
     const track = (eventName: string, params?: Record<string, unknown>): void => {
         if (!import.meta.client) return;
+        // Never send analytics from localhost (dev environment)
+        if (window.location.hostname === 'localhost') return;
 
         // Google Analytics 4 — bare event names only, no custom params.
         // GA4 custom dimensions are deprecated; PostHog handles all rich data.
@@ -324,7 +318,7 @@ export function useAnalytics() {
             is_returning: params.is_returning,
             days_since_last: params.days_since_last,
             current_streak: params.current_streak,
-            game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
+            game_mode: params.game_mode,
             total_games_played: params.total_games_played,
             total_languages_played: params.total_languages_played,
             user_age_days: params.user_age_days,
@@ -342,13 +336,19 @@ export function useAnalytics() {
             won: params.won,
             attempts: params.attempts,
             streak_after: params.streak_after,
-            game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
+            game_mode: params.game_mode,
             // Session-aggregated struggle context
             total_invalid_attempts: params.total_invalid_attempts ?? 0,
             max_consecutive_invalid: params.max_consecutive_invalid ?? 0,
             had_frustration: params.had_frustration ?? false,
             time_to_complete_seconds: params.time_to_complete_seconds,
             is_pwa: isStandalone(),
+            // Speed mode extras (undefined fields are omitted by PostHog)
+            words_solved: params.words_solved,
+            words_failed: params.words_failed,
+            score: params.score,
+            max_combo: params.max_combo,
+            avg_time_per_word_seconds: params.avg_time_per_word_seconds,
         });
     };
 
@@ -361,7 +361,7 @@ export function useAnalytics() {
             language: params.language,
             attempt_number: params.attempt_number,
             last_guess_valid: params.last_guess_valid,
-            game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
+            game_mode: params.game_mode,
         });
     };
 
@@ -379,7 +379,7 @@ export function useAnalytics() {
             language,
             attempt_number: attemptNumber,
             is_valid: isValid,
-            game_mode: gameMode ?? DEFAULT_GAME_MODE,
+            game_mode: gameMode,
         });
     };
 
@@ -505,7 +505,7 @@ export function useAnalytics() {
             method: params.method,
             won: params.won,
             attempts: params.attempts,
-            game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
+            game_mode: params.game_mode,
         });
     };
 
@@ -519,7 +519,7 @@ export function useAnalytics() {
             method: params.method,
             won: params.won,
             attempts: params.attempts,
-            game_mode: params.game_mode ?? DEFAULT_GAME_MODE,
+            game_mode: params.game_mode,
         });
     };
 
@@ -821,21 +821,6 @@ export function useAnalytics() {
     };
 
     // ========================================================================
-    // SPEED MODE EVENTS
-    // ========================================================================
-
-    /**
-     * Track speed session completion
-     * Answers: How do speed sessions perform? What scores are typical?
-     */
-    const trackSpeedSessionComplete = (params: SpeedSessionCompleteParams): void => {
-        track('speed_session_complete', {
-            ...params,
-            is_pwa: isStandalone(),
-        });
-    };
-
-    // ========================================================================
     // MODE DISCOVERY EVENTS
     // ========================================================================
 
@@ -864,6 +849,26 @@ export function useAnalytics() {
      */
     const registerLanguage = (language: string): void => {
         getPostHog()?.register({ language });
+    };
+
+    /**
+     * Register game_mode as a PostHog super property on all future events.
+     * Auto-attaches game_mode to every subsequent capture() call.
+     * Call whenever gameConfig.mode changes.
+     */
+    const registerGameMode = (mode: string): void => {
+        getPostHog()?.register({ game_mode: mode });
+    };
+
+    /**
+     * Track the start of a new round within a session (unlimited new word, speed new word).
+     * Distinct from game_start which fires once per page load.
+     */
+    const trackGameRoundStart = (language: string, gameMode: string): void => {
+        track('game_round_start', {
+            language,
+            game_mode: gameMode,
+        });
     };
 
     // ========================================================================
@@ -955,12 +960,12 @@ export function useAnalytics() {
         // Funnel
         trackHomepageView,
         trackReferralLanding,
-        // Speed mode
-        trackSpeedSessionComplete,
         // Mode discovery
         trackModeSelected,
         // Session
         registerLanguage,
+        registerGameMode,
+        trackGameRoundStart,
         // Init
         initAbandonTracking,
         // PostHog user identification
