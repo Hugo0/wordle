@@ -37,7 +37,10 @@ useGameModeSeo({
 const { data: allLangs } = await useFetch('/api/languages');
 if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/tridle');
 
-const wordList = gameData.value?.word_list ?? [];
+// Use curated daily-tier words for better quality
+const wordList = gameData.value?.daily_words?.length
+    ? gameData.value.daily_words
+    : (gameData.value?.word_list ?? []);
 const { multiBoardRef, startNewGame } = useMultiBoardPage(
     'tridle',
     wordList,
@@ -57,6 +60,7 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
         :visible="!!gameData"
         @toggle-sidebar="toggleSidebar"
         @close-sidebar="closeSidebar"
+        @new-game="startNewGame"
     >
         <GameMultiBoardLayout ref="multiBoardRef" />
 
