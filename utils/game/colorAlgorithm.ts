@@ -93,7 +93,11 @@ export function computeRowColors(
         if (guessChar && targetChar && fullCharsMatch(guessChar, targetChar, ctx)) {
             colors[i] = 'correct';
             classes[i] = BASE_REVEALED_CLASS ? `correct ${BASE_REVEALED_CLASS}` : 'correct';
-            tiles[i] = targetChar; // Use canonical form from target
+            // Keep the user's typed character — don't replace with target's form.
+            // Replacing would leak diacritic info (e.g., typing "perro" showing "ó"
+            // reveals the target has an accent before the puzzle is solved).
+            // Whole-word auto-correction (e.g., "borde" → "börde") is handled
+            // separately in the game store after checkWord().
             keyUpdates[i] = { char: guessChar, state: 'key-correct' as KeyState };
             const normalizedChar = fullNormalize(guessChar, ctx);
             const count = charCounts[normalizedChar];
