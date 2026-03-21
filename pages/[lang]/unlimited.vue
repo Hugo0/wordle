@@ -38,8 +38,11 @@ if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '
 
 // --- Random word selection ---
 function pickRandomWord(): string {
-    const wordList = gameData.value!.word_list;
-    return wordList[Math.floor(Math.random() * wordList.length)]!;
+    // Use curated daily-tier words for better quality (not the full valid list)
+    const pool = gameData.value!.daily_words?.length
+        ? gameData.value!.daily_words
+        : gameData.value!.word_list;
+    return pool[Math.floor(Math.random() * pool.length)]!;
 }
 
 function startNewGame() {

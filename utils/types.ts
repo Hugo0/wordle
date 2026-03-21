@@ -153,6 +153,7 @@ export interface LanguageConfig {
 
 export interface GameData {
     word_list: string[];
+    daily_words: string[];
     characters: string[];
     config: LanguageConfig;
     todays_idx: number;

@@ -27,6 +27,7 @@ export default defineEventHandler((event) => {
 
     const response: Record<string, unknown> = {
         word_list: session.wordList,
+        daily_words: data.dailyWords[lang] || [],
         characters: session.characters,
         config: session.config,
         todays_idx: session.todaysIdx,

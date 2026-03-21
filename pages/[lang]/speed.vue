@@ -49,7 +49,10 @@ if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '
 const countdownNumber = ref<string | number>('');
 
 function startCountdown() {
-    const wordList = gameData.value!.word_list;
+    // Use curated daily-tier words for better quality
+    const wordList = gameData.value!.daily_words?.length
+        ? gameData.value!.daily_words
+        : gameData.value!.word_list;
     game.startSpeedSession(wordList);
 
     countdownNumber.value = 3;
