@@ -319,6 +319,22 @@ Words are guessable but won't be selected as the daily word.
 **Issue:** ~90 lines each, differing only in mode string and SEO text.
 **Fix:** Consolidate into `pages/[lang]/[mode].vue` dynamic route, or extract shared template into a thin wrapper.
 
+## SEO Follow-ups (2026-03-21)
+
+### Redesign classic share images to match editorial design system
+**Files:** `scripts/generate_share_images.py`, `public/images/share/` (553 files)
+**Issue:** Share result images (e.g., en_3.png) still use old dark theme (#171717 background, Tailwind green #22c55e). Don't match the new editorial design system.
+**Fix:** Update `generate_share_images.py` to use design system colors (paper background, correct green #2d8544, Wordle.Global masthead). Regenerate all 553 images.
+
+### Submit new URLs to Google Search Console
+**Issue:** 400+ new game mode URLs are in the sitemap but Google hasn't crawled them yet.
+**Fix:** Go to Google Search Console → Sitemaps → submit `https://wordle.global/sitemap.xml`. Then request indexing for top 50 URLs (top 10 languages × 5 modes).
+
+### `/en/speed` 500 error — `useGameShare is not defined`
+**Files:** `pages/[lang]/speed.vue`
+**Issue:** Speed mode page crashes on SSR. `useGameShare` composable is referenced but not defined — likely from the BoardState refactor agent's changes.
+**Fix:** The other agent needs to create/export the `useGameShare` composable or fix the import.
+
 ## Low Priority (cleanup)
 
 ### English-only strings in speed/multi-board UI
