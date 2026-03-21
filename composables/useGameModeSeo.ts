@@ -108,4 +108,3 @@ export function useGameModeSeo(opts: GameModeSeoOptions) {
 
     return { title, description, canonicalUrl };
 }
-

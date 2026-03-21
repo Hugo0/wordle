@@ -42,23 +42,27 @@ DEFAULT_CONFIG_PATH = os.path.join(ROOT, "data", "default_language_config.json")
 FONTS_DIR = os.path.join(ROOT, "scripts", ".fonts")
 
 # ── Design system colors ──
-PAPER = (250, 248, 245)       # #faf8f5
+PAPER = (250, 248, 245)  # #faf8f5
 PAPER_WARM = (243, 239, 232)  # #f3efe8
-INK = (26, 26, 26)            # #1a1a1a
-ACCENT = (192, 57, 43)        # #c0392b
-CORRECT = (45, 133, 68)       # #2d8544
+INK = (26, 26, 26)  # #1a1a1a
+ACCENT = (192, 57, 43)  # #c0392b
+CORRECT = (45, 133, 68)  # #2d8544
 SEMICORRECT = (184, 134, 11)  # #b8860b
-MUTED = (140, 140, 140)       # #8c8c8c
+MUTED = (140, 140, 140)  # #8c8c8c
 MUTED_SOFT = (232, 232, 232)  # #e8e8e8
-RULE = (212, 207, 199)        # #d4cfc7
+RULE = (212, 207, 199)  # #d4cfc7
 WHITE = (255, 255, 255)
 
 W, H = 1200, 630
 
 # ── Font URLs ──
 FRAUNCES_URL = "https://github.com/google/fonts/raw/main/ofl/fraunces/Fraunces%5BSOFT%2CWONK%2Copsz%2Cwght%5D.ttf"
-SOURCE_SANS_URL = "https://github.com/google/fonts/raw/main/ofl/sourcesans3/SourceSans3%5Bwght%5D.ttf"
-JETBRAINS_URL = "https://github.com/google/fonts/raw/main/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf"
+SOURCE_SANS_URL = (
+    "https://github.com/google/fonts/raw/main/ofl/sourcesans3/SourceSans3%5Bwght%5D.ttf"
+)
+JETBRAINS_URL = (
+    "https://github.com/google/fonts/raw/main/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf"
+)
 _DEJAVU_PATHS = [
     "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     "/usr/share/fonts/dejavu-sans-fonts/DejaVuSans.ttf",
@@ -95,8 +99,10 @@ def _resolve(candidates):
             return p
     return None
 
+
 DEJAVU_PATH = None
 CJK_PATH = None
+
 
 def init_fallback_fonts():
     global DEJAVU_PATH, CJK_PATH
@@ -108,7 +114,9 @@ def font(path, size):
     key = (path, size)
     if key not in FONT_CACHE:
         try:
-            FONT_CACHE[key] = ImageFont.truetype(path, size) if path else ImageFont.load_default(size=size)
+            FONT_CACHE[key] = (
+                ImageFont.truetype(path, size) if path else ImageFont.load_default(size=size)
+            )
         except OSError:
             FONT_CACHE[key] = ImageFont.load_default(size=size)
     return FONT_CACHE[key]
@@ -229,6 +237,7 @@ def draw_timer_arc(draw, cx, cy, radius, progress=0.7):
 # Mode-specific image generators
 # ═══════════════════════════════════════════════════════════════════════════
 
+
 def gen_unlimited(draw, img, tagline, is_rtl, lang_code):
     cy = 340
     draw_board(draw, W // 2 - 100, cy, rows=5, tile_size=26, gap=5, solved_row=3)
@@ -255,7 +264,7 @@ def gen_dordle(draw, img, tagline, is_rtl, lang_code):
 def gen_tridle(draw, img, tagline, is_rtl, lang_code):
     cy = 340
     draw_board(draw, W // 2 - 185, cy, rows=5, tile_size=22, gap=4, solved_row=3)
-    draw_board(draw, W // 2,       cy, rows=5, tile_size=22, gap=4, solved_row=4)
+    draw_board(draw, W // 2, cy, rows=5, tile_size=22, gap=4, solved_row=4)
     draw_board(draw, W // 2 + 185, cy, rows=5, tile_size=22, gap=4, solved_row=2)
 
 
@@ -394,7 +403,12 @@ def generate_main_og_image():
         lbox = draw.textbbox((0, 0), letter, font=tile_font)
         lw = lbox[2] - lbox[0]
         lh = lbox[3] - lbox[1]
-        draw.text((x + (tile_size - lw) // 2, tile_y + (tile_size - lh) // 2 - 3), letter, fill=WHITE, font=tile_font)
+        draw.text(
+            (x + (tile_size - lw) // 2, tile_y + (tile_size - lh) // 2 - 3),
+            letter,
+            fill=WHITE,
+            font=tile_font,
+        )
 
     # Bottom rule
     draw_rule(draw, 470)
@@ -493,7 +507,9 @@ def main():
         path = os.path.join(OUTPUT_DIR, f"og-{slug}.png")
         img.save(path, "PNG", optimize=True)
 
-    print(f"\nDone! Generated {count} mode images + {len(MODE_GENERATORS)} fallbacks + og-image.png")
+    print(
+        f"\nDone! Generated {count} mode images + {len(MODE_GENERATORS)} fallbacks + og-image.png"
+    )
 
 
 if __name__ == "__main__":

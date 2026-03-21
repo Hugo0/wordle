@@ -1,6 +1,6 @@
 # Contributing to Wordle Global
 
-Thanks for your interest in contributing! This project supports 78 languages and we welcome help improving word lists, keyboards, translations, and code.
+Thanks for your interest in contributing! This project supports 80 languages and we welcome help improving word lists, keyboards, translations, and code.
 
 ## Quick Start
 
