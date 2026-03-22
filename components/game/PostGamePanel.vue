@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="flex flex-col items-center justify-center h-full w-full max-w-lg mx-auto px-3 py-2"
-    >
+    <div class="flex flex-col items-center justify-center h-full w-full max-w-lg mx-auto px-3 py-2">
         <!-- Play Again (non-daily modes) -->
         <button
             v-if="!isDaily"
@@ -24,10 +22,7 @@
 
         <!-- Mode discovery -->
         <div class="w-full max-w-sm">
-            <p
-                class="mono-label text-center mb-1.5"
-                style="font-size: 9px; letter-spacing: 0.15em"
-            >
+            <p class="mono-label text-center mb-1.5" style="font-size: 9px; letter-spacing: 0.15em">
                 Try another mode
             </p>
             <div class="grid grid-cols-2 gap-1.5">

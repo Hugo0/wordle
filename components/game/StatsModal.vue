@@ -201,9 +201,7 @@
                             :key="stat.label"
                             class="text-center border-r border-rule last:border-r-0 stats-stat-cell"
                         >
-                            <div
-                                class="font-display font-bold text-ink stats-stat-value"
-                            >
+                            <div class="font-display font-bold text-ink stats-stat-value">
                                 {{ stat.value }}
                             </div>
                             <div class="mono-label mt-0.5">{{ stat.label }}</div>
@@ -480,24 +478,59 @@ function getDistributionBarWidth(n: number): number {
 
 <style scoped>
 /* Default (large screen) sizing — matches the original editorial design */
-.stats-top { padding: 28px 32px 24px; }
-.stats-word { font-size: 42px; font-variation-settings: 'opsz' 144; line-height: 1.1; }
-.stats-image { max-height: 96px; }
-.stats-stat-cell { padding: 14px 8px; }
-.stats-stat-value { font-size: 26px; font-variation-settings: 'opsz' 72; }
-.stats-section { padding: 16px 32px; }
-.stats-actions { padding: 20px 32px; }
-.stats-btn { padding: 12px 20px; }
+.stats-top {
+    padding: 28px 32px 24px;
+}
+.stats-word {
+    font-size: 42px;
+    font-variation-settings: 'opsz' 144;
+    line-height: 1.1;
+}
+.stats-image {
+    max-height: 96px;
+}
+.stats-stat-cell {
+    padding: 14px 8px;
+}
+.stats-stat-value {
+    font-size: 26px;
+    font-variation-settings: 'opsz' 72;
+}
+.stats-section {
+    padding: 16px 32px;
+}
+.stats-actions {
+    padding: 20px 32px;
+}
+.stats-btn {
+    padding: 12px 20px;
+}
 
 /* Compact layout for short screens (iPhone SE, etc.) */
 @media (max-height: 700px) {
-    .stats-top { padding: 16px 20px 14px; }
-    .stats-word { font-size: 32px; }
-    .stats-image { max-height: 56px; }
-    .stats-stat-cell { padding: 10px 6px; }
-    .stats-stat-value { font-size: 20px; }
-    .stats-section { padding: 12px 20px; }
-    .stats-actions { padding: 14px 20px; }
-    .stats-btn { padding: 10px 16px; }
+    .stats-top {
+        padding: 16px 20px 14px;
+    }
+    .stats-word {
+        font-size: 32px;
+    }
+    .stats-image {
+        max-height: 56px;
+    }
+    .stats-stat-cell {
+        padding: 10px 6px;
+    }
+    .stats-stat-value {
+        font-size: 20px;
+    }
+    .stats-section {
+        padding: 12px 20px;
+    }
+    .stats-actions {
+        padding: 14px 20px;
+    }
+    .stats-btn {
+        padding: 10px 16px;
+    }
 }
 </style>
