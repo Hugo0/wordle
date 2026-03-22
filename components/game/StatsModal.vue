@@ -189,8 +189,9 @@
                         <img
                             :src="game.todayImageUrl"
                             :alt="lang.todaysWord"
-                            class="w-full object-cover transition-all stats-image"
-                            :class="imageExpanded ? 'max-h-64' : ''"
+                            class="w-full object-cover transition-all"
+                            :style="{ maxHeight: imageExpanded ? '256px' : undefined }"
+                            :class="{ 'stats-image': !imageExpanded }"
                         />
                     </div>
 

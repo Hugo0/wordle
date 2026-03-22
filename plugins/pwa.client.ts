@@ -2,10 +2,13 @@
  * PWA Plugin (client-only)
  *
  * Handles PWA install prompts using @khmyznikov/pwa-install web component.
- * Ported from frontend/src/pwa.ts for the Nuxt migration.
+ *
+ * Platform-specific behavior:
+ * - Android: show install banner after every game win (best PWA support)
+ * - Desktop & iOS: show only after user's 2nd completed game, 2-day cooldown if dismissed
  *
  * - Captures beforeinstallprompt event
- * - Manages install/dismiss with 7-day localStorage cooldown
+ * - Manages install/dismiss with platform-aware cooldown
  * - Detects standalone mode and iOS
  * - Shows install banner only after a game win (integrates with game store)
  */
@@ -15,25 +18,58 @@ import '@khmyznikov/pwa-install';
 import type { BeforeInstallPromptEvent, PWAStatus } from '~/utils/types';
 import { isStandalone } from '~/utils/storage';
 
-const DISMISS_DURATION_MS = 7 * 24 * 60 * 60 * 1000; // 1 week
-
-function isDismissed(): boolean {
-    try {
-        const dismissedAt = localStorage.getItem('pwa_install_dismissed_at');
-        if (!dismissedAt) return false;
-        const elapsed = Date.now() - parseInt(dismissedAt, 10);
-        return elapsed < DISMISS_DURATION_MS;
-    } catch {
-        // localStorage may throw in private browsing mode
-        return false;
-    }
-}
+// Android gets aggressive prompting (PWA works great there).
+// Desktop & iOS get conservative prompting (PWA experience is weaker).
+const ANDROID_DISMISS_DURATION_MS = 0; // No cooldown — show every session
+const DEFAULT_DISMISS_DURATION_MS = 2 * 24 * 60 * 60 * 1000; // 2 days
+const MIN_GAMES_BEFORE_PROMPT = 2; // Desktop/iOS: wait until 2nd game
 
 function isIOS(): boolean {
     return (
         /iPad|iPhone|iPod/.test(navigator.userAgent) ||
         (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.userAgent))
     );
+}
+
+function isAndroid(): boolean {
+    return /Android/.test(navigator.userAgent);
+}
+
+function getDismissCooldown(): number {
+    return isAndroid() ? ANDROID_DISMISS_DURATION_MS : DEFAULT_DISMISS_DURATION_MS;
+}
+
+function isDismissed(): boolean {
+    try {
+        const dismissedAt = localStorage.getItem('pwa_install_dismissed_at');
+        if (!dismissedAt) return false;
+        const cooldown = getDismissCooldown();
+        if (cooldown === 0) return false; // Android: never stays dismissed across sessions
+        const elapsed = Date.now() - parseInt(dismissedAt, 10);
+        return elapsed < cooldown;
+    } catch {
+        return false;
+    }
+}
+
+function getTotalGamesPlayed(): number {
+    try {
+        const stored = localStorage.getItem('game_results');
+        if (!stored) return 0;
+        const results = JSON.parse(stored) as Record<string, unknown[]>;
+        let total = 0;
+        for (const games of Object.values(results)) {
+            if (Array.isArray(games)) total += games.length;
+        }
+        return total;
+    } catch {
+        return 0;
+    }
+}
+
+function shouldPrompt(): boolean {
+    if (isAndroid()) return true; // Android: always eligible
+    return getTotalGamesPlayed() >= MIN_GAMES_BEFORE_PROMPT;
 }
 
 export default defineNuxtPlugin(() => {
@@ -62,10 +98,13 @@ export default defineNuxtPlugin(() => {
     /**
      * Show the install banner.
      * Called after game over — guarded to fire at most once per session.
+     * Android: shows after every game win.
+     * Desktop/iOS: shows only after 2nd game, respects 2-day dismiss cooldown.
      */
     let bannerShown = false;
     function showBanner(): void {
         if (bannerShown || dismissed || isStandalone()) return;
+        if (!shouldPrompt()) return;
         bannerShown = true;
         const banner = getBanner();
         if (banner && (deferredPrompt || isIOS())) {
@@ -162,6 +201,9 @@ export default defineNuxtPlugin(() => {
     window.addEventListener('appinstalled', () => {
         deferredPrompt = null;
         hideBanner();
+        try {
+            useAnalytics().trackPWAInstall({ source: 'appinstalled' });
+        } catch {}
     });
 
     // --- Watch game store for game over to show the banner ---
