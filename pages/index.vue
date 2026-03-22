@@ -458,6 +458,11 @@ function getFlag(code: string): string | null {
 // ---------------------------------------------------------------------------
 
 const defaultLang = computed(() => detectedLanguageCode.value || 'en');
+const defaultLangName = computed(() => {
+    const lang = languages.value[defaultLang.value];
+    return lang?.language_name_native || lang?.language_name || defaultLang.value;
+});
+const defaultLangFlag = computed(() => useFlag(defaultLang.value));
 
 // Homepage shows first 5 modes from shared source + "& More" card
 const HOMEPAGE_MODE_IDS = ['classic', 'unlimited', 'speed', 'dordle', 'quordle'];
@@ -483,11 +488,13 @@ const homepageModes = computed(() => {
     return featured;
 });
 
+function scrollToLanguages(): void {
+    document.getElementById('languages')?.scrollIntoView({ behavior: 'smooth' });
+}
+
 function handleChangeLanguage(): void {
     showModePicker.value = false;
-    setTimeout(() => {
-        document.getElementById('languages')?.scrollIntoView({ behavior: 'smooth' });
-    }, 200);
+    setTimeout(scrollToLanguages, 200);
 }
 
 function openMoreModes(): void {
@@ -509,7 +516,7 @@ function openLink(url: string): void {
     <div class="pb-12">
         <!-- ═══ Announcement Bar ═══ -->
         <div
-            class="bg-ink text-paper font-mono text-[10px] tracking-[0.05em] text-center py-1 px-3 whitespace-nowrap overflow-hidden text-ellipsis"
+            class="bg-ink dark:bg-accent text-paper dark:text-white font-mono text-[10px] tracking-[0.05em] text-center py-1 px-3 whitespace-nowrap overflow-hidden text-ellipsis"
         >
             &#127881; New game modes! Unlimited, Speed Streak, Dordle &amp; Quordle
         </div>
@@ -523,6 +530,27 @@ function openLink(url: string): void {
                 The world's word game &mdash; {{ langCount }} languages
             </div>
             <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
+        </div>
+
+        <!-- ═══ Language indicator ═══ -->
+        <div class="flex items-center justify-center gap-2 mb-6 px-4">
+            <img
+                v-if="defaultLangFlag"
+                :src="defaultLangFlag"
+                :alt="defaultLangName"
+                class="flag-icon flag-icon-sm"
+            />
+            <span class="text-sm text-muted">
+                Playing in
+                <span class="font-semibold text-ink">{{ defaultLangName }}</span>
+            </span>
+            <span class="text-muted">&middot;</span>
+            <button
+                class="text-sm text-muted hover:text-ink underline underline-offset-2 transition-colors cursor-pointer"
+                @click="scrollToLanguages"
+            >
+                change
+            </button>
         </div>
 
         <!-- ═══ Mode Cards ═══ -->
@@ -636,27 +664,25 @@ function openLink(url: string): void {
         <!-- TODO: Consider adding back as a footer or separate page if users miss it -->
 
         <!-- ═══ Modals ═══ -->
-        <SharedModalBackdrop
-            :visible="showAboutModal || showSettingsModal"
-            @close="
-                showAboutModal = false;
-                showSettingsModal = false;
-            "
-        />
 
         <!-- About modal -->
         <div
             v-show="showAboutModal"
-            class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
+            class="fixed inset-0 z-50 flex items-start justify-center pt-[3vh] px-3 pb-4 overflow-y-auto"
         >
             <div
-                class="bg-paper border border-rule shadow-lg p-6 m-4 mx-auto w-full max-w-xs sm:max-w-lg"
+                class="fixed inset-0 bg-ink/25"
+                aria-hidden="true"
+                @click="showAboutModal = false"
+            />
+            <div
+                class="relative z-10 bg-paper border border-rule shadow-lg p-6 w-full max-w-xs sm:max-w-lg"
             >
                 <div class="flex flex-col gap-3 relative">
                     <button
                         type="button"
                         aria-label="Close"
-                        class="absolute top-0 right-0 p-1 text-muted hover:text-ink"
+                        class="absolute top-0 end-0 p-1 text-muted hover:text-ink"
                         @click="showAboutModal = false"
                     >
                         <X :size="20" />
@@ -686,16 +712,21 @@ function openLink(url: string): void {
         <!-- Settings modal -->
         <div
             v-show="showSettingsModal"
-            class="fixed top-10 left-0 w-full h-full z-50 items-center overflow-auto"
+            class="fixed inset-0 z-50 flex items-start justify-center pt-[3vh] px-3 pb-4 overflow-y-auto"
         >
             <div
-                class="bg-paper border border-rule shadow-lg p-6 m-4 mx-auto w-full max-w-xs sm:max-w-md"
+                class="fixed inset-0 bg-ink/25"
+                aria-hidden="true"
+                @click="showSettingsModal = false"
+            />
+            <div
+                class="relative z-10 bg-paper border border-rule shadow-lg p-6 w-full max-w-xs sm:max-w-md"
             >
                 <div class="flex flex-col gap-4 relative">
                     <button
                         type="button"
                         aria-label="Close"
-                        class="absolute top-0 right-0 p-1 text-muted hover:text-ink"
+                        class="absolute top-0 end-0 p-1 text-muted hover:text-ink"
                         @click="showSettingsModal = false"
                     >
                         <X :size="20" />

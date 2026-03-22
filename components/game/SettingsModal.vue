@@ -1,5 +1,5 @@
 <template>
-    <SharedBaseModal :visible="visible" size="sm" :z-index="30" @close="$emit('close')">
+    <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
         <div class="flex flex-col gap-2">
             <h3 class="heading-section text-xl text-ink mb-5">
                 {{ lang.config?.ui?.settings }}

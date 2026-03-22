@@ -15,8 +15,6 @@ import type { Ref } from 'vue';
 import type { GameData } from '~/utils/types';
 import { buildStatsKey } from '~/utils/game-modes';
 
-const SIDEBAR_STORAGE_KEY = 'sidebar_open';
-
 export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
     const langStore = useLanguageStore();
     const game = useGameStore();
@@ -29,35 +27,16 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
     }
 
     // --- Sidebar state ---
+    // Always starts closed — sidebar is a transient overlay, not a persistent layout element.
+    // The hamburger icon is always visible for users to open it when needed.
     const sidebarOpen = ref(false);
-
-    function initSidebar() {
-        // Game pages default to closed — users discover via hamburger icon.
-        // Respect explicit localStorage preference from prior toggle.
-        try {
-            const stored = localStorage.getItem(SIDEBAR_STORAGE_KEY);
-            sidebarOpen.value = stored === 'true';
-        } catch {
-            sidebarOpen.value = false;
-        }
-    }
 
     function toggleSidebar() {
         sidebarOpen.value = !sidebarOpen.value;
-        persistSidebar();
     }
 
     function closeSidebar() {
         sidebarOpen.value = false;
-        persistSidebar();
-    }
-
-    function persistSidebar() {
-        try {
-            localStorage.setItem(SIDEBAR_STORAGE_KEY, String(sidebarOpen.value));
-        } catch {
-            // localStorage unavailable
-        }
     }
 
     // --- Template ref for board (keyboard ref is owned by GamePageShell) ---
@@ -89,8 +68,6 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
 
     // --- Lifecycle ---
     onMounted(() => {
-        initSidebar();
-
         // Pass board DOM ref to game store for animations
         // (keyboard ref is wired by GamePageShell)
         game.setBoardEl(() => gameBoardRef.value?.boardEl ?? null);

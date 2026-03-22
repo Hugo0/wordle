@@ -35,7 +35,7 @@ defineEmits<{
             >
                 <!-- Close button -->
                 <button
-                    class="absolute top-3 right-3 p-1 text-muted hover:text-ink transition-colors"
+                    class="absolute top-3 end-3 p-1 text-muted hover:text-ink transition-colors"
                     @click="$emit('close')"
                 >
                     <X :size="20" />

@@ -42,7 +42,7 @@
         </div>
 
         <!-- Right: Stats + Settings -->
-        <div class="flex items-center gap-1 z-30 ml-auto">
+        <div class="flex items-center gap-1 z-30 ms-auto">
             <button
                 class="p-2 text-muted hover:text-ink transition-colors"
                 aria-label="Statistics"

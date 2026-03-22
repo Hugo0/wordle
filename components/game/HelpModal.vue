@@ -72,7 +72,7 @@
                         <div
                             v-for="(c, i) in exampleWord1"
                             :key="'ex1-' + i"
-                            class="tile w-full h-full inline-flex justify-center items-center text-2xl tiny:text-4xl uppercase font-display font-bold select-none"
+                            class="tile w-full h-full inline-flex justify-center items-center text-2xl uppercase font-display font-bold select-none"
                             :class="i === 0 ? 'correct text-white' : 'aspect-square filled'"
                         >
                             {{ c }}
@@ -87,7 +87,7 @@
                         <div
                             v-for="(c, i) in exampleWord2"
                             :key="'ex2-' + i"
-                            class="tile w-full h-full inline-flex justify-center items-center text-2xl tiny:text-4xl uppercase font-display font-bold select-none"
+                            class="tile w-full h-full inline-flex justify-center items-center text-2xl uppercase font-display font-bold select-none"
                             :class="i === 2 ? 'semicorrect text-white' : 'aspect-square filled'"
                         >
                             {{ c }}
@@ -102,7 +102,7 @@
                         <div
                             v-for="(c, i) in exampleWord3"
                             :key="'ex3-' + i"
-                            class="tile w-full h-full inline-flex justify-center items-center text-2xl tiny:text-4xl uppercase font-display font-bold select-none"
+                            class="tile w-full h-full inline-flex justify-center items-center text-2xl uppercase font-display font-bold select-none"
                             :class="i === 4 ? 'incorrect text-white' : 'aspect-square filled'"
                         >
                             {{ c }}
@@ -114,16 +114,6 @@
                     </p>
                 </div>
             </template>
-
-            <div class="editorial-rule" />
-
-            <!-- Close button -->
-            <button
-                class="mono-label-md text-ink hover:text-accent transition-colors"
-                @click="$emit('close')"
-            >
-                {{ help.close || 'Close' }} &times;
-            </button>
         </div>
     </SharedBaseModal>
 </template>

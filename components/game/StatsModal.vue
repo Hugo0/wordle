@@ -10,7 +10,7 @@
 
                 <!-- Endgame Card -->
                 <div
-                    class="relative w-full max-w-[480px] border border-rule bg-paper shadow-xl z-10 modal-animate"
+                    class="relative w-full max-w-[480px] border border-rule bg-paper shadow-xl z-10 modal-animate stats-card"
                     role="dialog"
                     aria-modal="true"
                     aria-label="Game results"
@@ -18,7 +18,7 @@
                 >
                     <!-- Close button -->
                     <button
-                        class="absolute top-3 right-3 z-10 p-1 text-muted hover:text-ink transition-colors"
+                        class="absolute top-3 end-3 z-10 p-1 text-muted hover:text-ink transition-colors"
                         aria-label="Close"
                         @click="$emit('close')"
                     >
@@ -26,7 +26,7 @@
                     </button>
 
                     <!-- Top: Result + Word(s) + Definition(s) -->
-                    <div class="text-center editorial-rule" style="padding: 28px 32px 24px">
+                    <div class="text-center editorial-rule stats-top">
                         <!-- Mode label (for non-classic modes) -->
                         <div
                             v-if="modeLabel"
@@ -38,13 +38,8 @@
                         <!-- Pre-game: masked word teaser -->
                         <template v-if="!game.gameOver">
                             <div
-                                class="font-display font-extrabold uppercase text-muted/40"
-                                style="
-                                    font-size: 42px;
-                                    letter-spacing: 0.2em;
-                                    font-variation-settings: 'opsz' 144;
-                                    line-height: 1.1;
-                                "
+                                class="font-display font-extrabold uppercase text-muted/40 stats-word"
+                                style="letter-spacing: 0.2em"
                             >
                                 {{ maskedWord }}
                             </div>
@@ -68,19 +63,16 @@
                         <!-- ── Single-board word display (classic, unlimited) ── -->
                         <template v-if="game.gameOver && !isMultiBoard">
                             <div
-                                class="font-display font-extrabold uppercase text-ink"
-                                style="
-                                    font-size: 42px;
-                                    letter-spacing: 0.08em;
-                                    font-variation-settings: 'opsz' 144;
-                                    line-height: 1.1;
-                                "
+                                class="font-display font-extrabold uppercase text-ink stats-word"
+                                style="letter-spacing: 0.08em"
                             >
                                 {{ displayWord }}
                             </div>
 
                             <div
-                                v-if="settings.wordInfoEnabled && game.todayDefinition?.partOfSpeech"
+                                v-if="
+                                    settings.wordInfoEnabled && game.todayDefinition?.partOfSpeech
+                                "
                                 class="font-display italic text-muted text-[15px] mt-1 mb-3"
                             >
                                 {{
@@ -197,8 +189,8 @@
                         <img
                             :src="game.todayImageUrl"
                             :alt="lang.todaysWord"
-                            class="w-full object-cover transition-all"
-                            :class="imageExpanded ? 'max-h-64' : 'max-h-24'"
+                            class="w-full object-cover transition-all stats-image"
+                            :class="imageExpanded ? 'max-h-64' : ''"
                         />
                     </div>
 
@@ -207,12 +199,10 @@
                         <div
                             v-for="stat in todayStats"
                             :key="stat.label"
-                            class="text-center border-r border-rule last:border-r-0"
-                            style="padding: 14px 8px"
+                            class="text-center border-r border-rule last:border-r-0 stats-stat-cell"
                         >
                             <div
-                                class="font-display font-bold text-ink"
-                                style="font-size: 26px; font-variation-settings: 'opsz' 72"
+                                class="font-display font-bold text-ink stats-stat-value"
                             >
                                 {{ stat.value }}
                             </div>
@@ -220,8 +210,8 @@
                         </div>
                     </div>
 
-                    <!-- Guess Distribution (compact) -->
-                    <div class="editorial-rule" style="padding: 16px 32px">
+                    <!-- Guess Distribution (compact) + Percentile -->
+                    <div class="editorial-rule stats-section">
                         <h4
                             class="mono-label mb-2.5"
                             style="font-size: 10px; letter-spacing: 0.15em"
@@ -230,7 +220,7 @@
                         </h4>
                         <div class="space-y-1">
                             <div
-                                v-for="n in game.gameConfig.maxGuesses"
+                                v-for="n in distributionRows"
                                 :key="n"
                                 class="flex items-center gap-2"
                             >
@@ -258,33 +248,35 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Percentile -->
-                    <div
-                        v-if="game.communityPercentile !== null"
-                        class="text-center py-2 editorial-rule"
-                    >
-                        <a
-                            :href="game.communityStatsLink"
-                            class="inline-flex items-center gap-1 text-sm text-correct hover:underline"
+                        <!-- Percentile (part of distribution section) -->
+                        <div
+                            v-if="game.communityPercentile !== null"
+                            class="text-center pt-3 mt-3 border-t border-rule"
                         >
-                            <template v-if="game.communityTotal <= 1">
-                                {{ lang.config?.ui?.first_to_play }}
-                            </template>
-                            <template v-else-if="game.communityIsTopScore">
-                                {{ lang.config?.ui?.top_score }}
-                            </template>
-                            <template v-else> Top {{ 100 - game.communityPercentile }}% </template>
-                            <ExternalLink :size="12" />
-                        </a>
+                            <a
+                                :href="game.communityStatsLink"
+                                class="inline-flex items-center gap-1 text-sm text-correct hover:underline"
+                            >
+                                <template v-if="game.communityTotal <= 1">
+                                    {{ lang.config?.ui?.first_to_play }}
+                                </template>
+                                <template v-else-if="game.communityIsTopScore">
+                                    {{ lang.config?.ui?.top_score }}
+                                </template>
+                                <template v-else>
+                                    Top {{ 100 - game.communityPercentile }}%
+                                </template>
+                                <ExternalLink :size="12" />
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Action buttons — share only available after game over -->
-                    <div class="flex gap-3" style="padding: 20px 32px">
+                    <div class="flex gap-3 stats-actions">
                         <button
                             v-if="game.gameOver"
-                            class="flex-1 py-3 px-5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85 cursor-pointer inline-flex items-center justify-center gap-2"
+                            class="flex-1 stats-btn bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85 cursor-pointer inline-flex items-center justify-center gap-2"
                             @click="game.shareResults()"
                         >
                             <template v-if="game.shareButtonState === 'success'">
@@ -300,14 +292,14 @@
                         <NuxtLink
                             v-if="game.gameOver && isClassicDaily"
                             :to="'/' + lang.languageCode + '/unlimited'"
-                            class="flex-1 py-3 px-3 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
+                            class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                         >
                             Unlimited
                         </NuxtLink>
                         <!-- Non-daily modes → new game button -->
                         <button
                             v-else-if="game.gameOver"
-                            class="flex-1 py-3 px-3 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
+                            class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                             @click="$emit('newGame')"
                         >
                             {{ isDaily ? 'Close' : 'New Game' }}
@@ -315,7 +307,7 @@
                         <!-- Pre-game: just a close button -->
                         <button
                             v-else
-                            class="flex-1 py-3 px-5 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer"
+                            class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer"
                             @click="$emit('close')"
                         >
                             Close
@@ -325,8 +317,7 @@
                     <!-- Next wordle timer — daily modes only -->
                     <div
                         v-if="isDaily"
-                        class="flex items-center justify-between bg-paper-warm text-sm"
-                        style="padding: 16px 32px"
+                        class="flex items-center justify-between bg-paper-warm text-sm stats-section"
                     >
                         <span class="text-muted">
                             {{ nextWordLabel }}
@@ -430,6 +421,14 @@ const multiBoardWordStyle = computed(() => ({
     lineHeight: '1.2',
 }));
 const isMultiBoard = computed(() => game.gameConfig.boardCount > 1);
+
+// Distribution rows start at boardCount (minimum possible guesses to win).
+// For classic/unlimited (1 board): rows 1–6. For quordle (4 boards): rows 4–9.
+const distributionRows = computed(() => {
+    const min = game.gameConfig.boardCount;
+    const max = game.gameConfig.maxGuesses;
+    return Array.from({ length: max - min + 1 }, (_, i) => min + i);
+});
 const displayWord = computed(() => {
     if (isMultiBoard.value) return null; // multi-board shows words differently
     return game.boards[0]?.targetWord || lang.todaysWord;
@@ -480,12 +479,25 @@ function getDistributionBarWidth(n: number): number {
 </script>
 
 <style scoped>
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-    transition: opacity 0.2s ease;
-}
-.modal-fade-enter-from,
-.modal-fade-leave-to {
-    opacity: 0;
+/* Default (large screen) sizing — matches the original editorial design */
+.stats-top { padding: 28px 32px 24px; }
+.stats-word { font-size: 42px; font-variation-settings: 'opsz' 144; line-height: 1.1; }
+.stats-image { max-height: 96px; }
+.stats-stat-cell { padding: 14px 8px; }
+.stats-stat-value { font-size: 26px; font-variation-settings: 'opsz' 72; }
+.stats-section { padding: 16px 32px; }
+.stats-actions { padding: 20px 32px; }
+.stats-btn { padding: 12px 20px; }
+
+/* Compact layout for short screens (iPhone SE, etc.) */
+@media (max-height: 700px) {
+    .stats-top { padding: 16px 20px 14px; }
+    .stats-word { font-size: 32px; }
+    .stats-image { max-height: 56px; }
+    .stats-stat-cell { padding: 10px 6px; }
+    .stats-stat-value { font-size: 20px; }
+    .stats-section { padding: 12px 20px; }
+    .stats-actions { padding: 14px 20px; }
+    .stats-btn { padding: 10px 16px; }
 }
 </style>

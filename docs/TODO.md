@@ -8,12 +8,10 @@ Near-term bugs and tasks. For feature planning, see `docs/ROADMAP.md`.
 
 ## P0
 
-- [ ] **PWA post-win banner is completely broken** — `pwa.client.ts:55` references `#pwa-install-banner` but the element doesn't exist in any Vue template. Lost in Nuxt migration. The intended flow (win → 2s delay → show banner) silently does nothing. Only working install path is the button buried in Settings modal.
-  - **Fix:** Add banner element back in `pages/[lang]/index.vue` or (better) integrate install CTA directly into `StatsModal.vue` where the user's eyes are after a win.
-  - **Deduplicate listeners:** `pwa.client.ts:152` and `SettingsModal.vue:356` both capture `beforeinstallprompt` independently — consolidate to plugin only.
-  - **Desktop: show bookmark CTA instead of PWA install.** Desktop install rate is 1.9% vs mobile 4.0%. Desktop users don't understand PWA — prompt Ctrl+D/Cmd+D bookmark instead. Only show PWA install on mobile/tablet.
-  - **Stop nagging returning users.** Returning install rate: 1.2% mobile, 0.6% desktop. Current 7-day cooldown resets forever. Cap at ~3 lifetime impressions for returners.
-  - **Data (last 28d):** Mobile new users install at 12.7% — good. The problem is the prompt never shows post-win (broken banner), and desktop/returning segments are wasted impressions.
+- [x] **PWA post-win banner restored** — `#pwa-install-banner` element re-added to `pages/[lang]/index.vue`. Banner shows post-win via `pwa.client.ts`. *(Fixed during Nuxt migration)*
+  - [ ] **Deduplicate listeners:** `pwa.client.ts:152` and `SettingsModal.vue` both capture `beforeinstallprompt` independently — consolidate to plugin only.
+  - [ ] **Desktop: show bookmark CTA instead of PWA install.** Desktop install rate is 1.9% vs mobile 4.0%. Only show PWA install on mobile/tablet.
+  - [ ] **Stop nagging returning users.** Cap at ~3 lifetime impressions for returners (current 7-day cooldown resets forever).
 
 ---
 
@@ -94,12 +92,17 @@ Near-term bugs and tasks. For feature planning, see `docs/ROADMAP.md`.
 Small loose ends from the design system + Speed Streak arcade sessions. None are blocking.
 
 - [ ] **Speed page SEO says "5 minutes"** — `pages/[lang]/speed.vue` line ~41 `useGameModeSeo` description says "5 minutes" but timer is now 3 minutes. One-line text fix.
-- [ ] **Delete `SpeedCountdown.vue`** — no longer used. Start/countdown UI was inlined into `pages/[lang]/speed.vue`. Dead component.
-- [ ] **`wordInfoEnabled` setting store code** — Setting is always true now (removed from UI in Mar 21 settings cleanup). Store still has `toggleWordInfo()` and `wordInfoEnabled` ref. Can simplify to a constant or remove the toggle entirely. Low priority since it doesn't affect users.
+- [x] **Delete `SpeedCountdown.vue`** — deleted. *(Mar 21)*
+- [x] **`wordInfoEnabled` setting store code** — Word Info toggle restored to Settings UI (commit 9de275a). Store code is now needed. *(Mar 22)*
 - [x] **Statistics page overhaul** — Rewritten as personal stats dashboard with per-mode breakdown, per-language list, editorial design. *(Mar 21)*
 - [ ] **Tile flip sound** — #1 delight gap from `docs/DELIGHT.md` audit. Add subtle tick per tile during flip reveal. 30 min.
 - [ ] **Streak milestone celebrations** — #1 retention gap. Toast + haptic when streak hits 7, 30, 100, 365 days. 20 min.
 - [ ] **Speed Streak personal best tracking** — No localStorage save for best score / best combo / best word count. Users can't see improvement over time.
+- [ ] **DRY game mode pages** — dordle.vue, tridle.vue, quordle.vue are near-identical (~100 lines each, only mode name differs). Unlimited is similar. Refactor to single `/[lang]/[mode]` dynamic route or extract shared logic so each page is ~10 lines. Would have prevented the tridle `@new-game` miss.
+- [ ] **Landing page modals are hand-rolled** — `pages/index.vue` About and Settings modals duplicate the modal pattern (own backdrop, positioning, close buttons) instead of using `SharedBaseModal`. Trivial to refactor.
+- [ ] **Speed mode conditionals scattered** — `game.gameConfig.mode === 'speed'` checks leak into PageShell, useGameAnimations, main.css, stores/game.ts. Extract to computed flags like `game.hasKeyboardFlip` / `game.respectsAnimationToggle` so downstream code doesn't need to know why.
+- [ ] **`timeUntilNextDay` timer management** — Countdown interval buried in stores/game.ts, consumed by StatsModal and PostGamePanel. Extract to a `useCountdown` composable so the timer only runs when a component needs it.
+- [ ] **Remaining standalone modals** — GameModePicker and CopyFallbackModal re-implement backdrop/escape/transition/positioning instead of using `SharedBaseModal`. ~40 lines each could be eliminated.
 
 ---
 
@@ -111,7 +114,7 @@ Findings from exhaustive feature-parity audit comparing new modes (Unlimited, Sp
 
 - [x] **Per-mode stats separation** — Stats now stored under mode-specific keys (`en_dordle`, `en_quordle`, etc.) so modes don't contaminate each other's stats. `buildStatsKey()` wired into stats store.
 - [x] **Streaks isolated to daily modes** — Unlimited/Speed losses no longer break classic daily streaks. Overall streaks in `calculateTotalStats` only count classic daily results.
-- [x] **Dynamic guess distribution** — StatsModal renders correct number of bars based on `gameConfig.maxGuesses` (7 for Dordle, 8 for Tridle, 9 for Quordle). Fixed `getDistributionCount` type casting.
+- [x] **Dynamic guess distribution** — StatsModal renders correct number of bars based on `gameConfig.maxGuesses` (7 for Dordle, 8 for Tridle, 9 for Quordle). Rows start at `boardCount` (e.g., Quordle starts at row 4 — impossible to win in fewer). Fixed `getDistributionCount` type casting. *(Updated Mar 22)*
 - [x] **Speed mode excluded from persistent stats** — Speed is session-only, doesn't save to game_results.
 - [x] **Stats modal adapts to mode** — Daily modes show Streak/Best columns; non-daily modes show Wins/Avg instead.
 - [x] **Stats recalculated on page reload** — `useGamePage` now calls `calculateStats` with correct stats key on mount, so stats modal shows correct data after refresh.

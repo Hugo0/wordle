@@ -37,36 +37,43 @@
                 <!-- Pre-keyboard slot (banner, speed timer, boards, etc) -->
                 <slot />
 
-                <!-- Keyboard -->
+                <!-- Keyboard flip container (speed mode excluded — has its own overlay) -->
+                <div
+                    v-if="!isSpeedMode"
+                    class="keyboard-flip-container"
+                    :class="{ flipped: showPostGame }"
+                >
+                    <div class="keyboard-flip-inner">
+                        <!-- Front face: keyboard (inert when flipped to prevent focus/SR access) -->
+                        <div class="keyboard-face keyboard-front" :inert="showPostGame">
+                            <GameKeyboard
+                                ref="gameKeyboardRef"
+                                :keyboard="langStore.keyboard"
+                                :hints="langStore.keyDiacriticHints"
+                            />
+                        </div>
+                        <!-- Back face: post-game panel (only in DOM after game ends) -->
+                        <div v-if="game.gameOver" class="keyboard-face keyboard-back">
+                            <GamePostGamePanel @new-game="$emit('newGame')" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Speed mode: keyboard without flip wrapper -->
                 <GameKeyboard
+                    v-else
                     ref="gameKeyboardRef"
                     :keyboard="langStore.keyboard"
                     :hints="langStore.keyDiacriticHints"
                 />
-
-                <!-- Post-keyboard slot (new word button, etc) -->
-                <slot name="post-keyboard" />
             </div>
 
-            <!-- Modals -->
-            <div
-                class="container mx-auto flex w-full justify-center items-center overflow z-1"
-                :class="maxWidthClass"
-            >
-                <SharedModalBackdrop
-                    :visible="game.showHelpModal || game.showStatsModal || game.showOptionsModal"
-                    @close="
-                        game.showHelpModal = false;
-                        game.showStatsModal = false;
-                        game.showOptionsModal = false;
-                    "
-                />
-                <GameHelpModal :visible="game.showHelpModal" @close="game.showHelpModal = false" />
-                <GameSettingsModal
-                    :visible="game.showOptionsModal"
-                    @close="game.showOptionsModal = false"
-                />
-            </div>
+            <!-- Modals (each has its own backdrop via BaseModal) -->
+            <GameHelpModal :visible="game.showHelpModal" @close="game.showHelpModal = false" />
+            <GameSettingsModal
+                :visible="game.showOptionsModal"
+                @close="game.showOptionsModal = false"
+            />
             <GameStatsModal
                 :visible="game.showStatsModal"
                 @close="game.showStatsModal = false"
@@ -85,6 +92,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+
 const props = withDefaults(
     defineProps<{
         lang: string;
@@ -113,6 +122,58 @@ const langStore = useLanguageStore();
 const analytics = useAnalytics();
 const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);
 
+// ---------------------------------------------------------------------------
+// Post-game keyboard flip
+// ---------------------------------------------------------------------------
+
+// Flip delays must exceed tile reveal + bounce so the user absorbs the result first.
+// Win has a longer delay because the bounce celebration adds ~500ms.
+const FLIP_DELAY_WIN = 1500;
+const FLIP_DELAY_LOSS = 1200;
+
+const isSpeedMode = computed(() => game.gameConfig.mode === 'speed');
+const showPostGame = ref(false);
+let flipTimeout: ReturnType<typeof setTimeout> | null = null;
+
+onMounted(() => {
+    // Wire keyboard DOM ref to game store for animations
+    game.setKeyboardEl(() => gameKeyboardRef.value?.$el ?? null);
+
+    // If page loads with game already over (returning to completed daily),
+    // show post-game panel immediately without animation
+    if (game.gameOver && !isSpeedMode.value) {
+        showPostGame.value = true;
+    }
+});
+
+onUnmounted(() => {
+    if (flipTimeout) clearTimeout(flipTimeout);
+});
+
+// Watch for game ending → trigger flip with delay
+watch(
+    () => game.gameOver,
+    (isOver) => {
+        if (flipTimeout) {
+            clearTimeout(flipTimeout);
+            flipTimeout = null;
+        }
+        if (isOver && !isSpeedMode.value) {
+            const delay = game.gameWon ? FLIP_DELAY_WIN : FLIP_DELAY_LOSS;
+            flipTimeout = setTimeout(() => {
+                showPostGame.value = true;
+            }, delay);
+        } else {
+            // Game reset (Play Again) — flip back
+            showPostGame.value = false;
+        }
+    }
+);
+
+// ---------------------------------------------------------------------------
+// Header actions
+// ---------------------------------------------------------------------------
+
 function onHelp() {
     game.showHelpModal = !game.showHelpModal;
     if (game.showHelpModal) {
@@ -128,11 +189,6 @@ function onStats() {
 }
 
 const maxWidthClass = computed(() => (props.maxWidth === '2xl' ? 'max-w-2xl' : 'max-w-lg'));
-
-// Wire keyboard DOM ref to game store for animations
-onMounted(() => {
-    game.setKeyboardEl(() => gameKeyboardRef.value?.$el ?? null);
-});
 
 defineExpose({ gameKeyboardRef });
 </script>
