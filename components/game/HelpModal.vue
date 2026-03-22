@@ -9,7 +9,7 @@
 
                 <h3 class="heading-section text-base text-ink">How it works</h3>
                 <p class="text-sm text-ink">
-                    You start with <strong>3 minutes</strong> on the clock. Solve words to earn
+                    You start with <strong>5 minutes</strong> on the clock. Solve words to earn
                     bonus time. Miss a word and you lose 30 seconds.
                 </p>
 

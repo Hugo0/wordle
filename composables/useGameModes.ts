@@ -69,7 +69,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '2 boards, 1 keyboard, 7 guesses.',
         routeSuffix: 'dordle',
         enabled: true,
-        badge: 'BETA',
+        badge: 'NEW',
     },
     {
         id: 'tridle',
@@ -78,7 +78,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '3 boards, 1 keyboard, 8 guesses.',
         routeSuffix: 'tridle',
         enabled: true,
-        badge: 'BETA',
+        badge: 'NEW',
     },
     {
         id: 'quordle',
@@ -87,7 +87,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '4 boards, 1 keyboard, 9 guesses.',
         routeSuffix: 'quordle',
         enabled: true,
-        badge: 'BETA',
+        badge: 'NEW',
     },
     {
         id: 'semantic',

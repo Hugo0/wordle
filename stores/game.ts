@@ -249,7 +249,7 @@ export const useGameStore = defineStore('game', () => {
     // =======================================================================
 
     // Speed Streak arcade state
-    const SPEED_INITIAL_TIME = 180_000; // 3 minutes
+    const SPEED_INITIAL_TIME = 300_000; // 5 minutes
     const SPEED_FAIL_PENALTY = 30_000; // -30s on fail
     const SPEED_RAMP_INTERVAL = 3; // every 3 words, timer ticks faster
     const SPEED_BONUS_TABLE = [0, 60_000, 50_000, 40_000, 30_000, 20_000, 10_000]; // index = guesses used

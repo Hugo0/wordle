@@ -91,18 +91,76 @@ Near-term bugs and tasks. For feature planning, see `docs/ROADMAP.md`.
 
 Small loose ends from the design system + Speed Streak arcade sessions. None are blocking.
 
-- [ ] **Speed page SEO says "5 minutes"** — `pages/[lang]/speed.vue` line ~41 `useGameModeSeo` description says "5 minutes" but timer is now 3 minutes. One-line text fix.
+- [x] **Speed timer consolidated to 5 minutes** — Timer was 3 min, SEO/help said 5 min. Changed timer to 300,000ms (5 min) to match all references. *(Mar 22)*
 - [x] **Delete `SpeedCountdown.vue`** — deleted. *(Mar 21)*
 - [x] **`wordInfoEnabled` setting store code** — Word Info toggle restored to Settings UI (commit 9de275a). Store code is now needed. *(Mar 22)*
 - [x] **Statistics page overhaul** — Rewritten as personal stats dashboard with per-mode breakdown, per-language list, editorial design. *(Mar 21)*
 - [ ] **Tile flip sound** — #1 delight gap from `docs/DELIGHT.md` audit. Add subtle tick per tile during flip reveal. 30 min.
 - [ ] **Streak milestone celebrations** — #1 retention gap. Toast + haptic when streak hits 7, 30, 100, 365 days. 20 min.
 - [ ] **Speed Streak personal best tracking** — No localStorage save for best score / best combo / best word count. Users can't see improvement over time.
-- [ ] **DRY game mode pages** — dordle.vue, tridle.vue, quordle.vue are near-identical (~100 lines each, only mode name differs). Unlimited is similar. Refactor to single `/[lang]/[mode]` dynamic route or extract shared logic so each page is ~10 lines. Would have prevented the tridle `@new-game` miss.
-- [ ] **Landing page modals are hand-rolled** — `pages/index.vue` About and Settings modals duplicate the modal pattern (own backdrop, positioning, close buttons) instead of using `SharedBaseModal`. Trivial to refactor.
-- [ ] **Speed mode conditionals scattered** — `game.gameConfig.mode === 'speed'` checks leak into PageShell, useGameAnimations, main.css, stores/game.ts. Extract to computed flags like `game.hasKeyboardFlip` / `game.respectsAnimationToggle` so downstream code doesn't need to know why.
-- [ ] **`timeUntilNextDay` timer management** — Countdown interval buried in stores/game.ts, consumed by StatsModal and PostGamePanel. Extract to a `useCountdown` composable so the timer only runs when a component needs it.
-- [ ] **Remaining standalone modals** — GameModePicker and CopyFallbackModal re-implement backdrop/escape/transition/positioning instead of using `SharedBaseModal`. ~40 lines each could be eliminated.
+
+---
+
+## Tech Debt (March 22, 2026 audit)
+
+Comprehensive audit of architecture, duplication, and code quality. Grouped by theme, ordered by impact within each group.
+
+### Architecture — Monolithic Store
+
+- [ ] **`stores/game.ts` is 2,275 lines** — Monolithic store managing game state, single-board logic, multi-board logic, Speed Streak arcade (timers, scoring, combo), UI modals, persistence, community stats, definitions, and analytics. Split into focused stores: `game-core.ts` (board/config), `game-speed.ts` (timer/scoring/combo), `game-ui.ts` (modals/sharing/notifications). Biggest single file in the codebase.
+- [ ] **Speed mode logic should be its own store** — ~300 lines of speed-specific state (`speedState`, tick logic, arcade events, combo tracking) mixed into the main game store. Every non-speed feature has to mentally skip past it.
+
+### Architecture — Page Duplication
+
+- [ ] **DRY multi-board pages** — `dordle.vue`, `tridle.vue`, `quordle.vue` are near-identical (~100 lines each, only mode name/boardCount differs). Refactor to single `[mode].vue` dynamic route or shared `MultiboardPage.vue` component. Every change (like post-keyboard slot removal) requires touching 3 files.
+- [ ] **Landing page modals are hand-rolled** — `pages/index.vue` About and Settings modals duplicate BaseModal pattern (own backdrop, positioning, close buttons). Trivial to refactor to `SharedBaseModal`.
+- [ ] **Remaining standalone modals** — GameModePicker and CopyFallbackModal re-implement backdrop/escape/transition instead of using `SharedBaseModal`. ~40 lines each eliminable.
+
+### Architecture — Composable Quality
+
+- [ ] **`useAnalytics.ts` is 978 lines** — Monolithic analytics module with 50+ tracking functions, mixed GA4 + PostHog + user identification. Split into focused modules (game events, retention, session, share tracking).
+- [ ] **`useGameModes.ts` and `useFlag.ts` aren't composables** — Pure data/constants, no Vue Composition API usage. Rename to `utils/game-modes.ts` and `utils/flag-mapping.ts` for clarity.
+- [ ] **Speed mode conditionals scattered** — `game.gameConfig.mode === 'speed'` checks leak into PageShell, useGameAnimations, main.css, game.ts. Extract to computed flags like `game.hasKeyboardFlip` so downstream code doesn't need to know why.
+- [ ] **`timeUntilNextDay` timer management** — Countdown interval buried in game.ts, consumed by StatsModal. Extract to `useCountdown` composable so the timer only runs when a component needs it.
+
+### Consistency — localStorage
+
+- [ ] **Inconsistent localStorage access** — `settings.ts` uses abstracted `readLocal()`/`writeLocal()` helpers. `game.ts` and `stats.ts` use raw `localStorage.getItem/setItem` with inconsistent try-catch wrapping. Some pages (`word/[id].vue`, `words.vue`) access localStorage without any try-catch (breaks in private browsing). Standardize on a shared `safeLocalStorage()` utility.
+
+### Consistency — Hardcoded Config
+
+- [ ] **Duplicate `LANGUAGE_POPULARITY` arrays** — `server/api/languages.get.ts` has 73 languages, `server/api/[lang]/word-image/[word].get.ts` has a different top-30 list. Single source of truth needed.
+- [ ] **Duplicate `WIKT_LANG_MAP`** — Identical mapping in `server/utils/definitions.ts` and `server/api/[lang]/word/[id].get.ts`. Extract to shared server utility.
+- [ ] **GA4 measurement ID hardcoded** — `plugins/analytics.client.ts:15` has `G-273H1MLL3T` inline. Should be env variable or runtime config.
+- [ ] **`IMPROVEMENT_LANGS = ['ko', 'ja']` hardcoded in page** — `pages/[lang]/index.vue:20`. Should be in language_config.json or a config file.
+
+### Consistency — Settings Store Boilerplate
+
+- [ ] **6 identical toggle/setter pairs in `settings.ts`** — `toggleDarkMode/setDarkMode`, `toggleFeedback/setFeedbackEnabled`, etc. Each follows the same pattern (flip value, persist, track). Setter methods don't call analytics (inconsistent). Factory helper would eliminate ~60 lines.
+
+### CSS
+
+- [ ] **`!important` declarations in `main.css`** — Lines 44-45 (`.key.has-hint` padding) and line 317 (`.pop` border-color). Review parent selectors and remove.
+- [ ] **Hardcoded hex in high-contrast mode** — `main.css` uses `#85c0f9` and `#f5793a` for high-contrast correct/semicorrect instead of design tokens. Extract to `--color-correct-high-contrast` etc.
+- [ ] **Dark mode keyboard base color hardcoded** — `.dark .key` uses `#818384` instead of a token. Intentional (3-step luminance ladder) but should be documented via a CSS variable.
+- [ ] **Duplicate animation selectors** — Dark mode and high-contrast keyboard key states repeat `animation: key-pop 200ms` identically. Define once, vary only colors.
+
+### Hardcoded Strings (i18n)
+
+- [ ] **Sidebar Hebrew nav label** — `AppSidebar.vue:22` has hardcoded `'תפריט ניווט'` for Hebrew, all other languages get `'Navigation menu'`. Should be in `language_config.json`.
+- [ ] **Settings modal fallback strings** — Word Info, Animations, difficulty warning have English fallbacks inline in `SettingsModal.vue`. Move to `default_language_config.json`.
+
+### Type Safety
+
+- [ ] **`as any` type casts in plugins** — `pwa.client.ts:68` (`nuxtApp as any`), `debug.client.ts:112` (`window as any`). Define proper interfaces.
+- [ ] **Multi-board restore uses `any`** — `game.ts` line ~1810: `boards.value = data.boards.map((saved: any, ...)`. Define a `SavedBoardState` type.
+- [ ] **`JSON.parse` without type validation** — `stats.ts` and `game.ts` parse localStorage data with type assertions but no runtime validation. Corrupted data silently breaks.
+
+### Dead Code
+
+- [ ] **`_normalizedWordMap` in game.ts** — Declared but never populated or used. Remove.
+- [ ] **Module-level timing vars not reset** — `gameStartTime`, `lastGuessTime`, `firstGuessFired` in game.ts never reset in `resetGameState()`. Stale timing data may cause analytics miscalculations on game restart.
+- [ ] **Verify `getShareText()` usage** — `useGameShare.ts` exports it but no component appears to import it. Remove if dead.
 
 ---
 

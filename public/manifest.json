@@ -1,13 +1,15 @@
 {
+    "id": "/",
     "name": "Wordle Global",
     "short_name": "Wordle",
-    "description": "Daily word puzzle game in 80+ languages",
+    "description": "Daily word puzzle game in 80+ languages. Guess the 5-letter word in 6 tries — a new puzzle every day. Free, no account needed.",
     "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
-    "orientation": "portrait",
     "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#faf8f5",
+    "theme_color": "#faf8f5",
+    "categories": ["games", "entertainment", "education"],
     "icons": [
         {
             "src": "/favicon/android-chrome-192x192.png",
@@ -22,11 +24,32 @@
             "purpose": "any"
         },
         {
+            "src": "/favicon/maskable-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
             "src": "/favicon/apple-touch-icon.png",
             "sizes": "180x180",
             "type": "image/png",
             "purpose": "any"
         }
     ],
-    "categories": ["games", "entertainment", "education"]
+    "screenshots": [
+        {
+            "src": "/images/og-image.png",
+            "sizes": "1200x630",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Wordle Global — The world's word game"
+        },
+        {
+            "src": "/images/screenshot-mobile.png",
+            "sizes": "1170x2532",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Wordle Global — Free daily word puzzle in 80+ languages"
+        }
+    ]
 }

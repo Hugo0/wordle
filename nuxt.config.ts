@@ -76,6 +76,7 @@ export default defineNuxtConfig({
         registerType: 'autoUpdate',
         scope: '/',
         manifest: {
+            id: '/',
             name: 'Wordle Global',
             short_name: 'Wordle',
             // NOTE: Language count "80+" is hardcoded in several static contexts.
@@ -86,11 +87,12 @@ export default defineNuxtConfig({
             //   - pages/[lang]/*.vue noscript blocks (index, unlimited, dordle, tridle, quordle, speed)
             //   - pages/[lang]/index.vue PWA install description
             // The homepage (pages/index.vue) uses dynamic langCount from the API.
-            description: 'Daily word puzzle game in 80+ languages',
+            description:
+                'Daily word puzzle game in 80+ languages. Guess the 5-letter word in 6 tries — a new puzzle every day. Free, no account needed.',
             start_url: '/',
             display: 'standalone',
-            background_color: '#ffffff',
-            theme_color: '#ffffff',
+            background_color: '#faf8f5',
+            theme_color: '#faf8f5',
             orientation: 'portrait',
             categories: ['games', 'entertainment', 'education'],
             icons: [
@@ -107,10 +109,32 @@ export default defineNuxtConfig({
                     purpose: 'any',
                 },
                 {
+                    src: '/favicon/maskable-512x512.png',
+                    sizes: '512x512',
+                    type: 'image/png',
+                    purpose: 'maskable',
+                },
+                {
                     src: '/favicon/apple-touch-icon.png',
                     sizes: '180x180',
                     type: 'image/png',
                     purpose: 'any',
+                },
+            ],
+            screenshots: [
+                {
+                    src: '/images/og-image.png',
+                    sizes: '1200x630',
+                    type: 'image/png',
+                    form_factor: 'wide',
+                    label: "Wordle Global — The world's word game",
+                },
+                {
+                    src: '/images/screenshot-mobile.png',
+                    sizes: '1170x2532',
+                    type: 'image/png',
+                    form_factor: 'narrow',
+                    label: 'Wordle Global — Free daily word puzzle in 80+ languages',
                 },
             ],
         },
