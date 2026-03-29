@@ -30,6 +30,18 @@
             "quordle": {
                 "title": "Quordle — 4つの盤面を同時に",
                 "description": "日本語でQuordleをプレイ。9回の推測で4つのWordle盤面を同時に解こう。"
+            },
+            "octordle": {
+                "title": "Octordle — 8つの盤面を同時に",
+                "description": "日本語でOctordleをプレイ。13回の推測で8つのWordle盤面を同時に解こう。"
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16つの盤面を同時に",
+                "description": "日本語でSedecordleをプレイ。21回の推測で16つのWordle盤面を同時に解こう。"
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32つの盤面を同時に",
+                "description": "日本語でDuotrigordleをプレイ。37回の推測で32つのWordle盤面を同時に解こう。"
             }
         }
     },

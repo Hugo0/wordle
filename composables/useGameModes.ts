@@ -53,7 +53,6 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: 'Random words, no limit. Play as much as you want.',
         routeSuffix: 'unlimited',
         enabled: true,
-        badge: 'NEW',
     },
     {
         id: 'speed',
@@ -62,7 +61,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: 'Race the clock. Solve as many words as you can before time runs out.',
         routeSuffix: 'speed',
         enabled: true,
-        badge: 'BETA',
+        badge: 'NEW',
     },
     {
         id: 'dordle',
@@ -71,7 +70,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '2 boards, 1 keyboard, 7 guesses.',
         routeSuffix: 'dordle',
         enabled: true,
-        badge: 'NEW',
+        badge: 'BETA',
     },
     {
         id: 'quordle',
@@ -80,6 +79,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '4 boards, 1 keyboard, 9 guesses.',
         routeSuffix: 'quordle',
         enabled: true,
+        badge: 'BETA',
     },
     {
         id: 'octordle',
@@ -88,7 +88,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '8 boards, 1 keyboard, 13 guesses.',
         routeSuffix: 'octordle',
         enabled: true,
-        badge: 'NEW',
+        badge: 'BETA',
     },
     {
         id: 'sedecordle',
@@ -97,7 +97,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '16 boards, 1 keyboard, 21 guesses.',
         routeSuffix: 'sedecordle',
         enabled: true,
-        badge: 'NEW',
+        badge: 'BETA',
     },
     {
         id: 'duotrigordle',
@@ -106,7 +106,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '32 boards, 1 keyboard, 37 guesses.',
         routeSuffix: 'duotrigordle',
         enabled: true,
-        badge: 'NEW',
+        badge: 'BETA',
     },
     {
         id: 'semantic',

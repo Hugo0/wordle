@@ -157,10 +157,21 @@ def wrap_text(text, f, draw, max_width):
     return lines
 
 
+def _is_latin(text):
+    """Return True if text contains only Latin/ASCII characters (no Cyrillic/Greek/Arabic/CJK)."""
+    return all(ord(c) < 0x0250 for c in text)
+
+
 def draw_tagline(draw, tagline, y, is_rtl, lang_code):
     """Draw tagline with auto-shrink to fit within image bounds. Returns bottom y."""
     needs_cjk = lang_code in CJK_LANGS
-    font_path = CJK_PATH if needs_cjk else (DEJAVU_PATH if is_rtl else FRAUNCES_PATH)
+    # Use Fraunces for Latin text even on RTL languages (English fallback taglines)
+    if needs_cjk:
+        font_path = CJK_PATH
+    elif is_rtl and not _is_latin(tagline or ""):
+        font_path = DEJAVU_PATH
+    else:
+        font_path = FRAUNCES_PATH
     font_path = font_path or FRAUNCES_PATH
     max_w = W - 200  # 100px margin each side
 
@@ -291,13 +302,13 @@ def gen_sedecordle(draw, img, tagline, is_rtl, lang_code):
     """16 boards in a 4×4 grid."""
     cy = 340
     ts, gap = 12, 2
-    spacing_x, spacing_y = 150, 55
-    solved_rows = [2, 3, 2, 3, 3, 2, 3, 2, 2, 3, 2, 3, 3, 2, 3, 2]
+    spacing_x, spacing_y = 150, 68
+    solved_rows = [2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2]
     for i in range(16):
         col, row = i % 4, i // 4
         dx = (col - 1.5) * spacing_x
         dy = (row - 1.5) * spacing_y
-        draw_board(draw, int(W // 2 + dx), int(cy + dy), rows=4, tile_size=ts, gap=gap, solved_row=solved_rows[i])
+        draw_board(draw, int(W // 2 + dx), int(cy + dy), rows=3, tile_size=ts, gap=gap, solved_row=solved_rows[i])
 
 
 def gen_duotrigordle(draw, img, tagline, is_rtl, lang_code):

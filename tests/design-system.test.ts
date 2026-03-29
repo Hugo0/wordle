@@ -15,7 +15,7 @@ describe('useFlag', () => {
     it('maps common languages to flag paths', () => {
         expect(useFlag('en')).toBe('/flags/gb.svg');
         expect(useFlag('fi')).toBe('/flags/fi.svg');
-        expect(useFlag('ar')).toBe('/flags/sa.svg');
+        expect(useFlag('ar')).toBe('/flags/lang-ar.svg');
         expect(useFlag('de')).toBe('/flags/de.svg');
         expect(useFlag('ja')).toBe('/flags/jp.svg');
         expect(useFlag('ko')).toBe('/flags/kr.svg');
@@ -25,10 +25,12 @@ describe('useFlag', () => {
         expect(useFlag('fr')).toBe('/flags/fr.svg');
     });
 
-    it('returns null for constructed/fictional languages', () => {
-        expect(useFlag('eo')).toBeNull(); // Esperanto
-        expect(useFlag('tlh')).toBeNull(); // Klingon
-        expect(useFlag('qya')).toBeNull(); // Quenya
+    it('maps constructed/fictional languages to custom flags', () => {
+        expect(useFlag('eo')).toBe('/flags/eo.svg'); // Esperanto
+        expect(useFlag('tlh')).toBe('/flags/klingon.svg'); // Klingon
+        expect(useFlag('qya')).toBe('/flags/quenya.svg'); // Quenya
+        expect(useFlag('ia')).toBe('/flags/ia.svg'); // Interlingua
+        expect(useFlag('ie')).toBe('/flags/lang-ie.svg'); // Interlingue
     });
 
     it('returns null for unknown language codes', () => {
@@ -59,8 +61,8 @@ describe('useFlag', () => {
         expect(useFlag('mi')).toBe('/flags/maori.svg'); // Māori → Māori flag
         expect(useFlag('ha')).toBe('/flags/hausa.svg'); // Hausa → Hausa flag
         expect(useFlag('yo')).toBe('/flags/yorubaland.svg'); // Yoruba → Yorubaland
-        expect(useFlag('fy')).toBe('/flags/nl.svg'); // Frisian → Netherlands
-        expect(useFlag('fur')).toBe('/flags/it.svg'); // Friulian → Italy
+        expect(useFlag('fy')).toBe('/flags/nl-fr.svg'); // Frisian → Friesland
+        expect(useFlag('fur')).toBe('/flags/it-36.svg'); // Friulian → Friuli-Venezia Giulia
         expect(useFlag('nds')).toBe('/flags/de.svg'); // Low German → Germany
     });
 });
@@ -75,8 +77,8 @@ describe('useFlagCountryCode', () => {
     });
 
     it('returns null for unknown languages', () => {
-        expect(useFlagCountryCode('eo')).toBeNull();
         expect(useFlagCountryCode('zz')).toBeNull();
+        expect(useFlagCountryCode('xyz')).toBeNull();
     });
 });
 
@@ -155,7 +157,7 @@ describe('circle flag files', () => {
         const requiredFlags = [
             'gb',
             'fi',
-            'sa',
+            'lang-ar',
             'de',
             'es',
             'fr',
@@ -173,6 +175,14 @@ describe('circle flag files', () => {
             'maori',
             'hausa',
             'yorubaland',
+            'eo',
+            'ia',
+            'lang-ie',
+            'lang-la',
+            'lang-mr',
+            'klingon',
+            'quenya',
+            'punjabi',
         ];
         for (const code of requiredFlags) {
             const flagPath = path.join(flagsDir, `${code}.svg`);

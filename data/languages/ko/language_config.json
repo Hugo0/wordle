@@ -29,6 +29,18 @@
             "quordle": {
                 "title": "Quordle — 보드 4개를 동시에",
                 "description": "한국어로 Quordle을 플레이하세요. 9번의 추측으로 Wordle 보드 4개를 동시에 풀어보세요."
+            },
+            "octordle": {
+                "title": "Octordle — 보드 8개를 동시에",
+                "description": "한국어로 Octordle을 플레이하세요. 13번의 추측으로 Wordle 보드 8개를 동시에 풀어보세요."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 보드 16개를 동시에",
+                "description": "한국어로 Sedecordle을 플레이하세요. 21번의 추측으로 Wordle 보드 16개를 동시에 풀어보세요."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 보드 32개를 동시에",
+                "description": "한국어로 Duotrigordle을 플레이하세요. 37번의 추측으로 Wordle 보드 32개를 동시에 풀어보세요."
             }
         }
     },

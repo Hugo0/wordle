@@ -16,22 +16,16 @@ onMounted(() => {
     if (!el) return;
 
     let scrollTimer: ReturnType<typeof setTimeout> | null = null;
-    let lastSnapBack = 0;
+    let hasSnappedBack = false;
 
     el.addEventListener(
         'scroll',
         () => {
+            if (hasSnappedBack) return;
             if (scrollTimer) clearTimeout(scrollTimer);
             scrollTimer = setTimeout(() => {
                 if (el.scrollTop <= 0) return;
-
-                const now = Date.now();
-                // If they scrolled down again within 3s of the last snap-back,
-                // they're intentional — let them stay
-                if (now - lastSnapBack < 3000) return;
-
-                // Otherwise, gently snap back
-                lastSnapBack = now;
+                hasSnappedBack = true;
                 el.scrollTo({ top: 0, behavior: 'smooth' });
             }, 200);
         },

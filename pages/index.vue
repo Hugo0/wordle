@@ -539,6 +539,7 @@ function openLink(url: string): void {
                 :src="defaultLangFlag"
                 :alt="defaultLangName"
                 class="flag-icon flag-icon-sm"
+                @error="($event.target as HTMLImageElement).style.display = 'none'"
             />
             <span class="text-sm text-muted">
                 Playing in

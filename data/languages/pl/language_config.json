@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 plansze naraz",
                 "description": "Graj w Quordle po polsku. Rozwiąż 4 plansze Wordle naraz w 9 prób."
+            },
+            "octordle": {
+                "title": "Octordle — 8 plansze naraz",
+                "description": "Graj w Octordle po polsku. Rozwiąż 8 plansze Wordle naraz w 13 prób."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 plansze naraz",
+                "description": "Graj w Sedecordle po polsku. Rozwiąż 16 plansze Wordle naraz w 21 prób."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 plansze naraz",
+                "description": "Graj w Duotrigordle po polsku. Rozwiąż 32 plansze Wordle naraz w 37 prób."
             }
         }
     },

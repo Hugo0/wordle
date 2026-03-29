@@ -273,5 +273,5 @@ onMounted(() => {
         </template>
     </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" mode="speed" :seo="seo" />
+    <GameSeoNoscript :lang="lang" mode="speed" :seo="seo" :config="config!" />
 </template>

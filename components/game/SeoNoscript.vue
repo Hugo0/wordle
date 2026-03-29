@@ -5,49 +5,188 @@
   scroll-snap + a JS rubber-band guard so users almost never reach this.
   Google's renderer sees all content in the full rendered DOM.
 
-  Reuses design tokens, editorial typography, tile examples (from HelpModal),
-  mode cards (from homepage), and flag icons (Circle Flags) for consistency.
+  All text reads from config.seo.* (translated per language) with English
+  fallbacks from default_language_config.json. Icons use Lucide.
 -->
 <script setup lang="ts">
+import {
+    Globe,
+    Lightbulb,
+    BookOpen,
+    ImageIcon,
+    Palette,
+    Smartphone,
+    Languages,
+    AlertTriangle,
+} from 'lucide-vue-next';
+import BaseModal from '~/components/shared/BaseModal.vue';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
 import { useFlag } from '~/composables/useFlag';
+import type { Component } from 'vue';
 import type { GameMode } from '~/utils/game-modes';
 import type { GameSeoResult } from '~/composables/useGameSeo';
+import { interpolate } from '~/composables/useGameSeo';
+import type { LanguageConfig, LanguageSeo } from '~/utils/types';
 
 const props = defineProps<{
     lang: string;
     mode: GameMode;
     seo: GameSeoResult;
+    config: LanguageConfig;
 }>();
 
+const s = computed<Partial<LanguageSeo>>(() => props.config.seo || {});
 const isClassic = props.mode === 'classic';
 const modeDef = GAME_MODE_CONFIG[props.mode];
 const isMultiBoard = modeDef.boardCount > 1;
 
+// ── Today's Word reveal (classic mode only) ──
+const wordRevealed = ref(false);
+const showRevealConfirm = ref(false);
+const langStore = isClassic ? useLanguageStore() : null;
+const game = isClassic ? useGameStore() : null;
+const todaysWord = computed(() => langStore?.todaysWord?.toUpperCase() || '');
+const todaysIdx = computed(() => langStore?.todaysIdx ?? 0);
+const gameAlreadyOver = computed(() => game?.gameOver ?? false);
+
+function onRevealClick() {
+    if (wordRevealed.value) return;
+    if (gameAlreadyOver.value) {
+        wordRevealed.value = true;
+        return;
+    }
+    showRevealConfirm.value = true;
+}
+
+function confirmReveal() {
+    showRevealConfirm.value = false;
+    if (game && !game.gameOver) {
+        game.handleGameLost();
+    }
+    wordRevealed.value = true;
+}
+
+// ── Translated section headings with English fallbacks ──
+const h = computed(() => ({
+    howToPlay: s.value.how_to_play || 'How to Play',
+    tipsStrategy: s.value.tips_strategy || 'Tips & Strategy',
+    moreModes: s.value.more_modes || 'More Game Modes',
+    playInLanguages: s.value.play_in_languages || 'Play in 80+ Languages',
+    playInLanguagesSub:
+        s.value.play_in_languages_sub || 'Every language is free. No account needed.',
+    whyWordleGlobal: s.value.why_wordle_global || 'Why Wordle Global',
+    faqTitle: s.value.faq_title || 'Frequently Asked Questions',
+    browseAll: s.value.browse_all_languages || 'Browse all 80+ languages',
+    footer: s.value.footer || 'wordle.global — the free daily word game in 80+ languages',
+}));
+
+// ── Tile example descriptions (translated) ──
+const tileDescs = computed(() => ({
+    correct: s.value.tile_correct || 'is in the word and in the correct spot.',
+    semicorrect: s.value.tile_semicorrect || 'is in the word but in the wrong spot.',
+    incorrect: s.value.tile_incorrect || 'is not in the word at all.',
+}));
+
+const EXAMPLES = computed(() => [
+    { word: 'CRANE', idx: 0, type: 'correct' as const, letter: 'C', desc: tileDescs.value.correct },
+    {
+        word: 'PILOT',
+        idx: 1,
+        type: 'semicorrect' as const,
+        letter: 'I',
+        desc: tileDescs.value.semicorrect,
+    },
+    {
+        word: 'MONEY',
+        idx: 2,
+        type: 'incorrect' as const,
+        letter: 'N',
+        desc: tileDescs.value.incorrect,
+    },
+]);
+
+// ── Social proof stats (translated labels) ──
+const SOCIAL_STATS = computed(() => [
+    { value: '800K+', label: s.value.stat_players || 'Players' },
+    { value: '1.7M+', label: s.value.stat_guesses || 'Guesses' },
+    { value: '80+', label: s.value.stat_languages || 'Languages' },
+    { value: '8', label: s.value.stat_modes || 'Game Modes' },
+]);
+
+// ── Strategy tips (mode-aware, translated) ──
+const strategyTips = computed(() => {
+    // Check for mode-specific translated tips first
+    const modeTips = s.value.mode_tips?.[props.mode];
+    if (modeTips?.length) return modeTips;
+
+    if (isMultiBoard) return s.value.tips_multiboard || [];
+    if (props.mode === 'speed') return s.value.tips_speed || [];
+    return s.value.tips || [];
+});
+
+// ── Value propositions (translated, with icon mapping) ──
+const VALUE_ICON_MAP: Record<string, Component> = {
+    languages: Languages,
+    definitions: BookOpen,
+    word_art: ImageIcon,
+    themes: Palette,
+    pwa: Smartphone,
+    free: Globe,
+};
+
+const valueProps = computed(() => {
+    const items = s.value.value_props || [];
+    return items.map((p) => ({
+        icon: VALUE_ICON_MAP[p.key] || Globe,
+        title: p.title,
+        desc: p.desc,
+    }));
+});
+
+// ── Mode description paragraph (translated, with placeholder interpolation) ──
+const modeDesc = computed(() => {
+    let raw: string;
+    if (isMultiBoard) {
+        raw = s.value.mode_desc_multiboard || '';
+    } else if (props.mode === 'speed') {
+        raw = s.value.mode_desc_speed || '';
+    } else if (props.mode === 'unlimited') {
+        raw = s.value.mode_desc_unlimited || s.value.mode_desc_classic || '';
+    } else {
+        raw = s.value.mode_desc_classic || '';
+    }
+    return interpolate(raw, {
+        modeName: modeDef.label,
+        boardCount: modeDef.boardCount,
+        maxGuesses: modeDef.maxGuesses,
+    });
+});
+
 // Game modes to show (enabled + not the current mode)
 const otherModes = GAME_MODES_UI.filter((m) => m.enabled && m.id !== props.mode).slice(0, 6);
 
-// Top languages by traffic for the language grid
-const TOP_LANGUAGES = [
-    { code: 'en', native: 'English', name: 'English' },
-    { code: 'fi', native: 'Suomi', name: 'Finnish' },
-    { code: 'ar', native: 'العربية', name: 'Arabic' },
-    { code: 'de', native: 'Deutsch', name: 'German' },
-    { code: 'es', native: 'Español', name: 'Spanish' },
-    { code: 'tr', native: 'Türkçe', name: 'Turkish' },
-    { code: 'it', native: 'Italiano', name: 'Italian' },
-    { code: 'hr', native: 'Hrvatski', name: 'Croatian' },
-    { code: 'bg', native: 'Български', name: 'Bulgarian' },
-    { code: 'sv', native: 'Svenska', name: 'Swedish' },
-    { code: 'ru', native: 'Русский', name: 'Russian' },
-    { code: 'pt', native: 'Português', name: 'Portuguese' },
-].filter((l) => l.code !== props.lang);
+// Language data from API
+const { data: langData } = await useFetch('/api/languages');
+const allLanguages = computed(() => {
+    const langs = langData.value?.languages as
+        | Record<
+              string,
+              { language_name: string; language_name_native: string; language_code: string }
+          >
+        | undefined;
+    if (!langs) return [];
 
-// Tile example words for how-to section
-const EXAMPLE_CORRECT = { word: 'CRANE', highlight: 0, type: 'correct' as const };
-const EXAMPLE_WRONG_POS = { word: 'PILOT', highlight: 1, type: 'semicorrect' as const };
-const EXAMPLE_ABSENT = { word: 'MONEY', highlight: 2, type: 'incorrect' as const };
+    const popularity = (langData.value?.language_popularity as string[]) || [];
+    return Object.values(langs)
+        .filter((l) => l.language_code !== props.lang)
+        .sort((a, b) => {
+            const ia = popularity.indexOf(a.language_code);
+            const ib = popularity.indexOf(b.language_code);
+            return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+        })
+        .slice(0, 18);
+});
 </script>
 
 <template>
@@ -70,127 +209,143 @@ const EXAMPLE_ABSENT = { word: 'MONEY', highlight: 2, type: 'incorrect' as const
                 </p>
             </header>
 
-            <div class="editorial-rule" />
+            <!-- ─── Social Proof Stats ─── -->
+            <div class="grid grid-cols-4 gap-2 text-center editorial-rule pb-6">
+                <div v-for="stat in SOCIAL_STATS" :key="stat.label">
+                    <div class="font-display font-bold text-xl sm:text-2xl text-ink">
+                        {{ stat.value }}
+                    </div>
+                    <div class="mono-label mt-1">{{ stat.label }}</div>
+                </div>
+            </div>
 
-            <!-- ─── Section 2: How to Play (with tile examples) ─── -->
+            <!-- ─── Today's Word (classic mode only) ─── -->
+            <section v-if="isClassic && todaysWord" class="space-y-4">
+                <h3 class="heading-section text-xl text-ink text-center">Today's Word</h3>
+                <div class="border border-rule max-w-md mx-auto">
+                    <!-- Not yet revealed: show button -->
+                    <button
+                        v-if="!wordRevealed"
+                        class="w-full px-5 py-4 cursor-pointer select-none hover:bg-paper-warm transition-colors text-sm text-accent font-semibold text-center"
+                        @click="onRevealClick"
+                    >
+                        {{
+                            gameAlreadyOver
+                                ? "Show today's word"
+                                : 'Click to reveal (ends your game)'
+                        }}
+                    </button>
+                    <!-- Revealed: show the word -->
+                    <div v-else class="px-5 py-5 text-center space-y-3">
+                        <div class="heading-display text-4xl text-ink tracking-wider">
+                            {{ todaysWord }}
+                        </div>
+                        <p class="text-xs text-muted">
+                            Wordle {{ seo.langNative }} #{{ todaysIdx }}
+                        </p>
+                        <a
+                            :href="`/${lang}/word/${todaysIdx}`"
+                            class="inline-block text-sm text-muted underline hover:text-ink transition-colors"
+                        >
+                            See definition & word art
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Confirmation modal (only when game is still in progress) -->
+                <BaseModal
+                    :visible="showRevealConfirm"
+                    size="sm"
+                    @close="showRevealConfirm = false"
+                >
+                    <div class="text-center space-y-4">
+                        <AlertTriangle :size="32" class="text-semicorrect mx-auto" />
+                        <h3 class="heading-section text-lg text-ink">Reveal today's word?</h3>
+                        <p class="text-sm text-muted leading-relaxed">
+                            This will count as a loss and end your current streak.
+                        </p>
+                        <div class="flex gap-3 pt-2">
+                            <button
+                                class="flex-1 px-4 py-2.5 text-sm border border-rule hover:bg-paper-warm transition-colors"
+                                @click="showRevealConfirm = false"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                class="flex-1 px-4 py-2.5 text-sm bg-ink text-paper font-semibold hover:opacity-90 transition-opacity"
+                                @click="confirmReveal"
+                            >
+                                Reveal word
+                            </button>
+                        </div>
+                    </div>
+                </BaseModal>
+            </section>
+
+            <div v-if="isClassic && todaysWord" class="editorial-rule" />
+
+            <!-- ─── How to Play (with tile examples) ─── -->
             <section class="space-y-6">
                 <h3 class="heading-section text-xl text-ink text-center">
-                    How to Play{{ isClassic ? '' : ` ${seo.modeLabel}` }}
+                    {{ h.howToPlay }}{{ isClassic ? '' : ` ${seo.modeLabel}` }}
                 </h3>
 
                 <!-- Tile color examples (reuses HelpModal tile pattern) -->
                 <div v-if="!isMultiBoard && mode !== 'speed'" class="space-y-4 max-w-xs mx-auto">
-                    <!-- Green example -->
-                    <div class="space-y-1.5">
+                    <div v-for="ex in EXAMPLES" :key="ex.type" class="space-y-1.5">
                         <div class="grid grid-cols-5 gap-1">
                             <div
-                                v-for="(c, i) in EXAMPLE_CORRECT.word.split('')"
+                                v-for="(c, i) in ex.word.split('')"
                                 :key="i"
                                 class="tile aspect-square inline-flex justify-center items-center text-lg uppercase font-display font-bold select-none"
-                                :class="
-                                    i === EXAMPLE_CORRECT.highlight
-                                        ? 'correct text-white'
-                                        : 'filled'
-                                "
+                                :class="i === ex.idx ? `${ex.type} text-white` : 'filled'"
                             >
                                 {{ c }}
                             </div>
                         </div>
                         <p class="text-xs text-muted">
-                            <strong class="text-correct">C</strong> is in the word and in the
-                            correct spot.
-                        </p>
-                    </div>
-
-                    <!-- Yellow example -->
-                    <div class="space-y-1.5">
-                        <div class="grid grid-cols-5 gap-1">
-                            <div
-                                v-for="(c, i) in EXAMPLE_WRONG_POS.word.split('')"
-                                :key="i"
-                                class="tile aspect-square inline-flex justify-center items-center text-lg uppercase font-display font-bold select-none"
-                                :class="
-                                    i === EXAMPLE_WRONG_POS.highlight
-                                        ? 'semicorrect text-white'
-                                        : 'filled'
-                                "
-                            >
-                                {{ c }}
-                            </div>
-                        </div>
-                        <p class="text-xs text-muted">
-                            <strong class="text-semicorrect">I</strong> is in the word but in the
-                            wrong spot.
-                        </p>
-                    </div>
-
-                    <!-- Gray example -->
-                    <div class="space-y-1.5">
-                        <div class="grid grid-cols-5 gap-1">
-                            <div
-                                v-for="(c, i) in EXAMPLE_ABSENT.word.split('')"
-                                :key="i"
-                                class="tile aspect-square inline-flex justify-center items-center text-lg uppercase font-display font-bold select-none"
-                                :class="
-                                    i === EXAMPLE_ABSENT.highlight
-                                        ? 'incorrect text-white'
-                                        : 'filled'
-                                "
-                            >
-                                {{ c }}
-                            </div>
-                        </div>
-                        <p class="text-xs text-muted">
-                            <strong>N</strong> is not in the word at all.
+                            <strong :class="`text-${ex.type}`">{{ ex.letter }}</strong>
+                            {{ ex.desc }}
                         </p>
                     </div>
                 </div>
 
-                <!-- Text description for multi-board / speed -->
-                <div class="text-sm text-muted leading-relaxed max-w-lg mx-auto space-y-2">
-                    <template v-if="isMultiBoard">
-                        <p>
-                            {{ seo.modeLabel }} challenges you to solve
-                            {{ modeDef.boardCount }} Wordle boards at the same time using just
-                            {{ modeDef.maxGuesses }} guesses. Each guess appears on all unsolved
-                            boards simultaneously. Boards freeze when solved.
-                        </p>
-                        <p>
-                            The split-color keyboard shows which letters are correct on which
-                            boards. Start with common-letter words to gather clues across all boards
-                            at once.
-                        </p>
-                    </template>
-                    <template v-else-if="mode === 'speed'">
-                        <p>
-                            Start with 3 minutes on the clock. Each word you solve earns bonus time
-                            — solve in fewer guesses for bigger bonuses (+60s for 1 guess, +10s for
-                            6). Failed words cost 30 seconds.
-                        </p>
-                        <p>
-                            Build combos by solving consecutive words for up to a 3x score
-                            multiplier. The pressure ramps up as you solve more words — the timer
-                            ticks faster every 3 words.
-                        </p>
-                    </template>
-                    <template v-else>
-                        <p>
-                            You have 6 tries to guess a hidden 5-letter word. Use the color clues to
-                            narrow down the answer.
-                            <template v-if="mode === 'unlimited'">
-                                After each game, press "Play Again" to get a new word instantly —
-                                there's no daily limit.
-                            </template>
-                        </p>
-                    </template>
+                <!-- Mode description (from config.seo.mode_desc_*) -->
+                <p v-if="modeDesc" class="text-sm text-muted leading-relaxed max-w-lg mx-auto">
+                    {{ modeDesc }}
+                </p>
+            </section>
+
+            <div class="editorial-rule" />
+
+            <!-- ─── Section 3: Strategy Tips ─── -->
+            <section v-if="strategyTips.length" class="space-y-5">
+                <h3 class="heading-section text-xl text-ink text-center">
+                    <Lightbulb :size="20" class="inline -mt-0.5 mr-1" />
+                    {{ h.tipsStrategy }}
+                </h3>
+                <div class="space-y-4 max-w-lg mx-auto">
+                    <div v-for="(tip, i) in strategyTips" :key="i" class="flex gap-4 items-start">
+                        <span
+                            class="w-7 h-7 flex items-center justify-center border border-rule bg-paper-warm flex-shrink-0 font-display font-bold text-sm text-ink"
+                        >
+                            {{ i + 1 }}
+                        </span>
+                        <div class="min-w-0">
+                            <div class="text-sm font-semibold text-ink">{{ tip.title }}</div>
+                            <p class="text-xs text-muted mt-0.5 leading-relaxed">
+                                {{ tip.text }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <div class="editorial-rule" />
 
-            <!-- ─── Section 3: Game Modes Grid ─── -->
+            <!-- ─── Section 4: Game Modes Grid ─── -->
             <section class="space-y-5">
-                <h3 class="heading-section text-xl text-ink text-center">More Game Modes</h3>
+                <h3 class="heading-section text-xl text-ink text-center">{{ h.moreModes }}</h3>
                 <div
                     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-rule"
                     style="background: var(--color-rule); gap: 1px"
@@ -218,33 +373,40 @@ const EXAMPLE_ABSENT = { word: 'MONEY', highlight: 2, type: 'incorrect' as const
 
             <div class="editorial-rule" />
 
-            <!-- ─── Section 4: Language Grid ─── -->
+            <!-- ─── Section 5: Language Grid ─── -->
             <section class="space-y-5">
                 <div class="text-center space-y-1">
-                    <h3 class="heading-section text-xl text-ink">Play in 80+ Languages</h3>
-                    <p class="text-xs text-muted">Every language is free. No account needed.</p>
+                    <h3 class="heading-section text-xl text-ink">{{ h.playInLanguages }}</h3>
+                    <p class="text-xs text-muted">{{ h.playInLanguagesSub }}</p>
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 border border-rule">
+                <div class="grid grid-cols-2 sm:grid-cols-3 border-t border-rule">
                     <a
-                        v-for="l in TOP_LANGUAGES"
-                        :key="l.code"
-                        :href="`/${l.code}${isClassic ? '' : '/' + mode}`"
-                        class="flex items-center gap-3 px-4 py-3 border-b border-r border-rule hover:bg-paper-warm transition-colors"
+                        v-for="l in allLanguages"
+                        :key="l.language_code"
+                        :href="`/${l.language_code}${isClassic ? '' : '/' + mode}`"
+                        class="flex items-center gap-3 text-left border-b border-rule hover:bg-paper-warm transition-colors"
+                        style="padding: 12px 16px"
                     >
                         <img
-                            v-if="useFlag(l.code)"
-                            :src="useFlag(l.code)!"
-                            :alt="l.name"
+                            v-if="useFlag(l.language_code)"
+                            :src="useFlag(l.language_code)!"
+                            :alt="l.language_name"
                             class="flag-icon-sm"
                             width="20"
                             height="20"
                             loading="lazy"
                         />
-                        <div class="min-w-0">
+                        <div
+                            v-else
+                            class="flag-icon-sm bg-paper-warm border border-rule flex items-center justify-center text-ink text-[10px] font-display font-bold"
+                        >
+                            {{ l.language_name_native.charAt(0) }}
+                        </div>
+                        <div class="flex-1 min-w-0">
                             <div class="text-sm font-semibold text-ink truncate">
-                                {{ l.native }}
+                                {{ l.language_name_native }}
                             </div>
-                            <div class="text-xs text-muted">{{ l.name }}</div>
+                            <div class="text-xs text-muted truncate">{{ l.language_name }}</div>
                         </div>
                     </a>
                 </div>
@@ -252,17 +414,40 @@ const EXAMPLE_ABSENT = { word: 'MONEY', highlight: 2, type: 'incorrect' as const
                     <a
                         href="https://wordle.global/"
                         class="text-sm text-muted underline hover:text-ink transition-colors"
-                        >Browse all 80+ languages</a
+                        >{{ h.browseAll }}</a
                     >
                 </p>
             </section>
 
             <div class="editorial-rule" />
 
-            <!-- ─── Section 5: FAQ (details/summary accordions) ─── -->
-            <section class="space-y-4">
+            <!-- ─── Section 6: Why Wordle Global (Value Props) ─── -->
+            <section v-if="valueProps.length" class="space-y-5">
                 <h3 class="heading-section text-xl text-ink text-center">
-                    Frequently Asked Questions
+                    {{ h.whyWordleGlobal }}
+                </h3>
+                <div
+                    class="grid grid-cols-2 sm:grid-cols-3 border border-rule"
+                    style="background: var(--color-rule); gap: 1px"
+                >
+                    <div
+                        v-for="prop in valueProps"
+                        :key="prop.title"
+                        class="bg-paper py-5 px-4 text-center space-y-2"
+                    >
+                        <component :is="prop.icon" :size="22" class="text-ink mx-auto" />
+                        <div class="heading-section text-sm text-ink">{{ prop.title }}</div>
+                        <p class="text-xs text-muted leading-snug">{{ prop.desc }}</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="editorial-rule" />
+
+            <!-- ─── Section 7: FAQ (details/summary accordions) ─── -->
+            <section v-if="seo.faq.length" class="space-y-4">
+                <h3 class="heading-section text-xl text-ink text-center">
+                    {{ h.faqTitle }}
                 </h3>
                 <div class="border border-rule divide-y divide-rule">
                     <details
@@ -299,12 +484,7 @@ const EXAMPLE_ABSENT = { word: 'MONEY', highlight: 2, type: 'incorrect' as const
             <!-- ─── Footer ─── -->
             <footer class="text-center space-y-2 pt-4">
                 <div class="editorial-rule" />
-                <p class="mono-label pt-4">
-                    <a href="https://wordle.global/" class="hover:text-ink transition-colors"
-                        >wordle.global</a
-                    >
-                    — the free daily word game in 80+ languages
-                </p>
+                <p class="mono-label pt-4">{{ h.footer }}</p>
             </footer>
         </div>
     </div>

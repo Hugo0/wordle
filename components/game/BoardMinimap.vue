@@ -1,5 +1,7 @@
 <template>
-    <div class="flex items-center gap-0.5 py-1 px-1 shrink-0 flex-wrap justify-center">
+    <div
+        class="flex items-center gap-0.5 py-1 px-1 shrink-0 overflow-x-auto justify-center minimap-scroll"
+    >
         <button
             v-for="i in boardCount"
             :key="i - 1"
@@ -138,5 +140,12 @@ function miniRows(boardIndex: number) {
 }
 .minimap-focused .minimap-label {
     color: var(--color-ink, #1a1a1a);
+}
+.minimap-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.minimap-scroll::-webkit-scrollbar {
+    display: none;
 }
 </style>

@@ -60,8 +60,9 @@
                                 :src="flagSrc"
                                 :alt="languageName"
                                 class="flag-icon flag-icon-sm"
+                                @error="($event.target as HTMLImageElement).style.display = 'none'"
                             />
-                            <Globe v-else :size="18" class="text-muted" />
+                            <Globe v-if="!flagSrc" :size="18" class="text-muted" />
                         </span>
                         <span class="flex-1 text-sm text-ink">{{ languageName }}</span>
                         <ChevronRight :size="14" class="text-muted" />

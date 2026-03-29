@@ -81,5 +81,5 @@ onMounted(() => {
         <GameBoard ref="gameBoardRef" />
     </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" />
+    <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" :config="config!" />
 </template>

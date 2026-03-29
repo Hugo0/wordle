@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 rutnät samtidigt",
                 "description": "Spela Quordle på svenska. Lös 4 Wordle-rutnät samtidigt med 9 gissningar."
+            },
+            "octordle": {
+                "title": "Octordle — 8 rutnät samtidigt",
+                "description": "Spela Octordle på svenska. Lös 8 Wordle-rutnät samtidigt med 13 gissningar."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 rutnät samtidigt",
+                "description": "Spela Sedecordle på svenska. Lös 16 Wordle-rutnät samtidigt med 21 gissningar."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 rutnät samtidigt",
+                "description": "Spela Duotrigordle på svenska. Lös 32 Wordle-rutnät samtidigt med 37 gissningar."
             }
         }
     },
@@ -141,5 +153,108 @@
         "pos_adjective": "adjektiv",
         "pos_adverb": "adverb",
         "pos_other": ""
+    },
+    "seo": {
+        "how_to_play": "Så spelar du",
+        "tips_strategy": "Tips och strategi",
+        "more_modes": "Fler spellägen",
+        "play_in_languages": "Spela på 80+ språk",
+        "play_in_languages_sub": "Alla språk är gratis. Inget konto behövs.",
+        "why_wordle_global": "Varför Wordle Global",
+        "faq_title": "Vanliga frågor",
+        "browse_all_languages": "Utforska alla 80+ språk",
+        "footer": "wordle.global — det gratis dagliga ordspelet på 80+ språk",
+        "tile_correct": "finns i ordet och på rätt plats.",
+        "tile_semicorrect": "finns i ordet men på fel plats.",
+        "tile_incorrect": "finns inte i ordet alls.",
+        "stat_players": "Spelare",
+        "stat_guesses": "Gissningar",
+        "stat_languages": "Språk",
+        "stat_modes": "Spellägen",
+        "value_props": [
+            { "key": "languages", "title": "80+ språk", "desc": "Från arabiska till yoruba. Världens största flerspråkiga Wordle." },
+            { "key": "definitions", "title": "Orddefinitioner", "desc": "Lär dig betydelsen av varje ord efter att du spelat. Utöka ditt ordförråd." },
+            { "key": "word_art", "title": "Unik ordkonst", "desc": "Varje ord har en egen illustration. Samla alla." },
+            { "key": "themes", "title": "Mörkt läge och teman", "desc": "Ljust, mörkt och högkontrastläge för bekvämt spelande." },
+            { "key": "pwa", "title": "Fungerar överallt", "desc": "PWA — installera på valfri enhet. Fungerar offline. Ingen nedladdning." },
+            { "key": "free", "title": "Gratis för alltid", "desc": "Inget konto. Ingen betalvägg. Bara spela." }
+        ],
+        "tips": [
+            { "title": "Börja med ett vokalrikt ord", "text": "Ord som CRANE, STARE eller ADIEU testar vanliga bokstäver snabbt. Att veta vilka vokaler som finns med begränsar alternativen." },
+            { "title": "Använd det du vet", "text": "Gröna bokstäver sitter fast. Gula måste flytta. Grå är borta. Varje gissning bör utnyttja alla tre ledtrådarna." },
+            { "title": "Tänk på vanliga mönster", "text": "Svenska har sina egna frekventa bokstavskombinationer — lär dig känna igen dem." },
+            { "title": "Eliminera, gissa inte slumpmässigt", "text": "Ditt andra ord bör testa nya bokstäver, inte upprepa redan bekräftade." },
+            { "title": "Se upp för dubbla bokstäver", "text": "Ord med upprepade bokstäver är vanliga fällor. Om ledtrådarna inte stämmer, tänk på en dubbelbokstav." },
+            { "title": "Använd svårt läge för att bli bättre", "text": "Svårt läge tvingar dig att använda bekräftade ledtrådar i varje gissning. Det bygger bättre vanor." }
+        ],
+        "tips_speed": [
+            { "title": "Börja med vanliga bokstäver", "text": "Högfrekventa bokstäver ger bäst chans till snabb lösning. Varje sekund räknas." },
+            { "title": "Tänk inte för mycket", "text": "Speed Streak belönar instinkt. Ser du ett troligt ord, kör på det — kombobonus väger tyngre än perfekt lösning." },
+            { "title": "Skydda din kombo", "text": "Ett misslyckat ord bryter multiplikatorn. Är du osäker, ta en säker gissning." },
+            { "title": "Sikta på lösning i 2-3 gissningar", "text": "Tidsbonusen är enorm vid snabba lösningar (+60s vid 1 gissning, +30s vid 2)." },
+            { "title": "Lär dig vanliga ordändelser", "text": "Att direkt känna igen återkommande mönster sparar sekunder per ord." },
+            { "title": "Håll dig lugn under press", "text": "Timern snabbas upp var tredje ord. Stress leder till misstag. Jämnt tempo slår panik." }
+        ],
+        "tips_multiboard": [
+            { "title": "Börja brett", "text": "Använd ord med vanliga bokstäver för att samla ledtrådar från alla rutnät samtidigt." },
+            { "title": "Håll koll på det delade tangentbordet", "text": "Tangentbordet visar färger per rutnät. En bokstav som är grön på ett rutnät men grå på ett annat begränsar snabbt." },
+            { "title": "Prioritera svåra rutnät", "text": "Fokusera gissningarna på rutnätet med flest okända. Enklare rutnät löser sig ofta på köpet." },
+            { "title": "Slösa inte bort tidiga gissningar", "text": "Använd de första 2-3 till informationsrika ord innan du riktar in dig på enskilda rutnät." },
+            { "title": "Leta efter gemensamma bokstäver", "text": "Om två rutnät visar ett gult E, hjälper ett ord med E på ny position båda." },
+            { "title": "Spara en gissning för nödlägen", "text": "Fastnar du på sista rutnätet gör en extra gissning skillnaden mellan vinst och förlust." }
+        ],
+        "faq": [
+            { "q": "Hur spelar jag Wordle på {langName}?", "a": "Besök wordle.global/{lang} för att spela dagens Wordle på {langName}. Du har 6 försök att gissa ett ord på 5 bokstäver. Efter varje gissning blir rutorna gröna (rätt bokstav, rätt plats), gula (rätt bokstav, fel plats) eller grå (bokstaven finns inte i ordet)." },
+            { "q": "Kommer det ett nytt pussel varje dag?", "a": "Ja. Ett nytt ord väljs varje dag. Alla som spelar på samma språk får samma ord, så du kan jämföra resultat med vänner." },
+            { "q": "Är Wordle Global gratis?", "a": "Ja. Dagspusslet, obegränsat läge och alla spellägen är helt gratis på 80+ språk. Inget konto eller nedladdning." },
+            { "q": "Kan jag spela mer än en gång om dagen?", "a": "Ja — prova obegränsat läge på wordle.global/{lang}/unlimited för oändliga spel utan väntan. Din dagliga svit spåras separat." }
+        ],
+        "mode_desc_classic": "Du har 6 försök att gissa ett dolt ord på 5 bokstäver. Använd färgledtrådarna för att smala av svaret.",
+        "mode_desc_unlimited": "Du har 6 försök att gissa ett dolt ord på 5 bokstäver. Använd färgledtrådarna för att smala av svaret. Efter varje spel trycker du \"Spela igen\" för att direkt få ett nytt ord — ingen dagsgräns.",
+        "mode_desc_speed": "Börja med 3 minuter på klockan. Varje löst ord ger bonustid — lös med färre gissningar för större bonus (+60s vid 1 gissning, +10s vid 6). Misslyckade ord kostar 30 sekunder. Bygg kombos genom att lösa ord i rad för upp till 3x poängmultiplikator. Pressen ökar — timern snabbas upp var tredje ord.",
+        "mode_desc_multiboard": "{modeName} utmanar dig att lösa {boardCount} Wordle-rutnät samtidigt med bara {maxGuesses} gissningar. Varje gissning visas på alla olösta rutnät. Lösta rutnät fryser. Det delade tangentbordet visar vilka bokstäver som är korrekta på vilka rutnät. Börja med ord med vanliga bokstäver för att samla ledtrådar från alla rutnät.",
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Vad är Wordle Unlimited på {langName}?", "a": "Wordle Unlimited låter dig spela så många Wordle-spel du vill på {langName}, utan att vänta på morgondagens pussel. Varje spel ger dig ett nytt slumpmässigt ord att gissa på 6 försök." },
+                { "q": "Är Wordle Unlimited gratis?", "a": "Ja. Wordle Unlimited är helt gratis. Inget konto, ingen nedladdning, inga annonser under spelet." },
+                { "q": "Räknas obegränsat läge till min dagliga svit?", "a": "Nej. Obegränsat läge har sin egen separata statistik. Din dagliga svit påverkas bara av dagspusslet." },
+                { "q": "Hur många gånger kan jag spela?", "a": "Ingen gräns. Du kan spela hur många rundor du vill. Efter varje spel trycker du \"Spela igen\" för att direkt få ett nytt ord." },
+                { "q": "På vilka språk kan jag spela Wordle Unlimited?", "a": "Wordle Unlimited finns på över 80 språk på wordle.global, inklusive svenska, engelska, spanska, tyska, finska, arabiska, franska, italienska, portugisiska och många fler." }
+            ],
+            "speed": [
+                { "q": "Vad är Speed Streak på {langName}?", "a": "Speed Streak är ett tidsstyrt Wordle-läge på {langName}. Du börjar med 3 minuter på klockan och löser så många ord du kan. Lös snabbt för att tjäna bonustid." },
+                { "q": "Hur fungerar poängsättningen?", "a": "Du tjänar poäng för varje löst ord. Färre gissningar och snabbare lösningar ger fler poäng. Bygg en kombo genom att lösa ord i rad — upp till 3x multiplikator." },
+                { "q": "Vad händer när tiden tar slut?", "a": "Spelet slutar och du ser din slutpoäng, lösta ord, bästa kombo och genomsnittliga gissningar. Du kan spela igen direkt." },
+                { "q": "Är Speed Streak gratis?", "a": "Ja. Speed Streak är helt gratis på alla 80+ språk. Inget konto eller nedladdning." }
+            ],
+            "multiboard": [
+                { "q": "Vad är {modeName} på {langName}?", "a": "{modeName} är en Wordle-variant med flera rutnät på {langName}. Du löser {boardCount} Wordle-rutnät samtidigt med {maxGuesses} gissningar. Varje gissning skrivs in på alla olösta rutnät." },
+                { "q": "Hur många gissningar får jag i {modeName}?", "a": "Du får {maxGuesses} gissningar för att lösa alla {boardCount} rutnät. När ett rutnät är löst fryser det och du kan fokusera på de kvarvarande." },
+                { "q": "Vilken strategi fungerar bäst för {modeName}?", "a": "Börja med ord med vanliga bokstäver för att samla information från alla {boardCount} rutnät samtidigt. Håll koll på det delade tangentbordet — det visar vilka bokstäver som är korrekta på vilka rutnät." },
+                { "q": "Är {modeName} gratis?", "a": "Ja. {modeName} är helt gratis på alla 80+ språk. Inget konto eller nedladdning. Spela så många rundor du vill." }
+            ]
+        },
+        "howto": [
+            { "name": "Skriv ett ord", "text": "Skriv in ett giltigt ord på 5 bokstäver på {langName} med skärmtangentbordet eller ditt fysiska tangentbord och tryck Enter." },
+            { "name": "Läs ledtrådarna", "text": "Gröna rutor betyder att bokstaven är rätt och på rätt plats. Gult betyder att bokstaven finns i ordet men på fel plats. Grått betyder att bokstaven inte finns i ordet." },
+            { "name": "Lös på 6 försök", "text": "Använd färgledtrådarna för att smala av ordet. Du har 6 gissningar totalt. Efter pusslet ser du din statistik och kan dela resultatet." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Starta ett spel", "text": "Besök wordle.global/{lang}/unlimited för att börja spela Wordle Unlimited på {langName}. Ett slumpmässigt ord på 5 bokstäver väljs åt dig." },
+                { "name": "Gissa ordet", "text": "Skriv ett giltigt ord på 5 bokstäver och tryck Enter. Grön = rätt bokstav, rätt plats. Gul = rätt bokstav, fel plats. Grå = bokstaven finns inte i ordet." },
+                { "name": "Spela igen direkt", "text": "Efter att du löst ordet (eller använt alla 6 försök) trycker du \"Spela igen\" för att direkt få ett nytt ord. Ingen väntan till imorgon." }
+            ],
+            "speed": [
+                { "name": "Starta timern", "text": "Besök wordle.global/{lang}/speed och tryck Starta. Du börjar med 3 minuter på klockan." },
+                { "name": "Lös ord snabbt", "text": "Varje löst ord ger bonustid (+10s till +60s beroende på antal gissningar). Misslyckade ord kostar 30 sekunder." },
+                { "name": "Bygg din kombo", "text": "Lös ord i följd för en kombomultiplikator (upp till 3x). Kombon bryts om du misslyckas. Försök slå ditt rekord." }
+            ],
+            "multiboard": [
+                { "name": "Starta ett spel", "text": "Besök wordle.global/{lang}/{modeName} för att spela {modeName} på {langName}. {boardCount} rutnät visas med olika dolda ord." },
+                { "name": "Gissa på alla rutnät", "text": "Skriv ett ord på 5 bokstäver och tryck Enter. Din gissning visas på alla {boardCount} rutnät. Varje rutnät visar sina egna färgledtrådar (grön, gul, grå)." },
+                { "name": "Lös alla {boardCount} rutnät", "text": "Lösta rutnät fryser. Använd det delade tangentbordet för att följa vilka bokstäver som fungerar på vilka rutnät. Lös alla {boardCount} på {maxGuesses} gissningar för att vinna." }
+            ]
+        }
     }
 }

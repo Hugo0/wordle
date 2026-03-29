@@ -39,6 +39,18 @@
             "quordle": {
                 "title": "Quordle — 4 brett samtidig",
                 "description": "Spill Quordle på norsk. Løs 4 Wordle-brett samtidig med 9 forsøk."
+            },
+            "octordle": {
+                "title": "Octordle — 8 brett samtidig",
+                "description": "Spill Octordle på norsk. Løs 8 Wordle-brett samtidig med 13 forsøk."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 brett samtidig",
+                "description": "Spill Sedecordle på norsk. Løs 16 Wordle-brett samtidig med 21 forsøk."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 brett samtidig",
+                "description": "Spill Duotrigordle på norsk. Løs 32 Wordle-brett samtidig med 37 forsøk."
             }
         }
     },

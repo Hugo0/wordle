@@ -60,6 +60,18 @@
             "quordle": {
                 "title": "Quordle — 4 grilles en même temps",
                 "description": "Jouez au Quordle en français. Résolvez 4 grilles Wordle en même temps en 9 essais."
+            },
+            "octordle": {
+                "title": "Octordle — 8 grilles en même temps",
+                "description": "Jouez au Octordle en français. Résolvez 8 grilles Wordle en même temps en 13 essais."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 grilles en même temps",
+                "description": "Jouez au Sedecordle en français. Résolvez 16 grilles Wordle en même temps en 21 essais."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 grilles en même temps",
+                "description": "Jouez au Duotrigordle en français. Résolvez 32 grilles Wordle en même temps en 37 essais."
             }
         }
     },
@@ -178,5 +190,108 @@
         "pos_adjective": "adjectif",
         "pos_adverb": "adverbe",
         "pos_other": ""
+    },
+    "seo": {
+        "how_to_play": "Comment jouer",
+        "tips_strategy": "Conseils et stratégie",
+        "more_modes": "Plus de modes de jeu",
+        "play_in_languages": "Jouez en 80+ langues",
+        "play_in_languages_sub": "Toutes les langues sont gratuites. Aucun compte nécessaire.",
+        "why_wordle_global": "Pourquoi Wordle Global",
+        "faq_title": "Questions fréquentes",
+        "browse_all_languages": "Découvrir les 80+ langues",
+        "footer": "wordle.global — le jeu de mots quotidien gratuit en 80+ langues",
+        "tile_correct": "est dans le mot et à la bonne place.",
+        "tile_semicorrect": "est dans le mot mais à la mauvaise place.",
+        "tile_incorrect": "n'est pas dans le mot.",
+        "stat_players": "Joueurs",
+        "stat_guesses": "Essais",
+        "stat_languages": "Langues",
+        "stat_modes": "Modes de jeu",
+        "value_props": [
+            { "key": "languages", "title": "80+ langues", "desc": "De l'arabe au yoruba. Le plus grand Wordle multilingue au monde." },
+            { "key": "definitions", "title": "Définitions des mots", "desc": "Découvrez le sens de chaque mot après la partie. Enrichissez votre vocabulaire." },
+            { "key": "word_art", "title": "Illustrations uniques", "desc": "Chaque mot est accompagné d'une illustration originale. Collectionnez-les toutes." },
+            { "key": "themes", "title": "Mode sombre et thèmes", "desc": "Modes clair, sombre et à contraste élevé pour jouer confortablement." },
+            { "key": "pwa", "title": "Fonctionne partout", "desc": "PWA — installez sur n'importe quel appareil. Fonctionne hors ligne. Aucun téléchargement." },
+            { "key": "free", "title": "Gratuit pour toujours", "desc": "Aucun compte. Aucun abonnement. Jouez, tout simplement." }
+        ],
+        "tips": [
+            { "title": "Commencez par un mot riche en voyelles", "text": "Des mots comme CRANE, STARE ou ADIEU testent les lettres courantes rapidement. Connaître les voyelles présentes réduit les possibilités." },
+            { "title": "Utilisez ce que vous savez", "text": "Les lettres vertes restent en place. Les jaunes doivent être déplacées. Les grises sont éliminées. Chaque essai devrait exploiter les trois types d'indices." },
+            { "title": "Pensez aux schémas courants", "text": "Le français a ses propres terminaisons et combinaisons de lettres fréquentes — apprenez à les reconnaître." },
+            { "title": "Éliminez, ne devinez pas au hasard", "text": "Votre deuxième mot devrait tester de nouvelles lettres, pas répéter celles déjà confirmées." },
+            { "title": "Attention aux lettres doubles", "text": "Les mots avec des lettres répétées sont des pièges courants. Si les indices ne collent pas, pensez à une lettre double." },
+            { "title": "Utilisez le mode difficile pour progresser", "text": "Le mode difficile vous oblige à utiliser les indices confirmés à chaque essai. Cela développe de meilleures habitudes." }
+        ],
+        "tips_speed": [
+            { "title": "Commencez par des lettres fréquentes", "text": "Les lettres les plus courantes offrent la meilleure chance de résolution rapide. Chaque seconde compte." },
+            { "title": "Ne réfléchissez pas trop", "text": "Speed Streak récompense l'instinct. Si vous voyez un mot probable, foncez — le bonus combo vaut plus qu'une solution parfaite." },
+            { "title": "Protégez votre combo", "text": "Un mot raté brise le multiplicateur. En cas de doute, faites un essai sûr." },
+            { "title": "Visez une résolution en 2-3 essais", "text": "Le bonus temps est énorme pour les résolutions rapides (+60s avec 1 essai, +30s avec 2)." },
+            { "title": "Apprenez les terminaisons courantes", "text": "Reconnaître instantanément les schémas récurrents fait gagner des secondes à chaque mot." },
+            { "title": "Restez calme sous pression", "text": "Le chrono accélère tous les 3 mots. La précipitation mène aux erreurs. Un rythme régulier bat la panique." }
+        ],
+        "tips_multiboard": [
+            { "title": "Commencez large", "text": "Utilisez des mots avec des lettres courantes pour récolter des indices sur toutes les grilles en même temps." },
+            { "title": "Surveillez le clavier partagé", "text": "Le clavier affiche les couleurs par grille. Une lettre verte sur une grille mais grise sur une autre réduit vite les options." },
+            { "title": "Priorisez les grilles difficiles", "text": "Concentrez vos essais sur la grille avec le plus d'inconnues. Les grilles faciles se résolvent souvent toutes seules." },
+            { "title": "Ne gaspillez pas les premiers essais", "text": "Utilisez les 2-3 premiers pour des mots riches en informations avant de cibler des grilles spécifiques." },
+            { "title": "Cherchez les lettres communes", "text": "Si deux grilles montrent un E jaune, un mot avec E à une nouvelle position aide les deux." },
+            { "title": "Gardez un essai en réserve", "text": "Si vous êtes bloqué sur la dernière grille, un essai supplémentaire fait la différence entre victoire et défaite." }
+        ],
+        "faq": [
+            { "q": "Comment jouer au Wordle en {langName} ?", "a": "Rendez-vous sur wordle.global/{lang} pour jouer au Wordle quotidien en {langName}. Vous avez 6 essais pour deviner un mot de 5 lettres. Après chaque essai, les cases deviennent vertes (bonne lettre, bonne place), jaunes (bonne lettre, mauvaise place) ou grises (la lettre n'est pas dans le mot)." },
+            { "q": "Y a-t-il un nouveau puzzle chaque jour ?", "a": "Oui. Un nouveau mot est choisi chaque jour. Tous les joueurs dans la même langue reçoivent le même mot, pour comparer vos résultats entre amis." },
+            { "q": "Wordle Global est-il gratuit ?", "a": "Oui. Le puzzle quotidien, le mode illimité et tous les modes de jeu sont entièrement gratuits en 80+ langues. Aucun compte ni téléchargement nécessaire." },
+            { "q": "Puis-je jouer plus d'une fois par jour ?", "a": "Oui — essayez le mode illimité sur wordle.global/{lang}/unlimited pour des parties sans fin ni attente. Votre série quotidienne est comptée séparément." }
+        ],
+        "mode_desc_classic": "Vous avez 6 essais pour deviner un mot caché de 5 lettres. Utilisez les indices colorés pour affiner votre réponse.",
+        "mode_desc_unlimited": "Vous avez 6 essais pour deviner un mot caché de 5 lettres. Utilisez les indices colorés pour affiner votre réponse. Après chaque partie, appuyez sur « Rejouer » pour obtenir un nouveau mot instantanément — aucune limite quotidienne.",
+        "mode_desc_speed": "Démarrez avec 3 minutes au chrono. Chaque mot résolu vous donne du temps bonus — résolvez avec moins d'essais pour de plus gros bonus (+60s avec 1 essai, +10s avec 6). Les mots ratés coûtent 30 secondes. Construisez des combos en résolvant des mots consécutifs pour un multiplicateur jusqu'à 3x. La pression monte — le chrono accélère tous les 3 mots.",
+        "mode_desc_multiboard": "{modeName} vous met au défi de résoudre {boardCount} grilles Wordle simultanément avec seulement {maxGuesses} essais. Chaque essai apparaît sur toutes les grilles non résolues. Les grilles résolues se figent. Le clavier partagé indique quelles lettres sont correctes sur quelles grilles. Commencez par des mots à lettres courantes pour récolter des indices sur toutes les grilles.",
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Qu'est-ce que Wordle Unlimited en {langName} ?", "a": "Wordle Unlimited vous permet de jouer autant de parties que vous voulez en {langName}, sans attendre le puzzle de demain. Chaque partie vous propose un nouveau mot aléatoire à deviner en 6 essais." },
+                { "q": "Wordle Unlimited est-il gratuit ?", "a": "Oui. Wordle Unlimited est entièrement gratuit. Aucun compte, aucun téléchargement, aucune publicité pendant le jeu." },
+                { "q": "Le mode illimité compte-t-il pour ma série quotidienne ?", "a": "Non. Le mode illimité a ses propres statistiques séparées. Votre série quotidienne ne dépend que du puzzle du jour." },
+                { "q": "Combien de fois puis-je jouer ?", "a": "Sans limite. Vous pouvez jouer autant de manches que vous le souhaitez. Après chaque partie, appuyez sur « Rejouer » pour un nouveau mot instantané." },
+                { "q": "Dans quelles langues puis-je jouer à Wordle Unlimited ?", "a": "Wordle Unlimited est disponible en plus de 80 langues sur wordle.global, dont le français, l'anglais, l'espagnol, l'allemand, le finnois, l'arabe, l'italien, le portugais et bien d'autres." }
+            ],
+            "speed": [
+                { "q": "Qu'est-ce que Speed Streak en {langName} ?", "a": "Speed Streak est un mode Wordle chronométré en {langName}. Vous démarrez avec 3 minutes et résolvez le plus de mots possible. Résolvez vite pour gagner du temps bonus." },
+                { "q": "Comment fonctionne le score ?", "a": "Vous gagnez des points pour chaque mot résolu. Moins d'essais et des résolutions plus rapides donnent plus de points. Construisez un combo en résolvant des mots consécutifs — jusqu'à un multiplicateur 3x." },
+                { "q": "Que se passe-t-il quand le temps est écoulé ?", "a": "La partie se termine et vous voyez votre score final, les mots résolus, le meilleur combo et la moyenne d'essais. Vous pouvez rejouer immédiatement." },
+                { "q": "Speed Streak est-il gratuit ?", "a": "Oui. Speed Streak est entièrement gratuit dans toutes les 80+ langues. Aucun compte ni téléchargement." }
+            ],
+            "multiboard": [
+                { "q": "Qu'est-ce que {modeName} en {langName} ?", "a": "{modeName} est une variante Wordle multi-grilles en {langName}. Vous résolvez {boardCount} grilles Wordle simultanément avec {maxGuesses} essais. Chaque essai est saisi sur toutes les grilles non résolues." },
+                { "q": "Combien d'essais ai-je dans {modeName} ?", "a": "Vous disposez de {maxGuesses} essais pour résoudre les {boardCount} grilles. Dès qu'une grille est résolue, elle se fige et vous pouvez vous concentrer sur les restantes." },
+                { "q": "Quelle stratégie est la meilleure pour {modeName} ?", "a": "Commencez par des mots à lettres courantes pour récolter des informations sur les {boardCount} grilles en même temps. Surveillez le clavier partagé — il indique quelles lettres sont correctes sur quelles grilles." },
+                { "q": "{modeName} est-il gratuit ?", "a": "Oui. {modeName} est entièrement gratuit dans toutes les 80+ langues. Aucun compte ni téléchargement. Jouez autant de manches que vous voulez." }
+            ]
+        },
+        "howto": [
+            { "name": "Tapez un mot", "text": "Entrez un mot valide de 5 lettres en {langName} avec le clavier à l'écran ou votre clavier physique, puis appuyez sur Entrée." },
+            { "name": "Lisez les indices", "text": "Les cases vertes indiquent que la lettre est correcte et bien placée. Jaune signifie que la lettre est dans le mot mais mal placée. Gris signifie que la lettre n'est pas dans le mot." },
+            { "name": "Résolvez en 6 essais", "text": "Utilisez les indices colorés pour affiner le mot. Vous avez 6 essais au total. Après le puzzle, consultez vos statistiques et partagez votre résultat." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Lancez une partie", "text": "Rendez-vous sur wordle.global/{lang}/unlimited pour commencer Wordle Unlimited en {langName}. Un mot aléatoire de 5 lettres est choisi pour vous." },
+                { "name": "Devinez le mot", "text": "Tapez un mot valide de 5 lettres et appuyez sur Entrée. Vert = bonne lettre, bonne place. Jaune = bonne lettre, mauvaise place. Gris = la lettre n'est pas dans le mot." },
+                { "name": "Rejouez immédiatement", "text": "Après avoir résolu le mot (ou utilisé les 6 essais), appuyez sur « Rejouer » pour un nouveau mot instantané. Pas besoin d'attendre demain." }
+            ],
+            "speed": [
+                { "name": "Lancez le chrono", "text": "Rendez-vous sur wordle.global/{lang}/speed et appuyez sur Démarrer. Vous commencez avec 3 minutes au chrono." },
+                { "name": "Résolvez vite", "text": "Chaque mot résolu donne du temps bonus (+10s à +60s selon le nombre d'essais). Les mots ratés coûtent 30 secondes." },
+                { "name": "Construisez votre combo", "text": "Résolvez des mots consécutifs pour augmenter le multiplicateur combo (jusqu'à 3x). Le combo se brise en cas d'échec. Essayez de battre votre record." }
+            ],
+            "multiboard": [
+                { "name": "Lancez une partie", "text": "Rendez-vous sur wordle.global/{lang}/{modeName} pour jouer à {modeName} en {langName}. {boardCount} grilles apparaissent avec des mots cachés différents." },
+                { "name": "Devinez sur toutes les grilles", "text": "Tapez un mot de 5 lettres et appuyez sur Entrée. Votre essai apparaît sur les {boardCount} grilles. Chaque grille affiche ses propres indices colorés (vert, jaune, gris)." },
+                { "name": "Résolvez les {boardCount} grilles", "text": "Les grilles résolues se figent. Utilisez le clavier partagé pour suivre quelles lettres fonctionnent sur quelles grilles. Résolvez les {boardCount} en {maxGuesses} essais pour gagner." }
+            ]
+        }
     }
 }

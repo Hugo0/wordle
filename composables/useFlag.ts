@@ -4,12 +4,12 @@
  * Language → country is not always 1:1 (e.g., "en" → "gb", "ar" → "sa").
  * This mapping uses the most recognizable/neutral flag for each language,
  * preferring sub-national or ethnic flags where available (e.g., "ca" → "es-ct").
- * For constructed/fictional languages, we return null (no flag).
+ * Constructed/fictional languages use custom icons (Esperanto star, Klingon emblem, etc.).
  */
 
 /** Language code → circle-flags icon code (ISO country, sub-national, or ethnic) */
 const LANG_TO_FLAG: Record<string, string> = {
-    ar: 'sa', // Arabic → Saudi Arabia
+    ar: 'lang-ar', // Arabic → Arabic language flag (lang- prefix avoids collision with Argentina)
     az: 'az', // Azerbaijani
     bg: 'bg', // Bulgarian
     bn: 'bd', // Bengali → Bangladesh
@@ -21,7 +21,7 @@ const LANG_TO_FLAG: Record<string, string> = {
     de: 'de', // German
     el: 'gr', // Greek → Greece
     en: 'gb', // English → UK
-    // eo: Esperanto — no country, skip
+    eo: 'eo', // Esperanto → Esperanto flag
     es: 'es', // Spanish
     et: 'ee', // Estonian → Estonia
     eu: 'es-pv', // Basque → Basque Country
@@ -29,8 +29,8 @@ const LANG_TO_FLAG: Record<string, string> = {
     fi: 'fi', // Finnish
     fo: 'fo', // Faroese → Faroe Islands
     fr: 'fr', // French
-    fur: 'it', // Friulian → Italy
-    fy: 'nl', // Frisian → Netherlands
+    fur: 'it-36', // Friulian → Friuli-Venezia Giulia
+    fy: 'nl-fr', // Frisian → Friesland
     ga: 'ie', // Irish → Ireland
     gd: 'gb-sct', // Scottish Gaelic → Scotland
     gl: 'es-ga', // Galician → Galicia
@@ -41,15 +41,15 @@ const LANG_TO_FLAG: Record<string, string> = {
     hu: 'hu', // Hungarian
     hy: 'am', // Armenian
     hyw: 'am', // Western Armenian
-    // ia: Interlingua — constructed language, no country
+    ia: 'ia', // Interlingua → Interlingua flag
     id: 'id', // Indonesian
-    // ie: Interlingue — constructed language, no country
+    ie: 'lang-ie', // Interlingue → Interlingue flag (lang- prefix avoids collision with Ireland)
     is: 'is', // Icelandic
     it: 'it', // Italian
     ja: 'jp', // Japanese → Japan
     ka: 'ge', // Georgian
     ko: 'kr', // Korean → South Korea
-    la: 'va', // Latin → Vatican
+    la: 'lang-la', // Latin → Latin language flag (lang- prefix avoids collision with Laos)
     lb: 'lu', // Luxembourgish
     lt: 'lt', // Lithuanian
     ltg: 'lv', // Latgalian → Latvia
@@ -57,7 +57,7 @@ const LANG_TO_FLAG: Record<string, string> = {
     mi: 'maori', // Māori → Māori flag
     mk: 'mk', // Macedonian
     mn: 'mn', // Mongolian
-    mr: 'in', // Marathi → India
+    mr: 'lang-mr', // Marathi → Marathi language flag (lang- prefix avoids collision with Mauritania)
     ms: 'my', // Malay → Malaysia
     nb: 'no', // Norwegian Bokmål → Norway
     nds: 'de', // Low German → Germany
@@ -65,11 +65,11 @@ const LANG_TO_FLAG: Record<string, string> = {
     nl: 'nl', // Dutch
     nn: 'no', // Norwegian Nynorsk → Norway
     oc: 'occitania', // Occitan → Occitania
-    pa: 'in', // Punjabi → India
+    pa: 'punjabi', // Punjabi → Khanda symbol on saffron (Wikimedia, PD)
     pau: 'pw', // Palauan → Palau
     pl: 'pl', // Polish
     pt: 'pt', // Portuguese
-    // qya: Quenya (Tolkien) — no country, skip
+    qya: 'quenya', // Quenya → White Tree of Gondor
     ro: 'ro', // Romanian
     ru: 'ru', // Russian
     rw: 'rw', // Kinyarwanda → Rwanda
@@ -81,7 +81,7 @@ const LANG_TO_FLAG: Record<string, string> = {
     sw: 'tz', // Swahili → Tanzania
     tk: 'tm', // Turkmen → Turkmenistan
     tl: 'ph', // Tagalog → Philippines
-    // tlh: Klingon — no country, skip
+    tlh: 'klingon', // Klingon → Klingon Empire emblem
     tr: 'tr', // Turkish
     uk: 'ua', // Ukrainian → Ukraine
     ur: 'pk', // Urdu → Pakistan
@@ -93,7 +93,7 @@ const LANG_TO_FLAG: Record<string, string> = {
 /**
  * Get the flag SVG path for a language code.
  * Returns the path to the circle-flags SVG, or null for languages
- * without a country mapping (constructed languages like Esperanto, Klingon, Quenya).
+ * without a mapping (unknown language codes).
  */
 export function useFlag(langCode: string): string | null {
     const countryCode = LANG_TO_FLAG[langCode];

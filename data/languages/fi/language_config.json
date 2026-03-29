@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 ruudukkoa kerralla",
                 "description": "Pelaa Quordlea suomeksi. Ratkaise 4 Wordle-ruudukkoa kerralla 9 arvauksella."
+            },
+            "octordle": {
+                "title": "Octordle — 8 ruudukkoa kerralla",
+                "description": "Pelaa Octordlea suomeksi. Ratkaise 8 Wordle-ruudukkoa kerralla 13 arvauksella."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 ruudukkoa kerralla",
+                "description": "Pelaa Sedecordlea suomeksi. Ratkaise 16 Wordle-ruudukkoa kerralla 21 arvauksella."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 ruudukkoa kerralla",
+                "description": "Pelaa Duotrigordlea suomeksi. Ratkaise 32 Wordle-ruudukkoa kerralla 37 arvauksella."
             }
         }
     },
@@ -154,5 +166,273 @@
         "e": [
             "é"
         ]
+    },
+    "seo": {
+        "how_to_play": "Kuinka pelata",
+        "tips_strategy": "Vinkit ja strategia",
+        "more_modes": "Lisää pelitiloja",
+        "play_in_languages": "Pelaa yli 80 kielellä",
+        "play_in_languages_sub": "Kaikki kielet ovat ilmaisia. Tiliä ei tarvita.",
+        "why_wordle_global": "Miksi Wordle Global",
+        "faq_title": "Usein kysytyt kysymykset",
+        "browse_all_languages": "Selaa kaikkia 80+ kieltä",
+        "footer": "wordle.global — ilmainen päivittäinen sanapeli yli 80 kielellä",
+        "tile_correct": "on sanassa ja oikealla paikalla.",
+        "tile_semicorrect": "on sanassa mutta väärällä paikalla.",
+        "tile_incorrect": "ei ole sanassa lainkaan.",
+        "stat_players": "Pelaajat",
+        "stat_guesses": "Arvaukset",
+        "stat_languages": "Kielet",
+        "stat_modes": "Pelitilat",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "Yli 80 kieltä",
+                "desc": "Arabiasta joruban kieleen. Maailman laajin monikielinen Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Sanamääritelmät",
+                "desc": "Opi jokaisen sanan merkitys pelin jälkeen. Laajenna sanavarastoasi."
+            },
+            {
+                "key": "word_art",
+                "title": "Ainutlaatuinen sanataide",
+                "desc": "Jokaisella sanalla on oma kuvituksensa. Kerää ne kaikki."
+            },
+            {
+                "key": "themes",
+                "title": "Tumma tila ja teemat",
+                "desc": "Vaalea, tumma ja korkean kontrastin tilat mukavaan pelaamiseen."
+            },
+            {
+                "key": "pwa",
+                "title": "Toimii kaikkialla",
+                "desc": "PWA — asenna mille tahansa laitteelle. Toimii offline-tilassa."
+            },
+            {
+                "key": "free",
+                "title": "Aina ilmainen",
+                "desc": "Ei tiliä tarvita. Ei maksumuureja. Pelaa vain."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Aloita vokaalirikkaalla sanalla",
+                "text": "Sanat kuten ÄÄRET tai AUREI testaavat yleisiä kirjaimia nopeasti. Vokaalien tunteminen rajaa vaihtoehtoja."
+            },
+            {
+                "title": "Käytä tietojasi",
+                "text": "Vihreät kirjaimet pysyvät paikoillaan. Keltaiset on siirrettävä. Harmaat on eliminoitu. Jokaisen arvauksen tulisi hyödyntää kaikkia vihjeitä."
+            },
+            {
+                "title": "Mieti yleisiä kuvioita",
+                "text": "Suomen kielessä on omat yleisimmät kirjainyhdistelmänsä — opi tunnistamaan ne nopeasti."
+            },
+            {
+                "title": "Eliminoi, älä arvaa satunnaisesti",
+                "text": "Toisen arvauksen tulisi testata uusia kirjaimia, ei toistaa jo varmistettuja."
+            },
+            {
+                "title": "Varo kaksoiskirjaimia",
+                "text": "Sanat kuten KUKKA tai PALLO ovat yleisiä ansoja. Jos vihjeet eivät täsmää, harkitse toistuvaa kirjainta."
+            },
+            {
+                "title": "Käytä vaikeaa tilaa kehittyäksesi",
+                "text": "Vaikea tila pakottaa käyttämään varmistettuja vihjeitä joka arvauksessa. Se rakentaa parempia tapoja."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Aloita yleisillä kirjaimilla",
+                "text": "Yleisimmät kirjaimet antavat parhaan mahdollisuuden nopeaan ratkaisuun. Joka sekunti merkitsee."
+            },
+            {
+                "title": "Älä mieti liikaa",
+                "text": "Speed Streak palkitsee vaistoa. Jos näet todennäköisen sanan, valitse se — kombobonus on tärkeämpi kuin täydellinen ratkaisu."
+            },
+            {
+                "title": "Suojele kombosi",
+                "text": "Epäonnistunut sana katkaisee kertoimen. Kun olet epävarma, käytä turvallista arvausta."
+            },
+            {
+                "title": "Tähtää 2-3 arvauksen ratkaisuihin",
+                "text": "Aikabonus on valtava nopeille ratkaisuille (+60s yhdellä arvauksella, +30s kahdella)."
+            },
+            {
+                "title": "Opi yleiset sananloput",
+                "text": "Toistuvat kuviot tunnistamalla säästät sekunteja joka sanassa."
+            },
+            {
+                "title": "Pysy rauhallisena",
+                "text": "Ajastin nopeutuu kolmen sanan välein. Kiirehtiminen johtaa virheisiin. Tasainen tahti voittaa paniikin."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Aloita laajasti",
+                "text": "Käytä yleisiä sanoja kerätäksesi vihjeitä kaikilta tauluilta kerralla."
+            },
+            {
+                "title": "Seuraa jaettua näppäimistöä",
+                "text": "Näppäimistö näyttää värit taululuittain. Yhdellä taululla vihreä mutta toisella harmaa kirjain rajaa vaihtoehtoja nopeasti."
+            },
+            {
+                "title": "Priorisoi vaikeimmat taulut",
+                "text": "Keskity arvauksesi tauluun, jossa on eniten tuntemattomia. Helpommat taulut ratkeavat usein sivussa."
+            },
+            {
+                "title": "Älä tuhlaa ensimmäisiä arvauksia",
+                "text": "Käytä 2-3 ensimmäistä arvausta informaatiorikkaasti ennen kuin tähtäät yksittäisiin tauluihin."
+            },
+            {
+                "title": "Etsi yhteisiä kirjaimia",
+                "text": "Jos kahdella taululla on keltainen E, sana jossa E on uudessa paikassa auttaa molempia."
+            },
+            {
+                "title": "Säästä arvaus hätätilanteisiin",
+                "text": "Jos olet jumissa viimeisellä taululla, ylimääräinen arvaus ratkaisee pelin."
+            }
+        ],
+        "faq": [
+            {
+                "q": "Miten pelaan Wordlea suomeksi?",
+                "a": "Vieraile osoitteessa wordle.global/fi pelataksesi päivittäistä Wordlea suomeksi. Sinulla on 6 yritystä arvata 5-kirjaiminen sana. Jokaisen arvauksen jälkeen ruudut muuttuvat vihreäksi (oikea kirjain, oikea paikka), keltaiseksi (oikea kirjain, väärä paikka) tai harmaaksi (kirjain ei ole sanassa)."
+            },
+            {
+                "q": "Onko joka päivä uusi pulmapeli?",
+                "a": "Kyllä. Uusi sana valitaan joka päivä. Kaikki samaa kieltä pelaavat saavat saman sanan, joten voit vertailla tuloksia ystävien kanssa."
+            },
+            {
+                "q": "Onko Wordle Global ilmainen?",
+                "a": "Kyllä. Päivittäinen pulmapeli, rajoittamaton tila ja kaikki pelitilat ovat täysin ilmaisia yli 80 kielellä. Tiliä tai latausta ei tarvita."
+            },
+            {
+                "q": "Voinko pelata useammin kuin kerran päivässä?",
+                "a": "Kyllä — kokeile rajatonta tilaa osoitteessa wordle.global/fi/unlimited loputtomiin peleihin ilman odottelua. Päivittäinen putki seurataan erikseen."
+            }
+        ],
+        "mode_desc_classic": "Sinulla on 6 yritystä arvata piilotettu 5-kirjaiminen sana. Käytä värivihjeitä vaihtoehtojen rajaamiseen.",
+        "mode_desc_unlimited": "Sinulla on 6 yritystä arvata piilotettu 5-kirjaiminen sana. Käytä värivihjeitä vaihtoehtojen rajaamiseen. Jokaisen pelin jälkeen paina \"Pelaa uudelleen\" saadaksesi uuden sanan heti — päivittäistä rajaa ei ole.",
+        "mode_desc_speed": "Aloita 3 minuutilla kellossa. Jokainen ratkaisemasi sana antaa lisäaikaa — ratkaise vähemmillä arvauksilla saadaksesi suurempia bonuksia (+60s yhdellä arvauksella, +10s kuudella). Epäonnistuneet sanat maksavat 30 sekuntia. Rakenna komboja ratkaisemalla peräkkäisiä sanoja jopa 3x pistekertoimella. Paine kasvaa — ajastin nopeutuu kolmen sanan välein.",
+        "mode_desc_multiboard": "{modeName} haastaa sinut ratkaisemaan {boardCount} Wordle-taulua samanaikaisesti vain {maxGuesses} arvauksella. Jokainen arvaus näkyy kaikilla ratkaisemattomilla tauluilla. Ratkaistut taulut jäätyvät. Jaettu näppäimistö näyttää, mitkä kirjaimet ovat oikein millä tauluilla. Aloita yleisillä sanoilla kerätäksesi vihjeitä kaikilta tauluilta kerralla.",
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Mikä on Wordle Unlimited suomeksi?",
+                    "a": "Wordle Unlimited antaa sinun pelata niin monta Wordle-peliä kuin haluat suomeksi ilman odottelua. Jokainen peli antaa uuden satunnaisen sanan arvattavaksi 6 yrityksellä."
+                },
+                {
+                    "q": "Onko Wordle Unlimited ilmainen?",
+                    "a": "Kyllä. Wordle Unlimited on täysin ilmainen. Ei tiliä, ei latausta, ei mainoksia pelin aikana."
+                },
+                {
+                    "q": "Lasketaanko rajoittamaton tila päivittäiseen putkeen?",
+                    "a": "Ei. Rajoittamattomalla tilalla on omat erilliset tilastonsa. Päivittäinen putkesi vaikuttaa vain päivittäinen pulmapeli."
+                },
+                {
+                    "q": "Kuinka monta kertaa voin pelata?",
+                    "a": "Ei rajaa. Voit pelata niin monta kierrosta kuin haluat. Jokaisen pelin jälkeen paina \"Pelaa uudelleen\" saadaksesi uuden sanan heti."
+                },
+                {
+                    "q": "Millä kielillä voin pelata Wordle Unlimitedia?",
+                    "a": "Wordle Unlimited on saatavilla yli 80 kielellä osoitteessa wordle.global, mukaan lukien suomi, englanti, espanja, saksa, arabia, ranska ja monia muita."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Mikä on Speed Streak suomeksi?",
+                    "a": "Speed Streak on ajastettu Wordle-tila suomeksi. Aloitat 3 minuutilla kellossa ja ratkaiset niin monta sanaa kuin ehdit. Ratkaise sana nopeasti ansaitaksesi lisäaikaa."
+                },
+                {
+                    "q": "Miten pisteytys toimii?",
+                    "a": "Ansaitset pisteitä jokaisesta ratkaistusta sanasta. Vähemmän arvauksia ja nopeammat ratkaisut antavat enemmän pisteitä. Rakenna kombo ratkaisemalla sanoja peräkkäin — jopa 3x kerroin."
+                },
+                {
+                    "q": "Mitä tapahtuu kun aika loppuu?",
+                    "a": "Peli päättyy ja näet lopullisen pisteesi, ratkaistut sanat, parhaan kombon ja keskimääräiset arvaukset. Voit pelata uudelleen heti."
+                },
+                {
+                    "q": "Onko Speed Streak ilmainen?",
+                    "a": "Kyllä. Speed Streak on täysin ilmainen kaikilla yli 80 kielellä. Ei tiliä tai latausta tarvita."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "Mikä on {modeName} suomeksi?",
+                    "a": "{modeName} on monilautainen Wordle-muunnelma suomeksi. Ratkaiset {boardCount} Wordle-taulua samanaikaisesti {maxGuesses} arvauksella. Jokainen arvaus syötetään kaikille ratkaisemattomille tauluille."
+                },
+                {
+                    "q": "Kuinka monta arvausta saan pelissä {modeName}?",
+                    "a": "Saat {maxGuesses} arvausta ratkaistaksesi kaikki {boardCount} taulua. Kun taulu on ratkaistu, se jäätyy ja voit keskittyä jäljellä oleviin."
+                },
+                {
+                    "q": "Mikä strategia toimii parhaiten pelissä {modeName}?",
+                    "a": "Aloita sanoilla, joissa on yleisiä kirjaimia, kerätäksesi tietoa kaikilta {boardCount} taululta kerralla. Seuraa jaettua näppäimistöä — se näyttää mitkä kirjaimet ovat oikein millä tauluilla."
+                },
+                {
+                    "q": "Onko {modeName} ilmainen?",
+                    "a": "Kyllä. {modeName} on täysin ilmainen kaikilla yli 80 kielellä. Ei tiliä tai latausta tarvita. Pelaa niin monta kierrosta kuin haluat."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Kirjoita sana",
+                "text": "Syötä kelvollinen 5-kirjaiminen sana suomeksi näyttönäppäimistöllä tai fyysisellä näppäimistöllä ja paina Enter."
+            },
+            {
+                "name": "Lue vihjeet",
+                "text": "Vihreät ruudut tarkoittavat, että kirjain on oikea ja oikealla paikalla. Keltainen tarkoittaa, että kirjain on sanassa mutta väärällä paikalla. Harmaa tarkoittaa, että kirjain ei ole sanassa."
+            },
+            {
+                "name": "Ratkaise 6 yrityksellä",
+                "text": "Käytä värivihjeitä sanan rajaamiseen. Sinulla on 6 arvausta yhteensä. Pulmapelin jälkeen näet tilastosi ja voit jakaa tuloksesi."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Aloita peli",
+                    "text": "Vieraile osoitteessa wordle.global/fi/unlimited aloittaaksesi Wordle Unlimitedin suomeksi. Satunnainen 5-kirjaiminen sana valitaan sinulle."
+                },
+                {
+                    "name": "Arvaa sana",
+                    "text": "Kirjoita kelvollinen 5-kirjaiminen sana ja paina Enter. Vihreät ruudut = oikea kirjain oikealla paikalla. Keltainen = oikea kirjain väärällä paikalla. Harmaa = kirjain ei ole sanassa."
+                },
+                {
+                    "name": "Pelaa uudelleen heti",
+                    "text": "Sanan ratkaisemisen (tai kaikkien 6 arvauksen käyttämisen) jälkeen paina \"Pelaa uudelleen\" saadaksesi uuden sanan heti. Ei odottelua huomiseen."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Käynnistä ajastin",
+                    "text": "Vieraile osoitteessa wordle.global/fi/speed ja paina Aloita. Aloitat 3 minuutilla kellossa."
+                },
+                {
+                    "name": "Ratkaise sanoja nopeasti",
+                    "text": "Jokainen ratkaisemasi sana antaa lisäaikaa (+10s - +60s riippuen arvausten määrästä). Epäonnistuneet sanat maksavat 30 sekuntia."
+                },
+                {
+                    "name": "Rakenna kombosi",
+                    "text": "Ratkaise sanoja peräkkäin rakentaaksesi kombokertoimen (jopa 3x). Kombo katkeaa jos epäonnistut. Yritä voittaa ennätyksesi."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Aloita peli",
+                    "text": "Vieraile osoitteessa wordle.global/fi/{modeName} pelataksesi {modeName}a suomeksi. {boardCount} taulua ilmestyy eri piilotettuine sanoineen."
+                },
+                {
+                    "name": "Arvaa kaikilla tauluilla",
+                    "text": "Kirjoita 5-kirjaiminen sana ja paina Enter. Arvauksesi näkyy kaikilla {boardCount} taululla. Jokainen taulu näyttää omat värivihjeensä."
+                },
+                {
+                    "name": "Ratkaise kaikki {boardCount} taulua",
+                    "text": "Ratkaistut taulut jäätyvät. Käytä jaettua näppäimistöä seurataksesi mitkä kirjaimet toimivat millä tauluilla. Ratkaise kaikki {boardCount} taulua {maxGuesses} arvauksella voittaaksesi."
+                }
+            ]
+        }
     }
 }

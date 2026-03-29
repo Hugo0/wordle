@@ -121,6 +121,18 @@ Keyboard layouts are in `data/languages/{lang}/keyboard.json`.
 
 UI text is in `data/languages/{lang}/language_config.json`. Please ensure translations are natural and accurate (not machine-translated).
 
+### SEO Content (`seo` block)
+
+All SEO content (FAQ, HowTo, tips, value props, section headings) lives in the `seo` section of each language's `language_config.json`. English defaults are in `data/default_language_config.json`.
+
+**Contract for translators:**
+- Provide the **full `seo` block** when translating — the data loader does a shallow merge, so a partial `seo` override replaces the entire object and loses unspecified keys.
+- Placeholders are interpolated at runtime: `{langName}`, `{lang}`, `{modeName}`, `{boardCount}`, `{maxGuesses}`. Keep them as-is in translations.
+- Mode-specific content uses `mode_*` keys. Multi-board modes (dordle through duotrigordle) share the `multiboard` key.
+- `faq` is the default (classic mode). `mode_faq.unlimited`, `mode_faq.speed`, `mode_faq.multiboard` override per mode.
+- Same pattern for `howto` / `mode_howto` and `tips` / `tips_speed` / `tips_multiboard`.
+- Currently translated: `en` (defaults), `fi`, `ar`, `de`. All other languages fall back to English.
+
 ### Adding a New Language
 
 1. Create folder: `data/languages/{lang_code}/`

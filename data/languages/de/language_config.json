@@ -42,6 +42,18 @@
             "quordle": {
                 "title": "Quordle — 4 Raster gleichzeitig",
                 "description": "Spiele Quordle auf Deutsch. Löse 4 Wordle-Raster gleichzeitig mit 9 Versuchen."
+            },
+            "octordle": {
+                "title": "Octordle — 8 Raster gleichzeitig",
+                "description": "Spiele Octordle auf Deutsch. Löse 8 Wordle-Raster gleichzeitig mit 13 Versuchen."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 Raster gleichzeitig",
+                "description": "Spiele Sedecordle auf Deutsch. Löse 16 Wordle-Raster gleichzeitig mit 21 Versuchen."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 Raster gleichzeitig",
+                "description": "Spiele Duotrigordle auf Deutsch. Löse 32 Wordle-Raster gleichzeitig mit 37 Versuchen."
             }
         }
     },
@@ -155,5 +167,273 @@
         "pos_adjective": "Adjektiv",
         "pos_adverb": "Adverb",
         "pos_other": ""
+    },
+    "seo": {
+        "how_to_play": "So wird gespielt",
+        "tips_strategy": "Tipps & Strategie",
+        "more_modes": "Weitere Spielmodi",
+        "play_in_languages": "In über 80 Sprachen spielen",
+        "play_in_languages_sub": "Alle Sprachen sind kostenlos. Kein Konto nötig.",
+        "why_wordle_global": "Warum Wordle Global",
+        "faq_title": "Häufig gestellte Fragen",
+        "browse_all_languages": "Alle 80+ Sprachen entdecken",
+        "footer": "wordle.global — das kostenlose tägliche Wortspiel in über 80 Sprachen",
+        "tile_correct": "ist im Wort und an der richtigen Stelle.",
+        "tile_semicorrect": "ist im Wort, aber an der falschen Stelle.",
+        "tile_incorrect": "kommt im Wort gar nicht vor.",
+        "stat_players": "Spieler",
+        "stat_guesses": "Versuche",
+        "stat_languages": "Sprachen",
+        "stat_modes": "Spielmodi",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ Sprachen",
+                "desc": "Von Arabisch bis Yoruba. Das größte mehrsprachige Wordle der Welt."
+            },
+            {
+                "key": "definitions",
+                "title": "Wortdefinitionen",
+                "desc": "Erfahre die Bedeutung jedes Wortes nach dem Spiel. Erweitere deinen Wortschatz."
+            },
+            {
+                "key": "word_art",
+                "title": "Einzigartige Wortkunst",
+                "desc": "Jedes Wort kommt mit einer individuellen Illustration. Sammle sie alle."
+            },
+            {
+                "key": "themes",
+                "title": "Dunkler Modus & Designs",
+                "desc": "Heller, dunkler und kontrastreicher Modus für angenehmes Spielen."
+            },
+            {
+                "key": "pwa",
+                "title": "Funktioniert überall",
+                "desc": "PWA — auf jedem Gerät installierbar. Funktioniert offline. Kein Download nötig."
+            },
+            {
+                "key": "free",
+                "title": "Für immer kostenlos",
+                "desc": "Kein Konto nötig. Keine Paywall. Einfach spielen."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Beginne mit einem vokalreichen Wort",
+                "text": "Wörter wie STERN oder REISE testen häufige Buchstaben schnell. Das Wissen um vorhandene Vokale grenzt die Optionen ein."
+            },
+            {
+                "title": "Nutze dein Wissen",
+                "text": "Grüne Buchstaben bleiben fixiert. Gelbe müssen verschoben werden. Graue sind ausgeschlossen. Jeder Versuch sollte alle drei Hinweise nutzen."
+            },
+            {
+                "title": "Denke an häufige Muster",
+                "text": "Deutsche Wörter haben typische Endungen und Buchstabenkombinationen — lerne sie erkennen."
+            },
+            {
+                "title": "Eliminiere, statt zufällig zu raten",
+                "text": "Dein zweites Wort sollte neue Buchstaben testen, nicht bereits bestätigte wiederholen."
+            },
+            {
+                "title": "Achte auf Doppelbuchstaben",
+                "text": "Wörter wie KASSE oder PUPPE sind häufige Fallen. Wenn die Hinweise nicht passen, denke an einen doppelten Buchstaben."
+            },
+            {
+                "title": "Nutze den schweren Modus zum Üben",
+                "text": "Der schwere Modus zwingt dich, bestätigte Hinweise in jedem Versuch zu verwenden. Das baut bessere Gewohnheiten auf."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Beginne mit häufigen Buchstaben",
+                "text": "Hochfrequente Buchstaben geben dir die beste Chance auf ein schnelles Lösen. Jede Sekunde zählt."
+            },
+            {
+                "title": "Denk nicht zu lange nach",
+                "text": "Speed Streak belohnt Intuition. Wenn du ein wahrscheinliches Wort siehst, nimm es — der Kombo-Bonus wiegt mehr als die perfekte Lösung."
+            },
+            {
+                "title": "Schütze deine Kombo",
+                "text": "Ein gescheitertes Wort bricht den Multiplikator. Im Zweifel lieber einen sicheren Versuch machen."
+            },
+            {
+                "title": "Ziele auf 2-3 Versuchs-Lösungen",
+                "text": "Der Zeitbonus ist enorm bei schnellen Lösungen (+60s bei einem Versuch, +30s bei zwei)."
+            },
+            {
+                "title": "Lerne häufige Wortendungen",
+                "text": "Wiederkehrende Muster sofort zu erkennen spart Sekunden pro Wort."
+            },
+            {
+                "title": "Bleib ruhig unter Druck",
+                "text": "Der Timer wird alle 3 Wörter schneller. Hektik führt zu Fehlern. Gleichmäßiges Tempo schlägt Panik."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Starte breit",
+                "text": "Verwende Wörter mit häufigen Buchstaben, um Hinweise auf allen Brettern gleichzeitig zu sammeln."
+            },
+            {
+                "title": "Beobachte die geteilte Tastatur",
+                "text": "Die Tastatur zeigt Farben pro Brett. Ein Buchstabe grün auf einem Brett aber grau auf einem anderen grenzt schnell ein."
+            },
+            {
+                "title": "Priorisiere schwierige Bretter",
+                "text": "Konzentriere deine Versuche auf das Brett mit den meisten Unbekannten. Leichtere Bretter lösen sich oft nebenbei."
+            },
+            {
+                "title": "Verschwende keine frühen Versuche",
+                "text": "Nutze die ersten 2-3 für informationsreiche Wörter, bevor du gezielt einzelne Bretter angehst."
+            },
+            {
+                "title": "Suche nach gemeinsamen Buchstaben",
+                "text": "Wenn zwei Bretter ein gelbes E zeigen, hilft ein Wort mit E an neuer Position beiden gleichzeitig."
+            },
+            {
+                "title": "Spare einen Versuch für Notfälle",
+                "text": "Wenn du am letzten Brett festhängst, macht ein Extra-Versuch den Unterschied zwischen Sieg und Niederlage."
+            }
+        ],
+        "faq": [
+            {
+                "q": "Wie spiele ich Wordle auf Deutsch?",
+                "a": "Besuche wordle.global/de um das tägliche Wordle auf Deutsch zu spielen. Du hast 6 Versuche, ein 5-Buchstaben-Wort zu erraten. Nach jedem Versuch werden die Kacheln grün (richtiger Buchstabe, richtige Stelle), gelb (richtiger Buchstabe, falsche Stelle) oder grau (Buchstabe nicht im Wort)."
+            },
+            {
+                "q": "Gibt es jeden Tag ein neues Rätsel?",
+                "a": "Ja. Jeden Tag wird ein neues Wort gewählt. Alle Spieler in derselben Sprache bekommen das gleiche Wort, sodass du Ergebnisse mit Freunden vergleichen kannst."
+            },
+            {
+                "q": "Ist Wordle Global kostenlos?",
+                "a": "Ja. Das Tagesrätsel, der unbegrenzte Modus und alle Spielmodi sind komplett kostenlos in über 80 Sprachen. Kein Konto oder Download nötig."
+            },
+            {
+                "q": "Kann ich öfter als einmal am Tag spielen?",
+                "a": "Ja — probiere den unbegrenzten Modus unter wordle.global/de/unlimited für endlose Spiele ohne Wartezeit. Deine tägliche Siegesserie wird separat gezählt."
+            }
+        ],
+        "mode_desc_classic": "Du hast 6 Versuche, ein verstecktes 5-Buchstaben-Wort zu erraten. Nutze die Farbhinweise, um die Antwort einzugrenzen.",
+        "mode_desc_unlimited": "Du hast 6 Versuche, ein verstecktes 5-Buchstaben-Wort zu erraten. Nutze die Farbhinweise, um die Antwort einzugrenzen. Nach jedem Spiel drücke \"Nochmal spielen\" für sofort ein neues Wort — kein Tageslimit.",
+        "mode_desc_speed": "Starte mit 3 Minuten auf der Uhr. Jedes gelöste Wort gibt Bonuszeit — löse mit weniger Versuchen für größere Boni (+60s bei einem Versuch, +10s bei sechs). Gescheiterte Wörter kosten 30 Sekunden. Baue Kombos auf, indem du aufeinanderfolgende Wörter für bis zu 3x Punktemultiplikator löst. Der Druck steigt — der Timer wird alle 3 Wörter schneller.",
+        "mode_desc_multiboard": "{modeName} fordert dich heraus, {boardCount} Wordle-Bretter gleichzeitig mit nur {maxGuesses} Versuchen zu lösen. Jeder Versuch erscheint auf allen ungelösten Brettern. Gelöste Bretter frieren ein. Die geteilte Tastatur zeigt, welche Buchstaben auf welchen Brettern korrekt sind. Starte mit Wörtern mit häufigen Buchstaben, um Hinweise von allen Brettern gleichzeitig zu sammeln.",
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Was ist Wordle Unlimited auf Deutsch?",
+                    "a": "Wordle Unlimited lässt dich so viele Wordle-Spiele spielen wie du willst, ohne auf das tägliche Rätsel von morgen zu warten. Jedes Spiel gibt dir ein neues zufälliges Wort zum Erraten in 6 Versuchen."
+                },
+                {
+                    "q": "Ist Wordle Unlimited kostenlos?",
+                    "a": "Ja. Wordle Unlimited ist komplett kostenlos. Kein Konto, kein Download, keine Werbung während des Spiels."
+                },
+                {
+                    "q": "Zählt der unbegrenzte Modus für meine tägliche Siegesserie?",
+                    "a": "Nein. Der unbegrenzte Modus hat eigene separate Statistiken. Deine tägliche Siegesserie wird nur vom Tagesrätsel beeinflusst."
+                },
+                {
+                    "q": "Wie oft kann ich spielen?",
+                    "a": "Es gibt kein Limit. Du kannst so viele Runden spielen wie du willst. Nach jedem Spiel drücke \"Nochmal spielen\" für sofort ein neues Wort."
+                },
+                {
+                    "q": "In welchen Sprachen kann ich Wordle Unlimited spielen?",
+                    "a": "Wordle Unlimited ist in über 80 Sprachen auf wordle.global verfügbar, darunter Deutsch, Englisch, Spanisch, Finnisch, Arabisch, Französisch, Italienisch, Portugiesisch und viele mehr."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Was ist Speed Streak auf Deutsch?",
+                    "a": "Speed Streak ist ein zeitgesteuerter Wordle-Modus auf Deutsch. Du startest mit 3 Minuten auf der Uhr und löst so viele Wörter wie möglich. Löse ein Wort schnell, um Bonuszeit zu verdienen."
+                },
+                {
+                    "q": "Wie funktioniert die Wertung?",
+                    "a": "Du verdienst Punkte für jedes gelöste Wort. Weniger Versuche und schnellere Lösungen geben mehr Punkte. Baue ein Kombo auf, indem du Wörter nacheinander löst — bis zu 3x Multiplikator."
+                },
+                {
+                    "q": "Was passiert, wenn die Zeit abläuft?",
+                    "a": "Das Spiel endet und du siehst deine Endpunktzahl, gelöste Wörter, bestes Kombo und durchschnittliche Versuche. Du kannst sofort wieder spielen."
+                },
+                {
+                    "q": "Ist Speed Streak kostenlos?",
+                    "a": "Ja. Speed Streak ist komplett kostenlos in allen 80+ Sprachen. Kein Konto oder Download nötig."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "Was ist {modeName} auf Deutsch?",
+                    "a": "{modeName} ist eine Mehrbrett-Wordle-Variante auf Deutsch. Du löst {boardCount} Wordle-Bretter gleichzeitig mit {maxGuesses} Versuchen. Jeder Versuch wird auf allen ungelösten Brettern eingegeben."
+                },
+                {
+                    "q": "Wie viele Versuche bekomme ich bei {modeName}?",
+                    "a": "Du bekommst {maxGuesses} Versuche, um alle {boardCount} Bretter zu lösen. Sobald ein Brett gelöst ist, friert es ein und du kannst dich auf die verbleibenden konzentrieren."
+                },
+                {
+                    "q": "Welche Strategie funktioniert am besten für {modeName}?",
+                    "a": "Starte mit Wörtern mit häufigen Buchstaben, um Informationen auf allen {boardCount} Brettern gleichzeitig zu sammeln. Achte auf die geteilte Tastatur — sie zeigt, welche Buchstaben auf welchen Brettern korrekt sind."
+                },
+                {
+                    "q": "Ist {modeName} kostenlos?",
+                    "a": "Ja. {modeName} ist komplett kostenlos in allen 80+ Sprachen. Kein Konto oder Download nötig. Spiele so viele Runden wie du willst."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Tippe ein Wort",
+                "text": "Gib ein gültiges 5-Buchstaben-Wort auf Deutsch über die Bildschirmtastatur oder deine physische Tastatur ein und drücke Enter."
+            },
+            {
+                "name": "Lies die Hinweise",
+                "text": "Grüne Kacheln bedeuten, der Buchstabe ist korrekt und an der richtigen Stelle. Gelb bedeutet, der Buchstabe ist im Wort, aber an der falschen Stelle. Grau bedeutet, der Buchstabe ist nicht im Wort."
+            },
+            {
+                "name": "Löse in 6 Versuchen",
+                "text": "Nutze die Farbhinweise, um das Wort einzugrenzen. Du hast insgesamt 6 Versuche. Nach dem Rätsel siehst du deine Statistiken und kannst dein Ergebnis teilen."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Starte ein Spiel",
+                    "text": "Besuche wordle.global/de/unlimited, um Wordle Unlimited auf Deutsch zu starten. Ein zufälliges 5-Buchstaben-Wort wird für dich gewählt."
+                },
+                {
+                    "name": "Rate das Wort",
+                    "text": "Tippe ein gültiges 5-Buchstaben-Wort und drücke Enter. Grün = richtiger Buchstabe, richtige Stelle. Gelb = richtiger Buchstabe, falsche Stelle. Grau = Buchstabe nicht im Wort."
+                },
+                {
+                    "name": "Spiele sofort nochmal",
+                    "text": "Nach dem Lösen des Wortes (oder Verwenden aller 6 Versuche) drücke \"Nochmal spielen\" für sofort ein neues Wort. Kein Warten auf morgen."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Starte den Timer",
+                    "text": "Besuche wordle.global/de/speed und drücke Start. Du beginnst mit 3 Minuten auf der Uhr."
+                },
+                {
+                    "name": "Löse Wörter schnell",
+                    "text": "Jedes gelöste Wort gibt Bonuszeit (+10s bis +60s je nach Anzahl der Versuche). Gescheiterte Wörter kosten 30 Sekunden."
+                },
+                {
+                    "name": "Baue dein Kombo auf",
+                    "text": "Löse aufeinanderfolgende Wörter für einen Kombo-Multiplikator (bis zu 3x). Das Kombo bricht, wenn du scheiterst. Versuche deinen Highscore zu schlagen."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Starte ein Spiel",
+                    "text": "Besuche wordle.global/de/{modeName}, um {modeName} auf Deutsch zu spielen. {boardCount} Bretter erscheinen mit verschiedenen versteckten Wörtern."
+                },
+                {
+                    "name": "Rate auf allen Brettern",
+                    "text": "Tippe ein 5-Buchstaben-Wort und drücke Enter. Dein Versuch erscheint auf allen {boardCount} Brettern. Jedes Brett zeigt eigene Farbhinweise."
+                },
+                {
+                    "name": "Löse alle {boardCount} Bretter",
+                    "text": "Gelöste Bretter frieren ein. Nutze die geteilte Tastatur, um zu verfolgen, welche Buchstaben auf welchen Brettern funktionieren. Löse alle {boardCount} in {maxGuesses} Versuchen, um zu gewinnen."
+                }
+            ]
+        }
     }
 }

@@ -32,6 +32,7 @@
                                 :src="flagSrc"
                                 :alt="languageName"
                                 class="flag-icon flag-icon-sm"
+                                @error="($event.target as HTMLImageElement).style.display = 'none'"
                             />
                             <span class="text-sm font-semibold text-ink">{{ languageName }}</span>
                             <ChevronDown :size="14" class="text-muted" />

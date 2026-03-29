@@ -2,19 +2,37 @@
  * Unified SEO composable for ALL game pages (daily, unlimited, speed, dordle, quordle, etc.).
  *
  * Handles: useSeoMeta, useHead (htmlAttrs, canonical, JSON-LD), hreflang.
- * Replaces the old useGameModeSeo + inline SEO in the daily page.
  *
- * For non-game pages (homepage, stats, word archive), SEO is handled inline
- * because they have fundamentally different schemas and content.
+ * All FAQ, HowTo, and content comes from config.seo (language_config.json).
+ * Placeholders ({langName}, {lang}, {modeName}, {boardCount}, {maxGuesses})
+ * are interpolated at runtime.
  */
 
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
-import type { LanguageConfig } from '~/utils/types';
-import { getModeSeoContent } from '~/utils/seo-content';
-import type { FaqItem, HowToStep } from '~/utils/seo-content';
+import type { LanguageConfig, SeoFaqItem, SeoHowToStep } from '~/utils/types';
 
 const VALID_SHARE_RESULTS = ['1', '2', '3', '4', '5', '6', 'x'];
+
+// Modes that have per-language OG images in public/images/modes/{mode}/
+const MODES_WITH_PER_LANG_OG = new Set([
+    'dordle',
+    'tridle',
+    'quordle',
+    'octordle',
+    'sedecordle',
+    'duotrigordle',
+    'unlimited',
+    'speed',
+]);
+
+export interface FaqItem {
+    question: string;
+    answer: string;
+}
+
+/** Re-export SeoHowToStep shape as HowToStep for public API */
+export type HowToStep = SeoHowToStep;
 
 export interface GameSeoOptions {
     lang: string;
@@ -38,6 +56,33 @@ export interface GameSeoResult {
     howToSteps: HowToStep[];
 }
 
+/**
+ * Interpolate placeholders in a string.
+ * Supports: {langName}, {lang}, {modeName}, {boardCount}, {maxGuesses}
+ */
+export function interpolate(text: string, vars: Record<string, string | number>): string {
+    return text.replace(/\{(\w+)\}/g, (_, key) =>
+        vars[key] !== undefined ? String(vars[key]) : `{${key}}`
+    );
+}
+
+function interpolateFaq(items: SeoFaqItem[], vars: Record<string, string | number>): FaqItem[] {
+    return items.map((item) => ({
+        question: interpolate(item.q, vars),
+        answer: interpolate(item.a, vars),
+    }));
+}
+
+function interpolateHowTo(
+    items: SeoHowToStep[],
+    vars: Record<string, string | number>
+): HowToStep[] {
+    return items.map((item) => ({
+        name: interpolate(item.name, vars),
+        text: interpolate(item.text, vars),
+    }));
+}
+
 export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
     const { lang, mode, config, langStore } = opts;
     const isClassic = mode === 'classic';
@@ -47,13 +92,21 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
     const langNative = config.name_native || langName;
     const wordleBase = `Wordle ${langNative}`;
 
+    // Interpolation variables available to all SEO content
+    const vars: Record<string, string | number> = {
+        langName,
+        lang,
+        modeName: modeDef.label,
+        boardCount: modeDef.boardCount,
+        maxGuesses: modeDef.maxGuesses,
+    };
+
     // -------------------------------------------------------------------------
     // Title
     // -------------------------------------------------------------------------
     let title: string;
 
     if (isClassic) {
-        // Daily page: use config.meta.title (translated page title)
         const wordleNative = config.meta?.wordle_native || '';
         const wordleShort = wordleNative ? `${wordleBase} (${wordleNative})` : wordleBase;
         const metaTitle = (config.meta?.title || 'The daily word game').trim();
@@ -64,7 +117,6 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
             : `${wordleShort} — ${metaTitle}`;
         if (title.length > 60) title = wordleShort;
     } else {
-        // Mode pages: use config.meta.modes[mode].title
         const modeTitle = config.meta?.modes?.[mode]?.title;
         title = modeTitle ? `${wordleBase} — ${modeTitle}` : `${wordleBase} — ${modeDef.label}`;
         if (title.length > 60) title = `${wordleBase} — ${modeDef.label}`;
@@ -108,18 +160,6 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
 
     let ogImageUrl: string;
 
-    // Modes that have per-language OG images in public/images/modes/{mode}/
-    const MODES_WITH_PER_LANG_OG = new Set([
-        'dordle',
-        'tridle',
-        'quordle',
-        'octordle',
-        'sedecordle',
-        'duotrigordle',
-        'unlimited',
-        'speed',
-    ]);
-
     if (isShareLink) {
         const configText = config.text || ({} as Record<string, string>);
         if (shareResult === 'x') {
@@ -138,7 +178,6 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
     } else if (MODES_WITH_PER_LANG_OG.has(mode)) {
         ogImageUrl = `https://wordle.global/images/modes/${mode}/${lang}.png`;
     } else {
-        // Fallback to generic mode OG image (or main OG if none exists)
         ogImageUrl = `https://wordle.global/images/og-${mode}.png`;
     }
 
@@ -149,14 +188,19 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
     const canonicalUrl = `https://wordle.global/${lang}${pathSuffix}`;
 
     // -------------------------------------------------------------------------
-    // FAQ & HowTo (auto-generated from templates)
+    // FAQ & HowTo from config.seo (single source of truth)
     // -------------------------------------------------------------------------
-    const { faq, howToSteps } = getModeSeoContent(mode, {
-        langName,
-        lang,
-        boardCount: modeDef.boardCount,
-        maxGuesses: modeDef.maxGuesses,
-    });
+    const seo = config.seo;
+
+    // FAQ: mode-specific → multiboard template (for boardCount > 1) → generic default
+    const isMultiBoard = modeDef.boardCount > 1;
+    const faqKey = isMultiBoard ? 'multiboard' : mode;
+    const rawFaq = seo?.mode_faq?.[mode] ?? seo?.mode_faq?.[faqKey] ?? seo?.faq ?? [];
+    const faq = interpolateFaq(rawFaq, vars);
+
+    // HowTo: same lookup chain
+    const rawHowTo = seo?.mode_howto?.[mode] ?? seo?.mode_howto?.[faqKey] ?? seo?.howto ?? [];
+    const howToSteps = interpolateHowTo(rawHowTo, vars);
 
     // -------------------------------------------------------------------------
     // Meta tags
@@ -198,7 +242,7 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         },
     ];
 
-    // Breadcrumb: 2 levels for classic, 3 for modes
+    // Breadcrumb
     const breadcrumbItems = [
         {
             '@type': 'ListItem',

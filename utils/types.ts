@@ -11,6 +11,83 @@ export interface LanguageModeMeta {
     description?: string;
 }
 
+export interface SeoFaqItem {
+    q: string;
+    a: string;
+}
+
+export interface SeoTip {
+    title: string;
+    text: string;
+}
+
+export interface SeoHowToStep {
+    name: string;
+    text: string;
+}
+
+export interface SeoValueProp {
+    key: string;
+    title: string;
+    desc: string;
+}
+
+/**
+ * Translatable SEO content for the below-game noscript section.
+ *
+ * All text supports placeholders: {langName}, {lang}, {modeName}, {boardCount}, {maxGuesses}.
+ * These are interpolated at runtime by useGameSeo.
+ *
+ * When translating: provide the FULL seo block (shallow merge replaces the entire object).
+ * Mode-specific content uses `mode_*` keys with a "multiboard" key shared by all multi-board modes.
+ */
+export interface LanguageSeo {
+    // Section headings
+    how_to_play?: string;
+    tips_strategy?: string;
+    more_modes?: string;
+    play_in_languages?: string;
+    play_in_languages_sub?: string;
+    why_wordle_global?: string;
+    faq_title?: string;
+    browse_all_languages?: string;
+    footer?: string;
+
+    // Tile example descriptions (how-to)
+    tile_correct?: string;
+    tile_semicorrect?: string;
+    tile_incorrect?: string;
+
+    // Social proof stat labels
+    stat_players?: string;
+    stat_guesses?: string;
+    stat_languages?: string;
+    stat_modes?: string;
+
+    // Value propositions
+    value_props?: SeoValueProp[];
+
+    // Mode description paragraphs (shown in how-to section)
+    mode_desc_classic?: string;
+    mode_desc_unlimited?: string;
+    mode_desc_speed?: string;
+    mode_desc_multiboard?: string;
+
+    // FAQ — default (classic) and mode-specific overrides
+    faq?: SeoFaqItem[];
+    mode_faq?: Record<string, SeoFaqItem[]>;
+
+    // HowTo steps — default (classic) and mode-specific overrides (used in JSON-LD)
+    howto?: SeoHowToStep[];
+    mode_howto?: Record<string, SeoHowToStep[]>;
+
+    // Strategy tips — default (classic) and mode-specific variants
+    tips?: SeoTip[];
+    tips_speed?: SeoTip[];
+    tips_multiboard?: SeoTip[];
+    mode_tips?: Record<string, SeoTip[]>;
+}
+
 export interface LanguageMeta {
     locale: string;
     title: string;
@@ -144,6 +221,7 @@ export interface LanguageConfig {
     text: LanguageText;
     help: LanguageHelp;
     ui?: UiStrings;
+    seo?: LanguageSeo;
     /** Optional diacritic normalization map. Maps base characters to their diacritic variants. */
     diacritic_map?: Record<string, string[]>;
     /** Optional final form map for positional character variants. */

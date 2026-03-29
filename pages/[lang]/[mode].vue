@@ -68,5 +68,5 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(mode, wordList, modeDe
         <GameMultiBoardLayout ref="multiBoardRef" />
     </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" :mode="mode" :seo="seo" />
+    <GameSeoNoscript :lang="lang" :mode="mode" :seo="seo" :config="config!" />
 </template>
