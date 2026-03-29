@@ -1,0 +1,37 @@
+name: Submit URLs to IndexNow
+
+# Run after merge to main (post-deploy)
+on:
+  push:
+    branches: [main]
+    paths:
+      # Only trigger when SEO-relevant files change
+      - 'pages/**'
+      - 'components/game/SeoNoscript.vue'
+      - 'composables/useGameSeo.ts'
+      - 'data/languages/*/language_config.json'
+      - 'server/routes/sitemap-main.xml.ts'
+      - 'public/llms.txt'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  submit:
+    name: IndexNow Submission
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Submit to IndexNow
+        run: ./scripts/submit-indexnow.sh
+
+      - name: Ping Google sitemap
+        run: |
+          echo "Pinging Google with updated sitemap..."
+          curl -s "https://www.google.com/ping?sitemap=https://wordle.global/sitemap.xml"
+          echo ""
+          echo "Pinging Bing with updated sitemap..."
+          curl -s "https://www.bing.com/ping?sitemap=https://wordle.global/sitemap.xml"
+          echo "Done."
