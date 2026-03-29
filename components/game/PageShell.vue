@@ -229,16 +229,10 @@ watch(
 
 function onHelp() {
     game.showHelpModal = !game.showHelpModal;
-    if (game.showHelpModal) {
-        analytics.trackHelpOpen(langStore.languageCode);
-    }
 }
 
 function onStats() {
     game.showStatsModal = !game.showStatsModal;
-    if (game.showStatsModal) {
-        analytics.trackStatsOpen(langStore.languageCode, 'manual');
-    }
 }
 
 const maxWidthClass = computed(() => {

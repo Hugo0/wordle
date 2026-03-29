@@ -628,10 +628,18 @@ function openLink(url: string): void {
                         :src="getFlag(language.language_code)!"
                         :alt="language.language_name"
                         class="flag-icon"
+                        @error="
+                            ($event.target as HTMLImageElement).style.display = 'none';
+                            (
+                                $event.target as HTMLImageElement
+                            ).nextElementSibling?.classList.remove('hidden');
+                        "
                     />
                     <div
-                        v-else
-                        class="flag-icon bg-paper-warm border border-rule flex items-center justify-center text-ink text-[11px] font-display font-bold"
+                        :class="[
+                            'flag-icon bg-paper-warm border border-rule flex items-center justify-center text-ink text-[11px] font-display font-bold',
+                            { hidden: !!getFlag(language.language_code) },
+                        ]"
                     >
                         {{ language.language_name_native.charAt(0) }}
                     </div>

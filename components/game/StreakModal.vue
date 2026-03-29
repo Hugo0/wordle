@@ -27,7 +27,11 @@
                     class="grid grid-cols-7 gap-0.5 mb-1"
                     style="font-family: var(--font-mono); font-size: 8px; color: var(--color-muted)"
                 >
-                    <span v-for="d in ['M', 'T', 'W', 'T', 'F', 'S', 'S']" :key="d" class="text-center">
+                    <span
+                        v-for="d in ['M', 'T', 'W', 'T', 'F', 'S', 'S']"
+                        :key="d"
+                        class="text-center"
+                    >
                         {{ d }}
                     </span>
                 </div>
@@ -37,16 +41,33 @@
                         :key="i"
                         class="aspect-square rounded-sm flex items-center justify-center"
                         :class="calendarDayClass(day)"
-                        style="font-family: var(--font-mono); font-size: 9px; color: var(--color-muted)"
+                        style="
+                            font-family: var(--font-mono);
+                            font-size: 9px;
+                            color: var(--color-muted);
+                        "
                     >
                         <span v-if="day.date">{{ day.date }}</span>
                     </div>
                 </div>
                 <!-- Legend -->
-                <div class="flex gap-3 mt-2 justify-center" style="font-size: 9px; color: var(--color-muted); font-family: var(--font-mono)">
-                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> Won</span>
-                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm inline-block" style="background: var(--color-accent-soft, #e8d5d0)" /> Lost</span>
-                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> Missed</span>
+                <div
+                    class="flex gap-3 mt-2 justify-center"
+                    style="font-size: 9px; color: var(--color-muted); font-family: var(--font-mono)"
+                >
+                    <span class="flex items-center gap-1"
+                        ><span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> Won</span
+                    >
+                    <span class="flex items-center gap-1"
+                        ><span
+                            class="w-2 h-2 rounded-sm inline-block"
+                            style="background: var(--color-accent-soft, #e8d5d0)"
+                        />
+                        Lost</span
+                    >
+                    <span class="flex items-center gap-1"
+                        ><span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> Missed</span
+                    >
                 </div>
             </div>
 
@@ -89,7 +110,9 @@
                         <span class="text-ink capitalize">{{ lw.lang }}</span>
                         <span class="font-mono text-xs text-muted">
                             {{ lw.wins }} {{ lw.wins === 1 ? 'win' : 'wins' }}
-                            <span v-if="lw.games > lw.wins" class="text-muted/60">/ {{ lw.games }} played</span>
+                            <span v-if="lw.games > lw.wins" class="text-muted/60"
+                                >/ {{ lw.games }} played</span
+                            >
                         </span>
                     </div>
                 </div>
@@ -144,11 +167,16 @@ interface CalendarDay {
 
 function calendarDayClass(day: CalendarDay): string {
     switch (day.state) {
-        case 'won': return 'bg-correct-soft';
-        case 'lost': return 'cal-lost';
-        case 'missed': return 'bg-muted-soft';
-        case 'today': return 'outline outline-2 outline-ink -outline-offset-1';
-        default: return '';
+        case 'won':
+            return 'bg-correct-soft';
+        case 'lost':
+            return 'cal-lost';
+        case 'missed':
+            return 'bg-muted-soft';
+        case 'today':
+            return 'outline outline-2 outline-ink -outline-offset-1';
+        default:
+            return '';
     }
 }
 

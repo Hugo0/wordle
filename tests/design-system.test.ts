@@ -49,23 +49,29 @@ describe('useFlag', () => {
         expect(useFlag('nn')).toBe('/flags/no.svg'); // Norwegian Nynorsk → Norway
     });
 
-    it('maps regional languages to parent countries', () => {
-        expect(useFlag('ca')).toBe('/flags/es.svg'); // Catalan → Spain
-        expect(useFlag('eu')).toBe('/flags/es.svg'); // Basque → Spain
-        expect(useFlag('gl')).toBe('/flags/es.svg'); // Galician → Spain
-        expect(useFlag('oc')).toBe('/flags/fr.svg'); // Occitan → France
+    it('maps regional languages to sub-national or ethnic flags', () => {
+        expect(useFlag('ca')).toBe('/flags/es-ct.svg'); // Catalan → Catalonia
+        expect(useFlag('eu')).toBe('/flags/es-pv.svg'); // Basque → Basque Country
+        expect(useFlag('gl')).toBe('/flags/es-ga.svg'); // Galician → Galicia
+        expect(useFlag('oc')).toBe('/flags/occitania.svg'); // Occitan → Occitania
+        expect(useFlag('br')).toBe('/flags/fr-bre.svg'); // Breton → Brittany
+        expect(useFlag('gd')).toBe('/flags/gb-sct.svg'); // Scottish Gaelic → Scotland
+        expect(useFlag('mi')).toBe('/flags/maori.svg'); // Māori → Māori flag
+        expect(useFlag('ha')).toBe('/flags/hausa.svg'); // Hausa → Hausa flag
+        expect(useFlag('yo')).toBe('/flags/yorubaland.svg'); // Yoruba → Yorubaland
         expect(useFlag('fy')).toBe('/flags/nl.svg'); // Frisian → Netherlands
         expect(useFlag('fur')).toBe('/flags/it.svg'); // Friulian → Italy
         expect(useFlag('nds')).toBe('/flags/de.svg'); // Low German → Germany
-        expect(useFlag('gd')).toBe('/flags/gb.svg'); // Scottish Gaelic → UK
     });
 });
 
 describe('useFlagCountryCode', () => {
-    it('returns the country code for a language', () => {
+    it('returns the flag code for a language', () => {
         expect(useFlagCountryCode('en')).toBe('gb');
         expect(useFlagCountryCode('de')).toBe('de');
         expect(useFlagCountryCode('ja')).toBe('jp');
+        expect(useFlagCountryCode('ca')).toBe('es-ct');
+        expect(useFlagCountryCode('gd')).toBe('gb-sct');
     });
 
     it('returns null for unknown languages', () => {
@@ -146,7 +152,28 @@ describe('circle flag files', () => {
         const path = await import('path');
         const flagsDir = path.resolve(__dirname, '../public/flags');
 
-        const requiredFlags = ['gb', 'fi', 'sa', 'de', 'es', 'fr', 'it', 'pt', 'jp', 'kr', 'il'];
+        const requiredFlags = [
+            'gb',
+            'fi',
+            'sa',
+            'de',
+            'es',
+            'fr',
+            'it',
+            'pt',
+            'jp',
+            'kr',
+            'il',
+            'es-ct',
+            'es-pv',
+            'es-ga',
+            'gb-sct',
+            'fr-bre',
+            'occitania',
+            'maori',
+            'hausa',
+            'yorubaland',
+        ];
         for (const code of requiredFlags) {
             const flagPath = path.join(flagsDir, `${code}.svg`);
             expect(fs.existsSync(flagPath), `Flag ${code}.svg should exist`).toBe(true);

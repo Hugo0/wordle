@@ -937,6 +937,11 @@ export const useGameStore = defineStore('game', () => {
         // Speed mode is session-based — no persistent stats (tracked via finishSpeedSession)
         if (gameConfig.value.mode !== 'speed') {
             const statsKey = buildStatsKey(gameConfig.value);
+            // Check if this is the user's first game ever (before saveResult increments the count)
+            const totalGamesBefore = Object.values(statsStore.gameResults).reduce(
+                (sum, results) => sum + results.length,
+                0
+            );
             statsStore.saveResult(statsKey, won, options.statsAttempts);
             statsStore.calculateStats(statsKey, gameConfig.value.maxGuesses);
             statsStore.calculateTotalStats();
@@ -953,6 +958,7 @@ export const useGameStore = defineStore('game', () => {
                 attempts: options.statsAttempts,
                 streak_after: statsStore.stats.current_streak,
                 game_mode: gameConfig.value.mode,
+                is_first_game: totalGamesBefore === 0,
                 total_invalid_attempts: frustrationState.totalInvalidAttempts,
                 max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
                 had_frustration: frustrationState.hadFrustration,

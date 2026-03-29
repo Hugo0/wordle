@@ -14,9 +14,7 @@ vi.stubGlobal('useSounds', () => ({
     sound: { win: vi.fn(), lose: vi.fn() },
     setSoundEnabled: vi.fn(),
 }));
-vi.stubGlobal('useAnalytics', () => ({
-    trackSettingsChange: vi.fn(),
-}));
+vi.stubGlobal('useAnalytics', () => ({}));
 
 describe('Settings Store', () => {
     beforeEach(() => {

@@ -112,16 +112,11 @@ export const useSettingsStore = defineStore('settings', () => {
         });
     }
 
-    // ---- Analytics ----
-
-    const analytics = useAnalytics();
-
     // ---- Toggle / persistence methods ----
 
     function toggleDarkMode(): void {
         darkMode.value = !darkMode.value;
         writeLocal('darkMode', darkMode.value ? 'true' : 'false');
-        analytics.trackSettingsChange({ setting: 'dark_mode', value: darkMode.value });
     }
 
     function setDarkMode(value: boolean): void {
@@ -138,7 +133,6 @@ export const useSettingsStore = defineStore('settings', () => {
             setHapticsEnabled(feedbackEnabled.value);
             setSoundEnabled(feedbackEnabled.value);
         }
-        analytics.trackSettingsChange({ setting: 'feedback', value: feedbackEnabled.value });
     }
 
     function setFeedbackEnabled(value: boolean): void {
@@ -149,7 +143,6 @@ export const useSettingsStore = defineStore('settings', () => {
     function toggleWordInfo(): void {
         wordInfoEnabled.value = !wordInfoEnabled.value;
         writeLocal('wordInfoEnabled', wordInfoEnabled.value ? 'true' : 'false');
-        analytics.trackSettingsChange({ setting: 'word_info', value: wordInfoEnabled.value });
     }
 
     function setWordInfoEnabled(value: boolean): void {
@@ -160,7 +153,6 @@ export const useSettingsStore = defineStore('settings', () => {
     function toggleAnimations(): void {
         animationsEnabled.value = !animationsEnabled.value;
         writeLocal('animationsEnabled', animationsEnabled.value ? 'true' : 'false');
-        analytics.trackSettingsChange({ setting: 'animations', value: animationsEnabled.value });
     }
 
     function setAnimationsEnabled(value: boolean): void {
@@ -171,7 +163,6 @@ export const useSettingsStore = defineStore('settings', () => {
     function toggleHardMode(): void {
         hardMode.value = !hardMode.value;
         writeLocal('hardMode', hardMode.value ? 'true' : 'false');
-        analytics.trackSettingsChange({ setting: 'hard_mode', value: hardMode.value });
     }
 
     function setHardMode(value: boolean): void {
@@ -182,7 +173,6 @@ export const useSettingsStore = defineStore('settings', () => {
     function toggleHighContrast(): void {
         highContrast.value = !highContrast.value;
         writeLocal('highContrast', highContrast.value ? 'true' : 'false');
-        analytics.trackSettingsChange({ setting: 'high_contrast', value: highContrast.value });
     }
 
     function setHighContrast(value: boolean): void {

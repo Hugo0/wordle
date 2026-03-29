@@ -77,6 +77,7 @@ interface GameCompleteParams {
     attempts: number | string;
     streak_after: number;
     game_mode?: string;
+    is_first_game?: boolean;
     // Session-aggregated struggle context
     total_invalid_attempts?: number;
     max_consecutive_invalid?: number;
@@ -101,20 +102,6 @@ interface InvalidWordParams {
     language: string;
     attempt_number: number;
     word?: string;
-}
-
-interface SettingsChangeParams {
-    setting:
-        | 'dark_mode'
-        | 'haptics'
-        | 'sound'
-        | 'feedback'
-        | 'word_info'
-        | 'definitions'
-        | 'animations'
-        | 'hard_mode'
-        | 'high_contrast';
-    value: boolean;
 }
 
 interface PWAParams {
@@ -359,6 +346,7 @@ export function useAnalytics() {
             had_frustration: params.had_frustration ?? false,
             time_to_complete_seconds: params.time_to_complete_seconds,
             is_pwa: _isStandalone,
+            is_first_game: params.is_first_game,
             // Speed mode extras (undefined fields are omitted by PostHog)
             words_solved: params.words_solved,
             words_failed: params.words_failed,
@@ -590,38 +578,6 @@ export function useAnalytics() {
     // ========================================================================
 
     /**
-     * Track settings changes
-     * Answers: What features do people use?
-     */
-    const trackSettingsChange = (params: SettingsChangeParams): void => {
-        track('settings_change', {
-            setting: params.setting,
-            value: params.value,
-        });
-    };
-
-    /**
-     * Track help modal open
-     * Answers: Are people confused?
-     */
-    const trackHelpOpen = (language: string): void => {
-        track('help_open', {
-            language,
-        });
-    };
-
-    /**
-     * Track stats modal open
-     * Answers: Do people engage with their stats?
-     */
-    const trackStatsOpen = (language: string, trigger: 'manual' | 'game_end'): void => {
-        track('stats_open', {
-            language,
-            trigger,
-        });
-    };
-
-    /**
      * Track language selection from homepage
      * Answers: Which languages do people seek out?
      */
@@ -656,19 +612,11 @@ export function useAnalytics() {
      * Track when a user views the word definition after a game
      * Answers: Do definition viewers retain better?
      */
-    const trackDefinitionView = (language: string, source: string): void => {
+    const trackDefinitionView = (language: string, source: string, hasImage?: boolean): void => {
         track('definition_view', {
             language,
             source,
-        });
-    };
-
-    /**
-     * Track definition image view (DALL-E generated images)
-     */
-    const trackDefinitionImageView = (language: string): void => {
-        track('definition_image_view', {
-            language,
+            has_image: hasImage ?? false,
         });
     };
 
@@ -685,6 +633,18 @@ export function useAnalytics() {
             referrer: getReferrer(),
             is_pwa: _isStandalone,
             platform: getPlatform(),
+        });
+    };
+
+    /**
+     * Track when a user arrives from a shared link (?r= param)
+     * Answers: Is the share → play loop working? What share results drive clicks?
+     */
+    const trackReferralLanding = (language: string, shareResult: string): void => {
+        track('referral_landing', {
+            language,
+            share_result: shareResult,
+            referrer: getReferrer(),
         });
     };
 
@@ -804,17 +764,14 @@ export function useAnalytics() {
         onValidWord,
         resetFrustrationState,
         // Features
-        trackSettingsChange,
-        trackHelpOpen,
-        trackStatsOpen,
         trackLanguageSelect,
         // Multi-language
         trackSecondLanguageStart,
         // Content
         trackDefinitionView,
-        trackDefinitionImageView,
         // Funnel
         trackHomepageView,
+        trackReferralLanding,
         // Mode discovery
         trackModeSelected,
         // Session

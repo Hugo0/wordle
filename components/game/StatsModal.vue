@@ -387,12 +387,7 @@ watch(
         if (!visible || definitionTracked.value) return;
         const hasDefinition = game.todayDefinition || game.boardDefinitions?.some((d: any) => d);
         if (hasDefinition || game.todayImageUrl) {
-            if (hasDefinition) {
-                analytics.trackDefinitionView(lang.languageCode, 'stats_modal');
-            }
-            if (game.todayImageUrl) {
-                analytics.trackDefinitionImageView(lang.languageCode);
-            }
+            analytics.trackDefinitionView(lang.languageCode, 'stats_modal', !!game.todayImageUrl);
             definitionTracked.value = true;
         }
     }

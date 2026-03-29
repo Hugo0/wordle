@@ -1,19 +1,20 @@
 /**
- * Maps language codes to circle-flags country codes for flag display.
+ * Maps language codes to circle-flags icon codes for flag display.
  *
  * Language → country is not always 1:1 (e.g., "en" → "gb", "ar" → "sa").
- * This mapping uses the most recognizable/neutral country for each language.
+ * This mapping uses the most recognizable/neutral flag for each language,
+ * preferring sub-national or ethnic flags where available (e.g., "ca" → "es-ct").
  * For constructed/fictional languages, we return null (no flag).
  */
 
-/** Language code → ISO 3166-1 alpha-2 country code */
-const LANG_TO_COUNTRY: Record<string, string> = {
+/** Language code → circle-flags icon code (ISO country, sub-national, or ethnic) */
+const LANG_TO_FLAG: Record<string, string> = {
     ar: 'sa', // Arabic → Saudi Arabia
     az: 'az', // Azerbaijani
     bg: 'bg', // Bulgarian
     bn: 'bd', // Bengali → Bangladesh
-    br: 'fr', // Breton → France (Brittany has no circle-flag)
-    ca: 'es', // Catalan → Spain (Catalonia doesn't have a circle-flag)
+    br: 'fr-bre', // Breton → Brittany
+    ca: 'es-ct', // Catalan → Catalonia
     ckb: 'iq', // Central Kurdish → Iraq
     cs: 'cz', // Czech → Czechia
     da: 'dk', // Danish → Denmark
@@ -23,7 +24,7 @@ const LANG_TO_COUNTRY: Record<string, string> = {
     // eo: Esperanto — no country, skip
     es: 'es', // Spanish
     et: 'ee', // Estonian → Estonia
-    eu: 'es', // Basque → Spain
+    eu: 'es-pv', // Basque → Basque Country
     fa: 'ir', // Persian → Iran
     fi: 'fi', // Finnish
     fo: 'fo', // Faroese → Faroe Islands
@@ -31,9 +32,9 @@ const LANG_TO_COUNTRY: Record<string, string> = {
     fur: 'it', // Friulian → Italy
     fy: 'nl', // Frisian → Netherlands
     ga: 'ie', // Irish → Ireland
-    gd: 'gb', // Scottish Gaelic → UK
-    gl: 'es', // Galician → Spain
-    ha: 'ng', // Hausa → Nigeria
+    gd: 'gb-sct', // Scottish Gaelic → Scotland
+    gl: 'es-ga', // Galician → Galicia
+    ha: 'hausa', // Hausa → Hausa ethnic flag
     he: 'il', // Hebrew → Israel
     hi: 'in', // Hindi → India
     hr: 'hr', // Croatian
@@ -53,7 +54,7 @@ const LANG_TO_COUNTRY: Record<string, string> = {
     lt: 'lt', // Lithuanian
     ltg: 'lv', // Latgalian → Latvia
     lv: 'lv', // Latvian
-    mi: 'nz', // Māori → New Zealand
+    mi: 'maori', // Māori → Māori flag
     mk: 'mk', // Macedonian
     mn: 'mn', // Mongolian
     mr: 'in', // Marathi → India
@@ -63,7 +64,7 @@ const LANG_TO_COUNTRY: Record<string, string> = {
     ne: 'np', // Nepali → Nepal
     nl: 'nl', // Dutch
     nn: 'no', // Norwegian Nynorsk → Norway
-    oc: 'fr', // Occitan → France
+    oc: 'occitania', // Occitan → Occitania
     pa: 'in', // Punjabi → India
     pau: 'pw', // Palauan → Palau
     pl: 'pl', // Polish
@@ -86,7 +87,7 @@ const LANG_TO_COUNTRY: Record<string, string> = {
     ur: 'pk', // Urdu → Pakistan
     uz: 'uz', // Uzbek
     vi: 'vn', // Vietnamese → Vietnam
-    yo: 'ng', // Yoruba → Nigeria
+    yo: 'yorubaland', // Yoruba → Yorubaland flag
 };
 
 /**
@@ -95,7 +96,7 @@ const LANG_TO_COUNTRY: Record<string, string> = {
  * without a country mapping (constructed languages like Esperanto, Klingon, Quenya).
  */
 export function useFlag(langCode: string): string | null {
-    const countryCode = LANG_TO_COUNTRY[langCode];
+    const countryCode = LANG_TO_FLAG[langCode];
     if (!countryCode) return null;
     // circle-flags package stores SVGs at this path
     return `/flags/${countryCode}.svg`;
@@ -105,5 +106,5 @@ export function useFlag(langCode: string): string | null {
  * Get the country code for a language code (for use in templates).
  */
 export function useFlagCountryCode(langCode: string): string | null {
-    return LANG_TO_COUNTRY[langCode] ?? null;
+    return LANG_TO_FLAG[langCode] ?? null;
 }

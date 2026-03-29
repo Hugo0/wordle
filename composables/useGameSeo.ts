@@ -108,6 +108,18 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
 
     let ogImageUrl: string;
 
+    // Modes that have per-language OG images in public/images/modes/{mode}/
+    const MODES_WITH_PER_LANG_OG = new Set([
+        'dordle',
+        'tridle',
+        'quordle',
+        'octordle',
+        'sedecordle',
+        'duotrigordle',
+        'unlimited',
+        'speed',
+    ]);
+
     if (isShareLink) {
         const configText = config.text || ({} as Record<string, string>);
         if (shareResult === 'x') {
@@ -123,8 +135,11 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         ogImageUrl = `https://wordle.global/images/share/${lang}_${shareResult}.png`;
     } else if (isClassic) {
         ogImageUrl = 'https://wordle.global/images/og-image.png';
-    } else {
+    } else if (MODES_WITH_PER_LANG_OG.has(mode)) {
         ogImageUrl = `https://wordle.global/images/modes/${mode}/${lang}.png`;
+    } else {
+        // Fallback to generic mode OG image (or main OG if none exists)
+        ogImageUrl = `https://wordle.global/images/og-${mode}.png`;
     }
 
     // -------------------------------------------------------------------------

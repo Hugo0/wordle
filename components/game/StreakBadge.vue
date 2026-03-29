@@ -96,7 +96,12 @@ function onAnimEnd(e: AnimationEvent) {
 }
 
 @keyframes flame-freeze {
-    0%, 100% { filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.3)); }
-    50% { filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5)); }
+    0%,
+    100% {
+        filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.5));
+    }
 }
 </style>

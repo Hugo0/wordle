@@ -109,6 +109,13 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                 }
             });
             analytics.trackPWASession(langStore.languageCode);
+
+            // Referral tracking — detect ?r= param from shared links
+            const route = useRoute();
+            const shareResult = route.query.r as string | undefined;
+            if (shareResult) {
+                analytics.trackReferralLanding(langStore.languageCode, shareResult);
+            }
             analytics.initAbandonTracking(() => ({
                 language: langStore.languageCode,
                 activeRow: game.activeRow,
