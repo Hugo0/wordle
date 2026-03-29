@@ -219,7 +219,15 @@
         "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
-        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     },
     "seo": {
         "how_to_play": "Kuidas mängida",
@@ -241,88 +249,253 @@
         "stat_languages": "Keeled",
         "stat_modes": "Mängurežiimid",
         "value_props": [
-            { "key": "languages", "title": "80+ keelt", "desc": "Araabia keelest joruba keeleni. Suurim mitmekeelne Wordle." },
-            { "key": "definitions", "title": "Sõnade definitsioonid", "desc": "Õpi iga sõna tähendust pärast mängimist. Laienda oma sõnavara." },
-            { "key": "word_art", "title": "Unikaalne sõnakunst", "desc": "Iga sõnaga käib kaasas ainulaadne illustratsioon. Kogu need kõik." },
-            { "key": "themes", "title": "Tume režiim ja teemad", "desc": "Hele, tume ja kõrge kontrastsusega režiimid mugavaks mängimiseks." },
-            { "key": "pwa", "title": "Töötab igal pool", "desc": "PWA — paigalda igale seadmele. Töötab võrguühenduseta. Allalaadimist pole vaja." },
-            { "key": "free", "title": "Igavesti tasuta", "desc": "Kontot pole vaja. Tasulisi sisu pole. Lihtsalt mängi." }
+            {
+                "key": "languages",
+                "title": "80+ keelt",
+                "desc": "Araabia keelest joruba keeleni. Suurim mitmekeelne Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Sõnade definitsioonid",
+                "desc": "Õpi iga sõna tähendust pärast mängimist. Laienda oma sõnavara."
+            },
+            {
+                "key": "word_art",
+                "title": "Unikaalne sõnakunst",
+                "desc": "Iga sõnaga käib kaasas ainulaadne illustratsioon. Kogu need kõik."
+            },
+            {
+                "key": "themes",
+                "title": "Tume režiim ja teemad",
+                "desc": "Hele, tume ja kõrge kontrastsusega režiimid mugavaks mängimiseks."
+            },
+            {
+                "key": "pwa",
+                "title": "Töötab igal pool",
+                "desc": "PWA — paigalda igale seadmele. Töötab võrguühenduseta. Allalaadimist pole vaja."
+            },
+            {
+                "key": "free",
+                "title": "Igavesti tasuta",
+                "desc": "Kontot pole vaja. Tasulisi sisu pole. Lihtsalt mängi."
+            }
         ],
         "tips": [
-            { "title": "Alusta täishäälikurikka sõnaga", "text": "Sõnad nagu CRANE, STARE või ADIEU testivad levinud tähti kiiresti. Teadmine, millised täishäälikud esinevad, kitsendab valikuid kiiresti." },
-            { "title": "Kasuta teadaolevat infot", "text": "Rohelised tähed jäävad paigale. Kollased tähed peavad liikuma. Hallid tähed on välistatud. Iga arvamine peaks kasutama kõiki kolme vihjet." },
-            { "title": "Mõtle levinud mustritele", "text": "Inglise sõnad lõpevad tihti -TION, -IGHT, -OUND, -MENT. Igal keelel on oma mustrid — õpi need ära." },
-            { "title": "Välista, ära arva juhuslikult", "text": "Teine sõna peaks testima uusi tähti, mitte kordama juba kinnitatud tähti. Kata võimalikult palju testimata kaashäälikuid." },
-            { "title": "Jälgi topelttähti", "text": "Sõnad nagu CREEK, FLOSS või APPLE on levinud lõksud. Kui vihjed ei klapi, kaalu korduvat tähte." },
-            { "title": "Kasuta rasket režiimi enda arendamiseks", "text": "Raske režiim sunnib kasutama kinnitatud vihjeid igas arvamises. See arendab paremaid harjumusi ka tavarežiimis." }
+            {
+                "title": "Alusta täishäälikurikka sõnaga",
+                "text": "Sõnad nagu CRANE, STARE või ADIEU testivad levinud tähti kiiresti. Teadmine, millised täishäälikud esinevad, kitsendab valikuid kiiresti."
+            },
+            {
+                "title": "Kasuta teadaolevat infot",
+                "text": "Rohelised tähed jäävad paigale. Kollased tähed peavad liikuma. Hallid tähed on välistatud. Iga arvamine peaks kasutama kõiki kolme vihjet."
+            },
+            {
+                "title": "Mõtle levinud mustritele",
+                "text": "Inglise sõnad lõpevad tihti -TION, -IGHT, -OUND, -MENT. Igal keelel on oma mustrid — õpi need ära."
+            },
+            {
+                "title": "Välista, ära arva juhuslikult",
+                "text": "Teine sõna peaks testima uusi tähti, mitte kordama juba kinnitatud tähti. Kata võimalikult palju testimata kaashäälikuid."
+            },
+            {
+                "title": "Jälgi topelttähti",
+                "text": "Sõnad nagu CREEK, FLOSS või APPLE on levinud lõksud. Kui vihjed ei klapi, kaalu korduvat tähte."
+            },
+            {
+                "title": "Kasuta rasket režiimi enda arendamiseks",
+                "text": "Raske režiim sunnib kasutama kinnitatud vihjeid igas arvamises. See arendab paremaid harjumusi ka tavarežiimis."
+            }
         ],
         "tips_speed": [
-            { "title": "Alusta sõnaga CRANE või STARE", "text": "Sagedased tähed annavad parima võimaluse kiireks lahendamiseks. Iga sekund loeb." },
-            { "title": "Ära mõtle üle", "text": "Speed Streak premeerib kõhutunnet. Kui näed tõenäolist sõna, proovi seda — komboboonus kaalub üles täiusliku lahenduse." },
-            { "title": "Kaitse oma kombot", "text": "Ebaõnnestunud sõna katkestab kordaja. Kui pole kindel, kasuta turvalist arvamist, et koguda rohkem vihjeid, selle asemel et riskida." },
-            { "title": "Sihi 2-3 arvamisega lahendusi", "text": "Ajaboonus on tohutu kiirete lahenduste eest (+60s 1 arvamisega, +30s 2-ga). Riskantne teine arvamine võib end ära tasuda." },
-            { "title": "Õpi levinud sõnalõppe", "text": "Mustrid nagu -IGHT, -OUND, -ATCH korduvad tihti. Nende kohene äratundmine säästab sekundeid iga sõna kohta." },
-            { "title": "Jää rahulikuks, kui pinge tõuseb", "text": "Taimer kiireneb iga 3 sõna järel. Kiirustamine viib trükivigade ja halbade arvamisteni. Ühtlane tempo võidab paanika." }
+            {
+                "title": "Alusta sõnaga CRANE või STARE",
+                "text": "Sagedased tähed annavad parima võimaluse kiireks lahendamiseks. Iga sekund loeb."
+            },
+            {
+                "title": "Ära mõtle üle",
+                "text": "Speed Streak premeerib kõhutunnet. Kui näed tõenäolist sõna, proovi seda — komboboonus kaalub üles täiusliku lahenduse."
+            },
+            {
+                "title": "Kaitse oma kombot",
+                "text": "Ebaõnnestunud sõna katkestab kordaja. Kui pole kindel, kasuta turvalist arvamist, et koguda rohkem vihjeid, selle asemel et riskida."
+            },
+            {
+                "title": "Sihi 2-3 arvamisega lahendusi",
+                "text": "Ajaboonus on tohutu kiirete lahenduste eest (+60s 1 arvamisega, +30s 2-ga). Riskantne teine arvamine võib end ära tasuda."
+            },
+            {
+                "title": "Õpi levinud sõnalõppe",
+                "text": "Mustrid nagu -IGHT, -OUND, -ATCH korduvad tihti. Nende kohene äratundmine säästab sekundeid iga sõna kohta."
+            },
+            {
+                "title": "Jää rahulikuks, kui pinge tõuseb",
+                "text": "Taimer kiireneb iga 3 sõna järel. Kiirustamine viib trükivigade ja halbade arvamisteni. Ühtlane tempo võidab paanika."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Alusta laialt", "text": "Kasuta levinud tähtedega sõnu (CRANE, STARE), et koguda vihjeid kõigilt laudadelt korraga." },
-            { "title": "Jälgi jagatud klaviatuuri", "text": "Klaviatuur näitab iga laua värve. Täht, mis on ühel laual roheline, aga teisel hall, kitsendab valikuid kiiresti." },
-            { "title": "Eelista raskustes laudu", "text": "Keskendu arvamised lauale, millel on kõige rohkem tundmatuid. Lihtsamad lauad lahenduvad tihti iseenesest." },
-            { "title": "Ära raiska varaseid arvamisi", "text": "Kasuta esimesed 2-3 arvamist inforikastele sõnadele, enne kui sihid konkreetseid laudu." },
-            { "title": "Otsi ühiseid tähti", "text": "Kui kahel laual on kollane E, aitab sõna E-ga uues positsioonis mõlemat lauda korraga." },
-            { "title": "Hoia arvamine varuks", "text": "Kui jääd viimase lauaga hätta, on varuarvamine erinevus võidu ja kaotuse vahel." }
+            {
+                "title": "Alusta laialt",
+                "text": "Kasuta levinud tähtedega sõnu (CRANE, STARE), et koguda vihjeid kõigilt laudadelt korraga."
+            },
+            {
+                "title": "Jälgi jagatud klaviatuuri",
+                "text": "Klaviatuur näitab iga laua värve. Täht, mis on ühel laual roheline, aga teisel hall, kitsendab valikuid kiiresti."
+            },
+            {
+                "title": "Eelista raskustes laudu",
+                "text": "Keskendu arvamised lauale, millel on kõige rohkem tundmatuid. Lihtsamad lauad lahenduvad tihti iseenesest."
+            },
+            {
+                "title": "Ära raiska varaseid arvamisi",
+                "text": "Kasuta esimesed 2-3 arvamist inforikastele sõnadele, enne kui sihid konkreetseid laudu."
+            },
+            {
+                "title": "Otsi ühiseid tähti",
+                "text": "Kui kahel laual on kollane E, aitab sõna E-ga uues positsioonis mõlemat lauda korraga."
+            },
+            {
+                "title": "Hoia arvamine varuks",
+                "text": "Kui jääd viimase lauaga hätta, on varuarvamine erinevus võidu ja kaotuse vahel."
+            }
         ],
         "mode_desc_classic": "Sul on 6 katset peidetud 5-tähelise sõna äraarvamiseks. Kasuta värvivihjeid vastuse kitsendamiseks.",
         "mode_desc_unlimited": "Sul on 6 katset peidetud 5-tähelise sõna äraarvamiseks. Kasuta värvivihjeid vastuse kitsendamiseks. Pärast iga mängu vajuta \"Mängi uuesti\", et saada kohe uus sõna — päevalimiiti pole.",
         "mode_desc_speed": "Alustad 3 minutiga kellal. Iga lahendatud sõna annab boonusaega — vähemate arvamistega lahendamine annab suurema boonuse (+60s 1 arvamisega, +10s 6-ga). Ebaõnnestunud sõna maksab 30 sekundit. Ehita kombosid järjestikuste lahendamistega kuni 3x-punktikordajani. Pinge tõuseb, mida rohkem sõnu lahendad — taimer kiireneb iga 3 sõna järel.",
         "mode_desc_multiboard": "{modeName} paneb sind proovile lahendada {boardCount} Wordle lauda korraga, kasutades vaid {maxGuesses} arvamist. Iga arvamine ilmub kõigile lahendamata laudadele korraga. Lahendatud lauad külmuvad. Jagatud värviklahvistik näitab, millised tähed on millisel laual õiged. Alusta levinud tähtedega sõnadega, et koguda vihjeid kõigilt laudadelt korraga.",
         "faq": [
-            { "q": "Kuidas mängida Wordle't {langName} keeles?", "a": "Külasta wordle.global/{lang}, et mängida igapäevast Wordle't {langName} keeles. Sul on 6 katset 5-tähelise sõna äraarvamiseks. Pärast iga arvamist muutuvad paanid roheliseks (õige täht, õige koht), kollaseks (õige täht, vale koht) või halliks (tähte pole sõnas)." },
-            { "q": "Kas iga päev on uus mõistatus?", "a": "Jah. Iga päev valitakse uus sõna. Kõik, kes mängivad samas keeles, saavad sama sõna, nii et saad tulemusi sõpradega võrrelda." },
-            { "q": "Kas Wordle Global on tasuta?", "a": "Jah. Igapäevane mõistatus, piiramatu režiim ja kõik mängurežiimid on täiesti tasuta kõigis 80+ keeles. Kontot ega allalaadimist pole vaja." },
-            { "q": "Kas saan mängida rohkem kui korra päevas?", "a": "Jah — proovi piiramatut režiimi aadressil wordle.global/{lang}/unlimited lõputute mängude jaoks ilma ootamiseta. Sinu igapäevast seeriat jälgitakse eraldi." }
+            {
+                "q": "Kuidas mängida Wordle't {langName} keeles?",
+                "a": "Külasta wordle.global/{lang}, et mängida igapäevast Wordle't {langName} keeles. Sul on 6 katset 5-tähelise sõna äraarvamiseks. Pärast iga arvamist muutuvad paanid roheliseks (õige täht, õige koht), kollaseks (õige täht, vale koht) või halliks (tähte pole sõnas)."
+            },
+            {
+                "q": "Kas iga päev on uus mõistatus?",
+                "a": "Jah. Iga päev valitakse uus sõna. Kõik, kes mängivad samas keeles, saavad sama sõna, nii et saad tulemusi sõpradega võrrelda."
+            },
+            {
+                "q": "Kas Wordle Global on tasuta?",
+                "a": "Jah. Igapäevane mõistatus, piiramatu režiim ja kõik mängurežiimid on täiesti tasuta kõigis 80+ keeles. Kontot ega allalaadimist pole vaja."
+            },
+            {
+                "q": "Kas saan mängida rohkem kui korra päevas?",
+                "a": "Jah — proovi piiramatut režiimi aadressil wordle.global/{lang}/unlimited lõputute mängude jaoks ilma ootamiseta. Sinu igapäevast seeriat jälgitakse eraldi."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Mis on Wordle Unlimited {langName} keeles?", "a": "Wordle Unlimited võimaldab mängida nii palju Wordle mänge kui soovid {langName} keeles, ilma homset igapäevast mõistatust ootamata. Iga mäng annab uue juhusliku sõna, mida arvata 6 katsega." },
-                { "q": "Kas Wordle Unlimited on tasuta?", "a": "Jah. Wordle Unlimited on täiesti tasuta. Kontot, allalaadimist ega mänguaegseid reklaame pole." },
-                { "q": "Kas piiramatu režiim mõjutab mu igapäevast seeriat?", "a": "Ei. Piiramatul režiimil on oma eraldi statistika. Sinu igapäevast seeriat mõjutab ainult igapäevane mõistatus." },
-                { "q": "Mitu korda saan mängida?", "a": "Piirangut pole. Saad mängida nii palju voore kui soovid. Pärast iga mängu vajuta \"Mängi uuesti\", et kohe uus sõna saada." },
-                { "q": "Mis keeltes saan Wordle Unlimited't mängida?", "a": "Wordle Unlimited on saadaval üle 80 keele aadressil wordle.global, sealhulgas inglise, hispaania, saksa, soome, araabia, prantsuse, itaalia, portugali ja paljudes teistes keeltes." }
+                {
+                    "q": "Mis on Wordle Unlimited {langName} keeles?",
+                    "a": "Wordle Unlimited võimaldab mängida nii palju Wordle mänge kui soovid {langName} keeles, ilma homset igapäevast mõistatust ootamata. Iga mäng annab uue juhusliku sõna, mida arvata 6 katsega."
+                },
+                {
+                    "q": "Kas Wordle Unlimited on tasuta?",
+                    "a": "Jah. Wordle Unlimited on täiesti tasuta. Kontot, allalaadimist ega mänguaegseid reklaame pole."
+                },
+                {
+                    "q": "Kas piiramatu režiim mõjutab mu igapäevast seeriat?",
+                    "a": "Ei. Piiramatul režiimil on oma eraldi statistika. Sinu igapäevast seeriat mõjutab ainult igapäevane mõistatus."
+                },
+                {
+                    "q": "Mitu korda saan mängida?",
+                    "a": "Piirangut pole. Saad mängida nii palju voore kui soovid. Pärast iga mängu vajuta \"Mängi uuesti\", et kohe uus sõna saada."
+                },
+                {
+                    "q": "Mis keeltes saan Wordle Unlimited't mängida?",
+                    "a": "Wordle Unlimited on saadaval üle 80 keele aadressil wordle.global, sealhulgas inglise, hispaania, saksa, soome, araabia, prantsuse, itaalia, portugali ja paljudes teistes keeltes."
+                }
             ],
             "speed": [
-                { "q": "Mis on Speed Streak {langName} keeles?", "a": "Speed Streak on ajastatud Wordle režiim {langName} keeles. Alustad 3 minutiga kellal ja lahendad nii palju sõnu kui suudad. Lahenda sõna kiiresti, et teenida boonusaega." },
-                { "q": "Kuidas punktiarvestus töötab?", "a": "Teenid punkte iga lahendatud sõna eest. Vähem arvamisi ja kiirem lahendamine annavad rohkem punkte. Ehita kombo, lahendades sõnu järjest ilma ebaõnnestumiseta — kuni 3x kordajani." },
-                { "q": "Mis juhtub, kui aeg saab otsa?", "a": "Mäng lõpeb ja näed oma lõpptulemust, lahendatud sõnade arvu, maksimaalset kombot ja keskmist arvamiste arvu. Saad kohe uuesti mängida." },
-                { "q": "Kas Speed Streak on tasuta?", "a": "Jah. Speed Streak on täiesti tasuta kõigis 80+ keeles. Kontot ega allalaadimist pole vaja." }
+                {
+                    "q": "Mis on Speed Streak {langName} keeles?",
+                    "a": "Speed Streak on ajastatud Wordle režiim {langName} keeles. Alustad 3 minutiga kellal ja lahendad nii palju sõnu kui suudad. Lahenda sõna kiiresti, et teenida boonusaega."
+                },
+                {
+                    "q": "Kuidas punktiarvestus töötab?",
+                    "a": "Teenid punkte iga lahendatud sõna eest. Vähem arvamisi ja kiirem lahendamine annavad rohkem punkte. Ehita kombo, lahendades sõnu järjest ilma ebaõnnestumiseta — kuni 3x kordajani."
+                },
+                {
+                    "q": "Mis juhtub, kui aeg saab otsa?",
+                    "a": "Mäng lõpeb ja näed oma lõpptulemust, lahendatud sõnade arvu, maksimaalset kombot ja keskmist arvamiste arvu. Saad kohe uuesti mängida."
+                },
+                {
+                    "q": "Kas Speed Streak on tasuta?",
+                    "a": "Jah. Speed Streak on täiesti tasuta kõigis 80+ keeles. Kontot ega allalaadimist pole vaja."
+                }
             ],
             "multiboard": [
-                { "q": "Mis on {modeName} {langName} keeles?", "a": "{modeName} on mitmelauamänguline Wordle variant {langName} keeles. Lahendad {boardCount} Wordle lauda korraga, kasutades {maxGuesses} arvamist. Iga arvamine sisestatakse kõigile lahendamata laudadele korraga." },
-                { "q": "Mitu arvamist saan {modeName} režiimis?", "a": "Saad {maxGuesses} arvamist, et lahendada kõik {boardCount} lauda. Kui laud on lahendatud, see külmub ja saad keskenduda ülejäänutele." },
-                { "q": "Milline strateegia töötab {modeName} puhul kõige paremini?", "a": "Alusta sõnadega, mis kasutavad levinud tähti, et koguda infot kõigilt {boardCount} laualt korraga. Jälgi jagatud värviklahvistikku — see näitab, millised tähed on millisel laual õiged." },
-                { "q": "Kas {modeName} on tasuta?", "a": "Jah. {modeName} on täiesti tasuta kõigis 80+ keeles. Kontot ega allalaadimist pole vaja. Mängi nii palju voore kui soovid." }
+                {
+                    "q": "Mis on {modeName} {langName} keeles?",
+                    "a": "{modeName} on mitmelauamänguline Wordle variant {langName} keeles. Lahendad {boardCount} Wordle lauda korraga, kasutades {maxGuesses} arvamist. Iga arvamine sisestatakse kõigile lahendamata laudadele korraga."
+                },
+                {
+                    "q": "Mitu arvamist saan {modeName} režiimis?",
+                    "a": "Saad {maxGuesses} arvamist, et lahendada kõik {boardCount} lauda. Kui laud on lahendatud, see külmub ja saad keskenduda ülejäänutele."
+                },
+                {
+                    "q": "Milline strateegia töötab {modeName} puhul kõige paremini?",
+                    "a": "Alusta sõnadega, mis kasutavad levinud tähti, et koguda infot kõigilt {boardCount} laualt korraga. Jälgi jagatud värviklahvistikku — see näitab, millised tähed on millisel laual õiged."
+                },
+                {
+                    "q": "Kas {modeName} on tasuta?",
+                    "a": "Jah. {modeName} on täiesti tasuta kõigis 80+ keeles. Kontot ega allalaadimist pole vaja. Mängi nii palju voore kui soovid."
+                }
             ]
         },
         "howto": [
-            { "name": "Sisesta sõna", "text": "Sisesta kehtiv 5-täheline sõna {langName} keeles, kasutades ekraaniklaviatuuri või füüsilist klaviatuuri, seejärel vajuta Enter." },
-            { "name": "Loe vihjeid", "text": "Rohelised paanid tähendavad, et täht on õige ja õiges kohas. Kollane tähendab, et täht on sõnas, aga vales kohas. Hall tähendab, et tähte pole sõnas." },
-            { "name": "Lahenda 6 katsega", "text": "Kasuta värvivihjeid sõna kitsendamiseks. Sul on kokku 6 arvamist. Pärast mõistatust näed oma statistikat ja saad tulemust jagada." }
+            {
+                "name": "Sisesta sõna",
+                "text": "Sisesta kehtiv 5-täheline sõna {langName} keeles, kasutades ekraaniklaviatuuri või füüsilist klaviatuuri, seejärel vajuta Enter."
+            },
+            {
+                "name": "Loe vihjeid",
+                "text": "Rohelised paanid tähendavad, et täht on õige ja õiges kohas. Kollane tähendab, et täht on sõnas, aga vales kohas. Hall tähendab, et tähte pole sõnas."
+            },
+            {
+                "name": "Lahenda 6 katsega",
+                "text": "Kasuta värvivihjeid sõna kitsendamiseks. Sul on kokku 6 arvamist. Pärast mõistatust näed oma statistikat ja saad tulemust jagada."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Alusta mängu", "text": "Külasta wordle.global/{lang}/unlimited, et alustada Wordle Unlimited mängimist {langName} keeles. Sulle valitakse juhuslik 5-täheline sõna." },
-                { "name": "Arva sõna ära", "text": "Sisesta kehtiv 5-täheline sõna ja vajuta Enter. Rohelised paanid tähendavad, et täht on õige ja õiges kohas. Kollane tähendab, et täht on sõnas, aga vales kohas. Hall tähendab, et tähte pole sõnas." },
-                { "name": "Mängi kohe uuesti", "text": "Pärast sõna lahendamist (või kõigi 6 arvamise kasutamist) vajuta \"Mängi uuesti\", et kohe uus sõna saada. Homset ootama ei pea." }
+                {
+                    "name": "Alusta mängu",
+                    "text": "Külasta wordle.global/{lang}/unlimited, et alustada Wordle Unlimited mängimist {langName} keeles. Sulle valitakse juhuslik 5-täheline sõna."
+                },
+                {
+                    "name": "Arva sõna ära",
+                    "text": "Sisesta kehtiv 5-täheline sõna ja vajuta Enter. Rohelised paanid tähendavad, et täht on õige ja õiges kohas. Kollane tähendab, et täht on sõnas, aga vales kohas. Hall tähendab, et tähte pole sõnas."
+                },
+                {
+                    "name": "Mängi kohe uuesti",
+                    "text": "Pärast sõna lahendamist (või kõigi 6 arvamise kasutamist) vajuta \"Mängi uuesti\", et kohe uus sõna saada. Homset ootama ei pea."
+                }
             ],
             "speed": [
-                { "name": "Käivita taimer", "text": "Külasta wordle.global/{lang}/speed ja vajuta Start. Alustad 3 minutiga kellal." },
-                { "name": "Lahenda sõnu kiiresti", "text": "Iga lahendatud sõna annab boonusaega (+10s kuni +60s, olenevalt kasutatud arvamiste arvust). Ebaõnnestunud sõna maksab 30 sekundit." },
-                { "name": "Ehita oma kombo", "text": "Lahenda sõnu järjest, et ehitada kombokordaja (kuni 3x). Kombo katkeb, kui sõna ebaõnnestub. Proovi oma rekordit lüüa." }
+                {
+                    "name": "Käivita taimer",
+                    "text": "Külasta wordle.global/{lang}/speed ja vajuta Start. Alustad 3 minutiga kellal."
+                },
+                {
+                    "name": "Lahenda sõnu kiiresti",
+                    "text": "Iga lahendatud sõna annab boonusaega (+10s kuni +60s, olenevalt kasutatud arvamiste arvust). Ebaõnnestunud sõna maksab 30 sekundit."
+                },
+                {
+                    "name": "Ehita oma kombo",
+                    "text": "Lahenda sõnu järjest, et ehitada kombokordaja (kuni 3x). Kombo katkeb, kui sõna ebaõnnestub. Proovi oma rekordit lüüa."
+                }
             ],
             "multiboard": [
-                { "name": "Alusta mängu", "text": "Külasta wordle.global/{lang}/{modeName}, et mängida {modeName} režiimi {langName} keeles. {boardCount} lauda ilmuvad erinevate peidetud sõnadega." },
-                { "name": "Arva kõigil laudadel", "text": "Sisesta 5-täheline sõna ja vajuta Enter. Sinu arvamine ilmub kõigile {boardCount} lauale korraga. Iga laud näitab oma värvivihjeid (roheline, kollane, hall)." },
-                { "name": "Lahenda kõik {boardCount} lauda", "text": "Lahendatud lauad külmuvad paigale. Kasuta jagatud värviklahvistikku, et jälgida, millised tähed töötavad millisel laual. Lahenda kõik {boardCount} lauda {maxGuesses} arvamise jooksul, et võita." }
+                {
+                    "name": "Alusta mängu",
+                    "text": "Külasta wordle.global/{lang}/{modeName}, et mängida {modeName} režiimi {langName} keeles. {boardCount} lauda ilmuvad erinevate peidetud sõnadega."
+                },
+                {
+                    "name": "Arva kõigil laudadel",
+                    "text": "Sisesta 5-täheline sõna ja vajuta Enter. Sinu arvamine ilmub kõigile {boardCount} lauale korraga. Iga laud näitab oma värvivihjeid (roheline, kollane, hall)."
+                },
+                {
+                    "name": "Lahenda kõik {boardCount} lauda",
+                    "text": "Lahendatud lauad külmuvad paigale. Kasuta jagatud värviklahvistikku, et jälgida, millised tähed töötavad millisel laual. Lahenda kõik {boardCount} lauda {maxGuesses} arvamise jooksul, et võita."
+                }
             ]
         }
     }

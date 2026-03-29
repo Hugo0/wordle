@@ -18,18 +18,21 @@ onMounted(() => {
     let scrollTimer: ReturnType<typeof setTimeout> | null = null;
     let hasSnappedBack = false;
 
-    el.addEventListener(
-        'scroll',
-        () => {
-            if (hasSnappedBack) return;
-            if (scrollTimer) clearTimeout(scrollTimer);
-            scrollTimer = setTimeout(() => {
-                if (el.scrollTop <= 0) return;
-                hasSnappedBack = true;
-                el.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 200);
-        },
-        { passive: true }
-    );
+    const onScroll = () => {
+        if (hasSnappedBack) return;
+        if (scrollTimer) clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            if (el.scrollTop <= 0) return;
+            hasSnappedBack = true;
+            el.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 200);
+    };
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+
+    onUnmounted(() => {
+        el.removeEventListener('scroll', onScroll);
+        if (scrollTimer) clearTimeout(scrollTimer);
+    });
 });
 </script>

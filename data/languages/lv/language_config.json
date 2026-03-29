@@ -103,88 +103,253 @@
         "stat_languages": "Valodas",
         "stat_modes": "Spēles režīmi",
         "value_props": [
-            { "key": "languages", "title": "80+ valodas", "desc": "No arābu līdz jorubu. Lielākais daudzvalodu Wordle." },
-            { "key": "definitions", "title": "Vārdu definīcijas", "desc": "Pēc spēles uzziniet katra vārda nozīmi. Paplašiniet savu vārdu krājumu." },
-            { "key": "word_art", "title": "Unikāla vārdu māksla", "desc": "Katram vārdam ir sava ilustrācija. Savāciet visas." },
-            { "key": "themes", "title": "Tumšais režīms un motīvi", "desc": "Gaišais, tumšais un augsta kontrasta režīms ērtai spēlei." },
-            { "key": "pwa", "title": "Darbojas visur", "desc": "PWA — uzinstalējiet jebkurā ierīcē. Darbojas bezsaistē. Nav nepieciešama lejupielāde." },
-            { "key": "free", "title": "Bezmaksas uz visiem laikiem", "desc": "Konts nav nepieciešams. Bez maksas sienas. Vienkārši spēlējiet." }
+            {
+                "key": "languages",
+                "title": "80+ valodas",
+                "desc": "No arābu līdz jorubu. Lielākais daudzvalodu Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Vārdu definīcijas",
+                "desc": "Pēc spēles uzziniet katra vārda nozīmi. Paplašiniet savu vārdu krājumu."
+            },
+            {
+                "key": "word_art",
+                "title": "Unikāla vārdu māksla",
+                "desc": "Katram vārdam ir sava ilustrācija. Savāciet visas."
+            },
+            {
+                "key": "themes",
+                "title": "Tumšais režīms un motīvi",
+                "desc": "Gaišais, tumšais un augsta kontrasta režīms ērtai spēlei."
+            },
+            {
+                "key": "pwa",
+                "title": "Darbojas visur",
+                "desc": "PWA — uzinstalējiet jebkurā ierīcē. Darbojas bezsaistē. Nav nepieciešama lejupielāde."
+            },
+            {
+                "key": "free",
+                "title": "Bezmaksas uz visiem laikiem",
+                "desc": "Konts nav nepieciešams. Bez maksas sienas. Vienkārši spēlējiet."
+            }
         ],
         "tips": [
-            { "title": "Sāciet ar patskaņiem bagātu vārdu", "text": "Vārdi kā CRANE, STARE vai ADIEU ātri pārbauda biežos burtus. Zinot, kuri patskaņi ir klāt, strauji sašaurina iespējas." },
-            { "title": "Izmantojiet zināmo", "text": "Zaļie burti paliek savā vietā. Dzeltenajiem jāpārvietojas. Pelēkie ir izslēgti. Katram minējumam jāizmanto visas trīs norādes." },
-            { "title": "Domājiet par biežiem paraugiem", "text": "Angļu vārdi bieži beidzas ar -TION, -IGHT, -OUND, -MENT. Citām valodām ir savi paraugi — iemācieties tos." },
-            { "title": "Izslēdziet, neminiet nejauši", "text": "Otrajam vārdam jāpārbauda jauni burti, nevis jāatkārto apstiprinātos. Aptveriet pēc iespējas vairāk nepārbaudītu līdzskaņu." },
-            { "title": "Uzmaniet dubultos burtus", "text": "Vārdi kā CREEK, FLOSS vai APPLE ir biežas lamatas. Ja norādes neatbilst, padomājiet par atkārtotu burtu." },
-            { "title": "Izmantojiet grūto režīmu, lai uzlabotos", "text": "Grūtais režīms liek izmantot apstiprinātas norādes katrā minējumā. Tas veido labākus paradumus." }
+            {
+                "title": "Sāciet ar patskaņiem bagātu vārdu",
+                "text": "Vārdi kā CRANE, STARE vai ADIEU ātri pārbauda biežos burtus. Zinot, kuri patskaņi ir klāt, strauji sašaurina iespējas."
+            },
+            {
+                "title": "Izmantojiet zināmo",
+                "text": "Zaļie burti paliek savā vietā. Dzeltenajiem jāpārvietojas. Pelēkie ir izslēgti. Katram minējumam jāizmanto visas trīs norādes."
+            },
+            {
+                "title": "Domājiet par biežiem paraugiem",
+                "text": "Angļu vārdi bieži beidzas ar -TION, -IGHT, -OUND, -MENT. Citām valodām ir savi paraugi — iemācieties tos."
+            },
+            {
+                "title": "Izslēdziet, neminiet nejauši",
+                "text": "Otrajam vārdam jāpārbauda jauni burti, nevis jāatkārto apstiprinātos. Aptveriet pēc iespējas vairāk nepārbaudītu līdzskaņu."
+            },
+            {
+                "title": "Uzmaniet dubultos burtus",
+                "text": "Vārdi kā CREEK, FLOSS vai APPLE ir biežas lamatas. Ja norādes neatbilst, padomājiet par atkārtotu burtu."
+            },
+            {
+                "title": "Izmantojiet grūto režīmu, lai uzlabotos",
+                "text": "Grūtais režīms liek izmantot apstiprinātas norādes katrā minējumā. Tas veido labākus paradumus."
+            }
         ],
         "tips_speed": [
-            { "title": "Sāciet ar CRANE vai STARE", "text": "Bieži burti dod vislabāko iespēju ātram atrisinājumam. Katra sekunde ir svarīga." },
-            { "title": "Nepārdomājiet", "text": "Speed Streak atalgo intuīciju. Ja redzat iespējamu vārdu, mēģiniet — kombo bonuss pārsniedz perfektu atrisinājumu." },
-            { "title": "Sargājiet savu kombo", "text": "Neizdevies vārds pārtrauc reizinātāju. Kad neesat pārliecināts, izmantojiet drošu minējumu papildu norāžu iegūšanai." },
-            { "title": "Tiecieties uz atrisinājumu 2–3 minējumos", "text": "Laika bonuss ir milzīgs ātriem atrisinājumiem (+60s par 1 minējumu, +30s par 2). Riskants otrais minējums var ļoti atmaksāties." },
-            { "title": "Iemācieties biežas vārdu galotnes", "text": "Paraugi kā -IGHT, -OUND, -ATCH atkārtojas bieži. To tūlītēja atpazīšana ietaupa sekundes pie katra vārda." },
-            { "title": "Palieciet mierīgi, kad spiediens pieaug", "text": "Taimeris paātrinās ik pēc 3 vārdiem. Steigšanās rada kļūdas un sliktus minējumus. Vienmērīgs temps uzvar paniku." }
+            {
+                "title": "Sāciet ar CRANE vai STARE",
+                "text": "Bieži burti dod vislabāko iespēju ātram atrisinājumam. Katra sekunde ir svarīga."
+            },
+            {
+                "title": "Nepārdomājiet",
+                "text": "Speed Streak atalgo intuīciju. Ja redzat iespējamu vārdu, mēģiniet — kombo bonuss pārsniedz perfektu atrisinājumu."
+            },
+            {
+                "title": "Sargājiet savu kombo",
+                "text": "Neizdevies vārds pārtrauc reizinātāju. Kad neesat pārliecināts, izmantojiet drošu minējumu papildu norāžu iegūšanai."
+            },
+            {
+                "title": "Tiecieties uz atrisinājumu 2–3 minējumos",
+                "text": "Laika bonuss ir milzīgs ātriem atrisinājumiem (+60s par 1 minējumu, +30s par 2). Riskants otrais minējums var ļoti atmaksāties."
+            },
+            {
+                "title": "Iemācieties biežas vārdu galotnes",
+                "text": "Paraugi kā -IGHT, -OUND, -ATCH atkārtojas bieži. To tūlītēja atpazīšana ietaupa sekundes pie katra vārda."
+            },
+            {
+                "title": "Palieciet mierīgi, kad spiediens pieaug",
+                "text": "Taimeris paātrinās ik pēc 3 vārdiem. Steigšanās rada kļūdas un sliktus minējumus. Vienmērīgs temps uzvar paniku."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Sāciet plaši", "text": "Izmantojiet vārdus ar biežiem burtiem (CRANE, STARE), lai vienlaicīgi iegūtu norādes visās dēļos." },
-            { "title": "Vērojiet sadalīto tastatūru", "text": "Tastatūra rāda krāsas katram dēlim. Burts, kas vienā dēlī ir zaļš, bet citā pelēks, ātri sašaurina iespējas." },
-            { "title": "Piešķiriet prioritāti grūtākajiem dēļiem", "text": "Minējumus virziet uz dēli ar visvairāk nezināmajiem. Vieglākie dēļi bieži atrisinās paši." },
-            { "title": "Netērējiet agrīnos minējumus", "text": "Pirmos 2–3 minējumus izmantojiet informatīvi bagātiem vārdiem, pirms mērķējat konkrētus dēļus." },
-            { "title": "Meklējiet kopīgus burtus", "text": "Ja divi dēļi rāda dzeltenu E, vārds ar E jaunā pozīcijā palīdz abiem dēļiem vienlaicīgi." },
-            { "title": "Saglabājiet minējumu ārkārtas gadījumam", "text": "Ja esat iestrēdzis pie pēdējā dēļa, rezerves minējums ir starpība starp uzvaru un zaudējumu." }
+            {
+                "title": "Sāciet plaši",
+                "text": "Izmantojiet vārdus ar biežiem burtiem (CRANE, STARE), lai vienlaicīgi iegūtu norādes visās dēļos."
+            },
+            {
+                "title": "Vērojiet sadalīto tastatūru",
+                "text": "Tastatūra rāda krāsas katram dēlim. Burts, kas vienā dēlī ir zaļš, bet citā pelēks, ātri sašaurina iespējas."
+            },
+            {
+                "title": "Piešķiriet prioritāti grūtākajiem dēļiem",
+                "text": "Minējumus virziet uz dēli ar visvairāk nezināmajiem. Vieglākie dēļi bieži atrisinās paši."
+            },
+            {
+                "title": "Netērējiet agrīnos minējumus",
+                "text": "Pirmos 2–3 minējumus izmantojiet informatīvi bagātiem vārdiem, pirms mērķējat konkrētus dēļus."
+            },
+            {
+                "title": "Meklējiet kopīgus burtus",
+                "text": "Ja divi dēļi rāda dzeltenu E, vārds ar E jaunā pozīcijā palīdz abiem dēļiem vienlaicīgi."
+            },
+            {
+                "title": "Saglabājiet minējumu ārkārtas gadījumam",
+                "text": "Ja esat iestrēdzis pie pēdējā dēļa, rezerves minējums ir starpība starp uzvaru un zaudējumu."
+            }
         ],
         "mode_desc_classic": "Jums ir 6 mēģinājumi, lai uzminētu slēpto 5 burtu vārdu. Izmantojiet krāsu norādes, lai sašaurinātu atbildi.",
         "mode_desc_unlimited": "Jums ir 6 mēģinājumi, lai uzminētu slēpto 5 burtu vārdu. Izmantojiet krāsu norādes, lai sašaurinātu atbildi. Pēc katras spēles spiediet \"Spēlēt vēlreiz\" jaunam vārdam uzreiz — bez ierobežojumiem.",
         "mode_desc_speed": "Sākat ar 3 minūtēm taimerī. Katrs atrisināts vārds dod papildu laiku — mazāk minējumu, lielāks bonuss (+60s par 1 minējumu, +10s par 6). Neizdevušies vārdi maksā 30 sekundes. Veidojiet kombo, risinot vārdus pēc kārtas — reizinātājs līdz 3x. Spiediens pieaug, risinot vairāk vārdu — taimeris paātrinās ik pēc 3 vārdiem.",
         "mode_desc_multiboard": "{modeName} izaicina jūs vienlaicīgi atrisināt {boardCount} Wordle dēļus tikai ar {maxGuesses} minējumiem. Katrs minējums parādās visos neatrisinātajos dēļos vienlaicīgi. Atrisināti dēļi sasalst. Sadalīto krāsu tastatūra rāda, kuri burti ir pareizi kuros dēļos. Sāciet ar biežu burtu vārdiem, lai vienlaicīgi iegūtu norādes visos dēļos.",
         "faq": [
-            { "q": "Kā spēlēt Wordle {langName} valodā?", "a": "Apmeklējiet wordle.global/{lang}, lai spēlētu ikdienas Wordle {langName} valodā. Jums ir 6 mēģinājumi uzminēt 5 burtu vārdu. Pēc katra minējuma flīzes kļūst zaļas (pareizs burts, pareiza vieta), dzeltenas (pareizs burts, nepareiza vieta) vai pelēkas (burta vārdā nav)." },
-            { "q": "Vai katru dienu ir jauna mīkla?", "a": "Jā. Katru dienu tiek izvēlēts jauns vārds. Visi, kas spēlē tajā pašā valodā, saņem to pašu vārdu, tāpēc varat salīdzināt rezultātus ar draugiem." },
-            { "q": "Vai Wordle Global ir bezmaksas?", "a": "Jā. Ikdienas mīkla, neierobežotais režīms un visi spēles režīmi ir pilnībā bezmaksas visās 80+ valodās. Konts vai lejupielāde nav nepieciešama." },
-            { "q": "Vai varu spēlēt vairāk nekā reizi dienā?", "a": "Jā — izmēģiniet neierobežoto režīmu wordle.global/{lang}/unlimited bezgalīgām spēlēm bez gaidīšanas. Jūsu ikdienas sērija tiek skaitīta atsevišķi." }
+            {
+                "q": "Kā spēlēt Wordle {langName} valodā?",
+                "a": "Apmeklējiet wordle.global/{lang}, lai spēlētu ikdienas Wordle {langName} valodā. Jums ir 6 mēģinājumi uzminēt 5 burtu vārdu. Pēc katra minējuma flīzes kļūst zaļas (pareizs burts, pareiza vieta), dzeltenas (pareizs burts, nepareiza vieta) vai pelēkas (burta vārdā nav)."
+            },
+            {
+                "q": "Vai katru dienu ir jauna mīkla?",
+                "a": "Jā. Katru dienu tiek izvēlēts jauns vārds. Visi, kas spēlē tajā pašā valodā, saņem to pašu vārdu, tāpēc varat salīdzināt rezultātus ar draugiem."
+            },
+            {
+                "q": "Vai Wordle Global ir bezmaksas?",
+                "a": "Jā. Ikdienas mīkla, neierobežotais režīms un visi spēles režīmi ir pilnībā bezmaksas visās 80+ valodās. Konts vai lejupielāde nav nepieciešama."
+            },
+            {
+                "q": "Vai varu spēlēt vairāk nekā reizi dienā?",
+                "a": "Jā — izmēģiniet neierobežoto režīmu wordle.global/{lang}/unlimited bezgalīgām spēlēm bez gaidīšanas. Jūsu ikdienas sērija tiek skaitīta atsevišķi."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Kas ir Wordle Unlimited {langName} valodā?", "a": "Wordle Unlimited ļauj spēlēt tik daudz Wordle spēļu, cik vēlaties, {langName} valodā, negaidot rītdienas mīklu. Katrā spēlē saņemat jaunu nejaušu vārdu, ko uzminēt 6 mēģinājumos." },
-                { "q": "Vai Wordle Unlimited ir bezmaksas?", "a": "Jā. Wordle Unlimited ir pilnībā bezmaksas. Bez konta, bez lejupielādes, bez reklāmām spēles laikā." },
-                { "q": "Vai neierobežotais režīms ietekmē manu ikdienas sēriju?", "a": "Nē. Neierobežotajam režīmam ir sava atsevišķa statistika. Jūsu ikdienas sēriju ietekmē tikai ikdienas mīkla." },
-                { "q": "Cik reižu varu spēlēt?", "a": "Ierobežojuma nav. Varat spēlēt tik daudz raundu, cik vēlaties. Pēc katras spēles spiediet \"Spēlēt vēlreiz\" jaunam vārdam uzreiz." },
-                { "q": "Kādās valodās varu spēlēt Wordle Unlimited?", "a": "Wordle Unlimited ir pieejams vairāk nekā 80 valodās vietnē wordle.global, tostarp angļu, spāņu, vācu, somu, arābu, franču, itāļu, portugāļu un daudzās citās." }
+                {
+                    "q": "Kas ir Wordle Unlimited {langName} valodā?",
+                    "a": "Wordle Unlimited ļauj spēlēt tik daudz Wordle spēļu, cik vēlaties, {langName} valodā, negaidot rītdienas mīklu. Katrā spēlē saņemat jaunu nejaušu vārdu, ko uzminēt 6 mēģinājumos."
+                },
+                {
+                    "q": "Vai Wordle Unlimited ir bezmaksas?",
+                    "a": "Jā. Wordle Unlimited ir pilnībā bezmaksas. Bez konta, bez lejupielādes, bez reklāmām spēles laikā."
+                },
+                {
+                    "q": "Vai neierobežotais režīms ietekmē manu ikdienas sēriju?",
+                    "a": "Nē. Neierobežotajam režīmam ir sava atsevišķa statistika. Jūsu ikdienas sēriju ietekmē tikai ikdienas mīkla."
+                },
+                {
+                    "q": "Cik reižu varu spēlēt?",
+                    "a": "Ierobežojuma nav. Varat spēlēt tik daudz raundu, cik vēlaties. Pēc katras spēles spiediet \"Spēlēt vēlreiz\" jaunam vārdam uzreiz."
+                },
+                {
+                    "q": "Kādās valodās varu spēlēt Wordle Unlimited?",
+                    "a": "Wordle Unlimited ir pieejams vairāk nekā 80 valodās vietnē wordle.global, tostarp angļu, spāņu, vācu, somu, arābu, franču, itāļu, portugāļu un daudzās citās."
+                }
             ],
             "speed": [
-                { "q": "Kas ir Speed Streak {langName} valodā?", "a": "Speed Streak ir Wordle režīms ar laika ierobežojumu {langName} valodā. Sākat ar 3 minūtēm un atrisināt pēc iespējas vairāk vārdu. Ātrs atrisinājums dod papildu laiku." },
-                { "q": "Kā darbojas punktu skaitīšana?", "a": "Jūs saņemat punktus par katru atrisināto vārdu. Mazāk minējumu un ātrāki atrisinājumi dod vairāk punktu. Veidojiet kombo, risinot vārdus pēc kārtas — reizinātājs līdz 3x." },
-                { "q": "Kas notiek, kad laiks beidzas?", "a": "Spēle beidzas, un jūs redzat gala rezultātu, atrisināto vārdu skaitu, maksimālo kombo un vidējo minējumu skaitu. Varat uzreiz spēlēt vēlreiz." },
-                { "q": "Vai Speed Streak ir bezmaksas?", "a": "Jā. Speed Streak ir pilnībā bezmaksas visās 80+ valodās. Konts vai lejupielāde nav nepieciešama." }
+                {
+                    "q": "Kas ir Speed Streak {langName} valodā?",
+                    "a": "Speed Streak ir Wordle režīms ar laika ierobežojumu {langName} valodā. Sākat ar 3 minūtēm un atrisināt pēc iespējas vairāk vārdu. Ātrs atrisinājums dod papildu laiku."
+                },
+                {
+                    "q": "Kā darbojas punktu skaitīšana?",
+                    "a": "Jūs saņemat punktus par katru atrisināto vārdu. Mazāk minējumu un ātrāki atrisinājumi dod vairāk punktu. Veidojiet kombo, risinot vārdus pēc kārtas — reizinātājs līdz 3x."
+                },
+                {
+                    "q": "Kas notiek, kad laiks beidzas?",
+                    "a": "Spēle beidzas, un jūs redzat gala rezultātu, atrisināto vārdu skaitu, maksimālo kombo un vidējo minējumu skaitu. Varat uzreiz spēlēt vēlreiz."
+                },
+                {
+                    "q": "Vai Speed Streak ir bezmaksas?",
+                    "a": "Jā. Speed Streak ir pilnībā bezmaksas visās 80+ valodās. Konts vai lejupielāde nav nepieciešama."
+                }
             ],
             "multiboard": [
-                { "q": "Kas ir {modeName} {langName} valodā?", "a": "{modeName} ir vairākdēļu Wordle variācija {langName} valodā. Jūs vienlaicīgi risināt {boardCount} Wordle dēļus ar {maxGuesses} minējumiem. Katrs minējums tiek ievadīts visos neatrisinātajos dēļos vienlaicīgi." },
-                { "q": "Cik minējumu man ir {modeName}?", "a": "Jums ir {maxGuesses} minējumi, lai atrisinātu visus {boardCount} dēļus. Kad dēlis ir atrisināts, tas sasalst, un jūs varat koncentrēties uz atlikušajiem." },
-                { "q": "Kāda stratēģija vislabāk darbojas {modeName}?", "a": "Sāciet ar vārdiem, kas izmanto biežus burtus, lai vienlaicīgi iegūtu informāciju visos {boardCount} dēļos. Vērojiet sadalīto krāsu tastatūru — tā rāda, kuri burti ir pareizi kuros dēļos." },
-                { "q": "Vai {modeName} ir bezmaksas?", "a": "Jā. {modeName} ir pilnībā bezmaksas visās 80+ valodās. Konts vai lejupielāde nav nepieciešama. Spēlējiet tik daudz raundu, cik vēlaties." }
+                {
+                    "q": "Kas ir {modeName} {langName} valodā?",
+                    "a": "{modeName} ir vairākdēļu Wordle variācija {langName} valodā. Jūs vienlaicīgi risināt {boardCount} Wordle dēļus ar {maxGuesses} minējumiem. Katrs minējums tiek ievadīts visos neatrisinātajos dēļos vienlaicīgi."
+                },
+                {
+                    "q": "Cik minējumu man ir {modeName}?",
+                    "a": "Jums ir {maxGuesses} minējumi, lai atrisinātu visus {boardCount} dēļus. Kad dēlis ir atrisināts, tas sasalst, un jūs varat koncentrēties uz atlikušajiem."
+                },
+                {
+                    "q": "Kāda stratēģija vislabāk darbojas {modeName}?",
+                    "a": "Sāciet ar vārdiem, kas izmanto biežus burtus, lai vienlaicīgi iegūtu informāciju visos {boardCount} dēļos. Vērojiet sadalīto krāsu tastatūru — tā rāda, kuri burti ir pareizi kuros dēļos."
+                },
+                {
+                    "q": "Vai {modeName} ir bezmaksas?",
+                    "a": "Jā. {modeName} ir pilnībā bezmaksas visās 80+ valodās. Konts vai lejupielāde nav nepieciešama. Spēlējiet tik daudz raundu, cik vēlaties."
+                }
             ]
         },
         "howto": [
-            { "name": "Ierakstiet vārdu", "text": "Ievadiet derīgu 5 burtu vārdu {langName} valodā, izmantojot ekrāna tastatūru vai fizisko tastatūru, pēc tam nospiediet Enter." },
-            { "name": "Lasiet norādes", "text": "Zaļas flīzes nozīmē, ka burts ir pareizs un pareizajā vietā. Dzeltenas — burts ir vārdā, bet nepareizajā vietā. Pelēkas — burta vārdā nav." },
-            { "name": "Atrisiniet 6 mēģinājumos", "text": "Izmantojiet krāsu norādes, lai sašaurinātu vārdu. Jums ir 6 minējumi. Pēc mīklas apskatiet statistiku un dalieties ar rezultātu." }
+            {
+                "name": "Ierakstiet vārdu",
+                "text": "Ievadiet derīgu 5 burtu vārdu {langName} valodā, izmantojot ekrāna tastatūru vai fizisko tastatūru, pēc tam nospiediet Enter."
+            },
+            {
+                "name": "Lasiet norādes",
+                "text": "Zaļas flīzes nozīmē, ka burts ir pareizs un pareizajā vietā. Dzeltenas — burts ir vārdā, bet nepareizajā vietā. Pelēkas — burta vārdā nav."
+            },
+            {
+                "name": "Atrisiniet 6 mēģinājumos",
+                "text": "Izmantojiet krāsu norādes, lai sašaurinātu vārdu. Jums ir 6 minējumi. Pēc mīklas apskatiet statistiku un dalieties ar rezultātu."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Sāciet spēli", "text": "Apmeklējiet wordle.global/{lang}/unlimited, lai sāktu Wordle Unlimited {langName} valodā. Jums tiek izvēlēts nejaušs 5 burtu vārds." },
-                { "name": "Uzminiet vārdu", "text": "Ierakstiet derīgu 5 burtu vārdu un nospiediet Enter. Zaļas flīzes — pareizs burts pareizajā vietā. Dzeltenas — pareizs burts nepareizajā vietā. Pelēkas — burta vārdā nav." },
-                { "name": "Spēlējiet vēlreiz uzreiz", "text": "Pēc vārda atrisināšanas (vai visu 6 minējumu izlietošanas) spiediet \"Spēlēt vēlreiz\" jaunam vārdam. Nav jāgaida līdz rītdienai." }
+                {
+                    "name": "Sāciet spēli",
+                    "text": "Apmeklējiet wordle.global/{lang}/unlimited, lai sāktu Wordle Unlimited {langName} valodā. Jums tiek izvēlēts nejaušs 5 burtu vārds."
+                },
+                {
+                    "name": "Uzminiet vārdu",
+                    "text": "Ierakstiet derīgu 5 burtu vārdu un nospiediet Enter. Zaļas flīzes — pareizs burts pareizajā vietā. Dzeltenas — pareizs burts nepareizajā vietā. Pelēkas — burta vārdā nav."
+                },
+                {
+                    "name": "Spēlējiet vēlreiz uzreiz",
+                    "text": "Pēc vārda atrisināšanas (vai visu 6 minējumu izlietošanas) spiediet \"Spēlēt vēlreiz\" jaunam vārdam. Nav jāgaida līdz rītdienai."
+                }
             ],
             "speed": [
-                { "name": "Palaidiet taimeri", "text": "Apmeklējiet wordle.global/{lang}/speed un spiediet Sākt. Sākat ar 3 minūtēm taimerī." },
-                { "name": "Ātri risiniet vārdus", "text": "Katrs atrisināts vārds dod papildu laiku (+10s līdz +60s atkarībā no minējumu skaita). Neizdevušies vārdi maksā 30 sekundes." },
-                { "name": "Veidojiet kombo", "text": "Risiniet vārdus pēc kārtas, lai veidotu kombo reizinātāju (līdz 3x). Kombo pārtrūkst, ja vārds neizdodas. Mēģiniet pārspēt savu rekordu." }
+                {
+                    "name": "Palaidiet taimeri",
+                    "text": "Apmeklējiet wordle.global/{lang}/speed un spiediet Sākt. Sākat ar 3 minūtēm taimerī."
+                },
+                {
+                    "name": "Ātri risiniet vārdus",
+                    "text": "Katrs atrisināts vārds dod papildu laiku (+10s līdz +60s atkarībā no minējumu skaita). Neizdevušies vārdi maksā 30 sekundes."
+                },
+                {
+                    "name": "Veidojiet kombo",
+                    "text": "Risiniet vārdus pēc kārtas, lai veidotu kombo reizinātāju (līdz 3x). Kombo pārtrūkst, ja vārds neizdodas. Mēģiniet pārspēt savu rekordu."
+                }
             ],
             "multiboard": [
-                { "name": "Sāciet spēli", "text": "Apmeklējiet wordle.global/{lang}/{modeName}, lai spēlētu {modeName} {langName} valodā. Parādās {boardCount} dēļi ar dažādiem slēptiem vārdiem." },
-                { "name": "Miniet visos dēļos", "text": "Ierakstiet 5 burtu vārdu un nospiediet Enter. Jūsu minējums parādās visos {boardCount} dēļos vienlaicīgi. Katrs dēlis rāda savas krāsu norādes (zaļa, dzeltena, pelēka)." },
-                { "name": "Atrisiniet visus {boardCount} dēļus", "text": "Atrisināti dēļi sasalst savā vietā. Izmantojiet sadalīto krāsu tastatūru, lai sekotu, kuri burti darbojas kuros dēļos. Atrisiniet visus {boardCount} ar {maxGuesses} minējumiem, lai uzvarētu." }
+                {
+                    "name": "Sāciet spēli",
+                    "text": "Apmeklējiet wordle.global/{lang}/{modeName}, lai spēlētu {modeName} {langName} valodā. Parādās {boardCount} dēļi ar dažādiem slēptiem vārdiem."
+                },
+                {
+                    "name": "Miniet visos dēļos",
+                    "text": "Ierakstiet 5 burtu vārdu un nospiediet Enter. Jūsu minējums parādās visos {boardCount} dēļos vienlaicīgi. Katrs dēlis rāda savas krāsu norādes (zaļa, dzeltena, pelēka)."
+                },
+                {
+                    "name": "Atrisiniet visus {boardCount} dēļus",
+                    "text": "Atrisināti dēļi sasalst savā vietā. Izmantojiet sadalīto krāsu tastatūru, lai sekotu, kuri burti darbojas kuros dēļos. Atrisiniet visus {boardCount} ar {maxGuesses} minējumiem, lai uzvarētu."
+                }
             ]
         }
     },
@@ -324,6 +489,14 @@
         "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
-        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     }
 }

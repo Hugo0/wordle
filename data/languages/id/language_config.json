@@ -220,7 +220,15 @@
         "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
-        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     },
     "seo": {
         "how_to_play": "Cara Bermain",
@@ -242,88 +250,253 @@
         "stat_languages": "Bahasa",
         "stat_modes": "Mode Permainan",
         "value_props": [
-            { "key": "languages", "title": "80+ Bahasa", "desc": "Dari Arab sampai Yoruba. Wordle multibahasa terbesar." },
-            { "key": "definitions", "title": "Definisi Kata", "desc": "Pelajari arti setiap kata setelah bermain. Perluas kosakatamu." },
-            { "key": "word_art", "title": "Ilustrasi Kata Unik", "desc": "Setiap kata dilengkapi ilustrasi khusus. Kumpulkan semuanya." },
-            { "key": "themes", "title": "Mode Gelap & Tema", "desc": "Mode terang, gelap, dan kontras tinggi untuk bermain dengan nyaman." },
-            { "key": "pwa", "title": "Bisa di Mana Saja", "desc": "PWA — instal di perangkat apa pun. Bisa offline. Tanpa unduhan." },
-            { "key": "free", "title": "Gratis Selamanya", "desc": "Tanpa akun. Tanpa bayar. Langsung main." }
+            {
+                "key": "languages",
+                "title": "80+ Bahasa",
+                "desc": "Dari Arab sampai Yoruba. Wordle multibahasa terbesar."
+            },
+            {
+                "key": "definitions",
+                "title": "Definisi Kata",
+                "desc": "Pelajari arti setiap kata setelah bermain. Perluas kosakatamu."
+            },
+            {
+                "key": "word_art",
+                "title": "Ilustrasi Kata Unik",
+                "desc": "Setiap kata dilengkapi ilustrasi khusus. Kumpulkan semuanya."
+            },
+            {
+                "key": "themes",
+                "title": "Mode Gelap & Tema",
+                "desc": "Mode terang, gelap, dan kontras tinggi untuk bermain dengan nyaman."
+            },
+            {
+                "key": "pwa",
+                "title": "Bisa di Mana Saja",
+                "desc": "PWA — instal di perangkat apa pun. Bisa offline. Tanpa unduhan."
+            },
+            {
+                "key": "free",
+                "title": "Gratis Selamanya",
+                "desc": "Tanpa akun. Tanpa bayar. Langsung main."
+            }
         ],
         "tips": [
-            { "title": "Mulai dengan kata kaya vokal", "text": "Kata seperti CRANE, STARE, atau ADIEU menguji huruf-huruf umum dengan cepat. Mengetahui vokal mana yang ada sangat mempersempit pilihan." },
-            { "title": "Gunakan yang sudah kamu tahu", "text": "Huruf hijau tetap di tempatnya. Huruf kuning harus pindah posisi. Huruf abu-abu sudah tereliminasi. Setiap tebakan harus memanfaatkan ketiga petunjuk." },
-            { "title": "Pikirkan pola umum", "text": "Kata bahasa Inggris sering berakhiran -TION, -IGHT, -OUND, -MENT. Setiap bahasa punya polanya sendiri — pelajari mereka." },
-            { "title": "Eliminasi, jangan tebak asal", "text": "Kata keduamu harus menguji huruf baru, bukan mengulang yang sudah terkonfirmasi. Cakup sebanyak mungkin konsonan yang belum diuji." },
-            { "title": "Perhatikan huruf ganda", "text": "Kata seperti CREEK, FLOSS, atau APPLE sering jadi jebakan. Kalau petunjuk tidak cocok, pertimbangkan huruf yang berulang." },
-            { "title": "Gunakan mode sulit untuk berlatih", "text": "Mode sulit memaksamu menggunakan petunjuk yang sudah terkonfirmasi di setiap tebakan. Ini membangun kebiasaan yang lebih baik." }
+            {
+                "title": "Mulai dengan kata kaya vokal",
+                "text": "Kata seperti CRANE, STARE, atau ADIEU menguji huruf-huruf umum dengan cepat. Mengetahui vokal mana yang ada sangat mempersempit pilihan."
+            },
+            {
+                "title": "Gunakan yang sudah kamu tahu",
+                "text": "Huruf hijau tetap di tempatnya. Huruf kuning harus pindah posisi. Huruf abu-abu sudah tereliminasi. Setiap tebakan harus memanfaatkan ketiga petunjuk."
+            },
+            {
+                "title": "Pikirkan pola umum",
+                "text": "Kata bahasa Inggris sering berakhiran -TION, -IGHT, -OUND, -MENT. Setiap bahasa punya polanya sendiri — pelajari mereka."
+            },
+            {
+                "title": "Eliminasi, jangan tebak asal",
+                "text": "Kata keduamu harus menguji huruf baru, bukan mengulang yang sudah terkonfirmasi. Cakup sebanyak mungkin konsonan yang belum diuji."
+            },
+            {
+                "title": "Perhatikan huruf ganda",
+                "text": "Kata seperti CREEK, FLOSS, atau APPLE sering jadi jebakan. Kalau petunjuk tidak cocok, pertimbangkan huruf yang berulang."
+            },
+            {
+                "title": "Gunakan mode sulit untuk berlatih",
+                "text": "Mode sulit memaksamu menggunakan petunjuk yang sudah terkonfirmasi di setiap tebakan. Ini membangun kebiasaan yang lebih baik."
+            }
         ],
         "tips_speed": [
-            { "title": "Mulai dengan CRANE atau STARE", "text": "Huruf berfrekuensi tinggi memberi peluang terbaik untuk penyelesaian cepat. Setiap detik sangat berharga." },
-            { "title": "Jangan terlalu banyak mikir", "text": "Speed Streak menghargai insting. Kalau kamu melihat kata yang mungkin benar, langsung coba — bonus combo lebih berharga." },
-            { "title": "Jaga combo-mu", "text": "Gagal memecahkan kata akan mereset multiplier. Kalau ragu, gunakan tebakan aman untuk mengumpulkan petunjuk." },
-            { "title": "Targetkan penyelesaian 2-3 tebakan", "text": "Bonus waktu untuk penyelesaian cepat sangat besar (+60 detik untuk 1 tebakan, +30 detik untuk 2). Tebakan kedua yang berani bisa sangat menguntungkan." },
-            { "title": "Pelajari akhiran kata umum", "text": "Pola seperti -IGHT, -OUND, -ATCH sering berulang. Mengenalinya secara instan menghemat waktu per kata." },
-            { "title": "Tetap tenang saat tekanan naik", "text": "Timer semakin cepat setiap 3 kata. Terburu-buru menyebabkan kesalahan ketik. Tempo stabil mengalahkan kepanikan." }
+            {
+                "title": "Mulai dengan CRANE atau STARE",
+                "text": "Huruf berfrekuensi tinggi memberi peluang terbaik untuk penyelesaian cepat. Setiap detik sangat berharga."
+            },
+            {
+                "title": "Jangan terlalu banyak mikir",
+                "text": "Speed Streak menghargai insting. Kalau kamu melihat kata yang mungkin benar, langsung coba — bonus combo lebih berharga."
+            },
+            {
+                "title": "Jaga combo-mu",
+                "text": "Gagal memecahkan kata akan mereset multiplier. Kalau ragu, gunakan tebakan aman untuk mengumpulkan petunjuk."
+            },
+            {
+                "title": "Targetkan penyelesaian 2-3 tebakan",
+                "text": "Bonus waktu untuk penyelesaian cepat sangat besar (+60 detik untuk 1 tebakan, +30 detik untuk 2). Tebakan kedua yang berani bisa sangat menguntungkan."
+            },
+            {
+                "title": "Pelajari akhiran kata umum",
+                "text": "Pola seperti -IGHT, -OUND, -ATCH sering berulang. Mengenalinya secara instan menghemat waktu per kata."
+            },
+            {
+                "title": "Tetap tenang saat tekanan naik",
+                "text": "Timer semakin cepat setiap 3 kata. Terburu-buru menyebabkan kesalahan ketik. Tempo stabil mengalahkan kepanikan."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Mulai luas", "text": "Gunakan kata dengan huruf umum (CRANE, STARE) untuk mengumpulkan petunjuk di semua papan sekaligus." },
-            { "title": "Perhatikan keyboard terpisah", "text": "Keyboard menampilkan warna per papan. Huruf hijau di satu papan tapi abu-abu di papan lain mempersempit pilihan dengan cepat." },
-            { "title": "Prioritaskan papan yang sulit", "text": "Fokuskan tebakan pada papan dengan paling banyak yang belum diketahui. Papan yang lebih mudah sering terselesaikan sendiri." },
-            { "title": "Jangan sia-siakan tebakan awal", "text": "Gunakan 2-3 tebakan pertama untuk kata-kata kaya informasi sebelum menargetkan papan tertentu." },
-            { "title": "Cari huruf yang sama", "text": "Kalau dua papan sama-sama menunjukkan E kuning, kata dengan E di posisi baru membantu kedua papan sekaligus." },
-            { "title": "Simpan tebakan untuk darurat", "text": "Kalau kamu terjebak di papan terakhir, punya tebakan cadangan adalah perbedaan antara menang dan kalah." }
+            {
+                "title": "Mulai luas",
+                "text": "Gunakan kata dengan huruf umum (CRANE, STARE) untuk mengumpulkan petunjuk di semua papan sekaligus."
+            },
+            {
+                "title": "Perhatikan keyboard terpisah",
+                "text": "Keyboard menampilkan warna per papan. Huruf hijau di satu papan tapi abu-abu di papan lain mempersempit pilihan dengan cepat."
+            },
+            {
+                "title": "Prioritaskan papan yang sulit",
+                "text": "Fokuskan tebakan pada papan dengan paling banyak yang belum diketahui. Papan yang lebih mudah sering terselesaikan sendiri."
+            },
+            {
+                "title": "Jangan sia-siakan tebakan awal",
+                "text": "Gunakan 2-3 tebakan pertama untuk kata-kata kaya informasi sebelum menargetkan papan tertentu."
+            },
+            {
+                "title": "Cari huruf yang sama",
+                "text": "Kalau dua papan sama-sama menunjukkan E kuning, kata dengan E di posisi baru membantu kedua papan sekaligus."
+            },
+            {
+                "title": "Simpan tebakan untuk darurat",
+                "text": "Kalau kamu terjebak di papan terakhir, punya tebakan cadangan adalah perbedaan antara menang dan kalah."
+            }
         ],
         "mode_desc_classic": "Kamu punya 6 tebakan untuk menebak kata tersembunyi 5 huruf. Gunakan petunjuk warna untuk mempersempit jawaban.",
         "mode_desc_unlimited": "Kamu punya 6 tebakan untuk menebak kata tersembunyi 5 huruf. Gunakan petunjuk warna untuk mempersempit jawaban. Setelah setiap permainan, tekan \"Main Lagi\" untuk mendapatkan kata baru langsung — tanpa batas harian.",
         "mode_desc_speed": "Mulai dengan 3 menit di jam. Setiap kata yang kamu selesaikan memberi bonus waktu — selesaikan dengan lebih sedikit tebakan untuk bonus lebih besar (+60 detik untuk 1 tebakan, +10 detik untuk 6). Gagal menebak kata mengurangi 30 detik. Bangun combo dengan menyelesaikan kata berturut-turut untuk multiplier hingga 3x. Tekanan meningkat seiring kamu menyelesaikan lebih banyak kata — timer semakin cepat setiap 3 kata.",
         "mode_desc_multiboard": "{modeName} menantangmu menyelesaikan {boardCount} papan Wordle sekaligus hanya dengan {maxGuesses} tebakan. Setiap tebakan muncul di semua papan yang belum terselesaikan secara bersamaan. Papan yang sudah selesai akan membeku. Keyboard warna terpisah menunjukkan huruf mana yang benar di papan mana. Mulai dengan kata berhuruf umum untuk mengumpulkan petunjuk di semua papan sekaligus.",
         "faq": [
-            { "q": "Bagaimana cara main Wordle dalam {langName}?", "a": "Kunjungi wordle.global/{lang} untuk main Wordle harian dalam {langName}. Kamu punya 6 tebakan untuk menebak kata 5 huruf. Setelah setiap tebakan, ubin berubah hijau (huruf benar, posisi benar), kuning (huruf benar, posisi salah), atau abu-abu (huruf tidak ada di kata)." },
-            { "q": "Apakah ada teka-teki baru setiap hari?", "a": "Ya. Kata baru dipilih setiap hari. Semua yang bermain dalam bahasa yang sama mendapat kata yang sama, jadi kamu bisa membandingkan hasil dengan teman." },
-            { "q": "Apakah Wordle Global gratis?", "a": "Ya. Teka-teki harian, mode unlimited, dan semua mode permainan sepenuhnya gratis dalam 80+ bahasa. Tanpa akun atau unduhan." },
-            { "q": "Bisakah main lebih dari sekali sehari?", "a": "Ya — coba mode Unlimited di wordle.global/{lang}/unlimited untuk permainan tanpa batas tanpa menunggu. Streak harianmu dilacak secara terpisah." }
+            {
+                "q": "Bagaimana cara main Wordle dalam {langName}?",
+                "a": "Kunjungi wordle.global/{lang} untuk main Wordle harian dalam {langName}. Kamu punya 6 tebakan untuk menebak kata 5 huruf. Setelah setiap tebakan, ubin berubah hijau (huruf benar, posisi benar), kuning (huruf benar, posisi salah), atau abu-abu (huruf tidak ada di kata)."
+            },
+            {
+                "q": "Apakah ada teka-teki baru setiap hari?",
+                "a": "Ya. Kata baru dipilih setiap hari. Semua yang bermain dalam bahasa yang sama mendapat kata yang sama, jadi kamu bisa membandingkan hasil dengan teman."
+            },
+            {
+                "q": "Apakah Wordle Global gratis?",
+                "a": "Ya. Teka-teki harian, mode unlimited, dan semua mode permainan sepenuhnya gratis dalam 80+ bahasa. Tanpa akun atau unduhan."
+            },
+            {
+                "q": "Bisakah main lebih dari sekali sehari?",
+                "a": "Ya — coba mode Unlimited di wordle.global/{lang}/unlimited untuk permainan tanpa batas tanpa menunggu. Streak harianmu dilacak secara terpisah."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Apa itu Wordle Unlimited dalam {langName}?", "a": "Wordle Unlimited memungkinkanmu main sebanyak yang kamu mau dalam {langName}, tanpa menunggu teka-teki besok. Setiap permainan memberi kata acak baru untuk ditebak dalam 6 percobaan." },
-                { "q": "Apakah Wordle Unlimited gratis?", "a": "Ya. Wordle Unlimited sepenuhnya gratis. Tanpa akun, tanpa unduhan, tanpa iklan saat bermain." },
-                { "q": "Apakah mode unlimited mempengaruhi streak harian?", "a": "Tidak. Mode unlimited punya statistik terpisah. Streak harianmu hanya dipengaruhi oleh teka-teki harian." },
-                { "q": "Berapa kali bisa main?", "a": "Tidak ada batas. Kamu bisa main sebanyak yang kamu mau. Setelah setiap permainan, tekan \"Main Lagi\" untuk mendapatkan kata baru langsung." },
-                { "q": "Bahasa apa saja yang tersedia untuk Wordle Unlimited?", "a": "Wordle Unlimited tersedia dalam lebih dari 80 bahasa di wordle.global, termasuk Inggris, Spanyol, Jerman, Finlandia, Arab, Prancis, Italia, Portugis, dan banyak lagi." }
+                {
+                    "q": "Apa itu Wordle Unlimited dalam {langName}?",
+                    "a": "Wordle Unlimited memungkinkanmu main sebanyak yang kamu mau dalam {langName}, tanpa menunggu teka-teki besok. Setiap permainan memberi kata acak baru untuk ditebak dalam 6 percobaan."
+                },
+                {
+                    "q": "Apakah Wordle Unlimited gratis?",
+                    "a": "Ya. Wordle Unlimited sepenuhnya gratis. Tanpa akun, tanpa unduhan, tanpa iklan saat bermain."
+                },
+                {
+                    "q": "Apakah mode unlimited mempengaruhi streak harian?",
+                    "a": "Tidak. Mode unlimited punya statistik terpisah. Streak harianmu hanya dipengaruhi oleh teka-teki harian."
+                },
+                {
+                    "q": "Berapa kali bisa main?",
+                    "a": "Tidak ada batas. Kamu bisa main sebanyak yang kamu mau. Setelah setiap permainan, tekan \"Main Lagi\" untuk mendapatkan kata baru langsung."
+                },
+                {
+                    "q": "Bahasa apa saja yang tersedia untuk Wordle Unlimited?",
+                    "a": "Wordle Unlimited tersedia dalam lebih dari 80 bahasa di wordle.global, termasuk Inggris, Spanyol, Jerman, Finlandia, Arab, Prancis, Italia, Portugis, dan banyak lagi."
+                }
             ],
             "speed": [
-                { "q": "Apa itu Speed Streak dalam {langName}?", "a": "Speed Streak adalah mode Wordle berjangka waktu dalam {langName}. Kamu mulai dengan 3 menit dan menyelesaikan sebanyak mungkin kata. Selesaikan kata dengan cepat untuk mendapat bonus waktu." },
-                { "q": "Bagaimana sistem skornya?", "a": "Kamu mendapat poin untuk setiap kata yang diselesaikan. Semakin sedikit tebakan dan semakin cepat penyelesaian memberi poin lebih banyak. Bangun combo dengan menyelesaikan kata berturut-turut — hingga multiplier 3x." },
-                { "q": "Apa yang terjadi saat waktu habis?", "a": "Permainan berakhir dan kamu melihat skor akhir, total kata yang diselesaikan, combo tertinggi, dan rata-rata tebakan. Kamu bisa langsung main lagi." },
-                { "q": "Apakah Speed Streak gratis?", "a": "Ya. Speed Streak sepenuhnya gratis dalam 80+ bahasa. Tanpa akun atau unduhan." }
+                {
+                    "q": "Apa itu Speed Streak dalam {langName}?",
+                    "a": "Speed Streak adalah mode Wordle berjangka waktu dalam {langName}. Kamu mulai dengan 3 menit dan menyelesaikan sebanyak mungkin kata. Selesaikan kata dengan cepat untuk mendapat bonus waktu."
+                },
+                {
+                    "q": "Bagaimana sistem skornya?",
+                    "a": "Kamu mendapat poin untuk setiap kata yang diselesaikan. Semakin sedikit tebakan dan semakin cepat penyelesaian memberi poin lebih banyak. Bangun combo dengan menyelesaikan kata berturut-turut — hingga multiplier 3x."
+                },
+                {
+                    "q": "Apa yang terjadi saat waktu habis?",
+                    "a": "Permainan berakhir dan kamu melihat skor akhir, total kata yang diselesaikan, combo tertinggi, dan rata-rata tebakan. Kamu bisa langsung main lagi."
+                },
+                {
+                    "q": "Apakah Speed Streak gratis?",
+                    "a": "Ya. Speed Streak sepenuhnya gratis dalam 80+ bahasa. Tanpa akun atau unduhan."
+                }
             ],
             "multiboard": [
-                { "q": "Apa itu {modeName} dalam {langName}?", "a": "{modeName} adalah varian Wordle multi-papan dalam {langName}. Kamu menyelesaikan {boardCount} papan Wordle sekaligus dengan {maxGuesses} tebakan. Setiap tebakan dimasukkan ke semua papan yang belum selesai secara bersamaan." },
-                { "q": "Berapa tebakan yang tersedia di {modeName}?", "a": "Kamu punya {maxGuesses} tebakan untuk menyelesaikan semua {boardCount} papan. Setelah papan terselesaikan, papan itu membeku dan kamu bisa fokus ke papan yang tersisa." },
-                { "q": "Strategi apa yang paling bagus untuk {modeName}?", "a": "Mulai dengan kata berhuruf umum untuk mengumpulkan informasi di semua {boardCount} papan sekaligus. Perhatikan keyboard warna terpisah — keyboard menunjukkan huruf mana yang benar di papan mana." },
-                { "q": "Apakah {modeName} gratis?", "a": "Ya. {modeName} sepenuhnya gratis dalam 80+ bahasa. Tanpa akun atau unduhan. Main sebanyak yang kamu mau." }
+                {
+                    "q": "Apa itu {modeName} dalam {langName}?",
+                    "a": "{modeName} adalah varian Wordle multi-papan dalam {langName}. Kamu menyelesaikan {boardCount} papan Wordle sekaligus dengan {maxGuesses} tebakan. Setiap tebakan dimasukkan ke semua papan yang belum selesai secara bersamaan."
+                },
+                {
+                    "q": "Berapa tebakan yang tersedia di {modeName}?",
+                    "a": "Kamu punya {maxGuesses} tebakan untuk menyelesaikan semua {boardCount} papan. Setelah papan terselesaikan, papan itu membeku dan kamu bisa fokus ke papan yang tersisa."
+                },
+                {
+                    "q": "Strategi apa yang paling bagus untuk {modeName}?",
+                    "a": "Mulai dengan kata berhuruf umum untuk mengumpulkan informasi di semua {boardCount} papan sekaligus. Perhatikan keyboard warna terpisah — keyboard menunjukkan huruf mana yang benar di papan mana."
+                },
+                {
+                    "q": "Apakah {modeName} gratis?",
+                    "a": "Ya. {modeName} sepenuhnya gratis dalam 80+ bahasa. Tanpa akun atau unduhan. Main sebanyak yang kamu mau."
+                }
             ]
         },
         "howto": [
-            { "name": "Ketik sebuah kata", "text": "Masukkan kata 5 huruf yang valid dalam {langName} menggunakan keyboard layar atau keyboard fisik, lalu tekan Enter." },
-            { "name": "Baca petunjuknya", "text": "Ubin hijau berarti huruf benar dan di posisi tepat. Kuning berarti huruf ada di kata tapi posisinya salah. Abu-abu berarti huruf tidak ada di kata." },
-            { "name": "Selesaikan dalam 6 tebakan", "text": "Gunakan petunjuk warna untuk mempersempit kata. Kamu punya 6 tebakan total. Setelah teka-teki, lihat statistikmu dan bagikan hasilnya." }
+            {
+                "name": "Ketik sebuah kata",
+                "text": "Masukkan kata 5 huruf yang valid dalam {langName} menggunakan keyboard layar atau keyboard fisik, lalu tekan Enter."
+            },
+            {
+                "name": "Baca petunjuknya",
+                "text": "Ubin hijau berarti huruf benar dan di posisi tepat. Kuning berarti huruf ada di kata tapi posisinya salah. Abu-abu berarti huruf tidak ada di kata."
+            },
+            {
+                "name": "Selesaikan dalam 6 tebakan",
+                "text": "Gunakan petunjuk warna untuk mempersempit kata. Kamu punya 6 tebakan total. Setelah teka-teki, lihat statistikmu dan bagikan hasilnya."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Mulai permainan", "text": "Kunjungi wordle.global/{lang}/unlimited untuk main Wordle Unlimited dalam {langName}. Sebuah kata 5 huruf acak dipilih untukmu." },
-                { "name": "Tebak katanya", "text": "Ketik kata 5 huruf yang valid dan tekan Enter. Ubin hijau berarti huruf benar di posisi tepat. Kuning berarti huruf ada tapi posisi salah. Abu-abu berarti huruf tidak ada di kata." },
-                { "name": "Main lagi langsung", "text": "Setelah menyelesaikan kata (atau menghabiskan 6 tebakan), tekan \"Main Lagi\" untuk kata baru langsung. Tanpa menunggu besok." }
+                {
+                    "name": "Mulai permainan",
+                    "text": "Kunjungi wordle.global/{lang}/unlimited untuk main Wordle Unlimited dalam {langName}. Sebuah kata 5 huruf acak dipilih untukmu."
+                },
+                {
+                    "name": "Tebak katanya",
+                    "text": "Ketik kata 5 huruf yang valid dan tekan Enter. Ubin hijau berarti huruf benar di posisi tepat. Kuning berarti huruf ada tapi posisi salah. Abu-abu berarti huruf tidak ada di kata."
+                },
+                {
+                    "name": "Main lagi langsung",
+                    "text": "Setelah menyelesaikan kata (atau menghabiskan 6 tebakan), tekan \"Main Lagi\" untuk kata baru langsung. Tanpa menunggu besok."
+                }
             ],
             "speed": [
-                { "name": "Mulai timer", "text": "Kunjungi wordle.global/{lang}/speed dan tekan Mulai. Kamu mulai dengan 3 menit di jam." },
-                { "name": "Selesaikan kata dengan cepat", "text": "Setiap kata yang diselesaikan memberi bonus waktu (+10 detik sampai +60 detik tergantung jumlah tebakan). Gagal menebak kata mengurangi 30 detik." },
-                { "name": "Bangun combo-mu", "text": "Selesaikan kata berturut-turut untuk membangun multiplier combo (hingga 3x). Combo hancur kalau kamu gagal. Coba kalahkan skor tertinggimu." }
+                {
+                    "name": "Mulai timer",
+                    "text": "Kunjungi wordle.global/{lang}/speed dan tekan Mulai. Kamu mulai dengan 3 menit di jam."
+                },
+                {
+                    "name": "Selesaikan kata dengan cepat",
+                    "text": "Setiap kata yang diselesaikan memberi bonus waktu (+10 detik sampai +60 detik tergantung jumlah tebakan). Gagal menebak kata mengurangi 30 detik."
+                },
+                {
+                    "name": "Bangun combo-mu",
+                    "text": "Selesaikan kata berturut-turut untuk membangun multiplier combo (hingga 3x). Combo hancur kalau kamu gagal. Coba kalahkan skor tertinggimu."
+                }
             ],
             "multiboard": [
-                { "name": "Mulai permainan", "text": "Kunjungi wordle.global/{lang}/{modeName} untuk main {modeName} dalam {langName}. {boardCount} papan muncul dengan kata tersembunyi yang berbeda." },
-                { "name": "Tebak di semua papan", "text": "Ketik kata 5 huruf dan tekan Enter. Tebakanmu muncul di semua {boardCount} papan sekaligus. Setiap papan menampilkan petunjuk warnanya sendiri (hijau, kuning, abu-abu)." },
-                { "name": "Selesaikan semua {boardCount} papan", "text": "Papan yang terselesaikan akan membeku. Gunakan keyboard warna terpisah untuk melacak huruf mana yang cocok di papan mana. Selesaikan semua {boardCount} dalam {maxGuesses} tebakan untuk menang." }
+                {
+                    "name": "Mulai permainan",
+                    "text": "Kunjungi wordle.global/{lang}/{modeName} untuk main {modeName} dalam {langName}. {boardCount} papan muncul dengan kata tersembunyi yang berbeda."
+                },
+                {
+                    "name": "Tebak di semua papan",
+                    "text": "Ketik kata 5 huruf dan tekan Enter. Tebakanmu muncul di semua {boardCount} papan sekaligus. Setiap papan menampilkan petunjuk warnanya sendiri (hijau, kuning, abu-abu)."
+                },
+                {
+                    "name": "Selesaikan semua {boardCount} papan",
+                    "text": "Papan yang terselesaikan akan membeku. Gunakan keyboard warna terpisah untuk melacak huruf mana yang cocok di papan mana. Selesaikan semua {boardCount} dalam {maxGuesses} tebakan untuk menang."
+                }
             ]
         }
     }

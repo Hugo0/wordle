@@ -219,7 +219,15 @@
         "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
-        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     },
     "seo": {
         "how_to_play": "Ako hrať",
@@ -241,88 +249,253 @@
         "stat_languages": "Jazykov",
         "stat_modes": "Herných režimov",
         "value_props": [
-            { "key": "languages", "title": "80+ jazykov", "desc": "Od arabčiny po jorubčinu. Najväčší viacjazyčný Wordle." },
-            { "key": "definitions", "title": "Definície slov", "desc": "Po každej hre sa dozviete význam slova. Rozšírte si slovnú zásobu." },
-            { "key": "word_art", "title": "Unikátne ilustrácie", "desc": "Ku každému slovu patrí vlastná ilustrácia. Zbierajte ich všetky." },
-            { "key": "themes", "title": "Tmavý režim a témy", "desc": "Svetlý, tmavý a kontrastný režim pre pohodlné hranie." },
-            { "key": "pwa", "title": "Funguje všade", "desc": "PWA — nainštalujte si na akékoľvek zariadenie. Funguje offline. Bez sťahovania." },
-            { "key": "free", "title": "Navždy zadarmo", "desc": "Bez registrácie. Bez platenia. Jednoducho hrajte." }
+            {
+                "key": "languages",
+                "title": "80+ jazykov",
+                "desc": "Od arabčiny po jorubčinu. Najväčší viacjazyčný Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Definície slov",
+                "desc": "Po každej hre sa dozviete význam slova. Rozšírte si slovnú zásobu."
+            },
+            {
+                "key": "word_art",
+                "title": "Unikátne ilustrácie",
+                "desc": "Ku každému slovu patrí vlastná ilustrácia. Zbierajte ich všetky."
+            },
+            {
+                "key": "themes",
+                "title": "Tmavý režim a témy",
+                "desc": "Svetlý, tmavý a kontrastný režim pre pohodlné hranie."
+            },
+            {
+                "key": "pwa",
+                "title": "Funguje všade",
+                "desc": "PWA — nainštalujte si na akékoľvek zariadenie. Funguje offline. Bez sťahovania."
+            },
+            {
+                "key": "free",
+                "title": "Navždy zadarmo",
+                "desc": "Bez registrácie. Bez platenia. Jednoducho hrajte."
+            }
         ],
         "tips": [
-            { "title": "Začnite slovom bohatým na samohlásky", "text": "Slová ako CRANE, STARE alebo ADIEU otestujú najčastejšie písmená. Keď viete, aké samohlásky slovo obsahuje, výrazne zúžite možnosti." },
-            { "title": "Využite všetky nápovedy", "text": "Zelené písmená zostávajú. Žlté sa musia presunúť. Sivé sú vylúčené. Každý pokus by mal zohľadniť všetky tri typy nápovied." },
-            { "title": "Premýšľajte o častých vzorcoch", "text": "Anglické slová často končia na -TION, -IGHT, -OUND, -MENT. Každý jazyk má svoje vlastné vzorce — naučte sa ich." },
-            { "title": "Vylučujte, netipujte naslepo", "text": "Druhý pokus by mal testovať nové písmená, nie opakovať potvrdené. Pokryte čo najviac neotestovaných spoluhlások." },
-            { "title": "Pozor na zdvojené písmená", "text": "Slová ako CREEK, FLOSS alebo APPLE sú častou pascou. Ak nápovedy nedávajú zmysel, zvážte opakujúce sa písmeno." },
-            { "title": "Skúste ťažký režim", "text": "Ťažký režim vás núti používať potvrdené nápovedy v každom pokuse. Buduje lepšie návyky aj po prepnutí späť na normálny." }
+            {
+                "title": "Začnite slovom bohatým na samohlásky",
+                "text": "Slová ako CRANE, STARE alebo ADIEU otestujú najčastejšie písmená. Keď viete, aké samohlásky slovo obsahuje, výrazne zúžite možnosti."
+            },
+            {
+                "title": "Využite všetky nápovedy",
+                "text": "Zelené písmená zostávajú. Žlté sa musia presunúť. Sivé sú vylúčené. Každý pokus by mal zohľadniť všetky tri typy nápovied."
+            },
+            {
+                "title": "Premýšľajte o častých vzorcoch",
+                "text": "Anglické slová často končia na -TION, -IGHT, -OUND, -MENT. Každý jazyk má svoje vlastné vzorce — naučte sa ich."
+            },
+            {
+                "title": "Vylučujte, netipujte naslepo",
+                "text": "Druhý pokus by mal testovať nové písmená, nie opakovať potvrdené. Pokryte čo najviac neotestovaných spoluhlások."
+            },
+            {
+                "title": "Pozor na zdvojené písmená",
+                "text": "Slová ako CREEK, FLOSS alebo APPLE sú častou pascou. Ak nápovedy nedávajú zmysel, zvážte opakujúce sa písmeno."
+            },
+            {
+                "title": "Skúste ťažký režim",
+                "text": "Ťažký režim vás núti používať potvrdené nápovedy v každom pokuse. Buduje lepšie návyky aj po prepnutí späť na normálny."
+            }
         ],
         "tips_speed": [
-            { "title": "Začnite s CRANE alebo STARE", "text": "Časté písmená vám dajú najlepšiu šancu na rýchle vyriešenie. Každá sekunda sa počíta." },
-            { "title": "Nepremýšľajte príliš", "text": "Speed Streak odmeňuje inštinkt. Ak vidíte pravdepodobné slovo, skúste ho — bonus za combo prevýši nedokonalý pokus." },
-            { "title": "Chráňte si combo", "text": "Neúspešný pokus preruší násobič. Keď si nie ste istí, radšej tipnite bezpečne a získajte viac informácií." },
-            { "title": "Cieľte na vyriešenie za 2–3 pokusy", "text": "Časový bonus za rýchle riešenie je obrovský (+60 s za 1 pokus, +30 s za 2). Riskantný druhý tip sa môže vyplatiť." },
-            { "title": "Naučte sa časté koncovky", "text": "Vzorce ako -IGHT, -OUND, -ATCH sa opakujú. Okamžité rozpoznanie ušetrí sekundy pri každom slove." },
-            { "title": "Zachovajte pokoj pri zvyšovaní tlaku", "text": "Časovač zrýchľuje každé 3 slová. Náhlenie vedie k preklepom a zlým pokusom. Stály rytmus prekoná paniku." }
+            {
+                "title": "Začnite s CRANE alebo STARE",
+                "text": "Časté písmená vám dajú najlepšiu šancu na rýchle vyriešenie. Každá sekunda sa počíta."
+            },
+            {
+                "title": "Nepremýšľajte príliš",
+                "text": "Speed Streak odmeňuje inštinkt. Ak vidíte pravdepodobné slovo, skúste ho — bonus za combo prevýši nedokonalý pokus."
+            },
+            {
+                "title": "Chráňte si combo",
+                "text": "Neúspešný pokus preruší násobič. Keď si nie ste istí, radšej tipnite bezpečne a získajte viac informácií."
+            },
+            {
+                "title": "Cieľte na vyriešenie za 2–3 pokusy",
+                "text": "Časový bonus za rýchle riešenie je obrovský (+60 s za 1 pokus, +30 s za 2). Riskantný druhý tip sa môže vyplatiť."
+            },
+            {
+                "title": "Naučte sa časté koncovky",
+                "text": "Vzorce ako -IGHT, -OUND, -ATCH sa opakujú. Okamžité rozpoznanie ušetrí sekundy pri každom slove."
+            },
+            {
+                "title": "Zachovajte pokoj pri zvyšovaní tlaku",
+                "text": "Časovač zrýchľuje každé 3 slová. Náhlenie vedie k preklepom a zlým pokusom. Stály rytmus prekoná paniku."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Začnite naširoko", "text": "Používajte slová s bežnými písmenami (CRANE, STARE), aby ste získali nápovedy na všetkých plochách naraz." },
-            { "title": "Sledujte rozdelenú klávesnicu", "text": "Klávesnica ukazuje farby pre každú plochu. Písmeno zelené na jednej, ale sivé na inej, rýchlo zužuje možnosti." },
-            { "title": "Prednostne riešte ťažké plochy", "text": "Zamerajte pokusy na plochu s najviac neznámymi. Jednoduchšie plochy sa často vyriešia samy." },
-            { "title": "Neplytvajte prvými pokusmi", "text": "Prvých 2–3 pokusov venujte slovám bohatým na informácie, než začnete cieliť na konkrétne plochy." },
-            { "title": "Hľadajte zdieľané písmená", "text": "Ak dve plochy obe ukazujú žlté E, slovo s E na novej pozícii pomôže obom plochám naraz." },
-            { "title": "Nechajte si pokus v zálohe", "text": "Ak sa zaseknete na poslednej ploche, zostávajúci pokus je rozdiel medzi výhrou a prehrou." }
+            {
+                "title": "Začnite naširoko",
+                "text": "Používajte slová s bežnými písmenami (CRANE, STARE), aby ste získali nápovedy na všetkých plochách naraz."
+            },
+            {
+                "title": "Sledujte rozdelenú klávesnicu",
+                "text": "Klávesnica ukazuje farby pre každú plochu. Písmeno zelené na jednej, ale sivé na inej, rýchlo zužuje možnosti."
+            },
+            {
+                "title": "Prednostne riešte ťažké plochy",
+                "text": "Zamerajte pokusy na plochu s najviac neznámymi. Jednoduchšie plochy sa často vyriešia samy."
+            },
+            {
+                "title": "Neplytvajte prvými pokusmi",
+                "text": "Prvých 2–3 pokusov venujte slovám bohatým na informácie, než začnete cieliť na konkrétne plochy."
+            },
+            {
+                "title": "Hľadajte zdieľané písmená",
+                "text": "Ak dve plochy obe ukazujú žlté E, slovo s E na novej pozícii pomôže obom plochám naraz."
+            },
+            {
+                "title": "Nechajte si pokus v zálohe",
+                "text": "Ak sa zaseknete na poslednej ploche, zostávajúci pokus je rozdiel medzi výhrou a prehrou."
+            }
         ],
         "mode_desc_classic": "Máte 6 pokusov na uhádnutie skrytého päťpísmenného slova. Použite farebné nápovedy na zúženie odpovede.",
         "mode_desc_unlimited": "Máte 6 pokusov na uhádnutie skrytého päťpísmenného slova. Použite farebné nápovedy na zúženie odpovede. Po každej hre stlačte «Hrať znovu» a okamžite dostanete nové slovo -- žiadny denný limit.",
         "mode_desc_speed": "Začínate s 3 minútami na hodinách. Za každé vyriešené slovo získate bonusový čas — čím menej pokusov, tým väčší bonus (+60 s za 1 pokus, +10 s za 6). Neúspešné slovo vás stojí 30 sekúnd. Riešte slová po sebe a budujte combo až do 3× násobku skóre. Tlak rastie s každým tretím slovom — časovač zrýchľuje.",
         "mode_desc_multiboard": "{modeName} vás vyzve vyriešiť {boardCount} Wordle plôch naraz iba s {maxGuesses} pokusmi. Každý pokus sa zobrazí na všetkých nevyriešených plochách súčasne. Vyriešené plochy zamrznú. Rozdelená klávesnica ukazuje, ktoré písmená sú správne na ktorých plochách. Začnite slovami s bežnými písmenami, aby ste získali nápovedy na všetkých plochách naraz.",
         "faq": [
-            { "q": "Ako hrať Wordle v {langName}?", "a": "Navštívte wordle.global/{lang} a zahrajte si denný Wordle v {langName}. Máte 6 pokusov na uhádnutie päťpísmenného slova. Po každom pokuse sa dlaždice zafarbia nazeleno (správne písmeno, správna pozícia), nažlto (správne písmeno, nesprávna pozícia) alebo nasivo (písmeno v slove nie je)." },
-            { "q": "Je každý deň nová hádanka?", "a": "Áno. Každý deň sa vyberie nové slovo. Všetci, ktorí hrajú v tom istom jazyku, hádajú to isté slovo, takže si môžete porovnať výsledky s priateľmi." },
-            { "q": "Je Wordle Global zadarmo?", "a": "Áno. Denná hádanka, neobmedzený režim aj všetky herné režimy sú úplne zadarmo vo všetkých 80+ jazykoch. Bez registrácie a bez sťahovania." },
-            { "q": "Môžem hrať viackrát denne?", "a": "Áno — vyskúšajte neobmedzený režim na wordle.global/{lang}/unlimited pre nekonečné hry bez čakania. Vaša denná séria sa počíta osobitne." }
+            {
+                "q": "Ako hrať Wordle v {langName}?",
+                "a": "Navštívte wordle.global/{lang} a zahrajte si denný Wordle v {langName}. Máte 6 pokusov na uhádnutie päťpísmenného slova. Po každom pokuse sa dlaždice zafarbia nazeleno (správne písmeno, správna pozícia), nažlto (správne písmeno, nesprávna pozícia) alebo nasivo (písmeno v slove nie je)."
+            },
+            {
+                "q": "Je každý deň nová hádanka?",
+                "a": "Áno. Každý deň sa vyberie nové slovo. Všetci, ktorí hrajú v tom istom jazyku, hádajú to isté slovo, takže si môžete porovnať výsledky s priateľmi."
+            },
+            {
+                "q": "Je Wordle Global zadarmo?",
+                "a": "Áno. Denná hádanka, neobmedzený režim aj všetky herné režimy sú úplne zadarmo vo všetkých 80+ jazykoch. Bez registrácie a bez sťahovania."
+            },
+            {
+                "q": "Môžem hrať viackrát denne?",
+                "a": "Áno — vyskúšajte neobmedzený režim na wordle.global/{lang}/unlimited pre nekonečné hry bez čakania. Vaša denná séria sa počíta osobitne."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Čo je Wordle Unlimited v {langName}?", "a": "Wordle Unlimited vám umožní hrať v {langName} toľko hier, koľko chcete, bez čakania na zajtrajšiu hádanku. Každá hra vám dá nové náhodné slovo na uhádnutie v 6 pokusoch." },
-                { "q": "Je Wordle Unlimited zadarmo?", "a": "Áno. Wordle Unlimited je úplne zadarmo. Bez registrácie, bez sťahovania, bez reklám počas hry." },
-                { "q": "Počíta sa neobmedzený režim do dennej série?", "a": "Nie. Neobmedzený režim má vlastné štatistiky. Vašu dennú sériu ovplyvňuje iba denná hádanka." },
-                { "q": "Koľkokrát môžem hrať?", "a": "Bez obmedzenia. Môžete hrať toľko kôl, koľko chcete. Po každej hre stlačte «Hrať znovu» a dostanete nové slovo okamžite." },
-                { "q": "V akých jazykoch je Wordle Unlimited k dispozícii?", "a": "Wordle Unlimited je k dispozícii vo viac ako 80 jazykoch na wordle.global, vrátane angličtiny, španielčiny, nemčiny, fínčiny, arabčiny, francúzštiny, taliančiny, portugalčiny a mnohých ďalších." }
+                {
+                    "q": "Čo je Wordle Unlimited v {langName}?",
+                    "a": "Wordle Unlimited vám umožní hrať v {langName} toľko hier, koľko chcete, bez čakania na zajtrajšiu hádanku. Každá hra vám dá nové náhodné slovo na uhádnutie v 6 pokusoch."
+                },
+                {
+                    "q": "Je Wordle Unlimited zadarmo?",
+                    "a": "Áno. Wordle Unlimited je úplne zadarmo. Bez registrácie, bez sťahovania, bez reklám počas hry."
+                },
+                {
+                    "q": "Počíta sa neobmedzený režim do dennej série?",
+                    "a": "Nie. Neobmedzený režim má vlastné štatistiky. Vašu dennú sériu ovplyvňuje iba denná hádanka."
+                },
+                {
+                    "q": "Koľkokrát môžem hrať?",
+                    "a": "Bez obmedzenia. Môžete hrať toľko kôl, koľko chcete. Po každej hre stlačte «Hrať znovu» a dostanete nové slovo okamžite."
+                },
+                {
+                    "q": "V akých jazykoch je Wordle Unlimited k dispozícii?",
+                    "a": "Wordle Unlimited je k dispozícii vo viac ako 80 jazykoch na wordle.global, vrátane angličtiny, španielčiny, nemčiny, fínčiny, arabčiny, francúzštiny, taliančiny, portugalčiny a mnohých ďalších."
+                }
             ],
             "speed": [
-                { "q": "Čo je Speed Streak v {langName}?", "a": "Speed Streak je časový režim Wordle v {langName}. Začínate s 3 minútami a riešite čo najviac slov. Za rýchle vyriešenie získate bonusový čas." },
-                { "q": "Ako funguje bodovanie?", "a": "Za každé vyriešené slovo získate body. Menej pokusov a rýchlejšie riešenie znamená viac bodov. Budujte combo riešením slov po sebe bez chyby — až do 3× násobku." },
-                { "q": "Čo sa stane, keď vyprší čas?", "a": "Hra sa skončí a uvidíte svoje konečné skóre, celkový počet slov, najvyššie combo a priemer pokusov. Môžete hrať znovu hneď." },
-                { "q": "Je Speed Streak zadarmo?", "a": "Áno. Speed Streak je úplne zadarmo vo všetkých 80+ jazykoch. Bez registrácie a bez sťahovania." }
+                {
+                    "q": "Čo je Speed Streak v {langName}?",
+                    "a": "Speed Streak je časový režim Wordle v {langName}. Začínate s 3 minútami a riešite čo najviac slov. Za rýchle vyriešenie získate bonusový čas."
+                },
+                {
+                    "q": "Ako funguje bodovanie?",
+                    "a": "Za každé vyriešené slovo získate body. Menej pokusov a rýchlejšie riešenie znamená viac bodov. Budujte combo riešením slov po sebe bez chyby — až do 3× násobku."
+                },
+                {
+                    "q": "Čo sa stane, keď vyprší čas?",
+                    "a": "Hra sa skončí a uvidíte svoje konečné skóre, celkový počet slov, najvyššie combo a priemer pokusov. Môžete hrať znovu hneď."
+                },
+                {
+                    "q": "Je Speed Streak zadarmo?",
+                    "a": "Áno. Speed Streak je úplne zadarmo vo všetkých 80+ jazykoch. Bez registrácie a bez sťahovania."
+                }
             ],
             "multiboard": [
-                { "q": "Čo je {modeName} v {langName}?", "a": "{modeName} je varianta Wordle s viacerými plochami v {langName}. Riešite {boardCount} Wordle plôch naraz s {maxGuesses} pokusmi. Každý pokus sa zadá na všetky nevyriešené plochy súčasne." },
-                { "q": "Koľko pokusov mám v {modeName}?", "a": "Máte {maxGuesses} pokusov na vyriešenie všetkých {boardCount} plôch. Keď je plocha vyriešená, zamrzne a môžete sa sústrediť na zostávajúce." },
-                { "q": "Aká stratégia funguje najlepšie pre {modeName}?", "a": "Začnite slovami s bežnými písmenami, aby ste získali informácie na všetkých {boardCount} plochách naraz. Sledujte rozdelenú klávesnicu — ukazuje, ktoré písmená sú správne na ktorých plochách." },
-                { "q": "Je {modeName} zadarmo?", "a": "Áno. {modeName} je úplne zadarmo vo všetkých 80+ jazykoch. Bez registrácie a bez sťahovania. Hrajte koľko kôl chcete." }
+                {
+                    "q": "Čo je {modeName} v {langName}?",
+                    "a": "{modeName} je varianta Wordle s viacerými plochami v {langName}. Riešite {boardCount} Wordle plôch naraz s {maxGuesses} pokusmi. Každý pokus sa zadá na všetky nevyriešené plochy súčasne."
+                },
+                {
+                    "q": "Koľko pokusov mám v {modeName}?",
+                    "a": "Máte {maxGuesses} pokusov na vyriešenie všetkých {boardCount} plôch. Keď je plocha vyriešená, zamrzne a môžete sa sústrediť na zostávajúce."
+                },
+                {
+                    "q": "Aká stratégia funguje najlepšie pre {modeName}?",
+                    "a": "Začnite slovami s bežnými písmenami, aby ste získali informácie na všetkých {boardCount} plochách naraz. Sledujte rozdelenú klávesnicu — ukazuje, ktoré písmená sú správne na ktorých plochách."
+                },
+                {
+                    "q": "Je {modeName} zadarmo?",
+                    "a": "Áno. {modeName} je úplne zadarmo vo všetkých 80+ jazykoch. Bez registrácie a bez sťahovania. Hrajte koľko kôl chcete."
+                }
             ]
         },
         "howto": [
-            { "name": "Napíšte slovo", "text": "Zadajte platné päťpísmenné slovo v {langName} pomocou klávesnice na obrazovke alebo fyzickej klávesnice a stlačte Enter." },
-            { "name": "Prečítajte si nápovedy", "text": "Zelené dlaždice znamenajú, že písmeno je správne a na správnom mieste. Žlté znamená, že písmeno je v slove, ale na inom mieste. Sivé znamená, že písmeno v slove nie je." },
-            { "name": "Vyriešte to v 6 pokusoch", "text": "Použite farebné nápovedy na zúženie možností. Máte celkom 6 pokusov. Po hádanke uvidíte svoje štatistiky a môžete zdieľať výsledok." }
+            {
+                "name": "Napíšte slovo",
+                "text": "Zadajte platné päťpísmenné slovo v {langName} pomocou klávesnice na obrazovke alebo fyzickej klávesnice a stlačte Enter."
+            },
+            {
+                "name": "Prečítajte si nápovedy",
+                "text": "Zelené dlaždice znamenajú, že písmeno je správne a na správnom mieste. Žlté znamená, že písmeno je v slove, ale na inom mieste. Sivé znamená, že písmeno v slove nie je."
+            },
+            {
+                "name": "Vyriešte to v 6 pokusoch",
+                "text": "Použite farebné nápovedy na zúženie možností. Máte celkom 6 pokusov. Po hádanke uvidíte svoje štatistiky a môžete zdieľať výsledok."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Začnite hru", "text": "Navštívte wordle.global/{lang}/unlimited a začnite hrať Wordle Unlimited v {langName}. Náhodné päťpísmenné slovo je pre vás pripravené." },
-                { "name": "Hádajte slovo", "text": "Napíšte platné päťpísmenné slovo a stlačte Enter. Zelené dlaždice znamenajú správne písmeno na správnom mieste. Žlté — písmeno je v slove, ale inde. Sivé — písmeno v slove nie je." },
-                { "name": "Hrajte znovu okamžite", "text": "Po vyriešení slova (alebo vyčerpaní všetkých 6 pokusov) stlačte «Hrať znovu» a dostanete nové slovo ihneď. Žiadne čakanie na zajtra." }
+                {
+                    "name": "Začnite hru",
+                    "text": "Navštívte wordle.global/{lang}/unlimited a začnite hrať Wordle Unlimited v {langName}. Náhodné päťpísmenné slovo je pre vás pripravené."
+                },
+                {
+                    "name": "Hádajte slovo",
+                    "text": "Napíšte platné päťpísmenné slovo a stlačte Enter. Zelené dlaždice znamenajú správne písmeno na správnom mieste. Žlté — písmeno je v slove, ale inde. Sivé — písmeno v slove nie je."
+                },
+                {
+                    "name": "Hrajte znovu okamžite",
+                    "text": "Po vyriešení slova (alebo vyčerpaní všetkých 6 pokusov) stlačte «Hrať znovu» a dostanete nové slovo ihneď. Žiadne čakanie na zajtra."
+                }
             ],
             "speed": [
-                { "name": "Spustite časovač", "text": "Navštívte wordle.global/{lang}/speed a stlačte Štart. Začínate s 3 minútami na hodinách." },
-                { "name": "Riešte slová rýchlo", "text": "Za každé vyriešené slovo získate bonusový čas (+10 s až +60 s podľa počtu pokusov). Neúspešné slovo vás stojí 30 sekúnd." },
-                { "name": "Budujte combo", "text": "Riešte slová po sebe a zvyšujte combo násobič (až 3×). Combo sa preruší, ak slovo neuhádnete. Skúste prekonať svoje najlepšie skóre." }
+                {
+                    "name": "Spustite časovač",
+                    "text": "Navštívte wordle.global/{lang}/speed a stlačte Štart. Začínate s 3 minútami na hodinách."
+                },
+                {
+                    "name": "Riešte slová rýchlo",
+                    "text": "Za každé vyriešené slovo získate bonusový čas (+10 s až +60 s podľa počtu pokusov). Neúspešné slovo vás stojí 30 sekúnd."
+                },
+                {
+                    "name": "Budujte combo",
+                    "text": "Riešte slová po sebe a zvyšujte combo násobič (až 3×). Combo sa preruší, ak slovo neuhádnete. Skúste prekonať svoje najlepšie skóre."
+                }
             ],
             "multiboard": [
-                { "name": "Začnite hru", "text": "Navštívte wordle.global/{lang}/{modeName} a hrajte {modeName} v {langName}. Zobrazí sa {boardCount} plôch s rôznymi skrytými slovami." },
-                { "name": "Hádajte naprieč všetkými plochami", "text": "Napíšte päťpísmenné slovo a stlačte Enter. Váš pokus sa zobrazí na všetkých {boardCount} plochách naraz. Každá plocha ukazuje vlastné farebné nápovedy (zelené, žlté, sivé)." },
-                { "name": "Vyriešte všetkých {boardCount} plôch", "text": "Vyriešené plochy zamrznú na mieste. Sledujte rozdelenú klávesnicu, aby ste vedeli, ktoré písmená fungujú na ktorých plochách. Vyriešte všetkých {boardCount} v rámci {maxGuesses} pokusov a vyhrajte." }
+                {
+                    "name": "Začnite hru",
+                    "text": "Navštívte wordle.global/{lang}/{modeName} a hrajte {modeName} v {langName}. Zobrazí sa {boardCount} plôch s rôznymi skrytými slovami."
+                },
+                {
+                    "name": "Hádajte naprieč všetkými plochami",
+                    "text": "Napíšte päťpísmenné slovo a stlačte Enter. Váš pokus sa zobrazí na všetkých {boardCount} plochách naraz. Každá plocha ukazuje vlastné farebné nápovedy (zelené, žlté, sivé)."
+                },
+                {
+                    "name": "Vyriešte všetkých {boardCount} plôch",
+                    "text": "Vyriešené plochy zamrznú na mieste. Sledujte rozdelenú klávesnicu, aby ste vedeli, ktoré písmená fungujú na ktorých plochách. Vyriešte všetkých {boardCount} v rámci {maxGuesses} pokusov a vyhrajte."
+                }
             ]
         }
     },

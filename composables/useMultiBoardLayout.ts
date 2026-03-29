@@ -29,6 +29,7 @@ export function useMultiBoardLayout(
 ) {
     return computed<MultiBoardLayoutConfig>(() => {
         const bc = boardCount.value;
+        const mg = maxGuesses.value;
         const w = containerWidth.value;
         const isMobile = w < 640;
 

@@ -251,7 +251,15 @@
         "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
-        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     },
     "seo": {
         "how_to_play": "Hoe te spelen",
@@ -273,88 +281,253 @@
         "stat_languages": "Talen",
         "stat_modes": "Spelmodi",
         "value_props": [
-            { "key": "languages", "title": "80+ talen", "desc": "Van Arabisch tot Yoruba. De grootste meertalige Wordle." },
-            { "key": "definitions", "title": "Woorddefinities", "desc": "Leer de betekenis van elk woord na het spelen. Vergroot je woordenschat." },
-            { "key": "word_art", "title": "Unieke woordkunst", "desc": "Elk woord heeft een unieke illustratie. Verzamel ze allemaal." },
-            { "key": "themes", "title": "Donkere modus & thema's", "desc": "Licht, donker en hoog contrast voor comfortabel spelen." },
-            { "key": "pwa", "title": "Werkt overal", "desc": "PWA — installeer op elk apparaat. Werkt offline. Geen download nodig." },
-            { "key": "free", "title": "Voor altijd gratis", "desc": "Geen account nodig. Geen betaalmuur. Gewoon spelen." }
+            {
+                "key": "languages",
+                "title": "80+ talen",
+                "desc": "Van Arabisch tot Yoruba. De grootste meertalige Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Woorddefinities",
+                "desc": "Leer de betekenis van elk woord na het spelen. Vergroot je woordenschat."
+            },
+            {
+                "key": "word_art",
+                "title": "Unieke woordkunst",
+                "desc": "Elk woord heeft een unieke illustratie. Verzamel ze allemaal."
+            },
+            {
+                "key": "themes",
+                "title": "Donkere modus & thema's",
+                "desc": "Licht, donker en hoog contrast voor comfortabel spelen."
+            },
+            {
+                "key": "pwa",
+                "title": "Werkt overal",
+                "desc": "PWA — installeer op elk apparaat. Werkt offline. Geen download nodig."
+            },
+            {
+                "key": "free",
+                "title": "Voor altijd gratis",
+                "desc": "Geen account nodig. Geen betaalmuur. Gewoon spelen."
+            }
         ],
         "tips": [
-            { "title": "Begin met een klinkerrijk woord", "text": "Woorden als CRANE, STARE of ADIEU testen veelvoorkomende letters snel. Weten welke klinkers aanwezig zijn, verkleint de opties snel." },
-            { "title": "Gebruik wat je weet", "text": "Groene letters blijven op hun plek. Gele letters moeten verplaatst worden. Grijze letters zijn uitgesloten. Elke gok moet alle drie de aanwijzingen gebruiken." },
-            { "title": "Denk aan veelvoorkomende patronen", "text": "Engelse woorden eindigen vaak op -TION, -IGHT, -OUND, -MENT. Elke taal heeft eigen patronen — leer ze kennen." },
-            { "title": "Elimineer, gok niet willekeurig", "text": "Je tweede woord moet nieuwe letters testen, niet bevestigde letters herhalen. Dek zoveel mogelijk ongeteste medeklinkers." },
-            { "title": "Let op dubbele letters", "text": "Woorden als CREEK, FLOSS of APPLE zijn veelvoorkomende valkuilen. Als de aanwijzingen niet kloppen, overweeg een herhaalde letter." },
-            { "title": "Gebruik de moeilijke modus om te verbeteren", "text": "De moeilijke modus dwingt je om bevestigde aanwijzingen in elke gok te gebruiken. Het bouwt betere gewoontes op, ook als je terugschakelt naar normaal." }
+            {
+                "title": "Begin met een klinkerrijk woord",
+                "text": "Woorden als CRANE, STARE of ADIEU testen veelvoorkomende letters snel. Weten welke klinkers aanwezig zijn, verkleint de opties snel."
+            },
+            {
+                "title": "Gebruik wat je weet",
+                "text": "Groene letters blijven op hun plek. Gele letters moeten verplaatst worden. Grijze letters zijn uitgesloten. Elke gok moet alle drie de aanwijzingen gebruiken."
+            },
+            {
+                "title": "Denk aan veelvoorkomende patronen",
+                "text": "Engelse woorden eindigen vaak op -TION, -IGHT, -OUND, -MENT. Elke taal heeft eigen patronen — leer ze kennen."
+            },
+            {
+                "title": "Elimineer, gok niet willekeurig",
+                "text": "Je tweede woord moet nieuwe letters testen, niet bevestigde letters herhalen. Dek zoveel mogelijk ongeteste medeklinkers."
+            },
+            {
+                "title": "Let op dubbele letters",
+                "text": "Woorden als CREEK, FLOSS of APPLE zijn veelvoorkomende valkuilen. Als de aanwijzingen niet kloppen, overweeg een herhaalde letter."
+            },
+            {
+                "title": "Gebruik de moeilijke modus om te verbeteren",
+                "text": "De moeilijke modus dwingt je om bevestigde aanwijzingen in elke gok te gebruiken. Het bouwt betere gewoontes op, ook als je terugschakelt naar normaal."
+            }
         ],
         "tips_speed": [
-            { "title": "Begin met CRANE of STARE", "text": "Hoogfrequente letters geven de beste kans op een snelle oplossing. Elke seconde telt." },
-            { "title": "Denk niet te lang na", "text": "Speed Streak beloont intuïtie. Als je een waarschijnlijk woord ziet, ga ervoor — de combobonus weegt zwaarder dan een perfecte oplossing." },
-            { "title": "Bescherm je combo", "text": "Een mislukt woord breekt je vermenigvuldiger. Bij twijfel, gebruik een veilige gok om meer aanwijzingen te verzamelen in plaats van te riskeren." },
-            { "title": "Mik op 2-3 pogingen", "text": "De tijdbonus is enorm voor snelle oplossingen (+60s voor 1 poging, +30s voor 2). Een riskante tweede gok kan flink opleveren." },
-            { "title": "Leer veelvoorkomende woorduitgangen", "text": "Patronen als -IGHT, -OUND, -ATCH komen vaak terug. Ze direct herkennen bespaart seconden per woord." },
-            { "title": "Blijf kalm als de druk toeneemt", "text": "De timer versnelt elke 3 woorden. Haasten leidt tot typefouten en slechte gokken. Een stabiel tempo wint van paniek." }
+            {
+                "title": "Begin met CRANE of STARE",
+                "text": "Hoogfrequente letters geven de beste kans op een snelle oplossing. Elke seconde telt."
+            },
+            {
+                "title": "Denk niet te lang na",
+                "text": "Speed Streak beloont intuïtie. Als je een waarschijnlijk woord ziet, ga ervoor — de combobonus weegt zwaarder dan een perfecte oplossing."
+            },
+            {
+                "title": "Bescherm je combo",
+                "text": "Een mislukt woord breekt je vermenigvuldiger. Bij twijfel, gebruik een veilige gok om meer aanwijzingen te verzamelen in plaats van te riskeren."
+            },
+            {
+                "title": "Mik op 2-3 pogingen",
+                "text": "De tijdbonus is enorm voor snelle oplossingen (+60s voor 1 poging, +30s voor 2). Een riskante tweede gok kan flink opleveren."
+            },
+            {
+                "title": "Leer veelvoorkomende woorduitgangen",
+                "text": "Patronen als -IGHT, -OUND, -ATCH komen vaak terug. Ze direct herkennen bespaart seconden per woord."
+            },
+            {
+                "title": "Blijf kalm als de druk toeneemt",
+                "text": "De timer versnelt elke 3 woorden. Haasten leidt tot typefouten en slechte gokken. Een stabiel tempo wint van paniek."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Begin breed", "text": "Gebruik woorden met veelvoorkomende letters (CRANE, STARE) om aanwijzingen van alle borden tegelijk te verzamelen." },
-            { "title": "Let op het gesplitste toetsenbord", "text": "Het toetsenbord toont kleuren per bord. Een letter die groen is op één bord maar grijs op een ander, verkleint de opties snel." },
-            { "title": "Geef prioriteit aan moeilijke borden", "text": "Richt je gokken op het bord met de meeste onbekenden. Makkelijkere borden lossen zich vaak vanzelf op." },
-            { "title": "Verspil geen vroege pogingen", "text": "Gebruik de eerste 2-3 voor informatierijke woorden voordat je specifieke borden aanpakt." },
-            { "title": "Zoek gedeelde letters", "text": "Als twee borden allebei een gele E tonen, helpt een woord met E op een nieuwe positie beide borden tegelijk." },
-            { "title": "Bewaar een poging voor noodgevallen", "text": "Als je vastzit op het laatste bord, maakt een reservepoging het verschil tussen winnen en verliezen." }
+            {
+                "title": "Begin breed",
+                "text": "Gebruik woorden met veelvoorkomende letters (CRANE, STARE) om aanwijzingen van alle borden tegelijk te verzamelen."
+            },
+            {
+                "title": "Let op het gesplitste toetsenbord",
+                "text": "Het toetsenbord toont kleuren per bord. Een letter die groen is op één bord maar grijs op een ander, verkleint de opties snel."
+            },
+            {
+                "title": "Geef prioriteit aan moeilijke borden",
+                "text": "Richt je gokken op het bord met de meeste onbekenden. Makkelijkere borden lossen zich vaak vanzelf op."
+            },
+            {
+                "title": "Verspil geen vroege pogingen",
+                "text": "Gebruik de eerste 2-3 voor informatierijke woorden voordat je specifieke borden aanpakt."
+            },
+            {
+                "title": "Zoek gedeelde letters",
+                "text": "Als twee borden allebei een gele E tonen, helpt een woord met E op een nieuwe positie beide borden tegelijk."
+            },
+            {
+                "title": "Bewaar een poging voor noodgevallen",
+                "text": "Als je vastzit op het laatste bord, maakt een reservepoging het verschil tussen winnen en verliezen."
+            }
         ],
         "mode_desc_classic": "Je hebt 6 pogingen om een verborgen woord van 5 letters te raden. Gebruik de kleuraanwijzingen om het antwoord te beperken.",
         "mode_desc_unlimited": "Je hebt 6 pogingen om een verborgen woord van 5 letters te raden. Gebruik de kleuraanwijzingen om het antwoord te beperken. Na elk spel druk je op \"Opnieuw spelen\" voor direct een nieuw woord — geen dagelijkse limiet.",
         "mode_desc_speed": "Je begint met 3 minuten op de klok. Elk opgelost woord levert bonustijd op — minder pogingen betekent een grotere bonus (+60s voor 1 poging, +10s voor 6). Een mislukt woord kost 30 seconden. Bouw combo's op door achtereenvolgens woorden op te lossen voor een vermenigvuldiger tot 3x. De druk neemt toe naarmate je meer woorden oplost — de timer versnelt elke 3 woorden.",
         "mode_desc_multiboard": "{modeName} daagt je uit om {boardCount} Wordle-borden tegelijk op te lossen met slechts {maxGuesses} pogingen. Elke gok verschijnt op alle onopgeloste borden tegelijk. Opgeloste borden worden bevroren. Het gesplitste kleurentoetsenbord laat zien welke letters correct zijn op welke borden. Begin met woorden met veelvoorkomende letters om aanwijzingen van alle borden tegelijk te verzamelen.",
         "faq": [
-            { "q": "Hoe speel ik Wordle in het {langName}?", "a": "Ga naar wordle.global/{lang} om de dagelijkse Wordle in het {langName} te spelen. Je hebt 6 pogingen om een woord van 5 letters te raden. Na elke gok worden de tegels groen (juiste letter, juiste plek), geel (juiste letter, verkeerde plek) of grijs (letter niet in het woord)." },
-            { "q": "Is er elke dag een nieuwe puzzel?", "a": "Ja. Er wordt elke dag een nieuw woord gekozen. Iedereen die in dezelfde taal speelt, krijgt hetzelfde woord, zodat je resultaten kunt vergelijken met vrienden." },
-            { "q": "Is Wordle Global gratis?", "a": "Ja. De dagelijkse puzzel, onbeperkte modus en alle spelmodi zijn volledig gratis in alle 80+ talen. Geen account of download nodig." },
-            { "q": "Kan ik meer dan één keer per dag spelen?", "a": "Ja — probeer de Unlimited modus op wordle.global/{lang}/unlimited voor eindeloze spellen zonder wachten. Je dagelijkse reeks wordt apart bijgehouden." }
+            {
+                "q": "Hoe speel ik Wordle in het {langName}?",
+                "a": "Ga naar wordle.global/{lang} om de dagelijkse Wordle in het {langName} te spelen. Je hebt 6 pogingen om een woord van 5 letters te raden. Na elke gok worden de tegels groen (juiste letter, juiste plek), geel (juiste letter, verkeerde plek) of grijs (letter niet in het woord)."
+            },
+            {
+                "q": "Is er elke dag een nieuwe puzzel?",
+                "a": "Ja. Er wordt elke dag een nieuw woord gekozen. Iedereen die in dezelfde taal speelt, krijgt hetzelfde woord, zodat je resultaten kunt vergelijken met vrienden."
+            },
+            {
+                "q": "Is Wordle Global gratis?",
+                "a": "Ja. De dagelijkse puzzel, onbeperkte modus en alle spelmodi zijn volledig gratis in alle 80+ talen. Geen account of download nodig."
+            },
+            {
+                "q": "Kan ik meer dan één keer per dag spelen?",
+                "a": "Ja — probeer de Unlimited modus op wordle.global/{lang}/unlimited voor eindeloze spellen zonder wachten. Je dagelijkse reeks wordt apart bijgehouden."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Wat is Wordle Unlimited in het {langName}?", "a": "Wordle Unlimited laat je zoveel Wordle-spellen spelen als je wilt in het {langName}, zonder te wachten op de dagelijkse puzzel van morgen. Elk spel geeft je een nieuw willekeurig woord om te raden in 6 pogingen." },
-                { "q": "Is Wordle Unlimited gratis?", "a": "Ja. Wordle Unlimited is volledig gratis. Geen account, geen download, geen advertenties tijdens het spelen." },
-                { "q": "Telt de onbeperkte modus mee voor mijn dagelijkse reeks?", "a": "Nee. De onbeperkte modus heeft eigen aparte statistieken. Je dagelijkse reeks wordt alleen beïnvloed door de dagelijkse puzzel." },
-                { "q": "Hoe vaak kan ik spelen?", "a": "Er is geen limiet. Je kunt zoveel rondes spelen als je wilt. Na elk spel druk je op \"Opnieuw spelen\" om direct een nieuw woord te krijgen." },
-                { "q": "In welke talen kan ik Wordle Unlimited spelen?", "a": "Wordle Unlimited is beschikbaar in meer dan 80 talen op wordle.global, waaronder Engels, Spaans, Duits, Fins, Arabisch, Frans, Italiaans, Portugees en nog veel meer." }
+                {
+                    "q": "Wat is Wordle Unlimited in het {langName}?",
+                    "a": "Wordle Unlimited laat je zoveel Wordle-spellen spelen als je wilt in het {langName}, zonder te wachten op de dagelijkse puzzel van morgen. Elk spel geeft je een nieuw willekeurig woord om te raden in 6 pogingen."
+                },
+                {
+                    "q": "Is Wordle Unlimited gratis?",
+                    "a": "Ja. Wordle Unlimited is volledig gratis. Geen account, geen download, geen advertenties tijdens het spelen."
+                },
+                {
+                    "q": "Telt de onbeperkte modus mee voor mijn dagelijkse reeks?",
+                    "a": "Nee. De onbeperkte modus heeft eigen aparte statistieken. Je dagelijkse reeks wordt alleen beïnvloed door de dagelijkse puzzel."
+                },
+                {
+                    "q": "Hoe vaak kan ik spelen?",
+                    "a": "Er is geen limiet. Je kunt zoveel rondes spelen als je wilt. Na elk spel druk je op \"Opnieuw spelen\" om direct een nieuw woord te krijgen."
+                },
+                {
+                    "q": "In welke talen kan ik Wordle Unlimited spelen?",
+                    "a": "Wordle Unlimited is beschikbaar in meer dan 80 talen op wordle.global, waaronder Engels, Spaans, Duits, Fins, Arabisch, Frans, Italiaans, Portugees en nog veel meer."
+                }
             ],
             "speed": [
-                { "q": "Wat is Speed Streak in het {langName}?", "a": "Speed Streak is een Wordle-modus op tijd in het {langName}. Je begint met 3 minuten op de klok en lost zoveel mogelijk woorden op. Los een woord snel op om bonustijd te verdienen." },
-                { "q": "Hoe werkt het puntensysteem?", "a": "Je verdient punten voor elk opgelost woord. Minder pogingen en sneller oplossen leveren meer punten op. Bouw een combo op door woorden achter elkaar op te lossen zonder te falen — tot een 3x vermenigvuldiger." },
-                { "q": "Wat gebeurt er als de tijd op is?", "a": "Het spel eindigt en je ziet je eindscore, totaal opgeloste woorden, maximale combo en gemiddeld aantal pogingen. Je kunt direct opnieuw spelen." },
-                { "q": "Is Speed Streak gratis?", "a": "Ja. Speed Streak is volledig gratis in alle 80+ talen. Geen account of download nodig." }
+                {
+                    "q": "Wat is Speed Streak in het {langName}?",
+                    "a": "Speed Streak is een Wordle-modus op tijd in het {langName}. Je begint met 3 minuten op de klok en lost zoveel mogelijk woorden op. Los een woord snel op om bonustijd te verdienen."
+                },
+                {
+                    "q": "Hoe werkt het puntensysteem?",
+                    "a": "Je verdient punten voor elk opgelost woord. Minder pogingen en sneller oplossen leveren meer punten op. Bouw een combo op door woorden achter elkaar op te lossen zonder te falen — tot een 3x vermenigvuldiger."
+                },
+                {
+                    "q": "Wat gebeurt er als de tijd op is?",
+                    "a": "Het spel eindigt en je ziet je eindscore, totaal opgeloste woorden, maximale combo en gemiddeld aantal pogingen. Je kunt direct opnieuw spelen."
+                },
+                {
+                    "q": "Is Speed Streak gratis?",
+                    "a": "Ja. Speed Streak is volledig gratis in alle 80+ talen. Geen account of download nodig."
+                }
             ],
             "multiboard": [
-                { "q": "Wat is {modeName} in het {langName}?", "a": "{modeName} is een Wordle-variant met meerdere borden in het {langName}. Je lost {boardCount} Wordle-borden tegelijk op met {maxGuesses} pogingen. Elke gok wordt op alle onopgeloste borden tegelijk ingevoerd." },
-                { "q": "Hoeveel pogingen krijg ik bij {modeName}?", "a": "Je krijgt {maxGuesses} pogingen om alle {boardCount} borden op te lossen. Zodra een bord is opgelost, bevriest het en kun je je richten op de overige borden." },
-                { "q": "Welke strategie werkt het best voor {modeName}?", "a": "Begin met woorden die veelvoorkomende letters gebruiken om informatie te verzamelen van alle {boardCount} borden tegelijk. Let op het gesplitste kleurentoetsenbord — het laat zien welke letters correct zijn op welke borden." },
-                { "q": "Is {modeName} gratis?", "a": "Ja. {modeName} is volledig gratis in alle 80+ talen. Geen account of download nodig. Speel zoveel rondes als je wilt." }
+                {
+                    "q": "Wat is {modeName} in het {langName}?",
+                    "a": "{modeName} is een Wordle-variant met meerdere borden in het {langName}. Je lost {boardCount} Wordle-borden tegelijk op met {maxGuesses} pogingen. Elke gok wordt op alle onopgeloste borden tegelijk ingevoerd."
+                },
+                {
+                    "q": "Hoeveel pogingen krijg ik bij {modeName}?",
+                    "a": "Je krijgt {maxGuesses} pogingen om alle {boardCount} borden op te lossen. Zodra een bord is opgelost, bevriest het en kun je je richten op de overige borden."
+                },
+                {
+                    "q": "Welke strategie werkt het best voor {modeName}?",
+                    "a": "Begin met woorden die veelvoorkomende letters gebruiken om informatie te verzamelen van alle {boardCount} borden tegelijk. Let op het gesplitste kleurentoetsenbord — het laat zien welke letters correct zijn op welke borden."
+                },
+                {
+                    "q": "Is {modeName} gratis?",
+                    "a": "Ja. {modeName} is volledig gratis in alle 80+ talen. Geen account of download nodig. Speel zoveel rondes als je wilt."
+                }
             ]
         },
         "howto": [
-            { "name": "Typ een woord", "text": "Voer een geldig woord van 5 letters in het {langName} in met het schermtoetsenbord of je fysieke toetsenbord en druk op Enter." },
-            { "name": "Lees de aanwijzingen", "text": "Groene tegels betekenen dat de letter correct is en op de juiste plek staat. Geel betekent dat de letter in het woord zit maar op de verkeerde plek. Grijs betekent dat de letter niet in het woord zit." },
-            { "name": "Los op in 6 pogingen", "text": "Gebruik de kleuraanwijzingen om het woord te beperken. Je hebt in totaal 6 pogingen. Na de puzzel zie je je statistieken en kun je je resultaat delen." }
+            {
+                "name": "Typ een woord",
+                "text": "Voer een geldig woord van 5 letters in het {langName} in met het schermtoetsenbord of je fysieke toetsenbord en druk op Enter."
+            },
+            {
+                "name": "Lees de aanwijzingen",
+                "text": "Groene tegels betekenen dat de letter correct is en op de juiste plek staat. Geel betekent dat de letter in het woord zit maar op de verkeerde plek. Grijs betekent dat de letter niet in het woord zit."
+            },
+            {
+                "name": "Los op in 6 pogingen",
+                "text": "Gebruik de kleuraanwijzingen om het woord te beperken. Je hebt in totaal 6 pogingen. Na de puzzel zie je je statistieken en kun je je resultaat delen."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Start een spel", "text": "Ga naar wordle.global/{lang}/unlimited om Wordle Unlimited in het {langName} te spelen. Er wordt een willekeurig woord van 5 letters voor je gekozen." },
-                { "name": "Raad het woord", "text": "Typ een geldig woord van 5 letters en druk op Enter. Groene tegels betekenen dat de letter correct is en op de juiste plek staat. Geel betekent dat de letter in het woord zit maar op de verkeerde plek. Grijs betekent dat de letter niet in het woord zit." },
-                { "name": "Speel direct opnieuw", "text": "Na het oplossen van het woord (of het gebruiken van alle 6 pogingen), druk op \"Opnieuw spelen\" om direct een nieuw woord te krijgen. Geen wachten tot morgen." }
+                {
+                    "name": "Start een spel",
+                    "text": "Ga naar wordle.global/{lang}/unlimited om Wordle Unlimited in het {langName} te spelen. Er wordt een willekeurig woord van 5 letters voor je gekozen."
+                },
+                {
+                    "name": "Raad het woord",
+                    "text": "Typ een geldig woord van 5 letters en druk op Enter. Groene tegels betekenen dat de letter correct is en op de juiste plek staat. Geel betekent dat de letter in het woord zit maar op de verkeerde plek. Grijs betekent dat de letter niet in het woord zit."
+                },
+                {
+                    "name": "Speel direct opnieuw",
+                    "text": "Na het oplossen van het woord (of het gebruiken van alle 6 pogingen), druk op \"Opnieuw spelen\" om direct een nieuw woord te krijgen. Geen wachten tot morgen."
+                }
             ],
             "speed": [
-                { "name": "Start de timer", "text": "Ga naar wordle.global/{lang}/speed en druk op Start. Je begint met 3 minuten op de klok." },
-                { "name": "Los woorden snel op", "text": "Elk opgelost woord levert bonustijd op (+10s tot +60s, afhankelijk van het aantal pogingen). Een mislukt woord kost 30 seconden." },
-                { "name": "Bouw je combo op", "text": "Los woorden achter elkaar op om een combovermenigvuldiger op te bouwen (tot 3x). De combo breekt als je een woord mist. Probeer je highscore te verslaan." }
+                {
+                    "name": "Start de timer",
+                    "text": "Ga naar wordle.global/{lang}/speed en druk op Start. Je begint met 3 minuten op de klok."
+                },
+                {
+                    "name": "Los woorden snel op",
+                    "text": "Elk opgelost woord levert bonustijd op (+10s tot +60s, afhankelijk van het aantal pogingen). Een mislukt woord kost 30 seconden."
+                },
+                {
+                    "name": "Bouw je combo op",
+                    "text": "Los woorden achter elkaar op om een combovermenigvuldiger op te bouwen (tot 3x). De combo breekt als je een woord mist. Probeer je highscore te verslaan."
+                }
             ],
             "multiboard": [
-                { "name": "Start een spel", "text": "Ga naar wordle.global/{lang}/{modeName} om {modeName} in het {langName} te spelen. {boardCount} borden verschijnen met verschillende verborgen woorden." },
-                { "name": "Raad op alle borden", "text": "Typ een woord van 5 letters en druk op Enter. Je gok verschijnt op alle {boardCount} borden tegelijk. Elk bord toont eigen kleuraanwijzingen (groen, geel, grijs)." },
-                { "name": "Los alle {boardCount} borden op", "text": "Opgeloste borden bevriezen op hun plek. Gebruik het gesplitste kleurentoetsenbord om bij te houden welke letters werken op welke borden. Los alle {boardCount} op binnen {maxGuesses} pogingen om te winnen." }
+                {
+                    "name": "Start een spel",
+                    "text": "Ga naar wordle.global/{lang}/{modeName} om {modeName} in het {langName} te spelen. {boardCount} borden verschijnen met verschillende verborgen woorden."
+                },
+                {
+                    "name": "Raad op alle borden",
+                    "text": "Typ een woord van 5 letters en druk op Enter. Je gok verschijnt op alle {boardCount} borden tegelijk. Elk bord toont eigen kleuraanwijzingen (groen, geel, grijs)."
+                },
+                {
+                    "name": "Los alle {boardCount} borden op",
+                    "text": "Opgeloste borden bevriezen op hun plek. Gebruik het gesplitste kleurentoetsenbord om bij te houden welke letters werken op welke borden. Los alle {boardCount} op binnen {maxGuesses} pogingen om te winnen."
+                }
             ]
         }
     }

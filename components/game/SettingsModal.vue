@@ -272,17 +272,20 @@ function canSetDifficulty(level: 'easy' | 'normal' | 'hard'): boolean {
 const canInstallPwa = ref(false);
 let deferredPrompt: Event | null = null;
 
+function onBeforeInstallPrompt(e: Event) {
+    e.preventDefault();
+    deferredPrompt = e;
+    canInstallPwa.value = true;
+}
+
 if (import.meta.client) {
-    window.addEventListener('beforeinstallprompt', (e: Event) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        canInstallPwa.value = true;
-    });
+    window.addEventListener('beforeinstallprompt', onBeforeInstallPrompt);
+    onUnmounted(() => window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt));
 }
 
 function installPwa(): void {
     if (deferredPrompt && 'prompt' in deferredPrompt) {
-        (deferredPrompt as any).prompt();
+        (deferredPrompt as { prompt: () => void }).prompt();
         canInstallPwa.value = false;
         deferredPrompt = null;
     }

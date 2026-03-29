@@ -6,7 +6,6 @@
  * Play again immediately after finishing — no waiting for tomorrow.
  */
 import { createGameConfig } from '~/utils/game-modes';
-import { createBoardState } from '~/utils/types';
 
 definePageMeta({
     layout: 'game',
@@ -47,14 +46,7 @@ const analytics = useAnalytics();
 
 function startNewGame() {
     const word = pickRandomWord();
-    const cfg = createGameConfig('unlimited', lang, { wordLength: 5 });
-    game.gameConfig = cfg;
-    game.boards = [createBoardState(0, word, cfg.maxGuesses, cfg.wordLength)];
-    game.activeBoardIndex = 0;
-    game.gameOver = false;
-    game.gameWon = false;
-    game.initKeyClasses();
-    game.showTiles();
+    game.resetForMode(createGameConfig('unlimited', lang, { wordLength: 5 }), word);
     game.showStatsModal = false;
     // Track each new round so unlimited rounds are counted individually
     analytics.trackGameRoundStart(lang, 'unlimited');

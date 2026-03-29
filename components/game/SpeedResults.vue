@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { X, Share2 } from 'lucide-vue-next';
+import { Share2 } from 'lucide-vue-next';
 
 defineProps<{
     visible: boolean;
@@ -21,26 +21,7 @@ defineEmits<{
 </script>
 
 <template>
-    <Transition name="fade">
-        <div
-            v-if="visible"
-            class="fixed inset-0 z-50 flex items-start justify-center pt-[5vh] px-4 overflow-y-auto pb-8"
-        >
-            <!-- Backdrop — click to close -->
-            <div class="fixed inset-0 bg-ink/30" @click="$emit('close')" />
-
-            <div
-                class="relative bg-paper border border-rule shadow-xl max-w-sm w-full p-6 max-h-[90vh] overflow-y-auto z-10 modal-animate"
-                @keydown.escape="$emit('close')"
-            >
-                <!-- Close button -->
-                <button
-                    class="absolute top-3 end-3 p-1 text-muted hover:text-ink transition-colors"
-                    @click="$emit('close')"
-                >
-                    <X :size="20" />
-                </button>
-
+    <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
                 <h2 class="heading-section text-2xl text-center text-ink mb-1">Speed Streak</h2>
                 <p class="text-center text-muted text-sm mb-3">Time's up!</p>
 
@@ -111,18 +92,5 @@ defineEmits<{
                         Play Again
                     </button>
                 </div>
-            </div>
-        </div>
-    </Transition>
+    </SharedBaseModal>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
-</style>

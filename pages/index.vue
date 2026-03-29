@@ -32,6 +32,20 @@ const { data: homepageConfig } = await useFetch('/api/homepage-config', {
 const hpUi = computed(() => homepageConfig.value?.ui);
 const hpLang = computed(() => homepageConfig.value?.lang || 'en');
 
+// Resolved homepage strings — config always has defaults from data-loader merge
+const hp = computed(() => {
+    const ui = hpUi.value;
+    return {
+        tagline: ui?.homepage_tagline ?? "The world's word game",
+        playingIn: ui?.homepage_playing_in ?? 'Playing in',
+        change: ui?.homepage_change ?? 'change',
+        chooseLanguage: ui?.homepage_choose_language ?? 'Choose your language',
+        languagesCounting: ui?.homepage_languages_counting ?? 'languages and counting — more added regularly.',
+        search: ui?.homepage_search ?? 'Search languages...',
+        languages: ui?.languages ?? 'languages',
+    };
+});
+
 const langCount = computed(() => langData.value?.language_codes?.length || 65);
 const languagePopularity = computed(() => langData.value?.language_popularity || []);
 const languages = computed(
@@ -564,8 +578,7 @@ function openLink(url: string): void {
                 Wordle<span class="text-accent">.</span>Global
             </h1>
             <div class="mono-label mt-2" style="letter-spacing: 0.2em">
-                {{ hpUi?.homepage_tagline || "The world's word game" }} &mdash; {{ langCount }}
-                {{ hpUi?.languages || 'languages' }}
+                {{ hp.tagline }} &mdash; {{ langCount }} {{ hp.languages }}
             </div>
             <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
         </div>
@@ -580,7 +593,7 @@ function openLink(url: string): void {
                 @error="onFlagError(defaultLang)"
             />
             <span class="text-sm text-muted">
-                Playing in
+                {{ hp.playingIn }}
                 <span class="font-semibold text-ink">{{ defaultLangName }}</span>
             </span>
             <span class="text-muted">&middot;</span>
@@ -588,7 +601,7 @@ function openLink(url: string): void {
                 class="text-sm text-muted hover:text-ink underline underline-offset-2 transition-colors cursor-pointer"
                 @click="scrollToLanguages"
             >
-                change
+                {{ hp.change }}
             </button>
         </div>
 
@@ -639,10 +652,10 @@ function openLink(url: string): void {
                 class="font-display text-[24px] sm:text-[28px] font-light text-center mb-2"
                 style="font-variation-settings: 'opsz' 48"
             >
-                Choose your language
+                {{ hp.chooseLanguage }}
             </h2>
             <p class="text-sm text-muted text-center mb-6">
-                {{ langCount }} languages and counting — more added regularly.
+                {{ langCount }} {{ hp.languagesCounting }}
             </p>
 
             <!-- Search -->
@@ -650,7 +663,7 @@ function openLink(url: string): void {
                 v-model="searchText"
                 class="block w-full max-w-[400px] mx-auto mb-8 px-4 py-3 border border-rule bg-transparent text-ink font-body text-[15px] focus:outline-none focus:border-ink transition-colors placeholder:text-muted placeholder:italic"
                 type="text"
-                placeholder="Search languages..."
+                :placeholder="hp.search"
             />
 
             <!-- Language grid -->

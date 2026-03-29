@@ -163,7 +163,7 @@ export function useAnalytics() {
         if (!import.meta.client) return;
         if (window.location.hostname === 'localhost') return;
         // Skip bots — they inflated PostHog events ~2-3x (GA4 filters these automatically)
-        if ((navigator as any).webdriver) return;
+        if (navigator.webdriver) return;
 
         // Google Analytics 4 — forward params matching registered custom dimensions.
         try {
@@ -273,7 +273,7 @@ export function useAnalytics() {
         const props = computeUserProperties(gameResults);
 
         if (!import.meta.client) return props;
-        if ((navigator as any).webdriver) return props;
+        if (navigator.webdriver) return props;
 
         try {
             const clientId = getOrCreateId('client_id');

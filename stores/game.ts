@@ -1165,6 +1165,23 @@ export const useGameStore = defineStore('game', () => {
         }
     }
 
+    /**
+     * Reset board for a fresh game in a given mode.
+     * Used by speed, unlimited, and other non-classic modes to start a new round.
+     */
+    function resetForMode(
+        cfg: ReturnType<typeof createGameConfig>,
+        targetWord?: string
+    ): void {
+        gameConfig.value = cfg;
+        boards.value = [createBoardState(0, targetWord || '', cfg.maxGuesses, cfg.wordLength)];
+        activeBoardIndex.value = 0;
+        gameOver.value = false;
+        gameWon.value = false;
+        initKeyClasses();
+        showTiles();
+    }
+
     /** Reset all game state to defaults. Called before loading a new language's game. */
     function resetGameState(): void {
         // Clean up speed timer if running
@@ -2282,7 +2299,6 @@ export const useGameStore = defineStore('game', () => {
         activeCell,
         fullWordInputted,
         gameOver,
-        gameLost,
         gameWon,
         attempts,
         keyClasses,
@@ -2342,6 +2358,7 @@ export const useGameStore = defineStore('game', () => {
         showNotification,
         getEmojiBoard,
         getShareText,
+        resetForMode,
         resetGameState,
         saveToLocalStorage,
         loadFromLocalStorage,

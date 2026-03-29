@@ -218,6 +218,284 @@
         "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
-        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Como jocar",
+        "tips_strategy": "Consilios e strategia",
+        "more_modes": "Plus modos de joco",
+        "play_in_languages": "Joca in 80+ linguas",
+        "play_in_languages_sub": "Cata lingua es gratuite. Nulle conto necessari.",
+        "why_wordle_global": "Proque Wordle Global",
+        "faq_title": "Questiones frequentemente ponite",
+        "browse_all_languages": "Explorar tote le 80+ linguas",
+        "recent_words": "Parolas recente",
+        "view_all_words": "Vider tote le parolas",
+        "footer": "wordle.global — le joco quotidian de parolas gratuite in 80+ linguas",
+        "tile_correct": "es in le parola e in le position correcte.",
+        "tile_semicorrect": "es in le parola ma in le position incorrecte.",
+        "tile_incorrect": "non es in le parola.",
+        "stat_players": "Jocatores",
+        "stat_guesses": "Tentativos",
+        "stat_languages": "Linguas",
+        "stat_modes": "Modos de joco",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ linguas",
+                "desc": "Del arabe al yoruba. Le plus grande Wordle multilingue."
+            },
+            {
+                "key": "definitions",
+                "title": "Definitiones de parolas",
+                "desc": "Apprende le significato de cata parola post le joco. Amplia tu vocabulario."
+            },
+            {
+                "key": "word_art",
+                "title": "Arte de parolas unic",
+                "desc": "Cata parola ha un illustration personalisate. Collige los tote."
+            },
+            {
+                "key": "themes",
+                "title": "Modo obscur e themas",
+                "desc": "Modos clar, obscur, e de alte contrasto pro un joco confortabile."
+            },
+            {
+                "key": "pwa",
+                "title": "Functiona ubique",
+                "desc": "PWA — installa lo sur qualcunque dispositivo. Functiona sin connexion. Nulle discargamento necessari."
+            },
+            {
+                "key": "free",
+                "title": "Gratuite pro sempre",
+                "desc": "Nulle conto necessari. Nulle barriera de pagamento. Simplemente joca."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Comencia con un parola ric in vocales",
+                "text": "Parolas como CRANE, STARE, o ADIEU testa litteras commun rapidemente. Saper qual vocales es presente restringe le optiones rapidemente."
+            },
+            {
+                "title": "Usa lo que tu sape",
+                "text": "Le litteras verde resta fixe. Le litteras jalne debe mover se. Le litteras gris es eliminate. Cata tentativo debe usar tote tres indicios."
+            },
+            {
+                "title": "Pensa a patronos commun",
+                "text": "Le parolas anglese sovente fini in -TION, -IGHT, -OUND, -MENT. Altere linguas ha lor proprie patronos — apprende los."
+            },
+            {
+                "title": "Elimina, non divina al hasardo",
+                "text": "Tu secunde parola debe testar nove litteras, non repeter las confirmate. Coperi quante consonantes non testate como possibile."
+            },
+            {
+                "title": "Attention al litteras duple",
+                "text": "Parolas como CREEK, FLOSS, o APPLE es trappas commun. Si tu indicios non corresponde, considera un littera repetite."
+            },
+            {
+                "title": "Usa le modo difficile pro meliorar te",
+                "text": "Le modo difficile te obliga a usar indicios confirmate in cata tentativo. Il crea melior habitos mesmo quando tu retorna al modo normal."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Comencia con CRANE o STARE",
+                "text": "Litteras de alte frequentia da le melior possibilitate de un solution rapide. Cata secunda conta."
+            },
+            {
+                "title": "Non pensa troppo",
+                "text": "Speed Streak recompensa le instincto. Si tu vide un parola probabile, proba lo — le bonus de combo supera un solution perfecte."
+            },
+            {
+                "title": "Protege tu combo",
+                "text": "Un parola fallite rompe tu multiplicator. Quando tu es incerte, usa un tentativo secur pro colliger plus indicios in vice de riscar."
+            },
+            {
+                "title": "Visa solutiones in 2-3 tentativos",
+                "text": "Le bonus de tempore es enorme pro solutiones rapide (+60s pro 1 tentativo, +30s pro 2). Un secunde tentativo riscose pote render multo."
+            },
+            {
+                "title": "Apprende le finales de parolas commun",
+                "text": "Patronos como -IGHT, -OUND, -ATCH se repete sovente. Recognoscer los instantaneemente economisa secundas per parola."
+            },
+            {
+                "title": "Resta calme quando le pression augmenta",
+                "text": "Le chronometro accelera cata 3 parolas. Le haste mena a errores e mal tentativos. Un rhythmo stabile batte le panico."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Comencia largemente",
+                "text": "Usa parolas con litteras commun (CRANE, STARE) pro colliger indicios trans tote le tabulieros al vice."
+            },
+            {
+                "title": "Observa le claviero dividite",
+                "text": "Le claviero monstra colores per tabuliero. Un littera verde sur un tabuliero ma gris sur un altere restringe le optiones rapidemente."
+            },
+            {
+                "title": "Da prioritate al tabulieros in difficultate",
+                "text": "Concentra te sur le tabuliero con le plus incognitas. Le tabulieros plus facile sovente se resolve sol."
+            },
+            {
+                "title": "Non gasta le prime tentativos",
+                "text": "Usa le prime 2-3 pro parolas ric in information ante de visar tabulieros specific."
+            },
+            {
+                "title": "Cerca litteras compartite",
+                "text": "Si duo tabulieros monstra un E jalne, un parola con E in un nove position adjuta ambe tabulieros simultaneemente."
+            },
+            {
+                "title": "Reserva un tentativo pro emergentias",
+                "text": "Si tu es blocate sur le ultime tabuliero, haber un tentativo de reserva face le differentia inter vincer e perder."
+            }
+        ],
+        "mode_desc_classic": "Tu ha 6 tentativos pro divinar un parola celate de 5 litteras. Usa le indicios de color pro restringer le responsa.",
+        "mode_desc_unlimited": "Tu ha 6 tentativos pro divinar un parola celate de 5 litteras. Usa le indicios de color pro restringer le responsa. Post cata joco, preme \"Jocar de novo\" pro obtener un nove parola instantaneemente — il non ha limite quotidian.",
+        "mode_desc_speed": "Comencia con 3 minutas sur le chronometro. Cata parola solvite gania tempore bonus — solve in minus tentativos pro plus grande bonos (+60s pro 1 tentativo, +10s pro 6). Parolas fallite costa 30 secundas. Construe combos per solver parolas consecutive pro un multiplicator de usque a 3x. Le pression augmenta a mesura que tu solve plus parolas — le chronometro accelera cata 3 parolas.",
+        "mode_desc_multiboard": "{modeName} te defie a solver {boardCount} tabulieros Wordle al mesme tempore con solo {maxGuesses} tentativos. Cata tentativo appare sur tote le tabulieros non solvite simultaneemente. Le tabulieros se gela quando solvite. Le claviero a colores dividite monstra qual litteras es correcte sur qual tabulieros. Comencia con parolas de litteras commun pro colliger indicios trans tote le tabulieros al vice.",
+        "faq": [
+            {
+                "q": "Como joca io Wordle in {langName}?",
+                "a": "Visita wordle.global/{lang} pro jocar le Wordle quotidian in {langName}. Tu ha 6 tentativos pro divinar un parola de 5 litteras. Post cata tentativo, le quadros deveni verde (littera correcte, position correcte), jalne (littera correcte, position incorrecte), o gris (littera non in le parola)."
+            },
+            {
+                "q": "Ha il un nove enigma cata die?",
+                "a": "Si. Un nove parola es eligite cata die. Tote le jocatores in le mesme lingua recipe le mesme parola, assi tu pote comparar resultatos con amicos."
+            },
+            {
+                "q": "Es Wordle Global gratuite?",
+                "a": "Si. Le enigma quotidian, le modo illimitate, e tote le modos de joco es completemente gratuite in tote le 80+ linguas. Nulle conto o discargamento necessari."
+            },
+            {
+                "q": "Pote io jocar plus de un vice per die?",
+                "a": "Si — proba le modo Illimitate a wordle.global/{lang}/unlimited pro jocos sin fin e sin attender. Tu serie quotidian es traceate separatemente."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Que es Wordle Illimitate in {langName}?",
+                    "a": "Wordle Illimitate te permitte jocar quante jocos tu vole in {langName}, sin attender le enigma quotidian de deman. Cata joco te da un nove parola aleatori a divinar in 6 tentativos."
+                },
+                {
+                    "q": "Es Wordle Illimitate gratuite?",
+                    "a": "Si. Wordle Illimitate es completemente gratuite. Nulle conto, nulle discargamento, nulle annuncios durante le joco."
+                },
+                {
+                    "q": "Conta le modo illimitate pro mi serie quotidian?",
+                    "a": "No. Le modo illimitate ha su proprie statisticas separate. Tu serie quotidian es solmente afficite per le enigma quotidian."
+                },
+                {
+                    "q": "Quante vices pote io jocar?",
+                    "a": "Il non ha limite. Tu pote jocar quante vices tu vole. Post cata joco, preme \"Jocar de novo\" pro obtener un nove parola instantaneemente."
+                },
+                {
+                    "q": "In qual linguas pote io jocar Wordle Illimitate?",
+                    "a": "Wordle Illimitate es disponibile in plus de 80 linguas a wordle.global, includente anglese, espaniol, germano, finnese, arabe, francese, italiano, portugese, e multo plus."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Que es Speed Streak in {langName}?",
+                    "a": "Speed Streak es un modo temporisate de Wordle in {langName}. Tu comencia con 3 minutas sur le chronometro e solve quante parolas tu pote. Solve un parola rapidemente pro ganiar tempore bonus."
+                },
+                {
+                    "q": "Como functiona le punctuation?",
+                    "a": "Tu gania punctos pro cata parola solvite. Minus tentativos e solutiones plus rapide da plus punctos. Construe un combo per solver parolas consecutive sin faller — usque a un multiplicator de 3x."
+                },
+                {
+                    "q": "Que eveni quando le tempore se exhauri?",
+                    "a": "Le joco fini e tu vide tu punctuation final, le total de parolas solvite, le combo maxime, e le tentativos medie. Tu pote jocar de novo immediatemente."
+                },
+                {
+                    "q": "Es Speed Streak gratuite?",
+                    "a": "Si. Speed Streak es completemente gratuite in tote le 80+ linguas. Nulle conto o discargamento necessari."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "Que es {modeName} in {langName}?",
+                    "a": "{modeName} es un variante multi-tabuliero de Wordle in {langName}. Tu solve {boardCount} tabulieros Wordle al mesme tempore usante {maxGuesses} tentativos. Cata tentativo es entrate sur tote le tabulieros non solvite simultaneemente."
+                },
+                {
+                    "q": "Quante tentativos ha io in {modeName}?",
+                    "a": "Tu ha {maxGuesses} tentativos pro solver tote le {boardCount} tabulieros. Un vice que un tabuliero es solvite, illo se gela e tu pote concentrar te sur le tabulieros restante."
+                },
+                {
+                    "q": "Qual strategia functiona melio pro {modeName}?",
+                    "a": "Comencia con parolas que usa litteras commun pro colliger information sur tote le {boardCount} tabulieros al vice. Presta attention al claviero a colores dividite — illo monstra qual litteras es correcte sur qual tabulieros."
+                },
+                {
+                    "q": "Es {modeName} gratuite?",
+                    "a": "Si. {modeName} es completemente gratuite in tote le 80+ linguas. Nulle conto o discargamento necessari. Joca quante vices tu vole."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Scribe un parola",
+                "text": "Entra un parola valide de 5 litteras in {langName} usante le claviero sur le schermo o tu claviero physic, postea preme Enter."
+            },
+            {
+                "name": "Lege le indicios",
+                "text": "Le quadros verde significa que le littera es correcte e in le position juste. Jalne significa que le littera es in le parola ma in le position incorrecte. Gris significa que le littera non es in le parola."
+            },
+            {
+                "name": "Solve in 6 tentativos",
+                "text": "Usa le indicios de color pro restringer le parola. Tu ha 6 tentativos in total. Post le enigma, vide tu statisticas e comparti tu resultato."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Comencia un joco",
+                    "text": "Visita wordle.global/{lang}/unlimited pro comenciar a jocar Wordle Illimitate in {langName}. Un parola aleatori de 5 litteras es eligite pro te."
+                },
+                {
+                    "name": "Divina le parola",
+                    "text": "Scribe un parola valide de 5 litteras e preme Enter. Le quadros verde significa que le littera es correcte e in le position juste. Jalne significa que le littera es in le parola ma in le position incorrecte. Gris significa que le littera non es in le parola."
+                },
+                {
+                    "name": "Joca de novo instantaneemente",
+                    "text": "Post solver le parola (o usar tote le 6 tentativos), preme \"Jocar de novo\" pro obtener un nove parola immediatemente. Sin attender usque a deman."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Comencia le chronometro",
+                    "text": "Visita wordle.global/{lang}/speed e preme Comencia. Tu comencia con 3 minutas sur le chronometro."
+                },
+                {
+                    "name": "Solve parolas rapidemente",
+                    "text": "Cata parola solvite gania tempore bonus (+10s a +60s secundo le numero de tentativos usate). Parolas fallite costa 30 secundas."
+                },
+                {
+                    "name": "Construe tu combo",
+                    "text": "Solve parolas consecutivemente pro construer un multiplicator de combo (usque a 3x). Le combo se rompe si tu falle un parola. Proba a batter tu melior punctuation."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Comencia un joco",
+                    "text": "Visita wordle.global/{lang}/{modeName} pro jocar {modeName} in {langName}. {boardCount} tabulieros appare con differente parolas celate."
+                },
+                {
+                    "name": "Divina trans tote le tabulieros",
+                    "text": "Scribe un parola de 5 litteras e preme Enter. Tu tentativo appare sur tote le {boardCount} tabulieros al vice. Cata tabuliero monstra su proprie indicios de color (verde, jalne, gris)."
+                },
+                {
+                    "name": "Solve tote le {boardCount} tabulieros",
+                    "text": "Le tabulieros solvite se gela in loco. Usa le claviero a colores dividite pro tracer qual litteras functiona sur qual tabulieros. Solve tote le {boardCount} in {maxGuesses} tentativos pro vincer."
+                }
+            ]
+        }
     }
 }

@@ -6,7 +6,6 @@
  * +5s bonus per solved word. Dark theme, fast animations.
  */
 import { createGameConfig } from '~/utils/game-modes';
-import { createBoardState } from '~/utils/types';
 import { Info } from 'lucide-vue-next';
 
 definePageMeta({
@@ -112,29 +111,33 @@ const speedBgClass = computed(() => {
 });
 
 // Screen shake on fail
+let shakeTimer: ReturnType<typeof setTimeout> | null = null;
+
 watch(
     () => game.speedState.lastEvent,
     (event) => {
         if (event === 'fail' && import.meta.client) {
+            if (shakeTimer) clearTimeout(shakeTimer);
             document.documentElement.classList.add('speed-screen-shake');
-            setTimeout(() => {
+            shakeTimer = setTimeout(() => {
                 document.documentElement.classList.remove('speed-screen-shake');
+                shakeTimer = null;
             }, 400);
         }
     }
 );
 
+onUnmounted(() => {
+    if (shakeTimer) {
+        clearTimeout(shakeTimer);
+        document.documentElement.classList.remove('speed-screen-shake');
+    }
+});
+
 // --- Play again ---
 function playAgain() {
     game.resetSpeedState();
-    const cfg = createGameConfig('speed', lang, { wordLength: 5 });
-    game.gameConfig = cfg;
-    game.boards = [createBoardState(0, '', cfg.maxGuesses, cfg.wordLength)];
-    game.activeBoardIndex = 0;
-    game.gameOver = false;
-    game.gameWon = false;
-    game.initKeyClasses();
-    game.showTiles();
+    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5 }));
 }
 
 // --- Share ---
@@ -154,14 +157,7 @@ async function shareSpeed() {
 
 // --- Client-side init (speed-specific) ---
 onMounted(() => {
-    const cfg = createGameConfig('speed', lang, { wordLength: 5 });
-    game.gameConfig = cfg;
-    game.boards = [createBoardState(0, '', cfg.maxGuesses, cfg.wordLength)];
-    game.activeBoardIndex = 0;
-    game.gameOver = false;
-    game.gameWon = false;
-    game.initKeyClasses();
-    game.showTiles();
+    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5 }));
     game.resetSpeedState();
 
     onUnmounted(() => {
