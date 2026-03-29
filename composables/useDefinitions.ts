@@ -8,6 +8,18 @@
 
 import type { WordDefinition } from '~/utils/types';
 
+/** Shape returned by the /api/[lang]/definition/[word] endpoint. */
+interface DefinitionApiResponse {
+    definition: string;
+    definition_native?: string;
+    definition_en?: string;
+    part_of_speech?: string | null;
+    confidence?: number;
+    source?: string;
+    url?: string;
+    wiktionary_url?: string;
+}
+
 const _cache = new Map<string, WordDefinition>();
 
 export function useDefinitions() {
@@ -27,18 +39,18 @@ export function useDefinitions() {
 
         const params = options?.cacheOnly ? '?cache_only=1' : '';
         try {
-            const data = await $fetch(
+            const data = (await $fetch(
                 `/api/${lang}/definition/${encodeURIComponent(word)}${params}`
-            );
+            )) as DefinitionApiResponse;
             const result: WordDefinition = {
                 word,
-                partOfSpeech: (data as any).part_of_speech || undefined,
-                definition: (data as any).definition || '',
-                definitionNative: (data as any).definition_native || undefined,
-                definitionEn: (data as any).definition_en || undefined,
-                confidence: (data as any).confidence,
-                source: (data as any).source || 'llm',
-                url: (data as any).url || (data as any).wiktionary_url || '',
+                partOfSpeech: data.part_of_speech || undefined,
+                definition: data.definition || '',
+                definitionNative: data.definition_native || undefined,
+                definitionEn: data.definition_en || undefined,
+                confidence: data.confidence,
+                source: data.source || 'llm',
+                url: data.url || data.wiktionary_url || '',
             };
             _cache.set(key, result);
             return result;
