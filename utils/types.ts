@@ -51,6 +51,8 @@ export interface LanguageSeo {
     why_wordle_global?: string;
     faq_title?: string;
     browse_all_languages?: string;
+    recent_words?: string;
+    view_all_words?: string;
     footer?: string;
 
     // Tile example descriptions (how-to)

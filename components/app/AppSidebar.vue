@@ -96,6 +96,16 @@
                     </a>
                 </div>
 
+                <!-- Learn section -->
+                <div class="py-4 editorial-rule">
+                    <div class="mono-label px-6 pb-2">Learn</div>
+                    <SidebarItem
+                        icon="Lightbulb"
+                        label="Best Starting Words"
+                        :href="`/${langCode}/best-starting-words`"
+                    />
+                </div>
+
                 <!-- Profile (placeholder for Phase 2) — pinned to bottom -->
                 <div
                     class="mt-auto px-6 py-4 editorial-rule flex items-center gap-3 cursor-default"

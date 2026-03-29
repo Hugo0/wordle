@@ -27,7 +27,6 @@
                     v-for="idx in boardIndices"
                     :key="idx"
                     :id="'board-' + idx"
-                    class="cursor-pointer"
                     @click="onBoardClick(idx)"
                 >
                     <GameMultiBoardPanel
@@ -87,10 +86,9 @@ function onThumbnailClick(boardIndex: number) {
     }
 }
 
-function onBoardClick(boardIndex: number) {
-    if (boardCount.value > 4) {
-        focusedBoard.value = boardIndex;
-    }
+function onBoardClick(_boardIndex: number) {
+    // Focus mode disabled — too buggy. Boards are always visible.
+    // TODO: re-enable when focus mode UX is polished.
 }
 
 // --- Measure container ---
@@ -137,19 +135,16 @@ const gridStyle = computed(() => {
 
     const tileW = (availW - hGaps) / totalTileCols;
 
-    // Max tile size caps prevent boards from being too large on wide screens.
-    // Scales down with board count: fewer boards → bigger tiles allowed.
-    const maxTile = boardCount.value <= 4 ? 48 : boardCount.value <= 8 ? 36 : 28;
-
-    // For non-scrollable (dordle/quordle): constrain by both width and height
+    // Tile size: the composable already chose columns to keep tiles in a readable
+    // range. Here we just constrain by height for non-scrollable modes.
     let tileSize: number;
     if (!layout.value.scrollable) {
         const toolbarH = boardCount.value > 4 ? 44 : 0;
         const availH = containerHeight.value - toolbarH - 8;
         const tileH = (availH - vGaps) / totalTileRows;
-        tileSize = Math.min(tileW, tileH, maxTile);
+        tileSize = Math.min(tileW, tileH);
     } else {
-        tileSize = Math.min(tileW, maxTile);
+        tileSize = tileW;
     }
 
     tileSize = Math.max(tileSize, 12);

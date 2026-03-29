@@ -124,7 +124,7 @@ if (allLangs.value?.language_codes) {
             <div class="editorial-rule" />
 
             <!-- Top 10 Words -->
-            <section class="space-y-5">
+            <section id="top-words" class="space-y-5">
                 <h2 class="heading-section text-xl text-ink">
                     Top {{ Math.min(topWords.length, 10) }} Starting Words
                 </h2>
@@ -169,7 +169,7 @@ if (allLangs.value?.language_codes) {
             <div class="editorial-rule" />
 
             <!-- Letter Frequency -->
-            <section class="space-y-5">
+            <section id="letter-frequency" class="space-y-5">
                 <h2 class="heading-section text-xl text-ink">
                     Most Common Letters in {{ langName }} Wordle
                 </h2>
@@ -202,7 +202,7 @@ if (allLangs.value?.language_codes) {
             <div class="editorial-rule" />
 
             <!-- Strategy explanation -->
-            <section class="space-y-4">
+            <section id="strategy" class="space-y-4">
                 <h2 class="heading-section text-xl text-ink">Why These Words?</h2>
                 <div class="text-sm text-muted leading-relaxed space-y-3">
                     <p>
@@ -239,7 +239,7 @@ if (allLangs.value?.language_codes) {
             <div class="editorial-rule" />
 
             <!-- More words (11-20) -->
-            <section v-if="topWords.length > 10" class="space-y-5">
+            <section v-if="topWords.length > 10" id="more-words" class="space-y-5">
                 <h2 class="heading-section text-xl text-ink">Honorable Mentions</h2>
                 <div class="flex flex-wrap gap-2">
                     <span

@@ -1,6 +1,6 @@
 <template>
-    <main id="game-board" tabindex="-1" class="flex flex-auto justify-center items-center">
-        <div class="w-full h-full max-w-[min(350px,90vw)] max-h-[min(420px,50vh)]">
+    <main id="game-board" tabindex="-1" class="flex flex-auto justify-center items-center min-h-0">
+        <div class="w-full h-full max-w-[350px] max-h-[420px]">
             <GameMultiBoardPanel ref="panelRef" :board-index="0" :single-board="true" />
         </div>
         <!-- Screen reader announcements for guess results -->

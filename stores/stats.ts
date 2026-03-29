@@ -16,6 +16,7 @@ import type {
 } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
 import { isClassicDailyStatsKey } from '~/utils/game-modes';
+import { toLocalDay, stepBack, buildDailyResultMap } from '~/utils/streak-dates';
 
 function emptyStats(maxGuesses: number = 6): GameStats {
     return {
@@ -198,37 +199,17 @@ export const useStatsStore = defineStore('stats', () => {
             (a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime()
         );
 
-        // Overall streaks from classic daily only.
-        //
+        // Build map: local date → won/lost. Uses shared streak-dates utilities.
         // Streak = consecutive LOCAL calendar days with at least one daily win.
-        // Uses the browser's timezone (user's local "today"), NOT UTC or
-        // per-language word-renewal timezones. Reasoning:
-        //   - "Did I play today?" should match the user's sense of day, not UTC.
-        //   - Word selection uses per-language timezones (so all Finnish users
-        //     get the same word), but streak is personal — it tracks engagement.
-        //   - A Malaysian user (UTC+8) playing at 11pm local shouldn't be penalized
-        //     because UTC already rolled over.
-        //   - toLocaleDateString('en-CA') gives "YYYY-MM-DD" in the user's timezone.
-        const toLocalDay = (d: Date) => d.toLocaleDateString('en-CA');
-
-        // DST-safe: step back one calendar day using setDate (not ms subtraction)
-        function stepBack(dateKey: string): string {
-            const d = new Date(dateKey + 'T12:00:00'); // noon avoids DST edge
-            d.setDate(d.getDate() - 1);
-            return toLocalDay(d);
-        }
-
-        // Build map: local date → had a win. Win always overrides a same-day loss.
+        const dayStates = buildDailyResultMap(gameResults.value);
         const seenDays = new Map<string, boolean>();
+        for (const [dayKey, state] of dayStates) {
+            seenDays.set(dayKey, state === 'won');
+        }
+        // Count victories and losses from daily results
         for (const result of daily_results) {
-            const dayKey = toLocalDay(new Date(result.date as string));
-            if (result.won) {
-                n_victories++;
-                seenDays.set(dayKey, true);
-            } else {
-                n_losses++;
-                if (!seenDays.has(dayKey)) seenDays.set(dayKey, false);
-            }
+            if (result.won) n_victories++;
+            else n_losses++;
         }
 
         // Current streak: walk backwards from today (DST-safe)

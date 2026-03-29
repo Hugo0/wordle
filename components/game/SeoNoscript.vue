@@ -78,6 +78,8 @@ const h = computed(() => ({
     whyWordleGlobal: s.value.why_wordle_global || 'Why Wordle Global',
     faqTitle: s.value.faq_title || 'Frequently Asked Questions',
     browseAll: s.value.browse_all_languages || 'Browse all 80+ languages',
+    recentWords: s.value.recent_words || 'Recent Words',
+    viewAllWords: s.value.view_all_words || 'View all words',
     footer: s.value.footer || 'wordle.global — the free daily word game in 80+ languages',
 }));
 
@@ -238,7 +240,7 @@ const recentWords = computed(() => {
             </div>
 
             <!-- ─── Today's Word (classic mode only) ─── -->
-            <section v-if="isClassic && todaysWord" class="space-y-4">
+            <section v-if="isClassic && todaysWord" id="todays-word" class="space-y-4">
                 <h3 class="heading-section text-xl text-ink text-center">Today's Word</h3>
                 <div class="border border-rule max-w-md mx-auto">
                     <!-- Not yet revealed: show button -->
@@ -303,7 +305,7 @@ const recentWords = computed(() => {
             <div v-if="isClassic && todaysWord" class="editorial-rule" />
 
             <!-- ─── How to Play (with tile examples) ─── -->
-            <section class="space-y-6">
+            <section id="how-to-play" class="space-y-6">
                 <h3 class="heading-section text-xl text-ink text-center">
                     {{ h.howToPlay }}{{ isClassic ? '' : ` ${seo.modeLabel}` }}
                 </h3>
@@ -337,7 +339,7 @@ const recentWords = computed(() => {
             <div class="editorial-rule" />
 
             <!-- ─── Section 3: Strategy Tips ─── -->
-            <section v-if="strategyTips.length" class="space-y-5">
+            <section v-if="strategyTips.length" id="tips" class="space-y-5">
                 <h3 class="heading-section text-xl text-ink text-center">
                     <Lightbulb :size="20" class="inline -mt-0.5 mr-1" />
                     {{ h.tipsStrategy }}
@@ -357,12 +359,20 @@ const recentWords = computed(() => {
                         </div>
                     </div>
                 </div>
+                <p class="text-center pt-2">
+                    <a
+                        :href="`/${lang}/best-starting-words`"
+                        class="text-sm text-muted underline hover:text-ink transition-colors"
+                    >
+                        See the full analysis of best starting words for {{ seo.langName }} &rarr;
+                    </a>
+                </p>
             </section>
 
             <div class="editorial-rule" />
 
             <!-- ─── Section 4: Game Modes Grid ─── -->
-            <section class="space-y-5">
+            <section id="game-modes" class="space-y-5">
                 <h3 class="heading-section text-xl text-ink text-center">{{ h.moreModes }}</h3>
                 <div
                     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-rule"
@@ -392,7 +402,7 @@ const recentWords = computed(() => {
             <div class="editorial-rule" />
 
             <!-- ─── Section 5: Language Grid ─── -->
-            <section class="space-y-5">
+            <section id="languages" class="space-y-5">
                 <div class="text-center space-y-1">
                     <h3 class="heading-section text-xl text-ink">{{ h.playInLanguages }}</h3>
                     <p class="text-xs text-muted">{{ h.playInLanguagesSub }}</p>
@@ -440,7 +450,7 @@ const recentWords = computed(() => {
             <div class="editorial-rule" />
 
             <!-- ─── Section 6: Why Wordle Global (Value Props) ─── -->
-            <section v-if="valueProps.length" class="space-y-5">
+            <section v-if="valueProps.length" id="why-wordle-global" class="space-y-5">
                 <h3 class="heading-section text-xl text-ink text-center">
                     {{ h.whyWordleGlobal }}
                 </h3>
@@ -503,7 +513,7 @@ const recentWords = computed(() => {
             <template v-if="isClassic && recentWords.length">
                 <div class="editorial-rule" />
                 <section class="space-y-4">
-                    <h3 class="heading-section text-xl text-ink text-center">Recent Words</h3>
+                    <h3 class="heading-section text-xl text-ink text-center">{{ h.recentWords }}</h3>
                     <div class="border border-rule divide-y divide-rule">
                         <a
                             v-for="w in recentWords"
@@ -532,7 +542,7 @@ const recentWords = computed(() => {
                         <a
                             :href="`/${lang}/words`"
                             class="text-sm text-muted underline hover:text-ink transition-colors"
-                            >View all words</a
+                            >{{ h.viewAllWords }}</
                         >
                     </p>
                 </section>

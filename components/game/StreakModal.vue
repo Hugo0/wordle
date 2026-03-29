@@ -149,8 +149,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { Flame } from 'lucide-vue-next';
-import { isClassicDailyStatsKey } from '~/utils/game-modes';
 import { useFlag } from '~/composables/useFlag';
+import { toLocalDay, buildDailyResultMap } from '~/utils/streak-dates';
 
 defineProps<{ visible: boolean }>();
 defineEmits<{ close: [] }>();
@@ -200,21 +200,8 @@ function calendarDayClass(day: CalendarDay): string {
 const calendarDays = computed<CalendarDay[]>(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const toLocalDay = (d: Date) => d.toLocaleDateString('en-CA');
 
-    // Build map: local date → 'won' | 'lost' from all classic daily results
-    const dayStates = new Map<string, 'won' | 'lost'>();
-    for (const [key, results] of Object.entries(statsStore.gameResults)) {
-        if (!isClassicDailyStatsKey(key)) continue;
-        for (const r of results) {
-            const dayKey = toLocalDay(new Date(r.date as string));
-            if (r.won) {
-                dayStates.set(dayKey, 'won'); // win always overrides loss
-            } else if (!dayStates.has(dayKey)) {
-                dayStates.set(dayKey, 'lost');
-            }
-        }
-    }
+    const dayStates = buildDailyResultMap(statsStore.gameResults);
 
     // Find the Monday that starts our 28-day window
     // We want 4 complete weeks ending with today's week
