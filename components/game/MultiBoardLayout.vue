@@ -18,8 +18,9 @@
         <div
             v-else
             ref="scrollRef"
-            class="flex-auto min-h-0 p-1"
+            class="flex-auto min-h-0 px-1 sm:px-3 lg:px-6 py-1"
             :class="layout.scrollable ? 'overflow-y-auto' : 'flex justify-center items-center'"
+            @scroll.passive="onBoardScroll"
             data-allow-mismatch
         >
             <div class="grid mx-auto" :style="gridStyle" data-allow-mismatch>
@@ -94,12 +95,19 @@ function onBoardClick(_boardIndex: number) {
 // --- Measure container ---
 const containerRef = ref<HTMLElement | null>(null);
 const scrollRef = ref<HTMLElement | null>(null);
-const containerWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1200);
+// null until measured — grid hidden until we know the real size (no layout shift)
+const containerWidth = ref<number | null>(null);
 const containerHeight = ref(600);
+const measured = computed(() => containerWidth.value !== null);
 
 let resizeObserver: ResizeObserver | null = null;
 
 onMounted(() => {
+    // Immediately measure real dimensions before first meaningful paint
+    if (containerRef.value) {
+        containerWidth.value = containerRef.value.clientWidth;
+        containerHeight.value = containerRef.value.clientHeight;
+    }
     resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
             containerWidth.value = entry.contentRect.width;
@@ -115,28 +123,50 @@ onBeforeUnmount(() => {
 // --- Layout composable ---
 const layout = useMultiBoardLayout(boardCount, maxGuesses, containerWidth);
 
+// Tell the game store which boards are visible so typing only syncs those.
+// For scrollable layouts, all boards are rendered but we approximate visibility
+// as the first screenful (gridCols × 2 rows). Full sync happens on scroll stop.
+watch(
+    [() => layout.value.gridCols, boardCount],
+    () => {
+        const cols = layout.value.gridCols;
+        const visibleCount = Math.min(cols * 2, boardCount.value);
+        game.setVisibleBoardIndices(Array.from({ length: visibleCount }, (_, i) => i));
+    },
+    { immediate: true }
+);
+
+// On scroll, update which boards are visible
+let scrollTimer: ReturnType<typeof setTimeout> | null = null;
+function onBoardScroll() {
+    // During scroll, don't update visible set (avoid reactive churn)
+    // On scroll stop, sync all boards to catch up
+    if (scrollTimer) clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+        game.showTilesAllBoards();
+    }, 200);
+}
+onBeforeUnmount(() => { if (scrollTimer) clearTimeout(scrollTimer); });
+
 // --- Grid sizing ---
 const GRID_GAP = 6;
 
 const gridStyle = computed(() => {
     const cols = layout.value.gridCols;
     const boardRows = Math.ceil(boardCount.value / cols);
-    const availW = containerWidth.value - 16;
 
     const rowsPerBoard =
-        layout.value.visibleRows > 0
-            ? layout.value.visibleRows + 1 // +1 for "N left" label
-            : maxGuesses.value;
+        layout.value.visibleRows > 0 ? layout.value.visibleRows + 1 : maxGuesses.value;
 
     const totalTileCols = cols * 5;
     const totalTileRows = boardRows * rowsPerBoard;
-    const hGaps = (cols - 1) * GRID_GAP + 8;
-    const vGaps = (boardRows - 1) * GRID_GAP + 4;
+    const hGaps = (cols - 1) * GRID_GAP;
+    const vGaps = (boardRows - 1) * (GRID_GAP * 3);
 
-    const tileW = (availW - hGaps) / totalTileCols;
+    // Tile width from container width (CSS padding handled by the container)
+    const tileW = (containerWidth.value - hGaps) / totalTileCols;
 
-    // Tile size: the composable already chose columns to keep tiles in a readable
-    // range. Here we just constrain by height for non-scrollable modes.
+    // For non-scrollable modes: also constrain by available height
     let tileSize: number;
     if (!layout.value.scrollable) {
         const toolbarH = boardCount.value > 4 ? 44 : 0;
@@ -149,18 +179,20 @@ const gridStyle = computed(() => {
 
     tileSize = Math.max(tileSize, 12);
 
-    const maxW = tileSize * totalTileCols + hGaps;
+    const gridW = tileSize * totalTileCols + hGaps;
     const gridH = tileSize * totalTileRows + vGaps;
 
-    // Explicit pixel height is critical: without it, CSS grid 1fr rows
-    // collapse to content height, which is 0 for empty tiles (no text).
-    // With a fixed height, each 1fr row gets height/N px and tiles fill it.
+    // Comfortable side margins: tight on mobile, generous on desktop
+    const marginPct = containerWidth.value < 640 ? 0.99 : 0.9;
+    const cappedW = Math.min(gridW, containerWidth.value * marginPct);
+
     return {
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-        maxWidth: `${Math.floor(maxW)}px`,
-        width: `${Math.floor(maxW)}px`,
+        maxWidth: `${Math.floor(cappedW)}px`,
+        width: `${Math.floor(cappedW)}px`,
         height: `${Math.floor(gridH)}px`,
         gap: `${GRID_GAP}px`,
+        rowGap: `${GRID_GAP * 3}px`,
     };
 });
 

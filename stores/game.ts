@@ -1696,11 +1696,21 @@ export const useGameStore = defineStore('game', () => {
         }
     }
 
-    /** Sync visual layer for all boards. If onlyRow specified, only sync that row. */
+    // Track which board indices are currently visible (set by MultiBoardLayout)
+    const visibleBoardIndices = ref<Set<number> | null>(null);
+
+    function setVisibleBoardIndices(indices: number[]): void {
+        visibleBoardIndices.value = new Set(indices);
+    }
+
+    /** Sync visual layer for boards. If onlyRow specified, only sync that row. */
     function showTilesAllBoards(onlyRow?: number): void {
+        const visible = visibleBoardIndices.value;
         for (let i = 0; i < boards.value.length; i++) {
-            // Skip solved boards during typing (onlyRow) — their visual state is final
+            // Skip solved boards during typing
             if (onlyRow !== undefined && boards.value[i]?.solved) continue;
+            // During typing, only sync boards that are currently rendered
+            if (onlyRow !== undefined && visible && !visible.has(i)) continue;
             showTilesForBoard(i, onlyRow);
         }
     }
@@ -2322,6 +2332,7 @@ export const useGameStore = defineStore('game', () => {
         showTiles,
         showTilesForBoard,
         showTilesAllBoards,
+        setVisibleBoardIndices,
         revealRow,
         shakeRow,
         bounceRow,
