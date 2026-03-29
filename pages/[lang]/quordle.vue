@@ -1,9 +1,17 @@
 <script setup lang="ts">
-
 definePageMeta({ layout: 'game', key: (route) => `${route.params.lang}-quordle` });
 
-const { lang, modeDef, config, sidebarOpen, toggleSidebar, closeSidebar, multiBoardRef, startNewGame, gameData } =
-    await useMultiBoardModePage('quordle');
+const {
+    lang,
+    modeDef,
+    config,
+    sidebarOpen,
+    toggleSidebar,
+    closeSidebar,
+    multiBoardRef,
+    startNewGame,
+    gameData,
+} = await useMultiBoardModePage('quordle');
 </script>
 
 <template>
@@ -24,10 +32,23 @@ const { lang, modeDef, config, sidebarOpen, toggleSidebar, closeSidebar, multiBo
     </GamePageShell>
 
     <noscript data-allow-mismatch>
-        <div style="max-width:600px;margin:40px auto;padding:20px;font-family:system-ui,sans-serif;color:#333;">
+        <div
+            style="
+                max-width: 600px;
+                margin: 40px auto;
+                padding: 20px;
+                font-family: system-ui, sans-serif;
+                color: #333;
+            "
+        >
             <h1>Wordle {{ config?.name_native }} — {{ modeDef.label }}</h1>
-            <p>Play {{ modeDef.label }} in {{ config?.name }}. Solve {{ modeDef.boardCount }} boards at once with {{ modeDef.maxGuesses }} guesses.</p>
-            <p><a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a></p>
+            <p>
+                Play {{ modeDef.label }} in {{ config?.name }}. Solve
+                {{ modeDef.boardCount }} boards at once with {{ modeDef.maxGuesses }} guesses.
+            </p>
+            <p>
+                <a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a>
+            </p>
         </div>
     </noscript>
 </template>

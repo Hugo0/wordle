@@ -146,10 +146,10 @@ onMounted(() => {
                 rounds as you want. Each game gives you a random 5-letter word to guess in 6 tries.
             </p>
             <p>
-                After each guess, the tiles change color to show how close you are. <strong>Green</strong>
-                means the letter is correct and in the right position. <strong>Yellow</strong> means
-                the letter is in the word but in the wrong spot. <strong>Gray</strong> means the
-                letter is not in the word at all.
+                After each guess, the tiles change color to show how close you are.
+                <strong>Green</strong> means the letter is correct and in the right position.
+                <strong>Yellow</strong> means the letter is in the word but in the wrong spot.
+                <strong>Gray</strong> means the letter is not in the word at all.
             </p>
             <p>
                 When you solve the word or run out of guesses, press "Play Again" to get a new word
@@ -168,9 +168,7 @@ onMounted(() => {
                 affected by the once-a-day daily puzzle.
             </p>
             <h3>How many times can I play?</h3>
-            <p>
-                There is no limit. Play as many rounds as you want, back to back.
-            </p>
+            <p>There is no limit. Play as many rounds as you want, back to back.</p>
             <h3>What languages are available?</h3>
             <p>
                 Wordle Unlimited is available in over 80 languages at
@@ -180,12 +178,12 @@ onMounted(() => {
 
             <h2>More Game Modes</h2>
             <p>
-                <a :href="`/${lang}`">Daily Wordle in {{ langName }}</a> —
-                one puzzle per day, track your streak.
+                <a :href="`/${lang}`">Daily Wordle in {{ langName }}</a> — one puzzle per day, track
+                your streak.
             </p>
             <p>
-                <a :href="`/${lang}/speed`">Speed Streak</a> —
-                solve as many words as you can against the clock.
+                <a :href="`/${lang}/speed`">Speed Streak</a> — solve as many words as you can
+                against the clock.
             </p>
             <p>
                 <a :href="`/${lang}/dordle`">Dordle</a> — solve 2 boards at once. ·

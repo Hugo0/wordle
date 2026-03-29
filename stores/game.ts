@@ -1028,7 +1028,9 @@ export const useGameStore = defineStore('game', () => {
 
         // Analytics: track streak broken (if user had an active streak)
         if (previousStreak > 0) {
-            analytics.trackStreakBroken(lang.languageCode, previousStreak, 0);
+            const daysSinceLast =
+                analytics.daysSince(localStorage.getItem('last_played_date') ?? undefined) ?? 0;
+            analytics.trackStreakBroken(lang.languageCode, previousStreak, daysSinceLast);
         }
 
         // Show embed banner after game completion

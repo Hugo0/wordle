@@ -123,7 +123,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             const clientId = getOrCreateId('client_id');
             const alreadyIdentified = ph?.get_distinct_id() === clientId;
             const userProps = alreadyIdentified
-                ? analytics.computeUserPropertiesOnly(stats.gameResults)
+                ? analytics.computeUserProperties(stats.gameResults)
                 : analytics.identifyUser(stats.gameResults);
 
             // Retention — merge returning_player + re_engagement into one event

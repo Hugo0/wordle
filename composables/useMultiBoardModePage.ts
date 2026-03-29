@@ -38,11 +38,7 @@ export async function useMultiBoardModePage(mode: GameMode) {
         ? gameData.value.daily_words
         : (gameData.value?.word_list ?? []);
 
-    const { multiBoardRef, startNewGame } = useMultiBoardPage(
-        mode,
-        wordList,
-        modeDef.boardCount
-    );
+    const { multiBoardRef, startNewGame } = useMultiBoardPage(mode, wordList, modeDef.boardCount);
 
     return {
         lang,
