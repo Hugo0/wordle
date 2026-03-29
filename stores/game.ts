@@ -456,7 +456,6 @@ export const useGameStore = defineStore('game', () => {
         if (isMultiBoard.value) {
             // Pause reactive tracking so Vue doesn't fire per-board updates.
             // All 32 boards mutated, then one triggerRef at the end.
-            const skipColors = boards.value.length > 4;
             const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
             const isFull = newCell === WORD_LENGTH;
             pauseTracking();
@@ -467,7 +466,7 @@ export const useGameStore = defineStore('game', () => {
                 if (row && rowClasses) {
                     row[cellIdx] = displayChar;
                     rowClasses[cellIdx] = ACTIVE_TILE_CLASS;
-                    if (!skipColors && board.tileColors[rowIdx])
+                    if (board.tileColors[rowIdx])
                         board.tileColors[rowIdx]![cellIdx] = 'active';
                 }
                 board.activeCell = newCell;
@@ -795,7 +794,6 @@ export const useGameStore = defineStore('game', () => {
 
             if (isMultiBoard.value) {
                 const newCell = activeCell.value - 1;
-                const skipColors = boards.value.length > 4;
                 pauseTracking();
                 for (const board of boards.value) {
                     if (board.solved) continue;
@@ -806,7 +804,7 @@ export const useGameStore = defineStore('game', () => {
                     if (row && rowClasses) {
                         row[newCell] = '';
                         rowClasses[newCell] = DEFAULT_TILE_CLASS;
-                        if (!skipColors && board.tileColors[rowIdx])
+                        if (board.tileColors[rowIdx])
                             board.tileColors[rowIdx]![newCell] = 'empty';
                     }
                 }
@@ -1646,8 +1644,8 @@ export const useGameStore = defineStore('game', () => {
             null;
         const keys = board.keyStates;
 
-        // No DOM element → instant update (off-screen board or SSR)
-        if (!boardEl) {
+        // 5+ boards or no DOM: instant update (no flip animation, no setTimeout cascade)
+        if (boards.value.length > 4 || !boardEl) {
             for (let t = 0; t < (board.tiles[rowIndex]?.length ?? 5); t++) {
                 const finalClass = board.tileClasses[rowIndex]?.[t] || '';
                 board.tileClassesVisual[rowIndex]?.splice(t, 1, finalClass);

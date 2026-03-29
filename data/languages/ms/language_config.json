@@ -229,5 +229,110 @@
         "homepage_search": "Search languages...",
         "homepage_and_more": "& More",
         "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Cara Bermain",
+        "tips_strategy": "Petua & Strategi",
+        "more_modes": "Lagi Mod Permainan",
+        "play_in_languages": "Main dalam 80+ Bahasa",
+        "play_in_languages_sub": "Setiap bahasa percuma. Tiada akaun diperlukan.",
+        "why_wordle_global": "Mengapa Wordle Global",
+        "faq_title": "Soalan Lazim",
+        "browse_all_languages": "Lihat semua 80+ bahasa",
+        "recent_words": "Perkataan Terkini",
+        "view_all_words": "Lihat semua perkataan",
+        "footer": "wordle.global — permainan perkataan harian percuma dalam 80+ bahasa",
+        "tile_correct": "terdapat dalam perkataan dan di tempat yang betul.",
+        "tile_semicorrect": "terdapat dalam perkataan tetapi di tempat yang salah.",
+        "tile_incorrect": "tidak terdapat dalam perkataan langsung.",
+        "stat_players": "Pemain",
+        "stat_guesses": "Tekaan",
+        "stat_languages": "Bahasa",
+        "stat_modes": "Mod Permainan",
+        "value_props": [
+            { "key": "languages", "title": "80+ Bahasa", "desc": "Dari Arab hingga Yoruba. Wordle berbilang bahasa terbesar." },
+            { "key": "definitions", "title": "Definisi Perkataan", "desc": "Ketahui makna setiap perkataan selepas bermain. Kembangkan perbendaharaan kata anda." },
+            { "key": "word_art", "title": "Seni Kata Unik", "desc": "Setiap perkataan disertai ilustrasi khas. Kumpulkan semuanya." },
+            { "key": "themes", "title": "Mod Gelap & Tema", "desc": "Mod terang, gelap dan kontras tinggi untuk permainan yang selesa." },
+            { "key": "pwa", "title": "Berfungsi di Mana-mana", "desc": "PWA — pasang pada sebarang peranti. Berfungsi luar talian. Tiada muat turun diperlukan." },
+            { "key": "free", "title": "Percuma Selamanya", "desc": "Tiada akaun diperlukan. Tiada bayaran. Hanya main." }
+        ],
+        "tips": [
+            { "title": "Mulakan dengan perkataan kaya vokal", "text": "Perkataan seperti CRANE, STARE atau ADIEU menguji huruf biasa dengan cepat. Mengetahui vokal mana yang ada mengecilkan pilihan dengan pantas." },
+            { "title": "Gunakan apa yang anda tahu", "text": "Huruf hijau kekal tetap. Huruf kuning perlu dialih. Huruf kelabu disingkirkan. Setiap tekaan harus menggunakan ketiga-tiga petunjuk." },
+            { "title": "Fikirkan pola biasa", "text": "Perkataan Inggeris sering berakhir dengan -TION, -IGHT, -OUND, -MENT. Bahasa lain mempunyai pola tersendiri — pelajarinya." },
+            { "title": "Singkirkan, jangan teka membuta tuli", "text": "Perkataan kedua anda harus menguji huruf baharu, bukan mengulangi yang telah disahkan. Uji seberapa banyak konsonan yang belum dicuba." },
+            { "title": "Perhatikan huruf berganda", "text": "Perkataan seperti CREEK, FLOSS atau APPLE adalah perangkap biasa. Jika petunjuk anda tidak sepadan, pertimbangkan huruf berulang." },
+            { "title": "Gunakan mod sukar untuk meningkat", "text": "Mod sukar memaksa anda menggunakan petunjuk yang telah disahkan dalam setiap tekaan. Ia membina tabiat yang lebih baik." }
+        ],
+        "tips_speed": [
+            { "title": "Mulakan dengan CRANE atau STARE", "text": "Huruf berfrekuensi tinggi memberi peluang terbaik untuk penyelesaian pantas. Setiap saat penting." },
+            { "title": "Jangan berfikir berlebihan", "text": "Speed Streak memberi ganjaran kepada gerak hati. Jika anda nampak perkataan yang mungkin, teruskan — bonus kombo mengatasi penyelesaian sempurna." },
+            { "title": "Lindungi kombo anda", "text": "Perkataan gagal memecahkan pengganda anda. Jika tidak pasti, guna tekaan selamat untuk kumpul lebih banyak petunjuk." },
+            { "title": "Sasarkan penyelesaian 2-3 tekaan", "text": "Bonus masa untuk penyelesaian pantas sangat besar (+60s untuk 1 tekaan, +30s untuk 2). Tekaan kedua yang berani boleh berbaloi." },
+            { "title": "Pelajari pengakhiran perkataan biasa", "text": "Pola seperti -IGHT, -OUND, -ATCH kerap berulang. Mengenalinya serta-merta menjimatkan saat bagi setiap perkataan." },
+            { "title": "Kekal tenang apabila tekanan meningkat", "text": "Pemasa dipercepatkan setiap 3 perkataan. Tergesa-gesa membawa kesilapan. Rentak mantap lebih baik daripada panik." }
+        ],
+        "tips_multiboard": [
+            { "title": "Mulakan secara meluas", "text": "Gunakan perkataan huruf biasa (CRANE, STARE) untuk mengumpul petunjuk merentasi semua papan sekaligus." },
+            { "title": "Perhatikan papan kekunci berpecah", "text": "Papan kekunci menunjukkan warna bagi setiap papan. Huruf hijau pada satu papan tetapi kelabu pada yang lain mengecilkan pilihan dengan cepat." },
+            { "title": "Utamakan papan yang sukar", "text": "Fokuskan tekaan pada papan dengan paling banyak yang tidak diketahui. Papan lebih mudah sering selesai sendiri." },
+            { "title": "Jangan bazirkan tekaan awal", "text": "Gunakan 2-3 tekaan pertama pada perkataan kaya maklumat sebelum menyasarkan papan tertentu." },
+            { "title": "Cari huruf sepunya", "text": "Jika dua papan menunjukkan E kuning, perkataan dengan E di kedudukan baharu membantu kedua-dua papan serentak." },
+            { "title": "Simpan satu tekaan untuk kecemasan", "text": "Jika anda tersangkut pada papan terakhir, tekaan simpanan menjadi pembeza antara menang dan kalah." }
+        ],
+        "mode_desc_classic": "Anda ada 6 percubaan untuk meneka perkataan 5-huruf yang tersembunyi. Gunakan petunjuk warna untuk mengecilkan jawapan.",
+        "mode_desc_unlimited": "Anda ada 6 percubaan untuk meneka perkataan 5-huruf yang tersembunyi. Gunakan petunjuk warna untuk mengecilkan jawapan. Selepas setiap permainan, tekan \"Main Lagi\" untuk mendapat perkataan baharu serta-merta — tiada had harian.",
+        "mode_desc_speed": "Mulakan dengan 3 minit pada jam. Setiap perkataan yang diselesaikan memberi bonus masa — selesaikan dalam tekaan lebih sedikit untuk bonus lebih besar (+60s untuk 1 tekaan, +10s untuk 6). Perkataan gagal mengurangkan 30 saat. Bina kombo dengan menyelesaikan perkataan berturut-turut untuk pengganda skor sehingga 3x. Tekanan meningkat apabila anda menyelesaikan lebih banyak perkataan — pemasa berdetak lebih laju setiap 3 perkataan.",
+        "mode_desc_multiboard": "{modeName} mencabar anda untuk menyelesaikan {boardCount} papan Wordle pada masa yang sama menggunakan hanya {maxGuesses} tekaan. Setiap tekaan muncul pada semua papan yang belum diselesaikan serentak. Papan membeku apabila diselesaikan. Papan kekunci warna berpecah menunjukkan huruf mana yang betul pada papan mana. Mulakan dengan perkataan huruf biasa untuk mengumpul petunjuk merentasi semua papan sekaligus.",
+        "faq": [
+            { "q": "Bagaimana cara bermain Wordle dalam {langName}?", "a": "Lawati wordle.global/{lang} untuk bermain Wordle harian dalam {langName}. Anda ada 6 percubaan untuk meneka perkataan 5-huruf. Selepas setiap tekaan, jubin bertukar hijau (huruf betul, kedudukan betul), kuning (huruf betul, kedudukan salah) atau kelabu (huruf tiada dalam perkataan)." },
+            { "q": "Adakah teka-teki baharu setiap hari?", "a": "Ya. Perkataan baharu dipilih setiap hari. Semua pemain dalam bahasa yang sama mendapat perkataan yang sama, jadi anda boleh bandingkan keputusan dengan rakan." },
+            { "q": "Adakah Wordle Global percuma?", "a": "Ya. Teka-teki harian, mod tanpa had dan semua mod permainan adalah percuma sepenuhnya dalam semua 80+ bahasa. Tiada akaun atau muat turun diperlukan." },
+            { "q": "Bolehkah saya bermain lebih dari sekali sehari?", "a": "Ya — cuba mod Tanpa Had di wordle.global/{lang}/unlimited untuk permainan tanpa henti tanpa menunggu. Siri harian anda dijejaki secara berasingan." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Apakah Wordle Unlimited dalam {langName}?", "a": "Wordle Unlimited membolehkan anda bermain seberapa banyak permainan Wordle dalam {langName} yang anda mahu, tanpa menunggu teka-teki harian esok. Setiap permainan memberi perkataan rawak baharu untuk diteka dalam 6 percubaan." },
+                { "q": "Adakah Wordle Unlimited percuma?", "a": "Ya. Wordle Unlimited percuma sepenuhnya. Tiada akaun, tiada muat turun, tiada iklan semasa bermain." },
+                { "q": "Adakah mod tanpa had dikira dalam siri harian?", "a": "Tidak. Mod tanpa had mempunyai statistik tersendiri. Siri harian anda hanya dipengaruhi oleh teka-teki harian." },
+                { "q": "Berapa kali saya boleh bermain?", "a": "Tiada had. Anda boleh bermain seberapa banyak pusingan yang anda mahu. Selepas setiap permainan, tekan \"Main Lagi\" untuk mendapat perkataan baharu serta-merta." },
+                { "q": "Dalam bahasa apa saya boleh bermain Wordle Unlimited?", "a": "Wordle Unlimited tersedia dalam lebih 80 bahasa di wordle.global, termasuk Inggeris, Sepanyol, Jerman, Finland, Arab, Perancis, Itali, Portugis dan banyak lagi." }
+            ],
+            "speed": [
+                { "q": "Apakah Speed Streak dalam {langName}?", "a": "Speed Streak ialah mod Wordle bermasa dalam {langName}. Anda bermula dengan 3 minit pada jam dan menyelesaikan seberapa banyak perkataan yang anda mampu. Selesaikan perkataan dengan cepat untuk mendapat bonus masa." },
+                { "q": "Bagaimana pemarkahan berfungsi?", "a": "Anda memperoleh mata untuk setiap perkataan yang diselesaikan. Tekaan lebih sedikit dan penyelesaian lebih pantas memberi lebih banyak mata. Bina kombo dengan menyelesaikan perkataan berturut-turut — sehingga pengganda 3x." },
+                { "q": "Apa yang berlaku apabila masa habis?", "a": "Permainan tamat dan anda melihat skor akhir, jumlah perkataan diselesaikan, kombo maksimum dan purata tekaan. Anda boleh bermain semula serta-merta." },
+                { "q": "Adakah Speed Streak percuma?", "a": "Ya. Speed Streak percuma sepenuhnya dalam semua 80+ bahasa. Tiada akaun atau muat turun diperlukan." }
+            ],
+            "multiboard": [
+                { "q": "Apakah {modeName} dalam {langName}?", "a": "{modeName} ialah varian Wordle berbilang papan dalam {langName}. Anda menyelesaikan {boardCount} papan Wordle pada masa yang sama menggunakan {maxGuesses} tekaan. Setiap tekaan dimasukkan pada semua papan yang belum diselesaikan serentak." },
+                { "q": "Berapa banyak tekaan yang saya dapat dalam {modeName}?", "a": "Anda mendapat {maxGuesses} tekaan untuk menyelesaikan semua {boardCount} papan. Setelah papan diselesaikan, ia membeku dan anda boleh fokus pada papan yang tinggal." },
+                { "q": "Apakah strategi terbaik untuk {modeName}?", "a": "Mulakan dengan perkataan yang menggunakan huruf biasa untuk mengumpul maklumat pada semua {boardCount} papan sekaligus. Perhatikan papan kekunci warna berpecah — ia menunjukkan huruf mana yang betul pada papan mana." },
+                { "q": "Adakah {modeName} percuma?", "a": "Ya. {modeName} percuma sepenuhnya dalam semua 80+ bahasa. Tiada akaun atau muat turun diperlukan. Main seberapa banyak pusingan yang anda mahu." }
+            ]
+        },
+        "howto": [
+            { "name": "Taip perkataan", "text": "Masukkan perkataan 5-huruf yang sah dalam {langName} menggunakan papan kekunci pada skrin atau papan kekunci fizikal anda, kemudian tekan Enter." },
+            { "name": "Baca petunjuk", "text": "Jubin hijau bermaksud huruf betul dan di tempat yang betul. Kuning bermaksud huruf ada dalam perkataan tetapi di kedudukan salah. Kelabu bermaksud huruf tiada dalam perkataan." },
+            { "name": "Selesaikan dalam 6 percubaan", "text": "Gunakan petunjuk warna untuk mengecilkan perkataan. Anda ada 6 tekaan kesemuanya. Selepas teka-teki, lihat statistik anda dan kongsi keputusan." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Mulakan permainan", "text": "Lawati wordle.global/{lang}/unlimited untuk mula bermain Wordle Unlimited dalam {langName}. Perkataan 5-huruf rawak dipilih untuk anda." },
+                { "name": "Teka perkataan", "text": "Taip perkataan 5-huruf yang sah dan tekan Enter. Jubin hijau bermaksud huruf betul dan di tempat yang betul. Kuning bermaksud huruf ada dalam perkataan tetapi di tempat yang salah. Kelabu bermaksud huruf tiada dalam perkataan." },
+                { "name": "Main lagi serta-merta", "text": "Selepas menyelesaikan perkataan (atau menggunakan kesemua 6 tekaan), tekan \"Main Lagi\" untuk mendapat perkataan baharu serta-merta. Tiada perlu tunggu esok." }
+            ],
+            "speed": [
+                { "name": "Mulakan pemasa", "text": "Lawati wordle.global/{lang}/speed dan tekan Mula. Anda bermula dengan 3 minit pada jam." },
+                { "name": "Selesaikan perkataan dengan pantas", "text": "Setiap perkataan yang diselesaikan memberi bonus masa (+10s hingga +60s bergantung pada berapa sedikit tekaan yang digunakan). Perkataan gagal mengurangkan 30 saat." },
+                { "name": "Bina kombo anda", "text": "Selesaikan perkataan berturut-turut untuk membina pengganda kombo (sehingga 3x). Kombo pecah jika anda gagal menyelesaikan perkataan. Cuba pecahkan skor tertinggi anda." }
+            ],
+            "multiboard": [
+                { "name": "Mulakan permainan", "text": "Lawati wordle.global/{lang}/{modeName} untuk bermain {modeName} dalam {langName}. {boardCount} papan muncul dengan perkataan tersembunyi yang berbeza." },
+                { "name": "Teka merentasi semua papan", "text": "Taip perkataan 5-huruf dan tekan Enter. Tekaan anda muncul pada semua {boardCount} papan sekaligus. Setiap papan menunjukkan petunjuk warna tersendiri (hijau, kuning, kelabu)." },
+                { "name": "Selesaikan semua {boardCount} papan", "text": "Papan yang diselesaikan membeku. Gunakan papan kekunci warna berpecah untuk menjejak huruf mana yang berkesan pada papan mana. Selesaikan semua {boardCount} dalam {maxGuesses} tekaan untuk menang." }
+            ]
+        }
     }
 }

@@ -83,6 +83,111 @@
         "speed_pressure": "Pressure ramp",
         "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
+    "seo": {
+        "how_to_play": "Kuk a melekoi",
+        "tips_strategy": "Omekerull me omengereomel",
+        "more_modes": "Bebil el mekemad er a game",
+        "play_in_languages": "Melekoi er a 80+ el tekoi",
+        "play_in_languages_sub": "Rokui el tekoi a diak a ududel. Diak a kirel a account.",
+        "why_wordle_global": "Ngera uchul a Wordle Global",
+        "faq_title": "Kekerei el ker el mle mekera",
+        "browse_all_languages": "Omes a rokui el 80+ el tekoi",
+        "recent_words": "Beches el tekoi",
+        "view_all_words": "Omes a rokui el tekoi",
+        "footer": "wordle.global — a diak a ududel el klebesei el tekoi el game er a 80+ el tekoi",
+        "tile_correct": "a ngar er a tekoi me er a ungil el blai.",
+        "tile_semicorrect": "a ngar er a tekoi engdi diak er a ungil el blai.",
+        "tile_incorrect": "a diak er a tekoi.",
+        "stat_players": "Chad el melekoi",
+        "stat_guesses": "Blals",
+        "stat_languages": "Tekoi",
+        "stat_modes": "Mekemad er a game",
+        "value_props": [
+            { "key": "languages", "title": "80+ el tekoi", "desc": "Uchei er a Arabic el mo er a Yoruba. A meklou el tekoi el Wordle." },
+            { "key": "definitions", "title": "Ilumel a tekoi", "desc": "Melasem a ilumel a tekoi a uriul a game. Meskau a tekoi er kau." },
+            { "key": "word_art", "title": "Kmal beches el tekoi el art", "desc": "Rokui el tekoi a ngar er ngii a kmal beches el llild. Remuul a rokui." },
+            { "key": "themes", "title": "Dark Mode me themes", "desc": "Light, dark, me high-contrast modes el mo ungil el omes." },
+            { "key": "pwa", "title": "A mereked er a rokui", "desc": "PWA — install er a oba el device. A mereked e ng diak a internet. Diak a kirel download." },
+            { "key": "free", "title": "Diak a ududel el mo ikakid", "desc": "Diak a kirel a account. Diak a ududel. Melekoi." }
+        ],
+        "tips": [
+            { "title": "Mochu er a tekoi el ngar er ngii a bebil el vowel", "text": "A tekoi el ua CRANE, STARE, me ADIEU a omekeral a mekekerei el cherellel. A medengelii a oba el vowel a kmal olemall a rolel." },
+            { "title": "Ousbech a klemerang er kau", "text": "A berdel el cherellel a ngar er ngii. A chesengel el cherellel a kirel el mo er a bebil el blai. A bek el cherellel a mla metikd. Rokui el guess a kirel el ousbech a kluk el omekerull." },
+            { "title": "Medengei a tekoi el rullii el metechel", "text": "A English el tekoi a meketerkokl el merek er a -TION, -IGHT, -OUND, -MENT. A bebil el tekoi a ngar er ngii a rechad er ngii — melasem." },
+            { "title": "Omekall, diak a blecheoel el nguu", "text": "A eungel el tekoi er kau a kirel el omekeral a beches el cherellel, diak el lmuut a mla metikd. Omekeral a rokui el diak el mla mekerellii el consonant." },
+            { "title": "Melatk er a teru el cherellel", "text": "A tekoi el ua CREEK, FLOSS, me APPLE a kekere el trap. A omekerull er kau a diak el mereked, medengei el ngar a teru el cherellel." },
+            { "title": "Ousbech a hard mode el mo mekungil", "text": "A hard mode a omekired el kau el ousbech a omekerull er a rokui el guess. A kmal omekungil a omengereomel er kau." }
+        ],
+        "tips_speed": [
+            { "title": "Mochu er a CRANE me STARE", "text": "A mekekerei el cherellel a kmal ungil a chance er kau er a mekelekelt el sobanuk. Rokui el second a count." },
+            { "title": "Diak a ildisel el medengei", "text": "Speed Streak a omerechorech a gut feeling. A omesaul a tekoi a kmal ungil — a combo bonus a meklou er a perfect solve." },
+            { "title": "Omdasu a combo er kau", "text": "A diak el mla tekoi a omekall a multiplier er kau. A diak el medengelii, ousbech a safe guess el mo medul a bebil el omekerull." },
+            { "title": "Sobanuk er a 2-3 el guess", "text": "A time bonus a kmal meklou er a mekelekelt el sobanuk (+60s er a 1 guess, +30s er a 2). A risky el eungel el guess a sebechel el kmal ungil." },
+            { "title": "Melasem a mekekerei el merek er a tekoi", "text": "A patterns el ua -IGHT, -OUND, -ATCH a mle mekudem el lmuut. A mekelekelt el medengei er ngii a omengai er a second." },
+            { "title": "Mekedmokl a rengul a pressure a mo meklou", "text": "A timer a mo mekelekelt er a 3 el tekoi. A merasm a omekbeches er a typo me mekngit el guess. A ungil el pace a omekall a panic." }
+        ],
+        "tips_multiboard": [
+            { "title": "Mochu er a meklou", "text": "Ousbech a tekoi el ngar er ngii a mekekerei el cherellel (CRANE, STARE) el mo medul a omekerull er a rokui el board." },
+            { "title": "Melatk er a split keyboard", "text": "A keyboard a omechoel a ibara er a rokui el board. A cherellel el berdel er a tang el board me bek er a tang a omekall a rolel." },
+            { "title": "Mochu er a mesisiich el board", "text": "Ousbech a guess er a board el ngar er ngii a meklou el diak el medengelii. A melemalt el board a mle sobanuk er ngii." },
+            { "title": "Diak el omechitechut a kot el guess", "text": "Ousbech a kot el 2-3 el guess er a tekoi el ngar er ngii a bebil el information er a kot el mochu er a tang el board." },
+            { "title": "Osiik a temekel el cherellel", "text": "A eua el board a omechoel a chesengel el E, a tekoi el ngar er ngii a E er a beches el blai a omekungil a eua el board." },
+            { "title": "Omdasu a guess er a emergencies", "text": "A mesterir er a uriul el board, a ngar er ngii a bebil el guess a kmal meklou er a difference er a win me lose." }
+        ],
+        "mode_desc_classic": "A ngar er kau a 6 el blals el mo sobanuk a 5-cherellel el tekoi el mla chieuii. Ousbech a ibara el omekerull el mo medul a ngeseu.",
+        "mode_desc_unlimited": "A ngar er kau a 6 el blals el mo sobanuk a 5-cherellel el tekoi el mla chieuii. Ousbech a ibara el omekerull el mo medul a ngeseu. A uriul a game, nguu a \"Play Again\" el mo medul a beches el tekoi — diak a limit.",
+        "mode_desc_speed": "Mochu er a 3 el dekil er a timer. Rokui el tekoi el sobanuk a omerechorech er kau a bebil el taem — sobanuk er a bebil el guess el mo medul a meklou el bonus (+60s er a 1 guess, +10s er a 6). A diak el mla tekoi a omekall er kau a 30 second. Omekbeches a combo er a 3x a rengul a sobanuk a tekoi el diak el mesaul. A pressure a mo meklou — a timer a mo mekelekelt er a 3 el tekoi.",
+        "mode_desc_multiboard": "{modeName} a omekired el kau el sobanuk a {boardCount} el Wordle board er a tang el taem er a {maxGuesses} el guess. Rokui el guess a obengkel er a rokui el board el diak el mla sobanuk. A board a mesaul a rengul a mla sobanuk. A split-color keyboard a omechoel a oba el cherellel a ungil er a oba el board. Mochu er a tekoi el ngar er ngii a mekekerei el cherellel.",
+        "faq": [
+            { "q": "Kuk a melekoi a Wordle er a {langName}?", "a": "Mei er a wordle.global/{lang} el mo melekoi a klebesei el Wordle er a {langName}. A ngar er kau a 6 el blals el mo sobanuk a 5-cherellel el tekoi. A uriul a guess, a tile a mo berdel (ungil el cherellel, ungil el blai), chesengel (ungil el cherellel, diak el ungil el blai), me bek (a cherellel a diak er a tekoi)." },
+            { "q": "A ngar a beches el puzzle er a rokui el klebesei?", "a": "Choi. A beches el tekoi a mla mesekau er a rokui el klebesei. A rokui el chad el melekoi er a temekel el tekoi a mla medul a temekel el tekoi, me a sebechel el compare a results er a rebebil er kau." },
+            { "q": "A Wordle Global a diak a ududel?", "a": "Choi. A klebesei el puzzle, unlimited mode, me rokui el game modes a diak a ududel er a 80+ el tekoi. Diak a kirel a account me download." },
+            { "q": "A sebechek el melekoi er a meklou er a tang er a klebesei?", "a": "Choi — ousbech a Unlimited mode er a wordle.global/{lang}/unlimited el mo medul a game el diak el limit me diak el meral. A klebesei el streak er kau a mla keed er ngii." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Ngera a Wordle Unlimited er a {langName}?", "a": "Wordle Unlimited a omeksau er kau el melekoi a oba el game er a {langName} el diak el meral a elechang el puzzle. Rokui el game a omerechorech er kau a beches el tekoi el mo sobanuk er a 6 el blals." },
+                { "q": "A Wordle Unlimited a diak a ududel?", "a": "Choi. Wordle Unlimited a diak a ududel el melekoi. Diak a account, diak a download, diak a ads." },
+                { "q": "A unlimited mode a count er a klebesei el streak?", "a": "Diak. A unlimited mode a ngar er ngii a keed el statistics. A klebesei el streak er kau a mla mekedmokl er a klebesei el puzzle." },
+                { "q": "Tela el mekudem a sebechek el melekoi?", "a": "Diak a limit. A sebechel el melekoi a oba el mekudem. A uriul a game, nguu a \"Play Again\" el mo medul a beches el tekoi." },
+                { "q": "Ngera el tekoi a sebechek el melekoi a Wordle Unlimited?", "a": "Wordle Unlimited a mereked er a 80+ el tekoi er a wordle.global, el oubail a English, Spanish, German, Finnish, Arabic, French, Italian, Portuguese, me bebil." }
+            ],
+            "speed": [
+                { "q": "Ngera a Speed Streak er a {langName}?", "a": "Speed Streak a timed Wordle mode er a {langName}. Mochu er a 3 el dekil me sobanuk a oba el tekoi el sebechel. Sobanuk a tekoi el mekelekelt el mo medul a bebil el taem." },
+                { "q": "Kuk a scoring a mereked?", "a": "A omerechorech er kau a points er a rokui el tekoi el mla sobanuk. A bebil el guess me mekelekelt el sobanuk a kmal meklou el points. Omekbeches a combo er a 3x a rengul a sobanuk a tekoi el diak el mesaul." },
+                { "q": "Ngera a merael a rengul a timer a mla merek?", "a": "A game a merek me a omesaul a final score, rokui el tekoi el mla sobanuk, max combo, me average guesses. A sebechel el melekoi el lmuut." },
+                { "q": "A Speed Streak a diak a ududel?", "a": "Choi. Speed Streak a diak a ududel er a rokui el 80+ el tekoi. Diak a kirel a account me download." }
+            ],
+            "multiboard": [
+                { "q": "Ngera a {modeName} er a {langName}?", "a": "{modeName} a multi-board Wordle er a {langName}. A sobanuk a {boardCount} el Wordle board er a tang el taem er a {maxGuesses} el guess. Rokui el guess a obengkel er a rokui el board el diak el mla sobanuk." },
+                { "q": "Tela el guess a ngar er ngak er a {modeName}?", "a": "A ngar er kau a {maxGuesses} el guess el mo sobanuk a rokui el {boardCount} board. A board a mesaul a rengul a mla sobanuk me a sebechel el focus er a bebil el board." },
+                { "q": "Ngera el omengereomel a kmal ungil er a {modeName}?", "a": "Mochu er a tekoi el ngar er ngii a mekekerei el cherellel el mo medul a information er a rokui el {boardCount} board. Melatk er a split-color keyboard — a omechoel a oba el cherellel a ungil er a oba el board." },
+                { "q": "A {modeName} a diak a ududel?", "a": "Choi. {modeName} a diak a ududel er a rokui el 80+ el tekoi. Diak a kirel a account me download. Melekoi a oba el mekudem." }
+            ]
+        },
+        "howto": [
+            { "name": "Nguu a tekoi", "text": "Nguu a ungil el 5-cherellel el tekoi er a {langName} er a on-screen keyboard me a physical keyboard er kau, e nguu a Enter." },
+            { "name": "Omes a omekerull", "text": "A berdel el tile a tekoi a ungil el cherellel me er a ungil el blai. A chesengel a tekoi a ngar er a tekoi engdi diak er a ungil el blai. A bek a tekoi a cherellel a diak er a tekoi." },
+            { "name": "Sobanuk er a 6 el blals", "text": "Ousbech a ibara el omekerull el mo sobanuk a tekoi. A ngar er kau a 6 el guess. A uriul a puzzle, omes a stats er kau me share a result er kau." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Mochu a game", "text": "Mei er a wordle.global/{lang}/unlimited el mo melekoi a Wordle Unlimited er a {langName}. A random el 5-cherellel el tekoi a mla mesekau." },
+                { "name": "Sobanuk a tekoi", "text": "Nguu a ungil el 5-cherellel el tekoi me nguu a Enter. A berdel el tile a ungil el cherellel me ungil el blai. A chesengel a ngar er a tekoi engdi diak el ungil el blai. A bek a diak er a tekoi." },
+                { "name": "Melekoi el lmuut", "text": "A uriul a sobanuk a tekoi (me ousbech a rokui el 6 guess), nguu a \"Play Again\" el mo medul a beches el tekoi. Diak el meral a elechang." }
+            ],
+            "speed": [
+                { "name": "Mochu a timer", "text": "Mei er a wordle.global/{lang}/speed me nguu a Start. Mochu er a 3 el dekil." },
+                { "name": "Sobanuk a tekoi el mekelekelt", "text": "Rokui el tekoi el sobanuk a omerechorech er kau a bebil el taem (+10s el mo er a +60s). A diak el mla tekoi a omekall er kau a 30 second." },
+                { "name": "Omekbeches a combo er kau", "text": "Sobanuk a tekoi el diak el mesaul el mo medul a combo multiplier (el mo er a 3x). A combo a mesaul a rengul a diak el mla tekoi. Omekbeches a high score er kau." }
+            ],
+            "multiboard": [
+                { "name": "Mochu a game", "text": "Mei er a wordle.global/{lang}/{modeName} el mo melekoi a {modeName} er a {langName}. {boardCount} el board a obengkel er a kmal bebil el tekoi el mla chieuii." },
+                { "name": "Guess er a rokui el board", "text": "Nguu a 5-cherellel el tekoi me nguu a Enter. A guess er kau a obengkel er a rokui el {boardCount} board. Rokui el board a omechoel a ibara er ngii (berdel, chesengel, bek)." },
+                { "name": "Sobanuk a rokui el {boardCount} board", "text": "A board el mla sobanuk a mesaul. Ousbech a split-color keyboard el mo track a oba el cherellel a mereked er a oba el board. Sobanuk a rokui el {boardCount} er a {maxGuesses} el guess el mo win." }
+            ]
+        }
+    },
     "ui": {
         "settings": "Settings",
         "dark_mode": "Dark Mode",

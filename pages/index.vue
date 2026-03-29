@@ -180,48 +180,20 @@ useHead({
             innerHTML: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'FAQPage',
-                mainEntity: [
-                    {
+                mainEntity: (homepageConfig.value?.seo?.faq || []).map(
+                    (item: { q: string; a: string }) => ({
                         '@type': 'Question',
-                        name: 'What is Wordle Global?',
+                        name: item.q
+                            .replace(/\{langName\}/g, homepageConfig.value?.name || 'English')
+                            .replace(/\{lang\}/g, hpLang.value),
                         acceptedAnswer: {
                             '@type': 'Answer',
-                            text: `Wordle Global is a free daily word puzzle game available in ${langCount.value}+ languages. Guess the hidden 5-letter word in 6 tries — a new puzzle every day.`,
+                            text: item.a
+                                .replace(/\{langName\}/g, homepageConfig.value?.name || 'English')
+                                .replace(/\{lang\}/g, hpLang.value),
                         },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'How many languages does Wordle Global support?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: `Wordle Global currently supports ${langCount.value} languages, including English, Finnish, Spanish, German, Arabic, Hebrew, French, Portuguese, and many more. New languages are added regularly.`,
-                        },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'Is Wordle Global free?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Yes, Wordle Global is completely free to play. No account or sign-up required. Just pick a language and start playing.',
-                        },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'What game modes are available?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Wordle Global offers 5 game modes: Classic (daily puzzle), Unlimited (play as many as you want), Speed Streak (race the clock), Dordle (2 boards), and Quordle (4 boards). More modes coming soon.',
-                        },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'How do I play Wordle?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Type a 5-letter word and press Enter. Green means the letter is correct and in the right position. Yellow means the letter is in the word but in the wrong position. Gray means the letter is not in the word. You have 6 tries to guess the word.',
-                        },
-                    },
-                ],
+                    })
+                ),
             }),
         },
     ],
@@ -565,12 +537,13 @@ function openLink(url: string): void {
 
 <template>
     <div class="pb-12">
-        <!-- ═══ Announcement Bar ═══ -->
+        <!-- Announcement bar (disabled — re-enable for future announcements)
         <div
             class="bg-ink dark:bg-accent text-paper dark:text-white font-mono text-[10px] tracking-[0.05em] text-center py-1 px-3 whitespace-nowrap overflow-hidden text-ellipsis"
         >
-            &#127881; New game modes! Unlimited, Speed Streak, Dordle &amp; Quordle
+            Announcement text here
         </div>
+        -->
 
         <!-- ═══ Masthead ═══ -->
         <div class="text-center pt-10 sm:pt-10 mb-12 px-4">

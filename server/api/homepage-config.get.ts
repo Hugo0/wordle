@@ -10,6 +10,9 @@ export default defineEventHandler((event) => {
     const query = getQuery(event);
     const lang = (query.lang as string) || event.context.detectedLanguage || 'en';
 
+    // Tell CDN/caches that response varies by Accept-Language
+    setResponseHeader(event, 'Vary', 'Accept-Language');
+
     const config = loadLanguageConfig(lang);
 
     return {
