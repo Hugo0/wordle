@@ -1646,9 +1646,8 @@ export const useGameStore = defineStore('game', () => {
             null;
         const keys = board.keyStates;
 
-        // For 5+ boards: skip DOM animation (tiles too small, row collapsing breaks
-        // children[rowIndex], off-page boards have no DOM). Just update data instantly.
-        if (boards.value.length > 4 || !boardEl) {
+        // No DOM element → instant update (off-screen board or SSR)
+        if (!boardEl) {
             for (let t = 0; t < (board.tiles[rowIndex]?.length ?? 5); t++) {
                 const finalClass = board.tileClasses[rowIndex]?.[t] || '';
                 board.tileClassesVisual[rowIndex]?.splice(t, 1, finalClass);

@@ -73,6 +73,10 @@ function parseAcceptLanguage(header: string): string {
 }
 
 export default defineEventHandler((event) => {
+    // Only parse for routes that need it (homepage config endpoint)
+    const path = getRequestURL(event).pathname;
+    if (path !== '/' && !path.startsWith('/api/homepage-config')) return;
+
     const header = getRequestHeader(event, 'accept-language');
     event.context.detectedLanguage = header ? parseAcceptLanguage(header) : 'en';
 });

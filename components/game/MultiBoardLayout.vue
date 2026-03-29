@@ -180,8 +180,9 @@ const gridStyle = computed(() => {
     const cols = layout.value.gridCols;
     const boardRows = Math.ceil(boardCount.value / cols);
 
+    const effectiveVisibleRows = allExpanded.value ? 0 : layout.value.visibleRows;
     const rowsPerBoard =
-        layout.value.visibleRows > 0 ? layout.value.visibleRows + 1 : maxGuesses.value;
+        effectiveVisibleRows > 0 ? effectiveVisibleRows + 1 : maxGuesses.value;
 
     const totalTileCols = cols * 5;
     const totalTileRows = boardRows * rowsPerBoard;
