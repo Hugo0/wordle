@@ -14,7 +14,6 @@
 import type { Ref } from 'vue';
 import type { GameData } from '~/utils/types';
 import { buildStatsKey } from '~/utils/game-modes';
-import { getOrCreateId } from '~/utils/storage';
 
 export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
     const langStore = useLanguageStore();
@@ -117,14 +116,13 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                 lastGuessValid: true,
                 game_mode: game.gameConfig.mode,
             }));
-            // Identify once per session — PostHog persists the distinct_id,
-            // so re-identifying on every page load wastes $identify + $set events.
-            const ph = usePostHog();
-            const clientId = getOrCreateId('client_id');
-            const alreadyIdentified = ph?.get_distinct_id() === clientId;
-            const userProps = alreadyIdentified
-                ? analytics.computeUserProperties(stats.gameResults)
-                : analytics.identifyUser(stats.gameResults);
+            // Only identify new users — returning users are already identified
+            // from a previous session (PostHog persists distinct_id in localStorage).
+            // This saves ~$identify + $set events for every returning-user page load.
+            const isNewUser = !localStorage.getItem('first_seen_date');
+            const userProps = isNewUser
+                ? analytics.identifyUser(stats.gameResults)
+                : analytics.computeUserProperties(stats.gameResults);
 
             // Retention — merge returning_player + re_engagement into one event
             const lastPlayed = localStorage.getItem('last_played_date');

@@ -147,6 +147,9 @@ let _abandonListener: (() => void) | null = null;
 // Frustration counters — module-scoped so all useAnalytics() instances share
 // the same state. Only the game store writes to these (via trackInvalidWordAndUpdateState
 // and resetFrustrationState), but multiple instances exist (game store, useGamePage, PWA plugin).
+// PWA session event — fire once per app lifetime, not per SPA navigation
+let _pwaSessionTracked = false;
+
 let _sessionInvalidCount = 0;
 let _currentConsecutiveInvalid = 0;
 let _maxConsecutiveInvalidCount = 0;
@@ -171,8 +174,9 @@ export function useAnalytics() {
      */
     const track = (eventName: string, params?: Record<string, unknown>): void => {
         if (!import.meta.client) return;
-        // Never send analytics from localhost (dev environment)
         if (window.location.hostname === 'localhost') return;
+        // Skip bots — they inflated PostHog events ~2-3x (GA4 filters these automatically)
+        if ((navigator as any).webdriver) return;
 
         // Google Analytics 4 — forward params matching registered custom dimensions.
         try {
@@ -282,6 +286,7 @@ export function useAnalytics() {
         const props = computeUserProperties(gameResults);
 
         if (!import.meta.client) return props;
+        if ((navigator as any).webdriver) return props;
 
         try {
             const clientId = getOrCreateId('client_id');
@@ -527,7 +532,8 @@ export function useAnalytics() {
      * Answers: Do installed users return more?
      */
     const trackPWASession = (language: string): void => {
-        if (_isStandalone) {
+        if (_isStandalone && !_pwaSessionTracked) {
+            _pwaSessionTracked = true;
             track('pwa_session', {
                 language,
                 platform: getPlatform(),

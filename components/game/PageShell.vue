@@ -1,5 +1,5 @@
 <template>
-    <div v-if="visible" class="flex h-full" :class="wrapperClass">
+    <div v-if="visible" class="flex h-[100dvh] snap-start" :class="wrapperClass">
         <!-- Sidebar (fixed overlay) -->
         <AppSidebar
             :is-open="sidebarOpen"

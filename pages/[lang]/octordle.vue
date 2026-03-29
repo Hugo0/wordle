@@ -11,6 +11,7 @@ const {
     multiBoardRef,
     startNewGame,
     gameData,
+    seo,
 } = await useMultiBoardModePage('octordle');
 </script>
 
@@ -19,7 +20,7 @@ const {
         :lang="lang"
         :language-name="config?.name_native || config?.name || lang"
         current-mode="octordle"
-        :title="modeDef.label"
+        :title="seo.modeLabel"
         :subtitle="config?.name_native || lang"
         :sidebar-open="sidebarOpen"
         :max-width="modeDef.shellMaxWidth || 'lg'"
@@ -31,24 +32,5 @@ const {
         <GameMultiBoardLayout ref="multiBoardRef" />
     </GamePageShell>
 
-    <noscript data-allow-mismatch>
-        <div
-            style="
-                max-width: 600px;
-                margin: 40px auto;
-                padding: 20px;
-                font-family: system-ui, sans-serif;
-                color: #333;
-            "
-        >
-            <h1>Wordle {{ config?.name_native }} — {{ modeDef.label }}</h1>
-            <p>
-                Play {{ modeDef.label }} in {{ config?.name }}. Solve
-                {{ modeDef.boardCount }} boards at once with {{ modeDef.maxGuesses }} guesses.
-            </p>
-            <p>
-                <a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a>
-            </p>
-        </div>
-    </noscript>
+    <GameSeoNoscript :lang="lang" mode="octordle" :seo="seo" />
 </template>

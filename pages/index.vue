@@ -43,7 +43,7 @@ const title = computed(
 );
 const description = computed(
     () =>
-        `Play Wordle today in ${langCount.value}+ languages \u2014 free, daily 5-letter word puzzle. Guess the word in 6 tries. No account needed. Available in English, Spanish, German, Arabic, Hebrew, Finnish and more.`
+        `Play Wordle in ${langCount.value}+ languages \u2014 daily puzzle, unlimited mode, speed streak, dordle & quordle. Free word game, no account needed.`
 );
 
 useSeoMeta({

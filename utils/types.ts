@@ -6,11 +6,18 @@
 // Language Configuration (from language_config.json)
 // =============================================================================
 
+export interface LanguageModeMeta {
+    title?: string;
+    description?: string;
+}
+
 export interface LanguageMeta {
     locale: string;
     title: string;
     description: string;
     keywords: string;
+    wordle_native?: string;
+    modes?: Record<string, LanguageModeMeta>;
 }
 
 export interface LanguageText {

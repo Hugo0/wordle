@@ -1,6 +1,6 @@
 <template>
     <div
-        class="min-h-[100dvh] h-[100dvh] overflow-hidden overscroll-none bg-paper text-ink transition-colors"
+        class="h-[100dvh] overflow-y-auto overscroll-none bg-paper text-ink transition-colors snap-y snap-mandatory"
     >
         <a href="#game-board" class="skip-link">Skip to game</a>
         <slot />
