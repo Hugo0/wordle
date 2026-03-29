@@ -12,7 +12,7 @@
  * change the save key format (language code from URL path) or remove the
  * tile_colors derivation without a migration path.
  */
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, triggerRef } from 'vue';
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '~/stores/language';
 import { useSettingsStore } from '~/stores/settings';
@@ -723,7 +723,9 @@ export const useGameStore = defineStore('game', () => {
                 fullWordInputted.value = false;
                 animating.value = true;
 
-                const speedMult = gameConfig.value.mode === 'speed' ? 0.5 : 1;
+                // Speed mode: faster animations. 8+ boards: skip animations entirely (too much jank).
+                const bc = gameConfig.value.boardCount;
+                const speedMult = gameConfig.value.mode === 'speed' ? 0.5 : bc >= 8 ? 2 : 1;
                 revealRow(revealingRow, speedMult).then(() => {
                     showTiles();
 
@@ -1545,9 +1547,11 @@ export const useGameStore = defineStore('game', () => {
             boardsToReveal.push(board.boardIndex);
         }
 
-        // Force Vue reactivity on merged keyboard states
-        // (deep property mutations on board.keyStates may not trigger computed re-evaluation)
-        boards.value = [...boards.value];
+        // Notify Vue that boards changed (deep property mutations on keyStates
+        // don't trigger computed re-evaluation). triggerRef is O(1) vs the old
+        // [...boards.value] which was O(n) and forced every board-dependent
+        // computed across all 32 boards to re-evaluate.
+        triggerRef(boards);
 
         // 2. Advance activeRow on ALL unsolved boards
         for (const board of boards.value) {
@@ -1692,6 +1696,8 @@ export const useGameStore = defineStore('game', () => {
     /** Sync visual layer for all boards. If onlyRow specified, only sync that row. */
     function showTilesAllBoards(onlyRow?: number): void {
         for (let i = 0; i < boards.value.length; i++) {
+            // Skip solved boards during typing (onlyRow) — their visual state is final
+            if (onlyRow !== undefined && boards.value[i]?.solved) continue;
             showTilesForBoard(i, onlyRow);
         }
     }
