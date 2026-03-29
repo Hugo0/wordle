@@ -103,11 +103,19 @@
                 </div>
                 <div class="space-y-1.5">
                     <div
-                        v-for="lw in languageWins"
+                        v-for="lw in visibleLanguageWins"
                         :key="lw.lang"
                         class="flex items-center justify-between text-sm"
                     >
-                        <span class="text-ink capitalize">{{ lw.lang }}</span>
+                        <span class="flex items-center gap-1.5 text-ink capitalize">
+                            <img
+                                v-if="useFlag(lw.lang)"
+                                :src="useFlag(lw.lang)!"
+                                :alt="lw.lang"
+                                class="w-4 h-4 rounded-full"
+                            />
+                            {{ lw.lang }}
+                        </span>
                         <span class="font-mono text-xs text-muted">
                             {{ lw.wins }} {{ lw.wins === 1 ? 'win' : 'wins' }}
                             <span v-if="lw.games > lw.wins" class="text-muted/60"
@@ -116,6 +124,14 @@
                         </span>
                     </div>
                 </div>
+                <button
+                    v-if="languageWins.length > 5"
+                    class="w-full text-center text-xs text-muted hover:text-ink transition-colors mt-2 py-1"
+                    style="font-family: var(--font-mono); letter-spacing: 0.05em"
+                    @click="showAllLangs = !showAllLangs"
+                >
+                    {{ showAllLangs ? 'Show less' : `+${languageWins.length - 5} more` }}
+                </button>
             </div>
 
             <!-- Footer note -->
@@ -131,9 +147,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { Flame } from 'lucide-vue-next';
 import { isClassicDailyStatsKey } from '~/utils/game-modes';
+import { useFlag } from '~/composables/useFlag';
 
 defineProps<{ visible: boolean }>();
 defineEmits<{ close: [] }>();
@@ -236,6 +253,8 @@ const calendarDays = computed<CalendarDay[]>(() => {
 });
 
 // --- Per-language wins (not streaks) ---
+const showAllLangs = ref(false);
+
 const languageWins = computed(() => {
     const result: { lang: string; wins: number; games: number }[] = [];
     for (const [lang, stats] of Object.entries(statsStore.totalStats.game_stats)) {
@@ -245,6 +264,10 @@ const languageWins = computed(() => {
     }
     return result.sort((a, b) => b.wins - a.wins);
 });
+
+const visibleLanguageWins = computed(() =>
+    showAllLangs.value ? languageWins.value : languageWins.value.slice(0, 5)
+);
 </script>
 
 <style scoped>
