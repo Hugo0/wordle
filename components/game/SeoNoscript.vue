@@ -542,7 +542,7 @@ const recentWords = computed(() => {
                         <a
                             :href="`/${lang}/words`"
                             class="text-sm text-muted underline hover:text-ink transition-colors"
-                            >{{ h.viewAllWords }}</
+                            >{{ h.viewAllWords }}</a
                         >
                     </p>
                 </section>
