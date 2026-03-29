@@ -149,11 +149,7 @@ const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);
 // Streak badge
 // ---------------------------------------------------------------------------
 
-const streakCount = computed(() =>
-    game.debugStreakOverride !== null
-        ? game.debugStreakOverride
-        : statsStore.totalStats.current_overall_streak
-);
+const streakCount = computed(() => game.effectiveStreak);
 const justWon = ref(false);
 let justWonTimeout: ReturnType<typeof setTimeout> | null = null;
 

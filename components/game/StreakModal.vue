@@ -158,11 +158,7 @@ defineEmits<{ close: [] }>();
 const game = useGameStore();
 const statsStore = useStatsStore();
 
-const currentStreak = computed(() =>
-    game.debugStreakOverride !== null
-        ? game.debugStreakOverride
-        : statsStore.totalStats.current_overall_streak
-);
+const currentStreak = computed(() => game.effectiveStreak);
 const longestStreak = computed(() => statsStore.totalStats.longest_overall_streak);
 
 const motivationalText = computed(() => {

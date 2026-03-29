@@ -213,6 +213,13 @@ export const useGameStore = defineStore('game', () => {
     // Debug: override streak count for visual testing (set via debug.streak.set())
     const debugStreakOverride = ref<number | null>(null);
 
+    // Effective streak: respects debug override, used by PageShell and StreakModal
+    const effectiveStreak = computed(() => {
+        if (debugStreakOverride.value !== null) return debugStreakOverride.value;
+        const statsStore = useStatsStore();
+        return statsStore.totalStats.current_overall_streak;
+    });
+
     const notification = ref<Notification>(makeEmptyNotification());
 
     const timeUntilNextDay = ref('');
@@ -2255,6 +2262,7 @@ export const useGameStore = defineStore('game', () => {
         showOptionsModal,
         showStreakModal,
         debugStreakOverride,
+        effectiveStreak,
         notification,
         emojiBoard,
         timeUntilNextDay,
