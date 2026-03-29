@@ -37,13 +37,19 @@
                     @jump-to-board="onThumbnailClick"
                 />
                 <div v-if="totalPages > 1 && focusedBoard === null" class="page-controls">
-                    <button class="page-nav-btn" :disabled="currentPage === 0" @click="prevPage">
+                    <button
+                        class="page-nav-btn"
+                        :disabled="currentPage === 0"
+                        aria-label="Previous board page"
+                        @click="prevPage"
+                    >
                         <ChevronLeft :size="14" />
                     </button>
                     <span class="page-indicator">{{ currentPage + 1 }}/{{ totalPages }}</span>
                     <button
                         class="page-nav-btn"
                         :disabled="currentPage >= totalPages - 1"
+                        aria-label="Next board page"
                         @click="nextPage"
                     >
                         <ChevronRight :size="14" />
@@ -52,6 +58,7 @@
                 <button
                     v-if="focusedBoard !== null"
                     class="page-nav-btn"
+                    aria-label="Close focused board"
                     @click="focusedBoard = null"
                 >
                     <X :size="14" />

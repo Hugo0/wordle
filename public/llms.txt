@@ -10,8 +10,10 @@ Wordle Global is a multilingual word-guessing game at https://wordle.global. Pla
 - **Unlimited**: Play as many games as you want with random words. No waiting. URL: `/{lang}/unlimited`
 - **Speed Streak**: Solve words against a timer with combo scoring. URL: `/{lang}/speed`
 - **Dordle**: Solve 2 boards simultaneously with 7 guesses. URL: `/{lang}/dordle`
-- **Tridle**: Solve 3 boards simultaneously with 8 guesses. URL: `/{lang}/tridle`
 - **Quordle**: Solve 4 boards simultaneously with 9 guesses. URL: `/{lang}/quordle`
+- **Octordle**: Solve 8 boards simultaneously with 13 guesses. URL: `/{lang}/octordle`
+- **Sedecordle**: Solve 16 boards simultaneously with 21 guesses. URL: `/{lang}/sedecordle`
+- **Duotrigordle**: Solve 32 boards simultaneously with 37 guesses. URL: `/{lang}/duotrigordle`
 
 ## Languages
 
