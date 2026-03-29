@@ -8,7 +8,12 @@
 import { useSettingsStore } from '~/stores/settings';
 import { Flame, Check, Download } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
-import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
+import {
+    GAME_MODES_UI,
+    getModeRoute,
+    getModeLabel,
+    getModeDescription,
+} from '~/composables/useGameModes';
 
 const settings = useSettingsStore();
 
@@ -18,6 +23,14 @@ const settings = useSettingsStore();
 
 const { data: langData } = await useFetch('/api/languages');
 const { data: otherWordles } = await useFetch('/api/other-wordles');
+
+// Homepage config — SSR uses Accept-Language detection; client may override via ?lang=
+const hpLangOverride = ref<string | undefined>(undefined);
+const { data: homepageConfig } = await useFetch('/api/homepage-config', {
+    query: { lang: hpLangOverride },
+});
+const hpUi = computed(() => homepageConfig.value?.ui);
+const hpLang = computed(() => homepageConfig.value?.lang || 'en');
 
 const langCount = computed(() => langData.value?.language_codes?.length || 65);
 const languagePopularity = computed(() => langData.value?.language_popularity || []);
@@ -220,7 +233,8 @@ const selectedLangName = ref('');
 const gameResults = ref<
     Record<string, Array<{ won: boolean; attempts: number | string; date: string }>>
 >({});
-const detectedLanguageCode = ref<string | null>(null);
+// Initialize with SSR-detected language (from Accept-Language header)
+const detectedLanguageCode = ref<string | null>(hpLang.value !== 'en' ? hpLang.value : null);
 
 // PWA install
 const canInstallPwa = ref(false);
@@ -250,9 +264,18 @@ onMounted(() => {
         // ignore
     }
 
-    // Detect browser language
-    // Prefer most recently played language, then browser language
-    detectedLanguageCode.value = getMostRecentLanguage() || detectBrowserLanguage();
+    // Detect language: prefer localStorage (most recently played), then browser detection
+    // SSR already set detectedLanguageCode from Accept-Language; override if localStorage differs
+    const clientLang = getMostRecentLanguage() || detectBrowserLanguage();
+    if (clientLang && clientLang !== detectedLanguageCode.value) {
+        detectedLanguageCode.value = clientLang;
+        // Re-fetch homepage config for the user's actual preferred language
+        if (clientLang !== hpLang.value) {
+            hpLangOverride.value = clientLang;
+        }
+    } else if (!detectedLanguageCode.value) {
+        detectedLanguageCode.value = clientLang;
+    }
 
     // Check PWA install availability
     try {
@@ -480,19 +503,22 @@ const HOMEPAGE_MODE_IDS = ['classic', 'unlimited', 'speed', 'dordle', 'quordle']
 
 const homepageModes = computed(() => {
     const lang = defaultLang.value;
+    const ui = hpUi.value;
     const featured = GAME_MODES_UI.filter((m) => HOMEPAGE_MODE_IDS.includes(m.id)).map((m) => ({
         id: m.id,
         icon: m.icon,
-        label: m.label,
-        desc: m.description,
+        label: getModeLabel(m, ui),
+        desc: getModeDescription(m, ui),
         tag: m.badge || '',
         route: getModeRoute(m, lang),
     }));
     featured.push({
         id: 'more',
         icon: null as any,
-        label: '& More',
-        desc: 'Quordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon.',
+        label: ui?.homepage_and_more || '& More',
+        desc:
+            ui?.homepage_and_more_desc ||
+            'Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon.',
         tag: 'EXPLORE',
         route: null,
     });
@@ -538,7 +564,8 @@ function openLink(url: string): void {
                 Wordle<span class="text-accent">.</span>Global
             </h1>
             <div class="mono-label mt-2" style="letter-spacing: 0.2em">
-                The world's word game &mdash; {{ langCount }} languages
+                {{ hpUi?.homepage_tagline || "The world's word game" }} &mdash; {{ langCount }}
+                {{ hpUi?.languages || 'languages' }}
             </div>
             <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
         </div>

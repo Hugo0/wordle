@@ -260,6 +260,15 @@ export interface UiStrings {
     play_wordle?: string;
     or_pick_language?: string;
     skip_to_game?: string;
+    // Homepage
+    homepage_tagline?: string;
+    homepage_playing_in?: string;
+    homepage_change?: string;
+    homepage_choose_language?: string;
+    homepage_languages_counting?: string;
+    homepage_search?: string;
+    homepage_and_more?: string;
+    homepage_and_more_desc?: string;
     // Game mode labels & descriptions
     mode_daily_label?: string;
     mode_daily_desc?: string;

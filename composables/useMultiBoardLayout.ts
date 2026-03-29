@@ -35,9 +35,13 @@ export function useMultiBoardLayout(
         // Dordle/Quordle: always 2 cols, fit in view
         if (bc <= 4) return { gridCols: 2, visibleRows: 0, scrollable: false };
 
+        // For 8+ boards with many guesses, collapse rows by default.
+        // The expand button lets users see all rows.
+        const visRows = mg > 9 ? 7 : 0;
+
         // Mobile: always 2 cols for 8+ boards (scrollable)
         if (isMobile) {
-            return { gridCols: 2, visibleRows: 0, scrollable: true };
+            return { gridCols: 2, visibleRows: visRows, scrollable: true };
         }
 
         // Desktop 8+ boards: find the column count that puts tiles closest
@@ -67,6 +71,6 @@ export function useMultiBoardLayout(
         }
 
         const rows = Math.ceil(bc / bestCols);
-        return { gridCols: bestCols, visibleRows: 0, scrollable: rows > 2 };
+        return { gridCols: bestCols, visibleRows: visRows, scrollable: rows > 2 };
     });
 }
