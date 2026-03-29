@@ -181,8 +181,7 @@ const gridStyle = computed(() => {
     const boardRows = Math.ceil(boardCount.value / cols);
 
     const effectiveVisibleRows = allExpanded.value ? 0 : layout.value.visibleRows;
-    const rowsPerBoard =
-        effectiveVisibleRows > 0 ? effectiveVisibleRows + 1 : maxGuesses.value;
+    const rowsPerBoard = effectiveVisibleRows > 0 ? effectiveVisibleRows + 1 : maxGuesses.value;
 
     const totalTileCols = cols * 5;
     const totalTileRows = boardRows * rowsPerBoard;

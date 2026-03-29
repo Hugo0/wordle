@@ -466,8 +466,7 @@ export const useGameStore = defineStore('game', () => {
                 if (row && rowClasses) {
                     row[cellIdx] = displayChar;
                     rowClasses[cellIdx] = ACTIVE_TILE_CLASS;
-                    if (board.tileColors[rowIdx])
-                        board.tileColors[rowIdx]![cellIdx] = 'active';
+                    if (board.tileColors[rowIdx]) board.tileColors[rowIdx]![cellIdx] = 'active';
                 }
                 board.activeCell = newCell;
                 board.fullWordInputted = isFull;
@@ -804,8 +803,7 @@ export const useGameStore = defineStore('game', () => {
                     if (row && rowClasses) {
                         row[newCell] = '';
                         rowClasses[newCell] = DEFAULT_TILE_CLASS;
-                        if (board.tileColors[rowIdx])
-                            board.tileColors[rowIdx]![newCell] = 'empty';
+                        if (board.tileColors[rowIdx]) board.tileColors[rowIdx]![newCell] = 'empty';
                     }
                 }
                 resetTracking();
@@ -1167,10 +1165,7 @@ export const useGameStore = defineStore('game', () => {
      * Reset board for a fresh game in a given mode.
      * Used by speed, unlimited, and other non-classic modes to start a new round.
      */
-    function resetForMode(
-        cfg: ReturnType<typeof createGameConfig>,
-        targetWord?: string
-    ): void {
+    function resetForMode(cfg: ReturnType<typeof createGameConfig>, targetWord?: string): void {
         gameConfig.value = cfg;
         boards.value = [createBoardState(0, targetWord || '', cfg.maxGuesses, cfg.wordLength)];
         activeBoardIndex.value = 0;

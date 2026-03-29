@@ -40,7 +40,8 @@ const hp = computed(() => {
         playingIn: ui?.homepage_playing_in ?? 'Playing in',
         change: ui?.homepage_change ?? 'change',
         chooseLanguage: ui?.homepage_choose_language ?? 'Choose your language',
-        languagesCounting: ui?.homepage_languages_counting ?? 'languages and counting — more added regularly.',
+        languagesCounting:
+            ui?.homepage_languages_counting ?? 'languages and counting — more added regularly.',
         search: ui?.homepage_search ?? 'Search languages...',
         languages: ui?.languages ?? 'languages',
     };
