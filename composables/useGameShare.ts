@@ -42,19 +42,6 @@ export function useGameShare() {
         return { board, attemptCount };
     }
 
-    /** Build the full share text for classic/multi-board modes. */
-    function getShareText(opts: {
-        emojiBoard: string;
-        attempts: string;
-        todaysIdx: number;
-        namaNative: string;
-        hardMode: boolean;
-        gameWon: boolean;
-    }): string {
-        const hardModeFlag = opts.hardMode ? ' *' : '';
-        return `Wordle ${opts.namaNative} #${opts.todaysIdx} — ${opts.attempts}/6${hardModeFlag}\n\n${opts.emojiBoard}`;
-    }
-
     /**
      * Share results via Web Share API, clipboard, or legacy execCommand fallback.
      * Fires a single 'share' analytics event with result: 'success' or 'fail'.

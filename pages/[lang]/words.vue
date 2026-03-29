@@ -310,22 +310,16 @@ onMounted(() => {
                         </div>
 
                         <!-- AI art thumbnail (loads async) -->
-                        <div class="mt-2 overflow-hidden rounded hidden" :data-img-id="w.day_idx">
+                        <div
+                            v-show="wordArtLoaded.has(w.day_idx)"
+                            class="mt-2 overflow-hidden rounded"
+                        >
                             <img
                                 :src="`/api/${lang}/word-image/${w.word}?day_idx=${w.day_idx}`"
                                 :alt="w.word || ''"
                                 class="w-full h-24 object-cover"
                                 loading="lazy"
-                                @load="
-                                    (
-                                        $event.target as HTMLImageElement
-                                    ).parentElement!.classList.remove('hidden')
-                                "
-                                @error="
-                                    (
-                                        $event.target as HTMLImageElement
-                                    ).parentElement!.classList.add('hidden')
-                                "
+                                @load="wordArtLoaded.add(w.day_idx)"
                             />
                         </div>
                     </NuxtLink>

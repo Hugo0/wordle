@@ -109,8 +109,8 @@
                     >
                         <span class="flex items-center gap-1.5 text-ink capitalize">
                             <img
-                                v-if="useFlag(lw.lang)"
-                                :src="useFlag(lw.lang)!"
+                                v-if="flagSrc(lw.lang)"
+                                :src="flagSrc(lw.lang)!"
                                 :alt="lw.lang"
                                 class="w-4 h-4 rounded-full"
                             />
@@ -154,6 +154,15 @@ import { toLocalDay, buildDailyResultMap } from '~/utils/streak-dates';
 
 defineProps<{ visible: boolean }>();
 defineEmits<{ close: [] }>();
+
+// Memoized flag lookup
+const _flagCache = new Map<string, string | null>();
+function flagSrc(code: string): string | null {
+    if (_flagCache.has(code)) return _flagCache.get(code)!;
+    const f = useFlag(code);
+    _flagCache.set(code, f);
+    return f;
+}
 
 const game = useGameStore();
 const statsStore = useStatsStore();

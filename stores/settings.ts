@@ -48,12 +48,10 @@ export const useSettingsStore = defineStore('settings', () => {
             feedbackEnabled.value = storedFeedback === 'true';
         }
 
-        if (import.meta.client) {
-            const { setHapticsEnabled } = useHaptics();
-            const { setSoundEnabled } = useSounds();
-            setHapticsEnabled(feedbackEnabled.value);
-            setSoundEnabled(feedbackEnabled.value);
-        }
+        const { setHapticsEnabled } = useHaptics();
+        const { setSoundEnabled } = useSounds();
+        setHapticsEnabled(feedbackEnabled.value);
+        setSoundEnabled(feedbackEnabled.value);
 
         // Word info
         const storedWordInfo = readLocal('wordInfoEnabled');
