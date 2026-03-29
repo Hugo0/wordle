@@ -1,15 +1,15 @@
 <script setup lang="ts">
 /**
- * Quordle Mode Page — /<lang>/quordle
+ * Octordle Mode Page — /<lang>/octordle
  *
- * Four boards, 9 guesses. Same guess goes to all boards.
+ * Eight boards, 13 guesses. Same guess goes to all boards.
  * Free play — random words each game, play again anytime.
  */
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-quordle`,
+    key: (route) => `${route.params.lang}-octordle`,
 });
 
 const route = useRoute();
@@ -27,23 +27,22 @@ const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, config } = us
 
 useGameModeSeo({
     lang,
-    modeSlug: 'quordle',
-    modeLabel: 'Quordle',
-    description: `Play Quordle in ${config.value?.name}. Solve 4 Wordle boards at once with 9 guesses. Free, no account needed.`,
+    modeSlug: 'octordle',
+    modeLabel: 'Octordle',
+    description: `Play Octordle in ${config.value?.name}. Solve 8 Wordle boards at once with 13 guesses. Free, no account needed.`,
     langStore,
     config: config.value,
 });
 const { data: allLangs } = await useFetch('/api/languages');
-if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/quordle');
+if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/octordle');
 
-// Use curated daily-tier words for better quality
 const wordList = gameData.value?.daily_words?.length
     ? gameData.value.daily_words
     : (gameData.value?.word_list ?? []);
 const { multiBoardRef, startNewGame } = useMultiBoardPage(
-    'quordle',
+    'octordle',
     wordList,
-    GAME_MODE_CONFIG.quordle.boardCount
+    GAME_MODE_CONFIG.octordle.boardCount
 );
 </script>
 
@@ -51,11 +50,11 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
     <GamePageShell
         :lang="lang"
         :language-name="config?.name_native || config?.name || lang"
-        current-mode="quordle"
-        :title="GAME_MODE_CONFIG.quordle.label"
+        current-mode="octordle"
+        :title="GAME_MODE_CONFIG.octordle.label"
         :subtitle="config?.name_native || lang"
         :sidebar-open="sidebarOpen"
-        max-width="4xl"
+        max-width="full"
         :visible="!!gameData"
         @toggle-sidebar="toggleSidebar"
         @close-sidebar="closeSidebar"
@@ -74,21 +73,13 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
                 color: #333;
             "
         >
-            <h1>Wordle {{ config?.name_native }} — Quordle</h1>
+            <h1>Wordle {{ config?.name_native }} — Octordle</h1>
             <p>
-                Play Quordle in {{ config?.name }}. Solve 4 Wordle boards at once with 9 guesses.
+                Play Octordle in {{ config?.name }}. Solve 8 Wordle boards at once with 13 guesses.
                 Free, no account needed.
             </p>
             <p>
                 <a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a>
-            </p>
-            <p>
-                Other modes: <a :href="`/${lang}/unlimited`">Unlimited</a> ·
-                <a :href="`/${lang}/speed`">Speed Streak</a> ·
-                <a :href="`/${lang}/dordle`">Dordle</a>
-            </p>
-            <p>
-                <a href="https://wordle.global/">Play Wordle in 80+ languages at wordle.global</a>
             </p>
         </div>
     </noscript>

@@ -644,12 +644,18 @@ function openLink(url: string): void {
                         </div>
                     </div>
                     <div class="flex items-center gap-1 flex-shrink-0">
-                        <template v-if="getCurrentStreak(language.language_code) > 0">
-                            <Flame :size="14" class="text-correct" />
-                            <span class="mono-label-md text-correct font-semibold">
+                        <span
+                            v-if="getCurrentStreak(language.language_code) > 0"
+                            class="flex items-start gap-0 text-flame"
+                        >
+                            <Flame :size="14" />
+                            <span
+                                class="font-mono font-semibold tabular-nums"
+                                style="font-size: 9px; line-height: 1; margin-top: 1px"
+                            >
                                 {{ getCurrentStreak(language.language_code) }}
                             </span>
-                        </template>
+                        </span>
                         <Check
                             v-else-if="hasPlayed(language.language_code)"
                             :size="14"

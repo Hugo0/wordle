@@ -258,61 +258,6 @@ onMounted(() => {
 
         <!-- The game board -->
         <GameBoard ref="gameBoardRef" />
-
-        <template #overlays>
-            <!-- PWA install banner (shown after game win) -->
-            <div
-                id="pwa-install-banner"
-                class="fixed bottom-0 left-0 right-0 z-50 flex items-center gap-3 px-4 py-3 bg-correct text-white shadow-lg"
-                style="display: none"
-            >
-                <div class="flex-1 min-w-0">
-                    <strong>{{ langStore.config?.ui?.add_to_home || 'Add to Home Screen' }}</strong>
-                    <div class="text-sm opacity-90">
-                        {{
-                            langStore.config?.ui?.play_daily_like_app ||
-                            'Play Wordle daily like an app'
-                        }}
-                    </div>
-                </div>
-                <button
-                    class="shrink-0 px-4 py-1.5 bg-paper text-correct font-semibold text-sm hover:opacity-90"
-                    @click="$pwaInstall?.install()"
-                >
-                    {{ langStore.config?.ui?.install || 'Install' }}
-                </button>
-                <button
-                    class="shrink-0 p-1 opacity-70 hover:opacity-100"
-                    aria-label="Dismiss"
-                    @click="$pwaInstall?.dismiss()"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                    >
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- PWA install component (cross-platform install dialog) -->
-            <ClientOnly>
-                <pwa-install
-                    manifest-url="/manifest.json"
-                    name="Wordle Global"
-                    description="Play Wordle in 80+ languages"
-                    install-description="Install for quick daily access"
-                    manual-apple
-                    manual-chrome
-                />
-            </ClientOnly>
-        </template>
     </GamePageShell>
 
     <!-- SEO content — visible only when JS is disabled (crawlers, noscript browsers).

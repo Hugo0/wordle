@@ -382,6 +382,7 @@ export interface PWAStatus {
     isInstallAvailable: boolean;
     isAppleMobile: boolean;
     isAppleDesktop: boolean;
+    dismissCount: number;
 }
 
 // =============================================================================

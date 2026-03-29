@@ -11,13 +11,25 @@ import type { WordDefinition } from '~/utils/types';
 const _cache = new Map<string, WordDefinition>();
 
 export function useDefinitions() {
-    async function fetchDefinition(word: string, lang: string): Promise<WordDefinition> {
+    /**
+     * Fetch a word definition from the API.
+     * @param cacheOnly - If true, server only checks disk cache + kaikki (no LLM).
+     *                    Use for unlimited/random words to avoid expensive LLM calls.
+     */
+    async function fetchDefinition(
+        word: string,
+        lang: string,
+        options?: { cacheOnly?: boolean }
+    ): Promise<WordDefinition> {
         const key = `${lang}:${word.toLowerCase()}`;
         const cached = _cache.get(key);
         if (cached) return cached;
 
+        const params = options?.cacheOnly ? '?cache_only=1' : '';
         try {
-            const data = await $fetch(`/api/${lang}/definition/${encodeURIComponent(word)}`);
+            const data = await $fetch(
+                `/api/${lang}/definition/${encodeURIComponent(word)}${params}`
+            );
             const result: WordDefinition = {
                 word,
                 partOfSpeech: (data as any).part_of_speech || undefined,
@@ -31,7 +43,6 @@ export function useDefinitions() {
             _cache.set(key, result);
             return result;
         } catch {
-            // Don't cache errors — transient failures should be retryable
             return {
                 word,
                 definition: '',

@@ -19,14 +19,42 @@
 
 import { isStandalone, getOrCreateId } from '~/utils/storage';
 
-// Events to exclude from PostHog (currently none — kept as a kill-switch).
-const POSTHOG_SKIP_EVENTS = new Set<string>();
+// Events to exclude from PostHog to stay within free tier (1M events/month).
+// These are either redundant (data already aggregated into game_complete)
+// or low-value for a wordle game. See: https://github.com/Hugo0/wordle/issues/XXX
+const POSTHOG_SKIP_EVENTS = new Set<string>([
+    'invalid_word', // Already aggregated in game_complete as total_invalid_attempts + had_frustration
+    'guess_submit', // Attempt count already in game_complete; per-guess granularity not needed
+    'guess_time', // Already captured as time_to_complete_seconds in game_complete
+]);
 
 // Only these 3 core events are sent to GA4 — bare event names only, no custom
 // params. GA4 is kept as a simple event counter + traffic source tracker.
 // All rich analytics (dimensions, user properties, funnels) live in PostHog.
 // Pageviews are handled by PostHog's built-in $pageview (capture_pageview: 'history_change').
-const GA4_CORE_EVENTS = new Set(['game_start', 'game_complete', 'game_abandon']);
+const GA4_CORE_EVENTS = new Set([
+    'game_start',
+    'game_complete',
+    'game_abandon',
+    'pwa_prompt_shown',
+    'pwa_install',
+    'pwa_dismiss',
+    'pwa_session',
+]);
+
+// GA4 custom dimensions registered on the property — only these params are forwarded to gtag.
+const GA4_DIMENSIONS = new Set([
+    'attempts',
+    'is_pwa',
+    'is_returning',
+    'language',
+    'method',
+    'platform',
+    'setting',
+    'source',
+    'value',
+    'won',
+]);
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -99,7 +127,7 @@ interface SettingsChangeParams {
 
 interface PWAParams {
     platform?: 'ios' | 'android' | 'desktop' | 'unknown';
-    source?: 'banner' | 'settings' | 'auto';
+    source?: 'settings' | 'auto' | 'dialog' | 'appinstalled';
 }
 
 export interface FrustrationState {
@@ -155,14 +183,21 @@ export function useAnalytics() {
         // Never send analytics from localhost (dev environment)
         if (window.location.hostname === 'localhost') return;
 
-        // Google Analytics 4 — bare event names only, no custom params.
-        // GA4 custom dimensions are deprecated; PostHog handles all rich data.
+        // Google Analytics 4 — forward params matching registered custom dimensions.
         try {
             if (GA4_CORE_EVENTS.has(eventName) && typeof window.gtag === 'function') {
-                window.gtag('event', eventName);
+                if (params) {
+                    const ga4Params: Record<string, unknown> = {};
+                    for (const key of Object.keys(params)) {
+                        if (GA4_DIMENSIONS.has(key)) ga4Params[key] = params[key];
+                    }
+                    window.gtag('event', eventName, ga4Params);
+                } else {
+                    window.gtag('event', eventName);
+                }
             }
         } catch {
-            // Silently fail - analytics should never break the app
+            // Silently fail
         }
 
         // PostHog (skip high-volume events to stay within free tier)
@@ -568,12 +603,16 @@ export function useAnalytics() {
 
     /**
      * Track PWA install prompt shown
-     * Answers: Are we reaching users with install prompts?
+     * Answers: Are we reaching users with install prompts? When in the session?
      */
-    const trackPWAPromptShown = (source: 'banner' | 'settings' | 'auto'): void => {
+    const trackPWAPromptShown = (
+        source: 'settings' | 'auto',
+        context?: Record<string, unknown>
+    ): void => {
         track('pwa_prompt_shown', {
             source,
             platform: getPlatform(),
+            ...context,
         });
     };
 

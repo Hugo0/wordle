@@ -113,29 +113,56 @@
                                 </div>
                             </div>
 
-                            <!-- Multi-board definitions -->
+                            <!-- Multi-board definitions (paginated for 8+ boards) -->
                             <div
                                 v-if="
                                     settings.wordInfoEnabled && game.boardDefinitions.some((d) => d)
                                 "
-                                class="mt-4 pt-3 border-t border-rule space-y-2 max-w-[400px] mx-auto"
+                                class="mt-4 pt-3 border-t border-rule max-w-[400px] mx-auto"
                             >
+                                <div class="space-y-2">
+                                    <div
+                                        v-for="(def, i) in visibleDefinitions"
+                                        :key="defPageStart + i"
+                                        class="text-[13px] text-ink leading-relaxed text-left"
+                                    >
+                                        <template v-if="def">
+                                            <strong class="uppercase">{{ def.word }}</strong>
+                                            <span
+                                                v-if="def.partOfSpeech"
+                                                class="text-muted italic text-[12px] ml-1"
+                                            >
+                                                {{
+                                                    translatePos(def.partOfSpeech, lang.config?.ui)
+                                                }}
+                                            </span>
+                                            <span class="mx-1">&mdash;</span>
+                                            {{ def.definition }}
+                                        </template>
+                                    </div>
+                                </div>
+                                <!-- Page controls for 8+ boards -->
                                 <div
-                                    v-for="(def, i) in game.boardDefinitions"
-                                    :key="i"
-                                    class="text-[13px] text-ink leading-relaxed text-left"
+                                    v-if="defTotalPages > 1"
+                                    class="flex items-center justify-center gap-3 mt-3"
                                 >
-                                    <template v-if="def">
-                                        <strong class="uppercase">{{ def.word }}</strong>
-                                        <span
-                                            v-if="def.partOfSpeech"
-                                            class="text-muted italic text-[12px] ml-1"
-                                        >
-                                            {{ translatePos(def.partOfSpeech, lang.config?.ui) }}
-                                        </span>
-                                        <span class="mx-1">&mdash;</span>
-                                        {{ def.definition }}
-                                    </template>
+                                    <button
+                                        class="text-muted hover:text-ink text-xs font-mono transition-colors disabled:opacity-30"
+                                        :disabled="defPage === 0"
+                                        @click="defPage--"
+                                    >
+                                        &larr;
+                                    </button>
+                                    <span class="mono-label text-[9px]">
+                                        {{ defPage + 1 }}/{{ defTotalPages }}
+                                    </span>
+                                    <button
+                                        class="text-muted hover:text-ink text-xs font-mono transition-colors disabled:opacity-30"
+                                        :disabled="defPage >= defTotalPages - 1"
+                                        @click="defPage++"
+                                    >
+                                        &rarr;
+                                    </button>
                                 </div>
                             </div>
 
@@ -144,7 +171,7 @@
                                 class="animate-pulse pt-3 border-t border-rule max-w-[400px] mx-auto space-y-2"
                             >
                                 <div
-                                    v-for="i in game.boards.length"
+                                    v-for="i in Math.min(game.boards.length, 4)"
                                     :key="i"
                                     class="h-4 bg-muted-soft w-full"
                                 />
@@ -379,9 +406,9 @@ const isSpeed = computed(() => game.gameConfig.mode === 'speed');
 
 const nextWordLabel = computed(() => {
     const mode = game.gameConfig.mode;
-    if (mode === 'dordle') return 'Next Dordle';
-    if (mode === 'tridle') return 'Next Tridle';
-    if (mode === 'quordle') return 'Next Quordle';
+    const label = GAME_MODE_CONFIG[mode]?.label;
+    if (label && mode !== 'classic' && mode !== 'unlimited' && mode !== 'speed')
+        return `Next ${label}`;
     return lang.config?.text?.next_word || 'Next Wordle';
 });
 
@@ -413,13 +440,40 @@ const maskedWord = computed(() => {
     return '?'.repeat(wordLength);
 });
 
-const multiBoardWordStyle = computed(() => ({
-    fontSize: game.gameConfig.boardCount <= 2 ? '32px' : '24px',
-    letterSpacing: '0.06em',
-    fontVariationSettings: "'opsz' 72",
-    lineHeight: '1.2',
-}));
+const multiBoardWordStyle = computed(() => {
+    const bc = game.gameConfig.boardCount;
+    const fontSize = bc <= 2 ? '32px' : bc <= 4 ? '24px' : bc <= 8 ? '18px' : '14px';
+    return {
+        fontSize,
+        letterSpacing: '0.06em',
+        fontVariationSettings: "'opsz' 72",
+        lineHeight: '1.2',
+    };
+});
 const isMultiBoard = computed(() => game.gameConfig.boardCount > 1);
+
+// Definition pagination for multi-board modes — show 4 at a time for 8+ boards
+const DEFS_PER_PAGE = 4;
+const defPage = ref(0);
+const defTotalPages = computed(() => {
+    const total = game.boardDefinitions.length;
+    if (total <= DEFS_PER_PAGE) return 1;
+    return Math.ceil(total / DEFS_PER_PAGE);
+});
+const defPageStart = computed(() => defPage.value * DEFS_PER_PAGE);
+const visibleDefinitions = computed(() => {
+    const defs = game.boardDefinitions;
+    if (defs.length <= DEFS_PER_PAGE) return defs;
+    return defs.slice(defPageStart.value, defPageStart.value + DEFS_PER_PAGE);
+});
+
+// Reset definition page when modal opens
+watch(
+    () => props.visible,
+    (v) => {
+        if (v) defPage.value = 0;
+    }
+);
 
 // Distribution rows start at boardCount (minimum possible guesses to win).
 // For classic/unlimited (1 board): rows 1–6. For quordle (4 boards): rows 4–9.

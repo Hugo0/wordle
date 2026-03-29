@@ -61,42 +61,68 @@ function stateColor(state: string | undefined): string {
     return STATE_COLORS[state || ''] || DEFAULT_KEY_COLOR;
 }
 
-/** Generate a split gradient for multi-board keyboard keys.
- *  - 2 boards: vertical 50/50 split (left = board 1, right = board 2)
- *  - 3 boards: vertical 33/33/33 split
- *  - 4 boards: 2×2 quadrants matching the board grid layout
+/**
+ * Grid dimensions for the split-color indicator on each keyboard key.
+ * Maps board count to a cols x rows grid layout within the key.
+ */
+function getKeyGridDimensions(n: number): { cols: number; rows: number } {
+    if (n <= 2) return { cols: n, rows: 1 };
+    if (n <= 4) return { cols: 2, rows: 2 };
+    if (n <= 8) return { cols: 4, rows: 2 };
+    if (n <= 16) return { cols: 4, rows: 4 };
+    return { cols: 8, rows: 4 }; // 32
+}
+
+/**
+ * Generate a split gradient for multi-board keyboard keys.
+ * Renders a cols x rows grid of colored cells, one per board.
+ * No gaps between cells — seamless colored grid.
  */
 const splitGradient = computed(() => {
     if (!props.boardStates || props.boardStates.length <= 1) return null;
     if (props.boardStates.every((s) => !s)) return null;
 
     const n = props.boardStates.length;
+    const { cols, rows } = getKeyGridDimensions(n);
 
-    // 4 boards: 2×2 quadrant layout matching the board grid
-    // ┌──┬──┐
-    // │TL│TR│  TL=board0, TR=board1
-    // ├──┼──┤
-    // │BL│BR│  BL=board2, BR=board3
-    // └──┴──┘
-    if (n === 4) {
-        const tl = stateColor(props.boardStates[0]);
-        const tr = stateColor(props.boardStates[1]);
-        const bl = stateColor(props.boardStates[2]);
-        const br = stateColor(props.boardStates[3]);
-
-        // Two horizontal gradients stacked vertically
-        return `linear-gradient(to right, ${tl} 50%, ${tr} 50%) top/100% 50% no-repeat, linear-gradient(to right, ${bl} 50%, ${br} 50%) bottom/100% 50% no-repeat`;
+    // For single-row layouts (2 boards), use a simple horizontal gradient
+    if (rows === 1) {
+        const stops: string[] = [];
+        const step = 100 / cols;
+        for (let c = 0; c < cols; c++) {
+            const color = c < n ? stateColor(props.boardStates[c]) : DEFAULT_KEY_COLOR;
+            stops.push(`${color} ${c * step}%`, `${color} ${(c + 1) * step}%`);
+        }
+        return `linear-gradient(to right, ${stops.join(', ')})`;
     }
 
-    // 2 or 3 boards: vertical stripes
-    const step = 100 / n;
-    const stops: string[] = [];
-    for (let i = 0; i < n; i++) {
-        const color = stateColor(props.boardStates[i]);
-        stops.push(`${color} ${i * step}%`);
-        stops.push(`${color} ${(i + 1) * step}%`);
+    // For multi-row layouts: stack horizontal gradients.
+    // Use keyword positioning (top/bottom) for edge rows to avoid sub-pixel rounding gaps.
+    // Middle rows use the corrected % formula: pos = r/(rows-1) * 100%.
+    const layers: string[] = [];
+    const sizeH = (100 / rows).toFixed(4);
+
+    for (let r = 0; r < rows; r++) {
+        const stops: string[] = [];
+        const colWidth = 100 / cols;
+        for (let c = 0; c < cols; c++) {
+            const boardIdx = r * cols + c;
+            const color =
+                boardIdx < n ? stateColor(props.boardStates[boardIdx]) : DEFAULT_KEY_COLOR;
+            stops.push(`${color} ${c * colWidth}%`, `${color} ${(c + 1) * colWidth}%`);
+        }
+        const grad = `linear-gradient(to right, ${stops.join(', ')})`;
+        if (r === 0) {
+            layers.push(`${grad} top/100% ${sizeH}% no-repeat`);
+        } else if (r === rows - 1) {
+            layers.push(`${grad} bottom/100% ${sizeH}% no-repeat`);
+        } else {
+            const yPos = `${((r / (rows - 1)) * 100).toFixed(2)}%`;
+            layers.push(`${grad} 0 ${yPos}/100% ${sizeH}% no-repeat`);
+        }
     }
-    return `linear-gradient(to right, ${stops.join(', ')})`;
+
+    return layers.join(', ');
 });
 
 const emit = defineEmits<{ press: [key: string] }>();

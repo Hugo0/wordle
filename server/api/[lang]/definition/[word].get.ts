@@ -22,9 +22,11 @@ export default defineEventHandler(async (event) => {
 
     const query = getQuery(event);
     const skipCache = query.refresh === '1';
+    const cacheOnly = query.cache_only === '1';
 
     const result = await fetchDefinition(wordLower, lang, {
         skipNegativeCache: skipCache,
+        cacheOnly,
     });
     if (result) return result;
 

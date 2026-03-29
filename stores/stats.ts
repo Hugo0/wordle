@@ -198,16 +198,70 @@ export const useStatsStore = defineStore('stats', () => {
             (a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime()
         );
 
-        // Overall streaks from classic daily only
+        // Overall streaks from classic daily only.
+        //
+        // Streak = consecutive LOCAL calendar days with at least one daily win.
+        // Uses the browser's timezone (user's local "today"), NOT UTC or
+        // per-language word-renewal timezones. Reasoning:
+        //   - "Did I play today?" should match the user's sense of day, not UTC.
+        //   - Word selection uses per-language timezones (so all Finnish users
+        //     get the same word), but streak is personal — it tracks engagement.
+        //   - A Malaysian user (UTC+8) playing at 11pm local shouldn't be penalized
+        //     because UTC already rolled over.
+        //   - toLocaleDateString('en-CA') gives "YYYY-MM-DD" in the user's timezone.
+        const toLocalDay = (d: Date) => d.toLocaleDateString('en-CA');
+
+        // DST-safe: step back one calendar day using setDate (not ms subtraction)
+        function stepBack(dateKey: string): string {
+            const d = new Date(dateKey + 'T12:00:00'); // noon avoids DST edge
+            d.setDate(d.getDate() - 1);
+            return toLocalDay(d);
+        }
+
+        // Build map: local date → had a win. Win always overrides a same-day loss.
+        const seenDays = new Map<string, boolean>();
         for (const result of daily_results) {
+            const dayKey = toLocalDay(new Date(result.date as string));
             if (result.won) {
                 n_victories++;
-                current_overall_streak++;
-                longest_overall_streak = Math.max(longest_overall_streak, current_overall_streak);
+                seenDays.set(dayKey, true);
             } else {
                 n_losses++;
-                current_overall_streak = 0;
+                if (!seenDays.has(dayKey)) seenDays.set(dayKey, false);
             }
+        }
+
+        // Current streak: walk backwards from today (DST-safe)
+        let checkKey = toLocalDay(new Date());
+        for (let i = 0; i <= seenDays.size; i++) {
+            const played = seenDays.get(checkKey);
+            if (played === true) {
+                current_overall_streak++;
+            } else if (i === 0 && played === undefined) {
+                // Today not yet played — skip, check yesterday
+            } else {
+                break;
+            }
+            checkKey = stepBack(checkKey);
+        }
+
+        // Longest streak: walk sorted days, check consecutive via stepBack
+        let tempStreak = 0;
+        const sortedDays = [...seenDays.entries()].sort();
+        let prevDayKey: string | null = null;
+        for (const [dayKey, won] of sortedDays) {
+            if (!won) {
+                tempStreak = 0;
+                prevDayKey = null;
+                continue;
+            }
+            if (prevDayKey && stepBack(dayKey) === prevDayKey) {
+                tempStreak++;
+            } else {
+                tempStreak = 1;
+            }
+            longest_overall_streak = Math.max(longest_overall_streak, tempStreak);
+            prevDayKey = dayKey;
         }
 
         // Per-language stats (classic daily keys only, default maxGuesses=6)

@@ -14,6 +14,7 @@
 import type { Ref } from 'vue';
 import type { GameData } from '~/utils/types';
 import { buildStatsKey } from '~/utils/game-modes';
+import { getOrCreateId } from '~/utils/storage';
 
 export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
     const langStore = useLanguageStore();
@@ -86,6 +87,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
         // Calculate stats for the current game mode so the stats modal has data on reload
         const statsKey = buildStatsKey(game.gameConfig);
         stats.calculateStats(statsKey, game.gameConfig.maxGuesses);
+        stats.calculateTotalStats(); // Overall streak for header badge
 
         // Analytics initialization — shared across ALL game mode pages
         try {
@@ -93,17 +95,19 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             // Pageviews handled by PostHog's built-in $pageview (capture_pageview: 'history_change')
             // Register language + game_mode as super properties on all future PostHog events
             analytics.registerLanguage(langStore.languageCode);
-            analytics.registerGameMode(game.gameConfig.mode);
             // Defer trackGameStart to nextTick so mode pages (unlimited, speed, etc.)
             // have a chance to set their gameConfig.mode in their own onMounted hooks first.
             nextTick(() => {
                 analytics.registerGameMode(game.gameConfig.mode);
-                analytics.trackGameStart({
-                    language: langStore.languageCode,
-                    is_returning: stats.stats.n_games > 0,
-                    current_streak: stats.stats.current_streak,
-                    game_mode: game.gameConfig.mode,
-                });
+                // Only fire game_start when the game is actually playable
+                if (!game.gameOver) {
+                    analytics.trackGameStart({
+                        language: langStore.languageCode,
+                        is_returning: stats.stats.n_games > 0,
+                        current_streak: stats.stats.current_streak,
+                        game_mode: game.gameConfig.mode,
+                    });
+                }
             });
             analytics.trackPWASession(langStore.languageCode);
             analytics.initAbandonTracking(() => ({
@@ -113,9 +117,16 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                 lastGuessValid: true,
                 game_mode: game.gameConfig.mode,
             }));
-            const userProps = analytics.identifyUser(stats.gameResults);
+            // Identify once per session — PostHog persists the distinct_id,
+            // so re-identifying on every page load wastes $identify + $set events.
+            const ph = usePostHog();
+            const clientId = getOrCreateId('client_id');
+            const alreadyIdentified = ph?.get_distinct_id() === clientId;
+            const userProps = alreadyIdentified
+                ? analytics.computeUserPropertiesOnly(stats.gameResults)
+                : analytics.identifyUser(stats.gameResults);
 
-            // Retention events — based on last_played_date in localStorage
+            // Retention — merge returning_player + re_engagement into one event
             const lastPlayed = localStorage.getItem('last_played_date');
             const daysSinceLast = analytics.daysSince(lastPlayed ?? undefined);
             if (stats.stats.n_games > 0 && daysSinceLast !== undefined && daysSinceLast >= 1) {
@@ -125,9 +136,6 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                     stats.stats.current_streak,
                     userProps.languagesPlayed.length
                 );
-                if (daysSinceLast >= 7) {
-                    analytics.trackReEngagement(langStore.languageCode, daysSinceLast);
-                }
             }
 
             // Multi-language: detect first play of a new language

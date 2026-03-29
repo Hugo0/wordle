@@ -208,6 +208,10 @@ export const useGameStore = defineStore('game', () => {
     const showHelpModal = ref(false);
     const showStatsModal = ref(false);
     const showOptionsModal = ref(false);
+    const showStreakModal = ref(false);
+
+    // Debug: override streak count for visual testing (set via debug.streak.set())
+    const debugStreakOverride = ref<number | null>(null);
 
     const notification = ref<Notification>(makeEmptyNotification());
 
@@ -836,7 +840,9 @@ export const useGameStore = defineStore('game', () => {
 
         if (!animating.value) {
             if (isMultiBoard.value) {
-                showTilesAllBoards();
+                // Only sync the active row (not all rows) for typing performance
+                const activeBoard = boards.value.find((b) => !b.solved);
+                showTilesAllBoards(activeBoard?.activeRow);
                 saveMultiBoardToLocalStorage();
             } else if (gameConfig.value.mode !== 'speed') {
                 showTiles();
@@ -865,6 +871,8 @@ export const useGameStore = defineStore('game', () => {
     /** Animate a keyboard key with a CSS animation class. */
     function _nudgeKey(char: string, animClass: string): void {
         if (!import.meta.client) return;
+        // Skip key animations for multi-board modes (too many boards = visual noise)
+        if (boards.value.length > 4) return;
         animateKeyNudge(_getKeyboardEl?.() ?? null, char, animClass);
     }
 
@@ -1000,10 +1008,10 @@ export const useGameStore = defineStore('game', () => {
             }, 300);
         }
 
-        // Load definition/image for stats modal — only for daily modes (cached content)
-        // Unlimited/speed words are random and likely have no pre-generated definition/image
-        if (import.meta.client && gameConfig.value.playType === 'daily') {
-            loadDefinitionAndImage(targetWord, lang.languageCode, lang.todaysIdx);
+        // Load definition/image for stats modal
+        if (import.meta.client) {
+            const dayIdx = gameConfig.value.playType === 'daily' ? lang.todaysIdx : undefined;
+            loadDefinitionAndImage(targetWord, lang.languageCode, dayIdx);
         }
 
         submitWordStats(true, activeRow.value);
@@ -1032,9 +1040,10 @@ export const useGameStore = defineStore('game', () => {
             statsAttempts: 0,
         });
 
-        // Load definition/image — only for daily modes (see handleGameWon comment)
-        if (import.meta.client && gameConfig.value.playType === 'daily') {
-            loadDefinitionAndImage(targetWord, lang.languageCode, lang.todaysIdx);
+        // Load definition/image for stats modal
+        if (import.meta.client) {
+            const dayIdx = gameConfig.value.playType === 'daily' ? lang.todaysIdx : undefined;
+            loadDefinitionAndImage(targetWord, lang.languageCode, dayIdx);
         }
 
         submitWordStats(false, activeRow.value);
@@ -1240,7 +1249,10 @@ export const useGameStore = defineStore('game', () => {
 
                 // Load definition/image if game was already completed
                 if (data.game_over) {
-                    loadDefinitionAndImage(lang.todaysWord, lang.languageCode, lang.todaysIdx);
+                    const restoredWord = boards.value[0]?.targetWord || lang.todaysWord;
+                    const dayIdx =
+                        gameConfig.value.playType === 'daily' ? lang.todaysIdx : undefined;
+                    loadDefinitionAndImage(restoredWord, lang.languageCode, dayIdx);
                 }
             }
         } catch {
@@ -1383,20 +1395,26 @@ export const useGameStore = defineStore('game', () => {
 
     // ---- Definition & Image for Stats Modal ----
 
-    function loadDefinitionAndImage(word: string, langCode: string, dayIdx: number): void {
-        // Always load — template controls visibility via settings.wordInfoEnabled
+    /**
+     * Load definition and image for a single-board game's stats modal.
+     * Daily words use full 3-tier fetch (cached → LLM → kaikki).
+     * Non-daily (unlimited) words use cache-only to avoid expensive LLM calls.
+     */
+    function loadDefinitionAndImage(word: string, langCode: string, dayIdx?: number): void {
         todayDefinitionLoading.value = true;
         todayImageLoading.value = true;
 
+        const isDaily = gameConfig.value.playType === 'daily';
         const { fetchDefinition } = useDefinitions();
-        fetchDefinition(word, langCode)
+
+        fetchDefinition(word, langCode, { cacheOnly: !isDaily })
             .then((def) => {
                 if (def.definition || def.definitionNative) {
                     todayDefinition.value = {
                         word: def.word,
                         definition: def.definitionNative || def.definition,
                         partOfSpeech: def.partOfSpeech,
-                        url: `/${langCode}/word/${dayIdx}`,
+                        url: dayIdx ? `/${langCode}/word/${dayIdx}` : undefined,
                     };
                 }
             })
@@ -1404,22 +1422,27 @@ export const useGameStore = defineStore('game', () => {
                 todayDefinitionLoading.value = false;
             });
 
-        // Load word image
-        const imgUrl = `/api/${langCode}/word-image/${encodeURIComponent(word)}?day_idx=${dayIdx}`;
-        const img = new Image();
-        img.onload = () => {
-            todayImageUrl.value = imgUrl;
+        // Load word image — only for daily modes (images are pre-generated per day)
+        if (isDaily && dayIdx) {
+            const imgUrl = `/api/${langCode}/word-image/${encodeURIComponent(word)}?day_idx=${dayIdx}`;
+            const img = new Image();
+            img.onload = () => {
+                todayImageUrl.value = imgUrl;
+                todayImageLoading.value = false;
+            };
+            img.onerror = () => {
+                todayImageLoading.value = false;
+            };
+            img.src = imgUrl;
+        } else {
+            todayImageUrl.value = null;
             todayImageLoading.value = false;
-        };
-        img.onerror = () => {
-            todayImageLoading.value = false;
-        };
-        img.src = imgUrl;
+        }
     }
 
     /**
      * Load definitions for all boards in a multi-board game.
-     * Uses the cached fetchDefinition — no duplicate API calls for the same word.
+     * Multi-board modes are always free-play (unlimited), so use cache-only.
      */
     function loadDefinitionsForBoards(): void {
         if (!import.meta.client) return;
@@ -1432,7 +1455,7 @@ export const useGameStore = defineStore('game', () => {
 
         const { fetchDefinition } = useDefinitions();
         const promises = words.map((word, i) =>
-            fetchDefinition(word, langCode).then((def) => {
+            fetchDefinition(word, langCode, { cacheOnly: true }).then((def) => {
                 if (def.definition || def.definitionNative) {
                     boardDefinitions.value[i] = {
                         word: def.word,
@@ -1547,17 +1570,21 @@ export const useGameStore = defineStore('game', () => {
             nextUnsolved.fullWordInputted = false;
         }
 
-        // 3. Animate all boards with 50ms stagger between boards
+        // 3. Animate all boards — no stagger for 5+ boards (too laggy)
         animating.value = true;
-        const BOARD_STAGGER = 50;
+        const BOARD_STAGGER = boardsToReveal.length <= 4 ? 50 : 0;
         const revealPromises: Promise<void>[] = [];
 
         for (let i = 0; i < boardsToReveal.length; i++) {
             const boardIdx = boardsToReveal[i]!;
             const promise = new Promise<void>((resolve) => {
-                setTimeout(() => {
+                if (BOARD_STAGGER > 0) {
+                    setTimeout(() => {
+                        revealRowForBoard(boardIdx, rowIndex).then(resolve);
+                    }, i * BOARD_STAGGER);
+                } else {
                     revealRowForBoard(boardIdx, rowIndex).then(resolve);
-                }, i * BOARD_STAGGER);
+                }
             });
             revealPromises.push(promise);
         }
@@ -1600,6 +1627,20 @@ export const useGameStore = defineStore('game', () => {
             null;
         const keys = board.keyStates;
 
+        // For 5+ boards: skip DOM animation (tiles too small, row collapsing breaks
+        // children[rowIndex], off-page boards have no DOM). Just update data instantly.
+        if (boards.value.length > 4 || !boardEl) {
+            for (let t = 0; t < (board.tiles[rowIndex]?.length ?? 5); t++) {
+                const finalClass = board.tileClasses[rowIndex]?.[t] || '';
+                board.tileClassesVisual[rowIndex]?.splice(t, 1, finalClass);
+                const tileChar = board.tiles[rowIndex]?.[t] || '';
+                board.tilesVisual[rowIndex]?.splice(t, 1, tileChar);
+                const keyUpdate = board.pendingKeyUpdates[t];
+                if (keyUpdate) updateKeyColor(keyUpdate.char, keyUpdate.state, keys);
+            }
+            return Promise.resolve();
+        }
+
         return new Promise((resolve) => {
             animateRevealRow(
                 boardEl,
@@ -1624,29 +1665,40 @@ export const useGameStore = defineStore('game', () => {
     }
 
     /** Copy data layer to visual layer for one board. */
-    function showTilesForBoard(boardIndex: number): void {
+    /**
+     * Sync data layer to visual layer for a board.
+     * If onlyRow is specified, only sync that row (fast path for typing).
+     */
+    function showTilesForBoard(boardIndex: number, onlyRow?: number): void {
         const board = boards.value[boardIndex];
         if (!board) return;
 
-        // For solved boards, only sync rows up to solvedAtGuess to prevent
-        // later guesses from appearing on already-solved boards.
         const maxRow =
             board.solved && board.solvedAtGuess != null ? board.solvedAtGuess : board.tiles.length;
+
+        if (onlyRow !== undefined && onlyRow < maxRow) {
+            const tilesRow = board.tiles[onlyRow];
+            const classesRow = board.tileClasses[onlyRow];
+            if (tilesRow && classesRow) {
+                board.tilesVisual.splice(onlyRow, 1, [...tilesRow]);
+                board.tileClassesVisual.splice(onlyRow, 1, [...classesRow]);
+            }
+            return;
+        }
 
         for (let i = 0; i < maxRow; i++) {
             const tilesRow = board.tiles[i];
             const classesRow = board.tileClasses[i];
             if (!tilesRow || !classesRow) continue;
-
             board.tilesVisual.splice(i, 1, [...tilesRow]);
             board.tileClassesVisual.splice(i, 1, [...classesRow]);
         }
     }
 
-    /** Copy data layer to visual layer for all boards. */
-    function showTilesAllBoards(): void {
+    /** Sync visual layer for all boards. If onlyRow specified, only sync that row. */
+    function showTilesAllBoards(onlyRow?: number): void {
         for (let i = 0; i < boards.value.length; i++) {
-            showTilesForBoard(i);
+            showTilesForBoard(i, onlyRow);
         }
     }
 
@@ -1840,6 +1892,11 @@ export const useGameStore = defineStore('game', () => {
             gameWon.value = data.game_won || false;
             emojiBoard.value = data.emoji_board || '';
             attempts.value = data.attempts || '0';
+
+            // Load definitions for completed multi-board games on restore
+            if (data.game_over) {
+                loadDefinitionsForBoards();
+            }
 
             return true;
         } catch {
@@ -2207,6 +2264,8 @@ export const useGameStore = defineStore('game', () => {
         showHelpModal,
         showStatsModal,
         showOptionsModal,
+        showStreakModal,
+        debugStreakOverride,
         notification,
         emojiBoard,
         timeUntilNextDay,

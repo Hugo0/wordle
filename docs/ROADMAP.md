@@ -17,7 +17,7 @@ Wordle Global is the world's word game — 80+ languages, beautiful definitions 
 **Game Modes (6 playable):**
 - Classic daily (5-letter, 6 guesses, 80+ languages)
 - Unlimited (random words, play again immediately)
-- Speed Streak (3-min arcade timer, variable bonus, combo scoring, pressure ramp)
+- Speed Streak (5-min arcade timer, variable bonus, combo scoring, pressure ramp)
 - Dordle (2 boards, 7 guesses, free-play)
 - Tridle (3 boards, 8 guesses, free-play)
 - Quordle (4 boards, 9 guesses, free-play)
@@ -536,6 +536,7 @@ Strategy: coexist as the multilingual alternative, don't compete head-on.
 | `docs/boardstate-refactor-notes.md` | Phase 1a BoardState refactor decision log | Completed |
 | `docs/semantic_explorer_mode.md` | Semantic Explorer design — word map, compass, LLM hints, embeddings | Future (Phase 4) |
 | `docs/competitor-research/` | 12 competitor deep dives, pricing strategy, feature recommendations | Reference |
+| `docs/SEO.md` | SEO analysis, keyword data, ranking trajectory, competitive landscape, action items | Active |
 | `docs/LANGUAGE_EXPANSION.md` | Adding new languages — pipeline, candidates, checklist | Active |
 | `docs/WORD_DATA_ARCHITECTURE.md` | Word pipeline and data format | Active |
 | `docs/tridle_quordle_gamemodes.md` | Multi-board technical analysis (completed, historical) | Completed |

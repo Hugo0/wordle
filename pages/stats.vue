@@ -255,7 +255,16 @@ const allModesWinRate = computed(() =>
 );
 const modesPlayed = computed(() => modeStats.value.filter((m) => m.games > 0).length);
 
-const modeOrder: GameMode[] = ['classic', 'dordle', 'tridle', 'quordle', 'unlimited', 'speed'];
+const modeOrder: GameMode[] = [
+    'classic',
+    'dordle',
+    'quordle',
+    'octordle',
+    'sedecordle',
+    'duotrigordle',
+    'unlimited',
+    'speed',
+];
 const sortedModes = computed(() =>
     [...modeStats.value].sort((a, b) => modeOrder.indexOf(a.mode) - modeOrder.indexOf(b.mode))
 );
@@ -392,7 +401,7 @@ const sortedModes = computed(() =>
                         >
                             <Flame
                                 :size="14"
-                                :class="currentStreak > 0 ? 'text-correct' : 'text-muted'"
+                                :class="currentStreak > 0 ? 'text-flame' : 'text-muted'"
                             />
                             <span
                                 class="font-display font-bold text-[22px]"
@@ -554,7 +563,9 @@ const sortedModes = computed(() =>
                                     v-if="l.streak > 0"
                                     class="text-correct font-semibold tabular-nums"
                                 >
-                                    <Flame :size="11" class="inline -mt-0.5" />{{ l.streak }}
+                                    <Flame :size="11" class="inline -mt-0.5 text-flame" />{{
+                                        l.streak
+                                    }}
                                 </span>
                                 <ChevronRight :size="14" class="text-muted" />
                             </div>

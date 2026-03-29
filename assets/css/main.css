@@ -178,14 +178,6 @@
     cursor: pointer;
 }
 
-.pwa-install-banner {
-    background: linear-gradient(135deg, var(--color-accent) 0%, #764ba2 100%);
-}
-
-.pwa-install-banner .action-btn {
-    color: var(--color-accent);
-}
-
 .embed-banner {
     background: linear-gradient(135deg, var(--color-correct) 0%, #1b4332 100%);
 }
@@ -237,6 +229,118 @@
     position: absolute;
     inset: 0;
     overflow-y: auto;
+}
+
+/* Streak flame flicker — organic wobble for hot streaks (7+).
+   Layered keyframes at prime-ish durations so the motion never visibly loops.
+   transform-origin at bottom center (flame base). */
+@keyframes flameWobble {
+    0%, 100% { transform: rotate(0deg) scaleY(1) skewX(0deg); }
+    15% { transform: rotate(-2.5deg) scaleY(1.03) skewX(-1deg); }
+    35% { transform: rotate(1.8deg) scaleY(0.97) skewX(0.8deg); }
+    55% { transform: rotate(-1.2deg) scaleY(1.02) skewX(-0.5deg); }
+    75% { transform: rotate(2deg) scaleY(0.98) skewX(1.2deg); }
+    90% { transform: rotate(-0.8deg) scaleY(1.01) skewX(-0.3deg); }
+}
+
+.flame-flicker {
+    animation: flameWobble 2.7s ease-in-out infinite;
+    transform-origin: 50% 85%;
+    filter: drop-shadow(0 0 3px rgba(232, 89, 12, 0.25));
+}
+
+/* Streak flame ignite — dramatic burst on win with glow escalation */
+@keyframes flameIgnite {
+    0% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0 transparent); }
+    20% { transform: scale(1.6) rotate(-4deg); filter: drop-shadow(0 0 10px rgba(232, 89, 12, 0.6)); }
+    40% { transform: scale(1.9) rotate(3deg); filter: drop-shadow(0 0 16px rgba(232, 89, 12, 0.7)) drop-shadow(0 0 30px rgba(253, 126, 20, 0.3)); }
+    60% { transform: scale(1.3) rotate(-2deg); filter: drop-shadow(0 0 8px rgba(232, 89, 12, 0.4)); }
+    80% { transform: scale(1.05) rotate(1deg); filter: drop-shadow(0 0 4px rgba(232, 89, 12, 0.25)); }
+    100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 3px rgba(232, 89, 12, 0.25)); }
+}
+
+.flame-ignite {
+    animation: flameIgnite 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: 50% 85%;
+}
+
+/* Spark particles — CSS-only dots that float up from the flame tip.
+   Uses ::before and ::after on a wrapper element (SVGs can't have pseudo-elements).
+   Each pseudo has multiple box-shadows for 2-3 sparks at different positions. */
+.flame-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+/* Idle sparks — subtle, occasional dots drifting up (hot streaks 7+) */
+@keyframes sparkFloat1 {
+    0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+    15% { opacity: 1; }
+    100% { opacity: 0; transform: translate(2px, -12px) scale(0.3); }
+}
+@keyframes sparkFloat2 {
+    0% { opacity: 0; transform: translate(0, 0) scale(0.6); }
+    20% { opacity: 0.8; }
+    100% { opacity: 0; transform: translate(-3px, -14px) scale(0.2); }
+}
+
+.flame-sparks::before,
+.flame-sparks::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #e8590c;
+    top: 0;
+    left: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+.flame-sparks::before {
+    animation: sparkFloat1 2.1s ease-out infinite;
+    margin-left: -2px;
+}
+.flame-sparks::after {
+    animation: sparkFloat2 2.7s ease-out 0.8s infinite;
+    margin-left: 2px;
+    background: #fd7e14;
+}
+
+/* Ignite sparks — more intense, faster, more particles via box-shadow */
+@keyframes sparkBurst1 {
+    0% { opacity: 0; transform: translate(0, 0) scale(1); }
+    10% { opacity: 1; }
+    100% { opacity: 0; transform: translate(4px, -18px) scale(0.2); }
+}
+@keyframes sparkBurst2 {
+    0% { opacity: 0; transform: translate(0, 0) scale(1); }
+    10% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-5px, -16px) scale(0.2); }
+}
+
+.flame-sparks-intense::before,
+.flame-sparks-intense::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fd7e14;
+    top: -2px;
+    left: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+.flame-sparks-intense::before {
+    animation: sparkBurst1 0.6s ease-out forwards;
+    margin-left: -3px;
+    box-shadow: 5px 2px 0 #e8590c, -2px -1px 0 #fd7e14;
+}
+.flame-sparks-intense::after {
+    animation: sparkBurst2 0.7s ease-out 0.1s forwards;
+    margin-left: 3px;
+    box-shadow: -4px 1px 0 #e8590c, 3px -2px 0 #fd7e14;
 }
 
 /* Prevent text selection on game elements */
@@ -440,8 +544,18 @@
     .key-pulse,
     .modal-animate,
     .key-correct,
-    .key-semicorrect {
+    .key-semicorrect,
+    .flame-flicker,
+    .flame-ignite {
         animation: none !important;
+    }
+
+    .flame-sparks::before,
+    .flame-sparks::after,
+    .flame-sparks-intense::before,
+    .flame-sparks-intense::after {
+        animation: none !important;
+        opacity: 0 !important;
     }
 
     .diacritic-popup {
@@ -463,8 +577,18 @@
 .reduce-animations .key-shake,
 .reduce-animations .key-pulse,
 .reduce-animations .key-correct,
-.reduce-animations .key-semicorrect {
+.reduce-animations .key-semicorrect,
+.reduce-animations .flame-flicker,
+.reduce-animations .flame-ignite {
     animation: none !important;
+}
+
+.reduce-animations .flame-sparks::before,
+.reduce-animations .flame-sparks::after,
+.reduce-animations .flame-sparks-intense::before,
+.reduce-animations .flame-sparks-intense::after {
+    animation: none !important;
+    opacity: 0 !important;
 }
 
 .reduce-animations .diacritic-popup {

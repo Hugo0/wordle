@@ -13,7 +13,8 @@ export default defineNuxtConfig({
             ui_host: 'https://eu.posthog.com',
             autocapture: false,
             capture_pageview: 'history_change', // Auto-track SPA navigations
-            capture_pageleave: true,
+            capture_pageleave: false, // Disabled to reduce event volume (was ~61K/8 days)
+            enable_web_vitals: false, // Disabled to reduce event volume (was ~110K/8 days)
             session_recording: {
                 sampleRate: 0.03,
             },

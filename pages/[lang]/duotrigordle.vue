@@ -1,15 +1,15 @@
 <script setup lang="ts">
 /**
- * Quordle Mode Page — /<lang>/quordle
+ * Duotrigordle Mode Page — /<lang>/duotrigordle
  *
- * Four boards, 9 guesses. Same guess goes to all boards.
+ * Thirty-two boards, 37 guesses. Same guess goes to all boards.
  * Free play — random words each game, play again anytime.
  */
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-quordle`,
+    key: (route) => `${route.params.lang}-duotrigordle`,
 });
 
 const route = useRoute();
@@ -27,23 +27,22 @@ const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, config } = us
 
 useGameModeSeo({
     lang,
-    modeSlug: 'quordle',
-    modeLabel: 'Quordle',
-    description: `Play Quordle in ${config.value?.name}. Solve 4 Wordle boards at once with 9 guesses. Free, no account needed.`,
+    modeSlug: 'duotrigordle',
+    modeLabel: 'Duotrigordle',
+    description: `Play Duotrigordle in ${config.value?.name}. Solve 32 Wordle boards at once with 37 guesses. Free, no account needed.`,
     langStore,
     config: config.value,
 });
 const { data: allLangs } = await useFetch('/api/languages');
-if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/quordle');
+if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/duotrigordle');
 
-// Use curated daily-tier words for better quality
 const wordList = gameData.value?.daily_words?.length
     ? gameData.value.daily_words
     : (gameData.value?.word_list ?? []);
 const { multiBoardRef, startNewGame } = useMultiBoardPage(
-    'quordle',
+    'duotrigordle',
     wordList,
-    GAME_MODE_CONFIG.quordle.boardCount
+    GAME_MODE_CONFIG.duotrigordle.boardCount
 );
 </script>
 
@@ -51,11 +50,11 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
     <GamePageShell
         :lang="lang"
         :language-name="config?.name_native || config?.name || lang"
-        current-mode="quordle"
-        :title="GAME_MODE_CONFIG.quordle.label"
+        current-mode="duotrigordle"
+        :title="GAME_MODE_CONFIG.duotrigordle.label"
         :subtitle="config?.name_native || lang"
         :sidebar-open="sidebarOpen"
-        max-width="4xl"
+        max-width="full"
         :visible="!!gameData"
         @toggle-sidebar="toggleSidebar"
         @close-sidebar="closeSidebar"
@@ -74,21 +73,13 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
                 color: #333;
             "
         >
-            <h1>Wordle {{ config?.name_native }} — Quordle</h1>
+            <h1>Wordle {{ config?.name_native }} — Duotrigordle</h1>
             <p>
-                Play Quordle in {{ config?.name }}. Solve 4 Wordle boards at once with 9 guesses.
-                Free, no account needed.
+                Play Duotrigordle in {{ config?.name }}. Solve 32 Wordle boards at once with 37
+                guesses. Free, no account needed.
             </p>
             <p>
                 <a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a>
-            </p>
-            <p>
-                Other modes: <a :href="`/${lang}/unlimited`">Unlimited</a> ·
-                <a :href="`/${lang}/speed`">Speed Streak</a> ·
-                <a :href="`/${lang}/dordle`">Dordle</a>
-            </p>
-            <p>
-                <a href="https://wordle.global/">Play Wordle in 80+ languages at wordle.global</a>
             </p>
         </div>
     </noscript>

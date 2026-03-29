@@ -52,18 +52,18 @@
             "label": "Wordle Global — Light mode"
         },
         {
-            "src": "/images/screenshot-mobile-dark.png",
-            "sizes": "1170x2532",
-            "type": "image/png",
-            "form_factor": "narrow",
-            "label": "Wordle Global — Dark mode"
-        },
-        {
             "src": "/images/screenshot-mobile.png",
             "sizes": "1170x2532",
             "type": "image/png",
             "form_factor": "narrow",
             "label": "Wordle Global — Game in progress"
+        },
+        {
+            "src": "/images/screenshot-mobile-dark.png",
+            "sizes": "1170x2532",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Wordle Global — Dark mode"
         }
     ]
 }

@@ -1,97 +1,11 @@
 <script setup lang="ts">
 /**
- * Tridle Mode Page — /<lang>/tridle
- *
- * Three boards, 8 guesses. Same guess goes to all boards.
- * Free play — random words each game, play again anytime.
- * Layout: 2 boards on top, 1 centered on bottom.
+ * Tridle is deprecated — redirect to Quordle.
  */
-import { GAME_MODE_CONFIG } from '~/utils/game-modes';
-
-definePageMeta({
-    layout: 'game',
-    key: (route) => `${route.params.lang}-tridle`,
-});
+definePageMeta({ layout: false });
 
 const route = useRoute();
 const lang = route.params.lang as string;
 
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
-if (error.value || !gameData.value) {
-    throw createError({ statusCode: 404, message: 'Language not found' });
-}
-
-const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, config } = useGamePage(
-    gameData,
-    lang
-);
-
-useGameModeSeo({
-    lang,
-    modeSlug: 'tridle',
-    modeLabel: 'Tridle',
-    description: `Play Tridle in ${config.value?.name}. Solve 3 Wordle boards at once with 8 guesses. Free, no account needed.`,
-    langStore,
-    config: config.value,
-});
-const { data: allLangs } = await useFetch('/api/languages');
-if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/tridle');
-
-// Use curated daily-tier words for better quality
-const wordList = gameData.value?.daily_words?.length
-    ? gameData.value.daily_words
-    : (gameData.value?.word_list ?? []);
-const { multiBoardRef, startNewGame } = useMultiBoardPage(
-    'tridle',
-    wordList,
-    GAME_MODE_CONFIG.tridle.boardCount
-);
+await navigateTo(`/${lang}/quordle`, { redirectCode: 301 });
 </script>
-
-<template>
-    <GamePageShell
-        :lang="lang"
-        :language-name="config?.name_native || config?.name || lang"
-        current-mode="tridle"
-        :title="GAME_MODE_CONFIG.tridle.label"
-        :subtitle="config?.name_native || lang"
-        :sidebar-open="sidebarOpen"
-        max-width="2xl"
-        :visible="!!gameData"
-        @toggle-sidebar="toggleSidebar"
-        @close-sidebar="closeSidebar"
-        @new-game="startNewGame"
-    >
-        <GameMultiBoardLayout ref="multiBoardRef" />
-    </GamePageShell>
-
-    <noscript data-allow-mismatch>
-        <div
-            style="
-                max-width: 600px;
-                margin: 40px auto;
-                padding: 20px;
-                font-family: system-ui, sans-serif;
-                color: #333;
-            "
-        >
-            <h1>Wordle {{ config?.name_native }} — Tridle</h1>
-            <p>
-                Play Tridle in {{ config?.name }}. Solve 3 Wordle boards at once with 8 guesses.
-                Free, no account needed.
-            </p>
-            <p>
-                <a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a>
-            </p>
-            <p>
-                Other modes: <a :href="`/${lang}/unlimited`">Unlimited</a> ·
-                <a :href="`/${lang}/speed`">Speed Streak</a> ·
-                <a :href="`/${lang}/dordle`">Dordle</a> ·
-                <a :href="`/${lang}/quordle`">Quordle</a>
-            </p>
-            <p>
-                <a href="https://wordle.global/">Play Wordle in 80+ languages at wordle.global</a>
-            </p>
-        </div>
-    </noscript>
-</template>
