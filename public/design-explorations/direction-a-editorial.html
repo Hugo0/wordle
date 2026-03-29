@@ -1885,6 +1885,14 @@ body {
     <a href="#option-d">Option D</a>
     <a href="#option-e">Option E</a>
     <a href="#party-screens">Party Screens</a>
+    <a href="#streak" style="margin-top: 12px; color: var(--flame, #e8590c); font-weight: 600;">— Streak —</a>
+    <a href="#streak">Streak Navbar</a>
+    <a href="#streak-dropdown">Dropdown</a>
+    <a href="#streak-milestones">Milestones</a>
+    <a href="#streak-freeze">Freeze</a>
+    <a href="#streak-effects">Effects</a>
+    <a href="#sedecordle-layouts" style="margin-top: 12px; color: var(--green); font-weight: 600;">— Sedecordle —</a>
+    <a href="#sedecordle-layouts">Layouts</a>
     <a href="#refined" style="margin-top: 12px; color: var(--accent); font-weight: 600;">— Refined —</a>
     <a href="#refined-home">F1: Hub</a>
     <a href="#refined-picker">F2: Picker</a>
@@ -3824,7 +3832,1822 @@ body {
     </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     STREAK SYSTEM EXPLORATION
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- Lucide SVGs used in streak section (stroke-based, matches our icon system) -->
+<svg style="display:none"><defs>
+    <!-- Lucide Flame -->
+    <g id="lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <!-- Lucide Snowflake -->
+    <g id="lucide-snowflake"><line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="2" x2="14" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="2" x2="10" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="22" x2="14" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="22" x2="10" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+    <!-- Lucide Star -->
+    <g id="lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></g>
+</defs></svg>
+
+<style>
+/* Streak tokens */
+:root {
+    --flame: #e8590c;
+    --flame-soft: #fff1e6;
+    --flame-glow: #fd7e14;
+    --frozen: #74b9ff;
+    --frozen-soft: #e8f4fd;
+    --frozen-glow: #0984e3;
+    --premium: #f39c12;
+    --premium-soft: #fef9e7;
+}
+
+/* Streak badge in navbar */
+.streak-badge {
+    display: flex; align-items: center; gap: 3px;
+    padding: 4px 8px 4px 6px; border-radius: 20px;
+    cursor: pointer; transition: all 0.2s; position: relative;
+    border: none; background: transparent;
+    font-family: var(--mono); font-size: 12px; font-weight: 600;
+}
+.streak-badge.active { color: var(--flame); }
+.streak-badge.active:hover { background: var(--flame-soft); }
+.streak-badge.active .streak-flame { filter: drop-shadow(0 0 4px rgba(232, 89, 12, 0.3)); }
+.streak-badge.active .streak-count { color: var(--ink); }
+.streak-badge.hot { color: var(--flame); }
+.streak-badge.hot:hover { background: var(--flame-soft); }
+.streak-badge.hot .streak-flame { filter: drop-shadow(0 0 6px rgba(232, 89, 12, 0.4)); animation: streakPulse 2s ease-in-out infinite; }
+.streak-badge.frozen { color: var(--frozen); }
+.streak-badge.frozen:hover { background: var(--frozen-soft); }
+.streak-badge.none { color: var(--gray); opacity: 0.5; }
+.streak-badge.none:hover { opacity: 0.8; background: var(--gray-soft); }
+.streak-flame { width: 18px; height: 18px; transition: all 0.3s; }
+@keyframes streakPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+/* Streak dropdown */
+.streak-dropdown {
+    width: 320px; background: var(--paper);
+    border: 1px solid var(--rule); box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+.streak-hero { padding: 28px 24px 20px; text-align: center; border-bottom: 1px solid var(--rule); }
+.streak-hero-flame { width: 48px; height: 48px; margin: 0 auto 12px; }
+.streak-hero-count {
+    font-family: var(--serif); font-weight: 800; font-size: 42px;
+    font-variation-settings: 'opsz' 144; line-height: 1;
+}
+.streak-hero-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+.streak-hero-sub { font-size: 13px; color: var(--gray); margin-top: 8px; }
+
+/* Calendar heatmap */
+.streak-calendar { padding: 16px 20px; border-bottom: 1px solid var(--rule); }
+.streak-cal-title { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+.cal-labels { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; margin-bottom: 4px; }
+.cal-labels span { font-family: var(--mono); font-size: 8px; color: var(--gray); text-align: center; text-transform: uppercase; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.cal-day {
+    aspect-ratio: 1; border-radius: 3px; display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 9px; color: var(--gray);
+}
+.cal-day.empty { background: transparent; }
+.cal-day.missed { background: var(--gray-soft); }
+.cal-day.played { background: var(--green-soft); }
+.cal-day.hot { background: var(--green); color: white; }
+.cal-day.frozen-day { background: var(--frozen-soft); border: 1px solid var(--frozen); }
+.cal-day.today { outline: 2px solid var(--ink); outline-offset: -1px; }
+
+/* Streak stats row */
+.streak-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border-bottom: 1px solid var(--rule); }
+.streak-stat { background: var(--paper); padding: 14px 16px; text-align: center; }
+.streak-stat-val { font-family: var(--serif); font-weight: 700; font-size: 22px; font-variation-settings: 'opsz' 72; }
+.streak-stat-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 2px; }
+
+/* Freeze row */
+.streak-freeze { padding: 16px 20px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--rule); }
+.freeze-icon-box { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.freeze-icon-box.has { background: var(--frozen-soft); border: 1px solid var(--frozen); }
+.freeze-icon-box.empty { background: var(--gray-soft); border: 1px dashed var(--rule); }
+.freeze-icon-box svg { width: 22px; height: 22px; }
+.freeze-info { flex: 1; }
+.freeze-title { font-size: 13px; font-weight: 600; }
+.freeze-desc { font-size: 12px; color: var(--gray); margin-top: 1px; }
+.freeze-cta {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; border: none; padding: 6px 12px;
+    cursor: pointer; transition: opacity 0.2s; white-space: nowrap;
+}
+.freeze-cta.premium-btn { background: linear-gradient(135deg, var(--premium), #e67e22); color: white; }
+.streak-dd-footer { padding: 12px 20px; text-align: center; }
+.streak-dd-footer a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); text-decoration: none; }
+.streak-dd-footer a:hover { color: var(--ink); }
+
+/* Milestone cards */
+.milestone-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 720px; margin: 0 auto; }
+.milestone-card {
+    border: 1px solid var(--rule); padding: 28px 20px; text-align: center;
+    cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.milestone-card:hover { border-color: var(--flame); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232, 89, 12, 0.1); }
+.milestone-card .m-flame { width: 40px; height: 40px; margin: 0 auto 12px; transition: transform 0.3s; }
+.milestone-card:hover .m-flame { transform: scale(1.15); }
+.milestone-card .m-count { font-family: var(--serif); font-weight: 800; font-size: 36px; font-variation-settings: 'opsz' 144; line-height: 1; }
+.milestone-card .m-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+.milestone-card .m-name { font-family: var(--serif); font-size: 14px; font-style: italic; font-variation-settings: 'opsz' 14; color: var(--gray); margin-top: 10px; }
+.milestone-card.achieved { border-color: var(--green); }
+.milestone-card.achieved .m-count { color: var(--green); }
+.milestone-card.achieved::after { content: '✓'; position: absolute; top: 8px; right: 10px; color: var(--green); font-size: 14px; font-weight: 700; }
+
+/* Celebration overlay */
+.celeb-overlay {
+    position: fixed; inset: 0; background: rgba(26, 26, 26, 0.7);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.celeb-overlay.show { opacity: 1; pointer-events: auto; }
+.celeb-card {
+    background: var(--paper); max-width: 360px; width: 90%;
+    text-align: center; padding: 48px 32px 36px;
+    transform: scale(0.9); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+.celeb-overlay.show .celeb-card { transform: scale(1); }
+.celeb-flame { width: 72px; height: 72px; margin: 0 auto 16px; animation: celebBounce 0.6s ease-out; }
+@keyframes celebBounce { 0% { transform: scale(0) rotate(-20deg); } 50% { transform: scale(1.3) rotate(5deg); } 100% { transform: scale(1) rotate(0deg); } }
+.celeb-count { font-family: var(--serif); font-weight: 800; font-size: 64px; font-variation-settings: 'opsz' 144; line-height: 1; color: var(--flame); }
+.celeb-unit { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+.celeb-title { font-family: var(--serif); font-size: 20px; font-weight: 700; font-variation-settings: 'opsz' 36; margin-top: 16px; line-height: 1.3; }
+.celeb-desc { font-size: 14px; color: var(--gray); margin-top: 8px; }
+.celeb-rule { width: 60px; height: 1px; background: var(--rule); margin: 20px auto; }
+.celeb-rule::after { content: ''; display: block; width: 20px; height: 3px; background: var(--flame); margin: -1px auto 0; }
+.celeb-cta { display: inline-block; padding: 10px 28px; background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: opacity 0.2s; }
+.celeb-cta:hover { opacity: 0.85; }
+.celeb-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: var(--gray); cursor: pointer; font-size: 20px; line-height: 1; }
+.celeb-close:hover { color: var(--ink); }
+.celeb-card::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(circle, var(--flame) 1.5px, transparent 1.5px), radial-gradient(circle, var(--green) 1.5px, transparent 1.5px), radial-gradient(circle, var(--yellow) 1.5px, transparent 1.5px), radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
+    background-size: 80px 80px; background-position: 10px 15px, 40px 45px, 65px 10px, 20px 60px; opacity: 0.12;
+}
+
+/* Premium upsell */
+.premium-box { max-width: 440px; margin: 0 auto; border: 1px solid var(--rule); overflow: hidden; }
+.premium-hd { padding: 24px 28px 20px; background: linear-gradient(135deg, #fef9e7 0%, var(--paper) 100%); border-bottom: 1px solid var(--rule); text-align: center; }
+.premium-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--premium); background: var(--premium-soft); padding: 4px 12px; border-radius: 2px; margin-bottom: 12px; }
+.premium-title { font-family: var(--serif); font-weight: 800; font-size: 22px; font-variation-settings: 'opsz' 48; }
+.premium-desc { font-size: 14px; color: var(--gray); margin-top: 6px; }
+.premium-features { padding: 20px 28px; }
+.premium-feat { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.premium-feat:last-child { border-bottom: none; }
+.premium-feat-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+.premium-feat-title { font-size: 14px; font-weight: 600; }
+.premium-feat-desc { font-size: 12px; color: var(--gray); margin-top: 1px; }
+.premium-ft { padding: 20px 28px; text-align: center; border-top: 1px solid var(--rule); }
+.premium-buy { display: inline-block; width: 100%; padding: 12px; background: linear-gradient(135deg, var(--premium), #e67e22); color: white; font-family: var(--sans); font-size: 15px; font-weight: 600; border: none; cursor: pointer; transition: opacity 0.2s; }
+.premium-buy:hover { opacity: 0.9; }
+.premium-price { font-family: var(--mono); font-size: 11px; color: var(--gray); margin-top: 8px; }
+
+/* Dev/product notes */
+.dev-note {
+    max-width: 520px; margin: 24px auto 0; padding: 16px 20px;
+    background: #fef9e7; border-left: 3px solid var(--premium);
+    font-size: 13px; line-height: 1.6; color: var(--ink);
+}
+.dev-note-title {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--premium); margin-bottom: 6px; font-weight: 600;
+}
+.dev-note ul { margin: 6px 0 0 16px; }
+.dev-note li { margin-bottom: 3px; }
+.dev-note code { font-family: var(--mono); font-size: 11px; background: rgba(0,0,0,0.05); padding: 1px 4px; }
+
+/* Demo controls */
+.streak-demo-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.streak-demo-btn {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px;
+    border: 1px solid var(--rule); background: var(--paper); cursor: pointer; transition: all 0.2s; color: var(--ink);
+}
+.streak-demo-btn:hover { border-color: var(--ink); }
+.streak-demo-btn.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+</style>
+
+
+<!-- ━━━ STREAK: NAVBAR INTEGRATION ━━━ -->
+<section class="screen" id="streak">
+    <span class="screen-label">Streak / Navbar</span>
+    <div style="max-width: 640px; margin: 0 auto; padding-top: 40px;">
+        <h2 style="font-family: var(--serif); font-weight: 800; font-size: 32px; font-variation-settings: 'opsz' 72; margin-bottom: 8px;">Streak in the Header</h2>
+        <p style="color: var(--gray); font-size: 15px; max-width: 540px; margin-bottom: 40px;">
+            The flame sits to the left of the stats icon — visible but not loud.
+            The badge changes color and intensity with streak length. Inspired by Duolingo but adapted to our editorial restraint.
+        </p>
+
+        <div class="streak-demo-btns">
+            <button class="streak-demo-btn on" onclick="setStreakState('none', this)">No streak</button>
+            <button class="streak-demo-btn" onclick="setStreakState('low', this)">3-day</button>
+            <button class="streak-demo-btn" onclick="setStreakState('mid', this)">12-day</button>
+            <button class="streak-demo-btn" onclick="setStreakState('hot', this)">47-day</button>
+            <button class="streak-demo-btn" onclick="setStreakState('frozen', this)">Frozen</button>
+        </div>
+
+        <div style="max-width: 520px; margin: 0 auto;">
+            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;" id="streak-state-label">No active streak</div>
+            <div style="border: 1px solid var(--rule);">
+                <div class="mock-header" style="display: flex; align-items: center; height: 50px; padding: 0 12px; border-bottom: 1px solid var(--rule); position: relative;">
+                    <div style="display: flex; align-items: center; gap: 4px; z-index: 2;">
+                        <button class="header-btn" style="background:none;border:none;padding:8px;color:var(--gray);cursor:pointer;display:flex;"><i data-lucide="menu" style="width:20px;height:20px;"></i></button>
+                        <button class="header-btn" style="background:none;border:none;padding:8px;color:var(--gray);cursor:pointer;display:flex;"><i data-lucide="info" style="width:20px;height:20px;"></i></button>
+                    </div>
+                    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+                        <div style="text-align:center;">
+                            <div style="font-family:var(--serif);font-weight:800;font-size:20px;font-variation-settings:'opsz' 72;">English</div>
+                            <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--gray);">#1737</div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:4px;z-index:2;margin-left:auto;">
+                        <button class="streak-badge" id="streak-demo-badge">
+                            <svg class="streak-flame" viewBox="0 0 24 24"><use href="#lucide-flame"/></svg>
+                            <span class="streak-count" id="streak-demo-count"></span>
+                        </button>
+                        <button class="header-btn" style="background:none;border:none;padding:8px;color:var(--gray);cursor:pointer;display:flex;"><i data-lucide="bar-chart-2" style="width:20px;height:20px;"></i></button>
+                        <button class="header-btn" style="background:none;border:none;padding:8px;color:var(--gray);cursor:pointer;display:flex;"><i data-lucide="settings" style="width:20px;height:20px;"></i></button>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 13px; color: var(--gray); margin-top: 8px; font-style: italic;" id="streak-state-note">Gray flame, no count — invites the user to start a streak.</p>
+        </div>
+
+        <div class="dev-note">
+            <div class="dev-note-title">Dev / Product Notes</div>
+            <ul>
+                <li><strong>Data source:</strong> <code>statsStore.stats.current_streak</code> (already computed from localStorage game results)</li>
+                <li><strong>Placement:</strong> Between info (i) and stats (bar chart) icons in GameHeader.vue</li>
+                <li><strong>States:</strong> No streak (gray, 0.5 opacity) / Active 1-6 (orange, static) / Hot 7+ (orange, gentle pulse animation) / Frozen (blue, snowflake accent)</li>
+                <li><strong>Animation — "Catch fire":</strong> When the user completes a game and their streak increments, the flame should briefly ignite — scale up with a glow burst (600ms), then settle. CSS keyframe: <code>scale(1) -> scale(1.6) + drop-shadow glow -> scale(1)</code>. Only on the transition from streak N to N+1, not on page load.</li>
+                <li><strong>Animation — "Freeze":</strong> When a freeze is consumed, the flame transitions from orange to blue with a brief frost particle effect (CSS radial gradient burst). The badge gets a subtle crystalline shimmer.</li>
+                <li><strong>Click target:</strong> Opens the streak dropdown (see next section). On mobile, opens as a bottom sheet instead of dropdown.</li>
+                <li><strong>Speed mode:</strong> Streak badge hidden — speed is session-based, not daily.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ STREAK: DROPDOWN ━━━ -->
+<section class="screen" id="streak-dropdown">
+    <span class="screen-label">Streak / Dropdown</span>
+    <div style="max-width: 640px; margin: 0 auto; padding-top: 40px;">
+        <h2 style="font-family: var(--serif); font-weight: 800; font-size: 32px; font-variation-settings: 'opsz' 72; margin-bottom: 8px;">Click the Flame</h2>
+        <p style="color: var(--gray); font-size: 15px; max-width: 540px; margin-bottom: 40px;">
+            Tapping the streak badge opens a dropdown: hero number, calendar heatmap of the past month, streak stats, and freeze status.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 700px; margin: 0 auto;">
+            <!-- Active streak -->
+            <div>
+                <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Active — 12 days</div>
+                <div class="streak-dropdown">
+                    <div class="streak-hero">
+                        <svg class="streak-hero-flame" viewBox="0 0 24 24" style="color:#e8590c"><use href="#lucide-flame"/></svg>
+                        <div class="streak-hero-count" style="color: var(--flame);">12</div>
+                        <div class="streak-hero-label">Day streak</div>
+                        <div class="streak-hero-sub">You're on fire! Keep it going.</div>
+                    </div>
+                    <div class="streak-calendar">
+                        <div class="streak-cal-title">March 2026</div>
+                        <div class="cal-labels"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                        <div class="cal-grid">
+                            <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day missed">1</div>
+                            <div class="cal-day missed">2</div><div class="cal-day missed">3</div><div class="cal-day missed">4</div><div class="cal-day missed">5</div><div class="cal-day missed">6</div><div class="cal-day missed">7</div><div class="cal-day missed">8</div>
+                            <div class="cal-day missed">9</div><div class="cal-day missed">10</div><div class="cal-day played">11</div><div class="cal-day played">12</div><div class="cal-day played">13</div><div class="cal-day played">14</div><div class="cal-day played">15</div>
+                            <div class="cal-day played">16</div><div class="cal-day frozen-day">17</div><div class="cal-day played">18</div><div class="cal-day played">19</div><div class="cal-day hot">20</div><div class="cal-day hot">21</div><div class="cal-day hot today">22</div>
+                            <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div>
+                        </div>
+                    </div>
+                    <div class="streak-stats">
+                        <div class="streak-stat"><div class="streak-stat-val">12</div><div class="streak-stat-lbl">Current</div></div>
+                        <div class="streak-stat"><div class="streak-stat-val">34</div><div class="streak-stat-lbl">Longest</div></div>
+                    </div>
+                    <div class="streak-freeze">
+                        <div class="freeze-icon-box has"><svg viewBox="0 0 24 24" width="22" height="22" style="color:#0984e3"><use href="#lucide-snowflake"/></svg></div>
+                        <div class="freeze-info"><div class="freeze-title">1 Streak Freeze</div><div class="freeze-desc">Protects your streak if you miss a day</div></div>
+                    </div>
+                    <div class="streak-dd-footer"><a href="#">View full stats →</a></div>
+                </div>
+            </div>
+
+            <!-- Frozen state -->
+            <div>
+                <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Frozen — used a freeze</div>
+                <div class="streak-dropdown">
+                    <div class="streak-hero" style="background: var(--frozen-soft);">
+                        <svg class="streak-hero-flame" viewBox="0 0 24 24" style="color:#74b9ff"><use href="#lucide-flame"/></svg>
+                        <div class="streak-hero-count" style="color: var(--frozen);">12</div>
+                        <div class="streak-hero-label">Day streak — frozen</div>
+                        <div class="streak-hero-sub">Your streak was saved! Play today to keep going.</div>
+                    </div>
+                    <div class="streak-freeze">
+                        <div class="freeze-icon-box empty"><svg viewBox="0 0 24 24" width="22" height="22" style="color:#8c8c8c;opacity:0.4"><use href="#lucide-snowflake"/></svg></div>
+                        <div class="freeze-info"><div class="freeze-title">No Freezes Left</div><div class="freeze-desc">Get more with Wordle Global+</div></div>
+                        <button class="freeze-cta premium-btn">Get more</button>
+                    </div>
+                    <div class="streak-dd-footer"><a href="#">View full stats →</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dev-note">
+            <div class="dev-note-title">Dev / Product Notes</div>
+            <ul>
+                <li><strong>Trigger:</strong> Click/tap the streak badge in the navbar. Opens as dropdown (desktop) or bottom sheet (mobile).</li>
+                <li><strong>Calendar data:</strong> Built from <code>gameResults</code> in localStorage — each entry has a date. Map dates to played/missed/frozen grid cells.</li>
+                <li><strong>Frozen days:</strong> Detected when a day has no game result but the streak didn't break. Requires storing freeze usage timestamps.</li>
+                <li><strong>"View full stats" link:</strong> Navigates to <code>/stats</code> page (already exists).</li>
+                <li><strong>Freeze count:</strong> Free users: 1 freeze, replenishes every Monday. Premium: unlimited. Stored in localStorage, validated server-side for premium.</li>
+                <li><strong>Auto-dismiss:</strong> Dropdown closes on outside click or Escape key (same as BaseModal pattern).</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ STREAK: MILESTONES ━━━ -->
+<section class="screen" id="streak-milestones">
+    <span class="screen-label">Streak / Milestones</span>
+    <div style="max-width: 800px; margin: 0 auto; padding-top: 40px;">
+        <h2 style="font-family: var(--serif); font-weight: 800; font-size: 32px; font-variation-settings: 'opsz' 72; margin-bottom: 8px;">Streak Milestones</h2>
+        <p style="color: var(--gray); font-size: 15px; max-width: 540px; margin-bottom: 40px;">
+            Celebrations at 7, 30, 100, and 365 days. Each progressively more dramatic. Click to preview.
+        </p>
+
+        <div class="milestone-grid">
+            <div class="milestone-card achieved" onclick="showStreakCeleb(7)">
+                <svg class="m-flame" viewBox="0 0 24 24" style="color:#e8590c"><use href="#lucide-flame"/></svg>
+                <div class="m-count">7</div><div class="m-label">Days</div><div class="m-name">"First Week"</div>
+            </div>
+            <div class="milestone-card achieved" onclick="showStreakCeleb(30)">
+                <svg class="m-flame" viewBox="0 0 24 24" style="color:#e8590c"><use href="#lucide-flame"/></svg>
+                <div class="m-count">30</div><div class="m-label">Days</div><div class="m-name">"Monthly Master"</div>
+            </div>
+            <div class="milestone-card" onclick="showStreakCeleb(100)">
+                <svg class="m-flame" viewBox="0 0 24 24" style="color:#d4cfc7"><use href="#lucide-flame"/></svg>
+                <div class="m-count" style="color:var(--gray);">100</div><div class="m-label">Days</div><div class="m-name">"Century Club"</div>
+            </div>
+            <div class="milestone-card" onclick="showStreakCeleb(365)">
+                <svg class="m-flame" viewBox="0 0 24 24" style="color:#d4cfc7"><use href="#lucide-flame"/></svg>
+                <div class="m-count" style="color:var(--gray);">365</div><div class="m-label">Days</div><div class="m-name">"Year of Words"</div>
+            </div>
+        </div>
+        <p style="text-align:center;font-size:13px;color:var(--gray);margin-top:16px;font-style:italic;">Click a milestone to preview the celebration</p>
+
+        <div class="dev-note">
+            <div class="dev-note-title">Dev / Product Notes</div>
+            <ul>
+                <li><strong>When it appears:</strong> Celebration overlay triggers immediately after the stats modal auto-shows, IF the user just crossed a milestone threshold. Sequence: tiles reveal -> bounce -> keyboard flip -> stats modal -> milestone celebration on top.</li>
+                <li><strong>Haptic feedback:</strong> <code>haptic.success()</code> pattern on milestone hit. Sound: ascending 4-note chime (reuse win sound but extended).</li>
+                <li><strong>Confetti:</strong> The dotted confetti pattern in the card is CSS-only (background radial gradients). For the overlay entrance, consider a lightweight canvas confetti burst (200ms, 30 particles, gravity fall).</li>
+                <li><strong>Share prompt:</strong> After dismissing the celebration, optionally prompt "Share your streak?" with a pre-formatted share text: "I just hit a 30-day streak on Wordle Global! wordle.global"</li>
+                <li><strong>Persistence:</strong> Track which milestones the user has seen in localStorage to avoid re-showing on refresh. Key: <code>streak_milestones_seen: [7, 30]</code></li>
+                <li><strong>Future milestones:</strong> Could extend to 500, 1000. Consider language-specific milestones ("Play 7 languages in a week").</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ━━━ STREAK: FREEZE & PREMIUM ━━━ -->
+<section class="screen" id="streak-freeze">
+    <span class="screen-label">Streak / Freeze & Premium</span>
+    <div style="max-width: 640px; margin: 0 auto; padding-top: 40px;">
+        <h2 style="font-family: var(--serif); font-weight: 800; font-size: 32px; font-variation-settings: 'opsz' 72; margin-bottom: 8px;">Streak Freeze</h2>
+        <p style="color: var(--gray); font-size: 15px; max-width: 540px; margin-bottom: 40px;">
+            Miss a day, your freeze auto-activates to save the streak.
+            Free users get 1 freeze (replenishes weekly). Premium gets unlimited + streak recovery.
+        </p>
+
+        <div class="premium-box">
+            <div class="premium-hd">
+                <div class="premium-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    Wordle Global+
+                </div>
+                <div class="premium-title">Never Lose Your Streak</div>
+                <div class="premium-desc">Keep your momentum with unlimited freezes and more</div>
+            </div>
+            <div class="premium-features">
+                <div class="premium-feat">
+                    <div class="premium-feat-icon" style="background:var(--frozen-soft);color:var(--frozen);"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#lucide-snowflake"/></svg></div>
+                    <div><div class="premium-feat-title">Unlimited Streak Freezes</div><div class="premium-feat-desc">Miss a day without losing your streak. Free users get 1 per week.</div></div>
+                </div>
+                <div class="premium-feat">
+                    <div class="premium-feat-icon" style="background:var(--flame-soft);color:var(--flame);"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#lucide-flame"/></svg></div>
+                    <div><div class="premium-feat-title">Streak Recovery</div><div class="premium-feat-desc">Broke your streak? Restore it within 48 hours.</div></div>
+                </div>
+                <div class="premium-feat">
+                    <div class="premium-feat-icon" style="background:var(--yellow-soft);color:var(--yellow);"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#lucide-star"/></svg></div>
+                    <div><div class="premium-feat-title">No Ads, Ever</div><div class="premium-feat-desc">Clean, distraction-free gameplay.</div></div>
+                </div>
+            </div>
+            <div class="premium-ft">
+                <button class="premium-buy">Start Free Trial</button>
+                <div class="premium-price">7 days free, then $2.99/month</div>
+            </div>
+        </div>
+        <div class="dev-note">
+            <div class="dev-note-title">Dev / Product Notes</div>
+            <ul>
+                <li><strong>Freeze mechanic:</strong> If the user doesn't play on a given day AND has a freeze available, the freeze auto-consumes at midnight UTC. The next time they open the app, the flame shows blue (frozen state) with "Your streak was saved!" messaging.</li>
+                <li><strong>Free tier:</strong> 1 freeze, replenishes every Monday at 00:00 UTC. Stored in localStorage: <code>{ freezes_available: 1, last_replenish: "2026-03-17" }</code></li>
+                <li><strong>Premium tier:</strong> Unlimited freezes + streak recovery (restore a broken streak within 48 hours). Revenue model: $2.99/month or $24.99/year.</li>
+                <li><strong>Premium gate UX:</strong> When free user runs out of freezes, the dropdown shows "Get more" button -> opens premium upsell modal. Also accessible from Settings.</li>
+                <li><strong>Server validation:</strong> Premium status and freeze usage should be validated server-side to prevent localStorage tampering. But streak itself stays client-side (privacy, offline play).</li>
+                <li><strong>Implementation order:</strong> 1) Streak badge in navbar (free, no backend). 2) Streak dropdown with calendar (free, no backend). 3) Milestone celebrations (free, no backend). 4) Streak freeze (needs freeze storage). 5) Premium (needs auth + payments).</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     STREAK: DELIGHT EFFECTS PROTOTYPES
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+.fx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 800px; margin: 0 auto; }
+.fx-panel {
+    border: 1px solid var(--rule); padding: 32px 24px; text-align: center;
+    position: relative; overflow: hidden; min-height: 280px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.fx-title { font-family: var(--serif); font-weight: 700; font-size: 18px; font-variation-settings: 'opsz' 36; margin-bottom: 4px; }
+.fx-sub { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 20px; }
+.fx-badge-wrap { position: relative; display: inline-block; margin-bottom: 16px; }
+.fx-badge-wrap canvas { position: absolute; top: 50%; left: 50%; pointer-events: none; }
+.fx-btn {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 8px 18px; margin-top: 4px;
+    border: 1px solid var(--rule); background: var(--paper); cursor: pointer;
+    transition: all 0.2s; color: var(--ink);
+}
+.fx-btn:hover { background: var(--ink); color: var(--paper); }
+.fx-btn.active { background: var(--ink); color: var(--paper); }
+.fx-flame-badge {
+    display: flex; align-items: center; gap: 4px;
+    padding: 6px 12px 6px 8px; border-radius: 24px;
+    font-family: var(--mono); font-size: 14px; font-weight: 600;
+    color: var(--flame); position: relative; z-index: 1; transition: all 0.3s;
+}
+.fx-flame-badge svg { width: 22px; height: 22px; transition: all 0.3s; }
+.fx-flame-badge.glow-1 { filter: drop-shadow(0 0 3px rgba(232, 89, 12, 0.25)); }
+.fx-flame-badge.glow-2 { filter: drop-shadow(0 0 6px rgba(232, 89, 12, 0.35)); }
+.fx-flame-badge.glow-3 { filter: drop-shadow(0 0 10px rgba(232, 89, 12, 0.4)) drop-shadow(0 0 20px rgba(232, 89, 12, 0.15)); }
+.fx-flame-badge.glow-4 {
+    filter: drop-shadow(0 0 12px rgba(232, 89, 12, 0.5)) drop-shadow(0 0 30px rgba(253, 126, 20, 0.2));
+    animation: fxHotPulse 2s ease-in-out infinite;
+}
+@keyframes fxHotPulse {
+    0%, 100% { filter: drop-shadow(0 0 12px rgba(232, 89, 12, 0.5)) drop-shadow(0 0 30px rgba(253, 126, 20, 0.2)); }
+    50% { filter: drop-shadow(0 0 18px rgba(232, 89, 12, 0.65)) drop-shadow(0 0 40px rgba(253, 126, 20, 0.3)); }
+}
+.fx-flame-badge.frozen-fx { color: var(--frozen); filter: drop-shadow(0 0 8px rgba(116, 185, 255, 0.4)); }
+.frost-overlay {
+    position: absolute; inset: -4px; border-radius: 28px; pointer-events: none; z-index: 2;
+    background: linear-gradient(135deg, rgba(116, 185, 255, 0.15) 0%, rgba(255, 255, 255, 0.2) 40%, rgba(116, 185, 255, 0.1) 100%);
+    border: 1px solid rgba(116, 185, 255, 0.3);
+    opacity: 0; transition: opacity 0.6s; backdrop-filter: blur(1px);
+}
+.frost-overlay.visible { opacity: 1; }
+/* Heat distortion: applied to a background element, not the badge itself */
+.heat-bg {
+    position: absolute; top: -20px; left: -20px; right: -20px; bottom: -10px;
+    background: radial-gradient(ellipse 60px 80px at center 55%, rgba(232, 89, 12, 0.18) 0%, rgba(253, 126, 20, 0.08) 40%, transparent 70%);
+    filter: url(#heat-filter);
+    pointer-events: none; z-index: 0;
+    opacity: 0; transition: opacity 0.4s;
+}
+.heat-bg.active { opacity: 1; }
+.fx-tiles { display: flex; gap: 4px; margin-top: 16px; }
+.fx-tile {
+    width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 800; font-size: 22px;
+    background: var(--green); color: white; position: relative; overflow: hidden;
+}
+.fx-tile::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(253, 126, 20, 0.5) 30%, rgba(232, 89, 12, 0.7) 50%, rgba(253, 126, 20, 0.5) 70%, transparent 100%);
+    opacity: 0; transform: translateX(-100%);
+}
+.fx-tiles.sweep .fx-tile::after { animation: emberSweep 0.6s ease-out forwards; }
+.fx-tiles.sweep .fx-tile:nth-child(1)::after { animation-delay: 0s; }
+.fx-tiles.sweep .fx-tile:nth-child(2)::after { animation-delay: 0.08s; }
+.fx-tiles.sweep .fx-tile:nth-child(3)::after { animation-delay: 0.16s; }
+.fx-tiles.sweep .fx-tile:nth-child(4)::after { animation-delay: 0.24s; }
+.fx-tiles.sweep .fx-tile:nth-child(5)::after { animation-delay: 0.32s; }
+@keyframes emberSweep {
+    0% { opacity: 0; transform: translateX(-100%); }
+    30% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(100%); }
+}
+.confetti-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
+.product-note {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+    color: var(--gray); background: var(--paper-warm); padding: 12px 16px;
+    margin-top: 12px; text-align: left; line-height: 1.7;
+    border: 1px dashed var(--rule); max-width: 340px;
+}
+.product-note .pn-label {
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; display: block; margin-bottom: 6px;
+}
+@media (max-width: 768px) { .fx-grid { grid-template-columns: 1fr; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute;">
+    <defs>
+        <filter id="heat-filter" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+            <feTurbulence id="heat-turb" type="turbulence" baseFrequency="0.02 0.04" numOctaves="3" seed="2" result="turbulence"/>
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </defs>
+</svg>
+
+<section class="screen" id="streak-effects">
+    <span class="screen-label">Streak / Delight Effects</span>
+    <div style="max-width: 900px; margin: 0 auto; padding-top: 40px;">
+        <h2 style="font-family: var(--serif); font-weight: 800; font-size: 32px; font-variation-settings: 'opsz' 72; margin-bottom: 8px;">Delight Prototypes</h2>
+        <p style="color: var(--gray); font-size: 15px; max-width: 600px; margin-bottom: 48px;">
+            Interactive prototypes of every streak effect. Each panel is a working demo — click the buttons to trigger.
+            Dev notes explain implementation. All effects respect prefers-reduced-motion.
+        </p>
+
+        <div class="fx-grid">
+
+            <!-- 0. LIVING FLAME — hero panel -->
+            <div class="fx-panel" style="grid-column: 1 / -1; min-height: 480px; padding-bottom: 48px;">
+                <div class="fx-title" style="font-size: 24px;">Living Flame</div>
+                <div class="fx-sub">Clean Lucide icon + CSS transforms + canvas embers</div>
+
+                <div style="display: flex; gap: 56px; align-items: flex-start; justify-content: center; margin: 24px 0 20px; flex-wrap: wrap;">
+
+                    <!-- A: Organic Flicker -->
+                    <div style="text-align:center;">
+                        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;">Organic Flicker</div>
+                        <div style="width:64px;height:64px;margin:0 auto;">
+                            <svg viewBox="0 0 24 24" width="64" height="64" id="flicker-svg" style="color:var(--flame);overflow:visible;"><use href="#lucide-flame"/></svg>
+                        </div>
+                        <div style="display:flex;gap:4px;margin-top:12px;justify-content:center;">
+                            <button class="fx-btn" onclick="flickerStart(this)" id="flicker-start-btn">Start</button>
+                            <button class="fx-btn" onclick="flickerStop(this)" id="flicker-stop-btn">Stop</button>
+                        </div>
+                    </div>
+
+                    <!-- B: Flicker + Embers -->
+                    <div style="text-align:center;">
+                        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;">Flicker + Embers</div>
+                        <div style="position:relative;width:64px;height:64px;margin:0 auto;" id="combo-wrap">
+                            <canvas id="ember-canvas" width="140" height="160" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);pointer-events:none;z-index:2;"></canvas>
+                            <svg viewBox="0 0 24 24" width="64" height="64" id="combo-svg" style="color:var(--flame);position:relative;z-index:1;overflow:visible;"><use href="#lucide-flame"/></svg>
+                        </div>
+                        <div style="display:flex;gap:4px;margin-top:12px;justify-content:center;">
+                            <button class="fx-btn" onclick="comboIgnite(this)" id="combo-ignite-btn">Ignite</button>
+                            <button class="fx-btn" onclick="comboIdle(this)" id="combo-idle-btn">Idle</button>
+                            <button class="fx-btn" onclick="comboOff(this)" id="combo-off-btn">Off</button>
+                        </div>
+                    </div>
+
+                    <!-- C: Full sequence -->
+                    <div style="text-align:center;">
+                        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;">Win Sequence</div>
+                        <div style="position:relative;width:64px;height:64px;margin:0 auto;" id="seq-wrap">
+                            <canvas id="seq-ember-canvas" width="140" height="160" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);pointer-events:none;z-index:2;"></canvas>
+                            <svg viewBox="0 0 24 24" width="64" height="64" id="seq-svg" style="color:var(--gray);position:relative;z-index:1;overflow:visible;opacity:0.4;transition:color 0.6s,opacity 0.6s;"><use href="#lucide-flame"/></svg>
+                        </div>
+                        <div style="display:flex;gap:4px;margin-top:12px;justify-content:center;">
+                            <button class="fx-btn" onclick="seqPlay(this)" id="seq-play-btn">Play</button>
+                            <button class="fx-btn" onclick="seqReset(this)" id="seq-reset-btn">Reset</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Size demos -->
+                <div style="margin-top: 24px; border-top: 1px solid var(--rule); padding-top: 24px;">
+                    <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:16px;">Size Variants — badge / header / celebration</div>
+                    <div style="display:flex;gap:40px;align-items:flex-end;justify-content:center;">
+                        <div style="text-align:center;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" id="sm-svg" style="color:var(--flame);overflow:visible;"><use href="#lucide-flame"/></svg>
+                            <div style="font-family:var(--mono);font-size:9px;color:var(--gray);margin-top:6px;">18px</div>
+                        </div>
+                        <div style="text-align:center;">
+                            <svg viewBox="0 0 24 24" width="36" height="36" id="md-svg" style="color:var(--flame);overflow:visible;"><use href="#lucide-flame"/></svg>
+                            <div style="font-family:var(--mono);font-size:9px;color:var(--gray);margin-top:6px;">36px</div>
+                        </div>
+                        <div style="text-align:center;">
+                            <svg viewBox="0 0 24 24" width="64" height="64" id="lg-svg" style="color:var(--flame);overflow:visible;"><use href="#lucide-flame"/></svg>
+                            <div style="font-family:var(--mono);font-size:9px;color:var(--gray);margin-top:6px;">64px</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-note" style="margin-top:24px;max-width:520px;">
+                    <span class="pn-label">When this appears</span>
+                    Same Lucide flame icon throughout. At 30+ days it flickers; at 50+ embers detach from the tip.
+                    Win Sequence shows the full chain: gray dormant icon -> warms to orange -> catches ablaze with embers -> settles to gentle flicker.
+                </div>
+            </div>
+
+            <!-- 1. CSS Glow Escalation -->
+            <div class="fx-panel">
+                <div class="fx-title">Glow Escalation</div>
+                <div class="fx-sub">CSS only — zero JS</div>
+                <div class="fx-badge-wrap">
+                    <div class="fx-flame-badge glow-1" id="glow-badge">
+                        <svg viewBox="0 0 24 24" style="color:var(--flame)"><use href="#lucide-flame"/></svg>
+                        <span id="glow-count">3</span>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+                    <button class="fx-btn active" onclick="setGlow(1, 3, this)">3 days</button>
+                    <button class="fx-btn" onclick="setGlow(2, 12, this)">12 days</button>
+                    <button class="fx-btn" onclick="setGlow(3, 47, this)">47 days</button>
+                    <button class="fx-btn" onclick="setGlow(4, 100, this)">100 days</button>
+                </div>
+                <div class="product-note">
+                    <span class="pn-label">When this appears</span>
+                    Always visible in header when streak >= 1. Glow tier set on page load — no entrance animation.
+                </div>
+            </div>
+
+            <!-- 2. Fire Particles -->
+            <div class="fx-panel">
+                <div class="fx-title">Fire Particles</div>
+                <div class="fx-sub">Canvas2D — ~30 particles</div>
+                <div class="fx-badge-wrap">
+                    <canvas id="fire-canvas" width="120" height="140" style="transform:translate(-50%,-65%);"></canvas>
+                    <div class="fx-flame-badge glow-3">
+                        <svg viewBox="0 0 24 24" style="color:var(--flame)"><use href="#lucide-flame"/></svg>
+                        <span>47</span>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+                    <button class="fx-btn" onclick="fireSimmer()" id="fire-simmer-btn">Simmer</button>
+                    <button class="fx-btn" onclick="fireBlaze()" id="fire-blaze-btn">Catch Ablaze</button>
+                    <button class="fx-btn" onclick="fireOff()" id="fire-off-btn">Off</button>
+                </div>
+                <div class="product-note">
+                    <span class="pn-label">When this appears</span>
+                    Simmer: ambient at 30+ day streaks. Catch ablaze: ~2s burst on game win, then settles back to simmer.
+                </div>
+            </div>
+
+            <!-- 3. Heat Distortion -->
+            <div class="fx-panel">
+                <div class="fx-title">Heat Distortion</div>
+                <div class="fx-sub">SVG feTurbulence filter</div>
+                <div class="fx-badge-wrap" style="position:relative;">
+                    <div class="heat-bg" id="heat-bg"></div>
+                    <div class="fx-flame-badge glow-4" id="heat-badge">
+                        <svg viewBox="0 0 24 24" style="color:var(--flame)"><use href="#lucide-flame"/></svg>
+                        <span>100</span>
+                    </div>
+                </div>
+                <div style="display:flex;gap:6px;justify-content:center;">
+                    <button class="fx-btn" onclick="heatOn(this)" id="heat-on-btn">Start</button>
+                    <button class="fx-btn" onclick="heatOff(this)" id="heat-off-btn">Stop</button>
+                </div>
+                <div class="product-note">
+                    <span class="pn-label">When this appears</span>
+                    100+ day streaks only. Stacks with fire particles for the full hot streak look.
+                </div>
+            </div>
+
+            <!-- 4. Frost & Snowfall -->
+            <div class="fx-panel">
+                <div class="fx-title">Frost & Snowfall</div>
+                <div class="fx-sub">CSS + Canvas2D</div>
+                <div class="fx-badge-wrap">
+                    <canvas id="snow-canvas" width="120" height="140" style="transform:translate(-50%,-50%);"></canvas>
+                    <div class="fx-flame-badge frozen-fx" id="frost-badge">
+                        <svg viewBox="0 0 24 24" style="color:var(--frozen)"><use href="#lucide-flame"/></svg>
+                        <span>12</span>
+                    </div>
+                    <div class="frost-overlay" id="frost-overlay"></div>
+                </div>
+                <div style="display:flex;gap:6px;justify-content:center;">
+                    <button class="fx-btn" onclick="frostOn(this)" id="frost-on-btn">Freeze</button>
+                    <button class="fx-btn" onclick="frostOff(this)" id="frost-off-btn">Thaw</button>
+                </div>
+                <div class="product-note">
+                    <span class="pn-label">When this appears</span>
+                    Freeze auto-activates at midnight if user missed today. Next visit: frozen badge + snowfall. Playing thaws it back to warm.
+                </div>
+            </div>
+
+            <!-- 5. Tile Ember Sweep (full width) -->
+            <div class="fx-panel" style="grid-column: 1 / -1;">
+                <div class="fx-title">Tile Ember Sweep</div>
+                <div class="fx-sub">CSS keyframes — staggered per tile</div>
+                <div class="fx-tiles" id="ember-tiles">
+                    <div class="fx-tile">F</div>
+                    <div class="fx-tile">L</div>
+                    <div class="fx-tile">A</div>
+                    <div class="fx-tile">M</div>
+                    <div class="fx-tile">E</div>
+                </div>
+                <button class="fx-btn" onclick="emberSweep()" style="margin-top:16px;">Trigger Sweep</button>
+                <div class="product-note" style="margin-top:16px;">
+                    <span class="pn-label">When this appears</span>
+                    After final tile-flip on win. Sweeps the winning row, then badge does catch ablaze. Chain: tiles catch fire -> badge ignites.
+                </div>
+            </div>
+
+            <!-- 6. Milestone Confetti (full width) -->
+            <div class="fx-panel" style="grid-column: 1 / -1; min-height: 360px;">
+                <canvas class="confetti-canvas" id="confetti-canvas"></canvas>
+                <div class="fx-title">Milestone Confetti</div>
+                <div class="fx-sub">Canvas2D — gravity physics</div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+                    <svg viewBox="0 0 24 24" width="48" height="48" style="color:#e8590c"><use href="#lucide-flame"/></svg>
+                    <div style="font-family:var(--serif);font-weight:800;font-size:48px;font-variation-settings:'opsz' 144;color:var(--flame);" id="confetti-count">7</div>
+                </div>
+                <div style="font-family:var(--serif);font-size:18px;font-variation-settings:'opsz' 36;margin-bottom:8px;" id="confetti-label">First Week Complete</div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
+                    <button class="fx-btn" onclick="confettiBurst(7)">7 days</button>
+                    <button class="fx-btn" onclick="confettiBurst(30)">30 days</button>
+                    <button class="fx-btn" onclick="confettiBurst(100)">100 days</button>
+                    <button class="fx-btn" onclick="confettiBurst(365)">365 days</button>
+                </div>
+                <div class="product-note" style="margin-top:16px;">
+                    <span class="pn-label">When this appears</span>
+                    Fires once when milestone modal opens. Scales with milestone: 7-day = 50 pieces, 365-day = 150 piece eruption.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Effect escalation reference -->
+        <div style="margin-top:56px;max-width:700px;margin-left:auto;margin-right:auto;">
+            <h3 style="font-family:var(--serif);font-weight:700;font-size:20px;font-variation-settings:'opsz' 36;margin-bottom:16px;">Effect Escalation Map</h3>
+            <table style="width:100%;font-size:13px;border-collapse:collapse;">
+                <thead>
+                    <tr style="border-bottom:2px solid var(--ink);text-align:left;">
+                        <th style="padding:8px 12px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Streak</th>
+                        <th style="padding:8px 12px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Badge Effect</th>
+                        <th style="padding:8px 12px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Win Moment</th>
+                        <th style="padding:8px 12px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Tech</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid var(--rule);"><td style="padding:8px 12px;font-weight:600;">1-6 days</td><td style="padding:8px 12px;">Warm glow (level 1)</td><td style="padding:8px 12px;">Tile bounce only</td><td style="padding:8px 12px;font-family:var(--mono);font-size:11px;">CSS</td></tr>
+                    <tr style="border-bottom:1px solid var(--rule);"><td style="padding:8px 12px;font-weight:600;">7-29 days</td><td style="padding:8px 12px;">Glow pulse (level 2-3)</td><td style="padding:8px 12px;">Ember sweep + bounce</td><td style="padding:8px 12px;font-family:var(--mono);font-size:11px;">CSS</td></tr>
+                    <tr style="border-bottom:1px solid var(--rule);"><td style="padding:8px 12px;font-weight:600;">30-99 days</td><td style="padding:8px 12px;">Fire particles (simmer)</td><td style="padding:8px 12px;">Particles blaze + sweep</td><td style="padding:8px 12px;font-family:var(--mono);font-size:11px;">Canvas</td></tr>
+                    <tr style="border-bottom:1px solid var(--rule);"><td style="padding:8px 12px;font-weight:600;">100+ days</td><td style="padding:8px 12px;">Particles + heat distortion</td><td style="padding:8px 12px;">Full blaze + sweep + distortion</td><td style="padding:8px 12px;font-family:var(--mono);font-size:11px;">Canvas + SVG</td></tr>
+                    <tr style="border-bottom:1px solid var(--rule);"><td style="padding:8px 12px;font-weight:600;">Frozen</td><td style="padding:8px 12px;">Frost overlay + snowfall</td><td style="padding:8px 12px;">Thaw transition on win</td><td style="padding:8px 12px;font-family:var(--mono);font-size:11px;">CSS + Canvas</td></tr>
+                    <tr><td style="padding:8px 12px;font-weight:600;">Milestone</td><td style="padding:8px 12px;">--</td><td style="padding:8px 12px;">Confetti burst (scaled)</td><td style="padding:8px 12px;font-family:var(--mono);font-size:11px;">Canvas</td></tr>
+                </tbody>
+            </table>
+            <p style="font-family:var(--mono);font-size:10px;color:var(--gray);margin-top:12px;letter-spacing:0.05em;">
+                All effects skip when prefers-reduced-motion is set or .reduce-animations is active. Falls back to static glow/tint only.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Celebration overlay -->
+<div class="celeb-overlay" id="streak-celeb-overlay" onclick="hideStreakCeleb()">
+    <div class="celeb-card" onclick="event.stopPropagation()">
+        <button class="celeb-close" onclick="hideStreakCeleb()">×</button>
+        <svg class="celeb-flame" viewBox="0 0 24 24" style="color:#e8590c"><use href="#lucide-flame"/></svg>
+        <div class="celeb-count" id="celeb-ct">7</div>
+        <div class="celeb-unit">Day Streak!</div>
+        <div class="celeb-title" id="celeb-tt">First Week Complete</div>
+        <div class="celeb-desc" id="celeb-ds">You've played Wordle every day for a week. The habit is forming.</div>
+        <div class="celeb-rule"></div>
+        <button class="celeb-cta" onclick="hideStreakCeleb()">Keep Going</button>
+    </div>
+</div>
+
 <script src="https://unpkg.com/lucide@0.344.0"></script>
-<script>lucide.createIcons();</script>
+<script>
+lucide.createIcons();
+
+// ═══════════════════════════════════════════
+// Streak navbar demo
+// ═══════════════════════════════════════════
+const streakStates = {
+    none: { cls: 'none', count: '', label: 'No active streak', note: 'Gray flame, no count — invites the user to start a streak.' },
+    low: { cls: 'active', count: '3', label: '3-day streak — warming up', note: 'Orange flame appears with count. Subtle, not distracting.' },
+    mid: { cls: 'active', count: '12', label: '12-day streak — building momentum', note: 'Same visual as low — the number does the talking.' },
+    hot: { cls: 'hot', count: '47', label: '47-day streak — on fire!', note: 'Flame pulses gently. A hot streak earns a subtle glow.' },
+    frozen: { cls: 'frozen', count: '12', label: 'Frozen streak — saved by a freeze', note: 'Blue flame signals the streak was protected. Play today to unfreeze.' },
+};
+
+function setStreakState(key, btn) {
+    const s = streakStates[key];
+    document.getElementById('streak-demo-badge').className = 'streak-badge ' + s.cls;
+    document.getElementById('streak-demo-count').textContent = s.count;
+    document.getElementById('streak-state-label').textContent = s.label;
+    document.getElementById('streak-state-note').textContent = s.note;
+    document.querySelectorAll('.streak-demo-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+}
+
+// Milestone celebration
+const streakMilestones = {
+    7: { title: 'First Week Complete', desc: "You've played Wordle every day for a week. The habit is forming." },
+    30: { title: 'Monthly Master', desc: "A full month of daily Wordle. You're part of the inner circle now." },
+    100: { title: 'Century Club', desc: '100 consecutive days. Fewer than 2% of players reach this milestone.' },
+    365: { title: 'Year of Words', desc: '365 words guessed. You are a Wordle legend.' },
+};
+
+function showStreakCeleb(days) {
+    const m = streakMilestones[days];
+    document.getElementById('celeb-ct').textContent = days;
+    document.getElementById('celeb-tt').textContent = m.title;
+    document.getElementById('celeb-ds').textContent = m.desc;
+    document.getElementById('streak-celeb-overlay').classList.add('show');
+}
+
+function hideStreakCeleb() {
+    document.getElementById('streak-celeb-overlay').classList.remove('show');
+}
+
+// ═══════════════════════════════════════════
+// EFFECT 1: Glow escalation
+// ═══════════════════════════════════════════
+function setGlow(level, count, btn) {
+    const badge = document.getElementById('glow-badge');
+    badge.className = 'fx-flame-badge glow-' + level;
+    document.getElementById('glow-count').textContent = count;
+    btn.parentElement.querySelectorAll('.fx-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+// ═══════════════════════════════════════════
+// EFFECT 2: Fire particles
+// ═══════════════════════════════════════════
+const fireCanvas = document.getElementById('fire-canvas');
+const fireCtx = fireCanvas.getContext('2d');
+let fireParticles = [];
+let fireRunning = false;
+let fireMode = 'off';
+let blazeTimer = null;
+
+class FireParticle {
+    constructor(intense) { this.reset(intense); }
+    reset(intense) {
+        const cx = fireCanvas.width / 2;
+        const cy = fireCanvas.height * 0.65;
+        this.x = cx + (Math.random() - 0.5) * (intense ? 28 : 16);
+        this.y = cy + (Math.random() - 0.5) * 6;
+        this.vx = (Math.random() - 0.5) * (intense ? 1.2 : 0.4);
+        this.vy = -(Math.random() * (intense ? 3.5 : 1.8) + 0.5);
+        this.life = 1;
+        this.decay = Math.random() * 0.02 + (intense ? 0.025 : 0.015);
+        this.size = Math.random() * (intense ? 5 : 3) + 1.5;
+        this.color = { r: 220 + Math.floor(Math.random() * 35), g: 60 + Math.floor(Math.random() * 100), b: 0 };
+    }
+}
+
+function fireLoop() {
+    if (!fireRunning) return;
+    fireCtx.clearRect(0, 0, fireCanvas.width, fireCanvas.height);
+    const targetCount = fireMode === 'blaze' ? 40 : fireMode === 'simmer' ? 15 : 0;
+
+    while (fireParticles.length < targetCount) {
+        fireParticles.push(new FireParticle(fireMode === 'blaze'));
+    }
+
+    for (let i = fireParticles.length - 1; i >= 0; i--) {
+        const p = fireParticles[i];
+        p.x += p.vx; p.y += p.vy;
+        p.life -= p.decay; p.size *= 0.995;
+
+        if (p.life <= 0) {
+            if (fireMode === 'off' || fireParticles.length > targetCount) {
+                fireParticles.splice(i, 1);
+            } else { p.reset(fireMode === 'blaze'); }
+            continue;
+        }
+
+        fireCtx.globalAlpha = p.life * (fireMode === 'blaze' ? 0.8 : 0.5);
+        fireCtx.fillStyle = `rgb(${p.color.r}, ${p.color.g}, ${p.color.b})`;
+        fireCtx.beginPath();
+        fireCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        fireCtx.fill();
+    }
+
+    fireCtx.globalAlpha = 1;
+    if (fireParticles.length > 0 || fireMode !== 'off') {
+        requestAnimationFrame(fireLoop);
+    } else { fireRunning = false; }
+}
+
+function fireSimmer() {
+    fireMode = 'simmer';
+    if (!fireRunning) { fireRunning = true; fireLoop(); }
+    clearTimeout(blazeTimer);
+    document.getElementById('fire-simmer-btn').classList.add('active');
+    document.getElementById('fire-blaze-btn').classList.remove('active');
+    document.getElementById('fire-off-btn').classList.remove('active');
+}
+
+function fireBlaze() {
+    fireMode = 'blaze';
+    if (!fireRunning) { fireRunning = true; fireLoop(); }
+    document.getElementById('fire-blaze-btn').classList.add('active');
+    document.getElementById('fire-simmer-btn').classList.remove('active');
+    document.getElementById('fire-off-btn').classList.remove('active');
+    clearTimeout(blazeTimer);
+    blazeTimer = setTimeout(() => {
+        fireMode = 'simmer';
+        document.getElementById('fire-simmer-btn').classList.add('active');
+        document.getElementById('fire-blaze-btn').classList.remove('active');
+    }, 2000);
+}
+
+function fireOff() {
+    fireMode = 'off'; clearTimeout(blazeTimer);
+    document.getElementById('fire-off-btn').classList.add('active');
+    document.getElementById('fire-simmer-btn').classList.remove('active');
+    document.getElementById('fire-blaze-btn').classList.remove('active');
+}
+
+// ═══════════════════════════════════════════
+// EFFECT 3: Heat distortion
+// ═══════════════════════════════════════════
+let heatAnim = null, heatPhase = 0;
+
+function heatOn(btn) {
+    document.getElementById('heat-bg').classList.add('active');
+    btn.classList.add('active');
+    document.getElementById('heat-off-btn').classList.remove('active');
+    const turb = document.getElementById('heat-turb');
+    function animate() {
+        heatPhase += 0.01;
+        turb.setAttribute('baseFrequency',
+            (0.015 + Math.sin(heatPhase) * 0.008) + ' ' + (0.025 + Math.cos(heatPhase * 0.7) * 0.01));
+        heatAnim = requestAnimationFrame(animate);
+    }
+    if (heatAnim) cancelAnimationFrame(heatAnim);
+    animate();
+}
+
+function heatOff(btn) {
+    document.getElementById('heat-bg').classList.remove('active');
+    if (btn) btn.classList.add('active');
+    document.getElementById('heat-on-btn').classList.remove('active');
+    if (heatAnim) { cancelAnimationFrame(heatAnim); heatAnim = null; }
+}
+
+// ═══════════════════════════════════════════
+// EFFECT 4: Frost & Snowfall
+// ═══════════════════════════════════════════
+const snowCanvas = document.getElementById('snow-canvas');
+const snowCtx = snowCanvas.getContext('2d');
+let snowParticles = [], snowRunning = false, snowMode = 'off';
+
+class SnowParticle {
+    constructor() { this.reset(); }
+    reset() {
+        this.x = Math.random() * snowCanvas.width; this.y = -2;
+        this.vy = Math.random() * 0.8 + 0.3;
+        this.size = Math.random() * 2.5 + 1;
+        this.wobbleAmp = Math.random() * 0.8 + 0.2;
+        this.wobbleFreq = Math.random() * 0.03 + 0.01;
+        this.phase = Math.random() * Math.PI * 2;
+        this.alpha = Math.random() * 0.4 + 0.3;
+    }
+}
+
+function snowLoop() {
+    if (!snowRunning) return;
+    snowCtx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+
+    if (snowMode === 'on' && snowParticles.length < 12 && Math.random() < 0.1)
+        snowParticles.push(new SnowParticle());
+
+    for (let i = snowParticles.length - 1; i >= 0; i--) {
+        const p = snowParticles[i];
+        p.y += p.vy; p.phase += p.wobbleFreq;
+        p.x += Math.sin(p.phase) * p.wobbleAmp;
+
+        if (p.y > snowCanvas.height + 4) {
+            if (snowMode === 'off') { snowParticles.splice(i, 1); continue; }
+            p.reset();
+        }
+
+        snowCtx.globalAlpha = p.alpha;
+        snowCtx.fillStyle = '#b8d4e8';
+        snowCtx.beginPath();
+        snowCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        snowCtx.fill();
+    }
+    snowCtx.globalAlpha = 1;
+    if (snowParticles.length > 0 || snowMode !== 'off') requestAnimationFrame(snowLoop);
+    else snowRunning = false;
+}
+
+function frostOn(btn) {
+    snowMode = 'on';
+    document.getElementById('frost-overlay').classList.add('visible');
+    const b = document.getElementById('frost-badge');
+    b.classList.add('frozen-fx'); b.classList.remove('glow-3');
+    if (btn) { btn.classList.add('active'); document.getElementById('frost-off-btn').classList.remove('active'); }
+    if (!snowRunning) { snowRunning = true; snowLoop(); }
+}
+
+function frostOff(btn) {
+    snowMode = 'off';
+    document.getElementById('frost-overlay').classList.remove('visible');
+    const b = document.getElementById('frost-badge');
+    b.classList.remove('frozen-fx'); b.classList.add('glow-3');
+    b.style.color = 'var(--flame)';
+    setTimeout(() => { b.style.color = ''; }, 600);
+    if (btn) { btn.classList.add('active'); document.getElementById('frost-on-btn').classList.remove('active'); }
+}
+
+// ═══════════════════════════════════════════
+// EFFECT 5: Tile ember sweep
+// ═══════════════════════════════════════════
+function emberSweep() {
+    const tiles = document.getElementById('ember-tiles');
+    tiles.classList.remove('sweep');
+    void tiles.offsetWidth;
+    tiles.classList.add('sweep');
+    setTimeout(() => tiles.classList.remove('sweep'), 1000);
+}
+
+// ═══════════════════════════════════════════
+// EFFECT 6: Milestone confetti
+// ═══════════════════════════════════════════
+const confettiCanvas = document.getElementById('confetti-canvas');
+const confettiCtx = confettiCanvas.getContext('2d');
+let confettiParticles = [], confettiRunning = false;
+const confettiColors = ['#e8590c', '#fd7e14', '#2d8544', '#b8860b', '#c0392b', '#d4a017'];
+const confettiLabels = { 7: 'First Week Complete', 30: 'Monthly Master', 100: 'Century Club', 365: 'Year of Words' };
+
+class ConfettiPiece {
+    constructor(cx, cy) {
+        this.x = cx; this.y = cy;
+        this.vx = (Math.random() - 0.5) * 12;
+        this.vy = -(Math.random() * 10 + 4);
+        this.gravity = 0.25; this.drag = 0.98;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.3;
+        this.width = Math.random() * 6 + 3;
+        this.height = Math.random() * 4 + 2;
+        this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        this.life = 1; this.decay = Math.random() * 0.004 + 0.003;
+    }
+}
+
+function confettiBurst(days) {
+    const panel = confettiCanvas.parentElement;
+    confettiCanvas.width = panel.offsetWidth;
+    confettiCanvas.height = panel.offsetHeight;
+    document.getElementById('confetti-count').textContent = days;
+    document.getElementById('confetti-label').textContent = confettiLabels[days] || '';
+
+    const counts = { 7: 50, 30: 80, 100: 120, 365: 150 };
+    const cx = confettiCanvas.width / 2, cy = confettiCanvas.height * 0.35;
+    confettiParticles = [];
+    for (let i = 0; i < (counts[days] || 50); i++)
+        confettiParticles.push(new ConfettiPiece(cx, cy));
+    if (!confettiRunning) { confettiRunning = true; confettiLoop(); }
+}
+
+function confettiLoop() {
+    confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.vy += p.gravity; p.vx *= p.drag; p.vy *= p.drag;
+        p.x += p.vx; p.y += p.vy;
+        p.rotation += p.rotationSpeed; p.life -= p.decay;
+        if (p.life <= 0) { confettiParticles.splice(i, 1); continue; }
+
+        confettiCtx.save();
+        confettiCtx.translate(p.x, p.y);
+        confettiCtx.rotate(p.rotation);
+        confettiCtx.globalAlpha = Math.min(p.life * 2, 1);
+        confettiCtx.fillStyle = p.color;
+        confettiCtx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
+        confettiCtx.restore();
+    }
+    if (confettiParticles.length > 0) requestAnimationFrame(confettiLoop);
+    else { confettiRunning = false; confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height); }
+}
+
+// ═══════════════════════════════════════════
+// LIVING FLAME: Organic flicker (CSS transforms on clean Lucide icon)
+// ═══════════════════════════════════════════
+let flickerRunning = false;
+let flickerAnim = null;
+let flickerTime = 0;
+
+function getAllFlickerSVGs() {
+    return ['flicker-svg', 'combo-svg', 'seq-svg', 'sm-svg', 'md-svg', 'lg-svg']
+        .map(id => document.getElementById(id)).filter(Boolean);
+}
+
+function flickerLoop() {
+    if (!flickerRunning) return;
+    flickerTime += 0.016;
+
+    // Layered sine waves at irrational frequencies — never repeats
+    const rot = Math.sin(flickerTime * 1.9) * 3 + Math.sin(flickerTime * 4.7) * 1.2;
+    const sx  = 1 + Math.sin(flickerTime * 2.3) * 0.03 + Math.sin(flickerTime * 5.1) * 0.015;
+    const sy  = 1 + Math.sin(flickerTime * 1.7) * 0.04 + Math.sin(flickerTime * 6.3) * 0.012;
+    const skx = Math.sin(flickerTime * 2.9) * 1.2;
+
+    const transform = `rotate(${rot}deg) scale(${sx}, ${sy}) skewX(${skx}deg)`;
+    const origin = '50% 85%';
+
+    getAllFlickerSVGs().forEach((svg, i) => {
+        // Phase-shift each one slightly so they don't move in perfect sync
+        const offset = i * 0.7;
+        const r2 = Math.sin((flickerTime + offset) * 1.9) * 3 + Math.sin((flickerTime + offset) * 4.7) * 1.2;
+        const sx2 = 1 + Math.sin((flickerTime + offset) * 2.3) * 0.03 + Math.sin((flickerTime + offset) * 5.1) * 0.015;
+        const sy2 = 1 + Math.sin((flickerTime + offset) * 1.7) * 0.04 + Math.sin((flickerTime + offset) * 6.3) * 0.012;
+        const sk2 = Math.sin((flickerTime + offset) * 2.9) * 1.2;
+        svg.style.transform = `rotate(${r2}deg) scale(${sx2}, ${sy2}) skewX(${sk2}deg)`;
+        svg.style.transformOrigin = origin;
+    });
+
+    flickerAnim = requestAnimationFrame(flickerLoop);
+}
+
+function flickerStart(btn) {
+    flickerRunning = true;
+    if (btn) { btn.classList.add('active'); document.getElementById('flicker-stop-btn').classList.remove('active'); }
+    if (!flickerAnim) flickerLoop();
+}
+
+function flickerStop(btn) {
+    flickerRunning = false;
+    if (flickerAnim) { cancelAnimationFrame(flickerAnim); flickerAnim = null; }
+    if (btn) { btn.classList.add('active'); document.getElementById('flicker-start-btn').classList.remove('active'); }
+    getAllFlickerSVGs().forEach(svg => { svg.style.transform = ''; svg.style.transformOrigin = ''; });
+}
+
+flickerStart(document.getElementById('flicker-start-btn'));
+
+// ═══════════════════════════════════════════
+// LIVING FLAME: Ember particles
+// ═══════════════════════════════════════════
+function createEmberSystem(canvasId) {
+    const cvs = document.getElementById(canvasId);
+    if (!cvs) return null;
+    const ctx = cvs.getContext('2d');
+    return { cvs, ctx, particles: [], running: false, mode: 'off' };
+}
+
+const emberSys = createEmberSystem('ember-canvas');
+const seqEmberSys = createEmberSystem('seq-ember-canvas');
+
+class Ember {
+    constructor(cvs, intense) { this.cvs = cvs; this.reset(intense); }
+    reset(intense) {
+        const cx = this.cvs.width / 2;
+        const cy = this.cvs.height * 0.38;
+        this.x = cx + (Math.random() - 0.5) * (intense ? 20 : 10);
+        this.y = cy + (Math.random() - 0.5) * 6;
+        this.vx = (Math.random() - 0.5) * (intense ? 1.4 : 0.5);
+        this.vy = -(Math.random() * (intense ? 2.5 : 1.2) + 0.3);
+        this.vx += (this.x - cx) * 0.015;
+        this.life = 1;
+        this.decay = Math.random() * 0.012 + (intense ? 0.018 : 0.008);
+        this.size = Math.random() * (intense ? 3 : 2) + 0.8;
+        const t = Math.random();
+        this.r = Math.floor(240 - t * 20);
+        this.g = Math.floor(140 - t * 80);
+        this.b = 0;
+    }
+}
+
+function runEmbers(sys) {
+    if (!sys || !sys.running) return;
+    sys.ctx.clearRect(0, 0, sys.cvs.width, sys.cvs.height);
+
+    const target = sys.mode === 'ignite' ? 20 : sys.mode === 'idle' ? 6 : 0;
+    while (sys.particles.length < target) sys.particles.push(new Ember(sys.cvs, sys.mode === 'ignite'));
+
+    for (let i = sys.particles.length - 1; i >= 0; i--) {
+        const e = sys.particles[i];
+        e.x += e.vx; e.y += e.vy;
+        e.vy -= 0.006; e.vx *= 0.997;
+        e.life -= e.decay; e.size *= 0.998;
+
+        if (e.life <= 0) {
+            if (sys.mode === 'off' || sys.particles.length > target) {
+                sys.particles.splice(i, 1);
+            } else { e.reset(sys.mode === 'ignite'); }
+            continue;
+        }
+
+        sys.ctx.globalAlpha = e.life * (sys.mode === 'ignite' ? 0.85 : 0.55);
+        sys.ctx.fillStyle = `rgb(${e.r},${e.g},${e.b})`;
+        sys.ctx.beginPath();
+        sys.ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+        sys.ctx.fill();
+    }
+
+    sys.ctx.globalAlpha = 1;
+    if (sys.particles.length > 0 || sys.mode !== 'off') requestAnimationFrame(() => runEmbers(sys));
+    else sys.running = false;
+}
+
+function startEmbers(sys, mode) {
+    if (!sys) return;
+    sys.mode = mode;
+    if (!sys.running) { sys.running = true; runEmbers(sys); }
+}
+function stopEmbers(sys) {
+    if (!sys) return;
+    sys.mode = 'off';
+}
+
+// Combo controls
+let comboTimer = null;
+
+function comboIgnite(btn) {
+    startEmbers(emberSys, 'ignite');
+    if (!flickerRunning) flickerStart(null);
+    clearTimeout(comboTimer);
+    if (btn) { btn.classList.add('active'); document.getElementById('combo-idle-btn').classList.remove('active'); document.getElementById('combo-off-btn').classList.remove('active'); }
+    comboTimer = setTimeout(() => {
+        emberSys.mode = 'idle';
+        const ib = document.getElementById('combo-idle-btn');
+        if (ib) { ib.classList.add('active'); document.getElementById('combo-ignite-btn').classList.remove('active'); }
+    }, 2500);
+}
+
+function comboIdle(btn) {
+    startEmbers(emberSys, 'idle');
+    clearTimeout(comboTimer);
+    if (!flickerRunning) flickerStart(null);
+    if (btn) { btn.classList.add('active'); document.getElementById('combo-ignite-btn').classList.remove('active'); document.getElementById('combo-off-btn').classList.remove('active'); }
+}
+
+function comboOff(btn) {
+    stopEmbers(emberSys);
+    clearTimeout(comboTimer);
+    if (btn) { btn.classList.add('active'); document.getElementById('combo-ignite-btn').classList.remove('active'); document.getElementById('combo-idle-btn').classList.remove('active'); }
+}
+
+comboIdle(document.getElementById('combo-idle-btn'));
+
+// ═══════════════════════════════════════════
+// LIVING FLAME: Win sequence
+// ═══════════════════════════════════════════
+let seqTimers = [];
+
+function seqPlay(btn) {
+    if (btn) { btn.classList.add('active'); document.getElementById('seq-reset-btn').classList.remove('active'); }
+    seqTimers.forEach(clearTimeout);
+    seqTimers = [];
+    const svg = document.getElementById('seq-svg');
+
+    // Phase 1: start dormant
+    svg.style.color = 'var(--gray)';
+    svg.style.opacity = '0.4';
+    stopEmbers(seqEmberSys);
+
+    // Phase 2: warm up
+    seqTimers.push(setTimeout(() => {
+        svg.style.color = 'var(--flame)';
+        svg.style.opacity = '1';
+    }, 400));
+
+    // Phase 3: catch ablaze with embers
+    seqTimers.push(setTimeout(() => {
+        startEmbers(seqEmberSys, 'ignite');
+    }, 1000));
+
+    // Phase 4: settle to gentle idle
+    seqTimers.push(setTimeout(() => {
+        if (seqEmberSys) seqEmberSys.mode = 'idle';
+    }, 3000));
+}
+
+function seqReset(btn) {
+    if (btn) { btn.classList.add('active'); document.getElementById('seq-play-btn').classList.remove('active'); }
+    seqTimers.forEach(clearTimeout);
+    seqTimers = [];
+    stopEmbers(seqEmberSys);
+    const svg = document.getElementById('seq-svg');
+    svg.style.color = 'var(--gray)';
+    svg.style.opacity = '0.4';
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SEDECORDLE LAYOUT APPROACHES
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+/* ─── Sedecordle demos ─── */
+.sdl-demo { border: 1px solid var(--rule); position: relative; overflow: hidden; }
+.sdl-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+.sdl-tile {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 800; text-transform: uppercase;
+    border: 1px solid rgba(140,140,140,0.25); color: white;
+    font-variation-settings: 'opsz' 72;
+}
+.sdl-tile.t-correct { background: var(--green); border-color: var(--green); }
+.sdl-tile.t-semi { background: var(--yellow); border-color: var(--yellow); }
+.sdl-tile.t-incorrect { background: var(--gray); border-color: var(--gray); }
+.sdl-tile.t-empty { background: transparent; border-color: var(--rule); color: var(--ink); }
+
+/* Approach A: collapsible */
+.sdl-board-a {
+    display: flex; flex-direction: column; gap: 2px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.sdl-row-a { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+.sdl-row-a .sdl-tile { width: 28px; height: 28px; font-size: 13px; }
+.sdl-collapsed-bar {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 6px 0; cursor: pointer; transition: all 0.3s;
+    border: 1px dashed var(--rule); border-radius: 4px; margin: 2px 0;
+    font-family: var(--mono); font-size: 10px; color: var(--gray);
+    letter-spacing: 0.08em;
+}
+.sdl-collapsed-bar:hover { background: var(--paper-warm); border-color: var(--gray); color: var(--ink); }
+.sdl-expanded-rows { overflow: hidden; transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.sdl-expanded-rows.collapsed { max-height: 0; }
+
+/* Approach B: scrollable */
+.sdl-scroll-area {
+    overflow-y: auto; scroll-snap-type: y proximity;
+    scrollbar-width: thin; scrollbar-color: var(--rule) transparent;
+}
+.sdl-scroll-area::-webkit-scrollbar { width: 4px; }
+.sdl-scroll-area::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
+.sdl-mini-board {
+    display: flex; flex-direction: column; gap: 1px; scroll-snap-align: start;
+}
+.sdl-mini-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; }
+.sdl-mini-row .sdl-tile { width: 16px; height: 16px; font-size: 7px; }
+
+/* Approach E: focused */
+.sdl-thumb-strip { display: flex; gap: 4px; overflow-x: auto; padding: 4px 0; }
+.sdl-thumb {
+    display: flex; flex-direction: column; gap: 1px; padding: 3px;
+    border: 1.5px solid transparent; border-radius: 4px; cursor: pointer;
+    transition: all 0.2s; flex-shrink: 0;
+}
+.sdl-thumb:hover { border-color: var(--gray); }
+.sdl-thumb.active { border-color: var(--ink); background: var(--paper-warm); }
+.sdl-thumb.solved { border-color: var(--green); opacity: 0.7; }
+.sdl-thumb-row { display: flex; gap: 1px; }
+.sdl-thumb-cell { width: 3px; height: 3px; border-radius: 0.5px; }
+.sdl-thumb-label { font-family: var(--mono); font-size: 7px; color: var(--gray); text-align: center; margin-top: 2px; }
+.sdl-thumb.active .sdl-thumb-label { color: var(--ink); font-weight: 600; }
+
+.sdl-focus-board {
+    display: flex; flex-direction: column; gap: 3px;
+    transition: opacity 0.2s;
+}
+.sdl-focus-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+.sdl-focus-row .sdl-tile { width: 40px; height: 40px; font-size: 18px; }
+
+/* Keyboard mock */
+.sdl-keyboard { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.sdl-key-row { display: flex; gap: 3px; }
+.sdl-key {
+    width: 28px; height: 36px; display: flex; align-items: center; justify-content: center;
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    background: var(--gray-soft); border-radius: 4px; color: var(--ink);
+}
+
+/* Comparison table */
+.sdl-compare { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sdl-compare th {
+    text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--ink);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.sdl-compare td { padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.sdl-compare tr:last-child td { border-bottom: none; }
+.sdl-compare .verdict { font-weight: 600; color: var(--green); }
+</style>
+
+<section class="screen" id="sedecordle-layouts">
+    <span class="screen-label">Sedecordle / Layout Approaches</span>
+    <div style="max-width: 1000px; margin: 0 auto; padding-top: 40px;">
+        <h2 style="font-family: var(--serif); font-weight: 800; font-size: 32px; font-variation-settings: 'opsz' 72; margin-bottom: 8px;">Sedecordle Layouts</h2>
+        <p style="color: var(--gray); font-size: 15px; max-width: 600px; margin-bottom: 12px;">
+            16 boards, 21 guesses. The fundamental problem: 42 tile rows in ~480px = 11px tiles.
+            Three approaches to making this playable. All interactive — click to explore.
+        </p>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--gray); margin-bottom: 48px; letter-spacing: 0.03em;">
+            Constraint: 480px available height (100vh - header - keyboard) / 21 guess rows x 2 board rows = 11px tiles. Unplayable.
+        </p>
+
+        <!-- ─── APPROACH A: Row Collapsing ─── -->
+        <div style="margin-bottom: 64px;">
+            <h3 style="font-family: var(--serif); font-weight: 700; font-size: 22px; font-variation-settings: 'opsz' 48; margin-bottom: 4px;">A. Row Collapsing</h3>
+            <p style="color: var(--gray); font-size: 14px; margin-bottom: 20px; max-width: 520px;">
+                Show recent guesses at full size. Collapse earlier rows into a tappable bar.
+                Tap "+N earlier" to expand and review, tap again to collapse.
+            </p>
+
+            <div class="sdl-demo" style="max-width: 420px; padding: 16px; margin: 0 auto;">
+                <div class="sdl-label">Mobile — 2 boards, 21 guesses, rows collapsed</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <!-- Board 1 -->
+                    <div>
+                        <div style="font-family: var(--mono); font-size: 8px; color: var(--gray); text-align: center; margin-bottom: 4px;">Board 1</div>
+                        <div class="sdl-board-a" id="sdl-board-a1">
+                            <!-- Collapsed earlier rows -->
+                            <div class="sdl-collapsed-bar" id="sdl-collapse-btn-1" onclick="toggleCollapse('a1')">
+                                <span>+12 earlier</span>
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                            </div>
+                            <div class="sdl-expanded-rows collapsed" id="sdl-expanded-a1"></div>
+                            <!-- Visible rows: guesses 13-17 (filled) + 18 (active) + 19-20 (empty) -->
+                            <div class="sdl-row-a"><div class="sdl-tile t-incorrect">S</div><div class="sdl-tile t-semi">T</div><div class="sdl-tile t-incorrect">A</div><div class="sdl-tile t-incorrect">R</div><div class="sdl-tile t-incorrect">E</div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-incorrect">C</div><div class="sdl-tile t-incorrect">L</div><div class="sdl-tile t-incorrect">O</div><div class="sdl-tile t-correct">U</div><div class="sdl-tile t-incorrect">D</div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-incorrect">M</div><div class="sdl-tile t-incorrect">I</div><div class="sdl-tile t-correct">G</div><div class="sdl-tile t-incorrect">H</div><div class="sdl-tile t-correct">T</div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-semi">B</div><div class="sdl-tile t-incorrect">R</div><div class="sdl-tile t-incorrect">I</div><div class="sdl-tile t-incorrect">N</div><div class="sdl-tile t-correct">T</div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-incorrect">W</div><div class="sdl-tile t-incorrect">A</div><div class="sdl-tile t-correct">G</div><div class="sdl-tile t-incorrect">E</div><div class="sdl-tile t-correct">T</div></div>
+                            <!-- Active row -->
+                            <div class="sdl-row-a" style="outline: 2px solid var(--ink); outline-offset: 1px; border-radius: 2px;"><div class="sdl-tile t-empty">B</div><div class="sdl-tile t-empty">U</div><div class="sdl-tile t-empty">G</div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div></div>
+                            <!-- Empty preview rows -->
+                            <div class="sdl-row-a"><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div></div>
+                            <div style="font-family: var(--mono); font-size: 9px; color: var(--gray); text-align: center; margin-top: 2px;">3 guesses left</div>
+                        </div>
+                    </div>
+                    <!-- Board 2 -->
+                    <div>
+                        <div style="font-family: var(--mono); font-size: 8px; color: var(--gray); text-align: center; margin-bottom: 4px;">Board 2</div>
+                        <div class="sdl-board-a">
+                            <div class="sdl-collapsed-bar" onclick="toggleCollapse('a2')">
+                                <span>+14 earlier</span>
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                            </div>
+                            <div class="sdl-expanded-rows collapsed" id="sdl-expanded-a2"></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-correct">P</div><div class="sdl-tile t-incorrect">L</div><div class="sdl-tile t-semi">A</div><div class="sdl-tile t-correct">N</div><div class="sdl-tile t-incorrect">E</div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-correct">P</div><div class="sdl-tile t-incorrect">O</div><div class="sdl-tile t-correct">I</div><div class="sdl-tile t-correct">N</div><div class="sdl-tile t-correct">T</div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-correct">P</div><div class="sdl-tile t-semi">A</div><div class="sdl-tile t-correct">I</div><div class="sdl-tile t-correct">N</div><div class="sdl-tile t-correct">T</div></div>
+                            <!-- Active row -->
+                            <div class="sdl-row-a" style="outline: 2px solid var(--ink); outline-offset: 1px; border-radius: 2px;"><div class="sdl-tile t-empty">P</div><div class="sdl-tile t-empty">I</div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div></div>
+                            <div class="sdl-row-a"><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div><div class="sdl-tile t-empty"></div></div>
+                            <div style="font-family: var(--mono); font-size: 9px; color: var(--gray); text-align: center; margin-top: 2px;">1 guess left</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-note" style="max-width: 420px; margin: 16px auto 0;">
+                <span class="pn-label">How expand/collapse works</span>
+                Tap "+N earlier" to smoothly expand all hidden rows (max-height transition). The board scrolls to keep the active row visible. Tap again to re-collapse. On desktop, hover shows a subtle preview. The collapsed bar doubles as a guess counter. The grid sizes for ~8 visible rows, giving 28px tiles on mobile.
+            </div>
+        </div>
+
+        <!-- ─── APPROACH B: Scrollable Area ─── -->
+        <div style="margin-bottom: 64px;">
+            <h3 style="font-family: var(--serif); font-weight: 700; font-size: 22px; font-variation-settings: 'opsz' 48; margin-bottom: 4px;">B. Scrollable Board Area</h3>
+            <p style="color: var(--gray); font-size: 14px; margin-bottom: 20px; max-width: 520px;">
+                All rows rendered. Board area scrolls vertically. Keyboard stays fixed at the bottom.
+                This is what sedecordle.com and duotrigordle.com do.
+            </p>
+
+            <div class="sdl-demo" style="max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; height: 520px;">
+                <div class="sdl-label" style="padding: 12px 16px 0;">Desktop — 4x2 grid, scrollable, keyboard fixed</div>
+                <!-- Scrollable board area -->
+                <div class="sdl-scroll-area" style="flex: 1; padding: 8px 12px;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;" id="sdl-scroll-grid">
+                        <!-- 8 mini boards generated by JS -->
+                    </div>
+                </div>
+                <!-- Fixed keyboard -->
+                <div style="border-top: 1px solid var(--rule); padding: 8px 12px; background: var(--paper);">
+                    <div class="sdl-keyboard">
+                        <div class="sdl-key-row">
+                            <div class="sdl-key">Q</div><div class="sdl-key">W</div><div class="sdl-key">E</div><div class="sdl-key">R</div><div class="sdl-key">T</div><div class="sdl-key">Y</div><div class="sdl-key">U</div><div class="sdl-key">I</div><div class="sdl-key">O</div><div class="sdl-key">P</div>
+                        </div>
+                        <div class="sdl-key-row">
+                            <div class="sdl-key">A</div><div class="sdl-key">S</div><div class="sdl-key">D</div><div class="sdl-key">F</div><div class="sdl-key">G</div><div class="sdl-key">H</div><div class="sdl-key">J</div><div class="sdl-key">K</div><div class="sdl-key">L</div>
+                        </div>
+                        <div class="sdl-key-row">
+                            <div class="sdl-key" style="width:42px; font-size:9px;">ENT</div><div class="sdl-key">Z</div><div class="sdl-key">X</div><div class="sdl-key">C</div><div class="sdl-key">V</div><div class="sdl-key">B</div><div class="sdl-key">N</div><div class="sdl-key">M</div><div class="sdl-key" style="width:42px; font-size:9px;">DEL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-note" style="max-width: 700px; margin: 16px auto 0;">
+                <span class="pn-label">How scrolling works</span>
+                The board grid scrolls freely. Scroll-snap aligns to rows of boards. The keyboard is position: sticky at the bottom, always accessible. On mobile, the virtual keyboard replaces the on-screen one. After submitting a guess, auto-scroll to the first unsolved board that isn't visible.
+            </div>
+        </div>
+
+        <!-- ─── APPROACH E: Focused Board + Thumbnails ─── -->
+        <div style="margin-bottom: 64px;">
+            <h3 style="font-family: var(--serif); font-weight: 700; font-size: 22px; font-variation-settings: 'opsz' 48; margin-bottom: 4px;">E. Focused Board + Thumbnails</h3>
+            <p style="color: var(--gray); font-size: 14px; margin-bottom: 20px; max-width: 520px;">
+                One board at full readable size. The rest as tiny colored thumbnails.
+                Click a thumbnail to swap the active board.
+            </p>
+
+            <div class="sdl-demo" style="max-width: 420px; padding: 16px; margin: 0 auto;">
+                <div class="sdl-label">Mobile — 1 focused board, 16 thumbnails</div>
+                <!-- Thumbnail strip -->
+                <div class="sdl-thumb-strip" id="sdl-thumb-strip">
+                    <!-- Generated by JS -->
+                </div>
+                <!-- Focused board -->
+                <div style="display: flex; justify-content: center; margin-top: 12px;">
+                    <div class="sdl-focus-board" id="sdl-focus-board">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+                <div style="font-family: var(--mono); font-size: 9px; color: var(--gray); text-align: center; margin-top: 8px;" id="sdl-focus-label">Board 3 — Guess 6 of 21</div>
+            </div>
+            <div class="product-note" style="max-width: 420px; margin: 16px auto 0;">
+                <span class="pn-label">How focus swap works</span>
+                Tap any thumbnail to swap it into the focus slot with a crossfade (opacity 0 -> swap content -> opacity 1, 200ms). The thumbnail strip scrolls horizontally. Solved boards get a green border and dimmed opacity. After a guess, if the focused board is solved, auto-advance to the next unsolved board. Keyboard colors show state for the focused board only.
+            </div>
+        </div>
+
+        <!-- ─── Comparison Table ─── -->
+        <div style="margin-top: 48px; margin-bottom: 48px;">
+            <h3 style="font-family: var(--serif); font-weight: 700; font-size: 20px; font-variation-settings: 'opsz' 36; margin-bottom: 16px;">Comparison</h3>
+            <table class="sdl-compare">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>A. Row Collapse</th>
+                        <th>B. Scrollable</th>
+                        <th>E. Focus + Thumbs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tile readability</td>
+                        <td>28px, readable</td>
+                        <td>16px, small but visible</td>
+                        <td class="verdict">40px, best</td>
+                    </tr>
+                    <tr>
+                        <td>Multi-board overview</td>
+                        <td>2-4 boards visible</td>
+                        <td class="verdict">8 boards visible</td>
+                        <td>1 board + thumbnails</td>
+                    </tr>
+                    <tr>
+                        <td>Guess history access</td>
+                        <td>Tap to expand</td>
+                        <td class="verdict">Always visible (scroll)</td>
+                        <td>Visible on focused board</td>
+                    </tr>
+                    <tr>
+                        <td>Screen space usage</td>
+                        <td>Good</td>
+                        <td class="verdict">Excellent</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile UX</td>
+                        <td class="verdict">Good (2 boards, big tiles)</td>
+                        <td>Scroll can conflict with keyboard</td>
+                        <td>Good (1 board, huge tiles)</td>
+                    </tr>
+                    <tr>
+                        <td>Desktop UX</td>
+                        <td>Good</td>
+                        <td class="verdict">Best (all boards, scroll)</td>
+                        <td>Wastes space (1 board)</td>
+                    </tr>
+                    <tr>
+                        <td>Implementation complexity</td>
+                        <td>Medium</td>
+                        <td class="verdict">Low (just CSS overflow)</td>
+                        <td>High (swap animation, state)</td>
+                    </tr>
+                    <tr style="background: var(--paper-warm);">
+                        <td style="font-weight: 600;">Recommendation</td>
+                        <td>Best for mobile</td>
+                        <td class="verdict" style="font-weight: 700;">Best overall for desktop</td>
+                        <td>Best for single-board focus</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-family: var(--mono); font-size: 10px; color: var(--gray); margin-top: 12px;">
+                Recommended hybrid: B (scrollable) on desktop + A (row collapse) on mobile. Use E (focused) as an optional "zoom" interaction on any board.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+// ═══════════════════════════════════════════
+// Sedecordle demo data
+// ═══════════════════════════════════════════
+const sdlColors = ['t-correct', 't-semi', 't-incorrect'];
+const sdlLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+function randomTileClass() { return sdlColors[Math.floor(Math.random() * 3)]; }
+function randomLetter() { return sdlLetters[Math.floor(Math.random() * 26)]; }
+
+// Generate board data: array of rows, each row = [{letter, cls}]
+function generateBoardData(filledRows) {
+    const rows = [];
+    for (let r = 0; r < filledRows; r++) {
+        const row = [];
+        for (let c = 0; c < 5; c++) {
+            row.push({ letter: randomLetter(), cls: randomTileClass() });
+        }
+        rows.push(row);
+    }
+    return rows;
+}
+
+// ═══════════════════════════════════════════
+// Approach A: Row collapsing
+// ═══════════════════════════════════════════
+const collapsedData = {
+    a1: generateBoardData(12),
+    a2: generateBoardData(14),
+};
+
+function toggleCollapse(boardId) {
+    const container = document.getElementById('sdl-expanded-' + boardId);
+    const btn = document.getElementById('sdl-collapse-btn-' + (boardId === 'a1' ? '1' : '2'));
+    const isCollapsed = container.classList.contains('collapsed');
+
+    if (isCollapsed) {
+        // Populate rows if empty
+        if (!container.children.length) {
+            const data = collapsedData[boardId];
+            data.forEach(row => {
+                const rowEl = document.createElement('div');
+                rowEl.className = 'sdl-row-a';
+                row.forEach(tile => {
+                    const t = document.createElement('div');
+                    t.className = 'sdl-tile ' + tile.cls;
+                    t.textContent = tile.letter;
+                    rowEl.appendChild(t);
+                });
+                container.appendChild(rowEl);
+            });
+        }
+        container.style.maxHeight = container.scrollHeight + 'px';
+        container.classList.remove('collapsed');
+        btn.querySelector('span').textContent = 'Collapse';
+        btn.querySelector('svg').style.transform = 'rotate(180deg)';
+    } else {
+        container.style.maxHeight = '0';
+        container.classList.add('collapsed');
+        const count = collapsedData[boardId].length;
+        btn.querySelector('span').textContent = '+' + count + ' earlier';
+        btn.querySelector('svg').style.transform = '';
+    }
+}
+
+// ═══════════════════════════════════════════
+// Approach B: Scrollable grid
+// ═══════════════════════════════════════════
+(function buildScrollGrid() {
+    const grid = document.getElementById('sdl-scroll-grid');
+    if (!grid) return;
+
+    for (let b = 0; b < 8; b++) {
+        const board = document.createElement('div');
+        board.className = 'sdl-mini-board';
+
+        // Board number
+        const label = document.createElement('div');
+        label.style.cssText = 'font-family:var(--mono);font-size:8px;color:var(--gray);text-align:center;margin-bottom:2px;';
+        label.textContent = 'Board ' + (b + 1);
+        board.appendChild(label);
+
+        const filledCount = 2 + Math.floor(Math.random() * 6);
+        const data = generateBoardData(filledCount);
+
+        for (let r = 0; r < 21; r++) {
+            const row = document.createElement('div');
+            row.className = 'sdl-mini-row';
+            for (let c = 0; c < 5; c++) {
+                const tile = document.createElement('div');
+                if (r < filledCount) {
+                    tile.className = 'sdl-tile ' + data[r][c].cls;
+                    tile.textContent = data[r][c].letter;
+                } else {
+                    tile.className = 'sdl-tile t-empty';
+                }
+                row.appendChild(tile);
+            }
+            board.appendChild(row);
+        }
+        grid.appendChild(board);
+    }
+})();
+
+// ═══════════════════════════════════════════
+// Approach E: Focused board + thumbnails
+// ═══════════════════════════════════════════
+const sdlBoardsData = [];
+for (let i = 0; i < 16; i++) {
+    const filled = 1 + Math.floor(Math.random() * 8);
+    sdlBoardsData.push({
+        filled,
+        solved: Math.random() < 0.15,
+        rows: generateBoardData(filled),
+    });
+}
+// Make board 2 more interesting (the default focused one)
+sdlBoardsData[2] = {
+    filled: 6,
+    solved: false,
+    rows: [
+        [{letter:'S',cls:'t-incorrect'},{letter:'T',cls:'t-semi'},{letter:'A',cls:'t-incorrect'},{letter:'R',cls:'t-incorrect'},{letter:'E',cls:'t-incorrect'}],
+        [{letter:'C',cls:'t-incorrect'},{letter:'L',cls:'t-incorrect'},{letter:'O',cls:'t-correct'},{letter:'U',cls:'t-incorrect'},{letter:'D',cls:'t-incorrect'}],
+        [{letter:'M',cls:'t-incorrect'},{letter:'O',cls:'t-correct'},{letter:'U',cls:'t-semi'},{letter:'N',cls:'t-incorrect'},{letter:'T',cls:'t-incorrect'}],
+        [{letter:'W',cls:'t-semi'},{letter:'O',cls:'t-correct'},{letter:'R',cls:'t-incorrect'},{letter:'L',cls:'t-incorrect'},{letter:'D',cls:'t-incorrect'}],
+        [{letter:'B',cls:'t-incorrect'},{letter:'O',cls:'t-correct'},{letter:'N',cls:'t-incorrect'},{letter:'U',cls:'t-incorrect'},{letter:'S',cls:'t-incorrect'}],
+        [{letter:'F',cls:'t-correct'},{letter:'O',cls:'t-correct'},{letter:'R',cls:'t-incorrect'},{letter:'G',cls:'t-incorrect'},{letter:'E',cls:'t-semi'}],
+    ],
+};
+
+let sdlFocusedBoard = 2;
+
+function buildThumbnails() {
+    const strip = document.getElementById('sdl-thumb-strip');
+    if (!strip) return;
+    strip.innerHTML = '';
+
+    for (let i = 0; i < 16; i++) {
+        const thumb = document.createElement('button');
+        thumb.className = 'sdl-thumb' + (i === sdlFocusedBoard ? ' active' : '') + (sdlBoardsData[i].solved ? ' solved' : '');
+        thumb.onclick = () => focusBoard(i);
+
+        const grid = document.createElement('div');
+        const bd = sdlBoardsData[i];
+        const showRows = Math.min(bd.filled, 6);
+        for (let r = 0; r < showRows; r++) {
+            const row = document.createElement('div');
+            row.className = 'sdl-thumb-row';
+            for (let c = 0; c < 5; c++) {
+                const cell = document.createElement('span');
+                cell.className = 'sdl-thumb-cell';
+                const cls = bd.rows[r][c].cls;
+                cell.style.background = cls === 't-correct' ? 'var(--green)' : cls === 't-semi' ? 'var(--yellow)' : 'var(--gray)';
+                row.appendChild(cell);
+            }
+            grid.appendChild(row);
+        }
+        thumb.appendChild(grid);
+
+        const label = document.createElement('div');
+        label.className = 'sdl-thumb-label';
+        label.textContent = i + 1;
+        thumb.appendChild(label);
+
+        strip.appendChild(thumb);
+    }
+}
+
+function buildFocusBoard() {
+    const container = document.getElementById('sdl-focus-board');
+    const label = document.getElementById('sdl-focus-label');
+    if (!container) return;
+
+    container.style.opacity = '0';
+    setTimeout(() => {
+        container.innerHTML = '';
+        const bd = sdlBoardsData[sdlFocusedBoard];
+        const totalRows = 8;
+
+        for (let r = 0; r < totalRows; r++) {
+            const row = document.createElement('div');
+            row.className = 'sdl-focus-row';
+            for (let c = 0; c < 5; c++) {
+                const tile = document.createElement('div');
+                if (r < bd.filled) {
+                    tile.className = 'sdl-tile ' + bd.rows[r][c].cls;
+                    tile.textContent = bd.rows[r][c].letter;
+                } else if (r === bd.filled) {
+                    tile.className = 'sdl-tile t-empty';
+                    tile.style.outline = '2px solid var(--ink)';
+                    tile.style.outlineOffset = '1px';
+                } else {
+                    tile.className = 'sdl-tile t-empty';
+                }
+                row.appendChild(tile);
+            }
+            container.appendChild(row);
+        }
+
+        if (label) {
+            label.textContent = 'Board ' + (sdlFocusedBoard + 1) + ' — Guess ' + (bd.filled + 1) + ' of 21' + (bd.solved ? ' (Solved)' : '');
+        }
+
+        container.style.opacity = '1';
+    }, 150);
+}
+
+function focusBoard(index) {
+    sdlFocusedBoard = index;
+    buildThumbnails();
+    buildFocusBoard();
+}
+
+buildThumbnails();
+buildFocusBoard();
+</script>
 </body>
 </html>

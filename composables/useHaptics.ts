@@ -9,8 +9,15 @@
  * SSR-safe: all browser APIs guarded behind import.meta.client
  */
 
-const supportsHaptics =
-    typeof window === 'undefined' ? false : window.matchMedia('(pointer: coarse)').matches;
+// Lazy-evaluated to avoid being stuck false when first imported during SSR
+let _supportsHaptics: boolean | null = null;
+function supportsHaptics(): boolean {
+    if (_supportsHaptics === null) {
+        _supportsHaptics =
+            typeof window === 'undefined' ? false : window.matchMedia('(pointer: coarse)').matches;
+    }
+    return _supportsHaptics;
+}
 
 let hapticsEnabled = true;
 
@@ -23,7 +30,7 @@ function _haptic(): void {
             return;
         }
 
-        if (!supportsHaptics) return;
+        if (!supportsHaptics()) return;
 
         const labelEl = document.createElement('label');
         labelEl.ariaHidden = 'true';
@@ -93,6 +100,6 @@ export function useHaptics() {
         haptic: _haptic as Haptic,
         setHapticsEnabled: setEnabled,
         getHapticsEnabled: () => hapticsEnabled,
-        supportsHaptics,
+        supportsHaptics: supportsHaptics(),
     };
 }

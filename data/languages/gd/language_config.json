@@ -27,6 +27,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Gaelic. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Gaelic. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Gaelic. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Gaelic. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -43,7 +55,8 @@
         "copied": "Chaidh a chopaigeadh!",
         "notification_word_not_valid": "Chan eil am facal dligheach",
         "hard_mode_position": "Modh duilich: feumaidh {letter} a bhith ann an dreuchd {position}",
-        "hard_mode_contains": "Modh duilich: feumaidh {letter} a bhith san fhacal"
+        "hard_mode_contains": "Modh duilich: feumaidh {letter} a bhith san fhacal",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -59,7 +72,15 @@
         "text_2_1": ": anns an fhacal agus san àite cheart!",
         "text_2_2": ": anns an fhacal ach chan ann san àite cheart.",
         "text_2_3": ": chan eil seo san fhacal a tha ri thomhas.",
-        "text_3": "Bidh facal ùr ri thomhas gach latha!"
+        "text_3": "Bidh facal ùr ri thomhas gach latha!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "diacritic_map": {
         "a": [
@@ -161,6 +182,337 @@
         "pos_verb": "gnìomhair",
         "pos_adjective": "buadhair",
         "pos_adverb": "co-ghnìomhair",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Ciamar a chluicheas tu",
+        "tips_strategy": "Comhairlean is ro-innleachd",
+        "more_modes": "Barrachd mhodhan-cluiche",
+        "play_in_languages": "Cluich ann an 80+ canain",
+        "play_in_languages_sub": "A h-uile canain an-asgaidh. Gun chunntas.",
+        "why_wordle_global": "Carson Wordle Global",
+        "faq_title": "Ceistean cumanta",
+        "browse_all_languages": "Brabhsaich 80+ canain",
+        "recent_words": "Faclan o chionn ghoirid",
+        "view_all_words": "Seall a h-uile facal",
+        "footer": "wordle.global — geama-fhacal lathail an-asgaidh ann an 80+ canain",
+        "tile_correct": "san fhacal agus san aite cheart.",
+        "tile_semicorrect": "san fhacal ach san aite cheàrr.",
+        "tile_incorrect": "chan eil san fhacal.",
+        "stat_players": "Cluicheadairean",
+        "stat_guesses": "Tomhasan",
+        "stat_languages": "Canainean",
+        "stat_modes": "Modhan-cluiche",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ canain",
+                "desc": "Bho Arabais gu Iorùbais. An Wordle ioma-chanainach as motha."
+            },
+            {
+                "key": "definitions",
+                "title": "Mineachaidhean fhacal",
+                "desc": "Ionnsaich brigh gach facail an deidh cluiche."
+            },
+            {
+                "key": "word_art",
+                "title": "Ealain fhacal shonraichte",
+                "desc": "Gach facal le dealbh sgileil."
+            },
+            {
+                "key": "themes",
+                "title": "Modh dorcha is cuspairean",
+                "desc": "Soilleir, dorcha is àrd-iomsgaradh."
+            },
+            {
+                "key": "pwa",
+                "title": "Ag obair anns gach aite",
+                "desc": "PWA — inneal sam bith. Às-loidhne."
+            },
+            {
+                "key": "free",
+                "title": "An-asgaidh gu brath",
+                "desc": "Gun chunntas. Gun bhalla-phaighidh."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Tòisich le fuaimreagan",
+                "text": "Dearbhaidh CRANE no ADIEU litrichean cumanta gu luath."
+            },
+            {
+                "title": "Cleachd na tha fios agad",
+                "text": "Uaine seasmhach. Buidhe gluais. Liath air falbh."
+            },
+            {
+                "title": "Pàtrain chumanta",
+                "text": "Tha pàtrain aig gach canain."
+            },
+            {
+                "title": "Cuir às",
+                "text": "Bu choir don darna facal litrichean ura fheuchainn."
+            },
+            {
+                "title": "Litrichean dubailte",
+                "text": "Mura h-eil na sanasan a' freagairt, smaoinich air litir a-rithist."
+            },
+            {
+                "title": "Modh cruaidh",
+                "text": "Sparraidh e ort sanasan dearbhte a chleachdadh."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Litrichean bitheanta — an cothrom as fhearr."
+            },
+            {
+                "title": "Na smaoinich cus",
+                "text": "Bheir Speed Streak duais don fhaireachdainn."
+            },
+            {
+                "title": "Dion do combo",
+                "text": "Brisidh facal caillte an iomadachair."
+            },
+            {
+                "title": "2-3 tomhasan",
+                "text": "Bonus uine mor (+60s airson 1)."
+            },
+            {
+                "title": "Crìochan fhacal",
+                "text": "Aithnich pàtrain — sabhail diogan."
+            },
+            {
+                "title": "Fuirich socair",
+                "text": "Luathaichidh an gleoc gach 3 faclan."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Farsaing",
+                "text": "Litrichean cumanta airson sanasan air gach bòrd."
+            },
+            {
+                "title": "Meur-chlàr sgaraichte",
+                "text": "Uaine/liath air bùird eadar-dhealaichte."
+            },
+            {
+                "title": "Bùird dhoirbh",
+                "text": "Cuimsich air a' bhòrd le as motha neo-aithnichte."
+            },
+            {
+                "title": "Na caitheas luath",
+                "text": "Ciad 2-3 airson faclan fiosrachaidh."
+            },
+            {
+                "title": "Litrichean co-roinnte",
+                "text": "Da bhòrd le E buidhe? E ann an àite ur."
+            },
+            {
+                "title": "Gleidh tomhas",
+                "text": "Tomhas a bharrachd aig an deireadh."
+            }
+        ],
+        "mode_desc_classic": "6 tomhasan airson facal falaithe 5-litir. Cleachd sanasan dhathan.",
+        "mode_desc_unlimited": "6 tomhasan, 5 litir. \"Cluich a-rithist\" — gun chrìoch lathail.",
+        "mode_desc_speed": "3 mionaidean. Gach facal a' toirt bonus uine (+60s airson 1, +10s airson 6). Caillte: 30s. Combo gu 3x. Nas luaithe gach 3.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} bùird, {maxGuesses} tomhasan. Tomhas air gach bòrd. Fuasgailte reothte. Meur-chlàr sgaraichte.",
+        "faq": [
+            {
+                "q": "Ciamar a chluicheas mi Wordle ann an {langName}?",
+                "a": "wordle.global/{lang}. 6 tomhasan, 5 litir."
+            },
+            {
+                "q": "Fear ur gach latha?",
+                "a": "Tha. An aon fhacal do na h-uile."
+            },
+            {
+                "q": "An-asgaidh?",
+                "a": "Tha. Gach modh ann an 80+ canain."
+            },
+            {
+                "q": "Barrachd na aon turas?",
+                "a": "Tha — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited ann an {langName}?",
+                    "a": "Cluich na thogras tu."
+                },
+                {
+                    "q": "An-asgaidh?",
+                    "a": "Tha."
+                },
+                {
+                    "q": "Sreath lathail?",
+                    "a": "Chan e. Staitistigs fa leth."
+                },
+                {
+                    "q": "Co mheud turas?",
+                    "a": "Gun chrìoch."
+                },
+                {
+                    "q": "De na canainean?",
+                    "a": "80+ canain."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak ann an {langName}?",
+                    "a": "Wordle an aghaidh a' ghleoc. 3 mionaidean."
+                },
+                {
+                    "q": "Sgòradh?",
+                    "a": "Nas lugha de thomhasan = barrachd phuingean. 3x combo."
+                },
+                {
+                    "q": "Uine seachad?",
+                    "a": "Thig an geama gu crìoch."
+                },
+                {
+                    "q": "An-asgaidh?",
+                    "a": "Tha. 80+ canain."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} ann an {langName}?",
+                    "a": "{boardCount} bùird, {maxGuesses} tomhasan."
+                },
+                {
+                    "q": "Co mheud tomhas?",
+                    "a": "{maxGuesses} airson {boardCount} bùird."
+                },
+                {
+                    "q": "Ro-innleachd?",
+                    "a": "Litrichean cumanta. Meur-chlàr sgaraichte."
+                },
+                {
+                    "q": "An-asgaidh?",
+                    "a": "Tha. 80+ canain."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Sgrìobh facal",
+                "text": "{langName}: 5 litir, Enter."
+            },
+            {
+                "name": "Leugh na sanasan",
+                "text": "Uaine = ceart. Buidhe = àite ceàrr. Liath = chan eil ann."
+            },
+            {
+                "name": "Fuasgail ann an 6",
+                "text": "Sanasan dhathan. 6 tomhasan."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Tòisich",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Tomhais",
+                    "text": "5 litir, Enter."
+                },
+                {
+                    "name": "A-rithist",
+                    "text": "\"Cluich a-rithist\"."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Gleoc",
+                    "text": "wordle.global/{lang}/speed — 3 mion."
+                },
+                {
+                    "name": "Luath",
+                    "text": "Bonus uine (+10s gu +60s)."
+                },
+                {
+                    "name": "Combo",
+                    "text": "Iomadachair gu 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Tòisich",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} bùird."
+                },
+                {
+                    "name": "Gach bòrd",
+                    "text": "Tomhas air {boardCount} bùird."
+                },
+                {
+                    "name": "Fuasgail {boardCount}",
+                    "text": "Meur-chlàr sgaraichte. {maxGuesses} tomhasan."
+                }
+            ]
+        }
     }
 }

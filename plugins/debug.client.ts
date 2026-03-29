@@ -89,6 +89,35 @@ export default defineNuxtPlugin(() => {
                 }
             },
         },
+        streak: {
+            set: (n: number) => {
+                const game = useGameStore();
+                game.debugStreakOverride = n;
+                console.log(`Streak override set to ${n}. Use debug.streak.reset() to clear.`);
+            },
+            ignite: () => {
+                const game = useGameStore();
+                // Simulate a win: briefly pulse gameOver false→true with gameWon=true
+                // to trigger the PageShell watcher that sets justWon
+                const prevOver = game.gameOver;
+                const prevWon = game.gameWon;
+                game.gameOver = false;
+                game.gameWon = true;
+                setTimeout(() => {
+                    game.gameOver = true;
+                    setTimeout(() => {
+                        game.gameOver = prevOver;
+                        game.gameWon = prevWon;
+                    }, 900);
+                }, 50);
+                console.log('Ignite animation triggered');
+            },
+            reset: () => {
+                const game = useGameStore();
+                game.debugStreakOverride = null;
+                console.log('Streak override cleared — showing real streak');
+            },
+        },
         help: () => {
             console.log(
                 `%c
@@ -98,8 +127,11 @@ export default defineNuxtPlugin(() => {
   %cdebug.haptics.enable()     %cForce enable + persist
   %cdebug.pwa.status()         %cPWA state & platform
   %cdebug.pwa.install()        %cTrigger install dialog
-  %cdebug.pwa.reset()          %cReset dismiss state`,
-                ...Array(7)
+  %cdebug.pwa.reset()          %cReset dismiss state
+  %cdebug.streak.set(n)        %cOverride streak count
+  %cdebug.streak.ignite()      %cTrigger win animation
+  %cdebug.streak.reset()       %cClear streak override`,
+                ...Array(10)
                     .fill(null)
                     .flatMap(() => [
                         'color: #6aaa63; font-weight: bold',

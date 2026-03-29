@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Occitan. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Occitan. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Occitan. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Occitan. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -44,7 +56,8 @@
         "copied": "Copiat!",
         "notification_word_not_valid": "Lo mot es pas valid",
         "hard_mode_position": "Mòde dificil: {letter} deu èsser en posicion {position}",
-        "hard_mode_contains": "Mòde dificil: l'ensag deu conténer {letter}"
+        "hard_mode_contains": "Mòde dificil: l'ensag deu conténer {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -60,7 +73,15 @@
         "text_2_1": "is in the word and in the correct location!",
         "text_2_2": "is in the word, but not in the correct location.",
         "text_2_3": "is not present in the word you are trying to guess.",
-        "text_3": "A new word will be available each day!"
+        "text_3": "A new word will be available each day!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "diacritic_map": {
         "a": [
@@ -86,6 +107,276 @@
             "ú",
             "ü"
         ]
+    },
+    "seo": {
+        "how_to_play": "Cossí jogar",
+        "tips_strategy": "Conselhs e estrategia",
+        "more_modes": "Mai de mòdes de jòc",
+        "play_in_languages": "Jogatz en mai de 80 lengas",
+        "play_in_languages_sub": "Cada lenga es gratuita. Cap de compte pas necessari.",
+        "why_wordle_global": "Perqué Wordle Global",
+        "faq_title": "Questions frequentas",
+        "browse_all_languages": "Explorar las 80+ lengas",
+        "recent_words": "Mots recents",
+        "view_all_words": "Veire totes los mots",
+        "footer": "wordle.global — lo jòc de mots quotidian gratuit en mai de 80 lengas",
+        "tile_correct": "es dins lo mot e a la bona plaça.",
+        "tile_semicorrect": "es dins lo mot mas pas a la bona plaça.",
+        "tile_incorrect": "es pas dins lo mot.",
+        "stat_players": "Jogaires",
+        "stat_guesses": "Ensages",
+        "stat_languages": "Lengas",
+        "stat_modes": "Mòdes de jòc",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ lengas",
+                "desc": "De l'arabi al ioruba. Lo mai grand Wordle multilingüe."
+            },
+            {
+                "key": "definitions",
+                "title": "Definicions dels mots",
+                "desc": "Descubrissètz lo sens de cada mot aprèp aver jogat. Enriquissètz vòstre vocabulari."
+            },
+            {
+                "key": "word_art",
+                "title": "Art de mot unic",
+                "desc": "Cada mot ven amb una illustracion personalizada. Colleccionatz-los totes."
+            },
+            {
+                "key": "themes",
+                "title": "Mòde escur e tèmas",
+                "desc": "Mòdes clar, escur e contraste naut per un conòrt de jòc."
+            },
+            {
+                "key": "pwa",
+                "title": "Fonciona pertot",
+                "desc": "PWA — installatz sus tot aparelh. Fonciona fòra linha. Pas de telecargament necessari."
+            },
+            {
+                "key": "free",
+                "title": "Gratuit per totjorn",
+                "desc": "Cap de compte necessari. Cap de pagament. Jogatz simplament."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Començatz amb un mot ric en vocalas",
+                "text": "De mots coma CRANE, STARE o ADIEU testaràn las letras comunas rapidament. Saber qualas vocalas son presentas redutz las possibilitats."
+            },
+            {
+                "title": "Utilizatz çò que sabètz",
+                "text": "Las letras verdas demòran. Las jaunas devon se desplaçar. Las grisas son eliminadas. Cada ensag deu utilizar los tres indicis."
+            },
+            {
+                "title": "Pensatz a las estructuras comunas",
+                "text": "Los mots angleses acaban sovent en -TION, -IGHT, -OUND, -MENT. Cada lenga a sas pròprias estructuras — aprenètz-las."
+            },
+            {
+                "title": "Eliminatz, devinhatz pas a l'azard",
+                "text": "Vòstre segond mot deu testar de letras novèlas, pas repetir las confirmadas. Cobriguètz un maximum de consonantas pas testadas."
+            },
+            {
+                "title": "Atencion a las letras doblas",
+                "text": "De mots coma CREEK, FLOSS o APPLE son de piòges frequents. Se vòstres indicis s'acòrdan pas, pensatz a una letra repetida."
+            },
+            {
+                "title": "Utilizatz lo mòde dificil per vos melhorar",
+                "text": "Lo mòde dificil vos obliga d'utilizar los indicis confirmats a cada ensag. Aquò bòtis de melhors abituds."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Començatz amb CRANE o STARE",
+                "text": "Las letras frequentas vos dònan la melhora chança d'un resultat rapid. Cada segonda compta."
+            },
+            {
+                "title": "Pensatz pas tròp",
+                "text": "Speed Streak recompensa l'instinct. Se vesètz un mot probable, proòvatz-lo — lo bonus de combo val mai qu'un resultat perfièit."
+            },
+            {
+                "title": "Protegissètz vòstre combo",
+                "text": "Un mot ratat copèla lo multiplicador. Quand sètz pas segur, utilizatz un ensag prudent per obténer mai d'indicis."
+            },
+            {
+                "title": "Visatz los resultats en 2-3 ensages",
+                "text": "Lo bonus de temps es enòrme per los resultats rapides (+60s per 1 ensag, +30s per 2). Un ensag riscat pòt rapòrtar gròs."
+            },
+            {
+                "title": "Aprenètz las terminasons comunas",
+                "text": "Las estructuras coma -IGHT, -OUND, -ATCH revénon sovent. Las reconòisser immediatament esparnha de segondas."
+            },
+            {
+                "title": "Demòratz calm quand la pression mònt",
+                "text": "Lo timer accèlera cada 3 mots. Se precèssar mena a las fautas. Un ritme regulièr ganha contra lo paòr."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Començatz larg",
+                "text": "Utilizatz de mots amb de letras comunas (CRANE, STARE) per obténer d'indicis sus totes los tablèus en un còp."
+            },
+            {
+                "title": "Agachatz lo clavièr partejat",
+                "text": "Lo clavièr mòstra las colors per tablèu. Una letra verda sus un tablèu e grisa sus un autre redutz las opcions rapidament."
+            },
+            {
+                "title": "Prioritizatz los tablèus en dificultat",
+                "text": "Concentratz los ensages sul tablèu amb lo mai d'inconòscudas. Los tablèus mai facils se resòlvon sovent solets."
+            },
+            {
+                "title": "Gaspilhetz pas los primièrs ensages",
+                "text": "Utilizatz los primièrs 2-3 ensages per de mots rics en informacions avans de visar un tablèu en particular."
+            },
+            {
+                "title": "Cercatz las letras comuns",
+                "text": "Se dos tablèus mòstran un E jaune, un mot amb E a una posicion novèla ajuda los dos tablèus en un còp."
+            },
+            {
+                "title": "Gardatz un ensag per las urgéncias",
+                "text": "Se sètz blocat sul darrièr tablèu, aver un ensag en reserva fa la diferéncia entre ganhar e pèrdre."
+            }
+        ],
+        "mode_desc_classic": "Avètz 6 ensages per devinhar un mot amagat de 5 letras. Utilizatz las indicacions de color per trobar la responsa.",
+        "mode_desc_unlimited": "Avètz 6 ensages per devinhar un mot amagat de 5 letras. Utilizatz las indicacions de color per trobar la responsa. Aprèp cada jòc, clicatz sus «Tornar jogar» per obténer un novèl mot immediatament — pas de limita quotidiana.",
+        "mode_desc_speed": "Començatz amb 3 minutas al comptador. Cada mot resòlfo vos dona de temps suplementari — resolvètz en mens d'ensages per de bonus mai grands (+60s per 1 ensag, +10s per 6). Los mots ratats vos còstan 30 segondas. Construisètz de combos en resòlvent de mots consecutius per un multiplicador fins a 3x. La pression aumenta a mesura que resolvètz mai de mots — lo timer accèlera cada 3 mots.",
+        "mode_desc_multiboard": "{modeName} vos desafia de resòlvre {boardCount} tablèus Wordle en un còp amb solament {maxGuesses} ensages. Cada ensag aparèis sus totes los tablèus non resòlfo. Los tablèus se blòcan quand son resòlfo. Lo clavièr a colors partejadas mòstra qualas letras son corrèctas sus quins tablèus. Començatz amb de mots de letras comunas per obténer d'indicis sus totes los tablèus.",
+        "faq": [
+            {
+                "q": "Cossí jogar a Wordle en {langName}?",
+                "a": "Visitatz wordle.global/{lang} per jogar al Wordle quotidian en {langName}. Avètz 6 ensages per devinhar un mot de 5 letras. Aprèp cada ensag, las casèlas devénon verdas (letra corrècta, bona plaça), jaunas (letra corrècta, marrida plaça) o grisas (letra absenta)."
+            },
+            {
+                "q": "I a un novèl enigma cada jorn?",
+                "a": "Òc. Un mot novèl es causit cada jorn. Totes los jogaires de la meteissa lenga recèbon lo meteis mot, e podètz comparar vòstres resultats amb vòstres amics."
+            },
+            {
+                "q": "Wordle Global es gratuit?",
+                "a": "Òc. Lo jòc quotidian, lo mòde illimitat e totes los mòdes de jòc son entièrament gratuits en mai de 80 lengas. Pas de compte ni de telecargament necessari."
+            },
+            {
+                "q": "Pòdi jogar mai d'un còp per jorn?",
+                "a": "Òc — ensajatz lo mòde Illimitat a wordle.global/{lang}/unlimited per de jòcs sens fin e sens espèra. Vòstra seguida quotidiana es seguida separadament."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Qu'es Wordle Illimitat en {langName}?",
+                    "a": "Wordle Illimitat vos permet de jogar autant de jòcs que volètz en {langName}, sens esperar l'enigma de deman. Cada jòc vos dona un mot novèl a devinhar en 6 ensages."
+                },
+                {
+                    "q": "Wordle Illimitat es gratuit?",
+                    "a": "Òc. Wordle Illimitat es entièrament gratuit. Pas de compte, pas de telecargament, pas de publicitat pendent lo jòc."
+                },
+                {
+                    "q": "Lo mòde illimitat compta per ma seguida quotidiana?",
+                    "a": "Non. Lo mòde illimitat a sas pròprias estadisticas. Vòstra seguida quotidiana es pas afectada mas que per lo jòc quotidian."
+                },
+                {
+                    "q": "Quantes còps pòdi jogar?",
+                    "a": "I a pas de limita. Podètz jogar autant de còps que volètz. Aprèp cada jòc, clicatz sus «Tornar jogar» per obténer un mot novèl immediatament."
+                },
+                {
+                    "q": "Quinas lengas son disponiblas per Wordle Illimitat?",
+                    "a": "Wordle Illimitat es disponible en mai de 80 lengas sus wordle.global, incluent l'anglés, l'espanhòl, l'alemand, lo finés, l'arabi, lo francés, l'italian, lo portugués e plan d'autras."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Qu'es Speed Streak en {langName}?",
+                    "a": "Speed Streak es un mòde Wordle cronometrat en {langName}. Començatz amb 3 minutas e resolvètz autant de mots que podètz. Resolvètz un mot rapidament per ganhar de temps suplementari."
+                },
+                {
+                    "q": "Cossí fonciona lo pontuatge?",
+                    "a": "Ganhatz de ponts per cada mot resòlfo. Mens d'ensages e de resultats mai rapides dònan mai de ponts. Construisètz un combo en resòlvent de mots consecutivament — fins a un multiplicador de 3x."
+                },
+                {
+                    "q": "Qué se passa quand lo temps s'escòla?",
+                    "a": "Lo jòc s'acaba e vesètz vòstre pontuatge final, lo nombre total de mots resòlfo, lo combo maximal e la mejana d'ensages. Podètz tornar jogar immediatament."
+                },
+                {
+                    "q": "Speed Streak es gratuit?",
+                    "a": "Òc. Speed Streak es entièrament gratuit en totas las 80+ lengas. Pas de compte ni de telecargament necessari."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "Qu'es {modeName} en {langName}?",
+                    "a": "{modeName} es una varianta multi-tablèu de Wordle en {langName}. Resolvètz {boardCount} tablèus Wordle en un còp amb {maxGuesses} ensages. Cada ensag aparèis sus totes los tablèus non resòlfo."
+                },
+                {
+                    "q": "Quants ensages ai per {modeName}?",
+                    "a": "Avètz {maxGuesses} ensages per resòlvre totes los {boardCount} tablèus. Un còp un tablèu resòlfo, se blòca e podètz vos concentrar sus los restants."
+                },
+                {
+                    "q": "Quina estrategia fonciona lo mièlhs per {modeName}?",
+                    "a": "Començatz amb de mots de letras comunas per obténer d'informacions sus totes los {boardCount} tablèus en un còp. Agachatz lo clavièr a colors partejadas — mòstra qualas letras son corrèctas sus quins tablèus."
+                },
+                {
+                    "q": "{modeName} es gratuit?",
+                    "a": "Òc. {modeName} es entièrament gratuit en totas las 80+ lengas. Pas de compte ni de telecargament necessari. Jogatz autant de còps que volètz."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Picatz un mot",
+                "text": "Picatz un mot valid de 5 letras en {langName} amb lo clavièr virtual o vòstre clavièr fisic, puèi clicatz sus Entrada."
+            },
+            {
+                "name": "Legissètz los indicis",
+                "text": "Las casèlas verdas significan que la letra es corrècta e a la bona plaça. Las jaunas significan que la letra es dins lo mot mas pas a la bona plaça. Las grisas significan que la letra es pas dins lo mot."
+            },
+            {
+                "name": "Resolvètz en 6 ensages",
+                "text": "Utilizatz los indicis de color per devinhar lo mot. Avètz 6 ensages en tot. Aprèp lo jòc, vesètz vòstras estadisticas e partejatz vòstre resultat."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Començar un jòc",
+                    "text": "Visitatz wordle.global/{lang}/unlimited per començar a jogar a Wordle Illimitat en {langName}. Un mot de 5 letras es causit aleatòriament."
+                },
+                {
+                    "name": "Devinhatz lo mot",
+                    "text": "Picatz un mot valid de 5 letras e clicatz sus Entrada. Las casèlas verdas significan que la letra es corrècta e a la bona plaça. Las jaunas significan que la letra es dins lo mot mas pas a la bona plaça. Las grisas significan que la letra es pas dins lo mot."
+                },
+                {
+                    "name": "Tornatz jogar immediatament",
+                    "text": "Aprèp aver resòlfo lo mot (o utilizat totes los 6 ensages), clicatz sus «Tornar jogar» per obténer un mot novèl. Pas befo d'esperar deman."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Lançatz lo comptador",
+                    "text": "Visitatz wordle.global/{lang}/speed e clicatz sus Començar. Començatz amb 3 minutas al comptador."
+                },
+                {
+                    "name": "Resolvètz los mots rapidament",
+                    "text": "Cada mot resòlfo vos dona de temps suplementari (+10s a +60s segon lo nombre d'ensages). Los mots ratats vos còstan 30 segondas."
+                },
+                {
+                    "name": "Construisètz vòstre combo",
+                    "text": "Resolvètz de mots consecutivament per construir un multiplicador de combo (fins a 3x). Lo combo se copa se ratatz un mot. Ensajatz de battre vòstre recòrd."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Començar un jòc",
+                    "text": "Visitatz wordle.global/{lang}/{modeName} per jogar a {modeName} en {langName}. {boardCount} tablèus apareisson amb de mots amagats diferents."
+                },
+                {
+                    "name": "Devinhatz a travèrs totes los tablèus",
+                    "text": "Picatz un mot de 5 letras e clicatz sus Entrada. Vòstre ensag aparèis sus totes los {boardCount} tablèus en un còp. Cada tablèu mòstra sos pròpris indicis de color (verd, jaune, gris)."
+                },
+                {
+                    "name": "Resolvètz totes los {boardCount} tablèus",
+                    "text": "Los tablèus resòlfo se blòcan en plaça. Utilizatz lo clavièr a colors partejadas per sègre qualas letras foncionan sus quins tablèus. Resolvètz totes los {boardCount} amb {maxGuesses} ensages per ganhar."
+                }
+            ]
+        }
     },
     "ui": {
         "settings": "Paramètres",
@@ -170,6 +461,67 @@
         "pos_verb": "vèrb",
         "pos_adjective": "adjectiu",
         "pos_adverb": "advèrbi",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     }
 }

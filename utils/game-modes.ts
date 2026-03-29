@@ -14,8 +14,10 @@ import type { BoardState, KeyState } from './types';
 export type GameMode =
     | 'classic'
     | 'dordle'
-    | 'tridle'
     | 'quordle'
+    | 'octordle'
+    | 'sedecordle'
+    | 'duotrigordle'
     | 'unlimited'
     | 'speed'
     | 'semantic';
@@ -39,6 +41,8 @@ export interface GameModeDefinition {
     readonly timed: boolean;
     /** Human-readable label */
     readonly label: string;
+    /** PageShell max-width for this mode ('lg' for single-board, '2xl'+ for multi) */
+    readonly shellMaxWidth?: 'lg' | '2xl' | '4xl' | '6xl' | 'full';
 }
 
 export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = {
@@ -55,13 +59,7 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         defaultPlayType: 'unlimited',
         timed: false,
         label: 'Dordle',
-    },
-    tridle: {
-        boardCount: 3,
-        maxGuesses: 8,
-        defaultPlayType: 'unlimited',
-        timed: false,
-        label: 'Tridle',
+        shellMaxWidth: '2xl',
     },
     quordle: {
         boardCount: 4,
@@ -69,6 +67,31 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         defaultPlayType: 'unlimited',
         timed: false,
         label: 'Quordle',
+        shellMaxWidth: '4xl',
+    },
+    octordle: {
+        boardCount: 8,
+        maxGuesses: 13,
+        defaultPlayType: 'unlimited',
+        timed: false,
+        label: 'Octordle',
+        shellMaxWidth: 'full',
+    },
+    sedecordle: {
+        boardCount: 16,
+        maxGuesses: 21,
+        defaultPlayType: 'unlimited',
+        timed: false,
+        label: 'Sedecordle',
+        shellMaxWidth: 'full',
+    },
+    duotrigordle: {
+        boardCount: 32,
+        maxGuesses: 37,
+        defaultPlayType: 'unlimited',
+        timed: false,
+        label: 'Duotrigordle',
+        shellMaxWidth: 'full',
     },
     unlimited: {
         boardCount: 1,

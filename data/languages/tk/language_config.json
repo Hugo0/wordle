@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Turkmen. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Turkmen. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Turkmen. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Turkmen. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -39,7 +51,118 @@
         "share_challenge_win": "Şu günki Wordle-ni {n} synanyşykda tapdym. Sen menden gowy edip bilermiň?",
         "share_challenge_lose": "Şu günki Wordle-ni tapyp bilmedim. Sen tapyp bilermiň?",
         "notification_copied": "Paneline göçürildi",
-        "notification_partial_word": "Doly söz ýazmagyňyzy haýyş edýäris"
+        "notification_partial_word": "Doly söz ýazmagyňyzy haýyş edýäris",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
+    },
+    "seo": {
+        "how_to_play": "Nädip Oýnamaly",
+        "tips_strategy": "Maslahatlar we Strategiýa",
+        "more_modes": "Başga Oýun Režimleri",
+        "play_in_languages": "80+ Dilde Oýna",
+        "play_in_languages_sub": "Ähli diller mugt. Hasap gerek däl.",
+        "why_wordle_global": "Näme üçin Wordle Global",
+        "faq_title": "Köp Soralýan Soraglar",
+        "browse_all_languages": "Ähli 80+ dili göz aýla",
+        "recent_words": "Soňky Sözler",
+        "view_all_words": "Ähli sözleri gör",
+        "footer": "wordle.global — 80+ dilde mugt gündelik söz oýny",
+        "tile_correct": "sözde bar we dogry ýerde.",
+        "tile_semicorrect": "sözde bar, ýöne ýalňyş ýerde.",
+        "tile_incorrect": "sözde asla ýok.",
+        "stat_players": "Oýunçylar",
+        "stat_guesses": "Çaklamalar",
+        "stat_languages": "Diller",
+        "stat_modes": "Oýun Režimleri",
+        "value_props": [
+            { "key": "languages", "title": "80+ Dil", "desc": "Arapçadan Ýoruba diline çenli. Iň uly köp dilli Wordle." },
+            { "key": "definitions", "title": "Söz Kesgitlemeleri", "desc": "Oýnandan soň her sözüň manysyny öwren. Söz baýlygyňy giňelt." },
+            { "key": "word_art", "title": "Üýtgeşik Söz Sungaty", "desc": "Her söz üçin aýratyn surat. Hemmesini ýygna." },
+            { "key": "themes", "title": "Garaňky Režim we Temalar", "desc": "Ýagty, garaňky we ýokary kontrastly režimler rahat oýnamak üçin." },
+            { "key": "pwa", "title": "Hemme Ýerde Işleýär", "desc": "PWA — islendik enjama gur. Oflaýn işleýär. Ýüklemek gerek däl." },
+            { "key": "free", "title": "Hemişelik Mugt", "desc": "Hasap gerek däl. Töleg ýok. Diňe oýna." }
+        ],
+        "tips": [
+            { "title": "Çekimli harp köp bolan söz bilen başla", "text": "CRANE, STARE ýa-da ADIEU ýaly sözler köp ulanylýan harplary çalt barlaýar. Haýsy çekimlileriň bardygyny bilmek mümkinçilikleri daraldýar." },
+            { "title": "Bilýän zatlaryňy ulan", "text": "Ýaşyl harplar ýerinde galýar. Sary harplar göçmeli. Çal harplar aýrylýar. Her çaklama üç sany alamaty hem ulanmaly." },
+            { "title": "Köp duş gelýän nusgalary pikirleniň", "text": "Iňlis dilinde sözler köplenç -TION, -IGHT, -OUND, -MENT bilen gutarýar. Beýleki dillerde öz nusgalary bar — olary öwren." },
+            { "title": "Ýok et, tötänleý çaklama", "text": "Ikinji sözüň täze harplary barlamaly, tassyklanan harplary gaýtalamaly däl. Mümkin boldugyça köp synalmadyk üýtgeşigi barlap gör." },
+            { "title": "Goşa harplara üns ber", "text": "CREEK, FLOSS ýa-da APPLE ýaly sözler köp duş gelýän duzak. Alamatlaryň gabat gelmese, gaýtalanýan harp hakda pikirleniň." },
+            { "title": "Kyn režimi ulanyp gowulaş", "text": "Kyn režim tassyklanan alamatlary her çaklamada ulanmaga mejbur edýär. Adaty režime gaýdanyňda-da peýdaly endikleri ösdürýär." }
+        ],
+        "tips_speed": [
+            { "title": "CRANE ýa-da STARE bilen başla", "text": "Köp ulanylýan harplar çalt çözgüt üçin iň gowy mümkinçilik berýär. Her sekunt möhüm." },
+            { "title": "Köp pikirlenmäň", "text": "Speed Streak içgüýje daýanýar. Ähtimal sözi görseň, synap gör — combo bonusy kämil çözgütden artykmaçdyr." },
+            { "title": "Combo-ňy gora", "text": "Şowsuz söz köpeldijini bozýar. Ynamly bolmasaň, howpsuz çaklama bilen köpräk alamat ýygna." },
+            { "title": "2-3 çaklama bilen çöz", "text": "Çalt çözgüt üçin wagt bonusy ullakan (+60s 1 çaklama üçin, +30s 2 üçin). Töwekgelçilikli ikinji çaklama uly netije berip biler." },
+            { "title": "Köp duş gelýän söz soňlaryny öwren", "text": "-IGHT, -OUND, -ATCH ýaly nusgalar köp gaýtalanýar. Olary derrew tanamak her sözde sekuntlar tygşytlaýar." },
+            { "title": "Basyş artanda asuda bol", "text": "Her 3 sözden soň taýmer çaltlaşýar. Howlukmaklyk ýalňyşlyklara getirýär. Durnukly depgin gorkudan üstündir." }
+        ],
+        "tips_multiboard": [
+            { "title": "Giňden başla", "text": "Köp ulanylýan harplar bolan sözleri (CRANE, STARE) ulan, ähli tagtalardan alamat toplamak üçin." },
+            { "title": "Bölünen klawiaturany synla", "text": "Klawiatura her tagta üçin reňkleri görkezýär. Bir tagtada ýaşyl, beýlekisinde çal harp mümkinçilikleri çalt daraldýar." },
+            { "title": "Kynçylyk çekýän tagtalara üns ber", "text": "Iň köp näbellilik bolan tagta üçin çaklamalary gönükdir. Aňsat tagtalar köplenç öz-özünden çözülýär." },
+            { "title": "Irki çaklamalary biderek harçlama", "text": "Ilkinji 2-3 çaklamany maglumat baý sözlere ulan, soňra belli tagtalara gönükdir." },
+            { "title": "Umumy harplary gözle", "text": "Iki tagta hem sary E görkezse, E-ni täze pozisiýada ulanan söz iki tagta-da kömek edýär." },
+            { "title": "Ätiýaçlyk çaklama sakla", "text": "Soňky tagtada dykylyp galsa, artykmaç çaklama ýeňiş bilen şowsuzlygyň arasyndaky tapawutdyr." }
+        ],
+        "mode_desc_classic": "Gizlin 5 harpli sözi tapmak üçin 6 synanyşygyň bar. Jogaby daraltmak üçin reňk alamatlaryny ulan.",
+        "mode_desc_unlimited": "Gizlin 5 harpli sözi tapmak üçin 6 synanyşygyň bar. Reňk alamatlaryny ulan. Her oýundan soň \"Täzeden Oýna\" basyp derrew täze söz al — gündelik çäklendirme ýok.",
+        "mode_desc_speed": "Sagadyňda 3 minut bilen başla. Her çözen sözüň goşmaça wagt gazandyrýar — az çaklama bilen çöz, uly bonus al (+60s 1 çaklama, +10s 6 çaklama üçin). Şowsuz söz 30 sekunt alýar. Yzly-yzyna çözüp combo gur, 3x çenli köpeldiji. Her 3 sözden soň taýmer çaltlaşýar.",
+        "mode_desc_multiboard": "{modeName} seni bir wagtda {boardCount} Wordle tagtasyny diňe {maxGuesses} çaklama bilen çözmäge çagyrýar. Her çaklama ähli çözülmedik tagtalarda görünýär. Çözülen tagtalar doňýar. Bölünen reňk klawiaturasy haýsy harplaryň haýsy tagtada dogrudygyny görkezýär. Ähli tagtalardan alamat ýygnamak üçin köp ulanylýan harplar bolan sözler bilen başla.",
+        "faq": [
+            { "q": "{langName} dilinde Wordle-ni nädip oýnamaly?", "a": "wordle.global/{lang} sahypasyna giriň. 5 harpli sözi tapmak üçin 6 synanyşygyň bar. Her çaklamadan soň plitkalar ýaşyl (dogry harp, dogry ýer), sary (dogry harp, ýalňyş ýer) ýa-da çal (harp sözde ýok) bolýar." },
+            { "q": "Her gün täze tapmaça barmy?", "a": "Hawa. Her gün täze söz saýlanýar. Şol bir dilde oýnaýanlar hemmesi şol bir sözi alýar, şonuň üçin dostlaryň bilen deňeşdirip bilersiň." },
+            { "q": "Wordle Global mugtmy?", "a": "Hawa. Gündelik tapmaça, çäksiz režim we ähli oýun režimleri 80+ dilde doly mugt. Hasap ýa-da ýüklemek gerek däl." },
+            { "q": "Günde birden köp gezek oýnap bolarmy?", "a": "Hawa — wordle.global/{lang}/unlimited sahypasynda çäksiz režimi synanşyp gör. Gündelik yzygiderliligiň aýratyn hasaplanýar." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "{langName} dilinde Wordle Unlimited näme?", "a": "Wordle Unlimited {langName} dilinde isleýşiň çenli Wordle oýnamaga mümkinçilik berýär, ertirki tapmaça garaşman. Her oýunda 6 synanyşykda çaklamak üçin täze söz berilýär." },
+                { "q": "Wordle Unlimited mugtmy?", "a": "Hawa. Wordle Unlimited doly mugt. Hasap ýok, ýüklemek ýok, oýun wagtynda mahabat ýok." },
+                { "q": "Çäksiz režim gündelik yzygiderliligime täsir edýärmi?", "a": "Ýok. Çäksiz režimiň öz aýratyn statistikasy bar. Diňe gündelik tapmaça gündelik yzygiderliligiňe täsir edýär." },
+                { "q": "Näçe gezek oýnap bolýar?", "a": "Çäklendirme ýok. Isleýşiň çenli oýnap bilersiň. Her oýundan soň \"Täzeden Oýna\" basyp derrew täze söz al." },
+                { "q": "Wordle Unlimited haýsy dillerde oýnap bolýar?", "a": "Wordle Unlimited wordle.global-da 80+ dilde elýeterli, şol sanda Iňlis, Ispan, Nemes, Fin, Arap, Fransuz, Italýan, Portugaliýa we başga-da köp diller." }
+            ],
+            "speed": [
+                { "q": "{langName} dilinde Speed Streak näme?", "a": "Speed Streak {langName} dilinde wagtly Wordle režimi. 3 minut bilen başlaýarsyň we wagt gutarmazdan öň mümkin boldugyça köp söz çözmeli. Çalt çözseň köp goşmaça wagt gazanarsyň." },
+                { "q": "Bal hasaplamagy nähili işleýär?", "a": "Her çözen sözüň üçin bal alýarsyň. Az çaklama we çalt çözgüt köp bal berýär. Yzly-yzyna çözmek bilen combo gur — 3x çenli köpeldiji." },
+                { "q": "Wagt gutaranda näme bolýar?", "a": "Oýun gutarýar we ahyrky balyňy, jemi çözen sözleriňi, iň ýokary combo-ňy we ortaça çaklamalary görýärsiň. Derrew täzeden oýnap bilersiň." },
+                { "q": "Speed Streak mugtmy?", "a": "Hawa. Speed Streak ähli 80+ dilde doly mugt. Hasap ýa-da ýüklemek gerek däl." }
+            ],
+            "multiboard": [
+                { "q": "{langName} dilinde {modeName} näme?", "a": "{modeName} {langName} dilinde köp tagtaly Wordle görnüşi. {maxGuesses} çaklama bilen {boardCount} Wordle tagtasyny bir wagtda çözmeli. Her çaklama ähli çözülmedik tagtalarda görünýär." },
+                { "q": "{modeName}-da näçe çaklama alyp bolar?", "a": "Ähli {boardCount} tagtany çözmek üçin {maxGuesses} çaklamaň bar. Tagta çözülende doňýar we galan tagtalara üns berip bilersiň." },
+                { "q": "{modeName} üçin haýsy strategiýa iň gowy?", "a": "Ähli {boardCount} tagtadan maglumat toplamak üçin köp ulanylýan harplar bolan sözler bilen başla. Bölünen reňk klawiaturasyna üns ber — haýsy harplaryň haýsy tagtada dogrudygyny görkezýär." },
+                { "q": "{modeName} mugtmy?", "a": "Hawa. {modeName} ähli 80+ dilde doly mugt. Hasap ýa-da ýüklemek gerek däl. Isleýşiň çenli oýna." }
+            ]
+        },
+        "howto": [
+            { "name": "Söz ýaz", "text": "{langName} dilinde dogry 5 harpli söz ýaz, ekrandaky klawiatura ýa-da öz klawiatura bilen, soňra Enter bas." },
+            { "name": "Alamatlary oka", "text": "Ýaşyl plitka harpyň dogry we dogry ýerdedigini aňladýar. Sary harpyň sözde bardygyny, ýöne ýalňyş ýerdedigini aňladýar. Çal harpyň sözde ýokdugyny aňladýar." },
+            { "name": "6 synanyşykda çöz", "text": "Sözi daraltmak üçin reňk alamatlaryny ulan. Jemi 6 çaklamaň bar. Tapmaçadan soň statistikaňy gör we netijäňi paýlaş." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Oýna başla", "text": "wordle.global/{lang}/unlimited sahypasyna giriň. {langName} dilinde Wordle Unlimited oýnamaga başla. Tötänleý 5 harpli söz saýlanýar." },
+                { "name": "Sözi çakla", "text": "Dogry 5 harpli söz ýaz we Enter bas. Ýaşyl plitka — harp dogry we dogry ýerde. Sary — harp sözde bar, ýöne ýalňyş ýerde. Çal — harp sözde ýok." },
+                { "name": "Derrew täzeden oýna", "text": "Sözi çözenden soň (ýa-da 6 çaklamany ulanandan soň), \"Täzeden Oýna\" basyp derrew täze söz al. Ertire garaşmak ýok." }
+            ],
+            "speed": [
+                { "name": "Taýmeri başlat", "text": "wordle.global/{lang}/speed sahypasyna giriň we Başla bas. 3 minut bilen başlaýarsyň." },
+                { "name": "Sözleri çalt çöz", "text": "Her çözen sözüň goşmaça wagt gazandyrýar (+10s-dan +60s çenli, çaklama sanyna görä). Şowsuz söz 30 sekunt alýar." },
+                { "name": "Combo-ňy gur", "text": "Yzly-yzyna çözmek bilen combo köpeldijini gur (3x çenli). Şowsuz bolsaň combo bozulýar. Iň ýokary balyňy ýeňmäge synanyş." }
+            ],
+            "multiboard": [
+                { "name": "Oýna başla", "text": "wordle.global/{lang}/{modeName} sahypasyna giriň. {langName} dilinde {modeName} oýna. {boardCount} tagta dürli gizlin sözler bilen görünýär." },
+                { "name": "Ähli tagtalarda çakla", "text": "5 harpli söz ýaz we Enter bas. Çaklamaň ähli {boardCount} tagtada birden görünýär. Her tagta öz reňk alamatlaryny görkezýär (ýaşyl, sary, çal)." },
+                { "name": "Ähli {boardCount} tagtany çöz", "text": "Çözülen tagtalar doňýar. Haýsy harplaryň haýsy tagtada işleýändigini yzarlamak üçin bölünen reňk klawiaturasyny ulan. {maxGuesses} çaklama içinde ähli {boardCount} tagtany çöz." }
+            ]
+        }
     },
     "ui": {
         "settings": "Sazlamalar",
@@ -124,7 +247,68 @@
         "pos_verb": "işlik",
         "pos_adjective": "sypat",
         "pos_adverb": "hal",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -140,6 +324,14 @@
         "text_2_1": "sözünde we dogry ýerde!",
         "text_2_2": "sözünde, ýöne dogry ýerde däl.",
         "text_2_3": "çaklamaga synanyşýan sözüňizde ýok.",
-        "text_3": "Her gün täze söz bolar!"
+        "text_3": "Her gün täze söz bolar!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     }
 }

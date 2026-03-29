@@ -32,6 +32,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Tagalog. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Tagalog. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Tagalog. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Tagalog. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -44,7 +56,12 @@
         "copied": "Nakopya!",
         "notification_copied": "Nakopya sa clipboard",
         "notification_word_not_valid": "Hindi valid ang salita",
-        "notification_partial_word": "Maglagay ng buong salita"
+        "notification_partial_word": "Maglagay ng buong salita",
+        "share_challenge_win": "I got today's Wordle in {n}. Can you beat me?",
+        "share_challenge_lose": "I didn't get today's Wordle. Can you?",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "help": {
         "title": "Paano Maglaro",
@@ -57,7 +74,120 @@
         "text_2_1": "nasa salita at nasa tamang posisyon!",
         "text_2_2": "nasa salita, pero hindi nasa tamang posisyon.",
         "text_2_3": "wala sa salitang sinusubukan mong hulaan.",
-        "text_3": "May bagong salita araw-araw!"
+        "text_3": "May bagong salita araw-araw!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
+    },
+    "seo": {
+        "how_to_play": "Paano Maglaro",
+        "tips_strategy": "Mga Tip at Diskarte",
+        "more_modes": "Iba Pang Game Mode",
+        "play_in_languages": "Maglaro sa 80+ na Wika",
+        "play_in_languages_sub": "Libre ang lahat ng wika. Hindi kailangan ng account.",
+        "why_wordle_global": "Bakit Wordle Global",
+        "faq_title": "Mga Madalas Itanong",
+        "browse_all_languages": "Tingnan lahat ng 80+ na wika",
+        "recent_words": "Mga Kamakailang Salita",
+        "view_all_words": "Tingnan lahat ng salita",
+        "footer": "wordle.global — ang libreng pang-araw-araw na laro ng salita sa 80+ na wika",
+        "tile_correct": "nasa salita at nasa tamang posisyon.",
+        "tile_semicorrect": "nasa salita pero nasa maling posisyon.",
+        "tile_incorrect": "wala sa salita.",
+        "stat_players": "Mga Manlalaro",
+        "stat_guesses": "Mga Hula",
+        "stat_languages": "Mga Wika",
+        "stat_modes": "Mga Game Mode",
+        "value_props": [
+            { "key": "languages", "title": "80+ na Wika", "desc": "Mula Arabic hanggang Yoruba. Ang pinakamalaking multilingual na Wordle." },
+            { "key": "definitions", "title": "Kahulugan ng Salita", "desc": "Alamin ang kahulugan ng bawat salita pagkatapos maglaro. Palawakin ang iyong bokabularyo." },
+            { "key": "word_art", "title": "Natatanging Word Art", "desc": "Bawat salita ay may sariling ilustrasyon. Kolektahin lahat." },
+            { "key": "themes", "title": "Dark Mode at mga Tema", "desc": "Light, dark, at high-contrast na mode para sa komportableng paglalaro." },
+            { "key": "pwa", "title": "Gumagana Kahit Saan", "desc": "PWA — i-install sa anumang device. Gumagana offline. Walang kailangang i-download." },
+            { "key": "free", "title": "Libre Magpakailanman", "desc": "Hindi kailangan ng account. Walang bayad. Maglaro lang." }
+        ],
+        "tips": [
+            { "title": "Magsimula sa salitang maraming patinig", "text": "Ang mga salitang tulad ng CRANE, STARE, o ADIEU ay mabilis na sumusubok ng mga karaniwang titik. Ang pag-alam kung aling mga patinig ang nasa salita ay mabilis na nagpapaliit ng mga pagpipilian." },
+            { "title": "Gamitin ang alam mo na", "text": "Ang berdeng titik ay naka-lock na. Ang dilaw na titik ay kailangang ilipat. Ang gray na titik ay tinanggal na. Gamitin ang tatlong clue sa bawat hula." },
+            { "title": "Isipin ang mga karaniwang pattern", "text": "Ang mga salita sa Ingles ay madalas nagtatapos sa -TION, -IGHT, -OUND, -MENT. May sariling pattern ang ibang wika — pag-aralan mo." },
+            { "title": "Mag-eliminate, huwag hulaan nang basta-basta", "text": "Ang pangalawang salita mo ay dapat sumubok ng mga bagong titik, hindi umuulit ng mga nakumpirma na. Subukan ang pinakamaraming hindi pa nasusuri na katinig." },
+            { "title": "Bantayan ang mga double letter", "text": "Ang mga salitang tulad ng CREEK, FLOSS, o APPLE ay mga karaniwang patibong. Kung hindi nagkakatugma ang mga clue mo, baka may inuulit na titik." },
+            { "title": "Gamitin ang hard mode para gumaling", "text": "Pinipilit ng hard mode na gamitin ang mga nakumpirmang clue sa bawat hula. Nagtatayo ito ng mas magandang gawi kahit bumalik ka sa normal." }
+        ],
+        "tips_speed": [
+            { "title": "Magsimula sa CRANE o STARE", "text": "Ang mga madalas na titik ay nagbibigay ng pinakamagandang pagkakataon para sa mabilis na sagot. Mahalaga ang bawat segundo." },
+            { "title": "Huwag mag-overthink", "text": "Ginagantimpalaan ng Speed Streak ang gut instinct. Kung nakita mo ang posibleng salita, subukan mo — mas malaki ang combo bonus kaysa sa perpektong sagot." },
+            { "title": "Protektahan ang combo mo", "text": "Sinisira ng maling sagot ang multiplier mo. Kung hindi sigurado, gumamit ng ligtas na hula para makakuha ng mas maraming clue." },
+            { "title": "Mag-aim ng 2-3 na hula lang", "text": "Napakalaki ng time bonus para sa mabilis na sagot (+60s sa 1 hula, +30s sa 2). Sulit ang mapanganib na pangalawang hula." },
+            { "title": "Pag-aralan ang karaniwang dulo ng salita", "text": "Ang mga pattern tulad ng -IGHT, -OUND, -ATCH ay madalas umuulit. Ang agad na pagkilala sa mga ito ay nakakatipid ng segundo sa bawat salita." },
+            { "title": "Manatiling kalmado kahit tumataas ang presyur", "text": "Bumibilis ang timer tuwing 3 salita. Ang pagmamadali ay nagdudulot ng typo at maling hula. Mas mabuti ang steady na pace kaysa sa panic." }
+        ],
+        "tips_multiboard": [
+            { "title": "Magsimula nang malawak", "text": "Gumamit ng mga salitang may karaniwang titik (CRANE, STARE) para makakuha ng clue sa lahat ng board nang sabay-sabay." },
+            { "title": "Panoorin ang split keyboard", "text": "Ipinapakita ng keyboard ang kulay para sa bawat board. Ang titik na berde sa isang board pero gray sa iba ay mabilis na nagpapaliit ng mga posibilidad." },
+            { "title": "Unahin ang mga nahihirapang board", "text": "I-focus ang mga hula sa board na may pinakamaraming hindi pa alam. Madalas na nalulutas ang mga madaling board nang kusa." },
+            { "title": "Huwag sayangin ang mga unang hula", "text": "Gamitin ang unang 2-3 hula sa mga salitang puno ng impormasyon bago mag-target ng mga partikular na board." },
+            { "title": "Hanapin ang mga magkaparehong titik", "text": "Kung dalawang board ang may dilaw na E, ang salitang may E sa bagong posisyon ay tumutulong sa dalawang board nang sabay." },
+            { "title": "Mag-iwan ng hula para sa emergency", "text": "Kung na-stuck ka sa huling board, ang may natitirang hula ang pagkakaiba ng panalo at talo." }
+        ],
+        "mode_desc_classic": "May 6 na pagsubok ka para hulaan ang nakatagong 5-titik na salita. Gamitin ang mga kulay na clue para paliitin ang sagot.",
+        "mode_desc_unlimited": "May 6 na pagsubok ka para hulaan ang nakatagong 5-titik na salita. Gamitin ang mga kulay na clue para paliitin ang sagot. Pagkatapos ng bawat laro, pindutin ang \"Maglaro Ulit\" para makakuha agad ng bagong salita — walang daily limit.",
+        "mode_desc_speed": "Magsimula ka na may 3 minuto sa orasan. Ang bawat salitang malutas mo ay nagbibigay ng bonus na oras — mas kaunti ang hula, mas malaki ang bonus (+60s sa 1 hula, +10s sa 6). Ang mga maling sagot ay nagbabawas ng 30 segundo. Bumuo ng combo sa pamamagitan ng sunod-sunod na pagsagot para sa 3x na multiplier. Tumataas ang presyur habang dumadami ang nalulutas — bumibilis ang timer tuwing 3 salita.",
+        "mode_desc_multiboard": "Hinahamon ka ng {modeName} na lutasin ang {boardCount} na Wordle board nang sabay-sabay gamit lang ang {maxGuesses} na hula. Lumalabas ang bawat hula sa lahat ng hindi pa nalulutas na board nang sabay. Nag-freeze ang mga nalutas nang board. Ipinapakita ng split-color na keyboard kung aling mga titik ang tama sa aling board. Magsimula sa mga salitang may karaniwang titik para mangolekta ng clue sa lahat ng board.",
+        "faq": [
+            { "q": "Paano maglaro ng Wordle sa {langName}?", "a": "Pumunta sa wordle.global/{lang} para maglaro ng daily Wordle sa {langName}. May 6 na pagsubok ka para hulaan ang 5-titik na salita. Pagkatapos ng bawat hula, nagiging berde (tamang titik, tamang posisyon), dilaw (tamang titik, maling posisyon), o gray (wala sa salita) ang mga tile." },
+            { "q": "May bago bang palaisipan araw-araw?", "a": "Oo. May bagong salita araw-araw. Ang lahat ng naglalaro sa iisang wika ay may parehong salita, kaya puwede mong ikumpara ang resulta sa mga kaibigan mo." },
+            { "q": "Libre ba ang Wordle Global?", "a": "Oo. Ang daily puzzle, unlimited mode, at lahat ng game mode ay ganap na libre sa 80+ na wika. Hindi kailangan ng account o download." },
+            { "q": "Puwede ba akong maglaro ng higit sa isang beses bawat araw?", "a": "Oo — subukan ang Unlimited mode sa wordle.global/{lang}/unlimited para sa walang katapusang laro. Hiwalay na tina-track ang daily streak mo." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Ano ang Wordle Unlimited sa {langName}?", "a": "Pinapayagan ka ng Wordle Unlimited na maglaro ng kahit gaano karaming Wordle game sa {langName} nang hindi naghihintay ng bukas na palaisipan. Bawat laro ay nagbibigay ng bagong random na salita na huhulaang may 6 na pagsubok." },
+                { "q": "Libre ba ang Wordle Unlimited?", "a": "Oo. Ganap na libre ang Wordle Unlimited. Walang account, walang download, walang ads habang naglalaro." },
+                { "q": "Naaapektuhan ba ng unlimited mode ang daily streak ko?", "a": "Hindi. May sariling statistics ang unlimited mode. Ang daily puzzle lang ang nakakaapekto sa daily streak mo." },
+                { "q": "Ilang beses ako puwedeng maglaro?", "a": "Walang limit. Puwede kang maglaro ng kahit gaano karaming round ang gusto mo. Pagkatapos ng bawat laro, pindutin ang \"Maglaro Ulit\" para makakuha agad ng bagong salita." },
+                { "q": "Sa anong mga wika puwedeng maglaro ng Wordle Unlimited?", "a": "Available ang Wordle Unlimited sa mahigit 80 na wika sa wordle.global, kasama ang English, Spanish, German, Finnish, Arabic, French, Italian, Portuguese, at marami pa." }
+            ],
+            "speed": [
+                { "q": "Ano ang Speed Streak sa {langName}?", "a": "Ang Speed Streak ay isang timed na Wordle mode sa {langName}. Magsisimula ka na may 3 minuto sa orasan at maglulutas ng pinakamaraming salita hangga't maaari. Mabilis na sagot ay nagbibigay ng mas malaking bonus na oras." },
+                { "q": "Paano gumagana ang scoring?", "a": "Nakakakuha ka ng puntos sa bawat salitang nalutas. Mas kaunti ang hula at mas mabilis ang sagot, mas maraming puntos. Bumuo ng combo sa pamamagitan ng sunod-sunod na pagsagot — hanggang 3x na multiplier." },
+                { "q": "Ano ang mangyayari kapag naubos ang oras?", "a": "Matatapos ang laro at makikita mo ang final score, kabuuang salitang nalutas, max combo, at average na hula. Puwede kang maglaro ulit agad." },
+                { "q": "Libre ba ang Speed Streak?", "a": "Oo. Ganap na libre ang Speed Streak sa lahat ng 80+ na wika. Hindi kailangan ng account o download." }
+            ],
+            "multiboard": [
+                { "q": "Ano ang {modeName} sa {langName}?", "a": "Ang {modeName} ay isang multi-board na Wordle variant sa {langName}. Maglulutas ka ng {boardCount} na Wordle board nang sabay-sabay gamit ang {maxGuesses} na hula. Lumalabas ang bawat hula sa lahat ng hindi pa nalulutas na board nang sabay." },
+                { "q": "Ilan ang hula ko sa {modeName}?", "a": "May {maxGuesses} na hula ka para lutasin lahat ng {boardCount} na board. Kapag nalutas na ang isang board, nag-freeze ito at puwede mo nang i-focus ang natitirang board." },
+                { "q": "Anong diskarte ang pinakamaganda para sa {modeName}?", "a": "Magsimula sa mga salitang may karaniwang titik para mangolekta ng impormasyon sa lahat ng {boardCount} na board nang sabay. Panoorin ang split-color na keyboard — ipinapakita nito kung aling mga titik ang tama sa aling board." },
+                { "q": "Libre ba ang {modeName}?", "a": "Oo. Ganap na libre ang {modeName} sa lahat ng 80+ na wika. Hindi kailangan ng account o download. Maglaro ng kahit gaano karaming round ang gusto mo." }
+            ]
+        },
+        "howto": [
+            { "name": "Mag-type ng salita", "text": "Mag-type ng valid na 5-titik na salita sa {langName} gamit ang on-screen keyboard o ang iyong keyboard, tapos pindutin ang Enter." },
+            { "name": "Basahin ang mga clue", "text": "Ang berdeng tile ay nangangahulugang tama ang titik at nasa tamang posisyon. Ang dilaw ay nangangahulugang nasa salita ang titik pero nasa maling posisyon. Ang gray ay nangangahulugang wala ang titik sa salita." },
+            { "name": "Lutasin sa 6 na pagsubok", "text": "Gamitin ang mga kulay na clue para paliitin ang salita. May 6 na hula ka sa kabuuan. Pagkatapos ng palaisipan, tingnan ang stats mo at ibahagi ang resulta." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Magsimula ng laro", "text": "Pumunta sa wordle.global/{lang}/unlimited para magsimulang maglaro ng Wordle Unlimited sa {langName}. Pipiliin ang isang random na 5-titik na salita para sa iyo." },
+                { "name": "Hulaan ang salita", "text": "Mag-type ng valid na 5-titik na salita at pindutin ang Enter. Ang berdeng tile ay tama ang titik at posisyon. Ang dilaw ay nasa salita pero maling posisyon. Ang gray ay wala sa salita." },
+                { "name": "Maglaro ulit agad", "text": "Pagkatapos malutas ang salita (o pagkatapos gamitin lahat ng 6 na hula), pindutin ang \"Maglaro Ulit\" para makakuha agad ng bagong salita. Hindi na kailangang maghintay ng bukas." }
+            ],
+            "speed": [
+                { "name": "Simulan ang timer", "text": "Pumunta sa wordle.global/{lang}/speed at pindutin ang Start. Magsisimula ka na may 3 minuto sa orasan." },
+                { "name": "Lutasin ang mga salita nang mabilis", "text": "Bawat salitang malutas mo ay nagbibigay ng bonus na oras (+10s hanggang +60s depende sa kung gaano kakaunti ang ginamit mong hula). Ang maling sagot ay nagbabawas ng 30 segundo." },
+                { "name": "Buuin ang combo mo", "text": "Maglutas ng sunod-sunod na salita para buuin ang combo multiplier (hanggang 3x). Mababasag ang combo kung mag-fail ka. Subukang talunin ang high score mo." }
+            ],
+            "multiboard": [
+                { "name": "Magsimula ng laro", "text": "Pumunta sa wordle.global/{lang}/{modeName} para maglaro ng {modeName} sa {langName}. Lalabas ang {boardCount} na board na may iba-ibang nakatagong salita." },
+                { "name": "Hulaan sa lahat ng board", "text": "Mag-type ng 5-titik na salita at pindutin ang Enter. Lalabas ang hula mo sa lahat ng {boardCount} na board nang sabay. Ipinapakita ng bawat board ang sarili nitong kulay na clue (berde, dilaw, gray)." },
+                { "name": "Lutasin lahat ng {boardCount} na board", "text": "Nag-freeze ang mga nalutas na board. Gamitin ang split-color na keyboard para i-track kung aling mga titik ang gumagana sa aling board. Lutasin lahat ng {boardCount} sa loob ng {maxGuesses} na hula para manalo." }
+            ]
+        }
     },
     "ui": {
         "settings": "Mga Setting",
@@ -142,7 +272,68 @@
         "pos_verb": "pandiwa",
         "pos_adjective": "pang-uri",
         "pos_adverb": "pang-abay",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     },
     "diacritic_map": {
         "n": [

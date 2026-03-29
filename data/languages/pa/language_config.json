@@ -30,6 +30,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Punjabi. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Punjabi. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Punjabi. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Punjabi. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -46,7 +58,8 @@
         "share_challenge_win": "ਮੈਂ ਅੱਜ ਦਾ Wordle {n} ਕੋਸ਼ਿਸ਼ਾਂ ਵਿੱਚ ਹੱਲ ਕੀਤਾ। ਕੀ ਤੁਸੀਂ ਬਿਹਤਰ ਕਰ ਸਕਦੇ ਹੋ?",
         "share_challenge_lose": "ਮੈਂ ਅੱਜ ਦਾ Wordle ਹੱਲ ਨਹੀਂ ਕਰ ਸਕਿਆ। ਕੀ ਤੁਸੀਂ ਕਰ ਸਕਦੇ ਹੋ?",
         "hard_mode_position": "ਔਖਾ ਮੋਡ: {letter} ਸਥਿਤੀ {position} ਵਿੱਚ ਹੋਣਾ ਚਾਹੀਦਾ",
-        "hard_mode_contains": "ਔਖਾ ਮੋਡ: ਅੰਦਾਜ਼ੇ ਵਿੱਚ {letter} ਹੋਣਾ ਚਾਹੀਦਾ"
+        "hard_mode_contains": "ਔਖਾ ਮੋਡ: ਅੰਦਾਜ਼ੇ ਵਿੱਚ {letter} ਹੋਣਾ ਚਾਹੀਦਾ",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "help": {
         "title": "ਕਿਵੇਂ ਖੇਡਣਾ ਹੈ",
@@ -59,7 +72,120 @@
         "text_2_1": "ਸ਼ਬਦ ਵਿੱਚ ਹੈ ਅਤੇ ਸਹੀ ਥਾਂ ਤੇ ਹੈ!",
         "text_2_2": "ਸ਼ਬਦ ਵਿੱਚ ਹੈ, ਪਰ ਸਹੀ ਥਾਂ ਤੇ ਨਹੀਂ।",
         "text_2_3": "ਸ਼ਬਦ ਵਿੱਚ ਨਹੀਂ ਹੈ।",
-        "text_3": "ਹਰ ਰੋਜ਼ ਇੱਕ ਨਵਾਂ ਸ਼ਬਦ!"
+        "text_3": "ਹਰ ਰੋਜ਼ ਇੱਕ ਨਵਾਂ ਸ਼ਬਦ!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
+    },
+    "seo": {
+        "how_to_play": "ਕਿਵੇਂ ਖੇਡਣਾ ਹੈ",
+        "tips_strategy": "ਸੁਝਾਅ ਅਤੇ ਰਣਨੀਤੀ",
+        "more_modes": "ਹੋਰ ਖੇਡ ਮੋਡ",
+        "play_in_languages": "80+ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਖੇਡੋ",
+        "play_in_languages_sub": "ਹਰ ਭਾਸ਼ਾ ਮੁਫ਼ਤ ਹੈ। ਕੋਈ ਖਾਤਾ ਲੋੜੀਂਦਾ ਨਹੀਂ।",
+        "why_wordle_global": "Wordle Global ਕਿਉਂ",
+        "faq_title": "ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਸਵਾਲ",
+        "browse_all_languages": "ਸਾਰੀਆਂ 80+ ਭਾਸ਼ਾਵਾਂ ਦੇਖੋ",
+        "recent_words": "ਹਾਲੀਆ ਸ਼ਬਦ",
+        "view_all_words": "ਸਾਰੇ ਸ਼ਬਦ ਦੇਖੋ",
+        "footer": "wordle.global — 80+ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਮੁਫ਼ਤ ਰੋਜ਼ਾਨਾ ਸ਼ਬਦ ਖੇਡ",
+        "tile_correct": "ਸ਼ਬਦ ਵਿੱਚ ਹੈ ਅਤੇ ਸਹੀ ਥਾਂ ਤੇ ਹੈ।",
+        "tile_semicorrect": "ਸ਼ਬਦ ਵਿੱਚ ਹੈ ਪਰ ਗਲਤ ਥਾਂ ਤੇ ਹੈ।",
+        "tile_incorrect": "ਸ਼ਬਦ ਵਿੱਚ ਬਿਲਕੁਲ ਨਹੀਂ ਹੈ।",
+        "stat_players": "ਖਿਡਾਰੀ",
+        "stat_guesses": "ਅੰਦਾਜ਼ੇ",
+        "stat_languages": "ਭਾਸ਼ਾਵਾਂ",
+        "stat_modes": "ਖੇਡ ਮੋਡ",
+        "value_props": [
+            { "key": "languages", "title": "80+ ਭਾਸ਼ਾਵਾਂ", "desc": "ਅਰਬੀ ਤੋਂ ਯੋਰੂਬਾ ਤੱਕ। ਸਭ ਤੋਂ ਵੱਡਾ ਬਹੁ-ਭਾਸ਼ਾਈ Wordle।" },
+            { "key": "definitions", "title": "ਸ਼ਬਦ ਪਰਿਭਾਸ਼ਾਵਾਂ", "desc": "ਖੇਡਣ ਤੋਂ ਬਾਅਦ ਹਰ ਸ਼ਬਦ ਦਾ ਅਰਥ ਸਿੱਖੋ। ਆਪਣੀ ਸ਼ਬਦਾਵਲੀ ਵਧਾਓ।" },
+            { "key": "word_art", "title": "ਵਿਲੱਖਣ ਸ਼ਬਦ ਕਲਾ", "desc": "ਹਰ ਸ਼ਬਦ ਨਾਲ ਇੱਕ ਖ਼ਾਸ ਤਸਵੀਰ ਆਉਂਦੀ ਹੈ। ਸਾਰੀਆਂ ਇਕੱਠੀਆਂ ਕਰੋ।" },
+            { "key": "themes", "title": "ਡਾਰਕ ਮੋਡ ਅਤੇ ਥੀਮ", "desc": "ਲਾਈਟ, ਡਾਰਕ ਅਤੇ ਉੱਚ ਕੰਟ੍ਰਾਸਟ ਮੋਡ ਆਰਾਮਦਾਇਕ ਖੇਡ ਲਈ।" },
+            { "key": "pwa", "title": "ਹਰ ਥਾਂ ਕੰਮ ਕਰਦਾ ਹੈ", "desc": "PWA — ਕਿਸੇ ਵੀ ਡਿਵਾਈਸ ਤੇ ਇੰਸਟਾਲ ਕਰੋ। ਆਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ। ਕੋਈ ਡਾਊਨਲੋਡ ਲੋੜੀਂਦਾ ਨਹੀਂ।" },
+            { "key": "free", "title": "ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ", "desc": "ਕੋਈ ਖਾਤਾ ਲੋੜੀਂਦਾ ਨਹੀਂ। ਕੋਈ ਭੁਗਤਾਨ ਨਹੀਂ। ਬੱਸ ਖੇਡੋ।" }
+        ],
+        "tips": [
+            { "title": "ਸਵਰ-ਭਰਪੂਰ ਸ਼ਬਦ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ", "text": "CRANE, STARE ਜਾਂ ADIEU ਵਰਗੇ ਸ਼ਬਦ ਆਮ ਅੱਖਰਾਂ ਨੂੰ ਜਲਦੀ ਪਰਖਦੇ ਹਨ। ਇਹ ਜਾਣਨਾ ਕਿ ਕਿਹੜੇ ਸਵਰ ਮੌਜੂਦ ਹਨ, ਵਿਕਲਪ ਤੇਜ਼ੀ ਨਾਲ ਘੱਟ ਕਰਦਾ ਹੈ।" },
+            { "title": "ਜੋ ਪਤਾ ਹੈ ਉਹ ਵਰਤੋ", "text": "ਹਰੇ ਅੱਖਰ ਥਾਂ ਤੇ ਰਹਿੰਦੇ ਹਨ। ਪੀਲੇ ਅੱਖਰ ਹਿੱਲਣੇ ਚਾਹੀਦੇ ਹਨ। ਸਲੇਟੀ ਅੱਖਰ ਖਤਮ ਹੋ ਗਏ ਹਨ। ਹਰ ਅੰਦਾਜ਼ੇ ਵਿੱਚ ਤਿੰਨੇ ਸੰਕੇਤ ਵਰਤੋ।" },
+            { "title": "ਆਮ ਪੈਟਰਨ ਬਾਰੇ ਸੋਚੋ", "text": "ਅੰਗਰੇਜ਼ੀ ਸ਼ਬਦ ਅਕਸਰ -TION, -IGHT, -OUND, -MENT ਨਾਲ ਖ਼ਤਮ ਹੁੰਦੇ ਹਨ। ਹੋਰ ਭਾਸ਼ਾਵਾਂ ਦੇ ਆਪਣੇ ਪੈਟਰਨ ਹਨ — ਉਨ੍ਹਾਂ ਨੂੰ ਸਿੱਖੋ।" },
+            { "title": "ਖ਼ਤਮ ਕਰੋ, ਅੰਨ੍ਹੇ-ਵਾਹ ਅੰਦਾਜ਼ਾ ਨਾ ਲਗਾਓ", "text": "ਤੁਹਾਡਾ ਦੂਜਾ ਸ਼ਬਦ ਨਵੇਂ ਅੱਖਰ ਪਰਖੇ, ਪੁਸ਼ਟੀ ਕੀਤੇ ਅੱਖਰ ਨਾ ਦੁਹਰਾਏ। ਜਿੰਨੇ ਹੋ ਸਕੇ ਨਵੇਂ ਵਿਅੰਜਨ ਅਜ਼ਮਾਓ।" },
+            { "title": "ਦੋਹਰੇ ਅੱਖਰਾਂ ਵੱਲ ਧਿਆਨ ਦਿਓ", "text": "CREEK, FLOSS ਜਾਂ APPLE ਵਰਗੇ ਸ਼ਬਦ ਆਮ ਜਾਲ ਹਨ। ਜੇ ਸੰਕੇਤ ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ, ਤਾਂ ਦੁਹਰਾਇਆ ਅੱਖਰ ਸੋਚੋ।" },
+            { "title": "ਸੁਧਾਰ ਲਈ ਔਖਾ ਮੋਡ ਵਰਤੋ", "text": "ਔਖਾ ਮੋਡ ਤੁਹਾਨੂੰ ਹਰ ਅੰਦਾਜ਼ੇ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕੀਤੇ ਸੰਕੇਤ ਵਰਤਣ ਲਈ ਮਜਬੂਰ ਕਰਦਾ ਹੈ। ਇਹ ਬਿਹਤਰ ਆਦਤਾਂ ਬਣਾਉਂਦਾ ਹੈ।" }
+        ],
+        "tips_speed": [
+            { "title": "CRANE ਜਾਂ STARE ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ", "text": "ਵੱਧ ਵਰਤੇ ਜਾਣ ਵਾਲੇ ਅੱਖਰ ਤੇਜ਼ ਹੱਲ ਦੀ ਸਭ ਤੋਂ ਵਧੀਆ ਸੰਭਾਵਨਾ ਦਿੰਦੇ ਹਨ। ਹਰ ਸਕਿੰਟ ਮਾਇਨੇ ਰੱਖਦਾ ਹੈ।" },
+            { "title": "ਜ਼ਿਆਦਾ ਨਾ ਸੋਚੋ", "text": "Speed Streak ਸੁਭਾਵਿਕ ਸੂਝ ਨੂੰ ਇਨਾਮ ਦਿੰਦਾ ਹੈ। ਜੇ ਤੁਸੀਂ ਸੰਭਾਵਿਤ ਸ਼ਬਦ ਦੇਖਦੇ ਹੋ, ਅਜ਼ਮਾਓ — ਕੰਬੋ ਬੋਨਸ ਪਰਫੈਕਟ ਹੱਲ ਤੋਂ ਵੱਧ ਮਹੱਤਵਪੂਰਨ ਹੈ।" },
+            { "title": "ਆਪਣਾ ਕੰਬੋ ਬਚਾਓ", "text": "ਗਲਤ ਸ਼ਬਦ ਤੁਹਾਡਾ ਗੁਣਕ ਤੋੜ ਦਿੰਦਾ ਹੈ। ਜਦੋਂ ਪੱਕਾ ਨਾ ਹੋਵੇ, ਸੁਰੱਖਿਅਤ ਅੰਦਾਜ਼ਾ ਲਗਾ ਕੇ ਹੋਰ ਸੰਕੇਤ ਲਓ।" },
+            { "title": "2-3 ਅੰਦਾਜ਼ਿਆਂ ਵਿੱਚ ਹੱਲ ਕਰੋ", "text": "ਤੇਜ਼ ਹੱਲਾਂ ਲਈ ਸਮਾਂ ਬੋਨਸ ਬਹੁਤ ਵੱਡਾ ਹੈ (+60s ਇੱਕ ਅੰਦਾਜ਼ੇ ਲਈ, +30s ਦੋ ਲਈ)। ਖ਼ਤਰਨਾਕ ਦੂਜਾ ਅੰਦਾਜ਼ਾ ਬਹੁਤ ਫ਼ਾਇਦੇਮੰਦ ਹੋ ਸਕਦਾ ਹੈ।" },
+            { "title": "ਆਮ ਸ਼ਬਦ ਅੰਤ ਸਿੱਖੋ", "text": "-IGHT, -OUND, -ATCH ਵਰਗੇ ਪੈਟਰਨ ਅਕਸਰ ਦੁਹਰਾਉਂਦੇ ਹਨ। ਇਨ੍ਹਾਂ ਨੂੰ ਤੁਰੰਤ ਪਛਾਣਨਾ ਪ੍ਰਤੀ ਸ਼ਬਦ ਸਕਿੰਟ ਬਚਾਉਂਦਾ ਹੈ।" },
+            { "title": "ਦਬਾਅ ਵਧਣ ਤੇ ਸ਼ਾਂਤ ਰਹੋ", "text": "ਟਾਈਮਰ ਹਰ 3 ਸ਼ਬਦਾਂ ਬਾਅਦ ਤੇਜ਼ ਹੁੰਦਾ ਹੈ। ਕਾਹਲੀ ਨਾਲ ਗਲਤੀਆਂ ਹੁੰਦੀਆਂ ਹਨ। ਸਥਿਰ ਰਫ਼ਤਾਰ ਘਬਰਾਹਟ ਨੂੰ ਹਰਾਉਂਦੀ ਹੈ।" }
+        ],
+        "tips_multiboard": [
+            { "title": "ਵਿਆਪਕ ਸ਼ੁਰੂਆਤ ਕਰੋ", "text": "ਆਮ ਅੱਖਰਾਂ ਵਾਲੇ ਸ਼ਬਦ (CRANE, STARE) ਵਰਤੋ ਤਾਂ ਜੋ ਸਾਰੇ ਬੋਰਡਾਂ ਤੇ ਇੱਕੋ ਵਾਰ ਸੰਕੇਤ ਮਿਲ ਸਕਣ।" },
+            { "title": "ਵੰਡਿਆ ਕੀਬੋਰਡ ਦੇਖੋ", "text": "ਕੀਬੋਰਡ ਹਰ ਬੋਰਡ ਦੇ ਰੰਗ ਦਿਖਾਉਂਦਾ ਹੈ। ਇੱਕ ਬੋਰਡ ਤੇ ਹਰਾ ਅਤੇ ਦੂਜੇ ਤੇ ਸਲੇਟੀ ਅੱਖਰ ਵਿਕਲਪ ਤੇਜ਼ੀ ਨਾਲ ਘੱਟ ਕਰਦਾ ਹੈ।" },
+            { "title": "ਮੁਸ਼ਕਲ ਬੋਰਡਾਂ ਨੂੰ ਪਹਿਲ ਦਿਓ", "text": "ਸਭ ਤੋਂ ਵੱਧ ਅਣਜਾਣ ਅੱਖਰਾਂ ਵਾਲੇ ਬੋਰਡ ਤੇ ਧਿਆਨ ਦਿਓ। ਸੌਖੇ ਬੋਰਡ ਅਕਸਰ ਆਪੇ ਹੱਲ ਹੋ ਜਾਂਦੇ ਹਨ।" },
+            { "title": "ਸ਼ੁਰੂਆਤੀ ਅੰਦਾਜ਼ੇ ਬਰਬਾਦ ਨਾ ਕਰੋ", "text": "ਪਹਿਲੇ 2-3 ਅੰਦਾਜ਼ੇ ਜਾਣਕਾਰੀ-ਭਰਪੂਰ ਸ਼ਬਦਾਂ ਲਈ ਵਰਤੋ ਇਸ ਤੋਂ ਪਹਿਲਾਂ ਕਿ ਕਿਸੇ ਖ਼ਾਸ ਬੋਰਡ ਨੂੰ ਨਿਸ਼ਾਨਾ ਬਣਾਓ।" },
+            { "title": "ਸਾਂਝੇ ਅੱਖਰ ਲੱਭੋ", "text": "ਜੇ ਦੋ ਬੋਰਡ ਪੀਲਾ E ਦਿਖਾਉਂਦੇ ਹਨ, ਤਾਂ ਨਵੀਂ ਥਾਂ ਤੇ E ਵਾਲਾ ਸ਼ਬਦ ਦੋਵੇਂ ਬੋਰਡਾਂ ਦੀ ਇੱਕੋ ਵਾਰ ਮਦਦ ਕਰਦਾ ਹੈ।" },
+            { "title": "ਐਮਰਜੈਂਸੀ ਲਈ ਅੰਦਾਜ਼ਾ ਬਚਾ ਕੇ ਰੱਖੋ", "text": "ਜੇ ਤੁਸੀਂ ਆਖ਼ਰੀ ਬੋਰਡ ਤੇ ਫਸੇ ਹੋ, ਵਾਧੂ ਅੰਦਾਜ਼ਾ ਹੋਣਾ ਜਿੱਤ ਅਤੇ ਹਾਰ ਵਿਚਕਾਰ ਫ਼ਰਕ ਹੈ।" }
+        ],
+        "mode_desc_classic": "ਤੁਹਾਡੇ ਕੋਲ 5 ਅੱਖਰਾਂ ਦਾ ਲੁਕਿਆ ਸ਼ਬਦ ਲੱਭਣ ਲਈ 6 ਕੋਸ਼ਿਸ਼ਾਂ ਹਨ। ਜਵਾਬ ਲੱਭਣ ਲਈ ਰੰਗ ਸੰਕੇਤ ਵਰਤੋ।",
+        "mode_desc_unlimited": "ਤੁਹਾਡੇ ਕੋਲ 5 ਅੱਖਰਾਂ ਦਾ ਲੁਕਿਆ ਸ਼ਬਦ ਲੱਭਣ ਲਈ 6 ਕੋਸ਼ਿਸ਼ਾਂ ਹਨ। ਰੰਗ ਸੰਕੇਤ ਵਰਤੋ। ਹਰ ਖੇਡ ਤੋਂ ਬਾਅਦ, «ਦੁਬਾਰਾ ਖੇਡੋ» ਦਬਾਓ ਅਤੇ ਤੁਰੰਤ ਨਵਾਂ ਸ਼ਬਦ ਲਓ — ਕੋਈ ਰੋਜ਼ਾਨਾ ਹੱਦ ਨਹੀਂ।",
+        "mode_desc_speed": "3 ਮਿੰਟ ਦੇ ਟਾਈਮਰ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ। ਹਰ ਹੱਲ ਕੀਤਾ ਸ਼ਬਦ ਵਾਧੂ ਸਮਾਂ ਦਿੰਦਾ ਹੈ — ਘੱਟ ਅੰਦਾਜ਼ਿਆਂ ਵਿੱਚ ਹੱਲ ਕਰੋ ਤਾਂ ਵੱਡਾ ਬੋਨਸ (+60s ਇੱਕ ਅੰਦਾਜ਼ੇ ਲਈ, +10s ਛੇ ਲਈ)। ਗਲਤ ਸ਼ਬਦ 30 ਸਕਿੰਟ ਘਟਾਉਂਦੇ ਹਨ। ਲਗਾਤਾਰ ਹੱਲ ਕਰਕੇ 3x ਤੱਕ ਕੰਬੋ ਬਣਾਓ। ਦਬਾਅ ਵਧਦਾ ਹੈ — ਹਰ 3 ਸ਼ਬਦਾਂ ਬਾਅਦ ਟਾਈਮਰ ਤੇਜ਼ ਹੁੰਦਾ ਹੈ।",
+        "mode_desc_multiboard": "{modeName} ਤੁਹਾਨੂੰ ਸਿਰਫ਼ {maxGuesses} ਅੰਦਾਜ਼ਿਆਂ ਨਾਲ ਇੱਕੋ ਸਮੇਂ {boardCount} Wordle ਬੋਰਡ ਹੱਲ ਕਰਨ ਦੀ ਚੁਣੌਤੀ ਦਿੰਦਾ ਹੈ। ਹਰ ਅੰਦਾਜ਼ਾ ਸਾਰੇ ਅਣਹੱਲੇ ਬੋਰਡਾਂ ਤੇ ਦਿਖਾਈ ਦਿੰਦਾ ਹੈ। ਹੱਲ ਹੋਏ ਬੋਰਡ ਫ੍ਰੀਜ਼ ਹੋ ਜਾਂਦੇ ਹਨ। ਵੰਡਿਆ-ਰੰਗ ਕੀਬੋਰਡ ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਕਿਹੜੇ ਅੱਖਰ ਕਿਹੜੇ ਬੋਰਡਾਂ ਤੇ ਸਹੀ ਹਨ। ਆਮ ਅੱਖਰਾਂ ਵਾਲੇ ਸ਼ਬਦਾਂ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ।",
+        "faq": [
+            { "q": "{langName} ਵਿੱਚ Wordle ਕਿਵੇਂ ਖੇਡੀਏ?", "a": "wordle.global/{lang} ਤੇ ਜਾ ਕੇ {langName} ਵਿੱਚ ਰੋਜ਼ਾਨਾ Wordle ਖੇਡੋ। ਤੁਹਾਡੇ ਕੋਲ 5 ਅੱਖਰਾਂ ਦਾ ਸ਼ਬਦ ਲੱਭਣ ਲਈ 6 ਕੋਸ਼ਿਸ਼ਾਂ ਹਨ। ਹਰ ਅੰਦਾਜ਼ੇ ਤੋਂ ਬਾਅਦ, ਟਾਈਲਾਂ ਹਰੀਆਂ (ਸਹੀ ਅੱਖਰ, ਸਹੀ ਥਾਂ), ਪੀਲੀਆਂ (ਸਹੀ ਅੱਖਰ, ਗਲਤ ਥਾਂ) ਜਾਂ ਸਲੇਟੀ (ਅੱਖਰ ਸ਼ਬਦ ਵਿੱਚ ਨਹੀਂ) ਹੋ ਜਾਂਦੀਆਂ ਹਨ।" },
+            { "q": "ਕੀ ਹਰ ਰੋਜ਼ ਨਵੀਂ ਬੁਝਾਰਤ ਹੁੰਦੀ ਹੈ?", "a": "ਹਾਂ। ਹਰ ਰੋਜ਼ ਇੱਕ ਨਵਾਂ ਸ਼ਬਦ ਚੁਣਿਆ ਜਾਂਦਾ ਹੈ। ਉਸੇ ਭਾਸ਼ਾ ਵਿੱਚ ਖੇਡਣ ਵਾਲੇ ਸਾਰਿਆਂ ਨੂੰ ਉਹੀ ਸ਼ਬਦ ਮਿਲਦਾ ਹੈ, ਤਾਂ ਤੁਸੀਂ ਦੋਸਤਾਂ ਨਾਲ ਨਤੀਜੇ ਤੁਲਨਾ ਕਰ ਸਕਦੇ ਹੋ।" },
+            { "q": "ਕੀ Wordle Global ਮੁਫ਼ਤ ਹੈ?", "a": "ਹਾਂ। ਰੋਜ਼ਾਨਾ ਬੁਝਾਰਤ, ਅਸੀਮਤ ਮੋਡ ਅਤੇ ਸਾਰੇ ਖੇਡ ਮੋਡ 80+ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫ਼ਤ ਹਨ। ਕੋਈ ਖਾਤਾ ਜਾਂ ਡਾਊਨਲੋਡ ਲੋੜੀਂਦਾ ਨਹੀਂ।" },
+            { "q": "ਕੀ ਮੈਂ ਦਿਨ ਵਿੱਚ ਇੱਕ ਤੋਂ ਵੱਧ ਵਾਰ ਖੇਡ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ?", "a": "ਹਾਂ — ਅਸੀਮਤ ਮੋਡ ਅਜ਼ਮਾਓ wordle.global/{lang}/unlimited ਤੇ ਬੇਅੰਤ ਖੇਡਾਂ ਲਈ ਬਿਨਾਂ ਉਡੀਕ। ਤੁਹਾਡੀ ਰੋਜ਼ਾਨਾ ਲੜੀ ਵੱਖਰੇ ਤੌਰ ਤੇ ਟ੍ਰੈਕ ਹੁੰਦੀ ਹੈ।" }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "{langName} ਵਿੱਚ Wordle ਅਸੀਮਤ ਕੀ ਹੈ?", "a": "Wordle ਅਸੀਮਤ ਤੁਹਾਨੂੰ {langName} ਵਿੱਚ ਜਿੰਨੀਆਂ ਮਰਜ਼ੀ ਖੇਡਾਂ ਖੇਡਣ ਦਿੰਦਾ ਹੈ, ਕੱਲ੍ਹ ਦੀ ਬੁਝਾਰਤ ਦੀ ਉਡੀਕ ਕੀਤੇ ਬਿਨਾਂ। ਹਰ ਖੇਡ ਤੁਹਾਨੂੰ 6 ਕੋਸ਼ਿਸ਼ਾਂ ਵਿੱਚ ਲੱਭਣ ਲਈ ਨਵਾਂ ਸ਼ਬਦ ਦਿੰਦੀ ਹੈ।" },
+                { "q": "ਕੀ Wordle ਅਸੀਮਤ ਮੁਫ਼ਤ ਹੈ?", "a": "ਹਾਂ। Wordle ਅਸੀਮਤ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫ਼ਤ ਹੈ। ਕੋਈ ਖਾਤਾ, ਕੋਈ ਡਾਊਨਲੋਡ, ਖੇਡ ਦੌਰਾਨ ਕੋਈ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ।" },
+                { "q": "ਕੀ ਅਸੀਮਤ ਮੋਡ ਮੇਰੀ ਰੋਜ਼ਾਨਾ ਲੜੀ ਵਿੱਚ ਗਿਣਿਆ ਜਾਂਦਾ ਹੈ?", "a": "ਨਹੀਂ। ਅਸੀਮਤ ਮੋਡ ਦੇ ਆਪਣੇ ਵੱਖਰੇ ਅੰਕੜੇ ਹਨ। ਤੁਹਾਡੀ ਰੋਜ਼ਾਨਾ ਲੜੀ ਸਿਰਫ਼ ਰੋਜ਼ਾਨਾ ਬੁਝਾਰਤ ਨਾਲ ਪ੍ਰਭਾਵਿਤ ਹੁੰਦੀ ਹੈ।" },
+                { "q": "ਮੈਂ ਕਿੰਨੀ ਵਾਰ ਖੇਡ ਸਕਦਾ/ਸਕਦੀ ਹਾਂ?", "a": "ਕੋਈ ਹੱਦ ਨਹੀਂ। ਤੁਸੀਂ ਜਿੰਨੇ ਮਰਜ਼ੀ ਗੇੜ ਖੇਡ ਸਕਦੇ ਹੋ। ਹਰ ਖੇਡ ਤੋਂ ਬਾਅਦ, «ਦੁਬਾਰਾ ਖੇਡੋ» ਦਬਾਓ ਅਤੇ ਤੁਰੰਤ ਨਵਾਂ ਸ਼ਬਦ ਲਓ।" },
+                { "q": "Wordle ਅਸੀਮਤ ਕਿਹੜੀਆਂ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਖੇਡ ਸਕਦੇ ਹਾਂ?", "a": "Wordle ਅਸੀਮਤ wordle.global ਤੇ 80 ਤੋਂ ਵੱਧ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਉਪਲਬਧ ਹੈ, ਜਿਸ ਵਿੱਚ ਅੰਗਰੇਜ਼ੀ, ਸਪੈਨਿਸ਼, ਜਰਮਨ, ਫ਼ਿਨਿਸ਼, ਅਰਬੀ, ਫ਼ਰੈਂਚ, ਇਤਾਲਵੀ, ਪੁਰਤਗਾਲੀ ਅਤੇ ਹੋਰ ਬਹੁਤ ਸਾਰੀਆਂ ਸ਼ਾਮਲ ਹਨ।" }
+            ],
+            "speed": [
+                { "q": "{langName} ਵਿੱਚ Speed Streak ਕੀ ਹੈ?", "a": "Speed Streak {langName} ਵਿੱਚ ਇੱਕ ਸਮਾਂ-ਬੱਧ Wordle ਮੋਡ ਹੈ। ਤੁਸੀਂ 3 ਮਿੰਟ ਨਾਲ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ ਅਤੇ ਜਿੰਨੇ ਹੋ ਸਕੇ ਸ਼ਬਦ ਹੱਲ ਕਰਦੇ ਹੋ। ਜਲਦੀ ਹੱਲ ਕਰੋ ਤਾਂ ਵਾਧੂ ਸਮਾਂ ਮਿਲੇ।" },
+                { "q": "ਸਕੋਰਿੰਗ ਕਿਵੇਂ ਕੰਮ ਕਰਦੀ ਹੈ?", "a": "ਹਰ ਹੱਲ ਕੀਤੇ ਸ਼ਬਦ ਲਈ ਅੰਕ ਮਿਲਦੇ ਹਨ। ਘੱਟ ਅੰਦਾਜ਼ੇ ਅਤੇ ਤੇਜ਼ ਹੱਲ ਵੱਧ ਅੰਕ ਦਿੰਦੇ ਹਨ। ਲਗਾਤਾਰ ਹੱਲ ਕਰਕੇ 3x ਤੱਕ ਕੰਬੋ ਗੁਣਕ ਬਣਾਓ।" },
+                { "q": "ਜਦੋਂ ਸਮਾਂ ਮੁੱਕ ਜਾਵੇ ਤਾਂ ਕੀ ਹੁੰਦਾ ਹੈ?", "a": "ਖੇਡ ਖ਼ਤਮ ਹੋ ਜਾਂਦੀ ਹੈ ਅਤੇ ਤੁਸੀਂ ਆਪਣਾ ਅੰਤਿਮ ਸਕੋਰ, ਕੁੱਲ ਹੱਲ ਕੀਤੇ ਸ਼ਬਦ, ਵੱਧ ਤੋਂ ਵੱਧ ਕੰਬੋ ਅਤੇ ਔਸਤ ਅੰਦਾਜ਼ੇ ਦੇਖਦੇ ਹੋ। ਤੁਸੀਂ ਤੁਰੰਤ ਦੁਬਾਰਾ ਖੇਡ ਸਕਦੇ ਹੋ।" },
+                { "q": "ਕੀ Speed Streak ਮੁਫ਼ਤ ਹੈ?", "a": "ਹਾਂ। Speed Streak ਸਾਰੀਆਂ 80+ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫ਼ਤ ਹੈ। ਕੋਈ ਖਾਤਾ ਜਾਂ ਡਾਊਨਲੋਡ ਲੋੜੀਂਦਾ ਨਹੀਂ।" }
+            ],
+            "multiboard": [
+                { "q": "{langName} ਵਿੱਚ {modeName} ਕੀ ਹੈ?", "a": "{modeName} {langName} ਵਿੱਚ ਇੱਕ ਮਲਟੀ-ਬੋਰਡ Wordle ਰੂਪ ਹੈ। ਤੁਸੀਂ {maxGuesses} ਅੰਦਾਜ਼ਿਆਂ ਨਾਲ ਇੱਕੋ ਸਮੇਂ {boardCount} Wordle ਬੋਰਡ ਹੱਲ ਕਰਦੇ ਹੋ। ਹਰ ਅੰਦਾਜ਼ਾ ਸਾਰੇ ਅਣਹੱਲੇ ਬੋਰਡਾਂ ਤੇ ਦਿਖਾਈ ਦਿੰਦਾ ਹੈ।" },
+                { "q": "{modeName} ਵਿੱਚ ਕਿੰਨੇ ਅੰਦਾਜ਼ੇ ਮਿਲਦੇ ਹਨ?", "a": "ਤੁਹਾਨੂੰ ਸਾਰੇ {boardCount} ਬੋਰਡ ਹੱਲ ਕਰਨ ਲਈ {maxGuesses} ਅੰਦਾਜ਼ੇ ਮਿਲਦੇ ਹਨ। ਹੱਲ ਹੋਇਆ ਬੋਰਡ ਫ੍ਰੀਜ਼ ਹੋ ਜਾਂਦਾ ਹੈ ਅਤੇ ਤੁਸੀਂ ਬਾਕੀ ਬੋਰਡਾਂ ਤੇ ਧਿਆਨ ਦੇ ਸਕਦੇ ਹੋ।" },
+                { "q": "{modeName} ਲਈ ਕਿਹੜੀ ਰਣਨੀਤੀ ਸਭ ਤੋਂ ਵਧੀਆ ਕੰਮ ਕਰਦੀ ਹੈ?", "a": "ਆਮ ਅੱਖਰਾਂ ਵਾਲੇ ਸ਼ਬਦਾਂ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ ਤਾਂ ਜੋ ਸਾਰੇ {boardCount} ਬੋਰਡਾਂ ਤੇ ਜਾਣਕਾਰੀ ਮਿਲ ਸਕੇ। ਵੰਡਿਆ-ਰੰਗ ਕੀਬੋਰਡ ਦੇਖੋ — ਇਹ ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਕਿਹੜੇ ਅੱਖਰ ਕਿਹੜੇ ਬੋਰਡਾਂ ਤੇ ਸਹੀ ਹਨ।" },
+                { "q": "ਕੀ {modeName} ਮੁਫ਼ਤ ਹੈ?", "a": "ਹਾਂ। {modeName} ਸਾਰੀਆਂ 80+ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫ਼ਤ ਹੈ। ਕੋਈ ਖਾਤਾ ਜਾਂ ਡਾਊਨਲੋਡ ਲੋੜੀਂਦਾ ਨਹੀਂ। ਜਿੰਨੇ ਮਰਜ਼ੀ ਗੇੜ ਖੇਡੋ।" }
+            ]
+        },
+        "howto": [
+            { "name": "ਸ਼ਬਦ ਟਾਈਪ ਕਰੋ", "text": "{langName} ਵਿੱਚ 5 ਅੱਖਰਾਂ ਦਾ ਵੈਧ ਸ਼ਬਦ ਸਕ੍ਰੀਨ ਕੀਬੋਰਡ ਜਾਂ ਆਪਣੇ ਕੀਬੋਰਡ ਨਾਲ ਟਾਈਪ ਕਰੋ, ਫਿਰ ਐਂਟਰ ਦਬਾਓ।" },
+            { "name": "ਸੰਕੇਤ ਪੜ੍ਹੋ", "text": "ਹਰੀ ਟਾਈਲ ਦਾ ਮਤਲਬ ਅੱਖਰ ਸਹੀ ਹੈ ਅਤੇ ਸਹੀ ਥਾਂ ਤੇ ਹੈ। ਪੀਲੀ ਦਾ ਮਤਲਬ ਅੱਖਰ ਸ਼ਬਦ ਵਿੱਚ ਹੈ ਪਰ ਗਲਤ ਥਾਂ ਤੇ। ਸਲੇਟੀ ਦਾ ਮਤਲਬ ਅੱਖਰ ਸ਼ਬਦ ਵਿੱਚ ਨਹੀਂ ਹੈ।" },
+            { "name": "6 ਕੋਸ਼ਿਸ਼ਾਂ ਵਿੱਚ ਹੱਲ ਕਰੋ", "text": "ਰੰਗ ਸੰਕੇਤ ਵਰਤ ਕੇ ਸ਼ਬਦ ਲੱਭੋ। ਤੁਹਾਡੇ ਕੋਲ ਕੁੱਲ 6 ਅੰਦਾਜ਼ੇ ਹਨ। ਬੁਝਾਰਤ ਤੋਂ ਬਾਅਦ, ਆਪਣੇ ਅੰਕੜੇ ਦੇਖੋ ਅਤੇ ਨਤੀਜਾ ਸਾਂਝਾ ਕਰੋ।" }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "ਖੇਡ ਸ਼ੁਰੂ ਕਰੋ", "text": "{langName} ਵਿੱਚ Wordle ਅਸੀਮਤ ਖੇਡਣ ਲਈ wordle.global/{lang}/unlimited ਤੇ ਜਾਓ। ਇੱਕ ਬੇਤਰਤੀਬ 5 ਅੱਖਰਾਂ ਦਾ ਸ਼ਬਦ ਚੁਣਿਆ ਜਾਂਦਾ ਹੈ।" },
+                { "name": "ਸ਼ਬਦ ਲੱਭੋ", "text": "5 ਅੱਖਰਾਂ ਦਾ ਵੈਧ ਸ਼ਬਦ ਟਾਈਪ ਕਰੋ ਅਤੇ ਐਂਟਰ ਦਬਾਓ। ਹਰੀ ਟਾਈਲ ਦਾ ਮਤਲਬ ਸਹੀ ਅੱਖਰ ਸਹੀ ਥਾਂ ਤੇ। ਪੀਲੀ ਦਾ ਮਤਲਬ ਸ਼ਬਦ ਵਿੱਚ ਹੈ ਪਰ ਗਲਤ ਥਾਂ। ਸਲੇਟੀ ਦਾ ਮਤਲਬ ਸ਼ਬਦ ਵਿੱਚ ਨਹੀਂ।" },
+                { "name": "ਤੁਰੰਤ ਦੁਬਾਰਾ ਖੇਡੋ", "text": "ਸ਼ਬਦ ਹੱਲ ਕਰਨ (ਜਾਂ ਸਾਰੇ 6 ਅੰਦਾਜ਼ੇ ਵਰਤਣ) ਤੋਂ ਬਾਅਦ, «ਦੁਬਾਰਾ ਖੇਡੋ» ਦਬਾਓ ਅਤੇ ਤੁਰੰਤ ਨਵਾਂ ਸ਼ਬਦ ਲਓ। ਕੱਲ੍ਹ ਦੀ ਉਡੀਕ ਨਹੀਂ।" }
+            ],
+            "speed": [
+                { "name": "ਟਾਈਮਰ ਸ਼ੁਰੂ ਕਰੋ", "text": "wordle.global/{lang}/speed ਤੇ ਜਾਓ ਅਤੇ ਸ਼ੁਰੂ ਦਬਾਓ। ਤੁਸੀਂ 3 ਮਿੰਟ ਨਾਲ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ।" },
+                { "name": "ਤੇਜ਼ੀ ਨਾਲ ਸ਼ਬਦ ਹੱਲ ਕਰੋ", "text": "ਹਰ ਹੱਲ ਕੀਤਾ ਸ਼ਬਦ ਵਾਧੂ ਸਮਾਂ ਦਿੰਦਾ ਹੈ (+10s ਤੋਂ +60s ਅੰਦਾਜ਼ਿਆਂ ਅਨੁਸਾਰ)। ਗਲਤ ਸ਼ਬਦ 30 ਸਕਿੰਟ ਘਟਾਉਂਦੇ ਹਨ।" },
+                { "name": "ਆਪਣਾ ਕੰਬੋ ਬਣਾਓ", "text": "ਲਗਾਤਾਰ ਸ਼ਬਦ ਹੱਲ ਕਰੋ ਤਾਂ ਕੰਬੋ ਗੁਣਕ ਬਣੇ (3x ਤੱਕ)। ਗਲਤ ਸ਼ਬਦ ਨਾਲ ਕੰਬੋ ਟੁੱਟ ਜਾਂਦਾ ਹੈ। ਆਪਣਾ ਉੱਚ ਸਕੋਰ ਤੋੜਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ।" }
+            ],
+            "multiboard": [
+                { "name": "ਖੇਡ ਸ਼ੁਰੂ ਕਰੋ", "text": "{langName} ਵਿੱਚ {modeName} ਖੇਡਣ ਲਈ wordle.global/{lang}/{modeName} ਤੇ ਜਾਓ। {boardCount} ਬੋਰਡ ਵੱਖ-ਵੱਖ ਲੁਕੇ ਸ਼ਬਦਾਂ ਨਾਲ ਦਿਖਾਈ ਦਿੰਦੇ ਹਨ।" },
+                { "name": "ਸਾਰੇ ਬੋਰਡਾਂ ਤੇ ਅੰਦਾਜ਼ਾ ਲਗਾਓ", "text": "5 ਅੱਖਰਾਂ ਦਾ ਸ਼ਬਦ ਟਾਈਪ ਕਰੋ ਅਤੇ ਐਂਟਰ ਦਬਾਓ। ਤੁਹਾਡਾ ਅੰਦਾਜ਼ਾ ਸਾਰੇ {boardCount} ਬੋਰਡਾਂ ਤੇ ਇੱਕੋ ਵਾਰ ਦਿਖਾਈ ਦਿੰਦਾ ਹੈ। ਹਰ ਬੋਰਡ ਆਪਣੇ ਰੰਗ ਸੰਕੇਤ (ਹਰਾ, ਪੀਲਾ, ਸਲੇਟੀ) ਦਿਖਾਉਂਦਾ ਹੈ।" },
+                { "name": "ਸਾਰੇ {boardCount} ਬੋਰਡ ਹੱਲ ਕਰੋ", "text": "ਹੱਲ ਹੋਏ ਬੋਰਡ ਥਾਂ ਤੇ ਫ੍ਰੀਜ਼ ਹੋ ਜਾਂਦੇ ਹਨ। ਵੰਡਿਆ-ਰੰਗ ਕੀਬੋਰਡ ਵਰਤ ਕੇ ਟ੍ਰੈਕ ਕਰੋ ਕਿ ਕਿਹੜੇ ਅੱਖਰ ਕਿਹੜੇ ਬੋਰਡਾਂ ਤੇ ਕੰਮ ਕਰਦੇ ਹਨ। ਜਿੱਤਣ ਲਈ ਸਾਰੇ {boardCount} ਬੋਰਡ {maxGuesses} ਅੰਦਾਜ਼ਿਆਂ ਵਿੱਚ ਹੱਲ ਕਰੋ।" }
+            ]
+        }
     },
     "ui": {
         "settings": "ਸੈਟਿੰਗਜ਼",
@@ -144,6 +270,67 @@
         "pos_verb": "ਕਿਰਿਆ",
         "pos_adjective": "ਵਿਸ਼ੇਸ਼ਣ",
         "pos_adverb": "ਕਿਰਿਆ ਵਿਸ਼ੇਸ਼ਣ",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     }
 }

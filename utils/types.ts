@@ -6,11 +6,97 @@
 // Language Configuration (from language_config.json)
 // =============================================================================
 
+export interface LanguageModeMeta {
+    title?: string;
+    description?: string;
+}
+
+export interface SeoFaqItem {
+    q: string;
+    a: string;
+}
+
+export interface SeoTip {
+    title: string;
+    text: string;
+}
+
+export interface SeoHowToStep {
+    name: string;
+    text: string;
+}
+
+export interface SeoValueProp {
+    key: string;
+    title: string;
+    desc: string;
+}
+
+/**
+ * Translatable SEO content for the below-game noscript section.
+ *
+ * All text supports placeholders: {langName}, {lang}, {modeName}, {boardCount}, {maxGuesses}.
+ * These are interpolated at runtime by useGameSeo.
+ *
+ * When translating: provide the FULL seo block (shallow merge replaces the entire object).
+ * Mode-specific content uses `mode_*` keys with a "multiboard" key shared by all multi-board modes.
+ */
+export interface LanguageSeo {
+    // Section headings
+    how_to_play?: string;
+    tips_strategy?: string;
+    more_modes?: string;
+    play_in_languages?: string;
+    play_in_languages_sub?: string;
+    why_wordle_global?: string;
+    faq_title?: string;
+    browse_all_languages?: string;
+    recent_words?: string;
+    view_all_words?: string;
+    footer?: string;
+
+    // Tile example descriptions (how-to)
+    tile_correct?: string;
+    tile_semicorrect?: string;
+    tile_incorrect?: string;
+
+    // Social proof stat labels
+    stat_players?: string;
+    stat_guesses?: string;
+    stat_languages?: string;
+    stat_modes?: string;
+
+    // Value propositions
+    value_props?: SeoValueProp[];
+
+    // Mode description paragraphs (shown in how-to section)
+    mode_desc_classic?: string;
+    mode_desc_unlimited?: string;
+    mode_desc_speed?: string;
+    mode_desc_multiboard?: string;
+
+    // FAQ — default (classic) and mode-specific overrides
+    faq?: SeoFaqItem[];
+    mode_faq?: Record<string, SeoFaqItem[]>;
+
+    // HowTo steps — default (classic) and mode-specific overrides (used in JSON-LD)
+    howto?: SeoHowToStep[];
+    mode_howto?: Record<string, SeoHowToStep[]>;
+
+    // Strategy tips — default (classic) and mode-specific variants
+    tips?: SeoTip[];
+    tips_speed?: SeoTip[];
+    tips_multiboard?: SeoTip[];
+    mode_tips?: Record<string, SeoTip[]>;
+}
+
 export interface LanguageMeta {
     locale: string;
     title: string;
     description: string;
     keywords: string;
+    wordle_native?: string;
+    modes?: Record<string, LanguageModeMeta>;
 }
 
 export interface LanguageText {
@@ -22,6 +108,7 @@ export interface LanguageText {
     copied?: string;
     'notification-copied'?: string;
     'notification-partial-word'?: string;
+    win_words?: string;
 }
 
 export interface LanguageHelp {
@@ -36,6 +123,14 @@ export interface LanguageHelp {
     text_2_2: string;
     text_2_3: string;
     text_3: string;
+    speed_how_it_works?: string;
+    speed_explanation?: string;
+    speed_time_bonuses?: string;
+    speed_guesses_to_time?: string;
+    speed_scoring?: string;
+    speed_scoring_explanation?: string;
+    speed_pressure?: string;
+    speed_pressure_explanation?: string;
 }
 
 export interface UiStrings {
@@ -122,6 +217,73 @@ export interface UiStrings {
     pos_adjective: string;
     pos_adverb: string;
     pos_other: string;
+    // Stats & streak modal
+    play_to_reveal?: string;
+    board?: string;
+    new_game?: string;
+    share_result?: string;
+    unlimited_mode?: string;
+    day_streak?: string;
+    last_28_days?: string;
+    weekday_initials?: string;
+    won?: string;
+    lost?: string;
+    missed?: string;
+    current?: string;
+    longest?: string;
+    wins_by_language?: string;
+    played?: string;
+    show_less?: string;
+    show_more_count?: string;
+    streak_footer?: string;
+    // Speed mode
+    speed_streak?: string;
+    time_up?: string;
+    points?: string;
+    solved?: string;
+    combo?: string;
+    avg_guesses?: string;
+    failed?: string;
+    the_word_was?: string;
+    words_solved?: string;
+    play_again?: string;
+    per_word?: string;
+    // Post-game & copy
+    new_word?: string;
+    try_another_mode?: string;
+    copy_your_results?: string;
+    copy_instructions?: string;
+    done?: string;
+    // Error page
+    error_404?: string;
+    error_500?: string;
+    play_wordle?: string;
+    or_pick_language?: string;
+    skip_to_game?: string;
+    // Homepage
+    homepage_tagline?: string;
+    homepage_playing_in?: string;
+    homepage_change?: string;
+    homepage_choose_language?: string;
+    homepage_languages_counting?: string;
+    homepage_search?: string;
+    homepage_and_more?: string;
+    homepage_and_more_desc?: string;
+    // Game mode labels & descriptions
+    mode_daily_label?: string;
+    mode_daily_desc?: string;
+    mode_unlimited_label?: string;
+    mode_unlimited_desc?: string;
+    mode_speed_label?: string;
+    mode_speed_desc?: string;
+    mode_dordle_desc?: string;
+    mode_quordle_desc?: string;
+    mode_octordle_desc?: string;
+    mode_sedecordle_desc?: string;
+    mode_duotrigordle_desc?: string;
+    mode_semantic_desc?: string;
+    mode_custom_desc?: string;
+    mode_party_desc?: string;
 }
 
 export interface LanguageConfig {
@@ -137,6 +299,7 @@ export interface LanguageConfig {
     text: LanguageText;
     help: LanguageHelp;
     ui?: UiStrings;
+    seo?: LanguageSeo;
     /** Optional diacritic normalization map. Maps base characters to their diacritic variants. */
     diacritic_map?: Record<string, string[]>;
     /** Optional final form map for positional character variants. */
@@ -382,6 +545,7 @@ export interface PWAStatus {
     isInstallAvailable: boolean;
     isAppleMobile: boolean;
     isAppleDesktop: boolean;
+    dismissCount: number;
 }
 
 // =============================================================================

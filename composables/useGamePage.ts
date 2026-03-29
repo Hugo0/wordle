@@ -86,6 +86,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
         // Calculate stats for the current game mode so the stats modal has data on reload
         const statsKey = buildStatsKey(game.gameConfig);
         stats.calculateStats(statsKey, game.gameConfig.maxGuesses);
+        stats.calculateTotalStats(); // Overall streak for header badge
 
         // Analytics initialization — shared across ALL game mode pages
         try {
@@ -93,19 +94,28 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             // Pageviews handled by PostHog's built-in $pageview (capture_pageview: 'history_change')
             // Register language + game_mode as super properties on all future PostHog events
             analytics.registerLanguage(langStore.languageCode);
-            analytics.registerGameMode(game.gameConfig.mode);
             // Defer trackGameStart to nextTick so mode pages (unlimited, speed, etc.)
             // have a chance to set their gameConfig.mode in their own onMounted hooks first.
             nextTick(() => {
                 analytics.registerGameMode(game.gameConfig.mode);
-                analytics.trackGameStart({
-                    language: langStore.languageCode,
-                    is_returning: stats.stats.n_games > 0,
-                    current_streak: stats.stats.current_streak,
-                    game_mode: game.gameConfig.mode,
-                });
+                // Only fire game_start when the game is actually playable
+                if (!game.gameOver) {
+                    analytics.trackGameStart({
+                        language: langStore.languageCode,
+                        is_returning: stats.stats.n_games > 0,
+                        current_streak: stats.stats.current_streak,
+                        game_mode: game.gameConfig.mode,
+                    });
+                }
             });
             analytics.trackPWASession(langStore.languageCode);
+
+            // Referral tracking — detect ?r= param from shared links
+            const route = useRoute();
+            const shareResult = route.query.r as string | undefined;
+            if (shareResult) {
+                analytics.trackReferralLanding(langStore.languageCode, shareResult);
+            }
             analytics.initAbandonTracking(() => ({
                 language: langStore.languageCode,
                 activeRow: game.activeRow,
@@ -113,9 +123,15 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                 lastGuessValid: true,
                 game_mode: game.gameConfig.mode,
             }));
-            const userProps = analytics.identifyUser(stats.gameResults);
+            // Only identify new users — returning users are already identified
+            // from a previous session (PostHog persists distinct_id in localStorage).
+            // This saves ~$identify + $set events for every returning-user page load.
+            const isNewUser = !localStorage.getItem('first_seen_date');
+            const userProps = isNewUser
+                ? analytics.identifyUser(stats.gameResults)
+                : analytics.computeUserProperties(stats.gameResults);
 
-            // Retention events — based on last_played_date in localStorage
+            // Retention — merge returning_player + re_engagement into one event
             const lastPlayed = localStorage.getItem('last_played_date');
             const daysSinceLast = analytics.daysSince(lastPlayed ?? undefined);
             if (stats.stats.n_games > 0 && daysSinceLast !== undefined && daysSinceLast >= 1) {
@@ -125,9 +141,6 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                     stats.stats.current_streak,
                     userProps.languagesPlayed.length
                 );
-                if (daysSinceLast >= 7) {
-                    analytics.trackReEngagement(langStore.languageCode, daysSinceLast);
-                }
             }
 
             // Multi-language: detect first play of a new language

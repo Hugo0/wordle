@@ -29,6 +29,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Swahili. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Swahili. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Swahili. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Swahili. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -40,7 +52,13 @@
         "share_challenge_win": "Nimetatua Wordle leo katika majaribio {n}. Je, wewe ni bora zaidi?",
         "share_challenge_lose": "Sikuweza kutatua Wordle leo. Je, unaweza?",
         "notification_copied": "Imenakiliwa kwenye ubao wa kunakili",
-        "notification_partial_word": "Tafadhali ingiza neno kamili"
+        "notification_partial_word": "Tafadhali ingiza neno kamili",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "swh",
@@ -56,7 +74,120 @@
         "text_2_1": "iko katika neno na katika nafasi sahihi!",
         "text_2_2": "iko katika neno, lakini si katika nafasi sahihi.",
         "text_2_3": "haipo katika neno unalojaribu kubahatisha.",
-        "text_3": "Neno jipya litapatikana kila siku!"
+        "text_3": "Neno jipya litapatikana kila siku!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
+    },
+    "seo": {
+        "how_to_play": "Jinsi ya Kucheza",
+        "tips_strategy": "Vidokezo na Mkakati",
+        "more_modes": "Njia Zaidi za Mchezo",
+        "play_in_languages": "Cheza kwa Lugha 80+",
+        "play_in_languages_sub": "Kila lugha ni bure. Hakuna akaunti inayohitajika.",
+        "why_wordle_global": "Kwa Nini Wordle Global",
+        "faq_title": "Maswali Yanayoulizwa Mara kwa Mara",
+        "browse_all_languages": "Vinjari lugha zote 80+",
+        "recent_words": "Maneno ya Hivi Karibuni",
+        "view_all_words": "Tazama maneno yote",
+        "footer": "wordle.global — mchezo wa maneno wa kila siku wa bure kwa lugha 80+",
+        "tile_correct": "iko katika neno na katika nafasi sahihi.",
+        "tile_semicorrect": "iko katika neno lakini katika nafasi isiyofaa.",
+        "tile_incorrect": "haiko katika neno kabisa.",
+        "stat_players": "Wachezaji",
+        "stat_guesses": "Mabahatisho",
+        "stat_languages": "Lugha",
+        "stat_modes": "Njia za Mchezo",
+        "value_props": [
+            { "key": "languages", "title": "Lugha 80+", "desc": "Kutoka Kiarabu hadi Kiyoruba. Wordle kubwa zaidi ya lugha nyingi." },
+            { "key": "definitions", "title": "Maana ya Maneno", "desc": "Jifunze maana ya kila neno baada ya kucheza. Panua msamiati wako." },
+            { "key": "word_art", "title": "Sanaa ya Neno ya Kipekee", "desc": "Kila neno linakuja na picha maalum. Kusanya zote." },
+            { "key": "themes", "title": "Hali ya Giza na Mandhari", "desc": "Hali ya mwanga, giza, na utofautishaji wa juu kwa mchezo wa starehe." },
+            { "key": "pwa", "title": "Inafanya Kazi Popote", "desc": "PWA — sakinisha kwenye kifaa chochote. Inafanya kazi nje ya mtandao. Hakuna upakuaji unaohitajika." },
+            { "key": "free", "title": "Bure Milele", "desc": "Hakuna akaunti inayohitajika. Hakuna malipo. Cheza tu." }
+        ],
+        "tips": [
+            { "title": "Anza na neno lenye irabu nyingi", "text": "Maneno kama CRANE, STARE au ADIEU hupima herufi za kawaida haraka. Kujua irabu zipi zipo hupunguza chaguo haraka." },
+            { "title": "Tumia unachokijua", "text": "Herufi za kijani zinabaki. Za njano lazima zihamishwe. Za kijivu zimeondolewa. Kila jaribio linapaswa kutumia vidokezo vyote vitatu." },
+            { "title": "Fikiria kuhusu mifumo ya kawaida", "text": "Maneno ya Kiingereza mara nyingi huisha kwa -TION, -IGHT, -OUND, -MENT. Lugha nyingine zina mifumo yao — jifunze." },
+            { "title": "Ondoa, usibahatishire", "text": "Neno lako la pili linapaswa kupima herufi mpya, si kurudia zilizothibitishwa. Funika konsonanti nyingi ambazo hazijajaribiwa." },
+            { "title": "Angalia herufi zinazojirudia", "text": "Maneno kama CREEK, FLOSS au APPLE ni mitego ya kawaida. Vidokezo vyako havifanani, fikiria herufi inayojirudia." },
+            { "title": "Tumia hali ngumu ili kuboresha", "text": "Hali ngumu inakushurutisha kutumia vidokezo vilivyothibitishwa katika kila jaribio. Inakujenga tabia bora." }
+        ],
+        "tips_speed": [
+            { "title": "Anza na CRANE au STARE", "text": "Herufi za mara kwa mara zinakupa nafasi bora ya kutatua haraka. Kila sekunde ina maana." },
+            { "title": "Usifikirie sana", "text": "Speed Streak huthawabu silika. Ukiona neno linalowezekana, lijaribu — bonasi ya combo ni kubwa kuliko kutatua kwa ukamilifu." },
+            { "title": "Linda combo yako", "text": "Neno lililosahaulika linavunja kizidishi chako. Usipokuwa na uhakika, tumia jaribio salama kupata vidokezo zaidi." },
+            { "title": "Lenga kutatua kwa majaribio 2-3", "text": "Bonasi ya muda ni kubwa kwa kutatua haraka (+60s kwa jaribio 1, +30s kwa 2). Jaribio la pili lenye hatari linaweza kulipa sana." },
+            { "title": "Jifunze miisho ya kawaida ya maneno", "text": "Mifumo kama -IGHT, -OUND, -ATCH inarudiwa mara kwa mara. Kuitambua mara moja huokoa sekunde kwa neno." },
+            { "title": "Tulia shinikizo linapopanda", "text": "Saa inaharakisha kila maneno 3. Kukimbilia husababisha makosa. Kasi thabiti inashinda wasiwasi." }
+        ],
+        "tips_multiboard": [
+            { "title": "Anza kwa upana", "text": "Tumia maneno yenye herufi za kawaida (CRANE, STARE) kupata vidokezo kwenye bodi zote mara moja." },
+            { "title": "Angalia kibodi kilichogawanywa", "text": "Kibodi kinaonyesha rangi kwa kila bodi. Herufi ya kijani kwenye bodi moja na kijivu kwenye nyingine hupunguza chaguo haraka." },
+            { "title": "Weka kipaumbele kwenye bodi ngumu", "text": "Elekeza majaribio kwenye bodi yenye haijulikani nyingi zaidi. Bodi rahisi mara nyingi hujitatua zenyewe." },
+            { "title": "Usipoteze majaribio ya awali", "text": "Tumia majaribio 2-3 ya kwanza kwa maneno yenye taarifa nyingi kabla ya kulenga bodi mahususi." },
+            { "title": "Tafuta herufi zinazoshirikiwa", "text": "Bodi mbili zikionyesha E ya njano, neno lenye E katika nafasi mpya husaidia bodi zote mbili kwa wakati mmoja." },
+            { "title": "Hifadhi jaribio kwa dharura", "text": "Ukikwama kwenye bodi ya mwisho, kuwa na jaribio la ziada ni tofauti kati ya kushinda na kushindwa." }
+        ],
+        "mode_desc_classic": "Una majaribio 6 kubahatisha neno la herufi 5 lililofichwa. Tumia vidokezo vya rangi kupunguza jibu.",
+        "mode_desc_unlimited": "Una majaribio 6 kubahatisha neno la herufi 5 lililofichwa. Tumia vidokezo vya rangi kupunguza jibu. Baada ya kila mchezo, bonyeza \"Cheza Tena\" kupata neno jipya mara moja — hakuna kikomo cha kila siku.",
+        "mode_desc_speed": "Anza na dakika 3 kwenye saa. Kila neno unalotatua linakupa muda wa ziada — tatua kwa majaribio machache kwa bonasi kubwa zaidi (+60s kwa jaribio 1, +10s kwa 6). Maneno yaliyokosekana yanakugharimu sekunde 30. Jenga combo kwa kutatua maneno mfululizo kwa kizidishi hadi 3x. Shinikizo linaongezeka — saa inaharakisha kila maneno 3.",
+        "mode_desc_multiboard": "{modeName} inakupa changamoto ya kutatua bodi {boardCount} za Wordle kwa wakati mmoja kwa kutumia majaribio {maxGuesses} tu. Kila jaribio linaonekana kwenye bodi zote ambazo hazijatatuliwa. Bodi zinaposuluhishwa zinaganda. Kibodi cha rangi kilichogawanywa kinaonyesha herufi zipi ni sahihi kwenye bodi zipi. Anza na maneno yenye herufi za kawaida kupata vidokezo kwenye bodi zote mara moja.",
+        "faq": [
+            { "q": "Ninachezaje Wordle kwa {langName}?", "a": "Tembelea wordle.global/{lang} kucheza Wordle ya kila siku kwa {langName}. Una majaribio 6 kubahatisha neno la herufi 5. Baada ya kila jaribio, vibamba vinageuka kijani (herufi sahihi, nafasi sahihi), njano (herufi sahihi, nafasi isiyofaa), au kijivu (herufi haipo katika neno)." },
+            { "q": "Kuna fumbo jipya kila siku?", "a": "Ndiyo. Neno jipya linachaguliwa kila siku. Kila mtu anayecheza kwa lugha moja anapata neno moja, kwa hivyo unaweza kulinganisha matokeo na marafiki." },
+            { "q": "Je, Wordle Global ni bure?", "a": "Ndiyo. Fumbo la kila siku, hali isiyo na kikomo, na njia zote za mchezo ni bure kabisa kwa lugha 80+. Hakuna akaunti au upakuaji unaohitajika." },
+            { "q": "Ninaweza kucheza zaidi ya mara moja kwa siku?", "a": "Ndiyo — jaribu hali isiyo na kikomo kwenye wordle.global/{lang}/unlimited kwa michezo isiyo na mwisho bila kusubiri. Mfululizo wako wa kila siku unafuatiliwa tofauti." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Wordle Isiyo na Kikomo ni nini kwa {langName}?", "a": "Wordle Isiyo na Kikomo inakuruhusu kucheza michezo mingi kadri unavyotaka kwa {langName}, bila kusubiri fumbo la kesho. Kila mchezo unakupa neno jipya la kubahatisha katika majaribio 6." },
+                { "q": "Je, Wordle Isiyo na Kikomo ni bure?", "a": "Ndiyo. Wordle Isiyo na Kikomo ni bure kabisa. Hakuna akaunti, hakuna upakuaji, hakuna matangazo wakati wa mchezo." },
+                { "q": "Je, hali isiyo na kikomo inahesabika katika mfululizo wangu wa kila siku?", "a": "Hapana. Hali isiyo na kikomo ina takwimu zake tofauti. Mfululizo wako wa kila siku unaathiriwa na fumbo la kila siku peke yake." },
+                { "q": "Ninaweza kucheza mara ngapi?", "a": "Hakuna kikomo. Unaweza kucheza raundi nyingi kadri unavyotaka. Baada ya kila mchezo, bonyeza \"Cheza Tena\" kupata neno jipya mara moja." },
+                { "q": "Ninaweza kucheza Wordle Isiyo na Kikomo kwa lugha zipi?", "a": "Wordle Isiyo na Kikomo inapatikana kwa lugha zaidi ya 80 kwenye wordle.global, ikiwa ni pamoja na Kiingereza, Kihispania, Kijerumani, Kifini, Kiarabu, Kifaransa, Kiitaliano, Kireno, na nyingine nyingi." }
+            ],
+            "speed": [
+                { "q": "Speed Streak ni nini kwa {langName}?", "a": "Speed Streak ni hali ya Wordle yenye muda kwa {langName}. Unaanza na dakika 3 na kutatua maneno mengi kadri uwezavyo. Tatua neno haraka kupata muda wa ziada." },
+                { "q": "Alama zinafanyaje kazi?", "a": "Unapata alama kwa kila neno unalotatua. Majaribio machache na kutatua haraka hutoa alama zaidi. Jenga combo kwa kutatua maneno mfululizo — hadi kizidishi cha 3x." },
+                { "q": "Nini kinatokea muda unapoisha?", "a": "Mchezo unaisha na unaona alama yako ya mwisho, maneno yote uliyoyatatua, combo kubwa zaidi, na wastani wa majaribio. Unaweza kucheza tena mara moja." },
+                { "q": "Je, Speed Streak ni bure?", "a": "Ndiyo. Speed Streak ni bure kabisa kwa lugha zote 80+. Hakuna akaunti au upakuaji unaohitajika." }
+            ],
+            "multiboard": [
+                { "q": "{modeName} ni nini kwa {langName}?", "a": "{modeName} ni aina ya Wordle yenye bodi nyingi kwa {langName}. Unatatua bodi {boardCount} za Wordle kwa wakati mmoja kwa kutumia majaribio {maxGuesses}. Kila jaribio linaonekana kwenye bodi zote ambazo hazijatatuliwa." },
+                { "q": "Ninapata majaribio mangapi katika {modeName}?", "a": "Unapata majaribio {maxGuesses} kutatua bodi zote {boardCount}. Bodi ikishatuliwa inaganda na unaweza kuzingatia bodi zilizobaki." },
+                { "q": "Mkakati gani unafanya kazi vizuri kwa {modeName}?", "a": "Anza na maneno yenye herufi za kawaida kupata taarifa kwenye bodi zote {boardCount} mara moja. Angalia kibodi cha rangi kilichogawanywa — kinaonyesha herufi zipi ni sahihi kwenye bodi zipi." },
+                { "q": "Je, {modeName} ni bure?", "a": "Ndiyo. {modeName} ni bure kabisa kwa lugha zote 80+. Hakuna akaunti au upakuaji unaohitajika. Cheza raundi nyingi kadri unavyotaka." }
+            ]
+        },
+        "howto": [
+            { "name": "Andika neno", "text": "Ingiza neno halali la herufi 5 kwa {langName} ukitumia kibodi ya skrini au kibodi yako halisi, kisha bonyeza Enter." },
+            { "name": "Soma vidokezo", "text": "Vibamba vya kijani vinamaanisha herufi ni sahihi na katika nafasi sahihi. Njano inamaanisha herufi iko katika neno lakini nafasi isiyofaa. Kijivu inamaanisha herufi haipo katika neno." },
+            { "name": "Tatua katika majaribio 6", "text": "Tumia vidokezo vya rangi kupunguza neno. Una majaribio 6 kwa jumla. Baada ya fumbo, tazama takwimu zako na shiriki matokeo yako." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Anza mchezo", "text": "Tembelea wordle.global/{lang}/unlimited kuanza kucheza Wordle Isiyo na Kikomo kwa {langName}. Neno la herufi 5 linachaguliwa nasibu." },
+                { "name": "Bahatisha neno", "text": "Andika neno halali la herufi 5 na bonyeza Enter. Vibamba vya kijani ni herufi sahihi nafasi sahihi. Njano ni herufi iko katika neno lakini nafasi isiyofaa. Kijivu ni herufi haipo katika neno." },
+                { "name": "Cheza tena mara moja", "text": "Baada ya kutatua neno (au kutumia majaribio 6 yote), bonyeza \"Cheza Tena\" kupata neno jipya mara moja. Hakuna kusubiri kesho." }
+            ],
+            "speed": [
+                { "name": "Anza saa", "text": "Tembelea wordle.global/{lang}/speed na bonyeza Anza. Unaanza na dakika 3 kwenye saa." },
+                { "name": "Tatua maneno haraka", "text": "Kila neno unalotatua linakupa muda wa ziada (+10s hadi +60s kulingana na majaribio yaliyotumika). Maneno yaliyokosekana yanakugharimu sekunde 30." },
+                { "name": "Jenga combo yako", "text": "Tatua maneno mfululizo kujenga kizidishi cha combo (hadi 3x). Combo inavunjika ukikosa neno. Jaribu kupiga alama yako ya juu." }
+            ],
+            "multiboard": [
+                { "name": "Anza mchezo", "text": "Tembelea wordle.global/{lang}/{modeName} kucheza {modeName} kwa {langName}. Bodi {boardCount} zinaonekana zenye maneno tofauti yaliyofichwa." },
+                { "name": "Bahatisha kwenye bodi zote", "text": "Andika neno la herufi 5 na bonyeza Enter. Jaribio lako linaonekana kwenye bodi {boardCount} zote mara moja. Kila bodi inaonyesha vidokezo vyake vya rangi (kijani, njano, kijivu)." },
+                { "name": "Tatua bodi {boardCount} zote", "text": "Bodi zilizotafuliwa zinaganda mahali. Tumia kibodi cha rangi kilichogawanywa kufuatilia herufi zipi zinafanya kazi kwenye bodi zipi. Tatua bodi {boardCount} zote ndani ya majaribio {maxGuesses} ili ushinde." }
+            ]
+        }
     },
     "ui": {
         "settings": "Mipangilio",
@@ -141,6 +272,67 @@
         "pos_verb": "kitenzi",
         "pos_adjective": "kivumishi",
         "pos_adverb": "kielezi",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     }
 }

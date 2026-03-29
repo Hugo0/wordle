@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 table deodată",
                 "description": "Joacă Quordle în română. Rezolvă 4 table Wordle deodată cu 9 încercări."
+            },
+            "octordle": {
+                "title": "Octordle — 8 table deodată",
+                "description": "Joacă Octordle în română. Rezolvă 8 table Wordle deodată cu 13 încercări."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 table deodată",
+                "description": "Joacă Sedecordle în română. Rezolvă 16 table Wordle deodată cu 21 încercări."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 table deodată",
+                "description": "Joacă Duotrigordle în română. Rezolvă 32 table Wordle deodată cu 37 încercări."
             }
         }
     },
@@ -39,7 +51,13 @@
         "share_challenge_win": "Am rezolvat Wordle de azi din {n} încercări. Poți mai bine?",
         "share_challenge_lose": "Nu am rezolvat Wordle de azi. Tu poți?",
         "notification_copied": "Copiat în clipboard.",
-        "notification_partial_word": "Introduceți un cuvânt complet"
+        "notification_partial_word": "Introduceți un cuvânt complet",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -55,7 +73,15 @@
         "text_2_1": "este în cuvânt și în poziția corectă!",
         "text_2_2": "este în cuvânt, dar nu în poziția corectă.",
         "text_2_3": "nu este prezent în cuvântul pe care încercați să îl ghiciți.",
-        "text_3": "Un nou cuvânt va fi disponibil în fiecare zi!"
+        "text_3": "Un nou cuvânt va fi disponibil în fiecare zi!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Setări",
@@ -140,6 +166,337 @@
         "pos_verb": "verb",
         "pos_adjective": "adjectiv",
         "pos_adverb": "adverb",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Cum se joaca",
+        "tips_strategy": "Sfaturi si strategie",
+        "more_modes": "Mai multe moduri de joc",
+        "play_in_languages": "Joaca in 80+ limbi",
+        "play_in_languages_sub": "Toate limbile sunt gratuite. Fara cont necesar.",
+        "why_wordle_global": "De ce Wordle Global",
+        "faq_title": "Intrebari frecvente",
+        "browse_all_languages": "Exploreaza toate cele 80+ limbi",
+        "recent_words": "Cuvinte recente",
+        "view_all_words": "Vezi toate cuvintele",
+        "footer": "wordle.global -- jocul zilnic de cuvinte gratuit in 80+ limbi",
+        "tile_correct": "este in cuvant si pe pozitia corecta.",
+        "tile_semicorrect": "este in cuvant, dar pe pozitia gresita.",
+        "tile_incorrect": "nu este deloc in cuvant.",
+        "stat_players": "Jucatori",
+        "stat_guesses": "Incercari",
+        "stat_languages": "Limbi",
+        "stat_modes": "Moduri de joc",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ limbi",
+                "desc": "De la araba la yoruba. Cel mai mare Wordle multilingv."
+            },
+            {
+                "key": "definitions",
+                "title": "Definitii ale cuvintelor",
+                "desc": "Afla semnificatia fiecarui cuvant dupa ce joci. Iti imbogatesti vocabularul."
+            },
+            {
+                "key": "word_art",
+                "title": "Ilustratii unice",
+                "desc": "Fiecare cuvant vine cu o ilustratie proprie. Colectioneaza-le pe toate."
+            },
+            {
+                "key": "themes",
+                "title": "Mod intunecat si teme",
+                "desc": "Moduri luminos, intunecat si contrast ridicat pentru joc confortabil."
+            },
+            {
+                "key": "pwa",
+                "title": "Functioneaza oriunde",
+                "desc": "PWA -- instaleaza pe orice dispozitiv. Functioneaza offline. Fara descarcare."
+            },
+            {
+                "key": "free",
+                "title": "Gratuit pentru totdeauna",
+                "desc": "Fara cont. Fara plata. Doar joaca."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Incepe cu un cuvant bogat in vocale",
+                "text": "Cuvinte ca CRANE, STARE sau ADIEU testeaza literele frecvente rapid. Daca stii ce vocale contine cuvantul, optiunile scad considerabil."
+            },
+            {
+                "title": "Foloseste ce stii",
+                "text": "Literele verzi raman fixe. Cele galbene trebuie mutate. Cele gri sunt eliminate. Fiecare incercare ar trebui sa foloseasca toate cele trei tipuri de indicii."
+            },
+            {
+                "title": "Gandeste-te la tipare comune",
+                "text": "Cuvintele englezesti se termina adesea cu -TION, -IGHT, -OUND, -MENT. Fiecare limba are tiparele sale -- invata-le."
+            },
+            {
+                "title": "Elimina, nu ghici la intamplare",
+                "text": "A doua incercare ar trebui sa testeze litere noi, nu sa repete cele confirmate. Acopera cat mai multe consoane netestate."
+            },
+            {
+                "title": "Atentie la literele duble",
+                "text": "Cuvinte ca CREEK, FLOSS sau APPLE sunt capcane frecvente. Daca indiciile nu se potrivesc, ia in calcul o litera repetata."
+            },
+            {
+                "title": "Foloseste modul greu pentru a te imbunatati",
+                "text": "Modul greu te obliga sa folosesti indiciile confirmate in fiecare incercare. Formeaza obiceiuri mai bune chiar si cand revii la modul normal."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Incepe cu CRANE sau STARE",
+                "text": "Literele cu frecventa mare iti ofera cea mai buna sansa de rezolvare rapida. Fiecare secunda conteaza."
+            },
+            {
+                "title": "Nu gandi prea mult",
+                "text": "Speed Streak recompenseaza instinctul. Daca vezi un cuvant probabil, incearca-l -- bonusul de combo depaseste rezolvarea perfecta."
+            },
+            {
+                "title": "Protejeaza-ti combo-ul",
+                "text": "Un cuvant ratat iti distruge multiplicatorul. Cand nu esti sigur, foloseste o incercare sigura pentru mai multe indicii in loc sa risti."
+            },
+            {
+                "title": "Tinteste rezolvari in 2-3 incercari",
+                "text": "Bonusul de timp pentru rezolvari rapide este urias (+60 s pentru 1 incercare, +30 s pentru 2). O a doua ghicire riscanta poate aduce mari recompense."
+            },
+            {
+                "title": "Invata terminatiile frecvente",
+                "text": "Tipare ca -IGHT, -OUND, -ATCH apar des. Recunoasterea lor instantanee economiseste secunde la fiecare cuvant."
+            },
+            {
+                "title": "Stai calm cand presiunea creste",
+                "text": "Cronometrul accelereaza la fiecare 3 cuvinte. Graba duce la greseli de tipar si ghiciri proaste. Un ritm constant bate panica."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Incepe pe larg",
+                "text": "Foloseste cuvinte cu litere frecvente (CRANE, STARE) pentru a aduna indicii pe toate tablele simultan."
+            },
+            {
+                "title": "Urmareste tastatura impartita",
+                "text": "Tastatura arata culorile pentru fiecare tabla. O litera verde pe o tabla dar gri pe alta restrange optiunile rapid."
+            },
+            {
+                "title": "Concentreaza-te pe tablele dificile",
+                "text": "Directioneaza incercarile spre tabla cu cele mai multe necunoscute. Tablele usoare se rezolva adesea singure."
+            },
+            {
+                "title": "Nu irosi primele incercari",
+                "text": "Primele 2-3 incercari foloseste-le pe cuvinte bogate in informatii, inainte de a viza table specifice."
+            },
+            {
+                "title": "Cauta litere comune intre table",
+                "text": "Daca doua table au ambele un E galben, un cuvant cu E pe o pozitie noua ajuta ambele table simultan."
+            },
+            {
+                "title": "Pastreaza o incercare de rezerva",
+                "text": "Daca esti blocat pe ultima tabla, o incercare in plus face diferenta intre victorie si infrangere."
+            }
+        ],
+        "mode_desc_classic": "Ai 6 incercari pentru a ghici un cuvant ascuns de 5 litere. Foloseste indiciile de culoare pentru a restrange raspunsul.",
+        "mode_desc_unlimited": "Ai 6 incercari pentru a ghici un cuvant ascuns de 5 litere. Foloseste indiciile de culoare pentru a restrange raspunsul. Dupa fiecare joc, apasa «Joaca din nou» pentru un cuvant nou instant -- fara limita zilnica.",
+        "mode_desc_speed": "Incepi cu 3 minute pe ceas. Fiecare cuvant rezolvat iti aduce timp bonus -- mai putine incercari inseamna bonus mai mare (+60 s pentru 1 incercare, +10 s pentru 6). Cuvintele ratate te costa 30 de secunde. Construieste combo-uri rezolvand cuvinte consecutiv pentru un multiplicator de pana la 3x. Presiunea creste pe masura ce rezolvi mai multe cuvinte -- cronometrul accelereaza la fiecare 3 cuvinte.",
+        "mode_desc_multiboard": "{modeName} te provoaca sa rezolvi {boardCount} table Wordle simultan cu doar {maxGuesses} incercari. Fiecare incercare apare pe toate tablele nerezolvate simultan. Tablele rezolvate ingheata. Tastatura cu culori separate arata ce litere sunt corecte pe care table. Incepe cu cuvinte cu litere frecvente pentru a aduna indicii pe toate tablele deodata.",
+        "faq": [
+            {
+                "q": "Cum joc Wordle in {langName}?",
+                "a": "Viziteaza wordle.global/{lang} pentru a juca Wordle zilnic in {langName}. Ai 6 incercari pentru a ghici un cuvant de 5 litere. Dupa fiecare incercare, placutele devin verzi (litera corecta, pozitie corecta), galbene (litera corecta, pozitie gresita) sau gri (litera nu e in cuvant)."
+            },
+            {
+                "q": "Exista un puzzle nou in fiecare zi?",
+                "a": "Da. Un cuvant nou este ales in fiecare zi. Toti jucatorii din aceeasi limba primesc acelasi cuvant, asa ca poti compara rezultatele cu prietenii."
+            },
+            {
+                "q": "Este Wordle Global gratuit?",
+                "a": "Da. Puzzle-ul zilnic, modul nelimitat si toate modurile de joc sunt complet gratuite in toate cele 80+ limbi. Fara cont si fara descarcare."
+            },
+            {
+                "q": "Pot juca de mai multe ori pe zi?",
+                "a": "Da -- incearca modul Unlimited la wordle.global/{lang}/unlimited pentru jocuri nelimitate fara asteptare. Seria ta zilnica se numara separat."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Ce este Wordle Unlimited in {langName}?",
+                    "a": "Wordle Unlimited iti permite sa joci cate jocuri vrei in {langName}, fara sa astepti puzzle-ul de maine. Fiecare joc iti ofera un cuvant nou aleatoriu de ghicit in 6 incercari."
+                },
+                {
+                    "q": "Este Wordle Unlimited gratuit?",
+                    "a": "Da. Wordle Unlimited este complet gratuit. Fara cont, fara descarcare, fara reclame in timpul jocului."
+                },
+                {
+                    "q": "Se numara modul nelimitat la seria zilnica?",
+                    "a": "Nu. Modul nelimitat are statistici separate. Seria ta zilnica este afectata doar de puzzle-ul zilnic."
+                },
+                {
+                    "q": "De cate ori pot juca?",
+                    "a": "Fara limita. Poti juca oricte runde vrei. Dupa fiecare joc, apasa «Joaca din nou» pentru un cuvant nou instantaneu."
+                },
+                {
+                    "q": "In ce limbi pot juca Wordle Unlimited?",
+                    "a": "Wordle Unlimited este disponibil in peste 80 de limbi pe wordle.global, inclusiv engleza, spaniola, germana, finlandeza, araba, franceza, italiana, portugheza si multe altele."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Ce este Speed Streak in {langName}?",
+                    "a": "Speed Streak este un mod Wordle cronometrat in {langName}. Incepi cu 3 minute pe ceas si rezolvi cat mai multe cuvinte. Rezolva repede pentru timp bonus."
+                },
+                {
+                    "q": "Cum functioneaza punctajul?",
+                    "a": "Castigi puncte pentru fiecare cuvant rezolvat. Mai putine incercari si rezolvari mai rapide inseamna mai multe puncte. Construieste un combo rezolvand consecutiv fara ratari -- pana la multiplicator 3x."
+                },
+                {
+                    "q": "Ce se intampla cand expira timpul?",
+                    "a": "Jocul se termina si vezi scorul final, totalul de cuvinte rezolvate, combo-ul maxim si media de incercari. Poti juca din nou imediat."
+                },
+                {
+                    "q": "Este Speed Streak gratuit?",
+                    "a": "Da. Speed Streak este complet gratuit in toate cele 80+ limbi. Fara cont si fara descarcare."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "Ce este {modeName} in {langName}?",
+                    "a": "{modeName} este o varianta Wordle cu table multiple in {langName}. Rezolvi {boardCount} table Wordle simultan cu {maxGuesses} incercari. Fiecare incercare se introduce pe toate tablele nerezolvate simultan."
+                },
+                {
+                    "q": "Cate incercari am in {modeName}?",
+                    "a": "Ai {maxGuesses} incercari pentru a rezolva toate cele {boardCount} table. Odata ce o tabla este rezolvata, ingheata si te poti concentra pe restul."
+                },
+                {
+                    "q": "Ce strategie functioneaza cel mai bine pentru {modeName}?",
+                    "a": "Incepe cu cuvinte cu litere frecvente pentru a aduna informatii pe toate cele {boardCount} table deodata. Urmareste tastatura cu culori separate -- arata ce litere sunt corecte pe care table."
+                },
+                {
+                    "q": "Este {modeName} gratuit?",
+                    "a": "Da. {modeName} este complet gratuit in toate cele 80+ limbi. Fara cont si fara descarcare. Joaca oricte runde doresti."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Scrie un cuvant",
+                "text": "Introdu un cuvant valid de 5 litere in {langName} folosind tastatura de pe ecran sau tastatura fizica, apoi apasa Enter."
+            },
+            {
+                "name": "Citeste indiciile",
+                "text": "Placutele verzi inseamna ca litera e corecta si pe locul potrivit. Galben inseamna ca litera e in cuvant dar pe alt loc. Gri inseamna ca litera nu e in cuvant."
+            },
+            {
+                "name": "Rezolva in 6 incercari",
+                "text": "Foloseste indiciile de culoare pentru a restrange cuvantul. Ai 6 incercari in total. Dupa puzzle, vezi statisticile si partajeaza rezultatul."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Incepe un joc",
+                    "text": "Viziteaza wordle.global/{lang}/unlimited pentru a juca Wordle Unlimited in {langName}. Un cuvant aleatoriu de 5 litere este ales pentru tine."
+                },
+                {
+                    "name": "Ghiceste cuvantul",
+                    "text": "Scrie un cuvant valid de 5 litere si apasa Enter. Placutele verzi inseamna litera corecta pe locul corect. Galben -- litera e in cuvant dar pe alt loc. Gri -- litera nu e in cuvant."
+                },
+                {
+                    "name": "Joaca din nou instantaneu",
+                    "text": "Dupa rezolvarea cuvantului (sau epuizarea celor 6 incercari), apasa «Joaca din nou» pentru un cuvant nou imediat. Fara asteptare."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Porneste cronometrul",
+                    "text": "Viziteaza wordle.global/{lang}/speed si apasa Start. Incepi cu 3 minute pe ceas."
+                },
+                {
+                    "name": "Rezolva cuvinte rapid",
+                    "text": "Fiecare cuvant rezolvat iti aduce timp bonus (+10 s pana la +60 s, in functie de cate incercari ai folosit). Cuvintele ratate te costa 30 de secunde."
+                },
+                {
+                    "name": "Construieste combo-ul",
+                    "text": "Rezolva cuvinte consecutiv pentru a creste multiplicatorul combo (pana la 3x). Combo-ul se intrerupe daca ratezi un cuvant. Incearca sa-ti depasesti recordul."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Incepe un joc",
+                    "text": "Viziteaza wordle.global/{lang}/{modeName} pentru a juca {modeName} in {langName}. Apar {boardCount} table cu cuvinte ascunse diferite."
+                },
+                {
+                    "name": "Ghiceste pe toate tablele",
+                    "text": "Scrie un cuvant de 5 litere si apasa Enter. Incercarea ta apare pe toate cele {boardCount} table simultan. Fiecare tabla arata propriile indicii de culoare (verde, galben, gri)."
+                },
+                {
+                    "name": "Rezolva toate cele {boardCount} table",
+                    "text": "Tablele rezolvate ingheata pe loc. Foloseste tastatura cu culori separate pentru a urmari ce litere functioneaza pe care table. Rezolva toate cele {boardCount} in {maxGuesses} incercari pentru a castiga."
+                }
+            ]
+        }
     }
 }

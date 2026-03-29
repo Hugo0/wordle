@@ -42,25 +42,9 @@ export function useGameShare() {
         return { board, attemptCount };
     }
 
-    /** Build the full share text for classic/multi-board modes. */
-    function getShareText(opts: {
-        emojiBoard: string;
-        attempts: string;
-        todaysIdx: number;
-        namaNative: string;
-        hardMode: boolean;
-        gameWon: boolean;
-    }): string {
-        const hardModeFlag = opts.hardMode ? ' *' : '';
-        return `Wordle ${opts.namaNative} #${opts.todaysIdx} — ${opts.attempts}/6${hardModeFlag}\n\n${opts.emojiBoard}`;
-    }
-
     /**
      * Share results via Web Share API, clipboard, or legacy execCommand fallback.
-     *
-     * Callbacks allow callers to handle notifications and final fallback UI:
-     *   - onNotify: called on successful copy with a suggested message
-     *   - onAllFailed: called when all share methods fail (e.g., show a manual copy modal)
+     * Fires a single 'share' analytics event with result: 'success' or 'fail'.
      */
     async function shareResults(opts: {
         shareText: string;
@@ -80,64 +64,67 @@ export function useGameShare() {
         const url = `https://wordle.global/${opts.langCode}${modePath}?r=${opts.gameWon ? opts.attempts : 'x'}`;
         const fullText = `${opts.shareText}\n\n${url}`;
 
-        const shareParams = {
+        const baseParams = {
             language: opts.langCode,
             won: opts.gameWon,
             attempts: opts.attempts,
             game_mode: opts.gameMode,
         };
 
-        const handleSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
-            analytics.trackShareSuccess({ ...shareParams, method });
-            if (opts.emojiBoard) {
-                analytics.trackShareContentGenerated(
-                    opts.langCode,
-                    opts.gameWon,
-                    opts.attempts,
-                    opts.emojiBoard
-                );
-            }
+        const trackSuccess = (method: 'native' | 'clipboard' | 'fallback') => {
+            analytics.trackShare({
+                ...baseParams,
+                method,
+                result: 'success',
+                emojiPattern: opts.emojiBoard,
+            });
             opts.onSuccess?.();
+        };
+
+        const trackFail = (method: 'native' | 'clipboard' | 'fallback', errorType: string) => {
+            analytics.trackShare({
+                ...baseParams,
+                method,
+                result: 'fail',
+                error_type: errorType,
+            });
         };
 
         // Try Web Share API
         if (navigator.share) {
-            analytics.trackShareClick({ ...shareParams, method: 'native' });
             try {
                 await navigator.share({ text: fullText });
                 opts.onNotify?.('Shared!');
-                handleSuccess('native');
+                trackSuccess('native');
                 return;
             } catch (error) {
                 if (error instanceof Error && error.name === 'AbortError') return;
-                analytics.trackShareFail(opts.langCode, 'native', 'share_api_failed');
+                trackFail('native', 'share_api_failed');
             }
         }
 
         // Try Clipboard API
         if (navigator.clipboard?.writeText && window.isSecureContext) {
-            analytics.trackShareClick({ ...shareParams, method: 'clipboard' });
             try {
                 await navigator.clipboard.writeText(fullText);
                 opts.onNotify?.('Copied to clipboard!');
-                handleSuccess('clipboard');
+                trackSuccess('clipboard');
                 return;
             } catch (error) {
                 if (error instanceof Error) {
-                    analytics.trackShareFail(opts.langCode, 'clipboard', error.message);
+                    trackFail('clipboard', error.message);
                 }
             }
         }
 
         // Legacy execCommand fallback
-        analytics.trackShareClick({ ...shareParams, method: 'fallback' });
         if (copyViaExecCommand(fullText)) {
             opts.onNotify?.('Copied to clipboard!');
-            handleSuccess('fallback');
+            trackSuccess('fallback');
             return;
         }
 
-        analytics.trackShareFail(opts.langCode, 'fallback', 'all_methods_failed');
+        trackFail('fallback', 'all_methods_failed');
         opts.onAllFailed?.(fullText);
     }
 

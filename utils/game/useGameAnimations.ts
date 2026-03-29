@@ -50,11 +50,14 @@ export function animateRevealRow(
     const rowEl = boardEl?.children[rowIndex] as HTMLElement | undefined;
     const tileCount = rowEl?.children.length ?? WORD_LENGTH;
     const isSpeedMode = speedMultiplier < 1;
+    // Skip animations for 8+ board modes (game store passes speedMultiplier >= 2)
+    const isManyBoards = speedMultiplier >= 2;
     const reduceMotion =
-        typeof window !== 'undefined' &&
-        (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-            // Respect in-app animations toggle (speed mode keeps its animations)
-            (!isSpeedMode && document.documentElement.classList.contains('reduce-animations')));
+        isManyBoards ||
+        (typeof window !== 'undefined' &&
+            (window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+                (!isSpeedMode &&
+                    document.documentElement.classList.contains('reduce-animations'))));
 
     const flipDuration = Math.round(FLIP_DURATION * speedMultiplier);
     const flipMidpoint = Math.round(FLIP_MIDPOINT * speedMultiplier);

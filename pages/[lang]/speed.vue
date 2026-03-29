@@ -6,7 +6,6 @@
  * +5s bonus per solved word. Dark theme, fast animations.
  */
 import { createGameConfig } from '~/utils/game-modes';
-import { createBoardState } from '~/utils/types';
 import { Info } from 'lucide-vue-next';
 
 definePageMeta({
@@ -34,16 +33,14 @@ const {
 } = useGamePage(gameData, lang);
 
 // --- SEO ---
-useGameModeSeo({
-    lang,
-    modeSlug: 'speed',
-    modeLabel: 'Speed Streak',
-    description: `Speed Streak mode: solve as many Wordle words in ${config.value?.name} as you can in 5 minutes. Race the clock!`,
-    langStore,
-    config: config.value,
-});
 const { data: allLangs } = await useFetch('/api/languages');
-if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/speed');
+const seo = useGameSeo({
+    lang,
+    mode: 'speed',
+    config: config.value!,
+    langStore,
+    allLangCodes: allLangs.value?.language_codes,
+});
 
 // --- Countdown flow ---
 const countdownNumber = ref<string | number>('');
@@ -114,29 +111,33 @@ const speedBgClass = computed(() => {
 });
 
 // Screen shake on fail
+let shakeTimer: ReturnType<typeof setTimeout> | null = null;
+
 watch(
     () => game.speedState.lastEvent,
     (event) => {
         if (event === 'fail' && import.meta.client) {
+            if (shakeTimer) clearTimeout(shakeTimer);
             document.documentElement.classList.add('speed-screen-shake');
-            setTimeout(() => {
+            shakeTimer = setTimeout(() => {
                 document.documentElement.classList.remove('speed-screen-shake');
+                shakeTimer = null;
             }, 400);
         }
     }
 );
 
+onUnmounted(() => {
+    if (shakeTimer) {
+        clearTimeout(shakeTimer);
+        document.documentElement.classList.remove('speed-screen-shake');
+    }
+});
+
 // --- Play again ---
 function playAgain() {
     game.resetSpeedState();
-    const cfg = createGameConfig('speed', lang, { wordLength: 5 });
-    game.gameConfig = cfg;
-    game.boards = [createBoardState(0, '', cfg.maxGuesses, cfg.wordLength)];
-    game.activeBoardIndex = 0;
-    game.gameOver = false;
-    game.gameWon = false;
-    game.initKeyClasses();
-    game.showTiles();
+    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5 }));
 }
 
 // --- Share ---
@@ -156,14 +157,7 @@ async function shareSpeed() {
 
 // --- Client-side init (speed-specific) ---
 onMounted(() => {
-    const cfg = createGameConfig('speed', lang, { wordLength: 5 });
-    game.gameConfig = cfg;
-    game.boards = [createBoardState(0, '', cfg.maxGuesses, cfg.wordLength)];
-    game.activeBoardIndex = 0;
-    game.gameOver = false;
-    game.gameWon = false;
-    game.initKeyClasses();
-    game.showTiles();
+    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5 }));
     game.resetSpeedState();
 
     onUnmounted(() => {
@@ -275,32 +269,5 @@ onMounted(() => {
         </template>
     </GamePageShell>
 
-    <noscript data-allow-mismatch>
-        <div
-            style="
-                max-width: 600px;
-                margin: 40px auto;
-                padding: 20px;
-                font-family: system-ui, sans-serif;
-                color: #333;
-            "
-        >
-            <h1>Wordle {{ config?.name_native }} — Speed Streak</h1>
-            <p>
-                Speed Streak mode: solve as many Wordle words in {{ config?.name }} as you can in 5
-                minutes. Race the clock!
-            </p>
-            <p>
-                <a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a>
-            </p>
-            <p>
-                Other modes: <a :href="`/${lang}/unlimited`">Unlimited</a> ·
-                <a :href="`/${lang}/dordle`">Dordle</a> ·
-                <a :href="`/${lang}/quordle`">Quordle</a>
-            </p>
-            <p>
-                <a href="https://wordle.global/">Play Wordle in 80+ languages at wordle.global</a>
-            </p>
-        </div>
-    </noscript>
+    <GameSeoNoscript :lang="lang" mode="speed" :seo="seo" :config="config!" />
 </template>

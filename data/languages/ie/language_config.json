@@ -27,6 +27,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Interlingue. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Interlingue. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Interlingue. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Interlingue. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -43,7 +55,8 @@
         "copied": "Copiat!",
         "notification_word_not_valid": "Li parol ne es valid",
         "hard_mode_position": "Mod desfacil: {letter} deve esser in position {position}",
-        "hard_mode_contains": "Mod desfacil: li proba deve contener {letter}"
+        "hard_mode_contains": "Mod desfacil: li proba deve contener {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -59,7 +72,15 @@
         "text_2_1": "is in the word and in the correct location!",
         "text_2_2": "is in the word, but not in the correct location.",
         "text_2_3": "is not present in the word you are trying to guess.",
-        "text_3": "A new word will be available each day!"
+        "text_3": "A new word will be available each day!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "diacritic_map": {
         "a": [
@@ -161,6 +182,172 @@
         "pos_verb": "verbe",
         "pos_adjective": "adjective",
         "pos_adverb": "adverbie",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Qualmen jocar",
+        "tips_strategy": "Consilies e strategie",
+        "more_modes": "Plu modes de jocu",
+        "play_in_languages": "Joca in 80+ lingues",
+        "play_in_languages_sub": "Chascun lingue es gratuit. Null conto necessi.",
+        "why_wordle_global": "Pro quo Wordle Global",
+        "faq_title": "Questiones frequentmen posit",
+        "browse_all_languages": "Explorar omni 80+ lingues",
+        "recent_words": "Recent paroles",
+        "view_all_words": "Vider omni paroles",
+        "footer": "wordle.global — li gratuit diari jocu de paroles in 80+ lingues",
+        "tile_correct": "es in li parol e in li correct loc.",
+        "tile_semicorrect": "es in li parol ma in li fals loc.",
+        "tile_incorrect": "ne es in li parol.",
+        "stat_players": "Jocatores",
+        "stat_guesses": "Probas",
+        "stat_languages": "Lingues",
+        "stat_modes": "Modes de jocu",
+        "value_props": [
+            { "key": "languages", "title": "80+ lingues", "desc": "De arabic til yoruba. Li maxim grand multilingual Wordle." },
+            { "key": "definitions", "title": "Definitiones de paroles", "desc": "Aprende li signification de chascun parol pos li jocu. Amplia tui vocabularium." },
+            { "key": "word_art", "title": "Unic parol-art", "desc": "Chascun parol ha un custom illustration. Collecte les omni." },
+            { "key": "themes", "title": "Mod obscur e temas", "desc": "Modes clar, obscur e de alt contraste por confortabil jocu." },
+            { "key": "pwa", "title": "Functiona partú", "desc": "PWA — installa sur qualcunc aparate. Functiona sin-linea. Null descarga necessi." },
+            { "key": "free", "title": "Gratuit por sempre", "desc": "Null conto necessi. Null barriere de payament. Simplimen joca." }
+        ],
+        "tips": [
+            { "title": "Comensa con un parol ric in vocales", "text": "Paroles quam CRANE, STARE o ADIEU testa frequent litteres rapidmen. Saver quel vocales es present restringe li optiones rapidmen." },
+            { "title": "Usa to quel tu save", "text": "Verd litteres resta fixat. Jalni litteres deve mover se. Gris litteres es eliminat. Chascun proba deve usar omni tri indicies." },
+            { "title": "Pensa a frequent modelles", "text": "Angles paroles sovente fini per -TION, -IGHT, -OUND, -MENT. Altri lingues ha lor propri modelles — aprende les." },
+            { "title": "Elimina, ne divina al hasard", "text": "Tui duesim parol deve testar nov litteres, ne repeter confirmat un. Copri tant ne-testat consonantes quam possibil." },
+            { "title": "Atention a duplic litteres", "text": "Paroles quam CREEK, FLOSS o APPLE es frequent trappes. Si tui indicies ne conveni, considera un repetit littere." },
+            { "title": "Usa li mod desfacil por ameliorar te", "text": "Li mod desfacil forsa te usar confirmat indicies in chascun proba. It crea plu bon habitudes mem quande tu retorna al mod normal." }
+        ],
+        "tips_speed": [
+            { "title": "Comensa con CRANE o STARE", "text": "Frequent litteres da li maxim bon chance de un rapid solution. Chascun secunde conta." },
+            { "title": "Ne pensa tro mult", "text": "Speed Streak recompensa instinct. Si tu vide un probabil parol, proba it — li combo-bonus supera un perfect solution." },
+            { "title": "Protege tui combo", "text": "Un fallit parol rupte tui multiplicator. Quande tu es incert, usa un secur proba por colliger plu indicies in vice de riscar." },
+            { "title": "Visa solutiones in 2-3 probas", "text": "Li bonus de témpore es enorm por rapid solutiones (+60s por 1 proba, +30s por 2). Un riscosi duesim proba posse rendir mult." },
+            { "title": "Aprende frequent fines de paroles", "text": "Modelles quam -IGHT, -OUND, -ATCH repete se sovente. Recognosser les instantmen salva secundes per parol." },
+            { "title": "Resta calm quande li pression cresc", "text": "Li timer accelera chascun 3 paroles. Hastivitá mena a erras e mal probas. Un stabil ritme batte panic." }
+        ],
+        "tips_multiboard": [
+            { "title": "Comensa largmen", "text": "Usa paroles con frequent litteres (CRANE, STARE) por colliger indicies trans omni tabules al vez." },
+            { "title": "Observa li split claviero", "text": "Li claviero monstra colores per tabul. Un littere verd in un tabul ma gris in un altri restringe optiones rapidmen." },
+            { "title": "Prioritisa tabules in desfacilitá", "text": "Concentra probas sur li tabul con li maxim mult incognites. Plu facil tabules sovente solva se self." },
+            { "title": "Ne gasta li prim probas", "text": "Usa li prim 2-3 sur paroles ric in information ante visar specific tabules." },
+            { "title": "Sercha comun litteres", "text": "Si du tabules monstra un jalni E, un parol con E in un nov position helpa ambi tabules simultanemen." },
+            { "title": "Reserva un proba por urgentias", "text": "Si tu es bloccat sur li ultim tabul, haver un reserv proba es li diferentie inter vincir e perdir." }
+        ],
+        "mode_desc_classic": "Tu ha 6 probas por divinar un celat parol de 5 litteres. Usa li indicies de color por restringer li response.",
+        "mode_desc_unlimited": "Tu ha 6 probas por divinar un celat parol de 5 litteres. Usa li indicies de color por restringer li response. Pos chascun jocu, pressa \"Jocar denov\" por obtener un nov parol instantmen — ne hay limit diari.",
+        "mode_desc_speed": "Comensa con 3 minutes sur li timer. Chascun parol solvit gania bonus témpore — solva in minu probas por plu grand bonuses (+60s por 1 proba, +10s por 6). Fallit paroles costa 30 secundes. Construe combos per solvar paroles consecutivmen por un multiplicator til 3x. Li pression cresc con plu solvit paroles — li timer accelera chascun 3 paroles.",
+        "mode_desc_multiboard": "{modeName} defia te solvar {boardCount} tabules Wordle al sam témpore con solmen {maxGuesses} probas. Chascun proba appare sur omni ne-solvit tabules simultanemen. Tabules gela quande solvit. Li split-color claviero monstra quel litteres es correct sur quel tabules. Comensa con paroles de frequent litteres por colliger indicies trans omni tabules al vez.",
+        "faq": [
+            { "q": "Qualmen joca yo Wordle in {langName}?", "a": "Visita wordle.global/{lang} por jocar li diari Wordle in {langName}. Tu ha 6 probas por divinar un parol de 5 litteres. Pos chascun proba, li quadrates deveni verd (correct littere, correct position), jalni (correct littere, fals position), o gris (littere ne in li parol)." },
+            { "q": "Ha it un nov enigma chascun die?", "a": "Yes. Un nov parol es selectet chascun die. Omni jocatores in li sam lingue obtene li sam parol, do tu posse comparar resultates con amicos." },
+            { "q": "Es Wordle Global gratuit?", "a": "Yes. Li diari enigma, li illimitat mod, e omni modes de jocu es completmen gratuit in omni 80+ lingues. Null conto o descarga necessi." },
+            { "q": "Posse yo jocar plu quam un vez per die?", "a": "Yes — proba li mod Illimitat a wordle.global/{lang}/unlimited por infinit jocos sin atenter. Tui diari serie es traceat separatmen." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Quo es Wordle Illimitat in {langName}?", "a": "Wordle Illimitat permisse te jocar tant jocos quam tu vole in {langName}, sin atenter li diari enigma de deman. Chascun jocu da te un nov aleatori parol por divinar in 6 probas." },
+                { "q": "Es Wordle Illimitat gratuit?", "a": "Yes. Wordle Illimitat es completmen gratuit. Null conto, null descarga, null reclames durant li jocu." },
+                { "q": "Conta li illimitat mod por mi diari serie?", "a": "No. Li illimitat mod ha su propri separat statistica. Tui diari serie es solmen affictet per li diari enigma." },
+                { "q": "Quant vezes posse yo jocar?", "a": "Ne hay limit. Tu posse jocar tant rondes quam tu vole. Pos chascun jocu, pressa \"Jocar denov\" por obtener un nov parol instantmen." },
+                { "q": "In quel lingues posse yo jocar Wordle Illimitat?", "a": "Wordle Illimitat es disponibil in plu quam 80 lingues a wordle.global, includente angles, hispan, german, finnish, arabic, francés, italian, portuges, e mult plu." }
+            ],
+            "speed": [
+                { "q": "Quo es Speed Streak in {langName}?", "a": "Speed Streak es un temporisat mod de Wordle in {langName}. Tu comensa con 3 minutes sur li timer e solva tant paroles quam tu posse. Solva un parol rapidmen por ganiar bonus témpore." },
+                { "q": "Qualmen functiona li punctuation?", "a": "Tu gania punctes por chascun parol solvit. Minu probas e plu rapid solutiones da plu punctes. Construe un combo per solvar paroles consecutivmen sin fallir — til un multiplicator de 3x." },
+                { "q": "Quo eveni quande li témpore fini?", "a": "Li jocu fini e tu vide tui final punctuation, li total de paroles solvit, li maxim combo, e li medial probas. Tu posse jocar denov immediatmen." },
+                { "q": "Es Speed Streak gratuit?", "a": "Yes. Speed Streak es completmen gratuit in omni 80+ lingues. Null conto o descarga necessi." }
+            ],
+            "multiboard": [
+                { "q": "Quo es {modeName} in {langName}?", "a": "{modeName} es un multi-tabul variant de Wordle in {langName}. Tu solva {boardCount} tabules Wordle al sam témpore usante {maxGuesses} probas. Chascun proba es intrat sur omni ne-solvit tabules simultanemen." },
+                { "q": "Quant probas ha yo in {modeName}?", "a": "Tu ha {maxGuesses} probas por solvar omni {boardCount} tabules. Un vez que un tabul es solvit, it gela e tu posse concentrar te sur li restant tabules." },
+                { "q": "Quel strategie functiona maxim bon por {modeName}?", "a": "Comensa con paroles que usa frequent litteres por colliger information sur omni {boardCount} tabules al vez. Presta attention al split-color claviero — it monstra quel litteres es correct sur quel tabules." },
+                { "q": "Es {modeName} gratuit?", "a": "Yes. {modeName} es completmen gratuit in omni 80+ lingues. Null conto o descarga necessi. Joca tant rondes quam tu vole." }
+            ]
+        },
+        "howto": [
+            { "name": "Tappa un parol", "text": "Intra un valid parol de 5 litteres in {langName} usante li claviero sur li ecran o tui fisic claviero, pos pressa Enter." },
+            { "name": "Leer li indicies", "text": "Verd quadrates significa que li littere es correct e in li just loc. Jalni significa que li littere es in li parol ma in li fals position. Gris significa que li littere ne es in li parol." },
+            { "name": "Solva in 6 probas", "text": "Usa li indicies de color por restringer li parol. Tu ha 6 probas in total. Pos li enigma, vide tui statistica e parti tui resultate." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Comensa un jocu", "text": "Visita wordle.global/{lang}/unlimited por comensar jocar Wordle Illimitat in {langName}. Un aleatori parol de 5 litteres es selectet por te." },
+                { "name": "Divina li parol", "text": "Tappa un valid parol de 5 litteres e pressa Enter. Verd quadrates significa que li littere es correct e in li just loc. Jalni significa que li littere es in li parol ma in li fals loc. Gris significa que li littere ne es in li parol." },
+                { "name": "Joca denov instantmen", "text": "Pos solvar li parol (o usar omni 6 probas), pressa \"Jocar denov\" por obtener un nov parol immediatmen. Sin atenter til deman." }
+            ],
+            "speed": [
+                { "name": "Comensa li timer", "text": "Visita wordle.global/{lang}/speed e pressa Comensa. Tu comensa con 3 minutes sur li timer." },
+                { "name": "Solva paroles rapidmen", "text": "Chascun parol solvit gania bonus témpore (+10s til +60s dependent de quant probas tu usat). Fallit paroles costa 30 secundes." },
+                { "name": "Construe tui combo", "text": "Solva paroles consecutivmen por construer un combo multiplicator (til 3x). Li combo rupte se si tu falli un parol. Proba a batter tui maxim bon punctuation." }
+            ],
+            "multiboard": [
+                { "name": "Comensa un jocu", "text": "Visita wordle.global/{lang}/{modeName} por jocar {modeName} in {langName}. {boardCount} tabules appare con diferent celat paroles." },
+                { "name": "Divina trans omni tabules", "text": "Tappa un parol de 5 litteres e pressa Enter. Tui proba appare sur omni {boardCount} tabules al vez. Chascun tabul monstra su propri indicies de color (verd, jalni, gris)." },
+                { "name": "Solva omni {boardCount} tabules", "text": "Solvit tabules gela in loc. Usa li split-color claviero por tracer quel litteres functiona sur quel tabules. Solva omni {boardCount} in {maxGuesses} probas por vincir." }
+            ]
+        }
     }
 }

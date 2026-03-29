@@ -157,10 +157,21 @@ def wrap_text(text, f, draw, max_width):
     return lines
 
 
+def _is_latin(text):
+    """Return True if text contains only Latin/ASCII characters (no Cyrillic/Greek/Arabic/CJK)."""
+    return all(ord(c) < 0x0250 for c in text)
+
+
 def draw_tagline(draw, tagline, y, is_rtl, lang_code):
     """Draw tagline with auto-shrink to fit within image bounds. Returns bottom y."""
     needs_cjk = lang_code in CJK_LANGS
-    font_path = CJK_PATH if needs_cjk else (DEJAVU_PATH if is_rtl else FRAUNCES_PATH)
+    # Use Fraunces for Latin text even on RTL languages (English fallback taglines)
+    if needs_cjk:
+        font_path = CJK_PATH
+    elif is_rtl and not _is_latin(tagline or ""):
+        font_path = DEJAVU_PATH
+    else:
+        font_path = FRAUNCES_PATH
     font_path = font_path or FRAUNCES_PATH
     max_w = W - 200  # 100px margin each side
 
@@ -274,6 +285,102 @@ def gen_quordle(draw, img, tagline, is_rtl, lang_code):
         draw_board(draw, W // 2 + dx, cy + dy, rows=4, tile_size=20, gap=4, solved_row=sr)
 
 
+def gen_octordle(draw, img, tagline, is_rtl, lang_code):
+    """8 boards in a 4×2 grid."""
+    cy = 340
+    ts, gap = 14, 3
+    spacing_x, spacing_y = 135, 80
+    solved_rows = [3, 4, 2, 5, 4, 3, 5, 2]
+    for i in range(8):
+        col, row = i % 4, i // 4
+        dx = (col - 1.5) * spacing_x
+        dy = (row - 0.5) * spacing_y
+        draw_board(
+            draw,
+            int(W // 2 + dx),
+            int(cy + dy),
+            rows=6,
+            tile_size=ts,
+            gap=gap,
+            solved_row=solved_rows[i],
+        )
+
+
+def gen_sedecordle(draw, img, tagline, is_rtl, lang_code):
+    """16 boards in a 4×4 grid."""
+    cy = 340
+    ts, gap = 12, 2
+    spacing_x, spacing_y = 150, 68
+    solved_rows = [2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2]
+    for i in range(16):
+        col, row = i % 4, i // 4
+        dx = (col - 1.5) * spacing_x
+        dy = (row - 1.5) * spacing_y
+        draw_board(
+            draw,
+            int(W // 2 + dx),
+            int(cy + dy),
+            rows=3,
+            tile_size=ts,
+            gap=gap,
+            solved_row=solved_rows[i],
+        )
+
+
+def gen_duotrigordle(draw, img, tagline, is_rtl, lang_code):
+    """32 boards in an 8×4 grid."""
+    cy = 340
+    ts, gap = 8, 2
+    spacing_x, spacing_y = 72, 55
+    solved_rows = [
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+    ]
+    for i in range(32):
+        col, row = i % 8, i // 8
+        dx = (col - 3.5) * spacing_x
+        dy = (row - 1.5) * spacing_y
+        draw_board(
+            draw,
+            int(W // 2 + dx),
+            int(cy + dy),
+            rows=3,
+            tile_size=ts,
+            gap=gap,
+            solved_row=solved_rows[i],
+        )
+
+
 def draw_centered_at(draw, text, cx, cy, f, fill):
     """Draw text centered at a specific point."""
     bbox = draw.textbbox((0, 0), text, font=f)
@@ -290,6 +397,9 @@ MODE_GENERATORS = {
     "dordle": gen_dordle,
     "tridle": gen_tridle,
     "quordle": gen_quordle,
+    "octordle": gen_octordle,
+    "sedecordle": gen_sedecordle,
+    "duotrigordle": gen_duotrigordle,
 }
 
 MODE_LABELS = {
@@ -298,6 +408,9 @@ MODE_LABELS = {
     "dordle": "Dordle",
     "tridle": "Tridle",
     "quordle": "Quordle",
+    "octordle": "Octordle",
+    "sedecordle": "Sedecordle",
+    "duotrigordle": "Duotrigordle",
 }
 
 MODE_TAGLINES_EN = {
@@ -306,6 +419,9 @@ MODE_TAGLINES_EN = {
     "dordle": "2 boards, 1 keyboard, 7 guesses",
     "tridle": "3 boards, 1 keyboard, 8 guesses",
     "quordle": "4 boards, 1 keyboard, 9 guesses",
+    "octordle": "8 boards, 1 keyboard, 13 guesses",
+    "sedecordle": "16 boards, 1 keyboard, 21 guesses",
+    "duotrigordle": "32 boards, 1 keyboard, 37 guesses",
 }
 
 
@@ -415,7 +531,7 @@ def generate_main_og_image():
 
     # Mode list
     mono_lg = font(JETBRAINS_PATH, 16)
-    modes_text = "CLASSIC  ·  UNLIMITED  ·  SPEED  ·  DORDLE  ·  TRIDLE  ·  QUORDLE"
+    modes_text = "CLASSIC · UNLIMITED · SPEED · DORDLE · TRIDLE · QUORDLE · OCTORDLE"
     draw_centered(draw, modes_text, 490, mono_lg, MUTED)
 
     # URL

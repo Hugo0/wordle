@@ -8,8 +8,10 @@ import {
     Square,
     Infinity as InfinityIcon,
     Columns2,
-    Columns3,
     Grid2x2,
+    Grid3x3,
+    Grip,
+    BrickWall,
     Zap,
     Compass,
     PenLine,
@@ -42,7 +44,6 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: 'One word per day. 6 guesses. The classic.',
         routeSuffix: '',
         enabled: true,
-        badge: 'CLASSIC',
     },
     {
         id: 'unlimited',
@@ -51,7 +52,6 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: 'Random words, no limit. Play as much as you want.',
         routeSuffix: 'unlimited',
         enabled: true,
-        badge: 'NEW',
     },
     {
         id: 'speed',
@@ -60,7 +60,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: 'Race the clock. Solve as many words as you can before time runs out.',
         routeSuffix: 'speed',
         enabled: true,
-        badge: 'BETA',
+        badge: 'NEW',
     },
     {
         id: 'dordle',
@@ -69,16 +69,7 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '2 boards, 1 keyboard, 7 guesses.',
         routeSuffix: 'dordle',
         enabled: true,
-        badge: 'NEW',
-    },
-    {
-        id: 'tridle',
-        icon: Columns3,
-        label: 'Tridle',
-        description: '3 boards, 1 keyboard, 8 guesses.',
-        routeSuffix: 'tridle',
-        enabled: true,
-        badge: 'NEW',
+        badge: 'BETA',
     },
     {
         id: 'quordle',
@@ -87,7 +78,34 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: '4 boards, 1 keyboard, 9 guesses.',
         routeSuffix: 'quordle',
         enabled: true,
-        badge: 'NEW',
+        badge: 'BETA',
+    },
+    {
+        id: 'octordle',
+        icon: Grid3x3,
+        label: 'Octordle',
+        description: '8 boards, 1 keyboard, 13 guesses.',
+        routeSuffix: 'octordle',
+        enabled: true,
+        badge: 'BETA',
+    },
+    {
+        id: 'sedecordle',
+        icon: Grip,
+        label: 'Sedecordle',
+        description: '16 boards, 1 keyboard, 21 guesses.',
+        routeSuffix: 'sedecordle',
+        enabled: true,
+        badge: 'BETA',
+    },
+    {
+        id: 'duotrigordle',
+        icon: BrickWall,
+        label: 'Duotrigordle',
+        description: '32 boards, 1 keyboard, 37 guesses.',
+        routeSuffix: 'duotrigordle',
+        enabled: true,
+        badge: 'BETA',
     },
     {
         id: 'semantic',
@@ -124,4 +142,22 @@ export const GAME_MODES_UI: GameModeUI[] = [
 export function getModeRoute(mode: GameModeUI, langCode: string): string | null {
     if (!mode.enabled) return null;
     return mode.routeSuffix ? `/${langCode}/${mode.routeSuffix}` : `/${langCode}`;
+}
+
+/**
+ * Get a translatable label for a game mode, falling back to the static English label.
+ * Config keys follow the pattern: mode_{id}_label
+ */
+export function getModeLabel(mode: GameModeUI, ui?: Record<string, any>): string {
+    const key = `mode_${mode.id}_label`;
+    return (ui?.[key] as string) || mode.label;
+}
+
+/**
+ * Get a translatable description for a game mode, falling back to the static English description.
+ * Config keys follow the pattern: mode_{id}_desc
+ */
+export function getModeDescription(mode: GameModeUI, ui?: Record<string, any>): string {
+    const key = `mode_${mode.id}_desc`;
+    return (ui?.[key] as string) || mode.description;
 }

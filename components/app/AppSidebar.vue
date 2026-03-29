@@ -60,6 +60,7 @@
                                 :src="flagSrc"
                                 :alt="languageName"
                                 class="flag-icon flag-icon-sm"
+                                @error="flagFailed = true"
                             />
                             <Globe v-else :size="18" class="text-muted" />
                         </span>
@@ -95,6 +96,16 @@
                     </a>
                 </div>
 
+                <!-- Learn section -->
+                <div class="py-4 editorial-rule">
+                    <div class="mono-label px-6 pb-2">Learn</div>
+                    <SidebarItem
+                        icon="Lightbulb"
+                        label="Best Starting Words"
+                        :href="`/${langCode}/best-starting-words`"
+                    />
+                </div>
+
                 <!-- Profile (placeholder for Phase 2) — pinned to bottom -->
                 <div
                     class="mt-auto px-6 py-4 editorial-rule flex items-center gap-3 cursor-default"
@@ -117,7 +128,7 @@
 <script setup lang="ts">
 import { Globe, ChevronRight, Bug } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
-import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
+import { GAME_MODES_UI, getModeRoute, getModeLabel } from '~/composables/useGameModes';
 import SidebarItem from './SidebarItem.vue';
 
 const props = withDefaults(
@@ -145,7 +156,8 @@ const emit = defineEmits<{
 
 const sidebarEl = ref<HTMLElement | null>(null);
 
-const flagSrc = computed(() => useFlag(props.langCode));
+const flagFailed = ref(false);
+const flagSrc = computed(() => (flagFailed.value ? null : useFlag(props.langCode)));
 
 function close() {
     emit('close');
@@ -156,16 +168,18 @@ function selectMode(mode: string) {
     close();
 }
 
-const gameModes = computed(() =>
-    GAME_MODES_UI.map((mode) => ({
+const langStore = useLanguageStore();
+const gameModes = computed(() => {
+    const ui = langStore.config?.ui;
+    return GAME_MODES_UI.map((mode) => ({
         id: mode.id,
         icon: mode.icon,
-        label: mode.label,
+        label: getModeLabel(mode, ui),
         badge: mode.badge,
         href: getModeRoute(mode, props.langCode) ?? undefined,
         disabled: !mode.enabled,
-    }))
-);
+    }));
+});
 
 // Pre-fill bug report with language, mode, and device info
 const bugReportUrl = computed(() => {

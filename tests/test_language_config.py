@@ -152,6 +152,64 @@ class TestFieldValues:
         assert config.get("name_native"), f"{lang}: 'name_native' is empty"
 
 
+class TestConfigCompleteness:
+    """Ensure every language config has all keys defined in the defaults.
+
+    Prevents regressions when new translatable keys are added.
+    """
+
+    @pytest.fixture(scope="class")
+    def default_config(self):
+        import json
+        from pathlib import Path
+
+        path = Path(__file__).parent.parent / "data" / "default_language_config.json"
+        with open(path) as f:
+            return json.load(f)
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_ui_keys_complete(self, lang, default_config):
+        config = load_language_config(lang)
+        if config is None:
+            pytest.skip(f"{lang}: No config file")
+        expected = set(default_config.get("ui", {}).keys())
+        actual = set(config.get("ui", {}).keys())
+        missing = expected - actual
+        assert not missing, f"{lang}: Missing ui keys: {missing}"
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_text_keys_complete(self, lang, default_config):
+        config = load_language_config(lang)
+        if config is None:
+            pytest.skip(f"{lang}: No config file")
+        expected = set(default_config.get("text", {}).keys())
+        actual = set(config.get("text", {}).keys())
+        missing = expected - actual
+        assert not missing, f"{lang}: Missing text keys: {missing}"
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_help_keys_complete(self, lang, default_config):
+        config = load_language_config(lang)
+        if config is None:
+            pytest.skip(f"{lang}: No config file")
+        expected = set(default_config.get("help", {}).keys())
+        actual = set(config.get("help", {}).keys())
+        missing = expected - actual
+        assert not missing, f"{lang}: Missing help keys: {missing}"
+
+    @pytest.mark.parametrize("lang", ALL_LANGUAGES)
+    def test_seo_keys_complete(self, lang, default_config):
+        config = load_language_config(lang)
+        if config is None:
+            pytest.skip(f"{lang}: No config file")
+        if "seo" not in config:
+            pytest.skip(f"{lang}: No seo section")
+        expected = set(default_config.get("seo", {}).keys())
+        actual = set(config.get("seo", {}).keys())
+        missing = expected - actual
+        assert not missing, f"{lang}: Missing seo keys: {missing}"
+
+
 class TestKeyboardConfig:
     """Tests for keyboard configuration."""
 

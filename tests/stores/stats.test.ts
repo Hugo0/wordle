@@ -138,15 +138,21 @@ describe('Stats Store', () => {
             expect(total.game_stats['de']).toBeDefined();
         });
 
-        it('overall streaks only count classic daily results', () => {
+        it('overall streaks only count classic daily results on consecutive days', () => {
             const stats = useStatsStore();
-            // Classic wins
-            stats.saveResult('en', true, 3);
-            stats.saveResult('en', true, 2);
+            const day = 24 * 60 * 60 * 1000;
+            const today = new Date();
+
+            // Classic wins on 3 consecutive days
+            stats.gameResults['en'] = [
+                { won: true, attempts: 3, date: new Date(today.getTime() - 2 * day) },
+                { won: true, attempts: 2, date: new Date(today.getTime() - 1 * day) },
+                { won: true, attempts: 4, date: today },
+            ];
             // Unlimited loss — should NOT break classic streak
-            stats.saveResult('en_unlimited', false, 6);
-            // Another classic win
-            stats.saveResult('en', true, 4);
+            stats.gameResults['en_unlimited'] = [
+                { won: false, attempts: 6, date: new Date(today.getTime() - 1 * day) },
+            ];
 
             const total = stats.calculateTotalStats();
             expect(total.current_overall_streak).toBe(3);
@@ -197,11 +203,6 @@ describe('Stats Store', () => {
             expect(buildStatsKey(config)).toBe('en_dordle');
         });
 
-        it('tridle returns lang_mode format', () => {
-            const config = createGameConfig('tridle', 'fr');
-            expect(buildStatsKey(config)).toBe('fr_tridle');
-        });
-
         it('quordle returns lang_mode format', () => {
             const config = createGameConfig('quordle', 'de');
             expect(buildStatsKey(config)).toBe('de_quordle');
@@ -228,8 +229,8 @@ describe('Stats Store', () => {
 
         it('mode-suffixed keys are not classic daily', () => {
             expect(isClassicDailyStatsKey('en_dordle')).toBe(false);
-            expect(isClassicDailyStatsKey('en_tridle')).toBe(false);
             expect(isClassicDailyStatsKey('en_quordle')).toBe(false);
+            expect(isClassicDailyStatsKey('en_octordle')).toBe(false);
             expect(isClassicDailyStatsKey('en_unlimited')).toBe(false);
             expect(isClassicDailyStatsKey('en_speed')).toBe(false);
         });
@@ -265,9 +266,17 @@ describe('Stats Store', () => {
 
         it('streak survives across multiple languages in overall stats', () => {
             const stats = useStatsStore();
-            stats.saveResult('en', true, 3);
-            stats.saveResult('de', true, 2);
-            stats.saveResult('fr', true, 4);
+            const day = 24 * 60 * 60 * 1000;
+            const today = new Date();
+
+            // Different languages on consecutive days
+            stats.gameResults['en'] = [
+                { won: true, attempts: 3, date: new Date(today.getTime() - 2 * day) },
+            ];
+            stats.gameResults['de'] = [
+                { won: true, attempts: 2, date: new Date(today.getTime() - 1 * day) },
+            ];
+            stats.gameResults['fr'] = [{ won: true, attempts: 4, date: today }];
 
             const total = stats.calculateTotalStats();
             expect(total.current_overall_streak).toBe(3);
@@ -275,12 +284,22 @@ describe('Stats Store', () => {
 
         it('overall streak broken by classic loss but not mode loss', () => {
             const stats = useStatsStore();
-            stats.saveResult('en', true, 3);
-            stats.saveResult('en', true, 2);
-            stats.saveResult('en_dordle', false, 7); // should not break
-            stats.saveResult('en_unlimited', false, 6); // should not break
-            stats.saveResult('en', false, 6); // THIS breaks it
-            stats.saveResult('en', true, 4);
+            const day = 24 * 60 * 60 * 1000;
+            const today = new Date();
+
+            stats.gameResults['en'] = [
+                { won: true, attempts: 3, date: new Date(today.getTime() - 3 * day) },
+                { won: true, attempts: 2, date: new Date(today.getTime() - 2 * day) },
+                { won: false, attempts: 6, date: new Date(today.getTime() - 1 * day) }, // breaks it
+                { won: true, attempts: 4, date: today },
+            ];
+            // Mode losses should not affect overall streak
+            stats.gameResults['en_dordle'] = [
+                { won: false, attempts: 7, date: new Date(today.getTime() - 2 * day) },
+            ];
+            stats.gameResults['en_unlimited'] = [
+                { won: false, attempts: 6, date: new Date(today.getTime() - 1 * day) },
+            ];
 
             const total = stats.calculateTotalStats();
             expect(total.current_overall_streak).toBe(1);

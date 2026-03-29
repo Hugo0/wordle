@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — aynı anda 4 tahta",
                 "description": "Türkçe Quordle oyna. 9 tahminle aynı anda 4 Wordle tahtası çöz."
+            },
+            "octordle": {
+                "title": "Octordle — aynı anda 8 tahta",
+                "description": "Türkçe Octordle oyna. 13 tahminle aynı anda 8 Wordle tahtası çöz."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — aynı anda 16 tahta",
+                "description": "Türkçe Sedecordle oyna. 21 tahminle aynı anda 16 Wordle tahtası çöz."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — aynı anda 32 tahta",
+                "description": "Türkçe Duotrigordle oyna. 37 tahminle aynı anda 32 Wordle tahtası çöz."
             }
         }
     },
@@ -39,7 +51,13 @@
         "share_challenge_win": "Bugünkü Wordle'ı {n} denemede çözdüm. Beni yenebilir misin?",
         "share_challenge_lose": "Bugünkü Wordle'ı çözemedim. Sen çözebilir misin?",
         "notification_copied": "Panoya kopyalandı",
-        "notification_partial_word": "Lütfen tam bir kelime girin"
+        "notification_partial_word": "Lütfen tam bir kelime girin",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -55,7 +73,15 @@
         "text_2_1": "kelimede ve doğru konumda!",
         "text_2_2": "kelimede, ancak doğru yerde değil.",
         "text_2_3": "tahmin etmeye çalıştığınız kelimede bulunmuyor.",
-        "text_3": "Her gün yeni bir kelime hazır olacak!"
+        "text_3": "Her gün yeni bir kelime hazır olacak!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Ayarlar",
@@ -140,6 +166,337 @@
         "pos_verb": "fiil",
         "pos_adjective": "sıfat",
         "pos_adverb": "zarf",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "Dünyanın kelime oyunu",
+        "homepage_playing_in": "Şu dilde oynuyorsun:",
+        "homepage_change": "değiştir",
+        "homepage_choose_language": "Dilini seç",
+        "homepage_languages_counting": "dil ve artıyor — düzenli olarak yenileri ekleniyor.",
+        "homepage_search": "Dil ara...",
+        "homepage_and_more": "ve Daha",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — ve çok daha fazlası yakında."
+    },
+    "seo": {
+        "how_to_play": "Nasıl Oynanır",
+        "tips_strategy": "İpuçları ve Strateji",
+        "more_modes": "Diğer Oyun Modları",
+        "play_in_languages": "80'den fazla dilde oyna",
+        "play_in_languages_sub": "Tüm diller ücretsiz. Hesap gerekmez.",
+        "why_wordle_global": "Neden Wordle Global",
+        "faq_title": "Sıkça Sorulan Sorular",
+        "browse_all_languages": "80+ dilin tümüne göz at",
+        "footer": "wordle.global — 80'den fazla dilde ücretsiz günlük kelime oyunu",
+        "tile_correct": "kelimede ve doğru yerde.",
+        "tile_semicorrect": "kelimede ama yanlış yerde.",
+        "tile_incorrect": "kelimede hiç yok.",
+        "stat_players": "Oyuncular",
+        "stat_guesses": "Tahminler",
+        "stat_languages": "Diller",
+        "stat_modes": "Oyun Modları",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ Dil",
+                "desc": "Arapçadan Yorubacaya. Dünyanın en büyük çok dilli Wordle'ı."
+            },
+            {
+                "key": "definitions",
+                "title": "Kelime Tanımları",
+                "desc": "Oynadıktan sonra her kelimenin anlamını öğren. Kelime dağarcığını geliştir."
+            },
+            {
+                "key": "word_art",
+                "title": "Özgün Kelime Sanatı",
+                "desc": "Her kelimeye özel bir illüstrasyon eşlik eder. Hepsini topla."
+            },
+            {
+                "key": "themes",
+                "title": "Karanlık Mod ve Temalar",
+                "desc": "Rahat oynamak için açık, koyu ve yüksek kontrastlı modlar."
+            },
+            {
+                "key": "pwa",
+                "title": "Her Yerde Çalışır",
+                "desc": "PWA — herhangi bir cihaza yükle. Çevrimdışı çalışır. İndirme gerekmez."
+            },
+            {
+                "key": "free",
+                "title": "Sonsuza Kadar Ücretsiz",
+                "desc": "Hesap gerekmez. Ücretli içerik yok. Sadece oyna."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Sesli harf zengini bir kelimeyle başla",
+                "text": "CRANE, STARE veya ADIEU gibi kelimeler yaygın harfleri hızla test eder. Hangi sesli harflerin olduğunu bilmek seçenekleri daraltır."
+            },
+            {
+                "title": "Bildiklerini kullan",
+                "text": "Yeşil harfler sabittir. Sarılar yer değiştirmeli. Griler elenmiştir. Her tahmin üç ipucunu da kullanmalı."
+            },
+            {
+                "title": "Yaygın kalıpları düşün",
+                "text": "Türkçenin kendine özgü harf kombinasyonları ve yaygın ekleri vardır — bunları tanımayı öğren."
+            },
+            {
+                "title": "Rastgele tahmin etme, eleme yap",
+                "text": "İkinci kelimenin yeni harfleri test etmesi gerekir, zaten onaylananları tekrar etmemeli."
+            },
+            {
+                "title": "Çift harflere dikkat et",
+                "text": "Bazı kelimeler tekrarlanan harf içerir. İpuçları tutmuyorsa, tekrarlanan bir harf olabileceğini düşün."
+            },
+            {
+                "title": "Gelişmek için zor modu kullan",
+                "text": "Zor mod, her tahminde onaylanmış ipuçlarını kullanmaya zorlar. Daha iyi alışkanlıklar kazandırır."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Yaygın harflerle başla",
+                "text": "Sık kullanılan harfler hızlı çözüm için en iyi şansı verir. Her saniye önemli."
+            },
+            {
+                "title": "Fazla düşünme",
+                "text": "Speed Streak sezgiyi ödüllendirir. Olası bir kelime görürsen hemen dene — kombo bonusu mükemmel çözümden değerlidir."
+            },
+            {
+                "title": "Kombonu koru",
+                "text": "Başarısız kelime çarpanı kırar. Emin değilsen güvenli bir tahmin kullan."
+            },
+            {
+                "title": "2-3 tahminde çözmeyi hedefle",
+                "text": "Hızlı çözümler için zaman bonusu çok büyük (+60s tek tahminle, +30s ikiyle)."
+            },
+            {
+                "title": "Yaygın kelime sonlarını öğren",
+                "text": "Tekrarlayan kalıpları anında tanımak her kelimede saniyeler kazandırır."
+            },
+            {
+                "title": "Baskı artınca sakin kal",
+                "text": "Zamanlayıcı her 3 kelimede hızlanır. Acele etmek hatalara yol açar. Sabit tempo paniği yener."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Geniş başla",
+                "text": "Yaygın harfli kelimeler kullanarak tüm tahtalardan aynı anda ipucu topla."
+            },
+            {
+                "title": "Bölünmüş klavyeyi izle",
+                "text": "Klavye her tahta için renkleri gösterir. Bir tahtada yeşil ama diğerinde gri olan harf seçenekleri hızla daraltır."
+            },
+            {
+                "title": "Zor tahtalara öncelik ver",
+                "text": "Tahminlerini en çok bilinmeyeni olan tahtaya odakla. Kolay tahtalar genellikle kendiliğinden çözülür."
+            },
+            {
+                "title": "İlk tahminleri boşa harcama",
+                "text": "İlk 2-3 tahmini bilgi zengini kelimelerle kullan, belirli tahtalara odaklanmadan önce."
+            },
+            {
+                "title": "Ortak harfleri ara",
+                "text": "İki tahtada da sarı E varsa, E'yi yeni pozisyonda kullanan bir kelime ikisine de yardımcı olur."
+            },
+            {
+                "title": "Acil durumlar için bir tahmin sakla",
+                "text": "Son tahtada takılırsan, fazladan bir tahmin kazanma ile kaybetme arasındaki farkı yapar."
+            }
+        ],
+        "faq": [
+            {
+                "q": "Wordle'ı {langName} dilinde nasıl oynarım?",
+                "a": "{langName} dilinde günlük Wordle oynamak için wordle.global/{lang} adresini ziyaret et. 5 harfli bir kelimeyi tahmin etmek için 6 hakkın var. Her tahminden sonra kareler yeşil (doğru harf, doğru konum), sarı (doğru harf, yanlış konum) veya gri (harf kelimede yok) olur."
+            },
+            {
+                "q": "Her gün yeni bir bulmaca var mı?",
+                "a": "Evet. Her gün yeni bir kelime seçilir. Aynı dilde oynayan herkes aynı kelimeyi alır, böylece sonuçlarını arkadaşlarınla karşılaştırabilirsin."
+            },
+            {
+                "q": "Wordle Global ücretsiz mi?",
+                "a": "Evet. Günlük bulmaca, sınırsız mod ve tüm oyun modları 80'den fazla dilde tamamen ücretsiz. Hesap veya indirme gerekmez."
+            },
+            {
+                "q": "Günde birden fazla oynayabilir miyim?",
+                "a": "Evet — bekleme olmadan sonsuz oyun için wordle.global/{lang}/unlimited adresinde sınırsız modu dene. Günlük serin ayrıca takip edilir."
+            }
+        ],
+        "mode_desc_classic": "Gizli 5 harfli kelimeyi tahmin etmek için 6 hakkın var. Cevabı daraltmak için renk ipuçlarını kullan.",
+        "mode_desc_unlimited": "Gizli 5 harfli kelimeyi tahmin etmek için 6 hakkın var. Cevabı daraltmak için renk ipuçlarını kullan. Her oyundan sonra anında yeni bir kelime almak için \"Tekrar Oyna\"ya bas — günlük sınır yok.",
+        "mode_desc_speed": "Sayaçta 3 dakikayla başla. Çözdüğün her kelime bonus süre verir — daha az tahminle daha büyük bonuslar (+60s tek tahminle, +10s altı tahminle). Başarısız kelimeler 30 saniyeye mal olur. Art arda kelimeler çözerek 3 kata kadar puan çarpanı için kombolar oluştur. Baskı artar — zamanlayıcı her 3 kelimede hızlanır.",
+        "mode_desc_multiboard": "{modeName}, sadece {maxGuesses} tahminle aynı anda {boardCount} Wordle tahtası çözmeni ister. Her tahmin çözülmemiş tüm tahtalarda görünür. Çözülen tahtalar donar. Bölünmüş klavye hangi harflerin hangi tahtalarda doğru olduğunu gösterir. Tüm tahtalardan aynı anda ipucu toplamak için yaygın harfli kelimelerle başla.",
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "{langName} dilinde Wordle Unlimited nedir?",
+                    "a": "Wordle Unlimited, yarının bulmacasını beklemeden {langName} dilinde istediğin kadar Wordle oynamamı sağlar. Her oyunda 6 tahminde tahmin edeceğin yeni rastgele bir kelime verilir."
+                },
+                {
+                    "q": "Wordle Unlimited ücretsiz mi?",
+                    "a": "Evet. Wordle Unlimited tamamen ücretsiz. Hesap yok, indirme yok, oyun sırasında reklam yok."
+                },
+                {
+                    "q": "Sınırsız mod günlük serimi etkiler mi?",
+                    "a": "Hayır. Sınırsız modun kendi ayrı istatistikleri var. Günlük serin yalnızca günlük bulmacadan etkilenir."
+                },
+                {
+                    "q": "Kaç kez oynayabilirim?",
+                    "a": "Sınır yok. İstediğin kadar tur oynayabilirsin. Her oyundan sonra anında yeni bir kelime almak için \"Tekrar Oyna\"ya bas."
+                },
+                {
+                    "q": "Wordle Unlimited'ı hangi dillerde oynayabilirim?",
+                    "a": "Wordle Unlimited, wordle.global'da Türkçe, İngilizce, İspanyolca, Almanca, Fince, Arapça, Fransızca ve daha birçok dil dahil 80'den fazla dilde kullanılabilir."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "{langName} dilinde Speed Streak nedir?",
+                    "a": "Speed Streak, {langName} dilinde zamanlı bir Wordle modudur. Sayaçta 3 dakikayla başlar ve mümkün olduğunca çok kelime çözersin. Hızlı çöz, bonus süre kazan."
+                },
+                {
+                    "q": "Puanlama nasıl çalışır?",
+                    "a": "Çözülen her kelime için puan kazanırsın. Daha az tahmin ve daha hızlı çözümler daha fazla puan verir. Art arda kelimeler çözerek kombo oluştur — 3 kata kadar çarpan."
+                },
+                {
+                    "q": "Süre dolunca ne olur?",
+                    "a": "Oyun biter ve son puanını, çözülen kelimeleri, en iyi komboyu ve ortalama tahmin sayısını görürsün. Hemen tekrar oynayabilirsin."
+                },
+                {
+                    "q": "Speed Streak ücretsiz mi?",
+                    "a": "Evet. Speed Streak, 80'den fazla dilin tamamında tamamen ücretsiz. Hesap veya indirme gerekmez."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{langName} dilinde {modeName} nedir?",
+                    "a": "{modeName}, {langName} dilinde çok tahtalı bir Wordle çeşididir. {maxGuesses} tahminle aynı anda {boardCount} Wordle tahtası çözersin. Her tahmin çözülmemiş tüm tahtalara girilir."
+                },
+                {
+                    "q": "{modeName}'de kaç tahmin hakkım var?",
+                    "a": "Tüm {boardCount} tahtayı çözmek için {maxGuesses} tahmin hakkın var. Bir tahta çözüldüğünde donar ve kalan tahtalara odaklanabilirsin."
+                },
+                {
+                    "q": "{modeName} için en iyi strateji nedir?",
+                    "a": "Tüm {boardCount} tahtadan aynı anda bilgi toplamak için yaygın harfli kelimelerle başla. Bölünmüş klavyeye dikkat et — hangi harflerin hangi tahtalarda doğru olduğunu gösterir."
+                },
+                {
+                    "q": "{modeName} ücretsiz mi?",
+                    "a": "Evet. {modeName}, 80'den fazla dilin tamamında tamamen ücretsiz. Hesap veya indirme gerekmez. İstediğin kadar tur oyna."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Bir kelime yaz",
+                "text": "{langName} dilinde geçerli bir 5 harfli kelimeyi ekran klavyesi veya fiziksel klavyenle yaz, ardından Enter'a bas."
+            },
+            {
+                "name": "İpuçlarını oku",
+                "text": "Yeşil kareler harfin doğru ve doğru yerde olduğunu gösterir. Sarı, harfin kelimede olduğunu ama yanlış yerde olduğunu gösterir. Gri, harfin kelimede olmadığını gösterir."
+            },
+            {
+                "name": "6 tahminde çöz",
+                "text": "Renk ipuçlarını kullanarak kelimeyi daralt. Toplamda 6 tahmin hakkın var. Bulmacadan sonra istatistiklerini gör ve sonucunu paylaş."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Oyuna başla",
+                    "text": "{langName} dilinde Wordle Unlimited oynamaya başlamak için wordle.global/{lang}/unlimited adresini ziyaret et. Senin için rastgele bir 5 harfli kelime seçilir."
+                },
+                {
+                    "name": "Kelimeyi tahmin et",
+                    "text": "Geçerli bir 5 harfli kelime yaz ve Enter'a bas. Yeşil = doğru harf, doğru yer. Sarı = doğru harf, yanlış yer. Gri = harf kelimede yok."
+                },
+                {
+                    "name": "Hemen tekrar oyna",
+                    "text": "Kelimeyi çözdükten (veya 6 tahminin tümünü kullandıktan) sonra anında yeni bir kelime almak için \"Tekrar Oyna\"ya bas. Yarını bekleme."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Zamanlayıcıyı başlat",
+                    "text": "wordle.global/{lang}/speed adresini ziyaret et ve Başlat'a bas. Sayaçta 3 dakikayla başlarsın."
+                },
+                {
+                    "name": "Kelimeleri hızlı çöz",
+                    "text": "Çözdüğün her kelime bonus süre verir (+10s ile +60s arası, tahmin sayısına göre). Başarısız kelimeler 30 saniyeye mal olur."
+                },
+                {
+                    "name": "Kombonu oluştur",
+                    "text": "Art arda kelimeler çözerek kombo çarpanını artır (3 kata kadar). Başarısız olursan kombo kırılır. En yüksek puanını geçmeye çalış."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Oyuna başla",
+                    "text": "{langName} dilinde {modeName} oynamak için wordle.global/{lang}/{modeName} adresini ziyaret et. Farklı gizli kelimelerle {boardCount} tahta görünür."
+                },
+                {
+                    "name": "Tüm tahtalarda tahmin et",
+                    "text": "5 harfli bir kelime yaz ve Enter'a bas. Tahmin tüm {boardCount} tahtada görünür. Her tahta kendi renk ipuçlarını gösterir (yeşil, sarı, gri)."
+                },
+                {
+                    "name": "Tüm {boardCount} tahtayı çöz",
+                    "text": "Çözülen tahtalar yerinde donar. Hangi harflerin hangi tahtalarda işe yaradığını takip etmek için bölünmüş klavyeyi kullan. Kazanmak için tüm {boardCount} tahtayı {maxGuesses} tahminde çöz."
+                }
+            ]
+        },
+        "recent_words": "Son Kelimeler",
+        "view_all_words": "Tüm kelimeleri gör"
     }
 }

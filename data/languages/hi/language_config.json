@@ -31,6 +31,18 @@
             "quordle": {
                 "title": "Quordle — एक साथ 4 बोर्ड",
                 "description": "हिंदी में Quordle खेलें। 9 अनुमानों में एक साथ 4 Wordle बोर्ड हल करें।"
+            },
+            "octordle": {
+                "title": "Octordle — एक साथ 8 बोर्ड",
+                "description": "हिंदी में Octordle खेलें। 13 अनुमानों में एक साथ 8 Wordle बोर्ड हल करें।"
+            },
+            "sedecordle": {
+                "title": "Sedecordle — एक साथ 16 बोर्ड",
+                "description": "हिंदी में Sedecordle खेलें। 21 अनुमानों में एक साथ 16 Wordle बोर्ड हल करें।"
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — एक साथ 32 बोर्ड",
+                "description": "हिंदी में Duotrigordle खेलें। 37 अनुमानों में एक साथ 32 Wordle बोर्ड हल करें।"
             }
         }
     },
@@ -47,7 +59,8 @@
         "share_challenge_win": "मैंने आज का वर्डल {n} प्रयासों में हल किया। क्या आप बेहतर कर सकते हैं?",
         "share_challenge_lose": "मैं आज का वर्डल हल नहीं कर पाया। क्या आप कर सकते हैं?",
         "hard_mode_position": "कठिन मोड: {letter} स्थान {position} पर होना चाहिए",
-        "hard_mode_contains": "कठिन मोड: अनुमान में {letter} होना चाहिए"
+        "hard_mode_contains": "कठिन मोड: अनुमान में {letter} होना चाहिए",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "help": {
         "title": "कैसे खेलें",
@@ -60,7 +73,15 @@
         "text_2_1": "शब्द में है और सही स्थान पर है!",
         "text_2_2": "शब्द में है, लेकिन सही स्थान पर नहीं है।",
         "text_2_3": "जिस शब्द को आप पहचानने की कोशिश कर रहे हैं उसमें नहीं है।",
-        "text_3": "हर दिन एक नया शब्द उपलब्ध!"
+        "text_3": "हर दिन एक नया शब्द उपलब्ध!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "सेटिंग्स",
@@ -145,7 +166,68 @@
         "pos_verb": "क्रिया",
         "pos_adjective": "विशेषण",
         "pos_adverb": "क्रिया विशेषण",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
     },
     "diacritic_map": {
         "न": [
@@ -154,5 +236,275 @@
         "र": [
             "ऱ"
         ]
+    },
+    "seo": {
+        "how_to_play": "कैसे खेलें",
+        "tips_strategy": "सुझाव और रणनीति",
+        "more_modes": "और गेम मोड",
+        "play_in_languages": "80+ भाषाओं में खेलें",
+        "play_in_languages_sub": "सभी भाषाएँ मुफ़्त। खाते की ज़रूरत नहीं।",
+        "why_wordle_global": "Wordle Global क्यों",
+        "faq_title": "अक्सर पूछे जाने वाले प्रश्न",
+        "browse_all_languages": "80+ भाषाएँ देखें",
+        "recent_words": "हाल के शब्द",
+        "view_all_words": "सभी शब्द देखें",
+        "footer": "wordle.global — 80+ भाषाओं में मुफ़्त दैनिक शब्द खेल",
+        "tile_correct": "शब्द में है और सही जगह पर है।",
+        "tile_semicorrect": "शब्द में है लेकिन गलत जगह पर।",
+        "tile_incorrect": "शब्द में नहीं है।",
+        "stat_players": "खिलाड़ी",
+        "stat_guesses": "अनुमान",
+        "stat_languages": "भाषाएँ",
+        "stat_modes": "गेम मोड",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ भाषाएँ",
+                "desc": "अरबी से योरूबा तक। सबसे बड़ा बहुभाषी Wordle।"
+            },
+            {
+                "key": "definitions",
+                "title": "शब्द परिभाषाएँ",
+                "desc": "खेलने के बाद हर शब्द का अर्थ जानें।"
+            },
+            {
+                "key": "word_art",
+                "title": "अनोखी शब्द कला",
+                "desc": "हर शब्द कस्टम चित्रण के साथ।"
+            },
+            {
+                "key": "themes",
+                "title": "डार्क मोड और थीम",
+                "desc": "लाइट, डार्क और हाई कॉन्ट्रास्ट।"
+            },
+            {
+                "key": "pwa",
+                "title": "हर जगह काम करता है",
+                "desc": "PWA — किसी भी डिवाइस पर। ऑफ़लाइन।"
+            },
+            {
+                "key": "free",
+                "title": "हमेशा मुफ़्त",
+                "desc": "खाता नहीं चाहिए। बस खेलें।"
+            }
+        ],
+        "tips": [
+            {
+                "title": "स्वर-समृद्ध शब्द से शुरू करें",
+                "text": "CRANE या ADIEU सामान्य अक्षर तेज़ी से जाँचते हैं।"
+            },
+            {
+                "title": "जो जानते हैं उसका उपयोग करें",
+                "text": "हरा स्थिर। पीला हटाएँ। ग्रे हटा दिया गया।"
+            },
+            {
+                "title": "सामान्य पैटर्न सोचें",
+                "text": "हर भाषा के अपने शब्द पैटर्न हैं।"
+            },
+            {
+                "title": "हटाएँ, अंधाधुंध नहीं",
+                "text": "दूसरे शब्द में नए अक्षर आज़माएँ।"
+            },
+            {
+                "title": "दोहरे अक्षरों पर ध्यान दें",
+                "text": "सुराग मेल नहीं खाते? दोहरे अक्षर पर विचार करें।"
+            },
+            {
+                "title": "कठिन मोड",
+                "text": "पुष्ट सुरागों का उपयोग करने पर मजबूर करता है।"
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "अधिक प्रयुक्त अक्षर सबसे अच्छा मौका देते हैं।"
+            },
+            {
+                "title": "ज़्यादा न सोचें",
+                "text": "Speed Streak अंतर्ज्ञान को पुरस्कृत करता है।"
+            },
+            {
+                "title": "कॉम्बो बचाएँ",
+                "text": "विफल शब्द गुणक तोड़ता है।"
+            },
+            {
+                "title": "2-3 अनुमान में",
+                "text": "तेज़ हल के लिए बड़ा समय बोनस (+60s)।"
+            },
+            {
+                "title": "शब्द के अंत सीखें",
+                "text": "पैटर्न पहचानने से सेकंड बचते हैं।"
+            },
+            {
+                "title": "शांत रहें",
+                "text": "हर 3 शब्दों पर टाइमर तेज़ होता है।"
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "व्यापक शुरुआत",
+                "text": "सभी बोर्ड पर सुराग इकट्ठा करने के लिए सामान्य अक्षर।"
+            },
+            {
+                "title": "विभाजित कीबोर्ड",
+                "text": "एक बोर्ड पर हरा, दूसरे पर ग्रे विकल्प कम करता है।"
+            },
+            {
+                "title": "कठिन बोर्ड प्राथमिकता",
+                "text": "सबसे अधिक अज्ञात वाले बोर्ड पर ध्यान दें।"
+            },
+            {
+                "title": "शुरुआती अनुमान बर्बाद न करें",
+                "text": "पहले 2-3 जानकारी-समृद्ध शब्दों के लिए।"
+            },
+            {
+                "title": "साझा अक्षर खोजें",
+                "text": "दो बोर्ड पीले E के साथ? नई स्थिति में E वाला शब्द।"
+            },
+            {
+                "title": "अनुमान बचाएँ",
+                "text": "अंत में अतिरिक्त अनुमान फ़र्क करता है।"
+            }
+        ],
+        "mode_desc_classic": "छिपे 5-अक्षर शब्द के लिए 6 प्रयास। रंग सुरागों का उपयोग करें।",
+        "mode_desc_unlimited": "6 प्रयास, 5 अक्षर। \"फिर से खेलें\" — कोई दैनिक सीमा नहीं।",
+        "mode_desc_speed": "3 मिनट। हर शब्द बोनस समय देता है (+60s 1 अनुमान, +10s 6)। विफल: 30s। कॉम्बो 3x तक। हर 3 शब्दों पर तेज़।",
+        "mode_desc_multiboard": "{modeName}: {boardCount} बोर्ड, {maxGuesses} अनुमान। हर अनुमान सभी बोर्ड पर। हल बोर्ड जम जाते हैं। विभाजित कीबोर्ड।",
+        "faq": [
+            {
+                "q": "{langName} में Wordle कैसे खेलें?",
+                "a": "wordle.global/{lang}। 6 प्रयास, 5 अक्षर।"
+            },
+            {
+                "q": "हर दिन नया?",
+                "a": "हाँ। सबके लिए एक ही शब्द।"
+            },
+            {
+                "q": "मुफ़्त?",
+                "a": "हाँ। सभी मोड 80+ भाषाओं में।"
+            },
+            {
+                "q": "एक से अधिक बार?",
+                "a": "हाँ — wordle.global/{lang}/unlimited।"
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "{langName} में Wordle Unlimited?",
+                    "a": "जितना चाहें खेलें।"
+                },
+                {
+                    "q": "मुफ़्त?",
+                    "a": "हाँ।"
+                },
+                {
+                    "q": "दैनिक क्रम?",
+                    "a": "नहीं। अलग आँकड़े।"
+                },
+                {
+                    "q": "कितनी बार?",
+                    "a": "कोई सीमा नहीं।"
+                },
+                {
+                    "q": "कौन सी भाषाएँ?",
+                    "a": "80+ भाषाएँ।"
+                }
+            ],
+            "speed": [
+                {
+                    "q": "{langName} में Speed Streak?",
+                    "a": "समय के विरुद्ध Wordle। 3 मिनट।"
+                },
+                {
+                    "q": "स्कोरिंग?",
+                    "a": "कम अनुमान = ज़्यादा अंक। 3x कॉम्बो।"
+                },
+                {
+                    "q": "समय समाप्त?",
+                    "a": "खेल समाप्त।"
+                },
+                {
+                    "q": "मुफ़्त?",
+                    "a": "हाँ। 80+ भाषाओं में।"
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{langName} में {modeName}?",
+                    "a": "{boardCount} बोर्ड, {maxGuesses} अनुमान।"
+                },
+                {
+                    "q": "कितने अनुमान?",
+                    "a": "{boardCount} बोर्ड के लिए {maxGuesses}।"
+                },
+                {
+                    "q": "रणनीति?",
+                    "a": "सामान्य अक्षर। विभाजित कीबोर्ड।"
+                },
+                {
+                    "q": "मुफ़्त?",
+                    "a": "हाँ। 80+ भाषाओं में।"
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "शब्द टाइप करें",
+                "text": "{langName}: 5 अक्षर, Enter।"
+            },
+            {
+                "name": "सुराग पढ़ें",
+                "text": "हरा = सही। पीला = गलत जगह। ग्रे = नहीं है।"
+            },
+            {
+                "name": "6 में हल करें",
+                "text": "रंग सुरागों का उपयोग करें। 6 अनुमान।"
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "शुरू करें",
+                    "text": "wordle.global/{lang}/unlimited।"
+                },
+                {
+                    "name": "अनुमान लगाएँ",
+                    "text": "5 अक्षर, Enter।"
+                },
+                {
+                    "name": "फिर से",
+                    "text": "\"फिर से खेलें\"।"
+                }
+            ],
+            "speed": [
+                {
+                    "name": "टाइमर",
+                    "text": "wordle.global/{lang}/speed — 3 मिनट।"
+                },
+                {
+                    "name": "तेज़",
+                    "text": "बोनस समय (+10s से +60s)।"
+                },
+                {
+                    "name": "कॉम्बो",
+                    "text": "गुणक 3x तक।"
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "शुरू",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} बोर्ड।"
+                },
+                {
+                    "name": "सभी बोर्ड",
+                    "text": "अनुमान {boardCount} बोर्ड पर।"
+                },
+                {
+                    "name": "{boardCount} हल करें",
+                    "text": "विभाजित कीबोर्ड। {maxGuesses} अनुमान।"
+                }
+            ]
+        }
     }
 }

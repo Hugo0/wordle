@@ -23,7 +23,15 @@ export default defineEventHandler((event) => {
     );
 
     // Language pages + game modes
-    const gameModes = ['unlimited', 'speed', 'dordle', 'tridle', 'quordle'];
+    const gameModes = [
+        'unlimited',
+        'speed',
+        'dordle',
+        'quordle',
+        'octordle',
+        'sedecordle',
+        'duotrigordle',
+    ];
     for (const lc of Object.keys(data.languages).sort()) {
         urls.push(
             `  <url><loc>${base}/${lc}</loc><changefreq>daily</changefreq><priority>0.9</priority></url>`
@@ -33,6 +41,13 @@ export default defineEventHandler((event) => {
                 `  <url><loc>${base}/${lc}/${mode}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`
             );
         }
+    }
+
+    // Strategy pages (best starting words)
+    for (const lc of Object.keys(data.languages).sort()) {
+        urls.push(
+            `  <url><loc>${base}/${lc}/best-starting-words</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>`
+        );
     }
 
     // Words hub pages (paginated)

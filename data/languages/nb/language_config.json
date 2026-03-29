@@ -39,6 +39,18 @@
             "quordle": {
                 "title": "Quordle — 4 brett samtidig",
                 "description": "Spill Quordle på norsk. Løs 4 Wordle-brett samtidig med 9 forsøk."
+            },
+            "octordle": {
+                "title": "Octordle — 8 brett samtidig",
+                "description": "Spill Octordle på norsk. Løs 8 Wordle-brett samtidig med 13 forsøk."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 brett samtidig",
+                "description": "Spill Sedecordle på norsk. Løs 16 Wordle-brett samtidig med 21 forsøk."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 brett samtidig",
+                "description": "Spill Duotrigordle på norsk. Løs 32 Wordle-brett samtidig med 37 forsøk."
             }
         }
     },
@@ -55,7 +67,8 @@
         "copied": "Kopiert!",
         "notification_word_not_valid": "Ordet er ikke gyldig",
         "hard_mode_position": "Vanskelig modus: {letter} må være i posisjon {position}",
-        "hard_mode_contains": "Vanskelig modus: gjetningen må inneholde {letter}"
+        "hard_mode_contains": "Vanskelig modus: gjetningen må inneholde {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -71,7 +84,15 @@
         "text_2_1": "er i ordet og på riktig sted!",
         "text_2_2": "er i ordet, men ikke på riktig sted.",
         "text_2_3": "er ikke tilstede i ordet du prøver å gjette.",
-        "text_3": "Et nytt ord vil være tilgjengelig hver dag!"
+        "text_3": "Et nytt ord vil være tilgjengelig hver dag!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Innstillinger",
@@ -156,6 +177,337 @@
         "pos_verb": "verb",
         "pos_adjective": "adjektiv",
         "pos_adverb": "adverb",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "Verdens ordspill",
+        "homepage_playing_in": "Du spiller på",
+        "homepage_change": "endre",
+        "homepage_choose_language": "Velg språket ditt",
+        "homepage_languages_counting": "språk og stadig flere — nye legges til jevnlig.",
+        "homepage_search": "Søk etter språk...",
+        "homepage_and_more": "& Mer",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — og mye mer kommer snart."
+    },
+    "seo": {
+        "how_to_play": "Slik spiller du",
+        "tips_strategy": "Tips og strategi",
+        "more_modes": "Flere spillmoduser",
+        "play_in_languages": "Spill på 80+ språk",
+        "play_in_languages_sub": "Alle språk er gratis. Ingen konto nødvendig.",
+        "why_wordle_global": "Hvorfor Wordle Global",
+        "faq_title": "Ofte stilte spørsmål",
+        "browse_all_languages": "Se alle 80+ språk",
+        "recent_words": "Nylige ord",
+        "view_all_words": "Se alle ord",
+        "footer": "wordle.global — det gratis daglige ordspillet på 80+ språk",
+        "tile_correct": "er i ordet og på riktig plass.",
+        "tile_semicorrect": "er i ordet, men på feil plass.",
+        "tile_incorrect": "er ikke i ordet i det hele tatt.",
+        "stat_players": "Spillere",
+        "stat_guesses": "Forsøk",
+        "stat_languages": "Språk",
+        "stat_modes": "Spillmoduser",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ språk",
+                "desc": "Fra arabisk til yoruba. Den største flerspråklige Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Orddefinisjoner",
+                "desc": "Lær betydningen av hvert ord etter at du spiller. Utvid vokabularet ditt."
+            },
+            {
+                "key": "word_art",
+                "title": "Unik ordkunst",
+                "desc": "Hvert ord har sin egen illustrasjon. Samle dem alle."
+            },
+            {
+                "key": "themes",
+                "title": "Mørk modus og temaer",
+                "desc": "Lys, mørk og høykontrast-modus for komfortabelt spill."
+            },
+            {
+                "key": "pwa",
+                "title": "Fungerer overalt",
+                "desc": "PWA — installer på hvilken som helst enhet. Fungerer offline. Ingen nedlasting nødvendig."
+            },
+            {
+                "key": "free",
+                "title": "Gratis for alltid",
+                "desc": "Ingen konto nødvendig. Ingen betaling. Bare spill."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Begynn med et vokalrikt ord",
+                "text": "Ord som CRANE, STARE eller ADIEU tester vanlige bokstaver raskt. Når du vet hvilke vokaler som finnes, snevres mulighetene inn fort."
+            },
+            {
+                "title": "Bruk det du vet",
+                "text": "Grønne bokstaver blir stående. Gule bokstaver må flyttes. Grå bokstaver er eliminert. Hvert forsøk bør bruke alle tre typer ledetråder."
+            },
+            {
+                "title": "Tenk på vanlige mønstre",
+                "text": "Engelske ord ender ofte på -TION, -IGHT, -OUND, -MENT. Hvert språk har sine egne mønstre — lær dem."
+            },
+            {
+                "title": "Eliminer, ikke gjett tilfeldig",
+                "text": "Det andre forsøket bør teste nye bokstaver, ikke gjenta bekreftede. Dekk så mange utestede konsonanter som mulig."
+            },
+            {
+                "title": "Pass opp for doble bokstaver",
+                "text": "Ord som CREEK, FLOSS eller APPLE er vanlige feller. Hvis ledetrådene ikke gir mening, vurder en gjentatt bokstav."
+            },
+            {
+                "title": "Bruk vanskelig modus for å bli bedre",
+                "text": "Vanskelig modus tvinger deg til å bruke bekreftede ledetråder i hvert forsøk. Det bygger bedre vaner selv når du bytter tilbake til normal."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Begynn med CRANE eller STARE",
+                "text": "Høyfrekvente bokstaver gir deg best sjanse for rask løsning. Hvert sekund teller."
+            },
+            {
+                "title": "Ikke overtenk",
+                "text": "Speed Streak belønner magefølelse. Ser du et sannsynlig ord, gå for det — combo-bonusen oppveier en perfekt løsning."
+            },
+            {
+                "title": "Beskytt combo-et ditt",
+                "text": "Et mislykket ord bryter multiplikatoren din. Når du er usikker, bruk et trygt forsøk for å samle flere ledetråder fremfor å risikere."
+            },
+            {
+                "title": "Sikt mot løsning på 2–3 forsøk",
+                "text": "Tidsbonusen for raske løsninger er enorm (+60 s for 1 forsøk, +30 s for 2). Et risikabelt andre forsøk kan lønne seg stort."
+            },
+            {
+                "title": "Lær vanlige ordendelser",
+                "text": "Mønstre som -IGHT, -OUND, -ATCH gjentar seg ofte. Å gjenkjenne dem umiddelbart sparer sekunder per ord."
+            },
+            {
+                "title": "Hold roen når presset øker",
+                "text": "Tidtakeren øker farten hver 3. ord. Hastverk fører til skrivefeil og dårlige forsøk. Jevnt tempo slår panikk."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Begynn bredt",
+                "text": "Bruk ord med vanlige bokstaver (CRANE, STARE) for å samle ledetråder på alle brett samtidig."
+            },
+            {
+                "title": "Følg med på det delte tastaturet",
+                "text": "Tastaturet viser farger per brett. En bokstav grønn på ett brett men grå på et annet snevrer inn mulighetene raskt."
+            },
+            {
+                "title": "Prioriter vanskelige brett",
+                "text": "Fokuser forsøkene på brettet med flest ukjente. Enklere brett løser seg ofte av seg selv."
+            },
+            {
+                "title": "Ikke kast bort tidlige forsøk",
+                "text": "Bruk de første 2–3 på informasjonsrike ord før du retter deg mot spesifikke brett."
+            },
+            {
+                "title": "Se etter felles bokstaver",
+                "text": "Hvis to brett begge viser en gul E, hjelper et ord med E på en ny posisjon begge brettene samtidig."
+            },
+            {
+                "title": "Spar et forsøk til nødstilfeller",
+                "text": "Hvis du sitter fast på det siste brettet, er et ekstra forsøk forskjellen mellom seier og tap."
+            }
+        ],
+        "mode_desc_classic": "Du har 6 forsøk på å gjette et skjult ord med 5 bokstaver. Bruk fargeledetrådene til å snevre inn svaret.",
+        "mode_desc_unlimited": "Du har 6 forsøk på å gjette et skjult ord med 5 bokstaver. Bruk fargeledetrådene til å snevre inn svaret. Etter hvert spill trykker du «Spill igjen» for å få et nytt ord med en gang — ingen daglig grense.",
+        "mode_desc_speed": "Du starter med 3 minutter på klokken. Hvert ord du løser gir bonustid — færre forsøk betyr større bonus (+60 s for 1 forsøk, +10 s for 6). Mislykkede ord koster 30 sekunder. Bygg combo ved å løse ord på rad for opptil 3× poengmultiplikator. Presset øker etter hvert — tidtakeren går raskere for hvert 3. ord.",
+        "mode_desc_multiboard": "{modeName} utfordrer deg til å løse {boardCount} Wordle-brett samtidig med bare {maxGuesses} forsøk. Hvert forsøk vises på alle uløste brett samtidig. Løste brett fryses. Det delte fargetastaturet viser hvilke bokstaver som er riktige på hvilke brett. Begynn med ord med vanlige bokstaver for å samle ledetråder på alle brett samtidig.",
+        "faq": [
+            {
+                "q": "Hvordan spiller jeg Wordle på {langName}?",
+                "a": "Besøk wordle.global/{lang} for å spille dagens Wordle på {langName}. Du har 6 forsøk på å gjette et ord med 5 bokstaver. Etter hvert forsøk blir rutene grønne (riktig bokstav, riktig posisjon), gule (riktig bokstav, feil posisjon) eller grå (bokstaven er ikke i ordet)."
+            },
+            {
+                "q": "Er det et nytt puslespill hver dag?",
+                "a": "Ja. Et nytt ord velges hver dag. Alle som spiller på samme språk får det samme ordet, så du kan sammenligne resultater med venner."
+            },
+            {
+                "q": "Er Wordle Global gratis?",
+                "a": "Ja. Det daglige puslespillet, ubegrenset modus og alle spillmoduser er helt gratis på alle 80+ språk. Ingen konto eller nedlasting nødvendig."
+            },
+            {
+                "q": "Kan jeg spille mer enn én gang om dagen?",
+                "a": "Ja — prøv Unlimited-modus på wordle.global/{lang}/unlimited for endeløse spill uten ventetid. Din daglige rekke spores separat."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Hva er Wordle Unlimited på {langName}?",
+                    "a": "Wordle Unlimited lar deg spille så mange Wordle-spill du vil på {langName}, uten å vente på morgendagens puslespill. Hvert spill gir deg et nytt tilfeldig ord å gjette på 6 forsøk."
+                },
+                {
+                    "q": "Er Wordle Unlimited gratis?",
+                    "a": "Ja. Wordle Unlimited er helt gratis å spille. Ingen konto, ingen nedlasting, ingen annonser under spilling."
+                },
+                {
+                    "q": "Teller ubegrenset modus mot den daglige rekken min?",
+                    "a": "Nei. Ubegrenset modus har sine egne separate statistikker. Din daglige rekke påvirkes bare av det daglige puslespillet."
+                },
+                {
+                    "q": "Hvor mange ganger kan jeg spille?",
+                    "a": "Det er ingen grense. Du kan spille så mange runder du vil. Etter hvert spill trykker du «Spill igjen» for å få et nytt ord med en gang."
+                },
+                {
+                    "q": "Hvilke språk kan jeg spille Wordle Unlimited på?",
+                    "a": "Wordle Unlimited er tilgjengelig på over 80 språk på wordle.global, inkludert engelsk, spansk, tysk, finsk, arabisk, fransk, italiensk, portugisisk og mange flere."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Hva er Speed Streak på {langName}?",
+                    "a": "Speed Streak er en tidsbasert Wordle-modus på {langName}. Du starter med 3 minutter på klokken og løser så mange ord du kan. Løs raskt for å tjene bonustid."
+                },
+                {
+                    "q": "Hvordan fungerer poengberegningen?",
+                    "a": "Du tjener poeng for hvert ord du løser. Færre forsøk og raskere løsninger gir flere poeng. Bygg combo ved å løse ord på rad uten å feile — opptil 3× multiplikator."
+                },
+                {
+                    "q": "Hva skjer når tiden er ute?",
+                    "a": "Spillet avsluttes og du ser sluttresultatet ditt, totalt antall ord løst, maks combo og gjennomsnittlig antall forsøk. Du kan spille igjen med en gang."
+                },
+                {
+                    "q": "Er Speed Streak gratis?",
+                    "a": "Ja. Speed Streak er helt gratis på alle 80+ språk. Ingen konto eller nedlasting nødvendig."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "Hva er {modeName} på {langName}?",
+                    "a": "{modeName} er en Wordle-variant med flere brett på {langName}. Du løser {boardCount} Wordle-brett samtidig med {maxGuesses} forsøk. Hvert forsøk legges inn på alle uløste brett samtidig."
+                },
+                {
+                    "q": "Hvor mange forsøk har jeg i {modeName}?",
+                    "a": "Du har {maxGuesses} forsøk på å løse alle {boardCount} brettene. Når et brett er løst, fryses det og du kan fokusere på de gjenværende."
+                },
+                {
+                    "q": "Hvilken strategi fungerer best for {modeName}?",
+                    "a": "Begynn med ord som bruker vanlige bokstaver for å samle informasjon på alle {boardCount} brettene samtidig. Følg med på det delte fargetastaturet — det viser hvilke bokstaver som er riktige på hvilke brett."
+                },
+                {
+                    "q": "Er {modeName} gratis?",
+                    "a": "Ja. {modeName} er helt gratis på alle 80+ språk. Ingen konto eller nedlasting nødvendig. Spill så mange runder du vil."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Skriv et ord",
+                "text": "Skriv inn et gyldig ord med 5 bokstaver på {langName} med skjermtastaturet eller det fysiske tastaturet, og trykk Enter."
+            },
+            {
+                "name": "Les ledetrådene",
+                "text": "Grønne ruter betyr at bokstaven er riktig og på riktig plass. Gult betyr at bokstaven er i ordet, men på feil plass. Grått betyr at bokstaven ikke er i ordet."
+            },
+            {
+                "name": "Løs på 6 forsøk",
+                "text": "Bruk fargeledetrådene til å snevre inn ordet. Du har 6 forsøk totalt. Etter puslespillet ser du statistikkene dine og kan dele resultatet."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Start et spill",
+                    "text": "Besøk wordle.global/{lang}/unlimited for å spille Wordle Unlimited på {langName}. Et tilfeldig ord med 5 bokstaver velges for deg."
+                },
+                {
+                    "name": "Gjett ordet",
+                    "text": "Skriv inn et gyldig ord med 5 bokstaver og trykk Enter. Grønne ruter betyr riktig bokstav på riktig plass. Gult — bokstaven er i ordet, men på feil plass. Grått — bokstaven er ikke i ordet."
+                },
+                {
+                    "name": "Spill igjen med en gang",
+                    "text": "Etter å ha løst ordet (eller brukt alle 6 forsøk), trykk «Spill igjen» for å få et nytt ord umiddelbart. Ingen ventetid."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Start tidtakeren",
+                    "text": "Besøk wordle.global/{lang}/speed og trykk Start. Du begynner med 3 minutter på klokken."
+                },
+                {
+                    "name": "Løs ord raskt",
+                    "text": "Hvert ord du løser gir bonustid (+10 s til +60 s avhengig av hvor få forsøk du brukte). Mislykkede ord koster deg 30 sekunder."
+                },
+                {
+                    "name": "Bygg combo-et ditt",
+                    "text": "Løs ord på rad for å bygge combo-multiplikatoren (opptil 3×). Combo-et brytes hvis du feiler et ord. Prøv å slå din høyeste poengsum."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Start et spill",
+                    "text": "Besøk wordle.global/{lang}/{modeName} for å spille {modeName} på {langName}. {boardCount} brett vises med forskjellige skjulte ord."
+                },
+                {
+                    "name": "Gjett på tvers av alle brett",
+                    "text": "Skriv inn et ord med 5 bokstaver og trykk Enter. Forsøket ditt vises på alle {boardCount} brettene samtidig. Hvert brett viser sine egne fargeledetråder (grønn, gul, grå)."
+                },
+                {
+                    "name": "Løs alle {boardCount} brettene",
+                    "text": "Løste brett fryses på plass. Bruk det delte fargetastaturet til å holde oversikt over hvilke bokstaver som fungerer på hvilke brett. Løs alle {boardCount} innenfor {maxGuesses} forsøk for å vinne."
+                }
+            ]
+        }
     }
 }

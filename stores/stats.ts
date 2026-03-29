@@ -16,6 +16,7 @@ import type {
 } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
 import { isClassicDailyStatsKey } from '~/utils/game-modes';
+import { toLocalDay, stepBack, buildDailyResultMap } from '~/utils/streak-dates';
 
 function emptyStats(maxGuesses: number = 6): GameStats {
     return {
@@ -198,16 +199,50 @@ export const useStatsStore = defineStore('stats', () => {
             (a, b) => new Date(a.date as string).getTime() - new Date(b.date as string).getTime()
         );
 
-        // Overall streaks from classic daily only
+        // Build map: local date → won/lost. Uses shared streak-dates utilities.
+        // Streak = consecutive LOCAL calendar days with at least one daily win.
+        const dayStates = buildDailyResultMap(gameResults.value);
+        const seenDays = new Map<string, boolean>();
+        for (const [dayKey, state] of dayStates) {
+            seenDays.set(dayKey, state === 'won');
+        }
+        // Count victories and losses from daily results
         for (const result of daily_results) {
-            if (result.won) {
-                n_victories++;
+            if (result.won) n_victories++;
+            else n_losses++;
+        }
+
+        // Current streak: walk backwards from today (DST-safe)
+        let checkKey = toLocalDay(new Date());
+        for (let i = 0; i <= seenDays.size; i++) {
+            const played = seenDays.get(checkKey);
+            if (played === true) {
                 current_overall_streak++;
-                longest_overall_streak = Math.max(longest_overall_streak, current_overall_streak);
+            } else if (i === 0 && played === undefined) {
+                // Today not yet played — skip, check yesterday
             } else {
-                n_losses++;
-                current_overall_streak = 0;
+                break;
             }
+            checkKey = stepBack(checkKey);
+        }
+
+        // Longest streak: walk sorted days, check consecutive via stepBack
+        let tempStreak = 0;
+        const sortedDays = [...seenDays.entries()].sort();
+        let prevDayKey: string | null = null;
+        for (const [dayKey, won] of sortedDays) {
+            if (!won) {
+                tempStreak = 0;
+                prevDayKey = null;
+                continue;
+            }
+            if (prevDayKey && stepBack(dayKey) === prevDayKey) {
+                tempStreak++;
+            } else {
+                tempStreak = 1;
+            }
+            longest_overall_streak = Math.max(longest_overall_streak, tempStreak);
+            prevDayKey = dayKey;
         }
 
         // Per-language stats (classic daily keys only, default maxGuesses=6)
@@ -237,6 +272,20 @@ export const useStatsStore = defineStore('stats', () => {
 
         totalStats.value = computed;
         return computed;
+    }
+
+    // Cross-tab sync: reload stats when another tab updates game_results
+    if (import.meta.client) {
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'game_results' && e.newValue) {
+                try {
+                    gameResults.value = JSON.parse(e.newValue) as GameResults;
+                    calculateTotalStats();
+                } catch {
+                    // Ignore parse errors from other tabs
+                }
+            }
+        });
     }
 
     return {

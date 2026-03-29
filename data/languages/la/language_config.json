@@ -27,6 +27,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Latin. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Latin. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Latin. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Latin. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -43,7 +55,8 @@
         "copied": "Exscriptum!",
         "notification_word_not_valid": "Verbum non est validum",
         "hard_mode_position": "Modus difficilis: {letter} debet esse in positione {position}",
-        "hard_mode_contains": "Modus difficilis: coniectio debet continere {letter}"
+        "hard_mode_contains": "Modus difficilis: coniectio debet continere {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -59,7 +72,15 @@
         "text_2_1": "in Verbo et in rectam locum!",
         "text_2_2": "in Verbo, sed non in rectam locum.",
         "text_2_3": "non est praesens in verbo vos es trying ut coniecto.",
-        "text_3": "Novum verbum erit praesto per dies?"
+        "text_3": "Novum verbum erit praesto per dies?",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Optiones",
@@ -144,6 +165,172 @@
         "pos_verb": "verbum",
         "pos_adjective": "adiectivum",
         "pos_adverb": "adverbium",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Quomodo ludere",
+        "tips_strategy": "Consilia et ratio",
+        "more_modes": "Plures modi ludi",
+        "play_in_languages": "Lude in 80+ linguis",
+        "play_in_languages_sub": "Omnes linguae gratuitae sunt. Nulla ratio necessaria.",
+        "why_wordle_global": "Cur Wordle Global",
+        "faq_title": "Quaestiones frequentes",
+        "browse_all_languages": "Perspice omnes 80+ linguas",
+        "recent_words": "Verba recentia",
+        "view_all_words": "Vide omnia verba",
+        "footer": "wordle.global \u2014 ludus verborum cotidianus gratuitus in 80+ linguis",
+        "tile_correct": "in verbo est et in loco recto.",
+        "tile_semicorrect": "in verbo est sed in loco non recto.",
+        "tile_incorrect": "in verbo non est.",
+        "stat_players": "Lusores",
+        "stat_guesses": "Coniecturae",
+        "stat_languages": "Linguae",
+        "stat_modes": "Modi ludi",
+        "value_props": [
+            { "key": "languages", "title": "80+ linguae", "desc": "Ab Arabica ad Yorubam. Maximum Wordle multilingue orbis." },
+            { "key": "definitions", "title": "Definitiones verborum", "desc": "Disce significationem cuiusque verbi post ludum. Amplifica copiam verborum." },
+            { "key": "word_art", "title": "Ars verborum propria", "desc": "Unumquodque verbum cum propria pictura venit. Collige omnes." },
+            { "key": "themes", "title": "Modus obscurus et themata", "desc": "Lucidum, obscurum et altum contrastum pro ludo commodo." },
+            { "key": "pwa", "title": "Ubique operatur", "desc": "PWA \u2014 installa in quovis instrumento. Sine rete operatur. Nulla receptio necessaria." },
+            { "key": "free", "title": "Semper gratuitus", "desc": "Nulla ratio necessaria. Nullum pretium. Tantum lude." }
+        ],
+        "tips": [
+            { "title": "Incipe verbo vocalibus divite", "text": "Verba ut CRANE, STARE vel ADIEU celeriter probant litteras frequentes. Scire quae vocales adsint cito restringit optiones." },
+            { "title": "Utere eo quod nosti", "text": "Litterae virides fixae manent. Flavae moveri debent. Griseae exclusae sunt. Quaeque coniectura debet omnia tria indicia adhibere." },
+            { "title": "Cogita de formulis communibus", "text": "Verba saepe terminantur in -TION, -IGHT, -OUND, -MENT. Aliae linguae suas formulas habent \u2014 disce eas." },
+            { "title": "Exclude, noli temere conicere", "text": "Secundum verbum debet novas litteras probare, non confirmatas repetere. Tege quam plurimos consonantes non probatos." },
+            { "title": "Cave litteras duplicatas", "text": "Verba ut CREEK, FLOSS vel APPLE communes insidiae sunt. Si indicia non congruunt, considera litteram repetitam." },
+            { "title": "Utere modo difficili ad meliorem te faciendum", "text": "Modus difficilis te cogit indiciis confirmatis uti in omni coniectura. Meliores mores aedificat." }
+        ],
+        "tips_speed": [
+            { "title": "Incipe CRANE vel STARE", "text": "Litterae frequentes optimam occasionem celeri solutioni dant. Omnis secunda refert." },
+            { "title": "Noli nimis cogitare", "text": "Speed Streak naturale iudicium praemiat. Si verbum probabile vides, age \u2014 bonus combo plus valet quam solutio perfecta." },
+            { "title": "Protege combo tuum", "text": "Verbum non solutum multiplicatorem frangit. Cum incertus es, coniectura tuta utere ad plura indicia colligenda." },
+            { "title": "Solve in 2-3 coniecturis", "text": "Bonus temporis ingens est pro solutionibus celeribus (+60s pro 1 coniectura, +30s pro 2). Secunda coniectura audax multum prodesse potest." },
+            { "title": "Disce exitus verborum communes", "text": "Formulae ut -IGHT, -OUND, -ATCH saepe repetuntur. Eas statim agnoscere secundas per verbum servat." },
+            { "title": "Maneto tranquillus cum pressura crescit", "text": "Horologium post quaeque 3 verba accelerat. Festinatio ad errores ducit. Constantia superat pavorem." }
+        ],
+        "tips_multiboard": [
+            { "title": "Late incipe", "text": "Utere verbis cum litteris communibus (CRANE, STARE) ad indicia in omnibus tabulis simul colligenda." },
+            { "title": "Observa claviaturam divisam", "text": "Claviatura colores per tabulam ostendit. Littera in una tabula viridis sed in alia grisea cito optiones restringit." },
+            { "title": "Tabulas difficiliores praefer", "text": "Coniecturae in tabulam cum plurimis incognitis dirige. Faciliores tabulae saepe se ipsae solvunt." },
+            { "title": "Primas coniecturae noli perdere", "text": "Primas 2-3 coniecturae in verbis informationis divitibus adhibeto, antequam certas tabulas petas." },
+            { "title": "Quaere litteras communes", "text": "Si duae tabulae ambo E flavum ostendunt, verbum cum E in novo loco ambabus tabulis simul prodest." },
+            { "title": "Serva coniecturam pro necessitate", "text": "Si in ultima tabula haeres, coniectura superflua discrimen inter victoriam et cladem est." }
+        ],
+        "mode_desc_classic": "Sex conatus habes ad verbum quinque litterarum absconditum inveniendum. Utere indicibus colorum ad responsum restringendum.",
+        "mode_desc_unlimited": "Sex conatus habes ad verbum quinque litterarum absconditum inveniendum. Utere indicibus colorum ad responsum restringendum. Post quemque ludum, preme \"Lude iterum\" ad novum verbum statim accipiendum \u2014 nullum est cotidianum limes.",
+        "mode_desc_speed": "Incipe cum III minutis in horologio. Quodque verbum solutum tempus addendum meretur \u2014 paucioribus coniecturis, maius additamentum (+60s pro 1 coniectura, +10s pro 6). Verba non soluta XXX secundas constant. Combo aedifica solvendo verba continua \u2014 usque ad 3x multiplicatorem. Pressura post quaeque 3 verba crescit \u2014 horologium celerius currit.",
+        "mode_desc_multiboard": "{modeName} te provocat ut {boardCount} tabulas Wordle simul solvas cum tantum {maxGuesses} coniecturis. Quaeque coniectura in omnibus tabulis non solutis apparet. Tabulae solutae congelantur. Claviatura divisa colorum ostendit quae litterae in quibus tabulis rectae sint. Incipe verbis litterarum communium ad indicia in omnibus tabulis simul colligenda.",
+        "faq": [
+            { "q": "Quomodo ludo Wordle in {langName}?", "a": "Visita wordle.global/{lang} ut Wordle cotidie in {langName} ludas. Sex conatus habes ad verbum quinque litterarum inveniendum. Post quamque coniecturam, tesserae fiunt virides (littera recta, locus rectus), flavae (littera recta, locus non rectus), vel griseae (littera non in verbo)." },
+            { "q": "Estne novum aenigma cotidie?", "a": "Ita. Novum verbum cotidie eligitur. Omnes qui eadem lingua ludunt idem verbum accipiunt, ut cum amicis eventus comparare possis." },
+            { "q": "Estne Wordle Global gratuitus?", "a": "Ita. Aenigma cotidianum, modus infinitus, omnesque modi ludi prorsus gratuiti sunt in omnibus 80+ linguis. Nulla ratio vel receptio necessaria." },
+            { "q": "Possumne plus quam semel per diem ludere?", "a": "Ita \u2014 proba modum infinitum apud wordle.global/{lang}/unlimited pro ludis sine fine et sine mora. Series tua cotidiana separatim numeratur." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Quid est Wordle infinitum in {langName}?", "a": "Wordle infinitum te sinit quot vis ludos Wordle ludere in {langName}, sine mora aenigmatis crastini. Quisque ludus novum verbum fortuitum tibi dat ad sex coniecturis inveniendum." },
+                { "q": "Estne Wordle infinitum gratuitus?", "a": "Ita. Wordle infinitum prorsus gratuitus est. Nulla ratio, nulla receptio, nullae publicationes in ludo." },
+                { "q": "Modus infinitus seriem cotidianam afficit?", "a": "Non. Modus infinitus suas proprias statisticas habet. Series tua cotidiana tantum ab aenigmate cotidiano afficitur." },
+                { "q": "Quotiens ludere possum?", "a": "Nullum est limes. Quot vis circuitus ludere potes. Post quemque ludum, preme \"Lude iterum\" ad novum verbum statim accipiendum." },
+                { "q": "Quibus linguis Wordle infinitum ludere possum?", "a": "Wordle infinitum in plus quam 80 linguis praesto est apud wordle.global, inclusa Anglica, Hispanica, Germanica, Finnica, Arabica, Francogallica, Italica, Lusitana, et multis aliis." }
+            ],
+            "speed": [
+                { "q": "Quid est Speed Streak in {langName}?", "a": "Speed Streak est modus Wordle temporis in {langName}. Incipis cum III minutis in horologio et quam plurima verba solvis. Verbum celeriter solvere tempus addendum meretur." },
+                { "q": "Quomodo puncta numerantur?", "a": "Puncta pro quoque verbo soluto accipis. Pauciores coniecturae et celeriores solutiones plura puncta dant. Combo aedifica solvendo verba continua sine defectu \u2014 usque ad 3x multiplicatorem." },
+                { "q": "Quid fit cum tempus exspirat?", "a": "Ludus finit et eventum finalem vides, verba soluta, maximum combo, et mediocrem coniectuarum. Statim iterum ludere potes." },
+                { "q": "Estne Speed Streak gratuitus?", "a": "Ita. Speed Streak prorsus gratuitus est in omnibus 80+ linguis. Nulla ratio vel receptio necessaria." }
+            ],
+            "multiboard": [
+                { "q": "Quid est {modeName} in {langName}?", "a": "{modeName} est varietas Wordle multi-tabularis in {langName}. {boardCount} tabulas Wordle simul solvis cum {maxGuesses} coniecturis. Quaeque coniectura in omnibus tabulis non solutis simul apparet." },
+                { "q": "Quot coniecturae in {modeName} dantur?", "a": "{maxGuesses} coniecturae dantur ad omnes {boardCount} tabulas solvendas. Tabula soluta congelatur et reliquis tabulis operam dare potes." },
+                { "q": "Quae ratio optime operatur in {modeName}?", "a": "Incipe verbis quae litteras communes adhibent ad informationes in omnibus {boardCount} tabulis simul colligendas. Claviaturam divisam colorum observa \u2014 ostendit quae litterae in quibus tabulis rectae sint." },
+                { "q": "Estne {modeName} gratuitus?", "a": "Ita. {modeName} prorsus gratuitus est in omnibus 80+ linguis. Nulla ratio vel receptio necessaria. Quot vis circuitus lude." }
+            ]
+        },
+        "howto": [
+            { "name": "Scribe verbum", "text": "Scribe verbum validum quinque litterarum in {langName} utens claviatura in schermo vel claviatura physica, deinde preme Enter." },
+            { "name": "Lege indicia", "text": "Tesserae virides significant litteram rectam in loco recto esse. Flavae significant litteram in verbo esse sed in loco non recto. Griseae significant litteram in verbo non esse." },
+            { "name": "Solve in VI coniecturis", "text": "Utere indicibus colorum ad verbum restringendum. Sex coniecturae tibi sunt. Post aenigma, statisticas tuas vide et eventum communica." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Ludum incipe", "text": "Visita wordle.global/{lang}/unlimited ut Wordle infinitum in {langName} ludas. Verbum fortuitum quinque litterarum tibi eligitur." },
+                { "name": "Verbum conice", "text": "Scribe verbum validum quinque litterarum et preme Enter. Tesserae virides significant litteram rectam in loco recto. Flavae significant litteram in verbo sed in loco non recto. Griseae significant litteram non in verbo esse." },
+                { "name": "Statim iterum lude", "text": "Post solutionem verbi (vel post sex coniecturis adhibitis), preme \"Lude iterum\" ad novum verbum statim accipiendum. Nulla mora crastina." }
+            ],
+            "speed": [
+                { "name": "Horologium incipe", "text": "Visita wordle.global/{lang}/speed et preme Incipe. III minutis in horologio incipis." },
+                { "name": "Verba celeriter solve", "text": "Quodque verbum solutum tempus addendum meretur (+10s ad +60s secundum paucitatem coniectuarum). Verba non soluta XXX secundas constant." },
+                { "name": "Combo aedifica", "text": "Verba continua solvendo combo multiplicatorem aedifica (usque ad 3x). Combo frangitur si verbum non solvis. Conare summum punctum tuum superare." }
+            ],
+            "multiboard": [
+                { "name": "Ludum incipe", "text": "Visita wordle.global/{lang}/{modeName} ut {modeName} in {langName} ludas. {boardCount} tabulae apparent cum diversis verbis absconditis." },
+                { "name": "Per omnes tabulas conice", "text": "Scribe verbum quinque litterarum et preme Enter. Coniectura tua in omnibus {boardCount} tabulis simul apparet. Quaeque tabula sua propria indicia colorum (viride, flavum, griseum) ostendit." },
+                { "name": "Omnes {boardCount} tabulas solve", "text": "Tabulae solutae in loco congelantur. Utere claviatura divisa colorum ad videndum quae litterae in quibus tabulis operentur. Omnes {boardCount} intra {maxGuesses} coniecturis solve ad vincendum." }
+            ]
+        }
     }
 }

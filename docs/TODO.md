@@ -8,6 +8,8 @@ Near-term bugs and tasks. For feature planning, see `docs/ROADMAP.md`.
 
 ## P0
 
+- [ ] **Scrub strategic docs from git history** — `docs/ROADMAP.md` and `docs/TODO.md` were removed from tracking (Mar 26) but still exist in past commits. Use `bfg --delete-files` or `git filter-repo` to purge them from history entirely. Coordinate with any forks/clones. Low urgency since repo is private, but do before any open-source push.
+
 - [x] **PWA post-win banner restored** — `#pwa-install-banner` element re-added to `pages/[lang]/index.vue`. Banner shows post-win via `pwa.client.ts`. *(Fixed during Nuxt migration)*
   - [ ] **Deduplicate listeners:** `pwa.client.ts:152` and `SettingsModal.vue` both capture `beforeinstallprompt` independently — consolidate to plugin only.
   - [ ] **Desktop: show bookmark CTA instead of PWA install.** Desktop install rate is 1.9% vs mobile 4.0%. Only show PWA install on mobile/tablet.
@@ -58,17 +60,19 @@ Near-term bugs and tasks. For feature planning, see `docs/ROADMAP.md`.
 - [ ] **Set up daily freeze cron** — `uv run python scripts/freeze_all_history.py`
 - [ ] **Submit 14 new language URLs to Google Search Console** — bn, ha, hi, id, ja, mr, ms, pa, sq, sw, tl, ur, uz, yo
 - [x] **Show game number in header** — editorial game header now shows `#idx` as mono subtitle. *(Mar 20, v3 design)*
-- [x] **PostHog DAU/WAU dashboard tiles** — changed from `$pageview` to `page_view_enhanced`. *(Mar 19)*
+- [x] **PostHog DAU/WAU dashboard tiles** — `page_view_enhanced` removed; DAU now tracked via `game_start` unique users, pageviews via PostHog built-in `$pageview`. *(Updated Mar 29)*
 
 ---
 
 ## P2
 
-- [ ] **Remove PostHog skip list** — `guess_submit`, `guess_time`, `first_guess_delay` are excluded from PostHog (`POSTHOG_SKIP_EVENTS` in `composables/useAnalytics.ts:24`). Adds ~1.8M events/mo → ~$90/mo PostHog cost. Enables per-guess analytics (guess patterns, time-per-guess by language, word difficulty). Set a billing limit first.
+- [ ] **Compact share URLs with encoded metadata** — Replace `?r=3` with a base64-encoded slug that packs game mode, score/attempts, language, and a short tracking ID into the URL path (e.g. `wordle.global/s/eJxLzs8FAAdnAmE`). Keeps URLs short and shareable while enabling: (1) attribution of "direct" traffic back to shares without UTM params, (2) richer share previews (OG tags generated from decoded metadata), (3) viral loop measurement without extra query params. Decode server-side in a `/s/[code]` route that redirects to the game page. Could also encode a truncated anonymous user hash to measure unique sharers vs share clicks.
+- [ ] **Client-side event sampling if over PostHog free tier** — After deploying the Mar 29 analytics overhaul, check PostHog usage after 3-4 days. If still over 1M events/month (~$17/mo estimated), add sampling to high-volume events. Options: (1) sample `$pageview` at 50% via `capture_pageview` config — saves ~150K/mo but breaks Web Analytics accuracy; (2) sample `game_start` at 50% (already have GA4 as ground truth) — saves ~180K/mo; (3) disable `$pageview` entirely and rely on custom funnel events + GA4 for page-level data — saves ~310K/mo. Only do this if budget is a hard constraint; $17/mo is reasonable for 6.5K DAU.
+- [ ] **Re-enable per-guess PostHog events** — `guess_submit`, `guess_time` were removed entirely (not just skipped — functions deleted) during Mar 29 analytics overhaul. Their data is aggregated into `game_complete` (attempts, time_to_complete_seconds, frustration). Re-adding them would enable per-guess analytics (guess patterns, time-per-guess by language, word difficulty) but costs ~$25-50/mo at current traffic. Only worth it if you need per-guess granularity for word list curation. Set a billing limit first.
 - [ ] **English word list quality** — 44% frustration rate, 3.2 invalid/start. Biggest language, worst quality. ~21K frustration events/wk.
 - [ ] **Curate word lists** — Tagalog (7min median), Hebrew (6.3% abandon), Luxembourgish (6.0 avg attempts), Romanian (6.6 invalid/start), Irish (8.2 invalid/start), Basque (64% frustration).
 - [ ] **Remove `getDailyWordLegacy()`** — dead code, all 1,730 days frozen in history.
-- [ ] **Bot traffic filtering** — Singapore/China bots crawling word pages. ~1,400 sessions/wk, 97% bounce.
+- [x] **Bot traffic filtering** — Added `navigator.webdriver` check to `track()` and `identifyUser()` in `useAnalytics.ts`. Blocks headless browsers (Puppeteer/Playwright/Selenium) that were inflating PostHog events ~2-3x. GA4 filters these automatically. *(Mar 29)*
 - [ ] **Filter extension noise from page_error** — "Script error", "runtime.sendMessage" etc. are ~100% of errors. Filter before counting.
 - [ ] **Accessibility: modal focus trapping** — `aria-modal="true"` is set but focus can still Tab out. Need `useFocusTrap`.
 - [ ] **Accessibility: color contrast** — white on green/yellow tiles fails WCAG 4.5:1 ratio. Investigate darker tile backgrounds or dark text.
@@ -118,7 +122,7 @@ Comprehensive audit of architecture, duplication, and code quality. Grouped by t
 
 ### Architecture — Composable Quality
 
-- [ ] **`useAnalytics.ts` is 978 lines** — Monolithic analytics module with 50+ tracking functions, mixed GA4 + PostHog + user identification. Split into focused modules (game events, retention, session, share tracking).
+- [ ] **`useAnalytics.ts` is ~790 lines (was 978)** — Slimmed from 30+ to 19 events during Mar 29 audit (removed dead code, merged share/retention events, deleted low-value settings/help/stats tracking). Still monolithic but manageable. Split only if adding significant new event categories.
 - [ ] **`useGameModes.ts` and `useFlag.ts` aren't composables** — Pure data/constants, no Vue Composition API usage. Rename to `utils/game-modes.ts` and `utils/flag-mapping.ts` for clarity.
 - [ ] **Speed mode conditionals scattered** — `game.gameConfig.mode === 'speed'` checks leak into PageShell, useGameAnimations, main.css, game.ts. Extract to computed flags like `game.hasKeyboardFlip` so downstream code doesn't need to know why.
 - [ ] **`timeUntilNextDay` timer management** — Countdown interval buried in game.ts, consumed by StatsModal. Extract to `useCountdown` composable so the timer only runs when a component needs it.

@@ -29,6 +29,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Mongolian. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Mongolian. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Mongolian. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Mongolian. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -45,7 +57,8 @@
         "copied": "Хуулсан!",
         "notification_word_not_valid": "Үг хүчингүй байна",
         "hard_mode_position": "Хүнд горим: {letter} нь {position} байрлалд байх ёстой",
-        "hard_mode_contains": "Хүнд горим: таамаглалд {letter} орсон байх ёстой"
+        "hard_mode_contains": "Хүнд горим: таамаглалд {letter} орсон байх ёстой",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -61,7 +74,15 @@
         "text_2_1": "гэдэг үгэнд болон зөв байршилд байна!",
         "text_2_2": "гэдэг үгэнд байгаа боловч зөв байршилд байдаггүй.",
         "text_2_3": "таах гэж байгаа үгэндээ байхгүй байна.",
-        "text_3": "Өдөр бүр шинэ үг бэлэн болно!"
+        "text_3": "Өдөр бүр шинэ үг бэлэн болно!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Тохиргоо",
@@ -146,6 +167,172 @@
         "pos_verb": "үйл үг",
         "pos_adjective": "тэмдэг нэр",
         "pos_adverb": "дайвар үг",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Хэрхэн тоглох вэ",
+        "tips_strategy": "Зөвлөгөө & Стратеги",
+        "more_modes": "Нэмэлт тоглоомын горимууд",
+        "play_in_languages": "80+ хэлээр тогло",
+        "play_in_languages_sub": "Бүх хэл үнэгүй. Бүртгэл шаардлагагүй.",
+        "why_wordle_global": "Яагаад Wordle Global гэж",
+        "faq_title": "Түгээмэл асуулт хариулт",
+        "browse_all_languages": "80+ хэлийг бүгдийг нь үзэх",
+        "recent_words": "Сүүлийн үгс",
+        "view_all_words": "Бүх үгсийг харах",
+        "footer": "wordle.global — 80+ хэл дээрх үнэгүй өдөр тутмын үгийн тоглоом",
+        "tile_correct": "үгэнд байгаа бөгөөд зөв байрлалд байна.",
+        "tile_semicorrect": "үгэнд байгаа боловч буруу байрлалд байна.",
+        "tile_incorrect": "үгэнд огт байхгүй.",
+        "stat_players": "Тоглогчид",
+        "stat_guesses": "Таамаглалууд",
+        "stat_languages": "Хэлүүд",
+        "stat_modes": "Тоглоомын горимууд",
+        "value_props": [
+            { "key": "languages", "title": "80+ хэл", "desc": "Араб хэлнээс Йоруба хүртэл. Хамгийн том олон хэлт Wordle." },
+            { "key": "definitions", "title": "Үгийн тодорхойлолт", "desc": "Тоглоомын дараа үг бүрийн утгыг мэдэж ав. Үгийн санаа тэлээрэй." },
+            { "key": "word_art", "title": "Өвөрмөц үгийн урлаг", "desc": "Үг бүр өөрийн гэсэн зурагтай. Бүгдийг нь цуглуулаарай." },
+            { "key": "themes", "title": "Бараан горим & Загварууд", "desc": "Гэрэлтэй, бараан, өндөр тод горимууд тав тухтай тоглоход зориулсан." },
+            { "key": "pwa", "title": "Хаана ч ажилладаг", "desc": "PWA — ямар ч төхөөрөмж дээр суулгаарай. Офлайн ажилладаг. Татах шаардлагагүй." },
+            { "key": "free", "title": "Үүрд үнэгүй", "desc": "Бүртгэл шаардлагагүй. Төлбөрийн хана байхгүй. Зүгээр тоглоорой." }
+        ],
+        "tips": [
+            { "title": "Эгшигтэй үгээр эхэл", "text": "CRANE, STARE, ADIEU зэрэг үгс нийтлэг үсгүүдийг хурдан шалгадаг. Аль эгшиг байгааг мэдэх нь сонголтыг хурдан багасгадаг." },
+            { "title": "Мэдсэнээ ашигла", "text": "Ногоон үсэг бэхэлгээтэй. Шар үсэг шилжих ёстой. Саарал үсэг хасагдсан. Таамаглал бүр гурван зөвлөмжийг бүгдийг ашиглах ёстой." },
+            { "title": "Түгээмэл хэв маягийн тухай бод", "text": "Англи үгс ихэвчлэн -TION, -IGHT, -OUND, -MENT-ээр төгсдөг. Бусад хэлд өөрийн хэв маяг бий — сураарай." },
+            { "title": "Хасаж бай, санамсаргүй бүү таа", "text": "Хоёр дахь үг чинь шинэ үсэг шалгах ёстой, батлагдсаныг давтахгүй. Аль болох олон шалгаагүй гийгүүлэгчийг хамраарай." },
+            { "title": "Давхар үсэгт анхаар", "text": "CREEK, FLOSS, APPLE зэрэг үгс түгээмэл урхи юм. Хэрэв зөвлөмжүүд таарахгүй бол давтагдсан үсгийг бодож үз." },
+            { "title": "Хүнд горимыг ашиглаж сайжраарай", "text": "Хүнд горим таамаглал бүрт батлагдсан зөвлөмжийг ашиглахыг шаарддаг. Хэвийн горим руу буцсан ч илүү сайн дадлыг бий болгодог." }
+        ],
+        "tips_speed": [
+            { "title": "CRANE эсвэл STARE-ээр эхэл", "text": "Өндөр давтамжтай үсгүүд хурдан шийдвэрлэх хамгийн сайн боломжийг өгдөг. Секунд бүр чухал." },
+            { "title": "Хэтэрхий бүү бод", "text": "Speed Streak зөн совинг шагнадаг. Магадгүй үг харвал яв — комбо бонус төгс шийдлийг давдаг." },
+            { "title": "Комбогоо хамгаал", "text": "Бүтэлгүйтсэн үг үржүүлэгчийг тасалдаг. Итгэлгүй үед аюулгүй таамаглалаар нэмэлт зөвлөмж цуглуулж, бүү эрсдэл." },
+            { "title": "2-3 оролдлогын шийдлийг чиглэ", "text": "Хурдан шийдлийн цагийн бонус асар их (+60 сек 1 оролдлого, +30 сек 2). Эрсдэлтэй хоёр дахь оролдлого их ашиг авчирч болно." },
+            { "title": "Түгээмэл үгийн төгсгөлийг сур", "text": "-IGHT, -OUND, -ATCH зэрэг хэв маяг олон давтагддаг. Тэдгээрийг шууд таних нь үг бүрт секунд хэмнэдэг." },
+            { "title": "Дарамт нэмэгдэхэд тайван бай", "text": "Таймер 3 үг тутамд хурдасдаг. Яаравчлах нь үсэг алдах, буруу таамаглалд хүргэдэг. Тогтвортой хурд сандралыг ялдаг." }
+        ],
+        "tips_multiboard": [
+            { "title": "Өргөнөөр эхэл", "text": "Нийтлэг үсэгтэй үгсийг (CRANE, STARE) ашиглаж бүх самбар дээр нэгэн зэрэг зөвлөмж цуглуул." },
+            { "title": "Хуваагдсан гарыг ажигла", "text": "Гар нь самбар бүрийн өнгийг харуулдаг. Нэг самбар дээр ногоон, нөгөө дээр саарал үсэг сонголтыг хурдан багасгадаг." },
+            { "title": "Хүнд байгаа самбарт анхаар", "text": "Хамгийн олон тодорхойгүй зүйлтэй самбар дээр төвлөр. Хялбар самбарууд ихэвчлэн өөрсдөө шийдэгддэг." },
+            { "title": "Эхний оролдлогуудыг бүү дэмий үр", "text": "Тодорхой самбарыг чиглэхийн өмнө эхний 2-3-ыг мэдээлэл ихтэй үгсэд зориул." },
+            { "title": "Нийтлэг үсгүүдийг хай", "text": "Хэрэв хоёр самбар хоёулаа шар E харуулж байвал, E шинэ байрлалд байгаа үг хоёр самбарт нэгэн зэрэг тусалдаг." },
+            { "title": "Онцгой тохиолдолд нэг оролдлого хадгал", "text": "Сүүлийн самбар дээр гацвал нэмэлт нэг оролдлого нь ялах, ялагдах хоёрын ялгаа юм." }
+        ],
+        "mode_desc_classic": "Нуугдсан 5 үсэгтэй үгийг 6 оролдлогоор таах ёстой. Өнгөний зөвлөмжийг ашиглан хариултыг нарийсгаарай.",
+        "mode_desc_unlimited": "Нуугдсан 5 үсэгтэй үгийг 6 оролдлогоор таах ёстой. Өнгөний зөвлөмжийг ашиглан хариултыг нарийсгаарай. Тоглоом бүрийн дараа \"Дахин тоглох\" дарж шинэ үг шууд авах — өдрийн хязгаар байхгүй.",
+        "mode_desc_speed": "Таймер дээр 3 минуттай эхэл. Шийдсэн үг бүр бонус цаг олгоно — бага оролдлогоор шийдвэл илүү их бонус авна (+60 сек 1 оролдлого, +10 сек 6). Бүтэлгүйтсэн үгс 30 секунд алдана. Дараалсан үгсийг шийдэж 3x хүртэлх үржүүлэгчтэй комбо бүтээ. Илүү олон үг шийдэх тусам дарамт ихэсдэг — таймер 3 үг тутамд хурдасдаг.",
+        "mode_desc_multiboard": "{modeName} нь {boardCount} Wordle самбарыг нэгэн зэрэг зөвхөн {maxGuesses} оролдлогоор шийдэхийг шаарддаг. Таамаглал бүр шийдэгдээгүй бүх самбар дээр нэгэн зэрэг гарч ирнэ. Шийдэгдсэн самбарууд хөлддөг. Хуваагдсан-өнгөт гар нь аль үсэг аль самбар дээр зөв болохыг харуулдаг. Нийтлэг үсэгтэй үгсээр эхэлж бүх самбар дээр нэгэн зэрэг зөвлөмж цуглуулаарай.",
+        "faq": [
+            { "q": "Wordle-ийг {langName} хэлээр хэрхэн тоглох вэ?", "a": "wordle.global/{lang} хаягаар зочилж {langName} хэлээр өдөр тутмын Wordle тоглоорой. 5 үсэгтэй үгийг 6 оролдлогоор таах боломжтой. Таамаглал бүрийн дараа нүд ногоон (зөв үсэг, зөв байрлал), шар (зөв үсэг, буруу байрлал), саарал (үсэг үгэнд байхгүй) болж өөрчлөгдөнө." },
+            { "q": "Өдөр бүр шинэ оньсого гардаг уу?", "a": "Тийм. Өдөр бүр шинэ үг сонгогддог. Нэг хэлээр тоглож буй бүх тоглогч ижил үг авдаг тул найзуудтайгаа үр дүнг харьцуулж болно." },
+            { "q": "Wordle Global үнэгүй юу?", "a": "Тийм. Өдөр тутмын оньсого, хязгааргүй горим, бүх тоглоомын горимууд 80+ хэлээр бүрэн үнэгүй. Бүртгэл, татаж авах шаардлагагүй." },
+            { "q": "Өдөрт нэгээс олон удаа тоглож болох уу?", "a": "Тийм — wordle.global/{lang}/unlimited дээрх Хязгааргүй горимыг туршиж хүлээлгүй хязгааргүй тоглоорой. Өдөр тутмын дараалал тусдаа тоологддог." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "{langName} хэлээр Wordle Хязгааргүй гэж юу вэ?", "a": "Wordle Хязгааргүй нь маргаашийн оньсогыг хүлээхгүйгээр {langName} хэлээр хүссэн хэдэн тоглоом тоглох боломж олгодог. Тоглоом бүр 6 оролдлогоор таах шинэ санамсаргүй үг өгдөг." },
+                { "q": "Wordle Хязгааргүй үнэгүй юу?", "a": "Тийм. Wordle Хязгааргүй бүрэн үнэгүй. Бүртгэл, татаж авалт, тоглоомын явцад зар сурталчилгаа байхгүй." },
+                { "q": "Хязгааргүй горим миний өдөр тутмын дараалалд тооцогдох уу?", "a": "Үгүй. Хязгааргүй горим өөрийн тусдаа статистиктэй. Өдөр тутмын дараалал зөвхөн өдөр тутмын оньсогонд нөлөөлдөг." },
+                { "q": "Хэдэн удаа тоглож болох вэ?", "a": "Хязгаар байхгүй. Хүссэн хэдэн удаа тоглож болно. Тоглоом бүрийн дараа \"Дахин тоглох\" дарж шинэ үг шууд авна." },
+                { "q": "Wordle Хязгааргүйг ямар хэлээр тоглож болох вэ?", "a": "Wordle Хязгааргүй нь wordle.global дээр 80 гаруй хэлээр боломжтой, тухайлбал Англи, Испани, Герман, Финлянд, Араб, Франц, Итали, Португал зэрэг олон хэлээр." }
+            ],
+            "speed": [
+                { "q": "{langName} хэлээр Speed Streak гэж юу вэ?", "a": "Speed Streak нь {langName} хэлээрх Wordle-ийн цаг хязгаартай горим юм. Таймер дээр 3 минуттай эхэлж аль болох олон үг шийдэх ёстой. Хурдан шийдэж бонус цаг ав." },
+                { "q": "Оноо хэрхэн тооцоологдох вэ?", "a": "Шийдсэн үг бүрт оноо авна. Бага оролдлого, хурдан шийдэл илүү олон оноо өгдөг. Дараалсан үгсийг алдалгүй шийдэж 3x хүртэлх үржүүлэгчтэй комбо бүтээ." },
+                { "q": "Цаг дуусахад юу болох вэ?", "a": "Тоглоом дууссан бөгөөд та эцсийн оноо, нийт шийдсэн үг, дээд комбо, дундаж оролдлогыг харна. Шууд дахин тоглож болно." },
+                { "q": "Speed Streak үнэгүй юу?", "a": "Тийм. Speed Streak нь 80+ хэлээр бүрэн үнэгүй. Бүртгэл, татаж авалт шаардлагагүй." }
+            ],
+            "multiboard": [
+                { "q": "{langName} хэлээр {modeName} гэж юу вэ?", "a": "{modeName} нь {langName} хэлээрх олон самбарт Wordle хувилбар юм. {boardCount} Wordle самбарыг нэгэн зэрэг {maxGuesses} оролдлогоор шийдэх ёстой. Таамаглал бүр шийдэгдээгүй бүх самбар дээр нэгэн зэрэг оруулагддаг." },
+                { "q": "{modeName}-д хэдэн оролдлого байдаг вэ?", "a": "Бүх {boardCount} самбарыг шийдэхэд {maxGuesses} оролдлого байна. Самбар шийдэгдмэгц хөлддөг бөгөөд үлдсэн самбарт анхаарлаа хандуулж болно." },
+                { "q": "{modeName}-д ямар стратеги хамгийн сайн ажилладаг вэ?", "a": "Нийтлэг үсэгтэй үгсээр эхэлж бүх {boardCount} самбар дээр нэгэн зэрэг мэдээлэл цуглуулаарай. Хуваагдсан-өнгөт гарыг анхааралтай ажигла — аль үсэг аль самбар дээр зөв болохыг харуулдаг." },
+                { "q": "{modeName} үнэгүй юу?", "a": "Тийм. {modeName} нь 80+ хэлээр бүрэн үнэгүй. Бүртгэл, татаж авалт шаардлагагүй. Хүссэн хэдэн удаа тоглоорой." }
+            ]
+        },
+        "howto": [
+            { "name": "Үг бич", "text": "{langName} хэлээр дэлгэцэн дээрх гар эсвэл физик гараар 5 үсэгтэй зөв үг оруулаад Enter дар." },
+            { "name": "Зөвлөмжийг унш", "text": "Ногоон нүд нь үсэг зөв бөгөөд зөв байрлалд байна гэсэн үг. Шар нь үсэг үгэнд байгаа боловч буруу байрлалд байна гэсэн үг. Саарал нь үсэг үгэнд байхгүй гэсэн үг." },
+            { "name": "6 оролдлогоор шийд", "text": "Өнгөний зөвлөмжийг ашиглан үгийг нарийсгаарай. Нийт 6 оролдлого байна. Оньсогоны дараа статистикаа хараад үр дүнгээ хуваалц." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Тоглоом эхлүүл", "text": "wordle.global/{lang}/unlimited хаягаар зочилж {langName} хэлээр Wordle Хязгааргүй тоглоорой. Санамсаргүй 5 үсэгтэй үг сонгогддог." },
+                { "name": "Үгийг таа", "text": "5 үсэгтэй зөв үг бичээд Enter дар. Ногоон нүд нь үсэг зөв бөгөөд зөв байрлалд байна гэсэн үг. Шар нь үсэг үгэнд байгаа боловч буруу байрлалд. Саарал нь үсэг үгэнд байхгүй гэсэн үг." },
+                { "name": "Шууд дахин тогло", "text": "Үгийг шийдсэний дараа (эсвэл 6 оролдлогыг бүгдийг ашигласны дараа) \"Дахин тоглох\" дарж шинэ үг шууд ав. Маргааш хүртэл хүлээх шаардлагагүй." }
+            ],
+            "speed": [
+                { "name": "Таймер эхлүүл", "text": "wordle.global/{lang}/speed хаягаар зочилж Эхлүүлэх дар. Таймер дээр 3 минуттай эхэлнэ." },
+                { "name": "Хурдан шийд", "text": "Шийдсэн үг бүр бонус цаг олгоно (+10 сек-ээс +60 сек хүртэл оролдлогын тооноос хамаарна). Бүтэлгүйтсэн үгс 30 секунд алдана." },
+                { "name": "Комбогоо бүтээ", "text": "Дараалсан үгсийг шийдэж комбо үржүүлэгч бүтээ (3x хүртэл). Үг алдвал комбо тасардаг. Дээд онооноо давж туршаарай." }
+            ],
+            "multiboard": [
+                { "name": "Тоглоом эхлүүл", "text": "wordle.global/{lang}/{modeName} хаягаар зочилж {langName} хэлээр {modeName} тогло. Өөр өөр нуугдсан үгстэй {boardCount} самбар гарч ирнэ." },
+                { "name": "Бүх самбар дээр таа", "text": "5 үсэгтэй үг бичээд Enter дар. Таамаглал бүх {boardCount} самбар дээр нэгэн зэрэг гарч ирнэ. Самбар бүр өөрийн өнгөний зөвлөмжийг (ногоон, шар, саарал) харуулдаг." },
+                { "name": "Бүх {boardCount} самбарыг шийд", "text": "Шийдэгдсэн самбарууд байрандаа хөлддөг. Хуваагдсан-өнгөт гараар аль үсэг аль самбар дээр ажилладагийг хян. {maxGuesses} оролдлогоор бүх {boardCount} самбарыг шийдэж ялаарай." }
+            ]
+        }
     }
 }

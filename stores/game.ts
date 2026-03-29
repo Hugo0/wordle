@@ -12,7 +12,8 @@
  * change the save key format (language code from URL path) or remove the
  * tile_colors derivation without a migration path.
  */
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, triggerRef } from 'vue';
+import { pauseTracking, resetTracking } from '@vue/reactivity';
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '~/stores/language';
 import { useSettingsStore } from '~/stores/settings';
@@ -208,6 +209,17 @@ export const useGameStore = defineStore('game', () => {
     const showHelpModal = ref(false);
     const showStatsModal = ref(false);
     const showOptionsModal = ref(false);
+    const showStreakModal = ref(false);
+
+    // Debug: override streak count for visual testing (set via debug.streak.set())
+    const debugStreakOverride = ref<number | null>(null);
+
+    // Effective streak: respects debug override, used by PageShell and StreakModal
+    const effectiveStreak = computed(() => {
+        if (debugStreakOverride.value !== null) return debugStreakOverride.value;
+        const statsStore = useStatsStore();
+        return statsStore.totalStats.current_overall_streak;
+    });
 
     const notification = ref<Notification>(makeEmptyNotification());
 
@@ -442,17 +454,25 @@ export const useGameStore = defineStore('game', () => {
         const rowIdx = activeRow.value;
 
         if (isMultiBoard.value) {
-            // Multi-board: write typed letter to ALL unsolved boards simultaneously
+            // Pause reactive tracking so Vue doesn't fire per-board updates.
+            // All 32 boards mutated, then one triggerRef at the end.
+            const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
+            const isFull = newCell === WORD_LENGTH;
+            pauseTracking();
             for (const board of boards.value) {
                 if (board.solved) continue;
                 const row = board.tiles[rowIdx];
                 const rowClasses = board.tileClasses[rowIdx];
                 if (row && rowClasses) {
-                    row.splice(cellIdx, 1, displayChar);
-                    rowClasses.splice(cellIdx, 1, ACTIVE_TILE_CLASS);
-                    board.tileColors[rowIdx]?.splice(cellIdx, 1, 'active');
+                    row[cellIdx] = displayChar;
+                    rowClasses[cellIdx] = ACTIVE_TILE_CLASS;
+                    if (board.tileColors[rowIdx]) board.tileColors[rowIdx]![cellIdx] = 'active';
                 }
+                board.activeCell = newCell;
+                board.fullWordInputted = isFull;
             }
+            resetTracking();
+            triggerRef(boards);
         } else {
             // Single-board: write via proxy (classic, unlimited, speed)
             const row = tiles.value[rowIdx];
@@ -462,21 +482,8 @@ export const useGameStore = defineStore('game', () => {
                 rowClasses.splice(cellIdx, 1, ACTIVE_TILE_CLASS);
                 tileColors.value[rowIdx]?.splice(cellIdx, 1, 'active');
             }
-        }
-
-        const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
-        const isFull = newCell === WORD_LENGTH;
-
-        if (isMultiBoard.value) {
-            // Sync cursor position across all unsolved boards
-            for (const board of boards.value) {
-                if (board.solved) continue;
-                board.activeCell = newCell;
-                board.fullWordInputted = isFull;
-            }
-        } else {
-            activeCell.value = newCell;
-            if (isFull) fullWordInputted.value = true;
+            activeCell.value = Math.min(activeCell.value + 1, WORD_LENGTH);
+            if (activeCell.value === WORD_LENGTH) fullWordInputted.value = true;
         }
     }
 
@@ -683,24 +690,7 @@ export const useGameStore = defineStore('game', () => {
                     firstGuessFired = true;
                 }
 
-                // Track time between guesses
-                if (lastGuessTime && activeRow.value > 0) {
-                    const secondsSinceLast = Math.floor((Date.now() - lastGuessTime) / 1000);
-                    analytics.trackGuessTime(
-                        lang.languageCode,
-                        activeRow.value + 1,
-                        secondsSinceLast
-                    );
-                }
                 lastGuessTime = Date.now();
-
-                // Track valid guess submission
-                analytics.trackGuessSubmit(
-                    lang.languageCode,
-                    activeRow.value + 1,
-                    true,
-                    gameConfig.value.mode
-                );
 
                 // Update tiles to show canonical form (with diacritics)
                 if (row && canonicalWord !== typedWord) {
@@ -729,7 +719,9 @@ export const useGameStore = defineStore('game', () => {
                 fullWordInputted.value = false;
                 animating.value = true;
 
-                const speedMult = gameConfig.value.mode === 'speed' ? 0.5 : 1;
+                // Speed mode: faster animations. 8+ boards: skip animations entirely (too much jank).
+                const bc = gameConfig.value.boardCount;
+                const speedMult = gameConfig.value.mode === 'speed' ? 0.5 : bc >= 8 ? 2 : 1;
                 revealRow(revealingRow, speedMult).then(() => {
                     showTiles();
 
@@ -793,19 +785,15 @@ export const useGameStore = defineStore('game', () => {
                     attempt_number: activeRow.value + 1,
                     word: typedWord,
                 });
-                analytics.trackGuessSubmit(
-                    lang.languageCode,
-                    activeRow.value + 1,
-                    false,
-                    gameConfig.value.mode
-                );
+                // guess_submit is in POSTHOG_SKIP_EVENTS — invalid count is
+                // aggregated into game_complete via frustration state
             }
         } else if (['Backspace', 'Delete', '⌫'].includes(key) && activeCell.value > 0) {
             const rowIdx = activeRow.value;
 
             if (isMultiBoard.value) {
-                // Multi-board: decrement cursor and clear from ALL unsolved boards
                 const newCell = activeCell.value - 1;
+                pauseTracking();
                 for (const board of boards.value) {
                     if (board.solved) continue;
                     board.activeCell = newCell;
@@ -813,11 +801,13 @@ export const useGameStore = defineStore('game', () => {
                     const row = board.tiles[rowIdx];
                     const rowClasses = board.tileClasses[rowIdx];
                     if (row && rowClasses) {
-                        row.splice(newCell, 1, '');
-                        rowClasses.splice(newCell, 1, DEFAULT_TILE_CLASS);
-                        board.tileColors[rowIdx]?.splice(newCell, 1, 'empty');
+                        row[newCell] = '';
+                        rowClasses[newCell] = DEFAULT_TILE_CLASS;
+                        if (board.tileColors[rowIdx]) board.tileColors[rowIdx]![newCell] = 'empty';
                     }
                 }
+                resetTracking();
+                triggerRef(boards);
             } else {
                 activeCell.value--;
                 const cellIdx = activeCell.value;
@@ -830,14 +820,17 @@ export const useGameStore = defineStore('game', () => {
                 }
                 fullWordInputted.value = false;
             }
+            triggerRef(boards);
         } else if (!fullWordInputted.value && lang.acceptableCharacters.includes(key)) {
             addChar(key);
         }
 
         if (!animating.value) {
             if (isMultiBoard.value) {
-                showTilesAllBoards();
-                saveMultiBoardToLocalStorage();
+                // Only sync the active row (not all rows) for typing performance
+                const activeBoard = boards.value.find((b) => !b.solved);
+                showTilesAllBoards(activeBoard?.activeRow);
+                debouncedSaveMultiBoard();
             } else if (gameConfig.value.mode !== 'speed') {
                 showTiles();
                 saveToLocalStorage();
@@ -853,6 +846,7 @@ export const useGameStore = defineStore('game', () => {
     /** Sync data layer to visual layer for the active board. Delegates to showTilesForBoard. */
     function showTiles(): void {
         showTilesForBoard(activeBoardIndex.value);
+        triggerRef(boards);
     }
 
     // ---- Animations ----
@@ -865,6 +859,8 @@ export const useGameStore = defineStore('game', () => {
     /** Animate a keyboard key with a CSS animation class. */
     function _nudgeKey(char: string, animClass: string): void {
         if (!import.meta.client) return;
+        // Skip key animations for multi-board modes (too many boards = visual noise)
+        if (boards.value.length > 4) return;
         animateKeyNudge(_getKeyboardEl?.() ?? null, char, animClass);
     }
 
@@ -950,6 +946,11 @@ export const useGameStore = defineStore('game', () => {
         // Speed mode is session-based — no persistent stats (tracked via finishSpeedSession)
         if (gameConfig.value.mode !== 'speed') {
             const statsKey = buildStatsKey(gameConfig.value);
+            // Check if this is the user's first game ever (before saveResult increments the count)
+            const totalGamesBefore = Object.values(statsStore.gameResults).reduce(
+                (sum, results) => sum + results.length,
+                0
+            );
             statsStore.saveResult(statsKey, won, options.statsAttempts);
             statsStore.calculateStats(statsKey, gameConfig.value.maxGuesses);
             statsStore.calculateTotalStats();
@@ -966,6 +967,7 @@ export const useGameStore = defineStore('game', () => {
                 attempts: options.statsAttempts,
                 streak_after: statsStore.stats.current_streak,
                 game_mode: gameConfig.value.mode,
+                is_first_game: totalGamesBefore === 0,
                 total_invalid_attempts: frustrationState.totalInvalidAttempts,
                 max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
                 had_frustration: frustrationState.hadFrustration,
@@ -975,7 +977,6 @@ export const useGameStore = defineStore('game', () => {
             if (won) {
                 analytics.trackStreakMilestone(lang.languageCode, statsStore.stats.current_streak);
             }
-            analytics.updateUserProperties(statsStore.gameResults);
         }
     }
 
@@ -1000,10 +1001,10 @@ export const useGameStore = defineStore('game', () => {
             }, 300);
         }
 
-        // Load definition/image for stats modal — only for daily modes (cached content)
-        // Unlimited/speed words are random and likely have no pre-generated definition/image
-        if (import.meta.client && gameConfig.value.playType === 'daily') {
-            loadDefinitionAndImage(targetWord, lang.languageCode, lang.todaysIdx);
+        // Load definition/image for stats modal
+        if (import.meta.client) {
+            const dayIdx = gameConfig.value.playType === 'daily' ? lang.todaysIdx : undefined;
+            loadDefinitionAndImage(targetWord, lang.languageCode, dayIdx);
         }
 
         submitWordStats(true, activeRow.value);
@@ -1032,16 +1033,19 @@ export const useGameStore = defineStore('game', () => {
             statsAttempts: 0,
         });
 
-        // Load definition/image — only for daily modes (see handleGameWon comment)
-        if (import.meta.client && gameConfig.value.playType === 'daily') {
-            loadDefinitionAndImage(targetWord, lang.languageCode, lang.todaysIdx);
+        // Load definition/image for stats modal
+        if (import.meta.client) {
+            const dayIdx = gameConfig.value.playType === 'daily' ? lang.todaysIdx : undefined;
+            loadDefinitionAndImage(targetWord, lang.languageCode, dayIdx);
         }
 
         submitWordStats(false, activeRow.value);
 
         // Analytics: track streak broken (if user had an active streak)
         if (previousStreak > 0) {
-            analytics.trackStreakBroken(lang.languageCode, previousStreak, 0);
+            const daysSinceLast =
+                analytics.daysSince(localStorage.getItem('last_played_date') ?? undefined) ?? 0;
+            analytics.trackStreakBroken(lang.languageCode, previousStreak, daysSinceLast);
         }
 
         // Show embed banner after game completion
@@ -1157,6 +1161,20 @@ export const useGameStore = defineStore('game', () => {
         }
     }
 
+    /**
+     * Reset board for a fresh game in a given mode.
+     * Used by speed, unlimited, and other non-classic modes to start a new round.
+     */
+    function resetForMode(cfg: ReturnType<typeof createGameConfig>, targetWord?: string): void {
+        gameConfig.value = cfg;
+        boards.value = [createBoardState(0, targetWord || '', cfg.maxGuesses, cfg.wordLength)];
+        activeBoardIndex.value = 0;
+        gameOver.value = false;
+        gameWon.value = false;
+        initKeyClasses();
+        showTiles();
+    }
+
     /** Reset all game state to defaults. Called before loading a new language's game. */
     function resetGameState(): void {
         // Clean up speed timer if running
@@ -1240,7 +1258,10 @@ export const useGameStore = defineStore('game', () => {
 
                 // Load definition/image if game was already completed
                 if (data.game_over) {
-                    loadDefinitionAndImage(lang.todaysWord, lang.languageCode, lang.todaysIdx);
+                    const restoredWord = boards.value[0]?.targetWord || lang.todaysWord;
+                    const dayIdx =
+                        gameConfig.value.playType === 'daily' ? lang.todaysIdx : undefined;
+                    loadDefinitionAndImage(restoredWord, lang.languageCode, dayIdx);
                 }
             }
         } catch {
@@ -1383,20 +1404,27 @@ export const useGameStore = defineStore('game', () => {
 
     // ---- Definition & Image for Stats Modal ----
 
-    function loadDefinitionAndImage(word: string, langCode: string, dayIdx: number): void {
-        // Always load — template controls visibility via settings.wordInfoEnabled
+    /**
+     * Load definition and image for a single-board game's stats modal.
+     * Daily words use full 3-tier fetch (cached → LLM → kaikki).
+     * Non-daily (unlimited) words use cache-only to avoid expensive LLM calls.
+     */
+    function loadDefinitionAndImage(word: string, langCode: string, dayIdx?: number): void {
         todayDefinitionLoading.value = true;
         todayImageLoading.value = true;
+        todayDefinition.value = null; // clear previous to avoid showing stale definition
 
+        const isDaily = gameConfig.value.playType === 'daily';
         const { fetchDefinition } = useDefinitions();
-        fetchDefinition(word, langCode)
+
+        fetchDefinition(word, langCode, { cacheOnly: !isDaily })
             .then((def) => {
                 if (def.definition || def.definitionNative) {
                     todayDefinition.value = {
                         word: def.word,
                         definition: def.definitionNative || def.definition,
                         partOfSpeech: def.partOfSpeech,
-                        url: `/${langCode}/word/${dayIdx}`,
+                        url: dayIdx != null ? `/${langCode}/word/${dayIdx}` : undefined,
                     };
                 }
             })
@@ -1404,22 +1432,27 @@ export const useGameStore = defineStore('game', () => {
                 todayDefinitionLoading.value = false;
             });
 
-        // Load word image
-        const imgUrl = `/api/${langCode}/word-image/${encodeURIComponent(word)}?day_idx=${dayIdx}`;
-        const img = new Image();
-        img.onload = () => {
-            todayImageUrl.value = imgUrl;
+        // Load word image — only for daily modes (images are pre-generated per day)
+        if (isDaily && dayIdx != null) {
+            const imgUrl = `/api/${langCode}/word-image/${encodeURIComponent(word)}?day_idx=${dayIdx}`;
+            const img = new Image();
+            img.onload = () => {
+                todayImageUrl.value = imgUrl;
+                todayImageLoading.value = false;
+            };
+            img.onerror = () => {
+                todayImageLoading.value = false;
+            };
+            img.src = imgUrl;
+        } else {
+            todayImageUrl.value = null;
             todayImageLoading.value = false;
-        };
-        img.onerror = () => {
-            todayImageLoading.value = false;
-        };
-        img.src = imgUrl;
+        }
     }
 
     /**
      * Load definitions for all boards in a multi-board game.
-     * Uses the cached fetchDefinition — no duplicate API calls for the same word.
+     * Multi-board modes are always free-play (unlimited), so use cache-only.
      */
     function loadDefinitionsForBoards(): void {
         if (!import.meta.client) return;
@@ -1432,7 +1465,7 @@ export const useGameStore = defineStore('game', () => {
 
         const { fetchDefinition } = useDefinitions();
         const promises = words.map((word, i) =>
-            fetchDefinition(word, langCode).then((def) => {
+            fetchDefinition(word, langCode, { cacheOnly: true }).then((def) => {
                 if (def.definition || def.definitionNative) {
                     boardDefinitions.value[i] = {
                         word: def.word,
@@ -1528,9 +1561,11 @@ export const useGameStore = defineStore('game', () => {
             boardsToReveal.push(board.boardIndex);
         }
 
-        // Force Vue reactivity on merged keyboard states
-        // (deep property mutations on board.keyStates may not trigger computed re-evaluation)
-        boards.value = [...boards.value];
+        // Notify Vue that boards changed (deep property mutations on keyStates
+        // don't trigger computed re-evaluation). triggerRef is O(1) vs the old
+        // [...boards.value] which was O(n) and forced every board-dependent
+        // computed across all 32 boards to re-evaluate.
+        triggerRef(boards);
 
         // 2. Advance activeRow on ALL unsolved boards
         for (const board of boards.value) {
@@ -1547,17 +1582,21 @@ export const useGameStore = defineStore('game', () => {
             nextUnsolved.fullWordInputted = false;
         }
 
-        // 3. Animate all boards with 50ms stagger between boards
+        // 3. Animate all boards — no stagger for 5+ boards (too laggy)
         animating.value = true;
-        const BOARD_STAGGER = 50;
+        const BOARD_STAGGER = boardsToReveal.length <= 4 ? 50 : 0;
         const revealPromises: Promise<void>[] = [];
 
         for (let i = 0; i < boardsToReveal.length; i++) {
             const boardIdx = boardsToReveal[i]!;
             const promise = new Promise<void>((resolve) => {
-                setTimeout(() => {
+                if (BOARD_STAGGER > 0) {
+                    setTimeout(() => {
+                        revealRowForBoard(boardIdx, rowIndex).then(resolve);
+                    }, i * BOARD_STAGGER);
+                } else {
                     revealRowForBoard(boardIdx, rowIndex).then(resolve);
-                }, i * BOARD_STAGGER);
+                }
             });
             revealPromises.push(promise);
         }
@@ -1600,6 +1639,19 @@ export const useGameStore = defineStore('game', () => {
             null;
         const keys = board.keyStates;
 
+        // 5+ boards or no DOM: instant update (no flip animation, no setTimeout cascade)
+        if (boards.value.length > 4 || !boardEl) {
+            for (let t = 0; t < (board.tiles[rowIndex]?.length ?? 5); t++) {
+                const finalClass = board.tileClasses[rowIndex]?.[t] || '';
+                board.tileClassesVisual[rowIndex]?.splice(t, 1, finalClass);
+                const tileChar = board.tiles[rowIndex]?.[t] || '';
+                board.tilesVisual[rowIndex]?.splice(t, 1, tileChar);
+                const keyUpdate = board.pendingKeyUpdates[t];
+                if (keyUpdate) updateKeyColor(keyUpdate.char, keyUpdate.state, keys);
+            }
+            return Promise.resolve();
+        }
+
         return new Promise((resolve) => {
             animateRevealRow(
                 boardEl,
@@ -1610,6 +1662,7 @@ export const useGameStore = defineStore('game', () => {
                         board.tileClassesVisual[rowIndex]?.splice(visualIdx, 1, finalClass);
                         const tileChar = board.tiles[rowIndex]?.[visualIdx] || '';
                         board.tilesVisual[rowIndex]?.splice(visualIdx, 1, tileChar);
+                        triggerRef(boards);
 
                         const keyUpdate = board.pendingKeyUpdates[visualIdx];
                         if (keyUpdate) {
@@ -1624,30 +1677,52 @@ export const useGameStore = defineStore('game', () => {
     }
 
     /** Copy data layer to visual layer for one board. */
-    function showTilesForBoard(boardIndex: number): void {
+    /**
+     * Sync data layer to visual layer for a board.
+     * If onlyRow is specified, only sync that row (fast path for typing).
+     */
+    function showTilesForBoard(boardIndex: number, onlyRow?: number): void {
         const board = boards.value[boardIndex];
         if (!board) return;
 
-        // For solved boards, only sync rows up to solvedAtGuess to prevent
-        // later guesses from appearing on already-solved boards.
         const maxRow =
             board.solved && board.solvedAtGuess != null ? board.solvedAtGuess : board.tiles.length;
+
+        if (onlyRow !== undefined && onlyRow < maxRow) {
+            const tilesRow = board.tiles[onlyRow];
+            const classesRow = board.tileClasses[onlyRow];
+            if (tilesRow && classesRow) {
+                board.tilesVisual.splice(onlyRow, 1, [...tilesRow]);
+                board.tileClassesVisual.splice(onlyRow, 1, [...classesRow]);
+            }
+            return;
+        }
 
         for (let i = 0; i < maxRow; i++) {
             const tilesRow = board.tiles[i];
             const classesRow = board.tileClasses[i];
             if (!tilesRow || !classesRow) continue;
-
             board.tilesVisual.splice(i, 1, [...tilesRow]);
             board.tileClassesVisual.splice(i, 1, [...classesRow]);
         }
     }
 
-    /** Copy data layer to visual layer for all boards. */
-    function showTilesAllBoards(): void {
+    // Track which board indices are currently visible (set by MultiBoardLayout)
+    const visibleBoardIndices = ref<Set<number> | null>(null);
+
+    function setVisibleBoardIndices(indices: number[]): void {
+        visibleBoardIndices.value = new Set(indices);
+    }
+
+    /** Sync visual layer for boards. If onlyRow specified, only sync that row. */
+    function showTilesAllBoards(onlyRow?: number): void {
+        const visible = visibleBoardIndices.value;
         for (let i = 0; i < boards.value.length; i++) {
-            showTilesForBoard(i);
+            if (onlyRow !== undefined && boards.value[i]?.solved) continue;
+            if (onlyRow !== undefined && visible && !visible.has(i)) continue;
+            showTilesForBoard(i, onlyRow);
         }
+        triggerRef(boards);
     }
 
     /** Check each unsolved board for a win, and check overall completion. */
@@ -1752,6 +1827,17 @@ export const useGameStore = defineStore('game', () => {
     }
 
     /** Save multi-board state to localStorage. */
+    // Debounced save — avoids JSON.stringify of 32 boards on every keystroke.
+    // Immediate save still happens on guess submission (processMultiBoardGuess).
+    let saveTimer: ReturnType<typeof setTimeout> | null = null;
+    function debouncedSaveMultiBoard(): void {
+        if (saveTimer) clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => {
+            saveMultiBoardToLocalStorage();
+            saveTimer = null;
+        }, 500);
+    }
+
     function saveMultiBoardToLocalStorage(): void {
         if (!import.meta.client) return;
         try {
@@ -1840,6 +1926,11 @@ export const useGameStore = defineStore('game', () => {
             gameWon.value = data.game_won || false;
             emojiBoard.value = data.emoji_board || '';
             attempts.value = data.attempts || '0';
+
+            // Load definitions for completed multi-board games on restore
+            if (data.game_over) {
+                loadDefinitionsForBoards();
+            }
 
             return true;
         } catch {
@@ -2105,6 +2196,9 @@ export const useGameStore = defineStore('game', () => {
             haptic.error();
         }
 
+        // Reset frustration counters so they don't leak into the next non-speed game
+        analytics.resetFrustrationState();
+
         // Analytics: single game_complete with speed-specific extras
         const lang = useLanguageStore();
         const s = speedState.value;
@@ -2197,7 +2291,6 @@ export const useGameStore = defineStore('game', () => {
         activeCell,
         fullWordInputted,
         gameOver,
-        gameLost,
         gameWon,
         attempts,
         keyClasses,
@@ -2207,6 +2300,9 @@ export const useGameStore = defineStore('game', () => {
         showHelpModal,
         showStatsModal,
         showOptionsModal,
+        showStreakModal,
+        debugStreakOverride,
+        effectiveStreak,
         notification,
         emojiBoard,
         timeUntilNextDay,
@@ -2245,6 +2341,7 @@ export const useGameStore = defineStore('game', () => {
         showTiles,
         showTilesForBoard,
         showTilesAllBoards,
+        setVisibleBoardIndices,
         revealRow,
         shakeRow,
         bounceRow,
@@ -2253,6 +2350,7 @@ export const useGameStore = defineStore('game', () => {
         showNotification,
         getEmojiBoard,
         getShareText,
+        resetForMode,
         resetGameState,
         saveToLocalStorage,
         loadFromLocalStorage,

@@ -6,9 +6,14 @@
  * Matches the legacy Flask index.html exactly.
  */
 import { useSettingsStore } from '~/stores/settings';
-import { Flame, Check, X, Download } from 'lucide-vue-next';
+import { Flame, Check, Download } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
-import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
+import {
+    GAME_MODES_UI,
+    getModeRoute,
+    getModeLabel,
+    getModeDescription,
+} from '~/composables/useGameModes';
 
 const settings = useSettingsStore();
 
@@ -18,6 +23,29 @@ const settings = useSettingsStore();
 
 const { data: langData } = await useFetch('/api/languages');
 const { data: otherWordles } = await useFetch('/api/other-wordles');
+
+// Homepage config — SSR uses Accept-Language detection; client may override via ?lang=
+const hpLangOverride = ref<string | undefined>(undefined);
+const { data: homepageConfig } = await useFetch('/api/homepage-config', {
+    query: { lang: hpLangOverride },
+});
+const hpUi = computed(() => homepageConfig.value?.ui);
+const hpLang = computed(() => homepageConfig.value?.lang || 'en');
+
+// Resolved homepage strings — config always has defaults from data-loader merge
+const hp = computed(() => {
+    const ui = hpUi.value;
+    return {
+        tagline: ui?.homepage_tagline ?? "The world's word game",
+        playingIn: ui?.homepage_playing_in ?? 'Playing in',
+        change: ui?.homepage_change ?? 'change',
+        chooseLanguage: ui?.homepage_choose_language ?? 'Choose your language',
+        languagesCounting:
+            ui?.homepage_languages_counting ?? 'languages and counting — more added regularly.',
+        search: ui?.homepage_search ?? 'Search languages...',
+        languages: ui?.languages ?? 'languages',
+    };
+});
 
 const langCount = computed(() => langData.value?.language_codes?.length || 65);
 const languagePopularity = computed(() => langData.value?.language_popularity || []);
@@ -43,7 +71,7 @@ const title = computed(
 );
 const description = computed(
     () =>
-        `Play Wordle today in ${langCount.value}+ languages \u2014 free, daily 5-letter word puzzle. Guess the word in 6 tries. No account needed. Available in English, Spanish, German, Arabic, Hebrew, Finnish and more.`
+        `Play Wordle in ${langCount.value}+ languages \u2014 daily puzzle, unlimited mode, speed streak, dordle & quordle. Free word game, no account needed.`
 );
 
 useSeoMeta({
@@ -153,48 +181,20 @@ useHead({
             innerHTML: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'FAQPage',
-                mainEntity: [
-                    {
+                mainEntity: (homepageConfig.value?.seo?.faq || []).map(
+                    (item: { q: string; a: string }) => ({
                         '@type': 'Question',
-                        name: 'What is Wordle Global?',
+                        name: item.q
+                            .replace(/\{langName\}/g, homepageConfig.value?.name || 'English')
+                            .replace(/\{lang\}/g, hpLang.value),
                         acceptedAnswer: {
                             '@type': 'Answer',
-                            text: `Wordle Global is a free daily word puzzle game available in ${langCount.value}+ languages. Guess the hidden 5-letter word in 6 tries — a new puzzle every day.`,
+                            text: item.a
+                                .replace(/\{langName\}/g, homepageConfig.value?.name || 'English')
+                                .replace(/\{lang\}/g, hpLang.value),
                         },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'How many languages does Wordle Global support?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: `Wordle Global currently supports ${langCount.value} languages, including English, Finnish, Spanish, German, Arabic, Hebrew, French, Portuguese, and many more. New languages are added regularly.`,
-                        },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'Is Wordle Global free?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Yes, Wordle Global is completely free to play. No account or sign-up required. Just pick a language and start playing.',
-                        },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'What game modes are available?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Wordle Global offers 5 game modes: Classic (daily puzzle), Unlimited (play as many as you want), Speed Streak (race the clock), Dordle (2 boards), and Quordle (4 boards). More modes coming soon.',
-                        },
-                    },
-                    {
-                        '@type': 'Question',
-                        name: 'How do I play Wordle?',
-                        acceptedAnswer: {
-                            '@type': 'Answer',
-                            text: 'Type a 5-letter word and press Enter. Green means the letter is correct and in the right position. Yellow means the letter is in the word but in the wrong position. Gray means the letter is not in the word. You have 6 tries to guess the word.',
-                        },
-                    },
-                ],
+                    })
+                ),
             }),
         },
     ],
@@ -220,7 +220,8 @@ const selectedLangName = ref('');
 const gameResults = ref<
     Record<string, Array<{ won: boolean; attempts: number | string; date: string }>>
 >({});
-const detectedLanguageCode = ref<string | null>(null);
+// Initialize with SSR-detected language (from Accept-Language header)
+const detectedLanguageCode = ref<string | null>(hpLang.value !== 'en' ? hpLang.value : null);
 
 // PWA install
 const canInstallPwa = ref(false);
@@ -250,9 +251,18 @@ onMounted(() => {
         // ignore
     }
 
-    // Detect browser language
-    // Prefer most recently played language, then browser language
-    detectedLanguageCode.value = getMostRecentLanguage() || detectBrowserLanguage();
+    // Detect language: prefer localStorage (most recently played), then browser detection
+    // SSR already set detectedLanguageCode from Accept-Language; override if localStorage differs
+    const clientLang = getMostRecentLanguage() || detectBrowserLanguage();
+    if (clientLang && clientLang !== detectedLanguageCode.value) {
+        detectedLanguageCode.value = clientLang;
+        // Re-fetch homepage config for the user's actual preferred language
+        if (clientLang !== hpLang.value) {
+            hpLangOverride.value = clientLang;
+        }
+    } else if (!detectedLanguageCode.value) {
+        detectedLanguageCode.value = clientLang;
+    }
 
     // Check PWA install availability
     try {
@@ -453,6 +463,15 @@ function getFlag(code: string): string | null {
     return flag;
 }
 
+// Track flags that failed to load so we show the initial-letter fallback
+const failedFlags = reactive(new Set<string>());
+function onFlagError(code: string) {
+    failedFlags.add(code);
+}
+function showFlag(code: string): boolean {
+    return !!getFlag(code) && !failedFlags.has(code);
+}
+
 // ---------------------------------------------------------------------------
 // Homepage mode cards
 // ---------------------------------------------------------------------------
@@ -462,26 +481,31 @@ const defaultLangName = computed(() => {
     const lang = languages.value[defaultLang.value];
     return lang?.language_name_native || lang?.language_name || defaultLang.value;
 });
-const defaultLangFlag = computed(() => useFlag(defaultLang.value));
+const defaultLangFlag = computed(() =>
+    showFlag(defaultLang.value) ? useFlag(defaultLang.value) : null
+);
 
 // Homepage shows first 5 modes from shared source + "& More" card
 const HOMEPAGE_MODE_IDS = ['classic', 'unlimited', 'speed', 'dordle', 'quordle'];
 
 const homepageModes = computed(() => {
     const lang = defaultLang.value;
+    const ui = hpUi.value;
     const featured = GAME_MODES_UI.filter((m) => HOMEPAGE_MODE_IDS.includes(m.id)).map((m) => ({
         id: m.id,
         icon: m.icon,
-        label: m.label,
-        desc: m.description,
+        label: getModeLabel(m, ui),
+        desc: getModeDescription(m, ui),
         tag: m.badge || '',
         route: getModeRoute(m, lang),
     }));
     featured.push({
         id: 'more',
         icon: null as any,
-        label: '& More',
-        desc: 'Quordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon.',
+        label: ui?.homepage_and_more || '& More',
+        desc:
+            ui?.homepage_and_more_desc ||
+            'Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon.',
         tag: 'EXPLORE',
         route: null,
     });
@@ -514,12 +538,13 @@ function openLink(url: string): void {
 
 <template>
     <div class="pb-12">
-        <!-- ═══ Announcement Bar ═══ -->
+        <!-- Announcement bar (disabled — re-enable for future announcements)
         <div
             class="bg-ink dark:bg-accent text-paper dark:text-white font-mono text-[10px] tracking-[0.05em] text-center py-1 px-3 whitespace-nowrap overflow-hidden text-ellipsis"
         >
-            &#127881; New game modes! Unlimited, Speed Streak, Dordle &amp; Quordle
+            Announcement text here
         </div>
+        -->
 
         <!-- ═══ Masthead ═══ -->
         <div class="text-center pt-10 sm:pt-10 mb-12 px-4">
@@ -527,7 +552,7 @@ function openLink(url: string): void {
                 Wordle<span class="text-accent">.</span>Global
             </h1>
             <div class="mono-label mt-2" style="letter-spacing: 0.2em">
-                The world's word game &mdash; {{ langCount }} languages
+                {{ hp.tagline }} &mdash; {{ langCount }} {{ hp.languages }}
             </div>
             <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
         </div>
@@ -539,9 +564,10 @@ function openLink(url: string): void {
                 :src="defaultLangFlag"
                 :alt="defaultLangName"
                 class="flag-icon flag-icon-sm"
+                @error="onFlagError(defaultLang)"
             />
             <span class="text-sm text-muted">
-                Playing in
+                {{ hp.playingIn }}
                 <span class="font-semibold text-ink">{{ defaultLangName }}</span>
             </span>
             <span class="text-muted">&middot;</span>
@@ -549,7 +575,7 @@ function openLink(url: string): void {
                 class="text-sm text-muted hover:text-ink underline underline-offset-2 transition-colors cursor-pointer"
                 @click="scrollToLanguages"
             >
-                change
+                {{ hp.change }}
             </button>
         </div>
 
@@ -600,10 +626,10 @@ function openLink(url: string): void {
                 class="font-display text-[24px] sm:text-[28px] font-light text-center mb-2"
                 style="font-variation-settings: 'opsz' 48"
             >
-                Choose your language
+                {{ hp.chooseLanguage }}
             </h2>
             <p class="text-sm text-muted text-center mb-6">
-                {{ langCount }} languages and counting — more added regularly.
+                {{ langCount }} {{ hp.languagesCounting }}
             </p>
 
             <!-- Search -->
@@ -611,7 +637,7 @@ function openLink(url: string): void {
                 v-model="searchText"
                 class="block w-full max-w-[400px] mx-auto mb-8 px-4 py-3 border border-rule bg-transparent text-ink font-body text-[15px] focus:outline-none focus:border-ink transition-colors placeholder:text-muted placeholder:italic"
                 type="text"
-                placeholder="Search languages..."
+                :placeholder="hp.search"
             />
 
             <!-- Language grid -->
@@ -624,10 +650,11 @@ function openLink(url: string): void {
                     @click="selectLanguageWithCode(language.language_code)"
                 >
                     <img
-                        v-if="getFlag(language.language_code)"
+                        v-if="showFlag(language.language_code)"
                         :src="getFlag(language.language_code)!"
                         :alt="language.language_name"
                         class="flag-icon"
+                        @error="onFlagError(language.language_code)"
                     />
                     <div
                         v-else
@@ -644,12 +671,18 @@ function openLink(url: string): void {
                         </div>
                     </div>
                     <div class="flex items-center gap-1 flex-shrink-0">
-                        <template v-if="getCurrentStreak(language.language_code) > 0">
-                            <Flame :size="14" class="text-correct" />
-                            <span class="mono-label-md text-correct font-semibold">
+                        <span
+                            v-if="getCurrentStreak(language.language_code) > 0"
+                            class="flex items-start gap-0 text-flame"
+                        >
+                            <Flame :size="14" />
+                            <span
+                                class="font-mono font-semibold tabular-nums"
+                                style="font-size: 9px; line-height: 1; margin-top: 1px"
+                            >
                                 {{ getCurrentStreak(language.language_code) }}
                             </span>
-                        </template>
+                        </span>
                         <Check
                             v-else-if="hasPlayed(language.language_code)"
                             :size="14"
@@ -666,113 +699,73 @@ function openLink(url: string): void {
         <!-- ═══ Modals ═══ -->
 
         <!-- About modal -->
-        <div
-            v-show="showAboutModal"
-            class="fixed inset-0 z-50 flex items-start justify-center pt-[3vh] px-3 pb-4 overflow-y-auto"
-        >
-            <div
-                class="fixed inset-0 bg-ink/25"
-                aria-hidden="true"
-                @click="showAboutModal = false"
-            />
-            <div
-                class="relative z-10 bg-paper border border-rule shadow-lg p-6 w-full max-w-xs sm:max-w-lg"
-            >
-                <div class="flex flex-col gap-3 relative">
-                    <button
-                        type="button"
-                        aria-label="Close"
-                        class="absolute top-0 end-0 p-1 text-muted hover:text-ink"
-                        @click="showAboutModal = false"
-                    >
-                        <X :size="20" />
-                    </button>
-                    <h3 class="heading-section text-xl text-center mb-2">About</h3>
-                    <p class="text-center text-sm text-ink">
-                        Hi! You probably know about Wordle already. It's a
-                        <span class="italic">really</span> fun game.
-                    </p>
-                    <p class="text-center text-sm text-ink">
-                        The whole thing is open-source. Suggest improvements or fixes at
-                        <a
-                            href="https://github.com/Hugo0/wordle/issues"
-                            class="text-muted underline hover:text-ink"
-                            >GitHub</a
-                        >.
-                    </p>
-                    <p class="text-center text-sm text-ink">
-                        There's fun languages, like Klingon or Tolkien's Elvish, plus right-to-left
-                        languages like Arabic or Hebrew.
-                    </p>
-                    <p class="text-center text-sm text-ink">Have fun!</p>
-                </div>
+        <SharedBaseModal :visible="showAboutModal" size="sm" @close="showAboutModal = false">
+            <div class="flex flex-col gap-3">
+                <h3 class="heading-section text-xl text-center mb-2">About</h3>
+                <p class="text-center text-sm text-ink">
+                    Hi! You probably know about Wordle already. It's a
+                    <span class="italic">really</span> fun game.
+                </p>
+                <p class="text-center text-sm text-ink">
+                    The whole thing is open-source. Suggest improvements or fixes at
+                    <a
+                        href="https://github.com/Hugo0/wordle/issues"
+                        class="text-muted underline hover:text-ink"
+                        >GitHub</a
+                    >.
+                </p>
+                <p class="text-center text-sm text-ink">
+                    There's fun languages, like Klingon or Tolkien's Elvish, plus right-to-left
+                    languages like Arabic or Hebrew.
+                </p>
+                <p class="text-center text-sm text-ink">Have fun!</p>
             </div>
-        </div>
+        </SharedBaseModal>
 
         <!-- Settings modal -->
-        <div
-            v-show="showSettingsModal"
-            class="fixed inset-0 z-50 flex items-start justify-center pt-[3vh] px-3 pb-4 overflow-y-auto"
-        >
-            <div
-                class="fixed inset-0 bg-ink/25"
-                aria-hidden="true"
-                @click="showSettingsModal = false"
-            />
-            <div
-                class="relative z-10 bg-paper border border-rule shadow-lg p-6 w-full max-w-xs sm:max-w-md"
-            >
-                <div class="flex flex-col gap-4 relative">
+        <SharedBaseModal :visible="showSettingsModal" size="sm" @close="showSettingsModal = false">
+            <div class="flex flex-col gap-4">
+                <h3 class="heading-section text-xl text-center mb-2">Settings</h3>
+
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium text-ink">Dark Mode</span>
+                        <span class="text-xs text-muted">Toggle dark theme</span>
+                    </div>
+                    <SharedToggleSwitch
+                        :model-value="settings.darkMode"
+                        @update:model-value="settings.toggleDarkMode()"
+                    />
+                </div>
+
+                <hr class="border-rule" />
+
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium text-ink">Sound &amp; Haptics</span>
+                    </div>
+                    <SharedToggleSwitch
+                        :model-value="settings.feedbackEnabled"
+                        @update:model-value="settings.toggleFeedback()"
+                    />
+                </div>
+
+                <hr class="border-rule" />
+
+                <div v-if="canInstallPwa" class="pt-2">
                     <button
-                        type="button"
-                        aria-label="Close"
-                        class="absolute top-0 end-0 p-1 text-muted hover:text-ink"
-                        @click="showSettingsModal = false"
+                        class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
+                        @click="installPwa"
                     >
-                        <X :size="20" />
+                        <Download :size="18" />
+                        Install App
                     </button>
-                    <h3 class="heading-section text-xl text-center mb-2">Settings</h3>
-
-                    <div class="flex flex-row items-center justify-between">
-                        <div class="flex flex-col">
-                            <span class="text-sm font-medium text-ink">Dark Mode</span>
-                            <span class="text-xs text-muted">Toggle dark theme</span>
-                        </div>
-                        <SharedToggleSwitch
-                            :model-value="settings.darkMode"
-                            @update:model-value="settings.toggleDarkMode()"
-                        />
-                    </div>
-
-                    <hr class="border-rule" />
-
-                    <div class="flex flex-row items-center justify-between">
-                        <div class="flex flex-col">
-                            <span class="text-sm font-medium text-ink">Sound &amp; Haptics</span>
-                        </div>
-                        <SharedToggleSwitch
-                            :model-value="settings.feedbackEnabled"
-                            @update:model-value="settings.toggleFeedback()"
-                        />
-                    </div>
-
-                    <hr class="border-rule" />
-
-                    <div v-if="canInstallPwa" class="pt-2">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
-                            @click="installPwa"
-                        >
-                            <Download :size="18" />
-                            Install App
-                        </button>
-                        <p class="text-xs text-center text-muted mt-1">
-                            Play offline &amp; get app icon
-                        </p>
-                    </div>
+                    <p class="text-xs text-center text-muted mt-1">
+                        Play offline &amp; get app icon
+                    </p>
                 </div>
             </div>
-        </div>
+        </SharedBaseModal>
 
         <!-- Game Mode Picker modal -->
         <AppGameModePicker

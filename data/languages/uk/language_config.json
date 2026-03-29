@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 дошки одночасно",
                 "description": "Грай у Quordle українською. Розгадай 4 дошки Wordle одночасно за 9 спроб."
+            },
+            "octordle": {
+                "title": "Octordle — 8 дошки одночасно",
+                "description": "Грай у Octordle українською. Розгадай 8 дошки Wordle одночасно за 13 спроб."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 дошки одночасно",
+                "description": "Грай у Sedecordle українською. Розгадай 16 дошки Wordle одночасно за 21 спроб."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 дошки одночасно",
+                "description": "Грай у Duotrigordle українською. Розгадай 32 дошки Wordle одночасно за 37 спроб."
             }
         }
     },
@@ -39,7 +51,13 @@
         "share_challenge_win": "Я розв'язав/ла сьогоднішній Wordle за {n} спроб. Зможеш краще?",
         "share_challenge_lose": "Я не розв'язав/ла сьогоднішній Wordle. А ти зможеш?",
         "notification_copied": "Скопійовано в буфер обміну",
-        "notification_partial_word": "Введіть повне слово"
+        "notification_partial_word": "Введіть повне слово",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -55,7 +73,15 @@
         "text_2_1": "це слово і в правильному місці!",
         "text_2_2": "це слово, але не в правильному місці.",
         "text_2_3": "не присутній у слові, який ви намагаєтеся здогадатися.",
-        "text_3": "Нове слово буде доступним щодня!"
+        "text_3": "Нове слово буде доступним щодня!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Налаштування",
@@ -140,6 +166,337 @@
         "pos_verb": "дієслово",
         "pos_adjective": "прикметник",
         "pos_adverb": "прислівник",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Як грати",
+        "tips_strategy": "Поради та стратегія",
+        "more_modes": "Інші режими гри",
+        "play_in_languages": "Грай 80+ мовами",
+        "play_in_languages_sub": "Усі мови безкоштовні. Обліковий запис не потрібен.",
+        "why_wordle_global": "Чому Wordle Global",
+        "faq_title": "Часті запитання",
+        "browse_all_languages": "Переглянути всі 80+ мов",
+        "recent_words": "Нещодавні слова",
+        "view_all_words": "Переглянути всі слова",
+        "footer": "wordle.global — безкоштовна щоденна гра в слова 80+ мовами",
+        "tile_correct": "є в слові й на правильному місці.",
+        "tile_semicorrect": "є в слові, але не на тому місці.",
+        "tile_incorrect": "відсутня в слові.",
+        "stat_players": "Гравці",
+        "stat_guesses": "Спроби",
+        "stat_languages": "Мови",
+        "stat_modes": "Режими гри",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ мов",
+                "desc": "Від арабської до йоруба. Найбільший багатомовний Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Визначення слів",
+                "desc": "Дізнайся значення кожного слова після гри. Розширюй свій словниковий запас."
+            },
+            {
+                "key": "word_art",
+                "title": "Унікальні ілюстрації",
+                "desc": "Кожне слово супроводжується власною ілюстрацією. Збирай їх усі."
+            },
+            {
+                "key": "themes",
+                "title": "Темний режим і теми",
+                "desc": "Світлий, темний і висококонтрастний режими для комфортної гри."
+            },
+            {
+                "key": "pwa",
+                "title": "Працює скрізь",
+                "desc": "PWA — встанови на будь-який пристрій. Працює офлайн. Без завантаження."
+            },
+            {
+                "key": "free",
+                "title": "Безкоштовно назавжди",
+                "desc": "Без облікового запису. Без оплати. Просто грай."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Починай зі слова з багатьма голосними",
+                "text": "Слова на кшталт CRANE, STARE або ADIEU швидко перевіряють поширені літери. Знання, які голосні є, значно звужує варіанти."
+            },
+            {
+                "title": "Використовуй те, що знаєш",
+                "text": "Зелені літери залишаються на місці. Жовті мають змінити позицію. Сірі виключаються. Кожна спроба повинна враховувати всі три підказки."
+            },
+            {
+                "title": "Думай про типові шаблони",
+                "text": "Англійські слова часто закінчуються на -TION, -IGHT, -OUND, -MENT. В кожній мові свої шаблони — вивчай їх."
+            },
+            {
+                "title": "Виключай, а не вгадуй навмання",
+                "text": "Друге слово має перевіряти нові літери, а не повторювати вже підтверджені. Охоплюй якомога більше неперевірених приголосних."
+            },
+            {
+                "title": "Стеж за подвійними літерами",
+                "text": "Слова типу CREEK, FLOSS або APPLE — часті пастки. Якщо підказки не складаються, подумай, чи не повторюється якась літера."
+            },
+            {
+                "title": "Використовуй складний режим для вдосконалення",
+                "text": "Складний режим змушує використовувати підтверджені підказки в кожній спробі. Це формує кращі звички."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Починай з CRANE або STARE",
+                "text": "Часті літери дають найкращі шанси на швидке розв'язання. Кожна секунда на рахунку."
+            },
+            {
+                "title": "Не думай надто довго",
+                "text": "Speed Streak винагороджує інтуїцію. Якщо бачиш ймовірне слово — пробуй. Бонус за combo важливіший за ідеальне розв'язання."
+            },
+            {
+                "title": "Бережи своє combo",
+                "text": "Невдача обнуляє множник. Коли не впевнений — зроби безпечну спробу, щоб зібрати більше підказок."
+            },
+            {
+                "title": "Цілься на розв'язання за 2-3 спроби",
+                "text": "Часовий бонус за швидкі розв'язання величезний (+60с за 1 спробу, +30с за 2). Ризикована друга спроба може дуже окупитися."
+            },
+            {
+                "title": "Вивчай типові закінчення",
+                "text": "Шаблони на кшталт -IGHT, -OUND, -ATCH повторюються часто. Миттєве розпізнавання економить секунди."
+            },
+            {
+                "title": "Зберігай спокій під тиском",
+                "text": "Таймер прискорюється кожні 3 слова. Поспіх призводить до помилок. Рівний темп перемагає паніку."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Починай широко",
+                "text": "Використовуй слова з частими літерами (CRANE, STARE), щоб зібрати підказки на всіх дошках одразу."
+            },
+            {
+                "title": "Стеж за розділеною клавіатурою",
+                "text": "Клавіатура показує кольори для кожної дошки. Літера зелена на одній дошці, але сіра на іншій — це швидко звужує варіанти."
+            },
+            {
+                "title": "Зосередься на складних дошках",
+                "text": "Приділяй увагу дошці з найбільшою кількістю невідомих. Легші дошки часто розв'язуються самі собою."
+            },
+            {
+                "title": "Не витрачай ранні спроби",
+                "text": "Перші 2-3 спроби використовуй на інформативні слова, перш ніж цілитися на конкретні дошки."
+            },
+            {
+                "title": "Шукай спільні літери",
+                "text": "Якщо дві дошки показують жовту Е, слово з Е на новій позиції допоможе обом дошкам одночасно."
+            },
+            {
+                "title": "Збережи спробу про запас",
+                "text": "Якщо застрягнеш на останній дошці, додаткова спроба — це різниця між перемогою і поразкою."
+            }
+        ],
+        "mode_desc_classic": "У тебе є 6 спроб, щоб вгадати приховане слово з 5 літер. Використовуй кольорові підказки, щоб звузити відповідь.",
+        "mode_desc_unlimited": "У тебе є 6 спроб, щоб вгадати приховане слово з 5 літер. Використовуй кольорові підказки, щоб звузити відповідь. Після кожної гри натисни «Грати знову» для нового слова миттєво — без щоденного ліміту.",
+        "mode_desc_speed": "Починаєш із 3 хвилинами на годиннику. Кожне розгадане слово дає бонусний час — менше спроб означає більший бонус (+60с за 1 спробу, +10с за 6). Невдачі коштують 30 секунд. Збирай combo, розгадуючи слова поспіль, для множника до 3x. Тиск зростає — таймер прискорюється кожні 3 слова.",
+        "mode_desc_multiboard": "{modeName} пропонує тобі розгадати {boardCount} дошок Wordle одночасно лише за {maxGuesses} спроб. Кожна спроба з'являється на всіх нерозгаданих дошках одночасно. Розгадані дошки заморожуються. Розділена клавіатура показує, які літери правильні на яких дошках. Починай зі слів із частими літерами, щоб зібрати підказки на всіх дошках.",
+        "faq": [
+            {
+                "q": "Як грати у Wordle {langName}?",
+                "a": "Відвідай wordle.global/{lang}, щоб грати у щоденний Wordle {langName}. У тебе є 6 спроб, щоб вгадати слово з 5 літер. Після кожної спроби плитки стають зеленими (правильна літера, правильна позиція), жовтими (правильна літера, неправильна позиція) або сірими (літери немає у слові)."
+            },
+            {
+                "q": "Чи є нова головоломка щодня?",
+                "a": "Так. Нове слово обирається щодня. Усі, хто грає тією ж мовою, отримують те саме слово, тож можна порівняти результати з друзями."
+            },
+            {
+                "q": "Wordle Global безкоштовний?",
+                "a": "Так. Щоденна головоломка, необмежений режим і всі режими гри повністю безкоштовні у 80+ мовах. Без облікового запису та завантаження."
+            },
+            {
+                "q": "Чи можна грати більше ніж раз на день?",
+                "a": "Так — спробуй режим Unlimited на wordle.global/{lang}/unlimited для нескінченних ігор без очікування. Твоя щоденна серія відстежується окремо."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Що таке Wordle Unlimited {langName}?",
+                    "a": "Wordle Unlimited дозволяє грати скільки завгодно ігор {langName}, не чекаючи завтрашньої головоломки. Кожна гра дає нове випадкове слово для вгадування за 6 спроб."
+                },
+                {
+                    "q": "Wordle Unlimited безкоштовний?",
+                    "a": "Так. Wordle Unlimited повністю безкоштовний. Без облікового запису, без завантаження, без реклами під час гри."
+                },
+                {
+                    "q": "Режим unlimited впливає на мою серію?",
+                    "a": "Ні. Режим unlimited має окрему статистику. На твою серію впливає лише щоденна головоломка."
+                },
+                {
+                    "q": "Скільки разів можна грати?",
+                    "a": "Без обмежень. Можеш грати скільки завгодно раундів. Після кожної гри натисни «Грати знову» для нового слова миттєво."
+                },
+                {
+                    "q": "Якими мовами можна грати у Wordle Unlimited?",
+                    "a": "Wordle Unlimited доступний понад 80 мовами на wordle.global, включаючи англійську, іспанську, німецьку, фінську, арабську, французьку, італійську, португальську та багато інших."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Що таке Speed Streak {langName}?",
+                    "a": "Speed Streak — це режим Wordle на час {langName}. Починаєш із 3 хвилинами і розгадуєш якомога більше слів. Розгадай слово швидко, щоб отримати бонусний час."
+                },
+                {
+                    "q": "Як працює підрахунок балів?",
+                    "a": "Ти отримуєш бали за кожне розгадане слово. Менше спроб і швидші розв'язання дають більше балів. Збирай combo, розгадуючи слова поспіль — до 3x множника."
+                },
+                {
+                    "q": "Що відбувається, коли час закінчується?",
+                    "a": "Гра завершується, і ти бачиш фінальний рахунок, кількість розгаданих слів, максимальне combo та середню кількість спроб. Можеш грати знову одразу."
+                },
+                {
+                    "q": "Speed Streak безкоштовний?",
+                    "a": "Так. Speed Streak повністю безкоштовний у 80+ мовах. Без облікового запису та завантаження."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "Що таке {modeName} {langName}?",
+                    "a": "{modeName} — це варіант Wordle з кількома дошками {langName}. Ти розгадуєш {boardCount} дошок Wordle одночасно за {maxGuesses} спроб. Кожна спроба вводиться на всіх нерозгаданих дошках одночасно."
+                },
+                {
+                    "q": "Скільки спроб у {modeName}?",
+                    "a": "У тебе є {maxGuesses} спроб, щоб розгадати всі {boardCount} дошки. Коли дошка розгадана, вона заморожується, і ти можеш зосередитися на решті."
+                },
+                {
+                    "q": "Яка стратегія найкраща для {modeName}?",
+                    "a": "Починай зі слів із частими літерами, щоб зібрати інформацію на всіх {boardCount} дошках одразу. Стеж за розділеною клавіатурою — вона показує, які літери правильні на яких дошках."
+                },
+                {
+                    "q": "{modeName} безкоштовний?",
+                    "a": "Так. {modeName} повністю безкоштовний у 80+ мовах. Без облікового запису та завантаження. Грай скільки завгодно раундів."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Введи слово",
+                "text": "Введи допустиме слово з 5 літер {langName} за допомогою екранної або фізичної клавіатури, потім натисни Enter."
+            },
+            {
+                "name": "Прочитай підказки",
+                "text": "Зелені плитки означають, що літера правильна й на правильному місці. Жовті — літера є в слові, але не на тому місці. Сірі — літери немає в слові."
+            },
+            {
+                "name": "Розгадай за 6 спроб",
+                "text": "Використовуй кольорові підказки, щоб звузити варіанти. У тебе 6 спроб. Після гри переглянь статистику й поділися результатом."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Почни гру",
+                    "text": "Відвідай wordle.global/{lang}/unlimited, щоб грати у Wordle Unlimited {langName}. Для тебе обирається випадкове слово з 5 літер."
+                },
+                {
+                    "name": "Вгадай слово",
+                    "text": "Введи допустиме слово з 5 літер і натисни Enter. Зелені плитки — правильна літера на правильному місці. Жовті — літера є, але не на тому місці. Сірі — літери немає в слові."
+                },
+                {
+                    "name": "Грай знову миттєво",
+                    "text": "Після розгадки (або використання всіх 6 спроб) натисни «Грати знову» для нового слова одразу. Без очікування."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Запусти таймер",
+                    "text": "Відвідай wordle.global/{lang}/speed і натисни Старт. Починаєш із 3 хвилинами на годиннику."
+                },
+                {
+                    "name": "Розгадуй слова швидко",
+                    "text": "Кожне розгадане слово дає бонусний час (+10с до +60с залежно від кількості спроб). Невдачі коштують 30 секунд."
+                },
+                {
+                    "name": "Збирай combo",
+                    "text": "Розгадуй слова поспіль, щоб збільшити множник combo (до 3x). Combo обнуляється при невдачі. Спробуй побити свій рекорд."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Почни гру",
+                    "text": "Відвідай wordle.global/{lang}/{modeName}, щоб грати у {modeName} {langName}. З'являються {boardCount} дошок із різними прихованими словами."
+                },
+                {
+                    "name": "Вгадуй на всіх дошках",
+                    "text": "Введи слово з 5 літер і натисни Enter. Твоя спроба з'являється на всіх {boardCount} дошках одночасно. Кожна дошка показує власні кольорові підказки (зелений, жовтий, сірий)."
+                },
+                {
+                    "name": "Розгадай усі {boardCount} дошки",
+                    "text": "Розгадані дошки заморожуються. Використовуй розділену клавіатуру, щоб відстежувати, які літери працюють на яких дошках. Розгадай усі {boardCount} за {maxGuesses} спроб, щоб перемогти."
+                }
+            ]
+        }
     }
 }

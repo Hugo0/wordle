@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Breton. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Breton. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Breton. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Breton. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -44,7 +56,8 @@
         "notification_word_not_valid": "N'eo ket reizh ar ger",
         "notification_partial_word": "Lakait ur ger klok mar plij",
         "hard_mode_position": "Mod diaes: {letter} a rank bezañ el lec'h {position}",
-        "hard_mode_contains": "Mod diaes: ar ger a rank endalc'hañ {letter}"
+        "hard_mode_contains": "Mod diaes: ar ger a rank endalc'hañ {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -60,7 +73,15 @@
         "text_2_1": "a zo er ger hag el lec'h mat!",
         "text_2_2": "a zo er ger, met n'eo ket el lec'h mat.",
         "text_2_3": "n'eo ket er ger emaoc'h o klask kavout.",
-        "text_3": "Ur ger nevez a vo hegerz bemdez!"
+        "text_3": "Ur ger nevez a vo hegerz bemdez!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "diacritic_map": {
         "e": [
@@ -156,6 +177,337 @@
         "pos_verb": "verb",
         "pos_adjective": "anv-gwan",
         "pos_adverb": "adverb",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Penaos c'hoari",
+        "tips_strategy": "Alioù ha stratejerezh",
+        "more_modes": "Modioù c'hoari all",
+        "play_in_languages": "C'hoarit e 80+ yezh",
+        "play_in_languages_sub": "An holl yezhoù a zo digoust. N'eo ket ret kaout ur gont.",
+        "why_wordle_global": "Perak Wordle Global",
+        "faq_title": "Goulennoù alies",
+        "browse_all_languages": "Sellet ouzh an 80+ yezh",
+        "recent_words": "Gerioù diwezhañ",
+        "view_all_words": "Gwelet an holl c'herioù",
+        "footer": "wordle.global — ar c'hoari gerioù pemdeziek digoust e 80+ yezh",
+        "tile_correct": "a zo er ger hag el lec'h mat.",
+        "tile_semicorrect": "a zo er ger met n'eo ket el lec'h mat.",
+        "tile_incorrect": "n'eo ket er ger.",
+        "stat_players": "C'hoarierien",
+        "stat_guesses": "Taolioù-esae",
+        "stat_languages": "Yezhoù",
+        "stat_modes": "Modioù c'hoari",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ yezh",
+                "desc": "Eus an arabeg d'ar yorouba. Ar Wordle liesyezhek brasañ."
+            },
+            {
+                "key": "definitions",
+                "title": "Termenadurioù",
+                "desc": "Deskit ster pep ger goude c'hoari."
+            },
+            {
+                "key": "word_art",
+                "title": "Arz gerioù dibar",
+                "desc": "Pep ger gant un dresadenn personelaet."
+            },
+            {
+                "key": "themes",
+                "title": "Mod teñval ha temoù",
+                "desc": "Modioù sklaer, teñval hag uc'hel-dargemm."
+            },
+            {
+                "key": "pwa",
+                "title": "Oberiant e pep lec'h",
+                "desc": "PWA — war ne vern pe ardivink. Hep kevreadenn."
+            },
+            {
+                "key": "free",
+                "title": "Digoust da viken",
+                "desc": "Hep kont. Hep moger paeañ."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Kregiñ gant vogalennoù",
+                "text": "CRANE pe ADIEU a brouez lizherennoù boutin buan."
+            },
+            {
+                "title": "Ober gant ar pezh a ouezit",
+                "text": "Gwer = lec'h mat. Melen = dilec'hiet. Glas = distaolet."
+            },
+            {
+                "title": "Stummoù boutin",
+                "text": "Pep yezh he deus he stummoù gerioù — deskit anezho."
+            },
+            {
+                "title": "Distaolit",
+                "text": "An eil taol-esae a rank prouiñ lizherennoù nevez."
+            },
+            {
+                "title": "Lizherennoù doubl",
+                "text": "Ma ne ya ket, soñjit en ul lizherenn adlavareet."
+            },
+            {
+                "title": "Mod diaes",
+                "text": "Ar mod diaes a sevel boazioù gwelloc'h."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Lizherennoù alies a ro ar gwellañ hegarat."
+            },
+            {
+                "title": "Na soñjit ket re",
+                "text": "Speed Streak a brizañ ar bourplez."
+            },
+            {
+                "title": "Gwaredit ho kombo",
+                "text": "Ur ger c'hwitet a dorr ho liesadenn."
+            },
+            {
+                "title": "2-3 taol-esae",
+                "text": "Bonus amzer bras evit diskoulmadurioù buan."
+            },
+            {
+                "title": "Deskit dibennoù",
+                "text": "Anavezout stummoù a sparni eilennoù."
+            },
+            {
+                "title": "Chomit sioul",
+                "text": "An trer a veañ buanoc'h pep 3 ger."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Kregiñ a-led",
+                "text": "Lizherennoù boutin evit dastum alc'hwezioù war an holl daolioù."
+            },
+            {
+                "title": "Klavier rannet",
+                "text": "Gwer war un taol, glas war unan all: strishaat buan."
+            },
+            {
+                "title": "Taolioù diaes da gentañ",
+                "text": "Skudit war an taol gant ar muiañ a dribarzhioù."
+            },
+            {
+                "title": "Taolioù-esae kentañ",
+                "text": "Ober gant gerioù leun a ditouroù."
+            },
+            {
+                "title": "Lizherennoù rannet",
+                "text": "Daou daol gant E melen? Ur ger gant E nevez."
+            },
+            {
+                "title": "Mirout taol-esae",
+                "text": "Un taol-esae ouzhpenn eo an diforc'h etre trec'hiñ ha kouezhañ."
+            }
+        ],
+        "mode_desc_classic": "6 taol-esae evit kavout ur ger kuzhet gant 5 lizherenn. Livioù evit strishaat.",
+        "mode_desc_unlimited": "6 taol-esae, 5 lizherenn. \"C'hoari en-dro\" evit ur ger nevez — hep bevenn.",
+        "mode_desc_speed": "3 munutenn. Pep ger a ro bonus amzer (+60s gant 1 taol-esae, +10s gant 6). Gerioù c'hwitet: 30 eilenn. Kombosioù betek 3x. Buanoc'h pep 3 ger.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} taol, {maxGuesses} taol-esae. Pep taol-esae war an holl daolioù. Taolioù diskoulmiet a vez skornet. Klavier livioù rannet.",
+        "faq": [
+            {
+                "q": "Penaos e c'hoarian Wordle e {langName}?",
+                "a": "Kit da wordle.global/{lang}. 6 taol-esae, 5 lizherenn. Karreoù gwer/melen/glas."
+            },
+            {
+                "q": "Poelladenn nevez bemdez?",
+                "a": "Ya. Ar memes ger evit an holl c'hoarierien en ur yezh."
+            },
+            {
+                "q": "Digoust?",
+                "a": "Ya. An holl vodioù e 80+ yezh."
+            },
+            {
+                "q": "Muioc'h eget ur wech?",
+                "a": "Ya — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited e {langName}?",
+                    "a": "C'hoarit kement ha ma fell deoc'h."
+                },
+                {
+                    "q": "Digoust?",
+                    "a": "Ya."
+                },
+                {
+                    "q": "Renkad pemdeziek?",
+                    "a": "Ket. Stadegoù a-ziforc'h."
+                },
+                {
+                    "q": "Pet gwech?",
+                    "a": "Hep bevenn."
+                },
+                {
+                    "q": "Pe yezhoù?",
+                    "a": "80+ yezh."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak e {langName}?",
+                    "a": "Enep-d'an-eurier. 3 munutenn."
+                },
+                {
+                    "q": "Niverel?",
+                    "a": "Nebeutoc'h a daolioù = muioc'h a boentoù. 3x kombo."
+                },
+                {
+                    "q": "Amzer echu?",
+                    "a": "Ar c'hoari a echuañ."
+                },
+                {
+                    "q": "Digoust?",
+                    "a": "Ya. 80+ yezh."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} e {langName}?",
+                    "a": "{boardCount} taol, {maxGuesses} taol-esae."
+                },
+                {
+                    "q": "Pet taol-esae?",
+                    "a": "{maxGuesses} evit {boardCount} taol."
+                },
+                {
+                    "q": "Stratejerezh?",
+                    "a": "Lizherennoù boutin. Klavier rannet."
+                },
+                {
+                    "q": "Digoust?",
+                    "a": "Ya. 80+ yezh."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Skrivit ur ger",
+                "text": "{langName}: 5 lizherenn, Enter."
+            },
+            {
+                "name": "Lennit an alc'hwezioù",
+                "text": "Gwer = mat. Melen = dilec'hiet. Glas = n'eo ket."
+            },
+            {
+                "name": "Diskoulmit e 6",
+                "text": "Livioù evit strishaat. 6 taol-esae."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Kregiñ",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Kavout",
+                    "text": "5 lizherenn, Enter."
+                },
+                {
+                    "name": "Adkregiñ",
+                    "text": "\"C'hoari en-dro\" diouzhtu."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Trer",
+                    "text": "wordle.global/{lang}/speed — 3 munutenn."
+                },
+                {
+                    "name": "Buan",
+                    "text": "Bonus amzer (+10s da +60s)."
+                },
+                {
+                    "name": "Kombo",
+                    "text": "Liesadenn betek 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Kregiñ",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} taol."
+                },
+                {
+                    "name": "Holl daolioù",
+                    "text": "Taol-esae war {boardCount} taol."
+                },
+                {
+                    "name": "Diskoulmañ {boardCount}",
+                    "text": "Klavier rannet. {maxGuesses} taol-esae."
+                }
+            ]
+        }
     }
 }

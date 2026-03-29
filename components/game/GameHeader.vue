@@ -41,8 +41,9 @@
             </p>
         </div>
 
-        <!-- Right: Stats + Settings -->
-        <div class="flex items-center gap-1 z-30 ms-auto">
+        <!-- Right: Streak + Stats + Settings -->
+        <div class="flex items-center gap-0.5 z-30 ms-auto">
+            <GameStreakBadge :streak="streakCount" :just-won="justWon" @click="$emit('streak')" />
             <button
                 class="p-2 text-muted hover:text-ink transition-colors"
                 aria-label="Statistics"
@@ -69,11 +70,15 @@ withDefaults(
         title?: string;
         subtitle?: string;
         sidebarOpen?: boolean;
+        streakCount?: number;
+        justWon?: boolean;
     }>(),
     {
         title: 'Wordle',
         subtitle: undefined,
         sidebarOpen: false,
+        streakCount: 0,
+        justWon: false,
     }
 );
 
@@ -81,6 +86,7 @@ defineEmits<{
     help: [];
     stats: [];
     settings: [];
+    streak: [];
     toggleSidebar: [];
 }>();
 </script>

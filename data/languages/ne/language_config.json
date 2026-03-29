@@ -29,6 +29,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Nepali. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Nepali. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Nepali. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Nepali. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -45,7 +57,8 @@
         "copied": "प्रतिलिपि भयो!",
         "notification_word_not_valid": "शब्द मान्य छैन",
         "hard_mode_position": "कठिन मोड: {letter} स्थान {position} मा हुनुपर्छ",
-        "hard_mode_contains": "कठिन मोड: अनुमानमा {letter} हुनुपर्छ"
+        "hard_mode_contains": "कठिन मोड: अनुमानमा {letter} हुनुपर्छ",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -61,7 +74,15 @@
         "text_2_1": "शब्द र सहि स्थानमा छ!",
         "text_2_2": "शब्दमा छ, तर सहि स्थानमा छैन।",
         "text_2_3": "तपाईले अनुमान गर्न कोशिस गर्दै हुनुहुन्छ भन्ने शब्दमा उपस्थित छैन।",
-        "text_3": "नयाँ शब्द प्रत्येक दिन उपलब्ध हुनेछ!"
+        "text_3": "नयाँ शब्द प्रत्येक दिन उपलब्ध हुनेछ!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "सेटिङ",
@@ -146,6 +167,172 @@
         "pos_verb": "क्रिया",
         "pos_adjective": "विशेषण",
         "pos_adverb": "क्रियाविशेषण",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "कसरी खेल्ने",
+        "tips_strategy": "सुझाव र रणनीति",
+        "more_modes": "थप गेम मोडहरू",
+        "play_in_languages": "80+ भाषामा खेल्नुहोस्",
+        "play_in_languages_sub": "हरेक भाषा निःशुल्क छ। खाता आवश्यक छैन।",
+        "why_wordle_global": "Wordle Global किन?",
+        "faq_title": "बारम्बार सोधिने प्रश्नहरू",
+        "browse_all_languages": "सबै 80+ भाषाहरू हेर्नुहोस्",
+        "recent_words": "हालका शब्दहरू",
+        "view_all_words": "सबै शब्दहरू हेर्नुहोस्",
+        "footer": "wordle.global — 80+ भाषामा निःशुल्क दैनिक शब्द खेल",
+        "tile_correct": "शब्दमा छ र सही स्थानमा छ।",
+        "tile_semicorrect": "शब्दमा छ तर गलत स्थानमा छ।",
+        "tile_incorrect": "शब्दमा छैन।",
+        "stat_players": "खेलाडीहरू",
+        "stat_guesses": "अनुमानहरू",
+        "stat_languages": "भाषाहरू",
+        "stat_modes": "गेम मोडहरू",
+        "value_props": [
+            { "key": "languages", "title": "80+ भाषा", "desc": "अरबीदेखि योरुबासम्म। सबभन्दा ठूलो बहुभाषी Wordle।" },
+            { "key": "definitions", "title": "शब्दको परिभाषा", "desc": "खेलेपछि हरेक शब्दको अर्थ सिक्नुहोस्। आफ्नो शब्दभण्डार बढाउनुहोस्।" },
+            { "key": "word_art", "title": "अनौठो शब्दकला", "desc": "हरेक शब्दसँग एउटा विशेष चित्र। सबै सङ्कलन गर्नुहोस्।" },
+            { "key": "themes", "title": "डार्क मोड र थिमहरू", "desc": "लाइट, डार्क र हाइ-कन्ट्रास्ट मोड आरामदायी खेलका लागि।" },
+            { "key": "pwa", "title": "जहाँ पनि चल्छ", "desc": "PWA — कुनै पनि उपकरणमा इन्स्टल गर्नुहोस्। अफलाइन चल्छ। डाउनलोड आवश्यक छैन।" },
+            { "key": "free", "title": "सदासर्वदा निःशुल्क", "desc": "खाता आवश्यक छैन। कुनै शुल्क छैन। बस खेल्नुहोस्।" }
+        ],
+        "tips": [
+            { "title": "स्वरले भरिएको शब्दबाट सुरु गर्नुहोस्", "text": "CRANE, STARE वा ADIEU जस्ता शब्दहरूले सामान्य अक्षरहरू छिटो जाँच गर्छन्। कुन स्वर छन् भन्ने थाहा पाउँदा विकल्पहरू छिटो घट्छन्।" },
+            { "title": "तपाईंलाई थाहा भएको प्रयोग गर्नुहोस्", "text": "हरिया अक्षर स्थिर रहन्छन्। पहेंला अक्षर सार्नुपर्छ। खैरा अक्षर हटाइन्छन्। हरेक अनुमानमा तीनवटै सङ्केत प्रयोग गर्नुहोस्।" },
+            { "title": "सामान्य ढाँचाबारे सोच्नुहोस्", "text": "अंग्रेजी शब्दहरू प्रायः -TION, -IGHT, -OUND, -MENT मा समाप्त हुन्छन्। अन्य भाषाका आफ्नै ढाँचा हुन्छन् — तिनीहरू सिक्नुहोस्।" },
+            { "title": "व्यवस्थित रूपमा हटाउनुहोस्, अन्धाधुन्ध नभन्नुहोस्", "text": "तपाईंको दोस्रो शब्दले नयाँ अक्षरहरू जाँच्नुपर्छ, पुष्टि भइसकेका अक्षरहरू दोहोर्‍याउनु होइन।" },
+            { "title": "दोहोरिएका अक्षरहरूमा ध्यान दिनुहोस्", "text": "CREEK, FLOSS वा APPLE जस्ता शब्दहरू सामान्य जालहरू हुन्। तपाईंका सङ्केतहरू मिल्दैनन् भने दोहोरिएको अक्षरको बारेमा सोच्नुहोस्।" },
+            { "title": "सुधारका लागि हार्ड मोड प्रयोग गर्नुहोस्", "text": "हार्ड मोडले तपाईंलाई हरेक अनुमानमा पुष्टि भएका सङ्केतहरू प्रयोग गर्न बाध्य पार्छ। यसले राम्रा बानी बनाउँछ।" }
+        ],
+        "tips_speed": [
+            { "title": "CRANE वा STARE बाट सुरु गर्नुहोस्", "text": "उच्च-आवृत्तिका अक्षरहरूले छिटो समाधानको सबभन्दा राम्रो मौका दिन्छन्। हरेक सेकेन्ड महत्त्वपूर्ण छ।" },
+            { "title": "धेरै नसोच्नुहोस्", "text": "Speed Streak ले सहज अन्तर्ज्ञानलाई पुरस्कार दिन्छ। सम्भावित शब्द देख्नुभयो भने लगाउनुहोस् — कम्बो बोनसले उत्तम समाधानभन्दा बढी दिन्छ।" },
+            { "title": "आफ्नो कम्बो जोगाउनुहोस्", "text": "असफल शब्दले तपाईंको गुणक तोड्छ। अनिश्चित हुँदा थप सङ्केत जम्मा गर्न सुरक्षित अनुमान लगाउनुहोस्।" },
+            { "title": "2-3 अनुमानमा समाधान गर्नुहोस्", "text": "छिटो समाधानका लागि समय बोनस धेरै ठूलो हुन्छ (+60s 1 अनुमानमा, +30s 2 मा)। जोखिमपूर्ण दोस्रो अनुमान धेरै फाइदाजनक हुन सक्छ।" },
+            { "title": "सामान्य शब्दान्त सिक्नुहोस्", "text": "-IGHT, -OUND, -ATCH जस्ता ढाँचा बारम्बार दोहोरिन्छन्। तिनलाई तुरुन्तै चिन्नुले प्रति शब्द सेकेन्ड बचत गर्छ।" },
+            { "title": "दबाब बढ्दा शान्त रहनुहोस्", "text": "हरेक 3 शब्दपछि टाइमर छिटो हुन्छ। हतारले टाइपो र खराब अनुमानहरू ल्याउँछ। स्थिर गतिले आतंकलाई हराउँछ।" }
+        ],
+        "tips_multiboard": [
+            { "title": "विस्तृत रूपमा सुरु गर्नुहोस्", "text": "सामान्य-अक्षर शब्दहरू (CRANE, STARE) प्रयोग गरी सबै बोर्डमा एकैपटक सङ्केत जम्मा गर्नुहोस्।" },
+            { "title": "विभाजित किबोर्ड हेर्नुहोस्", "text": "किबोर्डले प्रति-बोर्ड रङ देखाउँछ। एउटा बोर्डमा हरियो तर अर्कोमा खैरो अक्षरले विकल्पहरू छिटो घटाउँछ।" },
+            { "title": "कठिन बोर्डलाई प्राथमिकता दिनुहोस्", "text": "सबभन्दा बढी अज्ञात भएको बोर्डमा अनुमानहरू केन्द्रित गर्नुहोस्। सजिला बोर्डहरू प्रायः आफैं समाधान हुन्छन्।" },
+            { "title": "सुरुका अनुमानहरू बर्बाद नगर्नुहोस्", "text": "विशिष्ट बोर्ड लक्ष्य गर्नुअघि पहिला 2-3 अनुमानहरू जानकारीपूर्ण शब्दमा प्रयोग गर्नुहोस्।" },
+            { "title": "साझा अक्षरहरू खोज्नुहोस्", "text": "दुईवटा बोर्डमा पहेंलो E देखियो भने E नयाँ स्थानमा भएको शब्दले दुवै बोर्डलाई एकैसाथ मद्दत गर्छ।" },
+            { "title": "आपतकालका लागि एउटा अनुमान बचाउनुहोस्", "text": "अन्तिम बोर्डमा अड्किनुभयो भने अतिरिक्त अनुमान जित र हारबीचको भिन्नता हो।" }
+        ],
+        "mode_desc_classic": "तपाईंसँग लुकेको 5-अक्षरी शब्द पत्ता लगाउन 6 प्रयास छन्। उत्तर सीमित गर्न रङ सङ्केतहरू प्रयोग गर्नुहोस्।",
+        "mode_desc_unlimited": "तपाईंसँग लुकेको 5-अक्षरी शब्द पत्ता लगाउन 6 प्रयास छन्। रङ सङ्केतहरू प्रयोग गर्नुहोस्। हरेक खेलपछि \"फेरि खेल्नुहोस्\" थिच्नुहोस् — कुनै दैनिक सीमा छैन।",
+        "mode_desc_speed": "3 मिनेटको टाइमरबाट सुरु गर्नुहोस्। हरेक समाधान गरिएको शब्दले बोनस समय दिन्छ — कम अनुमानमा समाधान गर्दा बढी बोनस (+60s 1 अनुमानमा, +10s 6 मा)। असफल शब्दले 30 सेकेन्ड घटाउँछ। लगातार शब्द समाधान गरेर 3x सम्म कम्बो गुणक बनाउनुहोस्। जति बढी शब्द समाधान गर्नुहुन्छ, टाइमर त्यति छिटो हुन्छ — हरेक 3 शब्दमा।",
+        "mode_desc_multiboard": "{modeName} ले तपाईंलाई केवल {maxGuesses} अनुमानहरू प्रयोग गरेर एकैसाथ {boardCount} Wordle बोर्ड समाधान गर्ने चुनौती दिन्छ। हरेक अनुमान सबै नसुल्झिएका बोर्डमा एकैसाथ देखिन्छ। समाधान भएका बोर्ड जम्छन्। विभाजित-रङ किबोर्डले कुन अक्षर कुन बोर्डमा सही छन् भनी देखाउँछ।",
+        "faq": [
+            { "q": "{langName} मा Wordle कसरी खेल्ने?", "a": "{langName} मा दैनिक Wordle खेल्न wordle.global/{lang} मा जानुहोस्। तपाईंसँग 5-अक्षरी शब्द पत्ता लगाउन 6 प्रयास छन्। हरेक अनुमानपछि, टाइलहरू हरियो (सही अक्षर, सही स्थान), पहेंलो (सही अक्षर, गलत स्थान) वा खैरो (अक्षर शब्दमा छैन) हुन्छन्।" },
+            { "q": "हरेक दिन नयाँ पजल हुन्छ?", "a": "हो। हरेक दिन नयाँ शब्द छानिन्छ। उही भाषामा खेल्ने सबैले एउटै शब्द पाउँछन्, त्यसैले तपाईं साथीहरूसँग तुलना गर्न सक्नुहुन्छ।" },
+            { "q": "Wordle Global निःशुल्क हो?", "a": "हो। दैनिक पजल, अनलिमिटेड मोड र सबै गेम मोडहरू 80+ भाषामा पूर्ण रूपमा निःशुल्क छन्। खाता वा डाउनलोड आवश्यक छैन।" },
+            { "q": "दिनमा एकभन्दा बढी पटक खेल्न सकिन्छ?", "a": "हो — अन्तहीन खेलका लागि wordle.global/{lang}/unlimited मा अनलिमिटेड मोड प्रयोग गर्नुहोस्। तपाईंको दैनिक शृङ्खला छुट्टै ट्र्याक गरिन्छ।" }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "{langName} मा Wordle Unlimited के हो?", "a": "Wordle Unlimited ले तपाईंलाई भोलिको दैनिक पजलको पर्खाइ बिना {langName} मा जतिसुकै Wordle खेल खेल्न दिन्छ। हरेक खेलमा 6 प्रयासमा नयाँ अनियमित शब्द पत्ता लगाउनुपर्छ।" },
+                { "q": "Wordle Unlimited निःशुल्क हो?", "a": "हो। Wordle Unlimited पूर्ण रूपमा निःशुल्क छ। खाता छैन, डाउनलोड छैन, विज्ञापन छैनन्।" },
+                { "q": "अनलिमिटेड मोडले दैनिक शृङ्खलामा गनिन्छ?", "a": "छैन। अनलिमिटेड मोडको आफ्नै छुट्टै तथ्याङ्क छ। तपाईंको दैनिक शृङ्खला केवल दैनिक पजलले मात्र प्रभावित गर्छ।" },
+                { "q": "कति पटक खेल्न सकिन्छ?", "a": "कुनै सीमा छैन। तपाईंले चाहेजति राउन्ड खेल्न सक्नुहुन्छ। हरेक खेलपछि तुरुन्तै नयाँ शब्द पाउन \"फेरि खेल्नुहोस्\" थिच्नुहोस्।" },
+                { "q": "Wordle Unlimited कुन भाषामा खेल्न सकिन्छ?", "a": "Wordle Unlimited wordle.global मा 80 भन्दा बढी भाषामा उपलब्ध छ, जसमा अंग्रेजी, स्पेनी, जर्मन, फिनिश, अरबी, फ्रेन्च, इटालियन, पोर्तुगिज र अन्य धेरै छन्।" }
+            ],
+            "speed": [
+                { "q": "{langName} मा Speed Streak के हो?", "a": "Speed Streak {langName} मा एक समयबद्ध Wordle मोड हो। तपाईं 3 मिनेटबाट सुरु गर्नुहुन्छ र जतिसक्दो धेरै शब्द समाधान गर्नुहुन्छ। छिटो समाधान गर्दा बोनस समय पाइन्छ।" },
+                { "q": "स्कोरिङ कसरी काम गर्छ?", "a": "हरेक समाधान गरिएको शब्दका लागि अंक पाइन्छ। कम अनुमान र छिटो समाधानले बढी अंक दिन्छ। लगातार शब्दहरू समाधान गरेर 3x सम्म कम्बो गुणक बनाउनुहोस्।" },
+                { "q": "टाइमर सकिँदा के हुन्छ?", "a": "खेल समाप्त हुन्छ र तपाईंको अन्तिम स्कोर, कुल समाधान गरिएका शब्दहरू, अधिकतम कम्बो र औसत अनुमान देखिन्छ। तपाईं तुरुन्तै फेरि खेल्न सक्नुहुन्छ।" },
+                { "q": "Speed Streak निःशुल्क हो?", "a": "हो। Speed Streak सबै 80+ भाषामा पूर्ण रूपमा निःशुल्क छ। खाता वा डाउनलोड आवश्यक छैन।" }
+            ],
+            "multiboard": [
+                { "q": "{langName} मा {modeName} के हो?", "a": "{modeName} {langName} मा एक बहु-बोर्ड Wordle भेरिएन्ट हो। तपाईं {maxGuesses} अनुमानहरू प्रयोग गरेर {boardCount} Wordle बोर्ड एकैसाथ समाधान गर्नुहुन्छ। हरेक अनुमान सबै नसुल्झिएका बोर्डमा एकैसाथ देखिन्छ।" },
+                { "q": "{modeName} मा कति अनुमान पाइन्छ?", "a": "सबै {boardCount} बोर्ड समाधान गर्न {maxGuesses} अनुमान पाइन्छ। बोर्ड समाधान भएपछि जम्छ र तपाईं बाँकी बोर्डमा ध्यान केन्द्रित गर्न सक्नुहुन्छ।" },
+                { "q": "{modeName} का लागि कुन रणनीति सबभन्दा राम्रो हो?", "a": "सामान्य अक्षर प्रयोग गर्ने शब्दबाट सुरु गर्नुहोस् जसले सबै {boardCount} बोर्डमा एकैपटक जानकारी जम्मा गर्छ। विभाजित-रङ किबोर्डमा ध्यान दिनुहोस् — यसले कुन अक्षर कुन बोर्डमा सही छन् भनी देखाउँछ।" },
+                { "q": "{modeName} निःशुल्क हो?", "a": "हो। {modeName} सबै 80+ भाषामा पूर्ण रूपमा निःशुल्क छ। खाता वा डाउनलोड आवश्यक छैन। चाहेजति राउन्ड खेल्नुहोस्।" }
+            ]
+        },
+        "howto": [
+            { "name": "शब्द टाइप गर्नुहोस्", "text": "स्क्रिनको किबोर्ड वा आफ्नो भौतिक किबोर्ड प्रयोग गरी {langName} मा मान्य 5-अक्षरी शब्द टाइप गर्नुहोस्, त्यसपछि Enter थिच्नुहोस्।" },
+            { "name": "सङ्केतहरू पढ्नुहोस्", "text": "हरियो टाइलको अर्थ अक्षर सही छ र सही स्थानमा छ। पहेंलोको अर्थ अक्षर शब्दमा छ तर गलत स्थानमा। खैरोको अर्थ अक्षर शब्दमा छैन।" },
+            { "name": "6 प्रयासमा समाधान गर्नुहोस्", "text": "शब्द सीमित गर्न रङ सङ्केतहरू प्रयोग गर्नुहोस्। तपाईंसँग कुल 6 अनुमान छन्। पजलपछि, आफ्नो तथ्याङ्क हेर्नुहोस् र नतिजा साझा गर्नुहोस्।" }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "खेल सुरु गर्नुहोस्", "text": "{langName} मा Wordle Unlimited खेल्न wordle.global/{lang}/unlimited मा जानुहोस्। एउटा अनियमित 5-अक्षरी शब्द छानिन्छ।" },
+                { "name": "शब्द पत्ता लगाउनुहोस्", "text": "मान्य 5-अक्षरी शब्द टाइप गर्नुहोस् र Enter थिच्नुहोस्। हरियो टाइलको अर्थ अक्षर सही र सही स्थानमा। पहेंलोको अर्थ शब्दमा छ तर गलत स्थानमा। खैरोको अर्थ शब्दमा छैन।" },
+                { "name": "तुरुन्तै फेरि खेल्नुहोस्", "text": "शब्द समाधान गरेपछि (वा सबै 6 अनुमान प्रयोग गरेपछि) तुरुन्तै नयाँ शब्द पाउन \"फेरि खेल्नुहोस्\" थिच्नुहोस्। भोलिसम्म पर्खनुपर्दैन।" }
+            ],
+            "speed": [
+                { "name": "टाइमर सुरु गर्नुहोस्", "text": "wordle.global/{lang}/speed मा जानुहोस् र सुरु गर्नुहोस् थिच्नुहोस्। तपाईं 3 मिनेटबाट सुरु गर्नुहुन्छ।" },
+                { "name": "शब्दहरू छिटो समाधान गर्नुहोस्", "text": "हरेक समाधान गरिएको शब्दले बोनस समय दिन्छ (+10s देखि +60s कति कम अनुमान प्रयोग भयो अनुसार)। असफल शब्दले 30 सेकेन्ड घटाउँछ।" },
+                { "name": "आफ्नो कम्बो बनाउनुहोस्", "text": "लगातार शब्दहरू समाधान गरेर कम्बो गुणक बनाउनुहोस् (3x सम्म)। शब्दमा असफल भए कम्बो टुट्छ। आफ्नो सर्वोच्च स्कोर तोड्ने प्रयास गर्नुहोस्।" }
+            ],
+            "multiboard": [
+                { "name": "खेल सुरु गर्नुहोस्", "text": "{langName} मा {modeName} खेल्न wordle.global/{lang}/{modeName} मा जानुहोस्। {boardCount} बोर्ड फरक लुकेका शब्दहरूसहित देखिन्छन्।" },
+                { "name": "सबै बोर्डमा अनुमान लगाउनुहोस्", "text": "5-अक्षरी शब्द टाइप गर्नुहोस् र Enter थिच्नुहोस्। तपाईंको अनुमान सबै {boardCount} बोर्डमा एकैपटक देखिन्छ। हरेक बोर्डले आफ्नै रङ सङ्केत (हरियो, पहेंलो, खैरो) देखाउँछ।" },
+                { "name": "सबै {boardCount} बोर्ड समाधान गर्नुहोस्", "text": "समाधान भएका बोर्ड जम्छन्। कुन अक्षर कुन बोर्डमा काम गर्छन् भनी ट्र्याक गर्न विभाजित-रङ किबोर्ड प्रयोग गर्नुहोस्। जित्न सबै {boardCount} बोर्ड {maxGuesses} अनुमानमा समाधान गर्नुहोस्।" }
+            ]
+        }
     }
 }

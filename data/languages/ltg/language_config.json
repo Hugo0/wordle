@@ -28,6 +28,18 @@
             "quordle": {
                 "title": "Quordle — 4 boards at once",
                 "description": "Play Quordle in Latgalian. Solve 4 Wordle boards at once with 9 guesses."
+            },
+            "octordle": {
+                "title": "Octordle — 8 boards at once",
+                "description": "Play Octordle in Latgalian. Solve 8 Wordle boards at once with 13 guesses."
+            },
+            "sedecordle": {
+                "title": "Sedecordle — 16 boards at once",
+                "description": "Play Sedecordle in Latgalian. Solve 16 Wordle boards at once with 21 guesses."
+            },
+            "duotrigordle": {
+                "title": "Duotrigordle — 32 boards at once",
+                "description": "Play Duotrigordle in Latgalian. Solve 32 Wordle boards at once with 37 guesses."
             }
         }
     },
@@ -44,7 +56,8 @@
         "copied": "Nūkopēts!",
         "notification_word_not_valid": "Vuords nav derīgs",
         "hard_mode_position": "Grūtais režyms: {letter} juobyut {position} pozicijā",
-        "hard_mode_contains": "Grūtais režyms: minējumā juobyut {letter}"
+        "hard_mode_contains": "Grūtais režyms: minējumā juobyut {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -60,7 +73,15 @@
         "text_2_1": "is in the word and in the correct location!",
         "text_2_2": "is in the word, but not in the correct location.",
         "text_2_3": "is not present in the word you are trying to guess.",
-        "text_3": "A new word will be available each day!"
+        "text_3": "A new word will be available each day!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Īstatiejumi",
@@ -145,6 +166,172 @@
         "pos_verb": "darbeibys vuords",
         "pos_adjective": "eipašeibys vuords",
         "pos_adverb": "apstōkļa vuords",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
+        "homepage_tagline": "The world's word game",
+        "homepage_playing_in": "Playing in",
+        "homepage_change": "change",
+        "homepage_choose_language": "Choose your language",
+        "homepage_languages_counting": "languages and counting — more added regularly.",
+        "homepage_search": "Search languages...",
+        "homepage_and_more": "& More",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "how_to_play": "Kai spēlēt",
+        "tips_strategy": "Padūmi i strategeja",
+        "more_modes": "Vaira spēļu režymu",
+        "play_in_languages": "Spēlej 80+ volūdōs",
+        "play_in_languages_sub": "Katra volūda ir bez maksos. Konts nav vajadzīgs.",
+        "why_wordle_global": "Kamdēļ Wordle Global",
+        "faq_title": "Bīži jautōti jautōjumi",
+        "browse_all_languages": "Apsavērt vysas 80+ volūdas",
+        "recent_words": "Nasenejī vuordi",
+        "view_all_words": "Apsavērt vysus vuordus",
+        "footer": "wordle.global — bez maksos ikdīnys vuordu spēle 80+ volūdōs",
+        "tile_correct": "ir vuordā i pareizajā vītā.",
+        "tile_semicorrect": "ir vuordā, bet napareizajā vītā.",
+        "tile_incorrect": "nav vuordā vysā.",
+        "stat_players": "Spēlātuoji",
+        "stat_guesses": "Minējumi",
+        "stat_languages": "Volūdas",
+        "stat_modes": "Spēļu režymi",
+        "value_props": [
+            { "key": "languages", "title": "80+ volūdas", "desc": "Nu arabu da jorubu. Vysvaira daudzeizvolūdu Wordle." },
+            { "key": "definitions", "title": "Vuordu nūzeimes", "desc": "Zynuoj katra vuorda zeimi piec spēles. Paplašynoj sovu vuordu krajumu." },
+            { "key": "word_art", "title": "Īpaša vuordu muoksla", "desc": "Katram vuordam ir personalizāts attāls. Savōc jūs vysus." },
+            { "key": "themes", "title": "Tumšais režyms i temas", "desc": "Gaišais, tumšais i augsta kontrasta režymi ērtai spēlei." },
+            { "key": "pwa", "title": "Dorbojās vysur", "desc": "PWA — instalej uz jebkuras īreices. Dorbojās bez tīkla. Nav jōlejamīt." },
+            { "key": "free", "title": "Bez maksos uz vysu laiku", "desc": "Konts nav vajadzīgs. Nav maksos sīnas. Viņkōrši spēlej." }
+        ],
+        "tips": [
+            { "title": "Suoc ar vuordu, kurā daudz patskonu", "text": "Vuordi kai CRANE, STARE voi ADIEU testa bīžus burtus dreiži. Zynōšona, kuri patskoni ir, dreiži sašaurynoj izvēles." },
+            { "title": "Izmontoj tū, kas zynōms", "text": "Zaļī burti palīk vītā. Dzaltonī burti juoparbyda. Palākie burti ir izslāgti. Katram minējumam juoizmontoj vysi treis pīzeimis." },
+            { "title": "Damoj par bīžim rakstim", "text": "Anglīšu vuordi bīži beidzās ar -TION, -IGHT, -OUND, -MENT. Cytuos volūdōs ir sovys raksti — mācej jūs." },
+            { "title": "Izslādz, na mēginoj nasagatavuots", "text": "Ūtrais vuords juotesta jaunūs burtus, na juoatkōrtoj apstyprynōtī. Nūsadz cik daudz natestātu leidzeiskonu, cik varams." },
+            { "title": "Uzmanēs ar dubultim burtim", "text": "Vuordi kai CREEK, FLOSS voi APPLE ir bīžas slazdys. Ja pīzeimis nūsakreit, padomoj par atkōrtuotu burtu." },
+            { "title": "Izmontoj grūtū režymu, kab uzlobuotūs", "text": "Grūtais režyms pīspīž izmontōt apstyprynōtūs pīzeimis katrā minējumā. Tas veido lobōkus paradumus pat atgrīžūtīs normālajā režymā." }
+        ],
+        "tips_speed": [
+            { "title": "Suoc ar CRANE voi STARE", "text": "Bīži burti dūd lobōkū izdeveibu dreiži atminēt. Katra sekunde ir svareiga." },
+            { "title": "Napōrdomoj par daudz", "text": "Speed Streak atalguoj instinktu. Ja radzat iespējamu vuordu, mēginoj — combo bonuss ir svareigōks par perfektu atminējumu." },
+            { "title": "Aizsorgoj sovu combo", "text": "Naatminēts vuords nūtrūcej multiplicatoru. Kod nazynōt, izmontoj drūšu minējumu, kab savōktu vaira pīzeimis, na riskējūt." },
+            { "title": "Tīcīs piec 2-3 minējumu atminējumim", "text": "Laika bonuss ir milzeigs par dreizim atminējumim (+60s par 1 minējumu, +30s par 2). Riskanc ūtrais minējums var dūt lelu atsagrīzīšonu." },
+            { "title": "Mācej bīžas vuordu goluotnes", "text": "Raksti kai -IGHT, -OUND, -ATCH atkōrtojās bīži. Tūs tīšī atpazeit ītaupa sekundes katram vuordam." },
+            { "title": "Palīc mīreigs, kod spīdīņs aaug", "text": "Taimeris paōtrynōjās katrus 3 vuordus. Stuopēšona nūved pi kļūdōm i sliktim minējumim. Stabils temps uzveic paniku." }
+        ],
+        "tips_multiboard": [
+            { "title": "Suoc plati", "text": "Izmontoj vuordus ar bīžim burtim (CRANE, STARE), kab savōktu pīzeimis pa vysim galdim vīnā reizē." },
+            { "title": "Vāti daleitū klaviaturu", "text": "Klaviatura rōda kruosys pa galdim. Burts, kas vīnā galdā zaļš, bet cytrā palāks, dreiži sašaurynoj izvēles." },
+            { "title": "Dūd prīkšruoku galdim grūteibōs", "text": "Koncentrējīs uz galdu ar vysvaira nazynōmajim. Vīglōki galdi bīži atrysynojās paši." },
+            { "title": "Naizšērdej pyrmūs minējumus", "text": "Izmontoj pyrmūs 2-3 informacijā bōgōtim vuordim pyrms tīcītīs uz specifiskim galdim." },
+            { "title": "Meklej kūpejūs burtus", "text": "Ja divūs galdūs ir dzaltons E, vuords ar E jaunā pozicijā paleidz abejim galdim vīnā reizē." },
+            { "title": "Ītaupej minējumu naparadzeitōm situacijom", "text": "Ja esi īstrudzis pi pādejuo galda, papyldu minējums ir starpneiba starp uzvairu i zuodējumu." }
+        ],
+        "mode_desc_classic": "Tev ir 6 minējumi, kab atminētu paslāptu 5 burtu vuordu. Izmontoj kruosu pīzeimis, kab sašaurynōtu atbildi.",
+        "mode_desc_unlimited": "Tev ir 6 minējumi, kab atminētu paslāptu 5 burtu vuordu. Izmontoj kruosu pīzeimis, kab sašaurynōtu atbildi. Piec katras spēles spīd \"Spēlēt atkōl\", kab tīšī dabuotu jaunu vuordu — nav ikdīnys limita.",
+        "mode_desc_speed": "Suoc ar 3 minutem taimerī. Katrs atminēts vuords nūpelnēj bonusa laiku — atmini mozōk minējumūs, kab dabuotu lelōkus bonusus (+60s par 1 minējumu, +10s par 6). Naatminēti vuordi zynaudej 30 sekundes. Veido combo, atminūt vuordus pēc kōrtys, lai multiplicators celās da 3x. Spīdīņs aaug, atminūt vaira vuordu — taimeris paōtrynōjās katrus 3 vuordus.",
+        "mode_desc_multiboard": "{modeName} izaicynoj tevi atminēt {boardCount} Wordle galdus vīnā reizē, izmontojūt tikei {maxGuesses} minējumus. Katrs minējums paruodōjās uz vysim naatminētim galdim vīnā reizē. Galdi sasalst, kod atminēti. Daleitū kruosu klaviatura rōda, kuri burti ir pareizy uz kurim galdim. Suoc ar vuordim, kurūs bīži burti, kab savōktu pīzeimis pa vysim galdim vīnā reizē.",
+        "faq": [
+            { "q": "Kai spēlēt Wordle {langName}?", "a": "Īej wordle.global/{lang}, kab spēlētu ikdīnys Wordle {langName}. Tev ir 6 minējumi, kab atminētu 5 burtu vuordu. Piec katra minējuma rūteņys kļyust zaļas (pareizs burts, pareiza vīta), dzaltonas (pareizs burts, napareiza vīta) voi palōkas (burts nav vuordā)." },
+            { "q": "Voi katru dīnu ir jauna meikla?", "a": "Juo. Jauns vuords tīk izalasēts katru dīnu. Vysi spēlātuoji vīnā volūdā dabuoj tū pošu vuordu, tōd varēt saleidzynōt rezultatus ar draugim." },
+            { "q": "Voi Wordle Global ir bez maksos?", "a": "Juo. Ikdīnys meikla, naīrobežuotais režyms i vysi spēļu režymi ir pilneibā bez maksos vysōs 80+ volūdōs. Konts voi lejuplōde nav vajadzīgs." },
+            { "q": "Voi varu spēlēt vaira kai reizi dīnā?", "a": "Juo — mēginoj naīrobežuotū režymu wordle.global/{lang}/unlimited bezzgaleigom spēlem bez gaidēšonys. Tova ikdīnys sērija tīk skaitēta atsevišči." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Kas ir Wordle Naīrobežuots {langName}?", "a": "Wordle Naīrobežuots ļaun spēlēt cik vēlīs spēļu {langName}, nagaidūt reitdīnys meiklu. Katra spēle dūd jaunu najaušu vuordu atminēšonai 6 minējumūs." },
+                { "q": "Voi Wordle Naīrobežuots ir bez maksos?", "a": "Juo. Wordle Naīrobežuots ir pilneibā bez maksos. Nav konta, nav lejuplōdes, nav reklamu spēles laikā." },
+                { "q": "Voi naīrobežuotais režyms skaitōjās manā ikdīnys sērijā?", "a": "Na. Naīrobežuotajam režymam ir sova atsevišča statistika. Tova ikdīnys sērija tīk iespaidōta tikai ar ikdīnys meiklu." },
+                { "q": "Cik reižu varu spēlēt?", "a": "Nav limita. Vari spēlēt cik vēlīs reižu. Piec katras spēles spīd \"Spēlēt atkōl\", kab tīšī dabuotu jaunu vuordu." },
+                { "q": "Kurōs volūdōs varu spēlēt Wordle Naīrobežuotu?", "a": "Wordle Naīrobežuots ir pīejams vaira kai 80 volūdōs wordle.global, tai skaitā anglīšu, spāņu, vuocīšu, suomīšu, arabu, francīšu, italīšu, portugāļu i daudz cyturōs." }
+            ],
+            "speed": [
+                { "q": "Kas ir Speed Streak {langName}?", "a": "Speed Streak ir Wordle režyms ar laika limitu {langName}. Tu suoc ar 3 minutem taimerī i atmini cik vuordu varams. Atmini vuordu dreiži, kab nūpelneitu bonusa laiku." },
+                { "q": "Kai dorbojās punktu skaitēšona?", "a": "Tu nūpelni punktus par katru atminētu vuordu. Mozōk minējumu i dreiži atminējumi dūd vaira punktu. Veido combo, atminūt vuordus pēc kōrtys bez klūdēšonys — da 3x multiplicatoram." },
+                { "q": "Kas nūtīk, kod laiks beidzās?", "a": "Spēle beidzās i tu radzi sovu galeigu rezultatu, kūpeigū atminētu vuordu skaitu, moksimōlū combo i videjūs minējumus. Vari spēlēt atkōl tīšī." },
+                { "q": "Voi Speed Streak ir bez maksos?", "a": "Juo. Speed Streak ir pilneibā bez maksos vysōs 80+ volūdōs. Konts voi lejuplōde nav vajadzīgs." }
+            ],
+            "multiboard": [
+                { "q": "Kas ir {modeName} {langName}?", "a": "{modeName} ir daudzu galdu Wordle variants {langName}. Tu atmini {boardCount} Wordle galdus vīnā reizē, izmontojūt {maxGuesses} minējumus. Katrs minējums tīk īvodīts uz vysim naatminētim galdim vīnā reizē." },
+                { "q": "Cik minējumu man ir {modeName}?", "a": "Tev ir {maxGuesses} minējumi, kab atminētu vysus {boardCount} galdus. Kod galds ir atminēts, tys sasalst i vari koncentrētīs uz pōrejim galdim." },
+                { "q": "Kura strategeja dorbojās vyslobōk {modeName}?", "a": "Suoc ar vuordim, kurūs bīži burti, kab savōktu informaciju par vysim {boardCount} galdim vīnā reizē. Vāti daleitū kruosu klaviaturu — tei rōda, kuri burti ir pareizy uz kurim galdim." },
+                { "q": "Voi {modeName} ir bez maksos?", "a": "Juo. {modeName} ir pilneibā bez maksos vysōs 80+ volūdōs. Konts voi lejuplōde nav vajadzīgs. Spēlej cik vēlīs reižu." }
+            ]
+        },
+        "howto": [
+            { "name": "Rokstej vuordu", "text": "Īvadej derigu 5 burtu vuordu {langName}, izmontojūt klaviaturu uz ekrana voi fīziskū klaviaturu, tad spīd Enter." },
+            { "name": "Izlasej pīzeimis", "text": "Zaļōs rūteņys nūzeimej, ka burts ir pareizs i pareizajā vītā. Dzaltonōs — burts ir vuordā, bet napareizajā vītā. Palōkōs — burts nav vuordā." },
+            { "name": "Atmini 6 minējumūs", "text": "Izmontoj kruosu pīzeimis, kab sašaurynōtu vuordu. Tev ir 6 minējumi kūpā. Piec meiklas apsaver sovu statistiku i dalej rezultatu." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Suoc spēli", "text": "Īej wordle.global/{lang}/unlimited, kab spēlētu Wordle Naīrobežuotu {langName}. Tev tīk izalasēts najaušs 5 burtu vuords." },
+                { "name": "Atmini vuordu", "text": "Rokstej derigu 5 burtu vuordu i spīd Enter. Zaļōs rūteņys nūzeimej, ka burts ir pareizs i pareizajā vītā. Dzaltonōs — burts ir vuordā, bet napareizajā vītā. Palōkōs — burts nav vuordā." },
+                { "name": "Spēlej atkōl tīšī", "text": "Piec vuorda atminēšonys (voi vysu 6 minējumu izmontōšonys), spīd \"Spēlēt atkōl\", kab tīšī dabuotu jaunu vuordu. Bez gaidēšonys da reitdīnai." }
+            ],
+            "speed": [
+                { "name": "Palaid taimeri", "text": "Īej wordle.global/{lang}/speed i spīd Suokt. Tu suoc ar 3 minutem taimerī." },
+                { "name": "Atmini vuordus dreiži", "text": "Katrs atminēts vuords nūpelnēj bonusa laiku (+10s da +60s atkarībā nu izmontōtu minējumu skaita). Naatminēti vuordi zynaudej 30 sekundes." },
+                { "name": "Veido sovu combo", "text": "Atmini vuordus pēc kōrtys, kab celtu combo multiplicatoru (da 3x). Combo nūtrūcās, ja naatmini vuordu. Mēginoj pōrsist sovu lobōkū rezultatu." }
+            ],
+            "multiboard": [
+                { "name": "Suoc spēli", "text": "Īej wordle.global/{lang}/{modeName}, kab spēlētu {modeName} {langName}. {boardCount} galdi paruodōjās ar dažādim paslāptim vuordim." },
+                { "name": "Mēginoj pa vysim galdim", "text": "Rokstej 5 burtu vuordu i spīd Enter. Tovs minējums paruodōjās uz vysim {boardCount} galdim vīnā reizē. Katrs galds rōda sovus kruosu pīzeimis (zaļš, dzaltons, palōks)." },
+                { "name": "Atmini vysus {boardCount} galdus", "text": "Atminētī galdi sasalst vītā. Izmontoj daleitū kruosu klaviaturu, kab sekōtu, kuri burti dorbojās uz kurim galdim. Atmini vysus {boardCount} {maxGuesses} minējumūs, kab uzvarētu." }
+            ]
+        }
     }
 }
