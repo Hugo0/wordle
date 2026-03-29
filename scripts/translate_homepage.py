@@ -5,8 +5,29 @@ import json
 import os
 
 SKIP = {
-    "en", "fi", "ar", "de", "es", "pt", "fr", "it", "tr", "pl", "nl", "nb",
-    "he", "ko", "ja", "el", "cs", "bg", "da", "hr", "hu", "ru", "sv",
+    "en",
+    "fi",
+    "ar",
+    "de",
+    "es",
+    "pt",
+    "fr",
+    "it",
+    "tr",
+    "pl",
+    "nl",
+    "nb",
+    "he",
+    "ko",
+    "ja",
+    "el",
+    "cs",
+    "bg",
+    "da",
+    "hr",
+    "hu",
+    "ru",
+    "sv",
 }
 
 ENGLISH_DEFAULTS = {
@@ -620,6 +641,7 @@ TRANSLATIONS["hy"] = {
     "homepage_and_more": "delays",
     "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — delays.",
 }
+
 
 def main():
     base = "data/languages"

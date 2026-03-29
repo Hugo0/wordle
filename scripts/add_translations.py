@@ -8,9 +8,7 @@ DATA_DIR = Path(__file__).parent.parent / "data" / "languages"
 
 TRANSLATIONS = {
     "pl": {
-        "text": {
-            "win_words": "Geniusz,Wspaniałe,Imponujące,Świetne,Brawo,Uff"
-        },
+        "text": {"win_words": "Geniusz,Wspaniałe,Imponujące,Świetne,Brawo,Uff"},
         "help": {
             "speed_how_it_works": "Jak to działa",
             "speed_explanation": "Zaczynasz z 5 minutami na zegarze. Rozwiąż słowa, aby zyskać dodatkowy czas. Nieudane słowo kosztuje 30 sekund.",
@@ -19,7 +17,7 @@ TRANSLATIONS = {
             "speed_scoring": "Punktacja",
             "speed_scoring_explanation": "Punkty = (7 − próby) × 100 × mnożnik combo. Kolejne rozwiązania budują combo do 3x. Nieudane słowo resetuje combo.",
             "speed_pressure": "Wzrost presji",
-            "speed_pressure_explanation": "Co 3 rozwiązane słowa timer przyspiesza. Im dłużej przetrwasz, tym trudniej."
+            "speed_pressure_explanation": "Co 3 rozwiązane słowa timer przyspiesza. Im dłużej przetrwasz, tym trudniej.",
         },
         "ui": {
             "play_to_reveal": "Zagraj, aby odkryć",
@@ -74,13 +72,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 plansze, 1 klawiatura, 37 prób.",
             "mode_semantic_desc": "Nawiguj w przestrzeni znaczeń. 10 prób.",
             "mode_custom_desc": "Wybierz słowo, udostępnij link. Rzuć wyzwanie znajomym.",
-            "mode_party_desc": "Grajcie tym samym słowem ze znajomymi. Sprawdźcie, kto rozwiąże najszybciej."
-        }
+            "mode_party_desc": "Grajcie tym samym słowem ze znajomymi. Sprawdźcie, kto rozwiąże najszybciej.",
+        },
     },
     "nl": {
-        "text": {
-            "win_words": "Geniaal,Schitterend,Indrukwekkend,Prachtig,Geweldig,Pfoe"
-        },
+        "text": {"win_words": "Geniaal,Schitterend,Indrukwekkend,Prachtig,Geweldig,Pfoe"},
         "help": {
             "speed_how_it_works": "Hoe het werkt",
             "speed_explanation": "Je begint met 5 minuten op de klok. Los woorden op om bonustijd te verdienen. Een gemist woord kost je 30 seconden.",
@@ -89,7 +85,7 @@ TRANSLATIONS = {
             "speed_scoring": "Puntentelling",
             "speed_scoring_explanation": "Punten = (7 − pogingen) × 100 × combo-vermenigvuldiger. Opeenvolgende oplossingen bouwen je combo op tot 3x. Een gemist woord reset je combo.",
             "speed_pressure": "Oplopende druk",
-            "speed_pressure_explanation": "Elke 3 opgeloste woorden versnelt de timer. Hoe langer je overleeft, hoe moeilijker het wordt."
+            "speed_pressure_explanation": "Elke 3 opgeloste woorden versnelt de timer. Hoe langer je overleeft, hoe moeilijker het wordt.",
         },
         "ui": {
             "play_to_reveal": "Speel om te onthullen",
@@ -144,13 +140,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 borden, 1 toetsenbord, 37 pogingen.",
             "mode_semantic_desc": "Navigeer door betekenisruimte. 10 pogingen.",
             "mode_custom_desc": "Kies een woord, deel een link. Daag je vrienden uit.",
-            "mode_party_desc": "Speel hetzelfde woord met vrienden. Kijk wie het snelst oplost."
-        }
+            "mode_party_desc": "Speel hetzelfde woord met vrienden. Kijk wie het snelst oplost.",
+        },
     },
     "nb": {
-        "text": {
-            "win_words": "Genialt,Strålende,Imponerende,Flott,Bra,Puh"
-        },
+        "text": {"win_words": "Genialt,Strålende,Imponerende,Flott,Bra,Puh"},
         "help": {
             "speed_how_it_works": "Slik fungerer det",
             "speed_explanation": "Du starter med 5 minutter på klokken. Løs ord for å tjene bonustid. Et mislykket ord koster deg 30 sekunder.",
@@ -159,7 +153,7 @@ TRANSLATIONS = {
             "speed_scoring": "Poengberegning",
             "speed_scoring_explanation": "Poeng = (7 − forsøk) × 100 × combo-multiplikator. Påfølgende løsninger bygger combo opp til 3x. Et mislykket ord nullstiller comboen.",
             "speed_pressure": "Økende press",
-            "speed_pressure_explanation": "For hver tredje løste ord øker timerhastigheten. Jo lenger du overlever, jo vanskeligere blir det."
+            "speed_pressure_explanation": "For hver tredje løste ord øker timerhastigheten. Jo lenger du overlever, jo vanskeligere blir det.",
         },
         "ui": {
             "play_to_reveal": "Spill for å avsløre",
@@ -214,13 +208,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 brett, 1 tastatur, 37 forsøk.",
             "mode_semantic_desc": "Naviger i betydningsrommet. 10 forsøk.",
             "mode_custom_desc": "Velg et ord, del en lenke. Utfordre vennene dine.",
-            "mode_party_desc": "Spill det samme ordet med venner. Se hvem som løser det raskest."
-        }
+            "mode_party_desc": "Spill det samme ordet med venner. Se hvem som løser det raskest.",
+        },
     },
     "he": {
-        "text": {
-            "win_words": "גאוני,מרהיב,מרשים,נפלא,יפה,פיו"
-        },
+        "text": {"win_words": "גאוני,מרהיב,מרשים,נפלא,יפה,פיו"},
         "help": {
             "speed_how_it_works": "איך זה עובד",
             "speed_explanation": "מתחילים עם 5 דקות על השעון. פתרו מילים כדי לצבור זמן בונוס. מילה שנכשלתם בה עולה 30 שניות.",
@@ -229,7 +221,7 @@ TRANSLATIONS = {
             "speed_scoring": "ניקוד",
             "speed_scoring_explanation": "נקודות = (7 − ניחושים) × 100 × מכפיל קומבו. פתרונות רצופים בונים קומבו עד 3x. מילה שנכשלתם בה מאפסת את הקומבו.",
             "speed_pressure": "עליית לחץ",
-            "speed_pressure_explanation": "כל 3 מילים שנפתרות, הטיימר מאיץ. ככל ששורדים יותר, כך קשה יותר."
+            "speed_pressure_explanation": "כל 3 מילים שנפתרות, הטיימר מאיץ. ככל ששורדים יותר, כך קשה יותר.",
         },
         "ui": {
             "play_to_reveal": "שחקו כדי לגלות",
@@ -284,13 +276,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 לוחות, מקלדת אחת, 37 ניחושים.",
             "mode_semantic_desc": "נווטו במרחב המשמעויות. 10 ניחושים.",
             "mode_custom_desc": "בחרו מילה, שתפו קישור. אתגרו את החברים.",
-            "mode_party_desc": "שחקו באותה מילה עם חברים. גלו מי פותר הכי מהר."
-        }
+            "mode_party_desc": "שחקו באותה מילה עם חברים. גלו מי פותר הכי מהר.",
+        },
     },
     "ko": {
-        "text": {
-            "win_words": "천재,훌륭함,인상적,멋져요,잘했어,휴"
-        },
+        "text": {"win_words": "천재,훌륭함,인상적,멋져요,잘했어,휴"},
         "help": {
             "speed_how_it_works": "플레이 방법",
             "speed_explanation": "5분의 시간이 주어집니다. 단어를 풀어 보너스 시간을 얻으세요. 실패하면 30초가 차감됩니다.",
@@ -299,7 +289,7 @@ TRANSLATIONS = {
             "speed_scoring": "점수 계산",
             "speed_scoring_explanation": "점수 = (7 − 추측 횟수) × 100 × 콤보 배수. 연속 정답으로 콤보를 최대 3배까지 올릴 수 있습니다. 실패 시 콤보가 초기화됩니다.",
             "speed_pressure": "난이도 상승",
-            "speed_pressure_explanation": "3개의 단어를 풀 때마다 타이머가 빨라집니다. 오래 버틸수록 더 어려워집니다."
+            "speed_pressure_explanation": "3개의 단어를 풀 때마다 타이머가 빨라집니다. 오래 버틸수록 더 어려워집니다.",
         },
         "ui": {
             "play_to_reveal": "플레이하여 공개",
@@ -354,13 +344,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "보드 32개, 키보드 1개, 추측 37회.",
             "mode_semantic_desc": "의미 공간을 탐색하세요. 추측 10회.",
             "mode_custom_desc": "단어를 고르고 링크를 공유하세요. 친구에게 도전!",
-            "mode_party_desc": "친구들과 같은 단어로 플레이. 누가 가장 빨리 푸는지 겨루세요."
-        }
+            "mode_party_desc": "친구들과 같은 단어로 플레이. 누가 가장 빨리 푸는지 겨루세요.",
+        },
     },
     "ja": {
-        "text": {
-            "win_words": "天才,見事,素晴らしい,お見事,すごい,ふぅ"
-        },
+        "text": {"win_words": "天才,見事,素晴らしい,お見事,すごい,ふぅ"},
         "help": {
             "speed_how_it_works": "遊び方",
             "speed_explanation": "制限時間5分でスタート。単語を解いてボーナス時間を獲得。失敗すると30秒減ります。",
@@ -369,7 +357,7 @@ TRANSLATIONS = {
             "speed_scoring": "スコア計算",
             "speed_scoring_explanation": "ポイント = (7 − 推測回数) × 100 × コンボ倍率。連続正解でコンボが最大3倍に。失敗するとコンボがリセットされます。",
             "speed_pressure": "プレッシャー上昇",
-            "speed_pressure_explanation": "3単語解くごとにタイマーが加速します。長く生き残るほど難しくなります。"
+            "speed_pressure_explanation": "3単語解くごとにタイマーが加速します。長く生き残るほど難しくなります。",
         },
         "ui": {
             "play_to_reveal": "プレイして確認",
@@ -424,13 +412,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "ボード32個、キーボード1つ、推測37回。",
             "mode_semantic_desc": "意味の空間を探索。推測10回。",
             "mode_custom_desc": "単語を選んでリンクを共有。友達に挑戦。",
-            "mode_party_desc": "友達と同じ単語でプレイ。誰が一番速く解けるか勝負。"
-        }
+            "mode_party_desc": "友達と同じ単語でプレイ。誰が一番速く解けるか勝負。",
+        },
     },
     "el": {
-        "text": {
-            "win_words": "Ιδιοφυές,Εκπληκτικό,Εντυπωσιακό,Υπέροχο,Μπράβο,Φιου"
-        },
+        "text": {"win_words": "Ιδιοφυές,Εκπληκτικό,Εντυπωσιακό,Υπέροχο,Μπράβο,Φιου"},
         "help": {
             "speed_how_it_works": "Πώς λειτουργεί",
             "speed_explanation": "Ξεκινάτε με 5 λεπτά στο ρολόι. Λύστε λέξεις για να κερδίσετε χρόνο μπόνους. Μια αποτυχημένη λέξη σας κοστίζει 30 δευτερόλεπτα.",
@@ -439,7 +425,7 @@ TRANSLATIONS = {
             "speed_scoring": "Βαθμολογία",
             "speed_scoring_explanation": "Πόντοι = (7 − προσπάθειες) × 100 × πολλαπλασιαστής combo. Διαδοχικές λύσεις χτίζουν combo έως 3x. Μια αποτυχία μηδενίζει το combo.",
             "speed_pressure": "Αύξηση πίεσης",
-            "speed_pressure_explanation": "Κάθε 3 λυμένες λέξεις, ο χρονομετρητής επιταχύνει. Όσο περισσότερο επιβιώνετε, τόσο δυσκολεύει."
+            "speed_pressure_explanation": "Κάθε 3 λυμένες λέξεις, ο χρονομετρητής επιταχύνει. Όσο περισσότερο επιβιώνετε, τόσο δυσκολεύει.",
         },
         "ui": {
             "play_to_reveal": "Παίξτε για αποκάλυψη",
@@ -494,13 +480,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 πίνακες, 1 πληκτρολόγιο, 37 προσπάθειες.",
             "mode_semantic_desc": "Πλοηγηθείτε στον χώρο σημασίας. 10 προσπάθειες.",
             "mode_custom_desc": "Διαλέξτε λέξη, μοιραστείτε σύνδεσμο. Προκαλέστε τους φίλους σας.",
-            "mode_party_desc": "Παίξτε την ίδια λέξη με φίλους. Δείτε ποιος τη λύνει πιο γρήγορα."
-        }
+            "mode_party_desc": "Παίξτε την ίδια λέξη με φίλους. Δείτε ποιος τη λύνει πιο γρήγορα.",
+        },
     },
     "cs": {
-        "text": {
-            "win_words": "Génius,Skvělé,Úžasné,Výborné,Dobře,Fuj"
-        },
+        "text": {"win_words": "Génius,Skvělé,Úžasné,Výborné,Dobře,Fuj"},
         "help": {
             "speed_how_it_works": "Jak to funguje",
             "speed_explanation": "Začínáte s 5 minutami na hodinách. Řešte slova a získávejte bonusový čas. Za neúspěšné slovo přijdete o 30 sekund.",
@@ -509,7 +493,7 @@ TRANSLATIONS = {
             "speed_scoring": "Bodování",
             "speed_scoring_explanation": "Body = (7 − pokusy) × 100 × násobič komba. Po sobě jdoucí řešení budují kombo až do 3x. Neúspěšné slovo kombo resetuje.",
             "speed_pressure": "Stoupající tlak",
-            "speed_pressure_explanation": "Každá 3 vyřešená slova zrychlí časovač. Čím déle vydržíte, tím je to těžší."
+            "speed_pressure_explanation": "Každá 3 vyřešená slova zrychlí časovač. Čím déle vydržíte, tím je to těžší.",
         },
         "ui": {
             "play_to_reveal": "Hrajte a odhalte",
@@ -564,13 +548,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 desek, 1 klávesnice, 37 pokusů.",
             "mode_semantic_desc": "Navigujte v prostoru významů. 10 pokusů.",
             "mode_custom_desc": "Vyberte slovo, sdílejte odkaz. Vyzvěte své přátele.",
-            "mode_party_desc": "Hrajte stejné slovo s přáteli. Zjistěte, kdo ho vyřeší nejrychleji."
-        }
+            "mode_party_desc": "Hrajte stejné slovo s přáteli. Zjistěte, kdo ho vyřeší nejrychleji.",
+        },
     },
     "bg": {
-        "text": {
-            "win_words": "Гениално,Великолепно,Впечатляващо,Чудесно,Браво,Уф"
-        },
+        "text": {"win_words": "Гениално,Великолепно,Впечатляващо,Чудесно,Браво,Уф"},
         "help": {
             "speed_how_it_works": "Как работи",
             "speed_explanation": "Започвате с 5 минути на часовника. Решавайте думи, за да печелите бонус време. Неуспешна дума ви струва 30 секунди.",
@@ -579,7 +561,7 @@ TRANSLATIONS = {
             "speed_scoring": "Точкуване",
             "speed_scoring_explanation": "Точки = (7 − опити) × 100 × комбо множител. Последователните решения увеличават комбото до 3x. Неуспех нулира комбото.",
             "speed_pressure": "Нарастващ натиск",
-            "speed_pressure_explanation": "На всеки 3 решени думи таймерът ускорява. Колкото по-дълго издържите, толкова по-трудно става."
+            "speed_pressure_explanation": "На всеки 3 решени думи таймерът ускорява. Колкото по-дълго издържите, толкова по-трудно става.",
         },
         "ui": {
             "play_to_reveal": "Играйте, за да разкриете",
@@ -634,13 +616,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 дъски, 1 клавиатура, 37 опита.",
             "mode_semantic_desc": "Навигирайте в пространството на значенията. 10 опита.",
             "mode_custom_desc": "Изберете дума, споделете линк. Предизвикайте приятелите си.",
-            "mode_party_desc": "Играйте същата дума с приятели. Вижте кой я решава най-бързо."
-        }
+            "mode_party_desc": "Играйте същата дума с приятели. Вижте кой я решава най-бързо.",
+        },
     },
     "da": {
-        "text": {
-            "win_words": "Genialt,Storslået,Imponerende,Flot,Godt,Pyh"
-        },
+        "text": {"win_words": "Genialt,Storslået,Imponerende,Flot,Godt,Pyh"},
         "help": {
             "speed_how_it_works": "Sådan fungerer det",
             "speed_explanation": "Du starter med 5 minutter på uret. Løs ord for at tjene bonustid. Et mislykket ord koster dig 30 sekunder.",
@@ -649,7 +629,7 @@ TRANSLATIONS = {
             "speed_scoring": "Pointberegning",
             "speed_scoring_explanation": "Point = (7 − gæt) × 100 × combo-multiplikator. Løsninger i træk bygger combo op til 3x. Et mislykket ord nulstiller comboen.",
             "speed_pressure": "Stigende pres",
-            "speed_pressure_explanation": "For hvert tredje løste ord stiger timerhastigheden. Jo længere du overlever, jo sværere bliver det."
+            "speed_pressure_explanation": "For hvert tredje løste ord stiger timerhastigheden. Jo længere du overlever, jo sværere bliver det.",
         },
         "ui": {
             "play_to_reveal": "Spil for at afsløre",
@@ -704,13 +684,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 tavler, 1 tastatur, 37 gæt.",
             "mode_semantic_desc": "Navigér i betydningsrummet. 10 gæt.",
             "mode_custom_desc": "Vælg et ord, del et link. Udfordr dine venner.",
-            "mode_party_desc": "Spil det samme ord med venner. Se hvem der løser det hurtigst."
-        }
+            "mode_party_desc": "Spil det samme ord med venner. Se hvem der løser det hurtigst.",
+        },
     },
     "hr": {
-        "text": {
-            "win_words": "Genijalno,Veličanstveno,Impresivno,Sjajno,Bravo,Uf"
-        },
+        "text": {"win_words": "Genijalno,Veličanstveno,Impresivno,Sjajno,Bravo,Uf"},
         "help": {
             "speed_how_it_works": "Kako funkcionira",
             "speed_explanation": "Počinjete s 5 minuta na satu. Rješavajte riječi za bonus vrijeme. Neuspješna riječ košta 30 sekundi.",
@@ -719,7 +697,7 @@ TRANSLATIONS = {
             "speed_scoring": "Bodovanje",
             "speed_scoring_explanation": "Bodovi = (7 − pokušaji) × 100 × combo množitelj. Uzastopna rješenja grade combo do 3x. Neuspjeh resetira combo.",
             "speed_pressure": "Rastući pritisak",
-            "speed_pressure_explanation": "Svake 3 riješene riječi tajmer ubrzava. Što duže izdržite, to je teže."
+            "speed_pressure_explanation": "Svake 3 riješene riječi tajmer ubrzava. Što duže izdržite, to je teže.",
         },
         "ui": {
             "play_to_reveal": "Igrajte za otkrivanje",
@@ -774,13 +752,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 ploče, 1 tipkovnica, 37 pokušaja.",
             "mode_semantic_desc": "Navigirajte prostorom značenja. 10 pokušaja.",
             "mode_custom_desc": "Odaberite riječ, podijelite link. Izazovite prijatelje.",
-            "mode_party_desc": "Igrajte istu riječ s prijateljima. Vidite tko je najbrži."
-        }
+            "mode_party_desc": "Igrajte istu riječ s prijateljima. Vidite tko je najbrži.",
+        },
     },
     "hu": {
-        "text": {
-            "win_words": "Zseniális,Lenyűgöző,Impozáns,Remek,Szép,Hűha"
-        },
+        "text": {"win_words": "Zseniális,Lenyűgöző,Impozáns,Remek,Szép,Hűha"},
         "help": {
             "speed_how_it_works": "Hogyan működik",
             "speed_explanation": "5 perccel indulsz. Oldj meg szavakat, hogy bónuszidőt kapj. Egy sikertelen szó 30 másodpercbe kerül.",
@@ -789,7 +765,7 @@ TRANSLATIONS = {
             "speed_scoring": "Pontozás",
             "speed_scoring_explanation": "Pontok = (7 − tippek) × 100 × kombó szorzó. Az egymást követő megoldások kombót építenek 3x-ig. Sikertelen szó nullázza a kombót.",
             "speed_pressure": "Növekvő nyomás",
-            "speed_pressure_explanation": "Minden 3. megoldott szónál gyorsul az időzítő. Minél tovább bírod, annál nehezebb lesz."
+            "speed_pressure_explanation": "Minden 3. megoldott szónál gyorsul az időzítő. Minél tovább bírod, annál nehezebb lesz.",
         },
         "ui": {
             "play_to_reveal": "Játssz a felfedéshez",
@@ -844,13 +820,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 tábla, 1 billentyűzet, 37 tipp.",
             "mode_semantic_desc": "Navigálj a jelentéstérben. 10 tipp.",
             "mode_custom_desc": "Válassz szót, oszd meg a linket. Hívd ki a barátaidat.",
-            "mode_party_desc": "Játsszatok ugyanazzal a szóval. Nézzétek, ki oldja meg a leggyorsabban."
-        }
+            "mode_party_desc": "Játsszatok ugyanazzal a szóval. Nézzétek, ki oldja meg a leggyorsabban.",
+        },
     },
     "ru": {
-        "text": {
-            "win_words": "Гениально,Великолепно,Впечатляюще,Отлично,Хорошо,Уф"
-        },
+        "text": {"win_words": "Гениально,Великолепно,Впечатляюще,Отлично,Хорошо,Уф"},
         "help": {
             "speed_how_it_works": "Как это работает",
             "speed_explanation": "Вы начинаете с 5 минутами на часах. Решайте слова, чтобы заработать бонусное время. За неудачное слово вы теряете 30 секунд.",
@@ -859,7 +833,7 @@ TRANSLATIONS = {
             "speed_scoring": "Подсчёт очков",
             "speed_scoring_explanation": "Очки = (7 − попытки) × 100 × множитель комбо. Последовательные решения увеличивают комбо до 3x. Неудача сбрасывает комбо.",
             "speed_pressure": "Рост давления",
-            "speed_pressure_explanation": "Каждые 3 решённых слова таймер ускоряется. Чем дольше продержитесь, тем сложнее становится."
+            "speed_pressure_explanation": "Каждые 3 решённых слова таймер ускоряется. Чем дольше продержитесь, тем сложнее становится.",
         },
         "ui": {
             "play_to_reveal": "Сыграйте, чтобы узнать",
@@ -914,13 +888,11 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 доски, 1 клавиатура, 37 попыток.",
             "mode_semantic_desc": "Навигация в пространстве значений. 10 попыток.",
             "mode_custom_desc": "Выберите слово, поделитесь ссылкой. Бросьте вызов друзьям.",
-            "mode_party_desc": "Играйте одно слово с друзьями. Узнайте, кто решит быстрее."
-        }
+            "mode_party_desc": "Играйте одно слово с друзьями. Узнайте, кто решит быстрее.",
+        },
     },
     "sv": {
-        "text": {
-            "win_words": "Genialt,Magnifikt,Imponerande,Utmärkt,Bra,Puh"
-        },
+        "text": {"win_words": "Genialt,Magnifikt,Imponerande,Utmärkt,Bra,Puh"},
         "help": {
             "speed_how_it_works": "Så fungerar det",
             "speed_explanation": "Du börjar med 5 minuter på klockan. Lös ord för att tjäna bonustid. Ett misslyckat ord kostar dig 30 sekunder.",
@@ -929,7 +901,7 @@ TRANSLATIONS = {
             "speed_scoring": "Poängberäkning",
             "speed_scoring_explanation": "Poäng = (7 − gissningar) × 100 × combo-multiplikator. Lösningar i rad bygger combo upp till 3x. Ett misslyckat ord nollställer combon.",
             "speed_pressure": "Ökande press",
-            "speed_pressure_explanation": "Var tredje löst ord ökar timerhastigheten. Ju längre du överlever, desto svårare blir det."
+            "speed_pressure_explanation": "Var tredje löst ord ökar timerhastigheten. Ju längre du överlever, desto svårare blir det.",
         },
         "ui": {
             "play_to_reveal": "Spela för att avslöja",
@@ -984,8 +956,8 @@ TRANSLATIONS = {
             "mode_duotrigordle_desc": "32 brädor, 1 tangentbord, 37 gissningar.",
             "mode_semantic_desc": "Navigera i betydelserymden. 10 gissningar.",
             "mode_custom_desc": "Välj ett ord, dela en länk. Utmana dina vänner.",
-            "mode_party_desc": "Spela samma ord med vänner. Se vem som löser det snabbast."
-        }
+            "mode_party_desc": "Spela samma ord med vänner. Se vem som löser det snabbast.",
+        },
     },
 }
 

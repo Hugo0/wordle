@@ -295,7 +295,15 @@ def gen_octordle(draw, img, tagline, is_rtl, lang_code):
         col, row = i % 4, i // 4
         dx = (col - 1.5) * spacing_x
         dy = (row - 0.5) * spacing_y
-        draw_board(draw, int(W // 2 + dx), int(cy + dy), rows=6, tile_size=ts, gap=gap, solved_row=solved_rows[i])
+        draw_board(
+            draw,
+            int(W // 2 + dx),
+            int(cy + dy),
+            rows=6,
+            tile_size=ts,
+            gap=gap,
+            solved_row=solved_rows[i],
+        )
 
 
 def gen_sedecordle(draw, img, tagline, is_rtl, lang_code):
@@ -308,7 +316,15 @@ def gen_sedecordle(draw, img, tagline, is_rtl, lang_code):
         col, row = i % 4, i // 4
         dx = (col - 1.5) * spacing_x
         dy = (row - 1.5) * spacing_y
-        draw_board(draw, int(W // 2 + dx), int(cy + dy), rows=3, tile_size=ts, gap=gap, solved_row=solved_rows[i])
+        draw_board(
+            draw,
+            int(W // 2 + dx),
+            int(cy + dy),
+            rows=3,
+            tile_size=ts,
+            gap=gap,
+            solved_row=solved_rows[i],
+        )
 
 
 def gen_duotrigordle(draw, img, tagline, is_rtl, lang_code):
@@ -316,13 +332,53 @@ def gen_duotrigordle(draw, img, tagline, is_rtl, lang_code):
     cy = 340
     ts, gap = 8, 2
     spacing_x, spacing_y = 72, 55
-    solved_rows = [2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2,
-                   2, 1, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1]
+    solved_rows = [
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+    ]
     for i in range(32):
         col, row = i % 8, i // 8
         dx = (col - 3.5) * spacing_x
         dy = (row - 1.5) * spacing_y
-        draw_board(draw, int(W // 2 + dx), int(cy + dy), rows=3, tile_size=ts, gap=gap, solved_row=solved_rows[i])
+        draw_board(
+            draw,
+            int(W // 2 + dx),
+            int(cy + dy),
+            rows=3,
+            tile_size=ts,
+            gap=gap,
+            solved_row=solved_rows[i],
+        )
 
 
 def draw_centered_at(draw, text, cx, cy, f, fill):

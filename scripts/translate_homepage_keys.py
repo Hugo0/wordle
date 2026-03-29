@@ -262,7 +262,7 @@ def main():
             json.dump(config, f, ensure_ascii=False, indent=4)
             f.write("\n")
 
-        print(f"{lang}: homepage_tagline = \"{config['ui']['homepage_tagline']}\"")
+        print(f'{lang}: homepage_tagline = "{config["ui"]["homepage_tagline"]}"')
 
     print(f"\nDone! Updated {len(TRANSLATIONS)} languages.")
 
