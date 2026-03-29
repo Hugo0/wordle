@@ -56,7 +56,8 @@
         "copied": "Nukopijuota!",
         "notification_word_not_valid": "Žodis negalioja",
         "hard_mode_position": "Sunkus režimas: {letter} turi būti {position} pozicijoje",
-        "hard_mode_contains": "Sunkus režimas: spėjime turi būti raidė {letter}"
+        "hard_mode_contains": "Sunkus režimas: spėjime turi būti raidė {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -72,7 +73,120 @@
         "text_2_1": "yra žodyje ir teisingoje vietoje!",
         "text_2_2": "yra žodyje, bet ne teisingoje vietoje.",
         "text_2_3": "nėra žodžio, kurį bandote atspėti.",
-        "text_3": "Kiekvieną dieną bus prieinamas naujas žodis!"
+        "text_3": "Kiekvieną dieną bus prieinamas naujas žodis!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
+    },
+    "seo": {
+        "how_to_play": "Kaip žaisti",
+        "tips_strategy": "Patarimai ir strategija",
+        "more_modes": "Daugiau žaidimo režimų",
+        "play_in_languages": "Žaiskite 80+ kalbomis",
+        "play_in_languages_sub": "Visos kalbos nemokamos. Paskyros nereikia.",
+        "why_wordle_global": "Kodėl Wordle Global",
+        "faq_title": "Dažnai užduodami klausimai",
+        "browse_all_languages": "Naršykite visas 80+ kalbas",
+        "recent_words": "Paskutiniai žodžiai",
+        "view_all_words": "Peržiūrėti visus žodžius",
+        "footer": "wordle.global — nemokamas kasdieninis žodžių žaidimas 80+ kalbomis",
+        "tile_correct": "yra žodyje ir teisingoje vietoje.",
+        "tile_semicorrect": "yra žodyje, bet neteisingoje vietoje.",
+        "tile_incorrect": "žodyje visai nėra.",
+        "stat_players": "Žaidėjai",
+        "stat_guesses": "Spėjimai",
+        "stat_languages": "Kalbos",
+        "stat_modes": "Žaidimo režimai",
+        "value_props": [
+            { "key": "languages", "title": "80+ kalbų", "desc": "Nuo arabų iki jorubų. Didžiausias daugiakalbis Wordle." },
+            { "key": "definitions", "title": "Žodžių apibrėžimai", "desc": "Po žaidimo sužinokite kiekvieno žodžio reikšmę. Plėskite žodyną." },
+            { "key": "word_art", "title": "Unikali žodžių grafika", "desc": "Kiekvienas žodis turi savo iliustraciją. Surinkite visas." },
+            { "key": "themes", "title": "Tamsusis režimas ir temos", "desc": "Šviesus, tamsus ir didelio kontrasto režimai patogiam žaidimui." },
+            { "key": "pwa", "title": "Veikia visur", "desc": "PWA — įdiekite bet kuriame įrenginyje. Veikia be interneto. Atsisiuntimo nereikia." },
+            { "key": "free", "title": "Amžinai nemokama", "desc": "Paskyros nereikia. Be mokamo turinio. Tiesiog žaiskite." }
+        ],
+        "tips": [
+            { "title": "Pradėkite žodžiu su daug balsių", "text": "Žodžiai kaip CRANE, STARE ar ADIEU greitai patikrina dažnas raides. Žinojimas, kurios balsės yra, sparčiai susiaurina variantus." },
+            { "title": "Naudokite tai, ką žinote", "text": "Žalios raidės lieka vietoje. Geltonos turi persislinkti. Pilkos yra pašalintos. Kiekvienas spėjimas turėtų naudoti visas tris užuominas." },
+            { "title": "Galvokite apie dažnus šablonus", "text": "Angliški žodžiai dažnai baigiasi -TION, -IGHT, -OUND, -MENT. Kitos kalbos turi savus šablonus — išmokite juos." },
+            { "title": "Šalinkite, nespėliokite atsitiktinai", "text": "Antras žodis turėtų tikrinti naujas raides, ne kartoti patvirtintų. Apimkite kuo daugiau nepatikrintų priebalsių." },
+            { "title": "Stebėkite dvigubas raides", "text": "Žodžiai kaip CREEK, FLOSS ar APPLE yra dažnos spąstos. Jei užuominos nesutampa, pagalvokite apie pasikartojančią raidę." },
+            { "title": "Naudokite sunkųjį režimą tobulėjimui", "text": "Sunkusis režimas verčia naudoti patvirtintas užuominas kiekviename spėjime. Tai ugdo geresnius įpročius." }
+        ],
+        "tips_speed": [
+            { "title": "Pradėkite nuo CRANE arba STARE", "text": "Dažnos raidės suteikia geriausią galimybę greitai išspręsti. Kiekviena sekundė svarbi." },
+            { "title": "Per daug negalvokite", "text": "Speed Streak apdovanoja nuojautą. Jei matote tikėtiną žodį, bandykite — kombo bonusas pranoksta tobulą sprendimą." },
+            { "title": "Saugokite savo kombo", "text": "Nepavykęs žodis nutraukia daugiklį. Kai nesate tikri, naudokite saugų spėjimą papildomoms užuominoms gauti." },
+            { "title": "Taikykite į 2–3 spėjimų sprendimą", "text": "Laiko bonusas didžiulis greitiems sprendimams (+60s už 1 spėjimą, +30s už 2). Rizikingas antras spėjimas gali labai atsipirkti." },
+            { "title": "Išmokite dažnas žodžių galūnes", "text": "Šablonai kaip -IGHT, -OUND, -ATCH dažnai kartojasi. Momentinis jų atpažinimas taupo sekundes prie kiekvieno žodžio." },
+            { "title": "Likite ramūs, kai spaudimas didėja", "text": "Laikmatis greitėja kas 3 žodžius. Skubėjimas veda prie klaidų ir blogų spėjimų. Stabilus tempas nugali paniką." }
+        ],
+        "tips_multiboard": [
+            { "title": "Pradėkite plačiai", "text": "Naudokite žodžius su dažnomis raidėmis (CRANE, STARE), kad surinktumėte užuominas visose lentose vienu metu." },
+            { "title": "Stebėkite padalintą klaviatūrą", "text": "Klaviatūra rodo spalvas kiekvienai lentai. Raidė, žalia vienoje lentoje, bet pilka kitoje, sparčiai susiaurina variantus." },
+            { "title": "Pirmenybę teikite sunkiausioms lentoms", "text": "Spėjimus nukreipkite į lentą su daugiausiai nežinomųjų. Lengvesnės lentos dažnai išsisprendžia pačios." },
+            { "title": "Nešvaistykite ankstyvų spėjimų", "text": "Pirmus 2–3 spėjimus skirkite informacijai turtingiems žodžiams, kol pradėsite taikyti į konkrečias lentas." },
+            { "title": "Ieškokite bendrų raidžių", "text": "Jei dvi lentos rodo geltoną E, žodis su E naujoje pozicijoje padeda abiem lentoms vienu metu." },
+            { "title": "Pasilikite spėjimą atsarginiam atvejui", "text": "Jei esate įstrigę prie paskutinės lentos, atsarginis spėjimas yra skirtumas tarp pergalės ir pralaimėjimo." }
+        ],
+        "mode_desc_classic": "Turite 6 bandymus atspėti paslėptą 5 raidžių žodį. Naudokite spalvų užuominas atsakymui susiaurinti.",
+        "mode_desc_unlimited": "Turite 6 bandymus atspėti paslėptą 5 raidžių žodį. Naudokite spalvų užuominas atsakymui susiaurinti. Po kiekvieno žaidimo spauskite \\\"Žaisti vėl\\\" naujam žodžiui gauti iš karto — be jokio limito.",
+        "mode_desc_speed": "Pradedate su 3 minutėmis laikmatyje. Kiekvienas išspręstas žodis suteikia papildomo laiko — mažiau spėjimų, didesnis bonusas (+60s už 1 spėjimą, +10s už 6). Nepavykę žodžiai kainuoja 30 sekundžių. Kurkite kombo spręsdami žodžius iš eilės — daugiklis iki 3x. Spaudimas didėja sprendžiant daugiau žodžių — laikmatis greitėja kas 3 žodžius.",
+        "mode_desc_multiboard": "{modeName} meta iššūkį vienu metu išspręsti {boardCount} Wordle lentų vos per {maxGuesses} spėjimų. Kiekvienas spėjimas pasirodo visose neišspręstose lentose vienu metu. Išspręstos lentos užšąla. Padalintų spalvų klaviatūra rodo, kurios raidės teisingos kuriose lentose. Pradėkite žodžiais su dažnomis raidėmis, kad surinktumėte užuominas visose lentose vienu metu.",
+        "faq": [
+            { "q": "Kaip žaisti Wordle {langName} kalba?", "a": "Apsilankykite wordle.global/{lang}, kad žaistumėte kasdienį Wordle {langName} kalba. Turite 6 bandymus atspėti 5 raidžių žodį. Po kiekvieno spėjimo plytelės tampa žalios (teisinga raidė, teisinga vieta), geltonos (teisinga raidė, neteisinga vieta) arba pilkos (raidės žodyje nėra)." },
+            { "q": "Ar kasdien yra nauja mįslė?", "a": "Taip. Kasdien parenkamas naujas žodis. Visi, žaidžiantys ta pačia kalba, gauna tą patį žodį, todėl galite palyginti rezultatus su draugais." },
+            { "q": "Ar Wordle Global yra nemokamas?", "a": "Taip. Kasdienis galvosūkis, neriboto režimo ir visi žaidimo režimai yra visiškai nemokami visomis 80+ kalbomis. Paskyros ar atsisiuntimo nereikia." },
+            { "q": "Ar galiu žaisti daugiau nei kartą per dieną?", "a": "Taip — išbandykite neribotą režimą wordle.global/{lang}/unlimited nesibaigiančioms partijoms be laukimo. Jūsų kasdienė serija skaičiuojama atskirai." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Kas yra Wordle Unlimited {langName} kalba?", "a": "Wordle Unlimited leidžia žaisti tiek Wordle žaidimų, kiek norite, {langName} kalba, nelaukiant rytojaus mįslės. Kiekviename žaidime gausite naują atsitiktinį žodį atspėti per 6 bandymus." },
+                { "q": "Ar Wordle Unlimited nemokamas?", "a": "Taip. Wordle Unlimited yra visiškai nemokamas. Be paskyros, be atsisiuntimo, be reklamų žaidimo metu." },
+                { "q": "Ar neribotas režimas įskaičiuojamas į mano kasdienę seriją?", "a": "Ne. Neriboto režimo statistika yra atskira. Jūsų kasdienę seriją veikia tik kasdienė mįslė." },
+                { "q": "Kiek kartų galiu žaisti?", "a": "Ribos nėra. Galite žaisti tiek raundų, kiek norite. Po kiekvieno žaidimo spauskite \\\"Žaisti vėl\\\" naujam žodžiui gauti iš karto." },
+                { "q": "Kokiomis kalbomis galiu žaisti Wordle Unlimited?", "a": "Wordle Unlimited prieinamas daugiau nei 80 kalbomis wordle.global, įskaitant anglų, ispanų, vokiečių, suomių, arabų, prancūzų, italų, portugalų ir daugelį kitų." }
+            ],
+            "speed": [
+                { "q": "Kas yra Speed Streak {langName} kalba?", "a": "Speed Streak yra Wordle režimas su laiku {langName} kalba. Pradedate su 3 minutėmis ir sprendžiate kuo daugiau žodžių. Greitas sprendimas suteikia papildomo laiko." },
+                { "q": "Kaip veikia taškų skaičiavimas?", "a": "Už kiekvieną išspręstą žodį gaunate taškų. Mažiau spėjimų ir greitesnis sprendimas duoda daugiau taškų. Kurkite kombo spręsdami žodžius iš eilės — daugiklis iki 3x." },
+                { "q": "Kas nutinka pasibaigus laikui?", "a": "Žaidimas baigiasi ir matote galutinį rezultatą, išspręstų žodžių skaičių, didžiausią kombo ir vidutinį spėjimų skaičių. Galite iš karto žaisti dar kartą." },
+                { "q": "Ar Speed Streak nemokamas?", "a": "Taip. Speed Streak yra visiškai nemokamas visomis 80+ kalbomis. Paskyros ar atsisiuntimo nereikia." }
+            ],
+            "multiboard": [
+                { "q": "Kas yra {modeName} {langName} kalba?", "a": "{modeName} yra daugiaplokštė Wordle versija {langName} kalba. Vienu metu sprendžiate {boardCount} Wordle lentas per {maxGuesses} spėjimų. Kiekvienas spėjimas įvedamas visose neišspręstose lentose vienu metu." },
+                { "q": "Kiek spėjimų turiu {modeName}?", "a": "Turite {maxGuesses} spėjimų visoms {boardCount} lentoms išspręsti. Kai lenta išspręsta, ji užšąla ir galite sutelkti dėmesį į likusias." },
+                { "q": "Kokia strategija geriausiai tinka {modeName}?", "a": "Pradėkite žodžiais su dažnomis raidėmis, kad surinktumėte informaciją visose {boardCount} lentose vienu metu. Stebėkite padalintų spalvų klaviatūrą — ji rodo, kurios raidės teisingos kuriose lentose." },
+                { "q": "Ar {modeName} nemokamas?", "a": "Taip. {modeName} yra visiškai nemokamas visomis 80+ kalbomis. Paskyros ar atsisiuntimo nereikia. Žaiskite tiek raundų, kiek norite." }
+            ]
+        },
+        "howto": [
+            { "name": "Įveskite žodį", "text": "Įveskite tinkamą 5 raidžių žodį {langName} kalba naudodami ekraninę arba fizinę klaviatūrą, tada spauskite Enter." },
+            { "name": "Perskaitykite užuominas", "text": "Žalios plytelės reiškia, kad raidė teisinga ir teisingoje vietoje. Geltonos — raidė yra žodyje, bet neteisingoje vietoje. Pilkos — raidės žodyje nėra." },
+            { "name": "Išspręskite per 6 bandymus", "text": "Naudokite spalvų užuominas žodžiui susiaurinti. Turite 6 spėjimus. Po mįslės peržiūrėkite statistiką ir pasidalinkite rezultatu." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Pradėkite žaidimą", "text": "Apsilankykite wordle.global/{lang}/unlimited, kad pradėtumėte Wordle Unlimited {langName} kalba. Jums parenkamas atsitiktinis 5 raidžių žodis." },
+                { "name": "Atspėkite žodį", "text": "Įveskite tinkamą 5 raidžių žodį ir spauskite Enter. Žalios plytelės — teisinga raidė teisingoje vietoje. Geltonos — teisinga raidė neteisingoje vietoje. Pilkos — raidės žodyje nėra." },
+                { "name": "Žaiskite iš naujo iš karto", "text": "Išsprendę žodį (arba panaudoję visus 6 spėjimus), spauskite \\\"Žaisti vėl\\\" naujam žodžiui gauti. Nereikia laukti rytojaus." }
+            ],
+            "speed": [
+                { "name": "Paleiskite laikmatį", "text": "Apsilankykite wordle.global/{lang}/speed ir spauskite Pradėti. Pradedate su 3 minutėmis laikmatyje." },
+                { "name": "Greitai spręskite žodžius", "text": "Kiekvienas išspręstas žodis suteikia papildomo laiko (+10s iki +60s, priklausomai nuo spėjimų skaičiaus). Nepavykę žodžiai kainuoja 30 sekundžių." },
+                { "name": "Kurkite kombo", "text": "Spręskite žodžius iš eilės, kad kurtumėte kombo daugiklį (iki 3x). Kombo nutrūksta nepavykus žodžiui. Pabandykite pagerinti savo rekordą." }
+            ],
+            "multiboard": [
+                { "name": "Pradėkite žaidimą", "text": "Apsilankykite wordle.global/{lang}/{modeName}, kad žaistumėte {modeName} {langName} kalba. Pasirodo {boardCount} lentos su skirtingais paslėptais žodžiais." },
+                { "name": "Spėkite visose lentose", "text": "Įveskite 5 raidžių žodį ir spauskite Enter. Jūsų spėjimas pasirodo visose {boardCount} lentose vienu metu. Kiekviena lenta rodo savo spalvų užuominas (žalia, geltona, pilka)." },
+                { "name": "Išspręskite visas {boardCount} lentas", "text": "Išspręstos lentos užšąla vietoje. Naudokite padalintų spalvų klaviatūrą, kad stebėtumėte, kurios raidės veikia kuriose lentose. Išspręskite visas {boardCount} per {maxGuesses} spėjimų, kad laimėtumėte." }
+            ]
+        }
     },
     "ui": {
         "settings": "Nustatymai",
@@ -157,6 +271,59 @@
         "pos_verb": "veiksmažodis",
         "pos_adjective": "būdvardis",
         "pos_adverb": "prieveiksmis",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
     }
 }

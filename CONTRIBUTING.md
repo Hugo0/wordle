@@ -145,7 +145,6 @@ All SEO content (FAQ, HowTo, tips, value props, section headings) lives in the `
 
 - Link the issue in your PR description (`Fixes #123`)
 - All tests must pass
-- One logical change per PR
 
 ## Do
 
@@ -153,12 +152,28 @@ All SEO content (FAQ, HowTo, tips, value props, section headings) lives in the `
 - Test both light and dark modes
 - Consider RTL languages (Hebrew, Arabic, Persian)
 - Keep bundle size small
+- **Test direct navigation**, not just SPA clicks. Pages like `/en/word/123` and `/en/words` are reached via Google, bookmarks, and shared links — not just by clicking through the app. If a page depends on store state, verify it works when that store hasn't been initialized.
+- **Check what already exists** before building something new. Search `components/shared/` for reusable components (e.g., `BaseModal`), `composables/` for shared logic, and `utils/` for helpers. Don't hand-roll what's already available.
+- **Type API responses explicitly.** Don't use `any`, `Record<string, unknown>`, or untyped `let x = null`. Define interfaces for response shapes so downstream consumers get type safety.
+- **Clean up after yourself.** Remove dead code, remove unused imports, add `onUnmounted` cleanup for event listeners added in `onMounted`.
 
 ## Don't
 
 - Change the daily word algorithm — breaks word selection globally
 - Add console.logs to production code
 - Modify `.nuxt/` or `.output/` manually (auto-generated)
+- **Don't manipulate the DOM imperatively in Vue components.** No `$event.target.style.display`, no `classList.add/remove`, no `parentElement!.classList`. Use reactive state (`ref`, `reactive`, `computed`) and let Vue's template directives (`v-if`, `v-show`, `:class`) handle visibility. The only exception is third-party integrations (e.g., Giscus) that require direct DOM access.
+- **Don't copy-paste template blocks.** If you have similar markup in 2+ places, extract it into a component or use a computed to unify the data source. Three definition blocks that differ only in which variable they read is not DRY.
+- **Don't use `langStore` outside game pages.** The language store requires `init()` which only happens via `useGamePage()` on game routes. Standalone pages (`/[lang]/word/[id]`, `/[lang]/words`, etc.) must get UI labels from their own API response, not from the store. If a page needs translated strings, add `ui: config.ui` to the API endpoint's return value.
+
+## Multi-Agent Collaboration
+
+When multiple AI agents work on this repo concurrently, follow these rules:
+
+- Every agent **MUST** work in its own git worktree. Use `git worktree add` to create an isolated copy of the repo before making changes.
+- If an agent is not working in a worktree, it **MUST** be careful with other agents' code. Never stash, checkout, reset, or in any way modify or discard another agent's in-progress work without explicit permission.
+- Coordinate before touching shared files. If two agents need to edit the same file, one should finish and commit first.
+- Never force-push or rewrite history on a branch another agent is using.
 
 ## License Agreement
 

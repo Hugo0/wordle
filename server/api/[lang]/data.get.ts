@@ -25,9 +25,9 @@ export default defineEventHandler((event) => {
 
     const session = buildLanguageSession(lang, layout);
 
-    const response: Record<string, unknown> = {
+    const response = {
         word_list: session.wordList,
-        daily_words: data.dailyWords[lang] || [],
+        daily_words: data.dailyWords[lang] || ([] as string[]),
         characters: session.characters,
         config: session.config,
         todays_idx: session.todaysIdx,
@@ -37,6 +37,7 @@ export default defineEventHandler((event) => {
         keyboard_layouts: session.keyboardLayouts,
         keyboard_layout_name: session.keyboardLayoutName,
         key_diacritic_hints: session.keyDiacriticHints,
+        todays_words: undefined as string[] | undefined,
     };
 
     // Multi-board modes: return N distinct daily words

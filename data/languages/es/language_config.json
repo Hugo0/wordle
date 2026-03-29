@@ -74,7 +74,8 @@
         "notification_word_not_valid": "La palabra no es válida",
         "notification_partial_word": "Por favor ingrese una palabra completa",
         "hard_mode_position": "Modo difícil: {letter} debe estar en la posición {position}",
-        "hard_mode_contains": "Modo difícil: el intento debe contener {letter}"
+        "hard_mode_contains": "Modo difícil: el intento debe contener {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -90,7 +91,15 @@
         "text_2_1": "está en la palabra y en la ubicación correcta!",
         "text_2_2": "está en la palabra, pero no en la ubicación correcta.",
         "text_2_3": "no está presente en la palabra que está tratando de adivinar.",
-        "text_3": "¡Una nueva palabra estará disponible cada día!"
+        "text_3": "¡Una nueva palabra estará disponible cada día!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Ajustes",
@@ -175,7 +184,60 @@
         "pos_verb": "verbo",
         "pos_adjective": "adjetivo",
         "pos_adverb": "adverbio",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
     },
     "seo": {
         "how_to_play": "Cómo jugar",
@@ -195,42 +257,132 @@
         "stat_languages": "Idiomas",
         "stat_modes": "Modos de juego",
         "value_props": [
-            { "key": "languages", "title": "80+ idiomas", "desc": "Del árabe al yoruba. El Wordle multilingüe más grande del mundo." },
-            { "key": "definitions", "title": "Definiciones de palabras", "desc": "Aprende el significado de cada palabra después de jugar. Amplía tu vocabulario." },
-            { "key": "word_art", "title": "Ilustraciones únicas", "desc": "Cada palabra viene con una ilustración personalizada. Colecciónalas todas." },
-            { "key": "themes", "title": "Modo oscuro y temas", "desc": "Modos claro, oscuro y de alto contraste para jugar cómodamente." },
-            { "key": "pwa", "title": "Funciona en cualquier lugar", "desc": "PWA: instálalo en cualquier dispositivo. Funciona sin conexión. Sin descargas." },
-            { "key": "free", "title": "Gratis para siempre", "desc": "Sin cuenta. Sin muro de pago. Solo juega." }
+            {
+                "key": "languages",
+                "title": "80+ idiomas",
+                "desc": "Del árabe al yoruba. El Wordle multilingüe más grande del mundo."
+            },
+            {
+                "key": "definitions",
+                "title": "Definiciones de palabras",
+                "desc": "Aprende el significado de cada palabra después de jugar. Amplía tu vocabulario."
+            },
+            {
+                "key": "word_art",
+                "title": "Ilustraciones únicas",
+                "desc": "Cada palabra viene con una ilustración personalizada. Colecciónalas todas."
+            },
+            {
+                "key": "themes",
+                "title": "Modo oscuro y temas",
+                "desc": "Modos claro, oscuro y de alto contraste para jugar cómodamente."
+            },
+            {
+                "key": "pwa",
+                "title": "Funciona en cualquier lugar",
+                "desc": "PWA: instálalo en cualquier dispositivo. Funciona sin conexión. Sin descargas."
+            },
+            {
+                "key": "free",
+                "title": "Gratis para siempre",
+                "desc": "Sin cuenta. Sin muro de pago. Solo juega."
+            }
         ],
         "tips": [
-            { "title": "Empieza con una palabra rica en vocales", "text": "Palabras como CRANE, STARE o ADIEU prueban letras comunes rápidamente. Saber qué vocales están presentes reduce las opciones." },
-            { "title": "Usa lo que ya sabes", "text": "Las letras verdes están fijas. Las amarillas deben moverse. Las grises se eliminan. Cada intento debería aprovechar las tres pistas." },
-            { "title": "Piensa en patrones comunes", "text": "El español tiene sus propias terminaciones y combinaciones frecuentes — aprende a reconocerlas." },
-            { "title": "Elimina, no adivines al azar", "text": "Tu segundo intento debería probar letras nuevas, no repetir las ya confirmadas." },
-            { "title": "Cuidado con las letras dobles", "text": "Palabras como PERRA o CALLE son trampas comunes. Si las pistas no encajan, piensa en una letra repetida." },
-            { "title": "Usa el modo difícil para mejorar", "text": "El modo difícil te obliga a usar las pistas confirmadas en cada intento. Crea mejores hábitos de juego." }
+            {
+                "title": "Empieza con una palabra rica en vocales",
+                "text": "Palabras como CRANE, STARE o ADIEU prueban letras comunes rápidamente. Saber qué vocales están presentes reduce las opciones."
+            },
+            {
+                "title": "Usa lo que ya sabes",
+                "text": "Las letras verdes están fijas. Las amarillas deben moverse. Las grises se eliminan. Cada intento debería aprovechar las tres pistas."
+            },
+            {
+                "title": "Piensa en patrones comunes",
+                "text": "El español tiene sus propias terminaciones y combinaciones frecuentes — aprende a reconocerlas."
+            },
+            {
+                "title": "Elimina, no adivines al azar",
+                "text": "Tu segundo intento debería probar letras nuevas, no repetir las ya confirmadas."
+            },
+            {
+                "title": "Cuidado con las letras dobles",
+                "text": "Palabras como PERRA o CALLE son trampas comunes. Si las pistas no encajan, piensa en una letra repetida."
+            },
+            {
+                "title": "Usa el modo difícil para mejorar",
+                "text": "El modo difícil te obliga a usar las pistas confirmadas en cada intento. Crea mejores hábitos de juego."
+            }
         ],
         "tips_speed": [
-            { "title": "Empieza con letras frecuentes", "text": "Las letras más comunes te dan la mejor oportunidad de resolver rápido. Cada segundo cuenta." },
-            { "title": "No pienses demasiado", "text": "Speed Streak premia la intuición. Si ves una palabra probable, ve a por ella — el bonus de combo pesa más que la solución perfecta." },
-            { "title": "Protege tu combo", "text": "Una palabra fallida rompe el multiplicador. Cuando dudes, usa un intento seguro para obtener más pistas." },
-            { "title": "Apunta a resolver en 2-3 intentos", "text": "El bonus de tiempo es enorme en resoluciones rápidas (+60s con 1 intento, +30s con 2)." },
-            { "title": "Aprende las terminaciones comunes", "text": "Reconocer patrones que se repiten al instante te ahorra segundos en cada palabra." },
-            { "title": "Mantén la calma cuando suba la presión", "text": "El temporizador se acelera cada 3 palabras. Las prisas llevan a errores. Un ritmo constante supera al pánico." }
+            {
+                "title": "Empieza con letras frecuentes",
+                "text": "Las letras más comunes te dan la mejor oportunidad de resolver rápido. Cada segundo cuenta."
+            },
+            {
+                "title": "No pienses demasiado",
+                "text": "Speed Streak premia la intuición. Si ves una palabra probable, ve a por ella — el bonus de combo pesa más que la solución perfecta."
+            },
+            {
+                "title": "Protege tu combo",
+                "text": "Una palabra fallida rompe el multiplicador. Cuando dudes, usa un intento seguro para obtener más pistas."
+            },
+            {
+                "title": "Apunta a resolver en 2-3 intentos",
+                "text": "El bonus de tiempo es enorme en resoluciones rápidas (+60s con 1 intento, +30s con 2)."
+            },
+            {
+                "title": "Aprende las terminaciones comunes",
+                "text": "Reconocer patrones que se repiten al instante te ahorra segundos en cada palabra."
+            },
+            {
+                "title": "Mantén la calma cuando suba la presión",
+                "text": "El temporizador se acelera cada 3 palabras. Las prisas llevan a errores. Un ritmo constante supera al pánico."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Empieza amplio", "text": "Usa palabras con letras comunes para recopilar pistas en todos los tableros a la vez." },
-            { "title": "Observa el teclado dividido", "text": "El teclado muestra colores por tablero. Una letra verde en uno pero gris en otro reduce opciones rápidamente." },
-            { "title": "Prioriza los tableros difíciles", "text": "Centra tus intentos en el tablero con más incógnitas. Los tableros fáciles a menudo se resuelven solos." },
-            { "title": "No desperdicies los primeros intentos", "text": "Usa los 2-3 primeros intentos con palabras ricas en información antes de apuntar a tableros específicos." },
-            { "title": "Busca letras compartidas", "text": "Si dos tableros muestran una E amarilla, una palabra con E en otra posición ayuda a ambos." },
-            { "title": "Guarda un intento para emergencias", "text": "Si te quedas atascado en el último tablero, un intento extra es la diferencia entre ganar y perder." }
+            {
+                "title": "Empieza amplio",
+                "text": "Usa palabras con letras comunes para recopilar pistas en todos los tableros a la vez."
+            },
+            {
+                "title": "Observa el teclado dividido",
+                "text": "El teclado muestra colores por tablero. Una letra verde en uno pero gris en otro reduce opciones rápidamente."
+            },
+            {
+                "title": "Prioriza los tableros difíciles",
+                "text": "Centra tus intentos en el tablero con más incógnitas. Los tableros fáciles a menudo se resuelven solos."
+            },
+            {
+                "title": "No desperdicies los primeros intentos",
+                "text": "Usa los 2-3 primeros intentos con palabras ricas en información antes de apuntar a tableros específicos."
+            },
+            {
+                "title": "Busca letras compartidas",
+                "text": "Si dos tableros muestran una E amarilla, una palabra con E en otra posición ayuda a ambos."
+            },
+            {
+                "title": "Guarda un intento para emergencias",
+                "text": "Si te quedas atascado en el último tablero, un intento extra es la diferencia entre ganar y perder."
+            }
         ],
         "faq": [
-            { "q": "¿Cómo juego Wordle en {langName}?", "a": "Visita wordle.global/{lang} para jugar el Wordle diario en {langName}. Tienes 6 intentos para adivinar una palabra de 5 letras. Después de cada intento, las casillas cambian a verde (letra correcta, posición correcta), amarillo (letra correcta, posición incorrecta) o gris (la letra no está en la palabra)." },
-            { "q": "¿Hay un nuevo puzzle cada día?", "a": "Sí. Cada día se elige una nueva palabra. Todos los jugadores en el mismo idioma reciben la misma palabra, así puedes comparar resultados con amigos." },
-            { "q": "¿Es Wordle Global gratis?", "a": "Sí. El puzzle diario, el modo ilimitado y todos los modos de juego son completamente gratis en más de 80 idiomas. Sin cuenta ni descarga." },
-            { "q": "¿Puedo jugar más de una vez al día?", "a": "Sí — prueba el modo ilimitado en wordle.global/{lang}/unlimited para partidas sin fin ni esperas. Tu racha diaria se registra por separado." }
+            {
+                "q": "¿Cómo juego Wordle en {langName}?",
+                "a": "Visita wordle.global/{lang} para jugar el Wordle diario en {langName}. Tienes 6 intentos para adivinar una palabra de 5 letras. Después de cada intento, las casillas cambian a verde (letra correcta, posición correcta), amarillo (letra correcta, posición incorrecta) o gris (la letra no está en la palabra)."
+            },
+            {
+                "q": "¿Hay un nuevo puzzle cada día?",
+                "a": "Sí. Cada día se elige una nueva palabra. Todos los jugadores en el mismo idioma reciben la misma palabra, así puedes comparar resultados con amigos."
+            },
+            {
+                "q": "¿Es Wordle Global gratis?",
+                "a": "Sí. El puzzle diario, el modo ilimitado y todos los modos de juego son completamente gratis en más de 80 idiomas. Sin cuenta ni descarga."
+            },
+            {
+                "q": "¿Puedo jugar más de una vez al día?",
+                "a": "Sí — prueba el modo ilimitado en wordle.global/{lang}/unlimited para partidas sin fin ni esperas. Tu racha diaria se registra por separado."
+            }
         ],
         "mode_desc_classic": "Tienes 6 intentos para adivinar una palabra oculta de 5 letras. Usa las pistas de colores para acotar la respuesta.",
         "mode_desc_unlimited": "Tienes 6 intentos para adivinar una palabra oculta de 5 letras. Usa las pistas de colores para acotar la respuesta. Después de cada partida, pulsa \"Jugar de nuevo\" para obtener una nueva palabra al instante — sin límite diario.",
@@ -238,46 +390,123 @@
         "mode_desc_multiboard": "{modeName} te desafía a resolver {boardCount} tableros Wordle al mismo tiempo usando solo {maxGuesses} intentos. Cada intento aparece en todos los tableros sin resolver. Los tableros resueltos se congelan. El teclado dividido muestra qué letras son correctas en qué tableros. Empieza con palabras de letras comunes para recopilar pistas de todos los tableros a la vez.",
         "mode_faq": {
             "unlimited": [
-                { "q": "¿Qué es Wordle Unlimited en {langName}?", "a": "Wordle Unlimited te permite jugar tantas partidas de Wordle como quieras en {langName}, sin esperar al puzzle de mañana. Cada partida te da una nueva palabra aleatoria para adivinar en 6 intentos." },
-                { "q": "¿Es Wordle Unlimited gratis?", "a": "Sí. Wordle Unlimited es completamente gratis. Sin cuenta, sin descarga, sin anuncios durante el juego." },
-                { "q": "¿El modo ilimitado cuenta para mi racha diaria?", "a": "No. El modo ilimitado tiene sus propias estadísticas. Tu racha diaria solo depende del puzzle diario." },
-                { "q": "¿Cuántas veces puedo jugar?", "a": "Sin límite. Puedes jugar tantas rondas como quieras. Después de cada partida, pulsa \"Jugar de nuevo\" para obtener una nueva palabra al instante." },
-                { "q": "¿En qué idiomas puedo jugar Wordle Unlimited?", "a": "Wordle Unlimited está disponible en más de 80 idiomas en wordle.global, incluyendo español, inglés, alemán, finés, árabe, francés, italiano, portugués y muchos más." }
+                {
+                    "q": "¿Qué es Wordle Unlimited en {langName}?",
+                    "a": "Wordle Unlimited te permite jugar tantas partidas de Wordle como quieras en {langName}, sin esperar al puzzle de mañana. Cada partida te da una nueva palabra aleatoria para adivinar en 6 intentos."
+                },
+                {
+                    "q": "¿Es Wordle Unlimited gratis?",
+                    "a": "Sí. Wordle Unlimited es completamente gratis. Sin cuenta, sin descarga, sin anuncios durante el juego."
+                },
+                {
+                    "q": "¿El modo ilimitado cuenta para mi racha diaria?",
+                    "a": "No. El modo ilimitado tiene sus propias estadísticas. Tu racha diaria solo depende del puzzle diario."
+                },
+                {
+                    "q": "¿Cuántas veces puedo jugar?",
+                    "a": "Sin límite. Puedes jugar tantas rondas como quieras. Después de cada partida, pulsa \"Jugar de nuevo\" para obtener una nueva palabra al instante."
+                },
+                {
+                    "q": "¿En qué idiomas puedo jugar Wordle Unlimited?",
+                    "a": "Wordle Unlimited está disponible en más de 80 idiomas en wordle.global, incluyendo español, inglés, alemán, finés, árabe, francés, italiano, portugués y muchos más."
+                }
             ],
             "speed": [
-                { "q": "¿Qué es Speed Streak en {langName}?", "a": "Speed Streak es un modo de Wordle contrarreloj en {langName}. Empiezas con 3 minutos y resuelves tantas palabras como puedas. Resuelve rápido para ganar tiempo extra." },
-                { "q": "¿Cómo funciona la puntuación?", "a": "Ganas puntos por cada palabra resuelta. Menos intentos y resoluciones más rápidas dan más puntos. Construye un combo resolviendo palabras consecutivas — hasta un multiplicador de 3x." },
-                { "q": "¿Qué pasa cuando se acaba el tiempo?", "a": "La partida termina y ves tu puntuación final, palabras resueltas, mejor combo y media de intentos. Puedes volver a jugar de inmediato." },
-                { "q": "¿Es Speed Streak gratis?", "a": "Sí. Speed Streak es completamente gratis en los más de 80 idiomas. Sin cuenta ni descarga." }
+                {
+                    "q": "¿Qué es Speed Streak en {langName}?",
+                    "a": "Speed Streak es un modo de Wordle contrarreloj en {langName}. Empiezas con 3 minutos y resuelves tantas palabras como puedas. Resuelve rápido para ganar tiempo extra."
+                },
+                {
+                    "q": "¿Cómo funciona la puntuación?",
+                    "a": "Ganas puntos por cada palabra resuelta. Menos intentos y resoluciones más rápidas dan más puntos. Construye un combo resolviendo palabras consecutivas — hasta un multiplicador de 3x."
+                },
+                {
+                    "q": "¿Qué pasa cuando se acaba el tiempo?",
+                    "a": "La partida termina y ves tu puntuación final, palabras resueltas, mejor combo y media de intentos. Puedes volver a jugar de inmediato."
+                },
+                {
+                    "q": "¿Es Speed Streak gratis?",
+                    "a": "Sí. Speed Streak es completamente gratis en los más de 80 idiomas. Sin cuenta ni descarga."
+                }
             ],
             "multiboard": [
-                { "q": "¿Qué es {modeName} en {langName}?", "a": "{modeName} es una variante de Wordle multitablero en {langName}. Resuelves {boardCount} tableros Wordle al mismo tiempo usando {maxGuesses} intentos. Cada intento se introduce en todos los tableros sin resolver." },
-                { "q": "¿Cuántos intentos tengo en {modeName}?", "a": "Tienes {maxGuesses} intentos para resolver los {boardCount} tableros. Cuando un tablero se resuelve, se congela y puedes centrarte en los restantes." },
-                { "q": "¿Qué estrategia funciona mejor en {modeName}?", "a": "Empieza con palabras de letras comunes para recopilar información en los {boardCount} tableros a la vez. Presta atención al teclado dividido — muestra qué letras son correctas en qué tableros." },
-                { "q": "¿Es {modeName} gratis?", "a": "Sí. {modeName} es completamente gratis en los más de 80 idiomas. Sin cuenta ni descarga. Juega tantas rondas como quieras." }
+                {
+                    "q": "¿Qué es {modeName} en {langName}?",
+                    "a": "{modeName} es una variante de Wordle multitablero en {langName}. Resuelves {boardCount} tableros Wordle al mismo tiempo usando {maxGuesses} intentos. Cada intento se introduce en todos los tableros sin resolver."
+                },
+                {
+                    "q": "¿Cuántos intentos tengo en {modeName}?",
+                    "a": "Tienes {maxGuesses} intentos para resolver los {boardCount} tableros. Cuando un tablero se resuelve, se congela y puedes centrarte en los restantes."
+                },
+                {
+                    "q": "¿Qué estrategia funciona mejor en {modeName}?",
+                    "a": "Empieza con palabras de letras comunes para recopilar información en los {boardCount} tableros a la vez. Presta atención al teclado dividido — muestra qué letras son correctas en qué tableros."
+                },
+                {
+                    "q": "¿Es {modeName} gratis?",
+                    "a": "Sí. {modeName} es completamente gratis en los más de 80 idiomas. Sin cuenta ni descarga. Juega tantas rondas como quieras."
+                }
             ]
         },
         "howto": [
-            { "name": "Escribe una palabra", "text": "Introduce una palabra válida de 5 letras en {langName} usando el teclado en pantalla o tu teclado físico, y pulsa Enter." },
-            { "name": "Lee las pistas", "text": "Las casillas verdes significan que la letra es correcta y está en el lugar correcto. Amarillo significa que la letra está en la palabra pero en otra posición. Gris significa que la letra no está en la palabra." },
-            { "name": "Resuelve en 6 intentos", "text": "Usa las pistas de colores para acotar la palabra. Tienes 6 intentos en total. Después del puzzle, consulta tus estadísticas y comparte tu resultado." }
+            {
+                "name": "Escribe una palabra",
+                "text": "Introduce una palabra válida de 5 letras en {langName} usando el teclado en pantalla o tu teclado físico, y pulsa Enter."
+            },
+            {
+                "name": "Lee las pistas",
+                "text": "Las casillas verdes significan que la letra es correcta y está en el lugar correcto. Amarillo significa que la letra está en la palabra pero en otra posición. Gris significa que la letra no está en la palabra."
+            },
+            {
+                "name": "Resuelve en 6 intentos",
+                "text": "Usa las pistas de colores para acotar la palabra. Tienes 6 intentos en total. Después del puzzle, consulta tus estadísticas y comparte tu resultado."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Inicia una partida", "text": "Visita wordle.global/{lang}/unlimited para empezar a jugar Wordle Unlimited en {langName}. Se elige una palabra aleatoria de 5 letras." },
-                { "name": "Adivina la palabra", "text": "Escribe una palabra válida de 5 letras y pulsa Enter. Verde = letra correcta en el lugar correcto. Amarillo = letra correcta en lugar incorrecto. Gris = la letra no está en la palabra." },
-                { "name": "Juega de nuevo al instante", "text": "Después de resolver la palabra (o usar los 6 intentos), pulsa \"Jugar de nuevo\" para obtener una nueva palabra de inmediato. Sin esperar a mañana." }
+                {
+                    "name": "Inicia una partida",
+                    "text": "Visita wordle.global/{lang}/unlimited para empezar a jugar Wordle Unlimited en {langName}. Se elige una palabra aleatoria de 5 letras."
+                },
+                {
+                    "name": "Adivina la palabra",
+                    "text": "Escribe una palabra válida de 5 letras y pulsa Enter. Verde = letra correcta en el lugar correcto. Amarillo = letra correcta en lugar incorrecto. Gris = la letra no está en la palabra."
+                },
+                {
+                    "name": "Juega de nuevo al instante",
+                    "text": "Después de resolver la palabra (o usar los 6 intentos), pulsa \"Jugar de nuevo\" para obtener una nueva palabra de inmediato. Sin esperar a mañana."
+                }
             ],
             "speed": [
-                { "name": "Arranca el temporizador", "text": "Visita wordle.global/{lang}/speed y pulsa Iniciar. Empiezas con 3 minutos en el reloj." },
-                { "name": "Resuelve palabras rápido", "text": "Cada palabra resuelta te da tiempo extra (+10s a +60s según los intentos usados). Las palabras fallidas te cuestan 30 segundos." },
-                { "name": "Construye tu combo", "text": "Resuelve palabras consecutivas para aumentar el multiplicador de combo (hasta 3x). El combo se rompe si fallas. Intenta superar tu mejor puntuación." }
+                {
+                    "name": "Arranca el temporizador",
+                    "text": "Visita wordle.global/{lang}/speed y pulsa Iniciar. Empiezas con 3 minutos en el reloj."
+                },
+                {
+                    "name": "Resuelve palabras rápido",
+                    "text": "Cada palabra resuelta te da tiempo extra (+10s a +60s según los intentos usados). Las palabras fallidas te cuestan 30 segundos."
+                },
+                {
+                    "name": "Construye tu combo",
+                    "text": "Resuelve palabras consecutivas para aumentar el multiplicador de combo (hasta 3x). El combo se rompe si fallas. Intenta superar tu mejor puntuación."
+                }
             ],
             "multiboard": [
-                { "name": "Inicia una partida", "text": "Visita wordle.global/{lang}/{modeName} para jugar {modeName} en {langName}. Aparecen {boardCount} tableros con palabras ocultas diferentes." },
-                { "name": "Adivina en todos los tableros", "text": "Escribe una palabra de 5 letras y pulsa Enter. Tu intento aparece en los {boardCount} tableros. Cada tablero muestra sus propias pistas de colores (verde, amarillo, gris)." },
-                { "name": "Resuelve los {boardCount} tableros", "text": "Los tableros resueltos se congelan. Usa el teclado dividido para seguir qué letras funcionan en qué tableros. Resuelve los {boardCount} en {maxGuesses} intentos para ganar." }
+                {
+                    "name": "Inicia una partida",
+                    "text": "Visita wordle.global/{lang}/{modeName} para jugar {modeName} en {langName}. Aparecen {boardCount} tableros con palabras ocultas diferentes."
+                },
+                {
+                    "name": "Adivina en todos los tableros",
+                    "text": "Escribe una palabra de 5 letras y pulsa Enter. Tu intento aparece en los {boardCount} tableros. Cada tablero muestra sus propias pistas de colores (verde, amarillo, gris)."
+                },
+                {
+                    "name": "Resuelve los {boardCount} tableros",
+                    "text": "Los tableros resueltos se congelan. Usa el teclado dividido para seguir qué letras funcionan en qué tableros. Resuelve los {boardCount} en {maxGuesses} intentos para ganar."
+                }
             ]
-        }
+        },
+        "recent_words": "Palabras recientes",
+        "view_all_words": "Ver todas las palabras"
     }
 }

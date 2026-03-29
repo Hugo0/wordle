@@ -14,10 +14,17 @@ import { rankStartingWords, computeLetterFrequency } from '../../utils/word-anal
 
 const DATA_DIR = join(process.cwd(), 'data');
 
-// Cache computed results per language (expensive to recompute)
-const cache = new Map<string, ReturnType<typeof computeForLang>>();
+interface StartingWordsResult {
+    top_words: ReturnType<typeof rankStartingWords>;
+    letter_frequency: ReturnType<typeof computeLetterFrequency>;
+    daily_word_count: number;
+    total_word_count: number;
+}
 
-function computeForLang(lang: string) {
+// Cache computed results per language (expensive to recompute)
+const cache = new Map<string, StartingWordsResult>();
+
+function computeForLang(lang: string): StartingWordsResult | null {
     const wordsPath = join(DATA_DIR, 'languages', lang, 'words.json');
     if (!existsSync(wordsPath)) return null;
 

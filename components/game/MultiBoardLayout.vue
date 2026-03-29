@@ -23,7 +23,15 @@
             @scroll.passive="onBoardScroll"
             data-allow-mismatch
         >
-            <div class="grid mx-auto" :style="gridStyle" data-allow-mismatch>
+            <!-- Loading: show subtle pulse while measuring container width -->
+            <div
+                v-if="!measured"
+                class="flex flex-auto justify-center items-center opacity-15 animate-pulse"
+            >
+                <div class="font-mono text-xs text-muted">Loading boards...</div>
+            </div>
+
+            <div v-else class="grid mx-auto max-w-full" :style="gridStyle" data-allow-mismatch>
                 <div
                     v-for="idx in boardIndices"
                     :key="idx"
@@ -103,10 +111,14 @@ const measured = computed(() => containerWidth.value !== null);
 let resizeObserver: ResizeObserver | null = null;
 
 onMounted(() => {
-    // Immediately measure real dimensions before first meaningful paint
-    if (containerRef.value) {
-        containerWidth.value = containerRef.value.clientWidth;
-        containerHeight.value = containerRef.value.clientHeight;
+    // Measure scrollRef (padded inner div where grid lives), not containerRef
+    // (outer <main> without padding). Ensures containerWidth matches actual
+    // available space, preventing horizontal overflow.
+    if (scrollRef.value) {
+        const cs = getComputedStyle(scrollRef.value);
+        containerWidth.value =
+            scrollRef.value.clientWidth - parseInt(cs.paddingLeft) - parseInt(cs.paddingRight);
+        containerHeight.value = scrollRef.value.clientHeight;
     }
     resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
@@ -114,7 +126,7 @@ onMounted(() => {
             containerHeight.value = entry.contentRect.height;
         }
     });
-    if (containerRef.value) resizeObserver.observe(containerRef.value);
+    if (scrollRef.value) resizeObserver.observe(scrollRef.value);
 });
 onBeforeUnmount(() => {
     resizeObserver?.disconnect();
@@ -146,7 +158,9 @@ function onBoardScroll() {
         game.showTilesAllBoards();
     }, 200);
 }
-onBeforeUnmount(() => { if (scrollTimer) clearTimeout(scrollTimer); });
+onBeforeUnmount(() => {
+    if (scrollTimer) clearTimeout(scrollTimer);
+});
 
 // --- Grid sizing ---
 const GRID_GAP = 6;
@@ -188,6 +202,7 @@ const gridStyle = computed(() => {
 
     return {
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${boardRows}, minmax(0, 1fr))`,
         maxWidth: `${Math.floor(cappedW)}px`,
         width: `${Math.floor(cappedW)}px`,
         height: `${Math.floor(gridH)}px`,
@@ -242,8 +257,10 @@ defineExpose({ getBoardElForIndex });
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 4px 8px;
+    gap: 4px;
+    padding: 4px 4px;
+    overflow: hidden;
+    min-width: 0;
 }
 .page-nav-btn {
     display: flex;

@@ -7,6 +7,7 @@ import { loadAllData } from '../../../utils/data-loader';
 import { getTodaysIdx, getWordForDay, idxToDate } from '../../../utils/word-selection';
 import { loadWordStats } from '../../../utils/word-stats';
 import { fetchDefinition } from '../../../utils/definitions';
+import type { WordStats } from '~/utils/types';
 
 // Wiktionary language code mapping (same as Flask)
 const WIKT_LANG_MAP: Record<string, string> = {
@@ -55,8 +56,12 @@ export default defineEventHandler(async (event) => {
     // Only reveal word for past and current days
     let word: string | null = null;
     let wordDate: string | null = null;
-    let definition: any = null;
-    let wordStats: any = null;
+    let definition: {
+        definition: string;
+        definition_native?: string;
+        part_of_speech?: string;
+    } | null = null;
+    let wordStats: WordStats | null = null;
 
     if (!isFuture) {
         word = getWordForDay(lang, dayIdx);
@@ -94,5 +99,6 @@ export default defineEventHandler(async (event) => {
         definition,
         word_stats: wordStats,
         wikt_lang: wiktLang,
+        ui: config.ui || {},
     };
 });

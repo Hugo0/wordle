@@ -9,7 +9,6 @@
 
 const route = useRoute();
 const lang = route.params.lang as string;
-const langStore = useLanguageStore();
 const page = computed(() => parseInt((route.query.page as string) || '1', 10));
 
 const { data: wordsData, error } = await useFetch(`/api/${lang}/words`, {
@@ -24,6 +23,13 @@ const langNameNative = computed(() => wordsData.value!.lang_name_native);
 const todaysIdx = computed(() => wordsData.value!.todays_idx);
 const totalPages = computed(() => wordsData.value!.total_pages);
 const words = computed(() => wordsData.value!.words);
+
+// UI labels from API response with English fallbacks
+const ui = (wordsData.value.ui as Record<string, string>) || {};
+const label = (key: string, fallback: string) => ui[key] || fallback;
+
+// Word art thumbnail visibility (reactive, per day index)
+const wordArtLoaded = reactive(new Set<number>());
 
 const title = computed(
     () => `Wordle ${langNameNative.value} \u2014 All Words | ${langName.value} Word Archive`
@@ -196,11 +202,11 @@ onMounted(() => {
                     &larr; Play Wordle {{ langNameNative }}
                 </NuxtLink>
                 <h1 class="heading-display text-2xl mt-2">
-                    Wordle {{ langNameNative }} &mdash; {{ langStore.config?.ui?.all_words }}
+                    Wordle {{ langNameNative }} &mdash; {{ label('all_words', 'All Words') }}
                 </h1>
                 <p class="text-sm text-muted">
                     {{ todaysIdx.toLocaleString() }}
-                    {{ langStore.config?.ui?.daily_words_counting }}
+                    {{ label('daily_words_counting', 'daily words and counting') }}
                 </p>
             </header>
 
@@ -226,7 +232,7 @@ onMounted(() => {
                             #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
                         </p>
                         <p class="text-sm font-semibold text-correct mt-2 text-center">
-                            {{ langStore.config?.ui?.todays_word_reveal }}
+                            {{ label('todays_word_reveal', 'Play to reveal!') }}
                         </p>
                     </NuxtLink>
 
@@ -249,7 +255,7 @@ onMounted(() => {
                             #{{ w.day_idx }} &middot; {{ formatDate(w.date) }}
                         </p>
                         <p class="text-sm font-semibold text-correct mt-1 text-center">
-                            {{ langStore.config?.ui?.today }}
+                            {{ label('today', 'Today') }}
                         </p>
                     </NuxtLink>
 
@@ -299,8 +305,8 @@ onMounted(() => {
                             v-if="w.stats && w.stats.total > 0"
                             class="flex justify-center gap-3 mt-2 text-[10px] text-muted"
                         >
-                            <span>{{ w.stats.total }} {{ langStore.config?.ui?.plays }}</span>
-                            <span>{{ winRate(w.stats) }}% {{ langStore.config?.ui?.win }}</span>
+                            <span>{{ w.stats.total }} {{ label('plays', 'plays') }}</span>
+                            <span>{{ winRate(w.stats) }}% {{ label('win', 'win') }}</span>
                         </div>
 
                         <!-- AI art thumbnail (loads async) -->

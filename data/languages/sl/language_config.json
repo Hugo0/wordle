@@ -51,7 +51,13 @@
         "share_challenge_win": "Današnji Wordle sem rešil/a v {n} poskusih. Ali zmoreš bolje?",
         "share_challenge_lose": "Današnjega Wordle nisem rešil/a. Ali ti zmoreš?",
         "notification_copied": "Kopirano v odložišče",
-        "notification_partial_word": "Vnesite polno besedo"
+        "notification_partial_word": "Vnesite polno besedo",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -67,7 +73,120 @@
         "text_2_1": "je v besedi in na pravi lokaciji!",
         "text_2_2": "je v besedi, vendar ne na pravi lokaciji.",
         "text_2_3": "ni prisotna v besedi, ki jo poskušate uganiti.",
-        "text_3": "Vsak dan bo na voljo nova beseda!"
+        "text_3": "Vsak dan bo na voljo nova beseda!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
+    },
+    "seo": {
+        "how_to_play": "Kako igrati",
+        "tips_strategy": "Nasveti in strategija",
+        "more_modes": "Več načinov igre",
+        "play_in_languages": "Igrajte v 80+ jezikih",
+        "play_in_languages_sub": "Vsak jezik je brezplačen. Račun ni potreben.",
+        "why_wordle_global": "Zakaj Wordle Global",
+        "faq_title": "Pogosta vprašanja",
+        "browse_all_languages": "Prebrskajte vseh 80+ jezikov",
+        "recent_words": "Nedavne besede",
+        "view_all_words": "Poglej vse besede",
+        "footer": "wordle.global — brezplačna dnevna besedna igra v 80+ jezikih",
+        "tile_correct": "je v besedi in na pravem mestu.",
+        "tile_semicorrect": "je v besedi, a na napačnem mestu.",
+        "tile_incorrect": "ni v besedi.",
+        "stat_players": "Igralci",
+        "stat_guesses": "Ugibanja",
+        "stat_languages": "Jeziki",
+        "stat_modes": "Načini igre",
+        "value_props": [
+            { "key": "languages", "title": "80+ jezikov", "desc": "Od arabščine do jorubščine. Največji večjezični Wordle." },
+            { "key": "definitions", "title": "Razlage besed", "desc": "Po igri spoznajte pomen vsake besede. Razširite svoj besedni zaklad." },
+            { "key": "word_art", "title": "Edinstvena besedna umetnost", "desc": "Vsaka beseda ima svojo ilustracijo. Zberite vse." },
+            { "key": "themes", "title": "Temni način in teme", "desc": "Svetel, temen in visokokontrastni način za udobno igro." },
+            { "key": "pwa", "title": "Deluje povsod", "desc": "PWA — namestite na katero koli napravo. Deluje brez povezave. Prenos ni potreben." },
+            { "key": "free", "title": "Za vedno brezplačno", "desc": "Račun ni potreben. Brez plačljivega zidu. Preprosto igrajte." }
+        ],
+        "tips": [
+            { "title": "Začnite z besedo, bogato s samoglasniki", "text": "Besede kot CRANE, STARE ali ADIEU hitro preverijo pogoste črke. Poznavanje samoglasnikov hitro zoži možnosti." },
+            { "title": "Uporabite, kar veste", "text": "Zelene črke ostanejo na mestu. Rumene se morajo premakniti. Sive so izločene. Vsako ugibanje naj uporabi vse tri namige." },
+            { "title": "Razmišljajte o pogostih vzorcih", "text": "Angleške besede se pogosto končajo na -TION, -IGHT, -OUND, -MENT. Drugi jeziki imajo svoje vzorce — naučite se jih." },
+            { "title": "Izločajte, ne ugibajte naključno", "text": "Druga beseda naj preveri nove črke, ne ponavlja potrjenih. Pokrijte čim več nepreizkušenih soglasnikov." },
+            { "title": "Pazite na podvojene črke", "text": "Besede kot CREEK, FLOSS ali APPLE so pogoste pasti. Če namigi ne gredo skupaj, razmislite o ponavljajoči se črki." },
+            { "title": "Uporabite težki način za napredek", "text": "Težki način vas prisili, da potrjene namige uporabite v vsakem ugibanju. To gradi boljše navade." }
+        ],
+        "tips_speed": [
+            { "title": "Začnite s CRANE ali STARE", "text": "Črke z visoko frekvenco vam dajo najboljšo možnost za hitro rešitev. Vsaka sekunda šteje." },
+            { "title": "Ne razmišljajte preveč", "text": "Speed Streak nagrajuje instinkt. Če vidite verjetno besedo, jo poskusite — bonus za kombo odtehta popolno rešitev." },
+            { "title": "Zaščitite svoj kombo", "text": "Neuspešna beseda prekine množilnik. Ko niste prepričani, uporabite varno ugibanje za več namigov." },
+            { "title": "Ciljajte na rešitev v 2–3 ugibanj", "text": "Časovni bonus je ogromen za hitre rešitve (+60s za 1 ugibanje, +30s za 2). Tvegano drugo ugibanje se lahko zelo izplača." },
+            { "title": "Naučite se pogostih končnic besed", "text": "Vzorci kot -IGHT, -OUND, -ATCH se pogosto ponavljajo. Takojšnje prepoznavanje prihrani sekunde pri vsaki besedi." },
+            { "title": "Ostanite mirni, ko pritisk narašča", "text": "Časovnik se pospeši vsake 3 besede. Hitenje vodi v tipkarske napake in slaba ugibanja. Enakomeren tempo premaga paniko." }
+        ],
+        "tips_multiboard": [
+            { "title": "Začnite široko", "text": "Uporabite besede s pogostimi črkami (CRANE, STARE), da zberete namige na vseh tablah hkrati." },
+            { "title": "Opazujte razdeljeno tipkovnico", "text": "Tipkovnica prikazuje barve za vsako tablo. Črka, ki je na eni tabli zelena, na drugi pa siva, hitro zoži možnosti." },
+            { "title": "Prednost dajte tablam v težavah", "text": "Ugibanja usmerite na tablo z največ neznankami. Lažje table se pogosto rešijo same." },
+            { "title": "Ne zapravljajte zgodnjih ugibanj", "text": "Prva 2–3 ugibanja uporabite za informacijsko bogate besede, preden ciljate posamezne table." },
+            { "title": "Iščite skupne črke", "text": "Če dve tabli kažeta rumen E, beseda z E na novem mestu pomaga obema tablama hkrati." },
+            { "title": "Prihranite ugibanje za nujne primere", "text": "Če ste obtičali pri zadnji tabli, dodatno ugibanje pomeni razliko med zmago in porazom." }
+        ],
+        "mode_desc_classic": "Imate 6 poskusov, da uganete skrito 5-črkovno besedo. Uporabite barvne namige, da zožite odgovor.",
+        "mode_desc_unlimited": "Imate 6 poskusov, da uganete skrito 5-črkovno besedo. Uporabite barvne namige, da zožite odgovor. Po vsaki igri pritisnite \"Igraj znova\" za novo besedo takoj — brez omejitev.",
+        "mode_desc_speed": "Začnete s 3 minutami na uri. Vsaka rešena beseda vam prinese bonusni čas — manj ugibanj, večji bonus (+60s za 1 ugibanje, +10s za 6). Neuspešne besede vas stanejo 30 sekund. Gradite kombo z zaporednimi rešitvami za množilnik do 3x. Pritisk narašča z vsako rešeno besedo — časovnik se pospeši vsake 3 besede.",
+        "mode_desc_multiboard": "{modeName} vas izzove, da rešite {boardCount} Wordle tabel hkrati z le {maxGuesses} ugibanji. Vsako ugibanje se pojavi na vseh nerešenih tablah hkrati. Rešene table zamrznejo. Razdeljena barvna tipkovnica pokaže, katere črke so pravilne na katerih tablah. Začnite z besedami s pogostimi črkami, da zberete namige na vseh tablah hkrati.",
+        "faq": [
+            { "q": "Kako igram Wordle v {langName}?", "a": "Obiščite wordle.global/{lang} za dnevni Wordle v {langName}. Imate 6 poskusov za ugotovitev 5-črkovne besede. Po vsakem ugibanju se ploščice obarvajo zeleno (pravilna črka, pravilno mesto), rumeno (pravilna črka, napačno mesto) ali sivo (črka ni v besedi)." },
+            { "q": "Ali je vsak dan nova uganka?", "a": "Da. Vsak dan se izbere nova beseda. Vsi, ki igrajo v istem jeziku, dobijo isto besedo, tako da lahko rezultate primerjate s prijatelji." },
+            { "q": "Ali je Wordle Global brezplačen?", "a": "Da. Dnevna uganka, neomejen način in vsi načini igre so popolnoma brezplačni v vseh 80+ jezikih. Račun ali prenos ni potreben." },
+            { "q": "Ali lahko igram več kot enkrat na dan?", "a": "Da — poskusite neomejen način na wordle.global/{lang}/unlimited za neskončne igre brez čakanja. Vaš dnevni niz se beleži ločeno." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Kaj je Wordle Unlimited v {langName}?", "a": "Wordle Unlimited vam omogoča, da igrate kolikor želite iger Wordle v {langName}, brez čakanja na jutrišnjo uganko. Vsaka igra vam da novo naključno besedo za ugotovitev v 6 poskusih." },
+                { "q": "Ali je Wordle Unlimited brezplačen?", "a": "Da. Wordle Unlimited je popolnoma brezplačen. Brez računa, brez prenosa, brez oglasov med igro." },
+                { "q": "Ali neomejen način vpliva na moj dnevni niz?", "a": "Ne. Neomejen način ima svojo ločeno statistiko. Na vaš dnevni niz vpliva samo dnevna uganka." },
+                { "q": "Kolikokrat lahko igram?", "a": "Brez omejitev. Igrate lahko kolikor krogov želite. Po vsaki igri pritisnite \"Igraj znova\" za novo besedo takoj." },
+                { "q": "V katerih jezikih lahko igram Wordle Unlimited?", "a": "Wordle Unlimited je na voljo v več kot 80 jezikih na wordle.global, vključno z angleščino, španščino, nemščino, finščino, arabščino, francoščino, italijanščino, portugalščino in mnogo drugimi." }
+            ],
+            "speed": [
+                { "q": "Kaj je Speed Streak v {langName}?", "a": "Speed Streak je časovno omejen način Wordle v {langName}. Začnete s 3 minutami in rešite čim več besed. Hitra rešitev vam prinese bonusni čas." },
+                { "q": "Kako deluje točkovanje?", "a": "Za vsako rešeno besedo dobite točke. Manj ugibanj in hitrejše rešitve prinesejo več točk. Gradite kombo z zaporednimi rešitvami — množilnik do 3x." },
+                { "q": "Kaj se zgodi, ko se čas izteče?", "a": "Igra se konča in vidite končni rezultat, skupno rešenih besed, največji kombo in povprečje ugibanj. Takoj lahko igrate znova." },
+                { "q": "Ali je Speed Streak brezplačen?", "a": "Da. Speed Streak je popolnoma brezplačen v vseh 80+ jezikih. Račun ali prenos ni potreben." }
+            ],
+            "multiboard": [
+                { "q": "Kaj je {modeName} v {langName}?", "a": "{modeName} je večtabelna različica Wordle v {langName}. Rešujete {boardCount} Wordle tabel hkrati z {maxGuesses} ugibanji. Vsako ugibanje se vnese na vse nerešene table hkrati." },
+                { "q": "Koliko ugibanj imam v {modeName}?", "a": "Imate {maxGuesses} ugibanj za rešitev vseh {boardCount} tabel. Ko je tabla rešena, zamrzne, vi pa se osredotočite na preostale." },
+                { "q": "Katera strategija je najboljša za {modeName}?", "a": "Začnite z besedami s pogostimi črkami, da zberete informacije na vseh {boardCount} tablah hkrati. Opazujte razdeljeno barvno tipkovnico — ta pokaže, katere črke so pravilne na katerih tablah." },
+                { "q": "Ali je {modeName} brezplačen?", "a": "Da. {modeName} je popolnoma brezplačen v vseh 80+ jezikih. Račun ali prenos ni potreben. Igrajte kolikor krogov želite." }
+            ]
+        },
+        "howto": [
+            { "name": "Vtipkajte besedo", "text": "Vnesite veljavno 5-črkovno besedo v {langName} s tipkovnico na zaslonu ali fizično tipkovnico, nato pritisnite Enter." },
+            { "name": "Preberite namige", "text": "Zelene ploščice pomenijo, da je črka pravilna in na pravem mestu. Rumene pomenijo, da je črka v besedi, a na napačnem mestu. Sive pomenijo, da črke ni v besedi." },
+            { "name": "Rešite v 6 poskusih", "text": "Uporabite barvne namige za zožanje besede. Imate 6 ugibanj. Po uganki si oglejte statistiko in delite rezultat." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Začnite igro", "text": "Obiščite wordle.global/{lang}/unlimited za začetek Wordle Unlimited v {langName}. Naključna 5-črkovna beseda je izbrana za vas." },
+                { "name": "Uganite besedo", "text": "Vtipkajte veljavno 5-črkovno besedo in pritisnite Enter. Zelene ploščice — pravilna črka na pravem mestu. Rumene — pravilna črka na napačnem mestu. Sive — črke ni v besedi." },
+                { "name": "Igrajte znova takoj", "text": "Po rešitvi besede (ali porabi vseh 6 ugibanj) pritisnite \"Igraj znova\" za novo besedo takoj. Brez čakanja do jutri." }
+            ],
+            "speed": [
+                { "name": "Zaženite časovnik", "text": "Obiščite wordle.global/{lang}/speed in pritisnite Začni. Začnete s 3 minutami na uri." },
+                { "name": "Hitro rešujte besede", "text": "Vsaka rešena beseda vam prinese bonusni čas (+10s do +60s glede na število ugibanj). Neuspešne besede vas stanejo 30 sekund." },
+                { "name": "Gradite kombo", "text": "Rešujte besede zaporedoma za gradnjo množilnika komba (do 3x). Kombo se prekine ob neuspešni besedi. Poskusite preseči svoj rekord." }
+            ],
+            "multiboard": [
+                { "name": "Začnite igro", "text": "Obiščite wordle.global/{lang}/{modeName} za igranje {modeName} v {langName}. Pojavi se {boardCount} tabel z različnimi skritimi besedami." },
+                { "name": "Ugibajte na vseh tablah", "text": "Vtipkajte 5-črkovno besedo in pritisnite Enter. Ugibanje se pojavi na vseh {boardCount} tablah hkrati. Vsaka tabla prikaže svoje barvne namige (zelena, rumena, siva)." },
+                { "name": "Rešite vseh {boardCount} tabel", "text": "Rešene table zamrznejo na mestu. Uporabite razdeljeno barvno tipkovnico za sledenje, katere črke delujejo na katerih tablah. Rešite vseh {boardCount} v {maxGuesses} ugibanjih za zmago." }
+            ]
+        }
     },
     "ui": {
         "settings": "Nastavitve",
@@ -152,6 +271,59 @@
         "pos_verb": "glagol",
         "pos_adjective": "pridevnik",
         "pos_adverb": "prislov",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
     }
 }

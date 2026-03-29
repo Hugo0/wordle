@@ -57,7 +57,8 @@
         "copied": "کپی شد!",
         "notification_word_not_valid": "کلمه معتبر نیست",
         "hard_mode_position": "حالت سخت: {letter} باید در موقعیت {position} باشد",
-        "hard_mode_contains": "حالت سخت: حدس باید شامل {letter} باشد"
+        "hard_mode_contains": "حالت سخت: حدس باید شامل {letter} باشد",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -73,7 +74,15 @@
         "text_2_1": "در کلمه و در محل درست است!",
         "text_2_2": "در کلام، اما نه در محل درست نیست.",
         "text_2_3": "در کلمه ای که میخواهید حدس بزنید وجود ندارد.",
-        "text_3": "یک کلمه جدید هر روز در دسترس خواهد بود!"
+        "text_3": "یک کلمه جدید هر روز در دسترس خواهد بود!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "diacritic_map": {
         "ا": [
@@ -170,274 +179,327 @@
         "pos_verb": "فعل",
         "pos_adjective": "صفت",
         "pos_adverb": "قید",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
     },
     "seo": {
-        "how_to_play": "How to Play",
-        "tips_strategy": "Tips & Strategy",
-        "more_modes": "More Game Modes",
-        "play_in_languages": "Play in 80+ Languages",
-        "play_in_languages_sub": "Every language is free. No account needed.",
-        "why_wordle_global": "Why Wordle Global",
-        "faq_title": "Frequently Asked Questions",
-        "browse_all_languages": "Browse all 80+ languages",
-        "recent_words": "Recent Words",
-        "view_all_words": "View all words",
-        "footer": "wordle.global — the free daily word game in 80+ languages",
-        "tile_correct": "is in the word and in the correct spot.",
-        "tile_semicorrect": "is in the word but in the wrong spot.",
-        "tile_incorrect": "is not in the word at all.",
-        "stat_players": "Players",
-        "stat_guesses": "Guesses",
-        "stat_languages": "Languages",
-        "stat_modes": "Game Modes",
+        "how_to_play": "نحوه بازی",
+        "tips_strategy": "نکات و راهبرد",
+        "more_modes": "حالت‌های بیشتر بازی",
+        "play_in_languages": "بازی به بیش از ۸۰ زبان",
+        "play_in_languages_sub": "همه زبان‌ها رایگان هستند. نیازی به حساب کاربری نیست.",
+        "why_wordle_global": "چرا Wordle Global",
+        "faq_title": "پرسش‌های متداول",
+        "browse_all_languages": "مشاهده بیش از ۸۰ زبان",
+        "recent_words": "کلمات اخیر",
+        "view_all_words": "مشاهده همه کلمات",
+        "footer": "wordle.global — بازی رایگان روزانه کلمات به بیش از ۸۰ زبان",
+        "tile_correct": "در کلمه هست و در جای درست قرار دارد.",
+        "tile_semicorrect": "در کلمه هست ولی در جای درست نیست.",
+        "tile_incorrect": "اصلاً در کلمه وجود ندارد.",
+        "stat_players": "بازیکنان",
+        "stat_guesses": "حدس‌ها",
+        "stat_languages": "زبان‌ها",
+        "stat_modes": "حالت‌های بازی",
         "value_props": [
             {
                 "key": "languages",
-                "title": "80+ Languages",
-                "desc": "From Arabic to Yoruba. The largest multilingual Wordle."
+                "title": "بیش از ۸۰ زبان",
+                "desc": "از عربی تا یوروبا. بزرگ‌ترین Wordle چندزبانه جهان."
             },
             {
                 "key": "definitions",
-                "title": "Word Definitions",
-                "desc": "Learn the meaning of every word after you play. Expand your vocabulary."
+                "title": "تعاریف کلمات",
+                "desc": "پس از هر بازی، معنی کلمه را یاد بگیرید. دایره لغات خود را گسترش دهید."
             },
             {
                 "key": "word_art",
-                "title": "Unique Word Art",
-                "desc": "Every word comes with a custom illustration. Collect them all."
+                "title": "تصاویر کلمات",
+                "desc": "هر کلمه تصویر اختصاصی خودش را دارد. همه را جمع‌آوری کنید."
             },
             {
                 "key": "themes",
-                "title": "Dark Mode & Themes",
-                "desc": "Light, dark, and high-contrast modes for comfortable play."
+                "title": "حالت تاریک و پوسته‌ها",
+                "desc": "حالت‌های روشن، تاریک و کنتراست بالا برای بازی راحت‌تر."
             },
             {
                 "key": "pwa",
-                "title": "Works Everywhere",
-                "desc": "PWA — install on any device. Works offline. No download needed."
+                "title": "روی هر دستگاهی کار می‌کند",
+                "desc": "روی هر دستگاهی نصب کنید. آفلاین هم کار می‌کند. نیازی به دانلود نیست."
             },
             {
                 "key": "free",
-                "title": "Free Forever",
-                "desc": "No account required. No paywall. Just play."
+                "title": "برای همیشه رایگان",
+                "desc": "بدون حساب کاربری. بدون پرداخت. فقط بازی کنید."
             }
         ],
         "tips": [
             {
-                "title": "Start with a vowel-rich word",
-                "text": "Words like CRANE, STARE, or ADIEU test common letters quickly. Knowing which vowels are present narrows options fast."
+                "title": "با کلمه‌ای پر از حروف پرتکرار شروع کنید",
+                "text": "کلماتی مثل CRANE، STARE یا ADIEU حروف رایج را سریع آزمایش می‌کنند. دانستن اینکه کدام حروف صدادار وجود دارند، گزینه‌ها را به‌سرعت محدود می‌کند."
             },
             {
-                "title": "Use what you know",
-                "text": "Green letters stay locked. Yellow letters must move. Gray letters are eliminated. Each guess should use all three clues."
+                "title": "از سرنخ‌ها استفاده کنید",
+                "text": "حروف سبز قفل می‌شوند. حروف زرد باید جابه‌جا شوند. حروف خاکستری حذف می‌شوند. هر حدس باید از هر سه نوع سرنخ بهره ببرد."
             },
             {
-                "title": "Think about common patterns",
-                "text": "English words often end in -TION, -IGHT, -OUND, -MENT. Other languages have their own patterns — learn them."
+                "title": "به الگوهای رایج زبان خود فکر کنید",
+                "text": "هر زبانی الگوهای حرفی مخصوص خودش را دارد. این الگوها را بشناسید و از آن‌ها برای حدس زدن بهتر استفاده کنید."
             },
             {
-                "title": "Eliminate, don't guess randomly",
-                "text": "Your second word should test new letters, not repeat confirmed ones. Cover as many untested consonants as possible."
+                "title": "حذف کنید، الکی حدس نزنید",
+                "text": "کلمه دوم باید حروف جدیدی را آزمایش کند، نه حروفی که قبلاً تأیید شده‌اند. تا جایی که می‌توانید حروف بی‌صدای آزمایش‌نشده را پوشش دهید."
             },
             {
-                "title": "Watch for double letters",
-                "text": "Words like CREEK, FLOSS, or APPLE are common traps. If your clues don't add up, consider a repeated letter."
+                "title": "مراقب حروف تکراری باشید",
+                "text": "کلماتی با حروف تکراری تله‌های رایجی هستند. اگر سرنخ‌ها جور درنمی‌آیند، احتمال تکرار یک حرف را در نظر بگیرید."
             },
             {
-                "title": "Use hard mode to improve",
-                "text": "Hard mode forces you to use confirmed clues in every guess. It builds better habits even when you switch back to normal."
+                "title": "حالت سخت را امتحان کنید",
+                "text": "حالت سخت شما را مجبور می‌کند از سرنخ‌های تأییدشده در هر حدس استفاده کنید. این کار عادت‌های بهتری می‌سازد، حتی وقتی به حالت عادی برگردید."
             }
         ],
         "tips_speed": [
             {
-                "title": "Start with CRANE or STARE",
-                "text": "High-frequency letters give you the best chance of a fast solve. Every second counts."
+                "title": "با کلمه‌ای پرتکرار شروع کنید",
+                "text": "حروف پرتکرار بهترین شانس حل سریع را می‌دهند. هر ثانیه مهم است."
             },
             {
-                "title": "Don't overthink",
-                "text": "Speed Streak rewards gut instinct. If you see a likely word, go for it — the combo bonus outweighs a perfect solve."
+                "title": "زیاد فکر نکنید",
+                "text": "Speed Streak به شهود پاداش می‌دهد. اگر کلمه‌ای محتمل می‌بینید، امتحانش کنید — امتیاز کمبو بیشتر از حل بی‌نقص ارزش دارد."
             },
             {
-                "title": "Protect your combo",
-                "text": "A failed word breaks your multiplier. When unsure, use a safe guess to gather more clues rather than risk it."
+                "title": "کمبوی خود را حفظ کنید",
+                "text": "کلمه ناموفق ضریب شما را می‌شکند. وقتی مطمئن نیستید، یک حدس مطمئن بزنید تا سرنخ بیشتری جمع کنید."
             },
             {
-                "title": "Go for 2-3 guess solves",
-                "text": "The time bonus is massive for quick solves (+60s for 1 guess, +30s for 2). A risky second guess can pay off big."
+                "title": "سعی کنید در ۲ تا ۳ حدس حل کنید",
+                "text": "جایزه زمانی برای حل سریع خیلی زیاد است (۶۰+ ثانیه برای ۱ حدس، ۳۰+ ثانیه برای ۲). یک حدس جسورانه می‌تواند نتیجه بزرگی داشته باشد."
             },
             {
-                "title": "Learn common word endings",
-                "text": "Patterns like -IGHT, -OUND, -ATCH repeat often. Recognizing them instantly saves seconds per word."
+                "title": "الگوهای رایج حروف را بشناسید",
+                "text": "الگوهای تکراری حروف در زبان شما مرتب تکرار می‌شوند. شناختن سریع آن‌ها در هر کلمه ثانیه‌ها صرفه‌جویی می‌کند."
             },
             {
-                "title": "Stay calm as pressure ramps",
-                "text": "The timer speeds up every 3 words. Rushing leads to typos and bad guesses. Steady pace beats panic."
+                "title": "خونسرد بمانید",
+                "text": "تایمر هر ۳ کلمه سریع‌تر می‌شود. عجله باعث اشتباه تایپی و حدس‌های بد می‌شود. ریتم ثابت بهتر از عجله است."
             }
         ],
         "tips_multiboard": [
             {
-                "title": "Start broad",
-                "text": "Use common-letter words (CRANE, STARE) to gather clues across all boards at once."
+                "title": "گسترده شروع کنید",
+                "text": "از کلمات با حروف رایج (CRANE، STARE) استفاده کنید تا روی همه صفحه‌ها سرنخ جمع کنید."
             },
             {
-                "title": "Watch the split keyboard",
-                "text": "The keyboard shows per-board colors. A letter green on one board but gray on another narrows options fast."
+                "title": "صفحه‌کلید تقسیم‌شده را ببینید",
+                "text": "صفحه‌کلید رنگ هر صفحه را جداگانه نشان می‌دهد. حرفی که روی یک صفحه سبز و روی دیگری خاکستری است، گزینه‌ها را سریع محدود می‌کند."
             },
             {
-                "title": "Prioritize struggling boards",
-                "text": "Focus guesses on the board with the most unknowns. Easier boards often solve themselves along the way."
+                "title": "روی صفحه‌های عقب‌مانده تمرکز کنید",
+                "text": "حدس‌ها را روی صفحه‌ای با بیشترین ناشناخته‌ها متمرکز کنید. صفحه‌های آسان‌تر معمولاً خودشان حل می‌شوند."
             },
             {
-                "title": "Don't waste early guesses",
-                "text": "Use the first 2-3 on information-rich words before targeting specific boards."
+                "title": "حدس‌های اول را هدر ندهید",
+                "text": "۲ تا ۳ حدس اول را برای کلمات پراطلاعات استفاده کنید، قبل از اینکه صفحه خاصی را هدف بگیرید."
             },
             {
-                "title": "Look for shared letters",
-                "text": "If two boards both show a yellow E, a word with E in a new position helps both boards simultaneously."
+                "title": "دنبال حروف مشترک بگردید",
+                "text": "اگر دو صفحه هر دو یک حرف زرد نشان می‌دهند، کلمه‌ای با آن حرف در جای جدید به هر دو صفحه کمک می‌کند."
             },
             {
-                "title": "Save a guess for emergencies",
-                "text": "If you're stuck on the last board, having a spare guess is the difference between winning and losing."
+                "title": "یک حدس ذخیره نگه دارید",
+                "text": "اگر روی آخرین صفحه گیر کردید، داشتن یک حدس اضافه فرق بین بردن و باختن است."
             }
         ],
-        "mode_desc_classic": "You have 6 tries to guess a hidden 5-letter word. Use the color clues to narrow down the answer.",
-        "mode_desc_unlimited": "You have 6 tries to guess a hidden 5-letter word. Use the color clues to narrow down the answer. After each game, press \"Play Again\" to get a new word instantly — there's no daily limit.",
-        "mode_desc_speed": "Start with 3 minutes on the clock. Each word you solve earns bonus time — solve in fewer guesses for bigger bonuses (+60s for 1 guess, +10s for 6). Failed words cost 30 seconds. Build combos by solving consecutive words for up to a 3x score multiplier. The pressure ramps up as you solve more words — the timer ticks faster every 3 words.",
-        "mode_desc_multiboard": "{modeName} challenges you to solve {boardCount} Wordle boards at the same time using just {maxGuesses} guesses. Each guess appears on all unsolved boards simultaneously. Boards freeze when solved. The split-color keyboard shows which letters are correct on which boards. Start with common-letter words to gather clues across all boards at once.",
+        "mode_desc_classic": "شما ۶ تلاش دارید تا یک کلمه پنج‌حرفی پنهان را حدس بزنید. از سرنخ‌های رنگی برای محدود کردن پاسخ استفاده کنید.",
+        "mode_desc_unlimited": "شما ۶ تلاش دارید تا یک کلمه پنج‌حرفی پنهان را حدس بزنید. از سرنخ‌های رنگی برای محدود کردن پاسخ استفاده کنید. پس از هر بازی، دکمه «بازی دوباره» را بزنید تا فوراً کلمه جدیدی بگیرید — محدودیت روزانه‌ای وجود ندارد.",
+        "mode_desc_speed": "با ۳ دقیقه روی تایمر شروع کنید. هر کلمه‌ای که حل کنید زمان اضافه می‌گیرید — حل با حدس‌های کمتر جایزه بیشتری دارد (۶۰+ ثانیه برای ۱ حدس، ۱۰+ ثانیه برای ۶). کلمات ناموفق ۳۰ ثانیه کم می‌کنند. با حل پیاپی کلمات تا ۳ برابر ضریب امتیاز بسازید. هرچه بیشتر دوام بیاورید، تایمر سریع‌تر می‌شود — هر ۳ کلمه فشار بیشتر می‌شود.",
+        "mode_desc_multiboard": "{modeName} شما را به چالش می‌کشد تا {boardCount} صفحه Wordle را همزمان و فقط با {maxGuesses} حدس حل کنید. هر حدس روی همه صفحه‌های حل‌نشده ظاهر می‌شود. صفحه‌ها پس از حل ثابت می‌مانند. صفحه‌کلید رنگی تقسیم‌شده نشان می‌دهد کدام حروف روی کدام صفحه درست هستند. با کلمات پرتکرار شروع کنید تا روی همه صفحه‌ها سرنخ جمع کنید.",
         "faq": [
             {
-                "q": "How do I play Wordle in {langName}?",
-                "a": "Visit wordle.global/{lang} to play the daily Wordle in {langName}. You have 6 tries to guess a 5-letter word. After each guess, tiles turn green (correct letter, correct position), yellow (correct letter, wrong position), or gray (letter not in the word)."
+                "q": "چطور Wordle را به {langName} بازی کنم؟",
+                "a": "به wordle.global/{lang} بروید تا Wordle روزانه را به {langName} بازی کنید. شما ۶ تلاش دارید تا یک کلمه ۵ حرفی را حدس بزنید. پس از هر حدس، خانه‌ها سبز (حرف درست، جای درست)، زرد (حرف درست، جای اشتباه) یا خاکستری (حرف در کلمه نیست) می‌شوند."
             },
             {
-                "q": "Is there a new puzzle every day?",
-                "a": "Yes. A new word is chosen each day. Everyone playing in the same language gets the same word, so you can compare results with friends."
+                "q": "هر روز یک پازل جدید هست؟",
+                "a": "بله. هر روز یک کلمه جدید انتخاب می‌شود. همه کسانی که به یک زبان بازی می‌کنند کلمه یکسانی می‌گیرند، پس می‌توانید نتایج‌تان را با دوستان مقایسه کنید."
             },
             {
-                "q": "Is Wordle Global free?",
-                "a": "Yes. The daily puzzle, unlimited mode, and all game modes are completely free in all 80+ languages. No account or download required."
+                "q": "آیا Wordle Global رایگان است؟",
+                "a": "بله. پازل روزانه، حالت نامحدود و همه حالت‌های بازی در بیش از ۸۰ زبان کاملاً رایگان هستند. نیازی به حساب کاربری یا دانلود نیست."
             },
             {
-                "q": "Can I play more than once a day?",
-                "a": "Yes — try Unlimited mode at wordle.global/{lang}/unlimited for endless games with no waiting. Your daily streak is tracked separately."
+                "q": "می‌توانم بیشتر از یک بار در روز بازی کنم؟",
+                "a": "بله — حالت نامحدود را در wordle.global/{lang}/unlimited امتحان کنید. بازی بی‌پایان بدون انتظار. رکورد روزانه شما جداگانه محاسبه می‌شود."
             }
         ],
         "mode_faq": {
             "unlimited": [
                 {
-                    "q": "What is Wordle Unlimited in {langName}?",
-                    "a": "Wordle Unlimited lets you play as many Wordle games as you want in {langName}, without waiting for tomorrow's daily puzzle. Each game gives you a new random word to guess in 6 tries."
+                    "q": "Wordle نامحدود به {langName} چیست؟",
+                    "a": "Wordle نامحدود به شما اجازه می‌دهد هر چقدر بخواهید به {langName} Wordle بازی کنید، بدون انتظار برای پازل فردا. هر بار یک کلمه تصادفی جدید برای حدس زدن در ۶ تلاش دریافت می‌کنید."
                 },
                 {
-                    "q": "Is Wordle Unlimited free?",
-                    "a": "Yes. Wordle Unlimited is completely free to play. No account, no download, no ads during gameplay."
+                    "q": "آیا Wordle نامحدود رایگان است؟",
+                    "a": "بله. Wordle نامحدود کاملاً رایگان است. بدون حساب کاربری، بدون دانلود، بدون تبلیغ."
                 },
                 {
-                    "q": "Does unlimited mode count toward my daily streak?",
-                    "a": "No. Unlimited mode has its own separate statistics. Your daily streak is only affected by the daily puzzle."
+                    "q": "آیا حالت نامحدود روی رکورد روزانه تأثیر می‌گذارد؟",
+                    "a": "خیر. حالت نامحدود آمار جداگانه خودش را دارد. رکورد روزانه شما فقط با پازل روزانه تغییر می‌کند."
                 },
                 {
-                    "q": "How many times can I play?",
-                    "a": "There is no limit. You can play as many rounds as you want. After each game, press \"Play Again\" to get a new word instantly."
+                    "q": "چند بار می‌توانم بازی کنم؟",
+                    "a": "محدودیتی وجود ندارد. هر چقدر بخواهید بازی کنید. پس از هر بازی، دکمه «بازی دوباره» را بزنید تا فوراً کلمه جدیدی بگیرید."
                 },
                 {
-                    "q": "What languages can I play Wordle Unlimited in?",
-                    "a": "Wordle Unlimited is available in over 80 languages at wordle.global, including English, Spanish, German, Finnish, Arabic, French, Italian, Portuguese, and many more."
+                    "q": "Wordle نامحدود به چه زبان‌هایی در دسترس است؟",
+                    "a": "Wordle نامحدود به بیش از ۸۰ زبان در wordle.global در دسترس است، از جمله انگلیسی، اسپانیایی، آلمانی، فنلاندی، عربی، فرانسوی، ایتالیایی، پرتغالی و بسیاری دیگر."
                 }
             ],
             "speed": [
                 {
-                    "q": "What is Speed Streak in {langName}?",
-                    "a": "Speed Streak is a timed Wordle mode in {langName}. You start with 3 minutes on the clock and solve as many words as you can. Solve a word quickly to earn bonus time."
+                    "q": "Speed Streak به {langName} چیست؟",
+                    "a": "Speed Streak یک حالت زمان‌دار Wordle به {langName} است. با ۳ دقیقه روی تایمر شروع می‌کنید و هر چقدر می‌توانید کلمه حل می‌کنید. حل سریع‌تر زمان اضافه می‌دهد."
                 },
                 {
-                    "q": "How does scoring work?",
-                    "a": "You earn points for each word solved. Fewer guesses and faster solves give more points. Build a combo by solving words in a row without failing — up to a 3x multiplier."
+                    "q": "سیستم امتیازدهی چگونه کار می‌کند؟",
+                    "a": "برای هر کلمه حل‌شده امتیاز می‌گیرید. حدس‌های کمتر و حل سریع‌تر امتیاز بیشتری دارند. با حل پیاپی کلمات بدون شکست، کمبو بسازید — تا ۳ برابر ضریب."
                 },
                 {
-                    "q": "What happens when the timer runs out?",
-                    "a": "The game ends and you see your final score, total words solved, max combo, and average guesses. You can play again immediately."
+                    "q": "وقتی زمان تمام شود چه می‌شود؟",
+                    "a": "بازی تمام می‌شود و امتیاز نهایی، تعداد کلمات حل‌شده، بیشترین کمبو و میانگین حدس‌ها را می‌بینید. بلافاصله می‌توانید دوباره بازی کنید."
                 },
                 {
-                    "q": "Is Speed Streak free?",
-                    "a": "Yes. Speed Streak is completely free in all 80+ languages. No account or download required."
+                    "q": "آیا Speed Streak رایگان است؟",
+                    "a": "بله. Speed Streak در بیش از ۸۰ زبان کاملاً رایگان است. نیازی به حساب کاربری یا دانلود نیست."
                 }
             ],
             "multiboard": [
                 {
-                    "q": "What is {modeName} in {langName}?",
-                    "a": "{modeName} is a multi-board Wordle variant in {langName}. You solve {boardCount} Wordle boards at the same time using {maxGuesses} guesses. Each guess is entered on all unsolved boards simultaneously."
+                    "q": "{modeName} به {langName} چیست؟",
+                    "a": "{modeName} یک نسخه چند‌صفحه‌ای از Wordle به {langName} است. شما {boardCount} صفحه Wordle را همزمان با {maxGuesses} حدس حل می‌کنید. هر حدس روی همه صفحه‌های حل‌نشده وارد می‌شود."
                 },
                 {
-                    "q": "How many guesses do I get in {modeName}?",
-                    "a": "You get {maxGuesses} guesses to solve all {boardCount} boards. Once a board is solved, it freezes and you can focus on the remaining boards."
+                    "q": "در {modeName} چند حدس دارم؟",
+                    "a": "شما {maxGuesses} حدس برای حل همه {boardCount} صفحه دارید. وقتی صفحه‌ای حل شود، ثابت می‌ماند و می‌توانید روی بقیه تمرکز کنید."
                 },
                 {
-                    "q": "What strategy works best for {modeName}?",
-                    "a": "Start with words that use common letters to gather information on all {boardCount} boards at once. Pay attention to the split-color keyboard — it shows which letters are correct on which boards."
+                    "q": "بهترین راهبرد برای {modeName} چیست؟",
+                    "a": "با کلماتی شروع کنید که حروف رایج دارند تا روی همه {boardCount} صفحه اطلاعات جمع کنید. به صفحه‌کلید رنگی تقسیم‌شده توجه کنید — نشان می‌دهد کدام حروف روی کدام صفحه درست هستند."
                 },
                 {
-                    "q": "Is {modeName} free?",
-                    "a": "Yes. {modeName} is completely free in all 80+ languages. No account or download required. Play as many rounds as you want."
+                    "q": "آیا {modeName} رایگان است؟",
+                    "a": "بله. {modeName} در بیش از ۸۰ زبان کاملاً رایگان است. نیازی به حساب کاربری یا دانلود نیست. هر چقدر بخواهید بازی کنید."
                 }
             ]
         },
         "howto": [
             {
-                "name": "Type a word",
-                "text": "Enter a valid 5-letter word in {langName} using the on-screen keyboard or your physical keyboard, then press Enter."
+                "name": "یک کلمه تایپ کنید",
+                "text": "یک کلمه معتبر ۵ حرفی به {langName} با صفحه‌کلید روی صفحه یا صفحه‌کلید فیزیکی وارد کنید و Enter بزنید."
             },
             {
-                "name": "Read the clues",
-                "text": "Green tiles mean the letter is correct and in the right spot. Yellow means the letter is in the word but in the wrong position. Gray means the letter is not in the word."
+                "name": "سرنخ‌ها را بخوانید",
+                "text": "خانه سبز یعنی حرف درست در جای درست است. زرد یعنی حرف در کلمه هست ولی جایش اشتباه است. خاکستری یعنی حرف در کلمه نیست."
             },
             {
-                "name": "Solve in 6 tries",
-                "text": "Use the color clues to narrow down the word. You have 6 guesses total. After the puzzle, see your stats and share your result."
+                "name": "در ۶ تلاش حل کنید",
+                "text": "از سرنخ‌های رنگی استفاده کنید تا کلمه را پیدا کنید. در مجموع ۶ حدس دارید. پس از پازل، آمار خود را ببینید و نتیجه را به اشتراک بگذارید."
             }
         ],
         "mode_howto": {
             "unlimited": [
                 {
-                    "name": "Start a game",
-                    "text": "Visit wordle.global/{lang}/unlimited to start playing Wordle Unlimited in {langName}. A random 5-letter word is chosen for you."
+                    "name": "شروع بازی",
+                    "text": "به wordle.global/{lang}/unlimited بروید تا Wordle نامحدود را به {langName} بازی کنید. یک کلمه تصادفی ۵ حرفی برای شما انتخاب می‌شود."
                 },
                 {
-                    "name": "Guess the word",
-                    "text": "Type a valid 5-letter word and press Enter. Green tiles mean the letter is correct and in the right spot. Yellow means the letter is in the word but in the wrong spot. Gray means the letter is not in the word."
+                    "name": "کلمه را حدس بزنید",
+                    "text": "یک کلمه معتبر ۵ حرفی تایپ کنید و Enter بزنید. خانه سبز یعنی حرف درست در جای درست. زرد یعنی حرف در کلمه هست ولی جایش اشتباه. خاکستری یعنی حرف در کلمه نیست."
                 },
                 {
-                    "name": "Play again instantly",
-                    "text": "After solving the word (or using all 6 guesses), press \"Play Again\" to get a new word immediately. No waiting for tomorrow."
+                    "name": "فوراً دوباره بازی کنید",
+                    "text": "پس از حل کلمه (یا استفاده از همه ۶ حدس)، دکمه «بازی دوباره» را بزنید تا فوراً کلمه جدیدی بگیرید. نیازی به انتظار تا فردا نیست."
                 }
             ],
             "speed": [
                 {
-                    "name": "Start the timer",
-                    "text": "Visit wordle.global/{lang}/speed and press Start. You begin with 3 minutes on the clock."
+                    "name": "تایمر را شروع کنید",
+                    "text": "به wordle.global/{lang}/speed بروید و Start را بزنید. با ۳ دقیقه روی تایمر شروع می‌کنید."
                 },
                 {
-                    "name": "Solve words quickly",
-                    "text": "Each word you solve earns bonus time (+10s to +60s depending on how few guesses you used). Failed words cost you 30 seconds."
+                    "name": "سریع حل کنید",
+                    "text": "هر کلمه‌ای که حل کنید زمان اضافه می‌گیرید (۱۰+ تا ۶۰+ ثانیه بسته به تعداد حدس‌ها). کلمات ناموفق ۳۰ ثانیه کم می‌کنند."
                 },
                 {
-                    "name": "Build your combo",
-                    "text": "Solve words consecutively to build a combo multiplier (up to 3x). The combo breaks if you fail a word. Try to beat your high score."
+                    "name": "کمبو بسازید",
+                    "text": "با حل پیاپی کلمات ضریب کمبو بسازید (تا ۳ برابر). اگر کلمه‌ای را از دست بدهید کمبو می‌شکند. سعی کنید رکورد خود را بشکنید."
                 }
             ],
             "multiboard": [
                 {
-                    "name": "Start a game",
-                    "text": "Visit wordle.global/{lang}/{modeName} to play {modeName} in {langName}. {boardCount} boards appear with different hidden words."
+                    "name": "شروع بازی",
+                    "text": "به wordle.global/{lang}/{modeName} بروید تا {modeName} را به {langName} بازی کنید. {boardCount} صفحه با کلمات پنهان مختلف ظاهر می‌شوند."
                 },
                 {
-                    "name": "Guess across all boards",
-                    "text": "Type a 5-letter word and press Enter. Your guess appears on all {boardCount} boards at once. Each board shows its own color clues (green, yellow, gray)."
+                    "name": "روی همه صفحه‌ها حدس بزنید",
+                    "text": "یک کلمه ۵ حرفی تایپ کنید و Enter بزنید. حدس شما روی همه {boardCount} صفحه همزمان ظاهر می‌شود. هر صفحه سرنخ‌های رنگی خودش (سبز، زرد، خاکستری) را نشان می‌دهد."
                 },
                 {
-                    "name": "Solve all {boardCount} boards",
-                    "text": "Solved boards freeze in place. Use the split-color keyboard to track which letters work on which boards. Solve all {boardCount} within {maxGuesses} guesses to win."
+                    "name": "همه {boardCount} صفحه را حل کنید",
+                    "text": "صفحه‌های حل‌شده ثابت می‌مانند. از صفحه‌کلید رنگی تقسیم‌شده استفاده کنید تا بفهمید کدام حروف روی کدام صفحه کار می‌کنند. همه {boardCount} صفحه را در {maxGuesses} حدس حل کنید تا ببرید."
                 }
             ]
         }

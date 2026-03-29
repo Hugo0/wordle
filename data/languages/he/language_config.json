@@ -64,7 +64,8 @@
         "copied": "הועתק!",
         "notification_word_not_valid": "המילה אינה תקינה",
         "hard_mode_position": "מצב קשה: {letter} חייבת להיות במיקום {position}",
-        "hard_mode_contains": "מצב קשה: הניחוש חייב להכיל את {letter}"
+        "hard_mode_contains": "מצב קשה: הניחוש חייב להכיל את {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -80,7 +81,15 @@
         "text_2_1": "הוא במילה ובמיקום הנכון!",
         "text_2_2": "הוא במילה, אבל לא במיקום הנכון.",
         "text_2_3": "אינו נוכח במילה שאתה מנסה לנחש.",
-        "text_3": "מילה חדשה תהיה זמינה בכל יום!"
+        "text_3": "מילה חדשה תהיה זמינה בכל יום!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "הגדרות",
@@ -165,6 +174,164 @@
         "pos_verb": "פועל",
         "pos_adjective": "שם תואר",
         "pos_adverb": "תואר הפועל",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "איך לשחק",
+        "tips_strategy": "טיפים ואסטרטגיה",
+        "more_modes": "מצבי משחק נוספים",
+        "play_in_languages": "שחקו ביותר מ-80 שפות",
+        "play_in_languages_sub": "כל השפות בחינם. לא צריך חשבון.",
+        "why_wordle_global": "למה Wordle Global",
+        "faq_title": "שאלות נפוצות",
+        "browse_all_languages": "עיינו בכל 80+ השפות",
+        "recent_words": "מילים אחרונות",
+        "view_all_words": "הצג את כל המילים",
+        "footer": "wordle.global — משחק המילה היומי החינמי ביותר מ-80 שפות",
+        "tile_correct": "נמצא במילה ובמיקום הנכון.",
+        "tile_semicorrect": "נמצא במילה אך במיקום הלא נכון.",
+        "tile_incorrect": "לא נמצא במילה כלל.",
+        "stat_players": "שחקנים",
+        "stat_guesses": "ניחושים",
+        "stat_languages": "שפות",
+        "stat_modes": "מצבי משחק",
+        "value_props": [
+            { "key": "languages", "title": "יותר מ-80 שפות", "desc": "מערבית ועד יורובה. ה-Wordle הרב-לשוני הגדול ביותר." },
+            { "key": "definitions", "title": "הגדרות מילים", "desc": "למדו את משמעות כל מילה לאחר המשחק. הרחיבו את אוצר המילים שלכם." },
+            { "key": "word_art", "title": "אומנות מילים ייחודית", "desc": "לכל מילה יש איור מותאם אישית. אספו את כולם." },
+            { "key": "themes", "title": "מצב כהה וערכות נושא", "desc": "מצבי תצוגה בהיר, כהה וניגודיות גבוהה לנוחות מרבית." },
+            { "key": "pwa", "title": "עובד בכל מקום", "desc": "PWA — התקינו על כל מכשיר. עובד גם אופליין. בלי הורדה." },
+            { "key": "free", "title": "חינם לתמיד", "desc": "לא צריך חשבון. לא צריך לשלם. פשוט שחקו." }
+        ],
+        "tips": [
+            { "title": "התחילו עם מילה עשירה בתנועות", "text": "מילים כמו CRANE, STARE או ADIEU בודקות אותיות נפוצות במהירות. לדעת אילו תנועות קיימות מצמצם את האפשרויות מהר." },
+            { "title": "השתמשו במה שאתם יודעים", "text": "אותיות ירוקות נשארות במקום. אותיות צהובות חייבות לזוז. אותיות אפורות מסולקות. כל ניחוש צריך להשתמש בשלושת הרמזים." },
+            { "title": "חשבו על תבניות נפוצות", "text": "באנגלית מילים מסתיימות לעתים קרובות ב-TION, IGHT, OUND, MENT. לכל שפה יש תבניות משלה — למדו אותן." },
+            { "title": "סננו, אל תנחשו באקראי", "text": "המילה השנייה שלכם צריכה לבדוק אותיות חדשות, לא לחזור על אלה שכבר אושרו. כסו כמה שיותר עיצורים." },
+            { "title": "שימו לב לאותיות כפולות", "text": "מילים כמו CREEK, FLOSS או APPLE הן מלכודות נפוצות. אם הרמזים לא מסתדרים, שקלו אות חוזרת." },
+            { "title": "השתמשו במצב קשה כדי להשתפר", "text": "מצב קשה מכריח אתכם להשתמש ברמזים מאושרים בכל ניחוש. זה בונה הרגלים טובים יותר גם כשחוזרים למצב רגיל." }
+        ],
+        "tips_speed": [
+            { "title": "התחילו עם CRANE או STARE", "text": "אותיות בתדירות גבוהה נותנות את הסיכוי הטוב ביותר לפתרון מהיר. כל שנייה חשובה." },
+            { "title": "אל תחשבו יותר מדי", "text": "Speed Streak מתגמל אינטואיציה. אם אתם רואים מילה סבירה, לכו על זה — בונוס הקומבו שווה יותר מפתרון מושלם." },
+            { "title": "הגנו על הקומבו שלכם", "text": "מילה שנכשלת שוברת את המכפיל. כשלא בטוחים, השתמשו בניחוש בטוח כדי לאסוף רמזים נוספים במקום להסתכן." },
+            { "title": "כוונו ל-2-3 ניחושים", "text": "בונוס הזמן ענק לפתרונות מהירים (+60 שניות לניחוש אחד, +30 שניות לשניים). ניחוש שני מסוכן יכול להשתלם מאוד." },
+            { "title": "למדו סיומות מילים נפוצות", "text": "תבניות כמו IGHT, OUND, ATCH חוזרות לעתים קרובות. זיהוי מיידי שלהן חוסך שניות בכל מילה." },
+            { "title": "הישארו רגועים כשהלחץ עולה", "text": "הטיימר מאיץ כל 3 מילים. חיפזון מוביל לשגיאות הקלדה וניחושים גרועים. קצב יציב מנצח פאניקה." }
+        ],
+        "tips_multiboard": [
+            { "title": "התחילו רחב", "text": "השתמשו במילים עם אותיות נפוצות (CRANE, STARE) כדי לאסוף רמזים בכל הלוחות בבת אחת." },
+            { "title": "עקבו אחרי המקלדת המפוצלת", "text": "המקלדת מראה צבעים לכל לוח. אות ירוקה בלוח אחד אך אפורה באחר מצמצמת אפשרויות במהירות." },
+            { "title": "תעדפו לוחות מתקשים", "text": "מקדו ניחושים בלוח עם הכי הרבה נעלמים. לוחות קלים יותר נפתרים לרוב מעצמם." },
+            { "title": "אל תבזבזו ניחושים מוקדמים", "text": "השתמשו ב-2-3 הניחושים הראשונים למילים עשירות במידע לפני שמתמקדים בלוחות ספציפיים." },
+            { "title": "חפשו אותיות משותפות", "text": "אם שני לוחות מראים E צהוב, מילה עם E במיקום חדש עוזרת לשני הלוחות בו-זמנית." },
+            { "title": "שמרו ניחוש למקרה חירום", "text": "אם נתקעתם בלוח האחרון, ניחוש רזרבי הוא ההבדל בין ניצחון להפסד." }
+        ],
+        "mode_desc_classic": "יש לכם 6 ניסיונות לנחש מילה נסתרת בת 5 אותיות. השתמשו ברמזי הצבע כדי לצמצם את התשובה.",
+        "mode_desc_unlimited": "יש לכם 6 ניסיונות לנחש מילה נסתרת בת 5 אותיות. השתמשו ברמזי הצבע כדי לצמצם את התשובה. אחרי כל משחק, לחצו \"שחק שוב\" כדי לקבל מילה חדשה מיד — אין הגבלה יומית.",
+        "mode_desc_speed": "מתחילים עם 3 דקות על השעון. כל מילה שפותרים מזכה בזמן בונוס — ככל שפותרים בפחות ניחושים כך הבונוס גדול יותר (+60 שניות לניחוש אחד, +10 שניות ל-6). מילה שנכשלת עולה 30 שניות. בנו קומבו על ידי פתרון מילים רצופות למכפיל עד 3x. הלחץ עולה ככל שפותרים יותר מילים — הטיימר מאיץ כל 3 מילים.",
+        "mode_desc_multiboard": "{modeName} מאתגר אתכם לפתור {boardCount} לוחות Wordle בו-זמנית תוך שימוש ב-{maxGuesses} ניחושים בלבד. כל ניחוש מופיע בכל הלוחות שטרם נפתרו בו-זמנית. לוחות קופאים כשנפתרים. המקלדת המפוצלת מראה אילו אותיות נכונות באילו לוחות. התחילו עם מילים בעלות אותיות נפוצות כדי לאסוף רמזים בכל הלוחות בבת אחת.",
+        "faq": [
+            { "q": "איך משחקים Wordle ב{langName}?", "a": "בקרו ב-wordle.global/{lang} כדי לשחק את ה-Wordle היומי ב{langName}. יש לכם 6 ניסיונות לנחש מילה בת 5 אותיות. אחרי כל ניחוש, האריחים הופכים לירוק (אות נכונה, מיקום נכון), צהוב (אות נכונה, מיקום שגוי) או אפור (האות לא במילה)." },
+            { "q": "יש פאזל חדש כל יום?", "a": "כן. מילה חדשה נבחרת כל יום. כל מי ששחקן באותה שפה מקבל את אותה מילה, כך שאפשר להשוות תוצאות עם חברים." },
+            { "q": "האם Wordle Global בחינם?", "a": "כן. הפאזל היומי, מצב ללא הגבלה וכל מצבי המשחק חינמיים לחלוטין בכל 80+ השפות. לא צריך חשבון או הורדה." },
+            { "q": "אפשר לשחק יותר מפעם ביום?", "a": "כן — נסו את מצב Unlimited ב-wordle.global/{lang}/unlimited למשחקים אינסופיים בלי לחכות. הרצף היומי שלכם נספר בנפרד." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "מה זה Wordle Unlimited ב{langName}?", "a": "Wordle Unlimited מאפשר לשחק כמה משחקי Wordle שתרצו ב{langName}, בלי לחכות לפאזל היומי של מחר. כל משחק נותן מילה אקראית חדשה לנחש ב-6 ניסיונות." },
+                { "q": "האם Wordle Unlimited בחינם?", "a": "כן. Wordle Unlimited חינמי לחלוטין. לא צריך חשבון, לא צריך הורדה, בלי פרסומות במהלך המשחק." },
+                { "q": "האם מצב Unlimited נספר ברצף היומי?", "a": "לא. למצב Unlimited יש סטטיסטיקות נפרדות משלו. הרצף היומי שלכם מושפע רק מהפאזל היומי." },
+                { "q": "כמה פעמים אפשר לשחק?", "a": "אין הגבלה. אפשר לשחק כמה סיבובים שתרצו. אחרי כל משחק, לחצו \"שחק שוב\" כדי לקבל מילה חדשה מיד." },
+                { "q": "באילו שפות אפשר לשחק Wordle Unlimited?", "a": "Wordle Unlimited זמין ביותר מ-80 שפות ב-wordle.global, כולל אנגלית, ספרדית, גרמנית, פינית, ערבית, צרפתית, איטלקית, פורטוגזית ועוד רבות." }
+            ],
+            "speed": [
+                { "q": "מה זה Speed Streak ב{langName}?", "a": "Speed Streak הוא מצב Wordle מתוזמן ב{langName}. מתחילים עם 3 דקות על השעון ופותרים כמה שיותר מילים. פתרו מילה מהר כדי להרוויח זמן בונוס." },
+                { "q": "איך עובדת מערכת הניקוד?", "a": "מרוויחים נקודות על כל מילה שנפתרת. פחות ניחושים ופתרון מהיר יותר מעניקים יותר נקודות. בנו קומבו על ידי פתרון מילים ברצף בלי להיכשל — עד מכפיל 3x." },
+                { "q": "מה קורה כשהזמן נגמר?", "a": "המשחק מסתיים ואתם רואים את הניקוד הסופי, סך המילים שנפתרו, קומבו מקסימלי וממוצע ניחושים. אפשר לשחק שוב מיד." },
+                { "q": "האם Speed Streak בחינם?", "a": "כן. Speed Streak חינמי לחלוטין בכל 80+ השפות. לא צריך חשבון או הורדה." }
+            ],
+            "multiboard": [
+                { "q": "מה זה {modeName} ב{langName}?", "a": "{modeName} הוא משחק Wordle מרובה לוחות ב{langName}. פותרים {boardCount} לוחות Wordle בו-זמנית תוך שימוש ב-{maxGuesses} ניחושים. כל ניחוש מוזן בכל הלוחות שטרם נפתרו בו-זמנית." },
+                { "q": "כמה ניחושים מקבלים ב-{modeName}?", "a": "מקבלים {maxGuesses} ניחושים כדי לפתור את כל {boardCount} הלוחות. ברגע שלוח נפתר, הוא קופא ואפשר להתמקד בלוחות הנותרים." },
+                { "q": "איזו אסטרטגיה עובדת הכי טוב ב-{modeName}?", "a": "התחילו עם מילים שמשתמשות באותיות נפוצות כדי לאסוף מידע על כל {boardCount} הלוחות בבת אחת. שימו לב למקלדת המפוצלת — היא מראה אילו אותיות נכונות באילו לוחות." },
+                { "q": "האם {modeName} בחינם?", "a": "כן. {modeName} חינמי לחלוטין בכל 80+ השפות. לא צריך חשבון או הורדה. שחקו כמה סיבובים שתרצו." }
+            ]
+        },
+        "howto": [
+            { "name": "הקלידו מילה", "text": "הזינו מילה תקינה בת 5 אותיות ב{langName} באמצעות המקלדת שעל המסך או המקלדת הפיזית, ולחצו Enter." },
+            { "name": "קראו את הרמזים", "text": "אריחים ירוקים מסמנים שהאות נכונה ובמיקום הנכון. צהוב אומר שהאות במילה אך במיקום הלא נכון. אפור אומר שהאות לא במילה." },
+            { "name": "פתרו ב-6 ניסיונות", "text": "השתמשו ברמזי הצבע כדי לצמצם את המילה. יש לכם 6 ניחושים בסך הכל. אחרי הפאזל, צפו בסטטיסטיקות ושתפו את התוצאה." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "התחילו משחק", "text": "בקרו ב-wordle.global/{lang}/unlimited כדי להתחיל לשחק Wordle Unlimited ב{langName}. מילה אקראית בת 5 אותיות נבחרת עבורכם." },
+                { "name": "נחשו את המילה", "text": "הקלידו מילה תקינה בת 5 אותיות ולחצו Enter. אריחים ירוקים מסמנים שהאות נכונה ובמיקום הנכון. צהוב אומר שהאות במילה אך במיקום הלא נכון. אפור אומר שהאות לא במילה." },
+                { "name": "שחקו שוב מיד", "text": "אחרי פתרון המילה (או ניצול כל 6 הניחושים), לחצו \"שחק שוב\" כדי לקבל מילה חדשה מיד. בלי לחכות למחר." }
+            ],
+            "speed": [
+                { "name": "התחילו את הטיימר", "text": "בקרו ב-wordle.global/{lang}/speed ולחצו \"התחל\". מתחילים עם 3 דקות על השעון." },
+                { "name": "פתרו מילים מהר", "text": "כל מילה שפותרים מזכה בזמן בונוס (+10 שניות עד +60 שניות, בהתאם למספר הניחושים). מילה שנכשלת עולה 30 שניות." },
+                { "name": "בנו את הקומבו", "text": "פתרו מילים ברצף כדי לבנות מכפיל קומבו (עד 3x). הקומבו נשבר אם נכשלים במילה. נסו לשבור את השיא שלכם." }
+            ],
+            "multiboard": [
+                { "name": "התחילו משחק", "text": "בקרו ב-wordle.global/{lang}/{modeName} כדי לשחק {modeName} ב{langName}. {boardCount} לוחות מופיעים עם מילים נסתרות שונות." },
+                { "name": "נחשו בכל הלוחות", "text": "הקלידו מילה בת 5 אותיות ולחצו Enter. הניחוש מופיע בכל {boardCount} הלוחות בבת אחת. כל לוח מציג רמזי צבע משלו (ירוק, צהוב, אפור)." },
+                { "name": "פתרו את כל {boardCount} הלוחות", "text": "לוחות שנפתרו קופאים במקומם. השתמשו במקלדת המפוצלת כדי לעקוב אחרי אילו אותיות עובדות באילו לוחות. פתרו את כל {boardCount} תוך {maxGuesses} ניחושים כדי לנצח." }
+            ]
+        }
     }
 }

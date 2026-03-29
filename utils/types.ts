@@ -108,6 +108,7 @@ export interface LanguageText {
     copied?: string;
     'notification-copied'?: string;
     'notification-partial-word'?: string;
+    win_words?: string;
 }
 
 export interface LanguageHelp {
@@ -122,6 +123,14 @@ export interface LanguageHelp {
     text_2_2: string;
     text_2_3: string;
     text_3: string;
+    speed_how_it_works?: string;
+    speed_explanation?: string;
+    speed_time_bonuses?: string;
+    speed_guesses_to_time?: string;
+    speed_scoring?: string;
+    speed_scoring_explanation?: string;
+    speed_pressure?: string;
+    speed_pressure_explanation?: string;
 }
 
 export interface UiStrings {
@@ -208,6 +217,64 @@ export interface UiStrings {
     pos_adjective: string;
     pos_adverb: string;
     pos_other: string;
+    // Stats & streak modal
+    play_to_reveal?: string;
+    board?: string;
+    new_game?: string;
+    share_result?: string;
+    unlimited_mode?: string;
+    day_streak?: string;
+    last_28_days?: string;
+    weekday_initials?: string;
+    won?: string;
+    lost?: string;
+    missed?: string;
+    current?: string;
+    longest?: string;
+    wins_by_language?: string;
+    played?: string;
+    show_less?: string;
+    show_more_count?: string;
+    streak_footer?: string;
+    // Speed mode
+    speed_streak?: string;
+    time_up?: string;
+    points?: string;
+    solved?: string;
+    combo?: string;
+    avg_guesses?: string;
+    failed?: string;
+    the_word_was?: string;
+    words_solved?: string;
+    play_again?: string;
+    per_word?: string;
+    // Post-game & copy
+    new_word?: string;
+    try_another_mode?: string;
+    copy_your_results?: string;
+    copy_instructions?: string;
+    done?: string;
+    // Error page
+    error_404?: string;
+    error_500?: string;
+    play_wordle?: string;
+    or_pick_language?: string;
+    skip_to_game?: string;
+    // Game mode labels & descriptions
+    mode_daily_label?: string;
+    mode_daily_desc?: string;
+    mode_unlimited_label?: string;
+    mode_unlimited_desc?: string;
+    mode_speed_label?: string;
+    mode_speed_desc?: string;
+    mode_dordle_desc?: string;
+    mode_quordle_desc?: string;
+    mode_octordle_desc?: string;
+    mode_sedecordle_desc?: string;
+    mode_duotrigordle_desc?: string;
+    mode_semantic_desc?: string;
+    mode_custom_desc?: string;
+    mode_party_desc?: string;
 }
 
 export interface LanguageConfig {

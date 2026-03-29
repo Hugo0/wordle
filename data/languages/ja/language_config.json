@@ -58,7 +58,8 @@
         "notification_word_not_valid": "その言葉は無効です",
         "notification_partial_word": "5文字すべて入力してください",
         "hard_mode_position": "ハードモード: {letter} は {position} 番目に必要です",
-        "hard_mode_contains": "ハードモード: {letter} を含めてください"
+        "hard_mode_contains": "ハードモード: {letter} を含めてください",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "help": {
         "title": "遊び方",
@@ -71,7 +72,15 @@
         "text_2_1": "は言葉に含まれていて、正しい位置にあります！",
         "text_2_2": "は言葉に含まれていますが、正しい位置ではありません。",
         "text_2_3": "は言葉に含まれていません。",
-        "text_3": "毎日新しい言葉が登場します！"
+        "text_3": "毎日新しい言葉が登場します！",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "設定",
@@ -156,6 +165,164 @@
         "pos_verb": "動詞",
         "pos_adjective": "形容詞",
         "pos_adverb": "副詞",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "遊び方",
+        "tips_strategy": "コツと攻略法",
+        "more_modes": "その他のゲームモード",
+        "play_in_languages": "80以上の言語で遊ぶ",
+        "play_in_languages_sub": "すべての言語が無料。アカウント不要。",
+        "why_wordle_global": "Wordle Globalを選ぶ理由",
+        "faq_title": "よくある質問",
+        "browse_all_languages": "80以上の言語を見る",
+        "recent_words": "最近の言葉",
+        "view_all_words": "すべての言葉を見る",
+        "footer": "wordle.global — 80以上の言語で遊べる無料の毎日の言葉あてゲーム",
+        "tile_correct": "は言葉に含まれていて、正しい位置にあります。",
+        "tile_semicorrect": "は言葉に含まれていますが、位置が違います。",
+        "tile_incorrect": "は言葉に含まれていません。",
+        "stat_players": "プレイヤー",
+        "stat_guesses": "推測回数",
+        "stat_languages": "言語",
+        "stat_modes": "ゲームモード",
+        "value_props": [
+            { "key": "languages", "title": "80以上の言語", "desc": "アラビア語からヨルバ語まで。世界最大の多言語Wordle。" },
+            { "key": "definitions", "title": "言葉の意味", "desc": "プレイ後に毎回言葉の意味を学べます。語彙力を広げよう。" },
+            { "key": "word_art", "title": "ユニークなワードアート", "desc": "毎回の言葉にオリジナルのイラスト付き。全部集めよう。" },
+            { "key": "themes", "title": "ダークモードとテーマ", "desc": "ライト、ダーク、ハイコントラストモードで快適にプレイ。" },
+            { "key": "pwa", "title": "どこでも使える", "desc": "PWA — どのデバイスでもインストール可能。オフラインでも遊べる。ダウンロード不要。" },
+            { "key": "free", "title": "ずっと無料", "desc": "アカウント不要。課金なし。すぐに遊べます。" }
+        ],
+        "tips": [
+            { "title": "母音の多い言葉から始めよう", "text": "CRANE、STARE、ADIEUのような言葉はよく使われる文字を素早くチェックできます。どの母音があるか分かれば、選択肢が一気に絞れます。" },
+            { "title": "分かった情報を活かそう", "text": "緑の文字はそのまま固定。黄色の文字は位置を変えて。灰色の文字は除外。毎回の推測で3つの手がかりすべてを活用しましょう。" },
+            { "title": "よくあるパターンを考えよう", "text": "英語では-TION、-IGHT、-OUND、-MENTで終わる言葉が多いです。言語ごとに独自のパターンがあるので覚えましょう。" },
+            { "title": "消去法で絞ろう", "text": "2回目の推測では新しい文字を試しましょう。確認済みの文字を繰り返さず、まだテストしていない子音をできるだけ多くカバーしてください。" },
+            { "title": "二重文字に注意", "text": "CREEK、FLOSS、APPLEのような言葉はよくある落とし穴です。手がかりが合わないときは、同じ文字が2回使われていないか考えてみましょう。" },
+            { "title": "ハードモードで上達しよう", "text": "ハードモードでは確認済みの手がかりを毎回使う必要があります。通常モードに戻しても良い習慣が身につきます。" }
+        ],
+        "tips_speed": [
+            { "title": "CRANEかSTAREから始めよう", "text": "高頻度の文字で素早く解くチャンスが最大に。一秒一秒が勝負です。" },
+            { "title": "考えすぎないで", "text": "Speed Streakでは直感が大事。正解っぽい言葉が見えたら迷わず入力 — コンボボーナスの方が完璧な解答より価値があります。" },
+            { "title": "コンボを守ろう", "text": "失敗するとマルチプライヤーがリセットされます。確信がないときは安全な推測で手がかりを集めましょう。" },
+            { "title": "2〜3回で解くことを目指そう", "text": "素早く解いたときのタイムボーナスは大きい（1回で+60秒、2回で+30秒）。リスクのある2回目の推測が大きく報われることも。" },
+            { "title": "よくある語尾を覚えよう", "text": "-IGHT、-OUND、-ATCHなどのパターンは頻繁に出ます。瞬時に認識できれば1語あたり数秒の節約に。" },
+            { "title": "プレッシャーが上がっても冷静に", "text": "3語ごとにタイマーが速くなります。焦るとタイプミスにつながります。安定したペースがパニックに勝ちます。" }
+        ],
+        "tips_multiboard": [
+            { "title": "まずは幅広く", "text": "よく使われる文字の言葉（CRANE、STARE）で全ボードの手がかりを一度に集めましょう。" },
+            { "title": "分割キーボードを見よう", "text": "キーボードはボードごとに色が表示されます。あるボードで緑、別のボードで灰色の文字があれば、素早く選択肢を絞れます。" },
+            { "title": "苦戦しているボードを優先", "text": "不明な部分が最も多いボードに集中しましょう。簡単なボードは他の推測で自然に解けることが多いです。" },
+            { "title": "序盤の推測を無駄にしない", "text": "最初の2〜3回は情報量の多い言葉に使い、特定のボードを狙うのはその後にしましょう。" },
+            { "title": "共通する文字を探そう", "text": "2つのボードで黄色のEが出ていたら、Eを新しい位置に置いた言葉で両方のボードを同時に進められます。" },
+            { "title": "予備の推測を残しておこう", "text": "最後のボードで行き詰まったとき、予備の推測1回が勝敗を分けます。" }
+        ],
+        "mode_desc_classic": "隠された5文字の言葉を6回以内に当てましょう。色の手がかりを使って答えを絞り込みます。",
+        "mode_desc_unlimited": "隠された5文字の言葉を6回以内に当てましょう。色の手がかりを使って答えを絞り込みます。各ゲーム後、「もう一度プレイ」を押すとすぐに新しい言葉が出ます — 1日の回数制限はありません。",
+        "mode_desc_speed": "3分の持ち時間でスタート。言葉を解くたびにボーナスタイムを獲得 — 少ない推測で解くほど大きなボーナス（1回で+60秒、6回で+10秒）。失敗すると30秒減。連続で解いてコンボを貯めると最大3倍のスコアマルチプライヤー。3語解くごとにタイマーが加速し、プレッシャーが上がります。",
+        "mode_desc_multiboard": "{modeName}では{boardCount}つのWordleボードを同時に、たった{maxGuesses}回の推測で解くことに挑戦します。各推測は未解決のすべてのボードに同時に入力されます。解けたボードは固定されます。分割カラーキーボードでどの文字がどのボードで正しいか確認できます。よく使われる文字の言葉から始めて、全ボードの手がかりを一度に集めましょう。",
+        "faq": [
+            { "q": "{langName}でWordleを遊ぶには？", "a": "wordle.global/{lang}にアクセスして{langName}の毎日のWordleをプレイしましょう。5文字の言葉を6回以内に当てます。推測のたびにタイルが緑（正しい文字・正しい位置）、黄（正しい文字・違う位置）、灰色（言葉にない文字）に変わります。" },
+            { "q": "毎日新しいパズルがありますか？", "a": "はい。毎日新しい言葉が選ばれます。同じ言語でプレイしている人全員が同じ言葉なので、友達と結果を比べられます。" },
+            { "q": "Wordle Globalは無料ですか？", "a": "はい。毎日のパズル、無制限モード、すべてのゲームモードが80以上の言語で完全に無料です。アカウントもダウンロードも不要です。" },
+            { "q": "1日に何回もプレイできますか？", "a": "はい — wordle.global/{lang}/unlimitedのUnlimitedモードで待ち時間なく何度でもプレイできます。毎日の連勝記録は別に管理されます。" }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "{langName}のWordle Unlimitedとは？", "a": "Wordle Unlimitedでは{langName}で好きなだけゲームをプレイできます。明日のパズルを待つ必要はありません。毎回新しいランダムな言葉を6回以内に当てます。" },
+                { "q": "Wordle Unlimitedは無料ですか？", "a": "はい。Wordle Unlimitedは完全に無料です。アカウント不要、ダウンロード不要、プレイ中の広告もありません。" },
+                { "q": "Unlimitedモードは連勝記録に影響しますか？", "a": "いいえ。Unlimitedモードには独自の統計があります。連勝記録は毎日のパズルのみで計算されます。" },
+                { "q": "何回プレイできますか？", "a": "回数制限はありません。好きなだけプレイできます。各ゲーム後、「もう一度プレイ」を押すとすぐに新しい言葉が出ます。" },
+                { "q": "Wordle Unlimitedはどの言語でプレイできますか？", "a": "Wordle Unlimitedはwordle.globalで英語、スペイン語、ドイツ語、フィンランド語、アラビア語、フランス語、イタリア語、ポルトガル語など80以上の言語で利用できます。" }
+            ],
+            "speed": [
+                { "q": "{langName}のSpeed Streakとは？", "a": "Speed Streakは{langName}のタイムアタック式Wordleモードです。3分の持ち時間でできるだけ多くの言葉を解きます。素早く解くとボーナスタイムを獲得できます。" },
+                { "q": "スコアの仕組みは？", "a": "解いた言葉ごとにポイントを獲得。少ない推測と速い解答でより多くのポイントが入ります。連続で解くとコンボが貯まり、最大3倍のマルチプライヤーに。" },
+                { "q": "タイマーが切れるとどうなりますか？", "a": "ゲーム終了となり、最終スコア、解いた言葉の数、最高コンボ、平均推測回数が表示されます。すぐにもう一度プレイできます。" },
+                { "q": "Speed Streakは無料ですか？", "a": "はい。Speed Streakは80以上のすべての言語で完全に無料です。アカウントもダウンロードも不要です。" }
+            ],
+            "multiboard": [
+                { "q": "{langName}の{modeName}とは？", "a": "{modeName}は{langName}のマルチボードWordle変種です。{boardCount}つのWordleボードを同時に{maxGuesses}回の推測で解きます。各推測は未解決のすべてのボードに同時に入力されます。" },
+                { "q": "{modeName}では何回推測できますか？", "a": "{maxGuesses}回の推測で{boardCount}つのボードすべてを解きます。ボードが解けると固定され、残りのボードに集中できます。" },
+                { "q": "{modeName}に最適な戦略は？", "a": "よく使われる文字の言葉で始めて、{boardCount}つのボードすべてで情報を集めましょう。分割カラーキーボードに注目 — どの文字がどのボードで正しいか表示されます。" },
+                { "q": "{modeName}は無料ですか？", "a": "はい。{modeName}は80以上のすべての言語で完全に無料です。アカウントもダウンロードも不要。好きなだけプレイできます。" }
+            ]
+        },
+        "howto": [
+            { "name": "言葉を入力", "text": "画面のキーボードまたは物理キーボードを使って{langName}の有効な5文字の言葉を入力し、Enterを押します。" },
+            { "name": "手がかりを読む", "text": "緑のタイルは文字が正しく正しい位置にあることを示します。黄色は言葉に含まれているが位置が違うこと。灰色は言葉に含まれていないことを示します。" },
+            { "name": "6回以内に解こう", "text": "色の手がかりを使って言葉を絞り込みます。推測は全部で6回。パズル後にあなたの統計を確認し、結果をシェアしましょう。" }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "ゲームを始める", "text": "wordle.global/{lang}/unlimitedにアクセスして{langName}のWordle Unlimitedをプレイ。ランダムな5文字の言葉が出題されます。" },
+                { "name": "言葉を当てよう", "text": "有効な5文字の言葉を入力してEnterを押します。緑のタイルは正しい文字・正しい位置。黄色は正しい文字・違う位置。灰色は言葉にない文字です。" },
+                { "name": "すぐにもう一度", "text": "言葉を解いた後（または6回使い切った後）、「もう一度プレイ」を押すとすぐに新しい言葉が出ます。明日まで待つ必要はありません。" }
+            ],
+            "speed": [
+                { "name": "タイマースタート", "text": "wordle.global/{lang}/speedにアクセスしてスタートを押します。3分の持ち時間で開始。" },
+                { "name": "素早く言葉を解こう", "text": "解いた言葉ごとにボーナスタイムを獲得（推測回数に応じて+10秒〜+60秒）。失敗すると30秒減ります。" },
+                { "name": "コンボを積み上げよう", "text": "連続で言葉を解くとコンボマルチプライヤーが上がります（最大3倍）。失敗するとコンボがリセット。ハイスコアを目指しましょう。" }
+            ],
+            "multiboard": [
+                { "name": "ゲームを始める", "text": "wordle.global/{lang}/{modeName}にアクセスして{langName}で{modeName}をプレイ。{boardCount}つのボードに異なる隠された言葉が表示されます。" },
+                { "name": "全ボードで推測", "text": "5文字の言葉を入力してEnterを押します。推測は{boardCount}つのボードすべてに同時に表示されます。各ボードが独自の色の手がかり（緑、黄、灰色）を表示します。" },
+                { "name": "{boardCount}つのボードすべてを解こう", "text": "解けたボードは固定されます。分割カラーキーボードでどの文字がどのボードで有効か確認しましょう。{maxGuesses}回の推測以内に{boardCount}つすべてを解けば勝利です。" }
+            ]
+        }
     }
 }

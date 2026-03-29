@@ -1,36 +1,59 @@
 <template>
-    <div
-        class="flex items-center gap-0.5 py-1 px-1 shrink-0 overflow-x-auto justify-center minimap-scroll"
-    >
+    <div class="minimap-container">
+        <!-- Left scroll arrow -->
         <button
-            v-for="i in boardCount"
-            :key="i - 1"
-            class="minimap-board shrink-0"
-            :class="{
-                'minimap-current': isOnCurrentPage(i - 1) && focusedBoard === null,
-                'minimap-focused': focusedBoard === i - 1,
-                'minimap-solved': game.boards[i - 1]?.solved,
-            }"
-            :aria-label="`Board ${i}${game.boards[i - 1]?.solved ? ' (solved)' : ''}`"
-            @click="$emit('jumpToBoard', i - 1)"
+            v-if="canScrollLeft"
+            class="minimap-arrow"
+            aria-label="Scroll board previews left"
+            @click="scrollLeft"
         >
-            <!-- Tiny grid of colored squares -->
-            <div class="minimap-grid">
-                <div v-for="row in miniRows(i - 1)" :key="row.index" class="minimap-row">
-                    <span
-                        v-for="(color, ci) in row.colors"
-                        :key="ci"
-                        class="minimap-cell"
-                        :class="color"
-                    />
+            <ChevronLeft :size="12" />
+        </button>
+
+        <!-- Scrollable minimap -->
+        <div ref="scrollEl" class="minimap-scroll" @scroll="updateScrollState">
+            <button
+                v-for="i in boardCount"
+                :key="i - 1"
+                class="minimap-board shrink-0"
+                :class="{
+                    'minimap-current': isOnCurrentPage(i - 1) && focusedBoard === null,
+                    'minimap-focused': focusedBoard === i - 1,
+                    'minimap-solved': game.boards[i - 1]?.solved,
+                }"
+                :aria-label="`Board ${i}${game.boards[i - 1]?.solved ? ' (solved)' : ''}`"
+                @click="$emit('jumpToBoard', i - 1)"
+            >
+                <div class="minimap-grid">
+                    <div v-for="row in miniRows(i - 1)" :key="row.index" class="minimap-row">
+                        <span
+                            v-for="(color, ci) in row.colors"
+                            :key="ci"
+                            class="minimap-cell"
+                            :class="color"
+                        />
+                    </div>
                 </div>
-            </div>
-            <span class="minimap-label">{{ i }}</span>
+                <span class="minimap-label">{{ i }}</span>
+            </button>
+        </div>
+
+        <!-- Right scroll arrow -->
+        <button
+            v-if="canScrollRight"
+            class="minimap-arrow"
+            aria-label="Scroll board previews right"
+            @click="scrollRight"
+        >
+            <ChevronRight :size="12" />
         </button>
     </div>
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted, nextTick } from 'vue';
+import { ChevronLeft, ChevronRight } from 'lucide-vue-next';
+
 const props = defineProps<{
     currentPage: number;
     boardsPerPage: number;
@@ -42,6 +65,26 @@ defineEmits<{ jumpToBoard: [boardIndex: number] }>();
 const game = useGameStore();
 const boardCount = computed(() => game.gameConfig.boardCount);
 
+const scrollEl = ref<HTMLElement | null>(null);
+const canScrollLeft = ref(false);
+const canScrollRight = ref(false);
+
+function updateScrollState() {
+    const el = scrollEl.value;
+    if (!el) return;
+    canScrollLeft.value = el.scrollLeft > 4;
+    canScrollRight.value = el.scrollLeft < el.scrollWidth - el.clientWidth - 4;
+}
+
+function scrollLeft() {
+    scrollEl.value?.scrollBy({ left: -120, behavior: 'smooth' });
+}
+function scrollRight() {
+    scrollEl.value?.scrollBy({ left: 120, behavior: 'smooth' });
+}
+
+onMounted(() => nextTick(() => updateScrollState()));
+
 function isOnCurrentPage(boardIndex: number): boolean {
     const start = props.currentPage * props.boardsPerPage;
     const end = start + props.boardsPerPage;
@@ -51,16 +94,11 @@ function isOnCurrentPage(boardIndex: number): boolean {
 function miniRows(boardIndex: number) {
     const board = game.boards[boardIndex];
     if (!board) return [];
-
     const rows: { index: number; colors: string[] }[] = [];
-    const maxShow = 6;
-
-    for (let r = 0; r < board.tileClassesVisual.length && rows.length < maxShow; r++) {
+    for (let r = 0; r < board.tileClassesVisual.length && rows.length < 6; r++) {
         const classes = board.tileClassesVisual[r];
         if (!classes || !board.tilesVisual[r]?.some((t) => t !== '')) continue;
-
         const colors = classes.map((cls) => {
-            // Check incorrect FIRST — "incorrect" contains "correct" as substring
             if (cls.includes('incorrect')) return 'mc-incorrect';
             if (cls.includes('semicorrect')) return 'mc-semi';
             if (cls.includes('correct')) return 'mc-correct';
@@ -68,12 +106,48 @@ function miniRows(boardIndex: number) {
         });
         rows.push({ index: r, colors });
     }
-
     return rows;
 }
 </script>
 
 <style scoped>
+.minimap-container {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+    flex: 1 1 0;
+}
+.minimap-scroll {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.minimap-scroll::-webkit-scrollbar {
+    display: none;
+}
+.minimap-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid var(--color-rule, #d4cfc7);
+    background: var(--color-paper, #faf8f5);
+    color: var(--color-muted, #8c8c8c);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s;
+}
+.minimap-arrow:hover {
+    color: var(--color-ink, #1a1a1a);
+    border-color: var(--color-ink, #1a1a1a);
+}
 .minimap-board {
     display: flex;
     flex-direction: column;
@@ -104,7 +178,6 @@ function miniRows(boardIndex: number) {
 .minimap-solved .minimap-label {
     color: var(--color-correct);
 }
-
 .minimap-grid {
     display: flex;
     flex-direction: column;
@@ -131,7 +204,6 @@ function miniRows(boardIndex: number) {
 .mc-empty {
     background: var(--color-rule, #d4cfc7);
 }
-
 .minimap-label {
     font-family: var(--font-mono, monospace);
     font-size: 7px;
@@ -141,12 +213,5 @@ function miniRows(boardIndex: number) {
 }
 .minimap-focused .minimap-label {
     color: var(--color-ink, #1a1a1a);
-}
-.minimap-scroll {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-.minimap-scroll::-webkit-scrollbar {
-    display: none;
 }
 </style>

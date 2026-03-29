@@ -51,7 +51,13 @@
         "share_challenge_win": "Jeg klarede dagens Wordle på {n} forsøg. Kan du slå mig?",
         "share_challenge_lose": "Jeg klarede ikke dagens Wordle. Kan du?",
         "notification_copied": "Kopieret til udklipsholder",
-        "notification_partial_word": "Indtast venligst et fuldt ord"
+        "notification_partial_word": "Indtast venligst et fuldt ord",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -67,7 +73,15 @@
         "text_2_1": "er i ordet og på den rigtige placering!",
         "text_2_2": "er i ordet, men ikke på den rigtige placering.",
         "text_2_3": "er ikke til stede i det ord, du forsøger at gætte.",
-        "text_3": "Et nyt ord vil være tilgængeligt hver dag!"
+        "text_3": "Et nyt ord vil være tilgængeligt hver dag!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Indstillinger",
@@ -152,7 +166,60 @@
         "pos_verb": "udsagnsord",
         "pos_adjective": "tillægsord",
         "pos_adverb": "biord",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
     },
     "seo": {
         "how_to_play": "Sådan spiller du",
@@ -172,42 +239,132 @@
         "stat_languages": "Sprog",
         "stat_modes": "Spiltilstande",
         "value_props": [
-            { "key": "languages", "title": "80+ sprog", "desc": "Fra arabisk til yoruba. Verdens største flersprogede Wordle." },
-            { "key": "definitions", "title": "Orddefinitioner", "desc": "Lær betydningen af hvert ord efter spillet. Udvid dit ordforråd." },
-            { "key": "word_art", "title": "Unik ordkunst", "desc": "Hvert ord har sin egen illustration. Saml dem alle." },
-            { "key": "themes", "title": "Mørk tilstand og temaer", "desc": "Lys, mørk og højkontrasttilstand for behagelig spilleoplevelse." },
-            { "key": "pwa", "title": "Virker overalt", "desc": "PWA — installer på enhver enhed. Virker offline. Ingen download nødvendig." },
-            { "key": "free", "title": "Gratis for altid", "desc": "Ingen konto. Ingen betalingsmur. Bare spil." }
+            {
+                "key": "languages",
+                "title": "80+ sprog",
+                "desc": "Fra arabisk til yoruba. Verdens største flersprogede Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Orddefinitioner",
+                "desc": "Lær betydningen af hvert ord efter spillet. Udvid dit ordforråd."
+            },
+            {
+                "key": "word_art",
+                "title": "Unik ordkunst",
+                "desc": "Hvert ord har sin egen illustration. Saml dem alle."
+            },
+            {
+                "key": "themes",
+                "title": "Mørk tilstand og temaer",
+                "desc": "Lys, mørk og højkontrasttilstand for behagelig spilleoplevelse."
+            },
+            {
+                "key": "pwa",
+                "title": "Virker overalt",
+                "desc": "PWA — installer på enhver enhed. Virker offline. Ingen download nødvendig."
+            },
+            {
+                "key": "free",
+                "title": "Gratis for altid",
+                "desc": "Ingen konto. Ingen betalingsmur. Bare spil."
+            }
         ],
         "tips": [
-            { "title": "Start med et vokalrigt ord", "text": "Ord som CRANE, STARE eller ADIEU tester hyppige bogstaver hurtigt. At kende vokalerne indsnævrer mulighederne." },
-            { "title": "Brug det du ved", "text": "Grønne bogstaver sidder fast. Gule skal flyttes. Grå er elimineret. Hvert gæt bør bruge alle tre slags ledetråde." },
-            { "title": "Tænk over almindelige mønstre", "text": "Dansk har sine egne hyppige bogstavkombinationer — lær at genkende dem." },
-            { "title": "Eliminér, gæt ikke tilfældigt", "text": "Dit andet ord bør teste nye bogstaver, ikke gentage allerede bekræftede." },
-            { "title": "Pas på dobbeltbogstaver", "text": "Nogle ord indeholder et gentaget bogstav. Hvis ledetrådene ikke passer, overvej et dobbeltbogstav." },
-            { "title": "Brug svær tilstand for at blive bedre", "text": "Svær tilstand tvinger dig til at bruge bekræftede ledetråde i hvert gæt. Det opbygger bedre vaner." }
+            {
+                "title": "Start med et vokalrigt ord",
+                "text": "Ord som CRANE, STARE eller ADIEU tester hyppige bogstaver hurtigt. At kende vokalerne indsnævrer mulighederne."
+            },
+            {
+                "title": "Brug det du ved",
+                "text": "Grønne bogstaver sidder fast. Gule skal flyttes. Grå er elimineret. Hvert gæt bør bruge alle tre slags ledetråde."
+            },
+            {
+                "title": "Tænk over almindelige mønstre",
+                "text": "Dansk har sine egne hyppige bogstavkombinationer — lær at genkende dem."
+            },
+            {
+                "title": "Eliminér, gæt ikke tilfældigt",
+                "text": "Dit andet ord bør teste nye bogstaver, ikke gentage allerede bekræftede."
+            },
+            {
+                "title": "Pas på dobbeltbogstaver",
+                "text": "Nogle ord indeholder et gentaget bogstav. Hvis ledetrådene ikke passer, overvej et dobbeltbogstav."
+            },
+            {
+                "title": "Brug svær tilstand for at blive bedre",
+                "text": "Svær tilstand tvinger dig til at bruge bekræftede ledetråde i hvert gæt. Det opbygger bedre vaner."
+            }
         ],
         "tips_speed": [
-            { "title": "Start med hyppige bogstaver", "text": "De mest almindelige bogstaver giver den bedste chance for hurtig løsning. Hvert sekund tæller." },
-            { "title": "Tænk ikke for meget", "text": "Speed Streak belønner instinkt. Ser du et sandsynligt ord, prøv det — kombobonus vejer mere end den perfekte løsning." },
-            { "title": "Beskyt din kombo", "text": "Et mislykket ord bryder multiplikatoren. Er du i tvivl, brug et sikkert gæt." },
-            { "title": "Sigt efter løsning i 2-3 gæt", "text": "Tidsbonussen er enorm ved hurtige løsninger (+60s ved 1 gæt, +30s ved 2)." },
-            { "title": "Lær almindelige ordendelser", "text": "At genkende tilbagevendende mønstre med det samme sparer sekunder per ord." },
-            { "title": "Bevar roen under pres", "text": "Timeren accelererer hvert 3. ord. Hastværk fører til fejl. Jævnt tempo slår panik." }
+            {
+                "title": "Start med hyppige bogstaver",
+                "text": "De mest almindelige bogstaver giver den bedste chance for hurtig løsning. Hvert sekund tæller."
+            },
+            {
+                "title": "Tænk ikke for meget",
+                "text": "Speed Streak belønner instinkt. Ser du et sandsynligt ord, prøv det — kombobonus vejer mere end den perfekte løsning."
+            },
+            {
+                "title": "Beskyt din kombo",
+                "text": "Et mislykket ord bryder multiplikatoren. Er du i tvivl, brug et sikkert gæt."
+            },
+            {
+                "title": "Sigt efter løsning i 2-3 gæt",
+                "text": "Tidsbonussen er enorm ved hurtige løsninger (+60s ved 1 gæt, +30s ved 2)."
+            },
+            {
+                "title": "Lær almindelige ordendelser",
+                "text": "At genkende tilbagevendende mønstre med det samme sparer sekunder per ord."
+            },
+            {
+                "title": "Bevar roen under pres",
+                "text": "Timeren accelererer hvert 3. ord. Hastværk fører til fejl. Jævnt tempo slår panik."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Start bredt", "text": "Brug ord med hyppige bogstaver for at samle ledetråde fra alle brætter på én gang." },
-            { "title": "Hold øje med det delte tastatur", "text": "Tastaturet viser farver per bræt. Et bogstav grønt på ét bræt men gråt på et andet indsnævrer hurtigt." },
-            { "title": "Prioritér svære brætter", "text": "Fokusér dine gæt på brættet med flest ubekendte. Lettere brætter løser sig ofte af sig selv." },
-            { "title": "Spild ikke de tidlige gæt", "text": "Brug de første 2-3 på informationsrige ord, før du sigter mod bestemte brætter." },
-            { "title": "Led efter fælles bogstaver", "text": "Viser to brætter et gult E, hjælper et ord med E på en ny position dem begge." },
-            { "title": "Gem et gæt til nødsituationer", "text": "Sidder du fast på det sidste bræt, gør et ekstra gæt forskellen mellem sejr og tab." }
+            {
+                "title": "Start bredt",
+                "text": "Brug ord med hyppige bogstaver for at samle ledetråde fra alle brætter på én gang."
+            },
+            {
+                "title": "Hold øje med det delte tastatur",
+                "text": "Tastaturet viser farver per bræt. Et bogstav grønt på ét bræt men gråt på et andet indsnævrer hurtigt."
+            },
+            {
+                "title": "Prioritér svære brætter",
+                "text": "Fokusér dine gæt på brættet med flest ubekendte. Lettere brætter løser sig ofte af sig selv."
+            },
+            {
+                "title": "Spild ikke de tidlige gæt",
+                "text": "Brug de første 2-3 på informationsrige ord, før du sigter mod bestemte brætter."
+            },
+            {
+                "title": "Led efter fælles bogstaver",
+                "text": "Viser to brætter et gult E, hjælper et ord med E på en ny position dem begge."
+            },
+            {
+                "title": "Gem et gæt til nødsituationer",
+                "text": "Sidder du fast på det sidste bræt, gør et ekstra gæt forskellen mellem sejr og tab."
+            }
         ],
         "faq": [
-            { "q": "Hvordan spiller jeg Wordle på {langName}?", "a": "Besøg wordle.global/{lang} for at spille dagens Wordle på {langName}. Du har 6 forsøg til at gætte et ord på 5 bogstaver. Efter hvert gæt bliver felterne grønne (rigtigt bogstav, rigtig plads), gule (rigtigt bogstav, forkert plads) eller grå (bogstavet er ikke i ordet)." },
-            { "q": "Er der et nyt puslespil hver dag?", "a": "Ja. Hver dag vælges et nyt ord. Alle spillere på samme sprog får det samme ord, så du kan sammenligne resultater med venner." },
-            { "q": "Er Wordle Global gratis?", "a": "Ja. Det daglige puslespil, ubegrænset tilstand og alle spiltilstande er helt gratis på 80+ sprog. Ingen konto eller download nødvendig." },
-            { "q": "Kan jeg spille mere end én gang om dagen?", "a": "Ja — prøv ubegrænset tilstand på wordle.global/{lang}/unlimited for uendelige spil uden ventetid. Din daglige stime spores separat." }
+            {
+                "q": "Hvordan spiller jeg Wordle på {langName}?",
+                "a": "Besøg wordle.global/{lang} for at spille dagens Wordle på {langName}. Du har 6 forsøg til at gætte et ord på 5 bogstaver. Efter hvert gæt bliver felterne grønne (rigtigt bogstav, rigtig plads), gule (rigtigt bogstav, forkert plads) eller grå (bogstavet er ikke i ordet)."
+            },
+            {
+                "q": "Er der et nyt puslespil hver dag?",
+                "a": "Ja. Hver dag vælges et nyt ord. Alle spillere på samme sprog får det samme ord, så du kan sammenligne resultater med venner."
+            },
+            {
+                "q": "Er Wordle Global gratis?",
+                "a": "Ja. Det daglige puslespil, ubegrænset tilstand og alle spiltilstande er helt gratis på 80+ sprog. Ingen konto eller download nødvendig."
+            },
+            {
+                "q": "Kan jeg spille mere end én gang om dagen?",
+                "a": "Ja — prøv ubegrænset tilstand på wordle.global/{lang}/unlimited for uendelige spil uden ventetid. Din daglige stime spores separat."
+            }
         ],
         "mode_desc_classic": "Du har 6 forsøg til at gætte et skjult ord på 5 bogstaver. Brug farveledetrådene til at indsnævre svaret.",
         "mode_desc_unlimited": "Du har 6 forsøg til at gætte et skjult ord på 5 bogstaver. Brug farveledetrådene til at indsnævre svaret. Efter hvert spil trykker du \"Spil igen\" for straks at få et nyt ord — ingen dagsgrænse.",
@@ -215,46 +372,123 @@
         "mode_desc_multiboard": "{modeName} udfordrer dig til at løse {boardCount} Wordle-brætter på én gang med kun {maxGuesses} gæt. Hvert gæt vises på alle uløste brætter. Løste brætter fryser. Det delte tastatur viser, hvilke bogstaver der er korrekte på hvilke brætter. Start med ord med hyppige bogstaver for at samle ledetråde fra alle brætter.",
         "mode_faq": {
             "unlimited": [
-                { "q": "Hvad er Wordle Unlimited på {langName}?", "a": "Wordle Unlimited lader dig spille så mange Wordle-spil du vil på {langName}, uden at vente på morgendagens puslespil. Hvert spil giver dig et nyt tilfældigt ord at gætte på 6 forsøg." },
-                { "q": "Er Wordle Unlimited gratis?", "a": "Ja. Wordle Unlimited er helt gratis. Ingen konto, ingen download, ingen reklamer under spillet." },
-                { "q": "Tæller ubegrænset tilstand med i min daglige stime?", "a": "Nej. Ubegrænset tilstand har sin egen separate statistik. Din daglige stime påvirkes kun af det daglige puslespil." },
-                { "q": "Hvor mange gange kan jeg spille?", "a": "Ingen grænse. Du kan spille så mange runder du vil. Efter hvert spil trykker du \"Spil igen\" for straks at få et nyt ord." },
-                { "q": "På hvilke sprog kan jeg spille Wordle Unlimited?", "a": "Wordle Unlimited er tilgængelig på over 80 sprog på wordle.global, herunder dansk, engelsk, spansk, tysk, finsk, arabisk, fransk, italiensk, portugisisk og mange flere." }
+                {
+                    "q": "Hvad er Wordle Unlimited på {langName}?",
+                    "a": "Wordle Unlimited lader dig spille så mange Wordle-spil du vil på {langName}, uden at vente på morgendagens puslespil. Hvert spil giver dig et nyt tilfældigt ord at gætte på 6 forsøg."
+                },
+                {
+                    "q": "Er Wordle Unlimited gratis?",
+                    "a": "Ja. Wordle Unlimited er helt gratis. Ingen konto, ingen download, ingen reklamer under spillet."
+                },
+                {
+                    "q": "Tæller ubegrænset tilstand med i min daglige stime?",
+                    "a": "Nej. Ubegrænset tilstand har sin egen separate statistik. Din daglige stime påvirkes kun af det daglige puslespil."
+                },
+                {
+                    "q": "Hvor mange gange kan jeg spille?",
+                    "a": "Ingen grænse. Du kan spille så mange runder du vil. Efter hvert spil trykker du \"Spil igen\" for straks at få et nyt ord."
+                },
+                {
+                    "q": "På hvilke sprog kan jeg spille Wordle Unlimited?",
+                    "a": "Wordle Unlimited er tilgængelig på over 80 sprog på wordle.global, herunder dansk, engelsk, spansk, tysk, finsk, arabisk, fransk, italiensk, portugisisk og mange flere."
+                }
             ],
             "speed": [
-                { "q": "Hvad er Speed Streak på {langName}?", "a": "Speed Streak er en tidsbestemt Wordle-tilstand på {langName}. Du starter med 3 minutter på uret og løser så mange ord du kan. Løs hurtigt for at tjene bonustid." },
-                { "q": "Hvordan fungerer pointgivning?", "a": "Du tjener point for hvert løst ord. Færre gæt og hurtigere løsninger giver flere point. Byg en kombo ved at løse ord i træk — op til 3x multiplikator." },
-                { "q": "Hvad sker der, når tiden løber ud?", "a": "Spillet slutter, og du ser din endelige score, løste ord, bedste kombo og gennemsnitlige gæt. Du kan spille igen med det samme." },
-                { "q": "Er Speed Streak gratis?", "a": "Ja. Speed Streak er helt gratis på alle 80+ sprog. Ingen konto eller download nødvendig." }
+                {
+                    "q": "Hvad er Speed Streak på {langName}?",
+                    "a": "Speed Streak er en tidsbestemt Wordle-tilstand på {langName}. Du starter med 3 minutter på uret og løser så mange ord du kan. Løs hurtigt for at tjene bonustid."
+                },
+                {
+                    "q": "Hvordan fungerer pointgivning?",
+                    "a": "Du tjener point for hvert løst ord. Færre gæt og hurtigere løsninger giver flere point. Byg en kombo ved at løse ord i træk — op til 3x multiplikator."
+                },
+                {
+                    "q": "Hvad sker der, når tiden løber ud?",
+                    "a": "Spillet slutter, og du ser din endelige score, løste ord, bedste kombo og gennemsnitlige gæt. Du kan spille igen med det samme."
+                },
+                {
+                    "q": "Er Speed Streak gratis?",
+                    "a": "Ja. Speed Streak er helt gratis på alle 80+ sprog. Ingen konto eller download nødvendig."
+                }
             ],
             "multiboard": [
-                { "q": "Hvad er {modeName} på {langName}?", "a": "{modeName} er en Wordle-variant med flere brætter på {langName}. Du løser {boardCount} Wordle-brætter på én gang med {maxGuesses} gæt. Hvert gæt indtastes på alle uløste brætter." },
-                { "q": "Hvor mange gæt får jeg i {modeName}?", "a": "Du får {maxGuesses} gæt til at løse alle {boardCount} brætter. Når et bræt er løst, fryser det, og du kan fokusere på de resterende." },
-                { "q": "Hvilken strategi virker bedst for {modeName}?", "a": "Start med ord med hyppige bogstaver for at samle information fra alle {boardCount} brætter på én gang. Hold øje med det delte tastatur — det viser, hvilke bogstaver der er korrekte på hvilke brætter." },
-                { "q": "Er {modeName} gratis?", "a": "Ja. {modeName} er helt gratis på alle 80+ sprog. Ingen konto eller download nødvendig. Spil så mange runder du vil." }
+                {
+                    "q": "Hvad er {modeName} på {langName}?",
+                    "a": "{modeName} er en Wordle-variant med flere brætter på {langName}. Du løser {boardCount} Wordle-brætter på én gang med {maxGuesses} gæt. Hvert gæt indtastes på alle uløste brætter."
+                },
+                {
+                    "q": "Hvor mange gæt får jeg i {modeName}?",
+                    "a": "Du får {maxGuesses} gæt til at løse alle {boardCount} brætter. Når et bræt er løst, fryser det, og du kan fokusere på de resterende."
+                },
+                {
+                    "q": "Hvilken strategi virker bedst for {modeName}?",
+                    "a": "Start med ord med hyppige bogstaver for at samle information fra alle {boardCount} brætter på én gang. Hold øje med det delte tastatur — det viser, hvilke bogstaver der er korrekte på hvilke brætter."
+                },
+                {
+                    "q": "Er {modeName} gratis?",
+                    "a": "Ja. {modeName} er helt gratis på alle 80+ sprog. Ingen konto eller download nødvendig. Spil så mange runder du vil."
+                }
             ]
         },
         "howto": [
-            { "name": "Skriv et ord", "text": "Indtast et gyldigt ord på 5 bogstaver på {langName} med skærmtastaturet eller dit fysiske tastatur, og tryk Enter." },
-            { "name": "Læs ledetrådene", "text": "Grønne felter betyder, at bogstavet er rigtigt og på den rigtige plads. Gult betyder, at bogstavet er i ordet men på forkert plads. Gråt betyder, at bogstavet ikke er i ordet." },
-            { "name": "Løs på 6 forsøg", "text": "Brug farveledetrådene til at indsnævre ordet. Du har 6 gæt i alt. Efter puslespillet ser du din statistik og kan dele dit resultat." }
+            {
+                "name": "Skriv et ord",
+                "text": "Indtast et gyldigt ord på 5 bogstaver på {langName} med skærmtastaturet eller dit fysiske tastatur, og tryk Enter."
+            },
+            {
+                "name": "Læs ledetrådene",
+                "text": "Grønne felter betyder, at bogstavet er rigtigt og på den rigtige plads. Gult betyder, at bogstavet er i ordet men på forkert plads. Gråt betyder, at bogstavet ikke er i ordet."
+            },
+            {
+                "name": "Løs på 6 forsøg",
+                "text": "Brug farveledetrådene til at indsnævre ordet. Du har 6 gæt i alt. Efter puslespillet ser du din statistik og kan dele dit resultat."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Start et spil", "text": "Besøg wordle.global/{lang}/unlimited for at starte Wordle Unlimited på {langName}. Et tilfældigt ord på 5 bogstaver vælges til dig." },
-                { "name": "Gæt ordet", "text": "Skriv et gyldigt ord på 5 bogstaver og tryk Enter. Grøn = rigtigt bogstav, rigtig plads. Gul = rigtigt bogstav, forkert plads. Grå = bogstavet er ikke i ordet." },
-                { "name": "Spil igen med det samme", "text": "Efter du har løst ordet (eller brugt alle 6 forsøg) trykker du \"Spil igen\" for straks at få et nyt ord. Ingen ventetid til i morgen." }
+                {
+                    "name": "Start et spil",
+                    "text": "Besøg wordle.global/{lang}/unlimited for at starte Wordle Unlimited på {langName}. Et tilfældigt ord på 5 bogstaver vælges til dig."
+                },
+                {
+                    "name": "Gæt ordet",
+                    "text": "Skriv et gyldigt ord på 5 bogstaver og tryk Enter. Grøn = rigtigt bogstav, rigtig plads. Gul = rigtigt bogstav, forkert plads. Grå = bogstavet er ikke i ordet."
+                },
+                {
+                    "name": "Spil igen med det samme",
+                    "text": "Efter du har løst ordet (eller brugt alle 6 forsøg) trykker du \"Spil igen\" for straks at få et nyt ord. Ingen ventetid til i morgen."
+                }
             ],
             "speed": [
-                { "name": "Start timeren", "text": "Besøg wordle.global/{lang}/speed og tryk Start. Du begynder med 3 minutter på uret." },
-                { "name": "Løs ord hurtigt", "text": "Hvert løst ord giver bonustid (+10s til +60s afhængigt af antal gæt). Mislykkede ord koster 30 sekunder." },
-                { "name": "Byg din kombo", "text": "Løs ord i træk for en kombomultiplikator (op til 3x). Komboen brydes, hvis du fejler. Prøv at slå din rekord." }
+                {
+                    "name": "Start timeren",
+                    "text": "Besøg wordle.global/{lang}/speed og tryk Start. Du begynder med 3 minutter på uret."
+                },
+                {
+                    "name": "Løs ord hurtigt",
+                    "text": "Hvert løst ord giver bonustid (+10s til +60s afhængigt af antal gæt). Mislykkede ord koster 30 sekunder."
+                },
+                {
+                    "name": "Byg din kombo",
+                    "text": "Løs ord i træk for en kombomultiplikator (op til 3x). Komboen brydes, hvis du fejler. Prøv at slå din rekord."
+                }
             ],
             "multiboard": [
-                { "name": "Start et spil", "text": "Besøg wordle.global/{lang}/{modeName} for at spille {modeName} på {langName}. {boardCount} brætter vises med forskellige skjulte ord." },
-                { "name": "Gæt på alle brætter", "text": "Skriv et ord på 5 bogstaver og tryk Enter. Dit gæt vises på alle {boardCount} brætter. Hvert bræt viser sine egne farveledetråde (grøn, gul, grå)." },
-                { "name": "Løs alle {boardCount} brætter", "text": "Løste brætter fryser. Brug det delte tastatur til at følge, hvilke bogstaver der virker på hvilke brætter. Løs alle {boardCount} på {maxGuesses} gæt for at vinde." }
+                {
+                    "name": "Start et spil",
+                    "text": "Besøg wordle.global/{lang}/{modeName} for at spille {modeName} på {langName}. {boardCount} brætter vises med forskellige skjulte ord."
+                },
+                {
+                    "name": "Gæt på alle brætter",
+                    "text": "Skriv et ord på 5 bogstaver og tryk Enter. Dit gæt vises på alle {boardCount} brætter. Hvert bræt viser sine egne farveledetråde (grøn, gul, grå)."
+                },
+                {
+                    "name": "Løs alle {boardCount} brætter",
+                    "text": "Løste brætter fryser. Brug det delte tastatur til at følge, hvilke bogstaver der virker på hvilke brætter. Løs alle {boardCount} på {maxGuesses} gæt for at vinde."
+                }
             ]
-        }
+        },
+        "recent_words": "Seneste ord",
+        "view_all_words": "Se alle ord"
     }
 }

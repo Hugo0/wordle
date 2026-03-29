@@ -135,7 +135,13 @@
         "share_challenge_win": "Tôi đã giải Wordle hôm nay trong {n} lần thử. Bạn có giỏi hơn không?",
         "share_challenge_lose": "Tôi không giải được Wordle hôm nay. Bạn có thể không?",
         "notification_copied": "Sao chép vào clipboard",
-        "notification_partial_word": "Vui lòng nhập một từ đầy đủ"
+        "notification_partial_word": "Vui lòng nhập một từ đầy đủ",
+        "shared": "Shared!",
+        "copied": "Copied!",
+        "notification_word_not_valid": "Word is not valid",
+        "hard_mode_position": "Hard mode: {letter} must be in position {position}",
+        "hard_mode_contains": "Hard mode: guess must contain {letter}",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -151,7 +157,15 @@
         "text_2_1": "là trong từ và ở vị trí chính xác!",
         "text_2_2": "là trong từ, nhưng không phải ở vị trí chính xác.",
         "text_2_3": "không có mặt trong từ bạn đang cố đoán.",
-        "text_3": "Một từ mới sẽ có sẵn mỗi ngày!"
+        "text_3": "Một từ mới sẽ có sẵn mỗi ngày!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Cài đặt",
@@ -236,6 +250,164 @@
         "pos_verb": "động từ",
         "pos_adjective": "tính từ",
         "pos_adverb": "trạng từ",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Cách chơi",
+        "tips_strategy": "Mẹo và chiến lược",
+        "more_modes": "Các chế độ chơi khác",
+        "play_in_languages": "Chơi bằng 80+ ngôn ngữ",
+        "play_in_languages_sub": "Tất cả ngôn ngữ đều miễn phí. Không cần tài khoản.",
+        "why_wordle_global": "Tại sao chọn Wordle Global",
+        "faq_title": "Câu hỏi thường gặp",
+        "browse_all_languages": "Xem tất cả 80+ ngôn ngữ",
+        "recent_words": "Từ gần đây",
+        "view_all_words": "Xem tất cả các từ",
+        "footer": "wordle.global — trò chơi đoán từ hàng ngày miễn phí bằng 80+ ngôn ngữ",
+        "tile_correct": "có trong từ và đúng vị trí.",
+        "tile_semicorrect": "có trong từ nhưng sai vị trí.",
+        "tile_incorrect": "không có trong từ.",
+        "stat_players": "Người chơi",
+        "stat_guesses": "Lượt đoán",
+        "stat_languages": "Ngôn ngữ",
+        "stat_modes": "Chế độ chơi",
+        "value_props": [
+            { "key": "languages", "title": "80+ ngôn ngữ", "desc": "Từ tiếng Ả Rập đến tiếng Yoruba. Wordle đa ngôn ngữ lớn nhất." },
+            { "key": "definitions", "title": "Định nghĩa từ", "desc": "Tìm hiểu nghĩa của mỗi từ sau khi chơi. Mở rộng vốn từ của bạn." },
+            { "key": "word_art", "title": "Hình minh họa độc đáo", "desc": "Mỗi từ đi kèm một hình minh họa riêng. Sưu tầm tất cả." },
+            { "key": "themes", "title": "Chế độ tối và giao diện", "desc": "Chế độ sáng, tối và tương phản cao để chơi thoải mái." },
+            { "key": "pwa", "title": "Hoạt động mọi nơi", "desc": "PWA — cài đặt trên mọi thiết bị. Chơi offline. Không cần tải về." },
+            { "key": "free", "title": "Miễn phí mãi mãi", "desc": "Không cần tài khoản. Không mất phí. Chỉ cần chơi." }
+        ],
+        "tips": [
+            { "title": "Bắt đầu bằng từ nhiều nguyên âm", "text": "Những từ như CRANE, STARE hay ADIEU giúp kiểm tra nhanh các chữ cái phổ biến. Biết nguyên âm nào có trong từ sẽ thu hẹp lựa chọn rất nhanh." },
+            { "title": "Tận dụng những gì bạn biết", "text": "Chữ xanh lá giữ nguyên vị trí. Chữ vàng phải đổi chỗ. Chữ xám bị loại. Mỗi lần đoán phải tận dụng cả ba manh mối." },
+            { "title": "Nghĩ về các mẫu phổ biến", "text": "Từ tiếng Anh thường kết thúc bằng -TION, -IGHT, -OUND, -MENT. Mỗi ngôn ngữ có mẫu riêng — hãy học chúng." },
+            { "title": "Loại trừ, đừng đoán đại", "text": "Từ thứ hai nên kiểm tra các chữ cái mới, không lặp lại những chữ đã xác nhận. Bao phủ càng nhiều phụ âm chưa kiểm tra càng tốt." },
+            { "title": "Chú ý chữ cái kép", "text": "Những từ như CREEK, FLOSS hay APPLE là bẫy phổ biến. Nếu manh mối không hợp lý, hãy xem xét việc một chữ cái xuất hiện hai lần." },
+            { "title": "Dùng chế độ khó để rèn luyện", "text": "Chế độ khó bắt bạn phải sử dụng manh mối đã xác nhận trong mỗi lần đoán. Điều này xây dựng thói quen tốt hơn." }
+        ],
+        "tips_speed": [
+            { "title": "Bắt đầu với CRANE hoặc STARE", "text": "Chữ cái tần số cao cho cơ hội tốt nhất để giải nhanh. Mỗi giây đều đáng giá." },
+            { "title": "Đừng suy nghĩ quá lâu", "text": "Speed Streak thưởng cho bản năng trực giác. Nếu thấy từ có vẻ đúng, hãy thử ngay — thưởng combo quan trọng hơn giải hoàn hảo." },
+            { "title": "Bảo vệ combo của bạn", "text": "Thất bại sẽ reset hệ số nhân. Khi không chắc chắn, dùng một lần đoán an toàn để thu thập thêm manh mối." },
+            { "title": "Nhắm giải trong 2-3 lần đoán", "text": "Thưởng thời gian cho giải nhanh rất lớn (+60 giây cho 1 lần đoán, +30 giây cho 2). Lần đoán thứ hai mạo hiểm có thể rất đáng giá." },
+            { "title": "Học các đuôi từ phổ biến", "text": "Các mẫu như -IGHT, -OUND, -ATCH lặp lại thường xuyên. Nhận ra chúng ngay lập tức giúp tiết kiệm giây mỗi từ." },
+            { "title": "Giữ bình tĩnh khi áp lực tăng", "text": "Đồng hồ tăng tốc mỗi 3 từ. Vội vã dẫn đến lỗi gõ. Nhịp độ ổn định thắng sự hoảng loạn." }
+        ],
+        "tips_multiboard": [
+            { "title": "Bắt đầu rộng", "text": "Dùng từ có chữ cái phổ biến (CRANE, STARE) để thu thập manh mối trên tất cả các bảng cùng lúc." },
+            { "title": "Theo dõi bàn phím tách màu", "text": "Bàn phím hiển thị màu cho từng bảng. Một chữ cái xanh trên bảng này nhưng xám trên bảng khác giúp thu hẹp lựa chọn nhanh." },
+            { "title": "Ưu tiên bảng khó nhất", "text": "Tập trung đoán cho bảng có nhiều ẩn số nhất. Những bảng dễ thường tự giải khi bạn đoán cho bảng khác." },
+            { "title": "Đừng lãng phí lần đoán đầu", "text": "Dùng 2-3 lần đoán đầu cho từ giàu thông tin trước khi nhắm vào bảng cụ thể." },
+            { "title": "Tìm chữ cái chung", "text": "Nếu hai bảng đều hiện E vàng, một từ có E ở vị trí mới giúp cả hai bảng cùng lúc." },
+            { "title": "Giữ một lần đoán dự phòng", "text": "Nếu bị kẹt ở bảng cuối, có thêm một lần đoán là sự khác biệt giữa thắng và thua." }
+        ],
+        "mode_desc_classic": "Bạn có 6 lần đoán để tìm từ ẩn gồm 5 chữ cái. Dùng manh mối màu sắc để thu hẹp đáp án.",
+        "mode_desc_unlimited": "Bạn có 6 lần đoán để tìm từ ẩn gồm 5 chữ cái. Dùng manh mối màu sắc để thu hẹp đáp án. Sau mỗi ván, nhấn \"Chơi lại\" để nhận từ mới ngay — không giới hạn số lần chơi mỗi ngày.",
+        "mode_desc_speed": "Bắt đầu với 3 phút trên đồng hồ. Mỗi từ bạn giải được sẽ cho thời gian bonus — giải với ít lần đoán hơn để nhận bonus lớn hơn (+60 giây cho 1 lần đoán, +10 giây cho 6). Thất bại mất 30 giây. Xây dựng combo bằng cách giải các từ liên tiếp để nhận hệ số nhân lên đến 3x. Áp lực tăng dần — đồng hồ tăng tốc mỗi 3 từ.",
+        "mode_desc_multiboard": "{modeName} thách thức bạn giải {boardCount} bảng Wordle cùng lúc chỉ với {maxGuesses} lần đoán. Mỗi lần đoán xuất hiện trên tất cả bảng chưa giải cùng lúc. Bảng đã giải sẽ đóng băng. Bàn phím tách màu cho thấy chữ cái nào đúng trên bảng nào. Bắt đầu với từ có chữ cái phổ biến để thu thập manh mối trên tất cả các bảng.",
+        "faq": [
+            { "q": "Làm sao để chơi Wordle bằng {langName}?", "a": "Truy cập wordle.global/{lang} để chơi Wordle hàng ngày bằng {langName}. Bạn có 6 lần đoán để tìm một từ 5 chữ cái. Sau mỗi lần đoán, ô chữ chuyển sang màu xanh lá (đúng chữ, đúng vị trí), vàng (đúng chữ, sai vị trí), hoặc xám (chữ không có trong từ)." },
+            { "q": "Có câu đố mới mỗi ngày không?", "a": "Có. Một từ mới được chọn mỗi ngày. Tất cả người chơi cùng ngôn ngữ đều nhận được cùng một từ, nên bạn có thể so sánh kết quả với bạn bè." },
+            { "q": "Wordle Global có miễn phí không?", "a": "Có. Câu đố hàng ngày, chế độ không giới hạn và tất cả chế độ chơi đều hoàn toàn miễn phí bằng 80+ ngôn ngữ. Không cần tài khoản hay tải về." },
+            { "q": "Có thể chơi hơn một lần mỗi ngày không?", "a": "Có — thử chế độ Unlimited tại wordle.global/{lang}/unlimited để chơi không giới hạn mà không cần chờ. Chuỗi ngày của bạn được theo dõi riêng." }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                { "q": "Wordle Unlimited bằng {langName} là gì?", "a": "Wordle Unlimited cho phép bạn chơi bao nhiêu ván tùy thích bằng {langName}, không cần đợi câu đố ngày mai. Mỗi ván cho bạn một từ ngẫu nhiên mới để đoán trong 6 lần thử." },
+                { "q": "Wordle Unlimited có miễn phí không?", "a": "Có. Wordle Unlimited hoàn toàn miễn phí. Không cần tài khoản, không tải về, không quảng cáo khi chơi." },
+                { "q": "Chế độ unlimited có tính vào chuỗi ngày không?", "a": "Không. Chế độ unlimited có thống kê riêng. Chuỗi ngày chỉ bị ảnh hưởng bởi câu đố hàng ngày." },
+                { "q": "Chơi được bao nhiêu lần?", "a": "Không giới hạn. Bạn có thể chơi bao nhiêu vòng tùy thích. Sau mỗi ván, nhấn \"Chơi lại\" để nhận từ mới ngay lập tức." },
+                { "q": "Có thể chơi Wordle Unlimited bằng những ngôn ngữ nào?", "a": "Wordle Unlimited có sẵn bằng hơn 80 ngôn ngữ tại wordle.global, bao gồm tiếng Anh, Tây Ban Nha, Đức, Phần Lan, Ả Rập, Pháp, Ý, Bồ Đào Nha và nhiều ngôn ngữ khác." }
+            ],
+            "speed": [
+                { "q": "Speed Streak bằng {langName} là gì?", "a": "Speed Streak là chế độ Wordle có giới hạn thời gian bằng {langName}. Bạn bắt đầu với 3 phút và giải càng nhiều từ càng tốt. Giải từ nhanh để nhận thêm thời gian." },
+                { "q": "Hệ thống tính điểm hoạt động thế nào?", "a": "Bạn nhận điểm cho mỗi từ giải được. Ít lần đoán hơn và giải nhanh hơn cho nhiều điểm hơn. Xây dựng combo bằng cách giải các từ liên tiếp — hệ số nhân lên đến 3x." },
+                { "q": "Chuyện gì xảy ra khi hết giờ?", "a": "Trò chơi kết thúc và bạn thấy điểm cuối cùng, tổng số từ đã giải, combo cao nhất và số lần đoán trung bình. Bạn có thể chơi lại ngay." },
+                { "q": "Speed Streak có miễn phí không?", "a": "Có. Speed Streak hoàn toàn miễn phí bằng 80+ ngôn ngữ. Không cần tài khoản hay tải về." }
+            ],
+            "multiboard": [
+                { "q": "{modeName} bằng {langName} là gì?", "a": "{modeName} là biến thể Wordle nhiều bảng bằng {langName}. Bạn giải {boardCount} bảng Wordle cùng lúc với {maxGuesses} lần đoán. Mỗi lần đoán được nhập trên tất cả bảng chưa giải cùng lúc." },
+                { "q": "Có bao nhiêu lần đoán trong {modeName}?", "a": "Bạn có {maxGuesses} lần đoán để giải tất cả {boardCount} bảng. Khi một bảng đã giải, nó đóng băng và bạn có thể tập trung vào những bảng còn lại." },
+                { "q": "Chiến lược nào hiệu quả nhất cho {modeName}?", "a": "Bắt đầu với từ có chữ cái phổ biến để thu thập thông tin trên tất cả {boardCount} bảng cùng lúc. Theo dõi bàn phím tách màu — nó cho biết chữ cái nào đúng trên bảng nào." },
+                { "q": "{modeName} có miễn phí không?", "a": "Có. {modeName} hoàn toàn miễn phí bằng 80+ ngôn ngữ. Không cần tài khoản hay tải về. Chơi bao nhiêu vòng tùy thích." }
+            ]
+        },
+        "howto": [
+            { "name": "Nhập một từ", "text": "Nhập một từ hợp lệ gồm 5 chữ cái bằng {langName} sử dụng bàn phím trên màn hình hoặc bàn phím vật lý, rồi nhấn Enter." },
+            { "name": "Đọc manh mối", "text": "Ô xanh lá nghĩa là chữ cái đúng và đúng vị trí. Ô vàng nghĩa là chữ cái có trong từ nhưng sai vị trí. Ô xám nghĩa là chữ cái không có trong từ." },
+            { "name": "Giải trong 6 lần đoán", "text": "Dùng manh mối màu sắc để thu hẹp từ cần tìm. Bạn có 6 lần đoán. Sau câu đố, xem thống kê và chia sẻ kết quả." }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                { "name": "Bắt đầu chơi", "text": "Truy cập wordle.global/{lang}/unlimited để chơi Wordle Unlimited bằng {langName}. Một từ 5 chữ cái ngẫu nhiên được chọn cho bạn." },
+                { "name": "Đoán từ", "text": "Nhập từ 5 chữ cái hợp lệ và nhấn Enter. Ô xanh lá nghĩa là đúng chữ đúng vị trí. Ô vàng là đúng chữ sai vị trí. Ô xám là chữ không có trong từ." },
+                { "name": "Chơi lại ngay", "text": "Sau khi giải từ (hoặc hết 6 lần đoán), nhấn \"Chơi lại\" để nhận từ mới ngay lập tức. Không cần đợi." }
+            ],
+            "speed": [
+                { "name": "Bắt đầu đồng hồ", "text": "Truy cập wordle.global/{lang}/speed và nhấn Bắt đầu. Bạn bắt đầu với 3 phút trên đồng hồ." },
+                { "name": "Giải từ nhanh", "text": "Mỗi từ giải được cho thời gian bonus (+10 giây đến +60 giây tùy theo số lần đoán). Thất bại mất 30 giây." },
+                { "name": "Xây dựng combo", "text": "Giải các từ liên tiếp để tăng hệ số nhân combo (lên đến 3x). Combo mất khi thất bại. Hãy cố vượt qua điểm cao nhất của bạn." }
+            ],
+            "multiboard": [
+                { "name": "Bắt đầu chơi", "text": "Truy cập wordle.global/{lang}/{modeName} để chơi {modeName} bằng {langName}. {boardCount} bảng hiện ra với các từ ẩn khác nhau." },
+                { "name": "Đoán trên tất cả các bảng", "text": "Nhập từ 5 chữ cái và nhấn Enter. Lần đoán của bạn xuất hiện trên tất cả {boardCount} bảng cùng lúc. Mỗi bảng hiển thị manh mối màu riêng (xanh lá, vàng, xám)." },
+                { "name": "Giải tất cả {boardCount} bảng", "text": "Bảng đã giải sẽ đóng băng. Dùng bàn phím tách màu để theo dõi chữ cái nào hoạt động trên bảng nào. Giải tất cả {boardCount} trong {maxGuesses} lần đoán để thắng." }
+            ]
+        }
     }
 }

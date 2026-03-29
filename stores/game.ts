@@ -12,7 +12,7 @@
  * change the save key format (language code from URL path) or remove the
  * tile_colors derivation without a migration path.
  */
-import { ref, computed, watch, triggerRef } from 'vue';
+import { ref, computed, watch, triggerRef, pauseTracking, resetTracking } from 'vue';
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '~/stores/language';
 import { useSettingsStore } from '~/stores/settings';
@@ -453,8 +453,9 @@ export const useGameStore = defineStore('game', () => {
         const rowIdx = activeRow.value;
 
         if (isMultiBoard.value) {
-            // Multi-board: write typed letter to ALL unsolved boards simultaneously
-            // Skip tileColors splice for 5+ boards (pop animation is disabled anyway)
+            // Batch all 32-board mutations: pause reactive tracking so Vue
+            // doesn't fire 192 individual reactive updates. One flush at end.
+            pauseTracking();
             const skipColors = boards.value.length > 4;
             for (const board of boards.value) {
                 if (board.solved) continue;
@@ -466,6 +467,15 @@ export const useGameStore = defineStore('game', () => {
                     if (!skipColors) board.tileColors[rowIdx]?.splice(cellIdx, 1, 'active');
                 }
             }
+            const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
+            const isFull = newCell === WORD_LENGTH;
+            for (const board of boards.value) {
+                if (board.solved) continue;
+                board.activeCell = newCell;
+                board.fullWordInputted = isFull;
+            }
+            resetTracking();
+            triggerRef(boards);
         } else {
             // Single-board: write via proxy (classic, unlimited, speed)
             const row = tiles.value[rowIdx];
@@ -475,21 +485,8 @@ export const useGameStore = defineStore('game', () => {
                 rowClasses.splice(cellIdx, 1, ACTIVE_TILE_CLASS);
                 tileColors.value[rowIdx]?.splice(cellIdx, 1, 'active');
             }
-        }
-
-        const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
-        const isFull = newCell === WORD_LENGTH;
-
-        if (isMultiBoard.value) {
-            // Sync cursor position across all unsolved boards
-            for (const board of boards.value) {
-                if (board.solved) continue;
-                board.activeCell = newCell;
-                board.fullWordInputted = isFull;
-            }
-        } else {
-            activeCell.value = newCell;
-            if (isFull) fullWordInputted.value = true;
+            activeCell.value = Math.min(activeCell.value + 1, WORD_LENGTH);
+            if (activeCell.value === WORD_LENGTH) fullWordInputted.value = true;
         }
     }
 
@@ -798,9 +795,10 @@ export const useGameStore = defineStore('game', () => {
             const rowIdx = activeRow.value;
 
             if (isMultiBoard.value) {
-                // Multi-board: decrement cursor and clear from ALL unsolved boards
+                // Batch all mutations — one reactive flush at end
                 const newCell = activeCell.value - 1;
                 const skipColors = boards.value.length > 4;
+                pauseTracking();
                 for (const board of boards.value) {
                     if (board.solved) continue;
                     board.activeCell = newCell;
@@ -813,6 +811,8 @@ export const useGameStore = defineStore('game', () => {
                         if (!skipColors) board.tileColors[rowIdx]?.splice(newCell, 1, 'empty');
                     }
                 }
+                resetTracking();
+                triggerRef(boards);
             } else {
                 activeCell.value--;
                 const cellIdx = activeCell.value;
@@ -825,6 +825,7 @@ export const useGameStore = defineStore('game', () => {
                 }
                 fullWordInputted.value = false;
             }
+            triggerRef(boards);
         } else if (!fullWordInputted.value && lang.acceptableCharacters.includes(key)) {
             addChar(key);
         }
@@ -850,6 +851,7 @@ export const useGameStore = defineStore('game', () => {
     /** Sync data layer to visual layer for the active board. Delegates to showTilesForBoard. */
     function showTiles(): void {
         showTilesForBoard(activeBoardIndex.value);
+        triggerRef(boards);
     }
 
     // ---- Animations ----
@@ -1652,6 +1654,7 @@ export const useGameStore = defineStore('game', () => {
                         board.tileClassesVisual[rowIndex]?.splice(visualIdx, 1, finalClass);
                         const tileChar = board.tiles[rowIndex]?.[visualIdx] || '';
                         board.tilesVisual[rowIndex]?.splice(visualIdx, 1, tileChar);
+                        triggerRef(boards);
 
                         const keyUpdate = board.pendingKeyUpdates[visualIdx];
                         if (keyUpdate) {
@@ -1707,12 +1710,11 @@ export const useGameStore = defineStore('game', () => {
     function showTilesAllBoards(onlyRow?: number): void {
         const visible = visibleBoardIndices.value;
         for (let i = 0; i < boards.value.length; i++) {
-            // Skip solved boards during typing
             if (onlyRow !== undefined && boards.value[i]?.solved) continue;
-            // During typing, only sync boards that are currently rendered
             if (onlyRow !== undefined && visible && !visible.has(i)) continue;
             showTilesForBoard(i, onlyRow);
         }
+        triggerRef(boards);
     }
 
     /** Check each unsolved board for a win, and check overall completion. */

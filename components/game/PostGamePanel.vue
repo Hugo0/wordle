@@ -30,9 +30,13 @@
                     v-for="mode in otherModes"
                     :key="mode.id"
                     :to="mode.href!"
-                    class="flex items-center gap-2 px-2.5 py-1.5 border border-rule hover:bg-paper-warm transition-colors"
+                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-200 hover:border-ink hover:bg-paper-warm hover:shadow-sm active:scale-95"
                 >
-                    <component :is="mode.icon" :size="14" class="text-muted shrink-0" />
+                    <component
+                        :is="mode.icon"
+                        :size="14"
+                        class="text-muted shrink-0 transition-colors duration-200 group-hover:text-ink"
+                    />
                     <div class="text-xs font-semibold text-ink truncate">{{ mode.label }}</div>
                 </NuxtLink>
             </div>

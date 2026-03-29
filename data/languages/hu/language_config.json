@@ -56,7 +56,8 @@
         "copied": "Másolva!",
         "notification_word_not_valid": "A szó nem érvényes",
         "hard_mode_position": "Nehéz mód: {letter} betűnek a {position}. pozícióban kell lennie",
-        "hard_mode_contains": "Nehéz mód: a tippnek tartalmaznia kell a {letter} betűt"
+        "hard_mode_contains": "Nehéz mód: a tippnek tartalmaznia kell a {letter} betűt",
+        "win_words": "Genius,Magnificent,Impressive,Splendid,Great,Phew"
     },
     "language_code_3": "",
     "language_code_iso_639_3": "",
@@ -72,7 +73,15 @@
         "text_2_1": "van a szóban és a helyes helyen!",
         "text_2_2": "a szóban van, de nem a megfelelő helyen.",
         "text_2_3": "nincs jelen a szóban, amit megpróbálsz kitalálni.",
-        "text_3": "Minden nap új szó lesz elérhető!"
+        "text_3": "Minden nap új szó lesz elérhető!",
+        "speed_how_it_works": "How it works",
+        "speed_explanation": "You start with 5 minutes on the clock. Solve words to earn bonus time. Miss a word and you lose 30 seconds.",
+        "speed_time_bonuses": "Time bonuses",
+        "speed_guesses_to_time": "Guesses used → time earned",
+        "speed_scoring": "Scoring",
+        "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
+        "speed_pressure": "Pressure ramp",
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
     },
     "ui": {
         "settings": "Beállítások",
@@ -157,7 +166,60 @@
         "pos_verb": "ige",
         "pos_adjective": "melléknév",
         "pos_adverb": "határozószó",
-        "pos_other": ""
+        "pos_other": "",
+        "play_to_reveal": "Play to reveal",
+        "board": "Board",
+        "new_game": "New Game",
+        "share_result": "Share Result",
+        "unlimited_mode": "Unlimited",
+        "day_streak": "Day Streak",
+        "last_28_days": "Last 28 Days",
+        "weekday_initials": "M,T,W,T,F,S,S",
+        "won": "Won",
+        "lost": "Lost",
+        "missed": "Missed",
+        "current": "Current",
+        "longest": "Longest",
+        "wins_by_language": "Wins by Language",
+        "played": "played",
+        "show_less": "Show less",
+        "show_more_count": "+{n} more",
+        "streak_footer": "Streak counts classic daily puzzles in any language. Play once a day to keep it going.",
+        "speed_streak": "Speed Streak",
+        "time_up": "Time's up!",
+        "points": "Points",
+        "solved": "Solved",
+        "combo": "Combo",
+        "avg_guesses": "Avg",
+        "failed": "Failed",
+        "the_word_was": "The word was",
+        "words_solved": "Words Solved",
+        "play_again": "Play Again",
+        "per_word": "per word",
+        "new_word": "New Word",
+        "try_another_mode": "Try another mode",
+        "copy_your_results": "Copy your results",
+        "copy_instructions": "Select all and copy (Ctrl+C / Cmd+C)",
+        "done": "Done",
+        "error_404": "This page doesn't exist.",
+        "error_500": "Something went wrong.",
+        "play_wordle": "Play Wordle",
+        "or_pick_language": "Or pick a language",
+        "skip_to_game": "Skip to game",
+        "mode_daily_label": "Daily Puzzle",
+        "mode_daily_desc": "One word per day. 6 guesses. The classic.",
+        "mode_unlimited_label": "Unlimited",
+        "mode_unlimited_desc": "Random words, no limit. Play as much as you want.",
+        "mode_speed_label": "Speed Streak",
+        "mode_speed_desc": "Race the clock. Solve as many words as you can before time runs out.",
+        "mode_dordle_desc": "2 boards, 1 keyboard, 7 guesses.",
+        "mode_quordle_desc": "4 boards, 1 keyboard, 9 guesses.",
+        "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
+        "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
+        "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
+        "mode_party_desc": "Play the same word with friends. See who solves it fastest."
     },
     "diacritic_map": {
         "a": [
@@ -194,42 +256,132 @@
         "stat_languages": "Nyelvek",
         "stat_modes": "Játékmódok",
         "value_props": [
-            { "key": "languages", "title": "80+ nyelv", "desc": "Az arabtól a jorubáig. A világ legnagyobb többnyelvű Wordle-ja." },
-            { "key": "definitions", "title": "Szómeghatározások", "desc": "Tanuld meg minden szó jelentését a játék után. Bővítsd a szókincsedet." },
-            { "key": "word_art", "title": "Egyedi szóillusztrációk", "desc": "Minden szóhoz egyedi illusztráció tartozik. Gyűjtsd össze mindet." },
-            { "key": "themes", "title": "Sötét mód és témák", "desc": "Világos, sötét és magas kontrasztú módok a kényelmes játékhoz." },
-            { "key": "pwa", "title": "Mindenhol működik", "desc": "PWA — telepítsd bármilyen eszközre. Offline is működik. Letöltés nélkül." },
-            { "key": "free", "title": "Örökre ingyenes", "desc": "Fiók nem kell. Nincs fizetőfal. Csak játssz." }
+            {
+                "key": "languages",
+                "title": "80+ nyelv",
+                "desc": "Az arabtól a jorubáig. A világ legnagyobb többnyelvű Wordle-ja."
+            },
+            {
+                "key": "definitions",
+                "title": "Szómeghatározások",
+                "desc": "Tanuld meg minden szó jelentését a játék után. Bővítsd a szókincsedet."
+            },
+            {
+                "key": "word_art",
+                "title": "Egyedi szóillusztrációk",
+                "desc": "Minden szóhoz egyedi illusztráció tartozik. Gyűjtsd össze mindet."
+            },
+            {
+                "key": "themes",
+                "title": "Sötét mód és témák",
+                "desc": "Világos, sötét és magas kontrasztú módok a kényelmes játékhoz."
+            },
+            {
+                "key": "pwa",
+                "title": "Mindenhol működik",
+                "desc": "PWA — telepítsd bármilyen eszközre. Offline is működik. Letöltés nélkül."
+            },
+            {
+                "key": "free",
+                "title": "Örökre ingyenes",
+                "desc": "Fiók nem kell. Nincs fizetőfal. Csak játssz."
+            }
         ],
         "tips": [
-            { "title": "Kezdj magánhangzóban gazdag szóval", "text": "A gyakori betűket tartalmazó szavak gyorsan tesztelik a lehetőségeket. A magánhangzók ismerete szűkíti a választékot." },
-            { "title": "Használd, amit tudsz", "text": "A zöld betűk maradnak. A sárgákat át kell helyezni. A szürkék kizárva. Minden tippnek mindhárom nyom típust ki kell használnia." },
-            { "title": "Gondolj a gyakori mintákra", "text": "A magyar nyelvnek megvannak a maga jellegzetes betűkombinációi — tanuld meg felismerni őket." },
-            { "title": "Szűkíts, ne találgass véletlenszerűen", "text": "A második szónak új betűket kell tesztelnie, nem a már megerősítetteket ismételnie." },
-            { "title": "Figyelj a dupla betűkre", "text": "Egyes szavak ismétlődő betűt tartalmaznak. Ha a nyomok nem stimmelnek, gondolj dupla betűre." },
-            { "title": "Használd a nehéz módot a fejlődéshez", "text": "A nehéz mód minden tippben a megerősített nyomok használatára kényszerít. Jobb szokásokat épít." }
+            {
+                "title": "Kezdj magánhangzóban gazdag szóval",
+                "text": "A gyakori betűket tartalmazó szavak gyorsan tesztelik a lehetőségeket. A magánhangzók ismerete szűkíti a választékot."
+            },
+            {
+                "title": "Használd, amit tudsz",
+                "text": "A zöld betűk maradnak. A sárgákat át kell helyezni. A szürkék kizárva. Minden tippnek mindhárom nyom típust ki kell használnia."
+            },
+            {
+                "title": "Gondolj a gyakori mintákra",
+                "text": "A magyar nyelvnek megvannak a maga jellegzetes betűkombinációi — tanuld meg felismerni őket."
+            },
+            {
+                "title": "Szűkíts, ne találgass véletlenszerűen",
+                "text": "A második szónak új betűket kell tesztelnie, nem a már megerősítetteket ismételnie."
+            },
+            {
+                "title": "Figyelj a dupla betűkre",
+                "text": "Egyes szavak ismétlődő betűt tartalmaznak. Ha a nyomok nem stimmelnek, gondolj dupla betűre."
+            },
+            {
+                "title": "Használd a nehéz módot a fejlődéshez",
+                "text": "A nehéz mód minden tippben a megerősített nyomok használatára kényszerít. Jobb szokásokat épít."
+            }
         ],
         "tips_speed": [
-            { "title": "Kezdj gyakori betűkkel", "text": "A leggyakoribb betűk adják a legjobb esélyt a gyors megoldásra. Minden másodperc számít." },
-            { "title": "Ne gondolkozz túl sokat", "text": "A Speed Streak az ösztönt jutalmazza. Ha látsz egy valószínű szót, próbáld meg — a kombóbónusz többet ér a tökéletes megoldásnál." },
-            { "title": "Védd a kombódat", "text": "Egy sikertelen szó megtöri a szorzót. Ha bizonytalan vagy, használj biztos tippet." },
-            { "title": "Célozz 2-3 tippes megoldásra", "text": "Az időbónusz hatalmas gyors megoldásoknál (+60s 1 tippel, +30s 2 tippel)." },
-            { "title": "Tanuld meg a gyakori szóvégződéseket", "text": "Az ismétlődő minták azonnali felismerése szavaként másodperceket takarít meg." },
-            { "title": "Maradj nyugodt nyomás alatt", "text": "Az időzítő 3 szavanként gyorsul. A kapkodás hibákhoz vezet. Az egyenletes tempó legyőzi a pánikot." }
+            {
+                "title": "Kezdj gyakori betűkkel",
+                "text": "A leggyakoribb betűk adják a legjobb esélyt a gyors megoldásra. Minden másodperc számít."
+            },
+            {
+                "title": "Ne gondolkozz túl sokat",
+                "text": "A Speed Streak az ösztönt jutalmazza. Ha látsz egy valószínű szót, próbáld meg — a kombóbónusz többet ér a tökéletes megoldásnál."
+            },
+            {
+                "title": "Védd a kombódat",
+                "text": "Egy sikertelen szó megtöri a szorzót. Ha bizonytalan vagy, használj biztos tippet."
+            },
+            {
+                "title": "Célozz 2-3 tippes megoldásra",
+                "text": "Az időbónusz hatalmas gyors megoldásoknál (+60s 1 tippel, +30s 2 tippel)."
+            },
+            {
+                "title": "Tanuld meg a gyakori szóvégződéseket",
+                "text": "Az ismétlődő minták azonnali felismerése szavaként másodperceket takarít meg."
+            },
+            {
+                "title": "Maradj nyugodt nyomás alatt",
+                "text": "Az időzítő 3 szavanként gyorsul. A kapkodás hibákhoz vezet. Az egyenletes tempó legyőzi a pánikot."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Kezdj szélesen", "text": "Használj gyakori betűs szavakat, hogy egyszerre gyűjts nyomokat az összes tábláról." },
-            { "title": "Figyeld az osztott billentyűzetet", "text": "A billentyűzet táblánként mutatja a színeket. Egy betű zöld az egyiken de szürke a másikon gyorsan szűkít." },
-            { "title": "A nehéz táblákra összpontosíts", "text": "Fókuszáld a tippjeidet a legtöbb ismeretlennel rendelkező táblára. A könnyebb táblák gyakran maguktól megoldódnak." },
-            { "title": "Ne pazarold az első tippeket", "text": "Az első 2-3 tippet használd információgazdag szavakra, mielőtt konkrét táblákat céloznál." },
-            { "title": "Keress közös betűket", "text": "Ha két tábla is sárga E-t mutat, egy szó E-vel új pozícióban mindkettőnek segít." },
-            { "title": "Tarts tartalékban egy tippet", "text": "Ha elakadsz az utolsó táblánál, egy extra tipp a különbség a győzelem és a vereség között." }
+            {
+                "title": "Kezdj szélesen",
+                "text": "Használj gyakori betűs szavakat, hogy egyszerre gyűjts nyomokat az összes tábláról."
+            },
+            {
+                "title": "Figyeld az osztott billentyűzetet",
+                "text": "A billentyűzet táblánként mutatja a színeket. Egy betű zöld az egyiken de szürke a másikon gyorsan szűkít."
+            },
+            {
+                "title": "A nehéz táblákra összpontosíts",
+                "text": "Fókuszáld a tippjeidet a legtöbb ismeretlennel rendelkező táblára. A könnyebb táblák gyakran maguktól megoldódnak."
+            },
+            {
+                "title": "Ne pazarold az első tippeket",
+                "text": "Az első 2-3 tippet használd információgazdag szavakra, mielőtt konkrét táblákat céloznál."
+            },
+            {
+                "title": "Keress közös betűket",
+                "text": "Ha két tábla is sárga E-t mutat, egy szó E-vel új pozícióban mindkettőnek segít."
+            },
+            {
+                "title": "Tarts tartalékban egy tippet",
+                "text": "Ha elakadsz az utolsó táblánál, egy extra tipp a különbség a győzelem és a vereség között."
+            }
         ],
         "faq": [
-            { "q": "Hogyan játszhatok Wordle-t {langName} nyelven?", "a": "Látogass el a wordle.global/{lang} oldalra a napi Wordle-höz {langName} nyelven. 6 tipped van kitalálni egy 5 betűs szót. Minden tipp után a mezők zöldre (helyes betű, helyes hely), sárgára (helyes betű, rossz hely) vagy szürkére (a betű nincs a szóban) váltanak." },
-            { "q": "Minden nap van új rejtvény?", "a": "Igen. Minden nap új szót választunk. Ugyanazon a nyelven játszó minden játékos ugyanazt a szót kapja, így összehasonlíthatod az eredményeidet a barátaiddal." },
-            { "q": "Ingyenes a Wordle Global?", "a": "Igen. A napi rejtvény, a korlátlan mód és az összes játékmód teljesen ingyenes 80+ nyelven. Fiók vagy letöltés nem szükséges." },
-            { "q": "Játszhatok naponta többször?", "a": "Igen — próbáld a korlátlan módot a wordle.global/{lang}/unlimited oldalon végtelen játékokhoz várakozás nélkül. A napi sorozatodat külön követjük." }
+            {
+                "q": "Hogyan játszhatok Wordle-t {langName} nyelven?",
+                "a": "Látogass el a wordle.global/{lang} oldalra a napi Wordle-höz {langName} nyelven. 6 tipped van kitalálni egy 5 betűs szót. Minden tipp után a mezők zöldre (helyes betű, helyes hely), sárgára (helyes betű, rossz hely) vagy szürkére (a betű nincs a szóban) váltanak."
+            },
+            {
+                "q": "Minden nap van új rejtvény?",
+                "a": "Igen. Minden nap új szót választunk. Ugyanazon a nyelven játszó minden játékos ugyanazt a szót kapja, így összehasonlíthatod az eredményeidet a barátaiddal."
+            },
+            {
+                "q": "Ingyenes a Wordle Global?",
+                "a": "Igen. A napi rejtvény, a korlátlan mód és az összes játékmód teljesen ingyenes 80+ nyelven. Fiók vagy letöltés nem szükséges."
+            },
+            {
+                "q": "Játszhatok naponta többször?",
+                "a": "Igen — próbáld a korlátlan módot a wordle.global/{lang}/unlimited oldalon végtelen játékokhoz várakozás nélkül. A napi sorozatodat külön követjük."
+            }
         ],
         "mode_desc_classic": "6 tipped van kitalálni egy rejtett 5 betűs szót. Használd a színes nyomokat a válasz szűkítéséhez.",
         "mode_desc_unlimited": "6 tipped van kitalálni egy rejtett 5 betűs szót. Használd a színes nyomokat a válasz szűkítéséhez. Minden játék után nyomd meg a \"Játék újra\" gombot egy új szóért azonnal — nincs napi korlát.",
@@ -237,46 +389,123 @@
         "mode_desc_multiboard": "A {modeName} arra hív, hogy egyszerre {boardCount} Wordle-táblát oldj meg mindössze {maxGuesses} tippből. Minden tipp az összes megoldatlan táblán megjelenik. A megoldott táblák befagynak. Az osztott billentyűzet megmutatja, melyik betűk helyesek melyik táblákon. Kezdj gyakori betűs szavakkal, hogy egyszerre gyűjts nyomokat az összes tábláról.",
         "mode_faq": {
             "unlimited": [
-                { "q": "Mi az a Wordle Unlimited {langName} nyelven?", "a": "A Wordle Unlimited lehetővé teszi, hogy annyi Wordle-játékot játssz {langName} nyelven, amennyit csak akarsz, a holnapi rejtvényre várás nélkül. Minden játékban új véletlenszerű szót kapsz, amit 6 tippből kell kitalálnod." },
-                { "q": "Ingyenes a Wordle Unlimited?", "a": "Igen. A Wordle Unlimited teljesen ingyenes. Nincs fiók, nincs letöltés, nincs reklám játék közben." },
-                { "q": "A korlátlan mód beleszámít a napi sorozatomba?", "a": "Nem. A korlátlan módnak saját külön statisztikája van. A napi sorozatodat csak a napi rejtvény befolyásolja." },
-                { "q": "Hányszor játszhatok?", "a": "Nincs korlát. Annyi kört játszhatsz, amennyit csak akarsz. Minden játék után nyomd meg a \"Játék újra\" gombot egy új szóért azonnal." },
-                { "q": "Milyen nyelveken játszhatom a Wordle Unlimited-et?", "a": "A Wordle Unlimited több mint 80 nyelven elérhető a wordle.global oldalon, beleértve a magyart, angolt, spanyolt, németet, finnt, arabot, franciát és sok mást." }
+                {
+                    "q": "Mi az a Wordle Unlimited {langName} nyelven?",
+                    "a": "A Wordle Unlimited lehetővé teszi, hogy annyi Wordle-játékot játssz {langName} nyelven, amennyit csak akarsz, a holnapi rejtvényre várás nélkül. Minden játékban új véletlenszerű szót kapsz, amit 6 tippből kell kitalálnod."
+                },
+                {
+                    "q": "Ingyenes a Wordle Unlimited?",
+                    "a": "Igen. A Wordle Unlimited teljesen ingyenes. Nincs fiók, nincs letöltés, nincs reklám játék közben."
+                },
+                {
+                    "q": "A korlátlan mód beleszámít a napi sorozatomba?",
+                    "a": "Nem. A korlátlan módnak saját külön statisztikája van. A napi sorozatodat csak a napi rejtvény befolyásolja."
+                },
+                {
+                    "q": "Hányszor játszhatok?",
+                    "a": "Nincs korlát. Annyi kört játszhatsz, amennyit csak akarsz. Minden játék után nyomd meg a \"Játék újra\" gombot egy új szóért azonnal."
+                },
+                {
+                    "q": "Milyen nyelveken játszhatom a Wordle Unlimited-et?",
+                    "a": "A Wordle Unlimited több mint 80 nyelven elérhető a wordle.global oldalon, beleértve a magyart, angolt, spanyolt, németet, finnt, arabot, franciát és sok mást."
+                }
             ],
             "speed": [
-                { "q": "Mi az a Speed Streak {langName} nyelven?", "a": "A Speed Streak egy időzített Wordle-mód {langName} nyelven. 3 perccel kezdesz és annyi szót oldasz meg, amennyit csak tudsz. Gyors megoldás = bónuszidő." },
-                { "q": "Hogyan működik a pontozás?", "a": "Minden megoldott szóért pontot kapsz. Kevesebb tipp és gyorsabb megoldás több pontot ad. Építs kombót egymás utáni megoldásokkal — akár 3x szorzó." },
-                { "q": "Mi történik, ha lejár az idő?", "a": "A játék véget ér, és látod a végeredményt, a megoldott szavakat, a legjobb kombót és az átlagos tippszámot. Azonnal újra játszhatsz." },
-                { "q": "Ingyenes a Speed Streak?", "a": "Igen. A Speed Streak teljesen ingyenes mind a 80+ nyelven. Fiók vagy letöltés nem szükséges." }
+                {
+                    "q": "Mi az a Speed Streak {langName} nyelven?",
+                    "a": "A Speed Streak egy időzített Wordle-mód {langName} nyelven. 3 perccel kezdesz és annyi szót oldasz meg, amennyit csak tudsz. Gyors megoldás = bónuszidő."
+                },
+                {
+                    "q": "Hogyan működik a pontozás?",
+                    "a": "Minden megoldott szóért pontot kapsz. Kevesebb tipp és gyorsabb megoldás több pontot ad. Építs kombót egymás utáni megoldásokkal — akár 3x szorzó."
+                },
+                {
+                    "q": "Mi történik, ha lejár az idő?",
+                    "a": "A játék véget ér, és látod a végeredményt, a megoldott szavakat, a legjobb kombót és az átlagos tippszámot. Azonnal újra játszhatsz."
+                },
+                {
+                    "q": "Ingyenes a Speed Streak?",
+                    "a": "Igen. A Speed Streak teljesen ingyenes mind a 80+ nyelven. Fiók vagy letöltés nem szükséges."
+                }
             ],
             "multiboard": [
-                { "q": "Mi az a {modeName} {langName} nyelven?", "a": "A {modeName} egy többtáblás Wordle-változat {langName} nyelven. Egyszerre {boardCount} Wordle-táblát oldasz meg {maxGuesses} tippből. Minden tipp az összes megoldatlan táblán megjelenik." },
-                { "q": "Hány tippet kapok a {modeName}-ben?", "a": "{maxGuesses} tipped van az összes {boardCount} tábla megoldásához. Amint egy tábla megoldódik, befagy, és a többire koncentrálhatsz." },
-                { "q": "Melyik stratégia működik a legjobban a {modeName}-ben?", "a": "Kezdj gyakori betűs szavakkal, hogy egyszerre gyűjts információt az összes {boardCount} tábláról. Figyeld az osztott billentyűzetet — megmutatja, melyik betűk helyesek melyik táblákon." },
-                { "q": "Ingyenes a {modeName}?", "a": "Igen. A {modeName} teljesen ingyenes mind a 80+ nyelven. Fiók vagy letöltés nem szükséges. Játssz annyi kört, amennyit csak akarsz." }
+                {
+                    "q": "Mi az a {modeName} {langName} nyelven?",
+                    "a": "A {modeName} egy többtáblás Wordle-változat {langName} nyelven. Egyszerre {boardCount} Wordle-táblát oldasz meg {maxGuesses} tippből. Minden tipp az összes megoldatlan táblán megjelenik."
+                },
+                {
+                    "q": "Hány tippet kapok a {modeName}-ben?",
+                    "a": "{maxGuesses} tipped van az összes {boardCount} tábla megoldásához. Amint egy tábla megoldódik, befagy, és a többire koncentrálhatsz."
+                },
+                {
+                    "q": "Melyik stratégia működik a legjobban a {modeName}-ben?",
+                    "a": "Kezdj gyakori betűs szavakkal, hogy egyszerre gyűjts információt az összes {boardCount} tábláról. Figyeld az osztott billentyűzetet — megmutatja, melyik betűk helyesek melyik táblákon."
+                },
+                {
+                    "q": "Ingyenes a {modeName}?",
+                    "a": "Igen. A {modeName} teljesen ingyenes mind a 80+ nyelven. Fiók vagy letöltés nem szükséges. Játssz annyi kört, amennyit csak akarsz."
+                }
             ]
         },
         "howto": [
-            { "name": "Írj be egy szót", "text": "Adj meg egy érvényes 5 betűs szót {langName} nyelven a képernyő-billentyűzettel vagy fizikai billentyűzeteddel, majd nyomd meg az Entert." },
-            { "name": "Olvasd a nyomokat", "text": "A zöld mezők azt jelentik, hogy a betű helyes és a jó helyen van. Sárga: a betű a szóban van, de rossz helyen. Szürke: a betű nincs a szóban." },
-            { "name": "Oldd meg 6 tippből", "text": "Használd a színes nyomokat a szó szűkítéséhez. Összesen 6 tipped van. A rejtvény után nézd meg a statisztikáidat és oszd meg az eredményed." }
+            {
+                "name": "Írj be egy szót",
+                "text": "Adj meg egy érvényes 5 betűs szót {langName} nyelven a képernyő-billentyűzettel vagy fizikai billentyűzeteddel, majd nyomd meg az Entert."
+            },
+            {
+                "name": "Olvasd a nyomokat",
+                "text": "A zöld mezők azt jelentik, hogy a betű helyes és a jó helyen van. Sárga: a betű a szóban van, de rossz helyen. Szürke: a betű nincs a szóban."
+            },
+            {
+                "name": "Oldd meg 6 tippből",
+                "text": "Használd a színes nyomokat a szó szűkítéséhez. Összesen 6 tipped van. A rejtvény után nézd meg a statisztikáidat és oszd meg az eredményed."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Kezdj egy játékot", "text": "Látogass el a wordle.global/{lang}/unlimited oldalra a Wordle Unlimited indításához {langName} nyelven. Egy véletlenszerű 5 betűs szót választunk neked." },
-                { "name": "Tippeld ki a szót", "text": "Írj be egy érvényes 5 betűs szót és nyomd meg az Entert. Zöld = helyes betű, jó hely. Sárga = helyes betű, rossz hely. Szürke = a betű nincs a szóban." },
-                { "name": "Játssz újra azonnal", "text": "A szó megoldása (vagy mind a 6 tipp felhasználása) után nyomd meg a \"Játék újra\" gombot az azonnali új szóért. Nem kell holnapig várnod." }
+                {
+                    "name": "Kezdj egy játékot",
+                    "text": "Látogass el a wordle.global/{lang}/unlimited oldalra a Wordle Unlimited indításához {langName} nyelven. Egy véletlenszerű 5 betűs szót választunk neked."
+                },
+                {
+                    "name": "Tippeld ki a szót",
+                    "text": "Írj be egy érvényes 5 betűs szót és nyomd meg az Entert. Zöld = helyes betű, jó hely. Sárga = helyes betű, rossz hely. Szürke = a betű nincs a szóban."
+                },
+                {
+                    "name": "Játssz újra azonnal",
+                    "text": "A szó megoldása (vagy mind a 6 tipp felhasználása) után nyomd meg a \"Játék újra\" gombot az azonnali új szóért. Nem kell holnapig várnod."
+                }
             ],
             "speed": [
-                { "name": "Indítsd az időzítőt", "text": "Látogass el a wordle.global/{lang}/speed oldalra és nyomd meg az Indítás gombot. 3 perccel kezdesz az órán." },
-                { "name": "Oldj meg szavakat gyorsan", "text": "Minden megoldott szó bónuszidőt ad (+10s-tól +60s-ig a tippek számától függően). A sikertelen szavak 30 másodpercbe kerülnek." },
-                { "name": "Építsd a kombódat", "text": "Oldj meg szavakat egymás után a kombószorzó növeléséhez (max 3x). A kombó megszakad sikertelenség esetén. Próbáld meg felülmúlni a rekordodat." }
+                {
+                    "name": "Indítsd az időzítőt",
+                    "text": "Látogass el a wordle.global/{lang}/speed oldalra és nyomd meg az Indítás gombot. 3 perccel kezdesz az órán."
+                },
+                {
+                    "name": "Oldj meg szavakat gyorsan",
+                    "text": "Minden megoldott szó bónuszidőt ad (+10s-tól +60s-ig a tippek számától függően). A sikertelen szavak 30 másodpercbe kerülnek."
+                },
+                {
+                    "name": "Építsd a kombódat",
+                    "text": "Oldj meg szavakat egymás után a kombószorzó növeléséhez (max 3x). A kombó megszakad sikertelenség esetén. Próbáld meg felülmúlni a rekordodat."
+                }
             ],
             "multiboard": [
-                { "name": "Kezdj egy játékot", "text": "Látogass el a wordle.global/{lang}/{modeName} oldalra a {modeName} játékhoz {langName} nyelven. {boardCount} tábla jelenik meg különböző rejtett szavakkal." },
-                { "name": "Tippelj az összes táblán", "text": "Írj be egy 5 betűs szót és nyomd meg az Entert. A tipped az összes {boardCount} táblán megjelenik. Minden tábla saját színes nyomokat mutat (zöld, sárga, szürke)." },
-                { "name": "Oldd meg mind a {boardCount} táblát", "text": "A megoldott táblák befagynak. Használd az osztott billentyűzetet a betűk nyomon követéséhez táblánként. Oldd meg mind a {boardCount} táblát {maxGuesses} tippből a győzelemhez." }
+                {
+                    "name": "Kezdj egy játékot",
+                    "text": "Látogass el a wordle.global/{lang}/{modeName} oldalra a {modeName} játékhoz {langName} nyelven. {boardCount} tábla jelenik meg különböző rejtett szavakkal."
+                },
+                {
+                    "name": "Tippelj az összes táblán",
+                    "text": "Írj be egy 5 betűs szót és nyomd meg az Entert. A tipped az összes {boardCount} táblán megjelenik. Minden tábla saját színes nyomokat mutat (zöld, sárga, szürke)."
+                },
+                {
+                    "name": "Oldd meg mind a {boardCount} táblát",
+                    "text": "A megoldott táblák befagynak. Használd az osztott billentyűzetet a betűk nyomon követéséhez táblánként. Oldd meg mind a {boardCount} táblát {maxGuesses} tippből a győzelemhez."
+                }
             ]
-        }
+        },
+        "recent_words": "Legutóbbi szavak",
+        "view_all_words": "Összes szó megtekintése"
     }
 }
