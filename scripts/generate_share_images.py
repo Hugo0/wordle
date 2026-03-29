@@ -210,7 +210,6 @@ def generate_image(lang_code, result, challenge_text, is_rtl):
     tile_size, tile_gap = 26, 5
     cols = 5
     grid_w = cols * tile_size + (cols - 1) * tile_gap
-    grid_h = n_rows * tile_size + (n_rows - 1) * tile_gap
 
     pair_gap = 50  # space between score and grid
     total_w = score_w + pair_gap + grid_w

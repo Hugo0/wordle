@@ -1707,19 +1707,19 @@ export const useGameStore = defineStore('game', () => {
         }
     }
 
-    // Track which board indices are currently visible (set by MultiBoardLayout)
+    // Visible board indices — updated by IntersectionObserver in MultiBoardLayout
     const visibleBoardIndices = ref<Set<number> | null>(null);
 
     function setVisibleBoardIndices(indices: number[]): void {
         visibleBoardIndices.value = new Set(indices);
     }
 
-    /** Sync visual layer for boards. If onlyRow specified, only sync that row. */
+    /** Sync visual layer for boards. If onlyRow specified, only sync visible + unsolved. */
     function showTilesAllBoards(onlyRow?: number): void {
         const visible = visibleBoardIndices.value;
         for (let i = 0; i < boards.value.length; i++) {
             if (onlyRow !== undefined && boards.value[i]?.solved) continue;
-            if (onlyRow !== undefined && visible && !visible.has(i)) continue;
+            if (onlyRow !== undefined && visible && visible.size > 0 && !visible.has(i)) continue;
             showTilesForBoard(i, onlyRow);
         }
         triggerRef(boards);

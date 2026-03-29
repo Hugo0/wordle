@@ -132,88 +132,253 @@
         "stat_languages": "Àwọn Èdè",
         "stat_modes": "Àwọn Ọ̀nà Eré",
         "value_props": [
-            { "key": "languages", "title": "Èdè 80+", "desc": "Láti Lárúbáwá sí Yorùbá. Wordle olóni-èdè tó tóbi jù." },
-            { "key": "definitions", "title": "Ìtumọ̀ Ọ̀rọ̀", "desc": "Kọ́ ìtumọ̀ ọ̀rọ̀ kọ̀ọ̀kan lẹ́yìn tí o bá ṣeré. Mú ìmọ̀ ọ̀rọ̀ rẹ pọ̀ sí i." },
-            { "key": "word_art", "title": "Àwòrán Ọ̀rọ̀ Aláìlégbé", "desc": "Ọ̀rọ̀ kọ̀ọ̀kan ní àwòrán tirẹ̀. Kó gbogbo wọn jọ." },
-            { "key": "themes", "title": "Ọ̀nà Dúdú àti Àwọn Àkọlé", "desc": "Ìmọ́lẹ̀, dúdú, àti ìyàtọ̀ gíga fún ṣíṣeré aláìnífẹ̀ẹ́." },
-            { "key": "pwa", "title": "Ó Ń Ṣiṣẹ́ Níbi Gbogbo", "desc": "PWA — fi sórí ẹ̀rọ èyíkéyìí. Ó ń ṣiṣẹ́ láìsí íńtánẹ́ẹ̀tì. Kò sí ohun tí a nílò láti ṣàgbékalẹ̀." },
-            { "key": "free", "title": "Ọ̀fẹ́ Láéláé", "desc": "Kò sí àkọọ́lẹ̀ tí a nílò. Kò sí owó. Ṣeré lásán." }
+            {
+                "key": "languages",
+                "title": "Èdè 80+",
+                "desc": "Láti Lárúbáwá sí Yorùbá. Wordle olóni-èdè tó tóbi jù."
+            },
+            {
+                "key": "definitions",
+                "title": "Ìtumọ̀ Ọ̀rọ̀",
+                "desc": "Kọ́ ìtumọ̀ ọ̀rọ̀ kọ̀ọ̀kan lẹ́yìn tí o bá ṣeré. Mú ìmọ̀ ọ̀rọ̀ rẹ pọ̀ sí i."
+            },
+            {
+                "key": "word_art",
+                "title": "Àwòrán Ọ̀rọ̀ Aláìlégbé",
+                "desc": "Ọ̀rọ̀ kọ̀ọ̀kan ní àwòrán tirẹ̀. Kó gbogbo wọn jọ."
+            },
+            {
+                "key": "themes",
+                "title": "Ọ̀nà Dúdú àti Àwọn Àkọlé",
+                "desc": "Ìmọ́lẹ̀, dúdú, àti ìyàtọ̀ gíga fún ṣíṣeré aláìnífẹ̀ẹ́."
+            },
+            {
+                "key": "pwa",
+                "title": "Ó Ń Ṣiṣẹ́ Níbi Gbogbo",
+                "desc": "PWA — fi sórí ẹ̀rọ èyíkéyìí. Ó ń ṣiṣẹ́ láìsí íńtánẹ́ẹ̀tì. Kò sí ohun tí a nílò láti ṣàgbékalẹ̀."
+            },
+            {
+                "key": "free",
+                "title": "Ọ̀fẹ́ Láéláé",
+                "desc": "Kò sí àkọọ́lẹ̀ tí a nílò. Kò sí owó. Ṣeré lásán."
+            }
         ],
         "tips": [
-            { "title": "Bẹ̀rẹ̀ pẹ̀lú ọ̀rọ̀ tó ní fáwẹ́lì púpọ̀", "text": "Àwọn ọ̀rọ̀ bíi CRANE, STARE, tàbí ADIEU máa ń dán àwọn lẹ́tà tó wọ́pọ̀ wò lẹ́sẹ̀kẹsẹ̀. Mímọ àwọn fáwẹ́lì tó wà máa ń dín àwọn àṣàyàn kù." },
-            { "title": "Lo ohun tí o ti mọ̀", "text": "Àwọn lẹ́tà aláwọ̀ ewé máa wà ní ipò wọn. Àwọn lẹ́tà aláwọ̀ pupa ẹ̀yìn gbọ́dọ̀ yí padà. Àwọn lẹ́tà aláwọ̀ aárọ̀ ti kúrò. Ìgbìyànjú kọ̀ọ̀kan gbọ́dọ̀ lo àwọn ìtọ́ka mẹ́tẹ̀ẹ̀ta." },
-            { "title": "Ronú nípa àwọn àpẹẹrẹ tó wọ́pọ̀", "text": "Àwọn ọ̀rọ̀ Gẹ̀ẹ́sì sábà máa ń parí pẹ̀lú -TION, -IGHT, -OUND, -MENT. Èdè mìíràn ní àwọn àpẹẹrẹ tiwọn — kọ́ wọn." },
-            { "title": "Yọ kúrò, má ṣe fojú inú wo lásán", "text": "Ọ̀rọ̀ kejì rẹ gbọ́dọ̀ dán àwọn lẹ́tà tuntun wò, kì í ṣe láti tún àwọn tí a ti mọ̀ ṣe. Bo àwọn kọ́ńsónáǹtì tí a kò tíì dán wò." },
-            { "title": "Ṣọ́ra fún àwọn lẹ́tà ìlọ́po", "text": "Àwọn ọ̀rọ̀ bíi CREEK, FLOSS, tàbí APPLE jẹ́ ìdẹ̀kùn tó wọ́pọ̀. Tí àwọn ìtọ́ka rẹ kò bá pé, ronú lẹ́tà tí a tún ṣe." },
-            { "title": "Lo ọ̀nà líle láti gbóná sí i", "text": "Ọ̀nà líle fipá mú kí o lo àwọn ìtọ́ka tí a ti ṣí ní ìgbìyànjú kọ̀ọ̀kan. Ó tún ń kọ́ ọ ní ìwà tó dára bí o bá padà sí ọ̀nà déédé." }
+            {
+                "title": "Bẹ̀rẹ̀ pẹ̀lú ọ̀rọ̀ tó ní fáwẹ́lì púpọ̀",
+                "text": "Àwọn ọ̀rọ̀ bíi CRANE, STARE, tàbí ADIEU máa ń dán àwọn lẹ́tà tó wọ́pọ̀ wò lẹ́sẹ̀kẹsẹ̀. Mímọ àwọn fáwẹ́lì tó wà máa ń dín àwọn àṣàyàn kù."
+            },
+            {
+                "title": "Lo ohun tí o ti mọ̀",
+                "text": "Àwọn lẹ́tà aláwọ̀ ewé máa wà ní ipò wọn. Àwọn lẹ́tà aláwọ̀ pupa ẹ̀yìn gbọ́dọ̀ yí padà. Àwọn lẹ́tà aláwọ̀ aárọ̀ ti kúrò. Ìgbìyànjú kọ̀ọ̀kan gbọ́dọ̀ lo àwọn ìtọ́ka mẹ́tẹ̀ẹ̀ta."
+            },
+            {
+                "title": "Ronú nípa àwọn àpẹẹrẹ tó wọ́pọ̀",
+                "text": "Àwọn ọ̀rọ̀ Gẹ̀ẹ́sì sábà máa ń parí pẹ̀lú -TION, -IGHT, -OUND, -MENT. Èdè mìíràn ní àwọn àpẹẹrẹ tiwọn — kọ́ wọn."
+            },
+            {
+                "title": "Yọ kúrò, má ṣe fojú inú wo lásán",
+                "text": "Ọ̀rọ̀ kejì rẹ gbọ́dọ̀ dán àwọn lẹ́tà tuntun wò, kì í ṣe láti tún àwọn tí a ti mọ̀ ṣe. Bo àwọn kọ́ńsónáǹtì tí a kò tíì dán wò."
+            },
+            {
+                "title": "Ṣọ́ra fún àwọn lẹ́tà ìlọ́po",
+                "text": "Àwọn ọ̀rọ̀ bíi CREEK, FLOSS, tàbí APPLE jẹ́ ìdẹ̀kùn tó wọ́pọ̀. Tí àwọn ìtọ́ka rẹ kò bá pé, ronú lẹ́tà tí a tún ṣe."
+            },
+            {
+                "title": "Lo ọ̀nà líle láti gbóná sí i",
+                "text": "Ọ̀nà líle fipá mú kí o lo àwọn ìtọ́ka tí a ti ṣí ní ìgbìyànjú kọ̀ọ̀kan. Ó tún ń kọ́ ọ ní ìwà tó dára bí o bá padà sí ọ̀nà déédé."
+            }
         ],
         "tips_speed": [
-            { "title": "Bẹ̀rẹ̀ pẹ̀lú CRANE tàbí STARE", "text": "Àwọn lẹ́tà tó wọ́pọ̀ jù fún ọ ní àǹfààní tó dára jù fún àtúnṣe kíákíá. Ìṣẹ́jú kọ̀ọ̀kan ṣe pàtàkì." },
-            { "title": "Má ṣe ronú jù", "text": "Speed Streak san ère fún ọgbọ́n ìrònú. Tí o bá rí ọ̀rọ̀ tí ó lè jẹ́, gbìyànjú rẹ̀ — àǹfààní combo tóbi ju àtúnṣe tó pé pátápátá lọ." },
-            { "title": "Dáàbò bo combo rẹ", "text": "Ọ̀rọ̀ tí kò ṣàṣeyọrí fọ́ olùsọdipúpọ̀ rẹ. Tí o kò bá dájú, lo ìgbìyànjú aláìléwu láti kó àwọn ìtọ́ka púpọ̀ sí i jọ." },
-            { "title": "Gbìyànjú ọ̀rọ̀ ní ìgbìyànjú 2-3", "text": "Àkókò àfikún fún àtúnṣe kíákíá tóbi gan (+60s fún ìgbìyànjú 1, +30s fún 2). Ìgbìyànjú kejì tó léwu lè san ère púpọ̀." },
-            { "title": "Kọ́ àwọn ìparí ọ̀rọ̀ tó wọ́pọ̀", "text": "Àwọn àpẹẹrẹ bíi -IGHT, -OUND, -ATCH máa ń tún ṣẹlẹ̀ nígbà gbogbo. Mímọ̀ wọn lẹ́sẹ̀kẹsẹ̀ fi ìṣẹ́jú pamọ́ lórí ọ̀rọ̀ kọ̀ọ̀kan." },
-            { "title": "Farabalẹ̀ bí ìfúnni ṣe ń pọ̀ sí i", "text": "Aago máa ń yára lẹ́yìn ọ̀rọ̀ mẹ́ta kọ̀ọ̀kan. Ṣíṣe kíákíá máa ń fà àṣìṣe wá. Ìlọsíwájú tó dúró ṣinṣin dára ju ìdàgírí lọ." }
+            {
+                "title": "Bẹ̀rẹ̀ pẹ̀lú CRANE tàbí STARE",
+                "text": "Àwọn lẹ́tà tó wọ́pọ̀ jù fún ọ ní àǹfààní tó dára jù fún àtúnṣe kíákíá. Ìṣẹ́jú kọ̀ọ̀kan ṣe pàtàkì."
+            },
+            {
+                "title": "Má ṣe ronú jù",
+                "text": "Speed Streak san ère fún ọgbọ́n ìrònú. Tí o bá rí ọ̀rọ̀ tí ó lè jẹ́, gbìyànjú rẹ̀ — àǹfààní combo tóbi ju àtúnṣe tó pé pátápátá lọ."
+            },
+            {
+                "title": "Dáàbò bo combo rẹ",
+                "text": "Ọ̀rọ̀ tí kò ṣàṣeyọrí fọ́ olùsọdipúpọ̀ rẹ. Tí o kò bá dájú, lo ìgbìyànjú aláìléwu láti kó àwọn ìtọ́ka púpọ̀ sí i jọ."
+            },
+            {
+                "title": "Gbìyànjú ọ̀rọ̀ ní ìgbìyànjú 2-3",
+                "text": "Àkókò àfikún fún àtúnṣe kíákíá tóbi gan (+60s fún ìgbìyànjú 1, +30s fún 2). Ìgbìyànjú kejì tó léwu lè san ère púpọ̀."
+            },
+            {
+                "title": "Kọ́ àwọn ìparí ọ̀rọ̀ tó wọ́pọ̀",
+                "text": "Àwọn àpẹẹrẹ bíi -IGHT, -OUND, -ATCH máa ń tún ṣẹlẹ̀ nígbà gbogbo. Mímọ̀ wọn lẹ́sẹ̀kẹsẹ̀ fi ìṣẹ́jú pamọ́ lórí ọ̀rọ̀ kọ̀ọ̀kan."
+            },
+            {
+                "title": "Farabalẹ̀ bí ìfúnni ṣe ń pọ̀ sí i",
+                "text": "Aago máa ń yára lẹ́yìn ọ̀rọ̀ mẹ́ta kọ̀ọ̀kan. Ṣíṣe kíákíá máa ń fà àṣìṣe wá. Ìlọsíwájú tó dúró ṣinṣin dára ju ìdàgírí lọ."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Bẹ̀rẹ̀ lójú àgbà", "text": "Lo àwọn ọ̀rọ̀ tó ní lẹ́tà tó wọ́pọ̀ (CRANE, STARE) láti kó ìtọ́ka jọ láti gbogbo àwọn pátákó ní ẹ̀ẹ̀kan náà." },
-            { "title": "Wo pátákó bọ́tìnnì tí a pín", "text": "Pátákó bọ́tìnnì fi àwọ̀ hàn fún pátákó kọ̀ọ̀kan. Lẹ́tà tó jẹ́ aláwọ̀ ewé lórí pátákó kan ṣùgbọ́n aláwọ̀ aárọ̀ lórí èkejì máa ń dín àṣàyàn kù ní kíákíá." },
-            { "title": "Ṣe àkọ́kọ́ àwọn pátákó tó ṣòro", "text": "Darí ìgbìyànjú sí pátákó tó ní ohun tí a kò mọ̀ jù. Àwọn pátákó tó rọrùn sábà máa ń yanjú ara wọn." },
-            { "title": "Má ṣe ṣòfò àwọn ìgbìyànjú ìbẹ̀rẹ̀", "text": "Lo ìgbìyànjú àkọ́kọ́ 2-3 lórí àwọn ọ̀rọ̀ tó kún fún àlàyé kí o tó darí sí pátákó kan pàtó." },
-            { "title": "Wá àwọn lẹ́tà tó jọra", "text": "Tí àwọn pátákó méjì bá ń fi E aláwọ̀ pupa ẹ̀yìn hàn, ọ̀rọ̀ tó ní E ní ipò tuntun máa ń ràn àwọn pátákó méjèèjì lọ́wọ́ ní ẹ̀ẹ̀kan náà." },
-            { "title": "Fi ìgbìyànjú pamọ́ fún pàjáwìrì", "text": "Tí o bá dúró ní pátákó ìkẹyìn, ìgbìyànjú tó kù ni ìyàtọ̀ láàárín ìṣẹ́gun àti ìpadánù." }
+            {
+                "title": "Bẹ̀rẹ̀ lójú àgbà",
+                "text": "Lo àwọn ọ̀rọ̀ tó ní lẹ́tà tó wọ́pọ̀ (CRANE, STARE) láti kó ìtọ́ka jọ láti gbogbo àwọn pátákó ní ẹ̀ẹ̀kan náà."
+            },
+            {
+                "title": "Wo pátákó bọ́tìnnì tí a pín",
+                "text": "Pátákó bọ́tìnnì fi àwọ̀ hàn fún pátákó kọ̀ọ̀kan. Lẹ́tà tó jẹ́ aláwọ̀ ewé lórí pátákó kan ṣùgbọ́n aláwọ̀ aárọ̀ lórí èkejì máa ń dín àṣàyàn kù ní kíákíá."
+            },
+            {
+                "title": "Ṣe àkọ́kọ́ àwọn pátákó tó ṣòro",
+                "text": "Darí ìgbìyànjú sí pátákó tó ní ohun tí a kò mọ̀ jù. Àwọn pátákó tó rọrùn sábà máa ń yanjú ara wọn."
+            },
+            {
+                "title": "Má ṣe ṣòfò àwọn ìgbìyànjú ìbẹ̀rẹ̀",
+                "text": "Lo ìgbìyànjú àkọ́kọ́ 2-3 lórí àwọn ọ̀rọ̀ tó kún fún àlàyé kí o tó darí sí pátákó kan pàtó."
+            },
+            {
+                "title": "Wá àwọn lẹ́tà tó jọra",
+                "text": "Tí àwọn pátákó méjì bá ń fi E aláwọ̀ pupa ẹ̀yìn hàn, ọ̀rọ̀ tó ní E ní ipò tuntun máa ń ràn àwọn pátákó méjèèjì lọ́wọ́ ní ẹ̀ẹ̀kan náà."
+            },
+            {
+                "title": "Fi ìgbìyànjú pamọ́ fún pàjáwìrì",
+                "text": "Tí o bá dúró ní pátákó ìkẹyìn, ìgbìyànjú tó kù ni ìyàtọ̀ láàárín ìṣẹ́gun àti ìpadánù."
+            }
         ],
         "mode_desc_classic": "O ní ìgbìyànjú 6 láti fojú inú rí ọ̀rọ̀ lẹ́tà 5 tí a fi pamọ́. Lo àwọn ìtọ́ka àwọ̀ láti dín ìdáhùn kù.",
         "mode_desc_unlimited": "O ní ìgbìyànjú 6 láti fojú inú rí ọ̀rọ̀ lẹ́tà 5 tí a fi pamọ́. Lo àwọn ìtọ́ka àwọ̀ láti dín ìdáhùn kù. Lẹ́yìn eré kọ̀ọ̀kan, tẹ \"Ṣeré Lẹ́ẹ̀kan Sí I\" láti gba ọ̀rọ̀ tuntun lẹ́sẹ̀kẹsẹ̀ — kò sí ìdíwọ́ ojoojúmọ́.",
         "mode_desc_speed": "Bẹ̀rẹ̀ pẹ̀lú ìṣẹ́jú 3 lórí aago. Ọ̀rọ̀ kọ̀ọ̀kan tí o bá yanjú fi àkókò àfikún kún — ìgbìyànjú díẹ̀, àkókò púpọ̀ (+60s fún 1, +10s fún 6). Ọ̀rọ̀ tí kò ṣàṣeyọrí gba ìṣẹ́jú 30 lọ́wọ́ rẹ. Kọ́ combo nípasẹ̀ ṣíṣe àtúnṣe lẹ́sẹ̀ẹsẹ̀ títí dé olùsọdipúpọ̀ 3x. Ìfúnni máa ń pọ̀ sí i lẹ́yìn ọ̀rọ̀ kẹta kọ̀ọ̀kan — aago máa ń yára.",
         "mode_desc_multiboard": "{modeName} pè ọ́ láti yanjú àwọn pátákó Wordle {boardCount} ní ẹ̀ẹ̀kan náà pẹ̀lú ìgbìyànjú {maxGuesses} péré. Ìgbìyànjú kọ̀ọ̀kan hàn lórí gbogbo àwọn pátákó tí a kò tíì yanjú. Àwọn pátákó tí a ti yanjú di ẹ̀jẹ̀. Pátákó bọ́tìnnì àwọ̀-pípín fi hàn àwọn lẹ́tà tó tọ́ lórí pátákó wo. Bẹ̀rẹ̀ pẹ̀lú àwọn ọ̀rọ̀ tó ní lẹ́tà tó wọ́pọ̀ láti kó ìtọ́ka jọ láti gbogbo pátákó.",
         "faq": [
-            { "q": "Báwo ni mo ṣe lè ṣeré Wordle ní èdè {langName}?", "a": "Lọ sí wordle.global/{lang} láti ṣeré Wordle ojoojúmọ́ ní èdè {langName}. O ní ìgbìyànjú 6 láti fojú inú rí ọ̀rọ̀ lẹ́tà 5. Lẹ́yìn ìgbìyànjú kọ̀ọ̀kan, àwọn tile yóò di aláwọ̀ ewé (lẹ́tà tí ó tọ́, ipò tí ó tọ́), aláwọ̀ pupa ẹ̀yìn (lẹ́tà tí ó tọ́, ipò tí kò tọ́), tàbí aláwọ̀ aárọ̀ (lẹ́tà kò sí nínú ọ̀rọ̀)." },
-            { "q": "Ṣé àdánwò tuntun wà lójoojúmọ́?", "a": "Bẹ́ẹ̀ ni. A máa ń yan ọ̀rọ̀ tuntun lójoojúmọ́. Gbogbo ẹni tó ń ṣeré ní èdè kan náà máa ń gba ọ̀rọ̀ kan náà, nítorí náà o lè fi èsì rẹ wé ti àwọn ọ̀rẹ́ rẹ." },
-            { "q": "Ṣé Wordle Global jẹ́ ọ̀fẹ́?", "a": "Bẹ́ẹ̀ ni. Àdánwò ojoojúmọ́, ọ̀nà àìlópin, àti gbogbo àwọn ọ̀nà eré jẹ́ ọ̀fẹ́ pátápátá ní èdè 80+. Kò sí àkọọ́lẹ̀ tàbí ṣíṣàgbékalẹ̀ tí a nílò." },
-            { "q": "Ṣé mo lè ṣeré ju ẹ̀ẹ̀kan lọ lójúmọ́?", "a": "Bẹ́ẹ̀ ni — gbìyànjú ọ̀nà àìlópin ní wordle.global/{lang}/unlimited fún àwọn eré àìlópin. A ń tọpinpin ìtẹ̀léra ojoojúmọ́ rẹ lọ́tọ̀ọ̀tọ̀." }
+            {
+                "q": "Báwo ni mo ṣe lè ṣeré Wordle ní èdè {langName}?",
+                "a": "Lọ sí wordle.global/{lang} láti ṣeré Wordle ojoojúmọ́ ní èdè {langName}. O ní ìgbìyànjú 6 láti fojú inú rí ọ̀rọ̀ lẹ́tà 5. Lẹ́yìn ìgbìyànjú kọ̀ọ̀kan, àwọn tile yóò di aláwọ̀ ewé (lẹ́tà tí ó tọ́, ipò tí ó tọ́), aláwọ̀ pupa ẹ̀yìn (lẹ́tà tí ó tọ́, ipò tí kò tọ́), tàbí aláwọ̀ aárọ̀ (lẹ́tà kò sí nínú ọ̀rọ̀)."
+            },
+            {
+                "q": "Ṣé àdánwò tuntun wà lójoojúmọ́?",
+                "a": "Bẹ́ẹ̀ ni. A máa ń yan ọ̀rọ̀ tuntun lójoojúmọ́. Gbogbo ẹni tó ń ṣeré ní èdè kan náà máa ń gba ọ̀rọ̀ kan náà, nítorí náà o lè fi èsì rẹ wé ti àwọn ọ̀rẹ́ rẹ."
+            },
+            {
+                "q": "Ṣé Wordle Global jẹ́ ọ̀fẹ́?",
+                "a": "Bẹ́ẹ̀ ni. Àdánwò ojoojúmọ́, ọ̀nà àìlópin, àti gbogbo àwọn ọ̀nà eré jẹ́ ọ̀fẹ́ pátápátá ní èdè 80+. Kò sí àkọọ́lẹ̀ tàbí ṣíṣàgbékalẹ̀ tí a nílò."
+            },
+            {
+                "q": "Ṣé mo lè ṣeré ju ẹ̀ẹ̀kan lọ lójúmọ́?",
+                "a": "Bẹ́ẹ̀ ni — gbìyànjú ọ̀nà àìlópin ní wordle.global/{lang}/unlimited fún àwọn eré àìlópin. A ń tọpinpin ìtẹ̀léra ojoojúmọ́ rẹ lọ́tọ̀ọ̀tọ̀."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Kí ni Wordle Àìlópin ní èdè {langName}?", "a": "Wordle Àìlópin jẹ́ kí o ṣeré Wordle bí o ṣe fẹ́ ní èdè {langName}, láì dúró de àdánwò ọ̀la. Eré kọ̀ọ̀kan fún ọ ní ọ̀rọ̀ tuntun láti fojú inú rí ní ìgbìyànjú 6." },
-                { "q": "Ṣé Wordle Àìlópin jẹ́ ọ̀fẹ́?", "a": "Bẹ́ẹ̀ ni. Wordle Àìlópin jẹ́ ọ̀fẹ́ pátápátá. Kò sí àkọọ́lẹ̀, kò sí ṣíṣàgbékalẹ̀, kò sí ìpolówó nígbà eré." },
-                { "q": "Ṣé ọ̀nà àìlópin kan ìtẹ̀léra ojoojúmọ́ mi?", "a": "Rárá. Ọ̀nà àìlópin ní àkótán tirẹ̀ lọ́tọ̀ọ̀tọ̀. Àdánwò ojoojúmọ́ nìkan ló kan ìtẹ̀léra ojoojúmọ́ rẹ." },
-                { "q": "Iye mélòó ni mo lè ṣeré?", "a": "Kò sí ìdíwọ́. O lè ṣeré bí o ṣe fẹ́. Lẹ́yìn eré kọ̀ọ̀kan, tẹ \"Ṣeré Lẹ́ẹ̀kan Sí I\" láti gba ọ̀rọ̀ tuntun lẹ́sẹ̀kẹsẹ̀." },
-                { "q": "Ní èdè wo ni a lè ṣeré Wordle Àìlópin?", "a": "Wordle Àìlópin wà ní èdè 80+ lórí wordle.global, pẹ̀lú Gẹ̀ẹ́sì, Sípáníìṣì, Jámánì, Fíníṣì, Lárúbáwá, Faransé, Ítálì, Potogí, àti púpọ̀ sí i." }
+                {
+                    "q": "Kí ni Wordle Àìlópin ní èdè {langName}?",
+                    "a": "Wordle Àìlópin jẹ́ kí o ṣeré Wordle bí o ṣe fẹ́ ní èdè {langName}, láì dúró de àdánwò ọ̀la. Eré kọ̀ọ̀kan fún ọ ní ọ̀rọ̀ tuntun láti fojú inú rí ní ìgbìyànjú 6."
+                },
+                {
+                    "q": "Ṣé Wordle Àìlópin jẹ́ ọ̀fẹ́?",
+                    "a": "Bẹ́ẹ̀ ni. Wordle Àìlópin jẹ́ ọ̀fẹ́ pátápátá. Kò sí àkọọ́lẹ̀, kò sí ṣíṣàgbékalẹ̀, kò sí ìpolówó nígbà eré."
+                },
+                {
+                    "q": "Ṣé ọ̀nà àìlópin kan ìtẹ̀léra ojoojúmọ́ mi?",
+                    "a": "Rárá. Ọ̀nà àìlópin ní àkótán tirẹ̀ lọ́tọ̀ọ̀tọ̀. Àdánwò ojoojúmọ́ nìkan ló kan ìtẹ̀léra ojoojúmọ́ rẹ."
+                },
+                {
+                    "q": "Iye mélòó ni mo lè ṣeré?",
+                    "a": "Kò sí ìdíwọ́. O lè ṣeré bí o ṣe fẹ́. Lẹ́yìn eré kọ̀ọ̀kan, tẹ \"Ṣeré Lẹ́ẹ̀kan Sí I\" láti gba ọ̀rọ̀ tuntun lẹ́sẹ̀kẹsẹ̀."
+                },
+                {
+                    "q": "Ní èdè wo ni a lè ṣeré Wordle Àìlópin?",
+                    "a": "Wordle Àìlópin wà ní èdè 80+ lórí wordle.global, pẹ̀lú Gẹ̀ẹ́sì, Sípáníìṣì, Jámánì, Fíníṣì, Lárúbáwá, Faransé, Ítálì, Potogí, àti púpọ̀ sí i."
+                }
             ],
             "speed": [
-                { "q": "Kí ni Speed Streak ní èdè {langName}?", "a": "Speed Streak jẹ́ ọ̀nà Wordle tí a fún ní àkókò ní èdè {langName}. O bẹ̀rẹ̀ pẹ̀lú ìṣẹ́jú 3 tí o sì yanjú ọ̀rọ̀ bí o ṣe lè ṣe púpọ̀ tó. Yanjú lẹ́sẹ̀kẹsẹ̀ láti gba àkókò àfikún púpọ̀ sí i." },
-                { "q": "Báwo ni ṣíṣe ìṣirò àmì ṣe ń ṣiṣẹ́?", "a": "O gba àmì fún ọ̀rọ̀ kọ̀ọ̀kan tí o bá yanjú. Ìgbìyànjú díẹ̀ àti àtúnṣe kíákíá fún àmì púpọ̀ sí i. Kọ́ combo nípasẹ̀ yíyanjú ọ̀rọ̀ lẹ́sẹ̀ẹsẹ̀ — títí dé olùsọdipúpọ̀ 3x." },
-                { "q": "Kí ni yóò ṣẹlẹ̀ tí àkókò bá parí?", "a": "Eré náà parí, o sì rí àmì ìkẹyìn rẹ, àpapọ̀ ọ̀rọ̀ tí o yanjú, combo tó ga jù, àti àárín ìgbìyànjú. O lè ṣeré lẹ́ẹ̀kan sí i lẹ́sẹ̀kẹsẹ̀." },
-                { "q": "Ṣé Speed Streak jẹ́ ọ̀fẹ́?", "a": "Bẹ́ẹ̀ ni. Speed Streak jẹ́ ọ̀fẹ́ pátápátá ní gbogbo èdè 80+. Kò sí àkọọ́lẹ̀ tàbí ṣíṣàgbékalẹ̀ tí a nílò." }
+                {
+                    "q": "Kí ni Speed Streak ní èdè {langName}?",
+                    "a": "Speed Streak jẹ́ ọ̀nà Wordle tí a fún ní àkókò ní èdè {langName}. O bẹ̀rẹ̀ pẹ̀lú ìṣẹ́jú 3 tí o sì yanjú ọ̀rọ̀ bí o ṣe lè ṣe púpọ̀ tó. Yanjú lẹ́sẹ̀kẹsẹ̀ láti gba àkókò àfikún púpọ̀ sí i."
+                },
+                {
+                    "q": "Báwo ni ṣíṣe ìṣirò àmì ṣe ń ṣiṣẹ́?",
+                    "a": "O gba àmì fún ọ̀rọ̀ kọ̀ọ̀kan tí o bá yanjú. Ìgbìyànjú díẹ̀ àti àtúnṣe kíákíá fún àmì púpọ̀ sí i. Kọ́ combo nípasẹ̀ yíyanjú ọ̀rọ̀ lẹ́sẹ̀ẹsẹ̀ — títí dé olùsọdipúpọ̀ 3x."
+                },
+                {
+                    "q": "Kí ni yóò ṣẹlẹ̀ tí àkókò bá parí?",
+                    "a": "Eré náà parí, o sì rí àmì ìkẹyìn rẹ, àpapọ̀ ọ̀rọ̀ tí o yanjú, combo tó ga jù, àti àárín ìgbìyànjú. O lè ṣeré lẹ́ẹ̀kan sí i lẹ́sẹ̀kẹsẹ̀."
+                },
+                {
+                    "q": "Ṣé Speed Streak jẹ́ ọ̀fẹ́?",
+                    "a": "Bẹ́ẹ̀ ni. Speed Streak jẹ́ ọ̀fẹ́ pátápátá ní gbogbo èdè 80+. Kò sí àkọọ́lẹ̀ tàbí ṣíṣàgbékalẹ̀ tí a nílò."
+                }
             ],
             "multiboard": [
-                { "q": "Kí ni {modeName} ní èdè {langName}?", "a": "{modeName} jẹ́ irú Wordle olóní-pátákó púpọ̀ ní èdè {langName}. O yanjú àwọn pátákó Wordle {boardCount} ní ẹ̀ẹ̀kan náà pẹ̀lú ìgbìyànjú {maxGuesses}. Ìgbìyànjú kọ̀ọ̀kan hàn lórí gbogbo àwọn pátákó tí a kò tíì yanjú ní ẹ̀ẹ̀kan náà." },
-                { "q": "Ìgbìyànjú mélòó ni mo ní ní {modeName}?", "a": "O ní ìgbìyànjú {maxGuesses} láti yanjú gbogbo pátákó {boardCount}. Tí pátákó kan bá ti yanjú, ó di ẹ̀jẹ̀, o sì lè darí àfiyèsí sí àwọn pátákó tó kù." },
-                { "q": "Ọgbọ́n wo ló ṣiṣẹ́ dára jù fún {modeName}?", "a": "Bẹ̀rẹ̀ pẹ̀lú àwọn ọ̀rọ̀ tó ní lẹ́tà tó wọ́pọ̀ láti kó àlàyé jọ lórí gbogbo pátákó {boardCount} ní ẹ̀ẹ̀kan náà. Ṣàkíyèsí pátákó bọ́tìnnì àwọ̀-pípín — ó fi hàn àwọn lẹ́tà tó tọ́ lórí pátákó wo." },
-                { "q": "Ṣé {modeName} jẹ́ ọ̀fẹ́?", "a": "Bẹ́ẹ̀ ni. {modeName} jẹ́ ọ̀fẹ́ pátápátá ní gbogbo èdè 80+. Kò sí àkọọ́lẹ̀ tàbí ṣíṣàgbékalẹ̀ tí a nílò. Ṣeré iye ìgbà tí o bá fẹ́." }
+                {
+                    "q": "Kí ni {modeName} ní èdè {langName}?",
+                    "a": "{modeName} jẹ́ irú Wordle olóní-pátákó púpọ̀ ní èdè {langName}. O yanjú àwọn pátákó Wordle {boardCount} ní ẹ̀ẹ̀kan náà pẹ̀lú ìgbìyànjú {maxGuesses}. Ìgbìyànjú kọ̀ọ̀kan hàn lórí gbogbo àwọn pátákó tí a kò tíì yanjú ní ẹ̀ẹ̀kan náà."
+                },
+                {
+                    "q": "Ìgbìyànjú mélòó ni mo ní ní {modeName}?",
+                    "a": "O ní ìgbìyànjú {maxGuesses} láti yanjú gbogbo pátákó {boardCount}. Tí pátákó kan bá ti yanjú, ó di ẹ̀jẹ̀, o sì lè darí àfiyèsí sí àwọn pátákó tó kù."
+                },
+                {
+                    "q": "Ọgbọ́n wo ló ṣiṣẹ́ dára jù fún {modeName}?",
+                    "a": "Bẹ̀rẹ̀ pẹ̀lú àwọn ọ̀rọ̀ tó ní lẹ́tà tó wọ́pọ̀ láti kó àlàyé jọ lórí gbogbo pátákó {boardCount} ní ẹ̀ẹ̀kan náà. Ṣàkíyèsí pátákó bọ́tìnnì àwọ̀-pípín — ó fi hàn àwọn lẹ́tà tó tọ́ lórí pátákó wo."
+                },
+                {
+                    "q": "Ṣé {modeName} jẹ́ ọ̀fẹ́?",
+                    "a": "Bẹ́ẹ̀ ni. {modeName} jẹ́ ọ̀fẹ́ pátápátá ní gbogbo èdè 80+. Kò sí àkọọ́lẹ̀ tàbí ṣíṣàgbékalẹ̀ tí a nílò. Ṣeré iye ìgbà tí o bá fẹ́."
+                }
             ]
         },
         "howto": [
-            { "name": "Kọ ọ̀rọ̀ kan", "text": "Kọ ọ̀rọ̀ lẹ́tà 5 tí ó tọ́ ní èdè {langName} pẹ̀lú pátákó bọ́tìnnì ojú ibojú tàbí pátákó bọ́tìnnì rẹ, lẹ́yìn náà tẹ Enter." },
-            { "name": "Ka àwọn ìtọ́ka", "text": "Tile aláwọ̀ ewé túmọ̀ sí pé lẹ́tà náà tọ́ tí ó sì wà ní ipò tí ó tọ́. Aláwọ̀ pupa ẹ̀yìn túmọ̀ sí pé lẹ́tà náà wà nínú ọ̀rọ̀ náà ṣùgbọ́n ní ipò tí kò tọ́. Aláwọ̀ aárọ̀ túmọ̀ sí pé lẹ́tà náà kò sí nínú ọ̀rọ̀ náà." },
-            { "name": "Yanjú ní ìgbìyànjú 6", "text": "Lo àwọn ìtọ́ka àwọ̀ láti dín ọ̀rọ̀ náà kù. O ní ìgbìyànjú 6 lápapọ̀. Lẹ́yìn àdánwò, wo àkótán rẹ kí o sì pín èsì rẹ." }
+            {
+                "name": "Kọ ọ̀rọ̀ kan",
+                "text": "Kọ ọ̀rọ̀ lẹ́tà 5 tí ó tọ́ ní èdè {langName} pẹ̀lú pátákó bọ́tìnnì ojú ibojú tàbí pátákó bọ́tìnnì rẹ, lẹ́yìn náà tẹ Enter."
+            },
+            {
+                "name": "Ka àwọn ìtọ́ka",
+                "text": "Tile aláwọ̀ ewé túmọ̀ sí pé lẹ́tà náà tọ́ tí ó sì wà ní ipò tí ó tọ́. Aláwọ̀ pupa ẹ̀yìn túmọ̀ sí pé lẹ́tà náà wà nínú ọ̀rọ̀ náà ṣùgbọ́n ní ipò tí kò tọ́. Aláwọ̀ aárọ̀ túmọ̀ sí pé lẹ́tà náà kò sí nínú ọ̀rọ̀ náà."
+            },
+            {
+                "name": "Yanjú ní ìgbìyànjú 6",
+                "text": "Lo àwọn ìtọ́ka àwọ̀ láti dín ọ̀rọ̀ náà kù. O ní ìgbìyànjú 6 lápapọ̀. Lẹ́yìn àdánwò, wo àkótán rẹ kí o sì pín èsì rẹ."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Bẹ̀rẹ̀ eré kan", "text": "Lọ sí wordle.global/{lang}/unlimited láti bẹ̀rẹ̀ ṣíṣeré Wordle Àìlópin ní èdè {langName}. A yàn ọ̀rọ̀ lẹ́tà 5 àìléto kan fún ọ." },
-                { "name": "Fojú inú wo ọ̀rọ̀ náà", "text": "Kọ ọ̀rọ̀ lẹ́tà 5 tí ó tọ́ kí o sì tẹ Enter. Tile aláwọ̀ ewé — lẹ́tà tọ́ tí ó sì wà ní ipò tí ó tọ́. Aláwọ̀ pupa ẹ̀yìn — lẹ́tà wà nínú ọ̀rọ̀ náà ní ipò tí kò tọ́. Aláwọ̀ aárọ̀ — lẹ́tà kò sí nínú ọ̀rọ̀ náà." },
-                { "name": "Ṣeré lẹ́ẹ̀kan sí i lẹ́sẹ̀kẹsẹ̀", "text": "Lẹ́yìn tí o bá yanjú ọ̀rọ̀ náà (tàbí lẹ́yìn tí o bá lo ìgbìyànjú 6), tẹ \"Ṣeré Lẹ́ẹ̀kan Sí I\" láti gba ọ̀rọ̀ tuntun lẹ́sẹ̀kẹsẹ̀. Kò sí dídúró de ọ̀la." }
+                {
+                    "name": "Bẹ̀rẹ̀ eré kan",
+                    "text": "Lọ sí wordle.global/{lang}/unlimited láti bẹ̀rẹ̀ ṣíṣeré Wordle Àìlópin ní èdè {langName}. A yàn ọ̀rọ̀ lẹ́tà 5 àìléto kan fún ọ."
+                },
+                {
+                    "name": "Fojú inú wo ọ̀rọ̀ náà",
+                    "text": "Kọ ọ̀rọ̀ lẹ́tà 5 tí ó tọ́ kí o sì tẹ Enter. Tile aláwọ̀ ewé — lẹ́tà tọ́ tí ó sì wà ní ipò tí ó tọ́. Aláwọ̀ pupa ẹ̀yìn — lẹ́tà wà nínú ọ̀rọ̀ náà ní ipò tí kò tọ́. Aláwọ̀ aárọ̀ — lẹ́tà kò sí nínú ọ̀rọ̀ náà."
+                },
+                {
+                    "name": "Ṣeré lẹ́ẹ̀kan sí i lẹ́sẹ̀kẹsẹ̀",
+                    "text": "Lẹ́yìn tí o bá yanjú ọ̀rọ̀ náà (tàbí lẹ́yìn tí o bá lo ìgbìyànjú 6), tẹ \"Ṣeré Lẹ́ẹ̀kan Sí I\" láti gba ọ̀rọ̀ tuntun lẹ́sẹ̀kẹsẹ̀. Kò sí dídúró de ọ̀la."
+                }
             ],
             "speed": [
-                { "name": "Bẹ̀rẹ̀ aago náà", "text": "Lọ sí wordle.global/{lang}/speed kí o sì tẹ Bẹ̀rẹ̀. O bẹ̀rẹ̀ pẹ̀lú ìṣẹ́jú 3." },
-                { "name": "Yanjú àwọn ọ̀rọ̀ ní kíákíá", "text": "Ọ̀rọ̀ kọ̀ọ̀kan tí o bá yanjú fi àkókò àfikún kún (+10s sí +60s, iye ìgbìyànjú tí o lò ní ṣe). Ọ̀rọ̀ tí kò ṣàṣeyọrí gba ìṣẹ́jú 30 lọ́wọ́ rẹ." },
-                { "name": "Kọ́ combo rẹ", "text": "Yanjú àwọn ọ̀rọ̀ lẹ́sẹ̀ẹsẹ̀ láti kọ́ olùsọdipúpọ̀ combo (títí dé 3x). Combo fọ́ tí o kò bá ṣàṣeyọrí. Gbìyànjú láti ṣẹ́gun àmì tó ga jù rẹ." }
+                {
+                    "name": "Bẹ̀rẹ̀ aago náà",
+                    "text": "Lọ sí wordle.global/{lang}/speed kí o sì tẹ Bẹ̀rẹ̀. O bẹ̀rẹ̀ pẹ̀lú ìṣẹ́jú 3."
+                },
+                {
+                    "name": "Yanjú àwọn ọ̀rọ̀ ní kíákíá",
+                    "text": "Ọ̀rọ̀ kọ̀ọ̀kan tí o bá yanjú fi àkókò àfikún kún (+10s sí +60s, iye ìgbìyànjú tí o lò ní ṣe). Ọ̀rọ̀ tí kò ṣàṣeyọrí gba ìṣẹ́jú 30 lọ́wọ́ rẹ."
+                },
+                {
+                    "name": "Kọ́ combo rẹ",
+                    "text": "Yanjú àwọn ọ̀rọ̀ lẹ́sẹ̀ẹsẹ̀ láti kọ́ olùsọdipúpọ̀ combo (títí dé 3x). Combo fọ́ tí o kò bá ṣàṣeyọrí. Gbìyànjú láti ṣẹ́gun àmì tó ga jù rẹ."
+                }
             ],
             "multiboard": [
-                { "name": "Bẹ̀rẹ̀ eré kan", "text": "Lọ sí wordle.global/{lang}/{modeName} láti ṣeré {modeName} ní èdè {langName}. Pátákó {boardCount} yóò hàn pẹ̀lú àwọn ọ̀rọ̀ tí a fi pamọ́ oríṣiríṣi." },
-                { "name": "Fojú inú wo lórí gbogbo pátákó", "text": "Kọ ọ̀rọ̀ lẹ́tà 5 kí o sì tẹ Enter. Ìgbìyànjú rẹ hàn lórí gbogbo pátákó {boardCount} ní ẹ̀ẹ̀kan náà. Pátákó kọ̀ọ̀kan fi ìtọ́ka àwọ̀ tirẹ̀ hàn (aláwọ̀ ewé, aláwọ̀ pupa ẹ̀yìn, aláwọ̀ aárọ̀)." },
-                { "name": "Yanjú gbogbo pátákó {boardCount}", "text": "Àwọn pátákó tí a ti yanjú di ẹ̀jẹ̀. Lo pátákó bọ́tìnnì àwọ̀-pípín láti tọpinpin àwọn lẹ́tà tó ń ṣiṣẹ́ lórí pátákó wo. Yanjú gbogbo pátákó {boardCount} ní ìgbìyànjú {maxGuesses} láti ṣẹ́gun." }
+                {
+                    "name": "Bẹ̀rẹ̀ eré kan",
+                    "text": "Lọ sí wordle.global/{lang}/{modeName} láti ṣeré {modeName} ní èdè {langName}. Pátákó {boardCount} yóò hàn pẹ̀lú àwọn ọ̀rọ̀ tí a fi pamọ́ oríṣiríṣi."
+                },
+                {
+                    "name": "Fojú inú wo lórí gbogbo pátákó",
+                    "text": "Kọ ọ̀rọ̀ lẹ́tà 5 kí o sì tẹ Enter. Ìgbìyànjú rẹ hàn lórí gbogbo pátákó {boardCount} ní ẹ̀ẹ̀kan náà. Pátákó kọ̀ọ̀kan fi ìtọ́ka àwọ̀ tirẹ̀ hàn (aláwọ̀ ewé, aláwọ̀ pupa ẹ̀yìn, aláwọ̀ aárọ̀)."
+                },
+                {
+                    "name": "Yanjú gbogbo pátákó {boardCount}",
+                    "text": "Àwọn pátákó tí a ti yanjú di ẹ̀jẹ̀. Lo pátákó bọ́tìnnì àwọ̀-pípín láti tọpinpin àwọn lẹ́tà tó ń ṣiṣẹ́ lórí pátákó wo. Yanjú gbogbo pátákó {boardCount} ní ìgbìyànjú {maxGuesses} láti ṣẹ́gun."
+                }
             ]
         }
     },
@@ -354,13 +519,13 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
-        "homepage_tagline": "The world's word game",
-        "homepage_playing_in": "Playing in",
-        "homepage_change": "change",
-        "homepage_choose_language": "Choose your language",
-        "homepage_languages_counting": "languages and counting — more added regularly.",
-        "homepage_search": "Search languages...",
-        "homepage_and_more": "& More",
-        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+        "homepage_tagline": "Eré ọ̀rọ̀ ayé",
+        "homepage_playing_in": "Ń ṣeré ní",
+        "homepage_change": "yí padà",
+        "homepage_choose_language": "Yan èdè rẹ",
+        "homepage_languages_counting": "èdè àti ń pọ̀ sí i — a máa ń ṣàfikún déédéé.",
+        "homepage_search": "Ṣàwárí èdè...",
+        "homepage_and_more": "Àti bẹ́ẹ̀ lọ",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — àti bẹ́ẹ̀ lọ ń bọ̀."
     }
 }

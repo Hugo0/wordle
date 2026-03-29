@@ -15,7 +15,7 @@ def write_seo(lang_code, seo_data):
     if not os.path.exists(config_path):
         print(f"SKIP {lang_code}: no config file")
         return False
-    with open(config_path, "r", encoding="utf-8") as f:
+    with open(config_path, encoding="utf-8") as f:
         config = json.load(f)
     if "seo" in config:
         print(f"SKIP {lang_code}: already has seo")

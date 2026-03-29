@@ -199,7 +199,7 @@ def deploy(font_path):
     img16 = make_favicon(16, font_path)
     img32 = make_favicon(32, font_path)
     ico_path = os.path.join(FAVICON_DIR, "favicon.ico")
-    img32.save(ico_path, "ICO", sizes=[(16, 16), (32, 32)])
+    img32.save(ico_path, "ICO", append_images=[img16], sizes=[(16, 16), (32, 32)])
     print("  ✓ favicon.ico (16+32)")
 
     print("\nDone!")

@@ -102,88 +102,253 @@
         "stat_languages": "Tillar",
         "stat_modes": "Oʻyin Rejimlari",
         "value_props": [
-            { "key": "languages", "title": "80+ Til", "desc": "Arabchadan Yorubagacha. Eng katta koʻp tilli Wordle." },
-            { "key": "definitions", "title": "Soʻz Taʼriflari", "desc": "Oʻynagandan keyin har bir soʻzning maʼnosini oʻrganing. Soʻz boyligingizni kengaytiring." },
-            { "key": "word_art", "title": "Noyob Soʻz Sanʼati", "desc": "Har bir soʻzning oʻziga xos rasmi bor. Hammasini toʻplang." },
-            { "key": "themes", "title": "Qorongʻu Rejim va Mavzular", "desc": "Yorugʻ, qorongʻu va yuqori kontrastli rejimlar qulay oʻyin uchun." },
-            { "key": "pwa", "title": "Hamma Joyda Ishlaydi", "desc": "PWA — istalgan qurilmaga oʻrnating. Oflayn ishlaydi. Yuklab olish shart emas." },
-            { "key": "free", "title": "Abadiy Bepul", "desc": "Hisob kerak emas. Toʻlov yoʻq. Faqat oʻynang." }
+            {
+                "key": "languages",
+                "title": "80+ Til",
+                "desc": "Arabchadan Yorubagacha. Eng katta koʻp tilli Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Soʻz Taʼriflari",
+                "desc": "Oʻynagandan keyin har bir soʻzning maʼnosini oʻrganing. Soʻz boyligingizni kengaytiring."
+            },
+            {
+                "key": "word_art",
+                "title": "Noyob Soʻz Sanʼati",
+                "desc": "Har bir soʻzning oʻziga xos rasmi bor. Hammasini toʻplang."
+            },
+            {
+                "key": "themes",
+                "title": "Qorongʻu Rejim va Mavzular",
+                "desc": "Yorugʻ, qorongʻu va yuqori kontrastli rejimlar qulay oʻyin uchun."
+            },
+            {
+                "key": "pwa",
+                "title": "Hamma Joyda Ishlaydi",
+                "desc": "PWA — istalgan qurilmaga oʻrnating. Oflayn ishlaydi. Yuklab olish shart emas."
+            },
+            {
+                "key": "free",
+                "title": "Abadiy Bepul",
+                "desc": "Hisob kerak emas. Toʻlov yoʻq. Faqat oʻynang."
+            }
         ],
         "tips": [
-            { "title": "Unlili soʻz bilan boshlang", "text": "CRANE, STARE yoki ADIEU kabi soʻzlar tez-tez uchraydigan harflarni tezda sinaydi. Qaysi unlilar borligini bilish variantlarni qisqartiradi." },
-            { "title": "Bilganlaringizni ishlating", "text": "Yashil harflar joyida qoladi. Sariq harflar koʻchishi kerak. Kulrang harflar olib tashlangan. Har bir taxminda uchala maslahatni ishlating." },
-            { "title": "Keng tarqalgan namunalarni oʻylang", "text": "Ingliz tilida soʻzlar koʻpincha -TION, -IGHT, -OUND, -MENT bilan tugaydi. Boshqa tillarda oʻz namunalari bor — ularni oʻrganing." },
-            { "title": "Yoʻq qiling, tasodifiy taxmin qilmang", "text": "Ikkinchi soʻzingiz yangi harflarni sinashi kerak, tasdiqlangan harflarni takrorlamasligi kerak. Iloji boricha koʻp sinamagan undoshlarni qamrab oling." },
-            { "title": "Takroriy harflarga eʼtibor bering", "text": "CREEK, FLOSS yoki APPLE kabi soʻzlar keng tarqalgan tuzoqlardir. Agar maslahatlar mos kelmasa, takrorlanuvchi harf haqida oʻylang." },
-            { "title": "Qiyin rejimdan foydalanib yaxshilaning", "text": "Qiyin rejim har taxminda tasdiqlangan maslahatlarni ishlatishga majbur qiladi. Oddiy rejimga qaytganingizda ham yaxshi odatlar shakllanadi." }
+            {
+                "title": "Unlili soʻz bilan boshlang",
+                "text": "CRANE, STARE yoki ADIEU kabi soʻzlar tez-tez uchraydigan harflarni tezda sinaydi. Qaysi unlilar borligini bilish variantlarni qisqartiradi."
+            },
+            {
+                "title": "Bilganlaringizni ishlating",
+                "text": "Yashil harflar joyida qoladi. Sariq harflar koʻchishi kerak. Kulrang harflar olib tashlangan. Har bir taxminda uchala maslahatni ishlating."
+            },
+            {
+                "title": "Keng tarqalgan namunalarni oʻylang",
+                "text": "Ingliz tilida soʻzlar koʻpincha -TION, -IGHT, -OUND, -MENT bilan tugaydi. Boshqa tillarda oʻz namunalari bor — ularni oʻrganing."
+            },
+            {
+                "title": "Yoʻq qiling, tasodifiy taxmin qilmang",
+                "text": "Ikkinchi soʻzingiz yangi harflarni sinashi kerak, tasdiqlangan harflarni takrorlamasligi kerak. Iloji boricha koʻp sinamagan undoshlarni qamrab oling."
+            },
+            {
+                "title": "Takroriy harflarga eʼtibor bering",
+                "text": "CREEK, FLOSS yoki APPLE kabi soʻzlar keng tarqalgan tuzoqlardir. Agar maslahatlar mos kelmasa, takrorlanuvchi harf haqida oʻylang."
+            },
+            {
+                "title": "Qiyin rejimdan foydalanib yaxshilaning",
+                "text": "Qiyin rejim har taxminda tasdiqlangan maslahatlarni ishlatishga majbur qiladi. Oddiy rejimga qaytganingizda ham yaxshi odatlar shakllanadi."
+            }
         ],
         "tips_speed": [
-            { "title": "CRANE yoki STARE bilan boshlang", "text": "Koʻp uchraydigan harflar tez yechim uchun eng yaxshi imkoniyat beradi. Har bir soniya muhim." },
-            { "title": "Koʻp oʻylamang", "text": "Speed Streak sezgini mukofotlaydi. Mumkin boʻlgan soʻzni koʻrsangiz, sinab koʻring — combo bonusi mukammal yechimdan koʻra afzalroq." },
-            { "title": "Combongizni saqlang", "text": "Muvaffaqiyatsiz soʻz koʻpaytgichni buzadi. Ishonchingiz komil boʻlmasa, xavfsiz taxmin bilan koʻproq maslahat toʻplang." },
-            { "title": "2-3 taxminda yeching", "text": "Tez yechim uchun vaqt bonusi juda katta (+60s 1 taxmin uchun, +30s 2 uchun). Xatarli ikkinchi taxmin katta natija berishi mumkin." },
-            { "title": "Keng tarqalgan soʻz oxirlarini oʻrganing", "text": "-IGHT, -OUND, -ATCH kabi namunalar tez-tez takrorlanadi. Ularni darhol tanish har soʻzda soniyalar tejaydi." },
-            { "title": "Bosim oshganda xotirjam boʻling", "text": "Har 3 soʻzdan keyin taymer tezlashadi. Shoshilish xatolarga olib keladi. Barqaror tezlik vahimadan yaxshiroq." }
+            {
+                "title": "CRANE yoki STARE bilan boshlang",
+                "text": "Koʻp uchraydigan harflar tez yechim uchun eng yaxshi imkoniyat beradi. Har bir soniya muhim."
+            },
+            {
+                "title": "Koʻp oʻylamang",
+                "text": "Speed Streak sezgini mukofotlaydi. Mumkin boʻlgan soʻzni koʻrsangiz, sinab koʻring — combo bonusi mukammal yechimdan koʻra afzalroq."
+            },
+            {
+                "title": "Combongizni saqlang",
+                "text": "Muvaffaqiyatsiz soʻz koʻpaytgichni buzadi. Ishonchingiz komil boʻlmasa, xavfsiz taxmin bilan koʻproq maslahat toʻplang."
+            },
+            {
+                "title": "2-3 taxminda yeching",
+                "text": "Tez yechim uchun vaqt bonusi juda katta (+60s 1 taxmin uchun, +30s 2 uchun). Xatarli ikkinchi taxmin katta natija berishi mumkin."
+            },
+            {
+                "title": "Keng tarqalgan soʻz oxirlarini oʻrganing",
+                "text": "-IGHT, -OUND, -ATCH kabi namunalar tez-tez takrorlanadi. Ularni darhol tanish har soʻzda soniyalar tejaydi."
+            },
+            {
+                "title": "Bosim oshganda xotirjam boʻling",
+                "text": "Har 3 soʻzdan keyin taymer tezlashadi. Shoshilish xatolarga olib keladi. Barqaror tezlik vahimadan yaxshiroq."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Keng boshlang", "text": "Keng tarqalgan harfli soʻzlarni (CRANE, STARE) ishlating, barcha taxtalardan bir vaqtda maslahat toʻplash uchun." },
-            { "title": "Boʻlingan klaviaturani kuzating", "text": "Klaviatura har taxta uchun ranglarni koʻrsatadi. Bir taxtada yashil, boshqasida kulrang harf variantlarni tezda qisqartiradi." },
-            { "title": "Qiyin taxtalarga ustuvorlik bering", "text": "Eng koʻp nomaʼlumli taxtaga taxminlarni yoʻnaltiring. Oson taxtalar koʻpincha oʻz-oʻzidan yechiladi." },
-            { "title": "Dastlabki taxminlarni behuda sarflamang", "text": "Birinchi 2-3 taxminni maʼlumotga boy soʻzlarga ishlating, keyin muayyan taxtalarga yoʻnaltiriladi." },
-            { "title": "Umumiy harflarni qidiring", "text": "Agar ikkita taxta ham sariq E koʻrsatsa, E ni yangi pozitsiyada qoʻygan soʻz ikkala taxtaga ham yordam beradi." },
-            { "title": "Favqulodda holat uchun taxmin saqlang", "text": "Oxirgi taxtada qotib qolsangiz, qoʻshimcha taxmin gʻalaba va magʻlubiyat oʻrtasidagi farqdir." }
+            {
+                "title": "Keng boshlang",
+                "text": "Keng tarqalgan harfli soʻzlarni (CRANE, STARE) ishlating, barcha taxtalardan bir vaqtda maslahat toʻplash uchun."
+            },
+            {
+                "title": "Boʻlingan klaviaturani kuzating",
+                "text": "Klaviatura har taxta uchun ranglarni koʻrsatadi. Bir taxtada yashil, boshqasida kulrang harf variantlarni tezda qisqartiradi."
+            },
+            {
+                "title": "Qiyin taxtalarga ustuvorlik bering",
+                "text": "Eng koʻp nomaʼlumli taxtaga taxminlarni yoʻnaltiring. Oson taxtalar koʻpincha oʻz-oʻzidan yechiladi."
+            },
+            {
+                "title": "Dastlabki taxminlarni behuda sarflamang",
+                "text": "Birinchi 2-3 taxminni maʼlumotga boy soʻzlarga ishlating, keyin muayyan taxtalarga yoʻnaltiriladi."
+            },
+            {
+                "title": "Umumiy harflarni qidiring",
+                "text": "Agar ikkita taxta ham sariq E koʻrsatsa, E ni yangi pozitsiyada qoʻygan soʻz ikkala taxtaga ham yordam beradi."
+            },
+            {
+                "title": "Favqulodda holat uchun taxmin saqlang",
+                "text": "Oxirgi taxtada qotib qolsangiz, qoʻshimcha taxmin gʻalaba va magʻlubiyat oʻrtasidagi farqdir."
+            }
         ],
         "mode_desc_classic": "Yashirin 5 harfli soʻzni topish uchun 6 ta urinishingiz bor. Javobni qisqartirish uchun rangli maslahatlardan foydalaning.",
         "mode_desc_unlimited": "Yashirin 5 harfli soʻzni topish uchun 6 ta urinishingiz bor. Rangli maslahatlardan foydalaning. Har oʻyindan keyin \"Qayta Oʻynash\" bosing — kundalik cheklov yoʻq.",
         "mode_desc_speed": "Soatingizda 3 daqiqa bilan boshlang. Har yechilgan soʻz bonus vaqt beradi — kam taxmin bilan yeching, katta bonus oling (+60s 1 taxmin, +10s 6 taxmin uchun). Muvaffaqiyatsiz soʻz 30 soniya oladi. Ketma-ket yechib combo quring, 3x koʻpaytgichgacha. Har 3 soʻzdan keyin taymer tezlashadi.",
         "mode_desc_multiboard": "{modeName} sizni bir vaqtning oʻzida faqat {maxGuesses} taxmin bilan {boardCount} Wordle taxtasini yechishga chorlaydi. Har taxmin barcha yechilmagan taxtalarda paydo boʻladi. Yechilgan taxtalar muzlaydi. Boʻlingan rangli klaviatura qaysi harflar qaysi taxtada toʻgʻri ekanini koʻrsatadi. Barcha taxtalardan maslahat yigʻish uchun keng tarqalgan harfli soʻzlar bilan boshlang.",
         "faq": [
-            { "q": "{langName} tilida Wordle qanday oʻynaladi?", "a": "wordle.global/{lang} sahifasiga kiring. 5 harfli soʻzni topish uchun 6 ta urinishingiz bor. Har taxmindan keyin plitkalar yashil (toʻgʻri harf, toʻgʻri joy), sariq (toʻgʻri harf, notoʻgʻri joy) yoki kulrang (harf soʻzda yoʻq) boʻladi." },
-            { "q": "Har kuni yangi topishmoq bormi?", "a": "Ha. Har kuni yangi soʻz tanlanadi. Bir xil tilda oʻynaganlarning hammasi bir xil soʻzni oladi, shuning uchun doʻstlaringiz bilan solishtirishingiz mumkin." },
-            { "q": "Wordle Global bepulmi?", "a": "Ha. Kundalik topishmoq, cheksiz rejim va barcha oʻyin rejimlari 80+ tilda toʻliq bepul. Hisob yoki yuklab olish kerak emas." },
-            { "q": "Kuniga bir martadan koʻp oʻynasa boʻladimi?", "a": "Ha — cheksiz oʻyinlar uchun wordle.global/{lang}/unlimited sahifasida cheksiz rejimni sinab koʻring. Kundalik ketma-ketligingiz alohida hisoblanadi." }
+            {
+                "q": "{langName} tilida Wordle qanday oʻynaladi?",
+                "a": "wordle.global/{lang} sahifasiga kiring. 5 harfli soʻzni topish uchun 6 ta urinishingiz bor. Har taxmindan keyin plitkalar yashil (toʻgʻri harf, toʻgʻri joy), sariq (toʻgʻri harf, notoʻgʻri joy) yoki kulrang (harf soʻzda yoʻq) boʻladi."
+            },
+            {
+                "q": "Har kuni yangi topishmoq bormi?",
+                "a": "Ha. Har kuni yangi soʻz tanlanadi. Bir xil tilda oʻynaganlarning hammasi bir xil soʻzni oladi, shuning uchun doʻstlaringiz bilan solishtirishingiz mumkin."
+            },
+            {
+                "q": "Wordle Global bepulmi?",
+                "a": "Ha. Kundalik topishmoq, cheksiz rejim va barcha oʻyin rejimlari 80+ tilda toʻliq bepul. Hisob yoki yuklab olish kerak emas."
+            },
+            {
+                "q": "Kuniga bir martadan koʻp oʻynasa boʻladimi?",
+                "a": "Ha — cheksiz oʻyinlar uchun wordle.global/{lang}/unlimited sahifasida cheksiz rejimni sinab koʻring. Kundalik ketma-ketligingiz alohida hisoblanadi."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "{langName} tilida Wordle Unlimited nima?", "a": "Wordle Unlimited {langName} tilida xohlagan sonli Wordle oʻyinlarini oʻynash imkonini beradi, ertangi topishmoqni kutmasdan. Har oʻyinda 6 taxminda topish uchun yangi soʻz beriladi." },
-                { "q": "Wordle Unlimited bepulmi?", "a": "Ha. Wordle Unlimited toʻliq bepul. Hisob yoʻq, yuklab olish yoʻq, oʻyin vaqtida reklama yoʻq." },
-                { "q": "Cheksiz rejim kundalik ketma-ketligimga taʼsir qiladimi?", "a": "Yoʻq. Cheksiz rejimning oʻz alohida statistikasi bor. Faqat kundalik topishmoq kundalik ketma-ketligingizga taʼsir qiladi." },
-                { "q": "Necha marta oʻynasa boʻladi?", "a": "Cheklov yoʻq. Xohlagan sonli raundlarni oʻynashingiz mumkin. Har oʻyindan keyin \"Qayta Oʻynash\" bosing." },
-                { "q": "Wordle Unlimited qaysi tillarda oʻynasa boʻladi?", "a": "Wordle Unlimited wordle.global saytida 80+ tilda mavjud, jumladan Ingliz, Ispan, Nemis, Fin, Arab, Fransuz, Italyan, Portugaliya va boshqa koʻplab tillar." }
+                {
+                    "q": "{langName} tilida Wordle Unlimited nima?",
+                    "a": "Wordle Unlimited {langName} tilida xohlagan sonli Wordle oʻyinlarini oʻynash imkonini beradi, ertangi topishmoqni kutmasdan. Har oʻyinda 6 taxminda topish uchun yangi soʻz beriladi."
+                },
+                {
+                    "q": "Wordle Unlimited bepulmi?",
+                    "a": "Ha. Wordle Unlimited toʻliq bepul. Hisob yoʻq, yuklab olish yoʻq, oʻyin vaqtida reklama yoʻq."
+                },
+                {
+                    "q": "Cheksiz rejim kundalik ketma-ketligimga taʼsir qiladimi?",
+                    "a": "Yoʻq. Cheksiz rejimning oʻz alohida statistikasi bor. Faqat kundalik topishmoq kundalik ketma-ketligingizga taʼsir qiladi."
+                },
+                {
+                    "q": "Necha marta oʻynasa boʻladi?",
+                    "a": "Cheklov yoʻq. Xohlagan sonli raundlarni oʻynashingiz mumkin. Har oʻyindan keyin \"Qayta Oʻynash\" bosing."
+                },
+                {
+                    "q": "Wordle Unlimited qaysi tillarda oʻynasa boʻladi?",
+                    "a": "Wordle Unlimited wordle.global saytida 80+ tilda mavjud, jumladan Ingliz, Ispan, Nemis, Fin, Arab, Fransuz, Italyan, Portugaliya va boshqa koʻplab tillar."
+                }
             ],
             "speed": [
-                { "q": "{langName} tilida Speed Streak nima?", "a": "Speed Streak {langName} tilida vaqt cheklangan Wordle rejimi. 3 daqiqa bilan boshlaysiz va vaqt tugaguncha imkon qadar koʻp soʻz yechishingiz kerak. Tez yeching — koʻproq bonus vaqt oling." },
-                { "q": "Ball hisoblash qanday ishlaydi?", "a": "Har yechilgan soʻz uchun ball olasiz. Kam taxmin va tez yechim koʻproq ball beradi. Ketma-ket yechib combo quring — 3x koʻpaytgichgacha." },
-                { "q": "Vaqt tugaganda nima boʻladi?", "a": "Oʻyin tugaydi va yakuniy balingiz, jami yechilgan soʻzlar, maksimal combo va oʻrtacha taxminlarni koʻrasiz. Darhol qayta oʻynashingiz mumkin." },
-                { "q": "Speed Streak bepulmi?", "a": "Ha. Speed Streak barcha 80+ tilda toʻliq bepul. Hisob yoki yuklab olish kerak emas." }
+                {
+                    "q": "{langName} tilida Speed Streak nima?",
+                    "a": "Speed Streak {langName} tilida vaqt cheklangan Wordle rejimi. 3 daqiqa bilan boshlaysiz va vaqt tugaguncha imkon qadar koʻp soʻz yechishingiz kerak. Tez yeching — koʻproq bonus vaqt oling."
+                },
+                {
+                    "q": "Ball hisoblash qanday ishlaydi?",
+                    "a": "Har yechilgan soʻz uchun ball olasiz. Kam taxmin va tez yechim koʻproq ball beradi. Ketma-ket yechib combo quring — 3x koʻpaytgichgacha."
+                },
+                {
+                    "q": "Vaqt tugaganda nima boʻladi?",
+                    "a": "Oʻyin tugaydi va yakuniy balingiz, jami yechilgan soʻzlar, maksimal combo va oʻrtacha taxminlarni koʻrasiz. Darhol qayta oʻynashingiz mumkin."
+                },
+                {
+                    "q": "Speed Streak bepulmi?",
+                    "a": "Ha. Speed Streak barcha 80+ tilda toʻliq bepul. Hisob yoki yuklab olish kerak emas."
+                }
             ],
             "multiboard": [
-                { "q": "{langName} tilida {modeName} nima?", "a": "{modeName} {langName} tilida koʻp taxtali Wordle varianti. {maxGuesses} taxmin bilan {boardCount} Wordle taxtasini bir vaqtda yechishingiz kerak. Har taxmin barcha yechilmagan taxtalarda paydo boʻladi." },
-                { "q": "{modeName}da nechta taxmin olaman?", "a": "Barcha {boardCount} taxtani yechish uchun {maxGuesses} taxminingiz bor. Taxta yechilganda muzlaydi va qolgan taxtalarga eʼtibor qaratishingiz mumkin." },
-                { "q": "{modeName} uchun qaysi strategiya eng yaxshi?", "a": "Barcha {boardCount} taxtadan maʼlumot toʻplash uchun keng tarqalgan harfli soʻzlar bilan boshlang. Boʻlingan rangli klaviaturaga eʼtibor bering — qaysi harflar qaysi taxtada toʻgʻri ekanini koʻrsatadi." },
-                { "q": "{modeName} bepulmi?", "a": "Ha. {modeName} barcha 80+ tilda toʻliq bepul. Hisob yoki yuklab olish kerak emas. Xohlagan sonli oʻynang." }
+                {
+                    "q": "{langName} tilida {modeName} nima?",
+                    "a": "{modeName} {langName} tilida koʻp taxtali Wordle varianti. {maxGuesses} taxmin bilan {boardCount} Wordle taxtasini bir vaqtda yechishingiz kerak. Har taxmin barcha yechilmagan taxtalarda paydo boʻladi."
+                },
+                {
+                    "q": "{modeName}da nechta taxmin olaman?",
+                    "a": "Barcha {boardCount} taxtani yechish uchun {maxGuesses} taxminingiz bor. Taxta yechilganda muzlaydi va qolgan taxtalarga eʼtibor qaratishingiz mumkin."
+                },
+                {
+                    "q": "{modeName} uchun qaysi strategiya eng yaxshi?",
+                    "a": "Barcha {boardCount} taxtadan maʼlumot toʻplash uchun keng tarqalgan harfli soʻzlar bilan boshlang. Boʻlingan rangli klaviaturaga eʼtibor bering — qaysi harflar qaysi taxtada toʻgʻri ekanini koʻrsatadi."
+                },
+                {
+                    "q": "{modeName} bepulmi?",
+                    "a": "Ha. {modeName} barcha 80+ tilda toʻliq bepul. Hisob yoki yuklab olish kerak emas. Xohlagan sonli oʻynang."
+                }
             ]
         },
         "howto": [
-            { "name": "Soʻz yozing", "text": "{langName} tilida toʻgʻri 5 harfli soʻzni ekrandagi klaviatura yoki oʻz klaviaturangiz bilan yozing, keyin Enter bosing." },
-            { "name": "Maslahatlarni oʻqing", "text": "Yashil plitka harf toʻgʻri va toʻgʻri joyda ekanini bildiradi. Sariq harf soʻzda bor, lekin notoʻgʻri joyda. Kulrang harf soʻzda yoʻq." },
-            { "name": "6 urinishda yeching", "text": "Soʻzni qisqartirish uchun rangli maslahatlardan foydalaning. Jami 6 taxminingiz bor. Topishmoqdan keyin statistikangizni koʻring va natijangizni ulashing." }
+            {
+                "name": "Soʻz yozing",
+                "text": "{langName} tilida toʻgʻri 5 harfli soʻzni ekrandagi klaviatura yoki oʻz klaviaturangiz bilan yozing, keyin Enter bosing."
+            },
+            {
+                "name": "Maslahatlarni oʻqing",
+                "text": "Yashil plitka harf toʻgʻri va toʻgʻri joyda ekanini bildiradi. Sariq harf soʻzda bor, lekin notoʻgʻri joyda. Kulrang harf soʻzda yoʻq."
+            },
+            {
+                "name": "6 urinishda yeching",
+                "text": "Soʻzni qisqartirish uchun rangli maslahatlardan foydalaning. Jami 6 taxminingiz bor. Topishmoqdan keyin statistikangizni koʻring va natijangizni ulashing."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Oʻyinni boshlang", "text": "wordle.global/{lang}/unlimited sahifasiga kiring. {langName} tilida Wordle Unlimited oʻynashni boshlang. Sizga tasodifiy 5 harfli soʻz tanlanadi." },
-                { "name": "Soʻzni toping", "text": "Toʻgʻri 5 harfli soʻz yozing va Enter bosing. Yashil plitka — harf toʻgʻri va toʻgʻri joyda. Sariq — harf soʻzda bor, lekin notoʻgʻri joyda. Kulrang — harf soʻzda yoʻq." },
-                { "name": "Darhol qayta oʻynang", "text": "Soʻzni yechgandan (yoki 6 taxminni ishlatgandan) keyin \"Qayta Oʻynash\" bosing. Ertaga kutish yoʻq." }
+                {
+                    "name": "Oʻyinni boshlang",
+                    "text": "wordle.global/{lang}/unlimited sahifasiga kiring. {langName} tilida Wordle Unlimited oʻynashni boshlang. Sizga tasodifiy 5 harfli soʻz tanlanadi."
+                },
+                {
+                    "name": "Soʻzni toping",
+                    "text": "Toʻgʻri 5 harfli soʻz yozing va Enter bosing. Yashil plitka — harf toʻgʻri va toʻgʻri joyda. Sariq — harf soʻzda bor, lekin notoʻgʻri joyda. Kulrang — harf soʻzda yoʻq."
+                },
+                {
+                    "name": "Darhol qayta oʻynang",
+                    "text": "Soʻzni yechgandan (yoki 6 taxminni ishlatgandan) keyin \"Qayta Oʻynash\" bosing. Ertaga kutish yoʻq."
+                }
             ],
             "speed": [
-                { "name": "Taymerni boshlang", "text": "wordle.global/{lang}/speed sahifasiga kiring va Boshlash bosing. 3 daqiqa bilan boshlaysiz." },
-                { "name": "Soʻzlarni tez yeching", "text": "Har yechilgan soʻz bonus vaqt beradi (+10s dan +60s gacha, taxminlar soniga qarab). Muvaffaqiyatsiz soʻz 30 soniya oladi." },
-                { "name": "Combongizni quring", "text": "Ketma-ket soʻzlarni yechib combo koʻpaytgichini quring (3x gacha). Muvaffaqiyatsiz boʻlsangiz combo buziladi. Eng yuqori balingizni yengishga harakat qiling." }
+                {
+                    "name": "Taymerni boshlang",
+                    "text": "wordle.global/{lang}/speed sahifasiga kiring va Boshlash bosing. 3 daqiqa bilan boshlaysiz."
+                },
+                {
+                    "name": "Soʻzlarni tez yeching",
+                    "text": "Har yechilgan soʻz bonus vaqt beradi (+10s dan +60s gacha, taxminlar soniga qarab). Muvaffaqiyatsiz soʻz 30 soniya oladi."
+                },
+                {
+                    "name": "Combongizni quring",
+                    "text": "Ketma-ket soʻzlarni yechib combo koʻpaytgichini quring (3x gacha). Muvaffaqiyatsiz boʻlsangiz combo buziladi. Eng yuqori balingizni yengishga harakat qiling."
+                }
             ],
             "multiboard": [
-                { "name": "Oʻyinni boshlang", "text": "wordle.global/{lang}/{modeName} sahifasiga kiring. {langName} tilida {modeName} oʻynang. {boardCount} taxta turli yashirin soʻzlar bilan paydo boʻladi." },
-                { "name": "Barcha taxtalarda toping", "text": "5 harfli soʻz yozing va Enter bosing. Taxminingiz barcha {boardCount} taxtada bir vaqtda paydo boʻladi. Har taxta oʻz rangli maslahatlarini koʻrsatadi (yashil, sariq, kulrang)." },
-                { "name": "Barcha {boardCount} taxtani yeching", "text": "Yechilgan taxtalar muzlaydi. Qaysi harflar qaysi taxtada ishlashini kuzatish uchun boʻlingan rangli klaviaturadan foydalaning. {maxGuesses} taxmin ichida barcha {boardCount} taxtani yeching." }
+                {
+                    "name": "Oʻyinni boshlang",
+                    "text": "wordle.global/{lang}/{modeName} sahifasiga kiring. {langName} tilida {modeName} oʻynang. {boardCount} taxta turli yashirin soʻzlar bilan paydo boʻladi."
+                },
+                {
+                    "name": "Barcha taxtalarda toping",
+                    "text": "5 harfli soʻz yozing va Enter bosing. Taxminingiz barcha {boardCount} taxtada bir vaqtda paydo boʻladi. Har taxta oʻz rangli maslahatlarini koʻrsatadi (yashil, sariq, kulrang)."
+                },
+                {
+                    "name": "Barcha {boardCount} taxtani yeching",
+                    "text": "Yechilgan taxtalar muzlaydi. Qaysi harflar qaysi taxtada ishlashini kuzatish uchun boʻlingan rangli klaviaturadan foydalaning. {maxGuesses} taxmin ichida barcha {boardCount} taxtani yeching."
+                }
             ]
         }
     },
@@ -324,13 +489,13 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
-        "homepage_tagline": "The world's word game",
-        "homepage_playing_in": "Playing in",
-        "homepage_change": "change",
-        "homepage_choose_language": "Choose your language",
-        "homepage_languages_counting": "languages and counting — more added regularly.",
-        "homepage_search": "Search languages...",
-        "homepage_and_more": "& More",
-        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+        "homepage_tagline": "Dunyoning so'z o'yini",
+        "homepage_playing_in": "O'ynayapsiz",
+        "homepage_change": "o'zgartirish",
+        "homepage_choose_language": "Tilingizni tanlang",
+        "homepage_languages_counting": "til va ko'paymoqda — muntazam qo'shilmoqda.",
+        "homepage_search": "Til qidirish...",
+        "homepage_and_more": "Yana",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — va yana tez orada."
     }
 }

@@ -372,8 +372,8 @@
         ],
         "faq": [
             {
-                "q": "Wie spiele ich Wordle auf Deutsch?",
-                "a": "Besuche wordle.global/de um das tägliche Wordle auf Deutsch zu spielen. Du hast 6 Versuche, ein 5-Buchstaben-Wort zu erraten. Nach jedem Versuch werden die Kacheln grün (richtiger Buchstabe, richtige Stelle), gelb (richtiger Buchstabe, falsche Stelle) oder grau (Buchstabe nicht im Wort)."
+                "q": "Wie spiele ich Wordle in {langName}?",
+                "a": "Besuche wordle.global/de um das tägliche Wordle in {langName} zu spielen. Du hast 6 Versuche, ein 5-Buchstaben-Wort zu erraten. Nach jedem Versuch werden die Kacheln grün (richtiger Buchstabe, richtige Stelle), gelb (richtiger Buchstabe, falsche Stelle) oder grau (Buchstabe nicht im Wort)."
             },
             {
                 "q": "Gibt es jeden Tag ein neues Rätsel?",
@@ -395,7 +395,7 @@
         "mode_faq": {
             "unlimited": [
                 {
-                    "q": "Was ist Wordle Unlimited auf Deutsch?",
+                    "q": "Was ist Wordle Unlimited in {langName}?",
                     "a": "Wordle Unlimited lässt dich so viele Wordle-Spiele spielen wie du willst, ohne auf das tägliche Rätsel von morgen zu warten. Jedes Spiel gibt dir ein neues zufälliges Wort zum Erraten in 6 Versuchen."
                 },
                 {
@@ -417,8 +417,8 @@
             ],
             "speed": [
                 {
-                    "q": "Was ist Speed Streak auf Deutsch?",
-                    "a": "Speed Streak ist ein zeitgesteuerter Wordle-Modus auf Deutsch. Du startest mit 3 Minuten auf der Uhr und löst so viele Wörter wie möglich. Löse ein Wort schnell, um Bonuszeit zu verdienen."
+                    "q": "Was ist Speed Streak in {langName}?",
+                    "a": "Speed Streak ist ein zeitgesteuerter Wordle-Modus in {langName}. Du startest mit 3 Minuten auf der Uhr und löst so viele Wörter wie möglich. Löse ein Wort schnell, um Bonuszeit zu verdienen."
                 },
                 {
                     "q": "Wie funktioniert die Wertung?",
@@ -435,8 +435,8 @@
             ],
             "multiboard": [
                 {
-                    "q": "Was ist {modeName} auf Deutsch?",
-                    "a": "{modeName} ist eine Mehrbrett-Wordle-Variante auf Deutsch. Du löst {boardCount} Wordle-Bretter gleichzeitig mit {maxGuesses} Versuchen. Jeder Versuch wird auf allen ungelösten Brettern eingegeben."
+                    "q": "Was ist {modeName} in {langName}?",
+                    "a": "{modeName} ist eine Mehrbrett-Wordle-Variante in {langName}. Du löst {boardCount} Wordle-Bretter gleichzeitig mit {maxGuesses} Versuchen. Jeder Versuch wird auf allen ungelösten Brettern eingegeben."
                 },
                 {
                     "q": "Wie viele Versuche bekomme ich bei {modeName}?",
@@ -455,7 +455,7 @@
         "howto": [
             {
                 "name": "Tippe ein Wort",
-                "text": "Gib ein gültiges 5-Buchstaben-Wort auf Deutsch über die Bildschirmtastatur oder deine physische Tastatur ein und drücke Enter."
+                "text": "Gib ein gültiges 5-Buchstaben-Wort in {langName} über die Bildschirmtastatur oder deine physische Tastatur ein und drücke Enter."
             },
             {
                 "name": "Lies die Hinweise",
@@ -470,7 +470,7 @@
             "unlimited": [
                 {
                     "name": "Starte ein Spiel",
-                    "text": "Besuche wordle.global/de/unlimited, um Wordle Unlimited auf Deutsch zu starten. Ein zufälliges 5-Buchstaben-Wort wird für dich gewählt."
+                    "text": "Besuche wordle.global/de/unlimited, um Wordle Unlimited in {langName} zu starten. Ein zufälliges 5-Buchstaben-Wort wird für dich gewählt."
                 },
                 {
                     "name": "Rate das Wort",
@@ -498,7 +498,7 @@
             "multiboard": [
                 {
                     "name": "Starte ein Spiel",
-                    "text": "Besuche wordle.global/de/{modeName}, um {modeName} auf Deutsch zu spielen. {boardCount} Bretter erscheinen mit verschiedenen versteckten Wörtern."
+                    "text": "Besuche wordle.global/de/{modeName}, um {modeName} in {langName} zu spielen. {boardCount} Bretter erscheinen mit verschiedenen versteckten Wörtern."
                 },
                 {
                     "name": "Rate auf allen Brettern",

@@ -239,117 +239,282 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
-        "homepage_tagline": "The world's word game",
-        "homepage_playing_in": "Playing in",
-        "homepage_change": "change",
-        "homepage_choose_language": "Choose your language",
-        "homepage_languages_counting": "languages and counting — more added regularly.",
-        "homepage_search": "Search languages...",
-        "homepage_and_more": "& More",
-        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+        "homepage_tagline": "Orðaleikur heimsins",
+        "homepage_playing_in": "Spilar á",
+        "homepage_change": "breyta",
+        "homepage_choose_language": "Veldu tungumálið þitt",
+        "homepage_languages_counting": "tungumál og fleiri — bætt við reglulega.",
+        "homepage_search": "Leita að tungumáli...",
+        "homepage_and_more": "Meira",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — og meira á leiðinni."
     },
     "seo": {
-        "how_to_play": "Hvernig \u00e1 a\u00f0 spila",
-        "tips_strategy": "R\u00e1\u00f0 og a\u00f0fer\u00f0ir",
+        "how_to_play": "Hvernig á að spila",
+        "tips_strategy": "Ráð og aðferðir",
         "more_modes": "Fleiri leikjaham",
-        "play_in_languages": "Spila\u00f0u \u00e1 80+ tungum\u00e1lum",
-        "play_in_languages_sub": "\u00d6ll tungum\u00e1l eru \u00f3keypis. Enginn reikningur \u00fearf.",
+        "play_in_languages": "Spilaðu á 80+ tungumálum",
+        "play_in_languages_sub": "Öll tungumál eru ókeypis. Enginn reikningur þarf.",
         "why_wordle_global": "Af hverju Wordle Global",
         "faq_title": "Algengar spurningar",
-        "browse_all_languages": "Sko\u00f0a \u00f6ll 80+ tungum\u00e1l",
-        "recent_words": "N\u00fdleg or\u00f0",
-        "view_all_words": "Sko\u00f0a \u00f6ll or\u00f0",
-        "footer": "wordle.global \u2014 \u00f3keypis daglegt or\u00f0aleikur \u00e1 80+ tungum\u00e1lum",
-        "tile_correct": "er \u00ed or\u00f0inu og \u00e1 r\u00e9ttum sta\u00f0.",
-        "tile_semicorrect": "er \u00ed or\u00f0inu en \u00e1 r\u00f6ngum sta\u00f0.",
-        "tile_incorrect": "er ekki \u00ed or\u00f0inu.",
+        "browse_all_languages": "Skoða öll 80+ tungumál",
+        "recent_words": "Nýleg orð",
+        "view_all_words": "Skoða öll orð",
+        "footer": "wordle.global — ókeypis daglegt orðaleikur á 80+ tungumálum",
+        "tile_correct": "er í orðinu og á réttum stað.",
+        "tile_semicorrect": "er í orðinu en á röngum stað.",
+        "tile_incorrect": "er ekki í orðinu.",
         "stat_players": "Leikmenn",
         "stat_guesses": "Giskanir",
-        "stat_languages": "Tungum\u00e1l",
+        "stat_languages": "Tungumál",
         "stat_modes": "Leikjaham",
         "value_props": [
-            { "key": "languages", "title": "80+ tungum\u00e1l", "desc": "Fr\u00e1 arab\u00edsku til j\u00f3r\u00fab\u00f6. St\u00e6rsta fj\u00f6ltyngda Wordle \u00ed heimi." },
-            { "key": "definitions", "title": "Or\u00f0askilgreiningar", "desc": "L\u00e6r\u00f0u merkingu hvers or\u00f0s eftir leik. Efli\u00f0 or\u00f0aforga." },
-            { "key": "word_art", "title": "S\u00e9rst\u00f6k or\u00f0alist", "desc": "Hvert or\u00f0 kemur me\u00f0 s\u00e9rsmda\u00f0ri mynd. Saf\u00fana\u00f0u \u00feeim \u00f6llum." },
-            { "key": "themes", "title": "Dimmur hamur og \u00feemu", "desc": "Lj\u00f3st, dimmt og h\u00e1sk\u00fd\u00f0a ham \u00fatlit." },
-            { "key": "pwa", "title": "Virkar alls sta\u00f0ar", "desc": "PWA \u2014 setji\u00f0 upp \u00e1 hva\u00f0a t\u00e6ki sem er. Virkar \u00e1n nets. Engin ni\u00f0urhal \u00fearf." },
-            { "key": "free", "title": "\u00d3keypis a\u00f0 eilfu", "desc": "Enginn reikningur \u00fearf. Enginn greidslum\u00fair. Bara spila\u00f0u." }
+            {
+                "key": "languages",
+                "title": "80+ tungumál",
+                "desc": "Frá arabísku til jórúbö. Stærsta fjöltyngda Wordle í heimi."
+            },
+            {
+                "key": "definitions",
+                "title": "Orðaskilgreiningar",
+                "desc": "Lærðu merkingu hvers orðs eftir leik. Eflið orðaforga."
+            },
+            {
+                "key": "word_art",
+                "title": "Sérstök orðalist",
+                "desc": "Hvert orð kemur með sérsmdaðri mynd. Safúnaðu þeim öllum."
+            },
+            {
+                "key": "themes",
+                "title": "Dimmur hamur og þemu",
+                "desc": "Ljóst, dimmt og háskýða ham útlit."
+            },
+            {
+                "key": "pwa",
+                "title": "Virkar alls staðar",
+                "desc": "PWA — setjið upp á hvaða tæki sem er. Virkar án nets. Engin niðurhal þarf."
+            },
+            {
+                "key": "free",
+                "title": "Ókeypis að eilfu",
+                "desc": "Enginn reikningur þarf. Enginn greidslumúir. Bara spilaðu."
+            }
         ],
         "tips": [
-            { "title": "Byrji\u00f0 me\u00f0 s\u00e9rhljgjaldr\u00edku or\u00f0i", "text": "Or\u00f0 eins og CRANE, STARE e\u00f0a ADIEU pr\u00f3fa algeng b\u00f3kstafi hratt. A\u00f0 vita hva\u00f0a s\u00e9rhlj\u00f3\u00f0 eru til sta\u00f0ar \u00fesjaldar valkosti hratt." },
-            { "title": "Nota\u00f0u \u00feekking \u00fe\u00edna", "text": "Gr\u00e6nir b\u00f3kstafir eru l\u00e6stir. Gulir b\u00f3kstafir verda a\u00f0 f\u00e6rast. Gr\u00e1ir b\u00f3kstafir eru \u00fatiloka\u00f0ir. Hver giska \u00e6tti a\u00f0 nota allar \u00ferj\u00e1r v\u00edsbendingar." },
-            { "title": "Hugsarar um algeng mynstur", "text": "Or\u00f0 enda oft \u00e1 -TION, -IGHT, -OUND, -MENT. \u00d6nnur tungum\u00e1l hafa s\u00edn eigin mynstur \u2014 l\u00e6r\u00f0u \u00feau." },
-            { "title": "\u00datiloka\u00f0u, giska\u00f0u ekki af handah\u00f3fi", "text": "Anna\u00f0 or\u00f0i\u00f0 \u00e6tti a\u00f0 pr\u00f3fa n\u00fdja b\u00f3kstafi. \u00deak\u00fa\u00f0u eins marga \u00f3pr\u00f3fa\u00f0a samhlj\u00f3\u00f0a og h\u00e6gt er." },
-            { "title": "Passa\u00f0u upp \u00e1 tvb\u00f3fa\u00f0a b\u00f3kstafi", "text": "Or\u00f0 eins og CREEK, FLOSS e\u00f0a APPLE eru algeng gildr. Ef v\u00edsbendingar gar passa ekki, hugsa\u00f0u um endurtekinn b\u00f3kstaf." },
-            { "title": "Nota\u00f0u erfi\u00f0an ham til a\u00f0 b\u00e6tast", "text": "Erfi\u00f0ur hamur neydir \u00feig til a\u00f0 nota sta\u00f0festar v\u00edsbendingar. \u00dea\u00f0 byggir betri venjur." }
+            {
+                "title": "Byrjið með sérhljgjaldríku orði",
+                "text": "Orð eins og CRANE, STARE eða ADIEU prófa algeng bókstafi hratt. Að vita hvaða sérhljóð eru til staðar þsjaldar valkosti hratt."
+            },
+            {
+                "title": "Notaðu þekking þína",
+                "text": "Grænir bókstafir eru læstir. Gulir bókstafir verda að færast. Gráir bókstafir eru útilokaðir. Hver giska ætti að nota allar þrjár vísbendingar."
+            },
+            {
+                "title": "Hugsarar um algeng mynstur",
+                "text": "Orð enda oft á -TION, -IGHT, -OUND, -MENT. Önnur tungumál hafa sín eigin mynstur — lærðu þau."
+            },
+            {
+                "title": "Útilokaðu, giskaðu ekki af handahófi",
+                "text": "Annað orðið ætti að prófa nýja bókstafi. Þakúðu eins marga óprófaða samhljóða og hægt er."
+            },
+            {
+                "title": "Passaðu upp á tvbófaða bókstafi",
+                "text": "Orð eins og CREEK, FLOSS eða APPLE eru algeng gildr. Ef vísbendingar gar passa ekki, hugsaðu um endurtekinn bókstaf."
+            },
+            {
+                "title": "Notaðu erfiðan ham til að bætast",
+                "text": "Erfiður hamur neydir þig til að nota staðfestar vísbendingar. Það byggir betri venjur."
+            }
         ],
         "tips_speed": [
-            { "title": "Byrji\u00f0 me\u00f0 CRANE e\u00f0a STARE", "text": "Algengir b\u00f3kstafir gefa bestu m\u00f6guleikana \u00e1 hraðri lausn. Hver sekúnda telur." },
-            { "title": "Ekki of\u00feurhugsga", "text": "Speed Streak umbungar eðlishvöt. Ef þú sérð líklegt orð, farðu í það \u2014 combo bónusinn vegur þyngra en fullkomin lausn." },
-            { "title": "Vernda\u00f0u combo\u00fei\u00f0", "text": "Mislukkað orð brýtur margfaldara. Þegar óvissa er, notaðu örugga giskun til að safna vísbendingum." },
-            { "title": "Stefndu a\u00f0 2-3 giskana lausn", "text": "Tímabónusinn er gríðarlegur fyrir skjótar lausnir (+60s fyrir 1 giskun, +30s fyrir 2). Áhættusamleg önnur giskun getur borgað sig." },
-            { "title": "Lærðu algeng orðaendingar", "text": "Mynstur eins og -IGHT, -OUND, -ATCH endurtaka sig oft. Að þekkja þau samstundis sparar sekúndur." },
-            { "title": "Vertu ró\u00f3legur þegar þrýstingur eykst", "text": "Tímamælirinn hraðar á sig eftir hverja 3 orð. Flýtingarleysi er betra en pönikk." }
+            {
+                "title": "Byrjið með CRANE eða STARE",
+                "text": "Algengir bókstafir gefa bestu möguleikana á hraðri lausn. Hver sekúnda telur."
+            },
+            {
+                "title": "Ekki ofþurhugsga",
+                "text": "Speed Streak umbungar eðlishvöt. Ef þú sérð líklegt orð, farðu í það — combo bónusinn vegur þyngra en fullkomin lausn."
+            },
+            {
+                "title": "Verndaðu comboþið",
+                "text": "Mislukkað orð brýtur margfaldara. Þegar óvissa er, notaðu örugga giskun til að safna vísbendingum."
+            },
+            {
+                "title": "Stefndu að 2-3 giskana lausn",
+                "text": "Tímabónusinn er gríðarlegur fyrir skjótar lausnir (+60s fyrir 1 giskun, +30s fyrir 2). Áhættusamleg önnur giskun getur borgað sig."
+            },
+            {
+                "title": "Lærðu algeng orðaendingar",
+                "text": "Mynstur eins og -IGHT, -OUND, -ATCH endurtaka sig oft. Að þekkja þau samstundis sparar sekúndur."
+            },
+            {
+                "title": "Vertu róólegur þegar þrýstingur eykst",
+                "text": "Tímamælirinn hraðar á sig eftir hverja 3 orð. Flýtingarleysi er betra en pönikk."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Byrjaðu breitt", "text": "Notaðu orð með algengum bókstöfum (CRANE, STARE) til að safna vísbendingum á öllum borðum í einu." },
-            { "title": "Fylgstu með skipta lyklaborðinu", "text": "Lyklaborðið sýnir liti eftir borði. Bókstafur sem er grænn á einu borði en grár á öðru þrengir valkosti hratt." },
-            { "title": "Forgangsraðaðu erfiðu borðunum", "text": "Beindu giskunum að borðinu með flestu óþekktu. Auðveldari borð leysa sig oft sjálf." },
-            { "title": "Ekki eyða fyrstu giskunum", "text": "Notaðu 2-3 fyrstu á upplýsingarík orð áður en þú beinir að ákveðnum borðum." },
-            { "title": "Leitaðu að sameiginlegum bókstöfum", "text": "Ef tvö borð sýna bæði gult E, þá hjálpar orð með E á nýjum stað báðum borðum." },
-            { "title": "Geymdu giskun til vara", "text": "Ef þú ert fastur á síðasta borði er aukalega giskun munurinn á sigri og tapi." }
+            {
+                "title": "Byrjaðu breitt",
+                "text": "Notaðu orð með algengum bókstöfum (CRANE, STARE) til að safna vísbendingum á öllum borðum í einu."
+            },
+            {
+                "title": "Fylgstu með skipta lyklaborðinu",
+                "text": "Lyklaborðið sýnir liti eftir borði. Bókstafur sem er grænn á einu borði en grár á öðru þrengir valkosti hratt."
+            },
+            {
+                "title": "Forgangsraðaðu erfiðu borðunum",
+                "text": "Beindu giskunum að borðinu með flestu óþekktu. Auðveldari borð leysa sig oft sjálf."
+            },
+            {
+                "title": "Ekki eyða fyrstu giskunum",
+                "text": "Notaðu 2-3 fyrstu á upplýsingarík orð áður en þú beinir að ákveðnum borðum."
+            },
+            {
+                "title": "Leitaðu að sameiginlegum bókstöfum",
+                "text": "Ef tvö borð sýna bæði gult E, þá hjálpar orð með E á nýjum stað báðum borðum."
+            },
+            {
+                "title": "Geymdu giskun til vara",
+                "text": "Ef þú ert fastur á síðasta borði er aukalega giskun munurinn á sigri og tapi."
+            }
         ],
         "mode_desc_classic": "Þú hefur 6 tilraunir til að giska á 5 stafa orð. Notaðu litavísbendingar til að þrengja svarmöguleikana.",
-        "mode_desc_unlimited": "Þú hefur 6 tilraunir til að giska á 5 stafa orð. Notaðu litavísbendingar til að þrengja svarmöguleikana. Eftir hvern leik, smelltu á \"Spila aftur\" til að fá nýtt orð strax \u2014 engin dagsleg takmörk.",
-        "mode_desc_speed": "Byrjaðu með 3 mínútur á klukkunni. Hvert orð sem þú leysir gefur bónustíma \u2014 færri giskanir gefa stærri bónus (+60s fyrir 1 giskun, +10s fyrir 6). Misheppnuð orð kosta 30 sekúndur. Byggðu combo með því að leysa orð í röð \u2014 allt að 3x margfaldara. Þrýstingurinn eykst eftir hverja 3 orð \u2014 tímamælirinn tikkar hraðar.",
+        "mode_desc_unlimited": "Þú hefur 6 tilraunir til að giska á 5 stafa orð. Notaðu litavísbendingar til að þrengja svarmöguleikana. Eftir hvern leik, smelltu á \"Spila aftur\" til að fá nýtt orð strax — engin dagsleg takmörk.",
+        "mode_desc_speed": "Byrjaðu með 3 mínútur á klukkunni. Hvert orð sem þú leysir gefur bónustíma — færri giskanir gefa stærri bónus (+60s fyrir 1 giskun, +10s fyrir 6). Misheppnuð orð kosta 30 sekúndur. Byggðu combo með því að leysa orð í röð — allt að 3x margfaldara. Þrýstingurinn eykst eftir hverja 3 orð — tímamælirinn tikkar hraðar.",
         "mode_desc_multiboard": "{modeName} skorar á þig að leysa {boardCount} Wordle borð samtímis með aðeins {maxGuesses} giskunum. Hver giskun birtist á öllum óleystu borðum. Borð frjósa þegar þau eru leyst. Skipta-lita lyklaborðið sýnir hvaða bókstafir eru réttir á hvaða borðum. Byrjaðu með algengum bókstöfum til að safna vísbendingum á öllum borðum í einu.",
         "faq": [
-            { "q": "Hvernig spila ég Wordle á {langName}?", "a": "Farðu á wordle.global/{lang} til að spila daglega Wordle á {langName}. Þú hefur 6 tilraunir til að giska á 5 stafa orð. Eftir hverja giskun verða reitir grænir (réttur bókstafur, rétt staðsetning), gulir (réttur bókstafur, röng staðsetning) eða gráir (bókstafur er ekki í orðinu)." },
-            { "q": "Er ný þraut á hverjum degi?", "a": "Já. Nýtt orð er valið á hverjum degi. Allir sem spila á sama tungumáli fá sama orðið, svo þú getur borið saman niðurstöður við vini." },
-            { "q": "Er Wordle Global ókeypis?", "a": "Já. Dagleg þraut, ótakmarkað, og allir leikjahamir eru algerlega ókeypis á öllum 80+ tungumálum. Enginn reikningur eða niðurhal þarf." },
-            { "q": "Get ég spilað oftar en einu sinni á dag?", "a": "Já \u2014 prófaðu ótakmarkaðan ham á wordle.global/{lang}/unlimited fyrir endalaus leiki án bið. Dagleg röð þín er rakin sérstaklega." }
+            {
+                "q": "Hvernig spila ég Wordle á {langName}?",
+                "a": "Farðu á wordle.global/{lang} til að spila daglega Wordle á {langName}. Þú hefur 6 tilraunir til að giska á 5 stafa orð. Eftir hverja giskun verða reitir grænir (réttur bókstafur, rétt staðsetning), gulir (réttur bókstafur, röng staðsetning) eða gráir (bókstafur er ekki í orðinu)."
+            },
+            {
+                "q": "Er ný þraut á hverjum degi?",
+                "a": "Já. Nýtt orð er valið á hverjum degi. Allir sem spila á sama tungumáli fá sama orðið, svo þú getur borið saman niðurstöður við vini."
+            },
+            {
+                "q": "Er Wordle Global ókeypis?",
+                "a": "Já. Dagleg þraut, ótakmarkað, og allir leikjahamir eru algerlega ókeypis á öllum 80+ tungumálum. Enginn reikningur eða niðurhal þarf."
+            },
+            {
+                "q": "Get ég spilað oftar en einu sinni á dag?",
+                "a": "Já — prófaðu ótakmarkaðan ham á wordle.global/{lang}/unlimited fyrir endalaus leiki án bið. Dagleg röð þín er rakin sérstaklega."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Hvað er Wordle ótakmarkað á {langName}?", "a": "Wordle ótakmarkað leyfir þér að spila eins marga Wordle leiki og þú vilt á {langName}, án þess að bíða eftir þraut morgundagsins. Hver leikur gefur þér nýtt handahófskennt orð til að giska á í 6 tilraunum." },
-                { "q": "Er Wordle ótakmarkað ókeypis?", "a": "Já. Wordle ótakmarkað er alveg ókeypis. Enginn reikningur, ekkert niðurhal, engar auglýsingar meðan á leik stendur." },
-                { "q": "Hefur ótakmarkaður hamur áhrif á daglegu röðina?", "a": "Nei. Ótakmarkaður hamur hefur sína eigin tölfræði. Dagleg röð þín verður aðeins fyrir áhrifum af daglegri þraut." },
-                { "q": "Hversu oft get ég spilað?", "a": "Engin takmörk. Þú getur spilað eins margar umferðir og þú vilt. Eftir hvern leik, smelltu á \"Spila aftur\" til að fá nýtt orð strax." },
-                { "q": "Á hvaða tungumálum get ég spilað Wordle ótakmarkað?", "a": "Wordle ótakmarkað er í boði á yfir 80 tungumálum á wordle.global, þar á meðal ensku, spænsku, þýsku, finnsku, arabísku, frönsku, ítölsku, portúgölsku og mörgum fleiri." }
+                {
+                    "q": "Hvað er Wordle ótakmarkað á {langName}?",
+                    "a": "Wordle ótakmarkað leyfir þér að spila eins marga Wordle leiki og þú vilt á {langName}, án þess að bíða eftir þraut morgundagsins. Hver leikur gefur þér nýtt handahófskennt orð til að giska á í 6 tilraunum."
+                },
+                {
+                    "q": "Er Wordle ótakmarkað ókeypis?",
+                    "a": "Já. Wordle ótakmarkað er alveg ókeypis. Enginn reikningur, ekkert niðurhal, engar auglýsingar meðan á leik stendur."
+                },
+                {
+                    "q": "Hefur ótakmarkaður hamur áhrif á daglegu röðina?",
+                    "a": "Nei. Ótakmarkaður hamur hefur sína eigin tölfræði. Dagleg röð þín verður aðeins fyrir áhrifum af daglegri þraut."
+                },
+                {
+                    "q": "Hversu oft get ég spilað?",
+                    "a": "Engin takmörk. Þú getur spilað eins margar umferðir og þú vilt. Eftir hvern leik, smelltu á \"Spila aftur\" til að fá nýtt orð strax."
+                },
+                {
+                    "q": "Á hvaða tungumálum get ég spilað Wordle ótakmarkað?",
+                    "a": "Wordle ótakmarkað er í boði á yfir 80 tungumálum á wordle.global, þar á meðal ensku, spænsku, þýsku, finnsku, arabísku, frönsku, ítölsku, portúgölsku og mörgum fleiri."
+                }
             ],
             "speed": [
-                { "q": "Hvað er Speed Streak á {langName}?", "a": "Speed Streak er tímasettur Wordle hamur á {langName}. Þú byrjar með 3 mínútur á klukkunni og leysir eins mörg orð og þú getur. Leystu orð fljótt til að vinna sér inn bónustíma." },
-                { "q": "Hvernig virkar stigagjöfin?", "a": "Þú færð stig fyrir hvert leyst orð. Færri giskanir og hraðari lausnir gefa fleiri stig. Byggðu combo með því að leysa orð í röð án þess að mistakast \u2014 allt að 3x margfaldara." },
-                { "q": "Hvað gerist þegar tíminn rennur út?", "a": "Leikurinn endar og þú sérð lokaúrslitin, fjölda leystra orða, hámarks combo og meðal giskana. Þú getur spilað aftur strax." },
-                { "q": "Er Speed Streak ókeypis?", "a": "Já. Speed Streak er algerlega ókeypis á öllum 80+ tungumálum. Enginn reikningur eða niðurhal þarf." }
+                {
+                    "q": "Hvað er Speed Streak á {langName}?",
+                    "a": "Speed Streak er tímasettur Wordle hamur á {langName}. Þú byrjar með 3 mínútur á klukkunni og leysir eins mörg orð og þú getur. Leystu orð fljótt til að vinna sér inn bónustíma."
+                },
+                {
+                    "q": "Hvernig virkar stigagjöfin?",
+                    "a": "Þú færð stig fyrir hvert leyst orð. Færri giskanir og hraðari lausnir gefa fleiri stig. Byggðu combo með því að leysa orð í röð án þess að mistakast — allt að 3x margfaldara."
+                },
+                {
+                    "q": "Hvað gerist þegar tíminn rennur út?",
+                    "a": "Leikurinn endar og þú sérð lokaúrslitin, fjölda leystra orða, hámarks combo og meðal giskana. Þú getur spilað aftur strax."
+                },
+                {
+                    "q": "Er Speed Streak ókeypis?",
+                    "a": "Já. Speed Streak er algerlega ókeypis á öllum 80+ tungumálum. Enginn reikningur eða niðurhal þarf."
+                }
             ],
             "multiboard": [
-                { "q": "Hvað er {modeName} á {langName}?", "a": "{modeName} er fjölborða Wordle afbrigði á {langName}. Þú leysir {boardCount} Wordle borð samtímis með {maxGuesses} giskunum. Hver giskun er slegin inn á öll óleyst borð í einu." },
-                { "q": "Hversu margar giskanir fæ ég í {modeName}?", "a": "Þú færð {maxGuesses} giskanir til að leysa öll {boardCount} borð. Þegar borð er leyst frýs það og þú getur einbeitt þér að eftirstandandi borðum." },
-                { "q": "Hvaða stefna virkar best í {modeName}?", "a": "Byrjaðu með orðum sem nota algeng bókstafi til að safna upplýsingum á öllum {boardCount} borðum í einu. Fylgstu með skipta-lita lyklaborðinu \u2014 það sýnir hvaða bókstafir eru réttir á hvaða borðum." },
-                { "q": "Er {modeName} ókeypis?", "a": "Já. {modeName} er algerlega ókeypis á öllum 80+ tungumálum. Enginn reikningur eða niðurhal þarf. Spilaðu eins margar umferðir og þú vilt." }
+                {
+                    "q": "Hvað er {modeName} á {langName}?",
+                    "a": "{modeName} er fjölborða Wordle afbrigði á {langName}. Þú leysir {boardCount} Wordle borð samtímis með {maxGuesses} giskunum. Hver giskun er slegin inn á öll óleyst borð í einu."
+                },
+                {
+                    "q": "Hversu margar giskanir fæ ég í {modeName}?",
+                    "a": "Þú færð {maxGuesses} giskanir til að leysa öll {boardCount} borð. Þegar borð er leyst frýs það og þú getur einbeitt þér að eftirstandandi borðum."
+                },
+                {
+                    "q": "Hvaða stefna virkar best í {modeName}?",
+                    "a": "Byrjaðu með orðum sem nota algeng bókstafi til að safna upplýsingum á öllum {boardCount} borðum í einu. Fylgstu með skipta-lita lyklaborðinu — það sýnir hvaða bókstafir eru réttir á hvaða borðum."
+                },
+                {
+                    "q": "Er {modeName} ókeypis?",
+                    "a": "Já. {modeName} er algerlega ókeypis á öllum 80+ tungumálum. Enginn reikningur eða niðurhal þarf. Spilaðu eins margar umferðir og þú vilt."
+                }
             ]
         },
         "howto": [
-            { "name": "Sláðu inn orð", "text": "Sláðu inn gilt 5 stafa orð á {langName} með skjályklaborðinu eða vélbúnaðarlyklaborðinu og ýttu á Enter." },
-            { "name": "Lestu vísbendingar", "text": "Grænir reitir þýða að bókstafurinn er réttur og á réttum stað. Gulur þýðir bókstafurinn er í orðinu en á röngum stað. Grár þýðir bókstafurinn er ekki í orðinu." },
-            { "name": "Leystu í 6 tilraunum", "text": "Notaðu litavísbendingar til að þrengja orðið. Þú hefur 6 giskanir alls. Eftir þrautina, sjáðu tölfræðina þína og deildu niðurstöðunni." }
+            {
+                "name": "Sláðu inn orð",
+                "text": "Sláðu inn gilt 5 stafa orð á {langName} með skjályklaborðinu eða vélbúnaðarlyklaborðinu og ýttu á Enter."
+            },
+            {
+                "name": "Lestu vísbendingar",
+                "text": "Grænir reitir þýða að bókstafurinn er réttur og á réttum stað. Gulur þýðir bókstafurinn er í orðinu en á röngum stað. Grár þýðir bókstafurinn er ekki í orðinu."
+            },
+            {
+                "name": "Leystu í 6 tilraunum",
+                "text": "Notaðu litavísbendingar til að þrengja orðið. Þú hefur 6 giskanir alls. Eftir þrautina, sjáðu tölfræðina þína og deildu niðurstöðunni."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Byrjaðu leik", "text": "Farðu á wordle.global/{lang}/unlimited til að byrja að spila Wordle ótakmarkað á {langName}. Handahófskennt 5 stafa orð er valið fyrir þig." },
-                { "name": "Giskaðu á orðið", "text": "Sláðu inn gilt 5 stafa orð og ýttu á Enter. Grænir reitir þýða réttur bókstafur á réttum stað. Gulur þýðir bókstafur er í orðinu en á röngum stað. Grár þýðir bókstafur er ekki í orðinu." },
-                { "name": "Spilaðu aftur strax", "text": "Eftir að hafa leyst orðið (eða notað allar 6 giskanir), smelltu á \"Spila aftur\" til að fá nýtt orð strax. Engin bið eftir morgundegi." }
+                {
+                    "name": "Byrjaðu leik",
+                    "text": "Farðu á wordle.global/{lang}/unlimited til að byrja að spila Wordle ótakmarkað á {langName}. Handahófskennt 5 stafa orð er valið fyrir þig."
+                },
+                {
+                    "name": "Giskaðu á orðið",
+                    "text": "Sláðu inn gilt 5 stafa orð og ýttu á Enter. Grænir reitir þýða réttur bókstafur á réttum stað. Gulur þýðir bókstafur er í orðinu en á röngum stað. Grár þýðir bókstafur er ekki í orðinu."
+                },
+                {
+                    "name": "Spilaðu aftur strax",
+                    "text": "Eftir að hafa leyst orðið (eða notað allar 6 giskanir), smelltu á \"Spila aftur\" til að fá nýtt orð strax. Engin bið eftir morgundegi."
+                }
             ],
             "speed": [
-                { "name": "Byrjaðu tímamælinn", "text": "Farðu á wordle.global/{lang}/speed og ýttu á Byrja. Þú byrjar með 3 mínútur á klukkunni." },
-                { "name": "Leystu orð hratt", "text": "Hvert orð sem þú leysir gefur bónustíma (+10s til +60s eftir því hversu fáar giskanir þú notaðir). Misheppnuð orð kosta 30 sekúndur." },
-                { "name": "Byggðu combo", "text": "Leystu orð í röð til að byggja combo margfaldara (allt að 3x). Combóið rofnar ef þú mistekst orð. Reyndu að slá metið þitt." }
+                {
+                    "name": "Byrjaðu tímamælinn",
+                    "text": "Farðu á wordle.global/{lang}/speed og ýttu á Byrja. Þú byrjar með 3 mínútur á klukkunni."
+                },
+                {
+                    "name": "Leystu orð hratt",
+                    "text": "Hvert orð sem þú leysir gefur bónustíma (+10s til +60s eftir því hversu fáar giskanir þú notaðir). Misheppnuð orð kosta 30 sekúndur."
+                },
+                {
+                    "name": "Byggðu combo",
+                    "text": "Leystu orð í röð til að byggja combo margfaldara (allt að 3x). Combóið rofnar ef þú mistekst orð. Reyndu að slá metið þitt."
+                }
             ],
             "multiboard": [
-                { "name": "Byrjaðu leik", "text": "Farðu á wordle.global/{lang}/{modeName} til að spila {modeName} á {langName}. {boardCount} borð birtast með mismunandi földu orðum." },
-                { "name": "Giskaðu yfir öll borð", "text": "Sláðu inn 5 stafa orð og ýttu á Enter. Giskunin birtist á öllum {boardCount} borðum í einu. Hvert borð sýnir sínar eigin litavísbendingar (grænt, gult, grátt)." },
-                { "name": "Leystu öll {boardCount} borð", "text": "Leyst borð frjósa á sínum stað. Notaðu skipta-lita lyklaborðið til að fylgjast með hvaða bókstafir virka á hvaða borðum. Leystu öll {boardCount} innan {maxGuesses} giskana til að vinna." }
+                {
+                    "name": "Byrjaðu leik",
+                    "text": "Farðu á wordle.global/{lang}/{modeName} til að spila {modeName} á {langName}. {boardCount} borð birtast með mismunandi földu orðum."
+                },
+                {
+                    "name": "Giskaðu yfir öll borð",
+                    "text": "Sláðu inn 5 stafa orð og ýttu á Enter. Giskunin birtist á öllum {boardCount} borðum í einu. Hvert borð sýnir sínar eigin litavísbendingar (grænt, gult, grátt)."
+                },
+                {
+                    "name": "Leystu öll {boardCount} borð",
+                    "text": "Leyst borð frjósa á sínum stað. Notaðu skipta-lita lyklaborðið til að fylgjast með hvaða bókstafir virka á hvaða borðum. Leystu öll {boardCount} innan {maxGuesses} giskana til að vinna."
+                }
             ]
         }
     }

@@ -248,7 +248,7 @@ def main():
             print(f"SKIP {lang}: no language_config.json")
             continue
 
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             config = json.load(f)
 
         if "ui" not in config:

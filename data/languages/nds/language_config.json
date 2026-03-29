@@ -231,14 +231,14 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
-        "homepage_tagline": "The world's word game",
-        "homepage_playing_in": "Playing in",
-        "homepage_change": "change",
-        "homepage_choose_language": "Choose your language",
-        "homepage_languages_counting": "languages and counting — more added regularly.",
-        "homepage_search": "Search languages...",
-        "homepage_and_more": "& More",
-        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+        "homepage_tagline": "Dat Woortspeel vun de Welt",
+        "homepage_playing_in": "Speelst op",
+        "homepage_change": "ännern",
+        "homepage_choose_language": "Wähl dien Spraak",
+        "homepage_languages_counting": "Spraken un mehr — warrt regelmatig toföögt.",
+        "homepage_search": "Spraak söken...",
+        "homepage_and_more": "Mehr",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — un mehr kummt bald."
     },
     "seo": {
         "how_to_play": "Wo speelt man dat",
@@ -260,88 +260,253 @@
         "stat_languages": "Spraken",
         "stat_modes": "Speelmodusen",
         "value_props": [
-            { "key": "languages", "title": "80+ Spraken", "desc": "Vun Araabsch bit Yoruba. Dat gröttste mehrsprakige Wordle." },
-            { "key": "definitions", "title": "Woort-Definitschoonen", "desc": "Lehr de Bedüden vun jedeen Woort na't Speel. Bau dien Woortschatz ut." },
-            { "key": "word_art", "title": "Besünner Woortkunst", "desc": "Jedees Woort kummt mit en egen Illustratioon. Sammel se all." },
-            { "key": "themes", "title": "Düüster Modus un Themen", "desc": "Licht, düüster un hoogen Kontrast för bequeem Spelen." },
-            { "key": "pwa", "title": "Löppt överall", "desc": "PWA — installeern op jedeen Geraat. Löppt offline. Keen Download nödig." },
-            { "key": "free", "title": "Für ümmer gratis", "desc": "Keen Konto nödig. Keen Bezahlmuur. Eenfach spelen." }
+            {
+                "key": "languages",
+                "title": "80+ Spraken",
+                "desc": "Vun Araabsch bit Yoruba. Dat gröttste mehrsprakige Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Woort-Definitschoonen",
+                "desc": "Lehr de Bedüden vun jedeen Woort na't Speel. Bau dien Woortschatz ut."
+            },
+            {
+                "key": "word_art",
+                "title": "Besünner Woortkunst",
+                "desc": "Jedees Woort kummt mit en egen Illustratioon. Sammel se all."
+            },
+            {
+                "key": "themes",
+                "title": "Düüster Modus un Themen",
+                "desc": "Licht, düüster un hoogen Kontrast för bequeem Spelen."
+            },
+            {
+                "key": "pwa",
+                "title": "Löppt överall",
+                "desc": "PWA — installeern op jedeen Geraat. Löppt offline. Keen Download nödig."
+            },
+            {
+                "key": "free",
+                "title": "Für ümmer gratis",
+                "desc": "Keen Konto nödig. Keen Bezahlmuur. Eenfach spelen."
+            }
         ],
         "tips": [
-            { "title": "Fang mit en vokalenriek Woort an", "text": "Wöör as CRANE, STARE oder ADIEU testet gängige Bookstaven flott. Wenn du weetst, welke Vokalen dor sünd, gaht de Wahlen gau trüch." },
-            { "title": "Bruuk, wat du weetst", "text": "Gröne Bookstaven staaht fast. Gele Bookstaven mööt wesselt warrn. Gries Bookstaven sünd rut. Jede Raad schull all dree Hinwiesen bruken." },
-            { "title": "Denk an gängige Mustern", "text": "Engelsche Wöör ennt faken op -TION, -IGHT, -OUND, -MENT. Annere Spraken hebbt ehr egene Mustern — lehr se." },
-            { "title": "Elimineern, nich op Glück raden", "text": "Dien tweet Woort schull ne'e Bookstaven testen, nich bestetigde wedderhoolen. Deck so veel unprövte Konsonanten as mööglich af." },
-            { "title": "Pass op bi duppelte Bookstaven", "text": "Wöör as CREEK, FLOSS oder APPLE sünd gängige Fallen. Wenn dien Hinwiesen nich uppassen doot, denk an en wedderholten Bookstaven." },
-            { "title": "Bruuk den swooren Modus, üm beter to warrn", "text": "De swoore Modus dwingt di, bestetigde Hinwiesen in jede Raad to bruken. Dat buut betere Gewohnheiten op." }
+            {
+                "title": "Fang mit en vokalenriek Woort an",
+                "text": "Wöör as CRANE, STARE oder ADIEU testet gängige Bookstaven flott. Wenn du weetst, welke Vokalen dor sünd, gaht de Wahlen gau trüch."
+            },
+            {
+                "title": "Bruuk, wat du weetst",
+                "text": "Gröne Bookstaven staaht fast. Gele Bookstaven mööt wesselt warrn. Gries Bookstaven sünd rut. Jede Raad schull all dree Hinwiesen bruken."
+            },
+            {
+                "title": "Denk an gängige Mustern",
+                "text": "Engelsche Wöör ennt faken op -TION, -IGHT, -OUND, -MENT. Annere Spraken hebbt ehr egene Mustern — lehr se."
+            },
+            {
+                "title": "Elimineern, nich op Glück raden",
+                "text": "Dien tweet Woort schull ne'e Bookstaven testen, nich bestetigde wedderhoolen. Deck so veel unprövte Konsonanten as mööglich af."
+            },
+            {
+                "title": "Pass op bi duppelte Bookstaven",
+                "text": "Wöör as CREEK, FLOSS oder APPLE sünd gängige Fallen. Wenn dien Hinwiesen nich uppassen doot, denk an en wedderholten Bookstaven."
+            },
+            {
+                "title": "Bruuk den swooren Modus, üm beter to warrn",
+                "text": "De swoore Modus dwingt di, bestetigde Hinwiesen in jede Raad to bruken. Dat buut betere Gewohnheiten op."
+            }
         ],
         "tips_speed": [
-            { "title": "Fang mit CRANE oder STARE an", "text": "Bookstaven mit hohe Frequenz geevt de beste Schaanß för en flotte Lösung. Jede Sekunn tellt." },
-            { "title": "Denk nich to veel na", "text": "Speed Streak belohnt dat Buukgeföhl. Süühst du en wohrschienlich Woort, gah dorför — de Kombo-Bonus weegt mehr as en perfekte Lösung." },
-            { "title": "Schütz dien Kombo", "text": "En mislungene Woort brekt dien Multiplikator. Büst du unseker, bruuk en sekkere Raad, üm mehr Hinwiesen to sammeln." },
-            { "title": "Sett op 2-3 Raadversöök", "text": "De Tiedbonus is reesig bi flotte Lösungen (+60s för 1 Raad, +30s för 2). En driest tweet Versöök kann sik groot utbetahlen." },
-            { "title": "Lehr gängige Woortennen", "text": "Mustern as -IGHT, -OUND, -ATCH kümmt faken vör. Se glieks to erkennen spaart Sekunnen per Woort." },
-            { "title": "Bliev ruhig, wenn de Druck stieggt", "text": "De Timer warrt alle 3 Wöör flotter. Hast föhrt to Tippfehler un slecht Raadversöök. En steedige Takt sleiht Panik." }
+            {
+                "title": "Fang mit CRANE oder STARE an",
+                "text": "Bookstaven mit hohe Frequenz geevt de beste Schaanß för en flotte Lösung. Jede Sekunn tellt."
+            },
+            {
+                "title": "Denk nich to veel na",
+                "text": "Speed Streak belohnt dat Buukgeföhl. Süühst du en wohrschienlich Woort, gah dorför — de Kombo-Bonus weegt mehr as en perfekte Lösung."
+            },
+            {
+                "title": "Schütz dien Kombo",
+                "text": "En mislungene Woort brekt dien Multiplikator. Büst du unseker, bruuk en sekkere Raad, üm mehr Hinwiesen to sammeln."
+            },
+            {
+                "title": "Sett op 2-3 Raadversöök",
+                "text": "De Tiedbonus is reesig bi flotte Lösungen (+60s för 1 Raad, +30s för 2). En driest tweet Versöök kann sik groot utbetahlen."
+            },
+            {
+                "title": "Lehr gängige Woortennen",
+                "text": "Mustern as -IGHT, -OUND, -ATCH kümmt faken vör. Se glieks to erkennen spaart Sekunnen per Woort."
+            },
+            {
+                "title": "Bliev ruhig, wenn de Druck stieggt",
+                "text": "De Timer warrt alle 3 Wöör flotter. Hast föhrt to Tippfehler un slecht Raadversöök. En steedige Takt sleiht Panik."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Fang breet an", "text": "Bruuk Wöör mit gängige Bookstaven (CRANE, STARE), üm op all Bretter gliektietig Hinwiesen to sammeln." },
-            { "title": "Kiek op dat deelt Tastatur", "text": "Dat Tastatur wiest Klören per Brett. En Bookstav, de op een Brett gröön is aver op en anner gries, snevvert de Wahlen flott in." },
-            { "title": "Geev Bretter mit Swierigkeiten Vörrang", "text": "Konzentreert Raadversöök op dat Brett mit de meisten Unbekannten. Lichtere Bretter löst sik faken vun alleen." },
-            { "title": "Verschmiet keen fröhe Raadversöök", "text": "Bruuk de eersten 2-3 op informatschoonsrieke Wöör, bevör du op bestimmte Bretter sikkst." },
-            { "title": "Söök na gemeensame Bookstaven", "text": "Wiest twee Bretter en gelen E, helpt en Woort mit E op ne'e Positschoon beide Bretter gliektietig." },
-            { "title": "Spaart en Raad för Nödfäll", "text": "Sittst du op dat letzte Brett fast, is en extra Raad de Verscheel twüschen Winnen un Verleern." }
+            {
+                "title": "Fang breet an",
+                "text": "Bruuk Wöör mit gängige Bookstaven (CRANE, STARE), üm op all Bretter gliektietig Hinwiesen to sammeln."
+            },
+            {
+                "title": "Kiek op dat deelt Tastatur",
+                "text": "Dat Tastatur wiest Klören per Brett. En Bookstav, de op een Brett gröön is aver op en anner gries, snevvert de Wahlen flott in."
+            },
+            {
+                "title": "Geev Bretter mit Swierigkeiten Vörrang",
+                "text": "Konzentreert Raadversöök op dat Brett mit de meisten Unbekannten. Lichtere Bretter löst sik faken vun alleen."
+            },
+            {
+                "title": "Verschmiet keen fröhe Raadversöök",
+                "text": "Bruuk de eersten 2-3 op informatschoonsrieke Wöör, bevör du op bestimmte Bretter sikkst."
+            },
+            {
+                "title": "Söök na gemeensame Bookstaven",
+                "text": "Wiest twee Bretter en gelen E, helpt en Woort mit E op ne'e Positschoon beide Bretter gliektietig."
+            },
+            {
+                "title": "Spaart en Raad för Nödfäll",
+                "text": "Sittst du op dat letzte Brett fast, is en extra Raad de Verscheel twüschen Winnen un Verleern."
+            }
         ],
         "mode_desc_classic": "Du hest 6 Versöök, üm en verstekent 5-Bookstaven-Woort to raden. Bruuk de Klörhinwiesen, üm de Antwoort intosnevvern.",
         "mode_desc_unlimited": "Du hest 6 Versöök, üm en verstekent 5-Bookstaven-Woort to raden. Bruuk de Klörhinwiesen, üm de Antwoort intosnevvern. Na jedeen Speel, drück \"Noch mol spelen\" för en nee Woort — keen dääglich Grenz.",
         "mode_desc_speed": "Fang mit 3 Minuten op de Klokk an. Jedees Woort, dat du löst, gifft Bonustied — löös mit weniger Raadversöök för gröttere Bonusen (+60s för 1 Raad, +10s för 6). Mislungene Wöör kosten 30 Sekunnen. Buu Kombos op, indem du Wöör hennereenanner löst, för bit to 3x Punktemultiplikator. De Druck stieggt — de Timer warrt alle 3 Wöör flotter.",
         "mode_desc_multiboard": "{modeName} fordert di rut, {boardCount} Wordle-Bretter gliektietig to lösen mit man {maxGuesses} Raadversöök. Jede Raad dukkt op all unlöste Bretter gliektietig op. Löste Bretter friert in. Dat deelt Klör-Tastatur wiest, welke Bookstaven op welke Bretter richtig sünd. Fang mit Wöör mit gängige Bookstaven an, üm op all Bretter gliektietig Hinwiesen to sammeln.",
         "faq": [
-            { "q": "Wo speelt man Wordle op {langName}?", "a": "Gah na wordle.global/{lang}, üm dat dääglich Wordle op {langName} to spelen. Du hest 6 Versöök, üm en 5-Bookstaven-Woort to raden. Na jede Raad warrt de Ruten gröön (richtigen Bookstav, richtige Steed), geel (richtigen Bookstav, verkehrte Steed) oder gries (Bookstav is nich in dat Woort)." },
-            { "q": "Gifft dat jedeen Dag en nee Rätsel?", "a": "Ja. Jedeen Dag warrt en nee Woort utwählt. All, de in desülve Spraak spelen, kriegt datsülve Woort, so dat du Resultaten mit Frünnen verglieken kannst." },
-            { "q": "Is Wordle Global gratis?", "a": "Ja. Dat dääglich Rätsel, de unbegreenzde Modus un all Speelmodusen sünd in all 80+ Spraken heel un deel gratis. Keen Konto oder Download nödig." },
-            { "q": "Kann ik mehr as eenmol an'n Dag spelen?", "a": "Ja — versöök den unbegreenzden Modus op wordle.global/{lang}/unlimited för endeloos Spelen ahn Töven. Dien dääglich Reeg warrt apart tellt." }
+            {
+                "q": "Wo speelt man Wordle op {langName}?",
+                "a": "Gah na wordle.global/{lang}, üm dat dääglich Wordle op {langName} to spelen. Du hest 6 Versöök, üm en 5-Bookstaven-Woort to raden. Na jede Raad warrt de Ruten gröön (richtigen Bookstav, richtige Steed), geel (richtigen Bookstav, verkehrte Steed) oder gries (Bookstav is nich in dat Woort)."
+            },
+            {
+                "q": "Gifft dat jedeen Dag en nee Rätsel?",
+                "a": "Ja. Jedeen Dag warrt en nee Woort utwählt. All, de in desülve Spraak spelen, kriegt datsülve Woort, so dat du Resultaten mit Frünnen verglieken kannst."
+            },
+            {
+                "q": "Is Wordle Global gratis?",
+                "a": "Ja. Dat dääglich Rätsel, de unbegreenzde Modus un all Speelmodusen sünd in all 80+ Spraken heel un deel gratis. Keen Konto oder Download nödig."
+            },
+            {
+                "q": "Kann ik mehr as eenmol an'n Dag spelen?",
+                "a": "Ja — versöök den unbegreenzden Modus op wordle.global/{lang}/unlimited för endeloos Spelen ahn Töven. Dien dääglich Reeg warrt apart tellt."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Wat is Wordle Unlimited op {langName}?", "a": "Wordle Unlimited lett di so veel Wordle-Spelen op {langName} spelen as du wullt, ahn op morgendags dääglich Rätsel to töven. Jedees Speel gifft di en nee tofällig Woort to raden in 6 Versöök." },
-                { "q": "Is Wordle Unlimited gratis?", "a": "Ja. Wordle Unlimited is heel un deel gratis. Keen Konto, keen Download, keen Reklaam während dat Speel." },
-                { "q": "Tellt de unbegreenzde Modus to mien dääglich Reeg?", "a": "Nee. De unbegreenzde Modus hett sien egene Statistiken. Dien dääglich Reeg warrt man vun dat dääglich Rätsel beinflußt." },
-                { "q": "Wo faken kann ik spelen?", "a": "Dat gifft keen Grenz. Du kannst so veel Rünnen spelen, as du wullt. Na jedeen Speel, drück \"Noch mol spelen\" för en nee Woort glieks." },
-                { "q": "In welke Spraken kann ik Wordle Unlimited spelen?", "a": "Wordle Unlimited is op over 80 Spraken op wordle.global to haben, ünner annern Engelsch, Spaansch, Düütsch, Finnsch, Araabsch, Franzöösch, Italieensch, Portugiesisch un noch veel mehr." }
+                {
+                    "q": "Wat is Wordle Unlimited op {langName}?",
+                    "a": "Wordle Unlimited lett di so veel Wordle-Spelen op {langName} spelen as du wullt, ahn op morgendags dääglich Rätsel to töven. Jedees Speel gifft di en nee tofällig Woort to raden in 6 Versöök."
+                },
+                {
+                    "q": "Is Wordle Unlimited gratis?",
+                    "a": "Ja. Wordle Unlimited is heel un deel gratis. Keen Konto, keen Download, keen Reklaam während dat Speel."
+                },
+                {
+                    "q": "Tellt de unbegreenzde Modus to mien dääglich Reeg?",
+                    "a": "Nee. De unbegreenzde Modus hett sien egene Statistiken. Dien dääglich Reeg warrt man vun dat dääglich Rätsel beinflußt."
+                },
+                {
+                    "q": "Wo faken kann ik spelen?",
+                    "a": "Dat gifft keen Grenz. Du kannst so veel Rünnen spelen, as du wullt. Na jedeen Speel, drück \"Noch mol spelen\" för en nee Woort glieks."
+                },
+                {
+                    "q": "In welke Spraken kann ik Wordle Unlimited spelen?",
+                    "a": "Wordle Unlimited is op over 80 Spraken op wordle.global to haben, ünner annern Engelsch, Spaansch, Düütsch, Finnsch, Araabsch, Franzöösch, Italieensch, Portugiesisch un noch veel mehr."
+                }
             ],
             "speed": [
-                { "q": "Wat is Speed Streak op {langName}?", "a": "Speed Streak is en Wordle-Modus mit Tiedlimit op {langName}. Du fangst mit 3 Minuten op de Klokk an un löst so veel Wöör as du kannst. Löös en Woort flott, üm Bonustied to kriegen." },
-                { "q": "Wo funktschoneert de Punktewertung?", "a": "Du verdennst Punkten för jedees löste Woort. Weniger Raadversöök un flottere Lösungen geevt mehr Punkten. Buu en Kombo op dörch hennereenanner Lösen — bit to 3x Multiplikator." },
-                { "q": "Wat passeert, wenn de Tied um is?", "a": "Dat Speel is to Enn un du süühst dien Endresultat, Totahl löste Wöör, max Kombo un Dörchschnitt-Raadversöök. Du kannst glieks wedder spelen." },
-                { "q": "Is Speed Streak gratis?", "a": "Ja. Speed Streak is in all 80+ Spraken heel un deel gratis. Keen Konto oder Download nödig." }
+                {
+                    "q": "Wat is Speed Streak op {langName}?",
+                    "a": "Speed Streak is en Wordle-Modus mit Tiedlimit op {langName}. Du fangst mit 3 Minuten op de Klokk an un löst so veel Wöör as du kannst. Löös en Woort flott, üm Bonustied to kriegen."
+                },
+                {
+                    "q": "Wo funktschoneert de Punktewertung?",
+                    "a": "Du verdennst Punkten för jedees löste Woort. Weniger Raadversöök un flottere Lösungen geevt mehr Punkten. Buu en Kombo op dörch hennereenanner Lösen — bit to 3x Multiplikator."
+                },
+                {
+                    "q": "Wat passeert, wenn de Tied um is?",
+                    "a": "Dat Speel is to Enn un du süühst dien Endresultat, Totahl löste Wöör, max Kombo un Dörchschnitt-Raadversöök. Du kannst glieks wedder spelen."
+                },
+                {
+                    "q": "Is Speed Streak gratis?",
+                    "a": "Ja. Speed Streak is in all 80+ Spraken heel un deel gratis. Keen Konto oder Download nödig."
+                }
             ],
             "multiboard": [
-                { "q": "Wat is {modeName} op {langName}?", "a": "{modeName} is en Mehrbrett-Wordle-Variante op {langName}. Du löst {boardCount} Wordle-Bretter gliektietig mit {maxGuesses} Raadversöök. Jede Raad warrt op all unlöste Bretter gliektietig ingeevt." },
-                { "q": "Wo veel Raadversöök kriggt man bi {modeName}?", "a": "Du kriggst {maxGuesses} Raadversöök, üm all {boardCount} Bretter to lösen. Wenn en Brett löst is, friert dat in un du kannst di op de övrigen Bretter konzentreeren." },
-                { "q": "Welke Strategie funktschoneert am besten för {modeName}?", "a": "Fang mit Wöör an, de gängige Bookstaven bruken, üm op all {boardCount} Bretter gliektietig Informatschoonen to sammeln. Kiek op dat deelt Klör-Tastatur — dat wiest, welke Bookstaven op welke Bretter richtig sünd." },
-                { "q": "Is {modeName} gratis?", "a": "Ja. {modeName} is in all 80+ Spraken heel un deel gratis. Keen Konto oder Download nödig. Speel so veel Rünnen, as du wullt." }
+                {
+                    "q": "Wat is {modeName} op {langName}?",
+                    "a": "{modeName} is en Mehrbrett-Wordle-Variante op {langName}. Du löst {boardCount} Wordle-Bretter gliektietig mit {maxGuesses} Raadversöök. Jede Raad warrt op all unlöste Bretter gliektietig ingeevt."
+                },
+                {
+                    "q": "Wo veel Raadversöök kriggt man bi {modeName}?",
+                    "a": "Du kriggst {maxGuesses} Raadversöök, üm all {boardCount} Bretter to lösen. Wenn en Brett löst is, friert dat in un du kannst di op de övrigen Bretter konzentreeren."
+                },
+                {
+                    "q": "Welke Strategie funktschoneert am besten för {modeName}?",
+                    "a": "Fang mit Wöör an, de gängige Bookstaven bruken, üm op all {boardCount} Bretter gliektietig Informatschoonen to sammeln. Kiek op dat deelt Klör-Tastatur — dat wiest, welke Bookstaven op welke Bretter richtig sünd."
+                },
+                {
+                    "q": "Is {modeName} gratis?",
+                    "a": "Ja. {modeName} is in all 80+ Spraken heel un deel gratis. Keen Konto oder Download nödig. Speel so veel Rünnen, as du wullt."
+                }
             ]
         },
         "howto": [
-            { "name": "Schrieff en Woort", "text": "Geev en gültig 5-Bookstaven-Woort op {langName} in mit dat Schirmtastatur oder dien physisch Tastatur, un drück Enter." },
-            { "name": "Lies de Hinwiesen", "text": "Gröne Ruten bedüüdt, de Bookstav is richtig un op de richtige Steed. Geel bedüüdt, de Bookstav is in dat Woort, aver op de verkehrte Steed. Gries bedüüdt, de Bookstav is nich in dat Woort." },
-            { "name": "Löös in 6 Versöök", "text": "Bruuk de Klörhinwiesen, üm dat Woort intosnevvern. Du hest 6 Raadversöök insgesamt. Na dat Rätsel, kiek dien Statistiken an un deel dien Resultat." }
+            {
+                "name": "Schrieff en Woort",
+                "text": "Geev en gültig 5-Bookstaven-Woort op {langName} in mit dat Schirmtastatur oder dien physisch Tastatur, un drück Enter."
+            },
+            {
+                "name": "Lies de Hinwiesen",
+                "text": "Gröne Ruten bedüüdt, de Bookstav is richtig un op de richtige Steed. Geel bedüüdt, de Bookstav is in dat Woort, aver op de verkehrte Steed. Gries bedüüdt, de Bookstav is nich in dat Woort."
+            },
+            {
+                "name": "Löös in 6 Versöök",
+                "text": "Bruuk de Klörhinwiesen, üm dat Woort intosnevvern. Du hest 6 Raadversöök insgesamt. Na dat Rätsel, kiek dien Statistiken an un deel dien Resultat."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Fang en Speel an", "text": "Gah na wordle.global/{lang}/unlimited, üm Wordle Unlimited op {langName} to spelen. En tofällig 5-Bookstaven-Woort warrt för di utwählt." },
-                { "name": "Raad dat Woort", "text": "Schrieff en gültig 5-Bookstaven-Woort un drück Enter. Gröne Ruten bedüüdt, de Bookstav is richtig un op de richtige Steed. Geel bedüüdt, de Bookstav is in dat Woort, aver op de verkehrte Steed. Gries bedüüdt, de Bookstav is nich in dat Woort." },
-                { "name": "Speel glieks wedder", "text": "Na dat Lösen vun dat Woort (oder na all 6 Raadversöök), drück \"Noch mol spelen\" för en nee Woort glieks. Keen Töven bit morgen." }
+                {
+                    "name": "Fang en Speel an",
+                    "text": "Gah na wordle.global/{lang}/unlimited, üm Wordle Unlimited op {langName} to spelen. En tofällig 5-Bookstaven-Woort warrt för di utwählt."
+                },
+                {
+                    "name": "Raad dat Woort",
+                    "text": "Schrieff en gültig 5-Bookstaven-Woort un drück Enter. Gröne Ruten bedüüdt, de Bookstav is richtig un op de richtige Steed. Geel bedüüdt, de Bookstav is in dat Woort, aver op de verkehrte Steed. Gries bedüüdt, de Bookstav is nich in dat Woort."
+                },
+                {
+                    "name": "Speel glieks wedder",
+                    "text": "Na dat Lösen vun dat Woort (oder na all 6 Raadversöök), drück \"Noch mol spelen\" för en nee Woort glieks. Keen Töven bit morgen."
+                }
             ],
             "speed": [
-                { "name": "Start den Timer", "text": "Gah na wordle.global/{lang}/speed un drück Start. Du fangst mit 3 Minuten op de Klokk an." },
-                { "name": "Löös Wöör flott", "text": "Jedees Woort, dat du löst, gifft Bonustied (+10s bit +60s, je na wo wenig Raadversöök du bruukt hest). Mislungene Wöör kosten 30 Sekunnen." },
-                { "name": "Buu dien Kombo op", "text": "Löös Wöör hennereenanner, üm den Kombo-Multiplikator optobuuen (bit to 3x). De Kombo brekt, wenn du en Woort nich schaffst. Versöök, dien Rekord to slaan." }
+                {
+                    "name": "Start den Timer",
+                    "text": "Gah na wordle.global/{lang}/speed un drück Start. Du fangst mit 3 Minuten op de Klokk an."
+                },
+                {
+                    "name": "Löös Wöör flott",
+                    "text": "Jedees Woort, dat du löst, gifft Bonustied (+10s bit +60s, je na wo wenig Raadversöök du bruukt hest). Mislungene Wöör kosten 30 Sekunnen."
+                },
+                {
+                    "name": "Buu dien Kombo op",
+                    "text": "Löös Wöör hennereenanner, üm den Kombo-Multiplikator optobuuen (bit to 3x). De Kombo brekt, wenn du en Woort nich schaffst. Versöök, dien Rekord to slaan."
+                }
             ],
             "multiboard": [
-                { "name": "Fang en Speel an", "text": "Gah na wordle.global/{lang}/{modeName}, üm {modeName} op {langName} to spelen. {boardCount} Bretter düükt op mit verscheden verstekene Wöör." },
-                { "name": "Raad op all Bretter", "text": "Schrieff en 5-Bookstaven-Woort un drück Enter. Dien Raad düükt op all {boardCount} Bretter gliektietig op. Jedees Brett wiest sien egene Klörhinwiesen (gröön, geel, gries)." },
-                { "name": "Löös all {boardCount} Bretter", "text": "Löste Bretter friert in. Bruuk dat deelt Klör-Tastatur, üm to kieken, welke Bookstaven op welke Bretter warkt. Löös all {boardCount} Bretter in {maxGuesses} Raadversöök, üm to winnen." }
+                {
+                    "name": "Fang en Speel an",
+                    "text": "Gah na wordle.global/{lang}/{modeName}, üm {modeName} op {langName} to spelen. {boardCount} Bretter düükt op mit verscheden verstekene Wöör."
+                },
+                {
+                    "name": "Raad op all Bretter",
+                    "text": "Schrieff en 5-Bookstaven-Woort un drück Enter. Dien Raad düükt op all {boardCount} Bretter gliektietig op. Jedees Brett wiest sien egene Klörhinwiesen (gröön, geel, gries)."
+                },
+                {
+                    "name": "Löös all {boardCount} Bretter",
+                    "text": "Löste Bretter friert in. Bruuk dat deelt Klör-Tastatur, üm to kieken, welke Bookstaven op welke Bretter warkt. Löös all {boardCount} Bretter in {maxGuesses} Raadversöök, üm to winnen."
+                }
             ]
         }
     }

@@ -225,14 +225,14 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest.",
-        "homepage_tagline": "The world's word game",
-        "homepage_playing_in": "Playing in",
-        "homepage_change": "change",
-        "homepage_choose_language": "Choose your language",
-        "homepage_languages_counting": "languages and counting — more added regularly.",
-        "homepage_search": "Search languages...",
-        "homepage_and_more": "& More",
-        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+        "homepage_tagline": "D'Wuertspill vun der Welt",
+        "homepage_playing_in": "Spills op",
+        "homepage_change": "änneren",
+        "homepage_choose_language": "Wiel deng Sprooch",
+        "homepage_languages_counting": "Sproochen an nach méi — regelméisseg dobäigesat.",
+        "homepage_search": "Sprooch sichen...",
+        "homepage_and_more": "Méi",
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — a méi kënnt geschwënn."
     },
     "seo": {
         "how_to_play": "Wéi ze spillen",
@@ -254,88 +254,253 @@
         "stat_languages": "Sproochen",
         "stat_modes": "Spillmodi",
         "value_props": [
-            { "key": "languages", "title": "80+ Sproochen", "desc": "Vun Arabesch bis Yoruba. Dee gréisste multilinguale Wordle." },
-            { "key": "definitions", "title": "Wuertdefinitiounen", "desc": "Léier d'Bedeitung vun all Wuert nom Spill. Erweidert Äre Wuertschaz." },
-            { "key": "word_art", "title": "Eenzegaarteg Wuertkunscht", "desc": "All Wuert kënnt mat enger personaliséierter Illustratioun. Sammelt se all." },
-            { "key": "themes", "title": "Donkele Modus & Themen", "desc": "Hell, donkel a Héije-Kontrast-Modi fir bequem ze spillen." },
-            { "key": "pwa", "title": "Fonctionnéiert iwwerall", "desc": "PWA — installéiert op all Apparat. Fonctionnéiert offline. Keen Download néideg." },
-            { "key": "free", "title": "Fir ëmmer gratis", "desc": "Kee Konto néideg. Keng Bezuelmauer. Einfach spillen." }
+            {
+                "key": "languages",
+                "title": "80+ Sproochen",
+                "desc": "Vun Arabesch bis Yoruba. Dee gréisste multilinguale Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Wuertdefinitiounen",
+                "desc": "Léier d'Bedeitung vun all Wuert nom Spill. Erweidert Äre Wuertschaz."
+            },
+            {
+                "key": "word_art",
+                "title": "Eenzegaarteg Wuertkunscht",
+                "desc": "All Wuert kënnt mat enger personaliséierter Illustratioun. Sammelt se all."
+            },
+            {
+                "key": "themes",
+                "title": "Donkele Modus & Themen",
+                "desc": "Hell, donkel a Héije-Kontrast-Modi fir bequem ze spillen."
+            },
+            {
+                "key": "pwa",
+                "title": "Fonctionnéiert iwwerall",
+                "desc": "PWA — installéiert op all Apparat. Fonctionnéiert offline. Keen Download néideg."
+            },
+            {
+                "key": "free",
+                "title": "Fir ëmmer gratis",
+                "desc": "Kee Konto néideg. Keng Bezuelmauer. Einfach spillen."
+            }
         ],
         "tips": [
-            { "title": "Fänkt mat engem vokalräiche Wuert un", "text": "Wierder wéi CRANE, STARE oder ADIEU testen heefeg Bréiwer séier. Wëssen wéi eng Vokaler do sinn, aengt d'Méiglechkeeten séier an." },
-            { "title": "Benotzt wat Dir wësst", "text": "Gréng Bréiwer bleiwe fix. Giel Bréiwer musse réckelen. Gro Bréiwer si raus. All Versuch soll all dräi Hiweiser benotzen." },
-            { "title": "Denkt u gebrauchlech Mustere", "text": "Englesch Wierder enden dacks op -TION, -IGHT, -OUND, -MENT. Aner Sproochen hu hir eege Mustere — léiert se." },
-            { "title": "Eliminéiert, root net blaannen", "text": "Äert zweet Wuert soll nei Bréiwer testen, net confirméiert Bréiwer widderhuelen. Deckt esou vill net-getest Konsonanten of wéi méiglech." },
-            { "title": "Opgepasst mat duebele Bréiwer", "text": "Wierder wéi CREEK, FLOSS oder APPLE si gebrauchlech Fallen. Wann Är Hiweiser net opginn, denkt un en widderhuelene Bréif." },
-            { "title": "Benotzt de schwéiere Modus fir Iech ze verbesseren", "text": "De schwéiere Modus zwéngt Iech confirméiert Hiweiser an all Versuch ze benotzen. Et baut besser Gewunnechten op, och wann Dir zréck op normal wiesselt." }
+            {
+                "title": "Fänkt mat engem vokalräiche Wuert un",
+                "text": "Wierder wéi CRANE, STARE oder ADIEU testen heefeg Bréiwer séier. Wëssen wéi eng Vokaler do sinn, aengt d'Méiglechkeeten séier an."
+            },
+            {
+                "title": "Benotzt wat Dir wësst",
+                "text": "Gréng Bréiwer bleiwe fix. Giel Bréiwer musse réckelen. Gro Bréiwer si raus. All Versuch soll all dräi Hiweiser benotzen."
+            },
+            {
+                "title": "Denkt u gebrauchlech Mustere",
+                "text": "Englesch Wierder enden dacks op -TION, -IGHT, -OUND, -MENT. Aner Sproochen hu hir eege Mustere — léiert se."
+            },
+            {
+                "title": "Eliminéiert, root net blaannen",
+                "text": "Äert zweet Wuert soll nei Bréiwer testen, net confirméiert Bréiwer widderhuelen. Deckt esou vill net-getest Konsonanten of wéi méiglech."
+            },
+            {
+                "title": "Opgepasst mat duebele Bréiwer",
+                "text": "Wierder wéi CREEK, FLOSS oder APPLE si gebrauchlech Fallen. Wann Är Hiweiser net opginn, denkt un en widderhuelene Bréif."
+            },
+            {
+                "title": "Benotzt de schwéiere Modus fir Iech ze verbesseren",
+                "text": "De schwéiere Modus zwéngt Iech confirméiert Hiweiser an all Versuch ze benotzen. Et baut besser Gewunnechten op, och wann Dir zréck op normal wiesselt."
+            }
         ],
         "tips_speed": [
-            { "title": "Fänkt mat CRANE oder STARE un", "text": "Heefeg Bréiwer ginn Iech déi bescht Chance op eng séier Léisung. All Sekonn zielt." },
-            { "title": "Denkt net ze vill no", "text": "Speed Streak belount Bauchgefill. Wann Dir e waarscheinlecht Wuert gesitt, probéiert et — de Combo-Bonus ass méi wäert wéi eng perfekt Léisung." },
-            { "title": "Schützt Äre Combo", "text": "E gescheitert Wuert brécht Äre Multiplikator. Wann Dir onsëcher sidd, benotzt eng sécher Rot fir méi Hiweiser ze sammelen amplaz ze riskéieren." },
-            { "title": "Zielt op 2-3 Versich Léisungen", "text": "De Zäitbonus ass enorm fir séier Léisungen (+60s fir 1 Versuch, +30s fir 2). Eng riskant zweet Rot kann sech grouss auszuelen." },
-            { "title": "Léiert gebrauchlech Wuertendungen", "text": "Mustere wéi -IGHT, -OUND, -ATCH kommen dacks vir. Se direkt erkennen spuert Sekonnen pro Wuert." },
-            { "title": "Bleift roueg wann den Drock wiesst", "text": "Den Timer beschleunegt all 3 Wierder. Haaschteg féiert zu Tippfeeler a schlecht Roten. E stabile Rhythmus schleet Panik." }
+            {
+                "title": "Fänkt mat CRANE oder STARE un",
+                "text": "Heefeg Bréiwer ginn Iech déi bescht Chance op eng séier Léisung. All Sekonn zielt."
+            },
+            {
+                "title": "Denkt net ze vill no",
+                "text": "Speed Streak belount Bauchgefill. Wann Dir e waarscheinlecht Wuert gesitt, probéiert et — de Combo-Bonus ass méi wäert wéi eng perfekt Léisung."
+            },
+            {
+                "title": "Schützt Äre Combo",
+                "text": "E gescheitert Wuert brécht Äre Multiplikator. Wann Dir onsëcher sidd, benotzt eng sécher Rot fir méi Hiweiser ze sammelen amplaz ze riskéieren."
+            },
+            {
+                "title": "Zielt op 2-3 Versich Léisungen",
+                "text": "De Zäitbonus ass enorm fir séier Léisungen (+60s fir 1 Versuch, +30s fir 2). Eng riskant zweet Rot kann sech grouss auszuelen."
+            },
+            {
+                "title": "Léiert gebrauchlech Wuertendungen",
+                "text": "Mustere wéi -IGHT, -OUND, -ATCH kommen dacks vir. Se direkt erkennen spuert Sekonnen pro Wuert."
+            },
+            {
+                "title": "Bleift roueg wann den Drock wiesst",
+                "text": "Den Timer beschleunegt all 3 Wierder. Haaschteg féiert zu Tippfeeler a schlecht Roten. E stabile Rhythmus schleet Panik."
+            }
         ],
         "tips_multiboard": [
-            { "title": "Fänkt breet un", "text": "Benotzt Wierder mat heefege Bréiwer (CRANE, STARE) fir Hiweiser iwwer all Briet gläichzäiteg ze sammelen." },
-            { "title": "Kuckt op de gedeelte Clavière", "text": "D'Tastatur weist Faarwen pro Briet. E Bréif deen op engem Briet gréng ass awer gro op engem aneren, aengt d'Optiounen séier an." },
-            { "title": "Prioritär Briet an Schwieregkeeten", "text": "Konzentréiert Iech op d'Briet mat de meeschten Onbekannten. Méi einfach Briet léise sech dacks vun eleng." },
-            { "title": "Verschwendt déi éischt Versich net", "text": "Benotzt déi éischt 2-3 fir informatiounsräich Wierder ier Dir spezifesch Briet visitt." },
-            { "title": "Kuckt no gemeinsame Bréiwer", "text": "Wann zwee Briet en gielt E weisen, hëlleft e Wuert mat E op enger neier Positioun béide Briet gläichzäiteg." },
-            { "title": "Spuert e Versuch fir Noutfäll", "text": "Wann Dir um leschte Briet hänke bleift, ass en iwwrege Versuch den Ënnerscheed tëschent Gewannen a Verléieren." }
+            {
+                "title": "Fänkt breet un",
+                "text": "Benotzt Wierder mat heefege Bréiwer (CRANE, STARE) fir Hiweiser iwwer all Briet gläichzäiteg ze sammelen."
+            },
+            {
+                "title": "Kuckt op de gedeelte Clavière",
+                "text": "D'Tastatur weist Faarwen pro Briet. E Bréif deen op engem Briet gréng ass awer gro op engem aneren, aengt d'Optiounen séier an."
+            },
+            {
+                "title": "Prioritär Briet an Schwieregkeeten",
+                "text": "Konzentréiert Iech op d'Briet mat de meeschten Onbekannten. Méi einfach Briet léise sech dacks vun eleng."
+            },
+            {
+                "title": "Verschwendt déi éischt Versich net",
+                "text": "Benotzt déi éischt 2-3 fir informatiounsräich Wierder ier Dir spezifesch Briet visitt."
+            },
+            {
+                "title": "Kuckt no gemeinsame Bréiwer",
+                "text": "Wann zwee Briet en gielt E weisen, hëlleft e Wuert mat E op enger neier Positioun béide Briet gläichzäiteg."
+            },
+            {
+                "title": "Spuert e Versuch fir Noutfäll",
+                "text": "Wann Dir um leschte Briet hänke bleift, ass en iwwrege Versuch den Ënnerscheed tëschent Gewannen a Verléieren."
+            }
         ],
         "mode_desc_classic": "Dir hutt 6 Versich fir en verstoppt 5-Bréif-Wuert ze roden. Benotzt d'Faarfhiweiser fir d'Äntwert anzegrenzen.",
         "mode_desc_unlimited": "Dir hutt 6 Versich fir en verstoppt 5-Bréif-Wuert ze roden. Benotzt d'Faarfhiweiser fir d'Äntwert anzegrenzen. No all Spill, dréckt \"Erëm spillen\" fir direkt en neit Wuert ze kréien — et gëtt keen deeglecht Limit.",
         "mode_desc_speed": "Fänkt mat 3 Minutten um Timer un. All Wuert dat Dir léist, verdéngt Bonuszäit — léist a manner Versich fir méi grouss Bonussen (+60s fir 1 Versuch, +10s fir 6). Gescheitert Wierder kaschten 30 Sekonnen. Baut Comboe op andeems Dir Wierder hannertreneen léist fir bis zu engem 3x Multiplikator. Den Drock wiesst mat méi geléiste Wierder — den Timer beschleunegt all 3 Wierder.",
         "mode_desc_multiboard": "{modeName} fërdert Iech eraus, {boardCount} Wordle-Briet gläichzäiteg ze léisen mat nëmmen {maxGuesses} Versich. All Versuch erschéngt op all net-geléiste Briet gläichzäiteg. Briet frieren an wann se geléist sinn. Dee gedeelte-Faarwen-Clavière weist wéi eng Bréiwer op wéi enge Briet richteg sinn. Fänkt mat Wierder mat heefege Bréiwer un fir Hiweiser iwwer all Briet gläichzäiteg ze sammelen.",
         "faq": [
-            { "q": "Wéi spill ech Wordle op {langName}?", "a": "Besicht wordle.global/{lang} fir den deegleche Wordle op {langName} ze spillen. Dir hutt 6 Versich fir en 5-Bréif-Wuert ze roden. No all Versuch ginn d'Kachelen gréng (richtege Bréif, richteg Plaz), giel (richtege Bréif, falsch Plaz), oder gro (Bréif net am Wuert)." },
-            { "q": "Gëtt et all Dag en neie Puzzel?", "a": "Jo. All Dag gëtt en neit Wuert gewielt. All Spiller an der selwechter Sprooch kréien datselwecht Wuert, sou kënnt Dir Resultater mat Frënn vergläichen." },
-            { "q": "Ass Wordle Global gratis?", "a": "Jo. Den deegleche Puzzel, den onlimitéierten Modus an all Spillmodi si komplett gratis an all 80+ Sproochen. Kee Konto oder Download néideg." },
-            { "q": "Kann ech méi wéi eemol den Dag spillen?", "a": "Jo — probéiert den Onlimitéierten Modus op wordle.global/{lang}/unlimited fir endlos Spiller ouni ze waarden. Är deeglech Serie gëtt separat gezielt." }
+            {
+                "q": "Wéi spill ech Wordle op {langName}?",
+                "a": "Besicht wordle.global/{lang} fir den deegleche Wordle op {langName} ze spillen. Dir hutt 6 Versich fir en 5-Bréif-Wuert ze roden. No all Versuch ginn d'Kachelen gréng (richtege Bréif, richteg Plaz), giel (richtege Bréif, falsch Plaz), oder gro (Bréif net am Wuert)."
+            },
+            {
+                "q": "Gëtt et all Dag en neie Puzzel?",
+                "a": "Jo. All Dag gëtt en neit Wuert gewielt. All Spiller an der selwechter Sprooch kréien datselwecht Wuert, sou kënnt Dir Resultater mat Frënn vergläichen."
+            },
+            {
+                "q": "Ass Wordle Global gratis?",
+                "a": "Jo. Den deegleche Puzzel, den onlimitéierten Modus an all Spillmodi si komplett gratis an all 80+ Sproochen. Kee Konto oder Download néideg."
+            },
+            {
+                "q": "Kann ech méi wéi eemol den Dag spillen?",
+                "a": "Jo — probéiert den Onlimitéierten Modus op wordle.global/{lang}/unlimited fir endlos Spiller ouni ze waarden. Är deeglech Serie gëtt separat gezielt."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "Wat ass Wordle Onlimitéiert op {langName}?", "a": "Wordle Onlimitéiert léisst Iech sou vill Wordle Spiller spillen wéi Dir wëllt op {langName}, ouni op den Puzzel vu muer ze waarden. All Spill gëtt Iech en neit zoufällegt Wuert fir a 6 Versich ze roden." },
-                { "q": "Ass Wordle Onlimitéiert gratis?", "a": "Jo. Wordle Onlimitéiert ass komplett gratis ze spillen. Kee Konto, keen Download, keng Reklammen wärend dem Spill." },
-                { "q": "Zielt den onlimitéierten Modus fir meng deeglech Serie?", "a": "Nee. Den onlimitéierten Modus huet seng eegen separat Statistiken. Är deeglech Serie gëtt nëmme vum deegleche Puzzel beaflosst." },
-                { "q": "Wéi dacks kann ech spillen?", "a": "Et gëtt keen Limit. Dir kënnt sou vill Ronnen spillen wéi Dir wëllt. No all Spill, dréckt \"Erëm spillen\" fir direkt en neit Wuert ze kréien." },
-                { "q": "A wéi enge Sproochen kann ech Wordle Onlimitéiert spillen?", "a": "Wordle Onlimitéiert ass a méi wéi 80 Sproochen op wordle.global verfügbar, dorënner Englesch, Spuenesch, Däitsch, Finnesch, Arabesch, Franséisch, Italienesch, Portugisesch, a vill méi." }
+                {
+                    "q": "Wat ass Wordle Onlimitéiert op {langName}?",
+                    "a": "Wordle Onlimitéiert léisst Iech sou vill Wordle Spiller spillen wéi Dir wëllt op {langName}, ouni op den Puzzel vu muer ze waarden. All Spill gëtt Iech en neit zoufällegt Wuert fir a 6 Versich ze roden."
+                },
+                {
+                    "q": "Ass Wordle Onlimitéiert gratis?",
+                    "a": "Jo. Wordle Onlimitéiert ass komplett gratis ze spillen. Kee Konto, keen Download, keng Reklammen wärend dem Spill."
+                },
+                {
+                    "q": "Zielt den onlimitéierten Modus fir meng deeglech Serie?",
+                    "a": "Nee. Den onlimitéierten Modus huet seng eegen separat Statistiken. Är deeglech Serie gëtt nëmme vum deegleche Puzzel beaflosst."
+                },
+                {
+                    "q": "Wéi dacks kann ech spillen?",
+                    "a": "Et gëtt keen Limit. Dir kënnt sou vill Ronnen spillen wéi Dir wëllt. No all Spill, dréckt \"Erëm spillen\" fir direkt en neit Wuert ze kréien."
+                },
+                {
+                    "q": "A wéi enge Sproochen kann ech Wordle Onlimitéiert spillen?",
+                    "a": "Wordle Onlimitéiert ass a méi wéi 80 Sproochen op wordle.global verfügbar, dorënner Englesch, Spuenesch, Däitsch, Finnesch, Arabesch, Franséisch, Italienesch, Portugisesch, a vill méi."
+                }
             ],
             "speed": [
-                { "q": "Wat ass Speed Streak op {langName}?", "a": "Speed Streak ass en Zäitmodus vu Wordle op {langName}. Dir fänkt mat 3 Minutten um Timer un a léist sou vill Wierder wéi Dir kënnt. Léist e Wuert séier fir Bonuszäit ze verdéngen." },
-                { "q": "Wéi fonctionnéiert de Punktestand?", "a": "Dir verdéngt Punkte fir all geléist Wuert. Manner Versich a méi séier Léisunge ginn méi Punkte. Baut e Combo op andeems Dir Wierder hannertreneen léist ouni ze scheiter — bis zu engem 3x Multiplikator." },
-                { "q": "Wat geschitt wann d'Zäit eriwwer ass?", "a": "D'Spill ass eriwwer an Dir gesitt Äre finalen Score, total geléist Wierder, maximale Combo, an Duerchschnëttsversich. Dir kënnt direkt erëm spillen." },
-                { "q": "Ass Speed Streak gratis?", "a": "Jo. Speed Streak ass komplett gratis an all 80+ Sproochen. Kee Konto oder Download néideg." }
+                {
+                    "q": "Wat ass Speed Streak op {langName}?",
+                    "a": "Speed Streak ass en Zäitmodus vu Wordle op {langName}. Dir fänkt mat 3 Minutten um Timer un a léist sou vill Wierder wéi Dir kënnt. Léist e Wuert séier fir Bonuszäit ze verdéngen."
+                },
+                {
+                    "q": "Wéi fonctionnéiert de Punktestand?",
+                    "a": "Dir verdéngt Punkte fir all geléist Wuert. Manner Versich a méi séier Léisunge ginn méi Punkte. Baut e Combo op andeems Dir Wierder hannertreneen léist ouni ze scheiter — bis zu engem 3x Multiplikator."
+                },
+                {
+                    "q": "Wat geschitt wann d'Zäit eriwwer ass?",
+                    "a": "D'Spill ass eriwwer an Dir gesitt Äre finalen Score, total geléist Wierder, maximale Combo, an Duerchschnëttsversich. Dir kënnt direkt erëm spillen."
+                },
+                {
+                    "q": "Ass Speed Streak gratis?",
+                    "a": "Jo. Speed Streak ass komplett gratis an all 80+ Sproochen. Kee Konto oder Download néideg."
+                }
             ],
             "multiboard": [
-                { "q": "Wat ass {modeName} op {langName}?", "a": "{modeName} ass eng Multi-Briet Wordle-Variant op {langName}. Dir léist {boardCount} Wordle-Briet gläichzäiteg mat {maxGuesses} Versich. All Versuch gëtt op all net-geléiste Briet gläichzäiteg aginn." },
-                { "q": "Wéi vill Versich hunn ech bei {modeName}?", "a": "Dir hutt {maxGuesses} Versich fir all {boardCount} Briet ze léisen. Wann e Briet geléist ass, fréiert et an a Dir kënnt Iech op déi reschtlech Briet konzentréieren." },
-                { "q": "Wéi eng Strategie fonctionnéiert am beschten fir {modeName}?", "a": "Fänkt mat Wierder un déi heefeg Bréiwer benotzen fir Informatiounen iwwer all {boardCount} Briet gläichzäiteg ze sammelen. Opgepasst op dee gedeelte-Faarwen-Clavière — e weist wéi eng Bréiwer op wéi enge Briet richteg sinn." },
-                { "q": "Ass {modeName} gratis?", "a": "Jo. {modeName} ass komplett gratis an all 80+ Sproochen. Kee Konto oder Download néideg. Spillt sou vill Ronnen wéi Dir wëllt." }
+                {
+                    "q": "Wat ass {modeName} op {langName}?",
+                    "a": "{modeName} ass eng Multi-Briet Wordle-Variant op {langName}. Dir léist {boardCount} Wordle-Briet gläichzäiteg mat {maxGuesses} Versich. All Versuch gëtt op all net-geléiste Briet gläichzäiteg aginn."
+                },
+                {
+                    "q": "Wéi vill Versich hunn ech bei {modeName}?",
+                    "a": "Dir hutt {maxGuesses} Versich fir all {boardCount} Briet ze léisen. Wann e Briet geléist ass, fréiert et an a Dir kënnt Iech op déi reschtlech Briet konzentréieren."
+                },
+                {
+                    "q": "Wéi eng Strategie fonctionnéiert am beschten fir {modeName}?",
+                    "a": "Fänkt mat Wierder un déi heefeg Bréiwer benotzen fir Informatiounen iwwer all {boardCount} Briet gläichzäiteg ze sammelen. Opgepasst op dee gedeelte-Faarwen-Clavière — e weist wéi eng Bréiwer op wéi enge Briet richteg sinn."
+                },
+                {
+                    "q": "Ass {modeName} gratis?",
+                    "a": "Jo. {modeName} ass komplett gratis an all 80+ Sproochen. Kee Konto oder Download néideg. Spillt sou vill Ronnen wéi Dir wëllt."
+                }
             ]
         },
         "howto": [
-            { "name": "Tippt e Wuert", "text": "Gitt e gültegt 5-Bréif-Wuert op {langName} an mat der Tastatur um Bildschierm oder Ärer kierperlecher Tastatur, dann dréckt Enter." },
-            { "name": "Liest d'Hiweiser", "text": "Gréng Kachelen heescht de Bréif ass richteg an op der richteger Plaz. Giel heescht de Bréif ass am Wuert awer op der falscher Plaz. Gro heescht de Bréif ass net am Wuert." },
-            { "name": "Léist a 6 Versich", "text": "Benotzt d'Faarfhiweiser fir d'Wuert anzegrenzen. Dir hutt 6 Versich insgesamt. Nom Puzzel, gesitt Dir Är Statistiken a kënnt Äert Resultat deelen." }
+            {
+                "name": "Tippt e Wuert",
+                "text": "Gitt e gültegt 5-Bréif-Wuert op {langName} an mat der Tastatur um Bildschierm oder Ärer kierperlecher Tastatur, dann dréckt Enter."
+            },
+            {
+                "name": "Liest d'Hiweiser",
+                "text": "Gréng Kachelen heescht de Bréif ass richteg an op der richteger Plaz. Giel heescht de Bréif ass am Wuert awer op der falscher Plaz. Gro heescht de Bréif ass net am Wuert."
+            },
+            {
+                "name": "Léist a 6 Versich",
+                "text": "Benotzt d'Faarfhiweiser fir d'Wuert anzegrenzen. Dir hutt 6 Versich insgesamt. Nom Puzzel, gesitt Dir Är Statistiken a kënnt Äert Resultat deelen."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "Fänkt e Spill un", "text": "Besicht wordle.global/{lang}/unlimited fir Wordle Onlimitéiert op {langName} ze spillen. En zoufällegt 5-Bréif-Wuert gëtt fir Iech gewielt." },
-                { "name": "Root d'Wuert", "text": "Tippt e gültegt 5-Bréif-Wuert a dréckt Enter. Gréng Kachelen heescht de Bréif ass richteg an op der richteger Plaz. Giel heescht de Bréif ass am Wuert awer op der falscher Plaz. Gro heescht de Bréif ass net am Wuert." },
-                { "name": "Spillt direkt erëm", "text": "Nodeems Dir d'Wuert geléist hutt (oder all 6 Versich benotzt hutt), dréckt \"Erëm spillen\" fir direkt en neit Wuert ze kréien. Ouni op muer ze waarden." }
+                {
+                    "name": "Fänkt e Spill un",
+                    "text": "Besicht wordle.global/{lang}/unlimited fir Wordle Onlimitéiert op {langName} ze spillen. En zoufällegt 5-Bréif-Wuert gëtt fir Iech gewielt."
+                },
+                {
+                    "name": "Root d'Wuert",
+                    "text": "Tippt e gültegt 5-Bréif-Wuert a dréckt Enter. Gréng Kachelen heescht de Bréif ass richteg an op der richteger Plaz. Giel heescht de Bréif ass am Wuert awer op der falscher Plaz. Gro heescht de Bréif ass net am Wuert."
+                },
+                {
+                    "name": "Spillt direkt erëm",
+                    "text": "Nodeems Dir d'Wuert geléist hutt (oder all 6 Versich benotzt hutt), dréckt \"Erëm spillen\" fir direkt en neit Wuert ze kréien. Ouni op muer ze waarden."
+                }
             ],
             "speed": [
-                { "name": "Start den Timer", "text": "Besicht wordle.global/{lang}/speed a dréckt Start. Dir fänkt mat 3 Minutten um Timer un." },
-                { "name": "Léist Wierder séier", "text": "All geléist Wuert verdéngt Bonuszäit (+10s bis +60s jee nodeem wéi vill Versich Dir gebraucht hutt). Gescheitert Wierder kaschten 30 Sekonnen." },
-                { "name": "Baut Äre Combo op", "text": "Léist Wierder hannertreneen fir en Combo-Multiplikator opzebauen (bis 3x). De Combo brécht wann Dir e Wuert verfehlt. Probéiert Äre Highscore ze schloen." }
+                {
+                    "name": "Start den Timer",
+                    "text": "Besicht wordle.global/{lang}/speed a dréckt Start. Dir fänkt mat 3 Minutten um Timer un."
+                },
+                {
+                    "name": "Léist Wierder séier",
+                    "text": "All geléist Wuert verdéngt Bonuszäit (+10s bis +60s jee nodeem wéi vill Versich Dir gebraucht hutt). Gescheitert Wierder kaschten 30 Sekonnen."
+                },
+                {
+                    "name": "Baut Äre Combo op",
+                    "text": "Léist Wierder hannertreneen fir en Combo-Multiplikator opzebauen (bis 3x). De Combo brécht wann Dir e Wuert verfehlt. Probéiert Äre Highscore ze schloen."
+                }
             ],
             "multiboard": [
-                { "name": "Fänkt e Spill un", "text": "Besicht wordle.global/{lang}/{modeName} fir {modeName} op {langName} ze spillen. {boardCount} Briet erschéngen mat verschiddene verstoppte Wierder." },
-                { "name": "Root iwwer all Briet", "text": "Tippt en 5-Bréif-Wuert a dréckt Enter. Äre Versuch erschéngt op all {boardCount} Briet gläichzäiteg. All Briet weist seng eegen Faarfhiweiser (gréng, giel, gro)." },
-                { "name": "Léist all {boardCount} Briet", "text": "Geléist Briet frieren an. Benotzt dee gedeelte-Faarwen-Clavière fir ze verfollegen wéi eng Bréiwer op wéi enge Briet funktionnéieren. Léist all {boardCount} bannent {maxGuesses} Versich fir ze gewannen." }
+                {
+                    "name": "Fänkt e Spill un",
+                    "text": "Besicht wordle.global/{lang}/{modeName} fir {modeName} op {langName} ze spillen. {boardCount} Briet erschéngen mat verschiddene verstoppte Wierder."
+                },
+                {
+                    "name": "Root iwwer all Briet",
+                    "text": "Tippt en 5-Bréif-Wuert a dréckt Enter. Äre Versuch erschéngt op all {boardCount} Briet gläichzäiteg. All Briet weist seng eegen Faarfhiweiser (gréng, giel, gro)."
+                },
+                {
+                    "name": "Léist all {boardCount} Briet",
+                    "text": "Geléist Briet frieren an. Benotzt dee gedeelte-Faarwen-Clavière fir ze verfollegen wéi eng Bréiwer op wéi enge Briet funktionnéieren. Léist all {boardCount} bannent {maxGuesses} Versich fir ze gewannen."
+                }
             ]
         }
     }

@@ -971,7 +971,7 @@ def add_translations():
             print(f"WARNING: {config_path} does not exist, skipping")
             continue
 
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             config = json.load(f)
 
         trans = TRANSLATIONS[lang]
@@ -999,7 +999,7 @@ def add_translations():
         config_path = DATA_DIR / lang / "language_config.json"
         if not config_path.exists():
             continue
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             config = json.load(f)
         time_up = config.get("ui", {}).get("time_up", "MISSING")
         print(f"  {lang}: {time_up}")

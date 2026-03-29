@@ -366,8 +366,8 @@
         ],
         "faq": [
             {
-                "q": "Miten pelaan Wordlea suomeksi?",
-                "a": "Vieraile osoitteessa wordle.global/fi pelataksesi päivittäistä Wordlea suomeksi. Sinulla on 6 yritystä arvata 5-kirjaiminen sana. Jokaisen arvauksen jälkeen ruudut muuttuvat vihreäksi (oikea kirjain, oikea paikka), keltaiseksi (oikea kirjain, väärä paikka) tai harmaaksi (kirjain ei ole sanassa)."
+                "q": "Miten pelaan Wordlea {langName}?",
+                "a": "Vieraile osoitteessa wordle.global/fi pelataksesi päivittäistä Wordlea {langName}. Sinulla on 6 yritystä arvata 5-kirjaiminen sana. Jokaisen arvauksen jälkeen ruudut muuttuvat vihreäksi (oikea kirjain, oikea paikka), keltaiseksi (oikea kirjain, väärä paikka) tai harmaaksi (kirjain ei ole sanassa)."
             },
             {
                 "q": "Onko joka päivä uusi pulmapeli?",
@@ -389,8 +389,8 @@
         "mode_faq": {
             "unlimited": [
                 {
-                    "q": "Mikä on Wordle Unlimited suomeksi?",
-                    "a": "Wordle Unlimited antaa sinun pelata niin monta Wordle-peliä kuin haluat suomeksi ilman odottelua. Jokainen peli antaa uuden satunnaisen sanan arvattavaksi 6 yrityksellä."
+                    "q": "Mikä on Wordle Unlimited {langName}?",
+                    "a": "Wordle Unlimited antaa sinun pelata niin monta Wordle-peliä kuin haluat {langName} ilman odottelua. Jokainen peli antaa uuden satunnaisen sanan arvattavaksi 6 yrityksellä."
                 },
                 {
                     "q": "Onko Wordle Unlimited ilmainen?",
@@ -411,8 +411,8 @@
             ],
             "speed": [
                 {
-                    "q": "Mikä on Speed Streak suomeksi?",
-                    "a": "Speed Streak on ajastettu Wordle-tila suomeksi. Aloitat 3 minuutilla kellossa ja ratkaiset niin monta sanaa kuin ehdit. Ratkaise sana nopeasti ansaitaksesi lisäaikaa."
+                    "q": "Mikä on Speed Streak {langName}?",
+                    "a": "Speed Streak on ajastettu Wordle-tila {langName}. Aloitat 3 minuutilla kellossa ja ratkaiset niin monta sanaa kuin ehdit. Ratkaise sana nopeasti ansaitaksesi lisäaikaa."
                 },
                 {
                     "q": "Miten pisteytys toimii?",
@@ -429,8 +429,8 @@
             ],
             "multiboard": [
                 {
-                    "q": "Mikä on {modeName} suomeksi?",
-                    "a": "{modeName} on monilautainen Wordle-muunnelma suomeksi. Ratkaiset {boardCount} Wordle-taulua samanaikaisesti {maxGuesses} arvauksella. Jokainen arvaus syötetään kaikille ratkaisemattomille tauluille."
+                    "q": "Mikä on {modeName} {langName}?",
+                    "a": "{modeName} on monilautainen Wordle-muunnelma {langName}. Ratkaiset {boardCount} Wordle-taulua samanaikaisesti {maxGuesses} arvauksella. Jokainen arvaus syötetään kaikille ratkaisemattomille tauluille."
                 },
                 {
                     "q": "Kuinka monta arvausta saan pelissä {modeName}?",
@@ -449,7 +449,7 @@
         "howto": [
             {
                 "name": "Kirjoita sana",
-                "text": "Syötä kelvollinen 5-kirjaiminen sana suomeksi näyttönäppäimistöllä tai fyysisellä näppäimistöllä ja paina Enter."
+                "text": "Syötä kelvollinen 5-kirjaiminen sana {langName} näyttönäppäimistöllä tai fyysisellä näppäimistöllä ja paina Enter."
             },
             {
                 "name": "Lue vihjeet",
@@ -464,7 +464,7 @@
             "unlimited": [
                 {
                     "name": "Aloita peli",
-                    "text": "Vieraile osoitteessa wordle.global/fi/unlimited aloittaaksesi Wordle Unlimitedin suomeksi. Satunnainen 5-kirjaiminen sana valitaan sinulle."
+                    "text": "Vieraile osoitteessa wordle.global/fi/unlimited aloittaaksesi Wordle Unlimitedin {langName}. Satunnainen 5-kirjaiminen sana valitaan sinulle."
                 },
                 {
                     "name": "Arvaa sana",
@@ -492,7 +492,7 @@
             "multiboard": [
                 {
                     "name": "Aloita peli",
-                    "text": "Vieraile osoitteessa wordle.global/fi/{modeName} pelataksesi {modeName}a suomeksi. {boardCount} taulua ilmestyy eri piilotettuine sanoineen."
+                    "text": "Vieraile osoitteessa wordle.global/fi/{modeName} pelataksesi {modeName}a {langName}. {boardCount} taulua ilmestyy eri piilotettuine sanoineen."
                 },
                 {
                     "name": "Arvaa kaikilla tauluilla",
