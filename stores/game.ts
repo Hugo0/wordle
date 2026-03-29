@@ -454,6 +454,8 @@ export const useGameStore = defineStore('game', () => {
 
         if (isMultiBoard.value) {
             // Multi-board: write typed letter to ALL unsolved boards simultaneously
+            // Skip tileColors splice for 5+ boards (pop animation is disabled anyway)
+            const skipColors = boards.value.length > 4;
             for (const board of boards.value) {
                 if (board.solved) continue;
                 const row = board.tiles[rowIdx];
@@ -461,7 +463,7 @@ export const useGameStore = defineStore('game', () => {
                 if (row && rowClasses) {
                     row.splice(cellIdx, 1, displayChar);
                     rowClasses.splice(cellIdx, 1, ACTIVE_TILE_CLASS);
-                    board.tileColors[rowIdx]?.splice(cellIdx, 1, 'active');
+                    if (!skipColors) board.tileColors[rowIdx]?.splice(cellIdx, 1, 'active');
                 }
             }
         } else {
@@ -798,6 +800,7 @@ export const useGameStore = defineStore('game', () => {
             if (isMultiBoard.value) {
                 // Multi-board: decrement cursor and clear from ALL unsolved boards
                 const newCell = activeCell.value - 1;
+                const skipColors = boards.value.length > 4;
                 for (const board of boards.value) {
                     if (board.solved) continue;
                     board.activeCell = newCell;
@@ -807,7 +810,7 @@ export const useGameStore = defineStore('game', () => {
                     if (row && rowClasses) {
                         row.splice(newCell, 1, '');
                         rowClasses.splice(newCell, 1, DEFAULT_TILE_CLASS);
-                        board.tileColors[rowIdx]?.splice(newCell, 1, 'empty');
+                        if (!skipColors) board.tileColors[rowIdx]?.splice(newCell, 1, 'empty');
                     }
                 }
             } else {
@@ -831,7 +834,7 @@ export const useGameStore = defineStore('game', () => {
                 // Only sync the active row (not all rows) for typing performance
                 const activeBoard = boards.value.find((b) => !b.solved);
                 showTilesAllBoards(activeBoard?.activeRow);
-                saveMultiBoardToLocalStorage();
+                debouncedSaveMultiBoard();
             } else if (gameConfig.value.mode !== 'speed') {
                 showTiles();
                 saveToLocalStorage();
@@ -1804,6 +1807,17 @@ export const useGameStore = defineStore('game', () => {
     }
 
     /** Save multi-board state to localStorage. */
+    // Debounced save — avoids JSON.stringify of 32 boards on every keystroke.
+    // Immediate save still happens on guess submission (processMultiBoardGuess).
+    let saveTimer: ReturnType<typeof setTimeout> | null = null;
+    function debouncedSaveMultiBoard(): void {
+        if (saveTimer) clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => {
+            saveMultiBoardToLocalStorage();
+            saveTimer = null;
+        }, 500);
+    }
+
     function saveMultiBoardToLocalStorage(): void {
         if (!import.meta.client) return;
         try {
