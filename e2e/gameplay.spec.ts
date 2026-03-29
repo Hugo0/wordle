@@ -50,13 +50,14 @@ test.describe('Homepage', () => {
         await page.goto('/');
         const items = page.locator('.border-t button:has(.flag-icon)');
         await items.first().waitFor({ timeout: 10000 });
+        const totalCount = await items.count();
 
         const search = page.locator('input[placeholder*="earch"]');
         await search.fill('Finnish');
         await page.waitForTimeout(500);
         const visible = page.locator('.border-t button:has(.flag-icon):visible');
         const count = await visible.count();
-        expect(count).toBeLessThan(65);
+        expect(count).toBeLessThan(totalCount);
         expect(count).toBeGreaterThan(0);
     });
 });
