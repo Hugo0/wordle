@@ -293,6 +293,20 @@ export const useStatsStore = defineStore('stats', () => {
         return computed;
     }
 
+    // Cross-tab sync: reload stats when another tab updates game_results
+    if (import.meta.client) {
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'game_results' && e.newValue) {
+                try {
+                    gameResults.value = JSON.parse(e.newValue) as GameResults;
+                    calculateTotalStats();
+                } catch {
+                    // Ignore parse errors from other tabs
+                }
+            }
+        });
+    }
+
     return {
         // State
         gameResults,

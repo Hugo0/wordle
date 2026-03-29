@@ -18,20 +18,16 @@
 
             <div class="editorial-rule" />
 
-            <!-- Calendar heatmap -->
+            <!-- Calendar heatmap: rolling 28 days -->
             <div class="py-3">
                 <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">
-                    {{ calendarTitle }}
+                    Last 28 Days
                 </div>
                 <div
                     class="grid grid-cols-7 gap-0.5 mb-1"
                     style="font-family: var(--font-mono); font-size: 8px; color: var(--color-muted)"
                 >
-                    <span
-                        v-for="d in ['M', 'T', 'W', 'T', 'F', 'S', 'S']"
-                        :key="d"
-                        class="text-center"
-                    >
+                    <span v-for="d in ['M', 'T', 'W', 'T', 'F', 'S', 'S']" :key="d" class="text-center">
                         {{ d }}
                     </span>
                 </div>
@@ -40,19 +36,17 @@
                         v-for="(day, i) in calendarDays"
                         :key="i"
                         class="aspect-square rounded-sm flex items-center justify-center"
-                        :class="{
-                            'bg-correct-soft': day.played,
-                            'bg-muted-soft': day.missed,
-                            'outline outline-2 outline-ink -outline-offset-1': day.today,
-                        }"
-                        style="
-                            font-family: var(--font-mono);
-                            font-size: 9px;
-                            color: var(--color-muted);
-                        "
+                        :class="calendarDayClass(day)"
+                        style="font-family: var(--font-mono); font-size: 9px; color: var(--color-muted)"
                     >
                         <span v-if="day.date">{{ day.date }}</span>
                     </div>
+                </div>
+                <!-- Legend -->
+                <div class="flex gap-3 mt-2 justify-center" style="font-size: 9px; color: var(--color-muted); font-family: var(--font-mono)">
+                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> Won</span>
+                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm inline-block" style="background: var(--color-accent-soft, #e8d5d0)" /> Lost</span>
+                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> Missed</span>
                 </div>
             </div>
 
@@ -80,22 +74,22 @@
                 </div>
             </div>
 
-            <!-- Per-language breakdown -->
-            <div v-if="languageStreaks.length > 0" class="pt-3">
+            <!-- Per-language breakdown: wins, not streaks -->
+            <div v-if="languageWins.length > 0" class="pt-3">
                 <div class="editorial-rule mb-3" />
                 <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">
-                    Per Language
+                    Wins by Language
                 </div>
                 <div class="space-y-1.5">
                     <div
-                        v-for="ls in languageStreaks"
-                        :key="ls.lang"
+                        v-for="lw in languageWins"
+                        :key="lw.lang"
                         class="flex items-center justify-between text-sm"
                     >
-                        <span class="text-ink capitalize">{{ ls.lang }}</span>
+                        <span class="text-ink capitalize">{{ lw.lang }}</span>
                         <span class="font-mono text-xs text-muted">
-                            <Flame :size="11" class="inline -mt-0.5 text-flame" />
-                            {{ ls.streak }}
+                            {{ lw.wins }} {{ lw.wins === 1 ? 'win' : 'wins' }}
+                            <span v-if="lw.games > lw.wins" class="text-muted/60">/ {{ lw.games }} played</span>
                         </span>
                     </div>
                 </div>
@@ -104,7 +98,7 @@
             <!-- Footer note -->
             <div class="pt-3 mt-3 border-t border-rule">
                 <p class="text-[11px] text-muted text-center">
-                    Streak counts any daily puzzle in any language.
+                    Streak counts classic daily puzzles in any language.
                     <br />
                     Play once a day to keep it going.
                 </p>
@@ -124,7 +118,6 @@ defineEmits<{ close: [] }>();
 const game = useGameStore();
 const statsStore = useStatsStore();
 
-// Respect debug override so badge and modal show the same number
 const currentStreak = computed(() =>
     game.debugStreakOverride !== null
         ? game.debugStreakOverride
@@ -142,78 +135,92 @@ const motivationalText = computed(() => {
     return 'Legendary.';
 });
 
-// Calendar heatmap: last 28 days
-const calendarTitle = computed(() => {
-    const now = new Date();
-    return now.toLocaleDateString('en', { month: 'long', year: 'numeric' });
-});
+// --- Calendar heatmap: rolling 28 days ---
 
 interface CalendarDay {
     date: number | null;
-    played: boolean;
-    missed: boolean;
-    today: boolean;
+    state: 'won' | 'lost' | 'missed' | 'today' | 'future' | 'empty';
+}
+
+function calendarDayClass(day: CalendarDay): string {
+    switch (day.state) {
+        case 'won': return 'bg-correct-soft';
+        case 'lost': return 'cal-lost';
+        case 'missed': return 'bg-muted-soft';
+        case 'today': return 'outline outline-2 outline-ink -outline-offset-1';
+        default: return '';
+    }
 }
 
 const calendarDays = computed<CalendarDay[]>(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    const toLocalDay = (d: Date) => d.toLocaleDateString('en-CA');
 
-    // Build set of played local dates from all classic daily results
-    const playedDates = new Set<string>();
+    // Build map: local date → 'won' | 'lost' from all classic daily results
+    const dayStates = new Map<string, 'won' | 'lost'>();
     for (const [key, results] of Object.entries(statsStore.gameResults)) {
         if (!isClassicDailyStatsKey(key)) continue;
         for (const r of results) {
+            const dayKey = toLocalDay(new Date(r.date as string));
             if (r.won) {
-                playedDates.add(new Date(r.date as string).toLocaleDateString('en-CA'));
+                dayStates.set(dayKey, 'won'); // win always overrides loss
+            } else if (!dayStates.has(dayKey)) {
+                dayStates.set(dayKey, 'lost');
             }
         }
     }
 
-    // Get first day of current month
-    const firstOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-    const startDow = (firstOfMonth.getDay() + 6) % 7; // Mon=0
-    const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+    // Find the Monday that starts our 28-day window
+    // We want 4 complete weeks ending with today's week
+    const todayDow = (today.getDay() + 6) % 7; // Mon=0
+    const endOfWeek = new Date(today);
+    endOfWeek.setDate(endOfWeek.getDate() + (6 - todayDow)); // Sunday of this week
+    const startDate = new Date(endOfWeek);
+    startDate.setDate(startDate.getDate() - 27); // 28 days total
 
     const days: CalendarDay[] = [];
+    const todayKey = toLocalDay(today);
 
-    // Empty slots before first day
-    for (let i = 0; i < startDow; i++) {
-        days.push({ date: null, played: false, missed: false, today: false });
-    }
+    for (let i = 0; i < 28; i++) {
+        const d = new Date(startDate);
+        d.setDate(d.getDate() + i);
+        const dayKey = toLocalDay(d);
+        const isToday = dayKey === todayKey;
+        const isFuture = d > today;
 
-    // Days of the month
-    for (let d = 1; d <= daysInMonth; d++) {
-        const dateObj = new Date(today.getFullYear(), today.getMonth(), d);
-        const key = dateObj.toLocaleDateString('en-CA');
-        const isToday = d === today.getDate();
-        const isPast = dateObj < today;
-        const played = playedDates.has(key);
+        let state: CalendarDay['state'];
+        if (isToday) {
+            // Today: show won/lost if played, otherwise 'today' (outline)
+            const played = dayStates.get(dayKey);
+            state = played || 'today';
+        } else if (isFuture) {
+            state = 'future';
+        } else {
+            const played = dayStates.get(dayKey);
+            state = played || 'missed';
+        }
 
-        days.push({
-            date: d,
-            played,
-            missed: isPast && !played && !isToday,
-            today: isToday,
-        });
-    }
-
-    // Pad to complete the grid row
-    while (days.length % 7 !== 0) {
-        days.push({ date: null, played: false, missed: false, today: false });
+        days.push({ date: d.getDate(), state });
     }
 
     return days;
 });
 
-// Per-language breakdown
-const languageStreaks = computed(() => {
-    const result: { lang: string; streak: number }[] = [];
+// --- Per-language wins (not streaks) ---
+const languageWins = computed(() => {
+    const result: { lang: string; wins: number; games: number }[] = [];
     for (const [lang, stats] of Object.entries(statsStore.totalStats.game_stats)) {
-        if (stats.current_streak > 0) {
-            result.push({ lang, streak: stats.current_streak });
+        if (stats.n_games > 0) {
+            result.push({ lang, wins: stats.n_wins, games: stats.n_games });
         }
     }
-    return result.sort((a, b) => b.streak - a.streak);
+    return result.sort((a, b) => b.wins - a.wins);
 });
 </script>
+
+<style scoped>
+.cal-lost {
+    background: var(--color-accent-soft, #e8d5d0);
+}
+</style>
