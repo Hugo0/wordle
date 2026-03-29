@@ -17,7 +17,6 @@ const VALID_SHARE_RESULTS = ['1', '2', '3', '4', '5', '6', 'x'];
 // Modes that have per-language OG images in public/images/modes/{mode}/
 const MODES_WITH_PER_LANG_OG = new Set([
     'dordle',
-    'tridle',
     'quordle',
     'octordle',
     'sedecordle',

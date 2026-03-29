@@ -28,8 +28,8 @@
                     style="font-family: var(--font-mono); font-size: 8px; color: var(--color-muted)"
                 >
                     <span
-                        v-for="d in ['M', 'T', 'W', 'T', 'F', 'S', 'S']"
-                        :key="d"
+                        v-for="(d, i) in ['M', 'T', 'W', 'T', 'F', 'S', 'S']"
+                        :key="i"
                         class="text-center"
                     >
                         {{ d }}

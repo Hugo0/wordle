@@ -31,16 +31,16 @@
                 "description": "Quordle را به فارسی بازی کنید. ۴ صفحه وردل را همزمان با ۹ حدس حل کنید."
             },
             "octordle": {
-                "title": "Octordle — ۴ صفحه همزمان",
-                "description": "Octordle را به فارسی بازی کنید. ۴ صفحه وردل را همزمان با ۹ حدس حل کنید."
+                "title": "Octordle — ۸ صفحه همزمان",
+                "description": "Octordle را به فارسی بازی کنید. ۸ صفحه وردل را همزمان با ۱۳ حدس حل کنید."
             },
             "sedecordle": {
-                "title": "Sedecordle — ۴ صفحه همزمان",
-                "description": "Sedecordle را به فارسی بازی کنید. ۴ صفحه وردل را همزمان با ۹ حدس حل کنید."
+                "title": "Sedecordle — ۱۶ صفحه همزمان",
+                "description": "Sedecordle را به فارسی بازی کنید. ۱۶ صفحه وردل را همزمان با ۲۱ حدس حل کنید."
             },
             "duotrigordle": {
-                "title": "Duotrigordle — ۴ صفحه همزمان",
-                "description": "Duotrigordle را به فارسی بازی کنید. ۴ صفحه وردل را همزمان با ۹ حدس حل کنید."
+                "title": "Duotrigordle — ۳۲ صفحه همزمان",
+                "description": "Duotrigordle را به فارسی بازی کنید. ۳۲ صفحه وردل را همزمان با ۳۷ حدس حل کنید."
             }
         }
     },
@@ -171,5 +171,275 @@
         "pos_adjective": "صفت",
         "pos_adverb": "قید",
         "pos_other": ""
+    },
+    "seo": {
+        "how_to_play": "How to Play",
+        "tips_strategy": "Tips & Strategy",
+        "more_modes": "More Game Modes",
+        "play_in_languages": "Play in 80+ Languages",
+        "play_in_languages_sub": "Every language is free. No account needed.",
+        "why_wordle_global": "Why Wordle Global",
+        "faq_title": "Frequently Asked Questions",
+        "browse_all_languages": "Browse all 80+ languages",
+        "recent_words": "Recent Words",
+        "view_all_words": "View all words",
+        "footer": "wordle.global — the free daily word game in 80+ languages",
+        "tile_correct": "is in the word and in the correct spot.",
+        "tile_semicorrect": "is in the word but in the wrong spot.",
+        "tile_incorrect": "is not in the word at all.",
+        "stat_players": "Players",
+        "stat_guesses": "Guesses",
+        "stat_languages": "Languages",
+        "stat_modes": "Game Modes",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ Languages",
+                "desc": "From Arabic to Yoruba. The largest multilingual Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Word Definitions",
+                "desc": "Learn the meaning of every word after you play. Expand your vocabulary."
+            },
+            {
+                "key": "word_art",
+                "title": "Unique Word Art",
+                "desc": "Every word comes with a custom illustration. Collect them all."
+            },
+            {
+                "key": "themes",
+                "title": "Dark Mode & Themes",
+                "desc": "Light, dark, and high-contrast modes for comfortable play."
+            },
+            {
+                "key": "pwa",
+                "title": "Works Everywhere",
+                "desc": "PWA — install on any device. Works offline. No download needed."
+            },
+            {
+                "key": "free",
+                "title": "Free Forever",
+                "desc": "No account required. No paywall. Just play."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Start with a vowel-rich word",
+                "text": "Words like CRANE, STARE, or ADIEU test common letters quickly. Knowing which vowels are present narrows options fast."
+            },
+            {
+                "title": "Use what you know",
+                "text": "Green letters stay locked. Yellow letters must move. Gray letters are eliminated. Each guess should use all three clues."
+            },
+            {
+                "title": "Think about common patterns",
+                "text": "English words often end in -TION, -IGHT, -OUND, -MENT. Other languages have their own patterns — learn them."
+            },
+            {
+                "title": "Eliminate, don't guess randomly",
+                "text": "Your second word should test new letters, not repeat confirmed ones. Cover as many untested consonants as possible."
+            },
+            {
+                "title": "Watch for double letters",
+                "text": "Words like CREEK, FLOSS, or APPLE are common traps. If your clues don't add up, consider a repeated letter."
+            },
+            {
+                "title": "Use hard mode to improve",
+                "text": "Hard mode forces you to use confirmed clues in every guess. It builds better habits even when you switch back to normal."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "Start with CRANE or STARE",
+                "text": "High-frequency letters give you the best chance of a fast solve. Every second counts."
+            },
+            {
+                "title": "Don't overthink",
+                "text": "Speed Streak rewards gut instinct. If you see a likely word, go for it — the combo bonus outweighs a perfect solve."
+            },
+            {
+                "title": "Protect your combo",
+                "text": "A failed word breaks your multiplier. When unsure, use a safe guess to gather more clues rather than risk it."
+            },
+            {
+                "title": "Go for 2-3 guess solves",
+                "text": "The time bonus is massive for quick solves (+60s for 1 guess, +30s for 2). A risky second guess can pay off big."
+            },
+            {
+                "title": "Learn common word endings",
+                "text": "Patterns like -IGHT, -OUND, -ATCH repeat often. Recognizing them instantly saves seconds per word."
+            },
+            {
+                "title": "Stay calm as pressure ramps",
+                "text": "The timer speeds up every 3 words. Rushing leads to typos and bad guesses. Steady pace beats panic."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Start broad",
+                "text": "Use common-letter words (CRANE, STARE) to gather clues across all boards at once."
+            },
+            {
+                "title": "Watch the split keyboard",
+                "text": "The keyboard shows per-board colors. A letter green on one board but gray on another narrows options fast."
+            },
+            {
+                "title": "Prioritize struggling boards",
+                "text": "Focus guesses on the board with the most unknowns. Easier boards often solve themselves along the way."
+            },
+            {
+                "title": "Don't waste early guesses",
+                "text": "Use the first 2-3 on information-rich words before targeting specific boards."
+            },
+            {
+                "title": "Look for shared letters",
+                "text": "If two boards both show a yellow E, a word with E in a new position helps both boards simultaneously."
+            },
+            {
+                "title": "Save a guess for emergencies",
+                "text": "If you're stuck on the last board, having a spare guess is the difference between winning and losing."
+            }
+        ],
+        "mode_desc_classic": "You have 6 tries to guess a hidden 5-letter word. Use the color clues to narrow down the answer.",
+        "mode_desc_unlimited": "You have 6 tries to guess a hidden 5-letter word. Use the color clues to narrow down the answer. After each game, press \"Play Again\" to get a new word instantly — there's no daily limit.",
+        "mode_desc_speed": "Start with 3 minutes on the clock. Each word you solve earns bonus time — solve in fewer guesses for bigger bonuses (+60s for 1 guess, +10s for 6). Failed words cost 30 seconds. Build combos by solving consecutive words for up to a 3x score multiplier. The pressure ramps up as you solve more words — the timer ticks faster every 3 words.",
+        "mode_desc_multiboard": "{modeName} challenges you to solve {boardCount} Wordle boards at the same time using just {maxGuesses} guesses. Each guess appears on all unsolved boards simultaneously. Boards freeze when solved. The split-color keyboard shows which letters are correct on which boards. Start with common-letter words to gather clues across all boards at once.",
+        "faq": [
+            {
+                "q": "How do I play Wordle in {langName}?",
+                "a": "Visit wordle.global/{lang} to play the daily Wordle in {langName}. You have 6 tries to guess a 5-letter word. After each guess, tiles turn green (correct letter, correct position), yellow (correct letter, wrong position), or gray (letter not in the word)."
+            },
+            {
+                "q": "Is there a new puzzle every day?",
+                "a": "Yes. A new word is chosen each day. Everyone playing in the same language gets the same word, so you can compare results with friends."
+            },
+            {
+                "q": "Is Wordle Global free?",
+                "a": "Yes. The daily puzzle, unlimited mode, and all game modes are completely free in all 80+ languages. No account or download required."
+            },
+            {
+                "q": "Can I play more than once a day?",
+                "a": "Yes — try Unlimited mode at wordle.global/{lang}/unlimited for endless games with no waiting. Your daily streak is tracked separately."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "What is Wordle Unlimited in {langName}?",
+                    "a": "Wordle Unlimited lets you play as many Wordle games as you want in {langName}, without waiting for tomorrow's daily puzzle. Each game gives you a new random word to guess in 6 tries."
+                },
+                {
+                    "q": "Is Wordle Unlimited free?",
+                    "a": "Yes. Wordle Unlimited is completely free to play. No account, no download, no ads during gameplay."
+                },
+                {
+                    "q": "Does unlimited mode count toward my daily streak?",
+                    "a": "No. Unlimited mode has its own separate statistics. Your daily streak is only affected by the daily puzzle."
+                },
+                {
+                    "q": "How many times can I play?",
+                    "a": "There is no limit. You can play as many rounds as you want. After each game, press \"Play Again\" to get a new word instantly."
+                },
+                {
+                    "q": "What languages can I play Wordle Unlimited in?",
+                    "a": "Wordle Unlimited is available in over 80 languages at wordle.global, including English, Spanish, German, Finnish, Arabic, French, Italian, Portuguese, and many more."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "What is Speed Streak in {langName}?",
+                    "a": "Speed Streak is a timed Wordle mode in {langName}. You start with 3 minutes on the clock and solve as many words as you can. Solve a word quickly to earn bonus time."
+                },
+                {
+                    "q": "How does scoring work?",
+                    "a": "You earn points for each word solved. Fewer guesses and faster solves give more points. Build a combo by solving words in a row without failing — up to a 3x multiplier."
+                },
+                {
+                    "q": "What happens when the timer runs out?",
+                    "a": "The game ends and you see your final score, total words solved, max combo, and average guesses. You can play again immediately."
+                },
+                {
+                    "q": "Is Speed Streak free?",
+                    "a": "Yes. Speed Streak is completely free in all 80+ languages. No account or download required."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "What is {modeName} in {langName}?",
+                    "a": "{modeName} is a multi-board Wordle variant in {langName}. You solve {boardCount} Wordle boards at the same time using {maxGuesses} guesses. Each guess is entered on all unsolved boards simultaneously."
+                },
+                {
+                    "q": "How many guesses do I get in {modeName}?",
+                    "a": "You get {maxGuesses} guesses to solve all {boardCount} boards. Once a board is solved, it freezes and you can focus on the remaining boards."
+                },
+                {
+                    "q": "What strategy works best for {modeName}?",
+                    "a": "Start with words that use common letters to gather information on all {boardCount} boards at once. Pay attention to the split-color keyboard — it shows which letters are correct on which boards."
+                },
+                {
+                    "q": "Is {modeName} free?",
+                    "a": "Yes. {modeName} is completely free in all 80+ languages. No account or download required. Play as many rounds as you want."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Type a word",
+                "text": "Enter a valid 5-letter word in {langName} using the on-screen keyboard or your physical keyboard, then press Enter."
+            },
+            {
+                "name": "Read the clues",
+                "text": "Green tiles mean the letter is correct and in the right spot. Yellow means the letter is in the word but in the wrong position. Gray means the letter is not in the word."
+            },
+            {
+                "name": "Solve in 6 tries",
+                "text": "Use the color clues to narrow down the word. You have 6 guesses total. After the puzzle, see your stats and share your result."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Start a game",
+                    "text": "Visit wordle.global/{lang}/unlimited to start playing Wordle Unlimited in {langName}. A random 5-letter word is chosen for you."
+                },
+                {
+                    "name": "Guess the word",
+                    "text": "Type a valid 5-letter word and press Enter. Green tiles mean the letter is correct and in the right spot. Yellow means the letter is in the word but in the wrong spot. Gray means the letter is not in the word."
+                },
+                {
+                    "name": "Play again instantly",
+                    "text": "After solving the word (or using all 6 guesses), press \"Play Again\" to get a new word immediately. No waiting for tomorrow."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Start the timer",
+                    "text": "Visit wordle.global/{lang}/speed and press Start. You begin with 3 minutes on the clock."
+                },
+                {
+                    "name": "Solve words quickly",
+                    "text": "Each word you solve earns bonus time (+10s to +60s depending on how few guesses you used). Failed words cost you 30 seconds."
+                },
+                {
+                    "name": "Build your combo",
+                    "text": "Solve words consecutively to build a combo multiplier (up to 3x). The combo breaks if you fail a word. Try to beat your high score."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Start a game",
+                    "text": "Visit wordle.global/{lang}/{modeName} to play {modeName} in {langName}. {boardCount} boards appear with different hidden words."
+                },
+                {
+                    "name": "Guess across all boards",
+                    "text": "Type a 5-letter word and press Enter. Your guess appears on all {boardCount} boards at once. Each board shows its own color clues (green, yellow, gray)."
+                },
+                {
+                    "name": "Solve all {boardCount} boards",
+                    "text": "Solved boards freeze in place. Use the split-color keyboard to track which letters work on which boards. Solve all {boardCount} within {maxGuesses} guesses to win."
+                }
+            ]
+        }
     }
 }

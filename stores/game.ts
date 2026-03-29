@@ -1396,6 +1396,7 @@ export const useGameStore = defineStore('game', () => {
     function loadDefinitionAndImage(word: string, langCode: string, dayIdx?: number): void {
         todayDefinitionLoading.value = true;
         todayImageLoading.value = true;
+        todayDefinition.value = null; // clear previous to avoid showing stale definition
 
         const isDaily = gameConfig.value.playType === 'daily';
         const { fetchDefinition } = useDefinitions();
@@ -1407,7 +1408,7 @@ export const useGameStore = defineStore('game', () => {
                         word: def.word,
                         definition: def.definitionNative || def.definition,
                         partOfSpeech: def.partOfSpeech,
-                        url: dayIdx ? `/${langCode}/word/${dayIdx}` : undefined,
+                        url: dayIdx != null ? `/${langCode}/word/${dayIdx}` : undefined,
                     };
                 }
             })
@@ -1416,7 +1417,7 @@ export const useGameStore = defineStore('game', () => {
             });
 
         // Load word image — only for daily modes (images are pre-generated per day)
-        if (isDaily && dayIdx) {
+        if (isDaily && dayIdx != null) {
             const imgUrl = `/api/${langCode}/word-image/${encodeURIComponent(word)}?day_idx=${dayIdx}`;
             const img = new Image();
             img.onload = () => {

@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick } from 'vue';
+import { ref, watch, nextTick, onBeforeUnmount } from 'vue';
 import { Flame } from 'lucide-vue-next';
 
 const props = defineProps<{
@@ -54,19 +54,26 @@ const frozen = ref(false);
 const prevStreak = ref(0);
 
 // When streak drops to 0 from a positive value, show frozen state briefly
+let frozenTimer: ReturnType<typeof setTimeout> | null = null;
+
 watch(
     () => props.streak,
     (newVal, oldVal) => {
         if (oldVal > 0 && newVal === 0) {
             prevStreak.value = oldVal;
             frozen.value = true;
-            // Clear frozen state after 5 seconds
-            setTimeout(() => {
+            if (frozenTimer) clearTimeout(frozenTimer);
+            frozenTimer = setTimeout(() => {
                 frozen.value = false;
+                frozenTimer = null;
             }, 5000);
         }
     }
 );
+
+onBeforeUnmount(() => {
+    if (frozenTimer) clearTimeout(frozenTimer);
+});
 
 watch(
     () => props.justWon,
