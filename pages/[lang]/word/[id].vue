@@ -24,6 +24,10 @@ const word = d.word;
 const definition = d.definition;
 const wordStats = d.word_stats;
 
+// UI labels — langStore may not be initialized on this page, so provide defaults
+const ui = computed(() => langStore.config?.ui || {});
+const label = (key: string, fallback: string) => (ui.value as any)?.[key] || fallback;
+
 // Format date
 function formatDateLong(dateStr: string | null): string {
     if (!dateStr) return '';
@@ -42,12 +46,12 @@ const wordDate = formatDateLong(d.word_date);
 const defText = definition?.definition || '';
 const posText = definition?.part_of_speech ? definition.part_of_speech + ': ' : '';
 const titleStr = word
-    ? `Wordle ${langNameNative} #${dayIdx} \u2014 ${word.toUpperCase()}`
-    : `Wordle ${langNameNative} #${dayIdx}`;
+    ? `Wordle #${dayIdx} \u2014 ${wordDate} \u2014 ${word.toUpperCase()} | ${d.lang_name} Answer`
+    : `Wordle ${langNameNative} #${dayIdx} \u2014 ${wordDate || 'Coming soon'}`;
 const descriptionStr = word
     ? defText
-        ? `The Wordle word for ${d.lang_name} #${dayIdx} (${wordDate}) was ${word.toUpperCase()}. ${posText}${defText}`
-        : `The Wordle word for ${d.lang_name} #${dayIdx} (${wordDate}) was ${word.toUpperCase()}. Can you guess it in 6 tries?`
+        ? `The Wordle ${d.lang_name} answer for ${wordDate} (#${dayIdx}) was ${word.toUpperCase()}. ${posText}${defText}`
+        : `The Wordle ${d.lang_name} answer for ${wordDate} (#${dayIdx}) was ${word.toUpperCase()}. Can you guess it in 6 tries?`
     : `Wordle ${langNameNative} word #${dayIdx}. Coming soon.`;
 
 useSeoMeta({
@@ -140,7 +144,7 @@ function distCount(n: number): number {
 }
 
 function posLabel(pos: string | undefined | null): string {
-    return translatePos(pos, langStore.config?.ui);
+    return translatePos(pos, ui.value);
 }
 
 // Share button
@@ -325,15 +329,12 @@ onMounted(() => {
             <!-- Today's word: not yet played -->
             <template v-else-if="d.is_today && !todayRevealed">
                 <div class="text-center py-8">
-                    <p class="text-lg font-bold text-correct mb-2">
-                        {{ langStore.config?.ui?.todays_word_reveal }}
-                    </p>
                     <p class="text-sm text-muted mb-4">Play today's game to reveal this word.</p>
                     <NuxtLink
                         :to="`/${lang}`"
                         class="inline-block py-2.5 px-6 text-white font-semibold rounded-lg shadow-md bg-correct hover:opacity-90 transition-colors"
                     >
-                        {{ langStore.config?.ui?.play_now }}
+                        Play Today's Wordle
                     </NuxtLink>
                 </div>
             </template>
@@ -361,7 +362,7 @@ onMounted(() => {
                 >
                     <div class="flex items-center gap-2 mb-1">
                         <span class="text-xs font-semibold uppercase tracking-wide text-muted">
-                            {{ langStore.config?.ui?.definition }}
+                            {{ label('definition', 'Definition') }}
                         </span>
                         <span
                             v-if="(todayRevealedDef || definition)?.part_of_speech"
@@ -427,7 +428,7 @@ onMounted(() => {
                 >
                     <div class="flex items-center gap-2 mb-1">
                         <span class="text-xs font-semibold uppercase tracking-wide text-muted">
-                            {{ langStore.config?.ui?.definition }}
+                            {{ label('definition', 'Definition') }}
                         </span>
                         <span v-if="definition.part_of_speech" class="text-xs text-muted italic">
                             {{ posLabel(definition.part_of_speech) }}
@@ -451,7 +452,7 @@ onMounted(() => {
                 <div v-else-if="showAsyncDef && asyncDef" class="bg-paper-warm rounded-lg p-4 mb-4">
                     <div class="flex items-center gap-2 mb-1">
                         <span class="text-xs font-semibold uppercase tracking-wide text-muted">
-                            {{ langStore.config?.ui?.definition }}
+                            {{ label('definition', 'Definition') }}
                         </span>
                         <span v-if="asyncDef.part_of_speech" class="text-xs text-muted italic">
                             {{ posLabel(asyncDef.part_of_speech) }}
@@ -504,13 +505,13 @@ onMounted(() => {
                     <h3
                         class="text-xs font-semibold uppercase tracking-wide text-muted mb-2 text-center"
                     >
-                        {{ langStore.config?.ui?.community_stats }}
+                        {{ label('community_stats', 'Community Stats') }}
                     </h3>
                     <div class="grid grid-cols-3 gap-2 text-center mb-3">
                         <div>
                             <p class="text-lg font-bold">{{ wordStats.total }}</p>
                             <p class="text-[10px] text-muted">
-                                {{ langStore.config?.ui?.players }}
+                                {{ label('players', 'Players') }}
                             </p>
                         </div>
                         <div>
@@ -600,7 +601,7 @@ onMounted(() => {
                     rel="noopener noreferrer"
                     class="text-xs text-muted hover:text-ink"
                 >
-                    {{ langStore.config?.ui?.report_bad_word }}
+                    {{ label('report_bad_word', 'Report bad word') }}
                 </a>
             </p>
         </div>

@@ -44,7 +44,6 @@ export const GAME_MODES_UI: GameModeUI[] = [
         description: 'One word per day. 6 guesses. The classic.',
         routeSuffix: '',
         enabled: true,
-        badge: 'CLASSIC',
     },
     {
         id: 'unlimited',

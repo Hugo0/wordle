@@ -60,9 +60,10 @@ function miniRows(boardIndex: number) {
         if (!classes || !board.tilesVisual[r]?.some((t) => t !== '')) continue;
 
         const colors = classes.map((cls) => {
-            if (cls.includes('correct') && !cls.includes('semi')) return 'mc-correct';
-            if (cls.includes('semicorrect')) return 'mc-semi';
+            // Check incorrect FIRST — "incorrect" contains "correct" as substring
             if (cls.includes('incorrect')) return 'mc-incorrect';
+            if (cls.includes('semicorrect')) return 'mc-semi';
+            if (cls.includes('correct')) return 'mc-correct';
             return 'mc-empty';
         });
         rows.push({ index: r, colors });

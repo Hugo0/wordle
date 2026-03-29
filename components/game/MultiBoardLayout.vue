@@ -137,15 +137,19 @@ const gridStyle = computed(() => {
 
     const tileW = (availW - hGaps) / totalTileCols;
 
+    // Max tile size caps prevent boards from being too large on wide screens.
+    // Scales down with board count: fewer boards → bigger tiles allowed.
+    const maxTile = boardCount.value <= 4 ? 48 : boardCount.value <= 8 ? 36 : 28;
+
     // For non-scrollable (dordle/quordle): constrain by both width and height
     let tileSize: number;
     if (!layout.value.scrollable) {
         const toolbarH = boardCount.value > 4 ? 44 : 0;
         const availH = containerHeight.value - toolbarH - 8;
         const tileH = (availH - vGaps) / totalTileRows;
-        tileSize = Math.min(tileW, tileH);
+        tileSize = Math.min(tileW, tileH, maxTile);
     } else {
-        tileSize = tileW;
+        tileSize = Math.min(tileW, maxTile);
     }
 
     tileSize = Math.max(tileSize, 12);

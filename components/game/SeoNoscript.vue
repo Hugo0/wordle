@@ -187,6 +187,24 @@ const allLanguages = computed(() => {
         })
         .slice(0, 18);
 });
+
+// Recent words archive (classic mode only — creates daily-fresh internal links)
+interface ArchiveWord {
+    day_idx: number;
+    word: string | null;
+    date: string;
+    definition?: { definition?: string; part_of_speech?: string } | null;
+    stats?: { total: number; wins: number } | null;
+    is_today: boolean;
+}
+const { data: archiveData } = isClassic
+    ? await useFetch<{ words: ArchiveWord[] }>(`/api/${props.lang}/words?page=1&per_page=6`)
+    : { data: ref(null) };
+
+const recentWords = computed(() => {
+    if (!archiveData?.value?.words) return [];
+    return archiveData.value.words.filter((w) => !w.is_today && w.word).slice(0, 5);
+});
 </script>
 
 <template>
@@ -480,6 +498,45 @@ const allLanguages = computed(() => {
                     </details>
                 </div>
             </section>
+
+            <!-- ─── Section 8: Recent Words Archive (classic only) ─── -->
+            <template v-if="isClassic && recentWords.length">
+                <div class="editorial-rule" />
+                <section class="space-y-4">
+                    <h3 class="heading-section text-xl text-ink text-center">Recent Words</h3>
+                    <div class="border border-rule divide-y divide-rule">
+                        <a
+                            v-for="w in recentWords"
+                            :key="w.day_idx"
+                            :href="`/${lang}/word/${w.day_idx}`"
+                            class="flex items-center justify-between px-5 py-3 hover:bg-paper-warm transition-colors"
+                        >
+                            <div class="flex items-center gap-3">
+                                <span
+                                    class="font-display font-bold text-base text-ink tracking-wider"
+                                    >{{ w.word?.toUpperCase() }}</span
+                                >
+                                <span
+                                    v-if="w.definition?.part_of_speech"
+                                    class="text-xs text-muted italic"
+                                    >{{ w.definition.part_of_speech }}</span
+                                >
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <div class="mono-label">#{{ w.day_idx }}</div>
+                                <div class="text-xs text-muted">{{ w.date }}</div>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="text-center">
+                        <a
+                            :href="`/${lang}/words`"
+                            class="text-sm text-muted underline hover:text-ink transition-colors"
+                            >View all words</a
+                        >
+                    </p>
+                </section>
+            </template>
 
             <!-- ─── Footer ─── -->
             <footer class="text-center space-y-2 pt-4">

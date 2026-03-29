@@ -43,6 +43,13 @@ export default defineEventHandler((event) => {
         }
     }
 
+    // Strategy pages (best starting words)
+    for (const lc of Object.keys(data.languages).sort()) {
+        urls.push(
+            `  <url><loc>${base}/${lc}/best-starting-words</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>`
+        );
+    }
+
     // Words hub pages (paginated)
     for (const lc of Object.keys(data.languages).sort()) {
         for (let page = 1; page <= hubTotalPages; page++) {
