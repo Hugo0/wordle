@@ -687,24 +687,7 @@ export const useGameStore = defineStore('game', () => {
                     firstGuessFired = true;
                 }
 
-                // Track time between guesses
-                if (lastGuessTime && activeRow.value > 0) {
-                    const secondsSinceLast = Math.floor((Date.now() - lastGuessTime) / 1000);
-                    analytics.trackGuessTime(
-                        lang.languageCode,
-                        activeRow.value + 1,
-                        secondsSinceLast
-                    );
-                }
                 lastGuessTime = Date.now();
-
-                // Track valid guess submission
-                analytics.trackGuessSubmit(
-                    lang.languageCode,
-                    activeRow.value + 1,
-                    true,
-                    gameConfig.value.mode
-                );
 
                 // Update tiles to show canonical form (with diacritics)
                 if (row && canonicalWord !== typedWord) {
@@ -797,12 +780,8 @@ export const useGameStore = defineStore('game', () => {
                     attempt_number: activeRow.value + 1,
                     word: typedWord,
                 });
-                analytics.trackGuessSubmit(
-                    lang.languageCode,
-                    activeRow.value + 1,
-                    false,
-                    gameConfig.value.mode
-                );
+                // guess_submit is in POSTHOG_SKIP_EVENTS — invalid count is
+                // aggregated into game_complete via frustration state
             }
         } else if (['Backspace', 'Delete', '⌫'].includes(key) && activeCell.value > 0) {
             const rowIdx = activeRow.value;
@@ -983,7 +962,6 @@ export const useGameStore = defineStore('game', () => {
             if (won) {
                 analytics.trackStreakMilestone(lang.languageCode, statsStore.stats.current_streak);
             }
-            analytics.updateUserProperties(statsStore.gameResults);
         }
     }
 
@@ -2161,6 +2139,9 @@ export const useGameStore = defineStore('game', () => {
             sound.timeUp();
             haptic.error();
         }
+
+        // Reset frustration counters so they don't leak into the next non-speed game
+        analytics.resetFrustrationState();
 
         // Analytics: single game_complete with speed-specific extras
         const lang = useLanguageStore();

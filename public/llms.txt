@@ -1,0 +1,52 @@
+# Wordle Global
+
+> Play Wordle in 80+ languages. Free, no account needed.
+
+Wordle Global is a multilingual word-guessing game at https://wordle.global. Players guess a hidden 5-letter word in 6 tries. After each guess, tiles turn green (correct letter, correct position), yellow (correct letter, wrong position), or gray (letter not in word).
+
+## Game Modes
+
+- **Daily Wordle**: One puzzle per day per language. Track your streak. URL: `/{lang}/`
+- **Unlimited**: Play as many games as you want with random words. No waiting. URL: `/{lang}/unlimited`
+- **Speed Streak**: Solve words against a timer with combo scoring. URL: `/{lang}/speed`
+- **Dordle**: Solve 2 boards simultaneously with 7 guesses. URL: `/{lang}/dordle`
+- **Tridle**: Solve 3 boards simultaneously with 8 guesses. URL: `/{lang}/tridle`
+- **Quordle**: Solve 4 boards simultaneously with 9 guesses. URL: `/{lang}/quordle`
+
+## Languages
+
+80+ languages are supported. Replace `{lang}` in any URL with a language code:
+
+ar (Arabic), az (Azerbaijani), bg (Bulgarian), bn (Bengali), br (Breton), ca (Catalan), ckb (Kurdish Sorani), cs (Czech), da (Danish), de (German), el (Greek), en (English), eo (Esperanto), es (Spanish), et (Estonian), eu (Basque), fa (Persian), fi (Finnish), fo (Faroese), fr (French), fur (Friulian), fy (Frisian), ga (Irish), gd (Scottish Gaelic), gl (Galician), ha (Hausa), he (Hebrew), hi (Hindi), hr (Croatian), hu (Hungarian), hy (Armenian), hyw (Western Armenian), ia (Interlingua), id (Indonesian), ie (Interlingue), is (Icelandic), it (Italian), ja (Japanese), ka (Georgian), ko (Korean), la (Latin), lb (Luxembourgish), lt (Lithuanian), ltg (Latgalian), lv (Latvian), mi (Maori), mk (Macedonian), mn (Mongolian), mr (Marathi), ms (Malay), nb (Norwegian Bokmal), nds (Low German), ne (Nepali), nl (Dutch), nn (Norwegian Nynorsk), oc (Occitan), pa (Punjabi), pau (Palauan), pl (Polish), pt (Portuguese), qya (Quenya), ro (Romanian), ru (Russian), rw (Kinyarwanda), sk (Slovak), sl (Slovenian), sq (Albanian), sr (Serbian), sv (Swedish), sw (Swahili), tk (Turkmen), tl (Filipino), tlh (Klingon), tr (Turkish), uk (Ukrainian), ur (Urdu), uz (Uzbek), vi (Vietnamese), yo (Yoruba)
+
+## Features
+
+- LLM-generated word definitions after each game (powered by GPT-5.2)
+- AI-generated word illustrations (DALL-E)
+- Community percentile stats (see how you compare)
+- Dark mode, high contrast mode, hard mode
+- PWA (installable, works offline)
+- Right-to-left support (Arabic, Hebrew, Persian, Kurdish, Urdu)
+- No ads during gameplay, no account required
+
+## URL Structure
+
+- Homepage: https://wordle.global/
+- Language page: https://wordle.global/{lang}/
+- Game modes: https://wordle.global/{lang}/{mode}/
+- Word archive: https://wordle.global/{lang}/word/{word_id}/
+
+## Example URLs
+
+- English daily: https://wordle.global/en
+- English unlimited: https://wordle.global/en/unlimited
+- Spanish unlimited: https://wordle.global/es/unlimited
+- Finnish daily: https://wordle.global/fi
+- Arabic unlimited: https://wordle.global/ar/unlimited
+- German Quordle: https://wordle.global/de/quordle
+
+## Contact
+
+- Website: https://wordle.global
+- Source: https://github.com/Hugo0/wordle
+- License: PolyForm Noncommercial 1.0.0

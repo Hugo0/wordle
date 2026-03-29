@@ -252,6 +252,9 @@ export function useAnalytics() {
     // POSTHOG USER IDENTIFICATION
     // ========================================================================
 
+    // Cache isStandalone() — can't change within a session
+    const _isStandalone = import.meta.client ? isStandalone() : false;
+
     /** Single-pass computation of user properties from game results */
     const computeUserProperties = (
         gameResults: Record<string, { won: boolean }[]>
@@ -322,22 +325,13 @@ export function useAnalytics() {
     };
 
     /**
-     * Update person properties after a game completes.
+     * Compute user properties without calling identify/setPersonProperties.
+     * Used when the user is already identified this session.
      */
-    const updateUserProperties = (gameResults: Record<string, { won: boolean }[]>): void => {
-        if (!import.meta.client) return;
-        try {
-            const props = computeUserProperties(gameResults);
-            getPostHog()?.setPersonProperties({
-                total_games_played: props.totalGames,
-                total_wins: props.totalWins,
-                total_languages_played: props.languagesPlayed.length,
-                preferred_language: props.preferredLanguage,
-                languages_played: props.languagesPlayed,
-            });
-        } catch {
-            // Silently fail
-        }
+    const computeUserPropertiesOnly = (
+        gameResults: Record<string, { won: boolean }[]>
+    ): UserProperties => {
+        return computeUserProperties(gameResults);
     };
 
     // ========================================================================
@@ -358,7 +352,7 @@ export function useAnalytics() {
             total_games_played: params.total_games_played,
             total_languages_played: params.total_languages_played,
             user_age_days: params.user_age_days,
-            is_pwa: isStandalone(),
+            is_pwa: _isStandalone,
         });
     };
 
@@ -378,7 +372,7 @@ export function useAnalytics() {
             max_consecutive_invalid: params.max_consecutive_invalid ?? 0,
             had_frustration: params.had_frustration ?? false,
             time_to_complete_seconds: params.time_to_complete_seconds,
-            is_pwa: isStandalone(),
+            is_pwa: _isStandalone,
             // Speed mode extras (undefined fields are omitted by PostHog)
             words_solved: params.words_solved,
             words_failed: params.words_failed,
@@ -426,7 +420,7 @@ export function useAnalytics() {
     const trackGamePageReady = (language: string): void => {
         track('game_page_ready', {
             language,
-            is_pwa: isStandalone(),
+            is_pwa: _isStandalone,
             platform: getPlatform(),
             referrer: getReferrer(),
         });
@@ -440,7 +434,7 @@ export function useAnalytics() {
         track('first_guess_delay', {
             language,
             delay_seconds: delaySeconds,
-            is_pwa: isStandalone(),
+            is_pwa: _isStandalone,
         });
     };
 
@@ -479,7 +473,9 @@ export function useAnalytics() {
             days_since_last: daysSinceLast,
             current_streak: currentStreak,
             total_languages_played: totalLanguagesPlayed,
-            is_pwa: isStandalone(),
+            is_pwa: _isStandalone,
+            is_re_engagement: daysSinceLast >= 7,
+            referrer: daysSinceLast >= 7 ? getReferrer() : undefined,
         });
     };
 
@@ -493,7 +489,7 @@ export function useAnalytics() {
             track('streak_milestone', {
                 language,
                 streak_count: streakCount,
-                is_pwa: isStandalone(),
+                is_pwa: _isStandalone,
             });
         }
     };
@@ -523,7 +519,7 @@ export function useAnalytics() {
             language,
             days_absent: daysAbsent,
             referrer: getReferrer(),
-            is_pwa: isStandalone(),
+            is_pwa: _isStandalone,
         });
     };
 
@@ -843,7 +839,7 @@ export function useAnalytics() {
     const trackHomepageView = (): void => {
         track('homepage_view', {
             referrer: getReferrer(),
-            is_pwa: isStandalone(),
+            is_pwa: _isStandalone,
             platform: getPlatform(),
         });
     };
@@ -1010,7 +1006,7 @@ export function useAnalytics() {
         initAbandonTracking,
         // PostHog user identification
         identifyUser,
-        updateUserProperties,
+        computeUserPropertiesOnly,
         // Utilities
         daysSince,
     };

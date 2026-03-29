@@ -1,50 +1,9 @@
 <script setup lang="ts">
-/**
- * Quordle Mode Page — /<lang>/quordle
- *
- * Four boards, 9 guesses. Same guess goes to all boards.
- * Free play — random words each game, play again anytime.
- */
-import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
-definePageMeta({
-    layout: 'game',
-    key: (route) => `${route.params.lang}-quordle`,
-});
+definePageMeta({ layout: 'game', key: (route) => `${route.params.lang}-quordle` });
 
-const route = useRoute();
-const lang = route.params.lang as string;
-
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
-if (error.value || !gameData.value) {
-    throw createError({ statusCode: 404, message: 'Language not found' });
-}
-
-const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, config } = useGamePage(
-    gameData,
-    lang
-);
-
-useGameModeSeo({
-    lang,
-    modeSlug: 'quordle',
-    modeLabel: 'Quordle',
-    description: `Play Quordle in ${config.value?.name}. Solve 4 Wordle boards at once with 9 guesses. Free, no account needed.`,
-    langStore,
-    config: config.value,
-});
-const { data: allLangs } = await useFetch('/api/languages');
-if (allLangs.value?.language_codes) useHreflang(allLangs.value.language_codes, '/quordle');
-
-// Use curated daily-tier words for better quality
-const wordList = gameData.value?.daily_words?.length
-    ? gameData.value.daily_words
-    : (gameData.value?.word_list ?? []);
-const { multiBoardRef, startNewGame } = useMultiBoardPage(
-    'quordle',
-    wordList,
-    GAME_MODE_CONFIG.quordle.boardCount
-);
+const { lang, modeDef, config, sidebarOpen, toggleSidebar, closeSidebar, multiBoardRef, startNewGame, gameData } =
+    await useMultiBoardModePage('quordle');
 </script>
 
 <template>
@@ -52,10 +11,10 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
         :lang="lang"
         :language-name="config?.name_native || config?.name || lang"
         current-mode="quordle"
-        :title="GAME_MODE_CONFIG.quordle.label"
+        :title="modeDef.label"
         :subtitle="config?.name_native || lang"
         :sidebar-open="sidebarOpen"
-        max-width="4xl"
+        :max-width="modeDef.shellMaxWidth || 'lg'"
         :visible="!!gameData"
         @toggle-sidebar="toggleSidebar"
         @close-sidebar="closeSidebar"
@@ -65,31 +24,10 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
     </GamePageShell>
 
     <noscript data-allow-mismatch>
-        <div
-            style="
-                max-width: 600px;
-                margin: 40px auto;
-                padding: 20px;
-                font-family: system-ui, sans-serif;
-                color: #333;
-            "
-        >
-            <h1>Wordle {{ config?.name_native }} — Quordle</h1>
-            <p>
-                Play Quordle in {{ config?.name }}. Solve 4 Wordle boards at once with 9 guesses.
-                Free, no account needed.
-            </p>
-            <p>
-                <a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a>
-            </p>
-            <p>
-                Other modes: <a :href="`/${lang}/unlimited`">Unlimited</a> ·
-                <a :href="`/${lang}/speed`">Speed Streak</a> ·
-                <a :href="`/${lang}/dordle`">Dordle</a>
-            </p>
-            <p>
-                <a href="https://wordle.global/">Play Wordle in 80+ languages at wordle.global</a>
-            </p>
+        <div style="max-width:600px;margin:40px auto;padding:20px;font-family:system-ui,sans-serif;color:#333;">
+            <h1>Wordle {{ config?.name_native }} — {{ modeDef.label }}</h1>
+            <p>Play {{ modeDef.label }} in {{ config?.name }}. Solve {{ modeDef.boardCount }} boards at once with {{ modeDef.maxGuesses }} guesses.</p>
+            <p><a :href="`/${lang}`">Play the daily Wordle in {{ config?.name }}</a></p>
         </div>
     </noscript>
 </template>
