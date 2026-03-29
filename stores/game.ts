@@ -12,7 +12,8 @@
  * change the save key format (language code from URL path) or remove the
  * tile_colors derivation without a migration path.
  */
-import { ref, computed, watch, triggerRef, pauseTracking, resetTracking } from 'vue';
+import { ref, computed, watch, triggerRef } from 'vue';
+import { pauseTracking, resetTracking } from '@vue/reactivity';
 import { defineStore } from 'pinia';
 import { useLanguageStore } from '~/stores/language';
 import { useSettingsStore } from '~/stores/settings';
@@ -453,24 +454,22 @@ export const useGameStore = defineStore('game', () => {
         const rowIdx = activeRow.value;
 
         if (isMultiBoard.value) {
-            // Batch all 32-board mutations: pause reactive tracking so Vue
-            // doesn't fire 192 individual reactive updates. One flush at end.
-            pauseTracking();
+            // Pause reactive tracking so Vue doesn't fire per-board updates.
+            // All 32 boards mutated, then one triggerRef at the end.
             const skipColors = boards.value.length > 4;
+            const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
+            const isFull = newCell === WORD_LENGTH;
+            pauseTracking();
             for (const board of boards.value) {
                 if (board.solved) continue;
                 const row = board.tiles[rowIdx];
                 const rowClasses = board.tileClasses[rowIdx];
                 if (row && rowClasses) {
-                    row.splice(cellIdx, 1, displayChar);
-                    rowClasses.splice(cellIdx, 1, ACTIVE_TILE_CLASS);
-                    if (!skipColors) board.tileColors[rowIdx]?.splice(cellIdx, 1, 'active');
+                    row[cellIdx] = displayChar;
+                    rowClasses[cellIdx] = ACTIVE_TILE_CLASS;
+                    if (!skipColors && board.tileColors[rowIdx])
+                        board.tileColors[rowIdx]![cellIdx] = 'active';
                 }
-            }
-            const newCell = Math.min(activeCell.value + 1, WORD_LENGTH);
-            const isFull = newCell === WORD_LENGTH;
-            for (const board of boards.value) {
-                if (board.solved) continue;
                 board.activeCell = newCell;
                 board.fullWordInputted = isFull;
             }
@@ -795,7 +794,6 @@ export const useGameStore = defineStore('game', () => {
             const rowIdx = activeRow.value;
 
             if (isMultiBoard.value) {
-                // Batch all mutations — one reactive flush at end
                 const newCell = activeCell.value - 1;
                 const skipColors = boards.value.length > 4;
                 pauseTracking();
@@ -806,9 +804,10 @@ export const useGameStore = defineStore('game', () => {
                     const row = board.tiles[rowIdx];
                     const rowClasses = board.tileClasses[rowIdx];
                     if (row && rowClasses) {
-                        row.splice(newCell, 1, '');
-                        rowClasses.splice(newCell, 1, DEFAULT_TILE_CLASS);
-                        if (!skipColors) board.tileColors[rowIdx]?.splice(newCell, 1, 'empty');
+                        row[newCell] = '';
+                        rowClasses[newCell] = DEFAULT_TILE_CLASS;
+                        if (!skipColors && board.tileColors[rowIdx])
+                            board.tileColors[rowIdx]![newCell] = 'empty';
                     }
                 }
                 resetTracking();

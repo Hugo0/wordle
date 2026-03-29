@@ -218,5 +218,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Yadda ake wasa",
+        "tips_strategy": "Shawarwari da dabara",
+        "more_modes": "Ƙarin hanyoyin wasa",
+        "play_in_languages": "Yi wasa cikin 80+ harsuna",
+        "play_in_languages_sub": "Dukkan harsuna kyauta ne. Ba a buƙatar asusu.",
+        "why_wordle_global": "Me ya sa Wordle Global",
+        "faq_title": "Tambayoyi da ake yi sau da yawa",
+        "browse_all_languages": "Duba 80+ harsuna",
+        "recent_words": "Kalmomi na baya-bayan nan",
+        "view_all_words": "Duba dukkan kalmomi",
+        "footer": "wordle.global — wasannin kalma na yau da kullum kyauta cikin 80+ harsuna",
+        "tile_correct": "yana cikin kalmar kuma a matsayi daidai.",
+        "tile_semicorrect": "yana cikin kalmar amma a matsayi kuskure.",
+        "tile_incorrect": "ba ya cikin kalmar ba.",
+        "stat_players": "Masu wasa",
+        "stat_guesses": "Hasashe",
+        "stat_languages": "Harsuna",
+        "stat_modes": "Hanyoyin wasa",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ harsuna",
+                "desc": "Daga Larabci zuwa Yoruba. Wordle mafi girma da harsuna da yawa."
+            },
+            {
+                "key": "definitions",
+                "title": "Ma'anonin kalmomi",
+                "desc": "Koyi ma'anar kowace kalma bayan wasa."
+            },
+            {
+                "key": "word_art",
+                "title": "Fasahar kalma ta musamman",
+                "desc": "Kowace kalma tana da hoton ta."
+            },
+            {
+                "key": "themes",
+                "title": "Yanayin duhu da jigogi",
+                "desc": "Haske, duhu da babban bambanci."
+            },
+            {
+                "key": "pwa",
+                "title": "Yana aiki ko'ina",
+                "desc": "PWA — kowace na'ura. Ba tare da yanar gizo ba."
+            },
+            {
+                "key": "free",
+                "title": "Kyauta har abada",
+                "desc": "Ba asusu. Ba biyan kuɗi. Kawai yi wasa."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Fara da wasulla",
+                "text": "CRANE ko ADIEU suna gwada haruffa na yau da kullum cikin sauri."
+            },
+            {
+                "title": "Yi amfani da abin da ka sani",
+                "text": "Kore tsayayye. Rawaya motsa. Toka cire."
+            },
+            {
+                "title": "Tsarin yau da kullum",
+                "text": "Kowace harshe tana da tsarinta."
+            },
+            {
+                "title": "Cire",
+                "text": "Kalma ta biyu ta gwada sababbin haruffa."
+            },
+            {
+                "title": "Haruffa biyu",
+                "text": "Idan bai dace ba, yi tunani game da harafin da aka maimaita."
+            },
+            {
+                "title": "Yanayin wuya",
+                "text": "Yana tilasta ka yi amfani da alamomin da aka tabbatar."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Haruffa masu yawa suna ba da kyakkyawan dama."
+            },
+            {
+                "title": "Kada ka yi tunani sosai",
+                "text": "Speed Streak yana ba da lada ga hankali."
+            },
+            {
+                "title": "Kare combo",
+                "text": "Kalmar da ta kasa tana karya mai ninkaya."
+            },
+            {
+                "title": "2-3 hasashe",
+                "text": "Bonus lokaci mai girma (+60s ga 1)."
+            },
+            {
+                "title": "Ƙarshen kalmomi",
+                "text": "Gane tsarin da aka maimaita yana ajiye daƙiƙoƙi."
+            },
+            {
+                "title": "Natsu",
+                "text": "Agogon yana hanzarta kowane kalmomi 3."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Faɗaɗa",
+                "text": "Haruffa na yau da kullum don alamomi a dukkan allunan."
+            },
+            {
+                "title": "Madannai raba",
+                "text": "Kore/toka a allunan daban yana rage zaɓuɓɓuka."
+            },
+            {
+                "title": "Allunan wuya",
+                "text": "Mai da hankali a allon da ba a sani ba."
+            },
+            {
+                "title": "Kada ka ɓata",
+                "text": "Na farko 2-3 don kalmomi masu bayani."
+            },
+            {
+                "title": "Haruffa iri ɗaya",
+                "text": "Alluna biyu da E rawaya? E a sabon matsayi."
+            },
+            {
+                "title": "Ajiye hasashe",
+                "text": "Ƙarin hasashe a ƙarshe yana yin bambanci."
+            }
+        ],
+        "mode_desc_classic": "Hasashe 6 don kalma ta haruffa 5. Yi amfani da alamomin launi.",
+        "mode_desc_unlimited": "Hasashe 6, haruffa 5. \"Sake wasa\" — ba iyaka ta yau da kullum.",
+        "mode_desc_speed": "Minti 3. Kowace kalma tana ba da lokaci (+60s ga 1, +10s ga 6). Kasa: 30s. Combo har 3x. Hanzari kowane 3.",
+        "mode_desc_multiboard": "{modeName}: alluna {boardCount}, hasashe {maxGuesses}. Hasashe a dukkan allunan. Da aka warware sun tsaya. Madannai raba.",
+        "faq": [
+            {
+                "q": "Yaya zan yi wasa Wordle a {langName}?",
+                "a": "wordle.global/{lang}. Hasashe 6, haruffa 5."
+            },
+            {
+                "q": "Sabuwa kowace rana?",
+                "a": "Eh. Kalma ɗaya ga kowa."
+            },
+            {
+                "q": "Kyauta?",
+                "a": "Eh. Dukkan hanyoyi a 80+ harsuna."
+            },
+            {
+                "q": "Fiye da sau ɗaya?",
+                "a": "Eh — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited a {langName}?",
+                    "a": "Yi wasa yadda kake so."
+                },
+                {
+                    "q": "Kyauta?",
+                    "a": "Eh."
+                },
+                {
+                    "q": "Jerin yau da kullum?",
+                    "a": "A'a. Ƙididdiga daban."
+                },
+                {
+                    "q": "Sau nawa?",
+                    "a": "Ba iyaka."
+                },
+                {
+                    "q": "Wane harsuna?",
+                    "a": "80+ harsuna."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak a {langName}?",
+                    "a": "Wordle da agogo. Minti 3."
+                },
+                {
+                    "q": "Maki?",
+                    "a": "Ƙaramin hasashe = ƙarin maki. 3x combo."
+                },
+                {
+                    "q": "Lokaci ya ƙare?",
+                    "a": "Wasan ya ƙare."
+                },
+                {
+                    "q": "Kyauta?",
+                    "a": "Eh. 80+ harsuna."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} a {langName}?",
+                    "a": "Alluna {boardCount}, hasashe {maxGuesses}."
+                },
+                {
+                    "q": "Hasashe nawa?",
+                    "a": "{maxGuesses} don alluna {boardCount}."
+                },
+                {
+                    "q": "Dabara?",
+                    "a": "Haruffa na yau da kullum. Madannai raba."
+                },
+                {
+                    "q": "Kyauta?",
+                    "a": "Eh. 80+ harsuna."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Rubuta kalma",
+                "text": "{langName}: haruffa 5, Enter."
+            },
+            {
+                "name": "Karanta alamomi",
+                "text": "Kore = daidai. Rawaya = kuskure. Toka = babu."
+            },
+            {
+                "name": "Warware a 6",
+                "text": "Alamomin launi. Hasashe 6."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Fara",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Hasashe",
+                    "text": "Haruffa 5, Enter."
+                },
+                {
+                    "name": "Sake",
+                    "text": "\"Sake wasa\"."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Agogo",
+                    "text": "wordle.global/{lang}/speed — minti 3."
+                },
+                {
+                    "name": "Sauri",
+                    "text": "Bonus lokaci (+10s zuwa +60s)."
+                },
+                {
+                    "name": "Combo",
+                    "text": "Mai ninkaya har 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Fara",
+                    "text": "wordle.global/{lang}/{modeName} — alluna {boardCount}."
+                },
+                {
+                    "name": "Dukkan alluna",
+                    "text": "Hasashe a alluna {boardCount}."
+                },
+                {
+                    "name": "Warware {boardCount}",
+                    "text": "Madannai raba. Hasashe {maxGuesses}."
+                }
+            ]
+        }
     }
 }

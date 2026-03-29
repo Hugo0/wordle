@@ -219,5 +219,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Necə oynamalı",
+        "tips_strategy": "Məsləhətlər və strategiya",
+        "more_modes": "Daha çox oyun rejimi",
+        "play_in_languages": "80+ dildə oynayın",
+        "play_in_languages_sub": "Bütün dillər pulsuzdur. Hesab lazım deyil.",
+        "why_wordle_global": "Niyə Wordle Global",
+        "faq_title": "Tez-tez verilən suallar",
+        "browse_all_languages": "Bütün 80+ dilə baxın",
+        "recent_words": "Son sözlər",
+        "view_all_words": "Bütün sözlərə bax",
+        "footer": "wordle.global — 80+ dildə pulsuz gündəlik söz oyunu",
+        "tile_correct": "sözdədir və düzgün yerdədir.",
+        "tile_semicorrect": "sözdədir, lakin yanlış yerdədir.",
+        "tile_incorrect": "sözdə yoxdur.",
+        "stat_players": "Oyunçular",
+        "stat_guesses": "Təxminlər",
+        "stat_languages": "Dillər",
+        "stat_modes": "Oyun rejimləri",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ dil",
+                "desc": "Ərəbcədən Yorubaya. Ən böyük çoxdilli Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Söz tərifləri",
+                "desc": "Hər sözün mənasını oyundan sonra öyrənin."
+            },
+            {
+                "key": "word_art",
+                "title": "Unikal söz sənəti",
+                "desc": "Hər söz xüsusi illüstrasiya ilə gəlir."
+            },
+            {
+                "key": "themes",
+                "title": "Qaranlıq rejim və mövzular",
+                "desc": "Açıq, tünd və yüksək kontrastlı rejimlər."
+            },
+            {
+                "key": "pwa",
+                "title": "Hər yerdə işləyir",
+                "desc": "PWA — istənilən cihaza quraşdırın. Oflayn işləyir."
+            },
+            {
+                "key": "free",
+                "title": "Həmişə pulsuz",
+                "desc": "Hesab lazım deyil. Ödəniş yoxdur. Sadəcə oynayın."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Sait-zəngin sözlə başlayın",
+                "text": "CRANE, STARE və ya ADIEU kimi sözlər yayılmış hərfləri tez yoxlayır."
+            },
+            {
+                "title": "Bildiklərinizi istifadə edin",
+                "text": "Yaşıl hərflər sabitdir. Sarılar köçürülməlidir. Bozlar silinib."
+            },
+            {
+                "title": "Ümumi nümunələri düşünün",
+                "text": "Hər dilin öz söz nümunələri var — onları öyrənin."
+            },
+            {
+                "title": "Aradan çıxarın",
+                "text": "İkinci sözünüz yeni hərfləri yoxlamalıdır."
+            },
+            {
+                "title": "Qoşa hərflərə diqqət",
+                "text": "İpucularınız uyğun gəlmirsə, təkrarlanan hərf düşünün."
+            },
+            {
+                "title": "Çətin rejimi istifadə edin",
+                "text": "Çətin rejim daha yaxşı vərdişlər yaradır."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE ilə başlayın",
+                "text": "Tez istifadə olunan hərflər sürətli həll üçün ən yaxşı şansı verir."
+            },
+            {
+                "title": "Çox düşünməyin",
+                "text": "Speed Streak intuisiyanı mükafatlandırır."
+            },
+            {
+                "title": "Kombonuzu qoruyun",
+                "text": "Uğursuz söz çarpanı sıfırlayır."
+            },
+            {
+                "title": "2-3 təxmində həll edin",
+                "text": "Sürətli həllər üçün zaman bonusu böyükdür."
+            },
+            {
+                "title": "Söz sonluqlarını öyrənin",
+                "text": "Nümunələri tanımaq saniyələr qazandırır."
+            },
+            {
+                "title": "Sakit olun",
+                "text": "Taymer hər 3 sözdə sürətlənir."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Geniş başlayın",
+                "text": "Yayılmış hərfli sözlərlə bütün lövhələrdə ipucu toplayın."
+            },
+            {
+                "title": "Bölünmüş klaviaturaya baxın",
+                "text": "Bir lövhədə yaşıl, digərində boz olan hərf seçimləri daraldır."
+            },
+            {
+                "title": "Çətin lövhələrə üstünlük verin",
+                "text": "Ən çox naməlumu olan lövhəyə diqqət yetirin."
+            },
+            {
+                "title": "İlk təxminləri xərcləməyin",
+                "text": "İlk 2-3 təxmini məlumat zəngin sözlərə istifadə edin."
+            },
+            {
+                "title": "Ortaq hərfləri axtarın",
+                "text": "İki lövhə sarı E göstərirsə, E-li söz hər ikisini kömək edir."
+            },
+            {
+                "title": "Təxmin saxlayın",
+                "text": "Son lövhədə əlavə təxmin fərq yaradır."
+            }
+        ],
+        "mode_desc_classic": "Gizli 5 hərfli sözü tapmaq üçün 6 cəhdiniz var. Rəng ipucularından istifadə edin.",
+        "mode_desc_unlimited": "Gizli 5 hərfli sözü tapmaq üçün 6 cəhdiniz var. Rəng ipucularından istifadə edin. Hər oyundan sonra \"Yenidən oyna\" basın — gündəlik limit yoxdur.",
+        "mode_desc_speed": "3 dəqiqə ilə başlayırsınız. Hər söz bonus vaxt qazandırır — daha az təxminlə böyük bonuslar (+60s 1 təxmin, +10s 6). Uğursuz sözlər 30 saniyəyə başa gəlir. Ardıcıl həllərlə 3x xal çarpanı qurun. Taymer hər 3 sözdə sürətlənir.",
+        "mode_desc_multiboard": "{modeName} eyni anda {boardCount} Wordle lövhəsini {maxGuesses} təxminlə həll etməyə çağırır. Hər təxmin həll olunmamış lövhələrdə görünür. Həll olunmuş lövhələr donur. Bölünmüş rəngli klaviatura hansı hərflərin hansı lövhələrdə düzgün olduğunu göstərir.",
+        "faq": [
+            {
+                "q": "{langName} dilində Wordle necə oynayıram?",
+                "a": "wordle.global/{lang} saytına daxil olun. 5 hərfli sözü tapmaq üçün 6 cəhdiniz var. Xanalar yaşıl, sarı və ya boz olur."
+            },
+            {
+                "q": "Hər gün yeni tapmaca var?",
+                "a": "Bəli. Hər gün yeni söz seçilir. Eyni dildə hər kəs eyni sözü alır."
+            },
+            {
+                "q": "Wordle Global pulsuzdur?",
+                "a": "Bəli. Bütün rejimlər 80+ dildə tamamilə pulsuzdur."
+            },
+            {
+                "q": "Gündə birdən çox oynaya bilərəm?",
+                "a": "Bəli — wordle.global/{lang}/unlimited ünvanında limitsiz rejimi sınayın."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "{langName} dilində Wordle Unlimited nədir?",
+                    "a": "İstədiyiniz qədər Wordle oynayın, sabahı gözləmədən."
+                },
+                {
+                    "q": "Pulsuzdur?",
+                    "a": "Bəli. Tamamilə pulsuzdur."
+                },
+                {
+                    "q": "Gündəlik ardıcıllığıma sayılır?",
+                    "a": "Xeyr. Öz statistikası var."
+                },
+                {
+                    "q": "Neçə dəfə?",
+                    "a": "Limit yoxdur."
+                },
+                {
+                    "q": "Hansı dillərdə?",
+                    "a": "80+ dildə mövcuddur."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "{langName} dilində Speed Streak nədir?",
+                    "a": "Zamana qarşı Wordle. 3 dəqiqə ilə başlayın."
+                },
+                {
+                    "q": "Xal necə hesablanır?",
+                    "a": "Daha az təxmin daha çox xal. Ardıcıl həllərlə 3x çarpan."
+                },
+                {
+                    "q": "Vaxt bitəndə?",
+                    "a": "Oyun bitir, nəticələrinizi görürsünüz."
+                },
+                {
+                    "q": "Pulsuzdur?",
+                    "a": "Bəli. 80+ dildə."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{langName} dilində {modeName} nədir?",
+                    "a": "{modeName} çox lövhəli Wordle. {maxGuesses} təxminlə {boardCount} lövhə həll edin."
+                },
+                {
+                    "q": "Neçə təxmin?",
+                    "a": "{boardCount} lövhə üçün {maxGuesses} təxmin."
+                },
+                {
+                    "q": "Ən yaxşı strategiya?",
+                    "a": "Yayılmış hərfli sözlərlə başlayın. Bölünmüş klaviaturaya baxın."
+                },
+                {
+                    "q": "{modeName} pulsuzdur?",
+                    "a": "Bəli. 80+ dildə."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Söz yazın",
+                "text": "{langName} dilində 5 hərfli söz daxil edin, Enter basın."
+            },
+            {
+                "name": "İpucuları oxuyun",
+                "text": "Yaşıl = düzgün yer. Sarı = sözdə, yanlış yer. Boz = yoxdur."
+            },
+            {
+                "name": "6 cəhddə həll edin",
+                "text": "Rəng ipucuları ilə sözü daraldın. 6 təxmininiz var."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Oyuna başlayın",
+                    "text": "wordle.global/{lang}/unlimited ünvanına daxil olun."
+                },
+                {
+                    "name": "Sözü tapın",
+                    "text": "5 hərfli söz yazın və Enter basın."
+                },
+                {
+                    "name": "Yenidən oynayın",
+                    "text": "\"Yenidən oyna\" basın."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Taymeri başladın",
+                    "text": "wordle.global/{lang}/speed — 3 dəqiqə."
+                },
+                {
+                    "name": "Tez həll edin",
+                    "text": "Hər həll bonus vaxt qazandırır (+10s-dan +60s-ə)."
+                },
+                {
+                    "name": "Kombo qurun",
+                    "text": "Ardıcıl həllərlə çarpanı artırın (3x-ə qədər)."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Oyuna başlayın",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} lövhə görünür."
+                },
+                {
+                    "name": "Bütün lövhələrdə təxmin",
+                    "text": "Təxmin {boardCount} lövhədə eyni anda görünür."
+                },
+                {
+                    "name": "{boardCount} lövhəni həll edin",
+                    "text": "Bölünmüş rəngli klaviatura istifadə edin. {maxGuesses} təxmində həll edin."
+                }
+            ]
+        }
     }
 }

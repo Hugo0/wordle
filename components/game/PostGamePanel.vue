@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
+import { GAME_MODES_UI, getModeRoute, getModeLabel } from '~/composables/useGameModes';
 
 defineEmits<{ newGame: [] }>();
 
@@ -63,10 +63,12 @@ const nextWordLabel = computed(() => lang.config?.text?.next_word || 'Next Wordl
 const otherModes = computed(() => {
     const currentMode = game.gameConfig.mode;
     const langCode = lang.languageCode;
+    const ui = lang.config?.ui;
     return GAME_MODES_UI.filter((m) => m.enabled && m.id !== currentMode && m.id !== 'classic')
         .slice(0, 4)
         .map((m) => ({
             ...m,
+            label: getModeLabel(m, ui),
             href: getModeRoute(m, langCode),
         }));
 });

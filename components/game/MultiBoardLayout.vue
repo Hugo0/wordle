@@ -23,12 +23,13 @@
             @scroll.passive="onBoardScroll"
             data-allow-mismatch
         >
-            <!-- Loading: show subtle pulse while measuring container width -->
+            <!-- Skeleton: 4 placeholder boards while measuring container -->
             <div
                 v-if="!measured"
-                class="flex flex-auto justify-center items-center opacity-15 animate-pulse"
+                class="grid grid-cols-2 gap-3 mx-auto opacity-15 animate-pulse py-4"
+                style="width: 80%; max-width: 500px"
             >
-                <div class="font-mono text-xs text-muted">Loading boards...</div>
+                <div v-for="i in 4" :key="i" class="bg-rule rounded-sm" style="aspect-ratio: 5/7" />
             </div>
 
             <div v-else class="grid mx-auto max-w-full" :style="gridStyle" data-allow-mismatch>
@@ -41,7 +42,7 @@
                     <GameMultiBoardPanel
                         :ref="(el: any) => setPanelRef(idx, el)"
                         :board-index="idx"
-                        :max-visible-rows="layout.visibleRows"
+                        :max-visible-rows="allExpanded ? 0 : layout.visibleRows"
                     />
                 </div>
             </div>
@@ -64,13 +65,22 @@
                 >
                     <X :size="14" />
                 </button>
+                <button
+                    v-else-if="layout.visibleRows > 0"
+                    class="page-nav-btn shrink-0"
+                    :aria-label="allExpanded ? 'Collapse boards' : 'Expand all boards'"
+                    @click="allExpanded = !allExpanded"
+                >
+                    <Minimize2 v-if="allExpanded" :size="14" />
+                    <Maximize2 v-else :size="14" />
+                </button>
             </div>
         </div>
     </main>
 </template>
 
 <script setup lang="ts">
-import { X } from 'lucide-vue-next';
+import { X, Maximize2, Minimize2 } from 'lucide-vue-next';
 import { useMultiBoardLayout } from '~/composables/useMultiBoardLayout';
 
 const game = useGameStore();
@@ -79,6 +89,7 @@ const maxGuesses = computed(() => game.gameConfig.maxGuesses);
 
 // --- Focus mode ---
 const focusedBoard = ref<number | null>(null);
+const allExpanded = ref(false);
 
 // 0-based board indices
 const boardIndices = computed(() => Array.from({ length: boardCount.value }, (_, i) => i));
@@ -258,7 +269,9 @@ defineExpose({ getBoardElForIndex });
     align-items: center;
     justify-content: center;
     gap: 4px;
-    padding: 4px 4px;
+    padding: 4px 8px;
+    margin: 0 auto;
+    max-width: 600px;
     overflow: hidden;
     min-width: 0;
 }

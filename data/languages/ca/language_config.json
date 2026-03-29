@@ -244,5 +244,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Com jugar",
+        "tips_strategy": "Consells i estrategia",
+        "more_modes": "Mes modes de joc",
+        "play_in_languages": "Juga en 80+ idiomes",
+        "play_in_languages_sub": "Tots gratuïts. No cal compte.",
+        "why_wordle_global": "Per que Wordle Global",
+        "faq_title": "Preguntes freqüents",
+        "browse_all_languages": "Explora els 80+ idiomes",
+        "recent_words": "Paraules recents",
+        "view_all_words": "Veure totes les paraules",
+        "footer": "wordle.global — el joc de paraules diari gratuït en 80+ idiomes",
+        "tile_correct": "es a la paraula i al lloc correcte.",
+        "tile_semicorrect": "es a la paraula pero al lloc incorrecte.",
+        "tile_incorrect": "no es a la paraula.",
+        "stat_players": "Jugadors",
+        "stat_guesses": "Intents",
+        "stat_languages": "Idiomes",
+        "stat_modes": "Modes de joc",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ idiomes",
+                "desc": "De l'arab al ioruba. El Wordle multilingüe mes gran."
+            },
+            {
+                "key": "definitions",
+                "title": "Definicions",
+                "desc": "Apren el significat de cada paraula despres de jugar."
+            },
+            {
+                "key": "word_art",
+                "title": "Art de paraules unic",
+                "desc": "Cada paraula amb il·lustracio personalitzada."
+            },
+            {
+                "key": "themes",
+                "title": "Mode fosc i temes",
+                "desc": "Modes clar, fosc i alt contrast."
+            },
+            {
+                "key": "pwa",
+                "title": "Funciona a tot arreu",
+                "desc": "PWA — qualsevol dispositiu. Sense connexio."
+            },
+            {
+                "key": "free",
+                "title": "Gratuït per sempre",
+                "desc": "Sense compte. Sense mur de pagament."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Comença amb vocals",
+                "text": "CRANE o ADIEU proven lletres comunes rapidament."
+            },
+            {
+                "title": "Usa el que saps",
+                "text": "Verd fix, groc mou, gris elimina."
+            },
+            {
+                "title": "Patrons comuns",
+                "text": "El catala te els seus patrons — aprèn-los."
+            },
+            {
+                "title": "Elimina",
+                "text": "El segon intent ha de provar lletres noves."
+            },
+            {
+                "title": "Lletres dobles",
+                "text": "Si no encaixa, pensa en una lletra repetida."
+            },
+            {
+                "title": "Mode dificil",
+                "text": "Obliga a usar pistes confirmades."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Lletres frequents donen la millor oportunitat."
+            },
+            {
+                "title": "No pensis massa",
+                "text": "Speed Streak premia la intuicio."
+            },
+            {
+                "title": "Protegeix el combo",
+                "text": "Una fallida trenca el multiplicador."
+            },
+            {
+                "title": "2-3 intents",
+                "text": "Bonus de temps enorme (+60s, +30s)."
+            },
+            {
+                "title": "Terminacions",
+                "text": "Reconèixer patrons estalvia segons."
+            },
+            {
+                "title": "Calma",
+                "text": "El temporitzador s'accelera cada 3 paraules."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Comença ample",
+                "text": "Lletres comunes per recollir pistes a tots els taulers."
+            },
+            {
+                "title": "Teclat dividit",
+                "text": "Verd en un, gris en un altre: redueix opcions."
+            },
+            {
+                "title": "Prioritza dificils",
+                "text": "Centra't en el tauler amb mes incognites."
+            },
+            {
+                "title": "No malbaratis",
+                "text": "Primers 2-3 intents amb paraules informatives."
+            },
+            {
+                "title": "Lletres compartides",
+                "text": "Dos taulers amb E groga? Una paraula amb E nova ajuda."
+            },
+            {
+                "title": "Guarda intent",
+                "text": "Un intent extra al final marca la diferencia."
+            }
+        ],
+        "mode_desc_classic": "6 intents per endevinar una paraula de 5 lletres. Usa les pistes de colors.",
+        "mode_desc_unlimited": "6 intents, 5 lletres. \"Jugar de nou\" per una nova paraula — sense limit diari.",
+        "mode_desc_speed": "3 minuts. Cada paraula dona temps extra (+60s amb 1 intent, +10s amb 6). Fallides: 30s. Combos fins a 3x. S'accelera cada 3 paraules.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} taulers, {maxGuesses} intents. Cada intent a tots els taulers. Taulers resolts es congelen. Teclat dividit.",
+        "faq": [
+            {
+                "q": "Com jugo Wordle en {langName}?",
+                "a": "Visita wordle.global/{lang}. 6 intents, 5 lletres. Caselles verd/groc/gris."
+            },
+            {
+                "q": "Nou cada dia?",
+                "a": "Si. Mateixa paraula per a tothom."
+            },
+            {
+                "q": "Gratuit?",
+                "a": "Si. Tots els modes en 80+ idiomes."
+            },
+            {
+                "q": "Mes d'una vegada?",
+                "a": "Si — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited en {langName}?",
+                    "a": "Juga tantes partides com vulguis."
+                },
+                {
+                    "q": "Gratuit?",
+                    "a": "Si."
+                },
+                {
+                    "q": "Ratxa diaria?",
+                    "a": "No. Estadistiques separades."
+                },
+                {
+                    "q": "Quantes vegades?",
+                    "a": "Sense limit."
+                },
+                {
+                    "q": "Quins idiomes?",
+                    "a": "80+ idiomes."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak en {langName}?",
+                    "a": "Wordle contra rellotge. 3 minuts."
+                },
+                {
+                    "q": "Puntuacio?",
+                    "a": "Menys intents = mes punts. Combo 3x."
+                },
+                {
+                    "q": "Temps acabat?",
+                    "a": "Partida acabada, veus resultats."
+                },
+                {
+                    "q": "Gratuit?",
+                    "a": "Si. 80+ idiomes."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} en {langName}?",
+                    "a": "{boardCount} taulers, {maxGuesses} intents."
+                },
+                {
+                    "q": "Quants intents?",
+                    "a": "{maxGuesses} per {boardCount} taulers."
+                },
+                {
+                    "q": "Estrategia?",
+                    "a": "Lletres comunes primer. Teclat dividit."
+                },
+                {
+                    "q": "Gratuit?",
+                    "a": "Si. 80+ idiomes."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Escriu una paraula",
+                "text": "{langName}: 5 lletres, Enter."
+            },
+            {
+                "name": "Llegeix les pistes",
+                "text": "Verd = correcte. Groc = mal lloc. Gris = no hi es."
+            },
+            {
+                "name": "Resol en 6",
+                "text": "Usa pistes de colors. 6 intents."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Inicia",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Endevina",
+                    "text": "5 lletres, Enter."
+                },
+                {
+                    "name": "Repeteix",
+                    "text": "\"Jugar de nou\" a l'instant."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Temporitzador",
+                    "text": "wordle.global/{lang}/speed — 3 minuts."
+                },
+                {
+                    "name": "Resol rapid",
+                    "text": "Bonus temps (+10s a +60s)."
+                },
+                {
+                    "name": "Combo",
+                    "text": "Multiplicador fins a 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Inicia",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} taulers."
+                },
+                {
+                    "name": "Tots els taulers",
+                    "text": "Intent a {boardCount} taulers alhora."
+                },
+                {
+                    "name": "Resol {boardCount}",
+                    "text": "Teclat dividit. {maxGuesses} intents."
+                }
+            ]
+        }
     }
 }

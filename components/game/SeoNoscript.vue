@@ -21,7 +21,12 @@ import {
 } from 'lucide-vue-next';
 import BaseModal from '~/components/shared/BaseModal.vue';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
-import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
+import {
+    GAME_MODES_UI,
+    getModeRoute,
+    getModeLabel,
+    getModeDescription,
+} from '~/composables/useGameModes';
 import { useFlag } from '~/composables/useFlag';
 import type { Component } from 'vue';
 import type { GameMode } from '~/utils/game-modes';
@@ -390,9 +395,11 @@ const recentWords = computed(() => {
                             <component :is="m.icon" :size="18" class="text-ink" />
                         </div>
                         <div class="min-w-0">
-                            <div class="heading-section text-sm text-ink">{{ m.label }}</div>
+                            <div class="heading-section text-sm text-ink">
+                                {{ getModeLabel(m, config.ui) }}
+                            </div>
                             <p class="text-xs text-muted mt-0.5 leading-snug">
-                                {{ m.description }}
+                                {{ getModeDescription(m, config.ui) }}
                             </p>
                         </div>
                     </a>

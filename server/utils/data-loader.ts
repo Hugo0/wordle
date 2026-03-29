@@ -66,7 +66,10 @@ export function loadLanguageConfig(lang: string): LanguageConfig {
 
     if (!langConfig) return defaultConfig as unknown as LanguageConfig;
 
-    // Deep merge: language-specific values override defaults
+    // Deep merge (2 levels): language-specific values override defaults.
+    // Level 1: top-level sections (meta, text, help, ui, seo).
+    // Level 2: nested objects within sections (seo.mode_faq, seo.mode_howto, etc.).
+    // Arrays are always replaced wholesale (faq, tips, value_props).
     const merged: Record<string, any> = { ...defaultConfig };
     for (const [key, value] of Object.entries(langConfig)) {
         if (
@@ -76,7 +79,23 @@ export function loadLanguageConfig(lang: string): LanguageConfig {
             key in merged &&
             typeof merged[key] === 'object'
         ) {
-            merged[key] = { ...merged[key], ...value };
+            const mergedSection: Record<string, any> = { ...merged[key] };
+            for (const [subKey, subValue] of Object.entries(value as Record<string, any>)) {
+                if (
+                    typeof subValue === 'object' &&
+                    subValue !== null &&
+                    !Array.isArray(subValue) &&
+                    subKey in mergedSection &&
+                    typeof mergedSection[subKey] === 'object' &&
+                    !Array.isArray(mergedSection[subKey])
+                ) {
+                    // Level 2 merge (e.g. seo.mode_faq, seo.mode_howto)
+                    mergedSection[subKey] = { ...mergedSection[subKey], ...subValue };
+                } else {
+                    mergedSection[subKey] = subValue;
+                }
+            }
+            merged[key] = mergedSection;
         } else {
             merged[key] = value;
         }

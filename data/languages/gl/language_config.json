@@ -238,5 +238,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Como xogar",
+        "tips_strategy": "Consellos e estratexia",
+        "more_modes": "Máis modos de xogo",
+        "play_in_languages": "Xoga en 80+ idiomas",
+        "play_in_languages_sub": "Todos os idiomas son gratis. Sen conta.",
+        "why_wordle_global": "Por que Wordle Global",
+        "faq_title": "Preguntas frecuentes",
+        "browse_all_languages": "Explorar 80+ idiomas",
+        "recent_words": "Palabras recentes",
+        "view_all_words": "Ver todas as palabras",
+        "footer": "wordle.global — o xogo de palabras diario gratis en 80+ idiomas",
+        "tile_correct": "está na palabra e no lugar correcto.",
+        "tile_semicorrect": "está na palabra pero no lugar incorrecto.",
+        "tile_incorrect": "non está na palabra.",
+        "stat_players": "Xogadores",
+        "stat_guesses": "Intentos",
+        "stat_languages": "Idiomas",
+        "stat_modes": "Modos de xogo",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ idiomas",
+                "desc": "Do árabe ao ioruba. O Wordle multilingüe máis grande."
+            },
+            {
+                "key": "definitions",
+                "title": "Definicións",
+                "desc": "Aprende o significado de cada palabra despois de xogar."
+            },
+            {
+                "key": "word_art",
+                "title": "Arte de palabras única",
+                "desc": "Cada palabra cunha ilustración personalizada."
+            },
+            {
+                "key": "themes",
+                "title": "Modo escuro e temas",
+                "desc": "Claro, escuro e alto contraste."
+            },
+            {
+                "key": "pwa",
+                "title": "Funciona en todas partes",
+                "desc": "PWA — calquera dispositivo. Sen conexión."
+            },
+            {
+                "key": "free",
+                "title": "Gratis para sempre",
+                "desc": "Sen conta. Sen muro de pago."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Comeza con vogais",
+                "text": "CRANE ou ADIEU proban letras comúns rapidamente."
+            },
+            {
+                "title": "Usa o que sabes",
+                "text": "Verde fixo. Amarelo move. Gris elimina."
+            },
+            {
+                "title": "Patróns comúns",
+                "text": "O galego ten os seus propios patróns."
+            },
+            {
+                "title": "Elimina",
+                "text": "O segundo intento debe probar letras novas."
+            },
+            {
+                "title": "Letras dobres",
+                "text": "Se non cadra, pensa nunha letra repetida."
+            },
+            {
+                "title": "Modo difícil",
+                "text": "Obriga a usar pistas confirmadas."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Letras frecuentes dan a mellor oportunidade."
+            },
+            {
+                "title": "Non penses demasiado",
+                "text": "Speed Streak premia a intuición."
+            },
+            {
+                "title": "Protexe o combo",
+                "text": "Un fallo rompe o multiplicador."
+            },
+            {
+                "title": "2-3 intentos",
+                "text": "Bonus de tempo enorme (+60s con 1)."
+            },
+            {
+                "title": "Terminacións",
+                "text": "Recoñecer patróns aforra segundos."
+            },
+            {
+                "title": "Calma",
+                "text": "O cronómetro acelera cada 3 palabras."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Amplo",
+                "text": "Letras comúns para pistas en todos os taboleiros."
+            },
+            {
+                "title": "Teclado dividido",
+                "text": "Verde/gris en distintos taboleiros reduce opcións."
+            },
+            {
+                "title": "Taboleiros difíciles",
+                "text": "Céntrate no taboleiro con máis incógnitas."
+            },
+            {
+                "title": "Non desperdicies",
+                "text": "Primeiros 2-3 con palabras informativas."
+            },
+            {
+                "title": "Letras compartidas",
+                "text": "Dous taboleiros con E amarelo? E en posición nova."
+            },
+            {
+                "title": "Garda intento",
+                "text": "Un intento extra ao final marca a diferenza."
+            }
+        ],
+        "mode_desc_classic": "6 intentos para adiviñar unha palabra de 5 letras. Usa pistas de cores.",
+        "mode_desc_unlimited": "6 intentos, 5 letras. \"Xogar de novo\" — sen límite diario.",
+        "mode_desc_speed": "3 minutos. Cada palabra dá tempo extra (+60s con 1, +10s con 6). Fallos: 30s. Combo ata 3x. Máis rápido cada 3.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} taboleiros, {maxGuesses} intentos. Cada intento en todos. Resoltos conxélanse. Teclado dividido.",
+        "faq": [
+            {
+                "q": "Como xogo Wordle en {langName}?",
+                "a": "wordle.global/{lang}. 6 intentos, 5 letras."
+            },
+            {
+                "q": "Novo cada día?",
+                "a": "Si. A mesma palabra para todos."
+            },
+            {
+                "q": "Gratis?",
+                "a": "Si. Todos os modos en 80+ idiomas."
+            },
+            {
+                "q": "Máis dunha vez?",
+                "a": "Si — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited en {langName}?",
+                    "a": "Xoga cantas veces queiras."
+                },
+                {
+                    "q": "Gratis?",
+                    "a": "Si."
+                },
+                {
+                    "q": "Racha diaria?",
+                    "a": "Non. Estatísticas separadas."
+                },
+                {
+                    "q": "Cantas veces?",
+                    "a": "Sen límite."
+                },
+                {
+                    "q": "Que idiomas?",
+                    "a": "80+ idiomas."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak en {langName}?",
+                    "a": "Wordle contra reloxo. 3 minutos."
+                },
+                {
+                    "q": "Puntuación?",
+                    "a": "Menos intentos = máis puntos. Combo 3x."
+                },
+                {
+                    "q": "Tempo esgotado?",
+                    "a": "O xogo remata."
+                },
+                {
+                    "q": "Gratis?",
+                    "a": "Si. 80+ idiomas."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} en {langName}?",
+                    "a": "{boardCount} taboleiros, {maxGuesses} intentos."
+                },
+                {
+                    "q": "Cantos intentos?",
+                    "a": "{maxGuesses} para {boardCount} taboleiros."
+                },
+                {
+                    "q": "Estratexia?",
+                    "a": "Letras comúns. Teclado dividido."
+                },
+                {
+                    "q": "Gratis?",
+                    "a": "Si. 80+ idiomas."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Escribe unha palabra",
+                "text": "{langName}: 5 letras, Enter."
+            },
+            {
+                "name": "Le as pistas",
+                "text": "Verde = correcto. Amarelo = lugar incorrecto. Gris = non está."
+            },
+            {
+                "name": "Resolve en 6",
+                "text": "Pistas de cores. 6 intentos."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Comeza",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Adiviña",
+                    "text": "5 letras, Enter."
+                },
+                {
+                    "name": "De novo",
+                    "text": "\"Xogar de novo\"."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Cronómetro",
+                    "text": "wordle.global/{lang}/speed — 3 min."
+                },
+                {
+                    "name": "Rápido",
+                    "text": "Bonus tempo (+10s a +60s)."
+                },
+                {
+                    "name": "Combo",
+                    "text": "Multiplicador ata 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Comeza",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} taboleiros."
+                },
+                {
+                    "name": "Todos os taboleiros",
+                    "text": "Intento en {boardCount} taboleiros."
+                },
+                {
+                    "name": "Resolve {boardCount}",
+                    "text": "Teclado dividido. {maxGuesses} intentos."
+                }
+            ]
+        }
     }
 }

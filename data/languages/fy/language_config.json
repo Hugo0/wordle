@@ -251,5 +251,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Hoe te spyljen",
+        "tips_strategy": "Tips en strategy",
+        "more_modes": "Mear spultsje-modi",
+        "play_in_languages": "Spielje yn 80+ talen",
+        "play_in_languages_sub": "Alle talen binne fergees. Gjin akkount nedich.",
+        "why_wordle_global": "Wêrom Wordle Global",
+        "faq_title": "Faak stelde fragen",
+        "browse_all_languages": "Blêdzje troch 80+ talen",
+        "recent_words": "Resinte wurden",
+        "view_all_words": "Alle wurden besjen",
+        "footer": "wordle.global — fergees deistich wurdspultsje yn 80+ talen",
+        "tile_correct": "is yn it wurd en op it goede plak.",
+        "tile_semicorrect": "is yn it wurd mar op it ferkearde plak.",
+        "tile_incorrect": "is net yn it wurd.",
+        "stat_players": "Spilers",
+        "stat_guesses": "Rieden",
+        "stat_languages": "Talen",
+        "stat_modes": "Spultsje-modi",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ talen",
+                "desc": "Fan Arabysk oant Yoruba. De grutste meartalige Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Wurddefinysjes",
+                "desc": "Lear de betsjutting fan elk wurd nei it spieljen."
+            },
+            {
+                "key": "word_art",
+                "title": "Unike wurdkeunst",
+                "desc": "Elk wurd mei in eigen yllustraasje."
+            },
+            {
+                "key": "themes",
+                "title": "Donker modus en tema's",
+                "desc": "Ljocht, donker en heech kontrast."
+            },
+            {
+                "key": "pwa",
+                "title": "Wurket oeral",
+                "desc": "PWA — elk apparaat. Offline."
+            },
+            {
+                "key": "free",
+                "title": "Altyd fergees",
+                "desc": "Gjin akkount. Gjin betelmuorre."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Begjin mei klinkers",
+                "text": "CRANE of ADIEU testen faak foarkommende letters."
+            },
+            {
+                "title": "Brûk wat jo witte",
+                "text": "Grien fêst. Giel ferskowe. Griis fuort."
+            },
+            {
+                "title": "Gewoane patroanen",
+                "text": "Elke taal hat syn eigen patroanen."
+            },
+            {
+                "title": "Eliminearje",
+                "text": "It twadde wurd moat nije letters teste."
+            },
+            {
+                "title": "Dûbele letters",
+                "text": "Tips kloppe net? Tink oan in werhelle letter."
+            },
+            {
+                "title": "Drege modus",
+                "text": "Twingt befêstige tips te brûken."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Faak brûkte letters jouwe de bêste kâns."
+            },
+            {
+                "title": "Net te folle tinke",
+                "text": "Speed Streak beleanet yntuysje."
+            },
+            {
+                "title": "Beskerme kombo",
+                "text": "In miste wurd brekt de fermannichfâldiger."
+            },
+            {
+                "title": "2-3 beurten",
+                "text": "Tiidbonussen binne grut (+60s foar 1)."
+            },
+            {
+                "title": "Wurdeinigen",
+                "text": "Patroanen werkenne spart sekonden."
+            },
+            {
+                "title": "Kalm",
+                "text": "De klok giet hurder elke 3 wurden."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Breed",
+                "text": "Gewoane letters foar tips op alle boerden."
+            },
+            {
+                "title": "Split toetseboerd",
+                "text": "Grien/griis op ferskillende boerden."
+            },
+            {
+                "title": "Drege boerden",
+                "text": "Fokus op it boerd mei de measte ûnbekenden."
+            },
+            {
+                "title": "Net fergrieme",
+                "text": "Earste 2-3 foar ynformative wurden."
+            },
+            {
+                "title": "Dielde letters",
+                "text": "Twa boerden mei giel E? E op in nij plak helpt."
+            },
+            {
+                "title": "Bewarje ried",
+                "text": "In ekstra ried oan de ein makket it ferskil."
+            }
+        ],
+        "mode_desc_classic": "6 beurten foar in ferburgen 5-letter wurd. Brûk kleurtips.",
+        "mode_desc_unlimited": "6 beurten, 5 letters. \"Opnij spielje\" — gjin deistige limyt.",
+        "mode_desc_speed": "3 minuten. Elk wurd jout bonustiid (+60s foar 1, +10s foar 6). Mist: 30s. Kombo oant 3x. Hurder elke 3 wurden.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} boerden, {maxGuesses} beurten. Elke beurt op alle boerden. Oploste boerden befrieze. Split toetseboerd.",
+        "faq": [
+            {
+                "q": "Hoe spielje ik Wordle yn {langName}?",
+                "a": "wordle.global/{lang}. 6 beurten, 5 letters."
+            },
+            {
+                "q": "Nij elke dei?",
+                "a": "Ja. Itselde wurd foar elkenien."
+            },
+            {
+                "q": "Fergees?",
+                "a": "Ja. Alle modi yn 80+ talen."
+            },
+            {
+                "q": "Faker as ien kear?",
+                "a": "Ja — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited yn {langName}?",
+                    "a": "Spielje sa folle as jo wolle."
+                },
+                {
+                    "q": "Fergees?",
+                    "a": "Ja."
+                },
+                {
+                    "q": "Deistige rige?",
+                    "a": "Nee. Aparte statistiken."
+                },
+                {
+                    "q": "Hoefolle kearen?",
+                    "a": "Gjin limyt."
+                },
+                {
+                    "q": "Hokke talen?",
+                    "a": "80+ talen."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak yn {langName}?",
+                    "a": "Wordle tsjin de klok. 3 minuten."
+                },
+                {
+                    "q": "Skoare?",
+                    "a": "Minder beurten = mear punten. 3x kombo."
+                },
+                {
+                    "q": "Tiid op?",
+                    "a": "Spultsje dien."
+                },
+                {
+                    "q": "Fergees?",
+                    "a": "Ja. 80+ talen."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} yn {langName}?",
+                    "a": "{boardCount} boerden, {maxGuesses} beurten."
+                },
+                {
+                    "q": "Hoefolle beurten?",
+                    "a": "{maxGuesses} foar {boardCount} boerden."
+                },
+                {
+                    "q": "Strategy?",
+                    "a": "Gewoane letters. Split toetseboerd."
+                },
+                {
+                    "q": "Fergees?",
+                    "a": "Ja. 80+ talen."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Typ in wurd",
+                "text": "{langName}: 5 letters, Enter."
+            },
+            {
+                "name": "Lês de tips",
+                "text": "Grien = goed plak. Giel = ferkeard plak. Griis = net yn."
+            },
+            {
+                "name": "Oplosse yn 6",
+                "text": "Kleurtips. 6 beurten."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Begjin",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Ried",
+                    "text": "5 letters, Enter."
+                },
+                {
+                    "name": "Opnij",
+                    "text": "\"Opnij spielje\"."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Klok",
+                    "text": "wordle.global/{lang}/speed — 3 min."
+                },
+                {
+                    "name": "Fluch",
+                    "text": "Bonustiid (+10s oant +60s)."
+                },
+                {
+                    "name": "Kombo",
+                    "text": "Fermannichfâldiger oant 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Begjin",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} boerden."
+                },
+                {
+                    "name": "Alle boerden",
+                    "text": "Beurt op {boardCount} boerden."
+                },
+                {
+                    "name": "Oplosse {boardCount}",
+                    "text": "Split toetseboerd. {maxGuesses} beurten."
+                }
+            ]
+        }
     }
 }

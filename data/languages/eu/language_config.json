@@ -228,5 +228,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Nola jokatu",
+        "tips_strategy": "Aholkuak eta estrategia",
+        "more_modes": "Joko-modu gehiago",
+        "play_in_languages": "80+ hizkuntzatan jokatu",
+        "play_in_languages_sub": "Hizkuntza guztiak doakoak. Konturik gabe.",
+        "why_wordle_global": "Zergatik Wordle Global",
+        "faq_title": "Ohiko galderak",
+        "browse_all_languages": "80+ hizkuntza arakatu",
+        "recent_words": "Azken hitzak",
+        "view_all_words": "Hitz guztiak ikusi",
+        "footer": "wordle.global — 80+ hizkuntzatan doako eguneko hitz-jokoa",
+        "tile_correct": "hitzean dago eta leku egokian.",
+        "tile_semicorrect": "hitzean dago baina leku okerrean.",
+        "tile_incorrect": "ez dago hitzean.",
+        "stat_players": "Jokalariak",
+        "stat_guesses": "Asmatzeak",
+        "stat_languages": "Hizkuntzak",
+        "stat_modes": "Joko-moduak",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ hizkuntza",
+                "desc": "Arabieratik Yorubara. Wordle eleaniztunik handiena."
+            },
+            {
+                "key": "definitions",
+                "title": "Hitz-definizioak",
+                "desc": "Hitz bakoitzaren esanahia ikasi jokoaren ondoren."
+            },
+            {
+                "key": "word_art",
+                "title": "Hitz-arte bakarra",
+                "desc": "Hitz bakoitza ilustrazio pertsonalizatuarekin."
+            },
+            {
+                "key": "themes",
+                "title": "Modu iluna eta gaiak",
+                "desc": "Argi, ilun eta kontraste altuko moduak."
+            },
+            {
+                "key": "pwa",
+                "title": "Edonon funtzionatzen du",
+                "desc": "PWA — edozein gailutan. Konexiorik gabe."
+            },
+            {
+                "key": "free",
+                "title": "Betiko doakoa",
+                "desc": "Konturik gabe. Ordainketarik gabe."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Bokal-aberatsarekin hasi",
+                "text": "CRANE edo ADIEU-k letra arruntak azkar probatzen dituzte."
+            },
+            {
+                "title": "Dakizuna erabili",
+                "text": "Berdeak finkoak. Horiak mugitu. Grisak kendu."
+            },
+            {
+                "title": "Patroi arruntak",
+                "text": "Hizkuntza bakoitzak bere patroiak ditu."
+            },
+            {
+                "title": "Ezabatu",
+                "text": "Bigarren hitzak letra berriak probatu behar ditu."
+            },
+            {
+                "title": "Letra bikoitzak",
+                "text": "Pistak ez datoz bat? Letra errepikatua kontuan hartu."
+            },
+            {
+                "title": "Modu zaila",
+                "text": "Pista egiaztatuak erabiltzera behartzen zaitu."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Maiztasun altuko letrek aukera onena ematen dute."
+            },
+            {
+                "title": "Ez gehiegi pentsatu",
+                "text": "Speed Streak-ek intuizioa saritzen du."
+            },
+            {
+                "title": "Konboa babestu",
+                "text": "Huts egindako hitzak biderkatzailea apurtzen du."
+            },
+            {
+                "title": "2-3 asmatzetan",
+                "text": "Denbora-bonusa handia da (+60s 1 asmatze)."
+            },
+            {
+                "title": "Amaierak",
+                "text": "Patroiak ezagutzeak segundoak aurrezten ditu."
+            },
+            {
+                "title": "Lasai",
+                "text": "Kronometroa 3 hitzez azkarrago."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Zabaletik hasi",
+                "text": "Letra arruntak taula guztietan pistak biltzeko."
+            },
+            {
+                "title": "Teklatu banatua",
+                "text": "Berdea taulatan, grisa bestean: aukerak murrizten ditu."
+            },
+            {
+                "title": "Taula zailak lehenetsi",
+                "text": "Ezezagun gehien duen taulan zentratu."
+            },
+            {
+                "title": "Ez xahutu lehenengo asmatzeak",
+                "text": "Lehenengo 2-3 informazio aberatsetarako."
+            },
+            {
+                "title": "Letra partekatuak",
+                "text": "Bi taulak E horia? E posizio berrian laguntzen du."
+            },
+            {
+                "title": "Asmatze bat gorde",
+                "text": "Azken taulan asmatze gehigarri batek aldea egiten du."
+            }
+        ],
+        "mode_desc_classic": "5 letrako ezkutuko hitza asmatzeko 6 saiakera. Kolore-pistak erabili.",
+        "mode_desc_unlimited": "5 letra, 6 saiakera. \"Berriz jokatu\" — eguneroko mugarik gabe.",
+        "mode_desc_speed": "3 minutu. Hitz bakoitzak bonus denbora (+60s 1etarako, +10s 6rako). Hutsak: 30s. Komboa 3x arte. 3 hitzez azkarrago.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} taula, {maxGuesses} asmatze. Asmatze bakoitza taula guztietan. Ebaztutakoak izoztu. Teklatu banatua.",
+        "faq": [
+            {
+                "q": "Nola jokatu Wordle {langName}(e)n?",
+                "a": "wordle.global/{lang}. 6 saiakera, 5 letra. Berdea/horia/grisa."
+            },
+            {
+                "q": "Eguneroko berria?",
+                "a": "Bai. Hitz berdina guztientzat."
+            },
+            {
+                "q": "Doakoa?",
+                "a": "Bai. Modu guztiak 80+ hizkuntzatan."
+            },
+            {
+                "q": "Behin baino gehiago?",
+                "a": "Bai — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited {langName}(e)n?",
+                    "a": "Nahi adina jokatu."
+                },
+                {
+                    "q": "Doakoa?",
+                    "a": "Bai."
+                },
+                {
+                    "q": "Eguneroko segida?",
+                    "a": "Ez. Estatistika bereiziak."
+                },
+                {
+                    "q": "Zenbat aldiz?",
+                    "a": "Mugarik gabe."
+                },
+                {
+                    "q": "Zein hizkuntzatan?",
+                    "a": "80+ hizkuntzatan."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak {langName}(e)n?",
+                    "a": "Denbora-aurka Wordle. 3 minutu."
+                },
+                {
+                    "q": "Puntuazioa?",
+                    "a": "Asmatze gutxiago = puntu gehiago. 3x komboa."
+                },
+                {
+                    "q": "Denbora amaitzen?",
+                    "a": "Jokoa amaitu."
+                },
+                {
+                    "q": "Doakoa?",
+                    "a": "Bai. 80+ hizkuntzatan."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} {langName}(e)n?",
+                    "a": "{boardCount} taula, {maxGuesses} asmatze."
+                },
+                {
+                    "q": "Zenbat asmatze?",
+                    "a": "{maxGuesses} {boardCount} taulatarako."
+                },
+                {
+                    "q": "Estrategia?",
+                    "a": "Letra arruntak. Teklatu banatua."
+                },
+                {
+                    "q": "Doakoa?",
+                    "a": "Bai. 80+ hizkuntzatan."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Hitz bat idatzi",
+                "text": "{langName}: 5 letra, Enter."
+            },
+            {
+                "name": "Pistak irakurri",
+                "text": "Berdea = leku egokia. Horia = okerra. Grisa = ez dago."
+            },
+            {
+                "name": "6 saiakeran ebatzi",
+                "text": "Kolore-pistak erabili. 6 asmatze."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Hasi",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Asmatu",
+                    "text": "5 letra, Enter."
+                },
+                {
+                    "name": "Berriz",
+                    "text": "\"Berriz jokatu\"."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Kronometroa",
+                    "text": "wordle.global/{lang}/speed — 3 minutu."
+                },
+                {
+                    "name": "Azkar",
+                    "text": "Bonus denbora (+10s-tik +60s-ra)."
+                },
+                {
+                    "name": "Komboa",
+                    "text": "Biderkatzailea 3x arte."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Hasi",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} taula."
+                },
+                {
+                    "name": "Taula guztiak",
+                    "text": "Asmatzea {boardCount} taulatan aldi berean."
+                },
+                {
+                    "name": "{boardCount} ebatzi",
+                    "text": "Teklatu banatua. {maxGuesses} asmatze."
+                }
+            ]
+        }
     }
 }

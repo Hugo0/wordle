@@ -90,7 +90,12 @@
 <script setup lang="ts">
 import { ChevronDown } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
-import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
+import {
+    GAME_MODES_UI,
+    getModeRoute,
+    getModeLabel,
+    getModeDescription,
+} from '~/composables/useGameModes';
 
 const props = defineProps<{
     visible: boolean;
@@ -107,14 +112,18 @@ const emit = defineEmits<{
 const flagFailed = ref(false);
 const flagSrc = computed(() => (flagFailed.value ? null : useFlag(props.langCode)));
 
-const modes = computed(() =>
-    GAME_MODES_UI.map((mode) => ({
+const langStore = useLanguageStore();
+const modes = computed(() => {
+    const ui = langStore.config?.ui;
+    return GAME_MODES_UI.map((mode) => ({
         ...mode,
         iconComponent: mode.icon,
+        label: getModeLabel(mode, ui),
+        description: getModeDescription(mode, ui),
         disabled: !mode.enabled,
         route: getModeRoute(mode, props.langCode),
-    }))
-);
+    }));
+});
 
 const analytics = useAnalytics();
 

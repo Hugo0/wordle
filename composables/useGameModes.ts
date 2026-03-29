@@ -143,3 +143,21 @@ export function getModeRoute(mode: GameModeUI, langCode: string): string | null 
     if (!mode.enabled) return null;
     return mode.routeSuffix ? `/${langCode}/${mode.routeSuffix}` : `/${langCode}`;
 }
+
+/**
+ * Get a translatable label for a game mode, falling back to the static English label.
+ * Config keys follow the pattern: mode_{id}_label
+ */
+export function getModeLabel(mode: GameModeUI, ui?: Record<string, any>): string {
+    const key = `mode_${mode.id}_label`;
+    return (ui?.[key] as string) || mode.label;
+}
+
+/**
+ * Get a translatable description for a game mode, falling back to the static English description.
+ * Config keys follow the pattern: mode_{id}_desc
+ */
+export function getModeDescription(mode: GameModeUI, ui?: Record<string, any>): string {
+    const key = `mode_${mode.id}_desc`;
+    return (ui?.[key] as string) || mode.description;
+}

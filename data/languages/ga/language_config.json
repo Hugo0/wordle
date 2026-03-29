@@ -236,5 +236,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Conas imirt",
+        "tips_strategy": "Leideanna agus straiteis",
+        "more_modes": "Tuilleadh modhanna cluiche",
+        "play_in_languages": "Imir i 80+ teanga",
+        "play_in_languages_sub": "Gach teanga saor in aisce. Gan cuntas.",
+        "why_wordle_global": "Cen fath Wordle Global",
+        "faq_title": "Ceisteanna coitianta",
+        "browse_all_languages": "Brabhsail 80+ teanga",
+        "recent_words": "Focail le deireanas",
+        "view_all_words": "Fach gach focal",
+        "footer": "wordle.global — cluiche focal laethuil saor in aisce i 80+ teanga",
+        "tile_correct": "san fhocal agus san ait cheart.",
+        "tile_semicorrect": "san fhocal ach san ait mhicheart.",
+        "tile_incorrect": "nil se san fhocal.",
+        "stat_players": "Imreoiri",
+        "stat_guesses": "Buillte",
+        "stat_languages": "Teangacha",
+        "stat_modes": "Modhanna cluiche",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ teanga",
+                "desc": "On Araibis go Iorubais. An Wordle ilteangach is mo."
+            },
+            {
+                "key": "definitions",
+                "title": "Sainithe focal",
+                "desc": "Foghlaim brí gach focail tar eis imirt."
+            },
+            {
+                "key": "word_art",
+                "title": "Ealaín focal uathúil",
+                "desc": "Gach focal le léaráid shaincheaptha."
+            },
+            {
+                "key": "themes",
+                "title": "Mód dorcha agus téamaí",
+                "desc": "Geal, dorcha agus ardchontrárthacht."
+            },
+            {
+                "key": "pwa",
+                "title": "Oibríonn gach áit",
+                "desc": "PWA — aon ghléas. As líne."
+            },
+            {
+                "key": "free",
+                "title": "Saor in aisce go deo",
+                "desc": "Gan cuntas. Gan balla íocaíochta."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Tosaigh le gutaí",
+                "text": "Scrúdaíonn CRANE nó ADIEU litreacha coitianta go tapa."
+            },
+            {
+                "title": "Úsáid a bhfuil ar eolas agat",
+                "text": "Glas seasta. Buí bog. Liath amach."
+            },
+            {
+                "title": "Patrúin choitianta",
+                "text": "Tá patrúin féin ag gach teanga."
+            },
+            {
+                "title": "Díchur",
+                "text": "Ba cheart litreacha nua a thástáil leis an dara focal."
+            },
+            {
+                "title": "Litreacha dúbailte",
+                "text": "Mura n-oireann na leideanna, smaoinigh ar litir athuaire."
+            },
+            {
+                "title": "Mód crua",
+                "text": "Cuireann sé iallach ort leideanna deimhnithe a úsáid."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Litreacha minice — an seans is fearr."
+            },
+            {
+                "title": "Ná smaoinigh barraíocht",
+                "text": "Tugann Speed Streak luach saothair don instinn."
+            },
+            {
+                "title": "Cosain do chombo",
+                "text": "Briseann focal caillte an iolraitheoir."
+            },
+            {
+                "title": "2-3 bhuille",
+                "text": "Bónas ama ollmhór (+60s le 1)."
+            },
+            {
+                "title": "Deireadh focal",
+                "text": "Aithint patrúin — sábháil soicindí."
+            },
+            {
+                "title": "Fan socair",
+                "text": "Luathaíonn an t-amadóir gach 3 fhocal."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Tosaigh leathan",
+                "text": "Litreacha coitianta chun leideanna a bhailiú ar gach clár."
+            },
+            {
+                "title": "Méarchlár scoilte",
+                "text": "Glas/liath ar chláir éagsúla: laghdaíonn roghanna."
+            },
+            {
+                "title": "Cláir dheacra",
+                "text": "Dírígh ar an gclár le níos mó anaithnid."
+            },
+            {
+                "title": "Ná cuir amú",
+                "text": "An chéad 2-3 le focail eolais."
+            },
+            {
+                "title": "Litreacha roinnte",
+                "text": "Dhá chlár le E buí? E in áit nua."
+            },
+            {
+                "title": "Coinnigh buille",
+                "text": "Buille breise ag an deireadh."
+            }
+        ],
+        "mode_desc_classic": "6 bhuille chun focal 5 litir a aimsiú. Úsáid leideanna dathanna.",
+        "mode_desc_unlimited": "6 bhuille, 5 litir. \"Imir arís\" — gan teorainn laethúil.",
+        "mode_desc_speed": "3 nóiméad. Gach focal: bónas ama (+60s le 1, +10s le 6). Caillte: 30s. Combo go 3x. Níos tapúla gach 3.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} clár, {maxGuesses} buille. Gach buille ar gach clár. Réitithe reoite. Méarchlár scoilte.",
+        "faq": [
+            {
+                "q": "Conas Wordle a imirt i {langName}?",
+                "a": "wordle.global/{lang}. 6 bhuille, 5 litir."
+            },
+            {
+                "q": "Ceann nua gach lá?",
+                "a": "Sea. An focal céanna do gach duine."
+            },
+            {
+                "q": "Saor in aisce?",
+                "a": "Sea. Gach modh i 80+ teanga."
+            },
+            {
+                "q": "Níos mó ná uair amháin?",
+                "a": "Sea — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited i {langName}?",
+                    "a": "Imir oiread is ba mhaith leat."
+                },
+                {
+                    "q": "Saor in aisce?",
+                    "a": "Sea."
+                },
+                {
+                    "q": "Sraith laethúil?",
+                    "a": "Ní hea. Staitisticí ar leith."
+                },
+                {
+                    "q": "Cé mhéad uair?",
+                    "a": "Gan teorainn."
+                },
+                {
+                    "q": "Cé na teangacha?",
+                    "a": "80+ teanga."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak i {langName}?",
+                    "a": "Wordle in aghaidh an chloig. 3 nóiméad."
+                },
+                {
+                    "q": "Scóráil?",
+                    "a": "Níos lú buillí = níos mó pointí. Combo 3x."
+                },
+                {
+                    "q": "Am istigh?",
+                    "a": "Críochnaíonn an cluiche."
+                },
+                {
+                    "q": "Saor in aisce?",
+                    "a": "Sea. 80+ teanga."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} i {langName}?",
+                    "a": "{boardCount} clár, {maxGuesses} buille."
+                },
+                {
+                    "q": "Cé mhéad buille?",
+                    "a": "{maxGuesses} do {boardCount} clár."
+                },
+                {
+                    "q": "Straitéis?",
+                    "a": "Litreacha coitianta. Méarchlár scoilte."
+                },
+                {
+                    "q": "Saor in aisce?",
+                    "a": "Sea. 80+ teanga."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Clóscríobh focal",
+                "text": "{langName}: 5 litir, Enter."
+            },
+            {
+                "name": "Léigh leideanna",
+                "text": "Glas = ceart. Buí = áit mhícheart. Liath = níl ann."
+            },
+            {
+                "name": "Réitigh i 6",
+                "text": "Leideanna dathanna. 6 bhuille."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Tosaigh",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Tomhais",
+                    "text": "5 litir, Enter."
+                },
+                {
+                    "name": "Arís",
+                    "text": "\"Imir arís\"."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Amadóir",
+                    "text": "wordle.global/{lang}/speed — 3 nóim."
+                },
+                {
+                    "name": "Tapa",
+                    "text": "Bónas ama (+10s go +60s)."
+                },
+                {
+                    "name": "Combo",
+                    "text": "Iolraitheoir go 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Tosaigh",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} clár."
+                },
+                {
+                    "name": "Gach clár",
+                    "text": "Buille ar {boardCount} clár."
+                },
+                {
+                    "name": "Réitigh {boardCount}",
+                    "text": "Méarchlár scoilte. {maxGuesses} buille."
+                }
+            ]
+        }
     }
 }

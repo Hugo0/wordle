@@ -128,7 +128,7 @@
 <script setup lang="ts">
 import { Globe, ChevronRight, Bug } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
-import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
+import { GAME_MODES_UI, getModeRoute, getModeLabel } from '~/composables/useGameModes';
 import SidebarItem from './SidebarItem.vue';
 
 const props = withDefaults(
@@ -168,16 +168,18 @@ function selectMode(mode: string) {
     close();
 }
 
-const gameModes = computed(() =>
-    GAME_MODES_UI.map((mode) => ({
+const langStore = useLanguageStore();
+const gameModes = computed(() => {
+    const ui = langStore.config?.ui;
+    return GAME_MODES_UI.map((mode) => ({
         id: mode.id,
         icon: mode.icon,
-        label: mode.label,
+        label: getModeLabel(mode, ui),
         badge: mode.badge,
         href: getModeRoute(mode, props.langCode) ?? undefined,
         disabled: !mode.enabled,
-    }))
-);
+    }));
+});
 
 // Pre-fill bug report with language, mode, and device info
 const bugReportUrl = computed(() => {

@@ -239,5 +239,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Kiel ludi",
+        "tips_strategy": "Konsiloj kaj strategio",
+        "more_modes": "Pliaj ludreĝimoj",
+        "play_in_languages": "Ludu en 80+ lingvoj",
+        "play_in_languages_sub": "Ĉiuj lingvoj senpagaj. Neniu konto bezonata.",
+        "why_wordle_global": "Kial Wordle Global",
+        "faq_title": "Oftaj demandoj",
+        "browse_all_languages": "Foliumi 80+ lingvojn",
+        "recent_words": "Lastaj vortoj",
+        "view_all_words": "Vidi ĉiujn vortojn",
+        "footer": "wordle.global — la senpaga ĉiutaga vortludo en 80+ lingvoj",
+        "tile_correct": "estas en la vorto kaj en la ĝusta loko.",
+        "tile_semicorrect": "estas en la vorto sed en malĝusta loko.",
+        "tile_incorrect": "ne estas en la vorto.",
+        "stat_players": "Ludantoj",
+        "stat_guesses": "Divenoj",
+        "stat_languages": "Lingvoj",
+        "stat_modes": "Ludreĝimoj",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ lingvoj",
+                "desc": "De la araba ĝis Joruba. La plej granda plurlingva Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Vortdifinoj",
+                "desc": "Lernu la signifon de ĉiu vorto post ludado."
+            },
+            {
+                "key": "word_art",
+                "title": "Unika vortarto",
+                "desc": "Ĉiu vorto kun propra ilustraĵo."
+            },
+            {
+                "key": "themes",
+                "title": "Malhela reĝimo kaj temoj",
+                "desc": "Helaj, malhelaj kaj altakontrastaj reĝimoj."
+            },
+            {
+                "key": "pwa",
+                "title": "Funkcias ĉie",
+                "desc": "PWA — ajna aparato. Senrete."
+            },
+            {
+                "key": "free",
+                "title": "Senpaga por ĉiam",
+                "desc": "Neniu konto. Neniu pagmuro."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Vokalriĉa vorto",
+                "text": "CRANE aŭ ADIEU rapide testas oftajn literojn."
+            },
+            {
+                "title": "Uzu scion",
+                "text": "Verdaj fiksaj. Flavaj moviĝu. Grizaj forigitaj."
+            },
+            {
+                "title": "Oftaj ŝablonoj",
+                "text": "Ĉiu lingvo havas siajn ŝablonojn."
+            },
+            {
+                "title": "Eliminu",
+                "text": "La dua vorto testu novajn literojn."
+            },
+            {
+                "title": "Duoblaj literoj",
+                "text": "Indicoj ne kongruas? Ripetita litero eble."
+            },
+            {
+                "title": "Malfacila reĝimo",
+                "text": "Devigas uzi konfirmitajn indicojn."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Altfrekvencaj literoj donas la plej bonan ŝancon."
+            },
+            {
+                "title": "Ne tro pensu",
+                "text": "Speed Streak rekompencas intuicion."
+            },
+            {
+                "title": "Protektu kombon",
+                "text": "Malsukceso rompas la multiplikanton."
+            },
+            {
+                "title": "2-3 divenoj",
+                "text": "Tempobonuso enorma (+60s por 1)."
+            },
+            {
+                "title": "Vortfinoj",
+                "text": "Rekoni ŝablonojn ŝparas sekundojn."
+            },
+            {
+                "title": "Restu trankvila",
+                "text": "La tempilo rapidiĝas ĉiujn 3 vortojn."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Vaste",
+                "text": "Oftaj literoj por kolekti indicojn sur ĉiuj tabuloj."
+            },
+            {
+                "title": "Dividita klavaro",
+                "text": "Verda sur unu, griza sur alia: rapide malvastigas."
+            },
+            {
+                "title": "Malfacilaj tabuloj",
+                "text": "Koncentru sur la tabulo kun plej multaj nekonatoj."
+            },
+            {
+                "title": "Ne malŝparu",
+                "text": "Unuaj 2-3 por informriĉaj vortoj."
+            },
+            {
+                "title": "Komunaj literoj",
+                "text": "Du tabuloj flava E? Vorto kun E en nova pozicio."
+            },
+            {
+                "title": "Gardu divenon",
+                "text": "Ekstra diveno ĉe la fino estas decida."
+            }
+        ],
+        "mode_desc_classic": "6 provoj por diveni kaŝitan 5-literan vorton. Uzu kolorindicojn.",
+        "mode_desc_unlimited": "6 provoj, 5 literoj. \"Ludi denove\" por nova vorto — neniu ĉiutaga limo.",
+        "mode_desc_speed": "3 minutoj. Ĉiu solvita vorto donas bonusan tempon (+60s por 1, +10s por 6). Malsukcesoj: 30s. Komboj ĝis 3x. Rapidiĝas ĉiujn 3 vortojn.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} tabuloj, {maxGuesses} divenoj. Ĉiu diveno sur ĉiuj nesolvitaj. Solvitaj frostiĝas. Dividkolora klavaro.",
+        "faq": [
+            {
+                "q": "Kiel mi ludas Wordle en {langName}?",
+                "a": "wordle.global/{lang}. 6 provoj, 5 literoj. Verdaj/flavaj/grizaj kaheloj."
+            },
+            {
+                "q": "Nova ĉiutage?",
+                "a": "Jes. Sama vorto por ĉiuj ludantoj."
+            },
+            {
+                "q": "Senpaga?",
+                "a": "Jes. Ĉiuj reĝimoj en 80+ lingvoj."
+            },
+            {
+                "q": "Pli ol unufoje?",
+                "a": "Jes — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited en {langName}?",
+                    "a": "Ludu kiom vi volas."
+                },
+                {
+                    "q": "Senpaga?",
+                    "a": "Jes."
+                },
+                {
+                    "q": "Ĉiutaga serio?",
+                    "a": "Ne. Apartaj statistikoj."
+                },
+                {
+                    "q": "Kiomfoje?",
+                    "a": "Neniu limo."
+                },
+                {
+                    "q": "Kiuj lingvoj?",
+                    "a": "80+ lingvoj."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak en {langName}?",
+                    "a": "Tempopremata Wordle. 3 minutoj."
+                },
+                {
+                    "q": "Poentado?",
+                    "a": "Malpli da divenoj = pli da poenoj. 3x kombo."
+                },
+                {
+                    "q": "Tempo finiĝas?",
+                    "a": "La ludo finiĝas."
+                },
+                {
+                    "q": "Senpaga?",
+                    "a": "Jes. 80+ lingvoj."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} en {langName}?",
+                    "a": "{boardCount} tabuloj, {maxGuesses} divenoj."
+                },
+                {
+                    "q": "Kiom da divenoj?",
+                    "a": "{maxGuesses} por {boardCount} tabuloj."
+                },
+                {
+                    "q": "Strategio?",
+                    "a": "Oftaj literoj. Dividita klavaro."
+                },
+                {
+                    "q": "Senpaga?",
+                    "a": "Jes. 80+ lingvoj."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Tajpu vorton",
+                "text": "{langName}: 5 literoj, Enter."
+            },
+            {
+                "name": "Legu indicojn",
+                "text": "Verda = ĝusta loko. Flava = malĝusta. Griza = ne en vorto."
+            },
+            {
+                "name": "Solvu en 6",
+                "text": "Kolorindicoj. 6 provoj."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Komencu",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Divenu",
+                    "text": "5 literoj, Enter."
+                },
+                {
+                    "name": "Reludi",
+                    "text": "\"Ludi denove\" tuj."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Tempilo",
+                    "text": "wordle.global/{lang}/speed — 3 minutoj."
+                },
+                {
+                    "name": "Rapide",
+                    "text": "Bonusa tempo (+10s ĝis +60s)."
+                },
+                {
+                    "name": "Kombo",
+                    "text": "Multiplikanto ĝis 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Komencu",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} tabuloj."
+                },
+                {
+                    "name": "Ĉiuj tabuloj",
+                    "text": "Diveno sur {boardCount} tabuloj samtempe."
+                },
+                {
+                    "name": "Solvu {boardCount}",
+                    "text": "Dividkolora klavaro. {maxGuesses} divenoj."
+                }
+            ]
+        }
     }
 }

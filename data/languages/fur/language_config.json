@@ -245,5 +245,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Cemût zuiâ",
+        "tips_strategy": "Conseis e strategjie",
+        "more_modes": "Plui modalitâts di zûc",
+        "play_in_languages": "Zughe in 80+ lenghis",
+        "play_in_languages_sub": "Dutis lis lenghis son gratis. Cence cont.",
+        "why_wordle_global": "Parcè Wordle Global",
+        "faq_title": "Domandis frequentis",
+        "browse_all_languages": "Esplore 80+ lenghis",
+        "recent_words": "Peraulis recentis",
+        "view_all_words": "Viôt dutis lis peraulis",
+        "footer": "wordle.global — il zûc di peraulis ogni dì gratis in 80+ lenghis",
+        "tile_correct": "al è te peraule e tal puest just.",
+        "tile_semicorrect": "al è te peraule ma tal puest sbaliât.",
+        "tile_incorrect": "nol è te peraule.",
+        "stat_players": "Zuiadôrs",
+        "stat_guesses": "Tentativis",
+        "stat_languages": "Lenghis",
+        "stat_modes": "Modalitâts di zûc",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ lenghis",
+                "desc": "Dal arap al yoruba. Il plui grant Wordle plurilengâl."
+            },
+            {
+                "key": "definitions",
+                "title": "Definizions",
+                "desc": "Impare il significât di ogni peraule dopo il zûc."
+            },
+            {
+                "key": "word_art",
+                "title": "Art uniche",
+                "desc": "Ogni peraule cuntune ilustrazion."
+            },
+            {
+                "key": "themes",
+                "title": "Modalitât scure e temis",
+                "desc": "Clâr, scûr e alt contrast."
+            },
+            {
+                "key": "pwa",
+                "title": "Al funzione dapardut",
+                "desc": "PWA — cualsisei dispositîf. Ancje offline."
+            },
+            {
+                "key": "free",
+                "title": "Gratis par simpri",
+                "desc": "Cence cont. Cence paiâ."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Scomence cun vocâls",
+                "text": "CRANE o ADIEU a proedin letaris comunis."
+            },
+            {
+                "title": "Dopre ce che tu sâs",
+                "text": "Vert = fix. Zâl = cambie posizion. Grîs = no."
+            },
+            {
+                "title": "Parons comuns",
+                "text": "Ogni lenghe e à i siei parons."
+            },
+            {
+                "title": "Eliminâ",
+                "text": "Il secont tentatîf al à di provâ letaris gnovis."
+            },
+            {
+                "title": "Letaris dopplis",
+                "text": "Se nol cole, pense a une letare ripetude."
+            },
+            {
+                "title": "Modalitât dificile",
+                "text": "Ti oblighe a doprâ i indizis confermâts."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Letaris frequentis a dan la miôr probabilitât."
+            },
+            {
+                "title": "No sta pensâ masse",
+                "text": "Speed Streak al premie la intuizion."
+            },
+            {
+                "title": "Protei il combo",
+                "text": "Un faliment al romp il moltiplicadôr."
+            },
+            {
+                "title": "2-3 tentativis",
+                "text": "Bonus di timp enorme (+60s par 1)."
+            },
+            {
+                "title": "Finâls",
+                "text": "Ricognessi i parons a spare seconts."
+            },
+            {
+                "title": "Stât calmo",
+                "text": "Il cronometri al va plui svelt ogni 3 peraulis."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Lârc",
+                "text": "Letaris comunis par cjapâ indizis su dutis lis taulis."
+            },
+            {
+                "title": "Tastiere dividude",
+                "text": "Vert/grîs su taulis diversis ridûs lis opzions."
+            },
+            {
+                "title": "Taulis dificilis",
+                "text": "Concentriti su la taule cun plui incogniis."
+            },
+            {
+                "title": "No sta sprecjâ",
+                "text": "Prins 2-3 par peraulis informativis."
+            },
+            {
+                "title": "Letaris in comun",
+                "text": "Dôs taulis cun E zâl? E in posizion gnove."
+            },
+            {
+                "title": "Salve un tentatîf",
+                "text": "Un tentatîf in plui al fâs la diference."
+            }
+        ],
+        "mode_desc_classic": "6 tentativis par indovinâ une peraule di 5 letaris. Indizis di colôr.",
+        "mode_desc_unlimited": "6 tentativis, 5 letaris. \"Zughe ancjemò\" — cence limit.",
+        "mode_desc_speed": "3 minûts. Ogni peraule e da bonus di timp (+60s par 1, +10s par 6). Faliments: 30s. Combo fin a 3x. Plui svelt ogni 3 peraulis.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} taulis, {maxGuesses} tentativis. Ogni tentatîf su dutis. Risolvis a si blochin. Tastiere dividude.",
+        "faq": [
+            {
+                "q": "Cemût zuiâ Wordle in {langName}?",
+                "a": "wordle.global/{lang}. 6 tentativis, 5 letaris."
+            },
+            {
+                "q": "Gnûf ogni dì?",
+                "a": "Sì. La stesse peraule par ducj."
+            },
+            {
+                "q": "Gratis?",
+                "a": "Sì. Dutis lis modalitâts in 80+ lenghis."
+            },
+            {
+                "q": "Plui di une volte?",
+                "a": "Sì — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited in {langName}?",
+                    "a": "Zughe tantes voltis che tu vuelis."
+                },
+                {
+                    "q": "Gratis?",
+                    "a": "Sì."
+                },
+                {
+                    "q": "Serie di ogni dì?",
+                    "a": "No. Statistichis separadis."
+                },
+                {
+                    "q": "Quantis voltis?",
+                    "a": "Cence limit."
+                },
+                {
+                    "q": "Cualis lenghis?",
+                    "a": "80+ lenghis."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak in {langName}?",
+                    "a": "Wordle a timp. 3 minûts."
+                },
+                {
+                    "q": "Ponts?",
+                    "a": "Mancul tentativis = plui ponts. Combo 3x."
+                },
+                {
+                    "q": "Timp finît?",
+                    "a": "Il zûc al finìs."
+                },
+                {
+                    "q": "Gratis?",
+                    "a": "Sì. 80+ lenghis."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} in {langName}?",
+                    "a": "{boardCount} taulis, {maxGuesses} tentativis."
+                },
+                {
+                    "q": "Quantis tentativis?",
+                    "a": "{maxGuesses} par {boardCount} taulis."
+                },
+                {
+                    "q": "Strategjie?",
+                    "a": "Letaris comunis. Tastiere dividude."
+                },
+                {
+                    "q": "Gratis?",
+                    "a": "Sì. 80+ lenghis."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Scrîf une peraule",
+                "text": "{langName}: 5 letaris, Enter."
+            },
+            {
+                "name": "Lei i indizis",
+                "text": "Vert = just. Zâl = sbaliât. Grîs = no tal zûc."
+            },
+            {
+                "name": "Risolf in 6",
+                "text": "Indizis di colôr. 6 tentativis."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Scomence",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Indovinâ",
+                    "text": "5 letaris, Enter."
+                },
+                {
+                    "name": "Ancjemò",
+                    "text": "\"Zughe ancjemò\" subit."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Cronometri",
+                    "text": "wordle.global/{lang}/speed — 3 minûts."
+                },
+                {
+                    "name": "Svelt",
+                    "text": "Bonus timp (+10s a +60s)."
+                },
+                {
+                    "name": "Combo",
+                    "text": "Moltiplicadôr fin a 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Scomence",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} taulis."
+                },
+                {
+                    "name": "Dutis lis taulis",
+                    "text": "Tentatîf su {boardCount} taulis."
+                },
+                {
+                    "name": "Risolf {boardCount}",
+                    "text": "Tastiere dividude. {maxGuesses} tentativis."
+                }
+            ]
+        }
     }
 }

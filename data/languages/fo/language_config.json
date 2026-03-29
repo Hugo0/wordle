@@ -237,5 +237,275 @@
         "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
+    },
+    "seo": {
+        "how_to_play": "Hvussu at spæla",
+        "tips_strategy": "Ráð og strategia",
+        "more_modes": "Fleiri spælsátir",
+        "play_in_languages": "Spæl á 80+ málum",
+        "play_in_languages_sub": "Øll mál eru ókeypis. Einki konto neyðugt.",
+        "why_wordle_global": "Hví Wordle Global",
+        "faq_title": "Ofta spurdar spurningar",
+        "browse_all_languages": "Kanna 80+ mál",
+        "recent_words": "Seinast orð",
+        "view_all_words": "Vís øll orð",
+        "footer": "wordle.global — ókeypis dagliga orðaspælið á 80+ málum",
+        "tile_correct": "er í orðinum og á rættum stað.",
+        "tile_semicorrect": "er í orðinum men á skeivum stað.",
+        "tile_incorrect": "er ikki í orðinum.",
+        "stat_players": "Spælarar",
+        "stat_guesses": "Giskingar",
+        "stat_languages": "Mál",
+        "stat_modes": "Spælsátir",
+        "value_props": [
+            {
+                "key": "languages",
+                "title": "80+ mál",
+                "desc": "Frá arabiskum til yoruba. Størsta fjølmálsliga Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "Orðatýðingar",
+                "desc": "Lær týðingina av hvørjum orði eftir spæl."
+            },
+            {
+                "key": "word_art",
+                "title": "Serlig orðalist",
+                "desc": "Hvørt orð við egnu myndaskreyting."
+            },
+            {
+                "key": "themes",
+                "title": "Myrkt snið og temur",
+                "desc": "Ljóst, myrkt og hákontrast."
+            },
+            {
+                "key": "pwa",
+                "title": "Virkar yvuralt",
+                "desc": "PWA — hvør sum helst tól. Offline."
+            },
+            {
+                "key": "free",
+                "title": "Altíð ókeypis",
+                "desc": "Einki konto. Eingin gjaldsmúrur."
+            }
+        ],
+        "tips": [
+            {
+                "title": "Sjálvljóðsríkt orð",
+                "text": "CRANE ella ADIEU prøva vanlig bókstavir skjótt."
+            },
+            {
+                "title": "Brúka tað tú veitst",
+                "text": "Grønt fast. Gult flyt. Grátt burtur."
+            },
+            {
+                "title": "Vanlig mynstir",
+                "text": "Hvørt mál hevur síni egnu mynstir."
+            },
+            {
+                "title": "Útiloka",
+                "text": "Annað orð skal prøva nýggj bókstavir."
+            },
+            {
+                "title": "Tvífaldur bókstavur",
+                "text": "Vísbendingar stemma ikki? Mettur tvífaldur bókstavur."
+            },
+            {
+                "title": "Strangur móti",
+                "text": "Tvingar at brúka váttaðar vísbendingar."
+            }
+        ],
+        "tips_speed": [
+            {
+                "title": "CRANE",
+                "text": "Oft brúktir bókstavir geva bestu møguleikann."
+            },
+            {
+                "title": "Ikki yvirtenkja",
+                "text": "Speed Streak lønar intuition."
+            },
+            {
+                "title": "Verjið kombo",
+                "text": "Misheppnaður brekur multiplikatoran."
+            },
+            {
+                "title": "2-3 giskingar",
+                "text": "Tíðarbónus er stórur (+60s fyri 1)."
+            },
+            {
+                "title": "Orðaendingar",
+                "text": "Kenna vanlig mynstir sparar sekund."
+            },
+            {
+                "title": "Halda ró",
+                "text": "Klokkan ferðast eftir 3 orð."
+            }
+        ],
+        "tips_multiboard": [
+            {
+                "title": "Breitt",
+                "text": "Vanligir bókstavir fyri at samla vísbendingar."
+            },
+            {
+                "title": "Skipt knappaborð",
+                "text": "Grønt/grátt á ymiskum borðum minkar møguleikar."
+            },
+            {
+                "title": "Trupul borð",
+                "text": "Fokusera á borðið við flestum ókendum."
+            },
+            {
+                "title": "Ikki spilla",
+                "text": "Fyrstu 2-3 fyri upplýsandi orð."
+            },
+            {
+                "title": "Samsett bókstavir",
+                "text": "Tvey borð við gulari E? Nýtt E-plássering hjálpir."
+            },
+            {
+                "title": "Goym gisking",
+                "text": "Eyka gisking í endanum ger munin."
+            }
+        ],
+        "mode_desc_classic": "6 giskingar fyri at finna 5-bókstava orð. Brúka litarvísbendingar.",
+        "mode_desc_unlimited": "6 giskingar, 5 bókstavir. \"Spæl aftur\" — eingin dagsmørk.",
+        "mode_desc_speed": "3 minuttir. Hvørt orð gevur bónustíð (+60s fyri 1, +10s fyri 6). Misheppnaður: 30s. Kombo til 3x. Ferðast eftir 3 orð.",
+        "mode_desc_multiboard": "{modeName}: {boardCount} borð, {maxGuesses} giskingar. Gisking á øllum óloystum borðum. Loystu frysa. Skipt litaknappaborð.",
+        "faq": [
+            {
+                "q": "Hvussu spæli eg Wordle á {langName}?",
+                "a": "wordle.global/{lang}. 6 giskingar, 5 bókstavir."
+            },
+            {
+                "q": "Nýtt hvønn dag?",
+                "a": "Ja. Sama orðið hjá øllum."
+            },
+            {
+                "q": "Ókeypis?",
+                "a": "Ja. Allir sátir á 80+ málum."
+            },
+            {
+                "q": "Meira enn einaferð?",
+                "a": "Ja — wordle.global/{lang}/unlimited."
+            }
+        ],
+        "mode_faq": {
+            "unlimited": [
+                {
+                    "q": "Wordle Unlimited á {langName}?",
+                    "a": "Spæl so nógv tú vilt."
+                },
+                {
+                    "q": "Ókeypis?",
+                    "a": "Ja."
+                },
+                {
+                    "q": "Daglig ferð?",
+                    "a": "Nei. Serstøk hagtøl."
+                },
+                {
+                    "q": "Hvussu nógv?",
+                    "a": "Eingin mark."
+                },
+                {
+                    "q": "Hvørji mál?",
+                    "a": "80+ mál."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "Speed Streak á {langName}?",
+                    "a": "Tíðarpressa Wordle. 3 minuttir."
+                },
+                {
+                    "q": "Stigagjørd?",
+                    "a": "Færri giskingar = meira stig. 3x kombo."
+                },
+                {
+                    "q": "Tíðin endar?",
+                    "a": "Spælið endar."
+                },
+                {
+                    "q": "Ókeypis?",
+                    "a": "Ja. 80+ mál."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "{modeName} á {langName}?",
+                    "a": "{boardCount} borð, {maxGuesses} giskingar."
+                },
+                {
+                    "q": "Hvussu nógvar giskingar?",
+                    "a": "{maxGuesses} fyri {boardCount} borð."
+                },
+                {
+                    "q": "Strategia?",
+                    "a": "Vanligir bókstavir. Skipt knappaborð."
+                },
+                {
+                    "q": "Ókeypis?",
+                    "a": "Ja. 80+ mál."
+                }
+            ]
+        },
+        "howto": [
+            {
+                "name": "Skriva orð",
+                "text": "{langName}: 5 bókstavir, Enter."
+            },
+            {
+                "name": "Les vísbendingar",
+                "text": "Grønt = rætt. Gult = skeivt. Grátt = ikki í."
+            },
+            {
+                "name": "Loys í 6",
+                "text": "Litarvísbendingar. 6 giskingar."
+            }
+        ],
+        "mode_howto": {
+            "unlimited": [
+                {
+                    "name": "Byrja",
+                    "text": "wordle.global/{lang}/unlimited."
+                },
+                {
+                    "name": "Giska",
+                    "text": "5 bókstavir, Enter."
+                },
+                {
+                    "name": "Aftur",
+                    "text": "\"Spæl aftur\" beinanvegin."
+                }
+            ],
+            "speed": [
+                {
+                    "name": "Klokka",
+                    "text": "wordle.global/{lang}/speed — 3 min."
+                },
+                {
+                    "name": "Skjótt",
+                    "text": "Bónustíð (+10s til +60s)."
+                },
+                {
+                    "name": "Kombo",
+                    "text": "Multiplikator til 3x."
+                }
+            ],
+            "multiboard": [
+                {
+                    "name": "Byrja",
+                    "text": "wordle.global/{lang}/{modeName} — {boardCount} borð."
+                },
+                {
+                    "name": "Øll borð",
+                    "text": "Gisking á {boardCount} borðum."
+                },
+                {
+                    "name": "Loys {boardCount}",
+                    "text": "Skipt knappaborð. {maxGuesses} giskingar."
+                }
+            ]
+        }
     }
 }
