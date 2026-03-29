@@ -6,7 +6,7 @@
  * Matches the legacy Flask index.html exactly.
  */
 import { useSettingsStore } from '~/stores/settings';
-import { Flame, Check, X, Download } from 'lucide-vue-next';
+import { Flame, Check, Download } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import { GAME_MODES_UI, getModeRoute } from '~/composables/useGameModes';
 
@@ -453,6 +453,15 @@ function getFlag(code: string): string | null {
     return flag;
 }
 
+// Track flags that failed to load so we show the initial-letter fallback
+const failedFlags = reactive(new Set<string>());
+function onFlagError(code: string) {
+    failedFlags.add(code);
+}
+function showFlag(code: string): boolean {
+    return !!getFlag(code) && !failedFlags.has(code);
+}
+
 // ---------------------------------------------------------------------------
 // Homepage mode cards
 // ---------------------------------------------------------------------------
@@ -462,7 +471,9 @@ const defaultLangName = computed(() => {
     const lang = languages.value[defaultLang.value];
     return lang?.language_name_native || lang?.language_name || defaultLang.value;
 });
-const defaultLangFlag = computed(() => useFlag(defaultLang.value));
+const defaultLangFlag = computed(() =>
+    showFlag(defaultLang.value) ? useFlag(defaultLang.value) : null
+);
 
 // Homepage shows first 5 modes from shared source + "& More" card
 const HOMEPAGE_MODE_IDS = ['classic', 'unlimited', 'speed', 'dordle', 'quordle'];
@@ -539,7 +550,7 @@ function openLink(url: string): void {
                 :src="defaultLangFlag"
                 :alt="defaultLangName"
                 class="flag-icon flag-icon-sm"
-                @error="($event.target as HTMLImageElement).style.display = 'none'"
+                @error="onFlagError(defaultLang)"
             />
             <span class="text-sm text-muted">
                 Playing in
@@ -625,22 +636,15 @@ function openLink(url: string): void {
                     @click="selectLanguageWithCode(language.language_code)"
                 >
                     <img
-                        v-if="getFlag(language.language_code)"
+                        v-if="showFlag(language.language_code)"
                         :src="getFlag(language.language_code)!"
                         :alt="language.language_name"
                         class="flag-icon"
-                        @error="
-                            ($event.target as HTMLImageElement).style.display = 'none';
-                            (
-                                $event.target as HTMLImageElement
-                            ).nextElementSibling?.classList.remove('hidden');
-                        "
+                        @error="onFlagError(language.language_code)"
                     />
                     <div
-                        :class="[
-                            'flag-icon bg-paper-warm border border-rule flex items-center justify-center text-ink text-[11px] font-display font-bold',
-                            { hidden: !!getFlag(language.language_code) },
-                        ]"
+                        v-else
+                        class="flag-icon bg-paper-warm border border-rule flex items-center justify-center text-ink text-[11px] font-display font-bold"
                     >
                         {{ language.language_name_native.charAt(0) }}
                     </div>
@@ -681,113 +685,73 @@ function openLink(url: string): void {
         <!-- ═══ Modals ═══ -->
 
         <!-- About modal -->
-        <div
-            v-show="showAboutModal"
-            class="fixed inset-0 z-50 flex items-start justify-center pt-[3vh] px-3 pb-4 overflow-y-auto"
-        >
-            <div
-                class="fixed inset-0 bg-ink/25"
-                aria-hidden="true"
-                @click="showAboutModal = false"
-            />
-            <div
-                class="relative z-10 bg-paper border border-rule shadow-lg p-6 w-full max-w-xs sm:max-w-lg"
-            >
-                <div class="flex flex-col gap-3 relative">
-                    <button
-                        type="button"
-                        aria-label="Close"
-                        class="absolute top-0 end-0 p-1 text-muted hover:text-ink"
-                        @click="showAboutModal = false"
-                    >
-                        <X :size="20" />
-                    </button>
-                    <h3 class="heading-section text-xl text-center mb-2">About</h3>
-                    <p class="text-center text-sm text-ink">
-                        Hi! You probably know about Wordle already. It's a
-                        <span class="italic">really</span> fun game.
-                    </p>
-                    <p class="text-center text-sm text-ink">
-                        The whole thing is open-source. Suggest improvements or fixes at
-                        <a
-                            href="https://github.com/Hugo0/wordle/issues"
-                            class="text-muted underline hover:text-ink"
-                            >GitHub</a
-                        >.
-                    </p>
-                    <p class="text-center text-sm text-ink">
-                        There's fun languages, like Klingon or Tolkien's Elvish, plus right-to-left
-                        languages like Arabic or Hebrew.
-                    </p>
-                    <p class="text-center text-sm text-ink">Have fun!</p>
-                </div>
+        <SharedBaseModal :visible="showAboutModal" size="sm" @close="showAboutModal = false">
+            <div class="flex flex-col gap-3">
+                <h3 class="heading-section text-xl text-center mb-2">About</h3>
+                <p class="text-center text-sm text-ink">
+                    Hi! You probably know about Wordle already. It's a
+                    <span class="italic">really</span> fun game.
+                </p>
+                <p class="text-center text-sm text-ink">
+                    The whole thing is open-source. Suggest improvements or fixes at
+                    <a
+                        href="https://github.com/Hugo0/wordle/issues"
+                        class="text-muted underline hover:text-ink"
+                        >GitHub</a
+                    >.
+                </p>
+                <p class="text-center text-sm text-ink">
+                    There's fun languages, like Klingon or Tolkien's Elvish, plus right-to-left
+                    languages like Arabic or Hebrew.
+                </p>
+                <p class="text-center text-sm text-ink">Have fun!</p>
             </div>
-        </div>
+        </SharedBaseModal>
 
         <!-- Settings modal -->
-        <div
-            v-show="showSettingsModal"
-            class="fixed inset-0 z-50 flex items-start justify-center pt-[3vh] px-3 pb-4 overflow-y-auto"
-        >
-            <div
-                class="fixed inset-0 bg-ink/25"
-                aria-hidden="true"
-                @click="showSettingsModal = false"
-            />
-            <div
-                class="relative z-10 bg-paper border border-rule shadow-lg p-6 w-full max-w-xs sm:max-w-md"
-            >
-                <div class="flex flex-col gap-4 relative">
+        <SharedBaseModal :visible="showSettingsModal" size="sm" @close="showSettingsModal = false">
+            <div class="flex flex-col gap-4">
+                <h3 class="heading-section text-xl text-center mb-2">Settings</h3>
+
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium text-ink">Dark Mode</span>
+                        <span class="text-xs text-muted">Toggle dark theme</span>
+                    </div>
+                    <SharedToggleSwitch
+                        :model-value="settings.darkMode"
+                        @update:model-value="settings.toggleDarkMode()"
+                    />
+                </div>
+
+                <hr class="border-rule" />
+
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium text-ink">Sound &amp; Haptics</span>
+                    </div>
+                    <SharedToggleSwitch
+                        :model-value="settings.feedbackEnabled"
+                        @update:model-value="settings.toggleFeedback()"
+                    />
+                </div>
+
+                <hr class="border-rule" />
+
+                <div v-if="canInstallPwa" class="pt-2">
                     <button
-                        type="button"
-                        aria-label="Close"
-                        class="absolute top-0 end-0 p-1 text-muted hover:text-ink"
-                        @click="showSettingsModal = false"
+                        class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
+                        @click="installPwa"
                     >
-                        <X :size="20" />
+                        <Download :size="18" />
+                        Install App
                     </button>
-                    <h3 class="heading-section text-xl text-center mb-2">Settings</h3>
-
-                    <div class="flex flex-row items-center justify-between">
-                        <div class="flex flex-col">
-                            <span class="text-sm font-medium text-ink">Dark Mode</span>
-                            <span class="text-xs text-muted">Toggle dark theme</span>
-                        </div>
-                        <SharedToggleSwitch
-                            :model-value="settings.darkMode"
-                            @update:model-value="settings.toggleDarkMode()"
-                        />
-                    </div>
-
-                    <hr class="border-rule" />
-
-                    <div class="flex flex-row items-center justify-between">
-                        <div class="flex flex-col">
-                            <span class="text-sm font-medium text-ink">Sound &amp; Haptics</span>
-                        </div>
-                        <SharedToggleSwitch
-                            :model-value="settings.feedbackEnabled"
-                            @update:model-value="settings.toggleFeedback()"
-                        />
-                    </div>
-
-                    <hr class="border-rule" />
-
-                    <div v-if="canInstallPwa" class="pt-2">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
-                            @click="installPwa"
-                        >
-                            <Download :size="18" />
-                            Install App
-                        </button>
-                        <p class="text-xs text-center text-muted mt-1">
-                            Play offline &amp; get app icon
-                        </p>
-                    </div>
+                    <p class="text-xs text-center text-muted mt-1">
+                        Play offline &amp; get app icon
+                    </p>
                 </div>
             </div>
-        </div>
+        </SharedBaseModal>
 
         <!-- Game Mode Picker modal -->
         <AppGameModePicker

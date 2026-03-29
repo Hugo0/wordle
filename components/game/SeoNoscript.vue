@@ -513,7 +513,9 @@ const recentWords = computed(() => {
             <template v-if="isClassic && recentWords.length">
                 <div class="editorial-rule" />
                 <section class="space-y-4">
-                    <h3 class="heading-section text-xl text-ink text-center">{{ h.recentWords }}</h3>
+                    <h3 class="heading-section text-xl text-ink text-center">
+                        {{ h.recentWords }}
+                    </h3>
                     <div class="border border-rule divide-y divide-rule">
                         <a
                             v-for="w in recentWords"

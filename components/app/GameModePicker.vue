@@ -32,7 +32,7 @@
                                 :src="flagSrc"
                                 :alt="languageName"
                                 class="flag-icon flag-icon-sm"
-                                @error="($event.target as HTMLImageElement).style.display = 'none'"
+                                @error="flagFailed = true"
                             />
                             <span class="text-sm font-semibold text-ink">{{ languageName }}</span>
                             <ChevronDown :size="14" class="text-muted" />
@@ -104,7 +104,8 @@ const emit = defineEmits<{
     'change-language': [];
 }>();
 
-const flagSrc = computed(() => useFlag(props.langCode));
+const flagFailed = ref(false);
+const flagSrc = computed(() => (flagFailed.value ? null : useFlag(props.langCode)));
 
 const modes = computed(() =>
     GAME_MODES_UI.map((mode) => ({

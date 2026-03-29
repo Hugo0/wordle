@@ -60,9 +60,9 @@
                                 :src="flagSrc"
                                 :alt="languageName"
                                 class="flag-icon flag-icon-sm"
-                                @error="($event.target as HTMLImageElement).style.display = 'none'"
+                                @error="flagFailed = true"
                             />
-                            <Globe v-if="!flagSrc" :size="18" class="text-muted" />
+                            <Globe v-else :size="18" class="text-muted" />
                         </span>
                         <span class="flex-1 text-sm text-ink">{{ languageName }}</span>
                         <ChevronRight :size="14" class="text-muted" />
@@ -156,7 +156,8 @@ const emit = defineEmits<{
 
 const sidebarEl = ref<HTMLElement | null>(null);
 
-const flagSrc = computed(() => useFlag(props.langCode));
+const flagFailed = ref(false);
+const flagSrc = computed(() => (flagFailed.value ? null : useFlag(props.langCode)));
 
 function close() {
     emit('close');
