@@ -19,7 +19,7 @@
             v-else
             ref="scrollRef"
             class="flex-auto min-h-0 px-1 sm:px-3 lg:px-6 py-1"
-            :class="layout.scrollable ? 'overflow-y-auto scroll-snap-y' : 'flex justify-center items-center'"
+            :class="(layout.scrollable || allExpanded) ? 'overflow-y-auto scroll-snap-y' : 'flex justify-center items-center'"
             data-allow-mismatch
         >
             <!-- Skeleton: 4 placeholder boards while measuring container -->
@@ -234,9 +234,11 @@ const gridStyle = computed(() => {
     // Tile width from container width (CSS padding handled by the container)
     const tileW = (containerWidth.value - hGaps) / totalTileCols;
 
-    // For non-scrollable modes: also constrain by available height
+    // When expanded or scrollable, use width-only sizing (height overflows via scroll).
+    // Only constrain by height when collapsed AND non-scrollable (fit in viewport).
+    const isEffectivelyScrollable = layout.value.scrollable || allExpanded.value;
     let tileSize: number;
-    if (!layout.value.scrollable) {
+    if (!isEffectivelyScrollable) {
         const toolbarH = boardCount.value > 4 ? 44 : 0;
         const availH = containerHeight.value - toolbarH - 8;
         const tileH = (availH - vGaps) / totalTileRows;
