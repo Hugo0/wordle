@@ -90,6 +90,19 @@ export interface LanguageSeo {
     mode_tips?: Record<string, SeoTip[]>;
 }
 
+export interface LanguageWordDetailMeta {
+    title?: string;
+    description_with_def?: string;
+    description_without_def?: string;
+    title_coming_soon?: string;
+    description_coming_soon?: string;
+}
+
+export interface LanguagePageMeta {
+    title?: string;
+    description?: string;
+}
+
 export interface LanguageMeta {
     locale: string;
     title: string;
@@ -97,6 +110,12 @@ export interface LanguageMeta {
     keywords: string;
     wordle_native?: string;
     modes?: Record<string, LanguageModeMeta>;
+    /** SEO templates for the per-day word detail page (`/[lang]/word/[id]`). */
+    word_detail?: LanguageWordDetailMeta;
+    /** SEO templates for the word archive page (`/[lang]/words`). */
+    word_archive?: LanguagePageMeta;
+    /** SEO templates for the best starting words page (`/[lang]/best-starting-words`). */
+    best_starting_words?: LanguagePageMeta;
 }
 
 export interface LanguageText {

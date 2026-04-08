@@ -6,6 +6,9 @@
  * share button, navigation, and Giscus comments. Matches legacy word.html template.
  */
 
+import { formatDateLong } from '~/utils/locale';
+import { interpolate } from '~/utils/interpolate';
+
 interface DefinitionData {
     definition: string;
     definition_native?: string;
@@ -33,31 +36,52 @@ const wordStats = d.word_stats;
 const ui = (d.ui as Record<string, string>) || {};
 const label = (key: string, fallback: string) => ui[key] || fallback;
 
-// Format date
-function formatDateLong(dateStr: string | null): string {
-    if (!dateStr) return '';
-    const dt = new Date(dateStr + 'T00:00:00Z');
-    return dt.toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: 'UTC',
-    });
-}
+// SEO templates from language_config.json meta.word_detail (merged with defaults).
+// These are translated per-language where available and fall back to English.
+const meta = (d.meta as Record<string, any>) || {};
+const wordDetailMeta = meta.word_detail || {};
 
-const wordDate = formatDateLong(d.word_date);
+const wordDate = formatDateLong(d.word_date, lang);
 
-// SEO
+// SEO interpolation
 const defText = definition?.definition || '';
 const posText = definition?.part_of_speech ? definition.part_of_speech + ': ' : '';
+const upperWord = word ? word.toUpperCase() : '';
+const seoVars = {
+    idx: dayIdx,
+    date: wordDate || 'Coming soon',
+    word: upperWord,
+    langNative: langNameNative,
+    definition: defText,
+    partOfSpeech: posText,
+};
+
 const titleStr = word
-    ? `Wordle #${dayIdx} \u2014 ${wordDate} \u2014 ${word.toUpperCase()} | ${d.lang_name} Answer`
-    : `Wordle ${langNameNative} #${dayIdx} \u2014 ${wordDate || 'Coming soon'}`;
+    ? interpolate(
+          wordDetailMeta.title || 'Wordle #{idx} — {date} — {word} | {langNative} Answer',
+          seoVars
+      )
+    : interpolate(
+          wordDetailMeta.title_coming_soon || 'Wordle {langNative} #{idx} — Coming soon',
+          seoVars
+      );
+
 const descriptionStr = word
     ? defText
-        ? `The Wordle ${d.lang_name} answer for ${wordDate} (#${dayIdx}) was ${word.toUpperCase()}. ${posText}${defText}`
-        : `The Wordle ${d.lang_name} answer for ${wordDate} (#${dayIdx}) was ${word.toUpperCase()}. Can you guess it in 6 tries?`
-    : `Wordle ${langNameNative} word #${dayIdx}. Coming soon.`;
+        ? interpolate(
+              wordDetailMeta.description_with_def ||
+                  'The Wordle {langNative} answer for {date} (#{idx}) was {word}. {partOfSpeech}{definition}',
+              seoVars
+          )
+        : interpolate(
+              wordDetailMeta.description_without_def ||
+                  'The Wordle {langNative} answer for {date} (#{idx}) was {word}. Can you guess it in 6 tries?',
+              seoVars
+          )
+    : interpolate(
+          wordDetailMeta.description_coming_soon || 'Wordle {langNative} word #{idx}. Coming soon.',
+          seoVars
+      );
 
 useSeoMeta({
     title: titleStr,

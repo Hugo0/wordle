@@ -31,7 +31,7 @@ import { useFlag } from '~/composables/useFlag';
 import type { Component } from 'vue';
 import type { GameMode } from '~/utils/game-modes';
 import type { GameSeoResult } from '~/composables/useGameSeo';
-import { interpolate } from '~/composables/useGameSeo';
+import { interpolate } from '~/utils/interpolate';
 import type { LanguageConfig, LanguageSeo } from '~/utils/types';
 
 const props = defineProps<{

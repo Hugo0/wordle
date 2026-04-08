@@ -10,6 +10,7 @@
 
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
+import { interpolate } from '~/utils/interpolate';
 import type { LanguageConfig, SeoFaqItem, SeoHowToStep } from '~/utils/types';
 
 const VALID_SHARE_RESULTS = ['1', '2', '3', '4', '5', '6', 'x'];
@@ -55,16 +56,6 @@ export interface GameSeoResult {
     howToSteps: HowToStep[];
 }
 
-/**
- * Interpolate placeholders in a string.
- * Supports: {langName}, {lang}, {modeName}, {boardCount}, {maxGuesses}
- */
-export function interpolate(text: string, vars: Record<string, string | number>): string {
-    return text.replace(/\{(\w+)\}/g, (_, key) =>
-        vars[key] !== undefined ? String(vars[key]) : `{${key}}`
-    );
-}
-
 function interpolateFaq(items: SeoFaqItem[], vars: Record<string, string | number>): FaqItem[] {
     return items.map((item) => ({
         question: interpolate(item.q, vars),
@@ -91,11 +82,17 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
     const langNative = config.name_native || langName;
     const wordleBase = `Wordle ${langNative}`;
 
+    // Prefer the translated mode label from ui.mode_{id}_label (e.g. "Illimité"
+    // for French unlimited). Falls back to the hardcoded English label so
+    // languages that haven't translated mode names still render something.
+    const modeLabel = (config.ui?.[`mode_${mode}_label`] as string | undefined) || modeDef.label;
+
     // Interpolation variables available to all SEO content
     const vars: Record<string, string | number> = {
         langName,
+        langNative,
         lang,
-        modeName: modeDef.label,
+        modeName: modeLabel,
         boardCount: modeDef.boardCount,
         maxGuesses: modeDef.maxGuesses,
     };
@@ -117,8 +114,8 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         if (title.length > 60) title = wordleShort;
     } else {
         const modeTitle = config.meta?.modes?.[mode]?.title;
-        title = modeTitle ? `${wordleBase} — ${modeTitle}` : `${wordleBase} — ${modeDef.label}`;
-        if (title.length > 60) title = `${wordleBase} — ${modeDef.label}`;
+        title = modeTitle ? `${wordleBase} — ${modeTitle}` : `${wordleBase} — ${modeLabel}`;
+        if (title.length > 60) title = `${wordleBase} — ${modeLabel}`;
     }
 
     // -------------------------------------------------------------------------
@@ -135,14 +132,21 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
             nativeDesc ===
                 'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!' &&
             config.language_code !== 'en';
-        description = isUntranslated
-            ? `Play Wordle in ${langName} (${langNative}) — ${nativeDesc}`
-            : `${nativeDesc} | Wordle ${langName}`;
+        if (isUntranslated) {
+            description = `Play Wordle in ${langName} (${langNative}) — ${nativeDesc}`;
+        } else if (/wordle/i.test(nativeDesc)) {
+            // Description already brands the product; no need for the suffix.
+            description = nativeDesc;
+        } else {
+            // Append the native-language brand suffix (e.g. "| Wordle Español")
+            // rather than the English name, so the whole snippet reads naturally.
+            description = `${nativeDesc} | Wordle ${langNative}`;
+        }
     } else {
         const modeDesc = config.meta?.modes?.[mode]?.description;
         description =
             modeDesc ||
-            `Play ${modeDef.label} in ${langName}. ${
+            `Play ${modeLabel} in ${langName}. ${
                 modeDef.boardCount > 1
                     ? `Solve ${modeDef.boardCount} Wordle boards at once with ${modeDef.maxGuesses} guesses.`
                     : 'No waiting — get a new word every time.'
@@ -260,7 +264,7 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         breadcrumbItems.push({
             '@type': 'ListItem',
             position: 3,
-            name: modeDef.label,
+            name: modeLabel,
             item: canonicalUrl,
         });
     }
@@ -299,7 +303,7 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
             innerHTML: JSON.stringify({
                 '@context': 'https://schema.org',
                 '@type': 'HowTo',
-                name: `How to Play ${isClassic ? `Wordle in ${langName}` : modeDef.label}`,
+                name: `How to Play ${isClassic ? `Wordle in ${langName}` : modeLabel}`,
                 step: howToSteps.map((step, i) => ({
                     '@type': 'HowToStep',
                     position: i + 1,
@@ -337,7 +341,7 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         canonicalUrl,
         langName,
         langNative,
-        modeLabel: modeDef.label,
+        modeLabel,
         faq,
         howToSteps,
     };

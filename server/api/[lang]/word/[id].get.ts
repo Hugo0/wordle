@@ -100,5 +100,6 @@ export default defineEventHandler(async (event) => {
         word_stats: wordStats,
         wikt_lang: wiktLang,
         ui: config.ui || {},
+        meta: config.meta || {},
     };
 });

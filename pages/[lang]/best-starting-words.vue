@@ -6,6 +6,8 @@
  * Content is computed from actual word list letter frequencies — unique to wordle.global.
  */
 
+import { interpolate } from '~/utils/interpolate';
+
 definePageMeta({ layout: 'default' });
 
 const route = useRoute();
@@ -23,9 +25,24 @@ const langNative = pageData.value.lang_name_native;
 const topWords = pageData.value.top_words;
 const letterFreqs = pageData.value.letter_frequency;
 
-// SEO
-const title = `Best Starting Words for Wordle in ${langName} — Wordle Global`;
-const description = `Data-driven analysis of the best starting words for Wordle in ${langName}. Ranked by letter coverage across ${pageData.value.daily_word_count.toLocaleString()} words.`;
+// SEO templates from language_config.json meta.best_starting_words (merged with defaults)
+const meta = (pageData.value.meta as Record<string, any>) || {};
+const bswMeta = meta.best_starting_words || {};
+const seoVars = {
+    langNative,
+    langName,
+    count: pageData.value.daily_word_count.toLocaleString(),
+};
+
+const title = interpolate(
+    bswMeta.title || 'Best Starting Words for Wordle in {langNative} — Wordle Global',
+    seoVars
+);
+const description = interpolate(
+    bswMeta.description ||
+        'Data-driven analysis of the best starting words for Wordle in {langNative}. Ranked by letter coverage across {count} words.',
+    seoVars
+);
 
 useSeoMeta({
     title,
