@@ -45,6 +45,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Urdu. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "ورڈل #{idx} — {date} — {word} | {langNative} جواب",
+            "description_with_def": "{date} (#{idx}) کے لیے {langNative} ورڈل کا جواب {word} تھا۔ {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) کے لیے {langNative} ورڈل کا جواب {word} تھا۔ کیا آپ اسے 6 کوششوں میں پہچان سکتے ہیں؟",
+            "title_coming_soon": "{langNative} ورڈل #{idx} — جلد آ رہا ہے",
+            "description_coming_soon": "{langNative} ورڈل کا لفظ #{idx}۔ جلد آ رہا ہے۔"
+        },
+        "word_archive": {
+            "title": "{langNative} ورڈل — تمام الفاظ | الفاظ کا ذخیرہ",
+            "description": "{langNative} میں ورڈل کے گزشتہ تمام {count} الفاظ دیکھیں۔ ہر روزانہ لفظ کے لیے تعریفیں، اے آئی آرٹ اور کمیونٹی کے اعداد و شمار۔"
+        },
+        "best_starting_words": {
+            "title": "{langNative} میں ورڈل کے لیے بہترین ابتدائی الفاظ — Wordle Global",
+            "description": "{langNative} میں ورڈل کے بہترین ابتدائی الفاظ کا ڈیٹا پر مبنی تجزیہ۔ {count} الفاظ میں حروف کی کوریج کے لحاظ سے درجہ بندی۔"
         }
     },
     "text": {

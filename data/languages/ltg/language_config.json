@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Latgalian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} atbilde",
+            "description_with_def": "Wordle {langNative} atbilde {date} (#{idx}) beja {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative} atbilde {date} (#{idx}) beja {word}. Vai tu jū vari atmynēt 6 meģinojumūs?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Drīzi",
+            "description_coming_soon": "Wordle {langNative} vuords #{idx}. Drīzi pīejams."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Vysi vuordi | Vuordu arhivs",
+            "description": "Parlyuko vysus {count} agrakūs Wordle vuordus volūdā {langNative}. Raugi definicejas, AI mūkslu i kūpīnys statistiku ikdīnys vuordam."
+        },
+        "best_starting_words": {
+            "title": "Lobōkī suokuma vuordi Wordle spēlei volūdā {langNative} — Wordle Global",
+            "description": "Iz datu pamatā lobōkū suokuma vuordu analīze Wordle spēlei volūdā {langNative}. Sakuortuots pa burtu aizsagiunumu {count} vuordūs."
         }
     },
     "text": {

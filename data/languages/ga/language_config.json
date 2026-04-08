@@ -40,6 +40,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Irish. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Freagra {langNative}",
+            "description_with_def": "Ba é {word} freagra Wordle {langNative} do {date} (#{idx}). {partOfSpeech}{definition}",
+            "description_without_def": "Ba é {word} freagra Wordle {langNative} do {date} (#{idx}). An féidir leat buille faoi thuairim a thabhairt in 6 iarracht?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Ag teacht go luath",
+            "description_coming_soon": "Focal Wordle {langNative} #{idx}. Ag teacht go luath."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Gach Focal | Cartlann Focal",
+            "description": "Brabhsáil gach focal Wordle {count} a bhí ann i {langNative}. Féach sainmhínithe, ealaín AI, agus staitisticí pobail do gach focal laethúil."
+        },
+        "best_starting_words": {
+            "title": "Na Focail Tosaigh is Fearr do Wordle i {langNative} — Wordle Global",
+            "description": "Anailís sonraí-bhunaithe ar na focail tosaigh is fearr do Wordle i {langNative}. Rangaithe de réir clúdach litreacha thar {count} focal."
         }
     },
     "text": {

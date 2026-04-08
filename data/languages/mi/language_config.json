@@ -44,6 +44,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Maori. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Whakautu {langNative}",
+            "description_with_def": "Ko {word} te whakautu Wordle {langNative} mō {date} (#{idx}). {partOfSpeech}{definition}",
+            "description_without_def": "Ko {word} te whakautu Wordle {langNative} mō {date} (#{idx}). Ka taea e koe te matapaki i roto i ngā ngana e 6?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kei te haere mai",
+            "description_coming_soon": "Kupu Wordle {langNative} #{idx}. Kei te haere mai."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Ngā Kupu Katoa | Pūranga Kupu",
+            "description": "Tirohia ngā kupu Wordle {count} o mua katoa i te reo {langNative}. Tirohia ngā whakamārama, ngā toi AI, me ngā tatauranga hapori mō ia kupu o ia rā."
+        },
+        "best_starting_words": {
+            "title": "Ngā Kupu Tīmata Pai mō Wordle i te {langNative} — Wordle Global",
+            "description": "He tātaritanga e ahu mai ana i ngā raraunga mō ngā kupu tīmata pai mō Wordle i te {langNative}. Kua whakaraupapahia ki te kapi reta puta noa i ngā kupu {count}."
         }
     },
     "text": {

@@ -125,6 +125,21 @@
                 "title": "Duotrigordle — 32 bảng cùng lúc",
                 "description": "Chơi Duotrigordle tiếng Việt. Giải 32 bảng Wordle cùng lúc với 37 lượt đoán."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Đáp án {langNative}",
+            "description_with_def": "Đáp án Wordle {langNative} cho ngày {date} (#{idx}) là {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Đáp án Wordle {langNative} cho ngày {date} (#{idx}) là {word}. Bạn có thể đoán trong 6 lần thử không?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Sắp ra mắt",
+            "description_coming_soon": "Từ Wordle {langNative} #{idx}. Sắp ra mắt."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Tất Cả Các Từ | Kho Lưu Trữ Từ",
+            "description": "Duyệt tất cả {count} từ Wordle trước đây bằng {langNative}. Xem định nghĩa, tranh AI và thống kê cộng đồng cho mỗi từ hàng ngày."
+        },
+        "best_starting_words": {
+            "title": "Từ Mở Đầu Tốt Nhất cho Wordle bằng {langNative} — Wordle Global",
+            "description": "Phân tích dựa trên dữ liệu về những từ mở đầu tốt nhất cho Wordle bằng {langNative}. Xếp hạng theo độ phủ chữ cái trên {count} từ."
         }
     },
     "text": {

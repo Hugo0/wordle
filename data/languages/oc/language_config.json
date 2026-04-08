@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Occitan. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Responsa en {langNative}",
+            "description_with_def": "La responsa de Wordle {langNative} del {date} (#{idx}) èra {word}. {partOfSpeech}{definition}",
+            "description_without_def": "La responsa de Wordle {langNative} del {date} (#{idx}) èra {word}. La podètz devinhar en 6 ensages?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Lèu",
+            "description_coming_soon": "Mot #{idx} de Wordle {langNative}. Lèu."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Totes los mots | Archiu dels mots",
+            "description": "Percorrètz los {count} mots passats de Wordle en {langNative}. Definicions, illustracions generadas per IA e estatisticas de la comunautat per cada mot quotidian."
+        },
+        "best_starting_words": {
+            "title": "Melhors mots de despart per Wordle en {langNative} — Wordle Global",
+            "description": "Analisi basada sus las donadas dels melhors mots per començar Wordle en {langNative}. Classificats per cobertura de letras entre {count} mots."
         }
     },
     "text": {

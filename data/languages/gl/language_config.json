@@ -59,6 +59,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Galician. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Resposta en {langNative}",
+            "description_with_def": "A resposta de Wordle {langNative} do {date} (#{idx}) foi {word}. {partOfSpeech}{definition}",
+            "description_without_def": "A resposta de Wordle {langNative} do {date} (#{idx}) foi {word}. Podes adiviñala en 6 intentos?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Proximamente",
+            "description_coming_soon": "Palabra #{idx} de Wordle {langNative}. Proximamente."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Todas as palabras | Arquivo de palabras",
+            "description": "Explora todas as {count} palabras pasadas de Wordle en {langNative}. Definicións, arte xerado por IA e estatísticas da comunidade para cada palabra diaria."
+        },
+        "best_starting_words": {
+            "title": "Mellores palabras iniciais para Wordle en {langNative} — Wordle Global",
+            "description": "Análise baseada en datos das mellores palabras para comezar Wordle en {langNative}. Clasificadas por cobertura de letras entre {count} palabras."
         }
     },
     "text": {

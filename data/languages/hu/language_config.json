@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 tábla egyszerre",
                 "description": "Játssz Duotrigordle-t magyarul. Oldj meg 32 Wordle-táblát egyszerre 37 tippből."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} válasz",
+            "description_with_def": "A Wordle {langNative} válasza {date} napra (#{idx}) a {word} volt. {partOfSpeech}{definition}",
+            "description_without_def": "A Wordle {langNative} válasza {date} napra (#{idx}) a {word} volt. Kitalálod 6 próbálkozásból?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Hamarosan",
+            "description_coming_soon": "Wordle {langNative} szó #{idx}. Hamarosan elérhető."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Minden szó | Szóarchívum",
+            "description": "Böngészd az összes {count} korábbi Wordle szót {langNative} nyelven. Nézd meg a definíciókat, AI-művészetet és közösségi statisztikákat minden napi szóhoz."
+        },
+        "best_starting_words": {
+            "title": "Legjobb kezdőszavak a Wordle-höz {langNative} nyelven — Wordle Global",
+            "description": "Adatalapú elemzés a legjobb kezdőszavakról a Wordle-höz {langNative} nyelven. Betűlefedettség szerint rangsorolva {count} szó között."
         }
     },
     "text": {

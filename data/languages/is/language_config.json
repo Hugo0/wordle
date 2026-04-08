@@ -40,6 +40,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Icelandic. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Svar á {langNative}",
+            "description_with_def": "Wordle {langNative} svarið fyrir {date} (#{idx}) var {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative} svarið fyrir {date} (#{idx}) var {word}. Geturðu giskað á það í 6 tilraunum?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Væntanlegt",
+            "description_coming_soon": "Wordle {langNative} orð #{idx}. Væntanlegt."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Öll orð | Orðasafn",
+            "description": "Skoðaðu öll {count} fyrri Wordle-orð á {langNative}. Skilgreiningar, gervigreindarmyndir og samfélagstölfræði fyrir hvert daglegt orð."
+        },
+        "best_starting_words": {
+            "title": "Bestu byrjunarorðin fyrir Wordle á {langNative} — Wordle Global",
+            "description": "Gagnadrifin greining á bestu byrjunarorðunum fyrir Wordle á {langNative}. Raðað eftir stafaumfjöllun yfir {count} orð."
         }
     },
     "text": {

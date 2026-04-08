@@ -44,6 +44,21 @@
                 "title": "Duotrigordle — एक साथ 32 बोर्ड",
                 "description": "हिंदी में Duotrigordle खेलें। 37 अनुमानों में एक साथ 32 Wordle बोर्ड हल करें।"
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} उत्तर",
+            "description_with_def": "{date} (#{idx}) का {langNative} Wordle उत्तर {word} था। {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) का {langNative} Wordle उत्तर {word} था। क्या आप इसे 6 प्रयासों में पहचान सकते हैं?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — जल्द आ रहा है",
+            "description_coming_soon": "{langNative} Wordle शब्द #{idx}। जल्द आ रहा है।"
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — सभी शब्द | शब्द संग्रह",
+            "description": "{langNative} में पिछले सभी {count} Wordle शब्द देखें। हर दैनिक शब्द के लिए परिभाषाएँ, AI कला और समुदाय आँकड़े।"
+        },
+        "best_starting_words": {
+            "title": "{langNative} में Wordle के लिए सर्वश्रेष्ठ प्रारंभिक शब्द — Wordle Global",
+            "description": "{langNative} में Wordle के लिए सर्वश्रेष्ठ प्रारंभिक शब्दों का डेटा-आधारित विश्लेषण। {count} शब्दों में अक्षर कवरेज के आधार पर क्रमबद्ध।"
         }
     },
     "text": {

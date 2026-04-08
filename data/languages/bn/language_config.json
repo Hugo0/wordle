@@ -44,6 +44,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Bengali. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "ওয়ার্ডল #{idx} — {date} — {word} | {langNative} উত্তর",
+            "description_with_def": "{date} তারিখের (#{idx}) {langNative} ওয়ার্ডল উত্তর ছিল {word}। {partOfSpeech}{definition}",
+            "description_without_def": "{date} তারিখের (#{idx}) {langNative} ওয়ার্ডল উত্তর ছিল {word}। আপনি কি এটি ৬টি চেষ্টায় অনুমান করতে পারেন?",
+            "title_coming_soon": "{langNative} ওয়ার্ডল #{idx} — শীঘ্রই আসছে",
+            "description_coming_soon": "{langNative} ওয়ার্ডল শব্দ #{idx}। শীঘ্রই আসছে।"
+        },
+        "word_archive": {
+            "title": "{langNative} ওয়ার্ডল — সমস্ত শব্দ | শব্দ সংরক্ষণাগার",
+            "description": "{langNative}-এ পূর্ববর্তী সমস্ত {count}টি ওয়ার্ডল শব্দ দেখুন। প্রতিটি দৈনিক শব্দের জন্য সংজ্ঞা, AI শিল্প এবং সম্প্রদায়ের পরিসংখ্যান।"
+        },
+        "best_starting_words": {
+            "title": "{langNative}-এ ওয়ার্ডলের জন্য সেরা শুরুর শব্দ — Wordle Global",
+            "description": "{langNative}-এ ওয়ার্ডলের জন্য সেরা শুরুর শব্দগুলির ডেটা-চালিত বিশ্লেষণ। {count}টি শব্দের মধ্যে অক্ষর কভারেজ অনুযায়ী র‍্যাঙ্কিং।"
         }
     },
     "text": {

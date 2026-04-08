@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Swahili. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Jibu la {langNative}",
+            "description_with_def": "Jibu la Wordle {langNative} la tarehe {date} (#{idx}) lilikuwa {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Jibu la Wordle {langNative} la tarehe {date} (#{idx}) lilikuwa {word}. Je, unaweza kulibahatisha katika majaribio 6?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Inakuja hivi karibuni",
+            "description_coming_soon": "Neno la Wordle {langNative} #{idx}. Linakuja hivi karibuni."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Maneno Yote | Kumbukumbu za Maneno",
+            "description": "Vinjari maneno yote {count} ya Wordle yaliyopita katika {langNative}. Angalia fasili, sanaa ya AI, na takwimu za jamii kwa kila neno la kila siku."
+        },
+        "best_starting_words": {
+            "title": "Maneno Bora ya Kuanzia kwa Wordle katika {langNative} — Wordle Global",
+            "description": "Uchambuzi wa msingi wa data wa maneno bora ya kuanzia kwa Wordle katika {langNative}. Yamepangwa kwa kufunika herufi katika maneno {count}."
         }
     },
     "text": {

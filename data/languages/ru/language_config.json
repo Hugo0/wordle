@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 поля одновременно",
                 "description": "Играй в Duotrigordle на русском. Разгадай 32 поля Wordle одновременно за 37 попыток."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Ответ Wordle {langNative}",
+            "description_with_def": "Ответом Wordle {langNative} на {date} (#{idx}) было слово {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Ответом Wordle {langNative} на {date} (#{idx}) было слово {word}. Сможешь угадать его за 6 попыток?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Скоро",
+            "description_coming_soon": "Слово Wordle {langNative} #{idx}. Скоро будет доступно."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Все слова | Архив слов",
+            "description": "Просмотри все {count} прошлых слов Wordle на языке {langNative}. Определения, AI-арт и статистика сообщества для каждого ежедневного слова."
+        },
+        "best_starting_words": {
+            "title": "Лучшие стартовые слова для Wordle на языке {langNative} — Wordle Global",
+            "description": "Анализ лучших стартовых слов для Wordle на языке {langNative} на основе данных. Ранжировано по покрытию букв среди {count} слов."
         }
     },
     "text": {

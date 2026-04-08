@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Mongolian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} хариулт",
+            "description_with_def": "{date} (#{idx}) өдрийн {langNative} Wordle-ийн хариулт {word} байсан. {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) өдрийн {langNative} Wordle-ийн хариулт {word} байсан. Та үүнийг 6 оролдлогоор таах чадвартай юу?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — Удахгүй",
+            "description_coming_soon": "{langNative} Wordle-ийн #{idx} үг. Удахгүй."
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — Бүх үгс | Үгийн архив",
+            "description": "{langNative} хэлээр өмнөх Wordle-ийн нийт {count} үгийг үзнэ үү. Өдөр бүрийн үг тус бүрийн тодорхойлолт, AI зураг, олон нийтийн статистик."
+        },
+        "best_starting_words": {
+            "title": "{langNative} дээр Wordle-д хамгийн тохиромжтой эхлэх үгс — Wordle Global",
+            "description": "{langNative} хэл дээрх Wordle-д хамгийн тохиромжтой эхлэх үгсийн өгөгдөлд суурилсан шинжилгээ. {count} үгийн дунд үсгийн хамрах хүрээгээр эрэмбэлэгдсэн."
         }
     },
     "text": {

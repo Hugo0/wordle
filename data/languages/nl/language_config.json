@@ -38,7 +38,7 @@
     "meta": {
         "locale": "nl",
         "title": "Het dagelijkse woordspel",
-        "description": "Raden het verborgen woord in 6 (of minder). Er is elke dag een nieuwe puzzel beschikbaar!",
+        "description": "Speel Wordle in 80+ talen — van Arabisch tot Yoruba. De grootste meertalige Wordle. Woorddefinities, geen advertenties, geen login. 8 spelmodi.",
         "keywords": "Nederlands, puzzel, woord, spelen, spel, online, raden, dagelijks",
         "modes": {
             "unlimited": {
@@ -73,6 +73,21 @@
                 "title": "Duotrigordle — 32 borden tegelijk",
                 "description": "Speel Duotrigordle in het Nederlands. Los 32 Wordle-borden tegelijk op met 37 pogingen."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Antwoord in {langNative}",
+            "description_with_def": "Het Wordle {langNative}-antwoord van {date} (#{idx}) was {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Het Wordle {langNative}-antwoord van {date} (#{idx}) was {word}. Kun jij het raden in 6 pogingen?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Binnenkort",
+            "description_coming_soon": "Wordle {langNative} woord #{idx}. Binnenkort beschikbaar."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Alle woorden | Woordenarchief",
+            "description": "Blader door alle {count} eerdere Wordle-woorden in {langNative}. Definities, AI-illustraties en communitystatistieken voor elk dagelijks woord."
+        },
+        "best_starting_words": {
+            "title": "Beste startwoorden voor Wordle in {langNative} — Wordle Global",
+            "description": "Datagedreven analyse van de beste startwoorden voor Wordle in {langNative}. Gerangschikt op letterdekking over {count} woorden."
         }
     },
     "text": {

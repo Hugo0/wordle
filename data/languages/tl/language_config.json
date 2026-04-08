@@ -45,6 +45,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Tagalog. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Sagot sa {langNative}",
+            "description_with_def": "Ang sagot sa Wordle {langNative} para sa {date} (#{idx}) ay {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Ang sagot sa Wordle {langNative} para sa {date} (#{idx}) ay {word}. Kaya mo bang hulaan ito sa 6 na pagsubok?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Malapit na",
+            "description_coming_soon": "Salita ng Wordle {langNative} #{idx}. Malapit na."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Lahat ng Salita | Arkibo ng Salita",
+            "description": "Tingnan ang lahat ng {count} nakaraang salita ng Wordle sa {langNative}. Makita ang mga kahulugan, AI art, at istatistika ng komunidad para sa bawat araw-araw na salita."
+        },
+        "best_starting_words": {
+            "title": "Pinakamahusay na Pang-umpisang Salita para sa Wordle sa {langNative} — Wordle Global",
+            "description": "Pagsusuring batay sa datos ng pinakamahusay na pang-umpisang salita para sa Wordle sa {langNative}. Niraranggo ayon sa saklaw ng mga titik sa {count} salita."
         }
     },
     "text": {

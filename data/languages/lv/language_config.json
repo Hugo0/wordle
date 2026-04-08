@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Latvian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} atbilde",
+            "description_with_def": "Wordle {langNative} atbilde {date} (#{idx}) bija {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative} atbilde {date} (#{idx}) bija {word}. Vai vari to uzminēt 6 mēģinājumos?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Drīzumā",
+            "description_coming_soon": "Wordle {langNative} vārds #{idx}. Drīzumā pieejams."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Visi vārdi | Vārdu arhīvs",
+            "description": "Pārlūko visus {count} iepriekšējos Wordle vārdus valodā {langNative}. Skaties definīcijas, AI mākslu un kopienas statistiku katram ikdienas vārdam."
+        },
+        "best_starting_words": {
+            "title": "Labākie sākuma vārdi Wordle spēlei valodā {langNative} — Wordle Global",
+            "description": "Uz datiem balstīta labāko sākuma vārdu analīze Wordle spēlei valodā {langNative}. Sakārtots pēc burtu pārklājuma {count} vārdos."
         }
     },
     "text": {

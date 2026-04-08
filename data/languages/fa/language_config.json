@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — ۳۲ صفحه همزمان",
                 "description": "Duotrigordle را به فارسی بازی کنید. ۳۲ صفحه وردل را همزمان با ۳۷ حدس حل کنید."
             }
+        },
+        "word_detail": {
+            "title": "وردل #{idx} — {date} — {word} | پاسخ {langNative}",
+            "description_with_def": "پاسخ وردل {langNative} در تاریخ {date} (#{idx}) کلمه {word} بود. {partOfSpeech}{definition}",
+            "description_without_def": "پاسخ وردل {langNative} در تاریخ {date} (#{idx}) کلمه {word} بود. آیا می‌توانید آن را در ۶ تلاش حدس بزنید؟",
+            "title_coming_soon": "وردل {langNative} #{idx} — به‌زودی",
+            "description_coming_soon": "کلمه شماره #{idx} وردل {langNative}. به‌زودی."
+        },
+        "word_archive": {
+            "title": "وردل {langNative} — همه کلمات | بایگانی کلمات",
+            "description": "{count} کلمه گذشته وردل به {langNative} را مرور کنید. تعاریف، هنر هوش مصنوعی و آمار جامعه برای هر کلمه روزانه."
+        },
+        "best_starting_words": {
+            "title": "بهترین کلمات شروع برای وردل در {langNative} — Wordle Global",
+            "description": "تحلیل داده‌محور بهترین کلمات شروع وردل به {langNative}. رتبه‌بندی بر اساس پوشش حروف در میان {count} کلمه."
         }
     },
     "text": {

@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 rutnät samtidigt",
                 "description": "Spela Duotrigordle på svenska. Lös 32 Wordle-rutnät samtidigt med 37 gissningar."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Svar på {langNative}",
+            "description_with_def": "Wordle {langNative}-svaret för {date} (#{idx}) var {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative}-svaret för {date} (#{idx}) var {word}. Kan du gissa det på 6 försök?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kommer snart",
+            "description_coming_soon": "Wordle {langNative} ord #{idx}. Kommer snart."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Alla ord | Ordarkiv",
+            "description": "Bläddra bland alla {count} tidigare Wordle-ord på {langNative}. Definitioner, AI-bilder och communitystatistik för varje dagligt ord."
+        },
+        "best_starting_words": {
+            "title": "Bästa startorden för Wordle på {langNative} — Wordle Global",
+            "description": "Datadriven analys av de bästa startorden för Wordle på {langNative}. Rankade efter bokstavstäckning över {count} ord."
         }
     },
     "text": {

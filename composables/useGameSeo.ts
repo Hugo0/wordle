@@ -114,8 +114,12 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         if (title.length > 60) title = wordleShort;
     } else {
         const modeTitle = config.meta?.modes?.[mode]?.title;
-        title = modeTitle ? `${wordleBase} — ${modeTitle}` : `${wordleBase} — ${modeLabel}`;
-        if (title.length > 60) title = `${wordleBase} — ${modeLabel}`;
+        // Lead with the mode keyword (from the per-language title or the
+        // translated mode label), followed by the Wordle brand + language.
+        // This matches user search intent on mode-specific queries like
+        // "dordle" or "sedecordle" where the keyword must be prominent.
+        title = modeTitle ? `${modeTitle} | ${wordleBase}` : `${modeLabel} | ${wordleBase}`;
+        if (title.length > 60) title = `${modeLabel} | ${wordleBase}`;
     }
 
     // -------------------------------------------------------------------------

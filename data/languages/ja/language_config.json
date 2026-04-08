@@ -43,6 +43,21 @@
                 "title": "Duotrigordle — 32つの盤面を同時に",
                 "description": "日本語でDuotrigordleをプレイ。37回の推測で32つのWordle盤面を同時に解こう。"
             }
+        },
+        "word_detail": {
+            "title": "ワードル #{idx} — {date} — {word} ｜ {langNative}の答え",
+            "description_with_def": "{date}（#{idx}）の{langNative}ワードルの答えは{word}でした。{partOfSpeech}{definition}",
+            "description_without_def": "{date}（#{idx}）の{langNative}ワードルの答えは{word}でした。6回以内に当てられますか？",
+            "title_coming_soon": "{langNative}ワードル #{idx} — 近日公開",
+            "description_coming_soon": "{langNative}ワードル第#{idx}問。近日公開。"
+        },
+        "word_archive": {
+            "title": "{langNative}ワードル — 全単語 ｜ 単語アーカイブ",
+            "description": "{langNative}の過去のワードル{count}単語をすべて閲覧。毎日の単語ごとの定義、AIアート、コミュニティ統計を掲載。"
+        },
+        "best_starting_words": {
+            "title": "{langNative}ワードルの最適なスタート単語 — Wordle Global",
+            "description": "{langNative}でのワードルに最適なスタート単語のデータ分析。{count}単語を対象に文字カバー率でランキング。"
         }
     },
     "text": {

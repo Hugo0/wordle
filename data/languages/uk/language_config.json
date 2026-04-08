@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 дошки одночасно",
                 "description": "Грай у Duotrigordle українською. Розгадай 32 дошки Wordle одночасно за 37 спроб."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Відповідь Wordle {langNative}",
+            "description_with_def": "Відповіддю Wordle {langNative} на {date} (#{idx}) було слово {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Відповіддю Wordle {langNative} на {date} (#{idx}) було слово {word}. Зможеш вгадати його за 6 спроб?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Незабаром",
+            "description_coming_soon": "Слово Wordle {langNative} #{idx}. Незабаром."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Усі слова | Архів слів",
+            "description": "Перегляньте всі {count} попередніх слів Wordle мовою {langNative}. Визначення, AI-арт і статистика спільноти для кожного щоденного слова."
+        },
+        "best_starting_words": {
+            "title": "Найкращі стартові слова для Wordle мовою {langNative} — Wordle Global",
+            "description": "Аналіз найкращих стартових слів для Wordle мовою {langNative} на основі даних. Ранжовано за покриттям літер серед {count} слів."
         }
     },
     "text": {

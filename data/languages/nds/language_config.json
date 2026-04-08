@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Low German. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Antwoort op {langNative}",
+            "description_with_def": "De Wordle {langNative}-Antwoort vun {date} (#{idx}) weer {word}. {partOfSpeech}{definition}",
+            "description_without_def": "De Wordle {langNative}-Antwoort vun {date} (#{idx}) weer {word}. Kannst du dat in 6 Versöök raden?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kummt bald",
+            "description_coming_soon": "Wordle {langNative} Woort #{idx}. Kummt bald."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — All Wöör | Woortarchiv",
+            "description": "Kiek all {count} verleden Wordle-Wöör op {langNative} an. Betekens, KI-Biller un Gemeenschapsstatistiken för elk dääglich Woort."
+        },
+        "best_starting_words": {
+            "title": "Best Startwöör för Wordle op {langNative} — Wordle Global",
+            "description": "Datenbaseert Analyse vun de besten Startwöör för Wordle op {langNative}. Sorteert na Bookstavdeckung över {count} Wöör."
         }
     },
     "text": {

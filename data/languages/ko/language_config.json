@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 보드 32개를 동시에",
                 "description": "한국어로 Duotrigordle을 플레이하세요. 37번의 추측으로 Wordle 보드 32개를 동시에 풀어보세요."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} 정답",
+            "description_with_def": "{date} (#{idx})의 Wordle {langNative} 정답은 {word}였습니다. {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx})의 Wordle {langNative} 정답은 {word}였습니다. 6번 안에 맞힐 수 있나요?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — 곧 공개",
+            "description_coming_soon": "Wordle {langNative} 단어 #{idx}. 곧 공개됩니다."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — 모든 단어 | 단어 아카이브",
+            "description": "{langNative}로 된 과거 Wordle 단어 {count}개를 모두 둘러보세요. 매일의 단어에 대한 정의, AI 아트, 커뮤니티 통계를 확인하세요."
+        },
+        "best_starting_words": {
+            "title": "{langNative} Wordle의 최고 시작 단어 — Wordle Global",
+            "description": "{langNative} Wordle의 최고 시작 단어에 대한 데이터 기반 분석. {count}개 단어에서 글자 커버리지로 순위를 매겼습니다."
         }
     },
     "text": {
@@ -429,110 +444,275 @@
         "homepage_languages_counting": "개 언어 지원 중 — 새로운 언어가 정기적으로 추가됩니다.",
         "homepage_search": "언어 검색...",
         "homepage_and_more": "그 외",
-        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode \u2014 \ub354 \ub9ce\uc740 \ubaa8\ub4dc\uac00 \uacf3 \ucd94\uac00\ub429\ub2c8\ub2e4."
+        "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — 더 많은 모드가 곳 추가됩니다."
     },
     "seo": {
-        "how_to_play": "\uac8c\uc784 \ubc29\ubc95",
-        "tips_strategy": "\ud301 & \uc804\ub7b5",
-        "more_modes": "\ub354 \ub9ce\uc740 \uac8c\uc784 \ubaa8\ub4dc",
-        "play_in_languages": "80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4\ub85c \ud50c\ub808\uc774",
-        "play_in_languages_sub": "\ubaa8\ub4e0 \uc5b8\uc5b4 \ubb34\ub8cc. \uacc4\uc815 \ud544\uc694 \uc5c6\uc74c.",
-        "why_wordle_global": "Wordle Global\uc744 \uc120\ud0dd\ud558\ub294 \uc774\uc720",
-        "faq_title": "\uc790\uc8fc \ubb3b\ub294 \uc9c8\ubb38",
-        "browse_all_languages": "80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4 \ubaa8\ub450 \ubcf4\uae30",
-        "recent_words": "\ucd5c\uadfc \ub2e8\uc5b4",
-        "view_all_words": "\ubaa8\ub4e0 \ub2e8\uc5b4 \ubcf4\uae30",
-        "footer": "wordle.global \u2014 80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4\ub85c \uc990\uae30\ub294 \ubb34\ub8cc \uc77c\uc77c \ub2e8\uc5b4 \uac8c\uc784",
-        "tile_correct": "\ub2e8\uc5b4\uc5d0 \uc788\uace0 \uc62c\ubc14\ub978 \uc704\uce58\uc785\ub2c8\ub2e4.",
-        "tile_semicorrect": "\ub2e8\uc5b4\uc5d0 \uc788\uc9c0\ub9cc \uc704\uce58\uac00 \ub2e4\ub985\ub2c8\ub2e4.",
-        "tile_incorrect": "\ub2e8\uc5b4\uc5d0 \uc5c6\ub294 \uae00\uc790\uc785\ub2c8\ub2e4.",
-        "stat_players": "\ud50c\ub808\uc774\uc5b4",
-        "stat_guesses": "\ucd94\uce21",
-        "stat_languages": "\uc5b8\uc5b4",
-        "stat_modes": "\uac8c\uc784 \ubaa8\ub4dc",
+        "how_to_play": "게임 방법",
+        "tips_strategy": "팁 & 전략",
+        "more_modes": "더 많은 게임 모드",
+        "play_in_languages": "80개 이상의 언어로 플레이",
+        "play_in_languages_sub": "모든 언어 무료. 계정 필요 없음.",
+        "why_wordle_global": "Wordle Global을 선택하는 이유",
+        "faq_title": "자주 묻는 질문",
+        "browse_all_languages": "80개 이상의 언어 모두 보기",
+        "recent_words": "최근 단어",
+        "view_all_words": "모든 단어 보기",
+        "footer": "wordle.global — 80개 이상의 언어로 즐기는 무료 일일 단어 게임",
+        "tile_correct": "단어에 있고 올바른 위치입니다.",
+        "tile_semicorrect": "단어에 있지만 위치가 다릅니다.",
+        "tile_incorrect": "단어에 없는 글자입니다.",
+        "stat_players": "플레이어",
+        "stat_guesses": "추측",
+        "stat_languages": "언어",
+        "stat_modes": "게임 모드",
         "value_props": [
-            { "key": "languages", "title": "80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4", "desc": "\uc544\ub78d\uc5b4\ubd80\ud130 \uc694\ub8e8\ubc14\uc5b4\uae4c\uc9c0. \uc138\uacc4 \ucd5c\ub300\uc758 \ub2e4\uad6d\uc5b4 Wordle." },
-            { "key": "definitions", "title": "\ub2e8\uc5b4 \ub73b\ud480\uc774", "desc": "\uac8c\uc784 \ud6c4 \ub2e8\uc5b4\uc758 \uc758\ubbf8\ub97c \ubc30\uc6cc\ubcf4\uc138\uc694. \uc5b4\ud718\ub825\uc744 \ub113\ud600\ubcf4\uc138\uc694." },
-            { "key": "word_art", "title": "\ub2e8\uc5b4 \uc544\ud2b8", "desc": "\ubaa8\ub4e0 \ub2e8\uc5b4\uc5d0 \ud2b9\ubcc4\ud55c \uc77c\ub7ec\uc2a4\ud2b8\uac00 \uc788\uc5b4\uc694. \ubaa8\uc544\ubcf4\uc138\uc694." },
-            { "key": "themes", "title": "\ub2e4\ud06c \ubaa8\ub4dc & \ud14c\ub9c8", "desc": "\ub77c\uc774\ud2b8, \ub2e4\ud06c, \uace0\ub300\ube44 \ubaa8\ub4dc\ub85c \ud3b8\ud558\uac8c \ud50c\ub808\uc774." },
-            { "key": "pwa", "title": "\uc5b4\ub514\uc11c\ub098 \ud50c\ub808\uc774", "desc": "PWA \u2014 \ubaa8\ub4e0 \uae30\uae30\uc5d0 \uc124\uce58 \uac00\ub2a5. \uc624\ud504\ub77c\uc778\uc5d0\uc11c\ub3c4. \ub2e4\uc6b4\ub85c\ub4dc \ud544\uc694 \uc5c6\uc74c." },
-            { "key": "free", "title": "\uc601\uc6d0\ud788 \ubb34\ub8cc", "desc": "\uacc4\uc815 \ud544\uc694 \uc5c6\uc74c. \uc720\ub8cc \uacb0\uc81c \uc5c6\uc74c. \uadf8\ub0e5 \ud50c\ub808\uc774\ud558\uc138\uc694." }
+            {
+                "key": "languages",
+                "title": "80개 이상의 언어",
+                "desc": "아랍어부터 요루바어까지. 세계 최대의 다국어 Wordle."
+            },
+            {
+                "key": "definitions",
+                "title": "단어 뜻풀이",
+                "desc": "게임 후 단어의 의미를 배워보세요. 어휘력을 넓혀보세요."
+            },
+            {
+                "key": "word_art",
+                "title": "단어 아트",
+                "desc": "모든 단어에 특별한 일러스트가 있어요. 모아보세요."
+            },
+            {
+                "key": "themes",
+                "title": "다크 모드 & 테마",
+                "desc": "라이트, 다크, 고대비 모드로 편하게 플레이."
+            },
+            {
+                "key": "pwa",
+                "title": "어디서나 플레이",
+                "desc": "PWA — 모든 기기에 설치 가능. 오프라인에서도. 다운로드 필요 없음."
+            },
+            {
+                "key": "free",
+                "title": "영원히 무료",
+                "desc": "계정 필요 없음. 유료 결제 없음. 그냥 플레이하세요."
+            }
         ],
         "tips": [
-            { "title": "\ubaa8\uc74c\uc774 \ub9ce\uc740 \ub2e8\uc5b4\ub85c \uc2dc\uc791\ud558\uc138\uc694", "text": "CRANE, STARE, ADIEU \uac19\uc740 \ub2e8\uc5b4\ub294 \uc790\uc8fc \uc4f0\uc774\ub294 \uae00\uc790\ub97c \ube68\ub9ac \ud14c\uc2a4\ud2b8\ud569\ub2c8\ub2e4. \uc5b4\ub5a4 \ubaa8\uc74c\uc774 \uc788\ub294\uc9c0 \uc54c\uba74 \ud6c8\uc52c \uc88b\uc544\uc694." },
-            { "title": "\uc54c\uc544\ub0b8 \uc815\ubcf4\ub97c \ud65c\uc6a9\ud558\uc138\uc694", "text": "\ucd08\ub85d\uc0c9 \uae00\uc790\ub294 \ud655\uc815. \ub178\ub780\uc0c9 \uae00\uc790\ub294 \uc704\uce58\ub97c \ubc14\uafd4\uc57c \ud574\uc694. \ud68c\uc0c9 \uae00\uc790\ub294 \uc81c\uc678. \ub9e4\ubc88 \uc138 \uac00\uc9c0 \ub2e8\uc11c\ub97c \ubaa8\ub450 \ud65c\uc6a9\ud558\uc138\uc694." },
-            { "title": "\uc790\uc8fc \ub098\uc624\ub294 \ud328\ud134\uc744 \uc0dd\uac01\ud558\uc138\uc694", "text": "\uc5b8\uc5b4\ub9c8\ub2e4 \uc790\uc8fc \ub098\uc624\ub294 \ud328\ud134\uc774 \uc788\uc5b4\uc694. \uadf8 \ud328\ud134\uc744 \uc775\ud600\ub450\uba74 \ub354 \ube68\ub9ac \ud480 \uc218 \uc788\uc5b4\uc694." },
-            { "title": "\ubb34\uc791\uc704\ub85c \ucd94\uce21\ud558\uc9c0 \ub9c8\uc138\uc694", "text": "\ub450 \ubc88\uc9f8 \ub2e8\uc5b4\ub294 \uc0c8\ub85c\uc6b4 \uae00\uc790\ub97c \ud14c\uc2a4\ud2b8\ud574\uc57c \ud574\uc694. \uac80\uc99d\ub418\uc9c0 \uc54a\uc740 \uc790\uc74c\uc744 \ucd5c\ub300\ud55c \ub9ce\uc774 \uc2dc\ub3c4\ud558\uc138\uc694." },
-            { "title": "\uac19\uc740 \uae00\uc790\uac00 \ub450 \ubc88 \ub098\uc62c \uc218 \uc788\uc5b4\uc694", "text": "CREEK, FLOSS, APPLE \uac19\uc740 \ub2e8\uc5b4\ub294 \ud754\ud55c \ud568\uc815\uc774\uc5d0\uc694. \ub2e8\uc11c\uac00 \ub9de\uc9c0 \uc54a\uc73c\uba74 \ubc18\ubcf5\ub418\ub294 \uae00\uc790\ub97c \uace0\ub824\ud574\ubcf4\uc138\uc694." },
-            { "title": "\ud558\ub4dc \ubaa8\ub4dc\ub85c \uc2e4\ub825\uc744 \ub192\uc774\uc138\uc694", "text": "\ud558\ub4dc \ubaa8\ub4dc\ub294 \ud655\uc815\ub41c \ub2e8\uc11c\ub97c \ubc18\ub4dc\uc2dc \uc0ac\uc6a9\ud558\uac8c \ud569\ub2c8\ub2e4. \ub354 \uc88b\uc740 \uc2b5\uad00\uc744 \ub9cc\ub4e4\uc5b4 \uc918\uc694." }
+            {
+                "title": "모음이 많은 단어로 시작하세요",
+                "text": "CRANE, STARE, ADIEU 같은 단어는 자주 쓰이는 글자를 빨리 테스트합니다. 어떤 모음이 있는지 알면 훈씬 좋아요."
+            },
+            {
+                "title": "알아낸 정보를 활용하세요",
+                "text": "초록색 글자는 확정. 노란색 글자는 위치를 바꿔야 해요. 회색 글자는 제외. 매번 세 가지 단서를 모두 활용하세요."
+            },
+            {
+                "title": "자주 나오는 패턴을 생각하세요",
+                "text": "언어마다 자주 나오는 패턴이 있어요. 그 패턴을 익혀두면 더 빨리 풀 수 있어요."
+            },
+            {
+                "title": "무작위로 추측하지 마세요",
+                "text": "두 번째 단어는 새로운 글자를 테스트해야 해요. 검증되지 않은 자음을 최대한 많이 시도하세요."
+            },
+            {
+                "title": "같은 글자가 두 번 나올 수 있어요",
+                "text": "CREEK, FLOSS, APPLE 같은 단어는 흔한 함정이에요. 단서가 맞지 않으면 반복되는 글자를 고려해보세요."
+            },
+            {
+                "title": "하드 모드로 실력을 높이세요",
+                "text": "하드 모드는 확정된 단서를 반드시 사용하게 합니다. 더 좋은 습관을 만들어 줘요."
+            }
         ],
         "tips_speed": [
-            { "title": "CRANE\uc774\ub098 STARE\ub85c \uc2dc\uc791\ud558\uc138\uc694", "text": "\uc790\uc8fc \uc4f0\uc774\ub294 \uae00\uc790\uac00 \ube60\ub978 \ud480\uc774\uc758 \ucd5c\uc120\uc785\ub2c8\ub2e4. 1\ucd08\uac00 \uc544\uc27d\uc5b4\uc694." },
-            { "title": "\ub108\ubb34 \uc624\ub798 \uace0\ubbfc\ud558\uc9c0 \ub9c8\uc138\uc694", "text": "Speed Streak\uc740 \uc9c1\uac10\uc774 \uc911\uc694\ud574\uc694. \ub9de\uc744 \uac83 \uac19\uc740 \ub2e8\uc5b4\uac00 \ubcf4\uc774\uba74 \ubc14\ub85c \uc2dc\ub3c4\ud558\uc138\uc694 \u2014 \ucf64\ubcf4 \ubcf4\ub108\uc2a4\uac00 \ub354 \ucee4\uc694." },
-            { "title": "\ucf64\ubcf4\ub97c \uc9c0\ud0a4\uc138\uc694", "text": "\uc2e4\ud328\ud558\uba74 \ubc30\uc728\uc774 \uae68\uc838\uc694. \ud655\uc2e4\ud558\uc9c0 \uc54a\uc73c\uba74 \uc548\uc804\ud55c \ucd94\uce21\uc73c\ub85c \ub2e8\uc11c\ub97c \ubaa8\uc73c\uc138\uc694." },
-            { "title": "2-3\ubc88 \ub9cc\uc5d0 \ud480\uae30\ub97c \ubaa9\ud45c\ub85c", "text": "\ube60\ub978 \ud480\uc774\uc758 \uc2dc\uac04 \ubcf4\ub108\uc2a4\uac00 \uc5c4\uccad\ub098\uc694 (+60\ucd08 1\ubc88 \ud480\uc774, +30\ucd08 2\ubc88). \ubaa8\ud5d8\uc801\uc778 \ub450 \ubc88\uc9f8 \ucd94\uce21\uc774 \ud070 \ubcf4\uc0c1\uc744 \uc904 \uc218 \uc788\uc5b4\uc694." },
-            { "title": "\uc790\uc8fc \ub098\uc624\ub294 \ub2e8\uc5b4 \ub05d\uc744 \uc678\uc6b0\uc138\uc694", "text": "-IGHT, -OUND, -ATCH \uac19\uc740 \ud328\ud134\uc774 \uc790\uc8fc \ubc18\ubcf5\ub3fc\uc694. \ubc14\ub85c \uc54c\uc544\ubcf4\uba74 \ub2e8\uc5b4\ub2f9 \uba87 \ucd08\uc529 \uc808\uc57d\ud560 \uc218 \uc788\uc5b4\uc694." },
-            { "title": "\uc555\ubc15\uc774 \ucee4\uc838\ub3c4 \uce68\ucc29\ud558\uc138\uc694", "text": "3\uac1c \ub2e8\uc5b4\ub9c8\ub2e4 \ud0c0\uc774\uba38\uac00 \ube68\ub77c\uc838\uc694. \uc11c\ub450\ub974\uba74 \uc624\ud0c0\uc640 \ub098\uc05c \ucd94\uce21\uc774 \ub098\uc640\uc694. \uafb8\uc900\ud55c \ud398\uc774\uc2a4\uac00 \ucd5c\uace0\uc608\uc694." }
+            {
+                "title": "CRANE이나 STARE로 시작하세요",
+                "text": "자주 쓰이는 글자가 빠른 풀이의 최선입니다. 1초가 아쉽어요."
+            },
+            {
+                "title": "너무 오래 고민하지 마세요",
+                "text": "Speed Streak은 직감이 중요해요. 맞을 것 같은 단어가 보이면 바로 시도하세요 — 콤보 보너스가 더 커요."
+            },
+            {
+                "title": "콤보를 지키세요",
+                "text": "실패하면 배율이 깨져요. 확실하지 않으면 안전한 추측으로 단서를 모으세요."
+            },
+            {
+                "title": "2-3번 만에 풀기를 목표로",
+                "text": "빠른 풀이의 시간 보너스가 엄청나요 (+60초 1번 풀이, +30초 2번). 모험적인 두 번째 추측이 큰 보상을 줄 수 있어요."
+            },
+            {
+                "title": "자주 나오는 단어 끝을 외우세요",
+                "text": "-IGHT, -OUND, -ATCH 같은 패턴이 자주 반복돼요. 바로 알아보면 단어당 몇 초씩 절약할 수 있어요."
+            },
+            {
+                "title": "압박이 커져도 침착하세요",
+                "text": "3개 단어마다 타이머가 빨라져요. 서두르면 오타와 나쁜 추측이 나와요. 꾸준한 페이스가 최고예요."
+            }
         ],
         "tips_multiboard": [
-            { "title": "\ub113\uac8c \uc2dc\uc791\ud558\uc138\uc694", "text": "\uc790\uc8fc \uc4f0\uc774\ub294 \uae00\uc790 \ub2e8\uc5b4(CRANE, STARE)\ub85c \ubaa8\ub4e0 \ubcf4\ub4dc\uc5d0\uc11c \ub2e8\uc11c\ub97c \ubaa8\uc73c\uc138\uc694." },
-            { "title": "\ubd84\ud560 \ud0a4\ubcf4\ub4dc\ub97c \ud655\uc778\ud558\uc138\uc694", "text": "\ud0a4\ubcf4\ub4dc\uac00 \ubcf4\ub4dc\ubcc4\ub85c \uc0c9\uc744 \ubcf4\uc5ec\uc918\uc694. \ud55c \ubcf4\ub4dc\uc5d0\uc11c \ucd08\ub85d\uc0c9\uc778\ub370 \ub2e4\ub978 \ubcf4\ub4dc\uc5d0\uc11c \ud68c\uc0c9\uc774\uba74 \ube60\ub974\uac8c \ubc94\uc704\ub97c \uc904\uc77c \uc218 \uc788\uc5b4\uc694." },
-            { "title": "\uc5b4\ub824\uc6b4 \ubcf4\ub4dc\uc5d0 \uc9d1\uc911\ud558\uc138\uc694", "text": "\ubaa8\ub974\ub294 \uac83\uc774 \uac00\uc7a5 \ub9ce\uc740 \ubcf4\ub4dc\uc5d0 \ucd94\uce21\uc744 \uc9d1\uc911\ud558\uc138\uc694. \uc26c\uc6b4 \ubcf4\ub4dc\ub294 \uc800\uc808\ub85c \ud480\ub9ac\ub294 \uacbd\uc6b0\uac00 \ub9ce\uc544\uc694." },
-            { "title": "\ucd08\ubc18 \ucd94\uce21\uc744 \ub0ad\ube44\ud558\uc9c0 \ub9c8\uc138\uc694", "text": "\ucc98\uc74c 2-3\ubc88\uc740 \uc815\ubcf4 \uc218\uc9d1\uc6a9 \ub2e8\uc5b4\ub97c \uc4f0\uace0, \uadf8 \ud6c4\uc5d0 \ud2b9\uc815 \ubcf4\ub4dc\ub97c \ub178\ub9ac\uc138\uc694." },
-            { "title": "\uacf5\ud1b5 \uae00\uc790\ub97c \ucc3e\uc73c\uc138\uc694", "text": "\ub450 \ubcf4\ub4dc\uc5d0\uc11c \ub458 \ub2e4 \ub178\ub780\uc0c9 E\uac00 \ub098\uc624\uba74, E\ub97c \uc0c8 \uc704\uce58\uc5d0 \ub123\uc740 \ub2e8\uc5b4\uac00 \ub458 \ub2e4 \ub3c4\uc6c0\uc774 \ub3fc\uc694." },
-            { "title": "\ub9c8\uc9c0\ub9c9 \ucd94\uce21\uc744 \ub0a8\uaca8\ub450\uc138\uc694", "text": "\ub9c8\uc9c0\ub9c9 \ubcf4\ub4dc\uc5d0\uc11c \ub9c9\ud788\uba74 \uc5ec\ubd84\uc758 \ucd94\uce21\uc774 \uc2b9\ud328\ub97c \uac00\ub985\ub2c8\ub2e4." }
+            {
+                "title": "넓게 시작하세요",
+                "text": "자주 쓰이는 글자 단어(CRANE, STARE)로 모든 보드에서 단서를 모으세요."
+            },
+            {
+                "title": "분할 키보드를 확인하세요",
+                "text": "키보드가 보드별로 색을 보여줘요. 한 보드에서 초록색인데 다른 보드에서 회색이면 빠르게 범위를 줄일 수 있어요."
+            },
+            {
+                "title": "어려운 보드에 집중하세요",
+                "text": "모르는 것이 가장 많은 보드에 추측을 집중하세요. 쉬운 보드는 저절로 풀리는 경우가 많아요."
+            },
+            {
+                "title": "초반 추측을 낭비하지 마세요",
+                "text": "처음 2-3번은 정보 수집용 단어를 쓰고, 그 후에 특정 보드를 노리세요."
+            },
+            {
+                "title": "공통 글자를 찾으세요",
+                "text": "두 보드에서 둘 다 노란색 E가 나오면, E를 새 위치에 넣은 단어가 둘 다 도움이 돼요."
+            },
+            {
+                "title": "마지막 추측을 남겨두세요",
+                "text": "마지막 보드에서 막히면 여분의 추측이 승패를 가릅니다."
+            }
         ],
-        "mode_desc_classic": "6\ubc88\uc758 \uae30\ud68c \uc548\uc5d0 \uc228\uaca8\uc9c4 5\uae00\uc790 \ub2e8\uc5b4\ub97c \ub9de\ud600\ubcf4\uc138\uc694. \uc0c9\uc0c1 \ub2e8\uc11c\ub97c \ud65c\uc6a9\ud574 \uc815\ub2f5\uc744 \uc88b\ud600\uac00\uc138\uc694.",
-        "mode_desc_unlimited": "6\ubc88\uc758 \uae30\ud68c \uc548\uc5d0 \uc228\uaca8\uc9c4 5\uae00\uc790 \ub2e8\uc5b4\ub97c \ub9de\ud600\ubcf4\uc138\uc694. \uc0c9\uc0c1 \ub2e8\uc11c\ub97c \ud65c\uc6a9\ud574 \uc815\ub2f5\uc744 \uc88b\ud600\uac00\uc138\uc694. \uac8c\uc784 \ud6c4 \"\ub2e4\uc2dc \ud50c\ub808\uc774\"\ub97c \ub20c\ub7ec \ubc14\ub85c \uc0c8 \ub2e8\uc5b4\ub97c \ubc1b\uc73c\uc138\uc694 \u2014 \ud69f\uc218 \uc81c\ud55c \uc5c6\uc74c.",
-        "mode_desc_speed": "3\ubd84\uc758 \uc2dc\uac04\uc73c\ub85c \uc2dc\uc791\ud569\ub2c8\ub2e4. \ub2e8\uc5b4\ub97c \ud480\uba74 \ubcf4\ub108\uc2a4 \uc2dc\uac04\uc744 \ubc1b\uc544\uc694 \u2014 \uc801\uc740 \ucd94\uce21\uc73c\ub85c \ud480\uc218\ub85d \ub354 \ub9ce\uc774 (+60\ucd08 1\ubc88 \ud480\uc774, +10\ucd08 6\ubc88). \uc2e4\ud328\ud558\uba74 30\ucd08 \uac10\uc18c. \uc5f0\uc18d \ud480\uc774\ub85c \ucf64\ubcf4\ub97c \uc313\uc544 \ucd5c\ub300 3\ubc30 \ubcf4\ub108\uc2a4. 3\uac1c \ub2e8\uc5b4\ub9c8\ub2e4 \ud0c0\uc774\uba38\uac00 \ube68\ub77c\uc838\uc694.",
-        "mode_desc_multiboard": "{modeName}\uc740 {boardCount}\uac1c\uc758 Wordle \ubcf4\ub4dc\ub97c {maxGuesses}\ubc88\uc758 \ucd94\uce21\uc73c\ub85c \ub3d9\uc2dc\uc5d0 \ud478\ub294 \ubaa8\ub4dc\uc785\ub2c8\ub2e4. \ucd94\uce21\uc740 \ubaa8\ub4e0 \ubbf8\ud574\uacb0 \ubcf4\ub4dc\uc5d0 \ub3d9\uc2dc \uc801\uc6a9\ub429\ub2c8\ub2e4. \ud480\ub9b0 \ubcf4\ub4dc\ub294 \uace0\uc815\ub429\ub2c8\ub2e4. \ubd84\ud560 \ud0a4\ubcf4\ub4dc\ub85c \uc5b4\ub5a4 \uae00\uc790\uac00 \uc5b4\ub5a4 \ubcf4\ub4dc\uc5d0 \ub9de\ub294\uc9c0 \ud655\uc778\ud558\uc138\uc694. \uc790\uc8fc \uc4f0\uc774\ub294 \uae00\uc790\ub85c \uc2dc\uc791\ud574 \ubaa8\ub4e0 \ubcf4\ub4dc\uc758 \ub2e8\uc11c\ub97c \ubaa8\uc73c\uc138\uc694.",
+        "mode_desc_classic": "6번의 기회 안에 숨겨진 5글자 단어를 맞혀보세요. 색상 단서를 활용해 정답을 좋혀가세요.",
+        "mode_desc_unlimited": "6번의 기회 안에 숨겨진 5글자 단어를 맞혀보세요. 색상 단서를 활용해 정답을 좋혀가세요. 게임 후 \"다시 플레이\"를 눌러 바로 새 단어를 받으세요 — 횟수 제한 없음.",
+        "mode_desc_speed": "3분의 시간으로 시작합니다. 단어를 풀면 보너스 시간을 받아요 — 적은 추측으로 풀수록 더 많이 (+60초 1번 풀이, +10초 6번). 실패하면 30초 감소. 연속 풀이로 콤보를 쌓아 최대 3배 보너스. 3개 단어마다 타이머가 빨라져요.",
+        "mode_desc_multiboard": "{modeName}은 {boardCount}개의 Wordle 보드를 {maxGuesses}번의 추측으로 동시에 푸는 모드입니다. 추측은 모든 미해결 보드에 동시 적용됩니다. 풀린 보드는 고정됩니다. 분할 키보드로 어떤 글자가 어떤 보드에 맞는지 확인하세요. 자주 쓰이는 글자로 시작해 모든 보드의 단서를 모으세요.",
         "faq": [
-            { "q": "{langName}\ub85c Wordle\uc744 \uc5b4\ub5bb\uac8c \ud558\ub098\uc694?", "a": "wordle.global/{lang}\uc5d0\uc11c {langName} \uc77c\uc77c Wordle\uc744 \ud50c\ub808\uc774\ud558\uc138\uc694. 6\ubc88 \uc548\uc5d0 5\uae00\uc790 \ub2e8\uc5b4\ub97c \ub9de\ud600\uc57c \ud574\uc694. \ucd08\ub85d\uc0c9(\ub9de\ub294 \uae00\uc790, \ub9de\ub294 \uc704\uce58), \ub178\ub780\uc0c9(\ub9de\ub294 \uae00\uc790, \ud2c0\ub9b0 \uc704\uce58), \ud68c\uc0c9(\uc5c6\ub294 \uae00\uc790)\uc73c\ub85c \ub2e8\uc11c\ub97c \uc904 \uc218 \uc788\uc5b4\uc694." },
-            { "q": "\ub9e4\uc77c \uc0c8\ub85c\uc6b4 \ud37c\uc990\uc774 \uc788\ub098\uc694?", "a": "\ub124. \ub9e4\uc77c \uc0c8 \ub2e8\uc5b4\uac00 \uc120\ud0dd\ub3fc\uc694. \uac19\uc740 \uc5b8\uc5b4\ub85c \ud558\ub294 \ubaa8\ub4e0 \uc0ac\ub78c\uc774 \uac19\uc740 \ub2e8\uc5b4\ub97c \ubc1b\uc73c\ubbc0\ub85c \uce5c\uad6c\uc640 \uacb0\uacfc\ub97c \ube44\uad50\ud560 \uc218 \uc788\uc5b4\uc694." },
-            { "q": "Wordle Global\uc740 \ubb34\ub8cc\uc778\uac00\uc694?", "a": "\ub124. \uc77c\uc77c \ud37c\uc990, \ubb34\uc81c\ud55c \ubaa8\ub4dc, \ubaa8\ub4e0 \uac8c\uc784 \ubaa8\ub4dc\uac00 80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4\ub85c \uc644\uc804 \ubb34\ub8cc\uc785\ub2c8\ub2e4. \uacc4\uc815\uc774\ub098 \ub2e4\uc6b4\ub85c\ub4dc \ud544\uc694 \uc5c6\uc5b4\uc694." },
-            { "q": "\ud558\ub8e8\uc5d0 \uc5ec\ub7ec \ubc88 \ud560 \uc218 \uc788\ub098\uc694?", "a": "\ub124 \u2014 wordle.global/{lang}/unlimited\uc5d0\uc11c \ubb34\uc81c\ud55c \ubaa8\ub4dc\ub97c \uc990\uae30\uc138\uc694. \uae30\ub2e4\ub9bc \uc5c6\uc774 \uacc4\uc18d \ud50c\ub808\uc774\ud560 \uc218 \uc788\uc5b4\uc694. \uc77c\uc77c \uc5f0\uc18d \uae30\ub85d\uc740 \ubcc4\ub3c4\ub85c \uad00\ub9ac\ub3fc\uc694." }
+            {
+                "q": "{langName}로 Wordle을 어떻게 하나요?",
+                "a": "wordle.global/{lang}에서 {langName} 일일 Wordle을 플레이하세요. 6번 안에 5글자 단어를 맞혀야 해요. 초록색(맞는 글자, 맞는 위치), 노란색(맞는 글자, 틀린 위치), 회색(없는 글자)으로 단서를 줄 수 있어요."
+            },
+            {
+                "q": "매일 새로운 퍼즐이 있나요?",
+                "a": "네. 매일 새 단어가 선택돼요. 같은 언어로 하는 모든 사람이 같은 단어를 받으므로 친구와 결과를 비교할 수 있어요."
+            },
+            {
+                "q": "Wordle Global은 무료인가요?",
+                "a": "네. 일일 퍼즐, 무제한 모드, 모든 게임 모드가 80개 이상의 언어로 완전 무료입니다. 계정이나 다운로드 필요 없어요."
+            },
+            {
+                "q": "하루에 여러 번 할 수 있나요?",
+                "a": "네 — wordle.global/{lang}/unlimited에서 무제한 모드를 즐기세요. 기다림 없이 계속 플레이할 수 있어요. 일일 연속 기록은 별도로 관리돼요."
+            }
         ],
         "mode_faq": {
             "unlimited": [
-                { "q": "{langName}\uc73c\ub85c Wordle \ubb34\uc81c\ud55c\uc774 \ubb50\uc608\uc694?", "a": "Wordle \ubb34\uc81c\ud55c\uc740 {langName}\ub85c \uc6d0\ud558\ub294 \ub9cc\ud07c Wordle\uc744 \ud50c\ub808\uc774\ud560 \uc218 \uc788\uc5b4\uc694. \ub0b4\uc77c\uc758 \ud37c\uc990\uc744 \uae30\ub2e4\ub9b4 \ud544\uc694 \uc5c6\uc774 \ub9e4\ubc88 \uc0c8 \ub2e8\uc5b4\ub97c 6\ubc88 \uc548\uc5d0 \ub9de\ud600\ubcf4\uc138\uc694." },
-                { "q": "Wordle \ubb34\uc81c\ud55c\uc740 \ubb34\ub8cc\uc778\uac00\uc694?", "a": "\ub124. Wordle \ubb34\uc81c\ud55c\uc740 \uc644\uc804 \ubb34\ub8cc\uc785\ub2c8\ub2e4. \uacc4\uc815 \ud544\uc694 \uc5c6\uace0, \ub2e4\uc6b4\ub85c\ub4dc \ud544\uc694 \uc5c6\uace0, \uac8c\uc784 \uc911 \uad11\uace0\ub3c4 \uc5c6\uc5b4\uc694." },
-                { "q": "\ubb34\uc81c\ud55c \ubaa8\ub4dc\uac00 \uc77c\uc77c \uc5f0\uc18d \uae30\ub85d\uc5d0 \uc601\ud5a5\uc744 \uc8fc\ub098\uc694?", "a": "\uc544\ub2c8\uc694. \ubb34\uc81c\ud55c \ubaa8\ub4dc\ub294 \ubcc4\ub3c4 \ud1b5\uacc4\ub97c \uac16\uace0 \uc788\uc5b4\uc694. \uc77c\uc77c \uc5f0\uc18d \uae30\ub85d\uc740 \ub370\uc77c\ub9ac \ud37c\uc990\uc5d0\ub9cc \uc601\ud5a5\uc744 \ubc1b\uc544\uc694." },
-                { "q": "\uba87 \ubc88\uc774\ub098 \ud560 \uc218 \uc788\ub098\uc694?", "a": "\uc81c\ud55c \uc5c6\uc774 \uc6d0\ud558\ub294 \ub9cc\ud07c \ud50c\ub808\uc774\ud558\uc138\uc694. \uac8c\uc784 \ud6c4 \"\ub2e4\uc2dc \ud50c\ub808\uc774\"\ub97c \ub20c\ub7ec \ubc14\ub85c \uc0c8 \ub2e8\uc5b4\ub97c \ubc1b\uc73c\uc138\uc694." },
-                { "q": "Wordle \ubb34\uc81c\ud55c\uc744 \uc5b4\ub5a4 \uc5b8\uc5b4\ub85c \ud560 \uc218 \uc788\ub098\uc694?", "a": "Wordle \ubb34\uc81c\ud55c\uc740 wordle.global\uc5d0\uc11c 80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4\ub85c \uc774\uc6a9 \uac00\ub2a5\ud569\ub2c8\ub2e4. \uc601\uc5b4, \uc2a4\ud398\uc778\uc5b4, \ub3c5\uc77c\uc5b4, \ud540\ub780\ub4dc\uc5b4, \uc544\ub78d\uc5b4, \ud504\ub791\uc2a4\uc5b4, \uc774\ud0c8\ub9ac\uc544\uc5b4, \ud3ec\ub974\ud22c\uac08\uc5b4 \ub4f1 \ub2e4\uc591\ud55c \uc5b8\uc5b4\ub97c \uc9c0\uc6d0\ud569\ub2c8\ub2e4." }
+                {
+                    "q": "{langName}으로 Wordle 무제한이 뭐예요?",
+                    "a": "Wordle 무제한은 {langName}로 원하는 만큼 Wordle을 플레이할 수 있어요. 내일의 퍼즐을 기다릴 필요 없이 매번 새 단어를 6번 안에 맞혀보세요."
+                },
+                {
+                    "q": "Wordle 무제한은 무료인가요?",
+                    "a": "네. Wordle 무제한은 완전 무료입니다. 계정 필요 없고, 다운로드 필요 없고, 게임 중 광고도 없어요."
+                },
+                {
+                    "q": "무제한 모드가 일일 연속 기록에 영향을 주나요?",
+                    "a": "아니요. 무제한 모드는 별도 통계를 갖고 있어요. 일일 연속 기록은 데일리 퍼즐에만 영향을 받아요."
+                },
+                {
+                    "q": "몇 번이나 할 수 있나요?",
+                    "a": "제한 없이 원하는 만큼 플레이하세요. 게임 후 \"다시 플레이\"를 눌러 바로 새 단어를 받으세요."
+                },
+                {
+                    "q": "Wordle 무제한을 어떤 언어로 할 수 있나요?",
+                    "a": "Wordle 무제한은 wordle.global에서 80개 이상의 언어로 이용 가능합니다. 영어, 스페인어, 독일어, 핀란드어, 아랍어, 프랑스어, 이탈리아어, 포르투갈어 등 다양한 언어를 지원합니다."
+                }
             ],
             "speed": [
-                { "q": "{langName}\uc73c\ub85c Speed Streak\uc774 \ubb50\uc608\uc694?", "a": "Speed Streak\uc740 {langName}\uc758 \uc2dc\uac04 \uc81c\ud55c Wordle \ubaa8\ub4dc\uc785\ub2c8\ub2e4. 3\ubd84\uc73c\ub85c \uc2dc\uc791\ud574\uc11c \ucd5c\ub300\ud55c \ub9ce\uc740 \ub2e8\uc5b4\ub97c \ud480\uc5b4\ubcf4\uc138\uc694. \ube68\ub9ac \ud480\uba74 \ubcf4\ub108\uc2a4 \uc2dc\uac04\uc744 \ubc1b\uc544\uc694." },
-                { "q": "\uc810\uc218\ub294 \uc5b4\ub5bb\uac8c \uacc4\uc0b0\ub418\ub098\uc694?", "a": "\ub2e8\uc5b4\ub97c \ud480 \ub54c\ub9c8\ub2e4 \uc810\uc218\ub97c \ubc1b\uc544\uc694. \uc801\uc740 \ucd94\uce21\uacfc \ube60\ub978 \ud480\uc774\uc77c\uc218\ub85d \ub354 \ub9ce\uc740 \uc810\uc218\ub97c \ubc1b\uc544\uc694. \uc5f0\uc18d \ud480\uc774\ub85c \ucf64\ubcf4\ub97c \uc313\uc544 \ucd5c\ub300 3\ubc30 \ubcf4\ub108\uc2a4\ub97c \ubc1b\uc73c\uc138\uc694." },
-                { "q": "\uc2dc\uac04\uc774 \ub2e4 \ub418\uba74 \uc5b4\ub5bb\uac8c \ub418\ub098\uc694?", "a": "\uac8c\uc784\uc774 \ub05d\ub098\uace0 \ucd5c\uc885 \uc810\uc218, \ud47c \ub2e8\uc5b4 \uc218, \ucd5c\ub300 \ucf64\ubcf4, \ud3c9\uade0 \ucd94\uce21 \ud69f\uc218\ub97c \ud655\uc778\ud560 \uc218 \uc788\uc5b4\uc694. \ubc14\ub85c \ub2e4\uc2dc \ud50c\ub808\uc774\ud560 \uc218 \uc788\uc5b4\uc694." },
-                { "q": "Speed Streak\uc740 \ubb34\ub8cc\uc778\uac00\uc694?", "a": "\ub124. Speed Streak\uc740 80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4\ub85c \uc644\uc804 \ubb34\ub8cc\uc785\ub2c8\ub2e4. \uacc4\uc815\uc774\ub098 \ub2e4\uc6b4\ub85c\ub4dc \ud544\uc694 \uc5c6\uc5b4\uc694." }
+                {
+                    "q": "{langName}으로 Speed Streak이 뭐예요?",
+                    "a": "Speed Streak은 {langName}의 시간 제한 Wordle 모드입니다. 3분으로 시작해서 최대한 많은 단어를 풀어보세요. 빨리 풀면 보너스 시간을 받아요."
+                },
+                {
+                    "q": "점수는 어떻게 계산되나요?",
+                    "a": "단어를 풀 때마다 점수를 받아요. 적은 추측과 빠른 풀이일수록 더 많은 점수를 받아요. 연속 풀이로 콤보를 쌓아 최대 3배 보너스를 받으세요."
+                },
+                {
+                    "q": "시간이 다 되면 어떻게 되나요?",
+                    "a": "게임이 끝나고 최종 점수, 푼 단어 수, 최대 콤보, 평균 추측 횟수를 확인할 수 있어요. 바로 다시 플레이할 수 있어요."
+                },
+                {
+                    "q": "Speed Streak은 무료인가요?",
+                    "a": "네. Speed Streak은 80개 이상의 언어로 완전 무료입니다. 계정이나 다운로드 필요 없어요."
+                }
             ],
             "multiboard": [
-                { "q": "{langName}\uc73c\ub85c {modeName}\uc774 \ubb50\uc608\uc694?", "a": "{modeName}\uc740 {langName}\uc758 \uba40\ud2f0\ubcf4\ub4dc Wordle \ubaa8\ub4dc\uc785\ub2c8\ub2e4. {boardCount}\uac1c\uc758 Wordle \ubcf4\ub4dc\ub97c {maxGuesses}\ubc88\uc758 \ucd94\uce21\uc73c\ub85c \ub3d9\uc2dc\uc5d0 \ud480\uc5b4\uc694. \ucd94\uce21\uc740 \ubaa8\ub4e0 \ubbf8\ud574\uacb0 \ubcf4\ub4dc\uc5d0 \ub3d9\uc2dc \uc801\uc6a9\ub429\ub2c8\ub2e4." },
-                { "q": "{modeName}\uc5d0\uc11c \uba87 \ubc88 \ucd94\uce21\ud560 \uc218 \uc788\ub098\uc694?", "a": "{boardCount}\uac1c \ubcf4\ub4dc\ub97c \ubaa8\ub450 \ud480\uae30 \uc704\ud574 {maxGuesses}\ubc88\uc758 \ucd94\uce21\uc774 \uc8fc\uc5b4\uc838\uc694. \ubcf4\ub4dc\uac00 \ud480\ub9ac\uba74 \uace0\uc815\ub418\uace0, \ub098\uba38\uc9c0 \ubcf4\ub4dc\uc5d0 \uc9d1\uc911\ud560 \uc218 \uc788\uc5b4\uc694." },
-                { "q": "{modeName}\uc5d0\uc11c \uac00\uc7a5 \uc88b\uc740 \uc804\ub7b5\uc740?", "a": "\uc790\uc8fc \uc4f0\uc774\ub294 \uae00\uc790\ub85c \uc2dc\uc791\ud574 {boardCount}\uac1c \ubcf4\ub4dc \uc804\uccb4\uc5d0\uc11c \uc815\ubcf4\ub97c \ubaa8\uc73c\uc138\uc694. \ubd84\ud560 \ud0a4\ubcf4\ub4dc\ub97c \ud65c\uc6a9\ud574 \uc5b4\ub5a4 \uae00\uc790\uac00 \uc5b4\ub5a4 \ubcf4\ub4dc\uc5d0 \ub9de\ub294\uc9c0 \ud655\uc778\ud558\uc138\uc694." },
-                { "q": "{modeName}\uc740 \ubb34\ub8cc\uc778\uac00\uc694?", "a": "\ub124. {modeName}\uc740 80\uac1c \uc774\uc0c1\uc758 \uc5b8\uc5b4\ub85c \uc644\uc804 \ubb34\ub8cc\uc785\ub2c8\ub2e4. \uacc4\uc815\uc774\ub098 \ub2e4\uc6b4\ub85c\ub4dc \ud544\uc694 \uc5c6\uc5b4\uc694. \uc6d0\ud558\ub294 \ub9cc\ud07c \ud50c\ub808\uc774\ud558\uc138\uc694." }
+                {
+                    "q": "{langName}으로 {modeName}이 뭐예요?",
+                    "a": "{modeName}은 {langName}의 멀티보드 Wordle 모드입니다. {boardCount}개의 Wordle 보드를 {maxGuesses}번의 추측으로 동시에 풀어요. 추측은 모든 미해결 보드에 동시 적용됩니다."
+                },
+                {
+                    "q": "{modeName}에서 몇 번 추측할 수 있나요?",
+                    "a": "{boardCount}개 보드를 모두 풀기 위해 {maxGuesses}번의 추측이 주어져요. 보드가 풀리면 고정되고, 나머지 보드에 집중할 수 있어요."
+                },
+                {
+                    "q": "{modeName}에서 가장 좋은 전략은?",
+                    "a": "자주 쓰이는 글자로 시작해 {boardCount}개 보드 전체에서 정보를 모으세요. 분할 키보드를 활용해 어떤 글자가 어떤 보드에 맞는지 확인하세요."
+                },
+                {
+                    "q": "{modeName}은 무료인가요?",
+                    "a": "네. {modeName}은 80개 이상의 언어로 완전 무료입니다. 계정이나 다운로드 필요 없어요. 원하는 만큼 플레이하세요."
+                }
             ]
         },
         "howto": [
-            { "name": "\ub2e8\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "text": "{langName}\uc73c\ub85c \uc720\ud6a8\ud55c 5\uae00\uc790 \ub2e8\uc5b4\ub97c \ud654\uba74 \ud0a4\ubcf4\ub4dc\ub098 \ubb3c\ub9ac \ud0a4\ubcf4\ub4dc\ub85c \uc785\ub825\ud558\uace0 Enter\ub97c \ub204\ub974\uc138\uc694." },
-            { "name": "\ub2e8\uc11c\ub97c \uc77d\uc73c\uc138\uc694", "text": "\ucd08\ub85d\uc0c9 \ud0c0\uc77c\uc740 \uae00\uc790\uac00 \ub9de\uace0 \uc704\uce58\ub3c4 \ub9de\ub294 \uac83. \ub178\ub780\uc0c9\uc740 \uae00\uc790\ub294 \ub9de\uc9c0\ub9cc \uc704\uce58\uac00 \ub2e4\ub978 \uac83. \ud68c\uc0c9\uc740 \uae00\uc790\uac00 \ub2e8\uc5b4\uc5d0 \uc5c6\ub294 \uac83." },
-            { "name": "6\ubc88 \uc548\uc5d0 \ud480\uae30", "text": "\uc0c9\uc0c1 \ub2e8\uc11c\ub97c \ud65c\uc6a9\ud574 \ub2e8\uc5b4\ub97c \uc88b\ud600\uac00\uc138\uc694. \ucd1d 6\ubc88\uc758 \uae30\ud68c\uac00 \uc788\uc5b4\uc694. \ud37c\uc990 \ud6c4 \ud1b5\uacc4\ub97c \ud655\uc778\ud558\uace0 \uacb0\uacfc\ub97c \uacf5\uc720\ud558\uc138\uc694." }
+            {
+                "name": "단어를 입력하세요",
+                "text": "{langName}으로 유효한 5글자 단어를 화면 키보드나 물리 키보드로 입력하고 Enter를 누르세요."
+            },
+            {
+                "name": "단서를 읽으세요",
+                "text": "초록색 타일은 글자가 맞고 위치도 맞는 것. 노란색은 글자는 맞지만 위치가 다른 것. 회색은 글자가 단어에 없는 것."
+            },
+            {
+                "name": "6번 안에 풀기",
+                "text": "색상 단서를 활용해 단어를 좋혀가세요. 총 6번의 기회가 있어요. 퍼즐 후 통계를 확인하고 결과를 공유하세요."
+            }
         ],
         "mode_howto": {
             "unlimited": [
-                { "name": "\uac8c\uc784 \uc2dc\uc791", "text": "wordle.global/{lang}/unlimited\uc5d0\uc11c {langName}\uc73c\ub85c Wordle \ubb34\uc81c\ud55c\uc744 \uc2dc\uc791\ud558\uc138\uc694. \ub79c\ub364 5\uae00\uc790 \ub2e8\uc5b4\uac00 \uc120\ud0dd\ub429\ub2c8\ub2e4." },
-                { "name": "\ub2e8\uc5b4 \ub9de\ud788\uae30", "text": "\uc720\ud6a8\ud55c 5\uae00\uc790 \ub2e8\uc5b4\ub97c \uc785\ub825\ud558\uace0 Enter\ub97c \ub204\ub974\uc138\uc694. \ucd08\ub85d\uc0c9\uc740 \ub9de\ub294 \uae00\uc790\uc640 \uc704\uce58, \ub178\ub780\uc0c9\uc740 \ub9de\ub294 \uae00\uc790\uc640 \ud2c0\ub9b0 \uc704\uce58, \ud68c\uc0c9\uc740 \uc5c6\ub294 \uae00\uc790\uc785\ub2c8\ub2e4." },
-                { "name": "\ubc14\ub85c \ub2e4\uc2dc \ud50c\ub808\uc774", "text": "\ub2e8\uc5b4\ub97c \ud47c \ud6c4 (6\ubc88 \ubaa8\ub450 \uc0ac\uc6a9\ud55c \ud6c4\uc5d0\ub3c4) \"\ub2e4\uc2dc \ud50c\ub808\uc774\"\ub97c \ub20c\ub7ec \ubc14\ub85c \uc0c8 \ub2e8\uc5b4\ub97c \ubc1b\uc73c\uc138\uc694. \ub0b4\uc77c\uc744 \uae30\ub2e4\ub9b4 \ud544\uc694 \uc5c6\uc5b4\uc694." }
+                {
+                    "name": "게임 시작",
+                    "text": "wordle.global/{lang}/unlimited에서 {langName}으로 Wordle 무제한을 시작하세요. 랜덤 5글자 단어가 선택됩니다."
+                },
+                {
+                    "name": "단어 맞히기",
+                    "text": "유효한 5글자 단어를 입력하고 Enter를 누르세요. 초록색은 맞는 글자와 위치, 노란색은 맞는 글자와 틀린 위치, 회색은 없는 글자입니다."
+                },
+                {
+                    "name": "바로 다시 플레이",
+                    "text": "단어를 푼 후 (6번 모두 사용한 후에도) \"다시 플레이\"를 눌러 바로 새 단어를 받으세요. 내일을 기다릴 필요 없어요."
+                }
             ],
             "speed": [
-                { "name": "\ud0c0\uc774\uba38 \uc2dc\uc791", "text": "wordle.global/{lang}/speed\uc5d0\uc11c \uc2dc\uc791\uc744 \ub204\ub974\uc138\uc694. 3\ubd84\uc73c\ub85c \uc2dc\uc791\ud569\ub2c8\ub2e4." },
-                { "name": "\ube68\ub9ac \ud480\uae30", "text": "\ub2e8\uc5b4\ub97c \ud480\uba74 \ubcf4\ub108\uc2a4 \uc2dc\uac04\uc744 \ubc1b\uc544\uc694 (\ucd94\uce21 \ud69f\uc218\uc5d0 \ub530\ub77c +10\ucd08~+60\ucd08). \uc2e4\ud328\ud558\uba74 30\ucd08 \uac10\uc18c." },
-                { "name": "\ucf64\ubcf4 \uc313\uae30", "text": "\uc5f0\uc18d\uc73c\ub85c \ub2e8\uc5b4\ub97c \ud480\uba74 \ucf64\ubcf4 \ubc30\uc728\uc774 \uc62c\ub77c\uac00\uc694 (\ucd5c\ub300 3\ubc30). \uc2e4\ud328\ud558\uba74 \ucf64\ubcf4\uac00 \uae68\uc838\uc694. \ucd5c\uace0 \uc810\uc218\uc5d0 \ub3c4\uc804\ud574\ubcf4\uc138\uc694." }
+                {
+                    "name": "타이머 시작",
+                    "text": "wordle.global/{lang}/speed에서 시작을 누르세요. 3분으로 시작합니다."
+                },
+                {
+                    "name": "빨리 풀기",
+                    "text": "단어를 풀면 보너스 시간을 받아요 (추측 횟수에 따라 +10초~+60초). 실패하면 30초 감소."
+                },
+                {
+                    "name": "콤보 쌓기",
+                    "text": "연속으로 단어를 풀면 콤보 배율이 올라가요 (최대 3배). 실패하면 콤보가 깨져요. 최고 점수에 도전해보세요."
+                }
             ],
             "multiboard": [
-                { "name": "\uac8c\uc784 \uc2dc\uc791", "text": "wordle.global/{lang}/{modeName}\uc5d0\uc11c {langName}\uc73c\ub85c {modeName}\uc744 \uc2dc\uc791\ud558\uc138\uc694. {boardCount}\uac1c\uc758 \ubcf4\ub4dc\uac00 \uc11c\ub85c \ub2e4\ub978 \uc228\uaca8\uc9c4 \ub2e8\uc5b4\ub85c \ub098\ud0c0\ub098\uc694." },
-                { "name": "\ubaa8\ub4e0 \ubcf4\ub4dc\uc5d0 \ucd94\uce21", "text": "5\uae00\uc790 \ub2e8\uc5b4\ub97c \uc785\ub825\ud558\uace0 Enter\ub97c \ub204\ub974\uc138\uc694. \ucd94\uce21\uc740 {boardCount}\uac1c \ubcf4\ub4dc \uc804\ubd80\uc5d0 \ub3d9\uc2dc \uc801\uc6a9\ub429\ub2c8\ub2e4. \uac01 \ubcf4\ub4dc\ub294 \uc790\uccb4 \uc0c9\uc0c1 \ub2e8\uc11c(\ucd08\ub85d, \ub178\ub791, \ud68c\uc0c9)\ub97c \ubcf4\uc5ec\uc918\uc694." },
-                { "name": "{boardCount}\uac1c \ubcf4\ub4dc \ubaa8\ub450 \ud480\uae30", "text": "\ud480\ub9b0 \ubcf4\ub4dc\ub294 \uace0\uc815\ub429\ub2c8\ub2e4. \ubd84\ud560 \ud0a4\ubcf4\ub4dc\ub85c \uc5b4\ub5a4 \uae00\uc790\uac00 \uc5b4\ub5a4 \ubcf4\ub4dc\uc5d0 \ub9de\ub294\uc9c0 \ud655\uc778\ud558\uc138\uc694. {maxGuesses}\ubc88 \uc548\uc5d0 {boardCount}\uac1c \ubcf4\ub4dc\ub97c \ubaa8\ub450 \ud480\uba74 \uc2b9\ub9ac\uc785\ub2c8\ub2e4." }
+                {
+                    "name": "게임 시작",
+                    "text": "wordle.global/{lang}/{modeName}에서 {langName}으로 {modeName}을 시작하세요. {boardCount}개의 보드가 서로 다른 숨겨진 단어로 나타나요."
+                },
+                {
+                    "name": "모든 보드에 추측",
+                    "text": "5글자 단어를 입력하고 Enter를 누르세요. 추측은 {boardCount}개 보드 전부에 동시 적용됩니다. 각 보드는 자체 색상 단서(초록, 노랑, 회색)를 보여줘요."
+                },
+                {
+                    "name": "{boardCount}개 보드 모두 풀기",
+                    "text": "풀린 보드는 고정됩니다. 분할 키보드로 어떤 글자가 어떤 보드에 맞는지 확인하세요. {maxGuesses}번 안에 {boardCount}개 보드를 모두 풀면 승리입니다."
+                }
             ]
         }
     }

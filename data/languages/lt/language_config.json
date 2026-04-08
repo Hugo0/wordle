@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Lithuanian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} atsakymas",
+            "description_with_def": "Wordle {langNative} atsakymas {date} (#{idx}) buvo {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative} atsakymas {date} (#{idx}) buvo {word}. Ar atspėsi jį per 6 bandymus?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Netrukus",
+            "description_coming_soon": "Wordle {langNative} žodis #{idx}. Netrukus."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Visi žodžiai | Žodžių archyvas",
+            "description": "Naršyk visus {count} ankstesnius Wordle žodžius kalba {langNative}. Peržiūrėk apibrėžimus, AI meną ir bendruomenės statistiką kiekvienam kasdieniam žodžiui."
+        },
+        "best_starting_words": {
+            "title": "Geriausi pradiniai Wordle žodžiai kalba {langNative} — Wordle Global",
+            "description": "Duomenimis pagrįsta geriausių pradinių Wordle žodžių analizė kalba {langNative}. Reitinguota pagal raidžių padengimą tarp {count} žodžių."
         }
     },
     "text": {

@@ -24,7 +24,7 @@
     "meta": {
         "locale": "es",
         "title": "El juego diario de palabras",
-        "description": "Adivina la palabra oculta en 6 intentos (o menos). ¡Un nuevo rompecabezas está disponible cada día!",
+        "description": "Juega a Wordle en más de 80 idiomas — del árabe al yoruba. El Wordle multilingüe más grande. Definiciones, sin anuncios, sin registro. 8 modos.",
         "keywords": "Español, rompecabezas, palabra, juego, juego, en línea, supongo, diariamente",
         "modes": {
             "unlimited": {
@@ -59,6 +59,21 @@
                 "title": "Duotrigordle — 32 tableros a la vez",
                 "description": "Juega Duotrigordle en español. Resuelve 32 tableros Wordle a la vez con 37 intentos."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Respuesta en {langNative}",
+            "description_with_def": "La respuesta de Wordle {langNative} del {date} (#{idx}) fue {word}. {partOfSpeech}{definition}",
+            "description_without_def": "La respuesta de Wordle {langNative} del {date} (#{idx}) fue {word}. ¿Puedes adivinarla en 6 intentos?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Próximamente",
+            "description_coming_soon": "Palabra #{idx} de Wordle {langNative}. Próximamente."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Todas las palabras | Archivo de palabras",
+            "description": "Explora las {count} palabras pasadas de Wordle en {langNative}. Definiciones, arte generado por IA y estadísticas de la comunidad para cada palabra diaria."
+        },
+        "best_starting_words": {
+            "title": "Mejores palabras iniciales de Wordle en {langNative} — Wordle Global",
+            "description": "Análisis basado en datos de las mejores palabras para empezar Wordle en {langNative}. Clasificadas por cobertura de letras entre {count} palabras."
         }
     },
     "text": {

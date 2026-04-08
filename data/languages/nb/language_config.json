@@ -52,6 +52,21 @@
                 "title": "Duotrigordle — 32 brett samtidig",
                 "description": "Spill Duotrigordle på norsk. Løs 32 Wordle-brett samtidig med 37 forsøk."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Svar på {langNative}",
+            "description_with_def": "Wordle {langNative}-svaret for {date} (#{idx}) var {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative}-svaret for {date} (#{idx}) var {word}. Klarer du å gjette det på 6 forsøk?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kommer snart",
+            "description_coming_soon": "Wordle {langNative} ord #{idx}. Kommer snart."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Alle ord | Ordarkiv",
+            "description": "Bla gjennom alle {count} tidligere Wordle-ord på {langNative}. Definisjoner, AI-illustrasjoner og fellesskapsstatistikk for hvert daglige ord."
+        },
+        "best_starting_words": {
+            "title": "Beste startord for Wordle på {langNative} — Wordle Global",
+            "description": "Datadrevet analyse av de beste startordene for Wordle på {langNative}. Rangert etter bokstavdekning over {count} ord."
         }
     },
     "text": {

@@ -44,6 +44,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Marathi. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} उत्तर",
+            "description_with_def": "{date} (#{idx}) चे {langNative} Wordle उत्तर {word} होते. {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) चे {langNative} Wordle उत्तर {word} होते. तुम्ही ते 6 प्रयत्नांत ओळखू शकता का?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — लवकरच येत आहे",
+            "description_coming_soon": "{langNative} Wordle शब्द #{idx}. लवकरच येत आहे."
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — सर्व शब्द | शब्द संग्रह",
+            "description": "{langNative} मधील मागील सर्व {count} Wordle शब्द पाहा. प्रत्येक दैनंदिन शब्दासाठी व्याख्या, AI कला आणि समुदाय आकडेवारी."
+        },
+        "best_starting_words": {
+            "title": "{langNative} मध्ये Wordle साठी सर्वोत्तम सुरुवातीचे शब्द — Wordle Global",
+            "description": "{langNative} मधील Wordle साठी सर्वोत्तम सुरुवातीच्या शब्दांचे डेटा-आधारित विश्लेषण. {count} शब्दांमधील अक्षर कव्हरेजनुसार क्रमवारी."
         }
     },
     "text": {

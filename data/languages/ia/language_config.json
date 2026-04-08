@@ -40,6 +40,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Interlingua. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Responsa in {langNative}",
+            "description_with_def": "Le responsa de Wordle {langNative} pro {date} (#{idx}) esseva {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Le responsa de Wordle {langNative} pro {date} (#{idx}) esseva {word}. Pote tu divinar lo in 6 tentativas?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Veniente tosto",
+            "description_coming_soon": "Parola de Wordle {langNative} #{idx}. Veniente tosto."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Tote le Parolas | Archivo de Parolas",
+            "description": "Naviga tote le {count} parolas passate de Wordle in {langNative}. Vide definitiones, arte AI, e statisticas del communitate pro cata parola quotidian."
+        },
+        "best_starting_words": {
+            "title": "Melior Parolas Initial pro Wordle in {langNative} — Wordle Global",
+            "description": "Analyse basate super datos del melior parolas initial pro Wordle in {langNative}. Classificate per copertura de litteras trans {count} parolas."
         }
     },
     "text": {

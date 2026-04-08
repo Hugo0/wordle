@@ -6,7 +6,7 @@
     "meta": {
         "locale": "fi",
         "title": "Päivittäinen sanapeli",
-        "description": "Arvaa sana maksimissaan 6 yrityksellä. Uusi sana on saatavilla joka päivä!",
+        "description": "Pelaa Wordlea yli 80 kielellä — arabiasta joruban kieleen. Suurin monikielinen Wordle. Sanamääritelmät, ei mainoksia, ei kirjautumista. 8 pelitilaa.",
         "keywords": "Suomi, sanapeli, päivittäinen",
         "modes": {
             "unlimited": {
@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 ruudukkoa kerralla",
                 "description": "Pelaa Duotrigordlea suomeksi. Ratkaise 32 Wordle-ruudukkoa kerralla 37 arvauksella."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} vastaus",
+            "description_with_def": "Wordle {langNative} -vastaus päivälle {date} (#{idx}) oli {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative} -vastaus päivälle {date} (#{idx}) oli {word}. Arvaatko sen 6 yrityksellä?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Tulossa pian",
+            "description_coming_soon": "Wordle {langNative} -sana #{idx}. Tulossa pian."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Kaikki sanat | Sanaarkisto",
+            "description": "Selaa kaikkia {count} aiempaa Wordle-sanaa kielellä {langNative}. Katso jokaisen päivittäisen sanan määritelmät, AI-taide ja yhteisön tilastot."
+        },
+        "best_starting_words": {
+            "title": "Parhaat aloitussanat Wordleen kielellä {langNative} — Wordle Global",
+            "description": "Data-analyysi parhaista aloitussanoista Wordleen kielellä {langNative}. Sijoitettu kirjainten kattavuuden mukaan {count} sanasta."
         }
     },
     "text": {

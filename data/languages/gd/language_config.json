@@ -40,6 +40,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Gaelic. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Freagairt {langNative}",
+            "description_with_def": "B' e {word} am freagairt Wordle {langNative} airson {date} (#{idx}). {partOfSpeech}{definition}",
+            "description_without_def": "B' e {word} am freagairt Wordle {langNative} airson {date} (#{idx}). An urrainn dhut tomhas ann an 6 oidhirpean?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — A' tighinn a dh'aithghearr",
+            "description_coming_soon": "Facal Wordle {langNative} #{idx}. A' tighinn a dh'aithghearr."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Na h-uile Facal | Tasglann Fhaclan",
+            "description": "Rùraich na h-uile {count} facal Wordle a bh' ann roimhe ann an {langNative}. Faic mìneachaidhean, ealain AI, agus staitistig na coimhearsnachd airson gach facal làitheil."
+        },
+        "best_starting_words": {
+            "title": "Na Faclan Tòiseachaidh as Fheàrr airson Wordle ann an {langNative} — Wordle Global",
+            "description": "Mion-sgrùdadh stèidhichte air dàta air na faclan tòiseachaidh as fheàrr airson Wordle ann an {langNative}. Rangaichte a rèir còmhdach litrichean thairis air {count} facal."
         }
     },
     "text": {
