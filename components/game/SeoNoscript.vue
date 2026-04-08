@@ -55,6 +55,18 @@ const todaysWord = computed(() => langStore?.todaysWord?.toUpperCase() || '');
 const todaysIdx = computed(() => langStore?.todaysIdx ?? 0);
 const gameAlreadyOver = computed(() => game?.gameOver ?? false);
 
+// Auto-reveal when the player finishes the game (win or loss). Covers both
+// live transitions and returning to a completed daily.
+if (game) {
+    watch(
+        () => game.gameOver,
+        (isOver) => {
+            if (isOver) wordRevealed.value = true;
+        },
+        { immediate: true }
+    );
+}
+
 function onRevealClick() {
     if (wordRevealed.value) return;
     if (gameAlreadyOver.value) {
@@ -364,15 +376,17 @@ const recentWords = computed(() => {
                         </div>
                     </div>
                 </div>
-                <p class="text-center pt-2">
-                    <a
-                        :href="`/${lang}/best-starting-words`"
-                        class="text-sm text-muted underline hover:text-ink transition-colors"
-                    >
-                        See the full analysis of best starting words for {{ seo.langName }} &rarr;
-                    </a>
-                </p>
             </section>
+
+            <div v-if="isClassic" class="editorial-rule" />
+
+            <!-- ─── Best Starting Words (classic only) ─── -->
+            <GameBestStartingWordsPanel
+                v-if="isClassic"
+                :lang="lang"
+                :lang-name="seo.langName"
+                :limit="5"
+            />
 
             <div class="editorial-rule" />
 

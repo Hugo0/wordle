@@ -412,6 +412,22 @@ export interface GameResult {
 
 export type GameResults = Record<string, GameResult[]>;
 
+/**
+ * Persistent record of a completed Speed Streak session.
+ * Stored separately from GameResults because the shape (score, combo, timing)
+ * does not match the classic win/attempts model.
+ */
+export interface SpeedResult {
+    date: Date | string;
+    score: number;
+    wordsSolved: number;
+    wordsFailed: number;
+    maxCombo: number;
+    totalGuesses: number;
+}
+
+export type SpeedResults = Record<string, SpeedResult[]>;
+
 export interface TotalStats {
     total_games: number;
     game_stats: Record<string, GameStats>;

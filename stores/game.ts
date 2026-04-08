@@ -2219,6 +2219,20 @@ export const useGameStore = defineStore('game', () => {
                     ? Math.round((totalSolveTimeMs / s.wordsSolved / 1000) * 10) / 10
                     : 0,
         });
+
+        // Persist the session so it shows up on /stats. Only record sessions
+        // where the user actually played (≥1 guess) to avoid noise from users
+        // who land in speed mode and immediately leave.
+        if (lang.languageCode && s.totalGuesses > 0) {
+            const statsStore = useStatsStore();
+            statsStore.saveSpeedResult(lang.languageCode, {
+                score: s.score,
+                wordsSolved: s.wordsSolved,
+                wordsFailed: s.wordsFailed,
+                maxCombo: s.maxCombo,
+                totalGuesses: s.totalGuesses,
+            });
+        }
     }
 
     function getSpeedShareText(): string {

@@ -10,6 +10,13 @@
 import { formatDateLong } from '~/utils/locale';
 import { interpolate } from '~/utils/interpolate';
 
+// Force full remount when language changes — prevents today-revealed state
+// and cached API data from bleeding between languages when Vue Router reuses
+// the component on /<lang>/words → /<otherLang>/words.
+definePageMeta({
+    key: (route) => route.params.lang as string,
+});
+
 const route = useRoute();
 const lang = route.params.lang as string;
 const page = computed(() => parseInt((route.query.page as string) || '1', 10));
