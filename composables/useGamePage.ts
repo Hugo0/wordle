@@ -78,9 +78,12 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             window.removeEventListener('keydown', handleKeyDown);
         });
 
-        // Initialize settings + stats
+        // Initialize settings + stats. Load speed results too so that
+        // `saveSpeedResult()` from finishSpeedSession() merges with prior
+        // history rather than clobbering localStorage with just the new run.
         settings.init();
         stats.loadGameResults(langStore.languageCode);
+        stats.loadSpeedResults();
         game.initTimingState();
 
         // Calculate stats for the current game mode so the stats modal has data on reload

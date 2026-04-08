@@ -8,7 +8,12 @@
 
 import { interpolate } from '~/utils/interpolate';
 
-definePageMeta({ layout: 'default' });
+// Force a full remount when the user navigates between languages so the
+// `useFetch` call below re-runs against the new lang code.
+definePageMeta({
+    layout: 'default',
+    key: (route) => route.params.lang as string,
+});
 
 const route = useRoute();
 const lang = route.params.lang as string;

@@ -9,6 +9,14 @@
 import { formatDateLong } from '~/utils/locale';
 import { interpolate } from '~/utils/interpolate';
 
+// Force a full remount when the user navigates between languages or word
+// indices. Without this, Vue Router reuses the same component instance and
+// the captured `lang` / `dayIdx` constants below + their `useFetch` calls
+// would serve stale data on subsequent navigations.
+definePageMeta({
+    key: (route) => `${route.params.lang}-${route.params.id}`,
+});
+
 interface DefinitionData {
     definition: string;
     definition_native?: string;
@@ -49,7 +57,11 @@ const posText = definition?.part_of_speech ? definition.part_of_speech + ': ' : 
 const upperWord = word ? word.toUpperCase() : '';
 const seoVars = {
     idx: dayIdx,
-    date: wordDate || 'Coming soon',
+    // Future words have no published date yet — use the localized "coming
+    // soon" UI label so non-English snippets don't show English fallback text.
+    // (This only fires when a future word slips through the title-coming-soon
+    //  template; the dedicated `_coming_soon` variants handle the common case.)
+    date: wordDate || label('coming_soon', 'Coming soon'),
     word: upperWord,
     langNative: langNameNative,
     definition: defText,

@@ -115,8 +115,13 @@ function loadStats() {
     const speed = statsStore.calculateSpeedStats();
     speedAggregate.value = speed.games > 0 ? speed : null;
 
-    const allKeys = Object.keys(statsStore.gameResults);
-    if (allKeys.length === 0 && !speedAggregate.value) {
+    // `loadGameResults()` seeds `gameResults` with `{ unknown: [] }` when
+    // storage is empty, so checking `Object.keys().length === 0` always
+    // misses the empty state. Inspect the values instead.
+    const hasStoredResults = Object.values(statsStore.gameResults).some(
+        (results) => results.length > 0
+    );
+    if (!hasStoredResults && !speedAggregate.value) {
         empty.value = true;
         return;
     }

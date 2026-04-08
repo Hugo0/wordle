@@ -101,6 +101,10 @@ export interface LanguageWordDetailMeta {
 export interface LanguagePageMeta {
     title?: string;
     description?: string;
+    /** Optional panel-only copy for embedded components (e.g. BestStartingWordsPanel). */
+    panel_heading?: string;
+    panel_subtitle?: string;
+    panel_link?: string;
 }
 
 export interface LanguageMeta {

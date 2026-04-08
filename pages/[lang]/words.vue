@@ -144,7 +144,7 @@ useHead({
                         {
                             '@type': 'ListItem',
                             position: 3,
-                            name: label('all_words', 'Word Archive'),
+                            name: label('all_words', 'All Words'),
                             item: `https://wordle.global/${lang}/words`,
                         },
                     ],

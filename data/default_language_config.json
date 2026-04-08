@@ -24,7 +24,10 @@
         },
         "best_starting_words": {
             "title": "Best Starting Words for Wordle in {langNative} — Wordle Global",
-            "description": "Data-driven analysis of the best starting words for Wordle in {langNative}. Ranked by letter coverage across {count} words."
+            "description": "Data-driven analysis of the best starting words for Wordle in {langNative}. Ranked by letter coverage across {count} words.",
+            "panel_heading": "Best Starting Words — {langNative}",
+            "panel_subtitle": "Ranked from the actual {count}-word {langNative} list by letter coverage — not generic English advice.",
+            "panel_link": "See the full ranking & letter frequency analysis →"
         }
     },
     "text": {
