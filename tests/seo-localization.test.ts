@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { getLocaleForIntl, formatDateLong } from '../utils/locale';
 import { interpolate } from '../utils/interpolate';
 
@@ -159,4 +161,114 @@ describe('SEO template interpolation end-to-end', () => {
         expect(desc).toContain('A bag or purse');
         expect(desc).toContain('noun:');
     });
+});
+
+/**
+ * Per-language regression test.
+ *
+ * Loads every language config that ships an override for the new SEO
+ * templates and asserts:
+ *   1. The JSON parses
+ *   2. Required placeholders are preserved (otherwise interpolation
+ *      produces broken snippets in production)
+ *   3. Templates interpolate cleanly with realistic values
+ *
+ * Languages that don't override these keys (e.g. tlh, qya, pau) inherit
+ * defaults via the data-loader merge and are intentionally skipped.
+ */
+describe('per-language SEO template regression', () => {
+    const languagesDir = resolve(__dirname, '..', 'data', 'languages');
+    const langs = readdirSync(languagesDir).filter((entry) => {
+        const configPath = resolve(languagesDir, entry, 'language_config.json');
+        return existsSync(configPath);
+    });
+
+    // Sanity: confirm we found a meaningful number of languages
+    it('discovers all language configs', () => {
+        expect(langs.length).toBeGreaterThanOrEqual(75);
+    });
+
+    const sampleVars = {
+        idx: 1737,
+        date: '22 de marzo de 2026',
+        word: 'BOLSO',
+        langNative: 'Español',
+        definition: 'A bag or purse carried by hand.',
+        partOfSpeech: 'noun: ',
+        count: 1754,
+    };
+
+    const requiredPlaceholders: Record<string, string[]> = {
+        'meta.word_detail.title': ['{idx}', '{date}', '{word}', '{langNative}'],
+        'meta.word_detail.description_with_def': [
+            '{idx}',
+            '{date}',
+            '{word}',
+            '{langNative}',
+            '{definition}',
+        ],
+        'meta.word_detail.description_without_def': ['{idx}', '{date}', '{word}', '{langNative}'],
+        'meta.word_detail.title_coming_soon': ['{idx}', '{langNative}'],
+        'meta.word_detail.description_coming_soon': ['{idx}', '{langNative}'],
+        'meta.word_archive.title': ['{langNative}'],
+        'meta.word_archive.description': ['{count}', '{langNative}'],
+        'meta.best_starting_words.title': ['{langNative}'],
+        'meta.best_starting_words.description': ['{langNative}', '{count}'],
+    };
+
+    for (const lang of langs) {
+        describe(`language: ${lang}`, () => {
+            const configPath = resolve(languagesDir, lang, 'language_config.json');
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            let config: any;
+
+            it('parses as valid JSON', () => {
+                expect(() => {
+                    config = JSON.parse(readFileSync(configPath, 'utf-8'));
+                }).not.toThrow();
+            });
+
+            // Skip placeholder/interpolation checks for languages that
+            // intentionally inherit defaults — they have no `meta.word_detail`.
+            it('all overridden SEO templates preserve required placeholders', () => {
+                if (!config) return;
+                for (const [path, placeholders] of Object.entries(requiredPlaceholders)) {
+                    const value = path
+                        .split('.')
+                        .reduce(
+                            (acc: unknown, key) => (acc as Record<string, unknown>)?.[key],
+                            config
+                        ) as string | undefined;
+                    if (typeof value !== 'string') continue; // not overridden — fine
+                    for (const ph of placeholders) {
+                        expect(
+                            value.includes(ph),
+                            `${lang}: ${path} is missing required placeholder ${ph}\n  → "${value}"`
+                        ).toBe(true);
+                    }
+                }
+            });
+
+            it('all overridden SEO templates interpolate without leftover placeholders', () => {
+                if (!config) return;
+                for (const path of Object.keys(requiredPlaceholders)) {
+                    const value = path
+                        .split('.')
+                        .reduce(
+                            (acc: unknown, key) => (acc as Record<string, unknown>)?.[key],
+                            config
+                        ) as string | undefined;
+                    if (typeof value !== 'string') continue;
+                    const rendered = interpolate(value, sampleVars);
+                    // After interpolation, no `{...}` should remain — that
+                    // would mean the template references a placeholder we
+                    // don't supply, breaking production snippets.
+                    expect(
+                        /\{[a-zA-Z_]+\}/.test(rendered),
+                        `${lang}: ${path} has leftover placeholders after interpolation\n  → "${rendered}"`
+                    ).toBe(false);
+                }
+            });
+        });
+    }
 });
