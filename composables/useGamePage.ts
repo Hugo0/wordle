@@ -78,9 +78,8 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             window.removeEventListener('keydown', handleKeyDown);
         });
 
-        // Initialize settings + stats. Load speed results too so that
-        // `saveSpeedResult()` from finishSpeedSession() merges with prior
-        // history rather than clobbering localStorage with just the new run.
+        // Initialize settings + stats. loadSpeedResults hydrates the
+        // speed_results blob so finishSpeedSession() merges instead of clobbering.
         settings.init();
         stats.loadGameResults(langStore.languageCode);
         stats.loadSpeedResults();

@@ -291,12 +291,7 @@ export const useStatsStore = defineStore('stats', () => {
     // Speed Streak persistence
     // ---------------------------------------------------------------------------
 
-    /**
-     * Runtime shape guard for SpeedResults — `JSON.parse('null')` and
-     * `JSON.parse('[]')` succeed but break callers that expect a record
-     * keyed by language code with arrays of results. Reject anything that
-     * isn't a plain object before assigning.
-     */
+    /** Guard against `JSON.parse('null')`/`'[]'` succeeding but producing non-record values. */
     function isValidSpeedResults(value: unknown): value is SpeedResults {
         if (value === null || typeof value !== 'object' || Array.isArray(value)) {
             return false;
@@ -311,11 +306,6 @@ export const useStatsStore = defineStore('stats', () => {
 
     function saveSpeedResult(langCode: string, result: Omit<SpeedResult, 'date'>): void {
         if (!langCode) return;
-        // Re-hydrate from disk before merging so we never clobber prior runs.
-        // The store may be a fresh instance (saveSpeedResult is called from
-        // stores/game.ts and may run before /stats has hydrated speedResults),
-        // or another tab may have written newer runs we haven't seen yet.
-        loadSpeedResults();
         const entry: SpeedResult = { ...result, date: new Date().toISOString() };
         const prior = speedResults.value[langCode] ?? [];
         const next = [...prior, entry];
