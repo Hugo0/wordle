@@ -6,8 +6,9 @@
  * share button, navigation, and Giscus comments. Matches legacy word.html template.
  */
 
-import { formatDateLong } from '~/utils/locale';
+import { formatDateLong, getLocaleForIntl } from '~/utils/locale';
 import { interpolate } from '~/utils/interpolate';
+import { translatePos } from '~/utils/i18n';
 
 // Remount on lang/id change so useFetch re-runs against the new route.
 definePageMeta({
@@ -48,10 +49,13 @@ const wordDetailMeta = meta.word_detail || {};
 
 const wordDate = formatDateLong(d.word_date, lang);
 
-// SEO interpolation
-const defText = definition?.definition || '';
-const posText = definition?.part_of_speech ? definition.part_of_speech + ': ' : '';
-const upperWord = word ? word.toUpperCase() : '';
+// SEO interpolation. Prefer the native-language definition when available
+// and translate the part-of-speech token via ui.pos_* keys.
+const defText = definition?.definition_native || definition?.definition || '';
+const localizedPos = translatePos(definition?.part_of_speech, ui);
+const posText = localizedPos ? localizedPos + ': ' : '';
+// toLocaleUpperCase respects locale-specific casing (e.g. Turkish dotted i).
+const upperWord = word ? word.toLocaleUpperCase(getLocaleForIntl(lang)) : '';
 const seoVars = {
     idx: dayIdx,
     // Localized so non-English SEO snippets don't show English fallback text.
@@ -188,7 +192,7 @@ const shareBtnClass = ref('bg-correct hover:opacity-90');
 
 function shareWord() {
     if (!word) return;
-    const text = `Wordle ${langNameNative} #${dayIdx} \u2014 ${word.toUpperCase()}\nhttps://wordle.global/${lang}/word/${dayIdx}`;
+    const text = `Wordle ${langNameNative} #${dayIdx} \u2014 ${upperWord}\nhttps://wordle.global/${lang}/word/${dayIdx}`;
     if (navigator.share) {
         navigator.share({ text }).catch(() => {});
     } else if (navigator.clipboard) {

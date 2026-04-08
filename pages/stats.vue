@@ -263,10 +263,12 @@ const allModesGames = computed(
 );
 const allModesWins = computed(() => modeStats.value.reduce((sum, m) => sum + m.wins, 0));
 const winRateDenominator = computed(() => modeStats.value.reduce((sum, m) => sum + m.games, 0));
-const allModesWinRate = computed(() =>
+// null when there's nothing to compute a win rate from (e.g. speed-only
+// players) — the template renders "—" instead of a misleading 0%.
+const allModesWinRate = computed<number | null>(() =>
     winRateDenominator.value > 0
         ? Math.round((allModesWins.value / winRateDenominator.value) * 100)
-        : 0
+        : null
 );
 const modesPlayed = computed(() => {
     const withResults = modeStats.value.filter((m) => m.games > 0).length;
@@ -354,14 +356,18 @@ const sortedModes = computed(() =>
                         <div class="bg-paper text-center" style="padding: 20px 8px">
                             <div
                                 class="font-display font-bold"
-                                :class="allModesWinRate >= 50 ? 'text-correct' : 'text-ink'"
+                                :class="
+                                    allModesWinRate !== null && allModesWinRate >= 50
+                                        ? 'text-correct'
+                                        : 'text-ink'
+                                "
                                 style="
                                     font-size: 28px;
                                     font-variation-settings: 'opsz' 72;
                                     line-height: 1;
                                 "
                             >
-                                {{ allModesWinRate }}%
+                                {{ allModesWinRate === null ? '—' : `${allModesWinRate}%` }}
                             </div>
                             <div class="mono-label mt-1.5">Win Rate</div>
                         </div>

@@ -9,6 +9,7 @@
 -->
 <script setup lang="ts">
 import { interpolate } from '~/utils/interpolate';
+import { getLocaleForIntl } from '~/utils/locale';
 import type { LanguagePageMeta } from '~/utils/types';
 
 interface TopWord {
@@ -26,6 +27,7 @@ const { data } = await useFetch<{
     daily_word_count: number;
     lang_name_native?: string;
     meta?: { best_starting_words?: LanguagePageMeta };
+    ui?: Record<string, string>;
 }>(`/api/${props.lang}/starting-words`, { lazy: true });
 
 const topWords = computed<TopWord[]>(() => (data.value?.top_words || []).slice(0, 5));
@@ -35,16 +37,17 @@ const topWords = computed<TopWord[]>(() => (data.value?.top_words || []).slice(0
 // when topWords renders (the v-if guards against the no-data case).
 const copy = computed(() => {
     const d = data.value;
-    if (!d) return { heading: '', subtitle: '', linkText: '' };
+    if (!d) return { heading: '', subtitle: '', linkText: '', coverageLabel: 'Coverage' };
     const m = d.meta?.best_starting_words ?? {};
     const vars = {
         langNative: d.lang_name_native || props.langName,
-        count: (d.daily_word_count ?? 0).toLocaleString(),
+        count: (d.daily_word_count ?? 0).toLocaleString(getLocaleForIntl(props.lang)),
     };
     return {
         heading: interpolate(m.panel_heading ?? '', vars),
         subtitle: interpolate(m.panel_subtitle ?? '', vars),
         linkText: m.panel_link ?? '',
+        coverageLabel: d.ui?.coverage_label || 'Coverage',
     };
 });
 </script>
@@ -55,7 +58,7 @@ const copy = computed(() => {
         <p class="text-xs text-muted leading-relaxed max-w-lg mx-auto text-center">
             {{ copy.subtitle }}
         </p>
-        <SharedStartingWordsList :words="topWords" compact />
+        <SharedStartingWordsList :words="topWords" compact :coverage-label="copy.coverageLabel" />
         <p class="text-center">
             <a
                 :href="`/${lang}/best-starting-words`"

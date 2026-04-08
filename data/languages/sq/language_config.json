@@ -47,9 +47,9 @@
             }
         },
         "word_detail": {
-            "title": "Wordle #{idx} — {date} — {word} | Përgjigjja në {langNative}",
-            "description_with_def": "Përgjigjja e Wordle {langNative} për {date} (#{idx}) ishte {word}. {partOfSpeech}{definition}",
-            "description_without_def": "Përgjigjja e Wordle {langNative} për {date} (#{idx}) ishte {word}. A mund ta gjesh në 6 përpjekje?",
+            "title": "Wordle #{idx} — {date} — {word} | Përgjigja në {langNative}",
+            "description_with_def": "Përgjigja e Wordle {langNative} për {date} (#{idx}) ishte {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Përgjigja e Wordle {langNative} për {date} (#{idx}) ishte {word}. A mund ta gjesh në 6 përpjekje?",
             "title_coming_soon": "Wordle {langNative} #{idx} — Së shpejti",
             "description_coming_soon": "Fjala Wordle {langNative} #{idx}. Së shpejti."
         },

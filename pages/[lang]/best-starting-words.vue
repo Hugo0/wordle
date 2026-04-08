@@ -7,6 +7,7 @@
  */
 
 import { interpolate } from '~/utils/interpolate';
+import { getLocaleForIntl } from '~/utils/locale';
 
 definePageMeta({
     layout: 'default',
@@ -27,6 +28,8 @@ const langName = pageData.value.lang_name;
 const langNative = pageData.value.lang_name_native;
 const topWords = pageData.value.top_words;
 const letterFreqs = pageData.value.letter_frequency;
+const ui = (pageData.value.ui as Record<string, string>) || {};
+const coverageLabel = ui.coverage_label || 'Coverage';
 
 // SEO templates from language_config.json meta.best_starting_words (merged with defaults)
 const meta = (pageData.value.meta as Record<string, any>) || {};
@@ -34,7 +37,8 @@ const bswMeta = meta.best_starting_words || {};
 const seoVars = {
     langNative,
     langName,
-    count: pageData.value.daily_word_count.toLocaleString(),
+    // Pass an explicit locale so SSR output is deterministic across runtimes.
+    count: pageData.value.daily_word_count.toLocaleString(getLocaleForIntl(lang)),
 };
 
 const title = interpolate(
@@ -148,7 +152,10 @@ if (allLangs.value?.language_codes) {
                 <h2 class="heading-section text-xl text-ink">
                     Top {{ Math.min(topWords.length, 10) }} Starting Words
                 </h2>
-                <SharedStartingWordsList :words="topWords.slice(0, 10)" />
+                <SharedStartingWordsList
+                    :words="topWords.slice(0, 10)"
+                    :coverage-label="coverageLabel"
+                />
                 <p class="text-xs text-muted leading-relaxed">
                     Coverage score = sum of letter frequency percentages for each unique letter.
                     Higher means the word tests more commonly-used letters in {{ langName }} Wordle.

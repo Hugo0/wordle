@@ -15,8 +15,10 @@ withDefaults(
         /** Max-width wrapper — the embedded panel constrains the list, the
          * full strategy page does not. */
         compact?: boolean;
+        /** Localized label for the coverage column. Defaults to English. */
+        coverageLabel?: string;
     }>(),
-    { compact: false }
+    { compact: false, coverageLabel: 'Coverage' }
 );
 </script>
 
@@ -47,7 +49,7 @@ withDefaults(
                 <div class="text-sm font-semibold text-ink tabular-nums">
                     {{ w.coverageScore }}
                 </div>
-                <div class="mono-label">Coverage</div>
+                <div class="mono-label">{{ coverageLabel }}</div>
             </div>
         </div>
     </div>
