@@ -45,6 +45,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Albanian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Përgjigja në {langNative}",
+            "description_with_def": "Përgjigja e Wordle {langNative} për {date} (#{idx}) ishte {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Përgjigja e Wordle {langNative} për {date} (#{idx}) ishte {word}. A mund ta gjesh në 6 përpjekje?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Së shpejti",
+            "description_coming_soon": "Fjala Wordle {langNative} #{idx}. Së shpejti."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Të gjitha fjalët | Arkivi i fjalëve",
+            "description": "Shfleto të gjitha {count} fjalët e mëparshme të Wordle në {langNative}. Shiko përkufizimet, artin me AI dhe statistikat e komunitetit për çdo fjalë ditore."
+        },
+        "best_starting_words": {
+            "title": "Fjalët më të mira fillestare për Wordle në {langNative} — Wordle Global",
+            "description": "Analizë e bazuar në të dhëna e fjalëve më të mira fillestare për Wordle në {langNative}. Renditur sipas mbulimit të shkronjave në {count} fjalë."
         }
     },
     "text": {

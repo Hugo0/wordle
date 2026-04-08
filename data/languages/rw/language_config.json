@@ -40,6 +40,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Kinyarwanda. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Igisubizo cya {langNative}",
+            "description_with_def": "Igisubizo cya Wordle {langNative} kuri {date} (#{idx}) cyari {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Igisubizo cya Wordle {langNative} kuri {date} (#{idx}) cyari {word}. Wakitekereza mu magerageza 6?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kiraza vuba",
+            "description_coming_soon": "Ijambo rya Wordle {langNative} #{idx}. Riraza vuba."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Amagambo Yose | Ububiko bw'Amagambo",
+            "description": "Reba amagambo yose {count} ya Wordle yahise mu {langNative}. Reba ibisobanuro, ubuhanzi bwa AI, n'imibare y'abakinnyi ku ijambo ry'umunsi."
+        },
+        "best_starting_words": {
+            "title": "Amagambo Meza yo Gutangira Wordle mu {langNative} — Wordle Global",
+            "description": "Isesengura rishingiye ku makuru ry'amagambo meza yo gutangira Wordle mu {langNative}. Atondekanyijwe hashingiwe ku iyagurwa ry'inyuguti mu magambo {count}."
         }
     },
     "text": {

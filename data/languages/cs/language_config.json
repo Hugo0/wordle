@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 hrací plochy najednou",
                 "description": "Hraj Duotrigordle česky. Vyřeš 32 Wordle plochy najednou s 37 pokusy."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Odpověď {langNative}",
+            "description_with_def": "Odpověď Wordle {langNative} pro {date} (#{idx}) byla {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Odpověď Wordle {langNative} pro {date} (#{idx}) byla {word}. Uhodneš ji na 6 pokusů?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Již brzy",
+            "description_coming_soon": "Slovo Wordle {langNative} #{idx}. Již brzy."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Všechna slova | Archiv slov",
+            "description": "Projdi všech {count} minulých slov Wordle v jazyce {langNative}. Podívej se na definice, AI grafiku a komunitní statistiky pro každé denní slovo."
+        },
+        "best_starting_words": {
+            "title": "Nejlepší startovní slova pro Wordle v jazyce {langNative} — Wordle Global",
+            "description": "Datová analýza nejlepších startovních slov pro Wordle v jazyce {langNative}. Seřazeno podle pokrytí písmen napříč {count} slovy."
         }
     },
     "text": {

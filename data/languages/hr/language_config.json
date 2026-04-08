@@ -6,7 +6,7 @@
     "meta": {
         "locale": "hr",
         "title": "Dnevna riječ",
-        "description": "Pogodite skrivenu riječ u 6 pokušaja (ili manje). Nova zagonetka dostupna je svaki dan!",
+        "description": "Igraj Wordle na više od 80 jezika — od arapskog do jorupskog. Najveći višejezični Wordle. Definicije riječi, bez oglasa, bez prijave. 8 načina igre.",
         "keywords": "hrvatski jezik, zagonetka, riječ, igra, igra, online, pogodite, svakodnevno",
         "modes": {
             "unlimited": {
@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 ploče odjednom",
                 "description": "Igraj Duotrigordle na hrvatskom. Riješi 32 Wordle ploče odjednom sa 37 pokušaja."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Odgovor {langNative}",
+            "description_with_def": "Odgovor Wordle {langNative} za {date} (#{idx}) bio je {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Odgovor Wordle {langNative} za {date} (#{idx}) bio je {word}. Možeš li ga pogoditi u 6 pokušaja?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Uskoro",
+            "description_coming_soon": "Riječ Wordle {langNative} #{idx}. Uskoro dostupno."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Sve riječi | Arhiva riječi",
+            "description": "Pregledaj svih {count} prošlih Wordle riječi na jeziku {langNative}. Pogledaj definicije, AI umjetnost i statistike zajednice za svaku dnevnu riječ."
+        },
+        "best_starting_words": {
+            "title": "Najbolje početne riječi za Wordle na jeziku {langNative} — Wordle Global",
+            "description": "Analiza temeljena na podacima o najboljim početnim riječima za Wordle na jeziku {langNative}. Rangirano prema pokrivenosti slova u {count} riječi."
         }
     },
     "text": {

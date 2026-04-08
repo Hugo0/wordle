@@ -20,7 +20,7 @@
     "meta": {
         "locale": "de",
         "title": "Das tägliche Wortspiel",
-        "description": "Erraten Sie das verborgene Wort in 6 Versuchen (oder weniger). Jeden Tag ist ein neues Rätsel verfügbar!",
+        "description": "Spiele Wordle in 80+ Sprachen — von Arabisch bis Yoruba. Das größte mehrsprachige Wordle. Wortdefinitionen, keine Werbung, kein Login. 8 Spielmodi.",
         "keywords": "Deutsch, Englisch, Puzzle, Word, Spiel, Spiel, online, Vermutung, täglich, Ratespiel, wordle",
         "modes": {
             "unlimited": {
@@ -55,6 +55,21 @@
                 "title": "Duotrigordle — 32 Raster gleichzeitig",
                 "description": "Spiele Duotrigordle auf Deutsch. Löse 32 Wordle-Raster gleichzeitig mit 37 Versuchen."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Antwort auf {langNative}",
+            "description_with_def": "Die Wordle-{langNative}-Antwort vom {date} (#{idx}) war {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Die Wordle-{langNative}-Antwort vom {date} (#{idx}) war {word}. Kannst du sie in 6 Versuchen erraten?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Demnächst",
+            "description_coming_soon": "Wordle {langNative} Wort #{idx}. Demnächst verfügbar."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Alle Wörter | Wörter-Archiv",
+            "description": "Durchstöbere alle {count} vergangenen Wordle-Wörter auf {langNative}. Definitionen, KI-Illustrationen und Community-Statistiken zu jedem täglichen Wort."
+        },
+        "best_starting_words": {
+            "title": "Beste Startwörter für Wordle auf {langNative} — Wordle Global",
+            "description": "Datenbasierte Analyse der besten Startwörter für Wordle auf {langNative}. Sortiert nach Buchstabenabdeckung über {count} Wörter."
         }
     },
     "text": {

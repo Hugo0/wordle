@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 plansze naraz",
                 "description": "Graj w Duotrigordle po polsku. Rozwiąż 32 plansze Wordle naraz w 37 prób."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Odpowiedź {langNative}",
+            "description_with_def": "Odpowiedź Wordle {langNative} z dnia {date} (#{idx}) to {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Odpowiedź Wordle {langNative} z dnia {date} (#{idx}) to {word}. Zgadniesz w 6 próbach?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Wkrótce",
+            "description_coming_soon": "Słowo Wordle {langNative} #{idx}. Wkrótce dostępne."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Wszystkie słowa | Archiwum słów",
+            "description": "Przeglądaj wszystkie {count} wcześniejszych słów Wordle w {langNative}. Zobacz definicje, grafiki AI i statystyki społeczności dla każdego codziennego słowa."
+        },
+        "best_starting_words": {
+            "title": "Najlepsze słowa startowe do Wordle w {langNative} — Wordle Global",
+            "description": "Analiza oparta na danych najlepszych słów startowych do Wordle w {langNative}. Uszeregowane według pokrycia liter w {count} słowach."
         }
     },
     "text": {

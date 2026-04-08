@@ -6,7 +6,7 @@
     "meta": {
         "locale": "tr",
         "title": "Günlük kelime oyunu",
-        "description": "6'daki gizli kelimeyi sanırım (veya daha az). Her gün yeni bir bulmaca mevcuttur!",
+        "description": "Wordle'ı 80'den fazla dilde oyna — Arapçadan Yorubaca'ya. En büyük çok dilli Wordle. Kelime tanımları, reklamsız, üyeliksiz. 8 oyun modu.",
         "keywords": "Türkçe, bulmaca, kelime, oyun, oyun, çevrimiçi, her gün tahmin",
         "modes": {
             "unlimited": {
@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — aynı anda 32 tahta",
                 "description": "Türkçe Duotrigordle oyna. 37 tahminle aynı anda 32 Wordle tahtası çöz."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} Cevabı",
+            "description_with_def": "{date} tarihli (#{idx}) {langNative} Wordle cevabı {word} idi. {partOfSpeech}{definition}",
+            "description_without_def": "{date} tarihli (#{idx}) {langNative} Wordle cevabı {word} idi. 6 denemede tahmin edebilir misin?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — Yakında",
+            "description_coming_soon": "{langNative} Wordle kelimesi #{idx}. Yakında."
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — Tüm Kelimeler | Kelime Arşivi",
+            "description": "{langNative} dilindeki {count} geçmiş Wordle kelimesinin tümüne göz at. Her günlük kelime için tanımları, YZ sanatını ve topluluk istatistiklerini gör."
+        },
+        "best_starting_words": {
+            "title": "{langNative} Wordle için En İyi Başlangıç Kelimeleri — Wordle Global",
+            "description": "{langNative} dilinde Wordle için en iyi başlangıç kelimelerinin veriye dayalı analizi. {count} kelime üzerinden harf kapsamına göre sıralandı."
         }
     },
     "text": {

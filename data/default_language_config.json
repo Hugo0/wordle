@@ -8,9 +8,27 @@
     "right_to_left": "false",
     "meta": {
         "title": "The daily word game",
-        "description": "Guess the hidden word in 6 tries (or less). A new puzzle is available each day!",
+        "description": "Play Wordle in 80+ languages — from Arabic to Yoruba, the largest multilingual Wordle. Word definitions, no ads, no login. Daily puzzle plus 8 game modes.",
         "keywords": "puzzle, word, play, game, online, guess, daily",
-        "locale": ""
+        "locale": "",
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} Answer",
+            "description_with_def": "The Wordle {langNative} answer for {date} (#{idx}) was {word}. {partOfSpeech}{definition}",
+            "description_without_def": "The Wordle {langNative} answer for {date} (#{idx}) was {word}. Can you guess it in 6 tries?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Coming soon",
+            "description_coming_soon": "Wordle {langNative} word #{idx}. Coming soon."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — All Words | Word Archive",
+            "description": "Browse all {count} past Wordle words in {langNative}. See definitions, AI art, and community stats for every daily word."
+        },
+        "best_starting_words": {
+            "title": "Best Starting Words for Wordle in {langNative} — Wordle Global",
+            "description": "Data-driven analysis of the best starting words for Wordle in {langNative}. Ranked by letter coverage across {count} words.",
+            "panel_heading": "Best Starting Words — {langNative}",
+            "panel_subtitle": "Ranked from the actual {count}-word {langNative} list by letter coverage — not generic English advice.",
+            "panel_link": "See the full ranking & letter frequency analysis →"
+        }
     },
     "text": {
         "subheader": "",
@@ -155,6 +173,7 @@
         }
     },
     "ui": {
+        "coverage_label": "Coverage",
         "settings": "Settings",
         "dark_mode": "Dark Mode",
         "dark_mode_desc": "Toggle dark theme",

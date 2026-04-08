@@ -19,7 +19,11 @@
             v-else
             ref="scrollRef"
             class="flex-auto min-h-0 px-1 sm:px-3 lg:px-6 py-1"
-            :class="(layout.scrollable || allExpanded) ? 'overflow-y-auto scroll-snap-y' : 'flex justify-center items-center'"
+            :class="
+                layout.scrollable || allExpanded
+                    ? 'overflow-y-auto scroll-snap-y'
+                    : 'flex justify-center items-center'
+            "
             data-allow-mismatch
         >
             <!-- Skeleton: 4 placeholder boards while measuring container -->
@@ -106,7 +110,9 @@ watch(
             allExpanded.value = true;
             // Pulse the collapse button so user knows how to go back
             expandBtnPulse.value = true;
-            setTimeout(() => { expandBtnPulse.value = false; }, 2000);
+            setTimeout(() => {
+                expandBtnPulse.value = false;
+            }, 2000);
         }
     }
 );
@@ -119,7 +125,10 @@ function toggleExpand() {
         const el = document.getElementById('board-' + i);
         if (el) {
             const rect = el.getBoundingClientRect();
-            if (rect.top >= -50) { anchorIdx = i; break; }
+            if (rect.top >= -50) {
+                anchorIdx = i;
+                break;
+            }
         }
     }
     allExpanded.value = !allExpanded.value;
@@ -338,7 +347,12 @@ defineExpose({ getBoardElForIndex });
 }
 
 @keyframes expand-btn-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.3); }
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
 }
 </style>

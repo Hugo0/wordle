@@ -72,6 +72,21 @@
                 "title": "Duotrigordle — 32 πλέγματα ταυτόχρονα",
                 "description": "Παίξε Duotrigordle στα ελληνικά. Λύσε 32 πλέγματα Wordle ταυτόχρονα με 37 προσπάθειες."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Απάντηση {langNative}",
+            "description_with_def": "Η απάντηση του Wordle {langNative} για {date} (#{idx}) ήταν {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Η απάντηση του Wordle {langNative} για {date} (#{idx}) ήταν {word}. Μπορείς να την μαντέψεις σε 6 προσπάθειες;",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Σύντομα",
+            "description_coming_soon": "Λέξη Wordle {langNative} #{idx}. Σύντομα διαθέσιμη."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Όλες οι λέξεις | Αρχείο λέξεων",
+            "description": "Περιηγήσου σε όλες τις {count} προηγούμενες λέξεις του Wordle στα {langNative}. Δες ορισμούς, τέχνη AI και στατιστικά κοινότητας για κάθε καθημερινή λέξη."
+        },
+        "best_starting_words": {
+            "title": "Οι καλύτερες αρχικές λέξεις για το Wordle στα {langNative} — Wordle Global",
+            "description": "Ανάλυση βασισμένη σε δεδομένα για τις καλύτερες αρχικές λέξεις του Wordle στα {langNative}. Κατάταξη βάσει κάλυψης γραμμάτων σε {count} λέξεις."
         }
     },
     "text": {

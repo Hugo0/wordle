@@ -7,6 +7,16 @@
  * words_hub.html template.
  */
 
+import { formatDateLong } from '~/utils/locale';
+import { interpolate } from '~/utils/interpolate';
+
+// Force full remount when language changes — prevents today-revealed state
+// and cached API data from bleeding between languages when Vue Router reuses
+// the component on /<lang>/words → /<otherLang>/words.
+definePageMeta({
+    key: (route) => route.params.lang as string,
+});
+
 const route = useRoute();
 const lang = route.params.lang as string;
 const page = computed(() => parseInt((route.query.page as string) || '1', 10));
@@ -28,15 +38,25 @@ const words = computed(() => wordsData.value!.words);
 const ui = (wordsData.value.ui as Record<string, string>) || {};
 const label = (key: string, fallback: string) => ui[key] || fallback;
 
+// SEO templates from language_config.json meta.word_archive (merged with defaults)
+const meta = (wordsData.value.meta as Record<string, any>) || {};
+const wordArchiveMeta = meta.word_archive || {};
+
 // Word art thumbnail visibility (reactive, per day index)
 const wordArtLoaded = reactive(new Set<number>());
 
-const title = computed(
-    () => `Wordle ${langNameNative.value} \u2014 All Words | ${langName.value} Word Archive`
+const title = computed(() =>
+    interpolate(wordArchiveMeta.title || 'Wordle {langNative} — All Words | Word Archive', {
+        langNative: langNameNative.value,
+        count: todaysIdx.value,
+    })
 );
-const description = computed(
-    () =>
-        `Browse all ${todaysIdx.value} past Wordle words in ${langName.value} (${langNameNative.value}). See definitions, AI art, and community stats for every daily word.`
+const description = computed(() =>
+    interpolate(
+        wordArchiveMeta.description ||
+            'Browse all {count} past Wordle words in {langNative}. See definitions, AI art, and community stats for every daily word.',
+        { langNative: langNameNative.value, count: todaysIdx.value }
+    )
 );
 
 useSeoMeta({
@@ -124,7 +144,7 @@ useHead({
                         {
                             '@type': 'ListItem',
                             position: 3,
-                            name: 'Word Archive',
+                            name: label('all_words', 'All Words'),
                             item: `https://wordle.global/${lang}/words`,
                         },
                     ],
@@ -141,13 +161,7 @@ if (allLangsWords.value?.language_codes) {
 }
 
 function formatDate(dateStr: string): string {
-    const d = new Date(dateStr + 'T00:00:00Z');
-    return d.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        timeZone: 'UTC',
-    });
+    return formatDateLong(dateStr, lang);
 }
 
 function winRate(stats: { total: number; wins: number }): number {

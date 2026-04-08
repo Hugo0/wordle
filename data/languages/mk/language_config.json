@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Macedonian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Одговор {langNative}",
+            "description_with_def": "Одговорот на Wordle {langNative} за {date} (#{idx}) беше {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Одговорот на Wordle {langNative} за {date} (#{idx}) беше {word}. Можеш ли да го погодиш за 6 обиди?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Наскоро",
+            "description_coming_soon": "Збор Wordle {langNative} #{idx}. Наскоро достапно."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Сите зборови | Архива на зборови",
+            "description": "Прелистај ги сите {count} претходни зборови на Wordle на јазикот {langNative}. Види ги дефинициите, AI уметноста и статистиките на заедницата за секој дневен збор."
+        },
+        "best_starting_words": {
+            "title": "Најдобри почетни зборови за Wordle на јазикот {langNative} — Wordle Global",
+            "description": "Анализа заснована на податоци за најдобрите почетни зборови за Wordle на јазикот {langNative}. Рангирани според покриеноста на буквите меѓу {count} зборови."
         }
     },
     "text": {

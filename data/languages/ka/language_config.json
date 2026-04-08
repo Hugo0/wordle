@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Georgian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "ვორდლი #{idx} — {date} — {word} | {langNative} პასუხი",
+            "description_with_def": "{date} თარიღის (#{idx}) {langNative} ვორდლის პასუხი იყო {word}. {partOfSpeech}{definition}",
+            "description_without_def": "{date} თარიღის (#{idx}) {langNative} ვორდლის პასუხი იყო {word}. შეგიძლიათ ის 6 ცდაში გამოიცნოთ?",
+            "title_coming_soon": "{langNative} ვორდლი #{idx} — მალე",
+            "description_coming_soon": "{langNative} ვორდლის სიტყვა #{idx}. მალე."
+        },
+        "word_archive": {
+            "title": "{langNative} ვორდლი — ყველა სიტყვა | სიტყვების არქივი",
+            "description": "დაათვალიერეთ ყველა წინა {count} ვორდლის სიტყვა {langNative} ენაზე. ყოველდღიური სიტყვის განმარტებები, AI ხელოვნება და საზოგადოების სტატისტიკა."
+        },
+        "best_starting_words": {
+            "title": "საუკეთესო საწყისი სიტყვები ვორდლისთვის {langNative} ენაზე — Wordle Global",
+            "description": "ვორდლის საუკეთესო საწყისი სიტყვების მონაცემებზე დაფუძნებული ანალიზი {langNative} ენაზე. დახარისხებულია ასოების დაფარვის მიხედვით {count} სიტყვაში."
         }
     },
     "text": {

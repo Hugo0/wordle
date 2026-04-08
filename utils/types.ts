@@ -90,6 +90,23 @@ export interface LanguageSeo {
     mode_tips?: Record<string, SeoTip[]>;
 }
 
+export interface LanguageWordDetailMeta {
+    title?: string;
+    description_with_def?: string;
+    description_without_def?: string;
+    title_coming_soon?: string;
+    description_coming_soon?: string;
+}
+
+export interface LanguagePageMeta {
+    title?: string;
+    description?: string;
+    /** Optional panel-only copy for embedded components (e.g. BestStartingWordsPanel). */
+    panel_heading?: string;
+    panel_subtitle?: string;
+    panel_link?: string;
+}
+
 export interface LanguageMeta {
     locale: string;
     title: string;
@@ -97,6 +114,12 @@ export interface LanguageMeta {
     keywords: string;
     wordle_native?: string;
     modes?: Record<string, LanguageModeMeta>;
+    /** SEO templates for the per-day word detail page (`/[lang]/word/[id]`). */
+    word_detail?: LanguageWordDetailMeta;
+    /** SEO templates for the word archive page (`/[lang]/words`). */
+    word_archive?: LanguagePageMeta;
+    /** SEO templates for the best starting words page (`/[lang]/best-starting-words`). */
+    best_starting_words?: LanguagePageMeta;
 }
 
 export interface LanguageText {
@@ -392,6 +415,33 @@ export interface GameResult {
 }
 
 export type GameResults = Record<string, GameResult[]>;
+
+/**
+ * Persistent record of a completed Speed Streak session.
+ * Stored separately from GameResults because the shape (score, combo, timing)
+ * does not match the classic win/attempts model. `date` is ISO8601 — JSON
+ * round-trips coerce Date → string, so we pick string as the canonical form.
+ */
+export interface SpeedResult {
+    date: string;
+    score: number;
+    wordsSolved: number;
+    wordsFailed: number;
+    maxCombo: number;
+    totalGuesses: number;
+}
+
+export type SpeedResults = Record<string, SpeedResult[]>;
+
+/** Aggregate view of a user's Speed Streak history across all languages. */
+export interface SpeedAggregate {
+    games: number;
+    bestScore: number;
+    bestWordsSolved: number;
+    bestMaxCombo: number;
+    topRuns: SpeedResult[];
+    perLang: Record<string, { games: number; bestScore: number }>;
+}
 
 export interface TotalStats {
     total_games: number;

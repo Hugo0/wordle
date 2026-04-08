@@ -45,6 +45,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Malay. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Jawapan {langNative}",
+            "description_with_def": "Jawapan Wordle {langNative} untuk {date} (#{idx}) ialah {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Jawapan Wordle {langNative} untuk {date} (#{idx}) ialah {word}. Bolehkah anda menekanya dalam 6 percubaan?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Akan datang",
+            "description_coming_soon": "Perkataan Wordle {langNative} #{idx}. Akan datang."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Semua Perkataan | Arkib Perkataan",
+            "description": "Layari semua {count} perkataan Wordle lepas dalam {langNative}. Lihat definisi, seni AI, dan statistik komuniti untuk setiap perkataan harian."
+        },
+        "best_starting_words": {
+            "title": "Perkataan Permulaan Terbaik untuk Wordle dalam {langNative} — Wordle Global",
+            "description": "Analisis berasaskan data bagi perkataan permulaan terbaik untuk Wordle dalam {langNative}. Disusun mengikut liputan huruf merentasi {count} perkataan."
         }
     },
     "text": {

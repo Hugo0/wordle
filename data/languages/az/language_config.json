@@ -40,6 +40,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Azerbaijan. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} Cavabı",
+            "description_with_def": "{date} (#{idx}) üçün {langNative} Wordle cavabı {word} idi. {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) üçün {langNative} Wordle cavabı {word} idi. Onu 6 cəhddə tapa bilərsinizmi?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — Tezliklə",
+            "description_coming_soon": "{langNative} Wordle sözü #{idx}. Tezliklə."
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — Bütün Sözlər | Söz Arxivi",
+            "description": "{langNative} dilində keçmiş {count} Wordle sözünün hamısına baxın. Hər gündəlik söz üçün təriflər, AI rəsmləri və icma statistikaları."
+        },
+        "best_starting_words": {
+            "title": "{langNative} dilində Wordle üçün Ən Yaxşı Başlanğıc Sözləri — Wordle Global",
+            "description": "{langNative} dilində Wordle üçün ən yaxşı başlanğıc sözlərinin məlumatlara əsaslanan təhlili. {count} söz üzrə hərf əhatəsinə görə sıralanıb."
         }
     },
     "text": {

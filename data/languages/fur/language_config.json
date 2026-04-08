@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Fur. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} Answer",
+            "description_with_def": "The Wordle {langNative} answer for {date} (#{idx}) was {word}. {partOfSpeech}{definition}",
+            "description_without_def": "The Wordle {langNative} answer for {date} (#{idx}) was {word}. Can you guess it in 6 tries?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Coming soon",
+            "description_coming_soon": "Wordle {langNative} word #{idx}. Coming soon."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — All Words | Word Archive",
+            "description": "Browse all {count} past Wordle words in {langNative}. See definitions, AI art, and community stats for every daily word."
+        },
+        "best_starting_words": {
+            "title": "Best Starting Words for Wordle in {langNative} — Wordle Global",
+            "description": "Data-driven analysis of the best starting words for Wordle in {langNative}. Ranked by letter coverage across {count} words."
         }
     },
     "text": {

@@ -43,6 +43,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Punjabi. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} ਜਵਾਬ",
+            "description_with_def": "{date} (#{idx}) ਦਾ {langNative} Wordle ਜਵਾਬ {word} ਸੀ। {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) ਦਾ {langNative} Wordle ਜਵਾਬ {word} ਸੀ। ਕੀ ਤੁਸੀਂ ਇਸਨੂੰ 6 ਕੋਸ਼ਿਸ਼ਾਂ ਵਿੱਚ ਲੱਭ ਸਕਦੇ ਹੋ?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — ਜਲਦੀ ਆ ਰਿਹਾ ਹੈ",
+            "description_coming_soon": "{langNative} Wordle ਸ਼ਬਦ #{idx}। ਜਲਦੀ ਆ ਰਿਹਾ ਹੈ।"
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — ਸਾਰੇ ਸ਼ਬਦ | ਸ਼ਬਦ ਸੰਗ੍ਰਹਿ",
+            "description": "{langNative} ਵਿੱਚ ਪਿਛਲੇ ਸਾਰੇ {count} Wordle ਸ਼ਬਦ ਵੇਖੋ। ਹਰ ਰੋਜ਼ਾਨਾ ਸ਼ਬਦ ਲਈ ਪਰਿਭਾਸ਼ਾ, AI ਕਲਾ ਅਤੇ ਕਮਿਊਨਿਟੀ ਅੰਕੜੇ।"
+        },
+        "best_starting_words": {
+            "title": "{langNative} ਵਿੱਚ Wordle ਲਈ ਸਭ ਤੋਂ ਵਧੀਆ ਸ਼ੁਰੂਆਤੀ ਸ਼ਬਦ — Wordle Global",
+            "description": "{langNative} ਵਿੱਚ Wordle ਲਈ ਸਭ ਤੋਂ ਵਧੀਆ ਸ਼ੁਰੂਆਤੀ ਸ਼ਬਦਾਂ ਦਾ ਡੇਟਾ-ਆਧਾਰਿਤ ਵਿਸ਼ਲੇਸ਼ਣ। {count} ਸ਼ਬਦਾਂ ਵਿੱਚ ਅੱਖਰ ਕਵਰੇਜ ਦੇ ਅਧਾਰ ਤੇ ਦਰਜਾਬੰਦੀ।"
         }
     },
     "text": {

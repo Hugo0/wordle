@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Armenian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Վորդլե #{idx} — {date} — {word} | {langNative} պատասխան",
+            "description_with_def": "{date}-ի (#{idx}) {langNative} Վորդլեի պատասխանը {word} էր։ {partOfSpeech}{definition}",
+            "description_without_def": "{date}-ի (#{idx}) {langNative} Վորդլեի պատասխանը {word} էր։ Կարո՞ղ եք այն կռահել 6 փորձից։",
+            "title_coming_soon": "{langNative} Վորդլե #{idx} — Շուտով",
+            "description_coming_soon": "{langNative} Վորդլեի #{idx} բառը։ Շուտով։"
+        },
+        "word_archive": {
+            "title": "{langNative} Վորդլե — Բոլոր բառերը | Բառերի արխիվ",
+            "description": "Դիտեք {langNative}-ով բոլոր {count} անցյալ Վորդլե բառերը։ Տեսեք յուրաքանչյուր ամենօրյա բառի սահմանումները, AI արվեստը և համայնքի վիճակագրությունը։"
+        },
+        "best_starting_words": {
+            "title": "Վորդլեի լավագույն մեկնարկային բառերը {langNative} լեզվով — Wordle Global",
+            "description": "{langNative}-ով Վորդլեի լավագույն մեկնարկային բառերի տվյալների վրա հիմնված վերլուծություն։ Դասակարգված է ըստ տառերի ծածկույթի {count} բառի միջև։"
         }
     },
     "text": {

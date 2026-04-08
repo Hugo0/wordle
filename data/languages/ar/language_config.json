@@ -17,7 +17,7 @@
         "locale": "ar",
         "wordle_native": "وردل",
         "title": "لعبة الكلمات اليومية",
-        "description": "تخمين الكلمة المخفية في 6 محاولات (أو أقل). لغز جديد متاح كل يوم!",
+        "description": "العب Wordle بأكثر من 80 لغة — من العربية إلى اليوروبا. أكبر Wordle متعدد اللغات. تعريفات الكلمات، بدون إعلانات، بدون تسجيل. 8 أوضاع لعب.",
         "keywords": "العربية، لغز، كلمة، اللعب، لعبة، على الإنترنت، تخمين، يوميا",
         "modes": {
             "unlimited": {
@@ -52,6 +52,21 @@
                 "title": "Duotrigordle — 32 لوحات في آن واحد",
                 "description": "العب Duotrigordle بالعربية. حُل 32 لوحات وردل معاً في 37 محاولات."
             }
+        },
+        "word_detail": {
+            "title": "وردل #{idx} — {date} — {word} | إجابة {langNative}",
+            "description_with_def": "إجابة وردل {langNative} ليوم {date} (#{idx}) كانت {word}. {partOfSpeech}{definition}",
+            "description_without_def": "إجابة وردل {langNative} ليوم {date} (#{idx}) كانت {word}. هل تستطيع تخمينها في 6 محاولات؟",
+            "title_coming_soon": "وردل {langNative} #{idx} — قريباً",
+            "description_coming_soon": "كلمة وردل {langNative} رقم #{idx}. قريباً."
+        },
+        "word_archive": {
+            "title": "وردل {langNative} — جميع الكلمات | أرشيف الكلمات",
+            "description": "تصفح جميع كلمات وردل السابقة البالغ عددها {count} باللغة {langNative}. شاهد التعريفات وفن الذكاء الاصطناعي وإحصائيات المجتمع لكل كلمة يومية."
+        },
+        "best_starting_words": {
+            "title": "أفضل كلمات البداية لوردل باللغة {langNative} — Wordle Global",
+            "description": "تحليل قائم على البيانات لأفضل كلمات البداية في وردل باللغة {langNative}. مرتبة حسب تغطية الأحرف عبر {count} كلمة."
         }
     },
     "text": {

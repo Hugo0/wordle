@@ -65,6 +65,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Catalan. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Resposta en {langNative}",
+            "description_with_def": "La resposta de Wordle {langNative} del {date} (#{idx}) era {word}. {partOfSpeech}{definition}",
+            "description_without_def": "La resposta de Wordle {langNative} del {date} (#{idx}) era {word}. Pots endevinar-la en 6 intents?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Ben aviat",
+            "description_coming_soon": "Paraula #{idx} de Wordle {langNative}. Ben aviat."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Totes les paraules | Arxiu de paraules",
+            "description": "Explora totes les {count} paraules passades de Wordle en {langNative}. Definicions, art generat per IA i estadístiques de la comunitat per a cada paraula diària."
+        },
+        "best_starting_words": {
+            "title": "Millors paraules inicials per a Wordle en {langNative} — Wordle Global",
+            "description": "Anàlisi basada en dades de les millors paraules per començar Wordle en {langNative}. Classificades per cobertura de lletres entre {count} paraules."
         }
     },
     "text": {

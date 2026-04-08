@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Faroese. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Svar á {langNative}",
+            "description_with_def": "Wordle {langNative} svarið fyri {date} (#{idx}) var {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative} svarið fyri {date} (#{idx}) var {word}. Kanst tú gita tað í 6 royndum?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kemur snart",
+            "description_coming_soon": "Wordle {langNative} orð #{idx}. Kemur snart."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Øll orð | Orðaarkiv",
+            "description": "Kaga eftir øllum {count} farnum Wordle-orðum á {langNative}. Týdningar, AI-myndir og samfelagshagtøl fyri hvørt dagligt orð."
+        },
+        "best_starting_words": {
+            "title": "Bestu byrjanarorðini fyri Wordle á {langNative} — Wordle Global",
+            "description": "Dáta-grundað greining av bestu byrjanarorðunum fyri Wordle á {langNative}. Raðfest eftir bókstavsdekning á {count} orðum."
         }
     },
     "text": {

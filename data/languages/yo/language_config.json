@@ -73,6 +73,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Yoruba. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Ìdáhùn {langNative}",
+            "description_with_def": "Ìdáhùn Wordle {langNative} fún {date} (#{idx}) ni {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Ìdáhùn Wordle {langNative} fún {date} (#{idx}) ni {word}. Ṣé o lè fojú inú wò ó nínú ìgbìyànjú 6?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Yóò dé láìpẹ́",
+            "description_coming_soon": "Ọ̀rọ̀ Wordle {langNative} #{idx}. Yóò dé láìpẹ́."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Gbogbo Ọ̀rọ̀ | Ìpamọ́ Ọ̀rọ̀",
+            "description": "Wo gbogbo ọ̀rọ̀ Wordle {count} tó ti kọjá ní {langNative}. Rí ìtumọ̀, iṣẹ́ ọnà AI, àti ìṣirò àwùjọ fún ọ̀rọ̀ ojoojúmọ́ kọ̀ọ̀kan."
+        },
+        "best_starting_words": {
+            "title": "Àwọn Ọ̀rọ̀ Ìbẹ̀rẹ̀ Tó Dára Jù fún Wordle ní {langNative} — Wordle Global",
+            "description": "Ìtúpalẹ̀ tó dá lórí data ti àwọn ọ̀rọ̀ ìbẹ̀rẹ̀ tó dára jù fún Wordle ní {langNative}. Tò lẹ́sẹẹsẹ gẹ́gẹ́ bí ìbòjú lẹ́tà ní ọ̀rọ̀ {count}."
         }
     },
     "text": {

@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Slovak. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Odpoveď {langNative}",
+            "description_with_def": "Odpoveď Wordle {langNative} pre {date} (#{idx}) bola {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Odpoveď Wordle {langNative} pre {date} (#{idx}) bola {word}. Uhádneš ju na 6 pokusov?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Už čoskoro",
+            "description_coming_soon": "Slovo Wordle {langNative} #{idx}. Už čoskoro."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Všetky slová | Archív slov",
+            "description": "Prejdi si všetkých {count} minulých slov Wordle v jazyku {langNative}. Pozri si definície, AI grafiku a komunitné štatistiky pre každé denné slovo."
+        },
+        "best_starting_words": {
+            "title": "Najlepšie štartovacie slová pre Wordle v jazyku {langNative} — Wordle Global",
+            "description": "Dátová analýza najlepších štartovacích slov pre Wordle v jazyku {langNative}. Zoradené podľa pokrytia písmen naprieč {count} slovami."
         }
     },
     "text": {

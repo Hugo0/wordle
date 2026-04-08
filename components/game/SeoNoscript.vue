@@ -31,7 +31,7 @@ import { useFlag } from '~/composables/useFlag';
 import type { Component } from 'vue';
 import type { GameMode } from '~/utils/game-modes';
 import type { GameSeoResult } from '~/composables/useGameSeo';
-import { interpolate } from '~/composables/useGameSeo';
+import { interpolate } from '~/utils/interpolate';
 import type { LanguageConfig, LanguageSeo } from '~/utils/types';
 
 const props = defineProps<{
@@ -54,6 +54,18 @@ const game = isClassic ? useGameStore() : null;
 const todaysWord = computed(() => langStore?.todaysWord?.toUpperCase() || '');
 const todaysIdx = computed(() => langStore?.todaysIdx ?? 0);
 const gameAlreadyOver = computed(() => game?.gameOver ?? false);
+
+// Auto-reveal when the player finishes the game (win or loss). Covers both
+// live transitions and returning to a completed daily.
+if (game) {
+    watch(
+        () => game.gameOver,
+        (isOver) => {
+            if (isOver) wordRevealed.value = true;
+        },
+        { immediate: true }
+    );
+}
 
 function onRevealClick() {
     if (wordRevealed.value) return;
@@ -364,15 +376,12 @@ const recentWords = computed(() => {
                         </div>
                     </div>
                 </div>
-                <p class="text-center pt-2">
-                    <a
-                        :href="`/${lang}/best-starting-words`"
-                        class="text-sm text-muted underline hover:text-ink transition-colors"
-                    >
-                        See the full analysis of best starting words for {{ seo.langName }} &rarr;
-                    </a>
-                </p>
             </section>
+
+            <template v-if="isClassic">
+                <div class="editorial-rule" />
+                <GameBestStartingWordsPanel :lang="lang" :lang-name="seo.langName" />
+            </template>
 
             <div class="editorial-rule" />
 

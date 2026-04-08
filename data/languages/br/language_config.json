@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Breton. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Respont e {langNative}",
+            "description_with_def": "Respont Wordle {langNative} evit an {date} (#{idx}) a oa {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Respont Wordle {langNative} evit an {date} (#{idx}) a oa {word}. Hag e c'hallit e zivinout e 6 taol-arnod?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — A zeu",
+            "description_coming_soon": "Ger #{idx} Wordle {langNative}. A zeu."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — An holl gerioù | Dielldi gerioù",
+            "description": "Furchal an holl {count} gerioù Wordle tremenet e {langNative}. Termenadurioù, arz graet gant SA ha stadegoù ar gumuniezh evit pep ger pemdeziek."
+        },
+        "best_starting_words": {
+            "title": "Gerioù kregiñ gwellañ evit Wordle e {langNative} — Wordle Global",
+            "description": "Dielfennadenn diazezet war roadennoù eus ar gerioù kregiñ gwellañ evit Wordle e {langNative}. Renket dre c'holoiñ lizherennoù dre {count} ger."
         }
     },
     "text": {

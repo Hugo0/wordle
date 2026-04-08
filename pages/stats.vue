@@ -22,6 +22,7 @@ import {
 } from 'lucide-vue-next';
 import { isClassicDailyStatsKey, GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
+import type { SpeedAggregate } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
 
 useSeoMeta({
@@ -90,7 +91,6 @@ const totalGames = ref(0);
 const overallWinRate = ref(0);
 const currentStreak = ref(0);
 const bestStreak = ref(0);
-const languagesPlayed = ref(0);
 const overallDist = ref<Record<number, number>>(createEmptyDistribution(6));
 
 // Per-language (classic daily)
@@ -98,6 +98,8 @@ const perLang = ref<PerLangStats[]>([]);
 
 // Per-mode (all modes that have results)
 const modeStats = ref<ModeStats[]>([]);
+
+const speedAggregate = ref<SpeedAggregate | null>(null);
 
 // =========================================================================
 // Data loading — uses the stats store instead of reimplementing calculations
@@ -107,11 +109,17 @@ function loadStats() {
     if (loaded.value) return;
     loaded.value = true;
 
-    // Load all game results into the store
     statsStore.loadGameResults();
+    statsStore.loadSpeedResults();
 
+    const speed = statsStore.calculateSpeedStats();
+    speedAggregate.value = speed.games > 0 ? speed : null;
+
+    // loadGameResults seeds an empty placeholder under "unknown", so check
+    // values not keys.
     const allKeys = Object.keys(statsStore.gameResults);
-    if (allKeys.length === 0) {
+    const hasStoredResults = allKeys.some((k) => statsStore.gameResults[k]!.length > 0);
+    if (!hasStoredResults && !speedAggregate.value) {
         empty.value = true;
         return;
     }
@@ -123,7 +131,6 @@ function loadStats() {
     overallWinRate.value = total.total_games > 0 ? Math.round(total.total_win_percentage) : 0;
     currentStreak.value = total.current_overall_streak;
     bestStreak.value = total.longest_overall_streak;
-    languagesPlayed.value = total.languages_won.length;
 
     // Build overall distribution from per-language stats
     const dist = createEmptyDistribution(6);
@@ -247,13 +254,38 @@ function distBarWidth(dist: Record<number, number>, n: number): string {
     return `${pct}%`;
 }
 
-// All-modes aggregated stats
-const allModesGames = computed(() => modeStats.value.reduce((sum, m) => sum + m.games, 0));
-const allModesWins = computed(() => modeStats.value.reduce((sum, m) => sum + m.wins, 0));
-const allModesWinRate = computed(() =>
-    allModesGames.value > 0 ? Math.round((allModesWins.value / allModesGames.value) * 100) : 0
+// All-modes aggregated stats.
+// Speed sessions count toward total games / modes played but are excluded from
+// win rate (speed has no win/loss — it's a high-score format).
+const speedGames = computed(() => speedAggregate.value?.games ?? 0);
+const allModesGames = computed(
+    () => modeStats.value.reduce((sum, m) => sum + m.games, 0) + speedGames.value
 );
-const modesPlayed = computed(() => modeStats.value.filter((m) => m.games > 0).length);
+const allModesWins = computed(() => modeStats.value.reduce((sum, m) => sum + m.wins, 0));
+const winRateDenominator = computed(() => modeStats.value.reduce((sum, m) => sum + m.games, 0));
+// null when there's nothing to compute a win rate from (e.g. speed-only
+// players) — the template renders "—" instead of a misleading 0%.
+const allModesWinRate = computed<number | null>(() =>
+    winRateDenominator.value > 0
+        ? Math.round((allModesWins.value / winRateDenominator.value) * 100)
+        : null
+);
+const modesPlayed = computed(() => {
+    const withResults = modeStats.value.filter((m) => m.games > 0).length;
+    return withResults + (speedGames.value > 0 ? 1 : 0);
+});
+
+// Languages conquered: unique languages across classic daily wins AND
+// speed sessions where the player actually solved ≥1 word.
+const languagesConquered = computed(() => {
+    const langs = new Set<string>(statsStore.totalStats.languages_won || []);
+    if (speedAggregate.value) {
+        for (const [code, info] of Object.entries(speedAggregate.value.perLang)) {
+            if (info.bestScore > 0) langs.add(code);
+        }
+    }
+    return langs.size;
+});
 
 const modeOrder: GameMode[] = [
     'classic',
@@ -324,14 +356,18 @@ const sortedModes = computed(() =>
                         <div class="bg-paper text-center" style="padding: 20px 8px">
                             <div
                                 class="font-display font-bold"
-                                :class="allModesWinRate >= 50 ? 'text-correct' : 'text-ink'"
+                                :class="
+                                    allModesWinRate !== null && allModesWinRate >= 50
+                                        ? 'text-correct'
+                                        : 'text-ink'
+                                "
                                 style="
                                     font-size: 28px;
                                     font-variation-settings: 'opsz' 72;
                                     line-height: 1;
                                 "
                             >
-                                {{ allModesWinRate }}%
+                                {{ allModesWinRate === null ? '—' : `${allModesWinRate}%` }}
                             </div>
                             <div class="mono-label mt-1.5">Win Rate</div>
                         </div>
@@ -357,9 +393,9 @@ const sortedModes = computed(() =>
                                     line-height: 1;
                                 "
                             >
-                                {{ languagesPlayed }}
+                                {{ languagesConquered }}
                             </div>
-                            <div class="mono-label mt-1.5">Languages</div>
+                            <div class="mono-label mt-1.5">Conquered</div>
                         </div>
                     </div>
                 </section>
@@ -531,6 +567,87 @@ const sortedModes = computed(() =>
                                     </span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ═══ Speed Streak ═══ -->
+                <section v-if="speedAggregate" class="mb-10">
+                    <div class="mono-label mb-4">
+                        <Zap :size="12" class="inline -mt-0.5 mr-1" />
+                        Speed Streak
+                    </div>
+
+                    <!-- Hero row: games, best score, best solved, best combo -->
+                    <div
+                        class="grid grid-cols-4 border border-rule"
+                        style="background: var(--color-rule); gap: 1px"
+                    >
+                        <div class="bg-paper text-center" style="padding: 14px 8px">
+                            <div
+                                class="font-display font-bold text-ink"
+                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                            >
+                                {{ speedAggregate.games }}
+                            </div>
+                            <div class="mono-label mt-0.5">Sessions</div>
+                        </div>
+                        <div class="bg-paper text-center" style="padding: 14px 8px">
+                            <div
+                                class="font-display font-bold text-correct"
+                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                            >
+                                {{ speedAggregate.bestScore.toLocaleString() }}
+                            </div>
+                            <div class="mono-label mt-0.5">Top Score</div>
+                        </div>
+                        <div class="bg-paper text-center" style="padding: 14px 8px">
+                            <div
+                                class="font-display font-bold text-ink"
+                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                            >
+                                {{ speedAggregate.bestWordsSolved }}
+                            </div>
+                            <div class="mono-label mt-0.5">Best Solved</div>
+                        </div>
+                        <div class="bg-paper text-center" style="padding: 14px 8px">
+                            <div
+                                class="font-display font-bold text-ink"
+                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                            >
+                                {{ speedAggregate.bestMaxCombo }}x
+                            </div>
+                            <div class="mono-label mt-0.5">Best Combo</div>
+                        </div>
+                    </div>
+
+                    <!-- Top 3 runs -->
+                    <div
+                        v-if="speedAggregate.topRuns.length > 0"
+                        class="border border-t-0 border-rule divide-y divide-rule"
+                    >
+                        <div
+                            v-for="(run, i) in speedAggregate.topRuns"
+                            :key="`${run.date}-${i}`"
+                            class="flex items-center gap-3"
+                            style="padding: 10px 16px"
+                        >
+                            <span
+                                class="w-6 h-6 flex items-center justify-center border border-rule bg-paper-warm font-display font-bold text-xs text-ink flex-shrink-0"
+                            >
+                                {{ i + 1 }}
+                            </span>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-ink tabular-nums">
+                                    {{ run.score.toLocaleString() }} pts
+                                </div>
+                                <div class="text-xs text-muted tabular-nums">
+                                    {{ run.wordsSolved }} solved · {{ run.maxCombo }}x combo
+                                </div>
+                            </div>
+                            <span class="mono-label">
+                                {{ new Date(run.date).toLocaleDateString() }}
+                            </span>
                         </div>
                     </div>
                 </section>

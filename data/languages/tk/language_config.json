@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Turkmen. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} Jogaby",
+            "description_with_def": "{date} (#{idx}) üçin {langNative} Wordle jogaby {word} boldy. {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) üçin {langNative} Wordle jogaby {word} boldy. Ony 6 synanyşykda tapyp bilersiňizmi?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — Tiz wagtda",
+            "description_coming_soon": "{langNative} Wordle sözi #{idx}. Tiz wagtda."
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — Ähli sözler | Söz arhiwi",
+            "description": "{langNative} dilindäki öňki {count} Wordle sözüne göz aýlaň. Her günlük söz üçin kesgitlemeler, AI sungaty we jemgyýet statistikasy."
+        },
+        "best_starting_words": {
+            "title": "{langNative} dilinde Wordle üçin iň gowy başlangyç sözler — Wordle Global",
+            "description": "{langNative} dilinde Wordle üçin iň gowy başlangyç sözleriniň maglumata esaslanýan derňewi. {count} söz boýunça harp gurşawy esasynda tertipleşdirildi."
         }
     },
     "text": {

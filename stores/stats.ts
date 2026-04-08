@@ -12,10 +12,14 @@ import type {
     GameResults,
     GameStats,
     GuessDistribution,
+    SpeedAggregate,
+    SpeedResult,
+    SpeedResults,
     TotalStats,
 } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
 import { isClassicDailyStatsKey } from '~/utils/game-modes';
+import { readJson, writeJson } from '~/utils/storage';
 import { toLocalDay, stepBack, buildDailyResultMap } from '~/utils/streak-dates';
 
 function emptyStats(maxGuesses: number = 6): GameStats {
@@ -52,6 +56,15 @@ export const useStatsStore = defineStore('stats', () => {
     const gameResults = ref<GameResults>({});
     const stats = ref<GameStats>(emptyStats());
     const totalStats = ref<TotalStats>(emptyTotalStats());
+
+    // Speed Streak sessions (persistent, per-language). Separate storage key
+    // because the shape — score / combo / timing — does not fit GameResult.
+    const speedResults = ref<SpeedResults>({});
+    const SPEED_STORAGE_KEY = 'speed_results';
+    // Cap retained sessions per language so localStorage can't balloon.
+    // At 100 sessions, heavy players may lose very old runs; acceptable
+    // because the /stats section only surfaces aggregates + recent top 3.
+    const SPEED_MAX_PER_LANG = 100;
 
     // ---------------------------------------------------------------------------
     // Actions
@@ -274,13 +287,77 @@ export const useStatsStore = defineStore('stats', () => {
         return computed;
     }
 
-    // Cross-tab sync: reload stats when another tab updates game_results
+    // ---------------------------------------------------------------------------
+    // Speed Streak persistence
+    // ---------------------------------------------------------------------------
+
+    /** Guard against `JSON.parse('null')`/`'[]'` succeeding but producing non-record values. */
+    function isValidSpeedResults(value: unknown): value is SpeedResults {
+        if (value === null || typeof value !== 'object' || Array.isArray(value)) {
+            return false;
+        }
+        return Object.values(value as Record<string, unknown>).every(Array.isArray);
+    }
+
+    function loadSpeedResults(): void {
+        const parsed = readJson<unknown>(SPEED_STORAGE_KEY);
+        speedResults.value = isValidSpeedResults(parsed) ? parsed : {};
+    }
+
+    function saveSpeedResult(langCode: string, result: Omit<SpeedResult, 'date'>): void {
+        if (!langCode) return;
+        const entry: SpeedResult = { ...result, date: new Date().toISOString() };
+        const prior = speedResults.value[langCode] ?? [];
+        const next = [...prior, entry];
+        // Drop oldest runs beyond the cap.
+        speedResults.value[langCode] =
+            next.length > SPEED_MAX_PER_LANG ? next.slice(-SPEED_MAX_PER_LANG) : next;
+        writeJson(SPEED_STORAGE_KEY, speedResults.value);
+    }
+
+    function calculateSpeedStats(): SpeedAggregate {
+        let games = 0;
+        let bestScore = 0;
+        let bestWordsSolved = 0;
+        let bestMaxCombo = 0;
+        const all: SpeedResult[] = [];
+        const perLang: Record<string, { games: number; bestScore: number }> = {};
+
+        for (const [langCode, results] of Object.entries(speedResults.value)) {
+            if (!results?.length) continue;
+            for (const r of results) {
+                games++;
+                if (r.score > bestScore) bestScore = r.score;
+                if (r.wordsSolved > bestWordsSolved) bestWordsSolved = r.wordsSolved;
+                if (r.maxCombo > bestMaxCombo) bestMaxCombo = r.maxCombo;
+                all.push(r);
+                if (!perLang[langCode]) perLang[langCode] = { games: 0, bestScore: 0 };
+                perLang[langCode].games++;
+                if (r.score > perLang[langCode].bestScore) perLang[langCode].bestScore = r.score;
+            }
+        }
+
+        const topRuns = [...all].sort((a, b) => b.score - a.score).slice(0, 3);
+
+        return { games, bestScore, bestWordsSolved, bestMaxCombo, topRuns, perLang };
+    }
+
+    // Cross-tab sync: reload stats when another tab updates game_results / speed_results
     if (import.meta.client) {
         window.addEventListener('storage', (e) => {
             if (e.key === 'game_results' && e.newValue) {
                 try {
                     gameResults.value = JSON.parse(e.newValue) as GameResults;
                     calculateTotalStats();
+                } catch {
+                    // Ignore parse errors from other tabs
+                }
+            } else if (e.key === SPEED_STORAGE_KEY && e.newValue) {
+                try {
+                    const parsed: unknown = JSON.parse(e.newValue);
+                    if (isValidSpeedResults(parsed)) {
+                        speedResults.value = parsed;
+                    }
                 } catch {
                     // Ignore parse errors from other tabs
                 }
@@ -293,11 +370,15 @@ export const useStatsStore = defineStore('stats', () => {
         gameResults,
         stats,
         totalStats,
+        speedResults,
 
         // Actions
         loadGameResults,
         saveResult,
         calculateStats,
         calculateTotalStats,
+        loadSpeedResults,
+        saveSpeedResult,
+        calculateSpeedStats,
     };
 });

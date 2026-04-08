@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Luxembourgish. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Äntwert op {langNative}",
+            "description_with_def": "D'Wordle {langNative}-Äntwert vum {date} (#{idx}) war {word}. {partOfSpeech}{definition}",
+            "description_without_def": "D'Wordle {langNative}-Äntwert vum {date} (#{idx}) war {word}. Kanns du et an 6 Versich roden?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Geschwënn",
+            "description_coming_soon": "Wordle {langNative} Wuert #{idx}. Geschwënn."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — All Wierder | Wuertarchiv",
+            "description": "Kuckt all {count} vergaangene Wordle-Wierder op {langNative}. Definitiounen, KI-Biller a Communautéitsstatistiken fir all deeglecht Wuert."
+        },
+        "best_starting_words": {
+            "title": "Bescht Startwierder fir Wordle op {langNative} — Wordle Global",
+            "description": "Datebaséiert Analyse vun de beschte Startwierder fir Wordle op {langNative}. Klasséiert no Buschtawendeckung iwwer {count} Wierder."
         }
     },
     "text": {

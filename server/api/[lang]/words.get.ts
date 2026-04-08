@@ -95,5 +95,6 @@ export default defineEventHandler((event) => {
         words_per_page: WORDS_PER_PAGE,
         words,
         ui: config.ui || {},
+        meta: config.meta || {},
     };
 });

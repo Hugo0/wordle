@@ -6,7 +6,13 @@
  * Content is computed from actual word list letter frequencies — unique to wordle.global.
  */
 
-definePageMeta({ layout: 'default' });
+import { interpolate } from '~/utils/interpolate';
+import { getLocaleForIntl } from '~/utils/locale';
+
+definePageMeta({
+    layout: 'default',
+    key: (route) => route.params.lang as string,
+});
 
 const route = useRoute();
 const lang = route.params.lang as string;
@@ -22,10 +28,28 @@ const langName = pageData.value.lang_name;
 const langNative = pageData.value.lang_name_native;
 const topWords = pageData.value.top_words;
 const letterFreqs = pageData.value.letter_frequency;
+const ui = (pageData.value.ui as Record<string, string>) || {};
+const coverageLabel = ui.coverage_label || 'Coverage';
 
-// SEO
-const title = `Best Starting Words for Wordle in ${langName} — Wordle Global`;
-const description = `Data-driven analysis of the best starting words for Wordle in ${langName}. Ranked by letter coverage across ${pageData.value.daily_word_count.toLocaleString()} words.`;
+// SEO templates from language_config.json meta.best_starting_words (merged with defaults)
+const meta = (pageData.value.meta as Record<string, any>) || {};
+const bswMeta = meta.best_starting_words || {};
+const seoVars = {
+    langNative,
+    langName,
+    // Pass an explicit locale so SSR output is deterministic across runtimes.
+    count: pageData.value.daily_word_count.toLocaleString(getLocaleForIntl(lang)),
+};
+
+const title = interpolate(
+    bswMeta.title || 'Best Starting Words for Wordle in {langNative} — Wordle Global',
+    seoVars
+);
+const description = interpolate(
+    bswMeta.description ||
+        'Data-driven analysis of the best starting words for Wordle in {langNative}. Ranked by letter coverage across {count} words.',
+    seoVars
+);
 
 useSeoMeta({
     title,
@@ -128,38 +152,10 @@ if (allLangs.value?.language_codes) {
                 <h2 class="heading-section text-xl text-ink">
                     Top {{ Math.min(topWords.length, 10) }} Starting Words
                 </h2>
-                <div class="border border-rule divide-y divide-rule">
-                    <div
-                        v-for="(w, i) in topWords.slice(0, 10)"
-                        :key="w.word"
-                        class="flex items-center gap-4 px-5 py-3"
-                        :class="i < 3 ? 'bg-paper-warm' : ''"
-                    >
-                        <span
-                            class="w-7 h-7 flex items-center justify-center border border-rule font-display font-bold text-sm text-ink flex-shrink-0"
-                            :class="i < 3 ? 'bg-paper' : 'bg-paper-warm'"
-                        >
-                            {{ i + 1 }}
-                        </span>
-                        <div class="flex-1 min-w-0">
-                            <div class="grid grid-cols-5 gap-1 max-w-[180px]">
-                                <div
-                                    v-for="(c, j) in w.word.split('')"
-                                    :key="j"
-                                    class="tile aspect-square inline-flex justify-center items-center text-sm uppercase font-display font-bold select-none filled"
-                                >
-                                    {{ c }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right flex-shrink-0">
-                            <div class="text-sm font-semibold text-ink">
-                                {{ w.coverageScore }}
-                            </div>
-                            <div class="mono-label">Coverage</div>
-                        </div>
-                    </div>
-                </div>
+                <SharedStartingWordsList
+                    :words="topWords.slice(0, 10)"
+                    :coverage-label="coverageLabel"
+                />
                 <p class="text-xs text-muted leading-relaxed">
                     Coverage score = sum of letter frequency percentages for each unique letter.
                     Higher means the word tests more commonly-used letters in {{ langName }} Wordle.

@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Western Frisian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Antwurd yn {langNative}",
+            "description_with_def": "It Wordle {langNative}-antwurd fan {date} (#{idx}) wie {word}. {partOfSpeech}{definition}",
+            "description_without_def": "It Wordle {langNative}-antwurd fan {date} (#{idx}) wie {word}. Kinsto it riede yn 6 besochten?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Komt oan",
+            "description_coming_soon": "Wordle {langNative} wurd #{idx}. Komt oan."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Alle wurden | Wurdearchyf",
+            "description": "Blêdzje troch alle {count} eardere Wordle-wurden yn {langNative}. Definysjes, AI-yllustraasjes en mienskipsstatistiken foar elk deistich wurd."
+        },
+        "best_starting_words": {
+            "title": "Bêste begjinwurden foar Wordle yn {langNative} — Wordle Global",
+            "description": "Datadreaune analyze fan de bêste begjinwurden foar Wordle yn {langNative}. Rangskikt op letterdekking oer {count} wurden."
         }
     },
     "text": {

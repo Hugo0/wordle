@@ -40,6 +40,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Latin. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Responsum {langNative}",
+            "description_with_def": "Responsum Wordle {langNative} pro die {date} (#{idx}) erat {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Responsum Wordle {langNative} pro die {date} (#{idx}) erat {word}. Potesne id sex conatibus divinare?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Mox veniet",
+            "description_coming_soon": "Verbum Wordle {langNative} #{idx}. Mox veniet."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Omnia Verba | Archivum Verborum",
+            "description": "Perlege omnia {count} verba Wordle praeterita in lingua {langNative}. Vide definitiones, artem AI, et statisticas communitatis pro quoque verbo cotidiano."
+        },
+        "best_starting_words": {
+            "title": "Optima Verba Initialia pro Wordle in lingua {langNative} — Wordle Global",
+            "description": "Analysis fundata in datis optimorum verborum initialium pro Wordle in lingua {langNative}. Ordinata per tectum litterarum trans {count} verba."
         }
     },
     "text": {

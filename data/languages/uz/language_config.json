@@ -43,6 +43,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Uzbek. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} javobi",
+            "description_with_def": "{date} (#{idx}) uchun {langNative} Wordle javobi {word} edi. {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) uchun {langNative} Wordle javobi {word} edi. Uni 6 ta urinishda topa olasizmi?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — Tez orada",
+            "description_coming_soon": "{langNative} Wordle soʻzi #{idx}. Tez orada."
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — Barcha soʻzlar | Soʻzlar arxivi",
+            "description": "{langNative} tilidagi oʻtgan {count} ta Wordle soʻzini koʻrib chiqing. Har bir kunlik soʻz uchun taʼriflar, AI rasmlar va jamoa statistikasi."
+        },
+        "best_starting_words": {
+            "title": "{langNative} tilida Wordle uchun eng yaxshi boshlanish soʻzlari — Wordle Global",
+            "description": "{langNative} tilida Wordle uchun eng yaxshi boshlanish soʻzlarining maʼlumotlarga asoslangan tahlili. {count} ta soʻz boʻyicha harf qamrovi boʻyicha tartiblangan."
         }
     },
     "text": {

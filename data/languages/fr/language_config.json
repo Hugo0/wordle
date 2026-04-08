@@ -38,7 +38,7 @@
     "meta": {
         "locale": "fr",
         "title": "Le jeu de mots quotidien",
-        "description": "Devinez le mot caché dans 6 essais (ou moins). Un nouveau puzzle est disponible chaque jour!",
+        "description": "Jouez à Wordle en plus de 80 langues — de l'arabe au yoruba. Le plus grand Wordle multilingue. Définitions, sans pub, sans compte. 8 modes de jeu.",
         "keywords": "français, puzzle, mot, jouer, jeu, en ligne, devinez, quotidiennement",
         "modes": {
             "unlimited": {
@@ -73,6 +73,21 @@
                 "title": "Duotrigordle — 32 grilles en même temps",
                 "description": "Jouez au Duotrigordle en français. Résolvez 32 grilles Wordle en même temps en 37 essais."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Réponse en {langNative}",
+            "description_with_def": "La réponse de Wordle {langNative} du {date} (#{idx}) était {word}. {partOfSpeech}{definition}",
+            "description_without_def": "La réponse de Wordle {langNative} du {date} (#{idx}) était {word}. Pouvez-vous la deviner en 6 essais ?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Bientôt disponible",
+            "description_coming_soon": "Mot #{idx} de Wordle {langNative}. Bientôt disponible."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Tous les mots | Archive des mots",
+            "description": "Parcourez les {count} mots passés de Wordle en {langNative}. Définitions, illustrations générées par IA et statistiques de la communauté pour chaque mot quotidien."
+        },
+        "best_starting_words": {
+            "title": "Meilleurs mots de départ pour Wordle en {langNative} — Wordle Global",
+            "description": "Analyse basée sur les données des meilleurs mots pour commencer Wordle en {langNative}. Classés par couverture de lettres parmi {count} mots."
         }
     },
     "text": {

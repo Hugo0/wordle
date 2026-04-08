@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Central Kurdish. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "وۆردڵ #{idx} — {date} — {word} | وەڵامی {langNative}",
+            "description_with_def": "وەڵامی وۆردڵی {langNative} بۆ {date} (#{idx}) بریتی بوو لە {word}. {partOfSpeech}{definition}",
+            "description_without_def": "وەڵامی وۆردڵی {langNative} بۆ {date} (#{idx}) بریتی بوو لە {word}. دەتوانیت بە ۶ هەوڵ بیدۆزیتەوە؟",
+            "title_coming_soon": "وۆردڵی {langNative} #{idx} — بەم زووانە",
+            "description_coming_soon": "وشەی #{idx} ی وۆردڵی {langNative}. بەم زووانە."
+        },
+        "word_archive": {
+            "title": "وۆردڵی {langNative} — هەموو وشەکان | ئەرشیڤی وشە",
+            "description": "گەڕان بەناو هەموو {count} وشەی پێشووی وۆردڵ بە {langNative}. پێناسە، هونەری AI و ئامارە کۆمەڵایەتییەکان بۆ هەموو وشەیەکی ڕۆژانە."
+        },
+        "best_starting_words": {
+            "title": "باشترین وشەکانی دەستپێکردن بۆ وۆردڵ بە {langNative} — Wordle Global",
+            "description": "شیکارییەکی داتامەحوەر بۆ باشترین وشەکانی دەستپێکردن لە وۆردڵدا بە {langNative}. پۆلێن کراون بەگوێرەی داگیرکردنی پیت لە ناو {count} وشەدا."
         }
     },
     "text": {

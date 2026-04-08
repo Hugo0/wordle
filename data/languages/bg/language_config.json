@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 дъски наведнъж",
                 "description": "Играй Duotrigordle на български. Реши 32 Wordle дъски наведнъж с 37 опита."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Отговор на {langNative}",
+            "description_with_def": "Отговорът на Wordle {langNative} за {date} (#{idx}) беше {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Отговорът на Wordle {langNative} за {date} (#{idx}) беше {word}. Можеш ли да го познаеш за 6 опита?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Очаквайте скоро",
+            "description_coming_soon": "Дума за Wordle {langNative} #{idx}. Очаквайте скоро."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Всички думи | Архив на думите",
+            "description": "Разгледай всички {count} предишни думи на Wordle на езика {langNative}. Виж определенията, AI изкуството и статистиките на общността за всяка дневна дума."
+        },
+        "best_starting_words": {
+            "title": "Най-добри начални думи за Wordle на езика {langNative} — Wordle Global",
+            "description": "Анализ, основан на данни, за най-добрите начални думи за Wordle на езика {langNative}. Класирани според покритието на буквите сред {count} думи."
         }
     },
     "text": {

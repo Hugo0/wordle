@@ -45,6 +45,21 @@
                 "title": "Duotrigordle — 32 papan sekaligus",
                 "description": "Main Duotrigordle bahasa Indonesia. Selesaikan 32 papan Wordle sekaligus dengan 37 tebakan."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Jawaban {langNative}",
+            "description_with_def": "Jawaban Wordle {langNative} untuk {date} (#{idx}) adalah {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Jawaban Wordle {langNative} untuk {date} (#{idx}) adalah {word}. Bisakah kamu menebaknya dalam 6 percobaan?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Segera hadir",
+            "description_coming_soon": "Kata Wordle {langNative} #{idx}. Segera hadir."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Semua Kata | Arsip Kata",
+            "description": "Lihat semua {count} kata Wordle sebelumnya dalam {langNative}. Temukan definisi, seni AI, dan statistik komunitas untuk setiap kata harian."
+        },
+        "best_starting_words": {
+            "title": "Kata Pembuka Terbaik untuk Wordle dalam {langNative} — Wordle Global",
+            "description": "Analisis berbasis data tentang kata pembuka terbaik untuk Wordle dalam {langNative}. Diurutkan berdasarkan cakupan huruf di {count} kata."
         }
     },
     "text": {

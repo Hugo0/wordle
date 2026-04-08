@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Slovenian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Odgovor {langNative}",
+            "description_with_def": "Odgovor Wordle {langNative} za {date} (#{idx}) je bil {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Odgovor Wordle {langNative} za {date} (#{idx}) je bil {word}. Ga uganeš v 6 poskusih?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kmalu",
+            "description_coming_soon": "Beseda Wordle {langNative} #{idx}. Kmalu na voljo."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Vse besede | Arhiv besed",
+            "description": "Prebrskaj vseh {count} preteklih besed Wordle v jeziku {langNative}. Oglej si definicije, AI umetnost in statistike skupnosti za vsako dnevno besedo."
+        },
+        "best_starting_words": {
+            "title": "Najboljše začetne besede za Wordle v jeziku {langNative} — Wordle Global",
+            "description": "Na podatkih temelječa analiza najboljših začetnih besed za Wordle v jeziku {langNative}. Razvrščeno po pokritosti črk med {count} besedami."
         }
     },
     "text": {

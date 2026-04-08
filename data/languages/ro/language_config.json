@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 table deodată",
                 "description": "Joacă Duotrigordle în română. Rezolvă 32 table Wordle deodată cu 37 încercări."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Răspuns {langNative}",
+            "description_with_def": "Răspunsul Wordle {langNative} pentru {date} (#{idx}) a fost {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Răspunsul Wordle {langNative} pentru {date} (#{idx}) a fost {word}. Îl poți ghici din 6 încercări?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — În curând",
+            "description_coming_soon": "Cuvântul Wordle {langNative} #{idx}. În curând disponibil."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Toate cuvintele | Arhiva cuvintelor",
+            "description": "Răsfoiește toate cele {count} cuvinte Wordle anterioare în {langNative}. Vezi definiții, artă AI și statistici ale comunității pentru fiecare cuvânt zilnic."
+        },
+        "best_starting_words": {
+            "title": "Cele mai bune cuvinte de start pentru Wordle în {langNative} — Wordle Global",
+            "description": "Analiză bazată pe date a celor mai bune cuvinte de start pentru Wordle în {langNative}. Clasificate după acoperirea literelor în {count} cuvinte."
         }
     },
     "text": {

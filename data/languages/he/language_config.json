@@ -49,6 +49,21 @@
                 "title": "Duotrigordle — 32 לוחות בו-זמנית",
                 "description": "שחקו Duotrigordle בעברית. פתרו 32 לוחות וורדל בו-זמנית ב-37 ניחושים."
             }
+        },
+        "word_detail": {
+            "title": "וורדל #{idx} — {date} — {word} | תשובה ב{langNative}",
+            "description_with_def": "התשובה לוורדל ב{langNative} לתאריך {date} (#{idx}) הייתה {word}. {partOfSpeech}{definition}",
+            "description_without_def": "התשובה לוורדל ב{langNative} לתאריך {date} (#{idx}) הייתה {word}. תוכלו לנחש אותה ב-6 ניסיונות?",
+            "title_coming_soon": "וורדל ב{langNative} #{idx} — בקרוב",
+            "description_coming_soon": "מילת וורדל ב{langNative} מספר #{idx}. בקרוב."
+        },
+        "word_archive": {
+            "title": "וורדל ב{langNative} — כל המילים | ארכיון מילים",
+            "description": "עיינו בכל {count} מילות הוורדל הקודמות ב{langNative}. צפו בהגדרות, באמנות בינה מלאכותית ובסטטיסטיקות הקהילה לכל מילה יומית."
+        },
+        "best_starting_words": {
+            "title": "מילות הפתיחה הטובות ביותר לוורדל ב{langNative} — Wordle Global",
+            "description": "ניתוח מבוסס נתונים של מילות הפתיחה הטובות ביותר לוורדל ב{langNative}. מדורג לפי כיסוי אותיות על פני {count} מילים."
         }
     },
     "text": {

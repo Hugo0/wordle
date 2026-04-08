@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Basque. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} erantzuna",
+            "description_with_def": "{langNative} Wordle erantzuna {date} egunerako (#{idx}) {word} izan zen. {partOfSpeech}{definition}",
+            "description_without_def": "{langNative} Wordle erantzuna {date} egunerako (#{idx}) {word} izan zen. Asmatuko duzu 6 saiakeratan?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Laster",
+            "description_coming_soon": "Wordle {langNative} hitza #{idx}. Laster erabilgarri."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Hitz guztiak | Hitzen artxiboa",
+            "description": "Arakatu {langNative} hizkuntzako aurreko {count} Wordle hitzak. Ikusi eguneroko hitz bakoitzaren definizioak, AI artea eta komunitatearen estatistikak."
+        },
+        "best_starting_words": {
+            "title": "{langNative} hizkuntzako Wordle hasierako hitz onenak — Wordle Global",
+            "description": "{langNative} hizkuntzako Wordlerako hasierako hitz onenen datuetan oinarritutako analisia. {count} hitzetan zehar letren estaldurari begira sailkatuta."
         }
     },
     "text": {

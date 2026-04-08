@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 brætter på én gang",
                 "description": "Spil Duotrigordle på dansk. Løs 32 Wordle-brætter på én gang med 37 gæt."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Svar på {langNative}",
+            "description_with_def": "Wordle {langNative}-svaret for {date} (#{idx}) var {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative}-svaret for {date} (#{idx}) var {word}. Kan du gætte det på 6 forsøg?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Kommer snart",
+            "description_coming_soon": "Wordle {langNative} ord #{idx}. Kommer snart."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Alle ord | Ordarkiv",
+            "description": "Gennemse alle {count} tidligere Wordle-ord på {langNative}. Definitioner, AI-illustrationer og community-statistik for hvert dagligt ord."
+        },
+        "best_starting_words": {
+            "title": "Bedste startord til Wordle på {langNative} — Wordle Global",
+            "description": "Datadrevet analyse af de bedste startord til Wordle på {langNative}. Rangeret efter bogstavdækning på tværs af {count} ord."
         }
     },
     "text": {

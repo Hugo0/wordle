@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Nepali. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} उत्तर",
+            "description_with_def": "{date} (#{idx}) को {langNative} Wordle उत्तर {word} थियो। {partOfSpeech}{definition}",
+            "description_without_def": "{date} (#{idx}) को {langNative} Wordle उत्तर {word} थियो। के तपाईं यसलाई ६ प्रयासमा अनुमान गर्न सक्नुहुन्छ?",
+            "title_coming_soon": "{langNative} Wordle #{idx} — चाँडै आउँदैछ",
+            "description_coming_soon": "{langNative} Wordle शब्द #{idx}। चाँडै आउँदैछ।"
+        },
+        "word_archive": {
+            "title": "{langNative} Wordle — सबै शब्दहरू | शब्द संग्रह",
+            "description": "{langNative} मा विगतका सबै {count} Wordle शब्दहरू हेर्नुहोस्। प्रत्येक दैनिक शब्दको परिभाषा, AI कला र समुदाय तथ्याङ्कहरू।"
+        },
+        "best_starting_words": {
+            "title": "{langNative} मा Wordle का लागि उत्कृष्ट सुरुवाती शब्दहरू — Wordle Global",
+            "description": "{langNative} मा Wordle का लागि उत्कृष्ट सुरुवाती शब्दहरूको डेटा-आधारित विश्लेषण। {count} शब्दहरूमा अक्षर कभरेजका आधारमा क्रमबद्ध।"
         }
     },
     "text": {

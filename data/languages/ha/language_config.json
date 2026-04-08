@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Hausa. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Amsar {langNative}",
+            "description_with_def": "Amsar Wordle {langNative} na {date} (#{idx}) ita ce {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Amsar Wordle {langNative} na {date} (#{idx}) ita ce {word}. Za ka iya gane ta cikin kokari 6?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Zai zo nan ba da jimawa ba",
+            "description_coming_soon": "Kalmar Wordle {langNative} #{idx}. Zai zo nan ba da jimawa ba."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Duk Kalmomi | Tarihin Kalmomi",
+            "description": "Duba duk kalmomin Wordle {count} da suka gabata a {langNative}. Ga ma'anoni, fasahar AI, da kididdigar al'umma na kowace kalmar yau da kullum."
+        },
+        "best_starting_words": {
+            "title": "Mafi Kyawun Kalmomin Farawa don Wordle a {langNative} — Wordle Global",
+            "description": "Bincike na bayanai kan mafi kyawun kalmomin farawa don Wordle a {langNative}. An jera bisa ga ɗaukar haruffa a cikin kalmomi {count}."
         }
     },
     "text": {

@@ -68,6 +68,8 @@ export default defineEventHandler((event) => {
         lang,
         lang_name: config.name || lang,
         lang_name_native: config.name_native || lang,
+        meta: config.meta || {},
+        ui: config.ui || {},
         ...cached,
     };
 });

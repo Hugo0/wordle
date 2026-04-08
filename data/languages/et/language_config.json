@@ -41,6 +41,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Estonian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | {langNative} vastus",
+            "description_with_def": "Wordle {langNative} vastus kuupäevaks {date} (#{idx}) oli {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Wordle {langNative} vastus kuupäevaks {date} (#{idx}) oli {word}. Kas arvad ära 6 katsega?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Varsti tulekul",
+            "description_coming_soon": "Wordle {langNative} sõna #{idx}. Varsti saadaval."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Kõik sõnad | Sõnade arhiiv",
+            "description": "Sirvi kõiki {count} varasemat Wordle sõna keeles {langNative}. Vaata iga päevase sõna definitsioone, AI-kunsti ja kogukonna statistikat."
+        },
+        "best_starting_words": {
+            "title": "Parimad algussõnad Wordle'i jaoks keeles {langNative} — Wordle Global",
+            "description": "Andmepõhine analüüs parimatest algussõnadest Wordle'i jaoks keeles {langNative}. Järjestatud tähtede katvuse järgi {count} sõna lõikes."
         }
     },
     "text": {

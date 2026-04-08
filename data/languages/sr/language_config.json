@@ -42,6 +42,21 @@
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in Serbian. Solve 32 Wordle boards at once with 37 guesses."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Одговор {langNative}",
+            "description_with_def": "Одговор Wordle {langNative} за {date} (#{idx}) био је {word}. {partOfSpeech}{definition}",
+            "description_without_def": "Одговор Wordle {langNative} за {date} (#{idx}) био је {word}. Можеш ли да га погодиш за 6 покушаја?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — Ускоро",
+            "description_coming_soon": "Реч Wordle {langNative} #{idx}. Ускоро доступно."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Све речи | Архива речи",
+            "description": "Прегледај свих {count} претходних Wordle речи на језику {langNative}. Погледај дефиниције, AI уметност и статистике заједнице за сваку дневну реч."
+        },
+        "best_starting_words": {
+            "title": "Најбоље почетне речи за Wordle на језику {langNative} — Wordle Global",
+            "description": "Анализа заснована на подацима о најбољим почетним речима за Wordle на језику {langNative}. Рангирано према покривености слова у {count} речи."
         }
     },
     "text": {

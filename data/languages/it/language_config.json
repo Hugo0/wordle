@@ -24,7 +24,7 @@
     "meta": {
         "locale": "it",
         "title": "Il gioco di parole quotidiane",
-        "description": "Indovina la parola nascosta in 6 tentativi (o meno). Un nuovo puzzle è disponibile ogni giorno!",
+        "description": "Gioca a Wordle in oltre 80 lingue — dall'arabo allo yoruba. Il Wordle multilingue più grande. Definizioni, niente pubblicità, niente login. 8 modalità.",
         "keywords": "Italiano, Puzzle, Word, Play, Game, Online, Guess, Daily",
         "modes": {
             "unlimited": {
@@ -59,6 +59,21 @@
                 "title": "Duotrigordle — 32 griglie alla volta",
                 "description": "Gioca a Duotrigordle in italiano. Risolvi 32 griglie Wordle alla volta con 37 tentativi."
             }
+        },
+        "word_detail": {
+            "title": "Wordle #{idx} — {date} — {word} | Risposta in {langNative}",
+            "description_with_def": "La risposta di Wordle {langNative} del {date} (#{idx}) era {word}. {partOfSpeech}{definition}",
+            "description_without_def": "La risposta di Wordle {langNative} del {date} (#{idx}) era {word}. Riesci a indovinarla in 6 tentativi?",
+            "title_coming_soon": "Wordle {langNative} #{idx} — In arrivo",
+            "description_coming_soon": "Parola #{idx} di Wordle {langNative}. In arrivo."
+        },
+        "word_archive": {
+            "title": "Wordle {langNative} — Tutte le parole | Archivio parole",
+            "description": "Sfoglia tutte le {count} parole passate di Wordle in {langNative}. Definizioni, illustrazioni generate dall'IA e statistiche della community per ogni parola quotidiana."
+        },
+        "best_starting_words": {
+            "title": "Migliori parole iniziali per Wordle in {langNative} — Wordle Global",
+            "description": "Analisi basata sui dati delle migliori parole per iniziare Wordle in {langNative}. Classificate per copertura delle lettere tra {count} parole."
         }
     },
     "text": {
