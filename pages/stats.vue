@@ -22,6 +22,7 @@ import {
 } from 'lucide-vue-next';
 import { isClassicDailyStatsKey, GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
+import type { SpeedAggregate } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
 
 useSeoMeta({
@@ -98,8 +99,7 @@ const perLang = ref<PerLangStats[]>([]);
 // Per-mode (all modes that have results)
 const modeStats = ref<ModeStats[]>([]);
 
-// Speed Streak aggregate (loaded from stats store)
-const speedAggregate = ref<ReturnType<typeof statsStore.calculateSpeedStats> | null>(null);
+const speedAggregate = ref<SpeedAggregate | null>(null);
 
 // =========================================================================
 // Data loading — uses the stats store instead of reimplementing calculations
@@ -109,11 +109,9 @@ function loadStats() {
     if (loaded.value) return;
     loaded.value = true;
 
-    // Load all game results into the store
     statsStore.loadGameResults();
     statsStore.loadSpeedResults();
 
-    // Speed Streak aggregate (separate storage from game_results)
     const speed = statsStore.calculateSpeedStats();
     speedAggregate.value = speed.games > 0 ? speed : null;
 
@@ -273,16 +271,12 @@ const modesPlayed = computed(() => {
 });
 
 // Languages conquered: unique languages across classic daily wins AND
-// speed sessions where the player actually solved at least one word.
+// speed sessions where the player actually solved ≥1 word.
 const languagesConquered = computed(() => {
-    const langs = new Set<string>();
-    // Classic wins (already in languagesPlayed via calculateTotalStats)
-    const total = statsStore.totalStats;
-    for (const code of total.languages_won || []) langs.add(code);
-    // Speed: count a language if the player ever solved ≥1 word in it
+    const langs = new Set<string>(statsStore.totalStats.languages_won || []);
     if (speedAggregate.value) {
         for (const [code, info] of Object.entries(speedAggregate.value.perLang)) {
-            if (info.games > 0 && info.bestScore > 0) langs.add(code);
+            if (info.bestScore > 0) langs.add(code);
         }
     }
     return langs.size;

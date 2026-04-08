@@ -378,15 +378,10 @@ const recentWords = computed(() => {
                 </div>
             </section>
 
-            <div v-if="isClassic" class="editorial-rule" />
-
-            <!-- ─── Best Starting Words (classic only) ─── -->
-            <GameBestStartingWordsPanel
-                v-if="isClassic"
-                :lang="lang"
-                :lang-name="seo.langName"
-                :limit="5"
-            />
+            <template v-if="isClassic">
+                <div class="editorial-rule" />
+                <GameBestStartingWordsPanel :lang="lang" :lang-name="seo.langName" />
+            </template>
 
             <div class="editorial-rule" />
 

@@ -415,10 +415,11 @@ export type GameResults = Record<string, GameResult[]>;
 /**
  * Persistent record of a completed Speed Streak session.
  * Stored separately from GameResults because the shape (score, combo, timing)
- * does not match the classic win/attempts model.
+ * does not match the classic win/attempts model. `date` is ISO8601 — JSON
+ * round-trips coerce Date → string, so we pick string as the canonical form.
  */
 export interface SpeedResult {
-    date: Date | string;
+    date: string;
     score: number;
     wordsSolved: number;
     wordsFailed: number;
@@ -427,6 +428,16 @@ export interface SpeedResult {
 }
 
 export type SpeedResults = Record<string, SpeedResult[]>;
+
+/** Aggregate view of a user's Speed Streak history across all languages. */
+export interface SpeedAggregate {
+    games: number;
+    bestScore: number;
+    bestWordsSolved: number;
+    bestMaxCombo: number;
+    topRuns: SpeedResult[];
+    perLang: Record<string, { games: number; bestScore: number }>;
+}
 
 export interface TotalStats {
     total_games: number;

@@ -145,38 +145,7 @@ if (allLangs.value?.language_codes) {
                 <h2 class="heading-section text-xl text-ink">
                     Top {{ Math.min(topWords.length, 10) }} Starting Words
                 </h2>
-                <div class="border border-rule divide-y divide-rule">
-                    <div
-                        v-for="(w, i) in topWords.slice(0, 10)"
-                        :key="w.word"
-                        class="flex items-center gap-4 px-5 py-3"
-                        :class="i < 3 ? 'bg-paper-warm' : ''"
-                    >
-                        <span
-                            class="w-7 h-7 flex items-center justify-center border border-rule font-display font-bold text-sm text-ink flex-shrink-0"
-                            :class="i < 3 ? 'bg-paper' : 'bg-paper-warm'"
-                        >
-                            {{ i + 1 }}
-                        </span>
-                        <div class="flex-1 min-w-0">
-                            <div class="grid grid-cols-5 gap-1 max-w-[180px]">
-                                <div
-                                    v-for="(c, j) in w.word.split('')"
-                                    :key="j"
-                                    class="tile aspect-square inline-flex justify-center items-center text-sm uppercase font-display font-bold select-none filled"
-                                >
-                                    {{ c }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right flex-shrink-0">
-                            <div class="text-sm font-semibold text-ink">
-                                {{ w.coverageScore }}
-                            </div>
-                            <div class="mono-label">Coverage</div>
-                        </div>
-                    </div>
-                </div>
+                <SharedStartingWordsList :words="topWords.slice(0, 10)" />
                 <p class="text-xs text-muted leading-relaxed">
                     Coverage score = sum of letter frequency percentages for each unique letter.
                     Higher means the word tests more commonly-used letters in {{ langName }} Wordle.

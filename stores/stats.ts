@@ -12,12 +12,14 @@ import type {
     GameResults,
     GameStats,
     GuessDistribution,
+    SpeedAggregate,
     SpeedResult,
     SpeedResults,
     TotalStats,
 } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
 import { isClassicDailyStatsKey } from '~/utils/game-modes';
+import { readJson, writeJson } from '~/utils/storage';
 import { toLocalDay, stepBack, buildDailyResultMap } from '~/utils/streak-dates';
 
 function emptyStats(maxGuesses: number = 6): GameStats {
@@ -59,6 +61,10 @@ export const useStatsStore = defineStore('stats', () => {
     // because the shape — score / combo / timing — does not fit GameResult.
     const speedResults = ref<SpeedResults>({});
     const SPEED_STORAGE_KEY = 'speed_results';
+    // Cap retained sessions per language so localStorage can't balloon.
+    // At 100 sessions, heavy players may lose very old runs; acceptable
+    // because the /stats section only surfaces aggregates + recent top 3.
+    const SPEED_MAX_PER_LANG = 100;
 
     // ---------------------------------------------------------------------------
     // Actions
@@ -285,44 +291,19 @@ export const useStatsStore = defineStore('stats', () => {
     // Speed Streak persistence
     // ---------------------------------------------------------------------------
 
-    /** Load speed results from localStorage. Safe to call repeatedly. */
     function loadSpeedResults(): void {
-        if (!import.meta.client) return;
-        try {
-            const stored = localStorage.getItem(SPEED_STORAGE_KEY);
-            speedResults.value = stored ? (JSON.parse(stored) as SpeedResults) : {};
-        } catch {
-            speedResults.value = {};
-        }
+        speedResults.value = readJson<SpeedResults>(SPEED_STORAGE_KEY) ?? {};
     }
 
-    /** Record a completed speed session and persist to localStorage. */
     function saveSpeedResult(langCode: string, result: Omit<SpeedResult, 'date'>): void {
         if (!langCode) return;
-        const entry: SpeedResult = { ...result, date: new Date() };
-        if (!speedResults.value[langCode]) {
-            speedResults.value[langCode] = [];
-        }
-        speedResults.value[langCode].push(entry);
-        if (import.meta.client) {
-            try {
-                localStorage.setItem(SPEED_STORAGE_KEY, JSON.stringify(speedResults.value));
-            } catch {
-                // localStorage unavailable or quota exceeded
-            }
-        }
-    }
-
-    /**
-     * Aggregate view of a user's Speed Streak history. Used by the /stats page.
-     */
-    interface SpeedAggregate {
-        games: number;
-        bestScore: number;
-        bestWordsSolved: number;
-        bestMaxCombo: number;
-        topRuns: SpeedResult[];
-        perLang: Record<string, { games: number; bestScore: number }>;
+        const entry: SpeedResult = { ...result, date: new Date().toISOString() };
+        const prior = speedResults.value[langCode] ?? [];
+        const next = [...prior, entry];
+        // Drop oldest runs beyond the cap.
+        speedResults.value[langCode] =
+            next.length > SPEED_MAX_PER_LANG ? next.slice(-SPEED_MAX_PER_LANG) : next;
+        writeJson(SPEED_STORAGE_KEY, speedResults.value);
     }
 
     function calculateSpeedStats(): SpeedAggregate {
@@ -330,20 +311,17 @@ export const useStatsStore = defineStore('stats', () => {
         let bestScore = 0;
         let bestWordsSolved = 0;
         let bestMaxCombo = 0;
-        const all: (SpeedResult & { language: string })[] = [];
+        const all: SpeedResult[] = [];
         const perLang: Record<string, { games: number; bestScore: number }> = {};
 
-        for (const [langCode, results] of Object.entries(speedResults.value) as [
-            string,
-            SpeedResult[],
-        ][]) {
+        for (const [langCode, results] of Object.entries(speedResults.value)) {
             if (!results?.length) continue;
             for (const r of results) {
                 games++;
                 if (r.score > bestScore) bestScore = r.score;
                 if (r.wordsSolved > bestWordsSolved) bestWordsSolved = r.wordsSolved;
                 if (r.maxCombo > bestMaxCombo) bestMaxCombo = r.maxCombo;
-                all.push({ ...r, language: langCode });
+                all.push(r);
                 if (!perLang[langCode]) perLang[langCode] = { games: 0, bestScore: 0 };
                 perLang[langCode].games++;
                 if (r.score > perLang[langCode].bestScore) perLang[langCode].bestScore = r.score;
