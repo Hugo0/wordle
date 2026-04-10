@@ -6,7 +6,7 @@
  * Matches the legacy Flask index.html exactly.
  */
 import { useSettingsStore } from '~/stores/settings';
-import { readJson, writeJson } from '~/utils/storage';
+import { readJson, writeJson, readLocal, writeLocal } from '~/utils/storage';
 import { Flame, Check, Compass, Square, Zap, Columns2, User, CircleCheck } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
@@ -373,9 +373,9 @@ onMounted(() => {
     // Cache languages for game page
     writeJson('languages_cache', languages.value);
 
-    // Detect language: prefer localStorage (most recently played), then browser detection
-    // SSR already set detectedLanguageCode from Accept-Language; override if localStorage differs
-    const clientLang = getMostRecentLanguage() || detectBrowserLanguage();
+    // Detect language priority: 1) explicit user pick, 2) most recently played, 3) browser
+    const savedLangPref = readLocal('preferred_language');
+    const clientLang = savedLangPref || getMostRecentLanguage() || detectBrowserLanguage();
     if (clientLang && clientLang !== detectedLanguageCode.value) {
         detectedLanguageCode.value = clientLang;
         // Re-fetch homepage config for the user's actual preferred language
@@ -563,8 +563,9 @@ function selectLanguageWithCode(code: string, source: 'search' | 'list' | 'flag'
     selectedLangCode.value = code;
     selectedLangName.value = lang?.language_name_native || lang?.language_name || code;
     showModePicker.value = true;
-    // Update homepage language so mode cards + UI reflect the selected language
+    // Persist language preference so it survives navigation
     detectedLanguageCode.value = code;
+    try { writeLocal('preferred_language', code); } catch {}
     if (code !== hpLang.value) {
         hpLangOverride.value = code;
     }
