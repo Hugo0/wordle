@@ -598,8 +598,8 @@ const defaultLangFlag = computed(() =>
 );
 
 /**
- * Homepage mode cards — 4 cards per design doc:
- * Classic, Semantic (featured), Speed, Multi-Board (opens picker).
+ * Homepage mode cards — NYT-style editorial grid.
+ * Each card has mini tile icons, a serif heading, description, and tag.
  */
 interface HomepageModeCard {
     id: string;
@@ -607,7 +607,8 @@ interface HomepageModeCard {
     label: string;
     desc: string;
     route: string | null;
-    featured?: boolean;
+    tag: string;
+    tagAccent?: boolean;
     opensModal?: boolean;
 }
 
@@ -624,8 +625,9 @@ const homepageModes = computed((): HomepageModeCard[] => {
             id: 'classic',
             icon: classic.icon,
             label: getModeLabel(classic, ui),
-            desc: getModeDescription(classic, ui),
+            desc: 'One word per day, per language. The classic. Come back tomorrow for a new challenge.',
             route: getModeRoute(classic, lang),
+            tag: 'CLASSIC',
         },
     ];
 
@@ -634,9 +636,10 @@ const homepageModes = computed((): HomepageModeCard[] => {
             id: 'semantic',
             icon: Compass,
             label: ui?.mode_semantic_label || 'Semantic Explorer',
-            desc: ui?.mode_semantic_desc || 'Find words by meaning. Navigate a map of language.',
+            desc: 'Find words by meaning, not by letters. Navigate a map of language.',
             route: `/${lang}/semantic`,
-            featured: true,
+            tag: 'NEW',
+            tagAccent: true,
         });
     }
 
@@ -645,16 +648,19 @@ const homepageModes = computed((): HomepageModeCard[] => {
             id: 'speed',
             icon: speed.icon,
             label: getModeLabel(speed, ui),
-            desc: getModeDescription(speed, ui),
+            desc: 'Race the clock. Solve as many words as you can before time runs out.',
             route: getModeRoute(speed, lang),
+            tag: 'NEW',
+            tagAccent: true,
         },
         {
             id: 'multiboard',
             icon: GAME_MODES_UI.find((m) => m.id === 'dordle')?.icon || classic.icon,
             label: ui?.mode_multiboard_label || 'Multi-Board',
-            desc: 'Dordle, Quordle, Octordle, and more — 2 to 32 boards at once.',
+            desc: 'Dordle, Quordle, Octordle, and more. Two to thirty-two boards at once.',
             route: null,
             opensModal: true,
+            tag: '2–32 BOARDS',
         },
     );
 
@@ -834,27 +840,30 @@ function openMultiBoardPicker(): void {
 
         <!-- ═══ Mode Cards ═══ -->
         <div class="max-w-[800px] mx-4 sm:mx-auto mb-14">
+            <!-- Daily Puzzle — NYT-style tile card -->
+            <NuxtLink
+                v-if="homepageModes[0]?.route"
+                :to="homepageModes[0].route"
+                class="mode-card-hero border border-rule mb-3 transition-colors hover:bg-paper-warm"
+                @click="analytics.trackModeSelected('classic', 'homepage_card')"
+            >
+                <div class="mode-tiles">
+                    <span class="mode-tile correct">W</span>
+                    <span class="mode-tile semicorrect">O</span>
+                    <span class="mode-tile correct">R</span>
+                    <span class="mode-tile incorrect">D</span>
+                    <span class="mode-tile correct">S</span>
+                </div>
+                <h3 class="mode-title">{{ homepageModes[0].label }}</h3>
+                <p class="mode-desc">{{ homepageModes[0].desc }}</p>
+                <span class="editorial-tag self-start">CLASSIC</span>
+            </NuxtLink>
+
+            <!-- Other modes — compact list -->
             <div class="flex flex-col gap-2">
-                <template v-for="mode in homepageModes" :key="mode.id">
-                    <!-- Featured card (Semantic) -->
-                    <NuxtLink
-                        v-if="mode.featured && mode.route"
-                        :to="mode.route"
-                        class="flex items-center gap-4 px-5 py-5 border-2 border-ink transition-colors hover:bg-paper-warm relative"
-                        @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
-                    >
-                        <span class="absolute -top-2 right-4 font-mono text-[8px] tracking-[0.12em] uppercase bg-accent text-white px-2 py-0.5">NEW</span>
-                        <div class="w-12 h-12 flex items-center justify-center bg-ink text-paper flex-shrink-0">
-                            <component :is="mode.icon" :size="22" />
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="heading-section text-lg">{{ mode.label }}</div>
-                            <div class="text-xs text-muted">{{ mode.desc }}</div>
-                        </div>
-                    </NuxtLink>
-                    <!-- Multi-Board card (opens picker) -->
+                <template v-for="mode in homepageModes.slice(1)" :key="mode.id">
                     <button
-                        v-else-if="mode.opensModal"
+                        v-if="mode.opensModal"
                         class="flex items-center gap-4 px-5 py-4 border border-rule transition-colors hover:bg-paper-warm cursor-pointer text-left w-full"
                         @click="openMultiBoardPicker()"
                     >
@@ -865,8 +874,8 @@ function openMultiBoardPicker(): void {
                             <div class="heading-section text-base">{{ mode.label }}</div>
                             <div class="text-xs text-muted">{{ mode.desc }}</div>
                         </div>
+                        <span v-if="mode.tag" class="editorial-tag flex-shrink-0" :class="mode.tagAccent ? 'editorial-tag-new' : ''">{{ mode.tag }}</span>
                     </button>
-                    <!-- Regular mode card -->
                     <NuxtLink
                         v-else-if="mode.route"
                         :to="mode.route"
@@ -880,6 +889,7 @@ function openMultiBoardPicker(): void {
                             <div class="heading-section text-base">{{ mode.label }}</div>
                             <div class="text-xs text-muted">{{ mode.desc }}</div>
                         </div>
+                        <span v-if="mode.tag" class="editorial-tag flex-shrink-0" :class="mode.tagAccent ? 'editorial-tag-new' : ''">{{ mode.tag }}</span>
                     </NuxtLink>
                 </template>
             </div>
@@ -1012,3 +1022,66 @@ function openMultiBoardPicker(): void {
          so crawlers discover them via the sitemap and SSR-rendered language grid above.
          The noscript fallback is also unnecessary with SSR. -->
 </template>
+
+<style scoped>
+/* ═══ Daily Puzzle hero card (NYT-style) ═══ */
+.mode-card-hero {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px 20px;
+}
+.mode-tiles {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 14px;
+}
+.mode-tile {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid var(--color-rule);
+    color: var(--color-ink);
+    background: var(--color-paper);
+}
+.mode-tile.correct {
+    background: var(--color-correct);
+    border-color: var(--color-correct);
+    color: white;
+}
+.mode-tile.semicorrect {
+    background: var(--color-semicorrect);
+    border-color: var(--color-semicorrect);
+    color: white;
+}
+.mode-tile.incorrect {
+    background: var(--color-incorrect);
+    border-color: var(--color-incorrect);
+    color: white;
+}
+.mode-tile.filled {
+    background: var(--color-paper);
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+}
+.mode-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+    color: var(--color-ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+.mode-desc {
+    font-size: 14px;
+    color: var(--color-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+}
+</style>
