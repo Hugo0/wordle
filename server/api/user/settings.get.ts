@@ -14,5 +14,5 @@ export default defineEventHandler(async (event) => {
         select: { settings: true },
     });
 
-    return { settings: (user?.settings as Record<string, boolean>) ?? {} };
+    return { settings: (user?.settings as Record<string, boolean | string>) ?? {} };
 });

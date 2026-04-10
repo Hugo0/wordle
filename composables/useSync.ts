@@ -74,7 +74,7 @@ export function useSync() {
                 const requestBody = {
                     statsKey,
                     won: game.gameWon,
-                    attempts: game.attempts,
+                    attempts: Number(game.attempts) || 0,
                     dayIdx,
                     deviceId,
                 };
@@ -178,6 +178,7 @@ export function useSync() {
                             feedbackEnabled: settings.feedbackEnabled,
                             wordInfoEnabled: settings.wordInfoEnabled,
                             animationsEnabled: settings.animationsEnabled,
+                            preferredLanguage: localStorage.getItem('preferred_language') || undefined,
                         },
                     }).catch(() => {});
                 }, 1000);

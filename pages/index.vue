@@ -260,17 +260,6 @@ const productStreak = computed(() => {
     return streak;
 });
 
-const showSemanticFeature = computed(() => {
-    if (!isReturningUser.value) return false;
-    // Only show for languages where semantic is available
-    const semanticLangs = GAME_MODE_CONFIG.semantic.languages;
-    if (semanticLangs && !semanticLangs.includes(defaultLang.value)) return false;
-    // Hide if user has already played semantic
-    for (const key of Object.keys(gameResults.value)) {
-        if (key.includes('semantic')) return false;
-    }
-    return true;
-});
 
 /** Mode icon mapping for continue-playing cards */
 const MODE_CARD_ICONS: Record<string, any> = {
@@ -715,6 +704,29 @@ function openMultiBoardPicker(): void {
             <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
         </div>
 
+        <!-- ═══ Signed-in user greeting (centered, above language) ═══ -->
+        <div v-if="authLoggedIn && authUser" class="flex flex-col items-center gap-1 mb-6">
+            <NuxtLink to="/profile" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <img
+                    v-if="authUser.avatarUrl"
+                    :src="authUser.avatarUrl"
+                    alt=""
+                    class="w-10 h-10 rounded-full object-cover"
+                    referrerpolicy="no-referrer"
+                />
+                <div v-else class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center heading-body text-sm">
+                    {{ (authUser.displayName || authUser.email || '?')[0]?.toUpperCase() }}
+                </div>
+                <div class="text-sm font-semibold text-ink">{{ authUser.displayName || 'Player' }}</div>
+            </NuxtLink>
+            <div v-if="productStreak > 0" class="mono-label flex items-center gap-1" style="color: var(--color-flame);">
+                <Flame :size="12" /> {{ productStreak }} day streak
+            </div>
+            <div v-else class="mono-label flex items-center gap-1 text-muted">
+                <Flame :size="12" /> Play today's daily to start a streak
+            </div>
+        </div>
+
         <!-- ═══ Language indicator ═══ -->
         <div class="flex items-center justify-center gap-2 mb-6 px-4">
             <img
@@ -739,31 +751,8 @@ function openMultiBoardPicker(): void {
 
         <!-- ═══ Personalized Hub (Tier 1+: has played before) ═══ -->
         <div v-if="isReturningUser" class="max-w-[800px] mx-4 sm:mx-auto mb-10">
-            <!-- Signed-in user greeting (Tier 2) -->
-            <div v-if="authLoggedIn && authUser" class="flex items-center gap-3 mb-4">
-                <img
-                    v-if="authUser.avatarUrl"
-                    :src="authUser.avatarUrl"
-                    alt=""
-                    class="w-10 h-10 rounded-full object-cover"
-                    referrerpolicy="no-referrer"
-                />
-                <div v-else class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center heading-body text-sm">
-                    {{ (authUser.displayName || authUser.email || '?')[0]?.toUpperCase() }}
-                </div>
-                <div>
-                    <div class="text-sm font-semibold text-ink">{{ authUser.displayName || 'Player' }}</div>
-                    <div v-if="productStreak > 0" class="mono-label flex items-center gap-1" style="color: var(--color-flame);">
-                        <Flame :size="12" /> {{ productStreak }} day streak
-                    </div>
-                    <div v-else class="mono-label flex items-center gap-1 text-muted">
-                        <Flame :size="12" /> Play today's daily to start a streak
-                    </div>
-                </div>
-            </div>
-
             <!-- Streak badge for non-signed-in returning users (Tier 1) -->
-            <div v-else class="flex items-center justify-center gap-1 mb-4">
+            <div v-if="!authLoggedIn" class="flex items-center justify-center gap-1 mb-4">
                 <Flame :size="14" :class="productStreak > 0 ? 'text-flame' : 'text-muted'" />
                 <span class="mono-label" :style="{ color: productStreak > 0 ? 'var(--color-flame)' : 'var(--color-muted)', fontSize: '12px' }">
                     {{ productStreak > 0 ? `${productStreak} day streak` : 'Play today\'s daily to start a streak' }}
@@ -828,21 +817,6 @@ function openMultiBoardPicker(): void {
                 <button class="text-xs text-ink font-semibold hover:underline cursor-pointer" @click="pwaInstall?.install()">Install</button>
             </div>
 
-            <!-- Featured Semantic for returning users who haven't tried it -->
-            <NuxtLink
-                v-if="showSemanticFeature"
-                to="/en/semantic"
-                class="flex items-center gap-4 px-5 py-4 border-2 border-ink transition-colors hover:bg-paper-warm mb-4 relative"
-            >
-                <span class="absolute -top-2 right-4 font-mono text-[8px] tracking-[0.12em] uppercase bg-accent text-white px-2 py-0.5">NEW</span>
-                <div class="w-12 h-12 flex items-center justify-center bg-ink text-paper flex-shrink-0">
-                    <Compass :size="22" />
-                </div>
-                <div>
-                    <div class="heading-section text-base">Semantic Explorer</div>
-                    <div class="text-xs text-muted">Find words by meaning. Navigate a map of language.</div>
-                </div>
-            </NuxtLink>
         </div>
 
         <!-- ═══ Mode Cards ═══ -->

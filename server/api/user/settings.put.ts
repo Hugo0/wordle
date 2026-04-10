@@ -3,7 +3,7 @@
  */
 import { prisma } from '~/server/utils/prisma';
 
-const VALID_KEYS = new Set([
+const BOOLEAN_KEYS = new Set([
     'darkMode',
     'hardMode',
     'highContrast',
@@ -12,18 +12,23 @@ const VALID_KEYS = new Set([
     'animationsEnabled',
 ]);
 
+const STRING_KEYS = new Set([
+    'preferredLanguage',
+]);
+
 export default defineEventHandler(async (event) => {
     const session = await requireUserSession(event);
-    const body = await readBody<Record<string, boolean>>(event);
+    const body = await readBody<Record<string, unknown>>(event);
 
     if (!body || typeof body !== 'object') {
         throw createError({ statusCode: 400, message: 'Invalid settings' });
     }
 
-    // Only persist known setting keys
-    const filtered: Record<string, boolean> = {};
+    const filtered: Record<string, boolean | string> = {};
     for (const [key, value] of Object.entries(body)) {
-        if (VALID_KEYS.has(key) && typeof value === 'boolean') {
+        if (BOOLEAN_KEYS.has(key) && typeof value === 'boolean') {
+            filtered[key] = value;
+        } else if (STRING_KEYS.has(key) && typeof value === 'string' && value.length <= 10) {
             filtered[key] = value;
         }
     }
