@@ -5,19 +5,14 @@
  * For multi-board modes (?mode=dordle|tridle|quordle), also returns
  * todays_words: an array of N distinct daily words.
  */
-import { loadAllData } from '../../utils/data-loader';
+import { requireLang } from '../../utils/data-loader';
 import { buildLanguageSession } from '../../utils/language-builder';
 import { getWordsForDay } from '../../utils/word-selection';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
 
 export default defineEventHandler((event) => {
-    const lang = getRouterParam(event, 'lang')!;
-    const data = loadAllData();
-
-    if (!data.languageCodes.includes(lang)) {
-        throw createError({ statusCode: 404, message: 'Unknown language' });
-    }
+    const { lang, data } = requireLang(event);
 
     const query = getQuery(event);
     const layout = (query.layout as string) || undefined;
@@ -25,8 +20,14 @@ export default defineEventHandler((event) => {
 
     const session = buildLanguageSession(lang, layout);
 
+    // ?minimal=1: skip the full word list (114KB for English). Used by game
+    // modes that validate server-side (semantic, speed, unlimited) and don't
+    // need the word list on the client. Classic + multiboard need it for
+    // client-side "not a valid word" checks.
+    const minimal = query.minimal === '1' || query.minimal === 'true';
+
     const response = {
-        word_list: session.wordList,
+        word_list: minimal ? [] : session.wordList,
         daily_words: data.dailyWords[lang] || ([] as string[]),
         characters: session.characters,
         config: session.config,

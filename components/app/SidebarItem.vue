@@ -65,7 +65,8 @@ import {
 
 const props = withDefaults(
     defineProps<{
-        icon: string | object;
+        // Lucide components are render functions, so we accept callables too.
+        icon: string | object | ((...args: any[]) => any);
         label: string;
         badge?: string;
         active?: boolean;

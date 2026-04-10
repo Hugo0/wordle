@@ -24,12 +24,12 @@ const lang = route.params.lang as string;
 const mode = route.params.mode as GameMode;
 const modeDef = GAME_MODE_CONFIG[mode];
 
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
+const { data: gameData, error } = await useFetch(`/api/${lang}/data`, { key: `lang-data-${lang}` });
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
 
-const { data: allLangs } = await useFetch('/api/languages');
+const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
 
 const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, config } = useGamePage(
     gameData,
@@ -52,21 +52,23 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(mode, wordList, modeDe
 </script>
 
 <template>
-    <GamePageShell
-        :lang="lang"
-        :language-name="config?.name_native || config?.name || lang"
-        :current-mode="mode"
-        :title="seo.modeLabel"
-        :subtitle="config?.name_native || lang"
-        :sidebar-open="sidebarOpen"
-        :max-width="modeDef.shellMaxWidth || 'lg'"
-        :visible="!!gameData"
-        @toggle-sidebar="toggleSidebar"
-        @close-sidebar="closeSidebar"
-        @new-game="startNewGame"
-    >
-        <GameMultiBoardLayout ref="multiBoardRef" />
-    </GamePageShell>
+    <div>
+        <GamePageShell
+            :lang="lang"
+            :language-name="config?.name_native || config?.name || lang"
+            :current-mode="mode"
+            :title="seo.modeLabel"
+            :subtitle="config?.name_native || lang"
+            :sidebar-open="sidebarOpen"
+            :max-width="modeDef.shellMaxWidth || 'lg'"
+            :visible="!!gameData"
+            @toggle-sidebar="toggleSidebar"
+            @close-sidebar="closeSidebar"
+            @new-game="startNewGame"
+        >
+            <GameMultiBoardLayout ref="multiBoardRef" />
+        </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" :mode="mode" :seo="seo" :config="config!" />
+        <GameSeoNoscript :lang="lang" :mode="mode" :seo="seo" :config="config!" />
+    </div>
 </template>

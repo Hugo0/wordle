@@ -8,7 +8,7 @@
  */
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
-import { loadAllData, WORD_DEFS_DIR } from '../../utils/data-loader';
+import { WORD_DEFS_DIR, requireLang, langResponseFields } from '../../utils/data-loader';
 import { getTodaysIdx, getWordForDay, idxToDate } from '../../utils/word-selection';
 import { loadWordStats } from '../../utils/word-stats';
 
@@ -36,17 +36,10 @@ function readCachedDefinition(
 }
 
 export default defineEventHandler((event) => {
-    const lang = getRouterParam(event, 'lang')!;
-    const data = loadAllData();
-
-    if (!data.languageCodes.includes(lang)) {
-        throw createError({ statusCode: 404, message: 'Unknown language' });
-    }
+    const { lang, data, config } = requireLang(event);
 
     const query = getQuery(event);
     const page = Math.max(1, parseInt((query.page as string) || '1', 10));
-
-    const config = data.configs[lang]!;
     const timezone = config.timezone || 'UTC';
     const todaysIdx = getTodaysIdx(timezone);
     const totalPages = Math.ceil(todaysIdx / WORDS_PER_PAGE);
@@ -86,15 +79,11 @@ export default defineEventHandler((event) => {
     }
 
     return {
-        lang_code: lang,
-        lang_name: config.name || lang,
-        lang_name_native: config.name_native || config.name || lang,
+        ...langResponseFields(lang, config),
         todays_idx: todaysIdx,
         page,
         total_pages: totalPages,
         words_per_page: WORDS_PER_PAGE,
         words,
-        ui: config.ui || {},
-        meta: config.meta || {},
     };
 });

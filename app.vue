@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import { usePageDirection } from '~/composables/usePageDirection';
+
+const { direction } = usePageDirection();
+
+/** Dynamic transition name based on navigation direction:
+ *  page-forward (slide left), page-back (slide right), page-lateral (crossfade).
+ *  View Transitions API supersedes this in supported browsers (Tier 3). */
+const pageTransition = computed(() => ({
+    name: `page-${direction.value}`,
+    mode: 'out-in' as const,
+}));
+
 useHead({
     htmlAttrs: { lang: 'en' },
     script: [
@@ -13,6 +25,6 @@ useHead({
 
 <template>
     <NuxtLayout>
-        <NuxtPage />
+        <NuxtPage :transition="pageTransition" />
     </NuxtLayout>
 </template>

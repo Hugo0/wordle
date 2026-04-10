@@ -27,7 +27,8 @@ import {
 import { toFinalForm } from '~/utils/positional';
 import { splitWord } from '~/utils/graphemes';
 import { calculateCommunityPercentile } from '~/utils/stats';
-import { WORD_LENGTH, MAX_GUESSES, createBoardState } from '~/utils/types';
+import { wordDetailPath } from '~/utils/wordUrls';
+import { WORD_LENGTH, MAX_GUESSES, createBoardState, createKeyStates, rowToEmoji } from '~/utils/types';
 import type { KeyState, TileColor, Notification, BoardState } from '~/utils/types';
 import {
     createGameConfig,
@@ -40,7 +41,7 @@ import type { GameConfig, GameMode } from '~/utils/game-modes';
 import { computeRowColors } from '~/utils/game/colorAlgorithm';
 import type { NormalizationContext } from '~/utils/game/colorAlgorithm';
 import { animateRevealRow, animateKeyNudge } from '~/utils/game/useGameAnimations';
-import { getOrCreateId } from '~/utils/storage';
+import { getOrCreateId, readLocal, writeLocal, readJson, writeJson } from '~/utils/storage';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -415,15 +416,7 @@ export const useGameStore = defineStore('game', () => {
      */
     function initKeyClasses(): void {
         const lang = useLanguageStore();
-        const keys: Record<string, KeyState> = {};
-        for (const char of lang.characters) {
-            keys[char] = '';
-        }
-        keys['⟹'] = '';
-        keys['ENTER'] = '';
-        keys['DEL'] = '';
-        keys['⌫'] = '';
-        keyClasses.value = keys;
+        keyClasses.value = createKeyStates(lang.characters);
     }
 
     /**
@@ -1044,7 +1037,7 @@ export const useGameStore = defineStore('game', () => {
         // Analytics: track streak broken (if user had an active streak)
         if (previousStreak > 0) {
             const daysSinceLast =
-                analytics.daysSince(localStorage.getItem('last_played_date') ?? undefined) ?? 0;
+                analytics.daysSince(readLocal('last_played_date') ?? undefined) ?? 0;
             analytics.trackStreakBroken(lang.languageCode, previousStreak, daysSinceLast);
         }
 
@@ -1093,32 +1086,21 @@ export const useGameStore = defineStore('game', () => {
     /** Generate the share emoji grid from tile colors. */
     function getEmojiBoard(): string {
         const settings = useSettingsStore();
-        let board = '';
-        const greenEmoji = settings.highContrast ? '🟦' : '🟩';
-        const yellowEmoji = settings.highContrast ? '🟧' : '🟨';
+        const rows: string[] = [];
 
         for (let i = 0; i < tileColors.value.length; i++) {
             const row = tileColors.value[i];
             if (!row) continue;
-
-            for (const color of row) {
-                if (color === 'correct') {
-                    board += greenEmoji;
-                } else if (color === 'semicorrect') {
-                    board += yellowEmoji;
-                } else if (color === 'incorrect') {
-                    board += '⬜';
-                } else {
-                    // Row not fully revealed yet — stop here
-                    attempts.value = String(i);
-                    return board;
-                }
+            const emoji = rowToEmoji(row, settings.highContrast);
+            if (emoji === null) {
+                attempts.value = String(i);
+                return rows.join('\n');
             }
-            if (i < tileColors.value.length - 1) board += '\n';
+            rows.push(emoji);
             attempts.value = String(i + 1);
         }
         if (gameOver.value && !gameWon.value) attempts.value = 'X';
-        return board;
+        return rows.join('\n');
     }
 
     /** Build the full share text including game title, number, and emoji board. */
@@ -1127,11 +1109,11 @@ export const useGameStore = defineStore('game', () => {
         const settings = useSettingsStore();
         const name = lang.config?.name_native || lang.config?.language_code || '';
         const hardModeFlag = settings.hardMode ? ' *' : '';
-        const modeLabel =
-            gameConfig.value.mode !== 'classic'
-                ? ` ${GAME_MODE_CONFIG[gameConfig.value.mode].label}`
-                : '';
-        return `Wordle ${name}${modeLabel} #${lang.todaysIdx} — ${attempts.value}/${gameConfig.value.maxGuesses}${hardModeFlag}\n\n${emojiBoard.value}`;
+        const mode = gameConfig.value.mode;
+        const isMultiBoard = GAME_MODE_CONFIG[mode].boardCount > 1;
+        const gameName = isMultiBoard ? GAME_MODE_CONFIG[mode].label : 'Wordle';
+        const header = `${gameName} ${name} #${lang.todaysIdx} — ${attempts.value}/${gameConfig.value.maxGuesses}${hardModeFlag}`;
+        return emojiBoard.value ? `${header}\n\n${emojiBoard.value}` : header;
     }
 
     // ---- Persistence ----
@@ -1139,26 +1121,22 @@ export const useGameStore = defineStore('game', () => {
     /** Save current game state to localStorage. */
     function saveToLocalStorage(): void {
         if (!import.meta.client) return;
-        try {
-            const pageName = window.location.pathname.split('/').pop() || 'home';
-            const data: SavedGameState = {
-                tiles: tiles.value,
-                tile_colors: tileColors.value,
-                tile_classes: tileClasses.value,
-                key_classes: keyClasses.value,
-                active_row: activeRow.value,
-                active_cell: activeCell.value,
-                todays_word: useLanguageStore().todaysWord,
-                game_over: gameOver.value,
-                game_won: gameWon.value,
-                emoji_board: emojiBoard.value,
-                attempts: attempts.value,
-                full_word_inputted: fullWordInputted.value,
-            };
-            localStorage.setItem(pageName, JSON.stringify(data));
-        } catch {
-            // localStorage unavailable or quota exceeded
-        }
+        const pageName = window.location.pathname.split('/').pop() || 'home';
+        const data: SavedGameState = {
+            tiles: tiles.value,
+            tile_colors: tileColors.value,
+            tile_classes: tileClasses.value,
+            key_classes: keyClasses.value,
+            active_row: activeRow.value,
+            active_cell: activeCell.value,
+            todays_word: useLanguageStore().todaysWord,
+            game_over: gameOver.value,
+            game_won: gameWon.value,
+            emoji_board: emojiBoard.value,
+            attempts: attempts.value,
+            full_word_inputted: fullWordInputted.value,
+        };
+        writeJson(pageName, data);
     }
 
     /**
@@ -1219,10 +1197,7 @@ export const useGameStore = defineStore('game', () => {
         try {
             const lang = useLanguageStore();
             const pageName = window.location.pathname.split('/').pop() || 'home';
-            const stored = localStorage.getItem(pageName);
-            if (!stored) return;
-
-            const data = JSON.parse(stored) as SavedGameState | null;
+            const data = readJson<SavedGameState>(pageName);
             if (data?.todays_word === lang.todaysWord) {
                 tiles.value = data.tiles;
                 tileClasses.value = data.tile_classes;
@@ -1348,19 +1323,14 @@ export const useGameStore = defineStore('game', () => {
         if (!import.meta.client) return;
         const lang = useLanguageStore();
         const langCode = lang.languageCode || 'unknown';
-        try {
-            const tutorialKey = `tutorial_shown_${langCode}`;
-            if (localStorage.getItem(tutorialKey)) return;
+        const tutorialKey = `tutorial_shown_${langCode}`;
+        if (readLocal(tutorialKey)) return;
 
-            const pageName = window.location.pathname.split('/').pop() || 'home';
-            const hasGameState = localStorage.getItem(pageName);
-            if (hasGameState) return;
+        const pageName = window.location.pathname.split('/').pop() || 'home';
+        if (readLocal(pageName)) return;
 
-            showHelpModal.value = true;
-            localStorage.setItem(tutorialKey, 'true');
-        } catch {
-            // localStorage unavailable
-        }
+        showHelpModal.value = true;
+        writeLocal(tutorialKey, 'true');
     }
 
     // ---- Community stats ----
@@ -1394,7 +1364,9 @@ export const useGameStore = defineStore('game', () => {
                         communityIsTopScore.value = result.isTopScore;
                     }
                     communityTotal.value = stats.total;
-                    communityStatsLink.value = `/${langCode}/word/${dayIdx}`;
+                    communityStatsLink.value = lang.todaysWord
+                        ? wordDetailPath(langCode, lang.todaysWord)
+                        : `/${langCode}/word/${dayIdx}`;
                 })
                 .catch(() => {});
         } catch {
@@ -1424,7 +1396,7 @@ export const useGameStore = defineStore('game', () => {
                         word: def.word,
                         definition: def.definitionNative || def.definition,
                         partOfSpeech: def.partOfSpeech,
-                        url: dayIdx != null ? `/${langCode}/word/${dayIdx}` : undefined,
+                        url: wordDetailPath(langCode, word),
                     };
                 }
             })
@@ -1761,9 +1733,11 @@ export const useGameStore = defineStore('game', () => {
         const maxSolvedRow = Math.max(...boards.value.map((b) => b.solvedAtGuess ?? 0));
         const winWord = WIN_WORDS[maxSolvedRow - 1] || 'Phew';
 
+        // Multi-board emoji grids are too large for sharing (32-board = wall of text).
+        // Share text shows only the summary line (e.g. "Quordle #42 — 9/9").
         completeGameSession(true, {
             attemptsValue: maxSolvedRow,
-            emojiBoardText: getMultiBoardEmojiBoard(),
+            emojiBoardText: '',
             notification: winWord,
             statsAttempts: maxSolvedRow,
         });
@@ -1780,50 +1754,13 @@ export const useGameStore = defineStore('game', () => {
 
         completeGameSession(false, {
             attemptsValue: 'X',
-            emojiBoardText: getMultiBoardEmojiBoard(),
+            emojiBoardText: '',
             notification: unsolvedWords,
             notificationDuration: 12,
             statsAttempts: 0,
         });
 
         if (import.meta.client) loadDefinitionsForBoards();
-    }
-
-    /** Generate emoji grids for all boards in multi-board mode. */
-    function getMultiBoardEmojiBoard(): string {
-        const settings = useSettingsStore();
-        const greenEmoji = settings.highContrast ? '🟦' : '🟩';
-        const yellowEmoji = settings.highContrast ? '🟧' : '🟨';
-        const boardCount = boards.value.length;
-        const parts: string[] = [];
-
-        for (let b = 0; b < boardCount; b++) {
-            const board = boards.value[b]!;
-            const solvedLabel = board.solved
-                ? `${board.solvedAtGuess}/${gameConfig.value.maxGuesses}`
-                : `X/${gameConfig.value.maxGuesses}`;
-            let boardStr = `Board ${b + 1} (${solvedLabel})\n`;
-
-            // Only show rows up to where the board was solved (or all rows if unsolved)
-            const rowCount = board.solved
-                ? (board.solvedAtGuess ?? board.activeRow)
-                : board.activeRow;
-
-            for (let i = 0; i < rowCount; i++) {
-                const row = board.tileColors[i];
-                if (!row) continue;
-                for (const color of row) {
-                    if (color === 'correct') boardStr += greenEmoji;
-                    else if (color === 'semicorrect') boardStr += yellowEmoji;
-                    else if (color === 'incorrect') boardStr += '⬜';
-                    else break;
-                }
-                if (i < rowCount - 1) boardStr += '\n';
-            }
-            parts.push(boardStr);
-        }
-
-        return parts.join('\n\n');
     }
 
     /** Save multi-board state to localStorage. */
@@ -1840,33 +1777,29 @@ export const useGameStore = defineStore('game', () => {
 
     function saveMultiBoardToLocalStorage(): void {
         if (!import.meta.client) return;
-        try {
-            const key = buildSaveKey(gameConfig.value);
-            const data = {
-                version: 2,
-                mode: gameConfig.value.mode,
-                active_row: boards.value[0]!.activeRow,
-                game_over: gameOver.value,
-                game_won: gameWon.value,
-                boards: boards.value.map((board) => ({
-                    board_index: board.boardIndex,
-                    target_word: board.targetWord,
-                    tiles: board.tiles,
-                    tile_colors: board.tileColors,
-                    tile_classes: board.tileClasses,
-                    key_states: board.keyStates,
-                    solved: board.solved,
-                    won: board.won,
-                    solved_at_guess: board.solvedAtGuess,
-                    solved_at_timestamp: board.solvedAtTimestamp,
-                })),
-                emoji_board: emojiBoard.value,
-                attempts: attempts.value,
-            };
-            localStorage.setItem(key, JSON.stringify(data));
-        } catch {
-            // localStorage unavailable or quota exceeded
-        }
+        const key = buildSaveKey(gameConfig.value);
+        const data = {
+            version: 2,
+            mode: gameConfig.value.mode,
+            active_row: boards.value[0]!.activeRow,
+            game_over: gameOver.value,
+            game_won: gameWon.value,
+            boards: boards.value.map((board) => ({
+                board_index: board.boardIndex,
+                target_word: board.targetWord,
+                tiles: board.tiles,
+                tile_colors: board.tileColors,
+                tile_classes: board.tileClasses,
+                key_states: board.keyStates,
+                solved: board.solved,
+                won: board.won,
+                solved_at_guess: board.solvedAtGuess,
+                solved_at_timestamp: board.solvedAtTimestamp,
+            })),
+            emoji_board: emojiBoard.value,
+            attempts: attempts.value,
+        };
+        writeJson(key, data);
     }
 
     /** Load multi-board state from localStorage. Returns true if restored. */
@@ -1879,11 +1812,8 @@ export const useGameStore = defineStore('game', () => {
                 dayIndex: lang.todaysIdx,
             });
             const key = buildSaveKey(cfg);
-            const stored = localStorage.getItem(key);
-            if (!stored) return false;
-
-            const data = JSON.parse(stored);
-            if (data?.version !== 2) return false;
+            const data = readJson<any>(key);
+            if (!data || data?.version !== 2) return false;
             if (!data.boards || data.boards.length !== targetWords.length) return false;
 
             // Validate target words match (ensures same day)

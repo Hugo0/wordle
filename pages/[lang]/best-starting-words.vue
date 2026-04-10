@@ -22,7 +22,7 @@ if (error.value || !pageData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
 
-const { data: gameData } = await useFetch(`/api/${lang}/data`);
+const { data: gameData } = await useFetch(`/api/${lang}/data?minimal=1`, { key: `lang-data-min-${lang}` });
 const config = gameData.value?.config;
 const langName = pageData.value.lang_name;
 const langNative = pageData.value.lang_name_native;
@@ -117,24 +117,23 @@ useHead({
     ],
 });
 
-const { data: allLangs } = await useFetch('/api/languages');
+const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
 if (allLangs.value?.language_codes) {
     useHreflang(allLangs.value.language_codes, '/best-starting-words');
 }
 </script>
 
 <template>
-    <div class="min-h-screen bg-paper text-ink">
+    <AppShell
+        :lang="lang"
+        :lang-name="langName"
+        :ui="ui"
+        :is-rtl="config?.right_to_left === 'true'"
+    >
         <div class="max-w-2xl mx-auto px-5 py-12 space-y-12">
             <!-- Header -->
             <header class="space-y-3">
-                <NuxtLink
-                    :to="`/${lang}`"
-                    class="text-sm text-muted hover:text-ink transition-colors"
-                >
-                    &larr; Back to Wordle {{ langNative }}
-                </NuxtLink>
-                <span class="mono-label block mt-4">STRATEGY GUIDE</span>
+                <span class="mono-label block">STRATEGY GUIDE</span>
                 <h1 class="heading-display text-3xl sm:text-4xl text-ink">
                     Best Starting Words for Wordle in {{ langName }}
                 </h1>
@@ -277,5 +276,5 @@ if (allLangs.value?.language_codes) {
                 </p>
             </footer>
         </div>
-    </div>
+    </AppShell>
 </template>

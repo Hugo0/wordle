@@ -1,22 +1,14 @@
 <template>
-    <Teleport to="body">
-        <Transition name="modal-fade">
-            <div
-                v-if="visible"
-                class="fixed inset-0 z-50 flex items-start justify-center pt-[3vh] sm:pt-[5vh] px-3 overflow-y-auto pb-4"
-            >
-                <!-- Backdrop -->
-                <div class="fixed inset-0 bg-ink/30" aria-hidden="true" @click="$emit('close')" />
-
-                <!-- Endgame Card -->
-                <div
-                    class="relative w-full max-w-[480px] border border-rule bg-paper shadow-xl z-10 modal-animate stats-card"
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label="Game results"
-                    @keydown.escape="$emit('close')"
-                >
-                    <!-- Close button -->
+    <SharedBaseModal
+        :visible="visible"
+        size="xl"
+        align="top"
+        no-padding
+        no-close-button
+        aria-label="Game results"
+        @close="$emit('close')"
+    >
+                    <!-- Close button (absolute positioned for stats card layout) -->
                     <button
                         class="absolute top-3 end-3 z-10 p-1 text-muted hover:text-ink transition-colors"
                         aria-label="Close"
@@ -70,23 +62,16 @@
                             </div>
 
                             <div
-                                v-if="
-                                    settings.wordInfoEnabled && game.todayDefinition?.partOfSpeech
-                                "
-                                class="font-display italic text-muted text-[15px] mt-1 mb-3"
-                            >
-                                {{
-                                    translatePos(game.todayDefinition.partOfSpeech, lang.config?.ui)
-                                }}
-                            </div>
-
-                            <div
                                 v-if="settings.wordInfoEnabled && game.todayDefinition"
-                                class="text-[14px] text-ink leading-relaxed max-w-[360px] mx-auto pt-3 border-t border-rule"
+                                class="pt-3 border-t border-rule max-w-[360px] mx-auto mt-3"
                             >
-                                <strong class="uppercase">{{ game.todayDefinition.word }}</strong>
-                                &mdash;
-                                {{ game.todayDefinition.definition }}
+                                <WordDefinition
+                                    :word="game.todayDefinition.word"
+                                    :definition="game.todayDefinition.definition"
+                                    :part-of-speech="game.todayDefinition.partOfSpeech"
+                                    :ui="lang.config?.ui || {}"
+                                    compact
+                                />
                             </div>
 
                             <div
@@ -95,6 +80,22 @@
                             >
                                 <div class="h-3 bg-muted-soft w-20 mx-auto mb-2" />
                                 <div class="h-4 bg-muted-soft w-full" />
+                            </div>
+
+                            <div
+                                v-if="
+                                    game.gameWon &&
+                                    displayWord &&
+                                    lang.languageCode === 'en'
+                                "
+                                class="mt-3"
+                            >
+                                <NuxtLink
+                                    :to="wordDetailPath(lang.languageCode, displayWord)"
+                                    class="font-mono uppercase text-[9px] tracking-[0.15em] text-accent hover:opacity-80"
+                                >
+                                    Explore in meaning space →
+                                </NuxtLink>
                             </div>
                         </template>
 
@@ -355,17 +356,16 @@
                             v-html="game.timeUntilNextDay"
                         />
                     </div>
-                </div>
-            </div>
-        </Transition>
-    </Teleport>
+    </SharedBaseModal>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { X, ExternalLink, Share2, Check } from 'lucide-vue-next';
 import type { GuessDistribution } from '~/utils/types';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import WordDefinition from '~/components/word/WordDefinition.vue';
+import { wordDetailPath } from '~/utils/wordUrls';
 
 const props = defineProps<{ visible: boolean }>();
 defineEmits<{ close: []; newGame: [] }>();

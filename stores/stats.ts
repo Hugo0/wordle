@@ -77,20 +77,15 @@ export const useStatsStore = defineStore('stats', () => {
     function loadGameResults(langCode: string = 'unknown'): void {
         if (!import.meta.client) return;
 
-        try {
-            const stored = localStorage.getItem('game_results');
-            if (stored) {
-                gameResults.value = JSON.parse(stored) as GameResults;
-                if (!gameResults.value[langCode]) {
-                    gameResults.value[langCode] = [];
-                }
-            } else {
-                gameResults.value = { [langCode]: [] };
-                localStorage.setItem('game_results', JSON.stringify(gameResults.value));
+        const stored = readJson<GameResults>('game_results');
+        if (stored) {
+            gameResults.value = stored;
+            if (!gameResults.value[langCode]) {
+                gameResults.value[langCode] = [];
             }
-        } catch {
-            // localStorage unavailable (private browsing, quota exceeded, etc.)
+        } else {
             gameResults.value = { [langCode]: [] };
+            writeJson('game_results', gameResults.value);
         }
     }
 
@@ -108,13 +103,7 @@ export const useStatsStore = defineStore('stats', () => {
         }
         gameResults.value[statsKey].push(result);
 
-        if (import.meta.client) {
-            try {
-                localStorage.setItem('game_results', JSON.stringify(gameResults.value));
-            } catch {
-                // localStorage unavailable or quota exceeded
-            }
-        }
+        writeJson('game_results', gameResults.value);
     }
 
     /**

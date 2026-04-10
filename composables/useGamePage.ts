@@ -13,6 +13,7 @@
  */
 import type { Ref } from 'vue';
 import type { GameData } from '~/utils/types';
+import { readLocal, writeLocal } from '~/utils/storage';
 import { buildStatsKey } from '~/utils/game-modes';
 
 export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
@@ -128,13 +129,13 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             // Only identify new users — returning users are already identified
             // from a previous session (PostHog persists distinct_id in localStorage).
             // This saves ~$identify + $set events for every returning-user page load.
-            const isNewUser = !localStorage.getItem('first_seen_date');
+            const isNewUser = !readLocal('first_seen_date');
             const userProps = isNewUser
                 ? analytics.identifyUser(stats.gameResults)
                 : analytics.computeUserProperties(stats.gameResults);
 
             // Retention — merge returning_player + re_engagement into one event
-            const lastPlayed = localStorage.getItem('last_played_date');
+            const lastPlayed = readLocal('last_played_date');
             const daysSinceLast = analytics.daysSince(lastPlayed ?? undefined);
             if (stats.stats.n_games > 0 && daysSinceLast !== undefined && daysSinceLast >= 1) {
                 analytics.trackReturningPlayer(
@@ -157,7 +158,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             }
 
             // Update last_played_date for future sessions
-            localStorage.setItem('last_played_date', new Date().toISOString().split('T')[0]!);
+            writeLocal('last_played_date', new Date().toISOString().split('T')[0]!);
         } catch {
             // Analytics should never break the app
         }

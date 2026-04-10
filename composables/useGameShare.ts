@@ -7,6 +7,7 @@
  *   - pages/[lang]/speed.vue (speed streak share)
  */
 import type { TileColor } from '~/utils/types';
+import { rowToEmoji } from '~/utils/types';
 
 export function useGameShare() {
     /** Generate the emoji grid from tile colors. */
@@ -14,32 +15,22 @@ export function useGameShare() {
         tileColors: TileColor[][],
         highContrast: boolean
     ): { board: string; attemptCount: string } {
-        let board = '';
+        const rows: string[] = [];
         let attemptCount = '0';
-        const greenEmoji = highContrast ? '🟦' : '🟩';
-        const yellowEmoji = highContrast ? '🟧' : '🟨';
 
         for (let i = 0; i < tileColors.length; i++) {
             const row = tileColors[i];
             if (!row) continue;
-
-            for (const color of row) {
-                if (color === 'correct') {
-                    board += greenEmoji;
-                } else if (color === 'semicorrect') {
-                    board += yellowEmoji;
-                } else if (color === 'incorrect') {
-                    board += '⬜';
-                } else {
-                    attemptCount = String(i);
-                    return { board, attemptCount };
-                }
+            const emoji = rowToEmoji(row, highContrast);
+            if (emoji === null) {
+                attemptCount = String(i);
+                return { board: rows.join('\n'), attemptCount };
             }
-            if (i < tileColors.length - 1) board += '\n';
+            rows.push(emoji);
             attemptCount = String(i + 1);
         }
 
-        return { board, attemptCount };
+        return { board: rows.join('\n'), attemptCount };
     }
 
     /**

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily vs Unlimited — System Design — Wordle Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Sans+3:wght@300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — matches production design-system.css
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    --ink: #1a1a1a;
+    --paper: #faf8f5;
+    --paper-warm: #f3efe8;
+    --accent: #c0392b;
+    --accent-soft: #e8d5d0;
+    --green: #2d8544;
+    --green-soft: #d4edda;
+    --yellow: #b8860b;
+    --yellow-soft: #fdf3d0;
+    --flame: #e8590c;
+    --flame-soft: #fff1e6;
+    --gray: #8c8c8c;
+    --gray-soft: #e8e8e8;
+    --rule: #d4cfc7;
+    --hot: #c96922;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Source Sans 3', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--sans);
+    background: var(--ink);
+    color: var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DOCUMENT STRUCTURE
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Top bar */
+.doc-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    padding: 8px 24px; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid var(--ink);
+    text-transform: uppercase;
+}
+.doc-bar a { color: var(--accent); text-decoration: none; }
+.doc-bar a:hover { text-decoration: underline; }
+
+/* Section nav */
+.doc-nav {
+    position: fixed; top: 40px; right: 0; z-index: 100; width: 200px;
+    padding: 20px 16px; font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    display: flex; flex-direction: column; gap: 4px;
+    background: rgba(26,26,26,0.95); backdrop-filter: blur(8px);
+    border-left: 1px solid rgba(255,255,255,0.06);
+}
+.doc-nav a {
+    color: rgba(250,248,245,0.4); text-decoration: none;
+    padding: 4px 8px; border-right: 2px solid transparent;
+    text-align: right; transition: all 0.15s;
+}
+.doc-nav a:hover { color: var(--paper); border-color: var(--accent); }
+.doc-nav .nav-group {
+    color: var(--accent); font-weight: 600;
+    margin-top: 10px; padding: 4px 8px; text-align: right;
+}
+
+/* Sections */
+.section {
+    min-height: 100vh; padding: 100px 40px 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    max-width: calc(100% - 200px); /* leave room for nav */
+}
+.section.light { background: var(--paper); color: var(--ink); }
+.section.warm { background: var(--paper-warm); color: var(--ink); }
+.section.dark { background: var(--ink); color: var(--paper); }
+.section.hero-section {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center;
+    background: var(--ink); color: var(--paper);
+}
+
+.section-tag {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; opacity: 0.4; margin-bottom: 12px;
+}
+.section h2 {
+    font-family: var(--serif); font-size: 40px; font-weight: 800;
+    font-variation-settings: 'opsz' 144; line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.section h3 {
+    font-family: var(--serif); font-size: 26px; font-weight: 700;
+    font-variation-settings: 'opsz' 72; margin-bottom: 12px;
+}
+
+.content { max-width: 720px; }
+.content.centered { margin: 0 auto; }
+.content p { margin-bottom: 16px; font-size: 15px; line-height: 1.7; }
+.content p strong { font-weight: 600; }
+.content p code {
+    font-family: var(--mono); font-size: 12px; padding: 2px 6px;
+    background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.08);
+}
+.content a { color: var(--accent); text-underline-offset: 2px; }
+.dark .content p code { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+
+.subtitle {
+    font-family: var(--serif); font-style: italic; font-size: 18px;
+    opacity: 0.5; margin-bottom: 40px;
+    font-variation-settings: 'opsz' 20;
+}
+
+.label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase; opacity: 0.4; margin-bottom: 8px;
+}
+
+/* Tags */
+.tag {
+    display: inline-block; font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 7px;
+    border: 1px solid;
+}
+.tag.daily { border-color: var(--green); color: var(--green); }
+.tag.unlim { border-color: var(--accent); color: var(--accent); }
+.tag.both { border-color: currentColor; }
+
+/* Table */
+.mode-table {
+    width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px;
+}
+.mode-table th {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+    text-transform: uppercase; opacity: 0.4; padding: 8px 12px;
+    text-align: left; border-bottom: 2px solid;
+}
+.mode-table td { padding: 10px 12px; border-bottom: 1px solid rgba(128,128,128,0.15); vertical-align: top; }
+.mode-table td:first-child { font-family: var(--serif); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════════════
+   PHONE MOCKUP — consistent device frame
+   ═══════════════════════════════════════════════════════════════ */
+.phone {
+    width: 340px; border: 2px solid var(--ink); border-radius: 20px;
+    overflow: hidden; background: var(--paper); color: var(--ink);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.phone .p-status {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 20px; font-family: var(--mono); font-size: 9px; color: var(--gray);
+    background: var(--paper);
+}
+.phone .p-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 18px; border-bottom: 1px solid var(--rule);
+}
+.phone .p-header-title {
+    font-family: var(--serif); font-size: 17px; font-weight: 800;
+    font-variation-settings: 'opsz' 72; color: var(--ink);
+}
+.phone .p-header-sub {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gray);
+}
+.phone .p-body { padding: 16px 18px; color: var(--ink); }
+.phone .p-divider { height: 1px; background: var(--rule); margin: 0 18px; }
+
+/* Small phone variant */
+.phone.small { width: 280px; }
+.phone.small .p-header { padding: 8px 14px; }
+.phone.small .p-header-title { font-size: 14px; }
+.phone.small .p-body { padding: 12px 14px; }
+
+/* Side-by-side mockup grid */
+.mockup-pair {
+    display: flex; gap: 32px; justify-content: center;
+    flex-wrap: wrap; margin: 32px 0;
+}
+.mockup-pair .phone-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase; text-align: center; opacity: 0.3;
+    margin-top: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SIDEBAR MOCKUP
+   ═══════════════════════════════════════════════════════════════ */
+.sidebar-mock {
+    width: 260px; border: 1px solid var(--rule); border-right: 1px solid var(--rule);
+    overflow: hidden; background: var(--paper); color: var(--ink);
+    padding: 20px 0;
+}
+
+.sidebar-mock .sb-logo {
+    font-family: var(--serif); font-size: 18px; font-weight: 800;
+    font-variation-settings: 'opsz' 72; padding: 0 24px 16px;
+    border-bottom: 1px solid var(--rule); color: var(--ink);
+}
+.sb-logo .dot { color: var(--accent); }
+.sidebar-mock .sb-group {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gray); padding: 16px 24px 8px;
+}
+.sidebar-mock .sb-item {
+    padding: 10px 24px; display: flex; align-items: center; gap: 12px;
+    font-size: 14px; cursor: pointer; transition: all 0.15s;
+    border-left: 3px solid transparent; color: var(--ink);
+}
+.sidebar-mock .sb-item:hover { background: var(--paper-warm); }
+.sidebar-mock .sb-item.active { background: var(--paper-warm); border-left-color: var(--ink); font-weight: 600; }
+.sidebar-mock .sb-icon { width: 20px; text-align: center; color: var(--gray); flex-shrink: 0; font-size: 14px; }
+.sidebar-mock .sb-item.active .sb-icon { color: var(--ink); }
+.sidebar-mock .sb-name { flex: 1; }
+.sidebar-mock .sb-badge {
+    margin-left: auto; font-family: var(--mono); font-size: 10px;
+    background: var(--accent); color: white; padding: 1px 6px;
+    border-radius: 2px;
+}
+.sidebar-mock .sb-badge.beta { background: var(--yellow); }
+.sidebar-mock .sb-right { font-family: var(--mono); font-size: 11px; color: var(--gray); margin-left: auto; }
+.sidebar-mock .sb-streak { color: var(--flame); }
+.sidebar-mock .sb-arrow { font-size: 10px; color: var(--gray); }
+
+/* Expandable sub-items */
+.sidebar-mock .sb-expand {
+    padding-left: 47px;
+}
+.sidebar-mock .sb-sub {
+    padding: 7px 24px 7px 0; font-size: 13px; color: var(--gray);
+    cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 8px;
+}
+.sidebar-mock .sb-sub:hover { color: var(--ink); background: var(--paper-warm); }
+.sidebar-mock .sb-sub.active { color: var(--ink); font-weight: 600; }
+.sidebar-mock .sb-sub .sub-tag {
+    font-family: var(--mono); font-size: 8px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 1px 5px; border: 1px solid;
+}
+.sub-tag.d { border-color: var(--green); color: var(--green); }
+.sub-tag.u { border-color: var(--accent); color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════════════ */
+.btn {
+    display: block; width: 100%; padding: 11px; text-align: center;
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    border: none; cursor: pointer;
+}
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn.secondary { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+.btn.cta-unlim { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); font-weight: 600; }
+.btn.cta-daily { background: transparent; border: 1.5px solid var(--green); color: var(--green); font-weight: 600; }
+
+/* Stats row */
+.stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; text-align: center;
+    padding: 14px 0; border-bottom: 1px solid var(--rule); margin-bottom: 14px;
+}
+.stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; }
+.stat-lbl { font-family: var(--mono); font-size: 7px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.35; }
+
+/* Mode cards */
+.mc {
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+    border: 1px solid var(--rule); margin-bottom: 6px;
+    cursor: pointer; transition: background 0.15s; color: var(--ink);
+}
+.mc:hover { background: var(--paper-warm); }
+.mc .mc-icon {
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--rule); background: var(--paper-warm); font-size: 13px; flex-shrink: 0; color: var(--gray);
+}
+.mc .mc-info { flex: 1; min-width: 0; }
+.mc .mc-info h5 { font-family: var(--serif); font-size: 14px; font-weight: 700; margin: 0 0 1px; color: var(--ink); }
+.mc .mc-info p { font-size: 11px; color: var(--gray); margin: 0; }
+.mc .mc-right { text-align: right; flex-shrink: 0; }
+.mc .mc-types { font-family: var(--mono); font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; }
+.mc .mc-types .d { color: var(--green); }
+.mc .mc-types .u { color: var(--accent); }
+.mc .mc-types .sep { opacity: 0.2; margin: 0 3px; }
+
+/* Annotation */
+.note {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
+    opacity: 0.3; margin-top: 10px; text-align: center; font-style: italic;
+}
+
+/* Callout box */
+.callout {
+    border-left: 3px solid var(--accent); padding: 16px 20px;
+    margin: 24px 0; font-size: 14px; line-height: 1.6;
+    background: rgba(192,57,43,0.04);
+}
+.dark .callout { background: rgba(192,57,43,0.08); }
+
+/* ═══════════════════════════════════════════════════════════════
+   FLOW DIAGRAM
+   ═══════════════════════════════════════════════════════════════ */
+.flow {
+    display: flex; align-items: center; gap: 12px; justify-content: center;
+    margin: 32px 0; flex-wrap: wrap;
+}
+.flow-node {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 10px 16px;
+    border: 1px solid var(--rule);
+    text-align: center; min-width: 100px;
+}
+.flow-node.active { border-color: var(--accent); color: var(--accent); }
+.flow-arrow { opacity: 0.2; font-size: 18px; }
+
+/* Archive timeline */
+.archive-row {
+    display: flex; align-items: center; gap: 12px; padding: 8px 0;
+    border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--ink);
+}
+.archive-row .ar-day {
+    font-family: var(--mono); font-size: 10px; opacity: 0.4; width: 50px; text-align: right;
+}
+.archive-row .ar-word {
+    font-family: var(--serif); font-weight: 600; flex: 1;
+}
+.archive-row .ar-mode {
+    font-family: var(--mono); font-size: 8px; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.35;
+}
+.archive-row .ar-result {
+    font-family: var(--mono); font-size: 10px;
+}
+.ar-result.won { color: var(--green); }
+.ar-result.lost { color: var(--accent); }
+.ar-result.unplayed { opacity: 0.2; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TOP BAR
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="doc-bar">
+    <span>Wordle Global — Daily/Unlimited System Design</span>
+    <a href="direction-a-editorial.html">Back to Editorial Exploration</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     NAV
+     ═══════════════════════════════════════════════════════════════ -->
+<nav class="doc-nav">
+    <a href="#problem">Problem</a>
+    <a href="#taxonomy">Taxonomy</a>
+    <a href="#principles">Principles</a>
+    <div class="nav-group">Surfaces</div>
+    <a href="#in-game">In-Game Label</a>
+    <a href="#sidebar">Sidebar</a>
+    <a href="#post-game">Post-Game</a>
+    <a href="#homepage">Homepage</a>
+    <div class="nav-group">Systems</div>
+    <a href="#streaks">Streaks</a>
+    <a href="#archive">Archive</a>
+    <a href="#routing">Routing</a>
+    <div class="nav-group">Spec</div>
+    <a href="#decisions">Decisions</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section hero-section" id="top">
+    <div class="section-tag">System Design Document</div>
+    <h2 style="font-size: 56px; margin-bottom: 12px;">Daily / Unlimited</h2>
+    <div class="subtitle" style="max-width: 480px;">
+        How players discover, choose, and move between play types across every game mode, every surface, and every screen.
+    </div>
+    <div style="display: flex; gap: 24px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.3;">
+        <span>April 2026</span>
+        <span>&middot;</span>
+        <span>Wordle Global</span>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     1. PROBLEM
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section dark" id="problem">
+    <div class="content centered">
+        <div class="section-tag">01</div>
+        <h2>The Problem</h2>
+        <div class="subtitle">Daily and unlimited are tangled into the mode list</div>
+
+        <p>
+            Today the sidebar lists <strong>10 game modes</strong> as flat items. Five of those are
+            multi-board variants (Dordle, Quordle, Octordle, Sedecordle, Duotrigordle) that differ
+            only in board count. "Daily Puzzle" and "Unlimited" are treated as separate modes,
+            but they're actually <strong>play types</strong> of the same Classic game.
+        </p>
+        <p>
+            As we add daily variants to multi-board modes and unlimited to Semantic, the sidebar
+            would double in length. Worse: the conceptual model is wrong. Dordle Daily and
+            Dordle Unlimited aren't two different games — they're the same game with different
+            word selection. The navigation should reflect that.
+        </p>
+
+        <div class="callout">
+            <strong>Core insight:</strong> the game mode matrix has two independent axes — <em>board type</em>
+            (Classic, Dordle, Quordle, Semantic, Speed) and <em>play type</em> (Daily, Unlimited).
+            The current sidebar conflates them into a flat list, making both axes harder to navigate.
+        </div>
+
+        <p>
+            <strong>What needs to work:</strong> a player who finishes daily Quordle should discover
+            unlimited Quordle exists. A player browsing modes shouldn't see 14 items. The archive
+            should show daily history for every mode. Streaks should be per-mode-per-play-type.
+            And all of this should feel like 6 lines of navigation, not 14.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     2. TAXONOMY
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section light" id="taxonomy">
+    <div class="content centered">
+        <div class="section-tag">02</div>
+        <h2>Taxonomy</h2>
+        <div class="subtitle">What gets daily, what gets unlimited, what stays as-is</div>
+
+        <table class="mode-table">
+            <thead><tr><th>Board Type</th><th>Play Types</th><th>Sidebar Row</th><th>Notes</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>Classic</td>
+                    <td><span class="tag daily">Daily</span> <span class="tag unlim">Unlim</span></td>
+                    <td>2 top-level rows (legacy)</td>
+                    <td>"Unlimited" has its own identity. Don't merge.</td>
+                </tr>
+                <tr>
+                    <td>Speed Streak</td>
+                    <td><span class="tag both">Both</span></td>
+                    <td>1 row, expandable</td>
+                    <td>Daily: same word sequence for everyone &mdash; comparable scores. Unlimited: random sequence.</td>
+                </tr>
+                <tr>
+                    <td>Semantic</td>
+                    <td><span class="tag daily">Daily</span> <span class="tag unlim">Unlim</span></td>
+                    <td>1 row, expandable</td>
+                    <td>Daily target per day. Unlimited = random target.</td>
+                </tr>
+                <tr>
+                    <td style="border-left: 3px solid var(--yellow); padding-left: 9px;">Multi-Board<br><span style="font-weight: 400; font-family: var(--mono); font-size: 10px; color: var(--gray);">Dordle &middot; Quordle &middot; Octordle &middot; Sedecordle &middot; Duotrigordle</span></td>
+                    <td><span class="tag both">Both</span> each</td>
+                    <td><strong>1 bundled row</strong>, expandable</td>
+                    <td>5 modes &rarr; 1 row. Pick board count + play type on expand.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <strong>Result:</strong> sidebar goes from 10 flat items to <strong>5 items</strong>
+            (Daily Puzzle, Unlimited, Speed, Multi-Board, Semantic) plus Language and You sections.
+            Multi-Board bundles 5 modes. Speed, Semantic, and Multi-Board expand to show daily/unlimited sub-items.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     3. PRINCIPLES
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section dark" id="principles">
+    <div class="content centered">
+        <div class="section-tag">03</div>
+        <h2>Design Principles</h2>
+        <div class="subtitle">Rules that resolve ambiguity</div>
+
+        <p><strong>1. Play type is chosen before the game, not during.</strong><br>
+        No in-game toggle. No config bar. The subtitle says which type you're in. That's it.</p>
+
+        <p><strong>2. Daily is the default. Unlimited is the upsell.</strong><br>
+        Clicking any mode card or sidebar item goes to daily (when available). Unlimited is discovered through post-game CTAs and sidebar expansion.</p>
+
+        <p><strong>3. Post-game is the highest-conversion entry point.</strong><br>
+        After finishing daily Quordle, the stats modal says "Play Unlimited Quordle." After unlimited, it nudges "Try today's daily." This cross-pollination does more work than any sidebar redesign.</p>
+
+        <p><strong>4. Streaks are daily-only. Unlimited has no streak.</strong><br>
+        Streaks represent consecutive calendar days. Unlimited games happen on demand — they have play count, win rate, but no streak.</p>
+
+        <p><strong>5. The archive is daily-only.</strong><br>
+        The word archive shows past daily words for each mode. Unlimited games don't have "past words" — they're random.</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     4. IN-GAME LABEL
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section warm" id="in-game">
+    <div class="content centered">
+        <div class="section-tag">04 / Surface</div>
+        <h2>In-Game</h2>
+        <div class="subtitle">A label, not a control</div>
+
+        <p>
+            The header subtitle tells the player which play type they're in.
+            <strong>"Dordle #142"</strong> = daily (the number implies it).
+            <strong>"Dordle &middot; <span style="color: var(--accent);">Unlimited</span>"</strong> = unlimited (accent color, no number).
+            Nothing interactive. No toggle. The player chose before entering.
+        </p>
+    </div>
+
+    <div class="mockup-pair">
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <span style="font-size: 16px; opacity: 0.3;">&#9776;</span>
+                    <div style="text-align: center;">
+                        <div class="p-header-title">Dordle</div>
+                        <div class="p-header-sub" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
+                            English &middot; #142
+                        </div>
+                    </div>
+                    <span style="font-size: 14px; opacity: 0.3;">&#9881;</span>
+                </div>
+                <div class="p-body" style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-family: var(--mono); font-size: 9px; opacity: 0.2; letter-spacing: 0.1em; text-transform: uppercase;">2 boards &middot; game area</span>
+                </div>
+            </div>
+            <div class="note">Daily &mdash; flag + language + day number</div>
+        </div>
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <span style="font-size: 16px; opacity: 0.3;">&#9776;</span>
+                    <div style="text-align: center;">
+                        <div class="p-header-title">Dordle</div>
+                        <div class="p-header-sub" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
+                            English &middot; <span style="color: var(--accent); font-weight: 600;">Unlimited</span>
+                        </div>
+                    </div>
+                    <span style="font-size: 14px; opacity: 0.3;">&#9881;</span>
+                </div>
+                <div class="p-body" style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-family: var(--mono); font-size: 9px; opacity: 0.2; letter-spacing: 0.1em; text-transform: uppercase;">2 boards &middot; game area</span>
+                </div>
+            </div>
+            <div class="note">Unlimited &mdash; flag + language + accent label</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     5. SIDEBAR
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section dark" id="sidebar">
+    <div class="content centered">
+        <div class="section-tag">05 / Surface</div>
+        <h2>Sidebar</h2>
+        <div class="subtitle">5 items, not 10. Multi-board is bundled.</div>
+
+        <p>
+            Multi-board modes (Dordle through Duotrigordle) collapse into one <strong>"Multi-Board"</strong>
+            row. Tapping it expands to show board counts. Modes with both play types (Multi-Board, Semantic)
+            show daily/unlimited sub-items on expand. Single-type modes (Daily Puzzle, Unlimited, Speed)
+            navigate directly.
+        </p>
+        <p>
+            Compare to the <a href="direction-a-editorial.html#sidebar">original Screen 02 sidebar</a>
+            which had 10 flat items and no daily/unlimited distinction.
+            Also compare to <a href="direction-a-editorial.html#option-c">Option C (Mode-First Sidebar)</a>
+            which explored a similar hierarchy but without bundling multi-board.
+        </p>
+    </div>
+
+    <div class="mockup-pair">
+        <!-- Collapsed -->
+        <div>
+            <div class="sidebar-mock">
+                <div class="sb-logo">Wordle<span class="dot">.</span>Global</div>
+                <div class="sb-group">Play</div>
+                <div class="sb-item active">
+                    <div class="sb-icon">&#9632;</div>
+                    <div class="sb-name">Daily Puzzle</div>
+                    <div class="sb-right"><span class="sb-streak">&#128293; 14</span></div>
+                </div>
+                <div class="sb-item">
+                    <div class="sb-icon">&infin;</div>
+                    <div class="sb-name">Unlimited</div>
+                </div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#9889;</div>
+                    <div class="sb-name">Speed Streak</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#9638;&#9638;</div>
+                    <div class="sb-name">Multi-Board</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#9737;</div>
+                    <div class="sb-name">Semantic</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+                <div class="sb-group">Language</div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#127468;&#127463;</div>
+                    <div class="sb-name">English</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+                <div class="sb-group">You</div>
+                <div class="sb-item"><div class="sb-icon">&#9636;</div><div class="sb-name">Statistics</div></div>
+                <div class="sb-item"><div class="sb-icon">&#128197;</div><div class="sb-name">Archive</div></div>
+                <div class="sb-item"><div class="sb-icon">&#9881;</div><div class="sb-name">Settings</div></div>
+            </div>
+            <div class="note">Collapsed &mdash; 5 play items. Speed, Multi-Board, Semantic all expand.</div>
+        </div>
+
+        <!-- Expanded Multi-Board -->
+        <div>
+            <div class="sidebar-mock">
+                <div class="sb-logo">Wordle<span class="dot">.</span>Global</div>
+                <div class="sb-group">Play</div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#9632;</div>
+                    <div class="sb-name">Daily Puzzle</div>
+                    <div class="sb-right"><span class="sb-streak">&#128293; 14</span></div>
+                </div>
+                <div class="sb-item">
+                    <div class="sb-icon">&infin;</div>
+                    <div class="sb-name">Unlimited</div>
+                </div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#9889;</div>
+                    <div class="sb-name">Speed Streak</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+                <div class="sb-item active" style="padding-bottom: 4px;">
+                    <div class="sb-icon">&#9638;&#9638;</div>
+                    <div class="sb-name">Multi-Board</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9660;</span></div>
+                </div>
+                <div class="sb-expand">
+                    <div class="sb-sub active">Dordle <span style="opacity: 0.3; margin-left: 4px;">2 boards</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
+                    <div class="sb-sub">Quordle <span style="opacity: 0.3; margin-left: 4px;">4</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
+                    <div class="sb-sub">Octordle <span style="opacity: 0.3; margin-left: 4px;">8</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
+                    <div class="sb-sub">Sedecordle <span style="opacity: 0.3; margin-left: 4px;">16</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
+                    <div class="sb-sub">Duotrigordle <span style="opacity: 0.3; margin-left: 4px;">32</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
+                </div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#9737;</div>
+                    <div class="sb-name">Semantic</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+                <div class="sb-group">Language</div>
+                <div class="sb-item">
+                    <div class="sb-icon">&#127468;&#127463;</div>
+                    <div class="sb-name">English</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+            </div>
+            <div class="note">Expanded &mdash; board count + play type tags</div>
+        </div>
+    </div>
+
+    <div class="content centered" style="margin-top: 24px;">
+        <p>
+            <strong>Interaction:</strong> clicking <span class="tag daily">Daily</span> or
+            <span class="tag unlim">Unlim</span> navigates directly to that game. Clicking
+            the mode name (e.g. "Dordle") goes to daily by default. The tags are the fast-path
+            for players who know what they want.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     6. POST-GAME CTAs
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section light" id="post-game">
+    <div class="content centered">
+        <div class="section-tag">06 / Surface</div>
+        <h2>Post-Game</h2>
+        <div class="subtitle">The highest-conversion moment</div>
+
+        <p>
+            The stats modal after game-over is where cross-pollination happens.
+            After daily: "Play Unlimited" in accent. After unlimited: "Try Today's Daily" in green.
+            This does more discovery work than any sidebar or homepage redesign.
+        </p>
+        <p>
+            Compare to <a href="direction-a-editorial.html#endgame">Screen 03 (End of Game)</a>
+            which had a basic "Play Unlimited" secondary button. The new design is contextual &mdash;
+            different CTAs depending on what just ended.
+        </p>
+    </div>
+
+    <div class="mockup-pair">
+        <!-- After daily -->
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <div class="p-header-title" style="font-size: 15px;">Dordle</div>
+                    <div style="font-family: var(--mono); font-size: 9px; opacity: 0.4; display: flex; align-items: center; gap: 4px;">
+                        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
+                        EN &middot; #142 &middot; 5/7
+                    </div>
+                </div>
+                <div class="p-body">
+                    <div style="text-align: center; margin-bottom: 14px;">
+                        <div style="font-family: var(--serif); font-size: 24px; font-weight: 700;">CHASE &amp; PLANT</div>
+                        <div style="font-family: var(--serif); font-style: italic; font-size: 12px; opacity: 0.4;">Two down, infinite to go</div>
+                    </div>
+                    <div class="stats-row">
+                        <div><div class="stat-num">42</div><div class="stat-lbl">Played</div></div>
+                        <div><div class="stat-num">88</div><div class="stat-lbl">Win %</div></div>
+                        <div><div class="stat-num">7</div><div class="stat-lbl">Streak</div></div>
+                        <div><div class="stat-num">12</div><div class="stat-lbl">Best</div></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <button class="btn primary">Share Result</button>
+                        <button class="btn cta-unlim">Play Unlimited Dordle &rarr;</button>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 12px; opacity: 0.4;">
+                        <span>Next daily Dordle</span>
+                        <span style="font-family: var(--mono); font-size: 16px; font-weight: 600; opacity: 1;">07:42:15</span>
+                    </div>
+                </div>
+            </div>
+            <div class="note">After daily &mdash; unlimited CTA in accent</div>
+        </div>
+
+        <!-- After unlimited -->
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <div class="p-header-title" style="font-size: 15px;">Dordle</div>
+                    <div style="font-family: var(--mono); font-size: 9px; opacity: 0.4; display: flex; align-items: center; gap: 4px;">
+                        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
+                        EN &middot; <span style="color: var(--accent); opacity: 1;">Unlimited</span> &middot; 6/7
+                    </div>
+                </div>
+                <div class="p-body">
+                    <div style="text-align: center; margin-bottom: 14px;">
+                        <div style="font-family: var(--serif); font-size: 24px; font-weight: 700;">RIVER &amp; GHOST</div>
+                        <div style="font-family: var(--serif); font-style: italic; font-size: 12px; opacity: 0.4;">Nice one. Another round?</div>
+                    </div>
+                    <div class="stats-row">
+                        <div><div class="stat-num">18</div><div class="stat-lbl">Played</div></div>
+                        <div><div class="stat-num">72</div><div class="stat-lbl">Win %</div></div>
+                        <div><div class="stat-num">&mdash;</div><div class="stat-lbl">Streak</div></div>
+                        <div><div class="stat-num">&mdash;</div><div class="stat-lbl">Best</div></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <button class="btn primary">Play Again</button>
+                        <button class="btn secondary">Share Result</button>
+                        <button class="btn cta-daily">Try Today's Daily Dordle #142 &rarr;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="note">After unlimited &mdash; daily nudge in green (only if unplayed)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     7. HOMEPAGE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section dark" id="homepage">
+    <div class="content centered">
+        <div class="section-tag">07 / Surface</div>
+        <h2>Homepage</h2>
+        <div class="subtitle">Mode cards adapt to the player's state</div>
+
+        <p>
+            Each mode card shows available play types via small tags.
+            For returning users, cards show active game state ("in progress", "solved")
+            with contextual CTAs. Compare to <a href="direction-a-editorial.html#refined-home">F1 (Homepage Hub)</a>
+            and the original <a href="direction-a-editorial.html#homepage">Screen 01</a>.
+        </p>
+    </div>
+
+    <div class="mockup-pair">
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <div class="p-header-title">Wordle<span style="color: var(--accent);">.</span>Global</div>
+                    <span style="font-size: 14px; opacity: 0.3;">&#9881;</span>
+                </div>
+                <div class="p-body" style="padding: 12px 14px;">
+                    <div class="label" style="margin-bottom: 10px;">Game Modes</div>
+                    <div class="mc"><div class="mc-icon">&#9632;</div><div class="mc-info"><h5>Classic</h5><p>The original. 6 guesses.</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span></div><div style="font-family: var(--mono); font-size: 9px; color: var(--flame);">&#128293; 14</div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9638;&#9638;</div><div class="mc-info"><h5>Multi-Board</h5><p>2-32 boards at once</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9737;</div><div class="mc-info"><h5>Semantic</h5><p>Navigate meaning space</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9889;</div><div class="mc-info"><h5>Speed Streak</h5><p>Race the clock</p></div><div class="mc-right"><div class="mc-types"><span class="u">Unlim</span></div></div></div>
+                </div>
+            </div>
+            <div class="note">New visitor &mdash; click &rarr; daily by default</div>
+        </div>
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <div class="p-header-title">Wordle<span style="color: var(--accent);">.</span>Global</div>
+                    <span style="font-size: 14px; opacity: 0.3;">&#9881;</span>
+                </div>
+                <div class="p-body" style="padding: 12px 14px;">
+                    <div class="label" style="margin-bottom: 10px;">Game Modes</div>
+                    <div class="mc" style="border-color: var(--green);"><div class="mc-icon">&#9632;</div><div class="mc-info"><h5>Classic #1756</h5><p style="color: var(--green);">Solved &#10003; &middot; 3/6</p></div><div class="mc-right"><div style="font-family: var(--mono); font-size: 9px; color: var(--flame);">&#128293; 14</div></div></div>
+                    <div class="mc" style="border-color: var(--yellow);"><div class="mc-icon">&#9638;&#9638;</div><div class="mc-info"><h5>Dordle #142</h5><p style="color: var(--yellow);">In progress &middot; 3/7</p></div><div class="mc-right"><div style="font-family: var(--mono); font-size: 10px;">Continue &rarr;</div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9737;</div><div class="mc-info"><h5>Semantic #99</h5><p style="opacity: 0.3;">Solved &#10003;</p></div><div class="mc-right"><div class="mc-types"><span class="u">Play Unlimited &rarr;</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9889;</div><div class="mc-info"><h5>Speed Streak</h5><p>Race the clock</p></div><div class="mc-right"><div class="mc-types"><span class="u">Play &rarr;</span></div></div></div>
+                </div>
+            </div>
+            <div class="note">Returning &mdash; cards adapt to game state</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     8. STREAKS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section warm" id="streaks">
+    <div class="content centered">
+        <div class="section-tag">08 / System</div>
+        <h2>Streaks</h2>
+        <div class="subtitle">Daily-only. Per-mode. Visible in sidebar and post-game.</div>
+
+        <p>
+            Streaks count consecutive calendar days of playing the daily variant. Each mode
+            has its own streak: your Classic daily streak is independent of your Dordle daily streak.
+            Unlimited has no streak &mdash; it has play count and win rate, but no "consecutive days" concept.
+        </p>
+        <p>
+            The streak badge in the header shows the <strong>highest active streak</strong> across all modes.
+            The sidebar shows per-mode streaks next to each daily item. The streak dropdown
+            (see <a href="direction-a-editorial.html#streak">Streak exploration</a>) shows the full breakdown.
+        </p>
+
+        <table class="mode-table">
+            <thead><tr><th>Play Type</th><th>Streak</th><th>Win %</th><th>Games Played</th><th>Best</th></tr></thead>
+            <tbody>
+                <tr><td>Daily</td><td style="color: var(--flame);">&#128293; Yes &mdash; consecutive days</td><td>Yes</td><td>Yes</td><td>Yes (max streak)</td></tr>
+                <tr><td>Unlimited</td><td style="opacity: 0.3;">&mdash; Not tracked</td><td>Yes</td><td>Yes (total rounds)</td><td style="opacity: 0.3;">&mdash;</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <strong>Edge case:</strong> if a player completes daily Dordle AND plays 3 unlimited Dordle rounds
+            in the same day, the stats page shows: Daily &mdash; 7-day streak, 42 played, 88% win.
+            Unlimited &mdash; 18 played, 72% win. Separate sections, separate stats.
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     9. ARCHIVE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section dark" id="archive">
+    <div class="content centered">
+        <div class="section-tag">09 / System</div>
+        <h2>Archive</h2>
+        <div class="subtitle">Daily-only. Per-mode. Browsable history.</div>
+
+        <p>
+            The archive page (<code>/en/words</code>) currently shows past Classic daily words.
+            With multi-mode dailies, the archive gains a <strong>mode filter</strong> at the top:
+            Classic, Dordle, Quordle, etc. Each mode's archive shows its daily history.
+            Unlimited games don't appear in the archive &mdash; they're ephemeral.
+        </p>
+        <p>
+            Compare to <a href="direction-a-editorial.html#archive">Screen 06 (Archive)</a>.
+        </p>
+    </div>
+
+    <div style="max-width: 400px; margin: 32px auto;">
+        <div style="display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap;">
+            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--paper); color: var(--paper);">Classic</span>
+            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Dordle</span>
+            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Quordle</span>
+            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Semantic</span>
+            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Speed</span>
+        </div>
+        <div class="archive-row"><div class="ar-day">#1756</div><div class="ar-word">THETA</div><div class="ar-mode">Classic</div><div class="ar-result won">3/6 &#10003;</div></div>
+        <div class="archive-row"><div class="ar-day">#1755</div><div class="ar-word">GUPPY</div><div class="ar-mode">Classic</div><div class="ar-result won">4/6 &#10003;</div></div>
+        <div class="archive-row"><div class="ar-day">#1754</div><div class="ar-word">GENRE</div><div class="ar-mode">Classic</div><div class="ar-result won">2/6 &#10003;</div></div>
+        <div class="archive-row"><div class="ar-day">#1753</div><div class="ar-word">SCALD</div><div class="ar-mode">Classic</div><div class="ar-result lost">X/6</div></div>
+        <div class="archive-row"><div class="ar-day">#1752</div><div class="ar-word">JOUST</div><div class="ar-mode">Classic</div><div class="ar-result unplayed">&mdash;</div></div>
+        <div class="note">Mode filter tabs &mdash; archive is daily-only per mode</div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     10. ROUTING
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section light" id="routing">
+    <div class="content centered">
+        <div class="section-tag">10 / System</div>
+        <h2>Routing &amp; URLs</h2>
+        <div class="subtitle">One URL per mode. Play type is a query param.</div>
+
+        <p>
+            Daily and unlimited share 100% of the game UI, logic, and keyboard. They differ only
+            in word selection. Separate routes would duplicate SEO and split analytics. Instead:
+        </p>
+
+        <table class="mode-table">
+            <thead><tr><th>URL</th><th>Result</th></tr></thead>
+            <tbody>
+                <tr><td><code>/en/dordle</code></td><td>Daily Dordle (default)</td></tr>
+                <tr><td><code>/en/dordle?play=unlimited</code></td><td>Unlimited Dordle</td></tr>
+                <tr><td><code>/en/semantic</code></td><td>Daily Semantic (default)</td></tr>
+                <tr><td><code>/en/semantic?play=unlimited</code></td><td>Unlimited Semantic</td></tr>
+                <tr><td><code>/en/speed</code></td><td>Daily Speed (default &mdash; same word sequence for all)</td></tr>
+                <tr><td><code>/en/speed?play=unlimited</code></td><td>Unlimited Speed (random sequence)</td></tr>
+                <tr><td><code>/en</code></td><td>Daily Classic (no change)</td></tr>
+                <tr><td><code>/en/unlimited</code></td><td>Unlimited Classic (no change)</td></tr>
+            </tbody>
+        </table>
+
+        <p>
+            The <code>?play=unlimited</code> param triggers a soft reset &mdash; no page navigation,
+            just different word selection. Last choice is saved to localStorage per mode so returning
+            players land on their preferred type. Classic keeps its separate <code>/unlimited</code> route
+            for backward compatibility and SEO (it's already indexed).
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     11. ENTRY POINT MAP
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section dark" id="decisions">
+    <div class="content centered">
+        <div class="section-tag">11</div>
+        <h2>All Entry Points</h2>
+        <div class="subtitle">Every path a player can take to reach a game</div>
+
+        <div class="flow">
+            <div class="flow-node active">Sidebar<br><span style="font-size: 7px; opacity: 0.5;">mode &rarr; daily/unlim</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node active">Post-Game CTA<br><span style="font-size: 7px; opacity: 0.5;">"play unlimited" / "try daily"</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node active">Homepage Card<br><span style="font-size: 7px; opacity: 0.5;">click card &rarr; daily default</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node active">Direct URL<br><span style="font-size: 7px; opacity: 0.5;">/en/dordle?play=unlimited</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node active">Share Link<br><span style="font-size: 7px; opacity: 0.5;">from friend's share text</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <h3>What We're NOT Doing</h3>
+            <p><strong>No config bar.</strong> <a href="direction-a-editorial.html#refined-game">F3</a> explored
+            a persistent config bar with Daily/Unlimited/Custom pills. Rejected &mdash; too much UI for a binary choice.</p>
+            <p><strong>No in-game toggle.</strong> The <a href="direction-a-editorial.html#option-b">Option B</a> approach
+            of toggling play type mid-game was confusing. You pick before you play.</p>
+            <p><strong>No mode picker modal.</strong> <a href="direction-a-editorial.html#mode-select">Screen 09</a> was
+            a full-screen mode picker. Unnecessary when the sidebar already handles mode selection.</p>
+            <p><strong>No separate sidebar items for daily/unlimited.</strong> That was the
+            <a href="direction-a-editorial.html#du-sidebar">Card Split approach</a> &mdash; rejected because it doubles the sidebar.</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

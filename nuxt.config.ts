@@ -22,10 +22,30 @@ export default defineNuxtConfig({
         },
     },
 
+    app: {
+        // Page transitions are driven dynamically by app.vue via :transition
+        // prop (direction-aware). This static config is the fallback for SSR.
+        pageTransition: { name: 'page-lateral', mode: 'out-in' },
+        // Layout transition disabled — the page transition already handles
+        // the visual change; a layout transition on top causes double-fade.
+        layoutTransition: false,
+    },
+
+    experimental: {
+        // View Transitions API (Tier 3): compositor-level page transitions
+        // with shared-element morphing (header stays in place). Nuxt's plugin
+        // handles feature detection, reduced-motion, and popstate. Tier 1
+        // CSS transitions are the fallback for unsupported browsers.
+        viewTransition: true,
+    },
+
     css: ['~/assets/css/main.css'],
 
     vite: {
         plugins: [tailwindcss()],
+        server: {
+            allowedHosts: true,
+        },
         vue: {
             template: {
                 compilerOptions: {

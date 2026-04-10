@@ -39,7 +39,8 @@ export interface GameSeoOptions {
     mode: GameMode;
     config: LanguageConfig;
     langStore: { rightToLeft: boolean };
-    /** Language codes for hreflang alternate links. Pass from useFetch('/api/languages'). */
+    /** Language codes for hreflang alternate links. If omitted, the composable
+     *  fetches them automatically via /api/languages. */
     allLangCodes?: string[];
     /** Share result from ?r= query param (daily page only). */
     shareResult?: string;

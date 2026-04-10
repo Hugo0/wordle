@@ -20,7 +20,9 @@ export type GameMode =
     | 'duotrigordle'
     | 'unlimited'
     | 'speed'
-    | 'semantic';
+    | 'semantic'
+    | 'custom'
+    | 'party';
 
 export type PlayType = 'daily' | 'unlimited' | 'custom';
 
@@ -39,10 +41,20 @@ export interface GameModeDefinition {
     readonly defaultPlayType: PlayType;
     /** Whether a timer is part of the mode */
     readonly timed: boolean;
-    /** Human-readable label */
+    /** Human-readable label (English) */
     readonly label: string;
+    /** Short description for cards/tooltips */
+    readonly description: string;
+    /** Route suffix after /{lang}/ — empty string for classic */
+    readonly routeSuffix: string;
+    /** Whether this mode is playable (has a page) */
+    readonly enabled: boolean;
+    /** Badge text: 'NEW', 'BETA', 'SOON', or undefined */
+    readonly badge?: string;
     /** PageShell max-width for this mode ('lg' for single-board, '2xl'+ for multi) */
     readonly shellMaxWidth?: 'lg' | '2xl' | '4xl' | '6xl' | 'full';
+    /** If set, mode is only available for these language codes. */
+    readonly languages?: readonly string[];
 }
 
 export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = {
@@ -51,7 +63,31 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         maxGuesses: 6,
         defaultPlayType: 'daily',
         timed: false,
-        label: 'Classic',
+        label: 'Daily Puzzle',
+        description: 'One word per day. 6 guesses. The classic.',
+        routeSuffix: '',
+        enabled: true,
+    },
+    unlimited: {
+        boardCount: 1,
+        maxGuesses: 6,
+        defaultPlayType: 'unlimited',
+        timed: false,
+        label: 'Unlimited',
+        description: 'Random words, no limit. Play as much as you want.',
+        routeSuffix: 'unlimited',
+        enabled: true,
+    },
+    speed: {
+        boardCount: 1,
+        maxGuesses: 6,
+        defaultPlayType: 'unlimited',
+        timed: true,
+        label: 'Speed Streak',
+        description: 'Race the clock. Solve as many words as you can before time runs out.',
+        routeSuffix: 'speed',
+        enabled: true,
+        badge: 'NEW',
     },
     dordle: {
         boardCount: 2,
@@ -59,6 +95,10 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         defaultPlayType: 'unlimited',
         timed: false,
         label: 'Dordle',
+        description: '2 boards, 1 keyboard, 7 guesses.',
+        routeSuffix: 'dordle',
+        enabled: true,
+        badge: 'BETA',
         shellMaxWidth: '2xl',
     },
     quordle: {
@@ -67,6 +107,10 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         defaultPlayType: 'unlimited',
         timed: false,
         label: 'Quordle',
+        description: '4 boards, 1 keyboard, 9 guesses.',
+        routeSuffix: 'quordle',
+        enabled: true,
+        badge: 'BETA',
         shellMaxWidth: '4xl',
     },
     octordle: {
@@ -75,6 +119,10 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         defaultPlayType: 'unlimited',
         timed: false,
         label: 'Octordle',
+        description: '8 boards, 1 keyboard, 13 guesses.',
+        routeSuffix: 'octordle',
+        enabled: true,
+        badge: 'BETA',
         shellMaxWidth: 'full',
     },
     sedecordle: {
@@ -83,6 +131,10 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         defaultPlayType: 'unlimited',
         timed: false,
         label: 'Sedecordle',
+        description: '16 boards, 1 keyboard, 21 guesses.',
+        routeSuffix: 'sedecordle',
+        enabled: true,
+        badge: 'BETA',
         shellMaxWidth: 'full',
     },
     duotrigordle: {
@@ -91,30 +143,55 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         defaultPlayType: 'unlimited',
         timed: false,
         label: 'Duotrigordle',
+        description: '32 boards, 1 keyboard, 37 guesses.',
+        routeSuffix: 'duotrigordle',
+        enabled: true,
+        badge: 'BETA',
         shellMaxWidth: 'full',
-    },
-    unlimited: {
-        boardCount: 1,
-        maxGuesses: 6,
-        defaultPlayType: 'unlimited',
-        timed: false,
-        label: 'Unlimited',
-    },
-    speed: {
-        boardCount: 1,
-        maxGuesses: 6,
-        defaultPlayType: 'unlimited',
-        timed: true,
-        label: 'Speed Streak',
     },
     semantic: {
         boardCount: 1,
-        maxGuesses: 10,
+        maxGuesses: 15,
         defaultPlayType: 'daily',
         timed: false,
         label: 'Semantic Explorer',
+        description: 'Find words by meaning. Use compass hints in 15 guesses.',
+        routeSuffix: 'semantic',
+        enabled: true,
+        badge: 'NEW',
+        /** English-only for v1 (embeddings, targets, axes are all English). */
+        languages: ['en'],
+    },
+    custom: {
+        boardCount: 1,
+        maxGuesses: 6,
+        defaultPlayType: 'custom',
+        timed: false,
+        label: 'Custom Word',
+        description: 'Pick a word, share a link. Challenge your friends.',
+        routeSuffix: 'custom',
+        enabled: false,
+        badge: 'SOON',
+    },
+    party: {
+        boardCount: 1,
+        maxGuesses: 6,
+        defaultPlayType: 'daily',
+        timed: false,
+        label: 'Party Mode',
+        description: 'Play the same word with friends. See who solves it fastest.',
+        routeSuffix: 'party',
+        enabled: false,
+        badge: 'SOON',
     },
 } as const;
+
+/** Display order for mode lists (sidebar, homepage, picker). */
+export const GAME_MODE_ORDER: readonly GameMode[] = [
+    'classic', 'unlimited', 'speed',
+    'dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle',
+    'semantic', 'custom', 'party',
+] as const;
 
 // =============================================================================
 // Game Config

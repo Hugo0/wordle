@@ -1,3 +1,4 @@
+import { consola } from 'consola';
 /**
  * Definition fetching.
  *
@@ -7,6 +8,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, resolve } from 'path';
 import { WORD_DEFS_DIR } from './data-loader';
+import { getWiktLang } from './word-selection';
 
 const NEGATIVE_CACHE_TTL = 24 * 3600; // 24 hours
 
@@ -21,11 +23,11 @@ function resolveDefinitionsDir(): string {
     ];
     for (const c of candidates) {
         if (existsSync(c)) {
-            console.log(`[DEFS] Definitions dir: ${c}`);
+            consola.info(`[DEFS] Definitions dir: ${c}`);
             return c;
         }
     }
-    console.warn(`[DEFS] Definitions dir NOT FOUND, tried: ${candidates.join(', ')}`);
+    consola.warn(`[DEFS] Definitions dir NOT FOUND, tried: ${candidates.join(', ')}`);
     return candidates[0]!;
 }
 
@@ -37,14 +39,14 @@ function loadKaikkiFile(cacheKey: string, filePath: string): Record<string, stri
     if (existsSync(filePath)) {
         try {
             _kaikkiCache[cacheKey] = JSON.parse(readFileSync(filePath, 'utf-8'));
-            console.log(
+            consola.info(
                 `[KAIKKI] Loaded ${cacheKey}: ${Object.keys(_kaikkiCache[cacheKey]!).length} entries`
             );
         } catch {
             _kaikkiCache[cacheKey] = {};
         }
     } else {
-        console.warn(`[KAIKKI] File not found: ${filePath}`);
+        consola.warn(`[KAIKKI] File not found: ${filePath}`);
         _kaikkiCache[cacheKey] = {};
     }
     return _kaikkiCache[cacheKey]!;
@@ -77,16 +79,8 @@ function lookupKaikki(
 // Wiktionary URL construction
 // ---------------------------------------------------------------------------
 
-const WIKT_LANG_MAP: Record<string, string> = {
-    nb: 'no',
-    nn: 'no',
-    hyw: 'hy',
-    ckb: 'ku',
-};
-
 function wiktionaryUrl(word: string, langCode: string): string {
-    const wiktLang = WIKT_LANG_MAP[langCode] || langCode;
-    return `https://${wiktLang}.wiktionary.org/wiki/${encodeURIComponent(word)}`;
+    return `https://${getWiktLang(langCode)}.wiktionary.org/wiki/${encodeURIComponent(word)}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -238,7 +232,7 @@ async function callLlmDefinition(
         const definitionNative = result.definition_native;
 
         if (!definitionEn || confidence < 0.3) {
-            console.log(
+            consola.info(
                 `[LLM LOW] ${langCode}/${word}: confidence=${confidence}, def_en=${definitionEn}`
             );
             return null;
@@ -259,7 +253,7 @@ async function callLlmDefinition(
             wiktionary_url: wiktUrl,
         };
     } catch (e: any) {
-        console.warn(`[LLM ERROR] ${langCode}/${word}: ${e.message || e}`);
+        consola.warn(`[LLM ERROR] ${langCode}/${word}: ${e.message || e}`);
         return null;
     }
 }

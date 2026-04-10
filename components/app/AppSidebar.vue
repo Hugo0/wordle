@@ -4,7 +4,7 @@
         <Transition name="sidebar-backdrop">
             <div
                 v-if="isOpen"
-                class="fixed inset-0 z-40 bg-ink/30"
+                class="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
                 aria-hidden="true"
                 @click="close"
             />
@@ -138,12 +138,19 @@ const props = withDefaults(
         langCode?: string;
         languageName?: string;
         isRtl?: boolean;
+        /**
+         * UI translation strings (from API response). Required on non-game pages
+         * where useLanguageStore() is not initialized. Optional on game pages —
+         * falls back to the language store for backwards compatibility.
+         */
+        ui?: Record<string, any>;
     }>(),
     {
         currentMode: 'classic',
         langCode: 'en',
         languageName: 'English',
         isRtl: false,
+        ui: undefined,
     }
 );
 
@@ -163,22 +170,40 @@ function close() {
     emit('close');
 }
 
+// Close on Escape anywhere (not just when sidebar is focused)
+function onKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape' && props.isOpen) close();
+}
+onMounted(() => window.addEventListener('keydown', onKeydown));
+onUnmounted(() => window.removeEventListener('keydown', onKeydown));
+
 function selectMode(mode: string) {
     emit('selectMode', mode);
     close();
 }
 
+// On game pages, useLanguageStore() is initialized via useGamePage() and we
+// read mode labels from its config.ui. On non-game pages, the store is empty
+// (CLAUDE.md: "Don't use langStore outside game pages") so the page passes
+// `ui` as a prop sourced from its own API response.
 const langStore = useLanguageStore();
 const gameModes = computed(() => {
-    const ui = langStore.config?.ui;
-    return GAME_MODES_UI.map((mode) => ({
-        id: mode.id,
-        icon: mode.icon,
-        label: getModeLabel(mode, ui),
-        badge: mode.badge,
-        href: getModeRoute(mode, props.langCode) ?? undefined,
-        disabled: !mode.enabled,
-    }));
+    const ui = props.ui ?? langStore.config?.ui;
+    const lc = props.langCode;
+    return GAME_MODES_UI
+        .filter((mode) => {
+            // Hide modes restricted to specific languages (e.g. semantic = English only)
+            if (mode.languages && !mode.languages.includes(lc)) return false;
+            return true;
+        })
+        .map((mode) => ({
+            id: mode.id,
+            icon: mode.icon,
+            label: getModeLabel(mode, ui),
+            badge: mode.badge,
+            href: getModeRoute(mode, lc) ?? undefined,
+            disabled: !mode.enabled,
+        }));
 });
 
 // Pre-fill bug report with language, mode, and device info
@@ -256,7 +281,7 @@ const bugReportUrl = computed(() => {
 /* Transitions */
 .sidebar-backdrop-enter-active,
 .sidebar-backdrop-leave-active {
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .sidebar-backdrop-enter-from,
 .sidebar-backdrop-leave-to {

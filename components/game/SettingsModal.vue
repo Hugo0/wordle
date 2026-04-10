@@ -2,7 +2,7 @@
     <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
         <div class="flex flex-col gap-2">
             <h3 class="heading-section text-xl text-ink mb-5">
-                {{ lang.config?.ui?.settings }}
+                {{ lang.config?.ui?.settings || 'Settings' }}
             </h3>
 
             <div class="space-y-4">
@@ -10,7 +10,7 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.dark_mode }}
+                            {{ lang.config?.ui?.dark_mode || 'Dark Mode' }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -25,7 +25,7 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.sound_and_haptics }}
+                            {{ lang.config?.ui?.sound_and_haptics || 'Sound & Haptics' }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -36,10 +36,11 @@
 
                 <div class="editorial-rule" />
 
-                <!-- Difficulty selector (3-way: Easy / Normal / Hard) -->
-                <div>
+                <!-- Difficulty selector (3-way: Easy / Normal / Hard) — hidden
+                     for semantic mode since it has no letter constraints -->
+                <div v-if="game.gameConfig.mode !== 'semantic'">
                     <p class="text-sm font-semibold text-ink mb-2">
-                        {{ lang.config?.ui?.difficulty }}
+                        {{ lang.config?.ui?.difficulty || 'Difficulty' }}
                     </p>
                     <div
                         class="flex overflow-hidden border border-rule"
@@ -55,7 +56,7 @@
                             "
                             @click="setDifficulty('easy')"
                         >
-                            {{ lang.config?.ui?.easy }}
+                            {{ lang.config?.ui?.easy || 'Easy' }}
                         </button>
                         <button
                             type="button"
@@ -67,7 +68,7 @@
                             "
                             @click="setDifficulty('normal')"
                         >
-                            {{ lang.config?.ui?.normal }}
+                            {{ lang.config?.ui?.normal || 'Normal' }}
                         </button>
                         <button
                             type="button"
@@ -79,17 +80,17 @@
                             "
                             @click="setDifficulty('hard')"
                         >
-                            {{ lang.config?.ui?.hard }}
+                            {{ lang.config?.ui?.hard || 'Hard' }}
                         </button>
                     </div>
                     <p v-if="allowAnyWord && !settings.hardMode" class="text-xs text-muted mt-1">
-                        {{ lang.config?.ui?.easy_desc }}
+                        {{ lang.config?.ui?.easy_desc || 'Any word accepted as a guess' }}
                     </p>
                     <p v-if="!allowAnyWord && !settings.hardMode" class="text-xs text-muted mt-1">
-                        {{ lang.config?.ui?.normal_desc }}
+                        {{ lang.config?.ui?.normal_desc || 'Only valid words accepted' }}
                     </p>
                     <p v-if="settings.hardMode" class="text-xs text-muted mt-1">
-                        {{ lang.config?.ui?.hard_desc }}
+                        {{ lang.config?.ui?.hard_desc || 'Must use revealed hints' }}
                     </p>
                     <p v-if="settings.difficultyWarning" class="text-xs text-accent mt-1">
                         {{ settings.difficultyWarning }}
@@ -143,9 +144,9 @@
                 <!-- High Contrast / Colorblind mode -->
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
-                        <p class="text-sm text-ink">{{ lang.config?.ui?.high_contrast }}</p>
+                        <p class="text-sm text-ink">{{ lang.config?.ui?.high_contrast || 'High Contrast' }}</p>
                         <p class="text-xs text-muted">
-                            {{ lang.config?.ui?.high_contrast_desc }}
+                            {{ lang.config?.ui?.high_contrast_desc || 'Colorblind-friendly colors' }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -159,7 +160,7 @@
                     <div class="editorial-rule" />
                     <div class="flex flex-row items-center">
                         <p id="keyboard-layout-label" class="flex-grow text-sm text-ink">
-                            {{ lang.config?.ui?.keyboard_layout }}
+                            {{ lang.config?.ui?.keyboard_layout || 'Keyboard Layout' }}
                         </p>
                         <select
                             id="keyboard-layout-select"
@@ -189,10 +190,10 @@
                         @click="installPwa()"
                     >
                         <Download :size="18" />
-                        {{ lang.config?.ui?.install_app }}
+                        {{ lang.config?.ui?.install_app || 'Install App' }}
                     </button>
                     <p class="text-xs text-center text-muted mt-1">
-                        {{ lang.config?.ui?.install_app_desc }}
+                        {{ lang.config?.ui?.install_app_desc || 'Play offline & get app icon' }}
                     </p>
                 </template>
             </div>

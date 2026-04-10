@@ -21,14 +21,13 @@
         <div class="flex-1 min-w-0 flex flex-col h-[100dvh]" :class="innerClass">
             <!-- Header — fixed max-width, not affected by game mode -->
             <div class="w-full max-w-2xl mx-auto safe-area-inset px-2">
-                <GameHeader
+                <AppHeader
                     :title="title"
                     :subtitle="subtitle"
                     :sidebar-open="sidebarOpen"
                     :streak-count="streakCount"
                     :just-won="justWon"
                     @help="onHelp"
-                    @stats="onStats"
                     @streak="game.showStreakModal = !game.showStreakModal"
                     @settings="game.showOptionsModal = !game.showOptionsModal"
                     @toggle-sidebar="$emit('toggleSidebar')"
@@ -43,7 +42,7 @@
 
                 <!-- Keyboard flip container (speed mode excluded — has its own overlay) -->
                 <div
-                    v-if="!isSpeedMode"
+                    v-if="!isSpeedMode && !noKeyboard"
                     class="keyboard-flip-container"
                     :class="{ flipped: showPostGame }"
                 >
@@ -65,7 +64,7 @@
 
                 <!-- Speed mode: keyboard without flip wrapper -->
                 <GameKeyboard
-                    v-else
+                    v-else-if="isSpeedMode && !noKeyboard"
                     ref="gameKeyboardRef"
                     :keyboard="langStore.keyboard"
                     :hints="langStore.keyDiacriticHints"
@@ -128,12 +127,19 @@ const props = withDefaults(
         wrapperClass?: string;
         innerClass?: string;
         visible?: boolean;
+        /**
+         * Hide the on-screen keyboard and post-game flip container.
+         * Used by non-tile game modes (e.g. Semantic Explorer) that provide
+         * their own input and end-game UI via the default slot.
+         */
+        noKeyboard?: boolean;
     }>(),
     {
         maxWidth: 'lg',
         wrapperClass: undefined,
         innerClass: undefined,
         visible: true,
+        noKeyboard: false,
     }
 );
 
@@ -225,10 +231,6 @@ watch(
 
 function onHelp() {
     game.showHelpModal = !game.showHelpModal;
-}
-
-function onStats() {
-    game.showStatsModal = !game.showStatsModal;
 }
 
 const maxWidthClass = computed(() => {

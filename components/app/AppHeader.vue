@@ -1,8 +1,9 @@
 <template>
     <header
         class="relative flex flex-row items-center h-[50px] px-3 lg:px-2 bg-paper dark:bg-paper editorial-rule"
+        :style="{ viewTransitionName: logoMode ? 'none' : 'header' }"
     >
-        <!-- Left: Menu toggle + Info -->
+        <!-- Left: Menu toggle + Info (game pages only) -->
         <div class="flex items-center gap-1 z-30">
             <button
                 class="p-2 text-muted hover:text-ink transition-colors"
@@ -14,6 +15,7 @@
                 <Menu :size="20" aria-hidden="true" />
             </button>
             <button
+                v-if="showHelp"
                 class="p-2 text-muted hover:text-ink transition-colors"
                 aria-label="How to play"
                 @click="$emit('help')"
@@ -22,14 +24,20 @@
             </button>
         </div>
 
-        <!-- Center: Game title -->
+        <!-- Center: title or logo -->
         <div class="absolute inset-x-0 text-center pointer-events-none">
             <h1
                 class="text-ink font-display text-[20px] font-extrabold"
                 style="font-variation-settings: 'opsz' 72"
             >
-                <NuxtLink to="/" class="pointer-events-auto hover:opacity-80 transition-opacity">
-                    {{ title }}
+                <NuxtLink
+                    :to="homeHref"
+                    class="pointer-events-auto hover:opacity-80 transition-opacity"
+                >
+                    <template v-if="logoMode">
+                        Wordle<span class="text-accent">.</span>Global
+                    </template>
+                    <template v-else>{{ title }}</template>
                 </NuxtLink>
             </h1>
             <p
@@ -41,16 +49,14 @@
             </p>
         </div>
 
-        <!-- Right: Streak + Stats + Settings -->
+        <!-- Right: Streak (game only) + Settings -->
         <div class="flex items-center gap-0.5 z-30 ms-auto">
-            <GameStreakBadge :streak="streakCount" :just-won="justWon" @click="$emit('streak')" />
-            <button
-                class="p-2 text-muted hover:text-ink transition-colors"
-                aria-label="Statistics"
-                @click="$emit('stats')"
-            >
-                <BarChart2 :size="20" aria-hidden="true" />
-            </button>
+            <GameStreakBadge
+                v-if="showStreak"
+                :streak="streakCount"
+                :just-won="justWon"
+                @click="$emit('streak')"
+            />
             <button
                 class="p-2 text-muted hover:text-ink transition-colors"
                 aria-label="Settings"
@@ -63,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { Info, Menu, BarChart2, Settings } from 'lucide-vue-next';
+import { Info, Menu, Settings } from 'lucide-vue-next';
 
 withDefaults(
     defineProps<{
@@ -72,6 +78,14 @@ withDefaults(
         sidebarOpen?: boolean;
         streakCount?: number;
         justWon?: boolean;
+        /** Show "Wordle.Global" logo instead of title text. */
+        logoMode?: boolean;
+        /** Where the center title/logo links. Defaults to /. */
+        homeHref?: string;
+        /** Show the help (?) button. Game pages only. */
+        showHelp?: boolean;
+        /** Show the streak badge. Game pages only. */
+        showStreak?: boolean;
     }>(),
     {
         title: 'Wordle',
@@ -79,12 +93,15 @@ withDefaults(
         sidebarOpen: false,
         streakCount: 0,
         justWon: false,
+        logoMode: false,
+        homeHref: '/',
+        showHelp: true,
+        showStreak: true,
     }
 );
 
 defineEmits<{
     help: [];
-    stats: [];
     settings: [];
     streak: [];
     toggleSidebar: [];

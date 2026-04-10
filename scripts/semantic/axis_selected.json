@@ -1,0 +1,748 @@
+{
+  "version": 2,
+  "target_count": 80,
+  "max_pairwise_cos": 0.23594728112220764,
+  "mean_pairwise_cos": 0.07274841115444522,
+  "accepted": [
+    {
+      "name": "handmade",
+      "low": "manufactured",
+      "high": "handmade",
+      "source": "hand",
+      "auc": 1.0,
+      "variance": 0.06541495770215988,
+      "pca_align": 0.24873565137386322,
+      "composite": 0.5680180268659294
+    },
+    {
+      "name": "sharpness_point",
+      "low": "blunt",
+      "high": "spiky",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.0615108497440815,
+      "pca_align": 0.22889773547649384,
+      "composite": 0.4043852194236339
+    },
+    {
+      "name": "honesty_tone",
+      "low": "deceptive",
+      "high": "candid",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06408632546663284,
+      "pca_align": 0.21696871519088745,
+      "composite": 0.5067280726152669
+    },
+    {
+      "name": "beginning",
+      "low": "ending",
+      "high": "beginning",
+      "source": "llm",
+      "auc": 0.9333333333333333,
+      "variance": 0.05173009634017944,
+      "pca_align": 0.19694095849990845,
+      "composite": 0.217139741421223
+    },
+    {
+      "name": "temperature_food",
+      "low": "chilled",
+      "high": "steaming",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06589566171169281,
+      "pca_align": 0.2742346227169037,
+      "composite": 0.5892925810727001
+    },
+    {
+      "name": "crime",
+      "low": "lawful",
+      "high": "criminal",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06713496893644333,
+      "pca_align": 0.25272566080093384,
+      "composite": 0.6188141871122308
+    },
+    {
+      "name": "openness",
+      "low": "sealed",
+      "high": "open",
+      "source": "llm",
+      "auc": 0.9866666666666667,
+      "variance": 0.06284396350383759,
+      "pca_align": 0.22068257629871368,
+      "composite": 0.4456459914701301
+    },
+    {
+      "name": "weather",
+      "low": "sunny",
+      "high": "stormy",
+      "source": "llm",
+      "auc": 0.9600000000000001,
+      "variance": 0.05924534797668457,
+      "pca_align": 0.19213439524173737,
+      "composite": 0.3047153059160833
+    },
+    {
+      "name": "urbanity",
+      "low": "rural",
+      "high": "urban",
+      "source": "llm",
+      "auc": 0.9955555555555555,
+      "variance": 0.05583510547876358,
+      "pca_align": 0.2648065388202667,
+      "composite": 0.3076516043865978
+    },
+    {
+      "name": "resonant",
+      "low": "dead",
+      "high": "ringing",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06751450896263123,
+      "pca_align": 0.36597785353660583,
+      "composite": 0.6653992813278635
+    },
+    {
+      "name": "periodicity",
+      "low": "irregular",
+      "high": "periodic",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.05850308761000633,
+      "pca_align": 0.20508363842964172,
+      "composite": 0.3227226696767897
+    },
+    {
+      "name": "tone",
+      "low": "monotone",
+      "high": "sonorous",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06008267402648926,
+      "pca_align": 0.21560466289520264,
+      "composite": 0.3634547709498561
+    },
+    {
+      "name": "dullness",
+      "low": "razor",
+      "high": "dull",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.0650906190276146,
+      "pca_align": 0.22618116438388824,
+      "composite": 0.5500896511021138
+    },
+    {
+      "name": "contact",
+      "low": "separated",
+      "high": "touching",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06728369742631912,
+      "pca_align": 0.2496727555990219,
+      "composite": 0.6216050184905324
+    },
+    {
+      "name": "cook_level",
+      "low": "raw",
+      "high": "cooked",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06342050433158875,
+      "pca_align": 0.2146836817264557,
+      "composite": 0.4789128735099199
+    },
+    {
+      "name": "wetness",
+      "low": "dry",
+      "high": "wet",
+      "source": "both",
+      "auc": 0.9688888888888889,
+      "variance": 0.05800613388419151,
+      "pca_align": 0.2573615312576294,
+      "composite": 0.30686860760016654
+    },
+    {
+      "name": "flexibility_mind",
+      "low": "dogmatic",
+      "high": "flexible",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06917428225278854,
+      "pca_align": 0.2577371895313263,
+      "composite": 0.6715116183942833
+    },
+    {
+      "name": "newness",
+      "low": "old",
+      "high": "new",
+      "source": "llm",
+      "auc": 0.9511111111111111,
+      "variance": 0.05955295264720917,
+      "pca_align": 0.2246498167514801,
+      "composite": 0.31747515837111795
+    },
+    {
+      "name": "rust",
+      "low": "pristine",
+      "high": "rusty",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06474754959344864,
+      "pca_align": 0.2151997983455658,
+      "composite": 0.5323525194724059
+    },
+    {
+      "name": "composure",
+      "low": "shattered",
+      "high": "unbroken",
+      "source": "llm",
+      "auc": 0.9977777777777778,
+      "variance": 0.06598316133022308,
+      "pca_align": 0.20212921500205994,
+      "composite": 0.5661372587936979
+    },
+    {
+      "name": "teamwork",
+      "low": "solo",
+      "high": "team",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.05980660393834114,
+      "pca_align": 0.24380826950073242,
+      "composite": 0.37023855470261485
+    },
+    {
+      "name": "locality",
+      "low": "global",
+      "high": "local",
+      "source": "llm",
+      "auc": 0.9977777777777778,
+      "variance": 0.06238856539130211,
+      "pca_align": 0.26135504245758057,
+      "composite": 0.4533328507187391
+    },
+    {
+      "name": "bitterness",
+      "low": "mild",
+      "high": "bitter",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06391405314207077,
+      "pca_align": 0.18209873139858246,
+      "composite": 0.4875767515298126
+    },
+    {
+      "name": "terrain",
+      "low": "level",
+      "high": "mountainous",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.07171446830034256,
+      "pca_align": 0.3631359338760376,
+      "composite": 0.7431353127056697
+    },
+    {
+      "name": "function",
+      "low": "broken",
+      "high": "working",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06909099966287613,
+      "pca_align": 0.31471922993659973,
+      "composite": 0.6875959843371582
+    },
+    {
+      "name": "morality",
+      "low": "evil",
+      "high": "good",
+      "source": "both",
+      "auc": 1.0,
+      "variance": 0.06951876729726791,
+      "pca_align": 0.3030660152435303,
+      "composite": 0.6912360555925254
+    },
+    {
+      "name": "seniority",
+      "low": "senior",
+      "high": "junior",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.058631137013435364,
+      "pca_align": 0.17660388350486755,
+      "composite": 0.3181578429316779
+    },
+    {
+      "name": "count",
+      "low": "single",
+      "high": "multiple",
+      "source": "llm",
+      "auc": 0.9955555555555555,
+      "variance": 0.06016458570957184,
+      "pca_align": 0.2730870246887207,
+      "composite": 0.38156178130162016
+    },
+    {
+      "name": "glare",
+      "low": "dusky",
+      "high": "dazzling",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06247132271528244,
+      "pca_align": 0.2893616259098053,
+      "composite": 0.4680004112639722
+    },
+    {
+      "name": "waterness",
+      "low": "desert",
+      "high": "ocean",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.057053420692682266,
+      "pca_align": 0.15716229379177094,
+      "composite": 0.2851097187790924
+    },
+    {
+      "name": "clarity_mind",
+      "low": "confused",
+      "high": "lucid",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.05955324321985245,
+      "pca_align": 0.16904693841934204,
+      "composite": 0.33789713170577484
+    },
+    {
+      "name": "charity",
+      "low": "selfish",
+      "high": "charitable",
+      "source": "llm",
+      "auc": 0.9466666666666667,
+      "variance": 0.05876241624355316,
+      "pca_align": 0.1878916323184967,
+      "composite": 0.28098562762936974
+    },
+    {
+      "name": "lock",
+      "low": "unlocked",
+      "high": "locked",
+      "source": "llm",
+      "auc": 0.9022222222222223,
+      "variance": 0.06022777780890465,
+      "pca_align": 0.23128311336040497,
+      "composite": 0.2945793545894255
+    },
+    {
+      "name": "portable",
+      "low": "immovable",
+      "high": "portable",
+      "source": "hand",
+      "auc": 1.0,
+      "variance": 0.05907709524035454,
+      "pca_align": 0.27089065313339233,
+      "composite": 0.36196438725877994
+    },
+    {
+      "name": "crystal",
+      "low": "amorphous",
+      "high": "crystalline",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06223096325993538,
+      "pca_align": 0.259613960981369,
+      "composite": 0.4467825535819011
+    },
+    {
+      "name": "junkiness",
+      "low": "healthy",
+      "high": "junk",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06731364876031876,
+      "pca_align": 0.2542126774787903,
+      "composite": 0.6239658607882456
+    },
+    {
+      "name": "authority",
+      "low": "subordinate",
+      "high": "dominant",
+      "source": "llm",
+      "auc": 0.9977777777777778,
+      "variance": 0.05752775818109512,
+      "pca_align": 0.1818426251411438,
+      "composite": 0.2996887533715368
+    },
+    {
+      "name": "curvature",
+      "low": "straight",
+      "high": "curved",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06397493928670883,
+      "pca_align": 0.16687512397766113,
+      "composite": 0.48533596749166685
+    },
+    {
+      "name": "followership",
+      "low": "leader",
+      "high": "follower",
+      "source": "llm",
+      "auc": 0.9333333333333333,
+      "variance": 0.06472611427307129,
+      "pca_align": 0.27276188135147095,
+      "composite": 0.49685030627175697
+    },
+    {
+      "name": "growth",
+      "low": "stunted",
+      "high": "grown",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.07548808306455612,
+      "pca_align": 0.27035748958587646,
+      "composite": 0.7353626856775268
+    },
+    {
+      "name": "conflict",
+      "low": "harmony",
+      "high": "conflict",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06809999793767929,
+      "pca_align": 0.21349012851715088,
+      "composite": 0.6259222310873493
+    },
+    {
+      "name": "fatigue",
+      "low": "rested",
+      "high": "fatigued",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06220211088657379,
+      "pca_align": 0.26314792037010193,
+      "composite": 0.4464757000883693
+    },
+    {
+      "name": "coverage",
+      "low": "patchy",
+      "high": "complete",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.07306713610887527,
+      "pca_align": 0.27504488825798035,
+      "composite": 0.718478403857703
+    },
+    {
+      "name": "pattern",
+      "low": "random",
+      "high": "patterned",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06618132442235947,
+      "pca_align": 0.33827367424964905,
+      "composite": 0.6225124240662794
+    },
+    {
+      "name": "alignment",
+      "low": "askew",
+      "high": "aligned",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06817561388015747,
+      "pca_align": 0.26158061623573303,
+      "composite": 0.6450695107082356
+    },
+    {
+      "name": "exposure",
+      "low": "shielded",
+      "high": "exposed",
+      "source": "llm",
+      "auc": 0.9955555555555555,
+      "variance": 0.058898039162158966,
+      "pca_align": 0.25081130862236023,
+      "composite": 0.34597797364580396
+    },
+    {
+      "name": "gasiness",
+      "low": "liquid",
+      "high": "gaseous",
+      "source": "llm",
+      "auc": 0.9333333333333333,
+      "variance": 0.057557351887226105,
+      "pca_align": 0.16779352724552155,
+      "composite": 0.24398788319230763
+    },
+    {
+      "name": "neatness",
+      "low": "slovenly",
+      "high": "neat",
+      "source": "llm",
+      "auc": 0.9955555555555555,
+      "variance": 0.06476006656885147,
+      "pca_align": 0.29325154423713684,
+      "composite": 0.5576588142584886
+    },
+    {
+      "name": "neglect",
+      "low": "maintained",
+      "high": "neglected",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06983385235071182,
+      "pca_align": 0.3236827254295349,
+      "composite": 0.7061706005555688
+    },
+    {
+      "name": "modernity",
+      "low": "antique",
+      "high": "modern",
+      "source": "llm",
+      "auc": 0.9888888888888889,
+      "variance": 0.05998576804995537,
+      "pca_align": 0.17520374059677124,
+      "composite": 0.33965368961672204
+    },
+    {
+      "name": "value",
+      "low": "cheap",
+      "high": "precious",
+      "source": "both",
+      "auc": 1.0,
+      "variance": 0.06427989155054092,
+      "pca_align": 0.22866350412368774,
+      "composite": 0.5169962058601003
+    },
+    {
+      "name": "metallicity",
+      "low": "wooden",
+      "high": "metallic",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.060738347470760345,
+      "pca_align": 0.23428943753242493,
+      "composite": 0.38620370450856145
+    },
+    {
+      "name": "alertness",
+      "low": "drowsy",
+      "high": "alert",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06677570194005966,
+      "pca_align": 0.2510993778705597,
+      "composite": 0.6043513345703049
+    },
+    {
+      "name": "fear",
+      "low": "comforting",
+      "high": "scary",
+      "source": "both",
+      "auc": 1.0,
+      "variance": 0.06424558907747269,
+      "pca_align": 0.21487069129943848,
+      "composite": 0.5113968517318189
+    },
+    {
+      "name": "fragrance",
+      "low": "stinky",
+      "high": "fragrant",
+      "source": "llm",
+      "auc": 0.9688888888888889,
+      "variance": 0.06649932265281677,
+      "pca_align": 0.22920437157154083,
+      "composite": 0.5663961059982001
+    },
+    {
+      "name": "flow",
+      "low": "still",
+      "high": "flowing",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06450243294239044,
+      "pca_align": 0.23274299502372742,
+      "composite": 0.5238271151536733
+    },
+    {
+      "name": "softness",
+      "low": "squishy",
+      "high": "rigid",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06885206699371338,
+      "pca_align": 0.25956887006759644,
+      "composite": 0.6621184012646536
+    },
+    {
+      "name": "mystery",
+      "low": "obvious",
+      "high": "mysterious",
+      "source": "hand",
+      "auc": 1.0,
+      "variance": 0.053657252341508865,
+      "pca_align": 0.20690736174583435,
+      "composite": 0.2755050551702187
+    },
+    {
+      "name": "tempo",
+      "low": "leisurely",
+      "high": "hurried",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.062346138060092926,
+      "pca_align": 0.2543025612831116,
+      "composite": 0.4487829118864819
+    },
+    {
+      "name": "sadness",
+      "low": "joyful",
+      "high": "mournful",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06010820344090462,
+      "pca_align": 0.18726183474063873,
+      "composite": 0.3543066507355529
+    },
+    {
+      "name": "bravery",
+      "low": "cowardly",
+      "high": "brave",
+      "source": "llm",
+      "auc": 0.8688888888888889,
+      "variance": 0.06351464986801147,
+      "pca_align": 0.21851444244384766,
+      "composite": 0.3776803597915007
+    },
+    {
+      "name": "concreteness",
+      "low": "abstract",
+      "high": "concrete",
+      "source": "both",
+      "auc": 1.0,
+      "variance": 0.06297195702791214,
+      "pca_align": 0.2499280571937561,
+      "composite": 0.47349540320820915
+    },
+    {
+      "name": "confidence",
+      "low": "insecure",
+      "high": "confident",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.0611221008002758,
+      "pca_align": 0.24781066179275513,
+      "composite": 0.39865482939761865
+    },
+    {
+      "name": "height",
+      "low": "short",
+      "high": "tall",
+      "source": "both",
+      "auc": 0.96,
+      "variance": 0.055678047239780426,
+      "pca_align": 0.1904716193675995,
+      "composite": 0.249330589934749
+    },
+    {
+      "name": "turbulence",
+      "low": "laminar",
+      "high": "turbulent",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06792860478162766,
+      "pca_align": 0.25707924365997314,
+      "composite": 0.6357753339087779
+    },
+    {
+      "name": "certainty",
+      "low": "doubtful",
+      "high": "certain",
+      "source": "llm",
+      "auc": 0.9422222222222222,
+      "variance": 0.06209264695644379,
+      "pca_align": 0.20691078901290894,
+      "composite": 0.3790267426115411
+    },
+    {
+      "name": "pride",
+      "low": "humble",
+      "high": "proud",
+      "source": "llm",
+      "auc": 0.9822222222222223,
+      "variance": 0.05552117899060249,
+      "pca_align": 0.21065008640289307,
+      "composite": 0.27262709189529133
+    },
+    {
+      "name": "lethality",
+      "low": "benign",
+      "high": "lethal",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.061685629189014435,
+      "pca_align": 0.19714462757110596,
+      "composite": 0.39944658877510153
+    },
+    {
+      "name": "particle",
+      "low": "fine",
+      "high": "coarse",
+      "source": "llm",
+      "auc": 0.8999999999999999,
+      "variance": 0.05718470737338066,
+      "pca_align": 0.19261394441127777,
+      "composite": 0.21906153577550805
+    },
+    {
+      "name": "tenderness",
+      "low": "tough",
+      "high": "tender",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06398824602365494,
+      "pca_align": 0.23869766294956207,
+      "composite": 0.5120175954114206
+    },
+    {
+      "name": "similarity",
+      "low": "different",
+      "high": "similar",
+      "source": "llm",
+      "auc": 0.9422222222222223,
+      "variance": 0.05518031492829323,
+      "pca_align": 0.16795660555362701,
+      "composite": 0.22336876467866565
+    },
+    {
+      "name": "silence",
+      "low": "talkative",
+      "high": "silent",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06192310154438019,
+      "pca_align": 0.22990819811820984,
+      "composite": 0.4217200134237062
+    },
+    {
+      "name": "volume_sound",
+      "low": "whispering",
+      "high": "shouting",
+      "source": "llm",
+      "auc": 0.9911111111111112,
+      "variance": 0.0639568418264389,
+      "pca_align": 0.23967915773391724,
+      "composite": 0.502162528915657
+    },
+    {
+      "name": "speed_motion",
+      "low": "crawling",
+      "high": "racing",
+      "source": "llm",
+      "auc": 1.0,
+      "variance": 0.06091160327196121,
+      "pca_align": 0.23815391957759857,
+      "composite": 0.391415621423343
+    }
+  ]
+}

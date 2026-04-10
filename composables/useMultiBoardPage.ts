@@ -12,8 +12,7 @@
  */
 import { createGameConfig } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
-import { createBoardState, WORD_LENGTH } from '~/utils/types';
-import type { KeyState } from '~/utils/types';
+import { createBoardState, createKeyStates, WORD_LENGTH } from '~/utils/types';
 
 export function useMultiBoardPage(mode: GameMode, wordList: string[], boardCount: number) {
     const game = useGameStore();
@@ -55,17 +54,8 @@ export function useMultiBoardPage(mode: GameMode, wordList: string[], boardCount
         game.boardDefinitions = [];
         game.initKeyClasses();
 
-        // Initialize keyStates on all boards
         for (const board of game.boards) {
-            const keys: Record<string, KeyState> = {};
-            for (const char of langStore.characters) {
-                keys[char] = '';
-            }
-            keys['⟹'] = '';
-            keys['ENTER'] = '';
-            keys['DEL'] = '';
-            keys['⌫'] = '';
-            board.keyStates = keys;
+            board.keyStates = createKeyStates(langStore.characters);
         }
 
         game.showTilesAllBoards();

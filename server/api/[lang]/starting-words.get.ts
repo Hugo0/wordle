@@ -9,7 +9,7 @@
  */
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
-import { loadAllData } from '../../utils/data-loader';
+import { requireLang, langResponseFields } from '../../utils/data-loader';
 import { rankStartingWords, computeLetterFrequency } from '../../utils/word-analysis';
 
 const DATA_DIR = join(process.cwd(), 'data');
@@ -46,12 +46,7 @@ function computeForLang(lang: string): StartingWordsResult | null {
 }
 
 export default defineEventHandler((event) => {
-    const lang = getRouterParam(event, 'lang')!;
-    const data = loadAllData();
-
-    if (!data.configs[lang]) {
-        throw createError({ statusCode: 404, message: `Language '${lang}' not found` });
-    }
+    const { lang, data, config } = requireLang(event);
 
     if (!cache.has(lang)) {
         const result = computeForLang(lang);
@@ -62,14 +57,9 @@ export default defineEventHandler((event) => {
     }
 
     const cached = cache.get(lang)!;
-    const config = data.configs[lang]!;
 
     return {
-        lang,
-        lang_name: config.name || lang,
-        lang_name_native: config.name_native || lang,
-        meta: config.meta || {},
-        ui: config.ui || {},
+        ...langResponseFields(lang, config),
         ...cached,
     };
 });

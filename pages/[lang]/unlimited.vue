@@ -15,7 +15,7 @@ definePageMeta({
 const route = useRoute();
 const lang = route.params.lang as string;
 
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
+const { data: gameData, error } = await useFetch(`/api/${lang}/data?minimal=1`, { key: `lang-data-min-${lang}` });
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
@@ -24,7 +24,7 @@ const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, gameBoardRef,
     useGamePage(gameData, lang);
 
 // --- SEO ---
-const { data: allLangs } = await useFetch('/api/languages');
+const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
 const seo = useGameSeo({
     lang,
     mode: 'unlimited',
@@ -58,20 +58,22 @@ onMounted(() => {
 </script>
 
 <template>
-    <GamePageShell
-        :lang="lang"
-        :language-name="config?.name_native || config?.name || lang"
-        current-mode="unlimited"
-        :title="seo.modeLabel"
-        :subtitle="config?.name_native || lang"
-        :sidebar-open="sidebarOpen"
-        :visible="!!gameData"
-        @toggle-sidebar="toggleSidebar"
-        @close-sidebar="closeSidebar"
-        @new-game="startNewGame"
-    >
-        <GameBoard ref="gameBoardRef" />
-    </GamePageShell>
+    <div>
+        <GamePageShell
+            :lang="lang"
+            :language-name="config?.name_native || config?.name || lang"
+            current-mode="unlimited"
+            :title="seo.modeLabel"
+            :subtitle="config?.name_native || lang"
+            :sidebar-open="sidebarOpen"
+            :visible="!!gameData"
+            @toggle-sidebar="toggleSidebar"
+            @close-sidebar="closeSidebar"
+            @new-game="startNewGame"
+        >
+            <GameBoard ref="gameBoardRef" />
+        </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" :config="config!" />
+        <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" :config="config!" />
+    </div>
 </template>

@@ -6,6 +6,8 @@
  * Uses the editorial design system (Fraunces + Source Sans 3 + design tokens).
  * All data comes from localStorage game_results — no server data.
  */
+import { readJson } from '~/utils/storage';
+import { useAnimatedNumber } from '~/composables/useAnimatedNumber';
 import {
     BarChart2,
     Flame,
@@ -17,7 +19,6 @@ import {
     Columns2,
     Columns3,
     Grid2x2,
-    ArrowLeft,
     ChevronRight,
 } from 'lucide-vue-next';
 import { isClassicDailyStatsKey, GAME_MODE_CONFIG } from '~/utils/game-modes';
@@ -91,6 +92,12 @@ const totalGames = ref(0);
 const overallWinRate = ref(0);
 const currentStreak = ref(0);
 const bestStreak = ref(0);
+
+// Animated display values (count up from 0)
+const animGames = useAnimatedNumber(totalGames);
+const animWinRate = useAnimatedNumber(overallWinRate);
+const animStreak = useAnimatedNumber(currentStreak);
+const animBest = useAnimatedNumber(bestStreak);
 const overallDist = ref<Record<number, number>>(createEmptyDistribution(6));
 
 // Per-language (classic daily)
@@ -142,12 +149,8 @@ function loadStats() {
     overallDist.value = dist;
 
     // Language name cache (populated by homepage)
-    let langCache: Record<string, { language_name?: string; language_name_native?: string }> = {};
-    try {
-        langCache = JSON.parse(localStorage.getItem('languages_cache') || '{}');
-    } catch {
-        // ignore
-    }
+    const langCache: Record<string, { language_name?: string; language_name_native?: string }> =
+        readJson('languages_cache') ?? {};
 
     // Per-language breakdown (use store's per-key stats)
     const classicKeys = allKeys.filter(isClassicDailyStatsKey);
@@ -303,17 +306,10 @@ const sortedModes = computed(() =>
 </script>
 
 <template>
-    <div class="min-h-screen bg-paper text-ink transition-colors">
+    <AppShell lang="en" lang-name="English" home-href="/">
         <div class="max-w-[560px] mx-auto px-4 pt-6 pb-12">
             <!-- Header -->
             <header class="mb-10">
-                <NuxtLink
-                    to="/"
-                    class="inline-flex items-center gap-1 text-sm text-muted hover:text-ink transition-colors mb-4"
-                >
-                    <ArrowLeft :size="14" />
-                    Home
-                </NuxtLink>
                 <h1 class="heading-display text-[32px] sm:text-[40px] text-ink">Your Stats</h1>
                 <div class="editorial-rule-accent w-[60px] mt-3" />
             </header>
@@ -417,7 +413,7 @@ const sortedModes = computed(() =>
                                 class="font-display font-bold text-ink"
                                 style="font-size: 22px; font-variation-settings: 'opsz' 72"
                             >
-                                {{ totalGames }}
+                                {{ Math.round(animGames) }}
                             </div>
                             <div class="mono-label mt-0.5">Played</div>
                         </div>
@@ -427,7 +423,7 @@ const sortedModes = computed(() =>
                                 :class="overallWinRate >= 50 ? 'text-correct' : 'text-ink'"
                                 style="font-size: 22px; font-variation-settings: 'opsz' 72"
                             >
-                                {{ overallWinRate }}%
+                                {{ Math.round(animWinRate) }}%
                             </div>
                             <div class="mono-label mt-0.5">Win</div>
                         </div>
@@ -442,7 +438,7 @@ const sortedModes = computed(() =>
                             <span
                                 class="font-display font-bold text-[22px]"
                                 style="font-variation-settings: 'opsz' 72"
-                                >{{ currentStreak }}</span
+                                >{{ Math.round(animStreak) }}</span
                             >
                             <span class="mono-label">Streak</span>
                         </div>
@@ -454,7 +450,7 @@ const sortedModes = computed(() =>
                             <span
                                 class="font-display font-bold text-[22px]"
                                 style="font-variation-settings: 'opsz' 72"
-                                >{{ bestStreak }}</span
+                                >{{ Math.round(animBest) }}</span
                             >
                             <span class="mono-label">Best</span>
                         </div>
@@ -701,5 +697,5 @@ const sortedModes = computed(() =>
                 </div>
             </template>
         </div>
-    </div>
+    </AppShell>
 </template>

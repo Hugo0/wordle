@@ -6,6 +6,7 @@
  * Matches the legacy Flask index.html exactly.
  */
 import { useSettingsStore } from '~/stores/settings';
+import { readJson, writeJson } from '~/utils/storage';
 import { Flame, Check, Download } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
@@ -21,7 +22,7 @@ const settings = useSettingsStore();
 // Data fetching
 // ---------------------------------------------------------------------------
 
-const { data: langData } = await useFetch('/api/languages');
+const { data: langData } = await useFetch('/api/languages', { key: 'languages' });
 const { data: otherWordles } = await useFetch('/api/other-wordles');
 
 // Homepage config — SSR uses Accept-Language detection; client may override via ?lang=
@@ -235,21 +236,11 @@ onMounted(() => {
     analytics.trackHomepageView();
 
     // Load game results
-    try {
-        const stored = localStorage.getItem('game_results');
-        if (stored) {
-            gameResults.value = JSON.parse(stored);
-        }
-    } catch {
-        // ignore
-    }
+    const stored = readJson<Record<string, unknown>>('game_results');
+    if (stored) gameResults.value = stored;
 
     // Cache languages for game page
-    try {
-        localStorage.setItem('languages_cache', JSON.stringify(languages.value));
-    } catch {
-        // ignore
-    }
+    writeJson('languages_cache', languages.value);
 
     // Detect language: prefer localStorage (most recently played), then browser detection
     // SSR already set detectedLanguageCode from Accept-Language; override if localStorage differs
@@ -537,6 +528,12 @@ function openLink(url: string): void {
 </script>
 
 <template>
+    <AppShell
+        :lang="defaultLang"
+        :lang-name="defaultLangName"
+        :ui="hpUi || undefined"
+        home-href="/"
+    >
     <div class="pb-12">
         <!-- Announcement bar (disabled — re-enable for future announcements)
         <div
@@ -777,6 +774,7 @@ function openLink(url: string): void {
             @change-language="handleChangeLanguage"
         />
     </div>
+    </AppShell>
 
     <!-- Footer SEO links removed — Nuxt SSR renders all language pages server-side,
          so crawlers discover them via the sitemap and SSR-rendered language grid above.

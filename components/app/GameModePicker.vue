@@ -1,21 +1,13 @@
 <template>
-    <Teleport to="body">
-        <Transition name="modal-fade">
-            <div
-                v-if="visible"
-                class="fixed inset-0 z-50 flex items-start justify-center pt-[8vh] px-4 overflow-y-auto"
-            >
-                <!-- Backdrop -->
-                <div class="fixed inset-0 bg-ink/30" aria-hidden="true" @click="$emit('close')" />
-
-                <!-- Modal -->
-                <div
-                    class="relative bg-paper border border-rule shadow-xl w-full max-w-lg z-10 modal-animate"
-                    role="dialog"
-                    aria-modal="true"
-                    :aria-label="`Choose a game mode for ${languageName}`"
-                    @keydown.escape="$emit('close')"
-                >
+    <SharedBaseModal
+        :visible="visible"
+        size="lg"
+        align="top"
+        no-padding
+        no-close-button
+        :aria-label="`Choose a game mode for ${languageName}`"
+        @close="$emit('close')"
+    >
                     <!-- Header -->
                     <div class="px-6 pt-6 pb-4">
                         <h2 class="heading-section text-2xl text-ink">Choose a Game Mode</h2>
@@ -81,10 +73,7 @@
                             </div>
                         </button>
                     </div>
-                </div>
-            </div>
-        </Transition>
-    </Teleport>
+    </SharedBaseModal>
 </template>
 
 <script setup lang="ts">

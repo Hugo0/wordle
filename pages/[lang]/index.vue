@@ -6,6 +6,8 @@
  * initializes stores, and renders the game board + keyboard.
  */
 
+import { readLocal, writeLocal } from '~/utils/storage';
+
 definePageMeta({
     layout: 'game',
     // Force full remount when language changes — prevents game state bleed
@@ -32,14 +34,14 @@ function onBannerClick() {
 function dismissBanner() {
     showImprovementBanner.value = false;
     try {
-        localStorage.setItem(`banner_dismissed_${lang}`, '1');
+        writeLocal(`banner_dismissed_${lang}`, '1');
     } catch {
         // localStorage unavailable
     }
 }
 
 // --- Server-side data fetch (SSR) ---
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
+const { data: gameData, error } = await useFetch(`/api/${lang}/data`, { key: `lang-data-${lang}` });
 
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
@@ -50,7 +52,7 @@ const { langStore, game, stats, sidebarOpen, toggleSidebar, closeSidebar, gameBo
 
 // --- SEO ---
 const configVal = gameData.value.config;
-const { data: allLangs } = await useFetch('/api/languages');
+const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
 const seo = useGameSeo({
     lang,
     mode: 'classic',
@@ -72,7 +74,7 @@ onMounted(() => {
     // Show improvement banner for ko/ja if not dismissed
     if (IMPROVEMENT_LANGS.includes(lang)) {
         try {
-            if (!localStorage.getItem(`banner_dismissed_${lang}`)) {
+            if (!readLocal(`banner_dismissed_${lang}`)) {
                 showImprovementBanner.value = true;
             }
         } catch {
@@ -102,6 +104,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <div>
     <GamePageShell
         :lang="lang"
         :language-name="configVal.name_native || configVal.name || lang"
@@ -149,4 +152,5 @@ onMounted(() => {
     </GamePageShell>
 
     <GameSeoNoscript :lang="lang" mode="classic" :seo="seo" :config="configVal" />
+    </div>
 </template>

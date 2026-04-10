@@ -43,6 +43,11 @@ export default defineEventHandler((event) => {
         }
     }
 
+    // Semantic Explorer (English-only for v1)
+    urls.push(
+        `  <url><loc>${base}/en/semantic</loc><changefreq>daily</changefreq><priority>0.8</priority></url>`
+    );
+
     // Strategy pages (best starting words)
     for (const lc of Object.keys(data.languages).sort()) {
         urls.push(

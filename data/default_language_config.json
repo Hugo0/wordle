@@ -122,6 +122,7 @@
         "mode_desc_unlimited": "You have 6 tries to guess a hidden 5-letter word. Use the color clues to narrow down the answer. After each game, press \"Play Again\" to get a new word instantly — there's no daily limit.",
         "mode_desc_speed": "Start with 3 minutes on the clock. Each word you solve earns bonus time — solve in fewer guesses for bigger bonuses (+60s for 1 guess, +10s for 6). Failed words cost 30 seconds. Build combos by solving consecutive words for up to a 3x score multiplier. The pressure ramps up as you solve more words — the timer ticks faster every 3 words.",
         "mode_desc_multiboard": "{modeName} challenges you to solve {boardCount} Wordle boards at the same time using just {maxGuesses} guesses. Each guess appears on all unsolved boards simultaneously. Boards freeze when solved. The split-color keyboard shows which letters are correct on which boards. Start with common-letter words to gather clues across all boards at once.",
+        "mode_desc_semantic": "Navigate meaning space to find a hidden word in 15 guesses. No letters, no tiles — just the shape of meaning. Each guess receives a rank (#1 is the target) showing how close in meaning it is. Two compass hints point you toward the answer. Type any word in {langName} and watch the map fill with your trail of guesses around a hidden center.",
         "faq": [
             { "q": "How do I play Wordle in {langName}?", "a": "Visit wordle.global/{lang} to play the daily Wordle in {langName}. You have 6 tries to guess a 5-letter word. After each guess, tiles turn green (correct letter, correct position), yellow (correct letter, wrong position), or gray (letter not in the word)." },
             { "q": "Is there a new puzzle every day?", "a": "Yes. A new word is chosen each day. Everyone playing in the same language gets the same word, so you can compare results with friends." },
@@ -147,6 +148,13 @@
                 { "q": "How many guesses do I get in {modeName}?", "a": "You get {maxGuesses} guesses to solve all {boardCount} boards. Once a board is solved, it freezes and you can focus on the remaining boards." },
                 { "q": "What strategy works best for {modeName}?", "a": "Start with words that use common letters to gather information on all {boardCount} boards at once. Pay attention to the split-color keyboard — it shows which letters are correct on which boards." },
                 { "q": "Is {modeName} free?", "a": "Yes. {modeName} is completely free in all 80+ languages. No account or download required. Play as many rounds as you want." }
+            ],
+            "semantic": [
+                { "q": "What is Semantic Explorer in {langName}?", "a": "Semantic Explorer is a word-guessing game built on meaning, not letters. You type any {langName} word and the game tells you its rank — how many of the 50,000 words in the dictionary are closer to the hidden target than your guess. Rank #1 means you've found it. You have 15 guesses." },
+                { "q": "How is it different from classic Wordle?", "a": "Classic Wordle uses letters and positions; Semantic Explorer uses meaning. Any word length works, and two words are 'close' if they appear in similar contexts across billions of sentences. It's a completely different way of thinking about words." },
+                { "q": "What are compass hints?", "a": "After each guess, two compass hints tell you directions to move — 'think more burning', 'think more ancient', etc. They compare your latest guess to the target along physical and conceptual axes, helping you navigate toward the answer." },
+                { "q": "What does the oracle hint do?", "a": "You get one poetic hint per game, unlocked after your 5th guess. It's cryptic by design — think of it as a nudge, not an answer. Use it wisely." },
+                { "q": "Is Semantic Explorer free?", "a": "Yes. Semantic Explorer is completely free. No account, no download, no ads during gameplay. Every day has a new hidden word, shared by all players in the same language." }
             ]
         },
         "howto": [
@@ -169,8 +177,21 @@
                 { "name": "Start a game", "text": "Visit wordle.global/{lang}/{modeName} to play {modeName} in {langName}. {boardCount} boards appear with different hidden words." },
                 { "name": "Guess across all boards", "text": "Type a 5-letter word and press Enter. Your guess appears on all {boardCount} boards at once. Each board shows its own color clues (green, yellow, gray)." },
                 { "name": "Solve all {boardCount} boards", "text": "Solved boards freeze in place. Use the split-color keyboard to track which letters work on which boards. Solve all {boardCount} within {maxGuesses} guesses to win." }
+            ],
+            "semantic": [
+                { "name": "Type any word", "text": "No letter restrictions — any {langName} word works. Each guess receives a rank: #1 means you've found the target, #50,000 means you're far away." },
+                { "name": "Read the compass", "text": "Two compass hints tell you which direction to think — 'more burning', 'more ancient', 'more alive'. They compare your latest guess to the target along meaningful axes." },
+                { "name": "Watch the map", "text": "Your guesses appear as dots on a meaning map. Closer dots = lower rank = closer in meaning. The target sits at the center." },
+                { "name": "Find the target in 15", "text": "Use the leaderboard, compass hints, and map to converge on the hidden word. After guess 5, you can request one oracle hint if you're stuck." }
             ]
-        }
+        },
+        "tips_semantic": [
+            { "title": "Start wide", "text": "Try a common concrete noun on your first guess to calibrate the compass. 'House', 'animal', or 'tool' work well as openers." },
+            { "title": "Follow the compass", "text": "Each compass hint compares your latest guess to the target on a meaningful axis. 'Think more burning' means the target is hotter or more fiery than what you guessed." },
+            { "title": "Lower rank = closer", "text": "Rank #1 is the target itself. Rank #50 means only 49 words in the dictionary are closer. Watch the leaderboard — when the rank drops, you're on the right track." },
+            { "title": "Save the oracle", "text": "You only get one hint per game. Wait until the compass hints feel noisy — around guess 8 or 9 — before using it." },
+            { "title": "Try an opposite", "text": "If two guesses score similarly cold, try something that's the opposite of one of them. Opposites in meaning can crack open new compass directions." }
+        ]
     },
     "ui": {
         "coverage_label": "Coverage",
@@ -315,7 +336,7 @@
         "mode_octordle_desc": "8 boards, 1 keyboard, 13 guesses.",
         "mode_sedecordle_desc": "16 boards, 1 keyboard, 21 guesses.",
         "mode_duotrigordle_desc": "32 boards, 1 keyboard, 37 guesses.",
-        "mode_semantic_desc": "Navigate meaning space. 10 guesses.",
+        "mode_semantic_desc": "Navigate meaning space. 15 guesses.",
         "mode_custom_desc": "Pick a word, share a link. Challenge your friends.",
         "mode_party_desc": "Play the same word with friends. See who solves it fastest."
     }

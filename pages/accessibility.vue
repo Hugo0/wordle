@@ -23,13 +23,9 @@ useHead({
 </script>
 
 <template>
-    <div class="min-h-screen bg-paper text-ink">
+    <AppShell lang="en" lang-name="English" home-href="/">
         <main class="max-w-2xl mx-auto px-4 py-8">
-            <NuxtLink to="/" class="text-accent hover:underline text-sm"
-                >&larr; Back to Wordle Global</NuxtLink
-            >
-
-            <h1 class="heading-display text-3xl mt-4 mb-6">Accessibility Statement</h1>
+            <h1 class="heading-display text-3xl mb-6">Accessibility Statement</h1>
 
             <p class="mb-4">
                 Wordle Global is committed to being accessible to all players, including those who
@@ -109,5 +105,5 @@ useHead({
                 Last updated: March 2026. This statement is reviewed with each major release.
             </p>
         </main>
-    </div>
+    </AppShell>
 </template>
