@@ -130,11 +130,13 @@ if (import.meta.client) {
     });
 }
 
+// Must be at top level of setup
+const { register: registerPasskey } = useWebAuthn({ registerEndpoint: '/api/webauthn/register' });
+
 async function addPasskey() {
     passkeyRegistering.value = true;
     try {
-        const { register } = useWebAuthn({ registerEndpoint: '/api/webauthn/register' });
-        await register({ userName: authUser.value?.email || authUser.value?.id || `user-${Date.now()}` });
+        await registerPasskey({ userName: authUser.value?.displayName || authUser.value?.email || 'user' });
         passkeyAdded.value = true;
     } catch {
         // User cancelled or failed
@@ -244,6 +246,53 @@ function getBadgeIcon(iconName: string) {
 const productStreak = ref(0);
 const productBestStreak = ref(0);
 const animProductStreak = useAnimatedNumber(productStreak);
+const streakExpanded = ref(false);
+
+// --- Calendar heatmap for streak (28-day rolling window) ---
+interface CalendarDay {
+    date: number | null;
+    state: 'won' | 'lost' | 'missed' | 'today' | 'future' | 'empty';
+}
+
+function calendarDayClass(day: CalendarDay): string {
+    switch (day.state) {
+        case 'won': return 'bg-correct-soft';
+        case 'lost': return 'cal-lost';
+        case 'missed': return 'bg-muted-soft';
+        case 'today': return 'outline outline-2 outline-ink -outline-offset-1';
+        default: return '';
+    }
+}
+
+const calendarDays = computed<CalendarDay[]>(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dayStates = buildDailyResultMap(statsStore.gameResults);
+    const todayDow = (today.getDay() + 6) % 7;
+    const endOfWeek = new Date(today);
+    endOfWeek.setDate(endOfWeek.getDate() + (6 - todayDow));
+    const startDate = new Date(endOfWeek);
+    startDate.setDate(startDate.getDate() - 27);
+    const days: CalendarDay[] = [];
+    const todayKey = toLocalDay(today);
+    for (let i = 0; i < 28; i++) {
+        const d = new Date(startDate);
+        d.setDate(d.getDate() + i);
+        const dayKey = toLocalDay(d);
+        const isToday = dayKey === todayKey;
+        const isFuture = d > today;
+        let state: CalendarDay['state'];
+        if (isToday) {
+            state = dayStates.get(dayKey) || 'today';
+        } else if (isFuture) {
+            state = 'future';
+        } else {
+            state = dayStates.get(dayKey) || 'missed';
+        }
+        days.push({ date: d.getDate(), state });
+    }
+    return days;
+});
 
 // Classic daily (from store's calculateTotalStats)
 const totalGames = ref(0);
@@ -491,7 +540,7 @@ const sortedModes = computed(() =>
         <div class="max-w-[560px] mx-auto px-4 pt-6 pb-12">
             <!-- Header -->
             <header class="mb-10">
-                <h1 class="heading-display text-[32px] sm:text-[40px] text-ink">Your Stats</h1>
+                <h1 class="heading-display text-[32px] sm:text-[40px] text-ink">Profile</h1>
                 <div class="editorial-rule-accent w-[60px] mt-3" />
             </header>
 
@@ -596,8 +645,12 @@ const sortedModes = computed(() =>
             </div>
 
             <template v-else-if="loaded">
-                <!-- ═══ Product-Wide Streak Hero ═══ -->
-                <section class="mb-10 text-center border border-rule" style="padding: 28px 16px 24px;">
+                <!-- ═══ Product-Wide Streak Hero (clickable → calendar) ═══ -->
+                <section
+                    class="mb-10 text-center border border-rule cursor-pointer transition-colors hover:bg-paper-warm"
+                    style="padding: 28px 16px 24px;"
+                    @click="streakExpanded = !streakExpanded"
+                >
                     <Flame :size="36" :class="productStreak > 0 ? 'text-flame' : 'text-muted'" class="mx-auto mb-1" />
                     <div
                         class="font-display font-bold"
@@ -612,6 +665,41 @@ const sortedModes = computed(() =>
                     </div>
                     <div v-else class="text-xs text-muted italic mt-1.5" style="font-family: var(--font-display);">
                         Play today's daily to start a streak
+                    </div>
+
+                    <!-- Calendar heatmap (expands on click) -->
+                    <div v-if="streakExpanded" class="mt-5 pt-4 border-t border-rule text-left" @click.stop>
+                        <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">Last 28 Days</div>
+                        <div class="grid grid-cols-7 gap-0.5 mb-1" style="font-family: var(--font-mono); font-size: 8px; color: var(--color-muted)">
+                            <span v-for="(d, i) in ['M','T','W','T','F','S','S']" :key="i" class="text-center">{{ d }}</span>
+                        </div>
+                        <div class="grid grid-cols-7 gap-0.5">
+                            <div
+                                v-for="(day, i) in calendarDays"
+                                :key="i"
+                                class="aspect-square rounded-sm flex items-center justify-center"
+                                :class="calendarDayClass(day)"
+                                style="font-family: var(--font-mono); font-size: 9px; color: var(--color-muted)"
+                            >
+                                <span v-if="day.date">{{ day.date }}</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mt-2 justify-center" style="font-size: 9px; color: var(--color-muted); font-family: var(--font-mono)">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> Won</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm inline-block" style="background: var(--color-accent-soft, #e8d5d0)" /> Lost</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> Missed</span>
+                        </div>
+                        <!-- Current / Longest row -->
+                        <div class="grid grid-cols-2 gap-px bg-rule mt-3">
+                            <div class="bg-paper text-center py-3">
+                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ productStreak }}</div>
+                                <div class="mono-label mt-0.5">Current</div>
+                            </div>
+                            <div class="bg-paper text-center py-3">
+                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ productBestStreak }}</div>
+                                <div class="mono-label mt-0.5">Longest</div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -680,177 +768,6 @@ const sortedModes = computed(() =>
                                 {{ languagesConquered }}
                             </div>
                             <div class="mono-label mt-1.5">Conquered</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ═══ Daily Classic ═══ -->
-                <section v-if="totalGames > 0" class="mb-10">
-                    <div class="mono-label mb-4">
-                        <Square :size="12" class="inline -mt-0.5 mr-1" />
-                        Daily Classic
-                    </div>
-
-                    <!-- Streak strip -->
-                    <div
-                        class="flex border border-rule"
-                        style="background: var(--color-rule); gap: 1px"
-                    >
-                        <div class="flex-1 bg-paper text-center" style="padding: 14px 8px">
-                            <div
-                                class="font-display font-bold text-ink"
-                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                            >
-                                {{ Math.round(animGames) }}
-                            </div>
-                            <div class="mono-label mt-0.5">Played</div>
-                        </div>
-                        <div class="flex-1 bg-paper text-center" style="padding: 14px 8px">
-                            <div
-                                class="font-display font-bold"
-                                :class="overallWinRate >= 50 ? 'text-correct' : 'text-ink'"
-                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                            >
-                                {{ Math.round(animWinRate) }}%
-                            </div>
-                            <div class="mono-label mt-0.5">Win</div>
-                        </div>
-                        <div
-                            class="flex-1 bg-paper flex items-center justify-center gap-1.5"
-                            style="padding: 14px 8px"
-                        >
-                            <Flame
-                                :size="14"
-                                :class="currentStreak > 0 ? 'text-flame' : 'text-muted'"
-                            />
-                            <span
-                                class="font-display font-bold text-[22px]"
-                                style="font-variation-settings: 'opsz' 72"
-                                >{{ Math.round(animStreak) }}</span
-                            >
-                            <span class="mono-label">Streak</span>
-                        </div>
-                        <div
-                            class="flex-1 bg-paper flex items-center justify-center gap-1.5"
-                            style="padding: 14px 8px"
-                        >
-                            <Trophy :size="14" class="text-muted" />
-                            <span
-                                class="font-display font-bold text-[22px]"
-                                style="font-variation-settings: 'opsz' 72"
-                                >{{ Math.round(animBest) }}</span
-                            >
-                            <span class="mono-label">Best</span>
-                        </div>
-                    </div>
-
-                    <!-- Distribution -->
-                    <div class="border border-t-0 border-rule" style="padding: 14px 16px">
-                        <div class="space-y-1">
-                            <div v-for="n in 6" :key="n" class="flex items-center gap-2">
-                                <span
-                                    class="font-mono font-semibold text-[12px] w-3 text-right text-muted"
-                                >
-                                    {{ n }}
-                                </span>
-                                <div
-                                    class="h-[20px] flex items-center justify-end px-2 font-mono text-[10px] font-semibold text-white transition-all"
-                                    style="min-width: 20px"
-                                    :class="overallDist[n] > 0 ? 'bg-ink' : 'bg-muted-soft'"
-                                    :style="{ width: distBarWidth(overallDist, n) }"
-                                >
-                                    <span v-if="overallDist[n] > 0">{{ overallDist[n] }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ═══ Game Modes ═══ -->
-                <section
-                    v-if="sortedModes.length > 0 && sortedModes.some((m) => m.mode !== 'classic')"
-                    class="mb-10"
-                >
-                    <div class="mono-label mb-4">Game Modes</div>
-
-                    <div class="space-y-3">
-                        <div v-for="m in sortedModes" :key="m.mode" class="border border-rule">
-                            <!-- Mode header -->
-                            <div
-                                class="flex items-center gap-3 bg-paper-warm"
-                                style="padding: 12px 16px"
-                            >
-                                <component :is="m.icon" :size="16" class="text-ink" />
-                                <span class="heading-section text-[15px]">{{ m.label }}</span>
-                                <span class="mono-label ml-auto">{{ m.games }} games</span>
-                            </div>
-                            <!-- Mode stats row -->
-                            <div
-                                class="grid grid-cols-4"
-                                style="background: var(--color-rule); gap: 1px"
-                            >
-                                <div class="bg-paper text-center" style="padding: 10px 8px">
-                                    <div
-                                        class="font-display font-bold text-[18px] text-ink"
-                                        style="font-variation-settings: 'opsz' 72"
-                                    >
-                                        {{ m.winPct }}%
-                                    </div>
-                                    <div class="mono-label mt-0.5">Win</div>
-                                </div>
-                                <div class="bg-paper text-center" style="padding: 10px 8px">
-                                    <div
-                                        class="font-display font-bold text-[18px] text-ink"
-                                        style="font-variation-settings: 'opsz' 72"
-                                    >
-                                        {{ m.avgAttempts }}
-                                    </div>
-                                    <div class="mono-label mt-0.5">Avg</div>
-                                </div>
-                                <div class="bg-paper text-center" style="padding: 10px 8px">
-                                    <div
-                                        class="font-display font-bold text-[18px]"
-                                        :class="m.streak > 0 ? 'text-correct' : 'text-ink'"
-                                        style="font-variation-settings: 'opsz' 72"
-                                    >
-                                        {{ m.streak }}
-                                    </div>
-                                    <div class="mono-label mt-0.5">Streak</div>
-                                </div>
-                                <div class="bg-paper text-center" style="padding: 10px 8px">
-                                    <div
-                                        class="font-display font-bold text-[18px] text-ink"
-                                        style="font-variation-settings: 'opsz' 72"
-                                    >
-                                        {{ m.bestStreak }}
-                                    </div>
-                                    <div class="mono-label mt-0.5">Best</div>
-                                </div>
-                            </div>
-                            <!-- Mini distribution -->
-                            <div style="padding: 10px 16px">
-                                <div class="flex items-end gap-[2px]" style="height: 28px">
-                                    <div
-                                        v-for="n in m.maxGuesses"
-                                        :key="n"
-                                        class="flex-1 rounded-t-sm transition-all"
-                                        :class="m.distribution[n] > 0 ? 'bg-ink' : 'bg-muted-soft'"
-                                        :style="{
-                                            height: distBarWidth(m.distribution, n),
-                                            minHeight: m.distribution[n] > 0 ? '4px' : '2px',
-                                        }"
-                                    />
-                                </div>
-                                <div class="flex gap-[2px] mt-0.5">
-                                    <span
-                                        v-for="n in m.maxGuesses"
-                                        :key="n"
-                                        class="flex-1 text-center font-mono text-[8px] text-muted"
-                                    >
-                                        {{ n }}
-                                    </span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -936,55 +853,8 @@ const sortedModes = computed(() =>
                     </div>
                 </section>
 
-                <!-- ═══ Languages ═══ -->
-                <section v-if="perLang.length > 0" class="mb-10">
-                    <div class="mono-label mb-4">Your Languages</div>
-
-                    <div class="border border-rule divide-y divide-rule">
-                        <NuxtLink
-                            v-for="l in perLang"
-                            :key="l.code"
-                            :to="`/${l.code}`"
-                            class="flex items-center gap-3 hover:bg-paper-warm transition-colors"
-                            style="padding: 12px 16px"
-                        >
-                            <img
-                                v-if="useFlag(l.code)"
-                                :src="useFlag(l.code)!"
-                                :alt="l.name"
-                                class="w-6 h-6 rounded-full object-cover flex-shrink-0"
-                            />
-                            <div
-                                v-else
-                                class="w-6 h-6 rounded-full bg-paper-warm border border-rule flex items-center justify-center text-ink text-[9px] font-display font-bold flex-shrink-0"
-                            >
-                                {{ l.nameNative?.charAt(0) || l.code.charAt(0).toUpperCase() }}
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <span class="text-sm font-medium text-ink">{{ l.name }}</span>
-                                <span
-                                    v-if="l.nameNative && l.nameNative !== l.name"
-                                    class="text-xs text-muted ml-1.5"
-                                >
-                                    {{ l.nameNative }}
-                                </span>
-                            </div>
-                            <div class="flex items-center gap-4 text-xs text-muted shrink-0">
-                                <span class="tabular-nums">{{ l.games }}</span>
-                                <span class="tabular-nums">{{ l.winPct }}%</span>
-                                <span
-                                    v-if="l.streak > 0"
-                                    class="text-correct font-semibold tabular-nums"
-                                >
-                                    <Flame :size="11" class="inline -mt-0.5 text-flame" />{{
-                                        l.streak
-                                    }}
-                                </span>
-                                <ChevronRight :size="14" class="text-muted" />
-                            </div>
-                        </NuxtLink>
-                    </div>
-                </section>
+                <!-- Languages section removed — per-language breakdowns create anxiety.
+                     Product-wide streak + overview is what matters. -->
 
                 <!-- ═══ Badges (collapsed by default, earned first) ═══ -->
                 <section v-if="allBadges.length > 0 && authLoggedIn" id="badges" class="mb-10 scroll-mt-16">
@@ -1015,3 +885,9 @@ const sortedModes = computed(() =>
         </div>
     </AppShell>
 </template>
+
+<style scoped>
+.cal-lost {
+    background: var(--color-accent-soft, #e8d5d0);
+}
+</style>

@@ -171,9 +171,22 @@ const remainingCount = computed(() =>
 /** The auto-paired partner axis name (for CSS highlighting). */
 const partnerAxisName = computed(() => sliceAxes.value?.[1] ?? null);
 
-const availableAxes = computed(() =>
-    bestAxes.value.map((a) => ({ name: a.name, low: a.low, high: a.high }))
-);
+// Pass all axes to MeaningMap so the legend can find info for any paired axis
+// (the partner may be outside the top 6 visible chips)
+const availableAxes = computed(() => {
+    const base = bestAxes.value.map((a) => ({ name: a.name, low: a.low, high: a.high }));
+    // Ensure the active pair's axes are included even if outside top 6
+    if (sliceAxes.value) {
+        const baseNames = new Set(base.map((a) => a.name));
+        for (const axName of sliceAxes.value) {
+            if (!baseNames.has(axName)) {
+                const found = allHighQualityAxes.value.find((a) => a.name === axName);
+                if (found) base.push({ name: found.name, low: found.low, high: found.high });
+            }
+        }
+    }
+    return base;
+});
 
 /** When the user clicks one axis, auto-pair with the best complementary
  *  second axis — the one that adds the most additional spread to the
