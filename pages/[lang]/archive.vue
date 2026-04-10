@@ -210,6 +210,14 @@ onMounted(() => {
             </p>
         </header>
 
+        <!-- Mode filter tabs -->
+        <div class="mode-tabs">
+            <button class="mode-tab active">Classic</button>
+            <button class="mode-tab disabled" disabled>Speed <span class="coming-soon">Soon</span></button>
+            <button class="mode-tab disabled" disabled>Multi-Board <span class="coming-soon">Soon</span></button>
+            <button class="mode-tab disabled" disabled>Semantic <span class="coming-soon">Soon</span></button>
+        </div>
+
         <div class="word-grid">
             <template v-for="(w, wi) in words" :key="w.day_idx">
                 <!-- Today's word, not yet played -->
@@ -346,6 +354,45 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.mode-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--color-rule);
+    margin-bottom: 24px;
+    gap: 0;
+}
+.mode-tab {
+    flex: none;
+    padding: 10px 16px;
+    text-align: center;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.15s;
+    background: none;
+}
+.mode-tab.active {
+    color: var(--color-ink);
+    border-bottom-color: var(--color-ink);
+}
+.mode-tab.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.coming-soon {
+    font-size: 7px;
+    letter-spacing: 0.06em;
+    background: var(--color-paper-warm);
+    padding: 1px 4px;
+    border-radius: 2px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
 .archive-page {
     min-height: 100vh;
     background: var(--color-paper);

@@ -56,22 +56,22 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
-        <GamePageShell
-            :lang="lang"
-            :language-name="config?.name_native || config?.name || lang"
-            current-mode="unlimited"
-            title="Wordle"
-            :subtitle="`${config?.name_native || lang} · Unlimited`"
-            :sidebar-open="sidebarOpen"
-            :visible="!!gameData"
-            @toggle-sidebar="toggleSidebar"
-            @close-sidebar="closeSidebar"
-            @new-game="startNewGame"
-        >
-            <GameBoard ref="gameBoardRef" />
-        </GamePageShell>
+    <GamePageShell
+        :lang="lang"
+        :language-name="config?.name_native || config?.name || lang"
+        current-mode="unlimited"
+        title="Wordle"
+        :subtitle="`${config?.name_native || lang} · Unlimited`"
+        :sidebar-open="sidebarOpen"
+        :visible="!!gameData"
+        @toggle-sidebar="toggleSidebar"
+        @close-sidebar="closeSidebar"
+        @new-game="startNewGame"
+    >
+        <GameBoard ref="gameBoardRef" />
 
-        <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" :config="config!" />
-    </div>
+        <template #seo>
+            <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" :config="config!" />
+        </template>
+    </GamePageShell>
 </template>

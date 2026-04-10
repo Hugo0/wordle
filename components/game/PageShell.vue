@@ -38,7 +38,7 @@
                 />
             </div>
             <div
-                class="wrapper container mx-auto flex flex-col flex-1 min-h-0 w-full safe-area-inset"
+                class="wrapper container mx-auto flex flex-col flex-1 min-h-0 w-full safe-area-inset overflow-hidden"
                 :class="maxWidthClass"
             >
                 <!-- Pre-keyboard slot (banner, speed timer, boards, etc) -->
@@ -124,6 +124,10 @@
             <slot name="overlays" />
         </div>
     </div>
+    <!-- SEO content renders OUTSIDE the game viewport so it doesn't
+         compete with the game board for flex space. Uses scroll-snap
+         in the layout to become the next snap section. -->
+    <slot name="seo" />
 </template>
 
 <script setup lang="ts">

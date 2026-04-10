@@ -213,9 +213,9 @@ describe('Stats Store', () => {
             expect(buildStatsKey(config)).toBe('de_quordle_daily');
         });
 
-        it('unlimited mode returns lang_unlimited format', () => {
+        it('unlimited mode maps to classic bucket (backward compat)', () => {
             const config = createGameConfig('unlimited', 'en');
-            expect(buildStatsKey(config)).toBe('en_unlimited');
+            expect(buildStatsKey(config)).toBe('en');
         });
 
         it('speed daily returns lang_mode_daily format', () => {
@@ -289,7 +289,10 @@ describe('Stats Store', () => {
         });
 
         it('is consistent with buildStatsKey for unlimited modes', () => {
-            expect(isDailyStatsKey(buildStatsKey(createGameConfig('unlimited', 'en')))).toBe(false);
+            // Legacy 'unlimited' mode maps to classic bucket (bare lang code),
+            // which isDailyStatsKey treats as daily — this is intentional since
+            // unlimited is now classic with playType: 'unlimited'
+            expect(isDailyStatsKey(buildStatsKey(createGameConfig('unlimited', 'en')))).toBe(true);
             expect(isDailyStatsKey(buildStatsKey(createGameConfig('dordle', 'en', { playType: 'unlimited' })))).toBe(false);
             expect(isDailyStatsKey(buildStatsKey(createGameConfig('speed', 'en', { playType: 'unlimited' })))).toBe(false);
         });

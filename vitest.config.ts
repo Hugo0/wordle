@@ -24,7 +24,7 @@ function nuxtMetaPlugin(): Plugin {
 export default defineConfig({
     test: {
         environment: 'jsdom',
-        exclude: ['**/node_modules/**', '**/e2e/**'],
+        exclude: ['**/node_modules/**', '**/e2e/**', '**/.claude/worktrees/**'],
         globalSetup: ['./tests/setup-server.ts'],
     },
     resolve: {

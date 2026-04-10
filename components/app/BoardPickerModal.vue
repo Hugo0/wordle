@@ -44,7 +44,7 @@
                     <NuxtLink
                         :to="`/${langCode}/${mode.id}`"
                         class="text-btn text-xs"
-                        @click.native="$emit('close')"
+                        @click="$emit('close')"
                     >
                         Daily
                     </NuxtLink>
@@ -52,7 +52,7 @@
                     <NuxtLink
                         :to="`/${langCode}/${mode.id}?play=unlimited`"
                         class="text-btn text-xs text-accent"
-                        @click.native="$emit('close')"
+                        @click="$emit('close')"
                     >
                         Unlimited
                     </NuxtLink>

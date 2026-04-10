@@ -118,7 +118,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
     <GamePageShell
         :lang="lang"
         :language-name="configVal.name_native || configVal.name || lang"
@@ -163,8 +162,9 @@ onMounted(() => {
 
         <!-- The game board -->
         <GameBoard ref="gameBoardRef" />
-    </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" mode="classic" :seo="seo" :config="configVal" />
-    </div>
+        <template #seo>
+            <GameSeoNoscript :lang="lang" mode="classic" :seo="seo" :config="configVal" />
+        </template>
+    </GamePageShell>
 </template>

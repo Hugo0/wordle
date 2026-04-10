@@ -301,13 +301,22 @@ export interface UiStrings {
     mode_unlimited_desc?: string;
     mode_speed_label?: string;
     mode_speed_desc?: string;
+    mode_dordle_label?: string;
     mode_dordle_desc?: string;
+    mode_quordle_label?: string;
     mode_quordle_desc?: string;
+    mode_octordle_label?: string;
     mode_octordle_desc?: string;
+    mode_sedecordle_label?: string;
     mode_sedecordle_desc?: string;
+    mode_duotrigordle_label?: string;
     mode_duotrigordle_desc?: string;
+    mode_semantic_label?: string;
     mode_semantic_desc?: string;
+    mode_multiboard_label?: string;
+    mode_custom_label?: string;
     mode_custom_desc?: string;
+    mode_party_label?: string;
     mode_party_desc?: string;
 }
 

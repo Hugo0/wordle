@@ -7,7 +7,7 @@
  */
 import { useSettingsStore } from '~/stores/settings';
 import { readJson, writeJson } from '~/utils/storage';
-import { Flame, Check } from 'lucide-vue-next';
+import { Flame, Check, Compass, Square, Zap, Columns2, User, CircleCheck } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
     GAME_MODES_UI,
@@ -15,8 +15,18 @@ import {
     getModeLabel,
     getModeDescription,
 } from '~/composables/useGameModes';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import { buildDailyResultMap, toLocalDay, stepBack } from '~/utils/streak-dates';
+import type { GameResult } from '~/utils/types';
 
 const settings = useSettingsStore();
+const { loggedIn: authLoggedIn, user: authUser } = useAuth();
+const { openLoginModal } = useLoginModal();
+
+// PWA install — inject from pwa.client.ts plugin
+const pwaInstall = import.meta.client ? inject<{ install: () => void; status: () => { isStandalone: boolean; dismissed: boolean; hasPrompt: boolean; isIOS: boolean } }>('pwaInstall') : undefined;
+const showPwaInstall = ref(false);
+
 
 // ---------------------------------------------------------------------------
 // Data fetching
@@ -31,7 +41,7 @@ const { data: homepageConfig } = await useFetch('/api/homepage-config', {
     query: { lang: hpLangOverride },
 });
 const hpUi = computed(() => homepageConfig.value?.ui);
-const hpLang = computed(() => homepageConfig.value?.lang || 'en');
+const hpLang = computed(() => (homepageConfig.value as { lang?: string } | null)?.lang || 'en');
 
 // Resolved homepage strings — config always has defaults from data-loader merge
 const hp = computed(() => {
@@ -222,6 +232,134 @@ const detectedLanguageCode = ref<string | null>(hpLang.value !== 'en' ? hpLang.v
 
 const analytics = useAnalytics();
 
+// ---------------------------------------------------------------------------
+// Tier detection & personalization
+// ---------------------------------------------------------------------------
+
+const isReturningUser = computed(() => Object.keys(gameResults.value).length > 0);
+
+/** Product-wide streak: any daily mode in any language. */
+const productStreak = computed(() => {
+    if (!isReturningUser.value) return 0;
+    const dayMap = buildDailyResultMap(gameResults.value as Record<string, GameResult[]>);
+    if (dayMap.size === 0) return 0;
+    const today = toLocalDay(new Date());
+    let streak = 0;
+    let day = today;
+    while (dayMap.get(day) === 'won') {
+        streak++;
+        day = stepBack(day);
+    }
+    if (streak === 0 && dayMap.get(stepBack(today)) === 'won') {
+        day = stepBack(today);
+        while (dayMap.get(day) === 'won') {
+            streak++;
+            day = stepBack(day);
+        }
+    }
+    return streak;
+});
+
+const showSemanticFeature = computed(() => {
+    if (!isReturningUser.value) return false;
+    // Only show for languages where semantic is available
+    const semanticLangs = GAME_MODE_CONFIG.semantic.languages;
+    if (semanticLangs && !semanticLangs.includes(defaultLang.value)) return false;
+    // Hide if user has already played semantic
+    for (const key of Object.keys(gameResults.value)) {
+        if (key.includes('semantic')) return false;
+    }
+    return true;
+});
+
+/** Mode icon mapping for continue-playing cards */
+const MODE_CARD_ICONS: Record<string, any> = {
+    classic: Square,
+    speed: Zap,
+    dordle: Columns2,
+    semantic: Compass,
+};
+
+/** Continue Playing cards — top 3 most recently played mode+language combos. */
+const continuePlayingCards = computed(() => {
+    if (!isReturningUser.value) return [];
+
+    const cards: Array<{
+        key: string;
+        href: string;
+        flagSrc: string | null;
+        langName: string;
+        title: string;
+        subtitle: string;
+        streak: number;
+        cta: string;
+        borderColor: string;
+        modeIcon: any;
+        dailySolved: boolean;
+    }> = [];
+
+    const entries: Array<{ code: string; mode: string; lastDate: string; results: any[] }> = [];
+
+    for (const [key, results] of Object.entries(gameResults.value)) {
+        if (!results || results.length === 0) continue;
+        const lastResult = results[results.length - 1]!;
+
+        let code: string;
+        let mode: string;
+        if (!key.includes('_')) {
+            code = key;
+            mode = 'classic';
+        } else if (key.endsWith('_unlimited') || (!key.endsWith('_daily') && key.includes('_') && !key.match(/^[a-z]{2,3}_[a-z]+_daily$/))) {
+            continue; // Skip unlimited entries
+        } else if (key.endsWith('_daily')) {
+            const parts = key.replace(/_daily$/, '').split('_');
+            code = parts[0]!;
+            mode = parts.slice(1).join('_');
+        } else {
+            continue;
+        }
+
+        if (!languages.value[code]) continue;
+        entries.push({ code, mode, lastDate: lastResult.date, results });
+    }
+
+    entries.sort((a, b) => (b.lastDate > a.lastDate ? 1 : -1));
+
+    for (const entry of entries.slice(0, 3)) {
+        const lang = languages.value[entry.code];
+        if (!lang) continue;
+
+        const modeDef = GAME_MODE_CONFIG[entry.mode as keyof typeof GAME_MODE_CONFIG];
+        if (!modeDef) continue;
+
+        const modeUI = GAME_MODES_UI.find((m) => m.id === entry.mode);
+        const lastResult = entry.results[entry.results.length - 1]!;
+        const isSolved = lastResult.won;
+        const route = modeUI ? getModeRoute(modeUI, entry.code) : `/${entry.code}`;
+        const langStreak = getCurrentStreak(entry.code);
+
+        cards.push({
+            key: `${entry.code}_${entry.mode}`,
+            href: isSolved
+                ? `${route}${route?.includes('?') ? '&' : '?'}play=unlimited`
+                : route || `/${entry.code}`,
+            flagSrc: showFlag(entry.code) ? getFlag(entry.code) : null,
+            langName: lang.language_name_native,
+            title: lang.language_name_native,
+            subtitle: modeDef.label,
+            streak: langStreak,
+            cta: isSolved ? 'Unlimited →' : 'Play →',
+            borderColor: isSolved ? 'var(--color-correct, #2d8544)' : 'var(--color-rule, #d4cfc7)',
+            modeIcon: MODE_CARD_ICONS[entry.mode] || Square,
+            dailySolved: isSolved,
+        });
+    }
+
+    return cards;
+});
+
+const showBoardPicker = ref(false);
+
 onMounted(() => {
     settings.init();
 
@@ -229,7 +367,7 @@ onMounted(() => {
     analytics.trackHomepageView();
 
     // Load game results
-    const stored = readJson<Record<string, unknown>>('game_results');
+    const stored = readJson<Record<string, Array<{ won: boolean; attempts: number | string; date: string }>>>('game_results');
     if (stored) gameResults.value = stored;
 
     // Cache languages for game page
@@ -246,6 +384,12 @@ onMounted(() => {
         }
     } else if (!detectedLanguageCode.value) {
         detectedLanguageCode.value = clientLang;
+    }
+
+    // PWA install detection
+    if (pwaInstall) {
+        const s = pwaInstall.status();
+        showPwaInstall.value = !s.isStandalone && !s.dismissed && (s.hasPrompt || s.isIOS);
     }
 
     // Escape key closes modals
@@ -453,31 +597,68 @@ const defaultLangFlag = computed(() =>
     showFlag(defaultLang.value) ? useFlag(defaultLang.value) : null
 );
 
-// Homepage shows first 5 modes from shared source + "& More" card
-const HOMEPAGE_MODE_IDS = ['classic', 'unlimited', 'speed', 'dordle', 'quordle'];
+/**
+ * Homepage mode cards — 4 cards per design doc:
+ * Classic, Semantic (featured), Speed, Multi-Board (opens picker).
+ */
+interface HomepageModeCard {
+    id: string;
+    icon: any;
+    label: string;
+    desc: string;
+    route: string | null;
+    featured?: boolean;
+    opensModal?: boolean;
+}
 
-const homepageModes = computed(() => {
+const homepageModes = computed((): HomepageModeCard[] => {
     const lang = defaultLang.value;
     const ui = hpUi.value;
-    const featured = GAME_MODES_UI.filter((m) => HOMEPAGE_MODE_IDS.includes(m.id)).map((m) => ({
-        id: m.id,
-        icon: m.icon,
-        label: getModeLabel(m, ui),
-        desc: getModeDescription(m, ui),
-        tag: m.badge || '',
-        route: getModeRoute(m, lang),
-    }));
-    featured.push({
-        id: 'more',
-        icon: null as any,
-        label: ui?.homepage_and_more || '& More',
-        desc:
-            ui?.homepage_and_more_desc ||
-            'Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon.',
-        tag: 'EXPLORE',
-        route: null,
-    });
-    return featured;
+    const classic = GAME_MODES_UI.find((m) => m.id === 'classic')!;
+    const speed = GAME_MODES_UI.find((m) => m.id === 'speed')!;
+    const semanticLangs = GAME_MODE_CONFIG.semantic.languages;
+    const showSemantic = !semanticLangs || semanticLangs.includes(lang);
+
+    const cards: HomepageModeCard[] = [
+        {
+            id: 'classic',
+            icon: classic.icon,
+            label: getModeLabel(classic, ui),
+            desc: getModeDescription(classic, ui),
+            route: getModeRoute(classic, lang),
+        },
+    ];
+
+    if (showSemantic) {
+        cards.push({
+            id: 'semantic',
+            icon: Compass,
+            label: ui?.mode_semantic_label || 'Semantic Explorer',
+            desc: ui?.mode_semantic_desc || 'Find words by meaning. Navigate a map of language.',
+            route: `/${lang}/semantic`,
+            featured: true,
+        });
+    }
+
+    cards.push(
+        {
+            id: 'speed',
+            icon: speed.icon,
+            label: getModeLabel(speed, ui),
+            desc: getModeDescription(speed, ui),
+            route: getModeRoute(speed, lang),
+        },
+        {
+            id: 'multiboard',
+            icon: GAME_MODES_UI.find((m) => m.id === 'dordle')?.icon || classic.icon,
+            label: ui?.mode_multiboard_label || 'Multi-Board',
+            desc: 'Dordle, Quordle, Octordle, and more — 2 to 32 boards at once.',
+            route: null,
+            opensModal: true,
+        },
+    );
+
+    return cards;
 });
 
 function scrollToLanguages(): void {
@@ -489,18 +670,8 @@ function handleChangeLanguage(): void {
     setTimeout(scrollToLanguages, 200);
 }
 
-function openMoreModes(): void {
-    const code = defaultLang.value;
-    const lang = languages.value[code];
-    selectedLangCode.value = code;
-    selectedLangName.value = lang?.language_name_native || lang?.language_name || code;
-    showModePicker.value = true;
-}
-
-function openLink(url: string): void {
-    if (import.meta.client) {
-        window.open(url);
-    }
+function openMultiBoardPicker(): void {
+    showBoardPicker.value = true;
 }
 </script>
 
@@ -553,45 +724,165 @@ function openLink(url: string): void {
             </button>
         </div>
 
-        <!-- ═══ Mode Cards ═══ -->
-        <div
-            class="grid grid-cols-1 sm:grid-cols-3 border border-rule max-w-[800px] mx-4 sm:mx-auto mb-14"
-            style="background: var(--color-rule); gap: 1px"
-        >
-            <template v-for="mode in homepageModes" :key="mode.id">
-                <NuxtLink
-                    v-if="mode.route"
-                    :to="mode.route"
-                    class="bg-paper py-8 px-7 text-left transition-colors flex flex-col hover:bg-paper-warm cursor-pointer"
-                    @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
-                >
-                    <div class="flex gap-1 mb-3">
-                        <component :is="mode.icon" :size="18" class="text-ink" />
+        <!-- ═══ Personalized Hub (Tier 1+: has played before) ═══ -->
+        <div v-if="isReturningUser" class="max-w-[800px] mx-4 sm:mx-auto mb-10">
+            <!-- Signed-in user greeting (Tier 2) -->
+            <div v-if="authLoggedIn && authUser" class="flex items-center gap-3 mb-4">
+                <img
+                    v-if="authUser.avatarUrl"
+                    :src="authUser.avatarUrl"
+                    alt=""
+                    class="w-10 h-10 rounded-full object-cover"
+                    referrerpolicy="no-referrer"
+                />
+                <div v-else class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center heading-body text-sm">
+                    {{ (authUser.displayName || authUser.email || '?')[0]?.toUpperCase() }}
+                </div>
+                <div>
+                    <div class="text-sm font-semibold text-ink">{{ authUser.displayName || 'Player' }}</div>
+                    <div v-if="productStreak > 0" class="mono-label flex items-center gap-1" style="color: var(--color-flame);">
+                        <Flame :size="12" /> {{ productStreak }} day streak
                     </div>
-                    <div class="heading-section text-[22px] mb-1.5">{{ mode.label }}</div>
-                    <p class="text-sm text-muted leading-[1.45] flex-1">{{ mode.desc }}</p>
-                    <span
-                        class="editorial-tag mt-3 self-start"
-                        :class="mode.tag === 'NEW' ? 'editorial-tag-new' : ''"
+                    <div v-else class="mono-label flex items-center gap-1 text-muted">
+                        <Flame :size="12" /> Play today's daily to start a streak
+                    </div>
+                </div>
+            </div>
+
+            <!-- Streak badge for non-signed-in returning users (Tier 1) -->
+            <div v-else class="flex items-center justify-center gap-1 mb-4">
+                <Flame :size="14" :class="productStreak > 0 ? 'text-flame' : 'text-muted'" />
+                <span class="mono-label" :style="{ color: productStreak > 0 ? 'var(--color-flame)' : 'var(--color-muted)', fontSize: '12px' }">
+                    {{ productStreak > 0 ? `${productStreak} day streak` : 'Play today\'s daily to start a streak' }}
+                </span>
+            </div>
+
+            <!-- Continue Playing cards -->
+            <div v-if="continuePlayingCards.length > 0" class="mb-6">
+                <div class="mono-label mb-2 px-1">Continue Playing</div>
+                <div class="flex flex-col gap-2">
+                    <NuxtLink
+                        v-for="card in continuePlayingCards"
+                        :key="card.key"
+                        :to="card.href"
+                        class="flex items-center gap-3 px-4 py-3 border transition-colors hover:bg-paper-warm"
+                        :style="{ borderColor: card.borderColor }"
                     >
-                        {{ mode.tag }}
-                    </span>
-                </NuxtLink>
-                <button
-                    v-else
-                    class="bg-paper py-8 px-7 text-left transition-colors flex flex-col hover:bg-paper-warm cursor-pointer"
-                    @click="openMoreModes()"
-                >
-                    <div class="flex gap-1 mb-3">
-                        <span class="text-muted text-lg">···</span>
-                    </div>
-                    <div class="heading-section text-[22px] mb-1.5">{{ mode.label }}</div>
-                    <p class="text-sm text-muted leading-[1.45] flex-1">{{ mode.desc }}</p>
-                    <span class="editorial-tag mt-3 self-start">
-                        {{ mode.tag }}
-                    </span>
-                </button>
-            </template>
+                        <!-- Stacked icon: mode icon with flag badge -->
+                        <div class="relative flex-shrink-0 w-10 h-10">
+                            <div class="w-10 h-10 rounded-full border border-rule bg-paper-warm flex items-center justify-center">
+                                <component :is="card.modeIcon" :size="18" class="text-ink" />
+                            </div>
+                            <img
+                                v-if="card.flagSrc"
+                                :src="card.flagSrc"
+                                :alt="card.langName"
+                                class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full object-cover border border-paper"
+                            />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="text-sm font-semibold text-ink">{{ card.title }}</div>
+                            <div class="text-xs text-muted">{{ card.subtitle }}</div>
+                        </div>
+                        <div class="flex-shrink-0 flex items-center gap-1.5">
+                            <CircleCheck v-if="card.dailySolved" :size="16" class="text-correct" />
+                            <template v-else-if="card.streak > 0">
+                                <Flame :size="14" class="text-flame" />
+                                <span class="mono-label" style="color: var(--color-flame); font-size: 10px;">{{ card.streak }}</span>
+                            </template>
+                            <span v-else class="mono-label text-muted" style="font-size: 10px;">{{ card.cta }}</span>
+                        </div>
+                    </NuxtLink>
+                </div>
+            </div>
+
+            <!-- Sign-in CTA (Tier 1 only) -->
+            <button
+                v-if="!authLoggedIn"
+                class="flex items-center justify-center gap-2 mx-auto mb-4 px-5 py-2 text-xs text-muted hover:text-ink transition-colors cursor-pointer"
+                @click="openLoginModal()"
+            >
+                <User :size="14" />
+                <span>Sign in to sync your streak</span>
+            </button>
+
+            <!-- PWA install CTA (not installed, not dismissed) -->
+            <div
+                v-if="showPwaInstall"
+                class="flex items-center gap-3 px-4 py-3 border border-rule mb-4"
+            >
+                <span class="text-xs text-muted flex-1">Install for quick daily access — no app store needed</span>
+                <button class="text-xs text-ink font-semibold hover:underline cursor-pointer" @click="pwaInstall?.install()">Install</button>
+            </div>
+
+            <!-- Featured Semantic for returning users who haven't tried it -->
+            <NuxtLink
+                v-if="showSemanticFeature"
+                to="/en/semantic"
+                class="flex items-center gap-4 px-5 py-4 border-2 border-ink transition-colors hover:bg-paper-warm mb-4 relative"
+            >
+                <span class="absolute -top-2 right-4 font-mono text-[8px] tracking-[0.12em] uppercase bg-accent text-white px-2 py-0.5">NEW</span>
+                <div class="w-12 h-12 flex items-center justify-center bg-ink text-paper flex-shrink-0">
+                    <Compass :size="22" />
+                </div>
+                <div>
+                    <div class="heading-section text-base">Semantic Explorer</div>
+                    <div class="text-xs text-muted">Find words by meaning. Navigate a map of language.</div>
+                </div>
+            </NuxtLink>
+        </div>
+
+        <!-- ═══ Mode Cards ═══ -->
+        <div class="max-w-[800px] mx-4 sm:mx-auto mb-14">
+            <div class="flex flex-col gap-2">
+                <template v-for="mode in homepageModes" :key="mode.id">
+                    <!-- Featured card (Semantic) -->
+                    <NuxtLink
+                        v-if="mode.featured && mode.route"
+                        :to="mode.route"
+                        class="flex items-center gap-4 px-5 py-5 border-2 border-ink transition-colors hover:bg-paper-warm relative"
+                        @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
+                    >
+                        <span class="absolute -top-2 right-4 font-mono text-[8px] tracking-[0.12em] uppercase bg-accent text-white px-2 py-0.5">NEW</span>
+                        <div class="w-12 h-12 flex items-center justify-center bg-ink text-paper flex-shrink-0">
+                            <component :is="mode.icon" :size="22" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="heading-section text-lg">{{ mode.label }}</div>
+                            <div class="text-xs text-muted">{{ mode.desc }}</div>
+                        </div>
+                    </NuxtLink>
+                    <!-- Multi-Board card (opens picker) -->
+                    <button
+                        v-else-if="mode.opensModal"
+                        class="flex items-center gap-4 px-5 py-4 border border-rule transition-colors hover:bg-paper-warm cursor-pointer text-left w-full"
+                        @click="openMultiBoardPicker()"
+                    >
+                        <div class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm flex-shrink-0">
+                            <component :is="mode.icon" :size="18" class="text-ink" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="heading-section text-base">{{ mode.label }}</div>
+                            <div class="text-xs text-muted">{{ mode.desc }}</div>
+                        </div>
+                    </button>
+                    <!-- Regular mode card -->
+                    <NuxtLink
+                        v-else-if="mode.route"
+                        :to="mode.route"
+                        class="flex items-center gap-4 px-5 py-4 border border-rule transition-colors hover:bg-paper-warm"
+                        @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
+                    >
+                        <div class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm flex-shrink-0">
+                            <component :is="mode.icon" :size="18" class="text-ink" />
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="heading-section text-base">{{ mode.label }}</div>
+                            <div class="text-xs text-muted">{{ mode.desc }}</div>
+                        </div>
+                    </NuxtLink>
+                </template>
+            </div>
         </div>
 
         <!-- ═══ Language Section ═══ -->
@@ -705,6 +996,14 @@ function openLink(url: string): void {
             @close="showModePicker = false"
             @select="showModePicker = false"
             @change-language="handleChangeLanguage"
+        />
+
+        <!-- Multi-Board Picker modal -->
+        <AppBoardPickerModal
+            :visible="showBoardPicker"
+            :lang-code="defaultLang"
+            :ui="hpUi || undefined"
+            @close="showBoardPicker = false"
         />
     </div>
     </AppShell>

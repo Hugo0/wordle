@@ -68,23 +68,23 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
 </script>
 
 <template>
-    <div>
-        <GamePageShell
-            :lang="lang"
-            :language-name="config?.name_native || config?.name || lang"
-            :current-mode="mode"
-            :title="seo.modeLabel"
-            :subtitle="isDaily ? `${config?.name_native || lang} · #${gameData?.todays_idx}` : `${config?.name_native || lang} · Unlimited`"
-            :sidebar-open="sidebarOpen"
-            :max-width="modeDef.shellMaxWidth || 'lg'"
-            :visible="!!gameData"
-            @toggle-sidebar="toggleSidebar"
-            @close-sidebar="closeSidebar"
-            @new-game="startNewGame"
-        >
-            <GameMultiBoardLayout ref="multiBoardRef" />
-        </GamePageShell>
+    <GamePageShell
+        :lang="lang"
+        :language-name="config?.name_native || config?.name || lang"
+        :current-mode="mode"
+        :title="seo.modeLabel"
+        :subtitle="isDaily ? `${config?.name_native || lang} · #${gameData?.todays_idx}` : `${config?.name_native || lang} · Unlimited`"
+        :sidebar-open="sidebarOpen"
+        :max-width="modeDef.shellMaxWidth || 'lg'"
+        :visible="!!gameData"
+        @toggle-sidebar="toggleSidebar"
+        @close-sidebar="closeSidebar"
+        @new-game="startNewGame"
+    >
+        <GameMultiBoardLayout ref="multiBoardRef" />
 
-        <GameSeoNoscript :lang="lang" :mode="mode" :seo="seo" :config="config!" />
-    </div>
+        <template #seo>
+            <GameSeoNoscript :lang="lang" :mode="mode" :seo="seo" :config="config!" />
+        </template>
+    </GamePageShell>
 </template>

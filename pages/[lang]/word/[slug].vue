@@ -606,12 +606,15 @@ const subtitleText = computed(() => {
                     <div class="skeleton-map-box" />
                 </div>
 
-                <!-- Daily stats: only for daily words -->
+                <!-- Appeared in: which daily modes featured this word -->
                 <section v-if="isDailyWord" class="stats-section">
-                    <div class="section-label">Daily Stats</div>
-                    <p class="stats-placeholder">
-                        <em>Community stats render here for daily words.</em>
-                    </p>
+                    <div class="section-label">Appeared In</div>
+                    <div class="appeared-in">
+                        <div class="appeared-mode">
+                            <span class="appeared-mode-name">Classic Daily</span>
+                            <span class="appeared-mode-detail">#{{ dayIdx }} · {{ wordDate }}</span>
+                        </div>
+                    </div>
                 </section>
 
                 <div class="share-wrap">
@@ -697,12 +700,28 @@ const subtitleText = computed(() => {
     border-top: 1px solid var(--color-rule);
     border-bottom: 1px solid var(--color-rule);
 }
-.stats-placeholder {
-    text-align: center;
+.appeared-in {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+.appeared-mode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+.appeared-mode-name {
     font-family: var(--font-display);
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-ink);
+}
+.appeared-mode-detail {
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--color-muted);
-    margin: 0;
 }
 
 .section-label {

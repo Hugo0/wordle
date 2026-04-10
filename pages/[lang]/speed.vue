@@ -274,7 +274,8 @@ onMounted(() => {
                 @close="showSpeedResults = false"
             />
         </template>
+        <template #seo>
+            <GameSeoNoscript :lang="lang" mode="speed" :seo="seo" :config="config!" />
+        </template>
     </GamePageShell>
-
-    <GameSeoNoscript :lang="lang" mode="speed" :seo="seo" :config="config!" />
 </template>

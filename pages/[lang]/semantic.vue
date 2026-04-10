@@ -81,6 +81,11 @@ const seo = useGameSeo({
 // --- Semantic game state (local composable) ---
 const sem = useSemanticGame(lang);
 
+// Game unavailable if start failed and no guesses were loaded (not a mid-game error)
+const gameUnavailable = computed(() =>
+    !sem.starting.value && sem.invalidMessage.value && sem.guesses.value.length === 0 && !sem.dayIdx.value
+);
+
 /** The word the compass hints are computed from — best guess, not latest.
  *  Shown in the compass header subtitle so the player knows the reference. */
 const latestGuessWord = computed<string | null>(() => {
@@ -353,7 +358,19 @@ async function onNewGame() {
         @close-sidebar="closeSidebar"
         @new-game="onNewGame"
     >
-        <div class="semantic-body">
+        <!-- Unavailable state: embeddings not generated yet -->
+        <div v-if="gameUnavailable" class="flex flex-col items-center justify-center flex-1 px-6 py-20 text-center">
+            <h2 class="heading-display text-3xl text-ink mb-4">Semantic Explorer</h2>
+            <p class="text-muted max-w-md mb-6">
+                This mode is temporarily unavailable — the word embedding data is being generated.
+                Check back in a few minutes.
+            </p>
+            <button class="px-6 py-2 bg-accent text-paper font-body font-bold hover:opacity-90 transition-opacity" @click="sem.startGame()">
+                Retry
+            </button>
+        </div>
+
+        <div v-else class="semantic-body">
             <section class="semantic-layout">
                 <!-- Main column: map card (title + canvas + input) -->
                 <div class="main-col">
@@ -481,9 +498,10 @@ async function onNewGame() {
             @share="onShare"
             @new-game="onNewGame"
         />
+        <template #seo>
+            <GameSeoNoscript :lang="lang" mode="semantic" :seo="seo" :config="configVal" />
+        </template>
     </GamePageShell>
-
-    <GameSeoNoscript :lang="lang" mode="semantic" :seo="seo" :config="configVal" />
 </template>
 
 <style scoped>
