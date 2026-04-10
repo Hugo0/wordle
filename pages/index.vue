@@ -563,6 +563,11 @@ function selectLanguageWithCode(code: string, source: 'search' | 'list' | 'flag'
     selectedLangCode.value = code;
     selectedLangName.value = lang?.language_name_native || lang?.language_name || code;
     showModePicker.value = true;
+    // Update homepage language so mode cards + UI reflect the selected language
+    detectedLanguageCode.value = code;
+    if (code !== hpLang.value) {
+        hpLangOverride.value = code;
+    }
     analytics.trackLanguageSelect(code, source);
 }
 
@@ -610,6 +615,8 @@ interface HomepageModeCard {
     tag: string;
     tagAccent?: boolean;
     opensModal?: boolean;
+    /** Show a flag icon when mode is only available in specific languages */
+    langFlag?: string | null;
 }
 
 const homepageModes = computed((): HomepageModeCard[] => {
@@ -618,7 +625,7 @@ const homepageModes = computed((): HomepageModeCard[] => {
     const classic = GAME_MODES_UI.find((m) => m.id === 'classic')!;
     const speed = GAME_MODES_UI.find((m) => m.id === 'speed')!;
     const semanticLangs = GAME_MODE_CONFIG.semantic.languages;
-    const showSemantic = !semanticLangs || semanticLangs.includes(lang);
+    const isSemanticNative = !semanticLangs || semanticLangs.includes(lang);
 
     const cards: HomepageModeCard[] = [
         {
@@ -629,19 +636,18 @@ const homepageModes = computed((): HomepageModeCard[] => {
             route: getModeRoute(classic, lang),
             tag: 'CLASSIC',
         },
-    ];
-
-    if (showSemantic) {
-        cards.push({
+        {
             id: 'semantic',
             icon: Compass,
             label: ui?.mode_semantic_label || 'Semantic Explorer',
             desc: 'Find words by meaning, not by letters. Navigate a map of language.',
-            route: `/${lang}/semantic`,
+            route: '/en/semantic',
             tag: 'NEW',
             tagAccent: true,
-        });
-    }
+            // Show English flag when user's language isn't English
+            langFlag: isSemanticNative ? null : useFlag('en'),
+        },
+    ];
 
     cards.push(
         {
@@ -882,8 +888,16 @@ function openMultiBoardPicker(): void {
                         class="flex items-center gap-4 px-5 py-4 border border-rule transition-colors hover:bg-paper-warm"
                         @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
                     >
-                        <div class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm flex-shrink-0">
-                            <component :is="mode.icon" :size="18" class="text-ink" />
+                        <div class="relative w-10 h-10 flex-shrink-0">
+                            <div class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm">
+                                <component :is="mode.icon" :size="18" class="text-ink" />
+                            </div>
+                            <img
+                                v-if="mode.langFlag"
+                                :src="mode.langFlag"
+                                alt="English only"
+                                class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full border border-paper object-cover"
+                            />
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="heading-section text-base">{{ mode.label }}</div>
