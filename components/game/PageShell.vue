@@ -1,5 +1,6 @@
 <template>
-    <div v-show="visible" class="flex h-[100dvh] snap-start" :class="wrapperClass">
+    <div v-show="visible">
+    <div class="flex h-[100dvh] snap-start" :class="wrapperClass">
         <!-- Sidebar (fixed overlay) -->
         <AppSidebar
             :is-open="sidebarOpen"
@@ -128,6 +129,7 @@
          compete with the game board for flex space. Uses scroll-snap
          in the layout to become the next snap section. -->
     <slot name="seo" />
+    </div>
 </template>
 
 <script setup lang="ts">

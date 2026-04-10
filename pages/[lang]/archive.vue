@@ -303,7 +303,7 @@ onMounted(() => {
                     <div class="card-footer">
                         <span class="day-date">{{ formatDate(w.date) }}</span>
                         <span v-if="w.stats && w.stats.total > 0" class="stats">
-                            {{ w.stats.total }} {{ label('plays', 'plays') }}
+                            {{ w.stats.total }} {{ w.stats.total === 1 ? label('play', 'play') : label('plays', 'plays') }}
                             &middot;
                             {{ winRate(w.stats) }}% {{ label('win', 'win') }}
                         </span>
