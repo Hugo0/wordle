@@ -231,6 +231,16 @@ function onAddContextWord(w: string) {
     }
 }
 
+/** When removing from auto-populated context, promote to explicit URL
+ *  first (minus the removed word) so the removal actually persists. */
+function onRemoveContextWord(w: string) {
+    if (!context.isCustom.value) {
+        context.setWords(contextWords.value.filter((x) => x !== w));
+    } else {
+        context.removeWord(w);
+    }
+}
+
 // ── SEO ─────────────────────────────────────────────────────────────────
 const ui = computed(() => primary.value?.basic?.ui ?? {});
 const label = (key: string, fallback: string) => ui.value[key] || fallback;
@@ -596,7 +606,7 @@ const subtitleText = computed(() => {
                     :is-custom="context.isCustom.value"
                     :is-full="context.isFull.value"
                     @add="onAddContextWord"
-                    @remove="context.removeWord"
+                    @remove="onRemoveContextWord"
                     @reset-to-auto="context.resetToAuto"
                 />
 
