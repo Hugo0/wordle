@@ -35,8 +35,20 @@
             :to="unlimitedRoute"
             class="text-xs text-ink underline underline-offset-2 hover:opacity-70 transition-opacity mb-2"
         >
-            Play unlimited &rarr;
+            Keep playing &rarr;
         </NuxtLink>
+
+        <!-- Sign-in nudge (logged out only) -->
+        <button
+            v-if="!authLoggedIn"
+            class="text-xs text-muted hover:text-ink transition-colors cursor-pointer mb-2"
+            @click="openLoginModal()"
+        >
+            Sign in to protect your streak &rarr;
+        </button>
+
+        <!-- Ad slot placeholder (future: Ezoic/Mediavine banner) -->
+        <!-- <div class="w-full max-w-sm h-[50px] mb-2" id="post-game-ad" /> -->
 
         <!-- Mode discovery -->
         <div class="w-full max-w-sm">
@@ -71,6 +83,8 @@ defineEmits<{ newGame: [] }>();
 
 const game = useGameStore();
 const lang = useLanguageStore();
+const { loggedIn: authLoggedIn } = useAuth();
+const { openLoginModal } = useLoginModal();
 
 const isDaily = computed(() => game.gameConfig.playType === 'daily');
 const isSingleBoard = computed(
@@ -99,7 +113,9 @@ const otherModes = computed(() => {
     const currentMode = game.gameConfig.mode;
     const langCode = lang.languageCode;
     const ui = lang.config?.ui;
-    return GAME_MODES_UI.filter((m) => m.enabled && m.id !== currentMode && m.id !== 'classic')
+    return GAME_MODES_UI.filter(
+        (m) => m.enabled && m.id !== currentMode && m.id !== 'classic' && m.id !== 'unlimited'
+    )
         .slice(0, 4)
         .map((m) => ({
             ...m,

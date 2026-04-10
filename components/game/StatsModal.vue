@@ -315,13 +315,13 @@
                                 {{ lang.config?.text?.share || 'Share Result' }}
                             </template>
                         </button>
-                        <!-- Daily modes → "Unlimited" secondary button -->
+                        <!-- Daily modes → "Keep Playing" secondary button -->
                         <NuxtLink
                             v-if="game.gameOver && isDaily && unlimitedRoute"
                             :to="unlimitedRoute"
                             class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                         >
-                            Unlimited
+                            Keep Playing
                         </NuxtLink>
                         <!-- Unlimited modes → "New Game" / "Play Again" -->
                         <button
@@ -363,27 +363,13 @@
                     </div>
 
                     <!-- Sign-in CTA — shown once per session when logged out -->
-                    <div
+                    <button
                         v-if="game.gameOver && !authLoggedIn && !signInDismissed"
-                        class="editorial-rule stats-section flex items-center justify-between gap-2"
+                        class="w-full text-center py-2.5 text-xs text-muted hover:text-ink transition-colors cursor-pointer"
+                        @click="authLoginWithGoogle()"
                     >
-                        <span class="mono-label flex-1">
-                            Sign in to save your streak across devices
-                        </span>
-                        <button
-                            class="text-sm text-accent font-semibold hover:underline flex-shrink-0"
-                            @click="authLoginWithGoogle()"
-                        >
-                            Sign in
-                        </button>
-                        <button
-                            class="text-muted hover:text-ink transition-colors flex-shrink-0"
-                            aria-label="Dismiss"
-                            @click="signInDismissed = true"
-                        >
-                            <X :size="14" />
-                        </button>
-                    </div>
+                        Sign in to protect your streak &rarr;
+                    </button>
 
                     <!-- Next wordle timer — daily modes only -->
                     <div
