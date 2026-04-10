@@ -117,10 +117,6 @@ useHead({
     ],
 });
 
-const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
-if (allLangs.value?.language_codes) {
-    useHreflang(allLangs.value.language_codes, '/best-starting-words');
-}
 </script>
 
 <template>

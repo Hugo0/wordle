@@ -4,7 +4,11 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-06-14',
     devtools: { enabled: true },
 
-    modules: ['@pinia/nuxt', '@vite-pwa/nuxt', '@posthog/nuxt'],
+    modules: ['@pinia/nuxt', '@vite-pwa/nuxt', '@posthog/nuxt', 'nuxt-auth-utils'],
+
+    nuxtAuthUtils: {
+        webAuthn: false,
+    },
 
     posthogConfig: {
         publicKey: 'phc_DMY07B83ghetzxgIbBhobbdSjlueym6vNVVZwM79SPp',
@@ -29,6 +33,28 @@ export default defineNuxtConfig({
         // Layout transition disabled — the page transition already handles
         // the visual change; a layout transition on top causes double-fade.
         layoutTransition: false,
+        head: {
+            charset: 'utf-8',
+            viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+            link: [
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
+                {
+                    rel: 'apple-touch-icon',
+                    sizes: '180x180',
+                    href: '/favicon/apple-touch-icon.png',
+                },
+                { rel: 'manifest', href: '/manifest.json' },
+                // Pre-resolve DNS for analytics (only external domain)
+                { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+                { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
+            ],
+            meta: [
+                // Default og:image fallback — pages override with useSeoMeta({ ogImage })
+                { property: 'og:image', content: 'https://wordle.global/images/og-image.png' },
+                { property: 'og:image:width', content: '1200' },
+                { property: 'og:image:height', content: '630' },
+            ],
+        },
     },
 
     experimental: {
@@ -60,6 +86,7 @@ export default defineNuxtConfig({
         dataDir: process.env.DATA_DIR || '',
         nuxtDataDir: '', // Set in nitro plugin at startup
         openaiApiKey: process.env.OPENAI_API_KEY || '',
+        databaseUrl: process.env.DATABASE_URL || '',
         wordImagesDir: '',
         wordDefsDir: '',
         wordStatsDir: '',
@@ -69,28 +96,6 @@ export default defineNuxtConfig({
     nitro: {
         // Pre-load data at startup
         preset: 'node-server',
-    },
-
-    app: {
-        head: {
-            charset: 'utf-8',
-            viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
-            link: [
-                { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
-                {
-                    rel: 'apple-touch-icon',
-                    sizes: '180x180',
-                    href: '/favicon/apple-touch-icon.png',
-                },
-                { rel: 'manifest', href: '/manifest.json' },
-            ],
-            meta: [
-                // Default og:image fallback — pages override with useSeoMeta({ ogImage })
-                { property: 'og:image', content: 'https://wordle.global/images/og-image.png' },
-                { property: 'og:image:width', content: '1200' },
-                { property: 'og:image:height', content: '630' },
-            ],
-        },
     },
 
     pwa: {

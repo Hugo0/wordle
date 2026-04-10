@@ -249,6 +249,12 @@ def draw_timer_arc(draw, cx, cy, radius, progress=0.7):
 # ═══════════════════════════════════════════════════════════════════════════
 
 
+def gen_classic(draw, img, tagline, is_rtl, lang_code):
+    """Single board, centered — the classic daily Wordle."""
+    cy = 340
+    draw_board(draw, W // 2, cy, rows=6, tile_size=28, gap=5, solved_row=4)
+
+
 def gen_unlimited(draw, img, tagline, is_rtl, lang_code):
     cy = 340
     draw_board(draw, W // 2 - 100, cy, rows=5, tile_size=26, gap=5, solved_row=3)
@@ -392,6 +398,7 @@ def draw_centered_at(draw, text, cx, cy, f, fill):
 # ═══════════════════════════════════════════════════════════════════════════
 
 MODE_GENERATORS = {
+    "classic": gen_classic,
     "unlimited": gen_unlimited,
     "speed": gen_speed,
     "dordle": gen_dordle,
@@ -403,6 +410,7 @@ MODE_GENERATORS = {
 }
 
 MODE_LABELS = {
+    "classic": "Wordle",
     "unlimited": "Unlimited",
     "speed": "Speed Streak",
     "dordle": "Dordle",
@@ -414,6 +422,7 @@ MODE_LABELS = {
 }
 
 MODE_TAGLINES_EN = {
+    "classic": "Guess the word in 6 tries — a new puzzle every day",
     "unlimited": "No waiting — play as many as you want",
     "speed": "Race the clock — 5 minutes, as many words as you can",
     "dordle": "2 boards, 1 keyboard, 7 guesses",

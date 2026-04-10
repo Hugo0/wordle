@@ -10,6 +10,11 @@ import {
  * name (canonical); legacy numeric URLs still resolve at the page level but
  * aren't indexed. The reverse-index walk is O(days) on warm cache and
  * cached globally, so repeat requests are served from memory.
+ *
+ * No hreflang here — word detail pages are NOT translations of each other.
+ * /en/word/apple and /fi/word/koira are unrelated content that happens to
+ * share a URL pattern. Hreflang lives in sitemap-main.xml.ts for pages
+ * that genuinely have language variants (game pages, archives, etc.).
  */
 export default defineEventHandler((event) => {
     const lang = getRouterParam(event, 'lang')!;

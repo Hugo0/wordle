@@ -196,6 +196,39 @@
                         {{ lang.config?.ui?.install_app_desc || 'Play offline & get app icon' }}
                     </p>
                 </template>
+
+                <!-- Account -->
+                <div class="editorial-rule" />
+                <div v-if="authLoggedIn" class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <img
+                            v-if="authUser?.avatarUrl"
+                            :src="authUser.avatarUrl"
+                            alt=""
+                            class="w-6 h-6 rounded-full"
+                            referrerpolicy="no-referrer"
+                        />
+                        <span class="text-sm text-ink">{{ authUser?.email }}</span>
+                    </div>
+                    <button
+                        class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
+                        @click="authLogout()"
+                    >
+                        <LogOut :size="14" />
+                        Sign Out
+                    </button>
+                </div>
+                <div v-else>
+                    <button
+                        class="w-full px-4 py-2 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
+                        @click="authLoginWithGoogle()"
+                    >
+                        Sign in with Google
+                    </button>
+                    <p class="text-xs text-center text-muted mt-1">
+                        Sync settings across devices
+                    </p>
+                </div>
             </div>
         </div>
     </SharedBaseModal>
@@ -203,7 +236,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { Download } from 'lucide-vue-next';
+import { Download, LogOut } from 'lucide-vue-next';
 import { useSettingsStore } from '~/stores/settings';
 import { useLanguageStore } from '~/stores/language';
 import { useGameStore } from '~/stores/game';
@@ -214,6 +247,7 @@ defineEmits<{ close: [] }>();
 const settings = useSettingsStore();
 const lang = useLanguageStore();
 const game = useGameStore();
+const { loggedIn: authLoggedIn, user: authUser, loginWithGoogle: authLoginWithGoogle, logout: authLogout } = useAuth();
 
 /** Easy mode (allow any word) — synced with game store. */
 const allowAnyWord = computed({

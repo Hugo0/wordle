@@ -48,28 +48,3 @@ export function projectToCanvas(
         margin + inner * (0.5 - dy), // flip Y because canvas Y grows downward
     ];
 }
-
-/**
- * Compute the zoom level needed to fit a set of points inside the
- * canvas, leaving a small margin (`fillRatio`, default 0.8 = 80% of
- * the half-edge). Used by the game to auto-zoom on the closest guess
- * and by the word page to fit the foreground neighborhood.
- *
- * Returns 1.0 (full UMAP visible) when there are no points.
- */
-export function zoomToFit(
-    points: ReadonlyArray<readonly [number, number]>,
-    viewportCenter: readonly [number, number],
-    fillRatio: number = 0.8
-): number {
-    if (points.length === 0) return 1.0;
-    let maxDelta = 0;
-    for (const p of points) {
-        const dx = Math.abs(p[0] - viewportCenter[0]);
-        const dy = Math.abs(p[1] - viewportCenter[1]);
-        const d = Math.max(dx, dy);
-        if (d > maxDelta) maxDelta = d;
-    }
-    if (maxDelta < 1e-6) return 50; // all points coincide → very zoomed
-    return (0.5 * fillRatio) / maxDelta;
-}

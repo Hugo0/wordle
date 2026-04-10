@@ -14,7 +14,16 @@ import { createGameConfig } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
 import { createBoardState, createKeyStates, WORD_LENGTH } from '~/utils/types';
 
-export function useMultiBoardPage(mode: GameMode, wordList: string[], boardCount: number) {
+/**
+ * @param dailyWords  If provided (daily mode), use these as target words instead
+ *                    of random picks. Must have exactly `boardCount` words.
+ */
+export function useMultiBoardPage(
+    mode: GameMode,
+    wordList: string[],
+    boardCount: number,
+    dailyWords?: string[]
+) {
     const game = useGameStore();
     const langStore = useLanguageStore();
 
@@ -38,11 +47,14 @@ export function useMultiBoardPage(mode: GameMode, wordList: string[], boardCount
         return words;
     }
 
-    /** Start a fresh multi-board game with random words. */
+    /** Start a fresh multi-board game.
+     *  Daily: uses dailyWords from server (deterministic, same for everyone).
+     *  Unlimited: picks random words from the word list. */
     function startNewGame() {
-        const words = pickRandomWords(boardCount);
+        const words = dailyWords?.length === boardCount ? [...dailyWords] : pickRandomWords(boardCount);
         const cfg = createGameConfig(mode, langStore.languageCode, {
             wordLength: WORD_LENGTH,
+            playType: dailyWords?.length === boardCount ? 'daily' : 'unlimited',
         });
         game.gameConfig = cfg;
         game.boards = words.map((word, i) =>

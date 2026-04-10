@@ -216,7 +216,9 @@ body {
 .sidebar-mock .sb-group {
     font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
     text-transform: uppercase; color: var(--gray); padding: 16px 24px 8px;
+    border-top: 1px solid var(--rule); margin-top: 4px;
 }
+.sidebar-mock .sb-group:first-child { border-top: none; margin-top: 0; }
 .sidebar-mock .sb-item {
     padding: 10px 24px; display: flex; align-items: center; gap: 12px;
     font-size: 14px; cursor: pointer; transition: all 0.15s;
@@ -350,39 +352,37 @@ body {
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     TOP BAR
-     ═══════════════════════════════════════════════════════════════ -->
 <div class="doc-bar">
-    <span>Wordle Global — Daily/Unlimited System Design</span>
+    <span>Wordle Global — Daily/Unlimited System Design v3</span>
     <a href="direction-a-editorial.html">Back to Editorial Exploration</a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     NAV
-     ═══════════════════════════════════════════════════════════════ -->
 <nav class="doc-nav">
     <a href="#problem">Problem</a>
     <a href="#taxonomy">Taxonomy</a>
     <a href="#principles">Principles</a>
     <div class="nav-group">Surfaces</div>
-    <a href="#in-game">In-Game Label</a>
+    <a href="#in-game">In-Game Header</a>
     <a href="#sidebar">Sidebar</a>
-    <a href="#post-game">Post-Game</a>
+    <a href="#post-game">Post-Game (3x)</a>
     <a href="#homepage">Homepage</a>
+    <a href="#board-picker">Board Picker</a>
+    <a href="#lang-modal">Language Modal</a>
     <div class="nav-group">Systems</div>
     <a href="#streaks">Streaks</a>
     <a href="#archive">Archive</a>
+    <a href="#word-pages">Word Pages</a>
     <a href="#routing">Routing</a>
     <div class="nav-group">Spec</div>
-    <a href="#decisions">Decisions</a>
+    <a href="#entry-map">Entry Map</a>
+    <a href="#not-doing">Not Doing</a>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════════════
      HERO
      ═══════════════════════════════════════════════════════════════ -->
 <section class="section hero-section" id="top">
-    <div class="section-tag">System Design Document</div>
+    <div class="section-tag">System Design Document &middot; v3</div>
     <h2 style="font-size: 56px; margin-bottom: 12px;">Daily / Unlimited</h2>
     <div class="subtitle" style="max-width: 480px;">
         How players discover, choose, and move between play types across every game mode, every surface, and every screen.
@@ -394,9 +394,9 @@ body {
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      1. PROBLEM
-     ═══════════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════ -->
 <section class="section dark" id="problem">
     <div class="content centered">
         <div class="section-tag">01</div>
@@ -405,35 +405,37 @@ body {
 
         <p>
             Today the sidebar lists <strong>10 game modes</strong> as flat items. Five of those are
-            multi-board variants (Dordle, Quordle, Octordle, Sedecordle, Duotrigordle) that differ
-            only in board count. "Daily Puzzle" and "Unlimited" are treated as separate modes,
-            but they're actually <strong>play types</strong> of the same Classic game.
+            multi-board variants (Dordle through Duotrigordle) that differ only in board count.
+            "Daily Puzzle" and "Unlimited" are separate modes, but they're actually
+            <strong>play types</strong> of the same Classic game.
         </p>
         <p>
-            As we add daily variants to multi-board modes and unlimited to Semantic, the sidebar
-            would double in length. Worse: the conceptual model is wrong. Dordle Daily and
-            Dordle Unlimited aren't two different games — they're the same game with different
-            word selection. The navigation should reflect that.
+            As we add daily variants to multi-board modes, Speed, and unlimited to Semantic,
+            the sidebar would double. The conceptual model is wrong: Dordle Daily and Dordle
+            Unlimited aren't different games. The navigation should reflect that.
         </p>
 
         <div class="callout">
-            <strong>Core insight:</strong> the game mode matrix has two independent axes — <em>board type</em>
-            (Classic, Dordle, Quordle, Semantic, Speed) and <em>play type</em> (Daily, Unlimited).
-            The current sidebar conflates them into a flat list, making both axes harder to navigate.
+            <strong>Core insight:</strong> the game mode matrix has two independent axes &mdash;
+            <em>board type</em> (Classic, Multi-Board, Semantic, Speed) and <em>play type</em>
+            (Daily, Unlimited). The sidebar conflates them. Untangle them.
         </div>
 
+        <p><strong>What needs to work:</strong></p>
         <p>
-            <strong>What needs to work:</strong> a player who finishes daily Quordle should discover
-            unlimited Quordle exists. A player browsing modes shouldn't see 14 items. The archive
-            should show daily history for every mode. Streaks should be per-mode-per-play-type.
-            And all of this should feel like 6 lines of navigation, not 14.
+            &bull; Player finishes daily Quordle &rarr; discovers unlimited Quordle exists<br>
+            &bull; Sidebar shows 5 items, not 14<br>
+            &bull; Archive shows daily history for every mode at <code>/en/archive</code><br>
+            &bull; One product-wide streak across all daily modes and languages<br>
+            &bull; Best Starting Words, Word Explorer, and Archive are discoverable from sidebar<br>
+            &bull; Language switching works via modal, not sidebar navigation
         </p>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      2. TAXONOMY
-     ═══════════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════ -->
 <section class="section light" id="taxonomy">
     <div class="content centered">
         <div class="section-tag">02</div>
@@ -441,7 +443,7 @@ body {
         <div class="subtitle">What gets daily, what gets unlimited, what stays as-is</div>
 
         <table class="mode-table">
-            <thead><tr><th>Board Type</th><th>Play Types</th><th>Sidebar Row</th><th>Notes</th></tr></thead>
+            <thead><tr><th>Board Type</th><th>Play Types</th><th>Sidebar</th><th>Notes</th></tr></thead>
             <tbody>
                 <tr>
                     <td>Classic</td>
@@ -453,34 +455,34 @@ body {
                     <td>Speed Streak</td>
                     <td><span class="tag both">Both</span></td>
                     <td>1 row, expandable</td>
-                    <td>Daily: same word sequence for everyone &mdash; comparable scores. Unlimited: random sequence.</td>
+                    <td>Daily: same word sequence for everyone &mdash; comparable scores/leaderboard. Unlimited: random.</td>
                 </tr>
                 <tr>
                     <td>Semantic</td>
-                    <td><span class="tag daily">Daily</span> <span class="tag unlim">Unlim</span></td>
+                    <td><span class="tag both">Both</span></td>
                     <td>1 row, expandable</td>
-                    <td>Daily target per day. Unlimited = random target.</td>
+                    <td>Daily: deterministic target per day. Unlimited: random target.</td>
                 </tr>
                 <tr>
                     <td style="border-left: 3px solid var(--yellow); padding-left: 9px;">Multi-Board<br><span style="font-weight: 400; font-family: var(--mono); font-size: 10px; color: var(--gray);">Dordle &middot; Quordle &middot; Octordle &middot; Sedecordle &middot; Duotrigordle</span></td>
                     <td><span class="tag both">Both</span> each</td>
-                    <td><strong>1 bundled row</strong>, expandable</td>
-                    <td>5 modes &rarr; 1 row. Pick board count + play type on expand.</td>
+                    <td><strong>1 bundled row</strong> &rarr; picker modal</td>
+                    <td>5 modes &rarr; 1 row. Click opens board picker modal with play type selection.</td>
                 </tr>
             </tbody>
         </table>
 
         <p>
-            <strong>Result:</strong> sidebar goes from 10 flat items to <strong>5 items</strong>
-            (Daily Puzzle, Unlimited, Speed, Multi-Board, Semantic) plus Language and You sections.
-            Multi-Board bundles 5 modes. Speed, Semantic, and Multi-Board expand to show daily/unlimited sub-items.
+            <strong>Result:</strong> sidebar goes from 10 Play items to <strong>5</strong>
+            (Daily Puzzle, Unlimited, Speed, Multi-Board, Semantic). A new <strong>Learn</strong>
+            section adds Best Starting Words, Word Explorer, and Archive.
         </p>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      3. PRINCIPLES
-     ═══════════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════ -->
 <section class="section dark" id="principles">
     <div class="content centered">
         <div class="section-tag">03</div>
@@ -488,37 +490,53 @@ body {
         <div class="subtitle">Rules that resolve ambiguity</div>
 
         <p><strong>1. Play type is chosen before the game, not during.</strong><br>
-        No in-game toggle. No config bar. The subtitle says which type you're in. That's it.</p>
+        No in-game toggle. No config bar. The subtitle says which type you're in.</p>
 
         <p><strong>2. Daily is the default. Unlimited is the upsell.</strong><br>
-        Clicking any mode card or sidebar item goes to daily (when available). Unlimited is discovered through post-game CTAs and sidebar expansion.</p>
+        Clicking any mode goes to daily (when available). Unlimited is discovered through
+        post-game CTAs and sidebar expansion.</p>
 
         <p><strong>3. Post-game is the highest-conversion entry point.</strong><br>
-        After finishing daily Quordle, the stats modal says "Play Unlimited Quordle." After unlimited, it nudges "Try today's daily." This cross-pollination does more work than any sidebar redesign.</p>
+        Three surfaces: stats modal, keyboard flip panel, scroll-down section. All three
+        cross-pollinate between daily and unlimited.</p>
 
-        <p><strong>4. Streaks are daily-only. Unlimited has no streak.</strong><br>
-        Streaks represent consecutive calendar days. Unlimited games happen on demand — they have play count, win rate, but no streak.</p>
+        <p><strong>4. One product-wide streak.</strong><br>
+        Playing ANY daily mode in ANY language continues your streak. You don't need to play
+        the same mode every day. Unlimited has no streak &mdash; it has play count and win rate.</p>
 
         <p><strong>5. The archive is daily-only.</strong><br>
-        The word archive shows past daily words for each mode. Unlimited games don't have "past words" — they're random.</p>
+        Lives at <code>/en/archive</code> (301 redirect from <code>/en/words</code>).
+        Mode filter tabs at the top. Unlimited games are ephemeral.</p>
+
+        <p><strong>6. Hidden interactions reward power users.</strong><br>
+        Tapping the header subtitle opens the sidebar with that mode's daily/unlimited expanded.
+        No visual affordance &mdash; the cursor changes to pointer, and that's it.</p>
+
+        <p><strong>7. Language switching is a modal, not navigation.</strong><br>
+        Clicking the language item in the sidebar (or the flag in the header subtitle) opens
+        a language picker modal. No page navigation, no losing game state.</p>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     4. IN-GAME LABEL
-     ═══════════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     4. IN-GAME HEADER
+     ═══════════════════════════════════════ -->
 <section class="section warm" id="in-game">
     <div class="content centered">
         <div class="section-tag">04 / Surface</div>
-        <h2>In-Game</h2>
-        <div class="subtitle">A label, not a control</div>
+        <h2>In-Game Header</h2>
+        <div class="subtitle">Mode name leads. Language + play type below.</div>
 
         <p>
-            The header subtitle tells the player which play type they're in.
-            <strong>"Dordle #142"</strong> = daily (the number implies it).
-            <strong>"Dordle &middot; <span style="color: var(--accent);">Unlimited</span>"</strong> = unlimited (accent color, no number).
-            Nothing interactive. No toggle. The player chose before entering.
+            <strong>H1:</strong> the game mode name ("Dordle", "Semantic Explorer", "Speed Streak").<br>
+            <strong>Subtitle:</strong> flag icon + language + play type indicator.
+            Daily shows the day number: "English &middot; #142".
+            Unlimited shows the label in accent: "English &middot; <span style="color: var(--accent);">Unlimited</span>".
         </p>
+
+        <p><strong>Hidden interaction:</strong> tapping the subtitle opens the sidebar with the
+        current mode's daily/unlimited sub-items expanded. No visual button &mdash; cursor: pointer
+        is the only hint. Power users discover it; new users use the sidebar or post-game CTAs.</p>
     </div>
 
     <div class="mockup-pair">
@@ -529,7 +547,7 @@ body {
                     <span style="font-size: 16px; opacity: 0.3;">&#9776;</span>
                     <div style="text-align: center;">
                         <div class="p-header-title">Dordle</div>
-                        <div class="p-header-sub" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <div class="p-header-sub" style="display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer;">
                             <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
                             English &middot; #142
                         </div>
@@ -540,7 +558,7 @@ body {
                     <span style="font-family: var(--mono); font-size: 9px; opacity: 0.2; letter-spacing: 0.1em; text-transform: uppercase;">2 boards &middot; game area</span>
                 </div>
             </div>
-            <div class="note">Daily &mdash; flag + language + day number</div>
+            <div class="note">Daily &mdash; tap subtitle to open sidebar</div>
         </div>
         <div>
             <div class="phone">
@@ -549,7 +567,7 @@ body {
                     <span style="font-size: 16px; opacity: 0.3;">&#9776;</span>
                     <div style="text-align: center;">
                         <div class="p-header-title">Dordle</div>
-                        <div class="p-header-sub" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <div class="p-header-sub" style="display: flex; align-items: center; justify-content: center; gap: 5px; cursor: pointer;">
                             <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
                             English &middot; <span style="color: var(--accent); font-weight: 600;">Unlimited</span>
                         </div>
@@ -560,31 +578,46 @@ body {
                     <span style="font-family: var(--mono); font-size: 9px; opacity: 0.2; letter-spacing: 0.1em; text-transform: uppercase;">2 boards &middot; game area</span>
                 </div>
             </div>
-            <div class="note">Unlimited &mdash; flag + language + accent label</div>
+            <div class="note">Unlimited &mdash; accent color, no day number</div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      5. SIDEBAR
-     ═══════════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════ -->
 <section class="section dark" id="sidebar">
     <div class="content centered">
         <div class="section-tag">05 / Surface</div>
         <h2>Sidebar</h2>
-        <div class="subtitle">5 items, not 10. Multi-board is bundled.</div>
+        <div class="subtitle">5 Play items + Learn section. Multi-Board opens a picker modal.</div>
 
         <p>
-            Multi-board modes (Dordle through Duotrigordle) collapse into one <strong>"Multi-Board"</strong>
-            row. Tapping it expands to show board counts. Modes with both play types (Multi-Board, Semantic)
-            show daily/unlimited sub-items on expand. Single-type modes (Daily Puzzle, Unlimited, Speed)
-            navigate directly.
+            Multi-board modes collapse into one <strong>"Multi-Board"</strong> row. Clicking it opens
+            the <a href="#board-picker">board picker modal</a> (not inline expansion &mdash; 5 sub-items
+            with daily/unlimited each would be too much inline). Speed and Semantic expand inline
+            to show daily/unlimited sub-items.
         </p>
         <p>
-            Compare to the <a href="direction-a-editorial.html#sidebar">original Screen 02 sidebar</a>
-            which had 10 flat items and no daily/unlimited distinction.
-            Also compare to <a href="direction-a-editorial.html#option-c">Option C (Mode-First Sidebar)</a>
-            which explored a similar hierarchy but without bundling multi-board.
+            New <strong>Learn</strong> section: Best Starting Words, Word Explorer, Archive.
+            These are content pages accessible from the sidebar but not game modes.
+        </p>
+        <p>
+            <strong>Expand is 2 levels only</strong> (section &rarr; items). Sub-items are just
+            indented text rows, no colored pills or badges. The active sub-item gets the same
+            <code>border-left: 3px</code> indicator as any sidebar item. Expand/collapse
+            uses <code>useAutoHeight</code> for a smooth vertical tween &mdash; sidebar width is
+            fixed at 280px, so only height changes.
+        </p>
+        <p>
+            <strong>Language</strong> opens a <a href="#lang-modal">language picker modal</a> instead
+            of navigating away. Compare to <a href="direction-a-editorial.html#sidebar">Screen 02</a>
+            and <a href="direction-a-editorial.html#option-c">Option C</a>.
+        </p>
+        <p>
+            <strong>Note on mockup icons:</strong> production uses Lucide SVG icons (Square, Infinity,
+            Zap, Grid, Compass, etc.). The mockups below use Unicode placeholders for the same
+            icon slots. The layout, spacing, and typography match the production sidebar exactly.
         </p>
     </div>
 
@@ -618,21 +651,24 @@ body {
                     <div class="sb-name">Semantic</div>
                     <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
                 </div>
+                <div class="sb-group">Learn</div>
+                <div class="sb-item"><div class="sb-icon">&#9733;</div><div class="sb-name">Best Starting Words</div></div>
+                <div class="sb-item"><div class="sb-icon">&#128218;</div><div class="sb-name">Word Explorer</div></div>
+                <div class="sb-item"><div class="sb-icon">&#128197;</div><div class="sb-name">Archive</div></div>
                 <div class="sb-group">Language</div>
                 <div class="sb-item">
-                    <div class="sb-icon">&#127468;&#127463;</div>
+                    <div class="sb-icon" style="font-size: 16px;">&#127468;&#127463;</div>
                     <div class="sb-name">English</div>
-                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                    <div class="sb-right"><span style="font-size: 9px; opacity: 0.5;">change</span></div>
                 </div>
                 <div class="sb-group">You</div>
                 <div class="sb-item"><div class="sb-icon">&#9636;</div><div class="sb-name">Statistics</div></div>
-                <div class="sb-item"><div class="sb-icon">&#128197;</div><div class="sb-name">Archive</div></div>
                 <div class="sb-item"><div class="sb-icon">&#9881;</div><div class="sb-name">Settings</div></div>
             </div>
-            <div class="note">Collapsed &mdash; 5 play items. Speed, Multi-Board, Semantic all expand.</div>
+            <div class="note">Collapsed &mdash; Learn section is new. Language opens modal.</div>
         </div>
 
-        <!-- Expanded Multi-Board -->
+        <!-- Expanded Semantic (inline) -->
         <div>
             <div class="sidebar-mock">
                 <div class="sb-logo">Wordle<span class="dot">.</span>Global</div>
@@ -651,73 +687,63 @@ body {
                     <div class="sb-name">Speed Streak</div>
                     <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
                 </div>
-                <div class="sb-item active" style="padding-bottom: 4px;">
+                <div class="sb-item">
                     <div class="sb-icon">&#9638;&#9638;</div>
                     <div class="sb-name">Multi-Board</div>
+                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                </div>
+                <div class="sb-item active" style="padding-bottom: 4px;">
+                    <div class="sb-icon">&#9737;</div>
+                    <div class="sb-name">Semantic</div>
                     <div class="sb-right"><span class="sb-arrow">&#9660;</span></div>
                 </div>
                 <div class="sb-expand">
-                    <div class="sb-sub active">Dordle <span style="opacity: 0.3; margin-left: 4px;">2 boards</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
-                    <div class="sb-sub">Quordle <span style="opacity: 0.3; margin-left: 4px;">4</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
-                    <div class="sb-sub">Octordle <span style="opacity: 0.3; margin-left: 4px;">8</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
-                    <div class="sb-sub">Sedecordle <span style="opacity: 0.3; margin-left: 4px;">16</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
-                    <div class="sb-sub">Duotrigordle <span style="opacity: 0.3; margin-left: 4px;">32</span> <span style="margin-left: auto; display: flex; gap: 4px;"><span class="sub-tag d">Daily</span><span class="sub-tag u">Unlim</span></span></div>
+                    <div class="sb-sub active">Semantic #99</div>
+                    <div class="sb-sub" style="color: var(--accent);">Unlimited</div>
                 </div>
-                <div class="sb-item">
-                    <div class="sb-icon">&#9737;</div>
-                    <div class="sb-name">Semantic</div>
-                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
-                </div>
+                <div class="sb-group">Learn</div>
+                <div class="sb-item"><div class="sb-icon">&#9733;</div><div class="sb-name">Best Starting Words</div></div>
+                <div class="sb-item"><div class="sb-icon">&#128218;</div><div class="sb-name">Word Explorer</div></div>
+                <div class="sb-item"><div class="sb-icon">&#128197;</div><div class="sb-name">Archive</div></div>
                 <div class="sb-group">Language</div>
                 <div class="sb-item">
-                    <div class="sb-icon">&#127468;&#127463;</div>
+                    <div class="sb-icon" style="font-size: 16px;">&#127468;&#127463;</div>
                     <div class="sb-name">English</div>
-                    <div class="sb-right"><span class="sb-arrow">&#9654;</span></div>
+                    <div class="sb-right"><span style="font-size: 9px; opacity: 0.5;">change</span></div>
                 </div>
             </div>
-            <div class="note">Expanded &mdash; board count + play type tags</div>
+            <div class="note">Semantic expanded inline. Multi-Board opens picker modal instead.</div>
         </div>
-    </div>
-
-    <div class="content centered" style="margin-top: 24px;">
-        <p>
-            <strong>Interaction:</strong> clicking <span class="tag daily">Daily</span> or
-            <span class="tag unlim">Unlim</span> navigates directly to that game. Clicking
-            the mode name (e.g. "Dordle") goes to daily by default. The tags are the fast-path
-            for players who know what they want.
-        </p>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     6. POST-GAME CTAs
-     ═══════════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     6. POST-GAME (3 surfaces)
+     ═══════════════════════════════════════ -->
 <section class="section light" id="post-game">
     <div class="content centered">
         <div class="section-tag">06 / Surface</div>
         <h2>Post-Game</h2>
-        <div class="subtitle">The highest-conversion moment</div>
+        <div class="subtitle">Three surfaces, all cross-pollinating</div>
 
+        <p>The post-game experience has three surfaces that surface the daily/unlimited CTA:</p>
+
+        <h3>A. Stats Modal</h3>
         <p>
-            The stats modal after game-over is where cross-pollination happens.
-            After daily: "Play Unlimited" in accent. After unlimited: "Try Today's Daily" in green.
-            This does more discovery work than any sidebar or homepage redesign.
-        </p>
-        <p>
-            Compare to <a href="direction-a-editorial.html#endgame">Screen 03 (End of Game)</a>
-            which had a basic "Play Unlimited" secondary button. The new design is contextual &mdash;
-            different CTAs depending on what just ended.
+            Auto-opens after game over. Matches the existing 2-button pattern
+            (<code>bg-ink</code> primary + <code>border-ink</code> secondary, side by side).
+            After unlimited, the daily nudge is a subtle text link below the buttons, not a third button.
+            Compare to <a href="direction-a-editorial.html#endgame">Screen 03</a>.
         </p>
     </div>
 
     <div class="mockup-pair">
-        <!-- After daily -->
         <div>
             <div class="phone">
                 <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
                 <div class="p-header">
                     <div class="p-header-title" style="font-size: 15px;">Dordle</div>
-                    <div style="font-family: var(--mono); font-size: 9px; opacity: 0.4; display: flex; align-items: center; gap: 4px;">
+                    <div style="font-family: var(--mono); font-size: 9px; color: var(--gray); display: flex; align-items: center; gap: 4px;">
                         <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
                         EN &middot; #142 &middot; 5/7
                     </div>
@@ -725,75 +751,93 @@ body {
                 <div class="p-body">
                     <div style="text-align: center; margin-bottom: 14px;">
                         <div style="font-family: var(--serif); font-size: 24px; font-weight: 700;">CHASE &amp; PLANT</div>
-                        <div style="font-family: var(--serif); font-style: italic; font-size: 12px; opacity: 0.4;">Two down, infinite to go</div>
+                        <div style="font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gray);">Two down, infinite to go</div>
                     </div>
                     <div class="stats-row">
                         <div><div class="stat-num">42</div><div class="stat-lbl">Played</div></div>
                         <div><div class="stat-num">88</div><div class="stat-lbl">Win %</div></div>
-                        <div><div class="stat-num">7</div><div class="stat-lbl">Streak</div></div>
-                        <div><div class="stat-num">12</div><div class="stat-lbl">Best</div></div>
+                        <div><div class="stat-num" style="color: var(--flame);">14</div><div class="stat-lbl">Streak</div></div>
+                        <div><div class="stat-num">21</div><div class="stat-lbl">Best</div></div>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 6px;">
-                        <button class="btn primary">Share Result</button>
-                        <button class="btn cta-unlim">Play Unlimited Dordle &rarr;</button>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn primary" style="flex: 1;">Share Result</button>
+                        <button class="btn secondary" style="flex: 1;">Unlimited &rarr;</button>
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 12px; opacity: 0.4;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 12px; color: var(--gray);">
                         <span>Next daily Dordle</span>
-                        <span style="font-family: var(--mono); font-size: 16px; font-weight: 600; opacity: 1;">07:42:15</span>
+                        <span style="font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--ink);">07:42:15</span>
                     </div>
                 </div>
             </div>
-            <div class="note">After daily &mdash; unlimited CTA in accent</div>
+            <div class="note">After daily &mdash; streak is product-wide (14)</div>
         </div>
-
-        <!-- After unlimited -->
         <div>
             <div class="phone">
                 <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
                 <div class="p-header">
                     <div class="p-header-title" style="font-size: 15px;">Dordle</div>
-                    <div style="font-family: var(--mono); font-size: 9px; opacity: 0.4; display: flex; align-items: center; gap: 4px;">
+                    <div style="font-family: var(--mono); font-size: 9px; color: var(--gray); display: flex; align-items: center; gap: 4px;">
                         <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ccc; border: 1px solid rgba(0,0,0,0.1);"></span>
-                        EN &middot; <span style="color: var(--accent); opacity: 1;">Unlimited</span> &middot; 6/7
+                        EN &middot; <span style="color: var(--accent);">Unlimited</span> &middot; 6/7
                     </div>
                 </div>
                 <div class="p-body">
                     <div style="text-align: center; margin-bottom: 14px;">
                         <div style="font-family: var(--serif); font-size: 24px; font-weight: 700;">RIVER &amp; GHOST</div>
-                        <div style="font-family: var(--serif); font-style: italic; font-size: 12px; opacity: 0.4;">Nice one. Another round?</div>
+                        <div style="font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gray);">Nice one. Another round?</div>
                     </div>
                     <div class="stats-row">
-                        <div><div class="stat-num">18</div><div class="stat-lbl">Played</div></div>
+                        <div><div class="stat-num">18</div><div class="stat-lbl">Rounds</div></div>
                         <div><div class="stat-num">72</div><div class="stat-lbl">Win %</div></div>
                         <div><div class="stat-num">&mdash;</div><div class="stat-lbl">Streak</div></div>
                         <div><div class="stat-num">&mdash;</div><div class="stat-lbl">Best</div></div>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 6px;">
-                        <button class="btn primary">Play Again</button>
-                        <button class="btn secondary">Share Result</button>
-                        <button class="btn cta-daily">Try Today's Daily Dordle #142 &rarr;</button>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn primary" style="flex: 1;">Play Again</button>
+                        <button class="btn secondary" style="flex: 1;">Share</button>
+                    </div>
+                    <div style="text-align: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--rule);">
+                        <a href="#" style="font-family: var(--sans); font-size: 13px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px;">Try today's Daily Dordle #142 &rarr;</a>
                     </div>
                 </div>
             </div>
-            <div class="note">After unlimited &mdash; daily nudge in green (only if unplayed)</div>
+            <div class="note">After unlimited &mdash; 2 buttons + subtle text link for daily nudge</div>
         </div>
+    </div>
+
+    <div class="content centered" style="margin-top: 24px;">
+        <h3>B. Keyboard Flip Panel</h3>
+        <p>
+            After game over, the keyboard flips to reveal a discovery panel. Currently shows
+            mode suggestions. Add: <strong>"Keep playing: Unlimited Dordle"</strong> as a prominent
+            card alongside other mode suggestions. This surface reaches players who dismiss the
+            stats modal quickly.
+        </p>
+
+        <h3>C. Scroll-Down Section</h3>
+        <p>
+            Below the game board, the SEO content area has FAQ, tips, recent words, and mode links.
+            The <strong>"More Game Modes"</strong> section should surface daily/unlimited variants
+            with contextual text: "Finished today's Dordle? Play unlimited rounds &mdash; same rules,
+            random words." This is the lowest-friction surface (always visible, no modal).
+        </p>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      7. HOMEPAGE
-     ═══════════════════════════════════════════════════════════════ -->
+     ═══════════════════════════════════════ -->
 <section class="section dark" id="homepage">
     <div class="content centered">
         <div class="section-tag">07 / Surface</div>
         <h2>Homepage</h2>
-        <div class="subtitle">Mode cards adapt to the player's state</div>
+        <div class="subtitle">Mode cards adapt to player state</div>
 
         <p>
-            Each mode card shows available play types via small tags.
-            For returning users, cards show active game state ("in progress", "solved")
-            with contextual CTAs. Compare to <a href="direction-a-editorial.html#refined-home">F1 (Homepage Hub)</a>
-            and the original <a href="direction-a-editorial.html#homepage">Screen 01</a>.
+            Each mode card shows available play types via small tags. Returning users see active
+            game state with contextual CTAs. Compare to
+            <a href="direction-a-editorial.html#refined-home">F1 (Homepage Hub)</a> and
+            <a href="direction-a-editorial.html#homepage">Screen 01</a>.
         </p>
     </div>
 
@@ -808,9 +852,9 @@ body {
                 <div class="p-body" style="padding: 12px 14px;">
                     <div class="label" style="margin-bottom: 10px;">Game Modes</div>
                     <div class="mc"><div class="mc-icon">&#9632;</div><div class="mc-info"><h5>Classic</h5><p>The original. 6 guesses.</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span></div><div style="font-family: var(--mono); font-size: 9px; color: var(--flame);">&#128293; 14</div></div></div>
-                    <div class="mc"><div class="mc-icon">&#9638;&#9638;</div><div class="mc-info"><h5>Multi-Board</h5><p>2-32 boards at once</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9638;&#9638;</div><div class="mc-info"><h5>Multi-Board</h5><p>2&ndash;32 boards at once</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
                     <div class="mc"><div class="mc-icon">&#9737;</div><div class="mc-info"><h5>Semantic</h5><p>Navigate meaning space</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
-                    <div class="mc"><div class="mc-icon">&#9889;</div><div class="mc-info"><h5>Speed Streak</h5><p>Race the clock</p></div><div class="mc-right"><div class="mc-types"><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9889;</div><div class="mc-info"><h5>Speed Streak</h5><p>Race the clock</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
                 </div>
             </div>
             <div class="note">New visitor &mdash; click &rarr; daily by default</div>
@@ -826,101 +870,256 @@ body {
                     <div class="label" style="margin-bottom: 10px;">Game Modes</div>
                     <div class="mc" style="border-color: var(--green);"><div class="mc-icon">&#9632;</div><div class="mc-info"><h5>Classic #1756</h5><p style="color: var(--green);">Solved &#10003; &middot; 3/6</p></div><div class="mc-right"><div style="font-family: var(--mono); font-size: 9px; color: var(--flame);">&#128293; 14</div></div></div>
                     <div class="mc" style="border-color: var(--yellow);"><div class="mc-icon">&#9638;&#9638;</div><div class="mc-info"><h5>Dordle #142</h5><p style="color: var(--yellow);">In progress &middot; 3/7</p></div><div class="mc-right"><div style="font-family: var(--mono); font-size: 10px;">Continue &rarr;</div></div></div>
-                    <div class="mc"><div class="mc-icon">&#9737;</div><div class="mc-info"><h5>Semantic #99</h5><p style="opacity: 0.3;">Solved &#10003;</p></div><div class="mc-right"><div class="mc-types"><span class="u">Play Unlimited &rarr;</span></div></div></div>
-                    <div class="mc"><div class="mc-icon">&#9889;</div><div class="mc-info"><h5>Speed Streak</h5><p>Race the clock</p></div><div class="mc-right"><div class="mc-types"><span class="u">Play &rarr;</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9737;</div><div class="mc-info"><h5>Semantic #99</h5><p style="color: var(--gray);">Solved &#10003;</p></div><div class="mc-right"><div class="mc-types"><span class="u">Play Unlimited &rarr;</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9889;</div><div class="mc-info"><h5>Speed Streak</h5><p>Race the clock</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
                 </div>
             </div>
-            <div class="note">Returning &mdash; cards adapt to game state</div>
+            <div class="note">Returning &mdash; cards show game state. Solved modes nudge unlimited.</div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     8. STREAKS
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section warm" id="streaks">
+<!-- ═══════════════════════════════════════
+     8. BOARD PICKER MODAL
+     ═══════════════════════════════════════ -->
+<section class="section warm" id="board-picker">
     <div class="content centered">
-        <div class="section-tag">08 / System</div>
-        <h2>Streaks</h2>
-        <div class="subtitle">Daily-only. Per-mode. Visible in sidebar and post-game.</div>
+        <div class="section-tag">08 / Surface</div>
+        <h2>Board Picker Modal</h2>
+        <div class="subtitle">Repurposed from GameModePicker. Opens when clicking "Multi-Board" in sidebar.</div>
 
         <p>
-            Streaks count consecutive calendar days of playing the daily variant. Each mode
-            has its own streak: your Classic daily streak is independent of your Dordle daily streak.
-            Unlimited has no streak &mdash; it has play count and win rate, but no "consecutive days" concept.
+            The existing <code>GameModePicker.vue</code> modal evolves into a board picker.
+            When clicking "Multi-Board" in the sidebar, this modal opens showing the 5 board
+            options (Dordle through Duotrigordle). Each row shows the board name, board count,
+            and <span class="tag daily">Daily</span> / <span class="tag unlim">Unlim</span> tags.
+            Clicking a tag navigates directly.
         </p>
         <p>
-            The streak badge in the header shows the <strong>highest active streak</strong> across all modes.
-            The sidebar shows per-mode streaks next to each daily item. The streak dropdown
-            (see <a href="direction-a-editorial.html#streak">Streak exploration</a>) shows the full breakdown.
+            This is better than inline sidebar expansion because 5 modes &times; 2 play types = 10
+            sub-items would bloat the sidebar. The modal gives each option breathing room.
+        </p>
+    </div>
+
+    <div class="mockup-pair" style="justify-content: center;">
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <span style="font-size: 13px; color: var(--gray);">&larr; Back</span>
+                    <div class="p-header-title" style="font-size: 15px;">Multi-Board</div>
+                    <span style="font-size: 13px; opacity: 0.3;">&#10005;</span>
+                </div>
+                <div class="p-body" style="padding: 12px 14px;">
+                    <div class="mc"><div class="mc-icon">&#9638;&#9638;</div><div class="mc-info"><h5>Dordle</h5><p>2 boards &middot; 7 guesses</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9638;&times;4</div><div class="mc-info"><h5>Quordle</h5><p>4 boards &middot; 9 guesses</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9638;&times;8</div><div class="mc-info"><h5>Octordle</h5><p>8 boards &middot; 13 guesses</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9638;16</div><div class="mc-info"><h5>Sedecordle</h5><p>16 boards &middot; 21 guesses</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                    <div class="mc"><div class="mc-icon">&#9638;32</div><div class="mc-info"><h5>Duotrigordle</h5><p>32 boards &middot; 37 guesses</p></div><div class="mc-right"><div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div></div></div>
+                </div>
+            </div>
+            <div class="note">Board picker &mdash; click Daily or Unlim tag to navigate directly</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     9. LANGUAGE PICKER MODAL
+     ═══════════════════════════════════════ -->
+<section class="section dark" id="lang-modal">
+    <div class="content centered">
+        <div class="section-tag">09 / Surface</div>
+        <h2>Language Picker Modal</h2>
+        <div class="subtitle">Opens from sidebar or header flag. No page navigation.</div>
+
+        <p>
+            When in a game, clicking the language item in the sidebar (or the flag icon in the
+            header subtitle) opens a modal showing the language grid. Selecting a language
+            navigates to the <strong>same mode + same play type</strong> in the new language.
+        </p>
+        <p>
+            The modal filters languages by what's available for the current mode (e.g. Semantic
+            only shows English). On the homepage/landing page, the language picker remains
+            inline (the flag grid is already there).
+        </p>
+    </div>
+
+    <div class="mockup-pair" style="justify-content: center;">
+        <div>
+            <div class="phone">
+                <div class="p-status"><span>9:41</span><span>&bull;&bull;&bull;</span></div>
+                <div class="p-header">
+                    <span style="font-size: 13px; opacity: 0.3;">&nbsp;</span>
+                    <div class="p-header-title" style="font-size: 15px;">Choose Language</div>
+                    <span style="font-size: 13px; opacity: 0.3;">&#10005;</span>
+                </div>
+                <div class="p-body" style="padding: 12px 14px;">
+                    <div style="margin-bottom: 12px;">
+                        <input type="text" placeholder="Search languages..." style="width: 100%; padding: 10px 14px; border: 1px solid var(--rule); background: transparent; font-family: var(--sans); font-size: 14px; outline: none; color: var(--ink);">
+                    </div>
+                    <div class="mc" style="border-color: var(--ink); background: var(--paper-warm);"><div class="mc-icon" style="font-size: 16px;">&#127468;&#127463;</div><div class="mc-info"><h5>English</h5><p>Current language</p></div><div class="mc-right"><span style="color: var(--green);">&#10003;</span></div></div>
+                    <div class="mc"><div class="mc-icon" style="font-size: 16px;">&#127467;&#127479;</div><div class="mc-info"><h5>Fran&ccedil;ais</h5><p>French</p></div></div>
+                    <div class="mc"><div class="mc-icon" style="font-size: 16px;">&#127465;&#127466;</div><div class="mc-info"><h5>Deutsch</h5><p>German</p></div></div>
+                    <div class="mc"><div class="mc-icon" style="font-size: 16px;">&#127466;&#127480;</div><div class="mc-info"><h5>Espa&ntilde;ol</h5><p>Spanish</p></div></div>
+                    <div class="mc"><div class="mc-icon" style="font-size: 16px;">&#127470;&#127481;</div><div class="mc-info"><h5>Italiano</h5><p>Italian</p></div></div>
+                    <div style="font-family: var(--mono); font-size: 9px; color: var(--gray); text-align: center; margin-top: 8px; letter-spacing: 0.1em; text-transform: uppercase;">+ 75 more languages</div>
+                </div>
+            </div>
+            <div class="note">Language modal &mdash; search + grid. Selecting navigates to same mode in new language.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     10. STREAKS
+     ═══════════════════════════════════════ -->
+<section class="section warm" id="streaks">
+    <div class="content centered">
+        <div class="section-tag">10 / System</div>
+        <h2>Streaks</h2>
+        <div class="subtitle">Product-wide. Any daily mode, any language.</div>
+
+        <p>
+            <strong>One global streak.</strong> Playing ANY daily mode in ANY language continues your
+            streak. You don't need to play the same mode or language every day &mdash; just complete
+            at least one daily game per calendar day.
+        </p>
+
+        <div class="callout">
+            <strong>Example:</strong><br>
+            Day 12: Classic English &rarr; streak continues<br>
+            Day 13: Dordle Finnish + Semantic English &rarr; streak continues<br>
+            Day 14: Quordle German &rarr; streak continues<br>
+            Day 15: (nothing) &rarr; streak breaks
+        </div>
+
+        <p>
+            The streak badge in the header (&#128293; 14) shows one global number. The streak dropdown
+            (see <a href="direction-a-editorial.html#streak">Streak exploration</a>) can show a
+            calendar heatmap with sub-info per day: which modes and languages were played.
         </p>
 
         <table class="mode-table">
-            <thead><tr><th>Play Type</th><th>Streak</th><th>Win %</th><th>Games Played</th><th>Best</th></tr></thead>
+            <thead><tr><th>Play Type</th><th>Streak</th><th>Win %</th><th>Games Played</th><th>Best Streak</th></tr></thead>
             <tbody>
-                <tr><td>Daily</td><td style="color: var(--flame);">&#128293; Yes &mdash; consecutive days</td><td>Yes</td><td>Yes</td><td>Yes (max streak)</td></tr>
-                <tr><td>Unlimited</td><td style="opacity: 0.3;">&mdash; Not tracked</td><td>Yes</td><td>Yes (total rounds)</td><td style="opacity: 0.3;">&mdash;</td></tr>
+                <tr><td>Daily (any mode)</td><td style="color: var(--flame);">&#128293; Product-wide</td><td>Per-mode</td><td>Per-mode</td><td>Product-wide</td></tr>
+                <tr><td>Unlimited</td><td style="color: var(--gray);">&mdash;</td><td>Per-mode</td><td>Per-mode (rounds)</td><td style="color: var(--gray);">&mdash;</td></tr>
+            </tbody>
+        </table>
+
+        <p>
+            <strong>Per-mode stats</strong> still exist: win rate, games played, guess distribution.
+            They just don't have their own streak. The streak is the one number that represents
+            your overall engagement with Wordle Global.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     11. ARCHIVE
+     ═══════════════════════════════════════ -->
+<section class="section dark" id="archive">
+    <div class="content centered">
+        <div class="section-tag">11 / System</div>
+        <h2>Archive</h2>
+        <div class="subtitle">Daily-only. Per-mode. At /en/archive.</div>
+
+        <p>
+            <strong>URL:</strong> <code>/en/archive</code> is the canonical URL. <code>/en/words</code>
+            gets a 301 redirect (preserve SEO equity from existing indexed pages).
+        </p>
+        <p>
+            Mode filter tabs at the top: Classic, Dordle, Quordle, Octordle, Sedecordle, Semantic, Speed.
+            Each tab shows that mode's daily word history with the player's result.
+            Unlimited games don't appear &mdash; they're ephemeral.
+        </p>
+        <p>
+            The existing archive page (<code>/en/words</code>) already has a good design &mdash;
+            paginated word cards with mini tiles, definitions, AI art thumbnails, and community stats.
+            <strong>Don't redesign the Classic archive.</strong> Changes:
+        </p>
+        <p>
+            &bull; <strong>URL rename:</strong> <code>/en/archive</code> canonical, 301 from <code>/en/words</code><br>
+            &bull; <strong>Mode filter tabs</strong> at the top: Classic, Dordle, Quordle, Semantic, Speed<br>
+            &bull; When viewing "All" modes, each card gains a small mode label
+        </p>
+
+        <h3>Multi-board archive cards</h3>
+        <p>
+            The Classic archive card shows 1 word with tiles + definition + art. That works for
+            Classic, Semantic, and Speed (1 word per day). Multi-board modes need a different
+            card format since one day has N words:
+        </p>
+
+        <table class="mode-table">
+            <thead><tr><th>Mode</th><th>Words/Day</th><th>Archive Card Format</th></tr></thead>
+            <tbody>
+                <tr><td>Classic</td><td>1</td><td>Existing card &mdash; word, tiles, definition, art. No change.</td></tr>
+                <tr><td>Semantic</td><td>1</td><td>Target word + best rank + guess count. Same card shape.</td></tr>
+                <tr><td>Speed</td><td>varies</td><td>Summary: "8 words solved in 5:00". No individual word cards.</td></tr>
+                <tr><td>Dordle</td><td>2</td><td>Two words side by side on one card. Compact tiles per word.</td></tr>
+                <tr><td>Quordle</td><td>4</td><td>2&times;2 mini grid. Word name + result per cell. No full tiles.</td></tr>
+                <tr><td>Octordle</td><td>8</td><td>Summary card: "Solved 7/8 boards". Expandable to show individual words.</td></tr>
+                <tr><td>Sedecordle</td><td>16</td><td>Summary card only. "Solved 14/16". Click to expand word list.</td></tr>
+                <tr><td>Duotrigordle</td><td>32</td><td>Summary card only. "Solved 28/32". Click to expand. No tile rendering &mdash; just word names + solved/failed.</td></tr>
             </tbody>
         </table>
 
         <div class="callout">
-            <strong>Edge case:</strong> if a player completes daily Dordle AND plays 3 unlimited Dordle rounds
-            in the same day, the stats page shows: Daily &mdash; 7-day streak, 42 played, 88% win.
-            Unlimited &mdash; 18 played, 72% win. Separate sections, separate stats.
+            <strong>Principle:</strong> archive cards get progressively more summarized as board count increases.
+            1&ndash;2 words: show everything. 4 words: mini grid. 8+: summary with expand.
+            The card never tries to render 32 sets of tiles &mdash; that's unreadable.
         </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     12. WORD PAGES
+     ═══════════════════════════════════════ -->
+<section class="section light" id="word-pages">
+    <div class="content centered">
+        <div class="section-tag">12 / System</div>
+        <h2>Word Pages</h2>
+        <div class="subtitle">Cross-mode daily history on every word detail page</div>
+
+        <p>
+            Each word detail page (<code>/en/word/chase</code>) already shows the word's definition,
+            part of speech, and AI illustration. With multi-mode dailies, a word can appear as
+            the daily target in multiple modes on different days.
+        </p>
+        <p>
+            <strong>New section: "Appeared in"</strong> &mdash; shows which daily modes featured this word
+            and on which day. This creates internal links between word pages and the archive,
+            and gives players context ("I solved CHASE in Classic on Day #1742, but it was also
+            in Dordle #98").
+        </p>
+
+        <div class="callout">
+            <strong>Example for the word "CHASE":</strong><br><br>
+            <span style="font-family: var(--mono); font-size: 12px;">
+                Appeared in:<br>
+                &bull; Classic Daily #1742 &mdash; Apr 2, 2026<br>
+                &bull; Dordle Daily #98 (Board 1) &mdash; Mar 15, 2026<br>
+                &bull; Quordle Daily #41 (Board 3) &mdash; Feb 28, 2026
+            </span>
+        </div>
+
+        <p>
+            Each entry links to the archive page filtered to that mode + day.
+            Words that haven't appeared in any daily mode don't show this section.
+            This is SEO-valuable: creates a web of internal links between word pages,
+            archive pages, and mode pages.
+        </p>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     9. ARCHIVE
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section dark" id="archive">
+<!-- ═══════════════════════════════════════
+     13. ROUTING
+     ═══════════════════════════════════════ -->
+<section class="section dark" id="routing">
     <div class="content centered">
-        <div class="section-tag">09 / System</div>
-        <h2>Archive</h2>
-        <div class="subtitle">Daily-only. Per-mode. Browsable history.</div>
-
-        <p>
-            The archive page (<code>/en/words</code>) currently shows past Classic daily words.
-            With multi-mode dailies, the archive gains a <strong>mode filter</strong> at the top:
-            Classic, Dordle, Quordle, etc. Each mode's archive shows its daily history.
-            Unlimited games don't appear in the archive &mdash; they're ephemeral.
-        </p>
-        <p>
-            Compare to <a href="direction-a-editorial.html#archive">Screen 06 (Archive)</a>.
-        </p>
-    </div>
-
-    <div style="max-width: 400px; margin: 32px auto;">
-        <div style="display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap;">
-            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--paper); color: var(--paper);">Classic</span>
-            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Dordle</span>
-            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Quordle</span>
-            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Semantic</span>
-            <span style="font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.15); opacity: 0.4;">Speed</span>
-        </div>
-        <div class="archive-row"><div class="ar-day">#1756</div><div class="ar-word">THETA</div><div class="ar-mode">Classic</div><div class="ar-result won">3/6 &#10003;</div></div>
-        <div class="archive-row"><div class="ar-day">#1755</div><div class="ar-word">GUPPY</div><div class="ar-mode">Classic</div><div class="ar-result won">4/6 &#10003;</div></div>
-        <div class="archive-row"><div class="ar-day">#1754</div><div class="ar-word">GENRE</div><div class="ar-mode">Classic</div><div class="ar-result won">2/6 &#10003;</div></div>
-        <div class="archive-row"><div class="ar-day">#1753</div><div class="ar-word">SCALD</div><div class="ar-mode">Classic</div><div class="ar-result lost">X/6</div></div>
-        <div class="archive-row"><div class="ar-day">#1752</div><div class="ar-word">JOUST</div><div class="ar-mode">Classic</div><div class="ar-result unplayed">&mdash;</div></div>
-        <div class="note">Mode filter tabs &mdash; archive is daily-only per mode</div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     10. ROUTING
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section light" id="routing">
-    <div class="content centered">
-        <div class="section-tag">10 / System</div>
+        <div class="section-tag">13 / System</div>
         <h2>Routing &amp; URLs</h2>
         <div class="subtitle">One URL per mode. Play type is a query param.</div>
-
-        <p>
-            Daily and unlimited share 100% of the game UI, logic, and keyboard. They differ only
-            in word selection. Separate routes would duplicate SEO and split analytics. Instead:
-        </p>
 
         <table class="mode-table">
             <thead><tr><th>URL</th><th>Result</th></tr></thead>
@@ -929,30 +1128,29 @@ body {
                 <tr><td><code>/en/dordle?play=unlimited</code></td><td>Unlimited Dordle</td></tr>
                 <tr><td><code>/en/semantic</code></td><td>Daily Semantic (default)</td></tr>
                 <tr><td><code>/en/semantic?play=unlimited</code></td><td>Unlimited Semantic</td></tr>
-                <tr><td><code>/en/speed</code></td><td>Daily Speed (default &mdash; same word sequence for all)</td></tr>
-                <tr><td><code>/en/speed?play=unlimited</code></td><td>Unlimited Speed (random sequence)</td></tr>
+                <tr><td><code>/en/speed</code></td><td>Daily Speed (default)</td></tr>
+                <tr><td><code>/en/speed?play=unlimited</code></td><td>Unlimited Speed</td></tr>
                 <tr><td><code>/en</code></td><td>Daily Classic (no change)</td></tr>
                 <tr><td><code>/en/unlimited</code></td><td>Unlimited Classic (no change)</td></tr>
+                <tr><td><code>/en/archive</code></td><td>Archive (301 from /en/words)</td></tr>
             </tbody>
         </table>
 
         <p>
-            The <code>?play=unlimited</code> param triggers a soft reset &mdash; no page navigation,
-            just different word selection. Last choice is saved to localStorage per mode so returning
-            players land on their preferred type. Classic keeps its separate <code>/unlimited</code> route
-            for backward compatibility and SEO (it's already indexed).
+            <code>?play=unlimited</code> triggers a soft reset. Last choice saved to localStorage
+            per mode. Classic keeps <code>/unlimited</code> for backward compat and SEO.
         </p>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     11. ENTRY POINT MAP
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section dark" id="decisions">
+<!-- ═══════════════════════════════════════
+     13. ENTRY POINT MAP
+     ═══════════════════════════════════════ -->
+<section class="section dark" id="entry-map">
     <div class="content centered">
-        <div class="section-tag">11</div>
+        <div class="section-tag">14</div>
         <h2>All Entry Points</h2>
-        <div class="subtitle">Every path a player can take to reach a game</div>
+        <div class="subtitle">Every path to a game</div>
 
         <div class="flow">
             <div class="flow-node active">Sidebar<br><span style="font-size: 7px; opacity: 0.5;">mode &rarr; daily/unlim</span></div>
@@ -960,37 +1158,72 @@ body {
             <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
         </div>
         <div class="flow">
-            <div class="flow-node active">Post-Game CTA<br><span style="font-size: 7px; opacity: 0.5;">"play unlimited" / "try daily"</span></div>
+            <div class="flow-node active">Stats Modal CTA<br><span style="font-size: 7px; opacity: 0.5;">"play unlimited" / "try daily"</span></div>
             <div class="flow-arrow">&rarr;</div>
             <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
         </div>
         <div class="flow">
-            <div class="flow-node active">Homepage Card<br><span style="font-size: 7px; opacity: 0.5;">click card &rarr; daily default</span></div>
+            <div class="flow-node active">Keyboard Flip<br><span style="font-size: 7px; opacity: 0.5;">discovery panel after game over</span></div>
             <div class="flow-arrow">&rarr;</div>
             <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
         </div>
         <div class="flow">
-            <div class="flow-node active">Direct URL<br><span style="font-size: 7px; opacity: 0.5;">/en/dordle?play=unlimited</span></div>
+            <div class="flow-node active">Scroll-Down Section<br><span style="font-size: 7px; opacity: 0.5;">"More Game Modes" below fold</span></div>
             <div class="flow-arrow">&rarr;</div>
             <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
         </div>
         <div class="flow">
-            <div class="flow-node active">Share Link<br><span style="font-size: 7px; opacity: 0.5;">from friend's share text</span></div>
+            <div class="flow-node active">Homepage Card<br><span style="font-size: 7px; opacity: 0.5;">click &rarr; daily default</span></div>
             <div class="flow-arrow">&rarr;</div>
             <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
         </div>
+        <div class="flow">
+            <div class="flow-node active">Header Subtitle Tap<br><span style="font-size: 7px; opacity: 0.5;">hidden &mdash; opens sidebar expanded</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--yellow); color: var(--yellow);">Sidebar</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node active">Board Picker Modal<br><span style="font-size: 7px; opacity: 0.5;">from "Multi-Board" sidebar item</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node active">Direct URL / Share Link<br><span style="font-size: 7px; opacity: 0.5;">/en/dordle?play=unlimited</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: var(--green); color: var(--green);">Game</div>
+        </div>
+    </div>
+</section>
 
-        <div style="margin-top: 40px;">
-            <h3>What We're NOT Doing</h3>
-            <p><strong>No config bar.</strong> <a href="direction-a-editorial.html#refined-game">F3</a> explored
-            a persistent config bar with Daily/Unlimited/Custom pills. Rejected &mdash; too much UI for a binary choice.</p>
-            <p><strong>No in-game toggle.</strong> The <a href="direction-a-editorial.html#option-b">Option B</a> approach
-            of toggling play type mid-game was confusing. You pick before you play.</p>
-            <p><strong>No mode picker modal.</strong> <a href="direction-a-editorial.html#mode-select">Screen 09</a> was
-            a full-screen mode picker. Unnecessary when the sidebar already handles mode selection.</p>
-            <p><strong>No separate sidebar items for daily/unlimited.</strong> That was the
-            <a href="direction-a-editorial.html#du-sidebar">Card Split approach</a> &mdash; rejected because it doubles the sidebar.</p>
-        </div>
+<!-- ═══════════════════════════════════════
+     14. NOT DOING
+     ═══════════════════════════════════════ -->
+<section class="section light" id="not-doing">
+    <div class="content centered">
+        <div class="section-tag">15</div>
+        <h2>What We're NOT Doing</h2>
+        <div class="subtitle">Explicitly rejected approaches</div>
+
+        <p><strong>No config bar.</strong>
+        <a href="direction-a-editorial.html#refined-game">F3</a> had persistent Daily/Unlimited/Custom
+        pills. Rejected &mdash; too much UI for a binary choice that's made once per session.</p>
+
+        <p><strong>No in-game toggle.</strong>
+        <a href="direction-a-editorial.html#option-b">Option B</a> toggled play type mid-game.
+        Confusing. You pick before you play.</p>
+
+        <p><strong>No separate sidebar items for daily/unlimited per mode.</strong>
+        Doubles the sidebar. Multi-Board uses a picker modal instead.</p>
+
+        <p><strong>No per-mode streaks.</strong>
+        Product-wide streak is simpler, more motivating, and easier to maintain.
+        Per-mode stats (win rate, games played) still exist.</p>
+
+        <p><strong>No full-screen mode picker modal for all modes.</strong>
+        <a href="direction-a-editorial.html#mode-select">Screen 09</a> was redundant with the sidebar.
+        The board picker modal only opens for Multi-Board (5 sub-modes need space).</p>
     </div>
 </section>
 

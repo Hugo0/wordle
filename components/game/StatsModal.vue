@@ -315,21 +315,29 @@
                                 {{ lang.config?.text?.share || 'Share Result' }}
                             </template>
                         </button>
-                        <!-- Classic daily → link to unlimited -->
+                        <!-- Daily modes → "Unlimited" secondary button -->
                         <NuxtLink
-                            v-if="game.gameOver && isClassicDaily"
-                            :to="'/' + lang.languageCode + '/unlimited'"
+                            v-if="game.gameOver && isDaily && unlimitedRoute"
+                            :to="unlimitedRoute"
                             class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                         >
                             Unlimited
                         </NuxtLink>
-                        <!-- Non-daily modes → new game button -->
+                        <!-- Unlimited modes → "New Game" / "Play Again" -->
                         <button
-                            v-else-if="game.gameOver"
+                            v-else-if="game.gameOver && !isDaily"
                             class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                             @click="$emit('newGame')"
                         >
-                            {{ isDaily ? 'Close' : 'New Game' }}
+                            New Game
+                        </button>
+                        <!-- Daily without unlimited variant → Close -->
+                        <button
+                            v-else-if="game.gameOver"
+                            class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
+                            @click="$emit('close')"
+                        >
+                            Close
                         </button>
                         <!-- Pre-game: just a close button -->
                         <button
@@ -338,6 +346,42 @@
                             @click="$emit('close')"
                         >
                             Close
+                        </button>
+                    </div>
+
+                    <!-- After unlimited: subtle daily nudge text link -->
+                    <div
+                        v-if="game.gameOver && !isDaily && dailyRoute"
+                        class="text-center py-2"
+                    >
+                        <NuxtLink
+                            :to="dailyRoute"
+                            class="text-sm text-ink underline underline-offset-2 hover:opacity-70 transition-opacity"
+                        >
+                            Play today's daily &rarr;
+                        </NuxtLink>
+                    </div>
+
+                    <!-- Sign-in CTA — shown once per session when logged out -->
+                    <div
+                        v-if="game.gameOver && !authLoggedIn && !signInDismissed"
+                        class="editorial-rule stats-section flex items-center justify-between gap-2"
+                    >
+                        <span class="mono-label flex-1">
+                            Sign in to save your streak across devices
+                        </span>
+                        <button
+                            class="text-sm text-accent font-semibold hover:underline flex-shrink-0"
+                            @click="authLoginWithGoogle()"
+                        >
+                            Sign in
+                        </button>
+                        <button
+                            class="text-muted hover:text-ink transition-colors flex-shrink-0"
+                            aria-label="Dismiss"
+                            @click="signInDismissed = true"
+                        >
+                            <X :size="14" />
                         </button>
                     </div>
 
@@ -371,6 +415,8 @@ const props = defineProps<{ visible: boolean }>();
 defineEmits<{ close: []; newGame: [] }>();
 
 const game = useGameStore();
+const { loggedIn: authLoggedIn, loginWithGoogle: authLoginWithGoogle } = useAuth();
+const signInDismissed = ref(false);
 const statsStore = useStatsStore();
 const lang = useLanguageStore();
 const settings = useSettingsStore();
@@ -394,10 +440,23 @@ watch(
 );
 
 const isDaily = computed(() => game.gameConfig.playType === 'daily');
-const isClassicDaily = computed(
-    () => game.gameConfig.mode === 'classic' && game.gameConfig.playType === 'daily'
-);
-const isSpeed = computed(() => game.gameConfig.mode === 'speed');
+
+// Routes for cross-pollination CTAs
+const modeDef = computed(() => GAME_MODE_CONFIG[game.gameConfig.mode]);
+const modeBase = computed(() => {
+    const suffix = modeDef.value?.routeSuffix;
+    return suffix ? `/${lang.languageCode}/${suffix}` : `/${lang.languageCode}`;
+});
+const unlimitedRoute = computed(() => {
+    if (!modeDef.value?.supportedPlayTypes.includes('unlimited')) return null;
+    // Classic unlimited has its own legacy route
+    if (game.gameConfig.mode === 'classic') return `/${lang.languageCode}/unlimited`;
+    return `${modeBase.value}?play=unlimited`;
+});
+const dailyRoute = computed(() => {
+    if (!modeDef.value?.supportedPlayTypes.includes('daily')) return null;
+    return modeBase.value; // daily is the default (no ?play= param)
+});
 
 const nextWordLabel = computed(() => {
     const mode = game.gameConfig.mode;

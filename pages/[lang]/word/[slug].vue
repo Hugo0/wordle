@@ -13,7 +13,7 @@
  */
 
 import { computed, onMounted, ref, watch, onUnmounted } from 'vue';
-import { formatDateLong, getLocaleForIntl } from '~/utils/locale';
+import { formatDateLong, getLocaleForIntl, RTL_LANGS } from '~/utils/locale';
 import { interpolate } from '~/utils/interpolate';
 import { wordDetailPath, wordDetailUrl, wordImageUrl } from '~/utils/wordUrls';
 import WordHeadline from '~/components/word/WordHeadline.vue';
@@ -52,17 +52,31 @@ const notFound = computed(
     () => !!basicError.value || !basicData.value || !basicData.value.word
 );
 
-// Legacy numeric slug → replace with canonical word-name URL on the
-// client. Runs on both mount and slug change because the user might
-// navigate from /word/wolf → /word/271 via archive links.
-function maybeRedirectLegacySlug() {
-    const b = basicData.value;
-    if (b?.resolved_from_idx && b.word && String(b.day_idx) === slug.value) {
-        router.replace(wordDetailPath(lang, b.word) + (window.location.search || ''));
-    }
+// SSR: return 404 status for non-existent words so Google doesn't index them.
+// Client-side: the template shows a "word not found" message instead.
+if (import.meta.server && notFound.value && !basicData.value?.resolved_from_idx) {
+    throw createError({ statusCode: 404, message: 'Word not found' });
 }
-onMounted(maybeRedirectLegacySlug);
-watch(() => basicData.value?.resolved_from_idx, maybeRedirectLegacySlug);
+
+// Legacy numeric slug → 301 redirect to canonical word-name URL.
+// Server-side so Googlebot follows the redirect without needing JS.
+const b = basicData.value;
+if (b?.resolved_from_idx && b.word && String(b.day_idx) === slug.value) {
+    const canonicalPath = wordDetailPath(lang, b.word);
+    const queryStr = Object.keys(route.query).length
+        ? '?' + new URLSearchParams(route.query as Record<string, string>).toString()
+        : '';
+    await navigateTo(canonicalPath + queryStr, { redirectCode: 301, replace: true });
+}
+// Client-side watch for SPA navigation to numeric slugs (e.g. archive links).
+// The SSR redirect above handles the initial server render; this handles
+// subsequent client-side navigations within the same page component.
+watch(() => basicData.value?.resolved_from_idx, () => {
+    const bd = basicData.value;
+    if (bd?.resolved_from_idx && bd.word && String(bd.day_idx) === slug.value) {
+        router.replace(wordDetailPath(lang, bd.word) + (window.location.search || ''));
+    }
+});
 
 // Explore (axes + neighbors + umap) + richer definition
 const extraData = ref<{
@@ -279,12 +293,13 @@ const descriptionStr = computed(() => {
     if (isDailyWord.value && defText.value) {
         return interpolate(
             metaTemplates.value.description_with_def ||
-                'The Wordle {langNative} answer for {date} (#{idx}) was {word}. {definition}',
+                'The Wordle {langNative} answer for {date} (#{idx}) was {word}. {partOfSpeech}{definition}',
             {
                 idx: dayIdx.value ?? '',
                 date: wordDate.value || '',
                 word: upperWord.value,
                 langNative: langNameNative.value,
+                partOfSpeech: posText.value ? `(${posText.value}) ` : '',
                 definition: defText.value,
             }
         );
@@ -301,6 +316,7 @@ useSeoMeta({
     ogTitle: titleStr,
     ogUrl: canonicalUrl,
     ogType: 'article',
+    ogLocale: lang,
     ogDescription: () => descriptionStr.value.slice(0, 200),
     ogImage: () =>
         word.value ? wordImageUrl(lang, word.value, dayIdx.value) : undefined,
@@ -311,12 +327,10 @@ useSeoMeta({
     robots: () => (context.isCustom.value ? 'noindex,follow' : 'index,follow'),
 });
 
-useHead({ link: [{ rel: 'canonical', href: canonicalUrl }] });
-
-const { data: allLangsWord } = await useFetch('/api/languages', { key: 'languages' });
-if (allLangsWord.value?.language_codes) {
-    useHreflang(allLangsWord.value.language_codes, `/word/${slug.value}`);
-}
+useHead({
+    htmlAttrs: { lang, dir: RTL_LANGS.has(lang) ? 'rtl' : 'ltr' },
+    link: [{ rel: 'canonical', href: canonicalUrl }],
+});
 
 useHead({
     script: [
@@ -348,14 +362,16 @@ useHead({
                         },
                     ],
                 };
+                const wordDateStr = primary.value?.basic?.word_date || '';
                 const definedTerm = defText.value
                     ? {
                           '@context': 'https://schema.org',
                           '@type': 'DefinedTerm',
                           name: word.value,
                           description: defText.value,
-                          inDefinedTermSet: `https://wordle.global/${lang}/words`,
+                          inDefinedTermSet: `https://wordle.global/${lang}/archive`,
                           url: canonicalUrl.value,
+                          ...(wordDateStr && { dateModified: wordDateStr }),
                       }
                     : null;
                 return JSON.stringify(
@@ -499,7 +515,7 @@ const subtitleText = computed(() => {
             <p>
                 The word <em>{{ slug }}</em> isn't in our dictionary.
             </p>
-            <NuxtLink :to="`/${lang}/words`" class="text-btn">Browse all words</NuxtLink>
+            <NuxtLink :to="`/${lang}/archive`" class="text-btn">Browse all words</NuxtLink>
         </div>
 
         <div v-else-if="!primary" class="loading">
@@ -602,7 +618,7 @@ const subtitleText = computed(() => {
                     <button class="text-btn accent" @click="shareWord">
                         {{ shareBtnText }}
                     </button>
-                    <NuxtLink :to="`/${lang}/words`" class="text-btn">
+                    <NuxtLink :to="`/${lang}/archive`" class="text-btn">
                         ← archive
                     </NuxtLink>
                 </div>
@@ -690,24 +706,7 @@ const subtitleText = computed(() => {
 }
 
 .section-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    text-align: center;
     margin-bottom: 16px;
-    position: relative;
-}
-.section-label::before,
-.section-label::after {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 1px;
-    background: var(--color-rule);
-    vertical-align: middle;
-    margin: 0 10px;
 }
 
 .share-wrap {

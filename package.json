@@ -15,7 +15,12 @@
         "test:e2e": "playwright test --config playwright.config.ts",
         "test:e2e:headed": "playwright test --config playwright.config.ts --headed",
         "format": "prettier --write \"**/*.{ts,js,vue,json}\"",
-        "format:check": "prettier --check \"**/*.{ts,js,vue,json}\""
+        "format:check": "prettier --check \"**/*.{ts,js,vue,json}\"",
+        "db:migrate": "prisma migrate dev --config prisma/prisma.config.ts",
+        "db:push": "prisma db push --config prisma/prisma.config.ts",
+        "db:generate": "prisma generate --config prisma/prisma.config.ts",
+        "db:studio": "prisma studio --config prisma/prisma.config.ts",
+        "db:seed": "tsx prisma/seed.ts"
     },
     "dependencies": {
         "@fontsource-variable/fraunces": "^5.2.9",

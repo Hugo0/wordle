@@ -273,6 +273,14 @@ export function getEmbedding(data: SemanticData, word: string): Float32Array | n
 // pattern used by semantic-hints and word definitions.
 
 const _ondemandCache = new Map<string, Float32Array>();
+const ONDEMAND_CACHE_MAX = 5000;
+function ondemandCacheSet(word: string, vec: Float32Array): void {
+    _ondemandCache.set(word, vec);
+    if (_ondemandCache.size > ONDEMAND_CACHE_MAX) {
+        const oldest = _ondemandCache.keys().next().value;
+        if (oldest !== undefined) _ondemandCache.delete(oldest);
+    }
+}
 const EMBED_CACHE_DIR = join(process.cwd(), 'word-defs', 'semantic-embeddings');
 
 function embedCachePath(word: string): string {
@@ -335,7 +343,7 @@ export async function fetchEmbeddingOnDemand(
     // 2. Disk (model-gated so a model swap invalidates stale entries)
     const disk = readDiskEmbedding(word, data.dims, data.modelName);
     if (disk) {
-        _ondemandCache.set(word, disk);
+        ondemandCacheSet(word, disk);
         return disk;
     }
 
@@ -378,7 +386,7 @@ export async function fetchEmbeddingOnDemand(
         const vec = new Float32Array(dims);
         for (let i = 0; i < dims; i++) vec[i] = raw[i]! / norm;
 
-        _ondemandCache.set(word, vec);
+        ondemandCacheSet(word, vec);
         writeDiskEmbedding(word, modelName, vec);
         return vec;
     } catch (e) {
@@ -449,6 +457,10 @@ export function getTargetDistribution(data: SemanticData, target: string): Targe
         rankByWord,
     };
     _targetCosineCache.set(target, dist);
+    if (_targetCosineCache.size > 20) {
+        const oldest = _targetCosineCache.keys().next().value;
+        if (oldest !== undefined) _targetCosineCache.delete(oldest);
+    }
     return dist;
 }
 
@@ -551,7 +563,12 @@ export function normalizeProjection(
     return Math.max(0, Math.min(1, v));
 }
 
-/** Returns k nearest neighbours (cosine similarity) in the full embedding space. */
+/**
+ * Returns k nearest neighbours (cosine similarity) in the full embedding space.
+ *
+ * Uses a bounded sorted array (min-heap approximation) so we do O(N) work
+ * with at most O(k log k) insertions, instead of sorting all N scores.
+ */
 export function knnNearest(
     data: SemanticData,
     wordVec: Float32Array,
@@ -560,7 +577,10 @@ export function knnNearest(
 ): Array<{ word: string; similarity: number }> {
     const N = data.words.length;
     const D = data.dims;
-    const scores: Array<{ word: string; similarity: number }> = [];
+    // Bounded sorted array — keeps top k results, highest similarity first
+    const topK: Array<{ word: string; similarity: number }> = [];
+    let threshold = -Infinity; // similarity of the k-th best so far
+
     for (let i = 0; i < N; i++) {
         const word = data.words[i]!;
         if (excludeWords.has(word)) continue;
@@ -568,10 +588,22 @@ export function knnNearest(
         for (let j = 0; j < D; j++) {
             dot += wordVec[j]! * data.embeddings[i * D + j]!;
         }
-        scores.push({ word, similarity: dot });
+        if (dot <= threshold && topK.length >= k) continue;
+
+        // Binary search for insertion point (descending order)
+        let lo = 0,
+            hi = topK.length;
+        while (lo < hi) {
+            const mid = (lo + hi) >>> 1;
+            if (topK[mid]!.similarity > dot) lo = mid + 1;
+            else hi = mid;
+        }
+        topK.splice(lo, 0, { word, similarity: dot });
+        if (topK.length > k) topK.pop();
+        threshold =
+            topK.length >= k ? topK[topK.length - 1]!.similarity : -Infinity;
     }
-    scores.sort((a, b) => b.similarity - a.similarity);
-    return scores.slice(0, k);
+    return topK;
 }
 
 // ---------------- Target session management ----------------
@@ -581,10 +613,12 @@ const _sessions = new Map<string, { target: string; createdAt: number }>();
 export function createSession(target: string): string {
     const id = Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
     _sessions.set(id, { target, createdAt: Date.now() });
-    // Simple eviction: drop sessions older than 1h
-    const cutoff = Date.now() - 3600_000;
-    for (const [k, v] of _sessions.entries()) {
-        if (v.createdAt < cutoff) _sessions.delete(k);
+    // Evict stale sessions only when the map grows large enough to matter
+    if (_sessions.size > 1000) {
+        const cutoff = Date.now() - 3600_000;
+        for (const [k, v] of _sessions.entries()) {
+            if (v.createdAt < cutoff) _sessions.delete(k);
+        }
     }
     return id;
 }

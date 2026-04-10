@@ -39,9 +39,9 @@ describe('SSR Rendering', () => {
             expect(html).toMatch(/rel="canonical"/);
         });
 
-        it('contains hreflang tags', async () => {
+        it('does not contain hreflang tags (served via sitemap)', async () => {
             html = html || (await fetchHtml('/en'));
-            expect(html).toMatch(/hreflang=/);
+            expect(html).not.toMatch(/hreflang=/);
         });
 
         it('contains game board markup', async () => {
@@ -86,10 +86,9 @@ describe('SSR Rendering', () => {
             expect(html).toMatch(/property="og:image:height"/);
         });
 
-        it('has hreflang tags', async () => {
+        it('does not contain hreflang tags (served via sitemap)', async () => {
             html = html || (await fetchHtml('/'));
-            expect(html).toMatch(/hreflang="x-default"/);
-            expect(html).toMatch(/hreflang="en"/);
+            expect(html).not.toMatch(/hreflang=/);
         });
     });
 
@@ -108,28 +107,34 @@ describe('SSR Rendering', () => {
             expect(html).toMatch(/rel="canonical".*href="https:\/\/wordle\.global\/en"/);
         });
 
-        it('has x-default hreflang', async () => {
+        it('does not contain hreflang tags (served via sitemap)', async () => {
             html = html || (await fetchHtml('/en'));
-            expect(html).toMatch(/hreflang="x-default"/);
+            expect(html).not.toMatch(/hreflang=/);
         });
     });
 
-    describe('Words page /en/words', () => {
+    describe('Archive page /en/archive (renamed from /en/words)', () => {
         let html: string;
 
-        it('renders words page', async () => {
-            html = await fetchHtml('/en/words');
+        it('renders archive page', async () => {
+            html = await fetchHtml('/en/archive');
             expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
         });
 
-        it('has hreflang tags', async () => {
-            html = html || (await fetchHtml('/en/words'));
-            expect(html).toMatch(/hreflang="x-default"/);
+        it('does not contain hreflang tags (served via sitemap)', async () => {
+            html = html || (await fetchHtml('/en/archive'));
+            expect(html).not.toMatch(/hreflang=/);
         });
 
         it('has canonical URL', async () => {
-            html = html || (await fetchHtml('/en/words'));
+            html = html || (await fetchHtml('/en/archive'));
             expect(html).toMatch(/rel="canonical"/);
+        });
+
+        it('/en/words redirects to /en/archive', async () => {
+            const resp = await fetch(`${baseUrl()}/en/words`, { redirect: 'manual' });
+            expect(resp.status).toBe(301);
+            expect(resp.headers.get('location')).toContain('/en/archive');
         });
     });
 
@@ -141,9 +146,9 @@ describe('SSR Rendering', () => {
             expect(html).toMatch(/<title[^>]*>.*Wordle.*<\/title>/i);
         });
 
-        it('has hreflang tags', async () => {
+        it('does not contain hreflang tags (word pages are not translations)', async () => {
             html = html || (await fetchHtml('/en/word/1'));
-            expect(html).toMatch(/hreflang="x-default"/);
+            expect(html).not.toMatch(/hreflang=/);
         });
 
         it('has breadcrumb structured data', async () => {

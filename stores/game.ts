@@ -960,6 +960,7 @@ export const useGameStore = defineStore('game', () => {
                 attempts: options.statsAttempts,
                 streak_after: statsStore.stats.current_streak,
                 game_mode: gameConfig.value.mode,
+                play_type: gameConfig.value.playType,
                 is_first_game: totalGamesBefore === 0,
                 total_invalid_attempts: frustrationState.totalInvalidAttempts,
                 max_consecutive_invalid: frustrationState.maxConsecutiveInvalid,
@@ -1121,7 +1122,13 @@ export const useGameStore = defineStore('game', () => {
     /** Save current game state to localStorage. */
     function saveToLocalStorage(): void {
         if (!import.meta.client) return;
-        const pageName = window.location.pathname.split('/').pop() || 'home';
+        // Daily non-classic modes save under "{pageName}_daily" to avoid
+        // colliding with unlimited saves under the bare pageName key.
+        // Classic daily keeps bare pageName for backward compat.
+        let pageName = window.location.pathname.split('/').pop() || 'home';
+        if (gameConfig.value.playType === 'daily' && gameConfig.value.mode !== 'classic') {
+            pageName = `${pageName}_daily`;
+        }
         const data: SavedGameState = {
             tiles: tiles.value,
             tile_colors: tileColors.value,
@@ -1196,7 +1203,10 @@ export const useGameStore = defineStore('game', () => {
         resetGameState();
         try {
             const lang = useLanguageStore();
-            const pageName = window.location.pathname.split('/').pop() || 'home';
+            let pageName = window.location.pathname.split('/').pop() || 'home';
+            if (gameConfig.value.playType === 'daily' && gameConfig.value.mode !== 'classic') {
+                pageName = `${pageName}_daily`;
+            }
             const data = readJson<SavedGameState>(pageName);
             if (data?.todays_word === lang.todaysWord) {
                 tiles.value = data.tiles;
@@ -1803,13 +1813,14 @@ export const useGameStore = defineStore('game', () => {
     }
 
     /** Load multi-board state from localStorage. Returns true if restored. */
-    function loadMultiBoardFromLocalStorage(mode: GameMode, targetWords: string[]): boolean {
+    function loadMultiBoardFromLocalStorage(mode: GameMode, targetWords: string[], playType?: PlayType): boolean {
         if (!import.meta.client) return false;
         try {
             const lang = useLanguageStore();
             const cfg = createGameConfig(mode, lang.languageCode, {
                 wordLength: WORD_LENGTH,
                 dayIndex: lang.todaysIdx,
+                playType: playType ?? gameConfig.value.playType,
             });
             const key = buildSaveKey(cfg);
             const data = readJson<any>(key);
@@ -1945,7 +1956,10 @@ export const useGameStore = defineStore('game', () => {
 
         // Pick first word and set up the board
         const word = pickSpeedWord();
-        const cfg = createGameConfig('speed', gameConfig.value.language, { wordLength: 5 });
+        const cfg = createGameConfig('speed', gameConfig.value.language, {
+            wordLength: 5,
+            playType: gameConfig.value.playType,
+        });
         gameConfig.value = cfg;
         boards.value = [createBoardState(0, word, cfg.maxGuesses, cfg.wordLength)];
         activeBoardIndex.value = 0;
@@ -2139,6 +2153,7 @@ export const useGameStore = defineStore('game', () => {
             attempts: s.totalGuesses,
             streak_after: 0,
             game_mode: 'speed',
+            play_type: gameConfig.value.playType,
             time_to_complete_seconds: SPEED_INITIAL_TIME / 1000,
             words_solved: s.wordsSolved,
             words_failed: s.wordsFailed,

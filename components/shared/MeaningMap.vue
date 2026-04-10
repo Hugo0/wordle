@@ -454,8 +454,17 @@ watch(
                 );
             }
 
-            // Bounce-in new dots
+            // Bounce-in new dots — SKIP for muted (background) dots.
+            // Muted dots have CSS opacity: 0.35 + fill: var(--color-muted),
+            // but the Web Animation overrides those during playback, causing
+            // them to flash at full opacity with --color-ink fill, then snap
+            // to grey when the animation ends. Better to let them appear
+            // instantly at their correct muted state.
+            const mutedWords = new Set(
+                props.dots.filter((d) => d.role === 'muted').map((d) => d.word)
+            );
             for (const word of newWords) {
+                if (mutedWords.has(word)) continue; // skip bounce for background dots
                 const el = svg.querySelector(
                     `[data-word="${CSS.escape(word)}"]`
                 ) as SVGElement | null;
@@ -561,15 +570,58 @@ function dotRadius(d: ScreenDot): number {
     return 6;
 }
 
-// ── Grid scaling ──────────────────────────────────────────────────────────
-// Grid represents fixed semantic intervals. In absolute mode the grid
-// scales with totalZoom (autoZoom × userZoom). In polar mode dot positions
-// only use userZoom (radius = base / userZoom), so the grid must track
-// userZoom alone to stay consistent with dot spacing.
-const gridSize = computed(() => {
-    const z = props.mode === 'polar' ? props.userZoom : totalZoom.value;
-    const raw = 0.05 * z * canvasSize.value;
-    return Math.max(12, Math.min(200, raw));
+// ── Grid lines ───────────────────────────────────────────────────────────
+// Grid lines are drawn in UMAP [0,1]² space and projected to screen via
+// the same transform as dots (projectToCanvas). This ensures grid lines
+// zoom AND pan identically with the dots — no drift, no clamping.
+//
+// We generate horizontal and vertical lines at fixed intervals in UMAP
+// space (every 0.05 units). Only lines visible in the current viewport
+// are generated to keep the DOM lean.
+const GRID_STEP = 0.05; // in UMAP [0,1]² units
+
+const gridLines = computed<Array<{ x1: number; y1: number; x2: number; y2: number }>>(() => {
+    const S = canvasSize.value;
+    const zoom = totalZoom.value;
+    const panScale = S * zoom;
+    const panX = props.panOffset[0] / panScale;
+    const panY = props.panOffset[1] / panScale;
+    const cx = props.centerPos[0] - panX;
+    const cy = props.centerPos[1] + panY;
+
+    // Visible UMAP range at current zoom
+    const halfSpan = 0.5 / zoom;
+    const uLeft = cx - halfSpan;
+    const uRight = cx + halfSpan;
+    const uTop = cy - halfSpan;
+    const uBottom = cy + halfSpan;
+
+    // Round to grid step boundaries
+    const firstCol = Math.floor(uLeft / GRID_STEP) * GRID_STEP;
+    const firstRow = Math.floor(uTop / GRID_STEP) * GRID_STEP;
+
+    const lines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+    const inner = S - PAD * 2;
+
+    function toScreen(ux: number, uy: number): [number, number] {
+        const dx = (ux - cx) * zoom;
+        const dy = (uy - cy) * zoom;
+        return [PAD + inner * (0.5 + dx), PAD + inner * (0.5 - dy)];
+    }
+
+    // Vertical lines
+    for (let u = firstCol; u <= uRight + GRID_STEP; u += GRID_STEP) {
+        const [x1, y1] = toScreen(u, uTop - GRID_STEP);
+        const [x2, y2] = toScreen(u, uBottom + GRID_STEP);
+        lines.push({ x1, y1, x2, y2 });
+    }
+    // Horizontal lines
+    for (let v = firstRow; v <= uBottom + GRID_STEP; v += GRID_STEP) {
+        const [x1, y1] = toScreen(uLeft - GRID_STEP, v);
+        const [x2, y2] = toScreen(uRight + GRID_STEP, v);
+        lines.push({ x1, y1, x2, y2 });
+    }
+    return lines;
 });
 
 // ── Target position (respects pan) ────────────────────────────────────────
@@ -601,19 +653,14 @@ const targetScreenPos = computed(() => {
                 :viewBox="`0 0 ${canvasSize} ${canvasSize}`"
                 class="plot"
             >
-                <defs>
-                    <pattern
-                        id="grid"
-                        :width="gridSize"
-                        :height="gridSize"
-                        patternUnits="userSpaceOnUse"
-                    >
-                        <path :d="`M ${gridSize} 0 L 0 0 0 ${gridSize}`" fill="none" class="grid-line" />
-                    </pattern>
-                </defs>
-
-                <!-- Grid background -->
-                <rect width="100%" height="100%" fill="url(#grid)" class="grid-bg" />
+                <!-- Grid: lines in UMAP space, projected via the same
+                     zoom+pan as dots. Scales and drags faithfully. -->
+                <line
+                    v-for="(g, i) in gridLines"
+                    :key="'grid:' + i"
+                    :x1="g.x1" :y1="g.y1" :x2="g.x2" :y2="g.y2"
+                    class="grid-line"
+                />
 
                 <!-- 2-axis slice labels — cardinal positions, no axis lines -->
                 <template v-if="sliceAxes && axisInfoX && axisInfoY">
@@ -741,11 +788,8 @@ const targetScreenPos = computed(() => {
 }
 .grid-line {
     stroke: var(--color-rule);
-    stroke-width: 0.75;
-    opacity: 0.55;
-}
-.grid-bg {
-    pointer-events: none;
+    stroke-width: 0.5;
+    opacity: 0.4;
 }
 .plot {
     display: block;

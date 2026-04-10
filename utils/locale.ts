@@ -13,6 +13,10 @@
  * - Auto-mapped by Intl: tl → fil (no action needed)
  */
 
+/** Languages that use right-to-left script. Used by standalone pages
+ *  (word detail, archive) that don't go through the language store. */
+export const RTL_LANGS = new Set(['ar', 'he', 'fa', 'ckb', 'ur']);
+
 const LOCALE_FALLBACKS: Record<string, string> = {
     hyw: 'hy', // Eastern Armenian → Armenian
     la: 'en', // Latin — no native Intl support

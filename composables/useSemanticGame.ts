@@ -52,7 +52,6 @@ export type SemanticGuess = {
     /** Fraction of ‖target − guess‖² captured by the chosen axis subspace */
     compassExplained: number;
     guessNumber: number;
-    fromOnDemand: boolean;
 };
 
 export type Neighbour = {
@@ -97,7 +96,6 @@ type GuessResponse = {
     compassExplained?: number;
     won?: boolean;
     guessNumber?: number;
-    fromOnDemand?: boolean;
     targetWord?: string;
 };
 
@@ -134,9 +132,6 @@ export function useSemanticGame(lang: string) {
     // ── Session / meta ────────────────────────────────────────────────────
     const targetId = ref<string | null>(null);
     const dayIdx = ref<number>(0);
-    const vocabularySize = ref(0);
-    const axes = ref<string[]>([]);
-    const axesCoherence = ref<Record<string, number>>({});
     const axisAnchors = ref<Record<string, { low: string; high: string }>>({});
     const targetUmapPosition = ref<[number, number]>([0.5, 0.5]);
     const maxGuesses = ref(15);
@@ -223,9 +218,6 @@ export function useSemanticGame(lang: string) {
     const lastCompassStatus = computed<CompassStatus | null>(
         () => compassSource.value?.compassStatus ?? null
     );
-    /** The word the compass is computed from — shown in the compass panel
-     *  header so the player knows "these hints are relative to X". */
-    const compassWord = computed(() => compassSource.value?.word ?? null);
     const guessesRemaining = computed(() => maxGuesses.value - guesses.value.length);
     const llmHintUnlocked = computed(() => guesses.value.length >= LLM_HINT_UNLOCK_AT);
     const canSubmit = computed(
@@ -250,9 +242,6 @@ export function useSemanticGame(lang: string) {
             });
             targetId.value = resp.targetId;
             dayIdx.value = resp.dayIdx;
-            vocabularySize.value = resp.vocabularySize;
-            axes.value = resp.axes;
-            axesCoherence.value = resp.axesCoherence;
             axisAnchors.value = resp.axisAnchors;
             targetUmapPosition.value = resp.targetUmapPosition;
             maxGuesses.value = resp.maxGuesses ?? 15;
@@ -339,7 +328,6 @@ export function useSemanticGame(lang: string) {
                 compassStatus: resp.compassStatus ?? 'ok',
                 compassExplained: resp.compassExplained ?? 0,
                 guessNumber: resp.guessNumber ?? guesses.value.length + 1,
-                fromOnDemand: resp.fromOnDemand ?? false,
             };
             guesses.value.push(guess);
 
@@ -520,7 +508,6 @@ export function useSemanticGame(lang: string) {
         guessesSinceBest,
         lastCompass,
         lastCompassStatus,
-        compassWord,
         guessesRemaining,
         // actions
         startGame,

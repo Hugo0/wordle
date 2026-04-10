@@ -19,7 +19,7 @@ import {
 } from 'lucide-vue-next';
 import type { Component } from 'vue';
 import { GAME_MODE_CONFIG, GAME_MODE_ORDER } from '~/utils/game-modes';
-import type { GameMode } from '~/utils/game-modes';
+import type { GameMode, PlayType } from '~/utils/game-modes';
 
 /** Icon mapping — the only field that can't live in utils/ (Vue component refs). */
 const MODE_ICONS: Record<string, Component> = {
@@ -44,6 +44,8 @@ export interface GameModeUI {
     routeSuffix: string;
     enabled: boolean;
     badge?: string;
+    /** Which play types this mode supports (daily, unlimited, etc.) */
+    supportedPlayTypes: readonly string[];
     /** If set, mode only appears in the sidebar for these language codes. */
     languages?: string[];
 }
@@ -62,16 +64,25 @@ export const GAME_MODES_UI: GameModeUI[] = GAME_MODE_ORDER.map((id) => {
         routeSuffix: def.routeSuffix,
         enabled: def.enabled,
         badge: def.badge,
+        supportedPlayTypes: def.supportedPlayTypes,
         languages: def.languages ? [...def.languages] : undefined,
     };
 });
 
 /**
- * Get the route for a game mode given a language code.
+ * Get the route for a game mode given a language code and optional play type.
+ * When playType is 'unlimited', appends ?play=unlimited to the route.
+ * Daily (the default) has no query param.
  */
-export function getModeRoute(mode: GameModeUI, langCode: string): string | null {
+export function getModeRoute(
+    mode: GameModeUI,
+    langCode: string,
+    playType?: PlayType
+): string | null {
     if (!mode.enabled) return null;
-    return mode.routeSuffix ? `/${langCode}/${mode.routeSuffix}` : `/${langCode}`;
+    const base = mode.routeSuffix ? `/${langCode}/${mode.routeSuffix}` : `/${langCode}`;
+    if (playType === 'unlimited') return `${base}?play=unlimited`;
+    return base;
 }
 
 /**

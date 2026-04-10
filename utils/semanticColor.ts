@@ -9,6 +9,8 @@
  * with a resolved `SemanticGradient` built from CSS tokens on mount.
  */
 
+import { lerp } from '~/utils/easing';
+
 type RGB = [number, number, number];
 type Stop = { pos: number; rgb: RGB };
 export type SemanticGradient = Stop[];
@@ -24,10 +26,6 @@ function rgbToCss([r, g, b]: RGB): string {
     return `rgb(${r | 0}, ${g | 0}, ${b | 0})`;
 }
 
-function lerp(a: number, b: number, t: number): number {
-    return a + (b - a) * t;
-}
-
 export function buildSemanticGradient(tokens: {
     muted: string;
     semicorrect: string;
@@ -41,8 +39,6 @@ export function buildSemanticGradient(tokens: {
     ];
 }
 
-/** Read design-system CSS tokens and build the gradient. Falls back to
- *  hardcoded defaults during SSR or when tokens aren't available. */
 /** Read design-system CSS tokens and build the gradient. Falls back to
  *  hardcoded defaults during SSR or when tokens aren't available. */
 export function buildSemanticGradientFromCSS(): SemanticGradient {

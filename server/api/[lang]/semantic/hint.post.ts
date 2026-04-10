@@ -110,9 +110,6 @@ async function validateHint(hint: string, target: string): Promise<boolean> {
         const guesses = (parsed.guesses as string[]) ?? [];
         const normalized = guesses.map((g) => g.toLowerCase().trim());
         const tooEasy = normalized.includes(target.toLowerCase());
-        if (tooEasy) {
-            console.log(`[semantic hint] Rejected hint for "${target}": "${hint}" — validator guessed it (${normalized.join(', ')})`);
-        }
         return !tooEasy;
     } catch {
         return true; // parse error → accept

@@ -7,7 +7,7 @@
  */
 import { useSettingsStore } from '~/stores/settings';
 import { readJson, writeJson } from '~/utils/storage';
-import { Flame, Check, Download } from 'lucide-vue-next';
+import { Flame, Check } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
     GAME_MODES_UI,
@@ -72,7 +72,7 @@ const title = computed(
 );
 const description = computed(
     () =>
-        `Play Wordle in ${langCount.value}+ languages \u2014 daily puzzle, unlimited mode, speed streak, dordle & quordle. Free word game, no account needed.`
+        `Play Wordle in ${langCount.value}+ languages, from Arabic to Yoruba \u2014 the largest multilingual Wordle. Word definitions, no ads, no login. Daily puzzle plus 9 game modes.`
 );
 
 useSeoMeta({
@@ -201,16 +201,12 @@ useHead({
     ],
 });
 
-// Hreflang tags
-useHreflang(languageCodes.value);
-
 // ---------------------------------------------------------------------------
 // Client-side state
 // ---------------------------------------------------------------------------
 
 const searchText = ref('');
 const showAboutModal = ref(false);
-const showSettingsModal = ref(false);
 
 // Game mode picker
 const showModePicker = ref(false);
@@ -223,9 +219,6 @@ const gameResults = ref<
 >({});
 // Initialize with SSR-detected language (from Accept-Language header)
 const detectedLanguageCode = ref<string | null>(hpLang.value !== 'en' ? hpLang.value : null);
-
-// PWA install
-const canInstallPwa = ref(false);
 
 const analytics = useAnalytics();
 
@@ -255,13 +248,6 @@ onMounted(() => {
         detectedLanguageCode.value = clientLang;
     }
 
-    // Check PWA install availability
-    try {
-        canInstallPwa.value = !window.matchMedia('(display-mode: standalone)').matches;
-    } catch {
-        canInstallPwa.value = false;
-    }
-
     // Escape key closes modals
     window.addEventListener('keydown', onKeyDown);
 });
@@ -275,15 +261,6 @@ onUnmounted(() => {
 function onKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Escape') {
         showAboutModal.value = false;
-        showSettingsModal.value = false;
-    }
-}
-
-function installPwa(): void {
-    const nuxtApp = useNuxtApp();
-    const pwa = (nuxtApp as any).$pwaInstall as { install: () => void } | undefined;
-    if (pwa) {
-        pwa.install();
     }
 }
 
@@ -639,12 +616,13 @@ function openLink(url: string): void {
 
             <!-- Language grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 border-t border-rule">
-                <button
+                <a
                     v-for="language in languagesVis"
                     :key="language.language_code"
-                    class="flex items-center gap-3 text-left border-b border-rule hover:bg-paper-warm transition-colors cursor-pointer"
+                    :href="`/${language.language_code}`"
+                    class="flex items-center gap-3 text-left border-b border-rule hover:bg-paper-warm transition-colors cursor-pointer no-underline text-inherit"
                     style="padding: 14px 16px"
-                    @click="selectLanguageWithCode(language.language_code)"
+                    @click.prevent="selectLanguageWithCode(language.language_code)"
                 >
                     <img
                         v-if="showFlag(language.language_code)"
@@ -686,7 +664,7 @@ function openLink(url: string): void {
                             class="text-correct"
                         />
                     </div>
-                </button>
+                </a>
             </div>
         </div>
 
@@ -716,51 +694,6 @@ function openLink(url: string): void {
                     languages like Arabic or Hebrew.
                 </p>
                 <p class="text-center text-sm text-ink">Have fun!</p>
-            </div>
-        </SharedBaseModal>
-
-        <!-- Settings modal -->
-        <SharedBaseModal :visible="showSettingsModal" size="sm" @close="showSettingsModal = false">
-            <div class="flex flex-col gap-4">
-                <h3 class="heading-section text-xl text-center mb-2">Settings</h3>
-
-                <div class="flex flex-row items-center justify-between">
-                    <div class="flex flex-col">
-                        <span class="text-sm font-medium text-ink">Dark Mode</span>
-                        <span class="text-xs text-muted">Toggle dark theme</span>
-                    </div>
-                    <SharedToggleSwitch
-                        :model-value="settings.darkMode"
-                        @update:model-value="settings.toggleDarkMode()"
-                    />
-                </div>
-
-                <hr class="border-rule" />
-
-                <div class="flex flex-row items-center justify-between">
-                    <div class="flex flex-col">
-                        <span class="text-sm font-medium text-ink">Sound &amp; Haptics</span>
-                    </div>
-                    <SharedToggleSwitch
-                        :model-value="settings.feedbackEnabled"
-                        @update:model-value="settings.toggleFeedback()"
-                    />
-                </div>
-
-                <hr class="border-rule" />
-
-                <div v-if="canInstallPwa" class="pt-2">
-                    <button
-                        class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
-                        @click="installPwa"
-                    >
-                        <Download :size="18" />
-                        Install App
-                    </button>
-                    <p class="text-xs text-center text-muted mt-1">
-                        Play offline &amp; get app icon
-                    </p>
-                </div>
             </div>
         </SharedBaseModal>
 

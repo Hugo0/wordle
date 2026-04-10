@@ -15,8 +15,20 @@ import {
 import { loadWordStats } from '../../../utils/word-stats';
 import { fetchDefinition } from '../../../utils/definitions';
 import { checkWiktionaryExists } from '../../../utils/wiktionary';
-import { get2dPosition, getEmbedding, knnNearest, loadSemanticData } from '../../../utils/semantic';
+import { getEmbedding, knnNearest, loadSemanticData } from '../../../utils/semantic';
 import type { WordStats } from '~/utils/types';
+
+// Module-level Set cache so we don't rebuild on every request. wordLists
+// is loaded once at startup and never mutated, so the Set stays in sync.
+const _wordSetCache = new Map<string, Set<string>>();
+function getWordSet(lang: string, data: ReturnType<typeof loadAllData>): Set<string> {
+    let s = _wordSetCache.get(lang);
+    if (!s) {
+        s = new Set(data.wordLists[lang] || []);
+        _wordSetCache.set(lang, s);
+    }
+    return s;
+}
 
 /**
  * Reject obvious nonsense words (like `zyzzyx` or `asdfgh`) before we
@@ -30,8 +42,7 @@ import type { WordStats } from '~/utils/types';
  * returns a real word or errors.
  */
 function wordIsRecognized(lang: string, word: string, data: ReturnType<typeof loadAllData>): boolean {
-    const wordList = data.wordLists[lang];
-    if (wordList?.includes(word)) return true;
+    if (getWordSet(lang, data).has(word)) return true;
     // English gets the much larger semantic validator dictionary
     if (lang === 'en') {
         try {
@@ -55,7 +66,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 400, message: 'Invalid slug' });
     }
 
-    const word = resolved.kind === 'numeric' ? resolved.word : resolved.word;
+    const word = resolved.word;
     const dayIdx = resolved.dayIdx;
     const resolvedFromIdx = resolved.kind === 'numeric';
 

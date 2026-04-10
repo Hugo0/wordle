@@ -7,7 +7,7 @@
  * words_hub.html template.
  */
 
-import { formatDateLong } from '~/utils/locale';
+import { formatDateLong, RTL_LANGS } from '~/utils/locale';
 import { readJson } from '~/utils/storage';
 import { interpolate } from '~/utils/interpolate';
 import { translatePos } from '~/utils/i18n';
@@ -66,8 +66,9 @@ useSeoMeta({
     title,
     description: computed(() => description.value.slice(0, 200)),
     ogTitle: title,
-    ogUrl: `https://wordle.global/${lang}/words`,
+    ogUrl: `https://wordle.global/${lang}/archive`,
     ogType: 'website',
+    ogLocale: lang,
     ogDescription: computed(() => description.value.slice(0, 200)),
     twitterCard: 'summary_large_image',
     twitterTitle: title,
@@ -75,24 +76,25 @@ useSeoMeta({
 });
 
 useHead({
+    htmlAttrs: { lang, dir: RTL_LANGS.has(lang) ? 'rtl' : 'ltr' },
     link: [
         {
             rel: 'canonical',
             href: computed(
                 () =>
-                    `https://wordle.global/${lang}/words${page.value > 1 ? `?page=${page.value}` : ''}`
+                    `https://wordle.global/${lang}/archive${page.value > 1 ? `?page=${page.value}` : ''}`
             ),
         },
         ...(page.value > 1
             ? [
                   {
                       rel: 'prev',
-                      href: `https://wordle.global/${lang}/words${page.value > 2 ? `?page=${page.value - 1}` : ''}`,
+                      href: `https://wordle.global/${lang}/archive${page.value > 2 ? `?page=${page.value - 1}` : ''}`,
                   },
               ]
             : []),
         ...(page.value < totalPages.value
-            ? [{ rel: 'next', href: `https://wordle.global/${lang}/words?page=${page.value + 1}` }]
+            ? [{ rel: 'next', href: `https://wordle.global/${lang}/archive?page=${page.value + 1}` }]
             : []),
     ],
     script: [
@@ -104,7 +106,7 @@ useHead({
                     '@type': 'CollectionPage',
                     name: title.value,
                     description: description.value.slice(0, 200),
-                    url: `https://wordle.global/${lang}/words`,
+                    url: `https://wordle.global/${lang}/archive`,
                     isPartOf: {
                         '@type': 'WebSite',
                         name: 'Wordle Global',
@@ -148,7 +150,7 @@ useHead({
                             '@type': 'ListItem',
                             position: 3,
                             name: label('all_words', 'All Words'),
-                            item: `https://wordle.global/${lang}/words`,
+                            item: `https://wordle.global/${lang}/archive`,
                         },
                     ],
                 })
@@ -156,12 +158,6 @@ useHead({
         },
     ],
 });
-
-// Hreflang tags for all languages
-const { data: allLangsWords } = await useFetch('/api/languages', { key: 'languages' });
-if (allLangsWords.value?.language_codes) {
-    useHreflang(allLangsWords.value.language_codes, '/words');
-}
 
 function formatDate(dateStr: string): string {
     return formatDateLong(dateStr, lang);
@@ -311,7 +307,7 @@ onMounted(() => {
         <nav v-if="totalPages > 1" class="pagination">
             <NuxtLink
                 v-if="page > 1"
-                :to="`/${lang}/words${page > 2 ? `?page=${page - 1}` : ''}`"
+                :to="`/${lang}/archive${page > 2 ? `?page=${page - 1}` : ''}`"
                 class="text-btn"
             >
                 &larr; Newer
@@ -321,7 +317,7 @@ onMounted(() => {
             </span>
             <NuxtLink
                 v-if="page < totalPages"
-                :to="`/${lang}/words?page=${page + 1}`"
+                :to="`/${lang}/archive?page=${page + 1}`"
                 class="text-btn"
             >
                 Older &rarr;

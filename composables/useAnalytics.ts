@@ -66,6 +66,7 @@ interface GameStartParams {
     days_since_last?: number;
     current_streak?: number;
     game_mode?: string;
+    play_type?: 'daily' | 'unlimited' | 'custom';
     total_games_played?: number;
     total_languages_played?: number;
     user_age_days?: number;
@@ -77,6 +78,7 @@ interface GameCompleteParams {
     attempts: number | string;
     streak_after: number;
     game_mode?: string;
+    play_type?: 'daily' | 'unlimited' | 'custom';
     is_first_game?: boolean;
     // Session-aggregated struggle context
     total_invalid_attempts?: number;

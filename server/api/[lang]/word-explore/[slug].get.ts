@@ -20,7 +20,6 @@ import { loadAllData } from '../../../utils/data-loader';
 const EMPTY_RESPONSE = {
     projections: [] as Array<unknown>,
     nearest: [] as Array<{ word: string; similarity: number }>,
-    farthest: [] as Array<{ word: string; similarity: number }>,
     umap: null as [number, number] | null,
     similarityTo: null as number | null,
     available: false,
@@ -85,12 +84,12 @@ export default defineEventHandler(async (event) => {
         });
     }
 
-    // Top-80 nearest + top-20 farthest. 80 near lets the Word Explorer
-    // show a small prominent foreground (~12 top dots) + a muted
-    // "extended neighborhood" background (~60 faded dots) in the same
-    // polar coordinate system. UMAP coords come along so the client can
-    // compute real angular directions via polarProject — without them,
-    // every muted dot would stack at (0.5, 0.5).
+    // Top-80 nearest neighbors. 80 lets the Word Explorer show a small
+    // prominent foreground (~12 top dots) + a muted "extended neighborhood"
+    // background (~60 faded dots) in the same polar coordinate system.
+    // UMAP coords come along so the client can compute real angular
+    // directions via polarProject — without them, every muted dot would
+    // stack at (0.5, 0.5).
     const dist = getTargetDistribution(sem, word);
     type NeighborOut = {
         word: string;
@@ -98,20 +97,11 @@ export default defineEventHandler(async (event) => {
         umap: [number, number] | null;
     };
     const nearest: NeighborOut[] = [];
-    const farthest: NeighborOut[] = [];
     if (dist) {
         const N = dist.words.length;
         for (let i = 1; i <= 80 && i < N; i++) {
             const w = dist.words[i]!;
             nearest.push({
-                word: w,
-                similarity: dist.cosines[i]!,
-                umap: sem.umap[w] ?? null,
-            });
-        }
-        for (let i = Math.max(1, N - 20); i < N; i++) {
-            const w = dist.words[i]!;
-            farthest.push({
                 word: w,
                 similarity: dist.cosines[i]!,
                 umap: sem.umap[w] ?? null,
@@ -138,7 +128,6 @@ export default defineEventHandler(async (event) => {
         inVocab,
         projections,
         nearest,
-        farthest,
         umap: sem.umap[word] ?? null,
         similarityTo,
         available: true,

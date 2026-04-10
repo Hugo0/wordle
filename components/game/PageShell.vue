@@ -1,12 +1,14 @@
 <template>
-    <div v-if="visible" class="flex h-[100dvh] snap-start" :class="wrapperClass">
+    <div v-show="visible" class="flex h-[100dvh] snap-start" :class="wrapperClass">
         <!-- Sidebar (fixed overlay) -->
         <AppSidebar
             :is-open="sidebarOpen"
+            :show-sub-panel="showSubPanelOnOpen"
             :lang-code="lang"
             :language-name="languageName"
             :is-rtl="langStore.rightToLeft"
             :current-mode="currentMode"
+            :current-play-type="game.gameConfig.playType"
             @close="$emit('closeSidebar')"
             @select-mode="
                 (mode: string) => {
@@ -14,7 +16,7 @@
                     navigateTo(`/${lang}/${mode === 'classic' ? '' : mode + '/'}`);
                 }
             "
-            @select-language="navigateTo('/#languages')"
+            @select-language="showLanguageModal = true"
             @settings="game.showOptionsModal = !game.showOptionsModal"
         />
 
@@ -24,6 +26,7 @@
                 <AppHeader
                     :title="title"
                     :subtitle="subtitle"
+                    :flag-src="headerFlagSrc"
                     :sidebar-open="sidebarOpen"
                     :streak-count="streakCount"
                     :just-won="justWon"
@@ -31,6 +34,7 @@
                     @streak="game.showStreakModal = !game.showStreakModal"
                     @settings="game.showOptionsModal = !game.showOptionsModal"
                     @toggle-sidebar="$emit('toggleSidebar')"
+                    @open-play-type="openWithSubPanel"
                 />
             </div>
             <div
@@ -92,6 +96,16 @@
             <GameCopyFallbackModal />
             <GameNotificationToast :notification="game.notification" />
 
+            <!-- Language picker modal — opens from sidebar language item -->
+            <AppLanguagePickerModal
+                :visible="showLanguageModal"
+                :current-lang-code="lang"
+                :language-codes="allLangCodes"
+                :current-mode-suffix="game.gameConfig.mode === 'classic' ? '' : GAME_MODE_CONFIG[game.gameConfig.mode]?.routeSuffix || ''"
+                :current-play-type="game.gameConfig.playType"
+                @close="showLanguageModal = false"
+            />
+
             <!-- PWA install component — dialog triggered by plugin on idle.
                  manual-apple/manual-chrome prevent auto-show on page load;
                  showDialog(true) overrides this when we're ready to prompt. -->
@@ -114,6 +128,8 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import { useFlag } from '~/composables/useFlag';
 
 const props = withDefaults(
     defineProps<{
@@ -143,10 +159,26 @@ const props = withDefaults(
     }
 );
 
-defineEmits<{ toggleSidebar: []; closeSidebar: []; newGame: [] }>();
+const emit = defineEmits<{ toggleSidebar: []; closeSidebar: []; newGame: [] }>();
 
 const game = useGameStore();
-const statsStore = useStatsStore();
+
+// Header flag icon
+const headerFlagSrc = computed(() => useFlag(props.lang));
+
+// Sub-panel: when subtitle is clicked, open sidebar WITH sub-panel visible
+const showSubPanelOnOpen = ref(false);
+function openWithSubPanel() {
+    showSubPanelOnOpen.value = true;
+    emit('toggleSidebar');
+    // Reset after sidebar opens so normal opens don't show sub-panel
+    setTimeout(() => { showSubPanelOnOpen.value = false; }, 400);
+}
+
+// Language picker modal state
+const showLanguageModal = ref(false);
+const { data: langData } = useFetch('/api/languages', { key: 'languages' });
+const allLangCodes = computed(() => langData.value?.language_codes ?? []);
 const langStore = useLanguageStore();
 const analytics = useAnalytics();
 const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);

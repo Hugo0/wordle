@@ -116,6 +116,8 @@ function onKeydown(e: KeyboardEvent) {
         collapse();
         return;
     }
+    // Only handle zoom keys when the map is expanded or focused
+    if (!isExpanded.value && !frameRef.value?.contains(document.activeElement)) return;
     if (e.key === '=' || e.key === '+') {
         e.preventDefault();
         zoomIn();
@@ -227,7 +229,10 @@ const frameSize = computed(() => {
    pan/zoom. */
 /* Invisible wrapper — just a positioning context for the controls
    overlay. No border, no background. The inner map (canvas/SVG)
-   handles its own visual appearance. */
+   handles its own visual appearance.
+   view-transition-name enables the View Transitions API to snapshot
+   this element separately during expand/collapse, creating a smooth
+   morph instead of a jarring snap. */
 .map-content-wrap {
     position: relative;
     overflow: hidden;
@@ -235,6 +240,7 @@ const frameSize = computed(() => {
     touch-action: none;
     display: inline-block;
     max-width: 100%;
+    view-transition-name: meaning-map;
 }
 .map-content-wrap:active {
     cursor: grabbing;

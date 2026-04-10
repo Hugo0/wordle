@@ -439,23 +439,23 @@ html, body {
 }
 /* Paper aging — urgency levels */
 .speed-warm {
-    background-color: #f5f0e5;
+    background-color: var(--color-speed-warm);
 }
 .speed-hot {
-    background-color: #f0e6d4;
+    background-color: var(--color-speed-hot);
 }
 .speed-critical {
-    background-color: #f5e0dc;
+    background-color: var(--color-speed-critical);
     animation: speedPaperPulse 1.5s ease-in-out infinite;
 }
 .dark .speed-warm {
-    background-color: #1f1a15;
+    background-color: var(--color-speed-warm);
 }
 .dark .speed-hot {
-    background-color: #241a14;
+    background-color: var(--color-speed-hot);
 }
 .dark .speed-critical {
-    background-color: #2a1515;
+    background-color: var(--color-speed-critical);
     animation: speedPaperPulse 1.5s ease-in-out infinite;
 }
 @keyframes speedPaperPulse {
@@ -687,10 +687,20 @@ input:focus-visible {
    Enabled via experimental.viewTransition in nuxt.config.ts.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* Header: crossfade in place (no slide) — stays visually fixed */
+/* Game header: crossfade in place (no slide) — stays visually fixed
+   across game↔game navigations. */
 ::view-transition-old(header),
 ::view-transition-new(header) {
     animation-duration: 200ms;
+    mix-blend-mode: normal;
+}
+
+/* Landing header: separate VT name so it doesn't morph with the game
+   header (visually incompatible — 1-line logo vs 2-line title+subtitle).
+   Quick crossfade in place instead. */
+::view-transition-old(landing-header),
+::view-transition-new(landing-header) {
+    animation-duration: 150ms;
     mix-blend-mode: normal;
 }
 

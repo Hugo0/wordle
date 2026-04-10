@@ -7,6 +7,7 @@
  */
 
 import { readLocal, writeLocal } from '~/utils/storage';
+import { createGameConfig } from '~/utils/game-modes';
 
 definePageMeta({
     layout: 'game',
@@ -17,6 +18,9 @@ definePageMeta({
 
 const route = useRoute();
 const lang = route.params.lang as string;
+
+// Play type: daily (default) or unlimited via ?play=unlimited
+const { playType, isDaily, isUnlimited } = usePlayType('classic');
 
 // --- Language improvement banner (ko, ja) ---
 const IMPROVEMENT_LANGS = ['ko', 'ja'];
@@ -52,21 +56,21 @@ const { langStore, game, stats, sidebarOpen, toggleSidebar, closeSidebar, gameBo
 
 // --- SEO ---
 const configVal = gameData.value.config;
-const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
 const seo = useGameSeo({
     lang,
     mode: 'classic',
     config: configVal,
     langStore,
-    allLangCodes: allLangs.value?.language_codes,
     shareResult: (route.query.r as string) || undefined,
 });
 
-// Game header
-const headerTitle = computed(() => configVal.name_native || 'Wordle');
+// Game header — mode name as H1, language + play type as subtitle
+const headerTitle = computed(() => 'Wordle');
+const langLabel = configVal.name_native || configVal.name || lang;
 const headerSubtitle = computed(() => {
+    if (isUnlimited.value) return `${langLabel} · Unlimited`;
     const idx = gameData.value?.todays_idx;
-    return idx != null ? `#${idx}` : '';
+    return idx != null ? `${langLabel} · #${idx}` : langLabel;
 });
 
 // --- Client-side initialization ---
@@ -87,18 +91,28 @@ onMounted(() => {
     }, 1000);
     onUnmounted(() => clearInterval(interval));
 
-    // Initialize game from localStorage
-    try {
-        game.loadFromLocalStorage();
-        game.showTiles();
+    // Initialize game
+    if (isUnlimited.value) {
+        // Unlimited: pick a random word and start a new game
+        const pool = gameData.value!.daily_words?.length
+            ? gameData.value!.daily_words
+            : gameData.value!.word_list;
+        const word = pool[Math.floor(Math.random() * pool.length)]!;
+        game.resetForMode(createGameConfig('classic', lang, { playType: 'unlimited', wordLength: 5 }), word);
+    } else {
+        // Daily: restore from localStorage
+        try {
+            game.loadFromLocalStorage();
+            game.showTiles();
 
-        if (game.gameOver) {
-            game.showStatsModal = true;
-        } else {
-            game.maybeShowTutorial();
+            if (game.gameOver) {
+                game.showStatsModal = true;
+            } else {
+                game.maybeShowTutorial();
+            }
+        } catch {
+            // Failed to restore game state — start fresh
         }
-    } catch {
-        // Failed to restore game state — start fresh
     }
 });
 </script>

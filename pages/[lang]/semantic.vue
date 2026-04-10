@@ -35,6 +35,9 @@ if (lang !== 'en') {
     await navigateTo(`/en/semantic`, { redirectCode: 302 });
 }
 
+// Play type: daily (default) or unlimited via ?play=unlimited
+const { playType, isDaily, isUnlimited } = usePlayType('semantic');
+
 // --- Fetch language config via shared API ---
 const { data: gameData, error } = await useFetch(`/api/${lang}/data?minimal=1`, { key: `lang-data-min-${lang}` });
 if (error.value || !gameData.value) {
@@ -54,7 +57,7 @@ if (gameData.value) {
 // Set the game store's mode to 'semantic' so header streak badge, stats,
 // and analytics all operate on the correct mode key. We don't USE the tile
 // state — we just need the metadata to be right.
-const semanticConfig = createGameConfig('semantic', lang, { wordLength: 5 });
+const semanticConfig = createGameConfig('semantic', lang, { wordLength: 5, playType: playType.value });
 game.resetForMode(semanticConfig);
 
 // --- Sidebar state ---
@@ -68,13 +71,11 @@ function closeSidebar() {
 
 // --- SEO ---
 const configVal = gameData.value.config;
-const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
 const seo = useGameSeo({
     lang,
     mode: 'semantic',
     config: configVal,
     langStore,
-    allLangCodes: allLangs.value?.language_codes,
 });
 
 // --- Semantic game state (local composable) ---
@@ -87,9 +88,10 @@ const latestGuessWord = computed<string | null>(() => {
 });
 
 // --- Header meta ---
-const headerTitle = computed(() => configVal.name_native || 'Wordle');
+const headerTitle = computed(() => 'Semantic Explorer');
 const headerSubtitle = computed(() => {
-    return sem.dayIdx.value ? `Semantic #${sem.dayIdx.value}` : 'Semantic Explorer';
+    if (isUnlimited.value) return `${configVal.name_native || lang} · Unlimited`;
+    return sem.dayIdx.value ? `${configVal.name_native || lang} · #${sem.dayIdx.value}` : configVal.name_native || lang;
 });
 
 // --- Stats modal state (local, not from game store) ---
@@ -123,6 +125,7 @@ onMounted(async () => {
             is_returning: stats.stats.n_games > 0,
             current_streak: stats.stats.current_streak,
             game_mode: 'semantic',
+            play_type: playType.value,
         });
     } catch {
         /* non-fatal */
@@ -137,7 +140,12 @@ onMounted(async () => {
     const query = route.query;
     const targetOverride = typeof query.target === 'string' ? query.target : undefined;
     const debug = query.debug === '1' || query.debug === 'true';
-    await sem.startGame({ target: targetOverride, debug });
+    // Unlimited: force a new random game each time (no persistence)
+    await sem.startGame({
+        target: targetOverride,
+        debug,
+        forceNew: isUnlimited.value,
+    });
 });
 
 // --- Game over → stagger neighbours then open stats modal ---
@@ -180,6 +188,7 @@ watch(
                 won: sem.won.value,
                 attempts: sem.guesses.value.length,
                 game_mode: 'semantic',
+                play_type: playType.value,
                 is_first_game: stats.stats.n_games === 0,
             });
         } catch {

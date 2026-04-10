@@ -1,9 +1,9 @@
 <!--
   SEO content section for all game pages.
 
-  Rendered below the game viewport in the DOM. The game layout uses
-  scroll-snap + a JS rubber-band guard so users almost never reach this.
-  Google's renderer sees all content in the full rendered DOM.
+  Rendered below the game viewport in the DOM. Users can scroll down
+  past the game to read this content. Google's renderer sees it in the
+  full rendered DOM. Structured data (FAQ, HowTo) matches this visible text.
 
   All text reads from config.seo.* (translated per language) with English
   fallbacks from default_language_config.json. Icons use Lucide.
@@ -561,7 +561,7 @@ const recentWords = computed(() => {
                     </div>
                     <p class="text-center">
                         <a
-                            :href="`/${lang}/words`"
+                            :href="`/${lang}/archive`"
                             class="text-sm text-muted underline hover:text-ink transition-colors"
                             >{{ h.viewAllWords }}</a
                         >

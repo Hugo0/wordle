@@ -63,21 +63,11 @@ watch(
     () => props.primary.basic?.word,
     () => {
         sliceAxes.value = null;
+        showAllAxes.value = false;
         mapUserZoom.value = 1.0;
         mapPanOffset.value = [0, 0];
     }
 );
-
-// Lookup: primary's cached nearest-neighbor similarities. Used to seed
-// `similarityToPrimary` for auto-populated context words, which are
-// drawn directly from this list.
-const primaryNearestSims = computed<Record<string, number>>(() => {
-    const map: Record<string, number> = {};
-    for (const n of props.primary.explore?.nearest ?? []) {
-        map[n.word] = n.similarity;
-    }
-    return map;
-});
 
 // ── Map entries ──────────────────────────────────────────────────────────
 // Three tiers that all share the same polar coordinate system:
@@ -133,24 +123,53 @@ const mapDots = computed<MapDot[]>(() => {
     return dots;
 });
 
-// ── Best lens axes ───────────────────────────────────────────────────────
-// Rank by how EXTREME the primary word is on each axis. "Forest is very
-// natural, very alive" is more interesting than "forest's neighbors
-// spread on brightness" (which was the old variance-based approach).
-const bestAxes = computed(() => {
+// ── Axis lens system ────────────────────────────────────────────────────
+// Rank by how EXTREME the primary word is on each axis. All high-quality
+// axes (AUC ≥ 0.8, already filtered server-side) are available; the top 6
+// are shown by default with an expandable "more" button for the rest.
+type ScoredAxis = { name: string; low: string; high: string; extremeness: number };
+
+const allHighQualityAxes = computed<ScoredAxis[]>(() => {
     const axisList = props.primary.explore?.projections ?? [];
     if (axisList.length === 0) return [];
-
-    const scored = axisList.map((axis) => ({
-        name: axis.axis,
-        low: axis.lowAnchor,
-        high: axis.highAnchor,
-        extremeness: Math.abs(axis.normalized - 0.5),
-    }));
-
-    scored.sort((a, b) => b.extremeness - a.extremeness);
-    return scored.slice(0, 6);
+    return axisList
+        .map((axis) => ({
+            name: axis.axis,
+            low: axis.lowAnchor,
+            high: axis.highAnchor,
+            extremeness: Math.abs(axis.normalized - 0.5),
+        }))
+        .sort((a, b) => b.extremeness - a.extremeness);
 });
+
+const TOP_AXIS_COUNT = 6;
+const bestAxes = computed(() => allHighQualityAxes.value.slice(0, TOP_AXIS_COUNT));
+
+const showAllAxes = ref(false);
+// Always include the active axis pair in visible set even when collapsed
+const visibleAxes = computed<ScoredAxis[]>(() => {
+    const base = showAllAxes.value
+        ? allHighQualityAxes.value
+        : bestAxes.value;
+    if (!sliceAxes.value) return base;
+    // Ensure both active + partner are visible even if not in top 6
+    const baseNames = new Set(base.map((a) => a.name));
+    const extras: ScoredAxis[] = [];
+    for (const axName of sliceAxes.value) {
+        if (!baseNames.has(axName)) {
+            const found = allHighQualityAxes.value.find((a) => a.name === axName);
+            if (found) extras.push(found);
+        }
+    }
+    return extras.length ? [...base, ...extras] : base;
+});
+const hasMoreAxes = computed(() => allHighQualityAxes.value.length > TOP_AXIS_COUNT);
+const remainingCount = computed(() =>
+    Math.max(0, allHighQualityAxes.value.length - TOP_AXIS_COUNT)
+);
+
+/** The auto-paired partner axis name (for CSS highlighting). */
+const partnerAxisName = computed(() => sliceAxes.value?.[1] ?? null);
 
 const availableAxes = computed(() =>
     bestAxes.value.map((a) => ({ name: a.name, low: a.low, high: a.high }))
@@ -172,7 +191,8 @@ function selectAxisPair(clickedAxis: string) {
     let bestAxis2 = '';
     let bestResidualVar = -1;
 
-    for (const candidate of bestAxes.value) {
+    // Search ALL high-quality axes for the best partner, not just the top 6
+    for (const candidate of allHighQualityAxes.value) {
         if (candidate.name === clickedAxis) continue;
         const axis2Vals = entries.map((e) => e.projections[candidate.name] ?? 0.5);
 
@@ -256,26 +276,45 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
             </MapFrame>
         </div>
 
-        <div v-if="bestAxes.length" class="lens-row">
-            <span class="lens-label">view by</span>
-            <button
-                type="button"
-                class="lens-chip"
-                :class="{ active: !sliceAxes }"
-                @click="sliceAxes = null"
-            >
-                neighborhood
-            </button>
-            <button
-                v-for="a in bestAxes"
-                :key="a.name"
-                type="button"
-                class="lens-chip"
-                :class="{ active: sliceAxes?.[0] === a.name }"
-                @click="selectAxisPair(a.name)"
-            >
-                {{ a.name }}
-            </button>
+        <!-- View by: neighborhood (primary) -->
+        <div v-if="allHighQualityAxes.length" class="lens-section">
+            <div class="lens-row-primary">
+                <span class="lens-label">view by</span>
+                <button
+                    type="button"
+                    class="lens-chip"
+                    :class="{ active: !sliceAxes }"
+                    @click="sliceAxes = null"
+                >
+                    neighborhood
+                </button>
+            </div>
+
+            <!-- Axis chips (top 6 + expand) with partner highlighting -->
+            <div class="lens-row-axes">
+                <span class="lens-label">or slice by</span>
+                <button
+                    v-for="a in visibleAxes"
+                    :key="a.name"
+                    type="button"
+                    class="lens-chip"
+                    :class="{
+                        active: sliceAxes?.[0] === a.name,
+                        partner: partnerAxisName === a.name,
+                    }"
+                    @click="selectAxisPair(a.name)"
+                >
+                    {{ a.name }}
+                </button>
+                <button
+                    v-if="hasMoreAxes"
+                    type="button"
+                    class="lens-more"
+                    @click="showAllAxes = !showAllAxes"
+                >
+                    {{ showAllAxes ? 'Show less' : `+ ${remainingCount} more` }}
+                </button>
+            </div>
         </div>
 
         <div class="context-row">
@@ -327,33 +366,25 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
     padding: 8px 0;
 }
 
-.section-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    text-align: center;
-    position: relative;
-}
-.section-label::before,
-.section-label::after {
-    content: '';
-    display: inline-block;
-    width: 32px;
-    height: 1px;
-    background: var(--color-rule);
-    vertical-align: middle;
-    margin: 0 12px;
-}
-
 .map-wrap {
     display: flex;
     justify-content: center;
 }
 
 /* ── Lens chip row ──────────────────────────────────────────────────── */
-.lens-row {
+.lens-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.lens-row-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.lens-row-axes {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -389,6 +420,32 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
     background: var(--color-ink);
     color: var(--color-paper);
     border-color: var(--color-ink);
+}
+.lens-chip.partner {
+    background: transparent;
+    border-color: var(--color-muted);
+    border-style: dashed;
+    color: var(--color-muted);
+}
+.lens-chip.partner:hover {
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+    border-style: solid;
+}
+.lens-more {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 120ms ease;
+}
+.lens-more:hover {
+    color: var(--color-ink);
 }
 
 /* ── Context chip row ───────────────────────────────────────────────── */
@@ -457,7 +514,8 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
 }
 
 @media (max-width: 600px) {
-    .lens-row,
+    .lens-row-primary,
+    .lens-row-axes,
     .context-row {
         font-size: 8px;
     }

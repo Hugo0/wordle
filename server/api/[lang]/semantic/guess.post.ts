@@ -53,7 +53,6 @@ export default defineEventHandler(async (event) => {
     }
 
     let guessVec = getEmbedding(data, word);
-    let fromOnDemand = false;
     if (!guessVec) {
         if (!/^[a-z][a-z\-']{0,24}$/.test(word)) {
             return { valid: false, word, reason: 'bad_format' };
@@ -67,7 +66,6 @@ export default defineEventHandler(async (event) => {
         if (!guessVec) {
             return { valid: false, word, reason: 'embedding_failed' };
         }
-        fromOnDemand = true;
     }
 
     const rawSimilarity = cosineSimilarity(guessVec, targetVec);
@@ -113,7 +111,6 @@ export default defineEventHandler(async (event) => {
         compassExplained: compassResult.totalExplained,
         won,
         guessNumber,
-        fromOnDemand,
     };
 
     if (won) {

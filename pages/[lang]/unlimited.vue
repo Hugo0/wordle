@@ -24,13 +24,11 @@ const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, gameBoardRef,
     useGamePage(gameData, lang);
 
 // --- SEO ---
-const { data: allLangs } = await useFetch('/api/languages', { key: 'languages' });
 const seo = useGameSeo({
     lang,
     mode: 'unlimited',
     config: config.value!,
     langStore,
-    allLangCodes: allLangs.value?.language_codes,
 });
 
 // --- Random word selection ---
@@ -63,8 +61,8 @@ onMounted(() => {
             :lang="lang"
             :language-name="config?.name_native || config?.name || lang"
             current-mode="unlimited"
-            :title="seo.modeLabel"
-            :subtitle="config?.name_native || lang"
+            title="Wordle"
+            :subtitle="`${config?.name_native || lang} · Unlimited`"
             :sidebar-open="sidebarOpen"
             :visible="!!gameData"
             @toggle-sidebar="toggleSidebar"

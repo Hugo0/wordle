@@ -418,10 +418,10 @@ const { elRef: llmRef } = useAutoHeight();
 }
 
 @media (max-width: 520px) {
-    .compass-panel {
+    .compass-container {
         gap: 6px;
     }
-    .compass-row {
+    .hint-row {
         padding: 6px 8px;
         font-size: 12px;
     }

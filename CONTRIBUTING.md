@@ -13,6 +13,19 @@ pnpm dev           # Starts Nuxt dev server at localhost:3000
 
 `uv` handles Python dependencies automatically.
 
+### Database (optional — app works without it)
+
+Requires a `.env` file with `DATABASE_URL` pointing to Postgres. Prisma 7 uses the `wordle` schema.
+
+```bash
+pnpm db:generate   # Generate Prisma client after schema changes
+pnpm db:push       # Push schema to DB (dev)
+pnpm db:migrate    # Run migrations (production)
+pnpm db:studio     # Open Prisma Studio GUI
+```
+
+Prisma reads `DATABASE_URL` from `.env` automatically.
+
 ## Architecture
 
 ```text

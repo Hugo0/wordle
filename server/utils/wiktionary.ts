@@ -21,7 +21,7 @@ type ExistsRecord = { exists: boolean; checked_at: number };
 function cachePath(langCode: string, word: string): string {
     // Word is already lowercase + regex-validated upstream, but sanitize
     // defensively to avoid writing outside the cache dir.
-    const safeWord = word.replace(/[^a-z0-9\-']/g, '_');
+    const safeWord = encodeURIComponent(word);
     const safeLang = langCode.replace(/[^a-z0-9-]/g, '_');
     return join(CACHE_DIR, safeLang, `${safeWord}.json`);
 }

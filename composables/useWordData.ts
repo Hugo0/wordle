@@ -65,7 +65,6 @@ export type WordExploreData = {
     inVocab: boolean;
     projections: WordAxisProjection[];
     nearest: NeighborEntry[];
-    farthest: NeighborEntry[];
     umap: [number, number] | null;
     /** Cosine similarity to the page's primary word, when fetched with
      *  `?relativeTo=X`. Used by NearbyInMeaning to lay out user-added

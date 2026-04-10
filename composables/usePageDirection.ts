@@ -12,8 +12,6 @@
  * Forward = deeper, Back = shallower, Lateral = same depth.
  */
 
-import { ref } from 'vue';
-
 export type PageDirection = 'forward' | 'back' | 'lateral';
 
 export function getRouteDepth(path: string): number {
@@ -29,8 +27,8 @@ export function getRouteDepth(path: string): number {
     return 1;
 }
 
-// Singleton reactive state — shared across middleware, app.vue, and plugins
-const direction = ref<PageDirection>('lateral');
+// SSR-safe shared state — keyed so Nuxt isolates it per request
+const direction = useState<PageDirection>('pageDirection', () => 'lateral');
 
 export function usePageDirection() {
     return { direction, getRouteDepth };

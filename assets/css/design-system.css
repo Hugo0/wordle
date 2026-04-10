@@ -44,6 +44,11 @@
     --color-key-absent: #8c8c8c;
     --color-rule: #d4cfc7;
 
+    /* Speed urgency backgrounds */
+    --color-speed-warm: #f5f0e5;
+    --color-speed-hot: #f0e6d4;
+    --color-speed-critical: #f5e0dc;
+
     /* Font families */
     --font-display: 'Fraunces Variable', Georgia, serif;
     --font-body: 'Source Sans 3 Variable', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -70,6 +75,10 @@
     --color-muted-soft: #333333;
     --color-key-absent: #3a3a3c;
     --color-rule: #3d3a36;
+
+    --color-speed-warm: #1f1a15;
+    --color-speed-hot: #241a14;
+    --color-speed-critical: #2a1515;
 }
 
 /* =============================================================================
@@ -268,8 +277,52 @@
     box-sizing: border-box !important;
 }
 
+/* View Transitions for map expand/collapse. Instead of a pure crossfade
+   (which looks like "dots ghost out, then ghost in at new positions"),
+   we use a quick scale-and-cut: old snapshot shrinks+fades, new snapshot
+   appears with a slight scale-up. Minimal overlap = no ghost artifacts
+   from connector lines and dots being at different positions in old/new. */
+::view-transition-old(meaning-map) {
+    animation: vt-map-shrink-out 180ms ease-out forwards;
+}
+::view-transition-new(meaning-map) {
+    animation: vt-map-scale-in 200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 80ms; /* old is mostly gone before new appears */
+}
+@keyframes vt-map-shrink-out {
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.92); }
+}
+@keyframes vt-map-scale-in {
+    from { opacity: 0; transform: scale(1.06); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
 /* Backdrop sits below the navbar (z-index < navbar's) but above page
    content. Clicking it collapses the map. */
+/* ── Section labels ────────────────────────────────────────────────────
+   Centered mono-uppercase label with decorative rule lines on each side.
+   Used by word detail pages, stats modals, and explorer sections. */
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-align: center;
+    position: relative;
+}
+.section-label::before,
+.section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-rule);
+    vertical-align: middle;
+    margin: 0 12px;
+}
+
 .map-expanded-backdrop {
     position: fixed;
     inset: 0;

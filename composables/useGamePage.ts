@@ -22,6 +22,10 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
     const settings = useSettingsStore();
     const stats = useStatsStore();
 
+    // Server sync — watches game/speed/settings state and syncs if logged in.
+    // Runs in component setup context where useUserSession() is safe.
+    useSync();
+
     // Initialize language store from API response (runs during SSR + client)
     if (gameData.value) {
         langStore.init(gameData.value);
@@ -108,6 +112,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                         is_returning: stats.stats.n_games > 0,
                         current_streak: stats.stats.current_streak,
                         game_mode: game.gameConfig.mode,
+                        play_type: game.gameConfig.playType,
                     });
                 }
             });

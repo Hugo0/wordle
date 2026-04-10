@@ -2,7 +2,7 @@
  * Shared date utilities for streak calculation.
  * Used by both stores/stats.ts (streak computation) and StreakModal.vue (calendar heatmap).
  */
-import { isClassicDailyStatsKey } from './game-modes';
+import { isDailyStatsKey } from './game-modes';
 import type { GameResult } from './types';
 
 /** Convert a Date to local "YYYY-MM-DD" string (user's timezone, not UTC). */
@@ -20,7 +20,8 @@ export function stepBack(dateKey: string): string {
 /**
  * Build a map of local dates to win/loss state from game results.
  * Win always overrides a same-day loss (play multiple languages, any win counts).
- * Only includes classic daily results.
+ * Includes ALL daily play types (classic, dordle daily, speed daily, etc.)
+ * for product-wide streak calculation.
  */
 export function buildDailyResultMap(
     gameResults: Record<string, GameResult[]>
@@ -28,7 +29,7 @@ export function buildDailyResultMap(
     const dayStates = new Map<string, 'won' | 'lost'>();
 
     for (const [key, results] of Object.entries(gameResults)) {
-        if (!isClassicDailyStatsKey(key)) continue;
+        if (!isDailyStatsKey(key)) continue;
         for (const r of results) {
             const dayKey = toLocalDay(new Date(r.date as string));
             if (r.won) {

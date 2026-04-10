@@ -2,6 +2,7 @@
 import { usePageDirection } from '~/composables/usePageDirection';
 
 const { direction } = usePageDirection();
+const { showLoginModal, closeLoginModal } = useLoginModal();
 
 /** Dynamic transition name based on navigation direction:
  *  page-forward (slide left), page-back (slide right), page-lateral (crossfade).
@@ -27,4 +28,6 @@ useHead({
     <NuxtLayout>
         <NuxtPage :transition="pageTransition" />
     </NuxtLayout>
+    <AccountBadgeEarned />
+    <AccountLoginModal :visible="showLoginModal" @close="closeLoginModal" />
 </template>

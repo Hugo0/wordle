@@ -39,12 +39,24 @@ export default defineEventHandler((event) => {
         keyboard_layout_name: session.keyboardLayoutName,
         key_diacritic_hints: session.keyDiacriticHints,
         todays_words: undefined as string[] | undefined,
+        speed_daily_words: undefined as string[] | undefined,
     };
 
-    // Multi-board modes: return N distinct daily words
-    const modeConfig = GAME_MODE_CONFIG[mode as GameMode];
-    if (modeConfig && modeConfig.boardCount > 1) {
-        response.todays_words = getWordsForDay(lang, session.todaysIdx, modeConfig.boardCount);
+    // Play type: 'daily' (default) or 'unlimited'. When unlimited, skip
+    // daily word computation — the client picks random words.
+    const play = (query.play as string) || 'daily';
+
+    if (play === 'daily') {
+        // Multi-board modes: N distinct daily words
+        const modeConfig = GAME_MODE_CONFIG[mode as GameMode];
+        if (modeConfig && modeConfig.boardCount > 1) {
+            response.todays_words = getWordsForDay(lang, session.todaysIdx, modeConfig.boardCount);
+        }
+
+        // Daily speed: deterministic sequence of 50 words (same for everyone)
+        if (mode === 'speed') {
+            response.speed_daily_words = getWordsForDay(lang, session.todaysIdx, 50);
+        }
     }
 
     return response;

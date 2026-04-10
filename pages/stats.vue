@@ -87,6 +87,89 @@ const statsStore = useStatsStore();
 const loaded = ref(false);
 const empty = ref(false);
 
+// Auth & profile
+const { loggedIn: authLoggedIn, user: authUser, loginWithGoogle: authLoginWithGoogle } = useAuth();
+const { openLoginModal } = useLoginModal();
+
+interface ProfileBadge {
+    slug: string;
+    name: string;
+    description: string;
+    category: string;
+    icon: string;
+    earnedAt?: string;
+}
+
+interface ProfileData {
+    createdAt: string;
+    badges: ProfileBadge[];
+    isPro: boolean;
+}
+
+const profileData = ref<ProfileData | null>(null);
+const allBadges = ref<ProfileBadge[]>([]);
+const earnedSlugs = computed(() => {
+    const set = new Set<string>();
+    if (profileData.value) {
+        for (const b of profileData.value.badges) set.add(b.slug);
+    }
+    return set;
+});
+
+// Fetch profile + all badge definitions when logged in
+if (import.meta.client) {
+    watch(
+        authLoggedIn,
+        async (isLoggedIn) => {
+            if (!isLoggedIn) return;
+            try {
+                const [profile, badges] = await Promise.all([
+                    $fetch('/api/user/profile'),
+                    $fetch('/api/badges'),
+                ]);
+                profileData.value = profile as ProfileData;
+                allBadges.value = (badges as ProfileBadge[]) ?? [];
+            } catch {
+                // Non-critical
+            }
+        },
+        { immediate: true }
+    );
+}
+
+function formatDate(dateStr: string): string {
+    try {
+        return new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' }).format(
+            new Date(dateStr)
+        );
+    } catch {
+        return '';
+    }
+}
+
+// Dynamic Lucide icon resolver for badges
+import {
+    Sword,
+    Star,
+    Target,
+    Globe,
+    Crown,
+    Flame,
+    Trophy,
+    Zap,
+    CalendarCheck,
+    Map,
+    Award,
+} from 'lucide-vue-next';
+
+const BADGE_ICONS: Record<string, typeof Award> = {
+    Sword, Star, Target, Globe, Crown, Flame, Trophy, Zap, CalendarCheck, Map, Award,
+};
+
+function getBadgeIcon(iconName: string) {
+    return BADGE_ICONS[iconName] || Award;
+}
+
 // Classic daily (from store's calculateTotalStats)
 const totalGames = ref(0);
 const overallWinRate = ref(0);
@@ -313,6 +396,77 @@ const sortedModes = computed(() =>
                 <h1 class="heading-display text-[32px] sm:text-[40px] text-ink">Your Stats</h1>
                 <div class="editorial-rule-accent w-[60px] mt-3" />
             </header>
+
+            <!-- Profile section -->
+            <section v-if="authLoggedIn" class="mb-10">
+                <div class="flex items-center gap-4">
+                    <img
+                        v-if="authUser?.avatarUrl"
+                        :src="authUser.avatarUrl"
+                        alt=""
+                        class="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                        referrerpolicy="no-referrer"
+                    />
+                    <div
+                        v-else
+                        class="w-16 h-16 rounded-full bg-ink text-paper flex items-center justify-center text-xl font-display font-bold flex-shrink-0"
+                    >
+                        {{ (authUser?.displayName ?? 'P')[0] }}
+                    </div>
+                    <div>
+                        <h2 class="heading-section text-xl text-ink">
+                            {{ authUser?.displayName ?? 'Player' }}
+                        </h2>
+                        <div class="mono-label">{{ authUser?.email }}</div>
+                        <div v-if="profileData?.createdAt" class="mono-label mt-0.5">
+                            Member since {{ formatDate(profileData.createdAt) }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div v-if="allBadges.length > 0" class="mt-6">
+                    <div class="mono-label mb-3">Badges</div>
+                    <div class="grid grid-cols-4 sm:grid-cols-5 gap-3">
+                        <div
+                            v-for="badge in allBadges"
+                            :key="badge.slug"
+                            class="text-center"
+                            :class="earnedSlugs.has(badge.slug) ? '' : 'opacity-30'"
+                        >
+                            <div
+                                class="w-10 h-10 mx-auto rounded-full flex items-center justify-center"
+                                :class="earnedSlugs.has(badge.slug) ? 'bg-correct/10 text-correct' : 'bg-rule text-muted'"
+                            >
+                                <component :is="getBadgeIcon(badge.icon)" :size="20" />
+                            </div>
+                            <div class="text-[10px] text-ink mt-1 leading-tight">
+                                {{ badge.name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sign-in CTA (logged out) -->
+            <section v-if="!authLoggedIn && !empty" class="mb-10 border border-rule p-5 text-center">
+                <h2 class="heading-body text-lg text-ink mb-2">Save your progress</h2>
+                <p class="text-sm text-muted mb-4">
+                    Sign in to sync stats across devices, earn badges, and protect your streak.
+                </p>
+                <button
+                    class="px-6 py-2 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
+                    @click="authLoginWithGoogle()"
+                >
+                    Sign in with Google
+                </button>
+                <button
+                    class="block mx-auto mt-2 text-sm text-accent hover:underline"
+                    @click="openLoginModal()"
+                >
+                    or sign in with email
+                </button>
+            </section>
 
             <!-- Empty state -->
             <div v-if="empty" class="text-center py-16">
