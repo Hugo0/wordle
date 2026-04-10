@@ -1,9 +1,10 @@
 <template>
     <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
         <div class="flex flex-col gap-4">
-            <h3 class="heading-section text-xl text-ink">
-                {{ mode === 'register' ? 'Create Account' : 'Sign In' }}
-            </h3>
+            <h3 class="heading-section text-xl text-ink">Sign In</h3>
+            <p class="text-sm text-muted -mt-2">
+                Sync your stats across devices and earn badges.
+            </p>
 
             <!-- Google OAuth -->
             <button
@@ -19,155 +20,91 @@
                 Continue with Google
             </button>
 
-            <div class="flex items-center gap-3">
-                <div class="flex-1 h-px bg-rule" />
-                <span class="mono-label">or</span>
-                <div class="flex-1 h-px bg-rule" />
-            </div>
+            <!-- Passkey — single button, handles both sign-in and registration -->
+            <button
+                v-if="passkeySupported"
+                class="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-rule rounded-md text-sm font-semibold text-ink hover:bg-paper-warm transition-colors"
+                :disabled="passkeyLoading"
+                @click="handlePasskey()"
+            >
+                <Fingerprint :size="16" />
+                {{ passkeyLoading ? 'Waiting...' : 'Continue with Passkey' }}
+            </button>
 
-            <!-- Email form -->
-            <form @submit.prevent="submitEmail">
-                <div v-if="mode === 'register'" class="mb-3">
-                    <label for="login-name" class="text-xs text-muted block mb-1">Display Name</label>
-                    <input
-                        id="login-name"
-                        v-model="displayName"
-                        type="text"
-                        class="w-full px-3 py-2 border border-rule rounded-md text-sm bg-paper text-ink focus:outline-none focus:ring-1 focus:ring-ink"
-                        placeholder="Your name"
-                    />
-                </div>
-                <div class="mb-3">
-                    <label for="login-email" class="text-xs text-muted block mb-1">Email</label>
-                    <input
-                        id="login-email"
-                        v-model="email"
-                        type="email"
-                        required
-                        class="w-full px-3 py-2 border border-rule rounded-md text-sm bg-paper text-ink focus:outline-none focus:ring-1 focus:ring-ink"
-                        placeholder="you@example.com"
-                    />
-                </div>
-                <div class="mb-1">
-                    <label for="login-password" class="text-xs text-muted block mb-1">Password</label>
-                    <input
-                        id="login-password"
-                        v-model="password"
-                        type="password"
-                        required
-                        :minlength="8"
-                        class="w-full px-3 py-2 border border-rule rounded-md text-sm bg-paper text-ink focus:outline-none focus:ring-1 focus:ring-ink"
-                        placeholder="Min 8 characters"
-                    />
-                </div>
+            <div v-if="error" class="text-xs text-accent text-center">{{ error }}</div>
 
-                <button
-                    v-if="mode === 'login'"
-                    type="button"
-                    class="text-xs text-accent hover:underline mb-3 block"
-                    @click="forgotPassword"
-                >
-                    Forgot password?
-                </button>
-
-                <div v-if="error" class="text-xs text-accent mb-3">{{ error }}</div>
-                <div v-if="success" class="text-xs text-correct mb-3">{{ success }}</div>
-
-                <button
-                    type="submit"
-                    :disabled="loading"
-                    class="w-full px-4 py-2.5 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity disabled:opacity-50"
-                >
-                    {{ loading ? '...' : (mode === 'register' ? 'Create Account' : 'Sign In') }}
-                </button>
-            </form>
-
-            <!-- Toggle mode -->
-            <p class="text-xs text-center text-muted">
-                <template v-if="mode === 'login'">
-                    No account?
-                    <button class="text-accent hover:underline" @click="mode = 'register'; error = ''">Create one</button>
-                </template>
-                <template v-else>
-                    Already have an account?
-                    <button class="text-accent hover:underline" @click="mode = 'login'; error = ''">Sign in</button>
-                </template>
-            </p>
+            <!-- Email (coming soon) -->
+            <button
+                disabled
+                class="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-rule rounded-md text-sm text-muted cursor-not-allowed opacity-50"
+            >
+                <Mail :size="16" />
+                Sign in with Email
+                <span class="mono-label ml-1">soon</span>
+            </button>
         </div>
     </SharedBaseModal>
 </template>
 
 <script setup lang="ts">
+import { Fingerprint, Mail } from 'lucide-vue-next';
+
 defineProps<{ visible: boolean }>();
 const emit = defineEmits<{ close: [] }>();
 
 const { loginWithGoogle, refreshSession } = useAuth();
 
-const mode = ref<'login' | 'register'>('login');
-const email = ref('');
-const password = ref('');
-const displayName = ref('');
 const error = ref('');
-const success = ref('');
-const loading = ref(false);
+const passkeyLoading = ref(false);
+const passkeySupported = ref(false);
 
-async function submitEmail() {
-    error.value = '';
-    success.value = '';
-    loading.value = true;
+// Must be called at top level of setup, not inside async handlers
+const { authenticate, register } = useWebAuthn({
+    authenticateEndpoint: '/api/webauthn/authenticate',
+    registerEndpoint: '/api/webauthn/register',
+});
 
-    try {
-        if (mode.value === 'register') {
-            const res = await $fetch('/api/auth/register', {
-                method: 'POST',
-                body: {
-                    email: email.value,
-                    password: password.value,
-                    displayName: displayName.value || undefined,
-                },
-            });
-            await refreshSession();
-            if (!res.emailVerified) {
-                success.value = 'Account created! Check your email to verify.';
-            }
-            setTimeout(() => emit('close'), 2000);
-        } else {
-            await $fetch('/api/auth/login', {
-                method: 'POST',
-                body: {
-                    email: email.value,
-                    password: password.value,
-                },
-            });
-            await refreshSession();
-            emit('close');
-        }
-    } catch (e: unknown) {
-        const err = e as { data?: { message?: string } };
-        error.value = err.data?.message || 'Something went wrong';
-    } finally {
-        loading.value = false;
-    }
+if (import.meta.client) {
+    onMounted(() => {
+        passkeySupported.value = !!window.PublicKeyCredential;
+    });
 }
 
-async function forgotPassword() {
-    if (!email.value) {
-        error.value = 'Enter your email first';
-        return;
-    }
+async function handlePasskey() {
     error.value = '';
-    loading.value = true;
+    passkeyLoading.value = true;
 
     try {
-        await $fetch('/api/auth/forgot-password', {
-            method: 'POST',
-            body: { email: email.value },
-        });
-        success.value = 'If that email exists, a reset link was sent.';
-    } catch {
-        error.value = 'Something went wrong';
+        // Try discoverable credential authentication first
+        await authenticate();
+        await refreshSession();
+        emit('close');
+    } catch (authErr: unknown) {
+        const msg = (authErr as { data?: { message?: string }; message?: string })?.data?.message
+            || (authErr as { message?: string })?.message || '';
+
+        // User explicitly cancelled
+        if (msg.includes('abort') || msg.includes('cancel') || msg.includes('NotAllowed')) {
+            passkeyLoading.value = false;
+            return;
+        }
+
+        // No credential or wrong credential — auto-register a new account
+        // Fetch a name from the server so the browser prompt and the account match
+        try {
+            const { displayName } = await $fetch('/api/auth/generate-name');
+            await register({ userName: displayName, displayName });
+            await refreshSession();
+            emit('close');
+        } catch (regErr: unknown) {
+            const regMsg = (regErr as { data?: { message?: string }; message?: string })?.data?.message
+                || (regErr as { message?: string })?.message || '';
+            if (!regMsg.includes('abort') && !regMsg.includes('cancel')) {
+                error.value = regMsg || 'Failed to create passkey';
+            }
+        }
     } finally {
-        loading.value = false;
+        passkeyLoading.value = false;
     }
 }
 </script>

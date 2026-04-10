@@ -31,7 +31,9 @@
                     :sidebar-open="sidebarOpen"
                     :streak-count="streakCount"
                     :just-won="justWon"
+                    :show-results="true"
                     @help="onHelp"
+                    @results="game.showStatsModal = !game.showStatsModal"
                     @streak="game.showStreakModal = !game.showStreakModal"
                     @settings="game.showOptionsModal = !game.showOptionsModal"
                     @toggle-sidebar="$emit('toggleSidebar')"
@@ -193,7 +195,7 @@ const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);
 // Streak badge
 // ---------------------------------------------------------------------------
 
-const streakCount = computed(() => game.effectiveStreak);
+const { streak: streakCount } = useProductStreak();
 const justWon = ref(false);
 let justWonTimeout: ReturnType<typeof setTimeout> | null = null;
 

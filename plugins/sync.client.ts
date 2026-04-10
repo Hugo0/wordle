@@ -112,7 +112,10 @@ async function doSync(userId: string) {
             ? `/api/user/stats?since=${encodeURIComponent(lastSync)}`
             : '/api/user/stats';
 
-        const { results } = await $fetch(url) as { results: ServerResult[] };
+        const { results, settings: serverSettings } = await $fetch(url) as {
+            results: ServerResult[];
+            settings: Record<string, boolean | string>;
+        };
 
         if (results?.length) {
             const localGameResults = readJson<GameResults>('game_results') ?? {};
@@ -170,15 +173,9 @@ async function doSync(userId: string) {
             // No results on server either — mark as synced
             writeLocal('last_pull_at', new Date().toISOString());
         }
-    } catch {
-        // Non-critical — localStorage stats are the fallback
-    }
-
-    // ─── Phase 3: Pull settings ───
-    try {
-        const { settings: serverSettings } = await $fetch('/api/user/settings');
+        // Apply settings from the same response (no extra round-trip)
         if (serverSettings && typeof serverSettings === 'object') {
-            const s = serverSettings as Record<string, boolean | string>;
+            const s = serverSettings;
             if (typeof s.darkMode === 'boolean') settings.setDarkMode(s.darkMode);
             if (typeof s.hardMode === 'boolean') settings.setHardMode(s.hardMode);
             if (typeof s.highContrast === 'boolean') settings.setHighContrast(s.highContrast);
@@ -190,6 +187,6 @@ async function doSync(userId: string) {
             }
         }
     } catch {
-        // Non-critical
+        // Non-critical — localStorage stats are the fallback
     }
 }

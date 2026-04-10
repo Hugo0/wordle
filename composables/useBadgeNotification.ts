@@ -12,9 +12,8 @@ export interface BadgeNotification {
     icon: string;
 }
 
-const pendingBadges = useState<BadgeNotification[]>('pending-badges', () => []);
-
 export function useBadgeNotification() {
+    const pendingBadges = useState<BadgeNotification[]>('pending-badges', () => []);
     function addBadge(badge: BadgeNotification) {
         pendingBadges.value.push(badge);
     }

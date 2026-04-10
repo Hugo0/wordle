@@ -36,128 +36,73 @@ export async function evaluateBadges(
         }
     }
 
-    // --- Milestone badges (check against this game) ---
+    // --- Per-game milestones (only if current game was a win) ---
 
     if (result.won) {
-        // First Blood: first win ever
-        if (!earned.has('first-blood')) {
-            const totalWins = await prisma.gameResult.count({
-                where: { userId, won: true },
-            });
-            if (totalWins >= 1) award('first-blood');
-        }
-
-        // Perfect Game: win in 1 guess
-        if (result.attempts === 1) {
-            award('perfect-game');
-        }
-
-        // Persistence: win on the very last guess
-        if (result.attempts === result.maxGuesses) {
-            award('persistence');
-        }
+        if (result.attempts === 1) award('perfect-game');
+        if (result.attempts === result.maxGuesses) award('persistence');
     }
 
-    // --- Polyglot badges (distinct languages with wins) ---
+    // --- Parallel aggregate queries ---
+    // Run all independent DB checks concurrently to minimize latency.
 
-    const polyglotNeeded = [
-        { slug: 'polyglot-5', threshold: 5 },
-        { slug: 'polyglot-10', threshold: 10 },
-        { slug: 'polyglot-20', threshold: 20 },
-        { slug: 'polyglot-40', threshold: 40 },
-        { slug: 'polyglot-80', threshold: 80 },
-    ];
+    const needsFirstBlood = !earned.has('first-blood');
+    const needsPolyglot = [5, 10, 20, 40, 80].some((t) => !earned.has(`polyglot-${t}`));
+    const needsStreak = [7, 30, 100, 365].some((t) => !earned.has(`streak-${t}`));
+    const needsModeMaster = !earned.has('mode-master');
+    const needsDaily = result.playType === 'daily' && (
+        !earned.has('daily-completionist') || !earned.has('language-conqueror') || !earned.has('the-impossible')
+    );
+    const todaysIdx = needsDaily ? getTodaysIdx() : 0;
 
-    const unearned = polyglotNeeded.filter((p) => !earned.has(p.slug));
-    if (unearned.length > 0 && result.won) {
-        const distinctLangs = await prisma.gameResult.groupBy({
-            by: ['lang'],
-            where: { userId, won: true },
-            _count: true,
-        });
-        const langCount = distinctLangs.length;
-        for (const p of unearned) {
-            if (langCount >= p.threshold) award(p.slug);
-        }
+    const [totalWins, distinctLangs, streak, modeCounts, todaysModes, todaysLangs] = await Promise.all([
+        needsFirstBlood
+            ? prisma.result.count({ where: { userId, won: true } })
+            : 0,
+        needsPolyglot
+            ? prisma.result.groupBy({ by: ['lang'], where: { userId, won: true } })
+            : [],
+        needsStreak
+            ? calculateStreak(userId)
+            : 0,
+        needsModeMaster
+            ? prisma.result.groupBy({ by: ['mode'], where: { userId, won: true }, _count: true })
+            : [],
+        needsDaily
+            ? prisma.result.groupBy({ by: ['mode'], where: { userId, playType: 'daily', dayIdx: todaysIdx } })
+            : [],
+        needsDaily
+            ? prisma.result.groupBy({ by: ['lang'], where: { userId, playType: 'daily', dayIdx: todaysIdx } })
+            : [],
+    ]);
+
+    // First Blood
+    if (needsFirstBlood && totalWins >= 1) award('first-blood');
+
+    // Polyglot series
+    const langCount = (distinctLangs as { lang: string }[]).length;
+    for (const t of [5, 10, 20, 40, 80]) {
+        if (!earned.has(`polyglot-${t}`) && langCount >= t) award(`polyglot-${t}`);
     }
 
-    // --- Streak badges (consecutive daily days) ---
-
-    const streakNeeded = [
-        { slug: 'streak-7', threshold: 7 },
-        { slug: 'streak-30', threshold: 30 },
-        { slug: 'streak-100', threshold: 100 },
-        { slug: 'streak-365', threshold: 365 },
-    ];
-
-    const unearnedStreaks = streakNeeded.filter((s) => !earned.has(s.slug));
-    if (unearnedStreaks.length > 0 && result.playType === 'daily') {
-        const streak = await calculateStreak(userId);
-        for (const s of unearnedStreaks) {
-            if (streak >= s.threshold) award(s.slug);
-        }
+    // Streak series
+    for (const t of [7, 30, 100, 365]) {
+        if (!earned.has(`streak-${t}`) && (streak as number) >= t) award(`streak-${t}`);
     }
 
-    // --- Mode Master: 50 wins in any single mode ---
-
-    if (!earned.has('mode-master') && result.won) {
-        const modeCounts = await prisma.gameResult.groupBy({
-            by: ['mode'],
-            where: { userId, won: true },
-            _count: true,
-        });
-        if (modeCounts.some((m) => m._count >= 50)) {
-            award('mode-master');
-        }
+    // Mode Master
+    if (needsModeMaster && (modeCounts as { _count: number }[]).some((m) => m._count >= 50)) {
+        award('mode-master');
     }
 
-    // --- Special: daily completionist (all modes in one day) ---
+    // Daily specials (reuse todaysModes/todaysLangs — one query each, not duplicated)
+    if (needsDaily) {
+        const modesCount = (todaysModes as unknown[]).length;
+        const langsCount = (todaysLangs as unknown[]).length;
 
-    if (!earned.has('daily-completionist') && result.playType === 'daily') {
-        const todaysIdx = getTodaysIdx();
-        const todaysModes = await prisma.gameResult.groupBy({
-            by: ['mode'],
-            where: { userId, playType: 'daily', dayIdx: todaysIdx },
-        });
-        // 8 daily modes: classic, dordle, tridle, quordle, octordle, sedecordle, duotrigordle, semantic
-        // (speed doesn't have a "daily" play type in the same sense)
-        if (todaysModes.length >= 8) {
-            award('daily-completionist');
-        }
-    }
-
-    // --- Special: language conqueror (10+ languages in one day) ---
-
-    if (!earned.has('language-conqueror') && result.playType === 'daily') {
-        const todaysIdx = getTodaysIdx();
-        const todaysLangs = await prisma.gameResult.groupBy({
-            by: ['lang'],
-            where: { userId, playType: 'daily', dayIdx: todaysIdx },
-        });
-        if (todaysLangs.length >= 10) {
-            award('language-conqueror');
-        }
-    }
-
-    // --- The Impossible: all modes × all languages in one day ---
-    // This is aspirational — checking would be expensive and it's
-    // practically unachievable. We check a simplified version:
-    // 8+ modes AND 10+ languages in one day.
-    if (!earned.has('the-impossible') && result.playType === 'daily') {
-        const todaysIdx = getTodaysIdx();
-        const [todaysModes, todaysLangs] = await Promise.all([
-            prisma.gameResult.groupBy({
-                by: ['mode'],
-                where: { userId, playType: 'daily', dayIdx: todaysIdx },
-            }),
-            prisma.gameResult.groupBy({
-                by: ['lang'],
-                where: { userId, playType: 'daily', dayIdx: todaysIdx },
-            }),
-        ]);
-        if (todaysModes.length >= 8 && todaysLangs.length >= 40) {
-            award('the-impossible');
-        }
+        if (!earned.has('daily-completionist') && modesCount >= 8) award('daily-completionist');
+        if (!earned.has('language-conqueror') && langsCount >= 10) award('language-conqueror');
+        if (!earned.has('the-impossible') && modesCount >= 8 && langsCount >= 40) award('the-impossible');
     }
 
     return newBadges;
@@ -169,8 +114,8 @@ export async function evaluateBadges(
 async function calculateStreak(userId: string): Promise<number> {
     const todaysIdx = getTodaysIdx();
 
-    // Get all distinct dayIdx values for daily results, sorted desc
-    const days = await prisma.gameResult.groupBy({
+    // Get recent distinct dayIdx values (limit 400 — max badge is 365-day streak)
+    const days = await prisma.result.groupBy({
         by: ['dayIdx'],
         where: {
             userId,
@@ -178,6 +123,7 @@ async function calculateStreak(userId: string): Promise<number> {
             dayIdx: { not: null },
         },
         orderBy: { dayIdx: 'desc' },
+        take: 400,
     });
 
     if (days.length === 0) return 0;

@@ -7,6 +7,7 @@
 import bcrypt from 'bcryptjs';
 import { prisma } from '~/server/utils/prisma';
 import { sendVerificationEmail } from '~/server/utils/email';
+import { usernameFromEmail } from '~/server/utils/name-generator';
 
 interface RegisterBody {
     email: string;
@@ -18,6 +19,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_PASSWORD_LENGTH = 8;
 
 export default defineEventHandler(async (event) => {
+    rateLimit(event, 'auth:register', 3, 60 * 60 * 1000); // 3 per hour
     const body = await readBody<RegisterBody>(event);
 
     if (!body?.email || !EMAIL_RE.test(body.email)) {
@@ -35,10 +37,12 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 409, message: 'An account with this email already exists' });
     }
 
-    const passwordHash = await bcrypt.hash(body.password, 12);
+    const passwordHash = await bcrypt.hash(body.password, 14);
+    const username = await usernameFromEmail(body.email);
 
     const user = await prisma.user.create({
         data: {
+            username,
             email: body.email.toLowerCase(),
             passwordHash,
             displayName: body.displayName || body.email.split('@')[0],
@@ -48,15 +52,7 @@ export default defineEventHandler(async (event) => {
 
     await sendVerificationEmail(user.id, user.email);
 
-    await setUserSession(event, {
-        user: {
-            id: user.id,
-            email: user.email,
-            displayName: user.displayName,
-            avatarUrl: null,
-            authProvider: 'email',
-        },
-    });
+    await setSessionForUser(event, user, 'email');
 
     return { id: user.id, emailVerified: false };
 });

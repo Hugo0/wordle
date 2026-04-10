@@ -26,6 +26,13 @@ export default defineEventHandler(async (event) => {
     if (!body?.statsKey || typeof body.won !== 'boolean' || typeof body.attempts !== 'number') {
         throw createError({ statusCode: 400, message: 'Invalid game result' });
     }
+    // Validate stats key format: lang code with optional mode/play type suffixes
+    if (!/^[a-z]{2,5}(?:_[a-z0-9]+)*$/.test(body.statsKey)) {
+        throw createError({ statusCode: 400, message: 'Invalid stats key format' });
+    }
+    if (body.attempts < 0 || body.attempts > 50) {
+        throw createError({ statusCode: 400, message: 'Invalid attempts value' });
+    }
 
     const parsed = parseStatsKey(body.statsKey);
     const playedAt = new Date();
@@ -35,7 +42,7 @@ export default defineEventHandler(async (event) => {
 
     // For daily results with dayIdx, upsert to handle client retries
     if (dayIdx !== null) {
-        const result = await prisma.gameResult.upsert({
+        const result = await prisma.result.upsert({
             where: {
                 unique_daily_result: {
                     userId,
@@ -61,7 +68,7 @@ export default defineEventHandler(async (event) => {
         resultId = result.id;
     } else {
         // Unlimited results: always create (no dedup)
-        const result = await prisma.gameResult.create({
+        const result = await prisma.result.create({
             data: {
                 userId,
                 deviceId: body.deviceId ?? null,

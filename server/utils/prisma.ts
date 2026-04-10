@@ -11,13 +11,20 @@ function createClient(): PrismaClient {
     const connectionString = process.env.DATABASE_URL;
     if (!connectionString) {
         console.warn('[prisma] DATABASE_URL not set — database features disabled');
+    } else {
+        console.info('[prisma] connecting to:', connectionString.replace(/:[^:@]+@/, ':***@'));
     }
 
-    // Render Postgres requires SSL for external connections.
-    // pg.Pool defaults to no SSL, so we must enable it explicitly.
     const pool = new pg.Pool({
         connectionString,
         ssl: { rejectUnauthorized: false },
+        max: 10,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 10000,
+    });
+
+    pool.on('error', (err) => {
+        console.error('[prisma] pg pool error:', err.message);
     });
 
     const adapter = new PrismaPg(pool, { schema: 'wordle' });

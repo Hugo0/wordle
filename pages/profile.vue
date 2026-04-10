@@ -242,9 +242,10 @@ function getBadgeIcon(iconName: string) {
     return BADGE_ICONS[iconName] || Award;
 }
 
-// Product-wide streak (any daily mode, any language)
-const productStreak = ref(0);
-const productBestStreak = ref(0);
+// Product-wide streak — single source via composable
+const { streak: productStreakRaw, bestStreak: productBestStreakRaw } = useProductStreak();
+const productStreak = computed(() => productStreakRaw.value);
+const productBestStreak = computed(() => productBestStreakRaw.value);
 const animProductStreak = useAnimatedNumber(productStreak);
 const streakExpanded = ref(false);
 
@@ -338,28 +339,7 @@ function loadStats() {
         return;
     }
 
-    // --- Product-wide streak (all daily modes, all languages) ---
-    const dayMap = buildDailyResultMap(statsStore.gameResults as Record<string, GameResult[]>);
-    if (dayMap.size > 0) {
-        const today = toLocalDay(new Date());
-        let streak = 0;
-        let day = today;
-        while (dayMap.get(day) === 'won') { streak++; day = stepBack(day); }
-        if (streak === 0 && dayMap.get(stepBack(today)) === 'won') {
-            day = stepBack(today);
-            while (dayMap.get(day) === 'won') { streak++; day = stepBack(day); }
-        }
-        productStreak.value = streak;
-        // Best streak: walk all days
-        let best = 0;
-        let run = 0;
-        const sortedDays = [...dayMap.keys()].sort();
-        for (const d of sortedDays) {
-            if (dayMap.get(d) === 'won') { run++; if (run > best) best = run; }
-            else { run = 0; }
-        }
-        productBestStreak.value = best;
-    }
+    // Product-wide streak now comes from useProductStreak() composable — no manual computation needed.
 
     // --- Classic daily stats (use store's calculateTotalStats) ---
     const total = statsStore.calculateTotalStats();

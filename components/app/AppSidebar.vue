@@ -64,7 +64,7 @@
                             @click="toggleSubPanel('speed', `/${langCode}/speed`, `/${langCode}/speed?play=unlimited`)"
                         >
                             <span class="item-icon w-5 flex items-center justify-center">
-                                <component :is="speedMode?.icon" :size="18" class="text-current" />
+                                <component v-if="speedMode?.icon" :is="speedMode.icon" :size="18" class="text-current" />
                             </span>
                             <span class="flex-1 text-sm">{{ speedMode?.label || 'Speed Streak' }}</span>
                             <span v-if="speedMode?.badge" class="sidebar-badge">{{ speedMode.badge }}</span>
@@ -95,9 +95,9 @@
                             :class="{ active: currentMode === mb.id, 'show-sub-panel': subPanelMode === mb.id }"
                             @click="toggleSubPanel(mb.id, `/${langCode}/${mb.id}`, `/${langCode}/${mb.id}?play=unlimited`)"
                         >
-                            <component :is="mb.icon" :size="14" class="text-muted flex-shrink-0" />
+                            <component :is="mb.icon" :size="14" class="flex-shrink-0" />
                             {{ mb.label }}
-                            <span class="text-muted" style="font-size: 11px;">{{ mb.boards }}</span>
+                            <span class="text-muted" style="font-size: 11px">{{ mb.boards }}</span>
                         </button>
                     </div>
 
@@ -109,7 +109,7 @@
                             @click="toggleSubPanel('semantic', `/${langCode}/semantic`, `/${langCode}/semantic?play=unlimited`)"
                         >
                             <span class="item-icon w-5 flex items-center justify-center">
-                                <component :is="semanticMode?.icon" :size="18" class="text-current" />
+                                <component v-if="semanticMode?.icon" :is="semanticMode.icon" :size="18" class="text-current" />
                             </span>
                             <span class="flex-1 text-sm">{{ semanticMode?.label || 'Semantic Explorer' }}</span>
                             <span v-if="semanticMode?.badge" class="sidebar-badge">{{ semanticMode.badge }}</span>
@@ -154,7 +154,6 @@
                             @click="close()"
                         >
                             <InfinityIcon :size="20" />
-                            <span class="sub-panel-label">&infin;</span>
                         </NuxtLink>
                     </div>
                 </Transition>
@@ -181,8 +180,8 @@
                 <!-- You section -->
                 <div class="py-4 editorial-rule">
                     <div class="mono-label px-6 pb-2">You</div>
-                    <SidebarItem icon="BarChart2" label="Statistics" href="/stats" />
-                    <SidebarItem icon="Award" label="Badges" disabled badge="SOON" />
+                    <SidebarItem icon="BarChart2" label="Statistics" href="/profile#statistics" />
+                    <SidebarItem icon="Award" label="Badges" href="/profile#badges" />
                     <SidebarItem icon="Calendar" label="Archive" :href="`/${langCode}/archive`" />
                     <SidebarItem
                         icon="Settings"
@@ -216,64 +215,49 @@
                 </div>
 
                 <!-- Account — pinned to bottom -->
+                <!-- Account — always visible, pinned to bottom -->
                 <div class="mt-auto px-6 py-4 editorial-rule">
-                    <!-- Logged in -->
-                    <div v-if="loggedIn" class="flex items-center gap-3">
+                    <!-- Logged in — click to go to profile -->
+                    <NuxtLink
+                        v-if="loggedIn"
+                        to="/profile"
+                        class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                        @click="close()"
+                    >
                         <img
-                            v-if="user?.avatarUrl"
-                            :src="user.avatarUrl"
-                            :alt="user.displayName ?? 'Profile'"
+                            :src="authAvatarUrl || ''"
+                            :alt="user?.displayName ?? 'Profile'"
                             class="w-9 h-9 rounded-full object-cover flex-shrink-0"
                             referrerpolicy="no-referrer"
                         />
-                        <div
-                            v-else
-                            class="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center heading-body text-sm flex-shrink-0"
-                        >
-                            {{ (user?.displayName ?? 'P')[0] }}
-                        </div>
                         <div class="flex-1 min-w-0">
                             <div class="text-sm font-semibold text-ink truncate">
                                 {{ user?.displayName ?? 'Player' }}
                             </div>
-                            <div class="mono-label truncate">{{ user?.email }}</div>
+                            <div class="mono-label truncate text-muted">
+                                {{ user?.email || '@' + (user?.displayName ?? 'player').toLowerCase().replace(/\s+/g, '_') }}
+                            </div>
                         </div>
-                    </div>
-                    <div v-if="loggedIn" class="flex items-center gap-4 mt-3">
-                        <NuxtLink
-                            to="/stats"
-                            class="text-sm text-accent hover:underline"
-                            @click="close()"
-                        >
-                            View Profile
-                        </NuxtLink>
-                        <button
-                            class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
-                            @click="logout()"
-                        >
-                            <LogOut :size="14" />
-                            Sign Out
-                        </button>
-                    </div>
+                    </NuxtLink>
 
                     <!-- Logged out -->
-                    <div v-if="!loggedIn">
+                    <template v-else>
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-rule text-muted flex items-center justify-center heading-body text-sm flex-shrink-0">
+                                ?
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-ink">Guest</div>
+                                <div class="mono-label">Sync stats, earn badges</div>
+                            </div>
+                        </div>
                         <button
-                            class="w-full px-4 py-2 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
-                            @click="loginWithGoogle(route.fullPath)"
-                        >
-                            Sign in with Google
-                        </button>
-                        <button
-                            class="w-full mt-2 text-sm text-accent hover:underline"
+                            class="w-full mt-3 px-4 py-2 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
                             @click="$emit('close'); openLoginModal()"
                         >
-                            Sign in with Email
+                            Sign in
                         </button>
-                        <div class="mono-label mt-2 text-center">
-                            Sync stats, earn badges
-                        </div>
-                    </div>
+                    </template>
                 </div>
             </div>
         </aside>
@@ -318,7 +302,7 @@ const emit = defineEmits<{
     settings: [];
 }>();
 
-const { loggedIn, user, loginWithGoogle, logout } = useAuth();
+const { loggedIn, user, avatarUrl: authAvatarUrl, loginWithGoogle, logout } = useAuth();
 const { openLoginModal } = useLoginModal();
 const route = useRoute();
 
@@ -362,7 +346,7 @@ const langStore = useLanguageStore();
 
 // Expand/collapse state for sidebar sections
 const expandedSection = ref<'classic' | 'speed' | 'multiboard' | 'semantic' | null>(null);
-const dayIdx = computed(() => langStore.todaysIdx || '');
+const dayIdx = computed(() => langStore.todaysIdx ?? '');
 
 // Sub-panel state: which mode's daily/unlimited panel is showing
 const subPanelMode = ref<string | null>(null);
@@ -547,7 +531,7 @@ const bugReportUrl = computed(() => {
     gap: 8px;
     padding: 7px 24px 7px 0;
     font-size: 13px;
-    color: var(--color-muted);
+    color: var(--color-ink);
     cursor: pointer;
     transition: all 0.15s;
     text-decoration: none;

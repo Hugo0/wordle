@@ -8,7 +8,8 @@
  * (NOT the target word itself), so the client can center the map on it.
  */
 
-import { createSession, get2dPosition, loadSemanticData } from '~/server/utils/semantic';
+import { createSession, get2dPosition, loadSemanticDataSafe } from '~/server/utils/semantic';
+import { getTodaysIdx, toModeDayIdx } from '~/server/lib/day-index';
 
 function pickDailyTarget(targets: readonly string[], lang: string, dayIdx: number): string {
     // Simple FNV-1a style hash so different langs on the same day get different words.
@@ -19,13 +20,6 @@ function pickDailyTarget(targets: readonly string[], lang: string, dayIdx: numbe
         h = (h * 16777619) >>> 0;
     }
     return targets[h % targets.length]!;
-}
-
-function currentDayIdx(): number {
-    // Days since 2026-01-01 (matches the classic game's daily algorithm vibe).
-    const epoch = new Date('2026-01-01T00:00:00Z').getTime();
-    const now = Date.now();
-    return Math.floor((now - epoch) / 86400000);
 }
 
 export default defineEventHandler(async (event) => {
@@ -45,8 +39,10 @@ export default defineEventHandler(async (event) => {
     const override = (body?.target as string | undefined)?.toLowerCase().trim();
     const debug = Boolean(body?.debug);
 
-    const data = loadSemanticData();
-    const dayIdx = currentDayIdx();
+    const data = loadSemanticDataSafe();
+    // TZ-aware day index, 1-based from April 11 2026
+    const classicIdx = getTodaysIdx();
+    const dayIdx = toModeDayIdx(classicIdx) ?? 1;
 
     // Daily pick (or override via debug)
     let target: string;

@@ -25,8 +25,10 @@
                     :home-href="resolvedHomeHref"
                     :sidebar-open="sidebarOpen"
                     :show-help="false"
-                    :show-streak="false"
+                    :show-streak="true"
+                    :streak-count="streakCount"
                     @toggle-sidebar="sidebarOpen = !sidebarOpen"
+                    @streak="navigateTo('/profile')"
                     @settings="showSettings = !showSettings"
                 />
             </div>
@@ -73,6 +75,9 @@ const props = withDefaults(
 
 const sidebarOpen = ref(false);
 const showSettings = ref(false);
+
+// Product-wide streak — single source via composable (client-only, returns 0 during SSR)
+const { streak: streakCount } = useProductStreak();
 
 const resolvedHomeHref = computed(() => props.homeHref ?? `/${props.lang}`);
 

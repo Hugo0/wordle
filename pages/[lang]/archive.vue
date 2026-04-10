@@ -1,10 +1,11 @@
 <script setup lang="ts">
 /**
- * Word Archive — /<lang>/words
+ * Word Archive — /<lang>/archive
  *
  * Paginated list of all past daily words with mini tiles, definitions,
- * stats summaries, and links to word detail pages. Matches legacy
- * words_hub.html template.
+ * stats summaries, and links to word detail pages. Supports all game modes
+ * via the ?mode= query parameter (classic, dordle, quordle, octordle,
+ * sedecordle, duotrigordle, speed, semantic).
  */
 
 import { formatDateLong, RTL_LANGS } from '~/utils/locale';
@@ -12,20 +13,33 @@ import { readJson } from '~/utils/storage';
 import { interpolate } from '~/utils/interpolate';
 import { translatePos } from '~/utils/i18n';
 import { wordDetailPath, wordDetailPathOrIdx } from '~/utils/wordUrls';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import type { GameMode } from '~/utils/game-modes';
 
-// Force full remount when language changes — prevents today-revealed state
-// and cached API data from bleeding between languages when Vue Router reuses
-// the component on /<lang>/words → /<otherLang>/words.
+// Force full remount when language or mode changes
 definePageMeta({
-    key: (route) => route.params.lang as string,
+    key: (route) => `${route.params.lang}-${(route.query.mode as string) || 'classic'}`,
 });
 
 const route = useRoute();
 const lang = route.params.lang as string;
 const page = computed(() => parseInt((route.query.page as string) || '1', 10));
+const activeMode = computed(() => ((route.query.mode as string) || 'classic') as GameMode);
+
+/** Modes that appear as archive tabs. */
+const archiveModes: { mode: GameMode; label: string }[] = [
+    { mode: 'classic', label: 'Classic' },
+    { mode: 'speed', label: 'Speed Streak' },
+    { mode: 'dordle', label: 'Dordle' },
+    { mode: 'quordle', label: 'Quordle' },
+    { mode: 'octordle', label: 'Octordle' },
+    { mode: 'sedecordle', label: 'Sedecordle' },
+    { mode: 'duotrigordle', label: 'Duotrigordle' },
+    ...(lang === 'en' ? [{ mode: 'semantic' as GameMode, label: 'Semantic' }] : []),
+];
 
 const { data: wordsData, error } = await useFetch(`/api/${lang}/words`, {
-    query: { page },
+    query: { page, mode: activeMode },
 });
 if (error.value || !wordsData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
@@ -36,6 +50,9 @@ const langNameNative = computed(() => wordsData.value!.lang_name_native);
 const todaysIdx = computed(() => wordsData.value!.todays_idx);
 const totalPages = computed(() => wordsData.value!.total_pages);
 const words = computed(() => wordsData.value!.words);
+const isClassic = computed(() => activeMode.value === 'classic');
+const modeConfig = computed(() => GAME_MODE_CONFIG[activeMode.value]);
+const isMultiBoard = computed(() => (modeConfig.value?.boardCount ?? 1) > 1);
 
 // UI labels from API response with English fallbacks
 const ui = (wordsData.value.ui as Record<string, string>) || {};
@@ -48,25 +65,32 @@ const wordArchiveMeta = meta.word_archive || {};
 // Word art thumbnail visibility (reactive, per day index)
 const wordArtLoaded = reactive(new Set<number>());
 
-const title = computed(() =>
-    interpolate(wordArchiveMeta.title || 'Wordle {langNative} — All Words | Word Archive', {
-        langNative: langNameNative.value,
-        count: todaysIdx.value,
-    })
-);
-const description = computed(() =>
-    interpolate(
-        wordArchiveMeta.description ||
-            'Browse all {count} past Wordle words in {langNative}. See definitions, AI art, and community stats for every daily word.',
-        { langNative: langNameNative.value, count: todaysIdx.value }
-    )
-);
+const modeLabel = computed(() => modeConfig.value?.label ?? 'Classic');
+const title = computed(() => {
+    if (isClassic.value) {
+        return interpolate(wordArchiveMeta.title || 'Wordle {langNative} — All Words | Word Archive', {
+            langNative: langNameNative.value,
+            count: todaysIdx.value,
+        });
+    }
+    return `${modeLabel.value} Archive — Wordle ${langNameNative.value}`;
+});
+const description = computed(() => {
+    if (isClassic.value) {
+        return interpolate(
+            wordArchiveMeta.description ||
+                'Browse all {count} past Wordle words in {langNative}. See definitions, AI art, and community stats for every daily word.',
+            { langNative: langNameNative.value, count: todaysIdx.value }
+        );
+    }
+    return `Browse all past ${modeLabel.value} daily words in ${langNameNative.value}. ${todaysIdx.value} days and counting.`;
+});
 
 useSeoMeta({
     title,
     description: computed(() => description.value.slice(0, 200)),
     ogTitle: title,
-    ogUrl: `https://wordle.global/${lang}/archive`,
+    ogUrl: `https://wordle.global/${lang}/archive${isClassic.value ? '' : `?mode=${activeMode.value}`}`,
     ogType: 'website',
     ogLocale: lang,
     ogDescription: computed(() => description.value.slice(0, 200)),
@@ -75,26 +99,32 @@ useSeoMeta({
     twitterDescription: computed(() => description.value.slice(0, 200)),
 });
 
+/** Build archive URL with optional mode and page query params. */
+function archiveUrl(opts: { page?: number } = {}): string {
+    const params = new URLSearchParams();
+    if (!isClassic.value) params.set('mode', activeMode.value);
+    if (opts.page && opts.page > 1) params.set('page', String(opts.page));
+    const qs = params.toString();
+    return `https://wordle.global/${lang}/archive${qs ? `?${qs}` : ''}`;
+}
+
 useHead({
     htmlAttrs: { lang, dir: RTL_LANGS.has(lang) ? 'rtl' : 'ltr' },
     link: [
         {
             rel: 'canonical',
-            href: computed(
-                () =>
-                    `https://wordle.global/${lang}/archive${page.value > 1 ? `?page=${page.value}` : ''}`
-            ),
+            href: computed(() => archiveUrl({ page: page.value })),
         },
         ...(page.value > 1
             ? [
                   {
                       rel: 'prev',
-                      href: `https://wordle.global/${lang}/archive${page.value > 2 ? `?page=${page.value - 1}` : ''}`,
+                      href: archiveUrl({ page: page.value - 1 }),
                   },
               ]
             : []),
         ...(page.value < totalPages.value
-            ? [{ rel: 'next', href: `https://wordle.global/${lang}/archive?page=${page.value + 1}` }]
+            ? [{ rel: 'next', href: archiveUrl({ page: page.value + 1 }) }]
             : []),
     ],
     script: [
@@ -167,6 +197,21 @@ function winRate(stats: { total: number; wins: number }): number {
     return Math.round((stats.wins / stats.total) * 100);
 }
 
+/** Route to today's game for the active mode. */
+const todayGameRoute = computed(() => {
+    const suffix = modeConfig.value?.routeSuffix;
+    return suffix ? `/${lang}/${suffix}` : `/${lang}`;
+});
+
+/** Build client-side archive link preserving mode param. */
+function archiveLink(opts: { page?: number } = {}): string {
+    const params: string[] = [];
+    if (!isClassic.value) params.push(`mode=${activeMode.value}`);
+    if (opts.page && opts.page > 1) params.push(`page=${opts.page}`);
+    const qs = params.length ? `?${params.join('&')}` : '';
+    return `/${lang}/archive${qs}`;
+}
+
 // Client-side: reveal today's word if game is over (won or lost)
 const todayRevealed = ref<string | null>(null);
 const completedDays = ref(new Set<number>());
@@ -212,17 +257,33 @@ onMounted(() => {
 
         <!-- Mode filter tabs -->
         <div class="mode-tabs">
-            <button class="mode-tab active">Classic</button>
-            <button class="mode-tab disabled" disabled>Speed <span class="coming-soon">Soon</span></button>
-            <button class="mode-tab disabled" disabled>Multi-Board <span class="coming-soon">Soon</span></button>
-            <button class="mode-tab disabled" disabled>Semantic <span class="coming-soon">Soon</span></button>
+            <NuxtLink
+                v-for="tab in archiveModes"
+                :key="tab.mode"
+                :to="`/${lang}/archive${tab.mode === 'classic' ? '' : `?mode=${tab.mode}`}`"
+                class="mode-tab"
+                :class="{ active: activeMode === tab.mode }"
+            >
+                {{ tab.label }}
+            </NuxtLink>
         </div>
 
-        <div class="word-grid">
+        <!-- Empty state for modes that haven't launched yet -->
+        <div v-if="totalPages === 0" class="empty-state">
+            <p class="empty-message">
+                {{ modeLabel }} daily mode launches soon.
+                Check back after the first daily puzzle!
+            </p>
+            <NuxtLink :to="`/${lang}`" class="text-btn accent">
+                {{ label('play_todays_wordle', "Play Today's Wordle") }}
+            </NuxtLink>
+        </div>
+
+        <div v-if="totalPages > 0" class="word-grid">
             <template v-for="(w, wi) in words" :key="w.day_idx">
-                <!-- Today's word, not yet played -->
+                <!-- Today's word (locked) — classic only has word detail pages -->
                 <NuxtLink
-                    v-if="w.is_today && !todayRevealed"
+                    v-if="w.is_today && isClassic && !todayRevealed"
                     :to="`/${lang}`"
                     class="card card-today-locked"
                     :style="{ animationDelay: `${wi * 30}ms` }"
@@ -239,9 +300,9 @@ onMounted(() => {
                     </div>
                 </NuxtLink>
 
-                <!-- Today's word, revealed -->
+                <!-- Today's word (revealed) — classic only -->
                 <NuxtLink
-                    v-else-if="w.is_today && todayRevealed"
+                    v-else-if="w.is_today && isClassic && todayRevealed"
                     :to="wordDetailPath(lang, todayRevealed)"
                     class="card card-today"
                     :style="{ animationDelay: `${wi * 30}ms` }"
@@ -254,9 +315,28 @@ onMounted(() => {
                     <div class="card-note accent">{{ formatDate(w.date) }}</div>
                 </NuxtLink>
 
-                <!-- Past word -->
+                <!-- Today's entry for non-classic modes — link to game page -->
                 <NuxtLink
-                    v-else
+                    v-else-if="w.is_today && !isClassic"
+                    :to="todayGameRoute"
+                    class="card card-today-locked"
+                    :style="{ animationDelay: `${wi * 30}ms` }"
+                >
+                    <div class="day-meta">
+                        <span class="day-idx">#{{ w.day_idx }}</span>
+                        <span class="day-date">{{ label('today', 'Today') }}</span>
+                    </div>
+                    <div class="word-display masked">
+                        <span v-for="i in 5" :key="i" class="mask-dot">?</span>
+                    </div>
+                    <div class="card-note accent">
+                        Play today's {{ modeLabel }}
+                    </div>
+                </NuxtLink>
+
+                <!-- Past word: classic (single word with definition + art) -->
+                <NuxtLink
+                    v-else-if="isClassic"
                     :to="wordDetailPathOrIdx(lang, w)"
                     class="card"
                     :class="{ 'card-played': completedDays.has(w.day_idx) }"
@@ -309,13 +389,79 @@ onMounted(() => {
                         </span>
                     </div>
                 </NuxtLink>
+
+                <!-- Past word: multi-board modes (show all N words) -->
+                <div
+                    v-else-if="isMultiBoard"
+                    class="card"
+                    :style="{ animationDelay: `${wi * 30}ms` }"
+                >
+                    <div class="day-meta">
+                        <span class="day-idx">#{{ w.day_idx }}</span>
+                        <span class="mode-badge">{{ modeLabel }}</span>
+                    </div>
+
+                    <div class="multi-words">
+                        <span
+                            v-for="(mw, mwi) in (w.words || [w.word])"
+                            :key="mwi"
+                            class="multi-word"
+                        >{{ mw }}</span>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="day-date">{{ formatDate(w.date) }}</span>
+                        <span class="stats">
+                            {{ w.board_count }} {{ label('boards', 'boards') }}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Past word: speed / semantic (single word, no art) -->
+                <div
+                    v-else
+                    class="card"
+                    :style="{ animationDelay: `${wi * 30}ms` }"
+                >
+                    <div class="day-meta">
+                        <span class="day-idx">#{{ w.day_idx }}</span>
+                        <span class="mode-badge">{{ modeLabel }}</span>
+                    </div>
+
+                    <div class="word-display">{{ w.word }}</div>
+
+                    <div v-if="w.definition && w.definition.definition" class="definition-snippet">
+                        <span
+                            v-if="w.definition.part_of_speech"
+                            class="pos"
+                        >
+                            {{ translatePos(w.definition.part_of_speech, ui) }}
+                        </span>
+                        <span class="def-body">
+                            {{
+                                w.definition.definition.length > 100
+                                    ? w.definition.definition.slice(0, 100) + '\u2026'
+                                    : w.definition.definition
+                            }}
+                        </span>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="day-date">{{ formatDate(w.date) }}</span>
+                        <span v-if="w.stats && w.stats.total > 0" class="stats">
+                            {{ w.stats.total }} {{ w.stats.total === 1 ? label('play', 'play') : label('plays', 'plays') }}
+                            &middot;
+                            {{ winRate(w.stats) }}% {{ label('win', 'win') }}
+                        </span>
+                    </div>
+                </div>
             </template>
         </div>
 
         <nav v-if="totalPages > 1" class="pagination">
             <NuxtLink
                 v-if="page > 1"
-                :to="`/${lang}/archive${page > 2 ? `?page=${page - 1}` : ''}`"
+                :to="archiveLink({ page: page - 1 })"
                 class="text-btn"
             >
                 &larr; Newer
@@ -325,7 +471,7 @@ onMounted(() => {
             </span>
             <NuxtLink
                 v-if="page < totalPages"
-                :to="`/${lang}/archive?page=${page + 1}`"
+                :to="archiveLink({ page: page + 1 })"
                 class="text-btn"
             >
                 Older &rarr;
@@ -359,7 +505,11 @@ onMounted(() => {
     border-bottom: 2px solid var(--color-rule);
     margin-bottom: 24px;
     gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
+.mode-tabs::-webkit-scrollbar { display: none; }
 .mode-tab {
     flex: none;
     padding: 10px 16px;
@@ -370,28 +520,18 @@ onMounted(() => {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-muted);
-    border: none;
+    text-decoration: none;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
     transition: all 0.15s;
-    background: none;
+    white-space: nowrap;
+}
+.mode-tab:hover {
+    color: var(--color-ink);
 }
 .mode-tab.active {
     color: var(--color-ink);
     border-bottom-color: var(--color-ink);
-}
-.mode-tab.disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-.coming-soon {
-    font-size: 7px;
-    letter-spacing: 0.06em;
-    background: var(--color-paper-warm);
-    padding: 1px 4px;
-    border-radius: 2px;
-    margin-left: 4px;
-    vertical-align: middle;
 }
 .archive-page {
     min-height: 100vh;
@@ -585,6 +725,48 @@ onMounted(() => {
 }
 .card-note.accent {
     color: var(--color-accent);
+}
+
+/* ── Multi-board word display ──────────────────────────────────────── */
+.multi-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px 0;
+}
+.multi-word {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-ink);
+    line-height: 1;
+    text-transform: lowercase;
+    letter-spacing: -0.01em;
+    padding: 4px 8px;
+    background: var(--color-paper-warm);
+    border: 1px solid var(--color-rule);
+}
+.mode-badge {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 1px 5px;
+    border: 1px solid var(--color-rule);
+}
+
+/* ── Empty state ───────────────────────────────────────────────────── */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+}
+.empty-message {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--color-muted);
+    margin-bottom: 24px;
+    line-height: 1.4;
 }
 
 /* ── Pagination ─────────────────────────────────────────────────────── */

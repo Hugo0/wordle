@@ -181,6 +181,8 @@ All SEO content (FAQ, HowTo, tips, value props, section headings) lives in the `
 
 ## Multi-Agent Collaboration
 
+**CRITICAL: Never use blanket git checkout.** `git checkout -- <directory>` discards ALL unstaged changes in the target path, including other agents' work. To undo your changes: revert files one by one after confirming each only contains your changes. Never use `git checkout -- pages/`, `git restore pages/`, or any wildcard/directory-level revert. Never stash, reset, or discard changes you didn't make without explicit user permission.
+
 When multiple AI agents work on this repo concurrently, follow these rules:
 
 - Every agent **MUST** work in its own git worktree. Use `git worktree add` to create an isolated copy of the repo before making changes.

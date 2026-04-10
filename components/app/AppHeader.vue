@@ -59,26 +59,50 @@
 
         <!-- Right: Streak (game only) + Profile + Settings -->
         <div class="flex items-center gap-0.5 z-30 ms-auto">
-            <GameStreakBadge
-                v-if="showStreak"
-                :streak="streakCount"
-                :just-won="justWon"
-                @click="$emit('streak')"
-            />
-            <button
-                class="p-2 text-muted hover:text-ink transition-colors"
-                :aria-label="loggedIn ? 'Profile' : 'Sign in'"
-                @click="$emit('profile')"
-            >
-                <img
-                    v-if="loggedIn && avatarUrl"
-                    :src="avatarUrl"
-                    alt="Profile"
-                    class="w-5 h-5 rounded-full object-cover"
-                    referrerpolicy="no-referrer"
+            <ClientOnly>
+                <GameStreakBadge
+                    v-if="showStreak"
+                    :streak="streakCount"
+                    :just-won="justWon"
+                    @click="$emit('streak')"
                 />
-                <User v-else :size="20" aria-hidden="true" />
+            </ClientOnly>
+            <button
+                v-if="showResults"
+                class="p-2 text-muted hover:text-ink transition-colors"
+                aria-label="Game results"
+                @click="$emit('results')"
+            >
+                <Trophy :size="20" aria-hidden="true" />
             </button>
+            <ClientOnly>
+                <NuxtLink
+                    v-if="loggedIn"
+                    to="/profile"
+                    class="p-2 text-muted hover:text-ink transition-colors"
+                    aria-label="Profile"
+                >
+                    <img
+                        v-if="avatarUrl"
+                        :src="avatarUrl"
+                        alt="Profile"
+                        class="w-5 h-5 rounded-full object-cover"
+                        referrerpolicy="no-referrer"
+                    />
+                    <User v-else :size="20" aria-hidden="true" />
+                </NuxtLink>
+                <button
+                    v-else
+                    class="p-2 text-muted hover:text-ink transition-colors"
+                    aria-label="Sign in"
+                    @click="openLoginModal()"
+                >
+                    <User :size="20" aria-hidden="true" />
+                </button>
+                <template #fallback>
+                    <span class="p-2 text-muted"><User :size="20" /></span>
+                </template>
+            </ClientOnly>
             <button
                 class="p-2 text-muted hover:text-ink transition-colors"
                 aria-label="Settings"
@@ -91,10 +115,10 @@
 </template>
 
 <script setup lang="ts">
-import { Info, Menu, Settings, User } from 'lucide-vue-next';
+import { Info, Menu, Settings, Trophy, User } from 'lucide-vue-next';
 
-const { loggedIn, user } = useAuth();
-const avatarUrl = computed(() => user.value?.avatarUrl);
+const { loggedIn, avatarUrl } = useAuth();
+const { openLoginModal } = useLoginModal();
 
 withDefaults(
     defineProps<{
@@ -113,6 +137,8 @@ withDefaults(
         showHelp?: boolean;
         /** Show the streak badge. Game pages only. */
         showStreak?: boolean;
+        /** Show trophy button to reopen post-game results. Game pages only. */
+        showResults?: boolean;
     }>(),
     {
         title: 'Wordle',
@@ -124,6 +150,7 @@ withDefaults(
         homeHref: '/',
         showHelp: true,
         showStreak: true,
+        showResults: false,
     }
 );
 
@@ -131,6 +158,7 @@ defineEmits<{
     help: [];
     settings: [];
     streak: [];
+    results: [];
     toggleSidebar: [];
     profile: [];
     /** Subtitle clicked — open sidebar with sub-panel for current mode's play type */

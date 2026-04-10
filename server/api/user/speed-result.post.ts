@@ -22,11 +22,15 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 400, message: 'Invalid speed result' });
     }
 
-    const result = await prisma.speedResult.create({
+    const result = await prisma.result.create({
         data: {
             userId,
             deviceId: body.deviceId ?? null,
             lang: body.lang,
+            mode: 'speed',
+            playType: 'unlimited',
+            won: null,
+            attempts: null,
             score: body.score,
             wordsSolved: body.wordsSolved ?? 0,
             wordsFailed: body.wordsFailed ?? 0,

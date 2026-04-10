@@ -83,7 +83,7 @@ const sem = useSemanticGame(lang);
 
 // Game unavailable if start failed and no guesses were loaded (not a mid-game error)
 const gameUnavailable = computed(() =>
-    !sem.starting.value && sem.invalidMessage.value && sem.guesses.value.length === 0 && !sem.dayIdx.value
+    !sem.starting.value && sem.invalidMessage.value && sem.guesses.value.length === 0 && sem.dayIdx.value == null
 );
 
 /** The word the compass hints are computed from — best guess, not latest.

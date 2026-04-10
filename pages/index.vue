@@ -20,7 +20,7 @@ import { buildDailyResultMap, toLocalDay, stepBack } from '~/utils/streak-dates'
 import type { GameResult } from '~/utils/types';
 
 const settings = useSettingsStore();
-const { loggedIn: authLoggedIn, user: authUser } = useAuth();
+const { loggedIn: authLoggedIn, user: authUser, avatarUrl: authAvatarUrl } = useAuth();
 const { openLoginModal } = useLoginModal();
 
 // PWA install — inject from pwa.client.ts plugin
@@ -708,8 +708,8 @@ function openMultiBoardPicker(): void {
         <div v-if="authLoggedIn && authUser" class="flex flex-col items-center gap-1 mb-6">
             <NuxtLink to="/profile" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
                 <img
-                    v-if="authUser.avatarUrl"
-                    :src="authUser.avatarUrl"
+                    v-if="authAvatarUrl"
+                    :src="authAvatarUrl"
                     alt=""
                     class="w-10 h-10 rounded-full object-cover"
                     referrerpolicy="no-referrer"

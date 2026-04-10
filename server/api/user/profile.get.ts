@@ -10,12 +10,12 @@ export default defineEventHandler(async (event) => {
         where: { id: session.user.id },
         include: {
             badges: { include: { badge: true } },
-            subscriptions: { where: { status: 'active' } },
+            subscription: true,
         },
     });
 
     if (!user) {
-        throw createError({ statusCode: 404, message: 'User not found' });
+        throw createError({ statusCode: 401, message: 'Unauthorized' });
     }
 
     return {
@@ -33,6 +33,6 @@ export default defineEventHandler(async (event) => {
             icon: ub.badge.icon,
             earnedAt: ub.earnedAt,
         })),
-        isPro: user.subscriptions.length > 0,
+        isPro: user.subscription?.status === 'active',
     };
 });

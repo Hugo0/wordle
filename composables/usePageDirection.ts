@@ -27,9 +27,8 @@ export function getRouteDepth(path: string): number {
     return 1;
 }
 
-// SSR-safe shared state — keyed so Nuxt isolates it per request
-const direction = useState<PageDirection>('pageDirection', () => 'lateral');
-
 export function usePageDirection() {
+    // useState must be called inside a composable/setup context, not at module top level
+    const direction = useState<PageDirection>('pageDirection', () => 'lateral');
     return { direction, getRouteDepth };
 }

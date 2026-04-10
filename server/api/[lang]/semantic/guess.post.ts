@@ -25,7 +25,7 @@ import {
     get2dPosition,
     getEmbedding,
     getSessionTarget,
-    loadSemanticData,
+    loadSemanticDataSafe,
     normalizeProjection,
     projectAllAxes,
     rankToDisplay,
@@ -46,7 +46,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Unknown or expired targetId' });
     }
 
-    const data = loadSemanticData();
+    const data = loadSemanticDataSafe();
     const targetVec = getEmbedding(data, target);
     if (!targetVec) {
         throw createError({ statusCode: 500, message: 'Target embedding missing' });

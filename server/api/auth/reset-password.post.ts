@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 400, message: 'Invalid or expired reset link' });
     }
 
-    const passwordHash = await bcrypt.hash(body.password, 12);
+    const passwordHash = await bcrypt.hash(body.password, 14);
 
     await prisma.user.update({
         where: { id: result.userId },

@@ -4,12 +4,11 @@ import { usePageDirection } from '~/composables/usePageDirection';
 const { direction } = usePageDirection();
 const { showLoginModal, closeLoginModal } = useLoginModal();
 
-/** Dynamic transition name based on navigation direction:
- *  page-forward (slide left), page-back (slide right), page-lateral (crossfade).
- *  View Transitions API supersedes this in supported browsers (Tier 3). */
+/** Direction-aware page transition. No 'out-in' — it causes blank screens
+ *  because Nuxt's Suspense blocks the enter while out-in already removed
+ *  the leave. Leave-active CSS uses position:absolute to handle the overlap. */
 const pageTransition = computed(() => ({
     name: `page-${direction.value}`,
-    mode: 'out-in' as const,
 }));
 
 useHead({

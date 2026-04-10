@@ -6,8 +6,8 @@ export default defineNuxtConfig({
 
     modules: ['@pinia/nuxt', '@vite-pwa/nuxt', '@posthog/nuxt', 'nuxt-auth-utils'],
 
-    nuxtAuthUtils: {
-        webAuthn: false,
+    auth: {
+        webAuthn: true,
     },
 
     posthogConfig: {
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     app: {
         // Page transitions are driven dynamically by app.vue via :transition
         // prop (direction-aware). This static config is the fallback for SSR.
-        pageTransition: { name: 'page-lateral', mode: 'out-in' },
+        pageTransition: { name: 'page-lateral' },
         // Layout transition disabled — the page transition already handles
         // the visual change; a layout transition on top causes double-fade.
         layoutTransition: false,

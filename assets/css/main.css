@@ -644,9 +644,20 @@ input:focus-visible {
      page-forward  → slide left + fade (deeper, e.g. archive → word detail)
      page-back     → slide right + fade (shallower, e.g. word detail → archive)
 
-   30px translate conveys direction without causing layout shift (out-in
-   mode means only one page is in the DOM at a time).
+   No out-in mode — both pages overlap briefly. Leaving page uses
+   position:absolute to float over the entering page during fadeout.
    ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Leaving page floats above layout so it doesn't push entering page down */
+.page-lateral-leave-active,
+.page-forward-leave-active,
+.page-back-leave-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
 
 /* --- Lateral: crossfade --- */
 .page-lateral-enter-active { transition: opacity 200ms ease; }

@@ -247,6 +247,18 @@ export function loadSemanticData(): SemanticData {
     return _cache;
 }
 
+/** Load semantic data or throw a clean 503 if embeddings are missing. */
+export function loadSemanticDataSafe(): SemanticData {
+    try {
+        return loadSemanticData();
+    } catch (e) {
+        if (e instanceof SemanticDataMissingError) {
+            throw createError({ statusCode: 503, message: 'Semantic Explorer is temporarily unavailable.' });
+        }
+        throw e;
+    }
+}
+
 /** Canonical 2D position for a word — used by start, guess, and reveal
  *  endpoints for the map's polar-angle projection. Single source of truth
  *  so all dots share the same coordinate space and the target position

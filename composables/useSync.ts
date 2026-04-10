@@ -56,7 +56,7 @@ export function useSync() {
     }
 
     // -----------------------------------------------------------------
-    // 1. Per-game sync: watch gameOver to push individual results
+    // Per-game sync: watch gameOver to push individual results
     // -----------------------------------------------------------------
 
     if (import.meta.client) {
@@ -144,7 +144,7 @@ export function useSync() {
     }
 
     // -----------------------------------------------------------------
-    // 3. Settings sync (debounced)
+    // Settings sync (debounced)
     // -----------------------------------------------------------------
 
     if (import.meta.client) {

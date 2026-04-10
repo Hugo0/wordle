@@ -6,9 +6,18 @@
  */
 import { prisma } from '~/server/utils/prisma';
 
-let cachedBadges: unknown[] | null = null;
+interface BadgeDefinition {
+    slug: string;
+    name: string;
+    description: string;
+    category: string;
+    threshold: number;
+    icon: string;
+}
+
+let cachedBadges: BadgeDefinition[] | null = null;
 let cachedAt = 0;
-const CACHE_TTL = 60 * 60 * 1000; // 1 hour
+const CACHE_TTL = 60 * 60 * 1000;
 
 export default defineEventHandler(async () => {
     if (cachedBadges && Date.now() - cachedAt < CACHE_TTL) {

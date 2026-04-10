@@ -8,6 +8,7 @@
 import { requireLang } from '../../utils/data-loader';
 import { buildLanguageSession } from '../../utils/language-builder';
 import { getWordsForDay } from '../../utils/word-selection';
+import { toModeDayIdx } from '../../lib/day-index';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
 
@@ -26,12 +27,16 @@ export default defineEventHandler((event) => {
     // client-side "not a valid word" checks.
     const minimal = query.minimal === '1' || query.minimal === 'true';
 
+    // For non-classic modes, provide a 1-based index starting April 11 2026
+    const modeDayIdx = mode !== 'classic' ? toModeDayIdx(session.todaysIdx) : null;
+
     const response = {
         word_list: minimal ? [] : session.wordList,
         daily_words: data.dailyWords[lang] || ([] as string[]),
         characters: session.characters,
         config: session.config,
         todays_idx: session.todaysIdx,
+        mode_day_idx: modeDayIdx,
         todays_word: session.dailyWord,
         timezone_offset: session.timezoneOffset,
         keyboard: session.keyboard,

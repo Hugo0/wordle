@@ -8,6 +8,7 @@ import { prisma } from '~/server/utils/prisma';
 import { sendPasswordResetEmail } from '~/server/utils/email';
 
 export default defineEventHandler(async (event) => {
+    rateLimit(event, 'auth:reset', 3, 60 * 60 * 1000); // 3 per hour
     const body = await readBody<{ email: string }>(event);
 
     if (!body?.email) {

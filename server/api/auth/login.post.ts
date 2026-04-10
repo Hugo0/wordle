@@ -10,6 +10,7 @@ interface LoginBody {
 }
 
 export default defineEventHandler(async (event) => {
+    rateLimit(event, 'auth:login', 5, 15 * 60 * 1000); // 5 attempts per 15 min
     const body = await readBody<LoginBody>(event);
 
     if (!body?.email || !body?.password) {
@@ -29,15 +30,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 401, message: 'Invalid email or password' });
     }
 
-    await setUserSession(event, {
-        user: {
-            id: user.id,
-            email: user.email,
-            displayName: user.displayName,
-            avatarUrl: user.avatarUrl,
-            authProvider: 'email',
-        },
-    });
+    await setSessionForUser(event, user, 'email');
 
     return { id: user.id, emailVerified: user.emailVerified };
 });

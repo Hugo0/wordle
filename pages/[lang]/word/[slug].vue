@@ -502,8 +502,8 @@ onUnmounted(() => {
 // ── Eyebrow + daily stats ───────────────────────────────────────────────
 const eyebrowText = computed(() => {
     if (!word.value) return '';
-    if (isDailyWord.value && wordDate.value) {
-        return `WORDLE ${langNameNative.value.toUpperCase()} #${dayIdx.value} — ${wordDate.value.toUpperCase()}`;
+    if (isDailyWord.value) {
+        return `WORDLE ${langNameNative.value.toUpperCase()}`;
     }
     return 'A WORD EXAMINED';
 });
@@ -597,8 +597,9 @@ const subtitleText = computed(() => {
                     </div>
                 </div>
 
+                <!-- Full interactive meaning map (English with embeddings) -->
                 <NearbyInMeaning
-                    v-if="primary.explore"
+                    v-if="primary.explore?.available"
                     :lang="lang"
                     :primary="primary"
                     :context-data="contextData"
@@ -609,6 +610,17 @@ const subtitleText = computed(() => {
                     @remove="onRemoveContextWord"
                     @reset-to-auto="context.resetToAuto"
                 />
+
+                <!-- Embeddings not available (non-English languages) -->
+                <section
+                    v-else-if="primary.explore && !primary.explore.available"
+                    class="coming-soon-section"
+                >
+                    <div class="section-label">Nearby in Meaning</div>
+                    <p class="coming-soon-text">
+                        Semantic maps are coming soon for {{ langNameNative }}.
+                    </p>
+                </section>
 
                 <!-- Skeleton for the graph during transitions -->
                 <div v-if="transitioning && !primary.explore" class="skeleton-block map-skeleton">
@@ -756,6 +768,17 @@ const subtitleText = computed(() => {
 /* ── SSR neighbor links (replaced by interactive graph on hydration) ── */
 .ssr-neighbors {
     text-align: center;
+}
+.coming-soon-section {
+    text-align: center;
+    padding: 32px 0;
+}
+.coming-soon-text {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-style: italic;
+    color: var(--color-muted);
+    margin: 0;
 }
 .neighbor-links {
     display: flex;
