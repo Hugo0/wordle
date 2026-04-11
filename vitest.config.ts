@@ -21,6 +21,19 @@ function nuxtMetaPlugin(): Plugin {
     };
 }
 
+/**
+ * IMPORTANT: Do NOT add Prisma workarounds to nuxt.config.ts.
+ *
+ * We tried externalizing @prisma/client and @prisma/adapter-pg via
+ * nuxt.config.ts → nitro.rollupConfig.external. This fixed vitest/CI
+ * but broke production on Render — the adapter and client loaded as
+ * separate runtime modules that couldn't communicate, causing
+ * ECONNREFUSED on every DB query even though the pool connected at
+ * startup. Debugging this took hours (2026-04-11).
+ *
+ * Rule: vitest import issues stay in vitest.config.ts. Never change
+ * Nitro bundling config to fix CI — they are different environments.
+ */
 export default defineConfig({
     test: {
         environment: 'jsdom',
