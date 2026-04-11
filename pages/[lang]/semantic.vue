@@ -183,8 +183,6 @@ watch(
 
         const isRestore = sem.neighbours.value.length > 0;
 
-        const isRestore = sem.neighbours.value.length > 0;
-
         if (isRestore) {
             // Restored from localStorage — show instantly, auto-open modal for daily
             revealedNeighbourCount.value = sem.neighbours.value.length;
