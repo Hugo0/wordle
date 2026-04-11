@@ -1101,8 +1101,15 @@ const languagesConquered = computed(() => {
                     id="badges"
                     class="mb-10 scroll-mt-16"
                 >
-                    <div class="font-display text-xl font-bold text-ink mb-1" style="font-variation-settings: 'opsz' 48">Achievement Badges</div>
-                    <div class="text-xs text-muted mb-4">{{ earnedSlugs.size }} of {{ allBadges.length }} earned</div>
+                    <div
+                        class="font-display text-xl font-bold text-ink mb-1"
+                        style="font-variation-settings: 'opsz' 48"
+                    >
+                        Achievement Badges
+                    </div>
+                    <div class="text-xs text-muted mb-4">
+                        {{ earnedSlugs.size }} of {{ allBadges.length }} earned
+                    </div>
                     <AccountBadgeGrid
                         :badges="allBadges"
                         :earned-slugs="earnedSlugs"
