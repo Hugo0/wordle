@@ -211,7 +211,7 @@ const productBestStreak = computed(() => productBestStreakRaw.value);
 const animProductStreak = useAnimatedNumber(productStreak);
 const streakExpanded = ref(false);
 
-// Calendar heatmap uses SharedStreakCalendar component (DRY with StreakModal)
+// Calendar heatmap uses StreakCalendar component (DRY with StreakModal)
 
 // Classic daily (from store's calculateTotalStats)
 const totalGames = ref(0);
@@ -235,7 +235,7 @@ const modeStats = ref<ModeStats[]>([]);
 const speedAggregate = ref<SpeedAggregate | null>(null);
 
 // Tab state for the stats section
-type StatsTab = 'overview' | 'distribution' | 'languages' | 'speed';
+type StatsTab = 'overview' | 'distribution' | 'languages';
 const activeTab = ref<StatsTab>('overview');
 const availableTabs = computed<{ id: StatsTab; label: string }[]>(() => {
     const tabs: { id: StatsTab; label: string }[] = [{ id: 'overview', label: 'Overview' }];
@@ -246,9 +246,7 @@ const availableTabs = computed<{ id: StatsTab; label: string }[]>(() => {
     if (perLang.value.length > 0) {
         tabs.push({ id: 'languages', label: `Languages (${perLang.value.length})` });
     }
-    if (speedAggregate.value && speedAggregate.value.games > 0) {
-        tabs.push({ id: 'speed', label: 'Speed' });
-    }
+    // Speed stats are shown inline in the overview — no separate tab needed
     return tabs;
 });
 
@@ -470,90 +468,96 @@ const languagesConquered = computed(() => {
             </header>
 
             <!-- Profile section -->
-            <section v-if="authLoggedIn" class="mb-10">
-                <div class="flex items-center gap-4">
-                    <img
-                        v-if="authUser?.avatarUrl"
-                        :src="authUser.avatarUrl"
-                        alt=""
-                        class="w-16 h-16 rounded-full object-cover flex-shrink-0"
-                        referrerpolicy="no-referrer"
-                    />
-                    <div
-                        v-else
-                        class="w-16 h-16 rounded-full bg-ink text-paper flex items-center justify-center text-xl font-display font-bold flex-shrink-0"
-                    >
-                        {{ (authUser?.displayName ?? 'P')[0] }}
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <!-- Editable display name -->
-                        <div v-if="editingName" class="flex items-center gap-2">
-                            <input
-                                ref="nameInputRef"
-                                v-model="editName"
-                                type="text"
-                                maxlength="50"
-                                class="heading-section text-xl text-ink bg-transparent border-b border-ink focus:outline-none w-full"
-                                @keydown.enter="saveName()"
-                                @keydown.escape="editingName = false"
-                            />
-                            <button
-                                class="text-sm text-correct hover:underline flex-shrink-0"
-                                @click="saveName()"
-                            >
-                                Save
-                            </button>
-                            <button
-                                class="text-sm text-muted hover:underline flex-shrink-0"
-                                @click="editingName = false"
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                        <h2
+            <RevealTransition>
+                <section v-if="authLoggedIn" class="mb-10">
+                    <div class="flex items-center gap-4">
+                        <img
+                            v-if="authUser?.avatarUrl"
+                            :src="authUser.avatarUrl"
+                            alt=""
+                            class="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                            referrerpolicy="no-referrer"
+                        />
+                        <div
                             v-else
-                            class="heading-section text-xl text-ink cursor-pointer hover:opacity-70 transition-opacity"
-                            title="Click to edit name"
-                            @click="startEditName()"
+                            class="w-16 h-16 rounded-full bg-ink text-paper flex items-center justify-center text-xl font-display font-bold flex-shrink-0"
                         >
-                            {{ authUser?.displayName ?? 'Player' }}
-                            <Pencil :size="12" class="inline text-muted ml-1" />
-                        </h2>
-                        <div v-if="authUser?.email" class="mono-label">{{ authUser.email }}</div>
-                        <div v-if="profileData?.createdAt" class="mono-label mt-0.5">
-                            Member since {{ formatDate(profileData.createdAt) }}
+                            {{ (authUser?.displayName ?? 'P')[0] }}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <!-- Editable display name -->
+                            <div v-if="editingName" class="flex items-center gap-2">
+                                <input
+                                    ref="nameInputRef"
+                                    v-model="editName"
+                                    type="text"
+                                    maxlength="50"
+                                    class="heading-section text-xl text-ink bg-transparent border-b border-ink focus:outline-none w-full"
+                                    @keydown.enter="saveName()"
+                                    @keydown.escape="editingName = false"
+                                />
+                                <button
+                                    class="text-sm text-correct hover:underline flex-shrink-0"
+                                    @click="saveName()"
+                                >
+                                    Save
+                                </button>
+                                <button
+                                    class="text-sm text-muted hover:underline flex-shrink-0"
+                                    @click="editingName = false"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                            <h2
+                                v-else
+                                class="heading-section text-xl text-ink cursor-pointer hover:opacity-70 transition-opacity"
+                                title="Click to edit name"
+                                @click="startEditName()"
+                            >
+                                {{ authUser?.displayName ?? 'Player' }}
+                                <Pencil :size="12" class="inline text-muted ml-1" />
+                            </h2>
+                            <div v-if="authUser?.email" class="mono-label">
+                                {{ authUser.email }}
+                            </div>
+                            <div v-if="profileData?.createdAt" class="mono-label mt-0.5">
+                                Member since {{ formatDate(profileData.createdAt) }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Account actions -->
-                <div class="mt-6 flex items-center gap-4">
-                    <button
-                        class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
-                        @click="authLogout()"
-                    >
-                        <LogOut :size="14" />
-                        Sign out
-                    </button>
-                </div>
-            </section>
+                    <!-- Account actions -->
+                    <div class="mt-6 flex items-center gap-4">
+                        <button
+                            class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
+                            @click="authLogout()"
+                        >
+                            <LogOut :size="14" />
+                            Sign out
+                        </button>
+                    </div>
+                </section>
+            </RevealTransition>
 
             <!-- Sign-in CTA (logged out) — reuses the login modal -->
-            <section
-                v-if="!authLoggedIn && !empty"
-                class="mb-10 border border-rule p-5 text-center"
-            >
-                <h2 class="heading-body text-lg text-ink mb-2">Save your progress</h2>
-                <p class="text-sm text-muted mb-4">
-                    Sign in to sync stats across devices, earn badges, and protect your streak.
-                </p>
-                <button
-                    class="px-6 py-2 bg-ink text-paper text-sm font-semibold hover:opacity-90 transition-opacity"
-                    @click="openLoginModal()"
+            <RevealTransition>
+                <section
+                    v-if="!authLoggedIn && !empty"
+                    class="mb-10 border border-rule p-5 text-center"
                 >
-                    Sign in
-                </button>
-            </section>
+                    <h2 class="heading-body text-lg text-ink mb-2">Save your progress</h2>
+                    <p class="text-sm text-muted mb-4">
+                        Sign in to sync stats across devices, earn badges, and protect your streak.
+                    </p>
+                    <button
+                        class="px-6 py-2 bg-ink text-paper text-sm font-semibold hover:opacity-90 transition-opacity"
+                        @click="openLoginModal()"
+                    >
+                        Sign in
+                    </button>
+                </section>
+            </RevealTransition>
 
             <!-- Empty state -->
             <div v-if="empty" class="text-center py-16">
@@ -600,7 +604,7 @@ const languagesConquered = computed(() => {
                         class="mt-5 pt-4 border-t border-rule text-left"
                         @click.stop
                     >
-                        <SharedStreakCalendar
+                        <StreakCalendar
                             :game-results="statsStore.gameResults as Record<string, GameResult[]>"
                         />
                         <!-- Current / Longest row -->
@@ -717,7 +721,10 @@ const languagesConquered = computed(() => {
                         </div>
                         <!-- Per-mode breakdown -->
                         <div
-                            v-if="sortedModes.length > 0"
+                            v-if="
+                                sortedModes.length > 0 ||
+                                (speedAggregate && speedAggregate.games > 0)
+                            "
                             class="border border-t-0 border-rule divide-y divide-rule"
                         >
                             <div
@@ -727,29 +734,39 @@ const languagesConquered = computed(() => {
                                 style="padding: 10px 16px"
                             >
                                 <component :is="m.icon" :size="16" class="text-ink flex-shrink-0" />
-                                <span class="text-sm font-medium text-ink flex-1">{{
-                                    m.label
-                                }}</span>
-                                <span class="text-xs text-muted tabular-nums">{{ m.games }}</span>
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-sm font-medium text-ink">{{ m.label }}</span>
+                                    <span class="text-xs text-muted ml-1">
+                                        {{ m.games }} played
+                                        <template v-if="m.avgAttempts !== '-'">
+                                            · avg {{ m.avgAttempts }}
+                                        </template>
+                                    </span>
+                                </div>
                                 <span
-                                    class="text-xs tabular-nums w-10 text-right"
+                                    class="text-xs font-semibold tabular-nums"
                                     :class="m.winPct >= 50 ? 'text-correct' : 'text-muted'"
                                     >{{ m.winPct }}%</span
                                 >
                             </div>
+                            <!-- Speed Streak (inline, not separate tab) -->
                             <div
                                 v-if="speedAggregate && speedAggregate.games > 0"
                                 class="flex items-center gap-3"
                                 style="padding: 10px 16px"
                             >
                                 <Zap :size="16" class="text-ink flex-shrink-0" />
-                                <span class="text-sm font-medium text-ink flex-1"
-                                    >Speed Streak</span
-                                >
-                                <span class="text-xs text-muted tabular-nums">{{
-                                    speedAggregate.games
-                                }}</span>
-                                <span class="text-xs text-muted w-10 text-right">—</span>
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-sm font-medium text-ink">Speed Streak</span>
+                                    <span class="text-xs text-muted ml-1">
+                                        {{ speedAggregate.games }} sessions · best
+                                        {{ speedAggregate.bestScore.toLocaleString() }} pts ·
+                                        {{ speedAggregate.bestWordsSolved }} words
+                                    </span>
+                                </div>
+                                <span class="text-xs font-semibold text-correct tabular-nums">
+                                    {{ speedAggregate.bestMaxCombo }}x
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -839,101 +856,32 @@ const languagesConquered = computed(() => {
                         </div>
                     </div>
 
-                    <!-- Tab: Speed -->
-                    <div v-if="speedAggregate" v-show="activeTab === 'speed'">
-                        <div
-                            class="grid grid-cols-4 border border-rule"
-                            style="background: var(--color-rule); gap: 1px"
-                        >
-                            <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div
-                                    class="font-display font-bold text-ink"
-                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                                >
-                                    {{ speedAggregate.games }}
-                                </div>
-                                <div class="mono-label mt-0.5">Sessions</div>
-                            </div>
-                            <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div
-                                    class="font-display font-bold text-correct"
-                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                                >
-                                    {{ speedAggregate.bestScore.toLocaleString() }}
-                                </div>
-                                <div class="mono-label mt-0.5">Top Score</div>
-                            </div>
-                            <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div
-                                    class="font-display font-bold text-ink"
-                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                                >
-                                    {{ speedAggregate.bestWordsSolved }}
-                                </div>
-                                <div class="mono-label mt-0.5">Best Solved</div>
-                            </div>
-                            <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div
-                                    class="font-display font-bold text-ink"
-                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                                >
-                                    {{ speedAggregate.bestMaxCombo }}x
-                                </div>
-                                <div class="mono-label mt-0.5">Best Combo</div>
-                            </div>
-                        </div>
-                        <!-- Top 3 runs -->
-                        <div
-                            v-if="speedAggregate.topRuns.length > 0"
-                            class="border border-t-0 border-rule divide-y divide-rule"
-                        >
-                            <div
-                                v-for="(run, i) in speedAggregate.topRuns"
-                                :key="`${run.date}-${i}`"
-                                class="flex items-center gap-3"
-                                style="padding: 10px 16px"
-                            >
-                                <span
-                                    class="w-6 h-6 flex items-center justify-center border border-rule bg-paper-warm font-display font-bold text-xs text-ink flex-shrink-0"
-                                    >{{ i + 1 }}</span
-                                >
-                                <div class="flex-1 min-w-0">
-                                    <div class="text-sm font-semibold text-ink tabular-nums">
-                                        {{ run.score.toLocaleString() }} pts
-                                    </div>
-                                    <div class="text-xs text-muted tabular-nums">
-                                        {{ run.wordsSolved }} solved · {{ run.maxCombo }}x combo
-                                    </div>
-                                </div>
-                                <span class="mono-label">{{
-                                    new Date(run.date).toLocaleDateString()
-                                }}</span>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Speed stats are shown inline in the overview -->
                 </section>
 
                 <!-- ═══ Badges (collapsed by default, earned first) ═══ -->
-                <section
-                    v-if="allBadges.length > 0 && authLoggedIn"
-                    id="badges"
-                    class="mb-10 scroll-mt-16"
-                >
-                    <div
-                        class="font-display text-xl font-bold text-ink mb-1"
-                        style="font-variation-settings: 'opsz' 48"
+                <RevealTransition>
+                    <section
+                        v-if="allBadges.length > 0 && authLoggedIn"
+                        id="badges"
+                        class="mb-10 scroll-mt-16"
                     >
-                        Achievement Badges
-                    </div>
-                    <div class="text-xs text-muted mb-4">
-                        {{ earnedSlugs.size }} of {{ allBadges.length }} earned
-                    </div>
-                    <AccountBadgeGrid
-                        :badges="allBadges"
-                        :earned-slugs="earnedSlugs"
-                        :progress="badgeProgress"
-                    />
-                </section>
+                        <div
+                            class="font-display text-xl font-bold text-ink mb-1"
+                            style="font-variation-settings: 'opsz' 48"
+                        >
+                            Achievement Badges
+                        </div>
+                        <div class="text-xs text-muted mb-4">
+                            {{ earnedSlugs.size }} of {{ allBadges.length }} earned
+                        </div>
+                        <AccountBadgeGrid
+                            :badges="allBadges"
+                            :earned-slugs="earnedSlugs"
+                            :progress="badgeProgress"
+                        />
+                    </section>
+                </RevealTransition>
 
                 <!-- CTA -->
                 <div class="text-center">
