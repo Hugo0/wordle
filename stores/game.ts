@@ -1885,6 +1885,9 @@ export const useGameStore = defineStore('game', () => {
             emojiBoard.value = data.emoji_board || '';
             attempts.value = data.attempts || '0';
 
+            // Render restored tiles (same as classic's loadFromLocalStorage + showTiles)
+            showTilesAllBoards();
+
             // Load definitions for completed multi-board games on restore
             if (data.game_over) {
                 loadDefinitionsForBoards();
