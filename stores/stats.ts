@@ -57,6 +57,10 @@ export const useStatsStore = defineStore('stats', () => {
     const stats = ref<GameStats>(emptyStats());
     const totalStats = ref<TotalStats>(emptyTotalStats());
 
+    // Track the last calculateStats call so reloads can recalculate
+    let _lastStatsKey: string | undefined;
+    let _lastMaxGuesses: number = 6;
+
     // Speed Streak sessions (persistent, per-language). Separate storage key
     // because the shape — score / combo / timing — does not fit GameResult.
     const speedResults = ref<SpeedResults>({});
@@ -85,6 +89,12 @@ export const useStatsStore = defineStore('stats', () => {
         } else {
             gameResults.value = { [langCode]: [] };
             writeJson(scopedKey(STORAGE_KEYS.GAME_RESULTS), gameResults.value);
+        }
+
+        // Recalculate per-mode stats if a mode was previously active
+        // (handles async user ID resolution — data loads before/after setActiveUserId)
+        if (_lastStatsKey) {
+            calculateStats(_lastStatsKey, _lastMaxGuesses);
         }
     }
 
@@ -161,6 +171,9 @@ export const useStatsStore = defineStore('stats', () => {
      * @param maxGuesses - Max guesses for this mode (default 6). Determines distribution bar count.
      */
     function calculateStats(statsKey: string | undefined, maxGuesses: number = 6): GameStats {
+        _lastStatsKey = statsKey;
+        _lastMaxGuesses = maxGuesses;
+
         if (!statsKey) {
             stats.value = emptyStats(maxGuesses);
             return stats.value;
