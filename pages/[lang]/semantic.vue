@@ -129,6 +129,7 @@ onMounted(async () => {
     }
     try {
         stats.loadGameResults(langStore.languageCode);
+        stats.calculateStats(buildStatsKey(game.gameConfig), 15);
         stats.calculateTotalStats();
     } catch {
         /* non-fatal */
@@ -182,23 +183,44 @@ watch(
             return;
         }
 
-        if (sem.neighbours.value.length > 0) {
+        const isRestore = sem.neighbours.value.length > 0;
+
+        if (isRestore) {
             // Restored from localStorage — show instantly, auto-open modal for daily
             revealedNeighbourCount.value = sem.neighbours.value.length;
             if (isDaily.value) showStatsModal.value = true;
-        } else {
-            // Live game-over — stagger once neighbours arrive
-            needsStagger = true;
+            return; // Don't re-save stats or re-track analytics
         }
 
+        // Live game-over — stagger neighbours once they arrive
+        needsStagger = true;
+
+        // Save to localStorage
+        const statsKey = buildStatsKey(game.gameConfig);
         try {
-            stats.saveResult(
-                buildStatsKey(game.gameConfig),
-                sem.won.value,
-                sem.guesses.value.length
-            );
+            stats.saveResult(statsKey, sem.won.value, sem.guesses.value.length);
+            stats.calculateStats(statsKey, 15);
         } catch (e) {
             console.warn('[semantic] stats save failed', e);
+        }
+
+        // Sync to server (semantic doesn't use game store's gameOver,
+        // so the sync plugin's watcher doesn't fire — we sync directly)
+        if (useAuth().loggedIn.value) {
+            const dayIdx = isDaily.value ? sem.dayIdx.value : undefined;
+            $fetch('/api/user/game-result', {
+                method: 'POST',
+                body: {
+                    statsKey,
+                    won: sem.won.value,
+                    attempts: sem.guesses.value.length,
+                    dayIdx,
+                    game_mode: 'semantic',
+                    play_type: playType.value,
+                },
+            }).catch(() => {
+                /* non-fatal — will sync on next full sync */
+            });
         }
 
         // Analytics
@@ -692,6 +714,9 @@ function onKeepPlaying() {
 @media (max-width: 520px) {
     .semantic-body {
         padding: 8px 4px 16px;
+        /* Prevent keyboard-open scroll: input is position:fixed,
+           so the body doesn't need to scroll to show it. */
+        overflow-y: hidden;
     }
     .semantic-layout {
         gap: 8px;
