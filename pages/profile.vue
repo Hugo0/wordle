@@ -179,13 +179,11 @@ if (import.meta.client) {
         async (isLoggedIn) => {
             if (!isLoggedIn) return;
             try {
-                const [profile, badges, progress] = await Promise.all([
+                const [profile, badges] = await Promise.all([
                     $fetch('/api/user/profile'),
                     $fetch('/api/badges'),
-                    $fetch('/api/user/badge-progress'),
                 ]);
                 profileData.value = profile as ProfileData;
-                badgeProgress.value = (progress as Record<string, number>) ?? {};
 
                 // Merge earnedAt from profile into badge definitions
                 const earnedMap = new Map<string, string>();
@@ -196,6 +194,14 @@ if (import.meta.client) {
                     ...b,
                     earnedAt: earnedMap.get(b.slug),
                 }));
+
+                // Progress is non-critical — fetch separately so it doesn't block badges
+                try {
+                    const progress = await $fetch('/api/user/badge-progress');
+                    badgeProgress.value = (progress as Record<string, number>) ?? {};
+                } catch {
+                    // Progress bars won't show, but badges still render
+                }
             } catch {
                 // Non-critical
             }
