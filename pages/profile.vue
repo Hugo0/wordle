@@ -185,8 +185,17 @@ if (import.meta.client) {
                     $fetch('/api/user/badge-progress'),
                 ]);
                 profileData.value = profile as ProfileData;
-                allBadges.value = (badges as ProfileBadge[]) ?? [];
                 badgeProgress.value = (progress as Record<string, number>) ?? {};
+
+                // Merge earnedAt from profile into badge definitions
+                const earnedMap = new Map<string, string>();
+                for (const b of (profile as ProfileData).badges) {
+                    if (b.earnedAt) earnedMap.set(b.slug, b.earnedAt);
+                }
+                allBadges.value = ((badges as ProfileBadge[]) ?? []).map((b) => ({
+                    ...b,
+                    earnedAt: earnedMap.get(b.slug),
+                }));
             } catch {
                 // Non-critical
             }
@@ -1120,17 +1129,13 @@ const languagesConquered = computed(() => {
                     id="badges"
                     class="mb-10 scroll-mt-16"
                 >
-                    <div class="mono-label mb-4">Badges</div>
-                    <AccountBadgeGrid :badges="visibleBadges" :earned-slugs="earnedSlugs" />
-                    <button
-                        v-if="hasMoreBadges"
-                        class="w-full mt-2 py-2 text-xs text-muted hover:text-ink transition-colors cursor-pointer text-center"
-                        @click="badgesExpanded = !badgesExpanded"
-                    >
-                        {{
-                            badgesExpanded ? 'Show fewer' : `Show all ${sortedBadges.length} badges`
-                        }}
-                    </button>
+                    <div class="font-display text-xl font-bold text-ink mb-1" style="font-variation-settings: 'opsz' 48">Achievement Badges</div>
+                    <div class="text-xs text-muted mb-4">{{ earnedSlugs.size }} of {{ allBadges.length }} earned</div>
+                    <AccountBadgeGrid
+                        :badges="allBadges"
+                        :earned-slugs="earnedSlugs"
+                        :progress="badgeProgress"
+                    />
                 </section>
 
                 <!-- CTA -->
