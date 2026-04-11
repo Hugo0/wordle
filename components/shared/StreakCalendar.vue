@@ -134,6 +134,7 @@ function getModeIcon(mode: string | undefined) {
 interface CalendarDay {
     date: number | null;
     state: 'won' | 'lost' | 'missed' | 'today' | 'future' | 'empty';
+    isToday: boolean;
     modes: string[];
     langs: string[];
     wonModes: Set<string>;
@@ -141,13 +142,14 @@ interface CalendarDay {
 }
 
 function dayClass(day: CalendarDay): string {
+    const todayRing = day.isToday ? ' outline outline-2 outline-ink -outline-offset-1' : '';
     switch (day.state) {
         case 'won':
-            return 'bg-correct-soft';
+            return 'bg-correct-soft' + todayRing;
         case 'lost':
-            return 'cal-lost';
+            return 'cal-lost' + todayRing;
         case 'missed':
-            return 'bg-muted-soft';
+            return 'bg-muted-soft' + todayRing;
         case 'today':
             return 'outline outline-2 outline-ink -outline-offset-1';
         default:
@@ -191,6 +193,7 @@ const calendarDays = computed<CalendarDay[]>(() => {
         days.push({
             date: d.getDate(),
             state,
+            isToday,
             modes: detail ? [...detail.modes] : [],
             langs: detail ? [...detail.langs].filter((l) => flagSrc(l)) : [],
             wonModes: detail?.wonModes ?? new Set(),
