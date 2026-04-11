@@ -189,14 +189,15 @@ export default defineNuxtConfig({
         },
         workbox: {
             // Cache versioning: changing this name will invalidate old caches
-            cacheId: 'wordle-v7',
+            cacheId: 'wordle-v8',
 
             // Pre-cache essential offline assets
             globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
 
-            // Navigation fallback for offline
+            // Navigation fallback for offline — only game pages, not auth/API routes
             navigateFallback: '/offline.html',
             navigateFallbackAllowlist: [/^\/[a-z]{2,3}(\/|$)/],
+            navigateFallbackDenylist: [/^\/auth\//, /^\/api\//],
 
             // Clean up old caches from previous versions
             cleanupOutdatedCaches: true,
@@ -208,10 +209,10 @@ export default defineNuxtConfig({
             // Runtime caching strategies
             runtimeCaching: [
                 {
-                    // HTML pages and API routes: NetworkFirst
-                    // Pages contain the daily word which changes, so always try network
+                    // HTML pages and API routes: NetworkFirst (exclude auth — must hit server)
                     urlPattern: ({ request, url }) =>
-                        request.mode === 'navigate' || url.pathname.startsWith('/api/'),
+                        (request.mode === 'navigate' && !url.pathname.startsWith('/auth/')) ||
+                        url.pathname.startsWith('/api/'),
                     handler: 'NetworkFirst',
                     options: {
                         cacheName: 'wordle-pages',
