@@ -90,6 +90,7 @@ jobs:
         run: pnpm test
         env:
           NUXT_USE_BUILD: '1'
+          NUXT_SESSION_PASSWORD: 'ci-test-secret-min-32-chars-long!!'
 
   e2e:
     name: E2E Tests (Playwright)
@@ -120,6 +121,8 @@ jobs:
 
       - name: Run Playwright E2E tests
         run: pnpm test:e2e
+        env:
+          NUXT_SESSION_PASSWORD: 'ci-test-secret-min-32-chars-long!!'
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
