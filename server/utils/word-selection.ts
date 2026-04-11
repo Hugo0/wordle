@@ -236,9 +236,7 @@ export function getDayForWord(langCode: string, word: string): number | null {
 /** Iterate every (dayIdx, word) pair in reverse chronological order.
  *  Used by the sitemap to emit URLs without making ~300 disk reads per
  *  request. */
-export function iterateHistoricalWords(
-    langCode: string
-): Array<{ dayIdx: number; word: string }> {
+export function iterateHistoricalWords(langCode: string): Array<{ dayIdx: number; word: string }> {
     const idx = ensureReverseIndex(langCode);
     const entries = Array.from(idx.map.entries()).map(([word, dayIdx]) => ({
         dayIdx,

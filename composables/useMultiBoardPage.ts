@@ -51,7 +51,8 @@ export function useMultiBoardPage(
      *  Daily: uses dailyWords from server (deterministic, same for everyone).
      *  Unlimited: picks random words from the word list. */
     function startNewGame() {
-        const words = dailyWords?.length === boardCount ? [...dailyWords] : pickRandomWords(boardCount);
+        const words =
+            dailyWords?.length === boardCount ? [...dailyWords] : pickRandomWords(boardCount);
         const cfg = createGameConfig(mode, langStore.languageCode, {
             wordLength: WORD_LENGTH,
             playType: dailyWords?.length === boardCount ? 'daily' : 'unlimited',

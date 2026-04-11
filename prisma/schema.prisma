@@ -101,13 +101,14 @@ model Result {
 // ═══════════════════════════════════════════════════════════════════════════
 
 model Badge {
-    id          String @id @default(cuid())
-    slug        String @unique
+    id          String  @id @default(cuid())
+    slug        String  @unique
     name        String
     description String
     category    String
-    threshold   Int    @default(0)
-    icon        String @default("")
+    threshold   Int     @default(0)
+    icon        String  @default("")
+    group       String? @map("badge_group")
 
     users UserBadge[]
 

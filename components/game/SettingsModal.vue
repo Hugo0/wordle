@@ -144,9 +144,13 @@
                 <!-- High Contrast / Colorblind mode -->
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
-                        <p class="text-sm text-ink">{{ lang.config?.ui?.high_contrast || 'High Contrast' }}</p>
+                        <p class="text-sm text-ink">
+                            {{ lang.config?.ui?.high_contrast || 'High Contrast' }}
+                        </p>
                         <p class="text-xs text-muted">
-                            {{ lang.config?.ui?.high_contrast_desc || 'Colorblind-friendly colors' }}
+                            {{
+                                lang.config?.ui?.high_contrast_desc || 'Colorblind-friendly colors'
+                            }}
                         </p>
                     </div>
                     <SharedToggleSwitch
@@ -225,9 +229,7 @@
                     >
                         Sign in with Google
                     </button>
-                    <p class="text-xs text-center text-muted mt-1">
-                        Sync settings across devices
-                    </p>
+                    <p class="text-xs text-center text-muted mt-1">Sync settings across devices</p>
                 </div>
             </div>
         </div>
@@ -247,7 +249,12 @@ defineEmits<{ close: [] }>();
 const settings = useSettingsStore();
 const lang = useLanguageStore();
 const game = useGameStore();
-const { loggedIn: authLoggedIn, user: authUser, loginWithGoogle: authLoginWithGoogle, logout: authLogout } = useAuth();
+const {
+    loggedIn: authLoggedIn,
+    user: authUser,
+    loginWithGoogle: authLoginWithGoogle,
+    logout: authLogout,
+} = useAuth();
 
 /** Easy mode (allow any word) — synced with game store. */
 const allowAnyWord = computed({

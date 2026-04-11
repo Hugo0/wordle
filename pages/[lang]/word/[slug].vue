@@ -48,9 +48,7 @@ const { data: basicData, error: basicError } = await useFetch<WordBasic>(
     () => `/api/${lang}/word/${encodeURIComponent(slug.value)}`,
     { key: () => `word-basic-${lang}-${slug.value}` }
 );
-const notFound = computed(
-    () => !!basicError.value || !basicData.value || !basicData.value.word
-);
+const notFound = computed(() => !!basicError.value || !basicData.value || !basicData.value.word);
 
 // SSR: return 404 status for non-existent words so Google doesn't index them.
 // Client-side: the template shows a "word not found" message instead.
@@ -71,12 +69,15 @@ if (b?.resolved_from_idx && b.word && String(b.day_idx) === slug.value) {
 // Client-side watch for SPA navigation to numeric slugs (e.g. archive links).
 // The SSR redirect above handles the initial server render; this handles
 // subsequent client-side navigations within the same page component.
-watch(() => basicData.value?.resolved_from_idx, () => {
-    const bd = basicData.value;
-    if (bd?.resolved_from_idx && bd.word && String(bd.day_idx) === slug.value) {
-        router.replace(wordDetailPath(lang, bd.word) + (window.location.search || ''));
+watch(
+    () => basicData.value?.resolved_from_idx,
+    () => {
+        const bd = basicData.value;
+        if (bd?.resolved_from_idx && bd.word && String(bd.day_idx) === slug.value) {
+            router.replace(wordDetailPath(lang, bd.word) + (window.location.search || ''));
+        }
     }
-});
+);
 
 // Explore (axes + neighbors + umap) + richer definition
 const extraData = ref<{
@@ -123,9 +124,7 @@ async function loadExtras() {
     // Skipped on slow/metered connections to save bandwidth.
     if (shouldSkipPrefetch()) return;
     const neighborWords =
-        full.explore?.nearest?.map((n) => n.word) ??
-        basicData.value?.nearest_words ??
-        [];
+        full.explore?.nearest?.map((n) => n.word) ?? basicData.value?.nearest_words ?? [];
 
     // Stagger at 200ms intervals with max 3 concurrent (implicitly: the
     // browser's HTTP/2 connection limit handles actual concurrency; we just
@@ -244,25 +243,18 @@ function onRemoveContextWord(w: string) {
 // ── SEO ─────────────────────────────────────────────────────────────────
 const ui = computed(() => primary.value?.basic?.ui ?? {});
 const label = (key: string, fallback: string) => ui.value[key] || fallback;
-const langNameNative = computed(
-    () => primary.value?.basic?.lang_name_native || lang
-);
+const langNameNative = computed(() => primary.value?.basic?.lang_name_native || lang);
 const dayIdx = computed(() => primary.value?.basic?.day_idx ?? null);
 const isDailyWord = computed(() => dayIdx.value != null);
 const word = computed(() => primary.value?.basic?.word || '');
 const wordDate = computed(() =>
-    primary.value?.basic?.word_date
-        ? formatDateLong(primary.value.basic.word_date, lang)
-        : ''
+    primary.value?.basic?.word_date ? formatDateLong(primary.value.basic.word_date, lang) : ''
 );
 const upperWord = computed(() =>
     word.value ? word.value.toLocaleUpperCase(getLocaleForIntl(lang)) : ''
 );
 const defText = computed(
-    () =>
-        primary.value?.definition?.definitionNative ||
-        primary.value?.definition?.definition ||
-        ''
+    () => primary.value?.definition?.definitionNative || primary.value?.definition?.definition || ''
 );
 const posText = computed(() => primary.value?.definition?.partOfSpeech || '');
 const metaTemplates = computed(
@@ -272,9 +264,7 @@ const metaTemplates = computed(
             string
         >) || {}
 );
-const canonicalPath = computed(() =>
-    word.value ? wordDetailPath(lang, word.value) : `/${lang}`
-);
+const canonicalPath = computed(() => (word.value ? wordDetailPath(lang, word.value) : `/${lang}`));
 const canonicalUrl = computed(() =>
     word.value ? wordDetailUrl(lang, word.value) : `https://wordle.global/${lang}`
 );
@@ -285,8 +275,7 @@ const titleStr = computed(() => {
     if (!word.value) return `Wordle ${langNameNative.value}`;
     if (isDailyWord.value) {
         return interpolate(
-            metaTemplates.value.title ||
-                'Wordle #{idx} — {date} — {word} | {langNative} Answer',
+            metaTemplates.value.title || 'Wordle #{idx} — {date} — {word} | {langNative} Answer',
             {
                 idx: dayIdx.value ?? '',
                 date: wordDate.value || label('coming_soon', 'Coming soon'),
@@ -328,8 +317,7 @@ useSeoMeta({
     ogType: 'article',
     ogLocale: lang,
     ogDescription: () => descriptionStr.value.slice(0, 200),
-    ogImage: () =>
-        word.value ? wordImageUrl(lang, word.value, dayIdx.value) : undefined,
+    ogImage: () => (word.value ? wordImageUrl(lang, word.value, dayIdx.value) : undefined),
     twitterCard: 'summary_large_image',
     twitterTitle: titleStr,
     twitterDescription: () => descriptionStr.value.slice(0, 200),
@@ -384,9 +372,7 @@ useHead({
                           ...(wordDateStr && { dateModified: wordDateStr }),
                       }
                     : null;
-                return JSON.stringify(
-                    definedTerm ? [breadcrumb, definedTerm] : breadcrumb
-                );
+                return JSON.stringify(definedTerm ? [breadcrumb, definedTerm] : breadcrumb);
             }) as unknown as string,
         },
     ],
@@ -438,9 +424,35 @@ function shareWord() {
 
 // ── Giscus — stable-key mapping so URL changes don't orphan threads ─────
 const GISCUS_LANGS = new Set([
-    'ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 'eo', 'es', 'eu',
-    'fa', 'fr', 'he', 'hu', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'pt',
-    'ro', 'ru', 'th', 'tr', 'uk', 'uz', 'vi',
+    'ar',
+    'be',
+    'bg',
+    'ca',
+    'cs',
+    'da',
+    'de',
+    'en',
+    'eo',
+    'es',
+    'eu',
+    'fa',
+    'fr',
+    'he',
+    'hu',
+    'id',
+    'it',
+    'ja',
+    'ko',
+    'nl',
+    'pl',
+    'pt',
+    'ro',
+    'ru',
+    'th',
+    'tr',
+    'uk',
+    'uz',
+    'vi',
 ]);
 const giscusLang = GISCUS_LANGS.has(lang.slice(0, 2)) ? lang.slice(0, 2) : 'en';
 const giscusContainer = ref<HTMLElement | null>(null);
@@ -519,142 +531,139 @@ const subtitleText = computed(() => {
 
 <template>
     <AppShell :lang="lang" :lang-name="langNameNative" :ui="ui">
-    <div class="word-page">
-        <div v-if="notFound" class="not-found">
-            <h1>Word not found</h1>
-            <p>
-                The word <em>{{ slug }}</em> isn't in our dictionary.
-            </p>
-            <NuxtLink :to="`/${lang}/archive`" class="text-btn">Browse all words</NuxtLink>
-        </div>
+        <div class="word-page">
+            <div v-if="notFound" class="not-found">
+                <h1>Word not found</h1>
+                <p>
+                    The word <em>{{ slug }}</em> isn't in our dictionary.
+                </p>
+                <NuxtLink :to="`/${lang}/archive`" class="text-btn">Browse all words</NuxtLink>
+            </div>
 
-        <div v-else-if="!primary" class="loading">
-            <em>Loading…</em>
-        </div>
+            <div v-else-if="!primary" class="loading">
+                <em>Loading…</em>
+            </div>
 
-        <template v-else>
-            <div class="eyebrow text-center mb-5">{{ eyebrowText }}</div>
+            <template v-else>
+                <div class="eyebrow text-center mb-5">{{ eyebrowText }}</div>
 
-            <div class="column">
-                <WordHeadline
-                    :word="word"
-                    :subtitle="subtitleText"
-                    size="lg"
-                />
+                <div class="column">
+                    <WordHeadline :word="word" :subtitle="subtitleText" size="lg" />
 
-                <!-- Definition: show content or skeleton during transition -->
-                <div v-if="transitioning && !primary.definition?.definition" class="definition-block skeleton-block">
-                    <div class="skeleton-line w-3/4" />
-                    <div class="skeleton-line w-1/2" />
-                </div>
-                <div v-else-if="primary.definition?.definition" class="definition-block">
-                    <WordDefinition
-                        :word="word"
-                        :definition="primary.definition.definition"
-                        :part-of-speech="primary.definition.partOfSpeech"
-                        :ui="ui"
-                    />
-                    <a
-                        v-if="wiktionaryUrl"
-                        :href="wiktionaryUrl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="wiktionary-link"
+                    <!-- Definition: show content or skeleton during transition -->
+                    <div
+                        v-if="transitioning && !primary.definition?.definition"
+                        class="definition-block skeleton-block"
                     >
-                        Wiktionary →
-                    </a>
-                </div>
+                        <div class="skeleton-line w-3/4" />
+                        <div class="skeleton-line w-1/2" />
+                    </div>
+                    <div v-else-if="primary.definition?.definition" class="definition-block">
+                        <WordDefinition
+                            :word="word"
+                            :definition="primary.definition.definition"
+                            :part-of-speech="primary.definition.partOfSpeech"
+                            :ui="ui"
+                        />
+                        <a
+                            v-if="wiktionaryUrl"
+                            :href="wiktionaryUrl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="wiktionary-link"
+                        >
+                            Wiktionary →
+                        </a>
+                    </div>
 
-                <!-- Image: only when a pre-generated image exists -->
-                <div v-if="imageExists" class="image-wrap">
-                    <WordImage
-                        :word="word"
-                        :lang="lang"
-                        :day-idx="dayIdx"
-                        :size="400"
-                    />
-                </div>
+                    <!-- Image: only when a pre-generated image exists -->
+                    <div v-if="imageExists" class="image-wrap">
+                        <WordImage :word="word" :lang="lang" :day-idx="dayIdx" :size="400" />
+                    </div>
 
-                <!-- SSR neighbor links: visible before client-side explore data
+                    <!-- SSR neighbor links: visible before client-side explore data
                      loads. Provides internal link juice for crawlers and a
                      visible "related words" section during hydration. Replaced
                      by the interactive NearbyInMeaning graph once explore data
                      arrives. -->
-                <div
-                    v-if="!primary.explore && basicData?.nearest_words?.length"
-                    class="ssr-neighbors"
-                >
-                    <div class="section-label">Related words</div>
-                    <div class="neighbor-links">
-                        <NuxtLink
-                            v-for="w in basicData.nearest_words"
-                            :key="w"
-                            :to="`/${lang}/word/${w}`"
-                            class="neighbor-link"
-                        >
-                            {{ w }}
-                        </NuxtLink>
-                    </div>
-                </div>
-
-                <!-- Full interactive meaning map (English with embeddings) -->
-                <NearbyInMeaning
-                    v-if="primary.explore?.available"
-                    :lang="lang"
-                    :primary="primary"
-                    :context-data="contextData"
-                    :context-words="contextWords"
-                    :is-custom="context.isCustom.value"
-                    :is-full="context.isFull.value"
-                    @add="onAddContextWord"
-                    @remove="onRemoveContextWord"
-                    @reset-to-auto="context.resetToAuto"
-                />
-
-                <!-- Embeddings not available (non-English languages) -->
-                <section
-                    v-else-if="primary.explore && !primary.explore.available"
-                    class="coming-soon-section"
-                >
-                    <div class="section-label">Nearby in Meaning</div>
-                    <p class="coming-soon-text">
-                        Semantic maps are coming soon for {{ langNameNative }}.
-                    </p>
-                </section>
-
-                <!-- Skeleton for the graph during transitions -->
-                <div v-if="transitioning && !primary.explore" class="skeleton-block map-skeleton">
-                    <div class="skeleton-line w-1/3" />
-                    <div class="skeleton-map-box" />
-                </div>
-
-                <!-- Appeared in: which daily modes featured this word -->
-                <section v-if="isDailyWord" class="stats-section">
-                    <div class="section-label">Appeared In</div>
-                    <div class="appeared-in">
-                        <div class="appeared-mode">
-                            <span class="appeared-mode-name">Classic Daily</span>
-                            <span class="appeared-mode-detail">#{{ dayIdx }} · {{ wordDate }}</span>
+                    <div
+                        v-if="!primary.explore && basicData?.nearest_words?.length"
+                        class="ssr-neighbors"
+                    >
+                        <div class="section-label">Related words</div>
+                        <div class="neighbor-links">
+                            <NuxtLink
+                                v-for="w in basicData.nearest_words"
+                                :key="w"
+                                :to="`/${lang}/word/${w}`"
+                                class="neighbor-link"
+                            >
+                                {{ w }}
+                            </NuxtLink>
                         </div>
                     </div>
-                </section>
 
-                <div class="share-wrap">
-                    <button class="text-btn accent" @click="shareWord">
-                        {{ shareBtnText }}
-                    </button>
-                    <NuxtLink :to="`/${lang}/archive`" class="text-btn">
-                        ← archive
-                    </NuxtLink>
+                    <!-- Full interactive meaning map (English with embeddings) -->
+                    <NearbyInMeaning
+                        v-if="primary.explore?.available"
+                        :lang="lang"
+                        :primary="primary"
+                        :context-data="contextData"
+                        :context-words="contextWords"
+                        :is-custom="context.isCustom.value"
+                        :is-full="context.isFull.value"
+                        @add="onAddContextWord"
+                        @remove="onRemoveContextWord"
+                        @reset-to-auto="context.resetToAuto"
+                    />
+
+                    <!-- Embeddings not available (non-English languages) -->
+                    <section
+                        v-else-if="primary.explore && !primary.explore.available"
+                        class="coming-soon-section"
+                    >
+                        <div class="section-label">Nearby in Meaning</div>
+                        <p class="coming-soon-text">
+                            Semantic maps are coming soon for {{ langNameNative }}.
+                        </p>
+                    </section>
+
+                    <!-- Skeleton for the graph during transitions -->
+                    <div
+                        v-if="transitioning && !primary.explore"
+                        class="skeleton-block map-skeleton"
+                    >
+                        <div class="skeleton-line w-1/3" />
+                        <div class="skeleton-map-box" />
+                    </div>
+
+                    <!-- Appeared in: which daily modes featured this word -->
+                    <section v-if="isDailyWord" class="stats-section">
+                        <div class="section-label">Appeared In</div>
+                        <div class="appeared-in">
+                            <div class="appeared-mode">
+                                <span class="appeared-mode-name">Classic Daily</span>
+                                <span class="appeared-mode-detail"
+                                    >#{{ dayIdx }} · {{ wordDate }}</span
+                                >
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="share-wrap">
+                        <button class="text-btn accent" @click="shareWord">
+                            {{ shareBtnText }}
+                        </button>
+                        <NuxtLink :to="`/${lang}/archive`" class="text-btn"> ← archive </NuxtLink>
+                    </div>
                 </div>
-            </div>
 
-            <section v-if="word" class="giscus-section">
-                <div class="section-label">Discussion</div>
-                <div ref="giscusContainer" class="giscus-mount" />
-            </section>
-        </template>
-    </div>
+                <section v-if="word" class="giscus-section">
+                    <div class="section-label">Discussion</div>
+                    <div ref="giscusContainer" class="giscus-mount" />
+                </section>
+            </template>
+        </div>
     </AppShell>
 </template>
 
@@ -794,7 +803,9 @@ const subtitleText = computed(() => {
     padding: 4px 12px;
     border: 1px solid var(--color-rule);
     text-decoration: none;
-    transition: border-color 120ms ease, color 120ms ease;
+    transition:
+        border-color 120ms ease,
+        color 120ms ease;
 }
 .neighbor-link:hover {
     color: var(--color-accent);
@@ -821,8 +832,13 @@ const subtitleText = computed(() => {
     animation-delay: 200ms;
 }
 @keyframes skeleton-pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.8;
+    }
 }
 
 @media (max-width: 720px) {

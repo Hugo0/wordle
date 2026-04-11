@@ -98,7 +98,10 @@ onMounted(() => {
             ? gameData.value!.daily_words
             : gameData.value!.word_list;
         const word = pool[Math.floor(Math.random() * pool.length)]!;
-        game.resetForMode(createGameConfig('classic', lang, { playType: 'unlimited', wordLength: 5 }), word);
+        game.resetForMode(
+            createGameConfig('classic', lang, { playType: 'unlimited', wordLength: 5 }),
+            word
+        );
     } else {
         // Daily: restore from localStorage
         try {

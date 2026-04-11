@@ -55,13 +55,9 @@ function rankColor(display: number): string {
 // Target rank for the hero: the best rank so far, or the vocab size as a
 // resting "starting line" value so the counter has somewhere to count down
 // from on the first guess.
-const targetHeroRank = computed(() =>
-    props.bestGuess?.rank ?? props.totalRanked
-);
+const targetHeroRank = computed(() => props.bestGuess?.rank ?? props.totalRanked);
 const animatedHeroRank = useAnimatedNumber(targetHeroRank, { duration: 900 });
-const heroRankDisplay = computed(() =>
-    Math.round(animatedHeroRank.value).toLocaleString()
-);
+const heroRankDisplay = computed(() => Math.round(animatedHeroRank.value).toLocaleString());
 
 const percentile = computed(() => {
     if (!props.bestGuess || props.totalRanked <= 0) return 0;
@@ -104,10 +100,7 @@ function onRowLeave() {
 <template>
     <section class="leaderboard">
         <!-- Hero: best guess — or CTA when no guesses yet. -->
-        <header
-            v-if="bestGuess"
-            class="leaderboard-header active"
-        >
+        <header v-if="bestGuess" class="leaderboard-header active">
             <div class="mono-label">Closest so far</div>
             <div class="hero-row">
                 <div class="hero-main">
@@ -125,10 +118,7 @@ function onRowLeave() {
                  hides the unfilled portion. This way a 5% fill shows muted
                  grey instead of cramming the whole rainbow into a tiny strip. -->
             <div class="proximity-bar" :aria-valuenow="bestPercent">
-                <div
-                    class="proximity-mask"
-                    :style="{ width: `${100 - bestPercent}%` }"
-                />
+                <div class="proximity-mask" :style="{ width: `${100 - bestPercent}%` }" />
             </div>
             <div class="proximity-tier" :class="tier.cls">
                 {{ tier.label }}
@@ -139,10 +129,11 @@ function onRowLeave() {
         <header v-else class="leaderboard-header empty-cta">
             <div class="cta-headline">Guess a word</div>
             <p class="cta-body">
-                Type any English word. The closer its meaning to the target,
-                the lower its rank<span v-if="totalRanked > 0"> out of
-                <span class="mono">{{ totalRanked.toLocaleString() }}</span></span>.
-                Rank #1 = found it.
+                Type any English word. The closer its meaning to the target, the lower its rank<span
+                    v-if="totalRanked > 0"
+                >
+                    out of <span class="mono">{{ totalRanked.toLocaleString() }}</span></span
+                >. Rank #1 = found it.
             </p>
             <div class="cta-arrow" aria-hidden="true">↓</div>
         </header>
@@ -152,11 +143,7 @@ function onRowLeave() {
         <!-- Guess list — TransitionGroup handles reorder via FLIP move -->
         <div v-if="guesses.length > 0" ref="leaderboardRef" class="guess-list-wrap">
             <div class="mono-label sub-label">Your guesses</div>
-            <TransitionGroup
-                tag="ol"
-                name="rank-list"
-                class="guess-list editorial-scroll"
-            >
+            <TransitionGroup tag="ol" name="rank-list" class="guess-list editorial-scroll">
                 <li
                     v-for="g in visibleGuesses"
                     :key="g.guessNumber + ':' + g.word"
@@ -172,20 +159,12 @@ function onRowLeave() {
                     tabindex="0"
                 >
                     <span class="guess-word">{{ g.word }}</span>
-                    <span
-                        class="guess-rank"
-                        :style="{ color: rankColor(g.display) }"
-                    >
+                    <span class="guess-rank" :style="{ color: rankColor(g.display) }">
                         #{{ g.rank.toLocaleString() }}
                     </span>
                 </li>
             </TransitionGroup>
-            <button
-                v-if="hasMore"
-                type="button"
-                class="show-toggle"
-                @click="showAll = !showAll"
-            >
+            <button v-if="hasMore" type="button" class="show-toggle" @click="showAll = !showAll">
                 {{ showAll ? 'Show less' : `Show all ${sortedGuesses.length}` }}
             </button>
         </div>
@@ -243,10 +222,16 @@ function onRowLeave() {
     animation: cta-bounce 1.8s ease-in-out infinite;
 }
 @keyframes cta-bounce {
-    0%, 100% { transform: translateY(0); opacity: 0.6; }
-    50%      { transform: translateY(4px); opacity: 1; }
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(4px);
+        opacity: 1;
+    }
 }
-
 
 .mono-label {
     font-family: var(--font-mono);
@@ -412,7 +397,9 @@ function onRowLeave() {
     padding: 6px 8px;
     border-left: 2px solid transparent;
     cursor: pointer;
-    transition: background 120ms ease, border-color 120ms ease;
+    transition:
+        background 120ms ease,
+        border-color 120ms ease;
     outline: none;
 }
 

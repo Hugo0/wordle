@@ -17,9 +17,7 @@
     >
         <div class="px-6 pt-6 pb-3">
             <h2 class="heading-section text-xl text-ink">Multi-Board</h2>
-            <p class="text-sm text-muted mt-1">
-                Same rules, more boards. Pick your challenge.
-            </p>
+            <p class="text-sm text-muted mt-1">Same rules, more boards. Pick your challenge.</p>
         </div>
 
         <div class="border-t border-rule">
@@ -29,14 +27,18 @@
                 class="flex items-center gap-4 px-6 py-4 border-b border-rule"
             >
                 <!-- Icon -->
-                <div class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm flex-shrink-0">
+                <div
+                    class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm flex-shrink-0"
+                >
                     <component :is="mode.icon" :size="20" class="text-ink" />
                 </div>
 
                 <!-- Info -->
                 <div class="flex-1 min-w-0">
                     <div class="heading-section text-base text-ink">{{ mode.label }}</div>
-                    <div class="text-xs text-muted mt-0.5">{{ mode.boards }} boards &middot; {{ mode.maxGuesses }} guesses</div>
+                    <div class="text-xs text-muted mt-0.5">
+                        {{ mode.boards }} boards &middot; {{ mode.maxGuesses }} guesses
+                    </div>
                 </div>
 
                 <!-- Daily / Unlimited links -->
@@ -77,9 +79,9 @@ defineEmits<{ close: [] }>();
 
 const MULTIBOARD_IDS = ['dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle'] as const;
 
-const modes = computed(() =>
-    MULTIBOARD_IDS
-        .map((id) => {
+const modes = computed(
+    () =>
+        MULTIBOARD_IDS.map((id) => {
             const uiMode = GAME_MODES_UI.find((m) => m.id === id);
             if (!uiMode?.enabled) return null;
             const def = GAME_MODE_CONFIG[id];
@@ -90,7 +92,12 @@ const modes = computed(() =>
                 maxGuesses: def.maxGuesses,
                 icon: uiMode.icon,
             };
-        })
-        .filter(Boolean) as Array<{ id: string; label: string; boards: number; maxGuesses: number; icon: any }>
+        }).filter(Boolean) as Array<{
+            id: string;
+            label: string;
+            boards: number;
+            maxGuesses: number;
+            icon: any;
+        }>
 );
 </script>

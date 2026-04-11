@@ -76,9 +76,7 @@ function qualifierOf(tier: CompassHint['magnitudeTier']): string {
 /** Show the compass-close fallback when the last guess was too similar to the
  *  target for any axis to produce a meaningful signal. Players hit this state
  *  when they're already very close to the answer. */
-const showCloseFallback = computed(
-    () => props.compassStatus === 'close' && props.guessesUsed > 0
-);
+const showCloseFallback = computed(() => props.compassStatus === 'close' && props.guessesUsed > 0);
 
 /** Nudge the player toward the oracle after 5 guesses without improving
  *  their best rank. Only shown when the oracle is unlocked, unused, and
@@ -103,7 +101,8 @@ const { elRef: llmRef } = useAutoHeight();
                 <Compass :size="14" class="panel-icon" />
                 <span class="mono-label">
                     Compass<span v-if="latestGuessWord" class="from-word">
-                        · from <em>{{ latestGuessWord }}</em></span>
+                        · from <em>{{ latestGuessWord }}</em></span
+                    >
                 </span>
                 <button
                     v-if="(sliceActive || hints.length >= 2) && !gameOver"
@@ -127,8 +126,8 @@ const { elRef: llmRef } = useAutoHeight();
                     <em>No clear bearing</em>
                 </p>
                 <p class="close-sub">
-                    The compass can't place this one on a known axis — try a
-                    word from a different corner of meaning.
+                    The compass can't place this one on a known axis — try a word from a different
+                    corner of meaning.
                 </p>
             </div>
 
@@ -348,7 +347,8 @@ const { elRef: llmRef } = useAutoHeight();
     animation: oracle-pulse 2s ease-in-out infinite;
 }
 @keyframes oracle-pulse {
-    0%, 100% {
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(192, 57, 43, 0);
     }
     50% {

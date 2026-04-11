@@ -42,10 +42,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 500, message: 'Target embedding missing' });
     }
 
-    const excludeSet = new Set<string>([
-        target,
-        ...exclude.map((w) => w.toLowerCase().trim()),
-    ]);
+    const excludeSet = new Set<string>([target, ...exclude.map((w) => w.toLowerCase().trim())]);
     const neighbours = knnNearest(data, targetVec, k, excludeSet);
 
     const totalRanked = data.words.length;

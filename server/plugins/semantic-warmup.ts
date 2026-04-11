@@ -16,10 +16,7 @@ import { consola } from 'consola';
  * Render). Delete them to force regeneration on the next boot.
  */
 
-import {
-    loadSemanticData,
-    SemanticDataMissingError,
-} from '~/server/utils/semantic';
+import { loadSemanticData, SemanticDataMissingError } from '~/server/utils/semantic';
 import {
     generateSemanticRuntimeData,
     semanticRuntimeCacheExists,
@@ -47,9 +44,7 @@ export default defineNitroPlugin(async () => {
     try {
         const ok = await generateSemanticRuntimeData();
         if (!ok) {
-            consola.warn(
-                '[semantic warmup] regeneration skipped (missing key or static data)'
-            );
+            consola.warn('[semantic warmup] regeneration skipped (missing key or static data)');
             return;
         }
         const data = loadSemanticData();
@@ -59,10 +54,7 @@ export default defineNitroPlugin(async () => {
         );
     } catch (e) {
         if (e instanceof SemanticDataMissingError) {
-            consola.warn(
-                '[semantic warmup] post-generation load still missing files:',
-                e.missing
-            );
+            consola.warn('[semantic warmup] post-generation load still missing files:', e.missing);
         } else {
             consola.warn('[semantic warmup] regeneration failed:', e);
         }

@@ -1,136 +1,140 @@
 <template>
     <div v-show="visible">
-    <div class="flex h-[100dvh] snap-start" :class="wrapperClass">
-        <!-- Sidebar (fixed overlay) -->
-        <AppSidebar
-            :is-open="sidebarOpen"
-            :show-sub-panel="showSubPanelOnOpen"
-            :lang-code="lang"
-            :language-name="languageName"
-            :is-rtl="langStore.rightToLeft"
-            :current-mode="currentMode"
-            :current-play-type="game.gameConfig.playType"
-            @close="$emit('closeSidebar')"
-            @select-mode="
-                (mode: string) => {
-                    analytics.trackModeSelected(mode, 'sidebar');
-                    navigateTo(`/${lang}/${mode === 'classic' ? '' : mode + '/'}`);
-                }
-            "
-            @select-language="showLanguageModal = true"
-            @settings="game.showOptionsModal = !game.showOptionsModal"
-        />
+        <div class="flex h-[100dvh] snap-start" :class="wrapperClass">
+            <!-- Sidebar (fixed overlay) -->
+            <AppSidebar
+                :is-open="sidebarOpen"
+                :show-sub-panel="showSubPanelOnOpen"
+                :lang-code="lang"
+                :language-name="languageName"
+                :is-rtl="langStore.rightToLeft"
+                :current-mode="currentMode"
+                :current-play-type="game.gameConfig.playType"
+                @close="$emit('closeSidebar')"
+                @select-mode="
+                    (mode: string) => {
+                        analytics.trackModeSelected(mode, 'sidebar');
+                        navigateTo(`/${lang}/${mode === 'classic' ? '' : mode + '/'}`);
+                    }
+                "
+                @select-language="showLanguageModal = true"
+                @settings="game.showOptionsModal = !game.showOptionsModal"
+            />
 
-        <div class="flex-1 min-w-0 flex flex-col h-[100dvh]" :class="innerClass">
-            <!-- Header — fixed max-width, not affected by game mode -->
-            <div class="w-full max-w-2xl mx-auto safe-area-inset px-2">
-                <AppHeader
-                    :title="title"
-                    :subtitle="subtitle"
-                    :flag-src="headerFlagSrc"
-                    :sidebar-open="sidebarOpen"
-                    :streak-count="streakCount"
-                    :just-won="justWon"
-                    :show-results="true"
-                    @help="onHelp"
-                    @results="game.showStatsModal = !game.showStatsModal"
-                    @streak="game.showStreakModal = !game.showStreakModal"
-                    @settings="game.showOptionsModal = !game.showOptionsModal"
-                    @toggle-sidebar="$emit('toggleSidebar')"
-                    @open-play-type="openWithSubPanel"
-                />
-            </div>
-            <div
-                class="wrapper container mx-auto flex flex-col flex-1 min-h-0 w-full safe-area-inset overflow-hidden"
-                :class="maxWidthClass"
-            >
-                <!-- Pre-keyboard slot (banner, speed timer, boards, etc) -->
-                <slot />
-
-                <!-- Keyboard flip container (speed mode excluded — has its own overlay) -->
+            <div class="flex-1 min-w-0 flex flex-col h-[100dvh]" :class="innerClass">
+                <!-- Header — fixed max-width, not affected by game mode -->
+                <div class="w-full max-w-2xl mx-auto safe-area-inset px-2">
+                    <AppHeader
+                        :title="title"
+                        :subtitle="subtitle"
+                        :flag-src="headerFlagSrc"
+                        :sidebar-open="sidebarOpen"
+                        :streak-count="streakCount"
+                        :just-won="justWon"
+                        :show-results="true"
+                        @help="onHelp"
+                        @results="game.showStatsModal = !game.showStatsModal"
+                        @streak="game.showStreakModal = !game.showStreakModal"
+                        @settings="game.showOptionsModal = !game.showOptionsModal"
+                        @toggle-sidebar="$emit('toggleSidebar')"
+                        @open-play-type="openWithSubPanel"
+                    />
+                </div>
                 <div
-                    v-if="!isSpeedMode && !noKeyboard"
-                    class="keyboard-flip-container"
-                    :class="{ flipped: showPostGame }"
+                    class="wrapper container mx-auto flex flex-col flex-1 min-h-0 w-full safe-area-inset overflow-hidden"
+                    :class="maxWidthClass"
                 >
-                    <div class="keyboard-flip-inner">
-                        <!-- Front face: keyboard (inert when flipped to prevent focus/SR access) -->
-                        <div class="keyboard-face keyboard-front" :inert="showPostGame">
-                            <GameKeyboard
-                                ref="gameKeyboardRef"
-                                :keyboard="langStore.keyboard"
-                                :hints="langStore.keyDiacriticHints"
-                            />
-                        </div>
-                        <!-- Back face: post-game panel (only in DOM after game ends) -->
-                        <div v-if="game.gameOver" class="keyboard-face keyboard-back">
-                            <GamePostGamePanel @new-game="$emit('newGame')" />
+                    <!-- Pre-keyboard slot (banner, speed timer, boards, etc) -->
+                    <slot />
+
+                    <!-- Keyboard flip container (speed mode excluded — has its own overlay) -->
+                    <div
+                        v-if="!isSpeedMode && !noKeyboard"
+                        class="keyboard-flip-container"
+                        :class="{ flipped: showPostGame }"
+                    >
+                        <div class="keyboard-flip-inner">
+                            <!-- Front face: keyboard (inert when flipped to prevent focus/SR access) -->
+                            <div class="keyboard-face keyboard-front" :inert="showPostGame">
+                                <GameKeyboard
+                                    ref="gameKeyboardRef"
+                                    :keyboard="langStore.keyboard"
+                                    :hints="langStore.keyDiacriticHints"
+                                />
+                            </div>
+                            <!-- Back face: post-game panel (only in DOM after game ends) -->
+                            <div v-if="game.gameOver" class="keyboard-face keyboard-back">
+                                <GamePostGamePanel @new-game="$emit('newGame')" />
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Speed mode: keyboard without flip wrapper -->
+                    <GameKeyboard
+                        v-else-if="isSpeedMode && !noKeyboard"
+                        ref="gameKeyboardRef"
+                        :keyboard="langStore.keyboard"
+                        :hints="langStore.keyDiacriticHints"
+                    />
                 </div>
 
-                <!-- Speed mode: keyboard without flip wrapper -->
-                <GameKeyboard
-                    v-else-if="isSpeedMode && !noKeyboard"
-                    ref="gameKeyboardRef"
-                    :keyboard="langStore.keyboard"
-                    :hints="langStore.keyDiacriticHints"
+                <!-- Modals (each has its own backdrop via BaseModal) -->
+                <GameHelpModal :visible="game.showHelpModal" @close="game.showHelpModal = false" />
+                <GameSettingsModal
+                    :visible="game.showOptionsModal"
+                    @close="game.showOptionsModal = false"
                 />
-            </div>
+                <GameStatsModal
+                    :visible="game.showStatsModal"
+                    @close="game.showStatsModal = false"
+                    @new-game="
+                        game.showStatsModal = false;
+                        $emit('newGame');
+                    "
+                />
+                <GameStreakModal
+                    :visible="game.showStreakModal"
+                    @close="game.showStreakModal = false"
+                />
+                <GameCopyFallbackModal />
+                <GameNotificationToast :notification="game.notification" />
 
-            <!-- Modals (each has its own backdrop via BaseModal) -->
-            <GameHelpModal :visible="game.showHelpModal" @close="game.showHelpModal = false" />
-            <GameSettingsModal
-                :visible="game.showOptionsModal"
-                @close="game.showOptionsModal = false"
-            />
-            <GameStatsModal
-                :visible="game.showStatsModal"
-                @close="game.showStatsModal = false"
-                @new-game="
-                    game.showStatsModal = false;
-                    $emit('newGame');
-                "
-            />
-            <GameStreakModal
-                :visible="game.showStreakModal"
-                @close="game.showStreakModal = false"
-            />
-            <GameCopyFallbackModal />
-            <GameNotificationToast :notification="game.notification" />
+                <!-- Language picker modal — opens from sidebar language item -->
+                <AppLanguagePickerModal
+                    :visible="showLanguageModal"
+                    :current-lang-code="lang"
+                    :language-codes="allLangCodes"
+                    :current-mode-suffix="
+                        game.gameConfig.mode === 'classic'
+                            ? ''
+                            : GAME_MODE_CONFIG[game.gameConfig.mode]?.routeSuffix || ''
+                    "
+                    :current-play-type="game.gameConfig.playType"
+                    @close="showLanguageModal = false"
+                />
 
-            <!-- Language picker modal — opens from sidebar language item -->
-            <AppLanguagePickerModal
-                :visible="showLanguageModal"
-                :current-lang-code="lang"
-                :language-codes="allLangCodes"
-                :current-mode-suffix="game.gameConfig.mode === 'classic' ? '' : GAME_MODE_CONFIG[game.gameConfig.mode]?.routeSuffix || ''"
-                :current-play-type="game.gameConfig.playType"
-                @close="showLanguageModal = false"
-            />
-
-            <!-- PWA install component — dialog triggered by plugin on idle.
+                <!-- PWA install component — dialog triggered by plugin on idle.
                  manual-apple/manual-chrome prevent auto-show on page load;
                  showDialog(true) overrides this when we're ready to prompt. -->
-            <ClientOnly>
-                <pwa-install
-                    manifest-url="/manifest.json"
-                    name="Wordle Global"
-                    description="Play Wordle in 80+ languages"
-                    install-description="Install for quick daily access"
-                    manual-apple
-                    manual-chrome
-                />
-            </ClientOnly>
+                <ClientOnly>
+                    <pwa-install
+                        manifest-url="/manifest.json"
+                        name="Wordle Global"
+                        description="Play Wordle in 80+ languages"
+                        install-description="Install for quick daily access"
+                        manual-apple
+                        manual-chrome
+                    />
+                </ClientOnly>
 
-            <!-- Extra overlays slot (speed countdown, results, etc.) -->
-            <slot name="overlays" />
+                <!-- Extra overlays slot (speed countdown, results, etc.) -->
+                <slot name="overlays" />
+            </div>
         </div>
-    </div>
-    <!-- SEO content renders OUTSIDE the game viewport so it doesn't
+        <!-- SEO content renders OUTSIDE the game viewport so it doesn't
          compete with the game board for flex space. Uses scroll-snap
          in the layout to become the next snap section. -->
-    <slot name="seo" />
+        <slot name="seo" />
     </div>
 </template>
 
@@ -180,7 +184,9 @@ function openWithSubPanel() {
     showSubPanelOnOpen.value = true;
     emit('toggleSidebar');
     // Reset after sidebar opens so normal opens don't show sub-panel
-    setTimeout(() => { showSubPanelOnOpen.value = false; }, 400);
+    setTimeout(() => {
+        showSubPanelOnOpen.value = false;
+    }, 400);
 }
 
 // Language picker modal state

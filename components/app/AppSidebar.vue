@@ -51,7 +51,10 @@
                     <SidebarItem
                         icon="Infinity"
                         label="Unlimited"
-                        :active="currentMode === 'unlimited' || (currentMode === 'classic' && currentPlayType === 'unlimited')"
+                        :active="
+                            currentMode === 'unlimited' ||
+                            (currentMode === 'classic' && currentPlayType === 'unlimited')
+                        "
                         :href="`/${langCode}/unlimited`"
                         @click="selectMode('unlimited')"
                     />
@@ -60,14 +63,32 @@
                     <template v-if="showSpeed">
                         <button
                             class="sidebar-item w-full"
-                            :class="{ active: currentMode === 'speed', 'show-sub-panel': subPanelMode === 'speed' }"
-                            @click="toggleSubPanel('speed', `/${langCode}/speed`, `/${langCode}/speed?play=unlimited`)"
+                            :class="{
+                                active: currentMode === 'speed',
+                                'show-sub-panel': subPanelMode === 'speed',
+                            }"
+                            @click="
+                                toggleSubPanel(
+                                    'speed',
+                                    `/${langCode}/speed`,
+                                    `/${langCode}/speed?play=unlimited`
+                                )
+                            "
                         >
                             <span class="item-icon w-5 flex items-center justify-center">
-                                <component v-if="speedMode?.icon" :is="speedMode.icon" :size="18" class="text-current" />
+                                <component
+                                    v-if="speedMode?.icon"
+                                    :is="speedMode.icon"
+                                    :size="18"
+                                    class="text-current"
+                                />
                             </span>
-                            <span class="flex-1 text-sm">{{ speedMode?.label || 'Speed Streak' }}</span>
-                            <span v-if="speedMode?.badge" class="sidebar-badge">{{ speedMode.badge }}</span>
+                            <span class="flex-1 text-sm">{{
+                                speedMode?.label || 'Speed Streak'
+                            }}</span>
+                            <span v-if="speedMode?.badge" class="sidebar-badge">{{
+                                speedMode.badge
+                            }}</span>
                         </button>
                     </template>
 
@@ -75,7 +96,11 @@
                     <button
                         class="sidebar-item w-full"
                         :class="{ active: isMultiBoardMode }"
-                        @click="expandedSection = expandedSection === 'multiboard' ? null : 'multiboard'; subPanelMode = null;"
+                        @click="
+                            expandedSection =
+                                expandedSection === 'multiboard' ? null : 'multiboard';
+                            subPanelMode = null;
+                        "
                     >
                         <span class="item-icon w-5 flex items-center justify-center">
                             <Grid2x2 :size="18" class="text-current" />
@@ -92,8 +117,17 @@
                             v-for="mb in multiboardModes"
                             :key="mb.id"
                             class="sidebar-sub"
-                            :class="{ active: currentMode === mb.id, 'show-sub-panel': subPanelMode === mb.id }"
-                            @click="toggleSubPanel(mb.id, `/${langCode}/${mb.id}`, `/${langCode}/${mb.id}?play=unlimited`)"
+                            :class="{
+                                active: currentMode === mb.id,
+                                'show-sub-panel': subPanelMode === mb.id,
+                            }"
+                            @click="
+                                toggleSubPanel(
+                                    mb.id,
+                                    `/${langCode}/${mb.id}`,
+                                    `/${langCode}/${mb.id}?play=unlimited`
+                                )
+                            "
                         >
                             <component :is="mb.icon" :size="14" class="flex-shrink-0" />
                             {{ mb.label }}
@@ -105,14 +139,32 @@
                     <template v-if="showSemantic">
                         <button
                             class="sidebar-item w-full"
-                            :class="{ active: currentMode === 'semantic', 'show-sub-panel': subPanelMode === 'semantic' }"
-                            @click="toggleSubPanel('semantic', `/${langCode}/semantic`, `/${langCode}/semantic?play=unlimited`)"
+                            :class="{
+                                active: currentMode === 'semantic',
+                                'show-sub-panel': subPanelMode === 'semantic',
+                            }"
+                            @click="
+                                toggleSubPanel(
+                                    'semantic',
+                                    `/${langCode}/semantic`,
+                                    `/${langCode}/semantic?play=unlimited`
+                                )
+                            "
                         >
                             <span class="item-icon w-5 flex items-center justify-center">
-                                <component v-if="semanticMode?.icon" :is="semanticMode.icon" :size="18" class="text-current" />
+                                <component
+                                    v-if="semanticMode?.icon"
+                                    :is="semanticMode.icon"
+                                    :size="18"
+                                    class="text-current"
+                                />
                             </span>
-                            <span class="flex-1 text-sm">{{ semanticMode?.label || 'Semantic Explorer' }}</span>
-                            <span v-if="semanticMode?.badge" class="sidebar-badge">{{ semanticMode.badge }}</span>
+                            <span class="flex-1 text-sm">{{
+                                semanticMode?.label || 'Semantic Explorer'
+                            }}</span>
+                            <span v-if="semanticMode?.badge" class="sidebar-badge">{{
+                                semanticMode.badge
+                            }}</span>
                         </button>
                     </template>
 
@@ -130,14 +182,13 @@
                 <!-- Sub-panel: slides out from right edge when a mode is clicked.
                      Two icon-only buttons: daily (calendar) and unlimited (infinity). -->
                 <Transition name="sub-panel-slide">
-                    <div
-                        v-if="subPanelMode"
-                        class="sub-panel"
-                    >
+                    <div v-if="subPanelMode" class="sub-panel">
                         <NuxtLink
                             :to="subPanelDailyRoute!"
                             class="sub-panel-btn sub-panel-daily"
-                            :class="{ active: subPanelMode === currentMode && currentPlayType === 'daily' }"
+                            :class="{
+                                active: subPanelMode === currentMode && currentPlayType === 'daily',
+                            }"
                             :aria-label="`Daily #${dayIdx}`"
                             :title="`Daily #${dayIdx}`"
                             @click="close()"
@@ -148,7 +199,10 @@
                         <NuxtLink
                             :to="subPanelUnlimitedRoute!"
                             class="sub-panel-btn sub-panel-unlimited"
-                            :class="{ active: subPanelMode === currentMode && currentPlayType === 'unlimited' }"
+                            :class="{
+                                active:
+                                    subPanelMode === currentMode && currentPlayType === 'unlimited',
+                            }"
                             aria-label="Unlimited"
                             title="Unlimited"
                             @click="close()"
@@ -235,7 +289,13 @@
                                 {{ user?.displayName ?? 'Player' }}
                             </div>
                             <div class="mono-label truncate text-muted">
-                                {{ user?.email || '@' + (user?.displayName ?? 'player').toLowerCase().replace(/\s+/g, '_') }}
+                                {{
+                                    user?.email ||
+                                    '@' +
+                                        (user?.displayName ?? 'player')
+                                            .toLowerCase()
+                                            .replace(/\s+/g, '_')
+                                }}
                             </div>
                         </div>
                     </NuxtLink>
@@ -243,7 +303,9 @@
                     <!-- Logged out -->
                     <template v-else>
                         <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-full bg-rule text-muted flex items-center justify-center heading-body text-sm flex-shrink-0">
+                            <div
+                                class="w-9 h-9 rounded-full bg-rule text-muted flex items-center justify-center heading-body text-sm flex-shrink-0"
+                            >
                                 ?
                             </div>
                             <div class="flex-1 min-w-0">
@@ -253,7 +315,10 @@
                         </div>
                         <button
                             class="w-full mt-3 px-4 py-2 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
-                            @click="$emit('close'); openLoginModal()"
+                            @click="
+                                $emit('close');
+                                openLoginModal();
+                            "
                         >
                             Sign in
                         </button>
@@ -265,7 +330,16 @@
 </template>
 
 <script setup lang="ts">
-import { Globe, ChevronRight, ChevronDown, Bug, Grid2x2, CalendarDays, Infinity as InfinityIcon, LogOut } from 'lucide-vue-next';
+import {
+    Globe,
+    ChevronRight,
+    ChevronDown,
+    Bug,
+    Grid2x2,
+    CalendarDays,
+    Infinity as InfinityIcon,
+    LogOut,
+} from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import { GAME_MODES_UI, getModeLabel } from '~/composables/useGameModes';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
@@ -366,38 +440,39 @@ function toggleSubPanel(mode: string, dailyRoute: string, unlimitedRoute: string
 // On sidebar open: expand the section for the current mode.
 // Only show sub-panel if showSubPanel prop is true (subtitle click).
 // Normal hamburger open does NOT show sub-panel.
-watch(() => props.isOpen, (open) => {
-    if (!open) {
-        subPanelMode.value = null;
-        return;
-    }
-    const mode = props.currentMode;
-    const lc = props.langCode;
-
-    // Always expand the relevant section so the current mode is visible
-    if (MULTIBOARD_IDS.includes(mode as any)) {
-        expandedSection.value = 'multiboard';
-    }
-
-    // Only show sub-panel if triggered by subtitle click (showSubPanel prop)
-    if (props.showSubPanel) {
-        if (MULTIBOARD_IDS.includes(mode as any)) {
-            toggleSubPanel(mode, `/${lc}/${mode}`, `/${lc}/${mode}?play=unlimited`);
-        } else if (mode === 'speed') {
-            toggleSubPanel('speed', `/${lc}/speed`, `/${lc}/speed?play=unlimited`);
-        } else if (mode === 'semantic') {
-            toggleSubPanel('semantic', `/${lc}/semantic`, `/${lc}/semantic?play=unlimited`);
+watch(
+    () => props.isOpen,
+    (open) => {
+        if (!open) {
+            subPanelMode.value = null;
+            return;
         }
-    } else {
-        subPanelMode.value = null;
+        const mode = props.currentMode;
+        const lc = props.langCode;
+
+        // Always expand the relevant section so the current mode is visible
+        if (MULTIBOARD_IDS.includes(mode as any)) {
+            expandedSection.value = 'multiboard';
+        }
+
+        // Only show sub-panel if triggered by subtitle click (showSubPanel prop)
+        if (props.showSubPanel) {
+            if (MULTIBOARD_IDS.includes(mode as any)) {
+                toggleSubPanel(mode, `/${lc}/${mode}`, `/${lc}/${mode}?play=unlimited`);
+            } else if (mode === 'speed') {
+                toggleSubPanel('speed', `/${lc}/speed`, `/${lc}/speed?play=unlimited`);
+            } else if (mode === 'semantic') {
+                toggleSubPanel('semantic', `/${lc}/semantic`, `/${lc}/semantic?play=unlimited`);
+            }
+        } else {
+            subPanelMode.value = null;
+        }
     }
-});
+);
 
 const MULTIBOARD_IDS = ['dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle'] as const;
 
-const isMultiBoardMode = computed(() =>
-    MULTIBOARD_IDS.includes(props.currentMode as any)
-);
+const isMultiBoardMode = computed(() => MULTIBOARD_IDS.includes(props.currentMode as any));
 
 const ui = computed(() => props.ui ?? langStore.config?.ui);
 
@@ -415,9 +490,9 @@ const showSemantic = computed(() => {
 });
 
 // Multi-board modes with labels
-const multiboardModes = computed(() =>
-    MULTIBOARD_IDS
-        .map((id) => {
+const multiboardModes = computed(
+    () =>
+        MULTIBOARD_IDS.map((id) => {
             const mode = GAME_MODES_UI.find((m) => m.id === id);
             if (!mode || !mode.enabled) return null;
             const def = GAME_MODE_CONFIG[id];
@@ -427,8 +502,7 @@ const multiboardModes = computed(() =>
                 boards: `${def.boardCount} boards`,
                 icon: mode.icon,
             };
-        })
-        .filter(Boolean) as Array<{ id: string; label: string; boards: string; icon: any }>
+        }).filter(Boolean) as Array<{ id: string; label: string; boards: string; icon: any }>
 );
 // Disabled future modes (custom, party)
 const disabledModes = computed(() =>
@@ -613,10 +687,14 @@ const bugReportUrl = computed(() => {
 
 /* Sub-panel slide transition */
 .sub-panel-slide-enter-active {
-    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+    transition:
+        transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.2s ease;
 }
 .sub-panel-slide-leave-active {
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
 }
 .sub-panel-slide-enter-from,
 .sub-panel-slide-leave-to {

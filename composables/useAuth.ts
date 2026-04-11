@@ -35,8 +35,8 @@ export function useAuth() {
     }
 
     // Resolved avatar: Google photo → generated marble SVG fallback
-    const avatarUrl = computed(() =>
-        user.value?.avatarUrl || (user.value?.id ? `/api/avatar/${user.value.id}` : null)
+    const avatarUrl = computed(
+        () => user.value?.avatarUrl || (user.value?.id ? `/api/avatar/${user.value.id}` : null)
     );
 
     return {

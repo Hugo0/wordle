@@ -20,7 +20,10 @@ export default defineEventHandler(async (event) => {
         }
         // Only allow letters, numbers, spaces, hyphens, underscores, periods
         if (!/^[\p{L}\p{N}\s\-_.]+$/u.test(name)) {
-            throw createError({ statusCode: 400, message: 'Name can only contain letters, numbers, spaces, hyphens, and underscores' });
+            throw createError({
+                statusCode: 400,
+                message: 'Name can only contain letters, numbers, spaces, hyphens, and underscores',
+            });
         }
         // No consecutive spaces or leading/trailing special chars
         if (/\s{2,}/.test(name) || /^[\-_.]|[\-_.]$/.test(name)) {

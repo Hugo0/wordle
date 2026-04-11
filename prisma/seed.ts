@@ -16,7 +16,7 @@ const adapter = new PrismaPg(pool, { schema: 'wordle' });
 const prisma = new PrismaClient({ adapter });
 
 const BADGES = [
-    // Milestones
+    // ─── Milestones (one-off, no group) ───
     {
         slug: 'first-blood',
         name: 'First Blood',
@@ -24,6 +24,7 @@ const BADGES = [
         category: 'milestone',
         threshold: 1,
         icon: 'Sword',
+        group: null,
     },
     {
         slug: 'perfect-game',
@@ -32,6 +33,7 @@ const BADGES = [
         category: 'milestone',
         threshold: 0,
         icon: 'Star',
+        group: null,
     },
     {
         slug: 'persistence',
@@ -40,16 +42,27 @@ const BADGES = [
         category: 'milestone',
         threshold: 0,
         icon: 'Target',
+        group: null,
     },
 
-    // Polyglot
+    // ─── Polyglot series (group: polyglot) ───
+    {
+        slug: 'polyglot-2',
+        name: 'Bilingual',
+        description: 'Win in 2 different languages',
+        category: 'polyglot',
+        threshold: 2,
+        icon: 'Globe',
+        group: 'polyglot',
+    },
     {
         slug: 'polyglot-5',
-        name: 'Polyglot I',
+        name: 'Polyglot',
         description: 'Win in 5 different languages',
         category: 'polyglot',
         threshold: 5,
         icon: 'Globe',
+        group: 'polyglot',
     },
     {
         slug: 'polyglot-10',
@@ -58,6 +71,7 @@ const BADGES = [
         category: 'polyglot',
         threshold: 10,
         icon: 'Globe',
+        group: 'polyglot',
     },
     {
         slug: 'polyglot-20',
@@ -66,6 +80,7 @@ const BADGES = [
         category: 'polyglot',
         threshold: 20,
         icon: 'Globe',
+        group: 'polyglot',
     },
     {
         slug: 'polyglot-40',
@@ -74,17 +89,28 @@ const BADGES = [
         category: 'polyglot',
         threshold: 40,
         icon: 'Globe',
+        group: 'polyglot',
     },
     {
         slug: 'polyglot-80',
-        name: 'Polyglot V',
+        name: 'World Linguist',
         description: 'Win in all 80 languages',
         category: 'polyglot',
         threshold: 80,
         icon: 'Crown',
+        group: 'polyglot',
     },
 
-    // Streaks
+    // ─── Streak series (group: streak) ───
+    {
+        slug: 'streak-3',
+        name: 'Getting Started',
+        description: '3-day daily streak',
+        category: 'streak',
+        threshold: 3,
+        icon: 'Flame',
+        group: 'streak',
+    },
     {
         slug: 'streak-7',
         name: 'Week Warrior',
@@ -92,6 +118,7 @@ const BADGES = [
         category: 'streak',
         threshold: 7,
         icon: 'Flame',
+        group: 'streak',
     },
     {
         slug: 'streak-30',
@@ -100,6 +127,7 @@ const BADGES = [
         category: 'streak',
         threshold: 30,
         icon: 'Flame',
+        group: 'streak',
     },
     {
         slug: 'streak-100',
@@ -108,6 +136,7 @@ const BADGES = [
         category: 'streak',
         threshold: 100,
         icon: 'Flame',
+        group: 'streak',
     },
     {
         slug: 'streak-365',
@@ -116,9 +145,19 @@ const BADGES = [
         category: 'streak',
         threshold: 365,
         icon: 'Trophy',
+        group: 'streak',
     },
 
-    // Mode mastery
+    // ─── Mode mastery (group: mode) ───
+    {
+        slug: 'mode-master-10',
+        name: 'Dedicated',
+        description: 'Win 10 games in any single mode',
+        category: 'mode',
+        threshold: 10,
+        icon: 'Zap',
+        group: 'mode',
+    },
     {
         slug: 'mode-master',
         name: 'Mode Master',
@@ -126,9 +165,10 @@ const BADGES = [
         category: 'mode',
         threshold: 50,
         icon: 'Zap',
+        group: 'mode',
     },
 
-    // Special
+    // ─── Special (one-off, no group) ───
     {
         slug: 'daily-completionist',
         name: 'Daily Completionist',
@@ -136,6 +176,7 @@ const BADGES = [
         category: 'special',
         threshold: 0,
         icon: 'CalendarCheck',
+        group: null,
     },
     {
         slug: 'language-conqueror',
@@ -144,6 +185,7 @@ const BADGES = [
         category: 'special',
         threshold: 10,
         icon: 'Map',
+        group: null,
     },
     {
         slug: 'the-impossible',
@@ -152,6 +194,7 @@ const BADGES = [
         category: 'special',
         threshold: 0,
         icon: 'Crown',
+        group: null,
     },
 ];
 
@@ -168,6 +211,7 @@ async function main() {
                 category: badge.category,
                 threshold: badge.threshold,
                 icon: badge.icon,
+                group: badge.group,
             },
         });
     }

@@ -22,7 +22,9 @@ if (error.value || !pageData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
 
-const { data: gameData } = await useFetch(`/api/${lang}/data?minimal=1`, { key: `lang-data-min-${lang}` });
+const { data: gameData } = await useFetch(`/api/${lang}/data?minimal=1`, {
+    key: `lang-data-min-${lang}`,
+});
 const config = gameData.value?.config;
 const langName = pageData.value.lang_name;
 const langNative = pageData.value.lang_name_native;
@@ -116,7 +118,6 @@ useHead({
         },
     ],
 });
-
 </script>
 
 <template>

@@ -68,8 +68,7 @@ export function useSync() {
 
                 const statsKey = buildStatsKey(game.gameConfig);
                 const lang = useLanguageStore();
-                const dayIdx =
-                    game.gameConfig.playType === 'daily' ? lang.todaysIdx : undefined;
+                const dayIdx = game.gameConfig.playType === 'daily' ? lang.todaysIdx : undefined;
 
                 const requestBody = {
                     statsKey,
@@ -101,11 +100,7 @@ export function useSync() {
 
         // Speed results: watch the stats store's speedResults for new entries
         watch(
-            () =>
-                Object.values(stats.speedResults).reduce(
-                    (sum, arr) => sum + arr.length,
-                    0
-                ),
+            () => Object.values(stats.speedResults).reduce((sum, arr) => sum + arr.length, 0),
             (newCount) => {
                 if (!loggedIn.value || newCount <= prevSpeedCount) {
                     prevSpeedCount = newCount;
@@ -114,8 +109,10 @@ export function useSync() {
                 prevSpeedCount = newCount;
 
                 // Find the most recent speed result across all languages
-                let latest: { lang: string; result: (typeof stats.speedResults)[string][number] } | null =
-                    null;
+                let latest: {
+                    lang: string;
+                    result: (typeof stats.speedResults)[string][number];
+                } | null = null;
                 for (const [lang, results] of Object.entries(stats.speedResults)) {
                     if (results.length > 0) {
                         const last = results[results.length - 1]!;
@@ -178,7 +175,8 @@ export function useSync() {
                             feedbackEnabled: settings.feedbackEnabled,
                             wordInfoEnabled: settings.wordInfoEnabled,
                             animationsEnabled: settings.animationsEnabled,
-                            preferredLanguage: localStorage.getItem(STORAGE_KEYS.PREFERRED_LANGUAGE) || undefined,
+                            preferredLanguage:
+                                localStorage.getItem(STORAGE_KEYS.PREFERRED_LANGUAGE) || undefined,
                         },
                     }).catch(() => {});
                 }, 1000);
@@ -194,9 +192,12 @@ export function useSync() {
         const pending = getPendingQueue();
         if (pending.length > 0) {
             clearPendingQueue();
+            const maxAge = 24 * 60 * 60 * 1000; // Drop items older than 24h
             for (const item of pending) {
-                $fetch(item.endpoint, { method: 'POST', body: item.body }).catch(() => {
-                    // Re-queue if still failing
+                if (Date.now() - new Date(item.addedAt).getTime() > maxAge) continue;
+                $fetch(item.endpoint, { method: 'POST', body: item.body }).catch((err: any) => {
+                    // Only re-queue on network errors, not 4xx (permanent failures)
+                    if (err?.response?.status && err.response.status < 500) return;
                     addToPendingQueue(item);
                 });
             }

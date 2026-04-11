@@ -26,9 +26,7 @@ export function usePlayType(mode: GameMode) {
 
     // Read stored preference once at setup time — not inside computed
     // (avoids synchronous localStorage read on every reactive evaluation).
-    const storedPref = import.meta.client
-        ? readLocal(`${STORAGE_PREFIX}${mode}`)
-        : null;
+    const storedPref = import.meta.client ? readLocal(`${STORAGE_PREFIX}${mode}`) : null;
 
     const playType = computed<PlayType>(() => {
         // Explicit URL param takes priority
@@ -40,7 +38,11 @@ export function usePlayType(mode: GameMode) {
             return 'daily';
         }
         // No explicit param — use stored preference or default
-        if (!raw && storedPref === 'unlimited' && modeDef.supportedPlayTypes.includes('unlimited')) {
+        if (
+            !raw &&
+            storedPref === 'unlimited' &&
+            modeDef.supportedPlayTypes.includes('unlimited')
+        ) {
             return 'unlimited';
         }
         return modeDef.defaultPlayType;
@@ -50,8 +52,9 @@ export function usePlayType(mode: GameMode) {
     const isUnlimited = computed(() => playType.value === 'unlimited');
 
     /** Whether this mode supports both daily AND unlimited */
-    const hasBothPlayTypes = modeDef.supportedPlayTypes.includes('daily')
-        && modeDef.supportedPlayTypes.includes('unlimited');
+    const hasBothPlayTypes =
+        modeDef.supportedPlayTypes.includes('daily') &&
+        modeDef.supportedPlayTypes.includes('unlimited');
 
     /** Navigate to the other play type */
     function switchPlayType(newType: PlayType) {

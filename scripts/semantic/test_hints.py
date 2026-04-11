@@ -55,29 +55,29 @@ MIN_AUC = 0.80
 # Feel free to edit; the script reads this list if no --pairs file is given.
 DEFAULT_PAIRS: list[tuple[str, str]] = [
     # Obvious directions — should pick clean axes
-    ("whale",    "mouse"),      # size: much bigger
-    ("whale",    "shark"),      # closer, maybe habitat/predator
-    ("fire",     "ice"),        # opposite temperature
-    ("diamond",  "pebble"),     # value + hardness
-    ("forest",   "desert"),     # wetness + life density
+    ("whale", "mouse"),  # size: much bigger
+    ("whale", "shark"),  # closer, maybe habitat/predator
+    ("fire", "ice"),  # opposite temperature
+    ("diamond", "pebble"),  # value + hardness
+    ("forest", "desert"),  # wetness + life density
     # Subtler shifts
-    ("cathedral","hut"),        # formality, scale, grandeur
-    ("laptop",   "abacus"),     # age, complexity
-    ("tiger",    "kitten"),     # size + danger
-    ("hurricane","breeze"),     # intensity
-    ("justice",  "freedom"),    # both abstract, both positive — hard case
+    ("cathedral", "hut"),  # formality, scale, grandeur
+    ("laptop", "abacus"),  # age, complexity
+    ("tiger", "kitten"),  # size + danger
+    ("hurricane", "breeze"),  # intensity
+    ("justice", "freedom"),  # both abstract, both positive — hard case
     # Close neighbours
-    ("piano",    "guitar"),     # both instruments
-    ("doctor",   "nurse"),      # both medical
-    ("river",    "lake"),       # both water
+    ("piano", "guitar"),  # both instruments
+    ("doctor", "nurse"),  # both medical
+    ("river", "lake"),  # both water
     # Cross-category jumps
-    ("velvet",   "sandpaper"),  # texture
-    ("library",  "stadium"),    # loudness, formality
-    ("snail",    "cheetah"),    # speed
-    ("whisper",  "scream"),     # loudness
-    ("honey",    "vinegar"),    # taste
-    ("baby",     "corpse"),     # alive
-    ("mansion",  "tent"),       # permanence, luxury
+    ("velvet", "sandpaper"),  # texture
+    ("library", "stadium"),  # loudness, formality
+    ("snail", "cheetah"),  # speed
+    ("whisper", "scream"),  # loudness
+    ("honey", "vinegar"),  # taste
+    ("baby", "corpse"),  # alive
+    ("mansion", "tent"),  # permanence, luxury
 ]
 
 
@@ -99,7 +99,9 @@ def load_axes() -> list[Axis]:
         if auc < MIN_AUC:
             continue
         vec = np.asarray(rec["vector"], dtype=np.float32)
-        axes.append(Axis(name=name, low=rec["low_anchor"], high=rec["high_anchor"], vector=vec, auc=auc))
+        axes.append(
+            Axis(name=name, low=rec["low_anchor"], high=rec["high_anchor"], vector=vec, auc=auc)
+        )
     return axes
 
 
@@ -138,7 +140,9 @@ class SelectionResult:
     total_explained: float
 
 
-def select_hints(target_vec: np.ndarray, guess_vec: np.ndarray, axes: list[Axis]) -> SelectionResult:
+def select_hints(
+    target_vec: np.ndarray, guess_vec: np.ndarray, axes: list[Axis]
+) -> SelectionResult:
     """Iterative Gram-Schmidt matching pursuit with signal floors.
 
     Mirrors server/utils/semantic.ts::computeCompass exactly so this script
@@ -149,7 +153,7 @@ def select_hints(target_vec: np.ndarray, guess_vec: np.ndarray, axes: list[Axis]
     r_norm_sq = float(np.dot(r, r))
 
     if r_norm_sq < COMPASS_MIN_R_NORM_SQ:
-        return SelectionResult(status='close', hints=[], total_explained=0.0)
+        return SelectionResult(status="close", hints=[], total_explained=0.0)
 
     # Score every axis independently
     scored = []
@@ -188,7 +192,7 @@ def select_hints(target_vec: np.ndarray, guess_vec: np.ndarray, axes: list[Axis]
 
         # Per-axis floor
         if iteration == 0 and orth_explained < COMPASS_PER_AXIS_FLOOR:
-            return SelectionResult(status='close', hints=[], total_explained=0.0)
+            return SelectionResult(status="close", hints=[], total_explained=0.0)
         if orth_explained < COMPASS_PER_AXIS_FLOOR:
             break
 
@@ -208,12 +212,12 @@ def select_hints(target_vec: np.ndarray, guess_vec: np.ndarray, axes: list[Axis]
 
     # Pair-level floor: one axis alone must clear the pair floor
     if len(picked) == 1 and total_explained < COMPASS_PAIR_FLOOR:
-        return SelectionResult(status='close', hints=[], total_explained=total_explained)
+        return SelectionResult(status="close", hints=[], total_explained=total_explained)
 
     if not picked:
-        return SelectionResult(status='close', hints=[], total_explained=0.0)
+        return SelectionResult(status="close", hints=[], total_explained=0.0)
 
-    return SelectionResult(status='ok', hints=picked, total_explained=total_explained)
+    return SelectionResult(status="ok", hints=picked, total_explained=total_explained)
 
 
 def magnitude_tier(delta: float, r_norm: float) -> str:
@@ -260,8 +264,12 @@ def explained_fraction(r: np.ndarray, a1: Axis, a2: Axis) -> float:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--pairs", type=Path, help="JSON file with custom [[target,guess], ...] pairs")
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--pairs", type=Path, help="JSON file with custom [[target,guess], ...] pairs"
+    )
     parser.add_argument("--out", type=Path, default=DEFAULT_REPORT, help="Markdown report output")
     args = parser.parse_args()
 
@@ -277,10 +285,7 @@ def main() -> int:
     print("Loading embeddings...")
     word_to_vec = load_embeddings()
 
-    if args.pairs:
-        pairs = [tuple(p) for p in json.loads(args.pairs.read_text())]
-    else:
-        pairs = DEFAULT_PAIRS
+    pairs = [tuple(p) for p in json.loads(args.pairs.read_text())] if args.pairs else DEFAULT_PAIRS
 
     # Fetch any missing word embeddings on demand
     needed = sorted({w for pair in pairs for w in pair})
@@ -292,9 +297,13 @@ def main() -> int:
     lines: list[str] = []
     lines.append("# Semantic Explorer — Hint Sanity Report\n")
     lines.append(f"Axes available: **{len(axes)}** (AUC filter >= {MIN_AUC})  ")
-    lines.append(f"Selector: Gram-Schmidt residual, (a·r)² scoring in raw embedding space  \n")
-    lines.append("For each (target, guess) pair: the 2 axes chosen + the prose that would be shown. ")
-    lines.append("`explained` = fraction of `target − guess` captured by the 2D subspace (higher = more informative pair).\n\n")
+    lines.append("Selector: Gram-Schmidt residual, (a·r)² scoring in raw embedding space  \n")
+    lines.append(
+        "For each (target, guess) pair: the 2 axes chosen + the prose that would be shown. "
+    )
+    lines.append(
+        "`explained` = fraction of `target − guess` captured by the 2D subspace (higher = more informative pair).\n\n"
+    )
     lines.append("---\n\n")
 
     ok_count = 0
@@ -311,19 +320,19 @@ def main() -> int:
 
         lines.append(f"## Target: **{target}** · Guess: *{guess}*\n\n")
 
-        if result.status == 'close':
+        if result.status == "close":
             close_count += 1
             lines.append(
                 f"- `‖target − guess‖ = {r_norm:.3f}`  ·  **status: close** "
-                f"(total explained = {result.total_explained*100:.1f}%)\n"
+                f"(total explained = {result.total_explained * 100:.1f}%)\n"
             )
-            lines.append("- *fallback: \"you're in the neighbourhood\"*\n\n")
+            lines.append('- *fallback: "you\'re in the neighbourhood"*\n\n')
             continue
 
         ok_count += 1
         lines.append(
             f"- `‖target − guess‖ = {r_norm:.3f}`  ·  "
-            f"`explained = {result.total_explained*100:.1f}%`\n"
+            f"`explained = {result.total_explained * 100:.1f}%`\n"
         )
         for axis, delta, _expl in result.hints:
             lines.append(f"- {format_hint(axis, delta, r_norm)}\n")

@@ -118,19 +118,66 @@ SEMANTIC_AXES: dict[str, dict[str, str]] = {
 # Hand-picked diverse targets across semantic categories. Used as the "daily" pool for PoC.
 HAND_PICKED_TARGETS: list[str] = [
     # Everyday objects
-    "candle", "lamp", "chair", "mirror", "clock", "pillow", "umbrella", "basket",
+    "candle",
+    "lamp",
+    "chair",
+    "mirror",
+    "clock",
+    "pillow",
+    "umbrella",
+    "basket",
     # Food
-    "apple", "bread", "honey", "cheese", "pepper", "coffee", "lemon", "chocolate",
+    "apple",
+    "bread",
+    "honey",
+    "cheese",
+    "pepper",
+    "coffee",
+    "lemon",
+    "chocolate",
     # Nature
-    "ocean", "mountain", "forest", "river", "desert", "cloud", "storm", "meadow",
+    "ocean",
+    "mountain",
+    "forest",
+    "river",
+    "desert",
+    "cloud",
+    "storm",
+    "meadow",
     # Animals
-    "tiger", "eagle", "dolphin", "rabbit", "butterfly", "whale", "spider", "horse",
+    "tiger",
+    "eagle",
+    "dolphin",
+    "rabbit",
+    "butterfly",
+    "whale",
+    "spider",
+    "horse",
     # Tools/tech
-    "hammer", "needle", "camera", "computer", "bicycle", "telescope", "anchor", "compass",
+    "hammer",
+    "needle",
+    "camera",
+    "computer",
+    "bicycle",
+    "telescope",
+    "anchor",
+    "compass",
     # Body/emotion
-    "heart", "laughter", "sleep", "dream", "anger", "patience", "courage", "fear",
+    "heart",
+    "laughter",
+    "sleep",
+    "dream",
+    "anger",
+    "patience",
+    "courage",
+    "fear",
     # Abstract
-    "freedom", "justice", "chaos", "silence", "memory", "time",
+    "freedom",
+    "justice",
+    "chaos",
+    "silence",
+    "memory",
+    "time",
 ]
 
 
@@ -144,27 +191,191 @@ COHERENCE_TESTS: dict[str, dict[str, list[str]]] = {}
 # English stopwords + function words to exclude from the PoC vocabulary.
 # These words aren't fun game guesses (no semantic content).
 STOPWORDS = {
-    "the", "to", "and", "of", "a", "in", "i", "is", "for", "that", "you", "it",
-    "on", "with", "this", "was", "be", "as", "are", "have", "not", "but", "or",
-    "at", "by", "from", "they", "we", "he", "she", "his", "her", "their", "my",
-    "your", "our", "its", "them", "me", "us", "an", "had", "has", "were", "been",
-    "being", "do", "does", "did", "doing", "will", "would", "should", "could",
-    "may", "might", "must", "can", "shall", "what", "which", "who", "whom",
-    "whose", "when", "where", "why", "how", "all", "each", "every", "both",
-    "few", "more", "most", "other", "some", "such", "no", "nor", "only", "own",
-    "same", "so", "than", "too", "very", "just", "also", "out", "up", "down",
-    "into", "off", "over", "under", "again", "then", "once", "here", "there",
-    "if", "because", "while", "through", "during", "before", "after", "above",
-    "below", "between", "about", "against", "any", "one", "two", "three",
-    "first", "last", "next", "new", "old", "much", "many", "lot", "back",
-    "get", "got", "go", "going", "come", "came", "see", "saw", "know", "knew",
-    "think", "thought", "take", "took", "make", "made", "give", "gave", "put",
-    "use", "used", "find", "found", "say", "said", "tell", "told", "ask", "asked",
-    "mr", "mrs", "ms", "dr", "st", "etc", "ie", "eg", "vs",
+    "the",
+    "to",
+    "and",
+    "of",
+    "a",
+    "in",
+    "i",
+    "is",
+    "for",
+    "that",
+    "you",
+    "it",
+    "on",
+    "with",
+    "this",
+    "was",
+    "be",
+    "as",
+    "are",
+    "have",
+    "not",
+    "but",
+    "or",
+    "at",
+    "by",
+    "from",
+    "they",
+    "we",
+    "he",
+    "she",
+    "his",
+    "her",
+    "their",
+    "my",
+    "your",
+    "our",
+    "its",
+    "them",
+    "me",
+    "us",
+    "an",
+    "had",
+    "has",
+    "were",
+    "been",
+    "being",
+    "do",
+    "does",
+    "did",
+    "doing",
+    "will",
+    "would",
+    "should",
+    "could",
+    "may",
+    "might",
+    "must",
+    "can",
+    "shall",
+    "what",
+    "which",
+    "who",
+    "whom",
+    "whose",
+    "when",
+    "where",
+    "why",
+    "how",
+    "all",
+    "each",
+    "every",
+    "both",
+    "few",
+    "more",
+    "most",
+    "other",
+    "some",
+    "such",
+    "no",
+    "nor",
+    "only",
+    "own",
+    "same",
+    "so",
+    "than",
+    "too",
+    "very",
+    "just",
+    "also",
+    "out",
+    "up",
+    "down",
+    "into",
+    "off",
+    "over",
+    "under",
+    "again",
+    "then",
+    "once",
+    "here",
+    "there",
+    "if",
+    "because",
+    "while",
+    "through",
+    "during",
+    "before",
+    "after",
+    "above",
+    "below",
+    "between",
+    "about",
+    "against",
+    "any",
+    "one",
+    "two",
+    "three",
+    "first",
+    "last",
+    "next",
+    "new",
+    "old",
+    "much",
+    "many",
+    "lot",
+    "back",
+    "get",
+    "got",
+    "go",
+    "going",
+    "come",
+    "came",
+    "see",
+    "saw",
+    "know",
+    "knew",
+    "think",
+    "thought",
+    "take",
+    "took",
+    "make",
+    "made",
+    "give",
+    "gave",
+    "put",
+    "use",
+    "used",
+    "find",
+    "found",
+    "say",
+    "said",
+    "tell",
+    "told",
+    "ask",
+    "asked",
+    "mr",
+    "mrs",
+    "ms",
+    "dr",
+    "st",
+    "etc",
+    "ie",
+    "eg",
+    "vs",
     # Generic vague nouns with no distinguishing semantics
-    "thing", "things", "way", "ways", "time", "times", "people", "person",
-    "something", "someone", "anything", "anyone", "everything", "everyone",
-    "nothing", "nobody", "somewhere", "anywhere", "everywhere", "nowhere",
+    "thing",
+    "things",
+    "way",
+    "ways",
+    "time",
+    "times",
+    "people",
+    "person",
+    "something",
+    "someone",
+    "anything",
+    "anyone",
+    "everything",
+    "everyone",
+    "nothing",
+    "nobody",
+    "somewhere",
+    "anywhere",
+    "everywhere",
+    "nowhere",
 }
 
 
@@ -365,10 +576,7 @@ def curate_targets_with_llm(
     )
     for i in range(0, len(candidates), batch_size):
         batch = candidates[i : i + batch_size]
-        prompt = (
-            f"{instructions}\n\nCandidates (batch {i // batch_size + 1}):\n"
-            + ", ".join(batch)
-        )
+        prompt = f"{instructions}\n\nCandidates (batch {i // batch_size + 1}):\n" + ", ".join(batch)
         for attempt in range(3):
             try:
                 resp = client.chat.completions.create(
@@ -464,13 +672,30 @@ def run_umap(embeddings_matrix: np.ndarray, n_neighbors: int = 15) -> np.ndarray
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--vocab-size", type=int, default=10000, help="Top N words by frequency to include")
-    parser.add_argument("--target-pool", type=int, default=1000, help="Number of LLM-curated target words")
-    parser.add_argument("--target-candidates", type=int, default=5000, help="Top-N candidates sent to LLM for curation")
-    parser.add_argument("--dry-run", action="store_true", help="Skip OpenAI API call and UMAP, print plan only")
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--vocab-size", type=int, default=10000, help="Top N words by frequency to include"
+    )
+    parser.add_argument(
+        "--target-pool", type=int, default=1000, help="Number of LLM-curated target words"
+    )
+    parser.add_argument(
+        "--target-candidates",
+        type=int,
+        default=5000,
+        help="Top-N candidates sent to LLM for curation",
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Skip OpenAI API call and UMAP, print plan only"
+    )
     parser.add_argument("--force", action="store_true", help="Overwrite existing output files")
-    parser.add_argument("--skip-targets", action="store_true", help="Reuse existing targets.json (skip LLM curation)")
+    parser.add_argument(
+        "--skip-targets",
+        action="store_true",
+        help="Reuse existing targets.json (skip LLM curation)",
+    )
     parser.add_argument(
         "--reuse-embeddings",
         action="store_true",
@@ -496,10 +721,14 @@ def main() -> int:
         "vocab": DATA_DIR / "vocabulary.json",
         "percentiles": DATA_DIR / "percentiles.json",
     }
-    if not args.force and not args.reuse_embeddings and all(
-        p.exists() for p in output_files.values()
+    if (
+        not args.force
+        and not args.reuse_embeddings
+        and all(p.exists() for p in output_files.values())
     ):
-        print("All output files already exist. Use --force to regenerate or --reuse-embeddings to only refresh targets/percentiles.")
+        print(
+            "All output files already exist. Use --force to regenerate or --reuse-embeddings to only refresh targets/percentiles."
+        )
         return 0
 
     # api_key is guaranteed non-None here because the earlier guard returns
@@ -531,9 +760,7 @@ def main() -> int:
         # L2-normalize each row so cosine = dot product
         matrix = normalize_rows(matrix)
 
-    embeddings_dict: dict[str, np.ndarray] = {
-        word: matrix[i] for i, word in enumerate(words)
-    }
+    embeddings_dict: dict[str, np.ndarray] = {word: matrix[i] for i, word in enumerate(words)}
 
     # When reusing embeddings, skip the axes/UMAP recomputation entirely —
     # those derived outputs are unchanged.
@@ -565,7 +792,9 @@ def main() -> int:
         # Binary .f32: raw Float32Array dump (50001 × 512 × 4 bytes ≈ 100MB)
         # Sub-second load time vs ~4s for JSON.parse on 230MB.
         matrix.astype(np.float32).tofile(output_files["embeddings_f32"])
-        print(f"  {output_files['embeddings_f32']} ({output_files['embeddings_f32'].stat().st_size // 1024} KB)")
+        print(
+            f"  {output_files['embeddings_f32']} ({output_files['embeddings_f32'].stat().st_size // 1024} KB)"
+        )
 
         # Meta JSON: word list + metadata (no vectors), ~500KB
         with open(output_files["embeddings_meta"], "w") as f:
@@ -581,7 +810,9 @@ def main() -> int:
                 },
                 f,
             )
-        print(f"  {output_files['embeddings_meta']} ({output_files['embeddings_meta'].stat().st_size // 1024} KB)")
+        print(
+            f"  {output_files['embeddings_meta']} ({output_files['embeddings_meta'].stat().st_size // 1024} KB)"
+        )
 
         # Legacy JSON (kept for debugging — can be removed once binary is stable)
         with open(output_files["embeddings"], "w") as f:
@@ -594,7 +825,9 @@ def main() -> int:
                 },
                 f,
             )
-        print(f"  {output_files['embeddings']} ({output_files['embeddings'].stat().st_size // 1024} KB)")
+        print(
+            f"  {output_files['embeddings']} ({output_files['embeddings'].stat().st_size // 1024} KB)"
+        )
 
         with open(output_files["axes"], "w") as f:
             json.dump(
@@ -614,7 +847,10 @@ def main() -> int:
                 {
                     "version": 1,
                     "coordinates": {
-                        word: [round(float(umap_coords[i, 0]), 4), round(float(umap_coords[i, 1]), 4)]
+                        word: [
+                            round(float(umap_coords[i, 0]), 4),
+                            round(float(umap_coords[i, 1]), 4),
+                        ]
                         for i, word in enumerate(words)
                     },
                 },
@@ -655,14 +891,23 @@ def main() -> int:
     # Per-target percentile distributions — kept as a reference artifact for
     # potential future use (e.g., alternative stretch curves). Runtime uses
     # rank-based scoring instead.
-    print(f"\nComputing per-target percentile distributions ({len(valid_targets)} targets × {len(words)} vocab)...")
+    print(
+        f"\nComputing per-target percentile distributions ({len(valid_targets)} targets × {len(words)} vocab)..."
+    )
     percentiles = compute_target_percentiles(embeddings_dict, valid_targets, bins=100)
     with open(output_files["percentiles"], "w") as f:
         json.dump(
-            {"version": 1, "bins": 100, "model": f"{EMBEDDING_MODEL}-{EMBEDDING_DIMS}", "targets": percentiles},
+            {
+                "version": 1,
+                "bins": 100,
+                "model": f"{EMBEDDING_MODEL}-{EMBEDDING_DIMS}",
+                "targets": percentiles,
+            },
             f,
         )
-    print(f"  {output_files['percentiles']} ({output_files['percentiles'].stat().st_size // 1024} KB)")
+    print(
+        f"  {output_files['percentiles']} ({output_files['percentiles'].stat().st_size // 1024} KB)"
+    )
 
     print(f"\nDone. Files in {DATA_DIR}")
     return 0

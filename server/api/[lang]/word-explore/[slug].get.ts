@@ -29,10 +29,7 @@ export default defineEventHandler(async (event) => {
     const lang = getRouterParam(event, 'lang')!;
     const slug = decodeURIComponent(getRouterParam(event, 'slug')!);
     const query = getQuery(event);
-    const relativeTo =
-        typeof query.relativeTo === 'string'
-            ? query.relativeTo.toLowerCase()
-            : null;
+    const relativeTo = typeof query.relativeTo === 'string' ? query.relativeTo.toLowerCase() : null;
 
     const data = loadAllData();
     if (!data.languageCodes.includes(lang)) {

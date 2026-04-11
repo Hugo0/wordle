@@ -38,9 +38,7 @@ function rankColor(rank: number): string {
     return 'text-muted';
 }
 
-const sortedGuesses = computed(() =>
-    [...props.guesses].sort((a, b) => a.rank - b.rank)
-);
+const sortedGuesses = computed(() => [...props.guesses].sort((a, b) => a.rank - b.rank));
 const bestRank = computed(() => {
     if (!props.guesses.length) return null;
     return Math.min(...props.guesses.map((g) => g.rank));
@@ -85,7 +83,9 @@ const bestRank = computed(() => {
             <!-- Key stats -->
             <div class="stat-row">
                 <div class="stat-cell">
-                    <div class="stat-number">{{ guesses.length }}<span class="stat-denom">/{{ guessesMax }}</span></div>
+                    <div class="stat-number">
+                        {{ guesses.length }}<span class="stat-denom">/{{ guessesMax }}</span>
+                    </div>
                     <div class="mono-label">Guesses</div>
                 </div>
                 <div class="stat-cell">
@@ -126,11 +126,7 @@ const bestRank = computed(() => {
             <div class="section" v-if="neighbours.length">
                 <div class="mono-label section-label">Closest words you missed</div>
                 <div class="neighbour-grid">
-                    <span
-                        v-for="n in neighbours.slice(0, 8)"
-                        :key="n.word"
-                        class="neighbour-chip"
-                    >
+                    <span v-for="n in neighbours.slice(0, 8)" :key="n.word" class="neighbour-chip">
                         {{ n.word }}
                         <span class="chip-sim">#{{ n.rank }}</span>
                     </span>

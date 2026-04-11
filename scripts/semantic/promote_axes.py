@@ -80,12 +80,23 @@ def fetch_missing(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--from", dest="source", type=Path, default=DEFAULT_SELECTED,
-                        help="Source selected-axes JSON (default: axis_selected.json)")
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--from",
+        dest="source",
+        type=Path,
+        default=DEFAULT_SELECTED,
+        help="Source selected-axes JSON (default: axis_selected.json)",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Print plan, don't write axes.json")
-    parser.add_argument("--min-auc", type=float, default=0.80,
-                        help="Drop axes whose discovered AUC is below this (default: 0.80 to match runtime filter)")
+    parser.add_argument(
+        "--min-auc",
+        type=float,
+        default=0.80,
+        help="Drop axes whose discovered AUC is below this (default: 0.80 to match runtime filter)",
+    )
     args = parser.parse_args()
 
     load_dotenv(REPO_ROOT / ".env")
@@ -123,7 +134,10 @@ def main() -> int:
         anchors_needed.add(a["high"])
     missing = sorted(anchors_needed - set(words))
     if missing:
-        print(f"  {len(missing)} anchor(s) not in embedding cache: {', '.join(missing[:5])}" + (" ..." if len(missing) > 5 else ""))
+        print(
+            f"  {len(missing)} anchor(s) not in embedding cache: {', '.join(missing[:5])}"
+            + (" ..." if len(missing) > 5 else "")
+        )
 
     if args.dry_run:
         print("\n[dry run] Would fetch missing anchors + write axes.json")

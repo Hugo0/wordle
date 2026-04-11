@@ -96,9 +96,7 @@ const mapDots = computed<MapDot[]>(() => {
     for (const w of props.contextWords) {
         const cd = props.contextData[w];
         if (!cd?.explore || !cd.basic?.word) continue;
-        const projs = Object.fromEntries(
-            cd.explore.projections.map((x) => [x.axis, x.normalized])
-        );
+        const projs = Object.fromEntries(cd.explore.projections.map((x) => [x.axis, x.normalized]));
         dots.push({
             word: cd.basic.word,
             pos2d: cd.explore.umap ?? [0.5, 0.5],
@@ -148,9 +146,7 @@ const bestAxes = computed(() => allHighQualityAxes.value.slice(0, TOP_AXIS_COUNT
 const showAllAxes = ref(false);
 // Always include the active axis pair in visible set even when collapsed
 const visibleAxes = computed<ScoredAxis[]>(() => {
-    const base = showAllAxes.value
-        ? allHighQualityAxes.value
-        : bestAxes.value;
+    const base = showAllAxes.value ? allHighQualityAxes.value : bestAxes.value;
     if (!sliceAxes.value) return base;
     // Ensure both active + partner are visible even if not in top 6
     const baseNames = new Set(base.map((a) => a.name));
@@ -213,7 +209,8 @@ function selectAxisPair(clickedAxis: string) {
         const n = axis1Vals.length;
         const mean1 = axis1Vals.reduce((a, b) => a + b, 0) / n;
         const mean2 = axis2Vals.reduce((a, b) => a + b, 0) / n;
-        let cov = 0, var1 = 0;
+        let cov = 0,
+            var1 = 0;
         for (let i = 0; i < n; i++) {
             const d1 = axis1Vals[i]! - mean1;
             const d2 = axis2Vals[i]! - mean2;
@@ -224,7 +221,7 @@ function selectAxisPair(clickedAxis: string) {
         const beta = var1 > 0 ? cov / var1 : 0;
         let residualVar = 0;
         for (let i = 0; i < n; i++) {
-            const residual = (axis2Vals[i]! - mean2) - beta * (axis1Vals[i]! - mean1);
+            const residual = axis2Vals[i]! - mean2 - beta * (axis1Vals[i]! - mean1);
             residualVar += residual * residual;
         }
         residualVar /= n;
@@ -256,9 +253,7 @@ watch(
     }
 );
 
-const primaryUmap = computed<[number, number]>(() =>
-    props.primary.explore?.umap ?? [0.5, 0.5]
-);
+const primaryUmap = computed<[number, number]>(() => props.primary.explore?.umap ?? [0.5, 0.5]);
 const canShowMap = computed(() => mapDots.value.length >= 1);
 </script>
 
@@ -332,11 +327,7 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
 
         <div class="context-row">
             <span class="context-label">also showing</span>
-            <span
-                v-for="w in contextWords"
-                :key="w"
-                class="context-chip"
-            >
+            <span v-for="w in contextWords" :key="w" class="context-chip">
                 {{ w }}
                 <button
                     type="button"

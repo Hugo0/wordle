@@ -16,9 +16,7 @@ export function wordDetailPathOrIdx(
     lang: string,
     entry: { word?: string | null; day_idx: number }
 ): string {
-    return entry.word
-        ? wordDetailPath(lang, entry.word)
-        : `/${lang}/word/${entry.day_idx}`;
+    return entry.word ? wordDetailPath(lang, entry.word) : `/${lang}/word/${entry.day_idx}`;
 }
 
 export function wordDetailUrl(lang: string, word: string): string {

@@ -253,8 +253,14 @@ describe('buildSaveKey', () => {
 
 describe('round-trip: isDailyStatsKey matches daily configs', () => {
     const dailyModes: GameMode[] = [
-        'classic', 'speed', 'dordle', 'quordle', 'octordle',
-        'sedecordle', 'duotrigordle', 'semantic',
+        'classic',
+        'speed',
+        'dordle',
+        'quordle',
+        'octordle',
+        'sedecordle',
+        'duotrigordle',
+        'semantic',
     ];
 
     for (const mode of dailyModes) {
@@ -317,8 +323,13 @@ describe('round-trip: isClassicDailyStatsKey matches only classic daily 5-letter
     });
 
     const nonClassicModes: GameMode[] = [
-        'speed', 'dordle', 'quordle', 'octordle',
-        'sedecordle', 'duotrigordle', 'semantic',
+        'speed',
+        'dordle',
+        'quordle',
+        'octordle',
+        'sedecordle',
+        'duotrigordle',
+        'semantic',
     ];
 
     for (const mode of nonClassicModes) {

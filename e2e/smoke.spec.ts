@@ -31,7 +31,9 @@ test.describe('Page Load', () => {
         const board = page.locator('.game-board');
         await expect(board).toBeVisible();
         const boardHeight = await board.evaluate((el) => el.getBoundingClientRect().height);
-        expect(boardHeight, 'Game board should have real height, not squished').toBeGreaterThan(100);
+        expect(boardHeight, 'Game board should have real height, not squished').toBeGreaterThan(
+            100
+        );
 
         const keys = page.locator('button[data-char]');
         expect(await keys.count()).toBeGreaterThan(20);
@@ -186,7 +188,9 @@ test.describe('Game Board Layout', () => {
 
         const viewport = page.viewportSize()!;
         // Keyboard should be in the bottom half of the screen
-        expect(box!.y, 'Keyboard should be in lower portion').toBeGreaterThan(viewport.height * 0.4);
+        expect(box!.y, 'Keyboard should be in lower portion').toBeGreaterThan(
+            viewport.height * 0.4
+        );
     });
 
     test('board + keyboard both visible without scrolling', async ({ page }) => {

@@ -27,11 +27,7 @@ export interface AutoHeightOptions {
 }
 
 export function useAutoHeight(options: AutoHeightOptions = {}): { elRef: Ref<HTMLElement | null> } {
-    const {
-        duration = 250,
-        easing = 'cubic-bezier(0.22, 1, 0.36, 1)',
-        threshold = 4,
-    } = options;
+    const { duration = 250, easing = 'cubic-bezier(0.22, 1, 0.36, 1)', threshold = 4 } = options;
 
     const elRef = ref<HTMLElement | null>(null);
     let observer: ResizeObserver | null = null;
@@ -71,10 +67,11 @@ export function useAutoHeight(options: AutoHeightOptions = {}): { elRef: Ref<HTM
         el.style.overflow = 'clip';
 
         // Tween to new height
-        const anim = el.animate(
-            [{ height: `${oldHeight}px` }, { height: `${newHeight}px` }],
-            { duration, easing, fill: 'forwards' }
-        );
+        const anim = el.animate([{ height: `${oldHeight}px` }, { height: `${newHeight}px` }], {
+            duration,
+            easing,
+            fill: 'forwards',
+        });
 
         anim.onfinish = () => {
             // Release — let the element flow naturally

@@ -107,7 +107,7 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         description: '2 boards, 1 keyboard, 7 guesses.',
         routeSuffix: 'dordle',
         enabled: true,
-        
+
         shellMaxWidth: '2xl',
     },
     quordle: {
@@ -120,7 +120,7 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         description: '4 boards, 1 keyboard, 9 guesses.',
         routeSuffix: 'quordle',
         enabled: true,
-        
+
         shellMaxWidth: '4xl',
     },
     octordle: {
@@ -133,7 +133,7 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         description: '8 boards, 1 keyboard, 13 guesses.',
         routeSuffix: 'octordle',
         enabled: true,
-        
+
         shellMaxWidth: 'full',
     },
     sedecordle: {
@@ -146,7 +146,7 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         description: '16 boards, 1 keyboard, 21 guesses.',
         routeSuffix: 'sedecordle',
         enabled: true,
-        
+
         shellMaxWidth: 'full',
     },
     duotrigordle: {
@@ -159,7 +159,7 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
         description: '32 boards, 1 keyboard, 37 guesses.',
         routeSuffix: 'duotrigordle',
         enabled: true,
-        
+
         shellMaxWidth: 'full',
     },
     semantic: {
@@ -206,9 +206,16 @@ export const GAME_MODE_CONFIG: Readonly<Record<GameMode, GameModeDefinition>> = 
  *  'unlimited' is excluded — it's Classic's unlimited play type, not a
  *  standalone mode. The sidebar shows it as a sub-item under Classic. */
 export const GAME_MODE_ORDER: readonly GameMode[] = [
-    'classic', 'speed',
-    'dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle',
-    'semantic', 'custom', 'party',
+    'classic',
+    'speed',
+    'dordle',
+    'quordle',
+    'octordle',
+    'sedecordle',
+    'duotrigordle',
+    'semantic',
+    'custom',
+    'party',
 ] as const;
 
 // =============================================================================

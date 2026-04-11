@@ -187,12 +187,9 @@ const screenDots = computed<ScreenDot[]>(() => {
     const S = canvasSize.value;
     const zoom = totalZoom.value;
     const panScale = S * zoom;
-    const panX = (props.panOffset[0]) / panScale;
-    const panY = (props.panOffset[1]) / panScale;
-    const center: [number, number] = [
-        props.centerPos[0] - panX,
-        props.centerPos[1] + panY,
-    ];
+    const panX = props.panOffset[0] / panScale;
+    const panY = props.panOffset[1] / panScale;
+    const center: [number, number] = [props.centerPos[0] - panX, props.centerPos[1] + panY];
 
     if (props.sliceAxes) {
         // 2-axis scatter
@@ -248,12 +245,12 @@ const connectors = computed(() => {
 // Axis info for slice labels
 const axisInfoX = computed(() =>
     props.sliceAxes
-        ? props.availableAxes.find((a) => a.name === props.sliceAxes![0]) ?? null
+        ? (props.availableAxes.find((a) => a.name === props.sliceAxes![0]) ?? null)
         : null
 );
 const axisInfoY = computed(() =>
     props.sliceAxes
-        ? props.availableAxes.find((a) => a.name === props.sliceAxes![1]) ?? null
+        ? (props.availableAxes.find((a) => a.name === props.sliceAxes![1]) ?? null)
         : null
 );
 
@@ -317,14 +314,14 @@ const labelPlacements = computed<Map<string, LabelPlacement>>(() => {
         const defaultY = d.role === 'muted' || d.role === 'neighbour' ? -6 : -12;
         const compassFlip = d.word === props.compassWord && compassLabelBelow.value;
         const preferredY = compassFlip ? 18 : defaultY;
-        const altY = compassFlip ? defaultY : (defaultY < 0 ? 18 : -12);
+        const altY = compassFlip ? defaultY : defaultY < 0 ? 18 : -12;
 
         const w = d.word.length * CHAR_W;
 
         function makeRect(yOff: number) {
             return { x: d.x - w / 2, y: d.y + yOff - LABEL_H + 2, w, h: LABEL_H, word: d.word };
         }
-        function overlaps(r: typeof placed[0]) {
+        function overlaps(r: (typeof placed)[0]) {
             return placed.some(
                 (p) => r.x < p.x + p.w && r.x + r.w > p.x && r.y < p.y + p.h && r.y + r.h > p.y
             );
@@ -515,17 +512,23 @@ watch(
             const el = svg.querySelector('[data-compass-needle]') as SVGElement | null;
             if (!el) return;
             const base = el.style.transform || '';
-            trackAnimation(el.animate(
-                [
-                    { transform: `${base} scale(0)`, opacity: 0 },
-                    { transform: `${base} scale(1.1) rotate(-20deg)`, opacity: 0.8, offset: 0.2 },
-                    { transform: `${base} scale(1) rotate(10deg)`, offset: 0.4 },
-                    { transform: `${base} rotate(-5deg)`, offset: 0.6 },
-                    { transform: `${base} rotate(2deg)`, offset: 0.8 },
-                    { transform: base, opacity: 1 },
-                ],
-                { duration: 1400, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'none' }
-            ));
+            trackAnimation(
+                el.animate(
+                    [
+                        { transform: `${base} scale(0)`, opacity: 0 },
+                        {
+                            transform: `${base} scale(1.1) rotate(-20deg)`,
+                            opacity: 0.8,
+                            offset: 0.2,
+                        },
+                        { transform: `${base} scale(1) rotate(10deg)`, offset: 0.4 },
+                        { transform: `${base} rotate(-5deg)`, offset: 0.6 },
+                        { transform: `${base} rotate(2deg)`, offset: 0.8 },
+                        { transform: base, opacity: 1 },
+                    ],
+                    { duration: 1400, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'none' }
+                )
+            );
         });
     },
     { immediate: true }
@@ -554,7 +557,10 @@ watch(
                 ],
                 { duration: 900, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
             );
-            const cleanup = () => { pulse.remove(); _activeAnimations.delete(anim); };
+            const cleanup = () => {
+                pulse.remove();
+                _activeAnimations.delete(anim);
+            };
             anim.onfinish = cleanup;
             // Safety: remove clone even if animation is cancelled
             anim.oncancel = cleanup;
@@ -629,9 +635,9 @@ const targetScreenPos = computed(() => {
     const S = canvasSize.value;
     if (props.mode === 'polar') {
         // In polar, target is at canvas center shifted by pan
-        const panScale = S * (props.userZoom);
-        const px = (props.panOffset[0]) / panScale;
-        const py = (props.panOffset[1]) / panScale;
+        const panScale = S * props.userZoom;
+        const px = props.panOffset[0] / panScale;
+        const py = props.panOffset[1] / panScale;
         return { x: S / 2 + px * (S - PAD * 2), y: S / 2 - py * (S - PAD * 2) };
     }
     // Absolute: project target's own position
@@ -642,10 +648,7 @@ const targetScreenPos = computed(() => {
 
 <template>
     <section class="meaning-map">
-        <div
-            class="canvas-wrap"
-            :style="{ width: canvasSize + 'px', height: canvasSize + 'px' }"
-        >
+        <div class="canvas-wrap" :style="{ width: canvasSize + 'px', height: canvasSize + 'px' }">
             <svg
                 ref="svgRef"
                 :width="canvasSize"
@@ -658,25 +661,56 @@ const targetScreenPos = computed(() => {
                 <line
                     v-for="(g, i) in gridLines"
                     :key="'grid:' + i"
-                    :x1="g.x1" :y1="g.y1" :x2="g.x2" :y2="g.y2"
+                    :x1="g.x1"
+                    :y1="g.y1"
+                    :x2="g.x2"
+                    :y2="g.y2"
                     class="grid-line"
                 />
 
                 <!-- 2-axis slice labels — cardinal positions, no axis lines -->
                 <template v-if="sliceAxes && axisInfoX && axisInfoY">
                     <!-- X-axis: left (low) and right (high) -->
-                    <text :x="PAD + 4" :y="canvasSize / 2" text-anchor="start" dominant-baseline="middle" class="axis-label">{{ axisInfoX.low }}</text>
-                    <text :x="canvasSize - PAD - 4" :y="canvasSize / 2" text-anchor="end" dominant-baseline="middle" class="axis-label">{{ axisInfoX.high }}</text>
+                    <text
+                        :x="PAD + 4"
+                        :y="canvasSize / 2"
+                        text-anchor="start"
+                        dominant-baseline="middle"
+                        class="axis-label"
+                    >
+                        {{ axisInfoX.low }}
+                    </text>
+                    <text
+                        :x="canvasSize - PAD - 4"
+                        :y="canvasSize / 2"
+                        text-anchor="end"
+                        dominant-baseline="middle"
+                        class="axis-label"
+                    >
+                        {{ axisInfoX.high }}
+                    </text>
                     <!-- Y-axis: bottom (low) and top (high) -->
-                    <text :x="canvasSize / 2" :y="canvasSize - PAD + 16" text-anchor="middle" class="axis-label">{{ axisInfoY.low }}</text>
-                    <text :x="canvasSize / 2" :y="PAD - 6" text-anchor="middle" class="axis-label">{{ axisInfoY.high }}</text>
+                    <text
+                        :x="canvasSize / 2"
+                        :y="canvasSize - PAD + 16"
+                        text-anchor="middle"
+                        class="axis-label"
+                    >
+                        {{ axisInfoY.low }}
+                    </text>
+                    <text :x="canvasSize / 2" :y="PAD - 6" text-anchor="middle" class="axis-label">
+                        {{ axisInfoY.high }}
+                    </text>
                 </template>
 
                 <!-- Connectors -->
                 <line
                     v-for="(c, i) in connectors"
                     :key="'c:' + i"
-                    :x1="c.x1" :y1="c.y1" :x2="c.x2" :y2="c.y2"
+                    :x1="c.x1"
+                    :y1="c.y1"
+                    :x2="c.x2"
+                    :y2="c.y2"
                     class="connector"
                 />
 
@@ -687,7 +721,9 @@ const targetScreenPos = computed(() => {
                     v-if="compassNeedle"
                     :key="'needle-tail:' + compassWord"
                     class="needle-anchor"
-                    :style="{ transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)` }"
+                    :style="{
+                        transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)`,
+                    }"
                 >
                     <g
                         class="compass-needle"
@@ -695,17 +731,27 @@ const targetScreenPos = computed(() => {
                         :style="{ transform: `rotate(${compassNeedle.angle}deg)` }"
                     >
                         <!-- Back shaft -->
-                        <line :x1="compassNeedle.backEnd" y1="0" :x2="compassNeedle.frontStart" y2="0" class="needle-shaft" />
+                        <line
+                            :x1="compassNeedle.backEnd"
+                            y1="0"
+                            :x2="compassNeedle.frontStart"
+                            y2="0"
+                            class="needle-shaft"
+                        />
                         <!-- Fletching: 3 crossed feather marks near tail tip -->
                         <template v-for="i in 3" :key="'f' + i">
                             <line
-                                :x1="compassNeedle.backEnd + (i - 1) * 3 + 2" y1="0"
-                                :x2="compassNeedle.backEnd + (i - 1) * 3 - 1" :y2="-3.5"
+                                :x1="compassNeedle.backEnd + (i - 1) * 3 + 2"
+                                y1="0"
+                                :x2="compassNeedle.backEnd + (i - 1) * 3 - 1"
+                                :y2="-3.5"
                                 class="needle-feather"
                             />
                             <line
-                                :x1="compassNeedle.backEnd + (i - 1) * 3 + 2" y1="0"
-                                :x2="compassNeedle.backEnd + (i - 1) * 3 - 1" :y2="3.5"
+                                :x1="compassNeedle.backEnd + (i - 1) * 3 + 2"
+                                y1="0"
+                                :x2="compassNeedle.backEnd + (i - 1) * 3 - 1"
+                                :y2="3.5"
                                 class="needle-feather"
                             />
                         </template>
@@ -713,13 +759,15 @@ const targetScreenPos = computed(() => {
                 </g>
 
                 <!-- Target marker (game mode) — position respects pan -->
-                <g v-if="showTarget" class="target-marker" :style="{ transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px)` }">
+                <g
+                    v-if="showTarget"
+                    class="target-marker"
+                    :style="{
+                        transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px)`,
+                    }"
+                >
                     <circle r="8" class="target-ring" />
-                    <text
-                        y="-14"
-                        text-anchor="middle"
-                        class="target-label"
-                    >
+                    <text y="-14" text-anchor="middle" class="target-label">
                         {{ targetLabel }}
                     </text>
                 </g>
@@ -740,13 +788,26 @@ const targetScreenPos = computed(() => {
                             latest: d.word === latestWord,
                         },
                     ]"
-                    :style="{ '--dx': d.x + 'px', '--dy': d.y + 'px', transform: `translate(${d.x}px, ${d.y}px)` }"
+                    :style="{
+                        '--dx': d.x + 'px',
+                        '--dy': d.y + 'px',
+                        transform: `translate(${d.x}px, ${d.y}px)`,
+                    }"
                     @click="clickable ? onDotClick($event, d.word) : undefined"
                     @mouseenter="clickable ? onDotMouseEnter(d.word) : undefined"
                     @mouseleave="clickable ? onDotMouseLeave() : undefined"
                 >
-                    <circle :r="dotRadius(d)" class="dot-circle" :style="d.color ? { fill: d.color } : {}" />
-                    <text v-if="dotLabelVisible(d)" :y="dotLabelY(d)" text-anchor="middle" class="dot-text">
+                    <circle
+                        :r="dotRadius(d)"
+                        class="dot-circle"
+                        :style="d.color ? { fill: d.color } : {}"
+                    />
+                    <text
+                        v-if="dotLabelVisible(d)"
+                        :y="dotLabelY(d)"
+                        text-anchor="middle"
+                        class="dot-text"
+                    >
                         {{ d.word }}
                     </text>
                 </component>
@@ -757,16 +818,27 @@ const targetScreenPos = computed(() => {
                     v-if="compassNeedle"
                     :key="'needle-front:' + compassWord"
                     class="needle-anchor"
-                    :style="{ transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)` }"
+                    :style="{
+                        transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)`,
+                    }"
                 >
                     <g
                         class="compass-needle"
                         :style="{ transform: `rotate(${compassNeedle.angle}deg)` }"
                     >
                         <!-- Front shaft (past the dot) -->
-                        <line :x1="compassNeedle.frontStart" y1="0" :x2="compassNeedle.frontEnd - 4" y2="0" class="needle-shaft" />
+                        <line
+                            :x1="compassNeedle.frontStart"
+                            y1="0"
+                            :x2="compassNeedle.frontEnd - 4"
+                            y2="0"
+                            class="needle-shaft"
+                        />
                         <!-- Arrowhead (filled triangle) -->
-                        <polygon :points="`${compassNeedle.frontEnd - 5},-4 ${compassNeedle.frontEnd + 4},0 ${compassNeedle.frontEnd - 5},4`" class="needle-head" />
+                        <polygon
+                            :points="`${compassNeedle.frontEnd - 5},-4 ${compassNeedle.frontEnd + 4},0 ${compassNeedle.frontEnd - 5},4`"
+                            class="needle-head"
+                        />
                     </g>
                 </g>
             </svg>
@@ -875,7 +947,8 @@ const targetScreenPos = computed(() => {
 
 /* ── Dots ────────────────────────────────────────────────────────── */
 .map-dot {
-    transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1),
+    transition:
+        transform 550ms cubic-bezier(0.22, 1, 0.36, 1),
         opacity 300ms ease;
     cursor: default;
 }
@@ -959,8 +1032,13 @@ a.map-dot:hover .dot-circle {
     animation: highlight-pulse 1.2s ease-in-out infinite;
 }
 @keyframes highlight-pulse {
-    0%, 100% { stroke-opacity: 0.5; }
-    50% { stroke-opacity: 1; }
+    0%,
+    100% {
+        stroke-opacity: 0.5;
+    }
+    50% {
+        stroke-opacity: 1;
+    }
 }
 
 /* Wiggle animation (duplicate guess) */
@@ -968,10 +1046,18 @@ a.map-dot:hover .dot-circle {
     animation: dot-wiggle 400ms ease;
 }
 @keyframes dot-wiggle {
-    0% { translate: 0; }
-    25% { translate: 5px 0; }
-    75% { translate: -5px 0; }
-    100% { translate: 0; }
+    0% {
+        translate: 0;
+    }
+    25% {
+        translate: 5px 0;
+    }
+    75% {
+        translate: -5px 0;
+    }
+    100% {
+        translate: 0;
+    }
 }
 
 /* Bounce-in is handled by the Web Animations API (see script).

@@ -84,7 +84,9 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
         });
 
         // Update preferred language — homepage reads this to detect the right language
-        try { localStorage.setItem(STORAGE_KEYS.PREFERRED_LANGUAGE, lang); } catch {}
+        try {
+            localStorage.setItem(STORAGE_KEYS.PREFERRED_LANGUAGE, lang);
+        } catch {}
 
         // Initialize settings + stats. loadSpeedResults hydrates the
         // speed_results blob so finishSpeedSession() merges instead of clobbering.

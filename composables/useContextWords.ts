@@ -33,9 +33,7 @@ export function useContextWords(baseWord: () => string) {
     const isFull = computed(() => userWords.value.length >= CONTEXT_MAX_TOTAL - 1);
 
     function writeQuery(next: string[]) {
-        const cleaned = next.filter(
-            (w) => w.length > 0 && w !== baseWord().toLowerCase()
-        );
+        const cleaned = next.filter((w) => w.length > 0 && w !== baseWord().toLowerCase());
         const newQuery = { ...route.query };
         if (cleaned.length === 0) delete newQuery.context;
         else newQuery.context = cleaned.join(',');

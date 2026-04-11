@@ -70,11 +70,7 @@ defineExpose({
                 spellcheck="false"
                 inputmode="text"
             />
-            <button
-                type="submit"
-                class="guess-button"
-                :disabled="!value || loading || disabled"
-            >
+            <button type="submit" class="guess-button" :disabled="!value || loading || disabled">
                 <span v-if="loading">…</span>
                 <span v-else>Guess</span>
             </button>

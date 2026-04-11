@@ -12,9 +12,7 @@ const BOOLEAN_KEYS = new Set([
     'animationsEnabled',
 ]);
 
-const STRING_KEYS = new Set([
-    'preferredLanguage',
-]);
+const STRING_KEYS = new Set(['preferredLanguage']);
 
 export default defineEventHandler(async (event) => {
     const session = await requireUserSession(event);

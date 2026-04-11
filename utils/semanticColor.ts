@@ -17,7 +17,13 @@ export type SemanticGradient = Stop[];
 
 function hexToRgb(hex: string): RGB {
     const h = hex.replace('#', '').trim();
-    const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+    const full =
+        h.length === 3
+            ? h
+                  .split('')
+                  .map((c) => c + c)
+                  .join('')
+            : h;
     const n = parseInt(full, 16);
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }

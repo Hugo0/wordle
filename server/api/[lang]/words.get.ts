@@ -25,12 +25,25 @@ const WORDS_PER_PAGE = 30;
 
 /** Modes that use the new mode day index (1-based from April 11, 2026). */
 const MODE_DAY_IDX_MODES = new Set([
-    'dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle', 'speed', 'semantic',
+    'dordle',
+    'quordle',
+    'octordle',
+    'sedecordle',
+    'duotrigordle',
+    'speed',
+    'semantic',
 ]);
 
 /** Valid archive modes. */
 const ARCHIVE_MODES = new Set([
-    'classic', 'dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle', 'speed', 'semantic',
+    'classic',
+    'dordle',
+    'quordle',
+    'octordle',
+    'sedecordle',
+    'duotrigordle',
+    'speed',
+    'semantic',
 ]);
 
 /**

@@ -13,7 +13,10 @@
             @close="sidebarOpen = false"
             @select-mode="onSelectMode"
             @select-language="onSelectLanguage"
-            @settings="showSettings = true; sidebarOpen = false"
+            @settings="
+                showSettings = true;
+                sidebarOpen = false;
+            "
         />
 
         <!-- Unified header — same AppHeader component used on game pages,
@@ -39,10 +42,7 @@
         <!-- Settings modal — works on non-game pages because useSettingsStore()
              is always available. Game-specific options (difficulty) are inert
              when no game is active. Labels fall back to English. -->
-        <GameSettingsModal
-            :visible="showSettings"
-            @close="showSettings = false"
-        />
+        <GameSettingsModal :visible="showSettings" @close="showSettings = false" />
     </div>
 </template>
 

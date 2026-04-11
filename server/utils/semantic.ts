@@ -59,7 +59,6 @@ type ValidWordsFile = {
     words: string[];
 };
 
-
 export type SemanticData = {
     modelName: string;
     dims: number;
@@ -118,22 +117,19 @@ type EmbeddingsMetaFile = {
 };
 
 /** Load embeddings — binary .f32 preferred (sub-second), JSON fallback. */
-function loadEmbeddings(
-    resolveFile: (name: string, runtime?: boolean) => string
-): { model: string; words: string[]; dims: number; matrix: Float32Array } {
+function loadEmbeddings(resolveFile: (name: string, runtime?: boolean) => string): {
+    model: string;
+    words: string[];
+    dims: number;
+    matrix: Float32Array;
+} {
     // Try binary first
     const metaPath = resolveFile('embeddings.meta.json', true);
     const f32Path = resolveFile('embeddings.f32', true);
     if (existsSync(metaPath) && existsSync(f32Path)) {
-        const meta: EmbeddingsMetaFile = JSON.parse(
-            readFileSync(metaPath, 'utf-8')
-        );
+        const meta: EmbeddingsMetaFile = JSON.parse(readFileSync(metaPath, 'utf-8'));
         const buf = readFileSync(f32Path);
-        const matrix = new Float32Array(
-            buf.buffer,
-            buf.byteOffset,
-            buf.byteLength / 4
-        );
+        const matrix = new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
         if (matrix.length !== meta.count * meta.dims) {
             throw new Error(
                 `[semantic] embeddings.f32 size mismatch: expected ${meta.count * meta.dims} floats, got ${matrix.length}`
@@ -163,11 +159,13 @@ function loadEmbeddings(
 export function loadSemanticData(): SemanticData {
     if (_cache) return _cache;
 
-    const { model: modelName, words, dims: D, matrix: embeddings } =
-        loadEmbeddings(resolveSemanticFile);
-    const axes: AxesFile = JSON.parse(
-        readFileSync(resolveSemanticFile('axes.json'), 'utf-8')
-    );
+    const {
+        model: modelName,
+        words,
+        dims: D,
+        matrix: embeddings,
+    } = loadEmbeddings(resolveSemanticFile);
+    const axes: AxesFile = JSON.parse(readFileSync(resolveSemanticFile('axes.json'), 'utf-8'));
     // Load both 2D projections. Game uses PCA for polar angle (faithful
     // distance), word page uses UMAP for absolute layout (better clusters).
     let pca2dCoords: Record<string, [number, number]> = {};
@@ -204,7 +202,6 @@ export function loadSemanticData(): SemanticData {
         // Missing file — validator defaults to the embedding vocab only.
         consola.warn('[semantic] valid_words.json missing — spellcheck disabled');
     }
-
 
     const N = words.length;
 
@@ -253,7 +250,10 @@ export function loadSemanticDataSafe(): SemanticData {
         return loadSemanticData();
     } catch (e) {
         if (e instanceof SemanticDataMissingError) {
-            throw createError({ statusCode: 503, message: 'Semantic Explorer is temporarily unavailable.' });
+            throw createError({
+                statusCode: 503,
+                message: 'Semantic Explorer is temporarily unavailable.',
+            });
         }
         throw e;
     }
@@ -450,9 +450,7 @@ export function getTargetDistribution(data: SemanticData, target: string): Targe
     }
 
     // Sort words by descending cosine (closest first).
-    const order = Array.from({ length: N }, (_, i) => i).sort(
-        (a, b) => cosines[b]! - cosines[a]!
-    );
+    const order = Array.from({ length: N }, (_, i) => i).sort((a, b) => cosines[b]! - cosines[a]!);
     const sortedWords: string[] = new Array(N);
     const sortedCos = new Float32Array(N);
     const rankByWord = new Map<string, number>();
@@ -612,8 +610,7 @@ export function knnNearest(
         }
         topK.splice(lo, 0, { word, similarity: dot });
         if (topK.length > k) topK.pop();
-        threshold =
-            topK.length >= k ? topK[topK.length - 1]!.similarity : -Infinity;
+        threshold = topK.length >= k ? topK[topK.length - 1]!.similarity : -Infinity;
     }
     return topK;
 }
@@ -773,7 +770,7 @@ function calibrateMagnitudeTiers(data: SemanticData): void {
     // "clear"  = top 50% → typical compass quality
     // "slight" = bottom 50% → compass is below average
     MAGNITUDE_STRONG = bestPerPair[Math.floor(bestPerPair.length * 0.75)]!;
-    MAGNITUDE_CLEAR = bestPerPair[Math.floor(bestPerPair.length * 0.50)]!;
+    MAGNITUDE_CLEAR = bestPerPair[Math.floor(bestPerPair.length * 0.5)]!;
 }
 
 function magnitudeTierFromExplained(explained: number): 'slight' | 'clear' | 'strong' {

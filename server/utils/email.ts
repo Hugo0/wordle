@@ -10,7 +10,9 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const BASE_URL = process.env.NUXT_BASE_URL || 'http://localhost:3000';
 const SECRET = process.env.NUXT_EMAIL_TOKEN_SECRET || process.env.NUXT_SESSION_PASSWORD || '';
 if (!SECRET && process.env.NODE_ENV === 'production') {
-    throw new Error('[email] NUXT_EMAIL_TOKEN_SECRET or NUXT_SESSION_PASSWORD must be set in production');
+    throw new Error(
+        '[email] NUXT_EMAIL_TOKEN_SECRET or NUXT_SESSION_PASSWORD must be set in production'
+    );
 }
 
 // Token format: base64url(userId:expiry:hmac)
@@ -21,10 +23,7 @@ function createToken(userId: string, purpose: string, expiryHours: number): stri
     return Buffer.from(`${payload}:${hmac}`).toString('base64url');
 }
 
-export function verifyToken(
-    token: string,
-    purpose: string
-): { userId: string } | null {
+export function verifyToken(token: string, purpose: string): { userId: string } | null {
     try {
         const decoded = Buffer.from(token, 'base64url').toString();
         const parts = decoded.split(':');

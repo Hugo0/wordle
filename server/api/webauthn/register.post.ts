@@ -25,7 +25,9 @@ export default defineWebAuthnRegisterEventHandler({
         }
 
         // New user — validate the client-provided name
-        let displayName = String(userBody.displayName || userBody.userName || '').trim().slice(0, 50);
+        let displayName = String(userBody.displayName || userBody.userName || '')
+            .trim()
+            .slice(0, 50);
         if (!displayName || displayName.length < 2) {
             displayName = 'Player';
         }

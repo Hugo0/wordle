@@ -47,7 +47,9 @@
                  matching the classic modal's show-don't-tell pattern. -->
             <template v-else-if="isSemanticMode">
                 <h2 class="heading-body text-2xl text-center text-ink">Semantic Explorer</h2>
-                <p class="text-center text-sm text-muted -mt-1">Find a hidden word by meaning, not letters.</p>
+                <p class="text-center text-sm text-muted -mt-1">
+                    Find a hidden word by meaning, not letters.
+                </p>
 
                 <div class="editorial-rule" />
 
@@ -68,7 +70,8 @@
                     </div>
                 </div>
                 <p class="text-xs text-muted">
-                    Lower rank = closer in meaning. <strong class="text-ink">Rank #1</strong> = you found it.
+                    Lower rank = closer in meaning. <strong class="text-ink">Rank #1</strong> = you
+                    found it.
                 </p>
 
                 <div class="editorial-rule" />
@@ -86,7 +89,8 @@
                     </div>
                 </div>
                 <p class="text-xs text-muted">
-                    Hints point from your <strong class="text-ink">latest guess</strong> toward the target.
+                    Hints point from your <strong class="text-ink">latest guess</strong> toward the
+                    target.
                 </p>
 
                 <div class="editorial-rule" />
@@ -107,7 +111,9 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-xs text-muted">Closer to the center = lower rank = closer in meaning.</p>
+                <p class="text-xs text-muted">
+                    Closer to the center = lower rank = closer in meaning.
+                </p>
 
                 <div class="editorial-rule" />
 

@@ -15,14 +15,17 @@ interface RateLimitEntry {
 const stores = new Map<string, Map<string, RateLimitEntry>>();
 
 // Cleanup stale entries every 5 minutes
-setInterval(() => {
-    const now = Date.now();
-    for (const [, store] of stores) {
-        for (const [key, entry] of store) {
-            if (now > entry.resetAt) store.delete(key);
+setInterval(
+    () => {
+        const now = Date.now();
+        for (const [, store] of stores) {
+            for (const [key, entry] of store) {
+                if (now > entry.resetAt) store.delete(key);
+            }
         }
-    }
-}, 5 * 60 * 1000);
+    },
+    5 * 60 * 1000
+);
 
 function getClientIp(event: H3Event): string {
     return (

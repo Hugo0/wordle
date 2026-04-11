@@ -86,7 +86,11 @@ export function runStorageMigration(): void {
     try {
         for (let i = localStorage.length - 1; i >= 0; i--) {
             const key = localStorage.key(i);
-            if (key && (key.startsWith(`${STORAGE_KEYS.GAME_RESULTS}__`) || key.startsWith(`${STORAGE_KEYS.SPEED_RESULTS}__`))) {
+            if (
+                key &&
+                (key.startsWith(`${STORAGE_KEYS.GAME_RESULTS}__`) ||
+                    key.startsWith(`${STORAGE_KEYS.SPEED_RESULTS}__`))
+            ) {
                 // Migrate archive data to new scoped format if not already present
                 const archivedUserId = key.split('__')[1];
                 if (archivedUserId) {

@@ -16,10 +16,7 @@ import { computed, onMounted, ref, watch } from 'vue';
 import { buildStatsKey, createGameConfig } from '~/utils/game-modes';
 import MapFrame from '~/components/shared/MapFrame.vue';
 import MeaningMap, { type MapDot } from '~/components/shared/MeaningMap.vue';
-import {
-    buildSemanticGradientFromCSS,
-    sampleGradient,
-} from '~/utils/semanticColor';
+import { buildSemanticGradientFromCSS, sampleGradient } from '~/utils/semanticColor';
 
 definePageMeta({
     layout: 'game',
@@ -39,7 +36,9 @@ if (lang !== 'en') {
 const { playType, isDaily, isUnlimited } = usePlayType('semantic');
 
 // --- Fetch language config via shared API ---
-const { data: gameData, error } = await useFetch(`/api/${lang}/data?minimal=1`, { key: `lang-data-min-${lang}` });
+const { data: gameData, error } = await useFetch(`/api/${lang}/data?minimal=1`, {
+    key: `lang-data-min-${lang}`,
+});
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
@@ -57,7 +56,10 @@ if (gameData.value) {
 // Set the game store's mode to 'semantic' so header streak badge, stats,
 // and analytics all operate on the correct mode key. We don't USE the tile
 // state — we just need the metadata to be right.
-const semanticConfig = createGameConfig('semantic', lang, { wordLength: 5, playType: playType.value });
+const semanticConfig = createGameConfig('semantic', lang, {
+    wordLength: 5,
+    playType: playType.value,
+});
 game.resetForMode(semanticConfig);
 
 // --- Sidebar state ---
@@ -82,21 +84,32 @@ const seo = useGameSeo({
 const sem = useSemanticGame(lang);
 
 // Game unavailable if start failed and no guesses were loaded (not a mid-game error)
-const gameUnavailable = computed(() =>
-    !sem.starting.value && sem.invalidMessage.value && sem.guesses.value.length === 0 && sem.dayIdx.value == null
+const gameUnavailable = computed(
+    () =>
+        !sem.starting.value &&
+        sem.invalidMessage.value &&
+        sem.guesses.value.length === 0 &&
+        sem.dayIdx.value == null
 );
 
 /** The word the compass hints are computed from — best guess, not latest.
  *  Shown in the compass header subtitle so the player knows the reference. */
 const latestGuessWord = computed<string | null>(() => {
-    return sem.bestGuess.value?.word ?? (sem.guesses.value.length > 0 ? sem.guesses.value[sem.guesses.value.length - 1]!.word : null);
+    return (
+        sem.bestGuess.value?.word ??
+        (sem.guesses.value.length > 0
+            ? sem.guesses.value[sem.guesses.value.length - 1]!.word
+            : null)
+    );
 });
 
 // --- Header meta ---
 const headerTitle = computed(() => 'Semantic Explorer');
 const headerSubtitle = computed(() => {
     if (isUnlimited.value) return `${configVal.name_native || lang} · Unlimited`;
-    return sem.dayIdx.value ? `${configVal.name_native || lang} · #${sem.dayIdx.value}` : configVal.name_native || lang;
+    return sem.dayIdx.value
+        ? `${configVal.name_native || lang} · #${sem.dayIdx.value}`
+        : configVal.name_native || lang;
 });
 
 // --- Stats modal state (local, not from game store) ---
@@ -207,13 +220,21 @@ function startNeighbourStagger(total: number) {
     const baseDelay = 400;
     for (let i = 0; i < total; i++) {
         neighbourRevealTimers.push(
-            setTimeout(() => { revealedNeighbourCount.value = i + 1; },
-                baseDelay + i * NEIGHBOUR_STAGGER_MS)
+            setTimeout(
+                () => {
+                    revealedNeighbourCount.value = i + 1;
+                },
+                baseDelay + i * NEIGHBOUR_STAGGER_MS
+            )
         );
     }
     neighbourRevealTimers.push(
-        setTimeout(() => { showStatsModal.value = true; },
-            baseDelay + total * NEIGHBOUR_STAGGER_MS + 400)
+        setTimeout(
+            () => {
+                showStatsModal.value = true;
+            },
+            baseDelay + total * NEIGHBOUR_STAGGER_MS + 400
+        )
     );
 }
 
@@ -359,13 +380,19 @@ async function onNewGame() {
         @new-game="onNewGame"
     >
         <!-- Unavailable state: embeddings not generated yet -->
-        <div v-if="gameUnavailable" class="flex flex-col items-center justify-center flex-1 px-6 py-20 text-center">
+        <div
+            v-if="gameUnavailable"
+            class="flex flex-col items-center justify-center flex-1 px-6 py-20 text-center"
+        >
             <h2 class="heading-display text-3xl text-ink mb-4">Semantic Explorer</h2>
             <p class="text-muted max-w-md mb-6">
                 This mode is temporarily unavailable — the word embedding data is being generated.
                 Check back in a few minutes.
             </p>
-            <button class="px-6 py-2 bg-accent text-paper font-body font-bold hover:opacity-90 transition-opacity" @click="sem.startGame()">
+            <button
+                class="px-6 py-2 bg-accent text-paper font-body font-bold hover:opacity-90 transition-opacity"
+                @click="sem.startGame()"
+            >
                 Retry
             </button>
         </div>
@@ -378,16 +405,21 @@ async function onNewGame() {
                         <header class="map-header">
                             <div class="map-eyebrow">
                                 <span class="eyebrow-tag">
-                                    {{ sem.mapMode.value === 'slice' && sem.sliceAxes.value
-                                        ? `Slice: ${sem.sliceAxes.value[0]} × ${sem.sliceAxes.value[1]}`
-                                        : 'Meaning Map' }}
+                                    {{
+                                        sem.mapMode.value === 'slice' && sem.sliceAxes.value
+                                            ? `Slice: ${sem.sliceAxes.value[0]} × ${sem.sliceAxes.value[1]}`
+                                            : 'Meaning Map'
+                                    }}
                                 </span>
                                 <span class="eyebrow-sub">distance = rank</span>
                             </div>
                             <h1 class="map-title">Find the hidden word</h1>
                             <p class="map-subtitle">
                                 <template v-if="sem.starting.value">Loading today's word…</template>
-                                <template v-else>Navigate by meaning. {{ sem.guessesRemaining.value }} guesses left.</template>
+                                <template v-else
+                                    >Navigate by meaning. {{ sem.guessesRemaining.value }} guesses
+                                    left.</template
+                                >
                             </p>
                         </header>
 
@@ -397,41 +429,48 @@ async function onNewGame() {
                                 v-model:pan-offset="mapPanOffset"
                                 :expandable="true"
                             >
-                            <template #default="{ expanded, frameSize }">
-                            <MeaningMap
-                                :dots="gameDots"
-                                mode="polar"
-                                :center-pos="sem.targetUmapPosition.value"
-                                :slice-axes="sem.sliceAxes.value"
-                                :available-axes="Object.entries(sem.axisAnchors.value ?? {}).map(([n, a]) => ({ name: n, low: a.low, high: a.high }))"
-                                :size="expanded ? frameSize : undefined"
-                                :user-zoom="mapUserZoom"
-                                :pan-offset="mapPanOffset"
-                                :show-target="true"
-                                :target-label="gameTargetLabel"
-                                :highlighted-word="sem.highlightedWord.value"
-                                :wiggle-signal="sem.wiggleSignal.value"
-                                :latest-word="latestGuessWord"
-                                :compass-word="sem.bestGuess.value?.word ?? null"
-                                :new-best-signal="sem.newBestSignal.value"
-                            />
-                            <!-- Win overlay -->
-                            <transition name="celebrate-fade">
-                                <div v-if="sem.won.value" class="win-overlay">
-                                    <div class="win-badge">
-                                        <span class="win-label">Found</span>
-                                        <span class="win-word">{{ sem.finalTargetWord.value }}</span>
-                                        <span class="win-stat">
-                                            {{ sem.guesses.value.length }}/{{ sem.maxGuesses.value }}
-                                            guesses
-                                        </span>
-                                    </div>
-                                </div>
-                            </transition>
-                            </template>
+                                <template #default="{ expanded, frameSize }">
+                                    <MeaningMap
+                                        :dots="gameDots"
+                                        mode="polar"
+                                        :center-pos="sem.targetUmapPosition.value"
+                                        :slice-axes="sem.sliceAxes.value"
+                                        :available-axes="
+                                            Object.entries(sem.axisAnchors.value ?? {}).map(
+                                                ([n, a]) => ({ name: n, low: a.low, high: a.high })
+                                            )
+                                        "
+                                        :size="expanded ? frameSize : undefined"
+                                        :user-zoom="mapUserZoom"
+                                        :pan-offset="mapPanOffset"
+                                        :show-target="true"
+                                        :target-label="gameTargetLabel"
+                                        :highlighted-word="sem.highlightedWord.value"
+                                        :wiggle-signal="sem.wiggleSignal.value"
+                                        :latest-word="latestGuessWord"
+                                        :compass-word="sem.bestGuess.value?.word ?? null"
+                                        :new-best-signal="sem.newBestSignal.value"
+                                    />
+                                    <!-- Win overlay -->
+                                    <transition name="celebrate-fade">
+                                        <div v-if="sem.won.value" class="win-overlay">
+                                            <div class="win-badge">
+                                                <span class="win-label">Found</span>
+                                                <span class="win-word">{{
+                                                    sem.finalTargetWord.value
+                                                }}</span>
+                                                <span class="win-stat">
+                                                    {{ sem.guesses.value.length }}/{{
+                                                        sem.maxGuesses.value
+                                                    }}
+                                                    guesses
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </transition>
+                                </template>
                             </MapFrame>
                         </div>
-
                     </div>
 
                     <!-- Input row: outside the map card so on mobile it can

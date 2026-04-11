@@ -27,7 +27,8 @@ test.describe('Game sync', () => {
 
         // Step 2: Get the target word from the game store
         const target = await page.evaluate(() => {
-            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config?.globalProperties?.$pinia;
+            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config
+                ?.globalProperties?.$pinia;
             const game = pinia?._s?.get('game');
             return game?.boards?.[0]?.targetWord;
         });
@@ -36,7 +37,8 @@ test.describe('Game sync', () => {
 
         // Verify game is not over yet
         const gameOverBefore = await page.evaluate(() => {
-            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config?.globalProperties?.$pinia;
+            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config
+                ?.globalProperties?.$pinia;
             return pinia?._s?.get('game')?.gameOver;
         });
         expect(gameOverBefore).toBe(false);
@@ -44,14 +46,16 @@ test.describe('Game sync', () => {
         // Step 3: Type the target word via the on-screen keyboard
         for (const ch of target!) {
             await page.evaluate((char) => {
-                const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config?.globalProperties?.$pinia;
+                const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config
+                    ?.globalProperties?.$pinia;
                 pinia._s.get('game').keyClick(char);
             }, ch);
         }
 
         // Submit
         await page.evaluate(() => {
-            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config?.globalProperties?.$pinia;
+            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config
+                ?.globalProperties?.$pinia;
             pinia._s.get('game').keyClick('⇨');
         });
 
@@ -60,7 +64,8 @@ test.describe('Game sync', () => {
 
         // Step 4: Verify game is over
         const gameState = await page.evaluate(() => {
-            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config?.globalProperties?.$pinia;
+            const pinia = (document.querySelector('#__nuxt') as any)?.__vue_app__?.config
+                ?.globalProperties?.$pinia;
             const game = pinia?._s?.get('game');
             return { gameOver: game?.gameOver, gameWon: game?.gameWon };
         });

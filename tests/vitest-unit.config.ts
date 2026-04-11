@@ -7,7 +7,11 @@ import { resolve } from 'path';
 
 export default defineConfig({
     test: {
-        include: ['tests/day-index.test.ts', 'tests/game-modes.test.ts', 'tests/stats-key-parser.test.ts'],
+        include: [
+            'tests/day-index.test.ts',
+            'tests/game-modes.test.ts',
+            'tests/stats-key-parser.test.ts',
+        ],
         environment: 'node',
     },
     resolve: {

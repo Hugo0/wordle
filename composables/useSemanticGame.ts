@@ -195,16 +195,12 @@ export function useSemanticGame(lang: string) {
         return guesses.value.reduce((best, g) => (g.rank < best.rank ? g : best));
     });
     /** Guesses sorted closest first — the leaderboard order. */
-    const sortedGuesses = computed(() =>
-        [...guesses.value].sort((a, b) => a.rank - b.rank)
-    );
+    const sortedGuesses = computed(() => [...guesses.value].sort((a, b) => a.rank - b.rank));
     /** Number of guesses the player has made since their last new best.
      *  Used by the oracle nudge after prolonged stagnation. */
     const guessesSinceBest = computed(() => {
         if (!bestGuess.value || !guesses.value.length) return 0;
-        const bestIdx = guesses.value.findIndex(
-            (g) => g.word === bestGuess.value!.word
-        );
+        const bestIdx = guesses.value.findIndex((g) => g.word === bestGuess.value!.word);
         return guesses.value.length - 1 - bestIdx;
     });
     // Always show the top 2 compass hints for the latest guess — do NOT

@@ -63,7 +63,10 @@ const wordList = gameData.value?.daily_words?.length
 // Unlimited: random words (existing behavior via useMultiBoardPage).
 const dailyWords = isDaily.value ? (gameData.value?.todays_words ?? undefined) : undefined;
 const { multiBoardRef, startNewGame } = useMultiBoardPage(
-    mode, wordList, modeDef.boardCount, dailyWords
+    mode,
+    wordList,
+    modeDef.boardCount,
+    dailyWords
 );
 </script>
 
@@ -73,7 +76,11 @@ const { multiBoardRef, startNewGame } = useMultiBoardPage(
         :language-name="config?.name_native || config?.name || lang"
         :current-mode="mode"
         :title="seo.modeLabel"
-        :subtitle="isDaily ? `${config?.name_native || lang} · #${gameData?.mode_day_idx ?? gameData?.todays_idx}` : `${config?.name_native || lang} · Unlimited`"
+        :subtitle="
+            isDaily
+                ? `${config?.name_native || lang} · #${gameData?.mode_day_idx ?? gameData?.todays_idx}`
+                : `${config?.name_native || lang} · Unlimited`
+        "
         :sidebar-open="sidebarOpen"
         :max-width="modeDef.shellMaxWidth || 'lg'"
         :visible="!!gameData"

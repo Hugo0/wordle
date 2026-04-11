@@ -42,7 +42,9 @@
                 />
                 <span class="flex-1 text-sm text-ink">{{ lang.nativeName || lang.name }}</span>
                 <span class="text-xs text-muted">{{ lang.name }}</span>
-                <span v-if="lang.code === currentLangCode" class="text-correct text-xs">&#10003;</span>
+                <span v-if="lang.code === currentLangCode" class="text-correct text-xs"
+                    >&#10003;</span
+                >
             </button>
             <div v-if="filteredLanguages.length === 0" class="text-center py-6 text-sm text-muted">
                 No languages match "{{ searchQuery }}"

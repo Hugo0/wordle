@@ -54,84 +54,84 @@ LLM_CANDIDATE_COUNT = 120
 # redundant ones based on orthogonality to the embedding space.
 CANDIDATE_AXES: dict[str, dict[str, str]] = {
     # --- Physical / spatial ---
-    "size":         {"low": "tiny",       "high": "enormous"},
-    "height":       {"low": "short",      "high": "tall"},
-    "width":        {"low": "narrow",     "high": "wide"},
-    "depth":        {"low": "shallow",    "high": "deep"},
-    "weight":       {"low": "light",      "high": "heavy"},
-    "density":      {"low": "sparse",     "high": "dense"},
-    "distance":     {"low": "near",       "high": "far"},
+    "size": {"low": "tiny", "high": "enormous"},
+    "height": {"low": "short", "high": "tall"},
+    "width": {"low": "narrow", "high": "wide"},
+    "depth": {"low": "shallow", "high": "deep"},
+    "weight": {"low": "light", "high": "heavy"},
+    "density": {"low": "sparse", "high": "dense"},
+    "distance": {"low": "near", "high": "far"},
     # --- Motion / dynamics ---
-    "speed":        {"low": "slow",       "high": "fast"},
-    "activity":     {"low": "still",      "high": "moving"},
-    "frequency":    {"low": "rare",       "high": "common"},
+    "speed": {"low": "slow", "high": "fast"},
+    "activity": {"low": "still", "high": "moving"},
+    "frequency": {"low": "rare", "high": "common"},
     # --- Sensory ---
-    "temperature":  {"low": "freezing",   "high": "burning"},
-    "brightness":   {"low": "dark",       "high": "bright"},
-    "loudness":     {"low": "silent",     "high": "loud"},
-    "hardness":     {"low": "soft",       "high": "hard"},
-    "sharpness":    {"low": "dull",       "high": "sharp"},
-    "wetness":      {"low": "dry",        "high": "wet"},
-    "texture":      {"low": "smooth",     "high": "rough"},
-    "taste":        {"low": "bitter",     "high": "sweet"},
-    "spiciness":    {"low": "mild",       "high": "spicy"},
-    "smelliness":   {"low": "odorless",   "high": "pungent"},
-    "cleanliness":  {"low": "dirty",      "high": "clean"},
-    "colorfulness": {"low": "gray",       "high": "colorful"},
-    "transparency": {"low": "opaque",     "high": "transparent"},
-    "flexibility":  {"low": "rigid",      "high": "flexible"},
-    "fragility":    {"low": "sturdy",     "high": "fragile"},
+    "temperature": {"low": "freezing", "high": "burning"},
+    "brightness": {"low": "dark", "high": "bright"},
+    "loudness": {"low": "silent", "high": "loud"},
+    "hardness": {"low": "soft", "high": "hard"},
+    "sharpness": {"low": "dull", "high": "sharp"},
+    "wetness": {"low": "dry", "high": "wet"},
+    "texture": {"low": "smooth", "high": "rough"},
+    "taste": {"low": "bitter", "high": "sweet"},
+    "spiciness": {"low": "mild", "high": "spicy"},
+    "smelliness": {"low": "odorless", "high": "pungent"},
+    "cleanliness": {"low": "dirty", "high": "clean"},
+    "colorfulness": {"low": "gray", "high": "colorful"},
+    "transparency": {"low": "opaque", "high": "transparent"},
+    "flexibility": {"low": "rigid", "high": "flexible"},
+    "fragility": {"low": "sturdy", "high": "fragile"},
     # --- Origin / construction ---
-    "natural":      {"low": "artificial", "high": "natural"},
-    "organic":      {"low": "synthetic",  "high": "organic"},
-    "alive":        {"low": "inanimate",  "high": "alive"},
-    "concreteness": {"low": "abstract",   "high": "concrete"},
-    "handmade":     {"low": "manufactured","high": "handmade"},
+    "natural": {"low": "artificial", "high": "natural"},
+    "organic": {"low": "synthetic", "high": "organic"},
+    "alive": {"low": "inanimate", "high": "alive"},
+    "concreteness": {"low": "abstract", "high": "concrete"},
+    "handmade": {"low": "manufactured", "high": "handmade"},
     # --- Temporal ---
-    "age":          {"low": "ancient",    "high": "modern"},
-    "recency":      {"low": "old",        "high": "new"},
-    "permanence":   {"low": "temporary",  "high": "permanent"},
-    "era_past":     {"low": "future",     "high": "past"},
+    "age": {"low": "ancient", "high": "modern"},
+    "recency": {"low": "old", "high": "new"},
+    "permanence": {"low": "temporary", "high": "permanent"},
+    "era_past": {"low": "future", "high": "past"},
     # --- Affective / evaluative ---
-    "emotion":      {"low": "sad",        "high": "joyful"},
-    "morality":     {"low": "evil",       "high": "good"},
-    "beauty":       {"low": "ugly",       "high": "beautiful"},
-    "value":        {"low": "cheap",      "high": "precious"},
-    "usefulness":   {"low": "useless",    "high": "useful"},
-    "danger":       {"low": "safe",       "high": "dangerous"},
-    "fear":         {"low": "comforting", "high": "scary"},
-    "calm":         {"low": "chaotic",    "high": "calm"},
-    "formality":    {"low": "casual",     "high": "formal"},
-    "seriousness":  {"low": "playful",    "high": "serious"},
+    "emotion": {"low": "sad", "high": "joyful"},
+    "morality": {"low": "evil", "high": "good"},
+    "beauty": {"low": "ugly", "high": "beautiful"},
+    "value": {"low": "cheap", "high": "precious"},
+    "usefulness": {"low": "useless", "high": "useful"},
+    "danger": {"low": "safe", "high": "dangerous"},
+    "fear": {"low": "comforting", "high": "scary"},
+    "calm": {"low": "chaotic", "high": "calm"},
+    "formality": {"low": "casual", "high": "formal"},
+    "seriousness": {"low": "playful", "high": "serious"},
     # --- Cognitive ---
-    "complexity":   {"low": "simple",     "high": "complex"},
-    "familiarity":  {"low": "unfamiliar", "high": "familiar"},
-    "clarity":      {"low": "vague",      "high": "clear"},
-    "mystery":      {"low": "obvious",    "high": "mysterious"},
-    "intelligence": {"low": "dumb",       "high": "brilliant"},
+    "complexity": {"low": "simple", "high": "complex"},
+    "familiarity": {"low": "unfamiliar", "high": "familiar"},
+    "clarity": {"low": "vague", "high": "clear"},
+    "mystery": {"low": "obvious", "high": "mysterious"},
+    "intelligence": {"low": "dumb", "high": "brilliant"},
     # --- Social ---
-    "social":       {"low": "solitary",   "high": "social"},
-    "public":       {"low": "private",    "high": "public"},
-    "friendliness": {"low": "hostile",    "high": "friendly"},
-    "popularity":   {"low": "obscure",    "high": "popular"},
-    "power":        {"low": "weak",       "high": "powerful"},
-    "freedom":      {"low": "bound",      "high": "free"},
-    "wealth":       {"low": "poor",       "high": "rich"},
+    "social": {"low": "solitary", "high": "social"},
+    "public": {"low": "private", "high": "public"},
+    "friendliness": {"low": "hostile", "high": "friendly"},
+    "popularity": {"low": "obscure", "high": "popular"},
+    "power": {"low": "weak", "high": "powerful"},
+    "freedom": {"low": "bound", "high": "free"},
+    "wealth": {"low": "poor", "high": "rich"},
     # --- Context / setting ---
-    "indoor":       {"low": "outdoor",    "high": "indoor"},
-    "urban":        {"low": "rural",      "high": "urban"},
-    "wild":         {"low": "tame",       "high": "wild"},
-    "domestic":     {"low": "foreign",    "high": "domestic"},
+    "indoor": {"low": "outdoor", "high": "indoor"},
+    "urban": {"low": "rural", "high": "urban"},
+    "wild": {"low": "tame", "high": "wild"},
+    "domestic": {"low": "foreign", "high": "domestic"},
     # --- Body / action ---
-    "edible":       {"low": "inedible",   "high": "edible"},
-    "portable":     {"low": "immovable",  "high": "portable"},
-    "visible":      {"low": "hidden",     "high": "visible"},
+    "edible": {"low": "inedible", "high": "edible"},
+    "portable": {"low": "immovable", "high": "portable"},
+    "visible": {"low": "hidden", "high": "visible"},
     # --- Scale / abstract ---
-    "order":        {"low": "chaotic",    "high": "ordered"},
-    "purity":       {"low": "mixed",      "high": "pure"},
-    "symmetry":     {"low": "asymmetric", "high": "symmetric"},
-    "solidness":    {"low": "liquid",     "high": "solid"},
-    "fullness":     {"low": "empty",      "high": "full"},
+    "order": {"low": "chaotic", "high": "ordered"},
+    "purity": {"low": "mixed", "high": "pure"},
+    "symmetry": {"low": "asymmetric", "high": "symmetric"},
+    "solidness": {"low": "liquid", "high": "solid"},
+    "fullness": {"low": "empty", "high": "full"},
 }
 
 
@@ -290,8 +290,8 @@ def validate_axes_llm(
         "  - actual_concept: a 1-sentence description of what the test words "
         "    actually seem to represent (may differ from intended)\n"
         "  - verdict: 'keep' if rating >= 6, 'drop' if below\n\n"
-        "Return JSON: {\"axes\": {\"size\": {\"rating\": 9, \"actual_concept\": "
-        "\"physical magnitude\", \"verdict\": \"keep\"}, ...}}\n\n"
+        'Return JSON: {"axes": {"size": {"rating": 9, "actual_concept": '
+        '"physical magnitude", "verdict": "keep"}, ...}}\n\n'
         f"Axes to validate:\n{json.dumps(items, indent=2)}"
     )
     response = client.chat.completions.create(
@@ -483,7 +483,9 @@ def rank_normalize(values: list[float]) -> list[float]:
     return ranks
 
 
-def _build_cos_matrix(names: list[str], scored: dict[str, dict]) -> tuple[np.ndarray, dict[str, int]]:
+def _build_cos_matrix(
+    names: list[str], scored: dict[str, dict]
+) -> tuple[np.ndarray, dict[str, int]]:
     """Stack all axis vectors into a matrix and return |V V^T| + name→row index.
 
     Used by the orthogonal-subset selector so per-trial pairwise cosine lookups
@@ -614,17 +616,35 @@ def max_orthogonal_subset(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("--target-count", type=int, default=25, help="How many axes to accept")
-    parser.add_argument("--min-auc", type=float, default=0.75, help="Drop candidates below this AUC")
-    parser.add_argument("--source", choices=["both", "llm", "hand"], default="both",
-                        help="Candidate source: hand-coded, LLM-generated, or merged")
-    parser.add_argument("--regenerate-llm", action="store_true",
-                        help="Re-query the LLM for candidates (ignores cache)")
-    parser.add_argument("--llm-count", type=int, default=LLM_CANDIDATE_COUNT,
-                        help="How many candidates to request from the LLM")
-    parser.add_argument("--skip-validation", action="store_true",
-                        help="Skip the LLM-as-judge polysemy validation pass")
+    parser.add_argument(
+        "--min-auc", type=float, default=0.75, help="Drop candidates below this AUC"
+    )
+    parser.add_argument(
+        "--source",
+        choices=["both", "llm", "hand"],
+        default="both",
+        help="Candidate source: hand-coded, LLM-generated, or merged",
+    )
+    parser.add_argument(
+        "--regenerate-llm",
+        action="store_true",
+        help="Re-query the LLM for candidates (ignores cache)",
+    )
+    parser.add_argument(
+        "--llm-count",
+        type=int,
+        default=LLM_CANDIDATE_COUNT,
+        help="How many candidates to request from the LLM",
+    )
+    parser.add_argument(
+        "--skip-validation",
+        action="store_true",
+        help="Skip the LLM-as-judge polysemy validation pass",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Skip OpenAI fetch, use cache only")
     args = parser.parse_args()
 
@@ -636,6 +656,7 @@ def main() -> int:
 
     # Assemble candidate pool
     import os
+
     api_key = os.environ.get("OPENAI_API_KEY")
     client: OpenAI | None = None
     if api_key and not args.dry_run:
@@ -675,7 +696,9 @@ def main() -> int:
     n_components = min(50, vocab_matrix.shape[0], vocab_matrix.shape[1])
     pca = PCA(n_components=n_components)
     pca.fit(vocab_matrix)
-    print(f"  top-{n_components} components explain {pca.explained_variance_ratio_.sum():.1%} of variance")
+    print(
+        f"  top-{n_components} components explain {pca.explained_variance_ratio_.sum():.1%} of variance"
+    )
 
     print(f"\nScoring {len(merged)} candidates...")
     scored: dict[str, dict] = {}
@@ -699,7 +722,7 @@ def main() -> int:
     # Rank-normalize variance for the composite
     names = list(scored.keys())
     variance_ranks = rank_normalize([scored[n]["variance"] for n in names])
-    for n, vr in zip(names, variance_ranks):
+    for n, vr in zip(names, variance_ranks, strict=True):
         scored[n]["variance_rank"] = vr
         scored[n]["composite"] = composite_score(scored[n])
 
@@ -733,13 +756,12 @@ def main() -> int:
             print(f"\nLoop {loop}: validating {len(to_validate)} new axes...")
             fresh = validate_axes_llm(client, to_validate, scored, merged)
             validation.update(fresh)
-            loop_drops = [
-                n for n in to_validate
-                if validation.get(n, {}).get("verdict") == "drop"
-            ]
+            loop_drops = [n for n in to_validate if validation.get(n, {}).get("verdict") == "drop"]
             for name in loop_drops:
                 v = validation[name]
-                print(f"  ✗ {name}: rating {v.get('rating', '?')} — {v.get('actual_concept', '?')[:80]}")
+                print(
+                    f"  ✗ {name}: rating {v.get('rating', '?')} — {v.get('actual_concept', '?')[:80]}"
+                )
             if not loop_drops:
                 print(f"  all {len(to_validate)} accepted — validation stable")
                 break
@@ -761,14 +783,10 @@ def main() -> int:
         # contains axes that were never judged)
         accepted = [n for n in accepted if validation.get(n, {}).get("verdict") == "keep"]
 
-    rejected_redundant = [
-        n for n in eligible if n not in accepted and n not in dropped_polysemous
-    ]
+    rejected_redundant = [n for n in eligible if n not in accepted and n not in dropped_polysemous]
 
     # --- Write report ---
     # Build a status map so every candidate shows in the main table
-    accepted_set = set(accepted)
-    redundant_set = set(rejected_redundant)
     status: dict[str, tuple[str, str]] = {}  # name → (label, detail)
     for name in accepted:
         status[name] = ("accepted", f"rank {accepted.index(name) + 1}")
@@ -856,8 +874,7 @@ def main() -> int:
             low_sample = ", ".join(m["test_low"][:8])
             high_sample = ", ".join(m["test_high"][:8])
             f.write(
-                f"| **{name}** | {pair['low']} ↔ {pair['high']} "
-                f"| {low_sample} | {high_sample} |\n"
+                f"| **{name}** | {pair['low']} ↔ {pair['high']} | {low_sample} | {high_sample} |\n"
             )
 
         # --- Full orthogonality matrix across ALL scored candidates ---

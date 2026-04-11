@@ -13,13 +13,25 @@ describe('parseStatsKey roundtrip', () => {
         expect(parseStatsKey('en')).toEqual({ lang: 'en', mode: 'classic', playType: 'daily' });
     });
     it('classic unlimited', () => {
-        expect(parseStatsKey('en_unlimited')).toEqual({ lang: 'en', mode: 'classic', playType: 'unlimited' });
+        expect(parseStatsKey('en_unlimited')).toEqual({
+            lang: 'en',
+            mode: 'classic',
+            playType: 'unlimited',
+        });
     });
     it('dordle daily', () => {
-        expect(parseStatsKey('en_dordle_daily')).toEqual({ lang: 'en', mode: 'dordle', playType: 'daily' });
+        expect(parseStatsKey('en_dordle_daily')).toEqual({
+            lang: 'en',
+            mode: 'dordle',
+            playType: 'daily',
+        });
     });
     it('speed unlimited', () => {
-        expect(parseStatsKey('en_speed')).toEqual({ lang: 'en', mode: 'speed', playType: 'unlimited' });
+        expect(parseStatsKey('en_speed')).toEqual({
+            lang: 'en',
+            mode: 'speed',
+            playType: 'unlimited',
+        });
     });
 });
 
@@ -61,27 +73,39 @@ describe('serverResultToStatsKey mapping', () => {
     }
 
     it('classic daily → bare lang', () => {
-        expect(serverResultToStatsKey({ lang: 'en', mode: 'classic', playType: 'daily' })).toBe('en');
+        expect(serverResultToStatsKey({ lang: 'en', mode: 'classic', playType: 'daily' })).toBe(
+            'en'
+        );
     });
 
     it('classic unlimited → _unlimited', () => {
-        expect(serverResultToStatsKey({ lang: 'en', mode: 'classic', playType: 'unlimited' })).toBe('en_unlimited');
+        expect(serverResultToStatsKey({ lang: 'en', mode: 'classic', playType: 'unlimited' })).toBe(
+            'en_unlimited'
+        );
     });
 
     it('dordle daily → _dordle_daily', () => {
-        expect(serverResultToStatsKey({ lang: 'fi', mode: 'dordle', playType: 'daily' })).toBe('fi_dordle_daily');
+        expect(serverResultToStatsKey({ lang: 'fi', mode: 'dordle', playType: 'daily' })).toBe(
+            'fi_dordle_daily'
+        );
     });
 
     it('quordle unlimited → _quordle', () => {
-        expect(serverResultToStatsKey({ lang: 'en', mode: 'quordle', playType: 'unlimited' })).toBe('en_quordle');
+        expect(serverResultToStatsKey({ lang: 'en', mode: 'quordle', playType: 'unlimited' })).toBe(
+            'en_quordle'
+        );
     });
 
     it('speed unlimited → _speed', () => {
-        expect(serverResultToStatsKey({ lang: 'en', mode: 'speed', playType: 'unlimited' })).toBe('en_speed');
+        expect(serverResultToStatsKey({ lang: 'en', mode: 'speed', playType: 'unlimited' })).toBe(
+            'en_speed'
+        );
     });
 
     it('semantic daily → _semantic_daily', () => {
-        expect(serverResultToStatsKey({ lang: 'en', mode: 'semantic', playType: 'daily' })).toBe('en_semantic_daily');
+        expect(serverResultToStatsKey({ lang: 'en', mode: 'semantic', playType: 'daily' })).toBe(
+            'en_semantic_daily'
+        );
     });
 
     // Verify roundtrip: parseStatsKey(serverResultToStatsKey(r)) should recover the original
@@ -107,9 +131,7 @@ describe('serverResultToStatsKey mapping', () => {
 
 describe('merge deduplication', () => {
     it('daily results dedup by date (same day = same game)', () => {
-        const existing = [
-            { won: true, attempts: 3, date: '2026-03-19T10:00:00.000Z' },
-        ];
+        const existing = [{ won: true, attempts: 3, date: '2026-03-19T10:00:00.000Z' }];
         const incoming = { playedAt: '2026-03-19T15:30:00.000Z', playType: 'daily' };
 
         const dateStr = new Date(incoming.playedAt).toISOString().slice(0, 10);
@@ -120,9 +142,7 @@ describe('merge deduplication', () => {
     });
 
     it('daily results on different days are NOT deduped', () => {
-        const existing = [
-            { won: true, attempts: 3, date: '2026-03-18T10:00:00.000Z' },
-        ];
+        const existing = [{ won: true, attempts: 3, date: '2026-03-18T10:00:00.000Z' }];
         const incoming = { playedAt: '2026-03-19T15:30:00.000Z', playType: 'daily' };
 
         const dateStr = new Date(incoming.playedAt).toISOString().slice(0, 10);
@@ -133,9 +153,7 @@ describe('merge deduplication', () => {
     });
 
     it('unlimited results dedup by exact timestamp', () => {
-        const existing = [
-            { won: true, attempts: 5, date: '2026-03-19T10:00:00.000Z' },
-        ];
+        const existing = [{ won: true, attempts: 5, date: '2026-03-19T10:00:00.000Z' }];
         const incoming = { playedAt: '2026-03-19T10:00:00.000Z', playType: 'unlimited' };
 
         const playedAt = new Date(incoming.playedAt);
@@ -146,9 +164,7 @@ describe('merge deduplication', () => {
     });
 
     it('unlimited results with different timestamps are NOT deduped', () => {
-        const existing = [
-            { won: true, attempts: 5, date: '2026-03-19T10:00:00.000Z' },
-        ];
+        const existing = [{ won: true, attempts: 5, date: '2026-03-19T10:00:00.000Z' }];
         const incoming = { playedAt: '2026-03-19T10:05:00.000Z', playType: 'unlimited' };
 
         const playedAt = new Date(incoming.playedAt);
@@ -160,7 +176,14 @@ describe('merge deduplication', () => {
 
     it('speed results dedup by playedAt', () => {
         const existing = [
-            { date: '2026-03-19T10:00:00.000Z', score: 500, wordsSolved: 10, wordsFailed: 2, maxCombo: 5, totalGuesses: 30 },
+            {
+                date: '2026-03-19T10:00:00.000Z',
+                score: 500,
+                wordsSolved: 10,
+                wordsFailed: 2,
+                maxCombo: 5,
+                totalGuesses: 30,
+            },
         ];
         const incoming = '2026-03-19T10:00:00.000Z';
 

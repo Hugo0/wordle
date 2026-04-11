@@ -41,7 +41,11 @@ function getWordSet(lang: string, data: ReturnType<typeof loadAllData>): Set<str
  * Numeric day-index slugs bypass this entirely — `getWordForDay` always
  * returns a real word or errors.
  */
-function wordIsRecognized(lang: string, word: string, data: ReturnType<typeof loadAllData>): boolean {
+function wordIsRecognized(
+    lang: string,
+    word: string,
+    data: ReturnType<typeof loadAllData>
+): boolean {
     if (getWordSet(lang, data).has(word)) return true;
     // English gets the much larger semantic validator dictionary
     if (lang === 'en') {
@@ -112,8 +116,7 @@ export default defineEventHandler(async (event) => {
         if (defResult) {
             definition = {
                 definition: defResult.definition,
-                definition_native:
-                    defResult.definitionNative || defResult.definition_native,
+                definition_native: defResult.definitionNative || defResult.definition_native,
                 part_of_speech: defResult.partOfSpeech || defResult.part_of_speech,
             };
         }
@@ -129,8 +132,7 @@ export default defineEventHandler(async (event) => {
             const semData = loadSemanticData();
             const vec = getEmbedding(semData, word);
             if (vec) {
-                nearestWords = knnNearest(semData, vec, 8, new Set([word]))
-                    .map((n) => n.word);
+                nearestWords = knnNearest(semData, vec, 8, new Set([word])).map((n) => n.word);
             }
         } catch {
             // Semantic data not loaded — skip (non-English or cold start)

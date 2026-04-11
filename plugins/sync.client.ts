@@ -20,8 +20,15 @@
  * namespaced bucket, so user switching is safe by construction.
  */
 import {
-    readJson, readLocal, writeLocal, writeJson, getOrCreateId,
-    setActiveUserId, scopedKey, runStorageMigration, STORAGE_KEYS,
+    readJson,
+    readLocal,
+    writeLocal,
+    writeJson,
+    getOrCreateId,
+    setActiveUserId,
+    scopedKey,
+    runStorageMigration,
+    STORAGE_KEYS,
 } from '~/utils/storage';
 import type { GameResults, SpeedResults } from '~/utils/types';
 
@@ -126,8 +133,9 @@ async function doSync(userId: string) {
     // and move it to the user's namespaced bucket.
     const anonGameResults = readJson<GameResults>(STORAGE_KEYS.GAME_RESULTS);
     const anonSpeedResults = readJson<SpeedResults>(STORAGE_KEYS.SPEED_RESULTS);
-    const hasAnonData = (anonGameResults && Object.keys(anonGameResults).length > 0)
-        || (anonSpeedResults && Object.keys(anonSpeedResults).length > 0);
+    const hasAnonData =
+        (anonGameResults && Object.keys(anonGameResults).length > 0) ||
+        (anonSpeedResults && Object.keys(anonSpeedResults).length > 0);
 
     if (hasAnonData) {
         const deviceId = getOrCreateId(STORAGE_KEYS.CLIENT_ID);
@@ -161,7 +169,11 @@ async function doSync(userId: string) {
                     if (!existingUserGame[key]) existingUserGame[key] = [];
                     for (const r of results) {
                         const dateStr = new Date(r.date as string).toISOString();
-                        if (!existingUserGame[key].some(e => new Date(e.date as string).toISOString() === dateStr)) {
+                        if (
+                            !existingUserGame[key].some(
+                                (e) => new Date(e.date as string).toISOString() === dateStr
+                            )
+                        ) {
                             existingUserGame[key].push(r);
                         }
                     }
@@ -172,7 +184,7 @@ async function doSync(userId: string) {
                 for (const [key, results] of Object.entries(anonSpeedResults)) {
                     if (!existingUserSpeed[key]) existingUserSpeed[key] = [];
                     for (const r of results) {
-                        if (!existingUserSpeed[key].some(e => e.date === r.date)) {
+                        if (!existingUserSpeed[key].some((e) => e.date === r.date)) {
                             existingUserSpeed[key].push(r);
                         }
                     }
@@ -204,7 +216,7 @@ async function pullResults(userId: string) {
             ? `/api/user/stats?since=${encodeURIComponent(lastSync)}`
             : '/api/user/stats';
 
-        const { results, settings: serverSettings } = await $fetch(url) as {
+        const { results, settings: serverSettings } = (await $fetch(url)) as {
             results: ServerResult[];
             settings: Record<string, boolean | string>;
         };
@@ -241,9 +253,18 @@ async function pullResults(userId: string) {
                     const playedAt = new Date(r.playedAt);
                     const dateStr = playedAt.toISOString().slice(0, 10);
 
-                    const alreadyExists = r.playType === 'daily'
-                        ? existing.some((e) => new Date(e.date as string).toISOString().slice(0, 10) === dateStr)
-                        : existing.some((e) => new Date(e.date as string).toISOString() === playedAt.toISOString());
+                    const alreadyExists =
+                        r.playType === 'daily'
+                            ? existing.some(
+                                  (e) =>
+                                      new Date(e.date as string).toISOString().slice(0, 10) ===
+                                      dateStr
+                              )
+                            : existing.some(
+                                  (e) =>
+                                      new Date(e.date as string).toISOString() ===
+                                      playedAt.toISOString()
+                              );
 
                     if (!alreadyExists && r.won !== null) {
                         existing.push({
@@ -272,11 +293,16 @@ async function pullResults(userId: string) {
             if (typeof s.darkMode === 'boolean') settings.setDarkMode(s.darkMode);
             if (typeof s.hardMode === 'boolean') settings.setHardMode(s.hardMode);
             if (typeof s.highContrast === 'boolean') settings.setHighContrast(s.highContrast);
-            if (typeof s.feedbackEnabled === 'boolean') settings.setFeedbackEnabled(s.feedbackEnabled);
-            if (typeof s.wordInfoEnabled === 'boolean') settings.setWordInfoEnabled(s.wordInfoEnabled);
-            if (typeof s.animationsEnabled === 'boolean') settings.setAnimationsEnabled(s.animationsEnabled);
+            if (typeof s.feedbackEnabled === 'boolean')
+                settings.setFeedbackEnabled(s.feedbackEnabled);
+            if (typeof s.wordInfoEnabled === 'boolean')
+                settings.setWordInfoEnabled(s.wordInfoEnabled);
+            if (typeof s.animationsEnabled === 'boolean')
+                settings.setAnimationsEnabled(s.animationsEnabled);
             if (typeof s.preferredLanguage === 'string') {
-                try { localStorage.setItem(STORAGE_KEYS.PREFERRED_LANGUAGE, s.preferredLanguage); } catch {}
+                try {
+                    localStorage.setItem(STORAGE_KEYS.PREFERRED_LANGUAGE, s.preferredLanguage);
+                } catch {}
             }
         }
     } catch {

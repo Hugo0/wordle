@@ -24,8 +24,18 @@ export function useProductStreak() {
         });
 
         // Keep reactive after mount
-        watch(() => statsStore.totalStats.current_overall_streak, (v) => { streak.value = v; });
-        watch(() => statsStore.totalStats.longest_overall_streak, (v) => { bestStreak.value = v; });
+        watch(
+            () => statsStore.totalStats.current_overall_streak,
+            (v) => {
+                streak.value = v;
+            }
+        );
+        watch(
+            () => statsStore.totalStats.longest_overall_streak,
+            (v) => {
+                bestStreak.value = v;
+            }
+        );
     }
 
     return { streak, bestStreak };

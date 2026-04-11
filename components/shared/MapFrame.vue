@@ -49,12 +49,7 @@ const emit = defineEmits<{
 }>();
 
 // ── Expand state (FLIP animation) ────────────────────────────────────────
-const {
-    isExpanded,
-    elRef: outerRef,
-    toggle: toggleExpand,
-    collapse,
-} = useFlipExpand();
+const { isExpanded, elRef: outerRef, toggle: toggleExpand, collapse } = useFlipExpand();
 
 // ── Zoom ──────────────────────────────────────────────────────────────────
 const ZOOM_STEP = 1.25;
@@ -99,10 +94,7 @@ function onPointerMove(e: PointerEvent) {
     if (!isPanning) return;
     const dx = e.clientX - panStart[0];
     const dy = e.clientY - panStart[1];
-    emit('update:panOffset', [
-        panStartOffset[0] + dx,
-        panStartOffset[1] + dy,
-    ]);
+    emit('update:panOffset', [panStartOffset[0] + dx, panStartOffset[1] + dy]);
 }
 
 function onPointerUp(_e: PointerEvent) {
@@ -156,25 +148,13 @@ const frameSize = computed(() => {
 </script>
 
 <template>
-    <div
-        ref="frameRef"
-        class="map-frame"
-        tabindex="0"
-    >
+    <div ref="frameRef" class="map-frame" tabindex="0">
         <!-- Backdrop when expanded -->
         <Transition name="backdrop-fade">
-            <div
-                v-if="isExpanded"
-                class="map-expanded-backdrop"
-                @click="collapse"
-            />
+            <div v-if="isExpanded" class="map-expanded-backdrop" @click="collapse" />
         </Transition>
 
-        <div
-            ref="outerRef"
-            class="map-outer"
-            :class="{ 'map-expanded': isExpanded }"
-        >
+        <div ref="outerRef" class="map-outer" :class="{ 'map-expanded': isExpanded }">
             <!-- The content wrap has `position: relative` so the controls
                  are positioned relative to the actual map content, not the
                  expanded wrapper (which may be wider than the canvas). -->
@@ -194,14 +174,46 @@ const frameSize = computed(() => {
                         :aria-label="isExpanded ? 'Collapse map' : 'Expand map'"
                         @click.stop="toggleExpand"
                     >
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path v-if="!isExpanded" d="M3 3h7M3 3v7M3 3l7 7M21 21h-7M21 21v-7M21 21l-7-7" />
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <path
+                                v-if="!isExpanded"
+                                d="M3 3h7M3 3v7M3 3l7 7M21 21h-7M21 21v-7M21 21l-7-7"
+                            />
                             <path v-else d="M10 3v7H3M14 21v-7h7M10 10L3 3M14 14l7 7" />
                         </svg>
                     </button>
-                    <button type="button" class="map-ctrl-btn" aria-label="Zoom in" @click.stop="zoomIn">+</button>
-                    <button type="button" class="map-ctrl-btn" aria-label="Zoom out" @click.stop="zoomOut">−</button>
-                    <button v-if="hasCustomView" type="button" class="map-ctrl-btn" aria-label="Reset view" @click.stop="resetView">⟲</button>
+                    <button
+                        type="button"
+                        class="map-ctrl-btn"
+                        aria-label="Zoom in"
+                        @click.stop="zoomIn"
+                    >
+                        +
+                    </button>
+                    <button
+                        type="button"
+                        class="map-ctrl-btn"
+                        aria-label="Zoom out"
+                        @click.stop="zoomOut"
+                    >
+                        −
+                    </button>
+                    <button
+                        v-if="hasCustomView"
+                        type="button"
+                        class="map-ctrl-btn"
+                        aria-label="Reset view"
+                        @click.stop="resetView"
+                    >
+                        ⟲
+                    </button>
                 </div>
 
                 <slot :expanded="isExpanded" :frame-size="frameSize" />

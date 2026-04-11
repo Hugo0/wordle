@@ -41,9 +41,7 @@ describe('Sitemap hreflang', () => {
     it('sub-page language variants have x-default pointing to /en{path}', async () => {
         mainXml = mainXml || (await fetchXml('/sitemap-main.xml'));
         // Mode pages use /en/{mode} as x-default (no language-neutral equivalent)
-        expect(mainXml).toContain(
-            'hreflang="x-default" href="https://wordle.global/en/unlimited"'
-        );
+        expect(mainXml).toContain('hreflang="x-default" href="https://wordle.global/en/unlimited"');
     });
 
     it('remaps ckb to ku in hreflang tag', async () => {
@@ -104,9 +102,7 @@ describe('Sitemap hreflang', () => {
     it('game mode pages have hreflang', async () => {
         mainXml = mainXml || (await fetchXml('/sitemap-main.xml'));
         // Find an unlimited mode URL block
-        const unlimitedIdx = mainXml.indexOf(
-            '<loc>https://wordle.global/en/unlimited</loc>'
-        );
+        const unlimitedIdx = mainXml.indexOf('<loc>https://wordle.global/en/unlimited</loc>');
         expect(unlimitedIdx).toBeGreaterThan(-1);
         const block = mainXml.slice(
             mainXml.lastIndexOf('<url>', unlimitedIdx),

@@ -74,9 +74,7 @@ export function buildHreflangXml(languages: HreflangEntry[], pathSuffix: string)
     // with Accept-Language detection). For sub-pages (modes, archives, etc.),
     // point to the English version since there's no language-neutral equivalent.
     const xDefaultHref = pathSuffix === '' ? `${BASE}/` : `${BASE}/en${pathSuffix}`;
-    lines.push(
-        `    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultHref}"/>`
-    );
+    lines.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultHref}"/>`);
 
     return lines;
 }

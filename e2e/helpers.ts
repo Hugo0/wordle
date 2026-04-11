@@ -55,5 +55,7 @@ export async function waitForFlip(page: Page) {
     // Wait for at least 5 colored tiles — the stagger animation reveals them sequentially
     await expect(
         page.locator('.game-board .tile[class*="correct"], .game-board .tile[class*="incorrect"]')
-    ).toHaveCount(5, { timeout: 5000 }).catch(() => {});
+    )
+        .toHaveCount(5, { timeout: 5000 })
+        .catch(() => {});
 }

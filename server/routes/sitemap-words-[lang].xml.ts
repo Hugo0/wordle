@@ -1,9 +1,5 @@
 import { loadAllData } from '../utils/data-loader';
-import {
-    getTodaysIdx,
-    idxToDate,
-    iterateHistoricalWords,
-} from '../utils/word-selection';
+import { getTodaysIdx, idxToDate, iterateHistoricalWords } from '../utils/word-selection';
 
 /**
  * Per-language sitemap of historical daily words. URLs are keyed by word

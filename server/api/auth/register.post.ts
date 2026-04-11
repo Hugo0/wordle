@@ -34,7 +34,10 @@ export default defineEventHandler(async (event) => {
 
     const existing = await prisma.user.findUnique({ where: { email: body.email.toLowerCase() } });
     if (existing) {
-        throw createError({ statusCode: 409, message: 'An account with this email already exists' });
+        throw createError({
+            statusCode: 409,
+            message: 'An account with this email already exists',
+        });
     }
 
     const passwordHash = await bcrypt.hash(body.password, 14);

@@ -4,7 +4,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 import { useStatsStore } from '../../stores/stats';
-import { buildStatsKey, createGameConfig, isClassicDailyStatsKey, isDailyStatsKey } from '../../utils/game-modes';
+import {
+    buildStatsKey,
+    createGameConfig,
+    isClassicDailyStatsKey,
+    isDailyStatsKey,
+} from '../../utils/game-modes';
 
 // jsdom provides localStorage natively when import.meta.client = true
 
@@ -293,8 +298,16 @@ describe('Stats Store', () => {
             // which isDailyStatsKey treats as daily — this is intentional since
             // unlimited is now classic with playType: 'unlimited'
             expect(isDailyStatsKey(buildStatsKey(createGameConfig('unlimited', 'en')))).toBe(true);
-            expect(isDailyStatsKey(buildStatsKey(createGameConfig('dordle', 'en', { playType: 'unlimited' })))).toBe(false);
-            expect(isDailyStatsKey(buildStatsKey(createGameConfig('speed', 'en', { playType: 'unlimited' })))).toBe(false);
+            expect(
+                isDailyStatsKey(
+                    buildStatsKey(createGameConfig('dordle', 'en', { playType: 'unlimited' }))
+                )
+            ).toBe(false);
+            expect(
+                isDailyStatsKey(
+                    buildStatsKey(createGameConfig('speed', 'en', { playType: 'unlimited' }))
+                )
+            ).toBe(false);
         });
     });
 

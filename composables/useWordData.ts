@@ -184,9 +184,9 @@ export function useWordData() {
             // Resolve basic (reuse prefetch cache if available)
             const basicPromise = _basicCache.has(basicKey)
                 ? _basicCache.get(basicKey)!
-                : $fetch<WordBasic>(
-                      `/api/${lang}/word/${encodeURIComponent(slug)}`
-                  ).catch(() => null);
+                : $fetch<WordBasic>(`/api/${lang}/word/${encodeURIComponent(slug)}`).catch(
+                      () => null
+                  );
 
             // For word-name slugs, fire explore in parallel (slug IS the word)
             const exploreKey = cacheKey(lang, slug, relativeTo);
@@ -198,9 +198,7 @@ export function useWordData() {
                     const exploreUrl = relativeTo
                         ? `/api/${lang}/word-explore/${encodeURIComponent(slug)}?relativeTo=${encodeURIComponent(relativeTo)}`
                         : `/api/${lang}/word-explore/${encodeURIComponent(slug)}`;
-                    explorePromise = $fetch<WordExploreData>(exploreUrl).catch(
-                        () => null
-                    );
+                    explorePromise = $fetch<WordExploreData>(exploreUrl).catch(() => null);
                 }
             }
 
@@ -221,9 +219,7 @@ export function useWordData() {
                     const exploreUrl = relativeTo
                         ? `/api/${lang}/word-explore/${encodeURIComponent(basic.word)}?relativeTo=${encodeURIComponent(relativeTo)}`
                         : `/api/${lang}/word-explore/${encodeURIComponent(basic.word)}`;
-                    explore = await $fetch<WordExploreData>(exploreUrl).catch(
-                        () => null
-                    );
+                    explore = await $fetch<WordExploreData>(exploreUrl).catch(() => null);
                 }
             }
 

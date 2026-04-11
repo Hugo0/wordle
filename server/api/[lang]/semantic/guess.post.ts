@@ -83,11 +83,7 @@ export default defineEventHandler(async (event) => {
     const guessProjections = projectAllAxes(data, guessVec);
     const normalizedGuessProjections: Record<string, number> = {};
     for (const axis of data.axesNames) {
-        normalizedGuessProjections[axis] = normalizeProjection(
-            data,
-            axis,
-            guessProjections[axis]!
-        );
+        normalizedGuessProjections[axis] = normalizeProjection(data, axis, guessProjections[axis]!);
     }
 
     // Compass hints: iterative Gram-Schmidt matching pursuit. Return up to 5

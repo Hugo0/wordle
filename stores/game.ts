@@ -28,7 +28,13 @@ import { toFinalForm } from '~/utils/positional';
 import { splitWord } from '~/utils/graphemes';
 import { calculateCommunityPercentile } from '~/utils/stats';
 import { wordDetailPath } from '~/utils/wordUrls';
-import { WORD_LENGTH, MAX_GUESSES, createBoardState, createKeyStates, rowToEmoji } from '~/utils/types';
+import {
+    WORD_LENGTH,
+    MAX_GUESSES,
+    createBoardState,
+    createKeyStates,
+    rowToEmoji,
+} from '~/utils/types';
 import type { KeyState, TileColor, Notification, BoardState } from '~/utils/types';
 import {
     createGameConfig,
@@ -41,7 +47,14 @@ import type { GameConfig, GameMode } from '~/utils/game-modes';
 import { computeRowColors } from '~/utils/game/colorAlgorithm';
 import type { NormalizationContext } from '~/utils/game/colorAlgorithm';
 import { animateRevealRow, animateKeyNudge } from '~/utils/game/useGameAnimations';
-import { getOrCreateId, readLocal, writeLocal, readJson, writeJson, STORAGE_KEYS } from '~/utils/storage';
+import {
+    getOrCreateId,
+    readLocal,
+    writeLocal,
+    readJson,
+    writeJson,
+    STORAGE_KEYS,
+} from '~/utils/storage';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -1813,7 +1826,11 @@ export const useGameStore = defineStore('game', () => {
     }
 
     /** Load multi-board state from localStorage. Returns true if restored. */
-    function loadMultiBoardFromLocalStorage(mode: GameMode, targetWords: string[], playType?: PlayType): boolean {
+    function loadMultiBoardFromLocalStorage(
+        mode: GameMode,
+        targetWords: string[],
+        playType?: PlayType
+    ): boolean {
         if (!import.meta.client) return false;
         try {
             const lang = useLanguageStore();

@@ -60,18 +60,14 @@ export function semanticRuntimeCacheExists(): boolean {
 export async function generateSemanticRuntimeData(): Promise<boolean> {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-        consola.warn(
-            '[semantic generate] OPENAI_API_KEY missing — cannot regenerate embeddings'
-        );
+        consola.warn('[semantic generate] OPENAI_API_KEY missing — cannot regenerate embeddings');
         return false;
     }
 
     const vocabPath = join(SEMANTIC_STATIC_DIR, 'vocabulary.json');
     const targetsPath = join(SEMANTIC_STATIC_DIR, 'targets.json');
     if (!existsSync(vocabPath) || !existsSync(targetsPath)) {
-        consola.warn(
-            '[semantic generate] vocabulary.json or targets.json missing from static dir'
-        );
+        consola.warn('[semantic generate] vocabulary.json or targets.json missing from static dir');
         return false;
     }
 
@@ -155,10 +151,7 @@ export async function generateSemanticRuntimeData(): Promise<boolean> {
     return true;
 }
 
-async function fetchEmbeddingBatch(
-    apiKey: string,
-    words: string[]
-): Promise<number[][]> {
+async function fetchEmbeddingBatch(apiKey: string, words: string[]): Promise<number[][]> {
     // Simple retry loop: 3 attempts with backoff. OpenAI occasionally 503s
     // during large batch fills.
     let lastError: unknown = null;

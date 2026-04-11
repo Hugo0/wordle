@@ -7,7 +7,9 @@
             aria-live="polite"
             @click="dismiss()"
         >
-            <div class="w-10 h-10 rounded-full bg-correct/10 text-correct flex items-center justify-center flex-shrink-0">
+            <div
+                class="w-10 h-10 rounded-full bg-correct/10 text-correct flex items-center justify-center flex-shrink-0"
+            >
                 <component :is="icon" :size="22" />
             </div>
             <div class="min-w-0">
@@ -21,14 +23,33 @@
 
 <script setup lang="ts">
 import {
-    Sword, Star, Target, Globe, Crown, Flame, Trophy, Zap,
-    CalendarCheck, Map, Award,
+    Sword,
+    Star,
+    Target,
+    Globe,
+    Crown,
+    Flame,
+    Trophy,
+    Zap,
+    CalendarCheck,
+    Map,
+    Award,
 } from 'lucide-vue-next';
 
 const { currentBadge: badge, dismissBadge } = useBadgeNotification();
 
 const ICONS: Record<string, typeof Award> = {
-    Sword, Star, Target, Globe, Crown, Flame, Trophy, Zap, CalendarCheck, Map, Award,
+    Sword,
+    Star,
+    Target,
+    Globe,
+    Crown,
+    Flame,
+    Trophy,
+    Zap,
+    CalendarCheck,
+    Map,
+    Award,
 };
 
 const icon = computed(() => ICONS[badge.value?.icon ?? ''] || Award);

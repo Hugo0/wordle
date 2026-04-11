@@ -68,10 +68,13 @@ const wordArtLoaded = reactive(new Set<number>());
 const modeLabel = computed(() => modeConfig.value?.label ?? 'Classic');
 const title = computed(() => {
     if (isClassic.value) {
-        return interpolate(wordArchiveMeta.title || 'Wordle {langNative} — All Words | Word Archive', {
-            langNative: langNameNative.value,
-            count: todaysIdx.value,
-        });
+        return interpolate(
+            wordArchiveMeta.title || 'Wordle {langNative} — All Words | Word Archive',
+            {
+                langNative: langNameNative.value,
+                count: todaysIdx.value,
+            }
+        );
     }
     return `${modeLabel.value} Archive — Wordle ${langNameNative.value}`;
 });
@@ -243,259 +246,255 @@ onMounted(() => {
 
 <template>
     <AppShell :lang="lang" :lang-name="langNameNative" :ui="ui">
-    <div class="archive-page">
-        <header class="archive-header">
-            <div class="eyebrow">
-                Wordle {{ langNameNative }} &middot; Archive
+        <div class="archive-page">
+            <header class="archive-header">
+                <div class="eyebrow">Wordle {{ langNameNative }} &middot; Archive</div>
+                <h1 class="headline">{{ label('all_words', 'All Words') }}</h1>
+                <p class="subtitle">
+                    <em>{{ todaysIdx.toLocaleString() }}</em>
+                    {{ label('daily_words_counting', 'daily words and counting') }}
+                </p>
+            </header>
+
+            <!-- Mode filter tabs -->
+            <div class="mode-tabs">
+                <NuxtLink
+                    v-for="tab in archiveModes"
+                    :key="tab.mode"
+                    :to="`/${lang}/archive${tab.mode === 'classic' ? '' : `?mode=${tab.mode}`}`"
+                    class="mode-tab"
+                    :class="{ active: activeMode === tab.mode }"
+                >
+                    {{ tab.label }}
+                </NuxtLink>
             </div>
-            <h1 class="headline">{{ label('all_words', 'All Words') }}</h1>
-            <p class="subtitle">
-                <em>{{ todaysIdx.toLocaleString() }}</em>
-                {{ label('daily_words_counting', 'daily words and counting') }}
-            </p>
-        </header>
 
-        <!-- Mode filter tabs -->
-        <div class="mode-tabs">
-            <NuxtLink
-                v-for="tab in archiveModes"
-                :key="tab.mode"
-                :to="`/${lang}/archive${tab.mode === 'classic' ? '' : `?mode=${tab.mode}`}`"
-                class="mode-tab"
-                :class="{ active: activeMode === tab.mode }"
-            >
-                {{ tab.label }}
-            </NuxtLink>
-        </div>
-
-        <!-- Empty state for modes that haven't launched yet -->
-        <div v-if="totalPages === 0" class="empty-state">
-            <p class="empty-message">
-                {{ modeLabel }} daily mode launches soon.
-                Check back after the first daily puzzle!
-            </p>
-            <NuxtLink :to="`/${lang}`" class="text-btn accent">
-                {{ label('play_todays_wordle', "Play Today's Wordle") }}
-            </NuxtLink>
-        </div>
-
-        <div v-if="totalPages > 0" class="word-grid">
-            <template v-for="(w, wi) in words" :key="w.day_idx">
-                <!-- Today's word (locked) — classic only has word detail pages -->
-                <NuxtLink
-                    v-if="w.is_today && isClassic && !todayRevealed"
-                    :to="`/${lang}`"
-                    class="card card-today-locked"
-                    :style="{ animationDelay: `${wi * 30}ms` }"
-                >
-                    <div class="day-meta">
-                        <span class="day-idx">#{{ w.day_idx }}</span>
-                        <span class="day-date">{{ formatDate(w.date) }}</span>
-                    </div>
-                    <div class="word-display masked">
-                        <span v-for="i in 5" :key="i" class="mask-dot">?</span>
-                    </div>
-                    <div class="card-note accent">
-                        {{ label('todays_word_reveal', 'Play to reveal') }}
-                    </div>
+            <!-- Empty state for modes that haven't launched yet -->
+            <div v-if="totalPages === 0" class="empty-state">
+                <p class="empty-message">
+                    {{ modeLabel }} daily mode launches soon. Check back after the first daily
+                    puzzle!
+                </p>
+                <NuxtLink :to="`/${lang}`" class="text-btn accent">
+                    {{ label('play_todays_wordle', "Play Today's Wordle") }}
                 </NuxtLink>
+            </div>
 
-                <!-- Today's word (revealed) — classic only -->
-                <NuxtLink
-                    v-else-if="w.is_today && isClassic && todayRevealed"
-                    :to="wordDetailPath(lang, todayRevealed)"
-                    class="card card-today"
-                    :style="{ animationDelay: `${wi * 30}ms` }"
-                >
-                    <div class="day-meta">
-                        <span class="day-idx">#{{ w.day_idx }}</span>
-                        <span class="day-date">{{ label('today', 'Today') }}</span>
-                    </div>
-                    <div class="word-display">{{ todayRevealed }}</div>
-                    <div class="card-note accent">{{ formatDate(w.date) }}</div>
-                </NuxtLink>
-
-                <!-- Today's entry for non-classic modes — link to game page -->
-                <NuxtLink
-                    v-else-if="w.is_today && !isClassic"
-                    :to="todayGameRoute"
-                    class="card card-today-locked"
-                    :style="{ animationDelay: `${wi * 30}ms` }"
-                >
-                    <div class="day-meta">
-                        <span class="day-idx">#{{ w.day_idx }}</span>
-                        <span class="day-date">{{ label('today', 'Today') }}</span>
-                    </div>
-                    <div class="word-display masked">
-                        <span v-for="i in 5" :key="i" class="mask-dot">?</span>
-                    </div>
-                    <div class="card-note accent">
-                        Play today's {{ modeLabel }}
-                    </div>
-                </NuxtLink>
-
-                <!-- Past word: classic (single word with definition + art) -->
-                <NuxtLink
-                    v-else-if="isClassic"
-                    :to="wordDetailPathOrIdx(lang, w)"
-                    class="card"
-                    :class="{ 'card-played': completedDays.has(w.day_idx) }"
-                    :style="{ animationDelay: `${wi * 30}ms` }"
-                >
-                    <div class="day-meta">
-                        <span class="day-idx">#{{ w.day_idx }}</span>
-                        <span v-if="completedDays.has(w.day_idx)" class="played-mark" title="Played">
-                            ✓
-                        </span>
-                    </div>
-
-                    <div class="word-display">{{ w.word }}</div>
-
-                    <div
-                        v-show="w.word && wordArtLoaded.has(w.day_idx)"
-                        class="art-frame"
+            <div v-if="totalPages > 0" class="word-grid">
+                <template v-for="(w, wi) in words" :key="w.day_idx">
+                    <!-- Today's word (locked) — classic only has word detail pages -->
+                    <NuxtLink
+                        v-if="w.is_today && isClassic && !todayRevealed"
+                        :to="`/${lang}`"
+                        class="card card-today-locked"
+                        :style="{ animationDelay: `${wi * 30}ms` }"
                     >
-                        <img
-                            :src="`/api/${lang}/word-image/${w.word}?day_idx=${w.day_idx}`"
-                            :alt="w.word || ''"
-                            class="art"
-                            loading="lazy"
-                            @load="wordArtLoaded.add(w.day_idx)"
-                        />
-                    </div>
+                        <div class="day-meta">
+                            <span class="day-idx">#{{ w.day_idx }}</span>
+                            <span class="day-date">{{ formatDate(w.date) }}</span>
+                        </div>
+                        <div class="word-display masked">
+                            <span v-for="i in 5" :key="i" class="mask-dot">?</span>
+                        </div>
+                        <div class="card-note accent">
+                            {{ label('todays_word_reveal', 'Play to reveal') }}
+                        </div>
+                    </NuxtLink>
 
-                    <div v-if="w.definition && w.definition.definition" class="definition-snippet">
-                        <span
-                            v-if="w.definition.part_of_speech"
-                            class="pos"
+                    <!-- Today's word (revealed) — classic only -->
+                    <NuxtLink
+                        v-else-if="w.is_today && isClassic && todayRevealed"
+                        :to="wordDetailPath(lang, todayRevealed)"
+                        class="card card-today"
+                        :style="{ animationDelay: `${wi * 30}ms` }"
+                    >
+                        <div class="day-meta">
+                            <span class="day-idx">#{{ w.day_idx }}</span>
+                            <span class="day-date">{{ label('today', 'Today') }}</span>
+                        </div>
+                        <div class="word-display">{{ todayRevealed }}</div>
+                        <div class="card-note accent">{{ formatDate(w.date) }}</div>
+                    </NuxtLink>
+
+                    <!-- Today's entry for non-classic modes — link to game page -->
+                    <NuxtLink
+                        v-else-if="w.is_today && !isClassic"
+                        :to="todayGameRoute"
+                        class="card card-today-locked"
+                        :style="{ animationDelay: `${wi * 30}ms` }"
+                    >
+                        <div class="day-meta">
+                            <span class="day-idx">#{{ w.day_idx }}</span>
+                            <span class="day-date">{{ label('today', 'Today') }}</span>
+                        </div>
+                        <div class="word-display masked">
+                            <span v-for="i in 5" :key="i" class="mask-dot">?</span>
+                        </div>
+                        <div class="card-note accent">Play today's {{ modeLabel }}</div>
+                    </NuxtLink>
+
+                    <!-- Past word: classic (single word with definition + art) -->
+                    <NuxtLink
+                        v-else-if="isClassic"
+                        :to="wordDetailPathOrIdx(lang, w)"
+                        class="card"
+                        :class="{ 'card-played': completedDays.has(w.day_idx) }"
+                        :style="{ animationDelay: `${wi * 30}ms` }"
+                    >
+                        <div class="day-meta">
+                            <span class="day-idx">#{{ w.day_idx }}</span>
+                            <span
+                                v-if="completedDays.has(w.day_idx)"
+                                class="played-mark"
+                                title="Played"
+                            >
+                                ✓
+                            </span>
+                        </div>
+
+                        <div class="word-display">{{ w.word }}</div>
+
+                        <div v-show="w.word && wordArtLoaded.has(w.day_idx)" class="art-frame">
+                            <img
+                                :src="`/api/${lang}/word-image/${w.word}?day_idx=${w.day_idx}`"
+                                :alt="w.word || ''"
+                                class="art"
+                                loading="lazy"
+                                @load="wordArtLoaded.add(w.day_idx)"
+                            />
+                        </div>
+
+                        <div
+                            v-if="w.definition && w.definition.definition"
+                            class="definition-snippet"
                         >
-                            {{ translatePos(w.definition.part_of_speech, ui) }}
-                        </span>
-                        <span class="def-body">
-                            {{
-                                w.definition.definition.length > 100
-                                    ? w.definition.definition.slice(0, 100) + '\u2026'
-                                    : w.definition.definition
-                            }}
-                        </span>
+                            <span v-if="w.definition.part_of_speech" class="pos">
+                                {{ translatePos(w.definition.part_of_speech, ui) }}
+                            </span>
+                            <span class="def-body">
+                                {{
+                                    w.definition.definition.length > 100
+                                        ? w.definition.definition.slice(0, 100) + '\u2026'
+                                        : w.definition.definition
+                                }}
+                            </span>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="day-date">{{ formatDate(w.date) }}</span>
+                            <span v-if="w.stats && w.stats.total > 0" class="stats">
+                                {{ w.stats.total }}
+                                {{
+                                    w.stats.total === 1
+                                        ? label('play', 'play')
+                                        : label('plays', 'plays')
+                                }}
+                                &middot;
+                                {{ winRate(w.stats) }}% {{ label('win', 'win') }}
+                            </span>
+                        </div>
+                    </NuxtLink>
+
+                    <!-- Past word: multi-board modes (show all N words) -->
+                    <div
+                        v-else-if="isMultiBoard"
+                        class="card"
+                        :style="{ animationDelay: `${wi * 30}ms` }"
+                    >
+                        <div class="day-meta">
+                            <span class="day-idx">#{{ w.day_idx }}</span>
+                            <span class="mode-badge">{{ modeLabel }}</span>
+                        </div>
+
+                        <div class="multi-words">
+                            <span
+                                v-for="(mw, mwi) in w.words || [w.word]"
+                                :key="mwi"
+                                class="multi-word"
+                                >{{ mw }}</span
+                            >
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="day-date">{{ formatDate(w.date) }}</span>
+                            <span class="stats">
+                                {{ w.board_count }} {{ label('boards', 'boards') }}
+                            </span>
+                        </div>
                     </div>
 
-                    <div class="card-footer">
-                        <span class="day-date">{{ formatDate(w.date) }}</span>
-                        <span v-if="w.stats && w.stats.total > 0" class="stats">
-                            {{ w.stats.total }} {{ w.stats.total === 1 ? label('play', 'play') : label('plays', 'plays') }}
-                            &middot;
-                            {{ winRate(w.stats) }}% {{ label('win', 'win') }}
-                        </span>
+                    <!-- Past word: speed / semantic (single word, no art) -->
+                    <div v-else class="card" :style="{ animationDelay: `${wi * 30}ms` }">
+                        <div class="day-meta">
+                            <span class="day-idx">#{{ w.day_idx }}</span>
+                            <span class="mode-badge">{{ modeLabel }}</span>
+                        </div>
+
+                        <div class="word-display">{{ w.word }}</div>
+
+                        <div
+                            v-if="w.definition && w.definition.definition"
+                            class="definition-snippet"
+                        >
+                            <span v-if="w.definition.part_of_speech" class="pos">
+                                {{ translatePos(w.definition.part_of_speech, ui) }}
+                            </span>
+                            <span class="def-body">
+                                {{
+                                    w.definition.definition.length > 100
+                                        ? w.definition.definition.slice(0, 100) + '\u2026'
+                                        : w.definition.definition
+                                }}
+                            </span>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="day-date">{{ formatDate(w.date) }}</span>
+                            <span v-if="w.stats && w.stats.total > 0" class="stats">
+                                {{ w.stats.total }}
+                                {{
+                                    w.stats.total === 1
+                                        ? label('play', 'play')
+                                        : label('plays', 'plays')
+                                }}
+                                &middot;
+                                {{ winRate(w.stats) }}% {{ label('win', 'win') }}
+                            </span>
+                        </div>
                     </div>
+                </template>
+            </div>
+
+            <nav v-if="totalPages > 1" class="pagination">
+                <NuxtLink v-if="page > 1" :to="archiveLink({ page: page - 1 })" class="text-btn">
+                    &larr; Newer
                 </NuxtLink>
-
-                <!-- Past word: multi-board modes (show all N words) -->
-                <div
-                    v-else-if="isMultiBoard"
-                    class="card"
-                    :style="{ animationDelay: `${wi * 30}ms` }"
+                <span class="mono-label tabular-nums">
+                    {{ label('page', 'Page') }} {{ page }} / {{ totalPages }}
+                </span>
+                <NuxtLink
+                    v-if="page < totalPages"
+                    :to="archiveLink({ page: page + 1 })"
+                    class="text-btn"
                 >
-                    <div class="day-meta">
-                        <span class="day-idx">#{{ w.day_idx }}</span>
-                        <span class="mode-badge">{{ modeLabel }}</span>
-                    </div>
+                    Older &rarr;
+                </NuxtLink>
+            </nav>
 
-                    <div class="multi-words">
-                        <span
-                            v-for="(mw, mwi) in (w.words || [w.word])"
-                            :key="mwi"
-                            class="multi-word"
-                        >{{ mw }}</span>
-                    </div>
+            <div class="cta-wrap">
+                <NuxtLink :to="`/${lang}`" class="text-btn accent">
+                    {{ label('play_todays_wordle', "Play Today's Wordle") }}
+                </NuxtLink>
+            </div>
 
-                    <div class="card-footer">
-                        <span class="day-date">{{ formatDate(w.date) }}</span>
-                        <span class="stats">
-                            {{ w.board_count }} {{ label('boards', 'boards') }}
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Past word: speed / semantic (single word, no art) -->
-                <div
-                    v-else
-                    class="card"
-                    :style="{ animationDelay: `${wi * 30}ms` }"
-                >
-                    <div class="day-meta">
-                        <span class="day-idx">#{{ w.day_idx }}</span>
-                        <span class="mode-badge">{{ modeLabel }}</span>
-                    </div>
-
-                    <div class="word-display">{{ w.word }}</div>
-
-                    <div v-if="w.definition && w.definition.definition" class="definition-snippet">
-                        <span
-                            v-if="w.definition.part_of_speech"
-                            class="pos"
-                        >
-                            {{ translatePos(w.definition.part_of_speech, ui) }}
-                        </span>
-                        <span class="def-body">
-                            {{
-                                w.definition.definition.length > 100
-                                    ? w.definition.definition.slice(0, 100) + '\u2026'
-                                    : w.definition.definition
-                            }}
-                        </span>
-                    </div>
-
-                    <div class="card-footer">
-                        <span class="day-date">{{ formatDate(w.date) }}</span>
-                        <span v-if="w.stats && w.stats.total > 0" class="stats">
-                            {{ w.stats.total }} {{ w.stats.total === 1 ? label('play', 'play') : label('plays', 'plays') }}
-                            &middot;
-                            {{ winRate(w.stats) }}% {{ label('win', 'win') }}
-                        </span>
-                    </div>
-                </div>
-            </template>
+            <footer class="archive-footer">
+                <NuxtLink to="/stats">Global Stats</NuxtLink>
+                &middot;
+                <a href="https://github.com/Hugo0/wordle" target="_blank" rel="noopener noreferrer">
+                    Open source on GitHub
+                </a>
+            </footer>
         </div>
-
-        <nav v-if="totalPages > 1" class="pagination">
-            <NuxtLink
-                v-if="page > 1"
-                :to="archiveLink({ page: page - 1 })"
-                class="text-btn"
-            >
-                &larr; Newer
-            </NuxtLink>
-            <span class="mono-label tabular-nums">
-                {{ label('page', 'Page') }} {{ page }} / {{ totalPages }}
-            </span>
-            <NuxtLink
-                v-if="page < totalPages"
-                :to="archiveLink({ page: page + 1 })"
-                class="text-btn"
-            >
-                Older &rarr;
-            </NuxtLink>
-        </nav>
-
-        <div class="cta-wrap">
-            <NuxtLink :to="`/${lang}`" class="text-btn accent">
-                {{ label('play_todays_wordle', "Play Today's Wordle") }}
-            </NuxtLink>
-        </div>
-
-        <footer class="archive-footer">
-            <NuxtLink to="/stats">Global Stats</NuxtLink>
-            &middot;
-            <a
-                href="https://github.com/Hugo0/wordle"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Open source on GitHub
-            </a>
-        </footer>
-    </div>
     </AppShell>
 </template>
 
@@ -509,7 +508,9 @@ onMounted(() => {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
 }
-.mode-tabs::-webkit-scrollbar { display: none; }
+.mode-tabs::-webkit-scrollbar {
+    display: none;
+}
 .mode-tab {
     flex: none;
     padding: 10px 16px;
@@ -592,7 +593,10 @@ onMounted(() => {
     border: 1px solid var(--color-rule);
     text-decoration: none;
     color: inherit;
-    transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    transition:
+        border-color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
     position: relative;
     animation: card-in 400ms ease both;
 }
@@ -602,8 +606,14 @@ onMounted(() => {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 @keyframes card-in {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .card-today {
     border-color: var(--color-accent);

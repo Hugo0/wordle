@@ -284,7 +284,11 @@ const recentWords = computed(() => {
                             Wordle {{ seo.langNative }} #{{ todaysIdx }}
                         </p>
                         <a
-                            :href="todaysWord ? wordDetailPath(lang, todaysWord) : `/${lang}/word/${todaysIdx}`"
+                            :href="
+                                todaysWord
+                                    ? wordDetailPath(lang, todaysWord)
+                                    : `/${lang}/word/${todaysIdx}`
+                            "
                             class="inline-block text-sm text-muted underline hover:text-ink transition-colors"
                         >
                             See definition & word art
@@ -331,7 +335,10 @@ const recentWords = computed(() => {
                 </h3>
 
                 <!-- Tile color examples (reuses HelpModal tile pattern) -->
-                <div v-if="!isMultiBoard && mode !== 'speed' && mode !== 'semantic'" class="space-y-4 max-w-xs mx-auto">
+                <div
+                    v-if="!isMultiBoard && mode !== 'speed' && mode !== 'semantic'"
+                    class="space-y-4 max-w-xs mx-auto"
+                >
                     <div v-for="ex in EXAMPLES" :key="ex.type" class="space-y-1.5">
                         <div class="grid grid-cols-5 gap-1">
                             <div

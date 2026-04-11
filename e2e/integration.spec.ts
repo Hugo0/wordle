@@ -54,7 +54,7 @@ test.describe('Gameplay', () => {
         // Get today's word — use it in unlimited mode to guarantee a win
         const word = await getTodaysWord(request, 'en');
         if (!word) {
-            test.skip(true, 'Could not get today\'s word from API');
+            test.skip(true, "Could not get today's word from API");
             return;
         }
 
@@ -78,7 +78,8 @@ test.describe('Gameplay', () => {
         await page.waitForTimeout(2000);
         const bodyText = await page.locator('body').innerText();
         // Should see either the word revealed, stats, or share button
-        const gameEnded = bodyText.includes(word.toUpperCase()) ||
+        const gameEnded =
+            bodyText.includes(word.toUpperCase()) ||
             bodyText.includes('1/6') ||
             bodyText.includes('Share') ||
             bodyText.includes('SHARE');
@@ -152,10 +153,14 @@ test.describe('Persistence', () => {
         // For /en, the key is 'en' (or empty, in which case it falls back)
         const allKeys = await page.evaluate(() => Object.keys(localStorage));
         // Should have at least some game-related keys
-        const gameKeys = allKeys.filter(k =>
-            k === 'en' || k.includes('game') || k.includes('tutorial') || k.includes('settings')
+        const gameKeys = allKeys.filter(
+            (k) =>
+                k === 'en' || k.includes('game') || k.includes('tutorial') || k.includes('settings')
         );
-        expect(gameKeys.length, `Expected game keys in localStorage, got: ${allKeys.join(', ')}`).toBeGreaterThan(0);
+        expect(
+            gameKeys.length,
+            `Expected game keys in localStorage, got: ${allKeys.join(', ')}`
+        ).toBeGreaterThan(0);
     });
 
     test('stats accumulate across games in localStorage', async ({ page }) => {
@@ -319,7 +324,9 @@ test.describe('Badges', () => {
             expect(badge.name, `Badge ${badge.slug} missing name`).toBeTruthy();
             expect(badge.description, `Badge ${badge.slug} missing description`).toBeTruthy();
             expect(badge.category, `Badge ${badge.slug} missing category`).toBeTruthy();
-            expect(typeof badge.threshold, `Badge ${badge.slug} threshold should be number`).toBe('number');
+            expect(typeof badge.threshold, `Badge ${badge.slug} threshold should be number`).toBe(
+                'number'
+            );
         }
     });
 
@@ -457,13 +464,16 @@ test.describe('Auth Sync Flow', () => {
 
         // 2. Login in browser via API (sets session cookie)
         await page.goto('/');
-        await page.evaluate(async (creds) => {
-            await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(creds),
-            });
-        }, { email, password: 'TestPass123!' });
+        await page.evaluate(
+            async (creds) => {
+                await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(creds),
+                });
+            },
+            { email, password: 'TestPass123!' }
+        );
 
         // 3. Play a game
         await page.goto('/en');

@@ -153,9 +153,11 @@ class TestFieldValues:
 
 
 class TestConfigCompleteness:
-    """Ensure every language config has all keys defined in the defaults.
+    """Ensure language configs don't have keys absent from the defaults.
 
-    Prevents regressions when new translatable keys are added.
+    The runtime does a shallow merge: per-language sections override entire
+    default sections. This test catches typos and stale keys — NOT missing
+    translations (those fall back to defaults at runtime).
     """
 
     @pytest.fixture(scope="class")
@@ -168,46 +170,46 @@ class TestConfigCompleteness:
             return json.load(f)
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
-    def test_ui_keys_complete(self, lang, default_config):
+    def test_no_unknown_ui_keys(self, lang, default_config):
         config = load_language_config(lang)
         if config is None:
             pytest.skip(f"{lang}: No config file")
-        expected = set(default_config.get("ui", {}).keys())
+        allowed = set(default_config.get("ui", {}).keys())
         actual = set(config.get("ui", {}).keys())
-        missing = expected - actual
-        assert not missing, f"{lang}: Missing ui keys: {missing}"
+        unknown = actual - allowed
+        assert not unknown, f"{lang}: Unknown ui keys (typos?): {unknown}"
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
-    def test_text_keys_complete(self, lang, default_config):
+    def test_no_unknown_text_keys(self, lang, default_config):
         config = load_language_config(lang)
         if config is None:
             pytest.skip(f"{lang}: No config file")
-        expected = set(default_config.get("text", {}).keys())
+        allowed = set(default_config.get("text", {}).keys())
         actual = set(config.get("text", {}).keys())
-        missing = expected - actual
-        assert not missing, f"{lang}: Missing text keys: {missing}"
+        unknown = actual - allowed
+        assert not unknown, f"{lang}: Unknown text keys (typos?): {unknown}"
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
-    def test_help_keys_complete(self, lang, default_config):
+    def test_no_unknown_help_keys(self, lang, default_config):
         config = load_language_config(lang)
         if config is None:
             pytest.skip(f"{lang}: No config file")
-        expected = set(default_config.get("help", {}).keys())
+        allowed = set(default_config.get("help", {}).keys())
         actual = set(config.get("help", {}).keys())
-        missing = expected - actual
-        assert not missing, f"{lang}: Missing help keys: {missing}"
+        unknown = actual - allowed
+        assert not unknown, f"{lang}: Unknown help keys (typos?): {unknown}"
 
     @pytest.mark.parametrize("lang", ALL_LANGUAGES)
-    def test_seo_keys_complete(self, lang, default_config):
+    def test_no_unknown_seo_keys(self, lang, default_config):
         config = load_language_config(lang)
         if config is None:
             pytest.skip(f"{lang}: No config file")
         if "seo" not in config:
             pytest.skip(f"{lang}: No seo section")
-        expected = set(default_config.get("seo", {}).keys())
+        allowed = set(default_config.get("seo", {}).keys())
         actual = set(config.get("seo", {}).keys())
-        missing = expected - actual
-        assert not missing, f"{lang}: Missing seo keys: {missing}"
+        unknown = actual - allowed
+        assert not unknown, f"{lang}: Unknown seo keys (typos?): {unknown}"
 
 
 class TestKeyboardConfig:

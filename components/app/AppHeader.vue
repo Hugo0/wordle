@@ -43,7 +43,13 @@
             <button
                 v-if="subtitle"
                 class="font-mono text-muted pointer-events-auto cursor-pointer hover:text-ink transition-colors inline-flex items-center gap-1"
-                style="font-size: 10px; letter-spacing: 0.08em; background: none; border: none; padding: 0;"
+                style="
+                    font-size: 10px;
+                    letter-spacing: 0.08em;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                "
                 @click="$emit('openPlayType')"
             >
                 <img
@@ -51,7 +57,12 @@
                     :src="flagSrc"
                     alt=""
                     class="flag-icon"
-                    style="width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1);"
+                    style="
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        border: 1px solid rgba(0, 0, 0, 0.1);
+                    "
                 />
                 {{ subtitle }}
             </button>

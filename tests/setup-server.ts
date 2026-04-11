@@ -30,7 +30,7 @@ async function getFreePort(): Promise<number> {
 }
 
 /** Wait until the URL responds with a 200-range status. */
-async function waitForServer(url: string, timeoutMs = 60_000): Promise<void> {
+async function waitForServer(url: string, timeoutMs = 120_000): Promise<void> {
     const start = Date.now();
     while (Date.now() - start < timeoutMs) {
         try {

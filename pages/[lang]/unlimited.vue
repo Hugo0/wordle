@@ -15,7 +15,7 @@ definePageMeta({
 const route = useRoute();
 const lang = route.params.lang as string;
 
-const { data: gameData, error } = await useFetch(`/api/${lang}/data?minimal=1`, { key: `lang-data-min-${lang}` });
+const { data: gameData, error } = await useFetch(`/api/${lang}/data`, { key: `lang-data-${lang}` });
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }

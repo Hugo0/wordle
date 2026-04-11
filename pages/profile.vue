@@ -8,18 +8,12 @@
  */
 import { readJson } from '~/utils/storage';
 import { useAnimatedNumber } from '~/composables/useAnimatedNumber';
-import {
-    BarChart2,
-    Flame,
-    Square,
-    Zap,
-    ChevronRight,
-} from 'lucide-vue-next';
+import { BarChart2, Flame, Square, Zap, ChevronRight } from 'lucide-vue-next';
 import { isClassicDailyStatsKey, GAME_MODE_CONFIG, GAME_MODE_ORDER } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
 import type { SpeedAggregate } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
-import { buildDailyResultMap, toLocalDay, stepBack } from '~/utils/streak-dates';
+import { buildDailyResultMapDetailed, toLocalDay, stepBack } from '~/utils/streak-dates';
 import { useFlag } from '~/composables/useFlag';
 import type { GameResult } from '~/utils/types';
 
@@ -68,7 +62,7 @@ interface ModeStats {
 }
 
 // Mode icons come from GAME_MODES_UI — no duplication
-const getModeIcon = (mode: string) => GAME_MODES_UI.find(m => m.id === mode)?.icon || Square;
+const getModeIcon = (mode: string) => GAME_MODES_UI.find((m) => m.id === mode)?.icon || Square;
 
 // =========================================================================
 // State — derived from the stats store (single source of truth)
@@ -124,7 +118,9 @@ const { register: registerPasskey } = useWebAuthn({ registerEndpoint: '/api/weba
 async function addPasskey() {
     passkeyRegistering.value = true;
     try {
-        await registerPasskey({ userName: authUser.value?.displayName || authUser.value?.email || 'user' });
+        await registerPasskey({
+            userName: authUser.value?.displayName || authUser.value?.email || 'user',
+        });
         passkeyAdded.value = true;
     } catch {
         // User cancelled or failed
@@ -140,6 +136,8 @@ interface ProfileBadge {
     description: string;
     category: string;
     icon: string;
+    group?: string | null;
+    threshold?: number;
     earnedAt?: string;
 }
 
@@ -151,6 +149,7 @@ interface ProfileData {
 
 const profileData = ref<ProfileData | null>(null);
 const allBadges = ref<ProfileBadge[]>([]);
+const badgeProgress = ref<Record<string, number>>({});
 const earnedSlugs = computed(() => {
     const set = new Set<string>();
     if (profileData.value) {
@@ -180,12 +179,14 @@ if (import.meta.client) {
         async (isLoggedIn) => {
             if (!isLoggedIn) return;
             try {
-                const [profile, badges] = await Promise.all([
+                const [profile, badges, progress] = await Promise.all([
                     $fetch('/api/user/profile'),
                     $fetch('/api/badges'),
+                    $fetch('/api/user/badge-progress'),
                 ]);
                 profileData.value = profile as ProfileData;
                 allBadges.value = (badges as ProfileBadge[]) ?? [];
+                badgeProgress.value = (progress as Record<string, number>) ?? {};
             } catch {
                 // Non-critical
             }
@@ -223,7 +224,17 @@ import {
 } from 'lucide-vue-next';
 
 const BADGE_ICONS: Record<string, typeof Award> = {
-    Sword, Star, Target, Globe, Crown, Flame, Trophy, Zap, CalendarCheck, Map, Award,
+    Sword,
+    Star,
+    Target,
+    Globe,
+    Crown,
+    Flame,
+    Trophy,
+    Zap,
+    CalendarCheck,
+    Map,
+    Award,
 };
 
 function getBadgeIcon(iconName: string) {
@@ -241,22 +252,31 @@ const streakExpanded = ref(false);
 interface CalendarDay {
     date: number | null;
     state: 'won' | 'lost' | 'missed' | 'today' | 'future' | 'empty';
+    modes: string[];
+    langs: string[];
 }
 
 function calendarDayClass(day: CalendarDay): string {
     switch (day.state) {
-        case 'won': return 'bg-correct-soft';
-        case 'lost': return 'cal-lost';
-        case 'missed': return 'bg-muted-soft';
-        case 'today': return 'outline outline-2 outline-ink -outline-offset-1';
-        default: return '';
+        case 'won':
+            return 'bg-correct-soft';
+        case 'lost':
+            return 'cal-lost';
+        case 'missed':
+            return 'bg-muted-soft';
+        case 'today':
+            return 'outline outline-2 outline-ink -outline-offset-1';
+        default:
+            return '';
     }
 }
 
 const calendarDays = computed<CalendarDay[]>(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const dayStates = buildDailyResultMap(statsStore.gameResults);
+    const dayDetails = buildDailyResultMapDetailed(
+        statsStore.gameResults as Record<string, GameResult[]>
+    );
     const todayDow = (today.getDay() + 6) % 7;
     const endOfWeek = new Date(today);
     endOfWeek.setDate(endOfWeek.getDate() + (6 - todayDow));
@@ -270,15 +290,21 @@ const calendarDays = computed<CalendarDay[]>(() => {
         const dayKey = toLocalDay(d);
         const isToday = dayKey === todayKey;
         const isFuture = d > today;
+        const detail = dayDetails.get(dayKey);
         let state: CalendarDay['state'];
         if (isToday) {
-            state = dayStates.get(dayKey) || 'today';
+            state = detail?.state || 'today';
         } else if (isFuture) {
             state = 'future';
         } else {
-            state = dayStates.get(dayKey) || 'missed';
+            state = detail?.state || 'missed';
         }
-        days.push({ date: d.getDate(), state });
+        days.push({
+            date: d.getDate(),
+            state,
+            modes: detail ? [...detail.modes] : [],
+            langs: detail ? [...detail.langs] : [],
+        });
     }
     return days;
 });
@@ -308,11 +334,9 @@ const speedAggregate = ref<SpeedAggregate | null>(null);
 type StatsTab = 'overview' | 'distribution' | 'languages' | 'speed';
 const activeTab = ref<StatsTab>('overview');
 const availableTabs = computed<{ id: StatsTab; label: string }[]>(() => {
-    const tabs: { id: StatsTab; label: string }[] = [
-        { id: 'overview', label: 'Overview' },
-    ];
+    const tabs: { id: StatsTab; label: string }[] = [{ id: 'overview', label: 'Overview' }];
     // Show distribution if we have any classic/multiboard games
-    if (Object.values(overallDist.value).some(v => v > 0)) {
+    if (Object.values(overallDist.value).some((v) => v > 0)) {
         tabs.push({ id: 'distribution', label: 'Distribution' });
     }
     if (perLang.value.length > 0) {
@@ -325,7 +349,24 @@ const availableTabs = computed<{ id: StatsTab; label: string }[]>(() => {
 });
 
 const sortedModes = computed(() =>
-    [...modeStats.value].sort((a, b) => GAME_MODE_ORDER.indexOf(a.mode) - GAME_MODE_ORDER.indexOf(b.mode))
+    [...modeStats.value].sort(
+        (a, b) => GAME_MODE_ORDER.indexOf(a.mode) - GAME_MODE_ORDER.indexOf(b.mode)
+    )
+);
+
+// Distribution mode picker — which mode's histogram to show
+const distMode = ref<GameMode | null>(null);
+const activeDistMode = computed(() => {
+    if (distMode.value) return modeStats.value.find((m) => m.mode === distMode.value) || null;
+    // Default: first mode with wins
+    return sortedModes.value.find((m) => Object.values(m.distribution).some((v) => v > 0)) || null;
+});
+const activeDistLabel = computed(() => activeDistMode.value?.label || 'Classic');
+const activeDistData = computed(() => activeDistMode.value?.distribution || overallDist.value);
+const activeDistMax = computed(() => activeDistMode.value?.maxGuesses || 6);
+// Modes that have distribution data (at least 1 win)
+const modesWithDist = computed(() =>
+    sortedModes.value.filter((m) => Object.values(m.distribution).some((v) => v > 0))
 );
 
 // =========================================================================
@@ -511,8 +552,6 @@ const languagesConquered = computed(() => {
     }
     return langs.size;
 });
-
-
 </script>
 
 <template>
@@ -552,8 +591,18 @@ const languagesConquered = computed(() => {
                                 @keydown.enter="saveName()"
                                 @keydown.escape="editingName = false"
                             />
-                            <button class="text-sm text-correct hover:underline flex-shrink-0" @click="saveName()">Save</button>
-                            <button class="text-sm text-muted hover:underline flex-shrink-0" @click="editingName = false">Cancel</button>
+                            <button
+                                class="text-sm text-correct hover:underline flex-shrink-0"
+                                @click="saveName()"
+                            >
+                                Save
+                            </button>
+                            <button
+                                class="text-sm text-muted hover:underline flex-shrink-0"
+                                @click="editingName = false"
+                            >
+                                Cancel
+                            </button>
                         </div>
                         <h2
                             v-else
@@ -580,7 +629,13 @@ const languagesConquered = computed(() => {
                         @click="addPasskey()"
                     >
                         <Fingerprint :size="14" />
-                        {{ passkeyRegistering ? 'Registering...' : passkeyAdded ? 'Passkey added' : 'Add passkey' }}
+                        {{
+                            passkeyRegistering
+                                ? 'Registering...'
+                                : passkeyAdded
+                                  ? 'Passkey added'
+                                  : 'Add passkey'
+                        }}
                     </button>
                     <button
                         class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
@@ -593,7 +648,10 @@ const languagesConquered = computed(() => {
             </section>
 
             <!-- Sign-in CTA (logged out) — reuses the login modal -->
-            <section v-if="!authLoggedIn && !empty" class="mb-10 border border-rule p-5 text-center">
+            <section
+                v-if="!authLoggedIn && !empty"
+                class="mb-10 border border-rule p-5 text-center"
+            >
                 <h2 class="heading-body text-lg text-ink mb-2">Save your progress</h2>
                 <p class="text-sm text-muted mb-4">
                     Sign in to sync stats across devices, earn badges, and protect your streak.
@@ -622,55 +680,148 @@ const languagesConquered = computed(() => {
                 <!-- ═══ Product-Wide Streak Hero (clickable → calendar) ═══ -->
                 <section
                     class="mb-10 text-center border border-rule cursor-pointer transition-colors hover:bg-paper-warm"
-                    style="padding: 28px 16px 24px;"
+                    style="padding: 28px 16px 24px"
                     @click="streakExpanded = !streakExpanded"
                 >
-                    <Flame :size="36" :class="productStreak > 0 ? 'text-flame' : 'text-muted'" class="mx-auto mb-1" />
+                    <Flame
+                        :size="36"
+                        :class="productStreak > 0 ? 'text-flame' : 'text-muted'"
+                        class="mx-auto mb-1"
+                    />
                     <div
                         class="font-display font-bold"
                         :class="productStreak > 0 ? 'text-flame' : 'text-ink'"
-                        style="font-size: 48px; font-variation-settings: 'opsz' 144; line-height: 1;"
+                        style="font-size: 48px; font-variation-settings: 'opsz' 144; line-height: 1"
                     >
                         {{ Math.round(animProductStreak) }}
                     </div>
                     <div class="mono-label mt-1">Day Streak</div>
-                    <div v-if="productBestStreak > 0" class="text-xs text-muted italic mt-1.5" style="font-family: var(--font-display);">
+                    <div
+                        v-if="productBestStreak > 0"
+                        class="text-xs text-muted italic mt-1.5"
+                        style="font-family: var(--font-display)"
+                    >
                         Best: {{ productBestStreak }} · Any daily mode, any language
                     </div>
-                    <div v-else class="text-xs text-muted italic mt-1.5" style="font-family: var(--font-display);">
+                    <div
+                        v-else
+                        class="text-xs text-muted italic mt-1.5"
+                        style="font-family: var(--font-display)"
+                    >
                         Play today's daily to start a streak
                     </div>
 
                     <!-- Calendar heatmap (expands on click) -->
-                    <div v-if="streakExpanded" class="mt-5 pt-4 border-t border-rule text-left" @click.stop>
-                        <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">Last 28 Days</div>
-                        <div class="grid grid-cols-7 gap-0.5 mb-1" style="font-family: var(--font-mono); font-size: 8px; color: var(--color-muted)">
-                            <span v-for="(d, i) in ['M','T','W','T','F','S','S']" :key="i" class="text-center">{{ d }}</span>
+                    <div
+                        v-if="streakExpanded"
+                        class="mt-5 pt-4 border-t border-rule text-left"
+                        @click.stop
+                    >
+                        <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">
+                            Last 28 Days
+                        </div>
+                        <div
+                            class="grid grid-cols-7 gap-0.5 mb-1"
+                            style="
+                                font-family: var(--font-mono);
+                                font-size: 8px;
+                                color: var(--color-muted);
+                            "
+                        >
+                            <span
+                                v-for="(d, i) in ['M', 'T', 'W', 'T', 'F', 'S', 'S']"
+                                :key="i"
+                                class="text-center"
+                                >{{ d }}</span
+                            >
                         </div>
                         <div class="grid grid-cols-7 gap-0.5">
                             <div
                                 v-for="(day, i) in calendarDays"
                                 :key="i"
-                                class="aspect-square rounded-sm flex items-center justify-center"
+                                class="aspect-square rounded-sm relative"
                                 :class="calendarDayClass(day)"
-                                style="font-family: var(--font-mono); font-size: 9px; color: var(--color-muted)"
+                                style="
+                                    font-family: var(--font-mono);
+                                    font-size: 8px;
+                                    color: var(--color-muted);
+                                "
                             >
-                                <span v-if="day.date">{{ day.date }}</span>
+                                <!-- Date number: top-left when there's activity, centered otherwise -->
+                                <span
+                                    v-if="day.date"
+                                    class="absolute"
+                                    :class="
+                                        day.modes.length > 0
+                                            ? 'top-0.5 left-1'
+                                            : 'inset-0 flex items-center justify-center'
+                                    "
+                                    style="font-size: 8px; line-height: 1"
+                                    >{{ day.date }}</span
+                                >
+                                <!-- Mode icon centered (when there's activity) -->
+                                <div
+                                    v-if="day.modes.length > 0"
+                                    class="absolute inset-0 flex items-center justify-center"
+                                >
+                                    <component
+                                        :is="getModeIcon(day.modes[0]!)"
+                                        :size="16"
+                                        class="opacity-70"
+                                        :class="day.state === 'won' ? 'text-correct' : 'text-ink'"
+                                    />
+                                </div>
+                                <!-- Flag badge bottom-right -->
+                                <img
+                                    v-if="day.langs.length >= 1 && useFlag(day.langs[0]!)"
+                                    :src="useFlag(day.langs[0]!)!"
+                                    class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full object-cover border border-paper"
+                                    alt=""
+                                />
                             </div>
                         </div>
-                        <div class="flex gap-3 mt-2 justify-center" style="font-size: 9px; color: var(--color-muted); font-family: var(--font-mono)">
-                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> Won</span>
-                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm inline-block" style="background: var(--color-accent-soft, #e8d5d0)" /> Lost</span>
-                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> Missed</span>
+                        <div
+                            class="flex gap-3 mt-2 justify-center"
+                            style="
+                                font-size: 9px;
+                                color: var(--color-muted);
+                                font-family: var(--font-mono);
+                            "
+                        >
+                            <span class="flex items-center gap-1"
+                                ><span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" />
+                                Won</span
+                            >
+                            <span class="flex items-center gap-1"
+                                ><span
+                                    class="w-2 h-2 rounded-sm inline-block"
+                                    style="background: var(--color-accent-soft, #e8d5d0)"
+                                />
+                                Lost</span
+                            >
+                            <span class="flex items-center gap-1"
+                                ><span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" />
+                                Missed</span
+                            >
                         </div>
                         <!-- Current / Longest row -->
                         <div class="grid grid-cols-2 gap-px bg-rule mt-3">
                             <div class="bg-paper text-center py-3">
-                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ productStreak }}</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                                >
+                                    {{ productStreak }}
+                                </div>
                                 <div class="mono-label mt-0.5">Current</div>
                             </div>
                             <div class="bg-paper text-center py-3">
-                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ productBestStreak }}</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                                >
+                                    {{ productBestStreak }}
+                                </div>
                                 <div class="mono-label mt-0.5">Longest</div>
                             </div>
                         </div>
@@ -680,14 +831,19 @@ const languagesConquered = computed(() => {
                 <!-- ═══ Tabbed Stats Section ═══ -->
                 <section id="statistics" class="mb-10 scroll-mt-16">
                     <!-- Tab bar -->
-                    <div v-if="availableTabs.length > 1" class="flex gap-0 border-b border-rule mb-4">
+                    <div
+                        v-if="availableTabs.length > 1"
+                        class="flex gap-0 border-b border-rule mb-4"
+                    >
                         <button
                             v-for="tab in availableTabs"
                             :key="tab.id"
                             class="mono-label px-3 py-2 transition-colors border-b-2 -mb-px"
-                            :class="activeTab === tab.id
-                                ? 'border-ink text-ink'
-                                : 'border-transparent text-muted hover:text-ink'"
+                            :class="
+                                activeTab === tab.id
+                                    ? 'border-ink text-ink'
+                                    : 'border-transparent text-muted hover:text-ink'
+                            "
                             @click="activeTab = tab.id"
                         >
                             {{ tab.label }}
@@ -698,58 +854,157 @@ const languagesConquered = computed(() => {
                     <!-- Tab: Overview — summary row + per-mode breakdown -->
                     <div v-show="activeTab === 'overview'">
                         <!-- Summary row -->
-                        <div class="grid grid-cols-4 border border-rule" style="background: var(--color-rule); gap: 1px">
+                        <div
+                            class="grid grid-cols-4 border border-rule"
+                            style="background: var(--color-rule); gap: 1px"
+                        >
                             <div class="bg-paper text-center" style="padding: 16px 8px">
-                                <div class="font-display font-bold text-ink" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ allModesGames }}</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="
+                                        font-size: 24px;
+                                        font-variation-settings: 'opsz' 72;
+                                        line-height: 1;
+                                    "
+                                >
+                                    {{ allModesGames }}
+                                </div>
                                 <div class="mono-label mt-1">Played</div>
                             </div>
                             <div class="bg-paper text-center" style="padding: 16px 8px">
-                                <div class="font-display font-bold" :class="allModesWinRate !== null && allModesWinRate >= 50 ? 'text-correct' : 'text-ink'" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ allModesWinRate === null ? '—' : `${allModesWinRate}%` }}</div>
+                                <div
+                                    class="font-display font-bold"
+                                    :class="
+                                        allModesWinRate !== null && allModesWinRate >= 50
+                                            ? 'text-correct'
+                                            : 'text-ink'
+                                    "
+                                    style="
+                                        font-size: 24px;
+                                        font-variation-settings: 'opsz' 72;
+                                        line-height: 1;
+                                    "
+                                >
+                                    {{ allModesWinRate === null ? '—' : `${allModesWinRate}%` }}
+                                </div>
                                 <div class="mono-label mt-1">Win Rate</div>
                             </div>
                             <div class="bg-paper text-center" style="padding: 16px 8px">
-                                <div class="font-display font-bold text-ink" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ modesPlayed }}</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="
+                                        font-size: 24px;
+                                        font-variation-settings: 'opsz' 72;
+                                        line-height: 1;
+                                    "
+                                >
+                                    {{ modesPlayed }}
+                                </div>
                                 <div class="mono-label mt-1">Modes</div>
                             </div>
                             <div class="bg-paper text-center" style="padding: 16px 8px">
-                                <div class="font-display font-bold text-ink" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ languagesConquered }}</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="
+                                        font-size: 24px;
+                                        font-variation-settings: 'opsz' 72;
+                                        line-height: 1;
+                                    "
+                                >
+                                    {{ languagesConquered }}
+                                </div>
                                 <div class="mono-label mt-1">Languages</div>
                             </div>
                         </div>
                         <!-- Per-mode breakdown -->
-                        <div v-if="sortedModes.length > 0" class="border border-t-0 border-rule divide-y divide-rule">
-                            <div v-for="m in sortedModes" :key="m.mode" class="flex items-center gap-3" style="padding: 10px 16px">
+                        <div
+                            v-if="sortedModes.length > 0"
+                            class="border border-t-0 border-rule divide-y divide-rule"
+                        >
+                            <div
+                                v-for="m in sortedModes"
+                                :key="m.mode"
+                                class="flex items-center gap-3"
+                                style="padding: 10px 16px"
+                            >
                                 <component :is="m.icon" :size="16" class="text-ink flex-shrink-0" />
-                                <span class="text-sm font-medium text-ink flex-1">{{ m.label }}</span>
+                                <span class="text-sm font-medium text-ink flex-1">{{
+                                    m.label
+                                }}</span>
                                 <span class="text-xs text-muted tabular-nums">{{ m.games }}</span>
-                                <span class="text-xs tabular-nums w-10 text-right" :class="m.winPct >= 50 ? 'text-correct' : 'text-muted'">{{ m.winPct }}%</span>
+                                <span
+                                    class="text-xs tabular-nums w-10 text-right"
+                                    :class="m.winPct >= 50 ? 'text-correct' : 'text-muted'"
+                                    >{{ m.winPct }}%</span
+                                >
                             </div>
-                            <div v-if="speedAggregate && speedAggregate.games > 0" class="flex items-center gap-3" style="padding: 10px 16px">
+                            <div
+                                v-if="speedAggregate && speedAggregate.games > 0"
+                                class="flex items-center gap-3"
+                                style="padding: 10px 16px"
+                            >
                                 <Zap :size="16" class="text-ink flex-shrink-0" />
-                                <span class="text-sm font-medium text-ink flex-1">Speed Streak</span>
-                                <span class="text-xs text-muted tabular-nums">{{ speedAggregate.games }}</span>
+                                <span class="text-sm font-medium text-ink flex-1"
+                                    >Speed Streak</span
+                                >
+                                <span class="text-xs text-muted tabular-nums">{{
+                                    speedAggregate.games
+                                }}</span>
                                 <span class="text-xs text-muted w-10 text-right">—</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tab: Distribution -->
+                    <!-- Tab: Distribution — per-mode histogram with mode picker -->
                     <div v-show="activeTab === 'distribution'">
+                        <!-- Mode picker pills (only if >1 mode has distribution data) -->
+                        <div v-if="modesWithDist.length > 1" class="flex gap-1 mb-3 flex-wrap">
+                            <button
+                                v-for="m in modesWithDist"
+                                :key="m.mode"
+                                class="flex items-center gap-1 px-2.5 py-1 text-xs border transition-colors"
+                                :class="
+                                    (distMode || activeDistMode?.mode) === m.mode
+                                        ? 'border-ink bg-ink text-paper'
+                                        : 'border-rule text-muted hover:text-ink'
+                                "
+                                @click="distMode = m.mode"
+                            >
+                                <component :is="m.icon" :size="12" />
+                                {{ m.label }}
+                            </button>
+                        </div>
+                        <!-- Histogram -->
                         <div class="border border-rule" style="padding: 16px">
                             <div class="space-y-1.5">
-                                <div v-for="n in 6" :key="n" class="flex items-center gap-2">
-                                    <span class="font-mono font-semibold text-xs w-3 text-right text-muted">{{ n }}</span>
+                                <div
+                                    v-for="n in activeDistMax"
+                                    :key="n"
+                                    class="flex items-center gap-2"
+                                >
+                                    <span
+                                        class="font-mono font-semibold text-xs w-4 text-right text-muted"
+                                        >{{ n }}</span
+                                    >
                                     <div
                                         class="h-6 flex items-center justify-end px-2 font-mono text-[10px] font-semibold text-white transition-all duration-500"
                                         style="min-width: 24px"
-                                        :class="overallDist[n] > 0 ? 'bg-ink' : 'bg-muted-soft'"
-                                        :style="{ width: distBarWidth(overallDist, n) }"
+                                        :class="
+                                            (activeDistData[n] || 0) > 0
+                                                ? 'bg-ink'
+                                                : 'bg-muted-soft'
+                                        "
+                                        :style="{ width: distBarWidth(activeDistData, n) }"
                                     >
-                                        <span v-if="overallDist[n] > 0">{{ overallDist[n] }}</span>
+                                        <span v-if="(activeDistData[n] || 0) > 0">{{
+                                            activeDistData[n]
+                                        }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-xs text-muted mt-3 text-center">Guess distribution across all classic games</p>
+                            <p class="text-xs text-muted mt-3 text-center">
+                                {{ activeDistLabel }} · guess distribution
+                            </p>
                         </div>
                     </div>
 
@@ -770,10 +1025,16 @@ const languagesConquered = computed(() => {
                                     class="w-5 h-5 rounded-full object-cover flex-shrink-0"
                                 />
                                 <div class="flex-1 min-w-0">
-                                    <span class="text-sm font-medium text-ink">{{ l.nameNative || l.name }}</span>
+                                    <span class="text-sm font-medium text-ink">{{
+                                        l.nameNative || l.name
+                                    }}</span>
                                 </div>
                                 <span class="text-xs text-muted tabular-nums">{{ l.games }}</span>
-                                <span class="text-xs tabular-nums" :class="l.winPct >= 50 ? 'text-correct' : 'text-muted'">{{ l.winPct }}%</span>
+                                <span
+                                    class="text-xs tabular-nums"
+                                    :class="l.winPct >= 50 ? 'text-correct' : 'text-muted'"
+                                    >{{ l.winPct }}%</span
+                                >
                                 <ChevronRight :size="14" class="text-muted flex-shrink-0" />
                             </NuxtLink>
                         </div>
@@ -781,51 +1042,94 @@ const languagesConquered = computed(() => {
 
                     <!-- Tab: Speed -->
                     <div v-if="speedAggregate" v-show="activeTab === 'speed'">
-                        <div class="grid grid-cols-4 border border-rule" style="background: var(--color-rule); gap: 1px">
+                        <div
+                            class="grid grid-cols-4 border border-rule"
+                            style="background: var(--color-rule); gap: 1px"
+                        >
                             <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.games }}</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                                >
+                                    {{ speedAggregate.games }}
+                                </div>
                                 <div class="mono-label mt-0.5">Sessions</div>
                             </div>
                             <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div class="font-display font-bold text-correct" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.bestScore.toLocaleString() }}</div>
+                                <div
+                                    class="font-display font-bold text-correct"
+                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                                >
+                                    {{ speedAggregate.bestScore.toLocaleString() }}
+                                </div>
                                 <div class="mono-label mt-0.5">Top Score</div>
                             </div>
                             <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.bestWordsSolved }}</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                                >
+                                    {{ speedAggregate.bestWordsSolved }}
+                                </div>
                                 <div class="mono-label mt-0.5">Best Solved</div>
                             </div>
                             <div class="bg-paper text-center" style="padding: 14px 8px">
-                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.bestMaxCombo }}x</div>
+                                <div
+                                    class="font-display font-bold text-ink"
+                                    style="font-size: 22px; font-variation-settings: 'opsz' 72"
+                                >
+                                    {{ speedAggregate.bestMaxCombo }}x
+                                </div>
                                 <div class="mono-label mt-0.5">Best Combo</div>
                             </div>
                         </div>
                         <!-- Top 3 runs -->
-                        <div v-if="speedAggregate.topRuns.length > 0" class="border border-t-0 border-rule divide-y divide-rule">
-                            <div v-for="(run, i) in speedAggregate.topRuns" :key="`${run.date}-${i}`" class="flex items-center gap-3" style="padding: 10px 16px">
-                                <span class="w-6 h-6 flex items-center justify-center border border-rule bg-paper-warm font-display font-bold text-xs text-ink flex-shrink-0">{{ i + 1 }}</span>
+                        <div
+                            v-if="speedAggregate.topRuns.length > 0"
+                            class="border border-t-0 border-rule divide-y divide-rule"
+                        >
+                            <div
+                                v-for="(run, i) in speedAggregate.topRuns"
+                                :key="`${run.date}-${i}`"
+                                class="flex items-center gap-3"
+                                style="padding: 10px 16px"
+                            >
+                                <span
+                                    class="w-6 h-6 flex items-center justify-center border border-rule bg-paper-warm font-display font-bold text-xs text-ink flex-shrink-0"
+                                    >{{ i + 1 }}</span
+                                >
                                 <div class="flex-1 min-w-0">
-                                    <div class="text-sm font-semibold text-ink tabular-nums">{{ run.score.toLocaleString() }} pts</div>
-                                    <div class="text-xs text-muted tabular-nums">{{ run.wordsSolved }} solved · {{ run.maxCombo }}x combo</div>
+                                    <div class="text-sm font-semibold text-ink tabular-nums">
+                                        {{ run.score.toLocaleString() }} pts
+                                    </div>
+                                    <div class="text-xs text-muted tabular-nums">
+                                        {{ run.wordsSolved }} solved · {{ run.maxCombo }}x combo
+                                    </div>
                                 </div>
-                                <span class="mono-label">{{ new Date(run.date).toLocaleDateString() }}</span>
+                                <span class="mono-label">{{
+                                    new Date(run.date).toLocaleDateString()
+                                }}</span>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- ═══ Badges (collapsed by default, earned first) ═══ -->
-                <section v-if="allBadges.length > 0 && authLoggedIn" id="badges" class="mb-10 scroll-mt-16">
+                <section
+                    v-if="allBadges.length > 0 && authLoggedIn"
+                    id="badges"
+                    class="mb-10 scroll-mt-16"
+                >
                     <div class="mono-label mb-4">Badges</div>
-                    <AccountBadgeGrid
-                        :badges="visibleBadges"
-                        :earned-slugs="earnedSlugs"
-                    />
+                    <AccountBadgeGrid :badges="visibleBadges" :earned-slugs="earnedSlugs" />
                     <button
                         v-if="hasMoreBadges"
                         class="w-full mt-2 py-2 text-xs text-muted hover:text-ink transition-colors cursor-pointer text-center"
                         @click="badgesExpanded = !badgesExpanded"
                     >
-                        {{ badgesExpanded ? 'Show fewer' : `Show all ${sortedBadges.length} badges` }}
+                        {{
+                            badgesExpanded ? 'Show fewer' : `Show all ${sortedBadges.length} badges`
+                        }}
                     </button>
                 </section>
 

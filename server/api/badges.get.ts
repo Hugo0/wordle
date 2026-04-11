@@ -13,6 +13,7 @@ interface BadgeDefinition {
     category: string;
     threshold: number;
     icon: string;
+    group: string | null;
 }
 
 let cachedBadges: BadgeDefinition[] | null = null;
@@ -32,6 +33,7 @@ export default defineEventHandler(async () => {
             category: true,
             threshold: true,
             icon: true,
+            group: true,
         },
         orderBy: [{ category: 'asc' }, { threshold: 'asc' }],
     });

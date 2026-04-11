@@ -53,9 +53,7 @@ export function parseStatsKey(key: string): ParsedStatsKey {
     const lang = parts[0]!;
     // If last part is a number, it's the word length — strip it
     const lastPart = parts[parts.length - 1]!;
-    const mode = /^\d+$/.test(lastPart)
-        ? parts.slice(1, -1).join('_')
-        : parts.slice(1).join('_');
+    const mode = /^\d+$/.test(lastPart) ? parts.slice(1, -1).join('_') : parts.slice(1).join('_');
 
     return { lang, mode: mode || 'classic', playType: 'unlimited' };
 }
