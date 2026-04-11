@@ -58,7 +58,7 @@ const copy = computed(() => {
         <p class="text-xs text-muted leading-relaxed max-w-lg mx-auto text-center">
             {{ copy.subtitle }}
         </p>
-        <SharedStartingWordsList :words="topWords" compact :coverage-label="copy.coverageLabel" />
+        <StartingWordsList :words="topWords" compact :coverage-label="copy.coverageLabel" />
         <p class="text-center">
             <a
                 :href="`/${lang}/best-starting-words`"

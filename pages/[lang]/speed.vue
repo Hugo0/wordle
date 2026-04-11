@@ -38,6 +38,11 @@ const {
     config,
 } = useGamePage(gameData, lang);
 
+// Detect day rollover when tab regains focus
+if (isDaily.value) {
+    useDayRollover(lang, gameData.value!.todays_idx);
+}
+
 // --- SEO ---
 const seo = useGameSeo({
     lang,

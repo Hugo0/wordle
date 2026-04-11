@@ -56,49 +56,37 @@ export function useSync() {
     }
 
     // -----------------------------------------------------------------
-    // Per-game sync: watch gameOver to push individual results
+    // Per-game sync via shared lifecycle (DRY: one place for server sync)
     // -----------------------------------------------------------------
 
+    const lifecycle = useGameLifecycle({
+        deviceId,
+        onSyncFail: (item) => addToPendingQueue(item as PendingSyncItem),
+        onNewBadges: (badges) => {
+            const { addBadges } = useBadgeNotification();
+            addBadges(badges);
+        },
+    });
+
     if (import.meta.client) {
+        // Tile-based modes: watch game.gameOver
         watch(
             () => game.gameOver,
             (isOver) => {
                 if (!isOver || !loggedIn.value) return;
-                if (game.gameConfig.mode === 'speed') return; // Speed handled separately
+                if (game.gameConfig.mode === 'speed') return;
 
-                const statsKey = buildStatsKey(game.gameConfig);
                 const lang = useLanguageStore();
-                const dayIdx = game.gameConfig.playType === 'daily' ? lang.todaysIdx : undefined;
-
-                const requestBody = {
-                    statsKey,
+                lifecycle.syncGameResult({
+                    statsKey: buildStatsKey(game.gameConfig),
                     won: game.gameWon,
                     attempts: Number(game.attempts) || 0,
-                    dayIdx,
-                    deviceId,
-                };
-
-                $fetch('/api/user/game-result', {
-                    method: 'POST',
-                    body: requestBody,
-                })
-                    .then((res) => {
-                        if (res?.newBadges?.length) {
-                            const { addBadges } = useBadgeNotification();
-                            addBadges(res.newBadges);
-                        }
-                    })
-                    .catch(() => {
-                        addToPendingQueue({
-                            endpoint: '/api/user/game-result',
-                            body: requestBody,
-                            addedAt: new Date().toISOString(),
-                        });
-                    });
+                    dayIdx: game.gameConfig.playType === 'daily' ? lang.todaysIdx : undefined,
+                });
             }
         );
 
-        // Speed results: watch the stats store's speedResults for new entries
+        // Speed results: watch for new entries
         watch(
             () => Object.values(stats.speedResults).reduce((sum, arr) => sum + arr.length, 0),
             (newCount) => {
@@ -108,7 +96,6 @@ export function useSync() {
                 }
                 prevSpeedCount = newCount;
 
-                // Find the most recent speed result across all languages
                 let latest: {
                     lang: string;
                     result: (typeof stats.speedResults)[string][number];
@@ -123,18 +110,14 @@ export function useSync() {
                 }
 
                 if (latest) {
-                    $fetch('/api/user/speed-result', {
-                        method: 'POST',
-                        body: {
-                            lang: latest.lang,
-                            score: latest.result.score,
-                            wordsSolved: latest.result.wordsSolved,
-                            wordsFailed: latest.result.wordsFailed,
-                            maxCombo: latest.result.maxCombo,
-                            totalGuesses: latest.result.totalGuesses,
-                            deviceId,
-                        },
-                    }).catch(() => {});
+                    lifecycle.syncSpeedResult({
+                        lang: latest.lang,
+                        score: latest.result.score,
+                        wordsSolved: latest.result.wordsSolved,
+                        wordsFailed: latest.result.wordsFailed,
+                        maxCombo: latest.result.maxCombo,
+                        totalGuesses: latest.result.totalGuesses,
+                    });
                 }
             }
         );

@@ -76,8 +76,18 @@ export function useMultiBoardPage(
     }
 
     // Initialize boards synchronously so SSR/first render has correct board count.
-    // This prevents the flash of a single-board layout before hydration.
-    if (wordList.length > 0) {
+    // For daily mode, try to restore a completed game from localStorage first
+    // (same pattern as classic daily's loadFromLocalStorage).
+    let restored = false;
+    if (dailyWords?.length === boardCount && import.meta.client) {
+        try {
+            restored = game.loadMultiBoardFromLocalStorage(mode, dailyWords, 'daily');
+        } catch {
+            // Restoration failed — will start fresh below
+        }
+    }
+
+    if (!restored && wordList.length > 0) {
         try {
             startNewGame();
         } catch {

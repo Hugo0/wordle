@@ -6,6 +6,8 @@ export default defineNuxtConfig({
 
     modules: ['@pinia/nuxt', '@vite-pwa/nuxt', '@posthog/nuxt', 'nuxt-auth-utils'],
 
+    components: [{ path: '~/components/shared', pathPrefix: false }, '~/components'],
+
     auth: {
         webAuthn: true,
     },

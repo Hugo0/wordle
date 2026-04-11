@@ -1,5 +1,5 @@
 <template>
-    <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
+    <BaseModal :visible="visible" size="sm" @close="$emit('close')">
         <div class="flex flex-col gap-4">
             <h3 class="heading-section text-xl text-ink">Sign In</h3>
             <p class="text-sm text-muted -mt-2">Sync your stats across devices and earn badges.</p>
@@ -53,7 +53,7 @@
                 <span class="mono-label ml-1">soon</span>
             </button>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">

@@ -691,6 +691,25 @@ input:focus-visible {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   Content reveal — smooth entrance for auth-dependent sections
+   Usage: <Transition name="reveal"><div v-if="ready">...</div></Transition>
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.reveal-enter-active {
+    transition: opacity 350ms ease, transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-leave-active {
+    transition: opacity 150ms ease;
+}
+.reveal-enter-from {
+    opacity: 0;
+    transform: translateY(8px);
+}
+.reveal-leave-to {
+    opacity: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    View Transitions API — shared element animations (Tier 3)
 
    Active in Chrome 111+, Safari 18+, Firefox 134+. Browsers without

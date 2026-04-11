@@ -7,7 +7,7 @@
 -->
 
 <template>
-    <SharedBaseModal
+    <BaseModal
         :visible="visible"
         size="lg"
         align="top"
@@ -50,7 +50,7 @@
                 No languages match "{{ searchQuery }}"
             </div>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">

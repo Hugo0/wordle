@@ -726,39 +726,41 @@ function openMultiBoardPicker(): void {
             </div>
 
             <!-- ═══ Signed-in user greeting (centered, above language) ═══ -->
-            <div v-if="authLoggedIn && authUser" class="flex flex-col items-center gap-1 mb-6">
-                <NuxtLink
-                    to="/profile"
-                    class="flex items-center gap-3 hover:opacity-80 transition-opacity"
-                >
-                    <img
-                        v-if="authAvatarUrl"
-                        :src="authAvatarUrl"
-                        alt=""
-                        class="w-10 h-10 rounded-full object-cover"
-                        referrerpolicy="no-referrer"
-                    />
-                    <div
-                        v-else
-                        class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center heading-body text-sm"
+            <RevealTransition>
+                <div v-if="authLoggedIn && authUser" class="flex flex-col items-center gap-1 mb-6">
+                    <NuxtLink
+                        to="/profile"
+                        class="flex items-center gap-3 hover:opacity-80 transition-opacity"
                     >
-                        {{ (authUser.displayName || authUser.email || '?')[0]?.toUpperCase() }}
+                        <img
+                            v-if="authAvatarUrl"
+                            :src="authAvatarUrl"
+                            alt=""
+                            class="w-10 h-10 rounded-full object-cover"
+                            referrerpolicy="no-referrer"
+                        />
+                        <div
+                            v-else
+                            class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center heading-body text-sm"
+                        >
+                            {{ (authUser.displayName || authUser.email || '?')[0]?.toUpperCase() }}
+                        </div>
+                        <div class="text-sm font-semibold text-ink">
+                            {{ authUser.displayName || 'Player' }}
+                        </div>
+                    </NuxtLink>
+                    <div
+                        v-if="productStreak > 0"
+                        class="mono-label flex items-center gap-1"
+                        style="color: var(--color-flame)"
+                    >
+                        <Flame :size="12" /> {{ productStreak }} day streak
                     </div>
-                    <div class="text-sm font-semibold text-ink">
-                        {{ authUser.displayName || 'Player' }}
+                    <div v-else class="mono-label flex items-center gap-1 text-muted">
+                        <Flame :size="12" /> Play today's daily to start a streak
                     </div>
-                </NuxtLink>
-                <div
-                    v-if="productStreak > 0"
-                    class="mono-label flex items-center gap-1"
-                    style="color: var(--color-flame)"
-                >
-                    <Flame :size="12" /> {{ productStreak }} day streak
                 </div>
-                <div v-else class="mono-label flex items-center gap-1 text-muted">
-                    <Flame :size="12" /> Play today's daily to start a streak
-                </div>
-            </div>
+            </RevealTransition>
 
             <!-- ═══ Language indicator ═══ -->
             <div class="flex items-center justify-center gap-2 mb-6 px-4">
@@ -803,50 +805,58 @@ function openMultiBoardPicker(): void {
                 </div>
 
                 <!-- Continue Playing cards -->
-                <div v-if="continuePlayingCards.length > 0" class="mb-6">
-                    <div class="mono-label mb-2 px-1">Continue Playing</div>
-                    <div class="flex flex-col gap-2">
-                        <NuxtLink
-                            v-for="card in continuePlayingCards"
-                            :key="card.key"
-                            :to="card.href"
-                            class="flex items-center gap-3 px-4 py-3 border transition-colors hover:bg-paper-warm"
-                            :style="{ borderColor: card.borderColor }"
-                        >
-                            <!-- Stacked icon: mode icon with flag badge -->
-                            <div class="relative flex-shrink-0 w-10 h-10">
-                                <div
-                                    class="w-10 h-10 rounded-full border border-rule bg-paper-warm flex items-center justify-center"
-                                >
-                                    <component :is="card.modeIcon" :size="18" class="text-ink" />
+                <RevealTransition>
+                    <div v-if="continuePlayingCards.length > 0" class="mb-6">
+                        <div class="mono-label mb-2 px-1">Continue Playing</div>
+                        <div class="flex flex-col gap-2">
+                            <NuxtLink
+                                v-for="card in continuePlayingCards"
+                                :key="card.key"
+                                :to="card.href"
+                                class="flex items-center gap-3 px-4 py-3 border transition-colors hover:bg-paper-warm"
+                                :style="{ borderColor: card.borderColor }"
+                            >
+                                <!-- Stacked icon: mode icon with flag badge -->
+                                <div class="relative flex-shrink-0 w-10 h-10">
+                                    <div
+                                        class="w-10 h-10 rounded-full border border-rule bg-paper-warm flex items-center justify-center"
+                                    >
+                                        <component
+                                            :is="card.modeIcon"
+                                            :size="18"
+                                            class="text-ink"
+                                        />
+                                    </div>
+                                    <img
+                                        v-if="card.flagSrc"
+                                        :src="card.flagSrc"
+                                        :alt="card.langName"
+                                        class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full object-cover border border-paper"
+                                    />
                                 </div>
-                                <img
-                                    v-if="card.flagSrc"
-                                    :src="card.flagSrc"
-                                    :alt="card.langName"
-                                    class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full object-cover border border-paper"
-                                />
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="text-sm font-semibold text-ink">{{ card.title }}</div>
-                                <div class="text-xs text-muted">{{ card.subtitle }}</div>
-                            </div>
-                            <div class="flex-shrink-0 flex items-center gap-1.5">
-                                <CircleCheck
-                                    v-if="card.dailySolved"
-                                    :size="16"
-                                    class="text-correct"
-                                />
-                                <span
-                                    v-else
-                                    class="mono-label text-muted"
-                                    style="font-size: 10px"
-                                    >{{ card.cta }}</span
-                                >
-                            </div>
-                        </NuxtLink>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold text-ink">
+                                        {{ card.title }}
+                                    </div>
+                                    <div class="text-xs text-muted">{{ card.subtitle }}</div>
+                                </div>
+                                <div class="flex-shrink-0 flex items-center gap-1.5">
+                                    <CircleCheck
+                                        v-if="card.dailySolved"
+                                        :size="16"
+                                        class="text-correct"
+                                    />
+                                    <span
+                                        v-else
+                                        class="mono-label text-muted"
+                                        style="font-size: 10px"
+                                        >{{ card.cta }}</span
+                                    >
+                                </div>
+                            </NuxtLink>
+                        </div>
                     </div>
-                </div>
+                </RevealTransition>
 
                 <!-- Sign-in CTA (Tier 1 only) -->
                 <button
@@ -1034,7 +1044,7 @@ function openMultiBoardPicker(): void {
             <!-- ═══ Modals ═══ -->
 
             <!-- About modal -->
-            <SharedBaseModal :visible="showAboutModal" size="sm" @close="showAboutModal = false">
+            <BaseModal :visible="showAboutModal" size="sm" @close="showAboutModal = false">
                 <div class="flex flex-col gap-3">
                     <h3 class="heading-section text-xl text-center mb-2">About</h3>
                     <p class="text-center text-sm text-ink">
@@ -1055,7 +1065,7 @@ function openMultiBoardPicker(): void {
                     </p>
                     <p class="text-center text-sm text-ink">Have fun!</p>
                 </div>
-            </SharedBaseModal>
+            </BaseModal>
 
             <!-- Game Mode Picker modal -->
             <AppGameModePicker

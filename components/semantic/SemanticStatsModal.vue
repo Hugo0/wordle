@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Sparkles, Trophy, XCircle } from 'lucide-vue-next';
+import { Sparkles, Trophy, XCircle, Share2, Check } from 'lucide-vue-next';
 import type { Neighbour, SemanticGuess } from '~/composables/useSemanticGame';
 import { wordDetailPath } from '~/utils/wordUrls';
 
@@ -47,13 +47,6 @@ function onShareClick() {
     }, 2000);
 }
 
-function rankColor(rank: number): string {
-    if (rank <= 10) return 'text-correct';
-    if (rank <= 50) return 'text-semicorrect';
-    if (rank <= 200) return 'text-accent';
-    return 'text-muted';
-}
-
 const bestRank = computed(() => {
     if (!props.guesses.length) return null;
     return Math.min(...props.guesses.map((g) => g.rank));
@@ -61,12 +54,7 @@ const bestRank = computed(() => {
 </script>
 
 <template>
-    <SharedBaseModal
-        :visible="visible"
-        size="lg"
-        label-id="semantic-stats-label"
-        @close="emit('close')"
-    >
+    <BaseModal :visible="visible" size="lg" label-id="semantic-stats-label" @close="emit('close')">
         <div class="stats-body">
             <!-- Header -->
             <div class="stats-header">
@@ -130,25 +118,41 @@ const bestRank = computed(() => {
                 </div>
             </div>
 
-            <!-- Actions -->
-            <div class="action-row">
+            <!-- Actions — matches classic StatsModal pattern -->
+            <div class="flex gap-3 stats-actions">
+                <button
+                    type="button"
+                    class="flex-1 stats-btn bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85 cursor-pointer inline-flex items-center justify-center gap-2"
+                    @click="onShareClick"
+                >
+                    <template v-if="shareCopied">
+                        <Check :size="16" />
+                        Copied!
+                    </template>
+                    <template v-else>
+                        <Share2 :size="16" />
+                        Share Result
+                    </template>
+                </button>
                 <button
                     v-if="isDaily"
                     type="button"
-                    class="btn btn-ghost"
+                    class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                     @click="emit('keepPlaying')"
                 >
                     Keep Playing
                 </button>
-                <button v-else type="button" class="btn btn-ghost" @click="emit('newGame')">
+                <button
+                    v-else
+                    type="button"
+                    class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
+                    @click="emit('newGame')"
+                >
                     Play Again
-                </button>
-                <button type="button" class="btn btn-primary" @click="onShareClick">
-                    {{ shareCopied ? 'Copied!' : 'Share result' }}
                 </button>
             </div>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <style scoped>
@@ -253,54 +257,6 @@ const bestRank = computed(() => {
 .section-label {
     margin-bottom: 8px;
 }
-.guess-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 220px;
-    overflow-y: auto;
-    border: 1px solid var(--color-rule);
-}
-.guess-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 12px;
-    border-bottom: 1px solid var(--color-rule);
-    font-size: 14px;
-}
-.guess-item:last-child {
-    border-bottom: none;
-}
-.guess-num {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--color-muted);
-    width: 20px;
-}
-.guess-word {
-    font-family: var(--font-display);
-    font-weight: 600;
-    flex: 1;
-}
-.guess-sim {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-variant-numeric: tabular-nums;
-}
-.text-correct {
-    color: var(--color-correct);
-    font-weight: 600;
-}
-.text-semicorrect {
-    color: var(--color-semicorrect);
-}
-.text-accent {
-    color: var(--color-hot);
-}
-.text-muted {
-    color: var(--color-muted);
-}
 .neighbour-grid {
     display: flex;
     flex-wrap: wrap;
@@ -322,36 +278,11 @@ const bestRank = computed(() => {
     font-size: 10px;
     color: var(--color-muted);
 }
-.action-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 4px;
+/* Action buttons — same sizing as classic StatsModal */
+.stats-actions {
+    padding: 20px 0 0;
 }
-.btn {
-    flex: 1;
-    padding: 12px 16px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 0;
-}
-.btn-primary {
-    background: var(--color-ink);
-    color: var(--color-paper);
-    border: 2px solid var(--color-ink);
-}
-.btn-primary:hover {
-    opacity: 0.85;
-}
-.btn-ghost {
-    background: transparent;
-    color: var(--color-ink);
-    border: 2px solid var(--color-rule);
-}
-.btn-ghost:hover {
-    border-color: var(--color-ink);
+.stats-btn {
+    padding: 12px 20px;
 }
 </style>

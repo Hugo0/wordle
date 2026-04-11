@@ -1,9 +1,5 @@
 <template>
-    <SharedBaseModal
-        :visible="!!game.copyFallbackText"
-        size="sm"
-        @close="game.closeCopyFallbackModal()"
-    >
+    <BaseModal :visible="!!game.copyFallbackText" size="sm" @close="game.closeCopyFallbackModal()">
         <div class="text-center">
             <p class="font-body font-semibold text-ink mb-3">Copy your results:</p>
             <textarea
@@ -20,7 +16,7 @@
                 Done
             </button>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">

@@ -54,6 +54,9 @@ if (error.value || !gameData.value) {
 const { langStore, game, stats, sidebarOpen, toggleSidebar, closeSidebar, gameBoardRef, config } =
     useGamePage(gameData, lang);
 
+// Detect day rollover when tab regains focus (prevents stale word coloring)
+useDayRollover(lang, gameData.value!.todays_idx);
+
 // --- SEO ---
 const configVal = gameData.value.config;
 const seo = useGameSeo({

@@ -13,7 +13,7 @@
  */
 
 import { computed, onMounted, ref, watch } from 'vue';
-import { buildStatsKey, createGameConfig } from '~/utils/game-modes';
+import { createGameConfig } from '~/utils/game-modes';
 import MapFrame from '~/components/shared/MapFrame.vue';
 import MeaningMap, { type MapDot } from '~/components/shared/MeaningMap.vue';
 import { buildSemanticGradientFromCSS, sampleGradient } from '~/utils/semanticColor';
@@ -115,6 +115,9 @@ const headerSubtitle = computed(() => {
 // --- Stats modal state (local, not from game store) ---
 const showStatsModal = ref(false);
 
+// --- Shared game lifecycle (stats save, server sync, duplicate guard) ---
+const lifecycle = useGameLifecycle();
+
 // --- Staggered neighbour reveal on game over ---
 const NEIGHBOUR_STAGGER_MS = 150;
 const revealedNeighbourCount = ref(0);
@@ -127,12 +130,8 @@ onMounted(async () => {
     } catch {
         /* non-fatal */
     }
-    try {
-        stats.loadGameResults(langStore.languageCode);
-        stats.calculateTotalStats();
-    } catch {
-        /* non-fatal */
-    }
+
+    lifecycle.initStats(langStore.languageCode, game.gameConfig);
 
     try {
         const analytics = useAnalytics();
@@ -182,37 +181,38 @@ watch(
             return;
         }
 
-        if (sem.neighbours.value.length > 0) {
+        const isRestore = sem.neighbours.value.length > 0;
+
+        if (isRestore) {
             // Restored from localStorage — show instantly, auto-open modal for daily
             revealedNeighbourCount.value = sem.neighbours.value.length;
             if (isDaily.value) showStatsModal.value = true;
-        } else {
-            // Live game-over — stagger once neighbours arrive
+        }
+
+        // Shared lifecycle: save stats + sync to server (no-ops on restore)
+        lifecycle.handleGameOver(game.gameConfig, {
+            won: sem.won.value,
+            attempts: sem.guesses.value.length,
+            isRestore,
+        });
+
+        if (!isRestore) {
+            // Live game-over — stagger neighbours once they arrive
             needsStagger = true;
-        }
 
-        try {
-            stats.saveResult(
-                buildStatsKey(game.gameConfig),
-                sem.won.value,
-                sem.guesses.value.length
-            );
-        } catch (e) {
-            console.warn('[semantic] stats save failed', e);
-        }
-
-        // Analytics
-        try {
-            useAnalytics().trackGameComplete({
-                language: langStore.languageCode,
-                won: sem.won.value,
-                attempts: sem.guesses.value.length,
-                game_mode: 'semantic',
-                play_type: playType.value,
-                is_first_game: stats.stats.n_games === 0,
-            });
-        } catch {
-            /* non-fatal */
+            // Analytics
+            try {
+                useAnalytics().trackGameComplete({
+                    language: langStore.languageCode,
+                    won: sem.won.value,
+                    attempts: sem.guesses.value.length,
+                    game_mode: 'semantic',
+                    play_type: playType.value,
+                    is_first_game: stats.stats.n_games === 0,
+                });
+            } catch {
+                /* non-fatal */
+            }
         }
     }
 );
@@ -386,6 +386,7 @@ function onKeepPlaying() {
         @toggle-sidebar="toggleSidebar"
         @close-sidebar="closeSidebar"
         @new-game="onNewGame"
+        @results="showStatsModal = !showStatsModal"
     >
         <!-- Unavailable state: embeddings not generated yet -->
         <div
@@ -409,7 +410,7 @@ function onKeepPlaying() {
             <section class="semantic-layout">
                 <!-- Main column: map card (title + canvas + input) -->
                 <div class="main-col">
-                    <div class="map-card" :class="{ won: sem.won.value }">
+                    <div class="map-card">
                         <header class="map-header">
                             <div class="map-eyebrow">
                                 <span class="eyebrow-tag">
@@ -459,23 +460,6 @@ function onKeepPlaying() {
                                         :compass-word="sem.bestGuess.value?.word ?? null"
                                         :new-best-signal="sem.newBestSignal.value"
                                     />
-                                    <!-- Win overlay -->
-                                    <transition name="celebrate-fade">
-                                        <div v-if="sem.won.value" class="win-overlay">
-                                            <div class="win-badge">
-                                                <span class="win-label">Found</span>
-                                                <span class="win-word">{{
-                                                    sem.finalTargetWord.value
-                                                }}</span>
-                                                <span class="win-stat">
-                                                    {{ sem.guesses.value.length }}/{{
-                                                        sem.maxGuesses.value
-                                                    }}
-                                                    guesses
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </transition>
                                 </template>
                             </MapFrame>
                         </div>
@@ -601,11 +585,6 @@ function onKeepPlaying() {
     border: 1px solid var(--color-rule);
     padding: 20px 22px 16px;
     position: relative;
-    transition: border-color 400ms ease;
-}
-.map-card.won {
-    border-color: var(--color-correct);
-    box-shadow: 0 0 0 1px var(--color-correct);
 }
 
 .map-header {
@@ -666,48 +645,6 @@ function onKeepPlaying() {
 
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */
 
-/* Win overlay on top of the map canvas */
-.win-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 12px;
-    pointer-events: none;
-}
-.win-badge {
-    background: var(--color-paper);
-    border: 2px solid var(--color-correct);
-    padding: 10px 18px;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-}
-.win-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-correct);
-}
-.win-word {
-    font-family: var(--font-display);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--color-ink);
-    line-height: 1;
-}
-.win-stat {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--color-muted);
-    letter-spacing: 0.05em;
-}
-
 .map-input-row {
     /* On desktop, visually attach to the map card above */
     margin-top: -1px;
@@ -727,21 +664,6 @@ function onKeepPlaying() {
 }
 .leaderboard-panel {
     min-height: 180px;
-}
-
-/* ═════════════════════════════════════════════════════════════
-   Transitions
-   ═════════════════════════════════════════════════════════════ */
-.celebrate-fade-enter-active {
-    transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-.celebrate-fade-leave-active {
-    transition: all 300ms ease;
-}
-.celebrate-fade-enter-from,
-.celebrate-fade-leave-to {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.96);
 }
 
 /* ═════════════════════════════════════════════════════════════

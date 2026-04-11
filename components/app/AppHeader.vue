@@ -1,6 +1,6 @@
 <template>
     <header
-        class="relative flex flex-row items-center h-[50px] px-3 lg:px-2 bg-paper dark:bg-paper editorial-rule"
+        class="relative flex flex-row items-center h-[50px] px-1.5 sm:px-3 lg:px-2 bg-paper dark:bg-paper editorial-rule"
         :style="{ viewTransitionName: logoMode ? 'landing-header' : 'header' }"
     >
         <!-- Left: Menu toggle + Info (game pages only) -->

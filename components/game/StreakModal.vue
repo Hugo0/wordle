@@ -1,5 +1,5 @@
 <template>
-    <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
+    <BaseModal :visible="visible" size="sm" @close="$emit('close')">
         <div class="flex flex-col gap-0">
             <!-- Hero -->
             <div class="text-center mb-4">
@@ -23,7 +23,7 @@
 
             <!-- Calendar heatmap (shared component) -->
             <div class="py-3">
-                <SharedStreakCalendar
+                <StreakCalendar
                     :game-results="statsStore.gameResults as Record<string, GameResult[]>"
                 />
             </div>
@@ -66,7 +66,7 @@
                 </button>
             </ClientOnly>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">
