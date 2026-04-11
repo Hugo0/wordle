@@ -107,13 +107,11 @@
                 <AppLanguagePickerModal
                     :visible="showLanguageModal"
                     :current-lang-code="lang"
-                    :language-codes="allLangCodes"
                     :current-mode-suffix="
                         game.gameConfig.mode === 'classic'
                             ? ''
                             : GAME_MODE_CONFIG[game.gameConfig.mode]?.routeSuffix || ''
                     "
-                    :current-play-type="game.gameConfig.playType"
                     @close="showLanguageModal = false"
                 />
 
@@ -195,8 +193,6 @@ function openWithSubPanel() {
 
 // Language picker modal state
 const showLanguageModal = ref(false);
-const { data: langData } = useFetch('/api/languages', { key: 'languages' });
-const allLangCodes = computed(() => langData.value?.language_codes ?? []);
 const langStore = useLanguageStore();
 const analytics = useAnalytics();
 const gameKeyboardRef = ref<{ $el: HTMLElement } | null>(null);

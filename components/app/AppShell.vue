@@ -48,9 +48,9 @@
         <GameStreakModal :visible="showStreakModal" @close="showStreakModal = false" />
 
         <!-- Language picker modal — consistent with game pages -->
-        <LanguagePickerModal
+        <AppLanguagePickerModal
             :visible="showLanguageModal"
-            :current-lang="lang"
+            :current-lang-code="lang"
             @close="showLanguageModal = false"
         />
     </div>

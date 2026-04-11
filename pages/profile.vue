@@ -8,14 +8,25 @@
  */
 import { readJson } from '~/utils/storage';
 import { useAnimatedNumber } from '~/composables/useAnimatedNumber';
-import { BarChart2, Flame, Square, Zap, ChevronRight } from 'lucide-vue-next';
+import { BarChart2, Flame, Square, Zap, ChevronRight, Download } from 'lucide-vue-next';
 import { isClassicDailyStatsKey, GAME_MODE_CONFIG, GAME_MODE_ORDER } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
 import type { SpeedAggregate } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
 
 import { useFlag } from '~/composables/useFlag';
+import { isStandalone } from '~/utils/storage';
 import type { GameResult } from '~/utils/types';
+
+// PWA install — show "Install App" CTA if not already installed
+const pwaInstall = import.meta.client
+    ? inject<{ install: () => void; status: () => { isStandalone: boolean } }>('pwaInstall', undefined)
+    : undefined;
+const showInstallCta = computed(() => {
+    if (!import.meta.client) return false;
+    if (isStandalone()) return false;
+    return !!pwaInstall;
+});
 
 useSeoMeta({
     title: 'Your Profile — Wordle Global',
@@ -881,14 +892,25 @@ const languagesConquered = computed(() => {
                     </section>
                 </RevealTransition>
 
-                <!-- CTA -->
+                <!-- CTA: Install App (if not PWA) or Play Wordle -->
                 <div class="text-center">
-                    <NuxtLink
-                        to="/"
-                        class="inline-block py-3 px-8 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
-                    >
-                        Play Wordle
-                    </NuxtLink>
+                    <ClientOnly>
+                        <button
+                            v-if="showInstallCta"
+                            class="inline-flex items-center gap-2 py-3 px-8 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
+                            @click="pwaInstall?.install()"
+                        >
+                            <Download :size="16" />
+                            Install App
+                        </button>
+                        <NuxtLink
+                            v-else
+                            to="/"
+                            class="inline-block py-3 px-8 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
+                        >
+                            Play Wordle
+                        </NuxtLink>
+                    </ClientOnly>
                 </div>
             </template>
         </div>

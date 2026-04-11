@@ -27,9 +27,9 @@ const route = useRoute();
 const lang = route.params.lang as string;
 
 // Semantic Explorer is English-only for v1. Redirect other languages
-// so crawlers and direct-link visitors don't see a broken game.
+// to their classic daily page instead of forcing them into English semantic.
 if (lang !== 'en') {
-    await navigateTo(`/en/semantic`, { redirectCode: 302 });
+    await navigateTo(`/${lang}`, { redirectCode: 302 });
 }
 
 // Play type: daily (default) or unlimited via ?play=unlimited

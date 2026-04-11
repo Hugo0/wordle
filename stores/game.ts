@@ -117,6 +117,8 @@ export const useGameStore = defineStore('game', () => {
     const gameConfig = ref<GameConfig>(
         createGameConfig('classic', 'en', { wordLength: WORD_LENGTH })
     );
+    /** True when a game page is mounted (set by useGamePage). */
+    const gameActive = ref(false);
     const boards = ref<BoardState[]>([createBoardState(0, '', MAX_GUESSES, WORD_LENGTH)]);
     const activeBoardIndex = ref(0);
 
@@ -2255,6 +2257,7 @@ export const useGameStore = defineStore('game', () => {
     return {
         // Multi-board architecture
         gameConfig,
+        gameActive,
         boards,
         activeBoardIndex,
         isMultiBoard,
