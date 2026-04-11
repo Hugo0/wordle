@@ -13,7 +13,7 @@ import { isClassicDailyStatsKey, GAME_MODE_CONFIG, GAME_MODE_ORDER } from '~/uti
 import type { GameMode } from '~/utils/game-modes';
 import type { SpeedAggregate } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
-import { buildDailyResultMapDetailed, toLocalDay, stepBack } from '~/utils/streak-dates';
+
 import { useFlag } from '~/composables/useFlag';
 import type { GameResult } from '~/utils/types';
 
@@ -101,33 +101,6 @@ async function saveName() {
     }
 }
 
-// Passkey support detection
-const passkeySupported = ref(false);
-const passkeyRegistering = ref(false);
-const passkeyAdded = ref(false);
-
-if (import.meta.client) {
-    onMounted(() => {
-        passkeySupported.value = !!window.PublicKeyCredential;
-    });
-}
-
-// Must be at top level of setup
-const { register: registerPasskey } = useWebAuthn({ registerEndpoint: '/api/webauthn/register' });
-
-async function addPasskey() {
-    passkeyRegistering.value = true;
-    try {
-        await registerPasskey({
-            userName: authUser.value?.displayName || authUser.value?.email || 'user',
-        });
-        passkeyAdded.value = true;
-    } catch {
-        // User cancelled or failed
-    } finally {
-        passkeyRegistering.value = false;
-    }
-}
 const { openLoginModal } = useLoginModal();
 
 interface ProfileBadge {
@@ -205,6 +178,15 @@ if (import.meta.client) {
             } catch {
                 // Non-critical — badges won't show but page still works
             }
+
+            // Scroll to hash target after async content renders (e.g. #badges).
+            // Double nextTick: first flushes Vue reactivity, second waits for DOM update.
+            const hash = useRoute().hash;
+            if (hash) {
+                await nextTick();
+                await nextTick();
+                document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+            }
         },
         { immediate: true }
     );
@@ -220,7 +202,7 @@ function formatDate(dateStr: string): string {
     }
 }
 
-import { LogOut, Fingerprint, Pencil } from 'lucide-vue-next';
+import { LogOut, Pencil } from 'lucide-vue-next';
 
 // Product-wide streak — single source via composable
 const { streak: productStreakRaw, bestStreak: productBestStreakRaw } = useProductStreak();
@@ -229,66 +211,7 @@ const productBestStreak = computed(() => productBestStreakRaw.value);
 const animProductStreak = useAnimatedNumber(productStreak);
 const streakExpanded = ref(false);
 
-// --- Calendar heatmap for streak (28-day rolling window) ---
-interface CalendarDay {
-    date: number | null;
-    state: 'won' | 'lost' | 'missed' | 'today' | 'future' | 'empty';
-    modes: string[];
-    langs: string[];
-}
-
-function calendarDayClass(day: CalendarDay): string {
-    switch (day.state) {
-        case 'won':
-            return 'bg-correct-soft';
-        case 'lost':
-            return 'cal-lost';
-        case 'missed':
-            return 'bg-muted-soft';
-        case 'today':
-            return 'outline outline-2 outline-ink -outline-offset-1';
-        default:
-            return '';
-    }
-}
-
-const calendarDays = computed<CalendarDay[]>(() => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const dayDetails = buildDailyResultMapDetailed(
-        statsStore.gameResults as Record<string, GameResult[]>
-    );
-    const todayDow = (today.getDay() + 6) % 7;
-    const endOfWeek = new Date(today);
-    endOfWeek.setDate(endOfWeek.getDate() + (6 - todayDow));
-    const startDate = new Date(endOfWeek);
-    startDate.setDate(startDate.getDate() - 27);
-    const days: CalendarDay[] = [];
-    const todayKey = toLocalDay(today);
-    for (let i = 0; i < 28; i++) {
-        const d = new Date(startDate);
-        d.setDate(d.getDate() + i);
-        const dayKey = toLocalDay(d);
-        const isToday = dayKey === todayKey;
-        const isFuture = d > today;
-        const detail = dayDetails.get(dayKey);
-        let state: CalendarDay['state'];
-        if (isToday) {
-            state = detail?.state || 'today';
-        } else if (isFuture) {
-            state = 'future';
-        } else {
-            state = detail?.state || 'missed';
-        }
-        days.push({
-            date: d.getDate(),
-            state,
-            modes: detail ? [...detail.modes] : [],
-            langs: detail ? [...detail.langs] : [],
-        });
-    }
-    return days;
-});
+// Calendar heatmap uses SharedStreakCalendar component (DRY with StreakModal)
 
 // Classic daily (from store's calculateTotalStats)
 const totalGames = ref(0);
@@ -329,11 +252,13 @@ const availableTabs = computed<{ id: StatsTab; label: string }[]>(() => {
     return tabs;
 });
 
-const sortedModes = computed(() =>
-    [...modeStats.value].sort(
-        (a, b) => GAME_MODE_ORDER.indexOf(a.mode) - GAME_MODE_ORDER.indexOf(b.mode)
-    )
-);
+const sortedModes = computed(() => {
+    const classic = modeStats.value.filter((m) => m.mode === 'classic');
+    const rest = modeStats.value
+        .filter((m) => m.mode !== 'classic')
+        .sort((a, b) => b.games - a.games);
+    return [...classic, ...rest];
+});
 
 // Distribution mode picker — which mode's histogram to show
 const distMode = ref<GameMode | null>(null);
@@ -604,21 +529,6 @@ const languagesConquered = computed(() => {
                 <!-- Account actions -->
                 <div class="mt-6 flex items-center gap-4">
                     <button
-                        v-if="passkeySupported"
-                        class="text-sm text-ink hover:text-accent transition-colors flex items-center gap-1"
-                        :disabled="passkeyRegistering"
-                        @click="addPasskey()"
-                    >
-                        <Fingerprint :size="14" />
-                        {{
-                            passkeyRegistering
-                                ? 'Registering...'
-                                : passkeyAdded
-                                  ? 'Passkey added'
-                                  : 'Add passkey'
-                        }}
-                    </button>
-                    <button
                         class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
                         @click="authLogout()"
                     >
@@ -678,18 +588,10 @@ const languagesConquered = computed(() => {
                     </div>
                     <div class="mono-label mt-1">Day Streak</div>
                     <div
-                        v-if="productBestStreak > 0"
                         class="text-xs text-muted italic mt-1.5"
                         style="font-family: var(--font-display)"
                     >
-                        Best: {{ productBestStreak }} · Any daily mode, any language
-                    </div>
-                    <div
-                        v-else
-                        class="text-xs text-muted italic mt-1.5"
-                        style="font-family: var(--font-display)"
-                    >
-                        Play today's daily to start a streak
+                        Any daily mode, any language
                     </div>
 
                     <!-- Calendar heatmap (expands on click) -->
@@ -698,93 +600,9 @@ const languagesConquered = computed(() => {
                         class="mt-5 pt-4 border-t border-rule text-left"
                         @click.stop
                     >
-                        <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">
-                            Last 28 Days
-                        </div>
-                        <div
-                            class="grid grid-cols-7 gap-0.5 mb-1"
-                            style="
-                                font-family: var(--font-mono);
-                                font-size: 8px;
-                                color: var(--color-muted);
-                            "
-                        >
-                            <span
-                                v-for="(d, i) in ['M', 'T', 'W', 'T', 'F', 'S', 'S']"
-                                :key="i"
-                                class="text-center"
-                                >{{ d }}</span
-                            >
-                        </div>
-                        <div class="grid grid-cols-7 gap-0.5">
-                            <div
-                                v-for="(day, i) in calendarDays"
-                                :key="i"
-                                class="aspect-square rounded-sm relative"
-                                :class="calendarDayClass(day)"
-                                style="
-                                    font-family: var(--font-mono);
-                                    font-size: 8px;
-                                    color: var(--color-muted);
-                                "
-                            >
-                                <!-- Date number: top-left when there's activity, centered otherwise -->
-                                <span
-                                    v-if="day.date"
-                                    class="absolute"
-                                    :class="
-                                        day.modes.length > 0
-                                            ? 'top-0.5 left-1'
-                                            : 'inset-0 flex items-center justify-center'
-                                    "
-                                    style="font-size: 8px; line-height: 1"
-                                    >{{ day.date }}</span
-                                >
-                                <!-- Mode icon centered (when there's activity) -->
-                                <div
-                                    v-if="day.modes.length > 0"
-                                    class="absolute inset-0 flex items-center justify-center"
-                                >
-                                    <component
-                                        :is="getModeIcon(day.modes[0]!)"
-                                        :size="16"
-                                        class="opacity-70"
-                                        :class="day.state === 'won' ? 'text-correct' : 'text-ink'"
-                                    />
-                                </div>
-                                <!-- Flag badge bottom-right -->
-                                <img
-                                    v-if="day.langs.length >= 1 && useFlag(day.langs[0]!)"
-                                    :src="useFlag(day.langs[0]!)!"
-                                    class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full object-cover border border-paper"
-                                    alt=""
-                                />
-                            </div>
-                        </div>
-                        <div
-                            class="flex gap-3 mt-2 justify-center"
-                            style="
-                                font-size: 9px;
-                                color: var(--color-muted);
-                                font-family: var(--font-mono);
-                            "
-                        >
-                            <span class="flex items-center gap-1"
-                                ><span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" />
-                                Won</span
-                            >
-                            <span class="flex items-center gap-1"
-                                ><span
-                                    class="w-2 h-2 rounded-sm inline-block"
-                                    style="background: var(--color-accent-soft, #e8d5d0)"
-                                />
-                                Lost</span
-                            >
-                            <span class="flex items-center gap-1"
-                                ><span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" />
-                                Missed</span
-                            >
-                        </div>
+                        <SharedStreakCalendar
+                            :game-results="statsStore.gameResults as Record<string, GameResult[]>"
+                        />
                         <!-- Current / Longest row -->
                         <div class="grid grid-cols-2 gap-px bg-rule mt-3">
                             <div class="bg-paper text-center py-3">
@@ -1130,9 +948,3 @@ const languagesConquered = computed(() => {
         </div>
     </AppShell>
 </template>
-
-<style scoped>
-.cal-lost {
-    background: var(--color-accent-soft, #e8d5d0);
-}
-</style>

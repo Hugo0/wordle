@@ -10,7 +10,7 @@ import { Info } from 'lucide-vue-next';
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-speed`,
+    key: (route) => `${route.params.lang}-speed-${route.query.play || 'daily'}`,
 });
 
 const route = useRoute();

@@ -172,6 +172,7 @@ All SEO content (FAQ, HowTo, tips, value props, section headings) lives in the `
 
 ## Don't
 
+- **NEVER push to `main` without explicit user permission.** `main` auto-deploys to production on Render. Every push causes a multi-minute 502 outage for hundreds of active users. Work on feature branches; the user decides when to merge.
 - Change the daily word algorithm — breaks word selection globally
 - Add console.logs to production code
 - Modify `.nuxt/` or `.output/` manually (auto-generated)

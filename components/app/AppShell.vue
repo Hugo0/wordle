@@ -31,7 +31,7 @@
                     :show-streak="true"
                     :streak-count="streakCount"
                     @toggle-sidebar="sidebarOpen = !sidebarOpen"
-                    @streak="navigateTo('/profile')"
+                    @streak="showStreakModal = true"
                     @settings="showSettings = !showSettings"
                 />
             </div>
@@ -43,6 +43,9 @@
              is always available. Game-specific options (difficulty) are inert
              when no game is active. Labels fall back to English. -->
         <GameSettingsModal :visible="showSettings" @close="showSettings = false" />
+
+        <!-- Streak modal — available on all pages -->
+        <GameStreakModal :visible="showStreakModal" @close="showStreakModal = false" />
     </div>
 </template>
 
@@ -75,6 +78,7 @@ const props = withDefaults(
 
 const sidebarOpen = ref(false);
 const showSettings = ref(false);
+const showStreakModal = ref(false);
 
 // Product-wide streak — single source via composable (client-only, returns 0 during SSR)
 const { streak: streakCount } = useProductStreak();

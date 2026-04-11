@@ -59,10 +59,20 @@ export async function setup(): Promise<void> {
     // Use pre-built server if available (CI builds first to skip 50s+ Nitro JIT)
     const useBuild = existsSync(join(process.cwd(), '.output', 'server', 'index.mjs'));
     const cmd = useBuild
-        ? { bin: 'node', args: ['.output/server/index.mjs'], env: { PORT: String(port), HOST: '0.0.0.0' } }
-        : { bin: 'npx', args: ['nuxt', 'dev', '--port', String(port)], env: { NUXT_PORT: String(port) } };
+        ? {
+              bin: 'node',
+              args: ['.output/server/index.mjs'],
+              env: { PORT: String(port), HOST: '0.0.0.0' },
+          }
+        : {
+              bin: 'npx',
+              args: ['nuxt', 'dev', '--port', String(port)],
+              env: { NUXT_PORT: String(port) },
+          };
 
-    console.log(`[setup-server] Starting ${useBuild ? 'pre-built' : 'dev'} server on port ${port}...`);
+    console.log(
+        `[setup-server] Starting ${useBuild ? 'pre-built' : 'dev'} server on port ${port}...`
+    );
 
     serverProcess = spawn(cmd.bin, cmd.args, {
         cwd: process.cwd(),

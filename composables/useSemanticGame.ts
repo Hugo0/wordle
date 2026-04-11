@@ -221,7 +221,9 @@ export function useSemanticGame(lang: string) {
     );
 
     // ── Actions ───────────────────────────────────────────────────────────
-    async function startGame(opts: { target?: string; debug?: boolean; forceNew?: boolean } = {}) {
+    async function startGame(
+        opts: { target?: string; debug?: boolean; forceNew?: boolean; play?: string } = {}
+    ) {
         starting.value = true;
         invalidMessage.value = '';
         mapMode.value = 'umap';
@@ -234,6 +236,7 @@ export function useSemanticGame(lang: string) {
                 body: {
                     target: opts.target,
                     debug: opts.debug,
+                    play: opts.play,
                 },
             });
             targetId.value = resp.targetId;

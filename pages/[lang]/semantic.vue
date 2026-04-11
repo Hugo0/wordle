@@ -20,7 +20,7 @@ import { buildSemanticGradientFromCSS, sampleGradient } from '~/utils/semanticCo
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-semantic`,
+    key: (route) => `${route.params.lang}-semantic-${route.query.play || 'daily'}`,
 });
 
 const route = useRoute();
@@ -163,6 +163,7 @@ onMounted(async () => {
         target: targetOverride,
         debug,
         forceNew: isUnlimited.value,
+        play: playType.value,
     });
 });
 
@@ -182,8 +183,9 @@ watch(
         }
 
         if (sem.neighbours.value.length > 0) {
-            // Restored from localStorage — show instantly
+            // Restored from localStorage — show instantly, auto-open modal for daily
             revealedNeighbourCount.value = sem.neighbours.value.length;
+            if (isDaily.value) showStatsModal.value = true;
         } else {
             // Live game-over — stagger once neighbours arrive
             needsStagger = true;
@@ -357,10 +359,16 @@ onUnmounted(() => {
     for (const t of neighbourRevealTimers) clearTimeout(t);
 });
 
-// --- New game (same daily, reset) ---
+// --- New game ---
 async function onNewGame() {
     showStatsModal.value = false;
-    await sem.startGame({ forceNew: true });
+    await sem.startGame({ forceNew: true, play: playType.value });
+}
+
+// --- Keep playing (daily → unlimited transition) ---
+function onKeepPlaying() {
+    showStatsModal.value = false;
+    navigateTo(`/${lang}/semantic?play=unlimited`);
 }
 </script>
 
@@ -533,9 +541,11 @@ async function onNewGame() {
             :day-idx="sem.dayIdx.value"
             :lang="lang"
             :llm-hint-used="sem.llmHintUsed.value"
+            :is-daily="isDaily"
             @close="showStatsModal = false"
             @share="onShare"
             @new-game="onNewGame"
+            @keep-playing="onKeepPlaying"
         />
         <template #seo>
             <GameSeoNoscript :lang="lang" mode="semantic" :seo="seo" :config="configVal" />
@@ -649,8 +659,9 @@ async function onNewGame() {
     align-items: center;
     min-height: 280px;
     /* Cap height so the input stays visible without scrolling.
-       Navbar ~50 + card header ~90 + input ~80 + card/body padding ~80 ≈ 300px. */
-    max-height: calc(100vh - 310px);
+       Navbar ~50 + card header ~90 + input ~80 + card/body padding ~80 ≈ 300px.
+       Use dvh to account for mobile browser chrome. */
+    max-height: calc(100dvh - 310px);
 }
 
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */
@@ -780,7 +791,6 @@ async function onNewGame() {
     .map-canvas-wrap {
         min-height: 180px;
         max-height: 40vh;
-        overflow: hidden;
     }
     /* Fixed input bar: pinned to the bottom of the viewport so it
        remains accessible when the mobile keyboard opens. */

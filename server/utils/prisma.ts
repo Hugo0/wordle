@@ -1,3 +1,6 @@
+// @prisma/client is CJS — named ESM import breaks in vitest's ESM transform.
+// Default import + destructure works in both Nitro (Render) and vitest (CI).
+// See commits facb5e40, 2e14401c for the original debugging.
 import prismaClientPkg from '@prisma/client';
 const { PrismaClient } = prismaClientPkg;
 import { PrismaPg } from '@prisma/adapter-pg';

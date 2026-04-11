@@ -234,7 +234,11 @@
                 <!-- You section -->
                 <div class="py-4 editorial-rule">
                     <div class="mono-label px-6 pb-2">You</div>
-                    <SidebarItem icon="BarChart2" label="Statistics" href="/profile#statistics" />
+                    <SidebarItem
+                        icon="ChartNoAxesCombined"
+                        label="Statistics"
+                        href="/profile#statistics"
+                    />
                     <SidebarItem icon="Award" label="Badges" href="/profile#badges" />
                     <SidebarItem icon="Calendar" label="Archive" :href="`/${langCode}/archive`" />
                     <SidebarItem

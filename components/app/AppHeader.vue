@@ -64,7 +64,11 @@
                         border: 1px solid rgba(0, 0, 0, 0.1);
                     "
                 />
-                {{ subtitle }}
+                <template v-if="subtitle!.includes('Unlimited')">
+                    {{ subtitle!.replace('Unlimited', '')
+                    }}<span class="text-accent">Unlimited</span>
+                </template>
+                <template v-else>{{ subtitle }}</template>
             </button>
         </div>
 
@@ -84,13 +88,14 @@
                 aria-label="Game results"
                 @click="$emit('results')"
             >
-                <Trophy :size="20" aria-hidden="true" />
+                <BarChart2 :size="20" aria-hidden="true" />
             </button>
+            <!-- Profile + Settings: hidden on mobile (accessible via sidebar) -->
             <ClientOnly>
                 <NuxtLink
                     v-if="loggedIn"
                     to="/profile"
-                    class="p-2 text-muted hover:text-ink transition-colors"
+                    class="hidden sm:flex p-2 text-muted hover:text-ink transition-colors"
                     aria-label="Profile"
                 >
                     <img
@@ -104,18 +109,18 @@
                 </NuxtLink>
                 <button
                     v-else
-                    class="p-2 text-muted hover:text-ink transition-colors"
+                    class="hidden sm:flex p-2 text-muted hover:text-ink transition-colors"
                     aria-label="Sign in"
                     @click="openLoginModal()"
                 >
                     <User :size="20" aria-hidden="true" />
                 </button>
                 <template #fallback>
-                    <span class="p-2 text-muted"><User :size="20" /></span>
+                    <span class="hidden sm:flex p-2 text-muted"><User :size="20" /></span>
                 </template>
             </ClientOnly>
             <button
-                class="p-2 text-muted hover:text-ink transition-colors"
+                class="hidden sm:flex p-2 text-muted hover:text-ink transition-colors"
                 aria-label="Settings"
                 @click="$emit('settings')"
             >
@@ -126,7 +131,7 @@
 </template>
 
 <script setup lang="ts">
-import { Info, Menu, Settings, Trophy, User } from 'lucide-vue-next';
+import { Info, Menu, Settings, BarChart2, User } from 'lucide-vue-next';
 
 const { loggedIn, avatarUrl } = useAuth();
 const { openLoginModal } = useLoginModal();
