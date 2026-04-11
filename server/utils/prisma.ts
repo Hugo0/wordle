@@ -19,12 +19,10 @@ function createClient(): PrismaClient {
         console.info('[prisma] connecting to:', connectionString.replace(/:[^:@]+@/, ':***@'));
     }
 
-    // Internal Render connections (short hostname, no .render.com) don't need SSL.
-    // Forcing SSL on internal connections causes intermittent ECONNREFUSED.
-    const isExternal = connectionString?.includes('.render.com') ?? false;
+    // Render requires SSL for all connections (internal and external).
     const pool = new pg.Pool({
         connectionString,
-        ssl: isExternal ? { rejectUnauthorized: false } : false,
+        ssl: { rejectUnauthorized: false },
         max: 10,
         min: 2,
         idleTimeoutMillis: 60000,
