@@ -33,6 +33,6 @@ export default defineConfig({
         command: 'pnpm dev',
         url: process.env.TEST_BASE_URL || 'http://localhost:3000',
         reuseExistingServer: !process.env.CI,
-        timeout: 60000,
+        timeout: 120_000,
     },
 });

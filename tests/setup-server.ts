@@ -87,7 +87,7 @@ export async function setup(): Promise<void> {
 
     // Wait for the server to be ready
     try {
-        await waitForServer(`${baseUrl}/api/languages`, 60_000);
+        await waitForServer(`${baseUrl}/api/languages`, 120_000);
         console.log(`[setup-server] Nuxt server ready at ${baseUrl}`);
     } catch (err) {
         // Kill the process if it never became ready
