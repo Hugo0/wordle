@@ -98,13 +98,6 @@ export default defineNuxtConfig({
     nitro: {
         // Pre-load data at startup
         preset: 'node-server',
-        // Externalize Prisma — it's a CJS module that breaks when bundled into ESM
-        externals: {
-            inline: [],
-        },
-        rollupConfig: {
-            external: ['@prisma/client', '@prisma/adapter-pg'],
-        },
     },
 
     pwa: {
