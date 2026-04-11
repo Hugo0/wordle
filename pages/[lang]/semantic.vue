@@ -400,7 +400,7 @@ function onKeepPlaying() {
             </p>
             <button
                 class="px-6 py-2 bg-accent text-paper font-body font-bold hover:opacity-90 transition-opacity"
-                @click="sem.startGame()"
+                @click="sem.startGame({ play: playType })"
             >
                 Retry
             </button>
