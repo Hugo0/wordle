@@ -203,7 +203,7 @@ if (import.meta.client) {
                     // Progress bars won't show, but badges still render
                 }
             } catch {
-                // Non-critical
+                // Non-critical — badges won't show but page still works
             }
         },
         { immediate: true }
@@ -231,7 +231,7 @@ import {
     Trophy,
     Zap,
     CalendarCheck,
-    Map,
+    Map as MapIcon,
     Award,
     LogOut,
     Fingerprint,
@@ -248,7 +248,7 @@ const BADGE_ICONS: Record<string, typeof Award> = {
     Trophy,
     Zap,
     CalendarCheck,
-    Map,
+    Map: MapIcon,
     Award,
 };
 
