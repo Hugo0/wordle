@@ -17,7 +17,10 @@
                         navigateTo(`/${lang}/${mode === 'classic' ? '' : mode + '/'}`);
                     }
                 "
-                @select-language="showLanguageModal = true"
+                @select-language="
+                    $emit('closeSidebar');
+                    showLanguageModal = true;
+                "
                 @settings="game.showOptionsModal = !game.showOptionsModal"
             />
 

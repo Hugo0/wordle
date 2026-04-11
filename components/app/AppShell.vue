@@ -46,6 +46,13 @@
 
         <!-- Streak modal — available on all pages -->
         <GameStreakModal :visible="showStreakModal" @close="showStreakModal = false" />
+
+        <!-- Language picker modal — consistent with game pages -->
+        <LanguagePickerModal
+            :visible="showLanguageModal"
+            :current-lang="lang"
+            @close="showLanguageModal = false"
+        />
     </div>
 </template>
 
@@ -79,6 +86,7 @@ const props = withDefaults(
 const sidebarOpen = ref(false);
 const showSettings = ref(false);
 const showStreakModal = ref(false);
+const showLanguageModal = ref(false);
 
 // Product-wide streak — single source via composable (client-only, returns 0 during SSR)
 const { streak: streakCount } = useProductStreak();
@@ -93,7 +101,7 @@ function onSelectMode(mode: string) {
 
 function onSelectLanguage() {
     sidebarOpen.value = false;
-    navigateTo('/#languages');
+    showLanguageModal.value = true;
 }
 </script>
 
