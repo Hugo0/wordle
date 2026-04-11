@@ -41,6 +41,11 @@ const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, config } = us
     lang
 );
 
+// Detect day rollover when tab regains focus
+if (isDaily.value) {
+    useDayRollover(lang, gameData.value!.todays_idx);
+}
+
 // Set the game config with the correct play type
 const modeConfig = createGameConfig(mode, lang, {
     playType: playType.value,

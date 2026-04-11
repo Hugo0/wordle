@@ -1,5 +1,5 @@
 <template>
-    <SharedBaseModal :visible="visible" size="md" @close="$emit('close')">
+    <BaseModal :visible="visible" size="md" @close="$emit('close')">
         <div class="flex flex-col gap-2">
             <!-- Speed Streak help -->
             <template v-if="isSpeedMode">
@@ -205,7 +205,7 @@
                 </div>
             </template>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">

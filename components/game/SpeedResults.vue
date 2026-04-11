@@ -21,7 +21,7 @@ defineEmits<{
 </script>
 
 <template>
-    <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
+    <BaseModal :visible="visible" size="sm" @close="$emit('close')">
         <h2 class="heading-section text-2xl text-center text-ink mb-1">Speed Streak</h2>
         <p class="text-center text-muted text-sm mb-3">Time's up!</p>
 
@@ -92,5 +92,5 @@ defineEmits<{
                 Play Again
             </button>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>

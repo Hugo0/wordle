@@ -1,5 +1,5 @@
 <template>
-    <SharedBaseModal
+    <BaseModal
         :visible="visible"
         size="xl"
         align="top"
@@ -352,7 +352,7 @@
                 v-html="game.timeUntilNextDay"
             />
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">

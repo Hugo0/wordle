@@ -1,5 +1,5 @@
 <template>
-    <SharedBaseModal
+    <BaseModal
         :visible="visible"
         size="lg"
         align="top"
@@ -73,7 +73,7 @@
                 </div>
             </button>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-    <SharedBaseModal :visible="visible" size="sm" @close="$emit('close')">
+    <BaseModal :visible="visible" size="sm" @close="$emit('close')">
         <div class="flex flex-col gap-2">
             <h3 class="heading-section text-xl text-ink mb-5">
                 {{ lang.config?.ui?.settings || 'Settings' }}
@@ -13,7 +13,7 @@
                             {{ lang.config?.ui?.dark_mode || 'Dark Mode' }}
                         </p>
                     </div>
-                    <SharedToggleSwitch
+                    <ToggleSwitch
                         :model-value="settings.darkMode"
                         @update:model-value="settings.toggleDarkMode()"
                     />
@@ -28,7 +28,7 @@
                             {{ lang.config?.ui?.sound_and_haptics || 'Sound & Haptics' }}
                         </p>
                     </div>
-                    <SharedToggleSwitch
+                    <ToggleSwitch
                         :model-value="settings.feedbackEnabled"
                         @update:model-value="settings.toggleFeedback()"
                     />
@@ -112,7 +112,7 @@
                             }}
                         </p>
                     </div>
-                    <SharedToggleSwitch
+                    <ToggleSwitch
                         :model-value="settings.wordInfoEnabled"
                         @update:model-value="settings.toggleWordInfo()"
                     />
@@ -133,7 +133,7 @@
                             }}
                         </p>
                     </div>
-                    <SharedToggleSwitch
+                    <ToggleSwitch
                         :model-value="settings.animationsEnabled"
                         @update:model-value="settings.toggleAnimations()"
                     />
@@ -153,7 +153,7 @@
                             }}
                         </p>
                     </div>
-                    <SharedToggleSwitch
+                    <ToggleSwitch
                         :model-value="settings.highContrast"
                         @update:model-value="settings.toggleHighContrast()"
                     />
@@ -236,7 +236,7 @@
                 </div>
             </div>
         </div>
-    </SharedBaseModal>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">
