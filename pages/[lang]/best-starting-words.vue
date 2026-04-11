@@ -148,10 +148,7 @@ useHead({
                 <h2 class="heading-section text-xl text-ink">
                     Top {{ Math.min(topWords.length, 10) }} Starting Words
                 </h2>
-                <SharedStartingWordsList
-                    :words="topWords.slice(0, 10)"
-                    :coverage-label="coverageLabel"
-                />
+                <StartingWordsList :words="topWords.slice(0, 10)" :coverage-label="coverageLabel" />
                 <p class="text-xs text-muted leading-relaxed">
                     Coverage score = sum of letter frequency percentages for each unique letter.
                     Higher means the word tests more commonly-used letters in {{ langName }} Wordle.
