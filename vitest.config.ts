@@ -31,12 +31,9 @@ export default defineConfig({
         alias: {
             '~': resolve(__dirname, '.'),
             '@': resolve(__dirname, '.'),
-            // @vue/reactivity is used by game store for pauseTracking/resetTracking
-            // but isn't hoisted by pnpm — resolve it from the nested location
-            '@vue/reactivity': resolve(
-                __dirname,
-                'node_modules/.pnpm/node_modules/@vue/reactivity'
-            ),
+            // @vue/reactivity is used by game store for pauseTracking/resetTracking.
+            // pnpm hoisting varies between local and CI — try both locations.
+            '@vue/reactivity': resolve(__dirname, 'node_modules/@vue/reactivity'),
         },
     },
     plugins: [nuxtMetaPlugin()],

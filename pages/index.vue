@@ -40,7 +40,7 @@ const pwaInstall = import.meta.client
               hasPrompt: boolean;
               isIOS: boolean;
           };
-      }>('pwaInstall')
+      }>('pwaInstall', undefined)
     : undefined;
 const showPwaInstall = ref(false);
 
@@ -295,7 +295,6 @@ const continuePlayingCards = computed(() => {
         langName: string;
         title: string;
         subtitle: string;
-        streak: number;
         cta: string;
         borderColor: string;
         modeIcon: any;
@@ -345,7 +344,6 @@ const continuePlayingCards = computed(() => {
         const lastResult = entry.results[entry.results.length - 1]!;
         const isSolved = lastResult.won;
         const route = modeUI ? getModeRoute(modeUI, entry.code) : `/${entry.code}`;
-        const langStreak = getCurrentStreak(entry.code);
 
         cards.push({
             key: `${entry.code}_${entry.mode}`,
@@ -356,7 +354,6 @@ const continuePlayingCards = computed(() => {
             langName: lang.language_name_native,
             title: lang.language_name_native,
             subtitle: modeDef.label,
-            streak: langStreak,
             cta: isSolved ? 'Unlimited →' : 'Play →',
             borderColor: isSolved ? 'var(--color-correct, #2d8544)' : 'var(--color-rule, #d4cfc7)',
             modeIcon: MODE_CARD_ICONS[entry.mode] || Square,
@@ -840,14 +837,6 @@ function openMultiBoardPicker(): void {
                                     :size="16"
                                     class="text-correct"
                                 />
-                                <template v-else-if="card.streak > 0">
-                                    <Flame :size="14" class="text-flame" />
-                                    <span
-                                        class="mono-label"
-                                        style="color: var(--color-flame); font-size: 10px"
-                                        >{{ card.streak }}</span
-                                    >
-                                </template>
                                 <span
                                     v-else
                                     class="mono-label text-muted"
@@ -1087,10 +1076,6 @@ function openMultiBoardPicker(): void {
             />
         </div>
     </AppShell>
-
-    <!-- Footer SEO links removed — Nuxt SSR renders all language pages server-side,
-         so crawlers discover them via the sitemap and SSR-rendered language grid above.
-         The noscript fallback is also unnecessary with SSR. -->
 </template>
 
 <style scoped>

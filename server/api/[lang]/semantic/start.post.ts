@@ -38,16 +38,19 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event).catch(() => ({}));
     const override = (body?.target as string | undefined)?.toLowerCase().trim();
     const debug = Boolean(body?.debug);
+    const play = (body?.play as string | undefined) ?? 'daily';
 
     const data = loadSemanticDataSafe();
     // TZ-aware day index, 1-based from April 11 2026
     const classicIdx = getTodaysIdx();
     const dayIdx = toModeDayIdx(classicIdx) ?? 1;
 
-    // Daily pick (or override via debug)
+    // Daily pick, unlimited random, or override via debug
     let target: string;
     if (override && data.wordIndex.has(override)) {
         target = override;
+    } else if (play === 'unlimited') {
+        target = data.targets[Math.floor(Math.random() * data.targets.length)]!;
     } else {
         target = pickDailyTarget(data.targets, lang, dayIdx);
     }

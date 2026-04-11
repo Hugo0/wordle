@@ -225,9 +225,12 @@
                 <div v-else>
                     <button
                         class="w-full px-4 py-2 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
-                        @click="authLoginWithGoogle()"
+                        @click="
+                            $emit('close');
+                            openLoginModal();
+                        "
                     >
-                        Sign in with Google
+                        Sign in
                     </button>
                     <p class="text-xs text-center text-muted mt-1">Sync settings across devices</p>
                 </div>
@@ -249,12 +252,8 @@ defineEmits<{ close: [] }>();
 const settings = useSettingsStore();
 const lang = useLanguageStore();
 const game = useGameStore();
-const {
-    loggedIn: authLoggedIn,
-    user: authUser,
-    loginWithGoogle: authLoginWithGoogle,
-    logout: authLogout,
-} = useAuth();
+const { loggedIn: authLoggedIn, user: authUser, logout: authLogout } = useAuth();
+const { openLoginModal } = useLoginModal();
 
 /** Easy mode (allow any word) — synced with game store. */
 const allowAnyWord = computed({

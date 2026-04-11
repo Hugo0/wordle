@@ -7,7 +7,7 @@
 -->
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { Sparkles, Trophy, XCircle } from 'lucide-vue-next';
 import type { Neighbour, SemanticGuess } from '~/composables/useSemanticGame';
 import { wordDetailPath } from '~/utils/wordUrls';
@@ -23,13 +23,29 @@ const props = defineProps<{
     dayIdx: number;
     lang: string;
     llmHintUsed: boolean;
+    /** Whether this is a daily game (affects Play Again vs Keep Playing). */
+    isDaily?: boolean;
 }>();
 
 const emit = defineEmits<{
     close: [];
     share: [];
     newGame: [];
+    keepPlaying: [];
 }>();
+
+// Share button feedback — self-contained, resets after 2s
+const shareCopied = ref(false);
+let shareTimer: ReturnType<typeof setTimeout> | null = null;
+
+function onShareClick() {
+    emit('share');
+    shareCopied.value = true;
+    if (shareTimer) clearTimeout(shareTimer);
+    shareTimer = setTimeout(() => {
+        shareCopied.value = false;
+    }, 2000);
+}
 
 function rankColor(rank: number): string {
     if (rank <= 10) return 'text-correct';
@@ -38,7 +54,6 @@ function rankColor(rank: number): string {
     return 'text-muted';
 }
 
-const sortedGuesses = computed(() => [...props.guesses].sort((a, b) => a.rank - b.rank));
 const bestRank = computed(() => {
     if (!props.guesses.length) return null;
     return Math.min(...props.guesses.map((g) => g.rank));
@@ -104,24 +119,6 @@ const bestRank = computed(() => {
                 </div>
             </div>
 
-            <!-- Guess list -->
-            <div class="section" v-if="sortedGuesses.length">
-                <div class="mono-label section-label">Your path</div>
-                <ol class="guess-list">
-                    <li
-                        v-for="g in sortedGuesses"
-                        :key="g.guessNumber + ':' + g.word"
-                        class="guess-item"
-                    >
-                        <span class="guess-num">{{ g.guessNumber }}</span>
-                        <span class="guess-word">{{ g.word }}</span>
-                        <span class="guess-sim" :class="rankColor(g.rank)">
-                            #{{ g.rank.toLocaleString() }}
-                        </span>
-                    </li>
-                </ol>
-            </div>
-
             <!-- Neighbours (what you didn't guess) -->
             <div class="section" v-if="neighbours.length">
                 <div class="mono-label section-label">Closest words you missed</div>
@@ -135,9 +132,19 @@ const bestRank = computed(() => {
 
             <!-- Actions -->
             <div class="action-row">
-                <button type="button" class="btn btn-ghost" @click="emit('close')">Close</button>
-                <button type="button" class="btn btn-primary" @click="emit('share')">
-                    Share result
+                <button
+                    v-if="isDaily"
+                    type="button"
+                    class="btn btn-ghost"
+                    @click="emit('keepPlaying')"
+                >
+                    Keep Playing
+                </button>
+                <button v-else type="button" class="btn btn-ghost" @click="emit('newGame')">
+                    Play Again
+                </button>
+                <button type="button" class="btn btn-primary" @click="onShareClick">
+                    {{ shareCopied ? 'Copied!' : 'Share result' }}
                 </button>
             </div>
         </div>

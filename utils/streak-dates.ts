@@ -48,11 +48,15 @@ export interface DayDetail {
     state: 'won' | 'lost';
     modes: Set<string>;
     langs: Set<string>;
+    /** Modes where at least one game was won that day */
+    wonModes: Set<string>;
+    /** Languages where at least one game was won that day */
+    wonLangs: Set<string>;
 }
 
 /**
  * Enhanced daily result map — includes which modes and languages were played each day.
- * Used by the profile page calendar to show mode icons and language flags.
+ * Used by the streak calendar to show mode icons and language flags.
  */
 export function buildDailyResultMapDetailed(
     gameResults: Record<string, GameResult[]>
@@ -78,12 +82,22 @@ export function buildDailyResultMapDetailed(
             const dayKey = toLocalDay(new Date(r.date as string));
             let detail = dayMap.get(dayKey);
             if (!detail) {
-                detail = { state: 'lost', modes: new Set(), langs: new Set() };
+                detail = {
+                    state: 'lost',
+                    modes: new Set(),
+                    langs: new Set(),
+                    wonModes: new Set(),
+                    wonLangs: new Set(),
+                };
                 dayMap.set(dayKey, detail);
             }
             detail.modes.add(mode);
             detail.langs.add(lang);
-            if (r.won) detail.state = 'won';
+            if (r.won) {
+                detail.state = 'won';
+                detail.wonModes.add(mode);
+                detail.wonLangs.add(lang);
+            }
         }
     }
 

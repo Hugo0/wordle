@@ -6,7 +6,7 @@
     "packageManager": "pnpm@10.17.1",
     "scripts": {
         "dev": "nuxt dev",
-        "build": "prisma generate --config prisma/prisma.config.ts && nuxt build",
+        "build": "nuxt build",
         "preview": "nuxt preview",
         "generate": "nuxt generate",
         "postinstall": "nuxt prepare",
