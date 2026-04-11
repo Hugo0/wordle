@@ -433,3 +433,18 @@ Then set `DATABASE_URL=postgresql://test:test@localhost:5432/wordle_test` in CI 
 
 ### 14. Sync endpoint: coerce att:0 on losses
 Old localStorage results stored losses as `{ won: false, attempts: 0 }` because attempt count wasn't tracked on losses. The `/api/user/sync` POST endpoint should coerce `attempts: 0` on `won: false` results to `attempts: maxGuesses` (6 for classic). Affects 48 legacy records from 6 users (confirmed 2026-04-11).
+
+### 15. Make stats store reactive instead of imperative
+Currently `stats` is a manually-triggered snapshot: `calculateStats(key)` reads `gameResults` and writes to `stats` ref. Any code that reloads `gameResults` without calling `calculateStats` produces stale/empty stats (bug hit on 2026-04-11 with scoped storage — fixed with a band-aid in `loadGameResults`).
+
+**Correct architecture:** make `stats` a `computed` that derives from reactive `gameResults` + a reactive `currentStatsKey`:
+```ts
+const currentStatsKey = ref<string>();
+const currentMaxGuesses = ref(6);
+const stats = computed(() => {
+    if (!currentStatsKey.value) return emptyStats(currentMaxGuesses.value);
+    const results = gameResults.value[currentStatsKey.value];
+    return results?.length ? computeStats(results, currentMaxGuesses.value) : emptyStats(currentMaxGuesses.value);
+});
+```
+Then `calculateStats(key, max)` becomes `setStatsKey(key, max)` — just sets the refs, Vue handles the rest. Eliminates the entire class of "forgot to recalculate" bugs. Touches: `stores/stats.ts`, `composables/useGamePage.ts`, `pages/profile.vue`.
