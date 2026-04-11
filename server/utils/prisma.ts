@@ -23,8 +23,9 @@ function createClient(): PrismaClient {
         connectionString,
         ssl: { rejectUnauthorized: false },
         max: 10,
-        idleTimeoutMillis: 30000,
-        connectionTimeoutMillis: 10000,
+        min: 2, // Keep warm connections to avoid cold-start on first request
+        idleTimeoutMillis: 60000, // 1 min — keep connections alive longer between requests
+        connectionTimeoutMillis: 15000, // 15s — generous for transient network hiccups
     });
 
     pool.on('error', (err) => {
