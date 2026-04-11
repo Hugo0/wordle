@@ -11,7 +11,7 @@ import type { GameMode } from '~/utils/game-modes';
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-${route.params.mode}`,
+    key: (route) => `${route.params.lang}-${route.params.mode}-${route.query.play || 'daily'}`,
     // Statically inlined — definePageMeta is extracted at build time, can't reference closures
     validate: (route) =>
         ['dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle'].includes(
