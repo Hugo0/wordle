@@ -124,12 +124,13 @@ type SavedSemanticState = {
     neighbours: Neighbour[];
 };
 
-function storageKey(lang: string): string {
-    return `semantic_game_${lang}`;
+function storageKey(lang: string, play?: string): string {
+    return play === 'unlimited' ? `semantic_game_${lang}_unlimited` : `semantic_game_${lang}`;
 }
 
 export function useSemanticGame(lang: string) {
     // ── Session / meta ────────────────────────────────────────────────────
+    let _currentPlay: string = 'daily'; // tracks daily vs unlimited for storage key
     const targetId = ref<string | null>(null);
     const dayIdx = ref<number>(0);
     const axisAnchors = ref<Record<string, { low: string; high: string }>>({});
@@ -224,11 +225,13 @@ export function useSemanticGame(lang: string) {
     async function startGame(
         opts: { target?: string; debug?: boolean; forceNew?: boolean; play?: string } = {}
     ) {
+        if (starting.value) return; // Guard against overlapping calls
         starting.value = true;
         invalidMessage.value = '';
         mapMode.value = 'umap';
         sliceAxes.value = null;
         newBestSignal.value = null;
+        _currentPlay = opts.play ?? 'daily';
 
         try {
             const resp = await $fetch<StartResponse>(`/api/${lang}/semantic/start`, {
@@ -264,7 +267,7 @@ export function useSemanticGame(lang: string) {
             llmHint.value = null;
             llmHintUsed.value = false;
             _prevBestRank = null;
-            removeLocal(storageKey(lang));
+            removeLocal(storageKey(lang, _currentPlay));
         } catch (e) {
             console.warn('[semantic-game] start failed', e);
             invalidMessage.value = 'Could not start game. Retry?';
@@ -434,13 +437,13 @@ export function useSemanticGame(lang: string) {
             finalTargetWord: finalTargetWord.value,
             neighbours: neighbours.value,
         };
-        writeJson(storageKey(lang), state);
+        writeJson(storageKey(lang, _currentPlay), state);
     }
 
     /** Try to restore saved state for the current day. Returns true if
      *  state was successfully restored, false if no matching save exists. */
     function restoreState(currentDayIdx: number): boolean {
-        const saved = readJson<SavedSemanticState>(storageKey(lang));
+        const saved = readJson<SavedSemanticState>(storageKey(lang, _currentPlay));
         if (!saved || saved.dayIdx !== currentDayIdx) return false;
         if (!saved.guesses?.length) return false;
 

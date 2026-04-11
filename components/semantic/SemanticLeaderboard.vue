@@ -232,6 +232,12 @@ function onRowLeave() {
         opacity: 1;
     }
 }
+/* Hide the verbose empty-state CTA on mobile — input field is self-explanatory */
+@media (max-width: 520px) {
+    .leaderboard-header.empty-cta {
+        display: none;
+    }
+}
 
 .mono-label {
     font-family: var(--font-mono);

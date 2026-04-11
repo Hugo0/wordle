@@ -57,23 +57,23 @@
 import { ref, computed, watch, nextTick } from 'vue';
 import { useFlag } from '~/composables/useFlag';
 
-const props = defineProps<{
-    visible: boolean;
-    currentLangCode: string;
-    /** All available language codes */
-    languageCodes: string[];
-    /** Language name map: code → { name, nativeName } */
-    languageNames?: Record<string, { name: string; nativeName?: string }>;
-    /** Current mode route suffix (e.g., 'dordle', 'semantic', '') */
-    currentModeSuffix?: string;
-    /** Current play type query */
-    currentPlayType?: string;
-}>();
+const props = withDefaults(
+    defineProps<{
+        visible: boolean;
+        currentLangCode: string;
+        /** Current mode route suffix (e.g., 'dordle', 'semantic', ''). Used to try same mode in new language. */
+        currentModeSuffix?: string;
+    }>(),
+    { currentModeSuffix: '' }
+);
 
 const emit = defineEmits<{ close: [] }>();
 
 const searchRef = ref<HTMLInputElement | null>(null);
 const searchQuery = ref('');
+
+// Fetch language data once (cached by Nuxt)
+const { data: langData } = useFetch('/api/languages', { key: 'languages-picker' });
 
 // Auto-focus search on open
 watch(
@@ -87,17 +87,19 @@ watch(
     }
 );
 
-const languages = computed(() =>
-    props.languageCodes.map((code) => {
-        const names = props.languageNames?.[code];
+const languages = computed(() => {
+    const codes = langData.value?.language_codes ?? [];
+    const names = langData.value?.languages ?? {};
+    return codes.map((code: string) => {
+        const info = names[code];
         return {
             code,
-            name: names?.name || code,
-            nativeName: names?.nativeName || names?.name || code,
+            name: info?.language_name || code,
+            nativeName: info?.language_name_native || info?.language_name || code,
             flagSrc: useFlag(code),
         };
-    })
-);
+    });
+});
 
 const filteredLanguages = computed(() => {
     const q = searchQuery.value.toLowerCase().trim();
@@ -112,8 +114,13 @@ const filteredLanguages = computed(() => {
 
 function selectLanguage(code: string) {
     emit('close');
-    const suffix = props.currentModeSuffix ? `/${props.currentModeSuffix}` : '';
-    const playParam = props.currentPlayType === 'unlimited' ? '?play=unlimited' : '';
-    navigateTo(`/${code}${suffix}${playParam}`);
+    // Try to stay in the same game mode in the new language.
+    // Modes that are language-restricted (e.g., semantic = English-only)
+    // have server-side redirects that will send the user to the right place.
+    if (props.currentModeSuffix) {
+        navigateTo(`/${code}/${props.currentModeSuffix}`);
+    } else {
+        navigateTo(`/${code}`);
+    }
 }
 </script>

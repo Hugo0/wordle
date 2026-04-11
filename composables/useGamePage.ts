@@ -73,6 +73,8 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
 
     // --- Lifecycle ---
     onMounted(() => {
+        game.gameActive = true;
+
         // Pass board DOM ref to game store for animations
         // (keyboard ref is wired by GamePageShell)
         game.setBoardEl(() => gameBoardRef.value?.boardEl ?? null);
@@ -80,6 +82,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
         // Keyboard event listener
         window.addEventListener('keydown', handleKeyDown);
         onUnmounted(() => {
+            game.gameActive = false;
             window.removeEventListener('keydown', handleKeyDown);
         });
 

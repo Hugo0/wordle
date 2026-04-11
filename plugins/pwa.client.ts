@@ -225,23 +225,22 @@ export default defineNuxtPlugin(() => {
         } catch {}
     });
 
-    // --- Start idle detection once game page is active ---
+    // --- Start idle detection only on game pages (set by useGamePage) ---
 
     watch(
-        () => gameStore.gameConfig.mode,
-        (mode) => {
+        () => gameStore.gameActive,
+        (active) => {
             stopIdleDetection();
-            if (mode && mode !== 'speed') {
+            if (active && gameStore.gameConfig.mode !== 'speed') {
                 startIdleDetection();
             }
-        },
-        { immediate: true }
+        }
     );
 
     watch(
         () => gameStore.showStatsModal,
         (showing, wasShowing) => {
-            if (wasShowing && !showing && gameStore.gameOver) {
+            if (wasShowing && !showing && gameStore.gameOver && gameStore.gameActive) {
                 resetIdleTimer();
             }
         }

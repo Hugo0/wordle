@@ -4,7 +4,6 @@
         size="lg"
         align="top"
         no-padding
-        no-close-button
         :aria-label="`Choose a game mode for ${languageName}`"
         @close="$emit('close')"
     >
