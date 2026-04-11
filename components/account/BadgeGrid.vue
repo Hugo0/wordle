@@ -58,12 +58,18 @@ interface Badge {
     earnedAt?: string;
 }
 
-const props = defineProps<{
-    badges: Badge[];
-    earnedSlugs: Set<string>;
-    progress?: Record<string, number>;
-    compact?: boolean;
-}>();
+const props = withDefaults(
+    defineProps<{
+        badges: Badge[];
+        earnedSlugs: Set<string>;
+        progress?: Record<string, number>;
+        compact?: boolean;
+        maxVisible?: number;
+    }>(),
+    { maxVisible: 8 }
+);
+
+const expanded = ref(false);
 
 function getIcon(iconName: string) {
     return ICONS[iconName] || Award;
@@ -135,35 +141,51 @@ function getProgressLabel(badge: Badge): string {
     const current = props.progress[badge.group] ?? 0;
     return `${current}/${badge.threshold}`;
 }
+
+const visibleBadges = computed(() => {
+    if (expanded.value || props.compact) return displayBadges.value;
+    return displayBadges.value.slice(0, props.maxVisible);
+});
+
+const hasMore = computed(() => displayBadges.value.length > props.maxVisible);
 </script>
 
 <template>
-    <div class="badge-grid" :class="{ compact }">
-        <div
-            v-for="badge in displayBadges"
-            :key="badge.slug"
-            class="badge-card"
-            :class="{ locked: !earnedSlugs.has(badge.slug) }"
-        >
-            <div class="badge-icon">
-                <component :is="getIcon(badge.icon)" :size="compact ? 24 : 32" />
-            </div>
-            <div class="badge-name">{{ badge.name }}</div>
-            <div v-if="!compact" class="badge-desc">{{ badge.description }}</div>
-            <div v-if="earnedSlugs.has(badge.slug) && badge.earnedAt" class="badge-date">
-                Earned {{ formatDate(badge.earnedAt) }}
-            </div>
-            <!-- Progress bar for locked tiered badges -->
-            <template v-if="!earnedSlugs.has(badge.slug) && badge.group && progress">
-                <div class="badge-progress">
-                    <div
-                        class="badge-progress-fill"
-                        :style="{ width: getProgressPct(badge) + '%' }"
-                    ></div>
+    <div>
+        <div class="badge-grid" :class="{ compact }">
+            <div
+                v-for="badge in visibleBadges"
+                :key="badge.slug"
+                class="badge-card"
+                :class="{ locked: !earnedSlugs.has(badge.slug) }"
+            >
+                <div class="badge-icon">
+                    <component :is="getIcon(badge.icon)" :size="compact ? 24 : 32" />
                 </div>
-                <div class="badge-progress-label">{{ getProgressLabel(badge) }}</div>
-            </template>
+                <div class="badge-name">{{ badge.name }}</div>
+                <div v-if="!compact" class="badge-desc">{{ badge.description }}</div>
+                <div v-if="earnedSlugs.has(badge.slug) && badge.earnedAt" class="badge-date">
+                    Earned {{ formatDate(badge.earnedAt) }}
+                </div>
+                <!-- Progress bar for locked tiered badges -->
+                <template v-if="!earnedSlugs.has(badge.slug) && badge.group && progress">
+                    <div class="badge-progress">
+                        <div
+                            class="badge-progress-fill"
+                            :style="{ width: getProgressPct(badge) + '%' }"
+                        ></div>
+                    </div>
+                    <div class="badge-progress-label">{{ getProgressLabel(badge) }}</div>
+                </template>
+            </div>
         </div>
+        <button
+            v-if="hasMore && !compact"
+            class="w-full mt-2 py-2 text-xs text-muted hover:text-ink transition-colors cursor-pointer text-center"
+            @click="expanded = !expanded"
+        >
+            {{ expanded ? 'Show fewer' : `Show all ${displayBadges.length} badges` }}
+        </button>
     </div>
 </template>
 
@@ -171,16 +193,15 @@ function getProgressLabel(badge: Badge): string {
 .badge-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--color-rule);
-    border: 1px solid var(--color-rule);
 }
 .badge-card {
-    background: var(--color-paper);
     padding: 24px 16px;
     text-align: center;
     transition: background 0.2s;
     cursor: default;
+    border: 1px solid var(--color-rule);
+    margin-top: -1px;
+    margin-left: -1px;
 }
 .badge-card:hover {
     background: var(--color-paper-warm);
