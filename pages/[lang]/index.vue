@@ -6,6 +6,9 @@
  * initializes stores, and renders the game board + keyboard.
  */
 
+import { readLocal, writeLocal } from '~/utils/storage';
+import { createGameConfig } from '~/utils/game-modes';
+
 definePageMeta({
     layout: 'game',
     // Force full remount when language changes — prevents game state bleed
@@ -15,6 +18,9 @@ definePageMeta({
 
 const route = useRoute();
 const lang = route.params.lang as string;
+
+// Play type: daily (default) or unlimited via ?play=unlimited
+const { playType, isDaily, isUnlimited } = usePlayType('classic');
 
 // --- Language improvement banner (ko, ja) ---
 const IMPROVEMENT_LANGS = ['ko', 'ja'];
@@ -32,14 +38,14 @@ function onBannerClick() {
 function dismissBanner() {
     showImprovementBanner.value = false;
     try {
-        localStorage.setItem(`banner_dismissed_${lang}`, '1');
+        writeLocal(`banner_dismissed_${lang}`, '1');
     } catch {
         // localStorage unavailable
     }
 }
 
 // --- Server-side data fetch (SSR) ---
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
+const { data: gameData, error } = await useFetch(`/api/${lang}/data`, { key: `lang-data-${lang}` });
 
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
@@ -50,21 +56,21 @@ const { langStore, game, stats, sidebarOpen, toggleSidebar, closeSidebar, gameBo
 
 // --- SEO ---
 const configVal = gameData.value.config;
-const { data: allLangs } = await useFetch('/api/languages');
 const seo = useGameSeo({
     lang,
     mode: 'classic',
     config: configVal,
     langStore,
-    allLangCodes: allLangs.value?.language_codes,
     shareResult: (route.query.r as string) || undefined,
 });
 
-// Game header
-const headerTitle = computed(() => configVal.name_native || 'Wordle');
+// Game header — mode name as H1, language + play type as subtitle
+const headerTitle = computed(() => 'Wordle');
+const langLabel = configVal.name_native || configVal.name || lang;
 const headerSubtitle = computed(() => {
+    if (isUnlimited.value) return `${langLabel} · Unlimited`;
     const idx = gameData.value?.todays_idx;
-    return idx != null ? `#${idx}` : '';
+    return idx != null ? `${langLabel} · #${idx}` : langLabel;
 });
 
 // --- Client-side initialization ---
@@ -72,7 +78,7 @@ onMounted(() => {
     // Show improvement banner for ko/ja if not dismissed
     if (IMPROVEMENT_LANGS.includes(lang)) {
         try {
-            if (!localStorage.getItem(`banner_dismissed_${lang}`)) {
+            if (!readLocal(`banner_dismissed_${lang}`)) {
                 showImprovementBanner.value = true;
             }
         } catch {
@@ -85,18 +91,31 @@ onMounted(() => {
     }, 1000);
     onUnmounted(() => clearInterval(interval));
 
-    // Initialize game from localStorage
-    try {
-        game.loadFromLocalStorage();
-        game.showTiles();
+    // Initialize game
+    if (isUnlimited.value) {
+        // Unlimited: pick a random word and start a new game
+        const pool = gameData.value!.daily_words?.length
+            ? gameData.value!.daily_words
+            : gameData.value!.word_list;
+        const word = pool[Math.floor(Math.random() * pool.length)]!;
+        game.resetForMode(
+            createGameConfig('classic', lang, { playType: 'unlimited', wordLength: 5 }),
+            word
+        );
+    } else {
+        // Daily: restore from localStorage
+        try {
+            game.loadFromLocalStorage();
+            game.showTiles();
 
-        if (game.gameOver) {
-            game.showStatsModal = true;
-        } else {
-            game.maybeShowTutorial();
+            if (game.gameOver) {
+                game.showStatsModal = true;
+            } else {
+                game.maybeShowTutorial();
+            }
+        } catch {
+            // Failed to restore game state — start fresh
         }
-    } catch {
-        // Failed to restore game state — start fresh
     }
 });
 </script>
@@ -146,7 +165,9 @@ onMounted(() => {
 
         <!-- The game board -->
         <GameBoard ref="gameBoardRef" />
-    </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" mode="classic" :seo="seo" :config="configVal" />
+        <template #seo>
+            <GameSeoNoscript :lang="lang" mode="classic" :seo="seo" :config="configVal" />
+        </template>
+    </GamePageShell>
 </template>

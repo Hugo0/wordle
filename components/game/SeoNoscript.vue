@@ -1,9 +1,9 @@
 <!--
   SEO content section for all game pages.
 
-  Rendered below the game viewport in the DOM. The game layout uses
-  scroll-snap + a JS rubber-band guard so users almost never reach this.
-  Google's renderer sees all content in the full rendered DOM.
+  Rendered below the game viewport in the DOM. Users can scroll down
+  past the game to read this content. Google's renderer sees it in the
+  full rendered DOM. Structured data (FAQ, HowTo) matches this visible text.
 
   All text reads from config.seo.* (translated per language) with English
   fallbacks from default_language_config.json. Icons use Lucide.
@@ -32,6 +32,7 @@ import type { Component } from 'vue';
 import type { GameMode } from '~/utils/game-modes';
 import type { GameSeoResult } from '~/composables/useGameSeo';
 import { interpolate } from '~/utils/interpolate';
+import { wordDetailPath, wordDetailPathOrIdx } from '~/utils/wordUrls';
 import type { LanguageConfig, LanguageSeo } from '~/utils/types';
 
 const props = defineProps<{
@@ -172,6 +173,8 @@ const modeDesc = computed(() => {
         raw = s.value.mode_desc_speed || '';
     } else if (props.mode === 'unlimited') {
         raw = s.value.mode_desc_unlimited || s.value.mode_desc_classic || '';
+    } else if (props.mode === 'semantic') {
+        raw = s.value.mode_desc_semantic || s.value.mode_desc_classic || '';
     } else {
         raw = s.value.mode_desc_classic || '';
     }
@@ -281,7 +284,11 @@ const recentWords = computed(() => {
                             Wordle {{ seo.langNative }} #{{ todaysIdx }}
                         </p>
                         <a
-                            :href="`/${lang}/word/${todaysIdx}`"
+                            :href="
+                                todaysWord
+                                    ? wordDetailPath(lang, todaysWord)
+                                    : `/${lang}/word/${todaysIdx}`
+                            "
                             class="inline-block text-sm text-muted underline hover:text-ink transition-colors"
                         >
                             See definition & word art
@@ -328,7 +335,10 @@ const recentWords = computed(() => {
                 </h3>
 
                 <!-- Tile color examples (reuses HelpModal tile pattern) -->
-                <div v-if="!isMultiBoard && mode !== 'speed'" class="space-y-4 max-w-xs mx-auto">
+                <div
+                    v-if="!isMultiBoard && mode !== 'speed' && mode !== 'semantic'"
+                    class="space-y-4 max-w-xs mx-auto"
+                >
                     <div v-for="ex in EXAMPLES" :key="ex.type" class="space-y-1.5">
                         <div class="grid grid-cols-5 gap-1">
                             <div
@@ -536,7 +546,7 @@ const recentWords = computed(() => {
                         <a
                             v-for="w in recentWords"
                             :key="w.day_idx"
-                            :href="`/${lang}/word/${w.day_idx}`"
+                            :href="wordDetailPathOrIdx(lang, w)"
                             class="flex items-center justify-between px-5 py-3 hover:bg-paper-warm transition-colors"
                         >
                             <div class="flex items-center gap-3">
@@ -558,7 +568,7 @@ const recentWords = computed(() => {
                     </div>
                     <p class="text-center">
                         <a
-                            :href="`/${lang}/words`"
+                            :href="`/${lang}/archive`"
                             class="text-sm text-muted underline hover:text-ink transition-colors"
                             >{{ h.viewAllWords }}</a
                         >

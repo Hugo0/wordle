@@ -8,6 +8,8 @@
  * is NOT started — tests use the external URL directly.
  */
 import { spawn, type ChildProcess } from 'child_process';
+import { existsSync } from 'fs';
+import { join } from 'path';
 import { createServer } from 'net';
 
 let serverProcess: ChildProcess | null = null;
@@ -30,7 +32,7 @@ async function getFreePort(): Promise<number> {
 }
 
 /** Wait until the URL responds with a 200-range status. */
-async function waitForServer(url: string, timeoutMs = 60_000): Promise<void> {
+async function waitForServer(url: string, timeoutMs = 120_000): Promise<void> {
     const start = Date.now();
     while (Date.now() - start < timeoutMs) {
         try {
@@ -54,13 +56,19 @@ export async function setup(): Promise<void> {
     const port = await getFreePort();
     const baseUrl = `http://localhost:${port}`;
 
-    console.log(`[setup-server] Starting Nuxt dev server on port ${port}...`);
+    // Use pre-built server if available (CI builds first to skip 50s+ Nitro JIT)
+    const useBuild = existsSync(join(process.cwd(), '.output', 'server', 'index.mjs'));
+    const cmd = useBuild
+        ? { bin: 'node', args: ['.output/server/index.mjs'], env: { PORT: String(port), HOST: '0.0.0.0' } }
+        : { bin: 'npx', args: ['nuxt', 'dev', '--port', String(port)], env: { NUXT_PORT: String(port) } };
 
-    serverProcess = spawn('npx', ['nuxt', 'dev', '--port', String(port)], {
+    console.log(`[setup-server] Starting ${useBuild ? 'pre-built' : 'dev'} server on port ${port}...`);
+
+    serverProcess = spawn(cmd.bin, cmd.args, {
         cwd: process.cwd(),
         stdio: ['ignore', 'pipe', 'pipe'],
         detached: true,
-        env: { ...process.env, NODE_ENV: 'development', NUXT_PORT: String(port) },
+        env: { ...process.env, NODE_ENV: useBuild ? 'production' : 'development', ...cmd.env },
     });
 
     // Log server output for debugging
@@ -87,7 +95,7 @@ export async function setup(): Promise<void> {
 
     // Wait for the server to be ready
     try {
-        await waitForServer(`${baseUrl}/api/languages`, 60_000);
+        await waitForServer(`${baseUrl}/api/languages`, 120_000);
         console.log(`[setup-server] Nuxt server ready at ${baseUrl}`);
     } catch (err) {
         // Kill the process if it never became ready

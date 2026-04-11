@@ -15,7 +15,7 @@ definePageMeta({
 const route = useRoute();
 const lang = route.params.lang as string;
 
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
+const { data: gameData, error } = await useFetch(`/api/${lang}/data`, { key: `lang-data-${lang}` });
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
@@ -24,13 +24,11 @@ const { langStore, game, sidebarOpen, toggleSidebar, closeSidebar, gameBoardRef,
     useGamePage(gameData, lang);
 
 // --- SEO ---
-const { data: allLangs } = await useFetch('/api/languages');
 const seo = useGameSeo({
     lang,
     mode: 'unlimited',
     config: config.value!,
     langStore,
-    allLangCodes: allLangs.value?.language_codes,
 });
 
 // --- Random word selection ---
@@ -62,8 +60,8 @@ onMounted(() => {
         :lang="lang"
         :language-name="config?.name_native || config?.name || lang"
         current-mode="unlimited"
-        :title="seo.modeLabel"
-        :subtitle="config?.name_native || lang"
+        title="Wordle"
+        :subtitle="`${config?.name_native || lang} · Unlimited`"
         :sidebar-open="sidebarOpen"
         :visible="!!gameData"
         @toggle-sidebar="toggleSidebar"
@@ -71,7 +69,9 @@ onMounted(() => {
         @new-game="startNewGame"
     >
         <GameBoard ref="gameBoardRef" />
-    </GamePageShell>
 
-    <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" :config="config!" />
+        <template #seo>
+            <GameSeoNoscript :lang="lang" mode="unlimited" :seo="seo" :config="config!" />
+        </template>
+    </GamePageShell>
 </template>

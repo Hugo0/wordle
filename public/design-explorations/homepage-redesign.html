@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage Redesign — Wordle Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Sans+3:wght@300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --ink: #1a1a1a;
+    --paper: #faf8f5;
+    --paper-warm: #f3efe8;
+    --accent: #c0392b;
+    --accent-soft: #e8d5d0;
+    --green: #2d8544;
+    --green-soft: #d4edda;
+    --yellow: #b8860b;
+    --flame: #e8590c;
+    --gray: #8c8c8c;
+    --gray-soft: #e8e8e8;
+    --rule: #d4cfc7;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Source Sans 3', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: var(--sans); background: var(--paper);
+    color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased;
+}
+
+.design-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+    padding: 6px 16px; text-align: center;
+}
+.design-bar a { color: var(--accent-soft); margin: 0 12px; text-decoration: none; }
+
+/* Section */
+.section {
+    padding: 80px 40px 60px; border-bottom: 1px solid var(--rule);
+    display: flex; flex-direction: column; align-items: center;
+}
+.section.warm { background: var(--paper-warm); }
+.section-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 16px;
+}
+.section h2 {
+    font-family: var(--serif); font-size: 32px; font-weight: 700;
+    margin-bottom: 8px; text-align: center;
+}
+.section .sub {
+    font-family: var(--serif); font-style: italic; font-size: 16px;
+    color: var(--gray); text-align: center; margin-bottom: 40px;
+}
+.content { max-width: 720px; }
+.content p { font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+.content p strong { font-weight: 600; }
+
+/* Phone frames */
+.phone-pair {
+    display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin: 32px 0;
+}
+.phone {
+    width: 360px; border: 2px solid var(--ink); border-radius: 20px;
+    overflow: hidden; background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.phone .ps { display: flex; justify-content: space-between; padding: 6px 16px; font-family: var(--mono); font-size: 9px; color: var(--gray); }
+.phone .ph {
+    text-align: center; padding: 20px 16px 16px; border-bottom: 1px solid var(--rule);
+}
+.phone .ph h1 {
+    font-family: var(--serif); font-size: 36px; font-weight: 800;
+    font-variation-settings: 'opsz' 144; letter-spacing: -0.02em;
+}
+.phone .ph h1 .dot { color: var(--accent); }
+.phone .ph .edition {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gray); margin-top: 4px;
+}
+.phone .ph .streak-badge {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-family: var(--mono); font-size: 11px; font-weight: 600;
+    color: var(--flame); margin-top: 8px;
+}
+.phone .pb { padding: 16px; }
+.phone .note {
+    font-family: var(--mono); font-size: 9px; color: var(--gray);
+    text-align: center; padding: 8px 16px; font-style: italic;
+}
+
+/* Mode card */
+.mc {
+    display: flex; align-items: center; gap: 14px; padding: 14px 16px;
+    border: 1px solid var(--rule); margin-bottom: 8px; cursor: pointer;
+    transition: background 0.15s;
+}
+.mc:hover { background: var(--paper-warm); }
+.mc .mc-icon {
+    width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--rule); background: var(--paper-warm); font-size: 16px; flex-shrink: 0;
+}
+.mc .mc-info { flex: 1; min-width: 0; }
+.mc .mc-info h3 {
+    font-family: var(--serif); font-size: 16px; font-weight: 700; margin: 0 0 2px;
+}
+.mc .mc-info p { font-size: 12px; color: var(--gray); margin: 0; }
+.mc .mc-right { text-align: right; flex-shrink: 0; }
+.mc .mc-types {
+    font-family: var(--mono); font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.mc .mc-types .d { color: var(--green); }
+.mc .mc-types .u { color: var(--accent); }
+.mc .mc-types .sep { opacity: 0.2; margin: 0 3px; }
+.mc .mc-streak { font-family: var(--mono); font-size: 10px; color: var(--flame); margin-top: 2px; }
+.mc .mc-status { font-family: var(--mono); font-size: 10px; }
+.mc .mc-status.solved { color: var(--green); }
+.mc .mc-status.progress { color: var(--yellow); }
+
+/* Featured card (Semantic) */
+.mc.featured {
+    border: 2px solid var(--ink); padding: 18px 20px; position: relative;
+}
+.mc.featured .mc-icon {
+    width: 48px; height: 48px; background: var(--ink); color: white; border: none;
+    font-size: 20px;
+}
+.mc.featured h3 { font-size: 18px; }
+.mc.featured .mc-new {
+    position: absolute; top: -8px; right: 16px;
+    font-family: var(--mono); font-size: 8px; letter-spacing: 0.12em;
+    text-transform: uppercase; background: var(--accent); color: white;
+    padding: 2px 8px;
+}
+
+/* Section label */
+.section-mono {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 10px;
+}
+
+/* Language grid */
+.lang-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid var(--rule); margin-top: 16px;
+}
+.lang-item {
+    padding: 10px 12px; border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 8px; cursor: pointer;
+    font-size: 13px; transition: background 0.15s;
+}
+.lang-item:hover { background: var(--paper-warm); }
+.lang-item .flag { width: 20px; height: 20px; border-radius: 50%; background: var(--gray-soft); border: 1px solid rgba(0,0,0,0.08); }
+.lang-item .native { font-weight: 600; }
+.lang-item .en { color: var(--gray); font-size: 11px; }
+
+/* CTA button */
+.cta {
+    display: block; width: 100%; padding: 14px; text-align: center;
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    background: var(--ink); color: var(--paper); border: none; cursor: pointer;
+    margin-top: 16px; transition: opacity 0.15s;
+}
+.cta:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<div class="design-bar">
+    Homepage Redesign — Wordle Global
+    <a href="direction-a-editorial.html">Editorial Exploration</a>
+    <a href="daily-unlimited-system.html">Daily/Unlimited System</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OVERVIEW
+     ═══════════════════════════════════════ -->
+<div class="section">
+    <div class="section-label">Homepage Redesign</div>
+    <h2>New Visitor vs Returning Player</h2>
+    <div class="sub">Mode cards with daily/unlimited labels, game state, and a featured Semantic card</div>
+
+    <div class="content">
+        <p>
+            The homepage adapts to context. <strong>New visitors</strong> see mode cards with
+            "Daily &middot; Unlimited" labels — click goes to daily by default.
+            <strong>Returning players</strong> see their active game state: in-progress games
+            get a "Continue" CTA, solved dailies nudge toward unlimited, and the streak badge
+            shows their product-wide streak.
+        </p>
+        <p>
+            Semantic Explorer gets a <strong>featured card</strong> with a larger icon, dark
+            background, and "NEW" badge to drive discovery of the newest mode.
+        </p>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NEW VISITOR
+     ═══════════════════════════════════════ -->
+<div class="section warm">
+    <div class="section-label">New Visitor</div>
+
+    <div class="phone-pair">
+        <div class="phone">
+            <div class="ps"><span>9:41</span><span>&bull;&bull;&bull; WiFi</span></div>
+            <div class="ph">
+                <h1>Wordle<span class="dot">.</span>Global</h1>
+                <div class="edition">The world's word game &mdash; 80 languages</div>
+            </div>
+            <div class="pb">
+                <div class="section-mono">Game Modes</div>
+
+                <!-- Classic -->
+                <div class="mc">
+                    <div class="mc-icon">&#9632;</div>
+                    <div class="mc-info">
+                        <h3>Wordle</h3>
+                        <p>One word per day. 6 guesses. The classic.</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div>
+                    </div>
+                </div>
+
+                <!-- Semantic (featured) -->
+                <div class="mc featured">
+                    <div class="mc-new">NEW</div>
+                    <div class="mc-icon">&#9737;</div>
+                    <div class="mc-info">
+                        <h3>Semantic Explorer</h3>
+                        <p>Find words by meaning. Navigate a map of language.</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div>
+                    </div>
+                </div>
+
+                <!-- Speed -->
+                <div class="mc">
+                    <div class="mc-icon">&#9889;</div>
+                    <div class="mc-info">
+                        <h3>Speed Streak</h3>
+                        <p>Race the clock. Solve as many as you can.</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div>
+                    </div>
+                </div>
+
+                <!-- Multi-Board -->
+                <div class="mc">
+                    <div class="mc-icon">&#9638;&#9638;</div>
+                    <div class="mc-info">
+                        <h3>Multi-Board</h3>
+                        <p>2&ndash;32 boards at once. Dordle, Quordle, and more.</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div>
+                    </div>
+                </div>
+
+                <div class="section-mono" style="margin-top: 20px;">Languages</div>
+                <div class="lang-grid">
+                    <div class="lang-item"><div class="flag"></div><div><span class="native">English</span></div></div>
+                    <div class="lang-item"><div class="flag"></div><div><span class="native">Espanol</span></div></div>
+                    <div class="lang-item"><div class="flag"></div><div><span class="native">Deutsch</span></div></div>
+                    <div class="lang-item"><div class="flag"></div><div><span class="native">Francais</span></div></div>
+                    <div class="lang-item"><div class="flag"></div><div><span class="native">Italiano</span></div></div>
+                    <div class="lang-item"><div class="flag"></div><div><span class="native">Turkce</span></div></div>
+                    <div class="lang-item"><div class="flag"></div><div><span class="native">Suomi</span></div></div>
+                    <div class="lang-item" style="color: var(--gray);"><div></div><div>+ 73 more</div></div>
+                </div>
+            </div>
+            <div class="note">New visitor &mdash; click any card &rarr; daily by default</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     RETURNING PLAYER
+     ═══════════════════════════════════════ -->
+<div class="section">
+    <div class="section-label">Returning Player</div>
+
+    <div class="phone-pair">
+        <div class="phone">
+            <div class="ps"><span>9:41</span><span>&bull;&bull;&bull; WiFi</span></div>
+            <div class="ph">
+                <h1>Wordle<span class="dot">.</span>Global</h1>
+                <div class="edition">The world's word game &mdash; 80 languages</div>
+                <div class="streak-badge">&#128293; 14 day streak</div>
+            </div>
+            <div class="pb">
+                <div class="section-mono">Your Games</div>
+
+                <!-- Classic — solved -->
+                <div class="mc" style="border-color: var(--green);">
+                    <div class="mc-icon">&#9632;</div>
+                    <div class="mc-info">
+                        <h3>Wordle #1756</h3>
+                        <p class="mc-status solved">Solved &checkmark; &middot; 3/6</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="u">Play Unlimited &rarr;</span></div>
+                    </div>
+                </div>
+
+                <!-- Dordle — in progress -->
+                <div class="mc" style="border-color: var(--yellow);">
+                    <div class="mc-icon">&#9638;&#9638;</div>
+                    <div class="mc-info">
+                        <h3>Dordle #142</h3>
+                        <p class="mc-status progress">In progress &middot; 3/7</p>
+                    </div>
+                    <div class="mc-right">
+                        <div style="font-family: var(--mono); font-size: 11px;">Continue &rarr;</div>
+                    </div>
+                </div>
+
+                <!-- Semantic — featured, not yet played -->
+                <div class="mc featured">
+                    <div class="mc-new">NEW</div>
+                    <div class="mc-icon">&#9737;</div>
+                    <div class="mc-info">
+                        <h3>Semantic Explorer</h3>
+                        <p>Find words by meaning. Try it!</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div>
+                    </div>
+                </div>
+
+                <!-- Speed — not played today -->
+                <div class="mc">
+                    <div class="mc-icon">&#9889;</div>
+                    <div class="mc-info">
+                        <h3>Speed Streak</h3>
+                        <p>Race the clock</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div>
+                    </div>
+                </div>
+
+                <!-- Multi-Board — not played today -->
+                <div class="mc">
+                    <div class="mc-icon">&#9638;&#9638;</div>
+                    <div class="mc-info">
+                        <h3>Multi-Board</h3>
+                        <p>Quordle, Octordle, and more</p>
+                    </div>
+                    <div class="mc-right">
+                        <div class="mc-types"><span class="d">Daily</span><span class="sep">&middot;</span><span class="u">Unlim</span></div>
+                    </div>
+                </div>
+
+                <div class="section-mono" style="margin-top: 20px;">Your Languages</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--gray-soft); border: 2px solid var(--ink);"></div>
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--gray-soft); border: 1px solid var(--rule);"></div>
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--gray-soft); border: 1px solid var(--rule);"></div>
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--gray-soft); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--gray);">+</div>
+                </div>
+            </div>
+            <div class="note">Returning &mdash; streak badge, solved/in-progress states, featured Semantic</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     DESIGN NOTES
+     ═══════════════════════════════════════ -->
+<div class="section warm">
+    <div class="section-label">Design Notes</div>
+    <div class="content">
+        <p><strong>4 mode cards, not 5.</strong> "Unlimited" is gone as a standalone card — it's Classic's unlimited variant, accessible via the sidebar or post-game CTA.</p>
+        <p><strong>Semantic is featured.</strong> Larger card, dark icon bg, "NEW" badge. Positioned second after Classic to maximize discovery. Once it's no longer new, it becomes a regular card.</p>
+        <p><strong>Multi-Board is one card.</strong> Clicking it opens the sidebar's Multi-Board section (or a picker modal) where you choose Dordle/Quordle/etc.</p>
+        <p><strong>Streak badge on returning user.</strong> Product-wide streak (any daily mode, any language). Shows in the masthead area.</p>
+        <p><strong>Solved dailies nudge unlimited.</strong> "Wordle #1756 — Solved" shows "Play Unlimited &rarr;" as the CTA, not a dead card.</p>
+        <p><strong>Language flags as circles.</strong> Returning users see their played languages as flag circles with a "+" to add more. New visitors see the full grid.</p>
+    </div>
+</div>
+
+</body>
+</html>

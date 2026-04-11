@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { existsSync } from 'fs';
 
 /**
  * Playwright E2E test configuration for Wordle Global (Nuxt).
@@ -7,6 +8,11 @@ import { defineConfig, devices } from '@playwright/test';
  * Run headed: pnpm test:e2e --headed
  * Run specific test: pnpm test:e2e -g "Homepage"
  */
+
+// Use pre-built server if available (CI runs `pnpm build` first)
+const hasBuild = existsSync('.output/server/index.mjs');
+const serverCommand = hasBuild ? 'node .output/server/index.mjs' : 'pnpm dev';
+
 export default defineConfig({
     testDir: './e2e',
     fullyParallel: true,
@@ -30,9 +36,9 @@ export default defineConfig({
         // },
     ],
     webServer: {
-        command: 'pnpm dev',
-        url: 'http://localhost:3000',
+        command: serverCommand,
+        url: process.env.TEST_BASE_URL || 'http://localhost:3000',
         reuseExistingServer: !process.env.CI,
-        timeout: 60000,
+        timeout: 120_000,
     },
 });

@@ -4,6 +4,13 @@
 /* Enable class-based dark mode (Tailwind v4) */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Ensure html/body backgrounds match the theme — prevents white bleed
+   through compositing layers (backdrop-filter, fixed overlays, etc.) */
+html, body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+}
+
 /* =============================================================================
    Wordle Game Styles
    All colors use design tokens from design-system.css
@@ -188,23 +195,26 @@
 
 /* Modal fade-in */
 @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.95) translateY(8px); }
+    from { opacity: 0; transform: scale(0.96) translateY(6px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .modal-animate {
-    animation: modalIn 200ms ease-out;
+    animation: modalIn 250ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Modal open/close transition (Vue <Transition name="modal-fade">) */
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-    transition: opacity 200ms ease;
-}
+/* Backdrop fade — used by BaseModal, MapFrame, etc. Separate from dialog
+   animation so backdrop-filter isn't re-computed on every frame. */
+.backdrop-fade-enter-active { transition: opacity 300ms ease; }
+.backdrop-fade-leave-active { transition: opacity 200ms ease; }
+.backdrop-fade-enter-from,
+.backdrop-fade-leave-to { opacity: 0; }
+
+/* Modal dialog open/close transition */
+.modal-fade-enter-active { transition: opacity 250ms ease; }
+.modal-fade-leave-active { transition: opacity 150ms ease; }
 .modal-fade-enter-from,
-.modal-fade-leave-to {
-    opacity: 0;
-}
+.modal-fade-leave-to { opacity: 0; }
 
 /* Post-game keyboard flip — reveals mode discovery panel behind keyboard */
 .keyboard-flip-container {
@@ -429,23 +439,23 @@
 }
 /* Paper aging — urgency levels */
 .speed-warm {
-    background-color: #f5f0e5;
+    background-color: var(--color-speed-warm);
 }
 .speed-hot {
-    background-color: #f0e6d4;
+    background-color: var(--color-speed-hot);
 }
 .speed-critical {
-    background-color: #f5e0dc;
+    background-color: var(--color-speed-critical);
     animation: speedPaperPulse 1.5s ease-in-out infinite;
 }
 .dark .speed-warm {
-    background-color: #1f1a15;
+    background-color: var(--color-speed-warm);
 }
 .dark .speed-hot {
-    background-color: #241a14;
+    background-color: var(--color-speed-hot);
 }
 .dark .speed-critical {
-    background-color: #2a1515;
+    background-color: var(--color-speed-critical);
     animation: speedPaperPulse 1.5s ease-in-out infinite;
 }
 @keyframes speedPaperPulse {
@@ -624,4 +634,126 @@ a:focus-visible,
 input:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Page transitions — directional (Tier 1 fallback for non-VT browsers)
+
+   Three variants driven by usePageDirection middleware:
+     page-lateral  → crossfade (same depth, e.g. game ↔ game mode)
+     page-forward  → slide left + fade (deeper, e.g. archive → word detail)
+     page-back     → slide right + fade (shallower, e.g. word detail → archive)
+
+   No out-in mode — both pages overlap briefly. Leaving page uses
+   position:absolute to float over the entering page during fadeout.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Leaving page floats above layout so it doesn't push entering page down */
+.page-lateral-leave-active,
+.page-forward-leave-active,
+.page-back-leave-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+/* --- Lateral: crossfade --- */
+.page-lateral-enter-active { transition: opacity 200ms ease; }
+.page-lateral-leave-active { transition: opacity 150ms ease; }
+.page-lateral-enter-from,
+.page-lateral-leave-to { opacity: 0; }
+
+/* --- Forward: slide left + fade --- */
+.page-forward-enter-active { transition: opacity 200ms ease, transform 200ms ease; }
+.page-forward-leave-active { transition: opacity 150ms ease, transform 150ms ease; }
+.page-forward-enter-from { opacity: 0; transform: translateX(30px); }
+.page-forward-leave-to   { opacity: 0; transform: translateX(-30px); }
+
+/* --- Back: slide right + fade --- */
+.page-back-enter-active { transition: opacity 200ms ease, transform 200ms ease; }
+.page-back-leave-active { transition: opacity 150ms ease, transform 150ms ease; }
+.page-back-enter-from { opacity: 0; transform: translateX(-30px); }
+.page-back-leave-to   { opacity: 0; transform: translateX(30px); }
+
+/* Reduced motion: instant crossfade for all directions */
+@media (prefers-reduced-motion: reduce) {
+    .page-forward-enter-active, .page-forward-leave-active,
+    .page-back-enter-active, .page-back-leave-active,
+    .page-lateral-enter-active, .page-lateral-leave-active {
+        transition: opacity 0ms !important;
+    }
+    .page-forward-enter-from, .page-forward-leave-to,
+    .page-back-enter-from, .page-back-leave-to {
+        transform: none !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   View Transitions API — shared element animations (Tier 3)
+
+   Active in Chrome 111+, Safari 18+, Firefox 134+. Browsers without
+   support ignore these rules entirely; Tier 1 CSS above kicks in instead.
+   Enabled via experimental.viewTransition in nuxt.config.ts.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Game header: crossfade in place (no slide) — stays visually fixed
+   across game↔game navigations. */
+::view-transition-old(header),
+::view-transition-new(header) {
+    animation-duration: 200ms;
+    mix-blend-mode: normal;
+}
+
+/* Landing header: separate VT name so it doesn't morph with the game
+   header (visually incompatible — 1-line logo vs 2-line title+subtitle).
+   Quick crossfade in place instead. */
+::view-transition-old(landing-header),
+::view-transition-new(landing-header) {
+    animation-duration: 150ms;
+    mix-blend-mode: normal;
+}
+
+/* Forward: page content slides left */
+html[data-page-direction="forward"]::view-transition-old(root) {
+    animation: vt-slide-out-left 200ms ease both;
+}
+html[data-page-direction="forward"]::view-transition-new(root) {
+    animation: vt-slide-in-right 200ms ease both;
+}
+
+/* Back: page content slides right */
+html[data-page-direction="back"]::view-transition-old(root) {
+    animation: vt-slide-out-right 200ms ease both;
+}
+html[data-page-direction="back"]::view-transition-new(root) {
+    animation: vt-slide-in-left 200ms ease both;
+}
+
+/* Lateral: browser default crossfade — no override needed */
+
+@keyframes vt-slide-out-left  { to   { opacity: 0; transform: translateX(-30px); } }
+@keyframes vt-slide-in-right  { from { opacity: 0; transform: translateX(30px);  } }
+@keyframes vt-slide-out-right { to   { opacity: 0; transform: translateX(30px);  } }
+@keyframes vt-slide-in-left   { from { opacity: 0; transform: translateX(-30px); } }
+
+/* Reduced motion: instant swap for VT */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root), ::view-transition-new(root),
+    ::view-transition-old(header), ::view-transition-new(header) {
+        animation: none !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Dark mode color transitions — smooth theme switch
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Also transition the main containers that carry design tokens */
+.bg-paper,
+.bg-paper-warm {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

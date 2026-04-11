@@ -17,7 +17,7 @@
  * 9. FUNNEL: Where do users drop off?
  */
 
-import { isStandalone, getOrCreateId } from '~/utils/storage';
+import { isStandalone, getOrCreateId, readLocal, writeLocal, STORAGE_KEYS } from '~/utils/storage';
 
 // Events to exclude from PostHog to stay within free tier (1M events/month).
 // These are either redundant (data already aggregated into game_complete)
@@ -66,6 +66,7 @@ interface GameStartParams {
     days_since_last?: number;
     current_streak?: number;
     game_mode?: string;
+    play_type?: 'daily' | 'unlimited' | 'custom';
     total_games_played?: number;
     total_languages_played?: number;
     user_age_days?: number;
@@ -77,6 +78,7 @@ interface GameCompleteParams {
     attempts: number | string;
     streak_after: number;
     game_mode?: string;
+    play_type?: 'daily' | 'unlimited' | 'custom';
     is_first_game?: boolean;
     // Session-aggregated struggle context
     total_invalid_attempts?: number;
@@ -276,20 +278,12 @@ export function useAnalytics() {
         if (navigator.webdriver) return props;
 
         try {
-            const clientId = getOrCreateId('client_id');
+            const clientId = getOrCreateId(STORAGE_KEYS.CLIENT_ID);
 
-            let firstSeenDate: string | undefined;
-            try {
-                const stored = localStorage.getItem('first_seen_date');
-                if (stored) {
-                    firstSeenDate = stored;
-                } else {
-                    const today = new Date().toISOString().split('T')[0]!;
-                    localStorage.setItem('first_seen_date', today);
-                    firstSeenDate = today;
-                }
-            } catch {
-                // localStorage unavailable
+            let firstSeenDate = readLocal('first_seen_date') ?? undefined;
+            if (!firstSeenDate) {
+                firstSeenDate = new Date().toISOString().split('T')[0]!;
+                writeLocal('first_seen_date', firstSeenDate);
             }
 
             getPostHog()?.identify(clientId, {

@@ -1,3 +1,4 @@
+import { consola } from 'consola';
 /**
  * Data loading utilities.
  *
@@ -34,6 +35,15 @@ export const WORD_IMAGES_DIR = join(PERSISTENT_DIR, 'word-images');
 export const WORD_DEFS_DIR = join(PERSISTENT_DIR, 'word-defs');
 export const WORD_STATS_DIR = join(PERSISTENT_DIR, 'word-stats');
 export const WORD_HISTORY_DIR = join(PERSISTENT_DIR, 'word-history');
+
+// Semantic Explorer has a two-tier layout:
+//   - SEMANTIC_STATIC_DIR: small committed artifacts (vocab, targets,
+//     axes, umap, valid_words). Lives in repo for deterministic builds.
+//   - SEMANTIC_RUNTIME_DIR: heavy derivable files (embeddings.json,
+//     percentiles.json) generated on first boot and cached on the
+//     persistent disk. Survives deploys; regenerated if deleted.
+export const SEMANTIC_STATIC_DIR = join(DATA_DIR, 'semantic');
+export const SEMANTIC_RUNTIME_DIR = join(PERSISTENT_DIR, 'semantic-runtime');
 
 // Migration cutoff: days before this use legacy shuffle, days after use consistent hashing
 export const MIGRATION_DAY_IDX = 1681;
@@ -257,7 +267,7 @@ let _cachedData: LanguageData | null = null;
 export function loadAllData(): LanguageData {
     if (_cachedData) return _cachedData;
 
-    console.log('[data-loader] Loading data...');
+    consola.info('[data-loader] Loading data...');
     const langDir = join(DATA_DIR, 'languages');
     const languageCodes = readdirSync(langDir).filter((f) =>
         existsSync(join(langDir, f, 'words.json'))
@@ -278,7 +288,7 @@ export function loadAllData(): LanguageData {
     for (const lc of languageCodes) {
         const parsed = loadWordsJson(lc);
         if (!parsed) {
-            console.warn(`[data-loader] ${lc}: words.json exists but failed to parse`);
+            consola.warn(`[data-loader] ${lc}: words.json exists but failed to parse`);
             continue;
         }
         wordLists[lc] = parsed.wordList;
@@ -307,7 +317,7 @@ export function loadAllData(): LanguageData {
         totalLanguages: languageCodes.length,
         totalWords: Object.values(wordLists).reduce((sum, wl) => sum + wl.length, 0),
     };
-    console.log(
+    consola.info(
         `[data-loader] Loaded ${stats.totalLanguages} languages (${stats.totalWords} total words)`
     );
 
@@ -327,3 +337,32 @@ export function loadAllData(): LanguageData {
 
 // Import from day-index.ts (not word-selection.ts) to avoid circular dependency
 import { getTodaysIdx } from '../lib/day-index';
+
+// ---------------------------------------------------------------------------
+// Shared API helpers — DRY lang validation + response fields
+// ---------------------------------------------------------------------------
+
+/**
+ * Validate lang param and return { lang, data, config }. Throws 404 if unknown.
+ */
+export function requireLang(event: { context: Record<string, any> }) {
+    const lang = getRouterParam(event as any, 'lang')!;
+    const data = loadAllData();
+    if (!data.languageCodes.includes(lang)) {
+        throw createError({ statusCode: 404, message: `Unknown language: ${lang}` });
+    }
+    return { lang, data, config: data.configs[lang]! };
+}
+
+/**
+ * Common response fields every [lang] endpoint should return.
+ */
+export function langResponseFields(lang: string, config: LanguageConfig) {
+    return {
+        lang_code: lang,
+        lang_name: config.name || lang,
+        lang_name_native: config.name_native || config.name || lang,
+        ui: config.ui || {},
+        meta: config.meta || {},
+    };
+}

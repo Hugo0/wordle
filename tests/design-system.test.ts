@@ -196,16 +196,15 @@ describe('circle flag files', () => {
 // ---------------------------------------------------------------------------
 
 describe('new component files', () => {
-    it('GameHeader.vue uses Lucide imports', async () => {
+    it('AppHeader.vue uses Lucide imports', async () => {
         const fs = await import('fs');
         const path = await import('path');
-        const filePath = path.resolve(__dirname, '../components/game/GameHeader.vue');
+        const filePath = path.resolve(__dirname, '../components/app/AppHeader.vue');
         const content = fs.readFileSync(filePath, 'utf-8');
 
         expect(content).toContain('lucide-vue-next');
         expect(content).toContain('Info');
         expect(content).toContain('Menu');
-        expect(content).toContain('BarChart2');
         expect(content).toContain('Settings');
         // Should NOT contain inline SVGs anymore
         expect(content).not.toContain('xmlns="http://www.w3.org/2000/svg"');

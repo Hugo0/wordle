@@ -1,27 +1,38 @@
 <template>
     <Teleport to="body">
+        <!-- Backdrop — separate transition so backdrop-filter isn't animated
+             (animating blur is extremely expensive and causes frame drops). -->
+        <Transition name="backdrop-fade">
+            <div
+                v-if="visible"
+                class="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm"
+                aria-hidden="true"
+                @click="$emit('close')"
+            />
+        </Transition>
+
+        <!-- Dialog — fades + scales in independently of the backdrop -->
         <Transition name="modal-fade">
             <div
                 v-if="visible"
-                class="fixed inset-0 z-50 flex items-center justify-center px-3 py-4 overflow-y-auto"
+                class="fixed inset-0 z-50 flex justify-center px-3 py-4 overflow-y-auto"
+                :class="alignClass"
                 @keydown.escape="$emit('close')"
+                @click.self="$emit('close')"
             >
-                <!-- Backdrop -->
-                <div class="fixed inset-0 bg-ink/25" aria-hidden="true" @click="$emit('close')" />
-
-                <!-- Dialog card -->
                 <div
                     ref="dialogRef"
                     role="dialog"
                     aria-modal="true"
                     :aria-labelledby="labelId || undefined"
+                    :aria-label="ariaLabel || undefined"
                     tabindex="-1"
-                    class="relative w-full border border-rule bg-paper text-ink shadow-lg z-10 modal-animate"
+                    class="relative w-full border border-rule bg-paper text-ink shadow-xl z-10 modal-animate"
                     :class="sizeClass"
                 >
                     <div class="relative flex flex-col w-full outline-none" :class="paddingClass">
-                        <!-- Close (X) button — own row, never overlaps content -->
-                        <div class="flex justify-end -mb-2">
+                        <!-- Close button — omit when the caller provides their own -->
+                        <div v-if="!noCloseButton" class="flex justify-end -mb-2">
                             <button
                                 type="button"
                                 aria-label="Close"
@@ -47,14 +58,21 @@ import { X } from 'lucide-vue-next';
 const props = withDefaults(
     defineProps<{
         visible: boolean;
-        size?: 'sm' | 'md' | 'lg';
+        size?: 'sm' | 'md' | 'lg' | 'xl';
+        /** Vertical alignment: 'center' (default) or 'top' (for stats/end-game modals). */
+        align?: 'center' | 'top';
         noPadding?: boolean;
+        noCloseButton?: boolean;
         labelId?: string;
+        ariaLabel?: string;
     }>(),
     {
         size: 'md',
+        align: 'center',
         noPadding: false,
+        noCloseButton: false,
         labelId: undefined,
+        ariaLabel: undefined,
     }
 );
 defineEmits<{ close: [] }>();
@@ -72,10 +90,16 @@ watch(
     }
 );
 
+const alignClass = computed(() =>
+    props.align === 'top' ? 'items-start pt-[3vh] sm:pt-[5vh]' : 'items-center'
+);
+
 const sizeClass = computed(() => {
     switch (props.size) {
         case 'sm':
             return 'max-w-xs sm:max-w-md';
+        case 'xl':
+            return 'max-w-[480px]';
         case 'lg':
             return 'max-w-lg';
         case 'md':

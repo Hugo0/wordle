@@ -7,6 +7,110 @@
  */
 
 // ---------------------------------------------------------------------------
+// Storage key constants
+// ---------------------------------------------------------------------------
+
+export const STORAGE_KEYS = {
+    GAME_RESULTS: 'game_results',
+    SPEED_RESULTS: 'speed_results',
+    LAST_PULL_AT: 'last_pull_at',
+    STORAGE_VERSION: 'storage_version',
+    PENDING_SYNC: 'pending_sync',
+    CLIENT_ID: 'client_id',
+    PREFERRED_LANGUAGE: 'preferred_language',
+} as const;
+
+// ---------------------------------------------------------------------------
+// User-scoped storage — Pattern B (server is truth, localStorage is cache)
+// ---------------------------------------------------------------------------
+
+/** The currently authenticated user ID, or null for anonymous/guest play. */
+let _activeUserId: string | null = null;
+
+/** Set the active user ID. Called by sync plugin on login and auth on logout. */
+export function setActiveUserId(userId: string | null): void {
+    _activeUserId = userId;
+}
+
+/** Get the active user ID (null = anonymous). */
+export function getActiveUserId(): string | null {
+    return _activeUserId;
+}
+
+/**
+ * Resolve a storage key to its user-scoped variant.
+ * - Authenticated: `"game_results:abc123"`
+ * - Anonymous:     `"game_results"`
+ */
+export function scopedKey(base: string): string {
+    return _activeUserId ? `${base}:${_activeUserId}` : base;
+}
+
+/**
+ * One-time migration from unscoped (v1) to user-scoped (v2) storage.
+ *
+ * v1 layout: `game_results`, `speed_results`, `results_claimed_by`
+ * v2 layout: `game_results:{userId}`, `speed_results:{userId}`
+ *
+ * Runs once per browser. Idempotent — safe to call multiple times.
+ * Also cleans up the old `game_results__{userId}` archive keys from
+ * the intermediate archive approach.
+ */
+export function runStorageMigration(): void {
+    if (!import.meta.client) return;
+    if (readLocal(STORAGE_KEYS.STORAGE_VERSION) === '2') return;
+
+    const claimedBy = readLocal('results_claimed_by');
+    if (claimedBy) {
+        // Copy anonymous data to the user who claimed it
+        const game = readJson<unknown>(STORAGE_KEYS.GAME_RESULTS);
+        const speed = readJson<unknown>(STORAGE_KEYS.SPEED_RESULTS);
+        if (game && typeof game === 'object' && Object.keys(game).length > 0) {
+            writeJson(`${STORAGE_KEYS.GAME_RESULTS}:${claimedBy}`, game);
+        }
+        if (speed && typeof speed === 'object' && Object.keys(speed).length > 0) {
+            writeJson(`${STORAGE_KEYS.SPEED_RESULTS}:${claimedBy}`, speed);
+        }
+        // Clear anonymous keys (guest starts fresh)
+        writeJson(STORAGE_KEYS.GAME_RESULTS, {});
+        writeJson(STORAGE_KEYS.SPEED_RESULTS, {});
+        removeLocal('results_claimed_by');
+        removeLocal(STORAGE_KEYS.LAST_PULL_AT);
+
+        // Migrate last_pull_at to scoped key
+        // (no value to preserve — server pull will re-run)
+    }
+
+    // Clean up intermediate archive keys (game_results__{userId})
+    // from the earlier archive approach, if any exist
+    try {
+        for (let i = localStorage.length - 1; i >= 0; i--) {
+            const key = localStorage.key(i);
+            if (
+                key &&
+                (key.startsWith(`${STORAGE_KEYS.GAME_RESULTS}__`) ||
+                    key.startsWith(`${STORAGE_KEYS.SPEED_RESULTS}__`))
+            ) {
+                // Migrate archive data to new scoped format if not already present
+                const archivedUserId = key.split('__')[1];
+                if (archivedUserId) {
+                    const newKey = key.replace('__', ':');
+                    if (!readLocal(newKey)) {
+                        const data = readJson<unknown>(key);
+                        if (data) writeJson(newKey, data);
+                    }
+                }
+                localStorage.removeItem(key);
+            }
+        }
+    } catch {
+        // Private browsing or quota — non-critical
+    }
+
+    writeLocal(STORAGE_KEYS.STORAGE_VERSION, '2');
+}
+
+// ---------------------------------------------------------------------------
 // Core read/write
 // ---------------------------------------------------------------------------
 

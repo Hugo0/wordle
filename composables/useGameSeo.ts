@@ -1,7 +1,7 @@
 /**
  * Unified SEO composable for ALL game pages (daily, unlimited, speed, dordle, quordle, etc.).
  *
- * Handles: useSeoMeta, useHead (htmlAttrs, canonical, JSON-LD), hreflang.
+ * Handles: useSeoMeta, useHead (htmlAttrs, canonical, JSON-LD).
  *
  * All FAQ, HowTo, and content comes from config.seo (language_config.json).
  * Placeholders ({langName}, {lang}, {modeName}, {boardCount}, {maxGuesses})
@@ -39,8 +39,6 @@ export interface GameSeoOptions {
     mode: GameMode;
     config: LanguageConfig;
     langStore: { rightToLeft: boolean };
-    /** Language codes for hreflang alternate links. Pass from useFetch('/api/languages'). */
-    allLangCodes?: string[];
     /** Share result from ?r= query param (daily page only). */
     shareResult?: string;
 }
@@ -130,11 +128,11 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
     if (isClassic) {
         const nativeDesc = (
             config.meta?.description ||
-            'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!'
+            'Guess the hidden word in 6 tries. A new puzzle every day \u2014 free, no ads, no login.'
         ).trim();
         const isUntranslated =
             nativeDesc ===
-                'Guess the hidden word in 6 tries (or less). A new puzzle is available each day!' &&
+                'Guess the hidden word in 6 tries. A new puzzle every day \u2014 free, no ads, no login.' &&
             config.language_code !== 'en';
         if (isUntranslated) {
             description = `Play Wordle in ${langName} (${langNative}) — ${nativeDesc}`;
@@ -181,7 +179,7 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         }
         ogImageUrl = `https://wordle.global/images/share/${lang}_${shareResult}.png`;
     } else if (isClassic) {
-        ogImageUrl = 'https://wordle.global/images/og-image.png';
+        ogImageUrl = `https://wordle.global/images/modes/classic/${lang}.png`;
     } else if (MODES_WITH_PER_LANG_OG.has(mode)) {
         ogImageUrl = `https://wordle.global/images/modes/${mode}/${lang}.png`;
     } else {
@@ -232,6 +230,7 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
     // -------------------------------------------------------------------------
     // JSON-LD structured data
     // -------------------------------------------------------------------------
+    const today = new Date().toISOString().slice(0, 10);
     const jsonLdScripts: Array<{ type: string; innerHTML: string }> = [
         {
             type: 'application/ld+json',
@@ -245,6 +244,7 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
                 operatingSystem: 'Any',
                 offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
                 inLanguage: [lang],
+                dateModified: today,
             }),
         },
     ];
@@ -331,13 +331,6 @@ export function useGameSeo(opts: GameSeoOptions): GameSeoResult {
         link: [{ rel: 'canonical', href: canonicalUrl }],
         script: jsonLdScripts,
     });
-
-    // -------------------------------------------------------------------------
-    // Hreflang
-    // -------------------------------------------------------------------------
-    if (opts.allLangCodes?.length) {
-        useHreflang(opts.allLangCodes, pathSuffix);
-    }
 
     return {
         title,

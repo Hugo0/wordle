@@ -6,7 +6,15 @@
  * Matches the legacy Flask index.html exactly.
  */
 import { useSettingsStore } from '~/stores/settings';
-import { Flame, Check, Download } from 'lucide-vue-next';
+import {
+    readJson,
+    writeJson,
+    readLocal,
+    writeLocal,
+    scopedKey,
+    STORAGE_KEYS,
+} from '~/utils/storage';
+import { Flame, Check, Compass, Square, Zap, Columns2, User, CircleCheck } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
     GAME_MODES_UI,
@@ -14,14 +22,33 @@ import {
     getModeLabel,
     getModeDescription,
 } from '~/composables/useGameModes';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import { buildDailyResultMap, toLocalDay, stepBack } from '~/utils/streak-dates';
+import type { GameResult } from '~/utils/types';
 
 const settings = useSettingsStore();
+const { loggedIn: authLoggedIn, user: authUser, avatarUrl: authAvatarUrl } = useAuth();
+const { openLoginModal } = useLoginModal();
+
+// PWA install — inject from pwa.client.ts plugin
+const pwaInstall = import.meta.client
+    ? inject<{
+          install: () => void;
+          status: () => {
+              isStandalone: boolean;
+              dismissed: boolean;
+              hasPrompt: boolean;
+              isIOS: boolean;
+          };
+      }>('pwaInstall')
+    : undefined;
+const showPwaInstall = ref(false);
 
 // ---------------------------------------------------------------------------
 // Data fetching
 // ---------------------------------------------------------------------------
 
-const { data: langData } = await useFetch('/api/languages');
+const { data: langData } = await useFetch('/api/languages', { key: 'languages' });
 const { data: otherWordles } = await useFetch('/api/other-wordles');
 
 // Homepage config — SSR uses Accept-Language detection; client may override via ?lang=
@@ -30,7 +57,7 @@ const { data: homepageConfig } = await useFetch('/api/homepage-config', {
     query: { lang: hpLangOverride },
 });
 const hpUi = computed(() => homepageConfig.value?.ui);
-const hpLang = computed(() => homepageConfig.value?.lang || 'en');
+const hpLang = computed(() => (homepageConfig.value as { lang?: string } | null)?.lang || 'en');
 
 // Resolved homepage strings — config always has defaults from data-loader merge
 const hp = computed(() => {
@@ -71,7 +98,7 @@ const title = computed(
 );
 const description = computed(
     () =>
-        `Play Wordle in ${langCount.value}+ languages \u2014 daily puzzle, unlimited mode, speed streak, dordle & quordle. Free word game, no account needed.`
+        `Play Wordle in ${langCount.value}+ languages, from Arabic to Yoruba \u2014 the largest multilingual Wordle. Word definitions, no ads, no login. Daily puzzle plus 9 game modes.`
 );
 
 useSeoMeta({
@@ -200,16 +227,12 @@ useHead({
     ],
 });
 
-// Hreflang tags
-useHreflang(languageCodes.value);
-
 // ---------------------------------------------------------------------------
 // Client-side state
 // ---------------------------------------------------------------------------
 
 const searchText = ref('');
 const showAboutModal = ref(false);
-const showSettingsModal = ref(false);
 
 // Game mode picker
 const showModePicker = ref(false);
@@ -223,10 +246,128 @@ const gameResults = ref<
 // Initialize with SSR-detected language (from Accept-Language header)
 const detectedLanguageCode = ref<string | null>(hpLang.value !== 'en' ? hpLang.value : null);
 
-// PWA install
-const canInstallPwa = ref(false);
-
 const analytics = useAnalytics();
+
+// ---------------------------------------------------------------------------
+// Tier detection & personalization
+// ---------------------------------------------------------------------------
+
+const isReturningUser = computed(() => Object.keys(gameResults.value).length > 0);
+
+/** Product-wide streak: any daily mode in any language. */
+const productStreak = computed(() => {
+    if (!isReturningUser.value) return 0;
+    const dayMap = buildDailyResultMap(gameResults.value as Record<string, GameResult[]>);
+    if (dayMap.size === 0) return 0;
+    const today = toLocalDay(new Date());
+    let streak = 0;
+    let day = today;
+    while (dayMap.get(day) === 'won') {
+        streak++;
+        day = stepBack(day);
+    }
+    if (streak === 0 && dayMap.get(stepBack(today)) === 'won') {
+        day = stepBack(today);
+        while (dayMap.get(day) === 'won') {
+            streak++;
+            day = stepBack(day);
+        }
+    }
+    return streak;
+});
+
+/** Mode icon mapping for continue-playing cards */
+const MODE_CARD_ICONS: Record<string, any> = {
+    classic: Square,
+    speed: Zap,
+    dordle: Columns2,
+    semantic: Compass,
+};
+
+/** Continue Playing cards — top 3 most recently played mode+language combos. */
+const continuePlayingCards = computed(() => {
+    if (!isReturningUser.value) return [];
+
+    const cards: Array<{
+        key: string;
+        href: string;
+        flagSrc: string | null;
+        langName: string;
+        title: string;
+        subtitle: string;
+        streak: number;
+        cta: string;
+        borderColor: string;
+        modeIcon: any;
+        dailySolved: boolean;
+    }> = [];
+
+    const entries: Array<{ code: string; mode: string; lastDate: string; results: any[] }> = [];
+
+    for (const [key, results] of Object.entries(gameResults.value)) {
+        if (!results || results.length === 0) continue;
+        const lastResult = results[results.length - 1]!;
+
+        let code: string;
+        let mode: string;
+        if (!key.includes('_')) {
+            code = key;
+            mode = 'classic';
+        } else if (
+            key.endsWith('_unlimited') ||
+            (!key.endsWith('_daily') &&
+                key.includes('_') &&
+                !key.match(/^[a-z]{2,3}_[a-z]+_daily$/))
+        ) {
+            continue; // Skip unlimited entries
+        } else if (key.endsWith('_daily')) {
+            const parts = key.replace(/_daily$/, '').split('_');
+            code = parts[0]!;
+            mode = parts.slice(1).join('_');
+        } else {
+            continue;
+        }
+
+        if (!languages.value[code]) continue;
+        entries.push({ code, mode, lastDate: lastResult.date, results });
+    }
+
+    entries.sort((a, b) => (b.lastDate > a.lastDate ? 1 : -1));
+
+    for (const entry of entries.slice(0, 3)) {
+        const lang = languages.value[entry.code];
+        if (!lang) continue;
+
+        const modeDef = GAME_MODE_CONFIG[entry.mode as keyof typeof GAME_MODE_CONFIG];
+        if (!modeDef) continue;
+
+        const modeUI = GAME_MODES_UI.find((m) => m.id === entry.mode);
+        const lastResult = entry.results[entry.results.length - 1]!;
+        const isSolved = lastResult.won;
+        const route = modeUI ? getModeRoute(modeUI, entry.code) : `/${entry.code}`;
+        const langStreak = getCurrentStreak(entry.code);
+
+        cards.push({
+            key: `${entry.code}_${entry.mode}`,
+            href: isSolved
+                ? `${route}${route?.includes('?') ? '&' : '?'}play=unlimited`
+                : route || `/${entry.code}`,
+            flagSrc: showFlag(entry.code) ? getFlag(entry.code) : null,
+            langName: lang.language_name_native,
+            title: lang.language_name_native,
+            subtitle: modeDef.label,
+            streak: langStreak,
+            cta: isSolved ? 'Unlimited →' : 'Play →',
+            borderColor: isSolved ? 'var(--color-correct, #2d8544)' : 'var(--color-rule, #d4cfc7)',
+            modeIcon: MODE_CARD_ICONS[entry.mode] || Square,
+            dailySolved: isSolved,
+        });
+    }
+
+    return cards;
+});
+
+const showBoardPicker = ref(false);
 
 onMounted(() => {
     settings.init();
@@ -235,25 +376,17 @@ onMounted(() => {
     analytics.trackHomepageView();
 
     // Load game results
-    try {
-        const stored = localStorage.getItem('game_results');
-        if (stored) {
-            gameResults.value = JSON.parse(stored);
-        }
-    } catch {
-        // ignore
-    }
+    const stored = readJson<
+        Record<string, Array<{ won: boolean; attempts: number | string; date: string }>>
+    >(scopedKey(STORAGE_KEYS.GAME_RESULTS));
+    if (stored) gameResults.value = stored;
 
     // Cache languages for game page
-    try {
-        localStorage.setItem('languages_cache', JSON.stringify(languages.value));
-    } catch {
-        // ignore
-    }
+    writeJson('languages_cache', languages.value);
 
-    // Detect language: prefer localStorage (most recently played), then browser detection
-    // SSR already set detectedLanguageCode from Accept-Language; override if localStorage differs
-    const clientLang = getMostRecentLanguage() || detectBrowserLanguage();
+    // Detect language priority: 1) explicit user pick, 2) most recently played, 3) browser
+    const savedLangPref = readLocal(STORAGE_KEYS.PREFERRED_LANGUAGE);
+    const clientLang = savedLangPref || getMostRecentLanguage() || detectBrowserLanguage();
     if (clientLang && clientLang !== detectedLanguageCode.value) {
         detectedLanguageCode.value = clientLang;
         // Re-fetch homepage config for the user's actual preferred language
@@ -264,11 +397,10 @@ onMounted(() => {
         detectedLanguageCode.value = clientLang;
     }
 
-    // Check PWA install availability
-    try {
-        canInstallPwa.value = !window.matchMedia('(display-mode: standalone)').matches;
-    } catch {
-        canInstallPwa.value = false;
+    // PWA install detection
+    if (pwaInstall) {
+        const s = pwaInstall.status();
+        showPwaInstall.value = !s.isStandalone && !s.dismissed && (s.hasPrompt || s.isIOS);
     }
 
     // Escape key closes modals
@@ -284,15 +416,6 @@ onUnmounted(() => {
 function onKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Escape') {
         showAboutModal.value = false;
-        showSettingsModal.value = false;
-    }
-}
-
-function installPwa(): void {
-    const nuxtApp = useNuxtApp();
-    const pwa = (nuxtApp as any).$pwaInstall as { install: () => void } | undefined;
-    if (pwa) {
-        pwa.install();
     }
 }
 
@@ -451,6 +574,14 @@ function selectLanguageWithCode(code: string, source: 'search' | 'list' | 'flag'
     selectedLangCode.value = code;
     selectedLangName.value = lang?.language_name_native || lang?.language_name || code;
     showModePicker.value = true;
+    // Persist language preference so it survives navigation
+    detectedLanguageCode.value = code;
+    try {
+        writeLocal(STORAGE_KEYS.PREFERRED_LANGUAGE, code);
+    } catch {}
+    if (code !== hpLang.value) {
+        hpLangOverride.value = code;
+    }
     analytics.trackLanguageSelect(code, source);
 }
 
@@ -485,31 +616,75 @@ const defaultLangFlag = computed(() =>
     showFlag(defaultLang.value) ? useFlag(defaultLang.value) : null
 );
 
-// Homepage shows first 5 modes from shared source + "& More" card
-const HOMEPAGE_MODE_IDS = ['classic', 'unlimited', 'speed', 'dordle', 'quordle'];
+/**
+ * Homepage mode cards — NYT-style editorial grid.
+ * Each card has mini tile icons, a serif heading, description, and tag.
+ */
+interface HomepageModeCard {
+    id: string;
+    icon: any;
+    label: string;
+    desc: string;
+    route: string | null;
+    tag: string;
+    tagAccent?: boolean;
+    opensModal?: boolean;
+    /** Show a flag icon when mode is only available in specific languages */
+    langFlag?: string | null;
+}
 
-const homepageModes = computed(() => {
+const homepageModes = computed((): HomepageModeCard[] => {
     const lang = defaultLang.value;
     const ui = hpUi.value;
-    const featured = GAME_MODES_UI.filter((m) => HOMEPAGE_MODE_IDS.includes(m.id)).map((m) => ({
-        id: m.id,
-        icon: m.icon,
-        label: getModeLabel(m, ui),
-        desc: getModeDescription(m, ui),
-        tag: m.badge || '',
-        route: getModeRoute(m, lang),
-    }));
-    featured.push({
-        id: 'more',
-        icon: null as any,
-        label: ui?.homepage_and_more || '& More',
-        desc:
-            ui?.homepage_and_more_desc ||
-            'Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon.',
-        tag: 'EXPLORE',
-        route: null,
-    });
-    return featured;
+    const classic = GAME_MODES_UI.find((m) => m.id === 'classic')!;
+    const speed = GAME_MODES_UI.find((m) => m.id === 'speed')!;
+    const semanticLangs = GAME_MODE_CONFIG.semantic.languages;
+    const isSemanticNative = !semanticLangs || semanticLangs.includes(lang);
+
+    const cards: HomepageModeCard[] = [
+        {
+            id: 'classic',
+            icon: classic.icon,
+            label: getModeLabel(classic, ui),
+            desc: 'One word per day, per language. The classic. Come back tomorrow for a new challenge.',
+            route: getModeRoute(classic, lang),
+            tag: 'CLASSIC',
+        },
+        {
+            id: 'semantic',
+            icon: Compass,
+            label: ui?.mode_semantic_label || 'Semantic Explorer',
+            desc: 'Find words by meaning, not by letters. Navigate a map of language.',
+            route: '/en/semantic',
+            tag: 'NEW',
+            tagAccent: true,
+            // Show English flag when user's language isn't English
+            langFlag: isSemanticNative ? null : useFlag('en'),
+        },
+    ];
+
+    cards.push(
+        {
+            id: 'speed',
+            icon: speed.icon,
+            label: getModeLabel(speed, ui),
+            desc: 'Race the clock. Solve as many words as you can before time runs out.',
+            route: getModeRoute(speed, lang),
+            tag: 'NEW',
+            tagAccent: true,
+        },
+        {
+            id: 'multiboard',
+            icon: GAME_MODES_UI.find((m) => m.id === 'dordle')?.icon || classic.icon,
+            label: ui?.mode_multiboard_label || 'Multi-Board',
+            desc: 'Dordle, Quordle, Octordle, and more. Two to thirty-two boards at once.',
+            route: null,
+            opensModal: true,
+            tag: '2–32 BOARDS',
+        }
+    );
+
+    return cards;
 });
 
 function scrollToLanguages(): void {
@@ -521,24 +696,20 @@ function handleChangeLanguage(): void {
     setTimeout(scrollToLanguages, 200);
 }
 
-function openMoreModes(): void {
-    const code = defaultLang.value;
-    const lang = languages.value[code];
-    selectedLangCode.value = code;
-    selectedLangName.value = lang?.language_name_native || lang?.language_name || code;
-    showModePicker.value = true;
-}
-
-function openLink(url: string): void {
-    if (import.meta.client) {
-        window.open(url);
-    }
+function openMultiBoardPicker(): void {
+    showBoardPicker.value = true;
 }
 </script>
 
 <template>
-    <div class="pb-12">
-        <!-- Announcement bar (disabled — re-enable for future announcements)
+    <AppShell
+        :lang="defaultLang"
+        :lang-name="defaultLangName"
+        :ui="hpUi || undefined"
+        home-href="/"
+    >
+        <div class="pb-12">
+            <!-- Announcement bar (disabled — re-enable for future announcements)
         <div
             class="bg-ink dark:bg-accent text-paper dark:text-white font-mono text-[10px] tracking-[0.05em] text-center py-1 px-3 whitespace-nowrap overflow-hidden text-ellipsis"
         >
@@ -546,239 +717,436 @@ function openLink(url: string): void {
         </div>
         -->
 
-        <!-- ═══ Masthead ═══ -->
-        <div class="text-center pt-10 sm:pt-10 mb-12 px-4">
-            <h1 class="heading-display text-[40px] sm:text-[56px] text-ink">
-                Wordle<span class="text-accent">.</span>Global
-            </h1>
-            <div class="mono-label mt-2" style="letter-spacing: 0.2em">
-                {{ hp.tagline }} &mdash; {{ langCount }} {{ hp.languages }}
+            <!-- ═══ Masthead ═══ -->
+            <div class="text-center pt-10 sm:pt-10 mb-12 px-4">
+                <h1 class="heading-display text-[40px] sm:text-[56px] text-ink">
+                    Wordle<span class="text-accent">.</span>Global
+                </h1>
+                <div class="mono-label mt-2" style="letter-spacing: 0.2em">
+                    {{ hp.tagline }} &mdash; {{ langCount }} {{ hp.languages }}
+                </div>
+                <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
             </div>
-            <div class="editorial-rule-accent w-[120px] mx-auto mt-4" />
-        </div>
 
-        <!-- ═══ Language indicator ═══ -->
-        <div class="flex items-center justify-center gap-2 mb-6 px-4">
-            <img
-                v-if="defaultLangFlag"
-                :src="defaultLangFlag"
-                :alt="defaultLangName"
-                class="flag-icon flag-icon-sm"
-                @error="onFlagError(defaultLang)"
-            />
-            <span class="text-sm text-muted">
-                {{ hp.playingIn }}
-                <span class="font-semibold text-ink">{{ defaultLangName }}</span>
-            </span>
-            <span class="text-muted">&middot;</span>
-            <button
-                class="text-sm text-muted hover:text-ink underline underline-offset-2 transition-colors cursor-pointer"
-                @click="scrollToLanguages"
-            >
-                {{ hp.change }}
-            </button>
-        </div>
-
-        <!-- ═══ Mode Cards ═══ -->
-        <div
-            class="grid grid-cols-1 sm:grid-cols-3 border border-rule max-w-[800px] mx-4 sm:mx-auto mb-14"
-            style="background: var(--color-rule); gap: 1px"
-        >
-            <template v-for="mode in homepageModes" :key="mode.id">
+            <!-- ═══ Signed-in user greeting (centered, above language) ═══ -->
+            <div v-if="authLoggedIn && authUser" class="flex flex-col items-center gap-1 mb-6">
                 <NuxtLink
-                    v-if="mode.route"
-                    :to="mode.route"
-                    class="bg-paper py-8 px-7 text-left transition-colors flex flex-col hover:bg-paper-warm cursor-pointer"
-                    @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
-                >
-                    <div class="flex gap-1 mb-3">
-                        <component :is="mode.icon" :size="18" class="text-ink" />
-                    </div>
-                    <div class="heading-section text-[22px] mb-1.5">{{ mode.label }}</div>
-                    <p class="text-sm text-muted leading-[1.45] flex-1">{{ mode.desc }}</p>
-                    <span
-                        class="editorial-tag mt-3 self-start"
-                        :class="mode.tag === 'NEW' ? 'editorial-tag-new' : ''"
-                    >
-                        {{ mode.tag }}
-                    </span>
-                </NuxtLink>
-                <button
-                    v-else
-                    class="bg-paper py-8 px-7 text-left transition-colors flex flex-col hover:bg-paper-warm cursor-pointer"
-                    @click="openMoreModes()"
-                >
-                    <div class="flex gap-1 mb-3">
-                        <span class="text-muted text-lg">···</span>
-                    </div>
-                    <div class="heading-section text-[22px] mb-1.5">{{ mode.label }}</div>
-                    <p class="text-sm text-muted leading-[1.45] flex-1">{{ mode.desc }}</p>
-                    <span class="editorial-tag mt-3 self-start">
-                        {{ mode.tag }}
-                    </span>
-                </button>
-            </template>
-        </div>
-
-        <!-- ═══ Language Section ═══ -->
-        <div id="languages" class="max-w-[800px] mx-auto mt-14 px-4">
-            <h2
-                class="font-display text-[24px] sm:text-[28px] font-light text-center mb-2"
-                style="font-variation-settings: 'opsz' 48"
-            >
-                {{ hp.chooseLanguage }}
-            </h2>
-            <p class="text-sm text-muted text-center mb-6">
-                {{ langCount }} {{ hp.languagesCounting }}
-            </p>
-
-            <!-- Search -->
-            <input
-                v-model="searchText"
-                class="block w-full max-w-[400px] mx-auto mb-8 px-4 py-3 border border-rule bg-transparent text-ink font-body text-[15px] focus:outline-none focus:border-ink transition-colors placeholder:text-muted placeholder:italic"
-                type="text"
-                :placeholder="hp.search"
-            />
-
-            <!-- Language grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 border-t border-rule">
-                <button
-                    v-for="language in languagesVis"
-                    :key="language.language_code"
-                    class="flex items-center gap-3 text-left border-b border-rule hover:bg-paper-warm transition-colors cursor-pointer"
-                    style="padding: 14px 16px"
-                    @click="selectLanguageWithCode(language.language_code)"
+                    to="/profile"
+                    class="flex items-center gap-3 hover:opacity-80 transition-opacity"
                 >
                     <img
-                        v-if="showFlag(language.language_code)"
-                        :src="getFlag(language.language_code)!"
-                        :alt="language.language_name"
-                        class="flag-icon"
-                        @error="onFlagError(language.language_code)"
+                        v-if="authAvatarUrl"
+                        :src="authAvatarUrl"
+                        alt=""
+                        class="w-10 h-10 rounded-full object-cover"
+                        referrerpolicy="no-referrer"
                     />
                     <div
                         v-else
-                        class="flag-icon bg-paper-warm border border-rule flex items-center justify-center text-ink text-[11px] font-display font-bold"
+                        class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center heading-body text-sm"
                     >
-                        {{ language.language_name_native.charAt(0) }}
+                        {{ (authUser.displayName || authUser.email || '?')[0]?.toUpperCase() }}
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <div class="text-sm font-semibold text-ink truncate">
-                            {{ language.language_name_native }}
-                        </div>
-                        <div class="text-xs text-muted truncate">
-                            {{ language.language_name }}
-                        </div>
+                    <div class="text-sm font-semibold text-ink">
+                        {{ authUser.displayName || 'Player' }}
                     </div>
-                    <div class="flex items-center gap-1 flex-shrink-0">
-                        <span
-                            v-if="getCurrentStreak(language.language_code) > 0"
-                            class="flex items-start gap-0 text-flame"
-                        >
-                            <Flame :size="14" />
-                            <span
-                                class="font-mono font-semibold tabular-nums"
-                                style="font-size: 9px; line-height: 1; margin-top: 1px"
-                            >
-                                {{ getCurrentStreak(language.language_code) }}
-                            </span>
-                        </span>
-                        <Check
-                            v-else-if="hasPlayed(language.language_code)"
-                            :size="14"
-                            class="text-correct"
-                        />
-                    </div>
+                </NuxtLink>
+                <div
+                    v-if="productStreak > 0"
+                    class="mono-label flex items-center gap-1"
+                    style="color: var(--color-flame)"
+                >
+                    <Flame :size="12" /> {{ productStreak }} day streak
+                </div>
+                <div v-else class="mono-label flex items-center gap-1 text-muted">
+                    <Flame :size="12" /> Play today's daily to start a streak
+                </div>
+            </div>
+
+            <!-- ═══ Language indicator ═══ -->
+            <div class="flex items-center justify-center gap-2 mb-6 px-4">
+                <img
+                    v-if="defaultLangFlag"
+                    :src="defaultLangFlag"
+                    :alt="defaultLangName"
+                    class="flag-icon flag-icon-sm"
+                    @error="onFlagError(defaultLang)"
+                />
+                <span class="text-sm text-muted">
+                    {{ hp.playingIn }}
+                    <span class="font-semibold text-ink">{{ defaultLangName }}</span>
+                </span>
+                <span class="text-muted">&middot;</span>
+                <button
+                    class="text-sm text-muted hover:text-ink underline underline-offset-2 transition-colors cursor-pointer"
+                    @click="scrollToLanguages"
+                >
+                    {{ hp.change }}
                 </button>
             </div>
-        </div>
 
-        <!-- External links hidden for now — SSR handles SEO discoverability -->
-        <!-- TODO: Consider adding back as a footer or separate page if users miss it -->
-
-        <!-- ═══ Modals ═══ -->
-
-        <!-- About modal -->
-        <SharedBaseModal :visible="showAboutModal" size="sm" @close="showAboutModal = false">
-            <div class="flex flex-col gap-3">
-                <h3 class="heading-section text-xl text-center mb-2">About</h3>
-                <p class="text-center text-sm text-ink">
-                    Hi! You probably know about Wordle already. It's a
-                    <span class="italic">really</span> fun game.
-                </p>
-                <p class="text-center text-sm text-ink">
-                    The whole thing is open-source. Suggest improvements or fixes at
-                    <a
-                        href="https://github.com/Hugo0/wordle/issues"
-                        class="text-muted underline hover:text-ink"
-                        >GitHub</a
-                    >.
-                </p>
-                <p class="text-center text-sm text-ink">
-                    There's fun languages, like Klingon or Tolkien's Elvish, plus right-to-left
-                    languages like Arabic or Hebrew.
-                </p>
-                <p class="text-center text-sm text-ink">Have fun!</p>
-            </div>
-        </SharedBaseModal>
-
-        <!-- Settings modal -->
-        <SharedBaseModal :visible="showSettingsModal" size="sm" @close="showSettingsModal = false">
-            <div class="flex flex-col gap-4">
-                <h3 class="heading-section text-xl text-center mb-2">Settings</h3>
-
-                <div class="flex flex-row items-center justify-between">
-                    <div class="flex flex-col">
-                        <span class="text-sm font-medium text-ink">Dark Mode</span>
-                        <span class="text-xs text-muted">Toggle dark theme</span>
-                    </div>
-                    <SharedToggleSwitch
-                        :model-value="settings.darkMode"
-                        @update:model-value="settings.toggleDarkMode()"
-                    />
-                </div>
-
-                <hr class="border-rule" />
-
-                <div class="flex flex-row items-center justify-between">
-                    <div class="flex flex-col">
-                        <span class="text-sm font-medium text-ink">Sound &amp; Haptics</span>
-                    </div>
-                    <SharedToggleSwitch
-                        :model-value="settings.feedbackEnabled"
-                        @update:model-value="settings.toggleFeedback()"
-                    />
-                </div>
-
-                <hr class="border-rule" />
-
-                <div v-if="canInstallPwa" class="pt-2">
-                    <button
-                        class="w-full flex items-center justify-center gap-2 px-4 py-2 bg-correct hover:opacity-90 text-white font-medium transition-opacity"
-                        @click="installPwa"
+            <!-- ═══ Personalized Hub (Tier 1+: has played before) ═══ -->
+            <div v-if="isReturningUser" class="max-w-[800px] mx-4 sm:mx-auto mb-10">
+                <!-- Streak badge for non-signed-in returning users (Tier 1) -->
+                <div v-if="!authLoggedIn" class="flex items-center justify-center gap-1 mb-4">
+                    <Flame :size="14" :class="productStreak > 0 ? 'text-flame' : 'text-muted'" />
+                    <span
+                        class="mono-label"
+                        :style="{
+                            color: productStreak > 0 ? 'var(--color-flame)' : 'var(--color-muted)',
+                            fontSize: '12px',
+                        }"
                     >
-                        <Download :size="18" />
-                        Install App
+                        {{
+                            productStreak > 0
+                                ? `${productStreak} day streak`
+                                : "Play today's daily to start a streak"
+                        }}
+                    </span>
+                </div>
+
+                <!-- Continue Playing cards -->
+                <div v-if="continuePlayingCards.length > 0" class="mb-6">
+                    <div class="mono-label mb-2 px-1">Continue Playing</div>
+                    <div class="flex flex-col gap-2">
+                        <NuxtLink
+                            v-for="card in continuePlayingCards"
+                            :key="card.key"
+                            :to="card.href"
+                            class="flex items-center gap-3 px-4 py-3 border transition-colors hover:bg-paper-warm"
+                            :style="{ borderColor: card.borderColor }"
+                        >
+                            <!-- Stacked icon: mode icon with flag badge -->
+                            <div class="relative flex-shrink-0 w-10 h-10">
+                                <div
+                                    class="w-10 h-10 rounded-full border border-rule bg-paper-warm flex items-center justify-center"
+                                >
+                                    <component :is="card.modeIcon" :size="18" class="text-ink" />
+                                </div>
+                                <img
+                                    v-if="card.flagSrc"
+                                    :src="card.flagSrc"
+                                    :alt="card.langName"
+                                    class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full object-cover border border-paper"
+                                />
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-semibold text-ink">{{ card.title }}</div>
+                                <div class="text-xs text-muted">{{ card.subtitle }}</div>
+                            </div>
+                            <div class="flex-shrink-0 flex items-center gap-1.5">
+                                <CircleCheck
+                                    v-if="card.dailySolved"
+                                    :size="16"
+                                    class="text-correct"
+                                />
+                                <template v-else-if="card.streak > 0">
+                                    <Flame :size="14" class="text-flame" />
+                                    <span
+                                        class="mono-label"
+                                        style="color: var(--color-flame); font-size: 10px"
+                                        >{{ card.streak }}</span
+                                    >
+                                </template>
+                                <span
+                                    v-else
+                                    class="mono-label text-muted"
+                                    style="font-size: 10px"
+                                    >{{ card.cta }}</span
+                                >
+                            </div>
+                        </NuxtLink>
+                    </div>
+                </div>
+
+                <!-- Sign-in CTA (Tier 1 only) -->
+                <button
+                    v-if="!authLoggedIn"
+                    class="flex items-center justify-center gap-2 mx-auto mb-4 px-5 py-2 text-xs text-muted hover:text-ink transition-colors cursor-pointer"
+                    @click="openLoginModal()"
+                >
+                    <User :size="14" />
+                    <span>Sign in to sync your streak</span>
+                </button>
+
+                <!-- PWA install CTA (not installed, not dismissed) -->
+                <div
+                    v-if="showPwaInstall"
+                    class="flex items-center gap-3 px-4 py-3 border border-rule mb-4"
+                >
+                    <span class="text-xs text-muted flex-1"
+                        >Install for quick daily access — no app store needed</span
+                    >
+                    <button
+                        class="text-xs text-ink font-semibold hover:underline cursor-pointer"
+                        @click="pwaInstall?.install()"
+                    >
+                        Install
                     </button>
-                    <p class="text-xs text-center text-muted mt-1">
-                        Play offline &amp; get app icon
-                    </p>
                 </div>
             </div>
-        </SharedBaseModal>
 
-        <!-- Game Mode Picker modal -->
-        <AppGameModePicker
-            :visible="showModePicker"
-            :lang-code="selectedLangCode"
-            :language-name="selectedLangName"
-            @close="showModePicker = false"
-            @select="showModePicker = false"
-            @change-language="handleChangeLanguage"
-        />
-    </div>
+            <!-- ═══ Mode Cards ═══ -->
+            <div class="max-w-[800px] mx-4 sm:mx-auto mb-14">
+                <!-- Daily Puzzle — NYT-style tile card -->
+                <NuxtLink
+                    v-if="homepageModes[0]?.route"
+                    :to="homepageModes[0].route"
+                    class="mode-card-hero border border-rule mb-3 transition-colors hover:bg-paper-warm"
+                    @click="analytics.trackModeSelected('classic', 'homepage_card')"
+                >
+                    <div class="mode-tiles">
+                        <span class="mode-tile correct">W</span>
+                        <span class="mode-tile semicorrect">O</span>
+                        <span class="mode-tile correct">R</span>
+                        <span class="mode-tile incorrect">D</span>
+                        <span class="mode-tile correct">S</span>
+                    </div>
+                    <h3 class="mode-title">{{ homepageModes[0].label }}</h3>
+                    <p class="mode-desc">{{ homepageModes[0].desc }}</p>
+                    <span class="editorial-tag self-start">CLASSIC</span>
+                </NuxtLink>
+
+                <!-- Other modes — compact list -->
+                <div class="flex flex-col gap-2">
+                    <template v-for="mode in homepageModes.slice(1)" :key="mode.id">
+                        <button
+                            v-if="mode.opensModal"
+                            class="flex items-center gap-4 px-5 py-4 border border-rule transition-colors hover:bg-paper-warm cursor-pointer text-left w-full"
+                            @click="openMultiBoardPicker()"
+                        >
+                            <div
+                                class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm flex-shrink-0"
+                            >
+                                <component :is="mode.icon" :size="18" class="text-ink" />
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="heading-section text-base">{{ mode.label }}</div>
+                                <div class="text-xs text-muted">{{ mode.desc }}</div>
+                            </div>
+                            <span
+                                v-if="mode.tag"
+                                class="editorial-tag flex-shrink-0"
+                                :class="mode.tagAccent ? 'editorial-tag-new' : ''"
+                                >{{ mode.tag }}</span
+                            >
+                        </button>
+                        <NuxtLink
+                            v-else-if="mode.route"
+                            :to="mode.route"
+                            class="flex items-center gap-4 px-5 py-4 border border-rule transition-colors hover:bg-paper-warm"
+                            @click="analytics.trackModeSelected(mode.id, 'homepage_card')"
+                        >
+                            <div class="relative w-10 h-10 flex-shrink-0">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center border border-rule bg-paper-warm"
+                                >
+                                    <component :is="mode.icon" :size="18" class="text-ink" />
+                                </div>
+                                <img
+                                    v-if="mode.langFlag"
+                                    :src="mode.langFlag"
+                                    alt="English only"
+                                    class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full border border-paper object-cover"
+                                />
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="heading-section text-base">{{ mode.label }}</div>
+                                <div class="text-xs text-muted">{{ mode.desc }}</div>
+                            </div>
+                            <span
+                                v-if="mode.tag"
+                                class="editorial-tag flex-shrink-0"
+                                :class="mode.tagAccent ? 'editorial-tag-new' : ''"
+                                >{{ mode.tag }}</span
+                            >
+                        </NuxtLink>
+                    </template>
+                </div>
+            </div>
+
+            <!-- ═══ Language Section ═══ -->
+            <div id="languages" class="max-w-[800px] mx-auto mt-14 px-4">
+                <h2
+                    class="font-display text-[24px] sm:text-[28px] font-light text-center mb-2"
+                    style="font-variation-settings: 'opsz' 48"
+                >
+                    {{ hp.chooseLanguage }}
+                </h2>
+                <p class="text-sm text-muted text-center mb-6">
+                    {{ langCount }} {{ hp.languagesCounting }}
+                </p>
+
+                <!-- Search -->
+                <input
+                    v-model="searchText"
+                    class="block w-full max-w-[400px] mx-auto mb-8 px-4 py-3 border border-rule bg-transparent text-ink font-body text-[15px] focus:outline-none focus:border-ink transition-colors placeholder:text-muted placeholder:italic"
+                    type="text"
+                    :placeholder="hp.search"
+                />
+
+                <!-- Language grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 border-t border-rule">
+                    <a
+                        v-for="language in languagesVis"
+                        :key="language.language_code"
+                        :href="`/${language.language_code}`"
+                        class="flex items-center gap-3 text-left border-b border-rule hover:bg-paper-warm transition-colors cursor-pointer no-underline text-inherit"
+                        style="padding: 14px 16px"
+                        @click.prevent="selectLanguageWithCode(language.language_code)"
+                    >
+                        <img
+                            v-if="showFlag(language.language_code)"
+                            :src="getFlag(language.language_code)!"
+                            :alt="language.language_name"
+                            class="flag-icon"
+                            @error="onFlagError(language.language_code)"
+                        />
+                        <div
+                            v-else
+                            class="flag-icon bg-paper-warm border border-rule flex items-center justify-center text-ink text-[11px] font-display font-bold"
+                        >
+                            {{ language.language_name_native.charAt(0) }}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="text-sm font-semibold text-ink truncate">
+                                {{ language.language_name_native }}
+                            </div>
+                            <div class="text-xs text-muted truncate">
+                                {{ language.language_name }}
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 flex-shrink-0">
+                            <span
+                                v-if="getCurrentStreak(language.language_code) > 0"
+                                class="flex items-start gap-0 text-flame"
+                            >
+                                <Flame :size="14" />
+                                <span
+                                    class="font-mono font-semibold tabular-nums"
+                                    style="font-size: 9px; line-height: 1; margin-top: 1px"
+                                >
+                                    {{ getCurrentStreak(language.language_code) }}
+                                </span>
+                            </span>
+                            <Check
+                                v-else-if="hasPlayed(language.language_code)"
+                                :size="14"
+                                class="text-correct"
+                            />
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- External links hidden for now — SSR handles SEO discoverability -->
+            <!-- TODO: Consider adding back as a footer or separate page if users miss it -->
+
+            <!-- ═══ Modals ═══ -->
+
+            <!-- About modal -->
+            <SharedBaseModal :visible="showAboutModal" size="sm" @close="showAboutModal = false">
+                <div class="flex flex-col gap-3">
+                    <h3 class="heading-section text-xl text-center mb-2">About</h3>
+                    <p class="text-center text-sm text-ink">
+                        Hi! You probably know about Wordle already. It's a
+                        <span class="italic">really</span> fun game.
+                    </p>
+                    <p class="text-center text-sm text-ink">
+                        The whole thing is open-source. Suggest improvements or fixes at
+                        <a
+                            href="https://github.com/Hugo0/wordle/issues"
+                            class="text-muted underline hover:text-ink"
+                            >GitHub</a
+                        >.
+                    </p>
+                    <p class="text-center text-sm text-ink">
+                        There's fun languages, like Klingon or Tolkien's Elvish, plus right-to-left
+                        languages like Arabic or Hebrew.
+                    </p>
+                    <p class="text-center text-sm text-ink">Have fun!</p>
+                </div>
+            </SharedBaseModal>
+
+            <!-- Game Mode Picker modal -->
+            <AppGameModePicker
+                :visible="showModePicker"
+                :lang-code="selectedLangCode"
+                :language-name="selectedLangName"
+                @close="showModePicker = false"
+                @select="showModePicker = false"
+                @change-language="handleChangeLanguage"
+            />
+
+            <!-- Multi-Board Picker modal -->
+            <AppBoardPickerModal
+                :visible="showBoardPicker"
+                :lang-code="defaultLang"
+                :ui="hpUi || undefined"
+                @close="showBoardPicker = false"
+            />
+        </div>
+    </AppShell>
 
     <!-- Footer SEO links removed — Nuxt SSR renders all language pages server-side,
          so crawlers discover them via the sitemap and SSR-rendered language grid above.
          The noscript fallback is also unnecessary with SSR. -->
 </template>
+
+<style scoped>
+/* ═══ Daily Puzzle hero card (NYT-style) ═══ */
+.mode-card-hero {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px 20px;
+}
+.mode-tiles {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 14px;
+}
+.mode-tile {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid var(--color-rule);
+    color: var(--color-ink);
+    background: var(--color-paper);
+}
+.mode-tile.correct {
+    background: var(--color-correct);
+    border-color: transparent;
+    color: white;
+}
+.mode-tile.semicorrect {
+    background: var(--color-semicorrect);
+    border-color: transparent;
+    color: white;
+}
+.mode-tile.incorrect {
+    background: var(--color-muted);
+    border-color: transparent;
+    color: white;
+}
+.mode-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    font-variation-settings: 'opsz' 72;
+    color: var(--color-ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+.mode-desc {
+    font-size: 14px;
+    color: var(--color-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+}
+</style>

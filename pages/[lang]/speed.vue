@@ -16,7 +16,13 @@ definePageMeta({
 const route = useRoute();
 const lang = route.params.lang as string;
 
-const { data: gameData, error } = await useFetch(`/api/${lang}/data`);
+// Play type: daily (default — same word sequence for everyone) or unlimited (random)
+const { playType, isDaily, isUnlimited } = usePlayType('speed');
+
+const { data: gameData, error } = await useFetch(`/api/${lang}/data`, {
+    key: `lang-data-speed-${lang}-${playType.value}`,
+    query: { mode: 'speed', play: playType.value },
+});
 if (error.value || !gameData.value) {
     throw createError({ statusCode: 404, message: 'Language not found' });
 }
@@ -33,23 +39,29 @@ const {
 } = useGamePage(gameData, lang);
 
 // --- SEO ---
-const { data: allLangs } = await useFetch('/api/languages');
 const seo = useGameSeo({
     lang,
     mode: 'speed',
     config: config.value!,
     langStore,
-    allLangCodes: allLangs.value?.language_codes,
 });
 
 // --- Countdown flow ---
 const countdownNumber = ref<string | number>('');
 
 function startCountdown() {
-    // Use curated daily-tier words for better quality
-    const wordList = gameData.value!.daily_words?.length
-        ? gameData.value!.daily_words
-        : gameData.value!.word_list;
+    // Daily speed: use deterministic word sequence from server (same for everyone)
+    // Unlimited speed: use curated daily-tier words for random selection
+    // speed_daily_words is returned by the API when mode=speed&play=daily
+    const speedDailyWords = (gameData.value as Record<string, unknown>)?.speed_daily_words as
+        | string[]
+        | undefined;
+    const wordList =
+        isDaily.value && speedDailyWords?.length
+            ? speedDailyWords
+            : gameData.value!.daily_words?.length
+              ? gameData.value!.daily_words
+              : gameData.value!.word_list;
     game.startSpeedSession(wordList);
 
     countdownNumber.value = 3;
@@ -137,7 +149,7 @@ onUnmounted(() => {
 // --- Play again ---
 function playAgain() {
     game.resetSpeedState();
-    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5 }));
+    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5, playType: playType.value }));
 }
 
 // --- Share ---
@@ -157,7 +169,7 @@ async function shareSpeed() {
 
 // --- Client-side init (speed-specific) ---
 onMounted(() => {
-    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5 }));
+    game.resetForMode(createGameConfig('speed', lang, { wordLength: 5, playType: playType.value }));
     game.resetSpeedState();
 
     onUnmounted(() => {
@@ -172,7 +184,11 @@ onMounted(() => {
         :language-name="config?.name_native || config?.name || lang"
         current-mode="speed"
         title="Speed Streak"
-        :subtitle="config?.name_native || lang"
+        :subtitle="
+            isDaily
+                ? `${config?.name_native || lang} · #${gameData?.mode_day_idx ?? gameData?.todays_idx}`
+                : `${config?.name_native || lang} · Unlimited`
+        "
         :sidebar-open="sidebarOpen ?? false"
         :visible="!!gameData"
         :inner-class="speedBgClass"
@@ -267,7 +283,8 @@ onMounted(() => {
                 @close="showSpeedResults = false"
             />
         </template>
+        <template #seo>
+            <GameSeoNoscript :lang="lang" mode="speed" :seo="seo" :config="config!" />
+        </template>
     </GamePageShell>
-
-    <GameSeoNoscript :lang="lang" mode="speed" :seo="seo" :config="config!" />
 </template>

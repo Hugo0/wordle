@@ -80,11 +80,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Prepare Nuxt
-        run: npx nuxt prepare
+      - name: Build Nuxt (pre-compiled server avoids 50s+ Nitro JIT)
+        run: pnpm build
 
       - name: Run vitest
         run: pnpm test
+        env:
+          NUXT_USE_BUILD: '1'
 
   e2e:
     name: E2E Tests (Playwright)
@@ -104,8 +106,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Prepare Nuxt
-        run: npx nuxt prepare
+      - name: Build Nuxt
+        run: pnpm build
 
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps

@@ -1,0 +1,153 @@
+datasource db {
+    provider = "postgresql"
+    schemas  = ["wordle"]
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Users & Authentication
+// ═══════════════════════════════════════════════════════════════════════════
+
+model User {
+    id            String   @id @default(cuid())
+    username      String   @unique
+    email         String?  @unique
+    displayName   String?  @map("display_name")
+    avatarUrl     String?  @map("avatar_url")
+
+    // Auth providers (all nullable — user may have one or more)
+    googleId      String?  @unique @map("google_id")
+    passwordHash  String?  @map("password_hash")
+    emailVerified Boolean  @default(false) @map("email_verified")
+
+    // Preferences (dark mode, hard mode, etc.)
+    settings      Json     @default("{}")
+
+    createdAt     DateTime @default(now()) @map("created_at")
+    updatedAt     DateTime @updatedAt @map("updated_at")
+
+    results       Result[]
+    credentials   Credential[]
+    badges        UserBadge[]
+    subscription  Subscription?
+
+    @@map("users")
+    @@schema("wordle")
+}
+
+model Credential {
+    id           String   @id @default(cuid())
+    userId       String   @map("user_id")
+    credentialId String   @unique @map("credential_id")
+    publicKey    String   @map("public_key")
+    counter      Int      @default(0)
+    backedUp     Boolean  @default(false) @map("backed_up")
+    transports   String[] @default([])
+    createdAt    DateTime @default(now()) @map("created_at")
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
+    @@map("credentials")
+    @@schema("wordle")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Game Results (unified — all modes including speed)
+// ═══════════════════════════════════════════════════════════════════════════
+
+model Result {
+    id       String  @id @default(cuid())
+    userId   String  @map("user_id")
+    deviceId String? @map("device_id")
+
+    // What was played
+    lang     String
+    mode     String   @default("classic")
+    playType String   @default("daily") @map("play_type")
+    dayIdx   Int?     @map("day_idx")
+
+    // Outcome (classic/multi-board modes)
+    won      Boolean?
+    attempts Int?
+
+    // Speed mode fields (null for non-speed modes)
+    score        Int? @map("score")
+    wordsSolved  Int? @map("words_solved")
+    wordsFailed  Int? @map("words_failed")
+    maxCombo     Int? @map("max_combo")
+    totalGuesses Int? @map("total_guesses")
+
+    playedAt  DateTime @map("played_at")
+    createdAt DateTime @default(now()) @map("created_at")
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    // Dedup: one daily result per user/lang/mode/day (NULLs are distinct for unlimited)
+    @@unique([userId, lang, mode, playType, dayIdx], name: "unique_daily_result")
+    @@index([userId, lang])
+    @@index([userId, createdAt])
+    // Leaderboard queries: top scores by lang/mode, daily rankings
+    @@index([lang, mode, playType, dayIdx])
+    @@map("results")
+    @@schema("wordle")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Badges & Achievements
+// ═══════════════════════════════════════════════════════════════════════════
+
+model Badge {
+    id          String  @id @default(cuid())
+    slug        String  @unique
+    name        String
+    description String
+    category    String
+    threshold   Int     @default(0)
+    icon        String  @default("")
+    group       String? @map("badge_group")
+
+    users UserBadge[]
+
+    @@map("badges")
+    @@schema("wordle")
+}
+
+model UserBadge {
+    id       String   @id @default(cuid())
+    userId   String   @map("user_id")
+    badgeId  String   @map("badge_id")
+    earnedAt DateTime @default(now()) @map("earned_at")
+
+    user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+    badge Badge @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+    @@unique([userId, badgeId])
+    @@map("user_badges")
+    @@schema("wordle")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Subscriptions & Monetization
+// ═══════════════════════════════════════════════════════════════════════════
+
+model Subscription {
+    id         String    @id @default(cuid())
+    userId     String    @unique @map("user_id")
+    provider   String    @default("polar")
+    providerId String?   @map("provider_id")
+    plan       String    @default("lifetime")
+    status     String    @default("active")
+    expiresAt  DateTime? @map("expires_at")
+    createdAt  DateTime  @default(now()) @map("created_at")
+    updatedAt  DateTime  @updatedAt @map("updated_at")
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([providerId])
+    @@map("subscriptions")
+    @@schema("wordle")
+}

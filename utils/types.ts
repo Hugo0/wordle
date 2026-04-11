@@ -74,6 +74,7 @@ export interface LanguageSeo {
     mode_desc_unlimited?: string;
     mode_desc_speed?: string;
     mode_desc_multiboard?: string;
+    mode_desc_semantic?: string;
 
     // FAQ — default (classic) and mode-specific overrides
     faq?: SeoFaqItem[];
@@ -87,6 +88,7 @@ export interface LanguageSeo {
     tips?: SeoTip[];
     tips_speed?: SeoTip[];
     tips_multiboard?: SeoTip[];
+    tips_semantic?: SeoTip[];
     mode_tips?: Record<string, SeoTip[]>;
 }
 
@@ -114,7 +116,7 @@ export interface LanguageMeta {
     keywords: string;
     wordle_native?: string;
     modes?: Record<string, LanguageModeMeta>;
-    /** SEO templates for the per-day word detail page (`/[lang]/word/[id]`). */
+    /** SEO templates for the per-word detail page (`/[lang]/word/[slug]`). */
     word_detail?: LanguageWordDetailMeta;
     /** SEO templates for the word archive page (`/[lang]/words`). */
     word_archive?: LanguagePageMeta;
@@ -129,8 +131,11 @@ export interface LanguageText {
     share: string;
     shared?: string;
     copied?: string;
-    'notification-copied'?: string;
-    'notification-partial-word'?: string;
+    notification_copied?: string;
+    notification_partial_word?: string;
+    notification_word_not_valid?: string;
+    hard_mode_position?: string;
+    hard_mode_contains?: string;
     win_words?: string;
 }
 
@@ -299,13 +304,22 @@ export interface UiStrings {
     mode_unlimited_desc?: string;
     mode_speed_label?: string;
     mode_speed_desc?: string;
+    mode_dordle_label?: string;
     mode_dordle_desc?: string;
+    mode_quordle_label?: string;
     mode_quordle_desc?: string;
+    mode_octordle_label?: string;
     mode_octordle_desc?: string;
+    mode_sedecordle_label?: string;
     mode_sedecordle_desc?: string;
+    mode_duotrigordle_label?: string;
     mode_duotrigordle_desc?: string;
+    mode_semantic_label?: string;
     mode_semantic_desc?: string;
+    mode_multiboard_label?: string;
+    mode_custom_label?: string;
     mode_custom_desc?: string;
+    mode_party_label?: string;
     mode_party_desc?: string;
 }
 
@@ -457,7 +471,37 @@ export interface TotalStats {
 /** Semantic tile color state — independent of CSS class names. */
 export type TileColor = 'correct' | 'semicorrect' | 'incorrect' | 'empty' | 'active';
 
+/** Map a tile color to its share emoji. */
+export function tileEmoji(color: TileColor, highContrast: boolean): string {
+    if (color === 'correct') return highContrast ? '🟦' : '🟩';
+    if (color === 'semicorrect') return highContrast ? '🟧' : '🟨';
+    if (color === 'incorrect') return '⬜';
+    return '';
+}
+
+/** Convert a row of tile colors to an emoji string. Returns empty on first non-revealed tile. */
+export function rowToEmoji(row: TileColor[], highContrast: boolean): string | null {
+    let result = '';
+    for (const color of row) {
+        const e = tileEmoji(color, highContrast);
+        if (!e) return null;
+        result += e;
+    }
+    return result;
+}
+
 export type KeyState = '' | 'key-correct' | 'key-semicorrect' | 'key-incorrect';
+
+/** Build a fresh key-state map for all characters + special keys. */
+export function createKeyStates(characters: string[]): Record<string, KeyState> {
+    const keys: Record<string, KeyState> = {};
+    for (const char of characters) keys[char] = '';
+    keys['⟹'] = '';
+    keys['ENTER'] = '';
+    keys['DEL'] = '';
+    keys['⌫'] = '';
+    return keys;
+}
 
 // =============================================================================
 // Game Constants

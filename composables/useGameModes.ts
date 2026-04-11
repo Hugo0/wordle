@@ -1,8 +1,8 @@
 /**
- * Single source of truth for game mode UI metadata.
+ * Game mode UI metadata — derives from GAME_MODE_CONFIG (single source of truth)
+ * and adds Vue-specific fields (icons). No data duplication.
  *
  * Used by: homepage mode cards, sidebar, GameModePicker modal.
- * Each mode has display info + routing + availability status.
  */
 import {
     Square,
@@ -18,130 +18,71 @@ import {
     Users,
 } from 'lucide-vue-next';
 import type { Component } from 'vue';
+import { GAME_MODE_CONFIG, GAME_MODE_ORDER } from '~/utils/game-modes';
+import type { GameMode, PlayType } from '~/utils/game-modes';
+
+/** Icon mapping — the only field that can't live in utils/ (Vue component refs). */
+const MODE_ICONS: Record<string, Component> = {
+    classic: Square,
+    unlimited: InfinityIcon,
+    speed: Zap,
+    dordle: Columns2,
+    quordle: Grid2x2,
+    octordle: Grid3x3,
+    sedecordle: Grip,
+    duotrigordle: BrickWall,
+    semantic: Compass,
+    custom: PenLine,
+    party: Users,
+};
 
 export interface GameModeUI {
-    id: string;
+    id: GameMode;
     icon: Component;
     label: string;
     description: string;
-    /** Route suffix after /{lang}/ — empty string for classic */
     routeSuffix: string;
-    /** Whether this mode is playable (has a page) */
     enabled: boolean;
-    /** Badge text: 'NEW', 'SOON', 'CLASSIC', or undefined */
     badge?: string;
+    /** Which play types this mode supports (daily, unlimited, etc.) */
+    supportedPlayTypes: readonly string[];
+    /** If set, mode only appears in the sidebar for these language codes. */
+    languages?: string[];
 }
 
 /**
- * All game modes in display order.
- * Single source of truth — sidebar, homepage, and mode picker all derive from this.
+ * All game modes in display order, derived from GAME_MODE_CONFIG.
+ * Adding a mode to GAME_MODE_CONFIG automatically surfaces it here.
  */
-export const GAME_MODES_UI: GameModeUI[] = [
-    {
-        id: 'classic',
-        icon: Square,
-        label: 'Daily Puzzle',
-        description: 'One word per day. 6 guesses. The classic.',
-        routeSuffix: '',
-        enabled: true,
-    },
-    {
-        id: 'unlimited',
-        icon: InfinityIcon,
-        label: 'Unlimited',
-        description: 'Random words, no limit. Play as much as you want.',
-        routeSuffix: 'unlimited',
-        enabled: true,
-    },
-    {
-        id: 'speed',
-        icon: Zap,
-        label: 'Speed Streak',
-        description: 'Race the clock. Solve as many words as you can before time runs out.',
-        routeSuffix: 'speed',
-        enabled: true,
-        badge: 'NEW',
-    },
-    {
-        id: 'dordle',
-        icon: Columns2,
-        label: 'Dordle',
-        description: '2 boards, 1 keyboard, 7 guesses.',
-        routeSuffix: 'dordle',
-        enabled: true,
-        badge: 'BETA',
-    },
-    {
-        id: 'quordle',
-        icon: Grid2x2,
-        label: 'Quordle',
-        description: '4 boards, 1 keyboard, 9 guesses.',
-        routeSuffix: 'quordle',
-        enabled: true,
-        badge: 'BETA',
-    },
-    {
-        id: 'octordle',
-        icon: Grid3x3,
-        label: 'Octordle',
-        description: '8 boards, 1 keyboard, 13 guesses.',
-        routeSuffix: 'octordle',
-        enabled: true,
-        badge: 'BETA',
-    },
-    {
-        id: 'sedecordle',
-        icon: Grip,
-        label: 'Sedecordle',
-        description: '16 boards, 1 keyboard, 21 guesses.',
-        routeSuffix: 'sedecordle',
-        enabled: true,
-        badge: 'BETA',
-    },
-    {
-        id: 'duotrigordle',
-        icon: BrickWall,
-        label: 'Duotrigordle',
-        description: '32 boards, 1 keyboard, 37 guesses.',
-        routeSuffix: 'duotrigordle',
-        enabled: true,
-        badge: 'BETA',
-    },
-    {
-        id: 'semantic',
-        icon: Compass,
-        label: 'Semantic Explorer',
-        description: 'Navigate meaning space. 10 guesses.',
-        routeSuffix: 'semantic',
-        enabled: false,
-        badge: 'SOON',
-    },
-    {
-        id: 'custom',
-        icon: PenLine,
-        label: 'Custom Word',
-        description: 'Pick a word, share a link. Challenge your friends.',
-        routeSuffix: 'custom',
-        enabled: false,
-        badge: 'SOON',
-    },
-    {
-        id: 'party',
-        icon: Users,
-        label: 'Party Mode',
-        description: 'Play the same word with friends. See who solves it fastest.',
-        routeSuffix: 'party',
-        enabled: false,
-        badge: 'SOON',
-    },
-];
+export const GAME_MODES_UI: GameModeUI[] = GAME_MODE_ORDER.map((id) => {
+    const def = GAME_MODE_CONFIG[id];
+    return {
+        id,
+        icon: MODE_ICONS[id] || Square,
+        label: def.label,
+        description: def.description,
+        routeSuffix: def.routeSuffix,
+        enabled: def.enabled,
+        badge: def.badge,
+        supportedPlayTypes: def.supportedPlayTypes,
+        languages: def.languages ? [...def.languages] : undefined,
+    };
+});
 
 /**
- * Get the route for a game mode given a language code.
+ * Get the route for a game mode given a language code and optional play type.
+ * When playType is 'unlimited', appends ?play=unlimited to the route.
+ * Daily (the default) has no query param.
  */
-export function getModeRoute(mode: GameModeUI, langCode: string): string | null {
+export function getModeRoute(
+    mode: GameModeUI,
+    langCode: string,
+    playType?: PlayType
+): string | null {
     if (!mode.enabled) return null;
-    return mode.routeSuffix ? `/${langCode}/${mode.routeSuffix}` : `/${langCode}`;
+    const base = mode.routeSuffix ? `/${langCode}/${mode.routeSuffix}` : `/${langCode}`;
+    if (playType === 'unlimited') return `${base}?play=unlimited`;
+    return base;
 }
 
 /**

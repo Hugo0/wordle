@@ -349,3 +349,63 @@ Speed streak already tracked via `speed_session_complete` event (added by design
 **Exports:** `removeLocal`, `readBool`, `writeBool`, `readJson`, `writeJson`, `dismissWithCooldown`, `isDismissedWithCooldown`
 **Issue:** Pre-existing dead code, not from our refactor.
 **Fix:** Low priority cleanup.
+
+---
+
+# Daily/Unlimited System — Open Decisions (2026-04-10)
+
+These items need owner input before or during implementation. None block Phases 1-3.
+
+### 1. `/en/unlimited` page long-term
+Add `<link rel="canonical" href="/en?play=unlimited">` now, or keep both pages independent?
+- **Recommendation**: Add canonical now. Keep the page working. Soft-deprecate later.
+
+### 2. Daily Speed word pool size
+How many deterministic words in the daily speed pool? Most players solve 10-20 in 5 min.
+- **Recommendation**: 50, hardcoded.
+
+### 3. First-visit UX for daily multi-board
+Player first visits `/en/dordle?play=daily` — empty game, no saved state. Show banner?
+- **Recommendation**: No banner. Same as classic daily first visit.
+
+### 4. Language picker component reuse
+Extract homepage language grid into shared component for modal reuse, or build independently?
+- **Recommendation**: Build independently, refactor later.
+
+### 5. Archive mode tabs — data timeline
+Mode filter tabs on archive page: when to implement per-mode daily word history?
+- **Recommendation**: Ship tabs with Classic only. Per-mode archive data is separate project.
+
+### 6. Multi-board archive card design
+For 8+ boards, cards become summaries. Implement card variants now or stub?
+- **Recommendation**: Stub with "Coming soon". Full variants are separate design task.
+
+### 7. Word page "Appeared in" section
+Cross-mode daily history on word detail pages. Needs server-side cross-mode word index.
+- **Recommendation**: Defer. Index doesn't exist yet.
+
+### 8. Homepage mode cards redesign
+Homepage still shows old flat mode list with hardcoded `HOMEPAGE_MODE_IDS`. Needs:
+- Remove standalone "unlimited" card (it's Classic's unlimited variant)
+- Add daily/unlimited labels per mode card
+- For returning users: adapt cards to game state (in-progress, solved, "Play Unlimited →")
+- Feature Semantic Explorer prominently
+- Design explorations exist in editorial page (Screen 01, F1 Hub) and system design doc (section 7) but no final design decided
+
+### 9. Semantic mobile tabbed bottom panel
+Current mobile semantic layout stacks map + leaderboard + compass vertically — player must scroll between them. A tabbed bottom panel (Rank / Compass / List tabs) would show one section at a time above the fixed input, eliminating scroll during gameplay. Described in session but not implemented.
+
+### 10. Verify `useFetch` key with playType
+`pages/[lang]/[mode].vue` uses `key: 'lang-data-${lang}-${mode}-${playType.value}'`. If `playType` changes after initial SSR (e.g., localStorage preference read), the cached response may be stale. Likely a non-issue because page remounts on route change, but needs explicit verification.
+
+### 11. Sidebar visual polish
+- Sub-panel dismiss behavior when clicking different modes (implemented but not verified)
+- Active border-left vs sub-panel warm-bg highlight conflict (CSS added but not verified)
+- Daily multi-board persistence end-to-end test (save/restore on reload)
+
+### 12. Stats modal/page redesign — combined daily + unlimited view
+Stats should show both play types per mode: daily stats (with streak) and unlimited stats (play count, win rate, no streak) in separate sections. Current stats modal only shows one set of stats per mode. Needs:
+- Stats modal: two-section layout (Daily / Unlimited) for modes that support both
+- Stats page (`/stats`): same combined view with mode tabs
+- Existing stats data is preserved — `"en_dordle"` (unlimited) and `"en_dordle_daily"` (daily) are already separate keys
+- No data migration needed, just a UI redesign to surface both

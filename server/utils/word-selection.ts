@@ -195,6 +195,113 @@ export function getWordForDay(langCode: string, dayIdx: number): string {
     return word;
 }
 
+// ---------------------------------------------------------------------------
+// Reverse lookup: word → day index
+// ---------------------------------------------------------------------------
+//
+// Lazy per-language inverted index (word → earliest dayIdx). First call
+// walks historical days once; subsequent days are incrementally appended
+// when `todaysIdx` advances, so the midnight rollover only pays for new
+// days, not a full rebuild.
+
+type ReverseIndex = {
+    built: number;
+    map: Map<string, number>;
+};
+const _reverseIndexCache = new Map<string, ReverseIndex>();
+
+function ensureReverseIndex(langCode: string): ReverseIndex {
+    const todaysIdx = getTodaysIdx();
+    let cached = _reverseIndexCache.get(langCode);
+    if (!cached) {
+        cached = { built: 0, map: new Map<string, number>() };
+        _reverseIndexCache.set(langCode, cached);
+    }
+    if (cached.built < todaysIdx) {
+        for (let d = cached.built + 1; d <= todaysIdx; d++) {
+            const w = getWordForDay(langCode, d);
+            // Keep the first occurrence — if a word repeats, the earliest
+            // day wins so the canonical URL is stable.
+            if (w && !cached.map.has(w)) cached.map.set(w, d);
+        }
+        cached.built = todaysIdx;
+    }
+    return cached;
+}
+
+export function getDayForWord(langCode: string, word: string): number | null {
+    return ensureReverseIndex(langCode).map.get(word.toLowerCase()) ?? null;
+}
+
+/** Iterate every (dayIdx, word) pair in reverse chronological order.
+ *  Used by the sitemap to emit URLs without making ~300 disk reads per
+ *  request. */
+export function iterateHistoricalWords(langCode: string): Array<{ dayIdx: number; word: string }> {
+    const idx = ensureReverseIndex(langCode);
+    const entries = Array.from(idx.map.entries()).map(([word, dayIdx]) => ({
+        dayIdx,
+        word,
+    }));
+    entries.sort((a, b) => b.dayIdx - a.dayIdx);
+    return entries;
+}
+
+// ---------------------------------------------------------------------------
+// Slug resolution (shared between /api/[lang]/word/[slug] and word-explore)
+// ---------------------------------------------------------------------------
+
+const NUMERIC_SLUG_RE = /^\d+$/;
+// Word-name slug: Unicode-aware for non-English languages, length-bounded
+// so an absurdly long URL gets a 400 not a deep vocab lookup.
+const WORD_SLUG_RE = /^[\p{L}\p{M}\p{N}\-']{1,40}$/u;
+
+export type ResolvedSlug =
+    | { kind: 'numeric'; dayIdx: number; word: string | null }
+    | { kind: 'word'; word: string; dayIdx: number | null }
+    | { kind: 'invalid' };
+
+/** Resolve a URL slug to a (word, dayIdx) pair. Numeric slugs look up the
+ *  word via `getWordForDay`; word slugs look up the day via the reverse
+ *  index. Returns `kind: 'invalid'` for ill-formed slugs so callers can
+ *  decide the status code. */
+export function resolveWordSlug(langCode: string, slug: string): ResolvedSlug {
+    if (NUMERIC_SLUG_RE.test(slug)) {
+        const dayIdx = parseInt(slug, 10);
+        if (dayIdx < 1) return { kind: 'invalid' };
+        const todaysIdx = getTodaysIdx();
+        const word = dayIdx <= todaysIdx ? getWordForDay(langCode, dayIdx) : null;
+        return { kind: 'numeric', dayIdx, word };
+    }
+    const lower = slug.toLowerCase();
+    if (!WORD_SLUG_RE.test(lower)) return { kind: 'invalid' };
+    return { kind: 'word', word: lower, dayIdx: getDayForWord(langCode, lower) };
+}
+
+// ---------------------------------------------------------------------------
+// Wiktionary language code mapping — shared by the word detail API and the
+// definitions module (which builds Wiktionary URLs).
+// ---------------------------------------------------------------------------
+
+const WIKT_LANG_MAP: Record<string, string> = {
+    zh: 'zh',
+    'zh-tw': 'zh',
+    pt: 'pt',
+    'pt-br': 'pt',
+    nb: 'no',
+    nn: 'no',
+    sr: 'sr',
+    'sr-latn': 'sr',
+    ckb: 'ku',
+    gd: 'gd',
+    mi: 'mi',
+    hyw: 'hy',
+};
+
+export function getWiktLang(langCode: string): string {
+    if (WIKT_LANG_MAP[langCode]) return WIKT_LANG_MAP[langCode]!;
+    return langCode.length > 2 ? langCode.slice(0, 2) : langCode;
+}
+
 /**
  * Get N distinct daily words for multi-board modes (Dordle, Tridle, Quordle).
  *

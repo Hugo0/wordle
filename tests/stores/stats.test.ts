@@ -4,7 +4,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createPinia, setActivePinia } from 'pinia';
 import { useStatsStore } from '../../stores/stats';
-import { buildStatsKey, createGameConfig, isClassicDailyStatsKey } from '../../utils/game-modes';
+import {
+    buildStatsKey,
+    createGameConfig,
+    isClassicDailyStatsKey,
+    isDailyStatsKey,
+} from '../../utils/game-modes';
 
 // jsdom provides localStorage natively when import.meta.client = true
 
@@ -198,23 +203,33 @@ describe('Stats Store', () => {
             expect(buildStatsKey(config)).toBe('en');
         });
 
-        it('dordle returns lang_mode format', () => {
+        it('dordle daily returns lang_mode_daily format', () => {
             const config = createGameConfig('dordle', 'en');
+            expect(buildStatsKey(config)).toBe('en_dordle_daily');
+        });
+
+        it('dordle unlimited returns lang_mode format (backward compat)', () => {
+            const config = createGameConfig('dordle', 'en', { playType: 'unlimited' });
             expect(buildStatsKey(config)).toBe('en_dordle');
         });
 
-        it('quordle returns lang_mode format', () => {
+        it('quordle daily returns lang_mode_daily format', () => {
             const config = createGameConfig('quordle', 'de');
-            expect(buildStatsKey(config)).toBe('de_quordle');
+            expect(buildStatsKey(config)).toBe('de_quordle_daily');
         });
 
-        it('unlimited returns lang_mode format', () => {
+        it('unlimited mode maps to classic bucket (backward compat)', () => {
             const config = createGameConfig('unlimited', 'en');
-            expect(buildStatsKey(config)).toBe('en_unlimited');
+            expect(buildStatsKey(config)).toBe('en');
         });
 
-        it('speed returns lang_mode format', () => {
+        it('speed daily returns lang_mode_daily format', () => {
             const config = createGameConfig('speed', 'en');
+            expect(buildStatsKey(config)).toBe('en_speed_daily');
+        });
+
+        it('speed unlimited returns lang_mode format (backward compat)', () => {
+            const config = createGameConfig('speed', 'en', { playType: 'unlimited' });
             expect(buildStatsKey(config)).toBe('en_speed');
         });
     });
@@ -245,11 +260,54 @@ describe('Stats Store', () => {
                 false
             );
             expect(isClassicDailyStatsKey(buildStatsKey(createGameConfig('unlimited', 'en')))).toBe(
-                false
+                true
             );
             expect(isClassicDailyStatsKey(buildStatsKey(createGameConfig('speed', 'en')))).toBe(
                 false
             );
+        });
+    });
+
+    describe('isDailyStatsKey', () => {
+        it('bare language codes are daily (classic daily)', () => {
+            expect(isDailyStatsKey('en')).toBe(true);
+            expect(isDailyStatsKey('de')).toBe(true);
+        });
+
+        it('keys ending with _daily are daily', () => {
+            expect(isDailyStatsKey('en_dordle_daily')).toBe(true);
+            expect(isDailyStatsKey('en_speed_daily')).toBe(true);
+            expect(isDailyStatsKey('en_semantic_daily')).toBe(true);
+        });
+
+        it('unlimited keys are NOT daily', () => {
+            expect(isDailyStatsKey('en_unlimited')).toBe(false);
+            expect(isDailyStatsKey('en_dordle')).toBe(false);
+            expect(isDailyStatsKey('en_speed')).toBe(false);
+        });
+
+        it('is consistent with buildStatsKey for daily modes', () => {
+            expect(isDailyStatsKey(buildStatsKey(createGameConfig('classic', 'en')))).toBe(true);
+            expect(isDailyStatsKey(buildStatsKey(createGameConfig('dordle', 'en')))).toBe(true);
+            expect(isDailyStatsKey(buildStatsKey(createGameConfig('speed', 'en')))).toBe(true);
+            expect(isDailyStatsKey(buildStatsKey(createGameConfig('semantic', 'en')))).toBe(true);
+        });
+
+        it('is consistent with buildStatsKey for unlimited modes', () => {
+            // Legacy 'unlimited' mode maps to classic bucket (bare lang code),
+            // which isDailyStatsKey treats as daily — this is intentional since
+            // unlimited is now classic with playType: 'unlimited'
+            expect(isDailyStatsKey(buildStatsKey(createGameConfig('unlimited', 'en')))).toBe(true);
+            expect(
+                isDailyStatsKey(
+                    buildStatsKey(createGameConfig('dordle', 'en', { playType: 'unlimited' }))
+                )
+            ).toBe(false);
+            expect(
+                isDailyStatsKey(
+                    buildStatsKey(createGameConfig('speed', 'en', { playType: 'unlimited' }))
+                )
+            ).toBe(false);
         });
     });
 

@@ -76,6 +76,7 @@ function makeTestGameData(overrides: Partial<GameData> = {}): GameData {
             'raise',
             'crate',
         ],
+        daily_words: ['crane', 'slate', 'hello', 'world', 'apple'],
         characters: [
             'a',
             'b',

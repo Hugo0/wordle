@@ -13,6 +13,7 @@
  */
 import type { Ref } from 'vue';
 import type { GameData } from '~/utils/types';
+import { readLocal, writeLocal, STORAGE_KEYS } from '~/utils/storage';
 import { buildStatsKey } from '~/utils/game-modes';
 
 export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
@@ -20,6 +21,10 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
     const game = useGameStore();
     const settings = useSettingsStore();
     const stats = useStatsStore();
+
+    // Server sync — watches game/speed/settings state and syncs if logged in.
+    // Runs in component setup context where useUserSession() is safe.
+    useSync();
 
     // Initialize language store from API response (runs during SSR + client)
     if (gameData.value) {
@@ -78,6 +83,11 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             window.removeEventListener('keydown', handleKeyDown);
         });
 
+        // Update preferred language — homepage reads this to detect the right language
+        try {
+            localStorage.setItem(STORAGE_KEYS.PREFERRED_LANGUAGE, lang);
+        } catch {}
+
         // Initialize settings + stats. loadSpeedResults hydrates the
         // speed_results blob so finishSpeedSession() merges instead of clobbering.
         settings.init();
@@ -107,6 +117,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
                         is_returning: stats.stats.n_games > 0,
                         current_streak: stats.stats.current_streak,
                         game_mode: game.gameConfig.mode,
+                        play_type: game.gameConfig.playType,
                     });
                 }
             });
@@ -128,13 +139,13 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             // Only identify new users — returning users are already identified
             // from a previous session (PostHog persists distinct_id in localStorage).
             // This saves ~$identify + $set events for every returning-user page load.
-            const isNewUser = !localStorage.getItem('first_seen_date');
+            const isNewUser = !readLocal('first_seen_date');
             const userProps = isNewUser
                 ? analytics.identifyUser(stats.gameResults)
                 : analytics.computeUserProperties(stats.gameResults);
 
             // Retention — merge returning_player + re_engagement into one event
-            const lastPlayed = localStorage.getItem('last_played_date');
+            const lastPlayed = readLocal('last_played_date');
             const daysSinceLast = analytics.daysSince(lastPlayed ?? undefined);
             if (stats.stats.n_games > 0 && daysSinceLast !== undefined && daysSinceLast >= 1) {
                 analytics.trackReturningPlayer(
@@ -157,7 +168,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
             }
 
             // Update last_played_date for future sessions
-            localStorage.setItem('last_played_date', new Date().toISOString().split('T')[0]!);
+            writeLocal('last_played_date', new Date().toISOString().split('T')[0]!);
         } catch {
             // Analytics should never break the app
         }

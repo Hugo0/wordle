@@ -13,6 +13,19 @@ pnpm dev           # Starts Nuxt dev server at localhost:3000
 
 `uv` handles Python dependencies automatically.
 
+### Database (optional — app works without it)
+
+Requires a `.env` file with `DATABASE_URL` pointing to Postgres. Prisma 7 uses the `wordle` schema.
+
+```bash
+pnpm db:generate   # Generate Prisma client after schema changes
+pnpm db:push       # Push schema to DB (dev)
+pnpm db:migrate    # Run migrations (production)
+pnpm db:studio     # Open Prisma Studio GUI
+```
+
+Prisma reads `DATABASE_URL` from `.env` automatically.
+
 ## Architecture
 
 ```text
@@ -167,6 +180,8 @@ All SEO content (FAQ, HowTo, tips, value props, section headings) lives in the `
 - **Don't use `langStore` outside game pages.** The language store requires `init()` which only happens via `useGamePage()` on game routes. Standalone pages (`/[lang]/word/[id]`, `/[lang]/words`, etc.) must get UI labels from their own API response, not from the store. If a page needs translated strings, add `ui: config.ui` to the API endpoint's return value.
 
 ## Multi-Agent Collaboration
+
+**CRITICAL: Never use blanket git checkout.** `git checkout -- <directory>` discards ALL unstaged changes in the target path, including other agents' work. To undo your changes: revert files one by one after confirming each only contains your changes. Never use `git checkout -- pages/`, `git restore pages/`, or any wildcard/directory-level revert. Never stash, reset, or discard changes you didn't make without explicit user permission.
 
 When multiple AI agents work on this repo concurrently, follow these rules:
 
