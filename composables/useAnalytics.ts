@@ -17,7 +17,7 @@
  * 9. FUNNEL: Where do users drop off?
  */
 
-import { isStandalone, getOrCreateId, readLocal, writeLocal } from '~/utils/storage';
+import { isStandalone, getOrCreateId, readLocal, writeLocal, STORAGE_KEYS } from '~/utils/storage';
 
 // Events to exclude from PostHog to stay within free tier (1M events/month).
 // These are either redundant (data already aggregated into game_complete)
@@ -278,7 +278,7 @@ export function useAnalytics() {
         if (navigator.webdriver) return props;
 
         try {
-            const clientId = getOrCreateId('client_id');
+            const clientId = getOrCreateId(STORAGE_KEYS.CLIENT_ID);
 
             let firstSeenDate = readLocal('first_seen_date') ?? undefined;
             if (!firstSeenDate) {

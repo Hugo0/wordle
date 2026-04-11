@@ -14,7 +14,7 @@
  * Initial sync (localStorage upload on first login) is handled by
  * plugins/sync.client.ts so it works on any page, not just game pages.
  */
-import { getOrCreateId, readJson, writeJson } from '~/utils/storage';
+import { getOrCreateId, readJson, writeJson, STORAGE_KEYS } from '~/utils/storage';
 import { buildStatsKey } from '~/utils/game-modes';
 
 interface PendingSyncItem {
@@ -24,18 +24,18 @@ interface PendingSyncItem {
 }
 
 function getPendingQueue(): PendingSyncItem[] {
-    return readJson<PendingSyncItem[]>('pending_sync') ?? [];
+    return readJson<PendingSyncItem[]>(STORAGE_KEYS.PENDING_SYNC) ?? [];
 }
 
 function addToPendingQueue(item: PendingSyncItem) {
     const queue = getPendingQueue();
     queue.push(item);
     // Cap at 50 items to prevent unbounded growth
-    writeJson('pending_sync', queue.slice(-50));
+    writeJson(STORAGE_KEYS.PENDING_SYNC, queue.slice(-50));
 }
 
 function clearPendingQueue() {
-    writeJson('pending_sync', []);
+    writeJson(STORAGE_KEYS.PENDING_SYNC, []);
 }
 
 export function useSync() {
@@ -44,7 +44,7 @@ export function useSync() {
     const stats = useStatsStore();
     const settings = useSettingsStore();
 
-    const deviceId = import.meta.client ? getOrCreateId('client_id') : 'unknown';
+    const deviceId = import.meta.client ? getOrCreateId(STORAGE_KEYS.CLIENT_ID) : 'unknown';
 
     // Track previous speed result count to detect new entries
     let prevSpeedCount = 0;
@@ -178,7 +178,7 @@ export function useSync() {
                             feedbackEnabled: settings.feedbackEnabled,
                             wordInfoEnabled: settings.wordInfoEnabled,
                             animationsEnabled: settings.animationsEnabled,
-                            preferredLanguage: localStorage.getItem('preferred_language') || undefined,
+                            preferredLanguage: localStorage.getItem(STORAGE_KEYS.PREFERRED_LANGUAGE) || undefined,
                         },
                     }).catch(() => {});
                 }, 1000);

@@ -41,7 +41,7 @@ import type { GameConfig, GameMode } from '~/utils/game-modes';
 import { computeRowColors } from '~/utils/game/colorAlgorithm';
 import type { NormalizationContext } from '~/utils/game/colorAlgorithm';
 import { animateRevealRow, animateKeyNudge } from '~/utils/game/useGameAnimations';
-import { getOrCreateId, readLocal, writeLocal, readJson, writeJson } from '~/utils/storage';
+import { getOrCreateId, readLocal, writeLocal, readJson, writeJson, STORAGE_KEYS } from '~/utils/storage';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -1353,7 +1353,7 @@ export const useGameStore = defineStore('game', () => {
         const dayIdx = lang.todaysIdx;
         if (!langCode || isNaN(dayIdx)) return;
 
-        const clientId = getOrCreateId('client_id');
+        const clientId = getOrCreateId(STORAGE_KEYS.CLIENT_ID);
 
         try {
             $fetch(`/api/${langCode}/word-stats`, {

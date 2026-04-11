@@ -4,6 +4,8 @@
  * Provides `loginWithGoogle()`, `logout()`, and reactive auth state.
  * All auth is optional — never required to play.
  */
+import { setActiveUserId } from '~/utils/storage';
+
 export function useAuth() {
     const { loggedIn, user, clear, fetch: refreshSession } = useUserSession();
 
@@ -19,6 +21,14 @@ export function useAuth() {
     async function logout() {
         await $fetch('/api/auth/logout', { method: 'POST' });
         await clear();
+
+        // Switch storage back to anonymous keys so stores read guest data
+        setActiveUserId(null);
+        const stats = useStatsStore();
+        stats.loadGameResults();
+        stats.loadSpeedResults();
+        stats.calculateTotalStats();
+
         const { showToast } = useToast();
         showToast('Signed out');
         await navigateTo('/');

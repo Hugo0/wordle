@@ -11,17 +11,11 @@ import { useAnimatedNumber } from '~/composables/useAnimatedNumber';
 import {
     BarChart2,
     Flame,
-    Trophy,
-    Target,
     Square,
-    Infinity,
     Zap,
-    Columns2,
-    Columns3,
-    Grid2x2,
     ChevronRight,
 } from 'lucide-vue-next';
-import { isClassicDailyStatsKey, GAME_MODE_CONFIG } from '~/utils/game-modes';
+import { isClassicDailyStatsKey, GAME_MODE_CONFIG, GAME_MODE_ORDER } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
 import type { SpeedAggregate } from '~/utils/types';
 import { createEmptyDistribution } from '~/utils/types';
@@ -73,14 +67,8 @@ interface ModeStats {
     maxGuesses: number;
 }
 
-const MODE_ICONS: Record<string, typeof Square> = {
-    classic: Square,
-    unlimited: Infinity,
-    speed: Zap,
-    dordle: Columns2,
-    tridle: Columns3,
-    quordle: Grid2x2,
-};
+// Mode icons come from GAME_MODES_UI — no duplication
+const getModeIcon = (mode: string) => GAME_MODES_UI.find(m => m.id === mode)?.icon || Square;
 
 // =========================================================================
 // State — derived from the stats store (single source of truth)
@@ -91,7 +79,7 @@ const loaded = ref(false);
 const empty = ref(false);
 
 // Auth & profile
-const { loggedIn: authLoggedIn, user: authUser, loginWithGoogle: authLoginWithGoogle, logout: authLogout, refreshSession } = useAuth();
+const { loggedIn: authLoggedIn, user: authUser, logout: authLogout, refreshSession } = useAuth();
 
 // Name editing
 const editingName = ref(false);
@@ -316,6 +304,30 @@ const modeStats = ref<ModeStats[]>([]);
 
 const speedAggregate = ref<SpeedAggregate | null>(null);
 
+// Tab state for the stats section
+type StatsTab = 'overview' | 'distribution' | 'languages' | 'speed';
+const activeTab = ref<StatsTab>('overview');
+const availableTabs = computed<{ id: StatsTab; label: string }[]>(() => {
+    const tabs: { id: StatsTab; label: string }[] = [
+        { id: 'overview', label: 'Overview' },
+    ];
+    // Show distribution if we have any classic/multiboard games
+    if (Object.values(overallDist.value).some(v => v > 0)) {
+        tabs.push({ id: 'distribution', label: 'Distribution' });
+    }
+    if (perLang.value.length > 0) {
+        tabs.push({ id: 'languages', label: `Languages (${perLang.value.length})` });
+    }
+    if (speedAggregate.value && speedAggregate.value.games > 0) {
+        tabs.push({ id: 'speed', label: 'Speed' });
+    }
+    return tabs;
+});
+
+const sortedModes = computed(() =>
+    [...modeStats.value].sort((a, b) => GAME_MODE_ORDER.indexOf(a.mode) - GAME_MODE_ORDER.indexOf(b.mode))
+);
+
 // =========================================================================
 // Data loading — uses the stats store instead of reimplementing calculations
 // =========================================================================
@@ -439,7 +451,7 @@ function loadStats() {
         modes.push({
             mode: gm,
             label: def.label,
-            icon: MODE_ICONS[gm] || Square,
+            icon: getModeIcon(gm),
             games,
             wins: totalWins,
             winPct: Math.round((totalWins / games) * 100),
@@ -500,19 +512,7 @@ const languagesConquered = computed(() => {
     return langs.size;
 });
 
-const modeOrder: GameMode[] = [
-    'classic',
-    'dordle',
-    'quordle',
-    'octordle',
-    'sedecordle',
-    'duotrigordle',
-    'unlimited',
-    'speed',
-];
-const sortedModes = computed(() =>
-    [...modeStats.value].sort((a, b) => modeOrder.indexOf(a.mode) - modeOrder.indexOf(b.mode))
-);
+
 </script>
 
 <template>
@@ -592,23 +592,17 @@ const sortedModes = computed(() =>
                 </div>
             </section>
 
-            <!-- Sign-in CTA (logged out) -->
+            <!-- Sign-in CTA (logged out) — reuses the login modal -->
             <section v-if="!authLoggedIn && !empty" class="mb-10 border border-rule p-5 text-center">
                 <h2 class="heading-body text-lg text-ink mb-2">Save your progress</h2>
                 <p class="text-sm text-muted mb-4">
                     Sign in to sync stats across devices, earn badges, and protect your streak.
                 </p>
                 <button
-                    class="px-6 py-2 bg-ink text-paper text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
-                    @click="authLoginWithGoogle()"
-                >
-                    Sign in with Google
-                </button>
-                <button
-                    class="block mx-auto mt-2 text-sm text-accent hover:underline"
+                    class="px-6 py-2 bg-ink text-paper text-sm font-semibold hover:opacity-90 transition-opacity"
                     @click="openLoginModal()"
                 >
-                    or sign in with email
+                    Sign in
                 </button>
             </section>
 
@@ -683,158 +677,141 @@ const sortedModes = computed(() =>
                     </div>
                 </section>
 
-                <!-- ═══ Overview (all modes combined) ═══ -->
+                <!-- ═══ Tabbed Stats Section ═══ -->
                 <section id="statistics" class="mb-10 scroll-mt-16">
-                    <div class="mono-label mb-4">Overview</div>
-
-                    <!-- Hero stats row -->
-                    <div
-                        class="grid grid-cols-4 border border-rule"
-                        style="background: var(--color-rule); gap: 1px"
-                    >
-                        <div class="bg-paper text-center" style="padding: 20px 8px">
-                            <div
-                                class="font-display font-bold text-ink"
-                                style="
-                                    font-size: 28px;
-                                    font-variation-settings: 'opsz' 72;
-                                    line-height: 1;
-                                "
-                            >
-                                {{ allModesGames }}
-                            </div>
-                            <div class="mono-label mt-1.5">Played</div>
-                        </div>
-                        <div class="bg-paper text-center" style="padding: 20px 8px">
-                            <div
-                                class="font-display font-bold"
-                                :class="
-                                    allModesWinRate !== null && allModesWinRate >= 50
-                                        ? 'text-correct'
-                                        : 'text-ink'
-                                "
-                                style="
-                                    font-size: 28px;
-                                    font-variation-settings: 'opsz' 72;
-                                    line-height: 1;
-                                "
-                            >
-                                {{ allModesWinRate === null ? '—' : `${allModesWinRate}%` }}
-                            </div>
-                            <div class="mono-label mt-1.5">Win Rate</div>
-                        </div>
-                        <div class="bg-paper text-center" style="padding: 20px 8px">
-                            <div
-                                class="font-display font-bold text-ink"
-                                style="
-                                    font-size: 28px;
-                                    font-variation-settings: 'opsz' 72;
-                                    line-height: 1;
-                                "
-                            >
-                                {{ modesPlayed }}
-                            </div>
-                            <div class="mono-label mt-1.5">Modes</div>
-                        </div>
-                        <div class="bg-paper text-center" style="padding: 20px 8px">
-                            <div
-                                class="font-display font-bold text-ink"
-                                style="
-                                    font-size: 28px;
-                                    font-variation-settings: 'opsz' 72;
-                                    line-height: 1;
-                                "
-                            >
-                                {{ languagesConquered }}
-                            </div>
-                            <div class="mono-label mt-1.5">Conquered</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ═══ Speed Streak ═══ -->
-                <section v-if="speedAggregate" class="mb-10">
-                    <div class="mono-label mb-4">
-                        <Zap :size="12" class="inline -mt-0.5 mr-1" />
-                        Speed Streak
-                    </div>
-
-                    <!-- Hero row: games, best score, best solved, best combo -->
-                    <div
-                        class="grid grid-cols-4 border border-rule"
-                        style="background: var(--color-rule); gap: 1px"
-                    >
-                        <div class="bg-paper text-center" style="padding: 14px 8px">
-                            <div
-                                class="font-display font-bold text-ink"
-                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                            >
-                                {{ speedAggregate.games }}
-                            </div>
-                            <div class="mono-label mt-0.5">Sessions</div>
-                        </div>
-                        <div class="bg-paper text-center" style="padding: 14px 8px">
-                            <div
-                                class="font-display font-bold text-correct"
-                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                            >
-                                {{ speedAggregate.bestScore.toLocaleString() }}
-                            </div>
-                            <div class="mono-label mt-0.5">Top Score</div>
-                        </div>
-                        <div class="bg-paper text-center" style="padding: 14px 8px">
-                            <div
-                                class="font-display font-bold text-ink"
-                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                            >
-                                {{ speedAggregate.bestWordsSolved }}
-                            </div>
-                            <div class="mono-label mt-0.5">Best Solved</div>
-                        </div>
-                        <div class="bg-paper text-center" style="padding: 14px 8px">
-                            <div
-                                class="font-display font-bold text-ink"
-                                style="font-size: 22px; font-variation-settings: 'opsz' 72"
-                            >
-                                {{ speedAggregate.bestMaxCombo }}x
-                            </div>
-                            <div class="mono-label mt-0.5">Best Combo</div>
-                        </div>
-                    </div>
-
-                    <!-- Top 3 runs -->
-                    <div
-                        v-if="speedAggregate.topRuns.length > 0"
-                        class="border border-t-0 border-rule divide-y divide-rule"
-                    >
-                        <div
-                            v-for="(run, i) in speedAggregate.topRuns"
-                            :key="`${run.date}-${i}`"
-                            class="flex items-center gap-3"
-                            style="padding: 10px 16px"
+                    <!-- Tab bar -->
+                    <div v-if="availableTabs.length > 1" class="flex gap-0 border-b border-rule mb-4">
+                        <button
+                            v-for="tab in availableTabs"
+                            :key="tab.id"
+                            class="mono-label px-3 py-2 transition-colors border-b-2 -mb-px"
+                            :class="activeTab === tab.id
+                                ? 'border-ink text-ink'
+                                : 'border-transparent text-muted hover:text-ink'"
+                            @click="activeTab = tab.id"
                         >
-                            <span
-                                class="w-6 h-6 flex items-center justify-center border border-rule bg-paper-warm font-display font-bold text-xs text-ink flex-shrink-0"
-                            >
-                                {{ i + 1 }}
-                            </span>
-                            <div class="flex-1 min-w-0">
-                                <div class="text-sm font-semibold text-ink tabular-nums">
-                                    {{ run.score.toLocaleString() }} pts
-                                </div>
-                                <div class="text-xs text-muted tabular-nums">
-                                    {{ run.wordsSolved }} solved · {{ run.maxCombo }}x combo
+                            {{ tab.label }}
+                        </button>
+                    </div>
+                    <div v-else class="mono-label mb-4">Overview</div>
+
+                    <!-- Tab: Overview — summary row + per-mode breakdown -->
+                    <div v-show="activeTab === 'overview'">
+                        <!-- Summary row -->
+                        <div class="grid grid-cols-4 border border-rule" style="background: var(--color-rule); gap: 1px">
+                            <div class="bg-paper text-center" style="padding: 16px 8px">
+                                <div class="font-display font-bold text-ink" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ allModesGames }}</div>
+                                <div class="mono-label mt-1">Played</div>
+                            </div>
+                            <div class="bg-paper text-center" style="padding: 16px 8px">
+                                <div class="font-display font-bold" :class="allModesWinRate !== null && allModesWinRate >= 50 ? 'text-correct' : 'text-ink'" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ allModesWinRate === null ? '—' : `${allModesWinRate}%` }}</div>
+                                <div class="mono-label mt-1">Win Rate</div>
+                            </div>
+                            <div class="bg-paper text-center" style="padding: 16px 8px">
+                                <div class="font-display font-bold text-ink" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ modesPlayed }}</div>
+                                <div class="mono-label mt-1">Modes</div>
+                            </div>
+                            <div class="bg-paper text-center" style="padding: 16px 8px">
+                                <div class="font-display font-bold text-ink" style="font-size: 24px; font-variation-settings: 'opsz' 72; line-height: 1">{{ languagesConquered }}</div>
+                                <div class="mono-label mt-1">Languages</div>
+                            </div>
+                        </div>
+                        <!-- Per-mode breakdown -->
+                        <div v-if="sortedModes.length > 0" class="border border-t-0 border-rule divide-y divide-rule">
+                            <div v-for="m in sortedModes" :key="m.mode" class="flex items-center gap-3" style="padding: 10px 16px">
+                                <component :is="m.icon" :size="16" class="text-ink flex-shrink-0" />
+                                <span class="text-sm font-medium text-ink flex-1">{{ m.label }}</span>
+                                <span class="text-xs text-muted tabular-nums">{{ m.games }}</span>
+                                <span class="text-xs tabular-nums w-10 text-right" :class="m.winPct >= 50 ? 'text-correct' : 'text-muted'">{{ m.winPct }}%</span>
+                            </div>
+                            <div v-if="speedAggregate && speedAggregate.games > 0" class="flex items-center gap-3" style="padding: 10px 16px">
+                                <Zap :size="16" class="text-ink flex-shrink-0" />
+                                <span class="text-sm font-medium text-ink flex-1">Speed Streak</span>
+                                <span class="text-xs text-muted tabular-nums">{{ speedAggregate.games }}</span>
+                                <span class="text-xs text-muted w-10 text-right">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Distribution -->
+                    <div v-show="activeTab === 'distribution'">
+                        <div class="border border-rule" style="padding: 16px">
+                            <div class="space-y-1.5">
+                                <div v-for="n in 6" :key="n" class="flex items-center gap-2">
+                                    <span class="font-mono font-semibold text-xs w-3 text-right text-muted">{{ n }}</span>
+                                    <div
+                                        class="h-6 flex items-center justify-end px-2 font-mono text-[10px] font-semibold text-white transition-all duration-500"
+                                        style="min-width: 24px"
+                                        :class="overallDist[n] > 0 ? 'bg-ink' : 'bg-muted-soft'"
+                                        :style="{ width: distBarWidth(overallDist, n) }"
+                                    >
+                                        <span v-if="overallDist[n] > 0">{{ overallDist[n] }}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <span class="mono-label">
-                                {{ new Date(run.date).toLocaleDateString() }}
-                            </span>
+                            <p class="text-xs text-muted mt-3 text-center">Guess distribution across all classic games</p>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Languages -->
+                    <div v-show="activeTab === 'languages'">
+                        <div class="border border-rule divide-y divide-rule">
+                            <NuxtLink
+                                v-for="l in perLang"
+                                :key="l.code"
+                                :to="`/${l.code}`"
+                                class="flex items-center gap-3 hover:bg-paper-warm transition-colors"
+                                style="padding: 10px 16px"
+                            >
+                                <img
+                                    v-if="useFlag(l.code)"
+                                    :src="useFlag(l.code)!"
+                                    :alt="l.name"
+                                    class="w-5 h-5 rounded-full object-cover flex-shrink-0"
+                                />
+                                <div class="flex-1 min-w-0">
+                                    <span class="text-sm font-medium text-ink">{{ l.nameNative || l.name }}</span>
+                                </div>
+                                <span class="text-xs text-muted tabular-nums">{{ l.games }}</span>
+                                <span class="text-xs tabular-nums" :class="l.winPct >= 50 ? 'text-correct' : 'text-muted'">{{ l.winPct }}%</span>
+                                <ChevronRight :size="14" class="text-muted flex-shrink-0" />
+                            </NuxtLink>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Speed -->
+                    <div v-if="speedAggregate" v-show="activeTab === 'speed'">
+                        <div class="grid grid-cols-4 border border-rule" style="background: var(--color-rule); gap: 1px">
+                            <div class="bg-paper text-center" style="padding: 14px 8px">
+                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.games }}</div>
+                                <div class="mono-label mt-0.5">Sessions</div>
+                            </div>
+                            <div class="bg-paper text-center" style="padding: 14px 8px">
+                                <div class="font-display font-bold text-correct" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.bestScore.toLocaleString() }}</div>
+                                <div class="mono-label mt-0.5">Top Score</div>
+                            </div>
+                            <div class="bg-paper text-center" style="padding: 14px 8px">
+                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.bestWordsSolved }}</div>
+                                <div class="mono-label mt-0.5">Best Solved</div>
+                            </div>
+                            <div class="bg-paper text-center" style="padding: 14px 8px">
+                                <div class="font-display font-bold text-ink" style="font-size: 22px; font-variation-settings: 'opsz' 72">{{ speedAggregate.bestMaxCombo }}x</div>
+                                <div class="mono-label mt-0.5">Best Combo</div>
+                            </div>
+                        </div>
+                        <!-- Top 3 runs -->
+                        <div v-if="speedAggregate.topRuns.length > 0" class="border border-t-0 border-rule divide-y divide-rule">
+                            <div v-for="(run, i) in speedAggregate.topRuns" :key="`${run.date}-${i}`" class="flex items-center gap-3" style="padding: 10px 16px">
+                                <span class="w-6 h-6 flex items-center justify-center border border-rule bg-paper-warm font-display font-bold text-xs text-ink flex-shrink-0">{{ i + 1 }}</span>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold text-ink tabular-nums">{{ run.score.toLocaleString() }} pts</div>
+                                    <div class="text-xs text-muted tabular-nums">{{ run.wordsSolved }} solved · {{ run.maxCombo }}x combo</div>
+                                </div>
+                                <span class="mono-label">{{ new Date(run.date).toLocaleDateString() }}</span>
+                            </div>
                         </div>
                     </div>
                 </section>
-
-                <!-- Languages section removed — per-language breakdowns create anxiety.
-                     Product-wide streak + overview is what matters. -->
 
                 <!-- ═══ Badges (collapsed by default, earned first) ═══ -->
                 <section v-if="allBadges.length > 0 && authLoggedIn" id="badges" class="mb-10 scroll-mt-16">

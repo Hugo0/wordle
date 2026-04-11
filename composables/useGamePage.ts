@@ -13,7 +13,7 @@
  */
 import type { Ref } from 'vue';
 import type { GameData } from '~/utils/types';
-import { readLocal, writeLocal } from '~/utils/storage';
+import { readLocal, writeLocal, STORAGE_KEYS } from '~/utils/storage';
 import { buildStatsKey } from '~/utils/game-modes';
 
 export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
@@ -84,7 +84,7 @@ export function useGamePage(gameData: Ref<GameData | null>, lang: string) {
         });
 
         // Update preferred language — homepage reads this to detect the right language
-        try { localStorage.setItem('preferred_language', lang); } catch {}
+        try { localStorage.setItem(STORAGE_KEYS.PREFERRED_LANGUAGE, lang); } catch {}
 
         // Initialize settings + stats. loadSpeedResults hydrates the
         // speed_results blob so finishSpeedSession() merges instead of clobbering.

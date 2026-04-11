@@ -131,8 +131,11 @@ export interface LanguageText {
     share: string;
     shared?: string;
     copied?: string;
-    'notification-copied'?: string;
-    'notification-partial-word'?: string;
+    notification_copied?: string;
+    notification_partial_word?: string;
+    notification_word_not_valid?: string;
+    hard_mode_position?: string;
+    hard_mode_contains?: string;
     win_words?: string;
 }
 

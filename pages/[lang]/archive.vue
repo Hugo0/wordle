@@ -9,7 +9,7 @@
  */
 
 import { formatDateLong, RTL_LANGS } from '~/utils/locale';
-import { readJson } from '~/utils/storage';
+import { readJson, scopedKey, STORAGE_KEYS } from '~/utils/storage';
 import { interpolate } from '~/utils/interpolate';
 import { translatePos } from '~/utils/i18n';
 import { wordDetailPath, wordDetailPathOrIdx } from '~/utils/wordUrls';
@@ -225,7 +225,7 @@ onMounted(() => {
 
     // Build set of completed day indices from game_results
     const parsed = readJson<Record<string, { won: boolean; attempts: number; date: string }[]>>(
-        'game_results'
+        scopedKey(STORAGE_KEYS.GAME_RESULTS)
     );
     const langResults = parsed?.[lang];
     if (Array.isArray(langResults)) {

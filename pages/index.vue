@@ -6,7 +6,7 @@
  * Matches the legacy Flask index.html exactly.
  */
 import { useSettingsStore } from '~/stores/settings';
-import { readJson, writeJson, readLocal, writeLocal } from '~/utils/storage';
+import { readJson, writeJson, readLocal, writeLocal, scopedKey, STORAGE_KEYS } from '~/utils/storage';
 import { Flame, Check, Compass, Square, Zap, Columns2, User, CircleCheck } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
@@ -356,14 +356,14 @@ onMounted(() => {
     analytics.trackHomepageView();
 
     // Load game results
-    const stored = readJson<Record<string, Array<{ won: boolean; attempts: number | string; date: string }>>>('game_results');
+    const stored = readJson<Record<string, Array<{ won: boolean; attempts: number | string; date: string }>>>(scopedKey(STORAGE_KEYS.GAME_RESULTS));
     if (stored) gameResults.value = stored;
 
     // Cache languages for game page
     writeJson('languages_cache', languages.value);
 
     // Detect language priority: 1) explicit user pick, 2) most recently played, 3) browser
-    const savedLangPref = readLocal('preferred_language');
+    const savedLangPref = readLocal(STORAGE_KEYS.PREFERRED_LANGUAGE);
     const clientLang = savedLangPref || getMostRecentLanguage() || detectBrowserLanguage();
     if (clientLang && clientLang !== detectedLanguageCode.value) {
         detectedLanguageCode.value = clientLang;
@@ -554,7 +554,7 @@ function selectLanguageWithCode(code: string, source: 'search' | 'list' | 'flag'
     showModePicker.value = true;
     // Persist language preference so it survives navigation
     detectedLanguageCode.value = code;
-    try { writeLocal('preferred_language', code); } catch {}
+    try { writeLocal(STORAGE_KEYS.PREFERRED_LANGUAGE, code); } catch {}
     if (code !== hpLang.value) {
         hpLangOverride.value = code;
     }

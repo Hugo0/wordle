@@ -286,8 +286,8 @@ const props = withDefaults(
     }>(),
     {
         showSubPanel: false,
-        currentMode: 'classic',
-        currentPlayType: 'daily',
+        currentMode: '',
+        currentPlayType: '',
         langCode: 'en',
         languageName: 'English',
         isRtl: false,

@@ -1,20 +1,28 @@
 /**
  * Sync Plugin (client-only) — bidirectional sync between localStorage and server.
  *
- * Three phases on login:
- *   1. Push: First-ever login → upload localStorage results to server
- *   2. Pull: Incremental fetch of server results → merge into localStorage
- *   3. Settings: Pull settings from server
+ * Architecture (Pattern B):
+ *   - Server is source of truth for authenticated users
+ *   - localStorage is a user-scoped cache (`game_results:{userId}`)
+ *   - Anonymous users use unscoped keys (`game_results`)
  *
- * Performance:
- *   - Pull runs once per session (sessionStorage flag), not every page load
- *   - Incremental: only fetches results newer than last sync (via ?since=)
- *   - Non-blocking: runs after initial render via requestIdleCallback
+ * Storage migration:
+ *   On first load after deploy, `runStorageMigration()` upgrades from
+ *   v1 (unscoped) to v2 (user-scoped) keys. Idempotent, runs once.
  *
- * Results ownership: localStorage results are claimed by the first account
- * that syncs them. Logging into a different account won't re-upload old results.
+ * Sync triggers:
+ *   1. Login → push unclaimed anonymous results, then pull from server
+ *   2. Session start → pull delta (once per tab, via sessionStorage flag)
+ *   3. visibilitychange → pull delta if stale (>5min since last pull)
+ *   4. Per-game results are pushed by composables/useSync.ts
+ *
+ * Results are never deleted — each user's data lives in its own
+ * namespaced bucket, so user switching is safe by construction.
  */
-import { readJson, readLocal, writeLocal, writeJson, getOrCreateId } from '~/utils/storage';
+import {
+    readJson, readLocal, writeLocal, writeJson, getOrCreateId,
+    setActiveUserId, scopedKey, runStorageMigration, STORAGE_KEYS,
+} from '~/utils/storage';
 import type { GameResults, SpeedResults } from '~/utils/types';
 
 interface ServerResult {
@@ -32,6 +40,9 @@ interface ServerResult {
     playedAt: string;
     createdAt: string;
 }
+
+/** How stale the cache can be before visibilitychange triggers a pull (ms) */
+const PULL_STALENESS_MS = 5 * 60 * 1000;
 
 function serverResultToStatsKey(r: ServerResult): string {
     if (r.mode === 'classic' && r.playType === 'daily') return r.lang;
@@ -52,62 +63,143 @@ function scheduleIdle(fn: () => void) {
 export default defineNuxtPlugin(() => {
     const { loggedIn, user } = useUserSession();
 
+    // Run storage migration on every page load (idempotent, checks version flag)
+    runStorageMigration();
+
     watch(
         loggedIn,
         (isLoggedIn) => {
-            if (!isLoggedIn || !user.value?.id) return;
+            if (!isLoggedIn || !user.value?.id) {
+                // Logged out — switch to anonymous storage
+                setActiveUserId(null);
+                reloadStores();
+                return;
+            }
 
-            // Only sync once per browser session (tab)
-            const sessionFlag = `synced_session_${user.value.id}`;
+            const userId = user.value.id;
+
+            // Set the active user so all scopedKey() calls resolve correctly
+            setActiveUserId(userId);
+
+            // Reload stores from the user's namespaced keys
+            reloadStores();
+
+            // Only run full sync once per browser session (tab)
+            const sessionFlag = `synced_session_${userId}`;
             if (sessionStorage.getItem(sessionFlag)) return;
             sessionStorage.setItem(sessionFlag, '1');
 
             // Run sync after initial render, not blocking page load
-            scheduleIdle(() => doSync(user.value!.id));
+            scheduleIdle(() => doSync(userId));
         },
         { immediate: true }
     );
+
+    // Pull delta when tab becomes visible and cache is stale
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState !== 'visible') return;
+        if (!loggedIn.value || !user.value?.id) return;
+
+        const lastPull = readLocal(scopedKey(STORAGE_KEYS.LAST_PULL_AT));
+        if (!lastPull) return; // Never synced — will be handled by doSync on next login
+
+        const elapsed = Date.now() - new Date(lastPull).getTime();
+        if (elapsed > PULL_STALENESS_MS) {
+            pullResults(user.value.id);
+        }
+    });
 });
+
+/** Reload Pinia stores from localStorage (reads from current scopedKey) */
+function reloadStores() {
+    const stats = useStatsStore();
+    stats.loadGameResults();
+    stats.loadSpeedResults();
+    stats.calculateTotalStats();
+}
 
 async function doSync(userId: string) {
     const settings = useSettingsStore();
-    const stats = useStatsStore();
-    const claimedBy = readLocal('results_claimed_by');
 
-    // ─── Phase 1: Push (first login only, unclaimed results) ───
-    if (!claimedBy) {
-        const gameResults = readJson<GameResults>('game_results');
-        const speedResults = readJson<SpeedResults>('speed_results');
+    // ─── Phase 1: Push anonymous results (first-ever login on this browser) ───
+    // If there's unclaimed data in the anonymous keys, push it to the server
+    // and move it to the user's namespaced bucket.
+    const anonGameResults = readJson<GameResults>(STORAGE_KEYS.GAME_RESULTS);
+    const anonSpeedResults = readJson<SpeedResults>(STORAGE_KEYS.SPEED_RESULTS);
+    const hasAnonData = (anonGameResults && Object.keys(anonGameResults).length > 0)
+        || (anonSpeedResults && Object.keys(anonSpeedResults).length > 0);
 
-        if (gameResults || speedResults) {
-            const deviceId = getOrCreateId('client_id');
-            try {
-                await $fetch('/api/user/sync', {
-                    method: 'POST',
-                    body: {
-                        gameResults: gameResults ?? {},
-                        speedResults: speedResults ?? {},
-                        settings: {
-                            darkMode: settings.darkMode,
-                            hardMode: settings.hardMode,
-                            highContrast: settings.highContrast,
-                            feedbackEnabled: settings.feedbackEnabled,
-                            wordInfoEnabled: settings.wordInfoEnabled,
-                            animationsEnabled: settings.animationsEnabled,
-                        },
-                        deviceId,
+    if (hasAnonData) {
+        const deviceId = getOrCreateId(STORAGE_KEYS.CLIENT_ID);
+        try {
+            await $fetch('/api/user/sync', {
+                method: 'POST',
+                body: {
+                    gameResults: anonGameResults ?? {},
+                    speedResults: anonSpeedResults ?? {},
+                    settings: {
+                        darkMode: settings.darkMode,
+                        hardMode: settings.hardMode,
+                        highContrast: settings.highContrast,
+                        feedbackEnabled: settings.feedbackEnabled,
+                        wordInfoEnabled: settings.wordInfoEnabled,
+                        animationsEnabled: settings.animationsEnabled,
                     },
-                });
-            } catch {
-                // Will retry next session
+                    deviceId,
+                },
+            });
+
+            // Move anonymous data to user's bucket, then clear anonymous keys
+            const userGameKey = scopedKey(STORAGE_KEYS.GAME_RESULTS);
+            const userSpeedKey = scopedKey(STORAGE_KEYS.SPEED_RESULTS);
+            const existingUserGame = readJson<GameResults>(userGameKey) ?? {};
+            const existingUserSpeed = readJson<SpeedResults>(userSpeedKey) ?? {};
+
+            // Merge anonymous into user bucket (user bucket wins on conflict)
+            if (anonGameResults) {
+                for (const [key, results] of Object.entries(anonGameResults)) {
+                    if (!existingUserGame[key]) existingUserGame[key] = [];
+                    for (const r of results) {
+                        const dateStr = new Date(r.date as string).toISOString();
+                        if (!existingUserGame[key].some(e => new Date(e.date as string).toISOString() === dateStr)) {
+                            existingUserGame[key].push(r);
+                        }
+                    }
+                }
+                writeJson(userGameKey, existingUserGame);
             }
+            if (anonSpeedResults) {
+                for (const [key, results] of Object.entries(anonSpeedResults)) {
+                    if (!existingUserSpeed[key]) existingUserSpeed[key] = [];
+                    for (const r of results) {
+                        if (!existingUserSpeed[key].some(e => e.date === r.date)) {
+                            existingUserSpeed[key].push(r);
+                        }
+                    }
+                }
+                writeJson(userSpeedKey, existingUserSpeed);
+            }
+
+            // Clear anonymous keys
+            writeJson(STORAGE_KEYS.GAME_RESULTS, {});
+            writeJson(STORAGE_KEYS.SPEED_RESULTS, {});
+
+            // Reload stores from the now-populated user bucket
+            reloadStores();
+        } catch {
+            // Will retry next session
         }
-        writeLocal('results_claimed_by', userId);
     }
 
-    // ─── Phase 2: Pull results (incremental) ───
+    // ─── Phase 2: Pull results from server (incremental) ───
+    await pullResults(userId);
+}
+
+async function pullResults(userId: string) {
+    const settings = useSettingsStore();
+
     try {
-        const lastSync = readLocal('last_pull_at');
+        const lastSync = readLocal(scopedKey(STORAGE_KEYS.LAST_PULL_AT));
         const url = lastSync
             ? `/api/user/stats?since=${encodeURIComponent(lastSync)}`
             : '/api/user/stats';
@@ -118,8 +210,10 @@ async function doSync(userId: string) {
         };
 
         if (results?.length) {
-            const localGameResults = readJson<GameResults>('game_results') ?? {};
-            const localSpeedResults = readJson<SpeedResults>('speed_results') ?? {};
+            const gameKey = scopedKey(STORAGE_KEYS.GAME_RESULTS);
+            const speedKey = scopedKey(STORAGE_KEYS.SPEED_RESULTS);
+            const localGameResults = readJson<GameResults>(gameKey) ?? {};
+            const localSpeedResults = readJson<SpeedResults>(speedKey) ?? {};
             let latestCreatedAt = lastSync || '';
 
             for (const r of results) {
@@ -161,18 +255,17 @@ async function doSync(userId: string) {
                 }
             }
 
-            writeJson('game_results', localGameResults);
-            writeJson('speed_results', localSpeedResults);
-            writeLocal('last_pull_at', latestCreatedAt);
+            writeJson(gameKey, localGameResults);
+            writeJson(speedKey, localSpeedResults);
+            writeLocal(scopedKey(STORAGE_KEYS.LAST_PULL_AT), latestCreatedAt);
 
             // Reload stats store so UI reflects merged data
-            stats.loadGameResults();
-            stats.loadSpeedResults();
-            stats.calculateTotalStats();
+            reloadStores();
         } else if (!lastSync) {
             // No results on server either — mark as synced
-            writeLocal('last_pull_at', new Date().toISOString());
+            writeLocal(scopedKey(STORAGE_KEYS.LAST_PULL_AT), new Date().toISOString());
         }
+
         // Apply settings from the same response (no extra round-trip)
         if (serverSettings && typeof serverSettings === 'object') {
             const s = serverSettings;
@@ -183,7 +276,7 @@ async function doSync(userId: string) {
             if (typeof s.wordInfoEnabled === 'boolean') settings.setWordInfoEnabled(s.wordInfoEnabled);
             if (typeof s.animationsEnabled === 'boolean') settings.setAnimationsEnabled(s.animationsEnabled);
             if (typeof s.preferredLanguage === 'string') {
-                try { localStorage.setItem('preferred_language', s.preferredLanguage); } catch {}
+                try { localStorage.setItem(STORAGE_KEYS.PREFERRED_LANGUAGE, s.preferredLanguage); } catch {}
             }
         }
     } catch {

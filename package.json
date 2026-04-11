@@ -63,6 +63,7 @@
         "@types/pg": "^8.20.0",
         "@types/proper-lockfile": "^4.1.4",
         "@vite-pwa/nuxt": "^0.10.8",
+        "@vue/reactivity": "^3.5.32",
         "jsdom": "^27.4.0",
         "playwright": "^1.58.2",
         "prettier": "^3.8.1",
