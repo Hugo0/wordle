@@ -220,41 +220,7 @@ function formatDate(dateStr: string): string {
     }
 }
 
-// Dynamic Lucide icon resolver for badges
-import {
-    Sword,
-    Star,
-    Target,
-    Globe,
-    Crown,
-    Flame,
-    Trophy,
-    Zap,
-    CalendarCheck,
-    Map as MapIcon,
-    Award,
-    LogOut,
-    Fingerprint,
-    Pencil,
-} from 'lucide-vue-next';
-
-const BADGE_ICONS: Record<string, typeof Award> = {
-    Sword,
-    Star,
-    Target,
-    Globe,
-    Crown,
-    Flame,
-    Trophy,
-    Zap,
-    CalendarCheck,
-    Map: MapIcon,
-    Award,
-};
-
-function getBadgeIcon(iconName: string) {
-    return BADGE_ICONS[iconName] || Award;
-}
+import { LogOut, Fingerprint, Pencil } from 'lucide-vue-next';
 
 // Product-wide streak — single source via composable
 const { streak: productStreakRaw, bestStreak: productBestStreakRaw } = useProductStreak();
