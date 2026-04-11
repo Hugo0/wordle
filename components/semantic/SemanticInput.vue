@@ -48,6 +48,24 @@ watch(
     { immediate: true }
 );
 
+// On mobile, the virtual keyboard opens and the browser scrolls the nearest
+// scrollable ancestor to keep the input visible. But the input is position:fixed
+// on mobile — it doesn't need scrolling. Lock scroll position on focus, restore on blur.
+let savedScrollTop = 0;
+function onFocus() {
+    if (!isTouch) return;
+    const scrollable = inputRef.value?.closest('.semantic-body') as HTMLElement | null;
+    if (scrollable) {
+        savedScrollTop = scrollable.scrollTop;
+        requestAnimationFrame(() => {
+            scrollable.scrollTop = savedScrollTop;
+        });
+    }
+}
+function onBlur() {
+    // No action needed — scroll is already at the saved position
+}
+
 defineExpose({
     focus: () => inputRef.value?.focus(),
 });
@@ -69,6 +87,8 @@ defineExpose({
                 autocorrect="off"
                 spellcheck="false"
                 inputmode="text"
+                @focus="onFocus"
+                @blur="onBlur"
             />
             <button type="submit" class="guess-button" :disabled="!value || loading || disabled">
                 <span v-if="loading">…</span>
