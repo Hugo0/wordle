@@ -47,13 +47,6 @@ function onShareClick() {
     }, 2000);
 }
 
-function rankColor(rank: number): string {
-    if (rank <= 10) return 'text-correct';
-    if (rank <= 50) return 'text-semicorrect';
-    if (rank <= 200) return 'text-accent';
-    return 'text-muted';
-}
-
 const bestRank = computed(() => {
     if (!props.guesses.length) return null;
     return Math.min(...props.guesses.map((g) => g.rank));

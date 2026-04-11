@@ -33,7 +33,7 @@
                         :just-won="justWon"
                         :show-results="true"
                         @help="onHelp"
-                        @results="game.showStatsModal = !game.showStatsModal"
+                        @results="onResults"
                         @streak="game.showStreakModal = !game.showStreakModal"
                         @settings="game.showOptionsModal = !game.showOptionsModal"
                         @toggle-sidebar="$emit('toggleSidebar')"
@@ -85,6 +85,7 @@
                     @close="game.showOptionsModal = false"
                 />
                 <GameStatsModal
+                    v-if="!noKeyboard"
                     :visible="game.showStatsModal"
                     @close="game.showStatsModal = false"
                     @new-game="
@@ -171,7 +172,7 @@ const props = withDefaults(
     }
 );
 
-const emit = defineEmits<{ toggleSidebar: []; closeSidebar: []; newGame: [] }>();
+const emit = defineEmits<{ toggleSidebar: []; closeSidebar: []; newGame: []; results: [] }>();
 
 const game = useGameStore();
 
@@ -277,6 +278,16 @@ watch(
 
 function onHelp() {
     game.showHelpModal = !game.showHelpModal;
+}
+
+// noKeyboard modes (semantic) handle their own results modal — emit
+// so the page can open its specific modal instead of the generic one.
+function onResults() {
+    if (props.noKeyboard) {
+        emit('results');
+    } else {
+        game.showStatsModal = !game.showStatsModal;
+    }
 }
 
 const maxWidthClass = computed(() => {
