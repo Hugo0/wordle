@@ -409,3 +409,27 @@ Stats should show both play types per mode: daily stats (with streak) and unlimi
 - Stats page (`/stats`): same combined view with mode tabs
 - Existing stats data is preserved — `"en_dordle"` (unlimited) and `"en_dordle_daily"` (daily) are already separate keys
 - No data migration needed, just a UI redesign to surface both
+
+---
+
+## CI / Infrastructure
+
+### 13. Ephemeral Postgres for CI tests
+E2E and integration tests currently hit the production database, creating junk accounts (86 cleaned up on 2026-04-11). Tests should use an ephemeral Postgres instance instead.
+
+**Approach:** GitHub Actions service container:
+```yaml
+services:
+  postgres:
+    image: postgres:16
+    env:
+      POSTGRES_DB: wordle_test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    ports:
+      - 5432:5432
+```
+Then set `DATABASE_URL=postgresql://test:test@localhost:5432/wordle_test` in CI env, run `prisma db push` before tests. Zero test data in prod.
+
+### 14. Sync endpoint: coerce att:0 on losses
+Old localStorage results stored losses as `{ won: false, attempts: 0 }` because attempt count wasn't tracked on losses. The `/api/user/sync` POST endpoint should coerce `attempts: 0` on `won: false` results to `attempts: maxGuesses` (6 for classic). Affects 48 legacy records from 6 users (confirmed 2026-04-11).
