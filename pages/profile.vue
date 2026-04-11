@@ -827,11 +827,10 @@ const languagesConquered = computed(() => {
                     <!-- Tab: Languages -->
                     <div v-show="activeTab === 'languages'">
                         <div class="border border-rule divide-y divide-rule">
-                            <NuxtLink
+                            <div
                                 v-for="l in perLang"
                                 :key="l.code"
-                                :to="`/${l.code}`"
-                                class="flex items-center gap-3 hover:bg-paper-warm transition-colors"
+                                class="flex items-center gap-3"
                                 style="padding: 10px 16px"
                             >
                                 <img
@@ -847,12 +846,11 @@ const languagesConquered = computed(() => {
                                 </div>
                                 <span class="text-xs text-muted tabular-nums">{{ l.games }}</span>
                                 <span
-                                    class="text-xs tabular-nums"
+                                    class="text-xs font-semibold tabular-nums"
                                     :class="l.winPct >= 50 ? 'text-correct' : 'text-muted'"
                                     >{{ l.winPct }}%</span
                                 >
-                                <ChevronRight :size="14" class="text-muted flex-shrink-0" />
-                            </NuxtLink>
+                            </div>
                         </div>
                     </div>
 
