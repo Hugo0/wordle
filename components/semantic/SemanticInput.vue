@@ -6,7 +6,7 @@
 -->
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue';
+import { nextTick, onUnmounted, ref, watch } from 'vue';
 
 const props = defineProps<{
     loading: boolean;
@@ -48,23 +48,24 @@ watch(
     { immediate: true }
 );
 
-// On mobile, the virtual keyboard opens and the browser scrolls the nearest
-// scrollable ancestor to keep the input visible. But the input is position:fixed
-// on mobile — it doesn't need scrolling. Lock scroll position on focus, restore on blur.
-let savedScrollTop = 0;
+// On mobile, the virtual keyboard triggers a document-level scroll that
+// can snap the page to the SEO section below the game viewport, making
+// the header unreachable. The input is position:fixed on mobile so the
+// browser doesn't need to scroll. Lock document scroll on focus to prevent
+// this — the semantic body's internal scroll still works (own overflow context).
 function onFocus() {
     if (!isTouch) return;
-    const scrollable = inputRef.value?.closest('.semantic-body') as HTMLElement | null;
-    if (scrollable) {
-        savedScrollTop = scrollable.scrollTop;
-        requestAnimationFrame(() => {
-            scrollable.scrollTop = savedScrollTop;
-        });
-    }
+    document.documentElement.style.overflow = 'hidden';
 }
 function onBlur() {
-    // No action needed — scroll is already at the saved position
+    if (!isTouch) return;
+    document.documentElement.style.overflow = '';
 }
+
+// Cleanup: ensure scroll is unlocked if component unmounts while focused
+onUnmounted(() => {
+    document.documentElement.style.overflow = '';
+});
 
 defineExpose({
     focus: () => inputRef.value?.focus(),

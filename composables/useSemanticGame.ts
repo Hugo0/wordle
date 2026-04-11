@@ -225,6 +225,7 @@ export function useSemanticGame(lang: string) {
     async function startGame(
         opts: { target?: string; debug?: boolean; forceNew?: boolean; play?: string } = {}
     ) {
+        if (starting.value) return; // Guard against overlapping calls
         starting.value = true;
         invalidMessage.value = '';
         mapMode.value = 'umap';

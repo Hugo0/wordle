@@ -698,15 +698,14 @@ function onKeepPlaying() {
     }
     .map-card {
         padding: 10px 10px 10px;
-        border-left: none;
-        border-right: none;
+        border: none;
     }
-    .map-header {
-        margin-bottom: 8px;
+    /* Hide expand button on mobile — map is already near-fullscreen */
+    :deep([aria-label='Expand map']),
+    :deep([aria-label='Collapse map']) {
+        display: none;
     }
-    /* Hide the entire map header on mobile — redundant with the app
-       header which already shows "Semantic #99" + guesses remaining
-       is shown in the input meta row. Saves ~60px of vertical space. */
+    /* Hide map header on mobile — redundant with app header */
     .map-header {
         display: none;
     }
