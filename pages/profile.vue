@@ -20,7 +20,10 @@ import type { GameResult } from '~/utils/types';
 
 // PWA install — show "Install App" CTA if not already installed
 const pwaInstall = import.meta.client
-    ? inject<{ install: () => void; status: () => { isStandalone: boolean } }>('pwaInstall', undefined)
+    ? inject<{ install: () => void; status: () => { isStandalone: boolean } }>(
+          'pwaInstall',
+          undefined
+      )
     : undefined;
 const showInstallCta = computed(() => {
     if (!import.meta.client) return false;
