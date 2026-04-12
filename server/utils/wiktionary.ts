@@ -94,9 +94,9 @@ export async function checkWiktionaryExists(
             // Cache to DB (primary)
             try {
                 const { setWiktionaryExists } = await import('./db-cache');
-                setWiktionaryExists(langCode, word, exists);
-            } catch {
-                /* non-fatal */
+                await setWiktionaryExists(langCode, word, exists);
+            } catch (e) {
+                console.warn(`[wiktionary] DB write failed for ${langCode}/${word}:`, e);
             }
             // DEPRECATED: disk write — remove after confirming DB migration is stable
             writeCache(langCode, word, exists);

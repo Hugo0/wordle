@@ -177,9 +177,9 @@ export default defineEventHandler(async (event) => {
         // Cache to DB (primary) and disk (backup)
         try {
             const { setSemanticHint } = await import('~/server/utils/db-cache');
-            setSemanticHint(lang, target, generated, LLM_MODEL);
-        } catch {
-            /* non-fatal */
+            await setSemanticHint(lang, target, generated, LLM_MODEL);
+        } catch (e) {
+            console.warn(`[hint] DB write failed for ${lang}/${target}:`, e);
         }
         // DEPRECATED: disk write — remove after confirming DB migration is stable
         writeFileSync(cacheFile, JSON.stringify({ hint: generated, createdAt: Date.now() }));

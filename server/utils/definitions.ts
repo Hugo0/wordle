@@ -350,22 +350,27 @@ export async function fetchDefinition(
 
         // Cache result to DB (primary) and disk (backup)
         const isNeg = !llmResult;
-        dbCache?.upsertDefinition(
-            langCode,
-            word.toLowerCase(),
-            llmResult
-                ? {
-                      definition: llmResult.definition,
-                      definitionNative: llmResult.definition_native,
-                      definitionEn: llmResult.definition_en,
-                      partOfSpeech: llmResult.part_of_speech,
-                      confidence: llmResult.confidence,
-                      source: llmResult.source,
-                      url: llmResult.url,
-                  }
-                : {},
-            isNeg
-        );
+        try {
+            await dbCache?.upsertDefinition(
+                langCode,
+                word.toLowerCase(),
+                llmResult
+                    ? {
+                          definition: llmResult.definition,
+                          definitionNative: llmResult.definition_native,
+                          definitionEn: llmResult.definition_en,
+                          partOfSpeech: llmResult.part_of_speech,
+                          confidence: llmResult.confidence,
+                          source: llmResult.source,
+                          model: llmResult.source === 'llm' ? LLM_MODEL : undefined,
+                          url: llmResult.url,
+                      }
+                    : {},
+                isNeg
+            );
+        } catch (e) {
+            consola.warn(`[definitions] DB write failed for ${langCode}/${word}:`, e);
+        }
         // DEPRECATED: disk write — remove after confirming DB migration is stable
         try {
             mkdirSync(langCacheDir, { recursive: true });
