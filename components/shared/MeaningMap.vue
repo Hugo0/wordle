@@ -666,8 +666,6 @@ const targetScreenPos = computed(() => {
         <div class="canvas-wrap">
             <svg
                 ref="svgRef"
-                :width="canvasSize"
-                :height="canvasSize"
                 :viewBox="`0 0 ${canvasSize} ${canvasSize}`"
                 class="plot"
             >
