@@ -303,20 +303,45 @@ export function getWiktLang(langCode: string): string {
 }
 
 /**
- * Get N distinct daily words for multi-board modes (Dordle, Tridle, Quordle).
+ * Get N distinct daily words for multi-board modes (Dordle, Quordle, etc.)
+ * and daily speed streak.
  *
- * Board 0 always uses the same word as classic daily (todaysIdx directly).
- * Boards 1-N use high slot offsets to ensure deterministic, unique words.
+ * Each mode passes a `modeOffset` so its words are drawn from a different
+ * region of the slot space — modes no longer share words by default.
+ * Within a mode, boards 1-N use high slot offsets to ensure unique words.
  * If a collision occurs (same word for two boards), probes forward.
  */
 const MULTI_BOARD_SLOT_OFFSET = 100_000;
 
-export function getWordsForDay(langCode: string, todaysIdx: number, count: number): string[] {
+/**
+ * Per-mode offsets so different game modes don't share the same daily words.
+ * Values are large primes, spread far enough apart to avoid accidental
+ * overlap with MULTI_BOARD_SLOT_OFFSET * boardCount ranges.
+ */
+export const MODE_SLOT_OFFSETS: Record<string, number> = {
+    classic: 0,
+    dordle: 7_000_003,
+    quordle: 14_000_029,
+    octordle: 21_000_047,
+    sedecordle: 28_000_069,
+    duotrigordle: 35_000_081,
+    speed: 42_000_101,
+};
+
+export function getWordsForDay(
+    langCode: string,
+    todaysIdx: number,
+    count: number,
+    mode: string = 'classic'
+): string[] {
+    const modeOffset = MODE_SLOT_OFFSETS[mode] ?? 0;
+    const baseIdx = todaysIdx + modeOffset;
+
     const words: string[] = [];
     const used = new Set<string>();
 
     for (let i = 0; i < count; i++) {
-        const slotIdx = i === 0 ? todaysIdx : todaysIdx + i * MULTI_BOARD_SLOT_OFFSET;
+        const slotIdx = i === 0 ? baseIdx : baseIdx + i * MULTI_BOARD_SLOT_OFFSET;
         let word = getWordForDay(langCode, slotIdx);
 
         // Dedup: probe forward if collision (bounded to prevent infinite loop)

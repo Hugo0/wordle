@@ -362,6 +362,7 @@ export const useGameStore = defineStore('game', () => {
 
     let _speedTimerInterval: ReturnType<typeof setInterval> | null = null;
     let _speedWordList: string[] = [];
+    let _speedUsedWords: Set<string> = new Set();
 
     // =======================================================================
     // Multi-Board Computed Helpers
@@ -1907,12 +1908,19 @@ export const useGameStore = defineStore('game', () => {
 
     function pickSpeedWord(): string {
         const list = _speedWordList;
-        if (list.length <= 1) return list[0] || '';
-        const currentWord = boards.value[0]?.targetWord || '';
+        if (list.length === 0) return '';
+
+        // Reset used words if we've exhausted the list
+        if (_speedUsedWords.size >= list.length) {
+            _speedUsedWords.clear();
+        }
+
         let word: string;
         do {
             word = list[Math.floor(Math.random() * list.length)]!;
-        } while (word === currentWord && list.length > 1);
+        } while (_speedUsedWords.has(word) && _speedUsedWords.size < list.length);
+
+        _speedUsedWords.add(word);
         return word;
     }
 
@@ -1953,6 +1961,7 @@ export const useGameStore = defineStore('game', () => {
             _speedTimerInterval = null;
         }
         _speedWordList = wordList;
+        _speedUsedWords = new Set();
         speedState.value = {
             active: true,
             timeRemaining: SPEED_INITIAL_TIME,
@@ -2248,6 +2257,7 @@ export const useGameStore = defineStore('game', () => {
         };
         _arcadeEventId = 0;
         _speedWordList = [];
+        _speedUsedWords = new Set();
     }
 
     // =======================================================================

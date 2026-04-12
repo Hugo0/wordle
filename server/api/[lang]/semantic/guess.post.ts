@@ -76,11 +76,15 @@ export default defineEventHandler(async (event) => {
         }
 
         const rawSimilarity = cosineSimilarity(guessVec, targetVec);
-        const rank = (await semanticDb.computeGuessRank(lang, target, word, guessVec)) ?? 50001;
-        const totalRanked = await semanticDb.getTotalRanked(lang);
+        // Parallelize independent DB queries (3 round-trips → 1)
+        const [rankResult, totalRanked, umapPosition] = await Promise.all([
+            semanticDb.computeGuessRank(lang, target, word, guessVec),
+            semanticDb.getTotalRanked(lang),
+            semanticDb.get2dPosition(lang, word),
+        ]);
+        const rank = rankResult ?? 50001;
         const won = rank === 1;
         const display = won ? 1 : Math.min(0.99, rankToDisplay(rank, totalRanked));
-        const umapPosition = await semanticDb.get2dPosition(lang, word);
 
         // Axis projections — uses cached axes vectors (140KB in memory)
         const axesVectors = semanticDb.getCachedAxesVectors();

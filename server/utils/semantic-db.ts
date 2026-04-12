@@ -15,6 +15,7 @@
  */
 
 import { prisma } from './prisma';
+import { cosineSimilarity } from './semantic';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Axis data (loaded once at startup, cached in memory — 140KB)
@@ -173,15 +174,21 @@ export async function computeGuessRank(
 }
 
 /**
- * Get the total number of ranked words for a target (vocab size).
+ * Get the total number of ranked words (vocab size). Cached in memory
+ * after first query — changes only when the seed script runs.
  */
+const _totalRankedCache = new Map<string, number>();
 export async function getTotalRanked(lang: string): Promise<number> {
+    const cached = _totalRankedCache.get(lang);
+    if (cached !== undefined) return cached;
     try {
         const rows = await prisma.$queryRaw<Array<{ cnt: bigint }>>`
             SELECT COUNT(*) as cnt FROM wordle.word_embeddings
             WHERE lang = ${lang} AND is_vocab = true
         `;
-        return Number(rows[0]?.cnt ?? 0);
+        const count = Number(rows[0]?.cnt ?? 0);
+        _totalRankedCache.set(lang, count);
+        return count;
     } catch {
         return 0;
     }

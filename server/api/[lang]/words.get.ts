@@ -178,7 +178,7 @@ export default defineEventHandler(async (event) => {
                 const targets = await loadSemanticTargets();
                 word = targets.length > 0 ? pickSemanticDailyTarget(targets, lang, idx) : null;
             } else if (boardCount > 1) {
-                wordList = getWordsForDay(lang, classicIdx, boardCount);
+                wordList = getWordsForDay(lang, classicIdx, boardCount, mode);
                 word = wordList[0] ?? null;
             } else {
                 word = getWordForDay(lang, classicIdx);
