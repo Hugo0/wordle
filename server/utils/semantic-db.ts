@@ -158,7 +158,7 @@ export async function computeGuessRank(
         const tVec = await getEmbedding(lang, target);
         if (!gVec || !tVec) return null;
 
-        const guessCos = dotProduct(gVec, tVec);
+        const guessCos = cosineSimilarity(gVec, tVec);
 
         // Count neighbors with higher cosine (all 5k are stored)
         const countRows = await prisma.$queryRaw<Array<{ cnt: bigint }>>`
@@ -336,9 +336,4 @@ function parseVector(pgvectorStr: string): Float32Array {
     return new Float32Array(nums);
 }
 
-/** Dot product of two Float32Arrays (pre-normalized = cosine similarity). */
-function dotProduct(a: Float32Array, b: Float32Array): number {
-    let sum = 0;
-    for (let i = 0; i < a.length; i++) sum += a[i]! * b[i]!;
-    return sum;
-}
+// cosineSimilarity imported from ./semantic (DRY — pre-normalized dot product)

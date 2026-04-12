@@ -21,7 +21,7 @@
             class="flex-auto min-h-0 px-1 sm:px-3 lg:px-6 py-1"
             :class="
                 layout.scrollable || allExpanded
-                    ? 'overflow-y-auto scroll-snap-y'
+                    ? 'overflow-y-auto scroll-snap-y editorial-scroll'
                     : 'flex justify-center items-center'
             "
             data-allow-mismatch

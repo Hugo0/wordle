@@ -114,8 +114,9 @@ export async function getWordStats(lang: string, dayIdx: number): Promise<WordSt
 }
 
 /**
- * Atomic increment of word stats. Uses raw SQL for ON CONFLICT upsert
- * with per-column increments — no read-modify-write, no lockfile.
+ * Atomic increment of word stats. Uses explicit per-column SQL
+ * (no dynamic column names) for safety. Each dist column is
+ * conditionally incremented by 0 or 1.
  */
 export async function incrementWordStats(
     lang: string,
@@ -123,17 +124,28 @@ export async function incrementWordStats(
     won: boolean,
     attempts: number
 ): Promise<void> {
-    const distCol = attempts >= 1 && attempts <= 6 ? `dist_${attempts}` : null;
+    // Safe: no dynamic SQL. Each dist column gets +1 only if won AND attempts matches.
+    const d1 = won && attempts === 1 ? 1 : 0;
+    const d2 = won && attempts === 2 ? 1 : 0;
+    const d3 = won && attempts === 3 ? 1 : 0;
+    const d4 = won && attempts === 4 ? 1 : 0;
+    const d5 = won && attempts === 5 ? 1 : 0;
+    const d6 = won && attempts === 6 ? 1 : 0;
 
     try {
         await prisma.$executeRaw`
-            INSERT INTO wordle.word_stats (lang, day_idx, total, wins, losses, ${distCol ? prisma.$raw(`${distCol}`) : prisma.$raw('dist_1')})
-            VALUES (${lang}, ${dayIdx}, 1, ${won ? 1 : 0}, ${won ? 0 : 1}, ${distCol && won ? 1 : 0})
+            INSERT INTO wordle.word_stats (lang, day_idx, total, wins, losses, dist_1, dist_2, dist_3, dist_4, dist_5, dist_6)
+            VALUES (${lang}, ${dayIdx}, 1, ${won ? 1 : 0}, ${won ? 0 : 1}, ${d1}, ${d2}, ${d3}, ${d4}, ${d5}, ${d6})
             ON CONFLICT (lang, day_idx) DO UPDATE SET
                 total = word_stats.total + 1,
                 wins = word_stats.wins + ${won ? 1 : 0},
-                losses = word_stats.losses + ${won ? 0 : 1}
-                ${distCol && won ? prisma.$raw(`, ${distCol} = word_stats.${distCol} + 1`) : prisma.$raw('')}
+                losses = word_stats.losses + ${won ? 0 : 1},
+                dist_1 = word_stats.dist_1 + ${d1},
+                dist_2 = word_stats.dist_2 + ${d2},
+                dist_3 = word_stats.dist_3 + ${d3},
+                dist_4 = word_stats.dist_4 + ${d4},
+                dist_5 = word_stats.dist_5 + ${d5},
+                dist_6 = word_stats.dist_6 + ${d6}
         `;
     } catch (e) {
         console.warn('[db-cache] incrementWordStats failed:', e);

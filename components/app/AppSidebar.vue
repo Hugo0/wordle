@@ -23,7 +23,7 @@
             :class="isRtl ? 'right-0' : 'left-0'"
             @keydown.escape="close"
         >
-            <div class="flex flex-col h-full w-[280px] bg-paper overflow-y-auto sidebar-scroll">
+            <div class="flex flex-col h-full w-[280px] bg-paper overflow-y-auto editorial-scroll">
                 <!-- Logo -->
                 <div class="px-6 pb-5 pt-6 editorial-rule">
                     <NuxtLink

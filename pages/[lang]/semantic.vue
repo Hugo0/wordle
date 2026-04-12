@@ -406,7 +406,7 @@ function onKeepPlaying() {
             </button>
         </div>
 
-        <div v-else class="semantic-body">
+        <div v-else class="semantic-body editorial-scroll">
             <section class="semantic-layout">
                 <!-- Main column: map card (title + canvas + input) -->
                 <div class="main-col">
