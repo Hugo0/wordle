@@ -544,25 +544,6 @@ const bugReportUrl = computed(() => {
 </script>
 
 <style scoped>
-/* Minimal scrollbar */
-.sidebar-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-rule) transparent;
-}
-.sidebar-scroll::-webkit-scrollbar {
-    width: 4px;
-}
-.sidebar-scroll::-webkit-scrollbar-track {
-    background: transparent;
-}
-.sidebar-scroll::-webkit-scrollbar-thumb {
-    background: var(--color-rule);
-    border-radius: 2px;
-}
-.sidebar-scroll::-webkit-scrollbar-thumb:hover {
-    background: var(--color-muted);
-}
-
 /* Sidebar item base (used by child SidebarItem too via :deep) */
 .sidebar-item {
     display: flex;
