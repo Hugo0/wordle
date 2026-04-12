@@ -651,6 +651,8 @@ const targetScreenPos = computed(() => {
         <div class="canvas-wrap">
             <svg
                 ref="svgRef"
+                :width="canvasSize"
+                :height="canvasSize"
                 :viewBox="`0 0 ${canvasSize} ${canvasSize}`"
                 class="plot"
             >
@@ -870,8 +872,8 @@ const targetScreenPos = computed(() => {
 }
 .plot {
     display: block;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 /* ── Axis labels (slice mode) — cardinal positions ────────────────── */
