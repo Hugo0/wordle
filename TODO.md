@@ -448,3 +448,18 @@ const stats = computed(() => {
 });
 ```
 Then `calculateStats(key, max)` becomes `setStatsKey(key, max)` — just sets the refs, Vue handles the rest. Eliminates the entire class of "forgot to recalculate" bugs. Touches: `stores/stats.ts`, `composables/useGamePage.ts`, `pages/profile.vue`.
+
+### 16. Semantic Explorer: viewport-locked layout (like other game modes)
+The semantic page uses a scrollable layout (`overflow-y: auto` on `.semantic-body`) while every other game mode uses `h-[100dvh]` viewport-locked layout via `PageShell`. This causes:
+- Double scrollbar on short desktops (page scroll + browser scroll)
+- Map SVG overflows its `max-height` container because it renders at intrinsic 520px
+- `min-height: 280px` fights `max-height: calc(100dvh - 310px)` on short viewports
+- Input gets pushed below the fold
+
+**Proper fix:** Refactor `semantic.vue` to use viewport-locked layout like `PageShell`:
+- Left column (map + input): flex column, map grows to fill, input pinned to bottom
+- Right column (compass + hint + leaderboard): flex column with overflow scroll
+- No page-level scroll — everything fits in viewport
+- Expand button goes truly fullscreen (overlay), not just "fill the column"
+
+Current band-aid: `min-height: min(200px, calc(100dvh - 310px))` prevents `min-height` from exceeding viewport, but the SVG still overflows on short desktops. `:deep()` CSS hacks were tried and reverted because they broke the expanded map aspect ratio.

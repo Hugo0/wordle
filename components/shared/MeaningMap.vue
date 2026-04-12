@@ -648,11 +648,9 @@ const targetScreenPos = computed(() => {
 
 <template>
     <section class="meaning-map">
-        <div class="canvas-wrap" :style="{ width: canvasSize + 'px', height: canvasSize + 'px' }">
+        <div class="canvas-wrap">
             <svg
                 ref="svgRef"
-                :width="canvasSize"
-                :height="canvasSize"
                 :viewBox="`0 0 ${canvasSize} ${canvasSize}`"
                 class="plot"
             >
@@ -856,7 +854,14 @@ const targetScreenPos = computed(() => {
     background: var(--color-paper-warm);
     border: 1px solid var(--color-rule);
     overflow: hidden;
+    aspect-ratio: 1;
     max-width: 100%;
+    /* Default: 520px intrinsic size, shrinkable by parent constraints */
+    width: 520px;
+}
+/* When inside an expanded MapFrame overlay, fill the available space */
+:global(.map-expanded) .canvas-wrap {
+    width: min(90dvh, 95dvw);
 }
 .grid-line {
     stroke: var(--color-rule);
@@ -865,21 +870,8 @@ const targetScreenPos = computed(() => {
 }
 .plot {
     display: block;
-    max-width: 100%;
-}
-
-/* On mobile, force the SVG to scale proportionally instead of
-   overflowing at its intrinsic 520px height. height:auto lets
-   the viewBox aspect ratio drive the height from the constrained width. */
-@media (max-width: 520px) {
-    .canvas-wrap {
-        height: auto !important;
-        aspect-ratio: 1;
-    }
-    .plot {
-        height: auto !important;
-        width: 100% !important;
-    }
+    width: 100%;
+    height: 100%;
 }
 
 /* ── Axis labels (slice mode) — cardinal positions ────────────────── */
