@@ -98,11 +98,13 @@ export default defineEventHandler(async (event) => {
         wordStats = await loadWordStats(lang, dayIdx);
     }
 
-    // cacheOnly=1: skip LLM definition generation — only return DB-cached
-    // or kaikki definitions. Used by the hover-prefetch so browsing neighbors
-    // doesn't burn AI credits on obscure words.
     const query = getQuery(event);
-    const cacheOnly = query.cacheOnly === '1' || query.cacheOnly === 'true';
+    const clientCacheOnly = query.cacheOnly === '1' || query.cacheOnly === 'true';
+    // Only generate LLM definitions for words in the game's word list (5-letter
+    // daily candidates). Other words (semantic vocab, neighbor links) use cacheOnly
+    // to avoid burning LLM credits on the 75K-word tail that bots crawl.
+    const isGameWord = getWordSet(lang, data).has(word ?? '');
+    const cacheOnly = clientCacheOnly || !isGameWord;
 
     let wiktionaryExists = false;
     if (word) {
