@@ -449,7 +449,7 @@ function onKeepPlaying() {
                                                 ([n, a]) => ({ name: n, low: a.low, high: a.high })
                                             )
                                         "
-                                        :size="520"
+                                        :size="expanded ? frameSize : 520"
                                         :user-zoom="mapUserZoom"
                                         :pan-offset="mapPanOffset"
                                         :show-target="true"

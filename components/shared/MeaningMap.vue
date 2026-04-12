@@ -196,19 +196,16 @@ const autoZoom = computed(() => {
 
 const totalZoom = computed(() => autoZoom.value * props.userZoom);
 
-// ── Dot screen positions ──────────────────────────────────────────────────
+// ── World-space dot positions (fixed — independent of pan/zoom) ──────────
+// Pan/zoom is applied via a single camera <g transform> in the template.
 type ScreenDot = MapDot & { x: number; y: number };
 
 const screenDots = computed<ScreenDot[]>(() => {
     const S = canvasSize.value;
-    const zoom = totalZoom.value;
-    const panScale = S * zoom;
-    const panX = props.panOffset[0] / panScale;
-    const panY = props.panOffset[1] / panScale;
-    const center: [number, number] = [props.centerPos[0] - panX, props.centerPos[1] + panY];
+    const center = props.centerPos; // fixed target position, no pan offset
 
     if (props.sliceAxes) {
-        // 2-axis scatter
+        // 2-axis scatter — no pan/zoom in slice mode
         const [axisX, axisY] = props.sliceAxes;
         const inner = S - PAD * 2;
         return props.dots
@@ -221,32 +218,58 @@ const screenDots = computed<ScreenDot[]>(() => {
     }
 
     if (props.mode === 'polar') {
-        // Polar: radius from display, angle from 2D direction
+        // Polar: radius from display, angle from UMAP direction.
+        // Positions are WORLD coordinates — camera handles zoom/pan.
         const cx = S / 2;
+        const inner = S - PAD * 2;
         return props.dots.map((d) => {
             if (d.role === 'primary') {
                 return { ...d, x: cx, y: cx };
             }
             const display = d.display ?? 0;
             const baseRadius = Math.max(0, Math.min(1, 1 - display)) * 0.45;
-            const r = baseRadius / props.userZoom;
+            // Direction from target to word in UMAP space
             const dx = d.pos2d[0] - center[0];
             const dy = d.pos2d[1] - center[1];
             const mag = Math.hypot(dx, dy);
             const angle = mag < 1e-9 ? 0 : Math.atan2(dy, dx);
-            const inner = S - PAD * 2;
-            const nx = 0.5 + r * Math.cos(angle) + panX;
-            const ny = 0.5 - r * Math.sin(angle) - panY;
+            const nx = 0.5 + baseRadius * Math.cos(angle);
+            const ny = 0.5 - baseRadius * Math.sin(angle);
             return { ...d, x: PAD + nx * inner, y: PAD + ny * inner };
         });
     }
 
-    // Absolute: projectToCanvas
+    // Absolute: project at zoom=1, no pan — camera handles the rest
     return props.dots.map((d) => {
-        const [x, y] = projectToCanvas(d.pos2d, center, S, zoom, PAD);
+        const [x, y] = projectToCanvas(d.pos2d, center, S, 1.0, PAD);
         return { ...d, x, y };
     });
 });
+
+// ── Camera transform (rigid pan/zoom for all map content) ────────────────
+// Converts screen-pixel pan offset to viewBox coordinates, then applies
+// scale-around-center + translate. Everything inside the camera <g> moves
+// as a unit — dots, grid, target, connectors, compass.
+const cameraTransform = computed(() => {
+    if (props.sliceAxes) return { tx: 0, ty: 0, scale: 1 };
+    const scale = totalZoom.value;
+    const ds = displayScale.value || 1;
+    const tx = props.panOffset[0] / ds;
+    const ty = props.panOffset[1] / ds;
+    return { tx, ty, scale };
+});
+
+const cameraTransformStr = computed(() => {
+    const { tx, ty, scale } = cameraTransform.value;
+    if (scale === 1 && Math.abs(tx) < 0.01 && Math.abs(ty) < 0.01) return '';
+    const S = canvasSize.value;
+    const cx = S / 2;
+    // Scale around canvas center, then translate for pan
+    return `translate(${cx + tx}, ${cx + ty}) scale(${scale}) translate(${-cx}, ${-cx})`;
+});
+
+// Inverse scale for semantic zoom — keeps dots/labels at constant visual size
+const invCameraScale = computed(() => 1 / cameraTransform.value.scale);
 
 // Connectors: lines from primary to foreground dots (not muted)
 const connectors = computed(() => {
@@ -593,73 +616,47 @@ function dotRadius(d: ScreenDot): number {
     return 6;
 }
 
-// ── Grid lines ───────────────────────────────────────────────────────────
-// Grid lines are drawn in UMAP [0,1]² space and projected to screen via
-// the same transform as dots (projectToCanvas). This ensures grid lines
-// zoom AND pan identically with the dots — no drift, no clamping.
-//
-// We generate horizontal and vertical lines at fixed intervals in UMAP
-// space (every 0.05 units). Only lines visible in the current viewport
-// are generated to keep the DOM lean.
-const GRID_STEP = 0.05; // in UMAP [0,1]² units
+// ── Grid lines (world coordinates) ──────────────────────────────────────
+// Grid in UMAP [0,1]² space, projected at zoom=1 to world coordinates.
+// The camera <g> handles zoom/pan. We generate a generous set of lines
+// extending beyond [0,1] so the grid fills the viewport when panned/zoomed.
+const GRID_STEP = 0.05;
 
 const gridLines = computed<Array<{ x1: number; y1: number; x2: number; y2: number }>>(() => {
     const S = canvasSize.value;
-    const zoom = totalZoom.value;
-    const panScale = S * zoom;
-    const panX = props.panOffset[0] / panScale;
-    const panY = props.panOffset[1] / panScale;
-    const cx = props.centerPos[0] - panX;
-    const cy = props.centerPos[1] + panY;
-
-    // Visible UMAP range at current zoom
-    const halfSpan = 0.5 / zoom;
-    const uLeft = cx - halfSpan;
-    const uRight = cx + halfSpan;
-    const uTop = cy - halfSpan;
-    const uBottom = cy + halfSpan;
-
-    // Round to grid step boundaries
-    const firstCol = Math.floor(uLeft / GRID_STEP) * GRID_STEP;
-    const firstRow = Math.floor(uTop / GRID_STEP) * GRID_STEP;
-
-    const lines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+    const center = props.centerPos;
     const inner = S - PAD * 2;
 
-    function toScreen(ux: number, uy: number): [number, number] {
-        const dx = (ux - cx) * zoom;
-        const dy = (uy - cy) * zoom;
+    function toWorld(ux: number, uy: number): [number, number] {
+        const dx = ux - center[0];
+        const dy = uy - center[1];
         return [PAD + inner * (0.5 + dx), PAD + inner * (0.5 - dy)];
     }
 
-    // Vertical lines
-    for (let u = firstCol; u <= uRight + GRID_STEP; u += GRID_STEP) {
-        const [x1, y1] = toScreen(u, uTop - GRID_STEP);
-        const [x2, y2] = toScreen(u, uBottom + GRID_STEP);
+    const lines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
+    // Extend beyond [0,1] to cover panning — SVG clipPath clips the rest
+    const lo = -0.5;
+    const hi = 1.5;
+
+    for (let u = Math.floor(lo / GRID_STEP) * GRID_STEP; u <= hi; u += GRID_STEP) {
+        const [x1, y1] = toWorld(u, lo);
+        const [x2, y2] = toWorld(u, hi);
         lines.push({ x1, y1, x2, y2 });
     }
-    // Horizontal lines
-    for (let v = firstRow; v <= uBottom + GRID_STEP; v += GRID_STEP) {
-        const [x1, y1] = toScreen(uLeft - GRID_STEP, v);
-        const [x2, y2] = toScreen(uRight + GRID_STEP, v);
+    for (let v = Math.floor(lo / GRID_STEP) * GRID_STEP; v <= hi; v += GRID_STEP) {
+        const [x1, y1] = toWorld(lo, v);
+        const [x2, y2] = toWorld(hi, v);
         lines.push({ x1, y1, x2, y2 });
     }
     return lines;
 });
 
 // ── Target position (respects pan) ────────────────────────────────────────
+// Target position in WORLD coordinates (camera handles pan/zoom)
 const targetScreenPos = computed(() => {
     const S = canvasSize.value;
-    if (props.mode === 'polar') {
-        // In polar, target is at canvas center shifted by pan
-        const panScale = S * props.userZoom;
-        const px = props.panOffset[0] / panScale;
-        const py = props.panOffset[1] / panScale;
-        return { x: S / 2 + px * (S - PAD * 2), y: S / 2 - py * (S - PAD * 2) };
-    }
-    // Absolute: project target's own position
-    const [x, y] = projectToCanvas(props.centerPos, props.centerPos, S, totalZoom.value, PAD);
-    return { x, y };
+    // In both polar and absolute modes, target is at canvas center in world space
+    return { x: S / 2, y: S / 2 };
 });
 </script>
 
@@ -673,191 +670,205 @@ const targetScreenPos = computed(() => {
                 :viewBox="`0 0 ${canvasSize} ${canvasSize}`"
                 class="plot"
             >
-                <!-- Grid: lines in UMAP space, projected via the same
-                     zoom+pan as dots. Scales and drags faithfully. -->
-                <line
-                    v-for="(g, i) in gridLines"
-                    :key="'grid:' + i"
-                    :x1="g.x1"
-                    :y1="g.y1"
-                    :x2="g.x2"
-                    :y2="g.y2"
-                    class="grid-line"
-                />
-
-                <!-- 2-axis slice labels — cardinal positions, no axis lines -->
-                <template v-if="sliceAxes && axisInfoX && axisInfoY">
-                    <!-- X-axis: left (low) and right (high) -->
-                    <text
-                        :x="PAD + 4"
-                        :y="canvasSize / 2"
-                        text-anchor="start"
-                        dominant-baseline="middle"
-                        class="axis-label"
-                    >
-                        {{ axisInfoX.low }}
-                    </text>
-                    <text
-                        :x="canvasSize - PAD - 4"
-                        :y="canvasSize / 2"
-                        text-anchor="end"
-                        dominant-baseline="middle"
-                        class="axis-label"
-                    >
-                        {{ axisInfoX.high }}
-                    </text>
-                    <!-- Y-axis: bottom (low) and top (high) -->
-                    <text
-                        :x="canvasSize / 2"
-                        :y="canvasSize - PAD + 16"
-                        text-anchor="middle"
-                        class="axis-label"
-                    >
-                        {{ axisInfoY.low }}
-                    </text>
-                    <text :x="canvasSize / 2" :y="PAD - 6" text-anchor="middle" class="axis-label">
-                        {{ axisInfoY.high }}
-                    </text>
-                </template>
-
-                <!-- Connectors -->
-                <line
-                    v-for="(c, i) in connectors"
-                    :key="'c:' + i"
-                    :x1="c.x1"
-                    :y1="c.y1"
-                    :x2="c.x2"
-                    :y2="c.y2"
-                    class="connector"
-                />
-
-                <!-- Compass needle: arrow from best guess toward target -->
-                <!-- Compass needle TAIL: feathers + back shaft, rendered
-                     BEFORE dots so the dot circle covers the shaft center. -->
+                <!-- Camera group: rigid pan/zoom transform for all map content.
+                     Dots, grid, target, connectors all move as a unit. -->
                 <g
-                    v-if="compassNeedle"
-                    :key="'needle-tail:' + compassWord"
-                    class="needle-anchor"
-                    :style="{
-                        transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)`,
-                    }"
+                    :transform="cameraTransformStr"
+                    :style="{ '--camera-scale': cameraTransform.scale }"
                 >
-                    <g
-                        class="compass-needle"
-                        data-compass-needle
-                        :style="{ transform: `rotate(${compassNeedle.angle}deg)` }"
-                    >
-                        <!-- Back shaft -->
-                        <line
-                            :x1="compassNeedle.backEnd"
-                            y1="0"
-                            :x2="compassNeedle.frontStart"
-                            y2="0"
-                            class="needle-shaft"
-                        />
-                        <!-- Fletching: 3 crossed feather marks near tail tip -->
-                        <template v-for="i in 3" :key="'f' + i">
-                            <line
-                                :x1="compassNeedle.backEnd + (i - 1) * 3 + 2"
-                                y1="0"
-                                :x2="compassNeedle.backEnd + (i - 1) * 3 - 1"
-                                :y2="-3.5"
-                                class="needle-feather"
-                            />
-                            <line
-                                :x1="compassNeedle.backEnd + (i - 1) * 3 + 2"
-                                y1="0"
-                                :x2="compassNeedle.backEnd + (i - 1) * 3 - 1"
-                                :y2="3.5"
-                                class="needle-feather"
-                            />
-                        </template>
-                    </g>
-                </g>
-
-                <!-- Target marker (game mode) — position respects pan -->
-                <g
-                    v-if="showTarget"
-                    class="target-marker"
-                    :style="{
-                        transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px)`,
-                    }"
-                >
-                    <circle r="8" class="target-ring" />
-                    <text y="-14" text-anchor="middle" class="target-label">
-                        {{ targetLabel }}
-                    </text>
-                </g>
-
-                <!-- Dots — <a> when clickable (word page), <g> otherwise (game) -->
-                <component
-                    :is="clickable ? 'a' : 'g'"
-                    v-for="d in screenDots"
-                    :key="d.word"
-                    :href="clickable ? dotHref(d.word) : undefined"
-                    :data-word="d.word"
-                    :class="[
-                        'map-dot',
-                        d.role,
-                        {
-                            highlighted: d.word === highlightedWord,
-                            wiggling: d.word === wigglingWord,
-                            latest: d.word === latestWord,
-                        },
-                    ]"
-                    :style="{
-                        '--dx': d.x + 'px',
-                        '--dy': d.y + 'px',
-                        transform: `translate(${d.x}px, ${d.y}px)`,
-                    }"
-                    @click="clickable ? onDotClick($event, d.word) : undefined"
-                    @mouseenter="clickable ? onDotMouseEnter(d.word) : undefined"
-                    @mouseleave="clickable ? onDotMouseLeave() : undefined"
-                >
-                    <circle
-                        :r="dotRadius(d)"
-                        class="dot-circle"
-                        :style="d.color ? { fill: d.color } : {}"
+                    <!-- Grid lines (world coordinates) -->
+                    <line
+                        v-for="(g, i) in gridLines"
+                        :key="'grid:' + i"
+                        :x1="g.x1"
+                        :y1="g.y1"
+                        :x2="g.x2"
+                        :y2="g.y2"
+                        class="grid-line"
+                        vector-effect="non-scaling-stroke"
                     />
-                    <text
-                        v-if="dotLabelVisible(d)"
-                        :y="dotLabelY(d)"
-                        text-anchor="middle"
-                        class="dot-text"
-                    >
-                        {{ d.word }}
-                    </text>
-                </component>
 
-                <!-- Compass needle FRONT: shaft + arrowhead, rendered
-                     AFTER dots so it draws on top of the dot circle. -->
-                <g
-                    v-if="compassNeedle"
-                    :key="'needle-front:' + compassWord"
-                    class="needle-anchor"
-                    :style="{
-                        transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)`,
-                    }"
-                >
+                    <!-- 2-axis slice labels — inside camera for now (slice has identity transform) -->
+                    <template v-if="sliceAxes && axisInfoX && axisInfoY">
+                        <!-- X-axis: left (low) and right (high) -->
+                        <text
+                            :x="PAD + 4"
+                            :y="canvasSize / 2"
+                            text-anchor="start"
+                            dominant-baseline="middle"
+                            class="axis-label"
+                        >
+                            {{ axisInfoX.low }}
+                        </text>
+                        <text
+                            :x="canvasSize - PAD - 4"
+                            :y="canvasSize / 2"
+                            text-anchor="end"
+                            dominant-baseline="middle"
+                            class="axis-label"
+                        >
+                            {{ axisInfoX.high }}
+                        </text>
+                        <!-- Y-axis: bottom (low) and top (high) -->
+                        <text
+                            :x="canvasSize / 2"
+                            :y="canvasSize - PAD + 16"
+                            text-anchor="middle"
+                            class="axis-label"
+                        >
+                            {{ axisInfoY.low }}
+                        </text>
+                        <text
+                            :x="canvasSize / 2"
+                            :y="PAD - 6"
+                            text-anchor="middle"
+                            class="axis-label"
+                        >
+                            {{ axisInfoY.high }}
+                        </text>
+                    </template>
+
+                    <!-- Connectors -->
+                    <line
+                        v-for="(c, i) in connectors"
+                        :key="'c:' + i"
+                        :x1="c.x1"
+                        :y1="c.y1"
+                        :x2="c.x2"
+                        :y2="c.y2"
+                        class="connector"
+                        vector-effect="non-scaling-stroke"
+                    />
+
+                    <!-- Compass needle: arrow from best guess toward target -->
+                    <!-- Compass needle TAIL: feathers + back shaft, rendered
+                     BEFORE dots so the dot circle covers the shaft center. -->
                     <g
-                        class="compass-needle"
-                        :style="{ transform: `rotate(${compassNeedle.angle}deg)` }"
+                        v-if="compassNeedle"
+                        :key="'needle-tail:' + compassWord"
+                        class="needle-anchor"
+                        :style="{
+                            transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)`,
+                        }"
                     >
-                        <!-- Front shaft (past the dot) -->
-                        <line
-                            :x1="compassNeedle.frontStart"
-                            y1="0"
-                            :x2="compassNeedle.frontEnd - 4"
-                            y2="0"
-                            class="needle-shaft"
+                        <g
+                            class="compass-needle"
+                            data-compass-needle
+                            :style="{ transform: `rotate(${compassNeedle.angle}deg)` }"
+                        >
+                            <!-- Back shaft -->
+                            <line
+                                :x1="compassNeedle.backEnd"
+                                y1="0"
+                                :x2="compassNeedle.frontStart"
+                                y2="0"
+                                class="needle-shaft"
+                            />
+                            <!-- Fletching: 3 crossed feather marks near tail tip -->
+                            <template v-for="i in 3" :key="'f' + i">
+                                <line
+                                    :x1="compassNeedle.backEnd + (i - 1) * 3 + 2"
+                                    y1="0"
+                                    :x2="compassNeedle.backEnd + (i - 1) * 3 - 1"
+                                    :y2="-3.5"
+                                    class="needle-feather"
+                                />
+                                <line
+                                    :x1="compassNeedle.backEnd + (i - 1) * 3 + 2"
+                                    y1="0"
+                                    :x2="compassNeedle.backEnd + (i - 1) * 3 - 1"
+                                    :y2="3.5"
+                                    class="needle-feather"
+                                />
+                            </template>
+                        </g>
+                    </g>
+
+                    <!-- Target marker (game mode) — position respects pan -->
+                    <g
+                        v-if="showTarget"
+                        class="target-marker"
+                        :style="{
+                            transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px) scale(${invCameraScale})`,
+                        }"
+                    >
+                        <circle r="8" class="target-ring" />
+                        <text y="-14" text-anchor="middle" class="target-label">
+                            {{ targetLabel }}
+                        </text>
+                    </g>
+
+                    <!-- Dots — <a> when clickable (word page), <g> otherwise (game) -->
+                    <component
+                        :is="clickable ? 'a' : 'g'"
+                        v-for="d in screenDots"
+                        :key="d.word"
+                        :href="clickable ? dotHref(d.word) : undefined"
+                        :data-word="d.word"
+                        :class="[
+                            'map-dot',
+                            d.role,
+                            {
+                                highlighted: d.word === highlightedWord,
+                                wiggling: d.word === wigglingWord,
+                                latest: d.word === latestWord,
+                            },
+                        ]"
+                        :style="{
+                            '--dx': d.x + 'px',
+                            '--dy': d.y + 'px',
+                            transform: `translate(${d.x}px, ${d.y}px) scale(${invCameraScale})`,
+                        }"
+                        @click="clickable ? onDotClick($event, d.word) : undefined"
+                        @mouseenter="clickable ? onDotMouseEnter(d.word) : undefined"
+                        @mouseleave="clickable ? onDotMouseLeave() : undefined"
+                    >
+                        <circle
+                            :r="dotRadius(d)"
+                            class="dot-circle"
+                            :style="d.color ? { fill: d.color } : {}"
                         />
-                        <!-- Arrowhead (filled triangle) -->
-                        <polygon
-                            :points="`${compassNeedle.frontEnd - 5},-4 ${compassNeedle.frontEnd + 4},0 ${compassNeedle.frontEnd - 5},4`"
-                            class="needle-head"
-                        />
+                        <text
+                            v-if="dotLabelVisible(d)"
+                            :y="dotLabelY(d)"
+                            text-anchor="middle"
+                            class="dot-text"
+                        >
+                            {{ d.word }}
+                        </text>
+                    </component>
+
+                    <!-- Compass needle FRONT: shaft + arrowhead, rendered
+                     AFTER dots so it draws on top of the dot circle. -->
+                    <g
+                        v-if="compassNeedle"
+                        :key="'needle-front:' + compassWord"
+                        class="needle-anchor"
+                        :style="{
+                            transform: `translate(${compassNeedle.pivotX}px, ${compassNeedle.pivotY}px)`,
+                        }"
+                    >
+                        <g
+                            class="compass-needle"
+                            :style="{ transform: `rotate(${compassNeedle.angle}deg)` }"
+                        >
+                            <!-- Front shaft (past the dot) -->
+                            <line
+                                :x1="compassNeedle.frontStart"
+                                y1="0"
+                                :x2="compassNeedle.frontEnd - 4"
+                                y2="0"
+                                class="needle-shaft"
+                            />
+                            <!-- Arrowhead (filled triangle) -->
+                            <polygon
+                                :points="`${compassNeedle.frontEnd - 5},-4 ${compassNeedle.frontEnd + 4},0 ${compassNeedle.frontEnd - 5},4`"
+                                class="needle-head"
+                            />
+                        </g>
                     </g>
                 </g>
+                <!-- /camera group -->
             </svg>
         </div>
     </section>
@@ -870,8 +881,8 @@ const targetScreenPos = computed(() => {
     align-items: center;
 }
 .canvas-wrap {
-    background: var(--color-paper-warm);
-    border: 1px solid var(--color-rule);
+    /* Border + background moved to MapFrame .map-content-wrap so controls
+       render inside the bordered area. MeaningMap is just the SVG container. */
     overflow: hidden;
     max-width: 100%;
 }
