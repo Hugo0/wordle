@@ -256,7 +256,11 @@ export async function computeGuessRank(
         `;
         if (rows.length) return rows[0]!.rank;
 
-        // Slow path: word not in top 5k
+        // Slow path: word outside top 5k.
+        // Compute cosine and estimate rank from the boundary cosine.
+        // The precomputed table stores ranks 1-5000; words beyond that
+        // are mapped using a linear interpolation between the 5K boundary
+        // and cosine=0 → rank=totalVocab. Instant, no full-vocab scan.
         const [gVec, tVec] = await Promise.all([
             guessVec ? Promise.resolve(guessVec) : getEmbedding(lang, guess),
             targetVec ? Promise.resolve(targetVec) : getEmbedding(lang, target),
@@ -265,11 +269,23 @@ export async function computeGuessRank(
 
         const guessCos = cosineSimilarity(gVec, tVec);
 
-        const countRows = await prisma.$queryRaw<Array<{ cnt: bigint }>>`
-            SELECT COUNT(*) as cnt FROM wordle.target_neighbors
-            WHERE lang = ${lang} AND target_word = ${target} AND cosine > ${guessCos}
+        // Get the boundary cosine (lowest cosine in top 5K)
+        const boundaryRows = await prisma.$queryRaw<Array<{ cosine: number }>>`
+            SELECT cosine FROM wordle.target_neighbors
+            WHERE lang = ${lang} AND target_word = ${target}
+            ORDER BY rank DESC LIMIT 1
         `;
-        return Number(countRows[0]?.cnt ?? 0) + 1;
+        const boundaryCos = boundaryRows[0]?.cosine ?? 0.3;
+        const total = await getTotalRanked(lang);
+
+        if (guessCos >= boundaryCos) {
+            // Should have been in top 5K but wasn't found — edge case, rank ~5000
+            return 5000;
+        }
+
+        // Linear interpolation: boundaryCos → rank 5001, cos=0 → rank=total
+        const fraction = 1 - guessCos / boundaryCos;
+        return Math.round(5001 + fraction * (total - 5001));
     } catch (e) {
         console.warn('[semantic-db] computeGuessRank failed:', e);
         return null;
