@@ -17,6 +17,7 @@ import { createGameConfig } from '~/utils/game-modes';
 import MapFrame from '~/components/shared/MapFrame.vue';
 import MeaningMap, { type MapDot } from '~/components/shared/MeaningMap.vue';
 import { buildSemanticGradientFromCSS, sampleGradient } from '~/utils/semanticColor';
+import { interpolate } from '~/utils/interpolate';
 
 definePageMeta({
     layout: 'game',
@@ -103,10 +104,14 @@ const latestGuessWord = computed<string | null>(() => {
     );
 });
 
+// --- UI strings ---
+const ui = computed(() => langStore.config?.ui);
+
 // --- Header meta ---
-const headerTitle = computed(() => 'Semantic Explorer');
+const headerTitle = computed(() => ui.value?.semantic_title || 'Semantic Explorer');
 const headerSubtitle = computed(() => {
-    if (isUnlimited.value) return `${configVal.name_native || lang} · Unlimited`;
+    const unlimitedLabel = ui.value?.semantic_unlimited || 'Unlimited';
+    if (isUnlimited.value) return `${configVal.name_native || lang} · ${unlimitedLabel}`;
     return sem.dayIdx.value
         ? `${configVal.name_native || lang} · #${sem.dayIdx.value}`
         : configVal.name_native || lang;
@@ -332,10 +337,13 @@ const { shareResults } = useGameShare();
 async function onShare() {
     const bestRank = sem.bestGuess.value?.rank;
     const attemptsText = sem.won.value ? String(sem.guesses.value.length) : 'x';
+    const semanticTitle = ui.value?.semantic_title || 'Semantic Explorer';
     const shareText =
-        `Semantic Explorer ${langStore.languageCode.toUpperCase()} #${sem.dayIdx.value}` +
+        `${semanticTitle} ${langStore.languageCode.toUpperCase()} #${sem.dayIdx.value}` +
         ` · ${sem.won.value ? `${sem.guesses.value.length}/${sem.maxGuesses.value}` : 'X/' + sem.maxGuesses.value}` +
-        (bestRank ? `\nBest rank: #${bestRank.toLocaleString()}` : '');
+        (bestRank
+            ? `\n${ui.value?.semantic_best_rank || 'Best rank'}: #${bestRank.toLocaleString()}`
+            : '');
 
     await shareResults({
         shareText,
@@ -393,20 +401,24 @@ function onKeepPlaying() {
             v-if="gameUnavailable"
             class="flex flex-col items-center justify-center flex-1 px-6 py-20 text-center"
         >
-            <h2 class="heading-display text-3xl text-ink mb-4">Semantic Explorer</h2>
+            <h2 class="heading-display text-3xl text-ink mb-4">
+                {{ ui?.semantic_title || 'Semantic Explorer' }}
+            </h2>
             <p class="text-muted max-w-md mb-6">
-                This mode is temporarily unavailable — the word embedding data is being generated.
-                Check back in a few minutes.
+                {{
+                    ui?.semantic_unavailable ||
+                    'This mode is temporarily unavailable — the word embedding data is being generated. Check back in a few minutes.'
+                }}
             </p>
             <button
                 class="px-6 py-2 bg-accent text-paper font-body font-bold hover:opacity-90 transition-opacity"
                 @click="sem.startGame({ play: playType })"
             >
-                Retry
+                {{ ui?.semantic_retry || 'Retry' }}
             </button>
         </div>
 
-        <div v-else class="semantic-body editorial-scroll">
+        <div v-else class="semantic-body">
             <section class="semantic-layout">
                 <!-- Main column: map card (title + canvas + input) -->
                 <div class="main-col">
@@ -416,19 +428,35 @@ function onKeepPlaying() {
                                 <span class="eyebrow-tag">
                                     {{
                                         sem.mapMode.value === 'slice' && sem.sliceAxes.value
-                                            ? `Slice: ${sem.sliceAxes.value[0]} × ${sem.sliceAxes.value[1]}`
-                                            : 'Meaning Map'
+                                            ? interpolate(
+                                                  ui?.semantic_slice_label ||
+                                                      'Slice: {axis_x} × {axis_y}',
+                                                  {
+                                                      axis_x: sem.sliceAxes.value[0],
+                                                      axis_y: sem.sliceAxes.value[1],
+                                                  }
+                                              )
+                                            : ui?.semantic_meaning_map || 'Meaning Map'
                                     }}
                                 </span>
-                                <span class="eyebrow-sub">distance = rank</span>
+                                <span class="eyebrow-sub">{{
+                                    ui?.semantic_distance_rank || 'distance = rank'
+                                }}</span>
                             </div>
-                            <h1 class="map-title">Find the hidden word</h1>
+                            <h1 class="map-title">
+                                {{ ui?.semantic_find_hidden || 'Find the hidden word' }}
+                            </h1>
                             <p class="map-subtitle">
-                                <template v-if="sem.starting.value">Loading today's word…</template>
-                                <template v-else
-                                    >Navigate by meaning. {{ sem.guessesRemaining.value }} guesses
-                                    left.</template
-                                >
+                                <template v-if="sem.starting.value">{{
+                                    ui?.semantic_loading || "Loading today's word…"
+                                }}</template>
+                                <template v-else>{{
+                                    interpolate(
+                                        ui?.semantic_guesses_left ||
+                                            'Navigate by meaning. {n} guesses left.',
+                                        { n: sem.guessesRemaining.value }
+                                    )
+                                }}</template>
                             </p>
                         </header>
 
@@ -449,7 +477,7 @@ function onKeepPlaying() {
                                                 ([n, a]) => ({ name: n, low: a.low, high: a.high })
                                             )
                                         "
-                                        :size="expanded ? frameSize : 520"
+                                        :size="expanded ? frameSize : undefined"
                                         :user-zoom="mapUserZoom"
                                         :pan-offset="mapPanOffset"
                                         :show-target="true"
@@ -640,19 +668,16 @@ function onKeepPlaying() {
     align-items: center;
     min-height: min(200px, calc(100dvh - var(--map-chrome)));
     max-height: calc(100dvh - var(--map-chrome));
-}
-/* Cap the square map to available height (aspect-ratio:1 sizes from width) */
-.map-canvas-wrap :deep(.map-outer:not(.map-expanded) .canvas-wrap) {
+    /* Constrain children to available height — the map is square, so
+       capping width = capping height. max-width on the wrapper propagates
+       to all children via percentage resolution. */
     max-width: min(100%, calc(100dvh - var(--map-chrome)));
+    margin: 0 auto; /* center the constrained wrapper */
 }
-/* Short viewports: hide header, reduce chrome budget → bigger map */
+/* Short viewports: hide header, reduce chrome budget for bigger map */
 @media (max-height: 700px) {
-    .map-header {
-        display: none;
-    }
-    .map-canvas-wrap {
-        --map-chrome: 210px;
-    }
+    .map-header { display: none; }
+    .map-canvas-wrap { --map-chrome: 210px; }
 }
 
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */
@@ -721,6 +746,7 @@ function onKeepPlaying() {
     .map-canvas-wrap {
         min-height: min(180px, 40dvh);
         max-height: 40dvh;
+        max-width: min(100%, 40dvh);
     }
     /* Fixed input bar: pinned to the bottom of the viewport so it
        remains accessible when the mobile keyboard opens. */
