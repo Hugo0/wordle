@@ -114,15 +114,19 @@ export async function get2dPosition(
     projection: 'umap' | 'pca2d' = 'umap'
 ): Promise<[number, number] | null> {
     try {
-        const col1 = projection === 'umap' ? 'umap_x' : 'pca2d_x';
-        const col2 = projection === 'umap' ? 'umap_y' : 'pca2d_y';
-        const rows = await prisma.$queryRaw<Array<{ x: number; y: number }>>`
-            SELECT ${prisma.$raw(col1)} as x, ${prisma.$raw(col2)} as y
+        const rows = await prisma.$queryRaw<
+            Array<{ umap_x: number | null; umap_y: number | null; pca2d_x: number | null; pca2d_y: number | null }>
+        >`
+            SELECT umap_x, umap_y, pca2d_x, pca2d_y
             FROM wordle.word_embeddings
             WHERE lang = ${lang} AND word = ${word} LIMIT 1
         `;
-        if (!rows.length || rows[0]!.x == null) return null;
-        return [rows[0]!.x, rows[0]!.y];
+        if (!rows.length) return null;
+        const r = rows[0]!;
+        const x = projection === 'umap' ? r.umap_x : r.pca2d_x;
+        const y = projection === 'umap' ? r.umap_y : r.pca2d_y;
+        if (x == null || y == null) return null;
+        return [x, y];
     } catch {
         return null;
     }
