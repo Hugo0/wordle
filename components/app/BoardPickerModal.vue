@@ -12,12 +12,12 @@
         align="top"
         no-padding
         no-close-button
-        aria-label="Choose a multi-board mode"
+        :aria-label="props.ui?.multi_board || 'Choose a multi-board mode'"
         @close="$emit('close')"
     >
         <div class="px-6 pt-6 pb-3">
-            <h2 class="heading-section text-xl text-ink">Multi-Board</h2>
-            <p class="text-sm text-muted mt-1">Same rules, more boards. Pick your challenge.</p>
+            <h2 class="heading-section text-xl text-ink">{{ props.ui?.multi_board || 'Multi-Board' }}</h2>
+            <p class="text-sm text-muted mt-1">{{ props.ui?.board_picker_subtitle || 'Same rules, more boards. Pick your challenge.' }}</p>
         </div>
 
         <div class="border-t border-rule">
@@ -37,7 +37,7 @@
                 <div class="flex-1 min-w-0">
                     <div class="heading-section text-base text-ink">{{ mode.label }}</div>
                     <div class="text-xs text-muted mt-0.5">
-                        {{ mode.boards }} boards &middot; {{ mode.maxGuesses }} guesses
+                        {{ mode.boards }} {{ props.ui?.boards || 'boards' }} &middot; {{ mode.maxGuesses }} {{ props.ui?.guesses || 'guesses' }}
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                         class="text-btn text-xs"
                         @click="$emit('close')"
                     >
-                        Daily
+                        {{ props.ui?.mode_daily_label || 'Daily' }}
                     </NuxtLink>
                     <span class="text-rule">&middot;</span>
                     <NuxtLink
@@ -56,7 +56,7 @@
                         class="text-btn text-xs text-accent"
                         @click="$emit('close')"
                     >
-                        Unlimited
+                        {{ props.ui?.unlimited_mode || 'Unlimited' }}
                     </NuxtLink>
                 </div>
             </div>

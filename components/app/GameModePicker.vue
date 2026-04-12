@@ -4,14 +4,14 @@
         size="lg"
         align="top"
         no-padding
-        :aria-label="`Choose a game mode for ${languageName}`"
+        :aria-label="ui?.choose_game_mode || 'Choose a Game Mode'"
         @close="$emit('close')"
     >
         <!-- Header -->
         <div class="px-6 pt-6 pb-4">
-            <h2 class="heading-section text-2xl text-ink">Choose a Game Mode</h2>
+            <h2 class="heading-section text-2xl text-ink">{{ ui?.choose_game_mode || 'Choose a Game Mode' }}</h2>
             <p class="text-sm text-muted mt-1">
-                Different ways to play &mdash; same language, new challenges.
+                {{ ui?.game_mode_subtitle || 'Different ways to play — same language, new challenges.' }}
             </p>
             <!-- Language pill (clickable to change language) -->
             <button
@@ -64,10 +64,10 @@
                 <!-- Action -->
                 <div class="flex-shrink-0 text-right">
                     <template v-if="mode.disabled">
-                        <span class="mono-label text-muted">Soon</span>
+                        <span class="mono-label text-muted">{{ ui?.coming_soon || 'Soon' }}</span>
                     </template>
                     <template v-else>
-                        <span class="mono-label-md text-ink">Play &rarr;</span>
+                        <span class="mono-label-md text-ink">{{ ui?.play_arrow || 'Play →' }}</span>
                     </template>
                 </div>
             </button>
@@ -101,6 +101,7 @@ const flagFailed = ref(false);
 const flagSrc = computed(() => (flagFailed.value ? null : useFlag(props.langCode)));
 
 const langStore = useLanguageStore();
+const ui = computed(() => langStore.config?.ui);
 const modes = computed(() => {
     const ui = langStore.config?.ui;
     return GAME_MODES_UI.map((mode) => ({

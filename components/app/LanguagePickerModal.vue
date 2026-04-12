@@ -12,17 +12,17 @@
         size="lg"
         align="top"
         no-padding
-        aria-label="Choose a language"
+        :aria-label="ui?.choose_language || 'Choose a language'"
         @close="$emit('close')"
     >
         <div class="px-5 pt-5 pb-3">
-            <h2 class="heading-section text-xl text-ink mb-3">Choose Language</h2>
+            <h2 class="heading-section text-xl text-ink mb-3">{{ ui?.choose_language || 'Choose Language' }}</h2>
             <input
                 ref="searchRef"
                 v-model="searchQuery"
                 type="text"
                 class="w-full px-4 py-2.5 border border-rule bg-transparent font-body text-sm text-ink outline-none transition-colors focus:border-ink"
-                placeholder="Search languages..."
+                :placeholder="ui?.search_languages || 'Search languages...'"
                 autocomplete="off"
             />
         </div>
@@ -47,7 +47,7 @@
                 >
             </button>
             <div v-if="filteredLanguages.length === 0" class="text-center py-6 text-sm text-muted">
-                No languages match "{{ searchQuery }}"
+                {{ ui?.no_languages_match || 'No languages match' }} "{{ searchQuery }}"
             </div>
         </div>
     </BaseModal>
@@ -68,6 +68,9 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{ close: [] }>();
+
+const langStore = useLanguageStore();
+const ui = computed(() => langStore.config?.ui);
 
 const searchRef = ref<HTMLInputElement | null>(null);
 const searchQuery = ref('');

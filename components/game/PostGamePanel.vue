@@ -36,13 +36,13 @@
                 <NuxtLink
                     v-if="isDaily && unlimitedRoute"
                     :to="unlimitedRoute"
-                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-200 hover:border-ink hover:bg-paper-warm hover:shadow-sm active:scale-95"
+                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-150 hover:bg-ink hover:text-paper hover:border-ink active:scale-95 active:opacity-80"
                 >
                     <InfinityIcon
                         :size="14"
-                        class="text-muted shrink-0 transition-colors duration-200 group-hover:text-ink"
+                        class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
-                    <div class="text-xs font-semibold text-ink truncate">
+                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">
                         {{ lang.config?.ui?.keep_playing || 'Keep Playing' }}
                     </div>
                 </NuxtLink>
@@ -50,29 +50,42 @@
                 <!-- 2: Sign in (logged out only) -->
                 <button
                     v-if="!authLoggedIn"
-                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-200 hover:border-ink hover:bg-paper-warm hover:shadow-sm active:scale-95 cursor-pointer text-left"
+                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-150 hover:bg-ink hover:text-paper hover:border-ink active:scale-95 active:opacity-80 cursor-pointer text-left"
                     @click="openLoginModal()"
                 >
                     <UserRound
                         :size="14"
-                        class="text-muted shrink-0 transition-colors duration-200 group-hover:text-ink"
+                        class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
-                    <div class="text-xs font-semibold text-ink truncate">Sign in</div>
+                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">Sign in</div>
                 </button>
+
+                <!-- Leaderboard CTA (daily modes only) -->
+                <NuxtLink
+                    v-if="isDaily"
+                    :to="leaderboardRoute"
+                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-150 hover:bg-ink hover:text-paper hover:border-ink active:scale-95 active:opacity-80"
+                >
+                    <Trophy
+                        :size="14"
+                        class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
+                    />
+                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">Leaderboard</div>
+                </NuxtLink>
 
                 <!-- Mode discovery cards -->
                 <NuxtLink
                     v-for="mode in otherModes"
                     :key="mode.id"
                     :to="mode.href!"
-                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-200 hover:border-ink hover:bg-paper-warm hover:shadow-sm active:scale-95"
+                    class="group flex items-center gap-2 px-2.5 py-1.5 border border-rule transition-all duration-150 hover:bg-ink hover:text-paper hover:border-ink active:scale-95 active:opacity-80"
                 >
                     <component
                         :is="mode.icon"
                         :size="14"
-                        class="text-muted shrink-0 transition-colors duration-200 group-hover:text-ink"
+                        class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
-                    <div class="text-xs font-semibold text-ink truncate">{{ mode.label }}</div>
+                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">{{ mode.label }}</div>
                 </NuxtLink>
             </div>
         </div>
@@ -81,7 +94,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InfinityIcon, UserRound } from 'lucide-vue-next';
+import { InfinityIcon, UserRound, Trophy } from 'lucide-vue-next';
 import { GAME_MODES_UI, getModeRoute, getModeLabel } from '~/composables/useGameModes';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
@@ -115,6 +128,10 @@ const dailyRoute = computed(() => {
     return modeBase.value;
 });
 
+const leaderboardRoute = computed(
+    () => `/${lang.languageCode}/leaderboard?mode=${game.gameConfig.mode}`
+);
+
 // Preferred mode order for post-game discovery: dordle first, then speed
 const PREFERRED_MODES = ['dordle', 'speed'];
 
@@ -123,10 +140,12 @@ const otherModes = computed(() => {
     const langCode = lang.languageCode;
     const ui = lang.config?.ui;
 
-    // How many CTA slots are already taken (keep playing + sign in)
+    // How many CTA slots are already taken (keep playing + sign in + leaderboard)
     const keepPlayingShown = isDaily.value && unlimitedRoute.value;
     const signInShown = !authLoggedIn.value;
-    const slotsUsed = (keepPlayingShown ? 1 : 0) + (signInShown ? 1 : 0);
+    const leaderboardShown = isDaily.value;
+    const slotsUsed =
+        (keepPlayingShown ? 1 : 0) + (signInShown ? 1 : 0) + (leaderboardShown ? 1 : 0);
     const slotsAvailable = Math.max(4 - slotsUsed, 0);
 
     const available = GAME_MODES_UI.filter(

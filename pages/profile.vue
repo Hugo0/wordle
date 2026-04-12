@@ -246,6 +246,9 @@ const overallDist = ref<Record<number, number>>(createEmptyDistribution(6));
 // Per-language (classic daily)
 const perLang = ref<PerLangStats[]>([]);
 
+// Most-played language code — used for leaderboard links
+const topLang = computed(() => perLang.value[0]?.code || 'en');
+
 // Per-mode (all modes that have results)
 const modeStats = ref<ModeStats[]>([]);
 
@@ -759,6 +762,13 @@ const languagesConquered = computed(() => {
                                             · avg {{ m.avgAttempts }}
                                         </template>
                                     </span>
+                                    <NuxtLink
+                                        v-if="topLang"
+                                        :to="`/${topLang}/leaderboard?mode=${m.mode}`"
+                                        class="block font-mono text-[9px] tracking-[0.1em] uppercase text-accent hover:opacity-80 mt-0.5"
+                                    >
+                                        View today's ranking &rarr;
+                                    </NuxtLink>
                                 </div>
                                 <span
                                     class="text-xs font-semibold tabular-nums"

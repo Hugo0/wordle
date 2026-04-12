@@ -62,6 +62,7 @@ import {
     Settings,
     PenLine,
     Users,
+    Trophy,
 } from 'lucide-vue-next';
 
 const props = withDefaults(
@@ -99,6 +100,7 @@ const iconMap: Record<string, any> = {
     Settings,
     PenLine,
     Users,
+    Trophy,
 };
 
 // Accept either a string (looked up in iconMap) or a component directly

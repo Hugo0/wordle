@@ -4,6 +4,9 @@
 # Working session docs (internal notes)
 docs/
 
+# Design exploration HTML mockups (local only)
+public/design-explorations/
+
 # Node.js / Frontend
 node_modules/
 .pnpm-store/

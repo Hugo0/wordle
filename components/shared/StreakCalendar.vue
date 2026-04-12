@@ -14,7 +14,7 @@
     <div>
         <!-- Header -->
         <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">
-            Last 28 Days
+            {{ ui?.last_28_days || 'Last 28 Days' }}
         </div>
 
         <!-- Day-of-week headers -->
@@ -23,7 +23,7 @@
             style="font-family: var(--font-mono); font-size: 8px; color: var(--color-muted)"
         >
             <span
-                v-for="(d, i) in ['M', 'T', 'W', 'T', 'F', 'S', 'S']"
+                v-for="(d, i) in weekdayInitials"
                 :key="i"
                 class="text-center"
             >
@@ -86,17 +86,17 @@
             style="font-size: 9px; color: var(--color-muted); font-family: var(--font-mono)"
         >
             <span class="flex items-center gap-1">
-                <span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> Won
+                <span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> {{ ui?.won || 'Won' }}
             </span>
             <span class="flex items-center gap-1">
                 <span
                     class="w-2 h-2 rounded-sm inline-block"
                     style="background: var(--color-accent-soft, #e8d5d0)"
                 />
-                Lost
+                {{ ui?.lost || 'Lost' }}
             </span>
             <span class="flex items-center gap-1">
-                <span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> Missed
+                <span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> {{ ui?.missed || 'Missed' }}
             </span>
         </div>
     </div>
@@ -113,6 +113,13 @@ import type { GameResult } from '~/utils/types';
 const props = defineProps<{
     gameResults: Record<string, GameResult[]>;
 }>();
+
+const langStore = useLanguageStore();
+const ui = computed(() => langStore.config?.ui);
+const weekdayInitials = computed(() => {
+    const raw = ui.value?.weekday_initials || 'M,T,W,T,F,S,S';
+    return raw.split(',');
+});
 
 // --- Helpers ---
 
