@@ -126,7 +126,17 @@ function selectLanguage(code: string) {
         return;
     }
     emit('close');
-    if (props.currentModeSuffix) {
+
+    // Stay on the same page type, just switch language.
+    // Replace the current [lang] segment in the path with the new code.
+    const route = useRoute();
+    const currentPath = route.path;
+    const currentLang = props.currentLangCode;
+
+    if (currentLang && currentPath.startsWith(`/${currentLang}`)) {
+        const rest = currentPath.slice(currentLang.length + 1); // e.g. "/archive", "/words", ""
+        navigateTo(`/${code}${rest}`);
+    } else if (props.currentModeSuffix) {
         navigateTo(`/${code}/${props.currentModeSuffix}`);
     } else {
         navigateTo(`/${code}`);

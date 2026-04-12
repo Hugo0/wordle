@@ -567,7 +567,7 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
         </div>
 
         <!-- Language picker modal (select-only mode — updates query param, doesn't navigate) -->
-        <LanguagePickerModal
+        <AppLanguagePickerModal
             :visible="showLangPicker"
             :current-lang-code="lang"
             select-only
