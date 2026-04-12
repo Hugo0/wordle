@@ -9,6 +9,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { Sparkles, Trophy, XCircle, Share2, Check } from 'lucide-vue-next';
+
+const langStore = useLanguageStore();
 import type { Neighbour, SemanticGuess } from '~/composables/useSemanticGame';
 import { wordDetailPath } from '~/utils/wordUrls';
 
@@ -127,11 +129,11 @@ const bestRank = computed(() => {
                 >
                     <template v-if="shareCopied">
                         <Check :size="16" />
-                        Copied!
+                        {{ langStore.config?.text?.copied || 'Copied!' }}
                     </template>
                     <template v-else>
                         <Share2 :size="16" />
-                        Share Result
+                        {{ langStore.config?.ui?.share_result || 'Share' }}
                     </template>
                 </button>
                 <button
@@ -140,7 +142,7 @@ const bestRank = computed(() => {
                     class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                     @click="emit('keepPlaying')"
                 >
-                    Keep Playing
+                    {{ langStore.config?.ui?.keep_playing || 'Keep Playing' }}
                 </button>
                 <button
                     v-else
@@ -148,7 +150,7 @@ const bestRank = computed(() => {
                     class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                     @click="emit('newGame')"
                 >
-                    Play Again
+                    {{ langStore.config?.ui?.play_again || 'Play Again' }}
                 </button>
             </div>
         </div>

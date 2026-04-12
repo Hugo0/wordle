@@ -247,7 +247,7 @@
                 </div>
             </div>
 
-            <!-- Percentile (part of distribution section) -->
+            <!-- Percentile (part of distribution section) — disabled for now, makes modal too tall
             <div
                 v-if="game.communityPercentile !== null"
                 class="text-center pt-3 mt-3 border-t border-rule"
@@ -266,6 +266,7 @@
                     <ExternalLink :size="12" />
                 </a>
             </div>
+            -->
         </div>
 
         <!-- Action buttons — share only available after game over -->
@@ -281,7 +282,7 @@
                 </template>
                 <template v-else>
                     <Share2 :size="16" />
-                    {{ lang.config?.text?.share || 'Share Result' }}
+                    {{ lang.config?.ui?.share_result || 'Share' }}
                 </template>
             </button>
             <!-- Daily modes → "Keep Playing" secondary button -->
@@ -290,7 +291,7 @@
                 :to="unlimitedRoute"
                 class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
             >
-                Keep Playing
+                {{ lang.config?.ui?.keep_playing || 'Keep Playing' }}
             </NuxtLink>
             <!-- Unlimited modes → "New Game" / "Play Again" -->
             <button
@@ -298,7 +299,7 @@
                 class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                 @click="$emit('newGame')"
             >
-                New Game
+                {{ lang.config?.ui?.new_game || 'New Game' }}
             </button>
             <!-- Daily without unlimited variant → Close -->
             <button
@@ -327,15 +328,6 @@
                 Play today's daily &rarr;
             </NuxtLink>
         </div>
-
-        <!-- Sign-in CTA — shown once per session when logged out -->
-        <button
-            v-if="game.gameOver && !authLoggedIn && !signInDismissed"
-            class="w-full text-center py-2.5 text-xs text-muted hover:text-ink transition-colors cursor-pointer"
-            @click="authLoginWithGoogle()"
-        >
-            Sign in to protect your streak &rarr;
-        </button>
 
         <!-- Next wordle timer — daily modes only -->
         <div

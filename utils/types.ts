@@ -250,6 +250,7 @@ export interface UiStrings {
     board?: string;
     new_game?: string;
     share_result?: string;
+    keep_playing?: string;
     unlimited_mode?: string;
     day_streak?: string;
     last_28_days?: string;
