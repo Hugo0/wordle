@@ -636,6 +636,7 @@ function onKeepPlaying() {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     min-height: min(280px, calc(100dvh - 310px));
     /* Cap height so the input stays visible without scrolling.
        Navbar ~50 + card header ~90 + input ~80 + card/body padding ~80 ≈ 300px.

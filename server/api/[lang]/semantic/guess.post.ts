@@ -97,8 +97,14 @@ export default defineEventHandler(async (event) => {
             }
         }
 
-        // Compass hints
-        const compassResult = computeCompass(loadSemanticDataSafe(), guessVec, targetVec, 5, []);
+        // Compass hints — still uses SemanticData for axis vectors (140KB, loaded via warmup)
+        // Falls back to empty compass if data isn't available
+        let compassResult = { hints: [] as any[], status: 'close' as const, totalExplained: 0 };
+        try {
+            compassResult = computeCompass(loadSemanticDataSafe(), guessVec, targetVec, 5, []);
+        } catch {
+            /* axes not loaded — skip compass */
+        }
 
         const response: Record<string, unknown> = {
             valid: true,
