@@ -92,10 +92,12 @@ function loadJson<T>(filename: string): T {
 
 async function seedWordEmbeddings() {
     const { words, embeddings } = loadEmbeddings();
-    const targets = new Set<string>(loadJson<string[]>('targets.json'));
+    const targetsData = loadJson<{ targets?: string[] } | string[]>('targets.json');
+    const targets = new Set<string>(Array.isArray(targetsData) ? targetsData : targetsData.targets ?? []);
     const umap = loadJson<Record<string, [number, number]>>('umap.json');
     const pca2d = loadJson<Record<string, [number, number]>>('pca2d.json');
-    const vocabulary = new Set<string>(loadJson<string[]>('vocabulary.json'));
+    const vocabData = loadJson<{ words?: string[] } | string[]>('vocabulary.json');
+    const vocabulary = new Set<string>(Array.isArray(vocabData) ? vocabData : vocabData.words ?? []);
 
     const N = words.length;
     console.log(`[seed] Inserting ${N} word embeddings...`);
@@ -163,9 +165,13 @@ async function seedWordEmbeddings() {
 }
 
 async function seedAxes() {
-    const axesData = loadJson<Record<string, any>>('axes.json');
+    const rawAxes = loadJson<Record<string, any>>('axes.json');
+    // Axes file may be wrapped: { version, axes: {...}, coherence_auc, ranges }
+    const axesData = rawAxes.axes ?? rawAxes;
+    const aucData = rawAxes.coherence_auc ?? rawAxes._auc ?? {};
+    const rangesData = rawAxes.ranges ?? rawAxes._ranges ?? {};
     const axisNames = Object.keys(axesData).filter(
-        (k) => !['_model', '_dims', '_auc', '_ranges'].includes(k)
+        (k) => !['version', '_model', '_dims', '_auc', '_ranges', 'coherence_auc', 'ranges'].includes(k)
     );
 
     console.log(`[seed] Inserting ${axisNames.length} semantic axes...`);
@@ -179,8 +185,8 @@ async function seedAxes() {
             if (!axis?.vector) continue;
 
             const vecStr = `[${axis.vector.join(',')}]`;
-            const auc = axesData._auc?.[name] ?? 0;
-            const ranges = axesData._ranges?.[name];
+            const auc = aucData[name] ?? 0;
+            const ranges = rangesData[name];
 
             await client.query(
                 `INSERT INTO wordle.semantic_axes (lang, name, low_anchor, high_anchor, vector, auc, range_p5, range_p95)
@@ -213,7 +219,8 @@ async function seedAxes() {
 
 async function seedTargetNeighbors() {
     const { words, embeddings } = loadEmbeddings();
-    const targets = loadJson<string[]>('targets.json');
+    const targetsRaw = loadJson<{ targets?: string[] } | string[]>('targets.json');
+    const targets = Array.isArray(targetsRaw) ? targetsRaw : targetsRaw.targets ?? [];
     const N = words.length;
 
     // Build word → index map
