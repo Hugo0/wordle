@@ -27,7 +27,7 @@
                     :aria-labelledby="labelId || undefined"
                     :aria-label="ariaLabel || undefined"
                     tabindex="-1"
-                    class="relative w-full border border-rule bg-paper text-ink shadow-xl z-10 modal-animate"
+                    class="relative w-full border border-rule bg-paper text-ink shadow-xl z-10 modal-animate max-h-[calc(100dvh-2rem)] overflow-y-auto editorial-scroll"
                     :class="sizeClass"
                 >
                     <div class="relative flex flex-col w-full outline-none" :class="paddingClass">

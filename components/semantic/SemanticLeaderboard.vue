@@ -377,23 +377,7 @@ function onRowLeave() {
 }
 
 /* Design-system scrollbar — matches AppSidebar */
-.editorial-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-rule) transparent;
-}
-.editorial-scroll::-webkit-scrollbar {
-    width: 4px;
-}
-.editorial-scroll::-webkit-scrollbar-track {
-    background: transparent;
-}
-.editorial-scroll::-webkit-scrollbar-thumb {
-    background: var(--color-rule);
-    border-radius: 2px;
-}
-.editorial-scroll::-webkit-scrollbar-thumb:hover {
-    background: var(--color-muted);
-}
+/* editorial-scroll is now global (design-system.css) */
 
 .guess-item {
     display: flex;

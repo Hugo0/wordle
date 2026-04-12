@@ -142,10 +142,20 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Unknown or expired targetId' });
     }
 
+    const lang = getRouterParam(event, 'lang') ?? 'en';
+
+    // Tier 0: DB cache
+    try {
+        const { getSemanticHint, setSemanticHint } = await import('~/server/utils/db-cache');
+        const dbHint = await getSemanticHint(lang, target);
+        if (dbHint) return { hint: dbHint, cached: true };
+    } catch {
+        /* fall through */
+    }
+
+    // Tier 1: Disk cache (fallback during migration)
     mkdirSync(CACHE_DIR, { recursive: true });
     const cacheFile = join(CACHE_DIR, `${target}.json`);
-
-    // Serve from cache — same hint for all players on the same word
     if (existsSync(cacheFile)) {
         try {
             const cached = JSON.parse(readFileSync(cacheFile, 'utf-8'));
@@ -153,15 +163,24 @@ export default defineEventHandler(async (event) => {
                 return { hint: cached.hint, cached: true };
             }
         } catch {
-            // fall through to regenerate
+            /* fall through */
         }
     }
 
+    // Tier 2: Generate via LLM
     const hint = await generateValidatedHint(target);
     if (!hint) {
         return { hint: null, cached: false, error: 'llm_unavailable' };
     }
 
+    // Cache to DB (primary) and disk (backup)
+    try {
+        const { setSemanticHint } = await import('~/server/utils/db-cache');
+        setSemanticHint(lang, target, hint, LLM_MODEL);
+    } catch {
+        /* non-fatal */
+    }
     writeFileSync(cacheFile, JSON.stringify({ hint, createdAt: Date.now() }));
+
     return { hint, cached: false };
 });

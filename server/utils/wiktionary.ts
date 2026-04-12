@@ -61,9 +61,20 @@ export async function checkWiktionaryExists(
     word: string,
     langCode: string
 ): Promise<boolean | null> {
+    // Tier 0: DB cache
+    try {
+        const { getWiktionaryExists, setWiktionaryExists } = await import('./db-cache');
+        const dbResult = await getWiktionaryExists(langCode, word);
+        if (dbResult !== null) return dbResult;
+    } catch {
+        // DB unavailable — fall through
+    }
+
+    // Tier 1: Disk cache (fallback during migration)
     const cached = readCache(langCode, word);
     if (cached) return cached.exists;
 
+    // Tier 2: HEAD request to Wiktionary
     const wiktLang = getWiktLang(langCode);
     const url = `https://${wiktLang}.wiktionary.org/wiki/${encodeURIComponent(word)}`;
 
@@ -73,16 +84,19 @@ export async function checkWiktionaryExists(
             signal: AbortSignal.timeout(3000),
             redirect: 'manual',
         });
-        // 200 → entry exists. 404 → doesn't exist. 301/302 → redirect, still
-        // counts as "exists" because Wiktionary redirects alternate-casing
-        // and common misspellings to the canonical entry.
         const exists = resp.status === 200 || (resp.status >= 300 && resp.status < 400);
+
+        // Cache to DB (primary) and disk (backup)
+        try {
+            const { setWiktionaryExists } = await import('./db-cache');
+            setWiktionaryExists(langCode, word, exists);
+        } catch {
+            /* non-fatal */
+        }
         writeCache(langCode, word, exists);
+
         return exists;
     } catch {
-        // Network error — don't cache, return null so the caller can
-        // fall back to hiding the link without polluting the cache with
-        // false negatives.
         return null;
     }
 }

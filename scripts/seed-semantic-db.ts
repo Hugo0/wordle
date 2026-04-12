@@ -123,6 +123,10 @@ async function seedWordEmbeddings() {
                 const umapCoords = umap[word];
                 const pca2dCoords = pca2d[word];
 
+                // Sanitize coordinates — NaN/Infinity → null
+                const safeFloat = (v: number | undefined | null): number | null =>
+                    v != null && Number.isFinite(v) ? v : null;
+
                 values.push(
                     `($${paramIdx++}, $${paramIdx++}, $${paramIdx++}::vector, $${paramIdx++}, $${paramIdx++}, $${paramIdx++}, $${paramIdx++}, $${paramIdx++}, $${paramIdx++})`
                 );
@@ -130,10 +134,10 @@ async function seedWordEmbeddings() {
                     LANG,
                     word,
                     vecStr,
-                    umapCoords?.[0] ?? null,
-                    umapCoords?.[1] ?? null,
-                    pca2dCoords?.[0] ?? null,
-                    pca2dCoords?.[1] ?? null,
+                    safeFloat(umapCoords?.[0]),
+                    safeFloat(umapCoords?.[1]),
+                    safeFloat(pca2dCoords?.[0]),
+                    safeFloat(pca2dCoords?.[1]),
                     targets.has(word),
                     vocabulary.has(word)
                 );

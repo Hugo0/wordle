@@ -4,9 +4,9 @@
         :style="{ viewTransitionName: logoMode ? 'landing-header' : 'header' }"
     >
         <!-- Left: Menu toggle + Info (game pages only) -->
-        <div class="flex items-center gap-1 z-30">
+        <div class="flex items-center gap-0.5 sm:gap-1 z-30">
             <button
-                class="p-2 text-muted hover:text-ink transition-colors"
+                class="p-1.5 sm:p-2 text-muted hover:text-ink transition-colors"
                 :aria-label="sidebarOpen ? 'Close menu' : 'Open menu'"
                 :aria-expanded="sidebarOpen"
                 aria-controls="app-sidebar"
@@ -16,7 +16,7 @@
             </button>
             <button
                 v-if="showHelp"
-                class="p-2 text-muted hover:text-ink transition-colors"
+                class="p-1.5 sm:p-2 text-muted hover:text-ink transition-colors"
                 aria-label="How to play"
                 @click="$emit('help')"
             >
@@ -84,7 +84,7 @@
             </ClientOnly>
             <button
                 v-if="showResults"
-                class="p-2 text-muted hover:text-ink transition-colors"
+                class="p-1.5 sm:p-2 text-muted hover:text-ink transition-colors"
                 aria-label="Game results"
                 @click="$emit('results')"
             >

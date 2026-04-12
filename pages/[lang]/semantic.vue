@@ -636,10 +636,11 @@ function onKeepPlaying() {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 280px;
+    min-height: min(280px, calc(100dvh - 310px));
     /* Cap height so the input stays visible without scrolling.
        Navbar ~50 + card header ~90 + input ~80 + card/body padding ~80 ≈ 300px.
-       Use dvh to account for mobile browser chrome. */
+       Use dvh to account for mobile browser chrome.
+       min() ensures min-height never exceeds max-height on short viewports. */
     max-height: calc(100dvh - 310px);
 }
 
@@ -710,8 +711,8 @@ function onKeepPlaying() {
         display: none;
     }
     .map-canvas-wrap {
-        min-height: 180px;
-        max-height: 40vh;
+        min-height: min(180px, 40dvh);
+        max-height: 40dvh;
     }
     /* Fixed input bar: pinned to the bottom of the viewport so it
        remains accessible when the mobile keyboard opens. */
@@ -756,7 +757,7 @@ function onKeepPlaying() {
         font-size: 15px;
     }
     .map-canvas-wrap {
-        min-height: 200px;
+        min-height: min(200px, 40dvh);
     }
 }
 </style>

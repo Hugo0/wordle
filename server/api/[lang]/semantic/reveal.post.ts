@@ -21,8 +21,12 @@ import {
     projectAllAxes,
     rankToDisplay,
 } from '~/server/utils/semantic';
+import * as semanticDb from '~/server/utils/semantic-db';
+
+const USE_DB = process.env.SEMANTIC_DB === '1';
 
 export default defineEventHandler(async (event) => {
+    const lang = getRouterParam(event, 'lang') ?? 'en';
     const body = await readBody(event);
     const targetId = body?.targetId as string | undefined;
     const exclude = (body?.exclude as string[] | undefined) ?? [];
@@ -36,6 +40,37 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Unknown or expired targetId' });
     }
 
+    // ── DB-backed path ──
+    if (USE_DB) {
+        const targetUmap = await semanticDb.get2dPosition(lang, target);
+        const excludeList = [target, ...exclude.map((w) => w.toLowerCase().trim())];
+        const neighbours = await semanticDb.knnNearest(lang, target, k, excludeList);
+        const totalRanked = await semanticDb.getTotalRanked(lang);
+
+        const enriched = await Promise.all(
+            neighbours.map(async (n) => {
+                const rank =
+                    (await semanticDb.computeGuessRank(lang, target, n.word)) ?? totalRanked;
+                return {
+                    word: n.word,
+                    rank,
+                    totalRanked,
+                    display: rankToDisplay(rank, totalRanked),
+                    similarity: n.similarity,
+                    umapPosition: n.umapX != null ? [n.umapX, n.umapY] : null,
+                    allProjectionsNormalized: {} as Record<string, number>,
+                };
+            })
+        );
+
+        return {
+            targetWord: target,
+            targetUmapPosition: targetUmap,
+            neighbours: enriched,
+        };
+    }
+
+    // ── Legacy in-memory path ──
     const data = loadSemanticDataSafe();
     const targetVec = getEmbedding(data, target);
     if (!targetVec) {

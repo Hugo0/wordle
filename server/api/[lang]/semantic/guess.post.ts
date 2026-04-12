@@ -30,8 +30,12 @@ import {
     projectAllAxes,
     rankToDisplay,
 } from '~/server/utils/semantic';
+import * as semanticDb from '~/server/utils/semantic-db';
+
+const USE_DB = process.env.SEMANTIC_DB === '1';
 
 export default defineEventHandler(async (event) => {
+    const lang = getRouterParam(event, 'lang') ?? 'en';
     const body = await readBody(event);
     const targetId = body?.targetId as string | undefined;
     const word = (body?.word as string | undefined)?.toLowerCase().trim();
@@ -46,6 +50,76 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Unknown or expired targetId' });
     }
 
+    // ── DB-backed path (SEMANTIC_DB=1) ──
+    if (USE_DB) {
+        const targetVec = await semanticDb.getEmbedding(lang, target);
+        if (!targetVec) {
+            throw createError({ statusCode: 500, message: 'Target embedding missing' });
+        }
+
+        let guessVec = await semanticDb.getEmbedding(lang, word);
+        if (!guessVec) {
+            if (!/^[a-z][a-z\-']{0,24}$/.test(word)) {
+                return { valid: false, word, reason: 'bad_format' };
+            }
+            // Spellcheck: still uses in-memory valid words set (2MB, loaded at startup)
+            const data = loadSemanticDataSafe();
+            if (data.validWords.size > 0 && !data.validWords.has(word)) {
+                return { valid: false, word, reason: 'not_a_word' };
+            }
+            guessVec = await fetchEmbeddingOnDemand(data, word);
+            if (!guessVec) {
+                return { valid: false, word, reason: 'embedding_failed' };
+            }
+            // Store on-demand embedding in DB for future queries
+            semanticDb.storeOnDemandEmbedding(lang, word, guessVec);
+        }
+
+        const rawSimilarity = cosineSimilarity(guessVec, targetVec);
+        const rank = (await semanticDb.computeGuessRank(lang, target, word, guessVec)) ?? 50001;
+        const totalRanked = await semanticDb.getTotalRanked(lang);
+        const won = rank === 1;
+        const display = won ? 1 : Math.min(0.99, rankToDisplay(rank, totalRanked));
+        const umapPosition = await semanticDb.get2dPosition(lang, word);
+
+        // Axis projections — uses cached axes vectors (140KB in memory)
+        const axesVectors = semanticDb.getCachedAxesVectors();
+        const axesNames = semanticDb.getCachedAxesNames();
+        const normalizedGuessProjections: Record<string, number> = {};
+        if (axesVectors && axesNames.length > 0) {
+            const dims = guessVec.length;
+            for (let a = 0; a < axesNames.length; a++) {
+                let dot = 0;
+                for (let i = 0; i < dims; i++) {
+                    dot += guessVec[i]! * axesVectors[a * dims + i]!;
+                }
+                normalizedGuessProjections[axesNames[a]!] = dot;
+            }
+        }
+
+        // Compass hints
+        const compassResult = computeCompass(loadSemanticDataSafe(), guessVec, targetVec, 5, []);
+
+        const response: Record<string, unknown> = {
+            valid: true,
+            word,
+            rank,
+            totalRanked,
+            display,
+            similarity: rawSimilarity,
+            umapPosition,
+            allProjectionsNormalized: normalizedGuessProjections,
+            compass: compassResult.hints,
+            compassStatus: compassResult.status,
+            compassExplained: compassResult.totalExplained,
+            won,
+            guessNumber,
+        };
+        if (won) response.targetWord = target;
+        return response;
+    }
+
+    // ── Legacy in-memory path ──
     const data = loadSemanticDataSafe();
     const targetVec = getEmbedding(data, target);
     if (!targetVec) {
@@ -57,8 +131,6 @@ export default defineEventHandler(async (event) => {
         if (!/^[a-z][a-z\-']{0,24}$/.test(word)) {
             return { valid: false, word, reason: 'bad_format' };
         }
-        // Spellcheck: reject words that aren't in the validator dictionary.
-        // Stops misspellings like "girafe" from getting an OpenAI embedding.
         if (data.validWords.size > 0 && !data.validWords.has(word)) {
             return { valid: false, word, reason: 'not_a_word' };
         }
@@ -72,25 +144,15 @@ export default defineEventHandler(async (event) => {
     const rank = computeGuessRank(data, target, word, guessVec) ?? data.words.length;
     const totalRanked = data.words.length;
     const won = rank === 1;
-    // Display % — log-scaled rank, capped at 0.99 for non-wins so only the
-    // target itself can show 100%.
     const display = won ? 1 : Math.min(0.99, rankToDisplay(rank, totalRanked));
-
     const umapPosition = get2dPosition(data, word);
 
-    // Per-axis projections (normalized to [0,1]), cached client-side for
-    // axis slice view transitions.
     const guessProjections = projectAllAxes(data, guessVec);
     const normalizedGuessProjections: Record<string, number> = {};
     for (const axis of data.axesNames) {
         normalizedGuessProjections[axis] = normalizeProjection(data, axis, guessProjections[axis]!);
     }
 
-    // Compass hints: iterative Gram-Schmidt matching pursuit. Return up to 5
-    // axes so the client can filter out whichever are currently displayed on
-    // a slice view and still have 2 to render. Top 2 are guaranteed orthogonal;
-    // positions 3-5 are fallbacks for the slice-view exclude filter. Returns
-    // status='close' when the pair is too near for meaningful hints.
     const compassResult = computeCompass(data, guessVec, targetVec, 5, []);
 
     const response: Record<string, unknown> = {
@@ -99,7 +161,7 @@ export default defineEventHandler(async (event) => {
         rank,
         totalRanked,
         display,
-        similarity: rawSimilarity, // raw cosine, for debugging only
+        similarity: rawSimilarity,
         umapPosition,
         allProjectionsNormalized: normalizedGuessProjections,
         compass: compassResult.hints,
@@ -108,10 +170,6 @@ export default defineEventHandler(async (event) => {
         won,
         guessNumber,
     };
-
-    if (won) {
-        response.targetWord = target;
-    }
-
+    if (won) response.targetWord = target;
     return response;
 });
