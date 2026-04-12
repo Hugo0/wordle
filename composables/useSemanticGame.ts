@@ -247,7 +247,7 @@ export function useSemanticGame(lang: string) {
             dayIdx.value = resp.dayIdx;
             axisAnchors.value = resp.axisAnchors;
             targetUmapPosition.value = resp.targetUmapPosition;
-            maxGuesses.value = resp.maxGuesses ?? 20;
+            maxGuesses.value = resp.maxGuesses ?? GAME_MODE_CONFIG.semantic.maxGuesses;
             totalRanked.value = resp.totalRanked ?? resp.vocabularySize;
 
             // Attempt to restore saved state for the same daily word.
