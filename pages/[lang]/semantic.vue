@@ -630,15 +630,6 @@ function onKeepPlaying() {
     margin: 4px 0 0;
 }
 
-/* Hide map header text on short viewports to give the map more space */
-@media (max-height: 700px) {
-    .map-header {
-        display: none;
-    }
-    .map-canvas-wrap {
-        --map-chrome: 210px; /* no header: navbar ~50 + input ~80 + padding ~80 */
-    }
-}
 .map-canvas-wrap {
     /* Chrome around the map: navbar ~50 + card header ~90 + input ~80 + padding ~80 ≈ 310px */
     --map-chrome: 310px;
@@ -650,17 +641,18 @@ function onKeepPlaying() {
     min-height: min(200px, calc(100dvh - var(--map-chrome)));
     max-height: calc(100dvh - var(--map-chrome));
 }
-/* The square map sizes from width (aspect-ratio:1). Cap width to
-   available height so the square fits vertically. Expanded mode excluded. */
+/* Cap the square map to available height (aspect-ratio:1 sizes from width) */
 .map-canvas-wrap :deep(.map-outer:not(.map-expanded) .canvas-wrap) {
     max-width: min(100%, calc(100dvh - var(--map-chrome)));
 }
-/* Constrain the square map to fit within the available height.
-   aspect-ratio:1 sizes from width by default, so we also cap
-   width to the available height so the square never overflows.
-   Only when NOT expanded — expanded mode uses MapFrame's fixed overlay. */
-.map-canvas-wrap :deep(.map-outer:not(.map-expanded) .canvas-wrap) {
-    max-width: min(100%, calc(100dvh - var(--map-chrome)));
+/* Short viewports: hide header, reduce chrome budget → bigger map */
+@media (max-height: 700px) {
+    .map-header {
+        display: none;
+    }
+    .map-canvas-wrap {
+        --map-chrome: 210px;
+    }
 }
 
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */
