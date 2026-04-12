@@ -513,3 +513,13 @@ Add semantic-specific content to the `/en/best-starting-words` page — tips for
 - Silent 60-char truncation: configured titles are dropped without warning when too long. Should either warn at build time or use the configured title regardless.
 - Hardcoded `| Wordle English` suffix: not all modes benefit from Wordle brand. Add configurable suffix per mode.
 - No length validation at config time — easy to write titles/descriptions that get silently truncated.
+
+### 21. Semantic mobile layout experiment
+On mobile, reorder the semantic layout:
+1. **Guesses list** at the very top (always visible above keyboard)
+2. **Compass hints** below guesses
+3. **Map** below compass (less important on mobile — player rarely needs it mid-guess)
+4. **Oracle hint** below map
+5. **Input** pinned to bottom (already done)
+
+This prioritizes the information the player actually needs while typing (rank feedback, compass direction) over the visual map. The map is still accessible by scrolling but doesn't dominate the viewport.
