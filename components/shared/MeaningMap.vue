@@ -173,9 +173,11 @@ const autoZoom = computed(() => {
         return 1.0;
     }
 
-    // Absolute: dynamic zoom so closest dot pair has ~50px separation
+    // Absolute: dynamic zoom so closest foreground dot pair has ~50px separation.
+    // Capped at 8x to prevent giant labels during word transitions.
     const MIN_SPACING = 50;
     const fg = props.dots.filter((d) => d.role !== 'muted');
+    if (fg.length < 2) return 1.0;
     const pts = fg.map((d) => d.pos2d);
     let minDist = Infinity;
     for (let i = 0; i < pts.length; i++) {
@@ -186,7 +188,7 @@ const autoZoom = computed(() => {
     }
     if (minDist < 1e-6 || !isFinite(minDist)) return 1.0;
     const z = MIN_SPACING / (minDist * canvasSize.value);
-    return Math.min(30, Math.max(1.0, z));
+    return Math.min(8, Math.max(1.0, z));
 });
 
 const totalZoom = computed(() => autoZoom.value * props.userZoom);
