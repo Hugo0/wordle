@@ -43,7 +43,6 @@ export default defineEventHandler(async (event) => {
         return { word, inVocab: false, ...EMPTY_RESPONSE };
     }
 
-    // Get embedding from DB (or fetch on-demand via OpenAI)
     let vec = await semanticDb.getEmbedding(lang, word);
     const inVocab = vec !== null;
     if (!vec) {
@@ -53,51 +52,20 @@ export default defineEventHandler(async (event) => {
         return { word, inVocab: false, ...EMPTY_RESPONSE };
     }
 
-    // Per-axis projections from DB-cached axes
-    const cachedAxes = semanticDb.getCachedAxes();
-    const axesVectors = semanticDb.getCachedAxesVectors();
-    const axesNames = semanticDb.getCachedAxesNames();
-    const D = vec.length;
-    const projections = [];
+    const projections = semanticDb.projectAxesDetailed(vec, 0.8);
 
-    if (cachedAxes && axesVectors) {
-        for (let a = 0; a < axesNames.length; a++) {
-            const axis = cachedAxes[a]!;
-            if (axis.auc < 0.8) continue;
-            let raw = 0;
-            const rowOffset = a * D;
-            for (let j = 0; j < D; j++) {
-                raw += vec[j]! * axesVectors[rowOffset + j]!;
-            }
-            // Normalize using p5/p95 range
-            let normalized = 0.5;
-            if (axis.rangeP95 !== axis.rangeP5) {
-                normalized = Math.max(0, Math.min(1,
-                    (raw - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5)
-                ));
-            }
-            projections.push({
-                axis: axis.name,
-                lowAnchor: axis.lowAnchor,
-                highAnchor: axis.highAnchor,
-                normalized,
-                rawProjection: raw,
-            });
-        }
-    }
+    // Parallel: neighbors + position (vec already in hand, use knnNearestByVector)
+    const [neighbors, umap] = await Promise.all([
+        semanticDb.knnNearestByVector(lang, vec, 80, [word]),
+        semanticDb.get2dPosition(lang, word),
+    ]);
 
-    // Nearest neighbors via pgvector HNSW — includes UMAP coords
-    const neighbors = await semanticDb.knnNearest(lang, word, 80, [word]);
     const nearest = neighbors.map((n) => ({
         word: n.word,
         similarity: n.similarity,
         umap: n.umapX != null ? [n.umapX, n.umapY] as [number, number] : null,
     }));
 
-    // UMAP position for this word
-    const umap = await semanticDb.get2dPosition(lang, word);
-
-    // Cosine similarity to relativeTo word (for context word layout)
     let similarityTo: number | null = null;
     if (relativeTo) {
         if (relativeTo === word) {

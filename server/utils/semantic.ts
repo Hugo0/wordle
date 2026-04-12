@@ -92,24 +92,16 @@ function magnitudeTierFromExplained(explained: number): 'slight' | 'clear' | 'st
  * Uses iterative matching pursuit (Gram-Schmidt) to find the k axes that
  * best explain the direction r = target - guess in embedding space.
  *
- * The `data` parameter is a lightweight shim with only axes data — NOT the
- * full SemanticData object. Required fields: dims, axesNames, axesVectors,
- * axes (for anchor labels), axesAuc.
+ * Accepts AxisData[] from the DB cache directly — no format conversion needed.
  */
 export function computeCompass(
-    data: {
-        dims: number;
-        axesNames: string[];
-        axesVectors: Float32Array;
-        axes: Record<string, { low_anchor: string; high_anchor: string }>;
-        axesAuc: Record<string, number>;
-    },
+    axes: Array<{ name: string; lowAnchor: string; highAnchor: string; vector: Float32Array; auc: number }>,
     guessVec: Float32Array,
     targetVec: Float32Array,
     k: number = 5,
     excludeAxes: string[] = []
 ): CompassResult {
-    const D = data.dims;
+    const D = guessVec.length;
 
     const r = new Float32Array(D);
     let rNormSq = 0;
@@ -132,17 +124,17 @@ export function computeCompass(
         explained: number;
     };
     const scored: Scored[] = [];
-    for (let a = 0; a < data.axesNames.length; a++) {
-        const name = data.axesNames[a]!;
-        if (excludeSet.has(name)) continue;
-        if ((data.axesAuc[name] ?? 0) < 0.8) continue;
+    for (let a = 0; a < axes.length; a++) {
+        const axis = axes[a]!;
+        if (excludeSet.has(axis.name)) continue;
+        if (axis.auc < 0.8) continue;
         let delta = 0;
-        const rowOffset = a * D;
+        const vec = axis.vector;
         for (let i = 0; i < D; i++) {
-            delta += data.axesVectors[rowOffset + i]! * r[i]!;
+            delta += vec[i]! * r[i]!;
         }
         scored.push({
-            name,
+            name: axis.name,
             rowIdx: a,
             delta,
             explained: (delta * delta) / rNormSq,
@@ -169,7 +161,7 @@ export function computeCompass(
 
         for (const b of scored) {
             if (picked.some((p) => p.rowIdx === b.rowIdx)) continue;
-            const bRow = b.rowIdx * D;
+            const bVec = axes[b.rowIdx]!.vector;
 
             const dots = new Float32Array(basis.length);
             let sumBasisProj = 0;
@@ -177,7 +169,7 @@ export function computeCompass(
                 let d = 0;
                 const bi = basis[i]!;
                 for (let j = 0; j < D; j++) {
-                    d += data.axesVectors[bRow + j]! * bi[j]!;
+                    d += bVec[j]! * bi[j]!;
                 }
                 dots[i] = d;
                 sumBasisProj += d * basisDotR[i]!;
@@ -205,11 +197,10 @@ export function computeCompass(
         picked.push(best);
         totalExplained += bestExplained;
 
-        // Extend orthonormal basis
-        const bRow = best.rowIdx * D;
+        const bestVec = axes[best.rowIdx]!.vector;
         const newBasis = new Float32Array(D);
         for (let j = 0; j < D; j++) {
-            let v = data.axesVectors[bRow + j]!;
+            let v = bestVec[j]!;
             for (let i = 0; i < basis.length; i++) {
                 v -= bestBasisDots![i]! * basis[i]![j]!;
             }
@@ -229,11 +220,11 @@ export function computeCompass(
     }
 
     const hints: CompassHint[] = picked.map((p) => {
-        const rec = data.axes[p.name]!;
+        const axis = axes[p.rowIdx]!;
         return {
             axis: p.name,
-            lowAnchor: rec.low_anchor,
-            highAnchor: rec.high_anchor,
+            lowAnchor: axis.lowAnchor,
+            highAnchor: axis.highAnchor,
             direction: p.delta >= 0 ? 'positive' : 'negative',
             magnitudeTier: magnitudeTierFromExplained(p.explained),
             delta: p.delta,

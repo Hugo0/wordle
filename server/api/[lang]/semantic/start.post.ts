@@ -10,6 +10,7 @@
 
 import { createSession } from '~/server/utils/semantic';
 import * as semanticDb from '~/server/utils/_semantic-db';
+import { EMBEDDING_MODEL } from '~/server/utils/_semantic-db';
 import { getTodaysIdx, toModeDayIdx } from '~/server/lib/day-index';
 
 function pickDailyTarget(targets: readonly string[], lang: string, dayIdx: number): string {
@@ -86,7 +87,7 @@ export default defineEventHandler(async (event) => {
         axes: axesNames,
         axesCoherence,
         axisAnchors,
-        modelName: 'text-embedding-3-large',
+        modelName: EMBEDDING_MODEL,
         targetUmapPosition,
         maxGuesses: 15,
         totalRanked,

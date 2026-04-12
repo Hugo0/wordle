@@ -1,21 +1,19 @@
 /**
  * semantic-db — pgvector-backed semantic operations.
  *
- * Replaces the in-memory Float32Array embedding matrix (~98-230MB) with
- * Postgres queries using pgvector's HNSW index and precomputed neighbor
- * rankings. Activated via SEMANTIC_DB=1 env var.
- *
- * Architecture:
- *   - Rank lookup: precomputed target_neighbors table (btree, O(1))
- *   - kNN: pgvector HNSW index (approximate, ~5-15ms for k=8)
- *   - Compass: fetch 2 vectors from DB, compute dot products in-app
- *   - Axes: loaded into memory at startup (70 × 512 = 140KB, negligible)
- *
- * All functions return null on error — callers can fall back to in-memory.
+ * All embedding lookups, rank computation, kNN, and axis projections
+ * go through Postgres. Only axes (140KB) and targets (~10KB) are
+ * cached in memory after first load.
  */
 
 import { prisma } from './prisma';
 import { cosineSimilarity } from './semantic';
+import { dedup } from './inflight';
+
+export { type AxisData };
+
+export const EMBEDDING_MODEL = 'text-embedding-3-large';
+export const EMBEDDING_DIMS = 512;
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Axis data (loaded once at startup, cached in memory — 140KB)
@@ -31,12 +29,13 @@ interface AxisData {
     rangeP95: number;
 }
 
-let _axesCache: { lang: string; axes: AxisData[]; axesVectors: Float32Array } | null = null;
+let _axesCache: {
+    lang: string;
+    axes: AxisData[];
+    axesNames: string[];
+    axesVectors: Float32Array;
+} | null = null;
 
-/**
- * Load axis data from DB. Called once at startup, cached forever.
- * Total size: ~140KB (70 axes × 512 dims × 4 bytes). Negligible.
- */
 export async function loadAxes(lang: string = 'en'): Promise<AxisData[]> {
     if (_axesCache?.lang === lang) return _axesCache.axes;
 
@@ -45,7 +44,7 @@ export async function loadAxes(lang: string = 'en'): Promise<AxisData[]> {
             name: string;
             low_anchor: string;
             high_anchor: string;
-            vector: string; // pgvector returns as string "[0.1,0.2,...]"
+            vector: string;
             auc: number | null;
             range_p5: number | null;
             range_p95: number | null;
@@ -63,37 +62,105 @@ export async function loadAxes(lang: string = 'en'): Promise<AxisData[]> {
         rangeP95: r.range_p95 ?? 0,
     }));
 
-    // Build concatenated axes vector array for fast dot products
-    const dims = axes[0]?.vector.length ?? 512;
+    const dims = axes[0]?.vector.length ?? EMBEDDING_DIMS;
     const axesVectors = new Float32Array(axes.length * dims);
     for (let a = 0; a < axes.length; a++) {
         axesVectors.set(axes[a]!.vector, a * dims);
     }
 
-    _axesCache = { lang, axes, axesVectors };
+    const axesNames = axes.map((a) => a.name);
+    _axesCache = { lang, axes, axesNames, axesVectors };
     return axes;
 }
 
-/** Get cached axes vectors for dot product computation. */
 export function getCachedAxesVectors(): Float32Array | null {
     return _axesCache?.axesVectors ?? null;
 }
 
-/** Get cached axis names in order. */
 export function getCachedAxesNames(): string[] {
-    return _axesCache?.axes.map((a) => a.name) ?? [];
+    return _axesCache?.axesNames ?? [];
 }
 
-/** Get cached axis data (for normalization ranges). */
 export function getCachedAxes(): AxisData[] | null {
     return _axesCache?.axes ?? null;
+}
+
+/**
+ * Compute normalized [0,1] axis projections for a word vector.
+ * Optionally filter by minimum AUC coherence score.
+ */
+export function projectAxes(
+    vec: Float32Array,
+    opts?: { minAuc?: number; includeRaw?: boolean }
+): Record<string, number> {
+    const axes = _axesCache?.axes;
+    const axesVectors = _axesCache?.axesVectors;
+    if (!axes || !axesVectors) return {};
+
+    const D = vec.length;
+    const minAuc = opts?.minAuc ?? 0;
+    const result: Record<string, number> = {};
+
+    for (let a = 0; a < axes.length; a++) {
+        const axis = axes[a]!;
+        if (axis.auc < minAuc) continue;
+        let dot = 0;
+        const offset = a * D;
+        for (let i = 0; i < D; i++) dot += vec[i]! * axesVectors[offset + i]!;
+
+        if (axis.rangeP95 !== axis.rangeP5) {
+            result[axis.name] = Math.max(0, Math.min(1,
+                (dot - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5)
+            ));
+        } else {
+            result[axis.name] = 0.5;
+        }
+    }
+    return result;
+}
+
+/**
+ * Detailed axis projections with anchor labels (for word-explore endpoint).
+ */
+export function projectAxesDetailed(
+    vec: Float32Array,
+    minAuc: number = 0.8
+): Array<{ axis: string; lowAnchor: string; highAnchor: string; normalized: number; rawProjection: number }> {
+    const axes = _axesCache?.axes;
+    const axesVectors = _axesCache?.axesVectors;
+    if (!axes || !axesVectors) return [];
+
+    const D = vec.length;
+    const result = [];
+
+    for (let a = 0; a < axes.length; a++) {
+        const axis = axes[a]!;
+        if (axis.auc < minAuc) continue;
+        let dot = 0;
+        const offset = a * D;
+        for (let i = 0; i < D; i++) dot += vec[i]! * axesVectors[offset + i]!;
+
+        let normalized = 0.5;
+        if (axis.rangeP95 !== axis.rangeP5) {
+            normalized = Math.max(0, Math.min(1,
+                (dot - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5)
+            ));
+        }
+        result.push({
+            axis: axis.name,
+            lowAnchor: axis.lowAnchor,
+            highAnchor: axis.highAnchor,
+            normalized,
+            rawProjection: dot,
+        });
+    }
+    return result;
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
 // Embedding lookups
 // ═══════════════════════════════════════════════════════════════════════════
 
-/** Fetch a single word's embedding vector from the DB. */
 export async function getEmbedding(lang: string, word: string): Promise<Float32Array | null> {
     try {
         const rows = await prisma.$queryRaw<Array<{ vector: string }>>`
@@ -107,7 +174,6 @@ export async function getEmbedding(lang: string, word: string): Promise<Float32A
     }
 }
 
-/** Fetch UMAP or PCA2D coordinates for a word. */
 export async function get2dPosition(
     lang: string,
     word: string,
@@ -138,22 +204,19 @@ export async function get2dPosition(
 
 /**
  * Look up the rank of a guess word relative to a target.
- * Uses the precomputed target_neighbors table (top 5k per target).
- *
- * For in-vocab words within the top 5k: O(1) btree lookup.
- * For out-of-vocab or low-ranked words: fetch both vectors, compute
- * cosine, then count how many top-5k neighbors have higher cosine.
+ * Fast path: O(1) btree lookup on precomputed top-5k neighbors.
+ * Slow path: fetch vectors, compute cosine, count how many beat it.
  */
 export async function computeGuessRank(
     lang: string,
     target: string,
     guess: string,
-    guessVec?: Float32Array
+    guessVec?: Float32Array,
+    targetVec?: Float32Array
 ): Promise<number | null> {
     if (guess === target) return 1;
 
     try {
-        // Fast path: precomputed rank lookup
         const rows = await prisma.$queryRaw<Array<{ rank: number }>>`
             SELECT rank FROM wordle.target_neighbors
             WHERE lang = ${lang} AND target_word = ${target} AND word = ${guess}
@@ -161,31 +224,44 @@ export async function computeGuessRank(
         `;
         if (rows.length) return rows[0]!.rank;
 
-        // Slow path: word not in top 5k (or out-of-vocab)
-        // Fetch both vectors, compute cosine, count how many top-5k beat it
-        const gVec = guessVec ?? (await getEmbedding(lang, guess));
-        const tVec = await getEmbedding(lang, target);
+        // Slow path: word not in top 5k
+        const [gVec, tVec] = await Promise.all([
+            guessVec ? Promise.resolve(guessVec) : getEmbedding(lang, guess),
+            targetVec ? Promise.resolve(targetVec) : getEmbedding(lang, target),
+        ]);
         if (!gVec || !tVec) return null;
 
         const guessCos = cosineSimilarity(gVec, tVec);
 
-        // Count neighbors with higher cosine (all 5k are stored)
         const countRows = await prisma.$queryRaw<Array<{ cnt: bigint }>>`
             SELECT COUNT(*) as cnt FROM wordle.target_neighbors
             WHERE lang = ${lang} AND target_word = ${target} AND cosine > ${guessCos}
         `;
-        const betterCount = Number(countRows[0]?.cnt ?? 0);
-        return betterCount + 1;
+        return Number(countRows[0]?.cnt ?? 0) + 1;
     } catch (e) {
         console.warn('[semantic-db] computeGuessRank failed:', e);
         return null;
     }
 }
 
-/**
- * Get the total number of ranked words (vocab size). Cached in memory
- * after first query — changes only when the seed script runs.
- */
+/** Batch-fetch ranks for multiple words (1 query instead of N). */
+export async function batchGetRanks(
+    lang: string,
+    target: string,
+    words: string[]
+): Promise<Map<string, number>> {
+    if (words.length === 0) return new Map();
+    try {
+        const rows = await prisma.$queryRaw<Array<{ word: string; rank: number }>>`
+            SELECT word, rank FROM wordle.target_neighbors
+            WHERE lang = ${lang} AND target_word = ${target} AND word = ANY(${words}::text[])
+        `;
+        return new Map(rows.map((r) => [r.word, r.rank]));
+    } catch {
+        return new Map();
+    }
+}
+
 const _totalRankedCache = new Map<string, number>();
 export async function getTotalRanked(lang: string): Promise<number> {
     const cached = _totalRankedCache.get(lang);
@@ -216,10 +292,6 @@ export interface NeighborResult {
     pca2dY?: number;
 }
 
-/**
- * Find the k nearest neighbors to a word using pgvector's HNSW index.
- * Uses cosine distance operator (<=>).
- */
 export async function knnNearest(
     lang: string,
     word: string,
@@ -227,19 +299,14 @@ export async function knnNearest(
     excludeWords: string[] = []
 ): Promise<NeighborResult[]> {
     try {
-        // Get the word's embedding first
         const vec = await getEmbedding(lang, word);
         if (!vec) return [];
-
         return knnNearestByVector(lang, vec, k, excludeWords);
     } catch {
         return [];
     }
 }
 
-/**
- * Find k nearest neighbors by raw vector (for on-demand embeddings).
- */
 export async function knnNearestByVector(
     lang: string,
     vec: Float32Array,
@@ -247,8 +314,7 @@ export async function knnNearestByVector(
     excludeWords: string[] = []
 ): Promise<NeighborResult[]> {
     try {
-        const vecStr = `[${Array.from(vec).join(',')}]`;
-
+        const vecStr = toVectorLiteral(vec);
         const rows = await prisma.$queryRaw<
             Array<{
                 word: string;
@@ -269,7 +335,6 @@ export async function knnNearestByVector(
             ORDER BY embedding <=> ${vecStr}::vector
             LIMIT ${k}
         `;
-
         return rows.map((r) => ({
             word: r.word,
             similarity: r.similarity,
@@ -284,45 +349,28 @@ export async function knnNearestByVector(
     }
 }
 
-/**
- * Store an on-demand embedding (out-of-vocab word) in the DB.
- */
-export async function storeOnDemandEmbedding(
-    lang: string,
-    word: string,
-    vec: Float32Array
-): Promise<void> {
-    try {
-        const vecStr = `[${Array.from(vec).join(',')}]`;
-        await prisma.$executeRaw`
-            INSERT INTO wordle.word_embeddings (lang, word, embedding, is_target, is_vocab)
-            VALUES (${lang}, ${word}, ${vecStr}::vector, false, false)
-            ON CONFLICT (lang, word) DO UPDATE SET embedding = ${vecStr}::vector
-        `;
-    } catch {
-        // Non-critical — in-memory cache still works as fallback
-    }
-}
-
 // ═══════════════════════════════════════════════════════════════════════════
-// Vocab + target queries
+// Vocab + target queries (cached after first call)
 // ═══════════════════════════════════════════════════════════════════════════
 
-/** Get all target words for a language. */
+const _targetsCache = new Map<string, string[]>();
 export async function getTargets(lang: string): Promise<string[]> {
+    const cached = _targetsCache.get(lang);
+    if (cached) return cached;
     try {
         const rows = await prisma.$queryRaw<Array<{ word: string }>>`
             SELECT word FROM wordle.word_embeddings
             WHERE lang = ${lang} AND is_target = true
             ORDER BY word
         `;
-        return rows.map((r) => r.word);
+        const targets = rows.map((r) => r.word);
+        _targetsCache.set(lang, targets);
+        return targets;
     } catch {
         return [];
     }
 }
 
-/** Check if a word exists in the embedding vocabulary. */
 export async function wordExists(lang: string, word: string): Promise<boolean> {
     try {
         const rows = await prisma.$queryRaw<Array<{ cnt: bigint }>>`
@@ -335,27 +383,36 @@ export async function wordExists(lang: string, word: string): Promise<boolean> {
     }
 }
 
+export async function storeOnDemandEmbedding(
+    lang: string,
+    word: string,
+    vec: Float32Array
+): Promise<void> {
+    try {
+        const vecStr = toVectorLiteral(vec);
+        await prisma.$executeRaw`
+            INSERT INTO wordle.word_embeddings (lang, word, embedding, is_target, is_vocab)
+            VALUES (${lang}, ${word}, ${vecStr}::vector, false, false)
+            ON CONFLICT (lang, word) DO UPDATE SET embedding = ${vecStr}::vector
+        `;
+    } catch {
+        // Non-critical
+    }
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // On-demand embeddings (out-of-vocab words via OpenAI)
 // ═══════════════════════════════════════════════════════════════════════════
 
-const EMBEDDING_MODEL = 'text-embedding-3-large';
-const EMBEDDING_DIMS = 512;
-
 /**
  * Fetch an embedding for an out-of-vocab word via OpenAI, normalize it,
- * store in DB, and return. Returns null if OpenAI unavailable or fails.
- * Deduplicated — concurrent calls for the same word share one API request.
+ * store in DB, and return. Caller should check getEmbedding first — this
+ * function does NOT re-check the DB (to avoid a redundant round-trip).
  */
 export async function fetchOnDemandEmbedding(
     lang: string,
     word: string
 ): Promise<Float32Array | null> {
-    // Already in DB?
-    const existing = await getEmbedding(lang, word);
-    if (existing) return existing;
-
-    const { dedup } = await import('./inflight');
     return dedup('embedding', `${lang}:${word}`, async () => {
         const apiKey = process.env.OPENAI_API_KEY;
         if (!apiKey) return null;
@@ -382,7 +439,6 @@ export async function fetchOnDemandEmbedding(
             const raw = payload?.data?.[0]?.embedding as number[] | undefined;
             if (!raw || raw.length !== EMBEDDING_DIMS) return null;
 
-            // L2-normalize
             let norm = 0;
             for (let i = 0; i < raw.length; i++) norm += raw[i]! * raw[i]!;
             norm = Math.sqrt(norm) || 1;
@@ -402,10 +458,11 @@ export async function fetchOnDemandEmbedding(
 // Helpers
 // ═══════════════════════════════════════════════════════════════════════════
 
-/** Parse pgvector's string representation "[0.1,0.2,...]" into Float32Array. */
 function parseVector(pgvectorStr: string): Float32Array {
     const nums = pgvectorStr.replace(/^\[/, '').replace(/\]$/, '').split(',').map(Number);
     return new Float32Array(nums);
 }
 
-// cosineSimilarity imported from ./semantic (DRY — pre-normalized dot product)
+function toVectorLiteral(vec: Float32Array): string {
+    return `[${Array.from(vec).join(',')}]`;
+}

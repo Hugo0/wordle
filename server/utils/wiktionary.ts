@@ -40,7 +40,7 @@ export async function checkWiktionaryExists(
 
             try {
                 const { setWiktionaryExists } = await import('./db-cache');
-                setWiktionaryExists(langCode, word, exists);
+                await setWiktionaryExists(langCode, word, exists);
             } catch {
                 /* non-fatal */
             }

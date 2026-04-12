@@ -25,25 +25,22 @@ export default defineEventHandler(async (event) => {
 
     const excludeList = [target, ...exclude.map((w) => w.toLowerCase().trim())];
 
-    // Parallel: target position + neighbors + total ranked
     const [targetUmap, neighbours, totalRanked] = await Promise.all([
         semanticDb.get2dPosition(lang, target),
         semanticDb.knnNearest(lang, target, k, excludeList),
         semanticDb.getTotalRanked(lang),
     ]);
 
-    // Batch-fetch ranks for all neighbors in one query
     const neighborWords = neighbours.map((n) => n.word);
-    const ranks = await batchGetRanks(lang, target, neighborWords, totalRanked);
+    const rankMap = await semanticDb.batchGetRanks(lang, target, neighborWords);
 
-    const enriched = neighbours.map((n, i) => ({
+    const enriched = neighbours.map((n) => ({
         word: n.word,
-        rank: ranks[i] ?? totalRanked,
+        rank: rankMap.get(n.word) ?? totalRanked,
         totalRanked,
-        display: rankToDisplay(ranks[i] ?? totalRanked, totalRanked),
+        display: rankToDisplay(rankMap.get(n.word) ?? totalRanked, totalRanked),
         similarity: n.similarity,
         umapPosition: n.umapX != null ? [n.umapX, n.umapY] : null,
-        allProjectionsNormalized: {} as Record<string, number>,
     }));
 
     return {
@@ -52,24 +49,3 @@ export default defineEventHandler(async (event) => {
         neighbours: enriched,
     };
 });
-
-/** Batch-fetch ranks from target_neighbors table (1 query instead of N). */
-async function batchGetRanks(
-    lang: string,
-    target: string,
-    words: string[],
-    defaultRank: number
-): Promise<number[]> {
-    if (words.length === 0) return [];
-    try {
-        const { prisma } = await import('~/server/utils/prisma');
-        const rows = await prisma.$queryRaw<Array<{ word: string; rank: number }>>`
-            SELECT word, rank FROM wordle.target_neighbors
-            WHERE lang = ${lang} AND target_word = ${target} AND word = ANY(${words}::text[])
-        `;
-        const rankMap = new Map(rows.map((r) => [r.word, r.rank]));
-        return words.map((w) => rankMap.get(w) ?? defaultRank);
-    } catch {
-        return words.map(() => defaultRank);
-    }
-}

@@ -82,12 +82,9 @@ export async function upsertDefinition(
 // Word Stats
 // ═══════════════════════════════════════════════════════════════════════════
 
-export interface WordStats {
-    total: number;
-    wins: number;
-    losses: number;
-    distribution: Record<string, number>;
-}
+// Re-export from shared types for consumers that import from db-cache
+import type { WordStats } from '~/utils/types';
+export type { WordStats };
 
 export async function getWordStats(lang: string, dayIdx: number): Promise<WordStats | null> {
     try {
