@@ -151,3 +151,117 @@ model Subscription {
     @@map("subscriptions")
     @@schema("wordle")
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Caches (replacing disk-based JSON files)
+// ═══════════════════════════════════════════════════════════════════════════
+
+/// LLM-generated word definitions. Replaces word-defs/{lang}/{word}.json.
+model Definition {
+    id               Int      @id @default(autoincrement())
+    lang             String
+    word             String
+    definition       String?
+    definitionNative String?  @map("definition_native")
+    definitionEn     String?  @map("definition_en")
+    partOfSpeech     String?  @map("part_of_speech")
+    confidence       Float?
+    source           String?
+    url              String?
+    isNegative       Boolean  @default(false) @map("is_negative")
+    cachedAt         DateTime @default(now()) @map("cached_at")
+
+    @@unique([lang, word])
+    @@map("definitions")
+    @@schema("wordle")
+}
+
+/// Per-day community stats. Replaces word-stats/{lang}/{dayIdx}.json + lockfile.
+/// Denormalized dist columns enable atomic SQL increments without JSON parsing.
+model WordStat {
+    id     Int    @id @default(autoincrement())
+    lang   String
+    dayIdx Int    @map("day_idx")
+    total  Int    @default(0)
+    wins   Int    @default(0)
+    losses Int    @default(0)
+    dist1  Int    @default(0) @map("dist_1")
+    dist2  Int    @default(0) @map("dist_2")
+    dist3  Int    @default(0) @map("dist_3")
+    dist4  Int    @default(0) @map("dist_4")
+    dist5  Int    @default(0) @map("dist_5")
+    dist6  Int    @default(0) @map("dist_6")
+
+    @@unique([lang, dayIdx])
+    @@map("word_stats")
+    @@schema("wordle")
+}
+
+/// Wiktionary existence probe cache. Replaces word-defs/wiktionary-exists/{lang}/{word}.json.
+model WiktionaryCache {
+    id        Int      @id @default(autoincrement())
+    lang      String
+    word      String
+    exists    Boolean
+    checkedAt DateTime @default(now()) @map("checked_at")
+
+    @@unique([lang, word])
+    @@map("wiktionary_cache")
+    @@schema("wordle")
+}
+
+/// LLM-generated semantic game hints. Replaces word-defs/semantic-hints/{word}.json.
+model SemanticHint {
+    id       Int      @id @default(autoincrement())
+    lang     String   @default("en")
+    word     String
+    hint     String
+    model    String?
+    cachedAt DateTime @default(now()) @map("cached_at")
+
+    @@unique([lang, word])
+    @@map("semantic_hints")
+    @@schema("wordle")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Semantic Explorer (pgvector) — Phase 2
+// Replaces in-memory Float32Array embedding matrix (~98MB per language)
+// ═══════════════════════════════════════════════════════════════════════════
+
+/// Word embedding vectors for semantic similarity search.
+/// On-demand (out-of-vocab) words also stored here with is_vocab = false.
+model WordEmbedding {
+    id       Int                        @id @default(autoincrement())
+    lang     String                     @default("en")
+    word     String
+    embedding Unsupported("vector(512)")
+    umapX    Float?                     @map("umap_x")
+    umapY    Float?                     @map("umap_y")
+    pca2dX   Float?                     @map("pca2d_x")
+    pca2dY   Float?                     @map("pca2d_y")
+    isTarget Boolean                    @default(false) @map("is_target")
+    isVocab  Boolean                    @default(true)  @map("is_vocab")
+
+    @@unique([lang, word])
+    @@index([lang, isTarget])
+    @@map("word_embeddings")
+    @@schema("wordle")
+}
+
+/// Named semantic axes with directional vectors for compass hints.
+model SemanticAxis {
+    id         Int                        @id @default(autoincrement())
+    lang       String                     @default("en")
+    name       String
+    lowAnchor  String                     @map("low_anchor")
+    highAnchor String                     @map("high_anchor")
+    vector     Unsupported("vector(512)")
+    auc        Float?                     @default(0)
+    rangeP5    Float?                     @map("range_p5")
+    rangeP95   Float?                     @map("range_p95")
+
+    @@unique([lang, name])
+    @@map("semantic_axes")
+    @@schema("wordle")
+}
