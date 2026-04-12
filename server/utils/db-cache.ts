@@ -122,7 +122,9 @@ export async function incrementWordStats(
     won: boolean,
     attempts: number
 ): Promise<boolean> {
-    // Safe: no dynamic SQL. Each dist column gets +1 only if won AND attempts matches.
+    // Reject invalid attempts for wins — prevents counting a win with no distribution bucket
+    if (won && (attempts < 1 || attempts > 6)) return false;
+
     const d1 = won && attempts === 1 ? 1 : 0;
     const d2 = won && attempts === 2 ? 1 : 0;
     const d3 = won && attempts === 3 ? 1 : 0;
