@@ -340,11 +340,10 @@ const labelPlacements = computed<Map<string, LabelPlacement>>(() => {
     const placed: { x: number; y: number; w: number; h: number; word: string }[] = [];
     const result = new Map<string, LabelPlacement>();
 
-    // Labels are counter-scaled (constant visual size), so their world-space
-    // footprint depends on the camera zoom. Scale label dimensions accordingly.
-    const labelScale = invCameraScale.value;
-    const charW = CHAR_W * labelScale;
-    const labelH = LABEL_H * labelScale;
+    // Labels scale with the camera (no counter-scale), so overlap
+    // detection uses raw world-space dimensions.
+    const charW = CHAR_W;
+    const labelH = LABEL_H;
 
     // Priority: primary first, then foreground, then neighbour, then muted
     const order = ['primary', 'foreground', 'neighbour', 'muted'];
@@ -353,10 +352,10 @@ const labelPlacements = computed<Map<string, LabelPlacement>>(() => {
     );
 
     for (const d of sorted) {
-        const defaultY = (d.role === 'muted' || d.role === 'neighbour' ? -6 : -12) * labelScale;
+        const defaultY = d.role === 'muted' || d.role === 'neighbour' ? -6 : -12;
         const compassFlip = d.word === props.compassWord && compassLabelBelow.value;
-        const preferredY = compassFlip ? 18 * labelScale : defaultY;
-        const altY = compassFlip ? defaultY : defaultY < 0 ? 18 * labelScale : -12 * labelScale;
+        const preferredY = compassFlip ? 18 : defaultY;
+        const altY = compassFlip ? defaultY : defaultY < 0 ? 18 : -12;
 
         const w = d.word.length * charW;
 
@@ -791,7 +790,7 @@ const targetScreenPos = computed(() => {
                         v-if="showTarget"
                         class="target-marker"
                         :style="{
-                            transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px) scale(${invCameraScale})`,
+                            transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px)`,
                         }"
                     >
                         <circle r="8" class="target-ring" />
@@ -819,7 +818,7 @@ const targetScreenPos = computed(() => {
                         :style="{
                             '--dx': d.x + 'px',
                             '--dy': d.y + 'px',
-                            transform: `translate(${d.x}px, ${d.y}px) scale(${invCameraScale})`,
+                            transform: `translate(${d.x}px, ${d.y}px)`,
                         }"
                         @click="clickable ? onDotClick($event, d.word) : undefined"
                         @mouseenter="clickable ? onDotMouseEnter(d.word) : undefined"
