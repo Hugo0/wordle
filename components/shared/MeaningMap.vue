@@ -888,9 +888,10 @@ const targetScreenPos = computed(() => {
     aspect-ratio: 1;
     max-width: 100%;
 }
-/* When expanded, fill the overlay */
+/* When expanded, fill the overlay (square, fits in viewport) */
 :global(.map-expanded) .canvas-wrap {
-    width: min(90dvh, 95dvw);
+    width: min(85dvh, 90dvw);
+    max-width: min(85dvh, 90dvw);
 }
 .grid-line {
     stroke: var(--color-rule);
@@ -900,7 +901,7 @@ const targetScreenPos = computed(() => {
 .plot {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 

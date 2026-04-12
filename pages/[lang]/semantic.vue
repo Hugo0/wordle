@@ -666,12 +666,9 @@ function onKeepPlaying() {
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */
 
 .map-input-row {
-    /* On desktop, visually attach to the map card above */
-    margin-top: -1px;
     padding: 12px 22px 14px;
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
-    border-top: none;
 }
 
 /* ═════════════════════════════════════════════════════════════
