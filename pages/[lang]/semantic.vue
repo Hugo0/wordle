@@ -636,13 +636,25 @@ function onKeepPlaying() {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    min-height: min(280px, calc(100dvh - 310px));
+    min-height: min(200px, calc(100dvh - 310px));
     /* Cap height so the input stays visible without scrolling.
        Navbar ~50 + card header ~90 + input ~80 + card/body padding ~80 ≈ 300px.
        Use dvh to account for mobile browser chrome.
        min() ensures min-height never exceeds max-height on short viewports. */
     max-height: calc(100dvh - 310px);
+}
+/* Force the map SVG to shrink to fit its container on all screen sizes,
+   not just mobile. The SVG's intrinsic size (520px) can exceed the
+   wrapper's max-height on short viewports. */
+.map-canvas-wrap :deep(.canvas-wrap) {
+    height: auto !important;
+    aspect-ratio: 1;
+    max-width: 100%;
+    max-height: calc(100dvh - 310px);
+}
+.map-canvas-wrap :deep(.plot) {
+    width: 100%;
+    height: 100%;
 }
 
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */

@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
         'unknown';
 
     if (isDuplicateSubmission(lang, day_idx, clientId, todaysIdx)) {
-        const existing = loadWordStats(lang, day_idx);
+        const existing = await loadWordStats(lang, day_idx);
         return existing || {};
     }
 
