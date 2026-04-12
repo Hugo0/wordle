@@ -55,7 +55,12 @@ export default defineEventHandler((event) => {
         // Multi-board modes: N distinct daily words
         const modeConfig = GAME_MODE_CONFIG[mode as GameMode];
         if (modeConfig && modeConfig.boardCount > 1) {
-            response.todays_words = getWordsForDay(lang, session.todaysIdx, modeConfig.boardCount, mode);
+            response.todays_words = getWordsForDay(
+                lang,
+                session.todaysIdx,
+                modeConfig.boardCount,
+                mode
+            );
         }
 
         // Daily speed: deterministic sequence of 50 words (same for everyone)
