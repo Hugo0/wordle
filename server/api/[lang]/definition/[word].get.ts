@@ -3,8 +3,10 @@
  */
 import { loadAllData } from '../../../utils/data-loader';
 import { fetchDefinition } from '../../../utils/definitions';
+import { rateLimit } from '../../../utils/rate-limit';
 
 export default defineEventHandler(async (event) => {
+    rateLimit(event, 'llm:definition', 20, 60 * 1000);
     const lang = getRouterParam(event, 'lang')!;
     const word = getRouterParam(event, 'word')!.normalize('NFC');
     const data = loadAllData();

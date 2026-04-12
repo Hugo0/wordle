@@ -3,6 +3,7 @@
 // Includes a validator loop: if the hint is too easy to reverse, regenerate.
 
 import { dedup } from '~/server/utils/inflight';
+import { rateLimit } from '~/server/utils/rate-limit';
 import { getSessionTarget } from '~/server/utils/semantic';
 
 const LLM_MODEL = 'gpt-5.2';
@@ -128,6 +129,7 @@ async function generateValidatedHint(target: string): Promise<string | null> {
 }
 
 export default defineEventHandler(async (event) => {
+    rateLimit(event, 'llm:hint', 10, 60 * 1000);
     const body = await readBody(event);
     const targetId = body?.targetId as string | undefined;
 

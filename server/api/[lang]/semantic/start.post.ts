@@ -93,7 +93,7 @@ export default defineEventHandler(async (event) => {
         totalRanked,
     };
 
-    if (debug) {
+    if (debug && process.env.NODE_ENV !== 'production') {
         response.debug = {
             targetWord: target,
             targetPool: targets,

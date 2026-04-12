@@ -7,6 +7,7 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { loadAllData, WORD_IMAGES_DIR } from '../../../utils/data-loader';
 import { dedup } from '../../../utils/inflight';
+import { rateLimit } from '../../../utils/rate-limit';
 import { getTodaysIdx, getWordForDay } from '../../../utils/word-selection';
 import { fetchDefinition } from '../../../utils/definitions';
 
@@ -56,6 +57,11 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Not found' });
     }
 
+    // Path traversal protection
+    if (word.includes('/') || word.includes('\\') || word.includes('..')) {
+        throw createError({ statusCode: 400, message: 'Invalid word' });
+    }
+
     const openaiKey = process.env.OPENAI_API_KEY;
     if (!openaiKey) {
         throw createError({ statusCode: 404, message: 'Not available' });
@@ -70,6 +76,9 @@ export default defineEventHandler(async (event) => {
         setResponseHeader(event, 'Cache-Control', 'public, max-age=31536000');
         return readFileSync(cachePath);
     }
+
+    // Rate limit DALL-E generation (cached images bypass this)
+    rateLimit(event, 'dalle:image', 5, 3600 * 1000);
 
     // For non-top languages, only serve from cache
     if (!IMAGE_LANGUAGES.has(lang)) {

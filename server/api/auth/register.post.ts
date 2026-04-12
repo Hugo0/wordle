@@ -31,6 +31,9 @@ export default defineEventHandler(async (event) => {
             message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters`,
         });
     }
+    if (body.password.length > 128) {
+        throw createError({ statusCode: 400, message: 'Password too long' });
+    }
 
     const existing = await prisma.user.findUnique({ where: { email: body.email.toLowerCase() } });
     if (existing) {
@@ -48,7 +51,7 @@ export default defineEventHandler(async (event) => {
             username,
             email: body.email.toLowerCase(),
             passwordHash,
-            displayName: body.displayName || body.email.split('@')[0],
+            displayName: (body.displayName || body.email.split('@')[0] || '').trim().slice(0, 30),
             emailVerified: false,
         },
     });
