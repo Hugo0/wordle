@@ -446,6 +446,9 @@ export function useSemanticGame(lang: string) {
         const saved = readJson<SavedSemanticState>(storageKey(lang, _currentPlay));
         if (!saved || saved.dayIdx !== currentDayIdx) return false;
         if (!saved.guesses?.length) return false;
+        // If game ended but target word was never revealed (session expired
+        // before reveal API call), the state is corrupt — start fresh.
+        if (saved.gameOver && !saved.finalTargetWord) return false;
 
         guesses.value = saved.guesses;
         won.value = saved.won;
