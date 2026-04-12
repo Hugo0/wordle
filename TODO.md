@@ -523,3 +523,6 @@ On mobile, reorder the semantic layout:
 5. **Input** pinned to bottom (already done)
 
 This prioritizes the information the player actually needs while typing (rank feedback, compass direction) over the visual map. The map is still accessible by scrolling but doesn't dominate the viewport.
+
+### 22. Language switcher preserves current page
+When switching language via the sidebar language picker, navigate to the same page type in the new language. For example, `/en/archive` → `/de/archive`, `/en/dordle` → `/de/dordle`. Currently always navigates to `/{lang}` (classic daily). The `LanguagePickerModal` has a `currentModeSuffix` prop that partially handles this but doesn't cover non-game pages like archive, best-starting-words, or word pages.
