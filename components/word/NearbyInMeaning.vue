@@ -93,17 +93,34 @@ const mapDots = computed<MapDot[]>(() => {
 
     const seen = new Set<string>([p.basic!.word]);
 
+    // Foreground dots: use neighbor data from explore response (instant, no extra fetches).
+    // Fall back to contextData for user-added words not in the neighbor list.
+    const neighbors = p.explore.nearest ?? [];
+    const neighborMap = new Map(neighbors.map((n) => [n.word, n]));
+
     for (const w of props.contextWords) {
-        const cd = props.contextData[w];
-        if (!cd?.explore || !cd.basic?.word) continue;
-        const projs = Object.fromEntries(cd.explore.projections.map((x) => [x.axis, x.normalized]));
-        dots.push({
-            word: cd.basic.word,
-            pos2d: cd.explore.umap ?? [0.5, 0.5],
-            projections: projs,
-            role: 'foreground',
-        });
-        seen.add(cd.basic.word);
+        const neighbor = neighborMap.get(w);
+        if (neighbor) {
+            dots.push({
+                word: neighbor.word,
+                pos2d: neighbor.umap ?? [0.5, 0.5],
+                projections: neighbor.projections ?? {},
+                role: 'foreground',
+            });
+            seen.add(neighbor.word);
+        } else {
+            // User-added word not in neighbor list — use separately fetched data
+            const cd = props.contextData[w];
+            if (!cd?.explore || !cd.basic?.word) continue;
+            const projs = Object.fromEntries(cd.explore.projections.map((x) => [x.axis, x.normalized]));
+            dots.push({
+                word: cd.basic.word,
+                pos2d: cd.explore.umap ?? [0.5, 0.5],
+                projections: projs,
+                role: 'foreground',
+            });
+            seen.add(cd.basic.word);
+        }
     }
 
     const backgroundPool = (p.explore.nearest ?? [])

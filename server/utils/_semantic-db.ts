@@ -161,6 +161,22 @@ export function projectAxesDetailed(
 // Embedding lookups
 // ═══════════════════════════════════════════════════════════════════════════
 
+/** Batch-fetch embeddings for multiple words (1 query). */
+export async function getEmbeddings(lang: string, words: string[]): Promise<Map<string, Float32Array>> {
+    if (!words.length) return new Map();
+    try {
+        const rows = await prisma.$queryRaw<Array<{ word: string; vector: string }>>`
+            SELECT word, embedding::text as vector FROM wordle.word_embeddings
+            WHERE lang = ${lang} AND word = ANY(${words}::text[])
+        `;
+        const result = new Map<string, Float32Array>();
+        for (const r of rows) result.set(r.word, parseVector(r.vector));
+        return result;
+    } catch {
+        return new Map();
+    }
+}
+
 export async function getEmbedding(lang: string, word: string): Promise<Float32Array | null> {
     try {
         const rows = await prisma.$queryRaw<Array<{ vector: string }>>`

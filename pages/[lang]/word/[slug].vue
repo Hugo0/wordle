@@ -181,26 +181,34 @@ const contextWords = computed<string[]>(() => {
     return neighbors.slice(0, AUTO_CONTEXT_COUNT).map((n) => n.word);
 });
 
+// Context data — only fetched for user-added custom words that aren't in the
+// primary's neighbor list (which already includes projections for top 15).
+// Auto-selected context words render instantly from explore.nearest.
 const contextData = ref<Record<string, WordData>>({});
 async function loadContextData() {
+    if (!context.isCustom.value) {
+        // Auto-mode: all context words come from explore.nearest — no extra fetches
+        contextData.value = {};
+        return;
+    }
     const words = contextWords.value;
     const pw = primaryWord.value;
     if (!words.length || !pw) {
         contextData.value = {};
         return;
     }
+    // Only fetch words not already in the explore neighbor list
+    const neighborWords = new Set(
+        (primary.value?.explore?.nearest ?? []).map((n) => n.word)
+    );
     const next: Record<string, WordData> = { ...contextData.value };
-    const missing = words.filter((w) => !next[w]);
+    const missing = words.filter((w) => !next[w] && !neighborWords.has(w));
     await Promise.all(
         missing.map(async (w) => {
-            // Pass `relativeTo` so the server includes cosine similarity
-            // between this context word and the primary — used by the map
-            // for faithful polar layout instead of UMAP bounding-box hacks.
             const d = await fetchAll(lang, w, pw).catch(() => null);
             if (d?.basic?.word) next[w] = d;
         })
     );
-    // Prune stale entries
     for (const k of Object.keys(next)) {
         if (!words.includes(k)) delete next[k];
     }
