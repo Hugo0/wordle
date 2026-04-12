@@ -502,3 +502,14 @@ Data has been migrated from Render's persistent disk to Postgres:
 - [ ] `data/semantic/targets.json`, `vocabulary.json` — queryable from `word_embeddings`
 - [ ] Keep `data/semantic/valid_words.json` (loaded into memory for spellcheck, no DB table)
 - [ ] Keep `data/definitions/` as archive (kaikki data now in DB, but files are small and useful for re-seeding)
+
+### 17. Semantic Explorer OG image
+Design and add `public/images/og-semantic.png` (1200x630) showing the meaning map with dots, compass needle, and the editorial aesthetic. Currently falls back to generic `og-image.png`.
+
+### 18. Semantic best starting words
+Add semantic-specific content to the `/en/best-starting-words` page — tips for first guesses in semantic mode (broad category words, high-information starters). Could be a separate section or tab.
+
+### 19. useGameSeo refactor
+- Silent 60-char truncation: configured titles are dropped without warning when too long. Should either warn at build time or use the configured title regardless.
+- Hardcoded `| Wordle English` suffix: not all modes benefit from Wordle brand. Add configurable suffix per mode.
+- No length validation at config time — easy to write titles/descriptions that get silently truncated.
