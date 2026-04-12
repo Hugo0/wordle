@@ -173,8 +173,7 @@ const autoZoom = computed(() => {
         return 1.0;
     }
 
-    // Absolute: dynamic zoom so closest foreground dot pair has ~50px separation.
-    // Capped at 8x to prevent giant labels during word transitions.
+    // Absolute: dynamic zoom so closest foreground pair has ~50px separation.
     const MIN_SPACING = 50;
     const fg = props.dots.filter((d) => d.role !== 'muted');
     if (fg.length < 2) return 1.0;
@@ -340,10 +339,11 @@ const labelPlacements = computed<Map<string, LabelPlacement>>(() => {
     const placed: { x: number; y: number; w: number; h: number; word: string }[] = [];
     const result = new Map<string, LabelPlacement>();
 
-    // Labels scale with the camera (no counter-scale), so overlap
-    // detection uses raw world-space dimensions.
-    const charW = CHAR_W;
-    const labelH = LABEL_H;
+    // Labels are counter-scaled (constant visual size). Scale overlap
+    // dimensions by invCameraScale to match actual visual footprint.
+    const labelScale = invCameraScale.value;
+    const charW = CHAR_W * labelScale;
+    const labelH = LABEL_H * labelScale;
 
     // Priority: primary first, then foreground, then neighbour, then muted
     const order = ['primary', 'foreground', 'neighbour', 'muted'];
@@ -352,10 +352,10 @@ const labelPlacements = computed<Map<string, LabelPlacement>>(() => {
     );
 
     for (const d of sorted) {
-        const defaultY = d.role === 'muted' || d.role === 'neighbour' ? -6 : -12;
+        const defaultY = (d.role === 'muted' || d.role === 'neighbour' ? -6 : -12) * labelScale;
         const compassFlip = d.word === props.compassWord && compassLabelBelow.value;
-        const preferredY = compassFlip ? 18 : defaultY;
-        const altY = compassFlip ? defaultY : defaultY < 0 ? 18 : -12;
+        const preferredY = compassFlip ? 18 * labelScale : defaultY;
+        const altY = compassFlip ? defaultY : defaultY < 0 ? 18 * labelScale : -12 * labelScale;
 
         const w = d.word.length * charW;
 
@@ -477,13 +477,14 @@ watch(
                 if (Math.abs(dx) < 1 && Math.abs(dy) < 1) continue; // no movement
                 const newTx = `${curr.x}px`;
                 const newTy = `${curr.y}px`;
+                const invZ = invCameraScale.value;
                 trackAnimation(
                     el.animate(
                         [
                             {
-                                transform: `translate(${curr.x + dx}px, ${curr.y + dy}px)`,
+                                transform: `translate(${curr.x + dx}px, ${curr.y + dy}px) scale(${invZ})`,
                             },
-                            { transform: `translate(${newTx}, ${newTy})` },
+                            { transform: `translate(${newTx}, ${newTy}) scale(${invZ})` },
                         ],
                         {
                             duration: 500,
@@ -511,6 +512,7 @@ watch(
                 const tx = el.style.getPropertyValue('--dx');
                 const ty = el.style.getPropertyValue('--dy');
                 if (!tx || !ty) continue;
+                const invZ = invCameraScale.value;
                 trackAnimation(
                     el.animate(
                         [
@@ -519,12 +521,12 @@ watch(
                                 opacity: 0,
                             },
                             {
-                                transform: `translate(${tx}, ${ty}) scale(1.2)`,
+                                transform: `translate(${tx}, ${ty}) scale(${1.2 * invZ})`,
                                 opacity: 1,
                                 offset: 0.6,
                             },
                             {
-                                transform: `translate(${tx}, ${ty}) scale(1)`,
+                                transform: `translate(${tx}, ${ty}) scale(${invZ})`,
                                 opacity: 1,
                             },
                         ],
@@ -675,7 +677,7 @@ const targetScreenPos = computed(() => {
                      Dots, grid, target, connectors all move as a unit. -->
                 <g
                     :transform="cameraTransformStr"
-                    :style="{ '--camera-scale': cameraTransform.scale }"
+                    :style="{ '--camera-scale': cameraTransform.scale, '--inv-zoom': invCameraScale }"
                 >
                     <!-- Grid lines (world coordinates) -->
                     <line
@@ -790,7 +792,7 @@ const targetScreenPos = computed(() => {
                         v-if="showTarget"
                         class="target-marker"
                         :style="{
-                            transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px)`,
+                            transform: `translate(${targetScreenPos.x}px, ${targetScreenPos.y}px) scale(var(--inv-zoom))`,
                         }"
                     >
                         <circle r="8" class="target-ring" />
@@ -818,7 +820,7 @@ const targetScreenPos = computed(() => {
                         :style="{
                             '--dx': d.x + 'px',
                             '--dy': d.y + 'px',
-                            transform: `translate(${d.x}px, ${d.y}px)`,
+                            transform: `translate(${d.x}px, ${d.y}px) scale(var(--inv-zoom))`,
                         }"
                         @click="clickable ? onDotClick($event, d.word) : undefined"
                         @mouseenter="clickable ? onDotMouseEnter(d.word) : undefined"
