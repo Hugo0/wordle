@@ -2,14 +2,10 @@
 // Cache-keyed on target word only — same hint for all players on the same daily.
 // Includes a validator loop: if the hint is too easy to reverse, regenerate.
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-
 import { dedup } from '~/server/utils/inflight';
 import { getSessionTarget } from '~/server/utils/semantic';
 
 const LLM_MODEL = 'gpt-5.2';
-const CACHE_DIR = join(process.cwd(), 'word-defs', 'semantic-hints');
 const MAX_ATTEMPTS = 3;
 
 async function callLlm(
@@ -154,35 +150,17 @@ export default defineEventHandler(async (event) => {
         /* fall through */
     }
 
-    // DEPRECATED: disk cache — remove after confirming DB migration is stable
-    mkdirSync(CACHE_DIR, { recursive: true });
-    const cacheFile = join(CACHE_DIR, `${target}.json`);
-    if (existsSync(cacheFile)) {
-        console.warn('[DEPRECATED] semantic-hints disk read for', lang, target);
-        try {
-            const cached = JSON.parse(readFileSync(cacheFile, 'utf-8'));
-            if (cached.hint) {
-                return { hint: cached.hint, cached: true };
-            }
-        } catch {
-            /* fall through */
-        }
-    }
-
-    // Tier 2: Generate via LLM (deduplicated — only one generation per word)
+    // Generate via LLM (deduplicated — only one generation per word)
     const result = await dedup('hint', `${lang}:${target}`, async () => {
         const generated = await generateValidatedHint(target);
         if (!generated) return null;
 
-        // Cache to DB (primary) and disk (backup)
         try {
             const { setSemanticHint } = await import('~/server/utils/db-cache');
             await setSemanticHint(lang, target, generated, LLM_MODEL);
         } catch (e) {
             console.warn(`[hint] DB write failed for ${lang}/${target}:`, e);
         }
-        // DEPRECATED: disk write — remove after confirming DB migration is stable
-        writeFileSync(cacheFile, JSON.stringify({ hint: generated, createdAt: Date.now() }));
 
         return generated;
     });
