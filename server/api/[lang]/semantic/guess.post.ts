@@ -91,24 +91,14 @@ export default defineEventHandler(async (event) => {
     if (cachedAxes && axesVectors && axesNames.length > 0) {
         try {
             const { computeCompass } = await import('~/server/utils/semantic');
-            // Build lightweight SemanticData shim from DB-cached axes
-            const axesRecord: Record<string, any> = {};
-            const axesRanges: Record<string, { p5: number; p95: number }> = {};
+            const axesRecord: Record<string, { low_anchor: string; high_anchor: string }> = {};
             const axesAuc: Record<string, number> = {};
             for (const a of cachedAxes) {
                 axesRecord[a.name] = { low_anchor: a.lowAnchor, high_anchor: a.highAnchor };
-                axesRanges[a.name] = { p5: a.rangeP5, p95: a.rangeP95 };
                 axesAuc[a.name] = a.auc;
             }
             compassResult = computeCompass(
-                {
-                    dims: guessVec.length,
-                    axesNames,
-                    axesVectors,
-                    axes: axesRecord,
-                    axesRanges,
-                    axesAuc,
-                } as any,
+                { dims: guessVec.length, axesNames, axesVectors, axes: axesRecord, axesAuc },
                 guessVec,
                 targetVec,
                 5,
