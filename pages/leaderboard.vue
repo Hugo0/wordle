@@ -343,7 +343,10 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
             <div v-if="!isStreaks && !isRecords" class="mono-label pb-1" style="font-size: 9px">
                 {{ activeModeLabel }}
             </div>
-            <div class="font-display italic text-xs text-muted pb-3" :class="{ 'pt-3': isStreaks || isRecords }">
+            <div
+                class="font-display italic text-xs text-muted pb-3"
+                :class="{ 'pt-3': isStreaks || isRecords }"
+            >
                 <template v-if="isRecords">
                     All-time records across all languages and modes.
                 </template>
@@ -573,7 +576,6 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
         />
     </AppShell>
 </template>
-
 
 <style scoped>
 /* "Your position" row at bottom of populated state — still in parent template */

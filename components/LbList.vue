@@ -86,7 +86,13 @@ function rankClass(rank: number): Record<string, boolean> {
     text-align: center;
     flex-shrink: 0;
 }
-.lb-rank-gold { color: #c9a930; }
-.lb-rank-silver { color: #8a8a8a; }
-.lb-rank-bronze { color: #a0622e; }
+.lb-rank-gold {
+    color: #c9a930;
+}
+.lb-rank-silver {
+    color: #8a8a8a;
+}
+.lb-rank-bronze {
+    color: #a0622e;
+}
 </style>

@@ -59,9 +59,15 @@ const orderedPlaces = computed(() => [props.podium.second, props.podium.first, p
     align-items: center;
     gap: 4px;
 }
-.podium-place.first { order: 2; }
-.podium-place.second { order: 1; }
-.podium-place.third { order: 3; }
+.podium-place.first {
+    order: 2;
+}
+.podium-place.second {
+    order: 1;
+}
+.podium-place.third {
+    order: 3;
+}
 .podium-rank {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -70,9 +76,15 @@ const orderedPlaces = computed(() => [props.podium.second, props.podium.first, p
     letter-spacing: 0.04em;
     margin-bottom: 2px;
 }
-.podium-place.first .podium-rank { color: #c9a930; }
-.podium-place.second .podium-rank { color: #8a8a8a; }
-.podium-place.third .podium-rank { color: #a0622e; }
+.podium-place.first .podium-rank {
+    color: #c9a930;
+}
+.podium-place.second .podium-rank {
+    color: #8a8a8a;
+}
+.podium-place.third .podium-rank {
+    color: #a0622e;
+}
 .podium-name {
     font-family: var(--font-body);
     font-size: 12px;
