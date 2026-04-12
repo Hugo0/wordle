@@ -6,7 +6,7 @@
  */
 
 import { getSessionTarget, rankToDisplay } from '~/server/utils/semantic';
-import * as semanticDb from '~/server/utils/semantic-db';
+import * as semanticDb from '~/server/utils/_semantic-db';
 
 export default defineEventHandler(async (event) => {
     const lang = getRouterParam(event, 'lang') ?? 'en';

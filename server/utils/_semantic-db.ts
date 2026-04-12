@@ -332,6 +332,69 @@ export async function wordExists(lang: string, word: string): Promise<boolean> {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// On-demand embeddings (out-of-vocab words via OpenAI)
+// ═══════════════════════════════════════════════════════════════════════════
+
+const EMBEDDING_MODEL = 'text-embedding-3-large';
+const EMBEDDING_DIMS = 512;
+
+/**
+ * Fetch an embedding for an out-of-vocab word via OpenAI, normalize it,
+ * store in DB, and return. Returns null if OpenAI unavailable or fails.
+ * Deduplicated — concurrent calls for the same word share one API request.
+ */
+export async function fetchOnDemandEmbedding(
+    lang: string,
+    word: string
+): Promise<Float32Array | null> {
+    // Already in DB?
+    const existing = await getEmbedding(lang, word);
+    if (existing) return existing;
+
+    const { dedup } = await import('./inflight');
+    return dedup('embedding', `${lang}:${word}`, async () => {
+        const apiKey = process.env.OPENAI_API_KEY;
+        if (!apiKey) return null;
+
+        try {
+            const response = await fetch('https://api.openai.com/v1/embeddings', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: EMBEDDING_MODEL,
+                    input: [word],
+                    dimensions: EMBEDDING_DIMS,
+                }),
+                signal: AbortSignal.timeout(10000),
+            });
+            if (!response.ok) {
+                console.warn('[semantic-db] on-demand embedding failed:', response.status);
+                return null;
+            }
+            const payload = await response.json();
+            const raw = payload?.data?.[0]?.embedding as number[] | undefined;
+            if (!raw || raw.length !== EMBEDDING_DIMS) return null;
+
+            // L2-normalize
+            let norm = 0;
+            for (let i = 0; i < raw.length; i++) norm += raw[i]! * raw[i]!;
+            norm = Math.sqrt(norm) || 1;
+            const vec = new Float32Array(EMBEDDING_DIMS);
+            for (let i = 0; i < EMBEDDING_DIMS; i++) vec[i] = raw[i]! / norm;
+
+            await storeOnDemandEmbedding(lang, word, vec);
+            return vec;
+        } catch (e) {
+            console.warn('[semantic-db] on-demand embedding error:', e);
+            return null;
+        }
+    });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // Helpers
 // ═══════════════════════════════════════════════════════════════════════════
 

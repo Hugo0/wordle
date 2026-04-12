@@ -7,7 +7,7 @@
  */
 
 import { cosineSimilarity, getSessionTarget, rankToDisplay } from '~/server/utils/semantic';
-import * as semanticDb from '~/server/utils/semantic-db';
+import * as semanticDb from '~/server/utils/_semantic-db';
 import { getValidWords } from '~/server/plugins/semantic-warmup';
 
 export default defineEventHandler(async (event) => {
@@ -43,14 +43,11 @@ export default defineEventHandler(async (event) => {
         if (validWords.size > 0 && !validWords.has(word)) {
             return { valid: false, word, reason: 'not_a_word' };
         }
-        // On-demand embedding via OpenAI
-        const { fetchEmbeddingOnDemand, loadSemanticDataSafe } =
-            await import('~/server/utils/semantic');
-        guessVec = await fetchEmbeddingOnDemand(loadSemanticDataSafe(), word);
+        // On-demand embedding via OpenAI → stored in DB
+        guessVec = await semanticDb.fetchOnDemandEmbedding(lang, word);
         if (!guessVec) {
             return { valid: false, word, reason: 'embedding_failed' };
         }
-        semanticDb.storeOnDemandEmbedding(lang, word, guessVec);
     }
 
     const rawSimilarity = cosineSimilarity(guessVec, targetVec);

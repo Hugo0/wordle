@@ -1,9 +1,9 @@
-import { loadSemanticDataSafe } from '~/server/utils/semantic';
+import { getValidWords } from '~/server/plugins/semantic-warmup';
 
 export default defineEventHandler(() => {
-    const data = loadSemanticDataSafe();
+    const words = getValidWords();
     return {
-        words: data.vocabulary,
-        count: data.vocabulary.length,
+        words: Array.from(words),
+        count: words.size,
     };
 });

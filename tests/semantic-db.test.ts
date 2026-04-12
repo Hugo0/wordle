@@ -20,7 +20,7 @@ const describeDb = DB_URL ? describe : describe.skip;
 
 describeDb('semantic-db (requires DATABASE_URL)', () => {
     it('exports all expected functions', async () => {
-        const mod = await import('../server/utils/semantic-db');
+        const mod = await import('../server/utils/_semantic-db');
         expect(typeof mod.getEmbedding).toBe('function');
         expect(typeof mod.get2dPosition).toBe('function');
         expect(typeof mod.computeGuessRank).toBe('function');
@@ -35,7 +35,7 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('getEmbedding returns 512-dim Float32Array for known word', async () => {
-        const { getEmbedding } = await import('../server/utils/semantic-db');
+        const { getEmbedding } = await import('../server/utils/_semantic-db');
         const vec = await getEmbedding('en', 'bread');
         expect(vec).not.toBeNull();
         expect(vec!.length).toBe(512);
@@ -47,19 +47,19 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('getEmbedding returns null for unknown word', async () => {
-        const { getEmbedding } = await import('../server/utils/semantic-db');
+        const { getEmbedding } = await import('../server/utils/_semantic-db');
         const vec = await getEmbedding('en', 'xyzzy_nonexistent_word_12345');
         expect(vec).toBeNull();
     });
 
     it('computeGuessRank returns 1 for target itself', async () => {
-        const { computeGuessRank } = await import('../server/utils/semantic-db');
+        const { computeGuessRank } = await import('../server/utils/_semantic-db');
         const rank = await computeGuessRank('en', 'bread', 'bread');
         expect(rank).toBe(1);
     });
 
     it('computeGuessRank returns low rank for semantically close word', async () => {
-        const { computeGuessRank } = await import('../server/utils/semantic-db');
+        const { computeGuessRank } = await import('../server/utils/_semantic-db');
         // "loaf" should be close to "bread"
         const rank = await computeGuessRank('en', 'bread', 'loaf');
         expect(rank).not.toBeNull();
@@ -67,7 +67,7 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('computeGuessRank returns high rank for unrelated word', async () => {
-        const { computeGuessRank } = await import('../server/utils/semantic-db');
+        const { computeGuessRank } = await import('../server/utils/_semantic-db');
         // "quantum" should be far from "bread"
         const rank = await computeGuessRank('en', 'bread', 'quantum');
         expect(rank).not.toBeNull();
@@ -75,14 +75,14 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('getTotalRanked returns ~50k for English', async () => {
-        const { getTotalRanked } = await import('../server/utils/semantic-db');
+        const { getTotalRanked } = await import('../server/utils/_semantic-db');
         const total = await getTotalRanked('en');
         expect(total).toBeGreaterThan(40000);
         expect(total).toBeLessThan(60000);
     });
 
     it('getTotalRanked is cached (second call instant)', async () => {
-        const { getTotalRanked } = await import('../server/utils/semantic-db');
+        const { getTotalRanked } = await import('../server/utils/_semantic-db');
         const t0 = Date.now();
         await getTotalRanked('en');
         const first = Date.now() - t0;
@@ -96,7 +96,7 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('get2dPosition returns coordinates for known word', async () => {
-        const { get2dPosition } = await import('../server/utils/semantic-db');
+        const { get2dPosition } = await import('../server/utils/_semantic-db');
         const pos = await get2dPosition('en', 'bread');
         expect(pos).not.toBeNull();
         expect(pos!.length).toBe(2);
@@ -105,7 +105,7 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('knnNearest returns k neighbors', async () => {
-        const { knnNearest } = await import('../server/utils/semantic-db');
+        const { knnNearest } = await import('../server/utils/_semantic-db');
         const neighbors = await knnNearest('en', 'bread', 5);
         expect(neighbors.length).toBe(5);
         // Neighbors should have word and similarity fields
@@ -122,7 +122,7 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('knnNearest respects exclude list', async () => {
-        const { knnNearest } = await import('../server/utils/semantic-db');
+        const { knnNearest } = await import('../server/utils/_semantic-db');
         const all = await knnNearest('en', 'bread', 5);
         const excluded = await knnNearest('en', 'bread', 5, [all[0]!.word]);
         // The excluded word should not appear in the results
@@ -130,7 +130,7 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('loadAxes returns axis data with vectors', async () => {
-        const { loadAxes } = await import('../server/utils/semantic-db');
+        const { loadAxes } = await import('../server/utils/_semantic-db');
         const axes = await loadAxes('en');
         expect(axes.length).toBeGreaterThan(0);
         for (const axis of axes) {
@@ -144,7 +144,7 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
 
     it('getCachedAxesVectors returns after loadAxes', async () => {
         const { loadAxes, getCachedAxesVectors, getCachedAxesNames } =
-            await import('../server/utils/semantic-db');
+            await import('../server/utils/_semantic-db');
         await loadAxes('en');
         const vecs = getCachedAxesVectors();
         const names = getCachedAxesNames();
@@ -154,19 +154,19 @@ describeDb('semantic-db (requires DATABASE_URL)', () => {
     });
 
     it('getTargets returns target words', async () => {
-        const { getTargets } = await import('../server/utils/semantic-db');
+        const { getTargets } = await import('../server/utils/_semantic-db');
         const targets = await getTargets('en');
         expect(targets.length).toBeGreaterThan(800);
         expect(targets).toContain('bread'); // bread is a known target
     });
 
     it('wordExists returns true for vocab word', async () => {
-        const { wordExists } = await import('../server/utils/semantic-db');
+        const { wordExists } = await import('../server/utils/_semantic-db');
         expect(await wordExists('en', 'bread')).toBe(true);
     });
 
     it('wordExists returns false for unknown word', async () => {
-        const { wordExists } = await import('../server/utils/semantic-db');
+        const { wordExists } = await import('../server/utils/_semantic-db');
         expect(await wordExists('en', 'xyzzy_nonexistent_12345')).toBe(false);
     });
 });

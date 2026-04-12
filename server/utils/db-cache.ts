@@ -26,6 +26,7 @@ export interface DefinitionData {
     partOfSpeech?: string | null;
     confidence?: number | null;
     source?: string | null;
+    model?: string | null;
     url?: string | null;
 }
 

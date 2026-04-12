@@ -156,7 +156,9 @@ model Subscription {
 // Caches (replacing disk-based JSON files)
 // ═══════════════════════════════════════════════════════════════════════════
 
-/// LLM-generated word definitions. Replaces word-defs/{lang}/{word}.json.
+/// Word definitions from multiple sources (LLM, kaikki/Wiktionary).
+/// Source provenance tracked via `source` (llm, kaikki, kaikki-en) and
+/// `model` (gpt-5.2, wiktionary-kaikki-2024, etc).
 model Definition {
     id               Int      @id @default(autoincrement())
     lang             String
@@ -167,6 +169,7 @@ model Definition {
     partOfSpeech     String?  @map("part_of_speech")
     confidence       Float?
     source           String?
+    model            String?
     url              String?
     isNegative       Boolean  @default(false) @map("is_negative")
     cachedAt         DateTime @default(now()) @map("cached_at")

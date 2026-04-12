@@ -8,7 +8,8 @@
  * (NOT the target word itself), so the client can center the map on it.
  */
 
-import { createSession, get2dPosition, loadSemanticDataSafe } from '~/server/utils/semantic';
+import { createSession } from '~/server/utils/semantic';
+import * as semanticDb from '~/server/utils/_semantic-db';
 import { getTodaysIdx, toModeDayIdx } from '~/server/lib/day-index';
 
 function pickDailyTarget(targets: readonly string[], lang: string, dayIdx: number): string {
@@ -25,9 +26,6 @@ function pickDailyTarget(targets: readonly string[], lang: string, dayIdx: numbe
 export default defineEventHandler(async (event) => {
     const lang = getRouterParam(event, 'lang') ?? 'en';
 
-    // Semantic Explorer is English-only for v1. The embeddings, targets, axes,
-    // and UMAP data are all generated from English corpora. Serving them for
-    // other languages would silently produce meaningless results.
     if (lang !== 'en') {
         throw createError({
             statusCode: 404,
@@ -40,50 +38,64 @@ export default defineEventHandler(async (event) => {
     const debug = Boolean(body?.debug);
     const play = (body?.play as string | undefined) ?? 'daily';
 
-    const data = loadSemanticDataSafe();
     // TZ-aware day index, 1-based from April 11 2026
     const classicIdx = getTodaysIdx();
     const dayIdx = toModeDayIdx(classicIdx) ?? 1;
 
+    // Load targets from DB
+    const targets = await semanticDb.getTargets(lang);
+    if (!targets.length) {
+        throw createError({ statusCode: 503, message: 'Semantic Explorer is temporarily unavailable.' });
+    }
+
     // Daily pick, unlimited random, or override via debug
     let target: string;
-    if (override && data.wordIndex.has(override)) {
+    if (override && (await semanticDb.wordExists(lang, override))) {
         target = override;
     } else if (play === 'unlimited') {
-        target = data.targets[Math.floor(Math.random() * data.targets.length)]!;
+        target = targets[Math.floor(Math.random() * targets.length)]!;
     } else {
-        target = pickDailyTarget(data.targets, lang, dayIdx);
+        target = pickDailyTarget(targets, lang, dayIdx);
     }
 
     const targetId = createSession(target);
 
-    // Anchor words for compass hint labels (no target word leak)
+    // Axis metadata from DB-cached axes (loaded at startup, 140KB)
+    const cachedAxes = semanticDb.getCachedAxes();
+    const axesNames = semanticDb.getCachedAxesNames();
     const axisAnchors: Record<string, { low: string; high: string }> = {};
-    for (const name of data.axesNames) {
-        const axis = data.axes[name];
-        if (axis) axisAnchors[name] = { low: axis.low_anchor, high: axis.high_anchor };
+    const axesCoherence: Record<string, number> = {};
+    if (cachedAxes) {
+        for (const axis of cachedAxes) {
+            axisAnchors[axis.name] = { low: axis.lowAnchor, high: axis.highAnchor };
+            axesCoherence[axis.name] = axis.auc;
+        }
     }
 
-    const targetUmapPosition = get2dPosition(data, target);
+    // Target position + vocab size from DB
+    const [targetUmapPosition, totalRanked] = await Promise.all([
+        semanticDb.get2dPosition(lang, target),
+        semanticDb.getTotalRanked(lang),
+    ]);
 
     const response: Record<string, unknown> = {
         targetId,
         lang,
         dayIdx,
-        vocabularySize: data.vocabulary.length,
-        axes: data.axesNames,
-        axesCoherence: data.axesAuc,
+        vocabularySize: totalRanked,
+        axes: axesNames,
+        axesCoherence,
         axisAnchors,
-        modelName: data.modelName,
+        modelName: 'text-embedding-3-large',
         targetUmapPosition,
         maxGuesses: 15,
-        totalRanked: data.words.length,
+        totalRanked,
     };
 
     if (debug) {
         response.debug = {
             targetWord: target,
-            targetPool: data.targets,
+            targetPool: targets,
         };
     }
 

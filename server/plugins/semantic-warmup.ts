@@ -42,7 +42,7 @@ export function getValidWords(): Set<string> {
 export default defineNitroPlugin(async () => {
     // 1. Load axes from Postgres (140KB, for compass computation)
     try {
-        const { loadAxes } = await import('~/server/utils/semantic-db');
+        const { loadAxes } = await import('~/server/utils/_semantic-db');
         const t0 = Date.now();
         const axes = await loadAxes('en');
         consola.info(`[semantic warmup] loaded ${axes.length} axes in ${Date.now() - t0}ms`);

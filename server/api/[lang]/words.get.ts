@@ -87,9 +87,8 @@ let _semanticTargets: string[] | null = null;
 async function loadSemanticTargets(): Promise<string[]> {
     if (_semanticTargets) return _semanticTargets;
     try {
-        const { loadSemanticDataSafe } = await import('../../utils/semantic');
-        const data = loadSemanticDataSafe();
-        _semanticTargets = data.targets;
+        const semanticDb = await import('../../utils/_semantic-db');
+        _semanticTargets = await semanticDb.getTargets('en');
         return _semanticTargets!;
     } catch {
         return [];

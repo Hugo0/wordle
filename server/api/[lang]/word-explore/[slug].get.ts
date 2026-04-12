@@ -2,18 +2,12 @@
  * GET /api/[lang]/word-explore/[slug]
  *
  * Semantic exploration data for a word: normalized axis projections,
- * nearest + farthest neighbors, UMAP coordinates. For out-of-vocab words,
- * fetches an embedding on-demand via OpenAI (cached to disk). Non-English
- * languages return `available: false` — the semantic data is English-only.
+ * nearest neighbors, UMAP coordinates. For out-of-vocab words,
+ * fetches an embedding on-demand via OpenAI (stored in DB).
+ * Non-English languages return `available: false`.
  */
-import {
-    cosineSimilarity,
-    fetchEmbeddingOnDemand,
-    getEmbedding,
-    getTargetDistribution,
-    loadSemanticData,
-    normalizeProjection,
-} from '../../../utils/semantic';
+import { cosineSimilarity } from '../../../utils/semantic';
+import * as semanticDb from '~/server/utils/_semantic-db';
 import { resolveWordSlug } from '../../../utils/word-selection';
 import { loadAllData } from '../../../utils/data-loader';
 
@@ -45,77 +39,72 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Word not found' });
     }
 
-    // Semantic data is English-only for now; other languages get a graceful
-    // empty response so the page can render the fallback section.
     if (lang !== 'en') {
         return { word, inVocab: false, ...EMPTY_RESPONSE };
     }
 
-    const sem = loadSemanticData();
-    let vec = getEmbedding(sem, word);
+    // Get embedding from DB (or fetch on-demand via OpenAI)
+    let vec = await semanticDb.getEmbedding(lang, word);
     const inVocab = vec !== null;
-    if (!vec) vec = await fetchEmbeddingOnDemand(sem, word);
+    if (!vec) {
+        vec = await semanticDb.fetchOnDemandEmbedding(lang, word);
+    }
     if (!vec) {
         return { word, inVocab: false, ...EMPTY_RESPONSE };
     }
 
-    // Per-axis projections — compute inline (not projectAllAxes) so we can
-    // skip low-AUC axes in one pass rather than projecting then filtering.
-    const D = sem.dims;
+    // Per-axis projections from DB-cached axes
+    const cachedAxes = semanticDb.getCachedAxes();
+    const axesVectors = semanticDb.getCachedAxesVectors();
+    const axesNames = semanticDb.getCachedAxesNames();
+    const D = vec.length;
     const projections = [];
-    for (let a = 0; a < sem.axesNames.length; a++) {
-        const name = sem.axesNames[a]!;
-        if ((sem.axesAuc[name] ?? 0) < 0.8) continue;
-        let raw = 0;
-        const rowOffset = a * D;
-        for (let j = 0; j < D; j++) {
-            raw += vec[j]! * sem.axesVectors[rowOffset + j]!;
-        }
-        const rec = sem.axes[name]!;
-        projections.push({
-            axis: name,
-            lowAnchor: rec.low_anchor,
-            highAnchor: rec.high_anchor,
-            normalized: normalizeProjection(sem, name, raw),
-            rawProjection: raw,
-        });
-    }
 
-    // Top-80 nearest neighbors. 80 lets the Word Explorer show a small
-    // prominent foreground (~12 top dots) + a muted "extended neighborhood"
-    // background (~60 faded dots) in the same polar coordinate system.
-    // UMAP coords come along so the client can compute real angular
-    // directions via polarProject — without them, every muted dot would
-    // stack at (0.5, 0.5).
-    const dist = getTargetDistribution(sem, word);
-    type NeighborOut = {
-        word: string;
-        similarity: number;
-        umap: [number, number] | null;
-    };
-    const nearest: NeighborOut[] = [];
-    if (dist) {
-        const N = dist.words.length;
-        for (let i = 1; i <= 80 && i < N; i++) {
-            const w = dist.words[i]!;
-            nearest.push({
-                word: w,
-                similarity: dist.cosines[i]!,
-                umap: sem.umap[w] ?? null,
+    if (cachedAxes && axesVectors) {
+        for (let a = 0; a < axesNames.length; a++) {
+            const axis = cachedAxes[a]!;
+            if (axis.auc < 0.8) continue;
+            let raw = 0;
+            const rowOffset = a * D;
+            for (let j = 0; j < D; j++) {
+                raw += vec[j]! * axesVectors[rowOffset + j]!;
+            }
+            // Normalize using p5/p95 range
+            let normalized = 0.5;
+            if (axis.rangeP95 !== axis.rangeP5) {
+                normalized = Math.max(0, Math.min(1,
+                    (raw - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5)
+                ));
+            }
+            projections.push({
+                axis: axis.name,
+                lowAnchor: axis.lowAnchor,
+                highAnchor: axis.highAnchor,
+                normalized,
+                rawProjection: raw,
             });
         }
     }
 
-    // When `?relativeTo=X` is passed, compute cosine similarity to X so
-    // the client can lay out user-added context words at a radius that
-    // reflects their distance from the primary word. Same-word => 1.
+    // Nearest neighbors via pgvector HNSW — includes UMAP coords
+    const neighbors = await semanticDb.knnNearest(lang, word, 80, [word]);
+    const nearest = neighbors.map((n) => ({
+        word: n.word,
+        similarity: n.similarity,
+        umap: n.umapX != null ? [n.umapX, n.umapY] as [number, number] : null,
+    }));
+
+    // UMAP position for this word
+    const umap = await semanticDb.get2dPosition(lang, word);
+
+    // Cosine similarity to relativeTo word (for context word layout)
     let similarityTo: number | null = null;
     if (relativeTo) {
         if (relativeTo === word) {
             similarityTo = 1;
         } else {
-            let otherVec = getEmbedding(sem, relativeTo);
-            if (!otherVec) otherVec = await fetchEmbeddingOnDemand(sem, relativeTo);
+            let otherVec = await semanticDb.getEmbedding(lang, relativeTo);
+            if (!otherVec) otherVec = await semanticDb.fetchOnDemandEmbedding(lang, relativeTo);
             if (otherVec) similarityTo = cosineSimilarity(vec, otherVec);
         }
     }
@@ -125,7 +114,7 @@ export default defineEventHandler(async (event) => {
         inVocab,
         projections,
         nearest,
-        umap: sem.umap[word] ?? null,
+        umap,
         similarityTo,
         available: true,
     };

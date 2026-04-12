@@ -471,14 +471,34 @@ Current band-aid: `min-height: min(200px, calc(100dvh - 310px))` prevents `min-h
 **Added**: 2026-04-12
 **Status**: Monitoring — disk fallback paths emit console.warn when hit
 
-Data has been migrated from Render's persistent disk to Postgres (184K definitions, 2.8K word stats, 50K embeddings with UMAP/PCA2D coordinates). Disk fallback paths are now marked DEPRECATED with console.warn.
+Data has been migrated from Render's persistent disk to Postgres:
+- 253K definitions (77K kaikki native + 98K kaikki-en + 77K LLM, source/model provenance tracked)
+- 2.8K word stats
+- 50K embeddings with UMAP/PCA2D coordinates, 70 axes, 4.4M neighbor ranks
+- `model` column added to definitions table (gpt-5.2, wiktionary-kaikki-2024, legacy-unknown)
 
-After 2 weeks of stable DB-only operation (no DEPRECATED warnings in logs), remove:
+### Phase 1: Remove disk fallback code (after 2 weeks stable, ~2026-04-26)
 
-- [ ] `server/utils/definitions.ts` — Tier 1 disk cache read + disk write after LLM/kaikki
-- [ ] `server/utils/word-stats.ts` — disk read fallback in `loadWordStats`, disk write fallback with lockfile in `updateWordStats`
-- [ ] `server/utils/wiktionary.ts` — `readCache`/`writeCache` disk functions + their callsites
-- [ ] `server/utils/data-loader.ts` — remove `WORD_DEFS_DIR`, `WORD_STATS_DIR`, `WORD_HISTORY_DIR` exports if no longer used
-- [ ] Remove `proper-lockfile` dependency from package.json (only used by word-stats disk path)
-- [ ] Consider removing `WORD_IMAGES_DIR` disk path (word images still on disk, needs S3/R2 migration)
-- [ ] `server/utils/word-selection.ts` — `WORD_HISTORY_DIR` disk cache for daily word history (derivable from algorithm, but safety net)
+- [ ] `server/utils/definitions.ts` — remove Tier 1 disk read, disk write, kaikki in-memory cache (`_kaikkiCache`, `loadKaikkiFile`, `lookupKaikki`, `resolveDefinitionsDir`, `DEFINITIONS_DIR`). Kaikki data is now in the `definitions` table with source='kaikki'/'kaikki-en'.
+- [ ] `server/utils/word-stats.ts` — remove disk read/write fallback + `proper-lockfile` dependency
+- [ ] `server/utils/wiktionary.ts` — remove `readCache`/`writeCache` disk functions
+- [ ] `server/api/[lang]/semantic/hint.post.ts` — remove disk read/write for hints
+- [ ] `server/utils/data-loader.ts` — remove `WORD_DEFS_DIR`, `WORD_STATS_DIR` exports
+- [ ] Remove `proper-lockfile` from package.json
+- [ ] Remove fs imports (`existsSync`, `readFileSync`, `writeFileSync`, `mkdirSync`) from all above files
+
+### Phase 2: Migrate remaining disk-dependent features
+
+- [ ] **Word history** → new DB table `(lang, day_idx, word)`. ~136K rows (80 langs × 1700 days). Eliminates 546MB of `.txt` files on Render disk and disk reads in `word-selection.ts`. Algorithm is deterministic but cache is a safety net against word list changes.
+- [ ] **Word images** → decide: keep on Render persistent disk ($0.40/month for 1.5GB), or move to Cloudflare R2 (free egress, ~$0.003/month for 204MB). Only feature still requiring the persistent disk. No urgency — current setup works.
+- [ ] **`semantic.ts` legacy in-memory loader** — `start.post.ts` and `word/[slug].get.ts` still import `loadSemanticData` which loads the 98MB embedding matrix. Migrate these two endpoints to use `_semantic-db.ts` (DB-backed), then delete `loadSemanticData`/`loadSemanticDataSafe`/`loadEmbeddings` and the entire in-memory path.
+
+### Phase 3: Remove committed heavy files from git
+
+- [ ] `data/semantic/embeddings.f32` + `embeddings.meta.json` (~99MB) — in pgvector
+- [ ] `data/semantic/embeddings.json` (~230MB if present) — in pgvector
+- [ ] `data/semantic/axes.json` — in `semantic_axes` table
+- [ ] `data/semantic/umap.json`, `pca2d.json` — in `word_embeddings` columns
+- [ ] `data/semantic/targets.json`, `vocabulary.json` — queryable from `word_embeddings`
+- [ ] Keep `data/semantic/valid_words.json` (loaded into memory for spellcheck, no DB table)
+- [ ] Keep `data/definitions/` as archive (kaikki data now in DB, but files are small and useful for re-seeding)
