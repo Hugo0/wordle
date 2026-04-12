@@ -273,10 +273,15 @@ export async function fetchDefinition(
     langCode: string,
     options: { skipNegativeCache?: boolean; cacheOnly?: boolean } = {}
 ): Promise<Record<string, any> | null> {
-    const { getDefinition, upsertDefinition } = await import('./db-cache');
+    let dbCache: typeof import('./db-cache') | null = null;
+    try {
+        dbCache = await import('./db-cache');
+    } catch {
+        /* DB unavailable — fall through to disk */
+    }
 
     // --- Tier 0: DB cache ---
-    const dbResult = await getDefinition(langCode, word.toLowerCase());
+    const dbResult = dbCache ? await dbCache.getDefinition(langCode, word.toLowerCase()) : null;
     if (dbResult) {
         if (dbResult.isNegative && !options.skipNegativeCache) return null;
         if (!dbResult.isNegative) {
@@ -351,7 +356,7 @@ export async function fetchDefinition(
 
     // Cache result to DB (primary) and disk (backup)
     const isNeg = !result;
-    upsertDefinition(
+    dbCache?.upsertDefinition(
         langCode,
         word.toLowerCase(),
         result

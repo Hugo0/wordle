@@ -84,6 +84,11 @@ export function getCachedAxesNames(): string[] {
     return _axesCache?.axes.map((a) => a.name) ?? [];
 }
 
+/** Get cached axis data (for normalization ranges). */
+export function getCachedAxes(): AxisData[] | null {
+    return _axesCache?.axes ?? null;
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // Embedding lookups
 // ═══════════════════════════════════════════════════════════════════════════

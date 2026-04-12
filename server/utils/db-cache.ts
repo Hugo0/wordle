@@ -123,7 +123,7 @@ export async function incrementWordStats(
     dayIdx: number,
     won: boolean,
     attempts: number
-): Promise<void> {
+): Promise<boolean> {
     // Safe: no dynamic SQL. Each dist column gets +1 only if won AND attempts matches.
     const d1 = won && attempts === 1 ? 1 : 0;
     const d2 = won && attempts === 2 ? 1 : 0;
@@ -147,8 +147,10 @@ export async function incrementWordStats(
                 dist_5 = word_stats.dist_5 + ${d5},
                 dist_6 = word_stats.dist_6 + ${d6}
         `;
+        return true;
     } catch (e) {
         console.warn('[db-cache] incrementWordStats failed:', e);
+        return false;
     }
 }
 

@@ -65,9 +65,10 @@ export default defineEventHandler(async (event) => {
     const won = rank === 1;
     const display = won ? 1 : Math.min(0.99, rankToDisplay(rank, totalRanked));
 
-    // Axis projections via cached axes vectors (140KB in memory)
+    // Axis projections — compute raw dot product, then normalize to [0,1]
     const axesVectors = semanticDb.getCachedAxesVectors();
     const axesNames = semanticDb.getCachedAxesNames();
+    const axesData = semanticDb.getCachedAxes();
     const normalizedGuessProjections: Record<string, number> = {};
     if (axesVectors && axesNames.length > 0) {
         const dims = guessVec.length;
@@ -76,7 +77,14 @@ export default defineEventHandler(async (event) => {
             for (let i = 0; i < dims; i++) {
                 dot += guessVec[i]! * axesVectors[a * dims + i]!;
             }
-            normalizedGuessProjections[axesNames[a]!] = dot;
+            // Normalize using p5/p95 range (same as legacy normalizeProjection)
+            const axis = axesData?.[a];
+            if (axis && axis.rangeP95 !== axis.rangeP5) {
+                const v = (dot - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5);
+                normalizedGuessProjections[axesNames[a]!] = Math.max(0, Math.min(1, v));
+            } else {
+                normalizedGuessProjections[axesNames[a]!] = 0.5;
+            }
         }
     }
 

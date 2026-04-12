@@ -50,10 +50,11 @@ export async function updateWordStats(
     // Primary: DB atomic increment (no read-modify-write, no lockfile)
     try {
         const { incrementWordStats } = await import('./db-cache');
-        await incrementWordStats(langCode, dayIdx, won, attempts);
-        return; // Success — no disk write needed
+        const ok = await incrementWordStats(langCode, dayIdx, won, attempts);
+        if (ok) return; // DB write succeeded — no disk write needed
+        // DB write failed — fall through to disk
     } catch {
-        // DB unavailable — fall through to disk
+        // DB module unavailable — fall through to disk
     }
 
     // Fallback: disk with lockfile (legacy behavior)
