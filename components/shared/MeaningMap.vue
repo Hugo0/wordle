@@ -663,7 +663,7 @@ const targetScreenPos = computed(() => {
 
 <template>
     <section class="meaning-map">
-        <div class="canvas-wrap" :style="{ width: canvasSize + 'px', height: canvasSize + 'px' }">
+        <div class="canvas-wrap">
             <svg
                 ref="svgRef"
                 :width="canvasSize"
@@ -882,10 +882,15 @@ const targetScreenPos = computed(() => {
     align-items: center;
 }
 .canvas-wrap {
-    /* Border + background moved to MapFrame .map-content-wrap so controls
-       render inside the bordered area. MeaningMap is just the SVG container. */
-    overflow: hidden;
+    /* No inline styles — CSS controls display size. viewBox handles coordinates.
+       Default 520px, shrinks via max-width from parent constraints. */
+    width: 520px;
+    aspect-ratio: 1;
     max-width: 100%;
+}
+/* When expanded, fill the overlay */
+:global(.map-expanded) .canvas-wrap {
+    width: min(90dvh, 95dvw);
 }
 .grid-line {
     stroke: var(--color-rule);
@@ -894,22 +899,10 @@ const targetScreenPos = computed(() => {
 }
 .plot {
     display: block;
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
 }
 
-/* On mobile, force the SVG to scale proportionally instead of
-   overflowing at its intrinsic 520px height. height:auto lets
-   the viewBox aspect ratio drive the height from the constrained width. */
-@media (max-width: 520px) {
-    .canvas-wrap {
-        height: auto !important;
-        aspect-ratio: 1;
-    }
-    .plot {
-        height: auto !important;
-        width: 100% !important;
-    }
-}
 
 /* ── Axis labels (slice mode) — cardinal positions ────────────────── */
 .axis-label {
