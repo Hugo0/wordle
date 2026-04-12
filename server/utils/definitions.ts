@@ -265,19 +265,54 @@ async function callLlmDefinition(
 /**
  * Fetch a word definition.
  *
- * Default: 3-tier: disk cache → LLM → kaikki.
- * With cacheOnly: disk cache → kaikki only (no LLM call — safe for unlimited/random words).
+ * 4-tier: DB cache → disk cache → LLM → kaikki.
+ * With cacheOnly: DB/disk cache → kaikki only (no LLM call — safe for unlimited/random words).
  */
 export async function fetchDefinition(
     word: string,
     langCode: string,
     options: { skipNegativeCache?: boolean; cacheOnly?: boolean } = {}
 ): Promise<Record<string, any> | null> {
+    const { getDefinition, upsertDefinition } = await import('./db-cache');
+
+    // --- Tier 0: DB cache ---
+    const dbResult = await getDefinition(langCode, word.toLowerCase());
+    if (dbResult) {
+        if (dbResult.isNegative && !options.skipNegativeCache) return null;
+        if (!dbResult.isNegative) {
+            // If DB result is kaikki-en fallback, check if stale (>24h)
+            if (dbResult.source === 'kaikki-en' && !dbResult.definitionNative) {
+                const age = Date.now() - dbResult.cachedAt.getTime();
+                if (age < NEGATIVE_CACHE_TTL * 1000) {
+                    return {
+                        definition: dbResult.definition,
+                        definition_native: dbResult.definitionNative,
+                        definition_en: dbResult.definitionEn,
+                        part_of_speech: dbResult.partOfSpeech,
+                        confidence: dbResult.confidence,
+                        source: dbResult.source,
+                        url: dbResult.url,
+                    };
+                }
+            } else {
+                return {
+                    definition: dbResult.definition,
+                    definition_native: dbResult.definitionNative,
+                    definition_en: dbResult.definitionEn,
+                    part_of_speech: dbResult.partOfSpeech,
+                    confidence: dbResult.confidence,
+                    source: dbResult.source,
+                    url: dbResult.url,
+                };
+            }
+        }
+    }
+
+    // --- Tier 1: Disk cache (fallback during migration) ---
     const cacheDir = WORD_DEFS_DIR;
     const langCacheDir = join(cacheDir, langCode);
     const cachePath = join(langCacheDir, `${word.toLowerCase()}.json`);
 
-    // --- Tier 1: Disk cache ---
     if (existsSync(cachePath)) {
         try {
             const loaded = JSON.parse(readFileSync(cachePath, 'utf-8'));
@@ -288,16 +323,12 @@ export async function fetchDefinition(
                         return null;
                     }
                 }
-                // Expired — fall through
             } else if (loaded && Object.keys(loaded).length > 0) {
-                // If cached result is English-only (kaikki-en fallback), try LLM for native
-                // But only retry once per 24h to avoid hammering LLM
                 if (loaded.source === 'kaikki-en' && !loaded.definition_native) {
                     const cachedTs = loaded.ts || 0;
                     if (Date.now() / 1000 - cachedTs < NEGATIVE_CACHE_TTL) {
                         return loaded;
                     }
-                    // Expired — fall through
                 } else {
                     return loaded;
                 }
@@ -318,7 +349,26 @@ export async function fetchDefinition(
         result = lookupKaikki(word, langCode, 'native') || lookupKaikki(word, langCode, 'en');
     }
 
-    // Cache result (including negative results)
+    // Cache result to DB (primary) and disk (backup)
+    const isNeg = !result;
+    upsertDefinition(
+        langCode,
+        word.toLowerCase(),
+        result
+            ? {
+                  definition: result.definition,
+                  definitionNative: result.definition_native,
+                  definitionEn: result.definition_en,
+                  partOfSpeech: result.part_of_speech,
+                  confidence: result.confidence,
+                  source: result.source,
+                  url: result.url,
+              }
+            : {},
+        isNeg
+    );
+
+    // Also write to disk for backward compat during migration
     try {
         mkdirSync(langCacheDir, { recursive: true });
         writeFileSync(

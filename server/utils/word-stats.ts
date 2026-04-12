@@ -15,9 +15,19 @@ const _statsSeenIps = new Set<string>();
 let _statsSeenDay: number | null = null;
 
 /**
- * Load stats for a specific word/day.
+ * Load stats for a specific word/day. DB-first, disk fallback.
  */
-export function loadWordStats(langCode: string, dayIdx: number): WordStats | null {
+export async function loadWordStats(langCode: string, dayIdx: number): Promise<WordStats | null> {
+    // Try DB first
+    try {
+        const { getWordStats } = await import('./db-cache');
+        const dbStats = await getWordStats(langCode, dayIdx);
+        if (dbStats) return dbStats;
+    } catch {
+        // DB unavailable — fall through to disk
+    }
+
+    // Disk fallback
     const statsPath = join(WORD_STATS_DIR, langCode, `${dayIdx}.json`);
     if (!existsSync(statsPath)) return null;
     try {
@@ -28,7 +38,8 @@ export function loadWordStats(langCode: string, dayIdx: number): WordStats | nul
 }
 
 /**
- * Atomically read-modify-write stats for a specific word/day.
+ * Atomically update stats for a specific word/day.
+ * DB-first (atomic SQL increment, no lockfile needed), disk fallback.
  */
 export async function updateWordStats(
     langCode: string,
@@ -36,34 +47,36 @@ export async function updateWordStats(
     won: boolean,
     attempts: number
 ): Promise<void> {
+    // Primary: DB atomic increment (no read-modify-write, no lockfile)
+    try {
+        const { incrementWordStats } = await import('./db-cache');
+        await incrementWordStats(langCode, dayIdx, won, attempts);
+        return; // Success — no disk write needed
+    } catch {
+        // DB unavailable — fall through to disk
+    }
+
+    // Fallback: disk with lockfile (legacy behavior)
     const statsDir = join(WORD_STATS_DIR, langCode);
     const statsPath = join(statsDir, `${dayIdx}.json`);
     mkdirSync(statsDir, { recursive: true });
 
-    // Use proper-lockfile for atomic updates
     let lockfile: typeof import('proper-lockfile');
     try {
         lockfile = await import('proper-lockfile');
     } catch {
-        // Fallback: write without locking
         _writeStats(statsPath, won, attempts);
         return;
     }
 
-    const lockPath = statsPath + '.lock';
-    // Ensure lock target exists
     if (!existsSync(statsPath)) {
         writeFileSync(statsPath, '{}', 'utf-8');
     }
 
     let release: (() => Promise<void>) | undefined;
     try {
-        release = await lockfile.lock(statsPath, {
-            stale: 10000,
-            retries: 0,
-        });
+        release = await lockfile.lock(statsPath, { stale: 10000, retries: 0 });
     } catch {
-        // Another process holds the lock; skip this update
         return;
     }
 

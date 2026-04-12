@@ -23,7 +23,22 @@ import {
 } from '~/server/utils/semanticGenerate';
 
 export default defineNitroPlugin(async () => {
-    // Fast path: files already on disk → just warm the in-memory cache.
+    // DB mode: skip the heavy 98-230MB embedding load. Only load axes (140KB).
+    if (process.env.SEMANTIC_DB === '1') {
+        try {
+            const { loadAxes } = await import('~/server/utils/semantic-db');
+            const t0 = Date.now();
+            const axes = await loadAxes('en');
+            consola.info(
+                `[semantic warmup] DB mode — loaded ${axes.length} axes in ${Date.now() - t0}ms (embeddings in Postgres)`
+            );
+        } catch (e) {
+            consola.warn('[semantic warmup] DB axis load failed:', e);
+        }
+        return;
+    }
+
+    // Legacy mode: load full embedding matrix into memory.
     if (semanticRuntimeCacheExists()) {
         try {
             const t0 = Date.now();
