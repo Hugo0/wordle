@@ -55,3 +55,38 @@ function rankClass(rank: number): Record<string, boolean> {
     };
 }
 </script>
+
+<style scoped>
+.lb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.lb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 4px;
+    border-bottom: 1px solid var(--color-rule);
+    transition: background 0.15s;
+}
+.lb-row:hover {
+    background: var(--color-paper-warm);
+}
+.lb-row-you {
+    background: var(--color-paper-warm);
+    border-inline-start: 3px solid var(--color-ink);
+    padding-inline-start: 1px;
+}
+.lb-rank {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.lb-rank-gold { color: #c9a930; }
+.lb-rank-silver { color: #8a8a8a; }
+.lb-rank-bronze { color: #a0622e; }
+</style>

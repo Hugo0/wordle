@@ -150,10 +150,12 @@ useHead({
 
 function updateQuery() {
     const q: Record<string, string> = {};
-    if (lang.value !== 'en') q.lang = lang.value;
-    if (activeMode.value !== 'classic') q.mode = activeMode.value;
+    const isGlobal = activePeriod.value === 'streaks' || activePeriod.value === 'records';
+    // Global tabs (streaks/records) don't use lang or mode
+    if (!isGlobal && lang.value !== 'en') q.lang = lang.value;
+    if (!isGlobal && activeMode.value !== 'classic') q.mode = activeMode.value;
     if (activePeriod.value !== 'today') q.period = activePeriod.value;
-    if (browseDay.value != null) q.day = String(browseDay.value);
+    if (!isGlobal && browseDay.value != null) q.day = String(browseDay.value);
     navigateTo({ path: '/leaderboard', query: q }, { replace: true });
 }
 
@@ -574,11 +576,7 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
 
 
 <style scoped>
-.lb-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+/* "Your position" row at bottom of populated state — still in parent template */
 .lb-row {
     display: flex;
     align-items: center;
@@ -586,9 +584,6 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
     padding: 10px 4px;
     border-bottom: 1px solid var(--color-rule);
     transition: background 0.15s;
-}
-.lb-row:hover {
-    background: var(--color-paper-warm);
 }
 .lb-row-you {
     background: var(--color-paper-warm);
@@ -603,110 +598,14 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
     text-align: center;
     flex-shrink: 0;
 }
-.lb-rank-gold {
-    color: #c9a930;
-}
-.lb-rank-silver {
-    color: #8a8a8a;
-}
-.lb-rank-bronze {
-    color: #a0622e;
-}
-
 .lb-you-below {
     border-top: 2px dashed var(--color-rule);
     margin-top: 4px;
 }
 
-/* Podium */
-.podium {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 12px;
-    padding: 16px 8px 16px;
-    margin-bottom: 4px;
-}
-.podium-place {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-.podium-place.first {
-    order: 2;
-}
-.podium-place.second {
-    order: 1;
-}
-.podium-place.third {
-    order: 3;
-}
-.podium-rank {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--color-muted);
-    letter-spacing: 0.04em;
-    margin-bottom: 2px;
-}
-.podium-place.first .podium-rank {
-    color: #c9a930;
-}
-.podium-place.second .podium-rank {
-    color: #8a8a8a;
-}
-.podium-place.third .podium-rank {
-    color: #a0622e;
-}
-.podium-name {
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 600;
-    max-width: 80px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--color-ink);
-}
-.podium-you {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 7px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: var(--color-ink);
-    color: var(--color-paper);
-    padding: 0 4px;
-    margin: 2px auto 0;
-    width: fit-content;
-}
-.podium-score {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--color-ink);
-    margin-top: 2px;
-}
-
-/* Avatar ring color for podium — target img and the rounded-full placeholder div */
-.podium-place.first :deep(img),
-.podium-place.first :deep(.rounded-full) {
-    border: 2px solid #c9a930;
-}
-.podium-place.second :deep(img),
-.podium-place.second :deep(.rounded-full) {
-    border: 2px solid #8a8a8a;
-}
-.podium-place.third :deep(img),
-.podium-place.third :deep(.rounded-full) {
-    border: 2px solid #a0622e;
-}
-
 /* Content fade transition on tab/mode switch */
 .lb-content {
-    min-height: 400px; /* prevent layout shift between tabs */
+    min-height: 400px;
 }
 .lb-fade-enter-active,
 .lb-fade-leave-active {

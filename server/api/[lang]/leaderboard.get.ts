@@ -298,11 +298,7 @@ async function fetchYourRankToday(
         const mc = myResult.maxCombo ?? 0;
         rankAbove = await prisma.result.count({
             where: {
-                lang,
-                mode,
-                playType: 'daily',
-                dayIdx,
-                won: true,
+                ...speedWhereForDay(lang, dayIdx),
                 OR: [
                     { score: { gt: sc } },
                     { score: sc, wordsSolved: { gt: ws } },
