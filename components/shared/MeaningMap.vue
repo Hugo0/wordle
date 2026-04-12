@@ -206,11 +206,14 @@ const screenDots = computed<ScreenDot[]>(() => {
         const inner = S - PAD * 2;
         return props.dots
             .filter((d) => d.role !== 'muted')
-            .map((d) => ({
-                ...d,
-                x: PAD + (d.projections[axisX] ?? 0.5) * inner,
-                y: PAD + (1 - (d.projections[axisY] ?? 0.5)) * inner,
-            }));
+            .map((d) => {
+                const proj = d.projections ?? {};
+                return {
+                    ...d,
+                    x: PAD + (proj[axisX] ?? 0.5) * inner,
+                    y: PAD + (1 - (proj[axisY] ?? 0.5)) * inner,
+                };
+            });
     }
 
     if (props.mode === 'polar') {

@@ -6,7 +6,7 @@
 -->
 
 <script setup lang="ts">
-import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
+import { computed, nextTick, ref, watch } from 'vue';
 import { interpolate } from '~/utils/interpolate';
 
 const langStore = useLanguageStore();
@@ -52,36 +52,16 @@ watch(
     { immediate: true }
 );
 
-// On mobile, the virtual keyboard triggers a document-level scroll that
-// can snap the page to the SEO section below the game viewport, making
-// the header unreachable. The input is position:fixed on mobile so the
-// browser doesn't need to scroll. Lock document scroll on focus to prevent
-// this — the semantic body's internal scroll still works (own overflow context).
-let _cleanupScroll: (() => void) | null = null;
-
-function onFocus() {
+// On mobile, the virtual keyboard triggers a scroll-into-view that snaps
+// the page past the game to the SEO section. The input is position:fixed
+// on mobile so the browser doesn't need to scroll at all. Intercept the
+// tap and focus with preventScroll to avoid the jank entirely.
+function onInputTouch(e: TouchEvent) {
     if (!isTouch) return;
-    // The input is position:fixed on mobile, so the browser's
-    // scroll-into-view is wrong. Pin window scroll for the entire
-    // time the keyboard is open — catches both the initial jump and
-    // any delayed adjustments during the keyboard animation.
-    // Internal panel scrolling is unaffected (own overflow context).
-    const y = window.scrollY;
-    const pin = () => window.scrollTo(0, y);
-    window.addEventListener('scroll', pin);
-    _cleanupScroll = () => window.removeEventListener('scroll', pin);
+    if (document.activeElement === inputRef.value) return; // already focused — let browser handle cursor
+    e.preventDefault();
+    inputRef.value?.focus({ preventScroll: true });
 }
-function onBlur() {
-    if (!isTouch) return;
-    _cleanupScroll?.();
-    _cleanupScroll = null;
-}
-
-// Cleanup: remove scroll pin if component unmounts while focused
-onUnmounted(() => {
-    _cleanupScroll?.();
-    _cleanupScroll = null;
-});
 
 defineExpose({
     focus: () => inputRef.value?.focus(),
@@ -104,8 +84,7 @@ defineExpose({
                 autocorrect="off"
                 spellcheck="false"
                 inputmode="text"
-                @focus="onFocus"
-                @blur="onBlur"
+                @touchstart="onInputTouch"
             />
             <button type="submit" class="guess-button" :disabled="!value || loading || disabled">
                 <span v-if="loading">…</span>

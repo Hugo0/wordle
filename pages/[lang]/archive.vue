@@ -62,9 +62,6 @@ const label = (key: string, fallback: string) => ui[key] || fallback;
 const meta = (wordsData.value.meta as Record<string, any>) || {};
 const wordArchiveMeta = meta.word_archive || {};
 
-// Word art thumbnail visibility (reactive, per day index)
-const wordArtLoaded = reactive(new Set<number>());
-
 const modeLabel = computed(() => modeConfig.value?.label ?? 'Classic');
 const title = computed(() => {
     if (isClassic.value) {
@@ -220,9 +217,14 @@ const todayRevealed = ref<string | null>(null);
 const completedDays = ref(new Set<number>());
 
 onMounted(() => {
-    // Check current game state — key is the language code
-    const saved = readJson<{ game_over?: boolean; todays_word?: string }>(lang);
-    if (saved?.game_over && saved.todays_word) {
+    // Check current game state — only reveal if it's actually today's game
+    // (not stale state from yesterday)
+    const saved = readJson<{
+        game_over?: boolean;
+        todays_word?: string;
+        day_index?: number;
+    }>(lang);
+    if (saved?.game_over && saved.todays_word && saved.day_index === todaysIdx.value) {
         todayRevealed.value = saved.todays_word;
     }
 
@@ -354,13 +356,12 @@ onMounted(() => {
 
                         <div class="word-display">{{ w.word }}</div>
 
-                        <div v-show="w.word && wordArtLoaded.has(w.day_idx)" class="art-frame">
+                        <div v-if="w.word" class="art-frame">
                             <img
                                 :src="`/api/${lang}/word-image/${w.word}?day_idx=${w.day_idx}`"
                                 :alt="w.word || ''"
                                 class="art"
                                 loading="lazy"
-                                @load="wordArtLoaded.add(w.day_idx)"
                             />
                         </div>
 

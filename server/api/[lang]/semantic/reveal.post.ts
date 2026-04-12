@@ -32,7 +32,16 @@ export default defineEventHandler(async (event) => {
     ]);
 
     const neighborWords = neighbours.map((n) => n.word);
-    const rankMap = await semanticDb.batchGetRanks(lang, target, neighborWords);
+    const [rankMap, embeddings] = await Promise.all([
+        semanticDb.batchGetRanks(lang, target, neighborWords),
+        semanticDb.getEmbeddings(lang, neighborWords),
+    ]);
+    // Project each neighbour onto the semantic axes for slice view
+    const projections = new Map<string, Record<string, number>>();
+    for (const w of neighborWords) {
+        const vec = embeddings.get(w);
+        projections.set(w, vec ? semanticDb.projectAxes(vec) : {});
+    }
 
     const enriched = neighbours.map((n) => ({
         word: n.word,
@@ -41,6 +50,7 @@ export default defineEventHandler(async (event) => {
         display: rankToDisplay(rankMap.get(n.word) ?? totalRanked, totalRanked),
         similarity: n.similarity,
         umapPosition: n.umapX != null ? [n.umapX, n.umapY] : null,
+        allProjectionsNormalized: projections.get(n.word) ?? {},
     }));
 
     return {
