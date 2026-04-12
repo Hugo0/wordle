@@ -649,6 +649,14 @@ function onKeepPlaying() {
     align-items: center;
     min-height: min(200px, calc(100dvh - var(--map-chrome)));
     max-height: calc(100dvh - var(--map-chrome));
+    overflow: hidden;
+}
+/* Cap the square map's width to available height so it never overflows.
+   The map is square (aspect-ratio: 1 via inline width=height), so
+   limiting width also limits height. Only in non-expanded mode. */
+.map-canvas-wrap :deep(.map-outer:not(.map-expanded) .canvas-wrap) {
+    max-width: min(100%, calc(100dvh - var(--map-chrome)));
+    max-height: calc(100dvh - var(--map-chrome));
 }
 /* Constrain the square map to fit within the available height.
    aspect-ratio:1 sizes from width by default, so we also cap
