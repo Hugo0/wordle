@@ -427,7 +427,11 @@ function onKeepPlaying() {
                                     class="eyebrow-tag eyebrow-toggle"
                                     :class="{ active: sem.mapMode.value === 'slice' }"
                                     @click="onSliceToggle"
-                                    :title="sem.mapMode.value === 'slice' ? 'Switch to neighborhood view' : 'Switch to axis slice view'"
+                                    :title="
+                                        sem.mapMode.value === 'slice'
+                                            ? 'Switch to neighborhood view'
+                                            : 'Switch to axis slice view'
+                                    "
                                 >
                                     {{
                                         sem.mapMode.value === 'slice' && sem.sliceAxes.value
@@ -471,17 +475,35 @@ function onKeepPlaying() {
                                     <button
                                         type="button"
                                         class="map-ctrl-btn"
-                                        :aria-label="sem.mapMode.value === 'slice' ? 'Neighborhood view' : 'Axis slice view'"
-                                        :title="sem.mapMode.value === 'slice' ? 'Switch to neighborhood' : 'Switch to slice'"
-                                        :class="{ 'map-ctrl-active': sem.mapMode.value === 'slice' }"
+                                        :aria-label="
+                                            sem.mapMode.value === 'slice'
+                                                ? 'Neighborhood view'
+                                                : 'Axis slice view'
+                                        "
+                                        :title="
+                                            sem.mapMode.value === 'slice'
+                                                ? 'Switch to neighborhood'
+                                                : 'Switch to slice'
+                                        "
+                                        :class="{
+                                            'map-ctrl-active': sem.mapMode.value === 'slice',
+                                        }"
                                         @click.stop="onSliceToggle"
                                     >
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                             stroke="currentColor" stroke-width="2.5">
-                                            <path v-if="sem.mapMode.value !== 'slice'"
-                                                  d="M3 3l18 18M3 21l18-18" />
-                                            <path v-else
-                                                  d="M12 3v18M3 12h18" />
+                                        <svg
+                                            width="12"
+                                            height="12"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2.5"
+                                            stroke-linecap="round"
+                                        >
+                                            <!-- L-axes = enter slice; X = exit slice -->
+                                            <template v-if="sem.mapMode.value !== 'slice'">
+                                                <path d="M4 4v17h17" />
+                                            </template>
+                                            <path v-else d="M6 6l12 12M6 18l12-12" />
                                         </svg>
                                     </button>
                                 </template>

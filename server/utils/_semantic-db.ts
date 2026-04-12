@@ -257,10 +257,9 @@ export async function computeGuessRank(
         if (rows.length) return rows[0]!.rank;
 
         // Slow path: word outside top 5k.
-        // Compute cosine and estimate rank from the boundary cosine.
-        // The precomputed table stores ranks 1-5000; words beyond that
-        // are mapped using a linear interpolation between the 5K boundary
-        // and cosine=0 → rank=totalVocab. Instant, no full-vocab scan.
+        // Estimate rank by Monte Carlo sampling: compute cosine of the
+        // target against ~500 pre-cached random vocab embeddings, count
+        // what fraction are closer than the guess, extrapolate to full vocab.
         const [gVec, tVec] = await Promise.all([
             guessVec ? Promise.resolve(guessVec) : getEmbedding(lang, guess),
             targetVec ? Promise.resolve(targetVec) : getEmbedding(lang, target),
@@ -268,24 +267,39 @@ export async function computeGuessRank(
         if (!gVec || !tVec) return null;
 
         const guessCos = cosineSimilarity(gVec, tVec);
-
-        // Get the boundary cosine (lowest cosine in top 5K)
-        const boundaryRows = await prisma.$queryRaw<Array<{ cosine: number }>>`
-            SELECT cosine FROM wordle.target_neighbors
-            WHERE lang = ${lang} AND target_word = ${target}
-            ORDER BY rank DESC LIMIT 1
-        `;
-        const boundaryCos = boundaryRows[0]?.cosine ?? 0.3;
         const total = await getTotalRanked(lang);
+        const sample = await getRankSample(lang);
+        if (!sample) return null;
 
-        if (guessCos >= boundaryCos) {
-            // Should have been in top 5K but wasn't found — edge case, rank ~5000
-            return 5000;
+        // Compute cosines of all sample words to the target
+        const D = tVec.length;
+        const cosines = new Float32Array(sample.count);
+        for (let s = 0; s < sample.count; s++) {
+            let dot = 0;
+            const offset = s * D;
+            for (let i = 0; i < D; i++) dot += tVec[i]! * sample.vectors[offset + i]!;
+            cosines[s] = dot;
         }
 
-        // Linear interpolation: boundaryCos → rank 5001, cos=0 → rank=total
-        const fraction = 1 - guessCos / boundaryCos;
-        return Math.round(5001 + fraction * (total - 5001));
+        // Sort descending to find where guessCos falls
+        const sorted = Array.from(cosines).sort((a, b) => b - a);
+        // Find the two adjacent sample cosines that bracket guessCos
+        let lo = 0;
+        while (lo < sorted.length && sorted[lo]! > guessCos) lo++;
+        // lo = number of samples with higher cosine
+
+        // Interpolate within the bucket using exact cosine position
+        const bucketSize = total / sample.count;
+        let fractional = 0;
+        if (lo > 0 && lo < sorted.length) {
+            const hiCos = sorted[lo - 1]!; // nearest sample above
+            const loCos = sorted[lo]!; // nearest sample below
+            if (hiCos !== loCos) {
+                fractional = (hiCos - guessCos) / (hiCos - loCos);
+            }
+        }
+
+        return Math.max(1, Math.round((lo + fractional) * bucketSize));
     } catch (e) {
         console.warn('[semantic-db] computeGuessRank failed:', e);
         return null;
@@ -503,8 +517,34 @@ export async function fetchOnDemandEmbedding(
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// Helpers
+// Rank estimation sample (loaded once, ~1MB, for Monte Carlo slow-path)
 // ═══════════════════════════════════════════════════════════════════════════
+
+const RANK_SAMPLE_SIZE = 500;
+let _rankSample: { lang: string; count: number; vectors: Float32Array } | null = null;
+
+/** Load a random sample of vocab embeddings for rank estimation. */
+async function getRankSample(
+    lang: string
+): Promise<{ count: number; vectors: Float32Array } | null> {
+    if (_rankSample?.lang === lang) return _rankSample;
+    try {
+        const rows = await prisma.$queryRaw<Array<{ vector: string }>>`
+            SELECT embedding::text as vector FROM wordle.word_embeddings
+            WHERE lang = ${lang} AND is_vocab = true
+            ORDER BY random() LIMIT ${RANK_SAMPLE_SIZE}
+        `;
+        const dims = EMBEDDING_DIMS;
+        const vectors = new Float32Array(rows.length * dims);
+        for (let i = 0; i < rows.length; i++) {
+            vectors.set(parseVector(rows[i]!.vector), i * dims);
+        }
+        _rankSample = { lang, count: rows.length, vectors };
+        return _rankSample;
+    } catch {
+        return null;
+    }
+}
 
 function parseVector(pgvectorStr: string): Float32Array {
     const nums = pgvectorStr.replace(/^\[/, '').replace(/\]$/, '').split(',').map(Number);

@@ -289,6 +289,26 @@ const frameSize = computed(() => {
     color: var(--color-ink);
     border-color: var(--color-ink);
 }
+/* Slotted buttons (e.g. slice toggle from parent) need the same styling.
+   Scoped CSS doesn't apply to slot content — :slotted() bridges the gap. */
+:slotted(.map-ctrl-btn) {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: all 120ms ease;
+    font-size: 16px;
+    line-height: 1;
+}
+:slotted(.map-ctrl-btn:hover) {
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+}
 
 /* Backdrop fade — uses global .backdrop-fade-* from main.css */
 </style>

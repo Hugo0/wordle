@@ -57,18 +57,30 @@ watch(
 // the header unreachable. The input is position:fixed on mobile so the
 // browser doesn't need to scroll. Lock document scroll on focus to prevent
 // this — the semantic body's internal scroll still works (own overflow context).
+let _cleanupScroll: (() => void) | null = null;
+
 function onFocus() {
     if (!isTouch) return;
-    document.documentElement.style.overflow = 'hidden';
+    // The input is position:fixed on mobile, so the browser's
+    // scroll-into-view is wrong. Pin window scroll for the entire
+    // time the keyboard is open — catches both the initial jump and
+    // any delayed adjustments during the keyboard animation.
+    // Internal panel scrolling is unaffected (own overflow context).
+    const y = window.scrollY;
+    const pin = () => window.scrollTo(0, y);
+    window.addEventListener('scroll', pin);
+    _cleanupScroll = () => window.removeEventListener('scroll', pin);
 }
 function onBlur() {
     if (!isTouch) return;
-    document.documentElement.style.overflow = '';
+    _cleanupScroll?.();
+    _cleanupScroll = null;
 }
 
-// Cleanup: ensure scroll is unlocked if component unmounts while focused
+// Cleanup: remove scroll pin if component unmounts while focused
 onUnmounted(() => {
-    document.documentElement.style.overflow = '';
+    _cleanupScroll?.();
+    _cleanupScroll = null;
 });
 
 defineExpose({

@@ -473,12 +473,18 @@ export function useSemanticGame(lang: string) {
             exitAxisSlice();
             return;
         }
-        // Otherwise enter slice mode using the currently-visible top 2 compass
-        // axes (the unfiltered top 2 from the server, since we haven't entered
-        // slice mode yet there's nothing to exclude).
+        // Enter slice mode using the top 2 compass axes from the last guess.
+        // After game over the last guess may have no compass hints (e.g. the
+        // target word itself), so fall back to any 2 available axes.
         const currentCompass = lastCompass.value;
-        if (currentCompass.length < 2) return;
-        enterAxisSlice(currentCompass[0]!.axis, currentCompass[1]!.axis);
+        if (currentCompass.length >= 2) {
+            enterAxisSlice(currentCompass[0]!.axis, currentCompass[1]!.axis);
+            return;
+        }
+        const availableAxes = Object.keys(axisAnchors.value);
+        if (availableAxes.length >= 2) {
+            enterAxisSlice(availableAxes[0]!, availableAxes[1]!);
+        }
     }
 
     return {

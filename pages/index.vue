@@ -14,17 +14,7 @@ import {
     scopedKey,
     STORAGE_KEYS,
 } from '~/utils/storage';
-import {
-    Flame,
-    Check,
-    Compass,
-    Square,
-    Zap,
-    Columns2,
-    User,
-    CircleCheck,
-    Trophy,
-} from 'lucide-vue-next';
+import { Flame, Check, Compass, Square, Zap, Columns2, User, CircleCheck } from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
     GAME_MODES_UI,
@@ -850,15 +840,6 @@ function openMultiBoardPicker(): void {
                     </div>
                 </RevealTransition>
 
-                <!-- Leaderboard link -->
-                <NuxtLink
-                    :to="`/leaderboard?lang=${defaultLang}`"
-                    class="flex items-center justify-center gap-2 mx-auto mb-4 px-5 py-2 text-xs text-muted hover:text-ink transition-colors"
-                >
-                    <Trophy :size="14" />
-                    <span>View today's leaderboard</span>
-                </NuxtLink>
-
                 <!-- Sign-in CTA (Tier 1 only) -->
                 <button
                     v-if="!authLoggedIn"
@@ -866,7 +847,7 @@ function openMultiBoardPicker(): void {
                     @click="openLoginModal()"
                 >
                     <User :size="14" />
-                    <span>Sign in to sync your streak</span>
+                    <span>Sign in to sync your stats</span>
                 </button>
 
                 <!-- PWA install CTA (not installed, not dismissed) -->
