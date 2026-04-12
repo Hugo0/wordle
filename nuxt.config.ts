@@ -98,6 +98,12 @@ export default defineNuxtConfig({
     nitro: {
         // Pre-load data at startup
         preset: 'node-server',
+        imports: {
+            // semantic-db exports names that collide with semantic.ts
+            // (get2dPosition, getEmbedding, etc). Always imported explicitly
+            // via `import * as semanticDb`, so exclude from auto-imports.
+            exclude: [/server\/utils\/semantic-db/],
+        },
     },
 
     pwa: {

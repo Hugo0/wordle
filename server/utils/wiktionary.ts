@@ -12,6 +12,7 @@
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { dedup } from './inflight';
 import { getWiktLang } from './word-selection';
 
 const CACHE_DIR = join(process.cwd(), 'word-defs', 'wiktionary-exists');
@@ -71,34 +72,38 @@ export async function checkWiktionaryExists(
     }
 
     // DEPRECATED: disk cache fallback — remove after confirming DB migration is stable
-    console.warn('[DEPRECATED] wiktionary disk fallback hit for', langCode, word);
     const cached = readCache(langCode, word);
-    if (cached) return cached.exists;
-
-    // Tier 2: HEAD request to Wiktionary
-    const wiktLang = getWiktLang(langCode);
-    const url = `https://${wiktLang}.wiktionary.org/wiki/${encodeURIComponent(word)}`;
-
-    try {
-        const resp = await fetch(url, {
-            method: 'HEAD',
-            signal: AbortSignal.timeout(3000),
-            redirect: 'manual',
-        });
-        const exists = resp.status === 200 || (resp.status >= 300 && resp.status < 400);
-
-        // Cache to DB (primary)
-        try {
-            const { setWiktionaryExists } = await import('./db-cache');
-            setWiktionaryExists(langCode, word, exists);
-        } catch {
-            /* non-fatal */
-        }
-        // DEPRECATED: disk write — remove after confirming DB migration is stable
-        writeCache(langCode, word, exists);
-
-        return exists;
-    } catch {
-        return null;
+    if (cached) {
+        console.warn('[DEPRECATED] wiktionary disk read for', langCode, word);
+        return cached.exists;
     }
+
+    // Tier 2: HEAD request to Wiktionary (deduplicated)
+    return dedup('wiktionary', `${langCode}:${word}`, async () => {
+        const wiktLang = getWiktLang(langCode);
+        const url = `https://${wiktLang}.wiktionary.org/wiki/${encodeURIComponent(word)}`;
+
+        try {
+            const resp = await fetch(url, {
+                method: 'HEAD',
+                signal: AbortSignal.timeout(3000),
+                redirect: 'manual',
+            });
+            const exists = resp.status === 200 || (resp.status >= 300 && resp.status < 400);
+
+            // Cache to DB (primary)
+            try {
+                const { setWiktionaryExists } = await import('./db-cache');
+                setWiktionaryExists(langCode, word, exists);
+            } catch {
+                /* non-fatal */
+            }
+            // DEPRECATED: disk write — remove after confirming DB migration is stable
+            writeCache(langCode, word, exists);
+
+            return exists;
+        } catch {
+            return null;
+        }
+    });
 }

@@ -49,17 +49,16 @@ describe('db-cache', () => {
         expect(testData).toBeDefined();
     });
 
-    it('WordStats has distribution as Record<number, number>', async () => {
+    it('WordStats has distribution as Record<string, number>', async () => {
         const mod = await import('../server/utils/db-cache');
-        // The getWordStats return type should have numeric distribution keys
-        // This is a compile-time type check
+        // The getWordStats return type should have string distribution keys
+        // matching the shared WordStats type in utils/types.ts
         type Stats = Awaited<ReturnType<typeof mod.getWordStats>>;
-        // If the type is correct, this assignment compiles:
         const mockStats: Stats = {
             total: 10,
             wins: 7,
             losses: 3,
-            distribution: { 1: 2, 2: 3, 3: 1, 4: 1, 5: 0, 6: 0 },
+            distribution: { '1': 2, '2': 3, '3': 1, '4': 1, '5': 0, '6': 0 },
         };
         expect(mockStats?.total).toBe(10);
     });

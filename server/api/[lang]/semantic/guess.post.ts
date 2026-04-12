@@ -88,13 +88,38 @@ export default defineEventHandler(async (event) => {
         }
     }
 
-    // Compass hints via axes (no full embedding matrix needed)
+    // Compass hints via DB-loaded axes (no embedding matrix needed)
     let compassResult = { hints: [] as any[], status: 'close' as const, totalExplained: 0 };
-    try {
-        const { computeCompass, loadSemanticDataSafe } = await import('~/server/utils/semantic');
-        compassResult = computeCompass(loadSemanticDataSafe(), guessVec, targetVec, 5, []);
-    } catch {
-        /* axes not loaded — skip compass */
+    const cachedAxes = semanticDb.getCachedAxes();
+    if (cachedAxes && axesVectors && axesNames.length > 0) {
+        try {
+            const { computeCompass } = await import('~/server/utils/semantic');
+            // Build lightweight SemanticData shim from DB-cached axes
+            const axesRecord: Record<string, any> = {};
+            const axesRanges: Record<string, { p5: number; p95: number }> = {};
+            const axesAuc: Record<string, number> = {};
+            for (const a of cachedAxes) {
+                axesRecord[a.name] = { low_anchor: a.lowAnchor, high_anchor: a.highAnchor };
+                axesRanges[a.name] = { p5: a.rangeP5, p95: a.rangeP95 };
+                axesAuc[a.name] = a.auc;
+            }
+            compassResult = computeCompass(
+                {
+                    dims: guessVec.length,
+                    axesNames,
+                    axesVectors,
+                    axes: axesRecord,
+                    axesRanges,
+                    axesAuc,
+                } as any,
+                guessVec,
+                targetVec,
+                5,
+                []
+            );
+        } catch {
+            /* compass computation failed — skip */
+        }
     }
 
     const response: Record<string, unknown> = {

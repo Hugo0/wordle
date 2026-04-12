@@ -286,21 +286,12 @@ export async function fetchDefinition(
     if (dbResult) {
         if (dbResult.isNegative && !options.skipNegativeCache) return null;
         if (!dbResult.isNegative) {
-            // If DB result is kaikki-en fallback, check if stale (>24h)
-            if (dbResult.source === 'kaikki-en' && !dbResult.definitionNative) {
-                const age = Date.now() - dbResult.cachedAt.getTime();
-                if (age < NEGATIVE_CACHE_TTL * 1000) {
-                    return {
-                        definition: dbResult.definition,
-                        definition_native: dbResult.definitionNative,
-                        definition_en: dbResult.definitionEn,
-                        part_of_speech: dbResult.partOfSpeech,
-                        confidence: dbResult.confidence,
-                        source: dbResult.source,
-                        url: dbResult.url,
-                    };
-                }
-            } else {
+            // kaikki-en fallback entries expire after 24h so LLM can retry
+            const isStaleKaikkiEn =
+                dbResult.source === 'kaikki-en' &&
+                !dbResult.definitionNative &&
+                Date.now() - dbResult.cachedAt.getTime() >= NEGATIVE_CACHE_TTL * 1000;
+            if (!isStaleKaikkiEn) {
                 return {
                     definition: dbResult.definition,
                     definition_native: dbResult.definitionNative,
@@ -315,12 +306,12 @@ export async function fetchDefinition(
     }
 
     // --- Tier 1: Disk cache — DEPRECATED, remove after confirming DB migration is stable ---
-    console.warn('[DEPRECATED] definitions disk fallback hit for', langCode, word.toLowerCase());
     const cacheDir = WORD_DEFS_DIR;
     const langCacheDir = join(cacheDir, langCode);
     const cachePath = join(langCacheDir, `${word.toLowerCase()}.json`);
 
     if (existsSync(cachePath)) {
+        consola.warn('[DEPRECATED] definitions disk read for', langCode, word.toLowerCase());
         try {
             const loaded = JSON.parse(readFileSync(cachePath, 'utf-8'));
             if (loaded.not_found) {

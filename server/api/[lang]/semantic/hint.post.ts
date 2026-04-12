@@ -154,10 +154,11 @@ export default defineEventHandler(async (event) => {
         /* fall through */
     }
 
-    // Tier 1: Disk cache (fallback during migration)
+    // DEPRECATED: disk cache — remove after confirming DB migration is stable
     mkdirSync(CACHE_DIR, { recursive: true });
     const cacheFile = join(CACHE_DIR, `${target}.json`);
     if (existsSync(cacheFile)) {
+        console.warn('[DEPRECATED] semantic-hints disk read for', lang, target);
         try {
             const cached = JSON.parse(readFileSync(cacheFile, 'utf-8'));
             if (cached.hint) {
@@ -180,6 +181,7 @@ export default defineEventHandler(async (event) => {
         } catch {
             /* non-fatal */
         }
+        // DEPRECATED: disk write — remove after confirming DB migration is stable
         writeFileSync(cacheFile, JSON.stringify({ hint: generated, createdAt: Date.now() }));
 
         return generated;

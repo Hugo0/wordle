@@ -3,9 +3,10 @@
  *
  * Serves cached WebP images. Generates via DALL-E on demand for current daily words.
  */
-import { existsSync, readFileSync, writeFileSync, mkdirSync, unlinkSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { loadAllData, WORD_IMAGES_DIR } from '../../../utils/data-loader';
+import { dedup } from '../../../utils/inflight';
 import { getTodaysIdx, getWordForDay } from '../../../utils/word-selection';
 import { fetchDefinition } from '../../../utils/definitions';
 
@@ -95,23 +96,9 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Image not available for historical words' });
     }
 
-    // Pending check
-    const pendingPath = cachePath + '.pending';
-    if (existsSync(pendingPath)) {
-        setResponseStatus(event, 202);
-        return 'Image being generated';
-    }
-
-    // Mark as pending
-    try {
-        mkdirSync(cacheDir, { recursive: true });
-        writeFileSync(pendingPath, '', { flag: 'wx' });
-    } catch {
-        setResponseStatus(event, 202);
-        return 'Image being generated';
-    }
-
-    try {
+    // Deduplicate concurrent requests — only one DALL-E call per word.
+    // All concurrent requesters get the same Promise (and the same image).
+    const webpBuffer = await dedup('image', `${lang}:${word.toLowerCase()}`, async () => {
         // Get definition hint for DALL-E prompt
         let definitionHint = '';
         const defn = await fetchDefinition(word, lang);
@@ -138,7 +125,7 @@ export default defineEventHandler(async (event) => {
 
         const imageUrl = response.data[0]?.url;
         if (!imageUrl?.startsWith('https://')) {
-            throw createError({ statusCode: 404, message: 'Image generation failed' });
+            throw new Error('Image generation returned no URL');
         }
 
         // Download and convert to WebP
@@ -146,22 +133,14 @@ export default defineEventHandler(async (event) => {
         const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
 
         const sharp = (await import('sharp')).default;
-        const webpBuffer = await sharp(imageBuffer).webp({ quality: 80 }).toBuffer();
+        const buf = await sharp(imageBuffer).webp({ quality: 80 }).toBuffer();
 
         mkdirSync(cacheDir, { recursive: true });
-        writeFileSync(cachePath, webpBuffer);
+        writeFileSync(cachePath, buf);
+        return buf;
+    });
 
-        setResponseHeader(event, 'Content-Type', 'image/webp');
-        setResponseHeader(event, 'Cache-Control', 'public, max-age=31536000');
-        return webpBuffer;
-    } catch (e: any) {
-        console.error(`[word-image] Failed for ${lang}/${word}: ${e.message}`);
-        throw createError({ statusCode: 404, message: 'Image generation failed' });
-    } finally {
-        if (existsSync(pendingPath)) {
-            try {
-                unlinkSync(pendingPath);
-            } catch {}
-        }
-    }
+    setResponseHeader(event, 'Content-Type', 'image/webp');
+    setResponseHeader(event, 'Cache-Control', 'public, max-age=31536000');
+    return webpBuffer;
 });

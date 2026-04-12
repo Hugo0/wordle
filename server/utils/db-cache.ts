@@ -85,7 +85,7 @@ export interface WordStats {
     total: number;
     wins: number;
     losses: number;
-    distribution: Record<number, number>;
+    distribution: Record<string, number>;
 }
 
 export async function getWordStats(lang: string, dayIdx: number): Promise<WordStats | null> {
@@ -100,12 +100,12 @@ export async function getWordStats(lang: string, dayIdx: number): Promise<WordSt
             wins: row.wins,
             losses: row.losses,
             distribution: {
-                1: row.dist1,
-                2: row.dist2,
-                3: row.dist3,
-                4: row.dist4,
-                5: row.dist5,
-                6: row.dist6,
+                '1': row.dist1,
+                '2': row.dist2,
+                '3': row.dist3,
+                '4': row.dist4,
+                '5': row.dist5,
+                '6': row.dist6,
             },
         };
     } catch {

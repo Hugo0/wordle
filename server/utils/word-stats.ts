@@ -28,9 +28,9 @@ export async function loadWordStats(langCode: string, dayIdx: number): Promise<W
     }
 
     // DEPRECATED: disk fallback — remove after confirming DB migration is stable
-    console.warn('[DEPRECATED] word-stats disk fallback hit for', langCode, dayIdx);
     const statsPath = join(WORD_STATS_DIR, langCode, `${dayIdx}.json`);
     if (!existsSync(statsPath)) return null;
+    console.warn('[DEPRECATED] word-stats disk read for', langCode, dayIdx);
     try {
         return JSON.parse(readFileSync(statsPath, 'utf-8')) as WordStats;
     } catch {
