@@ -20,15 +20,18 @@ import type { GameResult } from '~/utils/types';
 
 // PWA install — show "Install App" CTA if not already installed
 const pwaInstall = import.meta.client
-    ? inject<{ install: () => void; status: () => { isStandalone: boolean } }>(
-          'pwaInstall',
-          undefined
-      )
+    ? inject<{
+          install: () => void;
+          status: () => { isStandalone: boolean; hasPrompt: boolean; isIOS: boolean };
+      }>('pwaInstall', undefined)
     : undefined;
 const showInstallCta = computed(() => {
     if (!import.meta.client) return false;
     if (isStandalone()) return false;
-    return !!pwaInstall;
+    if (!pwaInstall) return false;
+    const s = pwaInstall.status();
+    // Show install CTA when browser has a prompt available or on iOS (manual install)
+    return s.hasPrompt || s.isIOS;
 });
 
 useSeoMeta({
