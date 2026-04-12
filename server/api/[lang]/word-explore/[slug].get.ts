@@ -2,24 +2,23 @@
  * GET /api/[lang]/word-explore/[slug]
  *
  * Semantic exploration data for a word: normalized axis projections,
- * nearest + farthest neighbors, UMAP coordinates. For out-of-vocab words,
- * fetches an embedding on-demand via OpenAI (cached to disk). Non-English
- * languages return `available: false` — the semantic data is English-only.
+ * nearest neighbors with UMAP + projections, cosine similarity.
+ *
+ * The top FOREGROUND_COUNT neighbors include axis projections so the
+ * client can render foreground dots AND lens/slice views from a single
+ * request — no per-word follow-up fetches needed.
  */
-import {
-    cosineSimilarity,
-    fetchEmbeddingOnDemand,
-    getEmbedding,
-    getTargetDistribution,
-    loadSemanticData,
-    normalizeProjection,
-} from '../../../utils/semantic';
+import { cosineSimilarity } from '../../../utils/semantic';
+import * as semanticDb from '~/server/utils/_semantic-db';
 import { resolveWordSlug } from '../../../utils/word-selection';
 import { loadAllData } from '../../../utils/data-loader';
 
+const NEIGHBOR_COUNT = 80;
+const FOREGROUND_COUNT = 15;
+
 const EMPTY_RESPONSE = {
     projections: [] as Array<unknown>,
-    nearest: [] as Array<{ word: string; similarity: number }>,
+    nearest: [] as Array<unknown>,
     umap: null as [number, number] | null,
     similarityTo: null as number | null,
     available: false,
@@ -45,77 +44,54 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Word not found' });
     }
 
-    // Semantic data is English-only for now; other languages get a graceful
-    // empty response so the page can render the fallback section.
     if (lang !== 'en') {
         return { word, inVocab: false, ...EMPTY_RESPONSE };
     }
 
-    const sem = loadSemanticData();
-    let vec = getEmbedding(sem, word);
+    let vec = await semanticDb.getEmbedding(lang, word);
     const inVocab = vec !== null;
-    if (!vec) vec = await fetchEmbeddingOnDemand(sem, word);
+    if (!vec) {
+        vec = await semanticDb.fetchOnDemandEmbedding(lang, word);
+    }
     if (!vec) {
         return { word, inVocab: false, ...EMPTY_RESPONSE };
     }
 
-    // Per-axis projections — compute inline (not projectAllAxes) so we can
-    // skip low-AUC axes in one pass rather than projecting then filtering.
-    const D = sem.dims;
-    const projections = [];
-    for (let a = 0; a < sem.axesNames.length; a++) {
-        const name = sem.axesNames[a]!;
-        if ((sem.axesAuc[name] ?? 0) < 0.8) continue;
-        let raw = 0;
-        const rowOffset = a * D;
-        for (let j = 0; j < D; j++) {
-            raw += vec[j]! * sem.axesVectors[rowOffset + j]!;
-        }
-        const rec = sem.axes[name]!;
-        projections.push({
-            axis: name,
-            lowAnchor: rec.low_anchor,
-            highAnchor: rec.high_anchor,
-            normalized: normalizeProjection(sem, name, raw),
-            rawProjection: raw,
-        });
-    }
+    const projections = semanticDb.projectAxesDetailed(vec, 0.8);
 
-    // Top-80 nearest neighbors. 80 lets the Word Explorer show a small
-    // prominent foreground (~12 top dots) + a muted "extended neighborhood"
-    // background (~60 faded dots) in the same polar coordinate system.
-    // UMAP coords come along so the client can compute real angular
-    // directions via polarProject — without them, every muted dot would
-    // stack at (0.5, 0.5).
-    const dist = getTargetDistribution(sem, word);
-    type NeighborOut = {
-        word: string;
-        similarity: number;
-        umap: [number, number] | null;
-    };
-    const nearest: NeighborOut[] = [];
-    if (dist) {
-        const N = dist.words.length;
-        for (let i = 1; i <= 80 && i < N; i++) {
-            const w = dist.words[i]!;
-            nearest.push({
-                word: w,
-                similarity: dist.cosines[i]!,
-                umap: sem.umap[w] ?? null,
-            });
-        }
-    }
+    const [neighbors, umap] = await Promise.all([
+        semanticDb.knnNearestByVector(lang, vec, NEIGHBOR_COUNT, [word]),
+        semanticDb.get2dPosition(lang, word),
+    ]);
 
-    // When `?relativeTo=X` is passed, compute cosine similarity to X so
-    // the client can lay out user-added context words at a radius that
-    // reflects their distance from the primary word. Same-word => 1.
+    // Batch-fetch embeddings for foreground neighbors to compute their projections.
+    // Pure math on cached axis vectors — no extra DB round-trips beyond the batch fetch.
+    const foregroundWords = neighbors.slice(0, FOREGROUND_COUNT).map((n) => n.word);
+    const foregroundVecs = await semanticDb.getEmbeddings(lang, foregroundWords);
+
+    const nearest = neighbors.map((n, i) => {
+        const entry: Record<string, unknown> = {
+            word: n.word,
+            similarity: n.similarity,
+            umap: n.umapX != null ? [n.umapX, n.umapY] : null,
+        };
+        // Include projections for foreground candidates
+        if (i < FOREGROUND_COUNT) {
+            const nVec = foregroundVecs.get(n.word);
+            if (nVec) {
+                entry.projections = semanticDb.projectAxes(nVec);
+            }
+        }
+        return entry;
+    });
+
     let similarityTo: number | null = null;
     if (relativeTo) {
         if (relativeTo === word) {
             similarityTo = 1;
         } else {
-            let otherVec = getEmbedding(sem, relativeTo);
-            if (!otherVec) otherVec = await fetchEmbeddingOnDemand(sem, relativeTo);
+            let otherVec = await semanticDb.getEmbedding(lang, relativeTo);
+            if (!otherVec) otherVec = await semanticDb.fetchOnDemandEmbedding(lang, relativeTo);
             if (otherVec) similarityTo = cosineSimilarity(vec, otherVec);
         }
     }
@@ -125,7 +101,7 @@ export default defineEventHandler(async (event) => {
         inVocab,
         projections,
         nearest,
-        umap: sem.umap[word] ?? null,
+        umap,
         similarityTo,
         available: true,
     };

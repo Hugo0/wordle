@@ -10,6 +10,7 @@
 
 import { computed, ref } from 'vue';
 import { readJson, removeLocal, writeJson } from '~/utils/storage';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
 /** The LLM-hint button unlocks after this many guesses. */
 export const LLM_HINT_UNLOCK_AT = 5;
@@ -135,7 +136,7 @@ export function useSemanticGame(lang: string) {
     const dayIdx = ref<number>(0);
     const axisAnchors = ref<Record<string, { low: string; high: string }>>({});
     const targetUmapPosition = ref<[number, number]>([0.5, 0.5]);
-    const maxGuesses = ref(15);
+    const maxGuesses = ref(GAME_MODE_CONFIG.semantic.maxGuesses);
 
     // ── Game state ────────────────────────────────────────────────────────
     const guesses = ref<SemanticGuess[]>([]);
@@ -246,7 +247,7 @@ export function useSemanticGame(lang: string) {
             dayIdx.value = resp.dayIdx;
             axisAnchors.value = resp.axisAnchors;
             targetUmapPosition.value = resp.targetUmapPosition;
-            maxGuesses.value = resp.maxGuesses ?? 15;
+            maxGuesses.value = resp.maxGuesses ?? GAME_MODE_CONFIG.semantic.maxGuesses;
             totalRanked.value = resp.totalRanked ?? resp.vocabularySize;
 
             // Attempt to restore saved state for the same daily word.
@@ -446,6 +447,9 @@ export function useSemanticGame(lang: string) {
         const saved = readJson<SavedSemanticState>(storageKey(lang, _currentPlay));
         if (!saved || saved.dayIdx !== currentDayIdx) return false;
         if (!saved.guesses?.length) return false;
+        // If game ended but target word was never revealed (session expired
+        // before reveal API call), the state is corrupt — start fresh.
+        if (saved.gameOver && !saved.finalTargetWord) return false;
 
         guesses.value = saved.guesses;
         won.value = saved.won;

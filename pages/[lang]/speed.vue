@@ -10,7 +10,7 @@ import { Info } from 'lucide-vue-next';
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-speed-${route.query.play || 'daily'}`,
+    key: (route) => `${route.params.lang}-speed-${route.query.play}`,
 });
 
 const route = useRoute();
@@ -77,7 +77,7 @@ function startCountdown() {
         countdownNumber.value = 1;
     }, 2000);
     setTimeout(() => {
-        countdownNumber.value = 'GO!';
+        countdownNumber.value = langStore.config?.ui?.speed_go;
     }, 2700);
 }
 
@@ -188,11 +188,11 @@ onMounted(() => {
         :lang="lang"
         :language-name="config?.name_native || config?.name || lang"
         current-mode="speed"
-        title="Speed Streak"
+        :title="langStore.config?.ui?.speed_streak"
         :subtitle="
             isDaily
                 ? `${config?.name_native || lang} · #${gameData?.mode_day_idx ?? gameData?.todays_idx}`
-                : `${config?.name_native || lang} · Unlimited`
+                : `${config?.name_native || lang} · ${langStore.config?.ui?.unlimited_mode}`
         "
         :sidebar-open="sidebarOpen ?? false"
         :visible="!!gameData"
@@ -246,22 +246,27 @@ onMounted(() => {
             class="flex flex-auto items-center justify-center px-4"
         >
             <div v-if="game.speedState.countdownPhase === 'idle'" class="text-center">
-                <div class="heading-display text-5xl text-ink mb-6">Speed Streak</div>
+                <div class="heading-display text-5xl text-ink mb-6">
+                    {{ langStore.config?.ui?.speed_streak }}
+                </div>
                 <button
                     class="speed-start-btn px-10 py-3.5 bg-accent text-paper font-body font-bold text-lg hover:opacity-90 transition-opacity relative overflow-hidden"
                     @click="startCountdown"
                 >
-                    <span class="relative z-10">Start</span>
+                    <span class="relative z-10">{{ langStore.config?.ui?.speed_start }}</span>
                 </button>
                 <p class="text-muted text-xs mt-4 flex items-center justify-center gap-1">
-                    Tap <Info :size="14" /> for rules
+                    {{ langStore.config?.ui?.speed_tap_for_rules?.split('{icon}')?.[0]
+                    }}<Info :size="14" />{{
+                        langStore.config?.ui?.speed_tap_for_rules?.split('{icon}')?.[1]
+                    }}
                 </p>
             </div>
             <div v-else class="text-center">
                 <span
                     :key="countdownNumber"
                     class="speed-countdown-number text-8xl font-display font-bold"
-                    :class="countdownNumber === 'GO!' ? 'text-correct' : 'text-ink'"
+                    :class="typeof countdownNumber === 'string' ? 'text-correct' : 'text-ink'"
                 >
                     {{ countdownNumber }}
                 </span>

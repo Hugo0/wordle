@@ -3,19 +3,20 @@
         <div class="flex flex-col gap-2">
             <!-- Speed Streak help -->
             <template v-if="isSpeedMode">
-                <h2 class="heading-body text-2xl text-center text-ink">Speed Streak</h2>
+                <h2 class="heading-body text-2xl text-center text-ink">
+                    {{ lang.config?.ui?.speed_streak }}
+                </h2>
 
                 <div class="editorial-rule" />
 
-                <h3 class="heading-section text-base text-ink">How it works</h3>
+                <h3 class="heading-section text-base text-ink">{{ help.speed_how_it_works }}</h3>
                 <p class="text-sm text-ink">
-                    You start with <strong>5 minutes</strong> on the clock. Solve words to earn
-                    bonus time. Miss a word and you lose 30 seconds.
+                    {{ help.speed_explanation }}
                 </p>
 
                 <div class="editorial-rule" />
 
-                <h3 class="heading-section text-base text-ink">Time bonuses</h3>
+                <h3 class="heading-section text-base text-ink">{{ help.speed_time_bonuses }}</h3>
                 <div class="grid grid-cols-6 gap-1 text-center">
                     <div v-for="n in 6" :key="n" class="py-2">
                         <div class="font-mono text-xs text-muted">{{ n }}</div>
@@ -24,37 +25,39 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-xs text-muted">Guesses used → time earned</p>
+                <p class="text-xs text-muted">{{ help.speed_guesses_to_time }}</p>
 
                 <div class="editorial-rule" />
 
-                <h3 class="heading-section text-base text-ink">Scoring</h3>
+                <h3 class="heading-section text-base text-ink">{{ help.speed_scoring }}</h3>
                 <p class="text-sm text-ink">
-                    Points = (7 &minus; guesses) &times; 100 &times; combo multiplier. Consecutive
-                    solves build your combo up to 3x. A failed word resets your combo.
+                    {{ help.speed_scoring_explanation }}
                 </p>
 
                 <div class="editorial-rule" />
 
-                <h3 class="heading-section text-base text-ink">Pressure ramp</h3>
+                <h3 class="heading-section text-base text-ink">{{ help.speed_pressure }}</h3>
                 <p class="text-sm text-ink">
-                    Every 3 words solved, the timer speeds up. The longer you survive, the harder it
-                    gets.
+                    {{ help.speed_pressure_explanation }}
                 </p>
             </template>
 
             <!-- Semantic Explorer help — visual examples first, text after,
                  matching the classic modal's show-don't-tell pattern. -->
             <template v-else-if="isSemanticMode">
-                <h2 class="heading-body text-2xl text-center text-ink">Semantic Explorer</h2>
+                <h2 class="heading-body text-2xl text-center text-ink">
+                    {{ lang.config?.ui?.semantic_title }}
+                </h2>
                 <p class="text-center text-sm text-muted -mt-1">
-                    Find a hidden word by meaning, not letters.
+                    {{ lang.config?.help?.semantic_subtitle }}
                 </p>
 
                 <div class="editorial-rule" />
 
                 <!-- 1. Rank system — fake mini leaderboard -->
-                <h3 class="heading-section text-sm text-ink">Type any word — see its rank</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_rank_title }}
+                </h3>
                 <div class="sem-help-example">
                     <div class="sem-help-row">
                         <span class="sem-help-word">shower</span>
@@ -70,14 +73,17 @@
                     </div>
                 </div>
                 <p class="text-xs text-muted">
-                    Lower rank = closer in meaning. <strong class="text-ink">Rank #1</strong> = you
-                    found it.
+                    {{ lang.config?.help?.semantic_rank_explanation }}
+                    <strong class="text-ink">Rank #1</strong> =
+                    {{ lang.config?.help?.semantic_rank_found }}
                 </p>
 
                 <div class="editorial-rule" />
 
                 <!-- 2. Compass hints — fake compass rows -->
-                <h3 class="heading-section text-sm text-ink">Read the compass</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_compass_title }}
+                </h3>
                 <div class="sem-help-compass">
                     <div class="sem-help-hint-row">
                         <span>Think more <em>burning</em></span>
@@ -89,14 +95,19 @@
                     </div>
                 </div>
                 <p class="text-xs text-muted">
-                    Hints point from your <strong class="text-ink">latest guess</strong> toward the
-                    target.
+                    {{ lang.config?.help?.semantic_compass_explanation }}
+                    <strong class="text-ink">{{
+                        lang.config?.help?.semantic_compass_latest_guess
+                    }}</strong>
+                    {{ lang.config?.help?.semantic_compass_toward }}
                 </p>
 
                 <div class="editorial-rule" />
 
                 <!-- 3. Map — tiny dot diagram -->
-                <h3 class="heading-section text-sm text-ink">Watch the map</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_map_title }}
+                </h3>
                 <div class="sem-help-map">
                     <div class="sem-help-map-canvas">
                         <div class="sem-help-target">?</div>
@@ -112,24 +123,26 @@
                     </div>
                 </div>
                 <p class="text-xs text-muted">
-                    Closer to the center = lower rank = closer in meaning.
+                    {{ lang.config?.help?.semantic_map_explanation }}
                 </p>
 
                 <div class="editorial-rule" />
 
                 <!-- 4. Oracle -->
-                <h3 class="heading-section text-sm text-ink">Ask the oracle (once)</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_oracle_title }}
+                </h3>
                 <div class="sem-help-oracle">
                     <em>"what the horizon holds in its cup"</em>
                 </div>
                 <p class="text-xs text-muted">
-                    Unlocked after 5 guesses. One cryptic hint per game.
+                    {{ lang.config?.help?.semantic_oracle_explanation }}
                 </p>
 
                 <div class="editorial-rule" />
 
                 <p class="text-center text-sm text-muted">
-                    <strong class="text-ink">15 guesses</strong>. New word every day.
+                    {{ lang.config?.help?.semantic_footer }}
                 </p>
             </template>
 

@@ -12,17 +12,19 @@
         size="lg"
         align="top"
         no-padding
-        aria-label="Choose a language"
+        :aria-label="ui?.choose_language || 'Choose a language'"
         @close="$emit('close')"
     >
         <div class="px-5 pt-5 pb-3">
-            <h2 class="heading-section text-xl text-ink mb-3">Choose Language</h2>
+            <h2 class="heading-section text-xl text-ink mb-3">
+                {{ ui?.choose_language || 'Choose Language' }}
+            </h2>
             <input
                 ref="searchRef"
                 v-model="searchQuery"
                 type="text"
                 class="w-full px-4 py-2.5 border border-rule bg-transparent font-body text-sm text-ink outline-none transition-colors focus:border-ink"
-                placeholder="Search languages..."
+                :placeholder="ui?.search_languages || 'Search languages...'"
                 autocomplete="off"
             />
         </div>
@@ -47,7 +49,7 @@
                 >
             </button>
             <div v-if="filteredLanguages.length === 0" class="text-center py-6 text-sm text-muted">
-                No languages match "{{ searchQuery }}"
+                {{ ui?.no_languages_match || 'No languages match' }} "{{ searchQuery }}"
             </div>
         </div>
     </BaseModal>
@@ -63,11 +65,16 @@ const props = withDefaults(
         currentLangCode: string;
         /** Current mode route suffix (e.g., 'dordle', 'semantic', ''). Used to try same mode in new language. */
         currentModeSuffix?: string;
+        /** If true, emits 'select' with the language code instead of navigating. */
+        selectOnly?: boolean;
     }>(),
-    { currentModeSuffix: '' }
+    { currentModeSuffix: '', selectOnly: false }
 );
 
-const emit = defineEmits<{ close: [] }>();
+const emit = defineEmits<{ close: []; select: [code: string] }>();
+
+const langStore = useLanguageStore();
+const ui = computed(() => langStore.config?.ui);
 
 const searchRef = ref<HTMLInputElement | null>(null);
 const searchQuery = ref('');
@@ -113,10 +120,12 @@ const filteredLanguages = computed(() => {
 });
 
 function selectLanguage(code: string) {
+    if (props.selectOnly) {
+        emit('select', code);
+        emit('close');
+        return;
+    }
     emit('close');
-    // Try to stay in the same game mode in the new language.
-    // Modes that are language-restricted (e.g., semantic = English-only)
-    // have server-side redirects that will send the user to the right place.
     if (props.currentModeSuffix) {
         navigateTo(`/${code}/${props.currentModeSuffix}`);
     } else {

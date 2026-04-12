@@ -14,7 +14,17 @@ import {
     scopedKey,
     STORAGE_KEYS,
 } from '~/utils/storage';
-import { Flame, Check, Compass, Square, Zap, Columns2, User, CircleCheck } from 'lucide-vue-next';
+import {
+    Flame,
+    Check,
+    Compass,
+    Square,
+    Zap,
+    Columns2,
+    User,
+    CircleCheck,
+    Trophy,
+} from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
     GAME_MODES_UI,
@@ -540,26 +550,8 @@ function hasPlayed(code: string): boolean {
     return (gameResults.value[code]?.length ?? 0) > 0;
 }
 
-function getGamesPlayed(code: string): number {
-    return gameResults.value[code]?.length ?? 0;
-}
-
-function getCurrentStreak(code: string): number {
-    const results = gameResults.value[code];
-    if (!results) return 0;
-    let streak = 0;
-    for (let i = results.length - 1; i >= 0; i--) {
-        if (results[i]!.won) streak++;
-        else break;
-    }
-    return streak;
-}
-
-function getWinRate(code: string): number {
-    const results = gameResults.value[code];
-    if (!results || results.length === 0) return 0;
-    const wins = results.filter((r) => r.won).length;
-    return (wins / results.length) * 100;
+function hasWon(code: string): boolean {
+    return gameResults.value[code]?.some((r) => r.won) ?? false;
 }
 
 // ---------------------------------------------------------------------------
@@ -650,7 +642,7 @@ const homepageModes = computed((): HomepageModeCard[] => {
         {
             id: 'semantic',
             icon: Compass,
-            label: ui?.mode_semantic_label || 'Semantic Explorer',
+            label: ui?.mode_semantic_label ?? 'Semantic Explorer',
             desc: 'Find words by meaning, not by letters. Navigate a map of language.',
             route: '/en/semantic',
             tag: 'NEW',
@@ -673,7 +665,7 @@ const homepageModes = computed((): HomepageModeCard[] => {
         {
             id: 'multiboard',
             icon: GAME_MODES_UI.find((m) => m.id === 'dordle')?.icon || classic.icon,
-            label: ui?.mode_multiboard_label || 'Multi-Board',
+            label: ui?.mode_multiboard_label ?? 'Multi-Board',
             desc: 'Dordle, Quordle, Octordle, and more. Two to thirty-two boards at once.',
             route: null,
             opensModal: true,
@@ -858,6 +850,15 @@ function openMultiBoardPicker(): void {
                     </div>
                 </RevealTransition>
 
+                <!-- Leaderboard link -->
+                <NuxtLink
+                    :to="`/leaderboard?lang=${defaultLang}`"
+                    class="flex items-center justify-center gap-2 mx-auto mb-4 px-5 py-2 text-xs text-muted hover:text-ink transition-colors"
+                >
+                    <Trophy :size="14" />
+                    <span>View today's leaderboard</span>
+                </NuxtLink>
+
                 <!-- Sign-in CTA (Tier 1 only) -->
                 <button
                     v-if="!authLoggedIn"
@@ -1015,25 +1016,11 @@ function openMultiBoardPicker(): void {
                                 {{ language.language_name }}
                             </div>
                         </div>
-                        <div class="flex items-center gap-1 flex-shrink-0">
-                            <span
-                                v-if="getCurrentStreak(language.language_code) > 0"
-                                class="flex items-start gap-0 text-flame"
-                            >
-                                <Flame :size="14" />
-                                <span
-                                    class="font-mono font-semibold tabular-nums"
-                                    style="font-size: 9px; line-height: 1; margin-top: 1px"
-                                >
-                                    {{ getCurrentStreak(language.language_code) }}
-                                </span>
-                            </span>
-                            <Check
-                                v-else-if="hasPlayed(language.language_code)"
-                                :size="14"
-                                class="text-correct"
-                            />
-                        </div>
+                        <Check
+                            v-if="hasWon(language.language_code)"
+                            :size="14"
+                            class="text-correct flex-shrink-0"
+                        />
                     </a>
                 </div>
             </div>

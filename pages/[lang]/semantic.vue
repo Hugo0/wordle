@@ -2,7 +2,7 @@
 /**
  * Semantic Explorer — production game mode page.
  *
- * Navigate meaning space to find a hidden target word in 15 guesses. Each
+ * Navigate meaning space to find a hidden target word. Each
  * guess receives a rank (#1 = target) based on its cosine position in the
  * 50k-word neighbour list. The map is target-centered with radius proportional
  * to log-rank and angle from the UMAP 2D projection.
@@ -17,10 +17,11 @@ import { createGameConfig } from '~/utils/game-modes';
 import MapFrame from '~/components/shared/MapFrame.vue';
 import MeaningMap, { type MapDot } from '~/components/shared/MeaningMap.vue';
 import { buildSemanticGradientFromCSS, sampleGradient } from '~/utils/semanticColor';
+import { interpolate } from '~/utils/interpolate';
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-semantic-${route.query.play || 'daily'}`,
+    key: (route) => `${route.params.lang}-semantic-${route.query.play}`,
 });
 
 const route = useRoute();
@@ -103,10 +104,14 @@ const latestGuessWord = computed<string | null>(() => {
     );
 });
 
+// --- UI strings ---
+const ui = computed(() => langStore.config?.ui);
+
 // --- Header meta ---
-const headerTitle = computed(() => 'Semantic Explorer');
+const headerTitle = computed(() => ui.value?.semantic_title);
 const headerSubtitle = computed(() => {
-    if (isUnlimited.value) return `${configVal.name_native || lang} · Unlimited`;
+    const unlimitedLabel = ui.value?.semantic_unlimited;
+    if (isUnlimited.value) return `${configVal.name_native || lang} · ${unlimitedLabel}`;
     return sem.dayIdx.value
         ? `${configVal.name_native || lang} · #${sem.dayIdx.value}`
         : configVal.name_native || lang;
@@ -332,10 +337,11 @@ const { shareResults } = useGameShare();
 async function onShare() {
     const bestRank = sem.bestGuess.value?.rank;
     const attemptsText = sem.won.value ? String(sem.guesses.value.length) : 'x';
+    const semanticTitle = ui.value?.semantic_title;
     const shareText =
-        `Semantic Explorer ${langStore.languageCode.toUpperCase()} #${sem.dayIdx.value}` +
+        `${semanticTitle} ${langStore.languageCode.toUpperCase()} #${sem.dayIdx.value}` +
         ` · ${sem.won.value ? `${sem.guesses.value.length}/${sem.maxGuesses.value}` : 'X/' + sem.maxGuesses.value}` +
-        (bestRank ? `\nBest rank: #${bestRank.toLocaleString()}` : '');
+        (bestRank ? `\n${ui.value?.semantic_best_rank}: #${bestRank.toLocaleString()}` : '');
 
     await shareResults({
         shareText,
@@ -393,20 +399,24 @@ function onKeepPlaying() {
             v-if="gameUnavailable"
             class="flex flex-col items-center justify-center flex-1 px-6 py-20 text-center"
         >
-            <h2 class="heading-display text-3xl text-ink mb-4">Semantic Explorer</h2>
+            <h2 class="heading-display text-3xl text-ink mb-4">
+                {{ ui?.semantic_title }}
+            </h2>
             <p class="text-muted max-w-md mb-6">
-                This mode is temporarily unavailable — the word embedding data is being generated.
-                Check back in a few minutes.
+                {{
+                    ui?.semantic_unavailable ||
+                    'This mode is temporarily unavailable — the word embedding data is being generated. Check back in a few minutes.'
+                }}
             </p>
             <button
                 class="px-6 py-2 bg-accent text-paper font-body font-bold hover:opacity-90 transition-opacity"
                 @click="sem.startGame({ play: playType })"
             >
-                Retry
+                {{ ui?.semantic_retry }}
             </button>
         </div>
 
-        <div v-else class="semantic-body">
+        <div v-else class="semantic-body editorial-scroll">
             <section class="semantic-layout">
                 <!-- Main column: map card (title + canvas + input) -->
                 <div class="main-col">
@@ -416,19 +426,33 @@ function onKeepPlaying() {
                                 <span class="eyebrow-tag">
                                     {{
                                         sem.mapMode.value === 'slice' && sem.sliceAxes.value
-                                            ? `Slice: ${sem.sliceAxes.value[0]} × ${sem.sliceAxes.value[1]}`
-                                            : 'Meaning Map'
+                                            ? interpolate(
+                                                  ui?.semantic_slice_label ||
+                                                      'Slice: {axis_x} × {axis_y}',
+                                                  {
+                                                      axis_x: sem.sliceAxes.value[0],
+                                                      axis_y: sem.sliceAxes.value[1],
+                                                  }
+                                              )
+                                            : ui?.semantic_meaning_map
                                     }}
                                 </span>
-                                <span class="eyebrow-sub">distance = rank</span>
+                                <span class="eyebrow-sub">{{ ui?.semantic_distance_rank }}</span>
                             </div>
-                            <h1 class="map-title">Find the hidden word</h1>
+                            <h1 class="map-title">
+                                {{ ui?.semantic_find_hidden }}
+                            </h1>
                             <p class="map-subtitle">
-                                <template v-if="sem.starting.value">Loading today's word…</template>
-                                <template v-else
-                                    >Navigate by meaning. {{ sem.guessesRemaining.value }} guesses
-                                    left.</template
-                                >
+                                <template v-if="sem.starting.value">{{
+                                    ui?.semantic_loading || "Loading today's word…"
+                                }}</template>
+                                <template v-else>{{
+                                    interpolate(
+                                        ui?.semantic_guesses_left ||
+                                            'Navigate by meaning. {n} guesses left.',
+                                        { n: sem.guessesRemaining.value }
+                                    )
+                                }}</template>
                             </p>
                         </header>
 
@@ -553,6 +577,8 @@ function onKeepPlaying() {
     flex-direction: column;
     align-items: center;
     min-height: 0;
+    /* Lock to viewport so only inner content scrolls, not the page */
+    max-height: calc(100dvh - 50px);
     overflow-y: auto;
 }
 .semantic-layout {
@@ -631,27 +657,37 @@ function onKeepPlaying() {
 }
 
 .map-canvas-wrap {
+    /* Chrome around the map: navbar ~50 + card header ~90 + input ~80 + padding ~80 ≈ 310px */
+    --map-chrome: 310px;
     position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 280px;
-    /* Cap height so the input stays visible without scrolling.
-       Navbar ~50 + card header ~90 + input ~80 + card/body padding ~80 ≈ 300px.
-       Use dvh to account for mobile browser chrome. */
-    max-height: calc(100dvh - 310px);
+    min-height: min(200px, calc(100dvh - var(--map-chrome)));
+    max-height: calc(100dvh - var(--map-chrome));
+    /* Constrain children to available height — the map is square, so
+       capping width = capping height. max-width on the wrapper propagates
+       to all children via percentage resolution. */
+    max-width: min(100%, calc(100dvh - var(--map-chrome)));
+    margin: 0 auto; /* center the constrained wrapper */
+}
+/* Short viewports: hide header, reduce chrome budget for bigger map */
+@media (max-height: 700px) {
+    .map-header {
+        display: none;
+    }
+    .map-canvas-wrap {
+        --map-chrome: 210px;
+    }
 }
 
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */
 
 .map-input-row {
-    /* On desktop, visually attach to the map card above */
-    margin-top: -1px;
     padding: 12px 22px 14px;
     background: var(--color-paper);
     border: 1px solid var(--color-rule);
-    border-top: none;
 }
 
 /* ═════════════════════════════════════════════════════════════
@@ -710,8 +746,9 @@ function onKeepPlaying() {
         display: none;
     }
     .map-canvas-wrap {
-        min-height: 180px;
-        max-height: 40vh;
+        min-height: min(180px, 40dvh);
+        max-height: 40dvh;
+        max-width: min(100%, 40dvh);
     }
     /* Fixed input bar: pinned to the bottom of the viewport so it
        remains accessible when the mobile keyboard opens. */
@@ -756,7 +793,7 @@ function onKeepPlaying() {
         font-size: 15px;
     }
     .map-canvas-wrap {
-        min-height: 200px;
+        min-height: min(200px, 40dvh);
     }
 }
 </style>

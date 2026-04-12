@@ -12,6 +12,9 @@ import { Sparkles, Trophy, XCircle, Share2, Check } from 'lucide-vue-next';
 import type { Neighbour, SemanticGuess } from '~/composables/useSemanticGame';
 import { wordDetailPath } from '~/utils/wordUrls';
 
+const langStore = useLanguageStore();
+const ui = computed(() => langStore.config?.ui);
+
 const props = defineProps<{
     visible: boolean;
     won: boolean;
@@ -63,23 +66,24 @@ const bestRank = computed(() => {
                     <XCircle v-else :size="32" />
                 </div>
                 <h2 id="semantic-stats-label" class="heading-display stats-title">
-                    {{ won ? 'Found it' : 'Out of guesses' }}
+                    {{ won ? ui?.semantic_won : ui?.semantic_lost }}
                 </h2>
                 <p class="stats-subtitle">
-                    Semantic Explorer · Day #{{ dayIdx }} · {{ lang.toUpperCase() }}
+                    {{ ui?.semantic_title }} · Day #{{ dayIdx }} ·
+                    {{ lang.toUpperCase() }}
                 </p>
             </div>
 
             <!-- Target reveal -->
             <div class="target-reveal">
-                <div class="mono-label">The word was</div>
+                <div class="mono-label">{{ ui?.the_word_was }}</div>
                 <div class="target-word">{{ targetWord ?? '?' }}</div>
                 <NuxtLink
                     v-if="targetWord"
                     :to="wordDetailPath(lang, targetWord)"
                     class="explore-link"
                 >
-                    Explore in meaning space →
+                    {{ ui?.semantic_explore_link }}
                 </NuxtLink>
             </div>
 
@@ -89,27 +93,29 @@ const bestRank = computed(() => {
                     <div class="stat-number">
                         {{ guesses.length }}<span class="stat-denom">/{{ guessesMax }}</span>
                     </div>
-                    <div class="mono-label">Guesses</div>
+                    <div class="mono-label">{{ ui?.semantic_guesses }}</div>
                 </div>
                 <div class="stat-cell">
                     <div class="stat-number">
                         <span v-if="bestRank !== null">#{{ bestRank.toLocaleString() }}</span>
                         <span v-else>—</span>
                     </div>
-                    <div class="mono-label">Best rank</div>
+                    <div class="mono-label">{{ ui?.semantic_best_rank }}</div>
                 </div>
                 <div class="stat-cell">
                     <div class="stat-number">
                         <Sparkles v-if="llmHintUsed" :size="20" class="inline-icon" />
                         <span v-else>—</span>
                     </div>
-                    <div class="mono-label">Oracle</div>
+                    <div class="mono-label">{{ ui?.semantic_oracle }}</div>
                 </div>
             </div>
 
             <!-- Neighbours (what you didn't guess) -->
             <div class="section" v-if="neighbours.length">
-                <div class="mono-label section-label">Closest words you missed</div>
+                <div class="mono-label section-label">
+                    {{ ui?.semantic_neighbours_label }}
+                </div>
                 <div class="neighbour-grid">
                     <span v-for="n in neighbours.slice(0, 8)" :key="n.word" class="neighbour-chip">
                         {{ n.word }}
@@ -127,11 +133,11 @@ const bestRank = computed(() => {
                 >
                     <template v-if="shareCopied">
                         <Check :size="16" />
-                        Copied!
+                        {{ langStore.config?.text?.copied }}
                     </template>
                     <template v-else>
                         <Share2 :size="16" />
-                        Share Result
+                        {{ ui?.share_result }}
                     </template>
                 </button>
                 <button
@@ -140,7 +146,7 @@ const bestRank = computed(() => {
                     class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                     @click="emit('keepPlaying')"
                 >
-                    Keep Playing
+                    {{ ui?.keep_playing }}
                 </button>
                 <button
                     v-else
@@ -148,7 +154,7 @@ const bestRank = computed(() => {
                     class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                     @click="emit('newGame')"
                 >
-                    Play Again
+                    {{ ui?.play_again }}
                 </button>
             </div>
         </div>

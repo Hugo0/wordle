@@ -250,6 +250,7 @@ export interface UiStrings {
     board?: string;
     new_game?: string;
     share_result?: string;
+    keep_playing?: string;
     unlimited_mode?: string;
     day_streak?: string;
     last_28_days?: string;
@@ -266,6 +267,9 @@ export interface UiStrings {
     streak_footer?: string;
     // Speed mode
     speed_streak?: string;
+    speed_start?: string;
+    speed_go?: string;
+    speed_tap_for_rules?: string;
     time_up?: string;
     points?: string;
     solved?: string;
@@ -282,6 +286,25 @@ export interface UiStrings {
     copy_your_results?: string;
     copy_instructions?: string;
     done?: string;
+    // Modals & pickers
+    choose_game_mode?: string;
+    game_mode_subtitle?: string;
+    play_arrow?: string;
+    choose_language?: string;
+    search_languages?: string;
+    no_languages_match?: string;
+    multi_board?: string;
+    board_picker_subtitle?: string;
+    boards?: string;
+    guesses?: string;
+    badges?: string;
+    archive?: string;
+    best_starting_words?: string;
+    guest?: string;
+    sign_in?: string;
+    sync_stats_earn_badges?: string;
+    animations?: string;
+    animations_desc?: string;
     // Error page
     error_404?: string;
     error_500?: string;
@@ -321,6 +344,58 @@ export interface UiStrings {
     mode_custom_desc?: string;
     mode_party_label?: string;
     mode_party_desc?: string;
+    // Semantic Explorer
+    semantic_title?: string;
+    semantic_won?: string;
+    semantic_lost?: string;
+    semantic_explore_link?: string;
+    semantic_guesses?: string;
+    semantic_best_rank?: string;
+    semantic_oracle?: string;
+    semantic_neighbours_label?: string;
+    semantic_compass?: string;
+    semantic_compass_empty?: string;
+    semantic_compass_no_bearing?: string;
+    semantic_compass_no_bearing_sub?: string;
+    semantic_compass_think_more?: string;
+    semantic_hint?: string;
+    semantic_hint_used?: string;
+    semantic_hint_ready?: string;
+    semantic_hint_guess_more?: string;
+    semantic_hint_stuck?: string;
+    semantic_hint_nudge?: string;
+    semantic_hint_divining?: string;
+    semantic_hint_locked?: string;
+    semantic_hint_ask?: string;
+    semantic_hint_note?: string;
+    semantic_hint_map?: string;
+    semantic_hint_slice?: string;
+    semantic_input_placeholder?: string;
+    semantic_game_over?: string;
+    semantic_guess_button?: string;
+    semantic_guesses_used?: string;
+    semantic_closest?: string;
+    semantic_cta_headline?: string;
+    semantic_cta_body?: string;
+    semantic_your_guesses?: string;
+    semantic_show_all?: string;
+    semantic_tier_found?: string;
+    semantic_tier_scorching?: string;
+    semantic_tier_burning?: string;
+    semantic_tier_hot?: string;
+    semantic_tier_warm?: string;
+    semantic_tier_cool?: string;
+    semantic_tier_cold?: string;
+    semantic_tier_awaiting?: string;
+    semantic_meaning_map?: string;
+    semantic_slice_label?: string;
+    semantic_distance_rank?: string;
+    semantic_find_hidden?: string;
+    semantic_loading?: string;
+    semantic_guesses_left?: string;
+    semantic_unavailable?: string;
+    semantic_retry?: string;
+    semantic_unlimited?: string;
 }
 
 export interface LanguageConfig {

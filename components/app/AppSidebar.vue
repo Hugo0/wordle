@@ -36,12 +36,12 @@
 
                 <!-- Play section -->
                 <nav ref="playNavRef" class="py-4 editorial-rule">
-                    <div class="mono-label px-6 pb-2">Play</div>
+                    <div class="mono-label px-6 pb-2">{{ ui?.sidebar_play || 'Play' }}</div>
 
                     <!-- Daily Puzzle (top-level, most played) -->
                     <SidebarItem
                         icon="Square"
-                        label="Daily Puzzle"
+                        :label="ui?.mode_daily_label || 'Daily Puzzle'"
                         :active="currentMode === 'classic' && currentPlayType === 'daily'"
                         :href="`/${langCode}`"
                         @click="selectMode('classic')"
@@ -50,7 +50,7 @@
                     <!-- Unlimited (top-level, most played) -->
                     <SidebarItem
                         icon="Infinity"
-                        label="Unlimited"
+                        :label="ui?.mode_unlimited_label || 'Unlimited'"
                         :active="
                             currentMode === 'unlimited' ||
                             (currentMode === 'classic' && currentPlayType === 'unlimited')
@@ -84,7 +84,7 @@
                                 />
                             </span>
                             <span class="flex-1 text-sm">{{
-                                speedMode?.label || 'Speed Streak'
+                                ui?.mode_speed_label || speedMode?.label || 'Speed Streak'
                             }}</span>
                             <span v-if="speedMode?.badge" class="sidebar-badge">{{
                                 speedMode.badge
@@ -105,7 +105,7 @@
                         <span class="item-icon w-5 flex items-center justify-center">
                             <Grid2x2 :size="18" class="text-current" />
                         </span>
-                        <span class="flex-1 text-sm">Multi-Board</span>
+                        <span class="flex-1 text-sm">{{ ui?.multi_board || 'Multi-Board' }}</span>
                         <ChevronDown
                             :size="14"
                             class="text-muted transition-transform duration-200"
@@ -160,7 +160,9 @@
                                 />
                             </span>
                             <span class="flex-1 text-sm">{{
-                                semanticMode?.label || 'Semantic Explorer'
+                                ui?.mode_semantic_label ||
+                                semanticMode?.label ||
+                                'Semantic Explorer'
                             }}</span>
                             <span v-if="semanticMode?.badge" class="sidebar-badge">{{
                                 semanticMode.badge
@@ -189,12 +191,12 @@
                             :class="{
                                 active: subPanelMode === currentMode && currentPlayType === 'daily',
                             }"
-                            :aria-label="`Daily #${dayIdx}`"
-                            :title="`Daily #${dayIdx}`"
+                            :aria-label="`Daily ${subPanelDayLabel}`"
+                            :title="`Daily ${subPanelDayLabel}`"
                             @click="close()"
                         >
                             <CalendarDays :size="20" />
-                            <span class="sub-panel-label">#{{ dayIdx }}</span>
+                            <span class="sub-panel-label">{{ subPanelDayLabel }}</span>
                         </NuxtLink>
                         <NuxtLink
                             :to="subPanelUnlimitedRoute!"
@@ -214,7 +216,7 @@
 
                 <!-- Language section -->
                 <div class="py-4 editorial-rule">
-                    <div class="mono-label px-6 pb-2">Language</div>
+                    <div class="mono-label px-6 pb-2">{{ ui?.language || 'Language' }}</div>
                     <button class="sidebar-item w-full" @click="$emit('selectLanguage')">
                         <span class="item-icon">
                             <img
@@ -233,17 +235,20 @@
 
                 <!-- You section -->
                 <div class="py-4 editorial-rule">
-                    <div class="mono-label px-6 pb-2">You</div>
+                    <div class="mono-label px-6 pb-2">{{ ui?.sidebar_you || 'You' }}</div>
                     <SidebarItem
                         icon="ChartNoAxesCombined"
-                        label="Statistics"
+                        :label="ui?.statistics || 'Statistics'"
                         href="/profile#statistics"
                     />
-                    <SidebarItem icon="Award" label="Badges" href="/profile#badges" />
-                    <SidebarItem icon="Calendar" label="Archive" :href="`/${langCode}/archive`" />
+                    <SidebarItem
+                        icon="Award"
+                        :label="ui?.badges || 'Badges'"
+                        href="/profile#badges"
+                    />
                     <SidebarItem
                         icon="Settings"
-                        label="Settings"
+                        :label="ui?.settings || 'Settings'"
                         @click="
                             $emit('settings');
                             close();
@@ -258,17 +263,24 @@
                         <span class="item-icon w-5 flex items-center justify-center">
                             <Bug :size="18" class="text-current" />
                         </span>
-                        <span class="text-sm text-ink">Report a bug</span>
+                        <span class="text-sm text-ink">{{
+                            ui?.report_issue || 'Report a bug'
+                        }}</span>
                     </a>
                 </div>
 
-                <!-- Learn section -->
+                <!-- Explore section -->
                 <div class="py-4 editorial-rule">
-                    <div class="mono-label px-6 pb-2">Learn</div>
+                    <div class="mono-label px-6 pb-2">Explore</div>
                     <SidebarItem
-                        icon="Lightbulb"
-                        label="Best Starting Words"
-                        :href="`/${langCode}/best-starting-words`"
+                        icon="Trophy"
+                        label="Leaderboard"
+                        :href="`/leaderboard?lang=${langCode}`"
+                    />
+                    <SidebarItem
+                        icon="Calendar"
+                        :label="ui?.archive || 'Archive'"
+                        :href="`/${langCode}/archive`"
                     />
                 </div>
 
@@ -313,8 +325,12 @@
                                 ?
                             </div>
                             <div class="flex-1 min-w-0">
-                                <div class="text-sm font-semibold text-ink">Guest</div>
-                                <div class="mono-label">Sync stats, earn badges</div>
+                                <div class="text-sm font-semibold text-ink">
+                                    {{ ui?.guest || 'Guest' }}
+                                </div>
+                                <div class="mono-label">
+                                    {{ ui?.sync_stats_earn_badges || 'Sync stats, earn badges' }}
+                                </div>
                             </div>
                         </div>
                         <button
@@ -324,7 +340,7 @@
                                 openLoginModal();
                             "
                         >
-                            Sign in
+                            {{ ui?.sign_in || 'Sign in' }}
                         </button>
                     </template>
                 </div>
@@ -347,6 +363,7 @@ import {
 import { useFlag } from '~/composables/useFlag';
 import { GAME_MODES_UI, getModeLabel } from '~/composables/useGameModes';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import { NEW_MODES_START_IDX } from '~/utils/day-index';
 import SidebarItem from './SidebarItem.vue';
 import { useAutoHeight } from '~/composables/useAutoHeight';
 
@@ -424,7 +441,18 @@ const langStore = useLanguageStore();
 
 // Expand/collapse state for sidebar sections
 const expandedSection = ref<'classic' | 'speed' | 'multiboard' | 'semantic' | null>(null);
-const dayIdx = computed(() => langStore.todaysIdx ?? '');
+const classicDayIdx = computed(() => langStore.todaysIdx ?? 0);
+
+const subPanelDayLabel = computed(() => {
+    const idx = classicDayIdx.value;
+    if (!idx) return '';
+    const mode = subPanelMode.value;
+    if (mode && mode !== 'classic') {
+        const modeIdx = idx - NEW_MODES_START_IDX + 1;
+        return modeIdx >= 1 ? `#${modeIdx}` : '';
+    }
+    return `#${idx}`;
+});
 
 // Sub-panel state: which mode's daily/unlimited panel is showing
 const subPanelMode = ref<string | null>(null);
@@ -503,7 +531,7 @@ const multiboardModes = computed(
             return {
                 id,
                 label: getModeLabel(mode, ui.value),
-                boards: `${def.boardCount} boards`,
+                boards: `${def.boardCount} ${ui.value?.boards || 'boards'}`,
                 icon: mode.icon,
             };
         }).filter(Boolean) as Array<{ id: string; label: string; boards: string; icon: any }>

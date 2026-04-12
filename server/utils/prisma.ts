@@ -23,7 +23,7 @@ function createClient(): PrismaClient {
     const pool = new pg.Pool({
         connectionString,
         ssl: { rejectUnauthorized: false },
-        max: 10,
+        max: 20,
         min: 2,
         idleTimeoutMillis: 60000,
         connectionTimeoutMillis: 15000,

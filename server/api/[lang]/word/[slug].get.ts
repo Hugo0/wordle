@@ -15,7 +15,8 @@ import {
 import { loadWordStats } from '../../../utils/word-stats';
 import { fetchDefinition } from '../../../utils/definitions';
 import { checkWiktionaryExists } from '../../../utils/wiktionary';
-import { getEmbedding, knnNearest, loadSemanticData } from '../../../utils/semantic';
+import * as semanticDb from '~/server/utils/_semantic-db';
+import { getValidWords } from '~/server/plugins/semantic-warmup';
 import type { WordStats } from '~/utils/types';
 
 // Module-level Set cache so we don't rebuild on every request. wordLists
@@ -47,14 +48,10 @@ function wordIsRecognized(
     data: ReturnType<typeof loadAllData>
 ): boolean {
     if (getWordSet(lang, data).has(word)) return true;
-    // English gets the much larger semantic validator dictionary
+    // English gets the much larger semantic valid words set (loaded at startup, 2MB)
     if (lang === 'en') {
-        try {
-            const sem = loadSemanticData();
-            if (sem.validWords.has(word)) return true;
-        } catch {
-            // semantic data missing — fall through
-        }
+        const validWords = getValidWords();
+        if (validWords.size > 0 && validWords.has(word)) return true;
     }
     return false;
 }
@@ -98,14 +95,16 @@ export default defineEventHandler(async (event) => {
 
     if (dayIdx != null && !isFuture) {
         wordDate = idxToDate(dayIdx).toISOString().slice(0, 10);
-        wordStats = loadWordStats(lang, dayIdx);
+        wordStats = await loadWordStats(lang, dayIdx);
     }
 
-    // cacheOnly=1: skip LLM definition generation — only return disk-cached
-    // or kaikki definitions. Used by the hover-prefetch so browsing neighbors
-    // doesn't burn AI credits on obscure words.
     const query = getQuery(event);
-    const cacheOnly = query.cacheOnly === '1' || query.cacheOnly === 'true';
+    const clientCacheOnly = query.cacheOnly === '1' || query.cacheOnly === 'true';
+    // Only generate LLM definitions for words in the game's word list (5-letter
+    // daily candidates). Other words (semantic vocab, neighbor links) use cacheOnly
+    // to avoid burning LLM credits on the 75K-word tail that bots crawl.
+    const isGameWord = getWordSet(lang, data).has(word ?? '');
+    const cacheOnly = clientCacheOnly || !isGameWord;
 
     let wiktionaryExists = false;
     if (word) {
@@ -123,19 +122,15 @@ export default defineEventHandler(async (event) => {
         wiktionaryExists = wiktResult === true;
     }
 
-    // Nearest words for SSR internal link juice. Lightweight k-NN on the
-    // in-memory semantic embeddings — ~5ms, zero LLM cost. Only for English
-    // (where semantic data exists) and only the word names (no full explore).
+    // Nearest words for SSR internal link juice via pgvector HNSW — ~10ms.
+    // Only for English (where semantic data exists).
     let nearestWords: string[] = [];
     if (word && lang === 'en') {
         try {
-            const semData = loadSemanticData();
-            const vec = getEmbedding(semData, word);
-            if (vec) {
-                nearestWords = knnNearest(semData, vec, 8, new Set([word])).map((n) => n.word);
-            }
+            const neighbors = await semanticDb.knnNearest(lang, word, 8, [word]);
+            nearestWords = neighbors.map((n) => n.word);
         } catch {
-            // Semantic data not loaded — skip (non-English or cold start)
+            // DB unavailable — skip
         }
     }
 

@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
         'unknown';
 
     if (isDuplicateSubmission(lang, day_idx, clientId, todaysIdx)) {
-        const existing = loadWordStats(lang, day_idx);
+        const existing = await loadWordStats(lang, day_idx);
         return existing || {};
     }
 
@@ -48,6 +48,6 @@ export default defineEventHandler(async (event) => {
         console.warn(`[word-stats] Disk write failed for ${lang}`);
     }
 
-    const updated = loadWordStats(lang, day_idx);
+    const updated = await loadWordStats(lang, day_idx);
     return updated || {};
 });

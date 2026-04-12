@@ -1,12 +1,9 @@
 /**
  * Anonymous word stats collection.
  *
- * Uses proper-lockfile instead of fcntl.flock() for atomic read-modify-write.
+ * DB-only: atomic SQL increments via db-cache.ts.
  */
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
-import { join } from 'path';
-import { WORD_STATS_DIR } from './data-loader';
 import type { WordStats } from '~/utils/types';
 
 // In-memory dedup (resets on restart, never persisted)
@@ -15,20 +12,20 @@ const _statsSeenIps = new Set<string>();
 let _statsSeenDay: number | null = null;
 
 /**
- * Load stats for a specific word/day.
+ * Load stats for a specific word/day from DB.
  */
-export function loadWordStats(langCode: string, dayIdx: number): WordStats | null {
-    const statsPath = join(WORD_STATS_DIR, langCode, `${dayIdx}.json`);
-    if (!existsSync(statsPath)) return null;
+export async function loadWordStats(langCode: string, dayIdx: number): Promise<WordStats | null> {
     try {
-        return JSON.parse(readFileSync(statsPath, 'utf-8')) as WordStats;
+        const { getWordStats } = await import('./db-cache');
+        return await getWordStats(langCode, dayIdx);
     } catch {
         return null;
     }
 }
 
 /**
- * Atomically read-modify-write stats for a specific word/day.
+ * Atomically update stats for a specific word/day.
+ * Uses DB atomic increment (ON CONFLICT DO UPDATE SET total = total + 1).
  */
 export async function updateWordStats(
     langCode: string,
@@ -36,82 +33,12 @@ export async function updateWordStats(
     won: boolean,
     attempts: number
 ): Promise<void> {
-    const statsDir = join(WORD_STATS_DIR, langCode);
-    const statsPath = join(statsDir, `${dayIdx}.json`);
-    mkdirSync(statsDir, { recursive: true });
-
-    // Use proper-lockfile for atomic updates
-    let lockfile: typeof import('proper-lockfile');
     try {
-        lockfile = await import('proper-lockfile');
-    } catch {
-        // Fallback: write without locking
-        _writeStats(statsPath, won, attempts);
-        return;
+        const { incrementWordStats } = await import('./db-cache');
+        await incrementWordStats(langCode, dayIdx, won, attempts);
+    } catch (e) {
+        console.warn(`[word-stats] DB write failed for ${langCode}/${dayIdx}:`, e);
     }
-
-    const lockPath = statsPath + '.lock';
-    // Ensure lock target exists
-    if (!existsSync(statsPath)) {
-        writeFileSync(statsPath, '{}', 'utf-8');
-    }
-
-    let release: (() => Promise<void>) | undefined;
-    try {
-        release = await lockfile.lock(statsPath, {
-            stale: 10000,
-            retries: 0,
-        });
-    } catch {
-        // Another process holds the lock; skip this update
-        return;
-    }
-
-    try {
-        _writeStats(statsPath, won, attempts);
-    } finally {
-        if (release) await release();
-    }
-}
-
-function _writeStats(statsPath: string, won: boolean, attempts: number): void {
-    let stats: WordStats;
-    try {
-        if (existsSync(statsPath)) {
-            const raw = readFileSync(statsPath, 'utf-8');
-            const parsed = JSON.parse(raw);
-            if (parsed.total) {
-                stats = parsed;
-            } else {
-                stats = newStats();
-            }
-        } else {
-            stats = newStats();
-        }
-    } catch {
-        stats = newStats();
-    }
-
-    stats.total += 1;
-    if (won) {
-        stats.wins += 1;
-        if (typeof attempts === 'number' && attempts >= 1 && attempts <= 6) {
-            stats.distribution[String(attempts)] = (stats.distribution[String(attempts)] || 0) + 1;
-        }
-    } else {
-        stats.losses += 1;
-    }
-
-    writeFileSync(statsPath, JSON.stringify(stats), 'utf-8');
-}
-
-function newStats(): WordStats {
-    return {
-        total: 0,
-        wins: 0,
-        losses: 0,
-        distribution: { '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0 },
-    };
 }
 
 /**
@@ -123,7 +50,6 @@ export function isDuplicateSubmission(
     clientId: string,
     todaysIdx: number
 ): boolean {
-    // Reset dedup map on new day
     if (_statsSeenDay !== todaysIdx) {
         _statsSeenIps.clear();
         _statsSeenDay = todaysIdx;

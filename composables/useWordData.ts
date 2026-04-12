@@ -58,6 +58,9 @@ export type NeighborEntry = {
     word: string;
     similarity: number;
     umap: [number, number] | null;
+    /** Normalized axis projections — included for top ~15 foreground candidates
+     *  so the map can render lens/slice views without per-word fetches. */
+    projections?: Record<string, number>;
 };
 
 export type WordExploreData = {

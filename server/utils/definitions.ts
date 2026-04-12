@@ -2,78 +2,15 @@ import { consola } from 'consola';
 /**
  * Definition fetching.
  *
- * 3-tier system: disk cache → LLM (GPT-5.2) → kaikki (offline Wiktionary).
+ * 2-tier system: DB cache → LLM (GPT-5.2).
+ * Kaikki (offline Wiktionary) definitions are pre-seeded in the DB with
+ * source='kaikki' or 'kaikki-en', so they're found at the DB tier.
  */
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
-import { join, resolve } from 'path';
-import { WORD_DEFS_DIR } from './data-loader';
+import { dedup } from './inflight';
 import { getWiktLang } from './word-selection';
 
 const NEGATIVE_CACHE_TTL = 24 * 3600; // 24 hours
-
-// ---------------------------------------------------------------------------
-// Kaikki pre-built definitions (offline verification / fallback)
-// ---------------------------------------------------------------------------
-
-function resolveDefinitionsDir(): string {
-    const candidates = [
-        resolve(process.cwd(), 'data', 'definitions'),
-        resolve(process.cwd(), '..', 'data', 'definitions'),
-    ];
-    for (const c of candidates) {
-        if (existsSync(c)) {
-            consola.info(`[DEFS] Definitions dir: ${c}`);
-            return c;
-        }
-    }
-    consola.warn(`[DEFS] Definitions dir NOT FOUND, tried: ${candidates.join(', ')}`);
-    return candidates[0]!;
-}
-
-const DEFINITIONS_DIR = resolveDefinitionsDir();
-const _kaikkiCache: Record<string, Record<string, string>> = {};
-
-function loadKaikkiFile(cacheKey: string, filePath: string): Record<string, string> {
-    if (_kaikkiCache[cacheKey]) return _kaikkiCache[cacheKey]!;
-    if (existsSync(filePath)) {
-        try {
-            _kaikkiCache[cacheKey] = JSON.parse(readFileSync(filePath, 'utf-8'));
-            consola.info(
-                `[KAIKKI] Loaded ${cacheKey}: ${Object.keys(_kaikkiCache[cacheKey]!).length} entries`
-            );
-        } catch {
-            _kaikkiCache[cacheKey] = {};
-        }
-    } else {
-        consola.warn(`[KAIKKI] File not found: ${filePath}`);
-        _kaikkiCache[cacheKey] = {};
-    }
-    return _kaikkiCache[cacheKey]!;
-}
-
-function lookupKaikki(
-    word: string,
-    langCode: string,
-    variant: 'native' | 'en'
-): Record<string, any> | null {
-    const cacheKey = variant === 'native' ? `${langCode}_native` : `${langCode}_en`;
-    const fileName = variant === 'native' ? `${langCode}.json` : `${langCode}_en.json`;
-    const source = variant === 'native' ? 'kaikki' : 'kaikki-en';
-
-    const defs = loadKaikkiFile(cacheKey, join(DEFINITIONS_DIR, fileName));
-    const definition = defs[word.toLowerCase()];
-    if (definition) {
-        return {
-            definition,
-            part_of_speech: null,
-            source,
-            url: wiktionaryUrl(word, langCode),
-            ts: Math.floor(Date.now() / 1000),
-        };
-    }
-    return null;
-}
 
 // ---------------------------------------------------------------------------
 // Wiktionary URL construction
@@ -146,7 +83,6 @@ const LLM_LANG_NAMES: Record<string, string> = {
     rw: 'Kinyarwanda',
     tlh: 'Klingon',
     qya: 'Quenya',
-    // Added: languages that were missing LLM definition support
     bn: 'Bengali',
     eo: 'Esperanto',
     fo: 'Faroese',
@@ -265,70 +201,79 @@ async function callLlmDefinition(
 /**
  * Fetch a word definition.
  *
- * Default: 3-tier: disk cache → LLM → kaikki.
- * With cacheOnly: disk cache → kaikki only (no LLM call — safe for unlimited/random words).
+ * 2-tier: DB cache → LLM. Kaikki definitions are pre-seeded in the DB.
+ * With cacheOnly: DB only (no LLM call — safe for unlimited/random words).
  */
 export async function fetchDefinition(
     word: string,
     langCode: string,
     options: { skipNegativeCache?: boolean; cacheOnly?: boolean } = {}
 ): Promise<Record<string, any> | null> {
-    const cacheDir = WORD_DEFS_DIR;
-    const langCacheDir = join(cacheDir, langCode);
-    const cachePath = join(langCacheDir, `${word.toLowerCase()}.json`);
+    let dbCache: typeof import('./db-cache') | null = null;
+    try {
+        dbCache = await import('./db-cache');
+    } catch {
+        /* DB unavailable */
+    }
 
-    // --- Tier 1: Disk cache ---
-    if (existsSync(cachePath)) {
-        try {
-            const loaded = JSON.parse(readFileSync(cachePath, 'utf-8'));
-            if (loaded.not_found) {
-                if (!options.skipNegativeCache) {
-                    const cachedTs = loaded.ts || 0;
-                    if (Date.now() / 1000 - cachedTs < NEGATIVE_CACHE_TTL) {
-                        return null;
-                    }
-                }
-                // Expired — fall through
-            } else if (loaded && Object.keys(loaded).length > 0) {
-                // If cached result is English-only (kaikki-en fallback), try LLM for native
-                // But only retry once per 24h to avoid hammering LLM
-                if (loaded.source === 'kaikki-en' && !loaded.definition_native) {
-                    const cachedTs = loaded.ts || 0;
-                    if (Date.now() / 1000 - cachedTs < NEGATIVE_CACHE_TTL) {
-                        return loaded;
-                    }
-                    // Expired — fall through
-                } else {
-                    return loaded;
-                }
+    // --- DB cache (includes LLM, kaikki, and kaikki-en definitions) ---
+    const dbResult = dbCache ? await dbCache.getDefinition(langCode, word.toLowerCase()) : null;
+    if (dbResult) {
+        if (dbResult.isNegative && !options.skipNegativeCache) return null;
+        if (!dbResult.isNegative) {
+            // kaikki-en fallback entries expire after 24h so LLM can retry
+            const isStaleKaikkiEn =
+                dbResult.source === 'kaikki-en' &&
+                !dbResult.definitionNative &&
+                Date.now() - dbResult.cachedAt.getTime() >= NEGATIVE_CACHE_TTL * 1000;
+            if (!isStaleKaikkiEn) {
+                return {
+                    definition: dbResult.definition,
+                    definition_native: dbResult.definitionNative,
+                    definition_en: dbResult.definitionEn,
+                    part_of_speech: dbResult.partOfSpeech,
+                    confidence: dbResult.confidence,
+                    source: dbResult.source,
+                    url: dbResult.url,
+                };
             }
-        } catch {
-            // Fall through
         }
     }
 
-    // --- Tier 2: LLM (skip if cacheOnly) ---
-    let result: Record<string, any> | null = null;
-    if (!options.cacheOnly) {
-        result = await callLlmDefinition(word, langCode);
-    }
+    // cacheOnly mode: no LLM call (for hover-prefetch, unlimited words)
+    if (options.cacheOnly) return null;
 
-    // --- Tier 3: Kaikki fallback ---
-    if (!result) {
-        result = lookupKaikki(word, langCode, 'native') || lookupKaikki(word, langCode, 'en');
-    }
+    // --- LLM generation, deduplicated across concurrent requests ---
+    const dedupKey = `${langCode}:${word.toLowerCase()}`;
+    const result = await dedup('definition', dedupKey, async () => {
+        const llmResult = await callLlmDefinition(word, langCode);
 
-    // Cache result (including negative results)
-    try {
-        mkdirSync(langCacheDir, { recursive: true });
-        writeFileSync(
-            cachePath,
-            JSON.stringify(result || { not_found: true, ts: Math.floor(Date.now() / 1000) }),
-            'utf-8'
-        );
-    } catch {
-        // Non-critical
-    }
+        // Cache result to DB
+        const isNeg = !llmResult;
+        try {
+            await dbCache?.upsertDefinition(
+                langCode,
+                word.toLowerCase(),
+                llmResult
+                    ? {
+                          definition: llmResult.definition,
+                          definitionNative: llmResult.definition_native,
+                          definitionEn: llmResult.definition_en,
+                          partOfSpeech: llmResult.part_of_speech,
+                          confidence: llmResult.confidence,
+                          source: llmResult.source,
+                          model: LLM_MODEL,
+                          url: llmResult.url,
+                      }
+                    : {},
+                isNeg
+            );
+        } catch (e) {
+            consola.warn(`[definitions] DB write failed for ${langCode}/${word}:`, e);
+        }
+
+        return llmResult;
+    });
 
     return result;
 }

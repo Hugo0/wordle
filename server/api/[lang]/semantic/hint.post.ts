@@ -2,13 +2,11 @@
 // Cache-keyed on target word only — same hint for all players on the same daily.
 // Includes a validator loop: if the hint is too easy to reverse, regenerate.
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-
+import { dedup } from '~/server/utils/inflight';
+import { rateLimit } from '~/server/utils/rate-limit';
 import { getSessionTarget } from '~/server/utils/semantic';
 
 const LLM_MODEL = 'gpt-5.2';
-const CACHE_DIR = join(process.cwd(), 'word-defs', 'semantic-hints');
 const MAX_ATTEMPTS = 3;
 
 async function callLlm(
@@ -131,6 +129,7 @@ async function generateValidatedHint(target: string): Promise<string | null> {
 }
 
 export default defineEventHandler(async (event) => {
+    rateLimit(event, 'llm:hint', 10, 60 * 1000);
     const body = await readBody(event);
     const targetId = body?.targetId as string | undefined;
 
@@ -142,26 +141,34 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, message: 'Unknown or expired targetId' });
     }
 
-    mkdirSync(CACHE_DIR, { recursive: true });
-    const cacheFile = join(CACHE_DIR, `${target}.json`);
+    const lang = getRouterParam(event, 'lang') ?? 'en';
 
-    // Serve from cache — same hint for all players on the same word
-    if (existsSync(cacheFile)) {
-        try {
-            const cached = JSON.parse(readFileSync(cacheFile, 'utf-8'));
-            if (cached.hint) {
-                return { hint: cached.hint, cached: true };
-            }
-        } catch {
-            // fall through to regenerate
-        }
+    // Tier 0: DB cache
+    try {
+        const { getSemanticHint, setSemanticHint } = await import('~/server/utils/db-cache');
+        const dbHint = await getSemanticHint(lang, target);
+        if (dbHint) return { hint: dbHint, cached: true };
+    } catch {
+        /* fall through */
     }
 
-    const hint = await generateValidatedHint(target);
-    if (!hint) {
+    // Generate via LLM (deduplicated — only one generation per word)
+    const result = await dedup('hint', `${lang}:${target}`, async () => {
+        const generated = await generateValidatedHint(target);
+        if (!generated) return null;
+
+        try {
+            const { setSemanticHint } = await import('~/server/utils/db-cache');
+            await setSemanticHint(lang, target, generated, LLM_MODEL);
+        } catch (e) {
+            console.warn(`[hint] DB write failed for ${lang}/${target}:`, e);
+        }
+
+        return generated;
+    });
+
+    if (!result) {
         return { hint: null, cached: false, error: 'llm_unavailable' };
     }
-
-    writeFileSync(cacheFile, JSON.stringify({ hint, createdAt: Date.now() }));
-    return { hint, cached: false };
+    return { hint: result, cached: false };
 });

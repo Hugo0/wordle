@@ -659,7 +659,7 @@ export const useGameStore = defineStore('game', () => {
             if (!fullWordInputted.value) {
                 shakeRow(activeRow.value);
                 showNotification(
-                    lang.config?.text?.notification_partial_word || 'Please enter a full word'
+                    lang.config?.text?.notification_partial_word ?? 'Please enter a full word'
                 );
                 return;
             }
@@ -784,7 +784,7 @@ export const useGameStore = defineStore('game', () => {
                 }
                 shakeRow(activeRow.value);
                 showNotification(
-                    lang.config?.text?.notification_word_not_valid || 'Word is not valid'
+                    lang.config?.text?.notification_word_not_valid ?? 'Word is not valid'
                 );
 
                 // Track invalid word and update session frustration state

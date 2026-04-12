@@ -56,8 +56,10 @@ export default defineOAuthGoogleEventHandler({
 
         await setSessionForUser(event, user, 'google');
 
-        const redirect = getCookie(event, 'auth-redirect') || '/';
+        const raw = getCookie(event, 'auth-redirect') || '/';
         deleteCookie(event, 'auth-redirect');
+        // Prevent open redirect — only allow relative paths
+        const redirect = raw.startsWith('/') && !raw.startsWith('//') ? raw : '/';
         return sendRedirect(event, redirect);
     },
     onError(event, error) {

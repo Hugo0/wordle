@@ -253,6 +253,9 @@ const frameSize = computed(() => {
     display: inline-block;
     max-width: 100%;
     view-transition-name: meaning-map;
+    /* Border + background here so controls render inside the bordered area */
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper-warm);
 }
 .map-content-wrap:active {
     cursor: grabbing;

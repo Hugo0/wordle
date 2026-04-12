@@ -123,6 +123,20 @@ export function getDailyWordLegacy(
 // Main word selection (with history lookup and recency filtering)
 // ---------------------------------------------------------------------------
 
+/** Read a previously cached word from disk (no computation). */
+function readCachedWord(langCode: string, dayIdx: number): string | null {
+    const cachePath = join(WORD_HISTORY_DIR, langCode, `${dayIdx}.txt`);
+    try {
+        if (existsSync(cachePath)) {
+            const w = readFileSync(cachePath, 'utf-8').trim();
+            if (w) return w;
+        }
+    } catch {
+        // Non-critical
+    }
+    return null;
+}
+
 function computeWordForDay(langCode: string, dayIdx: number): string {
     const data = loadAllData();
     const wordList = data.wordLists[langCode]!;
@@ -140,13 +154,13 @@ function computeWordForDay(langCode: string, dayIdx: number): string {
         return history.get(dayIdx)!;
     }
 
-    // Build recency exclusion set from history
+    // Build recency exclusion set from frozen history + disk cache.
+    // Disk cache covers mode slot indices (dordle, quordle, etc.) that
+    // aren't in the words.json history.
     const exclude = new Set<string>(blocklist);
-    if (history) {
-        for (let d = dayIdx - RECENCY_WINDOW; d < dayIdx; d++) {
-            const w = history.get(d);
-            if (w) exclude.add(w);
-        }
+    for (let d = dayIdx - RECENCY_WINDOW; d < dayIdx; d++) {
+        const w = history?.get(d) ?? readCachedWord(langCode, d);
+        if (w) exclude.add(w);
     }
 
     const pool = dailyWords && dailyWords.length > 0 ? dailyWords : wordList;
@@ -162,25 +176,24 @@ function computeWordForDay(langCode: string, dayIdx: number): string {
  * Get the daily word for a specific language and day index.
  *
  * Once a word is computed for a past day, it's cached to disk so future
- * word list changes can never alter historical daily words.
+ * word list changes can never alter historical daily words.  The cache
+ * also feeds the recency exclusion window so modes don't repeat words
+ * within RECENCY_WINDOW days.
  */
 export function getWordForDay(langCode: string, dayIdx: number): string {
-    // Check disk cache first
-    const cachePath = join(WORD_HISTORY_DIR, langCode, `${dayIdx}.txt`);
-    if (existsSync(cachePath)) {
-        try {
-            const cached = readFileSync(cachePath, 'utf-8').trim();
-            if (cached) return cached;
-        } catch {
-            // Fall through to recompute
-        }
-    }
+    const cached = readCachedWord(langCode, dayIdx);
+    if (cached) return cached;
 
     const word = computeWordForDay(langCode, dayIdx);
 
-    // Cache past/current days (not future)
+    // Cache the result so the recency window can see it on future days.
+    // Guard: only cache indices that represent today-or-earlier. For mode
+    // offsets (e.g. dordle slot = todaysIdx + 7M) the real day is
+    // todaysIdx, so we accept any dayIdx whose base is <= todaysIdx.
     const todaysIdx = getTodaysIdx();
-    if (dayIdx <= todaysIdx) {
+    const maxCacheableIdx = todaysIdx + MAX_MODE_OFFSET + MAX_BOARD_SLOT;
+    if (dayIdx <= maxCacheableIdx) {
+        const cachePath = join(WORD_HISTORY_DIR, langCode, `${dayIdx}.txt`);
         const langDir = join(WORD_HISTORY_DIR, langCode);
         mkdirSync(langDir, { recursive: true });
         const tmpPath = cachePath + '.tmp';
@@ -303,20 +316,49 @@ export function getWiktLang(langCode: string): string {
 }
 
 /**
- * Get N distinct daily words for multi-board modes (Dordle, Tridle, Quordle).
+ * Get N distinct daily words for multi-board modes (Dordle, Quordle, etc.)
+ * and daily speed streak.
  *
- * Board 0 always uses the same word as classic daily (todaysIdx directly).
- * Boards 1-N use high slot offsets to ensure deterministic, unique words.
+ * Each mode passes a `modeOffset` so its words are drawn from a different
+ * region of the slot space — modes no longer share words by default.
+ * Within a mode, boards 1-N use high slot offsets to ensure unique words.
  * If a collision occurs (same word for two boards), probes forward.
  */
 const MULTI_BOARD_SLOT_OFFSET = 100_000;
 
-export function getWordsForDay(langCode: string, todaysIdx: number, count: number): string[] {
+/**
+ * Per-mode offsets so different game modes don't share the same daily words.
+ * Values are large primes, spread far enough apart to avoid accidental
+ * overlap with MULTI_BOARD_SLOT_OFFSET * boardCount ranges.
+ */
+export const MODE_SLOT_OFFSETS: Record<string, number> = {
+    classic: 0,
+    dordle: 7_000_003,
+    quordle: 14_000_029,
+    octordle: 21_000_047,
+    sedecordle: 28_000_069,
+    duotrigordle: 35_000_081,
+    speed: 42_000_101,
+};
+
+// Upper bounds used by getWordForDay's cache guard
+const MAX_MODE_OFFSET = Math.max(...Object.values(MODE_SLOT_OFFSETS));
+const MAX_BOARD_SLOT = 50 * MULTI_BOARD_SLOT_OFFSET; // speed daily = 50 words
+
+export function getWordsForDay(
+    langCode: string,
+    todaysIdx: number,
+    count: number,
+    mode: string = 'classic'
+): string[] {
+    const modeOffset = MODE_SLOT_OFFSETS[mode] ?? 0;
+    const baseIdx = todaysIdx + modeOffset;
+
     const words: string[] = [];
     const used = new Set<string>();
 
     for (let i = 0; i < count; i++) {
-        const slotIdx = i === 0 ? todaysIdx : todaysIdx + i * MULTI_BOARD_SLOT_OFFSET;
+        const slotIdx = i === 0 ? baseIdx : baseIdx + i * MULTI_BOARD_SLOT_OFFSET;
         let word = getWordForDay(langCode, slotIdx);
 
         // Dedup: probe forward if collision (bounded to prevent infinite loop)

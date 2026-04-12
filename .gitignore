@@ -4,6 +4,9 @@
 # Working session docs (internal notes)
 docs/
 
+# Design exploration HTML mockups (local only)
+public/design-explorations/
+
 # Node.js / Frontend
 node_modules/
 .pnpm-store/
@@ -55,3 +58,4 @@ scripts/.fonts/
 
 # OG mode images: regenerate with `uv run python scripts/generate_mode_og_images.py --all`
 # Committed to git (~5MB) since Render build env lacks Python/uv.
+.claude

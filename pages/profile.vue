@@ -20,15 +20,18 @@ import type { GameResult } from '~/utils/types';
 
 // PWA install — show "Install App" CTA if not already installed
 const pwaInstall = import.meta.client
-    ? inject<{ install: () => void; status: () => { isStandalone: boolean } }>(
-          'pwaInstall',
-          undefined
-      )
+    ? inject<{
+          install: () => void;
+          status: () => { isStandalone: boolean; hasPrompt: boolean; isIOS: boolean };
+      }>('pwaInstall', undefined)
     : undefined;
 const showInstallCta = computed(() => {
     if (!import.meta.client) return false;
     if (isStandalone()) return false;
-    return !!pwaInstall;
+    if (!pwaInstall) return false;
+    const s = pwaInstall.status();
+    // Show install CTA when browser has a prompt available or on iOS (manual install)
+    return s.hasPrompt || s.isIOS;
 });
 
 useSeoMeta({
@@ -484,7 +487,7 @@ const languagesConquered = computed(() => {
             <!-- Profile section -->
             <RevealTransition>
                 <section v-if="authLoggedIn" class="mb-10">
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-start gap-4">
                         <img
                             v-if="authUser?.avatarUrl"
                             :src="authUser.avatarUrl"
@@ -539,15 +542,11 @@ const languagesConquered = computed(() => {
                                 Member since {{ formatDate(profileData.createdAt) }}
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Account actions -->
-                    <div class="mt-6 flex items-center gap-4">
                         <button
-                            class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
+                            class="mono-label text-muted hover:text-ink active:text-correct cursor-pointer transition-colors flex items-center gap-1 flex-shrink-0 mt-1"
                             @click="authLogout()"
                         >
-                            <LogOut :size="14" />
+                            <LogOut :size="12" />
                             Sign out
                         </button>
                     </div>

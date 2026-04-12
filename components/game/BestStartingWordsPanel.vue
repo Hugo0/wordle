@@ -47,7 +47,7 @@ const copy = computed(() => {
         heading: interpolate(m.panel_heading ?? '', vars),
         subtitle: interpolate(m.panel_subtitle ?? '', vars),
         linkText: m.panel_link ?? '',
-        coverageLabel: d.ui?.coverage_label || 'Coverage',
+        coverageLabel: d.ui?.coverage_label,
     };
 });
 </script>

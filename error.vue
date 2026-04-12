@@ -19,6 +19,14 @@ interface LangInfo {
 const languages = ref<Record<string, LangInfo>>({});
 const languageCodes = ref<string[]>([]);
 
+// Try to load UI strings for the language in the URL (e.g., /de/nonexistent → de)
+const ui = ref<Record<string, string>>({});
+const langFromUrl = computed(() => {
+    const path = useRequestURL().pathname;
+    const seg = path.split('/')[1];
+    return seg && /^[a-z]{2,3}$/.test(seg) ? seg : null;
+});
+
 onMounted(async () => {
     try {
         const res = await fetch('/api/languages');
@@ -27,6 +35,16 @@ onMounted(async () => {
         languageCodes.value = data.language_codes || [];
     } catch {
         // API unavailable — show page without language picker
+    }
+    // Load translated UI strings for the detected language
+    if (langFromUrl.value) {
+        try {
+            const res = await fetch(`/api/${langFromUrl.value}/data`);
+            const data = await res.json();
+            ui.value = data?.config?.ui || {};
+        } catch {
+            // Fall back to English defaults
+        }
     }
 });
 </script>
@@ -45,22 +63,24 @@ onMounted(async () => {
                 <p class="text-lg text-muted mb-8">
                     {{
                         error.statusCode === 404
-                            ? "This page doesn't exist."
-                            : 'Something went wrong.'
+                            ? ui.error_404 || "This page doesn't exist."
+                            : ui.error_500 || 'Something went wrong.'
                     }}
                 </p>
                 <NuxtLink
                     to="/"
                     class="inline-block py-3 px-8 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
                 >
-                    Play Wordle
+                    {{ ui.play_wordle || 'Play Wordle' }}
                 </NuxtLink>
             </div>
         </div>
 
         <!-- Language picker — bottom section, separate from centering -->
         <div v-if="languageCodes.length" class="px-4 pb-10 pt-4">
-            <div class="mono-label mb-4 text-center">Or pick a language</div>
+            <div class="mono-label mb-4 text-center">
+                {{ ui.or_pick_language || 'Or pick a language' }}
+            </div>
             <div class="max-w-3xl mx-auto flex flex-wrap justify-center gap-2">
                 <NuxtLink
                     v-for="lc in languageCodes"

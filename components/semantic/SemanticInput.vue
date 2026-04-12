@@ -6,7 +6,11 @@
 -->
 
 <script setup lang="ts">
-import { nextTick, onUnmounted, ref, watch } from 'vue';
+import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
+import { interpolate } from '~/utils/interpolate';
+
+const langStore = useLanguageStore();
+const ui = computed(() => langStore.config?.ui);
 
 const props = defineProps<{
     loading: boolean;
@@ -80,7 +84,7 @@ defineExpose({
                 v-model="value"
                 type="text"
                 class="semantic-text-input"
-                :placeholder="disabled ? 'Game over' : 'Type a word...'"
+                :placeholder="disabled ? ui?.semantic_game_over : ui?.semantic_input_placeholder"
                 :disabled="disabled"
                 :aria-invalid="!!invalidMessage"
                 autocomplete="off"
@@ -93,13 +97,18 @@ defineExpose({
             />
             <button type="submit" class="guess-button" :disabled="!value || loading || disabled">
                 <span v-if="loading">…</span>
-                <span v-else>Guess</span>
+                <span v-else>{{ ui?.semantic_guess_button }}</span>
             </button>
         </div>
         <div class="input-meta">
             <span v-if="invalidMessage" class="invalid">⚠ {{ invalidMessage }}</span>
             <span v-else class="remaining">
-                {{ guessesUsed }} / {{ guessesMax }} guesses used
+                {{
+                    interpolate(ui?.semantic_guesses_used, {
+                        used: guessesUsed,
+                        max: guessesMax,
+                    })
+                }}
             </span>
         </div>
     </form>
