@@ -8,7 +8,11 @@
  * Used by `composables/useGameSeo.ts` and standalone pages that render
  * translated SEO titles/descriptions from `language_config.json` templates.
  */
-export function interpolate(text: string, vars: Record<string, string | number>): string {
+export function interpolate(
+    text: string | undefined | null,
+    vars: Record<string, string | number>
+): string {
+    if (!text) return '';
     return text.replace(/\{(\w+)\}/g, (_, key) =>
         vars[key] !== undefined ? String(vars[key]) : `{${key}}`
     );

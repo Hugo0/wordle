@@ -135,7 +135,7 @@ export function useSemanticGame(lang: string) {
     const dayIdx = ref<number>(0);
     const axisAnchors = ref<Record<string, { low: string; high: string }>>({});
     const targetUmapPosition = ref<[number, number]>([0.5, 0.5]);
-    const maxGuesses = ref(15);
+    const maxGuesses = ref(20);
 
     // ── Game state ────────────────────────────────────────────────────────
     const guesses = ref<SemanticGuess[]>([]);
@@ -246,7 +246,7 @@ export function useSemanticGame(lang: string) {
             dayIdx.value = resp.dayIdx;
             axisAnchors.value = resp.axisAnchors;
             targetUmapPosition.value = resp.targetUmapPosition;
-            maxGuesses.value = resp.maxGuesses ?? 15;
+            maxGuesses.value = resp.maxGuesses ?? 20;
             totalRanked.value = resp.totalRanked ?? resp.vocabularySize;
 
             // Attempt to restore saved state for the same daily word.

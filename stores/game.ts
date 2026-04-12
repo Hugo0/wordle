@@ -362,7 +362,6 @@ export const useGameStore = defineStore('game', () => {
 
     let _speedTimerInterval: ReturnType<typeof setInterval> | null = null;
     let _speedWordList: string[] = [];
-    let _speedUsedWords: Set<string> = new Set();
 
     // =======================================================================
     // Multi-Board Computed Helpers
@@ -660,7 +659,7 @@ export const useGameStore = defineStore('game', () => {
             if (!fullWordInputted.value) {
                 shakeRow(activeRow.value);
                 showNotification(
-                    lang.config?.text?.notification_partial_word || 'Please enter a full word'
+                    lang.config?.text?.notification_partial_word ?? 'Please enter a full word'
                 );
                 return;
             }
@@ -785,7 +784,7 @@ export const useGameStore = defineStore('game', () => {
                 }
                 shakeRow(activeRow.value);
                 showNotification(
-                    lang.config?.text?.notification_word_not_valid || 'Word is not valid'
+                    lang.config?.text?.notification_word_not_valid ?? 'Word is not valid'
                 );
 
                 // Track invalid word and update session frustration state
@@ -1908,19 +1907,12 @@ export const useGameStore = defineStore('game', () => {
 
     function pickSpeedWord(): string {
         const list = _speedWordList;
-        if (list.length === 0) return '';
-
-        // Reset used words if we've exhausted the list
-        if (_speedUsedWords.size >= list.length) {
-            _speedUsedWords.clear();
-        }
-
+        if (list.length <= 1) return list[0] || '';
+        const currentWord = boards.value[0]?.targetWord || '';
         let word: string;
         do {
             word = list[Math.floor(Math.random() * list.length)]!;
-        } while (_speedUsedWords.has(word) && _speedUsedWords.size < list.length);
-
-        _speedUsedWords.add(word);
+        } while (word === currentWord && list.length > 1);
         return word;
     }
 
@@ -1961,7 +1953,6 @@ export const useGameStore = defineStore('game', () => {
             _speedTimerInterval = null;
         }
         _speedWordList = wordList;
-        _speedUsedWords = new Set();
         speedState.value = {
             active: true,
             timeRemaining: SPEED_INITIAL_TIME,
@@ -2257,7 +2248,6 @@ export const useGameStore = defineStore('game', () => {
         };
         _arcadeEventId = 0;
         _speedWordList = [];
-        _speedUsedWords = new Set();
     }
 
     // =======================================================================

@@ -246,9 +246,6 @@ const overallDist = ref<Record<number, number>>(createEmptyDistribution(6));
 // Per-language (classic daily)
 const perLang = ref<PerLangStats[]>([]);
 
-// Most-played language code — used for leaderboard links
-const topLang = computed(() => perLang.value[0]?.code || 'en');
-
 // Per-mode (all modes that have results)
 const modeStats = ref<ModeStats[]>([]);
 
@@ -490,7 +487,7 @@ const languagesConquered = computed(() => {
             <!-- Profile section -->
             <RevealTransition>
                 <section v-if="authLoggedIn" class="mb-10">
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-start gap-4">
                         <img
                             v-if="authUser?.avatarUrl"
                             :src="authUser.avatarUrl"
@@ -545,15 +542,11 @@ const languagesConquered = computed(() => {
                                 Member since {{ formatDate(profileData.createdAt) }}
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Account actions -->
-                    <div class="mt-6 flex items-center gap-4">
                         <button
-                            class="text-sm text-muted hover:text-ink transition-colors flex items-center gap-1"
+                            class="mono-label text-muted hover:text-ink active:text-correct cursor-pointer transition-colors flex items-center gap-1 flex-shrink-0 mt-1"
                             @click="authLogout()"
                         >
-                            <LogOut :size="14" />
+                            <LogOut :size="12" />
                             Sign out
                         </button>
                     </div>
@@ -762,13 +755,6 @@ const languagesConquered = computed(() => {
                                             · avg {{ m.avgAttempts }}
                                         </template>
                                     </span>
-                                    <NuxtLink
-                                        v-if="topLang"
-                                        :to="`/${topLang}/leaderboard?mode=${m.mode}`"
-                                        class="block font-mono text-[9px] tracking-[0.1em] uppercase text-accent hover:opacity-80 mt-0.5"
-                                    >
-                                        View today's ranking &rarr;
-                                    </NuxtLink>
                                 </div>
                                 <span
                                     class="text-xs font-semibold tabular-nums"

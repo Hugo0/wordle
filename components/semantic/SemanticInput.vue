@@ -86,8 +86,8 @@ defineExpose({
                 class="semantic-text-input"
                 :placeholder="
                     disabled
-                        ? ui?.semantic_game_over || 'Game over'
-                        : ui?.semantic_input_placeholder || 'Type a word...'
+                        ? ui?.semantic_game_over
+                        : ui?.semantic_input_placeholder
                 "
                 :disabled="disabled"
                 :aria-invalid="!!invalidMessage"
@@ -101,14 +101,14 @@ defineExpose({
             />
             <button type="submit" class="guess-button" :disabled="!value || loading || disabled">
                 <span v-if="loading">…</span>
-                <span v-else>{{ ui?.semantic_guess_button || 'Guess' }}</span>
+                <span v-else>{{ ui?.semantic_guess_button }}</span>
             </button>
         </div>
         <div class="input-meta">
             <span v-if="invalidMessage" class="invalid">⚠ {{ invalidMessage }}</span>
             <span v-else class="remaining">
                 {{
-                    interpolate(ui?.semantic_guesses_used || '{used} / {max} guesses used', {
+                    interpolate(ui?.semantic_guesses_used, {
                         used: guessesUsed,
                         max: guessesMax,
                     })

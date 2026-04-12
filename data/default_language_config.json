@@ -65,7 +65,20 @@
         "speed_scoring": "Scoring",
         "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
         "speed_pressure": "Pressure ramp",
-        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets.",
+        "semantic_subtitle": "Find a hidden word by meaning, not letters.",
+        "semantic_rank_title": "Type any word — see its rank",
+        "semantic_rank_explanation": "Lower rank = closer in meaning.",
+        "semantic_rank_found": "you found it.",
+        "semantic_compass_title": "Read the compass",
+        "semantic_compass_explanation": "Hints point from your",
+        "semantic_compass_latest_guess": "latest guess",
+        "semantic_compass_toward": "toward the target.",
+        "semantic_map_title": "Watch the map",
+        "semantic_map_explanation": "Closer to the center = lower rank = closer in meaning.",
+        "semantic_oracle_title": "Ask the oracle (once)",
+        "semantic_oracle_explanation": "Unlocked after 5 guesses. One cryptic hint per game.",
+        "semantic_footer": "15 guesses. New word every day."
     },
     "seo": {
         "how_to_play": "How to Play",
@@ -414,6 +427,8 @@
         "best_starting_words": "Best Starting Words",
         "guest": "Guest",
         "sign_in": "Sign in",
-        "sync_stats_earn_badges": "Sync stats, earn badges"
+        "sync_stats_earn_badges": "Sync stats, earn badges",
+        "animations": "Animations",
+        "animations_desc": "Tile flip, bounce, and pop effects"
     }
 }

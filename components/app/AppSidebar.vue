@@ -189,12 +189,12 @@
                             :class="{
                                 active: subPanelMode === currentMode && currentPlayType === 'daily',
                             }"
-                            :aria-label="`Daily #${dayIdx}`"
-                            :title="`Daily #${dayIdx}`"
+                            :aria-label="`Daily ${subPanelDayLabel}`"
+                            :title="`Daily ${subPanelDayLabel}`"
                             @click="close()"
                         >
                             <CalendarDays :size="20" />
-                            <span class="sub-panel-label">#{{ dayIdx }}</span>
+                            <span class="sub-panel-label">{{ subPanelDayLabel }}</span>
                         </NuxtLink>
                         <NuxtLink
                             :to="subPanelUnlimitedRoute!"
@@ -240,7 +240,6 @@
                         href="/profile#statistics"
                     />
                     <SidebarItem icon="Award" :label="ui?.badges || 'Badges'" href="/profile#badges" />
-                    <SidebarItem icon="Calendar" :label="ui?.archive || 'Archive'" :href="`/${langCode}/archive`" />
                     <SidebarItem
                         icon="Settings"
                         :label="ui?.settings || 'Settings'"
@@ -262,13 +261,18 @@
                     </a>
                 </div>
 
-                <!-- Compete section -->
+                <!-- Explore section -->
                 <div class="py-4 editorial-rule">
-                    <div class="mono-label px-6 pb-2">Compete</div>
+                    <div class="mono-label px-6 pb-2">Explore</div>
                     <SidebarItem
                         icon="Trophy"
                         label="Leaderboard"
-                        :href="`/${langCode}/leaderboard`"
+                        :href="`/leaderboard?lang=${langCode}`"
+                    />
+                    <SidebarItem
+                        icon="Calendar"
+                        :label="ui?.archive || 'Archive'"
+                        :href="`/${langCode}/archive`"
                     />
                 </div>
 
@@ -424,7 +428,20 @@ const langStore = useLanguageStore();
 
 // Expand/collapse state for sidebar sections
 const expandedSection = ref<'classic' | 'speed' | 'multiboard' | 'semantic' | null>(null);
-const dayIdx = computed(() => langStore.todaysIdx ?? '');
+const classicDayIdx = computed(() => langStore.todaysIdx ?? 0);
+
+// New modes use 1-based day index from April 11, 2026 (dayIdx 1757)
+const NEW_MODES_EPOCH_IDX = 1757;
+const subPanelDayLabel = computed(() => {
+    const idx = classicDayIdx.value;
+    if (!idx) return '';
+    const mode = subPanelMode.value;
+    if (mode && mode !== 'classic') {
+        const modeIdx = idx - NEW_MODES_EPOCH_IDX + 1;
+        return modeIdx >= 1 ? `#${modeIdx}` : '';
+    }
+    return `#${idx}`;
+});
 
 // Sub-panel state: which mode's daily/unlimited panel is showing
 const subPanelMode = ref<string | null>(null);

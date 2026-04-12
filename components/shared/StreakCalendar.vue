@@ -14,7 +14,7 @@
     <div>
         <!-- Header -->
         <div class="mono-label mb-2" style="font-size: 9px; letter-spacing: 0.15em">
-            {{ ui?.last_28_days || 'Last 28 Days' }}
+            {{ ui?.last_28_days }}
         </div>
 
         <!-- Day-of-week headers -->
@@ -86,17 +86,17 @@
             style="font-size: 9px; color: var(--color-muted); font-family: var(--font-mono)"
         >
             <span class="flex items-center gap-1">
-                <span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> {{ ui?.won || 'Won' }}
+                <span class="w-2 h-2 rounded-sm bg-correct-soft inline-block" /> {{ ui?.won }}
             </span>
             <span class="flex items-center gap-1">
                 <span
                     class="w-2 h-2 rounded-sm inline-block"
                     style="background: var(--color-accent-soft, #e8d5d0)"
                 />
-                {{ ui?.lost || 'Lost' }}
+                {{ ui?.lost }}
             </span>
             <span class="flex items-center gap-1">
-                <span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> {{ ui?.missed || 'Missed' }}
+                <span class="w-2 h-2 rounded-sm bg-muted-soft inline-block" /> {{ ui?.missed }}
             </span>
         </div>
     </div>
@@ -117,7 +117,7 @@ const props = defineProps<{
 const langStore = useLanguageStore();
 const ui = computed(() => langStore.config?.ui);
 const weekdayInitials = computed(() => {
-    const raw = ui.value?.weekday_initials || 'M,T,W,T,F,S,S';
+    const raw = ui.value?.weekday_initials ?? '';
     return raw.split(',');
 });
 
@@ -190,11 +190,11 @@ const calendarDays = computed<CalendarDay[]>(() => {
 
         let state: CalendarDay['state'];
         if (isToday) {
-            state = detail?.state || 'today';
+            state = detail?.state;
         } else if (isFuture) {
             state = 'future';
         } else {
-            state = detail?.state || 'missed';
+            state = detail?.state;
         }
 
         days.push({

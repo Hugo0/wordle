@@ -89,7 +89,7 @@ export default defineEventHandler(async (event) => {
         axisAnchors,
         modelName: EMBEDDING_MODEL,
         targetUmapPosition,
-        maxGuesses: 15,
+        maxGuesses: 20,
         totalRanked,
     };
 

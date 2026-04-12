@@ -67,25 +67,25 @@ const bestRank = computed(() => {
                 </div>
                 <h2 id="semantic-stats-label" class="heading-display stats-title">
                     {{
-                        won ? ui?.semantic_won || 'Found it' : ui?.semantic_lost || 'Out of guesses'
+                        won ? ui?.semantic_won : ui?.semantic_lost
                     }}
                 </h2>
                 <p class="stats-subtitle">
-                    {{ ui?.semantic_title || 'Semantic Explorer' }} · Day #{{ dayIdx }} ·
+                    {{ ui?.semantic_title }} · Day #{{ dayIdx }} ·
                     {{ lang.toUpperCase() }}
                 </p>
             </div>
 
             <!-- Target reveal -->
             <div class="target-reveal">
-                <div class="mono-label">{{ ui?.the_word_was || 'The word was' }}</div>
+                <div class="mono-label">{{ ui?.the_word_was }}</div>
                 <div class="target-word">{{ targetWord ?? '?' }}</div>
                 <NuxtLink
                     v-if="targetWord"
                     :to="wordDetailPath(lang, targetWord)"
                     class="explore-link"
                 >
-                    {{ ui?.semantic_explore_link || 'Explore in meaning space →' }}
+                    {{ ui?.semantic_explore_link }}
                 </NuxtLink>
             </div>
 
@@ -95,28 +95,28 @@ const bestRank = computed(() => {
                     <div class="stat-number">
                         {{ guesses.length }}<span class="stat-denom">/{{ guessesMax }}</span>
                     </div>
-                    <div class="mono-label">{{ ui?.semantic_guesses || 'Guesses' }}</div>
+                    <div class="mono-label">{{ ui?.semantic_guesses }}</div>
                 </div>
                 <div class="stat-cell">
                     <div class="stat-number">
                         <span v-if="bestRank !== null">#{{ bestRank.toLocaleString() }}</span>
                         <span v-else>—</span>
                     </div>
-                    <div class="mono-label">{{ ui?.semantic_best_rank || 'Best rank' }}</div>
+                    <div class="mono-label">{{ ui?.semantic_best_rank }}</div>
                 </div>
                 <div class="stat-cell">
                     <div class="stat-number">
                         <Sparkles v-if="llmHintUsed" :size="20" class="inline-icon" />
                         <span v-else>—</span>
                     </div>
-                    <div class="mono-label">{{ ui?.semantic_oracle || 'Oracle' }}</div>
+                    <div class="mono-label">{{ ui?.semantic_oracle }}</div>
                 </div>
             </div>
 
             <!-- Neighbours (what you didn't guess) -->
             <div class="section" v-if="neighbours.length">
                 <div class="mono-label section-label">
-                    {{ ui?.semantic_neighbours_label || 'Closest words you missed' }}
+                    {{ ui?.semantic_neighbours_label }}
                 </div>
                 <div class="neighbour-grid">
                     <span v-for="n in neighbours.slice(0, 8)" :key="n.word" class="neighbour-chip">
@@ -135,11 +135,11 @@ const bestRank = computed(() => {
                 >
                     <template v-if="shareCopied">
                         <Check :size="16" />
-                        {{ langStore.config?.text?.copied || 'Copied!' }}
+                        {{ langStore.config?.text?.copied }}
                     </template>
                     <template v-else>
                         <Share2 :size="16" />
-                        {{ ui?.share_result || 'Share' }}
+                        {{ ui?.share_result }}
                     </template>
                 </button>
                 <button
@@ -148,7 +148,7 @@ const bestRank = computed(() => {
                     class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                     @click="emit('keepPlaying')"
                 >
-                    {{ ui?.keep_playing || 'Keep Playing' }}
+                    {{ ui?.keep_playing }}
                 </button>
                 <button
                     v-else
@@ -156,7 +156,7 @@ const bestRank = computed(() => {
                     class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                     @click="emit('newGame')"
                 >
-                    {{ ui?.play_again || 'Play Again' }}
+                    {{ ui?.play_again }}
                 </button>
             </div>
         </div>

@@ -2,7 +2,7 @@
     <BaseModal :visible="visible" size="sm" @close="$emit('close')">
         <div class="flex flex-col gap-2">
             <h3 class="heading-section text-xl text-ink mb-5">
-                {{ lang.config?.ui?.settings || 'Settings' }}
+                {{ lang.config?.ui?.settings }}
             </h3>
 
             <div class="space-y-4">
@@ -10,7 +10,7 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.dark_mode || 'Dark Mode' }}
+                            {{ lang.config?.ui?.dark_mode }}
                         </p>
                     </div>
                     <ToggleSwitch
@@ -25,7 +25,7 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.sound_and_haptics || 'Sound & Haptics' }}
+                            {{ lang.config?.ui?.sound_and_haptics }}
                         </p>
                     </div>
                     <ToggleSwitch
@@ -40,7 +40,7 @@
                      for semantic mode since it has no letter constraints -->
                 <div v-if="game.gameConfig.mode !== 'semantic'">
                     <p class="text-sm font-semibold text-ink mb-2">
-                        {{ lang.config?.ui?.difficulty || 'Difficulty' }}
+                        {{ lang.config?.ui?.difficulty }}
                     </p>
                     <div
                         class="flex overflow-hidden border border-rule"
@@ -56,7 +56,7 @@
                             "
                             @click="setDifficulty('easy')"
                         >
-                            {{ lang.config?.ui?.easy || 'Easy' }}
+                            {{ lang.config?.ui?.easy }}
                         </button>
                         <button
                             type="button"
@@ -68,7 +68,7 @@
                             "
                             @click="setDifficulty('normal')"
                         >
-                            {{ lang.config?.ui?.normal || 'Normal' }}
+                            {{ lang.config?.ui?.normal }}
                         </button>
                         <button
                             type="button"
@@ -80,17 +80,17 @@
                             "
                             @click="setDifficulty('hard')"
                         >
-                            {{ lang.config?.ui?.hard || 'Hard' }}
+                            {{ lang.config?.ui?.hard }}
                         </button>
                     </div>
                     <p v-if="allowAnyWord && !settings.hardMode" class="text-xs text-muted mt-1">
-                        {{ lang.config?.ui?.easy_desc || 'Any word accepted as a guess' }}
+                        {{ lang.config?.ui?.easy_desc }}
                     </p>
                     <p v-if="!allowAnyWord && !settings.hardMode" class="text-xs text-muted mt-1">
-                        {{ lang.config?.ui?.normal_desc || 'Only valid words accepted' }}
+                        {{ lang.config?.ui?.normal_desc }}
                     </p>
                     <p v-if="settings.hardMode" class="text-xs text-muted mt-1">
-                        {{ lang.config?.ui?.hard_desc || 'Must use revealed hints' }}
+                        {{ lang.config?.ui?.hard_desc }}
                     </p>
                     <p v-if="settings.difficultyWarning" class="text-xs text-accent mt-1">
                         {{ settings.difficultyWarning }}
@@ -103,12 +103,11 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.word_info || 'Word Info' }}
+                            {{ lang.config?.ui?.word_info }}
                         </p>
                         <p class="text-xs text-muted">
                             {{
-                                lang.config?.ui?.word_info_desc ||
-                                'Show definition and image after solving'
+                                lang.config?.ui?.word_info_desc
                             }}
                         </p>
                     </div>
@@ -124,12 +123,11 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.animations || 'Animations' }}
+                            {{ lang.config?.ui?.animations }}
                         </p>
                         <p class="text-xs text-muted">
                             {{
-                                lang.config?.ui?.animations_desc ||
-                                'Tile flip, bounce, and pop effects'
+                                lang.config?.ui?.animations_desc
                             }}
                         </p>
                     </div>
@@ -145,11 +143,11 @@
                 <div class="flex flex-row items-center">
                     <div class="flex-grow">
                         <p class="text-sm text-ink">
-                            {{ lang.config?.ui?.high_contrast || 'High Contrast' }}
+                            {{ lang.config?.ui?.high_contrast }}
                         </p>
                         <p class="text-xs text-muted">
                             {{
-                                lang.config?.ui?.high_contrast_desc || 'Colorblind-friendly colors'
+                                lang.config?.ui?.high_contrast_desc
                             }}
                         </p>
                     </div>
@@ -164,7 +162,7 @@
                     <div class="editorial-rule" />
                     <div class="flex flex-row items-center">
                         <p id="keyboard-layout-label" class="flex-grow text-sm text-ink">
-                            {{ lang.config?.ui?.keyboard_layout || 'Keyboard Layout' }}
+                            {{ lang.config?.ui?.keyboard_layout }}
                         </p>
                         <select
                             id="keyboard-layout-select"
@@ -194,10 +192,10 @@
                         @click="installPwa()"
                     >
                         <Download :size="18" />
-                        {{ lang.config?.ui?.install_app || 'Install App' }}
+                        {{ lang.config?.ui?.install_app }}
                     </button>
                     <p class="text-xs text-center text-muted mt-1">
-                        {{ lang.config?.ui?.install_app_desc || 'Play offline & get app icon' }}
+                        {{ lang.config?.ui?.install_app_desc }}
                     </p>
                 </template>
 

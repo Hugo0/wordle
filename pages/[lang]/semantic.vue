@@ -21,7 +21,7 @@ import { interpolate } from '~/utils/interpolate';
 
 definePageMeta({
     layout: 'game',
-    key: (route) => `${route.params.lang}-semantic-${route.query.play || 'daily'}`,
+    key: (route) => `${route.params.lang}-semantic-${route.query.play}`,
 });
 
 const route = useRoute();
@@ -108,9 +108,9 @@ const latestGuessWord = computed<string | null>(() => {
 const ui = computed(() => langStore.config?.ui);
 
 // --- Header meta ---
-const headerTitle = computed(() => ui.value?.semantic_title || 'Semantic Explorer');
+const headerTitle = computed(() => ui.value?.semantic_title);
 const headerSubtitle = computed(() => {
-    const unlimitedLabel = ui.value?.semantic_unlimited || 'Unlimited';
+    const unlimitedLabel = ui.value?.semantic_unlimited;
     if (isUnlimited.value) return `${configVal.name_native || lang} · ${unlimitedLabel}`;
     return sem.dayIdx.value
         ? `${configVal.name_native || lang} · #${sem.dayIdx.value}`
@@ -337,12 +337,12 @@ const { shareResults } = useGameShare();
 async function onShare() {
     const bestRank = sem.bestGuess.value?.rank;
     const attemptsText = sem.won.value ? String(sem.guesses.value.length) : 'x';
-    const semanticTitle = ui.value?.semantic_title || 'Semantic Explorer';
+    const semanticTitle = ui.value?.semantic_title;
     const shareText =
         `${semanticTitle} ${langStore.languageCode.toUpperCase()} #${sem.dayIdx.value}` +
         ` · ${sem.won.value ? `${sem.guesses.value.length}/${sem.maxGuesses.value}` : 'X/' + sem.maxGuesses.value}` +
         (bestRank
-            ? `\n${ui.value?.semantic_best_rank || 'Best rank'}: #${bestRank.toLocaleString()}`
+            ? `\n${ui.value?.semantic_best_rank}: #${bestRank.toLocaleString()}`
             : '');
 
     await shareResults({
@@ -402,7 +402,7 @@ function onKeepPlaying() {
             class="flex flex-col items-center justify-center flex-1 px-6 py-20 text-center"
         >
             <h2 class="heading-display text-3xl text-ink mb-4">
-                {{ ui?.semantic_title || 'Semantic Explorer' }}
+                {{ ui?.semantic_title }}
             </h2>
             <p class="text-muted max-w-md mb-6">
                 {{
@@ -414,7 +414,7 @@ function onKeepPlaying() {
                 class="px-6 py-2 bg-accent text-paper font-body font-bold hover:opacity-90 transition-opacity"
                 @click="sem.startGame({ play: playType })"
             >
-                {{ ui?.semantic_retry || 'Retry' }}
+                {{ ui?.semantic_retry }}
             </button>
         </div>
 
@@ -436,15 +436,15 @@ function onKeepPlaying() {
                                                       axis_y: sem.sliceAxes.value[1],
                                                   }
                                               )
-                                            : ui?.semantic_meaning_map || 'Meaning Map'
+                                            : ui?.semantic_meaning_map
                                     }}
                                 </span>
                                 <span class="eyebrow-sub">{{
-                                    ui?.semantic_distance_rank || 'distance = rank'
+                                    ui?.semantic_distance_rank
                                 }}</span>
                             </div>
                             <h1 class="map-title">
-                                {{ ui?.semantic_find_hidden || 'Find the hidden word' }}
+                                {{ ui?.semantic_find_hidden }}
                             </h1>
                             <p class="map-subtitle">
                                 <template v-if="sem.starting.value">{{

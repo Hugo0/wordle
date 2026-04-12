@@ -303,6 +303,8 @@ export interface UiStrings {
     guest?: string;
     sign_in?: string;
     sync_stats_earn_badges?: string;
+    animations?: string;
+    animations_desc?: string;
     // Error page
     error_404?: string;
     error_500?: string;

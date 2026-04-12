@@ -63,11 +63,13 @@ const props = withDefaults(
         currentLangCode: string;
         /** Current mode route suffix (e.g., 'dordle', 'semantic', ''). Used to try same mode in new language. */
         currentModeSuffix?: string;
+        /** If true, emits 'select' with the language code instead of navigating. */
+        selectOnly?: boolean;
     }>(),
-    { currentModeSuffix: '' }
+    { currentModeSuffix: '', selectOnly: false }
 );
 
-const emit = defineEmits<{ close: [] }>();
+const emit = defineEmits<{ close: []; select: [code: string] }>();
 
 const langStore = useLanguageStore();
 const ui = computed(() => langStore.config?.ui);
@@ -116,10 +118,12 @@ const filteredLanguages = computed(() => {
 });
 
 function selectLanguage(code: string) {
+    if (props.selectOnly) {
+        emit('select', code);
+        emit('close');
+        return;
+    }
     emit('close');
-    // Try to stay in the same game mode in the new language.
-    // Modes that are language-restricted (e.g., semantic = English-only)
-    // have server-side redirects that will send the user to the right place.
     if (props.currentModeSuffix) {
         navigateTo(`/${code}/${props.currentModeSuffix}`);
     } else {

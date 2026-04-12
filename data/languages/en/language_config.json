@@ -42,7 +42,7 @@
             },
             "semantic": {
                 "title": "Semantic Word Game — Like Contexto",
-                "description": "Guess the secret word using meaning, not letters. Each guess gets a rank showing how semantically close you are. With compass hints, a meaning map, and 50,000 words. Free daily puzzle — like Contexto and Semantle, but better."
+                "description": "Guess the secret word using meaning, not letters. Each guess gets a rank showing how semantically close you are. With compass hints after every guess, a meaning map, and 275,000+ accepted words. Free daily puzzle — like Contexto and Semantle, but with richer hints."
             }
         }
     },
@@ -334,7 +334,7 @@
                 },
                 {
                     "q": "How does it differ from Contexto or Semantle?",
-                    "a": "Semantic Explorer offers compass hints that tell you which semantic direction to think in (e.g., \"think more metallic\"), a visual meaning map showing where your guesses land in semantic space, and an oracle hint system. It also supports 50,000+ words including uncommon ones like \"defenestration\"."
+                    "a": "Semantic Explorer offers compass hints after every guess that tell you which semantic direction to think in (e.g., \"think more metallic\"), a visual meaning map showing where your guesses land in semantic space, and an oracle hint system. It accepts 275,000+ words including uncommon ones like \"defenestration\" and \"bloviate\"."
                 },
                 {
                     "q": "How is the rank calculated?",
@@ -342,7 +342,7 @@
                 },
                 {
                     "q": "What are compass hints?",
-                    "a": "After 5 guesses, the compass analyzes the direction from your best guess toward the target and gives you two semantic axes to think along — like \"think more metallic\" or \"think more subordinate\". This helps narrow down the meaning space."
+                    "a": "After each guess, the compass analyzes the direction from your best guess toward the target and gives you two semantic axes to think along — like \"think more metallic\" or \"think more subordinate\". This helps narrow down the meaning space."
                 },
                 {
                     "q": "Is there a daily puzzle?",
@@ -350,7 +350,7 @@
                 },
                 {
                     "q": "How many guesses do I get?",
-                    "a": "You get 15 guesses to find the hidden word. After 5 guesses, you unlock the compass hints. You can also use the oracle hint once per game for an extra clue."
+                    "a": "You get 20 guesses to find the hidden word. The compass hints help after each guess, showing which semantic direction to explore. You can also use the oracle hint once per game for an extra clue."
                 }
             ],
             "speed": [

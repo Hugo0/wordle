@@ -43,7 +43,7 @@
                         class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
                     <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">
-                        {{ lang.config?.ui?.keep_playing || 'Keep Playing' }}
+                        {{ lang.config?.ui?.keep_playing }}
                     </div>
                 </NuxtLink>
 
@@ -110,7 +110,7 @@ const isSingleBoard = computed(
     () => game.gameConfig.mode === 'classic' || game.gameConfig.mode === 'unlimited'
 );
 
-const nextWordLabel = computed(() => lang.config?.text?.next_word || 'Next Wordle');
+const nextWordLabel = computed(() => lang.config?.text?.next_word);
 
 // Cross-pollination routes
 const modeDef = computed(() => GAME_MODE_CONFIG[game.gameConfig.mode]);
@@ -129,7 +129,7 @@ const dailyRoute = computed(() => {
 });
 
 const leaderboardRoute = computed(
-    () => `/${lang.languageCode}/leaderboard?mode=${game.gameConfig.mode}`
+    () => `/leaderboard?lang=${lang.languageCode}&mode=${game.gameConfig.mode}`
 );
 
 // Preferred mode order for post-game discovery: dordle first, then speed

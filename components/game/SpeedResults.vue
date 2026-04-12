@@ -36,7 +36,7 @@ defineProps<{
 
 <template>
     <BaseModal :visible="visible" size="sm" @close="$emit('close')">
-        <h2 class="heading-section text-2xl text-center text-ink mb-1">{{ lang.config?.ui?.speed_streak || 'Speed Streak' }}</h2>
+        <h2 class="heading-section text-2xl text-center text-ink mb-1">{{ lang.config?.ui?.speed_streak }}</h2>
         <p class="text-center text-muted text-sm mb-3">{{ lang.config?.ui?.time_up || "Time's up!" }}</p>
 
         <!-- Score -->
@@ -47,38 +47,38 @@ defineProps<{
             >
                 {{ score.toLocaleString() }}
             </div>
-            <div class="mono-label-md">{{ lang.config?.ui?.points || 'Points' }}</div>
+            <div class="mono-label-md">{{ lang.config?.ui?.points }}</div>
         </div>
 
         <div class="grid grid-cols-4 gap-2 mb-4 text-center editorial-rule pb-4">
             <div>
                 <div class="font-display font-bold text-lg text-correct">{{ solved }}</div>
-                <div class="mono-label">{{ lang.config?.ui?.solved || 'Solved' }}</div>
+                <div class="mono-label">{{ lang.config?.ui?.solved }}</div>
             </div>
             <div>
                 <div class="font-display font-bold text-lg text-ink">{{ maxCombo }}x</div>
-                <div class="mono-label">{{ lang.config?.ui?.combo || 'Combo' }}</div>
+                <div class="mono-label">{{ lang.config?.ui?.combo }}</div>
             </div>
             <div>
                 <div class="font-display font-bold text-lg text-ink">{{ avgGuesses }}</div>
-                <div class="mono-label">{{ lang.config?.ui?.avg_guesses || 'Avg' }}</div>
+                <div class="mono-label">{{ lang.config?.ui?.avg_guesses }}</div>
             </div>
             <div>
                 <div class="font-display font-bold text-lg text-accent">{{ failed }}</div>
-                <div class="mono-label">{{ lang.config?.ui?.failed || 'Failed' }}</div>
+                <div class="mono-label">{{ lang.config?.ui?.failed }}</div>
             </div>
         </div>
 
         <!-- Last missed word -->
         <div v-if="lastMissedWord" class="text-center mb-3 py-2 editorial-rule">
-            <div class="mono-label mb-1">{{ lang.config?.ui?.the_word_was || 'The word was' }}</div>
+            <div class="mono-label mb-1">{{ lang.config?.ui?.the_word_was }}</div>
             <div class="font-display font-bold text-lg uppercase text-accent">
                 {{ lastMissedWord }}
             </div>
         </div>
 
         <div v-if="words.length" class="mb-4">
-            <h3 class="mono-label mb-2">{{ lang.config?.ui?.words_solved || 'Words Solved' }}</h3>
+            <h3 class="mono-label mb-2">{{ lang.config?.ui?.words_solved }}</h3>
             <div class="flex flex-wrap gap-1">
                 <span
                     v-for="(w, i) in words"
@@ -98,18 +98,18 @@ defineProps<{
             >
                 <template v-if="shareCopied">
                     <Check :size="16" />
-                    {{ lang.config?.text?.copied || 'Copied!' }}
+                    {{ lang.config?.text?.copied }}
                 </template>
                 <template v-else>
                     <Share2 :size="16" />
-                    {{ lang.config?.ui?.share_result || 'Share' }}
+                    {{ lang.config?.ui?.share_result }}
                 </template>
             </button>
             <button
                 class="flex-1 py-3 px-3 border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                 @click="$emit('playAgain')"
             >
-                {{ lang.config?.ui?.play_again || 'Play Again' }}
+                {{ lang.config?.ui?.play_again }}
             </button>
         </div>
     </BaseModal>

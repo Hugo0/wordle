@@ -85,27 +85,26 @@ function confirmReveal() {
     wordRevealed.value = true;
 }
 
-// ── Translated section headings with English fallbacks ──
+// ── Translated section headings (defaults merged by data-loader) ──
 const h = computed(() => ({
-    howToPlay: s.value.how_to_play || 'How to Play',
-    tipsStrategy: s.value.tips_strategy || 'Tips & Strategy',
-    moreModes: s.value.more_modes || 'More Game Modes',
-    playInLanguages: s.value.play_in_languages || 'Play in 80+ Languages',
-    playInLanguagesSub:
-        s.value.play_in_languages_sub || 'Every language is free. No account needed.',
-    whyWordleGlobal: s.value.why_wordle_global || 'Why Wordle Global',
-    faqTitle: s.value.faq_title || 'Frequently Asked Questions',
-    browseAll: s.value.browse_all_languages || 'Browse all 80+ languages',
-    recentWords: s.value.recent_words || 'Recent Words',
-    viewAllWords: s.value.view_all_words || 'View all words',
-    footer: s.value.footer || 'wordle.global — the free daily word game in 80+ languages',
+    howToPlay: s.value.how_to_play,
+    tipsStrategy: s.value.tips_strategy,
+    moreModes: s.value.more_modes,
+    playInLanguages: s.value.play_in_languages,
+    playInLanguagesSub: s.value.play_in_languages_sub,
+    whyWordleGlobal: s.value.why_wordle_global,
+    faqTitle: s.value.faq_title,
+    browseAll: s.value.browse_all_languages,
+    recentWords: s.value.recent_words,
+    viewAllWords: s.value.view_all_words,
+    footer: s.value.footer,
 }));
 
 // ── Tile example descriptions (translated) ──
 const tileDescs = computed(() => ({
-    correct: s.value.tile_correct || 'is in the word and in the correct spot.',
-    semicorrect: s.value.tile_semicorrect || 'is in the word but in the wrong spot.',
-    incorrect: s.value.tile_incorrect || 'is not in the word at all.',
+    correct: s.value.tile_correct,
+    semicorrect: s.value.tile_semicorrect,
+    incorrect: s.value.tile_incorrect,
 }));
 
 const EXAMPLES = computed(() => [
@@ -128,10 +127,10 @@ const EXAMPLES = computed(() => [
 
 // ── Social proof stats (translated labels) ──
 const SOCIAL_STATS = computed(() => [
-    { value: '800K+', label: s.value.stat_players || 'Players' },
-    { value: '1.7M+', label: s.value.stat_guesses || 'Guesses' },
-    { value: '80+', label: s.value.stat_languages || 'Languages' },
-    { value: '8', label: s.value.stat_modes || 'Game Modes' },
+    { value: '800K+', label: s.value.stat_players },
+    { value: '1.7M+', label: s.value.stat_guesses },
+    { value: '80+', label: s.value.stat_languages },
+    { value: '8', label: s.value.stat_modes },
 ]);
 
 // ── Strategy tips (mode-aware, translated) ──

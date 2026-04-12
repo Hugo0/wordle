@@ -31,7 +31,7 @@ const langNative = pageData.value.lang_name_native;
 const topWords = pageData.value.top_words;
 const letterFreqs = pageData.value.letter_frequency;
 const ui = (pageData.value.ui as Record<string, string>) || {};
-const coverageLabel = ui.coverage_label || 'Coverage';
+const coverageLabel = ui.coverage_label;
 
 // SEO templates from language_config.json meta.best_starting_words (merged with defaults)
 const meta = (pageData.value.meta as Record<string, any>) || {};

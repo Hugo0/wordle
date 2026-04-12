@@ -78,13 +78,13 @@ function qualifierOf(tier: CompassHint['magnitudeTier']): string {
 }
 
 function thinkMoreLabel(hint: CompassHint): string {
-    const template = ui.value?.semantic_compass_think_more || 'Think {qualifier}more';
+    const template = ui.value?.semantic_compass_think_more;
     return interpolate(template, { qualifier: qualifierOf(hint.magnitudeTier) });
 }
 
 const hintGuessMoreLabel = computed(() => {
     const remaining = Math.max(0, LLM_HINT_UNLOCK_AT - props.guessesUsed);
-    return interpolate(ui.value?.semantic_hint_guess_more || 'Guess {n} more', { n: remaining });
+    return interpolate(ui.value?.semantic_hint_guess_more, { n: remaining });
 });
 
 /** Show the compass-close fallback when the last guess was too similar to the
@@ -114,7 +114,7 @@ const { elRef: llmRef } = useAutoHeight();
             <header class="panel-header">
                 <Compass :size="14" class="panel-icon" />
                 <span class="mono-label">
-                    {{ ui?.semantic_compass || 'Compass'
+                    {{ ui?.semantic_compass
                     }}<span v-if="latestGuessWord" class="from-word">
                         · from <em>{{ latestGuessWord }}</em></span
                     >
@@ -130,21 +130,21 @@ const { elRef: llmRef } = useAutoHeight();
                     <MapIcon :size="12" />
                     <span>{{
                         sliceActive
-                            ? ui?.semantic_hint_map || 'Map'
-                            : ui?.semantic_hint_slice || 'Slice'
+                            ? ui?.semantic_hint_map
+                            : ui?.semantic_hint_slice
                     }}</span>
                 </button>
             </header>
 
             <div v-if="guessesUsed === 0" class="empty">
                 {{
-                    ui?.semantic_compass_empty || 'Your compass will appear after your first guess.'
+                    ui?.semantic_compass_empty
                 }}
             </div>
 
             <div v-else-if="showCloseFallback" class="close-fallback">
                 <p class="close-copy">
-                    <em>{{ ui?.semantic_compass_no_bearing || 'No clear bearing' }}</em>
+                    <em>{{ ui?.semantic_compass_no_bearing }}</em>
                 </p>
                 <p class="close-sub">
                     {{
@@ -171,20 +171,20 @@ const { elRef: llmRef } = useAutoHeight();
         <section ref="llmRef" class="panel llm-panel" :class="{ nudging: showOracleNudge }">
             <header class="panel-header">
                 <Sparkles :size="14" class="panel-icon" />
-                <span class="mono-label">{{ ui?.semantic_hint || 'Hint' }}</span>
+                <span class="mono-label">{{ ui?.semantic_hint }}</span>
                 <span v-if="llmHintUsed" class="used-chip">{{
-                    ui?.semantic_hint_used || 'Used'
+                    ui?.semantic_hint_used
                 }}</span>
                 <span v-else-if="!llmHintUnlocked" class="locked-chip">
                     <Lock :size="10" />
                     {{ hintGuessMoreLabel }}
                 </span>
-                <span v-else class="ready-chip">{{ ui?.semantic_hint_ready || 'Ready' }}</span>
+                <span v-else class="ready-chip">{{ ui?.semantic_hint_ready }}</span>
             </header>
             <p v-if="showOracleNudge && !llmHint" class="oracle-nudge">
-                <em>{{ ui?.semantic_hint_stuck || 'Stuck?' }}</em>
+                <em>{{ ui?.semantic_hint_stuck }}</em>
                 {{
-                    ui?.semantic_hint_nudge || 'The oracle might nudge you in the right direction.'
+                    ui?.semantic_hint_nudge
                 }}
             </p>
             <div v-if="llmHint" class="llm-hint-text">
@@ -198,14 +198,14 @@ const { elRef: llmRef } = useAutoHeight();
                 :disabled="!llmHintUnlocked || llmHintLoading || llmHintUsed || gameOver"
                 @click="emit('requestLlmHint')"
             >
-                <span v-if="llmHintLoading">{{ ui?.semantic_hint_divining || 'Divining…' }}</span>
+                <span v-if="llmHintLoading">{{ ui?.semantic_hint_divining }}</span>
                 <span v-else-if="!llmHintUnlocked">{{
-                    ui?.semantic_hint_locked || 'Locked — keep guessing'
+                    ui?.semantic_hint_locked
                 }}</span>
-                <span v-else>{{ ui?.semantic_hint_ask || 'Ask the oracle' }}</span>
+                <span v-else>{{ ui?.semantic_hint_ask }}</span>
             </button>
             <p v-if="!llmHint && !showOracleNudge" class="hint-note">
-                {{ ui?.semantic_hint_note || 'One hint per game. Use it wisely.' }}
+                {{ ui?.semantic_hint_note }}
             </p>
         </section>
     </div>

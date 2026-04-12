@@ -79,16 +79,16 @@ const percentileLabel = computed(() => {
 
 const tier = computed(() => {
     if (!props.bestGuess)
-        return { label: ui.value?.semantic_tier_awaiting || 'Awaiting guess', cls: '' };
+        return { label: ui.value?.semantic_tier_awaiting, cls: '' };
     const r = props.bestGuess.rank;
-    if (r === 1) return { label: ui.value?.semantic_tier_found || 'Found', cls: 'found' };
+    if (r === 1) return { label: ui.value?.semantic_tier_found, cls: 'found' };
     if (r <= 10)
-        return { label: ui.value?.semantic_tier_scorching || 'Scorching', cls: 'scorching' };
-    if (r <= 30) return { label: ui.value?.semantic_tier_burning || 'Burning', cls: 'burning' };
-    if (r <= 100) return { label: ui.value?.semantic_tier_hot || 'Hot', cls: 'hot' };
-    if (r <= 500) return { label: ui.value?.semantic_tier_warm || 'Warm', cls: 'warm' };
-    if (r <= 2000) return { label: ui.value?.semantic_tier_cool || 'Cool', cls: 'cool' };
-    return { label: ui.value?.semantic_tier_cold || 'Cold', cls: 'cold' };
+        return { label: ui.value?.semantic_tier_scorching, cls: 'scorching' };
+    if (r <= 30) return { label: ui.value?.semantic_tier_burning, cls: 'burning' };
+    if (r <= 100) return { label: ui.value?.semantic_tier_hot, cls: 'hot' };
+    if (r <= 500) return { label: ui.value?.semantic_tier_warm, cls: 'warm' };
+    if (r <= 2000) return { label: ui.value?.semantic_tier_cool, cls: 'cool' };
+    return { label: ui.value?.semantic_tier_cold, cls: 'cold' };
 });
 
 const bestPercent = computed(() =>
@@ -107,7 +107,7 @@ function onRowLeave() {
     <section class="leaderboard">
         <!-- Hero: best guess — or CTA when no guesses yet. -->
         <header v-if="bestGuess" class="leaderboard-header active">
-            <div class="mono-label">{{ ui?.semantic_closest || 'Closest so far' }}</div>
+            <div class="mono-label">{{ ui?.semantic_closest }}</div>
             <div class="hero-row">
                 <div class="hero-main">
                     <div class="hero-rank">#{{ heroRankDisplay }}</div>
@@ -133,7 +133,7 @@ function onRowLeave() {
 
         <!-- Empty state CTA: nudge the player to type their first guess. -->
         <header v-else class="leaderboard-header empty-cta">
-            <div class="cta-headline">{{ ui?.semantic_cta_headline || 'Guess a word' }}</div>
+            <div class="cta-headline">{{ ui?.semantic_cta_headline }}</div>
             <p class="cta-body">
                 {{
                     ui?.semantic_cta_body ||
@@ -148,7 +148,7 @@ function onRowLeave() {
         <!-- Guess list — TransitionGroup handles reorder via FLIP move -->
         <div v-if="guesses.length > 0" ref="leaderboardRef" class="guess-list-wrap">
             <div class="mono-label sub-label">
-                {{ ui?.semantic_your_guesses || 'Your guesses' }}
+                {{ ui?.semantic_your_guesses }}
             </div>
             <TransitionGroup tag="ol" name="rank-list" class="guess-list editorial-scroll">
                 <li
@@ -174,8 +174,8 @@ function onRowLeave() {
             <button v-if="hasMore" type="button" class="show-toggle" @click="showAll = !showAll">
                 {{
                     showAll
-                        ? ui?.show_less || 'Show less'
-                        : interpolate(ui?.semantic_show_all || 'Show all {n}', {
+                        ? ui?.show_less
+                        : interpolate(ui?.semantic_show_all, {
                               n: sortedGuesses.length,
                           })
                 }}

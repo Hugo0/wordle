@@ -218,7 +218,7 @@
         <!-- Guess Distribution (compact) + Percentile -->
         <div class="editorial-rule stats-section">
             <h4 class="mono-label mb-2.5" style="font-size: 10px; letter-spacing: 0.15em">
-                {{ lang.config?.ui?.guess_distribution || 'Guess Distribution' }}
+                {{ lang.config?.ui?.guess_distribution }}
             </h4>
             <div class="space-y-1">
                 <div v-for="n in distributionRows" :key="n" class="flex items-center gap-2">
@@ -278,11 +278,11 @@
             >
                 <template v-if="game.shareButtonState === 'success'">
                     <Check :size="16" />
-                    {{ lang.config?.text?.copied || 'Copied!' }}
+                    {{ lang.config?.text?.copied }}
                 </template>
                 <template v-else>
                     <Share2 :size="16" />
-                    {{ lang.config?.ui?.share_result || 'Share' }}
+                    {{ lang.config?.ui?.share_result }}
                 </template>
             </button>
             <!-- Daily modes → "Keep Playing" secondary button -->
@@ -291,7 +291,7 @@
                 :to="unlimitedRoute"
                 class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
             >
-                {{ lang.config?.ui?.keep_playing || 'Keep Playing' }}
+                {{ lang.config?.ui?.keep_playing }}
             </NuxtLink>
             <!-- Unlimited modes → "New Game" / "Play Again" -->
             <button
@@ -299,7 +299,7 @@
                 class="flex-1 stats-btn border border-ink text-ink font-body text-sm font-semibold tracking-wide transition-all hover:bg-ink hover:text-paper text-center cursor-pointer whitespace-nowrap"
                 @click="$emit('newGame')"
             >
-                {{ lang.config?.ui?.new_game || 'New Game' }}
+                {{ lang.config?.ui?.new_game }}
             </button>
             <!-- Daily without unlimited variant → Close -->
             <button
@@ -407,7 +407,7 @@ const nextWordLabel = computed(() => {
     const label = GAME_MODE_CONFIG[mode]?.label;
     if (label && mode !== 'classic' && mode !== 'unlimited' && mode !== 'speed')
         return `Next ${label}`;
-    return lang.config?.text?.next_word || 'Next Wordle';
+    return lang.config?.text?.next_word;
 });
 
 const modeLabel = computed(() => {
@@ -487,23 +487,23 @@ const displayWord = computed(() => {
 
 const todayStats = computed(() => {
     const base = [
-        { value: statsStore.stats.n_games, label: lang.config?.ui?.games || 'Played' },
+        { value: statsStore.stats.n_games, label: lang.config?.ui?.games },
         {
             value: Math.round(statsStore.stats.win_percentage) + '%',
-            label: lang.config?.ui?.win_percent || 'Win %',
+            label: lang.config?.ui?.win_percent,
         },
     ];
     // Streaks only make sense for daily modes (classic, dordle, tridle, quordle)
     if (isDaily.value) {
         base.push(
-            { value: statsStore.stats.current_streak, label: lang.config?.ui?.streak || 'Streak' },
-            { value: statsStore.stats.longest_streak, label: lang.config?.ui?.best || 'Best' }
+            { value: statsStore.stats.current_streak, label: lang.config?.ui?.streak },
+            { value: statsStore.stats.longest_streak, label: lang.config?.ui?.best }
         );
     } else {
         const avg = statsStore.stats.avg_attempts;
         base.push(
-            { value: statsStore.stats.n_wins, label: lang.config?.ui?.wins || 'Wins' },
-            { value: avg > 0 ? +avg.toFixed(1) : 0, label: lang.config?.ui?.avg_attempts || 'Avg' }
+            { value: statsStore.stats.n_wins, label: lang.config?.ui?.wins },
+            { value: avg > 0 ? +avg.toFixed(1) : 0, label: lang.config?.ui?.avg_attempts }
         );
     }
     return base;
