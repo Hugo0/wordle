@@ -423,7 +423,12 @@ function onKeepPlaying() {
                     <div class="map-card">
                         <header class="map-header">
                             <div class="map-eyebrow">
-                                <span class="eyebrow-tag">
+                                <button
+                                    class="eyebrow-tag eyebrow-toggle"
+                                    :class="{ active: sem.mapMode.value === 'slice' }"
+                                    @click="onSliceToggle"
+                                    :title="sem.mapMode.value === 'slice' ? 'Switch to neighborhood view' : 'Switch to axis slice view'"
+                                >
                                     {{
                                         sem.mapMode.value === 'slice' && sem.sliceAxes.value
                                             ? interpolate(
@@ -436,7 +441,7 @@ function onKeepPlaying() {
                                               )
                                             : ui?.semantic_meaning_map
                                     }}
-                                </span>
+                                </button>
                                 <span class="eyebrow-sub">{{ ui?.semantic_distance_rank }}</span>
                             </div>
                             <h1 class="map-title">
@@ -462,6 +467,24 @@ function onKeepPlaying() {
                                 v-model:pan-offset="mapPanOffset"
                                 :expandable="true"
                             >
+                                <template #controls>
+                                    <button
+                                        type="button"
+                                        class="map-ctrl-btn"
+                                        :aria-label="sem.mapMode.value === 'slice' ? 'Neighborhood view' : 'Axis slice view'"
+                                        :title="sem.mapMode.value === 'slice' ? 'Switch to neighborhood' : 'Switch to slice'"
+                                        :class="{ 'map-ctrl-active': sem.mapMode.value === 'slice' }"
+                                        @click.stop="onSliceToggle"
+                                    >
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2.5">
+                                            <path v-if="sem.mapMode.value !== 'slice'"
+                                                  d="M3 3l18 18M3 21l18-18" />
+                                            <path v-else
+                                                  d="M12 3v18M3 12h18" />
+                                        </svg>
+                                    </button>
+                                </template>
                                 <template #default="{ expanded, frameSize }">
                                     <MeaningMap
                                         :dots="gameDots"
@@ -632,6 +655,26 @@ function onKeepPlaying() {
     color: var(--color-muted);
     padding: 3px 8px;
     border: 1px solid var(--color-rule);
+}
+.eyebrow-toggle {
+    cursor: pointer;
+    background: transparent;
+    transition: all 150ms ease;
+}
+.eyebrow-toggle:hover {
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+}
+.eyebrow-toggle.active {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+}
+/* Active state for the slice toggle button in map controls */
+:deep(.map-ctrl-active) {
+    background: var(--color-ink) !important;
+    color: var(--color-paper) !important;
+    border-color: var(--color-ink) !important;
 }
 .eyebrow-sub {
     font-family: var(--font-display);

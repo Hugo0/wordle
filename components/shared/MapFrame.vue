@@ -214,6 +214,8 @@ const frameSize = computed(() => {
                     >
                         ⟲
                     </button>
+                    <!-- Extra controls injected by the page (e.g., view toggle) -->
+                    <slot name="controls" />
                 </div>
 
                 <slot :expanded="isExpanded" :frame-size="frameSize" />
