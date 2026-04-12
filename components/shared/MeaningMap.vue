@@ -167,15 +167,10 @@ const autoZoom = computed(() => {
     if (props.sliceAxes) return 1.0;
 
     if (props.mode === 'polar') {
-        // Game: zoom to fit best + latest guess
-        const guesses = props.dots.filter((d) => d.role === 'foreground' && d.display != null);
-        if (guesses.length === 0) return 1.0;
-        const displays = guesses.map((d) => d.display!);
-        const bestDisplay = Math.max(...displays);
-        const lastDisplay = displays[displays.length - 1] ?? 0;
-        const farthestDisplay = Math.min(bestDisplay, lastDisplay);
-        const farthestRadius = Math.max(0.01, (1 - farthestDisplay) * 0.45);
-        return Math.min(20, Math.max(1.0, (0.45 * 0.7) / farthestRadius));
+        // Polar: no auto-zoom. The map shows the full range and the user
+        // can zoom manually. Auto-zoom was jarring — it changed the view
+        // on every guess submission.
+        return 1.0;
     }
 
     // Absolute: dynamic zoom so closest dot pair has ~50px separation
