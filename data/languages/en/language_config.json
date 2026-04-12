@@ -13,8 +13,8 @@
                 "description": "Play unlimited Wordle in English. No waiting — get a new word every time."
             },
             "speed": {
-                "title": "Speed Streak — race the clock",
-                "description": "Speed Streak: solve as many Wordle words in English as you can in 5 minutes."
+                "title": "Speed Streak — Race the Clock Word Game",
+                "description": "Solve as many words as you can before time runs out. Each correct guess adds bonus time. Build combos for higher scores. A fast-paced twist on the daily word puzzle — free to play."
             },
             "dordle": {
                 "title": "Dordle — 2 boards at once",
@@ -39,6 +39,10 @@
             "duotrigordle": {
                 "title": "Duotrigordle — 32 boards at once",
                 "description": "Play Duotrigordle in English. Solve 32 Wordle boards at once with 37 guesses."
+            },
+            "semantic": {
+                "title": "Semantic Word Game — Find the Hidden Word by Meaning",
+                "description": "Guess the secret word using meaning, not letters. Each guess gets a rank showing how semantically close you are. With compass hints, a meaning map, and 50,000 words. Free daily puzzle — like Contexto and Semantle, but better."
             }
         }
     },
@@ -80,7 +84,20 @@
         "speed_scoring": "Scoring",
         "speed_scoring_explanation": "Points = (7 − guesses) × 100 × combo multiplier. Consecutive solves build your combo up to 3x. A failed word resets your combo.",
         "speed_pressure": "Pressure ramp",
-        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets."
+        "speed_pressure_explanation": "Every 3 words solved, the timer speeds up. The longer you survive, the harder it gets.",
+        "semantic_subtitle": "Find a hidden word by meaning, not letters.",
+        "semantic_rank_title": "Type any word — see its rank",
+        "semantic_rank_explanation": "Lower rank = closer in meaning.",
+        "semantic_rank_found": "you found it.",
+        "semantic_compass_title": "Read the compass",
+        "semantic_compass_explanation": "Hints point from your",
+        "semantic_compass_latest_guess": "latest guess",
+        "semantic_compass_toward": "toward the target.",
+        "semantic_map_title": "Watch the map",
+        "semantic_map_explanation": "Closer to the center = lower rank = closer in meaning.",
+        "semantic_oracle_title": "Ask the oracle (once)",
+        "semantic_oracle_explanation": "Unlocked after 5 guesses. One cryptic hint per game.",
+        "semantic_footer": "15 guesses. New word every day."
     },
     "ui": {
         "coverage_label": "Coverage",
@@ -291,6 +308,8 @@
         "guest": "Guest",
         "sign_in": "Sign in",
         "sync_stats_earn_badges": "Sync stats, earn badges",
+        "animations": "Animations",
+        "animations_desc": "Tile flip, bounce, and pop effects",
         "sidebar_play": "Play",
         "sidebar_learn": "Learn",
         "sidebar_you": "You",
@@ -304,5 +323,99 @@
         "homepage_search": "Search languages...",
         "homepage_and_more": "& More",
         "homepage_and_more_desc": "Octordle, Semantic Explorer, Custom Word, Party Mode — and more coming soon."
+    },
+    "seo": {
+        "mode_desc_semantic": "Semantic Explorer is a word-guessing game where you find a hidden word using meaning instead of letters. Each guess receives a rank from 1 to 50,001 based on how semantically close it is to the target. Use compass hints and a meaning map to navigate the space of words. A new puzzle every day — or play unlimited mode for endless practice.",
+        "mode_faq": {
+            "semantic": [
+                {
+                    "q": "What is Semantic Explorer?",
+                    "a": "Semantic Explorer is a word-guessing game where you find a hidden word based on meaning. Unlike classic Wordle which uses letter positions, Semantic Explorer ranks your guesses by how close they are in meaning to the target word, using AI word embeddings."
+                },
+                {
+                    "q": "How does it differ from Contexto or Semantle?",
+                    "a": "Semantic Explorer offers compass hints that tell you which semantic direction to think in (e.g., \"think more metallic\"), a visual meaning map showing where your guesses land in semantic space, and an oracle hint system. It also supports 50,000+ words including uncommon ones like \"defenestration\"."
+                },
+                {
+                    "q": "How is the rank calculated?",
+                    "a": "Each word in the vocabulary has a position in a high-dimensional semantic space (computed by AI). Your guess is ranked by how close it is to the target word in this space. Rank #1 means you found the exact word. Lower ranks mean closer in meaning."
+                },
+                {
+                    "q": "What are compass hints?",
+                    "a": "After 5 guesses, the compass analyzes the direction from your best guess toward the target and gives you two semantic axes to think along — like \"think more metallic\" or \"think more subordinate\". This helps narrow down the meaning space."
+                },
+                {
+                    "q": "Is there a daily puzzle?",
+                    "a": "Yes! A new hidden word is chosen every day, the same for all players worldwide. You can also play unlimited mode for endless practice with random words."
+                },
+                {
+                    "q": "How many guesses do I get?",
+                    "a": "You get 15 guesses to find the hidden word. After 5 guesses, you unlock the compass hints. You can also use the oracle hint once per game for an extra clue."
+                }
+            ],
+            "speed": [
+                {
+                    "q": "How does Speed Streak work?",
+                    "a": "You start with 5 minutes on the clock. Each word you solve correctly adds bonus time. Build combos by solving consecutive words quickly for score multipliers. The game ends when the timer hits zero."
+                },
+                {
+                    "q": "Is there a daily Speed Streak?",
+                    "a": "Yes! The daily Speed Streak uses the same word sequence for all players, so you can compare scores. There is also an unlimited mode with random words."
+                }
+            ],
+            "multiboard": [
+                {
+                    "q": "How do multi-board modes work?",
+                    "a": "Each guess you type applies to ALL boards simultaneously. Green, yellow, and gray feedback appears independently on each board. You need to find all hidden words with a limited number of shared guesses."
+                },
+                {
+                    "q": "What multi-board sizes are available?",
+                    "a": "Dordle (2 boards, 7 guesses), Quordle (4 boards, 9 guesses), Octordle (8 boards, 13 guesses), Sedecordle (16 boards, 21 guesses), and Duotrigordle (32 boards, 37 guesses). Each has daily and unlimited modes."
+                }
+            ]
+        },
+        "mode_howto": {
+            "semantic": [
+                {
+                    "text": "Type any English word and press Guess."
+                },
+                {
+                    "text": "Check your rank — lower numbers mean you're closer in meaning."
+                },
+                {
+                    "text": "Watch the meaning map to see where your guesses land relative to the target."
+                },
+                {
+                    "text": "After 5 guesses, use compass hints to find the right semantic direction."
+                },
+                {
+                    "text": "Use the oracle hint once per game if you're stuck."
+                },
+                {
+                    "text": "Find the hidden word (rank #1) in 15 guesses or fewer!"
+                }
+            ],
+            "speed": [
+                {
+                    "text": "Start the countdown and get ready."
+                },
+                {
+                    "text": "Guess the 5-letter word in as few attempts as possible."
+                },
+                {
+                    "text": "Correct words add bonus time to your clock."
+                },
+                {
+                    "text": "Solve consecutive words quickly to build combos for higher scores."
+                },
+                {
+                    "text": "Keep going until the timer runs out!"
+                }
+            ]
+        },
+        "tips_semantic": "Start with broad category words (animal, food, emotion) to narrow the semantic space. Pay attention to compass hints — they point you in the right direction. Words with similar meanings cluster together on the map. Try synonyms of your closest guess. The oracle hint can save you when you're stuck in the wrong corner of meaning space.",
+        "mode_desc_speed": "Speed Streak is an arcade-style timed word game. Solve 5-letter words as fast as you can — each correct answer adds bonus seconds to your timer. Build combos for multiplied scores. How many can you solve before time runs out?",
+        "tips_speed": "Start with high-frequency starting words. Speed is more important than finding the perfect guess — a good guess quickly beats a perfect guess slowly. Watch the timer and prioritize common letter patterns.",
+        "mode_desc_multiboard": "Multi-board Wordle challenges you to solve {boardCount} word puzzles simultaneously with a shared set of guesses. From Dordle (2 boards) to Duotrigordle (32 boards) — each guess applies to every board at once. Strategy is key: maximize information across all boards with each attempt."
     }
 }
