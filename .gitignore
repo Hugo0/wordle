@@ -55,3 +55,4 @@ scripts/.fonts/
 
 # OG mode images: regenerate with `uv run python scripts/generate_mode_og_images.py --all`
 # Committed to git (~5MB) since Render build env lacks Python/uv.
+.claude
