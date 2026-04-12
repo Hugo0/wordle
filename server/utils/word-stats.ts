@@ -27,7 +27,8 @@ export async function loadWordStats(langCode: string, dayIdx: number): Promise<W
         // DB unavailable — fall through to disk
     }
 
-    // Disk fallback
+    // DEPRECATED: disk fallback — remove after confirming DB migration is stable
+    console.warn('[DEPRECATED] word-stats disk fallback hit for', langCode, dayIdx);
     const statsPath = join(WORD_STATS_DIR, langCode, `${dayIdx}.json`);
     if (!existsSync(statsPath)) return null;
     try {
@@ -57,7 +58,8 @@ export async function updateWordStats(
         // DB module unavailable — fall through to disk
     }
 
-    // Fallback: disk with lockfile (legacy behavior)
+    // DEPRECATED: disk with lockfile — remove after confirming DB migration is stable
+    console.warn('[DEPRECATED] word-stats disk write fallback hit for', langCode, dayIdx);
     const statsDir = join(WORD_STATS_DIR, langCode);
     const statsPath = join(statsDir, `${dayIdx}.json`);
     mkdirSync(statsDir, { recursive: true });

@@ -359,52 +359,55 @@ export async function fetchEmbeddingOnDemand(
         return disk;
     }
 
-    // 3. OpenAI
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) return null;
+    // 3. OpenAI (deduplicated — only one API call per word at a time)
+    const { dedup } = await import('./inflight');
+    return dedup('embedding', word, async () => {
+        const apiKey = process.env.OPENAI_API_KEY;
+        if (!apiKey) return null;
 
-    const modelName = data.modelName; // e.g. "text-embedding-3-small-512"
-    const match = modelName.match(/^(.+)-(\d+)$/);
-    const openaiModel = match ? match[1] : 'text-embedding-3-small';
-    const dims = match ? Number(match[2]) : data.dims;
+        const modelName = data.modelName; // e.g. "text-embedding-3-small-512"
+        const match = modelName.match(/^(.+)-(\d+)$/);
+        const openaiModel = match ? match[1] : 'text-embedding-3-small';
+        const dims = match ? Number(match[2]) : data.dims;
 
-    try {
-        const response = await fetch('https://api.openai.com/v1/embeddings', {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                model: openaiModel,
-                input: [word],
-                dimensions: dims,
-            }),
-            signal: AbortSignal.timeout(10000),
-        });
-        if (!response.ok) {
-            consola.warn('[semantic] ondemand embedding failed', response.status);
+        try {
+            const response = await fetch('https://api.openai.com/v1/embeddings', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: openaiModel,
+                    input: [word],
+                    dimensions: dims,
+                }),
+                signal: AbortSignal.timeout(10000),
+            });
+            if (!response.ok) {
+                consola.warn('[semantic] ondemand embedding failed', response.status);
+                return null;
+            }
+            const payload = await response.json();
+            const raw = payload?.data?.[0]?.embedding as number[] | undefined;
+            if (!raw || raw.length !== dims) return null;
+
+            // L2-normalize (matches generation script)
+            let norm = 0;
+            for (let i = 0; i < raw.length; i++) norm += raw[i]! * raw[i]!;
+            norm = Math.sqrt(norm);
+            if (norm === 0) norm = 1;
+            const vec = new Float32Array(dims);
+            for (let i = 0; i < dims; i++) vec[i] = raw[i]! / norm;
+
+            ondemandCacheSet(word, vec);
+            writeDiskEmbedding(word, modelName, vec);
+            return vec;
+        } catch (e) {
+            consola.warn('[semantic] ondemand embedding error', e);
             return null;
         }
-        const payload = await response.json();
-        const raw = payload?.data?.[0]?.embedding as number[] | undefined;
-        if (!raw || raw.length !== dims) return null;
-
-        // L2-normalize (matches generation script)
-        let norm = 0;
-        for (let i = 0; i < raw.length; i++) norm += raw[i]! * raw[i]!;
-        norm = Math.sqrt(norm);
-        if (norm === 0) norm = 1;
-        const vec = new Float32Array(dims);
-        for (let i = 0; i < dims; i++) vec[i] = raw[i]! / norm;
-
-        ondemandCacheSet(word, vec);
-        writeDiskEmbedding(word, modelName, vec);
-        return vec;
-    } catch (e) {
-        consola.warn('[semantic] ondemand embedding error', e);
-        return null;
-    }
+    });
 }
 
 // ── Rank-based scoring ───────────────────────────────────────────────────

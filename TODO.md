@@ -463,3 +463,22 @@ The semantic page uses a scrollable layout (`overflow-y: auto` on `.semantic-bod
 - Expand button goes truly fullscreen (overlay), not just "fill the column"
 
 Current band-aid: `min-height: min(200px, calc(100dvh - 310px))` prevents `min-height` from exceeding viewport, but the SVG still overflows on short desktops. `:deep()` CSS hacks were tried and reverted because they broke the expanded map aspect ratio.
+
+---
+
+## DB Migration — Remove Disk Fallback Paths
+
+**Added**: 2026-04-12
+**Status**: Monitoring — disk fallback paths emit console.warn when hit
+
+Data has been migrated from Render's persistent disk to Postgres (184K definitions, 2.8K word stats, 50K embeddings with UMAP/PCA2D coordinates). Disk fallback paths are now marked DEPRECATED with console.warn.
+
+After 2 weeks of stable DB-only operation (no DEPRECATED warnings in logs), remove:
+
+- [ ] `server/utils/definitions.ts` — Tier 1 disk cache read + disk write after LLM/kaikki
+- [ ] `server/utils/word-stats.ts` — disk read fallback in `loadWordStats`, disk write fallback with lockfile in `updateWordStats`
+- [ ] `server/utils/wiktionary.ts` — `readCache`/`writeCache` disk functions + their callsites
+- [ ] `server/utils/data-loader.ts` — remove `WORD_DEFS_DIR`, `WORD_STATS_DIR`, `WORD_HISTORY_DIR` exports if no longer used
+- [ ] Remove `proper-lockfile` dependency from package.json (only used by word-stats disk path)
+- [ ] Consider removing `WORD_IMAGES_DIR` disk path (word images still on disk, needs S3/R2 migration)
+- [ ] `server/utils/word-selection.ts` — `WORD_HISTORY_DIR` disk cache for daily word history (derivable from algorithm, but safety net)

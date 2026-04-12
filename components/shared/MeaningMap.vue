@@ -111,6 +111,22 @@ onUnmounted(() => {
 const PAD = 30;
 const canvasSize = computed(() => props.size);
 
+// Track actual CSS display width for screen-pixel ↔ viewBox conversion.
+// When CSS shrinks the SVG (e.g., max-width: 100% on mobile), panOffset
+// (in screen pixels from pointer events) must be scaled to viewBox pixels.
+const displayWidth = ref(props.size);
+let _resizeObs: ResizeObserver | null = null;
+function _initResizeObserver() {
+    if (!svgRef.value || _resizeObs) return;
+    _resizeObs = new ResizeObserver((entries) => {
+        const w = entries[0]?.contentRect.width;
+        if (w && w > 0) displayWidth.value = w;
+    });
+    _resizeObs.observe(svgRef.value);
+}
+onUnmounted(() => _resizeObs?.disconnect());
+const displayScale = computed(() => displayWidth.value / canvasSize.value);
+
 const router = useRouter();
 
 // Hover prefetch: when the user mouses over a clickable dot, start
@@ -377,6 +393,7 @@ watch(
 // CSS keyframes, so we use the Web Animations API for both FLIP and bounce.
 const knownWords = ref(new Set<string>());
 const svgRef = ref<SVGSVGElement | null>(null);
+onMounted(() => _initResizeObserver());
 
 /** Snapshot of current dot positions before the data changes — used for
  *  FLIP delta computation after Vue re-renders with new positions. */

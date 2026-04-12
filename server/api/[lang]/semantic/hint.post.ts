@@ -5,6 +5,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { dedup } from '~/server/utils/inflight';
 import { getSessionTarget } from '~/server/utils/semantic';
 
 const LLM_MODEL = 'gpt-5.2';
@@ -167,20 +168,25 @@ export default defineEventHandler(async (event) => {
         }
     }
 
-    // Tier 2: Generate via LLM
-    const hint = await generateValidatedHint(target);
-    if (!hint) {
+    // Tier 2: Generate via LLM (deduplicated — only one generation per word)
+    const result = await dedup('hint', `${lang}:${target}`, async () => {
+        const generated = await generateValidatedHint(target);
+        if (!generated) return null;
+
+        // Cache to DB (primary) and disk (backup)
+        try {
+            const { setSemanticHint } = await import('~/server/utils/db-cache');
+            setSemanticHint(lang, target, generated, LLM_MODEL);
+        } catch {
+            /* non-fatal */
+        }
+        writeFileSync(cacheFile, JSON.stringify({ hint: generated, createdAt: Date.now() }));
+
+        return generated;
+    });
+
+    if (!result) {
         return { hint: null, cached: false, error: 'llm_unavailable' };
     }
-
-    // Cache to DB (primary) and disk (backup)
-    try {
-        const { setSemanticHint } = await import('~/server/utils/db-cache');
-        setSemanticHint(lang, target, hint, LLM_MODEL);
-    } catch {
-        /* non-fatal */
-    }
-    writeFileSync(cacheFile, JSON.stringify({ hint, createdAt: Date.now() }));
-
-    return { hint, cached: false };
+    return { hint: result, cached: false };
 });

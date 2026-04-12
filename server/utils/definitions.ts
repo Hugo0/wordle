@@ -8,6 +8,7 @@ import { consola } from 'consola';
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, resolve } from 'path';
 import { WORD_DEFS_DIR } from './data-loader';
+import { dedup } from './inflight';
 import { getWiktLang } from './word-selection';
 
 const NEGATIVE_CACHE_TTL = 24 * 3600; // 24 hours
@@ -313,7 +314,8 @@ export async function fetchDefinition(
         }
     }
 
-    // --- Tier 1: Disk cache (fallback during migration) ---
+    // --- Tier 1: Disk cache — DEPRECATED, remove after confirming DB migration is stable ---
+    console.warn('[DEPRECATED] definitions disk fallback hit for', langCode, word.toLowerCase());
     const cacheDir = WORD_DEFS_DIR;
     const langCacheDir = join(cacheDir, langCode);
     const cachePath = join(langCacheDir, `${word.toLowerCase()}.json`);
@@ -343,47 +345,50 @@ export async function fetchDefinition(
         }
     }
 
-    // --- Tier 2: LLM (skip if cacheOnly) ---
-    let result: Record<string, any> | null = null;
-    if (!options.cacheOnly) {
-        result = await callLlmDefinition(word, langCode);
-    }
+    // --- Tier 2 + 3: LLM → kaikki, deduplicated across concurrent requests ---
+    const dedupKey = `${langCode}:${word.toLowerCase()}`;
+    const result = await dedup('definition', dedupKey, async () => {
+        let llmResult: Record<string, any> | null = null;
+        if (!options.cacheOnly) {
+            llmResult = await callLlmDefinition(word, langCode);
+        }
+        if (!llmResult) {
+            llmResult =
+                lookupKaikki(word, langCode, 'native') || lookupKaikki(word, langCode, 'en');
+        }
 
-    // --- Tier 3: Kaikki fallback ---
-    if (!result) {
-        result = lookupKaikki(word, langCode, 'native') || lookupKaikki(word, langCode, 'en');
-    }
-
-    // Cache result to DB (primary) and disk (backup)
-    const isNeg = !result;
-    dbCache?.upsertDefinition(
-        langCode,
-        word.toLowerCase(),
-        result
-            ? {
-                  definition: result.definition,
-                  definitionNative: result.definition_native,
-                  definitionEn: result.definition_en,
-                  partOfSpeech: result.part_of_speech,
-                  confidence: result.confidence,
-                  source: result.source,
-                  url: result.url,
-              }
-            : {},
-        isNeg
-    );
-
-    // Also write to disk for backward compat during migration
-    try {
-        mkdirSync(langCacheDir, { recursive: true });
-        writeFileSync(
-            cachePath,
-            JSON.stringify(result || { not_found: true, ts: Math.floor(Date.now() / 1000) }),
-            'utf-8'
+        // Cache result to DB (primary) and disk (backup)
+        const isNeg = !llmResult;
+        dbCache?.upsertDefinition(
+            langCode,
+            word.toLowerCase(),
+            llmResult
+                ? {
+                      definition: llmResult.definition,
+                      definitionNative: llmResult.definition_native,
+                      definitionEn: llmResult.definition_en,
+                      partOfSpeech: llmResult.part_of_speech,
+                      confidence: llmResult.confidence,
+                      source: llmResult.source,
+                      url: llmResult.url,
+                  }
+                : {},
+            isNeg
         );
-    } catch {
-        // Non-critical
-    }
+        // DEPRECATED: disk write — remove after confirming DB migration is stable
+        try {
+            mkdirSync(langCacheDir, { recursive: true });
+            writeFileSync(
+                cachePath,
+                JSON.stringify(llmResult || { not_found: true, ts: Math.floor(Date.now() / 1000) }),
+                'utf-8'
+            );
+        } catch {
+            // Non-critical
+        }
+
+        return llmResult;
+    });
 
     return result;
 }

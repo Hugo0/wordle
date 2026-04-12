@@ -70,7 +70,8 @@ export async function checkWiktionaryExists(
         // DB unavailable — fall through
     }
 
-    // Tier 1: Disk cache (fallback during migration)
+    // DEPRECATED: disk cache fallback — remove after confirming DB migration is stable
+    console.warn('[DEPRECATED] wiktionary disk fallback hit for', langCode, word);
     const cached = readCache(langCode, word);
     if (cached) return cached.exists;
 
@@ -86,13 +87,14 @@ export async function checkWiktionaryExists(
         });
         const exists = resp.status === 200 || (resp.status >= 300 && resp.status < 400);
 
-        // Cache to DB (primary) and disk (backup)
+        // Cache to DB (primary)
         try {
             const { setWiktionaryExists } = await import('./db-cache');
             setWiktionaryExists(langCode, word, exists);
         } catch {
             /* non-fatal */
         }
+        // DEPRECATED: disk write — remove after confirming DB migration is stable
         writeCache(langCode, word, exists);
 
         return exists;
