@@ -6,7 +6,12 @@
  * Only axes (140KB) and valid words (2MB) are in memory.
  */
 
-import { cosineSimilarity, getSessionTarget, rankToDisplay, computeCompass } from '~/server/utils/semantic';
+import {
+    cosineSimilarity,
+    getSessionTarget,
+    rankToDisplay,
+    computeCompass,
+} from '~/server/utils/semantic';
 import * as semanticDb from '~/server/utils/_semantic-db';
 import { getValidWords } from '~/server/plugins/semantic-warmup';
 
@@ -64,7 +69,9 @@ export default defineEventHandler(async (event) => {
     if (cachedAxes) {
         try {
             compassResult = computeCompass(cachedAxes, guessVec, targetVec, 5, []);
-        } catch { /* skip */ }
+        } catch {
+            /* skip */
+        }
     }
 
     const response: Record<string, unknown> = {

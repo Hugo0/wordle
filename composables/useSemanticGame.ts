@@ -10,6 +10,7 @@
 
 import { computed, ref } from 'vue';
 import { readJson, removeLocal, writeJson } from '~/utils/storage';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
 /** The LLM-hint button unlocks after this many guesses. */
 export const LLM_HINT_UNLOCK_AT = 5;
@@ -135,7 +136,7 @@ export function useSemanticGame(lang: string) {
     const dayIdx = ref<number>(0);
     const axisAnchors = ref<Record<string, { low: string; high: string }>>({});
     const targetUmapPosition = ref<[number, number]>([0.5, 0.5]);
-    const maxGuesses = ref(20);
+    const maxGuesses = ref(GAME_MODE_CONFIG.semantic.maxGuesses);
 
     // ── Game state ────────────────────────────────────────────────────────
     const guesses = ref<SemanticGuess[]>([]);

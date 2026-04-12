@@ -16,8 +16,15 @@
         @close="$emit('close')"
     >
         <div class="px-6 pt-6 pb-3">
-            <h2 class="heading-section text-xl text-ink">{{ props.ui?.multi_board || 'Multi-Board' }}</h2>
-            <p class="text-sm text-muted mt-1">{{ props.ui?.board_picker_subtitle || 'Same rules, more boards. Pick your challenge.' }}</p>
+            <h2 class="heading-section text-xl text-ink">
+                {{ props.ui?.multi_board || 'Multi-Board' }}
+            </h2>
+            <p class="text-sm text-muted mt-1">
+                {{
+                    props.ui?.board_picker_subtitle ||
+                    'Same rules, more boards. Pick your challenge.'
+                }}
+            </p>
         </div>
 
         <div class="border-t border-rule">
@@ -37,7 +44,8 @@
                 <div class="flex-1 min-w-0">
                     <div class="heading-section text-base text-ink">{{ mode.label }}</div>
                     <div class="text-xs text-muted mt-0.5">
-                        {{ mode.boards }} {{ props.ui?.boards || 'boards' }} &middot; {{ mode.maxGuesses }} {{ props.ui?.guesses || 'guesses' }}
+                        {{ mode.boards }} {{ props.ui?.boards || 'boards' }} &middot;
+                        {{ mode.maxGuesses }} {{ props.ui?.guesses || 'guesses' }}
                     </div>
                 </div>
 

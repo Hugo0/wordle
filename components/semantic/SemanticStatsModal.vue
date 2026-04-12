@@ -66,9 +66,7 @@ const bestRank = computed(() => {
                     <XCircle v-else :size="32" />
                 </div>
                 <h2 id="semantic-stats-label" class="heading-display stats-title">
-                    {{
-                        won ? ui?.semantic_won : ui?.semantic_lost
-                    }}
+                    {{ won ? ui?.semantic_won : ui?.semantic_lost }}
                 </h2>
                 <p class="stats-subtitle">
                     {{ ui?.semantic_title }} · Day #{{ dayIdx }} ·

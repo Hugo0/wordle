@@ -84,11 +84,7 @@ defineExpose({
                 v-model="value"
                 type="text"
                 class="semantic-text-input"
-                :placeholder="
-                    disabled
-                        ? ui?.semantic_game_over
-                        : ui?.semantic_input_placeholder
-                "
+                :placeholder="disabled ? ui?.semantic_game_over : ui?.semantic_input_placeholder"
                 :disabled="disabled"
                 :aria-invalid="!!invalidMessage"
                 autocomplete="off"

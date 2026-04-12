@@ -36,8 +36,12 @@ defineProps<{
 
 <template>
     <BaseModal :visible="visible" size="sm" @close="$emit('close')">
-        <h2 class="heading-section text-2xl text-center text-ink mb-1">{{ lang.config?.ui?.speed_streak }}</h2>
-        <p class="text-center text-muted text-sm mb-3">{{ lang.config?.ui?.time_up || "Time's up!" }}</p>
+        <h2 class="heading-section text-2xl text-center text-ink mb-1">
+            {{ lang.config?.ui?.speed_streak }}
+        </h2>
+        <p class="text-center text-muted text-sm mb-3">
+            {{ lang.config?.ui?.time_up || "Time's up!" }}
+        </p>
 
         <!-- Score -->
         <div class="text-center mb-2">

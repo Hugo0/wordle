@@ -198,9 +198,7 @@ async function loadContextData() {
         return;
     }
     // Only fetch words not already in the explore neighbor list
-    const neighborWords = new Set(
-        (primary.value?.explore?.nearest ?? []).map((n) => n.word)
-    );
+    const neighborWords = new Set((primary.value?.explore?.nearest ?? []).map((n) => n.word));
     const next: Record<string, WordData> = { ...contextData.value };
     const missing = words.filter((w) => !next[w] && !neighborWords.has(w));
     await Promise.all(

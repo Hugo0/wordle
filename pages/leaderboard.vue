@@ -11,6 +11,7 @@ import { Trophy, ChevronLeft, ChevronRight, Flame, Award } from 'lucide-vue-next
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
 import { RTL_LANGS } from '~/utils/locale';
+import { NEW_MODES_START_IDX } from '~/utils/day-index';
 import { GAME_MODES_UI, getModeLabel } from '~/composables/useGameModes';
 import { useAnimatedNumber } from '~/composables/useAnimatedNumber';
 import { useFlag } from '~/composables/useFlag';
@@ -30,7 +31,7 @@ const flagSrc = computed(() => useFlag(lang.value));
 const showLangPicker = ref(false);
 
 function switchLang(newLang: string) {
-    activeLang.value = newLang;
+    lang.value = newLang;
     showLangPicker.value = false;
     updateQuery();
 }
@@ -42,9 +43,7 @@ const VALID_PERIODS: Period[] = ['today', 'week', 'month', 'streaks', 'records']
 const activePeriod = ref<Period>(
     VALID_PERIODS.includes(route.query.period as Period) ? (route.query.period as Period) : 'today'
 );
-const activeMode = ref<GameMode>(
-    ((route.query.mode as string) || 'classic') as GameMode
-);
+const activeMode = ref<GameMode>(((route.query.mode as string) || 'classic') as GameMode);
 const browseDay = ref<number | null>(
     route.query.day ? parseInt(route.query.day as string, 10) : null
 );
@@ -67,7 +66,7 @@ if (error.value && !lbData.value) {
 }
 
 // Response data — cast-free access via helper
-const resp = computed(() => lbData.value as any ?? {});
+const resp = computed(() => (lbData.value as any) ?? {});
 const ui = computed(() => (resp.value.ui as Record<string, string>) || {});
 const langName = computed(() => resp.value.lang_name || lang);
 const dayIdx = computed(() => resp.value.day_idx ?? 0);
@@ -96,9 +95,7 @@ const podium = computed(() => {
     };
 });
 // List entries after podium (skip top 3 if podium is shown)
-const listEntries = computed(() =>
-    podium.value ? entries.value.slice(3) : entries.value
-);
+const listEntries = computed(() => (podium.value ? entries.value.slice(3) : entries.value));
 
 // Is the user visible in the entries list (including podium)?
 const youInVisibleList = computed(() => {
@@ -172,19 +169,24 @@ function switchPeriod(p: Period) {
 }
 
 // Historical browsing (today period only)
-// New modes (speed, semantic, dordle, etc.) launched at dayIdx 1757 (April 11, 2026)
-const NEW_MODES_START_DAY = 1757;
-const earliestDay = computed(() => activeMode.value === 'classic' ? 1 : NEW_MODES_START_DAY);
+const earliestDay = computed(() => (activeMode.value === 'classic' ? 1 : NEW_MODES_START_IDX));
 const canGoPrev = computed(() => isToday.value && dayIdx.value > earliestDay.value);
 const canGoNext = computed(() => isToday.value && dayIdx.value < todaysIdx.value);
 function prevDay() {
-    if (canGoPrev.value) { browseDay.value = dayIdx.value - 1; updateQuery(); }
+    if (canGoPrev.value) {
+        browseDay.value = dayIdx.value - 1;
+        updateQuery();
+    }
 }
 function nextDay() {
-    if (canGoNext.value) { browseDay.value = dayIdx.value + 1; updateQuery(); }
+    if (canGoNext.value) {
+        browseDay.value = dayIdx.value + 1;
+        updateQuery();
+    }
 }
 function goToToday() {
-    browseDay.value = null; updateQuery();
+    browseDay.value = null;
+    updateQuery();
 }
 
 function percentileLabel(pct: number): string {
@@ -280,7 +282,12 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
                     :title="`Filtering: ${langName}. Click to change.`"
                     @click="showLangPicker = true"
                 >
-                    <img v-if="flagSrc" :src="flagSrc" :alt="langName" class="w-4 h-4 rounded-full object-cover" />
+                    <img
+                        v-if="flagSrc"
+                        :src="flagSrc"
+                        :alt="langName"
+                        class="w-4 h-4 rounded-full object-cover"
+                    />
                     <span class="font-mono text-[9px] uppercase tracking-wide">{{ lang }}</span>
                 </button>
                 <div class="flex gap-1 flex-1" role="tablist" aria-label="Game mode">
@@ -342,228 +349,215 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
                     Consecutive days with any daily win. Play every day to climb.
                 </template>
                 <template v-else-if="isAgg && isSpeed">
-                    Average score per day &mdash; higher is better. Min {{ minDays }} days played to qualify.
+                    Average score per day &mdash; higher is better. Min {{ minDays }} days played to
+                    qualify.
                 </template>
                 <template v-else-if="isAgg">
-                    Average guesses per day &mdash; lower is better. Min {{ minDays }} days played to qualify.
+                    Average guesses per day &mdash; lower is better. Min {{ minDays }} days played
+                    to qualify.
                 </template>
                 <template v-else-if="isSpeed">
                     Highest score wins. Points from words solved, combos, and speed.
                 </template>
-                <template v-else>
-                    Fewest guesses wins. Ties broken by who played first.
-                </template>
+                <template v-else> Fewest guesses wins. Ties broken by who played first. </template>
             </div>
 
             <!-- Content area — fades on tab/mode switch -->
             <Transition name="lb-fade" mode="out-in">
                 <div :key="`${activePeriod}-${activeMode}-${dayIdx}`" class="lb-content">
-                <!-- ═══ RECORDS VIEW ═══ -->
-            <div v-if="isRecords" class="py-6">
-                <div v-if="records.length === 0" class="text-center py-12">
-                    <Trophy :size="40" class="text-rule mx-auto mb-4 opacity-30" />
-                    <h2 class="font-display font-bold text-lg text-ink mb-2">No records yet</h2>
-                    <p class="font-display italic text-sm text-muted">Play more games to set records.</p>
-                </div>
-                <div v-else class="grid grid-cols-2 gap-3">
-                    <div
-                        v-for="(rec, i) in records"
-                        :key="i"
-                        class="border border-rule p-4"
-                    >
-                        <div class="mono-label mb-2" style="font-size: 9px">{{ rec.label }}</div>
-                        <div class="font-display font-extrabold text-xl text-ink mb-2" style="font-variation-settings: 'opsz' 72">
-                            {{ rec.value }}
+                    <!-- ═══ RECORDS VIEW ═══ -->
+                    <div v-if="isRecords" class="py-6">
+                        <div v-if="records.length === 0" class="text-center py-12">
+                            <Trophy :size="40" class="text-rule mx-auto mb-4 opacity-30" />
+                            <h2 class="font-display font-bold text-lg text-ink mb-2">
+                                No records yet
+                            </h2>
+                            <p class="font-display italic text-sm text-muted">
+                                Play more games to set records.
+                            </p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <LbAvatar :username="rec.username" :avatar-url="rec.avatarUrl" size="sm" />
-                            <div class="text-xs font-semibold text-ink truncate">{{ rec.username }}</div>
+                        <div v-else class="grid grid-cols-2 gap-3">
+                            <div
+                                v-for="(rec, i) in records"
+                                :key="i"
+                                class="border border-rule p-4"
+                            >
+                                <div class="mono-label mb-2" style="font-size: 9px">
+                                    {{ rec.label }}
+                                </div>
+                                <div
+                                    class="font-display font-extrabold text-xl text-ink mb-2"
+                                    style="font-variation-settings: 'opsz' 72"
+                                >
+                                    {{ rec.value }}
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <LbAvatar
+                                        :username="rec.username"
+                                        :avatar-url="rec.avatarUrl"
+                                        size="sm"
+                                    />
+                                    <div class="text-xs font-semibold text-ink truncate">
+                                        {{ rec.username }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- ═══ EMPTY STATE: Guest ═══ -->
-            <div v-else-if="emptyType === 'guest'" class="text-center py-16 px-6">
-                <Trophy :size="40" class="text-rule mx-auto mb-4" />
-                <h2 class="font-display font-bold text-xl text-ink mb-2">Sign in to compete</h2>
-                <p class="font-display italic text-sm text-muted max-w-[260px] mx-auto mb-4">
-                    Join 1.6 million players worldwide. Create a free account to see where you rank
-                    <template v-if="total > 0">
-                        among today's {{ total.toLocaleString() }} players.
-                    </template>
-                    <template v-else>on today's leaderboard.</template>
-                </p>
-                <div class="mono-label mb-6" style="font-size: 9px">
-                    6.4M+ games played &middot; 80 languages
-                </div>
-                <button
-                    class="px-6 py-2.5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85 cursor-pointer"
-                    @click="openLoginModal()"
-                >
-                    Sign in
-                </button>
+                    <!-- ═══ EMPTY STATE: Guest ═══ -->
+                    <div v-else-if="emptyType === 'guest'" class="text-center py-16 px-6">
+                        <Trophy :size="40" class="text-rule mx-auto mb-4" />
+                        <h2 class="font-display font-bold text-xl text-ink mb-2">
+                            Sign in to compete
+                        </h2>
+                        <p
+                            class="font-display italic text-sm text-muted max-w-[260px] mx-auto mb-4"
+                        >
+                            Join 1.6 million players worldwide. Create a free account to see where
+                            you rank
+                            <template v-if="total > 0">
+                                among today's {{ total.toLocaleString() }} players.
+                            </template>
+                            <template v-else>on today's leaderboard.</template>
+                        </p>
+                        <div class="mono-label mb-6" style="font-size: 9px">
+                            6.4M+ games played &middot; 80 languages
+                        </div>
+                        <button
+                            class="px-6 py-2.5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85 cursor-pointer"
+                            @click="openLoginModal()"
+                        >
+                            Sign in
+                        </button>
 
-                <template v-if="entries.length > 0">
-                    <div class="border-t border-rule mt-8 pt-6">
-                        <div class="mono-label mb-3 text-start">Today's rankings</div>
-                        <ol class="lb-list">
-                            <li v-for="entry in entries" :key="entry.rank" class="lb-row">
-                                <div class="lb-rank" :class="rankClass(entry.rank)">{{ entry.rank }}</div>
-                                <LbAvatar :username="entry.username" :avatar-url="entry.avatarUrl" />
+                        <template v-if="entries.length > 0">
+                            <div class="border-t border-rule mt-8 pt-6">
+                                <div class="mono-label mb-3 text-start">Today's rankings</div>
+                                <LbList
+                                    :entries="entries"
+                                    :is-streaks="isStreaks"
+                                    :is-agg="isAgg"
+                                    :format-score="formatScore"
+                                    :format-score-sub="formatScoreSub"
+                                />
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ═══ EMPTY STATE: No players yet ═══ -->
+                    <div v-else-if="emptyType === 'no-players'" class="text-center py-16 px-6">
+                        <Trophy :size="40" class="text-rule mx-auto mb-4 opacity-30" />
+                        <h2 class="font-display font-bold text-xl text-ink mb-2">
+                            New day, empty board
+                        </h2>
+                        <p
+                            class="font-display italic text-sm text-muted max-w-[260px] mx-auto mb-6"
+                        >
+                            Be the first to solve today's word and claim the #1 spot.
+                        </p>
+                        <NuxtLink
+                            :to="playRoute"
+                            class="inline-block px-6 py-2.5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
+                        >
+                            Play now
+                        </NuxtLink>
+                    </div>
+
+                    <!-- ═══ EMPTY STATE: Logged in, haven't played ═══ -->
+                    <div v-else-if="emptyType === 'not-played'" class="py-4">
+                        <LbPodium
+                            v-if="podium"
+                            :podium="podium"
+                            :is-streaks="isStreaks"
+                            :format-score="formatScore"
+                        />
+
+                        <LbList
+                            :entries="listEntries"
+                            :is-streaks="isStreaks"
+                            :is-agg="isAgg"
+                            :format-score="formatScore"
+                            :format-score-sub="formatScoreSub"
+                        />
+
+                        <div class="text-center mt-4 pt-6 pb-2">
+                            <h3 class="font-display font-bold text-base text-ink mb-1">
+                                You haven't played today
+                            </h3>
+                            <p class="font-display italic text-xs text-muted mb-4">
+                                Solve today's puzzle to see where you rank
+                            </p>
+                            <NuxtLink
+                                :to="playRoute"
+                                class="inline-block px-6 py-2.5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
+                            >
+                                Play now
+                            </NuxtLink>
+                        </div>
+                    </div>
+
+                    <!-- ═══ POPULATED STATE ═══ -->
+                    <div v-else class="py-4">
+                        <LbPodium
+                            v-if="podium"
+                            :podium="podium"
+                            :you="you"
+                            show-you
+                            :is-streaks="isStreaks"
+                            :format-score="formatScore"
+                        />
+
+                        <LbList
+                            :entries="listEntries"
+                            :you="you"
+                            show-you
+                            :is-streaks="isStreaks"
+                            :is-agg="isAgg"
+                            :format-score="formatScore"
+                            :format-score-sub="formatScoreSub"
+                        />
+
+                        <!-- Your position (appended at bottom when you're outside the visible list) -->
+                        <div v-if="you && !youInVisibleList" class="lb-you-below">
+                            <div class="mono-label text-center py-2">&#8942;</div>
+                            <div class="lb-row lb-row-you">
+                                <div class="lb-rank">#{{ displayRank }}</div>
+                                <LbAvatar :username="you.username" :avatar-url="you.avatarUrl" />
                                 <div class="flex-1 min-w-0">
-                                    <div class="text-sm font-semibold text-ink truncate">{{ entry.username }}</div>
+                                    <div class="text-sm font-semibold text-ink truncate">
+                                        {{ you.username }}
+                                        <span
+                                            class="font-mono text-[8px] tracking-[0.1em] uppercase bg-ink text-paper px-1 py-px ms-1.5 align-middle"
+                                            >YOU</span
+                                        >
+                                    </div>
+                                    <div
+                                        v-if="isAgg && you.daysPlayed"
+                                        class="font-mono text-[9px] text-muted"
+                                    >
+                                        {{ you.daysPlayed }} days
+                                    </div>
                                 </div>
                                 <div class="text-end flex-shrink-0">
-                            <div class="font-mono text-sm font-bold flex items-center gap-1">
-                                <Flame v-if="isStreaks" :size="14" class="text-flame" />
-                                {{ formatScore(entry) }}
+                                    <div class="font-mono text-sm font-bold">
+                                        {{ formatScore(you) }}
+                                    </div>
+                                    <div class="font-mono text-[8px] text-muted">
+                                        #{{ you.rank }} of {{ total.toLocaleString() }}
+                                    </div>
+                                </div>
                             </div>
-                            <div v-if="formatScoreSub(entry)" class="font-mono text-[9px] text-muted">{{ formatScoreSub(entry) }}</div>
                         </div>
-                            </li>
-                        </ol>
-                    </div>
-                </template>
-            </div>
 
-            <!-- ═══ EMPTY STATE: No players yet ═══ -->
-            <div v-else-if="emptyType === 'no-players'" class="text-center py-16 px-6">
-                <Trophy :size="40" class="text-rule mx-auto mb-4 opacity-30" />
-                <h2 class="font-display font-bold text-xl text-ink mb-2">New day, empty board</h2>
-                <p class="font-display italic text-sm text-muted max-w-[260px] mx-auto mb-6">
-                    Be the first to solve today's word and claim the #1 spot.
-                </p>
-                <NuxtLink
-                    :to="playRoute"
-                    class="inline-block px-6 py-2.5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
-                >
-                    Play now
-                </NuxtLink>
-            </div>
-
-            <!-- ═══ EMPTY STATE: Logged in, haven't played ═══ -->
-            <div v-else-if="emptyType === 'not-played'" class="py-4">
-                <!-- Podium -->
-                <div v-if="podium" class="podium">
-                    <div v-for="(place, idx) in [podium.second, podium.first, podium.third]" :key="idx" class="podium-place" :class="['second', 'first', 'third'][idx]">
-                        <div class="podium-rank">{{ ['#2', '#1', '#3'][idx] }}</div>
-                        <LbAvatar :username="place!.username" :avatar-url="place!.avatarUrl" :size="idx === 1 ? 'lg' : 'md'" />
-                        <div class="podium-name">{{ place!.username }}</div>
-                        <div class="podium-score">
-                            <Flame v-if="isStreaks" :size="14" class="text-flame inline-block align-text-bottom" />
-                            {{ formatScore(place) }}
-                        </div>
-                    </div>
-                </div>
-
-                <ol class="lb-list">
-                    <li v-for="entry in listEntries" :key="entry.rank" class="lb-row">
-                        <div class="lb-rank" :class="rankClass(entry.rank)">{{ entry.rank }}</div>
-                        <LbAvatar :username="entry.username" :avatar-url="entry.avatarUrl" />
-                        <div class="flex-1 min-w-0">
-                            <div class="text-sm font-semibold text-ink truncate">{{ entry.username }}</div>
-                            <div v-if="isAgg && entry.daysPlayed" class="font-mono text-[9px] text-muted">{{ entry.daysPlayed }} days</div>
-                        </div>
-                        <div class="text-end flex-shrink-0">
-                            <div class="font-mono text-sm font-bold flex items-center gap-1">
-                                <Flame v-if="isStreaks" :size="14" class="text-flame" />
-                                {{ formatScore(entry) }}
-                            </div>
-                            <div v-if="formatScoreSub(entry)" class="font-mono text-[9px] text-muted">{{ formatScoreSub(entry) }}</div>
-                        </div>
-                    </li>
-                </ol>
-
-                <div class="text-center mt-4 pt-6 pb-2">
-                    <h3 class="font-display font-bold text-base text-ink mb-1">You haven't played today</h3>
-                    <p class="font-display italic text-xs text-muted mb-4">Solve today's puzzle to see where you rank</p>
-                    <NuxtLink
-                        :to="playRoute"
-                        class="inline-block px-6 py-2.5 bg-ink text-paper font-body text-sm font-semibold tracking-wide transition-opacity hover:opacity-85"
-                    >
-                        Play now
-                    </NuxtLink>
-                </div>
-            </div>
-
-            <!-- ═══ POPULATED STATE ═══ -->
-            <div v-else class="py-4">
-                <!-- Podium -->
-                <div v-if="podium" class="podium">
-                    <div v-for="(place, idx) in [podium.second, podium.first, podium.third]" :key="idx" class="podium-place" :class="['second', 'first', 'third'][idx]">
-                        <div class="podium-rank">{{ ['#2', '#1', '#3'][idx] }}</div>
-                        <LbAvatar :username="place!.username" :avatar-url="place!.avatarUrl" :size="idx === 1 ? 'lg' : 'md'" />
-                        <div class="podium-name">
-                            {{ place!.username }}
-                            <span v-if="you && place!.username === you.username" class="podium-you">YOU</span>
-                        </div>
-                        <div class="podium-score">
-                            <Flame v-if="isStreaks" :size="14" class="text-flame inline-block align-text-bottom" />
-                            {{ formatScore(place) }}
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Main list (after podium, starts at #4) -->
-                <ol class="lb-list">
-                    <li
-                        v-for="entry in listEntries"
-                        :key="entry.rank"
-                        class="lb-row"
-                        :class="{ 'lb-row-you': you && entry.username === you.username }"
-                    >
-                        <div class="lb-rank" :class="rankClass(entry.rank)">{{ entry.rank }}</div>
-                        <LbAvatar :username="entry.username" :avatar-url="entry.avatarUrl" />
-                        <div class="flex-1 min-w-0">
-                            <div class="text-sm font-semibold text-ink truncate">
-                                {{ entry.username }}
-                                <span
-                                    v-if="you && entry.username === you.username"
-                                    class="font-mono text-[8px] tracking-[0.1em] uppercase bg-ink text-paper px-1 py-px ms-1.5 align-middle"
-                                >YOU</span>
-                            </div>
-                            <div v-if="isAgg && entry.daysPlayed" class="font-mono text-[9px] text-muted">{{ entry.daysPlayed }} days</div>
-                        </div>
-                        <div class="text-end flex-shrink-0">
-                            <div class="font-mono text-sm font-bold flex items-center gap-1">
-                                <Flame v-if="isStreaks" :size="14" class="text-flame" />
-                                {{ formatScore(entry) }}
-                            </div>
-                            <div v-if="formatScoreSub(entry)" class="font-mono text-[9px] text-muted">{{ formatScoreSub(entry) }}</div>
-                        </div>
-                    </li>
-                </ol>
-
-                <!-- Your position (appended at bottom when you're outside the visible list) -->
-                <div v-if="you && !youInVisibleList" class="lb-you-below">
-                    <div class="mono-label text-center py-2">&#8942;</div>
-                    <div class="lb-row lb-row-you">
-                        <div class="lb-rank">#{{ displayRank }}</div>
-                        <LbAvatar :username="you.username" :avatar-url="you.avatarUrl" />
-                        <div class="flex-1 min-w-0">
-                            <div class="text-sm font-semibold text-ink truncate">
-                                {{ you.username }}
-                                <span class="font-mono text-[8px] tracking-[0.1em] uppercase bg-ink text-paper px-1 py-px ms-1.5 align-middle">YOU</span>
-                            </div>
-                            <div v-if="isAgg && you.daysPlayed" class="font-mono text-[9px] text-muted">{{ you.daysPlayed }} days</div>
-                        </div>
-                        <div class="text-end flex-shrink-0">
-                            <div class="font-mono text-sm font-bold">{{ formatScore(you) }}</div>
-                            <div class="font-mono text-[8px] text-muted">
-                                #{{ you.rank }} of {{ total.toLocaleString() }}
+                        <div v-else-if="total > entries.length" class="text-center py-4">
+                            <div class="mono-label">
+                                Showing {{ entries.length }} of {{ total.toLocaleString() }} players
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div v-else-if="total > entries.length" class="text-center py-4">
-                    <div class="mono-label">
-                        Showing {{ entries.length }} of {{ total.toLocaleString() }} players
-                    </div>
-                </div>
-            </div>
-                </div><!-- /lb-content -->
+                <!-- /lb-content -->
             </Transition>
         </div>
 
@@ -578,48 +572,6 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
     </AppShell>
 </template>
 
-<script lang="ts">
-// LbAvatar: avatar circle with initial fallback
-const LbAvatar = defineComponent({
-    props: {
-        username: { type: String, required: true },
-        avatarUrl: { type: String as PropType<string | null>, default: null },
-        size: { type: String as PropType<'sm' | 'md' | 'lg'>, default: 'md' },
-    },
-    setup(props) {
-        const sizeClass = computed(() => {
-            if (props.size === 'sm') return 'w-7 h-7';
-            if (props.size === 'lg') return 'w-12 h-12';
-            return 'w-8 h-8';
-        });
-        const fontSize = computed(() => (props.size === 'lg' ? 'text-base' : 'text-xs'));
-        const initial = computed(() => props.username.charAt(0).toUpperCase());
-        return () =>
-            props.avatarUrl
-                ? h('img', {
-                      src: props.avatarUrl,
-                      alt: props.username,
-                      class: `${sizeClass.value} rounded-full object-cover flex-shrink-0`,
-                      referrerpolicy: 'no-referrer',
-                  })
-                : h(
-                      'div',
-                      {
-                          class: `${sizeClass.value} rounded-full bg-rule text-muted flex items-center justify-center font-display ${fontSize.value} font-bold flex-shrink-0`,
-                      },
-                      initial.value
-                  );
-    },
-});
-
-function rankClass(rank: number): Record<string, boolean> {
-    return {
-        'lb-rank-gold': rank === 1,
-        'lb-rank-silver': rank === 2,
-        'lb-rank-bronze': rank === 3,
-    };
-}
-</script>
 
 <style scoped>
 .lb-list {
@@ -651,9 +603,15 @@ function rankClass(rank: number): Record<string, boolean> {
     text-align: center;
     flex-shrink: 0;
 }
-.lb-rank-gold { color: #c9a930; }
-.lb-rank-silver { color: #8a8a8a; }
-.lb-rank-bronze { color: #a0622e; }
+.lb-rank-gold {
+    color: #c9a930;
+}
+.lb-rank-silver {
+    color: #8a8a8a;
+}
+.lb-rank-bronze {
+    color: #a0622e;
+}
 
 .lb-you-below {
     border-top: 2px dashed var(--color-rule);
@@ -675,9 +633,15 @@ function rankClass(rank: number): Record<string, boolean> {
     align-items: center;
     gap: 4px;
 }
-.podium-place.first { order: 2; }
-.podium-place.second { order: 1; }
-.podium-place.third { order: 3; }
+.podium-place.first {
+    order: 2;
+}
+.podium-place.second {
+    order: 1;
+}
+.podium-place.third {
+    order: 3;
+}
 .podium-rank {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -686,9 +650,15 @@ function rankClass(rank: number): Record<string, boolean> {
     letter-spacing: 0.04em;
     margin-bottom: 2px;
 }
-.podium-place.first .podium-rank { color: #c9a930; }
-.podium-place.second .podium-rank { color: #8a8a8a; }
-.podium-place.third .podium-rank { color: #a0622e; }
+.podium-place.first .podium-rank {
+    color: #c9a930;
+}
+.podium-place.second .podium-rank {
+    color: #8a8a8a;
+}
+.podium-place.third .podium-rank {
+    color: #a0622e;
+}
 .podium-name {
     font-family: var(--font-body);
     font-size: 12px;

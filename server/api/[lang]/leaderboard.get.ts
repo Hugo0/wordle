@@ -14,7 +14,7 @@
  */
 import { prisma } from '~/server/utils/prisma';
 import { requireLang, langResponseFields } from '~/server/utils/data-loader';
-import { getTodaysIdx } from '~/server/lib/day-index';
+import { getTodaysIdx, idxToDate } from '~/server/lib/day-index';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 
 // In-memory cache with max size eviction
@@ -22,6 +22,7 @@ const MAX_CACHE_SIZE = 500;
 const cache = new Map<string, { data: any; expiresAt: number }>();
 const CACHE_TTL_TODAY = 60_000; // 60s
 const CACHE_TTL_AGG = 300_000; // 5min for week/month
+const CACHE_TTL_GLOBAL = 600_000; // 10min for global streaks/records
 
 function cacheSet(key: string, data: any, ttl: number) {
     // Evict expired entries when cache grows large
@@ -99,7 +100,7 @@ export default defineEventHandler(async (event) => {
             records = cachedRecords.data;
         } else {
             records = await fetchRecords(todaysIdx);
-            cacheSet(recordsCacheKey, records, CACHE_TTL_AGG);
+            cacheSet(recordsCacheKey, records, CACHE_TTL_GLOBAL);
         }
         return {
             ...langResponseFields(lang, config),
@@ -115,8 +116,15 @@ export default defineEventHandler(async (event) => {
         };
     }
 
-    const cacheTtl = period === 'today' ? CACHE_TTL_TODAY : CACHE_TTL_AGG;
-    const cacheKey = `${lang}:${mode}:${period}:${startIdx}-${endIdx}:${offset}:${limit}`;
+    const isStreaksPeriod = period === 'streaks';
+    const cacheTtl = isStreaksPeriod
+        ? CACHE_TTL_GLOBAL
+        : period === 'today'
+          ? CACHE_TTL_TODAY
+          : CACHE_TTL_AGG;
+    const cacheKey = isStreaksPeriod
+        ? `global:streaks:${offset}:${limit}`
+        : `${lang}:${mode}:${period}:${startIdx}-${endIdx}:${offset}:${limit}`;
     const now = Date.now();
     const cached = cache.get(cacheKey);
     let publicData: { entries: LeaderboardEntry[]; total: number };
@@ -127,9 +135,17 @@ export default defineEventHandler(async (event) => {
         publicData =
             period === 'today'
                 ? await fetchToday(lang, mode, dayIdx, offset, limit)
-                : period === 'streaks'
+                : isStreaksPeriod
                   ? await fetchStreaks(todaysIdx, offset, limit)
-                  : await fetchAggregate(lang, mode, startIdx, endIdx, MIN_DAYS[period], offset, limit);
+                  : await fetchAggregate(
+                        lang,
+                        mode,
+                        startIdx,
+                        endIdx,
+                        MIN_DAYS[period],
+                        offset,
+                        limit
+                    );
         cacheSet(cacheKey, publicData, cacheTtl);
     }
 
@@ -145,7 +161,13 @@ export default defineEventHandler(async (event) => {
                 you = await fetchYourRankToday(userId, lang, mode, dayIdx, publicData.total);
             } else {
                 you = await fetchYourRankAggregate(
-                    userId, lang, mode, startIdx, endIdx, MIN_DAYS[period], publicData.total
+                    userId,
+                    lang,
+                    mode,
+                    startIdx,
+                    endIdx,
+                    MIN_DAYS[period],
+                    publicData.total
                 );
             }
         }
@@ -185,6 +207,19 @@ function getDayRange(period: Period, dayIdx: number, todaysIdx: number) {
 
 // ─── Today queries ──────────────────────────────────────────────────────────
 
+// Speed results are stored differently: playType='unlimited', won=null, no dayIdx.
+// Filter by date range (today's UTC day) instead of dayIdx.
+function speedWhereForDay(lang: string, dayIdx: number) {
+    const date = idxToDate(dayIdx);
+    const dayStart = new Date(date);
+    const dayEnd = new Date(date.getTime() + 86400000);
+    return {
+        lang,
+        mode: 'speed' as const,
+        playedAt: { gte: dayStart, lt: dayEnd },
+    };
+}
+
 async function fetchToday(
     lang: string,
     mode: string,
@@ -193,7 +228,9 @@ async function fetchToday(
     limit: number
 ): Promise<{ entries: LeaderboardEntry[]; total: number }> {
     const isSpeed = mode === 'speed';
-    const where = { lang, mode, playType: 'daily' as const, dayIdx, won: true };
+    const where = isSpeed
+        ? speedWhereForDay(lang, dayIdx)
+        : { lang, mode, playType: 'daily' as const, dayIdx, won: true };
 
     const [total, results] = await Promise.all([
         prisma.result.count({ where }),
@@ -215,17 +252,15 @@ async function fetchToday(
         }),
     ]);
 
-    const entries: LeaderboardEntry[] = results.map(
-        (r: (typeof results)[number], i: number) => ({
-            rank: offset + i + 1,
-            username: r.user.username,
-            avatarUrl: r.user.avatarUrl,
-            attempts: isSpeed ? (r.score ?? 0) : (r.attempts ?? 0),
-            score: isSpeed ? (r.score ?? 0) : undefined,
-            wordsSolved: isSpeed ? (r.wordsSolved ?? 0) : undefined,
-            playedAt: r.playedAt.toISOString(),
-        })
-    );
+    const entries: LeaderboardEntry[] = results.map((r: (typeof results)[number], i: number) => ({
+        rank: offset + i + 1,
+        username: r.user.username,
+        avatarUrl: r.user.avatarUrl,
+        attempts: isSpeed ? (r.score ?? 0) : (r.attempts ?? 0),
+        score: isSpeed ? (r.score ?? 0) : undefined,
+        wordsSolved: isSpeed ? (r.wordsSolved ?? 0) : undefined,
+        playedAt: r.playedAt.toISOString(),
+    }));
 
     return { entries, total };
 }
@@ -238,8 +273,12 @@ async function fetchYourRankToday(
     total: number
 ): Promise<(LeaderboardEntry & { percentile: number }) | null> {
     const isSpeed = mode === 'speed';
+    const myWhere = isSpeed
+        ? { userId, ...speedWhereForDay(lang, dayIdx) }
+        : { userId, lang, mode, playType: 'daily' as const, dayIdx, won: true };
     const myResult = await prisma.result.findFirst({
-        where: { userId, lang, mode, playType: 'daily', dayIdx, won: true },
+        where: myWhere,
+        ...(isSpeed ? { orderBy: { score: 'desc' as const } } : {}),
         select: {
             attempts: true,
             score: true,
@@ -369,9 +408,10 @@ async function fetchAggregate(
         username: r.username,
         avatarUrl: r.avatar_url,
         attempts: Math.round(Number(r.avg_attempts) * 10) / 10, // 1 decimal place
-        wordsSolved: isSpeed && r.avg_words_solved != null
-            ? Math.round(Number(r.avg_words_solved) * 10) / 10
-            : undefined,
+        wordsSolved:
+            isSpeed && r.avg_words_solved != null
+                ? Math.round(Number(r.avg_words_solved) * 10) / 10
+                : undefined,
         daysPlayed: Number(r.days_played),
         playedAt: '',
     }));
@@ -441,9 +481,10 @@ async function fetchYourRankAggregate(
         username: my.username,
         avatarUrl: my.avatar_url,
         attempts: Math.round(myAvg * 10) / 10,
-        wordsSolved: isSpeed && my.avg_words_solved != null
-            ? Math.round(Number(my.avg_words_solved) * 10) / 10
-            : undefined,
+        wordsSolved:
+            isSpeed && my.avg_words_solved != null
+                ? Math.round(Number(my.avg_words_solved) * 10) / 10
+                : undefined,
         daysPlayed: Number(my.days_played),
         playedAt: '',
         percentile,
@@ -489,7 +530,9 @@ async function fetchStreaks(
              WHERE s.last_day >= $1 - 1
              ORDER BY s.streak_len DESC, s.last_day DESC
              OFFSET $2 LIMIT $3`,
-            todaysIdx, offset, limit
+            todaysIdx,
+            offset,
+            limit
         ),
     ]);
 
@@ -526,7 +569,8 @@ async function fetchYourStreak(
         FROM streaks s JOIN wordle.users u ON s.user_id = u.id
         WHERE s.last_day >= $2 - 1
         ORDER BY s.streak_len DESC LIMIT 1`,
-        userId, todaysIdx
+        userId,
+        todaysIdx
     );
 
     if (rows.length === 0) return null;
@@ -536,7 +580,8 @@ async function fetchYourStreak(
     const rankResult = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
         `${GLOBAL_STREAKS_CTE} SELECT COUNT(*)::bigint as count FROM streaks
          WHERE last_day >= $1 - 1 AND streak_len > $2`,
-        todaysIdx, myStreak
+        todaysIdx,
+        myStreak
     );
 
     const rank = Number(rankResult[0]?.count ?? 0) + 1;
@@ -555,9 +600,7 @@ async function fetchYourStreak(
 
 // ─── Records (Hall of Fame) ─────────────────────────────────────────────────
 
-async function fetchRecords(
-    _todaysIdx: number
-): Promise<RecordEntry[]> {
+async function fetchRecords(_todaysIdx: number): Promise<RecordEntry[]> {
     // All records are global — across all languages and modes
     const [streakRows, gamesRows, langsRows, avgRows] = await Promise.all([
         // 1. Longest streak ever (global)
@@ -577,9 +620,7 @@ async function fetchRecords(
              ORDER BY game_count DESC LIMIT 1`
         ),
         // 3. Most languages played (global)
-        prisma.$queryRawUnsafe<
-            { username: string; avatar_url: string | null; val: number }[]
-        >(
+        prisma.$queryRawUnsafe<{ username: string; avatar_url: string | null; val: number }[]>(
             `SELECT u.username, u.avatar_url, COUNT(DISTINCT r.lang)::int AS val
              FROM wordle.results r JOIN wordle.users u ON r.user_id = u.id
              WHERE r.play_type = 'daily' AND r.won = true
@@ -602,19 +643,39 @@ async function fetchRecords(
 
     if (streakRows.length > 0) {
         const s = streakRows[0]!;
-        records.push({ label: 'Longest Streak', value: `${s.streak_len} days`, username: s.username, avatarUrl: s.avatar_url });
+        records.push({
+            label: 'Longest Streak',
+            value: `${s.streak_len} days`,
+            username: s.username,
+            avatarUrl: s.avatar_url,
+        });
     }
     if (gamesRows.length > 0) {
         const g = gamesRows[0]!;
-        records.push({ label: 'Most Games Won', value: `${g.game_count} wins`, username: g.username, avatarUrl: g.avatar_url });
+        records.push({
+            label: 'Most Games Won',
+            value: `${g.game_count} wins`,
+            username: g.username,
+            avatarUrl: g.avatar_url,
+        });
     }
     if (langsRows.length > 0) {
         const l = langsRows[0]!;
-        records.push({ label: 'Most Languages', value: `${l.val} languages`, username: l.username, avatarUrl: l.avatar_url });
+        records.push({
+            label: 'Most Languages',
+            value: `${l.val} languages`,
+            username: l.username,
+            avatarUrl: l.avatar_url,
+        });
     }
     if (avgRows.length > 0) {
         const sp = avgRows[0]!;
-        records.push({ label: 'Best Speed Score', value: `${Number(sp.best_score).toLocaleString()} pts`, username: sp.username, avatarUrl: sp.avatar_url });
+        records.push({
+            label: 'Best Speed Score',
+            value: `${Number(sp.best_score).toLocaleString()} pts`,
+            username: sp.username,
+            avatarUrl: sp.avatar_url,
+        });
     }
 
     return records;

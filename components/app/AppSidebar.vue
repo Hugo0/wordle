@@ -160,7 +160,9 @@
                                 />
                             </span>
                             <span class="flex-1 text-sm">{{
-                                ui?.mode_semantic_label || semanticMode?.label || 'Semantic Explorer'
+                                ui?.mode_semantic_label ||
+                                semanticMode?.label ||
+                                'Semantic Explorer'
                             }}</span>
                             <span v-if="semanticMode?.badge" class="sidebar-badge">{{
                                 semanticMode.badge
@@ -239,7 +241,11 @@
                         :label="ui?.statistics || 'Statistics'"
                         href="/profile#statistics"
                     />
-                    <SidebarItem icon="Award" :label="ui?.badges || 'Badges'" href="/profile#badges" />
+                    <SidebarItem
+                        icon="Award"
+                        :label="ui?.badges || 'Badges'"
+                        href="/profile#badges"
+                    />
                     <SidebarItem
                         icon="Settings"
                         :label="ui?.settings || 'Settings'"
@@ -257,7 +263,9 @@
                         <span class="item-icon w-5 flex items-center justify-center">
                             <Bug :size="18" class="text-current" />
                         </span>
-                        <span class="text-sm text-ink">{{ ui?.report_issue || 'Report a bug' }}</span>
+                        <span class="text-sm text-ink">{{
+                            ui?.report_issue || 'Report a bug'
+                        }}</span>
                     </a>
                 </div>
 
@@ -317,8 +325,12 @@
                                 ?
                             </div>
                             <div class="flex-1 min-w-0">
-                                <div class="text-sm font-semibold text-ink">{{ ui?.guest || 'Guest' }}</div>
-                                <div class="mono-label">{{ ui?.sync_stats_earn_badges || 'Sync stats, earn badges' }}</div>
+                                <div class="text-sm font-semibold text-ink">
+                                    {{ ui?.guest || 'Guest' }}
+                                </div>
+                                <div class="mono-label">
+                                    {{ ui?.sync_stats_earn_badges || 'Sync stats, earn badges' }}
+                                </div>
                             </div>
                         </div>
                         <button
@@ -351,6 +363,7 @@ import {
 import { useFlag } from '~/composables/useFlag';
 import { GAME_MODES_UI, getModeLabel } from '~/composables/useGameModes';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
+import { NEW_MODES_START_IDX } from '~/utils/day-index';
 import SidebarItem from './SidebarItem.vue';
 import { useAutoHeight } from '~/composables/useAutoHeight';
 
@@ -430,14 +443,12 @@ const langStore = useLanguageStore();
 const expandedSection = ref<'classic' | 'speed' | 'multiboard' | 'semantic' | null>(null);
 const classicDayIdx = computed(() => langStore.todaysIdx ?? 0);
 
-// New modes use 1-based day index from April 11, 2026 (dayIdx 1757)
-const NEW_MODES_EPOCH_IDX = 1757;
 const subPanelDayLabel = computed(() => {
     const idx = classicDayIdx.value;
     if (!idx) return '';
     const mode = subPanelMode.value;
     if (mode && mode !== 'classic') {
-        const modeIdx = idx - NEW_MODES_EPOCH_IDX + 1;
+        const modeIdx = idx - NEW_MODES_START_IDX + 1;
         return modeIdx >= 1 ? `#${modeIdx}` : '';
     }
     return `#${idx}`;

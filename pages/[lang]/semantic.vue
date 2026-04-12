@@ -2,7 +2,7 @@
 /**
  * Semantic Explorer — production game mode page.
  *
- * Navigate meaning space to find a hidden target word in 15 guesses. Each
+ * Navigate meaning space to find a hidden target word. Each
  * guess receives a rank (#1 = target) based on its cosine position in the
  * 50k-word neighbour list. The map is target-centered with radius proportional
  * to log-rank and angle from the UMAP 2D projection.
@@ -341,9 +341,7 @@ async function onShare() {
     const shareText =
         `${semanticTitle} ${langStore.languageCode.toUpperCase()} #${sem.dayIdx.value}` +
         ` · ${sem.won.value ? `${sem.guesses.value.length}/${sem.maxGuesses.value}` : 'X/' + sem.maxGuesses.value}` +
-        (bestRank
-            ? `\n${ui.value?.semantic_best_rank}: #${bestRank.toLocaleString()}`
-            : '');
+        (bestRank ? `\n${ui.value?.semantic_best_rank}: #${bestRank.toLocaleString()}` : '');
 
     await shareResults({
         shareText,
@@ -439,9 +437,7 @@ function onKeepPlaying() {
                                             : ui?.semantic_meaning_map
                                     }}
                                 </span>
-                                <span class="eyebrow-sub">{{
-                                    ui?.semantic_distance_rank
-                                }}</span>
+                                <span class="eyebrow-sub">{{ ui?.semantic_distance_rank }}</span>
                             </div>
                             <h1 class="map-title">
                                 {{ ui?.semantic_find_hidden }}
@@ -678,8 +674,12 @@ function onKeepPlaying() {
 }
 /* Short viewports: hide header, reduce chrome budget for bigger map */
 @media (max-height: 700px) {
-    .map-header { display: none; }
-    .map-canvas-wrap { --map-chrome: 210px; }
+    .map-header {
+        display: none;
+    }
+    .map-canvas-wrap {
+        --map-chrome: 210px;
+    }
 }
 
 /* Map controls (expand, zoom, pan) are in shared MapFrame component */

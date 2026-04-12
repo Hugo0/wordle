@@ -253,19 +253,12 @@ onMounted(() => {
                     class="speed-start-btn px-10 py-3.5 bg-accent text-paper font-body font-bold text-lg hover:opacity-90 transition-opacity relative overflow-hidden"
                     @click="startCountdown"
                 >
-                    <span class="relative z-10">{{
-                        langStore.config?.ui?.speed_start
-                    }}</span>
+                    <span class="relative z-10">{{ langStore.config?.ui?.speed_start }}</span>
                 </button>
                 <p class="text-muted text-xs mt-4 flex items-center justify-center gap-1">
-                    {{
-                        langStore.config?.ui?.speed_tap_for_rules?.split(
-                            '{icon}'
-                        )?.[0]
+                    {{ langStore.config?.ui?.speed_tap_for_rules?.split('{icon}')?.[0]
                     }}<Info :size="14" />{{
-                        langStore.config?.ui?.speed_tap_for_rules?.split(
-                            '{icon}'
-                        )?.[1]
+                        langStore.config?.ui?.speed_tap_for_rules?.split('{icon}')?.[1]
                     }}
                 </p>
             </div>

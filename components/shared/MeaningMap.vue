@@ -668,16 +668,15 @@ const targetScreenPos = computed(() => {
 <template>
     <section class="meaning-map">
         <div class="canvas-wrap">
-            <svg
-                ref="svgRef"
-                :viewBox="`0 0 ${canvasSize} ${canvasSize}`"
-                class="plot"
-            >
+            <svg ref="svgRef" :viewBox="`0 0 ${canvasSize} ${canvasSize}`" class="plot">
                 <!-- Camera group: rigid pan/zoom transform for all map content.
                      Dots, grid, target, connectors all move as a unit. -->
                 <g
                     :transform="cameraTransformStr"
-                    :style="{ '--camera-scale': cameraTransform.scale, '--inv-zoom': invCameraScale }"
+                    :style="{
+                        '--camera-scale': cameraTransform.scale,
+                        '--inv-zoom': invCameraScale,
+                    }"
                 >
                     <!-- Grid lines (world coordinates) -->
                     <line
@@ -905,7 +904,6 @@ const targetScreenPos = computed(() => {
     width: 100%;
     height: auto;
 }
-
 
 /* ── Axis labels (slice mode) — cardinal positions ────────────────── */
 .axis-label {

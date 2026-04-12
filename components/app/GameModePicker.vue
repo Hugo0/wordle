@@ -9,9 +9,14 @@
     >
         <!-- Header -->
         <div class="px-6 pt-6 pb-4">
-            <h2 class="heading-section text-2xl text-ink">{{ ui?.choose_game_mode || 'Choose a Game Mode' }}</h2>
+            <h2 class="heading-section text-2xl text-ink">
+                {{ ui?.choose_game_mode || 'Choose a Game Mode' }}
+            </h2>
             <p class="text-sm text-muted mt-1">
-                {{ ui?.game_mode_subtitle || 'Different ways to play — same language, new challenges.' }}
+                {{
+                    ui?.game_mode_subtitle ||
+                    'Different ways to play — same language, new challenges.'
+                }}
             </p>
             <!-- Language pill (clickable to change language) -->
             <button

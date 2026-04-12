@@ -109,9 +109,10 @@ export function projectAxes(
         for (let i = 0; i < D; i++) dot += vec[i]! * axesVectors[offset + i]!;
 
         if (axis.rangeP95 !== axis.rangeP5) {
-            result[axis.name] = Math.max(0, Math.min(1,
-                (dot - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5)
-            ));
+            result[axis.name] = Math.max(
+                0,
+                Math.min(1, (dot - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5))
+            );
         } else {
             result[axis.name] = 0.5;
         }
@@ -125,7 +126,13 @@ export function projectAxes(
 export function projectAxesDetailed(
     vec: Float32Array,
     minAuc: number = 0.8
-): Array<{ axis: string; lowAnchor: string; highAnchor: string; normalized: number; rawProjection: number }> {
+): Array<{
+    axis: string;
+    lowAnchor: string;
+    highAnchor: string;
+    normalized: number;
+    rawProjection: number;
+}> {
     const axes = _axesCache?.axes;
     const axesVectors = _axesCache?.axesVectors;
     if (!axes || !axesVectors) return [];
@@ -142,9 +149,10 @@ export function projectAxesDetailed(
 
         let normalized = 0.5;
         if (axis.rangeP95 !== axis.rangeP5) {
-            normalized = Math.max(0, Math.min(1,
-                (dot - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5)
-            ));
+            normalized = Math.max(
+                0,
+                Math.min(1, (dot - axis.rangeP5) / (axis.rangeP95 - axis.rangeP5))
+            );
         }
         result.push({
             axis: axis.name,
@@ -162,7 +170,10 @@ export function projectAxesDetailed(
 // ═══════════════════════════════════════════════════════════════════════════
 
 /** Batch-fetch embeddings for multiple words (1 query). */
-export async function getEmbeddings(lang: string, words: string[]): Promise<Map<string, Float32Array>> {
+export async function getEmbeddings(
+    lang: string,
+    words: string[]
+): Promise<Map<string, Float32Array>> {
     if (!words.length) return new Map();
     try {
         const rows = await prisma.$queryRaw<Array<{ word: string; vector: string }>>`
@@ -197,7 +208,12 @@ export async function get2dPosition(
 ): Promise<[number, number] | null> {
     try {
         const rows = await prisma.$queryRaw<
-            Array<{ umap_x: number | null; umap_y: number | null; pca2d_x: number | null; pca2d_y: number | null }>
+            Array<{
+                umap_x: number | null;
+                umap_y: number | null;
+                pca2d_x: number | null;
+                pca2d_y: number | null;
+            }>
         >`
             SELECT umap_x, umap_y, pca2d_x, pca2d_y
             FROM wordle.word_embeddings

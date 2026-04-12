@@ -11,6 +11,7 @@
 import { createSession } from '~/server/utils/semantic';
 import * as semanticDb from '~/server/utils/_semantic-db';
 import { EMBEDDING_MODEL } from '~/server/utils/_semantic-db';
+import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import { getTodaysIdx, toModeDayIdx } from '~/server/lib/day-index';
 
 function pickDailyTarget(targets: readonly string[], lang: string, dayIdx: number): string {
@@ -46,7 +47,10 @@ export default defineEventHandler(async (event) => {
     // Load targets from DB
     const targets = await semanticDb.getTargets(lang);
     if (!targets.length) {
-        throw createError({ statusCode: 503, message: 'Semantic Explorer is temporarily unavailable.' });
+        throw createError({
+            statusCode: 503,
+            message: 'Semantic Explorer is temporarily unavailable.',
+        });
     }
 
     // Daily pick, unlimited random, or override via debug
@@ -89,7 +93,7 @@ export default defineEventHandler(async (event) => {
         axisAnchors,
         modelName: EMBEDDING_MODEL,
         targetUmapPosition,
-        maxGuesses: 20,
+        maxGuesses: GAME_MODE_CONFIG.semantic.maxGuesses,
         totalRanked,
     };
 

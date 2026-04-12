@@ -22,11 +22,7 @@
             class="grid grid-cols-7 gap-0.5 mb-1"
             style="font-family: var(--font-mono); font-size: 8px; color: var(--color-muted)"
         >
-            <span
-                v-for="(d, i) in weekdayInitials"
-                :key="i"
-                class="text-center"
-            >
+            <span v-for="(d, i) in weekdayInitials" :key="i" class="text-center">
                 {{ d }}
             </span>
         </div>

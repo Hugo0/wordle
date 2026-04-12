@@ -95,7 +95,13 @@ function magnitudeTierFromExplained(explained: number): 'slight' | 'clear' | 'st
  * Accepts AxisData[] from the DB cache directly — no format conversion needed.
  */
 export function computeCompass(
-    axes: Array<{ name: string; lowAnchor: string; highAnchor: string; vector: Float32Array; auc: number }>,
+    axes: Array<{
+        name: string;
+        lowAnchor: string;
+        highAnchor: string;
+        vector: Float32Array;
+        auc: number;
+    }>,
     guessVec: Float32Array,
     targetVec: Float32Array,
     k: number = 5,

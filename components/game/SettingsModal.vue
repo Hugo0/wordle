@@ -106,9 +106,7 @@
                             {{ lang.config?.ui?.word_info }}
                         </p>
                         <p class="text-xs text-muted">
-                            {{
-                                lang.config?.ui?.word_info_desc
-                            }}
+                            {{ lang.config?.ui?.word_info_desc }}
                         </p>
                     </div>
                     <ToggleSwitch
@@ -126,9 +124,7 @@
                             {{ lang.config?.ui?.animations }}
                         </p>
                         <p class="text-xs text-muted">
-                            {{
-                                lang.config?.ui?.animations_desc
-                            }}
+                            {{ lang.config?.ui?.animations_desc }}
                         </p>
                     </div>
                     <ToggleSwitch
@@ -146,9 +142,7 @@
                             {{ lang.config?.ui?.high_contrast }}
                         </p>
                         <p class="text-xs text-muted">
-                            {{
-                                lang.config?.ui?.high_contrast_desc
-                            }}
+                            {{ lang.config?.ui?.high_contrast_desc }}
                         </p>
                     </div>
                     <ToggleSwitch

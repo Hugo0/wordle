@@ -16,7 +16,9 @@
         @close="$emit('close')"
     >
         <div class="px-5 pt-5 pb-3">
-            <h2 class="heading-section text-xl text-ink mb-3">{{ ui?.choose_language || 'Choose Language' }}</h2>
+            <h2 class="heading-section text-xl text-ink mb-3">
+                {{ ui?.choose_language || 'Choose Language' }}
+            </h2>
             <input
                 ref="searchRef"
                 v-model="searchQuery"

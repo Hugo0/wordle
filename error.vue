@@ -78,7 +78,9 @@ onMounted(async () => {
 
         <!-- Language picker — bottom section, separate from centering -->
         <div v-if="languageCodes.length" class="px-4 pb-10 pt-4">
-            <div class="mono-label mb-4 text-center">{{ ui.or_pick_language || 'Or pick a language' }}</div>
+            <div class="mono-label mb-4 text-center">
+                {{ ui.or_pick_language || 'Or pick a language' }}
+            </div>
             <div class="max-w-3xl mx-auto flex flex-wrap justify-center gap-2">
                 <NuxtLink
                     v-for="lc in languageCodes"

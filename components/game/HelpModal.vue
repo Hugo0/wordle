@@ -3,7 +3,9 @@
         <div class="flex flex-col gap-2">
             <!-- Speed Streak help -->
             <template v-if="isSpeedMode">
-                <h2 class="heading-body text-2xl text-center text-ink">{{ lang.config?.ui?.speed_streak }}</h2>
+                <h2 class="heading-body text-2xl text-center text-ink">
+                    {{ lang.config?.ui?.speed_streak }}
+                </h2>
 
                 <div class="editorial-rule" />
 
@@ -43,7 +45,9 @@
             <!-- Semantic Explorer help — visual examples first, text after,
                  matching the classic modal's show-don't-tell pattern. -->
             <template v-else-if="isSemanticMode">
-                <h2 class="heading-body text-2xl text-center text-ink">{{ lang.config?.ui?.semantic_title }}</h2>
+                <h2 class="heading-body text-2xl text-center text-ink">
+                    {{ lang.config?.ui?.semantic_title }}
+                </h2>
                 <p class="text-center text-sm text-muted -mt-1">
                     {{ lang.config?.help?.semantic_subtitle }}
                 </p>
@@ -51,7 +55,9 @@
                 <div class="editorial-rule" />
 
                 <!-- 1. Rank system — fake mini leaderboard -->
-                <h3 class="heading-section text-sm text-ink">{{ lang.config?.help?.semantic_rank_title }}</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_rank_title }}
+                </h3>
                 <div class="sem-help-example">
                     <div class="sem-help-row">
                         <span class="sem-help-word">shower</span>
@@ -75,7 +81,9 @@
                 <div class="editorial-rule" />
 
                 <!-- 2. Compass hints — fake compass rows -->
-                <h3 class="heading-section text-sm text-ink">{{ lang.config?.help?.semantic_compass_title }}</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_compass_title }}
+                </h3>
                 <div class="sem-help-compass">
                     <div class="sem-help-hint-row">
                         <span>Think more <em>burning</em></span>
@@ -88,14 +96,18 @@
                 </div>
                 <p class="text-xs text-muted">
                     {{ lang.config?.help?.semantic_compass_explanation }}
-                    <strong class="text-ink">{{ lang.config?.help?.semantic_compass_latest_guess }}</strong>
+                    <strong class="text-ink">{{
+                        lang.config?.help?.semantic_compass_latest_guess
+                    }}</strong>
                     {{ lang.config?.help?.semantic_compass_toward }}
                 </p>
 
                 <div class="editorial-rule" />
 
                 <!-- 3. Map — tiny dot diagram -->
-                <h3 class="heading-section text-sm text-ink">{{ lang.config?.help?.semantic_map_title }}</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_map_title }}
+                </h3>
                 <div class="sem-help-map">
                     <div class="sem-help-map-canvas">
                         <div class="sem-help-target">?</div>
@@ -117,7 +129,9 @@
                 <div class="editorial-rule" />
 
                 <!-- 4. Oracle -->
-                <h3 class="heading-section text-sm text-ink">{{ lang.config?.help?.semantic_oracle_title }}</h3>
+                <h3 class="heading-section text-sm text-ink">
+                    {{ lang.config?.help?.semantic_oracle_title }}
+                </h3>
                 <div class="sem-help-oracle">
                     <em>"what the horizon holds in its cup"</em>
                 </div>

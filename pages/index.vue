@@ -14,7 +14,17 @@ import {
     scopedKey,
     STORAGE_KEYS,
 } from '~/utils/storage';
-import { Flame, Check, Compass, Square, Zap, Columns2, User, CircleCheck, Trophy } from 'lucide-vue-next';
+import {
+    Flame,
+    Check,
+    Compass,
+    Square,
+    Zap,
+    Columns2,
+    User,
+    CircleCheck,
+    Trophy,
+} from 'lucide-vue-next';
 import { useFlag } from '~/composables/useFlag';
 import {
     GAME_MODES_UI,

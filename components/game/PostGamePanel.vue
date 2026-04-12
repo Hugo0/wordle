@@ -42,7 +42,9 @@
                         :size="14"
                         class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
-                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">
+                    <div
+                        class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper"
+                    >
                         {{ lang.config?.ui?.keep_playing }}
                     </div>
                 </NuxtLink>
@@ -57,7 +59,11 @@
                         :size="14"
                         class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
-                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">Sign in</div>
+                    <div
+                        class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper"
+                    >
+                        Sign in
+                    </div>
                 </button>
 
                 <!-- Leaderboard CTA (daily modes only) -->
@@ -70,7 +76,11 @@
                         :size="14"
                         class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
-                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">Leaderboard</div>
+                    <div
+                        class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper"
+                    >
+                        Leaderboard
+                    </div>
                 </NuxtLink>
 
                 <!-- Mode discovery cards -->
@@ -85,7 +95,11 @@
                         :size="14"
                         class="text-muted shrink-0 transition-colors duration-150 group-hover:text-paper"
                     />
-                    <div class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper">{{ mode.label }}</div>
+                    <div
+                        class="text-xs font-semibold text-ink truncate transition-colors duration-150 group-hover:text-paper"
+                    >
+                        {{ mode.label }}
+                    </div>
                 </NuxtLink>
             </div>
         </div>

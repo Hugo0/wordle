@@ -112,7 +112,9 @@ const mapDots = computed<MapDot[]>(() => {
             // User-added word not in neighbor list — use separately fetched data
             const cd = props.contextData[w];
             if (!cd?.explore || !cd.basic?.word) continue;
-            const projs = Object.fromEntries(cd.explore.projections.map((x) => [x.axis, x.normalized]));
+            const projs = Object.fromEntries(
+                cd.explore.projections.map((x) => [x.axis, x.normalized])
+            );
             dots.push({
                 word: cd.basic.word,
                 pos2d: cd.explore.umap ?? [0.5, 0.5],

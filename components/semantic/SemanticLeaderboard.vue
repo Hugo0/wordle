@@ -78,12 +78,10 @@ const percentileLabel = computed(() => {
 });
 
 const tier = computed(() => {
-    if (!props.bestGuess)
-        return { label: ui.value?.semantic_tier_awaiting, cls: '' };
+    if (!props.bestGuess) return { label: ui.value?.semantic_tier_awaiting, cls: '' };
     const r = props.bestGuess.rank;
     if (r === 1) return { label: ui.value?.semantic_tier_found, cls: 'found' };
-    if (r <= 10)
-        return { label: ui.value?.semantic_tier_scorching, cls: 'scorching' };
+    if (r <= 10) return { label: ui.value?.semantic_tier_scorching, cls: 'scorching' };
     if (r <= 30) return { label: ui.value?.semantic_tier_burning, cls: 'burning' };
     if (r <= 100) return { label: ui.value?.semantic_tier_hot, cls: 'hot' };
     if (r <= 500) return { label: ui.value?.semantic_tier_warm, cls: 'warm' };
