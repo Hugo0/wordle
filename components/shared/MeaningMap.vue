@@ -634,9 +634,10 @@ const gridLines = computed<Array<{ x1: number; y1: number; x2: number; y2: numbe
     }
 
     const lines: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
-    // Extend beyond [0,1] to cover panning — SVG clipPath clips the rest
-    const lo = -0.5;
-    const hi = 1.5;
+    // Extend well beyond [0,1] to cover max zoom-out (0.2x) + panning.
+    // At zoom 0.2, visible range is ±2.5 from center. With pan this needs more.
+    const lo = -3;
+    const hi = 4;
 
     for (let u = Math.floor(lo / GRID_STEP) * GRID_STEP; u <= hi; u += GRID_STEP) {
         const [x1, y1] = toWorld(u, lo);
