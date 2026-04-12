@@ -111,6 +111,23 @@ onUnmounted(() => {
 const PAD = 30;
 const canvasSize = computed(() => props.size);
 
+/**
+ * Rigid viewport transform for polar mode.
+ * Pan and zoom applied as an SVG group transform so all elements
+ * (dots, grid, target, connectors) move as a unit.
+ * In absolute/slice modes, pan/zoom are baked into dot positions.
+ */
+const viewportTransform = computed(() => {
+    if (props.mode !== 'polar' || props.sliceAxes) return '';
+    const S = canvasSize.value;
+    const cx = S / 2;
+    const zoom = totalZoom.value;
+    const px = props.panOffset[0];
+    const py = props.panOffset[1];
+    // Scale around canvas center, then translate by pan offset
+    return `translate(${px + cx * (1 - zoom)}, ${py + cx * (1 - zoom)}) scale(${zoom})`;
+});
+
 const router = useRouter();
 
 // Hover prefetch: when the user mouses over a clickable dot, start
@@ -186,13 +203,9 @@ type ScreenDot = MapDot & { x: number; y: number };
 const screenDots = computed<ScreenDot[]>(() => {
     const S = canvasSize.value;
     const zoom = totalZoom.value;
-    const panScale = S * zoom;
-    const panX = props.panOffset[0] / panScale;
-    const panY = props.panOffset[1] / panScale;
-    const center: [number, number] = [props.centerPos[0] - panX, props.centerPos[1] + panY];
 
     if (props.sliceAxes) {
-        // 2-axis scatter
+        // 2-axis scatter — no pan/zoom, axes fill the canvas
         const [axisX, axisY] = props.sliceAxes;
         const inner = S - PAD * 2;
         return props.dots
@@ -205,27 +218,36 @@ const screenDots = computed<ScreenDot[]>(() => {
     }
 
     if (props.mode === 'polar') {
-        // Polar: radius from display, angle from 2D direction
+        // Polar projection: fixed positions, pan/zoom applied via SVG transform.
+        // 1. Compute each dot's position in a fixed coordinate system
+        //    (target at center, radius from display, angle from UMAP direction)
+        // 2. Pan and zoom are applied as a rigid group transform in the template
+        //    so dots never move relative to each other during drag/zoom.
         const cx = S / 2;
+        const fixedCenter = props.centerPos; // no pan offset
+        const inner = S - PAD * 2;
         return props.dots.map((d) => {
             if (d.role === 'primary') {
                 return { ...d, x: cx, y: cx };
             }
             const display = d.display ?? 0;
             const baseRadius = Math.max(0, Math.min(1, 1 - display)) * 0.45;
-            const r = baseRadius / props.userZoom;
-            const dx = d.pos2d[0] - center[0];
-            const dy = d.pos2d[1] - center[1];
+            // Direction from target to word in UMAP space
+            const dx = d.pos2d[0] - fixedCenter[0];
+            const dy = d.pos2d[1] - fixedCenter[1];
             const mag = Math.hypot(dx, dy);
             const angle = mag < 1e-9 ? 0 : Math.atan2(dy, dx);
-            const inner = S - PAD * 2;
-            const nx = 0.5 + r * Math.cos(angle) + panX;
-            const ny = 0.5 - r * Math.sin(angle) - panY;
+            const nx = 0.5 + baseRadius * Math.cos(angle);
+            const ny = 0.5 - baseRadius * Math.sin(angle);
             return { ...d, x: PAD + nx * inner, y: PAD + ny * inner };
         });
     }
 
-    // Absolute: projectToCanvas
+    // Absolute: projectToCanvas (pan/zoom built into projection)
+    const panScale = S * zoom;
+    const panX = props.panOffset[0] / panScale;
+    const panY = props.panOffset[1] / panScale;
+    const center: [number, number] = [props.centerPos[0] - panX, props.centerPos[1] + panY];
     return props.dots.map((d) => {
         const [x, y] = projectToCanvas(d.pos2d, center, S, zoom, PAD);
         return { ...d, x, y };
@@ -634,11 +656,8 @@ const gridLines = computed<Array<{ x1: number; y1: number; x2: number; y2: numbe
 const targetScreenPos = computed(() => {
     const S = canvasSize.value;
     if (props.mode === 'polar') {
-        // In polar, target is at canvas center shifted by pan
-        const panScale = S * props.userZoom;
-        const px = props.panOffset[0] / panScale;
-        const py = props.panOffset[1] / panScale;
-        return { x: S / 2 + px * (S - PAD * 2), y: S / 2 - py * (S - PAD * 2) };
+        // In polar, target is at canvas center. Pan/zoom applied via group transform.
+        return { x: S / 2, y: S / 2 };
     }
     // Absolute: project target's own position
     const [x, y] = projectToCanvas(props.centerPos, props.centerPos, S, totalZoom.value, PAD);
@@ -656,6 +675,10 @@ const targetScreenPos = computed(() => {
                 :viewBox="`0 0 ${canvasSize} ${canvasSize}`"
                 class="plot"
             >
+                <!-- Viewport group: in polar mode, pan/zoom is a rigid
+                     transform so all elements move as a unit. In absolute/
+                     slice modes, pan/zoom is baked into dot positions. -->
+                <g :transform="viewportTransform">
                 <!-- Grid: lines in UMAP space, projected via the same
                      zoom+pan as dots. Scales and drags faithfully. -->
                 <line
@@ -841,6 +864,7 @@ const targetScreenPos = computed(() => {
                         />
                     </g>
                 </g>
+                </g><!-- /viewport transform -->
             </svg>
         </div>
     </section>
