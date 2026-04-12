@@ -629,7 +629,7 @@ async function fetchRecords(_todaysIdx: number): Promise<RecordEntry[]> {
         >(
             `SELECT u.username, u.avatar_url, MAX(r.score)::int AS best_score
              FROM wordle.results r JOIN wordle.users u ON r.user_id = u.id
-             WHERE r.mode = 'speed' AND r.play_type = 'daily' AND r.score IS NOT NULL
+             WHERE r.mode = 'speed' AND r.score IS NOT NULL
              GROUP BY u.id, u.username, u.avatar_url
              ORDER BY best_score DESC LIMIT 1`
         ),

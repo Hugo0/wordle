@@ -340,10 +340,10 @@ const isBrowsingPast = computed(() => isToday.value && dayIdx.value < todaysIdx.
             </div>
 
             <!-- Active mode label + ranking explanation -->
-            <div class="mono-label pb-1" style="font-size: 9px">
+            <div v-if="!isStreaks && !isRecords" class="mono-label pb-1" style="font-size: 9px">
                 {{ activeModeLabel }}
             </div>
-            <div class="font-display italic text-xs text-muted pb-3">
+            <div class="font-display italic text-xs text-muted pb-3" :class="{ 'pt-3': isStreaks || isRecords }">
                 <template v-if="isRecords">
                     All-time records across all languages and modes.
                 </template>
