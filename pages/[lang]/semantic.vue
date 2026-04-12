@@ -418,7 +418,7 @@ function onKeepPlaying() {
             </button>
         </div>
 
-        <div v-else class="semantic-body">
+        <div v-else class="semantic-body editorial-scroll">
             <section class="semantic-layout">
                 <!-- Main column: map card (title + canvas + input) -->
                 <div class="main-col">
@@ -581,6 +581,8 @@ function onKeepPlaying() {
     flex-direction: column;
     align-items: center;
     min-height: 0;
+    /* Lock to viewport so only inner content scrolls, not the page */
+    max-height: calc(100dvh - 50px);
     overflow-y: auto;
 }
 .semantic-layout {
