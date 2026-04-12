@@ -338,6 +338,12 @@ const labelPlacements = computed<Map<string, LabelPlacement>>(() => {
     const placed: { x: number; y: number; w: number; h: number; word: string }[] = [];
     const result = new Map<string, LabelPlacement>();
 
+    // Labels are counter-scaled (constant visual size), so their world-space
+    // footprint depends on the camera zoom. Scale label dimensions accordingly.
+    const labelScale = invCameraScale.value;
+    const charW = CHAR_W * labelScale;
+    const labelH = LABEL_H * labelScale;
+
     // Priority: primary first, then foreground, then neighbour, then muted
     const order = ['primary', 'foreground', 'neighbour', 'muted'];
     const sorted = [...screenDots.value].sort(
@@ -345,15 +351,15 @@ const labelPlacements = computed<Map<string, LabelPlacement>>(() => {
     );
 
     for (const d of sorted) {
-        const defaultY = d.role === 'muted' || d.role === 'neighbour' ? -6 : -12;
+        const defaultY = (d.role === 'muted' || d.role === 'neighbour' ? -6 : -12) * labelScale;
         const compassFlip = d.word === props.compassWord && compassLabelBelow.value;
-        const preferredY = compassFlip ? 18 : defaultY;
-        const altY = compassFlip ? defaultY : defaultY < 0 ? 18 : -12;
+        const preferredY = compassFlip ? 18 * labelScale : defaultY;
+        const altY = compassFlip ? defaultY : defaultY < 0 ? 18 * labelScale : -12 * labelScale;
 
-        const w = d.word.length * CHAR_W;
+        const w = d.word.length * charW;
 
         function makeRect(yOff: number) {
-            return { x: d.x - w / 2, y: d.y + yOff - LABEL_H + 2, w, h: LABEL_H, word: d.word };
+            return { x: d.x - w / 2, y: d.y + yOff - labelH + 2, w, h: labelH, word: d.word };
         }
         function overlaps(r: (typeof placed)[0]) {
             return placed.some(
